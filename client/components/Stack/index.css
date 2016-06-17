@@ -1,0 +1,15 @@
+.Stack {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.StackItem {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}

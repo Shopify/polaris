@@ -1,0 +1,55 @@
+.Button {
+  font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0.5rem 1rem 0.55rem;
+  border-radius: 4px;
+  border: none;
+  user-select: none;
+  background: #ffffff;
+  border: 1px solid #d3dbe2;
+  color: #0078bd;
+}
+
+.Button:hover,
+.Button:focus {
+  background-color: #f5f6f7;
+}
+
+.primary {
+  background-color: #0078bd;
+  border-color: #0078bd;
+  color: #ffffff;
+}
+
+.primary:hover,
+.primary:focus {
+  background-color: #0069a6;
+  border-color: #0069a6;
+}
+
+.destructive {
+  background-color: #ff5d5d;
+  border-color: #ff5d5d;
+  color: #ffffff;
+}
+
+.destructive:hover,
+.destructive:focus {
+  background-color: #d83e3e;
+  border-color: #d83e3e;
+}
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+  background-color: #fafbfc;
+  color: #c3cfd8;
+}
+
+.slim {
+  font-size: 0.875rem;
+  padding: 0.4rem 0.625rem 0.45rem;
+}

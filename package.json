@@ -1,0 +1,80 @@
+{
+  "name": "librarian",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "start": "babel-watch server/index.js"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      [
+        "react-transform",
+        {
+          "transforms": [
+            {
+              "transform": "react-transform-hmr",
+              "imports": [
+                "react"
+              ],
+              "locals": [
+                "module"
+              ]
+            },
+            {
+              "transform": "react-transform-catch-errors",
+              "imports": [
+                "react",
+                "redbox-react"
+              ]
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "plugin:shopify/react",
+    "env": {
+      "es6": true,
+      "browser": true
+    },
+    "rules": {
+      "shopify/require-flow": 0
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "babel-cli": "^6.6.4",
+    "babel-core": "^6.6.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-watch": "^2.0.2",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.2.0",
+    "eslint-plugin-shopify": "^9.0.0",
+    "open": "^0.0.5",
+    "postcss-loader": "^0.8.1",
+    "react-transform-catch-errors": "^1.0.2",
+    "react-transform-hmr": "^1.0.2",
+    "redbox-react": "^1.2.2",
+    "shelljs": "^0.7.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.9.1"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  }
+}

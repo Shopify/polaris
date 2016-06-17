@@ -1,0 +1,31 @@
+html {
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.Frame {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  flex: 0 0 auto;
+}
+
+.Content {
+  flex: 1 1 0px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}

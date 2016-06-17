@@ -1,0 +1,36 @@
+#!/usr/bin/env node --harmony_destructuring
+
+const fs = require('fs');
+const path = require('path');
+const shell = require('shelljs');
+
+const componentName = process.argv[2];
+const componentDir = path.join('client', 'components', componentName);
+
+shell.mkdir('-p', componentDir);
+
+fs.writeFileSync(path.join(componentDir, 'index.css'), `
+.${componentName} {
+
+}
+`.trim());
+
+fs.writeFileSync(path.join(componentDir, 'index.js'), `
+import React, {PropTypes} from 'react';
+import styles from './index.css';
+
+export default function ${componentName}() {
+  return (
+    <div className={styles.${componentName}}>
+    </div>
+  );
+}
+
+${componentName}.propTypes = {
+
+};
+
+${componentName}.defaultProps = {
+
+};
+`.trim());
