@@ -1,4 +1,4 @@
-/* eslint no-console: 0 */
+/* eslint no-console: "off" */
 
 import path from 'path';
 import open from 'open';
@@ -6,6 +6,7 @@ import express from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+
 import {webpack as webpackConfig, host, port} from '../config';
 
 const app = express();

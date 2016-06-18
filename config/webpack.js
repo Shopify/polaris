@@ -6,11 +6,6 @@ const rootDir = path.join(__dirname, '..');
 
 export default {
   context: rootDir,
-  resolve: {
-    root: [
-      path.join(rootDir, 'client'),
-    ],
-  },
   entry: {
     app: [
       'webpack-hot-middleware/client',
