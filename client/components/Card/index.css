@@ -11,3 +11,7 @@
 .Section {
   padding: 1rem;
 }
+
+.Section + .Section {
+  border-top: 1px solid #ebeef0;
+}

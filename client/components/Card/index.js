@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Children} from 'react';
 import styles from './index.css';
 import {css} from '../../utilities';
 
@@ -7,9 +7,7 @@ export default function Card(props) {
 
   return (
     <div className={classNameForCard(props)}>
-      <CardSection>
-        {children}
-      </CardSection>
+      {wrapChildrenInSections(children)}
     </div>
   );
 }
@@ -17,6 +15,13 @@ export default function Card(props) {
 Card.propTypes = {
   children: PropTypes.node,
 };
+
+function wrapChildrenInSections(children) {
+  // eslint-disable-next-line no-confusing-arrow
+  return Children.map(children, (child, index) => (
+    child.type === CardSection ? child : <CardSection key={index}>{child}</CardSection>
+  ));
+}
 
 function classNameForCard({secondary}) {
   return css([
