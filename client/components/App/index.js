@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <Layout>
         <Layout.Section>
-          <Card>
+          <Card title="Banners">
             <Stack vertical>
               <Banner title="A banner">
                 <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
@@ -42,7 +42,7 @@ export default class App extends Component {
         </Layout.Section>
 
         <Layout.Section secondary>
-          <Card secondary>
+          <Card title="Buttons" secondary>
             <Card.Section>
               <ButtonGroup>
                 <Button>Default button</Button>
@@ -62,17 +62,15 @@ export default class App extends Component {
             </Card.Section>
           </Card>
 
-          <Card secondary>
-            <Stack vertical>
-              <Stack spacing={Spacing.tight}>
-                <Badge>Regular</Badge>
-                <Badge status={Status.subdued}>Subdued</Badge>
-                <Badge status={Status.info}>Info</Badge>
-                <Badge status={Status.success}>Success</Badge>
-                <Badge status={Status.attention}>Attention</Badge>
-                <Badge status={Status.warning}>Warning</Badge>
-                <Badge status={Status.critical}>Error</Badge>
-              </Stack>
+          <Card title="Badges" secondary>
+            <Stack spacing={Spacing.tight}>
+              <Badge>Regular</Badge>
+              <Badge status={Status.subdued}>Subdued</Badge>
+              <Badge status={Status.info}>Info</Badge>
+              <Badge status={Status.success}>Success</Badge>
+              <Badge status={Status.attention}>Attention</Badge>
+              <Badge status={Status.warning}>Warning</Badge>
+              <Badge status={Status.critical}>Error</Badge>
             </Stack>
           </Card>
         </Layout.Section>

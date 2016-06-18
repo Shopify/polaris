@@ -1,18 +1,22 @@
 import React, {PropTypes, Children} from 'react';
 import styles from './index.css';
+
+import Heading from '../Heading';
 import {css} from '../../utilities';
 
 export default function Card(props) {
-  const {children} = props;
+  const {children, title} = props;
 
   return (
     <div className={classNameForCard(props)}>
+      {title ? <CardHeader>{title}</CardHeader> : null}
       {wrapChildrenInSections(children)}
     </div>
   );
 }
 
 Card.propTypes = {
+  title: PropTypes.node,
   children: PropTypes.node,
 };
 
@@ -29,6 +33,16 @@ function classNameForCard({secondary}) {
     secondary && styles.secondary,
   ]);
 }
+
+function CardHeader({children}) {
+  return (
+    <div className={styles.Header}>
+      <Heading>{children}</Heading>
+    </div>
+  );
+}
+
+CardHeader.propTypes = {children: PropTypes.node};
 
 function CardSection({children}) {
   return (

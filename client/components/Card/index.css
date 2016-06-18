@@ -8,6 +8,10 @@
   background-color: #f5f6f7;
 }
 
+.Header {
+  padding: 1rem 1rem 0;
+}
+
 .Section {
   padding: 1rem;
 }
