@@ -1,0 +1,50 @@
+.Banner {
+  display: flex;
+  background-color: #d3dbe2;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.statusSuccess {
+  background-color: #e5fabc;
+}
+
+.statusSuccess .BannerRibbon {
+  color: #7ba232;
+}
+
+.statusInfo {
+  background-color: #cae9f7;
+}
+
+.statusInfo .BannerRibbon {
+  color: #329cda;
+}
+
+.statusWarning {
+  background-color: #fff7b2;
+}
+
+.statusWarning .BannerRibbon {
+  color: #d4a002
+}
+
+.statusCritical {
+  background-color: #ff9797;
+}
+
+.statusCritical .BannerRibbon {
+  color: #d83e3e;
+}
+
+.BannerContent {
+  flex: 1 1 0%;
+  align-self: center;
+  margin-top: -0.25rem;
+}
+
+.BannerRibbon {
+  margin-right: 1rem;
+  color: #798c9c;
+}

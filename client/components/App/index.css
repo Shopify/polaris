@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -28,4 +28,5 @@ body {
   flex: 1 1 0px;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+  padding: 1rem;
 }
