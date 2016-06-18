@@ -1,5 +1,6 @@
 import React, {PropTypes, Children} from 'react';
 import styles from './index.css';
+import {Spacing} from '../shared';
 import {css} from '../../utilities';
 
 export default function Stack(props) {
@@ -14,19 +15,23 @@ export default function Stack(props) {
   );
 }
 
+const SPACING = [Spacing.tight, Spacing.loose];
+
 Stack.propTypes = {
   children: PropTypes.node,
   vertical: PropTypes.bool.isRequired,
+  spacing: PropTypes.oneOf(SPACING),
 };
 
 Stack.defaultProps = {
   vertical: false,
 };
 
-function classNameForStack({vertical}) {
+function classNameForStack({vertical, spacing}) {
   return css([
     styles.Stack,
     vertical && styles.vertical,
+    spacing && styles[`spacing${spacing[0].toUpperCase()}${spacing.substring(1)}`],
   ]);
 }
 

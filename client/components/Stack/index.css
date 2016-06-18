@@ -1,15 +1,36 @@
 .Stack {
   display: flex;
+  align-items: stretch;
   flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-top: -0.5rem;
+  margin-left: -1rem;
+  margin-top: -1rem;
 }
 
 .vertical {
   flex-direction: column;
 }
 
-.StackItem {
+.spacingTight {
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+.spacingTight > .StackItem {
   margin-left: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.spacingLoose {
+  margin-left: -2rem;
+  margin-top: -2rem;
+}
+
+.spacingLoose > .StackItem {
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+.StackItem {
+  margin-left: 1rem;
+  margin-top: 1rem;
 }

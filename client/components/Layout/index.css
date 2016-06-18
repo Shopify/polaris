@@ -1,0 +1,31 @@
+.Layout {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.fullWidth {
+  max-width: none;
+}
+
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: -1rem;
+  margin-top: -1rem;
+}
+
+.Section {
+  flex: 2 1 30rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.secondary {
+  flex: 1 0 15rem;
+}
+
+.Item {
+  flex: 1 1 100%;
+}

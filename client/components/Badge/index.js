@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import styles from './index.css';
 import {css} from '../../utilities';
-import * as Statuses from '../shared/statuses';
+import {Status} from '../shared';
 
 export default function Badge(props) {
   return (
@@ -10,12 +10,12 @@ export default function Badge(props) {
 }
 
 const STATUSES = [
-  Statuses.subdued,
-  Statuses.info,
-  Statuses.success,
-  Statuses.attention,
-  Statuses.warning,
-  Statuses.critical,
+  Status.subdued,
+  Status.info,
+  Status.success,
+  Status.attention,
+  Status.warning,
+  Status.critical,
 ];
 
 Badge.propTypes = {

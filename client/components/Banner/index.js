@@ -5,7 +5,7 @@ import Icon from '../Icon';
 import Heading from '../Heading';
 import TypeContainer from '../TypeContainer';
 
-import * as Statuses from '../shared/statuses';
+import {Status} from '../shared';
 import {css} from '../../utilities';
 
 export default function Banner(props) {
@@ -27,10 +27,10 @@ export default function Banner(props) {
 }
 
 const STATUSES = [
-  Statuses.info,
-  Statuses.success,
-  Statuses.warning,
-  Statuses.critical,
+  Status.info,
+  Status.success,
+  Status.warning,
+  Status.critical,
 ];
 
 Banner.propTypes = {

@@ -1,70 +1,80 @@
 import React, {Component} from 'react';
 import styles from './index.css';
 
-import * as Statuses from '../shared/statuses';
+import {Status, Spacing} from '../shared';
 
+import Card from '../Card';
 import Stack from '../Stack';
 import ButtonGroup from '../ButtonGroup';
 import Button from '../Button';
 import Badge from '../Badge';
 import Banner from '../Banner';
+import Layout from '../Layout';
 
 export default class App extends Component {
   render() {
     return (
-      <div className={styles.Frame}>
-        <div className={styles.Header}>
-          Components
-        </div>
+      <Layout>
+        <Layout.Section>
+          <Card>
+            <Stack vertical>
+              <Banner title="A banner">
+                <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
+              </Banner>
 
-        <div className={styles.Content}>
-          <Stack vertical>
-            <ButtonGroup>
-              <Button>Default button</Button>
-              <Button primary>Primary button</Button>
-              <Button destructive>Destructive button</Button>
-              <Button disabled>Disabled button</Button>
-            </ButtonGroup>
+              <Banner title="A success banner" status={Status.success}>
+                <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
+              </Banner>
 
-            <ButtonGroup>
-              <Button slim>Default button</Button>
-              <Button slim primary>Primary button</Button>
-              <Button slim destructive>Destructive button</Button>
-              <Button slim disabled>Disabled button</Button>
-            </ButtonGroup>
+              <Banner title="An info banner" status={Status.info}>
+                <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
+              </Banner>
 
-            <Stack>
-              <Badge>Regular</Badge>
-              <Badge status={Statuses.subdued}>Subdued</Badge>
-              <Badge status={Statuses.info}>Info</Badge>
-              <Badge status={Statuses.success}>Success</Badge>
-              <Badge status={Statuses.attention}>Attention</Badge>
-              <Badge status={Statuses.warning}>Warning</Badge>
-              <Badge status={Statuses.critical}>Error</Badge>
+              <Banner title="A warning banner" status={Status.warning}>
+                <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
+              </Banner>
+
+              <Banner title="A critical banner" status={Status.critical}>
+                <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
+              </Banner>
             </Stack>
+          </Card>
+        </Layout.Section>
 
-            <Banner title="A banner">
-              <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
-            </Banner>
+        <Layout.Section secondary>
+          <Card secondary>
+            <Stack vertical>
+              <ButtonGroup>
+                <Button>Default button</Button>
+                <Button primary>Primary button</Button>
+                <Button destructive>Destructive button</Button>
+                <Button disabled>Disabled button</Button>
+              </ButtonGroup>
 
-            <Banner title="A success banner" status={Statuses.success}>
-              <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
-            </Banner>
+              <ButtonGroup>
+                <Button slim>Default button</Button>
+                <Button slim primary>Primary button</Button>
+                <Button slim destructive>Destructive button</Button>
+                <Button slim disabled>Disabled button</Button>
+              </ButtonGroup>
+            </Stack>
+          </Card>
 
-            <Banner title="An info banner" status={Statuses.info}>
-              <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
-            </Banner>
-
-            <Banner title="A warning banner" status={Statuses.warning}>
-              <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
-            </Banner>
-
-            <Banner title="A critical banner" status={Statuses.critical}>
-              <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
-            </Banner>
-          </Stack>
-        </div>
-      </div>
+          <Card secondary>
+            <Stack vertical>
+              <Stack spacing={Spacing.tight}>
+                <Badge>Regular</Badge>
+                <Badge status={Status.subdued}>Subdued</Badge>
+                <Badge status={Status.info}>Info</Badge>
+                <Badge status={Status.success}>Success</Badge>
+                <Badge status={Status.attention}>Attention</Badge>
+                <Badge status={Status.warning}>Warning</Badge>
+                <Badge status={Status.critical}>Error</Badge>
+              </Stack>
+            </Stack>
+          </Card>
+        </Layout.Section>
+      </Layout>
     );
   }
 }
