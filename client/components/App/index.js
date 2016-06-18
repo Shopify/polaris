@@ -4,6 +4,7 @@ import styles from './index.css';
 import Stack from '../Stack';
 import ButtonGroup from '../ButtonGroup';
 import Button from '../Button';
+import Badge from '../Badge';
 
 export default class App extends Component {
   render() {
@@ -28,6 +29,14 @@ export default class App extends Component {
               <Button slim destructive>Destructive button</Button>
               <Button slim disabled>Disabled button</Button>
             </ButtonGroup>
+
+            <Badge>Regular</Badge>
+            <Badge status="subdued">Subdued</Badge>
+            <Badge status="info">Info</Badge>
+            <Badge status="success">Success</Badge>
+            <Badge status="attention">Attention</Badge>
+            <Badge status="warning">Warning</Badge>
+            <Badge status="critical">Error</Badge>
           </Stack>
         </div>
       </div>

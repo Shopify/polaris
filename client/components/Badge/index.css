@@ -1,0 +1,36 @@
+.Badge {
+  font-size: 0.9375rem;
+  line-height: 1.33;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  background-color: #d3dbe2;
+  padding: 0.25rem 0.5rem;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.statusSubdued {
+  background-color: #ebeef0;
+}
+
+.statusSuccess {
+  background-color: #b2d86a;
+}
+
+.statusInfo {
+  background-color: #cae9f7;
+}
+
+.statusAttention {
+  background-color: #ffe477;
+}
+
+.statusWarning {
+  background-color: #fec97d;
+}
+
+.statusCritical {
+  background-color: #ff9797;
+}
