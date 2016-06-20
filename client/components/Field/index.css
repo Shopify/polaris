@@ -1,0 +1,94 @@
+.Field {
+
+}
+
+.Field .Label {
+  margin-bottom: 0.3rem;
+}
+
+.focused .InputWrapper {
+  border-color: #0078bd;
+}
+
+.disabled .InputWrapper {
+  border-color: #ebeef0;
+  background-color: #fafbfc;
+}
+
+.readonly .InputWrapper {
+  background-color: #fafbfc;
+}
+
+.hasError .InputWrapper {
+  border-color: #ff5d5d;
+  background-color: #fef6f5;
+}
+
+.hasError .Label {
+  color: #ff5d5d;
+}
+
+.Label {
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.33;
+}
+
+.LabelWrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 0.9375rem;
+  line-height: 1.33;
+}
+
+.InputWrapper {
+  border: 1px solid #d3dbe2;
+  display: flex;
+  align-items: baseline;
+  padding: 0.3rem 0.625rem;
+  border-radius: 4px;
+}
+
+.LeftAddon {
+  flex: 0 0 auto;
+  margin-right: 0.25rem;
+  color: hsl(0, 0%, 62%);
+}
+
+.RightAddon {
+  flex: 0 0 auto;
+  margin-left: 0.25rem;
+  color: hsl(0, 0%, 62%);
+}
+
+.hasValue {
+  color: black;
+}
+
+.Input {
+  display: block;
+  flex: 1 1 0%;
+  border: none;
+  font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  appearance: none;
+  line-height: 1.4;
+  min-width: 0;
+  background: none;
+}
+
+.Input:focus {
+  outline: none;
+}
+
+.Input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.HelpText {
+  margin: 0.3rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.33;
+  color: hsl(0, 0%, 44%);
+}

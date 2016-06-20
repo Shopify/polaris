@@ -1,0 +1,18 @@
+.Form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
+  margin-top: -1rem;
+}
+
+.condensed .Item {
+  min-width: 7.5rem;
+}
+
+.Item {
+  flex: 1 1 0%;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  min-width: 15rem;
+  max-width: 100%;
+}

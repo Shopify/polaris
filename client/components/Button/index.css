@@ -52,3 +52,17 @@
   font-size: 0.875rem;
   padding: 0.4rem 0.625rem 0.425rem;
 }
+
+.link {
+  border: none;
+  margin: -0.5rem -1rem -0.55rem;
+  background: transparent;
+  font-size: inherit;
+}
+
+.link:hover,
+.link:focus {
+  background: transparent;
+  border: none;
+  outline: none;
+}

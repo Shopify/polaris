@@ -21,10 +21,12 @@ Card.propTypes = {
 };
 
 function wrapChildrenInSections(children) {
+  const isPreSectioned = Children
+    .toArray(children)
+    .some((child) => child.type === CardSection);
+
   // eslint-disable-next-line no-confusing-arrow
-  return Children.map(children, (child, index) => (
-    child.type === CardSection ? child : <CardSection key={index}>{child}</CardSection>
-  ));
+  return isPreSectioned ? children : <CardSection>{children}</CardSection>;
 }
 
 function classNameForCard({secondary}) {
