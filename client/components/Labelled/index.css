@@ -1,0 +1,11 @@
+.Labelled {
+
+}
+
+.hidden > .LabelWrapper {
+  display: none;  
+}
+
+.LabelWrapper {
+  margin-bottom: 0.3rem;
+}

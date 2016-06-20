@@ -73,6 +73,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "react": "^15.1.0",
+    "react-addons-clone-with-props": "^0.14.8",
     "react-dom": "^15.1.0"
   }
 }

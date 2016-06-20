@@ -2,10 +2,6 @@
 
 }
 
-.Field .Label {
-  margin-bottom: 0.3rem;
-}
-
 .focused .InputWrapper {
   border-color: #0078bd;
 }
@@ -24,22 +20,8 @@
   background-color: #fef6f5;
 }
 
-.hasError .Label {
-  color: #ff5d5d;
-}
-
-.Label {
-  display: block;
-  font-size: 0.9375rem;
-  line-height: 1.33;
-}
-
 .LabelWrapper {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  font-size: 0.9375rem;
-  line-height: 1.33;
+  margin-bottom: 0.3rem;
 }
 
 .ConnectedWrapper {
@@ -49,7 +31,12 @@
 
 .ConnectedItem {
   flex: 0 0 auto;
+  display: flex;
   z-index: 10;
+}
+
+.ConnectedItem > * {
+  flex: 1 1 auto;
 }
 
 .stretch {
@@ -78,7 +65,7 @@
   border: 1px solid #d3dbe2;
   display: flex;
   align-items: baseline;
-  padding: 0.28rem 0.625rem;
+  padding: 0.32rem 0.625rem;
   border-radius: 4px;
 }
 
@@ -105,8 +92,10 @@
   font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
   font-size: 1rem;
   appearance: none;
+  padding: 0;
+  margin: 0;
   line-height: 1.4;
-  min-width: 0;
+  width: 100%;
   background: none;
 }
 

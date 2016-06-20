@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import styles from './index.css';
-import Label from './Label';
+import Labelled from '../Labelled';
 import Connected from './Connected';
 import {css, noop} from '../../utilities';
 
@@ -14,11 +14,13 @@ export default class Field extends Component {
     helpText: PropTypes.string,
     label: PropTypes.string,
     labelNote: PropTypes.string,
+    labelAction: PropTypes.node,
+    labelHidden: PropTypes.bool,
     disabled: PropTypes.bool,
     readonly: PropTypes.bool,
     hasError: PropTypes.bool,
-    sideAction: PropTypes.node,
     connectedRight: PropTypes.node,
+    connectedLeft: PropTypes.node,
     type: PropTypes.string,
     name: PropTypes.string,
     id: PropTypes.string,
@@ -28,6 +30,7 @@ export default class Field extends Component {
     value: '',
     onChange: noop,
     hasError: false,
+    labelHidden: false,
     type: 'text',
   };
 
@@ -60,6 +63,10 @@ export default class Field extends Component {
     return Boolean(this.props.connectedRight);
   }
 
+  get hasConnectionOnLeft() {
+    return Boolean(this.props.connectedLeft);
+  }
+
   renderLeftAddon() {
     const {props: {leftAddon}, hasValue} = this;
     return leftAddon
@@ -79,17 +86,6 @@ export default class Field extends Component {
     return helpText
       ? <p className={styles.HelpText}>{helpText}</p>
       : null;
-  }
-
-  renderLabel() {
-    const {id, props: {label, labelNote, sideAction}} = this;
-
-    return (
-      <div className={styles.LabelWrapper}>
-        <Label htmlFor={id} note={labelNote}>{label}</Label>
-        {sideAction}
-      </div>
-    );
   }
 
   renderInput() {
@@ -125,7 +121,17 @@ export default class Field extends Component {
   }
 
   render() {
-    const {disabled, readonly, hasError, connectedRight} = this.props;
+    const {
+      disabled,
+      readonly,
+      hasError,
+      connectedRight,
+      connectedLeft,
+      label,
+      labelNote,
+      labelAction,
+      labelHidden,
+    } = this.props;
 
     const details = {
       disabled,
@@ -136,9 +142,10 @@ export default class Field extends Component {
 
     let fullInput = this.renderInput();
 
-    if (this.hasConnectionOnRight) {
+    if (this.hasConnectionOnRight || this.hasConnectionOnLeft) {
       fullInput = (
         <Connected>
+          {connectedLeft}
           {fullInput}
           {connectedRight}
         </Connected>
@@ -147,8 +154,16 @@ export default class Field extends Component {
 
     return (
       <div className={classNameForField(details)}>
-        {this.renderLabel()}
-        {fullInput}
+        <Labelled
+          label={label}
+          id={this.id}
+          note={labelNote}
+          action={labelAction}
+          error={hasError}
+          labelHidden={labelHidden}
+        >
+          {fullInput}
+        </Labelled>
         {this.renderHelpText()}
       </div>
     );

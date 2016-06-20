@@ -13,6 +13,7 @@ import Layout from '../Layout';
 import Field from '../Field';
 import Form from '../Form';
 import Frame from '../Frame';
+import Select from '../Select';
 
 export default class App extends Component {
   state = {fieldValue: ''};
@@ -48,6 +49,14 @@ export default class App extends Component {
               label="Five"
               placeholder="Five"
               connectedRight={<Button>Submit</Button>}
+            />
+
+            <Select label="Six" options={['foo', 'bar', 'baz']} />
+
+            <Field
+              label="Seven"
+              placeholder="Seven"
+              connectedLeft={<Select label="Eight" options={['foo', 'bar', 'baz']} />}
             />
           </Form>
         </Card.Section>

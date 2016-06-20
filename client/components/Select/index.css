@@ -1,0 +1,45 @@
+.Select {
+
+}
+
+.focused .InputWrapper {
+  border-color: #0078bd;
+}
+
+.InputWrapper {
+  border: 1px solid #d3dbe2;
+  border-radius: 4px;
+  position: relative;
+}
+
+.InputWrapper::after {
+  content: '';
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  background-color: #798c9c;
+  pointer-events: none;
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Input {
+  width: 100%;
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.45rem 2rem 0.45rem 0.625rem;
+}
+
+.Input:focus {
+  outline: none;
+}
+
+.LabelWrapper {
+  margin-bottom: 0.3rem;
+}

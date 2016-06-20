@@ -1,4 +1,4 @@
-import React, {Component, PropTypes, Children} from 'react';
+import React, {cloneElement, isValidElement, Component, PropTypes, Children} from 'react';
 import styles from './index.css';
 import {css} from '../../utilities';
 
@@ -14,12 +14,13 @@ export default class Connected extends Component {
 
     return (
       <div className={styles.ConnectedWrapper}>
-        {Children.map(children, (child, index) => (
+        {Children.toArray(children).filter(isValidElement).map((child, index) => (
           <ConnectedItem
             onFocus={() => this.setState({focused: index})}
             focused={index === this.state.focused}
+            key={index}
           >
-            {child}
+            {cloneElement(child, {labelHidden: true})}
           </ConnectedItem>
         ))}
       </div>
