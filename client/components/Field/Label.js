@@ -2,15 +2,16 @@ import React, {PropTypes} from 'react';
 import styles from './index.css';
 
 export default function Label(props) {
-  const {children, note} = props;
+  const {children, note, htmlFor} = props;
 
   return (
-    <label htmlFor="name" className={classNameForLabel(props)}>{children} {note}</label>
+    <label htmlFor={htmlFor} className={classNameForLabel(props)}>{children} {note}</label>
   );
 }
 
 Label.propTypes = {
   children: PropTypes.string,
+  htmlFor: PropTypes.string.isRequired,
   note: PropTypes.string,
 };
 

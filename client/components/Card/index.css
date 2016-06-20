@@ -12,6 +12,10 @@
   padding: 1rem 1rem 0;
 }
 
+.SectionHeader {
+  padding-bottom: 0.5rem;
+}
+
 .Section {
   padding: 1rem;
 }

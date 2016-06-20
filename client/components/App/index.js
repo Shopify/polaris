@@ -45,10 +45,10 @@ export default class App extends Component {
           </Form>
         </Card.Section>
 
-        <Card.Section>
+        <Card.Section title="Condensed">
           <Form condensed>
             <Field
-              sideAction={<Button link onPress={() => alert('pressed')}>What?</Button>}
+              sideAction={<Button link>What?</Button>}
               label="One"
               placeholder="placeholder"
             />

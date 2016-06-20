@@ -17,20 +17,29 @@ export default class Field extends Component {
     readonly: PropTypes.bool,
     hasError: PropTypes.bool,
     sideAction: PropTypes.node,
+    type: PropTypes.string,
+    name: PropTypes.string,
+    id: PropTypes.string,
   };
 
   static defaultProps = {
     value: '',
     onChange: noop,
     hasError: false,
+    type: 'text',
   };
 
-  constructor(...args) {
-    super(...args);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {focused: false};
+    this.id = props.id || uniqueID();
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+  }
+
+  componentDidReceiveProps(newProps) {
+    this.id = newProps.id || uniqueID();
   }
 
   handleFocus() {
@@ -67,11 +76,11 @@ export default class Field extends Component {
   }
 
   renderLabel() {
-    const {label, labelNote, sideAction} = this.props;
+    const {id, props: {label, labelNote, sideAction}} = this;
 
     return (
       <div className={styles.LabelWrapper}>
-        <Label note={labelNote}>{label}</Label>
+        <Label htmlFor={id} note={labelNote}>{label}</Label>
         {sideAction}
       </div>
     );
@@ -85,6 +94,8 @@ export default class Field extends Component {
       disabled,
       readonly,
       hasError,
+      type,
+      name,
     } = this.props;
 
     const details = {
@@ -101,8 +112,9 @@ export default class Field extends Component {
         <div className={styles.InputWrapper}>
           {this.renderLeftAddon()}
           <input
-            name="name"
-            type="text"
+            name={name}
+            id={this.id}
+            type={type}
             disabled={disabled}
             readonly={readonly}
             value={value}
@@ -143,4 +155,9 @@ function classNameForField({focused, disabled, readonly, hasError}) {
     readonly && styles.readonly,
     hasError && styles.hasError,
   ]);
+}
+
+let index = 1;
+function uniqueID() {
+  return `Input${index++}`;
 }
