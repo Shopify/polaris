@@ -27,6 +27,7 @@ export default class App extends Component {
               placeholder="0.00"
               leftAddon="$"
               rightAddon="USD"
+              type="number"
               value={this.state.fieldValue}
               helpText="Help text"
               onChange={(event) => this.setState({fieldValue: event.target.value})}
@@ -42,6 +43,12 @@ export default class App extends Component {
 
             <Field disabled label="Three" placeholder="placeholder" />
             <Field hasError label="Four" placeholder="placeholder" />
+
+            <Field
+              label="Five"
+              placeholder="Five"
+              connectedRight={<Button>Submit</Button>}
+            />
           </Form>
         </Card.Section>
 

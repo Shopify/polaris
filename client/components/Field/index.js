@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import styles from './index.css';
 import Label from './Label';
+import Connected from './Connected';
 import {css, noop} from '../../utilities';
 
 export default class Field extends Component {
@@ -17,6 +18,7 @@ export default class Field extends Component {
     readonly: PropTypes.bool,
     hasError: PropTypes.bool,
     sideAction: PropTypes.node,
+    connectedRight: PropTypes.node,
     type: PropTypes.string,
     name: PropTypes.string,
     id: PropTypes.string,
@@ -54,6 +56,10 @@ export default class Field extends Component {
     return Boolean(this.props.value);
   }
 
+  get hasConnectionOnRight() {
+    return Boolean(this.props.connectedRight);
+  }
+
   renderLeftAddon() {
     const {props: {leftAddon}, hasValue} = this;
     return leftAddon
@@ -86,17 +92,40 @@ export default class Field extends Component {
     );
   }
 
-  render() {
+  renderInput() {
     const {
       value,
       placeholder,
       onChange,
       disabled,
       readonly,
-      hasError,
       type,
       name,
     } = this.props;
+
+    return (
+      <div className={styles.InputWrapper}>
+        {this.renderLeftAddon()}
+        <input
+          name={name}
+          id={this.id}
+          type={type}
+          disabled={disabled}
+          readonly={readonly}
+          value={value}
+          className={styles.Input}
+          placeholder={placeholder}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onChange={onChange}
+        />
+        {this.renderRightAddon()}
+      </div>
+    );
+  }
+
+  render() {
+    const {disabled, readonly, hasError, connectedRight} = this.props;
 
     const details = {
       disabled,
@@ -105,28 +134,21 @@ export default class Field extends Component {
       focused: this.state.focused,
     };
 
+    let fullInput = this.renderInput();
+
+    if (this.hasConnectionOnRight) {
+      fullInput = (
+        <Connected>
+          {fullInput}
+          {connectedRight}
+        </Connected>
+      );
+    }
+
     return (
       <div className={classNameForField(details)}>
         {this.renderLabel()}
-
-        <div className={styles.InputWrapper}>
-          {this.renderLeftAddon()}
-          <input
-            name={name}
-            id={this.id}
-            type={type}
-            disabled={disabled}
-            readonly={readonly}
-            value={value}
-            className={styles.Input}
-            placeholder={placeholder}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onChange={onChange}
-          />
-          {this.renderRightAddon()}
-        </div>
-
+        {fullInput}
         {this.renderHelpText()}
       </div>
     );

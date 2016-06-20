@@ -15,6 +15,7 @@
 .Button:hover,
 .Button:focus {
   background-color: #f5f6f7;
+  outline: none;
 }
 
 .primary {

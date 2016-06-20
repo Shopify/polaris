@@ -42,11 +42,43 @@
   line-height: 1.33;
 }
 
+.ConnectedWrapper {
+  display: flex;
+  position: relative;
+}
+
+.ConnectedItem {
+  flex: 0 0 auto;
+  z-index: 10;
+}
+
+.stretch {
+  flex: 1 1 auto;
+}
+
+.focusedItem {
+  z-index: 20;
+}
+
+.ConnectedItem:not(:last-child) * {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ConnectedItem:not(:first-child) {
+  margin-left: -1px;
+}
+
+.ConnectedItem:not(:first-child) * {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .InputWrapper {
   border: 1px solid #d3dbe2;
   display: flex;
   align-items: baseline;
-  padding: 0.3rem 0.625rem;
+  padding: 0.28rem 0.625rem;
   border-radius: 4px;
 }
 
