@@ -1,8 +1,21 @@
 /* eslint import/prefer-default-export: "off" */
 
 export {default as App} from './App';
+export {default as Badge} from './Badge';
+export {default as Banner} from './Banner';
 export {default as Button} from './Button';
 export {default as ButtonGroup} from './ButtonGroup';
+export {default as Card} from './Card';
+export {default as EventListener} from './EventListener';
+export {default as Field} from './Field';
+export {default as Form} from './Form';
+export {default as Frame} from './Frame';
+export {default as Heading} from './Heading';
+export {default as Icon} from './Icon';
+export {default as Label} from './Label';
+export {default as Labelled} from './Labelled';
+export {default as Layout} from './Layout';
+export {default as Popover} from './Popover';
+
 export {default as Stack} from './Stack';
 export {default as Tablist} from './Tablist';
-export {default as Badge} from './Badge';

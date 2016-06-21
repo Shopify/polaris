@@ -71,6 +71,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "core-js": "^2.4.0",
     "express": "^4.14.0",
     "react": "^15.1.0",
     "react-addons-clone-with-props": "^0.14.8",
