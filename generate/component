@@ -5,7 +5,7 @@ const path = require('path');
 const shell = require('shelljs');
 
 const componentName = process.argv[2];
-const componentDir = path.join('client', 'components', componentName);
+const componentDir = path.join('src', 'components', componentName);
 
 shell.mkdir('-p', componentDir);
 
