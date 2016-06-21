@@ -4,7 +4,10 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "start": "babel-watch server/index.js"
+    "start": "babel-watch demo/server/index.js",
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "webpack src/index.js build/quilt.js --config webpack.config.babel.js",
+    "build": "npm run build:lib && npm run build:umd"
   },
   "babel": {
     "presets": [
@@ -60,6 +63,7 @@
     "css-loader": "^0.23.1",
     "eslint": "^2.10.0",
     "eslint-plugin-shopify": "^12.1.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "open": "0.0.5",
     "postcss-loader": "^0.9.1",
     "react-transform-catch-errors": "^1.0.2",
