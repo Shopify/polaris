@@ -16,22 +16,31 @@ export default function Stack(props) {
 }
 
 const SPACING = [Spacing.tight, Spacing.loose];
+const DISTRIBUTION = [
+  'equalSpacing',
+  'leading',
+  'trailing',
+  'center',
+  'fill',
+];
 
 Stack.propTypes = {
   children: PropTypes.node,
   vertical: PropTypes.bool.isRequired,
   spacing: PropTypes.oneOf(SPACING),
+  distribution: PropTypes.oneOf(DISTRIBUTION),
 };
 
 Stack.defaultProps = {
   vertical: false,
 };
 
-function classNameForStack({vertical, spacing}) {
+function classNameForStack({vertical, spacing, distribution}) {
   return css([
     styles.Stack,
     vertical && styles.vertical,
     spacing && styles[`spacing${spacing[0].toUpperCase()}${spacing.substring(1)}`],
+    distribution && styles[`distribution${distribution[0].toUpperCase()}${distribution.substring(1)}`],
   ]);
 }
 

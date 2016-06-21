@@ -9,7 +9,7 @@ export default function Card(props) {
   const {children, title} = props;
 
   return (
-    <div className={classNameForCard(props)}>
+    <div className={classNameForCard(props)} data-quilt-container>
       {title ? <CardHeader>{title}</CardHeader> : null}
       {wrapChildrenInSections(children)}
     </div>

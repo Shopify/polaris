@@ -1,0 +1,41 @@
+body {
+  position: relative;
+}
+
+.Popover {
+  position: absolute;
+  padding: 0.7rem 0;
+  margin: 0.5rem 0;
+}
+
+.calculating {
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.Wrapper {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 7px 1px rgba(0, 0, 0, 0.16);
+}
+
+.Content {
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 20;
+  max-width: 15rem;
+}
+
+.Tip {
+  height: 1rem;
+  width: 1rem;
+  background: #ffffff;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 10;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 7px 1px rgba(0, 0, 0, 0.16);
+}

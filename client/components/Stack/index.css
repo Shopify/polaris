@@ -30,6 +30,26 @@
   margin-top: 2rem;
 }
 
+.distributionLeading {
+  justify-content: flex-start;
+}
+
+.distributionTrailing {
+  justify-content: flex-end;
+}
+
+.distributionCenter {
+  justify-content: center;
+}
+
+.distributionEqualSpacing {
+  justify-content: space-between;
+}
+
+.distributionFill > .StackItem {
+  flex: 1 1 auto;
+}
+
 .StackItem {
   margin-left: 1rem;
   margin-top: 1rem;

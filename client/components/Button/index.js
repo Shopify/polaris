@@ -20,6 +20,7 @@ Button.propTypes = {
   slim: PropTypes.bool.isRequired,
   link: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
+  fullWidth: PropTypes.bool.isRequired,
 };
 
 Button.defaultProps = {
@@ -28,10 +29,11 @@ Button.defaultProps = {
   disabled: false,
   slim: false,
   link: false,
+  fullWidth: false,
   onPress: noop,
 };
 
-function classNameForButton({primary, destructive, disabled, slim, link}) {
+function classNameForButton({primary, destructive, disabled, slim, link, fullWidth}) {
   return css([
     styles.Button,
     primary && styles.primary,
@@ -39,5 +41,6 @@ function classNameForButton({primary, destructive, disabled, slim, link}) {
     disabled && styles.disabled,
     slim && styles.slim,
     link && styles.link,
+    fullWidth && styles.fullWidth,
   ]);
 }

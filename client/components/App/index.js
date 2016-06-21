@@ -14,9 +14,29 @@ import Field from '../Field';
 import Form from '../Form';
 import Frame from '../Frame';
 import Select from '../Select';
+import Popover from '../Popover';
+
+const Foo = {};
+export {Foo};
 
 export default class App extends Component {
   state = {fieldValue: ''};
+
+  renderPopoverCard(cardProperties) {
+    return (
+      <Card title="Popover" {...cardProperties}>
+        <Stack distribution="equalSpacing">
+          <Popover activator={<Button>Hello</Button>}>
+            <span>lots and lots and lots and lots and lots and lots of content</span>
+          </Popover>
+
+          <Popover activator={<Button>Goodbye</Button>}>
+            <span>Not much content</span>
+          </Popover>
+        </Stack>
+      </Card>
+    );
+  }
 
   renderFormCard() {
     return (
@@ -156,6 +176,7 @@ export default class App extends Component {
           </Layout.Section>
 
           <Layout.Section secondary>
+            {this.renderPopoverCard({secondary: true})}
             {this.renderButtonCard({secondary: true})}
             {this.renderBadgeCard({secondary: true})}
           </Layout.Section>
