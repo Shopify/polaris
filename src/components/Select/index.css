@@ -30,7 +30,7 @@
   appearance: none;
   border: none;
   background: transparent;
-  font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
   font-size: 1rem;
   margin: 0;
   padding: 0.45rem 2rem 0.45rem 0.625rem;

@@ -8,34 +8,26 @@
 
 .statusSuccess {
   background-color: #e5fabc;
-}
 
-.statusSuccess .BannerRibbon {
-  color: #7ba232;
+  @nest .BannerRibbon { color: #7ba232; }
 }
 
 .statusInfo {
   background-color: #cae9f7;
-}
 
-.statusInfo .BannerRibbon {
-  color: #329cda;
+  @nest .BannerRibbon { color: #329cda; }
 }
 
 .statusWarning {
   background-color: #fff7b2;
-}
 
-.statusWarning .BannerRibbon {
-  color: #d4a002
+  @nest .BannerRibbon { color: #d4a002; }
 }
 
 .statusCritical {
   background-color: #ff9797;
-}
 
-.statusCritical .BannerRibbon {
-  color: #d83e3e;
+  @nest .BannerRibbon { color: #d83e3e; }
 }
 
 .BannerContent {

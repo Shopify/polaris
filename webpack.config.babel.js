@@ -2,9 +2,12 @@
 
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const cssExtractor = new ExtractTextPlugin('build/style.css');
+const cssExtractor = new ExtractTextPlugin('style.css', {
+  allChunks: true,
+});
 
 export default {
   output: {
@@ -20,18 +23,15 @@ export default {
       },
       {
         test: /\.css$/,
-        loaders: [
-          cssExtractor.extract([
-            'style',
-            'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-            'postcss',
-          ]),
-        ],
+        loader: cssExtractor.extract(
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!postcss'
+        ),
       },
     ],
   },
   postcss() {
-    return [autoprefixer];
+    return [autoprefixer, cssnano()];
   },
   plugins: [
     new webpack.NoErrorsPlugin(),

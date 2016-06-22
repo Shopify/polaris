@@ -89,7 +89,7 @@
   display: block;
   flex: 1 1 0%;
   border: none;
-  font-family: -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
   font-size: 1rem;
   appearance: none;
   padding: 0;

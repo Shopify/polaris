@@ -6,11 +6,12 @@
 }
 
 .condensed .Item {
+  flex-basis: 7.5rem;
   min-width: 7.5rem;
 }
 
 .Item {
-  flex: 1 1 0%;
+  flex: 1 1 15rem;
   margin-left: 1rem;
   margin-top: 1rem;
   min-width: 15rem;

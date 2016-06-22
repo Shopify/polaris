@@ -1,9 +1,5 @@
-.Labelled {
-
-}
-
 .hidden > .LabelWrapper {
-  display: none;  
+  display: none;
 }
 
 .LabelWrapper {
