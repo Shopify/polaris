@@ -1,5 +1,5 @@
-lib
-build
-components
-utilities
-index.js
+/lib
+/build
+/components
+/utilities
+/index.js

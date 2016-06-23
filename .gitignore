@@ -1,8 +1,8 @@
 *.log
 node_modules
-lib
-build
-style.css
-components
-utilities
-index.js
+/lib
+/build
+/components
+/utilities
+/index.js
+/style.css
