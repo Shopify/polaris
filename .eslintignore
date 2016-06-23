@@ -1,2 +1,5 @@
 lib
 build
+components
+utilities
+index.js

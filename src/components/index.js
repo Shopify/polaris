@@ -1,4 +1,5 @@
-import './index.css';
+// eslint-disable-next-line no-unused-vars
+import styles from './index.css';
 
 export {default as Badge} from './Badge';
 export {default as Banner} from './Banner';

@@ -3,5 +3,5 @@
 }
 
 .LabelWrapper {
-  margin-bottom: 0.3rem;
+  margin-bottom: quilt-spacing(extra-tight);
 }

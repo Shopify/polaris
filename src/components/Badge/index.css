@@ -2,35 +2,35 @@
   font-size: 0.9375rem;
   line-height: 1.33;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.6);
-  border-radius: 4px;
-  background-color: #d3dbe2;
-  padding: 0.25rem 0.5rem;
+  color: quilt-color(ink);
+  border-radius: quilt-border-radius();
+  background-color: quilt-color(sky, shade: dark);
+  padding: quilt-spacing(extra-tight) quilt-spacing(tight);
   vertical-align: middle;
   white-space: nowrap;
   display: inline-block;
 }
 
 .statusSubdued {
-  background-color: #ebeef0;
+  background-color: quilt-color(sky);
 }
 
 .statusSuccess {
-  background-color: #b2d86a;
+  background-color: quilt-color(green, value: light);
 }
 
 .statusInfo {
-  background-color: #cae9f7;
+  background-color: quilt-color(blue, value: lighter);
 }
 
 .statusAttention {
-  background-color: #ffe477;
+  background-color: quilt-color(yellow, value: light);
 }
 
 .statusWarning {
-  background-color: #fec97d;
+  background-color: quilt-color(orange, value: light);
 }
 
 .statusCritical {
-  background-color: #ff9797;
+  background-color: quilt-color(red, value: light);
 }

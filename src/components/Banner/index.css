@@ -2,32 +2,32 @@
   display: flex;
   background-color: #d3dbe2;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  padding: 1rem;
+  border-radius: quilt-border-radius();
+  padding: quilt-spacing();
 }
 
 .statusSuccess {
   background-color: #e5fabc;
 
-  @nest .BannerRibbon { color: #7ba232; }
+  & .BannerRibbon { color: #7ba232; }
 }
 
 .statusInfo {
   background-color: #cae9f7;
 
-  @nest .BannerRibbon { color: #329cda; }
+  & .BannerRibbon { color: #329cda; }
 }
 
 .statusWarning {
   background-color: #fff7b2;
 
-  @nest .BannerRibbon { color: #d4a002; }
+  & .BannerRibbon { color: #d4a002; }
 }
 
 .statusCritical {
   background-color: #ff9797;
 
-  @nest .BannerRibbon { color: #d83e3e; }
+  & .BannerRibbon { color: #d83e3e; }
 }
 
 .BannerContent {
@@ -37,6 +37,6 @@
 }
 
 .BannerRibbon {
-  margin-right: 1rem;
+  margin-right: quilt-spacing();
   color: #798c9c;
 }

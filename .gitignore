@@ -2,3 +2,7 @@
 node_modules
 lib
 build
+style.css
+components
+utilities
+index.js

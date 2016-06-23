@@ -4,12 +4,12 @@ import styles from './index.css';
 import {css} from '../../utilities/styles';
 
 export default function Label(props) {
-  const {children, note, id, sideAction} = props;
+  const {children, note, id, action} = props;
 
   return (
     <div className={styles.LabelWrapper}>
       <label htmlFor={id} className={classNameForLabel(props)}>{children} {note}</label>
-      {sideAction}
+      {action}
     </div>
   );
 }
@@ -19,7 +19,7 @@ Label.propTypes = {
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
   note: PropTypes.string,
-  sideAction: PropTypes.node,
+  action: PropTypes.node,
 };
 
 Label.defaultProps = {

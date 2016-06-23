@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
+
+import postcss from '../../config/postcss';
 
 const demoRoot = path.join(__dirname, '..');
 
@@ -41,10 +42,14 @@ export default {
     ],
   },
   postcss() {
-    return [autoprefixer];
+    return postcss({minify: false});
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };

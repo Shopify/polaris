@@ -84,8 +84,8 @@ export default class App extends Component {
         <Card.Section title="Condensed">
           <Form condensed>
             <Field
-              sideAction={<Button link>What?</Button>}
               label="One"
+              labelAction={<Button link>What?</Button>}
               placeholder="placeholder"
             />
 

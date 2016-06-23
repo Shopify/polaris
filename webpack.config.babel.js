@@ -1,19 +1,30 @@
 /* eslint-env node */
 
 import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const cssExtractor = new ExtractTextPlugin('style.css', {
+import postcss from './config/postcss';
+
+const {
+  optimize: {OccurenceOrderPlugin, UglifyJsPlugin},
+  DefinePlugin,
+  NoErrorsPlugin,
+} = webpack;
+
+const cssExtractor = new ExtractTextPlugin('../style.css', {
   allChunks: true,
 });
 
 export default {
   output: {
     library: 'Quilt',
-    libraryTarget: 'umd',
+    libraryTarget: 'var',
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
+  debug: false,
   module: {
     loaders: [
       {
@@ -31,10 +42,20 @@ export default {
     ],
   },
   postcss() {
-    return [autoprefixer, cssnano()];
+    return postcss({minify: true});
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    new NoErrorsPlugin(),
     cssExtractor,
+    new OccurenceOrderPlugin(),
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new UglifyJsPlugin({
+      compressor: {
+        screw_ie8: true, // eslint-disable-line camelcase
+        warnings: false,
+      },
+    }),
   ],
 };

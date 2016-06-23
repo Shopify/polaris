@@ -1,25 +1,25 @@
 .Card {
-  background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: quilt-color(white);
+  border-radius: quilt-border-radius();
+  box-shadow: quilt-shadow();
 }
 
 .secondary {
-  background-color: #f5f6f7;
+  background-color: quilt-color(sky, value: light);
 }
 
 .Header {
-  padding: 1rem 1rem 0;
+  padding: quilt-spacing() quilt-spacing() 0;
 }
 
 .SectionHeader {
-  padding-bottom: 0.5rem;
+  padding-bottom: quilt-spacing(tight);
 }
 
 .Section {
-  padding: 1rem;
-}
+  padding: quilt-spacing();
 
-.Section + .Section {
-  border-top: 1px solid #ebeef0;
+  & + .Section {
+    border-top: 1px solid quilt-color(sky);
+  }
 }
