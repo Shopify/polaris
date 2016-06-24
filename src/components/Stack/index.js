@@ -1,5 +1,5 @@
 import React, {PropTypes, Children} from 'react';
-import styles from './index.css';
+import styles from './index.scss';
 
 import {Spacing} from '../shared';
 import {css} from '../../utilities/styles';

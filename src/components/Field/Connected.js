@@ -1,5 +1,5 @@
 import React, {cloneElement, isValidElement, Component, PropTypes, Children} from 'react';
-import styles from './index.css';
+import styles from './index.scss';
 
 import {css} from '../../utilities/styles';
 

@@ -1,0 +1,40 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+
+.Badge {
+  font-size: 0.9375rem;
+  line-height: 1.33;
+  font-weight: 400;
+  color: color(ink);
+  border-radius: border-radius();
+  background-color: color(sky, dark);
+  padding: spacing(extra-tight) spacing(tight);
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.statusSubdued {
+  background-color: color(sky);
+}
+
+.statusSuccess {
+  background-color: color(green, light);
+}
+
+.statusInfo {
+  background-color: color(blue, lighter);
+}
+
+.statusAttention {
+  background-color: color(yellow, light);
+}
+
+.statusWarning {
+  background-color: color(orange, light);
+}
+
+.statusCritical {
+  background-color: color(red, light);
+}

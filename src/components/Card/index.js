@@ -1,5 +1,5 @@
 import React, {PropTypes, Children} from 'react';
-import styles from './index.css';
+import styles from './index.scss';
 
 import Heading from '../Heading';
 import Subheading from '../Subheading';

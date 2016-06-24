@@ -9,7 +9,7 @@ const componentDir = path.join('src', 'components', componentName);
 
 shell.mkdir('-p', componentDir);
 
-fs.writeFileSync(path.join(componentDir, 'index.css'), `
+fs.writeFileSync(path.join(componentDir, 'index.scss'), `
 .${componentName} {
 
 }
@@ -17,7 +17,7 @@ fs.writeFileSync(path.join(componentDir, 'index.css'), `
 
 fs.writeFileSync(path.join(componentDir, 'index.js'), `
 import React, {PropTypes} from 'react';
-import styles from './index.css';
+import styles from './index.scss';
 
 export default function ${componentName}() {
   return (

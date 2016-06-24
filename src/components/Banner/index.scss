@@ -1,33 +1,37 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+
 .Banner {
   display: flex;
   background-color: #d3dbe2;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: quilt-border-radius();
-  padding: quilt-spacing();
+  border-radius: border-radius();
+  padding: spacing();
 }
 
 .statusSuccess {
   background-color: #e5fabc;
 
-  & .BannerRibbon { color: #7ba232; }
+  .BannerRibbon { color: #7ba232; }
 }
 
 .statusInfo {
   background-color: #cae9f7;
 
-  & .BannerRibbon { color: #329cda; }
+  .BannerRibbon { color: #329cda; }
 }
 
 .statusWarning {
   background-color: #fff7b2;
 
-  & .BannerRibbon { color: #d4a002; }
+  .BannerRibbon { color: #d4a002; }
 }
 
 .statusCritical {
   background-color: #ff9797;
 
-  & .BannerRibbon { color: #d83e3e; }
+  .BannerRibbon { color: #d83e3e; }
 }
 
 .BannerContent {
@@ -37,6 +41,6 @@
 }
 
 .BannerRibbon {
-  margin-right: quilt-spacing();
+  margin-right: spacing();
   color: #798c9c;
 }

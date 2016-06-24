@@ -1,25 +1,24 @@
-import path from 'path';
+import {resolve} from 'path';
 import webpack from 'webpack';
 
 import postcss from '../../config/postcss';
 
-const demoRoot = path.join(__dirname, '..');
+const demoRoot = resolve(__dirname, '..');
+const sourceRoot = resolve(demoRoot, '../src');
 
 export default {
   context: demoRoot,
   resolve: {
-    root: [
-      path.join(demoRoot, '../src'),
-    ],
+    root: [sourceRoot],
   },
   entry: {
     app: [
       'webpack-hot-middleware/client',
-      path.join(demoRoot, 'client/index.js'),
+      resolve(demoRoot, './client/index.js'),
     ],
   },
   output: {
-    path: path.join(demoRoot, 'build'),
+    path: resolve(demoRoot, './build'),
     publicPath: '/static/',
     filename: '[name].js',
   },
@@ -32,17 +31,21 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         loaders: [
-          'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-          'postcss',
+          'style',
+          'css?sourceMap&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'sass?sourceMap',
+          'postcss?sourceMap',
         ],
       },
     ],
   },
   postcss() {
     return postcss({minify: false});
+  },
+  sassLoader: {
+    includePaths: [sourceRoot],
   },
   plugins: [
     new webpack.NoErrorsPlugin(),

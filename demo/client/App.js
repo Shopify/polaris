@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import 'components/index.css';
+import 'components/index.scss';
 import {Status, Spacing} from 'components/shared';
 
 import Card from 'components/Card';

@@ -1,0 +1,138 @@
+@import 'colors';
+@import 'breakpoints';
+@import 'utilities';
+
+$font-family-data: (
+  base: #{ -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif },
+  monospace: #{ Monaco, Consolas, "Lucida Console", monospace }
+);
+
+
+/// Returns the font stack for a given family.
+///
+/// @param {String} $family - The key for the given family.
+/// @return {Number} The font stack for the family.
+
+@function font-family($family: base) {
+  $fetched-value: map-get($font-family-data, $family);
+  @if $fetched-value != null {
+    @return $fetched-value;
+  } @else {
+    @error "Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}";
+  }
+}
+
+@mixin text-style-title {
+  font-size: rem(20px);
+  line-height: rem(24px);
+  font-weight: 400;
+}
+
+@mixin text-style-heading {
+  font-size: rem(17px);
+  line-height: rem(24px);
+  font-weight: 600;
+
+  @media screen and (min-width: breakpoint(display-text)) {
+    font-size: rem(16px);
+  }
+}
+
+@mixin text-style-subheading {
+  font-size: rem(13px);
+  line-height: rem(20px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  @media screen and (min-width: breakpoint(display-text)) {
+    font-size: rem(12px);
+  }
+
+  // Enhance with true small caps where available. This is important for a11y.
+  // Older webkit has a false positive for small caps; we need to exclude it.
+  // @supports also hides this from a major IE 11 bug.
+  @supports (font-feature-settings: 'smcp') and (not (-webkit-font-feature-settings: 'smcp')) {
+    font-size: rem(15px);
+    text-transform: lowercase;
+    letter-spacing: initial;
+    font-feature-settings: 'smcp';
+  }
+}
+
+@mixin text-style-input {
+  font-size: rem(16px);
+  line-height: rem(24px);
+  font-weight: 400;
+  text-transform: initial;
+  letter-spacing: initial;
+}
+
+@mixin text-style-body {
+  font-size: rem(15px);
+  line-height: rem(20px);
+  font-weight: 400;
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @media screen and (min-width: breakpoint(display-text)) {
+    font-size: rem(14px);
+  }
+}
+
+@mixin text-style-display-x-large {
+  font-size: rem(27px);
+  line-height: rem(36px);
+  font-weight: 400;
+
+  @media (min-width: breakpoint(display-text)) {
+    font-size: rem(33px);
+    line-height: rem(44px);
+  }
+}
+
+@mixin text-style-display-large {
+  font-size: rem(24px);
+  line-height: rem(32px);
+  font-weight: 400;
+
+  @media (min-width: breakpoint(display-text)) {
+    font-size: rem(33px);
+    line-height: rem(40px);
+  }
+}
+
+@mixin text-style-display-medium {
+  font-size: rem(21px);
+  line-height: rem(28px);
+  font-weight: 400;
+
+  @media (min-width: breakpoint(display-text)) {
+    font-size: rem(26px);
+    line-height: rem(36px);
+  }
+}
+
+@mixin text-style-display-small {
+  font-size: rem(16px);
+  line-height: rem(24px);
+  font-weight: 400;
+
+  @media (min-width: breakpoint(display-text)) {
+    font-size: rem(20px);
+    line-height: rem(28px);
+  }
+}
+
+@mixin text-emphasis-strong {
+  font-weight: 600;
+}
+
+@mixin text-emphasis-subdued($for-background: null) {
+  color: color(ink, light, $for-background: $for-background);
+}
+
+@mixin text-emphasis-normal($for-background: null) {
+  color: color(ink, $for-background: $for-background);
+  font-weight: normal;
+}

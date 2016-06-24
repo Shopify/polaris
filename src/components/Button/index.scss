@@ -1,15 +1,19 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+
 .Button {
   font-size: 1rem;
   line-height: 1;
   font-weight: 400;
   cursor: pointer;
-  padding: quilt-spacing(tight) quilt-spacing();
-  border-radius: quilt-border-radius();
+  padding: spacing(tight) spacing();
+  border-radius: border-radius();
   margin: 0;
   user-select: none;
-  background: quilt-color(white);
+  background: color(white);
   border: 1px solid #d3dbe2;
-  color: quilt-color(action);
+  color: color(action);
 
   &:hover,
   &:focus {
@@ -19,9 +23,9 @@
 }
 
 .primary {
-  background-color: quilt-color(action);
-  border-color: quilt-color(action);
-  color: quilt-color(white);
+  background-color: color(action);
+  border-color: color(action);
+  color: color(white);
 
   &:hover,
   &:focus {
@@ -33,7 +37,7 @@
 .destructive {
   background-color: #ff5d5d;
   border-color: #ff5d5d;
-  color: quilt-color(white);
+  color: color(white);
 
   &:hover,
   &:focus {
@@ -61,7 +65,7 @@
 
 .link {
   border: none;
-  margin: calc(-1 * quilt-spacing(tight)) calc(-1 * quilt-spacing());
+  margin: (-1 * spacing(tight)) (-1 * spacing());
   background: transparent;
   font-size: inherit;
 

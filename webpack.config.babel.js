@@ -1,12 +1,13 @@
 /* eslint-env node */
 
+import {resolve} from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import postcss from './config/postcss';
 
 const {
-  optimize: {OccurenceOrderPlugin, UglifyJsPlugin},
+  optimize: {OccurenceOrderPlugin, UglifyJsPlugin, DedupePlugin},
   DefinePlugin,
   NoErrorsPlugin,
 } = webpack;
@@ -33,10 +34,10 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         loader: cssExtractor.extract(
           'style',
-          'css?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!postcss'
+          'css?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!sass!postcss'
         ),
       },
     ],
@@ -44,10 +45,14 @@ export default {
   postcss() {
     return postcss({minify: true});
   },
+  sassLoader: {
+    includePaths: [resolve(__dirname, './src')],
+  },
   plugins: [
     new NoErrorsPlugin(),
     cssExtractor,
     new OccurenceOrderPlugin(),
+    new DedupePlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),

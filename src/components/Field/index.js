@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import styles from './index.css';
+import styles from './index.scss';
 
 import Labelled from '../Labelled';
 import Connected from './Connected';

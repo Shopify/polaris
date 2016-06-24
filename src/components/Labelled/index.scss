@@ -1,0 +1,9 @@
+@import 'foundation/spacing';
+
+.hidden > .LabelWrapper {
+  display: none;
+}
+
+.LabelWrapper {
+  margin-bottom: spacing(extra-tight);
+}

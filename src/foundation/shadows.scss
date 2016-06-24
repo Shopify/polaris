@@ -1,0 +1,11 @@
+$shadows-data: (
+  base: 0 2px 4px color(shade)
+);
+
+
+/// Returns the default shadow.
+/// @return {List} The shadow value.
+
+@function shadow() {
+  @return map-get($shadows-data, base);
+}

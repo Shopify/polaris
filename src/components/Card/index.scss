@@ -1,0 +1,30 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/shadows';
+@import 'foundation/spacing';
+
+.Card {
+  background-color: color(white);
+  border-radius: border-radius();
+  box-shadow: shadow();
+}
+
+.secondary {
+  background-color: color(sky, light);
+}
+
+.Header {
+  padding: spacing() spacing() 0;
+}
+
+.SectionHeader {
+  padding-bottom: spacing(tight);
+}
+
+.Section {
+  padding: spacing();
+
+  & + .Section {
+    border-top: 1px solid color(sky);
+  }
+}

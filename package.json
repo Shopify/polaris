@@ -3,9 +3,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "lint:scripts": "eslint . --max-warnings 0",
-    "lint:styles": "stylelint 'src/**/*.css'",
-    "lint": "npm run lint:scripts && npm run lint:styles",
+    "lint": "eslint . --max-warnings 0",
     "start": "babel-watch demo/server/index.js",
     "build:lib": "NODE_ENV=production babel src --out-dir .",
     "build:umd": "NODE_ENV=productionBuild webpack src/index.js build/quilt.js --config webpack.config.babel.js",
@@ -61,9 +59,6 @@
       }
     }
   },
-  "stylelint": {
-    "extends": "stylelint-config-shopify"
-  },
   "eslintConfig": {
     "extends": "plugin:shopify/react",
     "env": {
@@ -73,11 +68,12 @@
     "settings": {
       "import/ignore": [
         "node_modules",
-        "\\.css$"
+        "\\.s?css$"
       ]
     }
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
@@ -92,17 +88,14 @@
     "eslint-plugin-shopify": "^12.1.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.8.0",
     "open": "0.0.5",
-    "postcss-cssnext": "^2.6.0",
-    "postcss-custom-colors": "^1.0.0",
-    "postcss-design-token-function": "^1.0.0",
     "postcss-loader": "^0.9.1",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.8",
+    "sass-loader": "^3.2.1",
     "style-loader": "^0.13.1",
-    "stylelint": "^6.7.0",
-    "stylelint-config-shopify": "0.0.1",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"

@@ -1,0 +1,10 @@
+$border-radius-data: (
+  base: 3px
+);
+
+/// Returns the default border radius.
+/// @return {Number} The border radius value.
+
+@function border-radius() {
+  @return map-get($border-radius-data, base);
+}

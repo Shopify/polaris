@@ -1,0 +1,65 @@
+$default-browser-font-size: 16px;
+$base-font-size: 14px;
+
+
+// To be used on flex items. Resolves some common layout issues, such as
+// text truncation not respecting padding or breaking out of container.
+// https://css-tricks.com/flexbox-truncated-text/
+
+@mixin layout-flex-fix {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/// Returns the value in rem for a given pixel value.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in rem.
+
+@function rem($value) {
+  @if unit($value) != 'px' {
+    @error 'Value must be in px.'
+  }
+  @return $value / $base-font-size * 1rem;
+}
+
+/// Returns the value in pixels for a given rem value.
+/// @param {Number} $value - The rem value to be converted.
+/// @return {Number} The converted value in pixels.
+
+@function px($value) {
+  @if unit($value) != 'rem' {
+    @error 'Value must be in rem.'
+  }
+  @return ($value / 1rem) * $base-font-size;
+}
+
+/// Returns the list of available names in a given map.
+/// @param {Map} $map - The map of data to list the names from.
+/// @param {Number} $map - The level of depth to get names from.
+/// @return {String} The list of names in the map.
+
+@function available-names($map, $level: 1) {
+  @if type-of($map) != 'map' { @return null; }
+
+  $output: '';
+  $newline: '\A ';
+
+  @if $level == 1 {
+    @each $key, $value in $map {
+      $output: $output + '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
+    }
+  } @else {
+    $output: '(';
+    $i: 1;
+
+    @each $key, $value in $map {
+      $sep: if($i < length($map), ', ', '');
+      $output: $output + '#{$key}#{$sep}#{available-names($value, $level + 1)}';
+      $i: $i + 1;
+    }
+
+    $output: $output + ')';
+  }
+
+  @return $output;
+}

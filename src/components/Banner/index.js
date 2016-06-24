@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import styles from './index.css';
+import styles from './index.scss';
 
 import Icon from '../Icon';
 import Heading from '../Heading';

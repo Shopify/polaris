@@ -1,7 +1,0 @@
-.hidden > .LabelWrapper {
-  display: none;
-}
-
-.LabelWrapper {
-  margin-bottom: quilt-spacing(extra-tight);
-}
