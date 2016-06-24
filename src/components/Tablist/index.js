@@ -1,11 +1,3 @@
-import React, {Component} from 'react';
-import styles from './index.scss';
+import Tablist from './Tablist';
 
-export default class Tablist extends Component {
-  render() {
-    return (
-      <div>
-      </div>
-    );
-  }
-}
+export default Tablist;

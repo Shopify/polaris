@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
-import styles from './index.scss';
+import styles from './Popover.scss';
 
 import EventListener from '../EventListener';
 

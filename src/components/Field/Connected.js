@@ -1,7 +1,8 @@
-import React, {cloneElement, isValidElement, Component, PropTypes, Children} from 'react';
-import styles from './index.scss';
+import React, {cloneElement, Component, PropTypes} from 'react';
+import styles from './Field.scss';
 
 import {css} from '../../utilities/styles';
+import {elementChildren} from '../../utilities/react';
 
 export default class Connected extends Component {
   static propTypes = {
@@ -15,7 +16,7 @@ export default class Connected extends Component {
 
     return (
       <div className={styles.ConnectedWrapper}>
-        {Children.toArray(children).filter(isValidElement).map((child, index) => (
+        {elementChildren(children).map((child, index) => (
           <ConnectedItem
             onFocus={() => this.setState({focused: index})}
             focused={index === this.state.focused}

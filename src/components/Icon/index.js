@@ -1,17 +1,3 @@
-import React, {PropTypes} from 'react';
-import styles from './index.scss';
+import Icon from './Icon';
 
-export default function Icon() {
-  return (
-    <div className={styles.Icon}>
-    </div>
-  );
-}
-
-Icon.propTypes = {
-
-};
-
-Icon.defaultProps = {
-
-};
+export default Icon;

@@ -12,12 +12,12 @@
   margin: 0;
   user-select: none;
   background: color(white);
-  border: 1px solid #d3dbe2;
+  border: 1px solid color(sky, dark);
   color: color(action);
 
   &:hover,
   &:focus {
-    background-color: #f5f6f7;
+    background-color: color(sky, light);
     outline: none;
   }
 }
@@ -29,28 +29,28 @@
 
   &:hover,
   &:focus {
-    background-color: #0069a6;
-    border-color: #0069a6;
+    background-color: color(blue, dark);
+    border-color: color(blue, dark);
   }
 }
 
 .destructive {
-  background-color: #ff5d5d;
-  border-color: #ff5d5d;
+  background-color: color(red);
+  border-color: color(red);
   color: color(white);
 
   &:hover,
   &:focus {
-    background-color: #d83e3e;
-    border-color: #d83e3e;
+    background-color: color(red, dark);
+    border-color: color(red, dark);
   }
 }
 
 .disabled {
   cursor: default;
   pointer-events: none;
-  background-color: #fafbfc;
-  color: #c3cfd8;
+  background-color: color(sky, lighter);
+  color: color(sky, darker);
 }
 
 .slim {

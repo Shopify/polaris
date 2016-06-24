@@ -25,10 +25,6 @@ Labelled.propTypes = {
   label: PropTypes.node,
 };
 
-Labelled.defaultProps = {
-
-};
-
 function classNameForLabelled({labelHidden}) {
   return css([
     styles.Labelled,

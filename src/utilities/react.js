@@ -1,4 +1,9 @@
+import {isValidElement, Children} from 'react';
 import {render, unmountComponentAtNode} from 'react-dom';
+
+export function elementChildren(children, predicate = () => true) {
+  return Children.toArray(children).filter((child) => isValidElement(child) && predicate(child));
+}
 
 export function augmentComponent(Component, methods) {
   for (const [name, method] of Object.entries(methods)) {

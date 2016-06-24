@@ -1,0 +1,62 @@
+@import 'foundation/spacing';
+
+.Stack {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-left: -1 * spacing();
+  margin-top: -1 * spacing();
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.spacingTight {
+  margin-left: -1 * spacing(tight);
+  margin-top: -1 * spacing(tight);
+
+  > .StackItem {
+    margin-left: spacing(tight);
+    margin-top: spacing(tight);
+  }
+}
+
+.spacingLoose {
+  margin-left: -1 * spacing(loose);
+  margin-top: -1 * spacing(loose);
+
+  > .StackItem {
+    margin-left: spacing(loose);
+    margin-top: spacing(loose);
+  }
+}
+
+.distributionLeading {
+  justify-content: flex-start;
+}
+
+.distributionTrailing {
+  justify-content: flex-end;
+}
+
+.distributionCenter {
+  justify-content: center;
+}
+
+.distributionEqualSpacing {
+  justify-content: space-between;
+}
+
+.distributionFill > .StackItem {
+  flex: 1 1 auto;
+}
+
+.StackItem {
+  margin-left: spacing();
+  margin-top: spacing();
+}
+
+.fill {
+  flex: 1 1 auto;
+}

@@ -1,12 +1,12 @@
 @import 'foundation/border-radius';
 @import 'foundation/colors';
 @import 'foundation/spacing';
+@import 'foundation/typography';
 
 .Badge {
-  font-size: 0.9375rem;
-  line-height: 1.33;
-  font-weight: 400;
-  color: color(ink);
+  @include text-style-body;
+  @include text-emphasis-subdued($for-background: color(sky, dark));
+
   border-radius: border-radius();
   background-color: color(sky, dark);
   padding: spacing(extra-tight) spacing(tight);
@@ -16,25 +16,31 @@
 }
 
 .statusSubdued {
+  @include text-emphasis-subdued($for-background: color(sky));
   background-color: color(sky);
 }
 
 .statusSuccess {
+  @include text-emphasis-subdued($for-background: color(green, light));
   background-color: color(green, light);
 }
 
 .statusInfo {
+  @include text-emphasis-subdued($for-background: color(blue, lighter));
   background-color: color(blue, lighter);
 }
 
 .statusAttention {
+  @include text-emphasis-subdued($for-background: color(yellow, light));
   background-color: color(yellow, light);
 }
 
 .statusWarning {
+  @include text-emphasis-subdued($for-background: color(orange, light));
   background-color: color(orange, light);
 }
 
 .statusCritical {
+  @include text-emphasis-subdued($for-background: color(red, light));
   background-color: color(red, light);
 }

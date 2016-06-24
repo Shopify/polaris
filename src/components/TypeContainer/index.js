@@ -1,12 +1,3 @@
-import React, {PropTypes} from 'react';
-import styles from './index.scss';
+import TypeContainer from './TypeContainer';
 
-export default function TypeContainer({children}) {
-  return (
-    <div className={styles.TypeContainer}>{children}</div>
-  );
-}
-
-TypeContainer.propTypes = {
-  children: PropTypes.node,
-};
+export default TypeContainer;
