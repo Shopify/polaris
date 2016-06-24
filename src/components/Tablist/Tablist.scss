@@ -1,0 +1,45 @@
+@import 'foundation/borders';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+
+.Tablist {
+  background-color: color(sky, light);
+  display: flex;
+
+  &::after {
+    content: '';
+    flex: 1 1 0%;
+    border-bottom: border();
+  }
+}
+
+.Tab {
+  @include text-emphasis-subdued;
+
+  padding: (0.75 * spacing()) spacing();
+  font-size: 0.875rem;
+  display: block;
+  border: none;
+  border-right: border();
+  border-bottom: border();
+  background-color: transparent;
+  cursor: pointer;
+
+  &:not(.selected):focus,
+  &:not(.selected):hover {
+    background-color: color(sky, lighter);
+    color: color(action);
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+  }
+}
+
+.selected {
+  @include text-emphasis-normal;
+  background-color: color(white);
+  border-bottom-color: transparent;
+}

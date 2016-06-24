@@ -7,10 +7,11 @@ import Subheading from '../Subheading';
 import {css} from '../../utilities/styles';
 
 export default function Card(props) {
-  const {children, title} = props;
+  const {children, title, tablist} = props;
 
   return (
     <div className={classNameForCard(props)} data-quilt-container>
+      {tablist}
       {title ? <CardHeader>{title}</CardHeader> : null}
       {wrapChildrenInSections(children)}
     </div>
@@ -20,6 +21,7 @@ export default function Card(props) {
 Card.propTypes = {
   title: PropTypes.node,
   children: PropTypes.node,
+  tablist: PropTypes.node,
 };
 
 function wrapChildrenInSections(children) {

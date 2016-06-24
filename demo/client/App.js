@@ -15,6 +15,7 @@ import Form from 'components/Form';
 import Frame from 'components/Frame';
 import Select from 'components/Select';
 import Popover from 'components/Popover';
+import Tablist from 'components/Tablist';
 
 const Foo = {};
 export {Foo};
@@ -40,7 +41,10 @@ export default class App extends Component {
 
   renderFormCard() {
     return (
-      <Card title="Fields">
+      <Card
+        title="Fields"
+        tablist={<Tablist tabs={['Open', 'Unfulfilled', 'Fulfilled']} />}
+      >
         <Card.Section>
           <Form>
             <Field
