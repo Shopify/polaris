@@ -1,0 +1,38 @@
+#!/usr/bin/env node --harmony_destructuring
+
+const fs = require('fs');
+const path = require('path');
+const shell = require('shelljs');
+const glob = require('glob');
+
+const stylesRoot = path.resolve(__dirname, '../styles');
+const sourceRoot = path.resolve(__dirname, '../src');
+const buildRoot = path.resolve(__dirname, '../build');
+
+shell.rm('-rf', stylesRoot);
+shell.mkdir('-p', stylesRoot);
+
+shell.cp(
+  path.resolve(buildRoot, 'quilt.css'),
+  path.resolve(stylesRoot, 'components.scss')
+);
+
+glob.sync(path.join(sourceRoot, 'foundation/**/*.scss')).forEach((sourceFile) => {
+  const relativeFile = path.relative(sourceRoot, sourceFile);
+  const isIndex = (path.basename(sourceFile, '.scss') === 'index');
+  const source = fs.readFileSync(sourceFile, 'utf8');
+  const dirname = path.basename(path.dirname(sourceFile));
+
+  const destinationFile = isIndex
+    ? path.resolve(stylesRoot, relativeFile, '..', '..', `${dirname}.scss`)
+    : path.resolve(stylesRoot, relativeFile);
+
+  shell.mkdir('-p', path.dirname(destinationFile));
+
+  fs.writeFileSync(
+    destinationFile,
+    isIndex
+      ? source.replace(/^(\s*@import[^'"]*['"](?:\.\/)?)/gm, `$1${dirname}/`)
+      : source.replace(/^\s*@import.*\s*/gm, '')
+  );
+});

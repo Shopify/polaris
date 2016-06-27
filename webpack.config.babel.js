@@ -3,8 +3,8 @@
 import {resolve} from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
-import postcss from './config/postcss';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 
 const {
   optimize: {OccurenceOrderPlugin, UglifyJsPlugin, DedupePlugin},
@@ -12,7 +12,7 @@ const {
   NoErrorsPlugin,
 } = webpack;
 
-const cssExtractor = new ExtractTextPlugin('../style.css', {
+const cssExtractor = new ExtractTextPlugin('quilt.css', {
   allChunks: true,
 });
 
@@ -43,7 +43,7 @@ export default {
     ],
   },
   postcss() {
-    return postcss({minify: true});
+    return [autoprefixer(), cssnano()];
   },
   sassLoader: {
     includePaths: [resolve(__dirname, './src')],

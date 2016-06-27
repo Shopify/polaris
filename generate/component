@@ -27,7 +27,7 @@ export default function ${componentName}() {
 }
 
 ${componentName}.propTypes = {
-
+  children: PropTypes.node,
 };
 
 ${componentName}.defaultProps = {

@@ -1,13 +1,22 @@
 {
-  "name": "librarian",
+  "name": "quilt-react",
   "private": true,
   "license": "MIT",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
+    "test": "",
+    "check": "npm run lint && npm run test",
     "start": "babel-watch demo/server/index.js",
-    "build:lib": "NODE_ENV=production babel src --out-dir .",
-    "build:umd": "NODE_ENV=productionBuild webpack src/index.js build/quilt.js --config webpack.config.babel.js",
-    "build": "npm run build:lib && npm run build:umd"
+    "build:node": "NODE_ENV=production babel src --out-dir .",
+    "build:styles": "bin/styles",
+    "build:lib": "NODE_ENV=productionBuild webpack src/index.js build/quilt.js --config webpack.config.babel.js",
+    "build": "npm run build:node && npm run build:lib && npm run build:styles",
+    "clean": "rm -rf build components styles utilities index.js",
+    "preversion": "npm run clean && npm test",
+    "prepublish": "npm run build",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "npm run clean && npm run build"
   },
   "babel": {
     "presets": [
@@ -88,6 +97,7 @@
     "eslint-plugin-shopify": "^12.1.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "glob": "^7.0.5",
     "node-sass": "^3.8.0",
     "open": "0.0.5",
     "postcss-loader": "^0.9.1",
@@ -95,6 +105,7 @@
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.8",
     "sass-loader": "^3.2.1",
+    "shelljs": "^0.7.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",

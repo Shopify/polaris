@@ -1,7 +1,6 @@
 import {resolve} from 'path';
 import webpack from 'webpack';
-
-import postcss from '../../config/postcss';
+import autoprefixer from 'autoprefixer';
 
 const demoRoot = resolve(__dirname, '..');
 const sourceRoot = resolve(demoRoot, '../src');
@@ -42,7 +41,7 @@ export default {
     ],
   },
   postcss() {
-    return postcss({minify: false});
+    return [autoprefixer()];
   },
   sassLoader: {
     includePaths: [sourceRoot],
