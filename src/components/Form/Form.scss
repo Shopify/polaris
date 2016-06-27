@@ -1,19 +1,23 @@
+@import 'foundation/spacing';
+
+$Item-min-size: 14 * spacing();
+
 .Form {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -1rem;
-  margin-top: -1rem;
+  margin-left: -1 * spacing();
+  margin-top: -1 * spacing();
 }
 
 .condensed .Item {
-  flex-basis: 7.5rem;
-  min-width: 7.5rem;
+  flex-basis: (0.5 * $Item-min-size);
+  min-width: (0.5 * $Item-min-size);
 }
 
 .Item {
-  flex: 1 1 15rem;
-  margin-left: 1rem;
-  margin-top: 1rem;
-  min-width: 15rem;
+  flex: 1 1 $Item-min-size;
+  margin-left: spacing();
+  margin-top: spacing();
+  min-width: $Item-min-size;
   max-width: 100%;
 }

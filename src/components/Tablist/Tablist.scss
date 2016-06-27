@@ -15,10 +15,10 @@
 }
 
 .Tab {
+  @include text-style-body;
   @include text-emphasis-subdued;
 
   padding: (0.75 * spacing()) spacing();
-  font-size: 0.875rem;
   display: block;
   border: none;
   border-right: border();

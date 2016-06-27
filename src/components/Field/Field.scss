@@ -1,19 +1,31 @@
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/typography';
+
+.hasValue .InputWrapper {
+  color: color(ink);
+}
+
 .focused .InputWrapper {
-  border-color: #0078bd;
+  border-color: color(action);
 }
 
 .disabled .InputWrapper {
-  border-color: #ebeef0;
-  background-color: #fafbfc;
+  border: border();
+  background-color: color(sky, lighter);
 }
 
 .readonly .InputWrapper {
-  background-color: #fafbfc;
+  background-color: color(sky, lighter);
 }
 
-.hasError .InputWrapper {
-  border-color: #ff5d5d;
-  background-color: #fef6f5;
+.hasError {
+  color: color(red);
+
+  .InputWrapper {
+    border-color: color(red);
+    background-color: color(red, lightest);
+  }
 }
 
 .LabelWrapper {
@@ -58,39 +70,39 @@
 }
 
 .InputWrapper {
-  border: 1px solid #d3dbe2;
+  @include text-style-input;
+  color: color(ink, lighter);
+  line-height: 1.4;
+  border: border(dark);
   display: flex;
   align-items: baseline;
   padding: 0.32rem 0.625rem;
-  border-radius: 4px;
+  border-radius: border-radius();
 }
 
 .LeftAddon {
   flex: 0 0 auto;
-  margin-right: 0.25rem;
-  color: hsl(0, 0%, 62%);
+  margin-right: 0.25em;
+  color: currentColor;
 }
 
 .RightAddon {
   flex: 0 0 auto;
-  margin-left: 0.25rem;
-  color: hsl(0, 0%, 62%);
-}
-
-.hasValue {
-  color: black;
+  margin-left: 0.25em;
+  color: currentColor;
 }
 
 .Input {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   display: block;
   flex: 1 1 0%;
   border: none;
-  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
-  font-size: 1rem;
   appearance: none;
   padding: 0;
   margin: 0;
-  line-height: 1.4;
   width: 100%;
   background: none;
 }
@@ -100,12 +112,11 @@
 }
 
 .Input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: color(ink, lighter);
 }
 
 .HelpText {
+  @include text-style-body;
+  @include text-emphasis-subdued;
   margin: 0.3rem 0 0;
-  font-size: 0.9375rem;
-  line-height: 1.33;
-  color: hsl(0, 0%, 44%);
 }

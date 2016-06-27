@@ -71,17 +71,13 @@ export default class Field extends Component {
   }
 
   renderLeftAddon() {
-    const {props: {leftAddon}, hasValue} = this;
-    return leftAddon
-      ? <div className={classNameForLeftAddon({hasValue})}>{leftAddon}</div>
-      : null;
+    const {leftAddon} = this.props;
+    return leftAddon && <div className={styles.LeftAddon}>{leftAddon}</div>;
   }
 
   renderRightAddon() {
-    const {props: {rightAddon}, hasValue} = this;
-    return rightAddon
-      ? <div className={classNameForRightAddon({hasValue})}>{rightAddon}</div>
-      : null;
+    const {rightAddon} = this.props;
+    return rightAddon && <div className={styles.RightAddon}>{rightAddon}</div>;
   }
 
   renderHelpText() {
@@ -127,9 +123,9 @@ export default class Field extends Component {
     const {
       disabled,
       readonly,
-      hasError,
       connectedRight,
       connectedLeft,
+      hasError,
       label,
       labelNote,
       labelAction,
@@ -140,6 +136,7 @@ export default class Field extends Component {
       disabled,
       readonly,
       hasError,
+      hasValue: this.hasValue,
       focused: this.state.focused,
     };
 
@@ -162,7 +159,6 @@ export default class Field extends Component {
           id={this.id}
           note={labelNote}
           action={labelAction}
-          error={hasError}
           labelHidden={labelHidden}
         >
           {fullInput}
@@ -173,23 +169,10 @@ export default class Field extends Component {
   }
 }
 
-function classNameForLeftAddon({hasValue}) {
-  return css([
-    styles.LeftAddon,
-    hasValue && styles.hasValue,
-  ]);
-}
-
-function classNameForRightAddon({hasValue}) {
-  return css([
-    styles.RightAddon,
-    hasValue && styles.hasValue,
-  ]);
-}
-
-function classNameForField({focused, disabled, readonly, hasError}) {
+function classNameForField({focused, disabled, readonly, hasError, hasValue}) {
   return css([
     styles.Field,
+    hasValue && styles.hasValue,
     focused && styles.focused,
     disabled && styles.disabled,
     readonly && styles.readonly,

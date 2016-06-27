@@ -1,17 +1,14 @@
-.Label {
-  display: block;
-  font-size: 0.9375rem;
-  line-height: 1.33;
-}
+@import 'foundation/colors';
+@import 'foundation/typography';
 
-.error {
-  color: #ff5d5d;
+.Label {
+  @include text-style-body;
+  color: currentColor;
+  display: block;
 }
 
 .LabelWrapper {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  font-size: 0.9375rem;
-  line-height: 1.33;
 }

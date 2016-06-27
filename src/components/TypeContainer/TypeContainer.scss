@@ -1,15 +1,14 @@
+@import 'foundation/typography';
+
 .TypeContainer {
-  font-size: 0.9375rem;
-  line-height: 1.33;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.7);
-}
+  @include text-style-body;
 
-.TypeContainer p {
-  margin: 0;
-}
+  p {
+    margin: 0;
+  }
 
-.TypeContainer *:not(:last-child) {
-  margin: 0;
-  margin-bottom: 0.4em;
+  *:not(:last-child) {
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
 }

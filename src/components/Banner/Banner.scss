@@ -4,43 +4,44 @@
 
 .Banner {
   display: flex;
-  background-color: #d3dbe2;
+  background-color: color(sky, dark);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: border-radius();
   padding: spacing();
 }
 
 .statusSuccess {
-  background-color: #e5fabc;
+  background-color: color(green, lighter);
 
-  .BannerRibbon { color: #7ba232; }
+  .BannerRibbon { color: color(green, dark); }
 }
 
 .statusInfo {
-  background-color: #cae9f7;
+  background-color: color(blue, lighter);
 
-  .BannerRibbon { color: #329cda; }
+  .BannerRibbon { color: color(blue, light); }
 }
 
 .statusWarning {
-  background-color: #fff7b2;
+  background-color: color(yellow, lighter);
 
-  .BannerRibbon { color: #d4a002; }
+  .BannerRibbon { color: color(yellow, dark); }
 }
 
 .statusCritical {
-  background-color: #ff9797;
+  background-color: color(red, light);
 
-  .BannerRibbon { color: #d83e3e; }
+  .BannerRibbon { color: color(red, dark); }
 }
 
 .BannerContent {
   flex: 1 1 0%;
   align-self: center;
-  margin-top: -0.25rem;
+  // get rid of excess line height at the top
+  margin-top: -0.25em;
 }
 
 .BannerRibbon {
   margin-right: spacing();
-  color: #798c9c;
+  color: color(slate, lighter);
 }

@@ -1,18 +1,20 @@
+@import 'foundation/borders';
 @import 'foundation/border-radius';
 @import 'foundation/colors';
 @import 'foundation/spacing';
+@import 'foundation/typography';
 
 .Button {
-  font-size: 1rem;
+  @include text-style-input;
+
   line-height: 1;
-  font-weight: 400;
   cursor: pointer;
   padding: spacing(tight) spacing();
   border-radius: border-radius();
   margin: 0;
   user-select: none;
   background: color(white);
-  border: 1px solid color(sky, dark);
+  border: border(dark);
   color: color(action);
 
   &:hover,
