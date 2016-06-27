@@ -9,13 +9,13 @@ const componentDir = path.join('src', 'components', componentName);
 
 shell.mkdir('-p', componentDir);
 
-fs.writeFileSync(path.join(componentDir, 'index.scss'), `
+fs.writeFileSync(path.join(componentDir, `${componentName}.scss`), `
 .${componentName} {
 
 }
 `.trim());
 
-fs.writeFileSync(path.join(componentDir, 'index.js'), `
+fs.writeFileSync(path.join(componentDir, `${componentName}.js`), `
 import React, {PropTypes} from 'react';
 import styles from './index.scss';
 
@@ -33,4 +33,10 @@ ${componentName}.propTypes = {
 ${componentName}.defaultProps = {
 
 };
+`.trim());
+
+fs.writeFileSync(path.join(componentDir, 'index.js'), `
+import ${componentName} from './${componentName}';
+
+export default ${componentName};
 `.trim());
