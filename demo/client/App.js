@@ -133,23 +133,12 @@ export default class App extends Component {
   renderButtonCard(cardProperties) {
     return (
       <Card title="Buttons" {...cardProperties}>
-        <Card.Section>
-          <ButtonGroup>
-            <Button>Default button</Button>
-            <Button primary>Primary button</Button>
-            <Button destructive>Destructive button</Button>
-            <Button disabled>Disabled button</Button>
-          </ButtonGroup>
-        </Card.Section>
-
-        <Card.Section>
-          <ButtonGroup>
-            <Button slim>Default button</Button>
-            <Button slim primary>Primary button</Button>
-            <Button slim destructive>Destructive button</Button>
-            <Button slim disabled>Disabled button</Button>
-          </ButtonGroup>
-        </Card.Section>
+        <ButtonGroup>
+          <Button>Default button</Button>
+          <Button primary>Primary button</Button>
+          <Button destructive>Destructive button</Button>
+          <Button disabled>Disabled button</Button>
+        </ButtonGroup>
       </Card>
     );
   }
