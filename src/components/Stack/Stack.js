@@ -1,13 +1,21 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Stack.scss';
 
 import Item from './Item';
 
-import {Spacing, Alignment} from '../shared';
 import {css, variation} from '../../utilities/styles';
 import {elementChildren} from '../../utilities/react';
 
-export default function Stack(props) {
+type Props = {
+  children?: any,
+  vertical?: boolean,
+  spacing?: 'tight' | 'loose' | 'none',
+  distribution?: 'equalSpacing' | 'leading' | 'trailing' | 'center' | 'fill',
+};
+
+export default function Stack(props: Props) {
   const {children} = props;
 
   return (
@@ -18,22 +26,6 @@ export default function Stack(props) {
 }
 
 Stack.Item = Item;
-
-Stack.propTypes = {
-  children: PropTypes.node,
-  vertical: PropTypes.bool.isRequired,
-  spacing: PropTypes.oneOf([
-    Spacing.tight,
-    Spacing.loose,
-  ]),
-  distribution: PropTypes.oneOf([
-    Alignment.equalSpacing,
-    Alignment.leading,
-    Alignment.trailing,
-    Alignment.center,
-    Alignment.fill,
-  ]),
-};
 
 Stack.defaultProps = {
   vertical: false,

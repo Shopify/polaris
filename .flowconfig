@@ -1,0 +1,11 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/fbjs
+
+[libs]
+<PROJECT_ROOT>/interfaces/global.js
+
+[options]
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+unsafe.enable_getters_and_setters=true
+module.name_mapper='^\(.*\)\.scss$' -> '<PROJECT_ROOT>/interfaces/css.js.flow'

@@ -1,12 +1,15 @@
 @import 'utilities';
 
+// Need to define the raw colors somewhere!
+// stylelint-disable color-no-hex, no-indistinguishable-colors, function-max-empty-lines
+
 $color-palette-data: (
   white: (
-    base: #fff
+    base: #ffffff
   ),
 
   black: (
-    base: #000
+    base: #000000
   ),
 
   slate: (
@@ -90,7 +93,7 @@ $color-palette-data: (
   ),
 
   shade: (
-    base: rgba(#000, 0.1)
+    base: rgba(#00000, 0.1)
   ),
 
   ink: (
@@ -127,7 +130,7 @@ $color-palette-data: (
   @if type-of($fetched-color) == color {
     @return $fetched-color;
   } @else {
-    @error "Color `#{$hue} - #{$value}` not found. Available colors: #{available-names($color-palette-data)}";
+    @error 'Color `#{$hue} - #{$value}` not found. Available colors: #{available-names($color-palette-data)}';
   }
 }
 
@@ -141,8 +144,10 @@ $color-palette-data: (
 
 @function color-multiply($foreground, $background: null) {
   @if $background == null {
-    $background: #fff;
+    $background: #ffffff;
   }
 
   @return $foreground * $background / 255;
 }
+
+// stylelint-enable color-no-hex, no-indistinguishable-colors, function-max-empty-lines

@@ -1,17 +1,28 @@
-import {isValidElement, Children} from 'react';
+// @flow
+/* eslint shopify/require-flow: 0 */
+
+import React, {isValidElement, Children} from 'react';
 import {render, unmountComponentAtNode} from 'react-dom';
 
-export function elementChildren(children, predicate = () => true) {
+export function elementChildren(
+  children: mixed,
+  predicate: (() => boolean) = () => true
+): React.Element[] {
   return Children.toArray(children).filter((child) => isValidElement(child) && predicate(child));
 }
 
-export function augmentComponent(Component, methods) {
+export function augmentComponent(
+  Component: ReactClass,
+  methods: {[key: string]: Function}
+): ReactClass {
   for (const [name, method] of Object.entries(methods)) {
+    if (typeof method !== 'function') { continue; }
+
     const currentMethod = Component.prototype[name];
 
     Component.prototype[name] = function(...args) {
       if (typeof currentMethod === 'function') { currentMethod.apply(this, ...args); }
-      method.apply(this, ...args);
+      method.call(this, ...args);
     };
   }
 
@@ -19,12 +30,12 @@ export function augmentComponent(Component, methods) {
 }
 
 let layerIndex = 1;
-export function layeredComponent({idPrefix = 'Layer'}) {
+export function layeredComponent({idPrefix = 'Layer'}: {idPrefix?: string}) {
   function uniqueID() {
     return `${idPrefix}${layerIndex++}`;
   }
 
-  return function createLayeredComponent(Component) {
+  return function createLayeredComponent(Component: ReactClass) {
     return augmentComponent(Component, {
       componentWillMount() {
         const node = document.createElement('div');

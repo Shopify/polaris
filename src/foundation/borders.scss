@@ -15,6 +15,6 @@ $borders-data: (
   @if $fetched-value {
     @return $fetched-value;
   } @else {
-    @error "Border variant `#{$variant}` not found. Available variants: #{available-names($borders-data)}";
+    @error 'Border variant `#{$variant}` not found. Available variants: #{available-names($borders-data)}';
   }
 }

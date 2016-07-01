@@ -1,3 +1,5 @@
+// @flow
+
 import * as DOM from './dom';
 import * as Geometry from './geometry';
 import * as Other from './other';

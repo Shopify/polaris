@@ -1,8 +1,15 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Stack.scss';
 import {css} from '../../utilities/styles';
 
-export default function Item(props) {
+type Props = {
+  children?: any,
+  fill?: boolean,
+};
+
+export default function Item(props: Props) {
   const {children} = props;
   return <div className={classNameForItem(props)}>{children}</div>;
 }
@@ -13,11 +20,6 @@ function classNameForItem({fill}) {
     fill && styles.fill,
   ]);
 }
-
-Item.propTypes = {
-  children: PropTypes.node,
-  fill: PropTypes.bool.isRequired,
-};
 
 Item.defaultProps = {
   fill: false,

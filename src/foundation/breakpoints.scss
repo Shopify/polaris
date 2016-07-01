@@ -15,6 +15,6 @@ $breakpoints-data: (
   @if type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
-    @error "Breakpoint `#{$name}` not found. Available breakpoints: #{available-names($breakpoints-data)}";
+    @error 'Breakpoint `#{$name}` not found. Available breakpoints: #{available-names($breakpoints-data)}';
   }
 }

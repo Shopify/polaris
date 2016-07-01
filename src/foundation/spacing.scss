@@ -21,7 +21,7 @@ $spacing-data: (
   @if type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
-    @error "Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}";
+    @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}';
   }
 }
 

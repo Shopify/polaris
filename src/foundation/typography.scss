@@ -3,8 +3,8 @@
 @import 'utilities';
 
 $font-family-data: (
-  base: #{ -apple-system, "BlinkMacSystemFont", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", sans-serif },
-  monospace: #{ Monaco, Consolas, "Lucida Console", monospace }
+  base: #{ -apple-system, 'BlinkMacSystemFont', 'San Francisco', 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif },
+  monospace: #{ Monaco, Consolas, 'Lucida Console', monospace }
 );
 
 
@@ -18,7 +18,7 @@ $font-family-data: (
   @if $fetched-value != null {
     @return $fetched-value;
   } @else {
-    @error "Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}";
+    @error 'Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}';
   }
 }
 
@@ -134,5 +134,5 @@ $font-family-data: (
 
 @mixin text-emphasis-normal($for-background: null) {
   color: color(ink, $for-background: $for-background);
-  font-weight: normal;
+  font-weight: 400;
 }

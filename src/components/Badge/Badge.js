@@ -1,28 +1,19 @@
-import React, {PropTypes} from 'react';
-import styles from './Badge.scss';
+// @flow
 
-import {Status} from '../shared';
+import React from 'react';
+import styles from './Badge.scss';
 import {css} from '../../utilities/styles';
 
-export default function Badge(props) {
+type Props = {
+  children?: any,
+  status: 'success' | 'subdued' | 'info' | 'success' | 'attention' | 'warning' | 'critical',
+};
+
+export default function Badge(props: Props) {
   return (
     <span className={classNameForBadge(props)}>{props.children}</span>
   );
 }
-
-const STATUSES = [
-  Status.subdued,
-  Status.info,
-  Status.success,
-  Status.attention,
-  Status.warning,
-  Status.critical,
-];
-
-Badge.propTypes = {
-  children: PropTypes.node,
-  status: PropTypes.oneOf(STATUSES),
-};
 
 function classNameForBadge({status}) {
   return css([

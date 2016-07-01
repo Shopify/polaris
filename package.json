@@ -3,7 +3,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
+    "lint:scripts": "eslint . --max-warnings 0",
+    "lint:styles": "stylelint src/**/*.scss --syntax scss",
+    "lint": "lint:scripts && lint:styles",
     "test": "",
     "check": "npm run lint && npm run test",
     "start": "babel-watch demo/server/index.js",
@@ -13,10 +15,9 @@
     "build": "npm run build:node && npm run build:lib && npm run build:styles",
     "clean": "rm -rf build components styles utilities index.js",
     "preversion": "npm run clean && npm test",
-    "prepublish": "npm run build",
+    "prepublish": "npm run clean && npm run build",
     "version": "npm run build",
-    "postversion": "git push && git push --tags && npm run clean",
-    "prepublish": "npm run clean && npm run build"
+    "postversion": "git push && git push --tags && npm run clean"
   },
   "babel": {
     "presets": [
@@ -69,7 +70,9 @@
     }
   },
   "eslintConfig": {
-    "extends": "plugin:shopify/react",
+    "extends": [
+      "plugin:shopify/react"
+    ],
     "env": {
       "es6": true,
       "browser": true
@@ -79,7 +82,14 @@
         "node_modules",
         "\\.s?css$"
       ]
+    },
+    "rules": {
+      "object-curly-spacing": "off",
+      "shopify/require-flow": "off"
     }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-shopify"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -97,6 +107,7 @@
     "eslint-plugin-shopify": "^12.1.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "flow-bin": "^0.27.0",
     "glob": "^7.0.5",
     "node-sass": "^3.8.0",
     "open": "0.0.5",

@@ -17,8 +17,9 @@ $base-font-size: 14px;
 
 @function rem($value) {
   @if unit($value) != 'px' {
-    @error 'Value must be in px.'
+    @error 'Value must be in px.';
   }
+
   @return $value / $base-font-size * 1rem;
 }
 
@@ -28,8 +29,9 @@ $base-font-size: 14px;
 
 @function px($value) {
   @if unit($value) != 'rem' {
-    @error 'Value must be in rem.'
+    @error 'Value must be in rem.';
   }
+
   @return ($value / 1rem) * $base-font-size;
 }
 

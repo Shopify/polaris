@@ -1,14 +1,21 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Banner.scss';
 
 import Icon from '../Icon';
 import Heading from '../Heading';
 import TypeContainer from '../TypeContainer';
 
-import {Status} from '../shared';
 import {css, variation} from '../../utilities/styles';
 
-export default function Banner(props) {
+type Props = {
+  title: string,
+  status?: 'success' | 'subdued' | 'info' | 'success' | 'attention' | 'warning' | 'critical',
+  children?: any,
+};
+
+export default function Banner(props: Props) {
   const {title, children} = props;
 
   return (
@@ -25,17 +32,6 @@ export default function Banner(props) {
     </div>
   );
 }
-
-Banner.propTypes = {
-  title: PropTypes.string.isRequired,
-  status: PropTypes.oneOf([
-    Status.info,
-    Status.success,
-    Status.warning,
-    Status.critical,
-  ]),
-  children: PropTypes.node,
-};
 
 function classNameForBanner({status}) {
   return css([

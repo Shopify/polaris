@@ -1,35 +1,46 @@
-import React, {Component, PropTypes} from 'react';
+// @flow
+
+import React, {Component} from 'react';
 import styles from './Select.scss';
 
 import Labelled from '../Labelled';
 
 import {css} from '../../utilities/styles';
 
-export default class Select extends Component {
-  static propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
-    label: PropTypes.string,
-    labelNote: PropTypes.string,
-    labelAction: PropTypes.node,
-    labelHidden: PropTypes.bool,
-    id: PropTypes.string,
-  };
+type Props = {
+  options: string[],
+  label?: string,
+  labelNote?: string,
+  labelAction?: any,
+  labelHidden?: bool,
+  id?: string,
+};
 
+type State = {
+  focused: boolean,
+};
+
+export default class Select extends Component {
   static defaultProps = {
     options: [],
     labelHidden: false,
   };
 
-  constructor(props, context) {
+  state: State = {focused: false};
+  props: Props;
+  id: string;
+  handleFocus: () => void;
+  handleBlur: () => void;
+
+  constructor(props: Props, context: Object) {
     super(props, context);
 
-    this.state = {focused: false};
     this.id = props.id || uniqueID();
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
   }
 
-  componentDidReceiveProps(newProps) {
+  componentDidReceiveProps(newProps: Props) {
     this.id = newProps.id || uniqueID();
   }
 
