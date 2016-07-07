@@ -1,26 +1,35 @@
-import React, {Component, PropTypes, cloneElement} from 'react';
+// @flow
+
+import React, {Component, cloneElement} from 'react';
 import {findDOMNode} from 'react-dom';
 
 import Popover from './Popover';
 
 import {layeredComponent} from '../../utilities/react';
 
-class PopoverContainer extends Component {
-  static propTypes = {
-    activator: PropTypes.node,
-    children: PropTypes.node,
-  };
+type Props = {
+  activator: React.Element,
+  children?: any,
+}
 
+type State = {
+  active: boolean,
+};
+
+class PopoverContainer extends Component {
   static defaultProps = {};
 
-  constructor(props, context) {
+  props: Props;
+  state: State = {active: false};
+  handleClick: (event: Object) => void;
+  handleOutsideClick: (event: Object) => void;
+
+  constructor(props: Props, context: Object) {
     super(props, context);
 
     this.handleClick = this.handleClick.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
-
-  state = {active: false};
 
   get activatorNode() {
     return findDOMNode(this);

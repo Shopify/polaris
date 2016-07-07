@@ -1,10 +1,18 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Tablist.scss';
 
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 
-export default function Tab(props) {
+type Props = {
+  children?: any,
+  selected: boolean,
+  onClick: (event: Object) => void,
+};
+
+export default function Tab(props: Props) {
   const {children, onClick} = props;
 
   return (
@@ -16,12 +24,6 @@ export default function Tab(props) {
     </button>
   );
 }
-
-Tab.propTypes = {
-  children: PropTypes.node,
-  selected: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 Tab.defaultProps = {
   selected: false,

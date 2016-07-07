@@ -1,11 +1,21 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './index.scss';
 
 import Label from '../Label';
+// eslint-disable-next-line
+import type {Props as LabelProps} from '../Label';
 
 import {css} from '../../utilities/styles';
 
-export default function Labelled(props) {
+type Props = LabelProps & {
+  children?: any,
+  labelHidden?: boolean,
+  label?: any,
+};
+
+export default function Labelled(props: Props) {
   const {label, children, ...rest} = props;
 
   return (
@@ -18,12 +28,6 @@ export default function Labelled(props) {
     </div>
   );
 }
-
-Labelled.propTypes = {
-  children: PropTypes.node,
-  labelHidden: PropTypes.bool,
-  label: PropTypes.node,
-};
 
 function classNameForLabelled({labelHidden}) {
   return css([

@@ -1,4 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+// @flow
+
+/* eslint react/prop-types: "off" */
+
+import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import styles from './Popover.scss';
 
@@ -9,20 +13,33 @@ import {noop} from '../../utilities/other';
 import {nodeContainsDescendant} from '../../utilities/dom';
 import {getRectForNode, Rect} from '../../utilities/geometry';
 
-export default class Popover extends Component {
-  static propTypes = {
-    active: PropTypes.bool,
-    children: PropTypes.node,
-    activator: PropTypes.instanceOf(HTMLElement),
-    onCloseRequest: PropTypes.func.isRequired,
-  };
+type Props = {
+  active?: boolean,
+  children?: any,
+  activator: HTMLElement,
+  onCloseRequest: () => void,
+}
 
+type State = {
+  needsMeasurement: boolean,
+  popoverRect: Rect,
+  activatorRect: Rect,
+};
+
+export default class Popover extends Component {
   static defaultProps = {
     active: false,
     onCloseRequest: noop,
   };
 
-  constructor(props, context) {
+  state: State;
+  props: Props;
+
+  handleResize: (event: Object) => void;
+  handleClick: (event: Object) => void;
+  handleMeasurement: (node: HTMLElement) => void;
+
+  constructor(props: Props, context: Object) {
     super(props, context);
 
     this.handleResize = this.handleResize.bind(this);
@@ -36,11 +53,11 @@ export default class Popover extends Component {
     };
   }
 
-  get node() {
+  get node(): HTMLElement {
     return findDOMNode(this);
   }
 
-  handleMeasurement(node) {
+  handleMeasurement(node: HTMLElement) {
     this.setState({
       needsMeasurement: false,
       popoverRect: getRectForNode(node),
@@ -54,7 +71,7 @@ export default class Popover extends Component {
     });
   }
 
-  handleClick({target}) {
+  handleClick({target}: {target: HTMLElement}) {
     const {node, props: {activator, onCloseRequest}} = this;
     if (
       nodeContainsDescendant(node, target) ||

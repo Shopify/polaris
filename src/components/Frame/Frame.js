@@ -1,14 +1,14 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Frame.scss';
 
-export default function Frame({children}) {
+type Props = {children?: any};
+
+export default function Frame({children}: Props) {
   return (
     <div className={styles.Frame}>
       {children}
     </div>
   );
 }
-
-Frame.propTypes = {
-  children: PropTypes.node,
-};

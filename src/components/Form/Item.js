@@ -1,10 +1,12 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Form.scss';
 
-export default function FormItem(props) {
+type Props = {children?: any};
+
+export default function FormItem(props: Props) {
   return (
     <div className={styles.Item}>{props.children}</div>
   );
 }
-
-FormItem.propTypes = {children: PropTypes.node};

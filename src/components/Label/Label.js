@@ -1,9 +1,19 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Label.scss';
 
 import {css} from '../../utilities/styles';
 
-export default function Label(props) {
+export type Props = {
+  children?: any,
+  id: string,
+  error?: boolean,
+  note?: string,
+  action?: React.Element,
+};
+
+export default function Label(props: Props) {
   const {children, note, id, action} = props;
 
   return (
@@ -13,14 +23,6 @@ export default function Label(props) {
     </div>
   );
 }
-
-Label.propTypes = {
-  children: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  error: PropTypes.bool,
-  note: PropTypes.string,
-  action: PropTypes.node,
-};
 
 Label.defaultProps = {
   error: false,

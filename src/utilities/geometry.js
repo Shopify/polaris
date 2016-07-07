@@ -37,7 +37,7 @@ export class Rect {
   }
 }
 
-export function getRectForNode(node: HTMLElement): Rect {
+export function getRectForNode(node: Element): Rect {
   if (!(node instanceof Element)) {
     return new Rect({
       width: window.innerWidth,

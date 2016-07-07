@@ -1,15 +1,22 @@
-import React, {cloneElement, Component, PropTypes} from 'react';
+// @flow
+
+import React, {cloneElement, Component} from 'react';
 import styles from './Field.scss';
 
 import {css} from '../../utilities/styles';
 import {elementChildren} from '../../utilities/react';
 
-export default class Connected extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-  };
+type Props = {
+  children?: any,
+};
 
-  state = {focused: 0};
+type State = {
+  focused: number,
+};
+
+export default class Connected extends Component {
+  state: State = {focused: 0};
+  props: Props;
 
   render() {
     const {children} = this.props;
@@ -30,19 +37,19 @@ export default class Connected extends Component {
   }
 }
 
-function ConnectedItem({children, onFocus, focused}) {
-  const isInput = (children.type === 'div');
+type ItemProps = {
+  focused: boolean,
+  onFocus: (event: Object) => void,
+  children?: any,
+};
+
+function ConnectedItem({children, onFocus, focused}: ItemProps) {
+  const isInput = (children != null) && (children.type === 'div');
 
   return (
     <div onFocus={onFocus} className={classNameForConnectedItem({isInput, focused})}>{children}</div>
   );
 }
-
-ConnectedItem.propTypes = {
-  focused: PropTypes.bool.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  children: PropTypes.node,
-};
 
 ConnectedItem.defaultProps = {
   focused: false,

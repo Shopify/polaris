@@ -1,4 +1,6 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Form.scss';
 
 import Item from './Item';
@@ -6,7 +8,12 @@ import Item from './Item';
 import {css} from '../../utilities/styles';
 import {elementChildren} from '../../utilities/react';
 
-export default function Form(props) {
+type Props = {
+  children?: any,
+  condensed?: boolean,
+};
+
+export default function Form(props: Props) {
   const {children} = props;
 
   return (
@@ -17,11 +24,6 @@ export default function Form(props) {
 }
 
 Form.Item = Item;
-
-Form.propTypes = {
-  children: PropTypes.node,
-  condensed: PropTypes.bool,
-};
 
 Form.defaultProps = {
   condensed: false,

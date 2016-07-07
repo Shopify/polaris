@@ -1,11 +1,18 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Layout.scss';
 
 import Stack from '../Stack';
 
 import {css} from '../../utilities/styles';
 
-export default function Layout(props) {
+type Props = {
+  children?: any,
+  fullWidth: boolean,
+};
+
+export default function Layout(props: Props) {
   const {children} = props;
 
   return (
@@ -16,11 +23,6 @@ export default function Layout(props) {
     </div>
   );
 }
-
-Layout.propTypes = {
-  children: PropTypes.node,
-  fullWidth: PropTypes.bool.isRequired,
-};
 
 Layout.defaultProps = {
   fullWidth: false,
@@ -33,7 +35,12 @@ function classNameForLayout({fullWidth}) {
   ]);
 }
 
-function LayoutSection(props) {
+type SectionProps = {
+  children?: any,
+  secondary: boolean,
+};
+
+function LayoutSection(props: SectionProps) {
   const {children} = props;
   return (
     <div className={classNameForSection(props)}>
@@ -42,9 +49,8 @@ function LayoutSection(props) {
   );
 }
 
+LayoutSection.defaultProps = {secondary: false};
 Layout.Section = LayoutSection;
-
-LayoutSection.propTypes = {children: PropTypes.node};
 
 function classNameForSection({secondary}) {
   return css([

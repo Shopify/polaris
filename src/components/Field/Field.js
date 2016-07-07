@@ -1,4 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+// @flow
+
+import React, {Component} from 'react';
 import styles from './Field.scss';
 
 import Labelled from '../Labelled';
@@ -7,28 +9,32 @@ import Connected from './Connected';
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 
-export default class Field extends Component {
-  static propTypes = {
-    leftAddon: PropTypes.node,
-    rightAddon: PropTypes.node,
-    placeholder: PropTypes.string,
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    helpText: PropTypes.string,
-    label: PropTypes.string,
-    labelNote: PropTypes.string,
-    labelAction: PropTypes.node,
-    labelHidden: PropTypes.bool,
-    disabled: PropTypes.bool,
-    readonly: PropTypes.bool,
-    hasError: PropTypes.bool,
-    connectedRight: PropTypes.node,
-    connectedLeft: PropTypes.node,
-    type: PropTypes.string,
-    name: PropTypes.string,
-    id: PropTypes.string,
-  };
+type Props = {
+  leftAddon?: any,
+  rightAddon?: any,
+  placeholder?: string,
+  value: string,
+  onChange: (event: Object) => void,
+  helpText?: string,
+  label?: string,
+  labelNote?: string,
+  labelAction?: any,
+  labelHidden?: boolean,
+  disabled?: boolean,
+  readonly?: boolean,
+  hasError?: boolean,
+  connectedRight?: any,
+  connectedLeft?: any,
+  type?: string,
+  name?: string,
+  id?: string,
+};
 
+type State = {
+  focused: boolean,
+};
+
+export default class Field extends Component {
   static defaultProps = {
     value: '',
     onChange: noop,
@@ -37,16 +43,21 @@ export default class Field extends Component {
     type: 'text',
   };
 
-  constructor(props, context) {
+  props: Props;
+  state: State = {focused: false};
+  id: string;
+  handleFocus: (event: Object) => void;
+  handleBlur: (event: Object) => void;
+
+  constructor(props: Props, context: Object) {
     super(props, context);
 
-    this.state = {focused: false};
     this.id = props.id || uniqueID();
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
   }
 
-  componentDidReceiveProps(newProps) {
+  componentDidReceiveProps(newProps: Props) {
     this.id = newProps.id || uniqueID();
   }
 
@@ -58,15 +69,15 @@ export default class Field extends Component {
     this.setState({focused: false});
   }
 
-  get hasValue() {
+  get hasValue(): boolean {
     return Boolean(this.props.value);
   }
 
-  get hasConnectionOnRight() {
+  get hasConnectionOnRight(): boolean {
     return Boolean(this.props.connectedRight);
   }
 
-  get hasConnectionOnLeft() {
+  get hasConnectionOnLeft(): boolean {
     return Boolean(this.props.connectedLeft);
   }
 

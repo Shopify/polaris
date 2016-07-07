@@ -1,17 +1,20 @@
+// @flow
 // see https://github.com/oliviertassinari/react-event-listener/
 
-import {Component, PropTypes} from 'react';
+import {Component} from 'react';
+
+type Props = {
+  event: string,
+  handler: (event: Object) => void,
+  capture: boolean,
+}
 
 export default class EventListener extends Component {
-  static propTypes = {
-    event: PropTypes.string.isRequired,
-    handler: PropTypes.func.isRequired,
-    capture: PropTypes.bool.isRequired,
-  };
-
   static defaultProps = {
     capture: false,
   };
+
+  props: Props;
 
   componentDidMount() {
     this.attachListener();

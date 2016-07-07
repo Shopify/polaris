@@ -1,29 +1,38 @@
-import React, {Component, PropTypes} from 'react';
+// @flow
+
+import React, {Component} from 'react';
 import styles from './Tablist.scss';
 
 import Tab from './Tab';
 
+type State = {
+  selected: number,
+};
+
+type Props = {
+  children?: any,
+  tabs: React.Element[],
+  selected?: number,
+};
+
 export default class Tablist extends Component {
   static Tab = Tab;
-
-  static propTypes = {
-    children: PropTypes.node,
-    tabs: PropTypes.arrayOf(PropTypes.node).isRequired,
-    selected: PropTypes.number.isRequired,
-  };
 
   static defaultProps = {
     tabs: [],
   };
 
-  constructor(props, context) {
+  state: State;
+  props: Props;
+
+  constructor(props: Props, context: Object) {
     super(props, context);
 
     this.state = {selected: props.selected || 0};
   }
 
-  componentWillReceiveProps({selected}) {
-    if (!selected) { return; }
+  componentWillReceiveProps({selected}: Props) {
+    if (selected == null) { return; }
     this.setState({selected});
   }
 

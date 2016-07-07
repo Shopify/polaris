@@ -1,19 +1,17 @@
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './Subheading.scss';
 
-export default function Subheading({level, ...rest}) {
+type Props = {
+  level?: 3 | 4,
+  children?: any,
+};
+
+export default function Subheading({level = 3, ...rest}: Props) {
   rest.className = styles.Subheading;
 
   return level === 3
     ? <h3 {...rest} />
     : <h4 {...rest} />;
 }
-
-Subheading.propTypes = {
-  level: PropTypes.oneOf([3, 4]).isRequired,
-  children: PropTypes.node,
-};
-
-Subheading.defaultProps = {
-  level: 3,
-};
