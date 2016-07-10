@@ -17,7 +17,6 @@
 .Tab {
   @include text-style-body;
   @include text-emphasis-subdued;
-
   padding: (0.75 * spacing()) spacing();
   display: block;
   border: none;

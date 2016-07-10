@@ -2,7 +2,6 @@
 
 // Need to define the raw colors somewhere!
 // stylelint-disable color-no-hex, no-indistinguishable-colors, function-max-empty-lines
-
 $color-palette-data: (
   white: (
     base: #ffffff
@@ -93,7 +92,9 @@ $color-palette-data: (
   ),
 
   shade: (
-    base: rgba(#000000, 0.1)
+    light: rgba(#000000, 0.05),
+    base: rgba(#000000, 0.1),
+    dark: rgba(#000000, 0.16)
   ),
 
   ink: (

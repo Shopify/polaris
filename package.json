@@ -3,9 +3,12 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "lint:flow": "flow",
     "lint:scripts": "eslint . --max-warnings 0",
-    "lint:styles": "stylelint src/**/*.scss --syntax scss",
-    "lint": "lint:scripts && lint:styles",
+    "lint:styles": "stylelint 'src/**/*.scss' --syntax scss",
+    "lint": "npm run lint:flow && npm run lint:scripts && npm run lint:styles",
+    "format:scripts": "eslint . --fix >/dev/null",
+    "format": "npm run format:scripts",
     "test": "",
     "check": "npm run lint && npm run test",
     "start": "babel-watch demo/server/index.js",
@@ -85,7 +88,8 @@
     },
     "rules": {
       "object-curly-spacing": "off",
-      "shopify/require-flow": "off"
+      "react/sort-comp": "off",
+      "import/prefer-default-export": "off"
     }
   },
   "stylelint": {
@@ -118,6 +122,7 @@
     "sass-loader": "^3.2.1",
     "shelljs": "^0.7.0",
     "style-loader": "^0.13.1",
+    "stylelint": "^6.9.0",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"

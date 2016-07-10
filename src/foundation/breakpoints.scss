@@ -12,6 +12,7 @@ $breakpoints-data: (
 
 @function breakpoint($name) {
   $fetched-value: map-get($breakpoints-data, $name);
+
   @if type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {

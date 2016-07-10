@@ -7,7 +7,6 @@ $font-family-data: (
   monospace: #{ Monaco, Consolas, 'Lucida Console', monospace }
 );
 
-
 /// Returns the font stack for a given family.
 ///
 /// @param {String} $family - The key for the given family.
@@ -15,6 +14,7 @@ $font-family-data: (
 
 @function font-family($family: base) {
   $fetched-value: map-get($font-family-data, $family);
+
   @if $fetched-value != null {
     @return $fetched-value;
   } @else {
@@ -48,7 +48,6 @@ $font-family-data: (
   @media screen and (min-width: breakpoint(display-text)) {
     font-size: rem(12px);
   }
-
   // Enhance with true small caps where available. This is important for a11y.
   // Older webkit has a false positive for small caps; we need to exclude it.
   // @supports also hides this from a major IE 11 bug.

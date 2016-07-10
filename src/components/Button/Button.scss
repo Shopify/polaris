@@ -6,7 +6,6 @@
 
 .Button {
   @include text-style-input;
-
   line-height: 1;
   cursor: pointer;
   padding: spacing(tight) spacing();

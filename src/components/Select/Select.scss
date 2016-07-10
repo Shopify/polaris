@@ -3,7 +3,6 @@
 @import 'foundation/colors';
 @import 'foundation/spacing';
 @import 'foundation/typography';
-
 $InputWrapper-icon-size: 1rem;
 
 .focused .InputWrapper {
@@ -12,22 +11,22 @@ $InputWrapper-icon-size: 1rem;
 
 .InputWrapper {
   @include text-style-input;
+  position: relative;
   line-height: 1.2;
   border: border(dark);
   border-radius: border-radius();
-  position: relative;
 }
 
 .InputWrapper::after {
+  position: absolute;
+  top: 50%;
+  right: spacing(tight);
   content: '';
   display: block;
   height: $InputWrapper-icon-size;
   width: $InputWrapper-icon-size;
   background-color: color(slate, lighter);
   pointer-events: none;
-  position: absolute;
-  right: spacing(tight);
-  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -36,7 +35,6 @@ $InputWrapper-icon-size: 1rem;
   font-family: inherit;
   font-weight: inherit;
   line-height: inherit;
-
   width: 100%;
   appearance: none;
   border: none;

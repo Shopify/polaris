@@ -1,7 +1,6 @@
 $default-browser-font-size: 16px;
 $base-font-size: 14px;
 
-
 // To be used on flex items. Resolves some common layout issues, such as
 // text truncation not respecting padding or breaking out of container.
 // https://css-tricks.com/flexbox-truncated-text/
@@ -41,7 +40,9 @@ $base-font-size: 14px;
 /// @return {String} The list of names in the map.
 
 @function available-names($map, $level: 1) {
-  @if type-of($map) != 'map' { @return null; }
+  @if type-of($map) != 'map' {
+    @return null;
+  }
 
   $output: '';
   $newline: '\A ';
@@ -59,7 +60,6 @@ $base-font-size: 14px;
       $output: $output + '#{$key}#{$sep}#{available-names($value, $level + 1)}';
       $i: $i + 1;
     }
-
     $output: $output + ')';
   }
 

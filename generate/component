@@ -16,26 +16,27 @@ fs.writeFileSync(path.join(componentDir, `${componentName}.scss`), `
 `.trim());
 
 fs.writeFileSync(path.join(componentDir, `${componentName}.js`), `
-import React, {PropTypes} from 'react';
+// @flow
+
+import React from 'react';
 import styles from './index.scss';
 
-export default function ${componentName}() {
+type Props = {
+  children?: any,
+};
+
+export default function ${componentName}({children}: Props) {
   return (
     <div className={styles.${componentName}}>
+      {children}
     </div>
   );
 }
-
-${componentName}.propTypes = {
-  children: PropTypes.node,
-};
-
-${componentName}.defaultProps = {
-
-};
 `.trim());
 
 fs.writeFileSync(path.join(componentDir, 'index.js'), `
+// @flow
+
 import ${componentName} from './${componentName}';
 
 export default ${componentName};

@@ -6,7 +6,6 @@
 .Badge {
   @include text-style-body;
   @include text-emphasis-subdued($for-background: color(sky, dark));
-
   border-radius: border-radius();
   background-color: color(sky, dark);
   padding: spacing(extra-tight) spacing(tight);

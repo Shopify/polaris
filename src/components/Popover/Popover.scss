@@ -1,3 +1,6 @@
+@import 'foundation/colors';
+@import 'foundation/shadows';
+
 body {
   position: relative;
 }
@@ -14,28 +17,28 @@ body {
 }
 
 .Wrapper {
-  background-color: #ffffff;
+  background-color: color(white);
   border-radius: 4px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 7px 1px rgba(0, 0, 0, 0.16);
+  box-shadow: shadow(deep);
 }
 
 .Content {
-  padding: 1rem;
-  border-radius: 4px;
-  background-color: #ffffff;
   position: relative;
   z-index: 20;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: color(white);
   max-width: 15rem;
 }
 
 .Tip {
-  height: 1rem;
-  width: 1rem;
-  background: #ffffff;
   position: absolute;
   top: 3px;
   left: 50%;
+  height: 1rem;
+  width: 1rem;
+  background: color(white);
   transform: translateX(-50%) rotate(45deg);
   z-index: 10;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 7px 1px rgba(0, 0, 0, 0.16);
+  box-shadow: shadow(deep);
 }

@@ -13,25 +13,33 @@
 .statusSuccess {
   background-color: color(green, lighter);
 
-  .BannerRibbon { color: color(green, dark); }
+  .BannerRibbon {
+    color: color(green, dark);
+  }
 }
 
 .statusInfo {
   background-color: color(blue, lighter);
 
-  .BannerRibbon { color: color(blue, light); }
+  .BannerRibbon {
+    color: color(blue, light);
+  }
 }
 
 .statusWarning {
   background-color: color(yellow, lighter);
 
-  .BannerRibbon { color: color(yellow, dark); }
+  .BannerRibbon {
+    color: color(yellow, dark);
+  }
 }
 
 .statusCritical {
   background-color: color(red, light);
 
-  .BannerRibbon { color: color(red, dark); }
+  .BannerRibbon {
+    color: color(red, dark);
+  }
 }
 
 .BannerContent {
