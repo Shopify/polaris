@@ -163,6 +163,15 @@ export default class App extends Component {
     return (
       <Frame>
         <Layout>
+          <Layout.AnnotatedSection
+            title="Annotated section"
+            description="This is a description for an annotated section!"
+          >
+            <Card title="Card">
+              Here is some content!
+            </Card>
+          </Layout.AnnotatedSection>
+
           <Layout.Section>
             {this.renderFormCard()}
             {this.renderBannerCard()}

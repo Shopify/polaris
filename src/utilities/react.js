@@ -4,6 +4,11 @@
 import React, {isValidElement, Children} from 'react';
 import {render, unmountComponentAtNode} from 'react-dom';
 
+export function wrapWithComponent(element: ?React.Element, Component: ReactClass, props?: Object) {
+  if (element == null) { return element; }
+  return element.type === Component ? element : <Component {...props}>{element}</Component>;
+}
+
 export function elementChildren(
   children: mixed,
   predicate: (() => boolean) = () => true

@@ -12,3 +12,7 @@
     margin-bottom: 0.4em;
   }
 }
+
+.subdued {
+  @include text-emphasis-subdued;
+}

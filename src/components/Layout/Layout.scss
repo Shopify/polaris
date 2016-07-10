@@ -1,3 +1,8 @@
+@import 'foundation/spacing';
+
+$layout-secondary-basis: 15rem;
+$layout-primary-basis: 30rem;
+
 .Layout {
   max-width: 60rem;
   margin: 0 auto;
@@ -12,20 +17,49 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-left: -1rem;
-  margin-top: -1rem;
+  margin-left: -1 * spacing();
+  margin-top: -1 * spacing();
 }
 
 .Section {
-  flex: 2 1 30rem;
-  margin-left: 1rem;
-  margin-top: 1rem;
+  flex: 2 1 $layout-primary-basis;
+  margin-left: spacing();
+  margin-top: spacing();
 }
 
 .secondary {
-  flex: 1 0 15rem;
+  flex: 1 0 $layout-secondary-basis;
 }
 
 .Item {
   flex: 1 1 100%;
+}
+
+.AnnotatedSection {
+  flex: 1 1 100%;
+  margin-left: spacing();
+  margin-top: spacing();
+}
+
+.AnnotationWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1 * spacing();
+  margin-top: -1 * spacing();
+}
+
+.AnnotationContent {
+  flex: 2 1 $layout-primary-basis;
+  margin-left: spacing();
+  margin-top: spacing();
+}
+
+.Annotation {
+  flex: 1 0 $layout-secondary-basis;
+  margin-left: spacing();
+  margin-top: spacing();
+
+  > * + * {
+    margin-top: spacing();
+  }
 }

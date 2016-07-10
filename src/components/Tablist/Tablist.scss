@@ -18,6 +18,7 @@
   @include text-style-body;
   @include text-emphasis-subdued;
   padding: (0.75 * spacing()) spacing();
+  margin: 0;
   display: block;
   border: none;
   border-right: border();

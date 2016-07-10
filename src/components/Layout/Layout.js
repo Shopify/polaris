@@ -4,8 +4,11 @@ import React from 'react';
 import styles from './Layout.scss';
 
 import Stack from '../Stack';
+import Heading from '../Heading';
+import TypeContainer from '../TypeContainer';
 
 import {css} from '../../utilities/styles';
+import {wrapWithComponent} from '../../utilities/react';
 
 type Props = {
   children?: any,
@@ -51,6 +54,36 @@ function LayoutSection(props: SectionProps) {
 
 LayoutSection.defaultProps = {secondary: false};
 Layout.Section = LayoutSection;
+
+type AnnotatedSectionProps = {
+  children?: any,
+  title?: any,
+  description?: any,
+};
+
+function AnnotatedSection(props: AnnotatedSectionProps) {
+  const {children, title, description} = props;
+  const wrappedDescription = typeof description === 'string'
+    ? <p>{description}</p>
+    : description;
+
+  return (
+    <div className={styles.AnnotatedSection}>
+      <div className={styles.AnnotationWrapper}>
+        <div className={styles.Annotation}>
+          {wrapWithComponent(title, Heading)}
+          {wrapWithComponent(wrappedDescription, TypeContainer, {subdued: true})}
+        </div>
+
+        <div className={styles.AnnotationContent}>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Layout.AnnotatedSection = AnnotatedSection;
 
 function classNameForSection({secondary}) {
   return css([
