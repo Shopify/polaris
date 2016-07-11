@@ -11,17 +11,23 @@ import Badge from 'components/Badge';
 import Banner from 'components/Banner';
 import Layout from 'components/Layout';
 import Field from 'components/Field';
-import Form from 'components/Form';
+import FormLayout from 'components/FormLayout';
 import Frame from 'components/Frame';
 import Select from 'components/Select';
 import Popover from 'components/Popover';
 import Tablist from 'components/Tablist';
+import Checkbox from 'components/Checkbox';
+import RadioButton from 'components/RadioButton';
 
 const Foo = {};
 export {Foo};
 
 export default class App extends Component {
-  state = {fieldValue: ''};
+  state = {
+    fieldValue: '',
+    checked: false,
+    selected: false,
+  };
 
   renderPopoverCard(cardProperties) {
     return (
@@ -46,57 +52,92 @@ export default class App extends Component {
         tablist={<Tablist tabs={['Open', 'Unfulfilled', 'Fulfilled']} />}
       >
         <Card.Section>
-          <Form>
-            <Field
-              label="One"
-              placeholder="0.00"
-              leftAddon="$"
-              rightAddon="USD"
-              type="number"
-              value={this.state.fieldValue}
-              helpText="Help text"
-              onChange={(event) => this.setState({fieldValue: event.target.value})}
+          <FormLayout>
+            <RadioButton
+              label="Radio"
+              name="radio-group"
+              checked={this.state.selected === 'one'}
+              onClick={() => this.setState({selected: 'one'})}
             />
 
-            <Field
-              label="Two"
-              labelNote="(optional)"
-              placeholder="placeholder"
-              value="Foo"
-              readonly
+            <RadioButton
+              label="Radio"
+              name="radio-group"
+              checked={this.state.selected === 'two'}
+              onClick={() => this.setState({selected: 'two'})}
             />
 
-            <Field disabled label="Three" placeholder="placeholder" />
-            <Field hasError label="Four" placeholder="placeholder" />
-
-            <Field
-              label="Five"
-              placeholder="Five"
-              connectedRight={<Button>Submit</Button>}
+            <RadioButton
+              label="Radio"
+              name="radio-group"
             />
 
-            <Select label="Six" options={['foo', 'bar', 'baz']} />
+            <RadioButton label="Disabled radio" disabled checked />
 
-            <Field
-              label="Seven"
-              placeholder="Seven"
-              connectedLeft={<Select label="Eight" options={['foo', 'bar', 'baz']} />}
+            <Checkbox
+              label="Checkbox"
+              checked={this.state.checked}
+              onClick={() => this.setState({checked: !this.state.checked})}
             />
-          </Form>
+
+            <Checkbox label="Disabled checkbox" disabled checked />
+
+            <Checkbox label="Radio button with a really long label that might stretch multiple lines" />
+
+            <FormLayout.Group>
+              <Field
+                label="One"
+                placeholder="0.00"
+                leftAddon="$"
+                rightAddon="USD"
+                type="number"
+                value={this.state.fieldValue}
+                helpText="Help text"
+                onChange={(event) => this.setState({fieldValue: event.target.value})}
+              />
+
+              <Field
+                label="Two"
+                labelNote="(optional)"
+                placeholder="placeholder"
+                value="Foo"
+                readonly
+              />
+
+              <Field disabled label="Three" placeholder="placeholder" />
+              <Field hasError label="Four" placeholder="placeholder" />
+
+              <Field
+                label="Five"
+                placeholder="Five"
+                connectedRight={<Button>Submit</Button>}
+              />
+
+              <Select label="Six" options={['foo', 'bar', 'baz']} />
+
+              <Field
+                label="Seven"
+                placeholder="Seven"
+                connectedLeft={<Select label="Eight" options={['foo', 'bar', 'baz']} />}
+              />
+            </FormLayout.Group>
+          </FormLayout>
         </Card.Section>
 
         <Card.Section title="Condensed">
-          <Form condensed>
-            <Field
-              label="One"
-              labelAction={<Button link>What?</Button>}
-              placeholder="placeholder"
-            />
+          <FormLayout condensed>
+            <FormLayout.Group>
+              <Field
+                label="One"
+                labelAction={<Button link>What?</Button>}
+                placeholder="placeholder"
+              />
 
-            <Field label="Two" placeholder="placeholder" />
-            <Field label="Three" placeholder="placeholder" />
-            <Field label="Four" placeholder="placeholder" />
-          </Form>
+              <Field label="Two" placeholder="placeholder" />
+              <Field label="Three" placeholder="placeholder" />
+              <Field label="Four" placeholder="placeholder" />
+            </FormLayout.Group>
+          </FormLayout>
         </Card.Section>
       </Card>
     );

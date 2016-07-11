@@ -12,15 +12,15 @@ type Props = {
   destructive?: boolean,
   disabled?: boolean,
   link?: boolean,
-  onPress?: (event: Object) => void,
+  onClick?: (event: Object) => void,
   fullWidth?: boolean,
 };
 
 export default function Button(props: Props) {
-  const {disabled, children, onPress} = props;
+  const {disabled, children, onClick} = props;
 
   return (
-    <button onClick={onPress} className={classNameForButton(props)} disabled={disabled}>
+    <button onClick={onClick} className={classNameForButton(props)} disabled={disabled}>
       {children}
     </button>
   );
@@ -32,7 +32,7 @@ Button.defaultProps = {
   disabled: false,
   link: false,
   fullWidth: false,
-  onPress: noop,
+  onClick: noop,
 };
 
 function classNameForButton({primary, destructive, disabled, link, fullWidth}) {

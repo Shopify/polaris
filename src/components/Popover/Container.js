@@ -57,7 +57,7 @@ class PopoverContainer extends Component {
 
   render() {
     return cloneElement(this.props.activator, {
-      onPress: this.handleClick,
+      onClick: this.handleClick,
     });
   }
 }

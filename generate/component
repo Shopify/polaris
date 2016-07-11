@@ -19,7 +19,7 @@ fs.writeFileSync(path.join(componentDir, `${componentName}.js`), `
 // @flow
 
 import React from 'react';
-import styles from './index.scss';
+import styles from './${componentName}.scss';
 
 type Props = {
   children?: any,
