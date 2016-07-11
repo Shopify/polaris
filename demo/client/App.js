@@ -17,7 +17,7 @@ import Select from 'components/Select';
 import Popover from 'components/Popover';
 import Tablist from 'components/Tablist';
 import Checkbox from 'components/Checkbox';
-import RadioButton from 'components/RadioButton';
+import ChoiceList from 'components/ChoiceList';
 
 const Foo = {};
 export {Foo};
@@ -26,7 +26,7 @@ export default class App extends Component {
   state = {
     fieldValue: '',
     checked: false,
-    selected: false,
+    selected: [],
   };
 
   renderPopoverCard(cardProperties) {
@@ -53,26 +53,25 @@ export default class App extends Component {
       >
         <Card.Section>
           <FormLayout>
-            <RadioButton
-              label="Radio"
-              name="radio-group"
-              checked={this.state.selected === 'one'}
-              onClick={() => this.setState({selected: 'one'})}
+            <ChoiceList
+              selected={this.state.selected}
+              onChange={(selected) => this.setState({selected})}
+              options={[
+                'Radio one',
+                'Radio two',
+                {label: 'Radio three', disabled: true},
+              ]}
             />
 
-            <RadioButton
-              label="Radio"
-              name="radio-group"
-              checked={this.state.selected === 'two'}
-              onClick={() => this.setState({selected: 'two'})}
+            <ChoiceList
+              allowMultiple
+              selected={[]}
+              options={[
+                'Multichoice one',
+                'Multichoice two',
+                'Multichoice three',
+              ]}
             />
-
-            <RadioButton
-              label="Radio"
-              name="radio-group"
-            />
-
-            <RadioButton label="Disabled radio" disabled checked />
 
             <Checkbox
               label="Checkbox"

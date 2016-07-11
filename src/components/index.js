@@ -7,6 +7,7 @@ export {default as Button} from './Button';
 export {default as ButtonGroup} from './ButtonGroup';
 export {default as Card} from './Card';
 export {default as Checkbox} from './Checkbox';
+export {default as ChoiceList} from './ChoiceList';
 export {default as EventListener} from './EventListener';
 export {default as Field} from './Field';
 export {default as FormLayout} from './FormLayout';
