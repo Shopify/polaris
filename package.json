@@ -1,6 +1,7 @@
 {
-  "name": "quilt-react",
+  "name": "quilt-ui",
   "private": true,
+  "version": "0.0.7",
   "license": "MIT",
   "scripts": {
     "lint:flow": "flow",
@@ -11,6 +12,7 @@
     "format": "npm run format:scripts",
     "test": "",
     "check": "npm run lint && npm run test",
+    "parker": "parker build/assets.css --format json > build/parker.json",
     "start": "babel-watch demo/server/index.js",
     "build:node": "NODE_ENV=production babel src --out-dir .",
     "build:styles": "bin/styles",
@@ -21,6 +23,16 @@
     "prepublish": "npm run clean && npm run build",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm run clean"
+  },
+  "keywords": [
+    "shopify",
+    "pattern-library",
+    "eyeglass-module"
+  ],
+  "eyeglass": {
+    "needs": "*",
+    "sassDir": "./styles",
+    "exports": false
   },
   "babel": {
     "presets": [
@@ -75,22 +87,7 @@
   "eslintConfig": {
     "extends": [
       "plugin:shopify/react"
-    ],
-    "env": {
-      "es6": true,
-      "browser": true
-    },
-    "settings": {
-      "import/ignore": [
-        "node_modules",
-        "\\.s?css$"
-      ]
-    },
-    "rules": {
-      "object-curly-spacing": "off",
-      "react/sort-comp": "off",
-      "import/prefer-default-export": "off"
-    }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-config-shopify"

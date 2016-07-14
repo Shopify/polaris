@@ -4,5 +4,6 @@ node_modules
 /components
 /utilities
 /index.js
-/styles
+/styles/*
+!/styles/index.js
 *.test.js

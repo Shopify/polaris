@@ -43,8 +43,8 @@ export default class Field extends Component {
     type: 'text',
   };
 
-  props: Props;
   state: State = {focused: false};
+  props: Props;
   id: string;
   handleFocus: (event: Object) => void;
   handleBlur: (event: Object) => void;

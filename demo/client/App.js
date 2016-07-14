@@ -53,25 +53,27 @@ export default class App extends Component {
       >
         <Card.Section>
           <FormLayout>
-            <ChoiceList
-              selected={this.state.selected}
-              onChange={(selected) => this.setState({selected})}
-              options={[
-                'Radio one',
-                'Radio two',
-                {label: 'Radio three', disabled: true},
-              ]}
-            />
+            <FormLayout.Group>
+              <ChoiceList
+                selected={this.state.selected}
+                onChange={(selected) => this.setState({selected})}
+                options={[
+                  'Radio one',
+                  'Radio two',
+                  {label: 'Radio three', disabled: true},
+                ]}
+              />
 
-            <ChoiceList
-              allowMultiple
-              selected={[]}
-              options={[
-                'Multichoice one',
-                'Multichoice two',
-                'Multichoice three',
-              ]}
-            />
+              <ChoiceList
+                allowMultiple
+                selected={[]}
+                options={[
+                  'Multichoice one',
+                  'Multichoice two',
+                  'Multichoice three',
+                ]}
+              />
+            </FormLayout.Group>
 
             <Checkbox
               label="Checkbox"
