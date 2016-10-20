@@ -1,21 +1,22 @@
 // @flow
 
 import React from 'react';
-import styles from './ChoiceList.scss';
 
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
 
 import {noop} from '../../utilities/other';
 
-type OptionType = string | {
+import styles from './ChoiceList.scss';
+
+type Option = string | {
   value?: string,
   label: string,
   [key: string]: any,
 };
 
 type Props = {
-  options: OptionType[],
+  options: Option[],
   selected: string[],
   name?: string,
   onChange?: (selected: string[]) => void,
@@ -33,8 +34,9 @@ export default function ChoiceList({
 
   return (
     <div className={styles.ChoiceList}>
-      {options.map((option) => renderOptionWithComponent(option, Component, {
+      {options.map((option, index) => renderOptionWithComponent(option, Component, {
         name,
+        key: index,
         checked: optionIsSelected(option, selected),
         onClick: () => onChange(addOptionToSelected(option, selected, allowMultiple)),
       }))}
@@ -42,20 +44,20 @@ export default function ChoiceList({
   );
 }
 
-function optionIsSelected(option: OptionType, selected: string[]) {
+function optionIsSelected(option: Option, selected: string[]) {
   return selected.includes(nameForOption(option));
 }
 
-function addOptionToSelected(option: OptionType, selected: string[], allowMultiple: boolean = false) {
+function addOptionToSelected(option: Option, selected: string[], allowMultiple: boolean = false) {
 
   return allowMultiple ? [...selected, nameForOption(option)] : [nameForOption(option)];
 }
 
-function nameForOption(option: OptionType) {
+function nameForOption(option: Option) {
   return typeof option === 'string' ? option : option.label;
 }
 
-function renderOptionWithComponent(option: OptionType, Component: ReactClass, props?: Object) {
+function renderOptionWithComponent(option: Option, Component: ReactClass<{props: {label: Option}}>, props?: Object) {
   if (typeof option === 'string') {
     return <Component label={option} {...props} />;
   }

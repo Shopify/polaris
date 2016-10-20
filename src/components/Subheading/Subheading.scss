@@ -4,3 +4,7 @@
   @include text-style-subheading;
   margin: 0;
 }
+
+.subdued {
+  @include text-emphasis-subdued;
+}

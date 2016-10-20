@@ -1,10 +1,11 @@
 // @flow
 
 import React from 'react';
-import styles from './Button.scss';
 
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
+
+import styles from './Button.scss';
 
 type Props = {
   children?: any,

@@ -1,0 +1,23 @@
+@import 'foundation/spacing';
+@import 'foundation/breakpoints';
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.Header {
+  flex: 0 0 auto;
+}
+
+.Main {
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: spacing() 0;
+
+  @include main-content-when-not-condensed {
+    padding: spacing();
+  }
+}

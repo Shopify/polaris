@@ -1,6 +1,5 @@
 bin
 demo
-generate
 .eslint*
 .gitignore
 .stylelintignore

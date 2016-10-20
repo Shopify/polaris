@@ -1,4 +1,3 @@
 // @flow
-// see https://github.com/facebook/flow/issues/1996
 
 export * from './src';

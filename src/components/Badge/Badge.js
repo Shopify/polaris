@@ -1,12 +1,12 @@
 // @flow
 
 import React from 'react';
-import styles from './Badge.scss';
 import {css} from '../../utilities/styles';
+import styles from './Badge.scss';
 
 type Props = {
   children?: any,
-  status: 'success' | 'subdued' | 'info' | 'success' | 'attention' | 'warning' | 'critical',
+  status?: 'success' | 'subdued' | 'info' | 'success' | 'attention' | 'warning' | 'critical',
 };
 
 export default function Badge(props: Props) {

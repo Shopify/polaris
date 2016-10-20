@@ -1,9 +1,8 @@
 // @flow
 
 import React from 'react';
-import styles from './TypeContainer.scss';
-
 import {css} from '../../utilities/styles';
+import styles from './TypeContainer.scss';
 
 type Props = {
   children?: any,

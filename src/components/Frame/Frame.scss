@@ -1,3 +1,89 @@
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/breakpoints';
+
+$Sidebar-z-index: 200;
+$SidebarOverlay-z-index: 150;
+$Content-z-index: 100;
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  font-size: 87.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: color(sky);
+}
+
+* {
+  box-sizing: inherit;
+}
+
+
 .Frame {
-  padding: 1rem;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.Sidebar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: $Sidebar-z-index;
+  transform: translateX(-100%);
+  will-change: transform;
+
+  @media (min-width: 700px) {
+    position: relative;
+    transform: none;
+    transition: none;
+  }
+}
+
+.isTransitioning {
+  transition: transform 0.2s ease;
+}
+
+.isShowing {
+  transform: none;
+}
+
+.SidebarOverlay {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: $SidebarOverlay-z-index;
+  background-color: rgba(color(black), 0.25);
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 0.2s ease;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
+}
+
+.isCovering {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.Main {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: $Content-z-index;
 }

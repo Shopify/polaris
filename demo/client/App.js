@@ -1,35 +1,60 @@
+// @flow
+
+/* eslint class-methods-use-this: off */
+/* eslint import/no-extraneous-dependencies: off */
+/* eslint import/no-unresolved: off */
+
 import React, {Component} from 'react';
 
-import 'components/index.scss';
-import {Status, Spacing} from 'components/shared';
+import {
+  Badge,
+  Banner,
+  Button,
+  ButtonGroup,
+  Card,
+  Checkbox,
+  ChoiceList,
+  Content,
+  Field,
+  FormLayout,
+  Frame,
+  Layout,
+  Popover,
+  Select,
+  Stack,
+  Tablist,
+} from '@shopify/quilt/components';
 
-import Card from 'components/Card';
-import Stack from 'components/Stack';
-import ButtonGroup from 'components/ButtonGroup';
-import Button from 'components/Button';
-import Badge from 'components/Badge';
-import Banner from 'components/Banner';
-import Layout from 'components/Layout';
-import Field from 'components/Field';
-import FormLayout from 'components/FormLayout';
-import Frame from 'components/Frame';
-import Select from 'components/Select';
-import Popover from 'components/Popover';
-import Tablist from 'components/Tablist';
-import Checkbox from 'components/Checkbox';
-import ChoiceList from 'components/ChoiceList';
-
-const Foo = {};
-export {Foo};
+type State = {
+  fieldValue: ?string,
+  checked: boolean,
+  selected: string[],
+};
 
 export default class App extends Component {
-  state = {
+  state: State = {
     fieldValue: '',
     checked: false,
     selected: [],
   };
 
-  renderPopoverCard(cardProperties) {
+  handleChoiceListChange = this.handleChoiceListChange.bind(this);
+  handleCheckboxChange = this.handleCheckboxChange.bind(this);
+  handleFieldChange = this.handleFieldChange.bind(this);
+
+  handleChoiceListChange(selected: string[]) {
+    this.setState({selected});
+  }
+
+  handleCheckboxChange() {
+    this.setState({checked: !this.state.checked});
+  }
+
+  handleFieldChange(value?: string) {
+    this.setState({fieldValue: value});
+  }
+
+  renderPopoverCard(cardProperties?: Object) {
     return (
       <Card title="Popover" {...cardProperties}>
         <Stack distribution="equalSpacing">
@@ -56,7 +81,7 @@ export default class App extends Component {
             <FormLayout.Group>
               <ChoiceList
                 selected={this.state.selected}
-                onChange={(selected) => this.setState({selected})}
+                onChange={this.handleChoiceListChange}
                 options={[
                   'Radio one',
                   'Radio two',
@@ -78,7 +103,7 @@ export default class App extends Component {
             <Checkbox
               label="Checkbox"
               checked={this.state.checked}
-              onClick={() => this.setState({checked: !this.state.checked})}
+              onClick={this.handleCheckboxChange}
             />
 
             <Checkbox label="Disabled checkbox" disabled checked />
@@ -94,7 +119,7 @@ export default class App extends Component {
                 type="number"
                 value={this.state.fieldValue}
                 helpText="Help text"
-                onChange={(event) => this.setState({fieldValue: event.target.value})}
+                onChange={this.handleFieldChange}
               />
 
               <Field
@@ -152,19 +177,19 @@ export default class App extends Component {
             <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
           </Banner>
 
-          <Banner title="A success banner" status={Status.success}>
+          <Banner title="A success banner" status="success">
             <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
           </Banner>
 
-          <Banner title="An info banner" status={Status.info}>
+          <Banner title="An info banner" status="info">
             <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
           </Banner>
 
-          <Banner title="A warning banner" status={Status.warning}>
+          <Banner title="A warning banner" status="warning">
             <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
           </Banner>
 
-          <Banner title="A critical banner" status={Status.critical}>
+          <Banner title="A critical banner" status="critical">
             <p>This order was marked as archived on September 26, 2015 21:33 EST.</p>
           </Banner>
         </Stack>
@@ -172,7 +197,7 @@ export default class App extends Component {
     );
   }
 
-  renderButtonCard(cardProperties) {
+  renderButtonCard(cardProperties?: Object) {
     return (
       <Card title="Buttons" {...cardProperties}>
         <ButtonGroup>
@@ -185,17 +210,17 @@ export default class App extends Component {
     );
   }
 
-  renderBadgeCard(cardProperties) {
+  renderBadgeCard(cardProperties?: Object) {
     return (
       <Card title="Badges" {...cardProperties}>
-        <Stack spacing={Spacing.tight}>
+        <Stack spacing="tight">
           <Badge>Regular</Badge>
-          <Badge status={Status.subdued}>Subdued</Badge>
-          <Badge status={Status.info}>Info</Badge>
-          <Badge status={Status.success}>Success</Badge>
-          <Badge status={Status.attention}>Attention</Badge>
-          <Badge status={Status.warning}>Warning</Badge>
-          <Badge status={Status.critical}>Error</Badge>
+          <Badge status="subdued">Subdued</Badge>
+          <Badge status="info">Info</Badge>
+          <Badge status="success">Success</Badge>
+          <Badge status="attention">Attention</Badge>
+          <Badge status="warning">Warning</Badge>
+          <Badge status="critical">Error</Badge>
         </Stack>
       </Card>
     );
@@ -204,27 +229,29 @@ export default class App extends Component {
   render() {
     return (
       <Frame>
-        <Layout>
-          <Layout.AnnotatedSection
-            title="Annotated section"
-            description="This is a description for an annotated section!"
-          >
-            <Card title="Card">
-              Here is some content!
-            </Card>
-          </Layout.AnnotatedSection>
+        <Content>
+          <Layout>
+            <Layout.AnnotatedSection
+              title="Annotated section"
+              description="This is a description for an annotated section!"
+            >
+              <Card title="Card">
+                Here is some content!
+              </Card>
+            </Layout.AnnotatedSection>
 
-          <Layout.Section>
-            {this.renderFormCard()}
-            {this.renderBannerCard()}
-          </Layout.Section>
+            <Layout.Section>
+              {this.renderFormCard()}
+              {this.renderBannerCard()}
+            </Layout.Section>
 
-          <Layout.Section secondary>
-            {this.renderPopoverCard({secondary: true})}
-            {this.renderButtonCard({secondary: true})}
-            {this.renderBadgeCard({secondary: true})}
-          </Layout.Section>
-        </Layout>
+            <Layout.Section secondary>
+              {this.renderPopoverCard({secondary: true})}
+              {this.renderButtonCard({secondary: true})}
+              {this.renderBadgeCard({secondary: true})}
+            </Layout.Section>
+          </Layout>
+        </Content>
       </Frame>
     );
   }

@@ -2,7 +2,7 @@
 
 export function nodeContainsDescendant(
   rootNode: HTMLElement,
-  descendant: HTMLElement
+  descendant: HTMLElement,
 ): boolean {
   if (rootNode === descendant) { return true; }
 

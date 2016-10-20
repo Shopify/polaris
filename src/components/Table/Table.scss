@@ -1,0 +1,9 @@
+@import 'foundation/spacing';
+
+.Table {
+  td,
+  th {
+    text-align: left;
+    padding: spacing(tight);
+  }
+}

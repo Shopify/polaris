@@ -1,16 +1,17 @@
 // @flow
 
 import React from 'react';
-import styles from './Label.scss';
 
 import {css} from '../../utilities/styles';
+
+import styles from './Label.scss';
 
 export type Props = {
   children?: any,
   id: string,
   error?: boolean,
   note?: string,
-  action?: React.Element,
+  action?: React$Element<*>,
 };
 
 export default function Label(props: Props) {

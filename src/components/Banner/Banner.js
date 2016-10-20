@@ -1,13 +1,14 @@
 // @flow
 
 import React from 'react';
-import styles from './Banner.scss';
 
 import Icon from '../Icon';
 import Heading from '../Heading';
 import TypeContainer from '../TypeContainer';
 
 import {css, variation} from '../../utilities/styles';
+
+import styles from './Banner.scss';
 
 type Props = {
   title: string,

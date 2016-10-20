@@ -1,3 +1,5 @@
+// @flow
+
 import {resolve} from 'path';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
@@ -7,14 +9,17 @@ const sourceRoot = resolve(demoRoot, '../src');
 
 export default {
   context: demoRoot,
-  resolve: {
-    root: [sourceRoot],
-  },
   entry: {
     app: [
+      'react-hot-loader/patch',
       'webpack-hot-middleware/client',
       resolve(demoRoot, './client/index.js'),
     ],
+  },
+  resolve: {
+    alias: {
+      '@shopify/quilt': sourceRoot,
+    },
   },
   output: {
     path: resolve(demoRoot, './build'),
@@ -25,9 +30,17 @@ export default {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        exclude: /node_modules/,
+        test: /\.js$/,
+        loader: 'babel',
+        query: {
+          presets: [
+            'shopify/web',
+            'shopify/react',
+            'shopify/flow',
+          ],
+          plugins: ['react-hot-loader/babel'],
+        },
+        exclude: [/node_modules/],
       },
       {
         test: /\.scss$/,
@@ -44,14 +57,14 @@ export default {
     return [autoprefixer()];
   },
   sassLoader: {
-    includePaths: [sourceRoot],
+    includePaths: [resolve(sourceRoot, 'styles')],
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
   ],
 };

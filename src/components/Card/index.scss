@@ -2,12 +2,16 @@
 @import 'foundation/colors';
 @import 'foundation/shadows';
 @import 'foundation/spacing';
+@import 'foundation/breakpoints';
 
 .Card {
   background-color: color(white);
-  border-radius: border-radius();
   box-shadow: shadow();
   overflow: hidden;
+
+  @include main-content-when-not-condensed {
+    border-radius: border-radius();
+  }
 }
 
 .secondary {

@@ -1,8 +1,8 @@
 // @flow
 
 import React from 'react';
-import styles from './Stack.scss';
 import {css} from '../../utilities/styles';
+import styles from './Stack.scss';
 
 type Props = {
   children?: any,

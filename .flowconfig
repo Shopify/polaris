@@ -2,10 +2,15 @@
 <PROJECT_ROOT>/node_modules/fbjs
 
 [libs]
-<PROJECT_ROOT>/interfaces/global.js
+<PROJECT_ROOT>/config/flow/modules
 
 [options]
+suppress_type=$FlowIssue
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
 unsafe.enable_getters_and_setters=true
-module.name_mapper='^\(.*\)\.scss$' -> '<PROJECT_ROOT>/interfaces/css.js.flow'
+module.name_mapper='@shopify/quilt/components' -> '<PROJECT_ROOT>/src/components'
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/config/flow/css.js.flow'

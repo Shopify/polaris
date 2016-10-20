@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+
 import styles from './FormLayout.scss';
 
 type Props = {children?: any};

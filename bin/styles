@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony_destructuring
+#!/usr/bin/env node
 
 const fs = require('fs');
 const path = require('path');

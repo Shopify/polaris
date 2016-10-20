@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint flowtype/require-valid-file-annotation: off */
 
 import {resolve} from 'path';
 import webpack from 'webpack';
@@ -37,7 +38,7 @@ export default {
         test: /\.scss$/,
         loader: cssExtractor.extract(
           'style',
-          'css?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!sass!postcss'
+          'css?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!sass!postcss',
         ),
       },
     ],
@@ -46,7 +47,7 @@ export default {
     return [autoprefixer(), cssnano()];
   },
   sassLoader: {
-    includePaths: [resolve(__dirname, './src')],
+    includePaths: [resolve(__dirname, '../src/styles')],
   },
   plugins: [
     new NoErrorsPlugin(),

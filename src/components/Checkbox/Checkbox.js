@@ -1,12 +1,13 @@
 // @flow
 
 import React from 'react';
-import styles from './Checkbox.scss';
 
 import Label from '../Label';
 
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
+
+import styles from './Checkbox.scss';
 
 type Props = {
   label?: any,
@@ -19,8 +20,13 @@ type Props = {
 export default function Checkbox(props: Props) {
   const {label, checked, disabled, onClick = noop, id = uniqueID()} = props;
 
+  function handleClick(...args) {
+    if (disabled) { return; }
+    onClick(...args);
+  }
+
   return (
-    <div className={classNameForCheckbox(props)} onClick={(...args) => !disabled && onClick(...args)}>
+    <div className={classNameForCheckbox(props)} onClick={handleClick} tabIndex={0}>
       <div className={styles.Box}>
         <div className={styles.Checkmark} />
         <input

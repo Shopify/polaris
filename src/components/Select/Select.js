@@ -1,18 +1,18 @@
 // @flow
 
 import React, {Component} from 'react';
-import styles from './Select.scss';
 
 import Labelled from '../Labelled';
-
 import {css} from '../../utilities/styles';
+
+import styles from './Select.scss';
 
 type Props = {
   options: string[],
   label?: string,
   labelNote?: string,
   labelAction?: any,
-  labelHidden?: bool,
+  labelHidden?: boolean,
   id?: string,
 };
 

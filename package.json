@@ -1,7 +1,7 @@
 {
-  "name": "quilt-ui",
+  "name": "@shopify/quilt",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "lint:flow": "flow",
@@ -13,120 +13,67 @@
     "test": "",
     "check": "npm run lint && npm run test",
     "parker": "parker build/assets.css --format json > build/parker.json",
-    "start": "babel-watch demo/server/index.js",
-    "build:node": "NODE_ENV=production babel src --out-dir .",
+    "demo": "babel-node demo/server.js",
+    "build:node": "babel src --out-dir .",
     "build:styles": "bin/styles",
-    "build:lib": "NODE_ENV=productionBuild webpack src/index.js build/quilt.js --config webpack.config.babel.js",
+    "build:lib": "webpack src/index.js build/quilt.js --config config/webpack.babel.js",
     "build": "npm run build:node && npm run build:lib && npm run build:styles",
     "clean": "rm -rf build components styles utilities index.js",
     "preversion": "npm run clean && npm test",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm run clean"
   },
   "keywords": [
     "shopify",
-    "pattern-library",
-    "eyeglass-module"
+    "pattern-library"
   ],
-  "eyeglass": {
-    "needs": "*",
-    "sassDir": "./styles",
-    "exports": false
-  },
   "babel": {
     "presets": [
-      "shopify/react"
-    ],
-    "env": {
-      "production": {
-        "plugins": [
-          [
-            "css-modules-transform",
-            {
-              "generateScopedName": "[local]-[hash:base64:5]"
-            }
-          ],
-          "transform-react-constant-elements"
-        ]
-      },
-      "productionBuild": {
-        "plugins": [
-          "transform-react-constant-elements"
-        ]
-      },
-      "development": {
-        "plugins": [
-          [
-            "react-transform",
-            {
-              "transforms": [
-                {
-                  "transform": "react-transform-hmr",
-                  "imports": [
-                    "react"
-                  ],
-                  "locals": [
-                    "module"
-                  ]
-                },
-                {
-                  "transform": "react-transform-catch-errors",
-                  "imports": [
-                    "react",
-                    "redbox-react"
-                  ]
-                }
-              ]
-            }
-          ]
-        ]
-      }
-    }
+      "shopify/web",
+      "shopify/react",
+      "shopify/flow"
+    ]
   },
   "eslintConfig": {
     "extends": [
-      "plugin:shopify/react"
-    ]
-  },
-  "stylelint": {
-    "extends": "stylelint-config-shopify"
+      "plugin:shopify/react",
+      "plugin:shopify/flow"
+    ],
+    "rules": {
+      "react/forbid-component-props": "off",
+      "react/no-unused-prop-types": "off"
+    }
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.6",
-    "babel-cli": "^6.10.1",
-    "babel-core": "^6.9.1",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-css-modules-transform": "^0.1.1",
-    "babel-plugin-react-transform": "^2.0.0",
-    "babel-plugin-transform-react-constant-elements": "^6.9.1",
-    "babel-preset-shopify": "^11.3.1-0",
-    "babel-watch": "^2.0.2",
-    "css-loader": "^0.23.1",
-    "cssnano": "^3.7.1",
-    "eslint": "^2.10.0",
-    "eslint-plugin-shopify": "^12.1.0",
+    "autoprefixer": "^6.5.1",
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-shopify": "^15.0.1",
+    "core-js": "^2.4.1",
+    "css-loader": "^0.25.0",
+    "cssnano": "^3.7.7",
+    "eslint": "^3.7.0",
+    "eslint-plugin-shopify": "15.0.3",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "flow-bin": "^0.27.0",
-    "glob": "^7.0.5",
-    "node-sass": "^3.8.0",
-    "open": "0.0.5",
-    "postcss-loader": "^0.9.1",
-    "react-transform-catch-errors": "^1.0.2",
-    "react-transform-hmr": "^1.0.4",
-    "redbox-react": "^1.2.8",
-    "sass-loader": "^3.2.1",
-    "shelljs": "^0.7.0",
+    "flow-bin": "^0.33.0",
+    "node-sass": "^3.10.1",
+    "open": "^0.0.5",
+    "postcss-loader": "^1.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-hot-loader": "3.0.0-beta.6",
+    "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "stylelint": "^6.9.0",
-    "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.0"
   },
-  "dependencies": {
-    "core-js": "^2.4.0",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+  "peerDependencies": {
+    "core-js": "^2.4.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   }
 }

@@ -1,5 +1,17 @@
+@import 'foundation/utilities';
+
 .Icon {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: rem(16px);
+  width: rem(16px);
   background-color: currentColor;
+}
+
+.sizeLarge {
+  height: rem(20px);
+  width: rem(20px);
+}
+
+.sizeSmall {
+  height: rem(10px);
+  width: rem(10px);
 }

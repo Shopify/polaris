@@ -1,18 +1,20 @@
 // @flow
 
 import React from 'react';
-import styles from './Stack.scss';
-
-import Item from './Item';
 
 import {css, variation} from '../../utilities/styles';
-import {elementChildren} from '../../utilities/react';
+import {elementChildren, wrapWithComponent} from '../../utilities/react';
+
+import styles from './Stack.scss';
+import Item from './Item';
 
 type Props = {
   children?: any,
   vertical?: boolean,
+  wrap?: boolean,
   spacing?: 'tight' | 'loose' | 'none',
-  distribution?: 'equalSpacing' | 'leading' | 'trailing' | 'center' | 'fill',
+  alignment?: 'leading' | 'trailing' | 'center' | 'fill' | 'baseline',
+  distribution?: 'equalSpacing' | 'leading' | 'trailing' | 'center' | 'fill' | 'fillEvenly',
 };
 
 export default function Stack(props: Props) {
@@ -20,7 +22,10 @@ export default function Stack(props: Props) {
 
   return (
     <div className={classNameForStack(props)}>
-      {elementChildren(children).map(wrapChildInItem)}
+      {
+        elementChildren(children)
+          .map((child, index) => wrapWithComponent(child, Item, {key: index}))
+      }
     </div>
   );
 }
@@ -31,16 +36,13 @@ Stack.defaultProps = {
   vertical: false,
 };
 
-function classNameForStack({vertical, spacing, distribution}) {
+function classNameForStack({vertical, spacing, distribution, alignment, wrap = true}) {
   return css([
     styles.Stack,
+    !wrap && styles.noWrap,
     vertical && styles.vertical,
     spacing && styles[variation('spacing', spacing)],
     distribution && styles[variation('distribution', distribution)],
+    alignment && styles[variation('alignment', alignment)],
   ]);
-}
-
-function wrapChildInItem(child, index) {
-  if (child.type === Item) { return child; }
-  return <Item key={index}>{child}</Item>;
 }

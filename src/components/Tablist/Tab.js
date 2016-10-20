@@ -1,24 +1,30 @@
 // @flow
 
 import React from 'react';
-import styles from './Tablist.scss';
 
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 
+import styles from './Tablist.scss';
+
 type Props = {
   children?: any,
   selected: boolean,
-  onClick: (event: Object) => void,
+  position: number,
+  onClick: (position: number) => void,
 };
 
 export default function Tab(props: Props) {
-  const {children, onClick} = props;
+  const {children, position, onClick} = props;
+
+  function handleClick() {
+    onClick(position);
+  }
 
   return (
     <button
       className={classNameForTab(props)}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {children}
     </button>

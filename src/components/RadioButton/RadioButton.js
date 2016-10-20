@@ -1,12 +1,13 @@
 // @flow
 
 import React from 'react';
-import styles from './RadioButton.scss';
 
 import Label from '../Label';
 
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
+
+import styles from './RadioButton.scss';
 
 type Props = {
   label?: any,
@@ -20,8 +21,14 @@ type Props = {
 export default function RadioButton(props: Props) {
   const {label, checked, disabled, onClick = noop, id = uniqueID(), name = id} = props;
 
+  function handleClick(...args) {
+    if (!disabled) {
+      onClick(...args);
+    }
+  }
+
   return (
-    <div className={classNameForRadioButton(props)} onClick={(...args) => !disabled && onClick(...args)}>
+    <div className={classNameForRadioButton(props)} onClick={handleClick}>
       <div className={styles.Box}>
         <div className={styles.SelectedMark} />
         <input

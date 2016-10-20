@@ -4,7 +4,6 @@
 
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
-import styles from './Popover.scss';
 
 import EventListener from '../EventListener';
 
@@ -13,12 +12,14 @@ import {noop} from '../../utilities/other';
 import {nodeContainsDescendant} from '../../utilities/dom';
 import {getRectForNode, Rect} from '../../utilities/geometry';
 
+import styles from './Popover.scss';
+
 type Props = {
   active?: boolean,
   children?: any,
   activator: HTMLElement,
   onCloseRequest: () => void,
-}
+};
 
 type State = {
   needsMeasurement: boolean,

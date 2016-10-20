@@ -1,12 +1,12 @@
 // @flow
 
 import React, {Children} from 'react';
-import styles from './FormLayout.scss';
-
-import Item from './Item';
 
 import {wrapWithComponent} from '../../utilities/react';
 import {css} from '../../utilities/styles';
+
+import styles from './FormLayout.scss';
+import Item from './Item';
 
 type Props = {
   children?: any,

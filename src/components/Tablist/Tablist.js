@@ -2,7 +2,6 @@
 
 import React, {Component} from 'react';
 import styles from './Tablist.scss';
-
 import Tab from './Tab';
 
 type State = {
@@ -11,12 +10,14 @@ type State = {
 
 type Props = {
   children?: any,
-  tabs: React.Element[],
+  tabs: React$Element<*>[],
   selected?: number,
 };
 
 export default class Tablist extends Component {
   static Tab = Tab;
+
+  handleTabClick = this.handleTabClick.bind(this);
 
   static defaultProps = {
     tabs: [],
@@ -36,6 +37,10 @@ export default class Tablist extends Component {
     this.setState({selected});
   }
 
+  handleTabClick(position: number) {
+    this.setState({selected: position});
+  }
+
   render() {
     const {state: {selected}, props: {tabs}} = this;
 
@@ -44,8 +49,9 @@ export default class Tablist extends Component {
         {tabs.map((tab, index) => (
           <Tab
             key={index}
+            position={index}
             selected={index === selected}
-            onClick={() => this.setState({selected: index})}
+            onClick={this.handleTabClick}
           >
             {tab}
           </Tab>

@@ -1,19 +1,21 @@
 // @flow
 
 import React from 'react';
-import styles from './Layout.scss';
 
-import Stack from '../Stack';
 import Heading from '../Heading';
 import TypeContainer from '../TypeContainer';
 
 import {css} from '../../utilities/styles';
-import {wrapWithComponent} from '../../utilities/react';
+import {wrapWithComponent, isElementOfType, elementChildren} from '../../utilities/react';
+
+import styles from './Layout.scss';
 
 type Props = {
   children?: any,
-  fullWidth: boolean,
+  fullWidth?: boolean,
 };
+
+const SECTION_COMPONENTS = [LayoutSection, AnnotatedSection];
 
 export default function Layout(props: Props) {
   const {children} = props;
@@ -21,7 +23,13 @@ export default function Layout(props: Props) {
   return (
     <div className={classNameForLayout(props)}>
       <div className={styles.Content}>
-        {children}
+        {elementChildren(children).map((child) => {
+          if (isElementOfType(child, SECTION_COMPONENTS)) {
+            return child;
+          } else {
+            return <LayoutSection>{child}</LayoutSection>;
+          }
+        })}
       </div>
     </div>
   );
@@ -40,14 +48,14 @@ function classNameForLayout({fullWidth}) {
 
 type SectionProps = {
   children?: any,
-  secondary: boolean,
+  secondary?: boolean,
 };
 
 function LayoutSection(props: SectionProps) {
   const {children} = props;
   return (
     <div className={classNameForSection(props)}>
-      <Stack vertical>{children}</Stack>
+      {children}
     </div>
   );
 }

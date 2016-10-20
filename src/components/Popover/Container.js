@@ -3,14 +3,14 @@
 import React, {Component, cloneElement} from 'react';
 import {findDOMNode} from 'react-dom';
 
-import Popover from './Popover';
-
 import {layeredComponent} from '../../utilities/react';
 
+import Popover from './Popover';
+
 type Props = {
-  activator: React.Element,
+  activator: React$Element<*>,
   children?: any,
-}
+};
 
 type State = {
   active: boolean,
@@ -21,15 +21,8 @@ class PopoverContainer extends Component {
 
   props: Props;
   state: State = {active: false};
-  handleClick: (event: Object) => void;
-  handleOutsideClick: (event: Object) => void;
-
-  constructor(props: Props, context: Object) {
-    super(props, context);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
-  }
+  handleClick = this.handleClick.bind(this);
+  handleOutsideClick = this.handleOutsideClick.bind(this);
 
   get activatorNode() {
     return findDOMNode(this);

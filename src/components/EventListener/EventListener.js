@@ -7,7 +7,7 @@ type Props = {
   event: string,
   handler: (event: Object) => void,
   capture: boolean,
-}
+};
 
 export default class EventListener extends Component {
   static defaultProps = {

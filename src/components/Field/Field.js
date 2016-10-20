@@ -1,27 +1,28 @@
 // @flow
 
 import React, {Component} from 'react';
-import styles from './Field.scss';
 
 import Labelled from '../Labelled';
-import Connected from './Connected';
 
 import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
+
+import Connected from './Connected';
+import styles from './Field.scss';
 
 type Props = {
   leftAddon?: any,
   rightAddon?: any,
   placeholder?: string,
-  value: string,
-  onChange: (event: Object) => void,
+  value?: ?string,
+  onChange: (value: ?string) => void,
   helpText?: string,
   label?: string,
   labelNote?: string,
   labelAction?: any,
   labelHidden?: boolean,
   disabled?: boolean,
-  readonly?: boolean,
+  readOnly?: boolean,
   hasError?: boolean,
   connectedRight?: any,
   connectedLeft?: any,
@@ -36,7 +37,6 @@ type State = {
 
 export default class Field extends Component {
   static defaultProps = {
-    value: '',
     onChange: noop,
     hasError: false,
     labelHidden: false,
@@ -46,15 +46,15 @@ export default class Field extends Component {
   state: State = {focused: false};
   props: Props;
   id: string;
-  handleFocus: (event: Object) => void;
-  handleBlur: (event: Object) => void;
+
+  handleFocus = this.handleFocus.bind(this);
+  handleBlur = this.handleBlur.bind(this);
+  handleChange = this.handleChange.bind(this);
 
   constructor(props: Props, context: Object) {
     super(props, context);
 
     this.id = props.id || uniqueID();
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
   }
 
   componentDidReceiveProps(newProps: Props) {
@@ -67,6 +67,10 @@ export default class Field extends Component {
 
   handleBlur() {
     this.setState({focused: false});
+  }
+
+  handleChange(event: {target: HTMLInputElement}) {
+    this.props.onChange(event.target.value);
   }
 
   get hasValue(): boolean {
@@ -102,9 +106,8 @@ export default class Field extends Component {
     const {
       value,
       placeholder,
-      onChange,
       disabled,
-      readonly,
+      readOnly,
       type,
       name,
     } = this.props;
@@ -117,13 +120,13 @@ export default class Field extends Component {
           id={this.id}
           type={type}
           disabled={disabled}
-          readonly={readonly}
-          value={value}
+          readOnly={readOnly}
+          value={value || ''}
           className={styles.Input}
           placeholder={placeholder}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          onChange={onChange}
+          onChange={this.handleChange}
         />
         {this.renderRightAddon()}
       </div>
@@ -133,7 +136,7 @@ export default class Field extends Component {
   render() {
     const {
       disabled,
-      readonly,
+      readOnly,
       connectedRight,
       connectedLeft,
       hasError,
@@ -145,7 +148,7 @@ export default class Field extends Component {
 
     const details = {
       disabled,
-      readonly,
+      readOnly,
       hasError,
       hasValue: this.hasValue,
       focused: this.state.focused,
@@ -180,13 +183,13 @@ export default class Field extends Component {
   }
 }
 
-function classNameForField({focused, disabled, readonly, hasError, hasValue}) {
+function classNameForField({focused, disabled, readOnly, hasError, hasValue}) {
   return css([
     styles.Field,
     hasValue && styles.hasValue,
     focused && styles.focused,
     disabled && styles.disabled,
-    readonly && styles.readonly,
+    readOnly && styles.readOnly,
     hasError && styles.hasError,
   ]);
 }

@@ -1,13 +1,13 @@
 // @flow
 
 import React, {Children} from 'react';
-import styles from './FormLayout.scss';
+
+import {css} from '../../utilities/styles';
+import {wrapWithComponent, isElementOfType} from '../../utilities/react';
 
 import Group from './Group';
 import Item from './Item';
-
-import {css} from '../../utilities/styles';
-import {wrapWithComponent} from '../../utilities/react';
+import styles from './FormLayout.scss';
 
 type Props = {
   children?: any,
@@ -32,7 +32,7 @@ FormLayout.defaultProps = {
 };
 
 function wrapChildren(child, index) {
-  if (child && child.type === Group) { return child; }
+  if (isElementOfType(child, Group)) { return child; }
   return wrapWithComponent(child, Item, {key: index});
 }
 
