@@ -23,7 +23,7 @@ import {
   Select,
   Stack,
   Tablist,
-} from '@shopify/quilt/components';
+} from '@shopify/quilt';
 
 type State = {
   fieldValue: ?string,

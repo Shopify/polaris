@@ -1,7 +1,2 @@
 /lib
 /build
-/components
-/utilities
-/index.js
-/src/components/Sidebar
-/webpack.config.babel.js

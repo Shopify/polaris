@@ -18,7 +18,7 @@ export default {
   },
   resolve: {
     alias: {
-      '@shopify/quilt': sourceRoot,
+      '@shopify/quilt': resolve(sourceRoot, './components'),
     },
   },
   output: {
