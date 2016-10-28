@@ -2,12 +2,12 @@
 
 import {resolve} from 'path';
 import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
+import addQuiltWebpackConfig from '../../webpack';
 
 const demoRoot = resolve(__dirname, '..');
-const sourceRoot = resolve(demoRoot, '../src');
+const projectRoot = resolve(demoRoot, '..');
 
-export default {
+const config = {
   context: demoRoot,
   entry: {
     app: [
@@ -18,7 +18,7 @@ export default {
   },
   resolve: {
     alias: {
-      '@shopify/quilt': resolve(sourceRoot, './components'),
+      '@shopify/quilt': projectRoot,
     },
   },
   output: {
@@ -34,7 +34,7 @@ export default {
         loader: 'babel',
         query: {
           presets: [
-            'shopify/web',
+            ['shopify/web', {modules: false}],
             'shopify/react',
             'shopify/flow',
           ],
@@ -42,29 +42,16 @@ export default {
         },
         exclude: [/node_modules/],
       },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css?sourceMap&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-          'sass?sourceMap',
-          'postcss?sourceMap',
-        ],
-      },
     ],
   },
-  postcss() {
-    return [autoprefixer()];
-  },
-  sassLoader: {
-    includePaths: [resolve(sourceRoot, 'styles')],
-  },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
   ],
 };
+
+addQuiltWebpackConfig(config);
+
+export default config;

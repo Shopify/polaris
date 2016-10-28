@@ -1,23 +1,18 @@
 /* eslint-env node */
 /* eslint flowtype/require-valid-file-annotation: off */
 
-import {resolve} from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
+import addQuiltWebpackConfig from '../webpack';
 
 const {
-  optimize: {OccurenceOrderPlugin, UglifyJsPlugin, DedupePlugin},
+  optimize: {OccurrenceOrderPlugin, UglifyJsPlugin},
+  LoaderOptionsPlugin,
   DefinePlugin,
   NoErrorsPlugin,
 } = webpack;
 
-const cssExtractor = new ExtractTextPlugin('quilt.css', {
-  allChunks: true,
-});
-
-export default {
+const config = {
   output: {
     library: 'Quilt',
     libraryTarget: 'var',
@@ -26,42 +21,36 @@ export default {
     react: 'React',
     'react-dom': 'ReactDOM',
   },
-  debug: false,
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.scss$/,
-        loader: cssExtractor.extract(
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!sass!postcss',
-        ),
-      },
-    ],
-  },
-  postcss() {
-    return [autoprefixer(), cssnano()];
-  },
-  sassLoader: {
-    includePaths: [resolve(__dirname, '../src/styles')],
-  },
   plugins: [
+    new LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+    }),
     new NoErrorsPlugin(),
-    cssExtractor,
-    new OccurenceOrderPlugin(),
-    new DedupePlugin(),
+    new ExtractTextPlugin({filename: 'quilt.css', allChunks: true}),
+    new OccurrenceOrderPlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true, // eslint-disable-line camelcase
+      compress: {
+        // eslint-disable-next-line camelcase
+        screw_ie8: true,
         warnings: false,
+      },
+      mangle: {
+        // eslint-disable-next-line camelcase
+        screw_ie8: true,
+      },
+      output: {
+        comments: false,
+        // eslint-disable-next-line camelcase
+        screw_ie8: true,
       },
     }),
   ],
 };
+
+addQuiltWebpackConfig(config, {mode: 'production', target: 'client'});
+
+export default config;

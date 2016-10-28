@@ -3,6 +3,7 @@
 @import 'foundation/colors';
 @import 'foundation/spacing';
 @import 'foundation/typography';
+
 $InputWrapper-icon-size: 1rem;
 
 .focused .InputWrapper {
@@ -36,6 +37,7 @@ $InputWrapper-icon-size: 1rem;
   font-weight: inherit;
   line-height: inherit;
   width: 100%;
+  -webkit-appearance: none;
   appearance: none;
   border: none;
   background: transparent;
