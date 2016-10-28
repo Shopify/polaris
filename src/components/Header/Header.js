@@ -1,11 +1,10 @@
 // @flow
 
 import React, {PropTypes} from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Button from '../Button';
 import ButtonGroup from '../ButtonGroup';
-
-import {css} from '../../utilities/styles';
 
 import styles from './Header.scss';
 
@@ -22,9 +21,16 @@ type Context = {
   appActions: {toggleSidebar: () => void},
 };
 
-export default function Header(props: Props, {appActions: {toggleSidebar}}: Context) {
-  const {children, buttons, icon, withoutSidebarButton} = props;
-
+export default function Header({
+  children,
+  buttons,
+  icon,
+  dark,
+  transparent,
+  withoutSidebarButton,
+}: Props, {
+  appActions: {toggleSidebar},
+}: Context) {
   const leftButton = withoutSidebarButton
     ? null
     : (
@@ -33,8 +39,14 @@ export default function Header(props: Props, {appActions: {toggleSidebar}}: Cont
       </div>
     );
 
+  const className = classNames(
+    styles.Header,
+    dark && styles.dark,
+    transparent && styles.transparent,
+  );
+
   return (
-    <div className={classNameForHeader(props)}>
+    <div className={className}>
       {leftButton}
 
       {icon && (
@@ -61,11 +73,3 @@ Header.contextTypes = {
     toggleSidebar: PropTypes.func,
   }),
 };
-
-function classNameForHeader({dark, transparent}: Props) {
-  return css([
-    styles.Header,
-    dark && styles.dark,
-    transparent && styles.transparent,
-  ]);
-}

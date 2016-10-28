@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {css} from '../../utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
 import styles from './Subheading.scss';
 
 type Props = {
@@ -10,17 +10,13 @@ type Props = {
   subdued?: boolean,
 };
 
-export default function Subheading(props: Props) {
-  const {level = 3, children} = props;
-
-  return level === 3
-    ? <h3 className={classNameForSubheading(props)}>{children}</h3>
-    : <h4 className={classNameForSubheading(props)}>{children}</h4>;
-}
-
-function classNameForSubheading({subdued}) {
-  return css([
+export default function Subheading({level = 3, children, subdued}: Props) {
+  const className = classNames(
     styles.Subheading,
     subdued && styles.subdued,
-  ]);
+  );
+
+  return level === 3
+    ? <h3 className={className}>{children}</h3>
+    : <h4 className={className}>{children}</h4>;
 }

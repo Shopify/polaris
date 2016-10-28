@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {css} from '../../utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
 import styles from './TypeContainer.scss';
 
 type Props = {
@@ -9,17 +9,13 @@ type Props = {
   subdued?: boolean,
 };
 
-export default function TypeContainer(props: Props) {
-  const {children} = props;
-
-  return (
-    <div className={classNameForTypeContainer(props)}>{children}</div>
-  );
-}
-
-function classNameForTypeContainer({subdued}) {
-  return css([
+export default function TypeContainer({children, subdued}: Props) {
+  const className = classNames(
     styles.TypeContainer,
     subdued && styles.subdued,
-  ]);
+  );
+
+  return (
+    <div className={className}>{children}</div>
+  );
 }

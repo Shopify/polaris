@@ -1,11 +1,10 @@
 // @flow
 
 import React from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Label from '../Label';
-// eslint-disable-next-line no-duplicate-imports
 import type {Props as LabelProps} from '../Label';
-import {css} from '../../utilities/styles';
 
 import styles from './index.scss';
 
@@ -15,11 +14,14 @@ type Props = LabelProps & {
   label?: any,
 };
 
-export default function Labelled(props: Props) {
-  const {label, children, ...rest} = props;
+export default function Labelled({label, children, labelHidden, ...rest}: Props) {
+  const className = classNames(
+    styles.Labelled,
+    labelHidden && styles.hidden,
+  );
 
   return (
-    <div className={classNameForLabelled(props)}>
+    <div className={className}>
       <div className={styles.LabelWrapper}>
         <Label {...rest}>{label}</Label>
       </div>
@@ -27,11 +29,4 @@ export default function Labelled(props: Props) {
       {children}
     </div>
   );
-}
-
-function classNameForLabelled({labelHidden}) {
-  return css([
-    styles.Labelled,
-    labelHidden && styles.hidden,
-  ]);
 }

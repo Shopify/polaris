@@ -1,28 +1,27 @@
 {
   "name": "@shopify/quilt",
-  "private": true,
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "lint:flow": "flow",
+    "flow": "flow",
     "lint:scripts": "eslint . --max-warnings 0",
     "lint:styles": "stylelint 'src/**/*.scss' --syntax scss",
-    "lint": "npm run lint:flow && npm run lint:scripts && npm run lint:styles",
+    "lint": "yarn run lint:scripts && yarn run lint:styles",
     "format:scripts": "eslint . --fix >/dev/null",
-    "format": "npm run format:scripts",
+    "format": "yarn run format:scripts",
     "test": "",
-    "check": "npm run lint && npm run test",
+    "check": "yarn run flow && yarn run lint && yarn run test",
     "parker": "parker build/assets.css --format json > build/parker.json",
     "demo": "babel-node demo/server.js",
     "build:node": "babel src --out-dir .",
     "build:styles": "bin/styles",
     "build:lib": "webpack src/index.js build/quilt.js --config config/webpack.babel.js",
-    "build": "npm run build:node && npm run build:lib && npm run build:styles",
+    "build": "yarn run build:node && yarn run build:lib && yarn run build:styles",
     "clean": "rm -rf build components styles utilities index.js",
-    "preversion": "npm run clean && npm test",
+    "preversion": "yarn run clean && npm test",
     "prepublish": "",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && npm run clean"
+    "version": "yarn run build",
+    "postversion": "git push && git push --tags && yarn run clean"
   },
   "keywords": [
     "shopify",
@@ -75,5 +74,9 @@
     "core-js": "^2.4.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
+  },
+  "dependencies": {
+    "@shopify/react-utilities": "^0.4.0",
+    "classnames": "^2.2.5"
   }
 }

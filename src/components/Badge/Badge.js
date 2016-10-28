@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {css} from '../../utilities/styles';
+import {classNames, variationName} from '@shopify/react-utilities/styles';
 import styles from './Badge.scss';
 
 type Props = {
@@ -9,15 +9,15 @@ type Props = {
   status?: 'success' | 'subdued' | 'info' | 'success' | 'attention' | 'warning' | 'critical',
 };
 
-export default function Badge(props: Props) {
+export default function Badge({children, status}: Props) {
   return (
-    <span className={classNameForBadge(props)}>{props.children}</span>
+    <span
+      className={classNames(
+        styles.Badge,
+        status && styles[variationName('status', status)],
+      )}
+    >
+      {children}
+    </span>
   );
-}
-
-function classNameForBadge({status}) {
-  return css([
-    styles.Badge,
-    status && styles[`status${status[0].toUpperCase()}${status.substring(1)}`],
-  ]);
 }

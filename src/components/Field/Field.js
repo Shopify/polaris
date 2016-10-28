@@ -1,10 +1,9 @@
 // @flow
 
 import React, {Component} from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Labelled from '../Labelled';
-
-import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 
 import Connected from './Connected';
@@ -146,13 +145,14 @@ export default class Field extends Component {
       labelHidden,
     } = this.props;
 
-    const details = {
-      disabled,
-      readOnly,
-      hasError,
-      hasValue: this.hasValue,
-      focused: this.state.focused,
-    };
+    const className = classNames(
+      styles.Field,
+      this.hasValue && styles.hasValue,
+      this.state.focused && styles.focused,
+      disabled && styles.disabled,
+      readOnly && styles.readOnly,
+      hasError && styles.hasError,
+    );
 
     let fullInput = this.renderInput();
 
@@ -167,7 +167,7 @@ export default class Field extends Component {
     }
 
     return (
-      <div className={classNameForField(details)}>
+      <div className={className}>
         <Labelled
           label={label}
           id={this.id}
@@ -181,17 +181,6 @@ export default class Field extends Component {
       </div>
     );
   }
-}
-
-function classNameForField({focused, disabled, readOnly, hasError, hasValue}) {
-  return css([
-    styles.Field,
-    hasValue && styles.hasValue,
-    focused && styles.focused,
-    disabled && styles.disabled,
-    readOnly && styles.readOnly,
-    hasError && styles.hasError,
-  ]);
 }
 
 let index = 1;

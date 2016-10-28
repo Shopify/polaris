@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {css} from '../../utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
 import styles from './Stack.scss';
 
 type Props = {
@@ -9,18 +9,11 @@ type Props = {
   fill?: boolean,
 };
 
-export default function Item(props: Props) {
-  const {children} = props;
-  return <div className={classNameForItem(props)}>{children}</div>;
-}
-
-function classNameForItem({fill}) {
-  return css([
+export default function Item({children, fill}: Props) {
+  const className = classNames(
     styles.StackItem,
     fill && styles.fill,
-  ]);
-}
+  );
 
-Item.defaultProps = {
-  fill: false,
-};
+  return <div className={className}>{children}</div>;
+}

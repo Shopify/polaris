@@ -12,6 +12,10 @@
   @include main-content-when-not-condensed {
     border-radius: border-radius();
   }
+
+  + .Card {
+    margin-top: spacing();
+  }
 }
 
 .secondary {

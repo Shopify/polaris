@@ -1,9 +1,7 @@
 // @flow
 
 import React, {Component} from 'react';
-
-import {css} from '../../utilities/styles';
-
+import {classNames} from '@shopify/react-utilities/styles';
 import styles from './Frame.scss';
 
 type Props = {
@@ -67,9 +65,15 @@ export default class Frame extends Component {
   render() {
     const {isTransitioning, needsSetup} = this.state;
     const {children, sidebar, showSidebar} = this.props;
+    const className = classNames(
+      styles.Sidebar,
+      !needsSetup && showSidebar && styles.isShowing,
+      isTransitioning && styles.isTransitioning,
+    );
+
     const sidebarElement = sidebar && (
       <div
-        className={classNameForSidebar({isShowing: showSidebar, isTransitioning, needsSetup})}
+        className={className}
         ref={this.setSidebarContainerRef}
       >
         {sidebar}
@@ -81,7 +85,7 @@ export default class Frame extends Component {
         {sidebarElement}
 
         <div
-          className={css([styles.SidebarOverlay, showSidebar && styles.isCovering])}
+          className={classNames(styles.SidebarOverlay, showSidebar && styles.isCovering)}
           onClick={this.handleSidebarDismiss}
         />
 
@@ -91,12 +95,4 @@ export default class Frame extends Component {
       </div>
     );
   }
-}
-
-function classNameForSidebar({isShowing, isTransitioning, needsSetup}) {
-  return css([
-    styles.Sidebar,
-    !needsSetup && isShowing && styles.isShowing,
-    isTransitioning && styles.isTransitioning,
-  ]);
 }

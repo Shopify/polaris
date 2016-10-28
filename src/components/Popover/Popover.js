@@ -4,10 +4,10 @@
 
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import EventListener from '../EventListener';
 
-import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 import {nodeContainsDescendant} from '../../utilities/dom';
 import {getRectForNode, Rect} from '../../utilities/geometry';
@@ -90,11 +90,15 @@ export default class Popover extends Component {
     const containerRect = getRectForNode(activator.closest('[data-quilt-container]') || window);
     const position = calculatePosition({activatorRect, containerRect, popoverRect});
     const tipStyle = {left: activatorRect.center.x - position.left};
+    const className = classNames(
+      styles.Popover,
+      needsMeasurement && styles.calculating,
+    );
 
     return (
       <div
         style={position}
-        className={classNameForPopover({needsMeasurement})}
+        className={className}
         ref={this.handleMeasurement}
       >
         <EventListener event="click" handler={this.handleClick} />
@@ -121,11 +125,4 @@ function calculatePosition({activatorRect, containerRect, popoverRect}) {
   );
 
   return {top: activatorRect.top + activatorRect.height, left};
-}
-
-function classNameForPopover({needsMeasurement}) {
-  return css([
-    styles.Popover,
-    needsMeasurement && styles.calculating,
-  ]);
 }

@@ -1,9 +1,6 @@
 *.log
 node_modules
 /build
-/components
-/utilities
-/index.js
 /styles/*
 !/styles/index.js
 *.test.js

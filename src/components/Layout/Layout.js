@@ -1,12 +1,11 @@
 // @flow
 
 import React from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
+import {wrapWithComponent, isElementOfType, elementChildren} from '@shopify/react-utilities/components';
 
 import Heading from '../Heading';
 import TypeContainer from '../TypeContainer';
-
-import {css} from '../../utilities/styles';
-import {wrapWithComponent, isElementOfType, elementChildren} from '../../utilities/react';
 
 import styles from './Layout.scss';
 
@@ -17,11 +16,14 @@ type Props = {
 
 const SECTION_COMPONENTS = [LayoutSection, AnnotatedSection];
 
-export default function Layout(props: Props) {
-  const {children} = props;
+export default function Layout({children, fullWidth}: Props) {
+  const className = classNames(
+    styles.Layout,
+    fullWidth && styles.fullWidth,
+  );
 
   return (
-    <div className={classNameForLayout(props)}>
+    <div className={className}>
       <div className={styles.Content}>
         {elementChildren(children).map((child) => {
           if (isElementOfType(child, SECTION_COMPONENTS)) {
@@ -35,32 +37,24 @@ export default function Layout(props: Props) {
   );
 }
 
-Layout.defaultProps = {
-  fullWidth: false,
-};
-
-function classNameForLayout({fullWidth}) {
-  return css([
-    styles.Layout,
-    fullWidth && styles.fullWidth,
-  ]);
-}
-
 type SectionProps = {
   children?: any,
   secondary?: boolean,
 };
 
-function LayoutSection(props: SectionProps) {
-  const {children} = props;
+function LayoutSection({children, secondary}: SectionProps) {
+  const className = classNames(
+    styles.Section,
+    secondary && styles.secondary,
+  );
+
   return (
-    <div className={classNameForSection(props)}>
+    <div className={className}>
       {children}
     </div>
   );
 }
 
-LayoutSection.defaultProps = {secondary: false};
 Layout.Section = LayoutSection;
 
 type AnnotatedSectionProps = {
@@ -92,10 +86,3 @@ function AnnotatedSection(props: AnnotatedSectionProps) {
 }
 
 Layout.AnnotatedSection = AnnotatedSection;
-
-function classNameForSection({secondary}) {
-  return css([
-    styles.Section,
-    secondary && styles.secondary,
-  ]);
-}

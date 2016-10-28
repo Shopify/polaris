@@ -1,10 +1,9 @@
 // @flow
 
 import React from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Label from '../Label';
-
-import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 
 import styles from './Checkbox.scss';
@@ -17,16 +16,26 @@ type Props = {
   onClick?: (event: Object) => void,
 };
 
-export default function Checkbox(props: Props) {
-  const {label, checked, disabled, onClick = noop, id = uniqueID()} = props;
-
+export default function Checkbox({
+  label,
+  checked,
+  disabled,
+  onClick = noop,
+  id = uniqueID(),
+}: Props) {
   function handleClick(...args) {
     if (disabled) { return; }
     onClick(...args);
   }
 
+  const className = classNames(
+    styles.Checkbox,
+    checked && styles.checked,
+    disabled && styles.disabled,
+  );
+
   return (
-    <div className={classNameForCheckbox(props)} onClick={handleClick} tabIndex={0}>
+    <div className={className} onClick={handleClick} tabIndex={0}>
       <div className={styles.Box}>
         <div className={styles.Checkmark} />
         <input
@@ -42,14 +51,6 @@ export default function Checkbox(props: Props) {
       </div>
     </div>
   );
-}
-
-function classNameForCheckbox({checked, disabled}) {
-  return css([
-    styles.Checkbox,
-    checked && styles.checked,
-    disabled && styles.disabled,
-  ]);
 }
 
 let index = 1;

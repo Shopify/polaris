@@ -1,9 +1,8 @@
 // @flow
 
 import React, {cloneElement, Component} from 'react';
-
-import {css} from '../../utilities/styles';
-import {elementChildren} from '../../utilities/react';
+import {classNames} from '@shopify/react-utilities/styles';
+import {elementChildren} from '@shopify/react-utilities/components';
 
 import styles from './Field.scss';
 
@@ -73,17 +72,14 @@ class ConnectedItem extends Component {
   render() {
     const {children, focused} = this.props;
     const isInput = (children != null) && (children.type === 'div');
+    const className = classNames(
+      styles.ConnectedItem,
+      focused && styles.focusedItem,
+      isInput && styles.stretch,
+    );
 
     return (
-      <div onFocus={this.handleFocus} className={classNameForConnectedItem({isInput, focused})}>{children}</div>
+      <div onFocus={this.handleFocus} className={className}>{children}</div>
     );
   }
-}
-
-function classNameForConnectedItem({isInput, focused}) {
-  return css([
-    styles.ConnectedItem,
-    focused && styles.focusedItem,
-    isInput && styles.stretch,
-  ]);
 }

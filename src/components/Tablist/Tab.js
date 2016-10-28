@@ -1,8 +1,8 @@
 // @flow
 
 import React from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
-import {css} from '../../utilities/styles';
 import {noop} from '../../utilities/other';
 
 import styles from './Tablist.scss';
@@ -14,31 +14,24 @@ type Props = {
   onClick: (position: number) => void,
 };
 
-export default function Tab(props: Props) {
-  const {children, position, onClick} = props;
+export default function Tab({
+  children,
+  position,
+  onClick = noop,
+  selected,
+}: Props) {
+  const className = classNames(
+    styles.Tab,
+    selected && styles.selected,
+  );
 
   function handleClick() {
     onClick(position);
   }
 
   return (
-    <button
-      className={classNameForTab(props)}
-      onClick={handleClick}
-    >
+    <button className={className} onClick={handleClick}>
       {children}
     </button>
   );
-}
-
-Tab.defaultProps = {
-  selected: false,
-  onClick: noop,
-};
-
-function classNameForTab({selected}) {
-  return css([
-    styles.Tab,
-    selected && styles.selected,
-  ]);
 }

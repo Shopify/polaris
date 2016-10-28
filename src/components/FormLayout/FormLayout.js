@@ -1,9 +1,8 @@
 // @flow
 
 import React, {Children} from 'react';
-
-import {css} from '../../utilities/styles';
-import {wrapWithComponent, isElementOfType} from '../../utilities/react';
+import {classNames} from '@shopify/react-utilities/styles';
+import {wrapWithComponent, isElementOfType} from '@shopify/react-utilities/components';
 
 import Group from './Group';
 import Item from './Item';
@@ -14,11 +13,14 @@ type Props = {
   condensed?: boolean,
 };
 
-export default function FormLayout(props: Props) {
-  const {children} = props;
+export default function FormLayout({children, condensed}: Props) {
+  const className = classNames(
+    styles.FormLayout,
+    condensed && styles.condensed,
+  );
 
   return (
-    <div className={classNameForFormLayout(props)}>
+    <div className={className}>
       {Children.map(children, wrapChildren)}
     </div>
   );
@@ -34,11 +36,4 @@ FormLayout.defaultProps = {
 function wrapChildren(child, index) {
   if (isElementOfType(child, Group)) { return child; }
   return wrapWithComponent(child, Item, {key: index});
-}
-
-function classNameForFormLayout({condensed}) {
-  return css([
-    styles.FormLayout,
-    condensed && styles.condensed,
-  ]);
 }

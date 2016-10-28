@@ -2,8 +2,7 @@
 
 import React, {Component, cloneElement} from 'react';
 import {findDOMNode} from 'react-dom';
-
-import {layeredComponent} from '../../utilities/react';
+import {layeredComponent} from '@shopify/react-utilities/components';
 
 import Popover from './Popover';
 

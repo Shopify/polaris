@@ -1,24 +1,20 @@
 // @flow
 
 import React from 'react';
-
-import {css, variation} from '../../utilities/styles';
-
+import {classNames, variationName} from '@shopify/react-utilities/styles';
 import styles from './Icon.scss';
 
 type Props = {
   size?: 'small' | 'large',
 };
 
-export default function Icon(props: Props) {
-  return (
-    <div className={classNameForIcon(props)} />
-  );
-}
-
-function classNameForIcon({size}: Props) {
-  return css([
+export default function Icon({size}: Props) {
+  const className = classNames(
     styles.Icon,
-    size && styles[variation('size', size)],
-  ]);
+    size && styles[variationName('size', size)],
+  );
+
+  return (
+    <div className={className} />
+  );
 }

@@ -1,9 +1,8 @@
 // @flow
 
 import React, {Children} from 'react';
-
-import {wrapWithComponent} from '../../utilities/react';
-import {css} from '../../utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
+import {wrapWithComponent} from '@shopify/react-utilities/components';
 
 import styles from './FormLayout.scss';
 import Item from './Item';
@@ -13,19 +12,15 @@ type Props = {
   condensed?: boolean,
 };
 
-export default function Group(props: Props) {
-  const {children} = props;
+export default function Group({children, condensed}: Props) {
+  const className = classNames(
+    styles.Group,
+    condensed && styles.condensed,
+  );
 
   return (
-    <div className={classNameForGroup(props)}>
+    <div className={className}>
       {Children.map(children, (child) => wrapWithComponent(child, Item))}
     </div>
   );
-}
-
-function classNameForGroup({condensed}) {
-  return css([
-    styles.Group,
-    condensed && styles.condensed,
-  ]);
 }

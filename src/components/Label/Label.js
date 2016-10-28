@@ -1,9 +1,7 @@
 // @flow
 
 import React from 'react';
-
-import {css} from '../../utilities/styles';
-
+import {classNames} from '@shopify/react-utilities/styles';
 import styles from './Label.scss';
 
 export type Props = {
@@ -14,24 +12,16 @@ export type Props = {
   action?: React$Element<*>,
 };
 
-export default function Label(props: Props) {
-  const {children, note, id, action} = props;
+export default function Label({children, note, id, action, error}: Props) {
+  const className = classNames(
+    styles.Label,
+    error && styles.error,
+  );
 
   return (
     <div className={styles.LabelWrapper}>
-      <label htmlFor={id} className={classNameForLabel(props)}>{children} {note}</label>
+      <label htmlFor={id} className={className}>{children} {note}</label>
       {action}
     </div>
   );
-}
-
-Label.defaultProps = {
-  error: false,
-};
-
-function classNameForLabel({error}) {
-  return css([
-    styles.Label,
-    error && styles.error,
-  ]);
 }

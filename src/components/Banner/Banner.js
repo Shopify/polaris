@@ -1,12 +1,11 @@
 // @flow
 
 import React from 'react';
+import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon from '../Icon';
 import Heading from '../Heading';
 import TypeContainer from '../TypeContainer';
-
-import {css, variation} from '../../utilities/styles';
 
 import styles from './Banner.scss';
 
@@ -16,11 +15,14 @@ type Props = {
   children?: any,
 };
 
-export default function Banner(props: Props) {
-  const {title, children} = props;
+export default function Banner({title, children, status}: Props) {
+  const className = classNames(
+    styles.Banner,
+    status && styles[variationName('status', status)],
+  );
 
   return (
-    <div className={classNameForBanner(props)}>
+    <div className={className}>
       <div className={styles.BannerRibbon}>
         <Icon />
       </div>
@@ -32,11 +34,4 @@ export default function Banner(props: Props) {
       </div>
     </div>
   );
-}
-
-function classNameForBanner({status}) {
-  return css([
-    styles.Banner,
-    status && styles[variation('status', status)],
-  ]);
 }

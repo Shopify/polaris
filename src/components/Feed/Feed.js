@@ -1,12 +1,11 @@
 // @flow
 
 import React from 'react';
+import {wrapWithComponent} from '@shopify/react-utilities/components';
+import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Subheading from '../Subheading';
 import Stack from '../Stack';
-
-import {wrapWithComponent} from '../../utilities/react';
-import {css, variation} from '../../utilities/styles';
 
 import styles from './Feed.scss';
 
@@ -59,17 +58,15 @@ type BadgeProps = {
   topic?: TopicType,
 };
 
-function Badge(props: BadgeProps) {
-  return (
-    <div className={classNameForBadge(props)} />
-  );
-}
-
-function classNameForBadge({topic}: BadgeProps) {
-  return css([
+function Badge({topic}: BadgeProps) {
+  const className = classNames(
     styles.Badge,
-    topic && styles[variation('topic', topic)],
-  ]);
+    topic && styles[variationName('topic', topic)],
+  );
+
+  return (
+    <div className={className} />
+  );
 }
 
 Feed.Section = Section;

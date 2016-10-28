@@ -1,12 +1,11 @@
 // @flow
 
 import React, {Children} from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Heading from '../Heading';
 import Subheading from '../Subheading';
 import TypeContainer from '../TypeContainer';
-
-import {css} from '../../utilities/styles';
 
 import styles from './index.scss';
 
@@ -18,11 +17,17 @@ type Props = {
   withoutSectioning?: boolean,
 };
 
-export default function Card(props: Props) {
-  const {children, title, tablist, withoutSectioning} = props;
+export default function Card({
+  children,
+  title,
+  tablist,
+  withoutSectioning,
+  secondary = false,
+}: Props) {
+  const className = classNames(styles.Card, secondary && styles.secondary);
 
   return (
-    <div className={classNameForCard(props)} data-quilt-container>
+    <div className={className} data-quilt-container>
       {tablist}
       {title ? <CardHeader>{title}</CardHeader> : null}
       {withoutSectioning ? children : wrapChildrenInSections(children)}
@@ -37,13 +42,6 @@ function wrapChildrenInSections(children) {
 
   // eslint-disable-next-line no-confusing-arrow
   return isPreSectioned ? children : <CardSection>{children}</CardSection>;
-}
-
-function classNameForCard({secondary}) {
-  return css([
-    styles.Card,
-    secondary && styles.secondary,
-  ]);
 }
 
 type CardHeaderProps = {

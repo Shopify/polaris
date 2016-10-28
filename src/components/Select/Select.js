@@ -1,9 +1,9 @@
 // @flow
 
 import React, {Component} from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Labelled from '../Labelled';
-import {css} from '../../utilities/styles';
 
 import styles from './Select.scss';
 
@@ -54,9 +54,13 @@ export default class Select extends Component {
 
   render() {
     const {options, labelNote, labelHidden, labelAction, label} = this.props;
+    const className = classNames(
+      styles.Select,
+      this.state.focused && styles.focused,
+    );
 
     return (
-      <div className={classNameForSelect({focused: this.state.focused})}>
+      <div className={className}>
         <Labelled label={label} note={labelNote} action={labelAction} id={this.id} labelHidden={labelHidden}>
           <div className={styles.InputWrapper}>
             <select
@@ -72,13 +76,6 @@ export default class Select extends Component {
       </div>
     );
   }
-}
-
-function classNameForSelect({focused}) {
-  return css([
-    styles.Select,
-    focused && styles.focused,
-  ]);
 }
 
 let id = 1;
