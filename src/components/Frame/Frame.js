@@ -20,9 +20,10 @@ export default class Frame extends Component {
   props: Props;
   state: State = {isTransitioning: false, needsSetup: false};
   sidebarContainer: ?HTMLElement;
-  handleTransitionEnd: () => void = this.handleTransitionEnd.bind(this);
-  handleSidebarDismiss: () => void = this.handleSidebarDismiss.bind(this);
-  setSidebarContainerRef: (node: ?HTMLElement) => void = this.setSidebarContainerRef.bind(this);
+
+  handleTransitionEnd = this.handleTransitionEnd.bind(this);
+  handleSidebarDismiss = this.handleSidebarDismiss.bind(this);
+  setSidebarContainerRef = this.setSidebarContainerRef.bind(this);
 
   handleTransitionEnd() {
     this.setState({isTransitioning: false});

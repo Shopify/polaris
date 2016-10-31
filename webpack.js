@@ -47,7 +47,7 @@ module.exports = function addQuiltWebpackConfig(base, options) {
 
   base.module.loaders.unshift(
     createJSLoader(env),
-    createCSSLoader(env),
+    createCSSLoader(env)
   );
 
   if (env.isProductionClient) {
@@ -56,7 +56,7 @@ module.exports = function addQuiltWebpackConfig(base, options) {
     const hasExtractTextPlugin = base.plugins.some((plugin) => plugin instanceof ExtractTextPlugin);
     if (!hasExtractTextPlugin) {
       base.plugins.push(
-        new ExtractTextPlugin({filename: '[name]-[chunkhash].css', allChunks: true}),
+        new ExtractTextPlugin({filename: '[name]-[chunkhash].css', allChunks: true})
       );
     }
   }

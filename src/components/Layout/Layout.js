@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, {cloneElement} from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {wrapWithComponent, isElementOfType, elementChildren} from '@shopify/react-utilities/components';
 
@@ -25,11 +25,11 @@ export default function Layout({children, fullWidth}: Props) {
   return (
     <div className={className}>
       <div className={styles.Content}>
-        {elementChildren(children).map((child) => {
+        {elementChildren(children).map((child, index) => {
           if (isElementOfType(child, SECTION_COMPONENTS)) {
-            return child;
+            return cloneElement(child, {key: index});
           } else {
-            return <LayoutSection>{child}</LayoutSection>;
+            return <LayoutSection key={index}>{child}</LayoutSection>;
           }
         })}
       </div>

@@ -3,4 +3,3 @@ demo
 .eslint*
 .gitignore
 .stylelintignore
-webpack*
