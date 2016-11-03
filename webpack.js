@@ -131,7 +131,7 @@ function createPostCSSLoader() {
     loader: 'postcss-loader',
     options: {
       sourceMap: true,
-      plugins: [
+      plugins: () => [
         postcssDiscardComments(),
         postcssCalc(),
         postcssFlexbugsFixes,
