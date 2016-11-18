@@ -4,13 +4,6 @@ const {resolve} = require('path');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const autoprefixer = require('autoprefixer');
-const postcssWillChange = require('postcss-will-change');
-const postcssDiscardComments = require('postcss-discard-comments');
-const postcssCalc = require('postcss-calc');
-const postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
-const postcssSelectorMatches = require('postcss-selector-matches');
-
 const sourceRoot = resolve(__dirname, 'src');
 
 class Env {
@@ -39,15 +32,15 @@ class Env {
   ifProductionServer(then, or) { return this.isServer && this.isProduction ? then : or; }
 }
 
-module.exports = function addQuiltWebpackConfig(base, options) {
-  const env = new Env(options);
+module.exports = function addQuiltWebpackConfig(base, envConfig, options) {
+  const env = new Env(envConfig);
 
   base.module = base.module || {};
   base.module.loaders = base.module.loaders || [];
 
   base.module.loaders.unshift(
-    createJSLoader(env),
-    createCSSLoader(env)
+    createJSLoader(env, options),
+    createCSSLoader(env, options)
   );
 
   if (env.isProductionClient) {
@@ -64,11 +57,11 @@ module.exports = function addQuiltWebpackConfig(base, options) {
   return base;
 };
 
-function createCSSLoader(env) {
+function createCSSLoader(env, options) {
   let loaders;
-  const cssLoader = createCSSModulesLoader(env);
-  const sassLoader = createSassLoader(env);
-  const postCSSLoader = createPostCSSLoader(env);
+  const cssLoader = createCSSModulesLoader(env, options);
+  const sassLoader = createSassLoader(env, options);
+  const postCSSLoader = createPostCSSLoader(env, options);
 
   if (env.isServer) {
     cssLoader.loader = 'css-loader/locals';
@@ -131,21 +124,13 @@ function createPostCSSLoader() {
     loader: 'postcss-loader',
     options: {
       sourceMap: true,
-      plugins: () => [
-        postcssDiscardComments(),
-        postcssCalc(),
-        postcssFlexbugsFixes,
-        postcssSelectorMatches,
-        postcssWillChange,
-        autoprefixer(),
-      ],
     },
   };
 }
 
 function createJSLoader(env) {
   return {
-    test: /\.jsx?$/,
+    test: /\.js$/,
     include: [sourceRoot],
     loader: 'babel',
     query: {
