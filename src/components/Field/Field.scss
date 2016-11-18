@@ -71,6 +71,7 @@
 
 .InputWrapper {
   @include text-style-input;
+  background: color(white);
   color: color(ink, lighter);
   line-height: 1.4;
   border: border(dark);

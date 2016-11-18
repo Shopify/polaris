@@ -205,6 +205,7 @@ export default class App extends Component {
           <Button primary>Primary button</Button>
           <Button destructive>Destructive button</Button>
           <Button disabled>Disabled button</Button>
+          <Button primary disabled>Primary disabled button</Button>
         </ButtonGroup>
       </Card>
     );
