@@ -26,8 +26,8 @@
     "clean": "rm -rf build components styles utilities index.js",
     "preversion": "yarn run clean && npm test",
     "prepublish": "",
-    "version": "yarn run build",
-    "postversion": "git push && git push --tags && yarn run clean"
+    "version": "",
+    "postversion": "git push && git push --tags"
   },
   "babel": {
     "presets": [
