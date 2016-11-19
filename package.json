@@ -2,7 +2,12 @@
   "name": "@shopify/quilt",
   "version": "0.5.0",
   "license": "MIT",
-  "main": "./src/index.js",
+  "main": "index.js",
+  "keywords": [
+    "shopify",
+    "pattern-library",
+    "eyeglass-module"
+  ],
   "scripts": {
     "flow": "flow",
     "lint:scripts": "eslint . --max-warnings 0",
@@ -24,10 +29,6 @@
     "version": "yarn run build",
     "postversion": "git push && git push --tags && yarn run clean"
   },
-  "keywords": [
-    "shopify",
-    "pattern-library"
-  ],
   "babel": {
     "presets": [
       "shopify/web",

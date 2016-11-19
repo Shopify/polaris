@@ -4,7 +4,7 @@ const {resolve} = require('path');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const sourceRoot = resolve(__dirname, 'src');
+const sourceRoot = __dirname;
 
 class Env {
   constructor({target = 'client', mode = 'development'} = {}) {
