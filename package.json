@@ -19,14 +19,6 @@
     "check": "yarn run flow && yarn run lint && yarn run test",
     "parker": "parker build/assets.css --format json > build/parker.json",
     "demo": "babel-node demo/server.js",
-    "build:node": "babel src --out-dir lib",
-    "build:styles": "bin/styles",
-    "build:lib": "webpack src/components/index.js build/quilt.js --config config/webpack.babel.js",
-    "build": "yarn run build:node && yarn run build:lib && yarn run build:styles",
-    "clean": "rm -rf build components styles utilities index.js",
-    "preversion": "yarn run clean && npm test",
-    "prepublish": "",
-    "version": "",
     "postversion": "git push && git push --tags"
   },
   "babel": {
