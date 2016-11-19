@@ -2,7 +2,6 @@
   "name": "@shopify/quilt",
   "version": "0.7.0",
   "license": "MIT",
-  "main": "index.js",
   "keywords": [
     "shopify",
     "pattern-library",
