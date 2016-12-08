@@ -132,7 +132,7 @@ function createJSLoader(env) {
   return {
     test: /\.js$/,
     include: [sourceRoot],
-    loader: 'babel',
+    loader: 'babel-loader',
     query: {
       presets: [
         [env.ifServer('shopify/node', 'shopify/web'), {modules: false}],
