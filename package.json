@@ -46,12 +46,14 @@
     "eslint-plugin-shopify": "15.0.3",
     "express": "^4.14.0",
     "flow-bin": "^0.33.0",
+    "fs-extra": "^1.0.0",
     "open": "^0.0.5",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.0"
+    "webpack-hot-middleware": "^2.13.0",
+    "yargs": "^6.5.0"
   },
   "peerDependencies": {
     "react": "^15.3.2",
