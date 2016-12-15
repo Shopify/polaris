@@ -1,5 +1,6 @@
 // @flow
 
+export {default as Autocomplete} from './Autocomplete';
 export {default as Badge} from './Badge';
 export {default as Banner} from './Banner';
 export {default as Button} from './Button';
@@ -19,6 +20,7 @@ export {default as Icon} from './Icon';
 export {default as Label} from './Label';
 export {default as Labelled} from './Labelled';
 export {default as Layout} from './Layout';
+export {default as List} from './List';
 export {default as Popover} from './Popover';
 export {default as RadioButton} from './RadioButton';
 export {default as Select} from './Select';
@@ -26,5 +28,7 @@ export {default as Stack} from './Stack';
 export {default as Subheading} from './Subheading';
 export {default as Table} from './Table';
 export {default as Tablist} from './Tablist';
+export {default as Tag} from './Tag';
+export {default as TagContainer} from './TagContainer';
 export {default as Title} from './Title';
 export {default as TypeContainer} from './TypeContainer';

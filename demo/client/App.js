@@ -23,6 +23,8 @@ import {
   Select,
   Stack,
   Tablist,
+  TagContainer,
+  Autocomplete,
 } from '@shopify/quilt';
 
 type State = {
@@ -232,6 +234,22 @@ export default class App extends Component {
       <Frame>
         <Content>
           <Layout>
+            <Layout.Section>
+              <Card title="Other">
+                <Card.Section title="Autocomplete">
+                  <Autocomplete
+                    value="fo"
+                    options={['foo', 'foobar']}
+                    displaySelectionList
+                  />
+                </Card.Section>
+
+                <Card.Section title="Tags">
+                  <TagContainer tags={['fulfilled', 'awesome', '$$ bills yall']} />
+                </Card.Section>
+              </Card>
+            </Layout.Section>
+
             <Layout.AnnotatedSection
               title="Annotated section"
               description="This is a description for an annotated section!"
