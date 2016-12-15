@@ -5,6 +5,8 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import Button from '../Button';
 import ButtonGroup from '../ButtonGroup';
+import Breadcrumbs from '../Breadcrumbs';
+import type {BreadcrumbDescriptor} from '../Breadcrumbs';
 
 import styles from './Header.scss';
 
@@ -15,6 +17,7 @@ type Props = {
   dark?: boolean,
   transparent?: boolean,
   withoutSidebarButton?: boolean,
+  breadcrumbs?: BreadcrumbDescriptor[],
 };
 
 type Context = {
@@ -26,6 +29,7 @@ export default function Header({
   buttons,
   icon,
   dark,
+  breadcrumbs,
   transparent,
   withoutSidebarButton,
 }: Props, {
@@ -45,6 +49,8 @@ export default function Header({
     transparent && styles.transparent,
   );
 
+  const content = breadcrumbs ? <Breadcrumbs breadcrumbs={breadcrumbs} /> : children;
+
   return (
     <div className={className}>
       {leftButton}
@@ -56,7 +62,7 @@ export default function Header({
       )}
 
       <div className={styles.Content}>
-        {children}
+        {content}
       </div>
 
       {buttons && (

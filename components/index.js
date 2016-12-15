@@ -3,6 +3,7 @@
 export {default as Autocomplete} from './Autocomplete';
 export {default as Badge} from './Badge';
 export {default as Banner} from './Banner';
+export {default as Breadcrumbs} from './Breadcrumbs';
 export {default as Button} from './Button';
 export {default as ButtonGroup} from './ButtonGroup';
 export {default as Card} from './Card';
@@ -20,6 +21,7 @@ export {default as Icon} from './Icon';
 export {default as Label} from './Label';
 export {default as Labelled} from './Labelled';
 export {default as Layout} from './Layout';
+export {default as Link} from './Link';
 export {default as List} from './List';
 export {default as Popover} from './Popover';
 export {default as RadioButton} from './RadioButton';
