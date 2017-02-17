@@ -1,0 +1,19 @@
+{
+  "name": "@shopify/quilt",
+  "version": "0.10.0",
+  "license": "MIT",
+  "keywords": [
+    "shopify"
+  ],
+  "scripts": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "files": [
+    "styles/foundation/breakpoints.scss",
+    "styles/foundation/spacing.scss",
+    "styles/foundation/utilities.scss",
+    "index.ts",
+    "components/index.ts",
+    "components/Content/*.{scss,tsx,ts}"
+  ]
+}
