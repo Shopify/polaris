@@ -60,6 +60,7 @@ $base-font-size: 14px;
       $output: $output + '#{$key}#{$sep}#{available-names($value, $level + 1)}';
       $i: $i + 1;
     }
+
     $output: $output + ')';
   }
 

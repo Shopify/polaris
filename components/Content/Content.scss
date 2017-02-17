@@ -12,9 +12,9 @@
 }
 
 .Main {
-  flex: 1 1 auto;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  flex: 1 1 auto;
   padding: spacing() 0;
 
   @include main-content-when-not-condensed {

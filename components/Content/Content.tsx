@@ -1,13 +1,11 @@
-// @flow
+import * as React from 'react';
 
-import React from 'react';
+import * as styles from './Content.scss';
 
-import styles from './Content.scss';
-
-type Props = {
+export interface Props {
   children?: any,
-  header?: React$Element<*>,
-};
+  header?: React.ReactElement<{}>,
+}
 
 export default function Content({children, header}: Props) {
   return (
