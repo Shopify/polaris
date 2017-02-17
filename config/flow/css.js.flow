@@ -1,4 +1,0 @@
-// @flow
-
-declare type CSSExport = {[key: string]: ?string};
-declare export default CSSExport;
