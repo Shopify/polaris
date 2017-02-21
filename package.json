@@ -5,9 +5,40 @@
   "keywords": [
     "shopify"
   ],
-  "scripts": {},
-  "devDependencies": {},
-  "peerDependencies": {},
+  "scripts": {
+    "ts": "tsc --noEmit",
+    "lint:js": "eslint . --max-warnings 0",
+    "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
+    "lint": "yarn run lint:js && yarn run lint:ts",
+    "test": "echo 'no tests, yet'",
+    "check": "yarn run lint && yarn run ts && yarn run test",
+    "build": "webpack --config config/webpack/config.js",
+    "clean": "rm -rf build",
+    "prepublish": "yarn run check && yarn run clean && yarn run build"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.0.4",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-shopify": "^16.0.2",
+    "case-sensitive-paths-webpack-plugin": "^1.1.4",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.15.0",
+    "eslint-plugin-shopify": "^15.1.1",
+    "extract-text-webpack-plugin": "2.0.0-rc.3",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.1",
+    "style-loader": "^0.13.1",
+    "tslint": "^4.4.2",
+    "tslint-config-shopify": "^1.1.4",
+    "typescript": "^2.1.6",
+    "webpack": "^2.2.1"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "eslintConfig": {},
   "files": [
     "styles/foundation/breakpoints.scss",
     "styles/foundation/spacing.scss",
@@ -15,5 +46,9 @@
     "index.ts",
     "components/index.ts",
     "components/Content/*.{scss,tsx,ts}"
-  ]
+  ],
+  "dependencies": {
+    "@types/react": "^15.0.11",
+    "@types/react-dom": "^0.14.23"
+  }
 }

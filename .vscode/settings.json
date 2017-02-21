@@ -1,4 +1,18 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "build/": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "build/": true
+  }
 }

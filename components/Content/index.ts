@@ -1,4 +1,4 @@
 import Content from './Content';
 
-export * from './Content';
+export {Props} from './Content';
 export default Content;
