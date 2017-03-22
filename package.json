@@ -9,15 +9,19 @@
     "ts": "tsc --noEmit",
     "lint:js": "eslint . --max-warnings 0",
     "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
-    "lint": "yarn run lint:js && yarn run lint:ts",
+    "lint": "npm-run-all lint:js lint:ts",
     "test": "echo 'no tests, yet'",
-    "check": "yarn run lint && yarn run ts && yarn run test",
+    "check": "npm-run-all lint ts test",
+    "prebuild": "rimraf build",
     "build": "webpack --config config/webpack/config.js",
-    "clean": "rm -rf build",
-    "prepublish": "yarn run check && yarn run clean && yarn run build"
+    "precdn": "yarn run build",
+    "cdn": "node ./scripts/deploy.js 'build/*.{js,css}'",
+    "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
   },
   "devDependencies": {
+    "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
     "awesome-typescript-loader": "^3.0.4",
+    "aws-sdk": "^2.6.8",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-preset-shopify": "^16.0.2",
@@ -26,7 +30,11 @@
     "eslint": "^3.15.0",
     "eslint-plugin-shopify": "^15.1.1",
     "extract-text-webpack-plugin": "2.0.0-rc.3",
+    "glob": "^7.1.1",
+    "in-publish": "^2.0.0",
     "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
     "tslint": "^4.4.2",
@@ -38,7 +46,12 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
-  "eslintConfig": {},
+  "eslintConfig": {
+    "extends": [
+      "plugin:shopify/esnext",
+      "plugin:shopify/node"
+    ]
+  },
   "files": [
     "styles/foundation/breakpoints.scss",
     "styles/foundation/spacing.scss",

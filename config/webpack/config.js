@@ -9,7 +9,6 @@ const {
 } = require('awesome-typescript-loader');
 
 const getClassName = require('./css-modules');
-const version = require('../../package.json').version;
 
 const root = path.resolve(__dirname, '..', '..');
 const build = path.resolve(root, 'build');
@@ -26,7 +25,7 @@ module.exports = function createWebpackConfig() {
     },
     output: {
       path: build,
-      filename: `[name]-${version}.js`,
+      filename: '[name].js',
       libraryTarget: 'umd',
       library: 'Quilt',
     },
@@ -86,7 +85,7 @@ module.exports = function createWebpackConfig() {
         },
       }),
 
-      new ExtractTextPlugin({filename: `[name]-${version}.css`, allChunks: true}),
+      new ExtractTextPlugin({filename: '[name].css', allChunks: true}),
     ],
     module: {
       loaders: [
