@@ -1,0 +1,18 @@
+{
+  "env": {
+    "commonjs": {
+      "presets": [
+        ["shopify/web", {"modules": "commonjs"}]
+      ],
+      "plugins": [
+        "./config/babel/stylesImportTransformer.js",
+        [
+          "css-modules-transform", {
+            "extensions": [".scss"],
+            "generateScopedName": "./config/babel/className.js"
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,5 +1,7 @@
 *.log
 node_modules
 /build
-/lib
+/components
+index.js
+/ts
 .DS_Store

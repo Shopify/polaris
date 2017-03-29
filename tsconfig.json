@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./ts",
     "baseUrl": ".",
     "rootDir": ".",
     "target": "es2016",
@@ -23,6 +24,7 @@
   },
   "include": [
     "./config/typescript/**/*",
-    "./components/**/*"
+    "./src/components/**/*",
+    "./src/index.ts"
   ]
 }

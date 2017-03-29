@@ -11,8 +11,9 @@ const {
 const getClassName = require('./css-modules');
 
 const root = path.resolve(__dirname, '..', '..');
+const src = path.resolve(root, 'src');
 const build = path.resolve(root, 'build');
-const styles = path.resolve(root, 'styles');
+const styles = path.resolve(root, src, 'styles');
 
 module.exports = function createWebpackConfig() {
   return {
@@ -20,7 +21,7 @@ module.exports = function createWebpackConfig() {
     devtool: 'source-map',
     entry: {
       quilt: [
-        path.resolve(root, 'index.ts'),
+        path.resolve(root, 'src/index.ts'),
       ],
     },
     output: {

@@ -5,15 +5,24 @@
   "keywords": [
     "shopify"
   ],
+  "main": "./index.js",
   "scripts": {
-    "ts": "tsc --noEmit",
     "lint:js": "eslint . --max-warnings 0",
     "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
     "lint": "npm-run-all lint:js lint:ts",
     "test": "jest --config ./config/jest/config.json",
-    "check": "npm-run-all lint ts test",
-    "prebuild": "rimraf build",
-    "build": "webpack --config config/webpack/config.js",
+    "check": "npm-run-all lint test",
+    "clean:ts": "rimraf ts",
+    "clean:lib": "rimraf components index.js",
+    "clean:build": "rimraf build",
+    "clean": "rimraf build ts && yarn clean:lib",
+    "build:ts": "yarn clean:ts && tsc && yarn build:ts:copy:styles",
+    "build:ts:copy:styles": "copyfiles './src/components/**/*.scss' './ts'",
+    "build:lib": "npm-run-all clean:lib build:ts build:lib:babel clean:ts",
+    "build:lib:babel": "cross-env BABEL_ENV=commonjs babel ./ts/src --out-dir .",
+    "build:cdn" : "webpack --config config/webpack/config.js",
+    "prebuild": "yarn run clean",
+    "build": "npm-run-all build:cdn build:lib",
     "precdn": "yarn run build",
     "cdn": "node ./scripts/deploy.js 'build/*.{js,css}'",
     "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
@@ -22,10 +31,17 @@
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
     "awesome-typescript-loader": "^3.0.4",
     "aws-sdk": "^2.6.8",
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.23.1",
+    "babel-eslint": "^7.2.0",
     "babel-loader": "^6.3.2",
+    "babel-plugin-css-modules-transform": "^1.2.7",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-shopify": "^16.0.2",
+    "babel-register": "^6.24.0",
     "case-sensitive-paths-webpack-plugin": "^1.1.4",
+    "copyfiles": "^1.2.0",
+    "cross-env": "^3.2.4",
     "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-plugin-shopify": "^15.1.1",
@@ -55,12 +71,8 @@
     ]
   },
   "files": [
-    "styles/foundation/breakpoints.scss",
-    "styles/foundation/spacing.scss",
-    "styles/foundation/utilities.scss",
-    "index.ts",
-    "components/index.ts",
-    "components/Content/*.{scss,tsx,ts}"
+    "components",
+    "index.js"
   ],
   "dependencies": {
     "@types/react": "^15.0.11",
