@@ -6,6 +6,8 @@
     "shopify"
   ],
   "main": "./index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "scripts": {
     "lint:js": "eslint . --max-warnings 0",
     "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
@@ -14,15 +16,20 @@
     "check": "npm-run-all lint test",
     "clean:ts": "rimraf ts",
     "clean:lib": "rimraf components index.js",
+    "clean:es": "rimraf es",
     "clean:build": "rimraf build",
-    "clean": "rimraf build ts && yarn clean:lib",
+    "clean": "rimraf build ts es && yarn clean:lib",
     "build:ts": "yarn clean:ts && tsc && yarn build:ts:copy:styles",
     "build:ts:copy:styles": "copyfiles './src/components/**/*.scss' './ts'",
-    "build:lib": "npm-run-all clean:lib build:ts build:lib:babel clean:ts",
+    "prebuild:lib": "yarn clean:lib",
+    "build:lib": "yarn build:lib:babel",
     "build:lib:babel": "cross-env BABEL_ENV=commonjs babel ./ts/src --out-dir .",
+    "prebuild:es": "yarn clean:es",
+    "build:es": "yarn build:es:babel",
+    "build:es:babel": "cross-env BABEL_ENV=es babel ./ts/src --out-dir ./es",
     "build:cdn" : "webpack --config config/webpack/config.js",
     "prebuild": "yarn run clean",
-    "build": "npm-run-all build:cdn build:lib",
+    "build": "npm-run-all build:cdn build:ts build:lib build:es clean:ts",
     "precdn": "yarn run build",
     "cdn": "node ./scripts/deploy.js 'build/*.{js,css}'",
     "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
@@ -72,7 +79,8 @@
   },
   "files": [
     "components",
-    "index.js"
+    "index.js",
+    "es"
   ],
   "dependencies": {
     "@types/react": "^15.0.11",

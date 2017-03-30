@@ -4,4 +4,5 @@ node_modules
 /components
 index.js
 /ts
+/es
 .DS_Store
