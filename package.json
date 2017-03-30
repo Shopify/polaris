@@ -8,6 +8,7 @@
   "main": "./index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "lint:js": "eslint . --max-warnings 0",
     "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
@@ -18,7 +19,7 @@
     "clean:lib": "rimraf components index.js",
     "clean:es": "rimraf es",
     "clean:build": "rimraf build",
-    "clean": "rimraf build ts es && yarn clean:lib",
+    "clean": "rimraf build ts es types && yarn clean:lib",
     "build:ts": "yarn clean:ts && tsc && yarn build:ts:copy:styles",
     "build:ts:copy:styles": "copyfiles './src/components/**/*.scss' './ts'",
     "prebuild:lib": "yarn clean:lib",
@@ -80,7 +81,8 @@
   "files": [
     "components",
     "index.js",
-    "es"
+    "es",
+    "types"
   ],
   "dependencies": {
     "@types/react": "^15.0.11",
