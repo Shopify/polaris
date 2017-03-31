@@ -76,7 +76,10 @@
     "extends": [
       "plugin:shopify/esnext",
       "plugin:shopify/node"
-    ]
+    ],
+    "env": {
+      "jest": true
+    }
   },
   "files": [
     "components",
