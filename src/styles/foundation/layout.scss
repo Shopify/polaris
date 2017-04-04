@@ -1,0 +1,19 @@
+@import 'utilities';
+
+$layout-max-width-data: (
+  base: 60rem,
+);
+
+///
+/// Returns the max-width of the specified layout.
+/// @param {String} $name - The layout name.
+/// @return {Number} The max-width for the variant.
+@function layout-max-width($name: base) {
+  $fetched-value: map-get($layout-max-width-data, $name);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Layout max-width `#{$name}` not found. Available layout max-widths: #{available-names($layout-max-width-data)}';
+  }
+}

@@ -28,7 +28,7 @@
     "prebuild:es": "yarn clean:es",
     "build:es": "yarn build:es:babel",
     "build:es:babel": "cross-env BABEL_ENV=es babel ./ts/src --out-dir ./es",
-    "build:cdn" : "webpack --config config/webpack/config.js",
+    "build:cdn": "webpack --config config/webpack/config.js",
     "prebuild": "yarn run clean",
     "build": "npm-run-all build:cdn build:ts build:lib build:es clean:ts",
     "precdn": "yarn run build",
@@ -36,7 +36,10 @@
     "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
   },
   "devDependencies": {
+    "@shopify/images": "^1.0.0",
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
+    "@types/enzyme": "^2.7.7",
+    "@types/jest": "^19.2.2",
     "awesome-typescript-loader": "^3.0.4",
     "aws-sdk": "^2.6.8",
     "babel-cli": "^6.24.0",
@@ -51,22 +54,27 @@
     "copyfiles": "^1.2.0",
     "cross-env": "^3.2.4",
     "css-loader": "^0.26.1",
+    "enzyme": "^2.8.0",
     "eslint": "^3.15.0",
     "eslint-plugin-shopify": "^15.1.1",
     "extract-text-webpack-plugin": "2.0.0-rc.3",
     "fs-extra": "^2.1.2",
     "glob": "^7.1.1",
+    "image-webpack-loader": "^3.3.0",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
     "tslint": "^4.4.2",
     "tslint-config-shopify": "^1.1.4",
     "typescript": "^2.1.6",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-node-externals": "^1.5.4"
   },
   "peerDependencies": {
     "react": "^15.4.2",
@@ -88,6 +96,8 @@
     "types"
   ],
   "dependencies": {
+    "@shopify/javascript-utilities": "^1.0.1",
+    "@shopify/react-utilities": "^1.0.0",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23"
   }

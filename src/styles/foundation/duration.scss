@@ -1,0 +1,26 @@
+@import 'utilities';
+
+$unit: 100ms;
+
+$duration-data: (
+  fast: $unit,
+  base: $unit * 2,
+  slow: $unit * 3,
+  slower: $unit * 4,
+  slowest: $unit * 5,
+);
+
+/// Returns the duration value for a given variant.
+///
+/// @param {String} $variant - The key for the given variant.
+/// @return {Number} The spacing for the variant (in miliseconds).
+
+@function duration($variant: base) {
+  $fetched-value: map-get($duration-data, $variant);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Duration variant `#{$variant}` not found. Available variants: #{available-names($duration-data)}';
+  }
+}

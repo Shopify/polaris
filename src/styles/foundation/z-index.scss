@@ -1,0 +1,26 @@
+////
+/// Z-index
+/// @group foundation/z-index
+////
+$global-elements: (
+  content: 100,
+  header: 200,
+  sidebar: 300,
+  overlay: 400,
+);
+
+///
+/// Returns the z-index of the specified element.
+/// @param {String} $element - The key for the element (eg. dialog).
+/// @param {String} $context - The category for the element (eg. modal).
+/// @return {Number} The z-index for the element.
+
+@function z-index($element, $context: $global-elements) {
+  $index: map-get($context, $element);
+
+  @if $index {
+    @return $index;
+  } @else {
+    @error 'z-index `#{$element}` in `#{$context}` not found.';
+  }
+}

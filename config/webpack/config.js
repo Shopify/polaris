@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const svgOptimizationOptions = require('@shopify/images/optimize').svgOptions;
 
 const {
   TsConfigPathsPlugin,
@@ -15,9 +17,12 @@ const src = path.resolve(root, 'src');
 const build = path.resolve(root, 'build');
 const styles = path.resolve(root, src, 'styles');
 
+const ICON_PATH_REGEX = /icons\//;
+const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
+
 module.exports = function createWebpackConfig() {
   return {
-    target: 'web',
+    target: 'node',
     devtool: 'source-map',
     entry: {
       quilt: [
@@ -27,8 +32,7 @@ module.exports = function createWebpackConfig() {
     output: {
       path: build,
       filename: '[name].js',
-      libraryTarget: 'umd',
-      library: 'Quilt',
+      libraryTarget: 'commonjs2',
     },
     resolve: {
       extensions: [
@@ -38,20 +42,9 @@ module.exports = function createWebpackConfig() {
         '.tsx',
       ],
     },
-    externals: {
-      react: {
-        commonjs: 'react',
-        commonjs2: 'react',
-        amd: 'react',
-        root: 'React',
-      },
-      'react-dom': {
-        commonjs: 'react-dom',
-        commonjs2: 'react',
-        amd: 'react-dom',
-        root: 'ReactDOM',
-      },
-    },
+    externals: [
+      /^[a-z\-0-9]+$/,
+    ],
     plugins: [
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.LoaderOptionsPlugin({
@@ -68,28 +61,54 @@ module.exports = function createWebpackConfig() {
         },
       }),
 
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-          // eslint-disable-next-line camelcase
-          screw_ie8: true,
-          warnings: false,
-        },
-        mangle: {
-          // eslint-disable-next-line camelcase
-          screw_ie8: true,
-        },
-        output: {
-          comments: false,
-          // eslint-disable-next-line camelcase
-          screw_ie8: true,
-        },
-      }),
+      // new webpack.optimize.UglifyJsPlugin({
+      //   sourceMap: true,
+      //   compress: {
+      //     // eslint-disable-next-line camelcase
+      //     screw_ie8: true,
+      //     warnings: false,
+      //   },
+      //   mangle: {
+      //     // eslint-disable-next-line camelcase
+      //     screw_ie8: true,
+      //   },
+      //   output: {
+      //     comments: false,
+      //     // eslint-disable-next-line camelcase
+      //     screw_ie8: true,
+      //   },
+      // }),
 
       new ExtractTextPlugin({filename: '[name].css', allChunks: true}),
     ],
     module: {
       loaders: [
+        {
+          test(resource) {
+            return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
+          },
+          use: [
+            {
+              loader: '@shopify/images/icon-loader',
+            },
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                svgo: svgOptimizationOptions(),
+              },
+            },
+          ],
+        },
+        {
+          test(resource) {
+            return IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource);
+          },
+          use: [
+            {
+              loader: 'url-loader',
+            },
+          ],
+        },
         {
           test: /\.tsx?$/,
           exclude: [

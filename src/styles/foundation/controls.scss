@@ -1,0 +1,42 @@
+@import 'borders';
+@import 'border-radius';
+@import 'colors';
+@import 'duration';
+@import 'easing';
+@import 'shadows';
+@import 'typography';
+
+@function control-height() {
+  @return rem(36px);
+}
+
+@function control-vertical-padding() {
+  @return (control-height() - line-height(input) - rem(2px)) / 2;
+}
+
+@function control-icon-transition() {
+  @return transform duration(fast) easing(in);
+}
+
+@mixin control-backdrop($style: base) {
+  @if $style == base {
+    background: linear-gradient(to bottom, color(white), color(sky, lighter));
+    border: border(dark);
+    box-shadow: shadow(faint);
+    border-radius: border-radius();
+  } @else if $style == focused {
+    border-color: color(indigo);
+    box-shadow: 0 0 0 1px color(indigo);
+  } @else if $style == error {
+    background: color(red, lighter);
+    border-color: color(red);
+    box-shadow: none;
+  } @else if $style == disabled {
+    background: color(sky, light);
+    border-color: color(sky, dark);
+    box-shadow: none;
+  } @else if $style == focused-error {
+    border-color: color(red);
+    box-shadow: 0 0 0 1px color(red);
+  }
+}

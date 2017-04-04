@@ -1,0 +1,122 @@
+@import 'foundation/borders';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'foundation/breakpoints';
+@import 'foundation/border-radius';
+
+$font-size: 1rem;
+$Align-header-icons-with-month-title: rem(-4px);
+
+.DatePicker {
+  position: relative;
+}
+
+.MonthContainer {
+  display: flex;
+  width: 100%;
+}
+
+.Month {
+  flex: 1 1 auto;
+  margin-top: spacing();
+
+  &:nth-child(2) {
+    padding-left: spacing(loose);
+  }
+
+  @media screen and (max-width: breakpoint(medium)) {
+    &:not(:nth-child(1)) {
+      display: none;
+    }
+  }
+}
+
+.Week {
+  display: flex;
+
+  + .Week {
+    margin-top: -1px;
+  }
+}
+
+.Day {
+  display: block;
+  flex: 1 0 0%;
+  margin: 0;
+  padding: spacing(tight);
+  background: transparent;
+  border: border();
+  font-size: $font-size;
+  text-align: center;
+
+  + .Day {
+    margin-left: -1px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.inRange {
+  background: color(indigo, light);
+}
+
+.selected {
+  background: color(indigo);
+  color: color(white);
+}
+
+.disabled {
+  background-color: color(sky, lighter);
+  color: color(sky, dark);
+  cursor: default;
+}
+
+.Weekday {
+  display: block;
+  flex: 1 0 0%;
+  padding: spacing(tight);
+  background: transparent;
+  font-size: $font-size;
+  color: color(ink, lighter);
+  text-align: center;
+
+  + .Weekday {
+    margin-left: -1px;
+  }
+}
+
+.Header {
+  position: absolute;
+  top: $Align-header-icons-with-month-title;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: spacing();
+  font-size: $font-size;
+}
+
+.Icon {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 1;
+  fill: color(ink, lighter);
+
+  &:focus,
+  &:hover {
+    fill: color(ink, light);
+  }
+}
+
+.Title {
+  flex: 1 1 auto;
+  padding-bottom: spacing(extra-tight);
+  text-align: center;
+}
