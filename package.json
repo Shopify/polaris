@@ -38,6 +38,7 @@
     "change-case": "^3.0.1",
     "copyfiles": "^1.2.0",
     "crypto": "^0.0.3",
+    "cssnano": "^3.10.0",
     "enzyme": "^2.8.0",
     "eslint": "^3.15.0",
     "eslint-plugin-shopify": "^15.1.1",

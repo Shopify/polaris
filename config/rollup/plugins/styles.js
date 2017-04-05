@@ -3,6 +3,7 @@ import {readFileSync, ensureDirSync, writeFile} from 'fs-extra';
 import {resolve as resolvePath, dirname} from 'path';
 import {render} from 'node-sass';
 import {createFilter} from 'rollup-pluginutils';
+import cssnano from 'cssnano';
 
 import cssModulesExtractImports from 'postcss-modules-extract-imports';
 import cssModulesLocalByDefault from 'postcss-modules-local-by-default';
@@ -89,13 +90,16 @@ export default function styles(options = {}) {
           : `${jsDestination}.css`;
       }
 
+      const minifiedCSSDestination = `${cssDestination.slice(0, -4)}.min.css`;
       const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
+      const css = compiledStyles.join('\n\n');
 
       ensureDirSync(dirname(cssDestination));
 
       return Promise.all([
-        write(cssDestination, compiledStyles.join('\n\n')),
+        write(cssDestination, css),
         write(tokensDestination, JSON.stringify(tokensByFile, null, 2)),
+        cssnano.process(css).then((result) => write(minifiedCSSDestination, result.css)),
       ]);
     },
   };

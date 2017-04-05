@@ -5,6 +5,7 @@ describe('build', () => {
   it('should generate CDN files in ./build', () => {
     execSync('yarn run build');
     expect(fs.existsSync('./build/quilt.css')).toBe(true);
+    expect(fs.existsSync('./build/quilt.min.css')).toBe(true);
     execSync('yarn run clean');
   });
 
