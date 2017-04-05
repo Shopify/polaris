@@ -16,7 +16,8 @@
     "test": "jest --config ./config/jest/config.json",
     "check": "npm-run-all lint test",
     "clean": "rimraf build index.*",
-    "prebuild": "yarn run clean",
+    "optimize": "node ./scripts/optimize.js",
+    "prebuild": "npm-run-all clean optimize",
     "build": "babel-node ./scripts/build.js",
     "precdn": "yarn run build",
     "cdn": "node ./scripts/deploy.js",
@@ -33,6 +34,7 @@
     "babel-core": "^6.23.1",
     "babel-jest": "^19.0.0",
     "babel-preset-shopify": "^16.0.2",
+    "change-case": "^3.0.1",
     "copyfiles": "^1.2.0",
     "crypto": "^0.0.3",
     "enzyme": "^2.8.0",
@@ -40,6 +42,7 @@
     "eslint-plugin-shopify": "^15.1.1",
     "fs-extra": "^2.1.2",
     "generic-names": "^1.0.2",
+    "glob": "^7.1.1",
     "identity-obj-proxy": "^3.0.0",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
@@ -59,9 +62,7 @@
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-image": "^1.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-scss": "^0.2.0",
     "rollup-pluginutils": "^2.0.1",
     "shelljs": "^0.7.7",
     "svgo": "^0.7.2",
@@ -77,10 +78,7 @@
     "extends": [
       "plugin:shopify/esnext",
       "plugin:shopify/node"
-    ],
-    "env": {
-      "jest": true
-    }
+    ]
   },
   "babel": {
     "presets": [
