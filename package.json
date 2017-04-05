@@ -21,7 +21,9 @@
     "prebuild": "npm-run-all clean optimize",
     "build": "babel-node ./scripts/build.js",
     "precdn": "yarn run build",
-    "cdn": "node ./scripts/deploy.js",
+    "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
+    "cdn:deploy": "node ./scripts/deploy.js",
+    "cdn": "npm-run-all cdn:secrets cdn:deploy",
     "prepublish": "in-publish && yarn run build || :",
     "postpublish": "in-publish && yarn run cdn || :"
   },
