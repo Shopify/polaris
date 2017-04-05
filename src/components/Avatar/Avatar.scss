@@ -1,0 +1,83 @@
+@import 'foundation/border-radius';
+@import 'foundation/breakpoints';
+@import 'foundation/colors';
+
+$small-size: rem(32px);
+$medium-size: rem(44px);
+$large-size: rem(60px);
+$letter-spacing: 0.1em;
+
+.Avatar {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background: color(teal);
+  border-radius: border-radius();
+}
+
+.sizeSmall {
+  height: $small-size;
+  width: $small-size;
+}
+
+.sizeMedium {
+  height: $small-size;
+  width: $small-size;
+
+  @include main-content-when-not-condensed {
+    height: $medium-size;
+    width: $medium-size;
+  }
+}
+
+.sizeLarge {
+  height: $large-size;
+  width: $large-size;
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.styleOne {
+  background: color(teal);
+}
+
+.styleTwo {
+  background: color(red);
+}
+
+.styleThree {
+  background: color(orange);
+}
+
+.styleFour {
+  background: color(green);
+}
+
+.styleFive {
+  background: color(blue);
+}
+
+.styleSix {
+  background: color(purple);
+}
+
+.hasImage {
+  background: transparent;
+}
+
+.Image {
+  width: 100%;
+}
+
+.Initials {
+  // Explicit letter spacing set below, so we need to compensate to retain centering.
+  margin-left: $letter-spacing;
+  line-height: 0;
+  color: color(white);
+  letter-spacing: $letter-spacing;
+  text-transform: uppercase;
+}

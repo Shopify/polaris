@@ -1,0 +1,58 @@
+@import 'foundation/spacing';
+@import 'foundation/typography';
+
+$number-size: rem(12px);
+$bullet-size: rem(18px);
+
+.ContentList {
+  list-style: none;
+
+  margin-top: 0;
+  margin-bottom: spacing();
+  padding-left: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.typeBullet {
+  > .Item::before {
+    content: '\2022'; // bullet
+    font-size: $bullet-size;
+  }
+}
+
+.typeNumber {
+  counter-reset: ordered-counter;
+
+  > .Item::before {
+    @include text-emphasis-strong;
+    content: counter(ordered-counter, decimal) '.';
+    counter-increment: ordered-counter;
+    font-size: $number-size;
+    vertical-align: top;
+  }
+}
+
+.Item {
+  position: relative;
+  margin-bottom: spacing(tight);
+  padding-left: spacing();
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+  }
+
+  .ContentList {
+    margin-top: spacing(tight);
+    margin-bottom: 0;
+  }
+}

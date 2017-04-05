@@ -1,0 +1,7 @@
+@import 'foundation/typography';
+
+.Title {
+  margin: 0;
+
+  @include text-style-title;
+}

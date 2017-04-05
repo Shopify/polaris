@@ -1,0 +1,108 @@
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+$SectionHeader-horizontalSpacing: spacing();
+$Badge-size: 2rem;
+
+.Feed {
+  > .Section + .Section {
+    margin-top: spacing(loose);
+  }
+}
+
+.Badge {
+  height: $Badge-size;
+  width: $Badge-size;
+  background: color(sky, dark);
+  box-shadow: 0 0 0 3px color(sky);
+  border-radius: 50%;
+}
+
+.topicUpdates {
+  background: color(orange, light);
+}
+
+.topicAdvice {
+  background: color(red, light);
+}
+
+.topicInsights {
+  background: color(purple, light);
+}
+
+.topicBlog {
+  background: color(teal);
+}
+
+.topicAccount {
+  background: color(orange, light);
+}
+
+.topicSales {
+  background: color(teal);
+}
+
+.topicEngagement {
+  background: color(purple, light);
+}
+
+.topicGrowth {
+  background: color(yellow);
+}
+
+.topicSocial {
+  background: color(red, light);
+}
+
+.Section {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 5;
+    top: 3px;
+    left: calc(#{$SectionHeader-horizontalSpacing + ($Badge-size / 2)} - 1px);
+    display: block;
+    height: calc(100% - 6px);
+    border-left: 3px solid rgba(color(black), 0.04);
+  }
+}
+
+.SectionHeader,
+.SectionContent {
+  position: relative;
+  z-index: 10;
+}
+
+.SectionHeader {
+  display: flex;
+  align-items: center;
+  padding: 0 $SectionHeader-horizontalSpacing 0.75rem;
+}
+
+.SectionBadge {
+  margin-right: spacing(tight);
+}
+
+.Marker {
+  @include text-emphasis-subdued;
+  position: relative;
+  margin-top: spacing(loose);
+  margin-left: calc(#{$SectionHeader-horizontalSpacing + ($Badge-size / 2)} + 1px);
+  padding-left: ($Badge-size / 2) + spacing(tight);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    display: block;
+    height: 0.9rem;
+    width: 0.9rem;
+    background: color(sky, dark);
+    box-shadow: 0 0 0 3px color(sky);
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,77 @@
+@import 'foundation/colors';
+@import 'foundation/shadows';
+@import 'foundation/spacing';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/duration';
+
+$arrow-height: 1rem;
+$arrow-width: 1rem;
+$visible-portion-of-arrow: rem(-5px);
+$content-max-height: rem(100px);
+$content-max-width: 15rem;
+
+.Tooltip {
+  opacity: 1;
+  box-shadow: shadow(deep);
+  border-radius: border-radius();
+  transition: opacity duration();
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.Wrapper {
+  position: relative;
+  display: flex;
+  background-color: color(ink);
+  border-radius: border-radius();
+  color: color(white);
+  max-height: $content-max-height;
+}
+
+.Content {
+  position: relative;
+  margin-top: spacing(extra-tight);
+  border-radius: border-radius();
+  max-width: $content-max-width;
+  max-height: $content-max-height;
+}
+
+.Tip {
+  position: absolute;
+  top: $visible-portion-of-arrow;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  height: $arrow-height;
+  width: $arrow-width;
+  background: color(ink);
+  box-shadow: shadow(deep);
+}
+
+.positionedAbove {
+  top: inherit;
+  bottom: $visible-portion-of-arrow;
+}
+
+.fixed {
+  overflow: visible;
+  flex: 0 0 auto;
+  padding: spacing();
+}
+
+.light {
+  .Wrapper {
+    background: color(white);
+    color: color(ink);
+  }
+
+  .Tip {
+    background: color(white);
+  }
+}
+
+.Label {
+  padding: 0 spacing(tight) spacing(extra-tight);
+}

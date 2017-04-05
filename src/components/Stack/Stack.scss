@@ -1,0 +1,127 @@
+@import 'foundation/spacing';
+@import 'foundation/utilities';
+
+.Stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: -1 * spacing();
+  margin-left: -1 * spacing();
+}
+
+.noWrap {
+  flex-wrap: nowrap;
+  margin-top: 0;
+  margin-left: 0;
+
+  &:not(.vertical) {
+    > .StackItem {
+      margin-top: 0;
+    }
+
+    // Need to target this only within :not(.vertical)
+    // stylelint-disable-next-line selector-max-specificity
+    > .StackItem:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &.vertical {
+    > .StackItem {
+      margin-left: 0;
+    }
+
+    // Need to target this only within .vertical
+    // stylelint-disable-next-line selector-max-specificity
+    > .StackItem:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.spacingTight {
+  margin-top: -1 * spacing(tight);
+  margin-left: -1 * spacing(tight);
+
+  > .StackItem {
+    margin-top: spacing(tight);
+    margin-left: spacing(tight);
+    max-width: calc(100% - #{spacing(tight)});
+  }
+}
+
+.spacingLoose {
+  margin-top: -1 * spacing(loose);
+  margin-left: -1 * spacing(loose);
+
+  > .StackItem {
+    margin-top: spacing(loose);
+    margin-left: spacing(loose);
+    max-width: calc(100% - #{spacing(loose)});
+  }
+}
+
+.distributionLeading {
+  justify-content: flex-start;
+}
+
+.distributionTrailing {
+  justify-content: flex-end;
+}
+
+.distributionCenter {
+  justify-content: center;
+}
+
+.distributionEqualSpacing {
+  justify-content: space-between;
+}
+
+.distributionFill > .StackItem {
+  flex: 1 1 auto;
+}
+
+.distributionFillEvenly > .StackItem {
+  flex: 1 1 auto;
+
+  @supports (min-width: fit-content) {
+    flex: 1 0 0%;
+    min-width: fit-content;
+  }
+}
+
+.alignmentLeading {
+  align-items: flex-start;
+}
+
+.alignmentTrailing {
+  align-items: flex-end;
+}
+
+.alignmentCenter {
+  align-items: center;
+}
+
+.alignmentFill {
+  align-items: stretch;
+}
+
+.alignmentBaseline {
+  align-items: baseline;
+}
+
+.StackItem {
+  flex: 0 0 auto;
+  margin-top: spacing();
+  margin-left: spacing();
+  max-width: calc(100% - #{spacing()});
+  min-width: 0;
+}
+
+.fill {
+  flex: 1 1 auto;
+}

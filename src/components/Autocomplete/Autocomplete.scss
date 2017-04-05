@@ -1,0 +1,25 @@
+@import 'foundation/colors';
+@import 'foundation/border-radius';
+@import 'foundation/shadows';
+@import 'foundation/spacing';
+
+.Autocomplete {
+  position: relative;
+}
+
+.Content {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: color(white);
+  box-shadow: shadow();
+  border-radius: border-radius();
+}
+
+.EmptyContent {
+  padding: spacing();
+  text-align: center;
+}

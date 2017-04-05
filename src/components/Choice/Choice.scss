@@ -1,0 +1,35 @@
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'foundation/utilities';
+
+$Control-size: rem(16px);
+
+// Need to push the control down just a little to have it appear
+// vertically centered with the label.
+$Control-vertical-adjust: 1px;
+
+.Choice {
+  display: flex;
+  align-items: center;
+  padding: spacing(extra-tight) 0;
+}
+
+.Control {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  height: $Control-size;
+  width: $Control-size;
+  margin-top: $Control-vertical-adjust;
+  margin-right: spacing(tight);
+
+  > * {
+    width: 100%;
+  }
+}
+
+.Label {
+  @include text-style-body;
+  flex: 1 1 0%;
+}
+

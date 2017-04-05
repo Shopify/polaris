@@ -1,0 +1,12 @@
+@import 'foundation/utilities';
+
+$size: rem(48px);
+
+.Flag {
+  display: inline-block;
+  width: $size;
+}
+
+.thumbnail {
+  width: $size * 0.5;
+}

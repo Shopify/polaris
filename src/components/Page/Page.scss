@@ -1,0 +1,80 @@
+@import 'foundation/border-radius';
+@import 'foundation/breakpoints';
+@import 'foundation/colors';
+@import 'foundation/layout';
+@import 'foundation/spacing';
+@import 'foundation/utilities';
+@import 'foundation/z-index';
+
+$Icon-size: rem(48px);
+$Title-vertical-adjust: -2px;
+
+$stacking-order: (
+  title: 10,
+  breadcrumbs: 20,
+);
+
+.Page {
+  margin: 0 auto;
+  max-width: layout-max-width();
+
+  @include main-content-when-not-condensed {
+    padding: 0 spacing(loose);
+  }
+}
+
+.fullWidth {
+  max-width: none;
+}
+
+.Header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-top: -1 * spacing();
+  margin-left: -1 * spacing();
+  padding: (2 * spacing()) spacing();
+
+  @include main-content-when-not-condensed {
+    padding: (2 * spacing()) 0;
+  }
+}
+
+.Actions,
+.Details {
+  margin-top: spacing();
+  margin-left: spacing();
+}
+
+.Details {
+  display: flex;
+  flex: 1000 0 auto;
+  align-items: center;
+}
+
+.Actions {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+}
+
+.Icon {
+  height: $Icon-size;
+  width: $Icon-size;
+  margin-right: spacing();
+  background-color: color(sky, dark);
+  background-size: cover;
+  background-position: center;
+  border-radius: border-radius();
+}
+
+.Title {
+  position: relative;
+  z-index: z-index(title, $stacking-order);
+  margin-top: $Title-vertical-adjust;
+}
+
+.Breadcrumbs {
+  position: relative;
+  z-index: z-index(breadcrumbs, $stacking-order);
+}

@@ -1,0 +1,10 @@
+@import 'foundation/layout';
+@import 'foundation/spacing';
+@import 'foundation/borders';
+
+.PageActions {
+  max-width: layout-max-width();
+  margin: 0 auto;
+  padding: spacing();
+  border-top: border(dark);
+}

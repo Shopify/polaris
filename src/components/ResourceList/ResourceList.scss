@@ -1,0 +1,57 @@
+@import 'foundation/typography';
+@import 'foundation/spacing';
+@import 'foundation/borders';
+@import 'foundation/colors';
+@import 'foundation/breakpoints';
+
+$Item-selector-width: rem(15px);
+$Item-selector-padding: spacing();
+$Item-selector-offset: $Item-selector-width + ($Item-selector-padding * 2);
+
+.Header {
+  display: flex;
+  background-color: color(sky, lighter);
+  min-height: $Item-selector-offset;
+}
+
+.Selector {
+  align-self: center;
+  padding: spacing();
+
+  @media screen and (max-width: breakpoint(medium)) {
+    &:not(.show) {
+      display: none;
+    }
+  }
+}
+
+.hiddenLabel {
+  display: none;
+}
+
+.HeaderAction {
+  display: none;
+  align-self: center;
+  margin-left: auto;
+  padding: spacing();
+
+  @media screen and (max-width: breakpoint(medium)) {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+.List {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Item {
+  display: flex;
+  border-top: border();
+}
+
+.selected {
+  background-color: color(indigo, lighter);
+}

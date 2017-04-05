@@ -1,0 +1,44 @@
+@import 'foundation/borders';
+@import 'foundation/breakpoints';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+
+.DescriptionList {
+  margin: 0;
+  padding: 0;
+}
+
+.Item {
+  padding: spacing() 0;
+  border-bottom: border();
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  @media screen and (min-width: breakpoint(small)) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: spacing(tight) 0;
+  }
+}
+
+.Term {
+  padding: 0 0 spacing(tight);
+
+  @include text-emphasis-strong;
+
+  @media screen and (min-width: breakpoint(small)) {
+    flex-basis: 25%;
+    padding: 0 spacing() 0 0;
+  }
+}
+
+.Description {
+  margin-left: 0;
+
+  @media screen and (min-width: breakpoint(small)) {
+    flex-basis: 75%;
+  }
+}

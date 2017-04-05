@@ -1,0 +1,17 @@
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'foundation/utilities';
+
+.hidden > .LabelWrapper {
+  @include visually-hidden;
+}
+
+.LabelWrapper {
+  margin-bottom: spacing(extra-tight);
+}
+
+.HelpText {
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  margin: spacing(extra-tight) 0 0;
+}

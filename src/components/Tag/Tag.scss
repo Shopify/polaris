@@ -1,0 +1,26 @@
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/border-radius';
+
+$extra-tightest-padding: spacing(extra-tight) / 2;
+
+.Tag {
+  display: inline-flex;
+  align-items: center;
+  padding: spacing(extra-tight) 0 spacing(extra-tight) spacing(tight);
+  background-color: color(sky);
+  border-radius: border-radius();
+  color: color(ink);
+}
+
+.RemoveButton {
+  margin-left: $extra-tightest-padding;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.slim {
+  padding: $extra-tightest-padding 0 $extra-tightest-padding spacing(tight);
+}

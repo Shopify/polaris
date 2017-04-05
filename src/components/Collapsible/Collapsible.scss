@@ -1,0 +1,22 @@
+@import 'foundation/spacing';
+
+$collapse-toggle-duration: 260ms;
+
+.Collapsible {
+  overflow: hidden;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  will-change: opacity, height;
+}
+
+.animating {
+  transition-property: opacity, height;
+  transition-duration: $collapse-toggle-duration;
+  transition-timing-function: ease-in-out;
+}
+
+.visibilityShown {
+  opacity: 1;
+}

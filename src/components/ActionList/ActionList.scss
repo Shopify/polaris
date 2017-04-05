@@ -1,0 +1,84 @@
+@import 'foundation/borders';
+@import 'foundation/spacing';
+@import 'foundation/colors';
+@import 'foundation/typography';
+@import 'foundation/utilities';
+
+$Image-size: rem(24px);
+$Item-min-height: rem(40px);
+$Item-vertical-padding: ($Item-min-height - $Image-size) / 2;
+
+@mixin unstyled-button() {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+}
+
+.ActionList {
+  list-style: none;
+  margin: 0;
+  padding: spacing(tight) 0;
+
+  + .ActionList {
+    border-top: border();
+  }
+}
+
+.Actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Title {
+  @include text-style-subheading;
+  @include text-emphasis-subdued;
+  padding: spacing();
+  border-bottom: border();
+  font-weight: 400;
+  line-height: 1;
+}
+
+.Item {
+  @include unstyled-button;
+  display: block;
+  width: 100%;
+  min-height: $Item-min-height;
+  padding: $Item-vertical-padding spacing();
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: color(indigo);
+    outline: none;
+    color: color(white);
+
+    .Image {
+      fill: color(sky);
+    }
+  }
+}
+
+.Content {
+  display: flex;
+  align-items: center;
+}
+
+.Image {
+  flex: 0 0 auto;
+  height: $Image-size;
+  width: $Image-size;
+  margin-right: spacing();
+  fill: color(ink, lightest);
+}
+
+.Text {
+  @include layout-flex-fix;
+  flex: 1 0 auto;
+}

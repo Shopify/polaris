@@ -1,0 +1,40 @@
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+
+$padding: spacing() / 2;
+
+.Breadcrumbs {
+  display: flex;
+  align-items: baseline;
+  margin: -1 * $padding;
+}
+
+.Breadcrumb {
+  @include text-style-body;
+  position: relative;
+  display: block;
+  padding: $padding;
+  color: color(ink, lighter);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+
+  + .Breadcrumb::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    transform: rotate(10deg) translateY(-50%);
+    transform-origin: 50% 0;
+    display: block;
+    height: 1em;
+    margin-top: 1px;
+    border-right: 1px solid color(ink, lighter);
+    line-height: 1;
+  }
+}

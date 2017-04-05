@@ -1,0 +1,23 @@
+@import 'foundation/colors';
+@import 'foundation/borders';
+@import 'foundation/spacing';
+
+.List {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ListItem {
+  padding: spacing(tight) spacing();
+  border-top: border();
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background: color(action);
+    color: color(white);
+  }
+}

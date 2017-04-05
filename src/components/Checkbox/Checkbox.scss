@@ -1,0 +1,67 @@
+@import 'foundation/colors';
+@import 'foundation/controls';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/shadows';
+@import 'foundation/utilities';
+
+.Checkbox {
+  position: relative;
+}
+
+.Input {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  appearance: none;
+
+  &:focus,
+  &:active,
+  &:checked {
+    + .Backdrop {
+      border-color: color(indigo);
+    }
+  }
+
+  &:checked {
+    ~ .Icon {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:focus,
+  &:active {
+    + .Backdrop {
+      @include control-backdrop(focused);
+    }
+  }
+
+  &:disabled {
+    + .Backdrop {
+      @include control-backdrop(disabled);
+    }
+
+    ~ .Icon {
+      fill: color(sky, dark);
+    }
+  }
+}
+
+.Backdrop {
+  @include control-backdrop;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.Icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: 50% 50%;
+  fill: color(indigo);
+  transition: control-icon-transition();
+}

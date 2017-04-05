@@ -1,0 +1,25 @@
+@import 'foundation/spacing';
+$Item-min-size: 14 * spacing();
+
+.FormLayout {
+  margin-top: -1 * spacing();
+  margin-left: -1 * spacing();
+}
+
+.Group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Item {
+  flex: 1 1 $Item-min-size;
+  margin-top: spacing();
+  margin-left: spacing();
+  min-width: $Item-min-size;
+  max-width: 100%;
+
+  .condensed & {
+    flex-basis: (0.5 * $Item-min-size);
+    min-width: (0.5 * $Item-min-size);
+  }
+}

@@ -1,0 +1,43 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/shadows';
+@import 'foundation/spacing';
+@import 'foundation/breakpoints';
+
+.Card {
+  overflow: hidden;
+  background-color: color(white);
+  box-shadow: shadow();
+
+  + .Card {
+    margin-top: spacing();
+  }
+
+  @include main-content-when-not-condensed {
+    border-radius: border-radius();
+  }
+}
+
+.subdued {
+  background-color: color(sky, lighter);
+}
+
+.Header {
+  padding: spacing() spacing() 0;
+}
+
+.SectionHeader {
+  padding-bottom: spacing(tight);
+}
+
+.Section {
+  padding: spacing();
+
+  + .Section {
+    border-top: 1px solid color(sky);
+  }
+}
+
+.Footer {
+  padding: 0 spacing() spacing();
+}

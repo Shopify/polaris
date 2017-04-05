@@ -1,0 +1,11 @@
+@import 'foundation/z-index';
+
+.PositionedOverlay {
+  position: absolute;
+  z-index: z-index(overlay);
+}
+
+.calculating {
+  white-space: nowrap;
+  visibility: hidden;
+}

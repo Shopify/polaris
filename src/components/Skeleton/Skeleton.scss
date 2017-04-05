@@ -1,0 +1,72 @@
+@import 'foundation/colors';
+@import 'foundation/utilities';
+
+$min-height-display-text: rem(28px);
+$skeleton-line-height: rem(21px);
+$transition: 0.2s cubic-bezier(0.64, 0, 0.35, 1);
+$shimmer-duration: 900ms;
+
+@mixin shimmer($height, $width: 100%, $position-over-top: true) {
+  height: $height;
+  width: $width;
+  border-radius: ($height / 2);
+
+  @if ($position-over-top) {
+    position: absolute;
+    top: 50%;
+    margin-top: (-0.5 * $height);
+  }
+}
+
+@keyframes shimmerAnimation {
+  0% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.Skeleton {
+  position: relative;
+  min-height: $skeleton-line-height;
+}
+
+.Shimmers {
+  opacity: 0;
+  transition: opacity $transition;
+
+  .visible > & {
+    opacity: 1;
+  }
+}
+
+.Shimmer {
+  display: block;
+  background-color: color(sky);
+  animation: shimmerAnimation $shimmer-duration linear infinite alternate;
+
+  @include shimmer($skeleton-line-height);
+}
+
+// The minimum sizes for these pieces of skeleton content should match to
+// the relevant sizes in foundation/typograph.scss to avoid changes in size
+// between content being visible and not visible.
+
+.contentDisplayText {
+  min-height: $min-height-display-text;
+
+  .Shimmer {
+    @include shimmer($skeleton-line-height, 50%);
+  }
+}
+
+.Content {
+  opacity: 1;
+  transition: opacity $transition;
+
+  .visible > & {
+    opacity: 0;
+  }
+}

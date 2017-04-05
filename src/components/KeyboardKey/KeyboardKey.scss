@@ -1,0 +1,27 @@
+@import 'foundation/spacing';
+@import 'foundation/colors';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/shadows';
+@import 'foundation/utilities';
+
+$key-base-height: rem(26px);
+
+.KeyboardKey {
+  display: inline-block;
+  height: $key-base-height;
+  margin: 0 (spacing(extra-tight) / 2) (spacing(extra-tight) / 2);
+  padding: 0 spacing(extra-tight);
+  background-color: color(white, base);
+  box-shadow:
+    0 0   0 1px color(sky, dark),
+    0 2px 0 0   color(white),
+    0 2px 0 1px color(sky, dark);
+  border-radius: border-radius();
+  line-height: $key-base-height;
+  color: color(ink, lighter);
+  text-align: center;
+  text-transform: capitalize;
+  min-width: $key-base-height;
+  user-select: none;
+}

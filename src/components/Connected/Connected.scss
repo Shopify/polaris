@@ -1,0 +1,59 @@
+@import 'foundation/z-index';
+
+$connected-elements: (
+  item: 10,
+  primary: 20,
+  focused: 30,
+);
+
+.Connected {
+  position: relative;
+  display: flex;
+}
+
+.Item {
+  position: relative;
+  z-index: z-index(item, $connected-elements);
+  flex: 0 0 auto;
+
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+}
+
+// This is a violation of our component model, but it's the cleanest
+// way to remove the border radii on connected elements.
+// stylelint-disable declaration-no-important
+
+.primary {
+  z-index: z-index(primary, $connected-elements);
+  flex: 1 1 auto;
+
+  &:not(:first-child) * {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+  &:not(:last-child) * {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+.connection {
+  &:first-child * {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  &:last-child * {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+// stylelint-enable declaration-no-important
+
+.focused {
+  z-index: z-index(focused, $connected-elements);
+}

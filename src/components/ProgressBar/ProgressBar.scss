@@ -1,0 +1,38 @@
+@import 'foundation/colors';
+@import 'foundation/border-radius';
+@import 'foundation/utilities';
+
+$height: 12px;
+
+@keyframes fillup {
+  0% {
+    width: 0%;
+  }
+}
+
+.ProgressBar {
+  overflow: hidden;
+  height: rem($height);
+  background-color: color(sky);
+  border-radius: border-radius();
+}
+
+.animatedInitialValue {
+  .Level {
+    animation: fillup 1.2s cubic-bezier(0.83, 0.04, 0.13, 0.99);
+  }
+}
+
+.transitionBetweenValues {
+  .Level {
+    transition-property: width;
+    transition-duration: 600ms;
+    transition-timing-function: ease-out;
+  }
+}
+
+.Level {
+  height: 100%;
+  width: 100%;
+  background-color: color(teal);
+}

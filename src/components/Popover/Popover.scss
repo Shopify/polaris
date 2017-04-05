@@ -1,0 +1,91 @@
+@import 'foundation/colors';
+@import 'foundation/shadows';
+@import 'foundation/spacing';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+
+$arrow-height: 1rem;
+$arrow-width: 1rem;
+$visible-portion-of-arrow: rem(-5px);
+$content-max-height: rem(295px);
+$content-max-width: rem(400px);
+
+.Popover {
+  opacity: 1;
+  box-shadow: shadow(deep);
+  border-radius: border-radius(large);
+  transition: opacity 0.2s;
+}
+
+.enteringStart {
+  opacity: 0;
+}
+
+.leaving {
+  opacity: 0;
+}
+
+.Wrapper {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background-color: color(white);
+  border-radius: border-radius(large);
+  max-height: $content-max-height;
+}
+
+.Content {
+  position: relative;
+  display: inline-flex;
+  overflow: auto;
+  flex: 0 0 auto;
+  flex-direction: column;
+  border-radius: border-radius(large);
+  max-width: $content-max-width;
+  max-height: $content-max-height;
+}
+
+.fullHeight {
+  max-height: none;
+}
+
+.Tip {
+  position: absolute;
+  top: $visible-portion-of-arrow;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  height: $arrow-height;
+  width: $arrow-width;
+  background: color(white);
+  box-shadow: shadow(deep);
+  border-radius: border-radius();
+}
+
+.positionedAbove .Tip {
+  top: inherit;
+  bottom: $visible-portion-of-arrow;
+}
+
+.Pane {
+  flex: 0 1 auto;
+  max-width: 100%;
+  border-radius: inherit;
+
+  + .Pane {
+    border-top: border();
+  }
+}
+
+.fixed {
+  overflow: visible;
+  flex: 0 0 auto;
+  padding: spacing();
+}
+
+.Section {
+  padding: spacing();
+
+  + .Section {
+    border-top: border();
+  }
+}

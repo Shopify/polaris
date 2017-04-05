@@ -1,0 +1,22 @@
+@import 'foundation/spacing';
+@import 'foundation/breakpoints';
+
+.CalloutCard {
+  display: flex;
+  align-items: center;
+}
+
+.Image {
+  display: none;
+  flex: 0 0 auto;
+
+  @media screen and (min-width: breakpoint(small)) {
+    display: block;
+    margin-left: spacing();
+  }
+}
+
+.Content {
+  @include vertical-rhythm;
+  flex: 1 1 auto;
+}

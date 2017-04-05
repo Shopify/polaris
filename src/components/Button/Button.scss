@@ -1,0 +1,186 @@
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/controls';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/shadows';
+@import './button-variants';
+
+$min-height: control-height();
+$slim-min-height: rem(30px);
+$slim-vertical-padding: ($slim-min-height - line-height(input) - rem(2px)) / 2;
+$large-min-height: rem(44px);
+$large-vertical-padding: ($large-min-height - line-height(input) - rem(2px)) / 2;
+$Icon-vertical-adjustment: -1px;
+
+@mixin color-icon($color, $value: base) {
+  .Icon {
+    fill: color($color, $value);
+  }
+}
+
+.Button {
+  position: relative;
+  display: inline-block;
+  min-height: $min-height;
+  min-width: $min-height;
+  margin: 0;
+  padding: control-vertical-padding() spacing();
+  background: linear-gradient(to bottom, color(white), color(sky, lighter));
+  border: border(dark);
+  box-shadow: shadow(faint);
+  border-radius: border-radius();
+  line-height: 1;
+  color: color(ink);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition-property: color, background, border, box-shadow;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  &:hover {
+    background: linear-gradient(to bottom, color(sky, lighter), color(sky, light));
+    border-color: color(sky, dark);
+  }
+
+  &:focus {
+    border-color: color(indigo);
+    outline: 0;
+    box-shadow: 0 0 0 1px color(indigo);
+  }
+
+  &:active {
+    // Same color gradient is necessary for background transitions
+    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
+    border-color: color(sky, dark);
+    box-shadow:
+      0 0 0 0 transparent,
+      inset 0 1px 1px 0 rgba(color(ink, lighter), 0.1),
+      inset 0 1px 4px 0 rgba(color(ink, lighter), 0.2);
+  }
+
+  &.disabled {
+    @include color-icon(ink, lightest);
+    background: color(sky, light);
+    color: color(ink, lightest);
+  }
+}
+
+.primary {
+  @include button-filled(color(indigo), color(indigo, dark));
+  @include color-icon(white);
+
+  &.disabled {
+    @include color-icon(white);
+    background: color(indigo, light);
+    border-color: color(indigo, light);
+    box-shadow: none;
+    color: color(white);
+  }
+}
+
+.destructive {
+  @include button-filled(color(red), color(red, dark));
+  @include color-icon(white);
+}
+
+.outline {
+  @include button-outline(color(ink, lighter));
+
+  &.disabled {
+    background-color: color(white);
+    border-color: color(sky, dark);
+    color: color(ink, lightest);
+  }
+}
+
+.destructive.outline {
+  @include button-outline(color(red));
+  @include color-icon(red, dark);
+}
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.iconOnly {
+  padding-left: spacing(tight);
+  padding-right: spacing(tight);
+}
+
+.plain {
+  margin: (-1 * control-vertical-padding()) (-1 * spacing());
+  background: transparent;
+  border: border(transparent);
+  box-shadow: none;
+  color: color(ink, lighter);
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include color-icon(indigo);
+    background: transparent;
+    border: border(transparent);
+    box-shadow: none;
+    color: color(indigo);
+  }
+
+  &.disabled {
+    background: none;
+  }
+
+  &.sizeSlim {
+    margin-top: (-1 * $slim-vertical-padding);
+    margin-bottom: (-1 * $slim-vertical-padding);
+  }
+
+  &.sizeLarge {
+    margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
+  }
+}
+
+.sizeSlim {
+  min-height: $slim-min-height;
+  min-width: $slim-min-height;
+  padding: $slim-vertical-padding spacing();
+}
+
+.sizeLarge {
+  min-height: $large-min-height;
+  min-width: $large-min-height;
+  padding: $large-vertical-padding spacing(loose);
+}
+
+.fullWidth {
+  display: block;
+  width: 100%;
+}
+
+.Content {
+  @include text-style-input;
+  display: inline-flex;
+  align-items: center;
+}
+
+@include color-icon(ink, lighter);
+
+.Icon {
+  @include text-style-input;
+  transition: color duration() easing();
+}
+
+.left {
+  margin-bottom: $Icon-vertical-adjustment;
+  margin-right: spacing(extra-tight);
+}
+
+.right {
+  margin-bottom: $Icon-vertical-adjustment;
+  margin-left: spacing(extra-tight);
+}

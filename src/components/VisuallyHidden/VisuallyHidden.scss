@@ -1,0 +1,5 @@
+@import 'foundation/utilities';
+
+.VisuallyHidden {
+  @include visually-hidden;
+}

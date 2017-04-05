@@ -1,0 +1,21 @@
+@import 'foundation/spacing';
+@import 'foundation/typography';
+
+.ChoiceList {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.Choices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Title {
+  @include text-style-body;
+  display: block;
+  margin: 0 0 spacing(extra-tight);
+  padding: 0;
+}

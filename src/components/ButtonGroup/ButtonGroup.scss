@@ -1,0 +1,27 @@
+@import 'foundation/spacing';
+
+$Button-plain-horizontal-spacing: spacing(tight);
+$Item-spacing: spacing(tight);
+
+.ButtonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: (-1 * $Item-spacing);
+  margin-left: (-1 * $Item-spacing);
+}
+
+.Item {
+  margin-top: $Item-spacing;
+  margin-left: $Item-spacing;
+}
+
+.plain {
+  &:not(:first-child) {
+    margin-left: $Item-spacing + $Button-plain-horizontal-spacing;
+  }
+
+  &:not(:last-child) {
+    margin-right: $Button-plain-horizontal-spacing;
+  }
+}
