@@ -37,7 +37,7 @@ export type Color = (
   'purple'
 );
 
-const BUNDLED_ICONS = {
+export const BUNDLED_ICONS = {
   arrowDown,
   arrowLeft,
   arrowRight,

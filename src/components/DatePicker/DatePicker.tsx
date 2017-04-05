@@ -26,7 +26,7 @@ export interface Props {
   onMonthChange?(month: Months, year: Year): void,
 }
 
-interface State {
+export interface State {
   hoverDate: Date,
 }
 

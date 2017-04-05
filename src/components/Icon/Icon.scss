@@ -14,15 +14,6 @@ $stacking-order: (
   margin: auto;
 }
 
-.Svg {
-  position: relative;
-  z-index: z-index(icon, $stacking-order);
-  display: block;
-  color: color(white);
-  max-width: 100%;
-  max-height: 100%;
-}
-
 .hasBackdrop {
   position: relative;
   margin: spacing(tight);
@@ -37,11 +28,6 @@ $stacking-order: (
     right: -1 * spacing(tight);
     border-radius: 50%;
   }
-}
-
-.Placeholder {
-  padding-bottom: 100%;
-  background: currentColor;
 }
 
 // We don't typically like classes that end in numbers, but it makes sense
@@ -274,3 +260,17 @@ $stacking-order: (
 }
 
 // stylelint-enable selector-class-pattern
+
+.Svg {
+  position: relative;
+  z-index: z-index(icon, $stacking-order);
+  display: block;
+  color: color(white);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Placeholder {
+  padding-bottom: 100%;
+  background: currentColor;
+}

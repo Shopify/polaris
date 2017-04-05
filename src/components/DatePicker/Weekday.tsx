@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as styles from './DatePicker.scss';
 
-interface Props {
+export interface Props {
   label: string,
 }
 

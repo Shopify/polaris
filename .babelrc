@@ -1,16 +1,6 @@
 {
-  "env": {
-    "commonjs": {
-      "presets": [
-        ["shopify/web", {"modules": "commonjs"}],
-        "./config/babel/css-modules-transforms-preset"
-      ]
-    },
-    "es": {
-      "presets": [
-        ["shopify/web", {"modules": false}],
-        "./config/babel/css-modules-transforms-preset"
-      ]
-    }
-  }
+  "presets": [
+    "shopify/react",
+    ["shopify/web", {"modules": false}]
+  ]
 }

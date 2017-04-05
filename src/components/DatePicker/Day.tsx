@@ -4,7 +4,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 
 import * as styles from './DatePicker.scss';
 
-interface Props {
+export interface Props {
   day?: Date,
   selected?: boolean,
   inRange?: boolean,
