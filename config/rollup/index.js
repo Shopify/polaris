@@ -52,6 +52,7 @@ export default function createRollupConfig({outputCSS}) {
         ],
       }),
       babel({
+        include: '**/*.js',
         exclude: 'node_modules/**',
         runtimeHelpers: true,
       }),

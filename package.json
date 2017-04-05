@@ -13,8 +13,9 @@
     "lint:js": "eslint . --max-warnings 0",
     "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
     "lint": "npm-run-all lint:js lint:ts",
+    "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
-    "check": "npm-run-all lint test",
+    "check": "npm-run-all lint ts test",
     "clean": "rimraf build index.*",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize",
@@ -94,6 +95,7 @@
   "dependencies": {
     "@shopify/javascript-utilities": "^1.0.1",
     "@shopify/react-utilities": "^1.0.0",
+    "@types/node": "^7.0.12",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",
     "babel-runtime": "^6.23.0",

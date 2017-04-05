@@ -1,4 +1,5 @@
 import {basename} from 'path';
+import {camelCase} from 'change-case';
 
 const cache = {
   lastFile: null,
@@ -24,10 +25,10 @@ export default function getClassName(localName, filePath) {
       cache.lastComponent = className;
     } else if (cache.lastComponent == null) {
       const rootClass = quiltClassName(componentName);
-      className = variationClassName(rootClass, localName);
+      className = variationClassName(rootClass, camelCase(localName));
       cache.lastComponent = rootClass;
     } else {
-      className = variationClassName(cache.lastComponent, localName);
+      className = variationClassName(cache.lastComponent, camelCase(localName));
     }
   }
 
