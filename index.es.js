@@ -1,15 +1,44 @@
+import { PureComponent, createElement } from 'react';
+import * as React from 'react';
+import { classNames, variationName } from '@shopify/react-utilities/styles';
 import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
 import _createClass from 'babel-runtime/helpers/createClass';
 import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
 import _inherits from 'babel-runtime/helpers/inherits';
 import { __decorate } from 'tslib';
 import * as tslib_1 from 'tslib';
-import { PureComponent, createElement } from 'react';
-import * as React from 'react';
 import { noop } from '@shopify/javascript-utilities/other';
 import autobind from '@shopify/javascript-utilities/autobind';
 import { Months, Weekdays, abbreviationForWeekday, dateIsInRange, dateIsSelected, getNewRange, getNextDisplayMonth, getNextDisplayYear, getPreviousDisplayMonth, getPreviousDisplayYear, getWeeksForMonth, isDateAfter, isDateBefore } from '@shopify/javascript-utilities/dates';
-import { classNames, variationName } from '@shopify/react-utilities/styles';
+
+var DisplayText$2 = "Quilt-DisplayText";
+var sizeSmall = "Quilt-DisplayText--sizeSmall";
+var sizeMedium = "Quilt-DisplayText--sizeMedium";
+var sizeLarge = "Quilt-DisplayText--sizeLarge";
+var sizeExtraLarge = "Quilt-DisplayText--sizeExtraLarge";
+
+var styles = Object.freeze({
+	DisplayText: DisplayText$2,
+	sizeSmall: sizeSmall,
+	sizeMedium: sizeMedium,
+	sizeLarge: sizeLarge,
+	sizeExtraLarge: sizeExtraLarge
+});
+
+function DisplayText$1(_ref) {
+    var _ref$element = _ref.element,
+        Element = _ref$element === undefined ? 'p' : _ref$element,
+        children = _ref.children,
+        _ref$size = _ref.size,
+        size = _ref$size === undefined ? 'medium' : _ref$size;
+
+    var className = classNames(DisplayText$2, size && styles[variationName('size', size)]);
+    return createElement(
+        Element,
+        { className: className },
+        children
+    );
+}
 
 var arrowDown = { "viewBox": "0 0 20 20", "body": "<path d=\"M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0\"  fill-rule=\"evenodd\"/>" };
 
@@ -89,7 +118,7 @@ var colorPurple = "Quilt-Icon--colorPurple";
 var Svg = "Quilt-Icon__Svg";
 var Placeholder = "Quilt-Icon__Placeholder";
 
-var styles = Object.freeze({
+var styles$1 = Object.freeze({
 	Icon: Icon$2,
 	hasBackdrop: hasBackdrop,
 	sizeFill: sizeFill,
@@ -169,7 +198,7 @@ function Icon$1(_ref) {
         // tslint:disable-next-line no-console
         console.warn('You asked for a backdrop on an icon color that doesn\'t accept backdrops. The icon colors that have backdrops are: ' + COLORS_WITH_BACKDROPS.join(', '));
     }
-    var className = classNames(Icon$2, size && styles[variationName('size', size)], color && styles[variationName('color', color)], backdrop && hasBackdrop);
+    var className = classNames(Icon$2, size && styles$1[variationName('size', size)], color && styles$1[variationName('color', color)], backdrop && hasBackdrop);
     var content = void 0;
     if (source === 'placeholder') {
         content = createElement('div', { className: Placeholder });
@@ -404,4 +433,4 @@ __decorate([autobind], DatePicker$1.prototype, "handleDateSelection", null);
 __decorate([autobind], DatePicker$1.prototype, "handleMonthChangeClick", null);
 __decorate([autobind], DatePicker$1.prototype, "handleHover", null);
 
-export { DatePicker$1 as DatePicker, Icon$1 as Icon };
+export { DisplayText$1 as DisplayText, DatePicker$1 as DatePicker, Icon$1 as Icon };

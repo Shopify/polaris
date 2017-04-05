@@ -10,7 +10,9 @@ import createConfig from '../config/rollup';
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, './build');
 
-execSync(`./node_modules/.bin/tsc --outDir ${build}`);
+execSync(`./node_modules/.bin/tsc --outDir ${build}`, {
+  stdio: 'inherit',
+});
 
 writeFileSync(resolvePath(build, '.babelrc'), `
   {

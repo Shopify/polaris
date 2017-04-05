@@ -56,6 +56,46 @@ a:not([data-quilt-unstyled]){
     text-decoration:underline; }
 
 
+.Quilt-DisplayText{
+  margin:0; }
+
+.Quilt-DisplayText--sizeSmall{
+  font-size:1.14286rem;
+  font-weight:400;
+  line-height:1.71429rem; }
+  @media (min-width: 640px){
+    .Quilt-DisplayText--sizeSmall{
+      font-size:1.42857rem;
+      line-height:1.71429rem; } }
+
+.Quilt-DisplayText--sizeMedium{
+  font-size:1.5rem;
+  font-weight:400;
+  line-height:2rem; }
+  @media (min-width: 640px){
+    .Quilt-DisplayText--sizeMedium{
+      font-size:1.85714rem;
+      line-height:2.28571rem; } }
+
+.Quilt-DisplayText--sizeLarge{
+  font-size:1.71429rem;
+  font-weight:400;
+  line-height:2rem; }
+  @media (min-width: 640px){
+    .Quilt-DisplayText--sizeLarge{
+      font-size:2rem;
+      line-height:2.28571rem; } }
+
+.Quilt-DisplayText--sizeExtraLarge{
+  font-size:1.92857rem;
+  font-weight:400;
+  line-height:2.57143rem; }
+  @media (min-width: 640px){
+    .Quilt-DisplayText--sizeExtraLarge{
+      font-size:3rem;
+      line-height:3.14286rem; } }
+
+
 .Quilt-Icon{
   height:1.14286rem;
   width:1.14286rem;
