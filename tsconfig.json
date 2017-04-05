@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": ".",
+    "rootDir": "./src",
     "target": "es2016",
     "module": "es2015",
     "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "types",
     "jsx": "react-native",
     "strictNullChecks": true,
     "noImplicitAny": true,

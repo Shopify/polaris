@@ -3,3 +3,4 @@ node_modules
 /build
 index.*
 .DS_Store
+types/
