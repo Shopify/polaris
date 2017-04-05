@@ -2,17 +2,24 @@
 {
   "javascript.validate.enable": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "jest.autoEnable": false,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
     "**/node_modules": true,
-    "build/": true
+    "build/": true,
+    "types/": true,
+    "index.*": true,
+    "styles.css": true
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
-    "build/": true
+    "build/": true,
+    "types/": true,
+    "index.*": true,
+    "styles.css": true
   }
 }

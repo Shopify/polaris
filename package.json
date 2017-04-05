@@ -5,9 +5,9 @@
   "keywords": [
     "shopify"
   ],
-  "main": "./index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
+  "main": "index.js",
+  "module": "index.es.js",
+  "jsnext:main": "index.es.js",
   "types": "types/index.d.ts",
   "scripts": {
     "lint:js": "eslint . --max-warnings 0",
@@ -15,58 +15,60 @@
     "lint": "npm-run-all lint:js lint:ts",
     "test": "jest --config ./config/jest/config.json",
     "check": "npm-run-all lint test",
-    "clean:ts": "rimraf ts",
-    "clean:lib": "rimraf components index.js",
-    "clean:es": "rimraf es",
-    "clean:build": "rimraf build",
-    "clean": "rimraf build ts es types && yarn clean:lib",
-    "build:ts": "yarn clean:ts && tsc && yarn build:ts:copy:styles",
-    "build:ts:copy:styles": "copyfiles './src/components/**/*.scss' './ts'",
-    "prebuild:lib": "yarn clean:lib",
-    "build:lib": "yarn build:lib:babel",
-    "build:lib:babel": "cross-env BABEL_ENV=commonjs babel ./ts/src --out-dir .",
-    "prebuild:es": "yarn clean:es",
-    "build:es": "yarn build:es:babel",
-    "build:es:babel": "cross-env BABEL_ENV=es babel ./ts/src --out-dir ./es",
-    "build:cdn" : "webpack --config config/webpack/config.js",
-    "prebuild": "yarn run clean",
-    "build": "npm-run-all build:cdn build:ts build:lib build:es clean:ts",
+    "clean": "rimraf build index.*",
+    "optimize": "node ./scripts/optimize.js",
+    "prebuild": "npm-run-all clean optimize",
+    "build": "babel-node ./scripts/build.js",
     "precdn": "yarn run build",
-    "cdn": "node ./scripts/deploy.js 'build/*.{js,css}'",
-    "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
+    "cdn": "node ./scripts/deploy.js",
+    "prepublish": "in-publish && yarn run build || :",
+    "postpublish": "in-publish && yarn run cdn || :"
   },
   "devDependencies": {
+    "@shopify/images": "^1.0.0",
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
-    "awesome-typescript-loader": "^3.0.4",
+    "@types/enzyme": "^2.7.7",
+    "@types/jest": "^19.2.2",
     "aws-sdk": "^2.6.8",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.23.1",
-    "babel-eslint": "^7.2.0",
-    "babel-loader": "^6.3.2",
-    "babel-plugin-css-modules-transform": "^1.2.7",
-    "babel-polyfill": "^6.23.0",
+    "babel-jest": "^19.0.0",
     "babel-preset-shopify": "^16.0.2",
-    "babel-register": "^6.24.0",
-    "case-sensitive-paths-webpack-plugin": "^1.1.4",
+    "change-case": "^3.0.1",
     "copyfiles": "^1.2.0",
-    "cross-env": "^3.2.4",
-    "css-loader": "^0.26.1",
+    "crypto": "^0.0.3",
+    "enzyme": "^2.8.0",
     "eslint": "^3.15.0",
     "eslint-plugin-shopify": "^15.1.1",
-    "extract-text-webpack-plugin": "2.0.0-rc.3",
     "fs-extra": "^2.1.2",
+    "generic-names": "^1.0.2",
     "glob": "^7.1.1",
+    "identity-obj-proxy": "^3.0.0",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
+    "postcss": "^5.2.16",
+    "postcss-modules-extract-imports": "^1.0.1",
+    "postcss-modules-local-by-default": "^1.1.1",
+    "postcss-modules-parser": "^1.1.0",
+    "postcss-modules-scope": "^1.0.2",
+    "postcss-modules-values": "^1.2.2",
+    "postcss-shopify": "^1.0.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "rimraf": "^2.6.1",
-    "sass-loader": "^6.0.1",
-    "style-loader": "^0.13.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-pluginutils": "^2.0.1",
+    "shelljs": "^0.7.7",
+    "svgo": "^0.7.2",
     "tslint": "^4.4.2",
     "tslint-config-shopify": "^1.1.4",
-    "typescript": "^2.1.6",
-    "webpack": "^2.2.1"
+    "typescript": "^2.1.6"
   },
   "peerDependencies": {
     "react": "^15.4.2",
@@ -76,19 +78,25 @@
     "extends": [
       "plugin:shopify/esnext",
       "plugin:shopify/node"
-    ],
-    "env": {
-      "jest": true
-    }
+    ]
+  },
+  "babel": {
+    "presets": [
+      "shopify/node"
+    ]
   },
   "files": [
-    "components",
+    "src",
     "index.js",
-    "es",
-    "types"
+    "index.es.js",
+    "styles.css"
   ],
   "dependencies": {
+    "@shopify/javascript-utilities": "^1.0.1",
+    "@shopify/react-utilities": "^1.0.0",
     "@types/react": "^15.0.11",
-    "@types/react-dom": "^0.14.23"
+    "@types/react-dom": "^0.14.23",
+    "babel-runtime": "^6.23.0",
+    "tslib": "^1.6.0"
   }
 }

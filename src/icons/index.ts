@@ -1,0 +1,14 @@
+export {default as arrowDown} from './arrow-down.svg';
+export {default as arrowLeft} from './arrow-left.svg';
+export {default as arrowRight} from './arrow-right.svg';
+export {default as arrowUp} from './arrow-up.svg';
+export {default as cancel} from './cancel.svg';
+export {default as caretDown} from './caret-down.svg';
+export {default as caretUp} from './caret-up.svg';
+export {default as checkmark} from './checkmark.svg';
+export {default as chevronDown} from './chevron-down.svg';
+export {default as chevronLeft} from './chevron-left.svg';
+export {default as chevronRight} from './chevron-right.svg';
+export {default as chevronUp} from './chevron-up.svg';
+export {default as delete} from './delete.svg';
+export {default as search} from './search.svg';

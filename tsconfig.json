@@ -1,32 +1,32 @@
 {
   "compilerOptions": {
-    "outDir": "./ts",
     "baseUrl": ".",
-    "rootDir": ".",
-    "declaration": true,
-    "declarationDir": "types",
+    "rootDir": "./src",
     "target": "es2016",
     "module": "es2015",
     "moduleResolution": "node",
-    "jsx": "react",
+    "declaration": true,
+    "declarationDir": "types",
+    "jsx": "react-native",
     "strictNullChecks": true,
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
     "lib": [
-     "dom",
-     "es2015",
-     "es2016",
-     "es2017",
-     "dom.iterable",
-     "scripthost"
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017",
+      "dom.iterable",
+      "scripthost"
     ]
   },
   "include": [
     "./config/typescript/**/*",
-    "./src/components/**/*",
-    "./src/index.ts"
+    "./src/**/*"
   ]
 }

@@ -1,18 +1,18 @@
-const path = require('path');
+import {basename} from 'path';
 
 const cache = {
   lastFile: null,
-  lastClass: null,
+  lastComponent: null,
   files: {},
 };
 
-module.exports = function getClassName(localName, filePath) {
+export default function getClassName(localName, filePath) {
   if (filePath !== cache.lastFile) {
-    cache.lastClass = null;
+    cache.lastComponent = null;
   }
 
   const file = cache.files[filePath] || {};
-  const componentName = path.basename(filePath, '.scss');
+  const componentName = basename(filePath, '.scss');
   let className = file[localName];
 
   if (className == null) {
@@ -20,20 +20,23 @@ module.exports = function getClassName(localName, filePath) {
       className = componentName === localName
         ? quiltClassName(componentName)
         : quiltClassName(subcomponentClassName(componentName, localName));
-    } else if (cache.lastClass == null) {
-      className = variationClassName(quiltClassName(componentName), localName);
+
+      cache.lastComponent = className;
+    } else if (cache.lastComponent == null) {
+      const rootClass = quiltClassName(componentName);
+      className = variationClassName(rootClass, localName);
+      cache.lastComponent = rootClass;
     } else {
-      className = variationClassName(cache.lastClass, localName);
+      className = variationClassName(cache.lastComponent, localName);
     }
   }
 
   file[localName] = className;
 
   cache.lastFile = filePath;
-  cache.lastClass = className;
   cache.files[filePath] = file;
   return className;
-};
+}
 
 function isComponent([firstLetter]) {
   return firstLetter === firstLetter.toUpperCase();

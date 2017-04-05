@@ -1,13 +1,30 @@
 $default-browser-font-size: 16px;
 $base-font-size: 14px;
 
-// To be used on flex items. Resolves some common layout issues, such as
-// text truncation not respecting padding or breaking out of container.
-// https://css-tricks.com/flexbox-truncated-text/
+/// To be used on flex items. Resolves some common layout issues, such as
+/// text truncation not respecting padding or breaking out of container.
+/// https://css-tricks.com/flexbox-truncated-text/
 
 @mixin layout-flex-fix {
   min-width: 0;
   max-width: 100%;
+}
+
+/// Used to hide an element visually, but keeping it accessible for
+/// accessibility tools.
+
+@mixin visually-hidden {
+  // Need to make sure we override any existing styles.
+  // stylelint-disable declaration-no-important
+  position: absolute !important;
+  top: 0;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  overflow: hidden !important;
+  height: 1px !important;
+  width: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  // stylelint-enable declaration-no-important
 }
 
 /// Returns the value in rem for a given pixel value.

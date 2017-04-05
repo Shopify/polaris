@@ -1,10 +1,10 @@
 @import 'utilities';
 
 $breakpoints-data: (
-  display-text: 640px,
-  collapse-sidebar: 700px
+  small: 568px,
+  medium: 640px,
+  collapse-sidebar: 700px,
 );
-
 
 /// Returns the breakpoint value for a given name.
 ///
@@ -24,9 +24,17 @@ $Sidebar-width: 252px;
 $Content-condensed-size: 450px;
 
 @mixin main-content-breakpoint-before($size) {
-  @media (max-width: #{min(breakpoint(collapse-sidebar), $size)}),
+  @media
+    (max-width: #{min(breakpoint(collapse-sidebar),
+    $size)}),
     (min-width: #{breakpoint(collapse-sidebar)}) and
     (max-width: #{$Sidebar-width + $size}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-after($size) {
+  @media (min-width: #{$size}) {
     @content;
   }
 }
