@@ -1,7 +1,7 @@
 *.log
 node_modules
 /build
-index.*
-styles.css
+/types
+/index.*
+/styles.css
 .DS_Store
-types/
