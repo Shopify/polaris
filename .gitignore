@@ -2,5 +2,6 @@
 node_modules
 /build
 index.*
+styles.css
 .DS_Store
 types/

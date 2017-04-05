@@ -12,7 +12,7 @@ describe('build', () => {
     execSync('yarn run build');
     expect(fs.existsSync('./index.js')).toBe(true);
     expect(fs.existsSync('./index.es.js')).toBe(true);
-    expect(fs.existsSync('./index.css')).toBe(true);
+    expect(fs.existsSync('./styles.css')).toBe(true);
     execSync('yarn run clean');
   });
 });

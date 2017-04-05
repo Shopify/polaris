@@ -29,7 +29,7 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', build])
   .then(() => Promise.all([
     cp('./build/quilt.js', './index.js'),
     cp('./build/quilt.es.js', './index.es.js'),
-    cp('./build/quilt.css', './index.css'),
+    cp('./build/quilt.css', './styles.css'),
   ]))
   // eslint-disable-next-line no-console
   .catch((error) => console.error(error));

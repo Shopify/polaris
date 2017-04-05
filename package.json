@@ -20,6 +20,7 @@
     "build": "babel-node ./scripts/build.js",
     "precdn": "yarn run build",
     "cdn": "node ./scripts/deploy.js",
+    "prepublish": "yarn run build",
     "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
   },
   "devDependencies": {
@@ -86,7 +87,7 @@
     "src",
     "index.js",
     "index.es.js",
-    "index.css"
+    "styles.css"
   ],
   "dependencies": {
     "@shopify/javascript-utilities": "^1.0.1",

@@ -16,6 +16,7 @@ export default function styles(options = {}) {
   const filter = createFilter(options.include || ['**/*.css', '**/*.scss'], options.exclude);
   const includePaths = options.includePaths || [];
   const compiledStyles = [];
+  const tokensByFile = {};
 
   const generateScopedName = typeof options.generateScopedName === 'function'
     ? options.generateScopedName
@@ -45,24 +46,31 @@ export default function styles(options = {}) {
     transform(source, id) {
       if (!filter(id)) { return null; }
 
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         render({
           data: source,
           includePaths: includePaths.concat(dirname(id)),
         }, (error, result) => {
-          const sassOutput = result.css.toString();
-          getPostCSSOutput(processor, sassOutput, id)
-            .then(({css, tokens}) => {
-              const code = Object
-                .keys(tokens)
-                .map((className) => `export var ${className} = ${JSON.stringify(tokens[className])};`)
-                .join('\n');
+          if (error) {
+            reject(error);
+            return;
+          }
 
-              compiledStyles.push(css);
-              return resolve(code);
-            });
+          const sassOutput = result.css.toString();
+          resolve(getPostCSSOutput(processor, sassOutput, id));
         });
-      });
+      })
+        .then(({css, tokens}) => {
+          tokensByFile[id] = tokens;
+
+          const code = Object
+            .keys(tokens)
+            .map((className) => `export var ${className} = ${JSON.stringify(tokens[className])};`)
+            .join('\n');
+
+          compiledStyles.push(css);
+          return code;
+        });
     },
     ongenerate(generateOptions) {
       if (options.output === false) {
@@ -71,31 +79,35 @@ export default function styles(options = {}) {
 
       const jsDestination = generateOptions.dest || 'bundle.js';
       let cssDestination = typeof options.output === 'string' ? options.output : null;
-      
+
       if (cssDestination == null) {
         cssDestination = jsDestination.endsWith('.js')
           ? `${jsDestination.slice(0, -3)}.css`
           : `${jsDestination}.css`;
       }
 
+      const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
+
       ensureDirSync(dirname(cssDestination));
 
-      return new Promise((resolve, reject) => {
-        writeFile(cssDestination, compiledStyles.join('\n\n'), (error) => {
-          if (error) {
-            reject(error);
-            return;
-          }
-
-          if (generateOptions.verbose !== false) {
-            console.log(`Built \u001b[1m\u001b[32m${cssDestination}\u001b[39m\u001b[22m`)
-          }
-
-          resolve();
-        });
-      });
+      return Promise.all([
+        write(cssDestination, compiledStyles.join('\n\n')),
+        write(tokensDestination, JSON.stringify(tokensByFile, null, 2)),
+      ]);
     },
   };
+}
+
+function write(file, content) {
+  return new Promise((resolve, reject) => {
+    writeFile(file, content, (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
+  });
 }
 
 function getPostCSSOutput(processor, source, path) {

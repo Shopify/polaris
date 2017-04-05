@@ -1,5 +1,6 @@
 {
-    "roots": [
-      "<rootDir>/tests"
-    ]
+  "roots": [
+    "<rootDir>/tests",
+    "<rootDir>/src"
+  ]
 }

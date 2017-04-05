@@ -11,13 +11,15 @@
     "**/node_modules": true,
     "build/": true,
     "types/": true,
-    "index.*": true
+    "index.*": true,
+    "styles.css": true
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "build/": true,
     "types/": true,
-    "index.*": true
+    "index.*": true,
+    "styles.css": true
   }
 }

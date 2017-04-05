@@ -20,7 +20,7 @@ export default function getClassName(localName, filePath) {
       className = componentName === localName
         ? quiltClassName(componentName)
         : quiltClassName(subcomponentClassName(componentName, localName));
-      
+
       cache.lastComponent = className;
     } else if (cache.lastComponent == null) {
       const rootClass = quiltClassName(componentName);
@@ -36,7 +36,7 @@ export default function getClassName(localName, filePath) {
   cache.lastFile = filePath;
   cache.files[filePath] = file;
   return className;
-};
+}
 
 function isComponent([firstLetter]) {
   return firstLetter === firstLetter.toUpperCase();
