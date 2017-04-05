@@ -15,19 +15,11 @@
     "lint": "npm-run-all lint:js lint:ts",
     "test": "jest --config ./config/jest/config.json",
     "check": "npm-run-all lint test",
-    "clean:ts": "rimraf ts",
-    "clean:lib": "rimraf components index.js",
-    "clean:es": "rimraf es",
-    "clean:build": "rimraf build",
-    "clean": "rimraf build ts es types && yarn clean:lib",
-    "build:ts": "yarn clean:ts && tsc && yarn build:ts:copy:styles",
-    "build:ts:copy:styles": "copyfiles './src/**/*.{scss,svg}' './ts'",
-    "build:es": "rollup --config config/rollup/config.es.js",
-    "build:cjs": "rollup --config config/rollup/config.cjs.js",
+    "clean": "rimraf build index.*",
     "prebuild": "yarn run clean",
-    "build": "npm-run-all build:cdn build:ts build:lib build:es clean:ts",
+    "build": "babel-node ./scripts/build.js",
     "precdn": "yarn run build",
-    "cdn": "node ./scripts/deploy.js 'build/*.{js,css}'",
+    "cdn": "node ./scripts/deploy.js",
     "postpublish": "in-publish && yarn run cdn || echo not-in-publish"
   },
   "devDependencies": {
@@ -55,7 +47,6 @@
     "extract-text-webpack-plugin": "2.0.0-rc.3",
     "fs-extra": "^2.1.2",
     "generic-names": "^1.0.2",
-    "glob": "^7.1.1",
     "image-webpack-loader": "^3.3.0",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
@@ -79,6 +70,7 @@
     "rollup-plugin-scss": "^0.2.0",
     "rollup-pluginutils": "^2.0.1",
     "sass-loader": "^6.0.1",
+    "shelljs": "^0.7.7",
     "style-loader": "^0.13.1",
     "svgo": "^0.7.2",
     "tslint": "^4.4.2",
@@ -100,11 +92,16 @@
       "jest": true
     }
   },
+  "babel": {
+    "presets": [
+      "shopify/node"
+    ]
+  },
   "files": [
-    "components",
+    "src",
     "index.js",
-    "es",
-    "types"
+    "index.es.js",
+    "index.css"
   ],
   "dependencies": {
     "@shopify/javascript-utilities": "^1.0.1",

@@ -1,6 +1,0 @@
-{
-  "presets": [
-    "shopify/react",
-    ["shopify/web", {"modules": false}]
-  ]
-}

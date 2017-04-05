@@ -4,7 +4,6 @@ const fs = require('fs-extra');
 describe('build', () => {
   it('should generate CDN files in ./build', () => {
     execSync('yarn run build');
-    expect(fs.existsSync('./build/quilt.js')).toBe(true);
     expect(fs.existsSync('./build/quilt.css')).toBe(true);
     execSync('yarn run clean');
   });
@@ -12,7 +11,8 @@ describe('build', () => {
   it('should generate lib files in ./', () => {
     execSync('yarn run build');
     expect(fs.existsSync('./index.js')).toBe(true);
-    expect(fs.existsSync('./components/index.js')).toBe(true);
+    expect(fs.existsSync('./index.es.js')).toBe(true);
+    expect(fs.existsSync('./index.css')).toBe(true);
     execSync('yarn run clean');
   });
 });
