@@ -8,9 +8,9 @@
   dependencies:
     eslint-plugin-shopify "^15.2.0"
 
-"@shopify/javascript-utilities@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.0.1.tgz#36ede602f952bd6a65af448c9bb55949451893a8"
+"@shopify/javascript-utilities@^1.0.1", "@shopify/javascript-utilities@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.0.2.tgz#0103e6a4a6ed0e444cd6758862cc597476c8b5e6"
   dependencies:
     "@types/react" "^15.0.21"
 
@@ -22,12 +22,17 @@
     mime-types "2.1.12"
     request "2.78.0"
 
-"@shopify/react-utilities@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-1.0.0.tgz#d5cad4dafe1612d5033b920c2b125da06bbf9472"
+"@shopify/react-utilities@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-1.0.2.tgz#99a9959082760f259c51cb7859f30d1cc9a69bbb"
   dependencies:
+    "@shopify/javascript-utilities" "^1.0.1"
     "@types/classnames" "^0.0.32"
+    "@types/node" "^7.0.12"
+    "@types/react" "^15.0.21"
+    "@types/react-addons-transition-group" "^0.14.19"
     classnames "^2.2.5"
+    react-addons-transition-group "^15.4.2"
 
 "@types/cheerio@*":
   version "0.22.1"
@@ -51,6 +56,12 @@
 "@types/node@^7.0.12":
   version "7.0.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.12.tgz#ae5f67a19c15f752148004db07cbbb372e69efc9"
+
+"@types/react-addons-transition-group@^0.14.19":
+  version "0.14.19"
+  resolved "https://registry.yarnpkg.com/@types/react-addons-transition-group/-/react-addons-transition-group-0.14.19.tgz#74053d3b1d30644644149343323e05570ccb9fd2"
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-dom@^0.14.23":
   version "0.14.23"
@@ -4490,6 +4501,13 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
 react-addons-test-utils@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.4.2.tgz#93bcaa718fcae7360d42e8fb1c09756cc36302a2"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
+react-addons-transition-group@^15.4.2:
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.5.0.tgz#4a7dd48d2061f49a8977396f9e7c3f40f1b07a40"
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
