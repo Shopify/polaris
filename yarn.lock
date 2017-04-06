@@ -22,9 +22,9 @@
     mime-types "2.1.12"
     request "2.78.0"
 
-"@shopify/react-utilities@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-1.0.2.tgz#99a9959082760f259c51cb7859f30d1cc9a69bbb"
+"@shopify/react-utilities@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-1.0.3.tgz#f643ead3182e9069751e3e87e8dd6c0efd40e406"
   dependencies:
     "@shopify/javascript-utilities" "^1.0.1"
     "@types/classnames" "^0.0.32"

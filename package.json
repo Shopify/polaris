@@ -97,7 +97,7 @@
   ],
   "dependencies": {
     "@shopify/javascript-utilities": "^1.0.2",
-    "@shopify/react-utilities": "^1.0.2",
+    "@shopify/react-utilities": "^1.0.3",
     "@types/node": "^7.0.12",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",
