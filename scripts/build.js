@@ -6,6 +6,7 @@ import {cp} from 'shelljs';
 import copyfiles from 'copyfiles';
 
 import createConfig from '../config/rollup';
+import generateSassBuild from './sass-build';
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, './build');
@@ -31,8 +32,12 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', build])
     cp('./build/quilt.es.js', './index.es.js'),
     cp('./build/quilt.css', './styles.css'),
   ]))
-  // eslint-disable-next-line no-console
-  .catch((error) => console.error(error));
+  .then(() => generateSassBuild())
+  .catch((error) => {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    process.exit(1);
+  });
 
 function runRollup({format, css}) {
   const filename = format === 'cjs' ? 'quilt.js' : `quilt.${format}.js`;
