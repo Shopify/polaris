@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
-  to: string,
+  url: string,
   external?: boolean,
   children?: React.ReactNode,
   [key: string]: any,
@@ -22,9 +22,9 @@ export default class UnstyledLink extends React.PureComponent<Props, {}> {
       return <LinkComponent {...this.props} data-quilt-unstyled />;
     }
 
-    const {external, to, ...rest} = this.props;
+    const {external, url, ...rest} = this.props;
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
-    return <a target={target} {...rest} href={to} rel={rel} data-quilt-unstyled />;
+    return <a target={target} {...rest} href={url} rel={rel} data-quilt-unstyled />;
   }
 }

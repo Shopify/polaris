@@ -1,31 +1,22 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Button, {Props as ButtonProps} from '../Button';
+import {DisableableAction, ComplexAction} from '../types';
+import {buttonsFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
-import Breadcrumbs, {BreadcrumbDescriptor} from '../Breadcrumbs';
+import Breadcrumbs, {Props as BreadcrumbProps} from '../Breadcrumbs';
 import DisplayText from '../DisplayText';
 
 import * as styles from './Page.scss';
 
-export interface Action {
-  text: string,
-  to?: string,
-  onClick?(): void,
-}
-
-export interface IconAction extends Action {
-  icon?: ButtonProps['leftIcon'],
-}
-
 export interface Props {
   title: string,
   icon?: string,
-  breadcrumbs?: BreadcrumbDescriptor[],
+  breadcrumbs?: BreadcrumbProps['breadcrumbs'],
   children?: React.ReactNode,
   fullWidth?: boolean,
-  secondaryActions?: IconAction[],
-  primaryAction?: Action,
+  secondaryActions?: ComplexAction[],
+  primaryAction?: DisableableAction,
 }
 
 export default function Page({
@@ -51,29 +42,11 @@ export default function Page({
     : null;
 
   const primaryActionMarkup = primaryAction
-    ? (
-      <Button
-        primary
-        to={primaryAction.to}
-        onClick={primaryAction.onClick}
-      >
-        {primaryAction.text}
-      </Button>
-    )
+    ? buttonsFrom(primaryAction, {primary: true})
     : null;
 
   const secondaryActionsMarkup = secondaryActions
-    ? secondaryActions.map((secondaryAction) => (
-      <Button
-        plain
-        key={secondaryAction.text}
-        to={secondaryAction.to}
-        leftIcon={secondaryAction.icon}
-        onClick={secondaryAction.onClick}
-      >
-        {secondaryAction.text}
-      </Button>
-    ))
+    ? buttonsFrom(secondaryActions, {plain: true})
     : null;
 
   const actionsMarkup = primaryAction || secondaryActions
@@ -91,7 +64,7 @@ export default function Page({
           {iconMarkup}
           <div className={styles.Title}>
             {breadcrumbMarkup}
-            <DisplayText size="large">{title}</DisplayText>
+            <DisplayText size="large" element="h1">{title}</DisplayText>
           </div>
         </div>
 

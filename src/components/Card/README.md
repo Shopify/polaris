@@ -3,7 +3,7 @@ name: Card
 tags:
   - layout
   - container
-category: Containers
+category: Structure
 ---
 
 # Card
@@ -31,10 +31,12 @@ Prioritizing information so the content the merchant most needs to know comes fi
 Avoiding too many call-to-action buttons or links
 Using calls-to-action on the bottom of the card for next steps and using the space in the upper right corner of the card for persistent, optional actions (example: an Edit link)
 
-## API
-| Prop  | Type   | Default | Required |
-| --- | --- | --- | --- |
-| title | string | none | true |
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| title | string | Title content for the card |
+| subdued | boolean | A less prominent card |
+| sectioned | boolean | Auto wrap content in section |
+| actions | Action[] | Card header actions |
 
 ## Content guidelines
 
@@ -99,6 +101,8 @@ Need do and don’t example
 Like buttons: Follow the same content guidelines as <when you’re writing buttons>.
 Need do and don’t example
 
+---
+
 ## Examples
 
 ### Basic card
@@ -129,6 +133,14 @@ Use this when you have a simple message to communicate to merchants that require
 
 ### Card with call-to-action in the heading
 Use a link in the heading when there’s a persistent action available to merchants (example: an Edit link), or when you want to provide them with a way to navigate to another section of Shopify.
+
+```jsx
+<Card title="Online Store dashboard" actions={[{content: 'Edit'}]}>
+  <Card.Section>
+    <p>View a summary of your Online Store's performance.</p>
+  </Card.Section>
+</Card>
+```
 
 ### Card with an action menu in the heading
 Use this if there are multiple optional actions a merchant can take on the information in the card. Clicking on the link will open a popover that contains a menu of actions.

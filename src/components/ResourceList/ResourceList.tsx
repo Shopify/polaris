@@ -41,11 +41,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
              <div className={selectorClassNames}>
               <Checkbox
                 checked={areAllItemsSelected}
-                label={
-                  <div className={styles.hiddenLabel}>
-                    Select All
-                  </div>
-                }
+                label="Select all"
+                labelHidden
                 onChange={this.handleChangeAll}
               />
             </div>
@@ -124,11 +121,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       <div className={selectorClassNames}>
         <Checkbox
           checked={selected.indexOf(index) !== -1}
-          label={
-            <div className={styles.hiddenLabel}>
-              Selector-{index}
-            </div>
-          }
+          label={`Select-${index}`}
+          labelHidden
           onChange={handleChange}
         />
       </div>

@@ -43,11 +43,13 @@
     position: absolute;
     top: 0;
     transform: translateX(100%);
+    transition: transform duration() easing();
   }
 
   &.leaving {
     position: absolute;
     top: 0;
+    transition: transform duration() easing();
 
     &.slidingBackwards {
       transform: translateX(100%);

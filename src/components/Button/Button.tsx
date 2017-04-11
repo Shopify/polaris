@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities';
 
+import {ComplexAction} from '../types';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
@@ -9,8 +10,8 @@ import * as styles from './Button.scss';
 export type Size = 'slim' | 'large';
 
 export interface Props {
-  to?: string,
-  children?: React.ReactNode,
+  url?: string,
+  children?: string,
   size?: Size,
   fullWidth?: boolean,
   primary?: boolean,
@@ -20,17 +21,16 @@ export interface Props {
   plain?: boolean,
   external?: boolean,
   submit?: boolean,
+  disclosure?: boolean,
   accessibilityLabel?: string,
   icon?: IconProps['source'],
-  leftIcon?: IconProps['source'],
-  rightIcon?: IconProps['source'],
   onClick?(): void,
   onFocus?(): void,
   onBlur?(): void,
 }
 
 export default function Button({
-  to,
+  url,
   disabled,
   children,
   accessibilityLabel,
@@ -39,11 +39,10 @@ export default function Button({
   onBlur,
   external,
   icon,
-  leftIcon,
-  rightIcon,
   primary,
   outline,
   destructive,
+  disclosure,
   plain,
   submit,
   size,
@@ -58,40 +57,36 @@ export default function Button({
     plain && styles.plain,
     size && styles[variationName('size', size)],
     fullWidth && styles.fullWidth,
-    icon && styles.iconOnly,
+    icon && children == null && styles.iconOnly,
   );
 
-  const leftIconMarkup = leftIcon
-    ? <div className={classNames(styles.Icon, styles.left)}><Icon source={leftIcon} /></div>
+  const disclosureIconMarkup = disclosure
+    ? <span className={classNames(styles.Icon)}><Icon source="caretDown" /></span>
     : null;
 
-  const rightIconMarkup = rightIcon
-    ? <div className={classNames(styles.Icon, styles.right)}><Icon source={rightIcon} /></div>
+  const iconMarkup = icon
+    ? <span className={classNames(styles.Icon)}><Icon source={icon} /></span>
     : null;
 
-  let content: React.ReactNode;
+  const childMarkup = children ? <span>{children}</span> : null;
 
-  if (icon == null) {
-    content = leftIcon || rightIcon
-      ? (
-        <div className={styles.Content}>
-          {leftIconMarkup}
-          {children}
-          {rightIconMarkup}
-        </div>
-      )
-      : <div className={styles.Content}>{children}</div>;
-  } else {
-    content = <div className={styles.Icon}><Icon source={icon} /></div>;
-  }
+  const content = iconMarkup || disclosureIconMarkup
+    ? (
+      <span className={styles.Content}>
+        {iconMarkup}
+        {childMarkup}
+        {disclosureIconMarkup}
+      </span>
+    )
+    : <span className={styles.Content}>{childMarkup}</span>;
 
   const type = submit ? 'submit' : 'button';
 
   return (
-    to
+    url
     ? (
       <UnstyledLink
-        to={to}
+        url={url}
         external={external}
         onClick={onClick}
         onFocus={onFocus}
@@ -119,18 +114,28 @@ export default function Button({
   );
 }
 
-export function buttonsFrom(actions?: Props[] | Props, overrides: Partial<Props> = {}) {
-  if (!actions) {
-    return null;
-  }
-
+export function buttonsFrom(action: ComplexAction, overrides?: Partial<Props>): React.ReactElement<Props>;
+export function buttonsFrom(actions: ComplexAction[], overrides?: Partial<Props>): React.ReactElement<Props>[];
+export function buttonsFrom(actions: ComplexAction[] | ComplexAction, overrides: Partial<Props> = {}) {
   if (Array.isArray(actions)) {
-    return (actions).map((action, index) => {
-      const props = {...action, ...overrides};
-      return <Button key={index} {...props}/>;
-    });
+    return (actions).map((action, index) => buttonFrom(action, overrides, index));
   } else {
-    const props = {...actions, ...overrides};
-    return <Button {...props}/>;
+    return buttonFrom(actions, overrides);
   }
+}
+
+export function buttonFrom(
+  {content, onAction, ...action}: ComplexAction,
+  overrides?: Partial<Props>,
+  key?: any,
+) {
+  return (
+    <Button
+      key={key}
+      children={content}
+      onClick={onAction}
+      {...action}
+      {...overrides}
+    />
+  );
 }

@@ -31,7 +31,6 @@ $content-max-width: rem(400px);
   overflow: hidden;
   background-color: color(white);
   border-radius: border-radius(large);
-  max-height: $content-max-height;
 }
 
 .Content {
@@ -88,4 +87,8 @@ $content-max-width: rem(400px);
   + .Section {
     border-top: border();
   }
+}
+
+.ActivatorContainer {
+  display: inline-block;
 }

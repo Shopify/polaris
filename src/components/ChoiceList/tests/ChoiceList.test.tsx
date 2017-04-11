@@ -6,13 +6,13 @@ import RadioButton from '../../RadioButton';
 import Checkbox from '../../Checkbox';
 
 describe('<ChoiceList />', () => {
-  let choices: ({label: React.ReactNode, value: string})[];
+  let choices: ({label: string, value: string})[];
 
   beforeEach(() => {
     choices = [
-      {label: <strong>One</strong>, value: 'one'},
-      {label: <strong>Two</strong>, value: 'two'},
-      {label: <strong>Three</strong>, value: 'three'},
+      {label: 'One', value: 'one'},
+      {label: 'Two', value: 'two'},
+      {label: 'Three', value: 'three'},
     ];
   });
 
@@ -84,11 +84,36 @@ describe('<ChoiceList />', () => {
   });
 
   describe('name', () => {
+    it('provides a unique name when none is provided', () => {
+      const choiceElements = shallow(<ChoiceList selected={[]} choices={choices} />).find(RadioButton);
+      let name: string;
+
+      choiceElements.forEach((choiceElement) => {
+        const choiceName = choiceElement.prop<string>('name');
+        if (name == null) {
+          name = choiceName;
+        } else {
+          expect(choiceName).toBe(name);
+        }
+
+        expect(typeof choiceName).toBe('string');
+      });
+    });
+
     it('uses the same name for every choice', () => {
       const name = 'MyChoiceList';
       const choiceElements = shallow(<ChoiceList name={name} selected={[]} choices={choices} />).find(RadioButton);
       choiceElements.forEach((choiceElement) => {
         expect(choiceElement.prop('name')).toBe(name);
+      });
+    });
+
+    it('postpends [] when multiple options are allowed', () => {
+      const name = 'MyChoiceList';
+      const choiceElements = shallow(<ChoiceList allowMultiple name={name} selected={[]} choices={choices} />).find(RadioButton);
+
+      choiceElements.forEach((choiceElement) => {
+        expect(choiceElement.prop('name')).toBe(`${name}[]`);
       });
     });
   });

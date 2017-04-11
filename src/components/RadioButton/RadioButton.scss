@@ -15,7 +15,7 @@
   &:active,
   &:checked {
     + .Backdrop {
-      border-color: color(indigo);
+      background: color(indigo);
     }
   }
 
@@ -51,6 +51,10 @@
   left: 0;
   right: 0;
   border-radius: 50%;
+
+  &::after {
+    border-radius: 50%;
+  }
 }
 
 .Icon {

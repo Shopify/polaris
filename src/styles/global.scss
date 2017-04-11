@@ -14,7 +14,7 @@ html {
   overflow: hidden;
   height: 100%;
   width: 100%;
-  font-size: 87.5%;
+  font-size: ($base-font-size / $default-browser-font-size) * 100%;
   -webkit-font-smoothing: antialiased;
 
   // This needs to come after -webkit-font-smoothing

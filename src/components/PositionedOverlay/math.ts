@@ -4,51 +4,55 @@ export type Alignment = 'center' | 'edge';
 
 export type PreferredPosition = 'above' | 'below' | 'mostSpace';
 
+const PADDING = 15;
+
 export function calculateVerticalPosition(
   scrollableContainer: Rect,
   preferredPosition: PreferredPosition,
   activator: Rect,
-  desiredHeight: number,
+  maxHeight: number,
+  intrinsicHeight: number,
 ) {
   const relativeSpaceAbove = activator.top - scrollableContainer.top;
   const scrollablecontainerBottom = scrollableContainer.top + scrollableContainer.height;
   const activatorBottom = activator.top + activator.height;
   const relativeSpaceBelow = scrollablecontainerBottom - activatorBottom;
-  const padding = 15;
-  const top = activator.top + activator.height + padding / 2;
-  const bottom = window.innerHeight - activator.top + padding / 2;
+  const top = activator.top + activator.height + PADDING / 2;
+  const bottom = window.innerHeight - activator.top + PADDING / 2;
+
+  const desiredHeight = Math.min(intrinsicHeight, maxHeight);
 
   if (preferredPosition === 'above') {
-    if (relativeSpaceAbove > desiredHeight || relativeSpaceAbove > relativeSpaceBelow) {
+    if (relativeSpaceAbove > (desiredHeight + PADDING) || relativeSpaceAbove > relativeSpaceBelow) {
       return {
         top,
         bottom,
         positioning: 'above',
-        height: heightPositionedTop(activator.top, scrollableContainer.top, padding),
+        height: Math.min(heightPositionedTop(activator.top, scrollableContainer.top, PADDING), desiredHeight),
       };
     }
     return {
       top,
       bottom,
       positioning: 'below',
-      height: heightPositionedBottom(activator, scrollableContainer, padding),
+      height: Math.min(heightPositionedBottom(activator, scrollableContainer, PADDING), desiredHeight),
     };
   }
 
   if (preferredPosition === 'below') {
-    if (relativeSpaceBelow > desiredHeight || relativeSpaceBelow > relativeSpaceAbove) {
+    if (relativeSpaceBelow > (desiredHeight + PADDING) || relativeSpaceBelow > relativeSpaceAbove) {
       return {
         top,
         bottom,
         positioning: 'below',
-        height: heightPositionedBottom(activator, scrollableContainer, padding),
+        height: Math.min(heightPositionedBottom(activator, scrollableContainer, PADDING), desiredHeight),
       };
     }
     return {
       top,
       bottom,
       positioning: 'above',
-      height: heightPositionedTop(activator.top, scrollableContainer.top, padding),
+      height: Math.min(heightPositionedTop(activator.top, scrollableContainer.top, PADDING), desiredHeight),
     };
   }
 
@@ -57,14 +61,14 @@ export function calculateVerticalPosition(
       top,
       bottom,
       positioning: 'above',
-      height: heightPositionedTop(activator.top, scrollableContainer.top, padding),
+      height: Math.min(heightPositionedTop(activator.top, scrollableContainer.top, PADDING), desiredHeight),
     };
   }
   return {
     top,
     bottom,
     positioning: 'below',
-    height: heightPositionedBottom(activator, scrollableContainer, padding),
+    height: Math.min(heightPositionedBottom(activator, scrollableContainer, PADDING), desiredHeight),
   };
 }
 
@@ -83,16 +87,16 @@ export function calculateHorizontalPosition(
     return activator.center.x - offset;
   }
 
-  if (isCloseToLeftContainerEdge(activator, container)) {
-    return container.left;
-  }
-
-  if (isCloseToRightContainerEdge(activator, container)) {
+  if (relativePosition > 0.85) {
     const containerRight = container.left + container.width;
-    return  containerRight - overlay.width;
+    return  containerRight - overlay.width - (PADDING / 2);
   }
 
-  return activator.center.x -  Math.min(overlay.width / 2, activator.center.x - container.left);
+  if (relativePosition < 0.15) {
+    return  container.left + (PADDING / 2);
+  }
+
+  return activator.center.x - overlay.width / 2;
 }
 
 function heightPositionedTop(activatorTop: number, scrollablecontainerTop: number, padding: number) {
@@ -104,14 +108,4 @@ function heightPositionedBottom(activator: Rect, scrollablecontainer: Rect, padd
   const activatorBottom = activator.top + activator.height;
 
   return scrollablecontainerBottom - activatorBottom - padding;
-}
-
-function isCloseToLeftContainerEdge(activator: Rect, container: Rect) {
-  return activator.left - (activator.width / 2) < container.left;
-}
-
-function isCloseToRightContainerEdge(activator: Rect, container: Rect) {
-  const containerRight = container.left + container.width;
-
-  return activator.center.x + activator.width > containerRight;
 }

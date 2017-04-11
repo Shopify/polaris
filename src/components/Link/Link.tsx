@@ -1,36 +1,28 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities';
 import UnstyledLink from '../UnstyledLink';
 import * as styles from './Link.scss';
 
 export interface Props {
-  to?: string,
+  url?: string,
   children?: React.ReactNode,
   external?: boolean,
-  subdued?: boolean,
   onClick?(): void,
 }
 
 export default function Link({
-  to,
+  url,
   children,
   onClick,
-  subdued,
   external,
 }: Props) {
-  const className = classNames(
-    styles.Link,
-    subdued && styles.subdued,
-  );
-
-  return to
+  return url
     ? (
-      <UnstyledLink className={className} to={to} external={external}>
+      <UnstyledLink className={styles.Link} url={url} external={external}>
         {children}
       </UnstyledLink>
     )
     : (
-      <button onClick={onClick} className={className}>
+      <button onClick={onClick} className={styles.Link}>
         {children}
       </button>
     );

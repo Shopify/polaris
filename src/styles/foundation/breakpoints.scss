@@ -20,6 +20,7 @@ $breakpoints-data: (
     @error 'Breakpoint `#{$name}` not found. Available breakpoints: #{available-names($breakpoints-data)}';
   }
 }
+
 $Sidebar-width: 252px;
 $Content-condensed-size: 450px;
 

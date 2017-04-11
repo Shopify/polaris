@@ -20,23 +20,41 @@
 
 @mixin control-backdrop($style: base) {
   @if $style == base {
-    background: linear-gradient(to bottom, color(white), color(sky, lighter));
-    border: border(dark);
+    background: color(sky, dark);
+    border: border(transparent);
     box-shadow: shadow(faint);
     border-radius: border-radius();
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      background: linear-gradient(to bottom, color(white), color(sky, lighter));
+      border-radius: calc(#{border-radius()} - 1px);
+    }
   } @else if $style == focused {
-    border-color: color(indigo);
+    background: color(indigo);
     box-shadow: 0 0 0 1px color(indigo);
+
+    &::after { background: color(white); }
   } @else if $style == error {
-    background: color(red, lighter);
-    border-color: color(red);
+    background: color(red);
     box-shadow: none;
+
+    &::after { background: color(red, lighter); }
   } @else if $style == disabled {
-    background: color(sky, light);
-    border-color: color(sky, dark);
+    background: color(sky, dark);
     box-shadow: none;
+
+    &::after { background: color(sky, light); }
   } @else if $style == focused-error {
-    border-color: color(red);
+    background: color(red);
     box-shadow: 0 0 0 1px color(red);
+
+    &::after { background: color(red, lighter); }
   }
 }

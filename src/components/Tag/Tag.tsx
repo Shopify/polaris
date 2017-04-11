@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import Icon from '../Icon';
+import Icon from '../Icon/';
 
 import * as styles from './Tag.scss';
 

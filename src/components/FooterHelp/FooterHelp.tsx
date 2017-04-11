@@ -1,9 +1,5 @@
 import * as React from 'react';
-
 import Icon from '../Icon';
-import TypeContainer from '../TypeContainer';
-import TypeStyle from '../TypeStyle';
-
 import helpIcon from './icons/help.svg';
 import * as styles from './FooterHelp.scss';
 
@@ -18,11 +14,9 @@ export default function FooterHelp({children}: Props) {
         <div className={styles.Icon}>
           <Icon source={helpIcon} size={20} color="teal" backdrop />
         </div>
-        <TypeContainer>
-          <TypeStyle variation="subdued">
-            {children}
-          </TypeStyle>
-        </TypeContainer>
+        <div className={styles.Text}>
+          {children}
+        </div>
       </div>
     </section>
   );

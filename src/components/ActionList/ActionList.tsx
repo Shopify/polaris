@@ -25,8 +25,8 @@ export default function ActionList({items, sections}: Props) {
   const element = hasMultipleSections ? 'ul' : 'div';
   const sectionMarkup = finalSections.map((section, index) => {
     const sectionElement = hasMultipleSections ? 'li' : 'div';
-    const actionMarkup = section.items.map(({text, ...item}) => (
-      <Item key={text} text={text} {...item} />
+    const actionMarkup = section.items.map(({content, ...item}) => (
+      <Item key={content} content={content} {...item} />
     ));
 
     const titleMarkup = section.title

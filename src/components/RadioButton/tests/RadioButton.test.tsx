@@ -3,6 +3,21 @@ import {shallow, mount} from 'enzyme';
 import RadioButton from '..';
 
 describe('<RadioButton />', () => {
+  it('sets all pass through properties on the input', () => {
+    const input = shallow(
+      <RadioButton
+        label="RadioButton"
+        checked
+        name="RadioButton"
+        value="Some value"
+      />,
+    ).find('input');
+
+    expect(input.prop('checked')).toBe(true);
+    expect(input.prop('name')).toBe('RadioButton');
+    expect(input.prop('value')).toBe('Some value');
+  });
+
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
@@ -31,21 +46,6 @@ describe('<RadioButton />', () => {
     });
   });
 
-  describe('checked', () => {
-    it('sets the checked attribute on the input', () => {
-      const button = shallow(<RadioButton label="RadioButton" checked />);
-      expect(button.find('input').prop('checked')).toBe(true);
-    });
-
-    it('is only checked when checked is explicitly set to true', () => {
-      let element = shallow(<RadioButton label="RadioButton" />);
-      expect(element.find('input').prop('checked')).toBeFalsy();
-
-      element = shallow(<RadioButton label="RadioButton" checked={false} />);
-      expect(element.find('input').prop('checked')).toBeFalsy();
-    });
-  });
-
   describe('id', () => {
     it('sets the id on the input', () => {
       const id = shallow(<RadioButton id="MyRadioButton" label="RadioButton" />).find('input').prop('id');
@@ -56,28 +56,6 @@ describe('<RadioButton />', () => {
       const id = shallow(<RadioButton label="RadioButton" />).find('input').prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
-    });
-  });
-
-  describe('value', () => {
-    it('sets the value on the input', () => {
-      const value = shallow(<RadioButton value="MyRadioButton" label="RadioButton" />).find('input').prop('value');
-      expect(value).toBe('MyRadioButton');
-    });
-  });
-
-  describe('name', () => {
-    it('sets the name on the input', () => {
-      const name = shallow(<RadioButton name="MyRadioButton" label="RadioButton" />).find('input').prop('name');
-      expect(name).toBe('MyRadioButton');
-    });
-
-    it('sets a default name on the input equal to its ID', () => {
-      const element = shallow(<RadioButton label="RadioButton" />);
-      const name = element.find('input').prop('name');
-
-      expect(name).toBeTruthy();
-      expect(name).toEqual(element.find('input').prop('id'));
     });
   });
 
@@ -93,6 +71,15 @@ describe('<RadioButton />', () => {
 
       element = shallow(<RadioButton label="RadioButton" disabled={false} />);
       expect(element.find('input').prop('disabled')).toBeFalsy();
+    });
+  });
+
+  describe('helpText', () => {
+    it('connects the input to the help text', () => {
+      const textField = mount(<RadioButton label="RadioButton" helpText="Some help" />);
+      const helpTextID = textField.find('input').prop<string>('aria-describedby');
+      expect(typeof helpTextID).toBe('string');
+      expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
     });
   });
 });

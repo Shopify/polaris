@@ -1,0 +1,102 @@
+@import 'foundation/spacing';
+@import 'foundation/colors';
+@import 'foundation/shadows';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/z-index';
+
+$picker-size: rem(160px);
+$dragger-size: rem(18px);
+$inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
+$stacking-order: (
+  color: 10,
+  dragger: 20,
+);
+
+.ColorPicker {
+  user-select: none;
+  display: flex;
+}
+
+.MainColor {
+  position: relative;
+  overflow: hidden;
+  height: $picker-size;
+  width: $picker-size;
+  box-shadow: inset shadow(deep);
+
+  // Need an extra pixel to avoid a small color bleed from happening
+  border-radius: border-radius() + 1px;
+  cursor: pointer;
+
+  .Dragger {
+    position: relative;
+    z-index: z-index(dragger, $stacking-order);
+    right: 0.5 * $dragger-size;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: z-index(color, $stacking-order);
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-radius: border-radius();
+  }
+
+  &::before {
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  &::after {
+    // Indistinguishable colors linter is blanking on alpha difference
+    // stylelint-disable-next-line no-indistinguishable-colors
+    background-image: linear-gradient(to top, black, transparent);
+    box-shadow: inset shadow(deep);
+  }
+}
+
+.Dragger {
+  position: relative;
+  bottom: 0.5 * $dragger-size;
+  transform: none;
+  height: $dragger-size;
+  width: $dragger-size;
+  will-change: transform;
+  background: transparent;
+  border: border-radius() solid color(white);
+  box-shadow: shadow(deep), inset shadow(deep);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+$green: rgb(0, 255, 0);
+$purple: rgb(255, 0, 255);
+$huepicker-padding: $dragger-size;
+$huepicker-bottom-padding-start: $picker-size - $dragger-size;
+
+.HuePicker {
+  position: relative;
+  height: $picker-size;
+  width: spacing(loose);
+  margin-left: spacing(tight);
+  background-image: linear-gradient(to bottom, red $dragger-size, yellow, $green, cyan, blue, $purple, red $huepicker-bottom-padding-start);
+  border-width: border-radius();
+  box-shadow: $inner-shadow;
+  border-radius: $picker-size * 0.5;
+
+  .Dragger {
+    margin: 0 auto;
+  }
+}
+
+.Slidable {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}

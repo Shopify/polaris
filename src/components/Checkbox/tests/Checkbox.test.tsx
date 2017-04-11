@@ -3,6 +3,21 @@ import {shallow, mount} from 'enzyme';
 import Checkbox from '..';
 
 describe('<Checkbox />', () => {
+  it('sets all pass through properties on the input', () => {
+    const input = shallow(
+      <Checkbox
+        label="Checkbox"
+        checked
+        name="Checkbox"
+        value="Some value"
+      />,
+    ).find('input');
+
+    expect(input.prop('checked')).toBe(true);
+    expect(input.prop('name')).toBe('Checkbox');
+    expect(input.prop('value')).toBe('Some value');
+  });
+
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
@@ -31,21 +46,6 @@ describe('<Checkbox />', () => {
     });
   });
 
-  describe('checked', () => {
-    it('sets the checked attribute on the input', () => {
-      const button = shallow(<Checkbox label="Checkbox" checked />);
-      expect(button.find('input').prop('checked')).toBe(true);
-    });
-
-    it('is only checked when checked is explicitly set to true', () => {
-      let element = shallow(<Checkbox label="Checkbox" />);
-      expect(element.find('input').prop('checked')).toBeFalsy();
-
-      element = shallow(<Checkbox label="Checkbox" checked={false} />);
-      expect(element.find('input').prop('checked')).toBeFalsy();
-    });
-  });
-
   describe('id', () => {
     it('sets the id on the input', () => {
       const id = shallow(<Checkbox id="MyCheckbox" label="Checkbox" />).find('input').prop('id');
@@ -56,20 +56,6 @@ describe('<Checkbox />', () => {
       const id = shallow(<Checkbox label="Checkbox" />).find('input').prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
-    });
-  });
-
-  describe('value', () => {
-    it('sets the value on the input', () => {
-      const value = shallow(<Checkbox value="MyCheckbox" label="Checkbox" />).find('input').prop('value');
-      expect(value).toBe('MyCheckbox');
-    });
-  });
-
-  describe('name', () => {
-    it('sets the name on the input', () => {
-      const name = shallow(<Checkbox name="MyCheckbox" label="Checkbox" />).find('input').prop('name');
-      expect(name).toBe('MyCheckbox');
     });
   });
 
@@ -85,6 +71,15 @@ describe('<Checkbox />', () => {
 
       element = shallow(<Checkbox label="Checkbox" disabled={false} />);
       expect(element.find('input').prop('disabled')).toBeFalsy();
+    });
+  });
+
+  describe('helpText', () => {
+    it('connects the input to the help text', () => {
+      const textField = mount(<Checkbox label="Checkbox" helpText="Some help" />);
+      const helpTextID = textField.find('input').prop<string>('aria-describedby');
+      expect(typeof helpTextID).toBe('string');
+      expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
     });
   });
 });

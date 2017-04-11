@@ -2,11 +2,9 @@
 @import 'foundation/colors';
 @import 'foundation/spacing';
 @import 'foundation/typography';
-@import 'foundation/breakpoints';
 @import 'foundation/border-radius';
 
-$font-size: 1rem;
-$Align-header-icons-with-month-title: rem(-4px);
+$font-size: rem(12px);
 
 .DatePicker {
   position: relative;
@@ -14,25 +12,26 @@ $Align-header-icons-with-month-title: rem(-4px);
 
 .MonthContainer {
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
+  margin-top: -1 * spacing();
+  margin-left: -1 * spacing();
 }
 
 .Month {
   flex: 1 1 auto;
   margin-top: spacing();
+  margin-left: spacing();
+  max-width: calc(100% - #{spacing()});
+  min-width: 0;
 
-  &:nth-child(2) {
-    padding-left: spacing(loose);
-  }
-
-  @media screen and (max-width: breakpoint(medium)) {
-    &:not(:nth-child(1)) {
-      display: none;
-    }
+  @supports (min-width: fit-content) {
+    flex: 1 0 0%;
+    min-width: fit-content;
   }
 }
 
-.Week {
+.Week,
+.WeekHeadings {
   display: flex;
 
   + .Week {
@@ -43,6 +42,7 @@ $Align-header-icons-with-month-title: rem(-4px);
 .Day {
   display: block;
   flex: 1 0 0%;
+  width: 100% / 7;
   margin: 0;
   padding: spacing(tight);
   background: transparent;
@@ -50,12 +50,28 @@ $Align-header-icons-with-month-title: rem(-4px);
   font-size: $font-size;
   text-align: center;
 
-  + .Day {
+  + .Day,
+  + .EmptyDay {
     margin-left: -1px;
   }
 
   &:focus {
-    outline: none;
+    // Change when design ready
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+}
+
+.EmptyDay {
+  display: block;
+  flex: 1 0 0%;
+  width: calc(100% / 7);
+  margin: 0;
+  padding: spacing(tight);
+  border: border();
+
+  + .EmptyDay,
+  + .Day {
+    margin-left: -1px;
   }
 }
 
@@ -90,10 +106,8 @@ $Align-header-icons-with-month-title: rem(-4px);
 
 .Header {
   position: absolute;
-  top: $Align-header-icons-with-month-title;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   padding-top: spacing();
   font-size: $font-size;
@@ -117,6 +131,7 @@ $Align-header-icons-with-month-title: rem(-4px);
 
 .Title {
   flex: 1 1 auto;
+  margin-top: rem(2px);
   padding-bottom: spacing(extra-tight);
   text-align: center;
 }

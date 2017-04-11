@@ -6,92 +6,62 @@ tags:
 category: Forms
 ---
 
-# Buttons
+# Button
 
 Buttons are used to trigger actions or navigation.
 
 ## Problem
 
-A message needs to be communicated to a merchant.
+An action needs to be completed by a merchant.
 
 ## Solution
 
-Banners highlight the information to be communicated to a merchant.
+A button component can be used to allow the merchant to click or press it to complete the action.
 
-## API
-| Prop  | Type   | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| to | string | none | false | URL to link to |
-| primary | boolean | false | false | Display as primary button |
-| destructive | boolean | false | false | Display as destuctive button |
-| disabled | boolean | false | false | Display as destuctive button |
-| link | boolean | false | false | Create a "link looking" button |
-| external | boolean | false | false | Link to an external page |
-| fullWidth | boolean | false | false | Display full width button |
-| onClick | React.EventHandler<React.MouseEvent<HTMLButtonElement>> | null | false | Callback function to call when clicked |
+---
 
+## Design guidelines
 
-## Examples
+Great buttons should:
 
-```
-<Button>Button</Button>
-```
+- Lead with strong, actionable verbs.
+- Use established button colors appropriately. For example, only use a red button for an action that is potentially destructive and hard or impossible to undo.
+- Be focused on the primary and secondary action a merchant needs to take. Too many calls to action can cause confusion and make merchants unsure of what to do next.
 
-```
-<Button to="http://www.google.ca" external>Go to Google</Button>
-```
-
-```
-<Button primary>Primary button</Button>
-```
-
-```
-<Button disabled>Disabled button</Button>
-```
-
-```
-<Button onClick={(event) => { alert('test'); }}>Disabled button</Button>
-```
+---
 
 ## Content guidelines
-
-### Heading
-
-Headings should be:
-
-Descriptive: Help merchants understand what they’ll find in the banner.
-
-Concise and scannable:
-Use simple, clear language that can be read at a glance
-Keeping headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-Where possible, avoid articles (the, a, an) to keep content short and actionable
-
-### Body content
-
-Body content should be:
-
-Actionable: Start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don't use permissive language like "you can".
-
-Structured for merchant success: Always put the most critical information first.
-Need do and don’t example.
-Clear: Use the verb “need” to help merchants understand when they’re required to do something.
-
-
-### Call-to-action button — `<Button>`
 
 Buttons should be:
 
 Clear and predictable: Merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
 
-Need do and don’t example
+DO: Create order; Buy shipping label
+DON’T: New order; Buy
 
 Action-led: Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-Need do and don’t example
+DO: Activate Apple Pay; View shipping settings
+DON’T: Try Apple Pay; View your settings
 
 Scannable: Avoid unnecessary words and articles such as the, an, or a.
 
-Need do and don’t example
+DO: Add menu item
+DON’T: Add a menu item
+
+---
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| to | string | URL to link to |
+| primary | boolean | Display as primary button |
+| destructive | boolean | Display as destuctive button |
+| disabled | boolean | Display as destuctive button |
+| slim | boolean | Display a slimmer button |
+| large | boolean | Display a larger button |
+| fullWidth | boolean | Display full width button |
+| onClick | function(value: string) | Function to call when clicked |
+| children | React.ReactNode | The content to display inside the button. |
 
 ## Examples
 
@@ -100,18 +70,29 @@ Need do and don’t example
 Use this when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
 
 ```jsx
-<Button>
-  Default button
-</Button>
+<Button>Button</Button>
+```
+
+### Button that links
+
+Use this when you need the visual style of a button but the action to be navigation to another page.
+
+```jsx
+<Button to="http://www.google.ca" external>Go to Google</Button>
 ```
 
 ### Primary button
 
 Use this when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
 
+```jsx
+<Button primary>Primary button</Button>
+```
+
+### Disabled button
+
+Use a disabled state when an action isn't currently able to be completed, but a change of state would enable it to be.
 
 ```jsx
-<Button primary>
-  Primary button
-</Button>
+<Button disabled>Disabled button</Button>
 ```

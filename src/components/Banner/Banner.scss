@@ -1,54 +1,77 @@
 @import 'foundation/border-radius';
 @import 'foundation/colors';
 @import 'foundation/spacing';
+@import 'foundation/shadows';
+
+$banner-accent-height: 3px;
+$ribbon-flex-basis: rem(32px);
 
 .Banner {
+  position: relative;
   display: flex;
   padding: spacing();
-  background-color: color(sky, dark);
-  border: 1px solid rgba(color(black), 0.1);
-  border-radius: border-radius();
-}
+  box-shadow: shadow();
+  border-radius: 0 0 border-radius() border-radius();
 
-.statusSuccess {
-  background-color: color(green, lighter);
+  + .Banner {
+    margin-top: spacing();
+  }
 
-  .BannerRibbon {
-    color: color(green, dark);
+  &:last-child {
+    margin-bottom: spacing();
   }
 }
 
 .statusInfo {
-  background-color: color(blue, lighter);
+  background-color: color(sky, light);
+  border-top: $banner-accent-height solid color(ink, lighter);
+}
 
-  .BannerRibbon {
-    color: color(blue, light);
-  }
+.statusSuccess {
+  background-color: rgba(color(green, lighter), 0.7);
+  border-top: $banner-accent-height solid color(green);
+}
+
+.statusAttention {
+  background-color: rgba(color(teal, lighter), 0.7);
+  border-top: $banner-accent-height solid color(teal);
 }
 
 .statusWarning {
-  background-color: color(yellow, lighter);
-
-  .BannerRibbon {
-    color: color(yellow, dark);
-  }
+  background-color: rgba(color(yellow, lighter), 0.7);
+  border-top: $banner-accent-height solid color(yellow);
 }
 
 .statusCritical {
-  background-color: color(red, light);
-
-  .BannerRibbon {
-    color: color(red, dark);
-  }
+  background-color: rgba(color(red, lighter), 0.7);
+  border-top: $banner-accent-height solid color(red);
 }
 
-.BannerContent {
-  flex: 1 1 0%;
-  align-self: center;
-  margin-top: -0.25em;
+.hasDismiss {
+  padding-right: spacing(loose);
 }
 
-.BannerRibbon {
+.Ribbon {
+  flex: 0 0 $ribbon-flex-basis;
   margin-right: spacing();
-  color: color(ink, lighter);
+}
+
+.Content {
+  flex: 1 1 100%;
+  margin-top: spacing(extra-tight);
+}
+
+.Action {
+  margin-top: spacing();
+}
+
+.Dismiss {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: spacing(tight);
+  background: transparent;
+  border: none;
+  color: color(ink);
+  cursor: pointer;
 }

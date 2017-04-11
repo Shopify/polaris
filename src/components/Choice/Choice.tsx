@@ -1,17 +1,34 @@
 import * as React from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Choice.scss';
 
 export interface Props {
-  label: React.ReactNode,
   id: string,
-  children?: React.ReactNode,
+  label: string,
+  labelHidden?: boolean,
+  children?: string,
+  helpText?: React.ReactNode,
 }
 
-export default function Choice({children, label, id}: Props) {
-  return (
-    <label className={styles.Choice} htmlFor={id}>
+export default function Choice({children, label, id, labelHidden, helpText}: Props) {
+  const className = classNames(styles.Choice, labelHidden && styles.labelHidden);
+  const labelMarkup = (
+    <label className={className} htmlFor={id}>
       <div className={styles.Control}>{children}</div>
       <div className={styles.Label}>{label}</div>
     </label>
   );
+
+  return helpText
+    ? (
+      <div>
+        {labelMarkup}
+        <div className={styles.HelpText} id={helpTextID(id)}>{helpText}</div>
+      </div>
+    )
+    : labelMarkup;
+}
+
+export function helpTextID(id: string) {
+  return `${id}HelpText`;
 }

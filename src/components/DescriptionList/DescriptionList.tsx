@@ -1,20 +1,27 @@
 import * as React from 'react';
 import * as styles from './DescriptionList.scss';
-import Item from './Item';
+
+export interface Item {
+  term: string,
+  description: React.ReactNode,
+}
 
 export interface Props {
-  children?: React.ReactNode,
+  items: Item[],
 }
 
 export default class DescriptionList extends React.PureComponent<Props, {}> {
-  static Item = Item;
-
   render() {
-    const {children} = this.props;
+    const {items} = this.props;
+    const terms = items.reduce((allTerms, {term, description}) => ([
+      ...allTerms,
+      <dt key={`${term}-dt`} className={styles.Term}>{term}</dt>,
+      <dd key={`${term}-dd`} className={styles.Description}>{description}</dd>,
+    ]), [] as React.ReactNode[]);
 
     return (
       <dl className={styles.DescriptionList}>
-        {children}
+        {terms}
       </dl>
     );
   }

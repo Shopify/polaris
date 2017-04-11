@@ -8,12 +8,18 @@ import {
   arrowRight,
   arrowUp,
   cancel,
+  circleCheckMark,
+  circleAlert,
   checkmark,
+  cancelMicro,
+  checklist,
   chevronDown,
   chevronLeft,
   chevronRight,
   chevronUp,
+  confetti,
   delete as deleteIcon,
+  flag,
   search,
   caretDown,
   caretUp,
@@ -31,8 +37,8 @@ export type Color = (
   'indigoLighter' | 'indigoLight' | 'indigo' | 'indigoDark' | 'indigoDarker' |
   'tealLighter' | 'tealLight' | 'teal' | 'tealDark' | 'tealDarker' |
   'greenLighter' | 'green' | 'greenDark' |
-  'yellow' | 'yellowLighter' |
-  'orange' | 'orangeDark' |
+  'yellowLighter' | 'yellow' | 'yellowDark' |
+  'orange' |
   'redLighter' | 'red' | 'redDark' |
   'purple'
 );
@@ -43,18 +49,24 @@ export const BUNDLED_ICONS = {
   arrowRight,
   arrowUp,
   cancel,
+  circleCheckMark,
+  circleAlert,
   checkmark,
+  cancelMicro,
+  checklist,
   chevronDown,
   chevronLeft,
   chevronRight,
   chevronUp,
+  confetti,
   delete: deleteIcon,
+  flag,
   search,
   caretDown,
   caretUp,
 };
 
-const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'orangeDark', 'ink'];
+const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink'];
 
 export interface Props {
   source: SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS,
@@ -67,7 +79,7 @@ export interface Props {
 export default function Icon({source, size, color, backdrop, accessibilityLabel}: Props) {
   if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
     // tslint:disable-next-line no-console
-    console.warn(`You asked for a backdrop on an icon color that doesn't accept backdrops. The icon colors that have backdrops are: ${COLORS_WITH_BACKDROPS.join(', ')}`);
+    console.warn(`The ${color} icon doesn't accept backdrops. The icon colors that have backdrops are: ${COLORS_WITH_BACKDROPS.join(', ')}`);
   }
 
   const className = classNames(
@@ -93,8 +105,8 @@ export default function Icon({source, size, color, backdrop, accessibilityLabel}
   }
 
   return (
-    <div className={className} aria-label={accessibilityLabel}>
+    <span className={className} aria-label={accessibilityLabel}>
       {content}
-    </div>
+    </span>
   );
 }

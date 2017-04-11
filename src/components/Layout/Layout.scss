@@ -1,3 +1,5 @@
+@import 'foundation/borders';
+@import 'foundation/breakpoints';
 @import 'foundation/spacing';
 @import 'foundation/utilities';
 
@@ -32,6 +34,13 @@ $layout-primary-basis: 30rem;
   flex: 1 1 100%;
   margin-top: spacing();
   margin-left: spacing();
+
+  + .AnnotatedSection {
+    @include breakpoint-after(breakpoint('medium')) {
+      padding-top: spacing();
+      border-top: border();
+    }
+  }
 }
 
 .AnnotationWrapper {

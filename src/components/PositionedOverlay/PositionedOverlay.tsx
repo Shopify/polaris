@@ -12,7 +12,6 @@ import {
   calculateVerticalPosition,
   calculateHorizontalPosition,
 } from './math';
-
 import * as styles from './PositionedOverlay.scss';
 
 export type Positioning = 'above' | 'below';
@@ -125,7 +124,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   private handleMeasurement(): void {
     this.setState({
       measuring: true,
-    } as State, () => {
+    }, () => {
       const {
         activator,
         alignment = 'center',
@@ -137,7 +136,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
       const activatorRect = getRectForNode(activator);
       const scrollableContainerRect = getRectForNode(this.scrollableContainer);
       const containerRect = getRectForNode(closest(activator as HTMLElement, CONTAINER) || window);
-      const verticalPosition = calculateVerticalPosition(scrollableContainerRect, preferredPosition, activatorRect, maxHeight);
+      const verticalPosition = calculateVerticalPosition(scrollableContainerRect, preferredPosition, activatorRect, maxHeight, overlayRect.height);
       const horizontalPosition = calculateHorizontalPosition(alignment, activatorRect, containerRect, overlayRect);
 
       this.setState({

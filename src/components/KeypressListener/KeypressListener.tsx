@@ -1,6 +1,6 @@
 import * as React from 'react';
 import autobind from '@shopify/javascript-utilities/autobind';
-import Keys from './Keys';
+import {Keys} from '../types';
 
 export interface Props {
   keyCode: Keys,

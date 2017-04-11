@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
+import autobind from '@shopify/javascript-utilities/autobind';
+import {Months} from '@shopify/javascript-utilities/dates';
 
 import * as styles from './DatePicker.scss';
 
 export interface Props {
+  focused?: boolean,
   day?: Date,
   selected?: boolean,
   inRange?: boolean,
@@ -12,36 +15,66 @@ export interface Props {
   disabled?: boolean,
   onClick?(day: Date): void,
   onHover?(day: Date): void,
+  onFocus?(day: Date): void,
 }
 
-export default function Day({
-  day,
-  onClick,
-  onHover,
-  selected,
-  inRange,
-  inHoveringRange,
-  disabled,
-}: Props) {
-  const handleHover = onHover ? onHover.bind(null, day) : noop;
-  if (!day) {
-    return <div className={styles.Day} onMouseOver={handleHover}/>;
-  }
-  const handleClick = onClick && !disabled ? onClick.bind(null, day) : noop;
-  const className = classNames(
-    styles.Day,
-    selected && styles.selected,
-    disabled && styles.disabled,
-    (inRange || inHoveringRange) && styles.inRange,
-  );
+export default class Day extends React.PureComponent<Props, {}> {
+  private dayNode: HTMLElement;
 
-  return (
-    <button
-      className={className}
-      onMouseOver={handleHover}
-      onClick={handleClick}
-    >
-      {day.getDate()}
-    </button>
-  );
+  componentDidUpdate() {
+    if (this.props.focused) {
+      this.dayNode.focus();
+    }
+  }
+
+  render() {
+    const {
+      day,
+      focused,
+      onClick,
+      onHover = noop,
+      onFocus = noop,
+      selected,
+      inRange,
+      inHoveringRange,
+      disabled,
+    } = this.props;
+
+    const handleHover = onHover.bind(null, day);
+    if (!day) {
+      return <div className={styles.EmptyDay} onMouseOver={handleHover}/>;
+    }
+    const handleClick = onClick && !disabled ? onClick.bind(null, day) : noop;
+    const className = classNames(
+      styles.Day,
+      selected && styles.selected,
+      disabled && styles.disabled,
+      (inRange || inHoveringRange) && styles.inRange,
+    );
+
+    const date = day.getDate();
+    const tabIndex = (focused || selected || date === 1) ? 0 : -1;
+
+    return (
+      <button
+        onFocus={onFocus.bind(null, day)}
+        ref={this.getNode}
+        tabIndex={tabIndex}
+        className={className}
+        onMouseOver={handleHover}
+        onClick={handleClick}
+        aria-label={`${Months[day.getMonth()]} ${day.getFullYear()}`}
+        aria-selected={selected}
+        aria-disabled={disabled}
+        role="gridcell"
+      >
+        {date}
+      </button>
+    );
+  }
+
+  @autobind
+  private getNode(node: HTMLElement) {
+    this.dayNode = node;
+  }
 }

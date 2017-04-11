@@ -9,10 +9,8 @@ $font-family-data: (
 
 $line-height-data: (
   micro: (
-    base: rem(16px)
-  ),
-  title: (
-    base: rem(24px)
+    base: rem(20px),
+    large-screen: rem(16px)
   ),
   heading: (
     base: rem(24px)
@@ -85,15 +83,9 @@ $line-height-data: (
   }
 }
 
-@mixin text-style-title {
-  font-size: rem(20px);
-  font-weight: 400;
-  line-height: line-height(title);
-}
-
 @mixin text-style-heading {
   font-size: rem(17px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: line-height(heading);
 
   @media screen and (min-width: breakpoint(medium)) {
@@ -103,7 +95,7 @@ $line-height-data: (
 
 @mixin text-style-subheading {
   font-size: rem(13px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: line-height(subheading);
   text-transform: uppercase;
 
@@ -146,7 +138,7 @@ $line-height-data: (
 
 @mixin text-style-display-x-large {
   font-size: rem(27px);
-  font-weight: 400;
+  font-weight: 500;
   line-height: line-height(display-x-large);
 
   @media (min-width: breakpoint(medium)) {
@@ -157,7 +149,7 @@ $line-height-data: (
 
 @mixin text-style-display-large {
   font-size: rem(24px);
-  font-weight: 400;
+  font-weight: 500;
   line-height: line-height(display-large);
 
   @media (min-width: breakpoint(medium)) {

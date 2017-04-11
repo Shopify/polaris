@@ -5,12 +5,15 @@ import Item from './Item';
 import * as styles from './ButtonGroup.scss';
 
 export interface Props {
+  segmented?: boolean,
   children?: React.ReactElement<ButtonProps>[],
 }
 
-export default function ButtonGroup({children}: Props) {
+export default function ButtonGroup({children, segmented}: Props) {
   const contents = elementChildren(children)
     .map((child, index) => <Item button={child} key={index} />);
 
-  return <div className={styles.ButtonGroup}>{contents}</div>;
+  return segmented
+    ? <div className={styles.Segmented}>{children}</div>
+    : <div className={styles.ButtonGroup}>{contents}</div>;
 }

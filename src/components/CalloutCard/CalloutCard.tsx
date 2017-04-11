@@ -1,18 +1,14 @@
 import * as React from 'react';
 
+import {Action} from '../types';
 import Card from '../Card';
-import TypeContainer from '../TypeContainer';
+import TextContainer from '../TextContainer';
 import ButtonGroup from '../ButtonGroup';
-import Button from '../Button';
+import {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import Image from '../Image';
 
 import * as styles from './CalloutCard.scss';
-
-export interface Action {
-  text: string,
-  to: string,
-}
 
 export interface Props {
   title: string | React.ReactNode,
@@ -29,9 +25,9 @@ export default function CalloutCard({
   primaryAction,
   secondaryAction,
 }: Props) {
-  const primaryActionElement = <Button to={primaryAction.to}>{primaryAction.text}</Button>;
+  const primaryActionElement = buttonFrom(primaryAction);
   const secondaryActionElement = secondaryAction
-    ? <Button plain to={secondaryAction.to}>{secondaryAction.text}</Button>
+    ? buttonFrom(secondaryAction, {plain: true})
     : null;
 
   const buttonElement = secondaryActionElement
@@ -48,9 +44,9 @@ export default function CalloutCard({
       <div className={styles.CalloutCard}>
         <div className={styles.Content}>
           <Heading>{title}</Heading>
-          <TypeContainer>
+          <TextContainer>
             {children}
-          </TypeContainer>
+          </TextContainer>
           {buttonElement}
         </div>
 

@@ -3,42 +3,47 @@
 @import 'foundation/spacing';
 @import 'foundation/typography';
 
+$breakpoint: breakpoint(small);
+
 .DescriptionList {
   margin: 0;
   padding: 0;
-}
 
-.Item {
-  padding: spacing() 0;
-  border-bottom: border();
-
-  &:last-of-type {
-    border-bottom: 0;
-  }
-
-  @media screen and (min-width: breakpoint(small)) {
+  @include main-content-breakpoint-after($breakpoint) {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding: spacing(tight) 0;
   }
 }
 
 .Term {
-  padding: 0 0 spacing(tight);
-
   @include text-emphasis-strong;
+  padding: spacing() 0 spacing(tight);
 
-  @media screen and (min-width: breakpoint(small)) {
+  @include main-content-breakpoint-after($breakpoint) {
     flex-basis: 25%;
-    padding: 0 spacing() 0 0;
+    padding: spacing() spacing() spacing() 0;
+
+    .Description + & + .Description {
+      border-top: border();
+    }
   }
 }
 
 .Description {
   margin-left: 0;
+  padding: 0 0 spacing();
 
-  @media screen and (min-width: breakpoint(small)) {
+  + .Term {
+    border-top: border();
+  }
+
+  @include main-content-breakpoint-after($breakpoint) {
     flex-basis: 75%;
+    padding: spacing() 0;
+
+    + .Term + .Description {
+      border-top: border();
+    }
   }
 }

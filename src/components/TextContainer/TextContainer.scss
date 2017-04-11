@@ -1,0 +1,14 @@
+@import 'foundation/typography';
+
+.TextContainer {
+  @include text-style-body;
+
+  p {
+    margin: 0;
+  }
+
+  *:not(:last-child) {
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
+}

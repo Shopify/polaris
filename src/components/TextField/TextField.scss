@@ -1,0 +1,208 @@
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/controls';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'foundation/utilities';
+@import 'foundation/z-index';
+
+$Backdrop-horizontal-spacing: spacing(tight) * 1.5;
+$Addon-horizontal-spacing: 0.25em;
+
+$stacking-order: (
+  contents: 20,
+  backdrop: 10,
+);
+
+.TextField {
+  @include text-style-input;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  padding: 0 $Backdrop-horizontal-spacing;
+  color: color(ink, lightest);
+}
+
+.multiline {
+  padding: 0;
+}
+
+.hasValue {
+  color: color(ink);
+}
+
+.Prefix {
+  position: relative;
+  z-index: z-index(contents, $stacking-order);
+  flex: 0 0 auto;
+  margin-right: $Addon-horizontal-spacing;
+  color: currentColor;
+}
+
+.Suffix {
+  position: relative;
+  z-index: z-index(contents, $stacking-order);
+  flex: 0 0 auto;
+  margin-left: $Addon-horizontal-spacing;
+  color: currentColor;
+}
+
+.Input {
+  @include text-style-input;
+  position: relative;
+  z-index: z-index(contents, $stacking-order);
+  display: block;
+  flex: 1 1 0%;
+  width: 100%;
+  margin: 0;
+  padding: control-vertical-padding() 0;
+  background: none;
+  border: border(transparent);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: color(ink, lightest);
+  }
+
+  // These properties are used to remove the default "spinner" controls
+  // for number fields, since we add our own, custom versions instead.
+  &[type='number'] {
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  .multiline > & {
+    padding-left: $Backdrop-horizontal-spacing;
+    padding-right: $Backdrop-horizontal-spacing;
+    resize: vertical;
+  }
+
+  .autoGrow > & {
+    overflow: hidden;
+    resize: none;
+  }
+}
+
+.Backdrop {
+  position: absolute;
+  z-index: z-index(backdrop, $stacking-order);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: color(white);
+  border: border(dark);
+  box-shadow: inset 0 1px 0 0 rgba(color(ink, lighter), 0.05);
+  border-radius: border-radius();
+
+  .Input:focus ~ & {
+    border-color: color(indigo);
+    box-shadow: 0 0 0 1px color(indigo);
+  }
+
+  .error > .Input ~ & {
+    background-color: color(red, lighter);
+    border-color: color(red);
+    box-shadow: none;
+  }
+
+  // We need this to override the box-shadow in the focus state.
+  // stylelint-disable-next-line selector-max-specificity
+  .error > .Input:focus ~ & {
+    border-color: color(red);
+    box-shadow: 0 0 0 1px color(red);
+  }
+
+  .readOnly > & {
+    background-color: color(sky, lighter);
+    box-shadow: none;
+  }
+
+  .disabled > & {
+    background-color: color(sky, light);
+    box-shadow: none;
+  }
+}
+
+.Spinner {
+  z-index: z-index(contents, $stacking-order);
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  width: rem(22px);
+  margin: 1px calc(-#{$Backdrop-horizontal-spacing} + 1px) 1px $Backdrop-horizontal-spacing;
+  color: color(ink);
+}
+
+.Resizer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.DummyInput {
+  @include text-style-input;
+  padding: control-vertical-padding() $Backdrop-horizontal-spacing;
+  border: border(transparent);
+
+  // We need the following properties in order to have long, unbroken
+  // strings wrap in the same way they do in textareas.
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.Segment {
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  background: linear-gradient(to bottom, color(white), color(sky, lighter));
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-left: border(dark);
+  transition-property: background, box-shadow;
+  transition-duration: duration(fast);
+  transition-timing-function: easing();
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
+    box-shadow:
+      inset 0 1px 1px 0 rgba(color(ink, lighter), 0.1),
+      inset 0 1px 4px 0 rgba(color(ink, lighter), 0.2);
+  }
+
+  &:not(:first-child) {
+    margin-top: -1px;
+    border-top: border(dark);
+  }
+
+  &:first-child {
+    border-top-right-radius: border-radius();
+  }
+
+  &:last-child {
+    border-bottom-right-radius: border-radius();
+  }
+}

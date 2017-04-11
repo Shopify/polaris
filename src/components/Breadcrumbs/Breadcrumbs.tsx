@@ -1,20 +1,16 @@
 import * as React from 'react';
 import UnstyledLink from '../UnstyledLink';
+import {LinkAction} from '../types';
 import * as styles from './Breadcrumbs.scss';
 
-export interface BreadcrumbDescriptor {
-  text: string,
-  to: string,
-}
-
 export interface Props {
-  breadcrumbs: BreadcrumbDescriptor[],
+  breadcrumbs: LinkAction[],
 }
 
 export default function Breadcrumbs({breadcrumbs}: Props) {
-  const breadcrumbsMarkup = breadcrumbs.map(({text, to}) => (
-    <UnstyledLink key={text} to={to} className={styles.Breadcrumb}>
-      {text}
+  const breadcrumbsMarkup = breadcrumbs.map(({content, url}) => (
+    <UnstyledLink key={content} url={url} className={styles.Breadcrumb}>
+      {content}
     </UnstyledLink>
   ));
 

@@ -3,13 +3,13 @@ import autobind from '@shopify/javascript-utilities/autobind';
 import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Connected.scss';
 
-const {Children} = React;
-
 export enum Position {
   Left,
   Primary,
   Right,
 }
+
+const {Children} = React;
 
 export interface Props {
   left?: React.ReactNode,

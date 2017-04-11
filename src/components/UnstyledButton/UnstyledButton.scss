@@ -1,0 +1,11 @@
+.UnstyledButton {
+  cursor: pointer;
+
+  &:active {
+    user-select: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+}

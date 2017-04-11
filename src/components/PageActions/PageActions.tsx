@@ -1,12 +1,15 @@
 import * as React from 'react';
+
+import {DisableableAction, ComplexAction} from '../types';
 import Stack from '../Stack';
 import ButtonGroup from '../ButtonGroup';
-import {buttonsFrom, Props as ButtonProps} from '../Button/Button';
+import {buttonsFrom} from '../Button';
+
 import * as styles from './PageActions.scss';
 
 export interface Props {
-  primaryAction?: ButtonProps,
-  secondaryActions?: ButtonProps[],
+  primaryAction?: DisableableAction,
+  secondaryActions?: ComplexAction[],
 }
 
 export default function PageActions({

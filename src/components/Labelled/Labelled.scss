@@ -13,5 +13,5 @@
 .HelpText {
   @include text-style-body;
   @include text-emphasis-subdued;
-  margin: spacing(extra-tight) 0 0;
+  margin-top: spacing(extra-tight);
 }

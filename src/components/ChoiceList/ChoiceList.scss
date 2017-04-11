@@ -1,10 +1,15 @@
 @import 'foundation/spacing';
 @import 'foundation/typography';
+@import 'foundation/utilities';
 
 .ChoiceList {
   margin: 0;
   padding: 0;
   border: none;
+}
+
+.titleHidden > .Title {
+  @include visually-hidden;
 }
 
 .Choices {

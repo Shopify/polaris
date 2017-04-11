@@ -44,6 +44,12 @@ $Input-vertical-adjust: rem(1px);
   }
 }
 
+.placeholder {
+  .Input {
+    color: color(ink, lightest);
+  }
+}
+
 .Backdrop {
   @include control-backdrop;
   position: absolute;
@@ -72,6 +78,7 @@ $Input-vertical-adjust: rem(1px);
   position: relative;
   z-index: z-index(input, $stacking-order);
   width: 100%;
+  min-height: control-height();
   margin: 0;
   padding: control-vertical-padding() ($Input-horizontal-padding + $Icon-size) control-vertical-padding() $Input-horizontal-padding;
   background: transparent;

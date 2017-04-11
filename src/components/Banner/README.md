@@ -8,26 +8,31 @@ category: Containers
 
 # Banner
 
-Banner description
-
-_Not what you’re looking for?_
-
-To group tasks and concepts into digestible sections, [use the card component](../Card/).
+Banners are used to draw the merchant’s attention to something that needs their attention. They show at the top of different sections in Shopify and are one of the most prominent ways we have to communicate to merchants.
 
 ## Problem
 
-A message needs to be communicated to a merchant.
+Merchants need to know about high priority information and actions they should take.
 
 ## Solution
 
-Banners highlight the information to be communicated to a merchant.
+Banners are a highly visible way to bring something to a merchant’s attention.
 
-## API
-| Prop  | Type   | Default | Required |
-| --- | --- | --- | --- |
-| title | string | none | true |
-| status | enum: 'success', 'subdued', 'info', 'attention', 'warning', 'critical' | none | false |
-| children | React.ReactNode | none | false |
+---
+
+## Design guidelines
+
+Great banners should:
+
+- Be focused on a single theme, piece or information, or required action to avoid overwhelming merchants
+- Be dismissable except for when they contain critical information or an important step a merchant needs to take
+- Be concise and scannable—merchants shouldn’t need to spend a lot of time figuring out what they need to know and do
+- Be limited to a few important calls to action with no more than one primary action included per banner
+- Be used thoughtfully and sparingly for only the most important information. If banners are used for lower priority announcements, merchants may start to ignore them.
+- Not be used as the primary entry point or mechanism for merchants to access to information or actions they need to take on a regular basis
+- Not be used for marketing information or upsell—have a look at callout cards instead
+
+---
 
 ## Content guidelines
 
@@ -52,7 +57,6 @@ Structured for merchant success: Always put the most critical information first.
 Need do and don’t example.
 Clear: Use the verb “need” to help merchants understand when they’re required to do something.
 
-
 ### Call-to-action button — `<Button>`
 
 Buttons should be:
@@ -69,6 +73,14 @@ Scannable: Avoid unnecessary words and articles such as the, an, or a.
 
 Need do and don’t example
 
+---
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| title | string | Title content for the banner. |
+| status | enum['success', 'info', 'warning', 'critical'] | Sets the status of the banner. |
+| children | React.ReactNode | The child elements to render in the banner. |
+
 ## Examples
 
 ### Default banner
@@ -84,7 +96,6 @@ Use this when you have a simple message to communicate to merchants that doesn�
 ### Error banner
 
 Use this when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
-
 
 ```jsx
 <Banner title="Error banner" status="critical">

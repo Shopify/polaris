@@ -19,7 +19,7 @@ export default function DisplayText({
   size = 'medium',
 }: Props) {
   const className = classNames(
-    styles.DisplayText,
+    styles.Display,
     size && styles[variationName('size', size)],
   );
 

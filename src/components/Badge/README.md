@@ -19,6 +19,8 @@ Merchants are pressed for time. They need indicators that let them identify impo
 Badges are designed as short, color coded indicators that help merchants identify critical information quickly.
 Guidelines
 
+---
+
 ## Design guidelines
 
 Great badges benefit merchants by:
@@ -31,42 +33,60 @@ Great badges benefit merchants by:
 
 ## Content guidelines
 
-Badge label — ‘ui_badge’
+### Badge label
 
-Badge labels should be
+Badge labels should:
+
+- Use a single word to describe the status of an object.
+- Only use two words if you need to describe a complex state. For example, “Partially refunded” and “Partially fulfilled”.
+- Always describe the status in the past tense. For example, refunded not refund.
+
+#### Do
+
+*Financial status:*
+
+- Authorized
+- Pending
+- Paid
+- Unpaid
+- Pending
+- Voided
+- Partially paid
+- Partially refunded
+- Refunded
+
+*Fulfillment status:*
+
+- Fulfilled
+- Complete
+- Partial
+- Unfulfilled
+- Restocked
+
+#### Don't
+
+Use alternatives to existing badge options. Only create a new badge option if there aren't any existing options to communicate the status you need.
 
 ---
 
-## API
-
-| Properties  | Type | Description  |
-| ----------- | ---- | ------------ |
-| status | enum['success', 'subdued', 'info', 'attention', 'warning', 'critical'] | Set the color of the badge for the given status. |
-| children     | React.ReactNode | The content to display inside the badge. |
-
----
+| Properties | Type | Description |
+| ---------- | ---- | ----------- |
+| status | enum['success', 'info', 'attention', 'warning', 'critical'] | Set the color of the badge for the given status. |
+| children | React.ReactNode | The content to display inside the badge. |
 
 ## Examples
 
-### Basic badge
+### Default badge
 
-Use when ...
+Used to give a non-critical status update on a piece of information or action.
 
-```jsx
+```tsx
 <Badge>Default</Badge>
-```
-
-### Subdued badge
-
-Use when ...
-
-```jsx
-<Badge status="subdued">Subdued</Badge>
 ```
 
 ### Informational badge
 
-Use when ...
+Used to call out an object or action as having an important attribute. For example, marking an option as “Recommended” or marking a theme as “Published”.
 
 ```jsx
 <Badge status="info">Information</Badge>
@@ -74,7 +94,7 @@ Use when ...
 
 ### Success badge
 
-Use when an event or action has been successfully completed. For example, this badge would show next to an order that’s been fulfilled.
+Used to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to the merchant. For example, when a merchant successfully disputes a chargeback, a success badge shows that says “Funds recovered”.
 
 ```jsx
 <Badge status="success">Success</Badge>
@@ -90,7 +110,7 @@ Use when something requires a merchant’s attention but the issue isn’t criti
 
 ### Warning badge
 
-Use when something requires a merchant to take immediate action. For example, this badge would show ...
+Use for the most critical and time sensitive issues that require a merchant’s attention. Keep in mind that seeing this badge can feel stressful for merchants so it should be used when absolutely necessary.
 
 ```jsx
 <Badge status="warning">Warning</Badge>

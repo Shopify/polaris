@@ -1,35 +1,37 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import Button from '../Button';
+import {Action} from '../types';
+import {buttonFrom} from '../Button';
 import * as styles from './Label.scss';
 
-export interface Action {
-  content: React.ReactNode,
-  to?: string,
-  onClick?(): void,
-}
+export {Action};
 
 export interface Props {
-  children?: React.ReactNode,
+  children?: string,
   id: string,
   error?: boolean,
-  note?: React.ReactNode,
   action?: Action,
+  hidden?: boolean,
 };
 
-export default function Label({children, note, id, action, error}: Props) {
+export function labelID(id: string) {
+  return `${id}Label`;
+}
+
+export default function Label({children, id, action, error, hidden}: Props) {
   const className = classNames(
     styles.Label,
     error && styles.error,
+    hidden && styles.hidden,
   );
 
   const actionMarkup = action
-    ? <Button plain to={action.to} onClick={action.onClick}>{action.content}</Button>
+    ? buttonFrom(action, {plain: true})
     : null;
 
   return (
-    <div className={styles.LabelWrapper}>
-      <label htmlFor={id} className={className}>{children} {note}</label>
+    <div className={className}>
+      <label id={labelID(id)} htmlFor={id} className={styles.Text}>{children}</label>
       {actionMarkup}
     </div>
   );

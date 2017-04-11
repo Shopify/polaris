@@ -1,17 +1,16 @@
 import * as React from 'react';
-import Icon, {Props as IconProps} from '../Icon';
+
+import {IconableAction} from '../types';
+import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
+
 import * as styles from './ActionList.scss';
 
-export interface Props {
-  text: string,
-  icon?: IconProps['source'],
+export interface Props extends IconableAction {
   image?: string,
-  to?: string,
-  onClick?(): void,
 }
 
-export default function Item({text, to, onClick, icon, image}: Props) {
+export default function Item({content, url, onAction, icon, image}: Props) {
   let imageElement = null;
 
   if (icon) {
@@ -30,18 +29,18 @@ export default function Item({text, to, onClick, icon, image}: Props) {
     );
   }
 
-  const content = imageElement
+  const contentElement = imageElement
     ? (
       <div className={styles.Content}>
         {imageElement}
-        <div className={styles.Text}>{text}</div>
+        <div className={styles.Text}>{content}</div>
       </div>
     )
-    : text;
+    : content;
 
-  const control = to
-    ? <UnstyledLink to={to} className={styles.Item}>{content}</UnstyledLink>
-    : <button onClick={onClick} className={styles.Item}>{content}</button>;
+  const control = url
+    ? <UnstyledLink url={url} className={styles.Item}>{contentElement}</UnstyledLink>
+    : <button onClick={onAction} className={styles.Item}>{contentElement}</button>;
 
   return <li>{control}</li>;
 }

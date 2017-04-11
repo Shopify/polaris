@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Heading from '../Heading';
-import TypeContainer from '../TypeContainer';
+import TextContainer from '../TextContainer';
 
 import * as styles from './Layout.scss';
 
@@ -22,9 +22,9 @@ export default function AnnotatedSection(props: Props) {
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
           <Heading>{title}</Heading>
-          <TypeContainer>
+          <TextContainer>
             {wrappedDescription}
-          </TypeContainer>
+          </TextContainer>
         </div>
 
         <div className={styles.AnnotationContent}>

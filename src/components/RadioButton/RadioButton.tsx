@@ -1,9 +1,11 @@
 import * as React from 'react';
-import Choice from '../Choice';
+import Choice, {helpTextID} from '../Choice';
 import * as styles from './RadioButton.scss';
 
 export interface Props {
-  label: React.ReactNode,
+  label: string,
+  labelHidden?: boolean,
+  helpText?: React.ReactNode,
   checked?: boolean,
   id?: string,
   name?: string,
@@ -16,6 +18,8 @@ export interface Props {
 
 export default function RadioButton({
   label,
+  labelHidden,
+  helpText,
   checked,
   disabled,
   onChange,
@@ -30,8 +34,12 @@ export default function RadioButton({
     onChange(currentTarget.checked);
   }
 
+  const describedBy = helpText
+    ? helpTextID(id)
+    : null;
+
   return (
-    <Choice label={label} id={id}>
+    <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>
       <div className={styles.RadioButton}>
         <input
           id={id}
@@ -44,6 +52,7 @@ export default function RadioButton({
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          aria-describedby={describedBy}
         />
         <div className={styles.Backdrop} />
         <div className={styles.Icon} />

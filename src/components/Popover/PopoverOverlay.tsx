@@ -1,19 +1,23 @@
 import * as React from 'react';
-
+import {findDOMNode} from 'react-dom';
 import autobind from '@shopify/javascript-utilities/autobind';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
-
+import {write} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities/components';
 import {TransitionGroup, TransitionStatus} from '@shopify/react-utilities/animation';
 
+import {focusFirstFocusableChild} from '../Focus';
+import Scrollable from '../Scrollable';
 import EventListener from '../EventListener';
 import {default as PositionedOverlay, OverlayDetails, PreferredPosition, Alignment} from '../PositionedOverlay';
 import * as styles from './Popover.scss';
 import Pane from './Pane';
 
 export interface Props {
-  active?: boolean,
+  activatorFocused: boolean,
+  active: boolean,
+  preventAutofocus: boolean,
   fullHeight?: boolean,
   preferredPosition?: PreferredPosition,
   alignment?: Alignment,
@@ -33,8 +37,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
     maxHeight: INITIAL_MAX_HEIGHT,
   };
 
-  private popoverContainer: HTMLElement;
+  private popoverContent: HTMLElement;
 
+  componentDidUpdate() {
+    const {activatorFocused, active, preventAutofocus} = this.props;
+    const child = findDOMNode(this) ? findDOMNode(this).firstElementChild : null;
+    if (child && activatorFocused && active && !preventAutofocus) {
+      const element = child as HTMLElement;
+      write(() => focusFirstFocusableChild(element));
+    }
+  }
 
   render() {
     const {active} = this.props;
@@ -44,6 +56,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
         <TransitionGroup.TransitionChild
           render={this.renderOverlay}
           selector={selector}
+          skipAppearing
         />
       )
       : null;
@@ -85,13 +98,13 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
   @autobind
   private renderPopover(transitionStatus: TransitionStatus, overlayDetails: OverlayDetails) {
     const {
+      measuring,
       left,
       desiredHeight,
       positioning,
       activatorRect,
     } = overlayDetails;
     const {children, fullHeight} = this.props;
-    const {maxHeight} = this.state;
 
     const tipStyle = calculateTipPosition(activatorRect.center.x, left);
 
@@ -107,24 +120,31 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
     );
 
     const contentStyles = {
-      maxHeight: (desiredHeight > maxHeight && !fullHeight) ? maxHeight : desiredHeight,
+      maxHeight: !measuring ? desiredHeight : null,
     };
 
-    const tipClassName = classNames(
-      styles.Tip,
-    );
+    const tipMarkup = !measuring
+      ? <div style={tipStyle} className={styles.Tip} />
+      : null;
+
+    const popoverContent = !measuring
+      ? (
+        <Scrollable shadow>
+          {renderPopoverContent(children)}
+        </Scrollable>
+      )
+      : renderPopoverContent(children);
 
     const content = (
       <div className={contentClassName} style={contentStyles}>
-        {renderPopoverContent(children)}
+        {popoverContent}
       </div>
     );
 
     return (
       <div className={containerClassName}>
         <EventListener event="click" handler={this.handleClick} />
-
-        <div style={tipStyle} className={tipClassName} />
+        {tipMarkup}
         <div className={styles.Wrapper} ref={this.getMaxHeight}>
           {content}
         </div>
@@ -133,11 +153,11 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
   }
   @autobind
   private getMaxHeight(node: HTMLElement | null) {
-    if (node == null || node === this.popoverContainer) { return; }
+    if (node == null || node === this.popoverContent) { return; }
 
-    this.popoverContainer = node;
+    this.popoverContent = node.firstChild as HTMLElement;
 
-    const cssMaxHeight = window.getComputedStyle(node).maxHeight || 'none';
+    const cssMaxHeight = window.getComputedStyle(this.popoverContent).maxHeight || 'none';
     const maxHeight = parseInt(cssMaxHeight, 10);
 
     this.setState({
@@ -147,9 +167,9 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
 
   @autobind
   private handleClick({target}: {target: HTMLElement}) {
-    const {popoverContainer, props: {activator, onCloseRequest}} = this;
+    const {popoverContent, props: {activator, onCloseRequest}} = this;
     if (
-      nodeContainsDescendant(popoverContainer, target) ||
+      nodeContainsDescendant(popoverContent, target) ||
       nodeContainsDescendant(activator as HTMLElement, target)
     ) { return; }
     onCloseRequest();

@@ -6,12 +6,18 @@ $Control-size: rem(16px);
 
 // Need to push the control down just a little to have it appear
 // vertically centered with the label.
-$Control-vertical-adjust: 1px;
+$Control-vertical-adjust: 2px;
 
 .Choice {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: spacing(extra-tight) 0;
+}
+
+.labelHidden {
+  > .Label {
+    @include visually-hidden;
+  }
 }
 
 .Control {
@@ -33,3 +39,9 @@ $Control-vertical-adjust: 1px;
   flex: 1 1 0%;
 }
 
+.HelpText {
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  margin-bottom: spacing(extra-tight);
+  padding-left: spacing(tight) + $Control-size;
+}

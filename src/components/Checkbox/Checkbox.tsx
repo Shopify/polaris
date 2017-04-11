@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-import Choice from '../Choice';
+import Choice, {helpTextID} from '../Choice';
 import Icon from '../Icon';
 
 import * as styles from './Checkbox.scss';
 
 export interface Props {
-  label: React.ReactNode,
+  label: string,
+  labelHidden?: boolean,
   checked?: boolean,
+  helpText?: React.ReactNode,
   id?: string,
   name?: string,
   value?: string,
@@ -19,6 +21,8 @@ export interface Props {
 
 export default function Checkbox({
   label,
+  labelHidden,
+  helpText,
   checked,
   disabled,
   onChange,
@@ -33,8 +37,12 @@ export default function Checkbox({
     onChange(currentTarget.checked);
   }
 
+  const describedBy = helpText
+    ? helpTextID(id)
+    : null;
+
   return (
-    <Choice label={label} id={id}>
+    <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>
       <div className={styles.Checkbox}>
         <input
           id={id}
@@ -47,6 +55,7 @@ export default function Checkbox({
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          aria-describedby={describedBy}
         />
 
         <div className={styles.Backdrop} />

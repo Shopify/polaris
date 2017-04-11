@@ -1,17 +1,14 @@
 import * as React from 'react';
 
-import Button from '../Button';
+import {DisableableAction} from '../types';
+import {buttonsFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 import Stack from '../Stack';
 import Heading from '../Heading';
 
 import * as styles from './Card.scss';
 
-export interface Action {
-  content: React.ReactNode,
-  to?: string,
-  onClick?(): void,
-}
+export type Action = DisableableAction;
 
 export interface Props {
   children?: React.ReactNode,
@@ -22,16 +19,7 @@ export default function Header({children, actions}: Props) {
   const actionMarkup = actions
     ? (
       <ButtonGroup>
-        {actions.map((action, index) => (
-          <Button
-            plain
-            key={index}
-            to={action.to}
-            onClick={action.onClick}
-          >
-            {action.content}
-          </Button>
-        ))}
+        {buttonsFrom(actions, {plain: true})}
       </ButtonGroup>
     )
     : null;

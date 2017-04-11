@@ -1,0 +1,24 @@
+@import 'foundation/spacing';
+
+$feature-width: 350px;
+
+.FeatureAction {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: -1 * spacing();
+  margin-left: -1 * spacing();
+}
+
+.Feature,
+.Action {
+  flex: 0 0 auto;
+  margin-top: spacing();
+  margin-left: spacing();
+  max-width: calc(100% - #{spacing()});
+  min-width: 0;
+}
+
+.Feature {
+  flex: 1 0 $feature-width;
+}

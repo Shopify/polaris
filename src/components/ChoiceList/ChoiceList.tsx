@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 
 import Checkbox from '../Checkbox';
@@ -7,13 +7,16 @@ import RadioButton from '../RadioButton';
 
 import * as styles from './ChoiceList.scss';
 
-export interface Choice {
+export interface ChoiceDescriptor {
   value: string,
-  label: React.ReactNode,
+  label: string,
 }
 
+export type Choice = ChoiceDescriptor;
+
 export interface Props {
-  title?: React.ReactNode,
+  title?: string,
+  titleHidden?: boolean,
   choices: Choice[],
   selected: string[],
   name?: string,
@@ -23,6 +26,7 @@ export interface Props {
 
 export default function ChoiceList({
   title,
+  titleHidden,
   allowMultiple,
   choices,
   selected,
@@ -30,6 +34,8 @@ export default function ChoiceList({
   name = uniqueID(),
 }: Props) {
   const ControlComponent = allowMultiple ? Checkbox : RadioButton;
+  const finalName = allowMultiple ? `${name}[]` : name;
+  const className = classNames(styles.ChoiceList, titleHidden && styles.titleHidden);
   const titleMarkup = title
     ? <legend className={styles.Title}>{title}</legend>
     : null;
@@ -46,7 +52,7 @@ export default function ChoiceList({
     return (
       <li key={key}>
         <ControlComponent
-          name={name}
+          name={finalName}
           value={value}
           label={label}
           checked={choiceIsSelected(choice, selected)}
@@ -57,7 +63,7 @@ export default function ChoiceList({
   });
 
   return (
-    <fieldset className={styles.ChoiceList}>
+    <fieldset className={className}>
       {titleMarkup}
       <ul className={styles.Choices}>
         {choicesMarkup}

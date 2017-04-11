@@ -19,7 +19,7 @@
   &:active,
   &:checked {
     + .Backdrop {
-      border-color: color(indigo);
+      background: color(indigo);
     }
   }
 

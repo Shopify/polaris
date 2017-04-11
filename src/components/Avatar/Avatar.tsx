@@ -3,6 +3,7 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import * as styles from './Avatar.scss';
 
 export type Size = 'small' | 'medium' | 'large' ;
+const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
 
 export interface Props {
   initials?: string[],
@@ -11,8 +12,6 @@ export interface Props {
   circular?: boolean,
   size?: Size,
 }
-
-const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
 
 export default function Avatar({
   initials,
@@ -39,7 +38,11 @@ export default function Avatar({
   if (image) {
     content = <img className={styles.Image} src={image} alt={name} />;
   } else if (initials) {
-    content = <span className={styles.Initials}>{initials.join('')}</span>;
+    const initialsClassName = classNames(
+      styles.Initials,
+      (initials.length === 1) && styles.singleInitial,
+    );
+    content = <span className={initialsClassName}>{initials.join('')}</span>;
   };
 
   return (

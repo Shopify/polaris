@@ -1,18 +1,24 @@
 @import 'foundation/colors';
 @import 'foundation/typography';
+@import 'foundation/utilities';
 
 .Label {
-  @include text-style-body;
-  display: block;
-  color: currentColor;
-}
-
-.LabelWrapper {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
+.hidden {
+  @include visually-hidden;
+}
+
 .error {
   color: color(red, dark);
+}
+
+.Text {
+  @include text-style-body;
+  display: block;
+  flex: 1 1 auto;
+  color: currentColor;
 }

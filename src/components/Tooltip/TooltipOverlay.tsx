@@ -7,6 +7,7 @@ import {default as PositionedOverlay, OverlayDetails, PreferredPosition, Alignme
 import * as styles from './Tooltip.scss';
 
 export interface Props {
+  id: string,
   active?: boolean,
   light?: boolean,
   preferredPosition?: PreferredPosition,
@@ -82,11 +83,12 @@ export default class TooltipOverlay extends React.PureComponent<Props, State> {
   private renderTooltip(transitionStatus: TransitionStatus, overlayDetails: OverlayDetails) {
     const {
       left,
+      measuring,
       desiredHeight,
       positioning,
       activatorRect,
     } = overlayDetails;
-    const {children, light} = this.props;
+    const {id, children, light} = this.props;
 
     const tipStyle = calculateTipPosition(activatorRect.center.x, left);
 
@@ -97,9 +99,7 @@ export default class TooltipOverlay extends React.PureComponent<Props, State> {
     );
 
     const contentStyles = {
-      maxHeight: (desiredHeight > this.state.maxHeight)
-        ? this.state.maxHeight
-        : desiredHeight,
+      maxHeight: !measuring ? desiredHeight : null,
     };
 
     const tipClassName = classNames(
@@ -107,15 +107,19 @@ export default class TooltipOverlay extends React.PureComponent<Props, State> {
       positioning === 'above' && styles.positionedAbove,
     );
 
+    const tipMarkup = !measuring
+      ? <div style={tipStyle} className={tipClassName} />
+      : null;
+
     const wrapperClassName = classNames(
       styles.Wrapper,
     );
 
     return (
       <div className={containerClassName}>
-        <div style={tipStyle} className={tipClassName}/>
+        {tipMarkup}
         <div className={wrapperClassName} ref={this.getMaxHeight}>
-          <div className={styles.Content} style={contentStyles}>
+          <div className={styles.Content} style={contentStyles} id={id}>
             {children}
           </div>
         </div>

@@ -17,6 +17,7 @@ describe('<DatePicker />', () => {
       const spy = jest.fn();
       const component = shallow(
         <MonthComponent
+          focusedDate={new Date()}
           selected={selected}
           hoverDate={hoverDate}
           month={month}

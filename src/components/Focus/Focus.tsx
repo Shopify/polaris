@@ -30,3 +30,11 @@ export function focusFirstFocusableChild(element: HTMLElement) {
     write(() => firstFocusable.focus());
   }
 }
+
+export function focusLastFocusableChild(element: HTMLElement) {
+  const focusableElements = element.querySelectorAll(FOCUSABLE_SELECTOR);
+  const lastFocusable = focusableElements[focusableElements.length - 1] as HTMLElement;
+  if (lastFocusable) {
+    write(() => lastFocusable.focus());
+  }
+}

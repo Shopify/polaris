@@ -38,8 +38,11 @@ export default class Slide extends React.Component<SlideProps, {}> {
 
   render() {
     const {index, slideRenderer, transitionStatus} = this.props;
-
     const {lastSlide, currentSlide} = this.context;
+
+    if (transitionStatus === TransitionStatus.Hidden) {
+      return null;
+    }
 
     const statusName = animationStatusName(transitionStatus);
     const direction = slidingDirection(currentSlide, lastSlide);

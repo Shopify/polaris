@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Scrollable from '../Scrollable';
-
 import * as styles from './Popover.scss';
 
 export interface Props {
@@ -17,8 +15,8 @@ export default function Pane({fixed, children}: Props) {
   );
 
   return (
-    <Scrollable shadow className={className}>
+    <div className={className}>
       {children}
-    </Scrollable>
+    </div>
   );
 }

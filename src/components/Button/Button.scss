@@ -10,11 +10,11 @@
 @import './button-variants';
 
 $min-height: control-height();
+$vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
 $slim-min-height: rem(30px);
-$slim-vertical-padding: ($slim-min-height - line-height(input) - rem(2px)) / 2;
+$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
-$large-vertical-padding: ($large-min-height - line-height(input) - rem(2px)) / 2;
-$Icon-vertical-adjustment: -1px;
+$large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 
 @mixin color-icon($color, $value: base) {
   .Icon {
@@ -28,7 +28,7 @@ $Icon-vertical-adjustment: -1px;
   min-height: $min-height;
   min-width: $min-height;
   margin: 0;
-  padding: control-vertical-padding() spacing();
+  padding: $vertical-padding spacing();
   background: linear-gradient(to bottom, color(white), color(sky, lighter));
   border: border(dark);
   box-shadow: shadow(faint);
@@ -115,7 +115,7 @@ $Icon-vertical-adjustment: -1px;
 }
 
 .plain {
-  margin: (-1 * control-vertical-padding()) (-1 * spacing());
+  margin: (-1 * $vertical-padding) (-1 * spacing());
   background: transparent;
   border: border(transparent);
   box-shadow: none;
@@ -163,7 +163,7 @@ $Icon-vertical-adjustment: -1px;
 }
 
 .Content {
-  @include text-style-input;
+  @include text-style-body;
   display: inline-flex;
   align-items: center;
 }
@@ -171,16 +171,18 @@ $Icon-vertical-adjustment: -1px;
 @include color-icon(ink, lighter);
 
 .Icon {
-  @include text-style-input;
+  @include text-style-body;
   transition: color duration() easing();
-}
 
-.left {
-  margin-bottom: $Icon-vertical-adjustment;
-  margin-right: spacing(extra-tight);
-}
+  &:first-child {
+    margin-right: spacing(extra-tight);
+  }
 
-.right {
-  margin-bottom: $Icon-vertical-adjustment;
-  margin-left: spacing(extra-tight);
+  &:last-child {
+    margin-left: spacing(extra-tight);
+  }
+
+  &:only-child {
+    margin: 0;
+  }
 }
