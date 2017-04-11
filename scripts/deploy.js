@@ -9,7 +9,7 @@ const currentVersion = require('../package.json').version;
 const files = [
   resolve(__dirname, '../build/quilt.css'),
   resolve(__dirname, '../build/quilt.min.css'),
-  resolve(__dirname, '../build/sass/sass.zip'),
+  resolve(__dirname, '../build/sass.zip'),
 ];
 
 const awsS3 = new S3({
