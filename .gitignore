@@ -4,4 +4,6 @@ node_modules
 /types
 /index.*
 /styles.css
+/styles.scss
+/styles
 .DS_Store

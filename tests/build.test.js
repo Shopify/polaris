@@ -17,26 +17,32 @@ describe('build', () => {
     execSync('yarn run clean');
   });
 
-  it('should generate a ./build/sass/components dir with Icon.scss', () => {
+  it('should generate a ./styles/components dir with Icon.scss', () => {
     execSync('yarn run build');
-    expect(fs.existsSync('./build/sass/components/Icon.scss')).toBe(true);
+    expect(fs.existsSync('./styles/components/Icon.scss')).toBe(true);
     execSync('yarn run clean');
   });
-  it('should generate a ./build/sass/components.scss index file', () => {
+  it('should generate a ./styles/foundation dir with spacing.scss', () => {
     execSync('yarn run build');
-    expect(fs.existsSync('./build/sass/components.scss')).toBe(true);
+    expect(fs.existsSync('./styles/foundation/spacing.scss')).toBe(true);
     execSync('yarn run clean');
   });
-  it('should generate a ./build/sass/foundation dir with spacing.scss', () => {
+  it('should generate sass entries files in ./styles dir', () => {
     execSync('yarn run build');
-    expect(fs.existsSync('./build/sass/foundation/spacing.scss')).toBe(true);
+    expect(fs.existsSync('./styles/global.scss')).toBe(true);
+    expect(fs.existsSync('./styles/foundation.scss')).toBe(true);
+    expect(fs.existsSync('./styles/components.scss')).toBe(true);
     execSync('yarn run clean');
   });
-  it('should generate a root level .scss files in ./build/sass', () => {
+  it('should generate a ./styles.scss sass entry point in root', () => {
     execSync('yarn run build');
-    expect(fs.existsSync('./build/sass/global.scss')).toBe(true);
-    expect(fs.existsSync('./build/sass/foundation.scss')).toBe(true);
-    expect(fs.existsSync('./build/sass/all.scss')).toBe(true);
+    expect(fs.existsSync('./styles.scss')).toBe(true);
+    execSync('yarn run clean');
+  });
+
+  it('should generate a zip of ./build/sass', () => {
+    execSync('yarn run build');
+    expect(fs.existsSync('./build/sass.zip')).toBe(true);
     execSync('yarn run clean');
   });
 });

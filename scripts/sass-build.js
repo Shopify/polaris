@@ -1,26 +1,29 @@
 /* eslint-disable no-console */
-import {writeFileSync, readFileSync, readJSONSync} from 'fs-extra';
+import {writeFileSync, readFileSync, readJSONSync, createWriteStream} from 'fs-extra';
 import glob from 'glob';
-import {basename, resolve} from 'path';
+import {basename, resolve, join} from 'path';
 import {cp, mkdir} from 'shelljs';
+import archiver from 'archiver';
 
 const STRIP_IMPORTS_REGEX = new RegExp(/@import\s*(['"])([^"';]+)\1;?\n/, 'g');
 
 const root = resolve(__dirname, '..');
 const build = resolve(root, './build');
-const styles = resolve(build, './src/styles');
+const styles = resolve(root, './styles');
+const srcStyles = resolve(build, './src/styles');
 const buildSass = resolve(build, './sass');
-const foundation = resolve(buildSass, './foundation');
-const components = resolve(buildSass, './components');
+const buildStyles = resolve(buildSass, './styles');
+const foundation = resolve(buildStyles, './foundation');
+const components = resolve(buildStyles, './components');
 
 export default function generateSassBuild() {
   const classnameTokens = readJSONSync(`${build}/quilt.tokens.json`);
 
   mkdir('-p', components, foundation);
-  cp(`${styles}/foundation/*.scss`, foundation);
-  cp(`${styles}/all.scss`, `${buildSass}/all.scss`);
-  cp(`${styles}/global.scss`, `${buildSass}/global.scss`);
-  cp(`${styles}/foundation.scss`, `${buildSass}/foundation.scss`);
+  cp(join(srcStyles, 'foundation', '*.scss'), foundation);
+  cp(join(srcStyles, 'global.scss'), join(buildStyles, 'global.scss'));
+  cp(join(srcStyles, 'foundation.scss'), join(buildStyles, 'foundation.scss'));
+  cp(resolve(srcStyles, '../styles.scss'), join(buildSass, 'styles.scss'));
 
   glob.sync(`${build}/src/components/**/*.scss`).forEach((filePath) => {
     const componentSass = resolve(components, basename(filePath));
@@ -30,6 +33,36 @@ export default function generateSassBuild() {
     writeFileSync(componentSass, file);
   });
   createSassIndex(components);
+
+  createSassEntry();
+  generateSassZip();
+}
+
+function createSassEntry() {
+  mkdir(styles);
+  cp('-r', resolve(buildSass, '*'), root);
+}
+
+// see https://archiverjs.com/docs/
+function generateSassZip() {
+  // eslint-disable-next-line promise/param-names
+  return new Promise((resolveSass, reject) => {
+    const output = createWriteStream(join(build, 'sass.zip'));
+    const archive = archiver('zip', {store: true});
+
+    output.on('close', () => {
+      console.log(`Sass zip complete: ${archive.pointer()} total bytes`);
+      resolveSass();
+    });
+
+    archive.on('error', (err) => {
+      reject(err);
+    });
+
+    archive.pipe(output);
+    archive.directory(buildSass, './');
+    archive.finalize();
+  });
 }
 
 function createSassIndex(dir) {

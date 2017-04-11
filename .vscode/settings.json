@@ -10,16 +10,18 @@
     "**/.DS_Store": true,
     "**/node_modules": true,
     "build/": true,
+    "styles/": true,
     "types/": true,
     "index.*": true,
-    "styles.css": true
+    "styles.{css,scss}": true
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "build/": true,
+    "styles/": true,
     "types/": true,
     "index.*": true,
-    "styles.css": true
+    "styles.{css,scss}": true
   }
 }
