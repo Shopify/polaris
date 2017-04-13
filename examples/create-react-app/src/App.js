@@ -89,14 +89,12 @@ class App extends Component {
                   />
                 </FormLayout.Group>
 
-                <FormLayout.Group>
-                  <TextField
-                    value={this.state.email}
-                    label="Email"
-                    placeholder="example@email.com"
-                    onChange={this.valueUpdater('email')}
-                  />
-                </FormLayout.Group>
+                <TextField
+                  value={this.state.email}
+                  label="Email"
+                  placeholder="example@email.com"
+                  onChange={this.valueUpdater('email')}
+                />
 
                 <TextField
                   autoGrow
