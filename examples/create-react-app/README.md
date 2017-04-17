@@ -1,5 +1,5 @@
 # Example App: Create React App
-This example app demonstrates Polaris integrated into the create-react-app starter project with minimal setup and configuration.
+Demonstrates Polaris inside a [create-react-app](https://github.com/facebookincubator/create-react-app) project with minimal setup and configuration.
 
 ## Dependencies
 - [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)

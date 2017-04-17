@@ -1,5 +1,5 @@
 # Example app using webpack
-This example app demonstrates Polaris integrated into the React project using `webpack` and `webpack-dev-server` with minimal setup and configuration.
+Demonstrates Polaris inside a React app served via `webpack` and `webpack-dev-server`.
 
 ## Dependencies
 - [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
@@ -22,7 +22,7 @@ npm install
 ```
 
 ### Development
-Start your development server.
+Run the local `webpack` development server.
 
 **With Yarn**
 
@@ -35,6 +35,8 @@ yarn start
 ```bash
 npm start
 ```
+
+Open http://localhost:8080 in your browser and you should see the Polaris example application.
 
 ### Build
 You can bundle up your application using the preconfigured webpack build.
@@ -51,5 +53,4 @@ yarn build
 npm build
 ```
 
-This will generate a `./build` directory with an `index.html` and `bundle.js` file. The `index.html` loads all the Polaris styles through the Polaris CDN and references `bundle.js` file for all the JavaScripts your applications requires.
-
+This generates a `build` directory containing `index.html` and `bundle.js`.  The index loads all Polaris styles via the Polaris CDN and the application scripts via `bundle.js`

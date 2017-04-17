@@ -1,5 +1,5 @@
 # Example app using Browserify
-This example app demonstrates [Polaris](https://polaris.shopify.com) integrated into a [React](https://facebook.github.io/react/) project using [Browserify](http://browserify.org/) as a module bundler.
+Demonstrates [Polaris](https://polaris.shopify.com) inside a [React](https://facebook.github.io/react/) app bundled via [Browserify](http://browserify.org/).
 
 ## Dependencies
 - [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
@@ -37,6 +37,6 @@ npm start
 ```
 This will generate a `./build` directory with an `index.html` and `bundle.js` file. Open the `./build/index.html` file into a web browser to see the example application.
 
-`./build/index.html` loads all the Polaris styles through the Polaris CDN and references `./build/bundle.js` file for all the JavaScripts your applications requires.
+`./build/index.html` loads all the Polaris styles via the Polaris CDN and scripts via `./build/bundle.js`.
 
 The `start` npm script uses `watchify` to recompile `./build/bundle.js` with changes you've made in the `./src` directory. Reload the `./build/index.html` page in your browser to see the updated changes.
