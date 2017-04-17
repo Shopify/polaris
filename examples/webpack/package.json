@@ -2,7 +2,7 @@
   "name": "polaris-webpack-example",
   "private": true,
   "version": "1.0.0",
-  "description": "A Polari example application using webpack",
+  "description": "A Polaris example application using webpack",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
