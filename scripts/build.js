@@ -10,12 +10,15 @@ import generateSassBuild from './sass-build';
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, './build');
+const intermediateBuild = resolvePath(root, './build-intermediate');
+const mainEntry = resolvePath(intermediateBuild, './index.js');
+const embeddedEntry = resolvePath(intermediateBuild, './embedded/index.js');
 
-execSync(`./node_modules/.bin/tsc --outDir ${resolvePath(build, 'src')}`, {
+execSync(`./node_modules/.bin/tsc --outDir ${intermediateBuild}`, {
   stdio: 'inherit',
 });
 
-writeFileSync(resolvePath(build, '.babelrc'), `
+writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
   {
     "presets": [
       "shopify/react",
@@ -24,11 +27,13 @@ writeFileSync(resolvePath(build, '.babelrc'), `
   }
 `);
 
-copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', build])
-  .then(() => runRollup({format: 'cjs', css: true}))
-  .then(() => runRollup({format: 'es', css: false}))
+copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
+  .then(() => runRollup({entry: mainEntry, output: 'quilt.js', format: 'cjs', css: true}))
+  .then(() => runRollup({entry: mainEntry, output: 'quilt.es.js', format: 'es', css: false}))
+  .then(() => runRollup({entry: embeddedEntry, output: 'embedded.js', format: 'cjs', css: false}))
   .then(() => Promise.all([
     cp('./build/quilt.js', './index.js'),
+    cp('./build/embedded.js', './embedded.js'),
     cp('./build/quilt.es.js', './index.es.js'),
     cp('./build/quilt.css', './styles.css'),
   ]))
@@ -39,22 +44,22 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', build])
     process.exit(1);
   });
 
-function runRollup({format, css}) {
-  const filename = format === 'cjs' ? 'quilt.js' : `quilt.${format}.js`;
+function runRollup({entry, output, format, css}) {
   const config = createConfig({
+    entry,
     outputCSS: css && resolvePath(build, 'quilt.css'),
   });
 
   return rollup(config)
     .then((bundle) => bundle.write({
       format,
-      dest: resolvePath(build, filename),
+      dest: resolvePath(build, output),
     }));
 }
 
-function copy(paths, flat = false) {
+function copy(paths, config) {
   return new Promise((resolve, reject) => {
-    copyfiles(paths, flat, (error) => {
+    copyfiles(paths, config, (error) => {
       if (error) {
         reject(error);
       } else {

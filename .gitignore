@@ -1,9 +1,11 @@
 *.log
 node_modules
 /build
+/build-intermediate
 /types
 /index.*
 /styles.css
 /styles.scss
 /styles
 .DS_Store
+*.scss.d.ts

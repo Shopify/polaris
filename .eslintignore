@@ -1,3 +1,4 @@
-build
+build*
 examples
 index.*
+embedded.js

@@ -16,7 +16,7 @@
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
     "check": "npm-run-all lint ts test",
-    "clean": "rimraf build styles types 'index.*' 'styles.{css,scss}'",
+    "clean": "rimraf build styles types 'intermediate-build' 'index.*' 'embedded.js' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize",
     "build": "babel-node ./scripts/build.js",
@@ -67,6 +67,7 @@
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-json": "^2.1.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-pluginutils": "^2.0.1",
     "shelljs": "^0.7.7",
@@ -100,6 +101,7 @@
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",
     "babel-runtime": "^6.23.0",
+    "hoist-non-react-statics": "^1.2.0",
     "tslib": "^1.6.0"
   }
 }

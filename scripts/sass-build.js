@@ -9,8 +9,9 @@ const STRIP_IMPORTS_REGEX = new RegExp(/@import\s*(['"])([^"';]+)\1;?\n/, 'g');
 
 const root = resolve(__dirname, '..');
 const build = resolve(root, './build');
+const intermediateBuild = resolve(root, './build-intermediate');
 const styles = resolve(root, './styles');
-const srcStyles = resolve(build, './src/styles');
+const srcStyles = resolve(intermediateBuild, './styles');
 const buildSass = resolve(build, './sass');
 const buildStyles = resolve(buildSass, './styles');
 const foundation = resolve(buildStyles, './foundation');
@@ -25,7 +26,7 @@ export default function generateSassBuild() {
   cp(join(srcStyles, 'foundation.scss'), join(buildStyles, 'foundation.scss'));
   cp(resolve(srcStyles, '../styles.scss'), join(buildSass, 'styles.scss'));
 
-  glob.sync(`${build}/src/components/**/*.scss`).forEach((filePath) => {
+  glob.sync(resolve(intermediateBuild, './components/**/*.scss')).forEach((filePath) => {
     const componentSass = resolve(components, basename(filePath));
     let file = readFileSync(filePath, 'utf8');
     file = removeSassImports(file);
