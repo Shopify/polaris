@@ -1,4 +1,4 @@
 import Layout from './Layout';
 
-export * from './Layout';
+export {Props} from './Layout';
 export default Layout;

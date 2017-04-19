@@ -1,83 +1,73 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import {layeredComponent} from '@shopify/react-utilities/components';
 import autobind from '@shopify/javascript-utilities/autobind';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {focusFirstFocusableNode, findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
-import {focusFirstFocusableChild} from '../Focus';
-import {PreferredPosition, Alignment} from '../PositionedOverlay';
-import PopoverOverlay from './PopoverOverlay';
+import {PreferredPosition} from '../PositionedOverlay';
+import PopoverOverlay, {CloseSource} from './PopoverOverlay';
 import Pane from './Pane';
 import Section from './Section';
-import * as styles from './Popover.scss';
 
 export interface Props {
-  alignment?: Alignment,
-  fullHeight?: boolean,
+  children?: React.ReactNode,
   preferredPosition?: PreferredPosition,
   active: boolean,
-  activator: React.ReactElement<{}>,
-  activatorWrapper?: string | React.ComponentClass<any>,
-  children?: React.ReactNode,
+  activator: React.ReactElement<any>,
+  activatorWrapper?: string,
   preventAutofocus?: boolean,
-  onCloseRequest(): void,
+  sectioned?: boolean,
+  onClose(source: CloseSource): void,
 }
 
 export interface State {
   activatorFocused: boolean,
 }
 
-@layeredComponent({idPrefix: 'Popover'})
-export default class Popover extends React.PureComponent<Props, {}> {
-  static Pane = Pane;
+const getUniqueID = createUniqueIDFactory('Popover');
 
+@layeredComponent({idPrefix: 'Popover'})
+export default class Popover extends React.PureComponent<Props, State> {
+  static Pane = Pane;
   static Section = Section;
 
   state: State = {
     activatorFocused: false,
   };
 
-  private activatorContainer: HTMLElement;
+  private activatorNode: HTMLElement | null;
+  private activatorContainer: HTMLElement | null;
+  private id = getUniqueID();
 
-  constructor(props: Props) {
-    super(props);
+  componentDidMount() {
+    this.setAccessibilityAttributes();
   }
 
-  get activatorNode(): HTMLElement {
-    return findDOMNode<HTMLElement>(this);
+  componentDidUpdate() {
+    this.setAccessibilityAttributes();
   }
 
   renderLayer() {
     const {
       children,
-      fullHeight,
-      alignment,
-      preferredPosition,
-      active,
-      onCloseRequest,
-      preventAutofocus = false,
+      onClose,
+      activator,
+      activatorWrapper,
+      ...rest,
     } = this.props;
+
+    if (this.activatorNode == null) {
+      return null;
+    }
 
     return (
       <PopoverOverlay
-        preferredPosition={preferredPosition}
-        fullHeight={fullHeight}
-        alignment={alignment}
+        id={this.id}
         activator={this.activatorNode}
-        active={active}
-        onCloseRequest={onCloseRequest}
-        activatorFocused={this.state.activatorFocused}
-        preventAutofocus={preventAutofocus}
+        onClose={this.handleClose}
+        {...rest}
       >
-        <div
-          tabIndex={0}
-          onFocus={this.handleFocusFirstItem}
-          onBlur={this.handleBlurFirstItem}
-        />
         {children}
-        <div
-          tabIndex={0}
-          onFocus={this.handleFocusLastItem}
-        />
       </PopoverOverlay>
     );
   }
@@ -86,66 +76,48 @@ export default class Popover extends React.PureComponent<Props, {}> {
     const {activatorWrapper: WrapperComponent = 'div'} = this.props;
 
     return (
-      <WrapperComponent
-        className={styles.ActivatorContainer}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        ref={this.setActivatorContainer}
-      >
+      <WrapperComponent ref={this.setActivator}>
         {React.Children.only(this.props.activator)}
       </WrapperComponent>
     );
   }
 
+  private setAccessibilityAttributes() {
+    const {id, activatorContainer} = this;
+    if (activatorContainer == null) { return; }
+
+    const firstFocusable = findFirstFocusableNode(activatorContainer);
+    const focusableActivator = firstFocusable || activatorContainer;
+
+    focusableActivator.tabIndex = 0;
+    focusableActivator.setAttribute('aria-controls', id);
+    focusableActivator.setAttribute('aria-owns', id);
+    focusableActivator.setAttribute('aria-haspopup', 'true');
+    focusableActivator.setAttribute('aria-expanded', String(this.props.active));
+  }
+
   @autobind
-  private handleFocusFirstItem(event: React.FocusEvent<HTMLDivElement>) {
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    if (relatedTarget && relatedTarget.closest(`.${styles.Popover}`) == null) {
-      focusNextSibling(event.target as HTMLElement);
-    } else {
-      this.focusActivator();
+  private handleClose(source: CloseSource) {
+    this.props.onClose(source);
+
+    if (this.activatorContainer == null) { return; }
+    if (
+      source === CloseSource.FocusOut ||
+      source === CloseSource.EscapeKeypress
+    ) {
+      focusFirstFocusableNode(this.activatorContainer, false);
     }
   }
 
   @autobind
-  private handleFocusLastItem() {
-    this.focusActivator();
-  }
-
-  @autobind
-  private handleBlurFirstItem(event: React.FocusEvent<HTMLDivElement>) {
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    if (relatedTarget && relatedTarget.closest(`.${styles.Popover}`) == null) {
-      this.focusActivator();
+  private setActivator(node: HTMLElement | null) {
+    if (node == null) {
+      this.activatorNode = null;
+      this.activatorContainer = null;
+      return;
     }
-  }
 
-  @autobind
-  private focusActivator() {
-    focusFirstFocusableChild(this.activatorContainer);
-    this.setState({activatorFocused: true});
-    this.props.onCloseRequest();
-  }
-
-  @autobind
-  private handleFocus() {
-    this.setState({activatorFocused: true});
-  }
-
-  @autobind
-  private handleBlur() {
-    this.setState({activatorFocused: false});
-  }
-
-  @autobind
-  private setActivatorContainer(node: HTMLElement) {
+    this.activatorNode = node.firstElementChild as HTMLElement;
     this.activatorContainer = node;
-  }
-}
-
-function focusNextSibling(target: HTMLElement) {
-  const nextElementSibling = target.nextElementSibling as HTMLElement;
-  if (nextElementSibling) {
-    focusFirstFocusableChild(nextElementSibling);
   }
 }

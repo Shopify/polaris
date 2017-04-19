@@ -1,4 +1,5 @@
 import * as React from 'react';
+import autobind from '@shopify/javascript-utilities/autobind';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Props as ButtonProps} from '../Button';
 import * as styles from './ButtonGroup.scss';
@@ -7,11 +8,41 @@ export interface Props {
   button: React.ReactElement<ButtonProps>,
 }
 
-export default function Item({button}: Props) {
-  const className = classNames(
-    styles.Item,
-    button.props.plain && styles.plain,
-  );
+export interface State {
+  focused: boolean,
+}
 
-  return <div className={className}>{button}</div>;
+export default class Item extends React.PureComponent<Props, State> {
+  state: State = {focused: false};
+
+  render() {
+    const {button} = this.props;
+    const {focused} = this.state;
+
+    const className = classNames(
+      styles.Item,
+      focused && styles.focused,
+      button.props.plain && styles.plain,
+    );
+
+    return (
+      <div
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+      >
+        {button}
+      </div>
+    );
+  }
+
+  @autobind
+  private handleFocus() {
+    this.setState({focused: true});
+  }
+
+  @autobind
+  private handleBlur() {
+    this.setState({focused: false});
+  }
 }

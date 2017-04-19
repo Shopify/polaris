@@ -1,8 +1,5 @@
 import * as React from 'react';
 import autobind from '@shopify/javascript-utilities/autobind';
-import {read} from '@shopify/javascript-utilities/fastdom';
-import {classNames} from '@shopify/react-utilities/styles';
-
 import EventListener from '../EventListener';
 import * as styles from './ColorPicker.scss';
 
@@ -27,7 +24,22 @@ export default class Slidable extends React.PureComponent<Props, State> {
     dragging: false,
   };
 
-  node: HTMLElement;
+  private node: HTMLElement;
+  private draggerNode: HTMLElement;
+
+  componentDidMount() {
+    const {onDraggerHeight} = this.props;
+    if (onDraggerHeight == null) { return; }
+
+    const {draggerNode} = this;
+    onDraggerHeight(draggerNode.clientWidth);
+
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => {
+        onDraggerHeight(draggerNode.clientWidth);
+      }, 0);
+    }
+  }
 
   render() {
     const {dragging} = this.state;
@@ -96,23 +108,16 @@ export default class Slidable extends React.PureComponent<Props, State> {
         {touchCancelListener}
         <div
           style={draggerPositioning}
-          className={classNames(styles.Dragger, styles.hueDragger)}
-          ref={this.computeDraggerHeight}
+          className={styles.Dragger}
+          ref={this.setDraggerNode}
         />
       </div>
     );
   }
 
   @autobind
-  private computeDraggerHeight(node: HTMLElement) {
-    const {onDraggerHeight} = this.props;
-    if (!onDraggerHeight) { return; }
-
-    setTimeout(() => {
-      read(() => {
-        onDraggerHeight(node.clientWidth);
-      });
-    }, 20);
+  private setDraggerNode(node: HTMLElement) {
+    this.draggerNode = node;
   }
 
   @autobind
@@ -126,6 +131,7 @@ export default class Slidable extends React.PureComponent<Props, State> {
       const mouseEvent = event as React.MouseEvent<HTMLDivElement>;
       this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
     }
+
     this.setState({dragging: true});
   }
 
@@ -142,7 +148,8 @@ export default class Slidable extends React.PureComponent<Props, State> {
 
     if (event.type === 'mousemove') {
       const mouseEvent = event as MouseEvent;
-      return this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
+      this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
+      return;
     }
 
     const touchEvent = event as TouchEvent;

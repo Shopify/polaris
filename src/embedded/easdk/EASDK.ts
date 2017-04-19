@@ -35,7 +35,7 @@ export default class EASDK {
 
   private messenger: Messenger;
 
-  constructor({apiKey, shopOrigin, metadata, debug}: Options) {
+  constructor({apiKey, shopOrigin, debug, forceRedirect}: Options, metadata: object) {
     this.messenger = new Messenger(window.parent, {
       'Shopify.API.initialize': (data: InitData) => {
         if (data && data.User && data.User.current) {
@@ -55,7 +55,7 @@ export default class EASDK {
     this.Modal = new Modal(this.messenger);
     this.ResourcePicker = new ResourcePicker(this.messenger, this.Modal);
 
-    this.messenger.send('Shopify.API.initialize', {apiKey, metadata, debug});
+    this.messenger.send('Shopify.API.initialize', {apiKey, shopOrigin, metadata, debug, forceRedirect});
   }
 
   startLoading() {

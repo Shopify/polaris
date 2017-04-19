@@ -7,19 +7,20 @@
 @import 'foundation/typography';
 @import 'foundation/utilities';
 @import 'foundation/z-index';
+@import 'shared/icons';
 
 $stacking-order: (
-  backdrop: 1,
-  input: 2,
-  icon: 3
+  backdrop: 10,
+  input: 20,
+  icon: 30
 );
 
-$Icon-size: rem(16px);
-$Input-horizontal-padding: spacing(tight) * 1.5;
+$icon-size: rem(16px);
+$input-horizontal-padding: spacing(tight) * 1.5;
 
 // Without a small amount of vertical adjustment, the text
 // in the Select does not appear vertically centered.
-$Input-vertical-adjust: rem(1px);
+$input-vertical-adjust: rem(1px);
 
 .Select {
   position: relative;
@@ -28,6 +29,10 @@ $Input-vertical-adjust: rem(1px);
 .disabled {
   .Backdrop {
     @include control-backdrop(disabled);
+  }
+
+  .Icon {
+    opacity: 0.4;
   }
 }
 
@@ -48,6 +53,12 @@ $Input-vertical-adjust: rem(1px);
   .Input {
     color: color(ink, lightest);
   }
+
+  &.error .Input {
+    // This is the only place this color is used.
+    // stylelint-disable-next-line color-no-hex
+    color: #9c9798;
+  }
 }
 
 .Backdrop {
@@ -61,15 +72,13 @@ $Input-vertical-adjust: rem(1px);
 }
 
 .Icon {
+  @include recolor-icon(color(ink, lighter));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
-  right: $Input-horizontal-padding;
+  right: $input-horizontal-padding;
   transform: translateY(-50%);
-  height: $Icon-size;
-  width: $Icon-size;
-  margin-right: (-0.25 * $Icon-size);
-  color: color(ink, lighter);
+  margin-right: (-0.25 * $icon-size);
   pointer-events: none;
 }
 
@@ -80,7 +89,7 @@ $Input-vertical-adjust: rem(1px);
   width: 100%;
   min-height: control-height();
   margin: 0;
-  padding: control-vertical-padding() ($Input-horizontal-padding + $Icon-size) control-vertical-padding() $Input-horizontal-padding;
+  padding: control-vertical-padding() ($input-horizontal-padding + $icon-size) control-vertical-padding() $input-horizontal-padding;
   background: transparent;
   border: border(transparent);
   appearance: none;
@@ -94,6 +103,6 @@ $Input-vertical-adjust: rem(1px);
   }
 
   &:disabled {
-    color: currentColor;
+    color: color(ink, lightest);
   }
 }

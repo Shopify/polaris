@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {noop} from '@shopify/javascript-utilities/other';
+import {ReactComponent} from '@shopify/react-utilities/types';
+import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
@@ -24,6 +25,16 @@ export interface Props {
   onChange?(selected: string[]): void,
 }
 
+type ChooseableComponent = ReactComponent<{
+  label: string,
+  name?: string,
+  value?: string,
+  checked?: boolean,
+  onChange?(checked: boolean): void,
+}>;
+
+const getUniqueID = createUniqueIDFactory('ChoiceList');
+
 export default function ChoiceList({
   title,
   titleHidden,
@@ -31,9 +42,9 @@ export default function ChoiceList({
   choices,
   selected,
   onChange = noop,
-  name = uniqueID(),
+  name = getUniqueID(),
 }: Props) {
-  const ControlComponent = allowMultiple ? Checkbox : RadioButton;
+  const ControlComponent: ChooseableComponent = allowMultiple ? Checkbox : RadioButton;
   const finalName = allowMultiple ? `${name}[]` : name;
   const className = classNames(styles.ChoiceList, titleHidden && styles.titleHidden);
   const titleMarkup = title
@@ -82,9 +93,4 @@ function updateSelectedChoices({value}: Choice, checked: boolean, selected: stri
   }
 
   return selected.filter((selectedChoice) => selectedChoice !== value);
-}
-
-let index = 1;
-function uniqueID() {
-  return `ChoiceList${index++}`;
 }

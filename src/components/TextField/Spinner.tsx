@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Icon from '../Icon';
+
 import * as styles from './TextField.scss';
 
 export interface Props {
@@ -19,7 +20,9 @@ export default function Spinner({onChange}: Props) {
         tabIndex={-1}
         onClick={handleStep(1)}
       >
-        <Icon source="caretUp" size={12} />
+        <div className={styles.SpinnerIcon}>
+          <Icon source="caretUp" />
+        </div>
       </div>
 
       <div
@@ -28,7 +31,9 @@ export default function Spinner({onChange}: Props) {
         tabIndex={-1}
         onClick={handleStep(-1)}
       >
-        <Icon source="caretDown" size={12} />
+        <div className={styles.SpinnerIcon}>
+          <Icon source="caretDown" />
+        </div>
       </div>
     </div>
   );

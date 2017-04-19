@@ -10,19 +10,11 @@ $stacking-order: (
 
 .Icon {
   display: block;
-  height: rem(16px);
-  width: rem(16px);
-  margin: auto;
-}
-
-.Svg {
-  position: relative;
-  z-index: z-index(icon, $stacking-order);
-  display: block;
-  width: 100%;
-  color: color(white);
-  max-width: 100%;
+  height: rem(20px);
+  width: rem(20px);
   max-height: 100%;
+  max-width: 100%;
+  margin: auto;
 }
 
 .hasBackdrop {
@@ -42,64 +34,6 @@ $stacking-order: (
     border-radius: 50%;
   }
 }
-
-.Placeholder {
-  padding-bottom: 100%;
-  background: currentColor;
-}
-
-// We don't typically like classes that end in numbers, but it makes sense
-// in the context of icons.
-// stylelint-disable selector-class-pattern
-
-// Sizes
-
-.sizeFill {
-  height: auto;
-  width: 100%;
-}
-
-.size8 {
-  height: rem(8px);
-  width: rem(8px);
-}
-
-.size10 {
-  height: rem(10px);
-  width: rem(10px);
-}
-
-.size12 {
-  height: rem(12px);
-  width: rem(12px);
-}
-
-.size16 {
-  height: rem(16px);
-  width: rem(16px);
-}
-
-.size20 {
-  height: rem(20px);
-  width: rem(20px);
-}
-
-.size24 {
-  height: rem(24px);
-  width: rem(24px);
-}
-
-.size40 {
-  height: rem(40px);
-  width: rem(40px);
-}
-
-.size80 {
-  height: rem(80px);
-  width: rem(80px);
-}
-
-// Colors
 
 .colorWhite {
   fill: color(white);
@@ -281,4 +215,17 @@ $stacking-order: (
   fill: color(purple);
 }
 
-// stylelint-enable selector-class-pattern
+.Svg {
+  position: relative;
+  z-index: z-index(icon, $stacking-order);
+  display: block;
+  width: 100%;
+  color: color(white);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Placeholder {
+  padding-bottom: 100%;
+  background: currentColor;
+}

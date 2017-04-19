@@ -52,29 +52,40 @@ export function transformAction(action: ComplexAction | undefined) {
 export interface Pagination {
   hasNext?: boolean,
   hasPrevious?: boolean,
+  nextURL?: string,
+  previousURL?: string,
   onNext?(): void,
   onPrevious?(): void,
 }
 
+export type PaginationDirection = {message(): void} | {href: string};
+
 export interface EASDKPagination {
-  next?: {message(): void},
-  previous?: {message(): void},
+  next?: PaginationDirection,
+  previous?: PaginationDirection,
 }
 
 export function transformPagination(pagination?: Pagination) {
   if (pagination == null) { return undefined; }
 
-  const {hasNext, hasPrevious, onNext, onPrevious} = pagination;
+  const {hasNext, hasPrevious, nextURL, previousURL, onNext, onPrevious} = pagination;
   const finalPagination: EASDKPagination = {};
 
-  if (hasNext && onNext) {
-    finalPagination.next = {message: onNext};
+  if (hasNext) {
+    if (onNext) {
+      finalPagination.next = {message: onNext};
+    } else if (nextURL) {
+      finalPagination.next = {href: nextURL};
+    }
   }
 
-  if (hasPrevious && onPrevious) {
-    finalPagination.previous = {message: onPrevious};
+  if (hasPrevious) {
+    if (onPrevious) {
+      finalPagination.previous = {message: onPrevious};
+    } else if (previousURL) {
+      finalPagination.previous = {href: previousURL};
+    }
   }
 
   return finalPagination;
 }
-

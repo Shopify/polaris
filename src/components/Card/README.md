@@ -120,14 +120,14 @@ Use this when you have a simple message to communicate to merchants that doesnâ€
 Use this when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
 
 ```jsx
-<Card title="Online Store dashboard">
+<Card
+  title="Online Store dashboard"
+  footerPrimaryAction={{content: 'View products', url: '/products'}}
+  footerSecondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+>
   <Card.Section>
     <p>View a summary of your Online Store's performance.</p>
   </Card.Section>
-
-  <Card.Footer>
-    <Button>View dashboard</Button>
-  </Card.Footer>
 </Card>
 ```
 

@@ -1,19 +1,100 @@
-@import 'utilities';
+@import 'foundation/utilities';
+@import 'foundation/spacing';
 
-$layout-max-width-data: (
-  base: rem(840px),
+////
+/// Layout
+/// @group foundation/layout
+////
+
+$layout-column-width-data: (
+  primary: (
+    min: rem(480px),
+    max: rem(672px)
+  ),
+  secondary: (
+    min: rem(240px),
+    max: rem(344px)
+  ),
+  nav: (
+    base: rem(240px)
+  ),
+  page-with-nav: (
+    base: rem(700px)
+  ),
+  page-content: (
+    not-condensed: rem(680px),
+    partially-condensed: rem(450px)
+  ),
+  inner-spacing: (
+    base: spacing(loose)
+  ),
+  outer-spacing: (
+    min: spacing(loose),
+    max: spacing(extra-loose)
+  )
 );
 
-///
+/// Returns the widths of the specified column.
+/// @param {String} $name - The column name.
+/// @return {Number} The width for the column.
+
+@function layout-column-width($name, $value: base) {
+  $fetched-value: map-get(map-get($layout-column-width-data, $name), $value);
+
+  @if type-of($fetched-value) != null {
+    @return $fetched-value;
+  } @else {
+    @error 'Column `#{$name} - #{$value}` not found. Available columns: #{available-names($layout-column-width-data)}';
+  }
+}
+
+$layout-max-width-data: (
+  base: (layout-column-width(primary, max) + layout-column-width(secondary, max) + layout-column-width(inner-spacing))
+);
+
 /// Returns the max-width of the specified layout.
 /// @param {String} $name - The layout name.
 /// @return {Number} The max-width for the variant.
 @function layout-max-width($name: base) {
   $fetched-value: map-get($layout-max-width-data, $name);
 
-  @if type-of($fetched-value) == number {
+  @if type-of($fetched-value) != null {
     @return $fetched-value;
   } @else {
     @error 'Layout max-width `#{$name}` not found. Available layout max-widths: #{available-names($layout-max-width-data)}';
+  }
+}
+
+$layout-min-width-data: (
+  base: (layout-column-width(primary, min) + layout-column-width(secondary, min) + layout-column-width(inner-spacing))
+);
+
+/// Returns the min-width of the specified layout.
+/// @param {String} $name - The layout name.
+/// @return {Number} The min-width for the variant.
+@function layout-min-width($name: base) {
+  $fetched-value: map-get($layout-min-width-data, $name);
+
+  @if type-of($fetched-value) != null {
+    @return $fetched-value;
+  } @else {
+    @error 'Layout min-width `#{$name}` not found. Available layout min-widths: #{available-names($layout-min-width-data)}';
+  }
+}
+
+$layout-height-data: (
+  title-bar: rem(56px)
+);
+
+/// Returns the height of the specified layout element.
+/// @param {String} $name - The layout element name.
+/// @return {Number} The height for the element.
+@function layout-height($name: base) {
+  $fetched-value: map-get($layout-height-data, $name);
+
+  @if type-of($fetched-value) != null {
+    @return $fetched-value;
+  } @else {
+    @error 'Layout height `#{$name}` not found. Available layout heights: #{available-names($layout-height-data)}';
   }
 }

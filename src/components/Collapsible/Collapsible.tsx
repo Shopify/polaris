@@ -7,8 +7,8 @@ import {read} from '@shopify/javascript-utilities/fastdom';
 import * as styles from './Collapsible.scss';
 
 export interface Props {
-  children?: React.ReactNode,
   open: boolean,
+  children?: React.ReactNode,
 }
 
 export type AnimationState = 'idle' | 'measuring' | 'closingStart' | 'closing' | 'openingStart' | 'opening';
@@ -18,7 +18,19 @@ export interface State {
   animationState: AnimationState,
 }
 
+export interface Context {
+  parentCollapsibleExpanding: boolean,
+}
+
+const CONTEXT_TYPES = {
+  parentCollapsibleExpanding: React.PropTypes.bool,
+};
+
 export default class Collapsible extends React.Component<Props, State> {
+  static contextTypes = CONTEXT_TYPES;
+  static childContextTypes = CONTEXT_TYPES;
+
+  context: Partial<Context>;
   state: State = {
     height: null,
     animationState: 'idle',
@@ -27,25 +39,39 @@ export default class Collapsible extends React.Component<Props, State> {
   private node: HTMLElement;
   private heightNode: HTMLElement;
 
-  componentWillReceiveProps(newProps: Props) {
+  getChildContext(): Context {
     const {open} = this.props;
-    const willBeOpen = newProps.open;
+    const {animationState} = this.state;
+    const {parentCollapsibleExpanding} = this.context;
+    return {
+      parentCollapsibleExpanding: parentCollapsibleExpanding || (open && animationState !== 'idle'),
+    };
+  }
 
-    if (open !== willBeOpen) {
+  componentWillReceiveProps({open: willOpen}: Props) {
+    const {open} = this.props;
+
+    if (open !== willOpen) {
       this.setState({animationState: 'measuring'});
     }
   }
 
-  componentDidUpdate(oldProps: Props) {
+  componentDidUpdate({open: wasOpen}: Props) {
     const {animationState} = this.state;
+
+    const {parentCollapsibleExpanding} = this.context;
+    if (parentCollapsibleExpanding && animationState !== 'idle') {
+      this.setState({
+        animationState: 'idle',
+      });
+      return;
+    }
 
     read(() => {
       switch (animationState) {
         case 'idle':
           break;
         case 'measuring':
-          const wasOpen = oldProps.open;
-
           this.setState({
             animationState: wasOpen ? 'closingStart' : 'openingStart',
             height: wasOpen ? this.heightNode.scrollHeight : 0,
@@ -83,24 +109,25 @@ export default class Collapsible extends React.Component<Props, State> {
 
     const wrapperClassName = classNames(
       styles.Collapsible,
-      open && styles.visibilityShown,
+      open && styles.open,
       animating && styles.animating,
     );
 
     const displayHeight = collapsibleHeight(open, animationState, height);
 
+    const content = animating || open
+      ? children
+      : null;
+
     return (
       <div
-        aria-expanded={open}
         aria-hidden={!open}
-        style={{
-          height: displayHeight,
-        }}
+        style={{height: displayHeight}}
         className={wrapperClassName}
         ref={this.bindNode}
       >
         <div ref={this.bindHeightNode}>
-          {children}
+          {content}
         </div>
       </div>
     );
@@ -134,5 +161,5 @@ function collapsibleHeight(open: boolean, animationState: AnimationState, height
     return open ? null : 'auto';
   }
 
-  return height;
+  return `${height || 0}px`;
 }

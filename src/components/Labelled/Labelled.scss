@@ -1,6 +1,8 @@
+@import 'foundation/colors';
 @import 'foundation/spacing';
 @import 'foundation/typography';
 @import 'foundation/utilities';
+@import 'shared/icons';
 
 .hidden > .LabelWrapper {
   @include visually-hidden;
@@ -14,4 +16,15 @@
   @include text-style-body;
   @include text-emphasis-subdued;
   margin-top: spacing(extra-tight);
+}
+
+.Error {
+  display: flex;
+  margin-top: spacing(extra-tight);
+  color: color(red, dark);
+}
+
+.ErrorIcon {
+  @include recolor-icon(color(red));
+  margin: 0 spacing(extra-tight) 0 -2px;
 }

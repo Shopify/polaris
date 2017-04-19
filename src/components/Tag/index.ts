@@ -1,4 +1,4 @@
 import Tag from './Tag';
 
-export * from './Tag';
+export {Props} from './Tag';
 export default Tag;

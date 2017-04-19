@@ -9,7 +9,7 @@ export interface Props {
 
 export default function Item({children, fill}: Props) {
   const className = classNames(
-    styles.StackItem,
+    styles.Item,
     fill && styles.fill,
   );
 

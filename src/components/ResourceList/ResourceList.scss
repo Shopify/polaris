@@ -3,51 +3,269 @@
 @import 'foundation/borders';
 @import 'foundation/colors';
 @import 'foundation/breakpoints';
+@import 'foundation/border-radius';
+@import 'foundation/z-index';
+@import 'foundation/utilities';
 
-$Item-selector-width: rem(15px);
-$Item-selector-padding: spacing();
-$Item-selector-offset: $Item-selector-width + ($Item-selector-padding * 2);
+$stacking-order: (
+  link: 10,
+  content: 20,
+);
 
-.Header {
-  display: flex;
-  background-color: color(sky, lighter);
-  min-height: $Item-selector-offset;
-}
+$avatar-small-size: rem(32px);
+$avatar-medium-size: rem(40px);
+$avatar-large-size: rem(60px);
 
-.Selector {
-  align-self: center;
-  padding: spacing();
+$thumbnail-small-size: rem(40px);
+$thumbnail-medium-size: rem(60px);
+$thumbnail-large-size: rem(80px);
 
-  @media screen and (max-width: breakpoint(medium)) {
-    &:not(.show) {
-      display: none;
-    }
-  }
-}
-
-.HeaderAction {
-  display: none;
-  align-self: center;
-  margin-left: auto;
-  padding: spacing();
-
-  @media screen and (max-width: breakpoint(medium)) {
-    display: block;
-    margin-left: auto;
-  }
-}
-
-.List {
+.ResourceList {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.Item {
-  display: flex;
-  border-top: border();
+.ItemWrapper {
+  + .ItemWrapper {
+    border-top: border();
+  }
 }
 
-.selected {
-  background-color: color(indigo, lighter);
+.Item {
+  position: relative;
+
+  &:not(.persistActions) {
+    .Actions {
+      position: absolute;
+      right: spacing(tight);
+      display: none;
+      pointer-events: initial;
+    }
+
+    &.focused {
+      // Need this deeply nested selector to override the more specific :not()
+      // selector needed above.
+      // stylelint-disable-next-line selector-max-specificity
+      .Actions {
+        display: flex;
+      }
+    }
+  }
+}
+
+.persistActions {
+  .AttributeThree {
+    margin-left: 0;
+  }
+
+  .Actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    margin-left: spacing();
+    pointer-events: initial;
+
+    @include page-content-when-partially-condensed {
+      display: none;
+    }
+  }
+}
+
+.link {
+  cursor: pointer;
+}
+
+.focused {
+  background: color(sky, lighter);
+}
+
+.mediaAvatar {
+  &.sizeSmall {
+    .Actions {
+      min-height: $avatar-small-size;
+    }
+  }
+
+  &.sizeMedium {
+    .Actions {
+      min-height: $avatar-medium-size;
+    }
+  }
+
+  &.sizeLarge {
+    .Actions {
+      min-height: $avatar-large-size;
+    }
+  }
+}
+
+.mediaThumbnail {
+  &.sizeSmall {
+    .Actions {
+      min-height: $thumbnail-small-size;
+    }
+  }
+
+  &.sizeMedium {
+    .Actions {
+      min-height: $thumbnail-medium-size;
+    }
+  }
+
+  &.sizeLarge {
+    .Actions {
+      min-height: $thumbnail-large-size;
+    }
+  }
+}
+
+.Media {
+  flex: 0 0 auto;
+  margin-right: spacing(loose);
+  color: inherit;
+  text-decoration: none;
+}
+
+.Container {
+  position: relative;
+  z-index: z-index(content, $stacking-order);
+  display: flex;
+  pointer-events: none;
+  padding: (0.75 * spacing()) spacing(loose);
+}
+
+.Content {
+  @include layout-flex-fix;
+  flex: 1 1 auto;
+  align-self: center;
+}
+
+.Attributes {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  hyphens: auto;
+
+  @include page-content-when-partially-condensed {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.AttributeOne,
+.AttributeTwo {
+  flex-shrink: 0;
+  margin-right: (0.75 * spacing());
+}
+
+.AttributeOne {
+  font-weight: 600;
+}
+
+.AttributeThree {
+  margin-left: auto;
+
+  @include page-content-when-partially-condensed {
+    margin-left: 0;
+  }
+}
+
+.Badge {
+  flex-shrink: 0;
+  margin-right: spacing();
+
+  @include page-content-when-partially-condensed {
+    order: 4;
+    align-self: auto;
+    margin-top: rem(4px);
+    margin-bottom: rem(4px);
+  }
+}
+
+.Actions {
+  display: flex;
+  align-items: center;
+}
+
+.Disclosure {
+  display: none;
+  pointer-events: initial;
+
+  @include page-content-when-partially-condensed {
+    display: block;
+  }
+}
+
+.ExceptionList {
+  margin: spacing(extra-tight) 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ExceptionItem {
+  @include text-emphasis-subdued;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    height: rem(6px);
+    width: rem(6px);
+    margin-right: spacing(tight);
+    background: color(ink, lightest);
+    border-radius: 100%;
+  }
+}
+
+.statusWarning {
+  .Title {
+    color: color(orange, dark);
+  }
+
+  &::before {
+    background: color(orange);
+  }
+}
+
+.statusCritical {
+  .Title {
+    color: color(red, dark);
+  }
+
+  &::before {
+    background: color(red);
+  }
+}
+
+.Title {
+  @include text-emphasis-subdued;
+  white-space: nowrap;
+}
+
+.Description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Title + .Description::before {
+  content: '\2013';
+  padding: 0 spacing(extra-tight);
+  color: color(ink, lighter);
+}
+
+.Link {
+  position: absolute;
+  z-index: z-index(link, $stacking-order);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
 }

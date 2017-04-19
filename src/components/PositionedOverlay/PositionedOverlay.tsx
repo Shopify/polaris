@@ -1,19 +1,22 @@
 import * as React from 'react';
-
 import autobind from '@shopify/javascript-utilities/autobind';
 import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
-import {closest} from '@shopify/javascript-utilities/dom';
-import {classNames} from '@shopify/react-utilities/styles';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
+import {closest} from '@shopify/javascript-utilities/dom';
+
+import Scrollable from '../Scrollable';
+import {layer} from '../shared';
 
 import {
-  Alignment,
   PreferredPosition,
   calculateVerticalPosition,
   calculateHorizontalPosition,
+  rectIsOutsideOfRect,
 } from './math';
+
 import * as styles from './PositionedOverlay.scss';
 
+export {PreferredPosition};
 export type Positioning = 'above' | 'below';
 
 export interface OverlayDetails {
@@ -25,12 +28,11 @@ export interface OverlayDetails {
 }
 
 export interface Props {
-  maxHeight: number,
-  active?: boolean,
+  active: boolean,
+  activator: HTMLElement,
   preferredPosition?: PreferredPosition,
-  alignment?: Alignment,
-  activator?: React.ReactNode,
   render(overlayDetails: OverlayDetails): React.ReactNode,
+  onScrollOut?(): void,
 }
 
 export interface State {
@@ -38,38 +40,41 @@ export interface State {
   activatorRect: Rect,
   left: number,
   top: number,
-  bottom: number,
   height: number,
   positioning: Positioning,
+  zIndex: number,
+  outsideScrollableContainer: boolean,
 }
 
-const CONTAINER = '[data-quilt-container]';
-const SCROLLABLE_CONTAINER = '[data-quilt-scrollable]';
-
 export default class PositionedOverlay extends React.PureComponent<Props, State> {
-  private overlay: HTMLElement;
+  state: State = {
+    measuring: true,
+    activatorRect: getRectForNode(this.props.activator),
+    left: 0,
+    top: 0,
+    height: 0,
+    positioning: 'below',
+    zIndex: -1,
+    outsideScrollableContainer: false,
+  };
 
+  private overlay: HTMLElement;
   private scrollableContainer: HTMLElement;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      measuring: true,
-      activatorRect: getRectForNode(props.activator),
-      left: 0,
-      top: 0,
-      bottom: 0,
-      height: 0,
-      positioning: 'below',
-    };
-  }
-
   componentDidMount() {
-    this.scrollableContainer = closest(this.props.activator as HTMLElement, SCROLLABLE_CONTAINER) as HTMLElement || document.body;
+    this.scrollableContainer = Scrollable.forNode(this.props.activator);
     addEventListener(this.scrollableContainer, 'scroll', this.handleMeasurement);
     addEventListener(window, 'resize', this.handleMeasurement);
     this.handleMeasurement();
+  }
+
+  componentDidUpdate() {
+    const {outsideScrollableContainer, top} = this.state;
+    const {onScrollOut, active} = this.props;
+
+    if (active && onScrollOut != null && top !== 0 && outsideScrollableContainer) {
+      onScrollOut();
+    }
   }
 
   componentWillUnmount() {
@@ -78,23 +83,13 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   }
 
   render() {
-    const {left, top, bottom, positioning} = this.state;
+    const {left, top, zIndex} = this.state;
     const {render} = this.props;
-
-    const positionDetails = {
-      left,
-      top: positioning === 'below' ? top : null,
-      bottom: positioning === 'above' ? bottom : null,
-    };
-
-    const className = classNames(
-      styles.PositionedOverlay,
-    );
 
     return (
       <div
-        className={className}
-        style={positionDetails}
+        className={styles.PositionedOverlay}
+        style={{top, left, zIndex}}
         ref={this.setOverlay}
       >
         {render(this.overlayDetails())}
@@ -121,33 +116,56 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   }
 
   @autobind
-  private handleMeasurement(): void {
+  private handleMeasurement() {
     this.setState({
+      left: 0,
+      top: 0,
+      height: 0,
+      positioning: 'below',
       measuring: true,
     }, () => {
       const {
         activator,
-        alignment = 'center',
         preferredPosition = 'below',
-        maxHeight,
+        onScrollOut,
       } = this.props;
 
-      const overlayRect = getRectForNode(this.overlay);
       const activatorRect = getRectForNode(activator);
+      const overlayRect = getRectForNode(this.overlay);
       const scrollableContainerRect = getRectForNode(this.scrollableContainer);
-      const containerRect = getRectForNode(closest(activator as HTMLElement, CONTAINER) || window);
-      const verticalPosition = calculateVerticalPosition(scrollableContainerRect, preferredPosition, activatorRect, maxHeight, overlayRect.height);
-      const horizontalPosition = calculateHorizontalPosition(alignment, activatorRect, containerRect, overlayRect);
+      const overlayMargins = this.overlay.firstElementChild
+        ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
+        : {activator: 0, container: 0, horizontal: 0};
+      const containerRect = getRectForNode(window);
+      const zIndex = getZIndexForLayerFromNode(activator) + 1;
+      const verticalPosition = calculateVerticalPosition(activatorRect, overlayRect, overlayMargins, scrollableContainerRect, containerRect, preferredPosition);
+      const horizontalPosition = calculateHorizontalPosition(activatorRect, overlayRect, containerRect);
 
       this.setState({
         measuring: false,
         activatorRect: getRectForNode(activator),
         left: horizontalPosition,
         top: verticalPosition.top,
-        bottom: verticalPosition.bottom,
         height: verticalPosition.height,
         positioning: verticalPosition.positioning as Positioning,
+        outsideScrollableContainer: onScrollOut != null && rectIsOutsideOfRect(activatorRect, scrollableContainerRect),
+        zIndex,
       });
     });
   }
+}
+
+function getMarginsForNode(node: HTMLElement) {
+  const styles = window.getComputedStyle(node);
+  return {
+    activator: parseFloat(styles.marginTop || ''),
+    container: parseFloat(styles.marginBottom || ''),
+    horizontal: parseFloat(styles.marginLeft || ''),
+  };
+}
+
+function getZIndexForLayerFromNode(node: HTMLElement) {
+  const layerNode = closest(node, layer.selector) || document.body;
+  const zIndex = parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
+  return Number.isNaN(zIndex) ? 0 : zIndex;
 }

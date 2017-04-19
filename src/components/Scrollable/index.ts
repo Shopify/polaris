@@ -1,4 +1,4 @@
 import Scrollable from './Scrollable';
 
-export * from './Scrollable';
+export {Props} from './Scrollable';
 export default Scrollable;

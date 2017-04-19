@@ -9,15 +9,15 @@ export interface Props {
 
 export default function FooterHelp({children}: Props) {
   return (
-    <section className={styles.FooterHelp}>
+    <div className={styles.FooterHelp}>
       <div className={styles.Content}>
         <div className={styles.Icon}>
-          <Icon source={helpIcon} size={20} color="teal" backdrop />
+          <Icon source={helpIcon} color="teal" backdrop />
         </div>
         <div className={styles.Text}>
           {children}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

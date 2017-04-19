@@ -1,0 +1,13 @@
+@import 'foundation/utilities';
+
+@function icon-size() {
+  @return rem(20px);
+}
+
+@mixin recolor-icon($main-color, $secondary-color: null) {
+  fill: $main-color;
+
+  @if $secondary-color != null {
+    color: $secondary-color;
+  }
+}

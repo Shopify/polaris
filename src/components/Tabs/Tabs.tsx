@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import autobind from '@shopify/javascript-utilities/autobind';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
+
 import List from './List';
 import Tab from './Tab';
 import TabMeasurer from './TabMeasurer';
@@ -51,14 +50,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
     showDisclosure: false,
     tabToFocus: -1,
   };
-
-  componentDidMount() {
-    addEventListener(findDOMNode(this), 'keyup', this.handleKeyPress, {capture: true});
-  }
-
-  componentWillUnmount() {
-    removeEventListener(findDOMNode(this), 'keyup', this.handleKeyPress, true);
-  }
 
   componentWillReceiveProps(nextProps: Props) {
     const {tabs} = this.props;
@@ -109,20 +100,28 @@ export default class Tabs extends React.PureComponent<Props, State> {
         className={styles.DisclosureActivator}
         onClick={this.handleDisclosureActivatorClick}
       >
-        <Icon source="chevronDown" />
+        <Icon source="horizontalDots" />
       </button>
     );
 
     return (
       <div>
-        <ul role="tablist" className={classname} onFocus={this.handleFocus} onBlur={this.handleBlur}>
+        <ul
+          role="tablist"
+          className={classname}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onKeyDown={handleKeyDown}
+          onKeyUp={this.handleKeyPress}
+        >
           {tabsMarkup}
           <li role="tab" className={disclosureTabClassName}>
             <Popover
+              preventAutofocus
               preferredPosition="below"
               activator={activator}
               active={disclosureActivatorVisible && showDisclosure}
-              onCloseRequest={this.handleClose}
+              onClose={this.handleClose}
             >
               <List
                 focusIndex={hiddenTabs.indexOf(tabToFocus)}
@@ -147,22 +146,21 @@ export default class Tabs extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleKeyPress(event: KeyboardEvent) {
-    event.preventDefault();
+  private handleKeyPress(event: React.KeyboardEvent<HTMLElement>) {
     const {tabToFocus, visibleTabs, hiddenTabs} = this.state;
     const tabsArrayInOrder = visibleTabs.concat(hiddenTabs);
     const key = event.key;
 
     let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
 
-    if (key === 'ArrowRight' || key === 'ArrowUp') {
+    if (key === 'ArrowRight' || key === 'ArrowDown') {
       newFocus += 1;
       if (newFocus === tabsArrayInOrder.length) {
         newFocus = 0;
       }
     }
 
-    if (key === 'ArrowLeft' || key === 'ArrowDown') {
+    if (key === 'ArrowLeft' || key === 'ArrowUp') {
       newFocus -= 1;
     if (newFocus === -1) {
         newFocus = tabsArrayInOrder.length - 1;
@@ -199,11 +197,20 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
   @autobind
   private handleFocus(event: React.FocusEvent<HTMLUListElement>) {
+    const {tabToFocus} = this.state;
+    const {selected} = this.props;
+
     if (event.relatedTarget) {
       const className = (event.relatedTarget as HTMLElement).className;
       if (!(className.includes(styles.Tab) || className.includes(styles.Item))) {
-        const {selected} = this.props;
-        this.setState({tabToFocus: selected});
+        return this.setState({tabToFocus: selected});
+      }
+    }
+
+    if (event.target && tabToFocus === -1) {
+      const className = (event.target as HTMLElement).className;
+      if (className.includes(styles.Tab)) {
+        return this.setState({tabToFocus: selected});
       }
     }
   }
@@ -212,8 +219,8 @@ export default class Tabs extends React.PureComponent<Props, State> {
   private handleBlur(event: React.FocusEvent<HTMLUListElement>) {
     if (event.relatedTarget) {
       const className = (event.relatedTarget as HTMLElement).className;
-      if (!(className.includes(styles.Tab) || className.includes(styles.Item))) {
-        this.setState({tabToFocus: -1});
+      if (!(className.includes(styles.Tab) || className.includes(styles.TabContainer) || className.includes(styles.Item))) {
+         this.setState({tabToFocus: -1});
       }
     }
   }
@@ -252,6 +259,15 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const {tabs, onSelect = noop} = this.props;
     const selectedIndex = tabs.indexOf(tab);
     onSelect(selectedIndex);
+  }
+}
+
+function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+  const {key} = event;
+
+  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+    event.preventDefault();
+    event.stopPropagation();
   }
 }
 

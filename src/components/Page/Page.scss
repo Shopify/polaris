@@ -7,7 +7,6 @@
 @import 'foundation/z-index';
 
 $Icon-size: rem(48px);
-$Title-vertical-adjust: -2px;
 
 $stacking-order: (
   title: 10,
@@ -17,9 +16,14 @@ $stacking-order: (
 .Page {
   margin: 0 auto;
   max-width: layout-max-width();
+  padding: spacing(extra-loose) 0;
 
-  @include main-content-when-not-condensed {
-    padding: 0 spacing(loose);
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(extra-loose) spacing(loose);
+  }
+
+  @include page-content-when-not-partially-condensed {
+    padding: spacing(extra-loose);
   }
 }
 
@@ -33,10 +37,10 @@ $stacking-order: (
   align-items: flex-end;
   margin-top: -1 * spacing();
   margin-left: -1 * spacing();
-  padding: (2 * spacing()) spacing();
+  padding: 0 spacing() spacing(extra-loose);
 
-  @include main-content-when-not-condensed {
-    padding: (2 * spacing()) 0;
+  @include page-content-when-not-fully-condensed {
+    padding: 0 0 spacing(extra-loose);
   }
 }
 
@@ -71,7 +75,6 @@ $stacking-order: (
 .Title {
   position: relative;
   z-index: z-index(title, $stacking-order);
-  margin-top: $Title-vertical-adjust;
 }
 
 .Breadcrumbs {

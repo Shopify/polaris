@@ -4,22 +4,50 @@
 @import 'foundation/borders';
 @import 'foundation/border-radius';
 @import 'foundation/duration';
+@import 'foundation/easing';
 
-$arrow-height: 1rem;
-$arrow-width: 1rem;
-$visible-portion-of-arrow: rem(-5px);
+$arrow-size: rem(14px);
+$visible-portion-of-arrow: rem(5px);
 $content-max-height: rem(100px);
-$content-max-width: 15rem;
+$content-max-width: rem(200px);
 
 .Tooltip {
+  margin: $visible-portion-of-arrow spacing() spacing();
   opacity: 1;
   box-shadow: shadow(deep);
   border-radius: border-radius();
-  transition: opacity duration();
+  pointer-events: none;
+  will-change: opacity, left, top;
+  transition: opacity duration() easing(in);
 }
 
-.hidden {
+.measuring,
+.leaving {
   opacity: 0;
+}
+
+.leaving {
+  transition-timing-function: easing(out);
+}
+
+.positionedAbove {
+  margin: spacing() spacing() $visible-portion-of-arrow;
+
+  .Tip {
+    top: inherit;
+    bottom: 0;
+  }
+}
+
+.light {
+  .Wrapper {
+    background: color(white);
+    color: color(ink);
+  }
+
+  .Tip {
+    background: color(white);
+  }
 }
 
 .Wrapper {
@@ -41,35 +69,13 @@ $content-max-width: 15rem;
 
 .Tip {
   position: absolute;
-  top: $visible-portion-of-arrow;
+  top: 0;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
-  height: $arrow-height;
-  width: $arrow-width;
+  height: $arrow-size;
+  width: $arrow-size;
   background: color(ink);
   box-shadow: shadow(deep);
-}
-
-.positionedAbove {
-  top: inherit;
-  bottom: $visible-portion-of-arrow;
-}
-
-.fixed {
-  overflow: visible;
-  flex: 0 0 auto;
-  padding: spacing();
-}
-
-.light {
-  .Wrapper {
-    background: color(white);
-    color: color(ink);
-  }
-
-  .Tip {
-    background: color(white);
-  }
 }
 
 .Label {

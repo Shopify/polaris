@@ -1,55 +1,80 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+
+import Image from '../Image';
+
 import * as styles from './Avatar.scss';
+import * as avatars from './images';
 
 export type Size = 'small' | 'medium' | 'large' ;
+
 const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
+const AVATAR_IMAGES = Object.keys(avatars).map((key: keyof typeof avatars) => avatars[key]);
 
 export interface Props {
-  initials?: string[],
-  name: string,
-  image?: string,
-  circular?: boolean,
   size?: Size,
+  name?: string,
+  initials?: string,
+  customer?: boolean,
+  source?: string,
+  accessibilityLabel?: string,
 }
 
 export default function Avatar({
-  initials,
   name,
-  size= 'medium',
-  image,
-  circular,
+  source,
+  initials,
+  customer,
+  size = 'medium',
+  accessibilityLabel,
 }: Props) {
+  const nameString = name || initials;
 
-  const styleClass = initials
-    ? styleClassFromInitials(initials)
-    : STYLE_CLASSES[0];
+  let finalSource: string | undefined;
+  let label: string | undefined;
+
+  if (accessibilityLabel) {
+    label = accessibilityLabel;
+  } else if (name) {
+    label = name;
+  } else if (initials) {
+    label = `Avatar with initials ${initials.split('').join(' ')}`;
+  } else {
+    label = 'Avatar';
+  }
+
+  if (source) {
+    finalSource = source;
+  } else if (customer) {
+    finalSource = customerPlaceholder(nameString);
+  }
 
   const className = classNames(
     styles.Avatar,
-    styleClass && styles[variationName('style', styleClass)],
+    styles[variationName('style', styleClass(nameString))],
+    source && styles.hasImage,
     size && styles[variationName('size', size)],
-    image && styles.hasImage,
-    circular && styles.circular,
   );
 
   let content = null;
 
-  if (image) {
-    content = <img className={styles.Image} src={image} alt={name} />;
+  if (finalSource) {
+    content = <Image className={styles.Image} source={finalSource} alt="" role="presentation" />;
   } else if (initials) {
-    const initialsClassName = classNames(
-      styles.Initials,
-      (initials.length === 1) && styles.singleInitial,
-    );
-    content = <span className={initialsClassName}>{initials.join('')}</span>;
+    content = <span aria-hidden className={styles.Initials}>{initials}</span>;
   };
 
-  return (
-    <div className={className}>{content}</div>
-  );
+  return <div aria-label={label} role="img" className={className}>{content}</div>;
 }
 
-function styleClassFromInitials(initials: string[]) {
-  return STYLE_CLASSES[initials[0].charCodeAt(0) % STYLE_CLASSES.length];
+function styleClass(name?: string) {
+  return name
+    ? STYLE_CLASSES[name.charCodeAt(0) % STYLE_CLASSES.length]
+    : STYLE_CLASSES[0];
+}
+
+function customerPlaceholder(name?: string) {
+  return name
+    ? AVATAR_IMAGES[name.charCodeAt(0) % AVATAR_IMAGES.length]
+    : AVATAR_IMAGES[0];
 }

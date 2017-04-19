@@ -1,3 +1,4 @@
+@import 'foundation/breakpoints';
 @import 'foundation/layout';
 @import 'foundation/spacing';
 @import 'foundation/borders';
@@ -5,6 +6,10 @@
 .PageActions {
   max-width: layout-max-width();
   margin: 0 auto;
-  padding: spacing();
-  border-top: border(dark);
+  padding: spacing(loose);
+  border-top: border();
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(loose) 0;
+  }
 }

@@ -1,40 +1,59 @@
+@import 'foundation/border-radius';
 @import 'foundation/colors';
+@import 'foundation/controls';
+@import 'foundation/duration';
+@import 'foundation/easing';
 @import 'foundation/spacing';
 @import 'foundation/typography';
+@import 'shared/links';
+@import 'shared/icons';
 
-$padding: spacing() / 2;
+$vertical-padding: (control-height() - line-height(body)) / 2;
+$horizontal-padding: rem(10px);
+$icon-size: rem(20px);
 
-.Breadcrumbs {
-  display: flex;
-  align-items: baseline;
-  margin: -1 * $padding;
-}
+// The inset bounding box of the icon causes it not to be lined up with
+// the side of the container. This fixes that issue.
+$icon-horizontal-adjustment: rem(-3px);
 
 .Breadcrumb {
+  @include unstyled-link;
   @include text-style-body;
-  position: relative;
-  display: block;
-  padding: $padding;
-  color: color(ink, lighter);
-  text-decoration: none;
+  @include text-emphasis-subdued;
+  display: inline-flex;
+  align-items: center;
+  min-height: control-height();
+  margin: 0 (-1 * $horizontal-padding);
+  padding: $vertical-padding $horizontal-padding;
+  box-shadow: inset 0 0 0 2px transparent;
+  border-radius: border-radius();
+  will-change: box-shadow, color, background-color;
+  transition:
+    color duration() easing(),
+    box-shadow duration() easing(),
+    background-color duration() easing();
 
   &:hover,
   &:focus {
     outline: none;
-    text-decoration: underline;
+    color: color(ink);
+    fill: color(ink);
   }
 
-  + .Breadcrumb::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -1px;
-    transform: rotate(10deg) translateY(-50%);
-    transform-origin: 50% 0;
-    display: block;
-    height: 1em;
-    margin-top: 1px;
-    border-right: 1px solid color(ink, lighter);
-    line-height: 1;
+  &:hover {
+    background-color: color(sky);
   }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px color(indigo);
+  }
+}
+
+.Icon {
+  @include recolor-icon(color(ink, lighter));
+  height: $icon-size;
+  width: $icon-size;
+
+  // We set negative top/ bottom margin so the icon never sets the height of the content.
+  margin: (-0.5 * $icon-size) spacing(extra-tight) (-0.5 * $icon-size) $icon-horizontal-adjustment;
 }

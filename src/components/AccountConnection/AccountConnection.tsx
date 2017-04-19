@@ -1,17 +1,19 @@
 import * as React from 'react';
 
-import {ComplexAction} from '../types';
+import {Action} from '../../types';
 import Avatar from '../Avatar';
 import {buttonFrom} from '../Button';
 import Card from '../Card';
-import FeatureAction from '../FeatureAction';
+import SettingAction from '../SettingAction';
 import Stack from '../Stack';
 import TextContainer from '../TextContainer';
 import TextStyle from '../TextStyle';
 
+import * as styles from './AccountConnection.scss';
+
 export interface Props {
   connected?: boolean,
-  action?: ComplexAction,
+  action?: Action,
   avatarUrl?: string,
   accountName?: string,
   title?: React.ReactNode,
@@ -19,64 +21,58 @@ export interface Props {
   termsOfService?: React.ReactNode,
 }
 
-export default class AccountConnection extends React.PureComponent<Props, {}> {
-  render() {
-    const {
-      connected = false,
-      action,
-      avatarUrl,
-      accountName = '',
-      title,
-      details,
-      termsOfService,
-    } = this.props;
+export default function AccountConnection({
+  connected = false,
+  action,
+  avatarUrl,
+  accountName = '',
+  title,
+  details,
+  termsOfService,
+}: Props) {
+  const initials = accountName ? accountName.split(/\s+/).map((name) => name[0]).join('') : undefined;
 
-    const initials = accountName ? accountName.split(/\s+/).map((name) => name[0]) : undefined;
+  const avatarMarkup = connected
+    ? (
+      <Avatar
+        accessibilityLabel=""
+        name={accountName}
+        initials={initials}
+        source={avatarUrl}
+      />
+    )
+    : null;
 
-    const avatarMarkup = connected
-      ? (
-          <Avatar
-            name={accountName}
-            circular
-            initials={initials}
-            image={avatarUrl}
-          />
-        )
-      : null;
+  const titleMarkup = title
+    ? <div>{title}</div>
+    : <div>{accountName}</div>;
 
-    const titleMarkup = title
-      ? <div>{title}</div>
-      : <div>{accountName}</div>;
+  const detailsMarkup = details
+    ? <div><TextStyle variation="subdued">{details}</TextStyle></div>
+    : null;
 
-    const detailsMarkup = details
-      ? <div><TextStyle variation="subdued">{details}</TextStyle></div>
-      : null;
+  const termsOfServiceMarkup = termsOfService
+    ? <div className={styles.TermsOfService}>{termsOfService}</div>
+    : null;
 
-    const termsOfServiceMarkup = termsOfService
-      ? <Card.Footer>{termsOfService}</Card.Footer>
-      : null;
+  const actionElement = action
+    ? buttonFrom(action, {primary: !connected})
+    : null;
 
-    const actionElement = action
-      ? buttonFrom(action, {primary: !connected})
-      : null;
-
-    return (
-      <Card>
-        <Card.Section>
-          <FeatureAction action={actionElement}>
-            <Stack>
-              {avatarMarkup}
-              <Stack.Item fill>
-                <TextContainer>
-                  {titleMarkup}
-                  {detailsMarkup}
-                </TextContainer>
-              </Stack.Item>
-            </Stack>
-          </FeatureAction>
-        </Card.Section>
-        {termsOfServiceMarkup}
-      </Card>
-    );
-  }
+  return (
+    <Card sectioned>
+      <SettingAction action={actionElement}>
+        <Stack>
+          {avatarMarkup}
+          <Stack.Item fill>
+            <TextContainer>
+              {titleMarkup}
+              {detailsMarkup}
+            </TextContainer>
+          </Stack.Item>
+        </Stack>
+      </SettingAction>
+      {termsOfServiceMarkup}
+    </Card>
+  );
 }

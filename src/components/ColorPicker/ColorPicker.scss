@@ -10,8 +10,19 @@ $dragger-size: rem(18px);
 $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 $stacking-order: (
   color: 10,
-  dragger: 20,
+  adjustments: 20,
+  dragger: 30,
 );
+
+@mixin checkers {
+  background-image:
+    linear-gradient(45deg, color(sky) 25%, transparent 25%),
+    linear-gradient(-45deg, color(sky) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, color(sky) 75%),
+    linear-gradient(-45deg, transparent 75%, color(sky) 75%);
+  background-size: spacing() spacing();
+  background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight), -1 * spacing(tight) 0;
+}
 
 .ColorPicker {
   user-select: none;
@@ -19,27 +30,31 @@ $stacking-order: (
 }
 
 .MainColor {
+  @include checkers;
   position: relative;
   overflow: hidden;
   height: $picker-size;
   width: $picker-size;
-  box-shadow: inset shadow(deep);
 
   // Need an extra pixel to avoid a small color bleed from happening
   border-radius: border-radius() + 1px;
   cursor: pointer;
 
   .Dragger {
-    position: relative;
-    z-index: z-index(dragger, $stacking-order);
     right: 0.5 * $dragger-size;
+    margin: 0;
+  }
+
+  .ColorLayer {
+    box-shadow: inset shadow(deep);
+    border-radius: border-radius() + 1px;
   }
 
   &::after,
   &::before {
     content: '';
     position: absolute;
-    z-index: z-index(color, $stacking-order);
+    z-index: z-index(adjustments, $stacking-order);
     top: 0;
     left: 0;
     display: block;
@@ -63,10 +78,12 @@ $stacking-order: (
 
 .Dragger {
   position: relative;
+  z-index: z-index(dragger, $stacking-order);
   bottom: 0.5 * $dragger-size;
   transform: none;
   height: $dragger-size;
   width: $dragger-size;
+  margin: 0 auto;
   will-change: transform;
   background: transparent;
   border: border-radius() solid color(white);
@@ -80,19 +97,39 @@ $purple: rgb(255, 0, 255);
 $huepicker-padding: $dragger-size;
 $huepicker-bottom-padding-start: $picker-size - $dragger-size;
 
-.HuePicker {
+.HuePicker,
+.AlphaPicker {
   position: relative;
+  overflow: hidden;
   height: $picker-size;
-  width: spacing(loose);
+  width: rem(24px);
   margin-left: spacing(tight);
-  background-image: linear-gradient(to bottom, red $dragger-size, yellow, $green, cyan, blue, $purple, red $huepicker-bottom-padding-start);
   border-width: border-radius();
-  box-shadow: $inner-shadow;
   border-radius: $picker-size * 0.5;
+}
 
-  .Dragger {
-    margin: 0 auto;
+.HuePicker {
+  background-image: linear-gradient(to bottom, red $dragger-size, yellow, $green, cyan, blue, $purple, red $huepicker-bottom-padding-start);
+  box-shadow: $inner-shadow;
+}
+
+.AlphaPicker {
+  @include checkers;
+
+  .ColorLayer {
+    border-radius: $picker-size * 0.5;
   }
+}
+
+.ColorLayer {
+  position: absolute;
+  z-index: z-index(color, $stacking-order);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: $inner-shadow;
+  pointer-events: none;
 }
 
 .Slidable {

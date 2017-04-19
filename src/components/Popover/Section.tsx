@@ -6,5 +6,5 @@ export interface Props {
 }
 
 export default function Section({children}: Props) {
-  return <section className={styles.Section}>{children}</section>;
+  return <div className={styles.Section}>{children}</div>;
 }

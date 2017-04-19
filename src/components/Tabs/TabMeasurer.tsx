@@ -5,6 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import autobind from '@shopify/javascript-utilities/autobind';
 
 import EventListener from '../EventListener';
+
 import {TabDescriptor} from './Tabs';
 import Tab from './Tab';
 import * as styles from './Tabs.scss';
@@ -24,7 +25,7 @@ export interface Props {
   handleMeasurement(measurements: Measurements): void,
 };
 
-export default class TabMeasurer extends React.PureComponent<Props, {}> {
+export default class TabMeasurer extends React.PureComponent<Props, never> {
   private containerNode: HTMLElement;
 
   componentDidMount() {
@@ -49,16 +50,16 @@ export default class TabMeasurer extends React.PureComponent<Props, {}> {
     const tabsMarkup = tabs.map((tab, index) => {
       return (
         <Tab
-          key={`${index}-${tab.id}-hidden`}
-          id={`${tab.id}-measurer`}
+          measuring
           tab={tab}
+          key={`${index}${tab.id}Hidden`}
+          id={`${tab.id}Measurer`}
           siblingTabHasFocus={siblingTabHasFocus}
           focused={index === tabToFocus}
           selected={index === selected}
           onClick={noop}
           url={tab.url}
           panelID={tab.panelID}
-          measuring
         >
           {tab.title}
         </Tab>

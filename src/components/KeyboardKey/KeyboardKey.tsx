@@ -6,7 +6,5 @@ export interface Props {
 }
 
 export default function KeyboardKey({children}: Props) {
-  return (
-    <span className={styles.KeyboardKey}>{children}</span>
-  );
+  return <span className={styles.KeyboardKey}>{children}</span>;
 }

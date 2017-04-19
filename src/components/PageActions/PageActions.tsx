@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {DisableableAction, ComplexAction} from '../types';
+import {DisableableAction, ComplexAction} from '../../types';
 import Stack from '../Stack';
 import ButtonGroup from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
@@ -16,13 +16,17 @@ export default function PageActions({
   primaryAction,
   secondaryActions,
 }: Props) {
-  const primaryActionMarkup = primaryAction && buttonsFrom(primaryAction, {primary: true});
+  const primaryActionMarkup = primaryAction
+    ? buttonsFrom(primaryAction, {primary: true})
+    : null;
 
-  const secondaryActionsMarkup = secondaryActions && (
-    <ButtonGroup>
-      {buttonsFrom(secondaryActions)}
-    </ButtonGroup>
-  );
+  const secondaryActionsMarkup = secondaryActions
+    ? (
+      <ButtonGroup>
+        {buttonsFrom(secondaryActions)}
+      </ButtonGroup>
+    )
+    : null;
 
   const distribution = secondaryActionsMarkup ? 'equalSpacing' : 'trailing';
 

@@ -6,14 +6,11 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hidden {
   @include visually-hidden;
-}
-
-.error {
-  color: color(red, dark);
 }
 
 .Text {
@@ -21,4 +18,5 @@
   display: block;
   flex: 1 1 auto;
   color: currentColor;
+  -webkit-tap-highlight-color: transparent;
 }

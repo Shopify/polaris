@@ -1,4 +1,4 @@
 import FormLayout from './FormLayout';
 
-export * from './FormLayout';
+export {Props} from './FormLayout';
 export default FormLayout;

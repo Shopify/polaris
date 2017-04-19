@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import * as styles from './Tabs.scss';
 
 export interface Props {
@@ -8,11 +7,7 @@ export interface Props {
   children?: React.ReactNode,
 };
 
-export default function Panel({
-  id,
-  tabID,
-  children,
-}: Props) {
+export default function Panel({id, tabID, children}: Props) {
   return (
     <div
       className={styles.Panel}

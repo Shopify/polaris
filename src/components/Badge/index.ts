@@ -1,4 +1,4 @@
 import Badge from './Badge';
 
-export * from './Badge';
+export {Props, Status} from './Badge';
 export default Badge;

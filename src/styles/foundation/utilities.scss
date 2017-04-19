@@ -32,11 +32,17 @@ $base-font-size: 10px;
 /// @return {Number} The converted value in rem.
 
 @function rem($value) {
-  @if unit($value) != 'px' {
-    @error 'Value must be in px.';
-  }
+  $unit: unit($value);
 
-  @return $value / $base-font-size * 1rem;
+  @if $unit == 'rem' {
+    @return $value;
+  } @else if $unit == 'px' {
+    @return $value / $base-font-size * 1rem;
+  } @else if $unit == 'em' {
+    @return $unit / 1em * 1rem;
+  } @else {
+    @error 'Value must be in px, em, or rem.';
+  }
 }
 
 /// Returns the value in pixels for a given rem value.
@@ -44,11 +50,36 @@ $base-font-size: 10px;
 /// @return {Number} The converted value in pixels.
 
 @function px($value) {
-  @if unit($value) != 'rem' {
-    @error 'Value must be in rem.';
-  }
+  $unit: unit($value);
 
-  @return ($value / 1rem) * $base-font-size;
+  @if $unit == 'px' {
+    @return $value;
+  } @else if $unit == 'em' {
+    @return ($value / 1em) * $base-font-size;
+  } @else if $unit == 'rem' {
+    @return ($value / 1rem) * $base-font-size;
+  } @else {
+    @error 'Value must be in rem, em, or px.';
+  }
+}
+
+/// Returns the value in pixels for a given pixel value. Note that this
+/// only works for elements that have had no font-size changes.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in ems.
+
+@function em($value) {
+  $unit: unit($value);
+
+  @if $unit == 'em' {
+    @return $value;
+  } @else if $unit == 'rem' {
+    @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
+  } @else if $unit == 'px' {
+    @return $value / $default-browser-font-size * 1em;
+  } @else {
+    @error 'Value must be in px, rem, or em.';
+  }
 }
 
 /// Returns the list of available names in a given map.

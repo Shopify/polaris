@@ -1,4 +1,4 @@
 import CalloutCard from './CalloutCard';
 
-export * from './CalloutCard';
+export {Props} from './CalloutCard';
 export default CalloutCard;

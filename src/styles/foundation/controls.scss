@@ -24,6 +24,8 @@
     border: border(transparent);
     box-shadow: shadow(faint);
     border-radius: border-radius();
+    will-change: box-shadow;
+    transition: box-shadow duration() easing();
 
     &::after {
       content: '';
@@ -47,13 +49,13 @@
 
     &::after { background: color(red, lighter); }
   } @else if $style == disabled {
-    background: color(sky, dark);
+    background: color(sky);
     box-shadow: none;
 
-    &::after { background: color(sky, light); }
+    &::after { background: color(sky, lighter); }
   } @else if $style == focused-error {
-    background: color(red);
-    box-shadow: 0 0 0 1px color(red);
+    background: color(indigo);
+    box-shadow: 0 0 0 1px color(indigo);
 
     &::after { background: color(red, lighter); }
   }

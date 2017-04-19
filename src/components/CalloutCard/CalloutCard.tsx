@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {Action} from '../types';
+import {Action} from '../../types';
 import Card from '../Card';
 import TextContainer from '../TextContainer';
 import ButtonGroup from '../ButtonGroup';
@@ -11,7 +11,7 @@ import Image from '../Image';
 import * as styles from './CalloutCard.scss';
 
 export interface Props {
-  title: string | React.ReactNode,
+  title: string,
   children?: React.ReactNode,
   illustration: string,
   primaryAction: Action,
@@ -25,19 +25,19 @@ export default function CalloutCard({
   primaryAction,
   secondaryAction,
 }: Props) {
-  const primaryActionElement = buttonFrom(primaryAction);
-  const secondaryActionElement = secondaryAction
+  const primaryActionMarkup = buttonFrom(primaryAction);
+  const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {plain: true})
     : null;
 
-  const buttonElement = secondaryActionElement
+  const buttonMarkup = secondaryActionMarkup
     ? (
       <ButtonGroup>
-        {primaryActionElement}
-        {secondaryActionElement}
+        {primaryActionMarkup}
+        {secondaryActionMarkup}
       </ButtonGroup>
     )
-    : primaryActionElement;
+    : primaryActionMarkup;
 
   return (
     <Card sectioned>
@@ -47,12 +47,10 @@ export default function CalloutCard({
           <TextContainer>
             {children}
           </TextContainer>
-          {buttonElement}
+          {buttonMarkup}
         </div>
 
-        <div className={styles.Image}>
-          <Image src={illustration} size="extraLarge" />
-        </div>
+        <Image alt="" className={styles.Image} source={illustration} />
       </div>
     </Card>
   );

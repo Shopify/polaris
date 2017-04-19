@@ -3,21 +3,13 @@
 @import 'foundation/colors';
 @import 'foundation/typography';
 @import 'foundation/utilities';
+@import 'shared/buttons';
+@import 'shared/links';
+@import 'shared/icons';
 
-$Image-size: rem(24px);
-$Item-min-height: rem(40px);
-$Item-vertical-padding: ($Item-min-height - $Image-size) / 2;
-
-@mixin unstyled-button() {
-  appearance: none;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  font-size: inherit;
-  line-height: inherit;
-  text-align: left;
-}
+$image-size: rem(24px);
+$item-min-height: rem(40px);
+$item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .ActionList {
   list-style: none;
@@ -37,19 +29,18 @@ $Item-vertical-padding: ($Item-min-height - $Image-size) / 2;
 
 .Title {
   @include text-style-subheading;
-  @include text-emphasis-subdued;
-  padding: spacing();
+  padding: (spacing(tight) * 1.5) spacing();
   border-bottom: border();
   font-weight: 400;
-  line-height: 1;
 }
 
 .Item {
   @include unstyled-button;
+  @include unstyled-link;
   display: block;
   width: 100%;
-  min-height: $Item-min-height;
-  padding: $Item-vertical-padding spacing();
+  min-height: $item-min-height;
+  padding: $item-vertical-padding spacing();
   cursor: pointer;
 
   &:hover,
@@ -60,7 +51,7 @@ $Item-vertical-padding: ($Item-min-height - $Image-size) / 2;
     color: color(white);
 
     .Image {
-      fill: color(sky);
+      @include recolor-icon(color(sky));
     }
   }
 }
@@ -71,11 +62,19 @@ $Item-vertical-padding: ($Item-min-height - $Image-size) / 2;
 }
 
 .Image {
+  @include recolor-icon(color(ink, lightest));
+  display: flex;
   flex: 0 0 auto;
-  height: $Image-size;
-  width: $Image-size;
-  margin-right: spacing();
-  fill: color(ink, lightest);
+  justify-content: center;
+  align-items: center;
+  height: $image-size;
+  width: $image-size;
+
+  // We need the negative margin to ensure that the image does not set
+  // the minimum height of the action item.
+  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  background-size: cover;
+  background-position: center center;
 }
 
 .Text {

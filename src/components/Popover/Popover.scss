@@ -1,33 +1,49 @@
 @import 'foundation/colors';
+@import 'foundation/duration';
+@import 'foundation/easing';
 @import 'foundation/shadows';
 @import 'foundation/spacing';
 @import 'foundation/borders';
 @import 'foundation/border-radius';
+@import 'foundation/utilities';
 
-$arrow-height: 1rem;
-$arrow-width: 1rem;
-$visible-portion-of-arrow: rem(-5px);
+$arrow-size: rem(14px);
+$visible-portion-of-arrow: rem(5px);
 $content-max-height: rem(295px);
 $content-max-width: rem(400px);
 
 .Popover {
+  max-width: calc(100vw - #{2 * spacing()});
+  margin: $visible-portion-of-arrow spacing() spacing();
   opacity: 1;
   box-shadow: shadow(deep);
   border-radius: border-radius(large);
-  transition: opacity 0.2s;
+  will-change: opacity, left, top;
+  transition: opacity duration() easing(in);
 }
 
-.enteringStart {
-  opacity: 0;
-}
-
+.measuring:not(.leaving),
 .leaving {
   opacity: 0;
 }
 
+.leaving {
+  transition-timing-function: easing(out);
+}
+
+.positionedAbove {
+  margin: spacing() spacing() $visible-portion-of-arrow;
+
+  .Tip {
+    top: inherit;
+    bottom: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: border-radius();
+  }
+}
+
 .Wrapper {
   position: relative;
-  display: flex;
   overflow: hidden;
   background-color: color(white);
   border-radius: border-radius(large);
@@ -35,40 +51,33 @@ $content-max-width: rem(400px);
 
 .Content {
   position: relative;
-  display: inline-flex;
+  display: flex;
   overflow: auto;
-  flex: 0 0 auto;
   flex-direction: column;
   border-radius: border-radius(large);
   max-width: $content-max-width;
   max-height: $content-max-height;
-}
 
-.fullHeight {
-  max-height: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .Tip {
   position: absolute;
-  top: $visible-portion-of-arrow;
+  top: 0;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
-  height: $arrow-height;
-  width: $arrow-width;
+  height: $arrow-size;
+  width: $arrow-size;
   background: color(white);
+  border-top-left-radius: border-radius();
   box-shadow: shadow(deep);
-  border-radius: border-radius();
-}
-
-.positionedAbove .Tip {
-  top: inherit;
-  bottom: $visible-portion-of-arrow;
 }
 
 .Pane {
   flex: 0 1 auto;
   max-width: 100%;
-  border-radius: inherit;
 
   + .Pane {
     border-top: border();
@@ -78,7 +87,6 @@ $content-max-width: rem(400px);
 .fixed {
   overflow: visible;
   flex: 0 0 auto;
-  padding: spacing();
 }
 
 .Section {
@@ -89,6 +97,6 @@ $content-max-width: rem(400px);
   }
 }
 
-.ActivatorContainer {
-  display: inline-block;
+.FocusTracker {
+  @include visually-hidden;
 }

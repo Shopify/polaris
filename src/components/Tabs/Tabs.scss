@@ -2,20 +2,26 @@
 @import 'foundation/colors';
 @import 'foundation/spacing';
 @import 'foundation/typography';
+@import 'shared/buttons';
+@import 'shared/links';
+@import 'shared/icons';
 
 $border-bottom-height: rem(3px);
+$item-min-height: rem(16px);
+$item-vertical-padding: $item-min-height / 2;
+$focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .Tabs {
   display: flex;
   margin: 0;
   padding: 0;
   border-bottom: border();
+  list-style: none;
 }
 
 .fitted {
-  .Tab {
+  .TabContainer {
     flex: 1 1 auto;
-    padding: 0;
   }
 
   .Title {
@@ -25,8 +31,54 @@ $border-bottom-height: rem(3px);
 }
 
 .fillSpace {
-  .Tab {
+  .TabContainer {
     flex: 1 1 auto;
+  }
+}
+
+.TabContainer {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.Tab {
+  @include unstyled-link;
+  @include unstyled-button;
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1px;
+  margin-bottom: -1px;
+  padding: 0 spacing();
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    .Title {
+      @include text-emphasis-normal;
+      border-bottom: $border-bottom-height solid color(sky);
+    }
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color, 0 0 2px 0 $focus-state-box-shadow-color;
+
+    .Title {
+      @include text-emphasis-normal;
+      border-bottom: $border-bottom-height solid color(indigo, light);
+    }
+  }
+
+  &.selected {
+    .Title {
+      border-bottom: $border-bottom-height solid color(indigo);
+    }
   }
 }
 
@@ -34,65 +86,10 @@ $border-bottom-height: rem(3px);
   @include text-emphasis-normal;
 }
 
-.TabContainer {
-  display: inline-flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.Tab {
-  @include text-style-body;
-  @include text-emphasis-subdued;
-  position: relative;
-  justify-content: center;
-  margin: 0;
-  padding: 0 spacing();
-  background-color: transparent;
-  border: none;
-  appearance: none;
-  outline: none;
-  color: inherit;
-  text-align: center;
-  white-space: nowrap;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:focus {
-    .Title {
-      @include text-emphasis-normal;
-      border-bottom: $border-bottom-height solid color(sky);
-    }
-  }
-
-  &:hover {
-    .Title {
-      @include text-emphasis-normal;
-      border-bottom: $border-bottom-height solid color(sky);
-    }
-  }
-
-  &.selected {
-    &:focus {
-      outline: 1px dotted color(sky, light);
-      outline: 5px auto -webkit-focus-ring-color;
-    }
-
-    .Title {
-      border-bottom: $border-bottom-height solid color(indigo);
-    }
-  }
-}
-
 .Title {
-  padding: spacing(tight) 0;
+  display: block;
+  padding: spacing(tight) 0 (spacing(tight) - $border-bottom-height) 0;
   border-bottom: $border-bottom-height solid transparent;
-
-  .Tab:not(.selected) &:focus,
-  .Tab:not(.selected) &:hover {
-    @include text-emphasis-normal;
-    border-bottom: $border-bottom-height solid color(sky);
-  }
 }
 
 .Panel {
@@ -100,45 +97,40 @@ $border-bottom-height: rem(3px);
 }
 
 .List {
-  padding: 0 spacing(tight);
-  text-align: left;
   list-style: none;
-  min-width: rem(100px);
-  cursor: pointer;
-}
-
-.ItemWrapper {
-  cursor: pointer;
-
-  &:hover {
-    .Item {
-      @include text-emphasis-subdued;
-      color: color(action);
-    }
-  }
+  margin: 0;
+  padding: spacing(tight) 0;
 }
 
 .Item {
-  @include text-style-body;
+  @include unstyled-link;
+  @include unstyled-button;
+  display: block;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  line-height: rem(28px);
+  min-height: $item-min-height;
+  padding: $item-vertical-padding spacing();
   cursor: pointer;
-  text-align: left;
 
   &:hover,
-  &:focus {
-    @include text-emphasis-subdued;
-    color: color(action);
+  &:focus,
+  &:active {
+    background: color(indigo);
+    outline: none;
+    color: color(white);
   }
 }
 
+.DisclosureTab {
+  display: none;
+  padding-top: (0.625 * spacing());
+}
+
+.visible {
+  display: block;
+}
+
 .DisclosureActivator {
+  @include recolor-icon(color(ink, lighter));
   position: relative;
   justify-content: center;
   height: 100%;
@@ -148,15 +140,6 @@ $border-bottom-height: rem(3px);
   border: none;
   outline: none;
   text-align: center;
-}
-
-.DisclosureTab {
-  display: none;
-  align-self: center;
-}
-
-.visible {
-  display: block;
 }
 
 .TabMeasurer {

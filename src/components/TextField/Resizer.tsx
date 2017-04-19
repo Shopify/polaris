@@ -6,11 +6,13 @@ import * as styles from './TextField.scss';
 export interface Props {
   contents?: string,
   currentHeight?: number | null,
+  minimumLines?: number,
   onHeightChange(height: number): void,
 }
 
-export default class Resizer extends React.PureComponent<Props, {}> {
-  private resizer: HTMLElement;
+export default class Resizer extends React.PureComponent<Props, never> {
+  private contentNode: HTMLElement;
+  private minimumLinesNode: HTMLElement;
 
   componentDidMount() {
     this.handleHeightCheck();
@@ -27,37 +29,52 @@ export default class Resizer extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {contents} = this.props;
+    const {contents, minimumLines} = this.props;
+
+    const minimumLinesMarkup = minimumLines
+      ? (
+        <div
+          ref={this.setMinimumLinesNode}
+          className={styles.DummyInput}
+          dangerouslySetInnerHTML={{__html: getContentsForMinimumLines(minimumLines)}}
+        />
+      )
+      : null;
 
     return (
-      <div
-        aria-hidden
-        className={styles.Resizer}
-        ref={this.setResizer}
-      >
+      <div aria-hidden className={styles.Resizer}>
         <EventListener event="resize" handler={this.handleHeightCheck} />
         <div
+          ref={this.setContentNode}
           className={styles.DummyInput}
           dangerouslySetInnerHTML={{__html: getFinalContents(contents)}}
         />
+        {minimumLinesMarkup}
       </div>
     );
   }
 
   @autobind
   private handleHeightCheck() {
-    const newHeight = this.resizer.scrollHeight;
-    const {currentHeight} = this.props;
+    const contentHeight = this.contentNode.offsetHeight;
+    const minimumHeight = this.setMinimumLinesNode ? this.minimumLinesNode.offsetHeight : 0;
+    const newHeight = Math.max(contentHeight, minimumHeight);
+
+    const {currentHeight, onHeightChange} = this.props;
 
     if (newHeight !== currentHeight) {
-      this.props.onHeightChange(newHeight);
-      this.setState({height: this.resizer.scrollHeight});
+      onHeightChange(newHeight);
     }
   }
 
   @autobind
-  private setResizer(node: HTMLElement) {
-    this.resizer = node;
+  private setContentNode(node: HTMLElement) {
+    this.contentNode = node;
+  }
+
+  @autobind
+  private setMinimumLinesNode(node: HTMLElement) {
+    this.minimumLinesNode = node;
   }
 }
 
@@ -72,6 +89,16 @@ const REPLACE_REGEX = /[\n&<>]/g;
 
 function replaceEntity(entity: keyof typeof ENTITIES_TO_REPLACE) {
   return ENTITIES_TO_REPLACE[entity] || entity;
+}
+
+function getContentsForMinimumLines(minimumLines: number) {
+  let content = '';
+
+  for (let line = 0; line < minimumLines; line++) {
+    content += '<br>';
+  }
+
+  return content;
 }
 
 function getFinalContents(contents?: string) {

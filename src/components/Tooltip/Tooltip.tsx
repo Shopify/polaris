@@ -1,28 +1,27 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import {layeredComponent} from '@shopify/react-utilities/components';
 import autobind from '@shopify/javascript-utilities/autobind';
-import {noop} from '@shopify/javascript-utilities/other';
+import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
-import {PreferredPosition, Alignment} from '../PositionedOverlay';
-import {FOCUSABLE_SELECTOR} from '../Focus';
+import {PreferredPosition} from '../PositionedOverlay';
 import TooltipOverlay from './TooltipOverlay';
 import * as styles from './Tooltip.scss';
 
 export interface Props {
-  id?: string,
   children?: React.ReactNode,
   content: string,
   active?: boolean,
   light?: boolean,
   preferredPosition?: PreferredPosition,
-  activatorWrapper?: string | React.ComponentClass<any>,
-  alignment?: Alignment,
+  activatorWrapper?: string,
 }
 
 export interface State {
   active: boolean,
 }
+
+const getUniqueID = createUniqueIDFactory('TooltipContent');
 
 @layeredComponent({idPrefix: 'Tooltip'})
 export default class Tooltip extends React.PureComponent<Props, State> {
@@ -30,11 +29,9 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     active: false,
   };
 
-  private id = this.props.id || uniqueID();
-
-  componentWillReceiveProps(newProps: Props) {
-    this.id = newProps.id || this.id;
-  }
+  private id = getUniqueID();
+  private activatorNode: HTMLElement | null;
+  private activatorContainer: HTMLElement | null;
 
   componentDidMount() {
     this.setAccessibilityAttributes();
@@ -45,9 +42,10 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   }
 
   renderLayer() {
-    const {id} = this;
+    const {id, activatorNode} = this;
+    if (activatorNode == null) { return null; }
+
     const {
-      alignment = 'center',
       preferredPosition = 'below',
       active,
       light,
@@ -58,10 +56,9 @@ export default class Tooltip extends React.PureComponent<Props, State> {
       <TooltipOverlay
         id={id}
         preferredPosition={preferredPosition}
-        alignment={alignment}
-        activator={this.activatorNode}
+        activator={activatorNode}
         active={active || this.state.active}
-        onCloseRequest={noop}
+        onClose={noop}
         light={light}
       >
         <div className={styles.Label}>
@@ -80,56 +77,53 @@ export default class Tooltip extends React.PureComponent<Props, State> {
         onBlur={this.handleBlur}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        ref={this.setActivator}
       >
         {this.props.children}
       </WrapperComponent>
     );
   }
 
-  private get activatorNode(): HTMLElement {
-    return findDOMNode<HTMLElement>(this);
+  @autobind
+  private setActivator(node: HTMLElement | null) {
+    if (node == null) {
+      this.activatorNode = null;
+      this.activatorContainer = null;
+      return;
+    }
+
+    this.activatorNode = node.firstElementChild as HTMLElement;
+    this.activatorContainer = node;
   }
 
   @autobind
   private handleFocus() {
-    this.setState({
-      active: true,
-    });
+    this.setState({active: true});
   }
 
   @autobind
   private handleBlur() {
-    this.setState({
-      active: false,
-    });
+    this.setState({active: false});
   }
 
   @autobind
   private handleMouseEnter() {
-    this.setState({
-      active: true,
-    });
+    this.setState({active: true});
   }
 
   @autobind
   private handleMouseLeave() {
-    this.setState({
-      active: false,
-    });
+    this.setState({active: false});
   }
 
   private setAccessibilityAttributes() {
-    const {activatorNode, id} = this;
-    const firstFocusable = activatorNode.querySelector(FOCUSABLE_SELECTOR) as HTMLElement | null;
-    const accessibilityNode = firstFocusable || activatorNode;
+    const {activatorContainer, id} = this;
+    if (activatorContainer == null) { return; }
+
+    const firstFocusable = findFirstFocusableNode(activatorContainer);
+    const accessibilityNode = firstFocusable || activatorContainer;
 
     accessibilityNode.tabIndex = 0;
     accessibilityNode.setAttribute('aria-describedby', id);
   }
-}
-
-let currentID = 1;
-
-function uniqueID() {
-  return `TooltipContent${currentID++}`;
 }

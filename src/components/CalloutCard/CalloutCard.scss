@@ -1,5 +1,6 @@
 @import 'foundation/spacing';
 @import 'foundation/breakpoints';
+@import 'foundation/utilities';
 
 .CalloutCard {
   display: flex;
@@ -9,10 +10,11 @@
 .Image {
   display: none;
   flex: 0 0 auto;
+  width: rem(100px);
 
-  @media screen and (min-width: breakpoint(small)) {
+  @include page-content-when-not-fully-condensed {
     display: block;
-    margin-left: spacing();
+    margin-left: spacing(loose);
   }
 }
 

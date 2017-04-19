@@ -20,9 +20,9 @@ import Day from './Day';
 import Weekday from './Weekday';
 
 export interface Props {
-  focusedDate: Date,
-  selected: Range,
-  hoverDate: Date,
+  focusedDate?: Date,
+  selected?: Range,
+  hoverDate?: Date,
   month: Months,
   year: Year,
   disableDatesBefore?: Date,
@@ -37,83 +37,75 @@ export interface Props {
 
 const WEEKDAYS = [Weekdays.Sunday, Weekdays.Monday, Weekdays.Tuesday, Weekdays.Wednesday, Weekdays.Thursday, Weekdays.Friday, Weekdays.Saturday];
 
-export default class Month extends React.PureComponent<Props, {}> {
+export default function Month({
+    focusedDate,
+    selected,
+    hoverDate,
+    disableDatesBefore,
+    disableDatesAfter,
+    allowRange,
+    onChange = noop,
+    onHover = noop,
+    onFocus = noop,
+    month,
+    year,
+}: Props) {
+  const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
+  const weeks = getWeeksForMonth(month, year);
+  const weekdays = WEEKDAYS.map((weekday) => (
+    <Weekday key={weekday} title={abbreviationForWeekday(weekday)} label={weekday} />
+  ));
 
-  render() {
-    const {
-      focusedDate,
-      selected,
-      hoverDate,
-      disableDatesBefore,
-      disableDatesAfter,
-      allowRange,
-      onChange = noop,
-      onHover = noop,
-      onFocus = noop,
-      month,
-      year,
-    } = this.props;
+  function handleDateClick(selectedDate: Date) {
+    onChange(getNewRange(selected, selectedDate));
+  }
 
-    const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
-    const weeks = getWeeksForMonth(month, year);
-    const weekdays = WEEKDAYS.map((weekday) => (
-      <Weekday key={weekday} title={abbreviationForWeekday(weekday)} label={weekday} />
-    ));
-
-    function handleDateClick(selectedDate: Date) {
-      return onChange(getNewRange(selected, selectedDate));
+  function renderWeek(day: Date, dayIndex: number) {
+    if (day == null) {
+      const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
+      return <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />;
     }
 
-    function renderWeek(day: Date, dayIndex: number) {
-      if (day == null) {
-        const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
-        return <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />;
-      }
-
-      const isDisabled = (
-        disableDatesBefore && isDateBefore(day, disableDatesBefore)
-        ||
-        disableDatesAfter && isDateAfter(day, disableDatesAfter)
-      );
-
-      return (
-        <Day
-          focused={isSameDay(day, focusedDate)}
-          day={day}
-          key={dayIndex}
-          onFocus={onFocus}
-          onClick={handleDateClick}
-          onHover={onHover}
-          selected={dateIsSelected(day, selected)}
-          inRange={dateIsInRange(day, selected)}
-          disabled={isDisabled}
-          inHoveringRange={isInHoveringRange(day, selected, hoverDate)}
-        />
-      );
-    };
-
-    const weeksMarkup = weeks.map((week, index) => (
-      <div role="row" className={styles.Week} key={index}>
-        {week.map(renderWeek)}
-      </div>
-    ));
+    const disabled = (
+      disableDatesBefore && isDateBefore(day, disableDatesBefore) ||
+      disableDatesAfter && isDateAfter(day, disableDatesAfter)
+    );
 
     return (
-      <div>
-        <div className={styles.Title}>{Months[month]} {year}</div>
-        <div role="rowheader" className={styles.WeekHeadings}>
-          {weekdays}
-        </div>
-        {weeksMarkup}
-      </div>
+      <Day
+        focused={focusedDate != null && isSameDay(day, focusedDate)}
+        day={day}
+        key={dayIndex}
+        onFocus={onFocus}
+        onClick={handleDateClick}
+        onHover={onHover}
+        selected={selected != null && dateIsSelected(day, selected)}
+        inRange={selected != null && dateIsInRange(day, selected)}
+        disabled={disabled}
+        inHoveringRange={selected != null && hoverDate != null && isInHoveringRange(day, selected, hoverDate)}
+      />
     );
-  }
+  };
+
+  const weeksMarkup = weeks.map((week, index) => (
+    <div role="row" className={styles.Week} key={index}>
+      {week.map(renderWeek)}
+    </div>
+  ));
+
+  return (
+    <div role="grid" className={styles.Month}>
+      <div className={styles.Title}>{Months[month]} {year}</div>
+      <div role="rowheader" className={styles.WeekHeadings}>
+        {weekdays}
+      </div>
+      {weeksMarkup}
+    </div>
+    );
 }
 
 function hoveringDateIsInRange(day: Date | null, range: Range, hoverEndDate: Date) {
   if (day == null) { return false; }
-
   const {start, end} = range;
-
   return Boolean((start === end) && (day > start) && (day <= hoverEndDate));
 }

@@ -1,4 +1,4 @@
 import VisuallyHidden from './VisuallyHidden';
 
-export * from './VisuallyHidden';
+export {Props} from './VisuallyHidden';
 export default VisuallyHidden;

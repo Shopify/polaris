@@ -1,25 +1,39 @@
 @import 'foundation/spacing';
-$Item-min-size: 14 * spacing();
+@import 'foundation/typography';
+@import 'foundation/utilities';
+
+$item-min-size: rem(220px);
 
 .FormLayout {
   margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-left: -1 * spacing(loose);
 }
 
-.Group {
+.condensed .Item {
+  flex-basis: (0.5 * $item-min-size);
+  min-width: (0.5 * $item-min-size);
+}
+
+.Title {
+  margin-bottom: -1 * spacing(tight);
+  padding: spacing() spacing(loose) 0;
+}
+
+.Items {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.HelpText {
+  @include text-emphasis-subdued;
+  padding: spacing(tight) spacing(loose) 0;
 }
 
 .Item {
-  flex: 1 1 $Item-min-size;
+  flex: 1 1 $item-min-size;
   margin-top: spacing();
-  margin-left: spacing();
-  min-width: $Item-min-size;
-  max-width: 100%;
-
-  .condensed & {
-    flex-basis: (0.5 * $Item-min-size);
-    min-width: (0.5 * $Item-min-size);
-  }
+  margin-left: spacing(loose);
+  min-width: $item-min-size;
+  max-width: calc(100% - #{spacing(loose)});
 }

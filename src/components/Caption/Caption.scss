@@ -1,6 +1,6 @@
 @import 'foundation/typography';
 
 .Caption {
-  @include text-style-micro;
+  @include text-style-caption;
   margin: 0;
 }

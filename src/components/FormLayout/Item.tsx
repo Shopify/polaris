@@ -1,9 +1,8 @@
 import * as React from 'react';
-
 import * as styles from './FormLayout.scss';
 
 export interface Props {
-  children?: any,
+  children?: React.ReactNode,
 }
 
 export default function Item(props: Props) {

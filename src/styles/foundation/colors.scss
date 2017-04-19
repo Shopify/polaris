@@ -14,7 +14,7 @@ $color-palette-data: (
   sky: (
     lighter: #f9fafb,
     light: #f4f6f8,
-    base: #dfe4e8,
+    base: #dfe3e8,
     dark: #c4cdd5
   ),
 
@@ -22,7 +22,7 @@ $color-palette-data: (
     lightest: #919eab,
     lighter: #637381,
     light: #454f5b,
-    base: #212b35
+    base: #212b36
   ),
 
   blue: (
@@ -63,7 +63,7 @@ $color-palette-data: (
 
   red: (
     lighter: #fbeae5,
-    light: #feaf9a,
+    light: #fead9a,
     base: #ed6347,
     dark: #bf0711,
     darker: #330101,
@@ -95,10 +95,6 @@ $color-palette-data: (
     dark: #202e78,
     darker: #000639,
     text: #3e4155
-  ),
-
-  action: (
-    base: blue
   )
 );
 

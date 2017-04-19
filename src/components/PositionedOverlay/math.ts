@@ -1,111 +1,91 @@
 import {Rect} from '@shopify/javascript-utilities/geometry';
 
-export type Alignment = 'center' | 'edge';
-
 export type PreferredPosition = 'above' | 'below' | 'mostSpace';
 
-const PADDING = 15;
+export interface Margins {
+  activator: number,
+  container: number,
+  horizontal: number,
+}
 
 export function calculateVerticalPosition(
-  scrollableContainer: Rect,
+  activatorRect: Rect,
+  overlayRect: Rect,
+  overlayMargins: Margins,
+  scrollableContainerRect: Rect,
+  containerRect: Rect,
   preferredPosition: PreferredPosition,
-  activator: Rect,
-  maxHeight: number,
-  intrinsicHeight: number,
 ) {
-  const relativeSpaceAbove = activator.top - scrollableContainer.top;
-  const scrollablecontainerBottom = scrollableContainer.top + scrollableContainer.height;
-  const activatorBottom = activator.top + activator.height;
-  const relativeSpaceBelow = scrollablecontainerBottom - activatorBottom;
-  const top = activator.top + activator.height + PADDING / 2;
-  const bottom = window.innerHeight - activator.top + PADDING / 2;
+  const activatorTop = activatorRect.top;
+  const activatorBottom = activatorTop + activatorRect.height;
+  const spaceAbove = activatorRect.top;
+  const spaceBelow = containerRect.height - activatorRect.top - activatorRect.height;
 
-  const desiredHeight = Math.min(intrinsicHeight, maxHeight);
+  const desiredHeight = overlayRect.height;
+  const verticalMargins = overlayMargins.activator + overlayMargins.container;
+  const minimumSpaceToScroll = overlayMargins.container;
+  const distanceToTopScroll = activatorRect.top - scrollableContainerRect.top;
+  const distanceToBottomScroll = (scrollableContainerRect.top + scrollableContainerRect.height) - (activatorRect.top + activatorRect.height);
+  const enoughSpaceFromTopScroll = distanceToTopScroll >= minimumSpaceToScroll;
+  const enoughSpaceFromBottomScroll = distanceToBottomScroll >= minimumSpaceToScroll;
+  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
+  const heightIfAbove = Math.min(spaceAbove, desiredHeight);
+
+  const positionIfAbove = {
+    height: heightIfAbove - verticalMargins,
+    top: activatorTop - heightIfAbove,
+    positioning: 'above',
+  };
+
+  const positionIfBelow = {
+    height: heightIfBelow - verticalMargins,
+    top: activatorBottom,
+    positioning: 'below',
+  };
 
   if (preferredPosition === 'above') {
-    if (relativeSpaceAbove > (desiredHeight + PADDING) || relativeSpaceAbove > relativeSpaceBelow) {
-      return {
-        top,
-        bottom,
-        positioning: 'above',
-        height: Math.min(heightPositionedTop(activator.top, scrollableContainer.top, PADDING), desiredHeight),
-      };
-    }
-    return {
-      top,
-      bottom,
-      positioning: 'below',
-      height: Math.min(heightPositionedBottom(activator, scrollableContainer, PADDING), desiredHeight),
-    };
+    return (
+      (enoughSpaceFromTopScroll || (distanceToTopScroll >= distanceToBottomScroll && !enoughSpaceFromBottomScroll)) &&
+      (spaceAbove > desiredHeight || spaceAbove > spaceBelow)
+    )
+      ? positionIfAbove
+      : positionIfBelow;
   }
 
   if (preferredPosition === 'below') {
-    if (relativeSpaceBelow > (desiredHeight + PADDING) || relativeSpaceBelow > relativeSpaceAbove) {
-      return {
-        top,
-        bottom,
-        positioning: 'below',
-        height: Math.min(heightPositionedBottom(activator, scrollableContainer, PADDING), desiredHeight),
-      };
-    }
-    return {
-      top,
-      bottom,
-      positioning: 'above',
-      height: Math.min(heightPositionedTop(activator.top, scrollableContainer.top, PADDING), desiredHeight),
-    };
+    return (
+      (enoughSpaceFromBottomScroll || (distanceToBottomScroll >= distanceToTopScroll && !enoughSpaceFromTopScroll)) &&
+      (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
+    )
+      ? positionIfBelow
+      : positionIfAbove;
   }
 
-  if (relativeSpaceAbove > relativeSpaceBelow) {
-    return {
-      top,
-      bottom,
-      positioning: 'above',
-      height: Math.min(heightPositionedTop(activator.top, scrollableContainer.top, PADDING), desiredHeight),
-    };
+  if (enoughSpaceFromTopScroll && enoughSpaceFromBottomScroll) {
+    return spaceAbove > spaceBelow
+      ? positionIfAbove
+      : positionIfBelow;
   }
-  return {
-    top,
-    bottom,
-    positioning: 'below',
-    height: Math.min(heightPositionedBottom(activator, scrollableContainer, PADDING), desiredHeight),
-  };
+
+  return distanceToTopScroll > minimumSpaceToScroll
+    ? positionIfAbove
+    : positionIfBelow;
 }
 
 export function calculateHorizontalPosition(
-  alignment: Alignment,
-  activator: Rect,
-  container: Rect,
-  overlay: Rect,
+  activatorRect: Rect,
+  overlayRect: Rect,
+  containerRect: Rect,
 ) {
-  const relativePosition = (activator.center.x - container.left) / container.width;
-  const offset = relativePosition < 0.5
-    ? 0.5 * activator.width
-    : overlay.width - (activator.width / 2);
-
-  if (alignment === 'edge') {
-    return activator.center.x - offset;
-  }
-
-  if (relativePosition > 0.85) {
-    const containerRight = container.left + container.width;
-    return  containerRight - overlay.width - (PADDING / 2);
-  }
-
-  if (relativePosition < 0.15) {
-    return  container.left + (PADDING / 2);
-  }
-
-  return activator.center.x - overlay.width / 2;
+  const maximum = containerRect.width - overlayRect.width;
+  return Math.min(maximum, Math.max(0, activatorRect.center.x - (overlayRect.width / 2)));
 }
 
-function heightPositionedTop(activatorTop: number, scrollablecontainerTop: number, padding: number) {
-  return activatorTop - scrollablecontainerTop - padding;
-}
+export function rectIsOutsideOfRect(inner: Rect, outer: Rect) {
+  const {center} = inner;
 
-function heightPositionedBottom(activator: Rect, scrollablecontainer: Rect, padding: number) {
-  const scrollablecontainerBottom = scrollablecontainer.top + scrollablecontainer.height;
-  const activatorBottom = activator.top + activator.height;
-
-  return scrollablecontainerBottom - activatorBottom - padding;
+  return (
+    center.y < outer.top ||
+    center.y > (outer.top + outer.height)
+  );
 }

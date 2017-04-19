@@ -4,16 +4,35 @@
 @import 'foundation/border-radius';
 @import 'foundation/shadows';
 @import 'foundation/utilities';
+@import 'shared/icons';
 
 .Checkbox {
   position: relative;
 }
 
+.error {
+  // The basic checked styles have more specificity than this, so need to
+  // basically duplicate that selector here, too.
+  // stylelint-disable-next-line selector-max-specificity
+  .Input:checked + .Backdrop,
+  .Backdrop {
+    @include control-backdrop(error);
+  }
+
+  // We need to know if the input is focusing to change the border color.
+  // stylelint-disable-next-line selector-max-specificity
+  .Input:focus + .Backdrop,
+  .Input:active + .Backdrop {
+    @include control-backdrop(focused-error);
+  }
+
+  .Icon {
+    @include recolor-icon(color(red, dark));
+  }
+}
+
 .Input {
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-  appearance: none;
+  @include visually-hidden;
 
   &:focus,
   &:active,
@@ -42,7 +61,7 @@
     }
 
     ~ .Icon {
-      fill: color(sky, dark);
+      @include recolor-icon(color(ink, lightest));
     }
   }
 }
@@ -57,11 +76,11 @@
 }
 
 .Icon {
+  @include recolor-icon(color(indigo));
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transform-origin: 50% 50%;
-  fill: color(indigo);
   transition: control-icon-transition();
 }

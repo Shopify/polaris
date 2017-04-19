@@ -1,10 +1,9 @@
 import * as React from 'react';
+import {clamp} from '@shopify/javascript-utilities/math';
 import autobind from '@shopify/javascript-utilities/autobind';
-import {read} from '@shopify/javascript-utilities/fastdom';
 
 import Slidable, {Position} from './Slidable';
 import * as styles from './ColorPicker.scss';
-import {clamp} from './math';
 
 export interface State {
   dragging: boolean,
@@ -46,12 +45,16 @@ export default class HuePicker extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private setSliderHeight(node: HTMLElement) {
-    setTimeout(() => {
-      read(() => this.setState({
-        sliderHeight: node.clientHeight,
-      }));
-    }, 20);
+  private setSliderHeight(node: HTMLElement | null) {
+    if (node == null) { return; }
+
+    this.setState({sliderHeight: node.clientHeight});
+
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => {
+        this.setState({sliderHeight: node.clientHeight});
+      }, 0);
+    }
   }
 
   @autobind

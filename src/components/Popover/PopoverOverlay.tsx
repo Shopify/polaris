@@ -1,51 +1,52 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import autobind from '@shopify/javascript-utilities/autobind';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
+import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities/components';
 import {TransitionGroup, TransitionStatus} from '@shopify/react-utilities/animation';
 
-import {focusFirstFocusableChild} from '../Focus';
-import Scrollable from '../Scrollable';
+import {Keys} from '../../types';
+import {overlay} from '../shared';
 import EventListener from '../EventListener';
-import {default as PositionedOverlay, OverlayDetails, PreferredPosition, Alignment} from '../PositionedOverlay';
+import KeypressListener from '../KeypressListener';
+import PositionedOverlay, {OverlayDetails, PreferredPosition} from '../PositionedOverlay';
+
+import Pane, {Props as PaneProps} from './Pane';
 import * as styles from './Popover.scss';
-import Pane from './Pane';
+
+export enum CloseSource {
+  Click,
+  EscapeKeypress,
+  FocusOut,
+  ScrollOut,
+}
 
 export interface Props {
-  activatorFocused: boolean,
+  id: string,
   active: boolean,
-  preventAutofocus: boolean,
-  fullHeight?: boolean,
+  preventAutofocus?: boolean,
+  sectioned?: boolean,
   preferredPosition?: PreferredPosition,
-  alignment?: Alignment,
   children?: React.ReactNode,
-  activator: React.ReactNode,
-  onCloseRequest(): void,
+  activator: HTMLElement,
+  onClose(source: CloseSource): void,
 }
 
-export interface State {
-  maxHeight: number,
-}
+export default class PopoverOverlay extends React.PureComponent<Props, never> {
+  private contentNode: HTMLElement | null;
 
-const INITIAL_MAX_HEIGHT = Infinity;
+  componentDidUpdate({active: wasActive}: Props) {
+    const {active, preventAutofocus} = this.props;
+    if (!active || preventAutofocus || !active || active === wasActive) { return; }
+    if (this.contentNode == null) { return; }
 
-export default class PopoverOverlay extends React.PureComponent<Props, State> {
-  state = {
-    maxHeight: INITIAL_MAX_HEIGHT,
-  };
-
-  private popoverContent: HTMLElement;
-
-  componentDidUpdate() {
-    const {activatorFocused, active, preventAutofocus} = this.props;
-    const child = findDOMNode(this) ? findDOMNode(this).firstElementChild : null;
-    if (child && activatorFocused && active && !preventAutofocus) {
-      const element = child as HTMLElement;
-      write(() => focusFirstFocusableChild(element));
-    }
+    write(() => {
+      if (this.contentNode == null) { return; }
+      const focusableChild = findFirstFocusableNode(this.contentNode);
+      (focusableChild || this.contentNode).focus();
+    });
   }
 
   render() {
@@ -57,6 +58,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
           render={this.renderOverlay}
           selector={selector}
           skipAppearing
+          skipEntering
         />
       )
       : null;
@@ -73,24 +75,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
     const {
       active,
       activator,
-      alignment = 'center',
       preferredPosition = 'below',
     } = this.props;
 
-    const {maxHeight} = this.state;
-
-    const renderWithOverlayDetails = (overlayDetails: OverlayDetails) => {
-      return this.renderPopover(transitionStatus, overlayDetails);
-    };
-
     return (
       <PositionedOverlay
-        maxHeight={maxHeight}
         active={active}
         activator={activator}
-        alignment={alignment}
         preferredPosition={preferredPosition}
-        render={renderWithOverlayDetails}
+        render={this.renderPopover.bind(this, transitionStatus)}
+        onScrollOut={this.handleScrollOut}
       />
     );
   }
@@ -104,92 +98,105 @@ export default class PopoverOverlay extends React.PureComponent<Props, State> {
       positioning,
       activatorRect,
     } = overlayDetails;
-    const {children, fullHeight} = this.props;
 
-    const tipStyle = calculateTipPosition(activatorRect.center.x, left);
+    const {
+      id,
+      children,
+      sectioned,
+    } = this.props;
 
-    const containerClassName = classNames(
+    const className = classNames(
       styles.Popover,
       transitionStatus && animationVariations(transitionStatus),
       positioning === 'above' && styles.positionedAbove,
+      measuring && styles.measuring,
     );
-
-    const contentClassName = classNames(
-      styles.Content,
-      fullHeight && styles.fullHeight,
-    );
-
-    const contentStyles = {
-      maxHeight: !measuring ? desiredHeight : null,
-    };
 
     const tipMarkup = !measuring
-      ? <div style={tipStyle} className={styles.Tip} />
+      ? (
+        <div
+          style={{left: activatorRect.center.x - left}}
+          className={styles.Tip}
+        />
+      )
       : null;
 
-    const popoverContent = !measuring
-      ? (
-        <Scrollable shadow>
-          {renderPopoverContent(children)}
-        </Scrollable>
-      )
-      : renderPopoverContent(children);
+    const contentStyles = measuring
+      ? undefined
+      : {maxHeight: desiredHeight};
 
     const content = (
-      <div className={contentClassName} style={contentStyles}>
-        {popoverContent}
+      <div
+        id={id}
+        tabIndex={-1}
+        className={styles.Content}
+        style={contentStyles}
+        ref={this.setContentNode}
+      >
+        {renderPopoverContent(children, {sectioned})}
       </div>
     );
 
     return (
-      <div className={containerClassName}>
+      <div className={className} {...overlay.props}>
         <EventListener event="click" handler={this.handleClick} />
+        <EventListener event="touchstart" handler={this.handleClick} />
+        <KeypressListener keyCode={Keys.ESCAPE} handler={this.handleEscape} />
         {tipMarkup}
-        <div className={styles.Wrapper} ref={this.getMaxHeight}>
+        <div className={styles.FocusTracker} tabIndex={0} onFocus={this.handleFocusFirstItem} />
+        <div className={styles.Wrapper}>
           {content}
         </div>
+        <div className={styles.FocusTracker} tabIndex={0} onFocus={this.handleFocusLastItem} />
       </div>
     );
   }
+
   @autobind
-  private getMaxHeight(node: HTMLElement | null) {
-    if (node == null || node === this.popoverContent) { return; }
-
-    this.popoverContent = node.firstChild as HTMLElement;
-
-    const cssMaxHeight = window.getComputedStyle(this.popoverContent).maxHeight || 'none';
-    const maxHeight = parseInt(cssMaxHeight, 10);
-
-    this.setState({
-      maxHeight: Number.isNaN(maxHeight) ? INITIAL_MAX_HEIGHT : maxHeight,
-    });
+  private setContentNode(node: HTMLElement | null) {
+    this.contentNode = node;
   }
 
   @autobind
-  private handleClick({target}: {target: HTMLElement}) {
-    const {popoverContent, props: {activator, onCloseRequest}} = this;
+  private handleClick(event: Event) {
+    const target = event.target as HTMLElement;
+    const {contentNode, props: {activator, onClose}} = this;
     if (
-      nodeContainsDescendant(popoverContent, target) ||
-      nodeContainsDescendant(activator as HTMLElement, target)
+      (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
+      nodeContainsDescendant(activator, target)
     ) { return; }
-    onCloseRequest();
+    onClose(CloseSource.Click);
+  }
+
+  @autobind
+  private handleScrollOut() {
+    this.props.onClose(CloseSource.ScrollOut);
+  }
+
+  @autobind
+  private handleEscape() {
+    this.props.onClose(CloseSource.EscapeKeypress);
+  }
+
+  @autobind
+  private handleFocusFirstItem() {
+    this.props.onClose(CloseSource.FocusOut);
+  }
+
+  @autobind
+  private handleFocusLastItem() {
+    this.props.onClose(CloseSource.FocusOut);
   }
 }
 
-function renderPopoverContent(children: React.ReactNode) {
+function renderPopoverContent(children: React.ReactNode, props?: Partial<PaneProps>) {
   const childrenArray = React.Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) { return childrenArray; }
-  return wrapWithComponent(childrenArray, Pane);
-}
-
-function calculateTipPosition(activatorRectXAxisCenter: number, left: number) {
-  return {left: activatorRectXAxisCenter - left};
+  return wrapWithComponent(childrenArray, Pane, props);
 }
 
 function animationVariations(status: TransitionStatus) {
   switch (status) {
-    case TransitionStatus.EnteringStart:
-      return styles.enteringStart;
     case TransitionStatus.Leaving:
       return styles.leaving;
     default:

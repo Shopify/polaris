@@ -1,4 +1,5 @@
 @import 'foundation/typography';
+@import 'foundation/spacing';
 
 .TextContainer {
   @include text-style-body;
@@ -9,6 +10,6 @@
 
   *:not(:last-child) {
     margin: 0;
-    margin-bottom: 0.4em;
+    margin-bottom: rem($unit * 3);
   }
 }

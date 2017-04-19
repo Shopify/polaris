@@ -1,8 +1,20 @@
-import {clamp} from './math';
-import {RGBColor, HSBColor} from './types';
+import {clamp} from '@shopify/javascript-utilities/math';
+import {RGBColor, RGBAColor, HSBColor, HSBAColor} from './types';
 
-export function rgbToHex([r, g, b]: RGBColor) {
-  return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+export function rgbString(color: RGBColor | RGBAColor) {
+  const {red, green, blue} = color;
+
+  if (color.hasOwnProperty('alpha')) {
+    return `rgba(${red}, ${green}, ${blue}, ${(color as RGBAColor).alpha})`;
+  } else {
+    return `rgb(${red}, ${green}, ${blue})`;
+  }
+}
+
+export const rgbaString = rgbString;
+
+export function rgbToHex({red, green, blue}: RGBColor) {
+  return `#${componentToHex(red)}${componentToHex(green)}${componentToHex(blue)}`;
 }
 
 function componentToHex(component: number) {
@@ -10,8 +22,15 @@ function componentToHex(component: number) {
   return hex.length === 1 ? `0${hex}` : hex;
 }
 
+export function hsbToHex(color: HSBColor) {
+  return rgbToHex(hsbToRgb(color));
+}
+
 // implements https://en.wikipedia.org/wiki/HSL_and_HSV#From_HSV
-export function hsbToRgb(hue: number, saturation: number, brightness: number): RGBColor {
+export function hsbToRgb(color: HSBColor): RGBColor;
+export function hsbToRgb(color: HSBAColor): RGBAColor;
+export function hsbToRgb(color: HSBAColor): RGBAColor {
+  const {hue, saturation, brightness, alpha = 1} = color;
   const chroma = brightness * saturation;
   const huePrime = hue / 60;
   const hueDelta = 1 - Math.abs(huePrime % 2 - 1);
@@ -60,11 +79,20 @@ export function hsbToRgb(hue: number, saturation: number, brightness: number): R
   red += chromaBrightnessDelta;
   green += chromaBrightnessDelta;
   blue += chromaBrightnessDelta;
-  return [Math.round(red * 255), Math.round(green * 255), Math.round(blue * 255)];
+
+  return {
+    red: Math.round(red * 255),
+    green: Math.round(green * 255),
+    blue: Math.round(blue * 255),
+    alpha,
+  };
 }
 
 // ref https://en.wikipedia.org/wiki/HSL_and_HSV
-export function rgbToHsb(red: number, green: number, blue: number): HSBColor {
+export function rgbToHsb(color: RGBColor): HSBColor;
+export function rgbToHsb(color: RGBAColor): HSBAColor;
+export function rgbToHsb(color: RGBAColor): HSBAColor {
+  const {red, green, blue, alpha = 1} = color;
   const r = red / 255;
   const g = green / 255;
   const b = blue / 255;
@@ -96,5 +124,6 @@ export function rgbToHsb(red: number, green: number, blue: number): HSBColor {
     hue: clamp(hue, 0, 360) || 0,
     saturation: clamp(saturation, 0, 1),
     brightness: clamp(largestComponent, 0, 1),
+    alpha,
   };
 }

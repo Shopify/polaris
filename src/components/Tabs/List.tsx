@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import {noop} from '@shopify/javascript-utilities/other';
 import autobind from '@shopify/javascript-utilities/autobind';
-import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 
 import Item from './Item';
 import {TabDescriptor} from './Tabs';
@@ -12,20 +10,12 @@ export interface Props {
   focusIndex: number,
   disclosureTabs: TabDescriptor[],
   onClick?(tab: TabDescriptor): void,
-  onKeyPress?(event: KeyboardEvent): void,
+  onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void,
 };
 
-export default class List extends React.PureComponent<Props, {}> {
-  componentDidMount() {
-    addEventListener(findDOMNode(this), 'keyup', this.handleKeypress, {capture: true});
-  }
-
-  componentWillUnmount() {
-    removeEventListener(findDOMNode(this), 'keyup', this.handleKeypress, true);
-  }
-
+export default class List extends React.PureComponent<Props, never> {
   render() {
-    const { focusIndex, disclosureTabs, onClick = noop} = this.props;
+    const {focusIndex, disclosureTabs, onClick = noop} = this.props;
     const tabs = disclosureTabs.map((tab, index) => {
       return (
         <Item
@@ -39,15 +29,28 @@ export default class List extends React.PureComponent<Props, {}> {
     });
 
     return (
-      <ul className={styles.List}>
+      <ul
+        className={styles.List}
+        onKeyDown={handleKeyDown}
+        onKeyUp={this.handleKeypress}
+      >
         {tabs}
       </ul>
     );
   }
 
   @autobind
-  private handleKeypress(event: KeyboardEvent) {
+  private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
     const {onKeyPress = noop} = this.props;
     onKeyPress(event);
+  }
+}
+
+function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+  const {key} = event;
+
+  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+    event.preventDefault();
+    event.stopPropagation();
   }
 }

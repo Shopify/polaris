@@ -1,8 +1,11 @@
 import * as React from 'react';
+import {classNames} from '@shopify/react-utilities/styles';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Choice, {helpTextID} from '../Choice';
+import Choice, {Error, errorID, helpTextID} from '../Choice';
 import Icon from '../Icon';
 
+import checkmark from './icons/checkmark.svg';
 import * as styles from './Checkbox.scss';
 
 export interface Props {
@@ -13,37 +16,53 @@ export interface Props {
   id?: string,
   name?: string,
   value?: string,
+  error?: Error,
   disabled?: boolean,
   onChange?(newValue: boolean): void,
   onFocus?(): void,
   onBlur?(): void,
 }
 
+const getUniqueID = createUniqueIDFactory('Checkbox');
+
 export default function Checkbox({
+  id = getUniqueID(),
   label,
   labelHidden,
   helpText,
   checked,
+  error,
   disabled,
   onChange,
   onFocus,
   onBlur,
-  id = uniqueID(),
   name,
   value,
 }: Props) {
-  function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (onChange == null) { return; }
+    const {currentTarget} = event;
     onChange(currentTarget.checked);
   }
 
-  const describedBy = helpText
-    ? helpTextID(id)
-    : null;
+  const describedBy: string[] = [];
+  if (typeof error === 'string') { describedBy.push(errorID(id)); }
+  if (helpText) { describedBy.push(helpTextID(id)); }
+
+  const className = classNames(
+    styles.Checkbox,
+    error && styles.error,
+  );
 
   return (
-    <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>
-      <div className={styles.Checkbox}>
+    <Choice
+      id={id}
+      label={label}
+      labelHidden={labelHidden}
+      helpText={helpText}
+      error={error}
+    >
+      <div className={className}>
         <input
           id={id}
           name={name}
@@ -55,19 +74,15 @@ export default function Checkbox({
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
-          aria-describedby={describedBy}
+          aria-invalid={error != null}
+          aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
         />
 
         <div className={styles.Backdrop} />
         <div className={styles.Icon}>
-          <Icon source="checkmark" size={12} />
+          <Icon source={checkmark} />
         </div>
       </div>
     </Choice>
   );
-}
-
-let index = 1;
-function uniqueID() {
-  return `Checkbox${index++}`;
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {DisableableAction} from '../types';
+import {DisableableAction} from '../../types';
 import {buttonsFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 import Stack from '../Stack';
@@ -8,11 +8,9 @@ import Heading from '../Heading';
 
 import * as styles from './Card.scss';
 
-export type Action = DisableableAction;
-
 export interface Props {
   children?: React.ReactNode,
-  actions?: Action[],
+  actions?: DisableableAction[],
 }
 
 export default function Header({children, actions}: Props) {
@@ -24,7 +22,7 @@ export default function Header({children, actions}: Props) {
     )
     : null;
 
-  const headingMarkup = actions
+  const headingMarkup = actionMarkup
     ? (
       <Stack alignment="baseline">
         <Stack.Item fill>

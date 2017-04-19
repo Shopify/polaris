@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {IconableAction} from '../types';
+import {IconableAction} from '../../types';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 
@@ -16,7 +16,7 @@ export default function Item({content, url, onAction, icon, image}: Props) {
   if (icon) {
     imageElement = (
       <div className={styles.Image}>
-        <Icon source={icon} size="fill" />
+        <Icon source={icon} />
       </div>
     );
   } else if (image) {

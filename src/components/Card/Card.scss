@@ -10,10 +10,10 @@
   box-shadow: shadow();
 
   + .Card {
-    margin-top: spacing();
+    margin-top: spacing(loose);
   }
 
-  @include main-content-when-not-condensed {
+  @include page-content-when-not-partially-condensed {
     border-radius: border-radius();
   }
 }
@@ -23,21 +23,23 @@
 }
 
 .Header {
-  padding: spacing() spacing() 0;
-}
-
-.SectionHeader {
-  padding-bottom: spacing(tight);
+  padding: spacing(loose) spacing(loose) 0;
 }
 
 .Section {
-  padding: spacing();
+  padding: spacing(loose);
 
   + .Section {
     border-top: 1px solid color(sky);
   }
 }
 
+.SectionHeader {
+  padding-bottom: spacing(tight);
+}
+
 .Footer {
-  padding: 0 spacing() spacing();
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 spacing(loose) spacing(loose);
 }

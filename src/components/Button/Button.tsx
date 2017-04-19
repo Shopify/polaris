@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities';
 
-import {ComplexAction} from '../types';
+import {ComplexAction} from '../../types';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
@@ -61,11 +61,11 @@ export default function Button({
   );
 
   const disclosureIconMarkup = disclosure
-    ? <span className={classNames(styles.Icon)}><Icon source="caretDown" /></span>
+    ? <span className={styles.Icon}><Icon source="caretDown" /></span>
     : null;
 
   const iconMarkup = icon
-    ? <span className={classNames(styles.Icon)}><Icon source={icon} /></span>
+    ? <span className={styles.Icon}><Icon source={icon} /></span>
     : null;
 
   const childMarkup = children ? <span>{children}</span> : null;
@@ -91,6 +91,7 @@ export default function Button({
         onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
+        onMouseUp={handleMouseUp}
         className={className}
         disabled={disabled}
         aria-label={accessibilityLabel}
@@ -104,6 +105,7 @@ export default function Button({
         onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
+        onMouseUp={handleMouseUp}
         className={className}
         disabled={disabled}
         aria-label={accessibilityLabel}
@@ -112,6 +114,10 @@ export default function Button({
       </button>
     )
   );
+}
+
+function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  currentTarget.blur();
 }
 
 export function buttonsFrom(action: ComplexAction, overrides?: Partial<Props>): React.ReactElement<Props>;

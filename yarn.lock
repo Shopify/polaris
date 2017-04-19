@@ -8,9 +8,9 @@
   dependencies:
     eslint-plugin-shopify "^15.2.0"
 
-"@shopify/javascript-utilities@^1.0.1", "@shopify/javascript-utilities@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.0.2.tgz#0103e6a4a6ed0e444cd6758862cc597476c8b5e6"
+"@shopify/javascript-utilities@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.1.0.tgz#8e64696fd6fc191ad35f230e02abf99572cb13bb"
   dependencies:
     "@types/react" "^15.0.21"
 
@@ -22,11 +22,11 @@
     mime-types "2.1.12"
     request "2.78.0"
 
-"@shopify/react-utilities@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-1.0.3.tgz#f643ead3182e9069751e3e87e8dd6c0efd40e406"
+"@shopify/react-utilities@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-1.1.1.tgz#aa1fd678fd05451a48c3a80c8aed1511c4a2308c"
   dependencies:
-    "@shopify/javascript-utilities" "^1.0.1"
+    "@shopify/javascript-utilities" "^1.1.0"
     "@types/classnames" "^0.0.32"
     "@types/node" "^7.0.12"
     "@types/react" "^15.0.21"
@@ -52,6 +52,10 @@
 "@types/jest@^19.2.2":
   version "19.2.2"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-19.2.2.tgz#71f428be2fa6eb9f15bb0abc3cade67905f94839"
+
+"@types/lodash@^4.14.62":
+  version "4.14.62"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.62.tgz#8674f9861582148a60b7a89cb260f11378d11683"
 
 "@types/node@^7.0.12":
   version "7.0.12"
@@ -3586,7 +3590,7 @@ lodash.uniq@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1, lodash@^4.8.0:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1, lodash@^4.8.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4581,8 +4585,8 @@ react-addons-test-utils@^15.4.2:
     object-assign "^4.1.0"
 
 react-addons-transition-group@^15.4.2:
-  version "15.5.0"
-  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.5.0.tgz#4a7dd48d2061f49a8977396f9e7c3f40f1b07a40"
+  version "15.5.2"
+  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.5.2.tgz#da6989d9cffe27dffacaedc862000ffb09ae2206"
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"

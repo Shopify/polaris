@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Choice, {helpTextID} from '../Choice';
 import * as styles from './RadioButton.scss';
 
@@ -16,6 +17,8 @@ export interface Props {
   onBlur?(): void,
 }
 
+const getUniqueID = createUniqueIDFactory('RadioButton');
+
 export default function RadioButton({
   label,
   labelHidden,
@@ -25,7 +28,7 @@ export default function RadioButton({
   onChange,
   onFocus,
   onBlur,
-  id = uniqueID(),
+  id = getUniqueID(),
   name = id,
   value,
 }: Props) {
@@ -59,9 +62,4 @@ export default function RadioButton({
       </div>
     </Choice>
   );
-}
-
-let index = 1;
-function uniqueID() {
-  return `RadioButton${index++}`;
 }

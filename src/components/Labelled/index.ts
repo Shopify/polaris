@@ -1,4 +1,4 @@
 import Labelled from './Labelled';
 
-export * from './Labelled';
+export {Props, Action, Error, labelID, errorID, helpTextID} from './Labelled';
 export default Labelled;

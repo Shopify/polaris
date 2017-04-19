@@ -1,4 +1,4 @@
 import AccountConnection from './AccountConnection';
 
-export * from './AccountConnection';
+export {Props} from './AccountConnection';
 export default AccountConnection;

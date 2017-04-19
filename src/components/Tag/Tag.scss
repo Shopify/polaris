@@ -1,26 +1,45 @@
 @import 'foundation/colors';
+@import 'foundation/duration';
+@import 'foundation/easing';
 @import 'foundation/spacing';
 @import 'foundation/border-radius';
+@import 'shared/buttons';
+@import 'shared/icons';
 
-$extra-tightest-padding: spacing(extra-tight) / 2;
+$height: rem(28px);
+$icon-size: rem(16px);
 
 .Tag {
   display: inline-flex;
+  overflow: hidden;
   align-items: center;
-  padding: spacing(extra-tight) 0 spacing(extra-tight) spacing(tight);
+  min-height: $height;
+  padding-left: spacing(tight);
   background-color: color(sky);
   border-radius: border-radius();
   color: color(ink);
 }
 
-.RemoveButton {
-  margin-left: $extra-tightest-padding;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  appearance: none;
-}
+.Button {
+  @include recolor-icon(color(ink, lighter));
+  @include unstyled-button;
+  display: block;
+  height: $height;
+  width: $height;
+  margin-left: spacing(extra-tight);
+  will-change: background, fill;
+  transition-property: background, fill;
+  transition-duration: duration();
+  transition-timing-function: easing();
 
-.slim {
-  padding: $extra-tightest-padding 0 $extra-tightest-padding spacing(tight);
+  &:hover,
+  &:focus,
+  &:active {
+    @include recolor-icon(color(ink));
+    background: color(sky, dark);
+  }
+
+  &:active {
+    background: rgba(color(ink, lightest), 0.6);
+  }
 }

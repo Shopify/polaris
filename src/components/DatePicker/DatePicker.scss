@@ -3,8 +3,19 @@
 @import 'foundation/spacing';
 @import 'foundation/typography';
 @import 'foundation/border-radius';
+@import 'foundation/z-index';
+@import 'shared/icons';
+
+$stacking-order: (
+  in-range: 20,
+  selected: 30,
+);
 
 $font-size: rem(12px);
+
+// Need to define raw colour for the borders of inRange
+// stylelint-disable-next-line color-no-hex
+$in-range-border-color: #9ca6de;
 
 .DatePicker {
   position: relative;
@@ -22,12 +33,7 @@ $font-size: rem(12px);
   margin-top: spacing();
   margin-left: spacing();
   max-width: calc(100% - #{spacing()});
-  min-width: 0;
-
-  @supports (min-width: fit-content) {
-    flex: 1 0 0%;
-    min-width: fit-content;
-  }
+  min-width: rem(230px);
 }
 
 .Week,
@@ -42,22 +48,66 @@ $font-size: rem(12px);
 .Day {
   display: block;
   flex: 1 0 0%;
-  width: 100% / 7;
+  width: (100% / 7);
   margin: 0;
   padding: spacing(tight);
   background: transparent;
   border: border();
+  outline: none;
   font-size: $font-size;
   text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: color(sky);
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px color(indigo);
+  }
 
   + .Day,
   + .EmptyDay {
     margin-left: -1px;
   }
+}
+
+.inRange {
+  z-index: z-index(in-range, $stacking-order);
+  background: color(indigo, light);
+  border: 1px solid $in-range-border-color;
+
+  &:hover {
+    background: darken(color(indigo, light), 5%);
+  }
+}
+
+.selected {
+  z-index: z-index(selected, $stacking-order);
+  background: color(indigo);
+  border: 1px solid color(indigo);
+  color: color(white);
+
+  &:hover {
+    background: darken(color(indigo), 5%);
+  }
 
   &:focus {
-    // Change when design ready
-    outline: 5px auto -webkit-focus-ring-color;
+    box-shadow: inset 0 0 0 2px color(indigo, dark);
+  }
+}
+
+.disabled {
+  background-color: color(sky, lighter);
+  color: color(sky, dark);
+  cursor: default;
+
+  &:hover {
+    background-color: color(sky, lighter);
+  }
+
+  &:focus {
+    box-shadow: none;
   }
 }
 
@@ -73,21 +123,6 @@ $font-size: rem(12px);
   + .Day {
     margin-left: -1px;
   }
-}
-
-.inRange {
-  background: color(indigo, light);
-}
-
-.selected {
-  background: color(indigo);
-  color: color(white);
-}
-
-.disabled {
-  background-color: color(sky, lighter);
-  color: color(sky, dark);
-  cursor: default;
 }
 
 .Weekday {
@@ -106,27 +141,10 @@ $font-size: rem(12px);
 
 .Header {
   position: absolute;
+  top: spacing();
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-top: spacing();
-  font-size: $font-size;
-}
-
-.Icon {
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: inherit;
-  font-weight: 600;
-  line-height: 1;
-  fill: color(ink, lighter);
-
-  &:focus,
-  &:hover {
-    fill: color(ink, light);
-  }
 }
 
 .Title {

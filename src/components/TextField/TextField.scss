@@ -7,9 +7,12 @@
 @import 'foundation/typography';
 @import 'foundation/utilities';
 @import 'foundation/z-index';
+@import 'foundation/easing';
+@import 'foundation/duration';
 
-$Backdrop-horizontal-spacing: spacing(tight) * 1.5;
-$Addon-horizontal-spacing: 0.25em;
+$backdrop-horizontal-spacing: spacing(tight) * 1.5;
+$addon-horizontal-spacing: 0.25em;
+$spinner-icon-size: rem(12px);
 
 $stacking-order: (
   contents: 20,
@@ -21,32 +24,56 @@ $stacking-order: (
   position: relative;
   display: flex;
   align-items: baseline;
-  padding: 0 $Backdrop-horizontal-spacing;
+  padding: 0 $backdrop-horizontal-spacing;
   color: color(ink, lightest);
 }
 
 .multiline {
   padding: 0;
+
+  > .Input {
+    overflow: auto;
+    padding-left: $backdrop-horizontal-spacing;
+    padding-right: $backdrop-horizontal-spacing;
+    resize: none;
+  }
 }
 
 .hasValue {
   color: color(ink);
 }
 
-.Prefix {
-  position: relative;
-  z-index: z-index(contents, $stacking-order);
-  flex: 0 0 auto;
-  margin-right: $Addon-horizontal-spacing;
-  color: currentColor;
+.error {
+  .Input::placeholder {
+    // This is the only place this color is used.
+    // stylelint-disable-next-line color-no-hex
+    color: #9c9798;
+  }
+
+  > .Input ~ .Backdrop {
+    background-color: color(red, lighter);
+    border-color: color(red);
+    box-shadow: none;
+  }
+
+  // We need this to override the box-shadow in the focus state.
+  // stylelint-disable-next-line selector-max-specificity
+  > .Input:focus ~ .Backdrop {
+    border-color: color(indigo);
+    box-shadow:
+      inset shadow(transparent),
+      0 0 0 1px color(indigo);
+  }
 }
 
-.Suffix {
-  position: relative;
-  z-index: z-index(contents, $stacking-order);
-  flex: 0 0 auto;
-  margin-left: $Addon-horizontal-spacing;
-  color: currentColor;
+.readOnly > .Backdrop {
+  background-color: color(sky, lighter);
+}
+
+.disabled > .Backdrop {
+  background-color: color(sky, lighter);
+  border: border();
+  box-shadow: none;
 }
 
 .Input {
@@ -65,8 +92,19 @@ $stacking-order: (
   font-weight: inherit;
   appearance: none;
 
+  &:disabled {
+    color: color(ink, lightest);
+  }
+
   &:focus {
     outline: none;
+
+    ~ .Backdrop {
+      border-color: color(indigo);
+      box-shadow:
+        inset shadow(transparent),
+        0 0 0 1px color(indigo);
+    }
   }
 
   &::placeholder {
@@ -84,17 +122,6 @@ $stacking-order: (
       margin: 0;
     }
   }
-
-  .multiline > & {
-    padding-left: $Backdrop-horizontal-spacing;
-    padding-right: $Backdrop-horizontal-spacing;
-    resize: vertical;
-  }
-
-  .autoGrow > & {
-    overflow: hidden;
-    resize: none;
-  }
 }
 
 .Backdrop {
@@ -108,34 +135,24 @@ $stacking-order: (
   border: border(dark);
   box-shadow: inset 0 1px 0 0 rgba(color(ink, lighter), 0.05);
   border-radius: border-radius();
+  will-change: box-shadow;
+  transition: box-shadow duration() easing();
+}
 
-  .Input:focus ~ & {
-    border-color: color(indigo);
-    box-shadow: 0 0 0 1px color(indigo);
-  }
+.Prefix {
+  position: relative;
+  z-index: z-index(contents, $stacking-order);
+  flex: 0 0 auto;
+  margin-right: $addon-horizontal-spacing;
+  color: currentColor;
+}
 
-  .error > .Input ~ & {
-    background-color: color(red, lighter);
-    border-color: color(red);
-    box-shadow: none;
-  }
-
-  // We need this to override the box-shadow in the focus state.
-  // stylelint-disable-next-line selector-max-specificity
-  .error > .Input:focus ~ & {
-    border-color: color(red);
-    box-shadow: 0 0 0 1px color(red);
-  }
-
-  .readOnly > & {
-    background-color: color(sky, lighter);
-    box-shadow: none;
-  }
-
-  .disabled > & {
-    background-color: color(sky, light);
-    box-shadow: none;
-  }
+.Suffix {
+  position: relative;
+  z-index: z-index(contents, $stacking-order);
+  flex: 0 0 auto;
+  margin-left: $addon-horizontal-spacing;
+  color: currentColor;
 }
 
 .Spinner {
@@ -144,8 +161,13 @@ $stacking-order: (
   align-self: stretch;
   flex-direction: column;
   width: rem(22px);
-  margin: 1px calc(-#{$Backdrop-horizontal-spacing} + 1px) 1px $Backdrop-horizontal-spacing;
+  margin: 1px calc(-#{$backdrop-horizontal-spacing} + 1px) 1px $backdrop-horizontal-spacing;
   color: color(ink);
+}
+
+.SpinnerIcon {
+  height: $spinner-icon-size;
+  width: $spinner-icon-size;
 }
 
 .Resizer {
@@ -159,7 +181,7 @@ $stacking-order: (
 
 .DummyInput {
   @include text-style-input;
-  padding: control-vertical-padding() $Backdrop-horizontal-spacing;
+  padding: control-vertical-padding() $backdrop-horizontal-spacing;
   border: border(transparent);
 
   // We need the following properties in order to have long, unbroken
@@ -176,11 +198,11 @@ $stacking-order: (
   appearance: none;
   background: linear-gradient(to bottom, color(white), color(sky, lighter));
   border: none;
-  border-bottom: 1px solid transparent;
   border-left: border(dark);
-  transition-property: background, box-shadow;
-  transition-duration: duration(fast);
-  transition-timing-function: easing();
+  will-change: background, box-shadow;
+  transition:
+    background duration(fast) easing(),
+    box-shadow duration(fast) easing();
 
   &:focus {
     outline: none;

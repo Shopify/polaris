@@ -1,6 +1,5 @@
-@import 'foundation/spacing';
-
-$collapse-toggle-duration: 260ms;
+@import 'foundation/duration';
+@import 'foundation/easing';
 
 .Collapsible {
   overflow: hidden;
@@ -13,10 +12,10 @@ $collapse-toggle-duration: 260ms;
 
 .animating {
   transition-property: opacity, height;
-  transition-duration: $collapse-toggle-duration;
-  transition-timing-function: ease-in-out;
+  transition-duration: duration(slow);
+  transition-timing-function: easing(out);
 }
 
-.visibilityShown {
+.open {
   opacity: 1;
 }

@@ -8,7 +8,7 @@ export interface Props {
   sectioned?: boolean,
 };
 
-export default class Layout extends React.Component<Props, {}> {
+export default class Layout extends React.Component<Props, never> {
   static AnnotatedSection = AnnotatedSection;
   static Section = Section;
 

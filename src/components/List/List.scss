@@ -4,15 +4,13 @@
 $number-size: rem(12px);
 $bullet-size: rem(18px);
 
-.ContentList {
+.List {
   list-style: none;
-
   margin-top: 0;
-  margin-bottom: spacing();
   padding-left: 0;
 
-  &:last-child {
-    margin-bottom: 0;
+  + .List {
+    margin-top: spacing();
   }
 }
 
@@ -51,8 +49,7 @@ $bullet-size: rem(18px);
     display: block;
   }
 
-  .ContentList {
+  .List:first-child {
     margin-top: spacing(tight);
-    margin-bottom: 0;
   }
 }

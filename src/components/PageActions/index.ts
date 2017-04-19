@@ -1,4 +1,4 @@
 import PageActions from './PageActions';
 
-export * from './PageActions';
+export {Props} from './PageActions';
 export default PageActions;

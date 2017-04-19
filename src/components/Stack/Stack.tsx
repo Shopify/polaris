@@ -12,34 +12,28 @@ export type Distribution = 'equalSpacing' | 'leading' | 'trailing' | 'center' | 
 export interface Props {
   children?: any,
   vertical?: boolean,
-  wrap?: boolean,
   spacing?: Spacing,
   alignment?: Alignment,
   distribution?: Distribution,
 }
 
-export default class Stack extends React.PureComponent<Props, {}> {
+export default class Stack extends React.PureComponent<Props, never> {
   static Item = Item;
 
   render() {
-    const {children, wrap = true, vertical, spacing, distribution, alignment} = this.props;
+    const {children, vertical, spacing, distribution, alignment} = this.props;
 
     const className = classNames(
       styles.Stack,
-      !wrap && styles.noWrap,
       vertical && styles.vertical,
       spacing && styles[variationName('spacing', spacing)],
       distribution && styles[variationName('distribution', distribution)],
       alignment && styles[variationName('alignment', alignment)],
     );
 
-    return (
-      <div className={className}>
-        {
-          elementChildren(children)
-            .map((child, index) => wrapWithComponent(child, Item, {key: index} as ItemProps))
-        }
-      </div>
-    );
+    const itemMarkup = elementChildren(children)
+      .map((child, index) => wrapWithComponent(child, Item, {key: index} as ItemProps));
+
+    return <div className={className}>{itemMarkup}</div>;
   }
 }

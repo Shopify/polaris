@@ -34,6 +34,7 @@
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
     "@types/enzyme": "^2.7.7",
     "@types/jest": "^19.2.2",
+    "@types/lodash": "^4.14.62",
     "archiver": "^1.3.0",
     "aws-sdk": "^2.6.8",
     "babel-cli": "^6.24.0",
@@ -53,6 +54,7 @@
     "identity-obj-proxy": "^3.0.0",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
+    "lodash": "^4.17.4",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
     "postcss": "^5.2.16",
@@ -98,8 +100,8 @@
     "styles.scss"
   ],
   "dependencies": {
-    "@shopify/javascript-utilities": "^1.0.2",
-    "@shopify/react-utilities": "^1.0.3",
+    "@shopify/javascript-utilities": "^1.1.0",
+    "@shopify/react-utilities": "^1.1.1",
     "@types/node": "^7.0.12",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",

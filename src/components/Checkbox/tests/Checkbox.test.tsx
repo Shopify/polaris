@@ -76,10 +76,35 @@ describe('<Checkbox />', () => {
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mount(<Checkbox label="Checkbox" helpText="Some help" />);
-      const helpTextID = textField.find('input').prop<string>('aria-describedby');
+      const checkbox = mount(<Checkbox label="Checkbox" helpText="Some help" />);
+      const helpTextID = checkbox.find('input').prop<string>('aria-describedby');
       expect(typeof helpTextID).toBe('string');
-      expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
+      expect(checkbox.find(`#${helpTextID}`).text()).toBe('Some help');
+    });
+  });
+
+  describe('error', () => {
+    it('marks the input as invalid', () => {
+      const checkbox = shallow(<Checkbox error label="Checkbox" />);
+      expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
+
+      checkbox.setProps({error: 'Some error'});
+      expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
+    });
+
+    it('connects the input to the error', () => {
+      const checkbox = mount(<Checkbox label="Checkbox" error="Some error" />);
+      const errorID = checkbox.find('input').prop<string>('aria-describedby');
+      expect(typeof errorID).toBe('string');
+      expect(checkbox.find(`#${errorID}`).text()).toBe('Some error');
+    });
+
+    it('connects the input to both an error and help text', () => {
+      const checkbox = mount(<Checkbox label="Checkbox" error="Some error" helpText="Some help" />);
+      const descriptions = checkbox.find('input').prop<string>('aria-describedby').split(' ');
+      expect(descriptions.length).toBe(2);
+      expect(checkbox.find(`#${descriptions[0]}`).text()).toBe('Some error');
+      expect(checkbox.find(`#${descriptions[1]}`).text()).toBe('Some help');
     });
   });
 });

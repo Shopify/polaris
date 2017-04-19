@@ -18,7 +18,7 @@ export interface Props {
   onFocus?(day: Date): void,
 }
 
-export default class Day extends React.PureComponent<Props, {}> {
+export default class Day extends React.PureComponent<Props, never> {
   private dayNode: HTMLElement;
 
   componentDidUpdate() {
@@ -49,16 +49,16 @@ export default class Day extends React.PureComponent<Props, {}> {
       styles.Day,
       selected && styles.selected,
       disabled && styles.disabled,
-      (inRange || inHoveringRange) && styles.inRange,
+      (inRange || inHoveringRange) && !disabled && styles.inRange,
     );
 
     const date = day.getDate();
-    const tabIndex = (focused || selected || date === 1) ? 0 : -1;
+    const tabIndex = (focused || selected || date === 1) && !disabled ? 0 : -1;
 
     return (
       <button
         onFocus={onFocus.bind(null, day)}
-        ref={this.getNode}
+        ref={this.setNode}
         tabIndex={tabIndex}
         className={className}
         onMouseOver={handleHover}
@@ -74,7 +74,7 @@ export default class Day extends React.PureComponent<Props, {}> {
   }
 
   @autobind
-  private getNode(node: HTMLElement) {
+  private setNode(node: HTMLElement) {
     this.dayNode = node;
   }
 }

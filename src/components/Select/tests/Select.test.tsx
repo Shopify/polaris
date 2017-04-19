@@ -142,7 +142,7 @@ describe('<Select />', () => {
     it('renders an unselectable option for the placeholder', () => {
       const select = shallow(<Select label="Select" placeholder="Choose something" options={[]} />);
       const placeholderOption = select.find('option').first();
-      expect(placeholderOption.prop('selected')).toBe(true);
+      expect(placeholderOption.prop('value')).toBe(select.find('select').prop('defaultValue'));
       expect(placeholderOption.prop('disabled')).toBe(true);
       expect(placeholderOption.prop('hidden')).toBe(true);
     });

@@ -13,7 +13,7 @@ export interface Props {
   onClick?(tab: TabDescriptor): void,
 };
 
-export default class Item extends React.PureComponent<Props, {}> {
+export default class Item extends React.PureComponent<Props, never> {
   private focusedNode: HTMLElement;
 
   componentDidUpdate() {

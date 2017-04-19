@@ -3,9 +3,8 @@
 @import 'foundation/colors';
 
 $small-size: rem(32px);
-$medium-size: rem(44px);
+$medium-size: rem(40px);
 $large-size: rem(60px);
-$letter-spacing: 0.1em;
 
 .Avatar {
   position: relative;
@@ -14,31 +13,26 @@ $letter-spacing: 0.1em;
   justify-content: center;
   align-items: center;
   background: color(teal);
-  border-radius: border-radius();
+  border-radius: 50%;
+  user-select: none;
 }
 
 .sizeSmall {
   height: $small-size;
   width: $small-size;
+  font-size: rem(14px);
 }
 
 .sizeMedium {
-  height: $small-size;
-  width: $small-size;
-
-  @include main-content-when-not-condensed {
-    height: $medium-size;
-    width: $medium-size;
-  }
+  height: $medium-size;
+  width: $medium-size;
+  font-size: rem(18px);
 }
 
 .sizeLarge {
   height: $large-size;
   width: $large-size;
-}
-
-.circular {
-  border-radius: 50%;
+  font-size: rem(26px);
 }
 
 .styleOne {
@@ -74,14 +68,7 @@ $letter-spacing: 0.1em;
 }
 
 .Initials {
-  // Explicit letter spacing set below, so we need to compensate to retain centering.
-  margin-left: $letter-spacing;
   line-height: 0;
   color: color(white);
-  letter-spacing: $letter-spacing;
   text-transform: uppercase;
-}
-
-.singleInitial {
-  font-size: rem(18px);
 }

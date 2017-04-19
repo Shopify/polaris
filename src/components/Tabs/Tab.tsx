@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import {classNames} from '@shopify/react-utilities/styles';
+import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import autobind from '@shopify/javascript-utilities/autobind';
 
 import UnstyledLink from '../UnstyledLink';
 import {TabDescriptor} from './Tabs';
@@ -19,11 +20,13 @@ export interface Props {
   onClick?(tab: TabDescriptor): void,
 };
 
-export default class Tab extends React.PureComponent<Props, {}> {
+export default class Tab extends React.PureComponent<Props, never> {
+  private node: HTMLElement;
+
   componentDidUpdate() {
     const {focused, measuring} = this.props;
     if (focused && !measuring) {
-      (findDOMNode(this) as HTMLElement).focus();
+      focusFirstFocusableNode(this.node, true);
     }
   }
 
@@ -65,39 +68,42 @@ export default class Tab extends React.PureComponent<Props, {}> {
       ? (
       <UnstyledLink
         id={id}
-        role="tab"
         url={url}
         tabIndex={tabIndex}
         onClick={handleClick}
         className={className}
       >
-        <div
+        <span
           className={styles.Title}
           aria-selected={selected}
           aria-controls={panelID || null}
         >
           {children}
-        </div>
+        </span>
       </UnstyledLink>
       )
       : (
         <button
           id={id}
-          role="tab"
           tabIndex={tabIndex}
           className={className}
           onClick={handleClick}
         >
-          <div
+          <span
             className={styles.Title}
             aria-selected={selected}
             aria-controls={panelID || null}
           >
             {children}
-          </div>
+          </span>
         </button>
       );
 
-    return markup;
+    return <li role="tab" className={styles.TabContainer} ref={this.setNode}>{markup}</li>;
+  }
+
+  @autobind
+  private setNode(node: HTMLElement) {
+    this.node = node;
   }
 }

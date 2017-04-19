@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-
-import {HeadingTagName} from '../types';
-
+import {HeadingTagName} from '../../types';
 import * as styles from './DisplayText.scss';
 
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
@@ -19,7 +17,7 @@ export default function DisplayText({
   size = 'medium',
 }: Props) {
   const className = classNames(
-    styles.Display,
+    styles.DisplayText,
     size && styles[variationName('size', size)],
   );
 

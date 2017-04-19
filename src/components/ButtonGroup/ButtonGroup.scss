@@ -2,12 +2,12 @@
 @import 'foundation/spacing';
 @import 'foundation/z-index';
 
-$segmented-elements: (
+$stacking-order: (
   item: 10,
   focused: 20,
 );
 
-$Button-plain-horizontal-spacing: spacing(tight);
+$plain-horizontal-spacing: spacing(tight);
 $Item-spacing: spacing(tight);
 
 .ButtonGroup {
@@ -25,44 +25,47 @@ $Item-spacing: spacing(tight);
 
 .plain {
   &:not(:first-child) {
-    margin-left: $Item-spacing + $Button-plain-horizontal-spacing;
+    margin-left: $Item-spacing + $plain-horizontal-spacing;
   }
 
   &:not(:last-child) {
-    margin-right: $Button-plain-horizontal-spacing;
+    margin-right: $plain-horizontal-spacing;
   }
 }
 
-// This is a violation of our component model, but it's the cleanest
-// way to remove the border radii on connected elements.
-// stylelint-disable declaration-no-important
-
-.Segmented {
+.segmented {
   display: flex;
 
-  button {
+  // This is a violation of our component model, but it's the cleanest
+  // way to remove the border radii on connected elements.
+  // stylelint-disable declaration-no-important
+
+  .Item {
     position: relative;
-    z-index: z-index(item, $segmented-elements);
-    border-radius: 0 !important;
+    z-index: z-index(item, $stacking-order);
 
     &:not(:first-child) {
       margin-left: -1px;
     }
 
-    &:first-child {
+    * {
+      border-radius: 0 !important;
+    }
+
+    &:first-child * {
       border-top-left-radius: border-radius() !important;
       border-bottom-left-radius: border-radius() !important;
     }
 
-    &:last-child {
+    &:last-child * {
       border-top-right-radius: border-radius() !important;
       border-bottom-right-radius: border-radius() !important;
     }
+  }
 
-    // stylelint-enable declaration-no-important
+  // stylelint-enable declaration-no-important
 
-    &:focus {
-      z-index: z-index(focused, $segmented-elements);
-    }
+  .focused {
+    z-index: z-index(focused, $stacking-order);
   }
 }

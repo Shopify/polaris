@@ -3,13 +3,13 @@
 @import 'foundation/spacing';
 @import 'foundation/typography';
 
-$breakpoint: breakpoint(small);
+$breakpoint: 550px;
 
 .DescriptionList {
   margin: 0;
   padding: 0;
 
-  @include main-content-breakpoint-after($breakpoint) {
+  @include page-content-breakpoint-after($breakpoint) {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -20,8 +20,8 @@ $breakpoint: breakpoint(small);
   @include text-emphasis-strong;
   padding: spacing() 0 spacing(tight);
 
-  @include main-content-breakpoint-after($breakpoint) {
-    flex-basis: 25%;
+  @include page-content-breakpoint-after($breakpoint) {
+    flex: 0 1 25%;
     padding: spacing() spacing() spacing() 0;
 
     .Description + & + .Description {
@@ -38,8 +38,8 @@ $breakpoint: breakpoint(small);
     border-top: border();
   }
 
-  @include main-content-breakpoint-after($breakpoint) {
-    flex-basis: 75%;
+  @include page-content-breakpoint-after($breakpoint) {
+    flex: 1 1 51%;
     padding: spacing() 0;
 
     + .Term + .Description {

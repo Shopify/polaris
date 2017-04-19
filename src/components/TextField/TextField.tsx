@@ -1,15 +1,16 @@
 import * as React from 'react';
 import autobind from '@shopify/javascript-utilities/autobind';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {Action, helpTextID, labelID} from '../Labelled';
+import Labelled, {Action, Error, helpTextID, errorID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import Resizer from './Resizer';
 import Spinner from './Spinner';
 import * as styles from './TextField.scss';
 
-export type Type = 'text' | 'email' | 'number' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week';
+export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week';
 
 export interface State {
   height?: number | null,
@@ -27,9 +28,8 @@ export interface Props {
   disabled?: boolean,
   readOnly?: boolean,
   autoFocus?: boolean,
-  multiline?: boolean,
-  autoGrow?: boolean,
-  error?: boolean,
+  multiline?: boolean | number,
+  error?: Error,
   connectedRight?: React.ReactNode,
   connectedLeft?: React.ReactNode,
   type?: Type,
@@ -46,14 +46,16 @@ export interface Props {
   onChange?(value: string): void,
   onFocus?(): void,
   onBlur?(): void,
-};
+}
+
+const getUniqueID = createUniqueIDFactory('TextField');
 
 export default class TextField extends React.PureComponent<Props, State> {
   state: State = {height: null};
 
   render() {
     const {
-      id = uniqueID(),
+      id = getUniqueID(),
       value = '',
       placeholder,
       disabled,
@@ -63,7 +65,6 @@ export default class TextField extends React.PureComponent<Props, State> {
       name,
       error,
       multiline,
-      autoGrow,
       connectedRight,
       connectedLeft,
       label,
@@ -77,6 +78,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       autoComplete,
       ...rest,
     } = this.props;
+
     const {height} = this.state;
 
     const className = classNames(
@@ -86,7 +88,6 @@ export default class TextField extends React.PureComponent<Props, State> {
       readOnly && styles.readOnly,
       error && styles.error,
       multiline && styles.multiline,
-      autoGrow && styles.autoGrow,
     );
 
     const prefixMarkup = prefix
@@ -101,27 +102,28 @@ export default class TextField extends React.PureComponent<Props, State> {
       ? <Spinner onChange={this.handleNumberChange} />
       : null;
 
-    const style = (autoGrow && height) ? {height} : null;
+    const style = (multiline && height) ? {height} : null;
 
-    const resizer = autoGrow
+    const resizer = multiline != null
       ? (
         <Resizer
           contents={value || placeholder}
           currentHeight={height}
+          minimumLines={typeof multiline === 'number' ? multiline : 1}
           onHeightChange={this.handleExpandingResize}
         />
       )
       : null;
 
-    const describedBy = helpText
-      ? helpTextID(id)
-      : null;
+    const describedBy: string[] = [];
+    if (error && typeof error === 'string') { describedBy.push(errorID(id)); }
+    if (helpText) { describedBy.push(helpTextID(id)); }
 
     const labelledBy = [labelID(id)];
     if (prefix) { labelledBy.push(`${id}Prefix`); }
     if (suffix) { labelledBy.push(`${id}Suffix`); }
 
-    const input = React.createElement((multiline || autoGrow) ? 'textarea' : 'input', {
+    const input = React.createElement(multiline ? 'textarea' : 'input', {
       ...rest,
       name,
       id,
@@ -137,8 +139,9 @@ export default class TextField extends React.PureComponent<Props, State> {
       autoComplete: normalizeAutoComplete(autoComplete),
       className: styles.Input,
       onChange: this.handleChange,
-      'aria-describedby': describedBy,
+      'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
       'aria-labelledby': labelledBy.join(' '),
+      'aria-invalid': Boolean(error),
     });
 
     return (
@@ -172,7 +175,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     const {onChange, value, step = 1, min = -Infinity, max = Infinity} = this.props;
     if (onChange == null) { return; }
 
-    const numericValue = value ? Number.parseFloat(value) : 0;
+    const numericValue = value ? parseFloat(value) : 0;
     if (Number.isNaN(numericValue)) { return; }
 
     const newValue = Math.min(max, Math.max(numericValue + (steps * step), min));
@@ -190,11 +193,6 @@ export default class TextField extends React.PureComponent<Props, State> {
     if (onChange == null) { return; }
     onChange(event.currentTarget.value);
   }
-}
-
-let index = 1;
-function uniqueID() {
-  return `Input${index++}`;
 }
 
 function normalizeAutoComplete(autoComplete?: boolean) {

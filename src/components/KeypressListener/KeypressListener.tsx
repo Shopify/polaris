@@ -1,19 +1,20 @@
 import * as React from 'react';
 import autobind from '@shopify/javascript-utilities/autobind';
-import {Keys} from '../types';
+import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
+import {Keys} from '../../types';
 
 export interface Props {
   keyCode: Keys,
-  callback(event: Event): void,
+  handler(event: KeyboardEvent): void,
 }
 
-export default class KeypressListener extends React.Component<Props, {}> {
+export default class KeypressListener extends React.Component<Props, never> {
   componentDidMount() {
-    document.addEventListener('keyup', this.handleKeyEvent);
+    addEventListener(document, 'keyup', this.handleKeyEvent);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keyup', this.handleKeyEvent);
+    removeEventListener(document, 'keyup', this.handleKeyEvent);
   }
 
   // tslint:disable-next-line prefer-function-over-method
@@ -23,10 +24,10 @@ export default class KeypressListener extends React.Component<Props, {}> {
 
   @autobind
   private handleKeyEvent(event: KeyboardEvent) {
-    const {keyCode, callback} = this.props;
+    const {keyCode, handler} = this.props;
 
     if (event.keyCode === keyCode) {
-      callback(event);
+      handler(event);
     }
   }
 }

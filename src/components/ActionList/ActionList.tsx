@@ -22,28 +22,26 @@ export default function ActionList({items, sections}: Props) {
   }
 
   const hasMultipleSections = finalSections.length > 1;
-  const element = hasMultipleSections ? 'ul' : 'div';
-  const sectionMarkup = finalSections.map((section, index) => {
-    const sectionElement = hasMultipleSections ? 'li' : 'div';
-    const actionMarkup = section.items.map(({content, ...item}) => (
-      <Item key={content} content={content} {...item} />
-    ));
+  const Element: string = hasMultipleSections ? 'ul' : 'div';
+  const sectionMarkup = finalSections.map((section, index) => renderSection(section, hasMultipleSections, index));
 
-    const titleMarkup = section.title
-      ? <p className={styles.Title}>{section.title}</p>
-      : null;
+  return <Element className={styles.ActionList}>{sectionMarkup}</Element>;
+}
 
-    return React.createElement(
-      sectionElement,
-      {key: section.title || index},
-      titleMarkup,
-      <ul className={styles.Actions}>{actionMarkup}</ul>,
-    );
-  });
+function renderSection(section: Section, hasMultipleSections: boolean, index: number) {
+  const SectionElement: string = hasMultipleSections ? 'li' : 'div';
+  const actionMarkup = section.items.map(({content, ...item}) => (
+    <Item key={content} content={content} {...item} />
+  ));
 
-  return React.createElement(
-    element,
-    {className: styles.ActionList},
-    sectionMarkup,
+  const titleMarkup = section.title
+    ? <p className={styles.Title}>{section.title}</p>
+    : null;
+
+  return (
+    <SectionElement key={section.title || index}>
+      {titleMarkup}
+      <ul className={styles.Actions}>{actionMarkup}</ul>
+    </SectionElement>
   );
 }

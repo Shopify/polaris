@@ -2,53 +2,71 @@
 @import 'foundation/colors';
 @import 'foundation/spacing';
 @import 'foundation/shadows';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/controls';
+@import 'shared/buttons';
+@import 'shared/links';
 
-$banner-accent-height: 3px;
+$accent-height: 3px;
+$dismiss-size: rem(16px);
 $ribbon-flex-basis: rem(32px);
+$secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
+$secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .Banner {
   position: relative;
   display: flex;
   padding: spacing();
-  box-shadow: shadow();
   border-radius: 0 0 border-radius() border-radius();
+  transition: box-shadow duration() easing();
 
   + .Banner {
-    margin-top: spacing();
+    margin-top: spacing(loose);
   }
 
-  &:last-child {
-    margin-bottom: spacing();
+  &:focus {
+    outline: none;
+  }
+}
+
+.hasDismiss {
+  padding-right: $dismiss-size + (2 * spacing());
+}
+
+@mixin banner-colors($highlight, $background) {
+  background-color: $background;
+  box-shadow:
+    inset 0 $accent-height 0 0 $highlight,
+    inset shadow(transparent),
+    shadow();
+
+  &:focus {
+    box-shadow:
+      inset 0 $accent-height 0 0 $highlight,
+      inset 0 0 0 $accent-height $highlight,
+      shadow();
   }
 }
 
 .statusInfo {
-  background-color: color(sky, light);
-  border-top: $banner-accent-height solid color(ink, lighter);
+  @include banner-colors(color(ink, lighter), color(sky, light));
 }
 
 .statusSuccess {
-  background-color: rgba(color(green, lighter), 0.7);
-  border-top: $banner-accent-height solid color(green);
+  @include banner-colors(color(green), color(green, lighter));
 }
 
 .statusAttention {
-  background-color: rgba(color(teal, lighter), 0.7);
-  border-top: $banner-accent-height solid color(teal);
+  @include banner-colors(color(teal), color(teal, lighter));
 }
 
 .statusWarning {
-  background-color: rgba(color(yellow, lighter), 0.7);
-  border-top: $banner-accent-height solid color(yellow);
+  @include banner-colors(color(yellow), color(yellow, lighter));
 }
 
 .statusCritical {
-  background-color: rgba(color(red, lighter), 0.7);
-  border-top: $banner-accent-height solid color(red);
-}
-
-.hasDismiss {
-  padding-right: spacing(loose);
+  @include banner-colors(color(red), color(red, lighter));
 }
 
 .Ribbon {
@@ -56,22 +74,80 @@ $ribbon-flex-basis: rem(32px);
   margin-right: spacing();
 }
 
-.Content {
-  flex: 1 1 100%;
+.Heading {
   margin-top: spacing(extra-tight);
 }
 
-.Action {
+.Actions {
   margin-top: spacing();
+}
+
+.Content {
+  margin: spacing(tight) 0;
+}
+
+// We need pretty high specificity to do the descendant selectors
+// onto the text, which needs to be the relative positioned wrapper
+// so that the borders/ backgrounds do not extend outside of it.
+// stylelint-disable selector-max-specificity
+
+.SecondaryAction {
+  @include unstyled-button;
+  @include unstyled-link;
+  margin: (-1 * $secondary-action-vertical-padding) (-0.5 * $secondary-action-horizontal-padding);
+  padding: $secondary-action-vertical-padding $secondary-action-horizontal-padding;
+  color: color(ink);
+
+  &:hover > .Text::after {
+    opacity: 0.75;
+  }
+
+  &:active > .Text::after {
+    opacity: 0;
+  }
+
+  &:focus > .Text {
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      opacity: 0;
+    }
+  }
+}
+
+// stylelint-enable selector-max-specificity
+
+.Text {
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    @include plain-button-backdrop;
+    opacity: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    border: 1px solid currentColor;
+    opacity: 0.25;
+    will-change: opacity;
+    transition: opacity duration() easing();
+  }
 }
 
 .Dismiss {
   position: absolute;
-  top: 0;
+  top: $accent-height;
   right: 0;
-  padding: spacing(tight);
-  background: transparent;
-  border: none;
-  color: color(ink);
-  cursor: pointer;
+  padding: (spacing(tight) * 1.5);
 }

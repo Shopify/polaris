@@ -11,9 +11,6 @@ body {
 html {
   position: relative;
   box-sizing: border-box;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
   font-size: ($base-font-size / $default-browser-font-size) * 100%;
   -webkit-font-smoothing: antialiased;
 
@@ -26,8 +23,7 @@ html {
 }
 
 body {
-  overflow: hidden;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   background-color: color(sky, light);
@@ -49,12 +45,14 @@ p {
   font-weight: 400;
 }
 
-a:not([data-quilt-unstyled]) {
-  color: color(action);
+a:not([data-polaris-unstyled]) {
+  color: color(blue);
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
     color: color(blue, dark);
-    text-decoration: underline;
   }
 }

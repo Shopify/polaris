@@ -1,4 +1,4 @@
 import TextContainer from './TextContainer';
 
-export * from './TextContainer';
+export {Props} from './TextContainer';
 export default TextContainer;

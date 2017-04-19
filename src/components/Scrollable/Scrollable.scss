@@ -1,10 +1,10 @@
 @import 'foundation/colors';
 @import 'foundation/utilities';
 
-$Shadow-color: rgba(color(black), 0.1);
-$Shadow-size: rem(20px);
-$Shadow-bottom: inset 0 (-1 * $Shadow-size) $Shadow-size (-1 * $Shadow-size) $Shadow-color;
-$Shadow-top: inset 0 $Shadow-size $Shadow-size (-1 * $Shadow-size) $Shadow-color;
+$shadow-color: rgba(color(black), 0.1);
+$shadow-size: rem(20px);
+$shadow-bottom: inset 0 (-1 * $shadow-size) $shadow-size (-1 * $shadow-size) $shadow-color;
+$shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size) $shadow-color;
 
 .Scrollable {
   -webkit-overflow-scrolling: touch;
@@ -19,13 +19,13 @@ $Shadow-top: inset 0 $Shadow-size $Shadow-size (-1 * $Shadow-size) $Shadow-color
 }
 
 .hasTopShadow {
-  box-shadow: $Shadow-top;
+  box-shadow: $shadow-top;
 }
 
 .hasBottomShadow {
-  box-shadow: $Shadow-bottom;
+  box-shadow: $shadow-bottom;
 }
 
 .hasTopShadow.hasBottomShadow {
-  box-shadow: $Shadow-top, $Shadow-bottom;
+  box-shadow: $shadow-top, $shadow-bottom;
 }

@@ -16,6 +16,7 @@ export default function TextStyle({
   const className = classNames(
     variation && styles[variationName('variation', variation)],
   );
+
   return (
     <span className={className}>
       {children}

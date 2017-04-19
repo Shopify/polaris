@@ -1,42 +1,25 @@
 @import 'foundation/spacing';
 @import 'foundation/utilities';
 
+/// Adjusts the spacing for the stack and contained items.
+/// @param {String} $spacing - The spacing variant to use.
+
+@mixin stack-spacing($spacing: base) {
+  margin-top: -1 * spacing($spacing);
+  margin-left: -1 * spacing($spacing);
+
+  > .Item {
+    margin-top: spacing($spacing);
+    margin-left: spacing($spacing);
+    max-width: calc(100% - #{spacing($spacing)});
+  }
+}
+
 .Stack {
+  @include stack-spacing;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
-}
-
-.noWrap {
-  flex-wrap: nowrap;
-  margin-top: 0;
-  margin-left: 0;
-
-  &:not(.vertical) {
-    > .StackItem {
-      margin-top: 0;
-    }
-
-    // Need to target this only within :not(.vertical)
-    // stylelint-disable-next-line selector-max-specificity
-    > .StackItem:first-child {
-      margin-left: 0;
-    }
-  }
-
-  &.vertical {
-    > .StackItem {
-      margin-left: 0;
-    }
-
-    // Need to target this only within .vertical
-    // stylelint-disable-next-line selector-max-specificity
-    > .StackItem:first-child {
-      margin-top: 0;
-    }
-  }
 }
 
 .vertical {
@@ -44,25 +27,15 @@
 }
 
 .spacingTight {
-  margin-top: -1 * spacing(tight);
-  margin-left: -1 * spacing(tight);
-
-  > .StackItem {
-    margin-top: spacing(tight);
-    margin-left: spacing(tight);
-    max-width: calc(100% - #{spacing(tight)});
-  }
+  @include stack-spacing(tight);
 }
 
 .spacingLoose {
-  margin-top: -1 * spacing(loose);
-  margin-left: -1 * spacing(loose);
+  @include stack-spacing(loose);
+}
 
-  > .StackItem {
-    margin-top: spacing(loose);
-    margin-left: spacing(loose);
-    max-width: calc(100% - #{spacing(loose)});
-  }
+.spacingExtraLoose {
+  @include stack-spacing(extra-loose);
 }
 
 .distributionLeading {
@@ -81,11 +54,11 @@
   justify-content: space-between;
 }
 
-.distributionFill > .StackItem {
+.distributionFill > .Item {
   flex: 1 1 auto;
 }
 
-.distributionFillEvenly > .StackItem {
+.distributionFillEvenly > .Item {
   flex: 1 1 auto;
 
   @supports (min-width: fit-content) {
@@ -114,11 +87,8 @@
   align-items: baseline;
 }
 
-.StackItem {
+.Item {
   flex: 0 0 auto;
-  margin-top: spacing();
-  margin-left: spacing();
-  max-width: calc(100% - #{spacing()});
   min-width: 0;
 }
 

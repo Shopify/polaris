@@ -6,29 +6,21 @@ import './App.scss';
 
 export type Props = Options;
 
+const METADATA = {
+  [name]: version,
+};
+
 export default class App extends React.Component<Props, never> {
   static childContextTypes = {
     easdk: React.PropTypes.instanceOf(EASDK),
   };
 
-  private easdk: EASDK;
-
-  constructor(props: Props) {
-    super();
-
-    const {
-      apiKey,
-      shopOrigin,
-      forceRedirect,
-      debug,
-    } = props;
-
-    const metadata = {
-      [name]: version,
-    };
-
-    this.easdk = new EASDK({apiKey, shopOrigin, forceRedirect, metadata, debug});
-  }
+  private easdk = new EASDK({
+    apiKey: this.props.apiKey,
+    shopOrigin: this.props.shopOrigin,
+    forceRedirect: this.props.forceRedirect,
+    debug: this.props.debug,
+  }, METADATA);
 
   getChildContext() {
     return {easdk: this.easdk};

@@ -3,31 +3,47 @@ import {SVGSource} from '@shopify/images';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import {
+  add,
+  alert,
   arrowDown,
   arrowLeft,
   arrowRight,
   arrowUp,
+  calendar,
   cancel,
-  circleCheckMark,
-  circleAlert,
-  checkmark,
-  cancelMicro,
-  checklist,
+  cancelSmall,
+  caretDown,
+  caretUp,
   chevronDown,
   chevronLeft,
   chevronRight,
   chevronUp,
-  confetti,
+  circleCancel,
+  circleChevronDown,
+  circleChevronLeft,
+  circleChevronRight,
+  circleChevronUp,
+  circlePlus,
+  conversation,
   delete as deleteIcon,
-  flag,
+  disable,
+  dispute,
+  duplicate,
+  embed,
+  export as exportIcon,
+  external,
+  horizontalDots,
+  import as importIcon,
+  notes,
+  print,
+  refresh,
+  risk,
   search,
-  caretDown,
-  caretUp,
+  view,
 } from '../../icons';
 
 import * as styles from './Icon.scss';
 
-export type Size = 8 | 10 | 12 | 16 | 20 | 24 | 40 | 80 | 'fill';
 export type Color = (
   'white' |
   'black' |
@@ -44,39 +60,60 @@ export type Color = (
 );
 
 export const BUNDLED_ICONS = {
+  add,
+  alert,
   arrowDown,
   arrowLeft,
   arrowRight,
   arrowUp,
+  calendar,
   cancel,
-  circleCheckMark,
-  circleAlert,
-  checkmark,
-  cancelMicro,
-  checklist,
+  cancelSmall,
+  caretDown,
+  caretUp,
   chevronDown,
   chevronLeft,
   chevronRight,
   chevronUp,
-  confetti,
+  circleCancel,
+  circleChevronDown,
+  circleChevronLeft,
+  circleChevronRight,
+  circleChevronUp,
+  circlePlus,
+  conversation,
   delete: deleteIcon,
-  flag,
+  disable,
+  dispute,
+  duplicate,
+  embed,
+  export: exportIcon,
+  external,
+  horizontalDots,
+  import: importIcon,
+  notes,
+  print,
+  refresh,
+  risk,
   search,
-  caretDown,
-  caretUp,
+  view,
 };
 
 const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink'];
 
 export interface Props {
   source: SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS,
-  size?: Size,
   color?: Color,
   backdrop?: boolean,
   accessibilityLabel?: string,
 }
 
-export default function Icon({source, size, color, backdrop, accessibilityLabel}: Props) {
+export default function Icon({
+  source,
+  color,
+  backdrop,
+  accessibilityLabel,
+}: Props) {
   if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
     // tslint:disable-next-line no-console
     console.warn(`The ${color} icon doesn't accept backdrops. The icon colors that have backdrops are: ${COLORS_WITH_BACKDROPS.join(', ')}`);
@@ -84,18 +121,17 @@ export default function Icon({source, size, color, backdrop, accessibilityLabel}
 
   const className = classNames(
     styles.Icon,
-    size && styles[variationName('size', size)],
     color && styles[variationName('color', color)],
     backdrop && styles.hasBackdrop,
   );
 
-  let content: React.ReactNode;
+  let contentMarkup: React.ReactNode;
 
   if (source === 'placeholder') {
-    content = <div className={styles.Placeholder} />;
+    contentMarkup = <div className={styles.Placeholder} />;
   } else {
     const iconSource = typeof source === 'string' ? BUNDLED_ICONS[source] : source;
-    content = (
+    contentMarkup = (
       <svg
         className={styles.Svg}
         viewBox={iconSource.viewBox}
@@ -106,7 +142,7 @@ export default function Icon({source, size, color, backdrop, accessibilityLabel}
 
   return (
     <span className={className} aria-label={accessibilityLabel}>
-      {content}
+      {contentMarkup}
     </span>
   );
 }

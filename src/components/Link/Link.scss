@@ -9,7 +9,14 @@
   background: none;
   border: none;
   font-size: inherit;
-  color: color(action);
+  color: color(blue);
   text-decoration: none;
   cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    color: color(blue, dark);
+  }
 }

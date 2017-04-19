@@ -1,27 +1,31 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import {noop} from '@shopify/javascript-utilities/other';
 import autobind from '@shopify/javascript-utilities/autobind';
 import {
   Range,
   Months,
   Year,
-  isDateBefore,
   isDateAfter,
+  isDateBefore,
   getNextDisplayYear,
   getNextDisplayMonth,
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
 } from '@shopify/javascript-utilities/dates';
-import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 
-import UnstyledButton from '../UnstyledButton';
-import Icon from '../Icon';
+import Button from '../Button';
+
 import Month from './Month';
 import * as styles from './DatePicker.scss';
 
+export {
+  Range,
+  Months,
+  Year,
+};
+
 export interface Props {
-  selected: Date | Range,
+  selected?: Date | Range,
   month: Months,
   year: Year,
   disableDatesBefore?: Date,
@@ -32,11 +36,9 @@ export interface Props {
 }
 
 export interface State {
-  hoverDate: Date,
-  focusDate: Date,
+  hoverDate?: Date,
+  focusDate?: Date,
 }
-
-const fakeDate = new Date(2099, 10, 10);
 
 export default class DatePicker extends React.PureComponent<Props, State> {
   constructor(props: Props) {
@@ -46,17 +48,8 @@ export default class DatePicker extends React.PureComponent<Props, State> {
     const range = selected instanceof Date ? {start: selected, end: selected} : selected;
 
     this.state = {
-      hoverDate: range.end,
-      focusDate: fakeDate,
+      hoverDate: range && range.end,
     };
-  }
-
-  componentDidMount() {
-    addEventListener(findDOMNode(this), 'keyup', this.handleKeyPress, {capture: true});
-  }
-
-  componentWillUnmount() {
-    removeEventListener(findDOMNode(this), 'keyup', this.handleKeyPress, true);
   }
 
   render() {
@@ -68,9 +61,10 @@ export default class DatePicker extends React.PureComponent<Props, State> {
       disableDatesAfter,
       selected,
     } = this.props;
+
     const {hoverDate, focusDate} = this.state;
-    const allowRange = !(selected instanceof Date);
-    const range = selected instanceof Date ? {start: selected, end: selected} : selected;
+    const allowRange = selected != null && !(selected instanceof Date);
+    const range = selected != null && selected instanceof Date ? {start: selected, end: selected} : selected;
 
     const showNextYear = getNextDisplayYear(month, year);
     const showNextMonth = getNextDisplayMonth(month);
@@ -87,12 +81,44 @@ export default class DatePicker extends React.PureComponent<Props, State> {
 
     const secondDatePicker = multiMonth
       ? (
-        <div role="grid" className={styles.Month}>
+        <Month
+          onFocus={this.handleFocus}
+          focusedDate={focusDate}
+          month={showNextMonth}
+          year={showNextYear}
+          selected={range}
+          hoverDate={hoverDate}
+          onChange={this.handleDateSelection}
+          onHover={this.handleHover}
+          disableDatesBefore={disableDatesBefore}
+          disableDatesAfter={disableDatesAfter}
+          allowRange={allowRange}
+        />
+      )
+      : null;
+
+    return (
+      <div className={styles.DatePicker} onKeyDown={handleKeyDown} onKeyUp={this.handleKeyUp}>
+        <div className={styles.Header}>
+          <Button
+            plain
+            icon="arrowLeft"
+            accessibilityLabel={`Show previous month, ${previousMonthName} ${showPreviousYear}`}
+            onClick={this.handleMonthChangeClick.bind(null, showPreviousMonth, showPreviousYear)}
+          />
+          <Button
+            plain
+            icon="arrowRight"
+            accessibilityLabel={`Show next month, ${nextMonth} ${nextYear}`}
+            onClick={this.handleMonthChangeClick.bind(null, showNextMonth, showNextYear)}
+          />
+        </div>
+        <div className={styles.MonthContainer}>
           <Month
             onFocus={this.handleFocus}
             focusedDate={focusDate}
-            month={showNextMonth}
-            year={showNextYear}
+            month={month}
+            year={year}
             selected={range}
             hoverDate={hoverDate}
             onChange={this.handleDateSelection}
@@ -101,44 +127,6 @@ export default class DatePicker extends React.PureComponent<Props, State> {
             disableDatesAfter={disableDatesAfter}
             allowRange={allowRange}
           />
-        </div>
-      )
-      : null;
-
-    return (
-      <div className={styles.DatePicker}>
-        <div className={styles.Header}>
-          <UnstyledButton
-            accessibilityLabel={`Show previous month, ${previousMonthName} ${showPreviousYear}`}
-            className={styles.Icon}
-            onClick={this.handleMonthChangeClick.bind(null, showPreviousMonth, showPreviousYear)}
-          >
-            <Icon source="chevronLeft" size={24} />
-          </UnstyledButton>
-          <UnstyledButton
-            accessibilityLabel={`Show next month, ${nextMonth} ${nextYear}`}
-            className={styles.Icon}
-            onClick={this.handleMonthChangeClick.bind(null, showNextMonth, showNextYear)}
-          >
-            <Icon source="chevronRight" size={24} />
-          </UnstyledButton>
-        </div>
-        <div className={styles.MonthContainer}>
-          <div role="grid" className={styles.Month}>
-            <Month
-              onFocus={this.handleFocus}
-              focusedDate={focusDate}
-              month={month}
-              year={year}
-              selected={range}
-              hoverDate={hoverDate}
-              onChange={this.handleDateSelection}
-              onHover={this.handleHover}
-              disableDatesBefore={disableDatesBefore}
-              disableDatesAfter={disableDatesAfter}
-              allowRange={allowRange}
-            />
-          </div>
           {secondDatePicker}
         </div>
       </div>
@@ -153,46 +141,47 @@ export default class DatePicker extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleKeyPress(event: KeyboardEvent) {
-    event.preventDefault();
-    const key = event.key;
+  private handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
+    const {key} = event;
     const {
       selected,
       disableDatesBefore,
       disableDatesAfter,
     } = this.props;
 
-    let {focusDate} = this.state;
+    const {focusDate} = this.state;
     const range = selected instanceof Date ? {start: selected, end: selected} : selected;
-    focusDate = focusDate === fakeDate ? range.start : focusDate;
+    const focusedDate = focusDate || (range && range.start);
+
+    if (focusedDate == null) { return; }
 
     if (key === 'ArrowUp') {
-      const tomorrow = new Date(focusDate);
-      tomorrow.setDate(focusDate.getDate() - 7);
-      if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
-        this.setFocusDateAndHandleMonthChange(tomorrow);
+      const previousWeek = new Date(focusedDate);
+      previousWeek.setDate(focusedDate.getDate() - 7);
+      if (!(disableDatesBefore && isDateBefore(previousWeek, disableDatesBefore))) {
+        this.setFocusDateAndHandleMonthChange(previousWeek);
       }
     }
 
     if (key === 'ArrowDown') {
-      const tomorrow = new Date(focusDate);
-      tomorrow.setDate(focusDate.getDate() + 7);
-      if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
-        this.setFocusDateAndHandleMonthChange(tomorrow);
+      const nextWeek = new Date(focusedDate);
+      nextWeek.setDate(focusedDate.getDate() + 7);
+      if (!(disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter))) {
+        this.setFocusDateAndHandleMonthChange(nextWeek);
       }
     }
 
     if (key === 'ArrowRight') {
-      const tomorrow = new Date(focusDate);
-      tomorrow.setDate(focusDate.getDate() + 1);
+      const tomorrow = new Date(focusedDate);
+      tomorrow.setDate(focusedDate.getDate() + 1);
       if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
         this.setFocusDateAndHandleMonthChange(tomorrow);
       }
     }
 
     if (key === 'ArrowLeft') {
-      const yesterday = new Date(focusDate);
-      yesterday.setDate(focusDate.getDate() - 1);
+      const yesterday = new Date(focusedDate);
+      yesterday.setDate(focusedDate.getDate() - 1);
       if (!(disableDatesBefore && isDateBefore(yesterday, disableDatesBefore))) {
         this.setFocusDateAndHandleMonthChange(yesterday);
       }
@@ -206,6 +195,7 @@ export default class DatePicker extends React.PureComponent<Props, State> {
       onMonthChange(date.getMonth(), date.getFullYear());
     }
     this.setState({
+      hoverDate: date,
       focusDate: date,
     });
   }
@@ -227,6 +217,9 @@ export default class DatePicker extends React.PureComponent<Props, State> {
   private handleMonthChangeClick(month: Months, year: Year) {
     const {onMonthChange} = this.props;
     if (!onMonthChange) { return; }
+    this.setState({
+      focusDate: undefined,
+    });
     onMonthChange(month, year);
   }
 
@@ -235,5 +228,14 @@ export default class DatePicker extends React.PureComponent<Props, State> {
     this.setState({
       hoverDate: date,
     });
+  }
+}
+
+function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+  const {key} = event;
+
+  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+    event.preventDefault();
+    event.stopPropagation();
   }
 }

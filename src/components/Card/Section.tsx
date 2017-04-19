@@ -6,7 +6,7 @@ import Subheading from '../Subheading';
 import * as styles from './Card.scss';
 
 export interface Props {
-  title?: React.ReactNode,
+  title?: string,
   children?: React.ReactNode,
   subdued?: boolean,
 }

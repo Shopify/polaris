@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Labelled, {Action, helpTextID} from '../Labelled';
+import Labelled, {Action, Error, helpTextID, errorID} from '../Labelled';
 import Icon from '../Icon';
 
 import * as styles from './Select.scss';
@@ -26,7 +27,7 @@ export interface Props {
   helpText?: React.ReactNode,
   id?: string,
   name?: string,
-  error?: boolean,
+  error?: Error,
   disabled?: boolean,
   value?: string,
   placeholder?: string,
@@ -35,8 +36,11 @@ export interface Props {
   onBlur?(): void,
 }
 
+const PLACEHOLDER_VALUE = '__placeholder__';
+const getUniqueID = createUniqueIDFactory('Select');
+
 export default function Select({
-  id = uniqueID(),
+  id = getUniqueID(),
   name,
   groups,
   options,
@@ -68,16 +72,16 @@ export default function Select({
     isPlaceholder && styles.placeholder,
   );
 
-  const handleChange = onChange && (({currentTarget}: React.FormEvent<HTMLSelectElement>) => {
-    onChange(currentTarget.value);
-  });
+  const handleChange = onChange
+    ? ((event: React.ChangeEvent<HTMLSelectElement>) => onChange(event.currentTarget.value))
+    : undefined;
 
-  const describedBy = helpText
-    ? helpTextID(id)
-    : null;
+  const describedBy: string[] = [];
+  if (helpText) { describedBy.push(helpTextID(id)); }
+  if (error && typeof error === 'string') { describedBy.push(errorID(id)); }
 
   const placeholderOption = isPlaceholder
-    ? <option label={placeholder} selected disabled hidden />
+    ? <option label={placeholder} value={PLACEHOLDER_VALUE} disabled hidden />
     : null;
 
   return (
@@ -94,19 +98,21 @@ export default function Select({
           id={id}
           name={name}
           value={value}
+          defaultValue={PLACEHOLDER_VALUE}
           className={styles.Input}
           disabled={disabled}
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={handleChange}
-          aria-describedby={describedBy}
+          aria-invalid={Boolean(error)}
+          aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
         >
           {placeholderOption}
           {optionsMarkup}
         </select>
 
         <div className={styles.Icon}>
-          <Icon source={arrowIcon} size="fill" />
+          <Icon source={arrowIcon} />
         </div>
         <div className={styles.Backdrop} />
       </div>
@@ -133,9 +139,4 @@ function renderGroup(groupOrOption: Group | Option) {
   }
 
   return renderOption(groupOrOption as Option);
-}
-
-let id = 1;
-function uniqueID() {
-  return `Select${id++}`;
 }

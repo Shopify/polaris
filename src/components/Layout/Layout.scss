@@ -1,29 +1,33 @@
 @import 'foundation/borders';
 @import 'foundation/breakpoints';
+@import 'foundation/layout';
 @import 'foundation/spacing';
 @import 'foundation/utilities';
 
-$layout-secondary-basis: 15rem;
-$layout-primary-basis: 30rem;
+$secondary-basis: layout-column-width(secondary, min);
+$primary-basis: layout-column-width(primary, min);
+$relative-size: $primary-basis / $secondary-basis;
 
 .Layout {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: -1 * spacing(loose);
+  margin-left: -1 * spacing(loose);
 }
 
 .Section {
   @include layout-flex-fix;
-  flex: 2 1 $layout-primary-basis;
-  margin-top: spacing();
-  margin-left: spacing();
+  flex: $relative-size $relative-size $primary-basis;
+  margin-top: spacing(loose);
+  margin-left: spacing(loose);
+  min-width: 51%;
 }
 
 .secondary {
-  flex: 1 0 $layout-secondary-basis;
+  flex: 1 1 $secondary-basis;
+  min-width: 0;
 }
 
 .Item {
@@ -32,12 +36,15 @@ $layout-primary-basis: 30rem;
 
 .AnnotatedSection {
   flex: 1 1 100%;
-  margin-top: spacing();
-  margin-left: spacing();
+  margin-top: spacing(loose);
+  margin-left: spacing(loose);
+}
 
+.Section,
+.AnnotatedSection {
   + .AnnotatedSection {
-    @include breakpoint-after(breakpoint('medium')) {
-      padding-top: spacing();
+    @include page-content-when-not-fully-condensed {
+      padding-top: spacing(loose);
       border-top: border();
     }
   }
@@ -46,22 +53,23 @@ $layout-primary-basis: 30rem;
 .AnnotationWrapper {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
+  margin-top: -1 * spacing(loose);
+  margin-left: -1 * spacing(loose);
 }
 
 .AnnotationContent {
-  flex: 2 1 $layout-primary-basis;
-  margin-top: spacing();
-  margin-left: spacing();
+  flex: $relative-size $relative-size $primary-basis;
+  margin-top: spacing(loose);
+  margin-left: spacing(loose);
 }
 
 .Annotation {
-  flex: 1 0 $layout-secondary-basis;
-  margin-top: spacing();
-  margin-left: spacing();
+  flex: 1 1 $secondary-basis;
+  margin-top: spacing(loose);
+  margin-left: spacing(loose);
+  padding: spacing(loose) spacing(loose) 0;
 
-  > * + * {
-    margin-top: spacing();
+  @include page-content-when-layout-not-stacked {
+    padding: spacing(loose) spacing(loose) spacing(loose) 0;
   }
 }

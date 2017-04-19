@@ -10,19 +10,20 @@ $border-radius: 999px;
 .FooterHelp {
   display: flex;
   justify-content: center;
-  margin: spacing();
+  margin: spacing(loose);
 }
 
 .Content {
   display: inline-flex;
   align-items: center;
-  padding: spacing() spacing(loose);
+  padding: spacing(tight) spacing(tight) * 3;
   border: border();
   border-radius: $border-radius;
 }
 
 .Icon {
-  margin-right: spacing();
+  margin-left: -1 * spacing();
+  margin-right: spacing(tight);
   color: color(ink, lightest);
 }
 

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {Action} from '../types';
+
+import {Action} from '../../types';
 import {buttonFrom} from '../Button';
+
 import * as styles from './Label.scss';
 
 export {Action};
@@ -9,7 +11,6 @@ export {Action};
 export interface Props {
   children?: string,
   id: string,
-  error?: boolean,
   action?: Action,
   hidden?: boolean,
 };
@@ -18,10 +19,9 @@ export function labelID(id: string) {
   return `${id}Label`;
 }
 
-export default function Label({children, id, action, error, hidden}: Props) {
+export default function Label({children, id, action, hidden}: Props) {
   const className = classNames(
     styles.Label,
-    error && styles.error,
     hidden && styles.hidden,
   );
 
