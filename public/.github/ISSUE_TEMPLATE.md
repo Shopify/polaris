@@ -24,4 +24,4 @@ For issues, what actually happens? Include an error message (in a `<details></de
 - Device:
 - Operating System:
 
-**NOTE:** This repo is only used for reporting bugs and new feature requests. We are not accepting PRs at this point in time.
+**NOTE:** This repo is only used for reporting issues and new feature requests. We are not accepting pull requests at this point in time.
