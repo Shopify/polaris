@@ -16,7 +16,7 @@
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
     "check": "npm-run-all lint ts test",
-    "clean": "rimraf build styles types 'intermediate-build' 'index.*' 'embedded.js' 'styles.{css,scss}'",
+    "clean": "rimraf build styles types 'build-intermediate' 'index.*' 'embedded.js' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize",
     "build": "babel-node ./scripts/build.js",
