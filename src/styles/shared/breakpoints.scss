@@ -3,18 +3,18 @@
 
 $has-nav: false !default;
 
-$stacked-content: em(layout-column-width(primary, min) + layout-column-width(secondary, min) + layout-column-width(inner-spacing));
-$not-condensed-content: em(layout-column-width(page-content, not-condensed));
-$partially-condensed-content: em(layout-column-width(page-content, partially-condensed));
+$stacked-content: em(layout-width(primary, min) + layout-width(secondary, min) + layout-width(inner-spacing));
+$not-condensed-content: em(layout-width(page-content, not-condensed));
+$partially-condensed-content: em(layout-width(page-content, partially-condensed));
 
-$not-condensed-outer-spacing: em(2 * layout-column-width(outer-spacing, max));
-$partially-condensed-outer-spacing: em(2 * layout-column-width(outer-spacing, min));
+$not-condensed-outer-spacing: em(2 * layout-width(outer-spacing, max));
+$partially-condensed-outer-spacing: em(2 * layout-width(outer-spacing, min));
 
 $not-condensed-min-page: $not-condensed-content + $not-condensed-outer-spacing;
 $partially-condensed-min-page: $partially-condensed-content + $partially-condensed-outer-spacing;
 
-$nav-size: em(layout-column-width(nav));
-$nav-min-window: em(layout-column-width(page-with-nav));
+$nav-size: em(layout-width(nav));
+$nav-min-window: em(layout-width(page-with-nav));
 
 @function breakpoint($value) {
   @return em($value);

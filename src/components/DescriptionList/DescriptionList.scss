@@ -1,7 +1,7 @@
 @import 'foundation/borders';
-@import 'foundation/breakpoints';
 @import 'foundation/spacing';
-@import 'foundation/typography';
+@import 'shared/breakpoints';
+@import 'shared/typography';
 
 $breakpoint: 550px;
 

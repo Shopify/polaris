@@ -1,10 +1,8 @@
-@import 'foundation/breakpoints';
-@import 'foundation/layout';
+@import 'shared/breakpoints';
 @import 'foundation/spacing';
 @import 'foundation/borders';
 
 .PageActions {
-  max-width: layout-max-width();
   margin: 0 auto;
   padding: spacing(loose);
   border-top: border();

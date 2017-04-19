@@ -1,5 +1,5 @@
-@import 'foundation/typography';
 @import 'foundation/spacing';
+@import 'shared/typography';
 
 .TextContainer {
   @include text-style-body;

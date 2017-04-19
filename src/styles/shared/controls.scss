@@ -1,10 +1,10 @@
-@import 'borders';
-@import 'border-radius';
-@import 'colors';
-@import 'duration';
-@import 'easing';
-@import 'shadows';
-@import 'typography';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/shadows';
+@import 'foundation/typography';
 
 @function control-height() {
   @return rem(36px);

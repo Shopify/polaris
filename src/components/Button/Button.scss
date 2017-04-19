@@ -1,7 +1,7 @@
 @import 'foundation/borders';
 @import 'foundation/border-radius';
 @import 'foundation/colors';
-@import 'foundation/controls';
+@import 'shared/controls';
 @import 'foundation/spacing';
 @import 'foundation/typography';
 @import 'foundation/duration';
@@ -9,6 +9,7 @@
 @import 'foundation/shadows';
 @import 'shared/buttons';
 @import 'shared/icons';
+@import 'shared/typography';
 
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;

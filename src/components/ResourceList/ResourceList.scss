@@ -1,11 +1,12 @@
-@import 'foundation/typography';
-@import 'foundation/spacing';
 @import 'foundation/borders';
-@import 'foundation/colors';
-@import 'foundation/breakpoints';
 @import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/spacing';
 @import 'foundation/z-index';
 @import 'foundation/utilities';
+@import 'shared/breakpoints';
+@import 'shared/layout';
+@import 'shared/typography';
 
 $stacking-order: (
   link: 10,

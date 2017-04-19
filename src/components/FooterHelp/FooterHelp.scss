@@ -2,7 +2,7 @@
 @import 'foundation/border-radius';
 @import 'foundation/colors';
 @import 'foundation/spacing';
-@import 'foundation/typography';
+@import 'shared/typography';
 
 // reduces the radii of the circle to half the size of the smallest side
 $border-radius: 999px;

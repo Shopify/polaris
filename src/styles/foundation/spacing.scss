@@ -24,13 +24,3 @@ $spacing-data: (
     @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}';
   }
 }
-
-
-/// Adds spacing between all direct children.
-/// @param {String} $variant - The key for the given variant.
-
-@mixin vertical-rhythm($variant: base) {
-  > *:not(.hide) + * {
-    margin-top: spacing($variant);
-  }
-}

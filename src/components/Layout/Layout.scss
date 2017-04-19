@@ -1,11 +1,11 @@
 @import 'foundation/borders';
-@import 'foundation/breakpoints';
-@import 'foundation/layout';
+@import 'shared/breakpoints';
 @import 'foundation/spacing';
 @import 'foundation/utilities';
+@import 'shared/layout';
 
-$secondary-basis: layout-column-width(secondary, min);
-$primary-basis: layout-column-width(primary, min);
+$secondary-basis: layout-width(secondary, min);
+$primary-basis: layout-width(primary, min);
 $relative-size: $primary-basis / $secondary-basis;
 
 .Layout {

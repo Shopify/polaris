@@ -1,7 +1,8 @@
 @import 'foundation/spacing';
-@import 'foundation/typography';
 @import 'foundation/utilities';
+@import 'shared/accessibility';
 @import 'shared/icons';
+@import 'shared/typography';
 
 $control-size: rem(16px);
 

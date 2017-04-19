@@ -1,5 +1,5 @@
 @import 'foundation/border-radius';
-@import 'foundation/breakpoints';
+@import 'shared/breakpoints';
 @import 'foundation/colors';
 @import 'foundation/layout';
 @import 'foundation/spacing';
@@ -15,7 +15,7 @@ $stacking-order: (
 
 .Page {
   margin: 0 auto;
-  max-width: layout-max-width();
+  max-width: layout-width(primary, max) + layout-width(secondary, max) + layout-width(inner-spacing);
   padding: spacing(extra-loose) 0;
 
   @include page-content-when-not-fully-condensed {

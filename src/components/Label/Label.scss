@@ -1,6 +1,6 @@
 @import 'foundation/colors';
-@import 'foundation/typography';
-@import 'foundation/utilities';
+@import 'shared/accessibility';
+@import 'shared/typography';
 
 .Label {
   display: flex;

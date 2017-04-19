@@ -1,8 +1,8 @@
 @import 'foundation/colors';
 @import 'foundation/spacing';
-@import 'foundation/typography';
-@import 'foundation/utilities';
+@import 'shared/accessibility';
 @import 'shared/icons';
+@import 'shared/typography';
 
 .hidden > .LabelWrapper {
   @include visually-hidden;
