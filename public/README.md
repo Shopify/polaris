@@ -62,7 +62,7 @@ We have bundled our component CSS and are making it available via our CDN. The C
 2. Include the markup and associated classes in your HTML document:
 
 ```html
-<button class="Polaris-Button">Example Button</button>
+<button class="Polaris-Button">Example button</button>
 ```
 
 ## Examples

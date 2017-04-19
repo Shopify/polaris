@@ -90,7 +90,7 @@ Include the CSS stylesheet in your HTML:
 Add the appropriate classes to your HTML elements:
 
 ```html
-<button class="Polaris-Button">Example Button</button>
+<button class="Polaris-Button">Example button</button>
 ```
 
 ---
