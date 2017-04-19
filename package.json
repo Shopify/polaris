@@ -24,8 +24,10 @@
     "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "cdn:deploy": "node ./scripts/deploy.js",
     "cdn": "npm-run-all cdn:secrets cdn:deploy",
-    "prepublish": "in-publish && yarn run build || :",
-    "postpublish": "in-publish && yarn run cdn || :"
+    "hide-private-readme": "shx mv README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
+    "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
+    "prepublish": "in-publish && yarn run build hide-private-readme || :",
+    "postpublish": "in-publish && yarn run cdn show-private-readme|| :"
   },
   "devDependencies": {
     "@shopify/images": "^1.0.0",
@@ -71,6 +73,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-pluginutils": "^2.0.1",
     "shelljs": "^0.7.7",
+    "shx": "^0.2.2",
     "svgo": "^0.7.2",
     "tslint": "^4.4.2",
     "tslint-config-shopify": "^1.1.4",

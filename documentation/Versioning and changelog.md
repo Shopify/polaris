@@ -5,7 +5,7 @@ The changelog is prepared manually immediately before a release. Each changelog 
 ```
 ## 2.0.0 (April 20, 2017)
 ### Breaking changes
-* A change ([#100](https://github.com/shopify/polaris-internal/pull/100))
+* A change ([#100](https://github.com/shopify/polaris/pull/100))
 ```
 
 The possible groups in which to categorize changes are:
