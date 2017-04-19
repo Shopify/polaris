@@ -1,9 +1,13 @@
 {
   "name": "@shopify/quilt",
   "version": "0.15.1",
-  "license": "MIT",
+  "license": "SEE LICENSE IN README.md",
   "keywords": [
-    "shopify"
+    "shopify",
+    "polaris",
+    "react",
+    "components",
+    "component library"
   ],
   "main": "index.js",
   "module": "index.es.js",

@@ -40,7 +40,7 @@ yarn add @shopify/polaris
 2. Include the component in your project:
 
 ```javascript
-import { Button } from '@shopify/polaris';
+import {Button} from '@shopify/polaris';
 ```
 
 3. Tell React to render the element in the DOM:
@@ -87,6 +87,10 @@ Additional resources:
 - Online training courses at [reacttraining.com](http://reacttraining.com), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](http://reactforbeginners.com).
 - The community resources in [Awesome React](https://github.com/enaqx/awesome-react).
 - As questions and find answers in the various [React support communities](https://facebook.github.io/react/community/support.html).
+
+## Licenses
+* Source code is licensed under [MIT](https://opensource.org/licenses/MIT)
+* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
 
 ## Feedback
 [Create an issue or feature request](https://github.com/Shopify/polaris/issues/new).

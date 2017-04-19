@@ -70,7 +70,7 @@ Include the CSS in your HTML:
 Include the component in your project:
 
 ```javascript
-import { Button } from'@shopify/polaris';
+import {Button} from'@shopify/polaris';
 ```
 
 Tell React to render the element in the DOM:
