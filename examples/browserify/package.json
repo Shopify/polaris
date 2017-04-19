@@ -7,7 +7,7 @@
   "scripts": {
     "prebuild": "shx rm -rf build && shx mkdir build && shx cp src/index.html build",
     "build": "browserify src/index.js -o build/bundle.js",
-    "start": "yarn build && watchify src/index.js -o build/bundle.js"
+    "start": "yarn build && budo src/index.js:bundle.js --dir build --live --open"
   },
   "dependencies": {
     "@shopify/quilt": "^0.14.2",
@@ -19,8 +19,8 @@
     "babel-preset-react": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
-    "shx": "^0.2.2",
-    "watchify": "^3.9.0"
+    "budo": "^9.4.7",
+    "shx": "^0.2.2"
   },
   "browserify": {
     "transform": [
