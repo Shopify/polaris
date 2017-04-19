@@ -26,8 +26,8 @@
     "cdn": "npm-run-all cdn:secrets cdn:deploy",
     "hide-private-readme": "shx mv README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
-    "prepublish": "in-publish && yarn run build || :",
-    "postpublish": "in-publish && yarn run cdn || :"
+    "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
+    "postpublish": "in-publish && npm-run-all cdn show-private-readme || :"
   },
   "devDependencies": {
     "@shopify/images": "^1.0.0",
