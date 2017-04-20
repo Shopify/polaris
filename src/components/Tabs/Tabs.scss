@@ -80,6 +80,10 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     }
   }
 
+  &:visited {
+    color: color(ink, lighter);
+  }
+
   &.Tab-selected {
     .Title {
       border-bottom: $border-bottom-height solid color(indigo);

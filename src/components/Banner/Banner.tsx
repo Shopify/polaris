@@ -9,11 +9,14 @@ import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
 import * as styles from './Banner.scss';
-import circleAlert from './icons/circle-alert.svg';
-import circleCheckMark from './icons/circle-check-mark.svg';
-import confetti from './icons/confetti.svg';
 
-export type Status = 'success' | 'info' | 'attention' | 'warning' | 'critical';
+import successIcon from './icons/circle-check-mark.svg';
+import infoIcon from './icons/flag.svg';
+import warningIcon from './icons/circle-alert.svg';
+import criticalIcon from './icons/circle-barred.svg';
+import fallbackIcon from './icons/confetti.svg';
+
+export type Status = 'success' | 'info' | 'warning' | 'critical';
 
 export interface Props {
   icon?: IconProps['source'],
@@ -40,23 +43,23 @@ export default function Banner({
   switch (status) {
     case 'success':
       color = 'greenDark';
-      defaultIcon = circleCheckMark;
+      defaultIcon = successIcon;
       break;
-    case 'attention' :
+    case 'info' :
       color = 'tealDark';
-      defaultIcon = confetti;
+      defaultIcon = infoIcon;
       break;
     case 'warning':
       color = 'yellowDark';
-      defaultIcon = circleAlert;
+      defaultIcon = warningIcon;
       break;
     case 'critical':
       color = 'redDark';
-      defaultIcon = circleAlert;
+      defaultIcon = criticalIcon;
       break;
     default:
       color = 'ink';
-      defaultIcon = circleCheckMark;
+      defaultIcon = fallbackIcon;
   }
 
   const className = classNames(

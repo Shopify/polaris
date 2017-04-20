@@ -22,10 +22,13 @@
   @if $style == base {
     background: color(sky, dark);
     border: border(transparent);
-    box-shadow: shadow(faint);
+    box-shadow:
+      0 0 0 1px transparent,
+      shadow(faint);
     border-radius: border-radius();
-    will-change: box-shadow;
-    transition: box-shadow duration() easing();
+    transition-property: box-shadow, background;
+    transition-duration: duration();
+    transition-timing-function: easing();
 
     &::after {
       content: '';
@@ -40,12 +43,14 @@
     }
   } @else if $style == focused {
     background: color(indigo);
-    box-shadow: 0 0 0 1px color(indigo);
+    box-shadow:
+      0 0 0 1px color(indigo),
+      shadow(transparent);
 
     &::after { background: color(white); }
   } @else if $style == error {
     background: color(red);
-    box-shadow: none;
+    box-shadow: 0 0 0 1px transparent;
 
     &::after { background: color(red, lighter); }
   } @else if $style == disabled {

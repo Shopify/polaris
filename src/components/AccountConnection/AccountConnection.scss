@@ -3,3 +3,9 @@
 .TermsOfService {
   margin-top: spacing(loose);
 }
+
+.Content {
+  > * + * {
+    margin-top: spacing(tight);
+  }
+}

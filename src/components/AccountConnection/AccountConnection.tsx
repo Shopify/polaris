@@ -6,7 +6,6 @@ import {buttonFrom} from '../Button';
 import Card from '../Card';
 import SettingAction from '../SettingAction';
 import Stack from '../Stack';
-import TextContainer from '../TextContainer';
 import TextStyle from '../TextStyle';
 
 import * as styles from './AccountConnection.scss';
@@ -43,9 +42,12 @@ export default function AccountConnection({
     )
     : null;
 
-  const titleMarkup = title
-    ? <div>{title}</div>
-    : <div>{accountName}</div>;
+  let titleMarkup: React.ReactNode = null;
+  if (title) {
+    titleMarkup = <div>{title}</div>;
+  } else if (accountName) {
+    titleMarkup = <div>{accountName}</div>;
+  }
 
   const detailsMarkup = details
     ? <div><TextStyle variation="subdued">{details}</TextStyle></div>
@@ -65,10 +67,10 @@ export default function AccountConnection({
         <Stack>
           {avatarMarkup}
           <Stack.Item fill>
-            <TextContainer>
+            <div className={styles.Content}>
               {titleMarkup}
               {detailsMarkup}
-            </TextContainer>
+            </div>
           </Stack.Item>
         </Stack>
       </SettingAction>

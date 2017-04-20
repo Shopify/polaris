@@ -67,10 +67,10 @@ $stacking-order: (
 .Navigation {
   display: flex;
   justify-content: space-between;
+}
 
-  > *:last-child {
-    margin-left: auto;
-  }
+.Pagination {
+  margin-left: auto;
 }
 
 .Actions {
@@ -81,6 +81,10 @@ $stacking-order: (
   @include page-content-when-not-fully-condensed {
     margin-top: $actions-vertical-spacing;
   }
+}
+
+.SecondaryActions {
+  margin-right: auto;
 }
 
 .PrimaryAction {

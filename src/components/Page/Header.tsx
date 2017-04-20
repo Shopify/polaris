@@ -46,11 +46,19 @@ export default function Header({
     : null;
 
   const secondaryActionsMarkup = secondaryActions
-    ? <div>{secondaryActionsFrom(secondaryActions)}</div>
+    ? (
+      <div className={styles.SecondaryActions}>
+        {secondaryActionsFrom(secondaryActions)}
+      </div>
+    )
     : null;
 
   const paginationMarkup = pagination
-    ? <Pagination {...pagination} plain />
+    ? (
+      <div className={styles.Pagination}>
+        <Pagination {...pagination} plain />
+      </div>
+    )
     : null;
 
   const actionsMarkup = primaryActionMarkup || secondaryActionsMarkup

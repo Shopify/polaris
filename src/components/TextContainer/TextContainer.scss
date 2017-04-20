@@ -10,6 +10,6 @@
 
   *:not(:last-child) {
     margin: 0;
-    margin-bottom: (1.5 * spacing());
+    margin-bottom: (1.5 * spacing(tight));
   }
 }

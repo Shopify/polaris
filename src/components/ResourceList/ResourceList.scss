@@ -21,6 +21,8 @@ $thumbnail-small-size: rem(40px);
 $thumbnail-medium-size: rem(60px);
 $thumbnail-large-size: rem(80px);
 
+$action-button-height: rem(30px);
+
 .ResourceList {
   margin: 0;
   padding: 0;
@@ -155,6 +157,7 @@ $thumbnail-large-size: rem(80px);
   color: inherit;
   text-decoration: none;
   hyphens: auto;
+  min-height: $action-button-height;
 
   @include page-content-when-partially-condensed {
     flex-direction: column;

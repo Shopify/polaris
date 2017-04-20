@@ -280,7 +280,9 @@ function getVisibleAndHiddenTabIndices(
 ) {
   const sumTabWidths = tabWidths.reduce((sum, width) => sum + width, 0);
 
-  const arrayOfTabIndices = Array.from(tabs.keys());
+  const arrayOfTabIndices = tabs.map((_, index) => {
+    return index;
+  });
 
   const visibleTabs: number[] = [];
   const hiddenTabs: number[] = [];

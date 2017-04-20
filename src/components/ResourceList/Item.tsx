@@ -194,7 +194,14 @@ export default class Item extends React.PureComponent<Props, State> {
         </div>
       )
       : (
-        <div ref={this.setNode} className={className}>
+        <div
+          ref={this.setNode}
+          className={className}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onMouseEnter={this.mouseEnter}
+          onMouseLeave={this.mouseLeave}
+        >
           {containerMarkup}
         </div>
       );
