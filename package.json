@@ -29,6 +29,8 @@
     "cdn:deploy": "node ./scripts/deploy.js",
     "cdn": "npm-run-all cdn:secrets cdn:deploy",
     "postinstall": "npm rebuild node-sass",
+    "prepublic-release": "rimraf sandbox && yarn run build",
+    "public-release": "babel-node ./scripts/public-repo-deploy.js",
     "hide-private-readme": "shx mv README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
     "prepublish": "in-publish && npm-run-all build hide-private-readme || :",

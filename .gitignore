@@ -8,5 +8,6 @@ node_modules
 /styles.scss
 /styles
 /embedded.js
+/sandbox
 .DS_Store
 *.scss.d.ts
