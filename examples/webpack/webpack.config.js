@@ -21,11 +21,16 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         include: join(__dirname, 'src'),
-        use: [{ loader: 'babel-loader'}],
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react'],
+          },
+        }],
       },
       {
-        test: /\.(css)$/,
-        loader: 'css'
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ],
       },
     ],
   },
