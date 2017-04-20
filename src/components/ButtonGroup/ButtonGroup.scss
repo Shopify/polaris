@@ -1,0 +1,71 @@
+@import 'foundation/border-radius';
+@import 'foundation/spacing';
+@import 'foundation/z-index';
+
+$stacking-order: (
+  item: 10,
+  focused: 20,
+);
+
+$plain-horizontal-spacing: spacing(tight);
+$item-spacing: spacing(tight);
+
+.ButtonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: (-1 * $item-spacing);
+  margin-left: (-1 * $item-spacing);
+}
+
+.segmented {
+  display: flex;
+
+  // This is a violation of our component model, but it's the cleanest
+  // way to remove the border radii on connected elements.
+  // stylelint-disable declaration-no-important
+
+  .Item {
+    position: relative;
+    z-index: z-index(item, $stacking-order);
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+
+    * {
+      border-radius: 0 !important;
+    }
+
+    &:first-child * {
+      border-top-left-radius: border-radius() !important;
+      border-bottom-left-radius: border-radius() !important;
+    }
+
+    &:last-child * {
+      border-top-right-radius: border-radius() !important;
+      border-bottom-right-radius: border-radius() !important;
+    }
+  }
+
+  // stylelint-enable declaration-no-important
+
+  .Item-focused {
+    z-index: z-index(focused, $stacking-order);
+  }
+}
+
+.Item {
+  margin-top: $item-spacing;
+  margin-left: $item-spacing;
+}
+
+.Item-plain {
+  &:not(:first-child) {
+    margin-left: $item-spacing + $plain-horizontal-spacing;
+  }
+
+  &:not(:last-child) {
+    margin-right: $plain-horizontal-spacing;
+  }
+}

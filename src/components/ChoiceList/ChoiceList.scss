@@ -1,0 +1,26 @@
+@import 'foundation/spacing';
+@import 'shared/accessibility';
+@import 'shared/typography';
+
+.ChoiceList {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.titleHidden > .Title {
+  @include visually-hidden;
+}
+
+.Choices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Title {
+  @include text-style-body;
+  display: block;
+  margin: 0 0 spacing(extra-tight);
+  padding: 0;
+}

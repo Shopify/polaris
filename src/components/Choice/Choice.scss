@@ -1,0 +1,68 @@
+@import 'foundation/spacing';
+@import 'foundation/utilities';
+@import 'shared/accessibility';
+@import 'shared/icons';
+@import 'shared/typography';
+
+$control-size: rem(16px);
+
+// Need to push the control down just a little to have it appear
+// vertically centered with the label.
+$control-vertical-adjustment: 2px;
+
+// Negative margin on the left compensates for the icon being inset
+// within its viewbox.
+$icon-horizontal-adjustment: 2px;
+
+.Choice {
+  display: flex;
+  align-items: flex-start;
+  padding: spacing(extra-tight) 0;
+}
+
+.labelHidden {
+  > .Label {
+    @include visually-hidden;
+  }
+}
+
+.Control {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  height: $control-size;
+  width: $control-size;
+  margin-top: $control-vertical-adjustment;
+  margin-right: spacing(tight);
+
+  > * {
+    width: 100%;
+  }
+}
+
+.Label {
+  @include text-style-body;
+  flex: 1 1 0%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.Descriptions {
+  padding-left: spacing(tight) + $control-size;
+}
+
+.HelpText {
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  margin-bottom: spacing(extra-tight);
+}
+
+.Error {
+  display: flex;
+  margin-bottom: spacing(extra-tight);
+  color: color(red, dark);
+}
+
+.ErrorIcon {
+  @include recolor-icon(color(red));
+  margin: 0 spacing(extra-tight) 0 (-1 * $icon-horizontal-adjustment);
+}

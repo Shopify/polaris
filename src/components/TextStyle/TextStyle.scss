@@ -1,0 +1,18 @@
+@import 'foundation/colors';
+@import 'shared/typography';
+
+.variationPositive {
+  color: color(green, dark);
+}
+
+.variationNegative {
+  color: color(red, dark);
+}
+
+.variationStrong {
+  @include text-emphasis-strong;
+}
+
+.variationSubdued {
+  @include text-emphasis-subdued;
+}

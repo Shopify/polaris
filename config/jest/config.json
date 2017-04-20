@@ -1,0 +1,20 @@
+{
+  "testRegex": "[\\w+]\\.test\\.(tsx?|js)$",
+  "roots": [
+    "<rootDir>/src",
+    "<rootDir>/tests"
+  ],
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js"
+  ],
+  "transform": {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/transformers/file.js",
+    "\\.svg$": "<rootDir>/config/jest/transformers/svg.js",
+    "\\.tsx?$": "<rootDir>/config/jest/transformers/typescript.js"
+  },
+  "moduleNameMapper": {
+    "\\.(s?css)$": "identity-obj-proxy"
+  }
+}

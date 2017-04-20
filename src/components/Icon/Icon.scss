@@ -1,0 +1,231 @@
+@import 'foundation/colors';
+@import 'foundation/utilities';
+@import 'foundation/spacing';
+@import 'foundation/z-index';
+
+$stacking-order: (
+  backdrop: 1,
+  icon: 2,
+);
+
+.Icon {
+  display: block;
+  height: rem(20px);
+  width: rem(20px);
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+.hasBackdrop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: spacing(tight);
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: z-index(backdrop, $stacking-order);
+    top: -1 * spacing(tight);
+    bottom: -1 * spacing(tight);
+    left: -1 * spacing(tight);
+    right: -1 * spacing(tight);
+    border-radius: 50%;
+  }
+}
+
+.colorWhite {
+  fill: color(white);
+}
+
+.colorBlack {
+  fill: color(black);
+}
+
+.colorSkyLighter {
+  fill: color(sky, lighter);
+}
+
+.colorSkyLight {
+  fill: color(sky, light);
+}
+
+.colorSky {
+  fill: color(sky);
+}
+
+.colorSkyDark {
+  fill: color(sky, dark);
+}
+
+.colorInkLightest {
+  fill: color(ink, lightest);
+}
+
+.colorInkLighter {
+  fill: color(ink, lighter);
+}
+
+.colorInkLight {
+  fill: color(ink, light);
+}
+
+.colorInk {
+  fill: color(ink);
+
+  &::after {
+    background-color: color(sky);
+  }
+}
+
+.colorBlueLighter {
+  fill: color(blue, lighter);
+}
+
+.colorBlueLight {
+  fill: color(blue, light);
+}
+
+.colorBlue {
+  fill: color(blue);
+}
+
+.colorBlueDark {
+  fill: color(blue, dark);
+
+  &::after {
+    background-color: color(blue, light);
+  }
+}
+
+.colorBlueDarker {
+  fill: color(blue, darker);
+}
+
+.colorIndigoLighter {
+  fill: color(indigo, lighter);
+}
+
+.colorIndigoLight {
+  fill: color(indigo, light);
+}
+
+.colorIndigo {
+  fill: color(indigo);
+}
+
+.colorIndigoDark {
+  fill: color(indigo, dark);
+}
+
+.colorIndigoDarker {
+  fill: color(indigo, darker);
+}
+
+.colorTealLighter {
+  fill: color(teal, lighter);
+}
+
+.colorTealLight {
+  fill: color(teal, light);
+}
+
+.colorTeal {
+  fill: color(teal);
+
+  &::after {
+    background-color: color(white);
+  }
+}
+
+.colorTealDark {
+  fill: color(teal, dark);
+
+  &::after {
+    background-color: color(teal, light);
+  }
+}
+
+.colorTealDarker {
+  fill: color(teal, darker);
+}
+
+.colorGreenLighter {
+  fill: color(green, lighter);
+}
+
+.colorGreen {
+  fill: color(green);
+
+  &::after {
+    background-color: color(green, lighter);
+  }
+}
+
+.colorGreenDark {
+  fill: color(green, dark);
+
+  &::after {
+    background-color: color(green, light);
+  }
+}
+
+.colorYellowLighter {
+  fill: color(yellow, lighter);
+}
+
+.colorYellow {
+  fill: color(yellow);
+}
+
+.colorYellowDark {
+  fill: color(yellow, dark);
+
+  &::after {
+    background-color: color(yellow, light);
+  }
+}
+
+.colorOrange {
+  fill: color(orange);
+}
+
+.colorOrangeDark {
+  fill: color(orange, dark);
+}
+
+.colorRedLighter {
+  fill: color(red, lighter);
+}
+
+.colorRed {
+  fill: color(red);
+}
+
+.colorRedDark {
+  fill: color(red, dark);
+
+  &::after {
+    background-color: color(red, light);
+  }
+}
+
+.colorPurple {
+  fill: color(purple);
+}
+
+.Svg {
+  position: relative;
+  z-index: z-index(icon, $stacking-order);
+  display: block;
+  width: 100%;
+  color: color(white);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Placeholder {
+  padding-bottom: 100%;
+  background: currentColor;
+}

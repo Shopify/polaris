@@ -1,0 +1,8 @@
+@mixin unstyled-link() {
+  color: inherit;
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}

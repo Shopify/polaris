@@ -1,0 +1,114 @@
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/shadows';
+@import 'foundation/utilities';
+@import 'foundation/z-index';
+@import 'shared/controls';
+@import 'shared/icons';
+@import 'shared/typography';
+
+$stacking-order: (
+  backdrop: 10,
+  input: 20,
+  icon: 30
+);
+
+$icon-size: rem(16px);
+$input-horizontal-padding: spacing(tight) * 1.5;
+
+// Without a small amount of vertical adjustment, the text
+// in the Select does not appear vertically centered.
+$input-vertical-adjust: rem(1px);
+
+.Select {
+  position: relative;
+
+  // IE 11 fix to remove default dropdown arrow
+  select::-ms-expand {
+    display: none;
+  }
+}
+
+.disabled {
+  .Backdrop {
+    @include control-backdrop(disabled);
+  }
+
+  .Icon {
+    opacity: 0.4;
+  }
+}
+
+.error {
+  .Backdrop {
+    @include control-backdrop(error);
+  }
+
+  // Need to override the higher specificity of the sibling selector
+  // so that errors still have red borders.
+  // stylelint-disable-next-line selector-max-specificity
+  .Input:focus ~ .Backdrop {
+    @include control-backdrop(focused-error);
+  }
+}
+
+.placeholder {
+  .Input {
+    color: color(ink, lightest);
+  }
+
+  &.error .Input {
+    // This is the only place this color is used.
+    // stylelint-disable-next-line color-no-hex
+    color: #9c9798;
+  }
+}
+
+.Backdrop {
+  @include control-backdrop;
+  position: absolute;
+  z-index: z-index(backdrop, $stacking-order);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.Icon {
+  @include recolor-icon(color(ink, lighter));
+  position: absolute;
+  z-index: z-index(icon, $stacking-order);
+  top: 50%;
+  right: $input-horizontal-padding;
+  transform: translateY(-50%);
+  margin-right: (-0.25 * $icon-size);
+  pointer-events: none;
+}
+
+.Input {
+  @include text-style-input;
+  position: relative;
+  z-index: z-index(input, $stacking-order);
+  width: 100%;
+  min-height: control-height();
+  margin: 0;
+  padding: control-vertical-padding() ($input-horizontal-padding + $icon-size) control-vertical-padding() $input-horizontal-padding;
+  background: transparent;
+  border: border(transparent);
+  appearance: none;
+  line-height: rem(20px);
+
+  &:focus {
+    outline: none;
+
+    ~ .Backdrop {
+      @include control-backdrop(focused);
+    }
+  }
+
+  &:disabled {
+    color: color(ink, lightest);
+  }
+}

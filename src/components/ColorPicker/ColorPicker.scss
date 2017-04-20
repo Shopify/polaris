@@ -1,0 +1,140 @@
+@import 'foundation/spacing';
+@import 'foundation/colors';
+@import 'foundation/shadows';
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/z-index';
+
+$picker-size: rem(160px);
+$dragger-size: rem(18px);
+$inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
+
+$stacking-order: (
+  color: 10,
+  adjustments: 20,
+  dragger: 30,
+);
+
+@mixin checkers {
+  background-image:
+    linear-gradient(45deg, color(sky) 25%, transparent 25%),
+    linear-gradient(-45deg, color(sky) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, color(sky) 75%),
+    linear-gradient(-45deg, transparent 75%, color(sky) 75%);
+  background-size: spacing() spacing();
+  background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight), -1 * spacing(tight) 0;
+}
+
+.ColorPicker {
+  user-select: none;
+  display: flex;
+}
+
+.MainColor {
+  @include checkers;
+  position: relative;
+  overflow: hidden;
+  height: $picker-size;
+  width: $picker-size;
+
+  // Need an extra pixel to avoid a small color bleed from happening
+  border-radius: border-radius() + 1px;
+  cursor: pointer;
+
+  .Dragger {
+    right: 0.5 * $dragger-size;
+    margin: 0;
+  }
+
+  .ColorLayer {
+    box-shadow: inset shadow(deep);
+    border-radius: border-radius() + 1px;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: z-index(adjustments, $stacking-order);
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-radius: border-radius();
+  }
+
+  &::before {
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  &::after {
+    // Indistinguishable colors linter is blanking on alpha difference
+    // stylelint-disable-next-line no-indistinguishable-colors
+    background-image: linear-gradient(to top, black, transparent);
+    box-shadow: inset shadow(deep);
+  }
+}
+
+.Dragger {
+  position: relative;
+  z-index: z-index(dragger, $stacking-order);
+  bottom: 0.5 * $dragger-size;
+  transform: none;
+  height: $dragger-size;
+  width: $dragger-size;
+  margin: 0 auto;
+  will-change: transform;
+  background: transparent;
+  border: border-radius() solid color(white);
+  box-shadow: shadow(deep), inset shadow(deep);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+$green: rgb(0, 255, 0);
+$purple: rgb(255, 0, 255);
+$huepicker-padding: $dragger-size;
+$huepicker-bottom-padding-start: $picker-size - $dragger-size;
+
+.HuePicker,
+.AlphaPicker {
+  position: relative;
+  overflow: hidden;
+  height: $picker-size;
+  width: rem(24px);
+  margin-left: spacing(tight);
+  border-width: border-radius();
+  border-radius: $picker-size * 0.5;
+}
+
+.HuePicker {
+  background-image: linear-gradient(to bottom, red $dragger-size, yellow, $green, cyan, blue, $purple, red $huepicker-bottom-padding-start);
+  box-shadow: $inner-shadow;
+}
+
+.AlphaPicker {
+  @include checkers;
+
+  .ColorLayer {
+    border-radius: $picker-size * 0.5;
+  }
+}
+
+.ColorLayer {
+  position: absolute;
+  z-index: z-index(color, $stacking-order);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: $inner-shadow;
+  pointer-events: none;
+}
+
+.Slidable {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}

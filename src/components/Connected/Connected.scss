@@ -1,0 +1,69 @@
+@import 'foundation/z-index';
+
+$staacking-order: (
+  item: 10,
+  primary: 20,
+  focused: 30,
+);
+
+.Connected {
+  position: relative;
+  display: flex;
+}
+
+.Item {
+  position: relative;
+  z-index: z-index(item, $staacking-order);
+  flex: 0 0 auto;
+
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+}
+
+// This is a violation of our component model, but it's the cleanest
+// way to remove the border radii on connected elements.
+// stylelint-disable declaration-no-important
+
+.Item-primary {
+  z-index: z-index(primary, $staacking-order);
+  flex: 1 1 auto;
+
+  &:not(:first-child) * {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+  &:not(:last-child) * {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+.Item-connection {
+  &:first-child * {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    &::after {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+  }
+
+  &:last-child * {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+
+    &::after {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+  }
+}
+
+// stylelint-enable declaration-no-important
+
+.Item-focused {
+  z-index: z-index(focused, $staacking-order);
+}

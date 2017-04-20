@@ -1,0 +1,31 @@
+@import 'foundation/spacing';
+@import 'foundation/utilities';
+@import 'shared/breakpoints';
+
+.CalloutCard {
+  display: flex;
+  align-items: center;
+}
+
+.Image {
+  display: none;
+  flex: 0 0 auto;
+  width: rem(100px);
+
+  @include page-content-when-not-fully-condensed {
+    display: block;
+    margin-left: spacing(loose);
+  }
+}
+
+.Content {
+  flex: 1 1 auto;
+}
+
+.Title {
+  margin-bottom: spacing(loose);
+}
+
+.Buttons {
+  margin-top: spacing(loose);
+}

@@ -1,0 +1,241 @@
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/shadows';
+@import 'shared/buttons';
+@import 'shared/controls';
+@import 'shared/icons';
+@import 'shared/typography';
+
+$min-height: control-height();
+$vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+$slim-min-height: rem(30px);
+$slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
+$large-min-height: rem(44px);
+$large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
+
+.Button {
+  @include recolor-icon(color(ink, lighter));
+  position: relative;
+  display: inline-block;
+  min-height: $min-height;
+  min-width: $min-height;
+  margin: 0;
+  padding: $vertical-padding spacing();
+  background: linear-gradient(to bottom, color(white), color(sky, lighter));
+  border: border(dark);
+  box-shadow: shadow(faint);
+  border-radius: border-radius();
+  line-height: 1;
+  color: color(ink);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition-property: background, border, box-shadow;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  &:hover {
+    background: linear-gradient(to bottom, color(sky, lighter), color(sky, light));
+    border-color: color(sky, dark);
+  }
+
+  &:focus {
+    border-color: color(indigo);
+    outline: 0;
+    box-shadow: 0 0 0 1px color(indigo);
+  }
+
+  &:active {
+    // Same color gradient is necessary for background transitions
+    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
+    border-color: color(sky, dark);
+    box-shadow:
+      0 0 0 0 transparent,
+      inset 0 1px 1px 0 rgba(color(ink, lighter), 0.1),
+      inset 0 1px 4px 0 rgba(color(ink, lighter), 0.2);
+  }
+
+  &.disabled {
+    @include recolor-icon(color(ink, lightest));
+    background: color(sky, light);
+    color: color(ink, lightest);
+  }
+}
+
+.primary {
+  @include button-filled(color(indigo), color(indigo, dark));
+  @include recolor-icon(color(white));
+
+  &.disabled {
+    @include recolor-icon(color(white));
+    background: color(indigo, light);
+    border-color: color(indigo, light);
+    box-shadow: none;
+    color: color(white);
+  }
+}
+
+.destructive {
+  @include button-filled(color(red), color(red, dark));
+  @include recolor-icon(color(white));
+}
+
+.outline {
+  @include button-outline(color(ink, lighter));
+
+  &.disabled {
+    background-color: color(white);
+    border-color: color(sky, dark);
+    color: color(ink, lightest);
+  }
+}
+
+.destructive.outline {
+  @include button-outline(color(red));
+  @include recolor-icon(color(red, dark));
+}
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+// The way the designs work, we need to do lots of reaching down to
+// target the content in pseudo-selectors, so we need higher specificity
+// in this case.
+// stylelint-disable selector-max-specificity
+
+.plain {
+  @include recolor-icon(color(blue));
+  margin: (-1 * $vertical-padding) (-1 * spacing());
+  background: transparent;
+  border: border(transparent);
+  box-shadow: none;
+  color: color(blue);
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include recolor-icon(color(blue, dark));
+    background: transparent;
+    border: border(transparent);
+    box-shadow: none;
+    color: color(blue, dark);
+  }
+
+  &:focus > .Content::after {
+    opacity: 1;
+  }
+
+  &.disabled {
+    background: none;
+  }
+
+  &.sizeSlim {
+    margin-top: (-1 * $slim-vertical-padding);
+    margin-bottom: (-1 * $slim-vertical-padding);
+  }
+
+  &.sizeLarge {
+    margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
+  }
+
+  > .Content::after {
+    @include plain-button-backdrop;
+    content: '';
+    opacity: 0;
+  }
+
+  &.iconOnly {
+    @include recolor-icon(color(ink, lighter));
+    margin: -0.5 * ($min-height - icon-size());
+
+    &:focus,
+    &:active {
+      @include recolor-icon(color(ink, lighter));
+      background: plain-button-background();
+    }
+
+    &:hover,
+    &:active {
+      @include recolor-icon(color(ink));
+    }
+
+    > .Content::after {
+      display: none;
+    }
+
+    &.disabled {
+      @include recolor-icon(color(sky, dark));
+    }
+  }
+}
+
+// stylelint-enable selector-max-specificity
+
+.iconOnly {
+  padding-left: spacing(tight);
+  padding-right: spacing(tight);
+}
+
+.sizeSlim {
+  min-height: $slim-min-height;
+  min-width: $slim-min-height;
+  padding: $slim-vertical-padding spacing();
+
+  .Content {
+    @include when-typography-condensed {
+      font-size: font-size(body, large-screen);
+    }
+  }
+}
+
+.sizeLarge {
+  min-height: $large-min-height;
+  min-width: $large-min-height;
+  padding: $large-vertical-padding spacing(loose);
+}
+
+.fullWidth {
+  display: block;
+  width: 100%;
+}
+
+.Content {
+  @include text-style-body;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Icon {
+  @include text-style-body;
+  transition: color duration() easing();
+
+  &:first-child {
+    // This compensates for the typical icon used in buttons being
+    // inset within its bounding box.
+    margin-left: -2px;
+    margin-right: spacing(extra-tight);
+  }
+
+  &:last-child {
+    margin-left: spacing(extra-tight);
+
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox (and makes it look like there is too much
+    // spacing on the right of the button)
+    margin-right: -5px;
+  }
+
+  &:only-child {
+    margin: 0;
+  }
+}

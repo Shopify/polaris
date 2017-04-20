@@ -1,0 +1,15 @@
+@import 'foundation/spacing';
+@import 'shared/typography';
+
+.TextContainer {
+  @include text-style-body;
+
+  p {
+    margin: 0;
+  }
+
+  *:not(:last-child) {
+    margin: 0;
+    margin-bottom: (1.5 * spacing(tight));
+  }
+}

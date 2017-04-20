@@ -1,0 +1,68 @@
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/utilities';
+
+$height: rem(20px);
+$horizontal-padding: ($height / 2);
+
+$pip-size: rem(10px);
+$pip-spacing: ($height - $pip-size) / 2;
+
+@mixin pip-color($color) {
+  .Pip {
+    color: $color;
+  }
+}
+
+.Badge {
+  @include pip-color(color(ink, lightest));
+  display: inline-flex;
+  align-items: center;
+  padding: 0 $horizontal-padding;
+  background-color: color(sky);
+  border: 2px solid color(white);
+  border-radius: $height;
+  font-size: rem(13px);
+  line-height: $height;
+  color: color(ink);
+}
+
+.statusSuccess {
+  @include pip-color(color(green, dark));
+  background-color: color(green, light);
+}
+
+.statusInfo {
+  @include pip-color(color(blue, dark));
+  background-color: color(blue, light);
+}
+
+.statusAttention {
+  @include pip-color(color(yellow, dark));
+  background-color: color(yellow, light);
+}
+
+.statusWarning {
+  @include pip-color(color(orange, dark));
+  background-color: color(orange, light);
+}
+
+.progressIncomplete .Pip {
+  background: transparent;
+}
+
+.progressPartiallyComplete .Pip {
+  background: linear-gradient(to top, currentColor, currentColor 50%, transparent 50%, transparent);
+}
+
+.progressComplete .Pip {
+  background: currentColor;
+}
+
+.Pip {
+  height: $pip-size;
+  width: $pip-size;
+  margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
+  border: rem(2px) solid currentColor;
+  border-radius: 50%;
+}

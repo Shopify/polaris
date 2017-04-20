@@ -1,0 +1,158 @@
+@import 'foundation/borders';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'shared/buttons';
+@import 'shared/links';
+@import 'shared/icons';
+@import 'shared/typography';
+
+$border-bottom-height: rem(3px);
+$item-min-height: rem(16px);
+$item-vertical-padding: $item-min-height / 2;
+$focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
+
+.Tabs {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border-bottom: border();
+  list-style: none;
+}
+
+.fitted {
+  .TabContainer {
+    flex: 1 1 auto;
+  }
+
+  .Tab {
+    padding: 0;
+  }
+
+  .Title {
+    width: 100%;
+    padding: spacing(tight) spacing();
+  }
+}
+
+.fillSpace {
+  .TabContainer {
+    flex: 1 1 auto;
+  }
+}
+
+.TabContainer {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.Tab {
+  @include unstyled-link;
+  @include unstyled-button;
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  min-width: 100%; // IE11 fix for overflowing flex items from parent container
+  margin-top: 1px;
+  margin-bottom: -1px;
+  padding: 0 spacing();
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    .Title {
+      @include text-emphasis-normal;
+      border-bottom: $border-bottom-height solid color(sky);
+    }
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color, 0 0 2px 0 $focus-state-box-shadow-color;
+
+    .Title {
+      @include text-emphasis-normal;
+      border-bottom: $border-bottom-height solid color(indigo, light);
+    }
+  }
+
+  &:visited {
+    color: color(ink, lighter);
+  }
+
+  &.Tab-selected {
+    .Title {
+      border-bottom: $border-bottom-height solid color(indigo);
+    }
+  }
+}
+
+.Tab-selected {
+  @include text-emphasis-normal;
+}
+
+.Title {
+  display: block;
+  padding: spacing(tight) 0 (spacing(tight) - $border-bottom-height) 0;
+  border-bottom: $border-bottom-height solid transparent;
+}
+
+.Panel {
+  display: block;
+}
+
+.List {
+  list-style: none;
+  margin: 0;
+  padding: spacing(tight) 0;
+}
+
+.Item {
+  @include unstyled-link;
+  @include unstyled-button;
+  display: block;
+  width: 100%;
+  min-height: $item-min-height;
+  padding: $item-vertical-padding spacing();
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: color(indigo);
+    outline: none;
+    color: color(white);
+  }
+}
+
+.DisclosureTab {
+  display: none;
+  padding-top: (0.625 * spacing());
+}
+
+.DisclosureTab-visible {
+  display: block;
+}
+
+.DisclosureActivator {
+  @include recolor-icon(color(ink, lighter));
+  position: relative;
+  justify-content: center;
+  height: 100%;
+  padding: 0 spacing();
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.TabMeasurer {
+  display: flex;
+  visibility: hidden;
+  height: 0;
+}

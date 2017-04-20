@@ -1,0 +1,49 @@
+@import 'foundation/borders';
+@import 'foundation/spacing';
+@import 'shared/breakpoints';
+@import 'shared/typography';
+
+$breakpoint: 550px;
+
+.DescriptionList {
+  margin: 0;
+  padding: 0;
+
+  @include page-content-breakpoint-after($breakpoint) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+}
+
+.Term {
+  @include text-emphasis-strong;
+  padding: spacing() 0 spacing(tight);
+
+  @include page-content-breakpoint-after($breakpoint) {
+    flex: 0 1 25%;
+    padding: spacing() spacing() spacing() 0;
+
+    .Description + & + .Description {
+      border-top: border();
+    }
+  }
+}
+
+.Description {
+  margin-left: 0;
+  padding: 0 0 spacing();
+
+  + .Term {
+    border-top: border();
+  }
+
+  @include page-content-breakpoint-after($breakpoint) {
+    flex: 1 1 51%;
+    padding: spacing() 0;
+
+    + .Term + .Description {
+      border-top: border();
+    }
+  }
+}

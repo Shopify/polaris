@@ -1,0 +1,68 @@
+@import 'foundation/spacing';
+@import 'shared/breakpoints';
+@import 'foundation/utilities';
+@import 'foundation/layout';
+
+$image-offset: 40%;
+$image-overflow-width: calc(100% + #{$image-offset} * 2);
+
+.EmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: spacing(loose);
+  padding: spacing(loose);
+  padding-left: spacing(extra-loose);
+  text-align: center;
+
+  @include page-content-when-not-partially-condensed {
+    flex-direction: row-reverse;
+    padding-left: spacing(loose);
+    text-align: left;
+  }
+}
+
+.imageContained {
+  .Image {
+    @include page-content-when-not-partially-condensed {
+      position: initial;
+      width: 100%;
+    }
+  }
+}
+
+.ImageContainer,
+.Details {
+  @include page-content-when-not-partially-condensed {
+    flex-basis: 50%;
+  }
+}
+
+.Image {
+  z-index: -1;
+  width: 60vw;
+
+  @include page-content-when-not-partially-condensed {
+    position: relative;
+    left: $image-offset * -1;
+    width: $image-overflow-width;
+  }
+}
+
+.Details {
+  margin-top: spacing();
+
+  @include page-content-when-not-partially-condensed {
+    padding-right: spacing();
+  }
+}
+
+.Actions {
+  margin-top: spacing();
+
+  @include page-content-when-partially-condensed {
+    display: flex;
+    justify-content: center;
+  }
+}

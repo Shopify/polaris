@@ -1,0 +1,22 @@
+@import 'foundation/colors';
+@import 'shared/accessibility';
+@import 'shared/typography';
+
+.Label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+  @include visually-hidden;
+}
+
+.Text {
+  @include text-style-body;
+  display: block;
+  flex: 1 1 auto;
+  color: currentColor;
+  -webkit-tap-highlight-color: transparent;
+}

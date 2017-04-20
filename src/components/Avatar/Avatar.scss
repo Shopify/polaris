@@ -1,0 +1,74 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'shared/breakpoints';
+
+$small-size: rem(32px);
+$medium-size: rem(40px);
+$large-size: rem(60px);
+
+.Avatar {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background: color(teal);
+  border-radius: 50%;
+  user-select: none;
+}
+
+.sizeSmall {
+  height: $small-size;
+  width: $small-size;
+  font-size: rem(14px);
+}
+
+.sizeMedium {
+  height: $medium-size;
+  width: $medium-size;
+  font-size: rem(18px);
+}
+
+.sizeLarge {
+  height: $large-size;
+  width: $large-size;
+  font-size: rem(26px);
+}
+
+.styleOne {
+  background: color(teal);
+}
+
+.styleTwo {
+  background: color(red);
+}
+
+.styleThree {
+  background: color(orange);
+}
+
+.styleFour {
+  background: color(green);
+}
+
+.styleFive {
+  background: color(blue);
+}
+
+.styleSix {
+  background: color(purple);
+}
+
+.hasImage {
+  background: transparent;
+}
+
+.Image {
+  width: 100%;
+}
+
+.Initials {
+  line-height: 0;
+  color: color(white);
+  text-transform: uppercase;
+}

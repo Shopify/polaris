@@ -1,0 +1,86 @@
+@import 'foundation/borders';
+@import 'foundation/spacing';
+@import 'foundation/colors';
+@import 'foundation/typography';
+@import 'foundation/utilities';
+@import 'shared/buttons';
+@import 'shared/links';
+@import 'shared/icons';
+@import 'shared/layout';
+@import 'shared/typography';
+
+$image-size: rem(24px);
+$item-min-height: rem(40px);
+$item-vertical-padding: ($item-min-height - line-height(body)) / 2;
+
+.ActionList {
+  list-style: none;
+  margin: 0;
+  padding: spacing(tight) 0;
+
+  + .ActionList {
+    border-top: border();
+  }
+}
+
+.Actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Title {
+  @include text-style-subheading;
+  padding: (spacing(tight) * 1.5) spacing();
+  border-bottom: border();
+  font-weight: 400;
+}
+
+.Item {
+  @include unstyled-button;
+  @include unstyled-link;
+  display: block;
+  width: 100%;
+  min-height: $item-min-height;
+  padding: $item-vertical-padding spacing();
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: color(indigo);
+    outline: none;
+    color: color(white);
+
+    .Image {
+      @include recolor-icon(color(sky));
+    }
+  }
+}
+
+.Content {
+  display: flex;
+  align-items: center;
+}
+
+.Image {
+  @include recolor-icon(color(ink, lightest));
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: $image-size;
+  width: $image-size;
+
+  // We need the negative margin to ensure that the image does not set
+  // the minimum height of the action item.
+  margin: (-0.5 * $image-size) spacing() (-0.5 * $image-size) 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.Text {
+  @include layout-flex-fix;
+  flex: 1 0 auto;
+}

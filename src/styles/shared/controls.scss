@@ -1,0 +1,67 @@
+@import 'foundation/borders';
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/shadows';
+@import 'foundation/typography';
+
+@function control-height() {
+  @return rem(36px);
+}
+
+@function control-vertical-padding() {
+  @return (control-height() - line-height(input) - rem(2px)) / 2;
+}
+
+@function control-icon-transition() {
+  @return transform duration(fast) easing(in);
+}
+
+@mixin control-backdrop($style: base) {
+  @if $style == base {
+    background: color(sky, dark);
+    border: border(transparent);
+    box-shadow:
+      0 0 0 1px transparent,
+      shadow(faint);
+    border-radius: border-radius();
+    transition-property: box-shadow, background;
+    transition-duration: duration();
+    transition-timing-function: easing();
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      background: linear-gradient(to bottom, color(white), color(sky, lighter));
+      border-radius: calc(#{border-radius()} - 1px);
+    }
+  } @else if $style == focused {
+    background: color(indigo);
+    box-shadow:
+      0 0 0 1px color(indigo),
+      shadow(transparent);
+
+    &::after { background: color(white); }
+  } @else if $style == error {
+    background: color(red);
+    box-shadow: 0 0 0 1px transparent;
+
+    &::after { background: color(red, lighter); }
+  } @else if $style == disabled {
+    background: color(sky);
+    box-shadow: none;
+
+    &::after { background: color(sky, lighter); }
+  } @else if $style == focused-error {
+    background: color(indigo);
+    box-shadow: 0 0 0 1px color(indigo);
+
+    &::after { background: color(red, lighter); }
+  }
+}

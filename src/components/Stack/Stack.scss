@@ -1,0 +1,97 @@
+@import 'foundation/spacing';
+@import 'foundation/utilities';
+
+/// Adjusts the spacing for the stack and contained items.
+/// @param {String} $spacing - The spacing variant to use.
+
+@mixin stack-spacing($spacing: base) {
+  margin-top: -1 * spacing($spacing);
+  margin-left: -1 * spacing($spacing);
+
+  > .Item {
+    margin-top: spacing($spacing);
+    margin-left: spacing($spacing);
+    max-width: calc(100% - #{spacing($spacing)});
+  }
+}
+
+.Stack {
+  @include stack-spacing;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.spacingTight {
+  @include stack-spacing(tight);
+}
+
+.spacingLoose {
+  @include stack-spacing(loose);
+}
+
+.spacingExtraLoose {
+  @include stack-spacing(extra-loose);
+}
+
+.distributionLeading {
+  justify-content: flex-start;
+}
+
+.distributionTrailing {
+  justify-content: flex-end;
+}
+
+.distributionCenter {
+  justify-content: center;
+}
+
+.distributionEqualSpacing {
+  justify-content: space-between;
+}
+
+.distributionFill > .Item {
+  flex: 1 1 auto;
+}
+
+.distributionFillEvenly > .Item {
+  flex: 1 1 auto;
+
+  @supports (min-width: fit-content) {
+    flex: 1 0 0%;
+    min-width: fit-content;
+  }
+}
+
+.alignmentLeading {
+  align-items: flex-start;
+}
+
+.alignmentTrailing {
+  align-items: flex-end;
+}
+
+.alignmentCenter {
+  align-items: center;
+}
+
+.alignmentFill {
+  align-items: stretch;
+}
+
+.alignmentBaseline {
+  align-items: baseline;
+}
+
+.Item {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.Item-fill {
+  flex: 1 1 auto;
+}

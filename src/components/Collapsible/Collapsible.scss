@@ -1,0 +1,21 @@
+@import 'foundation/duration';
+@import 'foundation/easing';
+
+.Collapsible {
+  overflow: hidden;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  will-change: opacity, height;
+}
+
+.animating {
+  transition-property: opacity, height;
+  transition-duration: duration(slow);
+  transition-timing-function: easing(out);
+}
+
+.open {
+  opacity: 1;
+}

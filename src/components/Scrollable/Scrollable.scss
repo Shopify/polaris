@@ -1,0 +1,31 @@
+@import 'foundation/colors';
+@import 'foundation/utilities';
+
+$shadow-color: rgba(color(black), 0.1);
+$shadow-size: rem(20px);
+$shadow-bottom: inset 0 (-1 * $shadow-size) $shadow-size (-1 * $shadow-size) $shadow-color;
+$shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size) $shadow-color;
+
+.Scrollable {
+  -webkit-overflow-scrolling: touch;
+}
+
+.horizontal {
+  overflow-x: auto;
+}
+
+.vertical {
+  overflow-y: auto;
+}
+
+.hasTopShadow {
+  box-shadow: $shadow-top;
+}
+
+.hasBottomShadow {
+  box-shadow: $shadow-bottom;
+}
+
+.hasTopShadow.hasBottomShadow {
+  box-shadow: $shadow-top, $shadow-bottom;
+}

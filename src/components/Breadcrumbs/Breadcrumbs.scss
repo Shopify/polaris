@@ -1,0 +1,56 @@
+@import 'foundation/border-radius';
+@import 'foundation/colors';
+@import 'foundation/duration';
+@import 'foundation/easing';
+@import 'foundation/spacing';
+@import 'foundation/typography';
+@import 'shared/buttons';
+@import 'shared/controls';
+@import 'shared/icons';
+@import 'shared/typography';
+
+$vertical-padding: (control-height() - line-height(body)) / 2;
+$horizontal-padding: rem(10px);
+$icon-size: rem(20px);
+
+// The inset bounding box of the icon causes it not to be lined up with
+// the side of the container. This fixes that issue.
+$icon-horizontal-adjustment: rem(-3px);
+
+.Breadcrumb {
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  display: inline-flex;
+  align-items: center;
+  min-height: control-height();
+  margin: 0 (-1 * $horizontal-padding);
+  padding: $vertical-padding $horizontal-padding;
+  border-radius: border-radius();
+  color: color(ink, lighter);
+  text-decoration: none;
+  will-change: background;
+  transition: background duration() easing();
+
+  &:hover,
+  &:active {
+    color: color(ink);
+
+    .Icon {
+      @include recolor-icon(color(ink));
+    }
+  }
+
+  &:focus {
+    background: plain-button-background();
+    outline: none;
+  }
+}
+
+.Icon {
+  @include recolor-icon(color(ink, lighter));
+  height: $icon-size;
+  width: $icon-size;
+
+  // We set negative top/ bottom margin so the icon never sets the height of the content.
+  margin: (-0.5 * $icon-size) spacing(extra-tight) (-0.5 * $icon-size) $icon-horizontal-adjustment;
+}

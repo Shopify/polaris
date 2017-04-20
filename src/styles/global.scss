@@ -1,0 +1,58 @@
+@import 'foundation/colors';
+@import 'shared/typography';
+
+html,
+body {
+  @include text-style-body;
+  @include text-emphasis-normal;
+  font-family: font-family();
+}
+
+html {
+  position: relative;
+  box-sizing: border-box;
+  font-size: ($base-font-size / $default-browser-font-size) * 100%;
+  -webkit-font-smoothing: antialiased;
+
+  // This needs to come after -webkit-font-smoothing
+  // stylelint-disable-next-line declaration-block-properties-order
+  -moz-osx-font-smoothing: grayscale;
+
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: color(sky, light);
+}
+
+* {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+a:not([data-polaris-unstyled]) {
+  color: color(blue);
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    color: color(blue, dark);
+  }
+}

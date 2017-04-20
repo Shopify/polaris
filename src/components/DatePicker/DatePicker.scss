@@ -1,0 +1,155 @@
+@import 'foundation/borders';
+@import 'foundation/colors';
+@import 'foundation/spacing';
+@import 'foundation/border-radius';
+@import 'foundation/z-index';
+@import 'shared/icons';
+@import 'shared/typography';
+
+$stacking-order: (
+  in-range: 20,
+  selected: 30,
+);
+
+$font-size: rem(12px);
+
+// Need to define raw colour for the borders of inRange
+// stylelint-disable-next-line color-no-hex
+$in-range-border-color: #9ca6de;
+
+.DatePicker {
+  position: relative;
+}
+
+.MonthContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -1 * spacing();
+  margin-left: -1 * spacing();
+}
+
+.Month {
+  flex: 1 1 auto;
+  margin-top: spacing();
+  margin-left: spacing();
+  max-width: calc(100% - #{spacing()});
+  min-width: rem(230px);
+}
+
+.Week,
+.WeekHeadings {
+  display: flex;
+
+  + .Week {
+    margin-top: -1px;
+  }
+}
+
+.Day {
+  display: block;
+  flex: 1 0 0%;
+  width: (100% / 7);
+  margin: 0;
+  padding: spacing(tight);
+  background: transparent;
+  border: border();
+  outline: none;
+  font-size: $font-size;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: color(sky);
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px color(indigo);
+  }
+
+  + .Day,
+  + .EmptyDay {
+    margin-left: -1px;
+  }
+}
+
+.Day-inRange {
+  z-index: z-index(in-range, $stacking-order);
+  background: color(indigo, light);
+  border: 1px solid $in-range-border-color;
+
+  &:hover {
+    background: darken(color(indigo, light), 5%);
+  }
+}
+
+.Day-selected {
+  z-index: z-index(selected, $stacking-order);
+  background: color(indigo);
+  border: 1px solid color(indigo);
+  color: color(white);
+
+  &:hover {
+    background: darken(color(indigo), 5%);
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px color(indigo, dark);
+  }
+}
+
+.Day-disabled {
+  background-color: color(sky, lighter);
+  color: color(sky, dark);
+  cursor: default;
+
+  &:hover {
+    background-color: color(sky, lighter);
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.EmptyDay {
+  display: block;
+  flex: 1 0 0%;
+  width: calc(100% / 7);
+  margin: 0;
+  padding: spacing(tight);
+  border: border();
+
+  + .EmptyDay,
+  + .Day {
+    margin-left: -1px;
+  }
+}
+
+.Weekday {
+  display: block;
+  flex: 1 0 0%;
+  padding: spacing(tight);
+  background: transparent;
+  font-size: $font-size;
+  color: color(ink, lighter);
+  text-align: center;
+
+  + .Weekday {
+    margin-left: -1px;
+  }
+}
+
+.Header {
+  position: absolute;
+  top: spacing();
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Title {
+  flex: 1 1 auto;
+  margin-top: rem(2px);
+  padding-bottom: spacing(extra-tight);
+  text-align: center;
+}
