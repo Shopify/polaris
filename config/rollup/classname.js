@@ -19,8 +19,6 @@ export default function getClassName(localName, filePath) {
       className = componentName === localName
         ? polarisComponentName
         : subcomponentClassName(polarisComponentName, localName);
-
-      // cache.lastComponent = className;
     } else if (SUBCOMPONENT_VARIATION_SELECTOR.test(localName)) {
       const [subcomponent, variation] = localName.split('-');
       const subcomponentName = subcomponentClassName(polarisComponentName, subcomponent);

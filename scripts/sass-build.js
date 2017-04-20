@@ -35,6 +35,10 @@ export default function generateSassBuild() {
     writeFileSync(filePath, removeSassImports(source));
   });
 
+  const globalFile = join(buildStyles, 'global.scss');
+  const globalSource = readFileSync(globalFile, 'utf8');
+  writeFileSync(globalFile, removeSassImports(globalSource));
+
   glob.sync(resolve(intermediateBuild, './components/**/*.scss')).forEach((filePath) => {
     const componentSass = resolve(components, basename(filePath));
     let file = readFileSync(filePath, 'utf8');
