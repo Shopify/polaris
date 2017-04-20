@@ -10,7 +10,7 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@shopify/quilt": "^0.14.2",
+    "@shopify/quilt": "^0.16.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },

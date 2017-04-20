@@ -10,7 +10,7 @@ import {
   TextField,
   AccountConnection,
   ChoiceList,
-  FeatureAction,
+  SettingToggle,
 } from '@shopify/quilt';
 
 class App extends Component {
@@ -31,14 +31,7 @@ class App extends Component {
       {content: 'Browserify'},
     ];
     const primaryAction = {content: 'New product'};
-    const secondaryActions = [{content: 'Import'}];
-
-    const featureAction = (
-      <Button
-        children="Customize Checkout"
-        primary
-      />
-    );
+    const secondaryActions = [{content: 'Import', icon: 'import'}];
 
     const choiceListItems = [
       {label: 'I accept the Terms of Service', value: 'false'},
@@ -57,16 +50,16 @@ class App extends Component {
             title="Style"
             description="Customize the style of your checkout"
           >
-            <Card sectioned>
-              <FeatureAction
-                action={featureAction}
-              >
-                Upload your store’s logo, change colors and fonts, and more.
-              </FeatureAction>
-            </Card>
+            <SettingToggle
+              action={{
+                content: 'Customize Checkout',
+              }}
+            >
+              Upload your store’s logo, change colors and fonts, and more.
+            </SettingToggle>
           </Layout.AnnotatedSection>
 
-          {this.renderAccount()}
+         {this.renderAccount()}
 
           <Layout.AnnotatedSection
             title="Form"
@@ -97,7 +90,7 @@ class App extends Component {
                 />
 
                 <TextField
-                  autoGrow
+                  multiline
                   label="How did you hear about us?"
                   placeholder="Website, ads, email, etc."
                   value={this.state.autoGrow}
@@ -153,9 +146,9 @@ class App extends Component {
   disconnectAccountMarkup() {
     return (
       <Layout.AnnotatedSection
-        title="Account"
-        description="Disconnect your account from your Shopify store."
-      >
+          title="Account"
+          description="Disconnect your account from your Shopify store."
+        >
         <AccountConnection
           connected
           action={{
