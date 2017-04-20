@@ -1,7 +1,6 @@
 import * as React from 'react';
 import autobind from '@shopify/javascript-utilities/autobind';
 import {classNames} from '@shopify/react-utilities/styles';
-import {TransitionGroup, TransitionStatus} from '@shopify/react-utilities/animation';
 
 import {layer} from '../shared';
 import PositionedOverlay, {OverlayDetails, PreferredPosition} from '../PositionedOverlay';
@@ -20,27 +19,15 @@ export interface Props {
 
 export default class TooltipOverlay extends React.PureComponent<Props, never> {
   render() {
-    const selector = `.${styles.Tooltip}`;
     const markup = this.props.active
-      ? (
-        <TransitionGroup.TransitionChild
-          render={this.renderOverlay}
-          selector={selector}
-          skipAppearing
-          skipEntering
-        />
-      )
+      ? this.renderOverlay()
       : null;
 
-    return (
-      <TransitionGroup>
-        {markup}
-      </TransitionGroup>
-    );
+    return markup;
   }
 
   @autobind
-  private renderOverlay(transitionStatus: TransitionStatus) {
+  private renderOverlay() {
     const {
       active,
       activator,
@@ -52,13 +39,13 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
-        render={this.renderTooltip.bind(this, transitionStatus)}
+        render={this.renderTooltip.bind(this)}
       />
     );
   }
 
   @autobind
-  private renderTooltip(transitionStatus: TransitionStatus, overlayDetails: OverlayDetails) {
+  private renderTooltip(overlayDetails: OverlayDetails) {
     const {
       left,
       measuring,
@@ -75,7 +62,6 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
       light && styles.light,
       measuring && styles.measuring,
       positioning === 'above' && styles.positionedAbove,
-      transitionStatus && animationVariations(transitionStatus),
     );
 
     const contentStyles = measuring
@@ -106,13 +92,4 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
 
 function calculateTipPosition(activatorRectXAxisCenter: number, left: number) {
   return {left: activatorRectXAxisCenter - left};
-}
-
-function animationVariations(status: TransitionStatus) {
-  switch (status) {
-    case TransitionStatus.Leaving:
-      return styles.leaving;
-    default:
-      return null;
-  }
 }

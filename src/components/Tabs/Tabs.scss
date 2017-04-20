@@ -24,6 +24,10 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     flex: 1 1 auto;
   }
 
+  .Tab {
+    padding: 0;
+  }
+
   .Title {
     width: 100%;
     padding: spacing(tight) spacing();
@@ -50,6 +54,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   position: relative;
   justify-content: center;
   width: 100%;
+  min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: 1px;
   margin-bottom: -1px;
   padding: 0 spacing();
@@ -75,14 +80,14 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     }
   }
 
-  &.selected {
+  &.Tab-selected {
     .Title {
       border-bottom: $border-bottom-height solid color(indigo);
     }
   }
 }
 
-.selected {
+.Tab-selected {
   @include text-emphasis-normal;
 }
 
@@ -125,7 +130,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   padding-top: (0.625 * spacing());
 }
 
-.visible {
+.DisclosureTab-visible {
   display: block;
 }
 

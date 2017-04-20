@@ -1,11 +1,11 @@
 @import 'foundation/border-radius';
 @import 'foundation/colors';
-@import 'shared/controls';
 @import 'foundation/duration';
 @import 'foundation/easing';
 @import 'foundation/spacing';
 @import 'foundation/typography';
-@import 'shared/links';
+@import 'shared/buttons';
+@import 'shared/controls';
 @import 'shared/icons';
 @import 'shared/typography';
 
@@ -18,7 +18,6 @@ $icon-size: rem(20px);
 $icon-horizontal-adjustment: rem(-3px);
 
 .Breadcrumb {
-  @include unstyled-link;
   @include text-style-body;
   @include text-emphasis-subdued;
   display: inline-flex;
@@ -26,27 +25,24 @@ $icon-horizontal-adjustment: rem(-3px);
   min-height: control-height();
   margin: 0 (-1 * $horizontal-padding);
   padding: $vertical-padding $horizontal-padding;
-  box-shadow: inset 0 0 0 2px transparent;
   border-radius: border-radius();
-  will-change: box-shadow, color, background-color;
-  transition:
-    color duration() easing(),
-    box-shadow duration() easing(),
-    background-color duration() easing();
+  color: color(ink, lighter);
+  text-decoration: none;
+  will-change: background;
+  transition: background duration() easing();
 
   &:hover,
-  &:focus {
-    outline: none;
+  &:active {
     color: color(ink);
-    fill: color(ink);
-  }
 
-  &:hover {
-    background-color: color(sky);
+    .Icon {
+      @include recolor-icon(color(ink));
+    }
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 2px color(indigo);
+    background: plain-button-background();
+    outline: none;
   }
 }
 

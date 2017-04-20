@@ -38,6 +38,7 @@ export default function Pagination({
       <UnstyledLink
         className={styles.Button}
         url={previousURL}
+        onMouseUp={handleMouseUp}
         aria-label="Previous"
       >
         <Icon source="arrowLeft" />
@@ -46,6 +47,7 @@ export default function Pagination({
     : (
       <button
         onClick={onPrevious}
+        onMouseUp={handleMouseUp}
         className={styles.Button}
         aria-label="Previous"
         disabled={!hasPrevious}
@@ -59,6 +61,7 @@ export default function Pagination({
       <UnstyledLink
         className={styles.Button}
         url={nextURL}
+        onMouseUp={handleMouseUp}
         aria-label="Next"
       >
         <Icon source="arrowRight" />
@@ -67,6 +70,7 @@ export default function Pagination({
     : (
       <button
         onClick={onNext}
+        onMouseUp={handleMouseUp}
         className={styles.Button}
         aria-label="Next"
         disabled={!hasNext}
@@ -81,4 +85,8 @@ export default function Pagination({
       {nextButton}
     </span>
   );
+}
+
+function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  currentTarget.blur();
 }

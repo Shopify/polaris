@@ -1,7 +1,7 @@
 @import 'foundation/borders';
-@import 'shared/breakpoints';
 @import 'foundation/spacing';
 @import 'foundation/utilities';
+@import 'shared/breakpoints';
 @import 'shared/layout';
 
 $secondary-basis: layout-width(secondary, min);
@@ -25,7 +25,7 @@ $relative-size: $primary-basis / $secondary-basis;
   min-width: 51%;
 }
 
-.secondary {
+.Section-secondary {
   flex: 1 1 $secondary-basis;
   min-width: 0;
 }

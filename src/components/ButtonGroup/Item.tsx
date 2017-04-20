@@ -21,8 +21,8 @@ export default class Item extends React.PureComponent<Props, State> {
 
     const className = classNames(
       styles.Item,
-      focused && styles.focused,
-      button.props.plain && styles.plain,
+      focused && styles['Item-focused'],
+      button.props.plain && styles['Item-plain'],
     );
 
     return (

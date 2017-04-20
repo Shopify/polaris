@@ -26,8 +26,8 @@ export default class Item extends React.PureComponent<Props, State> {
     const {children, position} = this.props;
     const className = classNames(
       styles.Item,
-      focused && styles.focused,
-      position === Position.Primary ? styles.primary : styles.connection,
+      focused && styles['Item-focused'],
+      position === Position.Primary ? styles['Item-primary'] : styles['Item-connection'],
     );
 
     return (

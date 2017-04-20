@@ -10,7 +10,7 @@ export interface Props {
 export default function Section({children, secondary}: Props) {
   const className = classNames(
     styles.Section,
-    secondary && styles.secondary,
+    secondary && styles['Section-secondary'],
   );
 
   return (

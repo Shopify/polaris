@@ -28,6 +28,12 @@ $content-max-width: rem(400px);
   opacity: 0;
 }
 
+.measuring {
+  .Content {
+    display: block;
+  }
+}
+
 .leaving {
   transition-timing-function: easing(out);
 }
@@ -53,7 +59,6 @@ $content-max-width: rem(400px);
 .Content {
   position: relative;
   display: flex;
-  overflow: auto;
   flex-direction: column;
   border-radius: border-radius(large);
   max-width: $content-max-width;
@@ -77,7 +82,7 @@ $content-max-width: rem(400px);
 }
 
 .Pane {
-  flex: 0 1 auto;
+  flex: 1 1 0%;
   max-width: 100%;
 
   + .Pane {
@@ -85,7 +90,7 @@ $content-max-width: rem(400px);
   }
 }
 
-.fixed {
+.Pane-fixed {
   overflow: visible;
   flex: 0 0 auto;
 }

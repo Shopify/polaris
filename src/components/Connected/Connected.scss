@@ -25,7 +25,7 @@ $staacking-order: (
 // way to remove the border radii on connected elements.
 // stylelint-disable declaration-no-important
 
-.primary {
+.Item-primary {
   z-index: z-index(primary, $staacking-order);
   flex: 1 1 auto;
 
@@ -40,7 +40,7 @@ $staacking-order: (
   }
 }
 
-.connection {
+.Item-connection {
   &:first-child * {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -64,6 +64,6 @@ $staacking-order: (
 
 // stylelint-enable declaration-no-important
 
-.focused {
+.Item-focused {
   z-index: z-index(focused, $staacking-order);
 }

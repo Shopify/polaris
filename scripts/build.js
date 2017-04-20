@@ -28,14 +28,14 @@ writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
 `);
 
 copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
-  .then(() => runRollup({entry: mainEntry, output: 'quilt.js', format: 'cjs', css: true}))
-  .then(() => runRollup({entry: mainEntry, output: 'quilt.es.js', format: 'es', css: false}))
+  .then(() => runRollup({entry: mainEntry, output: 'polaris.js', format: 'cjs', css: true}))
+  .then(() => runRollup({entry: mainEntry, output: 'polaris.es.js', format: 'es', css: false}))
   .then(() => runRollup({entry: embeddedEntry, output: 'embedded.js', format: 'cjs', css: false}))
   .then(() => Promise.all([
-    cp('./build/quilt.js', './index.js'),
+    cp('./build/polaris.js', './index.js'),
     cp('./build/embedded.js', './embedded.js'),
-    cp('./build/quilt.es.js', './index.es.js'),
-    cp('./build/quilt.css', './styles.css'),
+    cp('./build/polaris.es.js', './index.es.js'),
+    cp('./build/polaris.css', './styles.css'),
   ]))
   .then(() => generateSassBuild())
   .catch((error) => {
@@ -47,7 +47,7 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
 function runRollup({entry, output, format, css}) {
   const config = createConfig({
     entry,
-    outputCSS: css && resolvePath(build, 'quilt.css'),
+    outputCSS: css && resolvePath(build, 'polaris.css'),
   });
 
   return rollup(config)

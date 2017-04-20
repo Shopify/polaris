@@ -1,6 +1,6 @@
 @import 'foundation/spacing';
-@import 'shared/breakpoints';
 @import 'foundation/utilities';
+@import 'shared/breakpoints';
 
 .CalloutCard {
   display: flex;
@@ -20,4 +20,12 @@
 
 .Content {
   flex: 1 1 auto;
+}
+
+.Title {
+  margin-bottom: spacing(loose);
+}
+
+.Buttons {
+  margin-top: spacing(loose);
 }

@@ -2,9 +2,14 @@ import * as React from 'react';
 import * as styles from './KeyboardKey.scss';
 
 export interface Props {
-  children?: React.ReactNode,
+  children?: string,
 }
 
 export default function KeyboardKey({children}: Props) {
-  return <span className={styles.KeyboardKey}>{children}</span>;
+  let key = children || '';
+  key = key.length > 1
+    ? key.toLowerCase()
+    : key.toUpperCase();
+
+  return <span className={styles.KeyboardKey}>{key}</span>;
 }

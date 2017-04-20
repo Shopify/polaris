@@ -10,7 +10,7 @@ export interface Props {
 export default function Item({children, fill}: Props) {
   const className = classNames(
     styles.Item,
-    fill && styles.fill,
+    fill && styles['Item-fill'],
   );
 
   return <div className={className}>{children}</div>;

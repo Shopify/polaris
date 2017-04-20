@@ -83,6 +83,7 @@ $stacking-order: (
   display: block;
   flex: 1 1 0%;
   width: 100%;
+  min-height: control-height();
   margin: 0;
   padding: control-vertical-padding() 0;
   background: none;

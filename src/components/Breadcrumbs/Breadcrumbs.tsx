@@ -22,7 +22,7 @@ export default class Breadcrumbs extends React.PureComponent<Props, never> {
       <nav role="navigation">
         <UnstyledLink key={content} url={url} className={styles.Breadcrumb} onMouseUp={handleMouseUp}>
           <span className={styles.Icon}><Icon source="chevronLeft" /></span>
-          <span className={styles.Content}>{content}</span>
+          {content}
         </UnstyledLink>
       </nav>
     );

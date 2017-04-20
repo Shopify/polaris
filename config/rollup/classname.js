@@ -2,49 +2,45 @@ import {basename} from 'path';
 import {camelCase} from 'change-case';
 
 const cache = {
-  lastFile: null,
-  lastComponent: null,
   files: {},
 };
 
-export default function getClassName(localName, filePath) {
-  if (filePath !== cache.lastFile) {
-    cache.lastComponent = null;
-  }
+const COMPONENT_REGEX = /^[A-Z]\w+$/;
+const SUBCOMPONENT_VARIATION_SELECTOR = /^\w+-\w+$/;
 
+export default function getClassName(localName, filePath) {
   const file = cache.files[filePath] || {};
   const componentName = basename(filePath, '.scss');
+  const polarisComponentName = polarisClassName(componentName);
   let className = file[localName];
 
   if (className == null) {
     if (isComponent(localName)) {
       className = componentName === localName
-        ? quiltClassName(componentName)
-        : quiltClassName(subcomponentClassName(componentName, localName));
+        ? polarisComponentName
+        : subcomponentClassName(polarisComponentName, localName);
 
-      cache.lastComponent = className;
-    } else if (cache.lastComponent == null) {
-      const rootClass = quiltClassName(componentName);
-      className = variationClassName(rootClass, camelCase(localName));
-      cache.lastComponent = rootClass;
+      // cache.lastComponent = className;
+    } else if (SUBCOMPONENT_VARIATION_SELECTOR.test(localName)) {
+      const [subcomponent, variation] = localName.split('-');
+      const subcomponentName = subcomponentClassName(polarisComponentName, subcomponent);
+      className = variationClassName(subcomponentName, camelCase(variation));
     } else {
-      className = variationClassName(cache.lastComponent, camelCase(localName));
+      className = variationClassName(polarisComponentName, camelCase(localName));
     }
   }
 
   file[localName] = className;
-
-  cache.lastFile = filePath;
   cache.files[filePath] = file;
   return className;
 }
 
-function isComponent([firstLetter]) {
-  return firstLetter === firstLetter.toUpperCase();
+function isComponent(className) {
+  return COMPONENT_REGEX.test(className);
 }
 
-function quiltClassName(className) {
-  return `Quilt-${className}`;
+function polarisClassName(className) {
+  return `Polaris-${className}`;
 }
 
 function subcomponentClassName(component, subcomponent) {

@@ -47,9 +47,9 @@ export default class Day extends React.PureComponent<Props, never> {
     const handleClick = onClick && !disabled ? onClick.bind(null, day) : noop;
     const className = classNames(
       styles.Day,
-      selected && styles.selected,
-      disabled && styles.disabled,
-      (inRange || inHoveringRange) && !disabled && styles.inRange,
+      selected && styles['Day-selected'],
+      disabled && styles['Day-disabled'],
+      (inRange || inHoveringRange) && !disabled && styles['Day-inRange'],
     );
 
     const date = day.getDate();

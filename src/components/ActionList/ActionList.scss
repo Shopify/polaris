@@ -43,6 +43,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   width: 100%;
   min-height: $item-min-height;
   padding: $item-vertical-padding spacing();
+  text-align: left;
   cursor: pointer;
 
   &:hover,

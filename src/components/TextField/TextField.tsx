@@ -53,6 +53,8 @@ const getUniqueID = createUniqueIDFactory('TextField');
 export default class TextField extends React.PureComponent<Props, State> {
   state: State = {height: null};
 
+  private input: HTMLElement;
+
   render() {
     const {
       id = getUniqueID(),
@@ -91,15 +93,15 @@ export default class TextField extends React.PureComponent<Props, State> {
     );
 
     const prefixMarkup = prefix
-      ? <div className={styles.Prefix} id={`${id}Prefix`}>{prefix}</div>
+      ? <div onClick={this.handleInputFocus} className={styles.Prefix} id={`${id}Prefix`}>{prefix}</div>
       : null;
 
     const suffixMarkup = suffix
-      ? <div className={styles.Suffix} id={`${id}Suffix`}>{suffix}</div>
+      ? <div onClick={this.handleInputFocus} className={styles.Suffix} id={`${id}Suffix`}>{suffix}</div>
       : null;
 
     const spinnerMarkup = type === 'number'
-      ? <Spinner onChange={this.handleNumberChange} />
+      ? <Spinner onClick={this.handleInputFocus} onChange={this.handleNumberChange} />
       : null;
 
     const style = (multiline && height) ? {height} : null;
@@ -139,6 +141,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       autoComplete: normalizeAutoComplete(autoComplete),
       className: styles.Input,
       onChange: this.handleChange,
+      ref: this.setInput,
       'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
       'aria-labelledby': labelledBy.join(' '),
       'aria-invalid': Boolean(error),
@@ -171,6 +174,11 @@ export default class TextField extends React.PureComponent<Props, State> {
   }
 
   @autobind
+  private setInput(input: HTMLElement) {
+    this.input = input;
+  }
+
+  @autobind
   private handleNumberChange(steps: number) {
     const {onChange, value, step = 1, min = -Infinity, max = Infinity} = this.props;
     if (onChange == null) { return; }
@@ -192,6 +200,11 @@ export default class TextField extends React.PureComponent<Props, State> {
     const {onChange} = this.props;
     if (onChange == null) { return; }
     onChange(event.currentTarget.value);
+  }
+
+  @autobind
+  private handleInputFocus() {
+    this.input.focus();
   }
 }
 

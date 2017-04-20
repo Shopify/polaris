@@ -16,7 +16,7 @@ export interface Props {
 export default function Pane({fixed, sectioned, children}: Props) {
   const className = classNames(
     styles.Pane,
-    fixed && styles.fixed,
+    fixed && styles['Pane-fixed'],
   );
 
   const content = sectioned

@@ -1,12 +1,22 @@
 @import 'foundation/border-radius';
-@import 'shared/breakpoints';
 @import 'foundation/colors';
+@import 'foundation/duration';
+@import 'foundation/easing';
 @import 'foundation/layout';
 @import 'foundation/spacing';
 @import 'foundation/utilities';
+@import 'foundation/typography';
 @import 'foundation/z-index';
+@import 'shared/icons';
+@import 'shared/breakpoints';
+@import 'shared/buttons';
+@import 'shared/controls';
+@import 'shared/typography';
 
-$Icon-size: rem(48px);
+$navigation-elements-height: rem(36px);
+$title-height: line-height(display-large, large-screen);
+$actions-vertical-spacing: rem(4px);
+$action-horizontal-padding: 1.5 * spacing(tight);
 
 $stacking-order: (
   title: 10,
@@ -15,15 +25,15 @@ $stacking-order: (
 
 .Page {
   margin: 0 auto;
+  padding: 0;
   max-width: layout-width(primary, max) + layout-width(secondary, max) + layout-width(inner-spacing);
-  padding: spacing(extra-loose) 0;
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing(extra-loose) spacing(loose);
+    padding: 0 spacing(loose);
   }
 
   @include page-content-when-not-partially-condensed {
-    padding: spacing(extra-loose);
+    padding: 0 spacing(extra-loose);
   }
 }
 
@@ -31,53 +41,96 @@ $stacking-order: (
   max-width: none;
 }
 
+.Content {
+  margin: spacing(loose) 0;
+}
+
 .Header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  margin-top: -1 * spacing();
-  margin-left: -1 * spacing();
-  padding: 0 spacing() spacing(extra-loose);
+  margin: spacing(loose) 0;
+  padding: 0 spacing(loose);
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 0 spacing(extra-loose);
+    padding: 0;
   }
 }
 
-.Actions,
-.Details {
-  margin-top: spacing();
-  margin-left: spacing();
+@include page-content-when-not-partially-condensed {
+  .Header-hasBreadcrumbs .PrimaryAction {
+    margin-top: -1 * ($navigation-elements-height + $title-height + $actions-vertical-spacing);
+  }
+
+  .Header-hasPagination .PrimaryAction {
+    margin-top: -1 * ($title-height + $actions-vertical-spacing);
+  }
 }
 
-.Details {
+.Navigation {
   display: flex;
-  flex: 1000 0 auto;
-  align-items: center;
+  justify-content: space-between;
+
+  > *:last-child {
+    margin-left: auto;
+  }
 }
 
 .Actions {
   display: flex;
-  flex: 1 0 auto;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  margin-top: 2 * $actions-vertical-spacing;
+
+  @include page-content-when-not-fully-condensed {
+    margin-top: $actions-vertical-spacing;
+  }
 }
 
-.Icon {
-  height: $Icon-size;
-  width: $Icon-size;
-  margin-right: spacing();
-  background-color: color(sky, dark);
-  background-size: cover;
-  background-position: center;
+.PrimaryAction {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.Action {
+  @include unstyled-button;
+  @include text-style-body;
+  min-height: control-height();
+  padding: 0 $action-horizontal-padding;
   border-radius: border-radius();
+  color: color(ink, lighter);
+  will-change: background, color;
+  transition-property: background;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  &:hover,
+  &:active {
+    color: color(ink);
+
+    .ActionIcon {
+      @include recolor-icon(color(ink));
+    }
+  }
+
+  &:focus,
+  &:active {
+    background: plain-button-background();
+  }
+
+  &:first-child {
+    margin-left: -1 * $action-horizontal-padding;
+  }
+
+  &:last-child {
+    margin-right: -1 * $action-horizontal-padding;
+  }
 }
 
-.Title {
-  position: relative;
-  z-index: z-index(title, $stacking-order);
+.ActionContent {
+  display: flex;
+  align-items: center;
+  min-height: control-height();
 }
 
-.Breadcrumbs {
-  position: relative;
-  z-index: z-index(breadcrumbs, $stacking-order);
+.ActionIcon {
+  @include recolor-icon(color(ink, lighter));
+  margin-right: spacing(extra-tight);
 }

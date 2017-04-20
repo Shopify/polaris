@@ -32,10 +32,12 @@ export default function CalloutCard({
 
   const buttonMarkup = secondaryActionMarkup
     ? (
-      <ButtonGroup>
-        {primaryActionMarkup}
-        {secondaryActionMarkup}
-      </ButtonGroup>
+      <div className={styles.Buttons}>
+        <ButtonGroup>
+          {primaryActionMarkup}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
     )
     : primaryActionMarkup;
 
@@ -43,7 +45,9 @@ export default function CalloutCard({
     <Card sectioned>
       <div className={styles.CalloutCard}>
         <div className={styles.Content}>
-          <Heading>{title}</Heading>
+          <div className={styles.Title}>
+            <Heading>{title}</Heading>
+          </div>
           <TextContainer>
             {children}
           </TextContainer>

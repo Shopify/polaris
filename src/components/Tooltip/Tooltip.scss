@@ -21,13 +21,8 @@ $content-max-width: rem(200px);
   transition: opacity duration() easing(in);
 }
 
-.measuring,
-.leaving {
+.measuring {
   opacity: 0;
-}
-
-.leaving {
-  transition-timing-function: easing(out);
 }
 
 .positionedAbove {

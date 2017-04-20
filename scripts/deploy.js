@@ -7,9 +7,8 @@ const awsConfig = require('../secrets.json').aws; // eslint-disable-line import/
 const currentVersion = require('../package.json').version;
 
 const files = [
-  resolve(__dirname, '../build/quilt.css'),
-  resolve(__dirname, '../build/quilt.min.css'),
-  resolve(__dirname, '../build/sass.zip'),
+  resolve(__dirname, '../build/polaris.css'),
+  resolve(__dirname, '../build/polaris.min.css'),
 ];
 
 const awsS3 = new S3({

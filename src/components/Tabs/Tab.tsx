@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import {focusFirstFocusableNode, findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import autobind from '@shopify/javascript-utilities/autobind';
 
 import UnstyledLink from '../UnstyledLink';
@@ -26,7 +26,7 @@ export default class Tab extends React.PureComponent<Props, never> {
   componentDidUpdate() {
     const {focused, measuring} = this.props;
     if (focused && !measuring) {
-      focusFirstFocusableNode(this.node, true);
+      focusFirstFocusableNode(this.node);
     }
   }
 
@@ -51,7 +51,7 @@ export default class Tab extends React.PureComponent<Props, never> {
 
     const className = classNames(
       styles.Tab,
-      selected && styles.selected,
+      selected && styles['Tab-selected'],
     );
 
     let tabIndex: 0 | -1;
@@ -99,7 +99,24 @@ export default class Tab extends React.PureComponent<Props, never> {
         </button>
       );
 
-    return <li role="tab" className={styles.TabContainer} ref={this.setNode}>{markup}</li>;
+    return (
+      <li
+        role="tab"
+        className={styles.TabContainer}
+        ref={this.setNode}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        {markup}
+      </li>
+    );
+  }
+
+  @autobind
+  private handleMouseLeave() {
+    const firstFocusable = findFirstFocusableNode(this.node);
+    if (firstFocusable) {
+      firstFocusable.blur();
+    }
   }
 
   @autobind

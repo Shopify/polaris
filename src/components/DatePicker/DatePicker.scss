@@ -72,7 +72,7 @@ $in-range-border-color: #9ca6de;
   }
 }
 
-.inRange {
+.Day-inRange {
   z-index: z-index(in-range, $stacking-order);
   background: color(indigo, light);
   border: 1px solid $in-range-border-color;
@@ -82,7 +82,7 @@ $in-range-border-color: #9ca6de;
   }
 }
 
-.selected {
+.Day-selected {
   z-index: z-index(selected, $stacking-order);
   background: color(indigo);
   border: 1px solid color(indigo);
@@ -97,7 +97,7 @@ $in-range-border-color: #9ca6de;
   }
 }
 
-.disabled {
+.Day-disabled {
   background-color: color(sky, lighter);
   color: color(sky, dark);
   cursor: default;

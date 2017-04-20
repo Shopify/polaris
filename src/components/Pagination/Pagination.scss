@@ -1,11 +1,18 @@
 @import 'foundation/colors';
-@import 'shared/controls';
 @import 'foundation/spacing';
+@import 'foundation/typography';
 @import 'foundation/z-index';
 @import 'shared/icons';
+@import 'shared/breakpoints';
+@import 'shared/buttons';
+@import 'shared/controls';
 
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+
+// This is the adjustment needed to get the icon to appear flush with other
+// content around it.
+$plain-horizontal-adjustment: rem(10px);
 
 $stacking-order: (
   item: 10,
@@ -15,12 +22,14 @@ $stacking-order: (
 .Pagination {
   display: inline-flex;
 
-  @include page-content-when-fully-condensed {
-    display: flex;
-    width: 100%;
+  &:not(.plain) {
+    @include page-content-when-fully-condensed {
+      display: flex;
+      width: 100%;
 
-    .Button {
-      flex: 1 0 auto;
+      .Button {
+        flex: 1 0 auto;
+      }
     }
   }
 }
@@ -39,14 +48,15 @@ $stacking-order: (
     border-radius: border-radius() !important;
 
     &:hover,
-    &:focus {
-      background: rgba(color(ink), 0.1);
+    &:active {
+      @include recolor-icon(color(ink));
+      background: transparent;
       border: none;
       box-shadow: none;
     }
 
-    &:active {
-      background: transparent;
+    &:focus {
+      background: plain-button-background();
       border: none;
       box-shadow: none;
     }
@@ -60,6 +70,14 @@ $stacking-order: (
 
     &:not(:first-child) {
       margin-left: 0;
+    }
+
+    &:first-child {
+      margin-left: -1 * $plain-horizontal-adjustment;
+    }
+
+    &:last-child {
+      margin-right: -1 * $plain-horizontal-adjustment;
     }
   }
 }

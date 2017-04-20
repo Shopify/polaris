@@ -24,6 +24,11 @@ $input-vertical-adjust: rem(1px);
 
 .Select {
   position: relative;
+
+  // IE 11 fix to remove default dropdown arrow
+  select::-ms-expand {
+    display: none;
+  }
 }
 
 .disabled {
@@ -93,6 +98,7 @@ $input-vertical-adjust: rem(1px);
   background: transparent;
   border: border(transparent);
   appearance: none;
+  line-height: rem(20px);
 
   &:focus {
     outline: none;

@@ -1,13 +1,13 @@
 @import 'foundation/borders';
 @import 'foundation/border-radius';
 @import 'foundation/colors';
-@import 'shared/controls';
 @import 'foundation/spacing';
 @import 'foundation/typography';
 @import 'foundation/duration';
 @import 'foundation/easing';
 @import 'foundation/shadows';
 @import 'shared/buttons';
+@import 'shared/controls';
 @import 'shared/icons';
 @import 'shared/typography';
 
@@ -36,7 +36,7 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-  transition-property: color, fill, background, border, box-shadow;
+  transition-property: background, border, box-shadow;
   transition-duration: duration();
   transition-timing-function: easing();
 
@@ -156,7 +156,8 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
     @include recolor-icon(color(ink, lighter));
     margin: -0.5 * ($min-height - icon-size());
 
-    &:focus {
+    &:focus,
+    &:active {
       @include recolor-icon(color(ink, lighter));
       background: plain-button-background();
     }

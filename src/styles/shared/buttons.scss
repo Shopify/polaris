@@ -51,8 +51,8 @@
   }
 
   &:focus {
-    border-color: rgba($outline-color, 0.4);
-    box-shadow: 0 0 0 1px rgba($outline-color, 0.4);
+    border-color: rgba($outline-color, 0.8);
+    box-shadow: 0 0 0 1px rgba($outline-color, 0.8);
   }
 
   &:active {
@@ -85,6 +85,7 @@
   border: none;
   font-size: inherit;
   line-height: inherit;
+  cursor: pointer;
 
   &:focus {
     outline: none;

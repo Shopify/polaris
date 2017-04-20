@@ -114,11 +114,11 @@ export default class Item extends React.PureComponent<Props, State> {
 
     const className = classNames(
       styles.Item,
-      url && styles.link,
-      focused && styles.focused,
-      persistActions && styles.persistActions,
-      mediaType && styles[variationName('media', mediaType)],
-      mediaSize && styles[variationName('size', mediaSize)],
+      url && styles['Item-link'],
+      focused && styles['Item-focused'],
+      persistActions && styles['Item-persistActions'],
+      mediaType && styles[variationName('Item-media', mediaType)],
+      mediaSize && styles[variationName('Item-size', mediaSize)],
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -246,7 +246,7 @@ function renderException(exception: ExceptionDescriptor, index: number) {
   const {status, title, description} = exception;
   const className = classNames(
     styles.ExceptionItem,
-    status && styles[variationName('status', status)],
+    status && styles[variationName('ExceptionItem-status', status)],
   );
 
   const titleMarkup = title != null

@@ -7,7 +7,7 @@ export type Status = 'success' | 'info' | 'attention' | 'warning';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 
 export interface Props {
-  children?: React.ReactNode,
+  children?: string,
   status?: Status,
   progress?: Progress,
 }

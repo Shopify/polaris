@@ -8,29 +8,14 @@ $stacking-order: (
 );
 
 $plain-horizontal-spacing: spacing(tight);
-$Item-spacing: spacing(tight);
+$item-spacing: spacing(tight);
 
 .ButtonGroup {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: (-1 * $Item-spacing);
-  margin-left: (-1 * $Item-spacing);
-}
-
-.Item {
-  margin-top: $Item-spacing;
-  margin-left: $Item-spacing;
-}
-
-.plain {
-  &:not(:first-child) {
-    margin-left: $Item-spacing + $plain-horizontal-spacing;
-  }
-
-  &:not(:last-child) {
-    margin-right: $plain-horizontal-spacing;
-  }
+  margin-top: (-1 * $item-spacing);
+  margin-left: (-1 * $item-spacing);
 }
 
 .segmented {
@@ -65,7 +50,22 @@ $Item-spacing: spacing(tight);
 
   // stylelint-enable declaration-no-important
 
-  .focused {
+  .Item-focused {
     z-index: z-index(focused, $stacking-order);
+  }
+}
+
+.Item {
+  margin-top: $item-spacing;
+  margin-left: $item-spacing;
+}
+
+.Item-plain {
+  &:not(:first-child) {
+    margin-left: $item-spacing + $plain-horizontal-spacing;
+  }
+
+  &:not(:last-child) {
+    margin-right: $plain-horizontal-spacing;
   }
 }

@@ -91,7 +91,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     const disclosureTabClassName = classNames(
       styles.DisclosureTab,
-      disclosureActivatorVisible && styles.visible,
+      disclosureActivatorVisible && styles['DisclosureTab-visible'],
     );
 
     const activator = (

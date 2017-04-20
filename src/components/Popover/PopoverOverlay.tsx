@@ -123,7 +123,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     const contentStyles = measuring
       ? undefined
-      : {maxHeight: desiredHeight};
+      : {height: desiredHeight};
 
     const content = (
       <div

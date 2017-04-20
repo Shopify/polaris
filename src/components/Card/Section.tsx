@@ -20,7 +20,10 @@ export default function Section({children, title, subdued}: Props) {
     )
     : null;
 
-  const className = classNames(styles.Section, subdued && styles.subdued);
+  const className = classNames(
+    styles.Section,
+    subdued && styles['Section-subdued'],
+  );
 
   return (
     <div className={className}>

@@ -17,7 +17,6 @@ const getUniqueID = createUniqueIDFactory('FormLayoutGroup');
 
 export default function Group({children, condensed, title, helpText}: Props) {
   const className = classNames(
-    styles.Group,
     condensed && styles.condensed,
   );
 

@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import {writeFileSync, readFileSync, readJSONSync, createWriteStream} from 'fs-extra';
+
 import glob from 'glob';
+import {writeFileSync, readFileSync, readJSONSync, createWriteStream} from 'fs-extra';
 import {basename, resolve, join} from 'path';
 import {cp, mkdir} from 'shelljs';
 import archiver from 'archiver';
 
-const STRIP_IMPORTS_REGEX = new RegExp(/@import\s*(['"])([^"';]+)\1;?\n/, 'g');
+const STRIP_IMPORTS_REGEX = new RegExp(/@import\s*(['"])([^"';]+)\1;?\n*/, 'g');
 
 const root = resolve(__dirname, '..');
 const build = resolve(root, './build');
@@ -15,16 +16,24 @@ const srcStyles = resolve(intermediateBuild, './styles');
 const buildSass = resolve(build, './sass');
 const buildStyles = resolve(buildSass, './styles');
 const foundation = resolve(buildStyles, './foundation');
+const shared = resolve(buildStyles, './shared');
 const components = resolve(buildStyles, './components');
 
 export default function generateSassBuild() {
-  const classnameTokens = readJSONSync(`${build}/quilt.tokens.json`);
+  const classnameTokens = readJSONSync(`${build}/polaris.tokens.json`);
 
-  mkdir('-p', components, foundation);
+  mkdir('-p', components, foundation, shared);
   cp(join(srcStyles, 'foundation', '*.scss'), foundation);
+  cp(join(srcStyles, 'shared', '*.scss'), shared);
   cp(join(srcStyles, 'global.scss'), join(buildStyles, 'global.scss'));
   cp(join(srcStyles, 'foundation.scss'), join(buildStyles, 'foundation.scss'));
+  cp(join(srcStyles, 'shared.scss'), join(buildStyles, 'shared.scss'));
   cp(resolve(srcStyles, '../styles.scss'), join(buildSass, 'styles.scss'));
+
+  glob.sync(join(buildStyles, '{foundation,shared}', '*.scss')).forEach((filePath) => {
+    const source = readFileSync(filePath, 'utf8');
+    writeFileSync(filePath, removeSassImports(source));
+  });
 
   glob.sync(resolve(intermediateBuild, './components/**/*.scss')).forEach((filePath) => {
     const componentSass = resolve(components, basename(filePath));
@@ -33,8 +42,8 @@ export default function generateSassBuild() {
     file = namespaceSassClasses(filePath, file, classnameTokens);
     writeFileSync(componentSass, file);
   });
-  createSassIndex(components);
 
+  createSassIndex(components);
   createSassEntry();
   generateSassZip();
 }
@@ -67,9 +76,11 @@ function generateSassZip() {
 }
 
 function createSassIndex(dir) {
-  const sassImports = glob.sync(`${dir}/*.scss`)
+  const dirname = basename(dir);
+
+  const sassImports = glob.sync(join(dir, '*.scss'))
     .map((filePath) => basename(filePath).replace('.scss', ''))
-    .map((component) => `@import '${component}';`)
+    .map((component) => `@import '${dirname}/${component}';`)
     .join('\n');
 
   writeFileSync(`${dir}.scss`, sassImports);
