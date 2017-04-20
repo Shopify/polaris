@@ -11,7 +11,7 @@ order:
 
 Our components are a collection of interface elements that can be reused across the Shopify system.
 
-Components can be combined to help anyone building product for Shopify to efficiently design consistent experiences for merchants.
+Components can be combined to help anyone building products for Shopify to efficiently design consistent experiences for merchants.
 
 This frees us up to focus on solving unique merchant challenges, rather than reinventing interface elements that are already in use.
 
@@ -24,47 +24,49 @@ The component library was designed to help developers quickly create the best ex
 Each component includes information to help you implement them, such as:
 
 - Explanations of the merchant problem it solves in the interface
-- Guidelines and best practices to use the component correctly
 - Interactive examples so you can see the component in action
+- Best practices and guidelines to use the component correctly
 
 ---
 
 ## Installing and implementing
 
-Options for implementing our components:
+There are two options for installing and implementing our components, React or CSS.
 
 ### React components (Recommended)
 
-Use this in most cases, especially if you’re building a highly interactive experience. This can be done with or without a build system.
+Use React components in most cases, especially if you’re building a highly interactive experience. This can be done with or without a build system.
 
 - [Implementation instructions](https://github.com/Shopify/polaris) (requires HTML, React, a JS build tool)
 
-- Have a look at the [React component examples](https://github.com/Shopify/polaris/tree/master/examples) to see how it's done.
+- Have a look at the [React component examples](https://github.com/Shopify/polaris/tree/master/examples) to see how it's done
 
-### CSS-only option from CDN
+### CSS components
 
-- Use this if you don’t have a build system for your project or don’t want one.
+- Use CSS components if you don’t have or want a build system for your project
 
 - Include the CSS in your HTML to implement:
 
 ```html
-<linkrel="stylesheet"href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
 ```
 
-- Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it's done.
+- Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it's done
 
 ---
 
 ## Using the components
 
-You can find comprehensive [instructions](https://github.com/Shopify/polaris) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris/tree/master/examples) to explore. Here are some basic instructions to help you get started:
+You can find comprehensive [instructions](https://github.com/Shopify/polaris) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris/tree/master/examples) to explore.
+
+Here are some basic instructions to help you get started for both React and CSS-only:
 
 ### React components (Recommended)
 
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet"href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
 ```
 
 Include the component in your project:
@@ -79,12 +81,12 @@ Tell React to render the element in the DOM:
 ReactDOM.render(<Button onClick={() => alert('Button clicked!')}>Example button</Button>, domContainerNode);
 ```
 
-### CSS-only option from CDN
+### CSS components
 
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet"href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
 ```
 
 Add the appropriate classes to your HTML elements:
@@ -92,16 +94,6 @@ Add the appropriate classes to your HTML elements:
 ```html
 <button class="Polaris-Button">Example button</button>
 ```
-
----
-
-## Methodology
-
-We set out to make our components easy to use. Each of our components has a well-documented public interface (API) with guidelines and well-defined conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
-
-We ensure that our components are made for everyone. They meet accessibility standards and are responsive to any screen or device. We also put a lot of effort into optimizing the performance of the components, so everyone can build inclusive experiences that work.
-
-We make our components flexible enough to meet diverse needs. Our components are set up to be restructured based on the information passed in. No matter what type of experience you're creating, you can use components as the building blocks of your product or feature.
 
 ---
 
@@ -117,6 +109,16 @@ Here are some additional resources:
 
 ---
 
+## Methodology
+
+We set out to make our components easy to use. Each of our components has a well-documented public interface (API) with guidelines and well-defined conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
+
+We ensure that our components are made for everyone. They meet accessibility standards and are responsive to any screen or device. We also put a lot of effort into optimizing the performance of the components, so everyone can build inclusive experiences that work.
+
+We make our components flexible enough to meet diverse needs. Our components are set up to be restructured based on the information passed in. No matter what type of experience you're creating, you can use components as the building blocks of your product or feature.
+
+---
+
 ## Feedback
 
-Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris/). At this time we’re not accepting pull requests. This is something we’ll support in the future. stay tuned.
+Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris/issues). At this time we’re not accepting pull requests. This is something we’ll support in the future.

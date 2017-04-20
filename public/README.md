@@ -75,13 +75,6 @@ We have created example applications to document some of the ways you could incl
 - [Browserify example](https://github.com/Shopify/polaris/tree/master/examples/browserify)
 - [CSS-only example](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles)
 
-## Methodology
-We set out to make our components easy to use. Each of our components has a well-documented (and fully typed) public interface with strong, consistently-applied conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
-
-We ensure that our components are made for everyone. They meet accessibility standards and are responsive to any screen or device. We also put a lot of effort into optimizing the performance of the components, so everyone can build inclusive experiences that work.
-
-We make our components flexible enough to meet diverse needs. They present the information you pass in and give you smart callbacks when something has changed, but they do not enforce any structure beyond that. No matter what type of experience you're creating, you can use components as the building blocks of your product or feature.
-
 ## Learning resources
 If you are new to React, we recommend you start with the [official React Getting Started documentation](https://facebook.github.io/react/docs/hello-world.html). As you read through the topics we suggest you follow along using their [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).
 
@@ -89,6 +82,13 @@ Additional resources:
 - Online training courses at [reacttraining.com](http://reacttraining.com), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](http://reactforbeginners.com).
 - The community resources in [Awesome React](https://github.com/enaqx/awesome-react).
 - As questions and find answers in the various [React support communities](https://facebook.github.io/react/community/support.html).
+
+## Methodology
+We set out to make our components easy to use. Each of our components has a well-documented (and fully typed) public interface with strong, consistently-applied conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
+
+We ensure that our components are made for everyone. They meet accessibility standards and are responsive to any screen or device. We also put a lot of effort into optimizing the performance of the components, so everyone can build inclusive experiences that work.
+
+We make our components flexible enough to meet diverse needs. They present the information you pass in and give you smart callbacks when something has changed, but they do not enforce any structure beyond that. No matter what type of experience you're creating, you can use components as the building blocks of your product or feature.
 
 ## Licenses
 * Source code is licensed under [MIT](https://opensource.org/licenses/MIT)
