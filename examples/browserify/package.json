@@ -10,7 +10,7 @@
     "start": "yarn build && budo src/index.js:bundle.js --dir build --live --open"
   },
   "dependencies": {
-    "@shopify/quilt": "^0.16.0",
+    "@shopify/polaris": "^1.0.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
