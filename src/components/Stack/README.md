@@ -38,7 +38,7 @@ There are no content elements that are specific to stack.
 | vertical | boolean | Stack the elements vertically |
 | spacing | enum['tight', 'loose', 'none'] | Adjust spacing between elements |
 | alignment | enum['leading', 'trailing', 'center', 'fill', 'baseline'] | Adjust alignment of elements |
-| distribution | enum['leading', 'trailing', 'center', 'fill', 'baseline', 'fillEvenly'] | Adjust distrubution of elements |
+| distribution | enum['leading', 'trailing', 'center', 'fill', 'baseline', 'fillEvenly'] | Adjust distribution of elements |
 
 ## Examples
 
