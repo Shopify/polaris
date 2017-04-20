@@ -11,3 +11,4 @@ node_modules
 /sandbox
 .DS_Store
 *.scss.d.ts
+/.vscode
