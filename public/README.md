@@ -3,22 +3,17 @@
 
 #### Polaris is a React component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
-## Getting started
-The component library was designed to help developers work quickly to create the best experience for merchants who use Shopify.
-
-The components are extensively documented in the [Polaris style guide](https://polaris.shopify.com).
-
 ## Using the React components
-In most cases, and especially if you’re building a highly interactive experience, you should use the React components.
+We strongly recommend using the React versions of our components. It is the version that we will be using internally, allows for rich, complex components like Tabs and Popovers, and will not have as many breaking changes as the CSS-only version.
 
 ### Installation:
-With NPM:
+Run the following command using [npm](https://www.npmjs.com/):
 
 ```bash
 npm install @shopify/polaris --save
 ```
 
-Or with Yarn:
+If you prefer [Yarn](https://yarnpkg.com/en/), use the following command instead:
 
 ```bash
 yarn add @shopify/polaris
@@ -28,35 +23,42 @@ yarn add @shopify/polaris
 1. Include the CSS in your HTML:
 
 ```html
- <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
+ <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.min.css">
  ```
 
-> Note: you can import the CSS directly into your project if your bundler supports it:
+> Note: you can import the CSS directly into your project if your asset packager supports it:
 >
 > ```javascript
 > import '@shopify/polaris/styles.css';
 > ```
 
-2. Include the component in your project:
+2. Include any of the provided components in your project:
 
 ```javascript
-import {Button} from '@shopify/polaris';
+import {Page, Card, Button} from '@shopify/polaris';
 ```
 
 3. Tell React to render the element in the DOM:
 
 ```javascript
-ReactDOM.render(<Button onClick={() => alert('Button clicked!')}>Example button</Button>, domContainerNode);
+ReactDOM.render(
+  <Page title="Example app">
+    <Card>
+      <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+    </Card>
+  </Page>,
+  document.querySelector('#app')
+);
 ```
 
 ## Using the CSS components
-We have bundled our component CSS and are making it available via our CDN. The CSS distribution is intended to be used when React components are not the best choice.
+If React doesn’t make sense for your application, you can use a CSS-only version of our components. This includes all the styles you need for every component in the library, but you will be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
 
 ### Usage
 1. Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.css">
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.0/polaris.min.css">
 ```
 
 2. Include the markup and associated classes in your HTML document:
@@ -66,7 +68,7 @@ We have bundled our component CSS and are making it available via our CDN. The C
 ```
 
 ## Examples
-We have created example applications to document the various ways a consumer could implement Polaris. Each of these examples includes further documentation:
+We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
 
 - [create-react-app example](https://github.com/Shopify/polaris/tree/sample-apps/examples/create-react-app)
 - [Webpack example](https://github.com/Shopify/polaris/tree/sample-apps/examples/webpack)
@@ -74,11 +76,11 @@ We have created example applications to document the various ways a consumer cou
 - [CSS-only example](https://github.com/Shopify/polaris/tree/sample-apps/examples/cdn-css-only)
 
 ## Methodology
-We set out to make our components easy to use. Each of our components has a well-documented public interface (API) with guidelines and well-defined conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
+We set out to make our components easy to use. Each of our components has a well-documented (and fully typed) public interface with strong, consistently-applied conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
 
 We ensure that our components are made for everyone. They meet accessibility standards and are responsive to any screen or device. We also put a lot of effort into optimizing the performance of the components, so everyone can build inclusive experiences that work.
 
-We make our components flexible enough to meet diverse needs. Our components are set up to be restructured based on the information passed in. No matter what type of experience you're creating, you can use components as the building blocks of your product or feature.
+We make our components flexible enough to meet diverse needs. They present the information you pass in and give you smart callbacks when something has changed, but they do not enforce any structure beyond that. No matter what type of experience you're creating, you can use components as the building blocks of your product or feature.
 
 ## Learning resources
 If you are new to React, we recommend you start with the [official React Getting Started documentation](https://facebook.github.io/react/docs/hello-world.html). As you read through the topics we suggest you follow along using their [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).
