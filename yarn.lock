@@ -14,6 +14,12 @@
   dependencies:
     "@types/react" "^15.0.21"
 
+"@shopify/javascript-utilities@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.1.2.tgz#d854feada471aaca9ac474fe2cf985ac153b7ba7"
+  dependencies:
+    "@types/react" "^15.0.21"
+
 "@shopify/js-uploader@git+ssh://git@github.com/Shopify/js-uploader.git":
   version "0.1.0"
   resolved "git+ssh://git@github.com/Shopify/js-uploader.git#a12eedd7a95d6e2e1da52093e5c354379d4310bc"
