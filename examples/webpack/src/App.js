@@ -11,7 +11,7 @@ import {
   AccountConnection,
   ChoiceList,
   SettingToggle,
-} from '@shopify/quilt';
+} from '@shopify/polaris';
 
 class App extends Component {
   constructor(props) {
@@ -110,7 +110,7 @@ class App extends Component {
           </Layout.AnnotatedSection>
 
           <Layout.Section>
-            <FooterHelp>For more details on Polaris, visit our <Link url="https://shopify.github.io/channels-ui-kit/latest/assets.html">styleguide</Link>.</FooterHelp>
+            <FooterHelp>For more details on Polaris, visit our <Link url="https://polaris.shopify.com">styleguide</Link>.</FooterHelp>
           </Layout.Section>
 
         </Layout>
@@ -137,7 +137,7 @@ class App extends Component {
             onAction: this.toggleConnection.bind(this, this.state),
           }}
           details="No account connected"
-          termsOfService={<p>By clicking Connect, you are accepting Sample’s <Link url="https://shopify.github.io/channels-ui-kit/latest/assets.html#">Terms and Conditions</Link>, including a commission rate of 15% on sales.</p>}
+          termsOfService={<p>By clicking Connect, you are accepting Sample’s <Link url="https://polaris.shopify.com">Terms and Conditions</Link>, including a commission rate of 15% on sales.</p>}
         />
       </Layout.AnnotatedSection>
     );
