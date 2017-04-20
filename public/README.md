@@ -43,7 +43,7 @@ import {Page, Card, Button} from '@shopify/polaris';
 ```javascript
 ReactDOM.render(
   <Page title="Example app">
-    <Card>
+    <Card sectioned>
       <Button onClick={() => alert('Button clicked!')}>Example button</Button>
     </Card>
   </Page>,
