@@ -24,7 +24,7 @@ const awsS3 = new S3({
 const uploader = new Uploader({
   files,
   s3: awsS3,
-  destination: 'quilt',
+  destination: 'polaris',
   version: currentVersion,
 });
 
