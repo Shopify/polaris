@@ -1,6 +1,7 @@
 {
   "name": "@shopify/polaris",
   "version": "1.0.0",
+  "private": false,
   "license": "SEE LICENSE IN README.md",
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://github.com/Shopify/polaris#readme",
