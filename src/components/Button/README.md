@@ -1,98 +1,177 @@
 ---
 name: Button
 tags:
-  - form
-  - input
-category: Forms
+  - click
+  - submit
+  - CTA
+  - call-to-action
+category: Actions
 ---
 
 # Button
 
-Buttons are used to trigger actions or navigation.
+Buttons make common actions immediately visible and easy to perform with one
+click or tap. They can be used for any type of action, including navigation.
 
-## Problem
+**Problem**
 
 An action needs to be completed by a merchant.
 
-## Solution
+**Solution**
 
-A button component can be used to allow the merchant to click or press it to complete the action.
+The button component can be used to help merchants find and complete actions across Shopify.
+
+>**Not what you’re looking for?**
+>
+>* To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group).
+>* To embed an action into a line of text, [use the link component](/components/navigation/link).
+
 
 ---
 
-## Design guidelines
+## Best practices
 
-Great buttons should:
+Buttons should:
 
-- Lead with strong, actionable verbs.
-- Use established button colors appropriately. For example, only use a red button for an action that is potentially destructive and hard or impossible to undo.
-- Be focused on the primary and secondary action a merchant needs to take. Too many calls to action can cause confusion and make merchants unsure of what to do next.
+* Be clearly and accurately labeled.
+* Lead with strong, actionable verbs.
+* Use established button colors appropriately. For example, only use a red
+button for an action that’s difficult or impossible to undo.
+* Prioritize the most important actions. Too many calls to action can cause
+confusion and make merchants unsure of what to do next.
+* Be positioned in consistent locations in the interface.
 
 ---
 
 ## Content guidelines
 
-Buttons should be:
+Buttons should be clear and predictable—merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
 
-Clear and predictable: Merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+<!-- usagelist -->
+#### Do
+- Create order
+- Buy shipping label
 
-DO: Create order; Buy shipping label
-DON’T: New order; Buy
+#### Don't
+- New order
+- Buy
+<!-- end -->
 
-Action-led: Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+Buttons should always lead with a strong verb that encourages
+action. To provide enough context to merchants use the {verb}+{noun} format on
+buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-DO: Activate Apple Pay; View shipping settings
-DON’T: Try Apple Pay; View your settings
+<!-- usagelist -->
+#### Do
+- Activate Apple Pay
+- View shipping settings
 
-Scannable: Avoid unnecessary words and articles such as the, an, or a.
+#### Don't
+- Try Apple Pay
+- View your settings
+<!-- end -->
 
-DO: Add menu item
-DON’T: Add a menu item
+Buttons should be scannable—avoid unnecessary words and articles such as the, an, or a.
 
----
+<!-- usagelist -->
+#### Do
+Add menu item
+
+#### Don't
+Add a menu item
+<!-- end -->
+
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
-| to | string | URL to link to |
+| children | string | The content to display inside the button. |
+| url | string | URL to link to |
 | primary | boolean | Display as primary button |
 | destructive | boolean | Display as destuctive button |
 | disabled | boolean | Display as destuctive button |
-| slim | boolean | Display a slimmer button |
-| large | boolean | Display a larger button |
+| size | enum['slim', 'large'] | Change the size of the button |
+| outline | boolean | Display an outlined button |
 | fullWidth | boolean | Display full width button |
-| onClick | function(value: string) | Function to call when clicked |
-| children | React.ReactNode | The content to display inside the button. |
+| disclosure | boolean | Display button with a disclosure icon |
+| submit | boolean | Button will submit a form |
+| plain | boolean | Use plain button style |
+| external | boolean | Force url to open in a new tab |
+| icon | SVG | Icon to display in the banner |
+| accessibilityLabel | string | Visually hidden text for screen readers |
+| onClick | function() | Callback when clicked |
+| onFocus | function() | Callback when button becomes focussed |
+| onBlur | function() | Callback when focus leaves button |
 
 ## Examples
 
-### Default button
+### Basic button
 
-Use this when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
+Used most in the interface. Only use another style if a button requires more or less visual weight.
 
 ```jsx
-<Button>Button</Button>
+<Button>Add product</Button>
 ```
 
-### Button that links
+### Outline button
 
-Use this when you need the visual style of a button but the action to be navigation to another page.
+Use against shaded or colorful backgrounds. An outline button will maintain the appropriate visual weight and won’t clash with the background color.
 
 ```jsx
-<Button to="http://www.google.ca" external>Go to Google</Button>
+<Button outline>Add product</Button>
 ```
 
-### Primary button
+### Plain button
 
-Use this when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
+Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as secondary actions in card headers.
 
 ```jsx
-<Button primary>Primary button</Button>
+<Button plain>View shipping settings</Button>
 ```
 
-### Disabled button
+### Primary buttons
 
-Use a disabled state when an action isn't currently able to be completed, but a change of state would enable it to be.
+Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
 
 ```jsx
-<Button disabled>Disabled button</Button>
+<Button primary>Save theme</Button>
+```
+
+### Destructive buttons
+
+Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
+
+```jsx
+<Button destructive>Delete theme</Button>
+```
+
+### Slim buttons
+
+Use when a table or list has a set of actions on each item to avoid making items taller than they need to be. Don’t use slim buttons for primary actions.
+
+```jsx
+<Button size="slim">Save variant</Button>
+```
+
+### Large buttons
+
+Use for the main call to action in empty states or for calls to action shown with large illustrations.
+
+```jsx
+<Button size="large">Create store</Button>
+```
+
+### Full-width buttons
+
+Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320px wide.
+
+```jsx
+<Button fullWidth>Add customer</Button>
+```
+
+### Disabled state
+
+Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it. Alternatively a button may be disabled because it’s been pressed and the associated action is in progress.
+
+```jsx
+<Button disabled>Buy shipping label</Button>
 ```

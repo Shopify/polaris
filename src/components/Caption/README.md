@@ -1,39 +1,71 @@
 ---
 name: Caption
 tags:
-  -
-category:
+  - labels
+  - text
+  - microcopy
+  - typographic
+  - graph
+  - timestamp
+category: Titles and text
 ---
 
 # Caption
 
-Caption description
+Caption text size is smaller than the recommended size for general reading. It should be used only in a graph or as a timestamp in a list.
 
-_Not what you’re looking for?_
+**Problem**
 
-Use this instead.
+Merchants need to understand a complex graphic or arrangement of content in a small area.
 
-## Problem
+**Solution**
 
-Problem description.
+Use smaller text for short labels on graphs or lists where space is limited.
 
-## Solution
+---
 
-Solution description
+## Best practices
 
-## API
-| Prop  | Type   | Default | Required |
-| ---   | ---    | ---     | ---      |
-|       |        |         |          |
+- Use for secondary labels in graphs and charts
+- May be used for timestamps in lists of content
+- Don’t use this component for other cases
+- Don’t use this component for text longer than a few words
+- Don’t use this component for aesthetic effect or to break from the standard text size
+
+---
 
 ## Content guidelines
 
-### Example type of content
-Guidelines for type of content
+### Captions
+
+Captions are primarily used in [data visualizations](/visuals/data-visualizations). Stick to a few words and don’t use this component for complete sentences or longer content.
+
+<!-- usagelist -->
+#### Do
+* Use caption for labelling data visualizations
+![Diagram of using captions to label graphs and other data content](typography/display-styles/do-use-caption-for-labeling-data-visualizations.png)
+
+* Received April 21, 2017
+
+#### Don't
+* Order #1001 was received on April 21, 2017
+* This is your recent activity
+<!-- end -->
+
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| children | React.ReactNode | The content to use as a graph label or timestamp |
 
 ## Examples
 
-### Basic example
-Basic example description
+### Default caption
 
-Basic example code block
+Use to provide details in situations where content is compact and space is tight.
+
+```jsx
+<List>
+  <List.Item>Order #1001 <Caption>Received April 21, 2017</Caption></List.Item>
+  <List.Item>Order #1002 <Caption>Received April 22, 2017</Caption></List.Item>
+</List>
+```

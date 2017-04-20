@@ -1,39 +1,152 @@
 ---
-name: EmptyState
+name: Empty state
 tags:
-  -
-category:
+  - empty
+  - lander
+  - welcome
+category: Structure
 ---
 
-# EmptyState
+# Empty state
 
-EmptyState description
+Empty states are an opportunity to explain a feature that a merchant hasn’t
+tried yet, and provide encouragement and support to help merchants progress.
 
-_Not what you’re looking for?_
+**Problem**
 
-Use this instead.
+When a merchant first encounters a new product or feature, they need to
+understand what it is and be encouraged to try it.
 
-## Problem
+**Solution**
 
-Problem description.
+Empty states are an opportunity to provide explanation about the purpose and
+benefit of a feature, while gently encouraging merchants to give it a try.
 
-## Solution
+> **Not what you’re looking for?**
+>
+>* To learn more about illustrations for empty states, [read the illustration guidelines](/visuals/illustrations).
+>* To create page-level layout, [use the layout component](/components/structure/layout).
+>* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card).
 
-Solution description
+---
 
-## API
-| Prop  | Type   | Default | Required |
-| ---   | ---    | ---     | ---      |
-|       |        |         |          |
+## Best Practices
+
+Empty states should:
+
+* Orient merchants by clearly explaining the benefit and utility of a product
+or feature
+* Simplify a complicated experience by focusing on a few key features and
+benefits
+* Use simple and clear language that empowers merchants to move their business
+forward
+* Be encouraging and never make merchants feel unsuccessful or guilty because
+they haven’t used a product or feature
+* Explain the steps a merchant needs to take to activate a product or feature
+* Use illustrations thoughtfully as outlined in our [illustration guidelines](/visuals/illustrations)
+* Use only one primary call-to-action button
+
+---
 
 ## Content guidelines
 
-### Example type of content
-Guidelines for type of content
+### Title
+
+* Descriptive: help merchants understand the feature or product related to the
+empty state
+* Concise and scannable:
+  * Use simple, clear language that can be read at-a-glance
+  * Keep titles to single sentence and avoid using punctuation such as periods,
+  commas, or semicolons
+  * Written in sentence case (the first word capitalized, the rest lowercase)
+  * Action-oriented: encourage the merchant to take the step required to
+  activate the product or feature
+
+<!-- usagelist -->
+#### Do
+Create orders and send invoices
+
+#### Don’t
+Orders and invoices
+<!-- end -->
+
+### Subtitle
+
+Empty state subtitles act like body content. They should:
+
+* Describe or explain what’s in the empty state title or item title
+* Be conversational: include articles such as the, a, and an
+
+### Primary action
+
+Buttons are used for the most important actions you want a merchant to take.
+They should be:
+
+* Clear and predictable: merchants should be able to anticipate what will
+happen when they click a button. Never deceive a merchant by using misleading
+titles.
+
+<!-- usagelist -->
+#### Do
+- Create order
+- Buy shipping label
+
+#### Don’t
+- New order
+- Buy
+<!-- end -->
+
+* Action-led: buttons should always lead with a strong verb that encourages
+action. To provide enough context to merchants use the {verb}+{noun} format on
+buttons except in the case of common actions like Save, Close, Cancel, or OK.
+
+<!-- usagelist -->
+#### Do
+- Activate Apple Pay
+- View shipping settings
+
+#### Don’t
+- Try Apple Pay
+- View your settings
+<!-- end -->
+
+* Scannable: avoid unnecessary words and articles such as the, an, or a.
+
+<!-- usagelist -->
+#### Do
+Add menu item
+
+#### Don’t
+Add a menu item
+<!-- end -->
+
+### Secondary action
+Secondary actions are used for less important actions such as “Learn more” or
+“Close” buttons. They should follow all the other content rules outlined for
+primary buttons.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| image | string | The image to use for small screens |
+| largeImage | string | The image to use for large screens |
+| imageContained | boolean | The image to use for large screens |
+| children | React.ReactNode | Elements to display inside empty state |
+| action | Action | Primary action for empty state |
+| secondaryAction | Action | Secondary action for empty state |
 
 ## Examples
 
-### Basic example
-Basic example description
+### Default empty state
 
-Basic example code block
+Use to explain a single feature before a merchant has used it.
+
+```jsx
+<EmptyState
+  heading="Manage your inventory transfers"
+  action={{content: 'Add transfer'}}
+  secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+  image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
+>
+  <p>Track and receive your incoming inventory from suppliers.</p>
+</EmptyState>
+```

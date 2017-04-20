@@ -1,104 +1,316 @@
 ---
 name: Banner
 tags:
-  - layout
-  - container
-category: Containers
+  - inform
+  - update
+  - changes
+  - conditions
+category: Feedback indicators
 ---
 
 # Banner
 
-Banners are used to draw the merchant’s attention to something that needs their attention. They show at the top of different sections in Shopify and are one of the most prominent ways we have to communicate to merchants.
+Banners are used to inform merchants about important changes or persistent
+conditions. They’re one of the most prominent ways to communicate to merchants.
+Banners show at the top of the page or section they apply to.
 
-## Problem
+**Problem**
 
-Merchants need to know about high priority information and actions they should take.
+Merchants need to find out about important information and actions. For
+example, when an order needs to be reviewed because it has a high risk for fraud.
 
-## Solution
+**Solution**
 
 Banners are a highly visible way to bring something to a merchant’s attention.
 
+> **Not what you’re looking for?**
+>* To inform merchants about a new feature or opportunity, [use callout cards](components/structure/callout-card).
+>* To group similar concepts together in the interface, [use a card](/components/structure/card).
+>* To show a transient confirmation that an action was successful, [use a flash message](/components/feedback-indicators/flash-message).
+
 ---
 
-## Design guidelines
+## Best practices
 
-Great banners should:
+Banners should:
 
-- Be focused on a single theme, piece or information, or required action to avoid overwhelming merchants
-- Be dismissable except for when they contain critical information or an important step a merchant needs to take
-- Be concise and scannable—merchants shouldn’t need to spend a lot of time figuring out what they need to know and do
-- Be limited to a few important calls to action with no more than one primary action included per banner
-- Be used thoughtfully and sparingly for only the most important information. If banners are used for lower priority announcements, merchants may start to ignore them.
-- Not be used as the primary entry point or mechanism for merchants to access to information or actions they need to take on a regular basis
-- Not be used for marketing information or upsell—have a look at callout cards instead
+* Be placed in the appropriate context:
+  * Banners relevant to an entire page should show at the top of that page at
+full-width
+  * Banners related to a specific section or element of a page (such as a card,
+  popover, or modal) should show inside of that element
+* Focus on a single theme, piece of information, or required action to avoid
+overwhelming merchants
+* Be dismissible unless they contain critical information or an important step
+a merchant needs to take
+* Be concise and scannable—merchants shouldn’t need to spend a lot of time
+figuring out what they need to know and do
+* Be limited to a few important calls to action with no more than one primary
+action
+* Be used thoughtfully and sparingly for only the most important information
+* Not be used as the primary entry point or mechanism to access information or
+actions a merchant needs to take on a regular basis
+* Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead
 
 ---
 
 ## Content guidelines
 
-### Heading
+### Headings
 
-Headings should be:
+Banner headings should be:
 
-Descriptive: Help merchants understand what they’ll find in the banner.
+* Descriptive: help merchants understand what they’ll find in the card.
+  * Communicate when a situation is serious enough to warrant using a critical or
+warning banner. People who are unable to see the color of the banner need to
+clearly understand the importance of the situation without the benefit of
+seeing the color of the banner. Learn more about [accessibility](/principles/accessibility).
 
-Concise and scannable:
-Use simple, clear language that can be read at a glance
-Keeping headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-Where possible, avoid articles (the, a, an) to keep content short and actionable
+<!-- usagelist -->
+#### Do
+You’ve received a chargeback
+
+#### Don't
+Have a look at this
+<!-- end -->
+
+* Concise and scannable:
+  * Use simple, clear language that can be read at a glance
+  * Keep headings to a single sentence and avoid using punctuation such as
+periods, commas, or semicolons
+  * Where possible, avoid articles (the, a, an) to keep content short and
+actionable
+
+* Informative:
+  * Label the type of information in the body content
+  * Sentence case: capitalize only the first word in the heading and proper
+nouns
+
+<!-- usagelist -->
+
+#### Do
+Order archived
+
+#### Don't
+Your Order was Archived Today
+<!-- end -->
 
 ### Body content
 
+Body content should:
+* Be concise: keep content to 1 to 2 sentences where possible
+* Clarify the benefit of the main task
+* Be written in sentence case and use appropriate punctuation
+* Avoid repeating the heading
+* Explain how to resolve the issue, particularly for warning and critical
+banners
+
+
+<!-- usagelist -->
+#### Do
+Your online store has a maximum of 20 themes. Delete unused themes to add more.
+
+#### Don't
+You have reached your theme limit. Your online store has reached it’s maximum
+of 20 themes. To add more themes, delete themes you’re no longer using.
+<!-- end -->
+
+### Button and links
+
+Buttons and links should be:
+
+* Clear and predictable: merchants should be able to anticipate what will
+happen when they click a button. Never deceive a merchant by mislabeling a
+button.
+
+<!-- usagelist -->
+#### Do
+Buy shipping label
+
+#### Don't
+Buy
+<!-- end -->
+
+* Action-led: buttons should always lead with a strong verb that encourages
+action. To provide enough context to merchants use the {verb}+{noun} format on
+buttons except in the case of common actions like Save, Close, Cancel, or OK.
+
+<!-- usagelist -->
+#### Do
+Activate Apple Pay
+
+#### Don't
+Try Apple Pay
+<!-- end -->
+
+* Scannable: avoid unnecessary words and articles such as the, an, or a.
+
+<!-- usagelist -->
+#### Do
+Add menu item
+
+#### Don't
+Add a menu item
+<!-- end -->
+
+Link text should:
+
+* Set the expectation of where the merchant will be taken
+
+<!-- usagelist -->
+#### Do
+Order #001
+
+#### Don't
+Order
+<!-- end -->
+
+* Use consistent content to label navigation. For example, if a navigational
+link leads to a page called Orders, label the link Orders.
+
+<!-- usagelist -->
+#### Do
+Payments
+
+#### Don't
+Finance section
+<!-- end -->
+
+### Secondary body content
+
 Body content should be:
 
-Actionable: Start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don't use permissive language like "you can".
+* Actionable: start sentences with imperative verbs when telling a merchant
+what actions are available to them (especially something new). Don’t use
+permissive language like “you can”.
 
-Structured for merchant success: Always put the most critical information first.
-Need do and don’t example.
-Clear: Use the verb “need” to help merchants understand when they’re required to do something.
+<!-- usagelist -->
+#### Do
+Get performance data for all your sales channels.
 
-### Call-to-action button — `<Button>`
+#### Don't
+Now you can get performance data for all your sales channels.
+<!-- end -->
 
-Buttons should be:
+* Structured for merchant success: always put the most critical information
+first.
+* Clear: use the verb “need” to help merchants understand when they’re required
+to do something.
 
-Clear and predictable: Merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+<!-- usagelist -->
+#### Do
+To buy a shipping label, you need to enter the total weight of your shipment,
+including packaging.
 
-Need do and don’t example
-
-Action-led: Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
-
-Need do and don’t example
-
-Scannable: Avoid unnecessary words and articles such as the, an, or a.
-
-Need do and don’t example
-
----
+#### Don't
+To buy a shipping label, you must enter the total weight of your shipment,
+including packaging.
+<!-- end -->
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | title | string | Title content for the banner. |
+| icon | SVG | Icon to display in the banner. |
 | status | enum['success', 'info', 'warning', 'critical'] | Sets the status of the banner. |
 | children | React.ReactNode | The child elements to render in the banner. |
+| action | Action | Action for banner |
+| secondaryAction | Action | Displays a secondary action |
+| onDismiss() | function() | Callback when banner is dismissed |
 
 ## Examples
 
-### Default banner
+### Default banners
 
-Use this when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
+Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
 ```jsx
-<Banner title="Default banner">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<Banner
+  title="Order archived"
+  onDismiss={() => {console.log('dismissed')}}
+>
+  <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
 </Banner>
 ```
 
-### Error banner
+### Dismissible banner
 
-Use this when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
+Make all banners dismissible, unless they contain critical information or an important action that a merchant is required to take.
 
 ```jsx
-<Banner title="Error banner" status="critical">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<Banner onDismiss={() => {console.log('dismissed')}}>
+  <p>Use your finance report to get detailed information about your business. <Link url="">Let us know what you think.</Link></p>
+</Banner>
+```
+
+### Banner with footer call-to-action
+
+Use when you want merchants to take an action after reading the banner.
+
+```jsx
+<Banner
+  title="Some of your product variants are missing weights"
+  status="warning"
+  action={{content: 'Edit variant weights'}}
+  onDismiss={() => {console.log('dismissed')}}
+>
+  <p>Add weights to show accurate rates at checkout and when buying shipping labels in Shopify.</p>
+</Banner>
+```
+
+### Informational banners
+
+Use to update merchants about a change or give them advice.
+
+```jsx
+<Banner
+  title="USPS has updated their rates"
+  action={{content: 'Learn more'}}
+  status="info"
+  onDismiss={() => {console.log('dismissed')}}
+>
+  <p>USPS has updated their postage rates. Make sure you know how these changes affect your store.</p>
+</Banner>
+```
+
+### Success banner
+
+Use to inform merchants when actions are successfully completed. Include next steps if applicable. If the feedback is delayed, persistent or has a call to action, use this banner.
+
+```jsx
+<Banner
+  title="Your shipping label is ready to print."
+  status="success"
+  action={{content: 'Print label'}}
+  onDismiss={() => {console.log('dismissed')}}
+/>
+```
+
+### Warning banners
+
+Use to display information that needs attention or that the merchant needs to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
+
+```jsx
+<Banner
+  title="Before you can purchase a shipping label, this change needs to be made:"
+  action={{content: 'Edit address'}}
+  status="warning"
+>
+  <List>
+    <List.Item>The name of the city you’re shipping to has characters that aren’t allowed. City name can only include spaces and hyphens.</List.Item>
+  </List>
+</Banner>
+```
+
+### Critical banners
+
+Use to communicate problems that have to be resolved immediately for merchants to complete a task, or for the highest priority issues such as orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
+
+```jsx
+<Banner
+  title="High risk of fraud detected"
+  action={{content: 'Review risk analysis'}}
+  status="critical"
+>
+  <p>Before fulfilling this order or capturing payment, please <Link url="">review the Risk Analysis</Link> and determine if this order is fraudulent.</p>
 </Banner>
 ```
