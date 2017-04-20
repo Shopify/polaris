@@ -28,6 +28,7 @@
     "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "cdn:deploy": "node ./scripts/deploy.js",
     "cdn": "npm-run-all cdn:secrets cdn:deploy",
+    "postinstall": "npm rebuild node-sass",
     "hide-private-readme": "shx mv README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
     "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
@@ -38,7 +39,6 @@
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
     "@types/enzyme": "^2.7.7",
     "@types/jest": "^19.2.2",
-    "@types/lodash": "^4.14.62",
     "archiver": "^1.3.0",
     "aws-sdk": "^2.6.8",
     "babel-cli": "^6.24.0",
@@ -58,7 +58,6 @@
     "identity-obj-proxy": "^3.0.0",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
-    "lodash": "^4.17.4",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
     "postcss": "^5.2.16",
@@ -105,12 +104,15 @@
   ],
   "dependencies": {
     "@shopify/javascript-utilities": "^1.1.0",
-    "@shopify/react-utilities": "^1.1.1",
+    "@shopify/react-utilities": "^1.1.3",
+    "@types/lodash": "^4.14.62",
     "@types/node": "^7.0.12",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",
     "babel-runtime": "^6.23.0",
+    "core-js": "^2.4.1",
     "hoist-non-react-statics": "^1.2.0",
+    "lodash": "^4.17.4",
     "tslib": "^1.6.0"
   }
 }

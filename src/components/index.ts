@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 export {
   default as AccountConnection,
   Props as AccountConnectionProps,

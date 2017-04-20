@@ -202,14 +202,14 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     if (event.relatedTarget) {
       const className = (event.relatedTarget as HTMLElement).className;
-      if (!(className.includes(styles.Tab) || className.includes(styles.Item))) {
+      if (!(className.indexOf(styles.Tab) >= 0 || className.indexOf(styles.Item) >= 0)) {
         return this.setState({tabToFocus: selected});
       }
     }
 
     if (event.target && tabToFocus === -1) {
       const className = (event.target as HTMLElement).className;
-      if (className.includes(styles.Tab)) {
+      if (className.indexOf(styles.Tab) >= 0) {
         return this.setState({tabToFocus: selected});
       }
     }
@@ -219,7 +219,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
   private handleBlur(event: React.FocusEvent<HTMLUListElement>) {
     if (event.relatedTarget) {
       const className = (event.relatedTarget as HTMLElement).className;
-      if (!(className.includes(styles.Tab) || className.includes(styles.TabContainer) || className.includes(styles.Item))) {
+      if (!(className.indexOf(styles.Tab) >= 0 || className.indexOf(styles.TabContainer) >= 0 || className.indexOf(styles.Item) >= 0)) {
          this.setState({tabToFocus: -1});
       }
     }

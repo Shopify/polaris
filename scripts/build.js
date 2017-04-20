@@ -23,6 +23,9 @@ writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
     "presets": [
       "shopify/react",
       ["shopify/web", {"modules": false}]
+    ],
+    "plugins": [
+      "../config/babel/plugins/sass-namespace-to-default-import.js"
     ]
   }
 `);

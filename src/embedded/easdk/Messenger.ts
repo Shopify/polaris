@@ -1,3 +1,6 @@
+// tslint:disable-next-line no-require-imports no-var-requires
+const CoreWeakMap: typeof WeakMap = require('core-js/library/es6/weak-map');
+
 export interface Message {
   message: string,
   data: any,
@@ -26,7 +29,7 @@ export default class Messenger {
   private debug: boolean;
   private queue: Message[] = [];
   private callbacks: {[key: string]: Callback} = {};
-  private callbacksToID = new WeakMap<Callback, CallbackID>();
+  private callbacksToID = new CoreWeakMap<Callback, CallbackID>();
   private callbackIndex = 0;
 
   constructor(private target: Window | null | undefined, private handlers: HandlerMap, options: Options) {
@@ -100,7 +103,7 @@ export default class Messenger {
 
   private storeCallback(callback: Callback): CallbackID {
     // Optimization, so we don't store a new callback ID for callbacks
-    // we have seend before
+    // we have sent before
     if (this.callbacksToID.has(callback)) {
       return this.callbacksToID.get(callback) as CallbackID;
     }

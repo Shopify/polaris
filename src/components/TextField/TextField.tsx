@@ -184,7 +184,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     if (onChange == null) { return; }
 
     const numericValue = value ? parseFloat(value) : 0;
-    if (Number.isNaN(numericValue)) { return; }
+    if (isNaN(numericValue)) { return; }
 
     const newValue = Math.min(max, Math.max(numericValue + (steps * step), min));
     onChange(String(newValue));

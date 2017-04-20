@@ -114,7 +114,7 @@ export default function Icon({
   backdrop,
   accessibilityLabel,
 }: Props) {
-  if (color && backdrop && !COLORS_WITH_BACKDROPS.includes(color)) {
+  if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
     // tslint:disable-next-line no-console
     console.warn(`The ${color} icon doesn't accept backdrops. The icon colors that have backdrops are: ${COLORS_WITH_BACKDROPS.join(', ')}`);
   }

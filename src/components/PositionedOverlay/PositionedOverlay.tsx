@@ -167,5 +167,5 @@ function getMarginsForNode(node: HTMLElement) {
 function getZIndexForLayerFromNode(node: HTMLElement) {
   const layerNode = closest(node, layer.selector) || document.body;
   const zIndex = parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
-  return Number.isNaN(zIndex) ? 0 : zIndex;
+  return isNaN(zIndex) ? 0 : zIndex;
 }

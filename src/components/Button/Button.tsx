@@ -123,8 +123,8 @@ function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTM
 export function buttonsFrom(action: ComplexAction, overrides?: Partial<Props>): React.ReactElement<Props>;
 export function buttonsFrom(actions: ComplexAction[], overrides?: Partial<Props>): React.ReactElement<Props>[];
 export function buttonsFrom(actions: ComplexAction[] | ComplexAction, overrides: Partial<Props> = {}) {
-  if (Array.isArray(actions)) {
-    return (actions).map((action, index) => buttonFrom(action, overrides, index));
+  if ((actions as ComplexAction[]).length != null) {
+    return (actions as ComplexAction[]).map((action, index) => buttonFrom(action, overrides, index));
   } else {
     return buttonFrom(actions, overrides);
   }

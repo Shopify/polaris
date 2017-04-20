@@ -84,7 +84,7 @@ export default function ChoiceList({
 }
 
 function choiceIsSelected({value}: Choice, selected: string[]) {
-  return selected.includes(value);
+  return selected.indexOf(value) >= 0;
 }
 
 function updateSelectedChoices({value}: Choice, checked: boolean, selected: string[], allowMultiple = false) {

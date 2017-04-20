@@ -13,8 +13,6 @@ import Parser from 'postcss-modules-parser';
 import postcssShopify from 'postcss-shopify';
 import genericNames from 'generic-names';
 
-const VALID_IDENTIFIER = /^[a-z_$][0-9a-z_$]*$/i;
-
 export default function styles(options = {}) {
   const filter = createFilter(options.include || ['**/*.css', '**/*.scss'], options.exclude);
   const includePaths = options.includePaths || [];
@@ -66,14 +64,13 @@ export default function styles(options = {}) {
         .then(({css, tokens}) => {
           tokensByFile[id] = tokens;
 
-          const code = Object
+          const properties = Object
             .keys(tokens)
-            .filter((className) => VALID_IDENTIFIER.test(className))
-            .map((className) => `export var ${className} = ${JSON.stringify(tokens[className])};`)
+            .map((className) => `  ${JSON.stringify(className)}: ${JSON.stringify(tokens[className])},`)
             .join('\n');
 
           compiledStyles.push(css);
-          return code;
+          return `export default {\n${properties}\n};`;
         });
     },
     ongenerate(generateOptions) {

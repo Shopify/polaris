@@ -19,6 +19,8 @@ const PACKAGES = [
   'react-dom',
   'babel-runtime',
   'tslib',
+  'lodash',
+  'core-js',
   'hoist-non-react-statics',
   '@shopify/javascript-utilities',
   '@shopify/react-utilities',
