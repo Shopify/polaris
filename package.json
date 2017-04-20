@@ -2,6 +2,12 @@
   "name": "@shopify/quilt",
   "version": "0.16.1",
   "license": "SEE LICENSE IN README.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://github.com/Shopify/polaris#readme",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
   "keywords": [
     "shopify",
     "polaris",
