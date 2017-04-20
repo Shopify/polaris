@@ -70,10 +70,10 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ## Examples
 We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
 
-- [create-react-app example](https://github.com/Shopify/polaris/tree/sample-apps/examples/create-react-app)
-- [Webpack example](https://github.com/Shopify/polaris/tree/sample-apps/examples/webpack)
-- [Browserify example](https://github.com/Shopify/polaris/tree/sample-apps/examples/browserify)
-- [CSS-only example](https://github.com/Shopify/polaris/tree/sample-apps/examples/cdn-css-only)
+- [create-react-app example](https://github.com/Shopify/polaris/tree/master/examples/create-react-app)
+- [Webpack example](https://github.com/Shopify/polaris/tree/master/examples/webpack)
+- [Browserify example](https://github.com/Shopify/polaris/tree/master/examples/browserify)
+- [CSS-only example](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles)
 
 ## Methodology
 We set out to make our components easy to use. Each of our components has a well-documented (and fully typed) public interface with strong, consistently-applied conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
