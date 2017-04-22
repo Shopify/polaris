@@ -105,7 +105,7 @@ function namespaceSassClasses(filePath, file, tokens) {
 
   return Object.keys(namespaces)
     .filter(Boolean)
-    .reduce((sass, className) =>
-      sass.replace(new RegExp(`\\.${className}`, 'g'), `.${namespaces[className]}`), file
-    );
+    .reduce((sass, className) => (
+      sass.replace(new RegExp(`\\.${className}(?!-)`, 'g'), `.${namespaces[className]}`)
+    ), file);
 }
