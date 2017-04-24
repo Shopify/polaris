@@ -45,7 +45,6 @@
     "postpublish": "in-publish && npm-run-all cdn show-private-readme || :"
   },
   "devDependencies": {
-    "@shopify/images": "^1.0.0",
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
     "@types/enzyme": "^2.7.7",
     "@types/jest": "^19.2.2",
@@ -110,9 +109,12 @@
     "index.js",
     "index.es.js",
     "styles.css",
-    "styles.scss"
+    "styles.scss",
+    "embedded.js",
+    "embedded.d.ts"
   ],
   "dependencies": {
+    "@shopify/images": "^1.0.0",
     "@shopify/javascript-utilities": "^1.1.2",
     "@shopify/react-utilities": "^1.1.4",
     "@types/lodash": "^4.14.62",

@@ -18,6 +18,8 @@ execSync(`./node_modules/.bin/tsc --outDir ${intermediateBuild}`, {
   stdio: 'inherit',
 });
 
+writeFileSync(resolvePath(root, 'embedded.d.ts'), "export * from './types/embedded';\n");
+
 writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
   {
     "presets": [
