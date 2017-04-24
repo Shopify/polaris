@@ -3,7 +3,7 @@
   "description": "Shopify’s product component library",
   "version": "1.0.1",
   "private": false,
-  "license": "SEE LICENSE IN README.md",
+  "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://github.com/Shopify/polaris#readme",
   "repository": "https://github.com/Shopify/polaris",
