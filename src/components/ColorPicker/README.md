@@ -37,8 +37,8 @@ There are no customizable content elements in the color picker component.
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
 | color | Color | The currently selected color |
-| allowAlpha | boolean | Allow user to select an alpha value. |
-| onChange | function(color: HSBAColor) | Callback when color is selected. |
+| allowAlpha | boolean | Allow user to select an alpha value |
+| onChange | function(color: HSBAColor) | Callback when color is selected |
 
 ## Examples
 
@@ -50,9 +50,9 @@ task rather than a technical one.
 ```jsx
 <ColorPicker
   color={{
-    hue: 255,
-    brightness: 255,
-    saturation: 255,
+    hue: 120,
+    brightness: 1,
+    saturation: 1,
   }}
 />
 ```
@@ -65,9 +65,10 @@ transparent background that allows underlying objects to show through.
 ```jsx
 <ColorPicker
   color={{
-    hue: 255,
-    brightness: 255,
-    saturation: 255,
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7
   }}
   allowAlpha
 />

@@ -14,7 +14,7 @@
     "styles/": true,
     "types/": true,
     "index.*": true,
-    "embedded.js": true,
+    "embedded.*": true,
     "styles.{css,scss}": true
   },
   "search.exclude": {
@@ -25,7 +25,7 @@
     "styles/": true,
     "types/": true,
     "index.*": true,
-    "embedded.js": true,
+    "embedded.*": true,
     "styles.{css,scss}": true
   }
 }

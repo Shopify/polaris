@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import EASDK, {Options} from '../easdk';
 import {name, version} from '../../../package.json';
 
@@ -11,9 +12,7 @@ const METADATA = {
 };
 
 export default class App extends React.Component<Props, never> {
-  static childContextTypes = {
-    easdk: React.PropTypes.instanceOf(EASDK),
-  };
+  static childContextTypes = {easdk: PropTypes.instanceOf(EASDK)};
 
   private easdk = new EASDK({
     apiKey: this.props.apiKey,

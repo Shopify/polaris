@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import hoistStatics from 'hoist-non-react-statics';
 import {getDisplayName} from '@shopify/react-utilities/components';
 import {ReactComponent} from '@shopify/react-utilities/types';
@@ -12,12 +13,16 @@ export interface WithEASDKProps {
   easdk: EASDK,
 }
 
+export const contextTypes = {
+  easdk: PropTypes.instanceOf(EASDK),
+};
+
 export function withEASDK({displayName}: {displayName?: string} = {}) {
   return function addEASDK<OwnProps, C>(WrappedComponent: ReactComponent<OwnProps & WithEASDKProps> & C): ReactComponent<OwnProps> & C {
     class WithEASDK extends React.Component<OwnProps, never> {
       static displayName = `withEASDK(${displayName || getDisplayName(WrappedComponent)})`;
       static WrappedComponent = WrappedComponent;
-      static contextTypes = {easdk: React.PropTypes.instanceOf(EASDK)};
+      static contextTypes = contextTypes;
 
       context: Context;
 

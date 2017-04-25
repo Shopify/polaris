@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import autobind from '@shopify/javascript-utilities/autobind';
 import {classNames} from '@shopify/react-utilities/styles';
 import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
@@ -23,7 +24,7 @@ export interface Context {
 }
 
 const CONTEXT_TYPES = {
-  parentCollapsibleExpanding: React.PropTypes.bool,
+  parentCollapsibleExpanding: PropTypes.bool,
 };
 
 export default class Collapsible extends React.Component<Props, State> {

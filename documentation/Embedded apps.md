@@ -48,7 +48,7 @@ In order to call these methods, you must get the `easdk` object that we add to [
 
 ```js
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import {Page, Card, Button} from '@shopify/polaris';
 import {EmbeddedApp} from '@shopify/polaris/embedded';
 

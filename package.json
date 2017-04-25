@@ -1,8 +1,9 @@
 {
   "name": "@shopify/polaris",
-  "version": "1.0.1",
+  "description": "Shopify’s product component library",
+  "version": "1.0.2",
   "private": false,
-  "license": "SEE LICENSE IN README.md",
+  "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://github.com/Shopify/polaris#readme",
   "repository": "https://github.com/Shopify/polaris",
@@ -38,7 +39,6 @@
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md "
   },
   "devDependencies": {
-    "@shopify/images": "^1.0.0",
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
     "@types/enzyme": "^2.7.7",
     "@types/jest": "^19.2.2",
@@ -70,9 +70,9 @@
     "postcss-modules-scope": "^1.0.2",
     "postcss-modules-values": "^1.2.2",
     "postcss-shopify": "^1.0.0",
-    "react": "^15.4.2",
+    "react": "^15.5.4",
     "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react-dom": "^15.5.4",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
@@ -88,8 +88,8 @@
     "typescript": "^2.1.6"
   },
   "peerDependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
   },
   "babel": {
     "presets": [
@@ -103,19 +103,24 @@
     "index.js",
     "index.es.js",
     "styles.css",
-    "styles.scss"
+    "styles.scss",
+    "embedded.js",
+    "embedded.d.ts"
   ],
   "dependencies": {
+    "@shopify/images": "^1.0.0",
     "@shopify/javascript-utilities": "^1.1.2",
     "@shopify/react-utilities": "^1.1.4",
     "@types/lodash": "^4.14.62",
     "@types/node": "^7.0.12",
+    "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",
     "babel-runtime": "^6.23.0",
     "core-js": "^2.4.1",
     "hoist-non-react-statics": "^1.2.0",
     "lodash": "^4.17.4",
+    "prop-types": "^15.5.8",
     "tslib": "^1.6.0"
   }
 }

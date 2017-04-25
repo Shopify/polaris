@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -21,9 +22,7 @@ const EASDK_PROPS: (keyof Props)[] = [
 ];
 
 export default class Page extends React.PureComponent<Props, never> {
-  static contextTypes = {
-    easdk: React.PropTypes.object,
-  };
+  static contextTypes = {easdk: PropTypes.object};
 
   componentDidMount() {
     if (this.context.easdk == null) { return; }
