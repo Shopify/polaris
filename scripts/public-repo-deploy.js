@@ -8,7 +8,7 @@ const PRIVATE = 'polaris-internal';
 const PUBLIC = 'polaris';
 const PRIVATE_GIT_REPO = `https://github.com/Shopify/${PRIVATE}`;
 const PUBLIC_GIT_REPO = `https://github.com/Shopify/${PUBLIC}`;
-const STRIP_PRIVATE_LINKS = new RegExp(/\s?\(\[.*?\]\([^\s].*\/shopify\/polaris-internal\/.*?\)\)/, 'g');
+const STRIP_PRIVATE_LINKS = /\s?\(\[.*?\]\([^\s].*\/shopify\/polaris-internal\/.*?\)\)/gi;
 
 const root = resolve(__dirname, '..');
 const sandbox = resolve(root, 'sandbox');
