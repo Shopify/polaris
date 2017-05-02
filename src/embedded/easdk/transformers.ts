@@ -1,4 +1,5 @@
 import {LinkAction, ComplexAction} from '../../types';
+import url from 'url';
 
 export interface EASDKBreadcrumb {
   label: string,
@@ -44,9 +45,26 @@ export function transformAction(action: ComplexAction | undefined) {
   return {
     label: action.content,
     href: action.url,
+    target: getTargetFromUrl(action.url),
     message: action.onAction,
     style,
   } as EASDKButton;
+}
+
+function getTargetFromUrl(urlParam: EASDKButton['href']): EASDKButton['target'] {
+
+  if (!urlParam || urlParam === '#') {
+    return undefined;
+  }
+
+  const parsedUrl = url.parse(urlParam);
+  if (urlParam[0] === '/') {
+    return 'shopify';
+  } else if (parsedUrl.hostname === window.location.hostname) {
+    return 'app';
+  } else {
+    return 'new'; // or 'parent' ?
+  }
 }
 
 export interface Pagination {
