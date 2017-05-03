@@ -90,14 +90,14 @@ export default class Messenger {
   private log(message: string) {
     if (!this.debug) { return; }
 
-    // tslint:disable-next-line
+    // tslint:disable-next-line no-console
     console.log(`[${this.name} Messenger]: ${message}`);
   }
 
   private warn(message: string) {
     if (!this.debug) { return; }
 
-    // tslint:disable-next-line
+    // tslint:disable-next-line no-console
     console.warn(`[${this.name} Messenger]: ${message}`);
   }
 
