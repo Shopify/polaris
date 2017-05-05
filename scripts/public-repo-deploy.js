@@ -61,7 +61,7 @@ writeFileSync(changelog, changelogFile);
 
 cd(sandbox);
 execSync(`git clone ${PUBLIC_GIT_REPO}`);
-const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc}';
+const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc,.babelrc}';
 rm('-rf', [
   join(polarisPublic, '*'),
   join(polarisPublic, hiddenFilesGlob),
