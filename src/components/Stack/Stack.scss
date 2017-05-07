@@ -26,6 +26,10 @@
   flex-direction: column;
 }
 
+.spacingNone {
+  @include stack-spacing(none);
+}
+
 .spacingTight {
   @include stack-spacing(tight);
 }
