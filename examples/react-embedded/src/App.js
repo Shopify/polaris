@@ -16,7 +16,12 @@ export default class MyApp extends React.Component {
       >
         <Page title="Example application">
           <Card sectioned>
-            Insert the rest of your app here, including those components detailed below, which can now communicate with the Embedded App SDK.
+            <p>
+              Go to **http://localhost:3000/login?shop=<your-shop>.myshopify.com&apiKey=<your-app-api-key>** to see how your embedded app work with Polaris
+            </p>
+            <p>
+              Insert the rest of your app here, including those components detailed below, which can now communicate with the Embedded App SDK.
+            <p>
           </Card>
         </Page>
       </EmbeddedApp>
