@@ -15,15 +15,24 @@ import genericNames from 'generic-names';
 
 export default function styles(options = {}) {
   const filter = createFilter(options.include || ['**/*.css', '**/*.scss'], options.exclude);
-  const includePaths = options.includePaths || [];
+  const {
+    output,
+    includePaths = [],
+    includeAlways = [],
+    generateScopedName: userGenerateScopedName,
+  } = options;
   const compiledStyles = [];
   const tokensByFile = {};
 
-  const generateScopedName = typeof options.generateScopedName === 'function'
-    ? options.generateScopedName
-    : genericNames(options.generateScopedName || '[path]___[name]___[local]___[hash:base64:5]', {
+  const generateScopedName = typeof userGenerateScopedName === 'function'
+    ? userGenerateScopedName
+    : genericNames(userGenerateScopedName || '[path]___[name]___[local]___[hash:base64:5]', {
       context: process.cwd(),
     });
+
+  const includeAlwaysSource = includeAlways
+    .map((resource) => readFileSync(resource, 'utf8'))
+    .join('\n');
 
   const processor = postcss([
     cssModulesValues,
@@ -49,7 +58,7 @@ export default function styles(options = {}) {
 
       return new Promise((resolve, reject) => {
         render({
-          data: source,
+          data: `${includeAlwaysSource}\n${source}`,
           includePaths: includePaths.concat(dirname(id)),
         }, (error, result) => {
           if (error) {
@@ -74,12 +83,12 @@ export default function styles(options = {}) {
         });
     },
     ongenerate(generateOptions) {
-      if (options.output === false) {
+      if (output === false) {
         return null;
       }
 
       const jsDestination = generateOptions.dest || 'bundle.js';
-      let cssDestination = typeof options.output === 'string' ? options.output : null;
+      let cssDestination = typeof output === 'string' ? output : null;
 
       if (cssDestination == null) {
         cssDestination = jsDestination.endsWith('.js')

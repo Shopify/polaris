@@ -1,8 +1,3 @@
-@import 'foundation/spacing';
-@import 'shared/breakpoints';
-@import 'foundation/utilities';
-@import 'foundation/layout';
-
 $image-offset: 40%;
 $image-overflow-width: calc(100% + #{$image-offset} * 2);
 

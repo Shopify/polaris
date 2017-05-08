@@ -17,6 +17,10 @@ const buildRoot = resolve(project, './build-intermediate');
 const styleRoot = resolve(buildRoot, './styles');
 
 const externalPackages = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
+const sassResources = [
+  resolve(styleRoot, './foundation.scss'),
+  resolve(styleRoot, './shared.scss'),
+];
 
 export default function createRollupConfig({entry, outputCSS}) {
   return {
@@ -35,6 +39,7 @@ export default function createRollupConfig({entry, outputCSS}) {
       styles({
         output: outputCSS,
         includePaths: [styleRoot],
+        includeAlways: sassResources,
         generateScopedName: getClassName,
       }),
       icon({

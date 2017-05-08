@@ -1,16 +1,3 @@
-@import 'foundation/borders';
-@import 'foundation/border-radius';
-@import 'foundation/colors';
-@import 'foundation/spacing';
-@import 'foundation/typography';
-@import 'foundation/duration';
-@import 'foundation/easing';
-@import 'foundation/shadows';
-@import 'shared/buttons';
-@import 'shared/controls';
-@import 'shared/icons';
-@import 'shared/typography';
-
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
 $slim-min-height: rem(30px);

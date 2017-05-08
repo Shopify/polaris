@@ -1,18 +1,3 @@
-@import 'foundation/border-radius';
-@import 'foundation/colors';
-@import 'foundation/duration';
-@import 'foundation/easing';
-@import 'foundation/layout';
-@import 'foundation/spacing';
-@import 'foundation/utilities';
-@import 'foundation/typography';
-@import 'foundation/z-index';
-@import 'shared/icons';
-@import 'shared/breakpoints';
-@import 'shared/buttons';
-@import 'shared/controls';
-@import 'shared/typography';
-
 $navigation-elements-height: rem(36px);
 $title-height: line-height(display-large, large-screen);
 $actions-vertical-spacing: rem(4px);

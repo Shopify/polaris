@@ -1,11 +1,3 @@
-@import 'foundation/borders';
-@import 'foundation/border-radius';
-@import 'foundation/colors';
-@import 'foundation/duration';
-@import 'foundation/easing';
-@import 'foundation/shadows';
-@import 'foundation/typography';
-
 @function control-height() {
   @return rem(36px);
 }

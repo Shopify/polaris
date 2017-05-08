@@ -1,14 +1,3 @@
-@import 'foundation/borders';
-@import 'foundation/border-radius';
-@import 'foundation/colors';
-@import 'foundation/spacing';
-@import 'foundation/shadows';
-@import 'foundation/utilities';
-@import 'foundation/z-index';
-@import 'shared/controls';
-@import 'shared/icons';
-@import 'shared/typography';
-
 $stacking-order: (
   backdrop: 10,
   input: 20,

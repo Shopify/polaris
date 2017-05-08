@@ -1,8 +1,3 @@
-@import 'foundation/colors';
-@import 'foundation/typography';
-@import 'foundation/utilities';
-@import 'shared/breakpoints';
-
 $typography-condensed: em(640px);
 
 @mixin when-typography-not-condensed {
