@@ -32,7 +32,7 @@ export interface EASDKButton {
 
 export function transformAction(action: ComplexAction | undefined) {
   if (action == null || !action) {
-    return undefined;
+    return;
   }
 
   let style;
@@ -51,14 +51,13 @@ export function transformAction(action: ComplexAction | undefined) {
   } as EASDKButton;
 }
 
-function getTargetFromUrl(urlParam: EASDKButton['href']): EASDKButton['target'] {
-
-  if (!urlParam || urlParam === '#') {
+function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
+  if (!actionUrl || actionUrl === '#') {
     return undefined;
   }
 
-  const parsedUrl = url.parse(urlParam);
-  if (urlParam[0] === '/') {
+  const parsedUrl = url.parse(actionUrl);
+  if (actionUrl[0] === '/') {
     return 'shopify';
   } else if (parsedUrl.hostname === window.location.hostname) {
     return 'app';
