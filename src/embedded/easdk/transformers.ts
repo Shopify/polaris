@@ -45,7 +45,7 @@ export function transformAction(action: ComplexAction | undefined) {
   return {
     label: action.content,
     href: action.url,
-    target: getTargetFromUrl(action.url),
+    target: action.url ? getTargetFromUrl(action.url) : undefined,
     message: action.onAction,
     style,
   } as EASDKButton;
@@ -53,7 +53,7 @@ export function transformAction(action: ComplexAction | undefined) {
 
 function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
   if (!actionUrl || actionUrl === '#') {
-    return undefined;
+    return;
   }
 
   const parsedUrl = url.parse(actionUrl);
@@ -62,7 +62,7 @@ function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
   } else if (parsedUrl.hostname === window.location.hostname) {
     return 'app';
   } else {
-    return 'new'; // or 'parent' ?
+    return 'new';
   }
 }
 
