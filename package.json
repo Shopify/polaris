@@ -23,7 +23,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint:js": "eslint . --max-warnings 0",
-    "lint:ts": "tslint --config ./config/tslint/full.json './{components}/**/*.{ts,tsx}' --project tsconfig.json --type-check",
+    "lint:ts": "tslint --config ./config/tslint/full.json './src/**/*.{ts,tsx}' --project tsconfig.json --type-check",
     "lint": "npm-run-all lint:js lint:ts",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
@@ -99,9 +99,9 @@
     "shx": "^0.2.2",
     "style-loader": "^0.17.0",
     "svgo": "^0.7.2",
-    "tslint": "^4.4.2",
-    "tslint-config-shopify": "^1.1.4",
-    "typescript": "^2.1.6",
+    "tslint": "^5.2.0",
+    "tslint-config-shopify": "^2.0.0",
+    "typescript": "^2.3.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.5.0",
     "webpack-dev-server": "^2.4.5"

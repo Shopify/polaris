@@ -20,7 +20,7 @@ export default class UnstyledLink extends React.PureComponent<Props, never> {
 
   render() {
     if (LinkComponent) {
-      return <LinkComponent {...this.props} {...unstyled.props} />;
+      return <LinkComponent {...unstyled.props} {...this.props}/>;
     }
 
     const {external, url, ...rest} = this.props;

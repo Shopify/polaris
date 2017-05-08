@@ -12,7 +12,7 @@ const red = {
 enum Slidables {
   BrightnessSaturation,
   Hue,
-};
+}
 
 describe('<ColorPicker />', () => {
   describe('Saturation/ Brightness pane', () => {

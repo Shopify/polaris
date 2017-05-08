@@ -62,7 +62,7 @@ export default function Avatar({
     content = <Image className={styles.Image} source={finalSource} alt="" role="presentation" />;
   } else if (initials) {
     content = <span aria-hidden className={styles.Initials}>{initials}</span>;
-  };
+  }
 
   return <div aria-label={label} role="img" className={className}>{content}</div>;
 }

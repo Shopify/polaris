@@ -82,7 +82,7 @@ export default class EASDK {
 
 }
 
-function checkFrameRedirect(apiKey: Options['apiKey'], shopOrigin: Options['shopOrigin'] = "https://myshopify.com", forceRedirect: Options['forceRedirect']) {
+function checkFrameRedirect(apiKey: Options['apiKey'], shopOrigin: Options['shopOrigin'] = 'https://myshopify.com', forceRedirect: Options['forceRedirect']) {
 
   if (window !== window.parent) {
     return;

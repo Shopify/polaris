@@ -6,7 +6,7 @@ import * as styles from './Layout.scss';
 export interface Props {
   children?: React.ReactNode,
   sectioned?: boolean,
-};
+}
 
 export default class Layout extends React.Component<Props, never> {
   static AnnotatedSection = AnnotatedSection;
