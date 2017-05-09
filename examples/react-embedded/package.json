@@ -5,7 +5,8 @@
   "dependencies": {
     "@shopify/polaris": "^1.0.2",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "url-search-params": "^0.8.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
