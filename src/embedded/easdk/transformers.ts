@@ -52,7 +52,7 @@ export function transformAction(action: ComplexAction | undefined) {
 }
 
 function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
-  if (!actionUrl || actionUrl === '#') {
+  if (!actionUrl) {
     return;
   }
 
