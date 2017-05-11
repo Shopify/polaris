@@ -47,6 +47,7 @@ There are no editable content elements that are specific to the pagination compo
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
+| plain | boolean | A more subdued control for use in headers |
 | nextUrl | string | The URL of the next page |
 | previousUrl | string | The URL of the previous page |
 | hasNext | boolean | Whether there is a next page to show |
@@ -57,7 +58,7 @@ There are no editable content elements that are specific to the pagination compo
 
 ## Examples
 
-### List pagination
+### Default pagination
 
 Use for pagination at the bottom of lists.
 
@@ -67,26 +68,4 @@ Use for pagination at the bottom of lists.
   onPrevious={() => {console.log('Previous')}}
   hasNext
   onNext={() => {console.log('Next')}} />
-```
-
-### Page header pagination
-
-Use for pagination between detail pages, such as orders or products.
-
-```jsx
-<Page
-  title="Jar With Lock-Lid"
-  breadcrumbs={[
-    {content: 'Products'},
-  ]}
-  primaryAction={{content: 'Save', disabled: true}}
-  pagination={{
-    hasPrevious: true,
-    onPrevious: () => {console.log('Previous')},
-    hasNext: true,
-    onNext: () => {console.log('Next')},
-  }}
->
-  <p>Page content</p>
-</Page>
 ```

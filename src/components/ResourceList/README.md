@@ -157,29 +157,28 @@ Secondary actions should:
 Can be used to display a list of simple resources.
 
 ```jsx
-<Card>
-  <ResourceList
-    items={[
-      {
-        url: '#',
-        attributeOne: 'How to Get Value from Wireframes',
-        attributeTwo: 'by Jonathan Mangrove',
-        attributeThree: <TextStyle variation="subdued">Today, 7:14pm</TextStyle>,
-      },
-      {
-        url: '#',
-        attributeOne: 'Test blog post',
-        attributeTwo: 'by Jonathan Mangrove',
-        attributeThree: <TextStyle variation="subdued">Jan 14, 2016, 8:24am</TextStyle>,
-        badges: [
-          {content: 'Hidden'},
-        ],
-      },
-    ]}
-    renderItem={(item, index) => {
-      return <ResourceList.Item key={index} {...item} />;
-    }} />
-</Card>
+<ResourceList
+  items={[
+    {
+      url: '#',
+      attributeOne: 'How to Get Value from Wireframes',
+      attributeTwo: 'by Jonathan Mangrove',
+      attributeThree: <TextStyle variation="subdued">Today, 7:14pm</TextStyle>,
+    },
+    {
+      url: '#',
+      attributeOne: 'Test blog post',
+      attributeTwo: 'by Jonathan Mangrove',
+      attributeThree: <TextStyle variation="subdued">Jan 14, 2016, 8:24am</TextStyle>,
+      badges: [
+        {content: 'Hidden'},
+      ],
+    },
+  ]}
+  renderItem={(item, index) => {
+    return <ResourceList.Item key={index} {...item} />;
+  }}
+/>
 ```
 
 ### Products list
@@ -187,47 +186,46 @@ Can be used to display a list of simple resources.
 Can be used to display a list of products.
 
 ```jsx
-<Card>
-  <ResourceList
-    items={[
-      {
-        url: '#',
-        media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
-        attributeOne: 'Elegant necklace',
-        attributeTwo: 'Accessory by Marcuse',
-        attributeThree: '12 in stock',
-      },
-      {
-        url: '#',
-        media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
-        attributeOne: 'Elegant necklace',
-        attributeTwo: 'Accessory by Marcuse',
-        attributeThree: '11 in stock for 4 variants',
-        exceptions: [
-          {
-            status: 'warning',
-            title: 'Not published to 2 channels',
-            description: 'Content didn’t meet requirements for: Facebook, Amazon'
-          },
-          {
-            status: 'warning',
-            title: 'Missing weights on 1 variant',
-            description: 'Calculated shipping rates won’t be accurate'
-          },
-        ]
-      },
-      {
-        url: '#',
-        media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
-        attributeOne: 'Elegant necklace',
-        attributeTwo: 'Accessory by Marcuse',
-        attributeThree: '43 in stock for 3 variants',
-      },
-    ]}
-    renderItem={(item, index) => {
-      return <ResourceList.Item key={index} {...item} />;
-    }} />
-</Card>
+<ResourceList
+  items={[
+    {
+      url: '#',
+      media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
+      attributeOne: 'Elegant necklace',
+      attributeTwo: 'Accessory by Marcuse',
+      attributeThree: '12 in stock',
+    },
+    {
+      url: '#',
+      media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
+      attributeOne: 'Elegant necklace',
+      attributeTwo: 'Accessory by Marcuse',
+      attributeThree: '11 in stock for 4 variants',
+      exceptions: [
+        {
+          status: 'warning',
+          title: 'Not published to 2 channels',
+          description: 'Content didn’t meet requirements for: Facebook, Amazon'
+        },
+        {
+          status: 'warning',
+          title: 'Missing weights on 1 variant',
+          description: 'Calculated shipping rates won’t be accurate'
+        },
+      ]
+    },
+    {
+      url: '#',
+      media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
+      attributeOne: 'Elegant necklace',
+      attributeTwo: 'Accessory by Marcuse',
+      attributeThree: '43 in stock for 3 variants',
+    },
+  ]}
+  renderItem={(item, index) => {
+    return <ResourceList.Item key={index} {...item} />;
+  }}
+/>
 ```
 
 ### Product listings list (for channels)
@@ -235,41 +233,40 @@ Can be used to display a list of products.
 Can be used to display product listings in a Shopify sales channel.
 
 ```jsx
-<Card>
-  <ResourceList
-    items={[
-      {
-        url: '#',
-        media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
-        attributeOne: 'Elegant necklace',
-        attributeTwo: <TextStyle variation="subdued">No variants</TextStyle>,
-        actions: [{content: 'View listing'}],
-        persistActions: true,
-      },
-      {
-        url: '#',
-        media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
-        attributeOne: 'Elegant necklace',
-        attributeTwo: '4 variants',
-        attributeThree: <TextStyle variation="subdued">Not listed</TextStyle>,
-        badges: [
-          {
-            status: 'warning',
-            content: 'Needs review',
-          }
-        ],
-      },
-      {
-        url: '#',
-        media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
-        attributeOne: 'Elegant necklace',
-        attributeTwo: '3 variants',
-        actions: [{content: 'View listing'}],
-        persistActions: true,
-      },
-    ]}
-    renderItem={(item, index) => {
-      return <ResourceList.Item key={index} {...item} />;
-    }} />
-</Card>
+<ResourceList
+  items={[
+    {
+      url: '#',
+      media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
+      attributeOne: 'Elegant necklace',
+      attributeTwo: <TextStyle variation="subdued">No variants</TextStyle>,
+      actions: [{content: 'View listing'}],
+      persistActions: true,
+    },
+    {
+      url: '#',
+      media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
+      attributeOne: 'Elegant necklace',
+      attributeTwo: '4 variants',
+      attributeThree: <TextStyle variation="subdued">Not listed</TextStyle>,
+      badges: [
+        {
+          status: 'warning',
+          content: 'Needs review',
+        }
+      ],
+    },
+    {
+      url: '#',
+      media: <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />,
+      attributeOne: 'Elegant necklace',
+      attributeTwo: '3 variants',
+      actions: [{content: 'View listing'}],
+      persistActions: true,
+    },
+  ]}
+  renderItem={(item, index) => {
+    return <ResourceList.Item key={index} {...item} />;
+  }}
+/>
 ```

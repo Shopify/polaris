@@ -62,9 +62,5 @@ The shortcut description should describe what action will be taken if merchants 
 Use to list a related set of keyboard shortcuts.
 
 ```jsx
-<p>
-  <KeyboardKey>Ctl</KeyboardKey> +
-  <KeyboardKey>Alt</KeyboardKey> +
-  <KeyboardKey>Delete</KeyboardKey>
-</p>
+<KeyboardKey>Ctrl</KeyboardKey>
 ```

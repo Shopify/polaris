@@ -24,7 +24,7 @@ Avatars visually clarify the business or the person being represented at
 various locations in the interface.
 
 > **Not what you’re looking for?**
->* To create page-level layout, [use the layout component](/components/structure/layout).
+>* To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail).
 
 ---
 

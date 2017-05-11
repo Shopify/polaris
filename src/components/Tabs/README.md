@@ -90,7 +90,6 @@ Use for most cases, especially when the number of tabs may be more than three.
     {
       id: 'accepts-marketing',
       title: 'Accepts Marketing',
-      url: 'https://www.shopify.ca/',
       panelID: 'accepts-marketing-content',
     },
     {
@@ -104,9 +103,7 @@ Use for most cases, especially when the number of tabs may be more than three.
       panelID: 'prospects-content',
     }
   ]}
->
-  <Heading>All customers</Heading>
-</Tabs>
+/>
 ```
 
 ### Fitted tabs
@@ -126,11 +123,8 @@ Use when tabs contain a few (2 or 3) items within a narrow column.
     {
       id: 'accepts-marketing',
       title: 'Accepts Marketing',
-      url: 'https://www.shopify.ca/',
       panelID: 'accepts-marketing-content',
     }
   ]}
->
-  <Heading>All customers</Heading>
-</Tabs>
+/>
 ```

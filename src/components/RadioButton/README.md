@@ -91,20 +91,8 @@ Radio button labels should:
 Use radio buttons where merchants must make a single selection.
 
 ```jsx
-<Card sectioned>
-  <RadioButton
-    label="Accounts are disabled"
-    helpText="Customers will only be able to check out as guests."
-  />
-  <RadioButton
-    checked
-    label="Accounts are optional"
-    helpText="Customers will have the option to create an account at the end of the checkout process."
-  />
-  <RadioButton
-    disabled
-    label="Accounts are required"
-    helpText="Customers will only be able to check out if they have a customer account."
-  />
-</Card>
+<RadioButton
+  label="Accounts are disabled"
+  helpText="Customers will only be able to check out as guests."
+/>
 ```

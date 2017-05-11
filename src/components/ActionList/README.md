@@ -91,19 +91,12 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 Use for the least important actions so the merchant isn’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
-<div style={{height: '200px'}}>
-  <Popover
-    active
-    activator={<Button>Actions</Button>}
-  >
-    <ActionList
-      items={[
-        {content: 'Import file'},
-        {content: 'Export file'},
-      ]}
-    />
-  </Popover>
-</div>
+<ActionList
+  items={[
+    {content: 'Import file'},
+    {content: 'Export file'},
+  ]}
+/>
 ```
 
 ### Action list with icons or image
@@ -111,19 +104,12 @@ Use for the least important actions so the merchant isn’t distracted by second
 Use when the items benefit from an associated action or image (e.g. a list of products).
 
 ```jsx
-<div style={{height: '200px'}}>
-  <Popover
-    active
-    activator={<Button>Actions</Button>}
-  >
-    <ActionList
-      items={[
-        {content: 'Import file', icon: 'import'},
-        {content: 'Export file', icon: 'export'},
-      ]}
-    />
-  </Popover>
-</div>
+<ActionList
+  items={[
+    {content: 'Import file', icon: 'import'},
+    {content: 'Export file', icon: 'export'},
+  ]}
+/>
 ```
 
 ### Sectioned action list
@@ -131,20 +117,13 @@ Use when the items benefit from an associated action or image (e.g. a list of pr
 Use when the items benefit from sections to help differentiate actions.
 
 ```jsx
-<div style={{height: '200px'}}>
-  <Popover
-    active
-    activator={<Button>Actions</Button>}
-  >
-    <ActionList
-      sections={[{
-        title: "File options",
-        items: [
-          {content: 'Import file', icon: 'import'},
-          {content: 'Export file', icon: 'export'},
-        ]
-      }]}
-    />
-  </Popover>
-</div>
+<ActionList
+  sections={[{
+    title: "File options",
+    items: [
+      {content: 'Import file', icon: 'import'},
+      {content: 'Export file', icon: 'export'},
+    ]
+  }]}
+/>
 ```

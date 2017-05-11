@@ -26,7 +26,6 @@ Banners are a highly visible way to bring something to a merchant’s attention.
 > **Not what you’re looking for?**
 >* To inform merchants about a new feature or opportunity, [use callout cards](components/structure/callout-card).
 >* To group similar concepts together in the interface, [use a card](/components/structure/card).
->* To show a transient confirmation that an action was successful, [use a flash message](/components/feedback-indicators/flash-message).
 
 ---
 
@@ -224,10 +223,7 @@ including packaging.
 Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
 ```jsx
-<Banner
-  title="Order archived"
-  onDismiss={() => {console.log('dismissed')}}
->
+<Banner title="Order archived">
   <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
 </Banner>
 ```
@@ -237,7 +233,7 @@ Use to convey general information or actions that aren’t critical. For example
 Make all banners dismissible, unless they contain critical information or an important action that a merchant is required to take.
 
 ```jsx
-<Banner onDismiss={() => {console.log('dismissed')}}>
+<Banner onDismiss={() => {}}>
   <p>Use your finance report to get detailed information about your business. <Link url="">Let us know what you think.</Link></p>
 </Banner>
 ```
@@ -251,7 +247,6 @@ Use when you want merchants to take an action after reading the banner.
   title="Some of your product variants are missing weights"
   status="warning"
   action={{content: 'Edit variant weights'}}
-  onDismiss={() => {console.log('dismissed')}}
 >
   <p>Add weights to show accurate rates at checkout and when buying shipping labels in Shopify.</p>
 </Banner>
@@ -266,7 +261,6 @@ Use to update merchants about a change or give them advice.
   title="USPS has updated their rates"
   action={{content: 'Learn more'}}
   status="info"
-  onDismiss={() => {console.log('dismissed')}}
 >
   <p>USPS has updated their postage rates. Make sure you know how these changes affect your store.</p>
 </Banner>
@@ -281,7 +275,6 @@ Use to inform merchants when actions are successfully completed. Include next st
   title="Your shipping label is ready to print."
   status="success"
   action={{content: 'Print label'}}
-  onDismiss={() => {console.log('dismissed')}}
 />
 ```
 
