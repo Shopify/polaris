@@ -1,5 +1,4 @@
 import {LinkAction, ComplexAction} from '../../types';
-import url from 'url';
 
 export interface EASDKBreadcrumb {
   label: string,
@@ -56,10 +55,9 @@ function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
     return;
   }
 
-  const parsedUrl = url.parse(actionUrl);
   if (actionUrl[0] === '/') {
     return 'shopify';
-  } else if (parsedUrl.hostname === window.location.hostname) {
+  } else if (actionUrl.indexOf(window.location.hostname) >= 0) {
     return 'app';
   } else {
     return 'new';

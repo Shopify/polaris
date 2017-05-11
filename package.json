@@ -135,7 +135,6 @@
     "hoist-non-react-statics": "^1.2.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
-    "tslib": "^1.6.0",
-    "url": "^0.11.0"
+    "tslib": "^1.6.0"
   }
 }
