@@ -114,7 +114,12 @@ export default function Banner({
   const dismissButton = onDismiss
     ? (
       <div className={styles.Dismiss}>
-        <Button plain icon="cancelSmall" accessibilityLabel="Dismiss notification" />
+        <Button
+          plain
+          icon="cancelSmall"
+          onClick={onDismiss}
+          accessibilityLabel="Dismiss notification"
+        />
       </div>
     )
     : null;
