@@ -78,9 +78,7 @@ To continue using Shopify, this amount must be paid immediately.
 Use only when necessary to provide an explanation for an interface element.
 
 ```jsx
-<div style={{padding: '75px 0'}}>
-  <Tooltip content="This order has shipping labels.">
-     <Link>Order #1001</Link>
-  </Tooltip>
-</div>
+<Tooltip content="This order has shipping labels.">
+  <Link>Order #1001</Link>
+</Tooltip>
 ```

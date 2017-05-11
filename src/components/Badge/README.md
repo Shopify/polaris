@@ -22,7 +22,7 @@ Merchants are pressed for time. They need indicators that let them identify impo
 Badges are designed as short, color-coded indicators that help merchants identify critical information quickly.
 
 >**Not what you’re looking for?**
->* To represent an interactive list of categories provided by merchants, [use tags](/components/feedback-indicators/tag).
+>* To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag).
 
 ---
 

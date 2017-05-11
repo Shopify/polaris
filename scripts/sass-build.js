@@ -6,8 +6,6 @@ import {basename, resolve, join} from 'path';
 import {cp, mkdir} from 'shelljs';
 import archiver from 'archiver';
 
-const STRIP_IMPORTS_REGEX = new RegExp(/@import\s*(['"])([^"';]+)\1;?\n*/, 'g');
-
 const root = resolve(__dirname, '..');
 const build = resolve(root, './build');
 const intermediateBuild = resolve(root, './build-intermediate');
@@ -30,19 +28,9 @@ export default function generateSassBuild() {
   cp(join(srcStyles, 'shared.scss'), join(buildStyles, 'shared.scss'));
   cp(resolve(srcStyles, '../styles.scss'), join(buildSass, 'styles.scss'));
 
-  glob.sync(join(buildStyles, '{foundation,shared}', '*.scss')).forEach((filePath) => {
-    const source = readFileSync(filePath, 'utf8');
-    writeFileSync(filePath, removeSassImports(source));
-  });
-
-  const globalFile = join(buildStyles, 'global.scss');
-  const globalSource = readFileSync(globalFile, 'utf8');
-  writeFileSync(globalFile, removeSassImports(globalSource));
-
   glob.sync(resolve(intermediateBuild, './components/**/*.scss')).forEach((filePath) => {
     const componentSass = resolve(components, basename(filePath));
     let file = readFileSync(filePath, 'utf8');
-    file = removeSassImports(file);
     file = namespaceSassClasses(filePath, file, classnameTokens);
     writeFileSync(componentSass, file);
   });
@@ -88,10 +76,6 @@ function createSassIndex(dir) {
     .join('\n');
 
   writeFileSync(`${dir}.scss`, sassImports);
-}
-
-function removeSassImports(file) {
-  return file.replace(STRIP_IMPORTS_REGEX, '');
 }
 
 function namespaceSassClasses(filePath, file, tokens) {

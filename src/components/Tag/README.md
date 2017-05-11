@@ -3,7 +3,7 @@ name: Tag
 tags:
   - indicator
   - label
-category: Feedback indicators
+category: Forms
 ---
 
 # Tag

@@ -53,7 +53,7 @@ merchants
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
-| element | string | Name of element to use for text |
+| element | enum['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] | Name of element to use for text |
 | size | enum['small', 'medium', 'large', 'extraLarge'] | Size of the text |
 | children | string or React.ReactNode | Content to display |
 

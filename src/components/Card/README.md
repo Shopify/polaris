@@ -239,8 +239,7 @@ Use when you have two related but distinct pieces of information to communicate 
   </Card.Section>
 
   <Card.Section>
-    <p>View a summary of your Online Store’s performance, including sales,
-    visitors, top products, and referrals.</p>
+    <p>View a summary of your Online Store’s performance, including sales, visitors, top products, and referrals.</p>
   </Card.Section>
 </Card>
 ```
@@ -256,8 +255,7 @@ Use when you have two related but distinct pieces of information to communicate 
   </Card.Section>
 
   <Card.Section title="Summary">
-    <p>View a summary of your Online Store’s performance, including sales,
-    visitors, top products, and referrals.</p>
+    <p>View a summary of your Online Store’s performance, including sales, visitors, top products, and referrals.</p>
   </Card.Section>
 </Card>
 ```

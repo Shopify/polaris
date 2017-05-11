@@ -23,7 +23,7 @@ export interface Props {
   selected: number,
   tabs: TabDescriptor[],
   handleMeasurement(measurements: Measurements): void,
-};
+}
 
 export default class TabMeasurer extends React.PureComponent<Props, never> {
   private containerNode: HTMLElement;

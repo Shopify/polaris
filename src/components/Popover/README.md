@@ -112,19 +112,17 @@ If the menu items in a popover menu include a series of navigational links, each
 Use when presenting a set of actions in a disclosable menu.
 
 ```jsx
-<div style={{minHeight: '250px'}}>
-  <Popover
-    active
-    activator={<Button>Actions</Button>}
-  >
-    <ActionList
-      items={[
-        {content: 'Import'},
-        {content: 'Export'},
-      ]}
-    />
-  </Popover>
-</div>
+<Popover
+  active
+  activator={<Button>Actions</Button>}
+>
+  <ActionList
+    items={[
+      {content: 'Import'},
+      {content: 'Export'},
+    ]}
+  />
+</Popover>
 ```
 
 
@@ -133,27 +131,25 @@ Use when presenting a set of actions in a disclosable menu.
 Use to present a combination of content, instructions, and actions is a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
 
 ```jsx
-<div style={{height: '250px'}}>
-  <Popover
-    active
-    activator={<Button>Sales channels</Button>}
-  >
-    <Popover.Pane>
-      <Popover.Section>
-        <p>Available sales channels</p>
-      </Popover.Section>
-    </Popover.Pane>
-    <Popover.Pane>
-      <ActionList
-        items={[
-          {content: 'Online store'},
-          {content: 'Facebook'},
-          {content: 'Shopify POS'},
-        ]}
-      />
-    </Popover.Pane>
-  </Popover>
-</div>
+<Popover
+  active
+  activator={<Button>Sales channels</Button>}
+>
+  <Popover.Pane fixed>
+    <Popover.Section>
+      <p>Available sales channels</p>
+    </Popover.Section>
+  </Popover.Pane>
+  <Popover.Pane>
+    <ActionList
+      items={[
+        {content: 'Online store'},
+        {content: 'Facebook'},
+        {content: 'Shopify POS'},
+      ]}
+    />
+  </Popover.Pane>
+</Popover>
 ```
 
 ###  Popover with form components
@@ -161,20 +157,18 @@ Use to present a combination of content, instructions, and actions is a panel fo
 Use to present secondary input tasks on demand.
 
 ```jsx
-<div style={{height: '400px'}}>
-  <Popover
-    active
-    activator={<Button>April 20–21, 2017</Button>}
-    sectioned
-  >
-    <FormLayout>
-      <Select label="Date range" options={['Custom']} />
+<Popover
+  active
+  activator={<Button>April 20–21, 2017</Button>}
+  sectioned
+>
+  <FormLayout>
+    <Select label="Date range" options={['Custom']} />
 
-      <FormLayout.Group condensed>
-        <TextField label="Starting" value="2017-04-20" />
-        <TextField label="Ending" value="2017-04-21" />
-      </FormLayout.Group>
-    </FormLayout>
-  </Popover>
-</div>
+    <FormLayout.Group condensed>
+      <TextField label="Starting" value="2017-04-20" />
+      <TextField label="Ending" value="2017-04-21" />
+    </FormLayout.Group>
+  </FormLayout>
+</Popover>
 ```

@@ -1,5 +1,7 @@
 {
   "extends": [
-    "tslint-config-shopify"
+    "tslint-config-shopify",
+    "tslint-config-shopify/react",
+    "./rules.js"
   ]
 }

@@ -18,7 +18,7 @@ export interface Props {
   url?: string,
   measuring?: boolean,
   onClick?(tab: TabDescriptor): void,
-};
+}
 
 export default class Tab extends React.PureComponent<Props, never> {
   private node: HTMLElement;

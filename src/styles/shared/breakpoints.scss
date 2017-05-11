@@ -1,6 +1,3 @@
-@import 'foundation/layout';
-@import 'foundation/utilities';
-
 $has-nav: false !default;
 
 $stacked-content: em(layout-width(primary, min) + layout-width(secondary, min) + layout-width(inner-spacing));

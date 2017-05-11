@@ -203,19 +203,21 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
 Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
 
 ```jsx
-<Layout.AnnotatedSection
-  title="Store details"
-  description="Shopify and your customers will use this information to contact you.">
-  <Card sectioned>
-    <FormLayout>
-      <TextField
-        label="Store name"
-      />
-      <TextField
-        type="email"
-        label="Account email"
-      />
-    </FormLayout>
-  </Card>
-</Layout.AnnotatedSection>
+<Layout>
+  <Layout.AnnotatedSection
+    title="Store details"
+    description="Shopify and your customers will use this information to contact you.">
+    <Card sectioned>
+      <FormLayout>
+        <TextField
+          label="Store name"
+        />
+        <TextField
+          type="email"
+          label="Account email"
+        />
+      </FormLayout>
+    </Card>
+  </Layout.AnnotatedSection>
+</Layout>
 ```

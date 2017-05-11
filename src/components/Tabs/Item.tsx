@@ -11,7 +11,7 @@ export interface Props {
   index: number,
   tab: TabDescriptor,
   onClick?(tab: TabDescriptor): void,
-};
+}
 
 export default class Item extends React.PureComponent<Props, never> {
   private focusedNode: HTMLElement;

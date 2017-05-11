@@ -11,7 +11,7 @@ export interface Props {
   disclosureTabs: TabDescriptor[],
   onClick?(tab: TabDescriptor): void,
   onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void,
-};
+}
 
 export default class List extends React.PureComponent<Props, never> {
   render() {

@@ -1,8 +1,7 @@
-@import 'utilities';
-
 $unit: 4px;
 
 $spacing-data: (
+  none: 0,
   extra-tight: rem($unit),
   tight: rem($unit * 2),
   base: rem($unit * 4),

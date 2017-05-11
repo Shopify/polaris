@@ -5,7 +5,7 @@ import * as styles from './Tag.scss';
 export interface Props {
   children?: string,
   onRemove?(): void,
-};
+}
 
 export default function Tag({children, onRemove}: Props) {
   return (

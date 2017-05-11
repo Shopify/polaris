@@ -13,7 +13,7 @@ export interface Props {
   id: string,
   action?: Action,
   hidden?: boolean,
-};
+}
 
 export function labelID(id: string) {
   return `${id}Label`;

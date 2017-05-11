@@ -87,8 +87,8 @@ Add a menu item
 | children | string | The content to display inside the button. |
 | url | string | URL to link to |
 | primary | boolean | Display as primary button |
-| destructive | boolean | Display as destuctive button |
-| disabled | boolean | Display as destuctive button |
+| destructive | boolean | Display as destructive button |
+| disabled | boolean | Display as destructive button |
 | size | enum['slim', 'large'] | Change the size of the button |
 | outline | boolean | Display an outlined button |
 | fullWidth | boolean | Display full width button |

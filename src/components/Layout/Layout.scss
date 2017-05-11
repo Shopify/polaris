@@ -1,9 +1,3 @@
-@import 'foundation/borders';
-@import 'foundation/spacing';
-@import 'foundation/utilities';
-@import 'shared/breakpoints';
-@import 'shared/layout';
-
 $secondary-basis: layout-width(secondary, min);
 $primary-basis: layout-width(primary, min);
 $relative-size: $primary-basis / $secondary-basis;

@@ -5,7 +5,7 @@ import {elementChildren, wrapWithComponent} from '@shopify/react-utilities/compo
 import * as styles from './Stack.scss';
 import Item, {Props as ItemProps} from './Item';
 
-export type Spacing = 'tight' | 'loose' | 'none';
+export type Spacing = 'tight' | 'loose' | 'extraLoose' | 'none';
 export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 export type Distribution = 'equalSpacing' | 'leading' | 'trailing' | 'center' | 'fill' | 'fillEvenly';
 

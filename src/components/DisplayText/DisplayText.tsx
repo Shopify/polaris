@@ -9,7 +9,7 @@ export interface Props {
   element?: HeadingTagName,
   children?: React.ReactNode,
   size?: Size,
-};
+}
 
 export default function DisplayText({
   element: Element = 'p',

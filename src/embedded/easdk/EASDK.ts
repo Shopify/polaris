@@ -36,6 +36,8 @@ export default class EASDK {
   private messenger: Messenger;
 
   constructor({apiKey, shopOrigin, debug, forceRedirect}: Options, metadata: object) {
+    checkFrameRedirect(apiKey, shopOrigin, forceRedirect);
+
     this.messenger = new Messenger(window.parent, {
       'Shopify.API.initialize': (data: InitData) => {
         if (data && data.User && data.User.current) {
@@ -76,5 +78,25 @@ export default class EASDK {
 
   redirect(location: string) {
     this.messenger.send('Shopify.API.redirect', {location});
+  }
+
+}
+
+function checkFrameRedirect(apiKey: Options['apiKey'], shopOrigin: Options['shopOrigin'] = 'https://myshopify.com', forceRedirect: Options['forceRedirect']) {
+
+  if (window !== window.parent) {
+    return;
+  }
+
+  let redirectUrl = `${shopOrigin}/admin/apps/`;
+  if (apiKey) {
+    redirectUrl = `${redirectUrl}${apiKey}${window.location.pathname}${window.location.search}`;
+  }
+
+  if (forceRedirect) {
+    window.location.assign(redirectUrl);
+  } else {
+    // tslint:disable-next-line no-console
+    console.error(`Embedded app was not loaded in an iframe and redirecting is disabled. Set forceRedirect to true and this page will redirect to: ${redirectUrl}`);
   }
 }

@@ -224,7 +224,7 @@ Use to provide a short, non-essential hint about the expected input. Placeholder
 <TextField label="Zone name" placeholder="e.g. North America, Europe" />
 ```
 
-### Label with help text
+### Text field with help text
 
 Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and the merchant doesn’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
 
@@ -232,7 +232,7 @@ Use to show short instructional content below the text field. Use especially whe
 <TextField label="Account email" type="email" helpText="We’ll use this address if we need to contact you about your account." />
 ```
 
-### Label with prefix or suffix
+### Text field with prefix or suffix
 
 Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (e.g. “$”, “¥”, “£”). Use suffix for things like units of measure (e.g. “in”, “cm”).
 
@@ -240,7 +240,7 @@ Use as a special form of help text that works best inline. Use a prefix for thin
 <TextField label="Price" type="number" prefix="$" />
 ```
 
-### Labels with connected fields
+### Text field with connected fields
 
 Use when a text field and several related fields make up a logical unit. If inputting weight as a number and a separate unit of measurement, use a text field with a <select dropdown menu> (e.g. “kg”, “lb”) as a connected field.
 
@@ -254,7 +254,7 @@ Use when a text field and several related fields make up a logical unit. If inpu
   />
 ```
 
-### Labels with errors and validations
+### Text field with validation errors
 
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
 

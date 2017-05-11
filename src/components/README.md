@@ -1,83 +1,124 @@
 ---
-name: Link
-tags:
-  - URL
-  - linklist
-  - link list
-  - embed
-  - actions
-  - pathways
-  - deep link
-
-category: Navigation
+name: Get started
+slug: get-started
+icon:
+categoryName:
+categorySlug:
+order:
 ---
 
-# Link
+# Components
 
-Links are used to embed actions or pathways to more information in a sentence.
+Our components are a collection of interface elements that can be reused across the Shopify system.
 
-**Problem**
+Components can be combined to help anyone building products for Shopify to efficiently design consistent experiences for merchants.
 
-Merchants need to be able to navigate to other sections of Shopify or take actions wherever they are in the interface.
-
-**Solution**
-
-Links provide merchants with a way to navigate or take an action in the context of a string of content.
-
-> **Not what you’re looking for?**
->* To create navigational actions that aren’t part of a line of text, [use the button component](/components/button).
+This frees us up to focus on solving unique merchant challenges, rather than reinventing interface elements that are already in use.
 
 ---
 
-## Best practices
+## Getting started
 
-Links should:
+The component library was designed to help developers quickly create the best experience for Shopify merchants.
 
-- Consist of text that clearly describes either the action that the merchant will take or the location they’ll navigate to.
-- Only be used in a sentence. For stand-alone navigational actions, [use the button component](/components/actions/button)
+Each component includes information to help you implement them, such as:
+
+- Explanations of the merchant problem it solves in the interface
+- Interactive examples so you can see the component in action
+- Best practices and guidelines to use the component correctly
 
 ---
 
-## Content guidelines
+## Installing and implementing
 
-### Links
+There are two options for installing and implementing our components, React or CSS.
 
-Links should be:
+### React components (Recommended)
 
-- Used for secondary or persistent actions to represent lower priority actions than buttons, or persistent actions that a merchant may take at any time (e.g. a persistent Edit link).
-- Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+Use React components in most cases, especially if you’re building a highly interactive experience. This can be done with or without a build system.
 
-<!-- usageblock -->
-#### Do
-Learn more about fulfilling orders at the Shopify Help Center.
+- [Implementation instructions](https://github.com/Shopify/polaris) (requires HTML, React, a JS build tool)
 
-#### Don't
-Click here to learn more about fulfilling orders.
-<!-- end -->
+- Have a look at the [React component examples](https://github.com/Shopify/polaris/tree/master/examples) to see how it’s done
 
-- Consistent with navigation content. For example, if a navigational link leads to a page called Orders, label the link Orders.
+### CSS components
 
-<!-- usagelist -->
-#### Do
-Orders
+- Use CSS components if you don’t have or want a build system for your project
 
-#### Don't
-To orders section
-<!-- end -->
+- Include the CSS in your HTML to implement:
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| url | string | The url to link to. |
-| children | string or React.ReactNode | The content to display inside link |
-| external | boolean | Use for a links that open a different site |
-| onClick | function() | Callback when a link is clicked |
-
-## Examples
-
-###  Default links
-
-Use for text links in larger spans of text.
-
-```jsx
-<Link url="https://shopify.com">Shopify</Link>
+```html
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.2/polaris.css">
 ```
+
+- Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
+
+---
+
+## Using the components
+
+You can find comprehensive [instructions](https://github.com/Shopify/polaris) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris/tree/master/examples) to explore.
+
+Here are some basic instructions to help you get started for both React and CSS-only:
+
+### React components (Recommended)
+
+Include the CSS in your HTML:
+
+```html
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.2/polaris.css">
+```
+
+Include the component in your project:
+
+```javascript
+import {Button} from '@shopify/polaris';
+```
+
+Tell React to render the element in the DOM:
+
+```javascript
+ReactDOM.render(<Button onClick={() => alert('Button clicked!')}>Example button</Button>, domContainerNode);
+```
+
+### CSS components
+
+Include the CSS stylesheet in your HTML:
+
+```html
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.0.2/polaris.css">
+```
+
+Add the appropriate classes to your HTML elements:
+
+```html
+<button class="Polaris-Button">Example button</button>
+```
+
+---
+
+## Learning resources
+
+If you’re new to React, start with the official [React Getting Started documentation](https://facebook.github.io/react/docs/hello-world.html). As you read through the topics, follow along using the [React Hello World CodePen](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010) example.
+
+Here are some additional resources:
+
+- Online training at [reacttraining.com](https://reacttraining.com/), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](https://reactforbeginners.com)
+- Community resources in [Awesome React](https://github.com/enaqx/awesome-react)
+- Answers in the various [React support communities](https://facebook.github.io/react/community/support.html)
+
+---
+
+## Methodology
+
+We set out to make our components easy to use. Each of our components has a well-documented public interface (API) with guidelines and well-defined conventions. This way, developers don’t need to worry about the underlying implementation. Instead, they can focus on creating amazing merchant experiences.
+
+We ensure that our components are made for everyone. They meet accessibility standards and are responsive to any screen or device. We also put a lot of effort into optimizing the performance of the components, so everyone can build inclusive experiences that work.
+
+We make our components flexible enough to meet diverse needs. Our components are set up to be restructured based on the information passed in. No matter what type of experience you’re creating, you can use components as the building blocks of your product or feature.
+
+---
+
+## Feedback
+
+Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris/issues). At this time we’re not accepting pull requests. This is something we’ll support in the future.

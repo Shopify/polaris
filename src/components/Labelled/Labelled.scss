@@ -1,9 +1,3 @@
-@import 'foundation/colors';
-@import 'foundation/spacing';
-@import 'shared/accessibility';
-@import 'shared/icons';
-@import 'shared/typography';
-
 .hidden > .LabelWrapper {
   @include visually-hidden;
 }

@@ -1,7 +1,3 @@
-@import 'foundation/colors';
-@import 'foundation/spacing';
-@import 'foundation/utilities';
-
 $height: rem(20px);
 $horizontal-padding: ($height / 2);
 
@@ -24,27 +20,31 @@ $pip-spacing: ($height - $pip-size) / 2;
   border-radius: $height;
   font-size: rem(13px);
   line-height: $height;
-  color: color(ink);
+  color: color(ink, light);
 }
 
 .statusSuccess {
   @include pip-color(color(green, dark));
   background-color: color(green, light);
+  color: color(green, text);
 }
 
 .statusInfo {
   @include pip-color(color(blue, dark));
   background-color: color(blue, light);
+  color: color(blue, text);
 }
 
 .statusAttention {
   @include pip-color(color(yellow, dark));
   background-color: color(yellow, light);
+  color: color(yellow, text);
 }
 
 .statusWarning {
   @include pip-color(color(orange, dark));
   background-color: color(orange, light);
+  color: color(orange, text);
 }
 
 .progressIncomplete .Pip {

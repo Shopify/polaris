@@ -39,7 +39,7 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
-        render={this.renderTooltip.bind(this)}
+        render={this.renderTooltip}
       />
     );
   }

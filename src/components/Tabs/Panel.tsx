@@ -5,7 +5,7 @@ export interface Props {
   id: string,
   tabID: string,
   children?: React.ReactNode,
-};
+}
 
 export default function Panel({id, tabID, children}: Props) {
   return (

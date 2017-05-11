@@ -85,7 +85,7 @@ export default function Month({
         inHoveringRange={selected != null && hoverDate != null && isInHoveringRange(day, selected, hoverDate)}
       />
     );
-  };
+  }
 
   const weeksMarkup = weeks.map((week, index) => (
     <div role="row" className={styles.Week} key={index}>
