@@ -34,7 +34,7 @@ Subheadings should:
 
 * Be used to explain and clearly label logical groups in existing sections of a page
 * Not be used without a parent heading
-* Not be used in tables or list items, such as for the primary content in a [resource list](/components/tables-and-lists/resource-list)
+* Not be used in tables or list items, such as for the primary content in a [resource list](/components/lists/resource-list)
 
 ---
 

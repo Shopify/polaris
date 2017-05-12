@@ -27,11 +27,11 @@ so that merchants can decide what to select.
 >**Not what you’re looking for?**
 >
 > To display a simple, non-interactive list of related content,
-[use the content list component](/components/tables-and-lists/list).
+[use the content list component](/components/lists/list).
 > You may also want to learn more about:
 > * [Checkbox components](/components/forms/checkbox)
 > * [Radio button components](/components/forms/radio-button)
-> * [Resource list components](/components/tables-and-lists/resource-list)
+> * [Resource list components](/components/lists/resource-list)
 
 ---
 
