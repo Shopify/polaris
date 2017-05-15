@@ -31,7 +31,7 @@ export interface EASDKButton {
 
 export function transformAction(action: ComplexAction | undefined) {
   if (action == null || !action) {
-    return undefined;
+    return;
   }
 
   let style;
@@ -44,9 +44,24 @@ export function transformAction(action: ComplexAction | undefined) {
   return {
     label: action.content,
     href: action.url,
+    target: action.url ? getTargetFromUrl(action.url) : undefined,
     message: action.onAction,
     style,
   } as EASDKButton;
+}
+
+function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
+  if (!actionUrl) {
+    return;
+  }
+
+  if (actionUrl[0] === '/') {
+    return 'shopify';
+  } else if (actionUrl.indexOf(window.location.hostname) >= 0) {
+    return 'app';
+  } else {
+    return 'new';
+  }
 }
 
 export interface Pagination {
