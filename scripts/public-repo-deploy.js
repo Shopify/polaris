@@ -1,29 +1,32 @@
 /* eslint-disable no-console */
 import {execSync} from 'child_process';
-import {join, resolve} from 'path';
-import {cp, mkdir, cd, rm} from 'shelljs';
 import {outputJsonSync, readFileSync, writeFileSync} from 'fs-extra';
+import {join, resolve, basename} from 'path';
+import {cp, rm, mkdir} from 'shelljs';
+import glob from 'glob';
+
+const polarisBotName = 'Shopify Polaris';
+const polarisBotEmail = 'shopify-polaris@users.noreply.github.com';
+const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
 
 const PRIVATE = 'polaris-internal';
 const PUBLIC = 'polaris';
-const PRIVATE_GIT_REPO = `https://github.com/Shopify/${PRIVATE}`;
-const PUBLIC_GIT_REPO = `https://github.com/Shopify/${PUBLIC}`;
 const STRIP_PRIVATE_LINKS = /\s?\(\[.*?\]\([^\s].*\/shopify\/polaris-internal\/.*?\)\)/gi;
 
-const root = resolve(__dirname, '..');
+const root = resolve(__dirname, '../');
 const sandbox = resolve(root, 'sandbox');
 const polarisPublic = resolve(sandbox, PUBLIC);
-const polarisInternal = resolve(sandbox, PRIVATE);
-const polarisPackage = resolve(polarisInternal, 'package.json');
-const scripts = resolve(polarisInternal, 'scripts');
-const changelog = resolve(polarisInternal, 'CHANGELOG.md');
+const polarisPrivate = resolve(sandbox, PRIVATE);
+const scripts = resolve(polarisPrivate, 'scripts');
+const polarisPackage = resolve(polarisPrivate, 'package.json');
+const changelog = resolve(polarisPrivate, 'CHANGELOG.md');
 
 // Files to 🔥
 const privateFiles = [
-  resolve(polarisInternal, 'README.md'),
-  resolve(polarisInternal, 'secrets.ejson'),
-  resolve(polarisInternal, 'service.yml'),
-  resolve(polarisInternal, 'tests', 'build.test.js'),
+  resolve(polarisPrivate, 'README.md'),
+  resolve(polarisPrivate, 'secrets.ejson'),
+  resolve(polarisPrivate, 'service.yml'),
+  resolve(polarisPrivate, 'tests', 'build.test.js'),
   resolve(scripts, 'deploy.js'),
   resolve(scripts, 'public-repo-deploy.js'),
 ];
@@ -35,15 +38,19 @@ const privateScripts = [
   'cdn:secrets',
   'cdn:deploy',
   'cdn',
+  'public-release:secrets',
+  'prepublic-release',
+  'public-release',
   'prepublish',
   'postpublish',
+  'hide-private-readme',
+  'show-private-readme',
 ];
 
 mkdir(sandbox);
-cd(sandbox);
-
-execSync(`git clone ${PRIVATE_GIT_REPO}`);
-cd(polarisInternal);
+const execOpts = {stdio: 'inherit'};
+execSync(`git clone https://${polarisBotToken}@github.com/Shopify/${PRIVATE}.git ${polarisPrivate}`, execOpts);
+execSync(`git clone https://${polarisBotToken}@github.com/Shopify/${PUBLIC}.git ${polarisPublic}`, execOpts);
 
 // Strip package.json scripts
 const packageJSON = require(polarisPackage);
@@ -59,26 +66,44 @@ let changelogFile = readFileSync(changelog, 'utf8');
 changelogFile = changelogFile.replace(STRIP_PRIVATE_LINKS, '');
 writeFileSync(changelog, changelogFile);
 
-cd(sandbox);
-execSync(`git clone ${PUBLIC_GIT_REPO}`);
-const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc,.babelrc}';
+const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc,.github,.babelrc}';
+
+// 🔥 ./sandbox/polaris
 rm('-rf', [
   join(polarisPublic, '*'),
   join(polarisPublic, hiddenFilesGlob),
 ]);
+
+// There should always be a .git folder as a match
+const emptyRepoFiles = glob.sync(join(polarisPublic, '{.*,*}'));
+if (emptyRepoFiles.length !== 1) {
+  throw new Error(`Stale files exist in the public Polaris repo. Found ${JSON.stringify(emptyRepoFiles)}.`);
+}
+if (basename(emptyRepoFiles[0]) !== '.git') {
+  throw new Error(`.git directory must exist to preserve commit history. Found ${JSON.stringify(emptyRepoFiles)}.`);
+}
+
 cp('-rf', [
-  resolve(polarisInternal, '*'),
-  resolve(polarisInternal, hiddenFilesGlob),
+  resolve(polarisPrivate, '*'),
+  resolve(polarisPrivate, hiddenFilesGlob),
 ], polarisPublic);
+
+// Dump sandbox/polaris-internal/public into sandbox/polaris
 cp('-rf', [
-  resolve(polarisInternal, 'public', '.github'),
-  resolve(polarisInternal, 'public', '*'),
+  resolve(polarisPrivate, 'public', '.github'),
+  resolve(polarisPrivate, 'public', '*'),
 ], polarisPublic);
 rm('-rf', join(polarisPublic, 'public'));
-rm('-rf', polarisInternal);
+rm('-rf', polarisPrivate);
 
-cd(polarisPublic);
-execSync('git add .');
-execSync(`git commit -m ${releaseVersion}`);
-execSync(`git tag ${releaseVersion}`);
-execSync('git push && git push --tags');
+// Used to make git operations in polarisPublic dir instead of current working dir
+const gitDirectoryOveride = `--git-dir ${polarisPublic}/.git --work-tree=${polarisPublic}`;
+const shopifyPolarisBotGitOveride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
+execSync(`git ${gitDirectoryOveride} add .`, execOpts);
+execSync(`${shopifyPolarisBotGitOveride} git ${gitDirectoryOveride} commit --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}"`, execOpts);
+execSync(`git ${gitDirectoryOveride} tag ${releaseVersion}`, execOpts);
+execSync(`git ${gitDirectoryOveride} tag`, execOpts);
+execSync(`git ${gitDirectoryOveride} push`);
+execSync(`git ${gitDirectoryOveride} push --tags`);
+
+console.log(`Done: Succesfully pushed to ${PUBLIC}`);
