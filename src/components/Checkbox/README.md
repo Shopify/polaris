@@ -23,7 +23,7 @@ A checkbox lets merchants choose one or many things from a list.
 > **Not what you’re looking for?**
 >* To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button).
 >* To display a list of related content, [use the choice list component](/components/forms/choice-list).
->* To create an ungrouped list, [use the content list component](/components/tables-and-lists/list).
+>* To create an ungrouped list, [use the content list component](/components/lists/list).
 
 ---
 
