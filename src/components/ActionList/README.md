@@ -32,7 +32,7 @@ Action lists in popovers let merchants expose additional information and actions
 Actions lists should:
 
 * Be used for secondary or less important information and actions since they’re hidden until the merchant exposes them by opening a popover
-* Contain actions that share a relationships to each other
+* Contain actions that are related to each other
 
 ---
 
