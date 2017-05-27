@@ -11,6 +11,7 @@ import arrowIcon from './icons/arrow.svg';
 export type Option = string | {
   value: string,
   label: string,
+  disabled?: boolean,
 };
 
 export interface Group {
@@ -124,7 +125,7 @@ function renderOption(option: Option) {
   if (typeof option === 'string') {
     return <option key={option} value={option}>{option}</option>;
   } else {
-    return <option key={option.value} value={option.value}>{option.label}</option>;
+    return <option key={option.value} value={option.value} disabled={option.disabled}>{option.label}</option>;
   }
 }
 

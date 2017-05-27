@@ -57,6 +57,20 @@ describe('<Select />', () => {
         expect(optionElement.text()).toBe(label);
       });
     });
+
+    it('sets disabled options as indicated in the option descriptor', () => {
+      const options = [
+        {value: 'one', label: 'One'},
+        {value: 'two', label: 'Two', disabled: true},
+        {value: 'three', label: 'Three', disabled: false},
+      ];
+      const optionElements = shallow(<Select label="Select" options={options} />).find('option');
+
+      options.forEach(({disabled}: {disabled?: boolean}, index) => {
+        const optionElement = optionElements.at(index);
+        expect(optionElement.prop('disabled')).toBe(disabled);
+      });
+    });
   });
 
   describe('groups', () => {
