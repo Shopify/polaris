@@ -96,6 +96,13 @@ cp('-rf', [
 rm('-rf', join(polarisPublic, 'public'));
 rm('-rf', polarisPrivate);
 
+// Replace variables in the README with the appropriate details
+const publicReadme = resolve(polarisPublic, 'README.md');
+writeFileSync(
+  publicReadme,
+  readFileSync(publicReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version)
+);
+
 // Used to make git operations in polarisPublic dir instead of current working dir
 const gitDirectoryOveride = `--git-dir ${polarisPublic}/.git --work-tree=${polarisPublic}`;
 const shopifyPolarisBotGitOveride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
