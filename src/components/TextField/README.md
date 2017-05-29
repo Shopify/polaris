@@ -259,5 +259,5 @@ Use when a text field and several related fields make up a logical unit. If inpu
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
 
 ```jsx
-<TextField label="Shop name" error="Shop name is required." />
+<TextField label="Store name" error="A store name is required." />
 ```

@@ -184,8 +184,8 @@ text for buttons.
 Use when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
 
 ```jsx
-<Card title="Online Store dashboard" sectioned>
-  <p>View a summary of your Online Store’s performance.</p>
+<Card title="Online store dashboard" sectioned>
+  <p>View a summary of your online store’s performance.</p>
 </Card>
 ```
 
@@ -195,11 +195,11 @@ Use when you have a simple message to communicate to merchants that requires the
 
 ```jsx
 <Card
-  title="Online Store dashboard"
+  title="Online store dashboard"
   primaryFooterAction={{content: 'View dashboard'}}
 >
   <Card.Section>
-    <p>View a summary of your Online Store’s performance.</p>
+    <p>View a summary of your online store’s performance.</p>
   </Card.Section>
 </Card>
 ```
@@ -209,9 +209,9 @@ Use when you have a simple message to communicate to merchants that requires the
 Use when there’s a persistent action available to merchants (example: an Edit link), or when you want to provide them with a way to navigate to another section of Shopify.
 
 ```jsx
-<Card title="Online Store dashboard" actions={[{content: 'Edit'}]}>
+<Card title="Online store dashboard" actions={[{content: 'Edit'}]}>
   <Card.Section>
-    <p>View a summary of your Online Store’s performance.</p>
+    <p>View a summary of your online store’s performance.</p>
   </Card.Section>
 </Card>
 ```
@@ -221,9 +221,9 @@ Use when there’s a persistent action available to merchants (example: an Edit 
 Use if there are multiple optional actions a merchant can take on the information in the card. Clicking on the link will open a popover that contains a menu of actions.
 
 ```jsx
-<Card title="Online Store dashboard" actions={[{content: 'Edit'}]}>
+<Card title="Online store dashboard" actions={[{content: 'Edit'}]}>
   <Card.Section>
-    <p>View a summary of your Online Store’s performance.</p>
+    <p>View a summary of your online store’s performance.</p>
   </Card.Section>
 </Card>
 ```
@@ -233,13 +233,13 @@ Use if there are multiple optional actions a merchant can take on the informatio
 Use when you have two related but distinct pieces of information to communicate to merchants. Multiple sections can help break up complicated concepts to make them easier to scan and understand.
 
 ```jsx
-<Card title="Online Store dashboard">
+<Card title="Online store dashboard">
   <Card.Section>
-    <p>View a summary of your Online Store’s performance.</p>
+    <p>View a summary of your online store’s performance.</p>
   </Card.Section>
 
   <Card.Section>
-    <p>View a summary of your Online Store’s performance, including sales, visitors, top products, and referrals.</p>
+    <p>View a summary of your online store’s performance, including sales, visitors, top products, and referrals.</p>
   </Card.Section>
 </Card>
 ```
@@ -249,13 +249,13 @@ Use when you have two related but distinct pieces of information to communicate 
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
 
 ```jsx
-<Card title="Online Store dashboard">
+<Card title="Online store dashboard">
   <Card.Section title="Reports">
-    <p>View a summary of your Online Store’s performance.</p>
+    <p>View a summary of your online store’s performance.</p>
   </Card.Section>
 
   <Card.Section title="Summary">
-    <p>View a summary of your Online Store’s performance, including sales, visitors, top products, and referrals.</p>
+    <p>View a summary of your online store’s performance, including sales, visitors, top products, and referrals.</p>
   </Card.Section>
 </Card>
 ```
