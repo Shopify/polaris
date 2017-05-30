@@ -5,22 +5,40 @@ $border-radius: 999px;
   display: flex;
   justify-content: center;
   margin: spacing(loose);
+
+  @include page-content-when-fully-condensed {
+    margin: spacing(loose) 0;
+    width: 100%;
+  }
 }
 
 .Content {
   display: inline-flex;
   align-items: center;
-  padding: spacing(tight) spacing(tight) * 3;
+  padding: spacing() spacing(loose) spacing() spacing();
   border: border();
   border-radius: $border-radius;
+
+  @include page-content-when-fully-condensed {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+  }
 }
 
 .Icon {
-  margin-left: -1 * spacing();
   margin-right: spacing(tight);
-  color: color(ink, lightest);
+  background: color(white);
+  padding: spacing(tight);
+  border-radius: 50%;
+
+  svg {
+    fill: color(teal);
+    color: color(white);
+  }
+
 }
 
 .Text {
-  @include text-emphasis-subdued;
+  @include text-style-input;
 }
