@@ -26,6 +26,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   padding: spacing();
   border-radius: 0 0 border-radius() border-radius();
   transition: box-shadow duration() easing();
+  transition-delay: duration(fast);
 
   + .Banner {
     margin-top: spacing(loose);
