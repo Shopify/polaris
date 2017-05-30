@@ -4,11 +4,12 @@ $border-radius: 999px;
 .FooterHelp {
   display: flex;
   justify-content: center;
-  margin: spacing(loose);
+  margin: spacing(loose) 0;
+  width: 100%;
 
-  @include page-content-when-fully-condensed {
-    margin: spacing(loose) 0;
-    width: 100%;
+  @include page-content-when-not-fully-condensed() {
+    margin: spacing(loose);
+    width: auto;
   }
 }
 
@@ -16,27 +17,17 @@ $border-radius: 999px;
   display: inline-flex;
   align-items: center;
   padding: spacing() spacing(loose) spacing() spacing();
-  border: border();
-  border-radius: $border-radius;
+  border-top: border();
+  border-bottom: border();
 
-  @include page-content-when-fully-condensed {
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
+  @include page-content-when-not-fully-condensed() {
+    border: border();
+    border-radius: $border-radius;
   }
 }
 
 .Icon {
   margin-right: spacing(tight);
-  background: color(white);
-  padding: spacing(tight);
-  border-radius: 50%;
-
-  svg {
-    fill: color(teal);
-    color: color(white);
-  }
-
 }
 
 .Text {

@@ -12,7 +12,7 @@ export default function FooterHelp({children}: Props) {
     <div className={styles.FooterHelp}>
       <div className={styles.Content}>
         <div className={styles.Icon}>
-          <Icon source={helpIcon} color="white" />
+          <Icon source={helpIcon} color="teal" backdrop />
         </div>
         <div className={styles.Text}>
           {children}
