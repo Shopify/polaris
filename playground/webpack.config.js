@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const svgOptimizationOptions = require('@shopify/images/optimize').svgOptions;
+const {svgOptions: svgOptimizationOptions} = require('@shopify/images/optimize');
 const postcssShopify = require('postcss-shopify');
 
 const ICON_PATH_REGEX = /icons\//;

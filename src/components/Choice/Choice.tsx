@@ -10,7 +10,7 @@ export interface Props {
   label: string,
   error?: Error,
   labelHidden?: boolean,
-  children?: string,
+  children?: React.ReactNode,
   helpText?: React.ReactNode,
 }
 

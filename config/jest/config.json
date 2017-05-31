@@ -1,5 +1,6 @@
 {
   "testRegex": "[\\w+]\\.test\\.(tsx?|js)$",
+  "rootDir": "../..",
   "roots": [
     "<rootDir>/src",
     "<rootDir>/tests"
