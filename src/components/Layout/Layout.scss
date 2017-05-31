@@ -12,10 +12,7 @@ $relative-size: $primary-basis / $secondary-basis;
 }
 
 .Section {
-  @include layout-flex-fix;
   flex: $relative-size $relative-size $primary-basis;
-  margin-top: spacing(loose);
-  margin-left: spacing(loose);
   min-width: 51%;
 }
 
@@ -24,18 +21,17 @@ $relative-size: $primary-basis / $secondary-basis;
   min-width: 0;
 }
 
-.Item {
-  flex: 1 1 100%;
-}
-
 .AnnotatedSection {
+  min-width: 0;
   flex: 1 1 100%;
-  margin-top: spacing(loose);
-  margin-left: spacing(loose);
 }
 
 .Section,
 .AnnotatedSection {
+  max-width: calc(100% - #{spacing(loose)});
+  margin-top: spacing(loose);
+  margin-left: spacing(loose);
+
   + .AnnotatedSection {
     @include page-content-when-not-fully-condensed {
       padding-top: spacing(loose);
@@ -53,17 +49,21 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .AnnotationContent {
   flex: $relative-size $relative-size $primary-basis;
-  margin-top: spacing(loose);
-  margin-left: spacing(loose);
 }
 
 .Annotation {
   flex: 1 1 $secondary-basis;
-  margin-top: spacing(loose);
-  margin-left: spacing(loose);
   padding: spacing(loose) spacing(loose) 0;
 
   @include page-content-when-layout-not-stacked {
     padding: spacing(loose) spacing(loose) spacing(loose) 0;
   }
+}
+
+.Annotation,
+.AnnotationContent {
+  min-width: 0;
+  max-width: calc(100% - #{spacing(loose)});
+  margin-top: spacing(loose);
+  margin-left: spacing(loose);
 }
