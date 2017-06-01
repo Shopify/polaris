@@ -3,6 +3,7 @@ import * as React from 'react';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 import {LinkAction} from '../../types';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Breadcrumbs.scss';
 
@@ -20,15 +21,11 @@ export default class Breadcrumbs extends React.PureComponent<Props, never> {
 
     return (
       <nav role="navigation">
-        <UnstyledLink key={content} url={url} className={styles.Breadcrumb} onMouseUp={handleMouseUp}>
+        <UnstyledLink key={content} url={url} className={styles.Breadcrumb} onMouseUp={handleMouseUpByBlurring}>
           <span className={styles.Icon}><Icon source="chevronLeft" /></span>
           {content}
         </UnstyledLink>
       </nav>
     );
   }
-}
-
-function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement>) {
-  currentTarget.blur();
 }

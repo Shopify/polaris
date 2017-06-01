@@ -9,22 +9,24 @@ import * as styles from './Tabs.scss';
 export interface Props {
   focusIndex: number,
   disclosureTabs: TabDescriptor[],
-  onClick?(tab: TabDescriptor): void,
+  onClick?(id: string): void,
   onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void,
 }
 
 export default class List extends React.PureComponent<Props, never> {
   render() {
     const {focusIndex, disclosureTabs, onClick = noop} = this.props;
-    const tabs = disclosureTabs.map((tab, index) => {
+    const tabs = disclosureTabs.map(({id, panelID, title}, index) => {
       return (
         <Item
-          key={`${index}-${tab.id}`}
-          index={index}
-          focusIndex={focusIndex}
-          tab={tab}
-          onClick={onClick.bind(null, tab)}
-        />
+          key={id}
+          id={id}
+          panelID={panelID}
+          focused={index === focusIndex}
+          onClick={onClick.bind(null, id)}
+        >
+          {title}
+        </Item>
       );
     });
 

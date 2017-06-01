@@ -3,6 +3,7 @@ import {classNames} from '@shopify/react-utilities';
 
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Pagination.scss';
 
@@ -38,7 +39,7 @@ export default function Pagination({
       <UnstyledLink
         className={styles.Button}
         url={previousURL}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         aria-label="Previous"
       >
         <Icon source="arrowLeft" />
@@ -47,7 +48,7 @@ export default function Pagination({
     : (
       <button
         onClick={onPrevious}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         className={styles.Button}
         aria-label="Previous"
         disabled={!hasPrevious}
@@ -61,7 +62,7 @@ export default function Pagination({
       <UnstyledLink
         className={styles.Button}
         url={nextURL}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         aria-label="Next"
       >
         <Icon source="arrowRight" />
@@ -70,7 +71,7 @@ export default function Pagination({
     : (
       <button
         onClick={onNext}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         className={styles.Button}
         aria-label="Next"
         disabled={!hasNext}
@@ -85,8 +86,4 @@ export default function Pagination({
       {nextButton}
     </span>
   );
-}
-
-function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-  currentTarget.blur();
 }

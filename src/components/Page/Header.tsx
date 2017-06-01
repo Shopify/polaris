@@ -2,6 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {IconableAction, DisableableAction} from '../../types';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
 import Icon from '../Icon';
 import {buttonsFrom} from '../Button';
 import Breadcrumbs, {Props as BreadcrumbProps} from '../Breadcrumbs';
@@ -106,7 +107,7 @@ function secondaryActionsFrom(actions: IconableAction[]) {
         <UnstyledLink
           key={content}
           url={url}
-          onMouseUp={handleMouseUp}
+          onMouseUp={handleMouseUpByBlurring}
           className={styles.Action}
           aria-label={accessibilityLabel}
         >
@@ -119,7 +120,7 @@ function secondaryActionsFrom(actions: IconableAction[]) {
       <button
         key={content}
         onClick={onAction}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         className={styles.Action}
         aria-label={accessibilityLabel}
       >
@@ -127,8 +128,4 @@ function secondaryActionsFrom(actions: IconableAction[]) {
       </button>
     );
   });
-}
-
-function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-  currentTarget.blur();
 }

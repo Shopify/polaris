@@ -51,7 +51,6 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       return (
         <Tab
           measuring
-          tab={tab}
           key={`${index}${tab.id}Hidden`}
           id={`${tab.id}Measurer`}
           siblingTabHasFocus={siblingTabHasFocus}
@@ -59,7 +58,6 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
           selected={index === selected}
           onClick={noop}
           url={tab.url}
-          panelID={tab.panelID}
         >
           {tab.title}
         </Tab>

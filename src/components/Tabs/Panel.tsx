@@ -14,6 +14,7 @@ export default function Panel({id, tabID, children}: Props) {
       id={id}
       role="tabpanel"
       aria-labelledby={tabID}
+      tabIndex={-1}
     >
       {children}
     </div>

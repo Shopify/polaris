@@ -27,6 +27,7 @@
     "lint": "npm-run-all lint:js lint:ts",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
+    "test:watch": "yarn run test -- --watch",
     "check": "npm-run-all lint ts test",
     "clean": "rimraf build styles types 'build-intermediate' 'index.*' 'embedded.js' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",

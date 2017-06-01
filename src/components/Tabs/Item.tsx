@@ -3,43 +3,55 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 import autobind from '@shopify/javascript-utilities/autobind';
 
-import {TabDescriptor} from './Tabs';
 import * as styles from './Tabs.scss';
 
 export interface Props {
-  focusIndex: number,
-  index: number,
-  tab: TabDescriptor,
-  onClick?(tab: TabDescriptor): void,
+  id: string,
+  focused: boolean,
+  panelID?: string,
+  children?: React.ReactNode,
+  onClick?(): void,
 }
 
 export default class Item extends React.PureComponent<Props, never> {
   private focusedNode: HTMLElement;
 
+  componentDidMount() {
+    const {focusedNode} = this;
+    const {focused} = this.props;
+
+    if (focused) {
+      focusedNode.focus();
+    }
+  }
+
   componentDidUpdate() {
     const {focusedNode} = this;
-    const {index, focusIndex} = this.props;
+    const {focused} = this.props;
 
-    if (index === focusIndex) {
+    if (focused) {
       focusedNode.focus();
     }
   }
 
   render() {
-    const {tab, onClick = noop} = this.props;
+    const {id, children, panelID, onClick = noop} = this.props;
 
     const className = classNames(
       styles.Item,
     );
 
     return (
-      <li>
+      <li role="presentation">
         <button
+          id={id}
           ref={this.setFocusedNode}
-          onClick={onClick.bind(null, tab)}
+          onClick={onClick}
           className={className}
+          aria-controls={panelID}
+          aria-selected={false}
         >
-          {tab.title}
+          {children}
         </button>
       </li>
     );
