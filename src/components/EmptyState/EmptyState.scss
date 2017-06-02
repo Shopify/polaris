@@ -9,12 +9,12 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   margin-top: spacing(loose);
   padding: spacing(loose);
   padding-left: spacing(extra-loose);
-  text-align: center;
+  text-align: left;
+  border-top: border(); 
 
   @include page-content-when-not-partially-condensed {
-    flex-direction: row-reverse;
+    flex-direction: row;
     padding-left: spacing(loose);
-    text-align: left;
   }
 }
 
@@ -55,9 +55,4 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
 .Actions {
   margin-top: spacing();
-
-  @include page-content-when-partially-condensed {
-    display: flex;
-    justify-content: center;
-  }
 }
