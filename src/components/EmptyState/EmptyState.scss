@@ -6,15 +6,13 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: spacing(loose);
-  padding: spacing(loose);
-  padding-left: spacing(extra-loose);
+  margin-top: spacing(loose) auto 0 auto;
+  padding: spacing(loose) 0;
   text-align: left;
   border-top: border(); 
 
   @include page-content-when-not-partially-condensed {
     flex-direction: row;
-    padding-left: spacing(loose);
   }
 }
 
@@ -27,29 +25,60 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   }
 }
 
+.Section {
+    position: relative;
+    padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0;
+
+    @include page-content-when-not-partially-condensed {
+      left: 2em;
+    }
+}
+
 .ImageContainer,
 .Details {
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  padding: 0;
+  margin: 0;
+
   @include page-content-when-not-partially-condensed {
-    flex-basis: 50%;
+    flex: 0 1 50%;
   }
 }
 
 .Image {
+  margin-left: 0;
+  margin-right: 0;
   z-index: -1;
   width: 60vw;
+  max-width: 100vw;
 
   @include page-content-when-not-partially-condensed {
     position: relative;
-    left: $image-offset * -1;
+    margin-top: 0;
+    left: $image-offset * -2;
     width: $image-overflow-width;
+  }
+  @include page-content-when-partially-condensed {
+    width: 150%;
+    max-width: 150%;
+    margin-left: -50%;
+    margin-top: rem(-50px);
   }
 }
 
-.Details {
-  margin-top: spacing();
-
+.DetailContent {
+  padding: 0 spacing(loose);
   @include page-content-when-not-partially-condensed {
-    padding-right: spacing();
+    padding: 0;
+    max-width: rem(400px);
   }
 }
 

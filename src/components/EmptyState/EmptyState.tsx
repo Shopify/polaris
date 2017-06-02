@@ -59,22 +59,26 @@ export default class EmptyState extends React.PureComponent<Props, never> {
 
     return (
       <div className={className}>
-        <div className={styles.Details}>
-          <TextContainer>
-            <DisplayText size="medium">{heading}</DisplayText>
-            {children}
-          </TextContainer>
+        <div className={styles.Section}>
+          <div className={styles.Details}>
+            <div className={styles.DetailContent}>
+              <TextContainer className>
+                <DisplayText size="medium">{heading}</DisplayText>
+                {children}
+              </TextContainer>
 
-          <div className={styles.Actions}>
-            <ButtonGroup>
-              {buttonFrom(action, {primary: true, size: 'large'})}
-              {secondaryActionMarkup}
-            </ButtonGroup>
+              <div className={styles.Actions}>
+                <ButtonGroup>
+                  {buttonFrom(action, {primary: true, size: 'large'})}
+                  {secondaryActionMarkup}
+                </ButtonGroup>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className={styles.ImageContainer}>
-          {imageMarkup}
+          <div className={styles.ImageContainer}>
+            {imageMarkup}
+          </div>
         </div>
       </div>
     );
