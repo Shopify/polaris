@@ -23,7 +23,7 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
 .Section {
     position: relative;
-    padding-top: 0;
+    padding: 0 spacing();
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -34,6 +34,7 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
     @include page-content-when-not-partially-condensed {
       left: spacing(extra-loose);
+      padding: 0;
     }
 }
 
@@ -78,7 +79,7 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 .DetailContent {
   padding: 0 spacing(loose);
 
-  @include page-content-when-not-partially-condensed {
+  @include page-content-when-not-fully-condensed {
     padding: 0;
     max-width: rem(400px);
   }
