@@ -4,32 +4,38 @@ In addition to the [visual components](https://polaris.shopify.com/components/ge
 
 ```js
 import React from 'react';
+import {render} from 'react-dom';
 import {Page, Card} from '@shopify/polaris';
 import {EmbeddedApp} from '@shopify/polaris/embedded';
 
-export default class MyApp extends React.Component {
+class MyApp extends React.Component {
   render() {
     return (
-      <EmbeddedApp
-        apiKey="YOUR_APP_API_KEY"
-        shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
-      >
-        <Page title="Example application">
-          <Card sectioned>
-            Insert the rest of your app here, including those components detailed below, which can now communicate with the Embedded App SDK.
-          </Card>
-        </Page>
-      </EmbeddedApp>
+      <Page title="Example application">
+        <Card sectioned>
+          Insert the rest of your app here, including those components detailed below, which can now communicate with the Embedded App SDK.
+        </Card>
+      </Page>
     );
   }
 }
+
+render(
+  <EmbeddedApp
+    apiKey="YOUR_APP_API_KEY"
+    shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
+  >
+    <MyApp />
+  </EmbeddedApp>,
+  document.querySelector('#app') // or another DOM element you want to mount the app in
+);
 ```
 
 Your apiKey and shopOrigin attributes are required. The [EASDK init section](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-init-config) describes the details of these attributes and where to find them.
 
 ## Components
 To access the EASDK components you need to add them to you project:
-`import * from @shopify/polaris/embedded` or `import {EmbeddedApp, Alert, Modal} from @shopify/polaris/embedded` if you want to import only the components you will use.
+`import * as Embedded from '@shopify/polaris/embedded';` or `import {EmbeddedApp, Alert, Modal} from '@shopify/polaris/embedded';` if you want to import a subset of the components.
 
 All EASDK components must be wrapped by the `<EmbeddedApp />` component. This component initializes the EASDK using the apiKey and shopOrigin you provide.
 
@@ -48,11 +54,12 @@ In order to call these methods, you must get the `easdk` object that we add to [
 
 ```js
 import React from 'react';
+import {render} from 'react-dom';
 import * as PropTypes from 'prop-types';
 import {Page, Card, Button} from '@shopify/polaris';
 import {EmbeddedApp} from '@shopify/polaris/embedded';
 
-export default class MyApp extends React.Component {
+class MyApp extends React.Component {
   // This line is very important! It tells React to attach the `easdk`
   // object to `this.context` within your component.
   static contextTypes = {
@@ -61,20 +68,25 @@ export default class MyApp extends React.Component {
 
   render() {
     return (
-      <EmbeddedApp
-        apiKey="YOUR_APP_API_KEY"
-        shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
-      >
-        <Page title="Example application">
-          <Card sectioned>
-            <Button onClick={this.context.easdk.startLoading()}>Start loading</Button>
-            <Button onClick={this.context.easdk.stopLoading()}>Stop loading</Button>
-          </Card>
-        </Page>
-      </EmbeddedApp>
+      <Page title="Example application">
+        <Card sectioned>
+          <Button onClick={() => this.context.easdk.startLoading()}>Start loading</Button>
+          <Button onClick={() => this.context.easdk.stopLoading()}>Stop loading</Button>
+        </Card>
+      </Page>
     );
   }
 }
+
+render(
+  <EmbeddedApp
+    apiKey="YOUR_APP_API_KEY"
+    shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
+  >
+    <MyApp />
+  </EmbeddedApp>,
+  document.querySelector('#app')
+);
 ```
 ### Methods provided:
 
