@@ -7,6 +7,7 @@ import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 import TextContainer from '../TextContainer';
 import DisplayText from '../DisplayText';
+import TextStyle from '../TextStyle';
 
 import * as styles from './EmptyState.scss';
 
@@ -15,6 +16,7 @@ export interface Props {
   largeImage?: string,
   imageContained?: boolean,
   heading?: string,
+  subheading?: string,
   children?: React.ReactNode,
   action: Action,
   secondaryAction?: Action,
@@ -25,6 +27,7 @@ export default class EmptyState extends React.PureComponent<Props, never> {
     const {
       children,
       heading,
+      subheading,
       image,
       largeImage,
       imageContained,
@@ -64,6 +67,9 @@ export default class EmptyState extends React.PureComponent<Props, never> {
             <div className={styles.DetailContent}>
               <TextContainer>
                 <DisplayText size="medium">{heading}</DisplayText>
+                <DisplayText size="small">
+                  <TextStyle variation={'subdued'}>{subheading}</TextStyle>
+                </DisplayText>
                 {children}
               </TextContainer>
 
