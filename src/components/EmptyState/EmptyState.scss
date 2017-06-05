@@ -37,7 +37,7 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
     margin: 0;
 
     @include page-content-when-not-partially-condensed {
-      left: 2em;
+      left: spacing(extra-loose);
     }
 }
 
@@ -66,11 +66,16 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
     left: $image-offset * -2;
     width: $image-overflow-width;
   }
+
   @include page-content-when-partially-condensed {
+    margin-top: rem(-50px);
+    width: 100%;
+  }
+
+  @include page-content-when-fully-condensed {
     width: 150%;
     max-width: 150%;
     margin-left: -50%;
-    margin-top: rem(-50px);
   }
 }
 
