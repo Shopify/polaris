@@ -10,10 +10,6 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   padding: spacing(loose) 0;
   text-align: left;
   border-top: border(); 
-
-  @include page-content-when-not-partially-condensed {
-    flex-direction: row;
-  }
 }
 
 .imageContained {
@@ -81,6 +77,7 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
 .DetailContent {
   padding: 0 spacing(loose);
+
   @include page-content-when-not-partially-condensed {
     padding: 0;
     max-width: rem(400px);
