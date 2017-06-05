@@ -1,3 +1,4 @@
+$max-description-width: rem(336px);
 $image-offset: 40%;
 $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
@@ -22,20 +23,20 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 }
 
 .Section {
-    position: relative;
-    padding: 0 spacing();
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    flex: 1 1 auto;
-    width: 100%;
-    margin: 0;
+  position: relative;
+  padding: 0 spacing();
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
 
-    @include page-content-when-not-partially-condensed {
-      left: spacing(extra-loose);
-      padding: 0;
-    }
+  @include page-content-when-not-partially-condensed {
+    left: spacing(extra-loose);
+    padding: 0;
+  }
 }
 
 .ImageContainer,
@@ -50,41 +51,25 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   }
 }
 
-.Image {
-  margin-left: 0;
-  margin-right: 0;
-  z-index: -1;
-  width: 60vw;
-  max-width: 100vw;
-
-  @include page-content-when-not-partially-condensed {
-    position: relative;
-    margin-top: 0;
-    left: $image-offset * -2;
-    width: $image-overflow-width;
-  }
-
-  @include page-content-when-partially-condensed {
-    margin-top: rem(-50px);
-    width: 100%;
-  }
-
-  @include page-content-when-fully-condensed {
-    width: 150%;
-    max-width: 150%;
-    margin-left: -50%;
-  }
-}
-
 .DetailContent {
-  padding: 0 spacing(loose);
-
-  @include page-content-when-not-fully-condensed {
-    padding: 0;
-    max-width: rem(400px);
-  }
+  max-width: $max-description-width;
 }
 
 .Actions {
   margin-top: spacing();
+}
+
+.Image {
+  z-index: -1;
+  width: 150%;
+  margin-left: -35%;
+  margin-top: spacing(loose) * -1;
+
+  @include page-content-when-not-partially-condensed {
+    position: relative;
+    margin-left: 0;
+    margin-top: 0;
+    left: $image-offset * -2;
+    width: $image-overflow-width;
+  }
 }
