@@ -16,7 +16,7 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: spacing(loose) auto 0 auto;
+  margin-top: spacing(loose);
   padding: spacing(loose) 0;
   border-top: border(); 
 }
@@ -33,36 +33,35 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
 .Section {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
   flex: 1 1 auto;
   width: 100%;
 
   @include page-content-when-not-partially-condensed {
     left: spacing(extra-loose);
     flex-direction: row;
+    align-items: center;
   }
 }
 
 .ImageContainer,
 .Details {
-  justify-content: flex-start;
   flex: 1 1 auto;
   padding: 0;
   margin: 0;
 
   @include page-content-when-not-partially-condensed {
-    flex: 0 1 50%;
+    flex-basis: 50%;
   }
 }
 
-.ImageContainer {
-  width: 100%;
-}
-
 .DetailContent {
+  padding: 0 spacing();
   max-width: $details-max-width;
+
+  @include page-content-when-not-partially-condensed {
+    padding: 0;
+  }
 }
 
 .Actions {
@@ -70,15 +69,11 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
 }
 
 .Image {
-  z-index: -1;
-  overflow-x: hidden;
   margin-top: spacing(loose) * -1;
   margin-left: $illustration-left-offset * -1;
   width: $illustration-zoom;
 
   @include page-content-when-not-partially-condensed {
-    position: relative;
-    overflow-x: visible;
     margin-top: 0;
     width: $illustration-overflow-width;
   }
