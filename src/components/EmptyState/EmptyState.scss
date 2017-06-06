@@ -1,6 +1,15 @@
-$max-description-width: rem(336px);
-$image-offset: 40%;
-$image-overflow-width: calc(100% + #{$image-offset} * 2);
+
+// Standard illustration size and buffer zone for details
+$illustration-width: 960;
+$illustration-left-buffer: 336;
+
+// Allows for focus area on mobile and appropriate sizing on desktop
+$illustration-zoom: 195%;
+
+$details-max-width: rem($illustration-left-buffer * 1px);
+
+$illustration-left-offset: ($illustration-left-buffer / $illustration-width) * $illustration-zoom;
+$illustration-overflow-width: calc(100% + #{$illustration-left-offset});
 
 .EmptyState {
   display: flex;
@@ -9,7 +18,6 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   width: 100%;
   margin-top: spacing(loose) auto 0 auto;
   padding: spacing(loose) 0;
-  text-align: left;
   border-top: border(); 
 }
 
@@ -24,18 +32,16 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
 .Section {
   position: relative;
-  padding: 0 spacing();
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   flex: 1 1 auto;
   width: 100%;
-  margin: 0;
 
   @include page-content-when-not-partially-condensed {
     left: spacing(extra-loose);
-    padding: 0;
+    flex-direction: row;
   }
 }
 
@@ -51,8 +57,12 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   }
 }
 
+.ImageContainer {
+  width: 100%;
+}
+
 .DetailContent {
-  max-width: $max-description-width;
+  max-width: $details-max-width;
 }
 
 .Actions {
@@ -61,15 +71,15 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
 
 .Image {
   z-index: -1;
-  width: 150%;
-  margin-left: -35%;
+  overflow-x: hidden;
   margin-top: spacing(loose) * -1;
+  margin-left: $illustration-left-offset * -1;
+  width: $illustration-zoom;
 
   @include page-content-when-not-partially-condensed {
     position: relative;
-    margin-left: 0;
+    overflow-x: visible;
     margin-top: 0;
-    left: $image-offset * -2;
-    width: $image-overflow-width;
+    width: $illustration-overflow-width;
   }
 }
