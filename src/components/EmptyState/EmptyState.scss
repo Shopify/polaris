@@ -1,3 +1,4 @@
+// FIXME: This logic needs improvement
 
 // Standard illustration size and buffer zone for details
 $illustration-width: 960;
@@ -73,8 +74,14 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
   margin-left: $illustration-left-offset * -1;
   width: $illustration-zoom;
 
+  @include page-content-when-not-fully-condensed {
+    width: 100%;
+    margin-left: 0;
+  }
+
   @include page-content-when-not-partially-condensed {
     margin-top: 0;
+    margin-left: $illustration-left-offset * -1;
     width: $illustration-overflow-width;
   }
 }
