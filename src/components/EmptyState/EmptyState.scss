@@ -60,8 +60,7 @@ $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2)
   position: relative;
   z-index: z-index(details, $stacking-order); 
   padding: 0 spacing();
-  width: 100%;
-  max-width: $detail-width;
+  width: $detail-width;
 
   @include page-content-when-not-fully-condensed {
     padding: 0;
