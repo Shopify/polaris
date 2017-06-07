@@ -1,11 +1,16 @@
-// Left and right buffer zones for the illustration's focus area
-$illustration-left-buffer: 35%;
-$illustration-right-buffer: 10%;
+$detail-width: rem(336px);
 
-$illustration-left-margin: $illustration-left-buffer * -2;
+$stacking-order: (
+  illustration: 0,
+  details: 10,
+);
 
-$illustration-width: calc(100% + #{$illustration-left-buffer} * 2);
-$illustration-focus-width: calc(#{$illustration-width} + #{$illustration-right-buffer} * 2);
+$left-offset: 35%;
+$right-offset: 10%;
+
+$illustration-left-margin: $left-offset * -2;
+$illustration-width: calc(100% + #{$left-offset} * 2);
+$illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2);
 
 .EmptyState {
   display: flex;
@@ -52,9 +57,11 @@ $illustration-focus-width: calc(#{$illustration-width} + #{$illustration-right-b
 }
 
 .DetailContent {
+  position: relative;
+  z-index: z-index(details, $stacking-order); 
   padding: 0 spacing();
   width: 100%;
-  max-width: 336px;
+  max-width: $detail-width;
 
   @include page-content-when-not-fully-condensed {
     padding: 0;
@@ -67,10 +74,10 @@ $illustration-focus-width: calc(#{$illustration-width} + #{$illustration-right-b
 
 .Image {
   position: relative;
-  z-index: -1;
+  z-index: z-index(illustration, $stacking-order);
   margin-top: spacing(loose) * -1;
   margin-left: $illustration-left-margin;
-  width: $illustration-focus-width;
+  width: $illustration-width-cropped;
 
   @include page-content-when-not-fully-condensed {
     margin-left: 0;
