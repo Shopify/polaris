@@ -8,8 +8,13 @@ $stacking-order: (
 $left-offset: 35%;
 $right-offset: 10%;
 
+// Multiply by 2 to expand the image size to align with design requirements
 $illustration-left-margin: $left-offset * -2;
+
+// Shift the illustration to the left to overlap with Details
 $illustration-width: calc(100% + #{$left-offset} * 2);
+
+// Respect the right offset on mobile so the illustration shows the correct crop zone
 $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2);
 
 .EmptyState {
@@ -65,6 +70,11 @@ $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2)
   @include page-content-when-not-fully-condensed {
     padding: 0;
   }
+}
+
+.Content {
+  @include text-style-display-small;
+  @include text-emphasis-subdued;
 }
 
 .Actions {

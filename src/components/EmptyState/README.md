@@ -128,7 +128,6 @@ primary buttons.
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
 | heading | string | The empty state heading |
-| subheading| string | The empty state subheading |
 | image | string | The image to use for small screens |
 | largeImage | string | The image to use for large screens |
 | imageContained | boolean | The image to use for large screens |
@@ -145,9 +144,10 @@ Use to explain a single feature before a merchant has used it.
 ```jsx
 <EmptyState
   heading="Manage your inventory transfers"
-  subheading="Track and receive your incoming inventory from suppliers."
   action={{content: 'Add transfer'}}
   secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
   image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
-/>
+>
+  <p>Track and receive your incoming inventory from suppliers.</p>
+</EmptyState>
 ```
