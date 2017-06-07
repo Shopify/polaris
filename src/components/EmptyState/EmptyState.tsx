@@ -7,6 +7,7 @@ import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 import TextContainer from '../TextContainer';
 import DisplayText from '../DisplayText';
+import TextStyle from '../TextStyle';
 
 import * as styles from './EmptyState.scss';
 
