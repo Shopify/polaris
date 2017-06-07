@@ -1,16 +1,11 @@
-// FIXME: This logic needs improvement
+// Left and right buffer zones for the illustration's focus area
+$illustration-left-buffer: 35%;
+$illustration-right-buffer: 10%;
 
-// Standard illustration size and buffer zone for details
-$illustration-width: 960;
-$illustration-left-buffer: 336;
+$illustration-left-margin: $illustration-left-buffer * -2;
 
-// Allows for focus area on mobile and appropriate sizing on desktop
-$illustration-zoom: 195%;
-
-$details-max-width: rem($illustration-left-buffer * 1px);
-
-$illustration-left-offset: ($illustration-left-buffer / $illustration-width) * $illustration-zoom;
-$illustration-overflow-width: calc(100% + #{$illustration-left-offset});
+$illustration-width: calc(100% + #{$illustration-left-buffer} * 2);
+$illustration-focus-width: calc(#{$illustration-width} + #{$illustration-right-buffer} * 2);
 
 .EmptyState {
   display: flex;
@@ -39,7 +34,7 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
   width: 100%;
 
   @include page-content-when-not-partially-condensed {
-    left: spacing(extra-loose);
+    left: spacing(loose);
     flex-direction: row;
     align-items: center;
   }
@@ -58,9 +53,10 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
 
 .DetailContent {
   padding: 0 spacing();
-  max-width: $details-max-width;
+  width: 100%;
+  max-width: 336px;
 
-  @include page-content-when-not-partially-condensed {
+  @include page-content-when-not-fully-condensed {
     padding: 0;
   }
 }
@@ -70,9 +66,11 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
 }
 
 .Image {
+  position: relative;
+  z-index: -1;
   margin-top: spacing(loose) * -1;
-  margin-left: $illustration-left-offset * -1;
-  width: $illustration-zoom;
+  margin-left: $illustration-left-margin;
+  width: $illustration-focus-width;
 
   @include page-content-when-not-fully-condensed {
     margin-left: 0;
@@ -81,7 +79,7 @@ $illustration-overflow-width: calc(100% + #{$illustration-left-offset});
 
   @include page-content-when-not-partially-condensed {
     margin-top: 0;
-    margin-left: $illustration-left-offset * -1;
-    width: $illustration-overflow-width;
+    margin-left: $illustration-left-margin;
+    width: $illustration-width;
   }
 }
