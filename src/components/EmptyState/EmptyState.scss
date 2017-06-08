@@ -51,7 +51,7 @@ $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2)
 }
 
 .ImageContainer,
-.Details {
+.DetailsContainer {
   flex: 1 1 auto;
   padding: 0;
   margin: 0;
@@ -61,7 +61,7 @@ $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2)
   }
 }
 
-.DetailContent {
+.Details {
   position: relative;
   z-index: z-index(details, $stacking-order); 
   padding: 0 spacing();

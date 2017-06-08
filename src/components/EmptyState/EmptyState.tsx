@@ -60,8 +60,8 @@ export default class EmptyState extends React.PureComponent<Props, never> {
     return (
       <div className={className}>
         <div className={styles.Section}>
-          <div className={styles.Details}>
-            <div className={styles.DetailContent}>
+          <div className={styles.DetailsContainer}>
+            <div className={styles.Details}>
               <TextContainer>
                 <DisplayText size="medium">{heading}</DisplayText>
                 <div className={styles.Content}>
