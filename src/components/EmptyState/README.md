@@ -127,6 +127,7 @@ primary buttons.
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
+| heading | string | The empty state heading |
 | image | string | The image to use for small screens |
 | largeImage | string | The image to use for large screens |
 | imageContained | boolean | The image to use for large screens |
