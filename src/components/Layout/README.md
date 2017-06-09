@@ -28,7 +28,7 @@ The layout component ensures that pages across Shopify can be organized to accom
 >
 >* To visually group content in a layout section, [use the card component](/components/structure/card).
 >* To lay out a set of smaller components in a row, [use the stack component](/components/structure/stack).
->* To lay out form fields, [use the layout component](/components/structure/layout).
+>* To lay out form fields, [use the layout component](/components/forms/form-layout).
 
 ---
 
