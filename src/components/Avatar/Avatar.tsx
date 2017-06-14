@@ -64,7 +64,7 @@ export default function Avatar({
     content = <span aria-hidden className={styles.Initials}>{initials}</span>;
   }
 
-  return <div aria-label={label} role="img" className={className}>{content}</div>;
+  return <span aria-label={label} role="img" className={className}>{content}</span>;
 }
 
 function styleClass(name?: string) {
