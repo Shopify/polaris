@@ -1,28 +1,31 @@
 import {LinkAction, ComplexAction} from '../../types';
 
+export type Target = 'app' | 'shopify' | 'new' | 'parent';
+
 export interface EASDKBreadcrumb {
   label: string,
   href?: string,
-  target?: string,
+  target?: Target,
   loading?: boolean,
 }
 
-export function transformBreadcrumb(breadcrumb: LinkAction | undefined) {
-  if (breadcrumb == null || !breadcrumb) {
-    return undefined;
+export function transformBreadcrumb(breadcrumb: LinkAction): EASDKBreadcrumb {
+  if (breadcrumb.content == null) {
+    throw new Error(`No content provided for breadcrumb (${JSON.stringify(breadcrumb)})`);
   }
 
   return {
     label: breadcrumb.content,
     href: breadcrumb.url,
-  } as EASDKBreadcrumb;
+    target: getTargetFromURL(breadcrumb.url),
+  };
 }
 
 export interface EASDKButton {
   label?: string,
   href?: string,
   style?: 'disabled' | 'danger',
-  target?: 'app' | 'shopify' | 'new' | 'parent',
+  target?: Target,
   loading?: boolean,
   type?: string,
   links?: EASDKButton[],
@@ -44,20 +47,16 @@ export function transformAction(action: ComplexAction | undefined) {
   return {
     label: action.content,
     href: action.url,
-    target: action.url ? getTargetFromUrl(action.url) : undefined,
+    target: action.url ? getTargetFromURL(action.url) : undefined,
     message: action.onAction,
     style,
   } as EASDKButton;
 }
 
-function getTargetFromUrl(actionUrl: LinkAction['url']): EASDKButton['target'] {
-  if (!actionUrl) {
-    return;
-  }
-
-  if (actionUrl[0] === '/') {
+function getTargetFromURL(url: string): Target {
+  if (url[0] === '/') {
     return 'shopify';
-  } else if (actionUrl.indexOf(window.location.hostname) >= 0) {
+  } else if (url.indexOf(window.location.hostname) >= 0) {
     return 'app';
   } else {
     return 'new';
