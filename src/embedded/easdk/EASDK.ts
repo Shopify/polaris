@@ -1,3 +1,5 @@
+import autobind from '@shopify/javascript-utilities/autobind';
+
 import Messenger from './Messenger';
 import Bar from './components/Bar';
 import Modal from './components/Modal';
@@ -60,30 +62,39 @@ export default class EASDK {
     this.messenger.send('Shopify.API.initialize', {apiKey, shopOrigin, metadata, debug, forceRedirect});
   }
 
+  @autobind
   startLoading() {
     this.messenger.send('Shopify.API.Bar.loading.on');
   }
 
+  @autobind
   stopLoading() {
     this.messenger.send('Shopify.API.Bar.loading.off');
   }
 
-  showFlashNotice(message: string) {
-    this.messenger.send('Shopify.API.flash.notice', {message});
+  @autobind
+  showFlashNotice(message: string, options: {error?: boolean} = {}) {
+    const {error = false} = options;
+    const type = error ? 'Shopify.API.flash.error' : 'Shopify.API.flash.notice';
+    this.messenger.send(type, {message});
   }
 
+  @autobind
   pushState(location: string) {
     this.messenger.send('Shopify.API.pushState', {location});
   }
 
+  @autobind
   redirect(location: string) {
     this.messenger.send('Shopify.API.redirect', {location});
   }
-
 }
 
-function checkFrameRedirect(apiKey: Options['apiKey'], shopOrigin: Options['shopOrigin'] = 'https://myshopify.com', forceRedirect: Options['forceRedirect']) {
-
+function checkFrameRedirect(
+  apiKey: Options['apiKey'],
+  shopOrigin: Options['shopOrigin'] = 'https://myshopify.com',
+  forceRedirect: Options['forceRedirect'],
+) {
   if (window !== window.parent) {
     return;
   }
