@@ -134,7 +134,7 @@ Every item in a choice list should:
 | name | string | Name for form input |
 | allowMultiple | boolean | Allow multiple selections |
 | titleHidden | boolean | Toggles display of the title |
-| onChange | function(selected: string) | Function to call when selection is changed |
+| onChange | function(selected: string[], name: string) | Callback when the selected choices change |
 
 ## Examples
 

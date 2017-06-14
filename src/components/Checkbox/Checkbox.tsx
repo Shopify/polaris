@@ -18,7 +18,7 @@ export interface Props {
   value?: string,
   error?: Error,
   disabled?: boolean,
-  onChange?(newValue: boolean): void,
+  onChange?(newValue: boolean, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
@@ -42,7 +42,7 @@ export default function Checkbox({
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (onChange == null) { return; }
     const {currentTarget} = event;
-    onChange(currentTarget.checked);
+    onChange(currentTarget.checked, id);
   }
 
   const describedBy: string[] = [];

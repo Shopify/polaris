@@ -22,7 +22,7 @@ export interface Props {
   selected: string[],
   name?: string,
   allowMultiple?: boolean,
-  onChange?(selected: string[]): void,
+  onChange?(selected: string[], name: string): void,
 }
 
 type ChooseableComponent = ReactComponent<{
@@ -30,7 +30,7 @@ type ChooseableComponent = ReactComponent<{
   name?: string,
   value?: string,
   checked?: boolean,
-  onChange?(checked: boolean): void,
+  onChange?(checked: boolean, id: string): void,
 }>;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
@@ -57,7 +57,7 @@ export default function ChoiceList({
     const label = choice.label;
 
     function handleChange(checked: boolean) {
-      onChange(updateSelectedChoices(choice, checked, selected, allowMultiple));
+      onChange(updateSelectedChoices(choice, checked, selected, allowMultiple), name);
     }
 
     return (

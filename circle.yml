@@ -12,4 +12,4 @@ dependencies:
 
 test:
   override:
-    - yarn run check
+    - yarn run check:ci

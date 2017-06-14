@@ -25,8 +25,8 @@ export default function Choice({
   const className = classNames(styles.Choice, labelHidden && styles.labelHidden);
   const labelMarkup = (
     <label className={className} htmlFor={id}>
-      <div className={styles.Control}>{children}</div>
-      <div className={styles.Label}>{label}</div>
+      <span className={styles.Control}>{children}</span>
+      <span className={styles.Label}>{label}</span>
     </label>
   );
 

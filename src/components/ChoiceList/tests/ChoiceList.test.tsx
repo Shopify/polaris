@@ -57,19 +57,19 @@ describe('<ChoiceList />', () => {
       const spy = jest.fn((newSelected: string[]) => {
         selected = newSelected;
       });
-      const choiceList = mount(<ChoiceList allowMultiple onChange={spy} selected={selected} choices={choices} />);
+      const choiceList = mount(<ChoiceList name="MyChoiceList" allowMultiple onChange={spy} selected={selected} choices={choices} />);
       const choiceElements = choiceList.find(Checkbox);
 
       changeCheckedForChoice(choiceElements.at(1), true);
-      expect(spy).toHaveBeenLastCalledWith(['one', 'two']);
+      expect(spy).toHaveBeenLastCalledWith(['one', 'two'], 'MyChoiceList');
       choiceList.setProps({selected});
 
       changeCheckedForChoice(choiceElements.at(2), true);
-      expect(spy).toHaveBeenLastCalledWith(['one', 'two', 'three']);
+      expect(spy).toHaveBeenLastCalledWith(['one', 'two', 'three'], 'MyChoiceList');
       choiceList.setProps({selected});
 
       changeCheckedForChoice(choiceElements.at(0), false);
-      expect(spy).toHaveBeenLastCalledWith(['two', 'three']);
+      expect(spy).toHaveBeenLastCalledWith(['two', 'three'], 'MyChoiceList');
       choiceList.setProps({selected});
     });
 

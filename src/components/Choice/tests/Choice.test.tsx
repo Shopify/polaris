@@ -21,4 +21,10 @@ describe('<Choice />', () => {
 
     expect(label.containsMatchingElement(<MyComponent />)).toBe(true);
   });
+
+  it('does not render block-level elements in the label', () => {
+    const element = shallow(<Choice id="MyChoice" label="Label" />);
+    const label = element.find('label');
+    expect(label.find('div')).toHaveLength(0);
+  });
 });

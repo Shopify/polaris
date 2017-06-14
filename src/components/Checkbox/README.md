@@ -99,7 +99,7 @@ You agree to the Terms of Service
 | name | string | Name for form input |
 | value | string | Value for form input |
 | error | Error | Display an error state |
-| onChange | function(newValue: boolean) | Callback when selection is changed |
+| onChange | function(newValue: boolean, id: string) | Callback when checkbox is toggled |
 | onFocus | function() | Callback when checkbox is focussed |
 | onBlur | function() | Callback when focus is removed |
 

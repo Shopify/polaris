@@ -94,7 +94,7 @@ The placeholder option should be the text “Select”.
 | name | string | Name for form input |
 | value | string | Value for form input |
 | error | Error | Display an error state |
-| onChange | function(newValue: boolean) | Callback when selection is changed |
+| onChange | function(newValue: string, id: string) | Callback when selection is changed |
 | onFocus | function() | Callback when checkbox is focussed |
 | onBlur | function() | Callback when focus is removed |
 

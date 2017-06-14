@@ -32,7 +32,7 @@ export interface Props {
   disabled?: boolean,
   value?: string,
   placeholder?: string,
-  onChange?(selected: string): void,
+  onChange?(selected: string, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
@@ -74,7 +74,7 @@ export default function Select({
   );
 
   const handleChange = onChange
-    ? ((event: React.ChangeEvent<HTMLSelectElement>) => onChange(event.currentTarget.value))
+    ? ((event: React.ChangeEvent<HTMLSelectElement>) => onChange(event.currentTarget.value, id))
     : undefined;
 
   const describedBy: string[] = [];

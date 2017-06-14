@@ -6,10 +6,10 @@ describe('<Select />', () => {
   describe('onChange()', () => {
     it('is called with the value of the newly-selected option', () => {
       const spy = jest.fn();
-      const element = mount(<Select label="Select" options={['one', 'two']} onChange={spy} />);
+      const element = mount(<Select id="MySelect" label="Select" options={['one', 'two']} onChange={spy} />);
       (element.find('select') as any).node.value = 'two';
       element.find('select').simulate('change');
-      expect(spy).toHaveBeenCalledWith('two');
+      expect(spy).toHaveBeenCalledWith('two', 'MySelect');
     });
   });
 

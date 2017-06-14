@@ -14,7 +14,7 @@ export interface Props {
   id: LabelProps['id'],
   label: string,
   error?: Error,
-  action: LabelProps['action'],
+  action?: LabelProps['action'],
   helpText?: React.ReactNode,
   children?: React.ReactNode,
   labelHidden?: boolean,

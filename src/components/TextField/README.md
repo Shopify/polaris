@@ -143,7 +143,7 @@ You didn’t enter a shop name.
 | minLength | number | Minimum character length for an input|
 | pattern | string | A regular expression to check the value against |
 | spellCheck | boolean | Indicate whether value should have spelling checked |
-| onChange | function(value: string) | Callback when value is changed |
+| onChange | function(value: string, event?: React.ChangeEvent<HTMLInputElement>) | Callback when value is changed |
 | onFocus | function() | Callback when input is focused |
 | onBlur | function() | Callback when focus is removed |
 
