@@ -58,7 +58,7 @@ Lists that use checkboxes should:
 - Option 2
 - Option 3
 
-#### Don't
+#### Don’t
 - option 1
 - option 2
 - option 3
@@ -72,7 +72,7 @@ Lists that use checkboxes should:
 - Yellow
 - Blue
 
-#### Don't
+#### Don’t
 - Red;
 - Yellow;
 - Blue.
@@ -85,7 +85,7 @@ or service, use the first person
 #### Do
 I agree to the Terms of Service.
 
-#### Don't
+#### Don’t
 You agree to the Terms of Service
 <!-- end -->
 
@@ -99,7 +99,7 @@ You agree to the Terms of Service
 | name | string | Name for form input |
 | value | string | Value for form input |
 | error | Error | Display an error state |
-| onChange | function(newValue: boolean) | Callback when selection is changed |
+| onChange | function(newValue: boolean, id: string) | Callback when checkbox is toggled |
 | onFocus | function() | Callback when checkbox is focussed |
 | onBlur | function() | Callback when focus is removed |
 

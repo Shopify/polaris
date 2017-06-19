@@ -21,10 +21,10 @@ describe('<RadioButton />', () => {
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mount(<RadioButton label="RadioButton" onChange={spy} />);
+      const element = mount(<RadioButton id="MyRadioButton" label="RadioButton" onChange={spy} />);
       (element.find('input') as any).node.checked = true;
       element.find('input').simulate('change');
-      expect(spy).toHaveBeenCalledWith(true);
+      expect(spy).toHaveBeenCalledWith(true, 'MyRadioButton');
     });
   });
 

@@ -61,7 +61,7 @@ say “Enable” to allow merchants to turn it on.
 - Enable
 - Disable
 
-#### Don't
+#### Don’t
 - Turn on
 - Turn off
 <!-- end -->

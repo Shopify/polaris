@@ -32,12 +32,10 @@ export default function CalloutCard({
 
   const buttonMarkup = secondaryActionMarkup
     ? (
-      <div className={styles.Buttons}>
-        <ButtonGroup>
-          {primaryActionMarkup}
-          {secondaryActionMarkup}
-        </ButtonGroup>
-      </div>
+      <ButtonGroup>
+        {primaryActionMarkup}
+        {secondaryActionMarkup}
+      </ButtonGroup>
     )
     : primaryActionMarkup;
 
@@ -51,7 +49,9 @@ export default function CalloutCard({
           <TextContainer>
             {children}
           </TextContainer>
-          {buttonMarkup}
+          <div className={styles.Buttons}>
+            {buttonMarkup}
+          </div>
         </div>
 
         <Image alt="" className={styles.Image} source={illustration} />

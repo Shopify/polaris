@@ -14,6 +14,7 @@ export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' |
 
 export interface State {
   height?: number | null,
+  id: string,
 }
 
 export interface Props {
@@ -43,7 +44,7 @@ export interface Props {
   minLength?: number,
   pattern?: string,
   spellCheck?: boolean,
-  onChange?(value: string): void,
+  onChange?(value: string, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
@@ -51,9 +52,22 @@ export interface Props {
 const getUniqueID = createUniqueIDFactory('TextField');
 
 export default class TextField extends React.PureComponent<Props, State> {
-  state: State = {height: null};
-
   private input: HTMLElement;
+
+  constructor(props: Props) {
+    super();
+
+    this.state = {
+      height: null,
+      id: props.id || getUniqueID(),
+    };
+  }
+
+  componentWillReceiveProps(newProps: Props) {
+    this.setState({
+      id: newProps.id || this.state.id,
+    });
+  }
 
   render() {
     const {
@@ -187,7 +201,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     if (isNaN(numericValue)) { return; }
 
     const newValue = Math.min(max, Math.max(numericValue + (steps * step), min));
-    onChange(String(newValue));
+    onChange(String(newValue), this.state.id);
   }
 
   @autobind
@@ -196,10 +210,10 @@ export default class TextField extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleChange(event: React.FormEvent<HTMLInputElement>) {
+  private handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const {onChange} = this.props;
     if (onChange == null) { return; }
-    onChange(event.currentTarget.value);
+    onChange(event.currentTarget.value, this.state.id);
   }
 
   @autobind

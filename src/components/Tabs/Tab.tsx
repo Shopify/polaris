@@ -1,31 +1,57 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {focusFirstFocusableNode, findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import autobind from '@shopify/javascript-utilities/autobind';
 
 import UnstyledLink from '../UnstyledLink';
-import {TabDescriptor} from './Tabs';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
+
 import * as styles from './Tabs.scss';
 
 export interface Props {
   id: string,
-  selected: boolean,
-  focused: boolean,
-  siblingTabHasFocus: boolean,
-  tab: TabDescriptor,
+  focused?: boolean,
+  siblingTabHasFocus?: boolean,
+  selected?: boolean,
   panelID?: string,
   children?: React.ReactNode,
   url?: string,
   measuring?: boolean,
-  onClick?(tab: TabDescriptor): void,
+  onClick?(id: string): void,
 }
 
 export default class Tab extends React.PureComponent<Props, never> {
   private node: HTMLElement;
 
-  componentDidUpdate() {
-    const {focused, measuring} = this.props;
-    if (focused && !measuring) {
+  // A tab can start selected when it is moved from the disclosure dropdown
+  // into the main list, so we need to send focus from the tab to the panel
+  // on mount and update
+  componentDidMount() {
+    const {id, measuring, selected, panelID, focused} = this.props;
+
+    if (measuring) { return; }
+
+    // Because of timing issues with the render, we may still have the old,
+    // in-disclosure version of the tab that has focus. Check for this
+    // as a second indicator of focus
+    const itemHadFocus = focused || (document.activeElement && document.activeElement.id === id);
+
+    // If we just check for selected, the panel for the active tab will
+    // be focused on page load, which we don't want
+    if (itemHadFocus && selected && panelID != null) {
+      focusPanelID(panelID);
+    }
+  }
+
+  componentDidUpdate(previousProps: Props) {
+    const {selected: wasSelected} = previousProps;
+    const {focused, measuring, selected, panelID} = this.props;
+
+    if (measuring) { return; }
+
+    if (selected && !wasSelected && panelID != null) {
+      focusPanelID(panelID);
+    } else if (focused) {
       focusFirstFocusableNode(this.node);
     }
   }
@@ -33,7 +59,6 @@ export default class Tab extends React.PureComponent<Props, never> {
   render() {
     const {
       id,
-      tab,
       focused,
       siblingTabHasFocus,
       children,
@@ -44,10 +69,7 @@ export default class Tab extends React.PureComponent<Props, never> {
       measuring,
     } = this.props;
 
-    function handleClick() {
-      if (onClick == null) { return; }
-      onClick(tab);
-    }
+    const handleClick = onClick && onClick.bind(null, id);
 
     const className = classNames(
       styles.Tab,
@@ -69,15 +91,15 @@ export default class Tab extends React.PureComponent<Props, never> {
       <UnstyledLink
         id={id}
         url={url}
+        role="tab"
         tabIndex={tabIndex}
         onClick={handleClick}
         className={className}
+        aria-selected={selected}
+        aria-controls={panelID}
+        onMouseUp={handleMouseUpByBlurring}
       >
-        <span
-          className={styles.Title}
-          aria-selected={selected}
-          aria-controls={panelID || null}
-        >
+        <span className={styles.Title}>
           {children}
         </span>
       </UnstyledLink>
@@ -85,15 +107,15 @@ export default class Tab extends React.PureComponent<Props, never> {
       : (
         <button
           id={id}
+          role="tab"
           tabIndex={tabIndex}
           className={className}
           onClick={handleClick}
+          aria-selected={selected}
+          aria-controls={panelID}
+          onMouseUp={handleMouseUpByBlurring}
         >
-          <span
-            className={styles.Title}
-            aria-selected={selected}
-            aria-controls={panelID || null}
-          >
+          <span className={styles.Title}>
             {children}
           </span>
         </button>
@@ -101,10 +123,9 @@ export default class Tab extends React.PureComponent<Props, never> {
 
     return (
       <li
-        role="tab"
+        role="presentation"
         className={styles.TabContainer}
         ref={this.setNode}
-        onMouseLeave={this.handleMouseLeave}
       >
         {markup}
       </li>
@@ -112,15 +133,12 @@ export default class Tab extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private handleMouseLeave() {
-    const firstFocusable = findFirstFocusableNode(this.node);
-    if (firstFocusable) {
-      firstFocusable.blur();
-    }
-  }
-
-  @autobind
   private setNode(node: HTMLElement) {
     this.node = node;
   }
+}
+
+function focusPanelID(panelID: string) {
+  const panel = document.getElementById(panelID);
+  if (panel) { panel.focus(); }
 }

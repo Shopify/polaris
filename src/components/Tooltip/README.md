@@ -58,7 +58,7 @@ Tooltips should:
 #### Do
 Post reach is the number of people who have seen your post in their News Feed.
 
-#### Don't
+#### Don’t
 To continue using Shopify, this amount must be paid immediately.
 <!-- end -->
 

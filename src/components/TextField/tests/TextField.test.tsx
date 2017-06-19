@@ -40,10 +40,10 @@ describe('<TextField />', () => {
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
-      const element = mount(<TextField label="TextField" onChange={spy} />);
+      const element = mount(<TextField id="MyTextField" label="TextField" onChange={spy} />);
       (element.find('input') as any).node.value = 'two';
       element.find('input').simulate('change');
-      expect(spy).toHaveBeenCalledWith('two');
+      expect(spy).toHaveBeenCalledWith('two', 'MyTextField');
     });
   });
 
@@ -166,74 +166,74 @@ describe('<TextField />', () => {
     describe('number', () => {
       it('adds an increment button that increases the value', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" value="3" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" value="3" onChange={spy} />);
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenCalledWith('4');
+        expect(spy).toHaveBeenCalledWith('4', 'MyTextField');
       });
 
       it('adds a decrement button that increases the value', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" value="3" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" value="3" onChange={spy} />);
         element.find('[role="button"]').last().simulate('click');
-        expect(spy).toHaveBeenCalledWith('2');
+        expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
       });
 
       it('handles incrementing from no value', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" onChange={spy} />);
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenCalledWith('1');
+        expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
       });
 
       it('uses the step prop when incrementing', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" step={0.5} value="1.25" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" step={0.5} value="1.25" onChange={spy} />);
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenCalledWith('1.75');
+        expect(spy).toHaveBeenCalledWith('1.75', 'MyTextField');
       });
 
       it('respects a min value', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" min={2} value="2" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" min={2} value="2" onChange={spy} />);
 
         element.find('[role="button"]').last().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('2');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('3');
+        expect(spy).toHaveBeenLastCalledWith('3', 'MyTextField');
       });
 
       it('respects a max value', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" max={2} value="2" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" max={2} value="2" onChange={spy} />);
 
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('2');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
         element.find('[role="button"]').last().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('1');
+        expect(spy).toHaveBeenLastCalledWith('1', 'MyTextField');
       });
 
       it('brings an invalid value up to the min', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" min={2} value="-1" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" min={2} value="-1" onChange={spy} />);
 
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('2');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
         element.find('[role="button"]').last().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('2');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
 
       it('brings an invalid value down to the max', () => {
         const spy = jest.fn();
-        const element = mount(<TextField label="TextField" type="number" max={2} value="12" onChange={spy} />);
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" max={2} value="12" onChange={spy} />);
 
         element.find('[role="button"]').first().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('2');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
 
         element.find('[role="button"]').last().simulate('click');
-        expect(spy).toHaveBeenLastCalledWith('2');
+        expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
     });
   });

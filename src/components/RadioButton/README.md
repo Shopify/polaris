@@ -57,7 +57,7 @@ Radio button labels should:
 #### Do
 - Option 1
 
-#### Don't
+#### Don’t
 - option 1
 <!-- end -->
 
@@ -67,7 +67,7 @@ Radio button labels should:
 #### Do
 - Red
 
-#### Don't
+#### Don’t
 - Red;
 <!-- end -->
 
@@ -80,7 +80,7 @@ Radio button labels should:
 | id | string | ID for form input |
 | name | string | Name for form input |
 | value | string | Value for form input |
-| onChange | function(newValue: boolean) | Callback when selection is changed |
+| onChange | function(newValue: boolean, id: string) | Callback when the radio button is toggled |
 | onFocus | function() | Callback when radio button is focussed |
 | onBlur | function() | Callback when focus is removed |
 

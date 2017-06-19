@@ -2,6 +2,7 @@ import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities';
 
 import {ComplexAction} from '../../types';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
@@ -91,7 +92,7 @@ export default function Button({
         onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         className={className}
         disabled={disabled}
         aria-label={accessibilityLabel}
@@ -105,7 +106,7 @@ export default function Button({
         onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
         className={className}
         disabled={disabled}
         aria-label={accessibilityLabel}
@@ -114,10 +115,6 @@ export default function Button({
       </button>
     )
   );
-}
-
-function handleMouseUp({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-  currentTarget.blur();
 }
 
 export function buttonsFrom(action: ComplexAction, overrides?: Partial<Props>): React.ReactElement<Props>;

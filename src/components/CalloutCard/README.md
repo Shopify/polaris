@@ -50,12 +50,10 @@ Headings should be:
 
 * Descriptive: help merchants understand what they’ll find in the callout card
 * Concise and scannable:
-** Use simple, clear language that can be read at-a-glance
-** Keep headings to a single sentence and avoid using punctuation such as
+ * Use simple, clear language that can be read at a glance
+ * Keep headings to a single sentence and avoid using punctuation such as
 periods, commas, or semicolons
-** Where possible, avoid articles (the, a, an) to keep content short and
-actionable
-** Sentence case (first word capitalized, the rest lowercase)
+ * Sentence case (first word capitalized, the rest lowercase)
 
 
 <!-- usagelist -->
@@ -63,7 +61,7 @@ actionable
 
 Messenger
 
-#### Don't
+#### Don’t
 
 Chat with customers on Messenger
 <!-- end -->
@@ -72,7 +70,7 @@ Chat with customers on Messenger
 #### Do
 Get help from a Shopify Expert
 
-#### Don't
+#### Don’t
 Get Help From a Shopify Expert!
 <!-- end -->
 
@@ -88,7 +86,7 @@ permissive language like “you can”.
 #### Do
 Get performance data for all your sales channels.
 
-#### Don't
+#### Don’t
 Now you can get performance data for all your sales channels.
 <!-- end -->
 
@@ -102,7 +100,7 @@ to do something
 To buy a shipping label, you need to enter the total weight of your shipment,
 including packaging.
 
-#### Don't
+#### Don’t
 To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
 <!-- end -->
@@ -117,7 +115,7 @@ Clear and predictable: merchants should be able to anticipate what will happen w
 #### Do
 Buy shipping label
 
-#### Don't
+#### Don’t
 Buy
 <!-- end -->
 
@@ -129,7 +127,7 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 #### Do
 View shipping settings
 
-#### Don't
+#### Don’t
 View your settings
 <!-- end -->
 
@@ -139,7 +137,7 @@ View your settings
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 

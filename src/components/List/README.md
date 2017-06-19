@@ -3,7 +3,7 @@ name: List
 tags:
   - list
   - typography
-category: Tables and lists
+category: Lists
 ---
 
 # List
@@ -23,8 +23,8 @@ and understand.
 
 >**Not what you’re looking for?**
 >* To create a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list).
->* To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](components/tables-and-lists/resource-list).
->* When text labels for each item are useful for describing the content, [use the Description List component](/components/tables-and-lists/description-list).
+>* To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](components/lists/resource-list).
+>* When text labels for each item are useful for describing the content, [use the Description List component](/components/lists/description-list).
 
 ---
 
@@ -54,7 +54,7 @@ Every item in a list should:
 - Yellow
 - Blue
 
-#### Don't
+#### Don’t
 - Red;
 - Yellow;
 - Blue.
@@ -68,7 +68,7 @@ Every item in a list should:
 - Item two
 - Item three
 
-#### Don't
+#### Don’t
 - Item One
 - Item Two
 - Item Three

@@ -56,7 +56,7 @@ the card.
 #### Do
 Online store dashboard
 
-#### Don't
+#### Don’t
 This is your online store dashboard
 <!-- end -->
 
@@ -72,7 +72,7 @@ permissive language like “you can”.
 #### Do
 You need to accept the terms and conditions to continue.
 
-#### Don't
+#### Don’t
 Now you can accept the terms and conditions.
 <!-- end -->
 

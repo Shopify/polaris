@@ -4,23 +4,32 @@ $border-radius: 999px;
 .FooterHelp {
   display: flex;
   justify-content: center;
-  margin: spacing(loose);
+  margin: spacing(loose) 0;
+  width: 100%;
+
+  @include page-content-when-not-fully-condensed() {
+    margin: spacing(loose);
+    width: auto;
+  }
 }
 
 .Content {
   display: inline-flex;
   align-items: center;
-  padding: spacing(tight) spacing(tight) * 3;
-  border: border();
-  border-radius: $border-radius;
+  padding: spacing() spacing(loose) spacing() spacing();
+  border-top: border();
+  border-bottom: border();
+
+  @include page-content-when-not-fully-condensed() {
+    border: border();
+    border-radius: $border-radius;
+  }
 }
 
 .Icon {
-  margin-left: -1 * spacing();
   margin-right: spacing(tight);
-  color: color(ink, lightest);
 }
 
 .Text {
-  @include text-emphasis-subdued;
+  @include text-style-input;
 }

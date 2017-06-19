@@ -1,5 +1,21 @@
-$image-offset: 40%;
-$image-overflow-width: calc(100% + #{$image-offset} * 2);
+$detail-width: rem(336px);
+
+$stacking-order: (
+  illustration: 0,
+  details: 10,
+);
+
+$left-offset: 35%;
+$right-offset: 10%;
+
+// Multiply by 2 to expand the image size to align with design requirements
+$illustration-left-margin: $left-offset * -2;
+
+// Shift the illustration to the left to overlap with Details
+$illustration-width: calc(100% + #{$left-offset} * 2);
+
+// Respect the right offset on mobile so the illustration shows the correct crop zone
+$illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2);
 
 .EmptyState {
   display: flex;
@@ -7,15 +23,8 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   align-items: center;
   width: 100%;
   margin-top: spacing(loose);
-  padding: spacing(loose);
-  padding-left: spacing(extra-loose);
-  text-align: center;
-
-  @include page-content-when-not-partially-condensed {
-    flex-direction: row-reverse;
-    padding-left: spacing(loose);
-    text-align: left;
-  }
+  padding: spacing(loose) 0;
+  border-top: border(); 
 }
 
 .imageContained {
@@ -27,37 +36,66 @@ $image-overflow-width: calc(100% + #{$image-offset} * 2);
   }
 }
 
+.Section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+
+  @include page-content-when-not-partially-condensed {
+    left: spacing(loose);
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 .ImageContainer,
-.Details {
+.DetailsContainer {
+  flex: 1 1 auto;
+  padding: 0;
+  margin: 0;
+
   @include page-content-when-not-partially-condensed {
     flex-basis: 50%;
   }
 }
 
-.Image {
-  z-index: -1;
-  width: 60vw;
+.Details {
+  position: relative;
+  z-index: z-index(details, $stacking-order); 
+  padding: 0 spacing();
+  width: $detail-width;
 
-  @include page-content-when-not-partially-condensed {
-    position: relative;
-    left: $image-offset * -1;
-    width: $image-overflow-width;
+  @include page-content-when-not-fully-condensed {
+    padding: 0;
   }
 }
 
-.Details {
-  margin-top: spacing();
-
-  @include page-content-when-not-partially-condensed {
-    padding-right: spacing();
-  }
+.Content {
+  @include text-style-display-small;
+  @include text-emphasis-subdued;
 }
 
 .Actions {
   margin-top: spacing();
+}
 
-  @include page-content-when-partially-condensed {
-    display: flex;
-    justify-content: center;
+.Image {
+  position: relative;
+  z-index: z-index(illustration, $stacking-order);
+  margin-top: spacing(loose) * -1;
+  margin-left: $illustration-left-margin;
+  width: $illustration-width-cropped;
+
+  @include page-content-when-not-fully-condensed {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    margin-top: 0;
+    margin-left: $illustration-left-margin;
+    width: $illustration-width;
   }
 }

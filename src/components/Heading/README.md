@@ -56,7 +56,7 @@ Microcopy headings should be easy for merchants to scan and understand instantly
 #### Do
 - Custom reports
 
-#### Don't
+#### Don’t
 - These are your custom reports
 <!-- end -->
 
@@ -65,7 +65,7 @@ Conversational headings for areas like empty states and home cards are the only 
 #### Do
 - Secure your account with two-step authentication
 
-#### Don't
+#### Don’t
 - Two-step authentication
 <!-- end -->
 

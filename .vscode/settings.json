@@ -15,7 +15,8 @@
     "types/": true,
     "index.*": true,
     "embedded.*": true,
-    "styles.{css,scss}": true
+    "styles.{css,scss}": true,
+    "sandbox": true
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -26,6 +27,7 @@
     "types/": true,
     "index.*": true,
     "embedded.*": true,
-    "styles.{css,scss}": true
+    "styles.{css,scss}": true,
+    "sandbox": true
   }
 }

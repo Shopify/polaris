@@ -69,7 +69,7 @@ seeing the color of the banner. Learn more about [accessibility](/principles/acc
 #### Do
 You’ve received a chargeback
 
-#### Don't
+#### Don’t
 Have a look at this
 <!-- end -->
 
@@ -90,7 +90,7 @@ nouns
 #### Do
 Order archived
 
-#### Don't
+#### Don’t
 Your Order was Archived Today
 <!-- end -->
 
@@ -109,7 +109,7 @@ banners
 #### Do
 Your online store has a maximum of 20 themes. Delete unused themes to add more.
 
-#### Don't
+#### Don’t
 You have reached your theme limit. Your online store has reached it’s maximum
 of 20 themes. To add more themes, delete themes you’re no longer using.
 <!-- end -->
@@ -126,7 +126,7 @@ button.
 #### Do
 Buy shipping label
 
-#### Don't
+#### Don’t
 Buy
 <!-- end -->
 
@@ -138,7 +138,7 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 #### Do
 Activate Apple Pay
 
-#### Don't
+#### Don’t
 Try Apple Pay
 <!-- end -->
 
@@ -148,7 +148,7 @@ Try Apple Pay
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 
@@ -160,7 +160,7 @@ Link text should:
 #### Do
 Order #001
 
-#### Don't
+#### Don’t
 Order
 <!-- end -->
 
@@ -171,7 +171,7 @@ link leads to a page called Orders, label the link Orders.
 #### Do
 Payments
 
-#### Don't
+#### Don’t
 Finance section
 <!-- end -->
 
@@ -187,7 +187,7 @@ permissive language like “you can”.
 #### Do
 Get performance data for all your sales channels.
 
-#### Don't
+#### Don’t
 Now you can get performance data for all your sales channels.
 <!-- end -->
 
@@ -201,7 +201,7 @@ to do something.
 To buy a shipping label, you need to enter the total weight of your shipment,
 including packaging.
 
-#### Don't
+#### Don’t
 To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
 <!-- end -->
@@ -262,7 +262,7 @@ Use to update merchants about a change or give them advice.
   action={{content: 'Learn more'}}
   status="info"
 >
-  <p>USPS has updated their postage rates. Make sure you know how these changes affect your store.</p>
+  <p>Make sure you know how these changes affect your store.</p>
 </Banner>
 ```
 

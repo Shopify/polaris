@@ -47,7 +47,7 @@ Captions are primarily used in [data visualizations](/visuals/data-visualization
 
 * Received April 21, 2017
 
-#### Don't
+#### Don’t
 * Order #1001 was received on April 21, 2017
 * This is your recent activity
 <!-- end -->

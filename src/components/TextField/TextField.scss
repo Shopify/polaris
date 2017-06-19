@@ -11,7 +11,7 @@ $stacking-order: (
   @include text-style-input;
   position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   padding: 0 $backdrop-horizontal-spacing;
   color: color(ink, lightest);
 }
@@ -58,10 +58,14 @@ $stacking-order: (
   background-color: color(sky, lighter);
 }
 
-.disabled > .Backdrop {
-  background-color: color(sky, lighter);
-  border: border();
-  box-shadow: none;
+.disabled {
+  color: color(ink, lightest);
+
+  > .Backdrop {
+    background-color: color(sky, lighter);
+    border: border();
+    box-shadow: none;
+  }
 }
 
 .Input {
@@ -82,7 +86,7 @@ $stacking-order: (
   appearance: none;
 
   &:disabled {
-    color: color(ink, lightest);
+    color: currentColor;
   }
 
   &:focus {

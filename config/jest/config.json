@@ -1,5 +1,9 @@
 {
+  "setupFiles": [
+    "<rootDir>/tests/setup.ts"
+  ],
   "testRegex": "[\\w+]\\.test\\.(tsx?|js)$",
+  "rootDir": "../..",
   "roots": [
     "<rootDir>/src",
     "<rootDir>/tests"

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {elementChildren} from '@shopify/react-utilities/components';
-import {Props as ButtonProps} from '../Button';
 import Item from './Item';
 import * as styles from './ButtonGroup.scss';
 
 export interface Props {
   segmented?: boolean,
-  children?: React.ReactElement<ButtonProps>[],
+  children?: React.ReactNode,
 }
 
 export default function ButtonGroup({children, segmented}: Props) {

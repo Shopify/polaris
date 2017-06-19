@@ -6,10 +6,10 @@ describe('<Select />', () => {
   describe('onChange()', () => {
     it('is called with the value of the newly-selected option', () => {
       const spy = jest.fn();
-      const element = mount(<Select label="Select" options={['one', 'two']} onChange={spy} />);
+      const element = mount(<Select id="MySelect" label="Select" options={['one', 'two']} onChange={spy} />);
       (element.find('select') as any).node.value = 'two';
       element.find('select').simulate('change');
-      expect(spy).toHaveBeenCalledWith('two');
+      expect(spy).toHaveBeenCalledWith('two', 'MySelect');
     });
   });
 
@@ -55,6 +55,20 @@ describe('<Select />', () => {
         expect(optionElement.key()).toBe(value);
         expect(optionElement.prop('value')).toBe(value);
         expect(optionElement.text()).toBe(label);
+      });
+    });
+
+    it('sets disabled options as indicated in the option descriptor', () => {
+      const options = [
+        {value: 'one', label: 'One'},
+        {value: 'two', label: 'Two', disabled: true},
+        {value: 'three', label: 'Three', disabled: false},
+      ];
+      const optionElements = shallow(<Select label="Select" options={options} />).find('option');
+
+      options.forEach(({disabled}: {disabled?: boolean}, index) => {
+        const optionElement = optionElements.at(index);
+        expect(optionElement.prop('disabled')).toBe(disabled);
       });
     });
   });

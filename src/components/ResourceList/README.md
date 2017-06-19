@@ -4,7 +4,7 @@ tags:
   - collections
   - items
   - objects
-category: Tables and lists
+category: Lists
 ---
 
 # Resource List
@@ -21,8 +21,8 @@ Resource lists group similar types of objects into a list. Merchants can click o
 
 >__Not what you’re looking for?__
 >* To display a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list).
->* To display a simple list of related content, [use the list component](components/tables-and-lists/list).
->* When text labels for each item are useful for describing the content, [use the description list component](/components/tables-and-lists/description-list).
+>* To display a simple list of related content, [use the list component](components/lists/list).
+>* When text labels for each item are useful for describing the content, [use the description list component](/components/lists/description-list).
 
 ---
 

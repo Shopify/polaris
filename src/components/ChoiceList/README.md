@@ -27,11 +27,11 @@ so that merchants can decide what to select.
 >**Not what you’re looking for?**
 >
 > To display a simple, non-interactive list of related content,
-[use the content list component](/components/tables-and-lists/list).
+[use the content list component](/components/lists/list).
 > You may also want to learn more about:
 > * [Checkbox components](/components/forms/checkbox)
 > * [Radio button components](/components/forms/radio-button)
-> * [Resource list components](/components/tables-and-lists/resource-list)
+> * [Resource list components](/components/lists/resource-list)
 
 ---
 
@@ -62,7 +62,7 @@ should explain what kind of choice the merchant is making
 #### Do
 Pick a shipping method
 
-#### Don't
+#### Don’t
 Pick one
 <!-- end -->
 
@@ -76,7 +76,7 @@ Pick one
 #### Do
 Shipping options
 
-#### Don't
+#### Don’t
 Shipping Options
 <!-- end -->
 
@@ -92,7 +92,7 @@ Every item in a choice list should:
 - Option 2
 - Option 3
 
-#### Don't
+#### Don’t
 - option 1
 - option 2
 - option 3
@@ -106,7 +106,7 @@ Every item in a choice list should:
 - Yellow
 - Blue
 
-#### Don't
+#### Don’t
 - Red;
 - Yellow;
 - Blue.
@@ -120,7 +120,7 @@ Every item in a choice list should:
 - Item two
 - Item three
 
-#### Don't
+#### Don’t
 - Item One
 - Item Two
 - Item Three
@@ -134,7 +134,7 @@ Every item in a choice list should:
 | name | string | Name for form input |
 | allowMultiple | boolean | Allow multiple selections |
 | titleHidden | boolean | Toggles display of the title |
-| onChange | function(selected: string) | Function to call when selection is changed |
+| onChange | function(selected: string[], name: string) | Callback when the selected choices change |
 
 ## Examples
 

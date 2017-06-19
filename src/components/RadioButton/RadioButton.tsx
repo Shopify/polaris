@@ -12,7 +12,7 @@ export interface Props {
   name?: string,
   value?: string,
   disabled?: boolean,
-  onChange?(newValue: boolean): void,
+  onChange?(newValue: boolean, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
@@ -34,7 +34,7 @@ export default function RadioButton({
 }: Props) {
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     if (onChange == null) { return; }
-    onChange(currentTarget.checked);
+    onChange(currentTarget.checked, id);
   }
 
   const describedBy = helpText

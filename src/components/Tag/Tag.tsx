@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Icon from '../Icon/';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tag.scss';
 
 export interface Props {
@@ -15,14 +16,10 @@ export default function Tag({children, onRemove}: Props) {
         aria-label="Remove"
         className={styles.Button}
         onClick={onRemove}
-        onMouseUp={handleMouseUp}
+        onMouseUp={handleMouseUpByBlurring}
       >
         <Icon source="cancelSmall" />
       </button>
     </span>
   );
-}
-
-function handleMouseUp({currentTarget}: React.MouseEvent<HTMLButtonElement>) {
-  currentTarget.blur();
 }

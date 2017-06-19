@@ -23,7 +23,7 @@ Action lists in popovers let merchants expose additional information and actions
 >**Not what you’re looking for?**
 >* To combine more than one button in a single layout,
 [use the button group component](/components/actions/button-group).
->* To display a list of related content, [use the list component](/components/tables-and-lists/list).
+>* To display a list of related content, [use the list component](/components/lists/list).
 
 ---
 
@@ -32,7 +32,7 @@ Action lists in popovers let merchants expose additional information and actions
 Actions lists should:
 
 * Be used for secondary or less important information and actions since they’re hidden until the merchant exposes them by opening a popover
-* Contain actions that share a relationships to each other
+* Contain actions that are related to each other
 
 ---
 
@@ -48,7 +48,7 @@ happen when they click on an action item.
 #### Do
 Buy shipping label
 
-#### Don't
+#### Don’t
 Buy
 
 <!-- end -->
@@ -61,7 +61,7 @@ Each item in an action list should always lead with a strong verb that encourage
 - Rename
 - Edit HTML
 
-#### Don't
+#### Don’t
 - File name changes
 - HTML editing options
 
@@ -74,7 +74,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 #### Do
 - Add menu item
 
-#### Don't
+#### Don’t
 - Add a menu item
 
 <!-- end -->

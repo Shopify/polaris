@@ -3,7 +3,7 @@ name: Description list
 tags:
   - glossary
   - description
-category: Tables and lists
+category: Lists
 ---
 
 # Description list
@@ -23,7 +23,7 @@ format that’s easy to reference and scan.
 
 >**Not what you’re looking for?**
 >* To create a list of actions or navigation, [use the action list component](/components/actions/action-list).
->* To display a simple list of related content,[use the content list component](components/tables-and-lists/description-list).
+>* To display a simple list of related content,[use the content list component](components/lists/description-list).
 
 ---
 
@@ -52,7 +52,7 @@ Terms should be:
 #### Do
 - Discount code
 
-#### Don't
+#### Don’t
 - Discount Code
 <!-- end -->
 

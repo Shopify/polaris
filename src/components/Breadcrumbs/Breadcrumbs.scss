@@ -1,5 +1,5 @@
 $vertical-padding: (control-height() - line-height(body)) / 2;
-$horizontal-padding: rem(10px);
+$horizontal-padding: spacing(tight);
 $icon-size: rem(20px);
 
 // The inset bounding box of the icon causes it not to be lined up with

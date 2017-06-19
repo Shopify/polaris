@@ -11,6 +11,7 @@ import arrowIcon from './icons/arrow.svg';
 export type Option = string | {
   value: string,
   label: string,
+  disabled?: boolean,
 };
 
 export interface Group {
@@ -31,7 +32,7 @@ export interface Props {
   disabled?: boolean,
   value?: string,
   placeholder?: string,
-  onChange?(selected: string): void,
+  onChange?(selected: string, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
@@ -73,7 +74,7 @@ export default function Select({
   );
 
   const handleChange = onChange
-    ? ((event: React.ChangeEvent<HTMLSelectElement>) => onChange(event.currentTarget.value))
+    ? ((event: React.ChangeEvent<HTMLSelectElement>) => onChange(event.currentTarget.value, id))
     : undefined;
 
   const describedBy: string[] = [];
@@ -124,7 +125,7 @@ function renderOption(option: Option) {
   if (typeof option === 'string') {
     return <option key={option} value={option}>{option}</option>;
   } else {
-    return <option key={option.value} value={option.value}>{option.label}</option>;
+    return <option key={option.value} value={option.value} disabled={option.disabled}>{option.label}</option>;
   }
 }
 

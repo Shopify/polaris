@@ -84,17 +84,17 @@ Use for most cases, especially when the number of tabs may be more than three.
   tabs={[
     {
       id: 'all-customers',
-      title: 'All Customers',
+      title: 'All',
       panelID: 'all-customers-content',
     },
     {
       id: 'accepts-marketing',
-      title: 'Accepts Marketing',
+      title: 'Accepts marketing',
       panelID: 'accepts-marketing-content',
     },
     {
       id: 'repeat-customers',
-      title: 'Repeat Customers',
+      title: 'Repeat customers',
       panelID: 'repeat-customers-content',
     },
     {
@@ -117,12 +117,12 @@ Use when tabs contain a few (2 or 3) items within a narrow column.
   tabs={[
     {
       id: 'all-customers',
-      title: 'All Customers',
+      title: 'All',
       panelID: 'all-customers-content',
     },
     {
       id: 'accepts-marketing',
-      title: 'Accepts Marketing',
+      title: 'Accepts marketing',
       panelID: 'accepts-marketing-content',
     }
   ]}
