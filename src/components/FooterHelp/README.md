@@ -58,7 +58,7 @@ Clearly labeled: Merchants should not need to guess where they’ll end up if th
 - Learn more about [shipping zones].
 - Learn more about [themes] on the Shopify blog.
 
-#### Don't
+#### Don’t
 - Go to [docs] to learn about zones.
 - Find out about [themes].
 <!-- end -->

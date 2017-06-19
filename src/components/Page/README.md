@@ -75,7 +75,7 @@ action. To provide enough context to merchants, use the {verb}+{noun} format.
 - Create order
 - View in Postmates
 
-#### Don't
+#### Don’t
 - Create
 - Postmates deliveries
 <!-- end -->
@@ -89,7 +89,7 @@ action. To provide enough context to merchants, use the {verb}+{noun} format.
 - Import
 - Export
 
-#### Don't
+#### Don’t
 - Import orders
 - Export orders
 <!-- end -->
@@ -100,7 +100,7 @@ action. To provide enough context to merchants, use the {verb}+{noun} format.
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 

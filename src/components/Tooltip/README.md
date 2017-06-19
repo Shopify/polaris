@@ -58,7 +58,7 @@ Tooltips should:
 #### Do
 Post reach is the number of people who have seen your post in their News Feed.
 
-#### Don't
+#### Don’t
 To continue using Shopify, this amount must be paid immediately.
 <!-- end -->
 
@@ -78,7 +78,7 @@ To continue using Shopify, this amount must be paid immediately.
 Use only when necessary to provide an explanation for an interface element.
 
 ```jsx
-<Tooltip content="This order has shipping labels">
+<Tooltip content="This order has shipping labels.">
   <Link>Order #1001</Link>
 </Tooltip>
 ```

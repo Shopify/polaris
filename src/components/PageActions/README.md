@@ -50,7 +50,7 @@ Buttons should be:
 - Create order
 - Buy shipping label
 
-#### Don't
+#### Don’t
 - New order
 - Buy
 <!-- end -->
@@ -62,7 +62,7 @@ Buttons should be:
 - Activate Apple Pay
 - View shipping settings
 
-#### Don't
+#### Don’t
 - Try Apple Pay
 - View your settings
 <!-- end -->
@@ -73,7 +73,7 @@ Buttons should be:
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 

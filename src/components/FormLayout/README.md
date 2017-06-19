@@ -55,7 +55,7 @@ Section titles should be:
 #### Do
 Business details
 
-#### Don't
+#### Don’t
 Enter details about your business
 <!-- end -->
 
@@ -71,7 +71,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 #### Do
 Email address
 
-#### Don't
+#### Don’t
 What is your email address?
 <!-- end -->
 
@@ -79,7 +79,7 @@ What is your email address?
 #### Do
 Phone number
 
-#### Don't
+#### Don’t
 My phone number is:
 <!-- end -->
 

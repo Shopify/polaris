@@ -68,9 +68,9 @@ input. Field placeholder text should:
 
 <!-- usagelist -->
 #### Do
-E.g. FALLSALE
+e.g. FALLSALE
 
-#### Don't
+#### Don’t
 Name your discount code
 <!-- end -->
 
@@ -83,7 +83,7 @@ to provide optional information, mark the field optional by placing the text “
 #### Do
 Phone number (optional)
 
-#### Don't
+#### Don’t
 First name*
 <!-- end -->
 
@@ -95,7 +95,7 @@ Help text provides extra guidance or instruction to people filling out a form fi
 #### Do
 9-digit number
 
-#### Don't
+#### Don’t
 Example: 123-456-789
 <!-- end -->
 
@@ -109,10 +109,10 @@ Error messages should:
 
 <!-- usagelist -->
 #### Do
-Shop name is required.
+Store name is required
 
-#### Don't
-You didn’t enter a shop name.
+#### Don’t
+You didn’t enter a store name.
 <!-- end -->
 
 | Prop | Type | Description |
@@ -259,5 +259,5 @@ Use when a text field and several related fields make up a logical unit. If inpu
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
 
 ```jsx
-<TextField label="Store name" error="A store name is required." />
+<TextField label="Store name" error="Store name is required" />
 ```

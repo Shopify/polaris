@@ -48,7 +48,7 @@ happen when they click on an action item.
 #### Do
 Buy shipping label
 
-#### Don't
+#### Don’t
 Buy
 
 <!-- end -->
@@ -61,7 +61,7 @@ Each item in an action list should always lead with a strong verb that encourage
 - Rename
 - Edit HTML
 
-#### Don't
+#### Don’t
 - File name changes
 - HTML editing options
 
@@ -74,7 +74,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 #### Do
 - Add menu item
 
-#### Don't
+#### Don’t
 - Add a menu item
 
 <!-- end -->

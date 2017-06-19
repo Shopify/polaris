@@ -59,14 +59,14 @@ clearly indicate what is expected. Labels should be:
 #### Do
 Email address
 
-#### Don't
+#### Don’t
 What is your email address?
 <!-- end -->
 <!-- usagelist -->
 #### Do
 Phone number
 
-#### Don't
+#### Don’t
 My phone number is:
 <!-- end -->
 

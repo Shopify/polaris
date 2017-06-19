@@ -23,7 +23,7 @@ A checkbox lets merchants choose one or many things from a list.
 > **Not what you’re looking for?**
 >* To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button).
 >* To display a list of related content, [use the choice list component](/components/forms/choice-list).
->* To create an ungrouped list, [use the content list component](/components/lists/list).
+>* To create an ungrouped list, [use the content list component](/components/tables-and-lists/list).
 
 ---
 
@@ -58,7 +58,7 @@ Lists that use checkboxes should:
 - Option 2
 - Option 3
 
-#### Don't
+#### Don’t
 - option 1
 - option 2
 - option 3
@@ -72,7 +72,7 @@ Lists that use checkboxes should:
 - Yellow
 - Blue
 
-#### Don't
+#### Don’t
 - Red;
 - Yellow;
 - Blue.
@@ -85,7 +85,7 @@ or service, use the first person
 #### Do
 I agree to the Terms of Service.
 
-#### Don't
+#### Don’t
 You agree to the Terms of Service
 <!-- end -->
 

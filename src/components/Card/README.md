@@ -9,7 +9,7 @@ category: Structure
 # Card
 
 Cards are used to group similar concepts and tasks together to make Shopify
-easier for merchants to scan, read, and get thing done.
+easier for merchants to scan, read, and get things done.
 
 **Problem**
 
@@ -66,7 +66,7 @@ content below
 #### Do
 Online store dashboard
 
-#### Don't
+#### Don’t
 This is your online store dashboard
 <!-- end -->
 
@@ -82,7 +82,7 @@ language like “you can”.
 #### Do
 Get performance for all your sales channels.
 
-#### Don't
+#### Don’t
 Now you can get performance data for all your sales channels.
 <!-- end -->
 
@@ -97,7 +97,7 @@ to do something.
 To buy a shipping label, you need to enter the total weight of your shipment,
 including packaging.
 
-#### Don't
+#### Don’t
 To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
 <!-- end -->
@@ -114,7 +114,7 @@ when they click a button. Never deceive a merchant by mislabeling a button.
 Create order
 Buy shipping label
 
-#### Don't
+#### Don’t
 New order
 Buy
 <!-- end -->
@@ -128,7 +128,7 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 Activate Apple Pay
 View shipping settings
 
-#### Don't
+#### Don’t
 Try Apple Pay
 View your settings
 <!-- end -->
@@ -139,7 +139,7 @@ Scannable: Avoid unnecessary words and articles such as the, an, or a.
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 

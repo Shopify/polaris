@@ -50,7 +50,7 @@ If the menu items in a popover menu include a series of actions, each item shoul
 - Create order
 - Buy shipping label
 
-#### Don't
+#### Don’t
 - New order
 - Buy
 <!-- end -->
@@ -63,7 +63,7 @@ If the menu items in a popover menu include a series of actions, each item shoul
 - Edit HTML
 - Duplicate
 
-#### Don't
+#### Don’t
 - HTML editing options
 - File name changes
 - Duplicate this order so that you can make edits, updates, or changes
@@ -75,7 +75,7 @@ If the menu items in a popover menu include a series of actions, each item shoul
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 
@@ -90,7 +90,7 @@ If the menu items in a popover menu include a series of navigational links, each
 - Facebook
 - Buy Button
 
-#### Don't
+#### Don’t
 - Sales channel
 <!-- end -->
 
@@ -114,7 +114,7 @@ Use when presenting a set of actions in a disclosable menu.
 ```jsx
 <Popover
   active
-  activator={<Button>Actions</Button>}
+  activator={<Button>More actions</Button>}
 >
   <ActionList
     items={[

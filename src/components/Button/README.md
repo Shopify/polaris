@@ -52,7 +52,7 @@ Buttons should be clear and predictable—merchants should be able to anticipate
 - Create order
 - Buy shipping label
 
-#### Don't
+#### Don’t
 - New order
 - Buy
 <!-- end -->
@@ -66,7 +66,7 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 - Activate Apple Pay
 - View shipping settings
 
-#### Don't
+#### Don’t
 - Try Apple Pay
 - View your settings
 <!-- end -->
@@ -77,7 +77,7 @@ Buttons should be scannable—avoid unnecessary words and articles such as the, 
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 

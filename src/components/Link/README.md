@@ -45,15 +45,15 @@ Links should:
 
 Links should:
 
-- Set the expectation of where the merchant will be taken or what action will be performed
+- Set the expectation of where the merchant will be taken or what action will be performed.
 - Be consistent with the content they point to. If a navigational link leads to a page called Orders, label the link “orders”.
-- Use descriptive text and avoid using generic content such as “click here”
+- Use descriptive text and avoid using generic content such as “click here”.
 
 <!-- usageblock -->
 #### Do
 Learn more about <a>fulfilling orders</a> at the Shopify Help Center
 
-#### Don't
+#### Don’t
 <a>Click here</a> to learn more about fulfilling orders
 <!-- end -->
 
@@ -61,7 +61,7 @@ Learn more about <a>fulfilling orders</a> at the Shopify Help Center
 #### Do
 Orders
 
-#### Don't
+#### Don’t
 To orders section
 <!-- end -->
 

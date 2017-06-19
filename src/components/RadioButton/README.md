@@ -57,7 +57,7 @@ Radio button labels should:
 #### Do
 - Option 1
 
-#### Don't
+#### Don’t
 - option 1
 <!-- end -->
 
@@ -67,7 +67,7 @@ Radio button labels should:
 #### Do
 - Red
 
-#### Don't
+#### Don’t
 - Red;
 <!-- end -->
 

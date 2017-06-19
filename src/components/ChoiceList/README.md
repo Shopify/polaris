@@ -62,7 +62,7 @@ should explain what kind of choice the merchant is making
 #### Do
 Pick a shipping method
 
-#### Don't
+#### Don’t
 Pick one
 <!-- end -->
 
@@ -76,7 +76,7 @@ Pick one
 #### Do
 Shipping options
 
-#### Don't
+#### Don’t
 Shipping Options
 <!-- end -->
 
@@ -92,7 +92,7 @@ Every item in a choice list should:
 - Option 2
 - Option 3
 
-#### Don't
+#### Don’t
 - option 1
 - option 2
 - option 3
@@ -106,7 +106,7 @@ Every item in a choice list should:
 - Yellow
 - Blue
 
-#### Don't
+#### Don’t
 - Red;
 - Yellow;
 - Blue.
@@ -120,7 +120,7 @@ Every item in a choice list should:
 - Item two
 - Item three
 
-#### Don't
+#### Don’t
 - Item One
 - Item Two
 - Item Three

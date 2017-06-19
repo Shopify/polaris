@@ -54,7 +54,7 @@ Every item in a list should:
 - Yellow
 - Blue
 
-#### Don't
+#### Don’t
 - Red;
 - Yellow;
 - Blue.
@@ -68,7 +68,7 @@ Every item in a list should:
 - Item two
 - Item three
 
-#### Don't
+#### Don’t
 - Item One
 - Item Two
 - Item Three
