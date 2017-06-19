@@ -46,6 +46,7 @@
     "hide-private-readme": "shx mv README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
     "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
+    "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "playground": "webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline"
   },
   "devDependencies": {
