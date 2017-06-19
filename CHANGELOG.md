@@ -1,5 +1,55 @@
 ## Unreleased
 
+## 1.1.1 (June 19, 2017)
+
+### Chores
+* Fixed a repo issue that caused the public repo release not to happen
+
+## 1.1.0 (June 19, 2017)
+
+### Enhancements
+* Added automatic inference of the `target` property of EASDK buttons in `Page`’s `primaryAction` and `secondaryActions` based on their URL (thanks [Dmitriy](https://github.com/jimmyn) for the [original issue](https://github.com/Shopify/polaris/issues/46)) ([#310](https://github.com/Shopify/polaris-internal/pull/310))
+* Added automatic inference of the `target` property of EASDK breadcrumbs in `Page`'s `breadcrumbs` prop based on the URL ([#396](https://github.com/Shopify/polaris-internal/pull/396))
+* `Select` option descriptors now accept a `diabled` attribute to disabled the generated `option` (thanks to [Hafiz](https://github.com/sogko) for the [original issue](https://github.com/Shopify/polaris/issues/68)) ([#349](https://github.com/Shopify/polaris-internal/pull/349))
+* `easdk.showFlashNotice` now accepts an optional options object as its second parameter. Passing `{error: true}` will cause the flash to appear as an error, matching the behaviour of  [`ShopifyApp.flashError`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-flasherror-message) ([#392](https://github.com/Shopify/polaris-internal/pull/392))
+* `Checkbox`, `RadioButton`, `ChoiceList`, `Select`, and `TextField` now pass the ID of the changed input as the second argument to their `onChange` callback (thanks to [Miika](https://github.com/milep) for the [original issue](https://github.com/Shopify/polaris/issues/83)) ([#391](https://github.com/Shopify/polaris-internal/pull/391))
+* `Popover` now respects the `z-index` of the activator if it exists ([#347](https://github.com/Shopify/polaris-internal/pull/347/files))
+* When putting content as children of `Tabs`, the default panel that is generated now respects the `panelID` of the selected tab, and uses a sensible default based on the tab’s `id` if no `panelID` exists ([#347](https://github.com/Shopify/polaris-internal/pull/347))
+* When selecting a tab in `Tabs`, the matching panel is now focused by default ([#347](https://github.com/Shopify/polaris-internal/pull/347))
+* `easdk` methods are bound to the object so they can be freely passed as callbacks ([#392](https://github.com/Shopify/polaris-internal/pull/392))
+
+### Changes
+* Avatar now renders as a `span` instead of a `div`  ([#398](https://github.com/Shopify/polaris-internal/pull/398))
+
+### Bug fixes
+* Fixed contents in `Layout.AnnotatedSection` breaking out of their container (thanks [Andrew](https://github.com/cargix1) for the [original issue](https://github.com/Shopify/polaris/issues/75)) ([#365](https://github.com/Shopify/polaris-internal/pull/365))
+* Fixed spacing above a primary action in `CalloutCard` when there is no secondary action ([#364](https://github.com/Shopify/polaris-internal/pull/364))
+* Aria attributes are now on the actionable elements of `Tabs` instead of in the list items ([#347](https://github.com/Shopify/polaris-internal/pull/347))
+* Exposed `Panel` as `Tabs.Panel` instead of `Tabs.panel` ([#347](https://github.com/Shopify/polaris-internal/pull/347))
+* Fixed the alignment of `prefix` and `suffix` content of `TextField` (thanks [bdillon3](https://github.com/bdillon3) for the [original issue](https://github.com/Shopify/polaris/issues/60)) ([#372](https://github.com/Shopify/polaris-internal/pull/372))
+* Fixed the disabled text colour in `TextField` ([#372](https://github.com/Shopify/polaris-internal/pull/372))
+* `Checkbox`s and `RadioButton`s no longer generate invalid HTML in their labels (thanks [Ernesto](https://github.com/ernestogutierrez) for the [original issue](https://github.com/Shopify/polaris/issues/88)) ([#391](https://github.com/Shopify/polaris-internal/pull/391))
+* `Tabs` no longer steals focus from contained elements (thanks [Alex](https://github.com/alexdover) for the  [original issue](https://github.com/Shopify/polaris/issues/74)) ([#347](https://github.com/Shopify/polaris-internal/pull/347))
+
+### Design updates
+* Reduced horizontal padding on `Breadcrumbs` ([#334](https://github.com/Shopify/polaris-internal/pull/334))
+* Updated icon and internal padding of `FooterHelp` ([#357](https://github.com/Shopify/polaris-internal/pull/357))
+* Updated the `EmptyState` layout and typographic styles ([#376](https://github.com/Shopify/polaris-internal/pull/376))
+
+### Documentation
+* Fixed the code examples o n the embedded app documentation ([#375](https://github.com/Shopify/polaris-internal/pull/375))
+* Added a simple embedded app example ([#308](https://github.com/Shopify/polaris-internal/pull/308/files))
+* Renamed the “Tables and lists” category to “Lists”
+* A variety of other documentation updates (thanks to [Pablo](https://github.com/sebnun), [Asa](https://github.com/asacarter), and [David](https://github.com/resistorsoftware) for raising issues)
+
+### Dependency updates
+* Updated all dependencies ([#352](https://github.com/Shopify/polaris-internal/pull/352))
+
+### Chores
+* Added a script to automatically match the published version number to the one referenced in the README ([#353](https://github.com/Shopify/polaris-internal/pull/353))
+* Added the correct viewport tag to the Playground ([#358](https://github.com/Shopify/polaris-internal/pull/358))
+* Hid deprecation errors during tests ([#391](https://github.com/Shopify/polaris-internal/pull/391))
+
 ## 1.0.3 (May 11, 2017)
 ### Big fixes
 * Fixed an issue where the embedded components would not reload the page within the Shopify admin (thanks [Rich](https://github.com/buggy) for the [original issue](https://github.com/Shopify/polaris/issues/28)) ([#307](https://github.com/Shopify/polaris-internal/pull/307))
