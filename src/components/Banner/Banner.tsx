@@ -39,6 +39,7 @@ export default function Banner({
 }: Props) {
   let color: IconProps['color'];
   let defaultIcon: IconProps['source'];
+  let ariaRoleType = 'status';
 
   switch (status) {
     case 'success':
@@ -52,10 +53,12 @@ export default function Banner({
     case 'warning':
       color = 'yellowDark';
       defaultIcon = warningIcon;
+      ariaRoleType = 'alert';
       break;
     case 'critical':
       color = 'redDark';
       defaultIcon = criticalIcon;
+      ariaRoleType = 'alert';
       break;
     default:
       color = 'ink';
@@ -128,7 +131,9 @@ export default function Banner({
     <div
       className={className}
       tabIndex={0}
-      role={`banner ${status}`}
+      role={ariaRoleType}
+      aria-live="polite"
+      onMouseUp={handleMouseUp}
       aria-labelledby={headingID}
       aria-describedby={contentID}
     >
@@ -147,6 +152,10 @@ export default function Banner({
 let index = 1;
 function uniqueID() {
   return `Banner${index++}`;
+}
+
+function handleMouseUp({currentTarget}: React.MouseEvent<HTMLDivElement>) {
+  currentTarget.blur();
 }
 
 function secondaryActionFrom(action: Action) {
