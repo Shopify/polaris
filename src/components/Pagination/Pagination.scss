@@ -121,6 +121,7 @@ $stacking-order: (
     background: color(sky, light);
     color: color(ink, lightest);
     cursor: default;
+    box-shadow: none;
   }
 
   &:not(:first-child) {
