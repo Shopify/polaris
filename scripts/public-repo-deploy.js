@@ -9,9 +9,9 @@ const polarisBotName = 'Shopify Polaris Bot';
 const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
 const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
 
-const PRIVATE = 'polaris-internal';
+const PRIVATE = 'polaris-react';
 const PUBLIC = 'polaris';
-const STRIP_PRIVATE_LINKS = /\s?\(\[.*?\]\([^\s].*\/shopify\/polaris-internal\/.*?\)\)/gi;
+const STRIP_PRIVATE_LINKS = /\s?\(\[.*?\]\([^\s].*\/shopify\/polaris-react\/.*?\)\)/gi;
 
 const root = resolve(__dirname, '../');
 const sandbox = resolve(root, 'sandbox');
@@ -61,7 +61,7 @@ outputJsonSync(polarisPackage, packageJSON);
 // Delete private files
 rm(privateFiles);
 
-// Regex to remove polaris-internal links in CHANGELOG.md
+// Regex to remove polaris-react links in CHANGELOG.md
 let changelogFile = readFileSync(changelog, 'utf8');
 changelogFile = changelogFile.replace(STRIP_PRIVATE_LINKS, '');
 writeFileSync(changelog, changelogFile);
@@ -88,7 +88,7 @@ cp('-rf', [
   resolve(polarisPrivate, hiddenFilesGlob),
 ], polarisPublic);
 
-// Dump sandbox/polaris-internal/public into sandbox/polaris
+// Dump sandbox/polaris-react/public into sandbox/polaris
 cp('-rf', [
   resolve(polarisPrivate, 'public', '.github'),
   resolve(polarisPrivate, 'public', '*'),
