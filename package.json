@@ -48,8 +48,8 @@
     "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "playground": "webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
-    "dev": "echo \"Error: no 'dev' task specified. Try 'playground' instead.\" && exit 0",
-    "start": "echo \"Error: no 'start' task specified. Try 'playground' instead.\" && exit 0"
+    "dev": "echo \"Warning: no 'dev' task specified. Run 'yarn playground' instead.\" && yarn playground",
+    "start": "echo \"Warning: no 'start' task specified. Run 'yarn playground' instead.\" && yarn playground"
   },
   "devDependencies": {
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
