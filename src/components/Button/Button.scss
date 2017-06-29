@@ -20,6 +20,7 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   line-height: 1;
   color: color(ink);
   text-align: center;
+  vertical-align: middle;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
