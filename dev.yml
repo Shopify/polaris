@@ -12,3 +12,7 @@ commands:
     run: yarn start
   dev:
     run: yarn dev
+  lint:
+    run: yarn lint
+  type-check:
+    run: yarn ts
