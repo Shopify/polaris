@@ -1,0 +1,14 @@
+name: polaris-react
+up:
+  - node:
+      yarn: true
+      version: v6.10.1 # to be kept in sync with .nvmrc
+commands:
+  # People new to the project might be tempted to run some
+  # common commands, so let's have them in here.
+  test:
+    run: npm test
+  start:
+    run: npm start
+  dev:
+    run: npm run dev
