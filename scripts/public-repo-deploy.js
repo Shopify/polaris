@@ -5,8 +5,8 @@ import {join, resolve, basename} from 'path';
 import {cp, rm, mkdir} from 'shelljs';
 import glob from 'glob';
 
-const polarisBotName = 'Shopify Polaris';
-const polarisBotEmail = 'shopify-polaris@users.noreply.github.com';
+const polarisBotName = 'Shopify Polaris Bot';
+const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
 const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
 
 const PRIVATE = 'polaris-internal';
