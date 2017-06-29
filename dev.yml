@@ -7,8 +7,8 @@ commands:
   # People new to the project might be tempted to run some
   # common commands, so let's have them in here.
   test:
-    run: npm test
+    run: yarn test
   start:
-    run: npm start
+    run: yarn start
   dev:
-    run: npm run dev
+    run: yarn dev
