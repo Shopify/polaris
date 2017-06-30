@@ -47,9 +47,8 @@
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
     "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
-    "playground": "webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
-    "dev": "echo \"Warning: no 'dev' task specified. Run 'yarn playground' instead.\" && yarn playground",
-    "start": "echo \"Warning: no 'start' task specified. Run 'yarn playground' instead.\" && yarn playground"
+    "dev": "webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
+    "start": "echo \"Warning: no 'start' task specified. Run 'yarn dev' instead.\" && yarn dev"
   },
   "devDependencies": {
     "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
