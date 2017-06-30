@@ -1,0 +1,20 @@
+name: polaris-react
+up:
+  - node:
+      yarn: true
+      version: v6.10.1 # to be kept in sync with .nvmrc
+commands:
+  # People new to the project might be tempted to run some
+  # common commands, so let’s have them in here.
+  # For a list of Common Commands in Projects, check out:
+  # https://github.com/Shopify/dev/wiki/Common-Commands-in-Projects
+  build:
+    run: yarn build
+  server:
+    run: yarn dev
+  style:
+    run: yarn lint
+  test:
+    run: yarn test
+  type-check:
+    run: yarn ts
