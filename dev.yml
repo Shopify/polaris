@@ -5,14 +5,12 @@ up:
       version: v6.10.1 # to be kept in sync with .nvmrc
 commands:
   # People new to the project might be tempted to run some
-  # common commands, so let's have them in here.
-  test:
-    run: yarn test
-  start:
-    run: yarn start
-  dev:
-    run: yarn dev
+  # common commands, so let’s have them in here.
   lint:
     run: yarn lint
+  server:
+    run: yarn dev
+  test:
+    run: yarn test
   type-check:
     run: yarn ts
