@@ -8,7 +8,10 @@ import './App.scss';
 export type Props = Options;
 
 const METADATA = {
-  [name]: version,
+  interface: {
+    name,
+    version,
+  },
 };
 
 export default class App extends React.Component<Props, never> {
