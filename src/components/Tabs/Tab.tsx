@@ -17,6 +17,7 @@ export interface Props {
   children?: React.ReactNode,
   url?: string,
   measuring?: boolean,
+  accessibilityLabel?: string,
   onClick?(id: string): void,
 }
 
@@ -67,6 +68,7 @@ export default class Tab extends React.PureComponent<Props, never> {
       url,
       panelID,
       measuring,
+      accessibilityLabel,
     } = this.props;
 
     const handleClick = onClick && onClick.bind(null, id);
@@ -97,6 +99,7 @@ export default class Tab extends React.PureComponent<Props, never> {
         className={className}
         aria-selected={selected}
         aria-controls={panelID}
+        aria-label={accessibilityLabel}
         onMouseUp={handleMouseUpByBlurring}
       >
         <span className={styles.Title}>
@@ -113,6 +116,7 @@ export default class Tab extends React.PureComponent<Props, never> {
           onClick={handleClick}
           aria-selected={selected}
           aria-controls={panelID}
+          aria-label={accessibilityLabel}
           onMouseUp={handleMouseUpByBlurring}
         >
           <span className={styles.Title}>

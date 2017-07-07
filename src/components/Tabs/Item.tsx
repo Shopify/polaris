@@ -10,6 +10,7 @@ export interface Props {
   focused: boolean,
   panelID?: string,
   children?: React.ReactNode,
+  accessibilityLabel?: string,
   onClick?(): void,
 }
 
@@ -35,7 +36,7 @@ export default class Item extends React.PureComponent<Props, never> {
   }
 
   render() {
-    const {id, children, panelID, onClick = noop} = this.props;
+    const {id, children, panelID, onClick = noop, accessibilityLabel} = this.props;
 
     const className = classNames(
       styles.Item,
@@ -50,6 +51,7 @@ export default class Item extends React.PureComponent<Props, never> {
           className={className}
           aria-controls={panelID}
           aria-selected={false}
+          aria-label={accessibilityLabel}
         >
           {children}
         </button>

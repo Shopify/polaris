@@ -16,13 +16,14 @@ export interface Props {
 export default class List extends React.PureComponent<Props, never> {
   render() {
     const {focusIndex, disclosureTabs, onClick = noop} = this.props;
-    const tabs = disclosureTabs.map(({id, panelID, title}, index) => {
+    const tabs = disclosureTabs.map(({id, panelID, title, accessibilityLabel}, index) => {
       return (
         <Item
           key={id}
           id={id}
           panelID={panelID}
           focused={index === focusIndex}
+          accessibilityLabel={accessibilityLabel}
           onClick={onClick.bind(null, id)}
         >
           {title}

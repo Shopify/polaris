@@ -51,6 +51,18 @@ describe('<Tabs />', () => {
         expect(wrapper.find(Tab).at(index).prop('url')).toEqual(tab.url);
       });
     });
+
+    it('sets the accessibility label for each of the tabs', () => {
+      const labelledTabs = [
+        {...tabs[0], accessibilityLabel: 'Tab 1'},
+        {...tabs[1], accessibilityLabel: 'Tab 2'},
+      ];
+      const wrapper = mount(<Tabs selected={0} tabs={labelledTabs} />);
+
+      labelledTabs.forEach((tab, index) => {
+        expect(wrapper.find(Tab).at(index).prop('accessibilityLabel')).toEqual(tab.accessibilityLabel);
+      });
+    });
   });
 
   describe('selected', () => {

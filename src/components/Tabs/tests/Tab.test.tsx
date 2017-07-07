@@ -54,4 +54,16 @@ describe('<Tab />', () => {
       expect(spy).toHaveBeenCalled();
     });
   });
+
+  describe('accessibilityLabel()', () => {
+    it('uses the label for aria-label', () => {
+      const label = 'Tab contents';
+
+      const button = mount(<Tab id="my-tab" accessibilityLabel={label}>Tab</Tab>).find('button');
+      expect(button.prop<string>('aria-label')).toBe(label);
+
+      const anchor = mount(<Tab id="my-tab" url="https://shopify.com" accessibilityLabel={label}>Tab</Tab>).find('a');
+      expect(anchor.prop<string>('aria-label')).toBe(label);
+    });
+  });
 });
