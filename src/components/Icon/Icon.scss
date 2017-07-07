@@ -60,6 +60,10 @@ $stacking-order: (
 
 .colorInkLighter {
   fill: color(ink, lighter);
+
+  &::after {
+    background-color: color(sky);
+  }
 }
 
 .colorInkLight {

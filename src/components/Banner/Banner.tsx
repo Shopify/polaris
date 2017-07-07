@@ -11,10 +11,10 @@ import Icon, {Props as IconProps} from '../Icon';
 import * as styles from './Banner.scss';
 
 import successIcon from './icons/circle-check-mark.svg';
-import infoIcon from './icons/flag.svg';
+import fallbackIcon from './icons/flag.svg';
 import warningIcon from './icons/circle-alert.svg';
 import criticalIcon from './icons/circle-barred.svg';
-import fallbackIcon from './icons/confetti.svg';
+import infoIcon from './icons/circle-information.svg';
 
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
@@ -61,7 +61,7 @@ export default function Banner({
       ariaRoleType = 'alert';
       break;
     default:
-      color = 'ink';
+      color = 'inkLighter';
       defaultIcon = fallbackIcon;
   }
 

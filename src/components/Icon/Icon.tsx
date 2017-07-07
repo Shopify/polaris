@@ -101,7 +101,7 @@ export const BUNDLED_ICONS = {
   view,
 };
 
-const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink'];
+const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink', 'inkLighter'];
 
 export interface Props {
   source: SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS,
