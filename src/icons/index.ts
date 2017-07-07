@@ -33,5 +33,6 @@ export {default as notes} from './notes.svg';
 export {default as print} from './print.svg';
 export {default as refresh} from './refresh.svg';
 export {default as risk} from './risk.svg';
+export {default as save} from './save.svg';
 export {default as search} from './search.svg';
 export {default as view} from './view.svg';
