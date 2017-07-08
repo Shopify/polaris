@@ -39,7 +39,6 @@
     "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "cdn:deploy": "node ./scripts/deploy.js",
     "cdn": "npm-run-all cdn:secrets cdn:deploy",
-    "postinstall": "npm rebuild node-sass",
     "public-release:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "prepublic-release": "rimraf sandbox && yarn run public-release:secrets",
     "public-release": "babel-node ./scripts/public-repo-deploy.js",
