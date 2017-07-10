@@ -23,7 +23,7 @@ export default class Breadcrumbs extends React.PureComponent<Props, never> {
       <nav role="navigation">
         <UnstyledLink key={content} url={url} className={styles.Breadcrumb} onMouseUp={handleMouseUpByBlurring}>
           <span className={styles.Icon}><Icon source="chevronLeft" /></span>
-          {content}
+          <span className={styles.Content}>{content}</span>
         </UnstyledLink>
       </nav>
     );

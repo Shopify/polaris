@@ -12,11 +12,11 @@ export interface Props {
   sections?: Section[],
 }
 
-export default function ActionList({items, sections}: Props) {
+export default function ActionList({items, sections = []}: Props) {
   let finalSections: Section[] = [];
 
   if (items) {
-    finalSections = [{items}];
+    finalSections = [{items}].concat(sections);
   } else if (sections) {
     finalSections = sections;
   }

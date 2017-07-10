@@ -17,6 +17,7 @@ const EASDK_PROPS: (keyof Props)[] = [
   'icon',
   'breadcrumbs',
   'secondaryActions',
+  'actionGroups',
   'primaryAction',
   'pagination',
 ];

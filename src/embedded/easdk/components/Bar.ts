@@ -1,5 +1,11 @@
 import Messenger from '../Messenger';
-import {transformBreadcrumb, transformAction, transformPagination} from '../transformers';
+import {
+  transformBreadcrumb,
+  transformAction,
+  transformPagination,
+  transformActionGroup,
+  ActionGroup,
+} from '../transformers';
 import {Action, LinkAction} from '../../../types';
 
 export interface UpdateConfig {
@@ -8,6 +14,7 @@ export interface UpdateConfig {
   breadcrumbs?: LinkAction[],
   primaryAction?: Action,
   secondaryActions?: Action[],
+  actionGroups: ActionGroup[],
   pagination?: {
     hasNext?: boolean,
     hasPrevious?: boolean,
@@ -25,14 +32,18 @@ export default class Bar {
       icon,
       breadcrumbs,
       secondaryActions,
+      actionGroups,
       primaryAction,
       pagination,
     } = config;
 
     this.messenger.send('Shopify.API.Bar.initialize', {
       buttons: {
-        primary: transformAction(primaryAction),
-        secondary: secondaryActions ? secondaryActions.map(transformAction) : undefined,
+        primary: primaryAction ? transformAction(primaryAction) : undefined,
+        secondary: [
+          ...(secondaryActions || []).map(transformAction),
+          ...(actionGroups || []).map(transformActionGroup),
+        ],
       },
       title,
       icon,

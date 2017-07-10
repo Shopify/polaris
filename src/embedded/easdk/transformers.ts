@@ -1,4 +1,4 @@
-import {LinkAction, ComplexAction} from '../../types';
+import {LinkAction, ComplexAction, IconableAction} from '../../types';
 
 export type Target = 'app' | 'shopify' | 'new' | 'parent';
 
@@ -21,23 +21,30 @@ export function transformBreadcrumb(breadcrumb: LinkAction): EASDKBreadcrumb {
   };
 }
 
-export interface EASDKButton {
+export interface ActionGroup {
+  title: string,
+  icon?: IconableAction['icon'],
+  actions: IconableAction[],
+}
+
+export interface EASDKBaseButton {
   label?: string,
   href?: string,
   style?: 'disabled' | 'danger',
   target?: Target,
   loading?: boolean,
-  type?: string,
-  links?: EASDKButton[],
   message?(): void,
 }
 
-export function transformAction(action: ComplexAction | undefined) {
-  if (action == null || !action) {
-    return;
-  }
+export interface EASDKLinkButton extends EASDKBaseButton {
+  type: 'dropdown',
+  links: EASDKButton[],
+}
 
-  let style;
+export type EASDKButton = EASDKBaseButton | EASDKLinkButton;
+
+export function transformAction(action: ComplexAction): EASDKButton {
+  let style: EASDKButton['style'];
   if (action.disabled) {
     style = 'disabled';
   } else if (action.destructive) {
@@ -50,7 +57,15 @@ export function transformAction(action: ComplexAction | undefined) {
     target: action.url ? getTargetFromURL(action.url) : undefined,
     message: action.onAction,
     style,
-  } as EASDKButton;
+  };
+}
+
+export function transformActionGroup(actionGroup: ActionGroup): EASDKLinkButton {
+  return {
+    type: 'dropdown',
+    label: actionGroup.title,
+    links: actionGroup.actions.map(transformAction),
+  };
 }
 
 function getTargetFromURL(url: string): Target {

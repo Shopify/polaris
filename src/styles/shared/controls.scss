@@ -2,6 +2,10 @@
   @return rem(36px);
 }
 
+@function control-slim-height() {
+  @return rem(28px);
+}
+
 @function control-vertical-padding() {
   @return (control-height() - line-height(input) - rem(2px)) / 2;
 }
