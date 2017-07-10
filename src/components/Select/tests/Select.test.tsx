@@ -110,7 +110,7 @@ describe('<Select />', () => {
 
   describe('value', () => {
     it('uses the passed value for the select', () => {
-      const value = shallow(<Select label="Select" value="Some value" options={[]} />).find('select').prop('value');
+      const value = shallow(<Select label="Select" value="Some value" options={[]} onChange={jest.fn()} />).find('select').prop('value');
       expect(value).toBe('Some value');
     });
   });
@@ -154,11 +154,20 @@ describe('<Select />', () => {
 
   describe('placeholder', () => {
     it('renders an unselectable option for the placeholder', () => {
-      const select = shallow(<Select label="Select" placeholder="Choose something" options={[]} />);
+      const select = shallow(<Select label="Select" placeholder="Choose something" options={[]} />).find('select');
       const placeholderOption = select.find('option').first();
-      expect(placeholderOption.prop('value')).toBe(select.find('select').prop('defaultValue'));
+
+      expect(select.prop('defaultValue')).toBe(placeholderOption.prop('value'));
       expect(placeholderOption.prop('disabled')).toBe(true);
       expect(placeholderOption.prop('hidden')).toBe(true);
+    });
+
+    it('sets the placeholder value as the select value when there is an onChange handler', () => {
+      const select = shallow(<Select label="Select" placeholder="Choose something" options={[]} onChange={jest.fn()} />).find('select');
+      const placeholderOption = select.find('option').first();
+
+      expect(select.prop('value')).toBe(placeholderOption.prop('value'));
+      expect(select.prop('defaultValue')).toBeUndefined();
     });
 
     it('does not render the placeholder when there is an existing value', () => {
