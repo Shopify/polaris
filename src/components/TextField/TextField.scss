@@ -88,6 +88,8 @@ $stacking-order: (
 
   &:disabled {
     color: currentColor;
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
   }
 
   &:focus {
