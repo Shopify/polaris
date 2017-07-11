@@ -26,7 +26,7 @@ export interface Props {
 }
 
 export default class TabMeasurer extends React.PureComponent<Props, never> {
-  private containerNode: HTMLElement;
+  private containerNode: HTMLElement | null = null;
 
   componentDidMount() {
     this.handleMeasurement();
@@ -79,12 +79,14 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setContainerNode(node: HTMLElement) {
+  private setContainerNode(node: HTMLElement | null) {
     this.containerNode = node;
   }
 
   @autobind
   private handleMeasurement() {
+    if (this.containerNode == null) { return; }
+
     const {handleMeasurement} = this.props;
     const containerWidth = this.containerNode.offsetWidth;
     const hiddenTabNodes = findDOMNode(this).children;

@@ -6,11 +6,13 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.0.tgz#5630256843d55bfb7fdd12935c7333d695726b25"
 
-"@shopify/javascript-utilities@^1.1.0", "@shopify/javascript-utilities@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.1.2.tgz#d854feada471aaca9ac474fe2cf985ac153b7ba7"
+"@shopify/javascript-utilities@^1.1.0", "@shopify/javascript-utilities@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.1.6.tgz#f9272feb1f0b7a3dd63a9e490548b17055e6d9f2"
   dependencies:
+    "@types/lodash" "^4.14.65"
     "@types/react" "^15.0.21"
+    lodash "^4.17.4"
 
 "@shopify/js-uploader@git+ssh://git@github.com/Shopify/js-uploader.git":
   version "0.1.0"
@@ -52,13 +54,13 @@
   version "19.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-19.2.3.tgz#61748040e8589a891dfc2ec1d16a2dd74482980e"
 
-"@types/lodash@^4.14.66":
+"@types/lodash@^4.14.65", "@types/lodash@^4.14.66":
   version "4.14.66"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.66.tgz#3dbb83477becf130611f8fac82a8fdb199805981"
 
 "@types/node@^7.0.12":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.22.tgz#4593f4d828bdd612929478ea40c67b4f403ca255"
+  version "7.0.34"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.34.tgz#eed5c95291a9dddff6b9f5a72ca342b1e72f0ba2"
 
 "@types/node@^8.0.0":
   version "8.0.0"
@@ -75,8 +77,8 @@
     "@types/react" "*"
 
 "@types/react-dom@*":
-  version "15.5.0"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.0.tgz#7f4fb9613d4051141773242f7b6b5f1a46b34bd9"
+  version "15.5.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.1.tgz#f3c3e14c682785923c7d64583537df319442dec1"
   dependencies:
     "@types/react" "*"
 
@@ -87,8 +89,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^15.0.21":
-  version "15.0.25"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.25.tgz#d396949cccc9a90b61755def9781e5aced9b2261"
+  version "15.0.36"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.36.tgz#35cb9153eaaae0750ea50e0a8eaee1d93f42c189"
 
 abab@^1.0.3:
   version "1.0.3"
@@ -1469,6 +1471,10 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
+chain-function@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/chain-function/-/chain-function-1.0.0.tgz#0d4ab37e7e18ead0bdc47b920764118ce58733dc"
+
 chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
@@ -2232,6 +2238,10 @@ doctrine@^2.0.0:
   dependencies:
     esutils "^2.0.2"
     isarray "^1.0.0"
+
+dom-helpers@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
 
 dom-serializer@0, dom-serializer@~0.1.0:
   version "0.1.0"
@@ -6018,7 +6028,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -6135,11 +6145,10 @@ react-addons-test-utils@^15.5.1:
     object-assign "^4.1.0"
 
 react-addons-transition-group@^15.4.2:
-  version "15.5.2"
-  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.5.2.tgz#da6989d9cffe27dffacaedc862000ffb09ae2206"
+  version "15.6.0"
+  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.6.0.tgz#0f220b9f9597db3a80a88dbd6fe805fc644ce21c"
   dependencies:
-    fbjs "^0.8.4"
-    object-assign "^4.1.0"
+    react-transition-group "^1.2.0"
 
 react-deep-force-update@^2.0.1:
   version "2.0.1"
@@ -6170,6 +6179,16 @@ react-proxy@^3.0.0-alpha.0:
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-3.0.0-alpha.1.tgz#4400426bcfa80caa6724c7755695315209fa4b07"
   dependencies:
     lodash "^4.6.1"
+
+react-transition-group@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.0.tgz#b51fc921b0c3835a7ef7c571c79fc82c73e9204f"
+  dependencies:
+    chain-function "^1.0.0"
+    dom-helpers "^3.2.0"
+    loose-envify "^1.3.1"
+    prop-types "^15.5.6"
+    warning "^3.0.0"
 
 react@^15.5.4:
   version "15.5.4"
@@ -7598,6 +7617,12 @@ ware@^1.2.0:
   resolved "https://registry.yarnpkg.com/ware/-/ware-1.3.0.tgz#d1b14f39d2e2cb4ab8c4098f756fe4b164e473d4"
   dependencies:
     wrap-fn "^0.1.0"
+
+warning@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
+  dependencies:
+    loose-envify "^1.0.0"
 
 watch@~0.10.0:
   version "0.10.0"

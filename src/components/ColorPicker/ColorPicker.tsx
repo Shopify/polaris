@@ -28,14 +28,17 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     pickerSize: 0,
   };
 
-  private colorNode: HTMLElement;
+  private colorNode: HTMLElement | null = null;
 
   componentDidMount() {
-    this.setState({pickerSize: this.colorNode.clientWidth});
+    const {colorNode} = this;
+    if (colorNode == null) { return; }
+
+    this.setState({pickerSize: colorNode.clientWidth});
 
     if (process.env.NODE_ENV === 'development') {
       setTimeout(() => {
-        this.setState({pickerSize: this.colorNode.clientWidth});
+        this.setState({pickerSize: colorNode.clientWidth});
       }, 0);
     }
   }
@@ -84,7 +87,7 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private setColorNode(node: HTMLElement) {
+  private setColorNode(node: HTMLElement | null) {
     this.colorNode = node;
   }
 

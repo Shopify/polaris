@@ -22,7 +22,7 @@ export interface Props {
 }
 
 export default class Tab extends React.PureComponent<Props, never> {
-  private node: HTMLElement;
+  private node: HTMLElement | null = null;
 
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
@@ -52,7 +52,7 @@ export default class Tab extends React.PureComponent<Props, never> {
 
     if (selected && !wasSelected && panelID != null) {
       focusPanelID(panelID);
-    } else if (focused) {
+    } else if (focused && this.node != null) {
       focusFirstFocusableNode(this.node);
     }
   }
@@ -137,7 +137,7 @@ export default class Tab extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setNode(node: HTMLElement) {
+  private setNode(node: HTMLElement | null) {
     this.node = node;
   }
 }

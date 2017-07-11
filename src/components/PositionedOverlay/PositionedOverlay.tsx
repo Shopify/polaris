@@ -58,8 +58,8 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
     outsideScrollableContainer: false,
   };
 
-  private overlay: HTMLElement;
-  private scrollableContainer: HTMLElement;
+  private overlay: HTMLElement | null;
+  private scrollableContainer: HTMLElement | null;
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
@@ -78,6 +78,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   }
 
   componentWillUnmount() {
+    if (this.scrollableContainer == null) { return; }
     removeEventListener(this.scrollableContainer, 'scroll', this.handleMeasurement);
     removeEventListener(window, 'resize', this.handleMeasurement);
   }
@@ -111,7 +112,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   }
 
   @autobind
-  private setOverlay(node: HTMLElement) {
+  private setOverlay(node: HTMLElement | null) {
     this.overlay = node;
   }
 
@@ -124,6 +125,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
       positioning: 'below',
       measuring: true,
     }, () => {
+      if (this.overlay == null) { return; }
       const {
         activator,
         preferredPosition = 'below',

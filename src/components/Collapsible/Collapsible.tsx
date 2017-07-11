@@ -37,8 +37,8 @@ export default class Collapsible extends React.Component<Props, State> {
     animationState: 'idle',
   };
 
-  private node: HTMLElement;
-  private heightNode: HTMLElement;
+  private node: HTMLElement | null = null;
+  private heightNode: HTMLElement | null = null;
 
   getChildContext(): Context {
     const {open} = this.props;
@@ -75,7 +75,7 @@ export default class Collapsible extends React.Component<Props, State> {
         case 'measuring':
           this.setState({
             animationState: wasOpen ? 'closingStart' : 'openingStart',
-            height: wasOpen ? this.heightNode.scrollHeight : 0,
+            height: wasOpen && this.heightNode ? this.heightNode.scrollHeight : 0,
           });
           break;
         case 'closingStart':
@@ -87,7 +87,7 @@ export default class Collapsible extends React.Component<Props, State> {
         case 'openingStart':
           this.setState({
             animationState: 'opening',
-            height: this.heightNode.scrollHeight,
+            height: this.heightNode ? this.heightNode.scrollHeight : 0,
           });
           break;
       }
@@ -95,10 +95,12 @@ export default class Collapsible extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+    if (this.node == null) { return; }
     addEventListener(this.node, 'transitionend', this.handleTransitionEnd);
   }
 
   componentWillUnmount() {
+    if (this.node == null) { return; }
     removeEventListener(this.node, 'transitionend', this.handleTransitionEnd);
   }
 
@@ -135,12 +137,12 @@ export default class Collapsible extends React.Component<Props, State> {
   }
 
   @autobind
-  private bindNode(node: HTMLElement) {
+  private bindNode(node: HTMLElement | null) {
     this.node = node;
   }
 
   @autobind
-  private bindHeightNode(node: HTMLElement) {
+  private bindHeightNode(node: HTMLElement | null) {
     this.heightNode = node;
   }
 
