@@ -1,5 +1,7 @@
 # Issue summary
 
+> **Note**: If you work at Shopify, post your issue on our internal repo instead of this one.
+
 Provide a high-level summary of your issue or feature request.
 
 ## Expected behavior
