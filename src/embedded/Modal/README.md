@@ -1,5 +1,5 @@
 ---
-name: Modal
+name: Embedded modal
 tags:
   - embedded
   - pop up
@@ -13,8 +13,8 @@ category: Embedded
 hidePlayground: true
 ---
 
-# Modal
-Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
+# Embedded modal
+Embedded modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
 
 **Problem:**
 
@@ -22,7 +22,7 @@ Merchants need a way to focus on certain tasks that can’t be left half-finishe
 
 **Solution:**
 
-Modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
+Embedded modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
 
 This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
 
@@ -36,7 +36,7 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ## Best practices
 
-Modals should:
+Embedded modals should:
 
 - Be used for in-context tasks that require an explicit action to be taken
 - Be used for focused, specific tasks that can’t be left half-completed
