@@ -52,6 +52,7 @@ export default class Header extends React.PureComponent<Props, State> {
       primaryAction,
       pagination,
       separator,
+      secondaryActions,
     } = this.props;
 
     const className = classNames(
@@ -60,6 +61,7 @@ export default class Header extends React.PureComponent<Props, State> {
       separator && styles['Header-hasSeparator'],
       breadcrumbs && breadcrumbs.length && styles['Header-hasBreadcrumbs'],
       this.hasRollup && styles['Header-hasRollup'],
+      secondaryActions && secondaryActions.length && styles['Header-hasSecondaryActions'],
     );
 
     const breadcrumbMarkup = breadcrumbs.length > 0

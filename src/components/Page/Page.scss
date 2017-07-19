@@ -34,7 +34,7 @@ html, body {
 }
 
 .Content {
-  margin: spacing(loose) 0;
+  margin: 0 0 spacing(loose);
 }
 
 .Header {
@@ -54,23 +54,38 @@ html, body {
 .Header-hasPagination,
 .Header-hasBreadcrumbs {
   padding-top: spacing(loose);
+  padding-bottom: rem(24px);
+
+  &.Header-hasSecondaryActions {
+    padding-bottom: spacing(loose);
+  }
+}
+
+.Header-hasSecondaryActions {
+  padding-top: rem(24px);
   padding-bottom: spacing(loose);
 }
 
 .Header-hasSeparator {
   border-bottom: border();
+
+  + .Content {
+    margin-top: spacing(loose);
+  }
 }
 
-.Header-hasRollup .Action {
-  display: none;
+.Header-hasRollup {
+  .IndividualActions {
+    display: none;
+  }
 
   @include page-content-when-not-partially-condensed {
     .Rollup {
       display: none;
     }
 
-    .Action {
-      display: block;
+    .IndividualActions {
+      display: flex;
     }
   }
 }
