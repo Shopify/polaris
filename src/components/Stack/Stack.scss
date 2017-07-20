@@ -27,6 +27,10 @@
   @include stack-spacing(none);
 }
 
+.spacingExtraTight {
+  @include stack-spacing(extra-tight);
+}
+
 .spacingTight {
   @include stack-spacing(tight);
 }

@@ -36,7 +36,7 @@ There are no content elements that are specific to stack.
 | ---- | ---- | ----------- |
 | children | React.ReactNode | Elements to display inside stack |
 | vertical | boolean | Stack the elements vertically |
-| spacing | enum['tight', 'loose', 'extraLoose', 'none'] | Adjust spacing between elements |
+| spacing | enum['extraTight', 'tight', 'loose', 'extraLoose', 'none'] | Adjust spacing between elements |
 | alignment | enum['leading', 'trailing', 'center', 'fill', 'baseline'] | Adjust vertical alignment of elements |
 | distribution | enum['equalSpacing', 'leading', 'trailing', 'center', 'fill', 'fillEvenly'] | Adjust horizontal alignment of elements |
 
