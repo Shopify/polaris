@@ -143,7 +143,7 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const actionGroupsMarkup = actionGroups.length > 0
       ? actionGroups.map(({title, icon, actions}) => (
-        <div className={styles.ActionGroup}>
+        <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
           <Popover
             key={title}
             active={title === openActionGroup}
@@ -221,5 +221,7 @@ function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
 }
 
 function secondaryActionsFrom(actions: IconableAction[]) {
-  return actions.map(({content, ...action}) => <Action {...action}>{content}</Action>);
+  return actions.map(({content, ...action}, index) => (
+    <Action {...action} key={`Action-${content || index}`}>{content}</Action>
+  ));
 }
