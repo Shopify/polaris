@@ -42,7 +42,7 @@ export interface State {
   top: number,
   height: number,
   positioning: Positioning,
-  zIndex: number,
+  zIndex: number | null,
   outsideScrollableContainer: boolean,
 }
 
@@ -54,7 +54,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
     top: 0,
     height: 0,
     positioning: 'below',
-    zIndex: -1,
+    zIndex: null,
     outsideScrollableContainer: false,
   };
 
@@ -86,11 +86,16 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   render() {
     const {left, top, zIndex} = this.state;
     const {render} = this.props;
+    const style = {
+      top,
+      left,
+      zIndex: zIndex == null ? undefined : zIndex,
+    };
 
     return (
       <div
         className={styles.PositionedOverlay}
-        style={{top, left, zIndex}}
+        style={style}
         ref={this.setOverlay}
       >
         {render(this.overlayDetails())}
@@ -139,7 +144,8 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
         : {activator: 0, container: 0, horizontal: 0};
       const containerRect = getRectForNode(window);
-      const zIndex = getZIndexForLayerFromNode(activator) + 1;
+      const zIndexForLayer = getZIndexForLayerFromNode(activator);
+      const zIndex = zIndexForLayer == null ? zIndexForLayer : zIndexForLayer + 1;
       const verticalPosition = calculateVerticalPosition(activatorRect, overlayRect, overlayMargins, scrollableContainerRect, containerRect, preferredPosition);
       const horizontalPosition = calculateHorizontalPosition(activatorRect, overlayRect, containerRect);
 
@@ -169,5 +175,5 @@ function getMarginsForNode(node: HTMLElement) {
 function getZIndexForLayerFromNode(node: HTMLElement) {
   const layerNode = closest(node, layer.selector) || document.body;
   const zIndex = parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
-  return isNaN(zIndex) ? 0 : zIndex;
+  return isNaN(zIndex) ? null : zIndex;
 }
