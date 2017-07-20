@@ -66,6 +66,32 @@ $typography-condensed: em(640px);
   }
 }
 
+@mixin text-style-button {
+  font-size: font-size(button);
+  font-weight: 400;
+  line-height: line-height(button);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: font-size(button, large-screen);
+  }
+}
+
+@mixin text-style-button-large {
+  font-size: font-size(button-large);
+  font-weight: 400;
+  line-height: line-height(button-large);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: font-size(button-large, large-screen);
+  }
+}
+
 @mixin text-style-display-x-large {
   font-size: font-size(display-x-large);
   font-weight: 600;
