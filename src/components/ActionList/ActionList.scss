@@ -22,7 +22,6 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   @include text-style-subheading;
   padding: (spacing(tight) * 1.5) spacing();
   border-bottom: border();
-  font-weight: 400;
 }
 
 .Item {
