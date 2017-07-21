@@ -9,6 +9,8 @@ import PopoverOverlay, {CloseSource} from './PopoverOverlay';
 import Pane from './Pane';
 import Section from './Section';
 
+export {CloseSource};
+
 export interface Props {
   children?: React.ReactNode,
   preferredPosition?: PreferredPosition,
