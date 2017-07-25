@@ -24,8 +24,8 @@ export function calculateVerticalPosition(
   const desiredHeight = overlayRect.height;
   const verticalMargins = overlayMargins.activator + overlayMargins.container;
   const minimumSpaceToScroll = overlayMargins.container;
-  const distanceToTopScroll = activatorRect.top - scrollableContainerRect.top;
-  const distanceToBottomScroll = (scrollableContainerRect.top + scrollableContainerRect.height) - (activatorRect.top + activatorRect.height);
+  const distanceToTopScroll = activatorRect.top - Math.max(scrollableContainerRect.top, 0);
+  const distanceToBottomScroll = containerRect.top + Math.min(containerRect.height, scrollableContainerRect.top + scrollableContainerRect.height) - (activatorRect.top + activatorRect.height);
   const enoughSpaceFromTopScroll = distanceToTopScroll >= minimumSpaceToScroll;
   const enoughSpaceFromBottomScroll = distanceToBottomScroll >= minimumSpaceToScroll;
   const heightIfBelow = Math.min(spaceBelow, desiredHeight);
@@ -33,13 +33,13 @@ export function calculateVerticalPosition(
 
   const positionIfAbove = {
     height: heightIfAbove - verticalMargins,
-    top: activatorTop - heightIfAbove,
+    top: activatorTop + containerRect.top - heightIfAbove,
     positioning: 'above',
   };
 
   const positionIfBelow = {
     height: heightIfBelow - verticalMargins,
-    top: activatorBottom,
+    top: activatorBottom + containerRect.top,
     positioning: 'below',
   };
 
