@@ -128,7 +128,7 @@ html, body {
 }
 
 .SecondaryActions {
-  margin-right: auto;
+  flex: 1;
 }
 
 .IndividualActions {
@@ -222,7 +222,7 @@ html, body {
 .ActionIcon {
   @include recolor-icon(color(ink, lighter));
   display: inline-block;
-  
+
   &:first-child {
     margin-right: spacing(extra-tight);
   }
