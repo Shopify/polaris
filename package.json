@@ -44,7 +44,7 @@
     "public-release": "babel-node ./scripts/public-repo-deploy.js",
     "hide-private-readme": "shx mv README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
-    "prepublish": "in-publish && npm-run-all build || :",
+    "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
     "dev": "webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
     "start": "echo \"Warning: no 'start' task specified. Run 'yarn dev' instead.\" && yarn dev"
   },
