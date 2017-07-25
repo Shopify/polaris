@@ -6,7 +6,6 @@ import Labelled, {Action, Error, helpTextID, errorID} from '../Labelled';
 import Icon from '../Icon';
 
 import * as styles from './Select.scss';
-import arrowIcon from './icons/arrow.svg';
 
 export type Option = string | {
   value: string,
@@ -118,7 +117,7 @@ export default function Select({
         </select>
 
         <div className={styles.Icon}>
-          <Icon source={arrowIcon} />
+          <Icon source="arrowUpDown" />
         </div>
         <div className={styles.Backdrop} />
       </div>

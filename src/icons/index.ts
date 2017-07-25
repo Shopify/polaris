@@ -4,6 +4,7 @@ export {default as arrowDown} from './arrow-down.svg';
 export {default as arrowLeft} from './arrow-left.svg';
 export {default as arrowRight} from './arrow-right.svg';
 export {default as arrowUp} from './arrow-up.svg';
+export {default as arrowUpDown} from './arrow-up-down.svg';
 export {default as calendar} from './calendar.svg';
 export {default as cancel} from './cancel.svg';
 export {default as cancelSmall} from './cancel-small.svg';
