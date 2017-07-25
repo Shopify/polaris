@@ -10,7 +10,8 @@ import styles from './plugins/styles';
 import image from './plugins/image';
 import icon from './plugins/icon';
 
-import getClassName from './classname';
+import getNamespacedClassName from './namespaced-classname';
+import getMinifiedClassName from './minified-classname';
 
 const project = resolve(__dirname, '../..');
 const buildRoot = resolve(project, './build-intermediate');
@@ -22,7 +23,7 @@ const sassResources = [
   resolve(styleRoot, './shared.scss'),
 ];
 
-export default function createRollupConfig({entry, outputCSS}) {
+export default function createRollupConfig({entry, outputCSS, minifyClassnames = false}) {
   return {
     entry,
     external(id) {
@@ -40,7 +41,7 @@ export default function createRollupConfig({entry, outputCSS}) {
         output: outputCSS,
         includePaths: [styleRoot],
         includeAlways: sassResources,
-        generateScopedName: getClassName,
+        generateScopedName: minifyClassnames ? getMinifiedClassName : getNamespacedClassName,
       }),
       icon({
         include: '**/icons/*.svg',
