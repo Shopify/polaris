@@ -21,8 +21,8 @@ export interface State {
 }
 
 export default class Scrollable extends React.Component<Props, State> {
-  static forNode(node: HTMLElement) {
-    return (closest(node, scrollable.selector) as HTMLElement | null) || document.body;
+  static forNode(node: HTMLElement): HTMLElement | Document {
+    return (closest(node, scrollable.selector) as HTMLElement | null) || document;
   }
 
   state: State = {
