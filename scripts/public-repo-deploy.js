@@ -96,11 +96,18 @@ cp('-rf', [
 rm('-rf', join(polarisPublic, 'public'));
 rm('-rf', polarisPrivate);
 
-// Replace variables in the README with the appropriate details
+// Replace variables in the main README with the appropriate details
 const publicReadme = resolve(polarisPublic, 'README.md');
 writeFileSync(
   publicReadme,
   readFileSync(publicReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version)
+);
+
+// Replace variables in the component README with the appropriate details
+const componentReadme = resolve(polarisPublic, './src/components/README.md');
+writeFileSync(
+  componentReadme,
+  readFileSync(componentReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version)
 );
 
 // Used to make git operations in polarisPublic dir instead of current working dir
