@@ -34,12 +34,16 @@ function renderSection(section: Section, hasMultipleSections: boolean, index: nu
     <Item key={content} content={content} {...item} />
   ));
 
+  const className = section.title
+    ? null
+    : styles['Section-withoutTitle'];
+
   const titleMarkup = section.title
     ? <p className={styles.Title}>{section.title}</p>
     : null;
 
   return (
-    <SectionElement key={section.title || index}>
+    <SectionElement key={section.title || index} className={className}>
       {titleMarkup}
       <ul className={styles.Actions}>{actionMarkup}</ul>
     </SectionElement>
