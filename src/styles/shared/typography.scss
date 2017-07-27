@@ -145,7 +145,7 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @mixin text-emphasis-normal($for-background: null) {
