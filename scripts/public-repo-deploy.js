@@ -56,7 +56,7 @@ execSync(`git clone https://${polarisBotToken}@github.com/Shopify/${PUBLIC}.git 
 const packageJSON = require(polarisPackage);
 const releaseVersion = `v${packageJSON.version}`;
 privateScripts.forEach((script) => delete packageJSON.scripts[script]);
-outputJsonSync(polarisPackage, packageJSON);
+outputJsonSync(polarisPackage, packageJSON, {spaces: 2});
 
 // Delete private files
 rm(privateFiles);
