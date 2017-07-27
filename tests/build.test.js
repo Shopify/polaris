@@ -49,4 +49,23 @@ describe('build', () => {
     expect(fs.existsSync('./types/index.d.ts')).toBe(true);
     expect(fs.existsSync('./embedded.d.ts')).toBe(true);
   });
+
+  describe('esnext', () => {
+    it('facilitates production builds without typescript', () => {
+      expect(fs.existsSync('esnext/index.js')).toBe(true);
+    });
+
+    it('preserves classes to facilitate class-level tree shaking', () => {
+      // `Stack` is a foundation class, so is unlikely to disappear from the build.
+      expect(fs.readFileSync('esnext/index.js', 'utf8')).toMatch('class Stack');
+    });
+
+    it('generates scss files to be built from source in production builds', () => {
+      expect(fs.existsSync('esnext/styles/components/Stack.scss')).toBe(true);
+    });
+
+    it('minifies class names', () => {
+      expect(fs.readFileSync('esnext/styles/components/Stack.scss', 'utf8')).not.toMatch('Stack');
+    });
+  });
 });

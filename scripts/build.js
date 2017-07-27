@@ -41,10 +41,10 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
   .then(() => runRollup({entry: mainEntry, output: 'polaris.es.js', format: 'es', css: false}))
   .then(() => runRollup({entry: embeddedEntry, output: 'embedded.js', format: 'cjs', css: false}))
   .then(() => Promise.all([
-    cp('./build/polaris.js', './index.js'),
-    cp('./build/embedded.js', './embedded.js'),
-    cp('./build/polaris.es.js', './index.es.js'),
-    cp('./build/polaris.css', './styles.css'),
+    cp('build/polaris.js', './index.js'),
+    cp('build/embedded.js', './embedded.js'),
+    cp('build/polaris.es.js', './index.es.js'),
+    cp('build/polaris.css', './styles.css'),
   ]))
   .then(() => generateSassBuild(build))
   .then(() => {

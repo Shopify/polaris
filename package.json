@@ -117,7 +117,7 @@
     "react-dom": "^15.3.0"
   },
   "files": [
-    "src",
+    "esnext",
     "styles",
     "types",
     "index.js",
