@@ -6,10 +6,12 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: spacing(tight) 0;
+}
 
-  + .ActionList {
-    border-top: border();
-  }
+.Section-withoutTitle:not(:first-child) {
+  border-top: border();
+  margin-top: spacing(tight);
+  padding-top: spacing(tight);
 }
 
 .Actions {
