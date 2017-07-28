@@ -11,5 +11,5 @@ export default function KeyboardKey({children}: Props) {
     ? key.toLowerCase()
     : key.toUpperCase();
 
-  return <span className={styles.KeyboardKey}>{key}</span>;
+  return <kbd className={styles.KeyboardKey}>{key}</kbd>;
 }
