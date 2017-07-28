@@ -1,5 +1,53 @@
 ## Unreleased
 
+## 1.2.1 (July 27, 2017)
+
+### Chores
+* Fixed a repo issue that caused the public repo release not to happen
+
+## 1.2.0 (July 27, 2017)
+### Enhancements
+* Added helpText to ChoiceList choices (thanks [cgenevier](https://github.com/cgenevier)  for the [original issue](https://github.com/Shopify/polaris/issues/103)) ([#409](https://github.com/Shopify/polaris-react/pull/409))
+* Added save icon ([#433](https://github.com/Shopify/polaris-react/pull/433))
+* Added accessibilityLabel to Tabs ([#439](https://github.com/Shopify/polaris-react/pull/439))
+* Updated icons for Banner ([#441](https://github.com/Shopify/polaris-react/pull/441))
+* Improved Page component by fixing up spacing, addin a prop to show a separator below the page title, and changing the secondary actions to roll up into a dropdown menu on small screens ([#421](https://github.com/Shopify/polaris-react/pull/421)) ([#465](https://github.com/Shopify/polaris-react/pull/465)) ([#481](https://github.com/Shopify/polaris-react/pull/481))
+* Improved default stacking behavior for Tooltip and Popover (thanks [Taphood](https://github.com/Taphood)  for the [original issue](https://github.com/Shopify/polaris/issues/129)) ([#472](https://github.com/Shopify/polaris-react/pull/472))
+* Added extraTight spacing option to Stack ([#474](https://github.com/Shopify/polaris-react/pull/474))
+* Use default subheading type styles for ActionList ([#479](https://github.com/Shopify/polaris-react/pull/479))
+* Improved large Button styles ([#442](https://github.com/Shopify/polaris-react/pull/442))
+* Updated font-weight for text emphasis (thanks  [bakura10](https://github.com/bakura10)  for the  [original issue](https://github.com/Shopify/polaris/issues/156)) ([#494](https://github.com/Shopify/polaris-react/pull/494/files))
+
+### Bug fixes
+* Removed the focus state for Banner on click ([#363](https://github.com/Shopify/polaris-react/pull/363))
+* Fixed disabled Pagination button looking active
+* Fixed alignment on Button
+* Fixed min-width on TextField (thanks [Asa](https://github.com/asacarter)  for the [original issue](https://github.com/Shopify/polaris/issues/96)) ([#440](https://github.com/Shopify/polaris-react/pull/440))
+* Removed the border-top on EmptyState (thanks [Alex](https://github.com/alexdover)  for the [original issue](https://github.com/Shopify/polaris/issues/102)  [#408](https://github.com/Shopify/polaris-react/pull/408)) 
+* Fixed Select placeholder value warnings (thanks [cgenevier](https://github.com/cgenevier)  for the [original issue](https://github.com/Shopify/polaris/issues/98))
+* Fixed disabled text on iOS ([#448](https://github.com/Shopify/polaris-react/pull/448))
+* Fixed type for onChange event (thanks [Michaël](https://github.com/bakura10)  for the original issue ([#461](https://github.com/Shopify/polaris-react/pull/461))
+
+### Sketch UIKit
+* Added color palette page to “Getting started”
+* Button typography updated. More changes to come soon. 
+* Changed typeface from `San Francisco UI` to `San Francisco Pro`. You will need to download the updated typeface here. https://developer.apple.com/fonts/
+* Updated to Sketch version 45.2
+* Updated layer styles and fonts styles to take advantage of Sketch’s new organizational features.
+
+### Documentation
+* Fixed disabled Button documentation (thanks [Michael](https://github.com/michaelsunglee)  for the [original issue](https://github.com/Shopify/polaris/issues/113)) ([#422](https://github.com/Shopify/polaris-react/pull/422))
+* Fixed project URL in CircleCI badge ([#423](https://github.com/Shopify/polaris-react/pull/423))
+* Fixed Stack documentation (thanks [Marco](https://github.com/nerfologist)  for the [original issue](https://github.com/Shopify/polaris/issues/120) ) ([#438](https://github.com/Shopify/polaris-react/pull/438))
+* Added embedded Alert documentation and updated other embedded documentation ([#446](https://github.com/Shopify/polaris-react/pull/446/files))
+
+### Dependency updates
+* Updated React TypeScript definitions ([#452](https://github.com/Shopify/polaris-react/pull/452))
+	
+### Chores
+* Updated EASDK metadata structure for generic interfaces ([#435](https://github.com/Shopify/polaris-react/pull/435))
+* Removed postinstall hook ([#444](https://github.com/Shopify/polaris-react/pull/444))
+
 ## 1.1.1 (June 19, 2017)
 
 ### Chores
