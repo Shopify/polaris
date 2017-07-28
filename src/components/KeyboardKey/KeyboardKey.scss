@@ -12,6 +12,7 @@ $bottom-shadow-size: 2px;
     0 $bottom-shadow-size 0 0 color(white),
     0 $bottom-shadow-size 0 1px color(sky, dark);
   border-radius: border-radius();
+  font-family: font-family();
   font-size: rem(12px);
   font-weight: 500;
   line-height: $key-base-height;
