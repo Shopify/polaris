@@ -11,8 +11,8 @@ export interface Props {
 }
 
 export default class Resizer extends React.PureComponent<Props, never> {
-  private contentNode: HTMLElement;
-  private minimumLinesNode: HTMLElement;
+  private contentNode: HTMLElement | null = null;
+  private minimumLinesNode: HTMLElement | null = null;
 
   componentDidMount() {
     this.handleHeightCheck();
@@ -56,6 +56,8 @@ export default class Resizer extends React.PureComponent<Props, never> {
 
   @autobind
   private handleHeightCheck() {
+    if (this.contentNode == null || this.minimumLinesNode == null) { return; }
+
     const contentHeight = this.contentNode.offsetHeight;
     const minimumHeight = this.setMinimumLinesNode ? this.minimumLinesNode.offsetHeight : 0;
     const newHeight = Math.max(contentHeight, minimumHeight);
@@ -68,12 +70,12 @@ export default class Resizer extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setContentNode(node: HTMLElement) {
+  private setContentNode(node: HTMLElement | null) {
     this.contentNode = node;
   }
 
   @autobind
-  private setMinimumLinesNode(node: HTMLElement) {
+  private setMinimumLinesNode(node: HTMLElement | null) {
     this.minimumLinesNode = node;
   }
 }

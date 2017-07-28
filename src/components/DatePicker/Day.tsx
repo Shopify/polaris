@@ -19,10 +19,10 @@ export interface Props {
 }
 
 export default class Day extends React.PureComponent<Props, never> {
-  private dayNode: HTMLElement;
+  private dayNode: HTMLElement | null = null;
 
   componentDidUpdate() {
-    if (this.props.focused) {
+    if (this.props.focused && this.dayNode) {
       this.dayNode.focus();
     }
   }
@@ -74,7 +74,7 @@ export default class Day extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setNode(node: HTMLElement) {
+  private setNode(node: HTMLElement | null) {
     this.dayNode = node;
   }
 }

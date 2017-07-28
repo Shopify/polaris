@@ -21,8 +21,8 @@ export interface State {
 }
 
 export default class Scrollable extends React.Component<Props, State> {
-  static forNode(node: HTMLElement) {
-    return (closest(node, scrollable.selector) as HTMLElement | null) || document.body;
+  static forNode(node: HTMLElement): HTMLElement | Document {
+    return (closest(node, scrollable.selector) as HTMLElement | null) || document;
   }
 
   state: State = {
@@ -30,7 +30,7 @@ export default class Scrollable extends React.Component<Props, State> {
     bottomShadow: false,
   };
 
-  private scrollArea: HTMLElement;
+  private scrollArea: HTMLElement | null;
 
   componentDidMount() {
     if (this.scrollArea == null || !this.props.shadow) { return; }
@@ -76,7 +76,7 @@ export default class Scrollable extends React.Component<Props, State> {
   }
 
   @autobind
-  private setScrollArea(scrollArea: HTMLElement) {
+  private setScrollArea(scrollArea: HTMLElement | null) {
     this.scrollArea = scrollArea;
   }
 

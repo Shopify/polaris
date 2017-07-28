@@ -75,6 +75,7 @@ $stacking-order: (
   display: block;
   flex: 1 1 0%;
   width: 100%;
+  min-width: 0;
   min-height: control-height();
   margin: 0;
   padding: control-vertical-padding() 0;
@@ -87,6 +88,8 @@ $stacking-order: (
 
   &:disabled {
     color: currentColor;
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
   }
 
   &:focus {

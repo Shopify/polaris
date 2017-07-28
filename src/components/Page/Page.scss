@@ -1,12 +1,19 @@
 $navigation-elements-height: rem(36px);
 $title-height: line-height(display-large, large-screen);
-$actions-vertical-spacing: rem(4px);
-$action-horizontal-padding: 1.5 * spacing(tight);
+$actions-vertical-spacing: spacing(tight);
+$action-horizontal-padding: (1.5 * spacing(tight));
+
+$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
 
 $stacking-order: (
   title: 10,
   breadcrumbs: 20,
 );
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
 
 .Page {
   margin: 0 auto;
@@ -27,40 +34,92 @@ $stacking-order: (
 }
 
 .Content {
-  margin: spacing(loose) 0;
+  margin: 0 0 spacing(loose);
 }
 
 .Header {
-  margin: spacing(loose) 0;
-  padding: 0 spacing(loose);
+  padding: spacing(loose);
 
   @include page-content-when-not-fully-condensed {
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    padding-top: spacing(extra-loose);
+    padding-bottom: spacing(extra-loose);
   }
 }
 
-@include page-content-when-not-partially-condensed {
-  .Header-hasBreadcrumbs .PrimaryAction {
-    margin-top: -1 * ($navigation-elements-height + $title-height + $actions-vertical-spacing);
+.Header-hasPagination,
+.Header-hasBreadcrumbs {
+  padding-top: spacing(loose);
+  padding-bottom: rem(24px);
+
+  &.Header-hasSecondaryActions {
+    padding-bottom: spacing(loose);
+  }
+}
+
+.Header-hasSecondaryActions {
+  padding-top: rem(24px);
+  padding-bottom: spacing(loose);
+}
+
+.Header-hasSeparator {
+  border-bottom: border();
+
+  + .Content {
+    margin-top: spacing(loose);
+  }
+}
+
+.Header-hasRollup {
+  .IndividualActions {
+    display: none;
   }
 
-  .Header-hasPagination .PrimaryAction {
-    margin-top: -1 * ($title-height + $actions-vertical-spacing);
+  @include page-content-when-not-partially-condensed {
+    .Rollup {
+      display: none;
+    }
+
+    .IndividualActions {
+      display: flex;
+    }
   }
 }
 
 .Navigation {
   display: flex;
   justify-content: space-between;
+  margin-bottom: spacing(extra-tight);
 }
 
 .Pagination {
   margin-left: auto;
 }
 
+.MainContent {
+  display: flex;
+  align-items: center;
+}
+
+.TitleAndActions {
+  flex: 1 1 0%;
+}
+
+.Title {
+  @include layout-flex-fix;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
 .Actions {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
   margin-top: 2 * $actions-vertical-spacing;
 
   @include page-content-when-not-fully-condensed {
@@ -69,26 +128,57 @@ $stacking-order: (
 }
 
 .SecondaryActions {
-  margin-right: auto;
+  flex: 1;
+}
+
+.IndividualActions {
+  display: flex;
+  align-items: flex-start;
+
+  > .Action,
+  > .ActionGroup {
+    &:first-child {
+      // Compensates for the fact that we push the icon slightly to the left
+      margin-left: -1 * $action-horizontal-padding;
+    }
+
+    &:last-child {
+      margin-right: -1 * $action-horizontal-padding;
+    }
+  }
 }
 
 .PrimaryAction {
   display: flex;
+  align-self: stretch;
   align-items: center;
-  margin-left: auto;
+
+  .MainContent > & {
+    display: none;
+    margin-left: spacing(loose);
+  }
+
+  @include page-content-when-not-partially-condensed {
+    display: none;
+
+    .MainContent > & {
+      display: flex;
+    }
+  }
 }
 
 .Action {
   @include unstyled-button;
   @include text-style-body;
+  position: relative;
   min-height: control-height();
+
+  // Negative margin vertically for the amount that is not covered by
+  // the focus overlay
+  margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
+  margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
   padding: 0 $action-horizontal-padding;
-  border-radius: border-radius();
   color: color(ink, lighter);
-  will-change: background, color;
-  transition-property: background;
-  transition-duration: duration();
-  transition-timing-function: easing();
 
   &:hover,
   &:active {
@@ -101,15 +191,25 @@ $stacking-order: (
 
   &:focus,
   &:active {
-    background: plain-button-background();
+    &::after {
+      background: plain-button-background();
+    }
   }
 
-  &:first-child {
-    margin-left: -1 * $action-horizontal-padding;
-  }
-
-  &:last-child {
-    margin-right: -1 * $action-horizontal-padding;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: spacing(extra-tight);
+    right: spacing(extra-tight);
+    top: 0.5 * $difference-between-touch-area-and-backdrop;
+    height: control-slim-height();
+    border-radius: border-radius();
+    background: transparent;
+    will-change: background;
+    transition-property: background;
+    transition-duration: duration();
+    transition-timing-function: easing();
   }
 }
 
@@ -121,5 +221,18 @@ $stacking-order: (
 
 .ActionIcon {
   @include recolor-icon(color(ink, lighter));
-  margin-right: spacing(extra-tight);
+  display: inline-block;
+
+  &:first-child {
+    margin-right: spacing(extra-tight);
+  }
+
+  &:last-child {
+    margin-left: spacing(extra-tight);
+
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox (and makes it look like there is too much
+    // spacing on the right of the button)
+    margin-right: -3px;
+  }
 }

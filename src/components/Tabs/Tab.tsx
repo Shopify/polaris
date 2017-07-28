@@ -17,11 +17,12 @@ export interface Props {
   children?: React.ReactNode,
   url?: string,
   measuring?: boolean,
+  accessibilityLabel?: string,
   onClick?(id: string): void,
 }
 
 export default class Tab extends React.PureComponent<Props, never> {
-  private node: HTMLElement;
+  private node: HTMLElement | null = null;
 
   // A tab can start selected when it is moved from the disclosure dropdown
   // into the main list, so we need to send focus from the tab to the panel
@@ -51,7 +52,7 @@ export default class Tab extends React.PureComponent<Props, never> {
 
     if (selected && !wasSelected && panelID != null) {
       focusPanelID(panelID);
-    } else if (focused) {
+    } else if (focused && this.node != null) {
       focusFirstFocusableNode(this.node);
     }
   }
@@ -67,6 +68,7 @@ export default class Tab extends React.PureComponent<Props, never> {
       url,
       panelID,
       measuring,
+      accessibilityLabel,
     } = this.props;
 
     const handleClick = onClick && onClick.bind(null, id);
@@ -97,6 +99,7 @@ export default class Tab extends React.PureComponent<Props, never> {
         className={className}
         aria-selected={selected}
         aria-controls={panelID}
+        aria-label={accessibilityLabel}
         onMouseUp={handleMouseUpByBlurring}
       >
         <span className={styles.Title}>
@@ -113,6 +116,7 @@ export default class Tab extends React.PureComponent<Props, never> {
           onClick={handleClick}
           aria-selected={selected}
           aria-controls={panelID}
+          aria-label={accessibilityLabel}
           onMouseUp={handleMouseUpByBlurring}
         >
           <span className={styles.Title}>
@@ -133,7 +137,7 @@ export default class Tab extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setNode(node: HTMLElement) {
+  private setNode(node: HTMLElement | null) {
     this.node = node;
   }
 }

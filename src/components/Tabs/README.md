@@ -85,6 +85,7 @@ Use for most cases, especially when the number of tabs may be more than three.
     {
       id: 'all-customers',
       title: 'All',
+      accessibilityLabel: 'All customers',
       panelID: 'all-customers-content',
     },
     {
@@ -118,6 +119,7 @@ Use when tabs contain a few (2 or 3) items within a narrow column.
     {
       id: 'all-customers',
       title: 'All',
+      accessibilityLabel: 'All customers',
       panelID: 'all-customers-content',
     },
     {

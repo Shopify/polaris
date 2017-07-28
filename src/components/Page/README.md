@@ -111,8 +111,10 @@ Add a menu item
 | icon        | string | App icon, for pages that are part of Shopify apps |
 | breadcrumbs | BreadcrumbProps['breadcrumbs'] | Collection of breadcrumbs |
 | children    | React.ReactNode | The contents of the page |
-| fullWidth   | boolean | Remove the normal max-width on the page
+| fullWidth   | boolean | Remove the normal max-width on the page |
+| separator   | boolean | Adds a border to the bottom of the page header |
 | secondaryActions | ComplexAction[] | Collection of secondary page-level actions |
+| actionGroups   | ActionGroup[] | Collection of page-level groups of secondary actions |
 | primaryAction | DisableableAction | Primary page-level action |
 | pagination | PaginationDescriptor | Page-level pagination |
 
@@ -205,5 +207,42 @@ Use for layouts that benefit from more screen width, such as wide tables or list
   }}
 >
   <p>Wide page content</p>
+</Page>
+```
+
+### Page with action groups
+
+Use action groups for sets of actions that relate to one another, particularly when there are too many to display as secondary actions. Note that these groups will be further rolled up into a single action for smaller displays so that actions do not wrap or overflow the page bounds.
+
+```jsx
+<Page
+  title="Products"
+  actionGroups={[
+    {
+      title: 'Promote',
+      actions: [
+        {content: 'Share on Facebook', onAction: this.performFacebookShare}
+      ],
+    },
+  ]}
+>
+  <p>Page content</p>
+</Page>
+```
+
+### Page with separator
+
+Use a separator for pages that have an [empty state](/components/structure/empty-state) as their only content, or that have an [annotated section](/components/structure/layout) as the first component on the page.
+
+```jsx
+<Page
+  title="Settings"
+  separator
+>
+  <Layout>
+    <Layout.AnnotatedSection title="Store details">
+      <p>Annotated section content</p>
+    </Layout.AnnotatedSection>
+  </Layout>
 </Page>
 ```

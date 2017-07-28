@@ -11,10 +11,10 @@ import Icon, {Props as IconProps} from '../Icon';
 import * as styles from './Banner.scss';
 
 import successIcon from './icons/circle-check-mark.svg';
-import infoIcon from './icons/flag.svg';
+import fallbackIcon from './icons/flag.svg';
 import warningIcon from './icons/circle-alert.svg';
 import criticalIcon from './icons/circle-barred.svg';
-import fallbackIcon from './icons/confetti.svg';
+import infoIcon from './icons/circle-information.svg';
 
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
@@ -39,6 +39,7 @@ export default function Banner({
 }: Props) {
   let color: IconProps['color'];
   let defaultIcon: IconProps['source'];
+  let ariaRoleType = 'status';
 
   switch (status) {
     case 'success':
@@ -52,13 +53,15 @@ export default function Banner({
     case 'warning':
       color = 'yellowDark';
       defaultIcon = warningIcon;
+      ariaRoleType = 'alert';
       break;
     case 'critical':
       color = 'redDark';
       defaultIcon = criticalIcon;
+      ariaRoleType = 'alert';
       break;
     default:
-      color = 'ink';
+      color = 'inkLighter';
       defaultIcon = fallbackIcon;
   }
 
@@ -128,7 +131,9 @@ export default function Banner({
     <div
       className={className}
       tabIndex={0}
-      role={`banner ${status}`}
+      role={ariaRoleType}
+      aria-live="polite"
+      onMouseUp={handleMouseUp}
       aria-labelledby={headingID}
       aria-describedby={contentID}
     >
@@ -147,6 +152,10 @@ export default function Banner({
 let index = 1;
 function uniqueID() {
   return `Banner${index++}`;
+}
+
+function handleMouseUp({currentTarget}: React.MouseEvent<HTMLDivElement>) {
+  currentTarget.blur();
 }
 
 function secondaryActionFrom(action: Action) {

@@ -18,6 +18,7 @@ export interface TabDescriptor {
   url?: string,
   title: string,
   panelID?: string,
+  accessibilityLabel?: string,
 }
 
 export interface Props {
@@ -190,6 +191,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
         selected={index === selected}
         onClick={this.handleTabClick}
         panelID={tab.panelID || `${tab.id}-panel`}
+        accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
         {tab.title}

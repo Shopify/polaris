@@ -2,23 +2,34 @@ $vertical-padding: (control-height() - line-height(body)) / 2;
 $horizontal-padding: spacing(tight);
 $icon-size: rem(20px);
 
-// The inset bounding box of the icon causes it not to be lined up with
-// the side of the container. This fixes that issue.
-$icon-horizontal-adjustment: rem(-3px);
+$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
+
+$stacking-order: (
+  focus-backdrop: 10,
+  content: 20
+);
 
 .Breadcrumb {
   @include text-style-body;
   @include text-emphasis-subdued;
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: control-height();
-  margin: 0 (-1 * $horizontal-padding);
+
+  // We only have to compensate for half the space on the left because
+  // The icon has half the space to the focus backdrop as the text does
+  // on the right side. We have to do negative margin on top and bottom
+  // to compensate for the focus backdrop being smaller than the actual
+  // hit area.
+  margin:
+    (-0.5 * $difference-between-touch-area-and-backdrop)
+    (-1 * $horizontal-padding)
+    (-0.5 * $difference-between-touch-area-and-backdrop)
+    (-0.5 * $horizontal-padding);
   padding: $vertical-padding $horizontal-padding;
-  border-radius: border-radius();
   color: color(ink, lighter);
   text-decoration: none;
-  will-change: background;
-  transition: background duration() easing();
 
   &:hover,
   &:active {
@@ -30,9 +41,31 @@ $icon-horizontal-adjustment: rem(-3px);
   }
 
   &:focus {
-    background: plain-button-background();
     outline: none;
+
+    &::after {
+      background: plain-button-background();
+    }
   }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: z-index(focus-backdrop, $stacking-order);
+    top: 0.5 * $difference-between-touch-area-and-backdrop;
+    left: 0;
+    right: 0;
+    height: control-slim-height();
+    border-radius: border-radius();
+    will-change: background;
+    transition: background duration() easing();
+  }
+}
+
+.Content {
+  position: relative;
+  z-index: z-index(content, $stacking-order);
 }
 
 .Icon {
@@ -40,6 +73,9 @@ $icon-horizontal-adjustment: rem(-3px);
   height: $icon-size;
   width: $icon-size;
 
-  // We set negative top/ bottom margin so the icon never sets the height of the content.
-  margin: (-0.5 * $icon-size) spacing(extra-tight) (-0.5 * $icon-size) $icon-horizontal-adjustment;
+  // We set negative top/ bottom margin so the icon never sets
+  // the height of the content. We set negative left margin to
+  // compensate for the inset viewbox and to match the Page
+  // component’s secondary actions
+  margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);
 }

@@ -80,6 +80,24 @@ Shipping options
 Shipping Options
 <!-- end -->
 
+* Not use colons
+
+<!-- usageblock -->
+#### Do
+If the customer abandons their checkout, send them an email reminder to complete their order
+
+<input type="radio" name="foo"> Never
+<input type="radio" name="foo"> 6 hours later
+<input type="radio" name="foo"> 24 hours later
+
+#### Don’t
+If the customer abandons their checkout, send them an email reminder to complete their order:
+
+<input type="radio" name="foo"> Never
+<input type="radio" name="foo"> 6 hours later
+<input type="radio" name="foo"> 24 hours later
+<!-- end -->
+
 ### List choices
 
 Every item in a choice list should:
@@ -112,7 +130,7 @@ Every item in a choice list should:
 - Blue.
 <!-- end -->
 
-- Be written in sentence case (the first word capitalized, the rest lowercase)
+* Be written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usageblock -->
 #### Do
@@ -125,6 +143,10 @@ Every item in a choice list should:
 - Item Two
 - Item Three
 <!-- end -->
+
+### Helper text and descriptions
+
+If your list contains helper text, only the description below the list item should contain punctuation.
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
@@ -164,11 +186,14 @@ Use when to let merchants make multiple sections from a list of choices.
   title="While the customer is checking out"
   choices={[
     {
-      label: 'Use the shipping address as the billing address by default', value: 'shipping',
+      label: 'Use the shipping address as the billing address by default',
+      value: 'shipping',
+      helpText: 'Reduces the number of fields required to check out. The billing address can still be edited.',
     },
     {
       label: 'Require a confirmation step',
       value: 'confirmation',
+      helpText: 'Customers must review their order details before purchasing.',
     },
   ]}
   selected={['shipping']}

@@ -9,6 +9,7 @@ import {
   arrowLeft,
   arrowRight,
   arrowUp,
+  arrowUpDown,
   calendar,
   cancel,
   cancelSmall,
@@ -38,6 +39,7 @@ import {
   print,
   refresh,
   risk,
+  save,
   search,
   view,
 } from '../../icons';
@@ -66,6 +68,7 @@ export const BUNDLED_ICONS = {
   arrowLeft,
   arrowRight,
   arrowUp,
+  arrowUpDown,
   calendar,
   cancel,
   cancelSmall,
@@ -95,11 +98,12 @@ export const BUNDLED_ICONS = {
   print,
   refresh,
   risk,
+  save,
   search,
   view,
 };
 
-const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink'];
+const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink', 'inkLighter'];
 
 export interface Props {
   source: SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS,

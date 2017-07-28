@@ -24,14 +24,16 @@ export default class Slidable extends React.PureComponent<Props, State> {
     dragging: false,
   };
 
-  private node: HTMLElement;
-  private draggerNode: HTMLElement;
+  private node: HTMLElement | null = null;
+  private draggerNode: HTMLElement | null = null;
 
   componentDidMount() {
     const {onDraggerHeight} = this.props;
     if (onDraggerHeight == null) { return; }
 
     const {draggerNode} = this;
+    if (draggerNode == null) { return; }
+
     onDraggerHeight(draggerNode.clientWidth);
 
     if (process.env.NODE_ENV === 'development') {
@@ -116,12 +118,12 @@ export default class Slidable extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private setDraggerNode(node: HTMLElement) {
+  private setDraggerNode(node: HTMLElement | null) {
     this.draggerNode = node;
   }
 
   @autobind
-  private setNode(node: HTMLElement) {
+  private setNode(node: HTMLElement | null) {
     this.node = node;
   }
 
@@ -158,6 +160,8 @@ export default class Slidable extends React.PureComponent<Props, State> {
 
   @autobind
   private handleDraggerMove(x: number, y: number) {
+    if (this.node == null) { return; }
+
     const {onChange} = this.props;
 
     const rect = this.node.getBoundingClientRect();

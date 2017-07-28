@@ -1,4 +1,4 @@
-$image-size: rem(24px);
+$image-size: rem(20px);
 $item-min-height: rem(40px);
 $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
@@ -6,10 +6,12 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: spacing(tight) 0;
+}
 
-  + .ActionList {
-    border-top: border();
-  }
+.Section-withoutTitle:not(:first-child) {
+  border-top: border();
+  margin-top: spacing(tight);
+  padding-top: spacing(tight);
 }
 
 .Actions {
@@ -22,7 +24,6 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   @include text-style-subheading;
   padding: (spacing(tight) * 1.5) spacing();
   border-bottom: border();
-  font-weight: 400;
 }
 
 .Item {

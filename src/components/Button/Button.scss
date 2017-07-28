@@ -20,6 +20,7 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   line-height: 1;
   color: color(ink);
   text-align: center;
+  vertical-align: middle;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
@@ -175,18 +176,16 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   min-height: $slim-min-height;
   min-width: $slim-min-height;
   padding: $slim-vertical-padding spacing();
-
-  .Content {
-    @include when-typography-condensed {
-      font-size: font-size(body, large-screen);
-    }
-  }
 }
 
 .sizeLarge {
   min-height: $large-min-height;
   min-width: $large-min-height;
-  padding: $large-vertical-padding spacing(loose);
+  padding: $large-vertical-padding rem(24px);
+
+  .Content {
+    @include text-style-button-large;
+  }
 }
 
 .fullWidth {
@@ -195,7 +194,7 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 }
 
 .Content {
-  @include text-style-body;
+  @include text-style-button;
   position: relative;
   display: flex;
   justify-content: center;

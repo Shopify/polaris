@@ -10,17 +10,18 @@ export interface Props {
   focused: boolean,
   panelID?: string,
   children?: React.ReactNode,
+  accessibilityLabel?: string,
   onClick?(): void,
 }
 
 export default class Item extends React.PureComponent<Props, never> {
-  private focusedNode: HTMLElement;
+  private focusedNode: HTMLElement | null = null;
 
   componentDidMount() {
     const {focusedNode} = this;
     const {focused} = this.props;
 
-    if (focused) {
+    if (focusedNode && focused) {
       focusedNode.focus();
     }
   }
@@ -29,13 +30,13 @@ export default class Item extends React.PureComponent<Props, never> {
     const {focusedNode} = this;
     const {focused} = this.props;
 
-    if (focused) {
+    if (focusedNode && focused) {
       focusedNode.focus();
     }
   }
 
   render() {
-    const {id, children, panelID, onClick = noop} = this.props;
+    const {id, children, panelID, onClick = noop, accessibilityLabel} = this.props;
 
     const className = classNames(
       styles.Item,
@@ -50,6 +51,7 @@ export default class Item extends React.PureComponent<Props, never> {
           className={className}
           aria-controls={panelID}
           aria-selected={false}
+          aria-label={accessibilityLabel}
         >
           {children}
         </button>
@@ -58,7 +60,7 @@ export default class Item extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setFocusedNode(node: HTMLElement) {
+  private setFocusedNode(node: HTMLElement | null) {
     this.focusedNode = node;
   }
 }

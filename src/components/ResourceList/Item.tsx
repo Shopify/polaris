@@ -56,7 +56,7 @@ export default class Item extends React.PureComponent<Props, State> {
     focused: false,
   };
 
-  private node: HTMLElement;
+  private node: HTMLElement | null = null;
   private id = getUniqueID();
 
   render() {
@@ -208,7 +208,7 @@ export default class Item extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private setNode(node: HTMLElement) {
+  private setNode(node: HTMLElement | null) {
     this.node = node;
   }
 
@@ -219,7 +219,7 @@ export default class Item extends React.PureComponent<Props, State> {
 
   @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
-    if (!this.node.contains(event.relatedTarget as HTMLElement)) {
+    if (this.node == null || !this.node.contains(event.relatedTarget as HTMLElement)) {
       this.setState({focused: false});
     }
   }

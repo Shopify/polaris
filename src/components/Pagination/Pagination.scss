@@ -1,9 +1,10 @@
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
 
 // This is the adjustment needed to get the icon to appear flush with other
 // content around it.
-$plain-horizontal-adjustment: rem(10px);
+$plain-horizontal-adjustment: spacing(tight);
 
 $stacking-order: (
   item: 10,
@@ -27,16 +28,16 @@ $stacking-order: (
 
 .plain {
   .Button {
+    position: relative;
+    margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
+    margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
+    padding-top: 0.5 * ($min-height - line-height(body));
+    padding-bottom: 0.5 * ($min-height - line-height(body));
     background: transparent;
     border: none;
     cursor: pointer;
     appearance: none;
     box-shadow: none;
-
-    // We always want this to have a border-radius, so it needs to override
-    // the :first/:last-child selectors below
-    // stylelint-disable-next-line declaration-no-important
-    border-radius: border-radius() !important;
 
     &:hover,
     &:active {
@@ -47,9 +48,12 @@ $stacking-order: (
     }
 
     &:focus {
-      background: plain-button-background();
       border: none;
       box-shadow: none;
+
+      &::after {
+        background: plain-button-background();
+      }
     }
 
     &:disabled {
@@ -60,7 +64,7 @@ $stacking-order: (
     }
 
     &:not(:first-child) {
-      margin-left: 0;
+      margin-left: rem(2px);
     }
 
     &:first-child {
@@ -69,6 +73,21 @@ $stacking-order: (
 
     &:last-child {
       margin-right: -1 * $plain-horizontal-adjustment;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0.5 * $difference-between-touch-area-and-backdrop;
+      left: 0;
+      right: 0;
+      height: control-slim-height();
+      border-radius: border-radius();
+      will-change: background;
+      transition-property: background;
+      transition-duration: duration();
+      transition-timing-function: easing();
     }
   }
 }
@@ -121,6 +140,7 @@ $stacking-order: (
     background: color(sky, light);
     color: color(ink, lightest);
     cursor: default;
+    box-shadow: none;
   }
 
   &:not(:first-child) {

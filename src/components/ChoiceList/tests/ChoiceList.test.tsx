@@ -6,7 +6,7 @@ import RadioButton from '../../RadioButton';
 import Checkbox from '../../Checkbox';
 
 describe('<ChoiceList />', () => {
-  let choices: ({label: string, value: string})[];
+  let choices: ({label: string, value: string, helpText?: React.ReactNode})[];
 
   beforeEach(() => {
     choices = [
@@ -29,12 +29,19 @@ describe('<ChoiceList />', () => {
   });
 
   describe('choices', () => {
-    it('renders a choice with the label and value properties', () => {
+    it('renders a choice with the label, value, and helpText properties', () => {
+      choices = [
+        choices[0],
+        choices[1],
+        {...choices[2], helpText: 'Some help text'},
+      ];
+
       const choiceElements = shallow(<ChoiceList selected={[]} choices={choices} />).find(RadioButton);
 
       choiceElements.forEach((choiceElement, index) => {
         expect(choiceElement.prop('label')).toBe(choices[index].label);
         expect(choiceElement.prop('value')).toBe(choices[index].value);
+        expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
       });
     });
   });

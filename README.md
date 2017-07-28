@@ -23,7 +23,7 @@ yarn add @shopify/polaris
 1. Include the CSS in your HTML:
 
 ```html
- <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.1.1/polaris.min.css">
+ <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.2.1/polaris.min.css">
  ```
 
 > Note: you can import the CSS directly into your project if your asset packager supports it:
@@ -58,7 +58,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 1. Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.1.1/polaris.min.css">
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.2.1/polaris.min.css">
 ```
 
 2. Include the markup and associated classes in your HTML document:
@@ -75,7 +75,7 @@ We have created example applications to document some of the ways you could incl
 - [Browserify example](https://github.com/Shopify/polaris/tree/master/examples/browserify)
 - [CSS-only example](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles)
 
-We’ve also created a simple, hot-reloading playground for these components. You can edit the `playground/Playground.tsx` file to import the components you want to play with, and run `yarn run playground` in order to start the development server.
+We’ve also created a simple, hot-reloading playground for these components. You can edit the `playground/Playground.tsx` file to import the components you want to play with, and run `yarn dev` in order to start the development server.
 
 ## Learning resources
 If you are new to React, we recommend you start with the [official React Getting Started documentation](https://facebook.github.io/react/docs/hello-world.html). As you read through the topics we suggest you follow along using their [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).

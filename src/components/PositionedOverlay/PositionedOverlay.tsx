@@ -42,7 +42,7 @@ export interface State {
   top: number,
   height: number,
   positioning: Positioning,
-  zIndex: number,
+  zIndex: number | null,
   outsideScrollableContainer: boolean,
 }
 
@@ -54,12 +54,12 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
     top: 0,
     height: 0,
     positioning: 'below',
-    zIndex: -1,
+    zIndex: null,
     outsideScrollableContainer: false,
   };
 
-  private overlay: HTMLElement;
-  private scrollableContainer: HTMLElement;
+  private overlay: HTMLElement | null;
+  private scrollableContainer: HTMLElement | Document | null;
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
@@ -78,6 +78,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   }
 
   componentWillUnmount() {
+    if (this.scrollableContainer == null) { return; }
     removeEventListener(this.scrollableContainer, 'scroll', this.handleMeasurement);
     removeEventListener(window, 'resize', this.handleMeasurement);
   }
@@ -85,11 +86,16 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   render() {
     const {left, top, zIndex} = this.state;
     const {render} = this.props;
+    const style = {
+      top,
+      left,
+      zIndex: zIndex == null ? undefined : zIndex,
+    };
 
     return (
       <div
         className={styles.PositionedOverlay}
-        style={{top, left, zIndex}}
+        style={style}
         ref={this.setOverlay}
       >
         {render(this.overlayDetails())}
@@ -111,7 +117,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
   }
 
   @autobind
-  private setOverlay(node: HTMLElement) {
+  private setOverlay(node: HTMLElement | null) {
     this.overlay = node;
   }
 
@@ -124,6 +130,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
       positioning: 'below',
       measuring: true,
     }, () => {
+      if (this.overlay == null || this.scrollableContainer == null) { return; }
       const {
         activator,
         preferredPosition = 'below',
@@ -132,12 +139,21 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
 
       const activatorRect = getRectForNode(activator);
       const overlayRect = getRectForNode(this.overlay);
-      const scrollableContainerRect = getRectForNode(this.scrollableContainer);
+      const scrollableElement = isDocument(this.scrollableContainer) ? document.body : this.scrollableContainer;
+      const scrollableContainerRect = getRectForNode(scrollableElement);
+
+      // If `body` is 100% height, it still acts as though it were not constrained
+      // to that size. This adjusts for that.
+      if (scrollableElement === document.body) {
+        scrollableContainerRect.height = document.body.scrollHeight;
+      }
+
       const overlayMargins = this.overlay.firstElementChild
         ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
         : {activator: 0, container: 0, horizontal: 0};
-      const containerRect = getRectForNode(window);
-      const zIndex = getZIndexForLayerFromNode(activator) + 1;
+      const containerRect = windowRect();
+      const zIndexForLayer = getZIndexForLayerFromNode(activator);
+      const zIndex = zIndexForLayer == null ? zIndexForLayer : zIndexForLayer + 1;
       const verticalPosition = calculateVerticalPosition(activatorRect, overlayRect, overlayMargins, scrollableContainerRect, containerRect, preferredPosition);
       const horizontalPosition = calculateHorizontalPosition(activatorRect, overlayRect, containerRect);
 
@@ -148,11 +164,22 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         top: verticalPosition.top,
         height: verticalPosition.height,
         positioning: verticalPosition.positioning as Positioning,
-        outsideScrollableContainer: onScrollOut != null && rectIsOutsideOfRect(activatorRect, scrollableContainerRect),
+        outsideScrollableContainer: onScrollOut != null && rectIsOutsideOfRect(activatorRect, intersectionWithViewport(scrollableContainerRect)),
         zIndex,
       });
     });
   }
+}
+
+function intersectionWithViewport(rect: Rect) {
+  const viewport = windowRect();
+
+  return new Rect({
+    top: Math.max(rect.top, 0),
+    left: Math.max(rect.left, 0),
+    height: Math.min(rect.height - rect.top + viewport.top, viewport.height, viewport.height - rect.top),
+    width: Math.min(rect.width - rect.left + viewport.left, viewport.width, viewport.width - rect.left),
+  });
 }
 
 function getMarginsForNode(node: HTMLElement) {
@@ -167,5 +194,18 @@ function getMarginsForNode(node: HTMLElement) {
 function getZIndexForLayerFromNode(node: HTMLElement) {
   const layerNode = closest(node, layer.selector) || document.body;
   const zIndex = parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
-  return isNaN(zIndex) ? 0 : zIndex;
+  return isNaN(zIndex) ? null : zIndex;
+}
+
+function windowRect() {
+  return new Rect({
+    top: window.scrollY,
+    left: window.scrollX,
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+}
+
+function isDocument(node: HTMLElement | Document): node is Document {
+  return node === document;
 }

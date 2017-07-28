@@ -22,6 +22,12 @@ $line-height-data: (
   body: (
     base: rem(20px)
   ),
+  button: (
+    base: rem(16px)
+  ),
+  button-large: (
+    base: rem(20px)
+  ),
   display-x-large: (
     base: rem(36px),
     large-screen: rem(44px)
@@ -60,6 +66,14 @@ $font-size-data: (
   body: (
     base: rem(15px),
     large-screen: rem(14px)
+  ),
+  button: (
+    base: rem(15px),
+    large-screen: rem(14px)
+  ),
+  button-large: (
+    base: rem(17px),
+    large-screen: rem(16px)
   ),
   display-x-large: (
     base: rem(27px),

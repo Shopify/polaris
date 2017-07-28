@@ -6,7 +6,6 @@ import Labelled, {Action, Error, helpTextID, errorID} from '../Labelled';
 import Icon from '../Icon';
 
 import * as styles from './Select.scss';
-import arrowIcon from './icons/arrow.svg';
 
 export type Option = string | {
   value: string,
@@ -85,6 +84,11 @@ export default function Select({
     ? <option label={placeholder} value={PLACEHOLDER_VALUE} disabled hidden />
     : null;
 
+  // When we have no onChange, React will complain about providing a `value`
+  // (and vice versa for `defaultValue`)
+  const defaultValue = onChange ? undefined : (value || PLACEHOLDER_VALUE);
+  const finalValue = onChange ? (value || PLACEHOLDER_VALUE) : undefined;
+
   return (
     <Labelled
       id={id}
@@ -98,8 +102,8 @@ export default function Select({
         <select
           id={id}
           name={name}
-          value={value}
-          defaultValue={PLACEHOLDER_VALUE}
+          defaultValue={defaultValue}
+          value={finalValue}
           className={styles.Input}
           disabled={disabled}
           onFocus={onFocus}
@@ -113,7 +117,7 @@ export default function Select({
         </select>
 
         <div className={styles.Icon}>
-          <Icon source={arrowIcon} />
+          <Icon source="arrowUpDown" />
         </div>
         <div className={styles.Backdrop} />
       </div>
