@@ -1,4 +1,5 @@
 ## Unreleased
+* Added an `esnext` build (allows production builds to perform class/method tree shaking)
 
 ## 1.2.1 (July 27, 2017)
 

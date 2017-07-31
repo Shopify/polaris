@@ -8,7 +8,7 @@ const cache = {
 const COMPONENT_REGEX = /^[A-Z]\w+$/;
 const SUBCOMPONENT_VARIATION_SELECTOR = /^\w+-\w+$/;
 
-export default function getClassName(localName, filePath) {
+export default function getNamespacedClassName(localName, filePath) {
   const file = cache.files[filePath] || {};
   const componentName = basename(filePath, '.scss');
   const polarisComponentName = polarisClassName(componentName);
