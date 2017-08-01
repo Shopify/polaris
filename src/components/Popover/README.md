@@ -97,6 +97,7 @@ If the menu items in a popover menu include a series of navigational links, each
 | Properties | Type | Description |
 | ---------- | ---- | ----------- |
 | children | React.ReactNode | The content to display inside the popover |
+| fullWidth | boolean | If true, the popover will stretch to the full width of it's activator |
 | preferredPosition | enum['above', 'below'] | The preferred direction to open the popover |
 | active | boolean | Show or hide the Popover |
 | activator | React.ReactElement | The element to activate the Popover |

@@ -26,11 +26,12 @@ export enum CloseSource {
 export interface Props {
   id: string,
   active: boolean,
+  activator: HTMLElement,
   preventAutofocus?: boolean,
   sectioned?: boolean,
+  fullWidth?: boolean,
   preferredPosition?: PreferredPosition,
   children?: React.ReactNode,
-  activator: HTMLElement,
   onClose(source: CloseSource): void,
 }
 
@@ -75,11 +76,13 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     const {
       active,
       activator,
+      fullWidth,
       preferredPosition = 'below',
     } = this.props;
 
     return (
       <PositionedOverlay
+        fullWidth={fullWidth}
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
@@ -103,12 +106,14 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       id,
       children,
       sectioned,
+      fullWidth,
     } = this.props;
 
     const className = classNames(
       styles.Popover,
       transitionStatus && animationVariations(transitionStatus),
       positioning === 'above' && styles.positionedAbove,
+      fullWidth && styles.fullWidth,
       measuring && styles.measuring,
     );
 
