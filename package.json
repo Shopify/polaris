@@ -121,6 +121,7 @@
     "esnext",
     "styles",
     "types",
+    "docs",
     "index.js",
     "index.es.js",
     "styles.css",
