@@ -85,9 +85,9 @@ Add a menu item
 
 ## Examples
 
-###  Default page actions
+### Default page actions
 
-Used on a resource pages (e.g. an individual order page or a product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
+Used on a resource page (e.g. individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
 
 ```jsx
 <PageActions
@@ -95,8 +95,20 @@ Used on a resource pages (e.g. an individual order page or a product page) to le
     content: 'Save',
   }}
   secondaryActions={[{
-    content: 'Cancel',
+    content: 'Delete',
   }]}
+/>
+```
+
+### Primary action only
+
+Not all page actions require a secondary action.
+
+```jsx
+<PageActions
+  primaryAction={{
+    content: 'Save',
+  }}
 />
 ```
 
@@ -105,4 +117,3 @@ Used on a resource pages (e.g. an individual order page or a product page) to le
 ## Related components
 
 * To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page
-* To let merchants take key actions at the bottom of specific pages in the interface, [use the page actions component](/components/structure/page-actions)

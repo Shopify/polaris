@@ -36,13 +36,9 @@ so that merchants can decide what to select.
 
 Choice lists should:
 
-* Use radio buttons when only a single selection can be made
-* Use checkboxes when multiple selections can be made
-* Be consistently and clearly labeled to help merchants understand how each
-item in the list is related
-* Often include an instructional title or heading that either tells the
-merchant what to do, or helps to categorize or clarify the options that are
-listed
+* Include a title that tells the merchant what to do or explains the available options
+* Label options clearly based on what the option will do
+* Avoid mutually exclusive options when allowing multiple selection
 
 ---
 
@@ -151,7 +147,7 @@ If your list contains helper text, only the description below the list item shou
 | choices* | Choice[] | Collection of choices |
 | selected* | string[] | Collection of selected choices |
 | name | string | Name for form input |
-| allowMultiple | boolean | Allow multiple selections |
+| allowMultiple | boolean | Allow merchants to select multiple options at once |
 | titleHidden | boolean | Toggles display of the title |
 | onChange | function(selected: string[], name: string) | Callback when the selected choices change |
 
@@ -201,11 +197,6 @@ Use when to let merchants make multiple sections from a list of choices.
 
 ## Related components
 
-To display a simple, non-interactive list of related content,
-[use the content list component](/components/lists/list).
-
-You may also want to learn more about:
-
-* [Checkbox components](/components/forms/checkbox)
-* [Radio button components](/components/forms/radio-button)
-* [Resource list components](/components/lists/resource-list)
+* To present a long list of radio buttons or when space is constrained, [use the select component](/components/forms/select)
+* To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](/components/forms/radio-button) or [checkbox component](/components/forms/checkbox)
+* To display a simple, non-interactive list of related content, [use the list component](/components/lists/list)
