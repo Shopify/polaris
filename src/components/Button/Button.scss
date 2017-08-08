@@ -4,6 +4,8 @@ $slim-min-height: rem(30px);
 $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
+$spinner-size: rem(16px);
+$spinner-cycle-duration: 0.7s;
 
 .Button {
   @include recolor-icon(color(ink, lighter));
@@ -92,6 +94,34 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 .disabled {
   cursor: default;
   pointer-events: none;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: relative;
+  transition: border-color duration() easing();
+
+  &,
+  &:hover,
+  &.disabled {
+    color: transparent;
+  }
+}
+
+.Spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $spinner-size;
+  height: $spinner-size;
+  margin-top: -($spinner-size / 2);
+  margin-left: -($spinner-size / 2);
+  animation: loading $spinner-cycle-duration linear infinite;
 }
 
 // The way the designs work, we need to do lots of reaching down to
@@ -199,6 +229,8 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 1px;
+  min-height: 1px;
 }
 
 .Icon {

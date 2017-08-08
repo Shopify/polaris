@@ -170,8 +170,16 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 
 ### Disabled state
 
-Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it. Alternatively a button may be disabled because it’s been pressed and the associated action is in progress.
+Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
 
 ```jsx
 <Button disabled>Buy shipping label</Button>
+```
+
+### Loading state
+
+Use when a button has been pressed and the associated action is in progress.
+
+```jsx
+<Button loading>Save product</Button>
 ```
