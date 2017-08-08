@@ -8,7 +8,8 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 .Button {
   @include recolor-icon(color(ink, lighter));
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   min-height: $min-height;
   min-width: $min-height;
   margin: 0;
@@ -20,7 +21,6 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   line-height: 1;
   color: color(ink);
   text-align: center;
-  vertical-align: middle;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
