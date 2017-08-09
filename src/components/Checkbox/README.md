@@ -98,7 +98,7 @@ You agree to the Terms of Service
 | id | string | ID for form input |
 | name | string | Name for form input |
 | value | string | Value for form input |
-| error | Error | Display an error state |
+| error | string | Display an error message |
 | onChange | function(newValue: boolean, id: string) | Callback when checkbox is toggled |
 | onFocus | function() | Callback when checkbox is focussed |
 | onBlur | function() | Callback when focus is removed |
