@@ -1,9 +1,9 @@
 import * as React from 'react';
 import autobind from '@shopify/javascript-utilities/autobind';
-import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 
+import EventListener from '../EventListener';
 import Scrollable from '../Scrollable';
 import {layer} from '../shared';
 
@@ -31,6 +31,7 @@ export interface Props {
   active: boolean,
   activator: HTMLElement,
   preferredPosition?: PreferredPosition,
+  fullWidth?: boolean,
   render(overlayDetails: OverlayDetails): React.ReactNode,
   onScrollOut?(): void,
 }
@@ -41,6 +42,7 @@ export interface State {
   left: number,
   top: number,
   height: number,
+  width: number | null,
   positioning: Positioning,
   zIndex: number | null,
   outsideScrollableContainer: boolean,
@@ -53,6 +55,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
     left: 0,
     top: 0,
     height: 0,
+    width: null,
     positioning: 'below',
     zIndex: null,
     outsideScrollableContainer: false,
@@ -63,8 +66,6 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
-    addEventListener(this.scrollableContainer, 'scroll', this.handleMeasurement);
-    addEventListener(window, 'resize', this.handleMeasurement);
     this.handleMeasurement();
   }
 
@@ -77,18 +78,14 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
     }
   }
 
-  componentWillUnmount() {
-    if (this.scrollableContainer == null) { return; }
-    removeEventListener(this.scrollableContainer, 'scroll', this.handleMeasurement);
-    removeEventListener(window, 'resize', this.handleMeasurement);
-  }
-
   render() {
-    const {left, top, zIndex} = this.state;
+    const {left, top, zIndex, width} = this.state;
     const {render} = this.props;
+
     const style = {
       top,
       left,
+      width,
       zIndex: zIndex == null ? undefined : zIndex,
     };
 
@@ -98,6 +95,8 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         style={style}
         ref={this.setOverlay}
       >
+        <EventListener event="resize" handler={this.handleMeasurement} />
+        <EventListener event="scroll" handler={this.handleMeasurement} />
         {render(this.overlayDetails())}
       </div>
     );
@@ -135,12 +134,17 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         activator,
         preferredPosition = 'below',
         onScrollOut,
+        fullWidth,
       } = this.props;
 
       const activatorRect = getRectForNode(activator);
-      const overlayRect = getRectForNode(this.overlay);
+      const currentOverlayRect = getRectForNode(this.overlay);
       const scrollableElement = isDocument(this.scrollableContainer) ? document.body : this.scrollableContainer;
       const scrollableContainerRect = getRectForNode(scrollableElement);
+
+      const overlayRect = fullWidth
+        ? {...currentOverlayRect, width: activatorRect.width}
+        : currentOverlayRect;
 
       // If `body` is 100% height, it still acts as though it were not constrained
       // to that size. This adjusts for that.
@@ -163,6 +167,7 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         left: horizontalPosition,
         top: verticalPosition.top,
         height: verticalPosition.height,
+        width: fullWidth ? overlayRect.width : null,
         positioning: verticalPosition.positioning as Positioning,
         outsideScrollableContainer: onScrollOut != null && rectIsOutsideOfRect(activatorRect, intersectionWithViewport(scrollableContainerRect)),
         zIndex,
