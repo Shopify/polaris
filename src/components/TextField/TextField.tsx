@@ -114,7 +114,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       ? <div onClick={this.handleInputFocus} className={styles.Suffix} id={`${id}Suffix`}>{suffix}</div>
       : null;
 
-    const spinnerMarkup = type === 'number'
+    const spinnerMarkup = (type === 'number' && !disabled)
       ? <Spinner onClick={this.handleInputFocus} onChange={this.handleNumberChange} />
       : null;
 

@@ -235,6 +235,12 @@ describe('<TextField />', () => {
         element.find('[role="button"]').last().simulate('click');
         expect(spy).toHaveBeenLastCalledWith('2', 'MyTextField');
       });
+
+      it('removes increment and decrement buttons when disabled', () => {
+        const element = mount(<TextField id="MyNumberField" label="NumberField" type="number" disabled />);
+        const buttons = element.find('[role="button"]');
+        expect(buttons.length).toBe(0);
+      });
     });
   });
 });
