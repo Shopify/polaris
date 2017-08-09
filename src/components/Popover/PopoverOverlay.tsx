@@ -171,7 +171,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     const {contentNode, props: {activator, onClose}} = this;
     if (
       (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
-      nodeContainsDescendant(activator, target) || this.transitionStatus === TransitionStatus.Leaving
+      nodeContainsDescendant(activator, target) || this.transitionStatus !== TransitionStatus.Shown
     ) { return; }
     onClose(CloseSource.Click);
   }
