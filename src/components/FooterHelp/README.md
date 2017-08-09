@@ -21,7 +21,7 @@ Footer help lets merchants find more information by linking to help documentatio
 
 >**Not what you’re looking for?**
 >* To learn how to embed a link in a piece of text, [use the link component](/components/link).
->* To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](/content/help-documentation#navigation).
+>* To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](/content/help-documentation).
 
 ---
 
