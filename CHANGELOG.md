@@ -1,5 +1,24 @@
 ## Unreleased
-* Added an `esnext` build (allows production builds to perform class/method tree shaking)
+
+## 1.3.0 (August 9, 2017)
+
+### Enhancements
+* Added an `esnext` build (allows production builds to perform class/method tree shaking) ([#491](https://github.com/Shopify/polaris-react/pull/491))
+* Changed KeyboardKey component to use `kbd` tag ([#500](https://github.com/Shopify/polaris-react/pull/500))
+* Added publishing `docs` folder to npm package ([#504](https://github.com/Shopify/polaris-react/pull/504))
+* Added `fullWidth` option to Popover component ([#505](https://github.com/Shopify/polaris-react/pull/505))
+
+### Bug fixes
+* Updated Static HTML page examples to correct markup (thanks [bartcoppens](https://github.com/bartcoppens) for the [original issue](https://github.com/Shopify/polaris/issues/159)) ([#502](https://github.com/Shopify/polaris-react/pull/502))
+* Hide increment and decrement buttons on number input when disabled (thanks [kguller](https://github.com/kguller) for the [original issue](https://github.com/Shopify/polaris/issues/163)) ([#524](https://github.com/Shopify/polaris-react/pull/524))
+* Fixed link to product content documentation ([#528](https://github.com/Shopify/polaris-react/pull/528))
+* Fixed documented type for error prop on Checkbox component ([#523](https://github.com/Shopify/polaris-react/pull/523))
+* Fixed Popover reopening when clicking around during transition ([#531](https://github.com/Shopify/polaris-react/pull/531))
+* Fixed Popover resizing on content updates ([#506](https://github.com/Shopify/polaris-react/pull/506))
+* Fixed vertical alignment of Button content ([#525](https://github.com/Shopify/polaris-react/pull/525))
+
+### Sketch UIKit
+* Added Sketch color palette file
 
 ## 1.2.1 (July 27, 2017)
 
