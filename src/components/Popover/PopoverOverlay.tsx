@@ -37,6 +37,7 @@ export interface Props {
 
 export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private contentNode: HTMLElement | null;
+  private transitionStatus: TransitionStatus;
 
   componentDidUpdate({active: wasActive}: Props) {
     const {active, preventAutofocus} = this.props;
@@ -117,6 +118,8 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       measuring && styles.measuring,
     );
 
+    this.transitionStatus = transitionStatus;
+
     const tipMarkup = !measuring
       ? (
         <div
@@ -168,7 +171,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     const {contentNode, props: {activator, onClose}} = this;
     if (
       (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
-      nodeContainsDescendant(activator, target)
+      nodeContainsDescendant(activator, target) || this.transitionStatus !== TransitionStatus.Shown
     ) { return; }
     onClose(CloseSource.Click);
   }
