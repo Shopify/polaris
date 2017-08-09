@@ -53,9 +53,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
   };
 
   componentWillReceiveProps(nextProps: Props) {
-    const {tabs, selected} = this.props;
+    const {selected} = this.props;
     const {disclosureWidth, tabWidths, containerWidth, tabToFocus} = this.state;
-    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(tabs, nextProps.selected, disclosureWidth, tabWidths, containerWidth);
+    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(nextProps.tabs, nextProps.selected, disclosureWidth, tabWidths, containerWidth);
 
     this.setState({
       visibleTabs,

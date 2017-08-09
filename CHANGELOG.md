@@ -1,5 +1,73 @@
 ## Unreleased
 
+## 1.3.0 (August 9, 2017)
+
+### Enhancements
+* Added an `esnext` build (allows production builds to perform class/method tree shaking)
+* Changed KeyboardKey component to use `kbd` tag
+* Added publishing `docs` folder to npm package
+* Added `fullWidth` option to Popover component
+
+### Bug fixes
+* Updated Static HTML page examples to correct markup (thanks [bartcoppens](https://github.com/bartcoppens) for the [original issue](https://github.com/Shopify/polaris/issues/159))
+* Hide increment and decrement buttons on number input when disabled (thanks [kguller](https://github.com/kguller) for the [original issue](https://github.com/Shopify/polaris/issues/163))
+* Fixed link to product content documentation
+* Fixed documented type for error prop on Checkbox component
+* Fixed Popover reopening when clicking around during transition
+* Fixed Popover resizing on content updates
+* Fixed vertical alignment of Button content
+
+### Sketch UIKit
+* Added Sketch color palette file
+
+## 1.2.1 (July 27, 2017)
+
+### Chores
+* Fixed a repo issue that caused the public repo release not to happen
+
+## 1.2.0 (July 27, 2017)
+### Enhancements
+* Added helpText to ChoiceList choices (thanks [cgenevier](https://github.com/cgenevier)  for the [original issue](https://github.com/Shopify/polaris/issues/103))
+* Added save icon
+* Added accessibilityLabel to Tabs
+* Updated icons for Banner
+* Improved Page component by fixing up spacing, addin a prop to show a separator below the page title, and changing the secondary actions to roll up into a dropdown menu on small screens
+* Improved default stacking behavior for Tooltip and Popover (thanks [Taphood](https://github.com/Taphood)  for the [original issue](https://github.com/Shopify/polaris/issues/129))
+* Added extraTight spacing option to Stack
+* Use default subheading type styles for ActionList
+* Improved large Button styles
+* Updated font-weight for text emphasis (thanks  [bakura10](https://github.com/bakura10)  for the  [original issue](https://github.com/Shopify/polaris/issues/156))
+
+### Bug fixes
+* Removed the focus state for Banner on click
+* Fixed disabled Pagination button looking active
+* Fixed alignment on Button
+* Fixed min-width on TextField (thanks [Asa](https://github.com/asacarter)  for the [original issue](https://github.com/Shopify/polaris/issues/96))
+* Removed the border-top on EmptyState (thanks [Alex](https://github.com/alexdover)  for the [original issue](https://github.com/Shopify/polaris/issues/102)  [#408](https://github.com/Shopify/polaris-react/pull/408)) 
+* Fixed Select placeholder value warnings (thanks [cgenevier](https://github.com/cgenevier)  for the [original issue](https://github.com/Shopify/polaris/issues/98))
+* Fixed disabled text on iOS
+* Fixed type for onChange event (thanks [Michaël](https://github.com/bakura10)  for the original issue
+
+### Sketch UIKit
+* Added color palette page to “Getting started”
+* Button typography updated. More changes to come soon. 
+* Changed typeface from `San Francisco UI` to `San Francisco Pro`. You will need to download the updated typeface here. https://developer.apple.com/fonts/
+* Updated to Sketch version 45.2
+* Updated layer styles and fonts styles to take advantage of Sketch’s new organizational features.
+
+### Documentation
+* Fixed disabled Button documentation (thanks [Michael](https://github.com/michaelsunglee)  for the [original issue](https://github.com/Shopify/polaris/issues/113))
+* Fixed project URL in CircleCI badge
+* Fixed Stack documentation (thanks [Marco](https://github.com/nerfologist)  for the [original issue](https://github.com/Shopify/polaris/issues/120) )
+* Added embedded Alert documentation and updated other embedded documentation
+
+### Dependency updates
+* Updated React TypeScript definitions
+	
+### Chores
+* Updated EASDK metadata structure for generic interfaces
+* Removed postinstall hook
+
 ## 1.1.1 (June 19, 2017)
 
 ### Chores

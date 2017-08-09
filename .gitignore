@@ -2,6 +2,9 @@
 node_modules
 /build
 /build-intermediate
+/build-esnext
+/docs
+/esnext
 /types
 /index.*
 /styles.css

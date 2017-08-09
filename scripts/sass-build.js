@@ -7,18 +7,17 @@ import {cp, mkdir} from 'shelljs';
 import archiver from 'archiver';
 
 const root = resolve(__dirname, '..');
-const build = resolve(root, './build');
 const intermediateBuild = resolve(root, './build-intermediate');
-const styles = resolve(root, './styles');
 const srcStyles = resolve(intermediateBuild, './styles');
-const buildSass = resolve(build, './sass');
-const buildStyles = resolve(buildSass, './styles');
-const foundation = resolve(buildStyles, './foundation');
-const shared = resolve(buildStyles, './shared');
-const components = resolve(buildStyles, './components');
 
-export default function generateSassBuild() {
-  const classnameTokens = readJSONSync(`${build}/polaris.tokens.json`);
+export default function generateSassBuild(destinationDir) {
+  const classnameTokens = readJSONSync(`${destinationDir}/polaris.tokens.json`);
+
+  const buildSass = resolve(destinationDir, 'sass');
+  const buildStyles = join(buildSass, 'styles');
+  const foundation = join(buildStyles, 'foundation');
+  const shared = join(buildStyles, 'shared');
+  const components = join(buildStyles, 'components');
 
   mkdir('-p', components, foundation, shared);
   cp(join(srcStyles, 'foundation', '*.scss'), foundation);
@@ -36,20 +35,20 @@ export default function generateSassBuild() {
   });
 
   createSassIndex(components);
-  createSassEntry();
-  generateSassZip();
+  createSassEntry(buildSass);
+  return generateSassZip(buildSass, destinationDir);
 }
 
-function createSassEntry() {
-  mkdir(styles);
+function createSassEntry(buildSass) {
+  mkdir(buildSass);
   cp('-r', resolve(buildSass, '*'), root);
 }
 
 // see https://archiverjs.com/docs/
-function generateSassZip() {
+function generateSassZip(sourceDir, destinationDir) {
   // eslint-disable-next-line promise/param-names
   return new Promise((resolveSass, reject) => {
-    const output = createWriteStream(join(build, 'sass.zip'));
+    const output = createWriteStream(join(destinationDir, 'sass.zip'));
     const archive = archiver('zip', {store: true});
 
     output.on('close', () => {
@@ -62,7 +61,7 @@ function generateSassZip() {
     });
 
     archive.pipe(output);
-    archive.directory(buildSass, './');
+    archive.directory(sourceDir, './');
     archive.finalize();
   });
 }

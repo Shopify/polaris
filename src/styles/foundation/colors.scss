@@ -1,5 +1,5 @@
 // Need to define the raw colors somewhere!
-// stylelint-disable color-no-hex, no-indistinguishable-colors, function-max-empty-lines, value-list-max-empty-lines
+// stylelint-disable color-no-hex, function-max-empty-lines, value-list-max-empty-lines
 $color-palette-data: (
   white: (
     base: #ffffff
@@ -139,4 +139,4 @@ $color-palette-data: (
   @return $foreground * $background / 255;
 }
 
-// stylelint-enable color-no-hex, no-indistinguishable-colors, function-max-empty-lines, value-list-max-empty-lines
+// stylelint-enable color-no-hex, function-max-empty-lines, value-list-max-empty-lines

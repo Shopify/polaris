@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -31,7 +31,7 @@
     "test:watch": "yarn run test -- --watch",
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
-    "clean": "rimraf build styles types 'build-intermediate' 'index.*' 'embedded.js' 'styles.{css,scss}'",
+    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize",
     "build": "babel-node ./scripts/build.js",
@@ -107,9 +107,10 @@
     "react-dom": "^15.3.0"
   },
   "files": [
-    "src",
+    "esnext",
     "styles",
     "types",
+    "docs",
     "index.js",
     "index.es.js",
     "styles.css",

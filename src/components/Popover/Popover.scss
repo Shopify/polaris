@@ -13,6 +13,15 @@ $content-max-width: rem(400px);
   transition: opacity duration() easing(in);
 }
 
+.fullWidth {
+  margin: 0;
+  margin-top: $visible-portion-of-arrow;
+
+  .Content {
+    max-width: none;
+  }
+}
+
 .measuring:not(.leaving),
 .leaving {
   opacity: 0;

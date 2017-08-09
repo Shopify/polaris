@@ -12,13 +12,14 @@ import Section from './Section';
 export {CloseSource};
 
 export interface Props {
-  children?: React.ReactNode,
-  preferredPosition?: PreferredPosition,
   active: boolean,
   activator: React.ReactElement<any>,
+  children?: React.ReactNode,
+  preferredPosition?: PreferredPosition,
   activatorWrapper?: string,
   preventAutofocus?: boolean,
   sectioned?: boolean,
+  fullWidth?: boolean,
   onClose(source: CloseSource): void,
 }
 
