@@ -35,13 +35,7 @@ export default function generateSassBuild(destinationDir) {
   });
 
   createSassIndex(components);
-  createSassEntry(buildSass);
   return generateSassZip(buildSass, destinationDir);
-}
-
-function createSassEntry(buildSass) {
-  mkdir(buildSass);
-  cp('-r', resolve(buildSass, '*'), root);
 }
 
 // see https://archiverjs.com/docs/
