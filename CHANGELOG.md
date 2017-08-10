@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 1.3.1 (August 10, 2017)
+### Bug fixes
+* Fixed classnames in built *.scss files ([#537](https://github.com/Shopify/polaris-react/pull/537))
+* Fixed broken link in description list README ([#534](https://github.com/Shopify/polaris-react/pull/534))
+
 ## 1.3.0 (August 9, 2017)
 
 ### Enhancements
