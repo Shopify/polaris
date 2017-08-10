@@ -38,6 +38,7 @@ const privateScripts = [
   'cdn:secrets',
   'cdn:deploy',
   'cdn',
+  'dev:host',
   'public-release:secrets',
   'prepublic-release',
   'public-release',
