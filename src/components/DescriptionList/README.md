@@ -23,7 +23,6 @@ format that’s easy to reference and scan.
 
 >**Not what you’re looking for?**
 >* To create a list of actions or navigation, [use the action list component](/components/actions/action-list).
->* To display a simple list of related content,[use the content list component](components/lists/description-list).
 
 ---
 

@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 1.3.1 (August 10, 2017)
+### Bug fixes
+* Fixed classnames in built *.scss files
+* Fixed broken link in description list README
+
 ## 1.3.0 (August 9, 2017)
 
 ### Enhancements
