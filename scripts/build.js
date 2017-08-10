@@ -66,6 +66,9 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
   ]))
   .then(() => generateSassBuild(build))
   .then(() => {
+    cp('-r', resolvePath(build, 'sass', '*'), root);
+  })
+  .then(() => {
     writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
       {
         "presets": [

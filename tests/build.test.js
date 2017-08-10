@@ -41,6 +41,10 @@ describe('build', () => {
     expect(fs.existsSync('./styles.scss')).toBe(true);
   });
 
+  it('generates fully namespaced CSS for root components', () => {
+    expect(fs.readFileSync('./styles/components/Button.scss', 'utf8')).toMatch('.Polaris-Button {');
+  });
+
   it('generates a zip of ./build/sass', () => {
     expect(fs.existsSync('./build/sass.zip')).toBe(true);
   });
