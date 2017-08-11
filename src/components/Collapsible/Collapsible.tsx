@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';

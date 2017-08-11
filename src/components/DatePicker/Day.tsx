@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Months} from '@shopify/javascript-utilities/dates';
 
 import * as styles from './DatePicker.scss';

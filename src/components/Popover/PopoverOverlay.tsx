@@ -1,5 +1,5 @@
 import * as React from 'react';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';

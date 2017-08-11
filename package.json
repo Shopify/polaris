@@ -132,7 +132,7 @@
   ],
   "dependencies": {
     "@shopify/images": "^1.1.0",
-    "@shopify/javascript-utilities": "^1.1.6",
+    "@shopify/javascript-utilities": "^2.0.0",
     "@shopify/react-utilities": "^1.2.0",
     "@types/prop-types": "*",
     "@types/react": "*",
