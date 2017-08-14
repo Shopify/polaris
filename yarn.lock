@@ -6,13 +6,22 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.0.tgz#5630256843d55bfb7fdd12935c7333d695726b25"
 
-"@shopify/javascript-utilities@^1.1.0", "@shopify/javascript-utilities@^1.1.6":
+"@shopify/javascript-utilities@^1.1.0":
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-1.1.6.tgz#f9272feb1f0b7a3dd63a9e490548b17055e6d9f2"
   dependencies:
     "@types/lodash" "^4.14.65"
     "@types/react" "^15.0.21"
     lodash "^4.17.4"
+
+"@shopify/javascript-utilities@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.0.0.tgz#6e60239e419ad99d4ac36cccf7dfb44e2821808d"
+  dependencies:
+    "@types/lodash" "^4.14.65"
+    "@types/react" "^15.0.21"
+    lodash "^4.17.4"
+    lodash-decorators "^4.3.5"
 
 "@shopify/js-uploader@git+ssh://git@github.com/Shopify/js-uploader.git":
   version "0.1.0"
@@ -4607,6 +4616,12 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash-decorators@^4.3.5:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash-decorators/-/lodash-decorators-4.4.0.tgz#d3b4ecad7d5b5bb698899f954e62c7d1dd176467"
+  dependencies:
+    tslib "^1.6.1"
+
 lodash._arrayeach@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._arrayeach/-/lodash._arrayeach-3.0.0.tgz#bab156b2a90d3f1bbd5c653403349e5e5933ef9e"
@@ -7295,7 +7310,7 @@ tryit@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
 
-tslib@^1.6.0, tslib@^1.7.1:
+tslib@^1.6.0, tslib@^1.6.1, tslib@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 

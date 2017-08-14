@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {HSBColor, HSBAColor} from './types';
 import {hsbToRgb} from './color-utilities';

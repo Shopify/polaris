@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {layeredComponent} from '@shopify/react-utilities/components';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {focusFirstFocusableNode, findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 

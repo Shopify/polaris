@@ -1,4 +1,4 @@
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Messenger from './Messenger';
 import Bar from './components/Bar';

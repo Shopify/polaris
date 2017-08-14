@@ -1,5 +1,5 @@
 import * as React from 'react';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import EventListener from '../EventListener';
 import * as styles from './ColorPicker.scss';
 
