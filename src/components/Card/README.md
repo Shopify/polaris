@@ -189,7 +189,7 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
-### Card with call to action in the the footer
+### Card with call to action in the footer
 
 Use when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
 
