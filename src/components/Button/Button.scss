@@ -51,7 +51,8 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 
   &.disabled {
     @include recolor-icon(color(ink, lightest));
-    background: color(sky, light);
+    transition: none;
+    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
     color: color(ink, lightest);
   }
 }
@@ -59,14 +60,6 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 .primary {
   @include button-filled(color(indigo), color(indigo, dark));
   @include recolor-icon(color(white));
-
-  &.disabled {
-    @include recolor-icon(color(white));
-    background: color(indigo, light);
-    border-color: color(indigo, light);
-    box-shadow: none;
-    color: color(white);
-  }
 }
 
 .destructive {
@@ -78,7 +71,6 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   @include button-outline(color(ink, lighter));
 
   &.disabled {
-    background-color: color(white);
     border-color: color(sky, dark);
     color: color(ink, lightest);
   }
