@@ -13,20 +13,21 @@ category: Actions
 Button group displays multiple related actions in a row to help with horizontal
 arrangement and the spacing of calls to action.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to understand when a set of actions are related so they can take
 the appropriate next step.
 
-**Solution**
+### Solution
 
 Button group lays out a set of buttons horizontally as a set and lets them wrap
 if necessary.
-
-> **Not what you’re looking for?**
->
->* To learn how to use individual buttons, [use the button component](/components/actions/button).
->* To embed an action or navigation into a line of text, [use the link component](/components/navigation/link).
 
 ---
 
@@ -80,3 +81,9 @@ Use to emphasize several buttons as a thematically-related set among other contr
   <Button>Button 2</Button>
 </ButtonGroup>
 ```
+---
+
+## Related components
+
+* To learn how to use individual buttons, [use the button component](/components/actions/button)
+* To embed an action or navigation into a line of text, [use the link component](/components/navigation/link)

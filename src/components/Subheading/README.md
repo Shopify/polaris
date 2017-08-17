@@ -12,19 +12,20 @@ category: Titles and text
 Subheadings are used for the title of any sub-sections in top-level page
 sections. Generally, sections of a card use subheadings for their titles
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants want to find a particular piece of content quickly.
 
-
-**Solution**
+### Solution
 
 Subheadings provide visual wayfinding cues in a card or page section so merchants
 can scan to understand what’s most relevant to them.
-
->**Not what you’re looking for?**
->* To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card).
->* To create a title for a card or top-level page section, [use the heading component](/components/titles-and-text/heading).
 
 ---
 
@@ -73,3 +74,10 @@ Use to structure content in a card.
 ```jsx
 <Subheading>Accounts</Subheading>
 ```
+
+---
+
+## Related components
+
+* To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card)
+* To create a title for a card or top-level page section, [use the heading component](/components/titles-and-text/heading)

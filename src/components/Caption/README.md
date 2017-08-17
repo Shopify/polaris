@@ -14,11 +14,17 @@ category: Titles and text
 
 Caption text size is smaller than the recommended size for general reading. It should be used only in a graph or as a timestamp in a list.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to understand a complex graphic or arrangement of content in a small area.
 
-**Solution**
+### Solution
 
 Use smaller text for short labels on graphs or lists where space is limited.
 

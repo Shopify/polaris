@@ -11,19 +11,6 @@ category: Lists
 
 Resource lists show a collection of objects of the same type in a list, such as a list of products. Resource lists are made up of individual resource items. Each item provides a summary of the object and normally links to a detail page.
 
-**Problem**
-
-Merchants want to find a particular object, such as an order, among other similar objects. Once they locate the object, they need to be able to view it in more detail or take quick actions on it such as marking it as archived or fulfilled.
-
-**Solution**
-
-Resource lists group similar types of objects into a list. Merchants can click or tap on list items to view more details. Optionally, actions from the detail view can also be made available to merchants at the list level as shortcuts.
-
->__Not what you’re looking for?__
->* To display a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list).
->* To display a simple list of related content, [use the list component](components/lists/list).
->* When text labels for each item are useful for describing the content, [use the description list component](/components/lists/description-list).
-
 ---
 
 ## Resource list details
@@ -40,6 +27,20 @@ Merchants should still navigate to a detail page get full context and actually
 deal with any issues.
 * Secondary actions allow merchants to perform up to two actions on the object
 directly from the list, without navigating to a detail page.
+
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
+
+Merchants want to find a particular object, such as an order, among other similar objects. Once they locate the object, they need to be able to view it in more detail or take quick actions on it such as marking it as archived or fulfilled.
+
+### Solution
+
+Resource lists group similar types of objects into a list. Merchants can click or tap on list items to view more details. Optionally, actions from the detail view can also be made available to merchants at the list level as shortcuts.
 
 ---
 
@@ -270,3 +271,11 @@ Can be used to display product listings in a Shopify sales channel.
   }}
 />
 ```
+
+---
+
+## Related components
+
+* To display a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list)
+* To display a simple list of related content, [use the list component](/components/lists/list)
+* When text labels for each item are useful for describing the content, [use the description list component](/components/lists/description-list)

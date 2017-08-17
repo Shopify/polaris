@@ -12,19 +12,22 @@ Tooltips are floating labels that briefly explain the function of a user
 interface element. They can be triggered when merchants hover, focus, tap, or
 click.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants who use Shopify represent a range of levels of experience and
 familiarity with using software. It can be challenging to build
 experiences that are clear to all merchants, all the time.
 
-**Solution**
+### Solution
 
 Tooltips can provide additional explanations to merchants who need more
 information or help without cluttering up the interface.
-
-> **Not what you’re looking for?**
->* To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](/components/forms/text-field), [footer help](/components/titles-and-text/footer-help), or [an inline link to help](/components/navigations/link)
 
 ---
 
@@ -82,3 +85,9 @@ Use only when necessary to provide an explanation for an interface element.
   <Link>Order #1001</Link>
 </Tooltip>
 ```
+
+---
+
+## Related components
+
+* To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](/components/forms/text-field), [footer help](/components/titles-and-text/footer-help), or [an inline link to help](/components/navigations/link)

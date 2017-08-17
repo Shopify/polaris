@@ -10,11 +10,17 @@ category: Navigation
 # Tabs
 Use to alternate among related views within the same context.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants benefit from several different views into the same or closely related content to accomplish different tasks. They also need to be able to navigate to sub-views inside their current view.
 
-**Solution**
+### Solution
 
 Tabs are a way to show related subsections of interface in relation to each other and allow merchants to move easily between them.
 

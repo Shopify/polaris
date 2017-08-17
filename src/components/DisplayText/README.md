@@ -18,12 +18,12 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 When all the typography on Shopify is the same size, it can be hard to tell a
 story visually.
 
-**Solution**
+### Solution
 
 Display text can be used thoughtfully to create an impact and make a bold
 statement.

@@ -13,16 +13,19 @@ category: Forms
 A text field is an input field that a merchant can type into. It has a range of
 options and supports several text formats including numbers.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to add information to Shopify.
 
-**Solution**
+### Solution
 
 Text fields are input fields that merchants can type into.
-
-> **Not what you’re looking for?**
->* To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout).
 
 ---
 
@@ -261,3 +264,9 @@ Use to let merchants know if their input is valid or if there’s an error. When
 ```jsx
 <TextField label="Store name" error="Store name is required" />
 ```
+
+---
+
+## Related components
+
+* To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout)

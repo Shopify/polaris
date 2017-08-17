@@ -17,11 +17,11 @@ Footer help is used to refer merchants to more information in the Shopify Help d
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants want to understand how a product or feature works in more detail than we have room for in the interface.
 
-**Solution**
+### Solution
 
 Footer help lets merchants find more information by linking to help documentation in the context of the product or feature the merchant is viewing.
 

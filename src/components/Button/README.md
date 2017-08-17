@@ -13,11 +13,11 @@ category: Actions
 Buttons make common actions immediately visible and easy to perform with one
 click or tap. They can be used for any type of action, including navigation.
 
-**Problem**
+### Problem
 
 An action needs to be completed by a merchant.
 
-**Solution**
+### Solution
 
 The button component can be used to help merchants find and complete actions across Shopify.
 

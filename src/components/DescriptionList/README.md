@@ -17,12 +17,12 @@ glossary.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants may need to reference a range of concepts to understand how they work
 at Shopify.
 
-**Solution**
+### Solution
 
 Description lists associate a list item with a definition or description in a
 format that’s easy to reference and scan.

@@ -15,17 +15,19 @@ category: Structure
 
 Use to build the outer wrapper of a page, including the page title and associated actions.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need a quick way to understand where they are, where they came from, and what they can do on a page in Shopify.
 
-**Solution**
+### Solution
 
 Use the page component to provide the outer structure for a page, which creates consistent margins and supports the page title, breadcrumbs and page header actions.
-
-> **Not what you’re looking for?**
->
->* To lay out the content within a page, [use the layout component](/components/structure/layout).
 
 ---
 
@@ -246,3 +248,9 @@ Use a separator for pages that have an [empty state](/components/structure/empty
   </Layout>
 </Page>
 ```
+
+---
+
+## Related components
+
+* To lay out the content within a page, [use the layout component](/components/structure/layout)

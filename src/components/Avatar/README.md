@@ -13,18 +13,21 @@ category: Images and icons
 Avatars are used to show a thumbnail representation of an individual or
 business in the interface.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 A merchant may manage multiple businesses on Shopify or may have more than one
 person working in a store.
 
-**Solution**
+### Solution
 
 Avatars visually clarify the business or the person being represented at
 various locations in the interface.
-
-> **Not what you’re looking for?**
->* To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail).
 
 ---
 
@@ -67,3 +70,8 @@ Use to present an avatar for a merchant, customer, or business.
 ```jsx
 <Avatar customer name="Farrah" />
 ```
+---
+
+## Related components
+
+* To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail)
