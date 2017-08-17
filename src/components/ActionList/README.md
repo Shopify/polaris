@@ -12,6 +12,12 @@ category: Actions
 
 Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 There are lots of different paths a merchant can take. Listing them all out in the interface would make the experience feel overwhelming and cluttered.
@@ -19,11 +25,6 @@ There are lots of different paths a merchant can take. Listing them all out in t
 **Solution**
 
 Action lists in popovers let merchants expose additional information and actions when they’re ready to explore them.
-
->**Not what you’re looking for?**
->* To combine more than one button in a single layout,
-[use the button group component](/components/actions/button-group).
->* To display a list of related content, [use the list component](/components/lists/list).
 
 ---
 
@@ -127,3 +128,9 @@ Use when the items benefit from sections to help differentiate actions.
   }]}
 />
 ```
+---
+
+## Related components
+
+* To combine more than one button in a single layout,[use the button group component](/components/actions/button-group)
+* To display a list of related content, [use the list component](/components/lists/list)
