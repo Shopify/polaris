@@ -13,6 +13,12 @@ category: Titles and text
 
 Use when an element needs to be available to assistive technology (e.g. screen readers) but otherwise hidden.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 A content element may be visually redundant but provides important context to merchants who are using a screen reader.
