@@ -15,6 +15,12 @@ category: Images and icons
 
 Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants are pressed for time. They need visual ways to identify what’s happening in Shopify.
