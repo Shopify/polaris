@@ -15,6 +15,12 @@ their store to various accounts. For example, if merchants want to use the
 Facebook sales channel, they need to connect their Facebook
 account to their Shopify store.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need a way to authorize their third-party accounts to integrate with their Shopify store.
