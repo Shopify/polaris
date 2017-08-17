@@ -13,8 +13,19 @@ Resource lists show a collection of objects of the same type in a list, such as 
 
 ---
 
-## Resource list details
+## Purpose
 
+Think about the merchant problem this component solves when you’re using it:
+
+**Problem**
+
+Merchants want to find a particular object, such as an order, among other similar objects. Once they locate the object, they need to be able to view it in more detail or take quick actions on it such as marking it as archived or fulfilled.
+
+**Solution**
+
+Resource lists group similar types of objects into a list. Merchants can click or tap on list items to view more details. Optionally, actions from the detail view can also be made available to merchants at the list level as shortcuts.
+
+### Details
 Resource items contain 3 main elements: attributes, exceptions, and secondary
 actions:
 
@@ -27,20 +38,6 @@ Merchants should still navigate to a detail page get full context and actually
 deal with any issues.
 * Secondary actions allow merchants to perform up to two actions on the object
 directly from the list, without navigating to a detail page.
-
----
-
-## Purpose
-
-Think about the merchant problem this component solves when you’re using it:
-
-**Problem**
-
-Merchants want to find a particular object, such as an order, among other similar objects. Once they locate the object, they need to be able to view it in more detail or take quick actions on it such as marking it as archived or fulfilled.
-
-**Solution**
-
-Resource lists group similar types of objects into a list. Merchants can click or tap on list items to view more details. Optionally, actions from the detail view can also be made available to merchants at the list level as shortcuts.
 
 ---
 
