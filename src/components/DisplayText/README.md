@@ -12,6 +12,12 @@ Display styles make a bold visual statement. Use them to create impact when the
 main goal is visual storytelling. For example, use display text to convince or
 reassure a merchant such as in marketing content or to capture attention during onboarding.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 When all the typography on Shopify is the same size, it can be hard to tell a
