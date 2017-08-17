@@ -18,11 +18,11 @@ make a single selection.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Sometimes only one choice or option is available to merchants. There are only a few choices to display, and the [choice list component](/components/forms/choice-list) can’t be used.
 
-**Solution**
+### Solution
 
 Radio buttons present multiple items and require merchants to pick only one thing from a list.
 

@@ -19,11 +19,11 @@ Headings are used as the titles of each major section of a page in the interface
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 There are lots of different sections in the Shopify product and sometimes it can be hard for merchants to orient themselves.
 
-**Solution**
+### Solution
 
 Headings clearly remind merchants where they are in the product and help frame the interface.
 

@@ -18,11 +18,11 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants may need to choose more than one item from a list of options.
 
-**Solution**
+### Solution
 
 A checkbox lets merchants choose one or many things from a list.
 

@@ -20,12 +20,12 @@ Banners show at the top of the page or section they apply to.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to find out about important information and actions. For
 example, when an order needs to be reviewed because it has a high risk for fraud.
 
-**Solution**
+### Solution
 
 Banners are a highly visible way to bring something to a merchant’s attention.
 

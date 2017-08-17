@@ -19,11 +19,11 @@ options and supports several text formats including numbers.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to add information to Shopify.
 
-**Solution**
+### Solution
 
 Text fields are input fields that merchants can type into.
 

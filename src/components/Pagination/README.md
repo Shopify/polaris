@@ -20,11 +20,11 @@ Use pagination to allow navigation between pages that represent an ordered colle
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Long pages or lists of information can be overwhelming and hard to navigate. Alternatively, it can be a convenience to jump between objects related to each other in a sequence.
 
-**Solution**
+### Solution
 
 Pagination helps to break up long sections of information. Alternatively, pagination provides a shortcut to navigate between pages when they represent items within a collection.
 

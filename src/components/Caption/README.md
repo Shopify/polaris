@@ -20,11 +20,11 @@ Caption text size is smaller than the recommended size for general reading. It s
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to understand a complex graphic or arrangement of content in a small area.
 
-**Solution**
+### Solution
 
 Use smaller text for short labels on graphs or lists where space is limited.
 

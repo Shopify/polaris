@@ -17,12 +17,12 @@ easier for merchants to scan, read, and get things done.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants may be feeling overwhelmed by too much information or too many
 different tasks.
 
-**Solution**
+### Solution
 
 Grouping tasks and concepts into digestible sections using cards helps
 merchants complete their tasks faster.

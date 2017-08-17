@@ -19,11 +19,11 @@ For example, when a customer has received the item they purchased from a merchan
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants are pressed for time. They need indicators that let them identify important status changes in Shopify.
 
-**Solution**
+### Solution
 
 Badges are designed as short, color-coded indicators that help merchants identify critical information quickly.
 

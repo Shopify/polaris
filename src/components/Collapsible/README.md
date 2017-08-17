@@ -20,12 +20,12 @@ all the time.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants may occasionally need access to information that might overwhelm
 the interface or push important details too far down the page.
 
-**Solution**
+### Solution
 
 The collapsible component lets merchants read longer form information on their own time.
 

@@ -18,11 +18,11 @@ clutter up the interface.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants may need to select a single item from a longer list of choices.
 
-**Solution**
+### Solution
 
 The select component displays a long list of options in a drop down menu that
 merchants can scroll through before they make a selection.

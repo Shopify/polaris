@@ -18,12 +18,12 @@ tried yet, and provide encouragement and support to help merchants progress.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 When a merchant first encounters a new product or feature, they need to
 understand what it is and be encouraged to try it.
 
-**Solution**
+### Solution
 
 Empty states are an opportunity to provide explanation about the purpose and
 benefit of a feature, while gently encouraging merchants to give it a try.

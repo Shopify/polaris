@@ -17,11 +17,11 @@ on or off.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to be able to turn settings on or off based on their preferences.
 
-**Solution**
+### Solution
 
 Settings toggle is a visual indicator and control that lets merchants
 enable or disable something.

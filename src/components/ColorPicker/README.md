@@ -18,7 +18,7 @@ email templates for their shop.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants occasionally need to select a color and they need to be able to see
 a sample of available colors to make the best decision.

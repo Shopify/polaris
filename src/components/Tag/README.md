@@ -16,11 +16,11 @@ Tags represent a set of interactive, merchant-supplied keywords that help label,
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to be able to add and remove keywords from objects (e.g. products or orders) to organize and categorize them.
 
-**Solution**
+### Solution
 
 Tags are visual indicators of categories that can be changed or removed. They help merchants organize objects in the Shopify interface.
 

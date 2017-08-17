@@ -16,13 +16,13 @@ The scrollable component is a container for long form content, such as terms of 
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Legal disclaimers such as terms of service can be long and unwieldy. Exposing
 the full text in an interface could feel overwhelming and take up a lot of
 space.
 
-**Solution**
+### Solution
 
 Scrollable containers hold longer form text and let merchants scroll as they
 read to expose more information when they’re ready to see it.

@@ -34,11 +34,11 @@ directly from the list, without navigating to a detail page.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants want to find a particular object, such as an order, among other similar objects. Once they locate the object, they need to be able to view it in more detail or take quick actions on it such as marking it as archived or fulfilled.
 
-**Solution**
+### Solution
 
 Resource lists group similar types of objects into a list. Merchants can click or tap on list items to view more details. Optionally, actions from the detail view can also be made available to merchants at the list level as shortcuts.
 

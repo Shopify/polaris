@@ -17,11 +17,11 @@ Popovers are small overlays that open on demand, usually when the merchant click
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 There are lots of different paths a merchant can take and listing them all out in the interface would make the experience feel overwhelming and cluttered.
 
-**Solution**
+### Solution
 
 Popovers allow merchants to expose and hide additional information and actions when they’re ready to explore them. Popovers show next to the button that triggers them, so they demand minimal shift in merchant attention.
 

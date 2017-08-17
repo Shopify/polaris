@@ -18,11 +18,11 @@ sections. Generally, sections of a card use subheadings for their titles
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants want to find a particular piece of content quickly.
 
-**Solution**
+### Solution
 
 Subheadings provide visual wayfinding cues in a card or page section so merchants
 can scan to understand what’s most relevant to them.

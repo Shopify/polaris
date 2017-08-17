@@ -22,11 +22,11 @@ The layout component is used to create the main layout on a page. Layouts sectio
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need information to be organized consistently so they can manage and complete tasks on Shopify.
 
-**Solution**
+### Solution
 
 The layout component ensures that pages across Shopify can be organized to accommodate the complicated information and tasks merchants need, while following consistent interface patterns.
 

@@ -17,12 +17,12 @@ consistently applied wherever dates need to be selected across Shopify.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to choose dates in a way that’s visual and avoids confusion
 caused by localization issues.
 
-**Solution**
+### Solution
 
 A consistent date picker lets merchants quickly select a date or range of
 dates.

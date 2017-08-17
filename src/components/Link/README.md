@@ -22,11 +22,11 @@ Links are used to embed actions or pathways to more information in a sentence.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to be able to navigate to other sections of Shopify or take actions wherever they are in the interface.
 
-**Solution**
+### Solution
 
 Links provide merchants with a way to navigate or take an action in the context of a string of content.
 

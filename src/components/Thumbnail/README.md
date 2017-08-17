@@ -17,11 +17,11 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants are scanning the page, orienting themselves or searching visually for a particular item.
 
-**Solution**
+### Solution
 
 Thumbnails provide a visual anchor and help structure the page. Because they are a visual representation, thumbnails make individual items identifiable at a glance.
 

@@ -17,12 +17,12 @@ bullet, a number, or less commonly, with an icon.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants are pressed for time and want content to be scannable and easy to
 read.
 
-**Solution**
+### Solution
 
 Breaking related chunks of content into a list can make content easier to read
 and understand.

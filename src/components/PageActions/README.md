@@ -19,11 +19,11 @@ Page actions let merchants take key actions at the bottom of specific pages in t
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to be able to take important page actions, even after they’ve scrolled to the bottom of the page.
 
-**Solution**
+### Solution
 
 Page actions show at the bottom of pages so that merchants don’t need to scroll up to take important actions.
 

@@ -17,11 +17,11 @@ sales channels section of Shopify.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants may not know about Shopify features designed to help them run their business.
 
-**Solution**
+### Solution
 
 Callout cards introduce features and give merchants a way to take action.
 

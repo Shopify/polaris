@@ -19,12 +19,12 @@ business in the interface.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 A merchant may manage multiple businesses on Shopify or may have more than one
 person working in a store.
 
-**Solution**
+### Solution
 
 Avatars visually clarify the business or the person being represented at
 various locations in the interface.

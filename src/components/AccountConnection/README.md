@@ -21,11 +21,11 @@ account to their Shopify store.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need a way to authorize their third-party accounts to integrate with their Shopify store.
 
-**Solution**
+### Solution
 
 The account component gives merchants a consistent and secure way to authorize their accounts and control permissions.
 

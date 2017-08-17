@@ -20,12 +20,12 @@ choices.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to be able to select from a set of options that are related to
 one another.
 
-**Solution**
+### Solution
 
 Grouping things together in a choice list is a way to visually present options
 so that merchants can decide what to select.

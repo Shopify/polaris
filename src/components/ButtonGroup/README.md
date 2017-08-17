@@ -19,12 +19,12 @@ arrangement and the spacing of calls to action.
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants need to understand when a set of actions are related so they can take
 the appropriate next step.
 
-**Solution**
+### Solution
 
 Button group lays out a set of buttons horizontally as a set and lets them wrap
 if necessary.

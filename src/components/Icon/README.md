@@ -21,11 +21,11 @@ Icons are used to visually communicate core parts of the product and available a
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem**
+### Problem
 
 Merchants are pressed for time. They need visual ways to identify what’s happening in Shopify.
 
-**Solution**
+### Solution
 
 Icons can alert merchants to changes in status and make the interface easier to scan.
 
