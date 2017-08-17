@@ -11,6 +11,12 @@ category: Overlays
 
 Popovers are small overlays that open on demand, usually when the merchant clicks a button. They let merchants access supplementary content and actions without cluttering the page.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 There are lots of different paths a merchant can take and listing them all out in the interface would make the experience feel overwhelming and cluttered.
@@ -18,11 +24,6 @@ There are lots of different paths a merchant can take and listing them all out i
 **Solution**
 
 Popovers allow merchants to expose and hide additional information and actions when they’re ready to explore them. Popovers show next to the button that triggers them, so they demand minimal shift in merchant attention.
-
-> **Not what you’re looking for?**
->* To put a list of actions in a popover, [use the action list component](/components/actions/action-list).
->* To group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and take action on, [use the card component](/components/structure/card).
-
 
 ---
 
@@ -173,3 +174,10 @@ Use to present secondary input tasks on demand.
   </FormLayout>
 </Popover>
 ```
+
+---
+
+## Related components
+
+* To put a list of actions in a popover, [use the action list component](/components/actions/action-list)
+* To group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and take action on, [use the card component](/components/structure/card)
