@@ -13,6 +13,12 @@ category: Titles and text
 
 Headings are used as the titles of each major section of a page in the interface. For example, [card components](/components/card) generally use headings as their title.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 There are lots of different sections in the Shopify product and sometimes it can be hard for merchants to orient themselves.
@@ -20,9 +26,6 @@ There are lots of different sections in the Shopify product and sometimes it can
 **Solution**
 
 Headings clearly remind merchants where they are in the product and help frame the interface.
-
->**Not what you’re looking for?**
->* To break up a section with a heading into sub-sections, [use the subheading component](/components/subheading).
 
 ---
 
@@ -83,3 +86,9 @@ Use for the title of each top-level page section.
 ```jsx
 <Heading>Online store dashboard</Heading>
 ```
+
+---
+
+## Related components
+
+* To break up a section with a heading into sub-sections, [use the subheading component](/components/subheading)
