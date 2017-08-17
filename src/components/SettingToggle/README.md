@@ -11,6 +11,12 @@ category: Actions
 Use to give the merchant control over a feature or option that can be turned
 on or off.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need to be able to turn settings on or off based on their preferences.
@@ -19,10 +25,6 @@ Merchants need to be able to turn settings on or off based on their preferences.
 
 Settings toggle is a visual indicator and control that lets merchants
 enable or disable something.
-
-> **Not what you’re looking for?**
->
->* To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](/components/actions/account-connection).
 
 ---
 
@@ -87,3 +89,9 @@ Use on settings pages to allow merchants to toggle a setting that has an enabled
   This setting is <TextStyle variation="strong">disabled</TextStyle>.
 </SettingToggle>
 ```
+
+---
+
+## Related components
+
+* To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](/components/actions/account-connection)
