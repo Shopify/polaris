@@ -127,4 +127,4 @@ Use for the most critical and time sensitive issues that require a merchant’s 
 
 ## Related components
 
-* To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag).
+* To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag)
