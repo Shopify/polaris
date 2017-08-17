@@ -11,6 +11,12 @@ category: Images and icons
 
 Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants are scanning the page, orienting themselves or searching visually for a particular item.
@@ -18,9 +24,6 @@ Merchants are scanning the page, orienting themselves or searching visually for 
 **Solution**
 
 Thumbnails provide a visual anchor and help structure the page. Because they are a visual representation, thumbnails make individual items identifiable at a glance.
-
-> **Not what you’re looking for?**
-> * To present a thumbnail representation of an individual or business in the interface, [use the avatar component](/components/images-and-icons/avatar).
 
 ---
 
@@ -77,3 +80,9 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 ```jsx
 <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" size="large" alt="Black choker necklace" />
 ```
+
+---
+
+## Related components
+
+* To present a thumbnail representation of an individual or business in the interface, [use the avatar component](/components/images-and-icons/avatar)
