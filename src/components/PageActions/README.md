@@ -13,6 +13,12 @@ category: Structure
 
 Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need to be able to take important page actions, even after they’ve scrolled to the bottom of the page.
@@ -20,11 +26,6 @@ Merchants need to be able to take important page actions, even after they’ve s
 **Solution**
 
 Page actions show at the bottom of pages so that merchants don’t need to scroll up to take important actions.
-
->**Not what you’re looking for?**
->
->* To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page.
->* To let merchants take key actions at the bottom of specific pages in the interface, [use the page actions component](/components/structure/page-actions)
 
 ---
 
@@ -98,3 +99,10 @@ Used on a resource pages (e.g. an individual order page or a product page) to le
   }]}
 />
 ```
+
+---
+
+## Related components
+
+* To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page
+* To let merchants take key actions at the bottom of specific pages in the interface, [use the page actions component](/components/structure/page-actions)
