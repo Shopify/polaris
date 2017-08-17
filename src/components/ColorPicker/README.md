@@ -12,6 +12,12 @@ The color picker is used to let the merchant select a color visually. For
 example, merchants use the color picker to customize the accent color of the
 email templates for their shop.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants occasionally need to select a color and they need to be able to see
