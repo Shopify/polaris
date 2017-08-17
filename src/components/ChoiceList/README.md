@@ -14,6 +14,12 @@ A choice list lets you create a list of grouped radio buttons or checkboxes.
 Use this component if you need to group together a related list of interactive
 choices.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need to be able to select from a set of options that are related to
@@ -23,15 +29,6 @@ one another.
 
 Grouping things together in a choice list is a way to visually present options
 so that merchants can decide what to select.
-
->**Not what you’re looking for?**
->
-> To display a simple, non-interactive list of related content,
-[use the content list component](/components/lists/list).
-> You may also want to learn more about:
-> * [Checkbox components](/components/forms/checkbox)
-> * [Radio button components](/components/forms/radio-button)
-> * [Resource list components](/components/lists/resource-list)
 
 ---
 
@@ -199,3 +196,16 @@ Use when to let merchants make multiple sections from a list of choices.
   selected={['shipping']}
 />
 ```
+
+---
+
+## Related components
+
+To display a simple, non-interactive list of related content,
+[use the content list component](/components/lists/list).
+
+You may also want to learn more about:
+
+* [Checkbox components](/components/forms/checkbox)
+* [Radio button components](/components/forms/radio-button)
+* [Resource list components](/components/lists/resource-list)
