@@ -11,6 +11,12 @@ category: Forms
 Date pickers let merchants choose dates from a visual calendar that’s
 consistently applied wherever dates need to be selected across Shopify.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need to choose dates in a way that’s visual and avoids confusion
