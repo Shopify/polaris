@@ -12,6 +12,12 @@ category: Structure
 Empty states are an opportunity to explain a feature that a merchant hasn’t
 tried yet, and provide encouragement and support to help merchants progress.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 When a merchant first encounters a new product or feature, they need to
@@ -21,12 +27,6 @@ understand what it is and be encouraged to try it.
 
 Empty states are an opportunity to provide explanation about the purpose and
 benefit of a feature, while gently encouraging merchants to give it a try.
-
-> **Not what you’re looking for?**
->
->* To learn more about illustrations for empty states, [read the illustration guidelines](/visuals/illustrations).
->* To create page-level layout, [use the layout component](/components/structure/layout).
->* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card).
 
 ---
 
@@ -151,3 +151,11 @@ Use to explain a single feature before a merchant has used it.
   <p>Track and receive your incoming inventory from suppliers.</p>
 </EmptyState>
 ```
+
+---
+
+## Related components
+
+* To learn more about illustrations for empty states, [read the illustration guidelines](/visuals/illustrations)
+* To create page-level layout, [use the layout component](/components/structure/layout)
+* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
