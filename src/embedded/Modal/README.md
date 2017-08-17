@@ -22,11 +22,11 @@ Embedded modals are overlays that prevent merchants from interacting with the re
 
 Think about the merchant problem this component solves when you’re using it:
 
-**Problem:**
+### Problem
 
 Merchants need a way to focus on certain tasks that can’t be left half-finished.
 
-**Solution:**
+### Solution
 
 Embedded modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
 

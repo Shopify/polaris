@@ -23,7 +23,7 @@ Think about the merchant problem this component solves when you’re using it:
 Merchants occasionally need to select a color and they need to be able to see
 a sample of available colors to make the best decision.
 
-**Solution:**
+### Solution
 
 The color picker component displays swatches of colors to make the selection
 process visual for merchants.
