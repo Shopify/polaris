@@ -11,6 +11,12 @@ category: Titles and text
 
 Footer help is used to refer merchants to more information in the Shopify Help documentation that’s related to the product or feature they’re using.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants want to understand how a product or feature works in more detail than we have room for in the interface.
@@ -18,10 +24,6 @@ Merchants want to understand how a product or feature works in more detail than 
 **Solution**
 
 Footer help lets merchants find more information by linking to help documentation in the context of the product or feature the merchant is viewing.
-
->**Not what you’re looking for?**
->* To learn how to embed a link in a piece of text, [use the link component](/components/link).
->* To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](/content/help-documentation).
 
 ---
 
@@ -78,3 +80,10 @@ Use to direct merchants to more information related to the product or feature th
   Learn more about <Link url="https://help.shopify.com/manual/orders/fulfill-orders">fulfilling orders</Link>.
 </FooterHelp>
 ```
+
+---
+
+## Related components
+
+* To learn how to embed a link in a piece of text, [use the link component](/components/link)
+* To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](/content/help-documentation)
