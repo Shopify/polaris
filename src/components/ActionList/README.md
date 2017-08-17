@@ -132,5 +132,5 @@ Use when the items benefit from sections to help differentiate actions.
 
 ## Related components
 
-* To combine more than one button in a single layout,[use the button group component](/components/actions/button-group)
+* To combine more than one button in a single layout, [use the button group component](/components/actions/button-group)
 * To display a list of related content, [use the list component](/components/lists/list)
