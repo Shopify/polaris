@@ -10,6 +10,12 @@ category: Behavior
 # Scrollable
 The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Legal disclaimers such as terms of service can be long and unwieldy. Exposing
@@ -20,9 +26,6 @@ space.
 
 Scrollable containers hold longer form text and let merchants scroll as they
 read to expose more information when they’re ready to see it.
-
-> **Not what you’re looking for?**
->* To put long sections of information under a block that can be expanded or collapsed by the merchant, [use the collapsible component](/components/collapsible).
 
 ---
 
@@ -102,3 +105,9 @@ Use when you need to make a region within the page independently scrollable. It�
   </Scrollable>
 </Card>
 ```
+
+---
+
+## Related components
+
+* To put long sections of information under a block that can be expanded or collapsed by the merchant, [use the collapsible component](/components/collapsible)
