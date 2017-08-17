@@ -13,6 +13,12 @@ Badges are used to inform merchants of the status of a piece of information or o
 
 For example, when a customer has received the item they purchased from a merchant, a badge that says “Completed” shows next to the order number.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants are pressed for time. They need indicators that let them identify important status changes in Shopify.
@@ -21,12 +27,9 @@ Merchants are pressed for time. They need indicators that let them identify impo
 
 Badges are designed as short, color-coded indicators that help merchants identify critical information quickly.
 
->**Not what you’re looking for?**
->* To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag).
-
 ---
 
-## Design guidelines
+## Best practices
 
 Great badges benefit merchants by:
 
@@ -120,3 +123,8 @@ Use for the most critical and time sensitive issues that require a merchant’s 
 ```jsx
 <Badge status="warning">SSL unavailable</Badge>
 ```
+---
+
+## Related components
+
+* To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag).
