@@ -16,6 +16,12 @@ category: Structure
 
 The layout component is used to create the main layout on a page. Layouts sections come in three main configurations: one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need information to be organized consistently so they can manage and complete tasks on Shopify.
@@ -23,12 +29,6 @@ Merchants need information to be organized consistently so they can manage and c
 **Solution**
 
 The layout component ensures that pages across Shopify can be organized to accommodate the complicated information and tasks merchants need, while following consistent interface patterns.
-
-> **Not what you’re looking for?**
->
->* To visually group content in a layout section, [use the card component](/components/structure/card).
->* To lay out a set of smaller components in a row, [use the stack component](/components/structure/stack).
->* To lay out form fields, [use the layout component](/components/forms/form-layout).
 
 ---
 
@@ -221,3 +221,11 @@ Use for settings pages. When settings are grouped thematically in annotated sect
   </Layout.AnnotatedSection>
 </Layout>
 ```
+
+---
+
+## Related components
+
+* To visually group content in a layout section, [use the card component](/components/structure/card)
+* To lay out a set of smaller components in a row, [use the stack component](/components/structure/stack)
+* To lay out form fields, [use the layout component](/components/forms/form-layout)
