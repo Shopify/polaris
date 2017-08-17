@@ -14,6 +14,12 @@ category: Forms
 
 Form layouts are used to create responsive forms without using grids.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need to fill out information across Shopify.
@@ -21,10 +27,6 @@ Merchants need to fill out information across Shopify.
 **Solution**
 
 The form layout makes forms easier to scan and complete because it stacks fields vertically on the interface.
-
->**Not what you’re looking for?**
->
-> * To structure a lot of content, [use the layout component](/components/structure/layout).
 
 ---
 
@@ -136,3 +138,9 @@ For short inputs, the width of the inputs may be reduced in order to fit more fi
   </FormLayout.Group>
 </FormLayout>
 ```
+
+---
+
+## Related components
+
+* To structure a lot of content, [use the layout component](/components/structure/layout)
