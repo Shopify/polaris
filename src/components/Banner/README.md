@@ -14,6 +14,12 @@ Banners are used to inform merchants about important changes or persistent
 conditions. They’re one of the most prominent ways to communicate to merchants.
 Banners show at the top of the page or section they apply to.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 **Problem**
 
 Merchants need to find out about important information and actions. For
@@ -22,10 +28,6 @@ example, when an order needs to be reviewed because it has a high risk for fraud
 **Solution**
 
 Banners are a highly visible way to bring something to a merchant’s attention.
-
-> **Not what you’re looking for?**
->* To inform merchants about a new feature or opportunity, [use callout cards](components/structure/callout-card).
->* To group similar concepts together in the interface, [use a card](/components/structure/card).
 
 ---
 
@@ -307,3 +309,9 @@ Use to communicate problems that have to be resolved immediately for merchants t
   <p>Before fulfilling this order or capturing payment, please <Link url="">review the Risk Analysis</Link> and determine if this order is fraudulent.</p>
 </Banner>
 ```
+---
+
+## Related components
+
+* To inform merchants about a new feature or opportunity, [use callout cards](components/structure/callout-card)
+* To group similar concepts together in the interface, [use a card](/components/structure/card)
