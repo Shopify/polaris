@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-
 import {IconableAction, DisableableAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
+import {Props as ItemProps} from '../ActionList/Item';
 import Breadcrumbs, {Props as BreadcrumbProps} from '../Breadcrumbs';
 import Pagination, {PaginationDescriptor} from '../Pagination';
 import DisplayText from '../DisplayText';
@@ -16,7 +16,8 @@ import * as styles from './Page.scss';
 export interface ActionGroup {
   title: string,
   icon?: IconableAction['icon'],
-  actions: IconableAction[],
+  actions: ItemProps[],
+  details?: React.ReactNode,
 }
 
 export interface Props {
@@ -39,11 +40,6 @@ export default class Header extends React.PureComponent<Props, State> {
   state: State = {
     rollupOpen: false,
   };
-
-  private get hasRollup() {
-    const {secondaryActions = [], actionGroups = []} = this.props;
-    return secondaryActions.length + actionGroups.length > 1;
-  }
 
   render() {
     const {
@@ -85,6 +81,7 @@ export default class Header extends React.PureComponent<Props, State> {
       : null;
 
     const nonPrimaryActionsMarkup = this.renderSecondaryActions();
+
     const actionsMarkup = (
       <div className={styles.Actions}>
         {primaryActionMarkup}
@@ -129,6 +126,11 @@ export default class Header extends React.PureComponent<Props, State> {
       );
   }
 
+  private get hasRollup() {
+    const {secondaryActions = [], actionGroups = []} = this.props;
+    return secondaryActions.length + actionGroups.length > 1;
+  }
+
   private renderSecondaryActions() {
     const {openActionGroup, rollupOpen} = this.state;
     const {secondaryActions = [], actionGroups = []} = this.props;
@@ -142,26 +144,36 @@ export default class Header extends React.PureComponent<Props, State> {
       : null;
 
     const actionGroupsMarkup = actionGroups.length > 0
-      ? actionGroups.map(({title, icon, actions}) => (
-        <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
-          <Popover
-            key={title}
-            active={title === openActionGroup}
-            onClose={this.handleActionGroupClose.bind(this, title)}
-            activator={
-              <Action
-                disclosure
-                icon={icon}
-                onAction={this.handleActionGroupOpen.bind(this, title)}
+      ? (
+        actionGroups.map(({title, icon, actions, details}) => {
+
+          const detailsMarkup = details
+            ? <div className={styles.Details}>{details}</div>
+            : null;
+
+          return (
+            <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
+              <Popover
+                key={title}
+                active={title === openActionGroup}
+                onClose={this.handleActionGroupClose.bind(this, title)}
+                activator={
+                  <Action
+                    disclosure
+                    icon={icon}
+                    onAction={this.handleActionGroupOpen.bind(this, title)}
+                  >
+                    {title}
+                  </Action>
+                }
               >
-                {title}
-              </Action>
-            }
-          >
-            <ActionList items={actions} />
-          </Popover>
-        </div>
-      ))
+                <ActionList items={actions} />
+                {detailsMarkup}
+              </Popover>
+            </div>
+          );
+        })
+      )
       : null;
 
     const rollupMarkup = this.hasRollup

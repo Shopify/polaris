@@ -24,7 +24,7 @@ export default function Item({content, url, onAction, icon, image}: Props) {
       <div
         role="presentation"
         className={styles.Image}
-        style={{backgroundImage: image}}
+        style={{backgroundImage: `url(${image}`}}
       />
     );
   }
