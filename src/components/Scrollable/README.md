@@ -90,6 +90,7 @@ required to do something.
 | vertical | boolean | Scroll content vertically |
 | horizontal | boolean | Scroll content horizontally |
 | shadow | boolean | Add a shadow when content is scrollable |
+| hint | boolean | Slightly hints content upon mounting when scrollable |
 | nodeRef | function(node: HTMLElement) | Callback that passes a reference to the scrollable node |
 
 ## Examples
