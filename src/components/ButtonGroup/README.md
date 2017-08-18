@@ -66,8 +66,8 @@ Use when you have multiple buttons to space them out evenly.
 
 ```jsx
 <ButtonGroup>
-  <Button>Button 1</Button>
-  <Button>Button 2</Button>
+  <Button>Cancel</Button>
+  <Button primary>Save</Button>
 </ButtonGroup>
 ```
 
@@ -77,8 +77,9 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 ```jsx
 <ButtonGroup segmented>
-  <Button>Button 1</Button>
-  <Button>Button 2</Button>
+  <Button>Bold</Button>
+  <Button>Italic</Button>
+  <Button>Underline</Button>
 </ButtonGroup>
 ```
 ---
