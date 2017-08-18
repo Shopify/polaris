@@ -71,7 +71,7 @@ export default class TextField extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      id = getUniqueID(),
+      id = this.state.id,
       value = '',
       placeholder,
       disabled,
