@@ -1,0 +1,30 @@
+#!/usr/bin/ruby --disable-gems
+
+NON_COMMITTABLE_FILE_PATHS = ['playground/Playground.tsx']
+
+module PreCommit
+  extend self
+
+  def main
+    ignore_playground
+  end
+
+  private
+
+  def ignore_playground
+    changed_files.each do |path|
+      if NON_COMMITTABLE_FILE_PATHS.include? path
+        puts "WARNING: This commit has been aborted"
+        puts "Please remove changes from #{path} before committing"
+        puts "Or run `git update-index --assume-unchanged #{path}` to git ignore this file"
+        abort "Use `git commit --no-verify` to force add this file"
+      end
+    end
+  end
+
+  def changed_files
+    @changed_files ||= %x(git diff-index --abbrev --name-only HEAD).lines.map(&:chomp)
+  end
+end
+
+PreCommit.main
