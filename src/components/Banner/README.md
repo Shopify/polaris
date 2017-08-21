@@ -313,5 +313,5 @@ Use to communicate problems that have to be resolved immediately for merchants t
 
 ## Related components
 
-* To inform merchants about a new feature or opportunity, [use callout cards](components/structure/callout-card)
+* To inform merchants about a new feature or opportunity, [use callout cards](/components/structure/callout-card)
 * To group similar concepts together in the interface, [use a card](/components/structure/card)
