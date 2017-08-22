@@ -48,9 +48,9 @@ Any time you use an image to communicate a concept on Shopify, it’s important 
 For avatars, we recommend using a format that describes what will show in the
 image:
 
-* alt="person’s name" if the avatar represents a person
-* alt="business’s name" if the avatar represents a business
-* alt="" if the name of the person/business appears next to the avatar as text
+* `alt="Person’s name"` if the avatar represents a person
+* `alt="Business’s name"` if the avatar represents a business
+* `alt=""` if the name of the person/business appears next to the avatar as text
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
