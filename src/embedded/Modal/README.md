@@ -167,7 +167,6 @@ Add a menu item
   }]}
   onClose={() => this.setState({open: false})}
 />
-)
 ```
 
 ---
