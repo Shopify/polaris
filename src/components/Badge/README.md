@@ -75,8 +75,6 @@ The available badges for fulfillment status are:
 Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the status you need.
 <!-- end -->
 
----
-
 | Properties | Type | Description |
 | ---------- | ---- | ----------- |
 | children | string | The content to display inside the badge. |
