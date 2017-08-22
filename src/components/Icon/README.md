@@ -62,5 +62,5 @@ Alt text should be written in [plain language](/content/grammar-and-mechanics#pl
 Use to visually communicate core parts of the product and available actions.
 
 ```jsx
-<Icon source="notes" color="tealDark" backdrop />
+<Icon source="ciclePlus" />
 ```
