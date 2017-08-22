@@ -162,7 +162,7 @@ Use for the main call to action in empty states or for calls to action shown wit
 
 ### Full-width buttons
 
-Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320px wide.
+Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320 px wide.
 
 ```jsx
 <Button fullWidth>Add customer</Button>
