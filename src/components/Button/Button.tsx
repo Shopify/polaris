@@ -6,6 +6,9 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
+import VisuallyHidden from '../VisuallyHidden';
+import spinnerSVG from './icons/spinner.svg';
+
 import * as styles from './Button.scss';
 
 export type Size = 'slim' | 'large';
@@ -19,6 +22,7 @@ export interface Props {
   outline?: boolean,
   destructive?: boolean,
   disabled?: boolean,
+  loading?: boolean,
   plain?: boolean,
   external?: boolean,
   submit?: boolean,
@@ -33,6 +37,7 @@ export interface Props {
 export default function Button({
   url,
   disabled,
+  loading,
   children,
   accessibilityLabel,
   onClick,
@@ -49,12 +54,14 @@ export default function Button({
   size,
   fullWidth,
 }: Props) {
+  const isDisabled = disabled || loading;
   const className = classNames(
     styles.Button,
     primary && styles.primary,
     outline && styles.outline,
     destructive && styles.destructive,
-    disabled && styles.disabled,
+    isDisabled && styles.disabled,
+    loading && styles.loading,
     plain && styles.plain,
     size && styles[variationName('size', size)],
     fullWidth && styles.fullWidth,
@@ -62,24 +69,37 @@ export default function Button({
   );
 
   const disclosureIconMarkup = disclosure
-    ? <span className={styles.Icon}><Icon source="caretDown" /></span>
+    ? <span className={styles.Icon}><Icon source={loading ? 'placeholder' : 'caretDown'} /></span>
     : null;
 
   const iconMarkup = icon
-    ? <span className={styles.Icon}><Icon source={icon} /></span>
+    ? <span className={styles.Icon}><Icon source={loading ? 'placeholder' : icon} /></span>
     : null;
 
   const childMarkup = children ? <span>{children}</span> : null;
 
+  const spinnerSVGMarkup = loading
+    ? (
+      <span className={styles.Spinner}>
+        <VisuallyHidden>Loading</VisuallyHidden>
+        <svg
+          viewBox={spinnerSVG.viewBox}
+          dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
+        />
+      </span>
+    )
+    : null;
+
   const content = iconMarkup || disclosureIconMarkup
     ? (
       <span className={styles.Content}>
+        {spinnerSVGMarkup}
         {iconMarkup}
         {childMarkup}
         {disclosureIconMarkup}
       </span>
     )
-    : <span className={styles.Content}>{childMarkup}</span>;
+    : <span className={styles.Content}>{spinnerSVGMarkup}{childMarkup}</span>;
 
   const type = submit ? 'submit' : 'button';
 
@@ -94,7 +114,7 @@ export default function Button({
         onBlur={onBlur}
         onMouseUp={handleMouseUpByBlurring}
         className={className}
-        disabled={disabled}
+        disabled={isDisabled}
         aria-label={accessibilityLabel}
       >
         {content}
@@ -108,8 +128,10 @@ export default function Button({
         onBlur={onBlur}
         onMouseUp={handleMouseUpByBlurring}
         className={className}
-        disabled={disabled}
+        disabled={isDisabled}
         aria-label={accessibilityLabel}
+        role={loading ? 'alert' : undefined}
+        aria-busy={loading ? true : undefined}
       >
         {content}
       </button>

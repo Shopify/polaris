@@ -37,6 +37,28 @@ describe('<Button />', () => {
       const button = shallow(<Button disabled={false}>Disabled test</Button>);
       expect(button.find('button').prop('disabled')).toBeFalsy();
     });
+
+    it('does not unset the disabled attribute on the button when loading', () => {
+      const button = shallow(<Button loading disabled={false}>Disabled test</Button>);
+      expect(button.find('button').prop('disabled')).toBe(true);
+    });
+  });
+
+  describe('loading', () => {
+    it('sets the disabled attribute on the button', () => {
+      const button = shallow(<Button loading>Loading test</Button>);
+      expect(button.find('button').prop('disabled')).toBe(true);
+    });
+
+    it('does not set the disabled attribute on the button when false', () => {
+      const button = shallow(<Button loading={false}>Loading test</Button>);
+      expect(button.find('button').prop('disabled')).toBeFalsy();
+    });
+
+    it('does not unset the disabled attribute on the button', () => {
+      const button = shallow(<Button disabled loading={false}>Loading test</Button>);
+      expect(button.find('button').prop('disabled')).toBe(true);
+    });
   });
 
   describe('submit', () => {

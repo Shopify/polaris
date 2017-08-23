@@ -33,7 +33,11 @@ export interface IconableAction extends Action {
   icon?: IconProps['source'],
 }
 
-export interface ComplexAction extends Action, DisableableAction, DestructableAction, IconableAction {
+export interface LoadableAction extends Action {
+  loading?: boolean,
+}
+
+export interface ComplexAction extends Action, DisableableAction, DestructableAction, IconableAction, LoadableAction {
 }
 
 export enum Keys {
