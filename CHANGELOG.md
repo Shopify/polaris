@@ -1,5 +1,22 @@
 ## Unreleased
 
+## 1.4.0 (August 22, 2017)
+
+### Enhancements
+* Updated import, export, and view icons ([#543](https://github.com/Shopify/polaris-react/pull/543))
+* Improved documentation of various components
+* Improved how ActionList handles images and groups ([#550](https://github.com/Shopify/polaris-react/pull/550))
+* Exposed PopoverCloseSource from Popover component ([#562](https://github.com/Shopify/polaris-react/pull/562))
+
+### Bug fixes
+* Fixed PageActions spacing in IE11 ([#544](https://github.com/Shopify/polaris-react/pull/544))
+* Fixed ID inconsistency on TextFields ([#553](https://github.com/Shopify/polaris-react/pull/553))
+* Fixed spacing on Page component with no header (thanks  [bakura10](https://github.com/bakura10)  for the  [original issue](https://github.com/Shopify/polaris/issues/160)) ([#563](https://github.com/Shopify/polaris-react/pull/563/files))
+* Fixed disabled state on primary and destructive buttons ([#549](https://github.com/Shopify/polaris-react/pull/549/files))
+
+### Chores
+* Upgraded javascript-utilities to the latest version ([#542](https://github.com/Shopify/polaris-react/pull/542))
+
 ## 1.3.1 (August 10, 2017)
 ### Bug fixes
 * Fixed classnames in built *.scss files ([#537](https://github.com/Shopify/polaris-react/pull/537))
