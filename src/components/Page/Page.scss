@@ -57,19 +57,14 @@ html, body {
 .Header-hasPagination,
 .Header-hasBreadcrumbs {
   padding-top: spacing(loose);
-  padding-bottom: rem(24px);
-
-  &.Header-hasSecondaryActions {
-    padding-bottom: spacing(loose);
-  }
 }
 
 .Header-hasSecondaryActions {
   padding-top: rem(24px);
-  padding-bottom: spacing(loose);
 }
 
 .Header-hasSeparator {
+  padding-bottom: spacing();
   border-bottom: border();
 
   + .Content {
