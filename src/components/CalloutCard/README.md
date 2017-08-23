@@ -13,6 +13,8 @@ Callout cards are used to encourage merchants to take an action related to a
 new feature or opportunity. They are most commonly displayed in the
 sales channels section of Shopify.
 
+---
+
 ## Purpose
 
 Think about the merchant problem this component solves when you’re using it:
@@ -178,6 +180,9 @@ Use to let merchants know about a feature or opportunity where there are two dis
   <p>Upload your store’s logo, change colors and fonts, and more.</p>
 </CalloutCard>
 ```
+
+---
+
 ## Related components
 
 * To group similar concepts and tasks together, [use the card component](/components/structure/card)
