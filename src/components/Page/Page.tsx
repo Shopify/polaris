@@ -53,7 +53,7 @@ export default class Page extends React.PureComponent<Props, never> {
       fullWidth && styles.fullWidth,
     );
 
-    const headerMarkup = this.context.easdk
+    const headerMarkup = this.context.easdk || !this.hasHeaderContent()
       ? null
       : <Header {...rest} />;
 
@@ -73,5 +73,15 @@ export default class Page extends React.PureComponent<Props, never> {
     if (easdk) {
       easdk.Bar.update(this.props);
     }
+  }
+
+  private hasHeaderContent() {
+    const { title, primaryAction, secondaryActions, breadcrumbs } = this.props;
+    return (
+      (title && title !== '')
+      || primaryAction
+      || (secondaryActions && secondaryActions.length > 0)
+      || (breadcrumbs && breadcrumbs.length > 0)
+    );
   }
 }

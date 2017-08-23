@@ -34,11 +34,15 @@ html, body {
 }
 
 .Content {
-  margin: 0 0 spacing(loose);
+  margin: spacing(loose) 0;
+
+  @include page-content-when-not-partially-condensed {
+    margin-top: spacing(extra-loose);
+  }
 }
 
 .Header {
-  padding: spacing(loose);
+  padding: spacing(loose) spacing(loose) 0;
 
   @include page-content-when-not-fully-condensed {
     padding-left: 0;
@@ -47,26 +51,20 @@ html, body {
 
   @include page-content-when-not-partially-condensed {
     padding-top: spacing(extra-loose);
-    padding-bottom: spacing(extra-loose);
   }
 }
 
 .Header-hasPagination,
 .Header-hasBreadcrumbs {
   padding-top: spacing(loose);
-  padding-bottom: rem(24px);
-
-  &.Header-hasSecondaryActions {
-    padding-bottom: spacing(loose);
-  }
 }
 
 .Header-hasSecondaryActions {
   padding-top: rem(24px);
-  padding-bottom: spacing(loose);
 }
 
 .Header-hasSeparator {
+  padding-bottom: spacing();
   border-bottom: border();
 
   + .Content {
