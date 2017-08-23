@@ -296,6 +296,9 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
   </List>
 </Card>
 ```
+
+---
+
 ## Related components
 
 * To create page-level layout, [use the layout component](/components/structure/layout)
