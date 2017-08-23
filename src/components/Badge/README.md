@@ -9,9 +9,7 @@ category: Images and icons
 
 # Badge
 
-Badges are used to inform merchants of the status of a piece of information or of an action that’s been taken.
-
-For example, when a customer has received the item they purchased from a merchant, a badge that says “Completed” shows next to the order number.
+Badges are used to inform merchants of the status of a piece of information or of an action that’s been taken. For example, when a customer has received the item they purchased from a merchant, a badge that says “Completed” shows next to the order number.
 
 ---
 
