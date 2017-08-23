@@ -4,6 +4,8 @@ $slim-min-height: rem(30px);
 $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
+$spinner-size: rem(16px);
+$spinner-cycle-duration: 0.7s;
 
 .Button {
   @include recolor-icon(color(ink, lighter));
@@ -51,7 +53,8 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 
   &.disabled {
     @include recolor-icon(color(ink, lightest));
-    background: color(sky, light);
+    transition: none;
+    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
     color: color(ink, lightest);
   }
 }
@@ -59,14 +62,6 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 .primary {
   @include button-filled(color(indigo), color(indigo, dark));
   @include recolor-icon(color(white));
-
-  &.disabled {
-    @include recolor-icon(color(white));
-    background: color(indigo, light);
-    border-color: color(indigo, light);
-    box-shadow: none;
-    color: color(white);
-  }
 }
 
 .destructive {
@@ -78,7 +73,6 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   @include button-outline(color(ink, lighter));
 
   &.disabled {
-    background-color: color(white);
     border-color: color(sky, dark);
     color: color(ink, lightest);
   }
@@ -92,6 +86,34 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 .disabled {
   cursor: default;
   pointer-events: none;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: relative;
+  transition: border-color duration() easing();
+
+  &,
+  &:hover,
+  &.disabled {
+    color: transparent;
+  }
+}
+
+.Spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $spinner-size;
+  height: $spinner-size;
+  margin-top: -($spinner-size / 2);
+  margin-left: -($spinner-size / 2);
+  animation: loading $spinner-cycle-duration linear infinite;
 }
 
 // The way the designs work, we need to do lots of reaching down to
@@ -199,6 +221,8 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 1px;
+  min-height: 1px;
 }
 
 .Icon {

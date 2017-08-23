@@ -11,20 +11,21 @@ category: Lists
 Lists display a series of related content. Each list item begins with a
 bullet, a number, or less commonly, with an icon.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants are pressed for time and want content to be scannable and easy to
 read.
 
-**Solution**
+### Solution
 
 Breaking related chunks of content into a list can make content easier to read
 and understand.
-
->**Not what you’re looking for?**
->* To create a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list).
->* To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](components/lists/resource-list).
->* When text labels for each item are useful for describing the content, [use the Description List component](/components/lists/description-list).
 
 ---
 
@@ -110,3 +111,11 @@ Use for a text-only list of related items when an inherent order, priority, or s
   <List.Item>Third Item</List.Item>
 </List>
 ```
+
+---
+
+## Related components
+
+* To create a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list)
+* To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](/components/lists/resource-list)
+* When text labels for each item are useful for describing the content, [use the Description List component](/components/lists/description-list)

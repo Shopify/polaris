@@ -12,21 +12,20 @@ Select lets merchants choose one option from a list in a dropdown menu. It
 works well for lists of more than four choices when displaying them could
 clutter up the interface.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants may need to select a single item from a longer list of choices.
 
-**Solution**
+### Solution
 
 The select component displays a long list of options in a drop down menu that
 merchants can scroll through before they make a selection.
-
-> **Not what you’re looking for?**
->* To let merchants make a single selection from a list with four or fewer
-options, [use the choice list component](/components/forms/choice-list).
->* To present merchants with a list of choices where they can make multiple
-selections, [use the choice list component](/components/forms/choice-list) with
-the `allow multiple` option.
 
 ---
 
@@ -124,3 +123,13 @@ Use for selections that aren’t currently available. The surrounding interface 
   placeholder="Select"
 />
 ```
+
+---
+
+## Related components
+
+* To let merchants make a single selection from a list with four or fewer
+options, [use the choice list component](/components/forms/choice-list)
+* To present merchants with a list of choices where they can make multiple
+selections, [use the choice list component](/components/forms/choice-list) with
+the `allow multiple` option

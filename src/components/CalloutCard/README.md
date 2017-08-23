@@ -13,19 +13,17 @@ Callout cards are used to encourage merchants to take an action related to a
 new feature or opportunity. They are most commonly displayed in the
 sales channels section of Shopify.
 
-**Problem**
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants may not know about Shopify features designed to help them run their business.
 
-**Solution**
+### Solution
 
 Callout cards introduce features and give merchants a way to take action.
-
-> **Not what you’re looking for?**
->* To group similar concepts and tasks together, [use the card component](/components/structure/card).
->* To create page-level layout, [use the layout component](/components/structure/layout).
->* To explain a feature that a merchant hasn’t tried yet, [use the empty state component](/components/structure/empty-state).
-
 
 ---
 
@@ -180,3 +178,8 @@ Use to let merchants know about a feature or opportunity where there are two dis
   <p>Upload your store’s logo, change colors and fonts, and more.</p>
 </CalloutCard>
 ```
+## Related components
+
+* To group similar concepts and tasks together, [use the card component](/components/structure/card)
+* To create page-level layout, [use the layout component](/components/structure/layout)
+* To explain a feature that a merchant hasn’t tried yet, [use the empty state component](/components/structure/empty-state)

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import EventListener from '../EventListener';
 

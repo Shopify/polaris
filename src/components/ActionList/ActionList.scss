@@ -62,6 +62,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   align-items: center;
   height: $image-size;
   width: $image-size;
+  border-radius: border-radius();
 
   // We need the negative margin to ensure that the image does not set
   // the minimum height of the action item.

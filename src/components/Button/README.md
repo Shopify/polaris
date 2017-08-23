@@ -13,11 +13,11 @@ category: Actions
 Buttons make common actions immediately visible and easy to perform with one
 click or tap. They can be used for any type of action, including navigation.
 
-**Problem**
+### Problem
 
 An action needs to be completed by a merchant.
 
-**Solution**
+### Solution
 
 The button component can be used to help merchants find and complete actions across Shopify.
 
@@ -162,7 +162,7 @@ Use for the main call to action in empty states or for calls to action shown wit
 
 ### Full-width buttons
 
-Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320px wide.
+Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320 px wide.
 
 ```jsx
 <Button fullWidth>Add customer</Button>
@@ -170,8 +170,16 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 
 ### Disabled state
 
-Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it. Alternatively a button may be disabled because it’s been pressed and the associated action is in progress.
+Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
 
 ```jsx
 <Button disabled>Buy shipping label</Button>
+```
+
+### Loading state
+
+Use when a button has been pressed and the associated action is in progress.
+
+```jsx
+<Button loading>Save product</Button>
 ```

@@ -12,19 +12,19 @@ category: Forms
 Use radio buttons to present each item in a list of options where merchants must
 make a single selection.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Sometimes only one choice or option is available to merchants. There are only a few choices to display, and the [choice list component](/components/forms/choice-list) can’t be used.
 
-**Solution**
+### Solution
 
 Radio buttons present multiple items and require merchants to pick only one thing from a list.
-
->**Not what you’re looking for?**
->* To make simple lists of radio buttons easier to build, [use the choice list component](/components/forms/choice-list).
->* For long lists of options, [consider the select component](/components/forms/select) to avoid overwhelming merchants.
->* To present merchants with a list of checkboxes, [use the choice list component](/components/forms/choice-list) with the “allow multiple” option.
->* To display non-interactive list of related content, [use the content list component](/components/tables-and-lists/list).
 
 ---
 
@@ -96,3 +96,12 @@ Use radio buttons where merchants must make a single selection.
   helpText="Customers will only be able to check out as guests."
 />
 ```
+
+---
+
+## Related components
+
+* To make simple lists of radio buttons easier to build, [use the choice list component](/components/forms/choice-list)
+* For long lists of options, [consider the select component](/components/forms/select) to avoid overwhelming merchants
+* To present merchants with a list of checkboxes, [use the choice list component](/components/forms/choice-list) with the “allow multiple” option
+* To display non-interactive list of related content, [use the content list component](/components/tables-and-lists/list)

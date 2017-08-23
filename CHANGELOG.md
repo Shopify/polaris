@@ -1,5 +1,22 @@
 ## Unreleased
 
+## 1.4.0 (August 22, 2017)
+
+### Enhancements
+* Updated import, export, and view icons
+* Improved documentation of various components
+* Improved how ActionList handles images and groups
+* Exposed PopoverCloseSource from Popover component
+
+### Bug fixes
+* Fixed PageActions spacing in IE11
+* Fixed ID inconsistency on TextFields
+* Fixed spacing on Page component with no header (thanks [bakura10](https://github.com/bakura10) for the [original issue](https://github.com/Shopify/polaris/issues/160))
+* Fixed disabled state on primary and destructive buttons
+
+### Chores
+* Upgraded javascript-utilities to the latest version
+
 ## 1.3.1 (August 10, 2017)
 ### Bug fixes
 * Fixed classnames in built *.scss files

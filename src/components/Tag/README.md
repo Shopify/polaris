@@ -10,17 +10,19 @@ category: Forms
 
 Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
 
+---
 
-**Problem**
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to be able to add and remove keywords from objects (e.g. products or orders) to organize and categorize them.
 
-**Solution**
+### Solution
 
 Tags are visual indicators of categories that can be changed or removed. They help merchants organize objects in the Shopify interface.
-
-> **Not what you’re looking for?**
->* To show the status of an object, [use the badge component](/components/images-and-icons/badge).
 
 ---
 
@@ -50,3 +52,9 @@ Use to represent a list of attributes on an object that can be added or removed.
 ```jsx
 <Tag>Wholesale</Tag>
 ```
+
+---
+
+## Related components
+
+* To show the status of an object, [use the badge component](/components/images-and-icons/badge)

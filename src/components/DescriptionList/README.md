@@ -11,18 +11,21 @@ Description lists are a way to organize and explain related information.
 They’re particularly useful when you need to list and define terms such as in a
 glossary.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants may need to reference a range of concepts to understand how they work
 at Shopify.
 
-**Solution**
+### Solution
 
 Description lists associate a list item with a definition or description in a
 format that’s easy to reference and scan.
-
->**Not what you’re looking for?**
->* To create a list of actions or navigation, [use the action list component](/components/actions/action-list).
 
 ---
 
@@ -115,3 +118,9 @@ Use when you need to present merchants with a list of items or terms alongside d
   ]}
 />
 ```
+
+---
+
+## Related components
+
+* To create a list of actions or navigation, [use the action list component](/components/actions/action-list).

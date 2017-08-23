@@ -16,21 +16,21 @@ hidePlayground: true
 # Embedded modal
 Embedded modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
 
-**Problem:**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need a way to focus on certain tasks that can’t be left half-finished.
 
-**Solution:**
+### Solution
 
 Embedded modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
 
 This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
-
-> **Not what you’re looking for?**
->* To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](/components/collapsible) to expand content in place within the page.
->* To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover).
->* To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/banner).
->* To present confirmation that an action was successful, [use the flash message  component](/components/flash message).
 
 ---
 
@@ -167,5 +167,13 @@ Add a menu item
   }]}
   onClose={() => this.setState({open: false})}
 />
-)
 ```
+
+---
+
+## Related components
+
+* To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](/components/collapsible) to expand content in place within the page
+* To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover)
+* To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/banner)
+* To present confirmation that an action was successful, [use the flash message  component](/components/flash message)

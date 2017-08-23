@@ -11,16 +11,19 @@ category: Images and icons
 
 Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants are scanning the page, orienting themselves or searching visually for a particular item.
 
-**Solution**
+### Solution
 
 Thumbnails provide a visual anchor and help structure the page. Because they are a visual representation, thumbnails make individual items identifiable at a glance.
-
-> **Not what you’re looking for?**
-> * To present a thumbnail representation of an individual or business in the interface, [use the avatar component](/components/images-and-icons/avatar).
 
 ---
 
@@ -29,9 +32,9 @@ Thumbnails provide a visual anchor and help structure the page. Because they are
 Thumbnails should:
 
 * Be one of 3 sizes:
-  * Small (40 x 40px): Use when the Medium size is too large for the layout, or when the thumbnail has less importance
-  * Medium (60 x 60px): Use as the default size
-  * Large (80 x 80px): Use when an thumbnail is a major focal point. Avoid this size in lists of like items.
+  * Small (40 x 40 px): Use when the Medium size is too large for the layout, or when the thumbnail has less importance
+  * Medium (60 x 60 px): Use as the default size
+  * Large (80 x 80 px): Use when an thumbnail is a major focal point. Avoid this size in lists of like items.
 
 ---
 
@@ -41,8 +44,8 @@ Any time you use an image to communicate a concept on Shopify, it’s important 
 
 For thumbnails, we recommend using a format that describes what will show in the image:
 
-* alt="photo of {product}", e.g. "photo of black t-shirt with cartoon tiger"
-* alt="" to ignore the image
+* `alt="Photo of {product}"`, e.g. "Photo of black t-shirt with cartoon tiger"
+* An empty `alt=""` attribute ignores the image in assistive technologies such as screen readers, and may be used on decorative thumbnails
 
 
 | Prop | Type | Description |
@@ -77,3 +80,9 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 ```jsx
 <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" size="large" alt="Black choker necklace" />
 ```
+
+---
+
+## Related components
+
+* To present a thumbnail representation of an individual or business in the interface, [use the avatar component](/components/images-and-icons/avatar)

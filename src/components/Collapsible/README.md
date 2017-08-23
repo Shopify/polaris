@@ -14,17 +14,20 @@ block that can be expanded or collapsed by the merchant. Generally this is
 used for lower priority information or content that merchants don’t need to see
 all the time.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants may occasionally need access to information that might overwhelm
 the interface or push important details too far down the page.
 
-**Solution**
+### Solution
 
 The collapsible component lets merchants read longer form information on their own time.
-
-> **Not what you’re looking for?**
->* To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable).
 
 ---
 
@@ -60,3 +63,9 @@ Use for a basic “show more” interaction when you need to display more conten
   </TextContainer>
 </Collapsible>
 ```
+
+---
+
+## Related components
+
+* To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)

@@ -11,16 +11,19 @@ category: Images and icons
 
 Keyboard key is used to educate merchants about keyboard shortcuts.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Some merchants, particularly power users, may want to find ways to speed up their workflows.
 
-**Solution**
+### Solution
 
 The keyboard key component demonstrates how to speed up work using shortcuts.
-
-> **Not what you’re looking for?**
->* To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](/components/tooltip).
 
 ---
 
@@ -64,3 +67,9 @@ Use to list a related set of keyboard shortcuts.
 ```jsx
 <KeyboardKey>Ctrl</KeyboardKey>
 ```
+
+---
+
+## Related components
+
+* To add a tooltip for a button with an associated keyboard shortcut, [use the tooltip component](/components/tooltip)

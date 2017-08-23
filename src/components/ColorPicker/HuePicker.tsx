@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Slidable, {Position} from './Slidable';
 import * as styles from './ColorPicker.scss';

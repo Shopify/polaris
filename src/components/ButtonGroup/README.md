@@ -13,20 +13,21 @@ category: Actions
 Button group displays multiple related actions in a row to help with horizontal
 arrangement and the spacing of calls to action.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to understand when a set of actions are related so they can take
 the appropriate next step.
 
-**Solution**
+### Solution
 
 Button group lays out a set of buttons horizontally as a set and lets them wrap
 if necessary.
-
-> **Not what you’re looking for?**
->
->* To learn how to use individual buttons, [use the button component](/components/actions/button).
->* To embed an action or navigation into a line of text, [use the link component](/components/navigation/link).
 
 ---
 
@@ -35,7 +36,7 @@ if necessary.
 Button groups should:
 
 * Only use buttons that follow the
-[best practices outlined in the button component](component/button)
+[best practices outlined in the button component](/component/button)
 * Group together calls to action that have a relationship
 * Be used with consideration that too many calls to action can cause merchants
 to be unsure of what to do next
@@ -65,8 +66,8 @@ Use when you have multiple buttons to space them out evenly.
 
 ```jsx
 <ButtonGroup>
-  <Button>Button 1</Button>
-  <Button>Button 2</Button>
+  <Button>Cancel</Button>
+  <Button primary>Save</Button>
 </ButtonGroup>
 ```
 
@@ -76,7 +77,14 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 ```jsx
 <ButtonGroup segmented>
-  <Button>Button 1</Button>
-  <Button>Button 2</Button>
+  <Button>Bold</Button>
+  <Button>Italic</Button>
+  <Button>Underline</Button>
 </ButtonGroup>
 ```
+---
+
+## Related components
+
+* To learn how to use individual buttons, [use the button component](/components/actions/button)
+* To embed an action or navigation into a line of text, [use the link component](/components/navigation/link)

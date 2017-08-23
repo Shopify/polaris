@@ -13,11 +13,17 @@ category: Titles and text
 
 Use when an element needs to be available to assistive technology (e.g. screen readers) but otherwise hidden.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 A content element may be visually redundant but provides important context to merchants who are using a screen reader.
 
-**Solution**
+### Solution
 
 Wrap the piece of text in the visually hidden component so it doesn’t show on the interface, but will still be available to merchants using a screen reader.
 

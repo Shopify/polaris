@@ -11,19 +11,21 @@ category: Structure
 Cards are used to group similar concepts and tasks together to make Shopify
 easier for merchants to scan, read, and get things done.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants may be feeling overwhelmed by too much information or too many
 different tasks.
 
-**Solution**
+### Solution
 
 Grouping tasks and concepts into digestible sections using cards helps
 merchants complete their tasks faster.
-
-> **Not what you’re looking for?**
->* To create page-level layout, [use the layout component](/components/structure/layout).
->* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card).
 
 ---
 
@@ -189,7 +191,7 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
-### Card with call to action in the the footer
+### Card with call to action in the footer
 
 Use when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
 
@@ -294,3 +296,7 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
   </List>
 </Card>
 ```
+## Related components
+
+* To create page-level layout, [use the layout component](/components/structure/layout)
+* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)

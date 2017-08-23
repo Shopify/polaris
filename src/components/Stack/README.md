@@ -13,10 +13,6 @@ centering. A stack is made of flexible items that wrap each of the stack’s
 children. Options provide control of the spacing and relative size of the items
 in the stack.
 
-> **Not what you’re looking for?**
->
->* To create the large-scale structure of pages,[use the layout component](/components/structure/layout).
-
 ---
 
 ## Best Practices
@@ -117,3 +113,9 @@ Use for aligning buttons or secondary content to the right edge of another eleme
   </Stack.Item>
 </Stack>
 ```
+
+---
+
+## Related components
+
+* To create the large-scale structure of pages,[use the layout component](/components/structure/layout)

@@ -13,18 +13,19 @@ category: Structure
 
 Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to be able to take important page actions, even after they’ve scrolled to the bottom of the page.
 
-**Solution**
+### Solution
 
 Page actions show at the bottom of pages so that merchants don’t need to scroll up to take important actions.
-
->**Not what you’re looking for?**
->
->* To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page.
->* To let merchants take key actions at the bottom of specific pages in the interface, [use the page actions component](/components/structure/page-actions)
 
 ---
 
@@ -84,9 +85,9 @@ Add a menu item
 
 ## Examples
 
-###  Default page actions
+### Default page actions
 
-Used on a resource pages (e.g. an individual order page or a product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
+Used on a resource page (e.g. individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
 
 ```jsx
 <PageActions
@@ -94,7 +95,25 @@ Used on a resource pages (e.g. an individual order page or a product page) to le
     content: 'Save',
   }}
   secondaryActions={[{
-    content: 'Cancel',
+    content: 'Delete',
   }]}
 />
 ```
+
+### Primary action only
+
+Not all page actions require a secondary action.
+
+```jsx
+<PageActions
+  primaryAction={{
+    content: 'Save',
+  }}
+/>
+```
+
+---
+
+## Related components
+
+* To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page

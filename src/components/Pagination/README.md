@@ -14,17 +14,19 @@ category: Navigation
 
 Use pagination to allow navigation between pages that represent an ordered collection of items.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Long pages or lists of information can be overwhelming and hard to navigate. Alternatively, it can be a convenience to jump between objects related to each other in a sequence.
 
-**Solution**
+### Solution
 
 Pagination helps to break up long sections of information. Alternatively, pagination provides a shortcut to navigate between pages when they represent items within a collection.
-
-> **Not what you're looking for?**
-> * To create stand-alone navigational links or calls to action, [use the button component](/components/actions/button).
-> * To embed actions or pathways to more information within a sentence, [use the link component](/components/navigation/link).
 
 ---
 
@@ -69,3 +71,10 @@ Use for pagination at the bottom of lists.
   hasNext
   onNext={() => {console.log('Next')}} />
 ```
+
+---
+
+## Related components
+
+* To create stand-alone navigational links or calls to action, [use the button component](/components/actions/button)
+* To embed actions or pathways to more information within a sentence, [use the link component](/components/navigation/link)

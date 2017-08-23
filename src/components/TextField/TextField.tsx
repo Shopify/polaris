@@ -1,5 +1,5 @@
 import * as React from 'react';
-import autobind from '@shopify/javascript-utilities/autobind';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
@@ -71,7 +71,7 @@ export default class TextField extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      id = getUniqueID(),
+      id = this.state.id,
       value = '',
       placeholder,
       disabled,

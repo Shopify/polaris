@@ -12,18 +12,19 @@ category: Forms
 
 Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have a merchant indicate they agree to specific terms and services.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants may need to choose more than one item from a list of options.
 
-**Solution**
+### Solution
 
 A checkbox lets merchants choose one or many things from a list.
-
-> **Not what you’re looking for?**
->* To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button).
->* To display a list of related content, [use the choice list component](/components/forms/choice-list).
->* To create an ungrouped list, [use the content list component](/components/tables-and-lists/list).
 
 ---
 
@@ -112,3 +113,11 @@ Use in forms to toggle the state of something on or off. Default checkboxes can 
 ```jsx
 <Checkbox label="Basic checkbox" />
 ```
+
+---
+
+## Related components
+
+* To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button)
+* To display a list of related content, [use the choice list component](/components/forms/choice-list)
+* To create an ungrouped list, [use the content list component](/components/tables-and-lists/list)

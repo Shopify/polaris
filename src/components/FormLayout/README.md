@@ -12,19 +12,21 @@ category: Forms
 
 # Form Layout
 
-Form layouts are used to create responsive forms without using grids.
+Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
 
-**Problem**
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
 
 Merchants need to fill out information across Shopify.
 
-**Solution**
+### Solution
 
 The form layout makes forms easier to scan and complete because it stacks fields vertically on the interface.
-
->**Not what you’re looking for?**
->
-> * To structure a lot of content, [use the layout component](/components/structure/layout).
 
 ---
 
@@ -109,9 +111,13 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 </FormLayout>
 ```
 
-### Form layout with field groups
+### With field group
 
-Use to show multiple fields horizontally when it’s appropriate such as when displaying city, region, and postal/zip code fields. Fields displayed horizontally will wrap as necessary.
+Use field groups to arrange multiple fields in a row.
+
+Works best for familiar layouts such as a row of city, state, and zip code fields. Use caution when arranging unrelated fields next to each other as this makes fields easier to miss.
+
+Field groups will wrap automatically on smaller screens.
 
 ```jsx
 <FormLayout>
@@ -124,7 +130,7 @@ Use to show multiple fields horizontally when it’s appropriate such as when di
 
 ### Condensed field group
 
-For short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
+For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 
 ```jsx
 <FormLayout>
@@ -136,3 +142,9 @@ For short inputs, the width of the inputs may be reduced in order to fit more fi
   </FormLayout.Group>
 </FormLayout>
 ```
+
+---
+
+## Related components
+
+* To arrange the largest sections of a page, [use the layout component](/components/structure/layout)

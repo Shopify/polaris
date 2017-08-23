@@ -177,6 +177,7 @@ export {
 export {
   default as Popover,
   Props as PopoverProps,
+  CloseSource as PopoverCloseSource,
 } from './Popover';
 
 export {
