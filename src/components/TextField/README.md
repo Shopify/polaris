@@ -265,6 +265,14 @@ Use to let merchants know if their input is valid or if there’s an error. When
 <TextField label="Store name" error="Store name is required" />
 ```
 
+### Disabled text field
+
+Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state.  
+
+```jsx
+<TextField label="Store name" disabled />
+```
+
 ---
 
 ## Related components
