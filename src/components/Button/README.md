@@ -13,6 +13,12 @@ category: Actions
 Buttons make common actions immediately visible and easy to perform with one
 click or tap. They can be used for any type of action, including navigation.
 
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
 ### Problem
 
 An action needs to be completed by a merchant.
@@ -20,12 +26,6 @@ An action needs to be completed by a merchant.
 ### Solution
 
 The button component can be used to help merchants find and complete actions across Shopify.
-
->**Not what you’re looking for?**
->
->* To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group).
->* To embed an action into a line of text, [use the link component](/components/navigation/link).
-
 
 ---
 
@@ -183,3 +183,10 @@ Use when a button has been pressed and the associated action is in progress.
 ```jsx
 <Button loading>Save product</Button>
 ```
+
+---
+
+## Related components
+
+* To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group)
+* To embed an action into a line of text, [use the link component](/components/navigation/link)
