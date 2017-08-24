@@ -118,4 +118,4 @@ Use for aligning buttons or secondary content to the right edge of another eleme
 
 ## Related components
 
-* To create the large-scale structure of pages,[use the layout component](/components/structure/layout)
+* To create the large-scale structure of pages, [use the layout component](/components/structure/layout)
