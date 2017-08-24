@@ -38,6 +38,8 @@ Visually hidden should:
 - Be used on any content that is normally present but is being omitted
 - Make sense in context when used with a screen reader
 
+---
+
 ## Content guidelines
 
 There are no content elements specific to this component. Follow any guidelines appropriate to the element being hidden.
