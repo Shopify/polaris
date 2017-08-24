@@ -16,6 +16,23 @@ hidePlayground: true
 # Embedded modal
 Embedded modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
 
+This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
+
+---
+
+## Properties
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| open* | boolean | Whether the modal is open or not |
+| src* | string | The URL that will be loaded as the content of the modal |
+| title | string | Modal title, in large type |
+| width | enum['large', 'fullwidth'] | Controls the width of the modal |
+| height | number | The height of the modal (in pixels) |
+| primaryAction | Action | Primary action |
+| secondaryActions | Action[] | Collection of secondary actions |
+| onClose* | function() | Callback when the modal is closed |
+
 ---
 
 ## Purpose
@@ -29,8 +46,6 @@ Merchants need a way to focus on certain tasks that can’t be left half-finishe
 ### Solution
 
 Embedded modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
-
-This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
 
 ---
 
@@ -130,21 +145,6 @@ Add menu item
 #### Don't
 Add a menu item
 <!-- end -->
-
----
-
-## Properties
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| open* | boolean | Whether the modal is open or not |
-| src* | string | The URL that will be loaded as the content of the modal |
-| title | string | Modal title, in large type |
-| width | enum['large', 'fullwidth'] | Controls the width of the modal |
-| height | number | The height of the modal (in pixels) |
-| primaryAction | Action | Primary action |
-| secondaryActions | Action[] | Collection of secondary actions |
-| onClose* | function() | Callback when the modal is closed |
 
 ---
 

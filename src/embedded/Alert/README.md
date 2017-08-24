@@ -23,7 +23,26 @@ hidePlayground: true
 
 # Embedded alert
 
-Embedded alerts are similar to [embedded modals](https://polaris.myshopify.io/components/embedded/modal#navigation), but use no more than two calls to action and only one string of body text. They are simpler to implement than embedded modals, and add consistency for alert and confirmation messages. Alert messages provide merchants with important information that needs to be acknowledged before continuing. Confirmation messages prevent merchants from immediately completing potentially irreversible actions.
+Embedded alerts are similar to [embedded modals](https://polaris.myshopify.io/components/embedded/modal#navigation), but use no more than two calls to action and only one string of body text. They are simpler to implement than embedded modals, and add consistency for alert and confirmation messages.
+
+This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
+
+---
+
+## Properties
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| open* | boolean | Whether the alert is open |
+| children* | string | The content to display inside the alert |
+| title | string | The alert title |
+| destructive | string | For confirming a destructive or dangerous action |
+| confirmContent* | string | The content of the confirmation button |
+| cancelContent | string | The content of the cancel button |
+| onConfirm* | function() | Callback when the confirmation button is clicked |
+| onCancel | function() | Callback when the cancel button is clicked |
+
+---
 
 ## Purpose
 
@@ -38,8 +57,6 @@ Think about the merchant problems this component solves when you’re using it:
 
 1. Embedded alerts require merchants to acknowledge they’ve seen important information before continuing. In this case, follow the content guidelines for alert messaging.
 2. Embedded alerts can also require merchants to confirm (or back out of) an action before they can continue. It helps them maintain focus and helps prevent them from accidentally making mistakes that are difficult to reverse. In this case, follow the content guidelines for confirmation messaging.
-
-This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
 
 ---
 
@@ -192,21 +209,6 @@ Secondary action:
 - Discard
 - Keep editing
 <!-- end -->
-
----
-
-## Properties
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| open* | boolean | Whether the alert is open |
-| children* | string | The content to display inside the alert |
-| title | string | The alert title |
-| destructive | string | For confirming a destructive or dangerous action |
-| confirmContent* | string | The content of the confirmation button |
-| cancelContent | string | The content of the cancel button |
-| onConfirm* | function() | Callback when the confirmation button is clicked |
-| onCancel | function() | Callback when the cancel button is clicked |
 
 ---
 
