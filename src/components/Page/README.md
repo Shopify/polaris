@@ -41,6 +41,8 @@ The page component should:
 - Provide other page-level actions as secondary actions in the page header.
 - When the page represents an object of a certain type, provide pagination links to the previous and next object of the same type.
 
+---
+
 ## Content guidelines
 
 ### Title
