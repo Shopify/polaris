@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.4.1 (August 24, 2017)
+
+Various documentation fixes.
+
 ## 1.4.0 (August 22, 2017)
 
 ### Enhancements
