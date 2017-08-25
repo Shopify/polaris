@@ -32,7 +32,7 @@ Thumbnails provide a visual anchor and help structure the page. Because they are
 Thumbnails should:
 
 * Be one of 3 sizes:
-  * Small (40 × 40 px): Use when the Medium size is too large for the layout, or when the thumbnail has less importance
+  * Small (40 × 40 px): Use when the Medium size is too large for the layout, or when the thumbnail has less importance
   * Medium (60 × 60 px): Use as the default size
   * Large (80 × 80 px): Use when an thumbnail is a major focal point. Avoid this size in lists of like items.
 
