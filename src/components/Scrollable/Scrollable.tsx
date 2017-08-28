@@ -37,12 +37,14 @@ export default class Scrollable extends React.Component<Props, State> {
   componentDidMount() {
     if (this.scrollArea == null) { return; }
     addEventListener(this.scrollArea, 'scroll', this.handleScroll);
+    addEventListener(window, 'resize', this.handleScroll);
     this.handleScroll();
   }
 
   componentWillUnmount() {
     if (this.scrollArea == null) { return; }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
+    removeEventListener(window, 'resize', this.handleScroll);
   }
 
   componentDidUpdate() {
