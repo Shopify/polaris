@@ -1,5 +1,5 @@
 ---
-name: VisuallyHidden
+name: Visually hidden
 tags:
   - a11y
   - accessibility
