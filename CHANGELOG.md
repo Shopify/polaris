@@ -1,5 +1,8 @@
 ## Unreleased
 
+### Enhancements
+* Updated scrollable component to remember scroll position on re-render ([#583](https://github.com/Shopify/polaris-react/pull/583))
+
 ## 1.4.1 (August 24, 2017)
 
 Various documentation fixes.
