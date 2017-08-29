@@ -10,6 +10,7 @@ export {default as cancel} from './cancel.svg';
 export {default as cancelSmall} from './cancel-small.svg';
 export {default as caretDown} from './caret-down.svg';
 export {default as caretUp} from './caret-up.svg';
+export {default as checkmark} from './checkmark.svg';
 export {default as chevronDown} from './chevron-down.svg';
 export {default as chevronLeft} from './chevron-left.svg';
 export {default as chevronRight} from './chevron-right.svg';

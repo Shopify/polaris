@@ -5,7 +5,6 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Choice, {Error, errorID, helpTextID} from '../Choice';
 import Icon from '../Icon';
 
-import checkmark from './icons/checkmark.svg';
 import * as styles from './Checkbox.scss';
 
 export interface Props {
@@ -80,7 +79,7 @@ export default function Checkbox({
 
         <div className={styles.Backdrop} />
         <div className={styles.Icon}>
-          <Icon source={checkmark} />
+          <Icon source="checkmark" />
         </div>
       </div>
     </Choice>
