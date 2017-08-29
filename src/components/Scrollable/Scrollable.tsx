@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -37,14 +37,14 @@ export default class Scrollable extends React.Component<Props, State> {
   componentDidMount() {
     if (this.scrollArea == null) { return; }
     addEventListener(this.scrollArea, 'scroll', this.handleScroll);
-    addEventListener(window, 'resize', this.handleScroll);
+    addEventListener(window, 'resize', this.handleResize);
     this.handleScroll();
   }
 
   componentWillUnmount() {
     if (this.scrollArea == null) { return; }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
-    removeEventListener(window, 'resize', this.handleScroll);
+    removeEventListener(window, 'resize', this.handleResize);
   }
 
   componentDidUpdate() {
@@ -105,5 +105,10 @@ export default class Scrollable extends React.Component<Props, State> {
       bottomShadow: shouldBottomShadow,
       scrollPosition: scrollTop,
     });
+  }
+
+  @debounce(50, { trailing: true })
+  private handleResize() {
+    this.handleScroll();
   }
 }
