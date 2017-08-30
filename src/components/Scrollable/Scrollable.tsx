@@ -107,6 +107,7 @@ export default class Scrollable extends React.Component<Props, State> {
     });
   }
 
+  @autobind
   @debounce(50, { trailing: true })
   private handleResize() {
     this.handleScroll();
