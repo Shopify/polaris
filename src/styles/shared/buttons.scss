@@ -31,15 +31,15 @@
       shadow(faint),
       0 0 1px 0 $active-color;
   }
+}
 
-  &.disabled {
-    @include recolor-icon(color(white));
-    // Transition gradient to gradient to avoid flicker
-    background: linear-gradient(to bottom, lighten($button-color, 25%), lighten($button-color, 25%));
-    border-color: lighten($button-color, 20%);
-    box-shadow: none;
-    color: color(white);
-  }
+@mixin button-filled-disabled($button-color) {
+  @include recolor-icon(color(white));
+  // Transition gradient to gradient to avoid flicker
+  background: linear-gradient(to bottom, lighten($button-color, 25%), lighten($button-color, 25%));
+  border-color: lighten($button-color, 20%);
+  box-shadow: none;
+  color: color(white);
 }
 
 @mixin button-outline($outline-color) {
