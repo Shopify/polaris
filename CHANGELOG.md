@@ -1,8 +1,13 @@
 ## Unreleased
 
+## 1.5.0
 ### Enhancements
 * Updated scrollable component to remember scroll position on re-render ([#583](https://github.com/Shopify/polaris-react/pull/583))
-* Added checkmark icon to the `Icon` component to expose it to any component ([#584](https://github.com/Shopify/polaris-react/pull/584))
+* Added checkmark icon to the `Icon` component(https://github.com/Shopify/polaris-react/pull/584))
+* Added an example for a disabled `TextField`
+
+### Bug fixes
+* Fixed typo in `Icon` code example ([#581](https://github.com/Shopify/polaris-react/pull/581))
 
 ## 1.4.1 (August 24, 2017)
 
