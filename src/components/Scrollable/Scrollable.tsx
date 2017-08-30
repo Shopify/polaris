@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -18,6 +18,7 @@ export interface Props extends React.HTMLProps<HTMLDivElement> {
 export interface State {
   topShadow: boolean,
   bottomShadow: boolean,
+  scrollPosition: number,
 }
 
 export default class Scrollable extends React.Component<Props, State> {
@@ -28,19 +29,29 @@ export default class Scrollable extends React.Component<Props, State> {
   state: State = {
     topShadow: false,
     bottomShadow: false,
+    scrollPosition: 0,
   };
 
   private scrollArea: HTMLElement | null;
 
   componentDidMount() {
-    if (this.scrollArea == null || !this.props.shadow) { return; }
+    if (this.scrollArea == null) { return; }
     addEventListener(this.scrollArea, 'scroll', this.handleScroll);
+    addEventListener(window, 'resize', this.handleResize);
     this.handleScroll();
   }
 
   componentWillUnmount() {
-    if (this.scrollArea == null || !this.props.shadow) { return; }
+    if (this.scrollArea == null) { return; }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
+    removeEventListener(window, 'resize', this.handleResize);
+  }
+
+  componentDidUpdate() {
+    const {scrollPosition} = this.state;
+    if (scrollPosition && this.scrollArea && scrollPosition > 0) {
+      this.scrollArea.scrollTop = scrollPosition;
+    }
   }
 
   render() {
@@ -83,15 +94,21 @@ export default class Scrollable extends React.Component<Props, State> {
   @autobind
   private handleScroll() {
     const {scrollArea} = this;
-    if (scrollArea == null || !this.props.shadow) { return; }
-
+    const {shadow} = this.props;
+    if (scrollArea == null) { return; }
     const {scrollTop, clientHeight, scrollHeight} = scrollArea;
-    const shouldBottomShadow = !(scrollTop + clientHeight >= scrollHeight);
-    const shouldTopShadow = scrollTop > 0;
+    const shouldBottomShadow = Boolean(shadow && !(scrollTop + clientHeight >= scrollHeight));
+    const shouldTopShadow = Boolean(shadow && scrollTop > 0);
 
     this.setState({
       topShadow: shouldTopShadow,
       bottomShadow: shouldBottomShadow,
+      scrollPosition: scrollTop,
     });
+  }
+
+  @debounce(50, { trailing: true })
+  private handleResize() {
+    this.handleScroll();
   }
 }
