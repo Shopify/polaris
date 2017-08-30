@@ -62,11 +62,19 @@ $spinner-cycle-duration: 0.7s;
 .primary {
   @include button-filled(color(indigo), color(indigo, dark));
   @include recolor-icon(color(white));
+
+  &.disabled {
+    @include button-filled-disabled(color(indigo));
+  }
 }
 
 .destructive {
   @include button-filled(color(red), color(red, dark));
   @include recolor-icon(color(white));
+
+  &.disabled {
+    @include button-filled-disabled(color(red));
+  }
 }
 
 .outline {

@@ -1,9 +1,13 @@
-## Unreleased
+## 1.5.1
+
+### Bug fixes
+* Fixed disabled buttons when using local class names
+* Fixed Scrollable resize listener not autobinding
 
 ## 1.5.0
 ### Enhancements
 * Updated scrollable component to remember scroll position on re-render
-* Added checkmark icon to the `Icon` component(https://github.com/Shopify/polaris-react/pull/584))
+* Added checkmark icon to the `Icon` component
 * Added an example for a disabled `TextField`
 
 ### Bug fixes
