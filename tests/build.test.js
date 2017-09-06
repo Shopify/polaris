@@ -55,13 +55,17 @@ describe('build', () => {
   });
 
   describe('esnext', () => {
+    const STACK_CLASSNAME_MATCHER = /"Stack":\s*"([^"]*)"/;
+
     it('facilitates production builds without typescript', () => {
       expect(fs.existsSync('esnext/index.js')).toBe(true);
+      expect(fs.existsSync('esnext/server.js')).toBe(true);
     });
 
     it('preserves classes to facilitate class-level tree shaking', () => {
       // `Stack` is a foundation class, so is unlikely to disappear from the build.
       expect(fs.readFileSync('esnext/index.js', 'utf8')).toMatch('class Stack');
+      expect(fs.readFileSync('esnext/server.js', 'utf8')).toMatch('class Stack');
     });
 
     it('generates scss files to be built from source in production builds', () => {
@@ -70,6 +74,26 @@ describe('build', () => {
 
     it('minifies class names', () => {
       expect(fs.readFileSync('esnext/styles/components/Stack.scss', 'utf8')).not.toMatch('Stack');
+    });
+
+    it('uses the correct class names in the server and index builds', () => {
+      const indexStackClassname = fs.readFileSync('esnext/index.js', 'utf8').match(STACK_CLASSNAME_MATCHER);
+      const serverStackClassname = fs.readFileSync('esnext/server.js', 'utf8').match(STACK_CLASSNAME_MATCHER);
+      expect(indexStackClassname[1]).toBeTruthy();
+      expect(indexStackClassname[1]).toBe(serverStackClassname[1]);
+      expect(fs.readFileSync('esnext/styles/components/Stack.scss', 'utf8')).toMatch(`.${indexStackClassname[1]}`);
+    });
+
+    it('preserves native imports in the index build', () => {
+      const indexContents = fs.readFileSync('esnext/index.js', 'utf8');
+      expect(indexContents).toMatch('import ');
+      expect(indexContents).not.toMatch('require(');
+    });
+
+    it('uses CommonJS in the server build', () => {
+      const indexContents = fs.readFileSync('esnext/server.js', 'utf8');
+      expect(indexContents).not.toMatch('import ');
+      expect(indexContents).toMatch('require(');
     });
   });
 });

@@ -1,4 +1,5 @@
 import {resolve} from 'path';
+import {readJSONSync} from 'fs-extra';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
@@ -12,6 +13,7 @@ import icon from './plugins/icon';
 
 import getNamespacedClassName from './namespaced-classname';
 import getMinifiedClassName from './minified-classname';
+import createExistingClassnameTokenUser from './use-existing-classname-tokens';
 
 const project = resolve(__dirname, '../..');
 const buildRoot = resolve(project, './build-intermediate');
@@ -23,7 +25,23 @@ const sassResources = [
   resolve(styleRoot, './shared.scss'),
 ];
 
-export default function createRollupConfig({entry, outputCSS, minifyClassnames = false}) {
+export default function createRollupConfig({
+  entry,
+  writeCSS,
+  cssPath,
+  minifyClassnames = false,
+  useExistingClassTokens = false,
+}) {
+  let generateScopedName;
+
+  if (useExistingClassTokens) {
+    generateScopedName = createExistingClassnameTokenUser(
+      readJSONSync(`${cssPath.slice(0, -4)}.tokens.json`)
+    );
+  } else {
+    generateScopedName = minifyClassnames ? getMinifiedClassName : getNamespacedClassName;
+  }
+
   return {
     entry,
     external(id) {
@@ -38,10 +56,10 @@ export default function createRollupConfig({entry, outputCSS, minifyClassnames =
       }),
       commonjs(),
       styles({
-        output: outputCSS,
+        output: writeCSS && cssPath,
         includePaths: [styleRoot],
         includeAlways: sassResources,
-        generateScopedName: minifyClassnames ? getMinifiedClassName : getNamespacedClassName,
+        generateScopedName,
       }),
       icon({
         include: '**/icons/*.svg',
