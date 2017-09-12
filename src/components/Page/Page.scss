@@ -1,6 +1,5 @@
 $navigation-elements-height: rem(36px);
 $title-height: line-height(display-large, large-screen);
-$actions-vertical-spacing: spacing(tight);
 $action-horizontal-padding: (1.5 * spacing(tight));
 
 $difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
@@ -16,17 +15,7 @@ html, body {
 }
 
 .Page {
-  margin: 0 auto;
-  padding: 0;
-  max-width: layout-width(primary, max) + layout-width(secondary, max) + layout-width(inner-spacing);
-
-  @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose);
-  }
-
-  @include page-content-when-not-partially-condensed {
-    padding: 0 spacing(extra-loose);
-  }
+  @include page-layout;
 }
 
 .fullWidth {
@@ -34,24 +23,11 @@ html, body {
 }
 
 .Content {
-  margin: spacing(loose) 0;
-
-  @include page-content-when-not-partially-condensed {
-    margin-top: spacing(loose);
-  }
+  @include content-layout;
 }
 
 .Header {
-  padding: spacing(loose) spacing(loose) 0;
-
-  @include page-content-when-not-fully-condensed {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @include page-content-when-not-partially-condensed {
-    padding-top: spacing(extra-loose);
-  }
+  @include header-layout;
 }
 
 .Header-hasPagination,
@@ -60,7 +36,7 @@ html, body {
 }
 
 .Header-hasSecondaryActions {
-  padding-top: rem(24px);
+  @include header-has-secondaryactions;
 }
 
 .Header-hasSeparator {
@@ -114,15 +90,7 @@ html, body {
 }
 
 .Actions {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 2 * $actions-vertical-spacing;
-
-  @include page-content-when-not-fully-condensed {
-    margin-top: $actions-vertical-spacing;
-  }
+  @include actions-layout;
 }
 
 .SecondaryActions {

@@ -265,3 +265,19 @@ export {
   default as VisuallyHidden,
   Props as VisuallyHiddenProps,
 } from './VisuallyHidden';
+
+export {
+  default as SkeletonPage,
+  Props as SkeletonPageProps,
+} from './SkeletonPage';
+
+export {
+  default as SkeletonBodyText,
+  Props as SkeletonBodyTextProps,
+} from './SkeletonBodyText';
+
+export {
+  default as SkeletonDisplayText,
+  Props as SkeletonDisplayTextProps,
+} from './SkeletonDisplayText';
+
