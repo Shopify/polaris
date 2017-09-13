@@ -168,8 +168,11 @@ html, body {
 .Action {
   @include unstyled-button;
   @include text-style-body;
+  display: inline-flex;
+  align-items: center;
   position: relative;
   min-height: control-height();
+  text-decoration: none;
 
   // Negative margin vertically for the amount that is not covered by
   // the focus overlay
