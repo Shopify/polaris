@@ -1,7 +1,7 @@
 ## Unreleased
 
 ### Bug fixes
-* Fixes alignment of page action links ([#509](https://github.com/Shopify/polaris-react/pull/509))
+* Fixes alignment of page action links ([#589](https://github.com/Shopify/polaris-react/pull/589))
 
 ## 1.5.1
 
