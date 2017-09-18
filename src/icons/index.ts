@@ -29,6 +29,7 @@ export {default as duplicate} from './duplicate.svg';
 export {default as embed} from './embed.svg';
 export {default as export} from './export.svg';
 export {default as external} from './external.svg';
+export {default as help} from './help.svg';
 export {default as horizontalDots} from './horizontal-dots.svg';
 export {default as import} from './import.svg';
 export {default as notes} from './notes.svg';

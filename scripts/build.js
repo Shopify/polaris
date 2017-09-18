@@ -55,15 +55,38 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
       }
     `);
   })
-  .then(() => runRollup({entry: mainEntry, output: 'polaris.js', format: 'cjs', css: true}))
-  .then(() => runRollup({entry: mainEntry, output: 'polaris.es.js', format: 'es', css: false}))
-  .then(() => runRollup({entry: embeddedEntry, output: 'embedded.js', format: 'cjs', css: false}))
+  // Main bundle: supports all our supported browsers, CommonJS, and
+  // uses the full class names for any Sass imports
+  .then(() => runRollup({
+    entry: mainEntry,
+    output: 'polaris.js',
+    format: 'cjs',
+    css: true,
+  }))
+  // ES bundle: supports all our supported browsers, but uses ES imports
+  // (for tree shaking), uses the full class names for any Sass imports
+  .then(() => runRollup({
+    entry: mainEntry,
+    output: 'polaris.es.js',
+    format: 'es',
+    css: false,
+    useExistingClassTokens: true,
+  }))
+  // Embedded bundle, supports all our supported browsers, CommonJS, no
+  // styles because no embedded-only components have styles
+  .then(() => runRollup({
+    entry: embeddedEntry,
+    output: 'embedded.js',
+    format: 'cjs',
+    css: false,
+  }))
   .then(() => Promise.all([
     cp('build/polaris.js', './index.js'),
     cp('build/embedded.js', './embedded.js'),
     cp('build/polaris.es.js', './index.es.js'),
     cp('build/polaris.css', './styles.css'),
   ]))
+  // Main Sass build that includes the full CSS class names
   .then(() => generateSassBuild(build))
   .then(() => {
     cp('-r', resolvePath(build, 'sass', '*'), root);
@@ -81,10 +104,46 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
     `);
   })
   .then(() => ensureDirSync(finalEsnext))
-  .then(() => runRollup({entry: mainEntry, output: 'polaris.js', outputDir: buildEsnext, format: 'es', css: true, minifyClassnames: true}))
+  // Custom build consumed by Sewing Kit: it preserves all ESNext features
+  // including imports/ exports for better tree shaking, and includes
+  // only the minified CSS class names
+  .then(() => runRollup({
+    entry: mainEntry,
+    output: 'polaris.js',
+    outputDir: buildEsnext,
+    format: 'es',
+    css: true,
+    minifyClassnames: true,
+  }))
+  .then(() => {
+    writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
+      {
+        "presets": [
+          "shopify/react",
+          ["shopify/node", {"version": 6, "modules": false}]
+        ],
+        "plugins": [
+          "../config/babel/plugins/sass-namespace-to-default-import.js"
+        ]
+      }
+    `);
+  })
+  // Custom build consumed by Sewing Kit for the server: matches ES features
+  // available in Node 6+ but does not preserve imports/ exports since this
+  // package is resolved natively by Node. Uses the same minified class names.
+  .then(() => runRollup({
+    entry: mainEntry,
+    output: 'polaris-server.js',
+    outputDir: buildEsnext,
+    format: 'cjs',
+    css: false,
+    useExistingClassTokens: true,
+  }))
+  // Sass build with the minified class names
   .then(() => generateSassBuild(buildEsnext))
   .then(() => Promise.all([
     cp(join(buildEsnext, 'polaris.js'), join(finalEsnext, 'index.js')),
+    cp(join(buildEsnext, 'polaris-server.js'), join(finalEsnext, 'server.js')),
     cp('-R', join(buildEsnext, 'sass', 'styles'), finalEsnext),
   ]))
   .catch((error) => {
@@ -93,11 +152,21 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
     process.exit(1);
   });
 
-function runRollup({entry, output, format, css, outputDir = build, minifyClassnames = false}) {
+function runRollup({
+  entry,
+  output,
+  format,
+  css,
+  outputDir = build,
+  minifyClassnames = false,
+  useExistingClassTokens = false,
+}) {
   const config = createRollupConfig({
     entry,
     minifyClassnames,
-    outputCSS: css && resolvePath(outputDir, 'polaris.css'),
+    useExistingClassTokens,
+    writeCSS: css,
+    cssPath: resolvePath(outputDir, 'polaris.css'),
   });
 
   return rollup(config)

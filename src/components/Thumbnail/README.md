@@ -32,9 +32,9 @@ Thumbnails provide a visual anchor and help structure the page. Because they are
 Thumbnails should:
 
 * Be one of 3 sizes:
-  * Small (40 x 40 px): Use when the Medium size is too large for the layout, or when the thumbnail has less importance
-  * Medium (60 x 60 px): Use as the default size
-  * Large (80 x 80 px): Use when an thumbnail is a major focal point. Avoid this size in lists of like items.
+  * Small (40 × 40 px): Use when the medium size is too large for the layout, or when the thumbnail has less importance
+  * Medium (60 × 60 px): Use as the default size
+  * Large (80 × 80 px): Use when an thumbnail is a major focal point. Avoid this size in lists of like items.
 
 ---
 
@@ -57,9 +57,9 @@ For thumbnails, we recommend using a format that describes what will show in the
 
 ## Examples
 
-### Medium thumbnail
+### Default thumbnail
 
-Use as the default size.
+Use as the default size (medium).
 
 ```jsx
 <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" alt="Black choker necklace" />
@@ -67,7 +67,7 @@ Use as the default size.
 
 ### Small thumbnail
 
-Use when the Medium size is too large for the layout, or when the thumbnail has less importance.
+Use when the default size is too large for the layout, or when the thumbnail has less importance.
 
 ```jsx
 <Thumbnail source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg" size="small" alt="Black choker necklace" />

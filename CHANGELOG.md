@@ -1,3 +1,8 @@
+## 1.5.2
+
+### Bug fixes
+* Fixes alignment of page action links
+
 ## 1.5.1
 
 ### Bug fixes

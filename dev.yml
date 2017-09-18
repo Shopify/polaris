@@ -2,7 +2,7 @@ name: polaris-react
 up:
   - node:
       yarn: true
-      version: v6.10.1 # to be kept in sync with .nvmrc
+      version: v6.11.1 # to be kept in sync with .nvmrc
   - git_hooks:
       pre-commit: pre-commit
 
