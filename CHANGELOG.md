@@ -1,3 +1,8 @@
+## Unreleased
+
+### Bug fixes
+* Fixed an issue ([#184](https://github.com/Shopify/polaris/issues/184)) where installing dependencies would fail for unauthenticated GitHub users ([#623](https://github.com/Shopify/polaris-react/pull/623))
+
 ## 1.5.2
 
 ### Bug fixes
