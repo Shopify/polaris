@@ -72,7 +72,7 @@ Titles should be:
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
   - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
+  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#section-headings-and-subheadings) to keep content short and actionable
   - Written in sentence case (first word capitalized, the rest is lowercase)
 
 <!-- usagelist -->
@@ -173,7 +173,7 @@ Add a menu item
 
 ## Related components
 
-* To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](/components/collapsible) to expand content in place within the page
+* To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](/components/behavior/collapsible) to expand content in place within the page
 * To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover)
-* To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/banner)
-* To present confirmation that an action was successful, [use the flash message  component](/components/flash message)
+* To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/feedback-indicators/banner)
+* To present confirmation that an action was successful, [use the flash message  component](/components/flash-message)
