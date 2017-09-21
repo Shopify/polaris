@@ -23,11 +23,11 @@ export default class Stack extends React.PureComponent<Props, never> {
 
   render() {
     const {
-      children, 
-      vertical, 
-      spacing, 
-      distribution, 
-      alignment, 
+      children,
+      vertical,
+      spacing,
+      distribution,
+      alignment,
       wrap,
     } = this.props;
 
