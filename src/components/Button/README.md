@@ -85,18 +85,18 @@ Add a menu item
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
 | children | string | The content to display inside the button. |
-| url | string | URL to link to |
-| primary | boolean | Display as primary button |
-| destructive | boolean | Display as destructive button |
-| disabled | boolean | Display as disabled button |
-| loading | boolean | Display as loading button |
-| size | enum['slim', 'large'] | Change the size of the button |
-| outline | boolean | Display an outlined button |
-| fullWidth | boolean | Display full width button |
-| disclosure | boolean | Display button with a disclosure icon |
-| submit | boolean | Button will submit a form |
-| plain | boolean | Use plain button style |
-| external | boolean | Force url to open in a new tab |
+| url | string | A destination to link to, rendered in the href attribute of a link |
+| primary | boolean | Provides extra visual weight and identifies the primary action in a set of buttons |
+| destructive | boolean | Indicates a dangerous or potentially negative action |
+| disabled | boolean | Disables the button, disallowing merchant interactiion |
+| loading | boolean | Replaces button text with a spinner while a background action is being performed |
+| size | enum['slim', 'large'] | Changes the size of the button, giving it more or less padding |
+| outline | boolean | Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops |
+| fullWidth | boolean |  Allows the button to grow to the width of its container |
+| disclosure | boolean | Displays the button with a disclosure icon |
+| submit | boolean | Allows the button to submit a form |
+| plain | boolean | Renders a button that looks like a link |
+| external | boolean | Forces url to open in a new tab |
 | icon | SVG | Icon to display in the banner |
 | accessibilityLabel | string | Visually hidden text for screen readers |
 | onClick | function() | Callback when clicked |
