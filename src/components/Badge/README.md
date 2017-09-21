@@ -77,6 +77,7 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 | ---------- | ---- | ----------- |
 | children | string | The content to display inside the badge. |
 | status | enum['success', 'info', 'attention', 'warning'] | Set the color of the badge for the given status. |
+| progress | enum['incomplete', 'partiallyComplete', 'complete'] | Render a pip showing the progress of a given task. |
 
 ## Examples
 
@@ -118,6 +119,30 @@ Use for the most critical and time sensitive issues that require a merchant’s 
 
 ```jsx
 <Badge status="warning">SSL unavailable</Badge>
+```
+
+### Incomplete badge
+
+Use to indicate when a given task has not yet been completed. For example, when a merchant hasn't fulfilled an order.
+
+```jsx
+<Badge progress="incomplete">Unfulfilled</Badge>
+```
+
+### Partially complete badge
+
+Use to indicate when a given task has been partially completed. For example, when a merchant has partially fulfilled an order.
+
+```jsx
+<Badge progress="partiallyComplete">Partially fulfilled</Badge>
+```
+
+### Complete badge
+
+Use to indicate when a given task has been completed. For example, when a merchant has fulfilled an order.
+
+```jsx
+<Badge progress="complete">Fulfilled</Badge>
 ```
 ---
 
