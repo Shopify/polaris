@@ -77,6 +77,7 @@ Radio button labels should:
 | labelHidden | boolean | Visually hide the label |
 | checked | boolean | Radio button is selected |
 | helpText | string or React.ReactNode | Additional text to aid in use |
+| disabled | boolean | Disable input |
 | id | string | ID for form input |
 | name | string | Name for form input |
 | value | string | Value for form input |

@@ -96,6 +96,7 @@ You agree to the Terms of Service
 | labelHidden | boolean | Visually hide the label |
 | checked | boolean | Checkbox is selected |
 | helpText | string or React.ReactNode | Additional text to aide in use |
+| disabled | boolean | Disable input |
 | id | string | ID for form input |
 | name | string | Name for form input |
 | value | string | Value for form input |
