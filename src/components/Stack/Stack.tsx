@@ -11,6 +11,7 @@ export type Distribution = 'equalSpacing' | 'leading' | 'trailing' | 'center' | 
 
 export interface Props {
   children?: any,
+  wrap?: boolean,
   vertical?: boolean,
   spacing?: Spacing,
   alignment?: Alignment,
@@ -21,7 +22,14 @@ export default class Stack extends React.PureComponent<Props, never> {
   static Item = Item;
 
   render() {
-    const {children, vertical, spacing, distribution, alignment} = this.props;
+    const {
+      children, 
+      vertical, 
+      spacing, 
+      distribution, 
+      alignment, 
+      wrap,
+    } = this.props;
 
     const className = classNames(
       styles.Stack,
@@ -29,6 +37,7 @@ export default class Stack extends React.PureComponent<Props, never> {
       spacing && styles[variationName('spacing', spacing)],
       distribution && styles[variationName('distribution', distribution)],
       alignment && styles[variationName('alignment', alignment)],
+      wrap === false && styles.noWrap,
     );
 
     const itemMarkup = elementChildren(children)

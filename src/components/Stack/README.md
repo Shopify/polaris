@@ -31,6 +31,7 @@ There are no content elements that are specific to stack.
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
 | children | React.ReactNode | Elements to display inside stack |
+| wrap | boolean | Wrap stack elements to additional rows as needed on small screens (Defaults to true) |
 | vertical | boolean | Stack the elements vertically |
 | spacing | enum['extraTight', 'tight', 'loose', 'extraLoose', 'none'] | Adjust spacing between elements |
 | alignment | enum['leading', 'trailing', 'center', 'fill', 'baseline'] | Adjust vertical alignment of elements |
@@ -48,6 +49,10 @@ Use to quickly lay out a horizontal row of components and maintain their relativ
   <Badge>Fulfilled</Badge>
 </Stack>
 ```
+
+### Wrapping Stacks
+
+Use to create a stack that wraps when there is not enough space for its children to fit at their intrinsic sizes. This is an extremely good way to create responsive layouts, as these stacks will respond to the actual sizes of the children. As noted above, the wrap variation defaults to true, so you must explitly set it to false to turn it off.
 
 ### Spacing options
 
