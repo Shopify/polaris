@@ -9,6 +9,10 @@
 
 ## 1.7.1
 
+### Enhancements
+
+* Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628)
+
 ### Bug fixes
 * Fixed Layout component example description
 

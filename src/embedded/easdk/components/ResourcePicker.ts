@@ -6,6 +6,7 @@ export interface OpenOptions {
   products?: boolean,
   collections?: boolean,
   allowMultiple?: boolean,
+  showHidden?: boolean,
   onCancel?(): void,
   onSelection?(resources: object[]): void,
 }
@@ -17,7 +18,7 @@ export default class ResourcePicker {
     this.modal.close();
   }
 
-  open({title, products, collections, allowMultiple = false, onCancel, onSelection}: OpenOptions) {
+  open({title, products, collections, allowMultiple = false, showHidden = true, onCancel, onSelection}: OpenOptions) {
     this.modal.storeCloseCallback((success: boolean, data: any) => {
       if (!success) {
         if (onCancel != null) { onCancel(); }
@@ -36,12 +37,14 @@ export default class ResourcePicker {
       this.messenger.send('Shopify.API.Modal.collectionPicker', {
         title,
         selectMultiple: allowMultiple,
+        show_hidden: showHidden,
         selectable_resources: resources,
       });
     } else {
       this.messenger.send('Shopify.API.Modal.productPicker', {
         title,
         selectMultiple: allowMultiple,
+        show_hidden: showHidden,
         selectable_resources: resources,
       });
     }

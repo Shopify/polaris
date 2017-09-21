@@ -32,6 +32,7 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 | products | boolean | Whether to allow the merchant to select products |
 | collections | boolean | Whether to allow the merchant to select collections |
 | allowMultiple | boolean | Whether multiple selections are allowed |
+| showHidden | boolean | Whether to display resources that are not published (hidden) in the context of a channel. Defaults to true. |
 | onSelection | function() | Callback after a selection was made |
 | onCancel | function() | Callback when the picker is closed without selection |
 
