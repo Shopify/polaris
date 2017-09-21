@@ -1,6 +1,7 @@
 import {IconProps} from './components';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
 export interface Action {
   content?: string,
@@ -29,6 +30,10 @@ export interface DestructableAction extends Action {
   destructive?: boolean,
 }
 
+export interface EASDKAction extends Action {
+  target?: EASDKTarget,
+}
+
 export interface IconableAction extends Action {
   icon?: IconProps['source'],
 }
@@ -37,7 +42,7 @@ export interface LoadableAction extends Action {
   loading?: boolean,
 }
 
-export interface ComplexAction extends Action, DisableableAction, DestructableAction, IconableAction, LoadableAction {
+export interface ComplexAction extends Action, DisableableAction, DestructableAction, EASDKAction, IconableAction, LoadableAction {
 }
 
 export enum Keys {
