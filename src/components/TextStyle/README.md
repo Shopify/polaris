@@ -1,39 +1,64 @@
 ---
 name: TextStyle
 tags:
-  -
-category:
+  - text
+  - typographic
+category: Titles and text
 ---
 
 # TextStyle
 
-TextStyle description
+TextStyle enhances text with additional visual meaning. For example, de-emphasizing text that is less important than surrounding text.
 
-_Not what you’re looking for?_
+---
 
-Use this instead.
+## Purpose
 
-## Problem
+Think about the merchant problem this component solves when you’re using it:
 
-Problem description.
+### Problem
 
-## Solution
+Text alone does not provide enough meaning.
 
-Solution description
+### Solution
 
-## API
-| Prop  | Type   | Default | Required |
-| ---   | ---    | ---     | ---      |
-|       |        |         |          |
+TextStyle enhances text with additional visual meaning.
 
-## Content guidelines
-
-### Example type of content
-Guidelines for type of content
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| variation | enum['subdued', 'strong', 'positive', 'negative'] | Give text additional visual meaning |
+| children | string or React.ReactNode | The content that should get the intended styling |
 
 ## Examples
 
-### Basic example
-Basic example description
+### Subdued textstyle
 
-Basic example code block
+Use to de-emphasize a piece of text that is less important to the merchant than other nearby text. May also be used to indicate when normal content is absent, e.g. “No supplier listed”. Don’t use only for aesthetic effect.
+
+```jsx
+<TextStyle variation="subdued">No supplier listed</TextStyle>
+```
+
+### Strong textstyle
+
+Use to mark text representing user input, or to emphasize the totals row in a price table.
+
+```jsx
+<TextStyle variation="strong">Total</TextStyle>
+```
+
+### Positive textstyle
+
+Use in combination with a symbol showing an increasing value to indicate an upward trend.
+
+```jsx
+<TextStyle variation="positive">Orders increased</TextStyle>
+```
+
+### Negative textstyle
+
+Use in combination with a symbol showing a decreasing value to indicate a downward trend.
+
+```jsx
+<TextStyle variation="negative">Orders decreased</TextStyle>
+```
