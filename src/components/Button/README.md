@@ -89,6 +89,7 @@ Add a menu item
 | primary | boolean | Display as primary button |
 | destructive | boolean | Display as destructive button |
 | disabled | boolean | Display as disabled button |
+| loading | boolean | Display as loading button |
 | size | enum['slim', 'large'] | Change the size of the button |
 | outline | boolean | Display an outlined button |
 | fullWidth | boolean | Display full width button |
