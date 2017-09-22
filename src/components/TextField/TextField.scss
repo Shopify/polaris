@@ -14,6 +14,7 @@ $stacking-order: (
   align-items: center;
   padding: 0 $backdrop-horizontal-spacing;
   color: color(ink, lightest);
+  cursor: text;
 }
 
 .multiline {
@@ -46,7 +47,8 @@ $stacking-order: (
 
   // We need this to override the box-shadow in the focus state.
   // stylelint-disable-next-line selector-max-specificity
-  > .Input:focus ~ .Backdrop {
+  > .Input:focus ~ .Backdrop,
+  > .Input.focus ~ .Backdrop {
     border-color: color(indigo);
     box-shadow:
       inset shadow(transparent),
@@ -92,7 +94,8 @@ $stacking-order: (
     -webkit-text-fill-color: currentColor;
   }
 
-  &:focus {
+  &:focus,
+  &.focus {
     outline: none;
 
     ~ .Backdrop {
@@ -141,6 +144,7 @@ $stacking-order: (
   flex: 0 0 auto;
   margin-right: $addon-horizontal-spacing;
   color: currentColor;
+  pointer-events: none;
 }
 
 .Suffix {
@@ -149,6 +153,7 @@ $stacking-order: (
   flex: 0 0 auto;
   margin-left: $addon-horizontal-spacing;
   color: currentColor;
+  pointer-events: none;
 }
 
 .Spinner {
@@ -159,6 +164,7 @@ $stacking-order: (
   width: rem(22px);
   margin: 1px calc(-#{$backdrop-horizontal-spacing} + 1px) 1px $backdrop-horizontal-spacing;
   color: color(ink);
+  cursor: pointer;
 }
 
 .SpinnerIcon {
