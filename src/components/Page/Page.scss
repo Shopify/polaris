@@ -37,7 +37,7 @@ html, body {
   margin: spacing(loose) 0;
 
   @include page-content-when-not-partially-condensed {
-    margin-top: spacing(extra-loose);
+    margin-top: spacing(loose);
   }
 }
 
