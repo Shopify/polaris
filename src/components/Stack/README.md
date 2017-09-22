@@ -10,7 +10,7 @@ category: Structure
 # Stack
 Use to lay out a horizontal row of components or to achieve no-fuss vertical
 centering. A stack is made of flexible items that wrap each of the stack’s
-children. Options provide control of the spacing and relative size of the items
+children. Options provide control of the wrapping, spacing and relative size of the items
 in the stack.
 
 ---
@@ -41,18 +41,29 @@ There are no content elements that are specific to stack.
 
 ### Default behavior
 
-Use to quickly lay out a horizontal row of components and maintain their relative sizes.
+Use to quickly lay out a horizontal row of components and maintain their relative sizes. On small screens, children wrap down to additional rows as needed.
 
 ```jsx
 <Stack>
   <Badge>Paid</Badge>
+  <Badge>Processing</Badge>
   <Badge>Fulfilled</Badge>
+  <Badge>Completed</Badge>
 </Stack>
 ```
 
-### Wrapping Stacks
+### Non-wrapping Stacks
 
-Use to create a stack that wraps when there is not enough space for its children to fit at their intrinsic sizes. This is an extremely good way to create responsive layouts, as these stacks will respond to the actual sizes of the children. As noted above, the wrap variation defaults to true, so you must explitly set it to false to turn it off.
+Use to create a stack whose children will *not* wrap to new rows on small screens. As noted above the wrap option defaults to true, so you must explitly set it to false to turn it off.
+
+````jsx
+<Stack wrap={false}>
+  <Badge>Paid</Badge>
+  <Badge>Processing</Badge>
+  <Badge>Fulfilled</Badge>
+  <Badge>Completed</Badge>
+</Stack>
+````
 
 ### Spacing options
 
