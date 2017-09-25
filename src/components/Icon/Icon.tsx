@@ -43,6 +43,7 @@ import {
   risk,
   save,
   search,
+  subtract,
   view,
 } from '../../icons';
 
@@ -104,6 +105,7 @@ export const BUNDLED_ICONS = {
   risk,
   save,
   search,
+  subtract,
   view,
 };
 
