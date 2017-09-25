@@ -1,7 +1,21 @@
-## Unreleased
+## 1.6.0
+
+### Enhancements
+* Documented disabled prop for Checkbox and RadioButton (thanks [LeoAref](https://github.com/LeoAref) for the [original issue](https://github.com/Shopify/polaris/issues/114)) ([#627](https://github.com/Shopify/polaris-react/pull/627/files))
+* Documented progress prop for Badge (thanks [sp4cecat](https://github.com/sp4cecat) for the [original issue](https://github.com/Shopify/polaris/issues/172)) ([#625](https://github.com/Shopify/polaris-react/pull/625/files))
+* Added loading prop to Button (thanks [bakura10](https://github.com/bakura10) for the [original issue](https://github.com/Shopify/polaris/issues/30)) ([#626](https://github.com/Shopify/polaris-react/pull/626/files))
+* Documented complex Select option (thanks [sp4cecat](https://github.com/sp4cecat) for the [original issue](https://github.com/Shopify/polaris/issues/174)) ([#630](https://github.com/Shopify/polaris-react/pull/630/files))
+* Documented TextStyle component ([#631](https://github.com/Shopify/polaris-react/pull/631))
+* Improved avatar typography spacing ([#629](https://github.com/Shopify/polaris-react/pull/629))
+* Added subtract icon ([#648](https://github.com/Shopify/polaris-react/pull/648))
+* Improved acessibility for Pagination ([#639](https://github.com/Shopify/polaris-react/pull/639))
 
 ### Bug fixes
-* Fixed an issue ([#184](https://github.com/Shopify/polaris/issues/184)) where installing dependencies would fail for unauthenticated GitHub users ([#623](https://github.com/Shopify/polaris-react/pull/623))
+* Fixed failed dependency installation for unauthenticated GitHub users  (thanks [mikeyhew](https://github.com/mikeyhew) for the [original issue](https://github.com/Shopify/polaris/issues/184)) ([#623](https://github.com/Shopify/polaris-react/pull/623/files))
+* Fixed Page header spacing ([#634](https://github.com/Shopify/polaris-react/pull/634))
+* Fixed TextField focus ring transition ([#636](https://github.com/Shopify/polaris-react/pull/636))
+* Fixed Popover not resizing on content updates ([#506](https://github.com/Shopify/polaris-react/pull/506))
+
 
 ## 1.5.2
 
