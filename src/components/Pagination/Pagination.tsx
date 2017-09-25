@@ -12,6 +12,7 @@ export interface PaginationDescriptor {
   hasPrevious?: boolean,
   nextURL?: string,
   previousURL?: string,
+  accessibilityLabel?: string,
   onNext?(): void,
   onPrevious?(): void,
 }
@@ -28,7 +29,16 @@ export default function Pagination({
   onNext,
   onPrevious,
   plain,
+  accessibilityLabel,
 }: Props) {
+  let label: string;
+
+  if (accessibilityLabel) {
+    label = accessibilityLabel;
+  } else {
+    label = 'Pagination';
+  }
+
   const className = classNames(
     styles.Pagination,
     plain && styles.plain,
@@ -81,9 +91,9 @@ export default function Pagination({
   );
 
   return (
-    <span className={className}>
+    <nav className={className} aria-label={label}>
       {previousButton}
       {nextButton}
-    </span>
+    </nav>
   );
 }
