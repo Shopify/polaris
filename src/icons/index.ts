@@ -34,6 +34,7 @@ export {default as horizontalDots} from './horizontal-dots.svg';
 export {default as import} from './import.svg';
 export {default as notes} from './notes.svg';
 export {default as print} from './print.svg';
+export {default as subtract} from './subtract.svg';
 export {default as refresh} from './refresh.svg';
 export {default as risk} from './risk.svg';
 export {default as save} from './save.svg';

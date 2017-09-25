@@ -2,6 +2,8 @@ $small-size: rem(32px);
 $medium-size: rem(40px);
 $large-size: rem(60px);
 
+$avatar-initial-offset: 2px;
+
 .Avatar {
   position: relative;
   display: flex;
@@ -67,4 +69,6 @@ $large-size: rem(60px);
   line-height: 0;
   color: color(white);
   text-transform: uppercase;
+  margin-left: $avatar-initial-offset;
+  letter-spacing: $avatar-initial-offset;
 }

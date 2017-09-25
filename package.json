@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -39,7 +39,7 @@
     "start": "echo \"Warning: no 'start' task specified. Run 'yarn dev' instead.\" && yarn dev"
   },
   "devDependencies": {
-    "@shopify/js-uploader": "git+ssh://git@github.com/Shopify/js-uploader.git",
+    "@shopify/js-uploader": "github:Shopify/js-uploader",
     "@types/enzyme": "^2.8.0",
     "@types/jest": "^19.2.3",
     "@types/lodash": "^4.14.66",

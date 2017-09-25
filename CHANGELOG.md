@@ -1,3 +1,22 @@
+## 1.6.0
+
+### Enhancements
+* Documented disabled prop for Checkbox and RadioButton (thanks [LeoAref](https://github.com/LeoAref) for the [original issue](https://github.com/Shopify/polaris/issues/114))
+* Documented progress prop for Badge (thanks [sp4cecat](https://github.com/sp4cecat) for the [original issue](https://github.com/Shopify/polaris/issues/172))
+* Added loading prop to Button (thanks [bakura10](https://github.com/bakura10) for the [original issue](https://github.com/Shopify/polaris/issues/30))
+* Documented complex Select option (thanks [sp4cecat](https://github.com/sp4cecat) for the [original issue](https://github.com/Shopify/polaris/issues/174))
+* Documented TextStyle component
+* Improved avatar typography spacing
+* Added subtract icon
+* Improved acessibility for Pagination
+
+### Bug fixes
+* Fixed failed dependency installation for unauthenticated GitHub users  (thanks [mikeyhew](https://github.com/mikeyhew) for the [original issue](https://github.com/Shopify/polaris/issues/184))
+* Fixed Page header spacing
+* Fixed TextField focus ring transition
+* Fixed Popover not resizing on content updates
+
+
 ## 1.5.2
 
 ### Bug fixes

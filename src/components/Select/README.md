@@ -106,7 +106,7 @@ Use when a merchant needs to choose one option from a list of four or more.
 ```jsx
 <Select
   label="One"
-  options={['two', 'three']}
+  options={['two', 'three', {label: 'four', value: '4'}]}
   placeholder="Select"
 />
 ```
@@ -119,7 +119,7 @@ Use for selections that aren’t currently available. The surrounding interface 
 <Select
   label="One"
   disabled
-  options={['two', 'three']}
+  options={['two', 'three', {label: 'four', value: '4'}]}
   placeholder="Select"
 />
 ```
