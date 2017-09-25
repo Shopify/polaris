@@ -13,6 +13,8 @@ import ActionList from '../ActionList';
 import Action from './Action';
 import * as styles from './Page.scss';
 
+export type SecondaryAction = IconableAction & DisableableAction;
+
 export interface ActionGroup {
   title: string,
   icon?: IconableAction['icon'],
@@ -25,7 +27,7 @@ export interface Props {
   icon?: string,
   separator?: boolean,
   breadcrumbs?: BreadcrumbProps['breadcrumbs'],
-  secondaryActions?: IconableAction[],
+  secondaryActions?: SecondaryAction[],
   primaryAction?: DisableableAction,
   pagination?: PaginationDescriptor,
   actionGroups?: ActionGroup[],
@@ -232,7 +234,7 @@ function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
   return {title, items: actions};
 }
 
-function secondaryActionsFrom(actions: IconableAction[]) {
+function secondaryActionsFrom(actions: SecondaryAction[]): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
     <Action {...action} key={`Action-${content || index}`}>{content}</Action>
   ));
