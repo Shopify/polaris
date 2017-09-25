@@ -69,6 +69,10 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
     this.handleMeasurement();
   }
 
+  componentWillReceiveProps() {
+    this.handleMeasurement();
+  }
+
   componentDidUpdate() {
     const {outsideScrollableContainer, top} = this.state;
     const {onScrollOut, active} = this.props;
