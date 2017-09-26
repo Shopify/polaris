@@ -145,6 +145,11 @@ export {
 } from './Label';
 
 export {
+  default as Labelled,
+  Props as LabelledProps,
+} from './Labelled';
+
+export {
   default as Layout,
   Props as LayoutProps,
 } from './Layout';
