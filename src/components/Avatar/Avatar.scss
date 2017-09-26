@@ -57,12 +57,9 @@ $avatar-initial-offset: 2px;
   background: color(purple);
 }
 
-.hasImage {
-  background: transparent;
-}
-
 .Image {
   width: 100%;
+  position: absolute;
 }
 
 .Initials {
