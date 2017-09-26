@@ -10,8 +10,7 @@ category: Structure
 # Stack
 Use to lay out a horizontal row of components or to achieve no-fuss vertical
 centering. A stack is made of flexible items that wrap each of the stack’s
-children. Options provide control of the wrapping, spacing and relative size of the items
-in the stack.
+children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.
 
 ---
 
@@ -41,7 +40,7 @@ There are no content elements that are specific to stack.
 
 ### Default behavior
 
-Use to quickly lay out a horizontal row of components and maintain their relative sizes. On small screens, children wrap down to additional rows as needed.
+Use to quickly lay out a horizontal row of components and maintain their relative sizes. On small screens, children rows wrap down to additional rows as needed.
 
 ```jsx
 <Stack>
@@ -54,7 +53,7 @@ Use to quickly lay out a horizontal row of components and maintain their relativ
 
 ### Non-wrapping Stacks
 
-Use to create a stack whose children will *not* wrap to new rows on small screens. As noted above the wrap option defaults to true, so you must explitly set it to false to turn it off.
+Use to create a stack where the children will not wrap to new rows on small screens. As noted above, the wrap option defaults to true. This means you must explitly set it to false to turn it off.
 
 ````jsx
 <Stack wrap={false}>
