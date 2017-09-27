@@ -1,11 +1,22 @@
 ---
 name: Avatar
-tags:
-  - thumbnail
-  - photo
-  - picture
-  - profile
 category: Images and icons
+keywords:
+  - photo
+  - profile
+  - picture
+  - thumbnail
+  - default face
+  - face picture
+  - customer avatar
+  - customer face
+  - customer picture
+  - business face
+  - business picture
+  - customer avatar
+  - business avatar
+  - customer thumbnail
+  - business thumbnail
 ---
 
 # Avatar

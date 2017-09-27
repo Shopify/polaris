@@ -1,13 +1,19 @@
 ---
 name: Caption
-tags:
+category: Titles and text
+keywords:
   - labels
   - text
   - microcopy
   - typographic
   - graph
   - timestamp
-category: Titles and text
+  - smaller text
+  - smallest text
+  - smaller than reading size text
+  - time text
+  - compact text
+  - small text
 ---
 
 # Caption

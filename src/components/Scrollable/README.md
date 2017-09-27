@@ -1,10 +1,18 @@
 ---
 name: Scrollable
-tags:
+category: Behavior
+keywords:
   - long form
   - text container
   - terms of service
-category: Behavior
+  - long form container
+  - scrolling
+  - independently scrollable
+  - modal scrolling
+  - pane scrolling
+  - scrolling in panes
+  - below the fold
+  - above the fold
 ---
 
 # Scrollable

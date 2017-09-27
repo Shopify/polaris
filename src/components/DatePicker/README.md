@@ -1,10 +1,15 @@
 ---
 name: Date picker
-tags:
+category: Forms
+keywords:
   - choose date
   - pick date
   - pick time
-category: Forms
+  - date picker
+  - calendar
+  - date selector
+  - date range picker
+  - date range selector
 ---
 
 # Date picker

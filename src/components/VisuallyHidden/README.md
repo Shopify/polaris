@@ -1,12 +1,20 @@
 ---
 name: Visually hidden
-tags:
-  - a11y
-  - accessibility
-  - hide
-  - text
-  - screen reader
 category: Titles and text
+keywords:
+  - screen readers
+  - hidden but available for screen readers
+  - visually hidden headings
+  - hide
+  - hidden headings
+  - hidden text
+  - visually hidden table headers
+  - visually hidden headers
+  - hidden table headers
+  - hidden table headings
+  - accessibility
+  - a11y
+  - assistive technology
 ---
 
 # Visually hidden

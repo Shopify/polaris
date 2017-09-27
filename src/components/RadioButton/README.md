@@ -1,11 +1,15 @@
 ---
 name: Radio button
-tags:
+category: Forms
+keywords:
   - selection
   - choices
   - options
   - pick
-category: Forms
+  - single selection form
+  - choice form
+  - option button
+  - radio button form
 ---
 
 # Radio button

@@ -1,9 +1,8 @@
 ---
 name: TextStyle
-tags:
-  - text
-  - typographic
 category: Titles and text
+keywords:
+  - typographic
 ---
 
 # TextStyle

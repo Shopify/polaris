@@ -1,10 +1,14 @@
 ---
 name: Thumbnail
-tags:
+category: Images and icons
+keywords:
   - photo
   - picture
   - image
-category: Images and icons
+  - small thumbnail
+  - medium thumbnail
+  - large thumbnail
+  - image preview
 ---
 
 # Thumbnail

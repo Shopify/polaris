@@ -1,14 +1,22 @@
 ---
 name: Page
-tags:
+category: Structure
+keywords:
   - page
   - view
   - title
   - titlebar
-  - title bar
-  - breadcrumb
+  - breadcrumbs
   - pagination
-category: Structure
+  - page with all header elements
+  - page without primary action in header
+  - page without pagination
+  - full-wdith page
+  - page with action groups
+  - page with separator
+  - outer wrapper
+  - page actions
+  - page layouts
 ---
 
 # Page

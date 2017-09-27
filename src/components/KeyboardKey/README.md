@@ -1,10 +1,13 @@
 ---
 name: Keyboard key
-tags:
+category: Images and icons
+keywords:
   - shortcuts
   - hotkey
   - hot key
-category: Images and icons
+  - keyboard shortcuts
+  - keyboard letter
+  - hotkey combinations
 ---
 
 # Keyboard key

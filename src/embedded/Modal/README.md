@@ -1,6 +1,8 @@
 ---
 name: Embedded modal
-tags:
+category: Embedded
+hidePlayground: true
+keywords:
   - embedded
   - pop up
   - overlays
@@ -9,8 +11,8 @@ tags:
   - multiple sections
   - custom width
   - custom height
-category: Embedded
-hidePlayground: true
+  - popover
+  - window
 ---
 
 # Embedded modal

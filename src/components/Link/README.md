@@ -1,6 +1,7 @@
 ---
 name: Link
-tags:
+category: Navigation
+keywords:
   - URL
   - linklist
   - link list
@@ -8,8 +9,16 @@ tags:
   - actions
   - pathways
   - deep link
-
-category: Navigation
+  - text link
+  - plain button
+  - plain call to action
+  - plain cta
+  - embeddd action
+  - action in text
+  - hyperlink
+  - secondary actions
+  - secondary cta
+  - secondary call to action
 ---
 
 # Link

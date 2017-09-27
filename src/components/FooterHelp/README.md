@@ -1,10 +1,17 @@
 ---
 name: Footer help
-tags:
-  - learn more
-  - help documentation
-
 category: Titles and text
+keywords:
+  - learn more about
+  - help documentation links
+  - links to help documentation
+  - link to help documentation
+  - footer help boxes
+  - educate about features
+  - merchant education
+  - educational opportunity
+  - educating 
+  - teaching
 ---
 
 # Footer help

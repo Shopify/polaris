@@ -1,10 +1,13 @@
 ---
 name: Embedded app
-tags:
-  - embedded
-  - app
 category: Embedded
 hidePlayground: true
+keywords:
+  - application wrapper
+  - wrapper
+  - EASDK
+  - embedded app SDK
+  - SDK
 ---
 
 # Embedded app

@@ -1,11 +1,18 @@
 ---
 name: Account connection
-tags:
+category: Actions
+keywords:
   - connect
   - disconnect
   - account
   - sign-up
-category: Actions
+  - default account connection 
+  - disconnection
+  - authorize
+  - third-party accounts
+  - integrate
+  - facebook
+  - social media
 ---
 
 # Account connection

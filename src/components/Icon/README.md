@@ -1,14 +1,19 @@
 ---
 name: Icon
-tags:
-  - visual
+category: Images and icons
+keywords:
+  - iconography
+  - visual indicator
+  - svg
+  - icon background
+  - icon backdrop
+  - accessible icons
+  - icon alternative text
   - alt text
   - alternative text
   - accessibility
   - wayfinding
   - alert
-  - find an icon
-category: Images and icons
 ---
 
 # Icon

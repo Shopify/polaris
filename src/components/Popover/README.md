@@ -1,10 +1,23 @@
 ---
 name: Popover
-tags:
+category: Overlays
+keywords:
   - interactive
   - container
-
-category: Overlays
+  - dropdown
+  - drop down
+  - drop-down
+  - popover
+  - pop over
+  - menu
+  - fly out
+  - select
+  - action list
+  - menu
+  - context menu
+  - popover with form components
+  - popover with action list
+  - popover with content and actions
 ---
 
 # Popover

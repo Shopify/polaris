@@ -1,11 +1,28 @@
 ---
 name: Banner
-tags:
+category: Feedback indicators
+keywords:
   - inform
   - update
   - changes
   - conditions
-category: Feedback indicators
+  - dismissable banners
+  - banner with footer call-to-action
+  - banner with footer button
+  - banner with button
+  - informational banners
+  - success banners
+  - warning banners
+  - critical banners
+  - banner width
+  - banner headings
+  - banner content
+  - banner buttons
+  - banner links
+  - banner body content
+  - banner text
+  - banner body text
+  - full-width alert
 ---
 
 # Banner

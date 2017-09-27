@@ -1,11 +1,24 @@
 ---
 name: Button
-tags:
-  - click
-  - submit
-  - CTA
-  - call-to-action
 category: Actions
+keywords:
+  - CTA
+  - call to action
+  - call-to-action
+  - primary
+  - action
+  - basic button
+  - outline
+  - plain
+  - destructive
+  - slim
+  - large
+  - full-width
+  - disabled state
+  - disabled
+  - button
+  - link
+  - click
 ---
 
 # Button
