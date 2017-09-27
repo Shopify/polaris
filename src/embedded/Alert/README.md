@@ -23,7 +23,7 @@ hidePlayground: true
 
 # Embedded alert
 
-Embedded alerts are similar to [embedded modals](https://polaris.myshopify.io/components/embedded/modal#navigation), but use no more than two calls to action and only one string of body text. They are simpler to implement than embedded modals, and add consistency for alert and confirmation messages.
+Embedded alerts are similar to [embedded modals](https://polaris.shopify.com/components/embedded/embedded-modal), but use no more than two calls to action and only one string of body text. They are simpler to implement than embedded modals, and add consistency for alert and confirmation messages.
 
 This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
 
@@ -250,6 +250,6 @@ Use passing `destructive` to make it clear to the merchant that the action is po
 
 ## Related components
 
-* If you want to present general content in an overlay in an embedded app, [use the embedded modal component](/components/embedded/modal)
+* If you want to present general content in an overlay in an embedded app, [use the embedded modal component](https://polaris.shopify.com/components/embedded/embedded-modal)
 * To present confirmation that a merchant action was successful in an embedded app, [use the embedded flash notice method](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md#easdkshowflashnotice)
-* To communicate a change or condition that needs the merchant’s attention within the context of a page, and offers next steps, [use the banner component](/components/feedback-indicators/banner)
+* To communicate a change or condition that needs the merchant’s attention within the context of a page, and offers next steps, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
