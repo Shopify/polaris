@@ -3,7 +3,6 @@ name: Account connection
 category: Actions
 keywords:
   - connect
-  - disconnect
   - account
   - sign-up
   - default account connection 
