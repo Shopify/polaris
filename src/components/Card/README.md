@@ -4,7 +4,6 @@ category: Structure
 keywords:
   - layout
   - container
-  - home card
   - box
   - grid
   - panel
