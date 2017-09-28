@@ -1,12 +1,15 @@
 ---
 name: Page actions
-tags:
+category: Structure
+keywords:
   - bottom of page actions
   - bottom page actions
   - primary action
+  - primary page actions
   - default page actions
-
-category: Structure
+  - save delete actions
+  - save actions
+  - delete actions
 ---
 
 # Page actions

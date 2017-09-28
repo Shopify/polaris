@@ -1,11 +1,19 @@
 ---
 name: Button group
-tags:
+category: Actions
+keywords:
   - choices
   - decision
   - call-to-action
   - CTA
-category: Actions
+  - segmented buttons
+  - divided buttons
+  - grouped actions
+  - multiple horizontal buttons
+  - multiple buttons
+  - set of buttons
+  - set of actions
+  - horizontal arrangement of buttons
 ---
 
 # Button group

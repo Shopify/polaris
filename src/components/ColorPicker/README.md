@@ -1,10 +1,14 @@
 ---
 name: Color picker
-tags:
+category: Forms
+keywords:
   - Choose color
   - Select color
   - Pick color
-category: Forms
+  - color selector with transparent value
+  - colorpicker with transparent value
+  - alpha value picker
+  - alpha value selector
 ---
 
 # Color picker

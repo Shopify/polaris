@@ -1,10 +1,24 @@
 ---
 name: Empty state
-tags:
-  - empty
+category: Structure
+keywords:
   - lander
   - welcome
-category: Structure
+  - explain features
+  - describe features
+  - educate about features
+  - merchant education
+  - educational opportunity
+  - educational opportunities
+  - illustration on pages
+  - empty layouts
+  - empty states
+  - starting pages
+  - starting layouts
+  - educating
+  - teaching
+  - landing pages
+  - landing layouts
 ---
 
 # Empty state

@@ -1,10 +1,18 @@
 ---
 name: Setting toggle
-tags:
-  - on/off
+category: Actions
+keywords:
+  - settings buttons
+  - setting buttons
+  - enable buttons
+  - disable buttons
+  - setting switches
+  - turn on button
+  - turn off button
+  - option button
+  - on off
   - switch
   - adjuster
-category: Actions
 ---
 
 # Setting toggle

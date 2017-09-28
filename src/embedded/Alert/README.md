@@ -1,10 +1,12 @@
 ---
 name: Embedded alert
-tags:
+category: Embedded
+hidePlayground: true
+keywords:
   - embedded
   - alerts
   - acknowledgement
-  - confirmations
+  - confirmation
   - modals
   - pop ups
   - pop-ups
@@ -17,8 +19,14 @@ tags:
   - leave page
   - stay
   - discard
-category: Embedded
-hidePlayground: true
+  - alert messaging
+  - prevent dangerous actions
+  - risky actions
+  - irreversible actions
+  - conformation alerts
+  - warnings
+  - preventative
+  - confirmation messaging
 ---
 
 # Embedded alert

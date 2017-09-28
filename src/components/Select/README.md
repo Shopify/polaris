@@ -1,10 +1,23 @@
 ---
 name: Select
-tags:
-  - on/off
+category: Forms
+keywords:
+  - on off
   - switch
   - adjuster
-category: Forms
+  - dropdown menu
+  - drop-down menu
+  - menu
+  - form
+  - combobox
+  - combo box
+  - choice list
+  - choicelist
+  - list
+  - disabled select
+  - field label
+  - long list of options
+  - long option list
 ---
 
 # Select

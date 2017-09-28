@@ -1,15 +1,19 @@
 ---
 name: Layout
-tags:
+category: Structure
+keywords:
   - one column
-  - one-column
   - two column
-  - two-column
   - column
   - annotated
   - page
-
-category: Structure
+  - column layouts
+  - containers
+  - full width containers
+  - secondary sections
+  - setting page
+  - grouped sections
+  - annotated sections
 ---
 
 # Layout

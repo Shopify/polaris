@@ -1,10 +1,15 @@
 ---
 name: Tooltip
-tags:
+category: Overlays
+keywords:
   - info
   - help
   - popover
-category: Overlays
+  - infotip
+  - hint
+  - small popover
+  - hover
+  - tap
 ---
 
 # Tooltip

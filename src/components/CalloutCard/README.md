@@ -1,10 +1,24 @@
 ---
 name: Callout card
-tags:
+category: Structure
+keywords:
   - actionable
   - updates
   - new features
-category: Structure
+  - call out card
+  - sales channel card
+  - feature card
+  - callout card heading
+  - callout card body content
+  - callout card text
+  - callout card cta
+  - callout card call to action
+  - callout card button
+  - callout card with secondary cta
+  - callout card with secondary button
+  - card with illustration
+  - card with image
+  - illustration card
 ---
 
 # Callout card

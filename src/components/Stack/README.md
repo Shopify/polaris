@@ -1,10 +1,21 @@
 ---
 name: Stack
-tags:
+category: Structure
+keywords:
   - rows
   - vertical centering
-  -
-category: Structure
+  - horizontal row of components
+  - flexible items
+  - flexbox
+  - row of components
+  - stack spacing
+  - vertical centering
+  - fill available space
+  - fill space
+  - equal width
+  - right-aligned stack
+  - stack layout
+  - layout
 ---
 
 # Stack

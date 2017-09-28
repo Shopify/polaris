@@ -1,9 +1,15 @@
 ---
 name: Description list
-tags:
+category: Lists
+keywords:
   - glossary
   - description
-category: Lists
+  - list terms
+  - list and define terms
+  - item lists
+  - text lists
+  - list of terms
+  - term explaination
 ---
 
 # Description list

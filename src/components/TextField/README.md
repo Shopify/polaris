@@ -1,11 +1,43 @@
 ---
 name: Text field
-tags:
+category: Forms
+keywords:
   - input
   - type
   - add info
   - form field
-category: Forms
+  - input forms
+  - text field
+  - form input
+  - field
+  - active state
+  - input active state
+  - input state
+  - input focus
+  - focus
+  - textbar
+  - text bar
+  - textfield
+  - forms
+  - form inputs
+  - form text input
+  - placeholder text
+  - field placeholder text
+  - optional fields
+  - field help text
+  - validation error messages
+  - field labels
+  - number fields
+  - email fields
+  - multiline text fields
+  - text field with hidden label
+  - text field with label action
+  - text field with placeholder text
+  - text field with help text
+  - text field with prefix or suffix
+  - connected fields
+  - label actions
+  - hidden labels
 ---
 
 # Text field

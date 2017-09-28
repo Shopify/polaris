@@ -1,9 +1,23 @@
 ---
 name: Card
-tags:
+category: Structure
+keywords:
   - layout
   - container
-category: Structure
+  - box
+  - grid
+  - panel
+  - card with call to action in the footer
+  - card with call to action in the heading
+  - card with an action menu in the heading
+  - card with button in the footer
+  - card with button in the heading
+  - card with multiple sections
+  - sectioned card
+  - card with a subdued section
+  - subdued card for secondary content
+  - callout
+  - call out
 ---
 
 # Card

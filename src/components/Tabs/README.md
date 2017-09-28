@@ -1,10 +1,13 @@
 ---
 name: Tabs
-tags:
+category: Navigation
+keywords:
   - layout
   - navigate
   - organize
-category: Navigation
+  - list views
+  - list filters
+  - fitted tabs
 ---
 
 # Tabs

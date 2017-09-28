@@ -1,12 +1,18 @@
 ---
 name: Heading
-tags:
+category: Titles and text
+keywords:
   - titles
   - text
   - microcopy
   - conversational
   - typographic
-category: Titles and text
+  - card headings
+  - card titles
+  - section titles
+  - section headings
+  - heading text
+  - heading font
 ---
 
 # Heading

@@ -1,10 +1,18 @@
 ---
 name: Badge
-tags:
+category: Images and icons
+keywords:
+  - pills
+  - status indicators
+  - color-coded indicators
+  - colour-coded indicators
+  - informational badge
+  - success badge
+  - attention badge
+  - warning badge
+  - object status
   - status
   - alert
-  - label
-category: Images and icons
 ---
 
 # Badge

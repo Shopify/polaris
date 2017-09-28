@@ -1,10 +1,25 @@
 ---
 name: Resource list
-tags:
+category: Lists
+keywords:
   - collections
   - items
   - objects
-category: Lists
+  - list of products
+  - list of orders
+  - product lists
+  - order lists
+  - collections lists
+  - collection lists
+  - list of collections
+  - product listings list
+  - channel lists
+  - resource list attributes
+  - list attributes
+  - exceptions list
+  - list secondary actions
+  - secondary actions in a list
+  - list of resources
 ---
 
 # Resource List
