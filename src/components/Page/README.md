@@ -178,6 +178,27 @@ Use when a primary action functions better as part of the page content instead o
 </Page>
 ```
 
+### Page with external link
+
+Use when a secondary action links to another website. Actions marked external open in a new browser tab.
+
+```jsx
+<Page
+  title='Jar With Lock-Lid'
+  primaryAction={{content: 'Save', disabled: true,}}
+  secondaryActions={[
+    {
+      content: 'Promote',
+      external: true,
+      icon: 'external',
+      url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
+    },
+  ]}
+>
+  <p>Page Content</p>
+</Page>
+```
+
 ### Page without pagination
 
 Use when the page doesn’t represent a list of objects or a detail view for an object.
