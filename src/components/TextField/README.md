@@ -172,9 +172,9 @@ You didn’t enter a store name.
 | id | string | ID for the input |
 | step | number | Limit increment value for numeric and date-time inputs |
 | autoComplete | boolean | Enable automatic completion by the browser |
-| max | number | Maximum value for a numeric or date-time input |
+| max | number | Mimics the behavior of the native HTML attribute, limiting how high the spinner can increment the value |
 | maxLength | number | Maximum character length for an input |
-| min | number | Minimum value for a numeric or date-time input |
+| min | number | Mimics the behavior of the native HTML attribute, limiting how low the spinner can decrement the value |
 | minLength | number | Minimum character length for an input|
 | pattern | string | A regular expression to check the value against |
 | spellCheck | boolean | Indicate whether value should have spelling checked |
