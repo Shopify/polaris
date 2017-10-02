@@ -8,11 +8,18 @@ import {scrollable} from '../shared';
 
 import * as styles from './Scrollable.scss';
 
+const MAX_SCROLL_DISTANCE = 100;
+const DELTA_THRESHOLD = 0.2;
+const DELTA_PERCENTAGE = 0.2;
+const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
+const PREFERS_REDUCED_MOTION = prefersReducedMotion();
+
 export interface Props extends React.HTMLProps<HTMLDivElement> {
   children?: React.ReactNode,
   vertical?: boolean,
   horizontal?: boolean,
   shadow?: boolean,
+  hint?: boolean,
 }
 
 export interface State {
@@ -36,9 +43,14 @@ export default class Scrollable extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.scrollArea == null) { return; }
-    addEventListener(this.scrollArea, 'scroll', this.handleScroll);
+    addEventListener(this.scrollArea, 'scroll', () => {
+      window.requestAnimationFrame(this.handleScroll);
+    });
     addEventListener(window, 'resize', this.handleResize);
-    this.handleScroll();
+    window.requestAnimationFrame(() => {
+      this.handleScroll();
+      if (this.props.hint) { this.scrollHint(); }
+    });
   }
 
   componentWillUnmount() {
@@ -62,6 +74,7 @@ export default class Scrollable extends React.Component<Props, State> {
       horizontal,
       vertical = true,
       shadow,
+      hint,
       ...rest,
     } = this.props;
 
@@ -111,5 +124,64 @@ export default class Scrollable extends React.Component<Props, State> {
   @debounce(50, { trailing: true })
   private handleResize() {
     this.handleScroll();
+  }
+
+  @autobind
+  private scrollHint() {
+    const {scrollArea} = this;
+    if (scrollArea == null) { return; }
+    const {clientHeight, scrollHeight} = scrollArea;
+    if (PREFERS_REDUCED_MOTION
+      || this.state.scrollPosition > 0
+      || scrollHeight <= clientHeight) { return; }
+
+    const scrollDistance = scrollHeight - clientHeight;
+    this.toggleLock();
+    this.setState({scrollPosition: (scrollDistance > MAX_SCROLL_DISTANCE)
+        ? MAX_SCROLL_DISTANCE
+        : scrollDistance}, () => {
+      window.requestAnimationFrame(this.scrollStep);
+    });
+  }
+
+  @autobind
+  private scrollStep() {
+    this.setState(({scrollPosition}) => {
+      const delta = scrollPosition * DELTA_PERCENTAGE;
+      return {
+        scrollPosition: delta < DELTA_THRESHOLD ? 0 : scrollPosition - delta,
+      };
+    }, () => {
+      if (this.state.scrollPosition > 0) {
+        window.requestAnimationFrame(this.scrollStep);
+      } else {
+        this.toggleLock(false);
+      }
+    });
+  }
+
+  private toggleLock(shouldLock = true) {
+    const {scrollArea} = this;
+    if (scrollArea == null) { return; }
+
+    EVENTS_TO_LOCK.forEach((eventName) => {
+      if (shouldLock) {
+        addEventListener(scrollArea, eventName, prevent);
+      } else {
+        removeEventListener(scrollArea, eventName, prevent);
+      }
+    });
+  }
+}
+
+function prevent(evt: Event) {
+  evt.preventDefault();
+}
+
+function prefersReducedMotion() {
+  try {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch (err) {
+    return false;
   }
 }
