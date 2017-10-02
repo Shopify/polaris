@@ -106,6 +106,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       readOnly && styles.readOnly,
       error && styles.error,
       multiline && styles.multiline,
+      this.state.focus && styles.focus,
     );
 
     const prefixMarkup = prefix
@@ -155,10 +156,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       onBlur,
       style,
       autoComplete: normalizeAutoComplete(autoComplete),
-      className: classNames(
-        styles.Input,
-        this.state.focus && styles.focus,
-      ),
+      className: styles.Input,
       onChange: this.handleChange,
       ref: this.setInput,
       'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,

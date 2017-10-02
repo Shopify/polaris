@@ -32,6 +32,18 @@ $stacking-order: (
   color: color(ink);
 }
 
+.focus > .Input,
+.Input:focus {
+  outline: none;
+
+  ~ .Backdrop {
+    border-color: color(indigo);
+    box-shadow:
+      inset shadow(transparent),
+      0 0 0 1px color(indigo);
+  }
+}
+
 .error {
   .Input::placeholder {
     // This is the only place this color is used.
@@ -47,8 +59,7 @@ $stacking-order: (
 
   // We need this to override the box-shadow in the focus state.
   // stylelint-disable-next-line selector-max-specificity
-  > .Input:focus ~ .Backdrop,
-  > .Input.focus ~ .Backdrop {
+  > .Input:focus ~ .Backdrop {
     border-color: color(indigo);
     box-shadow:
       inset shadow(transparent),
@@ -62,6 +73,7 @@ $stacking-order: (
 
 .disabled {
   color: color(ink, lightest);
+  cursor: initial;
 
   > .Backdrop {
     background-color: color(sky, lighter);
@@ -92,18 +104,6 @@ $stacking-order: (
     color: currentColor;
     opacity: 1;
     -webkit-text-fill-color: currentColor;
-  }
-
-  &:focus,
-  &.focus {
-    outline: none;
-
-    ~ .Backdrop {
-      border-color: color(indigo);
-      box-shadow:
-        inset shadow(transparent),
-        0 0 0 1px color(indigo);
-    }
   }
 
   &::placeholder {
