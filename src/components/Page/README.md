@@ -3,6 +3,7 @@ name: Page
 category: Structure
 keywords:
   - page
+  - breadcrumbs
   - view
   - title
   - titlebar
