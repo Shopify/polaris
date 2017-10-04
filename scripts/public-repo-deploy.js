@@ -29,6 +29,7 @@ const privateFiles = [
   resolve(polarisPrivate, 'tests', 'build.test.js'),
   resolve(scripts, 'deploy.js'),
   resolve(scripts, 'public-repo-deploy.js'),
+  resolve(scripts, 'build-consumer.js'),
 ];
 
 // Scripts to 🔥
@@ -46,6 +47,9 @@ const privateScripts = [
   'postpublish',
   'hide-private-readme',
   'show-private-readme',
+  'prebuild-consumer',
+  'build-consumer',
+  'postbuild-consumer',
 ];
 
 mkdir(sandbox);
