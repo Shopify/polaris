@@ -1,3 +1,11 @@
+## Unreleased
+
+### Enhancements
+* Added hint prop to Scrollable and use in Popover ([#619](https://github.com/Shopify/polaris-react/pull/619))
+
+### Bug fixes
+
+
 ## 1.6.0
 
 ### Enhancements
