@@ -11,17 +11,14 @@ We’ve created a simple, hot-reloading playground for development on these comp
 
 ### Testing on mobile or a virtual machine
 
-To access the playground from a [virtual machine](https://vault.shopify.com/IE-Testing#steps-to-get-started) or mobile phone:
 1. Run `yarn dev:host`
-1. Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT in a browser window from within your VM or device on the same network
+1. Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT in a browser window from within your [virtual machine](https://vault.shopify.com/IE-Testing#steps-to-get-started) or mobile device on the same network
 
 ### Testing in a consuming project
 
-To build polaris-react for a consuming project:
+- Run `yarn run build-consumer PROJECT_DIRECTORY`
 
-Run `yarn run build-consumer PROJECT_DIRECTORY`
-
-Where `PROJECT_DIRECTORY` is the name of the directory you want the resulting build copied to. The directory must be a sibling of the `polaris-react` directory.
+`PROJECT_DIRECTORY` is where the build will be copied, which must be a sibling of the `polaris-react` directory.
 
 Example: `yarn run build-consumer polaris-styleguide`
 
