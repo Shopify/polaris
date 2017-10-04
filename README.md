@@ -15,5 +15,15 @@ To access the playground from a [virtual machine](https://vault.shopify.com/IE-T
 1. Run `yarn dev:host`
 1. Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT in a browser window from within your VM or device on the same network
 
+### Testing in a consuming project
+
+To build polaris-react for a consuming project:
+
+Run `yarn run build-consumer PROJECT_DIRECTORY`
+
+Where `PROJECT_DIRECTORY` is the name of the directory you want the resulting build copied to. The directory must be a sibling of the `polaris-react` directory.
+
+Example: `yarn run build-consumer polaris-styleguide`
+
 ----
 See [Neutron Technical Brief: Outside Admin](https://docs.google.com/document/d/1d5ZnRvNYWB2Z7_60Rr6V8_ujXB5S2wPQ4BlqvPxeLjE/edit#heading=h.m7ed1jg4h8vu) for more details.
