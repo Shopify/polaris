@@ -8,7 +8,7 @@ category: Feedback indicators
 
 # Spinner
 
-Spinners are used to notify merchants that their requested action is being processed. In the context of loading, spinner should only be used to represent content that can’t be represented with skeleton loading components. For example, a data chart.
+Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
 
 ---
 
@@ -46,7 +46,7 @@ Use to notify merchants that their requested action is being processed.
 
 The spinner component should:
 
-* Notify the merchant that their request has been received and soon the action will complete.
+* Notify the merchant that their request has been received and the action will soon complete.
 * Be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.
 * Not be used to give feedback for an entire page load.
 
@@ -58,8 +58,8 @@ The spinner component should:
 
 Spinner accessibility label should:
 
-* Accurately explain the state of the requested action (e.g. “Loading”, “Submitting”, “Processing”)
-* Use as few words to describe the state as possible
+* Accurately explain the state of the requested action. For example, “Loading”, “Submitting”, “Processing.”
+* Use as few words to describe the state as possible.
 
 ---
 
