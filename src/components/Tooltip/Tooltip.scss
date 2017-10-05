@@ -10,7 +10,7 @@ $content-max-width: rem(200px);
   border-radius: border-radius();
   pointer-events: none;
   will-change: opacity, left, top;
-  transition: opacity duration() easing(in);
+  transition: opacity duration() easing(in) duration(fast);
 }
 
 .measuring {
