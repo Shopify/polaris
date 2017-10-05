@@ -151,6 +151,11 @@ $spinner-cycle-duration: 0.7s;
     opacity: 1;
   }
 
+  &.fullWidth {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   &.disabled {
     background: none;
   }
