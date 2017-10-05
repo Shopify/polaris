@@ -7,6 +7,7 @@ export interface Action {
   content?: string,
   accessibilityLabel?: string,
   url?: string,
+  external?: boolean,
   onAction?(): void,
 }
 

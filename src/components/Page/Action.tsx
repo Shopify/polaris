@@ -11,6 +11,7 @@ export interface Props {
   children?: string,
   disclosure?: boolean,
   url?: IconableAction['url'],
+  external?: IconableAction['external'],
   icon?: IconableAction['icon'],
   onAction?: IconableAction['onAction'],
   accessibilityLabel?: IconableAction['accessibilityLabel'],
@@ -19,6 +20,7 @@ export interface Props {
 export default function Action({
   icon,
   url,
+  external,
   onAction,
   children,
   disclosure,
@@ -54,6 +56,7 @@ export default function Action({
     return (
       <UnstyledLink
         key={children}
+        external={external}
         url={url}
         onMouseUp={handleMouseUpByBlurring}
         className={styles.Action}
