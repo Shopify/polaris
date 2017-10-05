@@ -22,7 +22,12 @@ export default function Choice({
   labelHidden,
   helpText,
 }: Props) {
-  const className = classNames(styles.Choice, labelHidden && styles.labelHidden);
+
+  const className = classNames(
+    styles.Choice,
+    labelHidden && styles.labelHidden,
+  );
+
   const labelMarkup = (
     <label className={className} htmlFor={id}>
       <span className={styles.Control}>{children}</span>
