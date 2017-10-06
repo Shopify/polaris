@@ -1,0 +1,38 @@
+$small-size: rem(20px);
+$large-size: rem(44px);
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin spinnerSize($size) {
+  height: $size;
+  width: $size;
+}
+
+.Spinner {
+  animation: loading duration(slowest) linear infinite;
+  color: transparent;
+}
+
+.sizeSmall {
+  @include spinnerSize($small-size);
+}
+
+.sizeLarge {
+  @include spinnerSize($large-size);
+}
+
+.colorWhite {
+  fill: color(white);
+}
+
+.colorTeal {
+  fill: color(teal);
+}
+
+.colorInkLightest {
+  fill: color(ink, lightest);
+}

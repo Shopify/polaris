@@ -5,9 +5,7 @@ import {ComplexAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
-
-import VisuallyHidden from '../VisuallyHidden';
-import spinnerSVG from './icons/spinner.svg';
+import Spinner from '../Spinner';
 
 import * as styles from './Button.scss';
 
@@ -78,14 +76,12 @@ export default function Button({
 
   const childMarkup = children ? <span>{children}</span> : null;
 
+  const spinnerColor = primary || destructive ? 'white' : 'inkLightest';
+
   const spinnerSVGMarkup = loading
     ? (
       <span className={styles.Spinner}>
-        <VisuallyHidden>Loading</VisuallyHidden>
-        <svg
-          viewBox={spinnerSVG.viewBox}
-          dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
-        />
+        <Spinner size="small" color={spinnerColor} accessibilityLabel="Loading" />
       </span>
     )
     : null;
