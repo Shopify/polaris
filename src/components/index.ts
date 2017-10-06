@@ -145,6 +145,11 @@ export {
 } from './Label';
 
 export {
+  default as Labelled,
+  Props as LabelledProps,
+} from './Labelled';
+
+export {
   default as Layout,
   Props as LayoutProps,
 } from './Layout';
@@ -206,6 +211,11 @@ export {
 } from './SettingToggle';
 
 export {
+  default as Spinner,
+  Props as SpinnerProps,
+} from './Spinner';
+
+export {
   default as Stack,
   Props as StackProps,
 } from './Stack';
@@ -260,3 +270,19 @@ export {
   default as VisuallyHidden,
   Props as VisuallyHiddenProps,
 } from './VisuallyHidden';
+
+export {
+  default as SkeletonPage,
+  Props as SkeletonPageProps,
+} from './SkeletonPage';
+
+export {
+  default as SkeletonBodyText,
+  Props as SkeletonBodyTextProps,
+} from './SkeletonBodyText';
+
+export {
+  default as SkeletonDisplayText,
+  Props as SkeletonDisplayTextProps,
+} from './SkeletonDisplayText';
+

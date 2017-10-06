@@ -30,7 +30,7 @@ export default function Pane({fixed, sectioned, children}: Props) {
       </div>
     )
     : (
-      <Scrollable className={className}>
+      <Scrollable hint shadow className={className}>
         {content}
       </Scrollable>
     );

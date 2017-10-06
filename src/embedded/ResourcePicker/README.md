@@ -1,13 +1,19 @@
 ---
 name: Embedded resource picker
-tags:
-  - embedded
+category: Embedded
+hidePlayground: true
+keywords:
   - pop up
   - overlays
   - disruptive
   - disruptor
-category: Embedded
-hidePlayground: true
+  - select products
+  - select collections
+  - products selector
+  - resource selector
+  - colletions selector
+  - search resources
+  - search
 ---
 
 # Embedded resource picker

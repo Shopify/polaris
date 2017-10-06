@@ -1,10 +1,18 @@
 ---
 name: Subheading
-tags:
+category: Titles and text
+keywords:
   - title bar
   - top-level
   - description
-category: Titles and text
+  - sub-section titles
+  - titles of sub-sections
+  - subsection titles
+  - titles of subsections
+  - card subheadings
+  - card section headings
+  - headings of card sections
+  - card section subheadings
 ---
 
 # Subheading

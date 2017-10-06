@@ -1,11 +1,21 @@
 ---
 name: Choice list
-tags:
+category: Forms
+keywords:
   - form
   - input
   - choices
   - select
-category: Forms
+  - group of radio buttons
+  - radio button group
+  - group of checkboxes
+  - group of check boxes
+  - list of choices
+  - list of radio buttons
+  - list of checkboxes
+  - list of check boxes
+  - multi-choice list
+  - single-choice list
 ---
 
 # Choice list

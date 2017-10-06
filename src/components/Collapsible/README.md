@@ -1,11 +1,23 @@
 ---
 name: Collapsible
-tags:
+category: Behavior
+keywords:
   - hide
   - show
   - low priority
   - less important
-category: Behavior
+  - disclosure
+  - accordion
+  - accordian
+  - expand content
+  - toggle
+  - toggleable
+  - reveal
+  - show more
+  - show all button
+  - show hide
+  - expanding view
+  - collapse
 ---
 
 # Collapsible

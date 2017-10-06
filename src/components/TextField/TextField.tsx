@@ -14,6 +14,7 @@ export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' |
 
 export interface State {
   height?: number | null,
+  focus: boolean,
   id: string,
 }
 
@@ -59,6 +60,7 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     this.state = {
       height: null,
+      focus: false,
       id: props.id || getUniqueID(),
     };
   }
@@ -104,18 +106,19 @@ export default class TextField extends React.PureComponent<Props, State> {
       readOnly && styles.readOnly,
       error && styles.error,
       multiline && styles.multiline,
+      this.state.focus && styles.focus,
     );
 
     const prefixMarkup = prefix
-      ? <div onClick={this.handleInputFocus} className={styles.Prefix} id={`${id}Prefix`}>{prefix}</div>
+      ? <div className={styles.Prefix} id={`${id}Prefix`}>{prefix}</div>
       : null;
 
     const suffixMarkup = suffix
-      ? <div onClick={this.handleInputFocus} className={styles.Suffix} id={`${id}Suffix`}>{suffix}</div>
+      ? <div className={styles.Suffix} id={`${id}Suffix`}>{suffix}</div>
       : null;
 
     const spinnerMarkup = (type === 'number' && !disabled)
-      ? <Spinner onClick={this.handleInputFocus} onChange={this.handleNumberChange} />
+      ? <Spinner onChange={this.handleNumberChange} />
       : null;
 
     const style = (multiline && height) ? {height} : null;
@@ -174,7 +177,12 @@ export default class TextField extends React.PureComponent<Props, State> {
           left={connectedLeft}
           right={connectedRight}
         >
-          <div className={className}>
+          <div
+            className={className}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onClick={this.handleClick}
+          >
             {prefixMarkup}
             {input}
             {suffixMarkup}
@@ -217,7 +225,17 @@ export default class TextField extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleInputFocus() {
+  private handleFocus() {
+    this.setState({focus: true});
+  }
+
+  @autobind
+  private handleBlur() {
+    this.setState({focus: false});
+  }
+
+  @autobind
+  private handleClick() {
     this.input.focus();
   }
 }

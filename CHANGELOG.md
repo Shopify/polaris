@@ -1,3 +1,26 @@
+## 1.7.0
+
+### Enhancements
+
+* Added SkeletonPage, SkeletonBodyText and SkeletonDisplayText components
+* Added Spinner component
+* Added hint prop to Scrollable and use in Popover
+* Updated Button component to use new Spinner component
+* Added external link support for Page secondaryActions
+* Enabled the primaryAction of PageActions to be loading
+* Stack now supports non-wrapping layouts on small screens
+* Updated text field min and max documentation
+
+### Bug fixes
+
+* Fixed issue with embedded app breadcrumb linking to Shopify settings page (thanks [cargix1](https://github.com/cargix1) for the [original issue](https://github.com/Shopify/polaris/issues/116))
+* Fixed Avatar to display image and initials simultaneously
+* Fixed various links to embedded components
+* Fixed left and right ends of TextField not responding to clicks
+* RadioButton & Checkbox now focus on clicking only within the area from the input to the end of its label text
+* Fixed plain and fullWidth Button alignment
+* Add a minor delay to tooltip display
+
 ## 1.6.0
 
 ### Enhancements

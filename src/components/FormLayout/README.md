@@ -1,13 +1,29 @@
 ---
 name: Form layout
-tags:
+category: Forms
+keywords:
   - responsive
   - no grid
-  - forms
   - stack fields
   - vertical
   - vertically
-category: Forms
+  - arrange fields
+  - form spacing
+  - field layouts
+  - form field layouts
+  - field stacking
+  - stack fields
+  - vertical form stacking
+  - stack form fields vertically
+  - form layout group
+  - field group
+  - multiple fields in a row
+  - condensed field groups
+  - short inputs
+  - short input fields
+  - short text fields
+  - layout forms
+  - layout input fields
 ---
 
 # Form Layout

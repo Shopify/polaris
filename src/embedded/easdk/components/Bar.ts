@@ -1,3 +1,5 @@
+import {autobind} from '@shopify/javascript-utilities/decorators';
+
 import Messenger from '../Messenger';
 import {
   transformBreadcrumb,
@@ -50,6 +52,17 @@ export default class Bar {
       breadcrumb: getLastLevelBreadcrumb(breadcrumbs),
       pagination: transformPagination(pagination),
     });
+
+    if (actionGroups) {
+      document.addEventListener('click', this.closeDropdown);
+    } else {
+      document.removeEventListener('click', this.closeDropdown);
+    }
+  }
+
+  @autobind
+  private closeDropdown() {
+    this.messenger.send('Shopify.API.Bar.closeDropdown');
   }
 }
 

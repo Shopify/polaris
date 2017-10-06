@@ -1,11 +1,18 @@
 ---
 name: Checkbox
-tags:
+category: Forms
+keywords:
   - accept
   - decline
   - terms
   - input
-category: Forms
+  - multiple choice lists
+  - terms and services
+  - checkboxes
+  - check boxes
+  - multiple selections
+  - form selections
+  - multi-choice lists
 ---
 
 # Checkbox

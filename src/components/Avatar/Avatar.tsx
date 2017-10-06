@@ -52,19 +52,23 @@ export default function Avatar({
   const className = classNames(
     styles.Avatar,
     styles[variationName('style', styleClass(nameString))],
-    source && styles.hasImage,
     size && styles[variationName('size', size)],
   );
 
-  let content = null;
+  const imageMarkUp = finalSource
+    ? <Image className={styles.Image} source={finalSource} alt="" role="presentation" />
+    : null;
 
-  if (finalSource) {
-    content = <Image className={styles.Image} source={finalSource} alt="" role="presentation" />;
-  } else if (initials) {
-    content = <span aria-hidden className={styles.Initials}>{initials}</span>;
-  }
+  const initialsMarkup = initials
+    ? <span aria-hidden className={styles.Initials}>{initials}</span>
+    : null;
 
-  return <span aria-label={label} role="img" className={className}>{content}</span>;
+  return (
+    <span aria-label={label} role="img" className={className}>
+      {initialsMarkup}
+      {imageMarkUp}
+    </span>
+  );
 }
 
 function styleClass(name?: string) {

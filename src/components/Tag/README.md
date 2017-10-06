@@ -1,9 +1,14 @@
 ---
 name: Tag
-tags:
+category: Forms
+keywords:
   - indicator
   - label
-category: Forms
+  - label objects
+  - organize objects
+  - categorize objects
+  - categories
+  - keywords
 ---
 
 # Tag

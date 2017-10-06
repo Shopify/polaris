@@ -1,14 +1,23 @@
 ---
 name: Page
-tags:
+category: Structure
+keywords:
   - page
+  - breadcrumbs
   - view
   - title
   - titlebar
-  - title bar
-  - breadcrumb
+  - breadcrumbs
   - pagination
-category: Structure
+  - page with all header elements
+  - page without primary action in header
+  - page without pagination
+  - full-wdith page
+  - page with action groups
+  - page with separator
+  - outer wrapper
+  - page actions
+  - page layouts
 ---
 
 # Page
@@ -175,6 +184,27 @@ Use when a primary action functions better as part of the page content instead o
       <Button primary>Continue</Button>
     </Stack>
   </Card>
+</Page>
+```
+
+### Page with external link
+
+Use when a secondary action links to another website. Actions marked external open in a new browser tab.
+
+```jsx
+<Page
+  title='Jar With Lock-Lid'
+  primaryAction={{content: 'Save', disabled: true,}}
+  secondaryActions={[
+    {
+      content: 'Promote',
+      external: true,
+      icon: 'external',
+      url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
+    },
+  ]}
+>
+  <p>Page Content</p>
 </Page>
 ```
 

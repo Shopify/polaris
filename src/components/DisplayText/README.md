@@ -1,9 +1,26 @@
 ---
 name: Display text
-tags:
-  - heading
-  - typography
 category: Titles and text
+keywords:
+  - announcement text
+  - greeting text
+  - marketing text
+  - title text
+  - biggest text
+  - bigger text
+  - big text
+  - large text
+  - larger text
+  - largest text
+  - strong text
+  - bold text
+  - bold statements
+  - extra large display text
+  - medium and large display text
+  - small display text
+  - visual story telling
+  - visual storytelling
+  - visual statements
 ---
 
 # Display text

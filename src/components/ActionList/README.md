@@ -1,11 +1,15 @@
 ---
 name: Action list
-tags:
-  - actions
-  - list
+category: Actions
+keywords:
+  - dropdown
+  - drop down
+  - popover
+  - pop over
+  - menu
+  - drop-down
   - select
   - options
-category: Actions
 ---
 
 # Action list

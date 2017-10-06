@@ -1,0 +1,33 @@
+/// Used to create the shimmer effect of skeleton components
+$skeleton-shimmer-duration: duration(slower) * 2;
+
+@keyframes skeletonShimmerAnimation {
+  0% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@mixin skeleton-shimmer {
+  animation: skeletonShimmerAnimation $skeleton-shimmer-duration linear infinite alternate;
+  will-change: opacity;
+}
+
+@mixin skeleton-content {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background-color: color(sky);
+    border-radius: border-radius();
+  }
+}

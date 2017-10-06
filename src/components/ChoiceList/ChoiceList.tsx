@@ -46,9 +46,18 @@ export default function ChoiceList({
   onChange = noop,
   name = getUniqueID(),
 }: Props) {
-  const ControlComponent: ChooseableComponent = allowMultiple ? Checkbox : RadioButton;
+
+  const ControlComponent: ChooseableComponent = allowMultiple
+    ? Checkbox
+    : RadioButton;
+
   const finalName = allowMultiple ? `${name}[]` : name;
-  const className = classNames(styles.ChoiceList, titleHidden && styles.titleHidden);
+
+  const className = classNames(
+    styles.ChoiceList,
+    titleHidden && styles.titleHidden,
+  );
+
   const titleMarkup = title
     ? <legend className={styles.Title}>{title}</legend>
     : null;

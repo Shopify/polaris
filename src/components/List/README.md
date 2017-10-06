@@ -1,9 +1,13 @@
 ---
 name: List
-tags:
-  - list
-  - typography
 category: Lists
+keywords:
+  - bulleted lists
+  - numbered lists
+  - icon lists
+  - list items
+  - text lists
+  - text-only lists
 ---
 
 # List

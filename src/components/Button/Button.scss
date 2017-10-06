@@ -4,8 +4,7 @@ $slim-min-height: rem(30px);
 $slim-vertical-padding: ($slim-min-height - line-height(body) - rem(2px)) / 2;
 $large-min-height: rem(44px);
 $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
-$spinner-size: rem(16px);
-$spinner-cycle-duration: 0.7s;
+$spinner-size: rem(20px);
 
 .Button {
   @include recolor-icon(color(ink, lighter));
@@ -117,11 +116,8 @@ $spinner-cycle-duration: 0.7s;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: $spinner-size;
-  height: $spinner-size;
   margin-top: -($spinner-size / 2);
   margin-left: -($spinner-size / 2);
-  animation: loading $spinner-cycle-duration linear infinite;
 }
 
 // The way the designs work, we need to do lots of reaching down to
@@ -149,6 +145,11 @@ $spinner-cycle-duration: 0.7s;
 
   &:focus > .Content::after {
     opacity: 1;
+  }
+
+  &.fullWidth {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   &.disabled {

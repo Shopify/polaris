@@ -1,13 +1,22 @@
 ---
 name: Pagination
-tags:
+category: Navigation
+keywords:
   - lists
   - detail
   - page
   - pager
   - previous
   - next
-category: Navigation
+  - navigation between pages
+  - page arrows
+  - list navigation
+  - list arrows
+  - list pagination
+  - list pages
+  - previous next buttons
+  - previous buttons
+  - next buttons
 ---
 
 # Pagination
