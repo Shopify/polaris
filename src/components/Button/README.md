@@ -97,7 +97,7 @@ Add a menu item
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
-| children | string | The content to display inside the button. |
+| children | string | The content to display inside the button |
 | url | string | A destination to link to, rendered in the href attribute of a link |
 | primary | boolean | Provides extra visual weight and identifies the primary action in a set of buttons |
 | destructive | boolean | Indicates a dangerous or potentially negative action |
@@ -110,7 +110,7 @@ Add a menu item
 | submit | boolean | Allows the button to submit a form |
 | plain | boolean | Renders a button that looks like a link |
 | external | boolean | Forces url to open in a new tab |
-| icon | SVG | Icon to display in the banner |
+| icon | SVG | Icon to display to the left of the button content |
 | accessibilityLabel | string | Visually hidden text for screen readers |
 | onClick | function() | Callback when clicked |
 | onFocus | function() | Callback when button becomes focussed |
