@@ -23,11 +23,11 @@ html, body {
 }
 
 .Content {
-  @include content-layout;
+  @include page-content-layout;
 }
 
 .Header {
-  @include header-layout;
+  @include page-header-layout;
 }
 
 .Header-hasPagination,
@@ -36,7 +36,7 @@ html, body {
 }
 
 .Header-hasSecondaryActions {
-  @include header-has-secondaryactions;
+  @include page-header-has-secondaryactions;
 }
 
 .Header-hasSeparator {
@@ -90,7 +90,7 @@ html, body {
 }
 
 .Actions {
-  @include actions-layout;
+  @include page-actions-layout;
 }
 
 .SecondaryActions {

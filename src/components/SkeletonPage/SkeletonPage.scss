@@ -9,23 +9,19 @@ $action-text-spacing: rem(24px);
 }
 
 .Content {
-  @include content-layout;
+  @include page-content-layout;
 }
 
 .Header {
-  @include header-layout;
+  @include page-header-layout;
 }
 
 .Header-hasSecondaryActions {
-  @include header-layout;
-}
-
-.Header-hasSecondaryActions {
-  @include header-has-secondaryactions;
+  @include page-header-has-secondaryactions;
 }
 
 .Actions {
-  @include actions-layout;
+  @include page-actions-layout;
 }
 
 .Action {

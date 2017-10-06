@@ -1,6 +1,6 @@
 $actions-vertical-spacing: spacing(tight);
 
-@mixin page-layout() {
+@mixin page-layout {
   margin: 0 auto;
   padding: 0;
   max-width: layout-width(primary, max) + layout-width(secondary, max) + layout-width(inner-spacing);
@@ -14,7 +14,7 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-@mixin content-layout() {
+@mixin page-content-layout {
   margin: spacing(loose) 0;
 
   @include page-content-when-not-partially-condensed {
@@ -22,7 +22,7 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-@mixin header-layout() {
+@mixin page-header-layout {
   padding: spacing(loose) spacing(loose) 0;
 
   @include page-content-when-not-fully-condensed {
@@ -35,11 +35,11 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-@mixin header-has-secondaryactions() {
+@mixin page-header-has-secondaryactions {
   padding-top: rem(24px);
 }
 
-@mixin actions-layout() {
+@mixin page-actions-layout {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;

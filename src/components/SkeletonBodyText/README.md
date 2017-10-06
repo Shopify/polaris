@@ -22,6 +22,7 @@ Think about the merchant problem this component solves when you’re using it:
 Things like slow internet connection, outdated hardware, and data fetching restrictions can create long wait times for merchants when loading data and UI.
 
 ### Solution
+
 With skeleton loading we can create the illusion of faster load times by showing layouts and static content before the data from the request is returned.
 
 ---
@@ -31,8 +32,8 @@ With skeleton loading we can create the illusion of faster load times by showing
 Skeleton body text component should:
 
 * Be used with [Skeleton page](/components/feedback-indicators/skeleton-page) when page content loads all at once. Together, these components give merchants an indication of what the page layout will be once loaded.
-* Be used on its own, inside any content container component (like a card), and when content loads after the main page load.
-* Give a general representation of a block of content being loaded.
+* Be used on its own, inside any content container component (like a [card](/components/structure/card)), and when content loads after the main page load.
+* Try to match the number of lines to the content being loaded so it gives an accurate representation.
 
 ---
 
