@@ -1,10 +1,25 @@
-## Unreleased
+## 1.7.0
 
 ### Enhancements
+
+* Added SkeletonPage, SkeletonBodyText and SkeletonDisplayText components ([#615](https://github.com/Shopify/polaris-react/pull/615))
+* Added Spinner component ([#621](https://github.com/Shopify/polaris-react/pull/621))
 * Added hint prop to Scrollable and use in Popover ([#619](https://github.com/Shopify/polaris-react/pull/619))
+* Updated Button component to use new Spinner component ([#621](https://github.com/Shopify/polaris-react/pull/621))
+* Added external link support for Page secondaryActions ([#664](https://github.com/Shopify/polaris-react/pull/664/))
+* Enabled the primaryAction of PageActions to be loading ([#653](https://github.com/Shopify/polaris-react/pull/653/))
+* Stack now supports non-wrapping layouts on small screens ([#638](https://github.com/shopify/polaris-react/pull/638))
+* Updated text field min and max documentation ([#635](https://github.com/shopify/polaris-react/pull/635))
 
 ### Bug fixes
 
+* Fixed issue with embedded app breadcrumb linking to Shopify settings page (thanks [cargix1](https://github.com/cargix1) for the [original issue](https://github.com/Shopify/polaris/issues/116))([#663](https://github.com/Shopify/polaris-react/pull/663))
+* Fixed Avatar to display image and initials simultaneously ([#642](https://github.com/shopify/polaris-react/pull/642))
+* Fixed various links to embedded components ([#643](https://github.com/shopify/polaris-react/pull/643))
+* Fixed left and right ends of TextField not responding to clicks([#644](https://github.com/shopify/polaris-react/pull/644))
+* RadioButton & Checkbox now focus on clicking only within the area from the input to the end of its label text ([#671](https://github.com/shopify/polaris-react/pull/671))
+* Fixed plain and fullWidth Button alignment ([#645](https://github.com/shopify/polaris-react/pull/645))
+* Add a minor delay to tooltip display ([#678](https://github.com/Shopify/polaris-react/pull/678))
 
 ## 1.6.0
 
