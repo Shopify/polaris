@@ -10,6 +10,7 @@
 * Enabled the primaryAction of PageActions to be loading ([#653](https://github.com/Shopify/polaris-react/pull/653/))
 * Stack now supports non-wrapping layouts on small screens ([#638](https://github.com/shopify/polaris-react/pull/638))
 * Updated text field min and max documentation ([#635](https://github.com/shopify/polaris-react/pull/635))
+* Breadcrumbs now accept a callback through onAction (thanks [arypbatista](https://github.com/arypbatista) for the [original issue](https://github.com/Shopify/polaris/issues/188)) ([#663](https://github.com/Shopify/polaris-react/pull/663))
 
 ### Bug fixes
 
