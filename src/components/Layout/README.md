@@ -186,7 +186,7 @@ Use to have a single section on its own in a full-width container. Use for simpl
 
 ### Two-column layout
 
-Use to follow a normal section with a secondary section to create a 2/3 + 1/3 layout on detail pages (e.g. individual product or order pages). Can also be used on any page that needs to structure a lot of content.
+Use to follow a normal section with a secondary section to create a 2/3 + 1/3 layout on detail pages (e.g. individual product or order pages). Can also be used on any page that needs to structure a lot of content. This layout will stack the columns on small screens.
 
 ```jsx
 <Layout>
