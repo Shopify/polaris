@@ -1,0 +1,44 @@
+$action-text-spacing: rem(24px);
+
+.Page {
+  @include page-layout;
+}
+
+.fullWidth {
+  max-width: none;
+}
+
+.Content {
+  @include page-content-layout;
+}
+
+.Header {
+  @include page-header-layout;
+}
+
+.Header-hasSecondaryActions {
+  @include page-header-has-secondaryactions;
+}
+
+.Actions {
+  @include page-actions-layout;
+}
+
+.Action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: control-height();
+  padding-right: $action-text-spacing;
+  margin-bottom: (-1 * spacing(extra-tight));
+
+  &:first-child{
+    padding-right: 0;
+  }
+
+  @include page-content-when-partially-condensed {
+    &:not(:last-child) {
+      display: none;
+    }
+  }
+}
