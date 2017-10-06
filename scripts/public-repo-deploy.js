@@ -121,7 +121,6 @@ const shopifyPolarisBotGitOveride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_
 execSync(`git ${gitDirectoryOveride} add .`, execOpts);
 execSync(`${shopifyPolarisBotGitOveride} git ${gitDirectoryOveride} commit --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}"`, execOpts);
 execSync(`git ${gitDirectoryOveride} tag ${releaseVersion}`, execOpts);
-execSync(`git ${gitDirectoryOveride} tag`, execOpts);
 execSync(`git ${gitDirectoryOveride} push`);
 execSync(`git ${gitDirectoryOveride} push --tags`);
 
