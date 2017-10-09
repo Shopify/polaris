@@ -131,7 +131,7 @@ Use for the most critical and time sensitive issues that require a merchant’s 
 
 ### Incomplete badge
 
-Use to indicate when a given task has not yet been completed. For example, when a merchant hasn't fulfilled an order.
+Use to indicate when a given task has not yet been completed. For example, when a merchant hasn’t fulfilled an order.
 
 ```jsx
 <Badge progress="incomplete">Unfulfilled</Badge>
