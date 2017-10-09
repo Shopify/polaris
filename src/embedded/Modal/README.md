@@ -82,7 +82,7 @@ Titles should be:
 #### Do
 Edit email address
 
-#### Don't
+#### Don’t
 Edit the email address for this order
 <!-- end -->
 
@@ -90,13 +90,13 @@ Edit the email address for this order
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don't use permissive language like "you can".
+- Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
 <!-- usagelist -->
 #### Do
 Notification emails will be sent to this address.
 
-#### Don't
+#### Don’t
 You can edit the email address where emails will be sent.
 <!-- end -->
 
@@ -107,7 +107,7 @@ You can edit the email address where emails will be sent.
 #### Do
 To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
-#### Don't
+#### Don’t
 To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 <!-- end -->
 
@@ -122,7 +122,7 @@ Actions should be:
 - Create order
 - Buy shipping label
 
-#### Don't
+#### Don’t
 - New order
 - Buy
 <!-- end -->
@@ -134,7 +134,7 @@ Actions should be:
 - Activate Apple Pay
 - View shipping settings
 
-#### Don't
+#### Don’t
 - Try Apple Pay
 - View your settings
 <!-- end -->
@@ -145,7 +145,7 @@ Actions should be:
 #### Do
 Add menu item
 
-#### Don't
+#### Don’t
 Add a menu item
 <!-- end -->
 

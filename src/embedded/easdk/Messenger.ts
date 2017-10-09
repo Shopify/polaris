@@ -102,7 +102,7 @@ export default class Messenger {
   }
 
   private storeCallback(callback: Callback): CallbackID {
-    // Optimization, so we don't store a new callback ID for callbacks
+    // Optimization, so we don’t store a new callback ID for callbacks
     // we have sent before
     if (this.callbacksToID.has(callback)) {
       return this.callbacksToID.get(callback) as CallbackID;

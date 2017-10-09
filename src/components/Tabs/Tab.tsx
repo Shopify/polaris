@@ -38,7 +38,7 @@ export default class Tab extends React.PureComponent<Props, never> {
     const itemHadFocus = focused || (document.activeElement && document.activeElement.id === id);
 
     // If we just check for selected, the panel for the active tab will
-    // be focused on page load, which we don't want
+    // be focused on page load, which we don’t want
     if (itemHadFocus && selected && panelID != null) {
       focusPanelID(panelID);
     }
