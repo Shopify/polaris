@@ -1,16 +1,28 @@
 # Issue summary
 
-<!-- Note: If you work at Shopify, post your issue on our internal repo instead of this one -->
+<!-- 🚨 If you work at Shopify, post your issue on our internal repo instead of this one -->
 
-Provide a high-level summary of your issue or feature request.
+<!--
+  Provide a high-level summary of your issue or feature request
+-->
+
 
 ## Expected behavior
 
-For issues, what do you think should have happened? For feature requests, why do you believe this feature is necessary?
+<!--
+  For issues, what do you think should have happened?
+  For feature requests, why do you believe this feature is necessary?
+-->
+
 
 ## Actual behavior
 
-For issues, what actually happens? Include an error message (in a `<details></details>` tag) if your issue is related to an error while running Polaris.
+<!--
+  For issues, what actually happens?
+  Tip: include an error message (in a `<details></details>` tag)
+       if your issue is related to an error while running Polaris.
+-->
+
 
 ## Steps to Reproduce the Problem
 
@@ -26,8 +38,7 @@ For issues, what actually happens? Include an error message (in a `<details></de
 - Device:
 - Operating System:
 
-<!--
-⚠️ ⚠️ ⚠️
-This repo is only used for reporting issues and new feature requests.
-We are not accepting pull requests at this point in time.
--->
+---
+
+⚓️ We’re not accepting pull requests at this time<br />
+🗒 This repo is for reporting issues and feature requests only
