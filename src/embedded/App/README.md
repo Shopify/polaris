@@ -11,6 +11,7 @@ keywords:
 ---
 
 # Embedded app
+
 Embedded app is a wrapper for your entire application which provides access to the Shopify admin using the [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/getting-started). The props passed to this component initialize your connection to the Shopify admin. Once connected, components in your application can send and receive messages using the EASDK.
 
 This component only works within embedded apps. Read the [EASDK getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
