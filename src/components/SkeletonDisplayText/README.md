@@ -1,10 +1,10 @@
 ---
 name: Skeleton display text
-tags:
+category: Feedback indicators
+keywords:
   - skeleton
   - loading
   - page
-category: Feedback indicators
 ---
 
 # Skeleton display text
