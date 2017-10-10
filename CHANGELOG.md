@@ -1,3 +1,8 @@
+## 1.7.1
+
+### Bug fixes
+* Fixed Layout component example description
+
 ## 1.7.0
 
 ### Enhancements
