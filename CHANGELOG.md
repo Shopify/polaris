@@ -1,3 +1,12 @@
+## Unreleased
+
+### Enhancements
+
+### Bug fixes
+
+### Documentation
+* Consistently use contractions in public README (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191)) ([#682](https://github.com/Shopify/polaris-react/pull/682))
+
 ## 1.7.1
 
 ### Bug fixes
