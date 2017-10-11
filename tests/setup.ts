@@ -1,3 +1,8 @@
+import {configure} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({adapter: new Adapter()});
+
 const IGNORE_ERROR_REGEXES = [
   /Accessing PropTypes via the main React package is deprecated/,
   /ReactTestUtils has been moved to react-dom\/test-utils/,

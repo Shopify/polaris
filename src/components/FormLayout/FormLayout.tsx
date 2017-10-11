@@ -25,5 +25,6 @@ export default class FormLayout extends React.PureComponent<Props, never> {
 
 function wrapChildren(child: React.ReactElement<{}>, index: number) {
   if (isElementOfType(child, Group)) { return child; }
-  return wrapWithComponent(child, Item, {key: index} as ItemProps);
+  const props = {key: index};
+  return wrapWithComponent(child, Item, props as ItemProps);
 }
