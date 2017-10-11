@@ -11,12 +11,14 @@ const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
 
 const PRIVATE = 'polaris-react';
 const PUBLIC = 'polaris';
+const STYLEGUIDE = 'polaris-styleguide';
 const STRIP_PRIVATE_LINKS = /\s?\(\[.*?\]\([^\s].*\/shopify\/polaris-react\/.*?\)\)/gi;
 
 const root = resolve(__dirname, '../');
 const sandbox = resolve(root, 'sandbox');
 const polarisPublic = resolve(sandbox, PUBLIC);
 const polarisPrivate = resolve(sandbox, PRIVATE);
+const polarisStyleguide = resolve(sandbox, STYLEGUIDE);
 const scripts = resolve(polarisPrivate, 'scripts');
 const polarisPackage = resolve(polarisPrivate, 'package.json');
 const changelog = resolve(polarisPrivate, 'CHANGELOG.md');
@@ -56,6 +58,7 @@ mkdir(sandbox);
 const execOpts = {stdio: 'inherit'};
 execSync(`git clone https://${polarisBotToken}@github.com/Shopify/${PRIVATE}.git ${polarisPrivate}`, execOpts);
 execSync(`git clone https://${polarisBotToken}@github.com/Shopify/${PUBLIC}.git ${polarisPublic}`, execOpts);
+execSync(`git clone https://${polarisBotToken}@github.com/Shopify/polaris-styleguide.git ${polarisStyleguide}`, execOpts);
 
 // Strip package.json scripts
 const packageJSON = require(polarisPackage);
@@ -116,12 +119,67 @@ writeFileSync(
 );
 
 // Used to make git operations in polarisPublic dir instead of current working dir
-const gitDirectoryOveride = `--git-dir ${polarisPublic}/.git --work-tree=${polarisPublic}`;
-const shopifyPolarisBotGitOveride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
-execSync(`git ${gitDirectoryOveride} add .`, execOpts);
-execSync(`${shopifyPolarisBotGitOveride} git ${gitDirectoryOveride} commit --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}"`, execOpts);
-execSync(`git ${gitDirectoryOveride} tag ${releaseVersion}`, execOpts);
-execSync(`git ${gitDirectoryOveride} push`);
-execSync(`git ${gitDirectoryOveride} push --tags`);
+const gitDirectoryOverride = `--git-dir ${polarisPublic}/.git --work-tree=${polarisPublic}`;
+const shopifyPolarisBotGitOverride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
+execSync(`git ${gitDirectoryOverride} add .`, execOpts);
+execSync(`${shopifyPolarisBotGitOverride} git ${gitDirectoryOverride} commit --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}"`, execOpts);
+execSync(`git ${gitDirectoryOverride} tag ${releaseVersion}`, execOpts);
+execSync(`git ${gitDirectoryOverride} push`);
+execSync(`git ${gitDirectoryOverride} push --tags`);
 
 console.log(`Done: Succesfully pushed to ${PUBLIC}`);
+
+// Notify polaris-styleguide to upgrade @shopify/polaris to the latest version
+// So that polaris.shopify.com gets updated fairly quickly
+
+// Used to make git operations in polarisStyleguide dir instead of current working dir
+const gitPolarisStyleguideDirectoryOverride = `--git-dir ${polarisStyleguide}/.git --work-tree=${polarisStyleguide}`;
+execSync(`git ${gitPolarisStyleguideDirectoryOverride} checkout -b update-polaris-${releaseVersion}`, execOpts);
+execSync(`yarn upgrade @shopify/polaris@${releaseVersion.replace('v', '')} --no-progress --ignore-engines`, {cwd: polarisStyleguide});
+execSync(`git ${gitPolarisStyleguideDirectoryOverride} add package.json yarn.lock`, execOpts);
+execSync(`${shopifyPolarisBotGitOverride} git ${gitPolarisStyleguideDirectoryOverride} commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`, execOpts);
+execSync(`git ${gitPolarisStyleguideDirectoryOverride} push origin update-polaris-${releaseVersion}`, execOpts);
+
+const updateBody =
+`
+## Version ${releaseVersion} of @shopify/polaris just got published!
+
+See what’s new: https://github.com/Shopify/polaris/releases/tag/${releaseVersion}
+
+cc @kaelig @dfmcphee
+
+---
+
+<details>
+<summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
+
+If tests fail, you may have to troubleshoot the problem locally.
+
+1. Checkout the \`update-polaris-${releaseVersion}\` branch:
+    \`\`\`bash
+    dev cd polaris-styleguide
+    git fetch
+    git checkout update-polaris-${releaseVersion}
+    dev up
+    \`\`\`
+1. Apply changes/fixes
+1. Commit
+1. Push your work to the \`update-polaris-${releaseVersion}\` branch:
+    \`\`\`bash
+    git push origin update-polaris-${releaseVersion}
+    \`\`\`
+1. Repeat until the build & tests go ✅
+1. 🎩
+1. :shipit:
+</details>
+`.trim();
+
+const updatePostObject = {
+  title: 'Update @shopify/polaris to the latest version 🚀',
+  body: updateBody,
+  head: `update-polaris-${releaseVersion}`,
+  base: 'master',
+};
+
+execSync(`curl -d '${JSON.stringify(updatePostObject)}' -X POST https://api.github.com/repos/shopify/polaris-styleguide/pulls?access_token=${polarisBotToken}`, execOpts);
+console.log('Done: a pull request was opened at https://github.com/shopify/polaris-styleguide/pulls');
