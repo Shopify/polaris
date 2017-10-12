@@ -1,8 +1,9 @@
 ---
 name: Spinner
-tags:
+keywords:
   - spinner
   - loader
+  - loading
 category: Feedback indicators
 ---
 
@@ -16,17 +17,17 @@ Spinners are used to notify merchants that their action is being processed. For 
 
 Think about the merchant problem this component solves when you’re using it:
 
-## Problem
+### Problem
 
 When a merchant completes an action on a page like clicking a button, it’s unclear if the app is working to complete the action.
 
-## Solution
+### Solution
 
 Spinner notifies the merchant that the request has been received and is being processed.
 
 | Prop  | Type   | Description | Default |
 | ---   | ---    | ---     | ---     |
-| color | enum['teal', 'inkLightest'] | Color of spinner | teal
+| color | enum['teal', 'inkLightest', 'white'] | Color of spinner | teal
 | size  | enum['small', 'large'] | Size of spinner | large
 | accessibilityLabel | string | Accessible label for the spinner |
 
@@ -49,6 +50,7 @@ The spinner component should:
 * Notify the merchant that their request has been received and the action will soon complete.
 * Be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.
 * Not be used to give feedback for an entire page load.
+* White can only be used with small spinners on actionable components like buttons.
 
 ---
 
