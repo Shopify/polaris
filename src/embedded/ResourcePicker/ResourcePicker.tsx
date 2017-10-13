@@ -12,6 +12,7 @@ export interface Props {
   products?: boolean,
   collections?: boolean,
   allowMultiple?: boolean,
+  showHidden?: boolean,
   onCancel?(): void,
   onSelection?(selection: SelectionResult): void,
 }
