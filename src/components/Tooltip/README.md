@@ -95,4 +95,4 @@ Use only when necessary to provide an explanation for an interface element.
 
 ## Related components
 
-* To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](/components/forms/text-field), [footer help](/components/titles-and-text/footer-help), or [an inline link to help](/components/navigations/link)
+* To make helpful content more visible to merchants, use the help text portions of form components such as [text fields](/components/forms/text-field), [footer help](/components/titles-and-text/footer-help), or [an inline link to help](/components/navigation/link)
