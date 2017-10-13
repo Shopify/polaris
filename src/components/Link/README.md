@@ -97,4 +97,4 @@ Use for text links in larger spans of text.
 
 ## Related components
 
-* To create navigational actions that aren’t part of a line of text, [use the button component](/components/button)
+* To create navigational actions that aren’t part of a line of text, [use the button component](/components/actions/button)
