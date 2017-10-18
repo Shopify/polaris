@@ -30,14 +30,9 @@ export default function Action({
   disabled,
 }: Props) {
 
-  const iconClassName = classNames(
-    styles.ActionIcon,
-    disabled && styles.disabled,
-  );
-
   const iconMarkup = icon
     ? (
-      <span className={iconClassName}>
+      <span className={styles.ActionIcon}>
         <Icon source={icon} />
       </span>
     )
@@ -45,7 +40,7 @@ export default function Action({
 
   const disclosureIconMarkup = disclosure
     ? (
-      <span className={iconClassName}>
+      <span className={styles.ActionIcon}>
         <Icon source="caretDown" />
       </span>
     )
@@ -78,7 +73,6 @@ export default function Action({
 
   const className = classNames(
     styles.Action,
-    disabled && styles.disabled,
     icon && children == null && styles.iconOnly,
   );
 
