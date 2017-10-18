@@ -9,6 +9,8 @@
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
 * Minor updates to the Spinner documentation ([#696](https://github.com/Shopify/polaris-react/pull/696))
 * Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities` ([#718](https://github.com/Shopify/polaris-react/pull/718))
+* Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
+* Added support for disabled secondary Page actions ([#650](https://github.com/Shopify/polaris-react/pull/650))
 
 ### Bug fixes
 * Fixed Layout component example description

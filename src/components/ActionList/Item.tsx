@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {classNames} from '@shopify/react-utilities';
 
 import {IconableAction, DisableableAction} from '../../types';
 import Icon from '../Icon';
@@ -18,6 +19,11 @@ export default function Item({
   image,
   disabled,
 }: Props) {
+
+  const className = classNames(
+    styles.Item,
+    disabled && styles.disabled,
+  );
   let imageElement = null;
 
   if (icon) {
@@ -49,7 +55,7 @@ export default function Item({
     ? <UnstyledLink url={url} className={styles.Item}>
         {contentElement}
       </UnstyledLink>
-    : <button onClick={onAction} className={styles.Item} disabled={disabled}>
+    : <button onClick={onAction} className={className} disabled={disabled}>
         {contentElement}
       </button>;
 

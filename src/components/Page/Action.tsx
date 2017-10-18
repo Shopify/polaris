@@ -73,6 +73,7 @@ export default function Action({
 
   const className = classNames(
     styles.Action,
+    disabled && styles.disabled,
     icon && children == null && styles.iconOnly,
   );
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {IconableAction, DisableableAction} from '../../types';
+import {IconableAction, DisableableAction, LoadableAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
 import {Props as ItemProps} from '../ActionList/Item';
 import Breadcrumbs, {Props as BreadcrumbProps} from '../Breadcrumbs';
@@ -27,8 +27,8 @@ export interface Props {
   icon?: string,
   separator?: boolean,
   breadcrumbs?: BreadcrumbProps['breadcrumbs'],
+  primaryAction?: DisableableAction & LoadableAction,
   secondaryActions?: SecondaryAction[],
-  primaryAction?: DisableableAction,
   pagination?: PaginationDescriptor,
   actionGroups?: ActionGroup[],
 }

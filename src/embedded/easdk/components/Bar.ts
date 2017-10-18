@@ -8,13 +8,18 @@ import {
   transformActionGroup,
   ActionGroup,
 } from '../transformers';
-import {ComplexAction, LinkAction} from '../../../types';
+import {
+  ComplexAction,
+  DisableableAction,
+  LinkAction,
+  LoadableAction,
+} from '../../../types';
 
 export interface UpdateConfig {
   title: string,
   icon?: string,
   breadcrumbs?: LinkAction[],
-  primaryAction?: ComplexAction,
+  primaryAction?: DisableableAction & LoadableAction,
   secondaryActions?: ComplexAction[],
   actionGroups: ActionGroup[],
   pagination?: {

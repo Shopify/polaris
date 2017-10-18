@@ -147,7 +147,7 @@ html, body {
   margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
   margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
   padding: 0 $action-horizontal-padding;
-  color: color(ink, lighter);
+  color: color(ink, light);
 
   &:hover,
   &:active {
@@ -185,6 +185,10 @@ html, body {
     color: color(ink, lightest);
     cursor: default;
     pointer-events: none;
+
+    .ActionIcon {
+      @include recolor-icon(color(ink, lightest));
+    }
   }
 }
 
