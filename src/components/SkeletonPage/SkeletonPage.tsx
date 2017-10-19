@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import * as PropTypes from 'prop-types';
 import DisplayText from '../DisplayText';
 import SkeletonDisplayText from '../SkeletonDisplayText';
 import SkeletonBodyText from '../SkeletonBodyText';
@@ -14,6 +15,8 @@ export interface Props {
 }
 
 export default class SkeletonPage extends React.PureComponent<Props, never> {
+  static contextTypes = {easdk: PropTypes.object};
+
   render() {
     const {
       children,
