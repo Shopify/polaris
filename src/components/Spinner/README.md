@@ -15,7 +15,7 @@ Spinners are used to notify merchants that their action is being processed. For 
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -67,4 +67,5 @@ Spinner accessibility label should:
 
 ## Related components
 
-To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.
+* To improve user experience and reduce the appearance of long loading times, use the [Progress bar](/components/feedback-indicators/progress-bar) component.
+* To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.

@@ -1,0 +1,49 @@
+@function progress-bar-height($height: base) {
+  $base: 16px;
+  $data: (
+    small: rem($base / 2),
+    base: rem($base),
+    large: rem($base * 2),
+  );
+
+  @return map-get($data, $height);
+}
+
+@keyframes fillup {
+  0% {
+    width: 0;
+  }
+}
+
+.ProgressBar {
+  overflow: hidden;
+  width: 100%;
+  background-color: color(sky, base);
+  border-radius: border-radius();
+}
+
+.sizeSmall {
+  height: progress-bar-height(small);
+}
+
+.sizeMedium {
+  height: progress-bar-height();
+}
+
+.sizeLarge {
+  height: progress-bar-height(large);
+}
+
+.Indicator {
+  height: inherit;
+  width: 0;
+  will-change: width;
+  background-color: color(teal);
+  animation: fillup duration(slowest) easing();
+  transition: width duration(slowest) easing();
+}
+
+.Progress,
+.Label {
+  @include visually-hidden;
+}
