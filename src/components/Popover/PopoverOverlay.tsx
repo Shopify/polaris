@@ -5,7 +5,7 @@ import {write} from '@shopify/javascript-utilities/fastdom';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities/components';
-import {TransitionGroup, TransitionStatus} from '@shopify/react-utilities/animation';
+import {Transition} from 'react-transition-group';
 
 import {Keys} from '../../types';
 import {overlay} from '../shared';
@@ -22,6 +22,8 @@ export enum CloseSource {
   FocusOut,
   ScrollOut,
 }
+
+type TransitionStatus = 'entering' | 'entered' |'exiting' |'exited';
 
 export interface Props {
   id: string,
@@ -53,22 +55,10 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
   render() {
     const {active} = this.props;
-    const selector = `.${styles.Popover}`;
-    const markup = active
-      ? (
-        <TransitionGroup.TransitionChild
-          render={this.renderOverlay}
-          selector={selector}
-          skipAppearing
-          skipEntering
-        />
-      )
-      : null;
-
     return (
-      <TransitionGroup>
-        {markup}
-      </TransitionGroup>
+      <Transition in={active} timeout={500}>
+        {this.renderOverlay}
+      </Transition>
     );
   }
 
@@ -80,6 +70,8 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       fullWidth,
       preferredPosition = 'below',
     } = this.props;
+
+    if (transitionStatus === 'exited') { return null; }
 
     return (
       <PositionedOverlay
@@ -171,7 +163,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     const {contentNode, props: {activator, onClose}} = this;
     if (
       (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
-      nodeContainsDescendant(activator, target) || this.transitionStatus !== TransitionStatus.Shown
+      nodeContainsDescendant(activator, target) || this.transitionStatus !== 'entered'
     ) { return; }
     onClose(CloseSource.Click);
   }
@@ -205,8 +197,8 @@ function renderPopoverContent(children: React.ReactNode, props?: Partial<PanePro
 
 function animationVariations(status: TransitionStatus) {
   switch (status) {
-    case TransitionStatus.Leaving:
-      return styles.leaving;
+    case 'exiting':
+      return styles.exiting;
     default:
       return null;
   }
