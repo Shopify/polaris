@@ -19,7 +19,7 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 

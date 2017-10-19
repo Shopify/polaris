@@ -10,7 +10,7 @@ keywords:
   - educate about features
   - merchant education
   - educational opportunity
-  - educating 
+  - educating
   - teaching
 ---
 
@@ -22,7 +22,7 @@ Footer help is used to refer merchants to more information in the Shopify Help d
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 

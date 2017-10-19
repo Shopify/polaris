@@ -5,7 +5,7 @@ keywords:
   - connect
   - account
   - sign-up
-  - default account connection 
+  - default account connection
   - disconnection
   - authorize
   - third-party accounts
@@ -25,7 +25,7 @@ account to their Shopify store.
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
