@@ -23,12 +23,7 @@ export enum CloseSource {
   ScrollOut,
 }
 
-enum TransitionStatus {
-  Entering = 'entering',
-  Entered = 'entered',
-  Exiting = 'exiting',
-  Exited = 'exited',
-}
+type TransitionStatus = 'entering' | 'entered' |'exiting' |'exited';
 
 export interface Props {
   id: string,
@@ -63,7 +58,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     return (
       <Transition in={active} timeout={500}>
         {(transitionStatus: TransitionStatus) => {
-          if (transitionStatus === TransitionStatus.Exited) { return null; }
+          if (transitionStatus === 'exited') { return null; }
           return this.renderOverlay(transitionStatus);
         }}
       </Transition>
@@ -169,7 +164,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     const {contentNode, props: {activator, onClose}} = this;
     if (
       (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
-      nodeContainsDescendant(activator, target) || this.transitionStatus !== TransitionStatus.Entered
+      nodeContainsDescendant(activator, target) || this.transitionStatus !== 'entered'
     ) { return; }
     onClose(CloseSource.Click);
   }
@@ -203,7 +198,7 @@ function renderPopoverContent(children: React.ReactNode, props?: Partial<PanePro
 
 function animationVariations(status: TransitionStatus) {
   switch (status) {
-    case TransitionStatus.Exiting:
+    case 'exiting':
       return styles.exiting;
     default:
       return null;
