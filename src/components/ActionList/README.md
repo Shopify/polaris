@@ -20,7 +20,7 @@ Action lists render a list of actions or selectable options. This component is u
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -45,8 +45,7 @@ Actions lists should:
 
 ### Action lists
 
-Each item in an action list should be clear and predictable. Merchants should be able to anticipate what will
-happen when they click on an action item.
+Each item in an action list should be clear and predictable. Merchants should be able to anticipate what will happen when they click on an action item.
 
 <!-- usagelist -->
 

@@ -28,7 +28,7 @@ Popovers are small overlays that open on demand, usually when the merchant click
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 

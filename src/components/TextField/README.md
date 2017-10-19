@@ -49,7 +49,7 @@ options and supports several text formats including numbers.
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -299,7 +299,7 @@ Use to let merchants know if their input is valid or if there’s an error. When
 
 ### Disabled text field
 
-Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.  
+Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
 ```jsx
 <TextField label="Store name" disabled />
