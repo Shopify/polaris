@@ -286,3 +286,7 @@ export {
   Props as SkeletonDisplayTextProps,
 } from './SkeletonDisplayText';
 
+export {
+  default as ProgressBar,
+  Props as ProgressBarProps,
+} from './ProgressBar';

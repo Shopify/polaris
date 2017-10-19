@@ -15,7 +15,7 @@ Skeleton page is used with other skeleton loading components to provide a low fi
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -172,4 +172,5 @@ Use this component to compose a loading version of a page where the page title a
 
 ## Related components
 
-Use the [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components to represent blocks of content.
+* Use the [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components to represent blocks of content.
+* When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.

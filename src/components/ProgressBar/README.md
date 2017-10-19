@@ -1,0 +1,71 @@
+---
+name: Progress bar
+category: Feedback indicators
+keywords:
+  - progress indicator
+  - progress bar
+  - loading
+---
+
+# Progress bar
+
+The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left.
+
+---
+
+## Purpose
+
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
+
+### Problem
+
+When a task or operation is in progress, merchants don’t know how much is left to complete, which can cause a sense of unease.
+
+### Solution
+
+Progress bars create a better merchant experience by communicating how much of task has completed and how much is left.
+
+---
+
+## Best practices
+
+Progress bar components should:
+
+* Give merchants an indication of how much of the task has completed and how much is left.
+* Not be used for entire page loads. In this case, use the [Skeleton page](/components/feedback-indicators/skeleton-page) component.
+
+---
+
+## Content guidelines
+
+There are no content elements that are specific to progress bar.
+
+| Prop  | Type   | Description | Default |
+| ---   | ---    | ---     | ---     |
+| progress | number | the progression of certain tasks |
+| size  | enum['small', 'medium', 'large'] | Size of progressbar | medium
+
+## Examples
+
+### Default
+
+Use this component to visually represent the completion of a task or operation.
+
+```jsx
+<ProgressBar progress={75} />
+```
+
+### Small progress bar
+
+Use the size option when you need to increase or decrease the visual weight of the progress bar.
+
+```jsx
+<ProgressBar progress={40} size="small" />
+```
+
+---
+
+## Related components
+
+* For tasks with a short load time, use the [Spinner](/components/feedback-indicators/spinner) component
+* For full page loads, use the [Skeleton page](/components/feedback-indicators/skeleton-page) component
