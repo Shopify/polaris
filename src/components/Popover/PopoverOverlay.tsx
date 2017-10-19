@@ -57,10 +57,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     const {active} = this.props;
     return (
       <Transition in={active} timeout={500}>
-        {(transitionStatus: TransitionStatus) => {
-          if (transitionStatus === 'exited') { return null; }
-          return this.renderOverlay(transitionStatus);
-        }}
+        {this.renderOverlay}
       </Transition>
     );
   }
@@ -73,6 +70,8 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       fullWidth,
       preferredPosition = 'below',
     } = this.props;
+
+    if (transitionStatus === 'exited') { return null; }
 
     return (
       <PositionedOverlay
