@@ -22,8 +22,8 @@ $content-max-width: rem(400px);
   }
 }
 
-.measuring:not(.leaving),
-.leaving {
+.measuring:not(.exiting),
+.exiting {
   opacity: 0;
 }
 
@@ -33,7 +33,7 @@ $content-max-width: rem(400px);
   }
 }
 
-.leaving {
+.exiting {
   transition-timing-function: easing(out);
 }
 
