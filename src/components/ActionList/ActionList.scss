@@ -35,6 +35,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   padding: $item-vertical-padding spacing();
   text-align: left;
   cursor: pointer;
+  border-radius: 0;
 
   &:hover,
   &:focus,
