@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Label, {Props as LabelProps, Action, labelID} from '../Label';
+import {Action} from '../../types';
+
+import {buttonFrom} from '../Button';
+import Label, {Props as LabelProps, labelID} from '../Label';
 import Icon from '../Icon';
 
 import * as styles from './Labelled.scss';
@@ -14,7 +17,7 @@ export interface Props {
   id: LabelProps['id'],
   label: string,
   error?: Error,
-  action?: LabelProps['action'],
+  action?: Action,
   helpText?: React.ReactNode,
   children?: React.ReactNode,
   labelHidden?: boolean,
@@ -24,14 +27,19 @@ export default function Labelled({
   id,
   label,
   error,
+  action,
+  helpText,
   children,
   labelHidden,
-  helpText,
   ...rest,
 }: Props) {
   const className = classNames(
     labelHidden && styles.hidden,
   );
+
+  const actionMarkup = action
+    ? buttonFrom(action, {plain: true})
+    : null;
 
   const helpTextMarkup = helpText
     ? <div className={styles.HelpText} id={helpTextID(id)}>{helpText}</div>
@@ -52,6 +60,7 @@ export default function Labelled({
     ? (
       <div className={styles.LabelWrapper}>
         <Label id={id} {...rest} hidden={false}>{label}</Label>
+        {actionMarkup}
       </div>
     )
     : null;
