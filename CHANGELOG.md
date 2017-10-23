@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.8.0
+## 1.8.0 - 2017-10-23
 ### Documentation
 * Updated README to consistently use contractions (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191)) ([#682](https://github.com/Shopify/polaris-react/pull/682))
 * Improved example description for Layout component ([#683](https://github.com/Shopify/polaris-react/pull/683))
