@@ -30,11 +30,11 @@ Put the merchant first by identifying the problem they face and the component th
 
 ### Problem
 
-Using regular text alone isn’t always enough to guide merchants eyes when presented with a lot of information.
+Using regular text alone isn’t always enough to guide merchants’ eyes when presented with a lot of information.
 
 ### Solution
 
-Text styles help merchants interpret meaning by providing visual cues.
+Text style helps merchants interpret meaning by providing visual cues.
 
 ---
 
