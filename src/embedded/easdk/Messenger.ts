@@ -127,10 +127,10 @@ export default class Messenger {
         return this.normalizePayload(newPayload);
       });
     } else if (typeof payload === 'object') {
-      return Object.keys(payload).reduce((newPayload, key) => {
+      return Object.keys(payload).reduce<Message['data']>((newPayload, key) => {
         newPayload[key] = this.normalizePayload(payload[key]);
         return newPayload;
-      }, {} as Message['data']);
+      }, {});
     } else {
       return payload;
     }

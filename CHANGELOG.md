@@ -5,10 +5,12 @@
 * Consistently use contractions in public README (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191)) ([#682](https://github.com/Shopify/polaris-react/pull/682))
 
 ### Enhancements
+* Added support for React 16 ([#699](https://github.com/Shopify/polaris-react/pull/699))
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
 * Minor updates to the Spinner documentation ([#696](https://github.com/Shopify/polaris-react/pull/696))
 * Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities` ([#718](https://github.com/Shopify/polaris-react/pull/718))
-* TextField and Select now focus on clicking only within the area from the input to the end of its label text ([#671](https://github.com/Shopify/polaris-react/pull/694))
+* TextField and Select now focus on clicking only within the area from the input to the end of its label text ([#694](https://github.com/Shopify/polaris-react/pull/694))
+* Extended support for disabled RadioButtons and Checkboxes rendered by ChoiceList ([#726](https://github.com/Shopify/polaris-react/pull/726))
 
 ### Bug fixes
 * Fixed Layout component example description
