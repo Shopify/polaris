@@ -45,7 +45,9 @@ export default class DatePicker extends React.PureComponent<Props, State> {
     super(props);
 
     const {selected} = props;
-    const range = selected instanceof Date ? {start: selected, end: selected} : selected;
+    const range = selected instanceof Date
+      ? {start: selected, end: selected}
+      : selected;
 
     this.state = {
       hoverDate: range && range.end,
@@ -64,7 +66,9 @@ export default class DatePicker extends React.PureComponent<Props, State> {
 
     const {hoverDate, focusDate} = this.state;
     const allowRange = selected != null && !(selected instanceof Date);
-    const range = selected != null && selected instanceof Date ? {start: selected, end: selected} : selected;
+    const range = selected != null && selected instanceof Date
+      ? {start: selected, end: selected}
+      : selected;
 
     const showNextYear = getNextDisplayYear(month, year);
     const showNextMonth = getNextDisplayMonth(month);

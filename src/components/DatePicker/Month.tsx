@@ -14,7 +14,7 @@ import {
   abbreviationForWeekday,
 } from '@shopify/javascript-utilities/dates';
 import {noop} from '@shopify/javascript-utilities/other';
-
+import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './DatePicker.scss';
 import Day from './Day';
 import Weekday from './Weekday';
@@ -51,9 +51,19 @@ export default function Month({
     year,
 }: Props) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
+  const current = new Date().getMonth() === month;
+  const className = classNames(
+    styles.Title,
+    current && styles['Month-current'],
+  );
   const weeks = getWeeksForMonth(month, year);
   const weekdays = WEEKDAYS.map((weekday) => (
-    <Weekday key={weekday} title={abbreviationForWeekday(weekday)} label={weekday} />
+    <Weekday
+      key={weekday}
+      title={abbreviationForWeekday(weekday)}
+      current={current && new Date().getDay() === weekday}
+      label={weekday}
+    />
   ));
 
   function handleDateClick(selectedDate: Date) {
@@ -63,7 +73,12 @@ export default function Month({
   function renderWeek(day: Date, dayIndex: number) {
     if (day == null) {
       const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
-      return <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />;
+      return (
+        <Day
+          key={dayIndex}
+          onHover={onHover.bind(null, lastDayOfMonth)}
+        />
+      );
     }
 
     const disabled = (
@@ -95,7 +110,7 @@ export default function Month({
 
   return (
     <div role="grid" className={styles.Month}>
-      <div className={styles.Title}>{Months[month]} {year}</div>
+      <div className={className}>{Months[month]} {year}</div>
       <div role="rowheader" className={styles.WeekHeadings}>
         {weekdays}
       </div>
