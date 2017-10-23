@@ -41,7 +41,7 @@ describe('<TextField />', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
       const element = mount(<TextField id="MyTextField" label="TextField" onChange={spy} />);
-      (element.find('input') as any).node.value = 'two';
+      (element.find('input') as any).instance().value = 'two';
       element.find('input').simulate('change');
       expect(spy).toHaveBeenCalledWith('two', 'MyTextField');
     });
@@ -59,7 +59,8 @@ describe('<TextField />', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
       const element = shallow(<TextField label="TextField" onBlur={spy} />);
-      element.find('input').simulate('focus').simulate('blur');
+      element.find('input').simulate('focus');
+      element.find('input').simulate('blur');
       expect(spy).toHaveBeenCalled();
     });
   });

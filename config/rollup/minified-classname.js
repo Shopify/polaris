@@ -5,7 +5,8 @@ const cssNames = (function* () {
   const max = parseInt('zz', base);
   const maxLength = max - min;
   const taken = new Set([
-    parseInt('ad', base), // Avoid terms that may be flagged by content blockers.
+    // Avoid terms that may be flagged by content blockers.
+    parseInt('ad', base),
   ]);
 
   while (taken.size < maxLength) {

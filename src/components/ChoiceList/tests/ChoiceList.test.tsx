@@ -82,7 +82,7 @@ describe('<ChoiceList />', () => {
 
     function changeCheckedForChoice(choice: ReactWrapper<any, any>, checked: boolean, triggerChange = true) {
       const input = choice.find('input');
-      (input as any).node.checked = checked;
+      (input as any).instance().checked = checked;
 
       if (triggerChange) {
         input.simulate('change');

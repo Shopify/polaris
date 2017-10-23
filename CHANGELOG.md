@@ -5,6 +5,7 @@
 * Consistently use contractions in public README (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191)) ([#682](https://github.com/Shopify/polaris-react/pull/682))
 
 ### Enhancements
+* Added support for React 16 ([#699](https://github.com/Shopify/polaris-react/pull/699))
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
 * Minor updates to the Spinner documentation ([#696](https://github.com/Shopify/polaris-react/pull/696))
 * Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities` ([#718](https://github.com/Shopify/polaris-react/pull/718))
