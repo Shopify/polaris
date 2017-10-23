@@ -1,23 +1,28 @@
 # Changelog
 
-## Unreleased
+## 1.8.0
 ### Documentation
-* Consistently use contractions in public README (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191)) ([#682](https://github.com/Shopify/polaris-react/pull/682))
+* Updated README to consistently use contractions (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191)) ([#682](https://github.com/Shopify/polaris-react/pull/682))
+* Improved example description for Layout component ([#683](https://github.com/Shopify/polaris-react/pull/683))
+* Updated Spinner documentation ([#696](https://github.com/Shopify/polaris-react/pull/696))
+* Improved component purpose documentation across components ([#717](https://github.com/Shopify/polaris-react/pull/717))
+* Improved documentation for Text style component ([#720](https://github.com/Shopify/polaris-react/pull/720))
 
 ### Enhancements
 * Added support for React 16 ([#699](https://github.com/Shopify/polaris-react/pull/699))
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
-* Minor updates to the Spinner documentation ([#696](https://github.com/Shopify/polaris-react/pull/696))
 * Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities` ([#718](https://github.com/Shopify/polaris-react/pull/718))
-* TextField and Select now focus on clicking only within the area from the input to the end of its label text ([#694](https://github.com/Shopify/polaris-react/pull/694))
-* Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
+* Added new Progress bar component ([#659](https://github.com/Shopify/polaris-react/pull/659))
+* Changed today’s date to be tabbable and clearly indicated in DatePicker ([#651](https://github.com/Shopify/polaris-react/pull/651))
+* Added support for disabled choices in Choice list component ([#726](https://github.com/Shopify/polaris-react/pull/726))
 * Added support for disabled secondary Page actions ([#650](https://github.com/Shopify/polaris-react/pull/650))
-* Today’s date is now tabbable and clearly indicated in DatePicker ([#651](https://github.com/Shopify/polaris-react/pull/651))
-* Extended support for disabled RadioButtons and Checkboxes rendered by ChoiceList ([#726](https://github.com/Shopify/polaris-react/pull/726))
+* Changed TextField and Select to now focus on clicking only within the area from the input to the end of its label text ([#694](https://github.com/Shopify/polaris-react/pull/694))
 
 ### Bug fixes
 * Fixed Layout component example description
 * Fixed SkeletonPage header appearing in embedded apps (thanks [rkbhochalya](https://github.com/rkbhochalya) for the [original issue](https://github.com/Shopify/polaris/issues/202))) ([#714](https://github.com/Shopify/polaris-react/pull/714))
+* Fixed border-radius on Action list component in Chrome ([#719](https://github.com/Shopify/polaris-react/pull/719))
+
 
 ## 1.7.0 - 2017-10-06
 ### Enhancements
