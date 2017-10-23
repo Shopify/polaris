@@ -23,7 +23,7 @@ Badges are used to inform merchants of the status of a piece of information or o
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -131,7 +131,7 @@ Use for the most critical and time sensitive issues that require a merchant’s 
 
 ### Incomplete badge
 
-Use to indicate when a given task has not yet been completed. For example, when a merchant hasn't fulfilled an order.
+Use to indicate when a given task has not yet been completed. For example, when a merchant hasn’t fulfilled an order.
 
 ```jsx
 <Badge progress="incomplete">Unfulfilled</Badge>

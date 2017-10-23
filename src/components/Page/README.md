@@ -18,6 +18,8 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
+  - easdk
+  - embedded app
 ---
 
 # Page
@@ -28,7 +30,7 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -286,3 +288,4 @@ Use a separator for pages that have an [empty state](/components/structure/empty
 ## Related components
 
 * To lay out the content within a page, [use the layout component](/components/structure/layout)
+* When using `Page` within an [`EmbeddedApp` component](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK

@@ -20,7 +20,7 @@ consistently applied wherever dates need to be selected across Shopify.
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 

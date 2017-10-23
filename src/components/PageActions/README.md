@@ -20,7 +20,7 @@ Page actions let merchants take key actions at the bottom of specific pages in t
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 

@@ -22,12 +22,13 @@ export default function Spinner({
   accessibilityLabel,
 }: Props) {
 
-  if (process.env.NODE_ENV === 'development') {
-    if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
+
+  if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
+    if (process.env.NODE_ENV === 'development') {
       // tslint:disable-next-line no-console
       console.warn(`The color ${color} is not meant to be used on ${size} spinners. The colors available on large spinners are: ${COLORS_FOR_LARGE_SPINNER.join(', ')}`);
-      size = 'small';
     }
+    size = 'small';
   }
 
   const className = classNames(

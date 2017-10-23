@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {IconableAction, DisableableAction} from '../../types';
+import {IconableAction, DisableableAction, LoadableAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
 import {Props as ItemProps} from '../ActionList/Item';
 import Breadcrumbs, {Props as BreadcrumbProps} from '../Breadcrumbs';
@@ -12,6 +12,8 @@ import ActionList from '../ActionList';
 
 import Action from './Action';
 import * as styles from './Page.scss';
+
+export type SecondaryAction = IconableAction & DisableableAction;
 
 export interface ActionGroup {
   title: string,
@@ -25,8 +27,8 @@ export interface Props {
   icon?: string,
   separator?: boolean,
   breadcrumbs?: BreadcrumbProps['breadcrumbs'],
-  secondaryActions?: IconableAction[],
-  primaryAction?: DisableableAction,
+  primaryAction?: DisableableAction & LoadableAction,
+  secondaryActions?: SecondaryAction[],
   pagination?: PaginationDescriptor,
   actionGroups?: ActionGroup[],
 }
@@ -232,7 +234,7 @@ function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
   return {title, items: actions};
 }
 
-function secondaryActionsFrom(actions: IconableAction[]) {
+function secondaryActionsFrom(actions: SecondaryAction[]): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
     <Action {...action} key={`Action-${content || index}`}>{content}</Action>
   ));

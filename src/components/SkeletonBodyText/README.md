@@ -1,10 +1,10 @@
 ---
 name: Skeleton body text
-tags:
+category: Feedback indicators
+keywords:
   - skeleton
   - loading
   - page
-category: Feedback indicators
 ---
 
 # Skeleton body text
@@ -15,7 +15,7 @@ Skeleton body text is used to provide a low fidelity representation of content b
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -81,4 +81,5 @@ Use this component to represent a short, single line of text, like a timestamp.
 
 ## Related components
 
-Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) to represent the content of a page while it’s loading.
+* Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) to represent the content of a page while it’s loading.
+* When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.

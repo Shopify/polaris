@@ -1,7 +1,31 @@
-## 1.7.0
+# Changelog
+
+## 1.8.0
+### Documentation
+* Updated README to consistently use contractions (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191))
+* Improved example description for Layout component
+* Updated Spinner documentation
+* Improved component purpose documentation across components
+* Improved documentation for Text style component
 
 ### Enhancements
+* Added support for React 16
+* Added an option to show or hide unpublished products from the resource picker
+* Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities`
+* Added new Progress bar component
+* Changed today’s date to be tabbable and clearly indicated in DatePicker
+* Added support for disabled choices in Choice list component
+* Added support for disabled secondary Page actions
+* Changed TextField and Select to now focus on clicking only within the area from the input to the end of its label text
 
+### Bug fixes
+* Fixed Layout component example description
+* Fixed SkeletonPage header appearing in embedded apps (thanks [rkbhochalya](https://github.com/rkbhochalya) for the [original issue](https://github.com/Shopify/polaris/issues/202)))
+* Fixed border-radius on Action list component in Chrome
+
+
+## 1.7.0 - 2017-10-06
+### Enhancements
 * Added SkeletonPage, SkeletonBodyText and SkeletonDisplayText components
 * Added Spinner component
 * Added hint prop to Scrollable and use in Popover
@@ -10,9 +34,9 @@
 * Enabled the primaryAction of PageActions to be loading
 * Stack now supports non-wrapping layouts on small screens
 * Updated text field min and max documentation
+* Breadcrumbs now accept a callback through onAction (thanks [arypbatista](https://github.com/arypbatista) for the [original issue](https://github.com/Shopify/polaris/issues/188))
 
 ### Bug fixes
-
 * Fixed issue with embedded app breadcrumb linking to Shopify settings page (thanks [cargix1](https://github.com/cargix1) for the [original issue](https://github.com/Shopify/polaris/issues/116))
 * Fixed Avatar to display image and initials simultaneously
 * Fixed various links to embedded components
@@ -21,8 +45,7 @@
 * Fixed plain and fullWidth Button alignment
 * Add a minor delay to tooltip display
 
-## 1.6.0
-
+## 1.6.0 - 2017-09-25
 ### Enhancements
 * Documented disabled prop for Checkbox and RadioButton (thanks [LeoAref](https://github.com/LeoAref) for the [original issue](https://github.com/Shopify/polaris/issues/114))
 * Documented progress prop for Badge (thanks [sp4cecat](https://github.com/sp4cecat) for the [original issue](https://github.com/Shopify/polaris/issues/172))
@@ -40,18 +63,16 @@
 * Fixed Popover not resizing on content updates
 
 
-## 1.5.2
-
+## 1.5.2 - 2017-09-18
 ### Bug fixes
 * Fixes alignment of page action links
 
-## 1.5.1
-
+## 1.5.1 - 2017-08-30
 ### Bug fixes
 * Fixed disabled buttons when using local class names
 * Fixed Scrollable resize listener not autobinding
 
-## 1.5.0
+## 1.5.0 - 2017-08-30
 ### Enhancements
 * Updated scrollable component to remember scroll position on re-render
 * Added checkmark icon to the `Icon` component
@@ -60,12 +81,10 @@
 ### Bug fixes
 * Fixed typo in `Icon` code example
 
-## 1.4.1 (August 24, 2017)
-
+## 1.4.1 - 2017-08-24
 Various documentation fixes.
 
-## 1.4.0 (August 22, 2017)
-
+## 1.4.0 - 2017-08-22
 ### Enhancements
 * Updated import, export, and view icons
 * Improved documentation of various components
@@ -81,13 +100,12 @@ Various documentation fixes.
 ### Chores
 * Upgraded javascript-utilities to the latest version
 
-## 1.3.1 (August 10, 2017)
+## 1.3.1 - 2017-08-10
 ### Bug fixes
 * Fixed classnames in built *.scss files
 * Fixed broken link in description list README
 
-## 1.3.0 (August 9, 2017)
-
+## 1.3.0 - 2017-08-09
 ### Enhancements
 * Added an `esnext` build (allows production builds to perform class/method tree shaking)
 * Changed KeyboardKey component to use `kbd` tag
@@ -107,7 +125,6 @@ Various documentation fixes.
 * Added Sketch color palette file
 
 ## 1.2.1 (July 27, 2017)
-
 ### Chores
 * Fixed a repo issue that caused the public repo release not to happen
 
@@ -154,13 +171,11 @@ Various documentation fixes.
 * Updated EASDK metadata structure for generic interfaces
 * Removed postinstall hook
 
-## 1.1.1 (June 19, 2017)
-
+## 1.1.1 - 2017-06-19
 ### Chores
 * Fixed a repo issue that caused the public repo release not to happen
 
-## 1.1.0 (June 19, 2017)
-
+## 1.1.0 - 2017-06-19
 ### Enhancements
 * Added automatic inference of the `target` property of EASDK buttons in `Page`’s `primaryAction` and `secondaryActions` based on their URL (thanks [Dmitriy](https://github.com/jimmyn) for the [original issue](https://github.com/Shopify/polaris/issues/46))
 * Added automatic inference of the `target` property of EASDK breadcrumbs in `Page`'s `breadcrumbs` prop based on the URL
@@ -204,7 +219,7 @@ Various documentation fixes.
 * Added the correct viewport tag to the Playground
 * Hid deprecation errors during tests
 
-## 1.0.3 (May 11, 2017)
+## 1.0.3 - 2017-05-11
 ### Big fixes
 * Fixed an issue where the embedded components would not reload the page within the Shopify admin (thanks [Rich](https://github.com/buggy) for the [original issue](https://github.com/Shopify/polaris/issues/28))
 * Fixed the `spacing="none"` variation on `Stack` not working correctly, and added the missing `extraLarge` enum value for `spacing`
@@ -234,7 +249,7 @@ Various documentation fixes.
 * Removed the `@import` statements at the top of source Sass files
 * Updated TSLint and related linting dependencies
 
-## 1.0.2 (April 25, 2017)
+## 1.0.2 - 2017-04-25
 ### Bug fixes
 * Fixed an issue where subcomponents with variations would use a single `-` instead of `--` (thanks [johnsonab](https://github.com/johnsonab) for the [original issue](https://github.com/Shopify/polaris/issues/9))
 * Fixed a missing typing dependency and a missing `embedded` types entry point that were causing issues using this package with TypeScript (thanks to [Rich](https://github.com/buggy) for the [original](https://github.com/Shopify/polaris/issues/19) [issues](https://github.com/Shopify/polaris/issues/20))
@@ -252,9 +267,9 @@ Various documentation fixes.
 * Added license to `package.json` and to the root of the repo (thanks to [Daniel](https://github.com/d2s) for the [original issue](https://github.com/Shopify/polaris/issues/15))
 * Fixed an issue where the Webpack example would complain about a missing dependency (thanks to [Rafael](https://github.com/rafaedez) for the [original issue](https://github.com/Shopify/polaris/issues/21))
 
-## 1.0.1 (April 20, 2017)
+## 1.0.1 - 2017-04-20
 ### Chores
 * Switch repo to public access
 
-## 1.0.0 (April 20, 2017)
+## 1.0.0 - 2017-04-20
 * Initial release

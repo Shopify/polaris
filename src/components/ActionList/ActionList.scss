@@ -35,6 +35,8 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   padding: $item-vertical-padding spacing();
   text-align: left;
   cursor: pointer;
+  border-radius: 0;
+  color: color(ink, light);
 
   &:hover,
   &:focus,
@@ -47,6 +49,16 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
       @include recolor-icon(color(sky));
     }
   }
+
+  &.disabled {
+    color: color(ink, lightest);
+    cursor: default;
+    pointer-events: none;
+
+    .Image {
+      @include recolor-icon(color(ink, lightest));
+    }
+  }
 }
 
 .Content {
@@ -55,7 +67,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .Image {
-  @include recolor-icon(color(ink, lightest));
+  @include recolor-icon(color(ink, light));
   display: flex;
   flex: 0 0 auto;
   justify-content: center;

@@ -29,7 +29,7 @@ Links are used to embed actions or pathways to more information in a sentence.
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
@@ -97,4 +97,4 @@ Use for text links in larger spans of text.
 
 ## Related components
 
-* To create navigational actions that aren’t part of a line of text, [use the button component](/components/button)
+* To create navigational actions that aren’t part of a line of text, [use the button component](/components/actions/button)

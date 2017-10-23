@@ -74,7 +74,7 @@ Embedded alerts should:
 
 - Be used for in-context tasks that require information to be acknowledged before continuing, or require confirmation of an action that can’t be undone or is difficult to undo (with the option to back out).
 - For alert messages, keep body content to line of text and don’t use more than one call to action.
-- For confirmation messages, always give merchants the clear option to confirm or back out. Keep body content to one line of text and don't use more than two calls to action.
+- For confirmation messages, always give merchants the clear option to confirm or back out. Keep body content to one line of text and don’t use more than two calls to action.
 - Not be used as a way to present additional sections of content without actions because they can disrupt a merchant’s workflow.
 - Not be used for complicated flows that require a merchant to take multiple paths or complete more than one primary task.
 

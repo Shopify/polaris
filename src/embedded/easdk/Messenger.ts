@@ -102,7 +102,7 @@ export default class Messenger {
   }
 
   private storeCallback(callback: Callback): CallbackID {
-    // Optimization, so we don't store a new callback ID for callbacks
+    // Optimization, so we don’t store a new callback ID for callbacks
     // we have sent before
     if (this.callbacksToID.has(callback)) {
       return this.callbacksToID.get(callback) as CallbackID;
@@ -127,10 +127,10 @@ export default class Messenger {
         return this.normalizePayload(newPayload);
       });
     } else if (typeof payload === 'object') {
-      return Object.keys(payload).reduce((newPayload, key) => {
+      return Object.keys(payload).reduce<Message['data']>((newPayload, key) => {
         newPayload[key] = this.normalizePayload(payload[key]);
         return newPayload;
-      }, {} as Message['data']);
+      }, {});
     } else {
       return payload;
     }

@@ -1,6 +1,6 @@
 # Embedded apps
 
-In addition to the [visual components](https://polaris.shopify.com/components/get-started) provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don't need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through an `EmbeddedApp` component:
+In addition to the [visual components](https://polaris.shopify.com/components/get-started) provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through an `EmbeddedApp` component:
 
 ```js
 import React from 'react';
@@ -119,7 +119,7 @@ Flash messages should:
 ###### Do
 Changes saved
 
-###### Don't
+###### Don’t
 Successfully saved changes
 
 #### `easdk.pushState()`

@@ -7,7 +7,7 @@ describe('<Select />', () => {
     it('is called with the value of the newly-selected option', () => {
       const spy = jest.fn();
       const element = mount(<Select id="MySelect" label="Select" options={['one', 'two']} onChange={spy} />);
-      (element.find('select') as any).node.value = 'two';
+      (element.find('select') as any).instance().value = 'two';
       element.find('select').simulate('change');
       expect(spy).toHaveBeenCalledWith('two', 'MySelect');
     });
@@ -25,7 +25,8 @@ describe('<Select />', () => {
     it('is called when the select is blurred', () => {
       const spy = jest.fn();
       const element = shallow(<Select label="Select" options={[]} onBlur={spy} />);
-      element.find('select').simulate('focus').simulate('blur');
+      element.find('select').simulate('focus');
+      element.find('select').simulate('blur');
       expect(spy).toHaveBeenCalled();
     });
   });

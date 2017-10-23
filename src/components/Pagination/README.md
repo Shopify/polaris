@@ -27,7 +27,7 @@ Use pagination to allow navigation between pages that represent an ordered colle
 
 ## Purpose
 
-Think about the merchant problem this component solves when you’re using it:
+Put the merchant first by identifying the problem they face and the component that helps them solve it.
 
 ### Problem
 
