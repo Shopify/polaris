@@ -1,13 +1,26 @@
 ---
-name: TextStyle
+name: Text style
 category: Titles and text
 keywords:
   - typographic
+  - subdued
+  - strong
+  - negative
+  - positive
+  - cues
+  - enhancements
+  - type
+  - bold
+  - dollar
+  - increase
+  - decrease
+  - input
+  - fields
 ---
 
-# TextStyle
+# Text style
 
-TextStyle enhances text with additional visual meaning. For example, de-emphasizing text that is less important than surrounding text.
+Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
 
 ---
 
@@ -17,11 +30,22 @@ Put the merchant first by identifying the problem they face and the component th
 
 ### Problem
 
-Text alone does not provide enough meaning.
+Using regular text alone isn’t always enough to guide merchants’ eyes when presented with a lot of information.
 
 ### Solution
 
-TextStyle enhances text with additional visual meaning.
+Text style helps merchants interpret meaning by providing visual cues.
+
+---
+
+## Best practices
+
+Text style should be:
+
+* Used when enhancing the text will help the merchant undertand its meaning
+* Subdued if the text is less important than its surrounding text
+* Strong for input fields, or for a row total in a price table
+* Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
@@ -32,7 +56,7 @@ TextStyle enhances text with additional visual meaning.
 
 ### Subdued textstyle
 
-Use to de-emphasize a piece of text that is less important to the merchant than other nearby text. May also be used to indicate when normal content is absent, e.g. “No supplier listed”. Don’t use only for aesthetic effect.
+Use to de-emphasize a piece of text that is less important to the merchant than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
 
 ```jsx
 <TextStyle variation="subdued">No supplier listed</TextStyle>
