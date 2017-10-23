@@ -18,6 +18,8 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
+  - easdk
+  - embedded app
 ---
 
 # Page
@@ -286,3 +288,4 @@ Use a separator for pages that have an [empty state](/components/structure/empty
 ## Related components
 
 * To lay out the content within a page, [use the layout component](/components/structure/layout)
+* When using `Page` within an [`EmbeddedApp` component](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK

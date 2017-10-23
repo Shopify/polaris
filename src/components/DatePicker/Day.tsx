@@ -2,7 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Months} from '@shopify/javascript-utilities/dates';
+import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 
 import * as styles from './DatePicker.scss';
 
@@ -45,15 +45,24 @@ export default class Day extends React.PureComponent<Props, never> {
       return <div className={styles.EmptyDay} onMouseOver={handleHover}/>;
     }
     const handleClick = onClick && !disabled ? onClick.bind(null, day) : noop;
+    const today = isSameDay(new Date(), day);
     const className = classNames(
       styles.Day,
       selected && styles['Day-selected'],
       disabled && styles['Day-disabled'],
+      today && styles['Day-today'],
       (inRange || inHoveringRange) && !disabled && styles['Day-inRange'],
     );
-
     const date = day.getDate();
-    const tabIndex = (focused || selected || date === 1) && !disabled ? 0 : -1;
+    const tabIndex = (focused || selected || today || date === 1) && !disabled
+      ? 0
+      : -1;
+    const ariaLabel = [
+      `${today ? 'Today ' : ''}`,
+      `${Months[day.getMonth()]} `,
+      `${date} `,
+      `${day.getFullYear()}`,
+    ].join('');
 
     return (
       <button
@@ -63,7 +72,7 @@ export default class Day extends React.PureComponent<Props, never> {
         className={className}
         onMouseOver={handleHover}
         onClick={handleClick}
-        aria-label={`${Months[day.getMonth()]} ${day.getFullYear()}`}
+        aria-label={ariaLabel}
         aria-selected={selected}
         aria-disabled={disabled}
         role="gridcell"

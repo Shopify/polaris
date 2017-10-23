@@ -11,6 +11,8 @@
 * Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities` ([#718](https://github.com/Shopify/polaris-react/pull/718))
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
 * Added support for disabled secondary Page actions ([#650](https://github.com/Shopify/polaris-react/pull/650))
+* Today’s date is now tabbable and clearly indicated in DatePicker ([#651](https://github.com/Shopify/polaris-react/pull/651))
+* Extended support for disabled RadioButtons and Checkboxes rendered by ChoiceList ([#726](https://github.com/Shopify/polaris-react/pull/726))
 
 ### Bug fixes
 * Fixed Layout component example description
