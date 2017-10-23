@@ -9,6 +9,7 @@
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
 * Minor updates to the Spinner documentation ([#696](https://github.com/Shopify/polaris-react/pull/696))
 * Changed Popover component to use `react-transition-group` instead of our deprecated custom version in `@shopify/react-utilities` ([#718](https://github.com/Shopify/polaris-react/pull/718))
+* TextField and Select now focus on clicking only within the area from the input to the end of its label text ([#694](https://github.com/Shopify/polaris-react/pull/694))
 * Added an option to show or hide unpublished products from the resource picker ([#628](https://github.com/Shopify/polaris-react/pull/628))
 * Added support for disabled secondary Page actions ([#650](https://github.com/Shopify/polaris-react/pull/650))
 * Today’s date is now tabbable and clearly indicated in DatePicker ([#651](https://github.com/Shopify/polaris-react/pull/651))

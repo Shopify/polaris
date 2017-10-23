@@ -4,6 +4,9 @@
 
 .LabelWrapper {
   margin-bottom: spacing(extra-tight);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .HelpText {
