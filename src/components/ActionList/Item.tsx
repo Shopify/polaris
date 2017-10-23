@@ -1,16 +1,29 @@
 import * as React from 'react';
+import {classNames} from '@shopify/react-utilities';
 
-import {IconableAction} from '../../types';
+import {IconableAction, DisableableAction} from '../../types';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 
 import * as styles from './ActionList.scss';
 
-export interface Props extends IconableAction {
+export interface Props extends IconableAction, DisableableAction {
   image?: string,
 }
 
-export default function Item({content, url, onAction, icon, image}: Props) {
+export default function Item({
+  content,
+  url,
+  onAction,
+  icon,
+  image,
+  disabled,
+}: Props) {
+
+  const className = classNames(
+    styles.Item,
+    disabled && styles.disabled,
+  );
   let imageElement = null;
 
   if (icon) {
@@ -39,8 +52,12 @@ export default function Item({content, url, onAction, icon, image}: Props) {
     : content;
 
   const control = url
-    ? <UnstyledLink url={url} className={styles.Item}>{contentElement}</UnstyledLink>
-    : <button onClick={onAction} className={styles.Item}>{contentElement}</button>;
+    ? <UnstyledLink url={url} className={styles.Item}>
+        {contentElement}
+      </UnstyledLink>
+    : <button onClick={onAction} className={className} disabled={disabled}>
+        {contentElement}
+      </button>;
 
   return <li>{control}</li>;
 }

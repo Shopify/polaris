@@ -1,8 +1,9 @@
 import * as React from 'react';
+import {classNames} from '@shopify/react-utilities';
 
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
-import {IconableAction} from '../../types';
+import {IconableAction, DisableableAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Page.scss';
@@ -15,6 +16,7 @@ export interface Props {
   icon?: IconableAction['icon'],
   onAction?: IconableAction['onAction'],
   accessibilityLabel?: IconableAction['accessibilityLabel'],
+  disabled?: DisableableAction['disabled'],
 }
 
 export default function Action({
@@ -25,7 +27,9 @@ export default function Action({
   children,
   disclosure,
   accessibilityLabel,
+  disabled,
 }: Props) {
+
   const iconMarkup = icon
     ? (
       <span className={styles.ActionIcon}>
@@ -67,14 +71,21 @@ export default function Action({
     );
   }
 
+  const className = classNames(
+    styles.Action,
+    disabled && styles.disabled,
+    icon && children == null && styles.iconOnly,
+  );
+
   return (
     <button
       key={children}
+      className={className}
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}
-      className={styles.Action}
       aria-label={accessibilityLabel}
       type="button"
+      disabled={disabled}
     >
       {contentMarkup}
     </button>
