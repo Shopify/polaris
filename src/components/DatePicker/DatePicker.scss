@@ -28,6 +28,10 @@ $in-range-border-color: #9ca6de;
   min-width: rem(230px);
 }
 
+.Month-current {
+  font-weight: bold;
+}
+
 .Week,
 .WeekHeadings {
   display: flex;
@@ -45,6 +49,7 @@ $in-range-border-color: #9ca6de;
   padding: spacing(tight);
   background: transparent;
   border: border();
+  border-radius: 0;
   outline: none;
   font-size: $font-size;
   text-align: center;
@@ -62,6 +67,10 @@ $in-range-border-color: #9ca6de;
   + .EmptyDay {
     margin-left: -1px;
   }
+}
+
+.Day-today {
+  font-weight: bold;
 }
 
 .Day-inRange {
@@ -129,6 +138,11 @@ $in-range-border-color: #9ca6de;
   + .Weekday {
     margin-left: -1px;
   }
+}
+
+.Weekday-current {
+  font-weight: bold;
+  color: color(black, base);
 }
 
 .Header {
