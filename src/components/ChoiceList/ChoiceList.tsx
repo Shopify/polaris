@@ -11,6 +11,7 @@ import * as styles from './ChoiceList.scss';
 export interface ChoiceDescriptor {
   value: string,
   label: string,
+  disabled?: boolean,
   helpText?: React.ReactNode,
 }
 
@@ -30,6 +31,7 @@ type ChooseableComponent = ReactComponent<{
   label: string,
   name?: string,
   value?: string,
+  disabled?: boolean,
   checked?: boolean,
   helpText?: React.ReactNode,
   onChange?(checked: boolean, id: string): void,
@@ -63,10 +65,13 @@ export default function ChoiceList({
     : null;
 
   const choicesMarkup = choices.map((choice) => {
-    const {value, label, helpText} = choice;
+    const {value, label, helpText, disabled} = choice;
 
     function handleChange(checked: boolean) {
-      onChange(updateSelectedChoices(choice, checked, selected, allowMultiple), name);
+      onChange(
+        updateSelectedChoices(choice, checked, selected, allowMultiple),
+        name,
+      );
     }
 
     return (
@@ -75,6 +80,7 @@ export default function ChoiceList({
           name={finalName}
           value={value}
           label={label}
+          disabled={disabled}
           checked={choiceIsSelected(choice, selected)}
           helpText={helpText}
           onChange={handleChange}
