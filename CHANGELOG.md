@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.8.0
+## 1.8.1 - 2017-10-24
+### Bug fixes
+* Added missing yarn config file which was causing the build to fail
+
+## 1.8.0 - 2017-10-23
 ### Documentation
 * Updated README to consistently use contractions (thanks [stefanmiodrag](https://github.com/stefanmiodrag) for the [original pull request](https://github.com/Shopify/polaris/pull/191))
 * Improved example description for Layout component

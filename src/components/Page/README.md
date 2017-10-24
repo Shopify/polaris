@@ -12,7 +12,7 @@ keywords:
   - page with all header elements
   - page without primary action in header
   - page without pagination
-  - full-wdith page
+  - full-width page
   - page with action groups
   - page with separator
   - outer wrapper
