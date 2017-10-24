@@ -50,7 +50,7 @@ Use React components in most cases, especially if you’re building a highly int
 - Include the CSS in your HTML to implement:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.8.1/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.8.2/polaris.min.css" />
 ```
 
 - Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
@@ -68,7 +68,7 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.8.1/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.8.2/polaris.min.css" />
 ```
 
 Include the component in your project:
@@ -88,7 +88,7 @@ ReactDOM.render(<Button onClick={() => alert('Button clicked!')}>Example button<
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.8.1/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.8.2/polaris.min.css" />
 ```
 
 Add the appropriate classes to your HTML elements:
