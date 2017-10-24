@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.2 - 2017-10-24
+### Bug fixes
+* Fixed stack not returning children
+
 ## 1.8.1 - 2017-10-24
 ### Bug fixes
 * Added missing yarn config file which was causing the build to fail

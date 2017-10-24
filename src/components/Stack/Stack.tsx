@@ -43,7 +43,7 @@ export default class Stack extends React.PureComponent<Props, never> {
     const itemMarkup = elementChildren(children)
       .map((child, index) => {
         const props = { key: index };
-        wrapWithComponent(child, Item, props as ItemProps);
+        return wrapWithComponent(child, Item, props as ItemProps);
       });
 
     return <div className={className}>{itemMarkup}</div>;
