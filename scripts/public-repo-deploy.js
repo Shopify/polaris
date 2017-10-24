@@ -74,7 +74,7 @@ let changelogFile = readFileSync(changelog, 'utf8');
 changelogFile = changelogFile.replace(STRIP_PRIVATE_LINKS, '');
 writeFileSync(changelog, changelogFile);
 
-const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc,.github,.babelrc}';
+const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc,.github,.babelrc,.yarnclean}';
 
 // 🔥 ./sandbox/polaris
 rm('-rf', [
