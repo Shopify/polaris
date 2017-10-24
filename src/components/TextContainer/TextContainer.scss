@@ -1,12 +1,17 @@
+@mixin text-container-spacing($spacing: base) {
+  > * + * {
+    margin-top: (spacing($spacing));
+  }
+}
+
 .TextContainer {
-  @include text-style-body;
+  @include text-container-spacing;
+}
 
-  p {
-    margin: 0;
-  }
+.spacingTight {
+  @include text-container-spacing(tight);
+}
 
-  *:not(:last-child) {
-    margin: 0;
-    margin-bottom: (1.5 * spacing(tight));
-  }
+.spacingLoose {
+  @include text-container-spacing(loose);
 }
