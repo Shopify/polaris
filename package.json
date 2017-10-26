@@ -99,7 +99,6 @@
     "react-addons-test-utils": "^15.5.4",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",
-    "react-transition-group": "^2.2.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
@@ -149,6 +148,7 @@
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
-    "tslib": "^1.7.1"
+    "tslib": "^1.7.1",
+    "react-transition-group": "^2.2.1"
   }
 }
