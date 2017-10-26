@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.3 - 2017-10-26
+### Bug fixes
+* Moved react-transition-group from a dev dependency to a dependency
+
 ## 1.8.2 - 2017-10-24
 ### Bug fixes
 * Fixed stack not returning children
