@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {withEASDK, WithEASDKProps} from '../easdk';
+import {OpenOptions} from '../easdk/components/ResourcePicker';
 
 export interface SelectionResult {
   products?: object[],
@@ -53,7 +54,7 @@ export class ResourcePicker extends React.PureComponent<Props & WithEASDKProps, 
     if (easdk == null) { return; }
 
     if (open) {
-      easdk.ResourcePicker.open(this.props);
+      easdk.ResourcePicker.open(this.props as OpenOptions);
     } else {
       easdk.ResourcePicker.close();
     }

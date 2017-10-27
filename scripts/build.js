@@ -172,7 +172,7 @@ function runRollup({
   return rollup(config)
     .then((bundle) => bundle.write({
       format,
-      dest: resolvePath(outputDir, output),
+      file: resolvePath(outputDir, output),
     }));
 }
 

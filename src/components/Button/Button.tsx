@@ -138,10 +138,11 @@ export default function Button({
 export function buttonsFrom(action: ComplexAction, overrides?: Partial<Props>): React.ReactElement<Props>;
 export function buttonsFrom(actions: ComplexAction[], overrides?: Partial<Props>): React.ReactElement<Props>[];
 export function buttonsFrom(actions: ComplexAction[] | ComplexAction, overrides: Partial<Props> = {}) {
-  if ((actions as ComplexAction[]).length != null) {
-    return (actions as ComplexAction[]).map((action, index) => buttonFrom(action, overrides, index));
+  if (Array.isArray(actions)) {
+    return actions.map((action, index) => buttonFrom(action, overrides, index));
   } else {
-    return buttonFrom(actions, overrides);
+    const action = actions;
+    return buttonFrom(action, overrides);
   }
 }
 

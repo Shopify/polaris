@@ -33,8 +33,8 @@ export default class Page extends React.PureComponent<Props, never> {
   componentDidUpdate(prevProps: Props) {
     if (this.context.easdk == null) { return; }
 
-    const prevEASDKProps = pick<{}, Props>(prevProps, EASDK_PROPS);
-    const currentEASDKProps = pick<{}, Props>(this.props, EASDK_PROPS);
+    const prevEASDKProps = pick(prevProps, EASDK_PROPS);
+    const currentEASDKProps = pick(this.props, EASDK_PROPS);
 
     if (!isEqual(prevEASDKProps, currentEASDKProps)) {
       this.handleEASDKMessaging();

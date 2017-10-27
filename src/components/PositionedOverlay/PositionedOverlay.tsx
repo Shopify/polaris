@@ -192,11 +192,11 @@ function intersectionWithViewport(rect: Rect) {
 }
 
 function getMarginsForNode(node: HTMLElement) {
-  const styles = window.getComputedStyle(node);
+  const nodeStyles = window.getComputedStyle(node);
   return {
-    activator: parseFloat(styles.marginTop || ''),
-    container: parseFloat(styles.marginBottom || ''),
-    horizontal: parseFloat(styles.marginLeft || ''),
+    activator: parseFloat(nodeStyles.marginTop || ''),
+    container: parseFloat(nodeStyles.marginBottom || ''),
+    horizontal: parseFloat(nodeStyles.marginLeft || ''),
   };
 }
 

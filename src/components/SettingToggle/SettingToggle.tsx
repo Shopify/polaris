@@ -3,6 +3,7 @@ import * as React from 'react';
 import {buttonFrom} from '../Button';
 import Card from '../Card';
 import SettingAction from '../SettingAction';
+import {ComplexAction} from '../../types';
 
 export interface Props {
   enabled?: boolean,
@@ -12,7 +13,7 @@ export interface Props {
 
 export default function SettingToggle({enabled, action, children}: Props) {
   const actionMarkup = action
-    ? buttonFrom(action, {primary: !enabled})
+    ? buttonFrom(action as ComplexAction, {primary: !enabled})
     : null;
 
   return (

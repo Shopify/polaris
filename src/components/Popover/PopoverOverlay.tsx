@@ -23,7 +23,7 @@ export enum CloseSource {
   ScrollOut,
 }
 
-type TransitionStatus = 'entering' | 'entered' |'exiting' |'exited';
+type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 export interface Props {
   id: string,
