@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {layeredComponent} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {focusFirstFocusableNode, findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
+import Portal from '../Portal';
 import PopoverOverlay, {CloseSource} from './PopoverOverlay';
 import Pane from './Pane';
 import Section from './Section';
@@ -25,20 +25,20 @@ export interface Props {
 
 export interface State {
   activatorFocused: boolean,
+  activatorNode: HTMLElement | null,
 }
 
 const getUniqueID = createUniqueIDFactory('Popover');
 
-@layeredComponent({idPrefix: 'Popover'})
 export default class Popover extends React.PureComponent<Props, State> {
   static Pane = Pane;
   static Section = Section;
 
   state: State = {
     activatorFocused: false,
+    activatorNode: null,
   };
 
-  private activatorNode: HTMLElement | null;
   private activatorContainer: HTMLElement | null;
   private id = getUniqueID();
 
@@ -50,37 +50,40 @@ export default class Popover extends React.PureComponent<Props, State> {
     this.setAccessibilityAttributes();
   }
 
-  renderLayer() {
+  render() {
     const {
+      activatorWrapper: WrapperComponent = 'div',
       children,
       onClose,
       activator,
-      activatorWrapper,
+      active,
       ...rest,
     } = this.props;
 
-    if (this.activatorNode == null) {
-      return null;
-    }
+    const {
+      activatorNode,
+    } = this.state;
 
-    return (
-      <PopoverOverlay
-        id={this.id}
-        activator={this.activatorNode}
-        onClose={this.handleClose}
-        {...rest}
-      >
-        {children}
-      </PopoverOverlay>
-    );
-  }
-
-  render() {
-    const {activatorWrapper: WrapperComponent = 'div'} = this.props;
+    const portal = activatorNode
+      ? (
+        <Portal idPrefix="popover">
+          <PopoverOverlay
+            id={this.id}
+            activator={activatorNode}
+            onClose={this.handleClose}
+            active={active}
+            {...rest}
+          >
+            {children}
+          </PopoverOverlay>
+        </Portal>
+      )
+      : null;
 
     return (
       <WrapperComponent ref={this.setActivator}>
         {React.Children.only(this.props.activator)}
+        {portal}
       </WrapperComponent>
     );
   }
@@ -91,7 +94,6 @@ export default class Popover extends React.PureComponent<Props, State> {
 
     const firstFocusable = findFirstFocusableNode(activatorContainer);
     const focusableActivator = firstFocusable || activatorContainer;
-
     focusableActivator.tabIndex = focusableActivator.tabIndex || 0;
     focusableActivator.setAttribute('aria-controls', id);
     focusableActivator.setAttribute('aria-owns', id);
@@ -115,12 +117,12 @@ export default class Popover extends React.PureComponent<Props, State> {
   @autobind
   private setActivator(node: HTMLElement | null) {
     if (node == null) {
-      this.activatorNode = null;
       this.activatorContainer = null;
+      this.setState({activatorNode: null});
       return;
     }
 
-    this.activatorNode = node.firstElementChild as HTMLElement;
+    this.setState({activatorNode: node.firstElementChild as HTMLElement});
     this.activatorContainer = node;
   }
 }
