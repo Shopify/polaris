@@ -46,7 +46,7 @@ describe('build', () => {
   });
 
   it('generates a zip of ./build/sass', () => {
-    expect(fs.existsSync('./build/sass.zip')).toBe(true);
+    expect(fs.existsSync('./build/Sass.zip')).toBe(true);
   });
 
   it('generates the necessary typescript definition files', () => {
