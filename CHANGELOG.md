@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+
+* Added fullWidth prop to Layout.Section [#743](https://github.com/Shopify/polaris-react/pull/743/)
 ## 1.8.3 - 2017-10-26
 ### Bug fixes
 * Moved react-transition-group from a dev dependency to a dependency
