@@ -2,20 +2,8 @@ import * as React from 'react';
 import {withEASDK, WithEASDKProps} from '../easdk';
 import {OpenOptions} from '../easdk/components/ResourcePicker';
 
-export interface SelectionResult {
-  products?: object[],
-  collections?: object[],
-}
-
-export interface Props {
-  title?: string,
+export interface Props extends OpenOptions {
   open: boolean,
-  products?: boolean,
-  collections?: boolean,
-  allowMultiple?: boolean,
-  showHidden?: boolean,
-  onCancel?(): void,
-  onSelection?(selection: SelectionResult): void,
 }
 
 export class ResourcePicker extends React.PureComponent<Props & WithEASDKProps, never> {
@@ -54,7 +42,7 @@ export class ResourcePicker extends React.PureComponent<Props & WithEASDKProps, 
     if (easdk == null) { return; }
 
     if (open) {
-      easdk.ResourcePicker.open(this.props as OpenOptions);
+      easdk.ResourcePicker.open(this.props);
     } else {
       easdk.ResourcePicker.close();
     }

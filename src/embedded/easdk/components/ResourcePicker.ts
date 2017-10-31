@@ -1,6 +1,10 @@
 import Messenger from '../Messenger';
 import Modal from './Modal';
 
+export interface SelectionResult {
+  products?: object[],
+  collections?: object[],
+}
 export interface OpenOptions {
   title?: string,
   products?: boolean,
@@ -8,7 +12,7 @@ export interface OpenOptions {
   allowMultiple?: boolean,
   showHidden?: boolean,
   onCancel?(): void,
-  onSelection?(resources: object[]): void,
+  onSelection?(resources: SelectionResult): void,
 }
 
 export default class ResourcePicker {

@@ -7,13 +7,13 @@ import {ComplexAction} from '../../types';
 
 export interface Props {
   enabled?: boolean,
-  action?: React.ReactNode,
+  action?: ComplexAction,
   children?: React.ReactNode,
 }
 
 export default function SettingToggle({enabled, action, children}: Props) {
   const actionMarkup = action
-    ? buttonFrom(action as ComplexAction, {primary: !enabled})
+    ? buttonFrom(action, {primary: !enabled})
     : null;
 
   return (
