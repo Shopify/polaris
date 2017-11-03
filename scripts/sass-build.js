@@ -42,7 +42,7 @@ export default function generateSassBuild(destinationDir) {
 function generateSassZip(sourceDir, destinationDir) {
   // eslint-disable-next-line promise/param-names
   return new Promise((resolveSass, reject) => {
-    const output = createWriteStream(join(destinationDir, 'sass.zip'));
+    const output = createWriteStream(join(destinationDir, 'Sass.zip'));
     const archive = archiver('zip', {store: true});
 
     output.on('close', () => {
