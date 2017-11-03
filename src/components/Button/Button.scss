@@ -199,6 +199,30 @@ $spinner-size: rem(20px);
     margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
   }
 
+  &.iconOnly {
+    @include recolor-icon(color(ink, lighter));
+    margin: -0.5 * ($min-height - icon-size());
+
+    &:focus,
+    &:active {
+      @include recolor-icon(color(ink, lighter));
+      background: plain-button-background();
+    }
+
+    &:hover,
+    &:active {
+      @include recolor-icon(color(ink));
+    }
+
+    > .Content::after {
+      display: none;
+    }
+
+    &.disabled {
+      @include recolor-icon(color(sky, dark));
+    }
+  }
+
   > .Content::after {
     @include plain-button-backdrop;
     content: '';
