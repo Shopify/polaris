@@ -115,7 +115,6 @@ export function rgbToHsb(color: RGBAColor): HSBAColor {
       break;
     case b:
       huePercentage = (r - g) / delta + 4;
-      break;
   }
 
   const hue = Math.round(huePercentage / 6 * 360);

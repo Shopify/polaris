@@ -43,7 +43,7 @@ export default function createRollupConfig({
   }
 
   return {
-    entry,
+    input: entry,
     external(id) {
       return externalPackages.some((aPackage) => id.startsWith(aPackage));
     },
@@ -53,6 +53,11 @@ export default function createRollupConfig({
         module: true,
         jsnext: true,
         main: true,
+      }),
+      babel({
+        include: '**/*.js',
+        exclude: 'node_modules/**',
+        runtimeHelpers: true,
       }),
       commonjs(),
       styles({
@@ -70,11 +75,6 @@ export default function createRollupConfig({
           'node_modules/**',
           '**/icons/*.svg',
         ],
-      }),
-      babel({
-        include: '**/*.js',
-        exclude: 'node_modules/**',
-        runtimeHelpers: true,
       }),
     ],
   };
