@@ -3,6 +3,8 @@
 ## Unreleased
 
 * Added fullWidth prop to Layout.Section [#743](https://github.com/Shopify/polaris-react/pull/743/)
+* `indeterminate` is now an allowed value for `checked` to Checkbox [#748](https://github.com/Shopify/polaris-react/pull/748)
+
 ## 1.8.3 - 2017-10-26
 ### Bug fixes
 * Moved react-transition-group from a dev dependency to a dependency
