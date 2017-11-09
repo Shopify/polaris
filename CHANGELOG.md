@@ -1,5 +1,7 @@
 # Changelog
 
+* Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
+
 <!-- ## Unreleased -->
 
 ## 1.10.2 - 2018-01-22
