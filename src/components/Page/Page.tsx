@@ -10,6 +10,7 @@ import * as styles from './Page.scss';
 export interface Props extends HeaderProps {
   children?: React.ReactNode,
   fullWidth?: boolean,
+  singleColumn?: boolean,
 }
 
 const EASDK_PROPS: (keyof Props)[] = [
@@ -45,12 +46,14 @@ export default class Page extends React.PureComponent<Props, never> {
     const {
       children,
       fullWidth,
+      singleColumn,
       ...rest,
     } = this.props;
 
     const className = classNames(
       styles.Page,
       fullWidth && styles.fullWidth,
+      singleColumn && styles.singleColumn,
     );
 
     const headerMarkup = this.context.easdk || !this.hasHeaderContent()

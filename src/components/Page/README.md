@@ -13,6 +13,7 @@ keywords:
   - page without primary action in header
   - page without pagination
   - full-width page
+  - single-column page
   - page with action groups
   - page with separator
   - outer wrapper
@@ -127,6 +128,7 @@ Add a menu item
 | breadcrumbs | BreadcrumbProps['breadcrumbs'] | Collection of breadcrumbs |
 | children    | React.ReactNode | The contents of the page |
 | fullWidth   | boolean | Remove the normal max-width on the page |
+| singleColumn   | boolean | Decreases the maximum layout width. Intended for single-column layouts |
 | separator   | boolean | Adds a border to the bottom of the page header |
 | secondaryActions | ComplexAction[] | Collection of secondary page-level actions |
 | actionGroups   | ActionGroup[] | Collection of page-level groups of secondary actions |
@@ -243,6 +245,32 @@ Use for layouts that benefit from more screen width, such as wide tables or list
   }}
 >
   <p>Wide page content</p>
+</Page>
+```
+
+### Single-column page
+
+Use a single column layout if the page supports a single unified task. When the merchant must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
+
+```jsx
+<Page
+  singleColumn
+  breadcrumbs={[
+    {content: 'Orders'}
+  ]}
+  title="Add payment method"
+  primaryAction={{content: 'Save', disabled: true}}
+>
+  <Card
+    title="Credit card"
+    sectioned
+  >
+    <p>Credit card information</p>
+  </Card>
+  <PageActions
+    primaryAction={{content: 'Save', disabled: true}}
+    secondaryActions={[{content: 'Delete'}]}
+  />
 </Page>
 ```
 
