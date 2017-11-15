@@ -20,7 +20,20 @@ We’ve created a simple, hot-reloading playground for development on these comp
 
 `PROJECT_DIRECTORY` is where the build will be copied, which must be a sibling of the `polaris-react` directory.
 
-Example: `yarn run build-consumer polaris-styleguide`
+```sh
+# Example
+yarn run build-consumer polaris-styleguide
+```
+
+In the example above, the build is copied to `polaris-styleguide/node_modules/@shopify/polaris`. And in this case, a rebuild of `polaris-styleguide` is required after copying the `polaris-react` build, but may not be the case for all consuming projects.
+
+```sh
+# Example
+dev cd polaris-styleguide
+yarn run build:development
+```
+
+Also, when running `yarn install` (which often happens as part of `dev up`), copied builds will be overwritten and will require running `yarn run build-consumer PROJECT_DIRECTORY` again.
 
 ----
 See [Neutron Technical Brief: Outside Admin](https://docs.google.com/document/d/1d5ZnRvNYWB2Z7_60Rr6V8_ujXB5S2wPQ4BlqvPxeLjE/edit#heading=h.m7ed1jg4h8vu) for more details.
