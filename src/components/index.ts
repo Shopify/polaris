@@ -83,6 +83,15 @@ export {
 } from './Connected';
 
 export {
+  default as DataTable,
+  Props as DataTableProps,
+  TableHeading,
+  TableData,
+  TableRow,
+  ColumnContentType,
+} from './DataTable';
+
+export {
   default as DatePicker,
   Props as DatePickerProps,
   Range,
