@@ -108,6 +108,6 @@ function checkFrameRedirect(
     window.location.assign(redirectUrl);
   } else {
     // tslint:disable-next-line no-console
-    console.error(`Embedded app was not loaded in an iframe and redirecting is disabled. Set forceRedirect to true and this page will redirect to: ${redirectUrl}`);
+    console.warn(`Embedded app was not loaded in an iframe and redirecting is disabled. Set forceRedirect to true and this page will redirect to: ${redirectUrl}`);
   }
 }
