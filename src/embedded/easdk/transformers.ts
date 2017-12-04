@@ -1,9 +1,5 @@
-import {
-  EASDKTarget,
-  ComplexAction,
-  IconableAction,
-  EASDKAction,
-} from '../../types';
+import {EASDKTarget, ComplexAction} from '../../types';
+import {ActionGroup} from '../../components/Page/Header';
 
 export interface EASDKBreadcrumb {
   label: string;
@@ -40,11 +36,7 @@ export function transformBreadcrumb(
   };
 }
 
-export interface ActionGroup {
-  title: string;
-  icon?: IconableAction['icon'];
-  actions: IconableAction[];
-}
+export {ActionGroup};
 
 export interface EASDKBaseButton {
   label?: string;
@@ -74,7 +66,7 @@ export function transformAction(action: EASDKAction): EASDKButton {
   if (action.target) {
     target = action.target;
   } else if (action.url) {
-    target = getTargetFromURL(action.url);
+    target = action.external ? 'new' : getTargetFromURL(action.url);
   } else {
     target = undefined;
   }
@@ -99,11 +91,11 @@ export function transformActionGroup(
 }
 
 function getTargetFromURL(url: string): EASDKTarget {
-  if (url[0] === '/') {
+  if (url.charAt(0) === '/') {
     return 'shopify';
   } else if (
     url.indexOf(window.location.hostname) >= 0 ||
-    (url[0] !== '/' && url.indexOf('http') !== 0)
+    (url.charAt(0) !== '/' && url.indexOf('http') !== 0)
   ) {
     return 'app';
   } else {
