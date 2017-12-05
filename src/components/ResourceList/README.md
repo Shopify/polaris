@@ -164,6 +164,7 @@ Secondary actions should:
 | --- | --- | --- |
 | items* | any[] | Item data; each item is passed to renderItem |
 | renderItem* | function | Function to render each item |
+| idForItem | function | Function to generate unique identifier for each item passed |
 
 
 ## Examples
