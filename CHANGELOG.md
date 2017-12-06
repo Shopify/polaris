@@ -2,10 +2,14 @@
 
 ## Unreleased
 
+### Enhancements
 * Added fullWidth prop to Layout.Section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
 * `indeterminate` is now an allowed value for `checked` to Checkbox ([#748](https://github.com/Shopify/polaris-react/pull/748))
-* Fixed first focusable item focus in Popovers ([#764](https://github.com/Shopify/polaris-react/pull/764))
 * Added singleColumn prop to Page ([#763](https://github.com/Shopify/polaris-react/pull/763))
+
+### Bug fixes
+* Fixed PositionedOverlay not responding to scrollable container events
+* Fixed first focusable item focus in Popovers ([#764](https://github.com/Shopify/polaris-react/pull/764))
 * Fixed typos in the Select component documentation (thanks [mattchidley](https://github.com/mattchidley) for the [original issue](https://github.com/Shopify/polaris/issues/224)) ([#773](https://github.com/Shopify/polaris-react/pull/773))
 
 ## 1.8.3 - 2017-10-26

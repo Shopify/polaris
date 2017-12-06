@@ -66,7 +66,16 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
+    if (this.scrollableContainer) {
+      this.scrollableContainer.addEventListener('scroll', this.handleMeasurement);
+    }
     this.handleMeasurement();
+  }
+
+  componentWillUnmount() {
+    if (this.scrollableContainer) {
+      this.scrollableContainer.removeEventListener('scroll', this.handleMeasurement);
+    }
   }
 
   componentWillReceiveProps() {
@@ -100,7 +109,6 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         ref={this.setOverlay}
       >
         <EventListener event="resize" handler={this.handleMeasurement} />
-        <EventListener event="scroll" handler={this.handleMeasurement} />
         {render(this.overlayDetails())}
       </div>
     );
