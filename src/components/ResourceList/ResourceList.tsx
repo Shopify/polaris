@@ -6,6 +6,7 @@ import * as styles from './ResourceList.scss';
 
 export interface Props {
   items: any[],
+  idForItem?(item: any, index: number): string | number,
   renderItem(item: any, index: number): React.ReactNode,
 }
 
@@ -24,12 +25,18 @@ export default class ResourceList extends React.PureComponent<Props, never> {
 
   @autobind
   private renderItem(item: any, index: number) {
-    const {renderItem} = this.props;
+    const {renderItem, idForItem = defaultIdForItem} = this.props;
+
+    const key = idForItem(item, index);
 
     return (
-      <li key={index} className={styles.ItemWrapper}>
+      <li key={key} className={styles.ItemWrapper}>
         {renderItem(item, index)}
       </li>
     );
   }
+}
+
+function defaultIdForItem(item: any, index: number) {
+  return item.hasOwnProperty('id') ? item.id : index;
 }
