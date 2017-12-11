@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Added Text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
 * Added idForItem prop to Resource List ([#799](https://github.com/Shopify/polaris-react/pull/799/))
 * Added fullWidth prop to Layout.Section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
 * `indeterminate` is now an allowed value for `checked` to Checkbox ([#748](https://github.com/Shopify/polaris-react/pull/748))
