@@ -56,7 +56,7 @@ Use this component for default vertical spacing.
 
 ### Tight text container
 
-Use this component to relate content topics to each other.
+Use the tight spacing option to relate content topics to each other.
 
 ```jsx
 <TextContainer spacing="tight">
@@ -67,18 +67,12 @@ Use this component to relate content topics to each other.
 
 ### Loose text container
 
-Use this component to separate concepts that are independent of each other.
+Use the loose spacing option to separate concepts that are independent of each other.
 
 ```jsx
 <TextContainer spacing="loose">
-  <TextContainer>
-    <Heading>Shopify</Heading>
-    <p>Manage your Shopify store on-the-go with real-time notifications, access to your dashboard, and order management, all from your smartphone.</p>
-  </TextContainer>
-  <TextContainer>
-    <Heading>Shopify POS</Heading>
-    <p>Shopify POS is the fastest and easiest way to start accepting Visa, Mastercard, American Express, and Discover right from your smartphone or tablet.</p>
-  </TextContainer>
+  <p>Manage your Shopify store on-the-go with real-time notifications, access to your dashboard, and order management, all from your smartphone.</p>
+  <p>Shopify POS is the fastest and easiest way to start accepting Visa, Mastercard, American Express, and Discover right from your smartphone or tablet.</p>
 </TextContainer>
 ```
 
