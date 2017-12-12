@@ -2,8 +2,8 @@ import * as React from 'react';
 import {shallow} from 'enzyme';
 import ResourceList from '../';
 
-const itemsNoID = [{name: 'item 1'}, {name: 'item 2'}];
-const itemsWithID = [{id: 5, name: 'item 1'}, {id: 6, name: 'item 2'}];
+const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
+const itemsWithID = [{id: '5', name: 'item 1'}, {id: '6', name: 'item 2'}];
 
 describe('<ResourceList />', () => {
   describe('idForItem()', () => {

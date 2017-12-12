@@ -1,17 +1,8 @@
-$stacking-order: (
-  link: 10,
-  content: 20,
-);
-
-$avatar-small-size: rem(32px);
-$avatar-medium-size: rem(40px);
-$avatar-large-size: rem(60px);
-
-$thumbnail-small-size: rem(40px);
-$thumbnail-medium-size: rem(60px);
-$thumbnail-large-size: rem(80px);
-
-$action-button-height: rem(30px);
+$resource-list-item-control-indent: -1 * rem(12px);
+$tools-side-padding-large: rem(16px);
+$tools-side-padding-small: rem(12px);
+$resource-list-small-breakpoint: 458px;
+$bulk-actions-min-height: rem(56px);
 
 .ResourceList {
   margin: 0;
@@ -20,253 +11,31 @@ $action-button-height: rem(30px);
 }
 
 .ItemWrapper {
+  max-width: 100%;
+  overflow: hidden;
+
   + .ItemWrapper {
     border-top: border();
   }
 }
 
-.Item {
-  position: relative;
-
-  &:not(.Item-persistActions) {
-    .Actions {
-      position: absolute;
-      right: spacing(tight);
-      display: none;
-      pointer-events: initial;
-    }
-
-    &.Item-focused {
-      // Need this deeply nested selector to override the more specific :not()
-      // selector needed above.
-      // stylelint-disable-next-line selector-max-specificity
-      .Actions {
-        display: flex;
-      }
-    }
-  }
-}
-
-.Item-persistActions {
-  .AttributeThree {
-    margin-left: 0;
-  }
-
-  .Actions {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    margin-left: spacing();
-    pointer-events: initial;
-
-    @include page-content-when-partially-condensed {
-      display: none;
-    }
-  }
-}
-
-.Item-link {
-  cursor: pointer;
-}
-
-.Item-focused {
-  background: color(sky, lighter);
-}
-
-// Had min-height style below instead of height. Need height for IE11 vertical centering
-// to work with display: flex. Reference: http://stackoverflow.com/questions/19371626/flexbox-not-centering-vertically-in-ie
-.Item-mediaAvatar {
-  &.Item-sizeSmall {
-    .Actions {
-      height: $avatar-small-size;
-    }
-  }
-
-  &.Item-sizeMedium {
-    .Actions {
-      height: $avatar-medium-size;
-    }
-  }
-
-  &.Item-sizeLarge {
-    .Actions {
-      height: $avatar-large-size;
-    }
-  }
-}
-
-.Item-mediaThumbnail {
-  &.Item-sizeSmall {
-    .Actions {
-      height: $thumbnail-small-size;
-    }
-  }
-
-  &.Item-sizeMedium {
-    .Actions {
-      height: $thumbnail-medium-size;
-    }
-  }
-
-  &.Item-sizeLarge {
-    .Actions {
-      height: $thumbnail-large-size;
-    }
-  }
-}
-
-.Media {
-  flex: 0 0 auto;
-  margin-right: spacing(loose);
-  color: inherit;
-  text-decoration: none;
-}
-
-.Container {
-  position: relative;
-  z-index: z-index(content, $stacking-order);
+.Tools {
   display: flex;
-  pointer-events: none;
-  padding: (0.75 * spacing()) spacing(loose);
-}
-
-.Content {
-  @include layout-flex-fix;
-  flex: 1 1 auto;
-  align-self: center;
-
-  // Adding with 100% for IE11 fix
   width: 100%;
+  border-bottom: border();
+  padding: 0 $tools-side-padding-small;
+  @include breakpoint-after($resource-list-small-breakpoint) {
+    padding: 0 $tools-side-padding-large;
+  }
 }
 
-.Attributes {
+.BulkActions {
   display: flex;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
-  align-items: center;
-  color: inherit;
-  text-decoration: none;
-  hyphens: auto;
-  min-height: $action-button-height;
-
-  @include page-content-when-partially-condensed {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-.AttributeOne,
-.AttributeTwo {
-  flex-shrink: 0;
-  margin-right: (0.75 * spacing());
-}
-
-.AttributeOne {
-  font-weight: 600;
-}
-
-.AttributeThree {
-  margin-left: auto;
-
-  @include page-content-when-partially-condensed {
-    margin-left: 0;
-  }
-}
-
-.Badge {
-  flex-shrink: 0;
-  flex-basis: auto;
-  margin-right: spacing();
-
-  @include page-content-when-partially-condensed {
-    order: 4;
-    align-self: auto;
-    margin-top: rem(4px);
-    margin-bottom: rem(4px);
-  }
-}
-
-.Actions {
-  display: flex;
-  flex-basis: auto;
-  align-items: center;
-}
-
-.Disclosure {
-  display: none;
-  pointer-events: initial;
-
-  @include page-content-when-partially-condensed {
-    display: block;
-  }
-}
-
-.ExceptionList {
-  margin: spacing(extra-tight) 0 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.ExceptionItem {
-  @include text-emphasis-subdued;
-  display: flex;
-  align-items: center;
-
-  &::before {
-    content: '';
-    display: block;
-    flex-shrink: 0;
-    height: rem(6px);
-    width: rem(6px);
-    margin-right: spacing(tight);
-    background: color(ink, lightest);
-    border-radius: 100%;
-  }
-}
-
-.ExceptionItem-statusWarning {
-  .Title {
-    color: color(orange, dark);
-  }
-
-  &::before {
-    background: color(orange);
-  }
-}
-
-.ExceptionItem-statusCritical {
-  .Title {
-    color: color(red, dark);
-  }
-
-  &::before {
-    background: color(red);
-  }
-}
-
-.Title {
-  @include text-emphasis-subdued;
-  white-space: nowrap;
-}
-
-.Description {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.Title + .Description::before {
-  content: '\2013';
-  padding: 0 spacing(extra-tight);
-  color: color(ink, lighter);
-}
-
-.Link {
-  position: absolute;
-  z-index: z-index(link, $stacking-order);
-  top: 0;
-  left: 0;
-  height: 100%;
+  position: relative;
   width: 100%;
-  opacity: 0;
+  align-items: center;
+  min-height: $bulk-actions-min-height;
+  @include breakpoint-after($resource-list-small-breakpoint) {
+    justify-content: flex-start;
+  }
 }

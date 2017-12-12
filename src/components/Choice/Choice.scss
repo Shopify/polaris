@@ -12,11 +12,19 @@ $icon-horizontal-adjustment: 2px;
   display: inline-flex;
   justify-content: flex-start;
   padding: spacing(extra-tight) 0;
+
 }
 
 .labelHidden {
+  padding: 0;
+
   > .Label {
     @include visually-hidden;
+  }
+
+  .Control {
+    margin-top: 0;
+    margin-right: 0;
   }
 }
 

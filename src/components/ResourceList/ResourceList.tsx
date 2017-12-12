@@ -1,56 +1,246 @@
 import * as React from 'react';
+
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from './Item';
+import {contextTypes} from './types';
+import BulkActions from './components/BulkActions/';
 import {FilterControl} from './components';
+
 import * as styles from './ResourceList.scss';
+
+const SMALL_SCREEN_WIDTH = 458;
+
+export interface State {
+  selectMode: boolean,
+}
 
 export interface Props {
   items: any[],
   renderFilterControl?: React.ReactNode,
-  idForItem?(item: any, index: number): string | number,
-  renderItem(item: any, index: number): React.ReactNode,
+  resourceName?: {
+    singular: string,
+    plural: string,
+  },
+  bulkActions?: any,
+  selectedItems?: string[],
+  persistActions?: boolean,
+  onSelectionChange?(selectedItems: string[]): void,
+  renderItem(item: any, id: string): React.ReactNode,
+  idForItem?(item: any, index: number): string,
 }
 
-export default class ResourceList extends React.PureComponent<Props, never> {
+export interface Context {
+  selectMode: boolean,
+  selectable?: boolean,
+  selectedItems?: string[],
+  persistActions?: boolean,
+  onSelectionChange?(selected: boolean, id: string): void,
+  subscribe(callback: () => void): void,
+  unsubscribe(callback: () => void): void,
+}
+
+export default class ResourceList extends React.PureComponent<Props, State> {
   static Item = Item;
   static FilterControl = FilterControl;
+  static childContextTypes = contextTypes;
+
+  state: State = {selectMode: false};
+
+  private subscriptions: {(): void}[] = [];
+
+  @autobind
+  private get bulkSelectState(): boolean | 'indeterminate' {
+    const {selectedItems, items} = this.props;
+    let selectState: boolean | 'indeterminate' = 'indeterminate';
+    if (!selectedItems || selectedItems.length === 0) {
+      selectState = false;
+    } else if (
+      Array.isArray(selectedItems) &&
+      selectedItems.length === items.length
+    ) {
+      selectState = true;
+    }
+    return selectState;
+  }
+
+  @autobind
+  private get bulkActionLabel() {
+    const {
+      selectedItems = [],
+      resourceName = {singular: 'item', plural: 'items'},
+      items,
+    } = this.props;
+    const itemsCount = items.length;
+    const selectedItemsCount = selectedItems.length;
+
+    if (isSmallScreen()) {
+      return `${selectedItemsCount}`;
+    }
+
+    let bulkActionsLabel;
+    if (!selectedItemsCount || selectedItemsCount === 0) {
+      bulkActionsLabel =
+        itemsCount > 1
+          ? `Showing ${itemsCount} ${resourceName.plural}`
+          : `Showing ${itemsCount} ${resourceName.singular}`;
+    } else {
+      bulkActionsLabel = `${selectedItemsCount} selected`;
+    }
+    return bulkActionsLabel;
+  }
+
+  getChildContext(): Context {
+    const {bulkActions, selectedItems, persistActions} = this.props;
+    const {selectMode} = this.state;
+    const selectable = bulkActions && bulkActions.length > 0;
+
+    return {
+      selectable,
+      selectedItems,
+      selectMode,
+      persistActions,
+      onSelectionChange: this.handleSelectionChange,
+      subscribe: this.subscribe,
+      unsubscribe: this.unsubscribe,
+    };
+  }
+
+  componentWillReceiveProps() {
+    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
+  }
 
   render() {
-    const {items, renderFilterControl} = this.props;
+    const {items, bulkActions, renderFilterControl} = this.props;
+    const {selectMode} = this.state;
 
-    const headerMarkup = renderFilterControl
-      ? renderFilterControl
-      : null;
+    const headerMarkup = renderFilterControl ? renderFilterControl : null;
 
-    const itemsMarkup = (
-      <ul className={styles.ResourceList}>
-        {items.map(this.renderItem)}
-      </ul>
-    );
+    const bulkActionsMarkup =
+      bulkActions && bulkActions.length ? (
+        <BulkActions
+          label={this.bulkActionLabel}
+          selected={this.bulkSelectState}
+          onToggleAll={this.handleToggleAll}
+          selectMode={selectMode}
+          onSelectModeToggle={this.handleSelectMode}
+        />
+      ) : null;
+
+    const toolsMarkup = bulkActions ? (
+      <div className={styles.Tools}>
+        <div className={styles.BulkActions}>{bulkActionsMarkup}</div>
+      </div>
+    ) : null;
+
+    const listMarkup =
+      items.length > 0 ? (
+        <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
+      ) : null;
 
     return (
-      <div>
+      <div className={styles.ResourceListContainer}>
         {headerMarkup}
-        {itemsMarkup}
+        {toolsMarkup}
+        {listMarkup}
       </div>
     );
   }
 
   @autobind
+  subscribe(callback: () => void) {
+    this.subscriptions.push(callback);
+  }
+
+  @autobind
+  unsubscribe(callback: () => void) {
+    this.subscriptions = this.subscriptions.filter((subscription) => subscription !== callback);
+  }
+
+  @autobind
   private renderItem(item: any, index: number) {
     const {renderItem, idForItem = defaultIdForItem} = this.props;
-
-    const key = idForItem(item, index);
+    const id = idForItem(item, index);
 
     return (
-      <li key={key} className={styles.ItemWrapper}>
-        {renderItem(item, index)}
+      <li key={id} className={styles.ItemWrapper}>
+        {renderItem(item, id)}
       </li>
     );
+  }
+
+  @autobind
+  private handleSelectionChange(selected: boolean, id: string) {
+    const {onSelectionChange, selectedItems} = this.props;
+
+    if (selectedItems == null || onSelectionChange == null) {
+      return;
+    }
+
+    const newlySelectedItems = selectedItems ? [...selectedItems] : [];
+
+    if (selected) {
+      newlySelectedItems.push(id);
+    } else {
+      newlySelectedItems.splice(newlySelectedItems.indexOf(id), 1);
+    }
+
+    if (newlySelectedItems.length === 0 && !isSmallScreen()) {
+      this.handleSelectMode(false);
+    } else if (newlySelectedItems.length > 0) {
+      this.handleSelectMode(true);
+    }
+
+    if (onSelectionChange) {
+      onSelectionChange(newlySelectedItems);
+    }
+  }
+
+  @autobind
+  private handleSelectMode(selectMode: boolean) {
+    const {onSelectionChange} = this.props;
+    this.setState({selectMode});
+    if (!selectMode && onSelectionChange) {
+      onSelectionChange([]);
+    }
+  }
+
+  @autobind
+  private handleToggleAll() {
+    const {
+      onSelectionChange,
+      selectedItems,
+      items,
+      idForItem = defaultIdForItem,
+    } = this.props;
+
+    let newlySelectedItems: string[] = [];
+
+    if (Array.isArray(selectedItems) && selectedItems.length === items.length) {
+      newlySelectedItems = [];
+    } else {
+      newlySelectedItems = items.map((item, index) => {
+        const id = idForItem(item, index);
+        return id;
+      });
+    }
+
+    if (newlySelectedItems.length === 0 && !isSmallScreen()) {
+      this.handleSelectMode(false);
+    } else if (newlySelectedItems.length > 0) {
+      this.handleSelectMode(true);
+    }
+
+    if (onSelectionChange) {
+      onSelectionChange(newlySelectedItems);
+    }
   }
 }
 
 function defaultIdForItem(item: any, index: number) {
-  return item.hasOwnProperty('id') ? item.id : index;
+  return item.hasOwnProperty('id') ? item.id : index.toString();
+}
+
+function isSmallScreen() {
+  return window.matchMedia(`(max-width: ${SMALL_SCREEN_WIDTH}px)`).matches;
 }
