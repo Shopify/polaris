@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+### Enhancements
+* Added `content` prop to Tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))
 * Added Text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
 * Added idForItem prop to Resource List ([#799](https://github.com/Shopify/polaris-react/pull/799/))
 * Added fullWidth prop to Layout.Section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
