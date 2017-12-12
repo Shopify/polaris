@@ -181,6 +181,7 @@ export default class Header extends React.PureComponent<Props, State> {
         })
       )
       : null;
+
     const rollupMarkup = this.hasRollup
       ? (
         <div className={styles.Rollup}>
@@ -204,6 +205,7 @@ export default class Header extends React.PureComponent<Props, State> {
           </Popover>
         </div>
       ) : null;
+
     return (
       <div className={styles.SecondaryActions}>
         {rollupMarkup}
@@ -214,10 +216,12 @@ export default class Header extends React.PureComponent<Props, State> {
       </div>
     );
   }
+
   @autobind
   private handleRollupToggle() {
     this.setState(({rollupOpen}) => ({rollupOpen: !rollupOpen}));
   }
+
   private handleActionGroupClose(group: string) {
     this.setState(({openActionGroup}) => (
       openActionGroup === group
@@ -225,13 +229,16 @@ export default class Header extends React.PureComponent<Props, State> {
         : {}
     ));
   }
+
   private handleActionGroupOpen(group: string) {
     this.setState({openActionGroup: group});
   }
 }
+
 function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
   return {title, items: actions};
 }
+
 function secondaryActionsFrom(actions: SecondaryAction[]): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
     <Action {...action} key={`Action-${content || index}`}>{content}</Action>
