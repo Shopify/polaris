@@ -361,19 +361,13 @@ function getVisibleAndHiddenTabIndices(
 }
 
 export function getTabContent(tab: TabDescriptor) {
-  let tabContent;
   if (isTabWithTitle(tab)) {
     // tslint:disable-next-line no-console
     console.warn('The `title` property on Tabs has been deprecated. Use `content` instead.');
-    tabContent = tab.title;
-  } else if (isTabWithContent(tab)) {
-    tabContent = tab.content;
+    return tab.title;
+  } else {
+    return tab.content;
   }
-  return tabContent;
-}
-
-function isTabWithContent(tab: TabDescriptor): tab is TabWithContentDescriptor {
-  return tab.hasOwnProperty('content');
 }
 
 function isTabWithTitle(tab: TabDescriptor): tab is TabWithTitleDescriptor {
