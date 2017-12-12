@@ -24,11 +24,10 @@ export default function ActionList({items, sections = [], onActionAnyItem}: Prop
   const sectionMarkup = finalSections.map((section, index) => {
     return (
       <Section
-        key={index}
-        index={index}
+        key={section.title || index}
         section={section}
-        hasMultipleSections={hasMultipleSections}
         onActionAnyItem={onActionAnyItem}
+        hasMultipleSections={hasMultipleSections}
       />
     );
   });

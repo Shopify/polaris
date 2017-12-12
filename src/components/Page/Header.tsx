@@ -20,6 +20,7 @@ export interface ActionGroup {
   icon?: IconableAction['icon'],
   actions: ItemProps[],
   details?: React.ReactNode,
+  onActionAnyItem?: ItemProps['onAction'],
 }
 
 export interface Props {
@@ -169,7 +170,10 @@ export default class Header extends React.PureComponent<Props, State> {
                   </Action>
                 }
               >
-                <ActionList items={actions} />
+                <ActionList
+                  items={actions}
+                  onActionAnyItem={this.handleActionGroupClose.bind(this, title)}
+                />
                 {detailsMarkup}
               </Popover>
             </div>
@@ -177,7 +181,6 @@ export default class Header extends React.PureComponent<Props, State> {
         })
       )
       : null;
-
     const rollupMarkup = this.hasRollup
       ? (
         <div className={styles.Rollup}>
@@ -196,11 +199,11 @@ export default class Header extends React.PureComponent<Props, State> {
             <ActionList
               items={secondaryActions}
               sections={actionGroups.map(convertActionGroupToActionListSection)}
+              onActionAnyItem={this.handleRollupToggle}
             />
           </Popover>
         </div>
       ) : null;
-
     return (
       <div className={styles.SecondaryActions}>
         {rollupMarkup}
@@ -211,12 +214,10 @@ export default class Header extends React.PureComponent<Props, State> {
       </div>
     );
   }
-
   @autobind
   private handleRollupToggle() {
     this.setState(({rollupOpen}) => ({rollupOpen: !rollupOpen}));
   }
-
   private handleActionGroupClose(group: string) {
     this.setState(({openActionGroup}) => (
       openActionGroup === group
@@ -224,16 +225,13 @@ export default class Header extends React.PureComponent<Props, State> {
         : {}
     ));
   }
-
   private handleActionGroupOpen(group: string) {
     this.setState({openActionGroup: group});
   }
 }
-
 function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
   return {title, items: actions};
 }
-
 function secondaryActionsFrom(actions: SecondaryAction[]): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
     <Action {...action} key={`Action-${content || index}`}>{content}</Action>

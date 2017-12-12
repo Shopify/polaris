@@ -13,6 +13,6 @@ describe('<Item />', () => {
     const mockOnAction = jest.fn();
     const item = shallow(<Item onAction={mockOnAction} />);
     item.find('button').simulate('click');
-    expect(mockOnAction.mock.calls.length).toBe(1);
+    expect(mockOnAction).toHaveBeenCalledTimes(1);
   });
 });

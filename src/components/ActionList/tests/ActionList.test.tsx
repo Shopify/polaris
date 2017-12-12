@@ -17,8 +17,7 @@ describe('<ActionList />', () => {
       />,
     );
     actionList.find('button').simulate('click');
-    expect(mockOnActionAnyItem.mock.calls.length).toBe(1);
-    actionList.unmount();
+    expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
   });
 
   it('fires onActionAnyItem on click or keypress of an anchor item', () => {
@@ -29,7 +28,19 @@ describe('<ActionList />', () => {
       />,
     );
     actionList.find('a').simulate('click');
-    expect(mockOnActionAnyItem.mock.calls.length).toBe(1);
-    actionList.unmount();
+    expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
+  });
+
+  it('fires onActionAnyItem and Item.onAction on click or keypress of an item', () => {
+    const mockOnAction = jest.fn();
+    const actionList = mount(
+      <ActionList
+        items={[{content: 'Add discount', onAction: mockOnAction}]}
+        onActionAnyItem={mockOnActionAnyItem}
+      />,
+    );
+    actionList.find('button').simulate('click');
+    expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
+    expect(mockOnAction).toHaveBeenCalledTimes(1);
   });
 });

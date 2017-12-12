@@ -9,24 +9,21 @@ export interface ActionListSection {
 }
 
 export interface Props {
-  index: number,
   section: ActionListSection,
   hasMultipleSections: boolean,
   onActionAnyItem?: ItemProps['onAction'],
 }
 
 export default function Section({
-  index,
   section,
   hasMultipleSections,
   onActionAnyItem,
 }: Props) {
 
-  const SectionElement: string = hasMultipleSections ? 'li' : 'div';
   const handleAction = (itemOnAction: ItemProps['onAction']) => {
     return () => {
-      if (itemOnAction) {itemOnAction();}
-      if (onActionAnyItem) {onActionAnyItem();}
+      if (itemOnAction) { itemOnAction(); }
+      if (onActionAnyItem) { onActionAnyItem(); }
     };
   };
   const actionMarkup = section.items.map(({content, onAction, ...item}) => {
@@ -43,10 +40,12 @@ export default function Section({
     ? <p className={styles.Title}>{section.title}</p>
     : null;
 
-  return (
-    <SectionElement key={section.title || index} className={className}>
+  const sectionMarkup = (
+    <div className={className}>
       {titleMarkup}
       <ul className={styles.Actions}>{actionMarkup}</ul>
-    </SectionElement>
+    </div>
   );
+
+  return hasMultipleSections ? <li>{sectionMarkup}</li> : sectionMarkup;
 }
