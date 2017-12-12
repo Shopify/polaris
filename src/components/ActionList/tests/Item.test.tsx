@@ -8,4 +8,11 @@ describe('<Item />', () => {
     const styledItem = item.find('div').findWhere((node) => node.prop('style'));
     expect(styledItem.prop('style')).toHaveProperty('backgroundImage', 'url(some-image.png');
   });
+
+  it('fires onAction callback on click or keypress', () => {
+    const mockOnAction = jest.fn();
+    const item = shallow(<Item onAction={mockOnAction} />);
+    item.find('button').simulate('click');
+    expect(mockOnAction.mock.calls.length).toBe(1);
+  });
 });

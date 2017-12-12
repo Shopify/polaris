@@ -1,51 +1,37 @@
 import * as React from 'react';
-import Item, {Props as ItemProps} from './Item';
-import * as styles from './ActionList.scss';
+import {Props as ItemProps} from './Item';
+import Section, {ActionListSection} from './Section';
 
-export interface Section {
-  title?: string,
-  items: ItemProps[],
-}
+import * as styles from './ActionList.scss';
 
 export interface Props {
   items?: ItemProps[],
-  sections?: Section[],
+  sections?: ActionListSection[],
+  onActionAnyItem?: ItemProps['onAction'],
 }
 
-export default function ActionList({items, sections = []}: Props) {
-  let finalSections: Section[] = [];
+export default function ActionList({items, sections = [], onActionAnyItem}: Props) {
+  let finalSections: ActionListSection[] = [];
 
   if (items) {
-    finalSections = [{items}].concat(sections);
+    finalSections = [{items}, ...sections];
   } else if (sections) {
     finalSections = sections;
   }
 
   const hasMultipleSections = finalSections.length > 1;
   const Element: string = hasMultipleSections ? 'ul' : 'div';
-  const sectionMarkup = finalSections.map((section, index) => renderSection(section, hasMultipleSections, index));
+  const sectionMarkup = finalSections.map((section, index) => {
+    return (
+      <Section
+        key={index}
+        index={index}
+        section={section}
+        hasMultipleSections={hasMultipleSections}
+        onActionAnyItem={onActionAnyItem}
+      />
+    );
+  });
 
   return <Element className={styles.ActionList}>{sectionMarkup}</Element>;
-}
-
-function renderSection(section: Section, hasMultipleSections: boolean, index: number) {
-  const SectionElement: string = hasMultipleSections ? 'li' : 'div';
-  const actionMarkup = section.items.map(({content, ...item}) => (
-    <Item key={content} content={content} {...item} />
-  ));
-
-  const className = section.title
-    ? null
-    : styles['Section-withoutTitle'];
-
-  const titleMarkup = section.title
-    ? <p className={styles.Title}>{section.title}</p>
-    : null;
-
-  return (
-    <SectionElement key={section.title || index} className={className}>
-      {titleMarkup}
-      <ul className={styles.Actions}>{actionMarkup}</ul>
-    </SectionElement>
-  );
 }
