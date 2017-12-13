@@ -3,7 +3,6 @@
 ## Unreleased
 
 ### Enhancements
-* Added `required` prop to select, text field, checkbox and radio button components ([811](https://github.com/Shopify/polaris-react/pull/811))
 * Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item ([#792](https://github.com/Shopify/polaris-react/pull/792))
 * Added `content` prop to tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))
 * Added text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
