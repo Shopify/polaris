@@ -3,17 +3,18 @@
 ## Unreleased
 
 ### Enhancements
-* Added `content` prop to Tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))
-* Added Text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
-* Added idForItem prop to Resource List ([#799](https://github.com/Shopify/polaris-react/pull/799/))
-* Added fullWidth prop to Layout.Section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
-* `indeterminate` is now an allowed value for `checked` to Checkbox ([#748](https://github.com/Shopify/polaris-react/pull/748))
-* Added singleColumn prop to Page ([#763](https://github.com/Shopify/polaris-react/pull/763))
+* Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item ([#792](https://github.com/Shopify/polaris-react/pull/792))
+* Added `content` prop to tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))
+* Added text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
+* Added `idForItem` prop to resource list ([#799](https://github.com/Shopify/polaris-react/pull/799/))
+* Added `fullWidth` prop to layout section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
+* Added `indeterminate` as option for checkbox `checked` prop value ([#748](https://github.com/Shopify/polaris-react/pull/748))
+* Added `singleColumn` prop to page ([#763](https://github.com/Shopify/polaris-react/pull/763))
 
 ### Bug fixes
-* Fixed PositionedOverlay not responding to scrollable container events
-* Fixed first focusable item focus in Popovers ([#764](https://github.com/Shopify/polaris-react/pull/764))
-* Fixed typos in the Select component documentation (thanks [mattchidley](https://github.com/mattchidley) for the [original issue](https://github.com/Shopify/polaris/issues/224)) ([#773](https://github.com/Shopify/polaris-react/pull/773))
+* Fixed positioned overlay not responding to scrollable container events
+* Fixed first focusable item focus in popovers ([#764](https://github.com/Shopify/polaris-react/pull/764))
+* Fixed typos in the select component documentation (thanks [mattchidley](https://github.com/mattchidley) for the [original issue](https://github.com/Shopify/polaris/issues/224)) ([#773](https://github.com/Shopify/polaris-react/pull/773))
 
 ## 1.8.3 - 2017-10-26
 ### Bug fixes
