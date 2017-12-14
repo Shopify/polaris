@@ -37,6 +37,16 @@ describe('<TextField />', () => {
     expect(input.prop('pattern')).toBe(pattern);
   });
 
+  it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
+    const element = mount(
+      <TextField label="TextField" />,
+    );
+
+    expect(element.getDOMNode().querySelector('input')).not.toBe(document.activeElement);
+    element.setProps({ focused: true });
+    expect(element.getDOMNode().querySelector('input')).toBe(document.activeElement);
+  });
+
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();

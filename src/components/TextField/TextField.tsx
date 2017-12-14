@@ -30,6 +30,7 @@ export interface Props {
   disabled?: boolean,
   readOnly?: boolean,
   autoFocus?: boolean,
+  focused?: boolean,
   multiline?: boolean | number,
   error?: Error,
   connectedRight?: React.ReactNode,
@@ -65,6 +66,12 @@ export default class TextField extends React.PureComponent<Props, State> {
     };
   }
 
+  componentDidUpdate({focused}: Props) {
+    if (this.input && focused !== this.props.focused && this.props.focused === true) {
+      this.input.focus();
+    }
+  }
+
   componentWillReceiveProps(newProps: Props) {
     this.setState({
       id: newProps.id || this.state.id,
@@ -94,6 +101,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       onFocus,
       onBlur,
       autoComplete,
+      focused,
       ...rest,
     } = this.props;
 
