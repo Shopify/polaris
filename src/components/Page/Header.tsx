@@ -20,6 +20,7 @@ export interface ActionGroup {
   icon?: IconableAction['icon'],
   actions: ItemProps[],
   details?: React.ReactNode,
+  onActionAnyItem?: ItemProps['onAction'],
 }
 
 export interface Props {
@@ -169,7 +170,10 @@ export default class Header extends React.PureComponent<Props, State> {
                   </Action>
                 }
               >
-                <ActionList items={actions} />
+                <ActionList
+                  items={actions}
+                  onActionAnyItem={this.handleActionGroupClose.bind(this, title)}
+                />
                 {detailsMarkup}
               </Popover>
             </div>
@@ -196,6 +200,7 @@ export default class Header extends React.PureComponent<Props, State> {
             <ActionList
               items={secondaryActions}
               sections={actionGroups.map(convertActionGroupToActionListSection)}
+              onActionAnyItem={this.handleRollupToggle}
             />
           </Popover>
         </div>

@@ -159,10 +159,9 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private handleClick(event: Event) {
     const target = event.target as HTMLElement;
     const {contentNode, props: {activator, onClose}} = this;
-    if (
-      (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
-      nodeContainsDescendant(activator, target) || this.transitionStatus !== 'entered'
-    ) { return; }
+    const isDescendant = contentNode != null && nodeContainsDescendant(contentNode, target);
+    const isActivatorDescendant = nodeContainsDescendant(activator, target);
+    if (isDescendant || isActivatorDescendant || this.transitionStatus !== 'entered') { return; }
     onClose(CloseSource.Click);
   }
 
