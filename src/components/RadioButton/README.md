@@ -2,6 +2,7 @@
 name: Radio button
 category: Forms
 keywords:
+  - RadioButton
   - selection
   - choices
   - options

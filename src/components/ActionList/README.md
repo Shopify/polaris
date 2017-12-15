@@ -2,6 +2,7 @@
 name: Action list
 category: Actions
 keywords:
+  - ActionList
   - dropdown
   - drop down
   - popover

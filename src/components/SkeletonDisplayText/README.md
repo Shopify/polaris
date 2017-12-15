@@ -2,6 +2,7 @@
 name: Skeleton display text
 category: Feedback indicators
 keywords:
+  - SkeletonDisplayText
   - skeleton
   - loading
   - page

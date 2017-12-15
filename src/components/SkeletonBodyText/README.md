@@ -2,6 +2,7 @@
 name: Skeleton body text
 category: Feedback indicators
 keywords:
+  - SkeletonBodyText
   - skeleton
   - loading
   - page

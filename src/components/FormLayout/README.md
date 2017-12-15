@@ -2,6 +2,8 @@
 name: Form layout
 category: Forms
 keywords:
+  - FormLayout
+  - Group
   - responsive
   - no grid
   - stack fields

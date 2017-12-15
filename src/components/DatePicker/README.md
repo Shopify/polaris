@@ -2,6 +2,11 @@
 name: Date picker
 category: Forms
 keywords:
+  - DatePicker
+  - month
+  - day
+  - year
+  - weekday
   - choose date
   - pick date
   - pick time

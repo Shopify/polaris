@@ -2,6 +2,7 @@
 name: Keyboard key
 category: Images and icons
 keywords:
+  - KeyboardKey
   - shortcuts
   - hotkey
   - hot key

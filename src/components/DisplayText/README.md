@@ -2,6 +2,7 @@
 name: Display text
 category: Titles and text
 keywords:
+  - DisplayText
   - announcement text
   - greeting text
   - marketing text

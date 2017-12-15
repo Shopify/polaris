@@ -2,6 +2,7 @@
 name: Footer help
 category: Titles and text
 keywords:
+  - FooterHelp
   - learn more about
   - help documentation links
   - links to help documentation

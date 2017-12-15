@@ -2,6 +2,7 @@
 name: Choice list
 category: Forms
 keywords:
+  - ChoiceList
   - form
   - input
   - choices

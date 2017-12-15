@@ -2,6 +2,7 @@
 name: Description list
 category: Lists
 keywords:
+  - DescriptionList
   - glossary
   - description
   - list terms

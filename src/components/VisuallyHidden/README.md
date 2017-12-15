@@ -2,6 +2,7 @@
 name: Visually hidden
 category: Titles and text
 keywords:
+  - VisuallyHidden
   - screen readers
   - hidden but available for screen readers
   - visually hidden headings

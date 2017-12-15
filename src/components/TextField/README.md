@@ -2,12 +2,12 @@
 name: Text field
 category: Forms
 keywords:
+  - TextField
   - input
   - type
   - add info
   - form field
   - input forms
-  - text field
   - form input
   - field
   - active state
@@ -17,7 +17,6 @@ keywords:
   - focus
   - textbar
   - text bar
-  - textfield
   - forms
   - form inputs
   - form text input
@@ -29,12 +28,12 @@ keywords:
   - field labels
   - number fields
   - email fields
-  - multiline text fields
-  - text field with hidden label
-  - text field with label action
-  - text field with placeholder text
-  - text field with help text
-  - text field with prefix or suffix
+  - multiline
+  - hidden label
+  - label action
+  - placeholder text
+  - help text
+  - prefix or suffix
   - connected fields
   - label actions
   - hidden labels

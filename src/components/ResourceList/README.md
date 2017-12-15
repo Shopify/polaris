@@ -2,6 +2,7 @@
 name: Resource list
 category: Lists
 keywords:
+  - ResourceList
   - collections
   - items
   - objects
