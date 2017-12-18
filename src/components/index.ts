@@ -198,6 +198,11 @@ export {
 export {
   default as ResourceList,
   Props as ResourceListProps,
+  FilterControlProps,
+  Filter,
+  FilterType,
+  FilterSelect,
+  FilterTextField,
 } from './ResourceList';
 
 export {

@@ -2,24 +2,38 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from './Item';
+import {FilterControl} from './components';
 import * as styles from './ResourceList.scss';
 
 export interface Props {
   items: any[],
+  filterControl?: React.ReactNode,
   idForItem?(item: any, index: number): string | number,
   renderItem(item: any, index: number): React.ReactNode,
 }
 
 export default class ResourceList extends React.PureComponent<Props, never> {
   static Item = Item;
+  static FilterControl = FilterControl;
 
   render() {
-    const {items} = this.props;
+    const {items, filterControl} = this.props;
 
-    return (
+    const headerMarkup = filterControl
+      ? filterControl
+      : null;
+
+    const itemsMarkup = (
       <ul className={styles.ResourceList}>
         {items.map(this.renderItem)}
       </ul>
+    );
+
+    return (
+      <div>
+        {headerMarkup}
+        {itemsMarkup}
+      </div>
     );
   }
 
