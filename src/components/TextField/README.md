@@ -162,6 +162,7 @@ You didn’t enter a store name.
 | disabled | boolean | Disable the input |
 | readOnly | boolean | Disable editing of the input |
 | autoFocus | boolean | Automatically focus the input |
+| focused | boolean | Force the focus state on the input |
 | multiline | boolean or number | Allow for multiple lines of input |
 | error | boolean or string | Error to display beneath the label |
 | connectedRight | React.ReactNode | An element connected to the right of the input |
