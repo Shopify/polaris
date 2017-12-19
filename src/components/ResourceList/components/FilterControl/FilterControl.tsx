@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 
 import {ComplexAction} from '../../../../types';
 import {
   buttonsFrom,
   TextField,
   Icon,
+  Tag,
+  Stack,
 } from '../../../';
 
 import FilterCreator from './FilterCreator';
-import {AppliedFilter, Filter} from './types';
+import {AppliedFilter, Filter, FilterType} from './types';
 import * as styles from './FilterControl.scss';
 
 export interface Props {
@@ -38,38 +40,61 @@ export default class FilterControl extends React.Component<Props> {
     const {
       resourceName,
       searchValue,
-      filters = [],
+      appliedFilters = [],
       additionalAction,
-      onSearchChange,
+      focused = false,
+      filters = [],
       onSearchBlur,
+      onSearchChange,
     } = this.props;
 
     const additionalActionButton =
       (additionalAction && buttonsFrom(additionalAction)) || null;
 
-    return (
-      <div>
-        <div className={styles.SearchFieldWrapper}>
-          <TextField
-            connectedLeft={
-              <FilterCreator
-                resourceName={resourceName}
-                filters={filters}
-                onAddFilter={this.handleAddFilter}
-              />
-            }
-            connectedRight={additionalActionButton}
-            label={this.textFieldLabel}
-            labelHidden
-            placeholder={this.textFieldLabel}
-            prefix={<Icon source="search" color="skyDark" />}
-            value={searchValue}
-            onChange={onSearchChange}
-            onBlur={onSearchBlur}
-            // Todo: add to TextField
-            // focused={focused || false}
-          />
+    const appliedFiltersMarkup = appliedFilters.map((appliedFilter) => {
+      const activeFilterLabel = this.getFilterLabel(appliedFilter);
+      const filterId = idFromFilter(appliedFilter);
+      return (
+        <Tag
+          onRemove={this.getRemoveFilterCallback(filterId)}
+          key={filterId}
+        >
+          {activeFilterLabel}
+        </Tag>
+      );
+    });
+
+    const appliedFiltersWrapper = appliedFilters.length > 0
+      ? (
+        <div className={styles.AppliedFiltersWrapper}>
+          <Stack spacing="tight">
+            {appliedFiltersMarkup}
+          </Stack>
         </div>
+      )
+      : null;
+
+    return (
+      <div className={styles.FilterControlWrapper}>
+        <TextField
+          connectedLeft={
+            <FilterCreator
+              resourceName={resourceName}
+              filters={filters}
+              onAddFilter={this.handleAddFilter}
+            />
+          }
+          connectedRight={additionalActionButton}
+          label={this.textFieldLabel}
+          labelHidden
+          placeholder={this.textFieldLabel}
+          prefix={<Icon source="search" color="skyDark" />}
+          value={searchValue}
+          onChange={onSearchChange}
+          onBlur={onSearchBlur}
+          focused={focused}
+        />
+        {appliedFiltersWrapper}
       </div>
     );
   }
@@ -79,4 +104,77 @@ export default class FilterControl extends React.Component<Props> {
   private handleAddFilter() {
     return;
   }
+
+  @memoize()
+  private getRemoveFilterCallback(filterId: string) {
+    return () => {
+      this.handleRemoveFilter(filterId);
+    };
+  }
+
+  private handleRemoveFilter(filterId: string) {
+    const {onFiltersChange, appliedFilters = []} = this.props;
+
+    if (!onFiltersChange) {
+      return;
+    }
+
+    const foundIndex = appliedFilters.findIndex((appliedFilter) => (
+      idFromFilter(appliedFilter) === filterId
+    ));
+
+    const newAppliedFilters = foundIndex >= 0
+      ? [
+        ...appliedFilters.slice(0, foundIndex),
+        ...appliedFilters.slice(foundIndex + 1, appliedFilters.length),
+      ]
+      : [...appliedFilters];
+
+    onFiltersChange(newAppliedFilters);
+  }
+
+  private getFilterLabel({key, value}: AppliedFilter): string {
+    const {filters = []} = this.props;
+
+    const filter = filters.find(
+      ({key: filterKey}) => filterKey === key,
+    );
+
+    if (!filter) {
+      return value;
+    }
+
+    const filterLabelByType = findFilterLabelByType(filter, value);
+    const filterLabels = [
+      filter.label,
+      filter.operatorText,
+      filterLabelByType,
+    ];
+    return filterLabels.join(' ');
+  }
+}
+
+function idFromFilter(appliedFilter: AppliedFilter) {
+  return `${appliedFilter.key}-${appliedFilter.value}`;
+}
+
+function findFilterLabelByType(
+  filter: Filter,
+  appliedFilterValue: AppliedFilter['value'],
+): string {
+  if (filter.type === FilterType.Select) {
+    const foundFilterOption = filter.options.find((option) => (
+      (typeof option === 'string')
+        ? option === appliedFilterValue
+        : option.value === appliedFilterValue
+    ));
+
+    if (foundFilterOption) {
+      return (typeof foundFilterOption === 'string')
+        ? foundFilterOption
+        : foundFilterOption.label;
+    }
+  }
+
+  return appliedFilterValue;
 }

@@ -1,5 +1,7 @@
-.SearchFieldWrapper {
-  padding-top: spacing(loose);
-  padding-right: spacing(loose);
-  padding-left: spacing(loose);
+.FilterControlWrapper {
+  padding: spacing(loose);
+}
+
+.AppliedFiltersWrapper {
+  padding-top: spacing(tight);
 }

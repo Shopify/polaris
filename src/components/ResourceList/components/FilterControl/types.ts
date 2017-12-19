@@ -14,7 +14,6 @@ export interface FilterBase<FilterKeys = {}> {
   label: string,
   key: keyof FilterKeys | string,
   operatorText?: string,
-  translationKey?: string,
   type: FilterType,
 }
 
