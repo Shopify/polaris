@@ -7,7 +7,7 @@ import * as styles from './ResourceList.scss';
 
 export interface Props {
   items: any[],
-  filterControl?: React.ReactNode,
+  renderFilterControl?: React.ReactNode,
   idForItem?(item: any, index: number): string | number,
   renderItem(item: any, index: number): React.ReactNode,
 }
@@ -17,10 +17,10 @@ export default class ResourceList extends React.PureComponent<Props, never> {
   static FilterControl = FilterControl;
 
   render() {
-    const {items, filterControl} = this.props;
+    const {items, renderFilterControl} = this.props;
 
-    const headerMarkup = filterControl
-      ? filterControl
+    const headerMarkup = renderFilterControl
+      ? renderFilterControl
       : null;
 
     const itemsMarkup = (

@@ -200,6 +200,7 @@ export {
   Props as ResourceListProps,
   FilterControlProps,
   Filter,
+  AppliedFilter,
   FilterType,
   FilterSelect,
   FilterTextField,

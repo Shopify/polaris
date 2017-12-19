@@ -2,12 +2,14 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {ComplexAction} from '../../../../types';
-import {buttonsFrom} from '../../../Button';
-import TextField from '../../../TextField';
-import Icon from '../../../Icon';
+import {
+  buttonsFrom,
+  TextField,
+  Icon,
+} from '../../../';
 
-import FilterAdder from './FilterAdder';
-import {ActiveFilter, Filter} from './types';
+import FilterCreator from './FilterCreator';
+import {AppliedFilter, Filter} from './types';
 import * as styles from './FilterControl.scss';
 
 export interface Props {
@@ -16,53 +18,50 @@ export interface Props {
     plural: string,
   },
   searchValue?: string,
-  activeFilters?: ActiveFilter[],
+  appliedFilters?: AppliedFilter[],
   additionalAction?: ComplexAction,
   focused?: boolean,
   filters?: Filter[],
   onSearchBlur?(): void,
   onSearchChange?(searchValue: string, id: string): void,
-  onFiltersChange?(filters: ActiveFilter[]): void,
+  onFiltersChange?(appliedFilters: AppliedFilter[]): void,
 }
 
-export default class SearchAndFilter extends React.Component<Props> {
+export default class FilterControl extends React.Component<Props> {
+  private get textFieldLabel() {
+    const resourceNamePlural =
+      this.props.resourceName.plural.toLocaleLowerCase();
+    return `Search ${resourceNamePlural}`;
+  }
+
   render() {
     const {
       resourceName,
       searchValue,
-      filters,
+      filters = [],
       additionalAction,
       onSearchChange,
       onSearchBlur,
     } = this.props;
 
-    const filterFormMarkup = filters && filters.length > 0
-      ? (
-        <FilterAdder
-          resourceName={resourceName}
-          filters={filters}
-          onAddFilter={this.handleAddFilter}
-        />
-      )
-      : null;
-
-    const activeFiltersMarkup = null;
-
     const additionalActionButton =
       (additionalAction && buttonsFrom(additionalAction)) || null;
-
-    const textFieldLabel = `Search ${resourceName.plural}`;
 
     return (
       <div>
         <div className={styles.SearchFieldWrapper}>
           <TextField
-            id="SearchAndFilter-TextField"
-            connectedLeft={filterFormMarkup}
+            connectedLeft={
+              <FilterCreator
+                resourceName={resourceName}
+                filters={filters}
+                onAddFilter={this.handleAddFilter}
+              />
+            }
             connectedRight={additionalActionButton}
-            label={textFieldLabel}
+            label={this.textFieldLabel}
             labelHidden
-            placeholder={textFieldLabel}
+            placeholder={this.textFieldLabel}
             prefix={<Icon source="search" color="skyDark" />}
             value={searchValue}
             onChange={onSearchChange}
@@ -71,7 +70,6 @@ export default class SearchAndFilter extends React.Component<Props> {
             // focused={focused || false}
           />
         </div>
-        {activeFiltersMarkup}
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import {Option} from '../../../Select';
 
-export interface ActiveFilter {
+export interface AppliedFilter {
   key: string,
   value: string,
 }
