@@ -100,9 +100,23 @@ export default class FilterControl extends React.Component<Props> {
   }
 
   @autobind
-  // tslint:disable-next-line prefer-function-over-method
-  private handleAddFilter() {
-    return;
+  private handleAddFilter(newFilter: AppliedFilter) {
+    const {onFiltersChange, appliedFilters = []} = this.props;
+
+    if (!onFiltersChange) { return; }
+
+    const foundFilter = appliedFilters.find((appliedFilter) => (
+      idFromFilter(appliedFilter)  === idFromFilter(newFilter)
+    ));
+
+    if (foundFilter) { return; }
+
+    const newAppliedFilters = [
+      ...appliedFilters,
+      newFilter,
+    ];
+
+    onFiltersChange(newAppliedFilters);
   }
 
   @memoize()
