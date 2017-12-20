@@ -13,6 +13,8 @@
   &:hover {
     background: linear-gradient(to bottom, $button-color, darken($button-color, 5%));
     border-color: $border-color;
+    color: color(white);
+    text-decoration: none;
   }
 
   &:focus {
