@@ -8,11 +8,11 @@ import {
   Icon,
   Tag,
   Stack,
+  FormLayout,
 } from '../../../';
 
 import FilterCreator from './FilterCreator';
 import {AppliedFilter, Filter, FilterType} from './types';
-import * as styles from './FilterControl.scss';
 
 export interface Props {
   resourceName: {
@@ -66,16 +66,14 @@ export default class FilterControl extends React.Component<Props> {
 
     const appliedFiltersWrapper = appliedFilters.length > 0
       ? (
-        <div className={styles.AppliedFiltersWrapper}>
-          <Stack spacing="tight">
-            {appliedFiltersMarkup}
-          </Stack>
-        </div>
+        <Stack spacing="tight">
+          {appliedFiltersMarkup}
+        </Stack>
       )
       : null;
 
     return (
-      <div className={styles.FilterControlWrapper}>
+      <FormLayout>
         <TextField
           connectedLeft={
             <FilterCreator
@@ -95,7 +93,7 @@ export default class FilterControl extends React.Component<Props> {
           focused={focused}
         />
         {appliedFiltersWrapper}
-      </div>
+      </FormLayout>
     );
   }
 

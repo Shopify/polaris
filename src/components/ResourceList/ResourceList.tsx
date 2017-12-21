@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
+import Select, {Option} from '../Select';
+
 import Item from './Item';
 import {contextTypes} from './types';
 import BulkActions from './components/BulkActions/';
@@ -25,6 +27,9 @@ export interface Props {
   bulkActions?: any,
   selectedItems?: string[],
   persistActions?: boolean,
+  sortValue?: string,
+  sortOptions?: Option[],
+  onSortChange?(selected: string, id: string): void,
   onSelectionChange?(selectedItems: string[]): void,
   renderItem(item: any, id: string): React.ReactNode,
   idForItem?(item: any, index: number): string,
@@ -48,6 +53,14 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   state: State = {selectMode: false};
 
   private subscriptions: {(): void}[] = [];
+  private sortingLabel = 'Select how to sort';
+
+  private get selectable() {
+    const {bulkActions} = this.props;
+    return Boolean(
+      bulkActions && bulkActions.length > 0,
+    );
+  }
 
   @autobind
   private get bulkSelectState(): boolean | 'indeterminate' {
@@ -91,12 +104,11 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   }
 
   getChildContext(): Context {
-    const {bulkActions, selectedItems, persistActions} = this.props;
+    const {selectedItems, persistActions} = this.props;
     const {selectMode} = this.state;
-    const selectable = bulkActions && bulkActions.length > 0;
 
     return {
-      selectable,
+      selectable: this.selectable,
       selectedItems,
       selectMode,
       persistActions,
@@ -111,10 +123,23 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const {items, bulkActions, renderFilterControl} = this.props;
+    const {
+      items,
+      bulkActions,
+      renderFilterControl,
+      sortOptions,
+      sortValue,
+      onSortChange,
+    } = this.props;
     const {selectMode} = this.state;
 
-    const headerMarkup = renderFilterControl ? renderFilterControl : null;
+    const filterControlMarkup = renderFilterControl
+      ? (
+        <div className={styles.FiltersWrapper}>
+          {renderFilterControl}
+        </div>
+      )
+      : null;
 
     const bulkActionsMarkup =
       bulkActions && bulkActions.length ? (
@@ -127,11 +152,26 @@ export default class ResourceList extends React.PureComponent<Props, State> {
         />
       ) : null;
 
-    const toolsMarkup = bulkActions ? (
-      <div className={styles.Tools}>
-        <div className={styles.BulkActions}>{bulkActionsMarkup}</div>
-      </div>
-    ) : null;
+    const sortingSelectMarkup = sortOptions && sortOptions.length > 0
+      ? (
+        <Select
+          label={this.sortingLabel}
+          labelHidden
+          options={sortOptions}
+          onChange={onSortChange}
+          value={sortValue}
+        />
+      )
+      : null;
+
+    const headerMarkup = this.selectable
+      ? (
+        <div className={styles.HeaderWrapper}>
+          <div>{bulkActionsMarkup}</div>
+          <div>{sortingSelectMarkup}</div>
+        </div>
+      )
+      : null;
 
     const listMarkup =
       items.length > 0 ? (
@@ -139,9 +179,9 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       ) : null;
 
     return (
-      <div className={styles.ResourceListContainer}>
+      <div>
+        {filterControlMarkup}
         {headerMarkup}
-        {toolsMarkup}
         {listMarkup}
       </div>
     );

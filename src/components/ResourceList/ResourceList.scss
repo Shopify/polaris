@@ -1,8 +1,36 @@
-$resource-list-item-control-indent: -1 * rem(12px);
-$tools-side-padding-large: rem(16px);
-$tools-side-padding-small: rem(12px);
-$resource-list-small-breakpoint: 458px;
-$bulk-actions-min-height: rem(56px);
+@import './Variables';
+
+.FiltersWrapper {
+  padding: $header-padding-small $header-padding-small 0;
+
+  @include breakpoint-after($resource-list-small-breakpoint) {
+    padding: spacing(base) spacing(base) spacing(tight);
+  }
+
+  + .ResourceList {
+    border-top: border();
+  }
+}
+
+.HeaderWrapper {
+  display: flex;
+  width: 100%;
+  min-height: $header-min-height;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-direction: row-reverse;
+  padding: 0 $header-padding-small;
+
+  @include breakpoint-after($resource-list-small-breakpoint) {
+    flex-direction: row;
+    padding: 0 spacing(base);
+  }
+
+  + .ResourceList {
+    border-top: border();
+  }
+}
 
 .ResourceList {
   margin: 0;
@@ -16,26 +44,5 @@ $bulk-actions-min-height: rem(56px);
 
   + .ItemWrapper {
     border-top: border();
-  }
-}
-
-.Tools {
-  display: flex;
-  width: 100%;
-  border-bottom: border();
-  padding: 0 $tools-side-padding-small;
-  @include breakpoint-after($resource-list-small-breakpoint) {
-    padding: 0 $tools-side-padding-large;
-  }
-}
-
-.BulkActions {
-  display: flex;
-  position: relative;
-  width: 100%;
-  align-items: center;
-  min-height: $bulk-actions-min-height;
-  @include breakpoint-after($resource-list-small-breakpoint) {
-    justify-content: flex-start;
   }
 }
