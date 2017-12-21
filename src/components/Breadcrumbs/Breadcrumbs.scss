@@ -34,6 +34,7 @@ $stacking-order: (
   &:hover,
   &:active {
     color: color(ink);
+    text-decoration: none;
 
     .Icon {
       @include recolor-icon(color(ink));

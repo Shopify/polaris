@@ -59,6 +59,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   &:hover {
     .Title {
       @include text-emphasis-normal;
+      text-decoration: none;
       border-bottom: $border-bottom-height solid color(sky);
     }
   }
