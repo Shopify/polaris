@@ -74,6 +74,10 @@ describe('build', () => {
 
     it('minifies class names', () => {
       expect(fs.readFileSync('esnext/styles/components/Stack.scss', 'utf8')).not.toMatch('Stack');
+      // Checks that we correctly minify on word boundaries and dasherized class names, fixing
+      // https://github.com/Shopify/polaris-react/issues/824
+      expect(fs.readFileSync('esnext/styles/components/Tabs.scss', 'utf8')).not.toMatch('Measurer');
+      expect(fs.readFileSync('esnext/styles/components/Card.scss', 'utf8')).not.toMatch('-subdued');
     });
 
     it('uses the correct class names in the server and index builds', () => {
