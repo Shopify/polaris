@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.1 - 2017-12-21
+### Documentation
+* Ammending changelog
+
 ## 1.9.0 - 2017-12-21
 
 ### Enhancements
