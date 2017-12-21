@@ -3,6 +3,7 @@ name: Embedded resource picker
 category: Embedded
 hidePlayground: true
 keywords:
+  - ResourcePicker
   - pop up
   - overlays
   - disruptive

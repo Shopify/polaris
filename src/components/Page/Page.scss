@@ -22,6 +22,10 @@ html, body {
   max-width: none;
 }
 
+.singleColumn {
+  max-width: layout-width(primary, max);
+}
+
 .Content {
   @include page-content-layout;
 }

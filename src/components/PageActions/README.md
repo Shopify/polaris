@@ -2,6 +2,7 @@
 name: Page actions
 category: Structure
 keywords:
+  - PageActions
   - bottom of page actions
   - bottom page actions
   - primary action

@@ -10,8 +10,8 @@ describe('<Tabs />', () => {
 
   beforeEach(() => {
     tabs = [
-      {title: 'Tab 1', id: 'tab-1'},
-      {title: 'Tab 2', id: 'tab-2'},
+      {content: 'Tab 1', id: 'tab-1'},
+      {content: 'Tab 2', id: 'tab-2'},
     ];
   });
 
@@ -61,6 +61,18 @@ describe('<Tabs />', () => {
 
       labelledTabs.forEach((tab, index) => {
         expect(wrapper.find(Tab).at(index).prop('accessibilityLabel')).toEqual(tab.accessibilityLabel);
+      });
+    });
+
+    it('sets the content for each of the tabs if given a title', () => {
+      const titledTabs = [
+        { title: 'Tab 1', id: 'tab-1' },
+        { title: 'Tab 2', id: 'tab-2' },
+      ];
+      const wrapper = mount(<Tabs selected={0} tabs={titledTabs} />);
+
+      titledTabs.forEach((tab, index) => {
+        expect(wrapper.find(Tab).at(index).prop('children')).toEqual(tab.title);
       });
     });
   });

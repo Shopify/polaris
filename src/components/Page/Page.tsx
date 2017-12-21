@@ -10,6 +10,7 @@ import * as styles from './Page.scss';
 export interface Props extends HeaderProps {
   children?: React.ReactNode,
   fullWidth?: boolean,
+  singleColumn?: boolean,
 }
 
 const EASDK_PROPS: (keyof Props)[] = [
@@ -33,8 +34,8 @@ export default class Page extends React.PureComponent<Props, never> {
   componentDidUpdate(prevProps: Props) {
     if (this.context.easdk == null) { return; }
 
-    const prevEASDKProps = pick<{}, Props>(prevProps, EASDK_PROPS);
-    const currentEASDKProps = pick<{}, Props>(this.props, EASDK_PROPS);
+    const prevEASDKProps = pick(prevProps, EASDK_PROPS);
+    const currentEASDKProps = pick(this.props, EASDK_PROPS);
 
     if (!isEqual(prevEASDKProps, currentEASDKProps)) {
       this.handleEASDKMessaging();
@@ -45,12 +46,14 @@ export default class Page extends React.PureComponent<Props, never> {
     const {
       children,
       fullWidth,
+      singleColumn,
       ...rest,
     } = this.props;
 
     const className = classNames(
       styles.Page,
       fullWidth && styles.fullWidth,
+      singleColumn && styles.singleColumn,
     );
 
     const headerMarkup = this.context.easdk || !this.hasHeaderContent()

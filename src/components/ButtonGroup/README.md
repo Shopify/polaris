@@ -2,6 +2,7 @@
 name: Button group
 category: Actions
 keywords:
+  - ButtonGroup
   - choices
   - decision
   - call-to-action

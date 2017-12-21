@@ -2,6 +2,10 @@
 name: Color picker
 category: Forms
 keywords:
+  - ColorPicker
+  - HuePicker
+  - AlphaPicker
+  - Slidable
   - Choose color
   - Select color
   - Pick color

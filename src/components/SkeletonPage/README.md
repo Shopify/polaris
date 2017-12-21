@@ -2,6 +2,7 @@
 name: Skeleton page
 category: Feedback indicators
 keywords:
+  - SkeletonPage
   - skeleton
   - loading
   - page

@@ -52,7 +52,7 @@ export default function Item({
     : content;
 
   const control = url
-    ? <UnstyledLink url={url} className={styles.Item}>
+    ? <UnstyledLink url={url} onClick={onAction} className={styles.Item}>
         {contentElement}
       </UnstyledLink>
     : <button onClick={onAction} className={className} disabled={disabled}>

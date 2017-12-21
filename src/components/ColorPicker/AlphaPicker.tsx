@@ -84,7 +84,7 @@ export default class AlphaPicker extends React.PureComponent<Props, State> {
 
 function alphaForOffset(offset: number, sliderHeight: number): number {
   const selectionHeight = (offset - VERTICAL_PADDING);
-  const slidableArea = sliderHeight - (2 * VERTICAL_PADDING);
+  const slidableArea = sliderHeight - (VERTICAL_PADDING * 2);
   return clamp(1 - (selectionHeight / slidableArea), 0, 1);
 }
 

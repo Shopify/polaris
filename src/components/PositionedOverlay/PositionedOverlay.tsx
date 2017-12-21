@@ -66,7 +66,16 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
+    if (this.scrollableContainer) {
+      this.scrollableContainer.addEventListener('scroll', this.handleMeasurement);
+    }
     this.handleMeasurement();
+  }
+
+  componentWillUnmount() {
+    if (this.scrollableContainer) {
+      this.scrollableContainer.removeEventListener('scroll', this.handleMeasurement);
+    }
   }
 
   componentWillReceiveProps() {
@@ -100,7 +109,6 @@ export default class PositionedOverlay extends React.PureComponent<Props, State>
         ref={this.setOverlay}
       >
         <EventListener event="resize" handler={this.handleMeasurement} />
-        <EventListener event="scroll" handler={this.handleMeasurement} />
         {render(this.overlayDetails())}
       </div>
     );
@@ -192,11 +200,11 @@ function intersectionWithViewport(rect: Rect) {
 }
 
 function getMarginsForNode(node: HTMLElement) {
-  const styles = window.getComputedStyle(node);
+  const nodeStyles = window.getComputedStyle(node);
   return {
-    activator: parseFloat(styles.marginTop || ''),
-    container: parseFloat(styles.marginBottom || ''),
-    horizontal: parseFloat(styles.marginLeft || ''),
+    activator: parseFloat(nodeStyles.marginTop || ''),
+    container: parseFloat(nodeStyles.marginBottom || ''),
+    horizontal: parseFloat(nodeStyles.marginLeft || ''),
   };
 }
 

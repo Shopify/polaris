@@ -11,7 +11,7 @@
 }
 
 @function control-icon-transition() {
-  @return transform duration(fast) easing(in);
+  @return transform duration(fast) easing(in) easing(out);
 }
 
 @mixin control-backdrop($style: base) {

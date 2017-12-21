@@ -2,6 +2,7 @@
 name: Account connection
 category: Actions
 keywords:
+  - AccountConnection
   - connect
   - account
   - sign-up

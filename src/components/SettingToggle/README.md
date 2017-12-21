@@ -2,6 +2,7 @@
 name: Setting toggle
 category: Actions
 keywords:
+  - SettingToggle
   - settings buttons
   - setting buttons
   - enable buttons

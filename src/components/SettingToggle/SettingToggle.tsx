@@ -3,10 +3,11 @@ import * as React from 'react';
 import {buttonFrom} from '../Button';
 import Card from '../Card';
 import SettingAction from '../SettingAction';
+import {ComplexAction} from '../../types';
 
 export interface Props {
   enabled?: boolean,
-  action?: React.ReactNode,
+  action?: ComplexAction,
   children?: React.ReactNode,
 }
 

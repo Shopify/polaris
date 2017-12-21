@@ -19,6 +19,7 @@ keywords:
   - button
   - link
   - click
+  - submit
 ---
 
 # Button

@@ -2,6 +2,7 @@
 name: Empty state
 category: Structure
 keywords:
+  - EmptyState
   - lander
   - welcome
   - explain features

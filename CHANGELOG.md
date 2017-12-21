@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.9.0 - 2017-12-21
+
+### Enhancements
+* Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item
+* Added `content` prop to tabs and deprecated use of `title`
+* Added text container component
+* Added `idForItem` prop to resource list
+* Added `fullWidth` prop to layout section
+* Added `indeterminate` as option for checkbox `checked` prop value
+* Added `singleColumn` prop to page
+
+### Bug fixes
+* Fixed positioned overlay not responding to scrollable container events
+* Fixed first focusable item focus in popovers
+* Fixed typos in the select component documentation (thanks [mattchidley](https://github.com/mattchidley) for the [original issue](https://github.com/Shopify/polaris/issues/224))
+
 ## 1.8.3 - 2017-10-26
 ### Bug fixes
 * Moved react-transition-group from a dev dependency to a dependency

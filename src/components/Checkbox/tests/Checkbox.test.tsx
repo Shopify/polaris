@@ -107,4 +107,37 @@ describe('<Checkbox />', () => {
       expect(checkbox.find(`#${descriptions[1]}`).text()).toBe('Some help');
     });
   });
+
+  describe('indeterminate', () => {
+    it('sets the indeterminate attribute to be true on the input when checked is "indeterminate"', () => {
+      const checkbox = shallow(
+        <Checkbox
+          label="Checkbox"
+          checked="indeterminate"
+        />,
+      );
+      expect(checkbox.find('input').prop<string>('indeterminate')).toBe('true');
+    });
+
+    it('sets the aria-checked attribute on the input as mixed when checked is "indeterminate"', () => {
+      const checkbox = shallow(
+        <Checkbox
+          label="Checkbox"
+          checked="indeterminate"
+        />,
+      );
+      expect(checkbox.find('input').prop<string>('aria-checked')).toBe('mixed');
+    });
+
+    it('sets the checked attribute on the input to false when checked is "indeterminate"', () => {
+      const checkbox = shallow(
+        <Checkbox
+          label="Checkbox"
+          checked="indeterminate"
+        />,
+      );
+      expect(checkbox.find('input').prop<string>('checked')).toBe(false);
+    });
+  });
+
 });

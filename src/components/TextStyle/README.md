@@ -2,6 +2,7 @@
 name: Text style
 category: Titles and text
 keywords:
+  - TextStyle
   - typographic
   - subdued
   - strong

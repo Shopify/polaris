@@ -10,14 +10,14 @@ import * as styles from './Checkbox.scss';
 export interface Props {
   label: string,
   labelHidden?: boolean,
-  checked?: boolean,
+  checked?: boolean | 'indeterminate',
   helpText?: React.ReactNode,
   id?: string,
   name?: string,
   value?: string,
   error?: Error,
   disabled?: boolean,
-  onChange?(newValue: boolean, id: string): void,
+  onChange?(newChecked: boolean, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
@@ -29,7 +29,7 @@ export default function Checkbox({
   label,
   labelHidden,
   helpText,
-  checked,
+  checked = false,
   error,
   disabled,
   onChange,
@@ -48,9 +48,29 @@ export default function Checkbox({
   if (typeof error === 'string') { describedBy.push(errorID(id)); }
   if (helpText) { describedBy.push(helpTextID(id)); }
 
-  const className = classNames(
+  const wrapperClassName = classNames(
     styles.Checkbox,
     error && styles.error,
+  );
+
+  const isChecked = checked === 'indeterminate' ? false : checked;
+  const isIndeterminate = checked === 'indeterminate';
+
+  const indeterminateAttributes = isIndeterminate
+    ? {
+      indeterminate: 'true',
+      'aria-checked': 'mixed',
+    }
+    : {
+      'aria-checked' : isChecked,
+    };
+
+  const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
+
+  const inputClassName = classNames(
+    styles.Input,
+    isChecked && styles['Input-checked'],
+    isIndeterminate && styles['Input-indeterminate'],
   );
 
   return (
@@ -61,25 +81,27 @@ export default function Checkbox({
       helpText={helpText}
       error={error}
     >
-      <div className={className}>
+      <div className={wrapperClassName}>
         <input
           id={id}
           name={name}
           value={value}
           type="checkbox"
-          checked={checked}
+          checked={isChecked}
           disabled={disabled}
-          className={styles.Input}
+          className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
           onBlur={onBlur}
           aria-invalid={error != null}
           aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
+          role="checkbox"
+          {...indeterminateAttributes}
         />
 
         <div className={styles.Backdrop} />
         <div className={styles.Icon}>
-          <Icon source="checkmark" />
+          <Icon source={iconSource} />
         </div>
       </div>
     </Choice>

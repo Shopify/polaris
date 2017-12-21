@@ -11,6 +11,7 @@ $spinner-size: rem(20px);
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: $min-height;
   min-width: $min-height;
   margin: 0;
@@ -56,6 +57,45 @@ $spinner-size: rem(20px);
     background: linear-gradient(to bottom, color(sky, light), color(sky, light));
     color: color(ink, lightest);
   }
+}
+
+.Content {
+  @include text-style-button;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+.Icon {
+  transition: color duration() easing();
+
+  &:first-child {
+    // This compensates for the typical icon used in buttons being
+    // inset within its bounding box.
+    margin-left: rem(-4px);
+  }
+
+  &:last-child {
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox (and makes it look like there is too much
+    // spacing on the right of the button)
+    margin-right: rem(-8px);
+  }
+
+  & + *:not(.Icon) {
+    margin-left: rem(4px);
+  }
+}
+
+.Spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -($spinner-size / 2);
+  margin-left: -($spinner-size / 2);
 }
 
 .primary {
@@ -112,14 +152,6 @@ $spinner-size: rem(20px);
   }
 }
 
-.Spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -($spinner-size / 2);
-  margin-left: -($spinner-size / 2);
-}
-
 // The way the designs work, we need to do lots of reaching down to
 // target the content in pseudo-selectors, so we need higher specificity
 // in this case.
@@ -127,7 +159,9 @@ $spinner-size: rem(20px);
 
 .plain {
   @include recolor-icon(color(blue));
-  margin: (-1 * $vertical-padding) (-1 * spacing());
+  margin: (-1 * $vertical-padding) rem(-8px);
+  padding-left: rem(8px);
+  padding-right: rem(8px);
   background: transparent;
   border: border(transparent);
   box-shadow: none;
@@ -165,12 +199,6 @@ $spinner-size: rem(20px);
     margin: (-1 * $large-vertical-padding) (-1 * spacing(loose));
   }
 
-  > .Content::after {
-    @include plain-button-backdrop;
-    content: '';
-    opacity: 0;
-  }
-
   &.iconOnly {
     @include recolor-icon(color(ink, lighter));
     margin: -0.5 * ($min-height - icon-size());
@@ -194,19 +222,24 @@ $spinner-size: rem(20px);
       @include recolor-icon(color(sky, dark));
     }
   }
+
+  > .Content::after {
+    @include plain-button-backdrop;
+    content: '';
+    opacity: 0;
+  }
+
+  .Icon {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 // stylelint-enable selector-max-specificity
 
-.iconOnly {
-  padding-left: spacing(tight);
-  padding-right: spacing(tight);
-}
-
 .sizeSlim {
   min-height: $slim-min-height;
-  min-width: $slim-min-height;
-  padding: $slim-vertical-padding spacing();
+  padding: $slim-vertical-padding rem(12px);
 }
 
 .sizeLarge {
@@ -224,37 +257,24 @@ $spinner-size: rem(20px);
   width: 100%;
 }
 
-.Content {
-  @include text-style-button;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 1px;
-  min-height: 1px;
-}
+.iconOnly {
+  padding-left: rem(8px);
+  padding-right: rem(8px);
 
-.Icon {
-  @include text-style-body;
-  transition: color duration() easing();
-
-  &:first-child {
-    // This compensates for the typical icon used in buttons being
-    // inset within its bounding box.
-    margin-left: -2px;
-    margin-right: spacing(extra-tight);
+  &.sizeLarge {
+    padding-left: rem(12px);
+    padding-right: rem(12px);
   }
 
-  &:last-child {
-    margin-left: spacing(extra-tight);
-
-    // This compensates for the disclosure icon, which is substantially
-    // inset within the viewbox (and makes it look like there is too much
-    // spacing on the right of the button)
-    margin-right: -5px;
+  .Icon:first-child {
+    margin-left: 0;
   }
 
-  &:only-child {
-    margin: 0;
+  .Icon:last-child {
+    margin-right: rem(-4px);
+  }
+
+  .Icon:only-child {
+    margin-right: 0;
   }
 }

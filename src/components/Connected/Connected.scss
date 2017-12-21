@@ -1,4 +1,4 @@
-$staacking-order: (
+$stacking-order: (
   item: 10,
   primary: 20,
   focused: 30,
@@ -11,7 +11,7 @@ $staacking-order: (
 
 .Item {
   position: relative;
-  z-index: z-index(item, $staacking-order);
+  z-index: z-index(item, $stacking-order);
   flex: 0 0 auto;
 
   &:not(:first-child) {
@@ -24,7 +24,7 @@ $staacking-order: (
 // stylelint-disable declaration-no-important
 
 .Item-primary {
-  z-index: z-index(primary, $staacking-order);
+  z-index: z-index(primary, $stacking-order);
   flex: 1 1 auto;
 
   &:not(:first-child) * {
@@ -63,5 +63,5 @@ $staacking-order: (
 // stylelint-enable declaration-no-important
 
 .Item-focused {
-  z-index: z-index(focused, $staacking-order);
+  z-index: z-index(focused, $stacking-order);
 }

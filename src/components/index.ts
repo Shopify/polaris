@@ -77,6 +77,11 @@ export {
 } from './ColorPicker';
 
 export {
+  default as Connected,
+  Props as ConnectedProps,
+} from './Connected';
+
+export {
   default as DatePicker,
   Props as DatePickerProps,
   Range,

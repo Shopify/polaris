@@ -23,7 +23,7 @@ export enum CloseSource {
   ScrollOut,
 }
 
-type TransitionStatus = 'entering' | 'entered' |'exiting' |'exited';
+type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 export interface Props {
   id: string,
@@ -43,7 +43,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
   componentDidUpdate({active: wasActive}: Props) {
     const {active, preventAutofocus} = this.props;
-    if (!active || preventAutofocus || !active || active === wasActive) { return; }
+    if (!active || preventAutofocus || active === wasActive) { return; }
     if (this.contentNode == null) { return; }
 
     write(() => {
@@ -56,7 +56,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   render() {
     const {active} = this.props;
     return (
-      <Transition in={active} timeout={500}>
+      <Transition in={active} timeout={500} mountOnEnter unmountOnExit>
         {this.renderOverlay}
       </Transition>
     );
@@ -70,8 +70,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       fullWidth,
       preferredPosition = 'below',
     } = this.props;
-
-    if (transitionStatus === 'exited') { return null; }
 
     return (
       <PositionedOverlay
@@ -161,10 +159,9 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private handleClick(event: Event) {
     const target = event.target as HTMLElement;
     const {contentNode, props: {activator, onClose}} = this;
-    if (
-      (contentNode != null && nodeContainsDescendant(contentNode, target)) ||
-      nodeContainsDescendant(activator, target) || this.transitionStatus !== 'entered'
-    ) { return; }
+    const isDescendant = contentNode != null && nodeContainsDescendant(contentNode, target);
+    const isActivatorDescendant = nodeContainsDescendant(activator, target);
+    if (isDescendant || isActivatorDescendant || this.transitionStatus !== 'entered') { return; }
     onClose(CloseSource.Click);
   }
 

@@ -2,6 +2,7 @@
 name: Callout card
 category: Structure
 keywords:
+  - CalloutCard
   - actionable
   - updates
   - new features

@@ -42,7 +42,7 @@ export default function generateSassBuild(destinationDir) {
 function generateSassZip(sourceDir, destinationDir) {
   // eslint-disable-next-line promise/param-names
   return new Promise((resolveSass, reject) => {
-    const output = createWriteStream(join(destinationDir, 'sass.zip'));
+    const output = createWriteStream(join(destinationDir, 'Sass.zip'));
     const archive = archiver('zip', {store: true});
 
     output.on('close', () => {
@@ -83,6 +83,6 @@ function namespaceSassClasses(filePath, file, tokens) {
   return Object.keys(namespaces)
     .filter(Boolean)
     .reduce((sass, className) => (
-      sass.replace(new RegExp(`\\.${className}(?!-)`, 'g'), `.${namespaces[className]}`)
+      sass.replace(new RegExp(`\\.${className}(?!-)\\b`, 'g'), `.${namespaces[className]}`)
     ), file);
 }

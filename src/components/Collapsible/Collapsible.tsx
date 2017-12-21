@@ -89,7 +89,6 @@ export default class Collapsible extends React.Component<Props, State> {
             animationState: 'opening',
             height: this.heightNode ? this.heightNode.scrollHeight : 0,
           });
-          break;
       }
     });
   }

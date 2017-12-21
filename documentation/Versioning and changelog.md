@@ -3,7 +3,7 @@
 The changelog is prepared manually immediately before a release. Each changelog entry should follow this structure:
 
 ```
-## 2.0.0 (April 20, 2017)
+## 2.0.0 - 2017-04-20
 ### Breaking changes
 * A change ([#100](https://github.com/shopify/polaris/pull/100))
 ```
@@ -14,16 +14,16 @@ The possible groups in which to categorize changes are:
 * Markup changes
 * Enhancements (new variations, accessibility improvements, etc.)
 * Design updates (non-breaking design changes implemented in code)
-* Bug Fixes
+* Bug fixes
 * Documentation
-* Dependency Upgrades
+* Dependency upgrades
 * Style guide
 * Sketch UIKit (design changes without matching implementations)
 * Chores (non-documentation tasks on the repo itself)
 
 ## Versioning scheme
 
-Because we expose both React components (for which the markup, including class names, is an implementation detail) and static CSS/ Sass builds, the versioning scheme for Polaris is somewhat unusual. The following sections detail what kinds of changes result in each of major, minor, and patch version bumps:
+Because we expose both React components (for which the markup, including class names, is an implementation detail) and static CSS/Sass builds, the versioning scheme for Polaris is somewhat unusual. The following sections detail what kinds of changes result in each of major, minor, and patch version bumps:
 
 ### Major
 * Removal of a component

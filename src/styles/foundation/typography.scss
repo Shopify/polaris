@@ -136,6 +136,6 @@ $font-size-data: (
   @if type-of($fetched-font-size) != null {
     @return $fetched-font-size;
   } @else {
-    @error 'Line height `#{$style} - #{$variant}` not found. Available font sizes: #{available-names($line-height-data)}';
+    @error 'Font size `#{$style} - #{$variant}` not found. Available font sizes: #{available-names($line-height-data)}';
   }
 }

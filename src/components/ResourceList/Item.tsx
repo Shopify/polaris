@@ -95,12 +95,12 @@ export default class Item extends React.PureComponent<Props, State> {
     let mediaMarkup: React.ReactNode = null;
 
     if (media) {
-      if (isElementOfType(media, Avatar)) {
+      if (isElementOfType(media, Avatar as React.ComponentType)) {
         mediaSize = media.props.size || 'medium';
         mediaType = 'avatar';
       }
 
-      if (isElementOfType(media, Thumbnail)) {
+      if (isElementOfType(media, Thumbnail as React.ComponentType)) {
         mediaSize = media.props.size || 'medium';
         mediaType = 'thumbnail';
       }

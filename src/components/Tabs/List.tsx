@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from './Item';
-import {TabDescriptor} from './Tabs';
+import {TabDescriptor, getTabContent} from './Tabs';
 import * as styles from './Tabs.scss';
 
 export interface Props {
@@ -16,17 +16,18 @@ export interface Props {
 export default class List extends React.PureComponent<Props, never> {
   render() {
     const {focusIndex, disclosureTabs, onClick = noop} = this.props;
-    const tabs = disclosureTabs.map(({id, panelID, title, accessibilityLabel}, index) => {
+    const tabs = disclosureTabs.map((tab, index) => {
+      const tabContent = getTabContent(tab);
       return (
         <Item
-          key={id}
-          id={id}
-          panelID={panelID}
+          key={tab.id}
+          id={tab.id}
+          panelID={tab.panelID}
           focused={index === focusIndex}
-          accessibilityLabel={accessibilityLabel}
-          onClick={onClick.bind(null, id)}
+          accessibilityLabel={tab.accessibilityLabel}
+          onClick={onClick.bind(null, tab.id)}
         >
-          {title}
+          {tabContent}
         </Item>
       );
     });

@@ -2,6 +2,7 @@
 name: Progress bar
 category: Feedback indicators
 keywords:
+  - ProgressBar
   - progress indicator
   - progress bar
   - loading

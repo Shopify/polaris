@@ -2,6 +2,7 @@
 name: Choice list
 category: Forms
 keywords:
+  - ChoiceList
   - form
   - input
   - choices
@@ -89,16 +90,20 @@ Shipping Options
 #### Do
 If the customer abandons their checkout, send them an email reminder to complete their order
 
-<input type="radio" name="foo"> Never
-<input type="radio" name="foo"> 6 hours later
-<input type="radio" name="foo"> 24 hours later
+<p>
+  <label><input type="radio" name="foo"> Never</label><br />
+  <label><input type="radio" name="foo"> 6 hours later</label><br />
+  <label><input type="radio" name="foo"> 24 hours later</label>
+</p>
 
 #### Don’t
 If the customer abandons their checkout, send them an email reminder to complete their order:
 
-<input type="radio" name="foo"> Never
-<input type="radio" name="foo"> 6 hours later
-<input type="radio" name="foo"> 24 hours later
+<p>
+  <label><input type="radio" name="bar"> Never</label><br />
+  <label><input type="radio" name="bar"> 6 hours later</label><br />
+  <label><input type="radio" name="bar"> 24 hours later</label>
+</p>
 <!-- end -->
 
 ### List choices

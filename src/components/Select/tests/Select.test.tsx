@@ -67,7 +67,7 @@ describe('<Select />', () => {
       ];
       const optionElements = shallow(<Select label="Select" options={options} />).find('option');
 
-      options.forEach(({disabled}: {disabled?: boolean}, index) => {
+      options.forEach(({disabled}: {disabled?: boolean, value: string, label: string}, index) => {
         const optionElement = optionElements.at(index);
         expect(optionElement.prop('disabled')).toBe(disabled);
       });
