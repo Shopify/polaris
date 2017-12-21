@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "1.8.3",
+  "version": "1.9.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
