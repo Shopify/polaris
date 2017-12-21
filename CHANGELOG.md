@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.1 - 2017-12-21
+### Documentation
+* Ammending changelog
+
 ## 1.9.0 - 2017-12-21
 
 ### Enhancements
@@ -10,6 +14,7 @@
 * Added `fullWidth` prop to layout section
 * Added `indeterminate` as option for checkbox `checked` prop value
 * Added `singleColumn` prop to page
+* Added `focused` prop to text field [813](https://github.com/Shopify/polaris-react/pull/813)
 
 ### Bug fixes
 * Fixed positioned overlay not responding to scrollable container events
