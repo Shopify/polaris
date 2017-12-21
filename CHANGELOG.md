@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.9.0 - 2017-12-21
 
 ### Enhancements
 * Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item ([#792](https://github.com/Shopify/polaris-react/pull/792))
