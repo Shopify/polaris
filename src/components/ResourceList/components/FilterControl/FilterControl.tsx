@@ -7,12 +7,12 @@ import {
   TextField,
   Icon,
   Tag,
-  Stack,
   FormLayout,
 } from '../../../';
 
 import FilterCreator from './FilterCreator';
 import {AppliedFilter, Filter, FilterType} from './types';
+import * as styles from './FilterControl.scss';
 
 export interface Props {
   resourceName: {
@@ -55,20 +55,19 @@ export default class FilterControl extends React.Component<Props> {
       const activeFilterLabel = this.getFilterLabel(appliedFilter);
       const filterId = idFromFilter(appliedFilter);
       return (
-        <Tag
-          onRemove={this.getRemoveFilterCallback(filterId)}
-          key={filterId}
-        >
-          {activeFilterLabel}
-        </Tag>
+        <li className={styles.AppliedFilter} key={filterId}>
+          <Tag onRemove={this.getRemoveFilterCallback(filterId)}>
+            {activeFilterLabel}
+          </Tag>
+        </li>
       );
     });
 
     const appliedFiltersWrapper = appliedFilters.length > 0
       ? (
-        <Stack spacing="tight">
+        <ul className={styles.AppliedFilters}>
           {appliedFiltersMarkup}
-        </Stack>
+        </ul>
       )
       : null;
 
