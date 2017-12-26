@@ -4,7 +4,7 @@ import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {DisableableAction} from '../../types';
+import {Action, DisableableAction} from '../../types';
 import ActionList from '../ActionList';
 import Popover from '../Popover';
 import Avatar, {Props as AvatarProps} from '../Avatar';
@@ -33,6 +33,7 @@ export interface ExceptionDescriptor {
 
 export interface Props {
   url?: string,
+  onAction?: Action['onAction'],
   media?: React.ReactElement<AvatarProps | ThumbnailProps>,
   attributeOne: string,
   attributeTwo?: React.ReactNode,
@@ -62,6 +63,7 @@ export default class Item extends React.PureComponent<Props, State> {
   render() {
     const {
       url,
+      onAction,
       media,
       attributeOne,
       attributeTwo,
@@ -175,7 +177,7 @@ export default class Item extends React.PureComponent<Props, State> {
       </div>
     );
 
-    return url
+    return url || onAction
       ? (
         <div
           ref={this.setNode}
@@ -188,7 +190,8 @@ export default class Item extends React.PureComponent<Props, State> {
           <UnstyledLink
             aria-describedby={this.id}
             className={styles.Link}
-            url={url}
+            url={url ? url : '#'}
+            onClick={onAction}
           />
           {containerMarkup}
         </div>
