@@ -22,6 +22,19 @@ describe('<ResourceList />', () => {
       expect(resourceList.find('li').first().key()).toBe(idForItem(itemsWithID[0]));
     });
   });
+
+  describe('filterControl', () => {
+    it('renders when exist', () => {
+      const resourceList = shallow(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          filterControl={<div id="test123">Test</div>}
+        />,
+      );
+      expect(resourceList.find('#test123').exists()).toBe(true);
+    });
+  });
 });
 
 function idForItem(item: any) {

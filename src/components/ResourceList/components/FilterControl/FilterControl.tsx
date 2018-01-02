@@ -51,6 +51,15 @@ export default class FilterControl extends React.Component<Props> {
     const additionalActionButton =
       (additionalAction && buttonsFrom(additionalAction)) || null;
 
+    const filterCreatorMarkup = filters.length > 0 ?
+      (
+        <FilterCreator
+          resourceName={resourceName}
+          filters={filters}
+          onAddFilter={this.handleAddFilter}
+        />
+      ) : null;
+
     const appliedFiltersMarkup = appliedFilters.map((appliedFilter) => {
       const activeFilterLabel = this.getFilterLabel(appliedFilter);
       const filterId = idFromFilter(appliedFilter);
@@ -74,13 +83,7 @@ export default class FilterControl extends React.Component<Props> {
     return (
       <FormLayout>
         <TextField
-          connectedLeft={
-            <FilterCreator
-              resourceName={resourceName}
-              filters={filters}
-              onAddFilter={this.handleAddFilter}
-            />
-          }
+          connectedLeft={filterCreatorMarkup}
           connectedRight={additionalActionButton}
           label={this.textFieldLabel}
           labelHidden

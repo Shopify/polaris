@@ -20,7 +20,7 @@ export interface State {
 
 export interface Props {
   items: any[],
-  renderFilterControl?: React.ReactNode,
+  filterControl?: React.ReactNode,
   resourceName?: {
     singular: string,
     plural: string,
@@ -124,17 +124,17 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const {
       items,
       bulkActions,
-      renderFilterControl,
+      filterControl,
       sortOptions,
       sortValue,
       onSortChange,
     } = this.props;
     const {selectMode} = this.state;
 
-    const filterControlMarkup = renderFilterControl
+    const filterControlMarkup = filterControl
       ? (
         <div className={styles.FiltersWrapper}>
-          {renderFilterControl}
+          {filterControl}
         </div>
       )
       : null;

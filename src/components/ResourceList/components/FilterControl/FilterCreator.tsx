@@ -54,6 +54,7 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
       <Button
         onClick={this.togglePopover}
         disclosure
+        testID="FilterCreator-FilterActivator"
       >
         {this.filterButtonLabel}
       </Button>
@@ -75,6 +76,7 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
       <Button
         onClick={this.handleAddFilter}
         disabled={!this.canAddFilter}
+        testID="FilterCreator-AddFilterButton"
       >
         {this.addFilterButtonLabel}
       </Button>
