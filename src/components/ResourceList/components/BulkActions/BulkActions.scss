@@ -69,12 +69,10 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
       outline: 0;
       box-shadow: 0 0 0 1px color(indigo);
     }
-  }
 
-  .BulkActionsActions{
-    flex: 1;
-    display: flex;
-    margin-left: -1px;
+    &:last-child:not(:first-child){
+      border-radius: 0 border-radius() border-radius() 0;
+    }
   }
 
   .Button-cancel {
@@ -154,12 +152,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 .Label {
   margin-left: $chekbox-label-margin;
   flex: 1;
-  // @include breakpoint-after($bulk-actions-small-breakpoint) {
-  //   .CheckableButton-selected:not(:only-child) & {
-  //     min-width: rem(96px);
-  //     margin-right: spacing();
-  //   }
-  // }
+  white-space: nowrap;
 }
 
 .Button-select {
@@ -181,17 +174,36 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   margin-left: -1px;
 }
 
-// .Actions:last-child {
-//   .Button:last-child {
-//     border-top-right-radius: border-radius();
-//     border-bottom-right-radius: border-radius();
-//   }
-// }
+.slideWrapper {
+  display: flex;
+  flex: 1;
+}
 
-.ButtonFadeContainer {
+.ActionContent {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+}
+
+.ActionIcon {
+  @include recolor-icon(color(ink, lighter));
+  display: inline-block;
+
+  &:first-child {
+    margin-right: spacing(extra-tight);
+  }
+
+  &:last-child {
+    margin-left: spacing(extra-tight);
+
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox (and makes it look like there is too much
+    // spacing on the right of the button)
+    margin-right: -3px;
+  }
+
+  &.disabled {
+    @include recolor-icon(color(ink, lightest));
+  }
 }
 
 .Fade {

@@ -6,8 +6,7 @@ import Select, {Option} from '../Select';
 
 import Item from './Item';
 import {contextTypes} from './types';
-import BulkActions from './components/BulkActions/';
-import {FilterControl} from './components';
+import {FilterControl, BulkActions} from './components';
 
 import * as styles from './ResourceList.scss';
 
@@ -78,13 +77,23 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private get bulkActionLabel() {
+  private get title() {
     const {
-      selectedItems = [],
       resourceName = {singular: 'item', plural: 'items'},
       items,
     } = this.props;
+
     const itemsCount = items.length;
+    const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
+
+    return `Showing ${itemsCount} ${resource}`;
+  }
+
+  @autobind
+  private get bulkActionsLabel() {
+    const {
+      selectedItems = [],
+    } = this.props;
     const selectedItemsCount = selectedItems.length;
 
     if (isSmallScreen()) {
@@ -93,10 +102,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     let bulkActionsLabel;
     if (!selectedItemsCount || selectedItemsCount === 0) {
-      bulkActionsLabel =
-        itemsCount > 1
-          ? `Showing ${itemsCount} ${resourceName.plural}`
-          : `Showing ${itemsCount} ${resourceName.singular}`;
+      bulkActionsLabel = this.title;
     } else {
       bulkActionsLabel = `${selectedItemsCount} selected`;
     }
@@ -143,32 +149,37 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     const bulkActionsMarkup =
       bulkActions && bulkActions.length ? (
-        <BulkActions
-          label={this.bulkActionLabel}
-          selected={this.bulkSelectState}
-          onToggleAll={this.handleToggleAll}
-          selectMode={selectMode}
-          onSelectModeToggle={this.handleSelectMode}
-        />
+        <div className={styles.BulkActionsWrapper}>
+          <BulkActions
+            label={this.bulkActionsLabel}
+            selected={this.bulkSelectState}
+            onToggleAll={this.handleToggleAll}
+            selectMode={selectMode}
+            onSelectModeToggle={this.handleSelectMode}
+            actions={bulkActions}
+          />
+        </div>
       ) : null;
 
     const sortingSelectMarkup = sortOptions && sortOptions.length > 0
       ? (
-        <Select
-          label={this.sortingLabel}
-          labelHidden
-          options={sortOptions}
-          onChange={onSortChange}
-          value={sortValue}
-        />
+        <div className={styles.SortWrapper}>
+          <Select
+            label={this.sortingLabel}
+            labelHidden
+            options={sortOptions}
+            onChange={onSortChange}
+            value={sortValue}
+          />
+        </div>
       )
       : null;
 
     const headerMarkup = this.selectable
       ? (
         <div className={styles.HeaderWrapper}>
-          <div>{bulkActionsMarkup}</div>
-          <div>{sortingSelectMarkup}</div>
+          {bulkActionsMarkup}
+          {sortingSelectMarkup}
         </div>
       )
       : null;

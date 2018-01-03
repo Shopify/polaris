@@ -1,5 +1,8 @@
 @import './Variables';
 
+$sort-wrapper-z-index: 9;
+$bulkactions-wrapper-z-index: 10;
+
 .FiltersWrapper {
   padding: $header-padding-small $header-padding-small 0;
 
@@ -22,6 +25,8 @@
   flex-direction: row-reverse;
   padding: 0 $header-padding-small;
 
+  position: relative;
+
   @include breakpoint-after($resource-list-small-breakpoint) {
     flex-direction: row;
     padding: 0 spacing(base);
@@ -29,6 +34,26 @@
 
   + .ResourceList {
     border-top: border();
+  }
+}
+
+.SortWrapper {
+  position: absolute;
+  left: $header-padding-small;
+  z-index: $sort-wrapper-z-index;
+  @include breakpoint-after($resource-list-small-breakpoint) {
+    position: relative;
+    left: auto;
+    margin-left: spacing();
+  }
+}
+
+.BulkActionsWrapper {
+  position: relative;
+  z-index: $bulkactions-wrapper-z-index;
+  flex: 1;
+  @include breakpoint-after($resource-list-small-breakpoint) {
+    flex: 0 1 auto;
   }
 }
 
