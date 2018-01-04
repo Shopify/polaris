@@ -226,5 +226,8 @@ html, body {
 .Details {
   padding: spacing();
   margin-top: -1 * spacing(tight);
-  border-top: border();
+
+  &.withActions {
+    border-top: border();
+  }
 }
