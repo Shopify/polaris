@@ -76,24 +76,16 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     return selectState;
   }
 
-  @autobind
-  private get title() {
-    const {
-      resourceName = {singular: 'item', plural: 'items'},
-      items,
-    } = this.props;
-
-    const itemsCount = items.length;
-    const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
-
-    return `Showing ${itemsCount} ${resource}`;
-  }
 
   @autobind
   private get bulkActionsLabel() {
     const {
       selectedItems = [],
+      resourceName = {singular: 'item', plural: 'items'},
+      items,
     } = this.props;
+
+    const itemsCount = items.length;
     const selectedItemsCount = selectedItems.length;
 
     if (isSmallScreen()) {
@@ -102,7 +94,10 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     let bulkActionsLabel;
     if (!selectedItemsCount || selectedItemsCount === 0) {
-      bulkActionsLabel = this.title;
+      bulkActionsLabel =
+        itemsCount > 1
+          ? `Showing ${itemsCount} ${resourceName.plural}`
+          : `Showing ${itemsCount} ${resourceName.singular}`;
     } else {
       bulkActionsLabel = `${selectedItemsCount} selected`;
     }

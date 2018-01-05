@@ -8,7 +8,6 @@ import {
   Icon,
   ActionList,
   Popover,
- // ActionListProps,
 } from '../../../';
 import Action from './Action';
 import CheckableButton from './CheckableButton';
@@ -26,8 +25,6 @@ export interface Props {
   onToggleAll?(): void,
   onSelectModeToggle?(selectMode: boolean): void,
 }
-
-export type Actions = DisableableAction;
 
 export interface State {
   popoverVisible: boolean,
@@ -54,6 +51,8 @@ export default class BulkActions extends React.PureComponent<Props, State> {
     popoverVisible: false,
   };
 
+  private actionsActivatorLabel = 'Actions';
+
   render() {
     const {
       selectMode,
@@ -65,6 +64,14 @@ export default class BulkActions extends React.PureComponent<Props, State> {
     } = this.props;
 
     const {popoverVisible} = this.state;
+
+    const checkableButtonProps = {
+      accessibilityLabel,
+      label,
+      selected,
+      selectMode,
+      onToggleAll,
+    };
 
     const cancelButtonClassName = classNames(styles.Button, styles['Button-cancel']);
     const cancelButton = (
@@ -83,18 +90,8 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       </button>
     );
 
-    const checkableButtonProps = {
-      accessibilityLabel,
-      label,
-      selected,
-      selectMode,
-      onToggleAll,
-    };
-
-    const checkableButton = <CheckableButton {...checkableButtonProps} />;
-
-    const caretDownButtonMarkup = (
-      <Action disclosure onAction={this.togglePopover}>Actions</Action>
+    const activatorButtonMarkup = (
+      <Action disclosure onAction={this.togglePopover}>{this.actionsActivatorLabel}</Action>
     );
 
     const popoverActions = actions
@@ -102,10 +99,13 @@ export default class BulkActions extends React.PureComponent<Props, State> {
         <div className={styles.Popover}>
           <Popover
             active={popoverVisible}
-            activator={caretDownButtonMarkup}
+            activator={activatorButtonMarkup}
             onClose={this.togglePopover}
           >
-            <ActionList items={actions} />
+            <ActionList
+              items={actions}
+              onActionAnyItem={this.togglePopover}
+            />
           </Popover>
         </div>
       )
@@ -131,7 +131,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
               appear
             >
               <div className={styles.slideWrapper}>
-                {checkableButton}
+                <CheckableButton {...checkableButtonProps} />
                 {popoverActions}
               </div>
             </CSSTransition>
