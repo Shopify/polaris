@@ -5,15 +5,12 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {DisableableAction} from '../../../../types';
 import {Duration} from '../../../shared';
 import {
-  Icon,
   ActionList,
   Popover,
 } from '../../../';
 import Action from './Action';
 import CheckableButton from './CheckableButton';
 
-
-import selectIcon from './icons/enable-selection.svg';
 import * as styles from './BulkActions.scss';
 
 export interface Props {
@@ -80,16 +77,6 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       </button>
     );
 
-    const selectButtonClassName = classNames(styles.Button, styles['Button-select']);
-    const selectButton = (
-      <button className={selectButtonClassName} onClick={this.setSelectMode.bind(this, true)}>
-        <span className={styles.Icon}>
-          <Icon source={selectIcon} />
-        </span>
-        Select
-      </button>
-    );
-
     const activatorButtonMarkup = (
       <Action disclosure onAction={this.togglePopover}>{this.actionsActivatorLabel}</Action>
     );
@@ -111,7 +98,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const smallScreenGroupClassName = classNames(styles.Group, styles['Group-smallScreen']);
+    const smallScreenGroupClassName = classNames(styles.Group, styles.Group['smallScreen']);
     const smallScreenGroup = (
       <div key="smallScreenGroup" className={smallScreenGroupClassName}>
         <CSSTransition
@@ -130,22 +117,11 @@ export default class BulkActions extends React.PureComponent<Props, State> {
               unmountOnExit
               appear
             >
-              <div className={styles.slideWrapper}>
-                <CheckableButton {...checkableButtonProps} />
-                {popoverActions}
-              </div>
+              <CheckableButton {...checkableButtonProps} />
             </CSSTransition>
+            {popoverActions}
             {cancelButton}
           </div>
-        </CSSTransition>
-        <CSSTransition
-          in={!selectMode}
-          timeout={Duration.Base}
-          classNames={fadeClasses}
-          mountOnEnter
-          unmountOnExit
-        >
-          {selectButton}
         </CSSTransition>
       </div>
     );

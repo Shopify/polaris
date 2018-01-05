@@ -1,8 +1,5 @@
 @import './variables';
 
-$sort-wrapper-z-index: 9;
-$bulkactions-wrapper-z-index: 10;
-
 .FiltersWrapper {
   padding: $resource-list-header-padding-small $resource-list-header-padding-small 0;
 
@@ -21,10 +18,7 @@ $bulkactions-wrapper-z-index: 10;
   min-height: $resource-list-header-min-height;
   align-items: center;
   justify-content: space-between;
-
-  flex-direction: row-reverse;
   padding: 0 $resource-list-header-padding-small;
-
   position: relative;
 
   @include breakpoint-after($resource-list-breakpoint-small) {
@@ -38,9 +32,20 @@ $bulkactions-wrapper-z-index: 10;
 }
 
 .SortWrapper {
-  position: absolute;
-  left: $resource-list-header-padding-small;
-  z-index: $sort-wrapper-z-index;
+  flex: 1;
+  position: relative;
+  will-change: opacity;
+  opacity: 1;
+  transition: opacity easing() duration();
+
+  .HeaderWrapper-inSelectMode & {
+    opacity: 0;
+  }
+
+  .HeaderWrapper-hasSelect & {
+    padding-right: spacing(tight);
+  }
+
   @include breakpoint-after($resource-list-breakpoint-small) {
     position: relative;
     left: auto;
@@ -48,13 +53,38 @@ $bulkactions-wrapper-z-index: 10;
   }
 }
 
-.BulkActionsWrapper {
-  position: relative;
-  z-index: $bulkactions-wrapper-z-index;
+.ItemCountTextWrapper {
+  white-space: nowrap;
+  text-overflow: ellipsis;
   flex: 1;
+
+  .HeaderWrapper-hasSort & {
+    display: none;
+  }
+}
+
+.BulkActionsWrapper {
+  position: absolute;
+  z-index: $resource-list-bulkactions-wrapper-z-index;
+  flex: 0;
+  left: $resource-list-header-padding-small;
+  right: $resource-list-header-padding-small;
+
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 0 1 auto;
+    position: relative;
+    left: auto;
+    right: auto;
   }
+}
+
+.SelectButtonWrapper {
+  flex: none;
+  position: relative;
+}
+
+.ResourceListWrapper {
+  min-width: $resource-list-min-width;
 }
 
 .ResourceList {

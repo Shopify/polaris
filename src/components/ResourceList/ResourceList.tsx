@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import {autobind} from '@shopify/javascript-utilities/decorators';
-
+import {classNames} from '@shopify/react-utilities/styles';
+import {Button} from '../../';
 import Select, {Option} from '../Select';
-
+import selectIcon from './icons/enable-selection.svg';
 import Item from './Item';
 import {contextTypes} from './types';
 import {FilterControl, BulkActions} from './components';
@@ -78,14 +79,23 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
 
   @autobind
-  private get bulkActionsLabel() {
+  private get itemCountText() {
     const {
-      selectedItems = [],
       resourceName = {singular: 'item', plural: 'items'},
       items,
     } = this.props;
 
     const itemsCount = items.length;
+    const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
+
+    return `Showing ${itemsCount} ${resource}`;
+  }
+
+  @autobind
+  private get bulkActionsLabel() {
+    const {
+      selectedItems = [],
+    } = this.props;
     const selectedItemsCount = selectedItems.length;
 
     if (isSmallScreen()) {
@@ -94,10 +104,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     let bulkActionsLabel;
     if (!selectedItemsCount || selectedItemsCount === 0) {
-      bulkActionsLabel =
-        itemsCount > 1
-          ? `Showing ${itemsCount} ${resourceName.plural}`
-          : `Showing ${itemsCount} ${resourceName.singular}`;
+      bulkActionsLabel = this.itemCountText;
     } else {
       bulkActionsLabel = `${selectedItemsCount} selected`;
     }
@@ -142,8 +149,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const bulkActionsMarkup =
-      bulkActions && bulkActions.length ? (
+    const bulkActionsMarkup = bulkActions && bulkActions.length
+      ? (
         <div className={styles.BulkActionsWrapper}>
           <BulkActions
             label={this.bulkActionsLabel}
@@ -170,14 +177,31 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const headerMarkup = this.selectable
-      ? (
-        <div className={styles.HeaderWrapper}>
-          {bulkActionsMarkup}
-          {sortingSelectMarkup}
-        </div>
-      )
-      : null;
+    const itemCountTextMarkup = <div className={styles.ItemCountTextWrapper}>{this.itemCountText}</div>;
+
+    const selectButton = this.selectable
+    ? (
+      <div className={styles.SelectButtonWrapper}>
+        <Button disabled={selectMode} icon={selectIcon} onClick={this.handleSelectMode.bind(this, true)}>Select</Button>
+      </div>
+    ) : null;
+
+
+    const headerClassName = classNames(
+      styles.HeaderWrapper,
+      sortOptions && sortOptions.length > 0 && styles['HeaderWrapper-hasSort'],
+      this.selectable && styles['HeaderWrapper-hasSelect'],
+      this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
+    );
+
+    const headerMarkup = (
+      <div className={headerClassName}>
+        {itemCountTextMarkup}
+        {sortingSelectMarkup}
+        {bulkActionsMarkup}
+        {selectButton}
+      </div>
+    );
 
     const listMarkup =
       items.length > 0 ? (
@@ -185,7 +209,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       ) : null;
 
     return (
-      <div>
+      <div className={styles.ResourceListWrapper}>
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
