@@ -1,4 +1,4 @@
-@import '../../Variables';
+@import '../../variables';
 
 $button-min-height: control-height();
 $vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 2;
@@ -33,14 +33,14 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 .Group-smallScreen {
     width: 100%;
     display: flex;
-    @include breakpoint-after($resource-list-small-breakpoint) {
+    @include breakpoint-after($resource-list-breakpoint-small) {
       display: none;
     }
 }
 
 .Group-largeScreen {
   display: none;
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     display: flex;
   }
 }
@@ -56,7 +56,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   box-shadow: inset 0 0 0 1px color(sky, dark);
   border-radius: border-radius();
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     justify-content: flex-start;
   }
 
@@ -107,7 +107,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   border-radius: border-radius() 0 0 border-radius();
   border-right-color: transparent;
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     &:only-child{
       border-radius: border-radius();
       border: border(dark);
@@ -136,7 +136,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 
   &.CheckableButton-selected {
     color: color(indigo);
-    @include breakpoint-after($resource-list-small-breakpoint) {
+    @include breakpoint-after($resource-list-breakpoint-small) {
       border-color: color(sky, dark);
     }
   }

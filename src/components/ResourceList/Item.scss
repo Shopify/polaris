@@ -1,3 +1,5 @@
+@import './variables';
+
 $stacking-order: (
   link: 10,
   content: 20,
@@ -16,8 +18,6 @@ $resource-list-item-control-indent: -1 * rem(12px);
 $resource-list-item-min-height: rem(44px);
 $handle-width: rem(48px);
 $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(extra-tight);
-
-$resource-list-small-breakpoint: 458px;
 
 .Item {
   position: relative;
@@ -58,7 +58,7 @@ $resource-list-small-breakpoint: 458px;
   display: flex;
   align-items: flex-start;
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     padding: $resource-list-item-padding spacing(loose);
   }
 }
@@ -88,7 +88,7 @@ $resource-list-small-breakpoint: 458px;
     transform: translateX(0);
   }
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     transform: translateX(0);
     margin-right: 0;
   }

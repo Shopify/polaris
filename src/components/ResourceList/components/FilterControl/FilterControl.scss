@@ -1,4 +1,4 @@
-@import '../../Variables';
+@import '../../variables';
 
 $spacing: tight;
 
@@ -18,7 +18,7 @@ $spacing: tight;
   // account for scrollbar
   padding-bottom: spacing($spacing);
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     flex-wrap: wrap;
   }
 }
@@ -29,7 +29,7 @@ $spacing: tight;
   margin-left: spacing($spacing);
   max-width: calc(100% - #{spacing($spacing)});
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 0 1 auto;
   }
 }

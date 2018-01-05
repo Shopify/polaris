@@ -1,12 +1,12 @@
-@import './Variables';
+@import './variables';
 
 $sort-wrapper-z-index: 9;
 $bulkactions-wrapper-z-index: 10;
 
 .FiltersWrapper {
-  padding: $header-padding-small $header-padding-small 0;
+  padding: $resource-list-header-padding-small $resource-list-header-padding-small 0;
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     padding: spacing(base) spacing(base) spacing(tight);
   }
 
@@ -18,16 +18,16 @@ $bulkactions-wrapper-z-index: 10;
 .HeaderWrapper {
   display: flex;
   width: 100%;
-  min-height: $header-min-height;
+  min-height: $resource-list-header-min-height;
   align-items: center;
   justify-content: space-between;
 
   flex-direction: row-reverse;
-  padding: 0 $header-padding-small;
+  padding: 0 $resource-list-header-padding-small;
 
   position: relative;
 
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     flex-direction: row;
     padding: 0 spacing(base);
   }
@@ -39,9 +39,9 @@ $bulkactions-wrapper-z-index: 10;
 
 .SortWrapper {
   position: absolute;
-  left: $header-padding-small;
+  left: $resource-list-header-padding-small;
   z-index: $sort-wrapper-z-index;
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     position: relative;
     left: auto;
     margin-left: spacing();
@@ -52,7 +52,7 @@ $bulkactions-wrapper-z-index: 10;
   position: relative;
   z-index: $bulkactions-wrapper-z-index;
   flex: 1;
-  @include breakpoint-after($resource-list-small-breakpoint) {
+  @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 0 1 auto;
   }
 }
