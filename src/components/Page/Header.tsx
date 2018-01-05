@@ -152,7 +152,7 @@ export default class Header extends React.PureComponent<Props, State> {
 
           const detailsClassName = classNames(
             styles.Details,
-            actions && styles.DetailsWithActions,
+            actions && Array.isArray(actions) && actions.length > 0 && styles.withActions,
           );
 
           const detailsMarkup = details
