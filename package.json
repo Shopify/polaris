@@ -23,7 +23,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint:js": "eslint . --max-warnings 0",
-    "lint:ts": "tslint --config ./config/tslint/full.json './src/**/*.{ts,tsx}' --project tsconfig.json --type-check",
+    "lint:ts": "tslint --config ./config/tslint/full.json './src/**/*.{ts,tsx}' --project tsconfig.json",
     "lint": "npm-run-all lint:js lint:ts",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
