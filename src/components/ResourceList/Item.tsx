@@ -35,6 +35,7 @@ export interface State {
 }
 
 const getUniqueID = createUniqueIDFactory('ResourceListItem');
+const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
 export default class Item extends React.PureComponent<Props, State> {
   static contextTypes = contextTypes;
@@ -47,6 +48,7 @@ export default class Item extends React.PureComponent<Props, State> {
   private node: HTMLElement | null = null;
   private link: any | null = null;
   private id = getUniqueID();
+  private checkboxId = getUniqueCheckboxID();
 
   componentDidMount() {
     const {subscribe} = this.context;
@@ -60,7 +62,6 @@ export default class Item extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      id,
       children,
       url,
       media,
@@ -106,7 +107,7 @@ export default class Item extends React.PureComponent<Props, State> {
         <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
           <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
-              id={id}
+              id={this.checkboxId}
               label="Select item"
               labelHidden
               onChange={this.handleSelection}
