@@ -15,7 +15,6 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 .Button {
   @include text-style-button;
   @include button-base;
-  box-shadow: none;
 
   &:not(:first-child) {
     margin-left: -1px;
@@ -46,8 +45,8 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 
 .ButtonGroup {
   display: flex;
-  width: 100%;
   align-items: center;
+  width: 100%;
   flex-wrap: nowrap;
   margin-bottom: spacing(tight);
   margin-top: spacing(tight);
@@ -55,24 +54,17 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   box-shadow: inset 0 0 0 1px color(sky, dark);
   border-radius: border-radius();
 
-  .Group-smallScreen + {
-    position: absolute;
-    right: $resource-list-header-padding-small;
-    left: $resource-list-header-padding-small;
-  }
-
   @include breakpoint-after($resource-list-breakpoint-small) {
+    width: auto;
     justify-content: flex-start;
   }
 
   .Button {
     border-radius: 0;
+    white-space: nowrap;
 
     &:focus {
       z-index: z-index(focused, $stacking-order);
-      border-color: color(indigo);
-      outline: 0;
-      box-shadow: 0 0 0 1px color(indigo);
     }
 
     &:last-child:not(:first-child){
@@ -112,6 +104,8 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   border-right-color: transparent;
 
   @include breakpoint-after($resource-list-breakpoint-small) {
+    flex: 0 1 auto;
+
     &:only-child{
       border-radius: border-radius();
       border: border(dark);
@@ -130,7 +124,6 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   &.CheckableButton-plain {
     border: border(transparent);
     border-radius: border-radius();
-    position: absolute;
   }
 
   &.CheckableButton-selectMode {
@@ -166,7 +159,7 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   .Icon {
     @include recolor-icon(color(ink, lightest));
     margin-right: (spacing(tight));
-    margin-left: (-1 * spacing(extra-tight))
+    margin-left: (-1 * spacing(extra-tight));
   }
 
   @include breakpoint-after($resource-list-breakpoint-small) {
@@ -216,6 +209,12 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 .Fade-enter,
 .Fade-exit {
   opacity: 0;
+}
+
+.Fade-exit {
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    transition: none;
+  }
 }
 
 .Fade-appearing,

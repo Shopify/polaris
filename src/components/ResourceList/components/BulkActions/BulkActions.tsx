@@ -62,14 +62,6 @@ export default class BulkActions extends React.PureComponent<Props, State> {
 
     const {popoverVisible} = this.state;
 
-    const checkableButtonProps = {
-      accessibilityLabel,
-      label,
-      selected,
-      selectMode,
-      onToggleAll,
-    };
-
     const cancelButtonClassName = classNames(styles.Button, styles['Button-cancel']);
     const cancelButton = (
       <button className={cancelButtonClassName} onClick={this.setSelectMode.bind(this, false)}>
@@ -98,7 +90,22 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const smallScreenGroupClassName = classNames(styles.Group, styles.Group['smallScreen']);
+    const inlineActions = actions && actions.length > 0
+      ? actions.map(({content, ...action}, index) => (
+          <Action {...action} key={index}>{content}</Action>
+        ))
+      : null;
+
+    const smallScreenGroupClassName = classNames(styles.Group, styles['Group-smallScreen']);
+
+    const checkableButtonProps = {
+      accessibilityLabel,
+      label,
+      selected,
+      selectMode,
+      onToggleAll,
+    };
+
     const smallScreenGroup = (
       <div key="smallScreenGroup" className={smallScreenGroupClassName}>
         <CSSTransition
@@ -126,7 +133,28 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       </div>
     );
 
-    return smallScreenGroup;
+    const largeScreenGroupClassName = classNames(styles.Group, styles['Group-largeScreen']);
+    const largeScreenGroup = (
+      <div key="largeScreenGroup" className={largeScreenGroupClassName}>
+        <CSSTransition
+          in={selectMode}
+          timeout={Duration.Slow}
+          classNames={fadeClasses}
+          mountOnEnter
+          unmountOnExit
+        >
+          <div className={styles.ButtonGroup}>
+            <CheckableButton {...checkableButtonProps} />
+            {inlineActions}
+          </div>
+        </CSSTransition>
+      </div>
+    );
+
+    return [
+      smallScreenGroup,
+      largeScreenGroup,
+    ];
   }
 
   @autobind private setSelectMode(val: boolean) {

@@ -47,9 +47,14 @@
   }
 
   @include breakpoint-after($resource-list-breakpoint-small) {
+    flex: 0 1 auto;
     position: relative;
     left: auto;
     margin-left: spacing();
+
+    .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
+      padding-right: 0;
+    }
   }
 }
 
@@ -57,9 +62,20 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
+  padding-left: spacing(extra-tight);
 
   .HeaderWrapper-hasSort & {
     display: none;
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    .HeaderWrapper-hasSelect &,
+    .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
+      display: none;
+    }
+    .HeaderWrapper-hasSort & {
+      display: block;
+    }
   }
 }
 
@@ -72,15 +88,32 @@
 
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 0 1 auto;
-    position: relative;
-    left: auto;
-    right: auto;
+    left: spacing();
+  }
+}
+
+.CheckableButtonWrapper {
+  display: none;
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    flex: 1;
+    display: flex;
   }
 }
 
 .SelectButtonWrapper {
   flex: none;
   position: relative;
+  will-change: opacity;
+  opacity: 1;
+  transition: opacity easing() duration();
+
+  .HeaderWrapper-inSelectMode & {
+    opacity: 0;
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    display: none;
+  }
 }
 
 .ResourceListWrapper {

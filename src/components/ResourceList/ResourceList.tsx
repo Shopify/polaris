@@ -4,6 +4,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
+import CheckableButton from './components/BulkActions/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './Item';
 import {contextTypes} from './types';
@@ -77,7 +78,6 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     return selectState;
   }
 
-
   @autobind
   private get itemCountText() {
     const {
@@ -98,17 +98,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     } = this.props;
     const selectedItemsCount = selectedItems.length;
 
-    if (isSmallScreen()) {
-      return `${selectedItemsCount}`;
-    }
-
-    let bulkActionsLabel;
-    if (!selectedItemsCount || selectedItemsCount === 0) {
-      bulkActionsLabel = this.itemCountText;
-    } else {
-      bulkActionsLabel = `${selectedItemsCount} selected`;
-    }
-    return bulkActionsLabel;
+    return (isSmallScreen()) ? `${selectedItemsCount}` : `${selectedItemsCount} selected`;
   }
 
   getChildContext(): Context {
@@ -172,6 +162,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
             options={sortOptions}
             onChange={onSortChange}
             value={sortValue}
+            disabled={selectMode}
           />
         </div>
       )
@@ -179,10 +170,22 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     const itemCountTextMarkup = <div className={styles.ItemCountTextWrapper}>{this.itemCountText}</div>;
 
-    const selectButton = this.selectable
+    const selectButtonMarkup = this.selectable
     ? (
       <div className={styles.SelectButtonWrapper}>
         <Button disabled={selectMode} icon={selectIcon} onClick={this.handleSelectMode.bind(this, true)}>Select</Button>
+      </div>
+    ) : null;
+
+    const checkableButtonMarkup = this.selectable
+    ? (
+      <div className={styles.CheckableButtonWrapper}>
+        <CheckableButton
+          accessibilityLabel={this.itemCountText}
+          label={this.itemCountText}
+          onToggleAll={this.handleToggleAll}
+          plain
+        />
       </div>
     ) : null;
 
@@ -197,9 +200,10 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const headerMarkup = (
       <div className={headerClassName}>
         {itemCountTextMarkup}
+        {checkableButtonMarkup}
         {sortingSelectMarkup}
+        {selectButtonMarkup}
         {bulkActionsMarkup}
-        {selectButton}
       </div>
     );
 
