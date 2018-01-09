@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import {DisableableAction} from '../../types';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
 import CheckableButton from './components/BulkActions/CheckableButton';
@@ -25,7 +26,9 @@ export interface Props {
     singular: string,
     plural: string,
   },
-  bulkActions?: any,
+  primaryAction?: DisableableAction,
+  secondaryAction?: DisableableAction,
+  tertiaryActions?: DisableableAction[],
   selectedItems?: string[],
   persistActions?: boolean,
   sortValue?: string,
@@ -57,9 +60,9 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   private sortingLabel = 'Select how to sort';
 
   private get selectable() {
-    const {bulkActions} = this.props;
+    const {primaryAction, secondaryAction, tertiaryActions} = this.props;
     return Boolean(
-      bulkActions && bulkActions.length > 0,
+      (primaryAction || secondaryAction || (tertiaryActions && tertiaryActions.length > 0)),
     );
   }
 
@@ -123,7 +126,9 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   render() {
     const {
       items,
-      bulkActions,
+      primaryAction,
+      secondaryAction,
+      tertiaryActions,
       filterControl,
       sortOptions,
       sortValue,
@@ -139,7 +144,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const bulkActionsMarkup = bulkActions && bulkActions.length
+    const bulkActionsMarkup = this.selectable
       ? (
         <div className={styles.BulkActionsWrapper}>
           <BulkActions
@@ -148,7 +153,9 @@ export default class ResourceList extends React.PureComponent<Props, State> {
             onToggleAll={this.handleToggleAll}
             selectMode={selectMode}
             onSelectModeToggle={this.handleSelectMode}
-            actions={bulkActions}
+            primaryAction={primaryAction}
+            secondaryAction={secondaryAction}
+            tertiaryActions={tertiaryActions}
           />
         </div>
       ) : null;
@@ -171,23 +178,23 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const itemCountTextMarkup = <div className={styles.ItemCountTextWrapper}>{this.itemCountText}</div>;
 
     const selectButtonMarkup = this.selectable
-    ? (
-      <div className={styles.SelectButtonWrapper}>
-        <Button disabled={selectMode} icon={selectIcon} onClick={this.handleSelectMode.bind(this, true)}>Select</Button>
-      </div>
-    ) : null;
+      ? (
+        <div className={styles.SelectButtonWrapper}>
+          <Button disabled={selectMode} icon={selectIcon} onClick={this.handleSelectMode.bind(this, true)}>Select</Button>
+        </div>
+      ) : null;
 
     const checkableButtonMarkup = this.selectable
-    ? (
-      <div className={styles.CheckableButtonWrapper}>
-        <CheckableButton
-          accessibilityLabel={this.itemCountText}
-          label={this.itemCountText}
-          onToggleAll={this.handleToggleAll}
-          plain
-        />
-      </div>
-    ) : null;
+      ? (
+        <div className={styles.CheckableButtonWrapper}>
+          <CheckableButton
+            accessibilityLabel={this.itemCountText}
+            label={this.itemCountText}
+            onToggleAll={this.handleToggleAll}
+            plain
+          />
+        </div>
+      ) : null;
 
 
     const headerClassName = classNames(

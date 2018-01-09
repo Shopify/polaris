@@ -18,13 +18,16 @@ export interface Props {
   label?: string,
   selected?: boolean | 'indeterminate',
   selectMode?: boolean,
-  actions?: DisableableAction[],
+  primaryAction?: DisableableAction,
+  secondaryAction?: DisableableAction,
+  tertiaryActions?: DisableableAction[],
   onToggleAll?(): void,
   onSelectModeToggle?(selectMode: boolean): void,
 }
 
 export interface State {
-  popoverVisible: boolean,
+  smallScreenPopoverVisible: boolean,
+  largeScreenPopoverVisible: boolean,
 }
 
 const fadeClasses = {
@@ -45,10 +48,28 @@ const slideClasses = {
 
 export default class BulkActions extends React.PureComponent<Props, State> {
   state = {
-    popoverVisible: false,
+    smallScreenPopoverVisible: false,
+    largeScreenPopoverVisible: false,
   };
 
   private actionsActivatorLabel = 'Actions';
+  private moreActionsActivatorLabel = 'More actions';
+
+  private get allActions() {
+    const {primaryAction, secondaryAction, tertiaryActions = []} = this.props;
+
+    const allActions: DisableableAction[] = [];
+
+    if (primaryAction) {
+      allActions.push(primaryAction);
+    }
+
+    if (secondaryAction) {
+      allActions.push(secondaryAction);
+    }
+
+    return allActions.concat(tertiaryActions);
+  }
 
   render() {
     const {
@@ -57,10 +78,12 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       label = '',
       onToggleAll,
       selected,
-      actions,
+      primaryAction,
+      secondaryAction,
+      tertiaryActions,
     } = this.props;
 
-    const {popoverVisible} = this.state;
+    const {smallScreenPopoverVisible, largeScreenPopoverVisible} = this.state;
 
     const cancelButtonClassName = classNames(styles.Button, styles['Button-cancel']);
     const cancelButton = (
@@ -69,31 +92,46 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       </button>
     );
 
-    const activatorButtonMarkup = (
-      <Action disclosure onAction={this.togglePopover}>{this.actionsActivatorLabel}</Action>
-    );
-
-    const popoverActions = actions
+    const allActionsPopover = this.allActions && this.allActions.length > 0
       ? (
         <div className={styles.Popover}>
           <Popover
-            active={popoverVisible}
-            activator={activatorButtonMarkup}
-            onClose={this.togglePopover}
+            active={smallScreenPopoverVisible}
+            activator={<Action disclosure onAction={this.toggleSmallScreenPopover}>{this.actionsActivatorLabel}</Action>}
+            onClose={this.toggleSmallScreenPopover}
           >
             <ActionList
-              items={actions}
-              onActionAnyItem={this.togglePopover}
+              items={this.allActions}
+              onActionAnyItem={this.toggleSmallScreenPopover}
             />
           </Popover>
         </div>
       )
       : null;
 
-    const inlineActions = actions && actions.length > 0
-      ? actions.map(({content, ...action}, index) => (
-          <Action {...action} key={index}>{content}</Action>
-        ))
+    const primaryButton = primaryAction
+      ? <Action {...primaryAction} >{primaryAction.content}</Action>
+      : null;
+
+    const secondaryButton = secondaryAction
+      ? <Action {...secondaryAction} >{secondaryAction.content}</Action>
+      : null;
+
+    const rollUpActions = tertiaryActions && tertiaryActions.length > 0
+      ? (
+        <div className={styles.Popover}>
+          <Popover
+            active={largeScreenPopoverVisible}
+            activator={<Action disclosure onAction={this.toggleLargeScreenPopover}>{this.moreActionsActivatorLabel}</Action>}
+            onClose={this.toggleLargeScreenPopover}
+          >
+            <ActionList
+              items={tertiaryActions}
+              onActionAnyItem={this.toggleLargeScreenPopover}
+            />
+          </Popover>
+        </div>
+      )
       : null;
 
     const smallScreenGroupClassName = classNames(styles.Group, styles['Group-smallScreen']);
@@ -126,7 +164,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
             >
               <CheckableButton {...checkableButtonProps} />
             </CSSTransition>
-            {popoverActions}
+            {allActionsPopover}
             {cancelButton}
           </div>
         </CSSTransition>
@@ -145,7 +183,9 @@ export default class BulkActions extends React.PureComponent<Props, State> {
         >
           <div className={styles.ButtonGroup}>
             <CheckableButton {...checkableButtonProps} />
-            {inlineActions}
+            {primaryButton}
+            {secondaryButton}
+            {rollUpActions}
           </div>
         </CSSTransition>
       </div>
@@ -165,8 +205,12 @@ export default class BulkActions extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private togglePopover() {
-    this.setState(({popoverVisible}) => ({popoverVisible: !popoverVisible}));
+  private toggleSmallScreenPopover() {
+    this.setState(({smallScreenPopoverVisible}) => ({smallScreenPopoverVisible: !smallScreenPopoverVisible}));
+  }
+
+  @autobind
+  private toggleLargeScreenPopover() {
+    this.setState(({largeScreenPopoverVisible}) => ({largeScreenPopoverVisible: !largeScreenPopoverVisible}));
   }
 }
-

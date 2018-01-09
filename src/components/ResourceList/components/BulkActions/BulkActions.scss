@@ -170,6 +170,10 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 .Popover {
   max-height: $button-min-height;
   margin-left: -1px;
+
+  &:last-child * {
+    border-radius: 0 border-radius() border-radius() 0;
+  }
 }
 
 .ActionContent {
@@ -186,12 +190,10 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   }
 
   &:last-child {
-    margin-left: spacing(extra-tight);
-
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: -3px;
+    margin-right: -1 * spacing(tight);
   }
 
   &.disabled {
