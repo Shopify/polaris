@@ -46,7 +46,7 @@ export interface Props {
   minLength?: number,
   pattern?: string,
   spellCheck?: boolean,
-  onChange?(value: string, id: string): void,
+  onChange(value: string, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
