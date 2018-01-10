@@ -219,7 +219,8 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
 
 .Fade-appearing,
 .Fade-entering {
-  opacity: 1;
+  // Safari bug with using opacity 1
+  opacity: 0.99;
 }
 
 .Slide {

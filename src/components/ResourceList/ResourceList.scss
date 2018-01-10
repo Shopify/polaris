@@ -98,7 +98,7 @@
 
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 1;
-    display: flex;
+    display: block;
   }
 }
 
