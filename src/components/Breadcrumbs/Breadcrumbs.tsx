@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
-import {LinkAction} from '../../types';
+import {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Breadcrumbs.scss';
 
 export interface Props {
-  breadcrumbs: LinkAction[],
+  breadcrumbs: Array<CallbackAction|LinkAction>,
 }
 
 export default class Breadcrumbs extends React.PureComponent<Props, never> {
