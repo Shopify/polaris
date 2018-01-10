@@ -73,6 +73,7 @@
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       display: none;
     }
+
     .HeaderWrapper-hasSort & {
       display: block;
     }
@@ -94,6 +95,7 @@
 
 .CheckableButtonWrapper {
   display: none;
+
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 1;
     display: flex;
