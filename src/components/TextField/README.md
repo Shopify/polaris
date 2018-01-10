@@ -178,7 +178,7 @@ You didn’t enter a store name.
 | minLength | number | Minimum character length for an input|
 | pattern | string | A regular expression to check the value against |
 | spellCheck | boolean | Indicate whether value should have spelling checked |
-| onChange | function(value: string, id: string) | Callback when value is changed |
+| onChange* | function(value: string, id: string) | Callback when value is changed |
 | onFocus | function() | Callback when input is focused |
 | onBlur | function() | Callback when focus is removed |
 
@@ -189,7 +189,7 @@ You didn’t enter a store name.
 Use to allow merchants to provide text input when the expected input is short. For longer input, use the auto grow or multiline options.
 
 ```jsx
-<TextField label="Store name" />
+<TextField label="Store name" onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Number field
@@ -197,7 +197,7 @@ Use to allow merchants to provide text input when the expected input is short. F
 Use when input text should be a number.
 
 ```jsx
-<TextField label="Quantity" type="number" value="1" />
+<TextField label="Quantity" type="number" value="1" onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Email field
@@ -205,7 +205,7 @@ Use when input text should be a number.
 Use when the text input should be an email address.
 
 ```jsx
-<TextField label="Email" type="email" />
+<TextField label="Email" type="email" onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Multiline text field
@@ -213,7 +213,7 @@ Use when the text input should be an email address.
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
 
 ```jsx
-<TextField label="Shipping address" multiline />
+<TextField label="Shipping address" multiline onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Text field with hidden label
@@ -234,6 +234,7 @@ Use to visually hide the label when the text field’s purpose is clear from con
     label="Gift cards expire after"
     labelHidden
     value="12"
+    onChange={(value, id) => {console.log(id, value)}}
     connectedRight={
       <Select
         label="Unit of time"
@@ -248,7 +249,7 @@ Use to visually hide the label when the text field’s purpose is clear from con
 Use when an optional, secondary action is closely associated with a text field. For example, on a field for entering a customs tariff code, a label action might be to look up the appropriate code from a table.
 
 ```jsx
-<TextField label="Tariff code" labelAction={{content: 'Look up codes'}} />
+<TextField label="Tariff code" labelAction={{content: 'Look up codes'}}  onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Text field with placeholder text
@@ -256,7 +257,7 @@ Use when an optional, secondary action is closely associated with a text field. 
 Use to provide a short, non-essential hint about the expected input. Placeholder text is low-contrast, so don’t rely on it for important information.
 
 ```jsx
-<TextField label="Zone name" placeholder="e.g. North America, Europe" />
+<TextField label="Zone name" placeholder="e.g. North America, Europe" onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Text field with help text
@@ -264,7 +265,7 @@ Use to provide a short, non-essential hint about the expected input. Placeholder
 Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and the merchant doesn’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
 
 ```jsx
-<TextField label="Account email" type="email" helpText="We’ll use this address if we need to contact you about your account." />
+<TextField label="Account email" type="email" onChange={(value, id) => {console.log(id, value)}} helpText="We’ll use this address if we need to contact you about your account." />
 ```
 
 ### Text field with prefix or suffix
@@ -272,7 +273,7 @@ Use to show short instructional content below the text field. Use especially whe
 Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (e.g. “$”, “¥”, “£”). Use suffix for things like units of measure (e.g. “in”, “cm”).
 
 ```jsx
-<TextField label="Price" type="number" prefix="$" />
+<TextField label="Price" type="number" prefix="$" onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Text field with connected fields
@@ -283,6 +284,7 @@ Use when a text field and several related fields make up a logical unit. If inpu
 <TextField
   label="Weight"
   type="number"
+  onChange={(value, id) => {console.log(id, value)}}
   connectedRight={
     <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
   }
@@ -294,7 +296,7 @@ Use when a text field and several related fields make up a logical unit. If inpu
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
 
 ```jsx
-<TextField label="Store name" error="Store name is required" />
+<TextField label="Store name" error="Store name is required" onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ### Disabled text field
@@ -302,7 +304,7 @@ Use to let merchants know if their input is valid or if there’s an error. When
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
 ```jsx
-<TextField label="Store name" disabled />
+<TextField label="Store name" disabled onChange={(value, id) => {console.log(id, value)}} />
 ```
 
 ---
