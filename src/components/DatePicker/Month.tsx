@@ -67,7 +67,7 @@ export default function Month({
   ));
 
   function handleDateClick(selectedDate: Date) {
-    onChange(getNewRange(selected, selectedDate));
+    onChange(getNewRange(allowRange && selected, selectedDate));
   }
 
   function renderWeek(day: Date, dayIndex: number) {
