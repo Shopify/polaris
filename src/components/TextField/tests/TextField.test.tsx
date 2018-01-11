@@ -250,7 +250,7 @@ describe('<TextField />', () => {
       });
 
       it('removes increment and decrement buttons when disabled', () => {
-        const element = mount(<TextField id="MyNumberField" label="NumberField" type="number" onChange={noop} disabled />);
+        const element = mount(<TextField id="MyNumberField" label="NumberField" type="number" disabled />);
         const buttons = element.find('[role="button"]');
         expect(buttons.length).toBe(0);
       });
