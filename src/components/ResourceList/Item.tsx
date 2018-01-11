@@ -21,13 +21,14 @@ export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export interface Props {
+export type Props = {
   id: string,
   url?: string,
   media?: React.ReactElement<AvatarProps | ThumbnailProps>,
   actions?: DisableableAction[],
   children?: React.ReactNode,
-}
+  onClick?(id?: string): void,
+} & ({url: string} | {onClick(id?: string): void});
 
 export interface State {
   actionsMenuVisible: boolean,
@@ -46,7 +47,6 @@ export default class Item extends React.PureComponent<Props, State> {
   };
 
   private node: HTMLElement | null = null;
-  private link: any | null = null;
   private id = getUniqueID();
   private checkboxId = getUniqueCheckboxID();
 
@@ -129,7 +129,6 @@ export default class Item extends React.PureComponent<Props, State> {
 
     const className = classNames(
       styles.Item,
-      url && styles['Item-link'],
       focused && styles['Item-focused'],
       selectable && styles['Item-selectable'],
       selected && styles['Item-selected'],
@@ -191,48 +190,36 @@ export default class Item extends React.PureComponent<Props, State> {
       </div>
     );
 
-    return url
+    const urlMarkup = url
       ? (
-        <div
-          ref={this.setNode}
-          className={className}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}
-          onClick={this.handleClick}
-        >
-          <UnstyledLink
-            ref={this.setLink}
-            aria-describedby={this.id}
-            className={styles.Link}
-            url={url}
-          />
-          {containerMarkup}
-        </div>
+        <UnstyledLink
+          aria-describedby={this.id}
+          className={styles.Link}
+          url={url}
+        />
       )
-      : (
-        <div
-          ref={this.setNode}
-          className={className}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}
-        >
-          {containerMarkup}
-        </div>
-      );
+      : null;
+
+    return (
+      <div
+        ref={this.setNode}
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseLeave}
+        onClick={this.handleClick}
+        testID="Item-Wrapper"
+      >
+        {urlMarkup}
+        {containerMarkup}
+      </div>
+    );
   }
 
   @autobind
   private setNode(node: HTMLElement | null) {
     this.node = node;
-  }
-
-  @autobind
-  private setLink(node: React.ReactNode | null) {
-    this.link = node;
   }
 
   @autobind
@@ -262,11 +249,17 @@ export default class Item extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleClick() {
-    if (this.node == null) { return; }
-    const anchor = this.node.querySelector('a');
+  private handleClick(event: React.MouseEvent<any>) {
+    const {id, onClick, url} = this.props;
+    const anchor = this.node && this.node.querySelector('a');
 
-    if (anchor) {
+    if (anchor === event.target) { return; }
+
+    if (onClick) {
+      onClick(id);
+    }
+
+    if (url && anchor) {
       anchor.click();
     }
   }

@@ -21,9 +21,6 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 
 .Item {
   position: relative;
-}
-
-.Item-link {
   cursor: pointer;
 
   &:hover {
