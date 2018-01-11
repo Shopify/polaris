@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Enhancements
+- Updated TextField onChange prop to be required if not disabled or readonly (thanks to [@buggy](https://github.com/buggy) for the [original issue](https://github.com/Shopify/polaris/issues/82) ([#870](https://github.com/Shopify/polaris-react/pull/870))
+
+### Bug fixes
 - Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
 
 ## 1.9.1 - 2017-12-21
