@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {Checkbox} from '../../../';
+import {Checkbox} from '../../';
 
-import * as styles from './BulkActions.scss';
+import * as styles from './CheckableButton.scss';
 
 export interface Props {
   accessibilityLabel?: string,

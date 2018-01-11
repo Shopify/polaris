@@ -2,15 +2,15 @@ import * as React from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {DisableableAction} from '../../../../types';
-import {Duration} from '../../../shared';
+import {DisableableAction} from '../../../types';
+import {Duration} from '../../shared';
 import {
   ActionList,
   Popover,
 } from '../../../';
-import Action from './Action';
-import CheckableButton from './CheckableButton';
+import CheckableButton from '../CheckableButton';
 
+import Action from './Action';
 import * as styles from './BulkActions.scss';
 
 export interface Props {

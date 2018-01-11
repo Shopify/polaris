@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import {trigger} from '../../../../../../tests/utilities';
+import {trigger} from '../../../../../tests/utilities';
 
 import FilterValueSelector from '../FilterValueSelector';
 import {Filter, FilterType} from '../types';
-import {Select, TextField} from '../../../../';
+import {Select, TextField} from '../../../';
 
 describe('<FilterValueSelector />', () => {
 

@@ -5,11 +5,12 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {DisableableAction} from '../../types';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
-import CheckableButton from './components/BulkActions/CheckableButton';
+import CheckableButton from './CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './Item';
 import {contextTypes} from './types';
-import {FilterControl, BulkActions} from './components';
+import FilterControl from './FilterControl';
+import BulkActions from './BulkActions';
 
 import * as styles from './ResourceList.scss';
 

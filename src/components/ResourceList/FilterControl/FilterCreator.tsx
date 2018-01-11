@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {Button, Popover, Select, FormLayout} from '../../../';
+import {Button, Popover, Select, FormLayout} from '../../';
 
 import FilterValueSelector from './FilterValueSelector';
 import {AppliedFilter, Filter} from './types';

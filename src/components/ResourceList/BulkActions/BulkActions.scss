@@ -1,16 +1,9 @@
-@import '../../variables';
+@import '../variables';
 
-$button-min-height: control-height();
-$vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 2;
 $control-vertical-adjustment: rem(-12px);
-$control-size: rem(16px);
 $bulk-actions-offset-slide-in-start: rem(-40px);
 $stacking-order: ( focused: 20 );
 $popover-top-adjustment: spacing(extra-tight) / 2;
-$chekbox-label-margin: rem(20px); // 48px $handle-width - 16px checkbox / 2 sides + spacing(extra-tight)
-
-$button-min-height: control-height();
-$button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 2;
 
 .Button {
   @include text-style-button;
@@ -84,91 +77,8 @@ $button-vertical-padding: ($button-min-height - line-height(body) - rem(2px)) / 
   }
 }
 
-.CheckableButton{
-  @include text-style-button;
-  display: inline-flex;
-  align-items: center;
-  min-height: $button-min-height;
-  min-width: $button-min-height;
-  margin: 0;
-  padding: $button-vertical-padding spacing();
-  line-height: 1;
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-  flex: 1 1 0;
-  text-align: left;
-  background: color(white);
-  border: border(dark);
-  border-radius: border-radius() 0 0 border-radius();
-  border-right-color: transparent;
-
-  @include breakpoint-after($resource-list-breakpoint-small) {
-    flex: 0 1 auto;
-
-    &:only-child{
-      border-radius: border-radius();
-      border: border(dark);
-    }
-  }
-
-  &:hover,
-  &:active {
-    border-right-color: transparent;
-  }
-
-  &:focus{
-    outline: none;
-  }
-
-  &.CheckableButton-plain {
-    border: border(transparent);
-    border-radius: border-radius();
-  }
-
-  &.CheckableButton-selectMode {
-    @include text-emphasis-subdued;
-    font-weight: 600;
-  }
-
-  &.CheckableButton-selected {
-    color: color(indigo);
-    @include breakpoint-after($resource-list-breakpoint-small) {
-      border-color: color(sky, dark);
-    }
-  }
-}
-
-.Checkbox {
-  pointer-events: none;
-  height: $control-size;
-  width: $control-size;
-  margin-left: (-1 * (spacing(tight) + rem(1px))); // 1px accounts for border
-}
-
-.Label {
-  margin-left: $chekbox-label-margin;
-  flex: 1;
-  white-space: nowrap;
-}
-
-.Button-select {
-  @include text-style-button;
-  border-radius: border-radius();
-
-  .Icon {
-    @include recolor-icon(color(ink, lightest));
-    margin-right: (spacing(tight));
-    margin-left: (-1 * spacing(extra-tight));
-  }
-
-  @include breakpoint-after($resource-list-breakpoint-small) {
-    display: none;
-  }
-}
-
 .Popover {
-  max-height: $button-min-height;
+  max-height: $resource-list-button-min-height;
   margin-left: -1px;
 
   &:last-child * {

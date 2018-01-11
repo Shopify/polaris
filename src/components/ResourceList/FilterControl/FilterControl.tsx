@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 
-import {ComplexAction} from '../../../../types';
+import {ComplexAction} from '../../../types';
 import {
   buttonsFrom,
   TextField,
   Icon,
   Tag,
   FormLayout,
-} from '../../../';
+} from '../../';
 
 import FilterCreator from './FilterCreator';
 import {AppliedFilter, Filter, FilterType} from './types';

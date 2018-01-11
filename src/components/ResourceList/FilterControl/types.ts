@@ -1,4 +1,4 @@
-import {Option} from '../../../Select';
+import {Option} from '../../Select';
 
 export interface AppliedFilter {
   key: string,

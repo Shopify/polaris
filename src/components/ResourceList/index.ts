@@ -1,6 +1,6 @@
 import ResourceList from './ResourceList';
 
-export * from './components/FilterControl/types';
-export {FilterControlProps} from './components';
+export * from './FilterControl/types';
+export {Props as FilterControlProps} from './FilterControl';
 export {Props} from './ResourceList';
 export default ResourceList;
