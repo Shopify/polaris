@@ -18,7 +18,7 @@ export interface State {
   id: string,
 }
 
-export interface Props {
+export interface TextFieldProps {
   prefix?: React.ReactNode,
   suffix?: React.ReactNode,
   placeholder?: string,
@@ -46,10 +46,12 @@ export interface Props {
   minLength?: number,
   pattern?: string,
   spellCheck?: boolean,
-  onChange(value: string, id: string): void,
+  onChange?(value: string, id: string): void,
   onFocus?(): void,
   onBlur?(): void,
 }
+
+export type Props = TextFieldProps & ({ readOnly: true } | { disabled: true } | {onChange(value: string, id: string): void});
 
 const getUniqueID = createUniqueIDFactory('TextField');
 
