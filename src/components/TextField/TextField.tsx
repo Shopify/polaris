@@ -214,7 +214,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     if (onChange == null) { return; }
 
     // Returns the length of decimal places in a number
-    const dpl = num => (num.toString().split('.')[1] || []).length;
+    const dpl = (num: number) => (num.toString().split('.')[1] || []).length;
 
     const numericValue = value ? parseFloat(value) : 0;
     if (isNaN(numericValue)) { return; }
