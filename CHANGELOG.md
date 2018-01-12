@@ -2,12 +2,23 @@
 
 ## Unreleased
 
-* Added Text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
-* Added idForItem prop to Resource List ([#799](https://github.com/Shopify/polaris-react/pull/799/))
-* Added fullWidth prop to Layout.Section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
-* `indeterminate` is now an allowed value for `checked` to Checkbox ([#748](https://github.com/Shopify/polaris-react/pull/748))
-* Added singleColumn prop to Page ([#763](https://github.com/Shopify/polaris-react/pull/763))
-* Increased bottom padding of tabs titles ([#805](https://github.com/Shopify/polaris-react/pull/805))
+- Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
+
+## 1.9.1 - 2017-12-21
+### Documentation
+* Ammending changelog
+
+## 1.9.0 - 2017-12-21
+
+### Enhancements
+* Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item ([#792](https://github.com/Shopify/polaris-react/pull/792))
+* Added `content` prop to tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))
+* Added text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
+* Added `idForItem` prop to resource list ([#799](https://github.com/Shopify/polaris-react/pull/799/))
+* Added `fullWidth` prop to layout section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
+* Added `indeterminate` as option for checkbox `checked` prop value ([#748](https://github.com/Shopify/polaris-react/pull/748))
+* Added `singleColumn` prop to page ([#763](https://github.com/Shopify/polaris-react/pull/763))
+* Added `focused` prop to text field [813](https://github.com/Shopify/polaris-react/pull/813)
 
 ### Bug fixes
 * Fixed positioned overlay not responding to scrollable container events
