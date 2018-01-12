@@ -150,8 +150,13 @@ export default class Header extends React.PureComponent<Props, State> {
       ? (
         actionGroups.map(({title, icon, actions, details}) => {
 
+          const detailsClassName = classNames(
+            styles.Details,
+            actions && Array.isArray(actions) && actions.length > 0 && styles.withActions,
+          );
+
           const detailsMarkup = details
-            ? <div className={styles.Details}>{details}</div>
+            ? <div className={detailsClassName}>{details}</div>
             : null;
 
           return (
