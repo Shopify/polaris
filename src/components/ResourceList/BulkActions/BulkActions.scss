@@ -1,9 +1,7 @@
 @import '../variables';
 
-$control-vertical-adjustment: rem(-12px);
+$bulk-actions-button-stacking-order: (focused: 20);
 $bulk-actions-offset-slide-in-start: rem(-40px);
-$stacking-order: ( focused: 20 );
-$popover-top-adjustment: spacing(extra-tight) / 2;
 
 .Button {
   @include text-style-button;
@@ -22,15 +20,28 @@ $popover-top-adjustment: spacing(extra-tight) / 2;
 }
 
 .Group-smallScreen {
+  width: 100%;
+  display: flex;
+
+  .FadeContainer {
     width: 100%;
-    display: flex;
-    @include breakpoint-after($resource-list-breakpoint-small) {
-      display: none;
-    }
+    display: block;
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    display: none;
+  }
 }
 
 .Group-largeScreen {
   display: none;
+
+  .FadeContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   @include breakpoint-after($resource-list-breakpoint-small) {
     display: flex;
   }
@@ -41,8 +52,6 @@ $popover-top-adjustment: spacing(extra-tight) / 2;
   align-items: center;
   width: 100%;
   flex-wrap: nowrap;
-  margin-bottom: spacing(tight);
-  margin-top: spacing(tight);
   justify-content: flex-end;
   box-shadow: inset 0 0 0 1px color(sky, dark);
   border-radius: border-radius();
@@ -50,6 +59,7 @@ $popover-top-adjustment: spacing(extra-tight) / 2;
   @include breakpoint-after($resource-list-breakpoint-small) {
     width: auto;
     justify-content: flex-start;
+    margin-right: spacing(tight);
   }
 
   .Button {
@@ -57,7 +67,7 @@ $popover-top-adjustment: spacing(extra-tight) / 2;
     white-space: nowrap;
 
     &:focus {
-      z-index: z-index(focused, $stacking-order);
+      z-index: z-index(focused, $bulk-actions-button-stacking-order);
     }
 
     &:last-child:not(:first-child){
@@ -109,6 +119,10 @@ $popover-top-adjustment: spacing(extra-tight) / 2;
   &.disabled {
     @include recolor-icon(color(ink, lightest));
   }
+}
+
+.PaginatedSelectAll{
+  padding: spacing(extra-tight) 0;
 }
 
 .Fade {

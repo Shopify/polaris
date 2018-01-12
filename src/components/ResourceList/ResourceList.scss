@@ -4,7 +4,7 @@
   padding: $resource-list-header-padding-small $resource-list-header-padding-small 0;
 
   @include breakpoint-after($resource-list-breakpoint-small) {
-    padding: spacing(base) spacing(base) spacing(tight);
+    padding: spacing(base) spacing(base) 0;
   }
 
   + .ResourceList {
@@ -16,14 +16,13 @@
   display: flex;
   width: 100%;
   min-height: $resource-list-header-min-height;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 $resource-list-header-padding-small;
+  align-items: flex-start;
+  padding: $resource-list-header-vertical-padding $resource-list-header-padding-small;
   position: relative;
 
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex-direction: row;
-    padding: 0 spacing(base);
+    padding: $resource-list-header-vertical-padding spacing();
   }
 
   + .ResourceList {
@@ -31,16 +30,29 @@
   }
 }
 
-.SortWrapper {
-  flex: 1;
-  position: relative;
-  will-change: opacity;
+.HeaderContentWrapper {
+  display: flex;
+  min-height: $resource-list-header-content-min-height;
+  position: absolute;
+  left: $resource-list-header-padding-small;
+  right: $resource-list-header-padding-small;
   opacity: 1;
   transition: opacity easing() duration();
 
   .HeaderWrapper-inSelectMode & {
     opacity: 0;
   }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    right: spacing();
+    left: spacing();
+    align-self: flex-start;
+  }
+}
+
+.SortWrapper {
+  flex: 1;
+  position: relative;
 
   .HeaderWrapper-hasSelect & {
     padding-right: spacing(tight);
@@ -63,6 +75,7 @@
   text-overflow: ellipsis;
   flex: 1;
   padding-left: spacing(extra-tight);
+  align-self: center;
 
   .HeaderWrapper-hasSort & {
     display: none;
@@ -81,15 +94,13 @@
 }
 
 .BulkActionsWrapper {
-  position: absolute;
+  position: relative;
   z-index: $resource-list-bulkactions-wrapper-z-index;
-  flex: 0;
-  left: $resource-list-header-padding-small;
-  right: $resource-list-header-padding-small;
+  width: 100%;
 
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 0 1 auto;
-    left: spacing();
+    align-self: flex-start;
   }
 }
 
@@ -105,13 +116,6 @@
 .SelectButtonWrapper {
   flex: none;
   position: relative;
-  will-change: opacity;
-  opacity: 1;
-  transition: opacity easing() duration();
-
-  .HeaderWrapper-inSelectMode & {
-    opacity: 0;
-  }
 
   @include breakpoint-after($resource-list-breakpoint-small) {
     display: none;

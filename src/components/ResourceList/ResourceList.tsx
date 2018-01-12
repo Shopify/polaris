@@ -19,6 +19,9 @@ export interface State {
   selectMode: boolean,
 }
 
+export type SelectedItems = string[] | 'All';
+export const SELECT_ALL_ITEMS = 'All';
+
 export interface Props {
   items: any[],
   filterControl?: React.ReactNode,
@@ -28,12 +31,13 @@ export interface Props {
   },
   promotedBulkActions?: BulkActionsProps['promotedActions'],
   bulkActions?: BulkActionsProps['actions'],
-  selectedItems?: string[],
+  selectedItems?: SelectedItems,
   persistActions?: boolean,
+  hasMoreItems?: boolean,
   sortValue?: string,
   sortOptions?: Option[],
   onSortChange?(selected: string, id: string): void,
-  onSelectionChange?(selectedItems: string[]): void,
+  onSelectionChange?(selectedItems: SelectedItems): void,
   renderItem(item: any, id: string): React.ReactNode,
   idForItem?(item: any, index: number): string,
 }
@@ -41,7 +45,7 @@ export interface Props {
 export interface Context {
   selectMode: boolean,
   selectable?: boolean,
-  selectedItems?: string[],
+  selectedItems?: SelectedItems,
   persistActions?: boolean,
   onSelectionChange?(selected: boolean, id: string): void,
   subscribe(callback: () => void): void,
@@ -57,6 +61,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
   private subscriptions: {(): void}[] = [];
   private sortingLabel = 'Select how to sort';
+  private defaultResourceName = {singular: 'item', plural: 'items'};
+
 
   private get selectable() {
     const {promotedBulkActions, bulkActions} = this.props;
@@ -70,12 +76,9 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   private get bulkSelectState(): boolean | 'indeterminate' {
     const {selectedItems, items} = this.props;
     let selectState: boolean | 'indeterminate' = 'indeterminate';
-    if (!selectedItems || selectedItems.length === 0) {
+    if (!selectedItems || (Array.isArray(selectedItems) && selectedItems.length === 0)) {
       selectState = false;
-    } else if (
-      Array.isArray(selectedItems) &&
-      selectedItems.length === items.length
-    ) {
+    } else if (selectedItems === SELECT_ALL_ITEMS || (Array.isArray(selectedItems) && selectedItems.length === items.length)) {
       selectState = true;
     }
     return selectState;
@@ -84,7 +87,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   @autobind
   private get itemCountText() {
     const {
-      resourceName = {singular: 'item', plural: 'items'},
+      resourceName = this.defaultResourceName,
       items,
     } = this.props;
 
@@ -98,16 +101,50 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   private get bulkActionsLabel() {
     const {
       selectedItems = [],
+      items,
     } = this.props;
-    const selectedItemsCount = selectedItems.length;
+
+    const selectedItemsCount = (selectedItems === SELECT_ALL_ITEMS)
+      ? `${items.length}+`
+      : selectedItems.length;
 
     return (isSmallScreen()) ? `${selectedItemsCount}` : `${selectedItemsCount} selected`;
+  }
+
+  @autobind
+  private get paginatedSelectAllText() {
+    const {hasMoreItems, selectedItems, items, resourceName = this.defaultResourceName} = this.props;
+
+    if (!this.selectable || !hasMoreItems) {
+      return;
+    }
+
+    if (selectedItems === SELECT_ALL_ITEMS) {
+      return `All ${items.length}+ ${resourceName.plural} in your store are selected.`;
+    }
+  }
+
+  @autobind
+  private get paginatedSelectAllAction() {
+    const {hasMoreItems, selectedItems, items, resourceName = this.defaultResourceName} = this.props;
+
+    if (!this.selectable || !hasMoreItems) {
+      return;
+    }
+
+    const actionText = (selectedItems === SELECT_ALL_ITEMS)
+      ? 'Undo'
+      : `Select all ${items.length}+ ${resourceName.plural} in your store`;
+
+    return {
+      content: actionText,
+      onAction: this.handleSelectAllItemsInStore,
+    };
   }
 
   getChildContext(): Context {
     const {selectedItems, persistActions} = this.props;
     const {selectMode} = this.state;
-
     return {
       selectable: this.selectable,
       selectedItems,
@@ -153,6 +190,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
             selectMode={selectMode}
             onSelectModeToggle={this.handleSelectMode}
             promotedActions={promotedBulkActions}
+            paginatedSelectAllAction={this.paginatedSelectAllAction}
+            paginatedSelectAllText={this.paginatedSelectAllText}
             actions={bulkActions}
           />
         </div>
@@ -204,10 +243,12 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     const headerMarkup = (
       <div className={headerClassName}>
-        {itemCountTextMarkup}
-        {checkableButtonMarkup}
-        {sortingSelectMarkup}
-        {selectButtonMarkup}
+        <div className={styles.HeaderContentWrapper}>
+          {itemCountTextMarkup}
+          {checkableButtonMarkup}
+          {sortingSelectMarkup}
+          {selectButtonMarkup}
+        </div>
         {bulkActionsMarkup}
       </div>
     );
@@ -237,6 +278,20 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   }
 
   @autobind
+  private handleSelectAllItemsInStore() {
+    const {onSelectionChange, selectedItems, items, idForItem = defaultIdForItem} = this.props;
+
+    const newlySelectedItems = (selectedItems === SELECT_ALL_ITEMS)
+      ? getAllItemsOnPage(items, idForItem)
+      : SELECT_ALL_ITEMS;
+
+    if (onSelectionChange) {
+      onSelectionChange(newlySelectedItems);
+    }
+    return;
+  }
+
+  @autobind
   private renderItem(item: any, index: number) {
     const {renderItem, idForItem = defaultIdForItem} = this.props;
     const id = idForItem(item, index);
@@ -256,7 +311,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       return;
     }
 
-    const newlySelectedItems = selectedItems ? [...selectedItems] : [];
+    const newlySelectedItems = Array.isArray(selectedItems) ? [...selectedItems] : [];
 
     if (selected) {
       newlySelectedItems.push(id);
@@ -295,7 +350,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     let newlySelectedItems: string[] = [];
 
-    if (Array.isArray(selectedItems) && selectedItems.length === items.length) {
+    if ((Array.isArray(selectedItems) && selectedItems.length === items.length) || (selectedItems === SELECT_ALL_ITEMS)) {
       newlySelectedItems = [];
     } else {
       newlySelectedItems = items.map((item, index) => {
@@ -314,6 +369,12 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       onSelectionChange(newlySelectedItems);
     }
   }
+}
+
+function getAllItemsOnPage(items: any, idForItem: (item: any, index: number) => string) {
+  return items.map((item: any, index: number) => {
+    return idForItem(item, index);
+  });
 }
 
 function defaultIdForItem(item: any, index: number) {

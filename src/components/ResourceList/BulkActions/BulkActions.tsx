@@ -2,16 +2,16 @@ import * as React from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {DisableableAction} from '../../../types';
+import {DisableableAction, Action} from '../../../types';
 import {Duration} from '../../shared';
 import {
   ActionList,
   Popover,
+  Button,
 } from '../../../';
 import {ActionListSection} from '../../ActionList/Section';
 import CheckableButton from '../CheckableButton';
-
-import Action from './Action';
+import BulkActionButton from './BulkActionButton';
 import * as styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
@@ -26,6 +26,8 @@ export interface Props {
   selectMode?: boolean,
   promotedActions?: BulkAction[],
   actions?: (BulkAction | BulkActionListSection)[],
+  paginatedSelectAllText?: string,
+  paginatedSelectAllAction?: Action,
   onToggleAll?(): void,
   onSelectModeToggle?(selectMode: boolean): void,
 }
@@ -92,6 +94,8 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       onToggleAll,
       selected,
       promotedActions,
+      paginatedSelectAllText = null,
+      paginatedSelectAllAction,
     } = this.props;
 
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
@@ -100,6 +104,28 @@ export default class BulkActions extends React.PureComponent<Props, State> {
     }
 
     const {smallScreenPopoverVisible, largeScreenPopoverVisible} = this.state;
+
+    const paginatedSelectAllActionMarkup = paginatedSelectAllAction
+    ? (
+      <Button onClick={paginatedSelectAllAction.onAction} plain>
+        {paginatedSelectAllAction.content}
+      </Button>
+    )
+    : null;
+
+    const paginatedSelectAllTextMarkup = paginatedSelectAllText && paginatedSelectAllAction
+      ? (
+        <span>
+          {paginatedSelectAllText}
+        </span>
+      ) : paginatedSelectAllText;
+
+    const paginatedSelectAllMarkup = paginatedSelectAllActionMarkup || paginatedSelectAllTextMarkup
+      ? (
+        <div className={styles.PaginatedSelectAll}>
+          {paginatedSelectAllTextMarkup} {paginatedSelectAllActionMarkup}
+        </div>
+      ) : null;
 
     const cancelButtonClassName = classNames(styles.Button, styles['Button-cancel']);
     const cancelButton = (
@@ -114,7 +140,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
           <Popover
             active={smallScreenPopoverVisible}
             activator={
-              <Action
+              <BulkActionButton
                 disclosure
                 onAction={this.toggleSmallScreenPopover}
                 content={this.actionsActivatorLabel}
@@ -134,7 +160,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
 
     const promotedActionsMarkup = promotedActions && promotedActions.length > 0
       ? promotedActions.map((action, index) => (
-        <Action {...action} key={index} />
+        <BulkActionButton {...action} key={index} />
       ))
       : null;
 
@@ -144,7 +170,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
           <Popover
             active={largeScreenPopoverVisible}
             activator={
-              <Action
+              <BulkActionButton
                 disclosure
                 onAction={this.toggleLargeScreenPopover}
                 content={this.moreActionsActivatorLabel}
@@ -180,19 +206,22 @@ export default class BulkActions extends React.PureComponent<Props, State> {
           mountOnEnter
           unmountOnExit
         >
-          <div className={styles.ButtonGroup}>
-            <CSSTransition
-              in={selectMode}
-              timeout={Duration.Base}
-              classNames={slideClasses}
-              mountOnEnter
-              unmountOnExit
-              appear
-            >
-              <CheckableButton {...checkableButtonProps} />
-            </CSSTransition>
-            {allActionsPopover}
-            {cancelButton}
+          <div className={styles.FadeContainer}>
+            <div className={styles.ButtonGroup}>
+              <CSSTransition
+                in={selectMode}
+                timeout={Duration.Base}
+                classNames={slideClasses}
+                mountOnEnter
+                unmountOnExit
+                appear
+              >
+                <CheckableButton {...checkableButtonProps} />
+              </CSSTransition>
+              {allActionsPopover}
+              {cancelButton}
+            </div>
+            {paginatedSelectAllMarkup}
           </div>
         </CSSTransition>
       </div>
@@ -208,10 +237,13 @@ export default class BulkActions extends React.PureComponent<Props, State> {
           mountOnEnter
           unmountOnExit
         >
-          <div className={styles.ButtonGroup}>
-            <CheckableButton {...checkableButtonProps} />
-            {promotedActionsMarkup}
-            {actionsPopover}
+          <div className={styles.FadeContainer}>
+            <div className={styles.ButtonGroup}>
+              <CheckableButton {...checkableButtonProps} />
+              {promotedActionsMarkup}
+              {actionsPopover}
+            </div>
+           {paginatedSelectAllMarkup}
           </div>
         </CSSTransition>
       </div>

@@ -198,6 +198,7 @@ export {
 export {
   default as ResourceList,
   Props as ResourceListProps,
+  SelectedItems as ResourceListSelectedItems,
   FilterControlProps,
   Filter,
   AppliedFilter,
