@@ -44,11 +44,11 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 | open* | boolean | Whether the alert is open |
 | children* | string | The content to display inside the alert |
 | title | string | The alert title |
-| destructive | string | For confirming a destructive or dangerous action |
+| destructive | boolean | For confirming a destructive or dangerous action |
 | confirmContent* | string | The content of the confirmation button |
 | cancelContent | string | The content of the cancel button |
 | onConfirm* | function() | Callback when the confirmation button is clicked |
-| onCancel | function() | Callback when the cancel button is clicked |
+| onCancel* | function() | Callback when the alert is closed, or when the cancel button is clicked |
 
 ---
 
@@ -156,7 +156,7 @@ Primary actions:
 #### Don’t
 - Remove
 - Erase
-- Discard  
+- Discard
 <!-- end -->
 
 Secondary action:
@@ -224,14 +224,13 @@ Secondary action:
 
 ### Basic alert
 
-Use when you don’t provide `onCancel` and `cancelContent` and the merchant must click on the confirmation button to proceed.
-
 ```jsx
 <Alert
   title="Accept terms and conditions"
   open={this.state.open}
   confirmContent="I accept"
   onConfirm={() => this.setState({open: false, confirmed: true})}
+  onCancel={() => this.setState({open: false})}
 >
   You must accept the terms and conditions before proceeding.
 </Alert>
@@ -245,6 +244,7 @@ Use passing `destructive` to make it clear to the merchant that the action is po
 <Alert
   title="Unsaved changes"
   open={this.state.open}
+  destructive={true}
   confirmContent="Discard changes"
   onConfirm={() => this.setState({open: false, confirmed: true})}
   cancelContent="Continue editing"
