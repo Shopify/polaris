@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {DisableableAction} from '../../types';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
 import CheckableButton from './CheckableButton';
@@ -10,7 +9,7 @@ import selectIcon from './icons/enable-selection.svg';
 import Item from './Item';
 import {contextTypes} from './types';
 import FilterControl from './FilterControl';
-import BulkActions from './BulkActions';
+import BulkActions, {Props as BulkActionsProps} from './BulkActions';
 
 import * as styles from './ResourceList.scss';
 
@@ -27,9 +26,7 @@ export interface Props {
     singular: string,
     plural: string,
   },
-  primaryAction?: DisableableAction,
-  secondaryAction?: DisableableAction,
-  tertiaryActions?: DisableableAction[],
+  bulkActions?: BulkActionsProps['actions'],
   selectedItems?: string[],
   persistActions?: boolean,
   sortValue?: string,
@@ -61,10 +58,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   private sortingLabel = 'Select how to sort';
 
   private get selectable() {
-    const {primaryAction, secondaryAction, tertiaryActions} = this.props;
-    return Boolean(
-      (primaryAction || secondaryAction || (tertiaryActions && tertiaryActions.length > 0)),
-    );
+    const {bulkActions} = this.props;
+    return Boolean(bulkActions);
   }
 
   @autobind
@@ -127,9 +122,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   render() {
     const {
       items,
-      primaryAction,
-      secondaryAction,
-      tertiaryActions,
+      bulkActions,
       filterControl,
       sortOptions,
       sortValue,
@@ -145,7 +138,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const bulkActionsMarkup = this.selectable
+    const bulkActionsMarkup = bulkActions
       ? (
         <div className={styles.BulkActionsWrapper}>
           <BulkActions
@@ -154,9 +147,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
             onToggleAll={this.handleToggleAll}
             selectMode={selectMode}
             onSelectModeToggle={this.handleSelectMode}
-            primaryAction={primaryAction}
-            secondaryAction={secondaryAction}
-            tertiaryActions={tertiaryActions}
+            actions={bulkActions}
           />
         </div>
       ) : null;

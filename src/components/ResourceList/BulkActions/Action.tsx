@@ -9,21 +9,15 @@ import {handleMouseUpByBlurring} from '../../../utilities/focus';
 
 import * as styles from './BulkActions.scss';
 
-export interface Props {
-  children?: string,
+export type Props = {
   disclosure?: boolean,
-  url?: DisableableAction['url'],
-  external?: DisableableAction['external'],
-  onAction?: DisableableAction['onAction'],
-  accessibilityLabel?: DisableableAction['accessibilityLabel'],
-  disabled?: DisableableAction['disabled'],
-}
+} & DisableableAction;
 
 export default function Action({
   url,
   external,
   onAction,
-  children,
+  content,
   disclosure,
   accessibilityLabel,
   disabled,
@@ -41,16 +35,16 @@ export default function Action({
   const contentMarkup = disclosureIconMarkup
     ? (
       <span className={styles.ActionContent}>
-        <span>{children}</span>
+        <span>{content}</span>
         {disclosureIconMarkup}
       </span>
     )
-    : children;
+    : content;
 
   if (url) {
     return (
       <UnstyledLink
-        key={children}
+        key={content}
         external={external}
         url={url}
         onMouseUp={handleMouseUpByBlurring}
@@ -69,7 +63,7 @@ export default function Action({
 
   return (
     <button
-      key={children}
+      key={content}
       className={className}
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}

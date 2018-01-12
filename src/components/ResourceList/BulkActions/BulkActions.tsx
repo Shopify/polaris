@@ -8,6 +8,7 @@ import {
   ActionList,
   Popover,
 } from '../../../';
+import {ActionListSection} from '../../ActionList/Section';
 import CheckableButton from '../CheckableButton';
 
 import Action from './Action';
@@ -18,9 +19,11 @@ export interface Props {
   label?: string,
   selected?: boolean | 'indeterminate',
   selectMode?: boolean,
-  primaryAction?: DisableableAction,
-  secondaryAction?: DisableableAction,
-  tertiaryActions?: DisableableAction[],
+  actions: {
+    primaryAction?: DisableableAction,
+    secondaryAction?: DisableableAction,
+    tertiaryActions?: (DisableableAction | ActionListSection)[],
+  },
   onToggleAll?(): void,
   onSelectModeToggle?(selectMode: boolean): void,
 }
@@ -55,20 +58,49 @@ export default class BulkActions extends React.PureComponent<Props, State> {
   private actionsActivatorLabel = 'Actions';
   private moreActionsActivatorLabel = 'More actions';
 
-  private get allActions() {
-    const {primaryAction, secondaryAction, tertiaryActions = []} = this.props;
+  private get allActionsSections(): ActionListSection[] | undefined {
+    const {actions: {primaryAction, secondaryAction}} = this.props;
 
-    const allActions: DisableableAction[] = [];
+    const firstSectionItems: DisableableAction[] = [];
+    if (primaryAction) { firstSectionItems.push(primaryAction); }
+    if (secondaryAction) { firstSectionItems.push(secondaryAction); }
 
-    if (primaryAction) {
-      allActions.push(primaryAction);
+    if (firstSectionItems.length === 0) {
+      return this.tertiarySections;
     }
 
-    if (secondaryAction) {
-      allActions.push(secondaryAction);
+    if (!this.tertiarySections) {
+      return [{
+        items: firstSectionItems,
+      }];
     }
 
-    return allActions.concat(tertiaryActions);
+    return [
+      {
+        items: firstSectionItems,
+      },
+      ...this.tertiarySections,
+    ];
+
+  }
+
+  private get tertiarySections(): ActionListSection[] | undefined {
+    const {actions: {tertiaryActions}} = this.props;
+
+    if (
+      !tertiaryActions ||
+      tertiaryActions.length === 0
+    ) { return; }
+
+    if (instanceOfActionListSectionArray(tertiaryActions)) {
+      return tertiaryActions;
+    }
+
+    if (instanceOfDisableableActionArray(tertiaryActions)) {
+      return [{
+        items: tertiaryActions,
+      }];
+    }
   }
 
   render() {
@@ -78,9 +110,10 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       label = '',
       onToggleAll,
       selected,
-      primaryAction,
-      secondaryAction,
-      tertiaryActions,
+      actions: {
+        primaryAction,
+        secondaryAction,
+      },
     } = this.props;
 
     const {smallScreenPopoverVisible, largeScreenPopoverVisible} = this.state;
@@ -92,16 +125,22 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       </button>
     );
 
-    const allActionsPopover = this.allActions && this.allActions.length > 0
+    const allActionsPopover = this.allActionsSections
       ? (
         <div className={styles.Popover}>
           <Popover
             active={smallScreenPopoverVisible}
-            activator={<Action disclosure onAction={this.toggleSmallScreenPopover}>{this.actionsActivatorLabel}</Action>}
+            activator={
+              <Action
+                disclosure
+                onAction={this.toggleSmallScreenPopover}
+                content={this.actionsActivatorLabel}
+              />
+            }
             onClose={this.toggleSmallScreenPopover}
           >
             <ActionList
-              items={this.allActions}
+              sections={this.allActionsSections}
               onActionAnyItem={this.toggleSmallScreenPopover}
             />
           </Popover>
@@ -110,23 +149,29 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       : null;
 
     const primaryButton = primaryAction
-      ? <Action {...primaryAction} >{primaryAction.content}</Action>
+      ? <Action {...primaryAction} />
       : null;
 
     const secondaryButton = secondaryAction
-      ? <Action {...secondaryAction} >{secondaryAction.content}</Action>
+      ? <Action {...secondaryAction} />
       : null;
 
-    const rollUpActions = tertiaryActions && tertiaryActions.length > 0
+    const tertiaryActionsPopover = this.tertiarySections
       ? (
         <div className={styles.Popover}>
           <Popover
             active={largeScreenPopoverVisible}
-            activator={<Action disclosure onAction={this.toggleLargeScreenPopover}>{this.moreActionsActivatorLabel}</Action>}
+            activator={
+              <Action
+                disclosure
+                onAction={this.toggleLargeScreenPopover}
+                content={this.moreActionsActivatorLabel}
+              />
+            }
             onClose={this.toggleLargeScreenPopover}
           >
             <ActionList
-              items={tertiaryActions}
+              sections={this.tertiarySections}
               onActionAnyItem={this.toggleLargeScreenPopover}
             />
           </Popover>
@@ -185,7 +230,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
             <CheckableButton {...checkableButtonProps} />
             {primaryButton}
             {secondaryButton}
-            {rollUpActions}
+            {tertiaryActionsPopover}
           </div>
         </CSSTransition>
       </div>
@@ -213,4 +258,24 @@ export default class BulkActions extends React.PureComponent<Props, State> {
   private toggleLargeScreenPopover() {
     this.setState(({largeScreenPopoverVisible}) => ({largeScreenPopoverVisible: !largeScreenPopoverVisible}));
   }
+}
+
+function instanceOfActionListSectionArray(
+  actions: (DisableableAction | ActionListSection)[],
+): actions is ActionListSection[] {
+  const validList = actions.filter((action: any) => {
+    return action.items;
+  });
+
+  return actions.length === validList.length;
+}
+
+function instanceOfDisableableActionArray(
+  actions: (DisableableAction | ActionListSection)[],
+): actions is DisableableAction[] {
+  const validList = actions.filter((action: any) => {
+    return !action.items;
+  });
+
+  return actions.length === validList.length;
 }
