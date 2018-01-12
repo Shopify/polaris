@@ -8,6 +8,7 @@
 * `indeterminate` is now an allowed value for `checked` to Checkbox ([#748](https://github.com/Shopify/polaris-react/pull/748))
 * Added singleColumn prop to Page ([#763](https://github.com/Shopify/polaris-react/pull/763))
 * Increased bottom padding of tabs titles ([#805](https://github.com/Shopify/polaris-react/pull/805))
+* Fixed rgbToHsb function when red is the largest number and added tests [#877](https://github.com/Shopify/polaris-react/pull/877)
 
 ### Bug fixes
 * Fixed positioned overlay not responding to scrollable container events
