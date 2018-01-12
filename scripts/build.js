@@ -19,7 +19,10 @@ const intermediateBuild = resolvePath(root, './build-intermediate');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
 const embeddedEntry = resolvePath(intermediateBuild, './embedded/index.js');
 
-execSync(`${resolvePath(root, './node_modules/.bin/tsc')} --outDir ${intermediateBuild}`, {
+const scripts = resolvePath(root, 'scripts');
+const tsBuild = resolvePath(scripts, 'tsconfig.json');
+
+execSync(`${resolvePath(root, './node_modules/.bin/tsc')} --outDir ${intermediateBuild} --project ${tsBuild}`, {
   stdio: 'inherit',
 });
 
