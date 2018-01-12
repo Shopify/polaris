@@ -27,7 +27,8 @@
   in the playground.
 -->
 
-Copy-paste this code in `playground/Playground.tsx`:
+<details>
+<summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
 
 ```jsx
 // tslint:disable
@@ -50,6 +51,7 @@ export default class Playground extends React.Component<never, State> {
 
 // tslint:enable
 ```
+</details>
 
 ### 🎩 checklist
 
