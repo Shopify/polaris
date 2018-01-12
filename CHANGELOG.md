@@ -5,6 +5,7 @@
 * Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
 
 * Added `onClick` to `UnstyledLink` ([#832](https://github.com/Shopify/polaris-react/pull/832))
+* Added tests to `Link` ([#832](https://github.com/Shopify/polaris-react/pull/897))
 
 ## 1.9.1 - 2017-12-21
 ### Documentation

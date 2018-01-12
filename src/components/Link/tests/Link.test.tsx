@@ -9,4 +9,14 @@ describe('<Link />', () => {
     link.simulate('click');
     expect(spy).toHaveBeenCalled();
   });
+
+  it('renders a button if no url is provided', () => {
+    const link = mount(<Link />);
+    expect(link.html().indexOf('button')).toEqual(1);
+  });
+
+  it('renders an anchor if a url is provided', () => {
+    const link = mount(<Link url="MyThing" />);
+    expect(link.html().indexOf('a')).toEqual(1);
+  });
 });
