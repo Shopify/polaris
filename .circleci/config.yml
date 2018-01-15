@@ -8,10 +8,10 @@ jobs:
       - restore_cache:
          # Find a cache corresponding to this specific yarn.lock checksum
          # when this file is changed, this key will fail
-         key: v1-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}
+         key: v1-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
       - run: yarn
       - save_cache:
-         key: v1-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}
+         key: v1-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
          paths:
            - node_modules
       - run: yarn run check:ci
