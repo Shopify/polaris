@@ -3,7 +3,7 @@
 ## 2.0.0 - 2018-01-15
 
 ## Breaking Changes
-- Anchor tags are no longer styled by Polaris (when missing the `[data-polaris-unstyled]` attributes) [#841](https://github.com/shopify/polaris-react/pull/841)
+- Anchor tags are no longer styled by Polaris when missing the `[data-polaris-unstyled]` attributes ([#841](https://github.com/shopify/polaris-react/pull/841))
 
 ### Enhancements
 
