@@ -26,6 +26,7 @@ export interface Props {
     singular: string,
     plural: string,
   },
+  promotedBulkActions?: BulkActionsProps['promotedActions'],
   bulkActions?: BulkActionsProps['actions'],
   selectedItems?: string[],
   persistActions?: boolean,
@@ -58,8 +59,11 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   private sortingLabel = 'Select how to sort';
 
   private get selectable() {
-    const {bulkActions} = this.props;
-    return Boolean(bulkActions);
+    const {promotedBulkActions, bulkActions} = this.props;
+    return Boolean(
+      (promotedBulkActions && promotedBulkActions.length > 0) ||
+      (bulkActions && bulkActions.length > 0),
+    );
   }
 
   @autobind
@@ -122,6 +126,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   render() {
     const {
       items,
+      promotedBulkActions,
       bulkActions,
       filterControl,
       sortOptions,
@@ -138,7 +143,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const bulkActionsMarkup = bulkActions
+    const bulkActionsMarkup = this.selectable
       ? (
         <div className={styles.BulkActionsWrapper}>
           <BulkActions
@@ -147,6 +152,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
             onToggleAll={this.handleToggleAll}
             selectMode={selectMode}
             onSelectModeToggle={this.handleSelectMode}
+            promotedActions={promotedBulkActions}
             actions={bulkActions}
           />
         </div>
