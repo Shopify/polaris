@@ -103,8 +103,12 @@ export default class TextField extends React.PureComponent<Props, State> {
       onFocus,
       onBlur,
       autoComplete,
-      focused,
-      ...rest,
+      min,
+      max,
+      minLength,
+      maxLength,
+      spellCheck,
+      pattern,
     } = this.props;
 
     const {height} = this.state;
@@ -153,7 +157,6 @@ export default class TextField extends React.PureComponent<Props, State> {
     if (suffix) { labelledBy.push(`${id}Suffix`); }
 
     const input = React.createElement(multiline ? 'textarea' : 'input', {
-      ...rest,
       name,
       id,
       type,
@@ -169,6 +172,12 @@ export default class TextField extends React.PureComponent<Props, State> {
       className: styles.Input,
       onChange: this.handleChange,
       ref: this.setInput,
+      min,
+      max,
+      minLength,
+      maxLength,
+      spellCheck,
+      pattern,
       'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
       'aria-labelledby': labelledBy.join(' '),
       'aria-invalid': Boolean(error),
