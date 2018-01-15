@@ -49,11 +49,11 @@ describe('<TextField />', () => {
         name="TextField"
         placeholder="A placeholder"
         value="Some value"
-        className="test-class"
+        prefix="test-prefix"
       />,
     ).find('input');
 
-    expect(input.prop('className')).toBe(undefined);
+    expect(input.prop('prefix')).toBe(undefined);
   });
 
 
