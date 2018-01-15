@@ -12,11 +12,13 @@ describe('<Link />', () => {
 
   it('renders a button if no url is provided', () => {
     const link = mount(<Link />);
-    expect(link.html().indexOf('button')).toEqual(1);
+    const button = link.find('button').first();
+    expect(button.exists()).toBe(true);
   });
 
   it('renders an anchor if a url is provided', () => {
     const link = mount(<Link url="MyThing" />);
-    expect(link.html().indexOf('a')).toEqual(1);
+    const a = link.find('a').first();
+    expect(a.exists()).toBe(true);
   });
 });
