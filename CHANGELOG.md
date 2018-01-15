@@ -2,14 +2,10 @@
 
 ## Unreleased
 
-* Added Text container component ([#757](https://github.com/Shopify/polaris-react/pull/757/))
-* Added idForItem prop to Resource List ([#799](https://github.com/Shopify/polaris-react/pull/799/))
-* Added fullWidth prop to Layout.Section ([#743](https://github.com/Shopify/polaris-react/pull/743/))
-* `indeterminate` is now an allowed value for `checked` to Checkbox ([#748](https://github.com/Shopify/polaris-react/pull/748))
-* Added singleColumn prop to Page ([#763](https://github.com/Shopify/polaris-react/pull/763))
-* Increased bottom padding of tabs titles ([#805](https://github.com/Shopify/polaris-react/pull/805))
 * Fixed rgbToHsb function when red is the largest number and added tests (thanks [emcmanus](https://github.com/emcmanus) for the [original issue](https://github.com/Shopify/polaris/issues/251)) ([#877](https://github.com/Shopify/polaris-react/pull/877))
-- Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
+* Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
+
+* Added `onClick` to `UnstyledLink` ([#832](https://github.com/Shopify/polaris-react/pull/832))
 
 ## 1.9.1 - 2017-12-21
 ### Documentation

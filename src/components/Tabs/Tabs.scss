@@ -90,7 +90,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .Title {
   display: block;
-  padding: spacing(tight) 0 (spacing(tight) - $border-bottom-height) 0;
+  padding: spacing() 0 (spacing() - $border-bottom-height) 0;
   border-bottom: $border-bottom-height solid transparent;
 }
 
