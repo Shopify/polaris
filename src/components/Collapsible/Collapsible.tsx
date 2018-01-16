@@ -32,6 +32,7 @@ export default class Collapsible extends React.Component<Props, State> {
   static childContextTypes = CONTEXT_TYPES;
 
   context: Partial<Context>;
+
   state: State = {
     height: null,
     animationState: 'idle',

@@ -1,0 +1,167 @@
+@import '../variables';
+
+$bulk-actions-button-stacking-order: (focused: 20);
+$bulk-actions-offset-slide-in-start: rem(-40px);
+
+.Button {
+  @include text-style-button;
+  @include button-base;
+
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+}
+
+.Group {
+  @include text-style-input;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Group-smallScreen {
+  width: 100%;
+  display: flex;
+
+  .FadeContainer {
+    width: 100%;
+    display: block;
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    display: none;
+  }
+}
+
+.Group-largeScreen {
+  display: none;
+
+  .FadeContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    display: flex;
+  }
+}
+
+.ButtonGroup {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  box-shadow: inset 0 0 0 1px color(sky, dark);
+  border-radius: border-radius();
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    width: auto;
+    justify-content: flex-start;
+    margin-right: spacing(tight);
+  }
+
+  .Button {
+    border-radius: 0;
+    white-space: nowrap;
+
+    &:focus {
+      z-index: z-index(focused, $bulk-actions-button-stacking-order);
+    }
+
+    &:last-child:not(:first-child){
+      border-radius: 0 border-radius() border-radius() 0;
+    }
+  }
+
+  .Button-cancel {
+    flex: 0 0 auto;
+    border-radius: 0 border-radius() border-radius() 0;
+    z-index: 0;
+    margin-left: -1px;
+
+    &:focus {
+      z-index: 1;
+    }
+  }
+}
+
+.Popover {
+  max-height: $resource-list-button-min-height;
+  margin-left: -1px;
+
+  &:last-child * {
+    border-radius: 0 border-radius() border-radius() 0;
+  }
+}
+
+.ActionContent {
+  display: flex;
+  align-items: center;
+}
+
+.ActionIcon {
+  @include recolor-icon(color(ink, lighter));
+  display: inline-block;
+
+  &:first-child {
+    margin-right: spacing(extra-tight);
+  }
+
+  &:last-child {
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox (and makes it look like there is too much
+    // spacing on the right of the button)
+    margin-right: -1 * spacing(tight);
+  }
+
+  &.disabled {
+    @include recolor-icon(color(ink, lightest));
+  }
+}
+
+.PaginatedSelectAll{
+  padding: spacing(extra-tight) 0;
+}
+
+.Fade {
+  will-change: opacity;
+  opacity: 1;
+  transition: opacity easing() duration();
+}
+
+.Fade-appear,
+.Fade-enter,
+.Fade-exit {
+  opacity: 0;
+}
+
+.Fade-exit {
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    transition: none;
+  }
+}
+
+.Fade-appearing,
+.Fade-entering {
+  // Safari bug with using opacity 1
+  opacity: 0.99;
+}
+
+.Slide {
+  will-change: transform;
+  transform: translateY(0);
+  transition: transform easing() duration();
+}
+
+.Slide-appear,
+.Slide-enter,
+.Slide-exit {
+  transform: translateX($bulk-actions-offset-slide-in-start);
+}
+
+.Slide-appearing,
+.Slide-entering {
+  transform: translateY(0);
+}
