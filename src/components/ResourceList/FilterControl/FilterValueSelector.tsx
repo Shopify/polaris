@@ -5,7 +5,7 @@ import {Filter, AppliedFilter, FilterType} from './types';
 export interface Props {
   filter: Filter,
   value?: AppliedFilter['value'],
-  onChange?(filterValue: AppliedFilter['value']): void,
+  onChange(filterValue: AppliedFilter['value']): void,
 }
 
 export default function FilterValueSelector({

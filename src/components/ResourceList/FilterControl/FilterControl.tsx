@@ -25,7 +25,7 @@ export interface Props {
   focused?: boolean,
   filters?: Filter[],
   onSearchBlur?(): void,
-  onSearchChange?(searchValue: string, id: string): void,
+  onSearchChange(searchValue: string, id: string): void,
   onFiltersChange?(appliedFilters: AppliedFilter[]): void,
 }
 

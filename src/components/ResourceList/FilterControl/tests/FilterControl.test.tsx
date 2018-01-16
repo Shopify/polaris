@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
+import {noop} from '@shopify/javascript-utilities/other';
 import {trigger} from '../../../../../tests/utilities';
 
 import FilterControl, {Props} from '../';
@@ -13,6 +14,7 @@ describe('<FilterControl />', () => {
       singular: 'Item',
       plural: 'Items',
     },
+    onSearchChange: noop,
   };
 
   const mockFilters: Filter[] = [
