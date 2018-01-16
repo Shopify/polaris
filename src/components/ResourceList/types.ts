@@ -13,3 +13,7 @@ export const contextTypes: ValidationMap<any> = {
   subscribe: PropTypes.func,
   unsubscribe: PropTypes.func,
 };
+
+export type SelectedItems = string[] | 'All';
+
+export const SELECT_ALL_ITEMS = 'All';

@@ -7,7 +7,7 @@ import Select, {Option} from '../Select';
 import CheckableButton from './CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './Item';
-import {contextTypes} from './types';
+import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import FilterControl from './FilterControl';
 import BulkActions, {Props as BulkActionsProps} from './BulkActions';
 
@@ -18,9 +18,6 @@ const SMALL_SCREEN_WIDTH = 458;
 export interface State {
   selectMode: boolean,
 }
-
-export type SelectedItems = string[] | 'All';
-export const SELECT_ALL_ITEMS = 'All';
 
 export interface Props {
   items: any[],

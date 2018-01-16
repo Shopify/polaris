@@ -13,8 +13,7 @@ import Thumbnail, {Props as ThumbnailProps} from '../Thumbnail';
 import ButtonGroup from '../ButtonGroup';
 import Checkbox from '../Checkbox';
 import Button, {buttonsFrom} from '../Button';
-import {contextTypes} from './types';
-import {SELECT_ALL_ITEMS} from './ResourceList';
+import {contextTypes, SELECT_ALL_ITEMS} from './types';
 
 import * as styles from './Item.scss';
 
