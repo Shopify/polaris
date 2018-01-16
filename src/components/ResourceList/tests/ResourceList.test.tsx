@@ -2,8 +2,8 @@ import * as React from 'react';
 import {shallow} from 'enzyme';
 import ResourceList from '../';
 
-const itemsNoID = [{name: 'item 1'}, {name: 'item 2'}];
-const itemsWithID = [{id: 5, name: 'item 1'}, {id: 6, name: 'item 2'}];
+const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
+const itemsWithID = [{id: '5', name: 'item 1'}, {id: '6', name: 'item 2'}];
 
 describe('<ResourceList />', () => {
   describe('idForItem()', () => {
@@ -20,6 +20,19 @@ describe('<ResourceList />', () => {
     it('should generate a key using the idForItem prop callback when one is provided', () => {
       const resourceList = shallow(<ResourceList idForItem={idForItem} items={itemsWithID} renderItem={renderItem} />);
       expect(resourceList.find('li').first().key()).toBe(idForItem(itemsWithID[0]));
+    });
+  });
+
+  describe('filterControl', () => {
+    it('renders when exist', () => {
+      const resourceList = shallow(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          filterControl={<div id="test123">Test</div>}
+        />,
+      );
+      expect(resourceList.find('#test123').exists()).toBe(true);
     });
   });
 });
