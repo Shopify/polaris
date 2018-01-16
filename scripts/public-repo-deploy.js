@@ -6,6 +6,8 @@ import {cp, rm, mkdir} from 'shelljs';
 import glob from 'glob';
 import semver from 'semver';
 
+const {version: packageVersion} = require('../package.json');
+
 const polarisBotName = 'Shopify Polaris Bot';
 const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
 const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
@@ -22,7 +24,7 @@ const polarisPrivate = resolve(sandbox, PRIVATE);
 const polarisStyleguide = resolve(sandbox, STYLEGUIDE);
 const scripts = resolve(polarisPrivate, 'scripts');
 const polarisPackage = resolve(polarisPrivate, 'package.json');
-const packageJSON = require(polarisPackage);
+const releaseVersion = `v${packageVersion}`;
 const changelog = resolve(polarisPrivate, 'CHANGELOG.md');
 
 // Compute the base branch on polaris-styleguide (default: master)
@@ -41,8 +43,8 @@ function isMajorPrerelease(version) {
     semver.patch(version) === 0;
 }
 
-const baseBranch = isMajorPrerelease(packageJSON.version)
-  ? `v${semver.major(packageJSON.version)}` : 'master';
+const baseBranch = isMajorPrerelease(packageVersion)
+  ? `v${semver.major(packageVersion)}` : 'master';
 
 // Files to 🔥
 const privateFiles = [
@@ -82,7 +84,7 @@ execSync(`git clone --branch ${baseBranch} --single-branch https://${polarisBotT
 execSync(`git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/polaris-styleguide.git ${polarisStyleguide}`, execOpts);
 
 // Strip package.json scripts
-const releaseVersion = `v${packageJSON.version}`;
+const packageJSON = require(polarisPackage);
 privateScripts.forEach((script) => delete packageJSON.scripts[script]);
 outputJsonSync(polarisPackage, packageJSON, {spaces: 2});
 
@@ -128,14 +130,14 @@ rm('-rf', polarisPrivate);
 const publicReadme = resolve(polarisPublic, 'README.md');
 writeFileSync(
   publicReadme,
-  readFileSync(publicReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version),
+  readFileSync(publicReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageVersion),
 );
 
 // Replace variables in the component README with the appropriate details
 const componentReadme = resolve(polarisPublic, './src/components/README.md');
 writeFileSync(
   componentReadme,
-  readFileSync(componentReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version),
+  readFileSync(componentReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageVersion),
 );
 
 // Used to make git operations in polarisPublic dir instead of current working dir
