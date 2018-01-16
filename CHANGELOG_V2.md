@@ -5,6 +5,8 @@
 ## Breaking Changes
 - Anchor tags are no longer styled by Polaris when missing the `[data-polaris-unstyled]` attributes ([#841](https://github.com/shopify/polaris-react/pull/841))
 - Tabs no longer accept `title` as a prop. Use `content` instead. ([#909](https://github.com/Shopify/polaris-react/pull/909))
+- Removing default white color from Icon CSS. Use `color` prop instead ([#540](https://github.com/Shopify/polaris-react/pull/540))
+
 
 ### Enhancements
 

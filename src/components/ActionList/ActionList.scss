@@ -46,7 +46,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     color: color(white);
 
     .Image {
-      @include recolor-icon(color(sky));
+      @include recolor-icon(color(sky), color(white));
     }
   }
 
@@ -56,7 +56,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     pointer-events: none;
 
     .Image {
-      @include recolor-icon(color(ink, lightest));
+      @include recolor-icon(color(ink, lightest), color(white));
     }
   }
 }
@@ -67,7 +67,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .Image {
-  @include recolor-icon(color(ink, light));
+  @include recolor-icon(color(ink, light), color(white));
   display: flex;
   flex: 0 0 auto;
   justify-content: center;

@@ -158,7 +158,7 @@ html, body {
     color: color(ink);
 
     .ActionIcon {
-      @include recolor-icon(color(ink));
+      @include recolor-icon(color(ink), color(white));
     }
   }
 
@@ -202,7 +202,7 @@ html, body {
 }
 
 .ActionIcon {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color(ink, lighter), color(white));
   display: inline-block;
 
   &:first-child {
