@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+* Fixed rgbToHsb function when red is the largest number and added tests (thanks [emcmanus](https://github.com/emcmanus) for the [original issue](https://github.com/Shopify/polaris/issues/251))
+* Fixed an issue where a hard-coded path would cause the build to fail on Windows (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
+
+* Added `onClick` to `UnstyledLink`
+
 ## 1.9.1 - 2017-12-21
 ### Documentation
 * Ammending changelog

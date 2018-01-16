@@ -11,37 +11,24 @@ import Avatar, {Props as AvatarProps} from '../Avatar';
 import UnstyledLink from '../UnstyledLink';
 import Thumbnail, {Props as ThumbnailProps} from '../Thumbnail';
 import ButtonGroup from '../ButtonGroup';
+import Checkbox from '../Checkbox';
 import Button, {buttonsFrom} from '../Button';
-import Badge, {Status} from '../Badge';
+import {contextTypes, SELECT_ALL_ITEMS} from './types';
 
-import * as styles from './ResourceList.scss';
+import * as styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export interface BadgeDescriptor {
-  status: Status,
-  content: string,
-}
-
-export interface ExceptionDescriptor {
-  status?: ExceptionStatus,
-  title?: string,
-  description?: string,
-}
-
-export interface Props {
+export type Props = {
+  id: string,
   url?: string,
   media?: React.ReactElement<AvatarProps | ThumbnailProps>,
-  attributeOne: string,
-  attributeTwo?: React.ReactNode,
-  attributeThree?: React.ReactNode,
-  badges?: BadgeDescriptor[],
-  exceptions?: ExceptionDescriptor[],
   actions?: DisableableAction[],
-  persistActions?: boolean,
-}
+  children?: React.ReactNode,
+  onClick?(id?: string): void,
+} & ({url: string} | {onClick(id?: string): void});
 
 export interface State {
   actionsMenuVisible: boolean,
@@ -49,8 +36,11 @@ export interface State {
 }
 
 const getUniqueID = createUniqueIDFactory('ResourceListItem');
+const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
 export default class Item extends React.PureComponent<Props, State> {
+  static contextTypes = contextTypes;
+
   state: State = {
     actionsMenuVisible: false,
     focused: false,
@@ -58,41 +48,41 @@ export default class Item extends React.PureComponent<Props, State> {
 
   private node: HTMLElement | null = null;
   private id = getUniqueID();
+  private checkboxId = getUniqueCheckboxID();
+
+  componentDidMount() {
+    const {subscribe} = this.context;
+    subscribe(this.handleContextUpdate);
+  }
+
+  componentWillUnmount() {
+    const {unsubscribe} = this.context;
+    unsubscribe(this.handleContextUpdate);
+  }
 
   render() {
     const {
+      children,
       url,
       media,
-      attributeOne,
-      attributeTwo,
-      attributeThree,
-      badges,
-      exceptions,
       actions,
-      persistActions = false,
     } = this.props;
 
+    const {
+      persistActions = false,
+      selectable,
+      selectMode,
+    } = this.context;
+
+    const selected = this.isSelected();
+
     const {actionsMenuVisible, focused} = this.state;
-
-    const attributeTwoMarkup = attributeTwo
-      ? <div className={styles.AttributeTwo}>{attributeTwo}</div>
-      : null;
-
-    const badgeMarkup = badges
-      ? <div className={styles.Badge}>{badges.map(renderBadge)}</div>
-      : null;
-
-    const attributeThreeMarkup = attributeThree
-      ? <div className={styles.AttributeThree}>{attributeThree}</div>
-      : null;
-
-    const exceptionsMarkup = exceptions
-      ? <ul className={styles.ExceptionList}>{exceptions.map(renderException)}</ul>
-      : null;
 
     let mediaSize: MediaSize | null = null;
     let mediaType: MediaType | null = null;
     let mediaMarkup: React.ReactNode = null;
+    let ownedMarkup: React.ReactNode = null;
+    let handleMarkup: React.ReactNode = null;
 
     if (media) {
       if (isElementOfType(media, Avatar as React.ComponentType)) {
@@ -112,10 +102,37 @@ export default class Item extends React.PureComponent<Props, State> {
       );
     }
 
+    if (selectable) {
+      handleMarkup = (
+        <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
+          <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
+            <Checkbox
+              id={this.checkboxId}
+              label="Select item"
+              labelHidden
+              onChange={this.handleSelection}
+              checked={selected}
+            />
+          </span>
+        </div>
+      );
+    }
+
+    if (media || selectable) {
+      ownedMarkup = (
+        <div className={styles.Owned}>
+          {handleMarkup}
+          {mediaMarkup}
+        </div>
+      );
+    }
+
     const className = classNames(
       styles.Item,
-      url && styles['Item-link'],
       focused && styles['Item-focused'],
+      selectable && styles['Item-selectable'],
+      selected && styles['Item-selected'],
+      selectMode && styles['Item-selectMode'],
       persistActions && styles['Item-persistActions'],
       mediaType && styles[variationName('Item-media', mediaType)],
       mediaSize && styles[variationName('Item-size', mediaSize)],
@@ -127,7 +144,7 @@ export default class Item extends React.PureComponent<Props, State> {
     if (actions) {
       if (persistActions) {
         actionsMarkup = (
-          <div className={styles.Actions}>
+          <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(actions, {size: 'slim', plain: true})}
             </ButtonGroup>
@@ -135,9 +152,9 @@ export default class Item extends React.PureComponent<Props, State> {
         );
 
         disclosureMarkup = (
-          <div className={styles.Disclosure}>
+          <div className={styles.Disclosure} onClick={stopPropagation}>
             <Popover
-              activator={<Button aria-label="Actions dropdown" onClick={this.handleClick} plain icon="horizontalDots" />}
+              activator={<Button aria-label="Actions dropdown" onClick={this.handleActionsClick} plain icon="horizontalDots" />}
               onClose={this.handleCloseRequest}
               active={actionsMenuVisible}
             >
@@ -147,7 +164,7 @@ export default class Item extends React.PureComponent<Props, State> {
         );
       } else {
         actionsMarkup = (
-          <div className={styles.Actions}>
+          <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup segmented>
               {buttonsFrom(actions, {size: 'slim'})}
             </ButtonGroup>
@@ -156,55 +173,48 @@ export default class Item extends React.PureComponent<Props, State> {
       }
     }
 
+    const content = children
+      ? (
+        <div className={styles.Content}>
+          {children}
+        </div>
+      )
+      : null;
+
     const containerMarkup = (
       <div className={styles.Container} id={this.id}>
-        {mediaMarkup}
-        <div className={styles.Content}>
-          <div className={styles.Attributes}>
-            <p className={styles.AttributeOne}>
-              {attributeOne}
-            </p>
-            {attributeTwoMarkup}
-            {badgeMarkup}
-            {attributeThreeMarkup}
-          </div>
-          {exceptionsMarkup}
-        </div>
+        {ownedMarkup}
+        {content}
         {actionsMarkup}
         {disclosureMarkup}
       </div>
     );
 
-    return url
+    const urlMarkup = url
       ? (
-        <div
-          ref={this.setNode}
-          className={className}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}
-        >
-          <UnstyledLink
-            aria-describedby={this.id}
-            className={styles.Link}
-            url={url}
-          />
-          {containerMarkup}
-        </div>
+        <UnstyledLink
+          aria-describedby={this.id}
+          className={styles.Link}
+          url={url}
+        />
       )
-      : (
-        <div
-          ref={this.setNode}
-          className={className}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}
-        >
-          {containerMarkup}
-        </div>
-      );
+      : null;
+
+    return (
+      <div
+        ref={this.setNode}
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseLeave}
+        onClick={this.handleClick}
+        testID="Item-Wrapper"
+      >
+        {urlMarkup}
+        {containerMarkup}
+      </div>
+    );
   }
 
   @autobind
@@ -225,6 +235,41 @@ export default class Item extends React.PureComponent<Props, State> {
   }
 
   @autobind
+  private handleLargerSelectionArea(event: React.MouseEvent<any>) {
+    stopPropagation(event);
+    this.handleSelection(!this.isSelected());
+  }
+
+  @autobind
+  private handleSelection(value: boolean) {
+    const {id} = this.props;
+    const {onSelectionChange} = this.context;
+    if (id == null || onSelectionChange == null) { return; }
+    onSelectionChange(value, id);
+  }
+
+  @autobind
+  private handleClick(event: React.MouseEvent<any>) {
+    const {id, onClick, url} = this.props;
+    const anchor = this.node && this.node.querySelector('a');
+
+    if (anchor === event.target) { return; }
+
+    if (onClick) {
+      onClick(id);
+    }
+
+    if (url && anchor) {
+      anchor.click();
+    }
+  }
+
+  @autobind
+  private handleContextUpdate() {
+    this.forceUpdate();
+  }
+
+  @autobind
   private mouseEnter() {
     this.setState({focused: true});
   }
@@ -235,7 +280,7 @@ export default class Item extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleClick() {
+  private handleActionsClick() {
     this.setState({actionsMenuVisible: true});
   }
 
@@ -243,31 +288,14 @@ export default class Item extends React.PureComponent<Props, State> {
   private handleCloseRequest() {
     this.setState({actionsMenuVisible: false});
   }
+
+  private isSelected() {
+    const {id} = this.props;
+    const {selectedItems} = this.context;
+    return selectedItems && ((Array.isArray(selectedItems) && selectedItems.includes(id)) || selectedItems === SELECT_ALL_ITEMS);
+  }
 }
 
-function renderBadge(badge: BadgeDescriptor) {
-  return <Badge key={badge.content} status={badge.status}>{badge.content}</Badge>;
-}
-
-function renderException(exception: ExceptionDescriptor, index: number) {
-  const {status, title, description} = exception;
-  const className = classNames(
-    styles.ExceptionItem,
-    status && styles[variationName('ExceptionItem-status', status)],
-  );
-
-  const titleMarkup = title != null
-    ? <div className={styles.Title}>{title}</div>
-    : null;
-
-  const descriptionMarkup = description != null
-    ? <div className={styles.Description}>{description}</div>
-    : null;
-
-  return (
-    <li key={index} className={className}>
-      {titleMarkup}
-      {descriptionMarkup}
-    </li>
-  );
+function stopPropagation(event: React.MouseEvent<any>) {
+  event.stopPropagation();
 }

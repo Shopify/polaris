@@ -8,7 +8,9 @@ $base-font-size: 10px;
 @function rem($value) {
   $unit: unit($value);
 
-  @if $unit == 'rem' {
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'rem' {
     @return $value;
   } @else if $unit == 'px' {
     @return $value / $base-font-size * 1rem;
@@ -26,7 +28,9 @@ $base-font-size: 10px;
 @function px($value) {
   $unit: unit($value);
 
-  @if $unit == 'px' {
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'px' {
     @return $value;
   } @else if $unit == 'em' {
     @return ($value / 1em) * $base-font-size;
@@ -45,7 +49,9 @@ $base-font-size: 10px;
 @function em($value) {
   $unit: unit($value);
 
-  @if $unit == 'em' {
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'em' {
     @return $value;
   } @else if $unit == 'rem' {
     @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);

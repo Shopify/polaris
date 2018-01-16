@@ -1,0 +1,186 @@
+@import './variables';
+
+$stacking-order: (
+  link: 10,
+  content: 20,
+);
+
+$avatar-small-size: rem(32px);
+$avatar-medium-size: rem(40px);
+$avatar-large-size: rem(60px);
+
+$thumbnail-small-size: rem(40px);
+$thumbnail-medium-size: rem(60px);
+$thumbnail-large-size: rem(80px);
+
+$resource-list-item-padding: rem(12px);
+$resource-list-item-control-indent: -1 * rem(12px);
+$resource-list-item-min-height: rem(44px);
+$handle-width: rem(48px);
+$item-translate-offset: $handle-width - $resource-list-item-padding + spacing(extra-tight);
+
+.Item {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color(sky, lighter);
+  }
+}
+
+.Item-focused {
+  box-shadow: inset rem(2px) 0 0 color(indigo);
+}
+
+.Item-selected {
+  background-color: color(indigo, lighter);
+}
+
+.Link {
+  position: absolute;
+  z-index: z-index(link, $stacking-order);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+// Item inner container
+.Container {
+  position: relative;
+  z-index: z-index(content, $stacking-order);
+  padding: $resource-list-item-padding spacing();
+  min-height: $resource-list-item-min-height;
+  display: flex;
+  align-items: flex-start;
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    padding: $resource-list-item-padding spacing(loose);
+  }
+}
+
+.Owned {
+  display: flex;
+  align-self: flex-start;
+}
+
+// Item handle
+.Handle {
+  width: $handle-width;
+  min-height: $resource-list-item-min-height;
+  justify-content: center;
+  align-items: center;
+  margin: (-1 * $resource-list-item-padding) spacing(extra-tight) (-1 * $resource-list-item-padding) $resource-list-item-control-indent;
+  display: flex;
+}
+
+.Item-selectable {
+  width: calc(100% + $item-translate-offset);
+  transform: translateX(-$item-translate-offset);
+  transition: transform easing() duration();
+  margin-right: -$item-translate-offset;
+
+  &.Item-selectMode {
+    transform: translateX(0);
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    transform: translateX(0);
+    margin-right: 0;
+  }
+}
+
+
+// Item media
+// Had min-height style below instead of height. Need height for IE11 vertical centering
+// to work with display: flex. Reference: http://stackoverflow.com/questions/19371626/flexbox-not-centering-vertically-in-ie
+.Item-mediaAvatar {
+  &.Item-sizeSmall {
+    .Actions {
+      height: $avatar-small-size;
+    }
+  }
+
+  &.Item-sizeMedium {
+    .Actions {
+      height: $avatar-medium-size;
+    }
+  }
+
+  &.Item-sizeLarge {
+    .Actions {
+      height: $avatar-large-size;
+    }
+  }
+}
+
+.Item-mediaThumbnail {
+  &.Item-sizeSmall {
+    .Actions {
+      height: $thumbnail-small-size;
+    }
+  }
+
+  &.Item-sizeMedium {
+    .Actions {
+      height: $thumbnail-medium-size;
+    }
+  }
+
+  &.Item-sizeLarge {
+    .Actions {
+      height: $thumbnail-large-size;
+    }
+  }
+}
+
+.Media {
+  flex: 0 0 auto;
+  margin-right: spacing(loose);
+  color: inherit;
+  text-decoration: none;
+}
+
+// Item content
+.Content {
+  @include layout-flex-fix;
+  flex: 1 1 auto;
+  align-self: center;
+}
+
+// Item actions
+.Actions {
+  position: absolute;
+  right: $resource-list-item-padding;
+  display: none;
+  pointer-events: initial;
+  .Item-focused & {
+      display: flex;
+  }
+}
+
+.Item-persistActions {
+  .Actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    margin-left: spacing();
+    pointer-events: initial;
+    position: relative;
+    flex-basis: auto;
+
+    @include page-content-when-partially-condensed {
+      display: none;
+    }
+  }
+}
+
+.Disclosure {
+  display: none;
+  pointer-events: initial;
+
+  @include page-content-when-partially-condensed {
+    display: block;
+  }
+}
