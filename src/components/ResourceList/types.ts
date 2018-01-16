@@ -4,9 +4,16 @@ import {ValidationMap} from 'react';
 export const contextTypes: ValidationMap<any> = {
   selectMode: PropTypes.bool,
   selectable: PropTypes.bool,
-  selectedItems: PropTypes.array,
+  selectedItems: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string,
+  ]),
   persistActions: PropTypes.bool,
   onSelectionChange: PropTypes.func,
   subscribe: PropTypes.func,
   unsubscribe: PropTypes.func,
 };
+
+export type SelectedItems = string[] | 'All';
+
+export const SELECT_ALL_ITEMS = 'All';
