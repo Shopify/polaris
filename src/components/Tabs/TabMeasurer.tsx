@@ -6,7 +6,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import EventListener from '../EventListener';
 
-import {TabDescriptor, getTabContent} from './Tabs';
+import {TabDescriptor} from './Tabs';
 import Tab from './Tab';
 import * as styles from './Tabs.scss';
 
@@ -48,7 +48,6 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
     const {selected, tabs, activator, tabToFocus, siblingTabHasFocus} = this.props;
 
     const tabsMarkup = tabs.map((tab, index) => {
-      const tabContent = getTabContent(tab);
       return (
         <Tab
           measuring
@@ -60,7 +59,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
           onClick={noop}
           url={tab.url}
         >
-          {tabContent}
+          {tab.content}
         </Tab>
       );
     });

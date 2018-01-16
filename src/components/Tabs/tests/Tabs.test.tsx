@@ -64,15 +64,15 @@ describe('<Tabs />', () => {
       });
     });
 
-    it('sets the content for each of the tabs if given a title', () => {
-      const titledTabs = [
-        { title: 'Tab 1', id: 'tab-1' },
-        { title: 'Tab 2', id: 'tab-2' },
+    it('sets the content for each of the tabs if given content', () => {
+      const tabsWithContent = [
+        { content: 'Tab 1', id: 'tab-1' },
+        { content: 'Tab 2', id: 'tab-2' },
       ];
-      const wrapper = mount(<Tabs selected={0} tabs={titledTabs} />);
+      const wrapper = mount(<Tabs selected={0} tabs={tabsWithContent} />);
 
-      titledTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('children')).toEqual(tab.title);
+      tabsWithContent.forEach((tab, index) => {
+        expect(wrapper.find(Tab).at(index).prop('children')).toEqual(tab.content);
       });
     });
   });
