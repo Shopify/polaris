@@ -2,7 +2,7 @@
 
 <!-- ## Unreleased -->
 
-## 2.0.0-beta.2 - 2018-01-16
+## 2.0.0-beta.2, 2.0.0-beta.3 - 2018-01-16
 
 - Deploy scripts fixes
 
