@@ -11,6 +11,7 @@ $not-condensed-min-page: $not-condensed-content + $not-condensed-outer-spacing;
 $partially-condensed-min-page: $partially-condensed-content + $partially-condensed-outer-spacing;
 
 $nav-size: em(layout-width(nav));
+$nav-min-window: em(layout-width(page-with-nav));
 
 @function breakpoint($value, $adjustment: 0) {
   @return em($value) + em($adjustment);
