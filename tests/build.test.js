@@ -41,8 +41,16 @@ describe('build', () => {
     expect(fs.existsSync('./styles.scss')).toBe(true);
   });
 
+  it('generates a component entry point for each component', () => {
+    expect(fs.existsSync('./styles/components/ResourceList.scss')).toBe(true);
+  });
+
+  it('copies over subcomponent stylesheets', () => {
+    expect(fs.existsSync('./styles/components/ResourceList/BulkActions/BulkActions.scss')).toBe(true);
+  });
+
   it('generates fully namespaced CSS for root components', () => {
-    expect(fs.readFileSync('./styles/components/Button.scss', 'utf8')).toMatch('.Polaris-Button {');
+    expect(fs.readFileSync('./styles/components/Button/Button.scss', 'utf8')).toMatch('.Polaris-Button {');
   });
 
   it('generates a zip of ./build/sass', () => {
@@ -73,11 +81,11 @@ describe('build', () => {
     });
 
     it('minifies class names', () => {
-      expect(fs.readFileSync('esnext/styles/components/Stack.scss', 'utf8')).not.toMatch('Stack');
+      expect(fs.readFileSync('esnext/styles/components/Stack/Stack.scss', 'utf8')).not.toMatch('Stack');
       // Checks that we correctly minify on word boundaries and dasherized class names, fixing
       // https://github.com/Shopify/polaris-react/issues/824
-      expect(fs.readFileSync('esnext/styles/components/Tabs.scss', 'utf8')).not.toMatch('Measurer');
-      expect(fs.readFileSync('esnext/styles/components/Card.scss', 'utf8')).not.toMatch('-subdued');
+      expect(fs.readFileSync('esnext/styles/components/Tabs/Tabs.scss', 'utf8')).not.toMatch('Measurer');
+      expect(fs.readFileSync('esnext/styles/components/Card/Card.scss', 'utf8')).not.toMatch('-subdued');
     });
 
     it('uses the correct class names in the server and index builds', () => {
@@ -85,7 +93,7 @@ describe('build', () => {
       const serverStackClassname = fs.readFileSync('esnext/server.js', 'utf8').match(STACK_CLASSNAME_MATCHER);
       expect(indexStackClassname[1]).toBeTruthy();
       expect(indexStackClassname[1]).toBe(serverStackClassname[1]);
-      expect(fs.readFileSync('esnext/styles/components/Stack.scss', 'utf8')).toMatch(`.${indexStackClassname[1]}`);
+      expect(fs.readFileSync('esnext/styles/components/Stack/Stack.scss', 'utf8')).toMatch(`.${indexStackClassname[1]}`);
     });
 
     it('preserves native imports in the index build', () => {
