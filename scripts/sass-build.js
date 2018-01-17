@@ -1,14 +1,23 @@
 /* eslint-disable no-console */
 
 import glob from 'glob';
-import {writeFileSync, readFileSync, readJSONSync, createWriteStream} from 'fs-extra';
-import {basename, resolve, join} from 'path';
+import {
+  writeFileSync,
+  readFileSync,
+  outputFileSync,
+  readJSONSync,
+  createWriteStream,
+  lstatSync,
+  existsSync,
+} from 'fs-extra';
+import {basename, resolve, join, relative} from 'path';
 import {cp, mkdir} from 'shelljs';
 import archiver from 'archiver';
 
 const root = resolve(__dirname, '..');
 const intermediateBuild = resolve(root, './build-intermediate');
 const srcStyles = resolve(intermediateBuild, './styles');
+const srcComponents = resolve(intermediateBuild, './components');
 
 export default function generateSassBuild(destinationDir) {
   const classnameTokens = readJSONSync(`${destinationDir}/polaris.tokens.json`);
@@ -27,14 +36,42 @@ export default function generateSassBuild(destinationDir) {
   cp(join(srcStyles, 'shared.scss'), join(buildStyles, 'shared.scss'));
   cp(resolve(srcStyles, '../styles.scss'), join(buildSass, 'styles.scss'));
 
-  glob.sync(resolve(intermediateBuild, './components/**/*.scss')).forEach((filePath) => {
-    const componentSass = resolve(components, basename(filePath));
-    let file = readFileSync(filePath, 'utf8');
-    file = namespaceSassClasses(filePath, file, classnameTokens);
-    writeFileSync(componentSass, file);
+  glob.sync(join(srcComponents, '*')).forEach((componentPath) => {
+    if (!lstatSync(componentPath).isDirectory()) {
+      return;
+    }
+
+    const componentName = basename(componentPath);
+    const componentSass = resolve(componentPath, `${componentName}.scss`);
+
+    if (!existsSync(componentSass)) {
+      return;
+    }
+
+    const componentBuildDirectory = resolve(components, componentName);
+    mkdir(componentBuildDirectory);
+
+    // Loop through component sass files and copy to build
+    glob.sync(join(componentPath, '/**/*.scss')).forEach((sassPath) => {
+      const sassFile = sassPath.replace(`${componentPath}/`, '');
+      const sassBuild = resolve(componentBuildDirectory, sassFile);
+
+      let file = readFileSync(sassPath, 'utf8');
+      file = namespaceSassClasses(sassPath, file, classnameTokens);
+      outputFileSync(sassBuild, file);
+    });
+
+    // Create component index with imports
+    const sassImports = glob.sync(join(componentBuildDirectory, '**/*.scss'))
+      .map((absPath) => relative(componentBuildDirectory, absPath).replace('.scss', ''))
+      .map((relativePath) => `@import '${componentName}/${relativePath}';`)
+      .join('\n');
+
+    writeFileSync(`${components}/${componentName}.scss`, sassImports);
   });
 
   createSassIndex(components);
+
   return generateSassZip(buildSass, destinationDir);
 }
 
@@ -61,11 +98,11 @@ function generateSassZip(sourceDir, destinationDir) {
 }
 
 function createSassIndex(dir) {
-  const dirname = basename(dir);
+  const directory = basename(dir);
 
-  const sassImports = glob.sync(join(dir, '*.scss'))
-    .map((filePath) => basename(filePath).replace('.scss', ''))
-    .map((component) => `@import '${dirname}/${component}';`)
+  const sassImports = glob.sync(join(dir, '**/*.scss'))
+    .map((absPath) => relative(dir, absPath).replace('.scss', ''))
+    .map((relativePath) => `@import '${directory}/${relativePath}';`)
     .join('\n');
 
   writeFileSync(`${dir}.scss`, sassImports);
