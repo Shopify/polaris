@@ -122,6 +122,16 @@
   }
 }
 
+.EmptySearchResultWrapper {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @media screen and (max-height: 600px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
 .ResourceListWrapper {
   min-width: $resource-list-min-width;
 }

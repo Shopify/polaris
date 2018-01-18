@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
 import ResourceList from '../';
+import EmptySearchResult from '../components/EmptySearchResult/';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const itemsWithID = [{id: '5', name: 'item 1'}, {id: '6', name: 'item 2'}];
@@ -33,6 +34,19 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList.find('#test123').exists()).toBe(true);
+    });
+
+    describe('emptySearchResult', () => {
+      it('renders when filterControl exists and items is empty', () => {
+        const resourceList = shallow(
+          <ResourceList
+            items={[]}
+            renderItem={renderItem}
+            filterControl={<div>fake filterControl</div>}
+          />,
+        );
+        expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
+      });
     });
   });
 });

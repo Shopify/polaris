@@ -10,6 +10,7 @@ import Item from './components/Item';
 import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import FilterControl from './components/FilterControl';
 import BulkActions, {Props as BulkActionsProps} from './components/BulkActions';
+import EmptySearchResult from './components/EmptySearchResult';
 
 import * as styles from './ResourceList.scss';
 
@@ -139,6 +140,16 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     };
   }
 
+  @autobind
+  private get emptySearchResultText() {
+    const {resourceName = this.defaultResourceName} = this.props;
+
+    return {
+      title: `No ${resourceName.plural.toLocaleLowerCase()} found`,
+      description: 'Try changing the filters or search term',
+    };
+  }
+
   getChildContext(): Context {
     const {selectedItems, persistActions} = this.props;
     const {selectMode} = this.state;
@@ -177,6 +188,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       onSortChange,
     } = this.props;
     const {selectMode} = this.state;
+    const emptyState = !!filterControl && items.length === 0;
 
     const filterControlMarkup = filterControl
       ? (
@@ -250,7 +262,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const headerMarkup = (
       <div className={headerClassName}>
         <div className={styles.HeaderContentWrapper}>
-          {itemCountTextMarkup}
+          {!emptyState && itemCountTextMarkup}
           {checkableButtonMarkup}
           {sortingSelectMarkup}
           {selectButtonMarkup}
@@ -264,11 +276,18 @@ export default class ResourceList extends React.PureComponent<Props, State> {
         <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
       ) : null;
 
+    const emptyStateMarkup = emptyState
+      ? (
+        <div className={styles.EmptySearchResultWrapper}>
+          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+        </div>
+      ) : null;
+
     return (
       <div className={styles.ResourceListWrapper}>
         {filterControlMarkup}
         {headerMarkup}
-        {listMarkup}
+        {listMarkup || emptyStateMarkup}
       </div>
     );
   }
