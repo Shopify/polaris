@@ -2,6 +2,9 @@
 
 <!-- ## Unreleased -->
 
+### Breaking Changes
+- Dropped support for React < 16. Upgrade  `react` and `react-dom` packages to v16. ([#936](https://github.com/shopify/polaris-react/pull/936))
+
 ## 2.0.0-beta.2, 2.0.0-beta.3 - 2018-01-16
 
 - Deploy scripts fixes
