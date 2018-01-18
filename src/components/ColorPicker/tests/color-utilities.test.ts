@@ -1,4 +1,4 @@
-import {hsbToRgb, rgbToHex} from '../color-utilities';
+import {hsbToRgb, rgbToHex, rgbToHsb} from '../color-utilities';
 
 describe('colorUtilities', () => {
   describe('rgbToHex()', () => {
@@ -27,6 +27,30 @@ describe('colorUtilities', () => {
       expect(red).toBe(255);
       expect(green).toBe(255);
       expect(blue).toBe(255);
+    });
+  });
+
+  describe('rgbToHsb', () => {
+    it('returns the correct hsb value for white', () => {
+      const {hue, saturation, brightness} = rgbToHsb({red: 255, green: 255, blue: 255});
+      expect(hue).toBe(0);
+      expect(saturation).toBe(0);
+      expect(brightness).toBe(1);
+    });
+
+    it('returns the correct hsb value for black', () => {
+      const {hue, saturation, brightness} = rgbToHsb({red: 0, green: 0, blue: 0});
+      expect(hue).toBe(0);
+      expect(saturation).toBe(0);
+      expect(brightness).toBe(0);
+    });
+
+    // Corner case that was misscalculating hue
+    it('returns the correct hsb value when red is the largest number', () => {
+      const {hue, saturation, brightness} = rgbToHsb({red: 255, green: 0, blue: 0});
+      expect(hue).toBe(0);
+      expect(saturation).toBe(1);
+      expect(brightness).toBe(1);
     });
   });
 });
