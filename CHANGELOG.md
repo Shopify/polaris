@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased
+<!-- ## Unreleased -->
 
+## 1.10.0 - 2018-01-17
+* Restore the correct `latest` version to the CDN
 * Fixed rgbToHsb function when red is the largest number and added tests (thanks [emcmanus](https://github.com/emcmanus) for the [original issue](https://github.com/Shopify/polaris/issues/251)) ([#877](https://github.com/Shopify/polaris-react/pull/877))
 * Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
-
 * Added `onClick` to `UnstyledLink` ([#832](https://github.com/Shopify/polaris-react/pull/832))
 
 ## 1.9.1 - 2017-12-21
