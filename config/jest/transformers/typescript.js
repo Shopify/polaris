@@ -18,7 +18,7 @@ module.exports = {
         src,
         tsConfig.compilerOptions,
         path,
-        []
+        [],
       );
 
       const fakeJSPath = path.replace(/\.tsx?$/, '.js');
