@@ -2954,9 +2954,9 @@ eslint-plugin-react@^7.5.1:
     jsx-ast-utils "^2.0.0"
     prop-types "^15.6.0"
 
-eslint-plugin-shopify@^19.0.0-beta.4:
-  version "19.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-shopify/-/eslint-plugin-shopify-19.0.0-beta.4.tgz#dc5b3c80330a99d05aa9971af31e036c46e13101"
+eslint-plugin-shopify@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-shopify/-/eslint-plugin-shopify-19.0.0.tgz#4ca1f4210a391bfbf1b910a9de784392e3bfccaf"
   dependencies:
     babel-eslint "^8.2.1"
     eslint-config-prettier "^2.9.0"
