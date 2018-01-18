@@ -56,7 +56,7 @@ export default function Checkbox({
   );
 
   const isIndeterminate = checked === 'indeterminate';
-  const isChecked = (!isIndeterminate && !!checked);
+  const isChecked = !isIndeterminate && Boolean(checked);
 
   const indeterminateAttributes = isIndeterminate
     ? {indeterminate: 'true', 'aria-checked': 'mixed'}
