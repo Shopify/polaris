@@ -115,6 +115,11 @@ export {
 } from './EventListener';
 
 export {
+  default as FlashMesage,
+  Props as FlashMessagProps,
+} from './FlashMessage';
+
+export {
   default as FooterHelp,
   Props as FooterHelpProps,
 } from './FooterHelp';
