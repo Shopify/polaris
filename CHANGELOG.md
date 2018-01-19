@@ -85,6 +85,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 * Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
 
+### Enhancements
+* Added an `id` prop to Collapsible to be referenced by the `aria-controls` attribute of the component triggering the collapse ([#943](https://github.com/Shopify/polaris-react/pull/943))
+
 ## 1.10.1 - 2018-01-19
 ### Bug fixes
 * Fixed CSS only checkbox (thanks [daddy88](https://github.com/daddy88) for the [original issue](https://github.com/Shopify/polaris/issues/252)) ([#932](https://github.com/Shopify/polaris-react/pull/932))
