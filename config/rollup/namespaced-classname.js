@@ -7,11 +7,17 @@ const cache = {
 
 const COMPONENT_REGEX = /^[A-Z]\w+$/;
 const SUBCOMPONENT_VARIATION_SELECTOR = /^\w+-\w+$/;
+const NESTED_COMPONENT_PATH_REGEX = /.*\/components\/(.*)\/components/;
 
 export default function getNamespacedClassName(localName, filePath) {
   const file = cache.files[filePath] || {};
   const componentName = basename(filePath, '.scss');
-  const polarisComponentName = polarisClassName(componentName);
+  const nestedComponentMatch = NESTED_COMPONENT_PATH_REGEX.exec(filePath);
+
+  const polarisComponentName = nestedComponentMatch && (nestedComponentMatch.length > 1)
+    ? `${polarisClassName(nestedComponentMatch[1])}-${componentName}`
+    : polarisClassName(componentName);
+
   let className = file[localName];
 
   if (className == null) {
