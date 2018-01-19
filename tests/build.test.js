@@ -54,7 +54,7 @@ describe('build', () => {
   });
 
   it('generates fully namespaced CSS for nested components', () => {
-    expect(fs.readFileSync('./styles/components/ResourceList/components/BulkActions/BulkActions.scss', 'utf8')).toMatch('.Polaris-ResourceList-BulkActions {');
+    expect(fs.readFileSync('./styles/components/ResourceList/components/Item/Item.scss', 'utf8')).toMatch('.Polaris-ResourceList-Item {');
   });
 
   it('generates a zip of ./build/sass', () => {
