@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {shallow, mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
-import {findByTestID} from '../../../../tests/utilities';
+import {findByTestID} from '../../../../../../tests/utilities';
 
-import {UnstyledLink} from '../../';
+import {UnstyledLink} from '../../../../';
 import Item from '../Item';
 
 describe('<Item />', () => {

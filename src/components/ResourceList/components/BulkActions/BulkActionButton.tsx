@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
-import Icon from '../../Icon';
-import UnstyledLink from '../../UnstyledLink';
-import {DisableableAction} from '../../../types';
+import Icon from '../../../Icon';
+import UnstyledLink from '../../../UnstyledLink';
+import {DisableableAction} from '../../../../types';
 
-import {handleMouseUpByBlurring} from '../../../utilities/focus';
+import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 import * as styles from './BulkActions.scss';
 

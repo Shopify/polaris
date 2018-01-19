@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Select, TextField} from '../../';
+import {Select, TextField} from '../../../';
 import {Filter, AppliedFilter, FilterType} from './types';
 
 export interface Props {
