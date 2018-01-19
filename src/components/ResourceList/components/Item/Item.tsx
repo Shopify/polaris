@@ -4,16 +4,16 @@ import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {DisableableAction} from '../../types';
-import ActionList from '../ActionList';
-import Popover from '../Popover';
-import Avatar, {Props as AvatarProps} from '../Avatar';
-import UnstyledLink from '../UnstyledLink';
-import Thumbnail, {Props as ThumbnailProps} from '../Thumbnail';
-import ButtonGroup from '../ButtonGroup';
-import Checkbox from '../Checkbox';
-import Button, {buttonsFrom} from '../Button';
-import {contextTypes, SELECT_ALL_ITEMS} from './types';
+import {DisableableAction} from '../../../../types';
+import ActionList from '../../../ActionList';
+import Popover from '../../../Popover';
+import Avatar, {Props as AvatarProps} from '../../../Avatar';
+import UnstyledLink from '../../../UnstyledLink';
+import Thumbnail, {Props as ThumbnailProps} from '../../../Thumbnail';
+import ButtonGroup from '../../../ButtonGroup';
+import Checkbox from '../../../Checkbox';
+import Button, {buttonsFrom} from '../../../Button';
+import {contextTypes, SELECT_ALL_ITEMS} from '../../types';
 
 import * as styles from './Item.scss';
 

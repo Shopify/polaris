@@ -46,7 +46,7 @@ describe('build', () => {
   });
 
   it('copies over subcomponent stylesheets', () => {
-    expect(fs.existsSync('./styles/components/ResourceList/BulkActions/BulkActions.scss')).toBe(true);
+    expect(fs.existsSync('./styles/components/ResourceList/components/BulkActions/BulkActions.scss')).toBe(true);
   });
 
   it('generates fully namespaced CSS for root components', () => {

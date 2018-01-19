@@ -4,7 +4,7 @@ import {
   trigger,
   findByTestID,
   findInLayeredContent,
-} from '../../../../../tests/utilities';
+} from '../../../../../../tests/utilities';
 
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../FilterValueSelector';
@@ -13,7 +13,7 @@ import {
   Button,
   Select,
   Popover,
-} from '../../../';
+} from '../../../../';
 
 describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {
