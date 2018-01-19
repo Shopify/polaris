@@ -11,6 +11,8 @@ import {read} from '@shopify/javascript-utilities/fastdom';
 import * as styles from './Collapsible.scss';
 
 export interface Props {
+  /** Assign a unique ID to the collapsible. For accessibility, pass this value as the aria-controls prop of the element that toggles the collapsible. */
+  id?: string,
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
   /** The content to display inside the collapsible. */
@@ -121,7 +123,7 @@ export default class Collapsible extends React.Component<Props, State> {
   }
 
   render() {
-    const {children, open} = this.props;
+    const {children, open, id} = this.props;
     const {animationState, height} = this.state;
 
     const animating = animationState !== 'idle';
@@ -138,6 +140,7 @@ export default class Collapsible extends React.Component<Props, State> {
 
     return (
       <div
+        id={id}
         aria-hidden={!open}
         style={{height: displayHeight}}
         className={wrapperClassName}
