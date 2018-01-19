@@ -38,6 +38,7 @@ export default function Checkbox({
   name,
   value,
 }: Props) {
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (onChange == null) { return; }
     const {currentTarget} = event;
@@ -47,29 +48,24 @@ export default function Checkbox({
   const describedBy: string[] = [];
   if (typeof error === 'string') { describedBy.push(errorID(id)); }
   if (helpText) { describedBy.push(helpTextID(id)); }
+  const ariaDescribedBy = describedBy.length ? describedBy.join(' ') : undefined;
 
   const wrapperClassName = classNames(
     styles.Checkbox,
     error && styles.error,
   );
 
-  const isChecked = checked === 'indeterminate' ? false : checked;
   const isIndeterminate = checked === 'indeterminate';
+  const isChecked = !isIndeterminate && Boolean(checked);
 
   const indeterminateAttributes = isIndeterminate
-    ? {
-      indeterminate: 'true',
-      'aria-checked': 'mixed',
-    }
-    : {
-      'aria-checked' : isChecked,
-    };
+    ? {indeterminate: 'true', 'aria-checked': 'mixed'}
+    : {'aria-checked' : isChecked};
 
   const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
 
   const inputClassName = classNames(
     styles.Input,
-    isChecked && styles['Input-checked'],
     isIndeterminate && styles['Input-indeterminate'],
   );
 
@@ -94,11 +90,10 @@ export default function Checkbox({
           onFocus={onFocus}
           onBlur={onBlur}
           aria-invalid={error != null}
-          aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
+          aria-describedby={ariaDescribedBy}
           role="checkbox"
           {...indeterminateAttributes}
         />
-
         <div className={styles.Backdrop} />
         <div className={styles.Icon}>
           <Icon source={iconSource} />

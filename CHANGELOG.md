@@ -1,6 +1,9 @@
 # Changelog
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Bug fixes
+* Fixed CSS only checkbox (thanks [daddy88](https://github.com/daddy88) for the [original issue](https://github.com/Shopify/polaris/issues/252)) ([#932](https://github.com/Shopify/polaris-react/pull/932))
 
 ## 1.10.0 - 2018-01-17
 * Restore the correct `latest` version to the CDN
