@@ -379,5 +379,6 @@ function defaultIdForItem(item: any, index: number) {
 }
 
 function isSmallScreen() {
-  return window.matchMedia(`(max-width: ${SMALL_SCREEN_WIDTH}px)`).matches;
+  return typeof window === 'undefined' ? false : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
+
