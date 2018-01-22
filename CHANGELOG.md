@@ -12,6 +12,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 * Changed Checkbox label to allow string or React.ReactNode ([#894](https://github.com/Shopify/polaris-react/pull/894))
+* Update `TextField` type with currency ([#908](https://github.com/Shopify/polaris-react/pull/908))
 
 ## 1.11.0 - 2018-02-13
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
