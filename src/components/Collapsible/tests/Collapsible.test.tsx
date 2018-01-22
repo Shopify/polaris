@@ -7,7 +7,9 @@ describe('<Collapsible />', () => {
 
   it('indicates hidden with aria-hidden', () => {
     const collapsible = shallow(
-      <Collapsible open={false}>content</Collapsible>,
+      <Collapsible id="test-collapsible" open={false}>
+        content
+      </Collapsible>,
     );
 
     const hidden = collapsible.find(ariaHiddenSelector);
@@ -15,7 +17,11 @@ describe('<Collapsible />', () => {
   });
 
   it('does not render aria-hidden when open', () => {
-    const collapsible = shallow(<Collapsible open>content</Collapsible>);
+    const collapsible = shallow(
+      <Collapsible id="test-collapsible" open>
+        content
+      </Collapsible>,
+    );
 
     const hidden = collapsible.find(ariaHiddenSelector);
     expect(hidden.exists()).toBe(false);
