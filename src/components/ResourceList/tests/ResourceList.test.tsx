@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
 import ResourceList from '../';
-import EmptySearchResult from '../components/EmptySearchResult/';
+import EmptySearchResult from '../../EmptySearchResult/';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const itemsWithID = [{id: '5', name: 'item 1'}, {id: '6', name: 'item 2'}];

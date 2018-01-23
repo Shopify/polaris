@@ -4,13 +4,13 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
+import EmptySearchResult from '../EmptySearchResult';
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
 import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import FilterControl from './components/FilterControl';
 import BulkActions, {Props as BulkActionsProps} from './components/BulkActions';
-import EmptySearchResult from './components/EmptySearchResult';
 
 import * as styles from './ResourceList.scss';
 

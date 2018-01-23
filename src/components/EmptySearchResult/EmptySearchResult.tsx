@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {DisplayText, TextStyle, Image, Stack} from '../../../';
+import {DisplayText, TextStyle, Image, Stack} from '../';
 
 import emptySearch from './illustrations/empty-search.svg';
 import styles from './EmptySearchResult.scss';
