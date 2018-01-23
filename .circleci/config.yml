@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
+      - checkout
+      - restore_cache:
+         # Find a cache corresponding to those specific yarn.lock and .yarnclean checksums
+         # when these files are changed, this key will fail
+         key: v1-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+      - run: yarn
+      - save_cache:
+         key: v1-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+         paths:
+           - node_modules
+      - run: yarn run check:ci

@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 1.10.2 - 2018-01-22
+
+### Bug fixes
+* Fixed the public repository’s build (which was missing the new CircleCI configuration files)
 
 ## 1.10.1 - 2018-01-19
 
