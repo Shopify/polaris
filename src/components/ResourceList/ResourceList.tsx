@@ -259,17 +259,17 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
     );
 
-    const headerMarkup = (
+    const headerMarkup = !emptyState ? (
       <div className={headerClassName}>
         <div className={styles.HeaderContentWrapper}>
-          {!emptyState && itemCountTextMarkup}
+          {itemCountTextMarkup}
           {checkableButtonMarkup}
           {sortingSelectMarkup}
           {selectButtonMarkup}
         </div>
         {bulkActionsMarkup}
       </div>
-    );
+    ) : null;
 
     const listMarkup =
       items.length > 0 ? (
