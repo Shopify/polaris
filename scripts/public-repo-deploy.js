@@ -96,7 +96,18 @@ let changelogFile = readFileSync(changelog, 'utf8');
 changelogFile = changelogFile.replace(STRIP_PRIVATE_LINKS, '');
 writeFileSync(changelog, changelogFile);
 
-const hiddenFilesGlob = '{.vscode,.eslintignore,.gitignore,.nvmrc,.github,.babelrc,.yarnclean}';
+const hiddenFilesToKeepInPublicRepository = [
+  '.circleci',
+  '.github',
+  '.vscode',
+  '.babelrc',
+  '.editorconfig',
+  '.eslintignore',
+  '.gitignore',
+  '.nvmrc',
+  '.yarnclean',
+].join(',');
+const hiddenFilesGlob = `{${hiddenFilesToKeepInPublicRepository}}`;
 
 // 🔥 ./sandbox/polaris
 rm('-rf', [
