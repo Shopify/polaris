@@ -14,7 +14,7 @@ export default class Portal extends React.PureComponent<Props, never> {
 
   static defaultProps = {idPrefix: ''};
 
-  portalNode: HTMLElement;
+  private portalNode: HTMLElement;
 
   private portalId = this.props.idPrefix !== ''
     ? `${this.props.idPrefix}-${getUniqueID()}`

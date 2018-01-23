@@ -42,7 +42,9 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private transitionStatus: TransitionStatus;
 
   componentDidMount() {
-    this.focusContent();
+    if (this.props.active) {
+      this.focusContent();
+    }
   }
 
   componentDidUpdate(oldProps: Props) {
@@ -61,8 +63,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   }
 
   private focusContent() {
-    const {active, preventAutofocus} = this.props;
-    if (!active || preventAutofocus) { return; }
+    if (this.props.preventAutofocus) { return; }
     if (this.contentNode == null) { return; }
 
     write(() => {
