@@ -153,8 +153,17 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     };
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps: Props) {
+    const {selectedItems} = this.props;
+
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
+
+    if (
+      selectedItems && selectedItems.length > 0 &&
+      (!nextProps.selectedItems || nextProps.selectedItems.length === 0)
+    ) {
+      this.setState({selectMode: false});
+    }
   }
 
   render() {
