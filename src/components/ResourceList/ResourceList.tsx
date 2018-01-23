@@ -140,7 +140,6 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     };
   }
 
-  @autobind
   private get emptySearchResultText() {
     const {resourceName = this.defaultResourceName} = this.props;
 
@@ -188,7 +187,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       onSortChange,
     } = this.props;
     const {selectMode} = this.state;
-    const emptyState = !!filterControl && items.length === 0;
+    const itemsExist = items.length > 0;
 
     const filterControlMarkup = filterControl
       ? (
@@ -259,7 +258,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
     );
 
-    const headerMarkup = !emptyState ? (
+    const headerMarkup = itemsExist ? (
       <div className={headerClassName}>
         <div className={styles.HeaderContentWrapper}>
           {itemCountTextMarkup}
@@ -271,23 +270,23 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       </div>
     ) : null;
 
-    const listMarkup =
-      items.length > 0 ? (
-        <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
-      ) : null;
-
-    const emptyStateMarkup = emptyState
+    const emptyStateMarkup = filterControl && !itemsExist
       ? (
         <div className={styles.EmptySearchResultWrapper}>
           <EmptySearchResult {...this.emptySearchResultText} withIllustration />
         </div>
       ) : null;
 
+    const listMarkup =
+      itemsExist ? (
+        <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
+      ) : emptyStateMarkup;
+
     return (
       <div className={styles.ResourceListWrapper}>
         {filterControlMarkup}
         {headerMarkup}
-        {listMarkup || emptyStateMarkup}
+        {listMarkup}
       </div>
     );
   }
