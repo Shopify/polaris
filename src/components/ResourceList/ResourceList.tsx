@@ -4,6 +4,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
+import EmptySearchResult from '../EmptySearchResult';
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
@@ -139,6 +140,15 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     };
   }
 
+  private get emptySearchResultText() {
+    const {resourceName = this.defaultResourceName} = this.props;
+
+    return {
+      title: `No ${resourceName.plural.toLocaleLowerCase()} found`,
+      description: 'Try changing the filters or search term',
+    };
+  }
+
   getChildContext(): Context {
     const {selectedItems, persistActions} = this.props;
     const {selectMode} = this.state;
@@ -177,6 +187,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       onSortChange,
     } = this.props;
     const {selectMode} = this.state;
+    const itemsExist = items.length > 0;
 
     const filterControlMarkup = filterControl
       ? (
@@ -247,8 +258,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
     );
 
-    const headerMarkup = (
-      <div className={headerClassName}>
+    const headerMarkup = itemsExist ? (
+      <div className={headerClassName} testID="ResourceList-Header">
         <div className={styles.HeaderContentWrapper}>
           {itemCountTextMarkup}
           {checkableButtonMarkup}
@@ -257,12 +268,19 @@ export default class ResourceList extends React.PureComponent<Props, State> {
         </div>
         {bulkActionsMarkup}
       </div>
-    );
+    ) : null;
+
+    const emptyStateMarkup = filterControl && !itemsExist
+      ? (
+        <div className={styles.EmptySearchResultWrapper}>
+          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+        </div>
+      ) : null;
 
     const listMarkup =
-      items.length > 0 ? (
+      itemsExist ? (
         <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
-      ) : null;
+      ) : emptyStateMarkup;
 
     return (
       <div className={styles.ResourceListWrapper}>
