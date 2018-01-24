@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 ## Unreleased
+
+### Enhancements
+* Added an `id` prop to Collapsible to be referenced by the `aria-controls` attribute of the component triggering the collapse ([#943](https://github.com/Shopify/polaris-react/pull/943))
+
 ### Bug fixes
 * Fixed external prop not working within ActionList component ([#1177](https://github.com/Shopify/polaris-react/pull/1177))
 * Fixed a syntax error in one of the Card component examples ([#1175](https://github.com/Shopify/polaris-react/pull/1175)) (thanks [meecrobe](https://github.com/meecrobe) for the [original issue](https://github.com/Shopify/polaris/issues/281))
@@ -84,9 +88,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ## 1.10.2 - 2018-01-22
 ### Bug fixes
 * Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
-
-### Enhancements
-* Added an `id` prop to Collapsible to be referenced by the `aria-controls` attribute of the component triggering the collapse ([#943](https://github.com/Shopify/polaris-react/pull/943))
 
 ## 1.10.1 - 2018-01-19
 ### Bug fixes
