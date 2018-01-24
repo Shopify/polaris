@@ -259,7 +259,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     );
 
     const headerMarkup = itemsExist ? (
-      <div className={headerClassName}>
+      <div className={headerClassName} testID="ResourceList-Header">
         <div className={styles.HeaderContentWrapper}>
           {itemCountTextMarkup}
           {checkableButtonMarkup}
