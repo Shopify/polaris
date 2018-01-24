@@ -99,8 +99,8 @@ Use for the least important actions so the merchant isn’t distracted by second
 ```jsx
 <ActionList
   items={[
-    {content: 'Import file'},
-    {content: 'Export file'},
+    {content: 'Import file', onAction: () => {}},
+    {content: 'Export file', onAction: () => {}},
   ]}
 />
 ```
