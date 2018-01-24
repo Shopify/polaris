@@ -20,4 +20,6 @@
 
 ## Unreleased
 
+### Enhancements
+- Added EmptySearchResult component ([#955](https://github.com/Shopify/polaris-react/pull/955))
 - Adding Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))

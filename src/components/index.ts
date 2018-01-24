@@ -100,6 +100,11 @@ export {
 } from './DisplayText';
 
 export {
+  default as EmptySearchResult,
+  Props as EmptySearchResultProps,
+} from './EmptySearchResult';
+
+export {
   default as EmptyState,
   Props as EmptyStateProps,
 } from './EmptyState';
