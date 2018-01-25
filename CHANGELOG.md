@@ -1,6 +1,7 @@
 # Changelog
 
 <!-- ## Unreleased -->
+* Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
 
 ## 1.10.2 - 2018-01-22
 
