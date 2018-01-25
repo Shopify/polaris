@@ -7,6 +7,8 @@
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
 * Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
 * Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
+* Fixed Tag so the onRemove function is not imporperly called (thanks [chaddjohnson](https://github.com/chaddjohnson) for the [original issue](https://github.com/Shopify/polaris/issues/235) ) ([#970](https://github.com/Shopify/polaris-react/pull/970))
+
 ### Documentation
 * Fixed capitalization of prop names in Pagination component’s documentation (thanks [donnguyen](https://github.com/donnguyen) for the [original issue](https://github.com/Shopify/polaris/issues/141)) ([#975](https://github.com/Shopify/polaris-react/pull/975))
 
