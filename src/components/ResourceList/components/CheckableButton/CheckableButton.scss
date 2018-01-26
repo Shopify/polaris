@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../../variables';
 
 $button-vertical-padding: ($resource-list-button-min-height - line-height(body) - rem(2px)) / 2;
 $control-size: rem(16px);
@@ -22,6 +22,18 @@ $chekbox-label-margin: rem(20px);
   border: border(dark);
   border-radius: border-radius() 0 0 border-radius();
   border-right-color: transparent;
+
+  &.CheckableButton-measuring {
+    font-size: font-size(button);
+    font-weight: bold;
+
+    // simulates measuring with an additional digit (e.g. 00 instead of 0)
+    &::before {
+      content: '';
+      display: inline-block;
+      width: font-size(button);
+    }
+  }
 
   @include breakpoint-after($resource-list-breakpoint-small) {
     flex: 0 1 auto;
@@ -70,4 +82,7 @@ $chekbox-label-margin: rem(20px);
   margin-left: $chekbox-label-margin;
   flex: 1;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: rem(1px) 0; // fixing bottom of letters being cutoff by overflow: hidden
 }

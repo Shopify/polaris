@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger} from '../../../../../tests/utilities';
+import {trigger} from '../../../../../../tests/utilities';
 
 import FilterControl, {Props} from '../';
 import FilterCreator from '../FilterCreator';
 import {Filter, FilterType} from '../types';
-import {TextField, Tag, Button} from '../../../';
+import {TextField, Tag, Button} from '../../../../';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {

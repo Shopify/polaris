@@ -4,16 +4,16 @@ import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {DisableableAction} from '../../types';
-import ActionList from '../ActionList';
-import Popover from '../Popover';
-import Avatar, {Props as AvatarProps} from '../Avatar';
-import UnstyledLink from '../UnstyledLink';
-import Thumbnail, {Props as ThumbnailProps} from '../Thumbnail';
-import ButtonGroup from '../ButtonGroup';
-import Checkbox from '../Checkbox';
-import Button, {buttonsFrom} from '../Button';
-import {contextTypes, SELECT_ALL_ITEMS} from './types';
+import {DisableableAction} from '../../../../types';
+import ActionList from '../../../ActionList';
+import Popover from '../../../Popover';
+import Avatar, {Props as AvatarProps} from '../../../Avatar';
+import UnstyledLink from '../../../UnstyledLink';
+import Thumbnail, {Props as ThumbnailProps} from '../../../Thumbnail';
+import ButtonGroup from '../../../ButtonGroup';
+import Checkbox from '../../../Checkbox';
+import Button, {buttonsFrom} from '../../../Button';
+import {contextTypes, SELECT_ALL_ITEMS} from '../../types';
 
 import * as styles from './Item.scss';
 
@@ -25,7 +25,7 @@ export type Props = {
   id: string,
   url?: string,
   media?: React.ReactElement<AvatarProps | ThumbnailProps>,
-  actions?: DisableableAction[],
+  shortcutActions?: DisableableAction[],
   children?: React.ReactNode,
   onClick?(id?: string): void,
 } & ({url: string} | {onClick(id?: string): void});
@@ -65,7 +65,7 @@ export default class Item extends React.PureComponent<Props, State> {
       children,
       url,
       media,
-      actions,
+      shortcutActions,
     } = this.props;
 
     const {
@@ -141,12 +141,12 @@ export default class Item extends React.PureComponent<Props, State> {
     let actionsMarkup: React.ReactNode | null = null;
     let disclosureMarkup: React.ReactNode | null = null;
 
-    if (actions) {
+    if (shortcutActions) {
       if (persistActions) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {buttonsFrom(actions, {size: 'slim', plain: true})}
+              {buttonsFrom(shortcutActions, {size: 'slim', plain: true})}
             </ButtonGroup>
           </div>
         );
@@ -158,7 +158,7 @@ export default class Item extends React.PureComponent<Props, State> {
               onClose={this.handleCloseRequest}
               active={actionsMenuVisible}
             >
-              <ActionList items={actions} />
+              <ActionList items={shortcutActions} />
             </Popover>
           </div>
         );
@@ -166,7 +166,7 @@ export default class Item extends React.PureComponent<Props, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup segmented>
-              {buttonsFrom(actions, {size: 'slim'})}
+              {buttonsFrom(shortcutActions, {size: 'slim'})}
             </ButtonGroup>
           </div>
         );

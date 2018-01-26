@@ -59,7 +59,7 @@ export default class TextField extends React.PureComponent<Props, State> {
   private input: HTMLElement;
 
   constructor(props: Props) {
-    super();
+    super(props);
 
     this.state = {
       height: null,

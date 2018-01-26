@@ -100,6 +100,11 @@ export {
 } from './DisplayText';
 
 export {
+  default as EmptySearchResult,
+  Props as EmptySearchResultProps,
+} from './EmptySearchResult';
+
+export {
   default as EmptyState,
   Props as EmptyStateProps,
 } from './EmptyState';
@@ -189,6 +194,11 @@ export {
   Props as PopoverProps,
   CloseSource as PopoverCloseSource,
 } from './Popover';
+
+export {
+  default as Portal,
+  Props as PortalProps,
+} from './Portal';
 
 export {
   default as RadioButton,

@@ -3,8 +3,7 @@ import {shallow, mount, ReactWrapper} from 'enzyme';
 import {
   trigger,
   findByTestID,
-  findInLayeredContent,
-} from '../../../../../tests/utilities';
+} from '../../../../../../tests/utilities';
 
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../FilterValueSelector';
@@ -13,7 +12,7 @@ import {
   Button,
   Select,
   Popover,
-} from '../../../';
+} from '../../../../';
 
 describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {
@@ -56,7 +55,7 @@ describe('<FilterCreator />', () => {
     expect(findByTestID(wrapper, 'FilterCreator-FilterActivator').exists())
       .toBe(true);
     expect(wrapper.find(Button)).toHaveLength(1);
-    expect(findInLayeredContent(wrapper, Select).exists()).toBe(false);
+    expect(wrapper.find(Select).exists()).toBe(false);
   });
 
   it('renders a non-active popover on default', () => {
@@ -93,7 +92,7 @@ describe('<FilterCreator />', () => {
     clickAddFilter(wrapper);
 
     expect(onAddFilter).toHaveBeenCalled();
-    expect(findFilterKeySelect(wrapper).exists()).toBe(false);
+    expect(wrapper.find(Popover).prop('active')).toBe(false);
   });
 
   describe('filters', () => {
@@ -119,7 +118,7 @@ describe('<FilterCreator />', () => {
 
       activatePopover(wrapper);
 
-      expect(findInLayeredContent(wrapper, FilterValueSelector).exists())
+      expect(wrapper.find(FilterValueSelector).exists())
         .toBe(false);
     });
 
@@ -131,9 +130,9 @@ describe('<FilterCreator />', () => {
       activatePopover(wrapper);
       selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
 
-      expect(findInLayeredContent(wrapper, FilterValueSelector).prop('filter'))
+      expect(wrapper.find(FilterValueSelector).prop('filter'))
         .toMatchObject(mockDefaultProps.filters[0]);
-      expect(findInLayeredContent(wrapper, FilterValueSelector).prop('value'))
+      expect(wrapper.find(FilterValueSelector).prop('value'))
         .toBeUndefined();
     });
 
@@ -146,7 +145,7 @@ describe('<FilterCreator />', () => {
       selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
       selectFilterValue(wrapper, 'Bundle');
 
-      expect(findInLayeredContent(wrapper, FilterValueSelector).prop('value'))
+      expect(wrapper.find(FilterValueSelector).prop('value'))
         .toBe('Bundle');
     });
   });
@@ -238,14 +237,14 @@ function activatePopover(wrapper: ReactWrapper<Props, any>) {
 }
 
 function findFilterKeySelect(popover: ReactWrapper<Props, any>) {
-  return findInLayeredContent(popover, Select);
+  return popover.find(Select);
 }
 
 function selectFilterKey(
   wrapper: ReactWrapper<Props, any>,
   filterKey: string,
 ) {
-  trigger(findInLayeredContent(wrapper, Select), 'onChange', filterKey);
+  trigger(wrapper.find(Select), 'onChange', filterKey);
 }
 
 function selectFilterValue(
@@ -253,7 +252,7 @@ function selectFilterValue(
   filterValue: string,
 ) {
   trigger(
-    findInLayeredContent(wrapper, FilterValueSelector),
+    wrapper.find(FilterValueSelector),
     'onChange',
     filterValue,
   );

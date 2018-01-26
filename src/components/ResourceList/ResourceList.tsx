@@ -4,12 +4,13 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
-import CheckableButton from './CheckableButton';
+import EmptySearchResult from '../EmptySearchResult';
+import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
-import Item from './Item';
+import Item from './components/Item';
 import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
-import FilterControl from './FilterControl';
-import BulkActions, {Props as BulkActionsProps} from './BulkActions';
+import FilterControl from './components/FilterControl';
+import BulkActions, {Props as BulkActionsProps} from './components/BulkActions';
 
 import * as styles from './ResourceList.scss';
 
@@ -105,7 +106,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       ? `${items.length}+`
       : selectedItems.length;
 
-    return (isSmallScreen()) ? `${selectedItemsCount}` : `${selectedItemsCount} selected`;
+    return `${selectedItemsCount} selected`;
   }
 
   @autobind
@@ -139,6 +140,15 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     };
   }
 
+  private get emptySearchResultText() {
+    const {resourceName = this.defaultResourceName} = this.props;
+
+    return {
+      title: `No ${resourceName.plural.toLocaleLowerCase()} found`,
+      description: 'Try changing the filters or search term',
+    };
+  }
+
   getChildContext(): Context {
     const {selectedItems, persistActions} = this.props;
     const {selectMode} = this.state;
@@ -153,8 +163,17 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     };
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps: Props) {
+    const {selectedItems} = this.props;
+
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
+
+    if (
+      selectedItems && selectedItems.length > 0 &&
+      (!nextProps.selectedItems || nextProps.selectedItems.length === 0)
+    ) {
+      this.setState({selectMode: false});
+    }
   }
 
   render() {
@@ -168,6 +187,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       onSortChange,
     } = this.props;
     const {selectMode} = this.state;
+    const itemsExist = items.length > 0;
 
     const filterControlMarkup = filterControl
       ? (
@@ -238,8 +258,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
     );
 
-    const headerMarkup = (
-      <div className={headerClassName}>
+    const headerMarkup = itemsExist ? (
+      <div className={headerClassName} testID="ResourceList-Header">
         <div className={styles.HeaderContentWrapper}>
           {itemCountTextMarkup}
           {checkableButtonMarkup}
@@ -248,12 +268,19 @@ export default class ResourceList extends React.PureComponent<Props, State> {
         </div>
         {bulkActionsMarkup}
       </div>
-    );
+    ) : null;
+
+    const emptyStateMarkup = filterControl && !itemsExist
+      ? (
+        <div className={styles.EmptySearchResultWrapper}>
+          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+        </div>
+      ) : null;
 
     const listMarkup =
-      items.length > 0 ? (
+      itemsExist ? (
         <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
-      ) : null;
+      ) : emptyStateMarkup;
 
     return (
       <div className={styles.ResourceListWrapper}>
@@ -379,5 +406,6 @@ function defaultIdForItem(item: any, index: number) {
 }
 
 function isSmallScreen() {
-  return window.matchMedia(`(max-width: ${SMALL_SCREEN_WIDTH}px)`).matches;
+  return typeof window === 'undefined' ? false : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
+

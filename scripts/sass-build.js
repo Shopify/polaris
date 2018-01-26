@@ -109,6 +109,8 @@ function createSassIndex(dir) {
 }
 
 function namespaceSassClasses(filePath, file, tokens) {
+  if (basename(filePath, '.scss') === 'variables') { return file; }
+
   const sassPath = resolve(filePath);
   const namespaces = tokens[sassPath];
 
