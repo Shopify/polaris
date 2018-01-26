@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Bug fixes
+- Fixed ActionList component to provide section dividers when a title was not provided ([#926](https://github.com/Shopify/polaris-react/pull/926))
+
 ### Enhancements
 - Added EmptySearchResult component ([#955](https://github.com/Shopify/polaris-react/pull/955))
 - Added Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))

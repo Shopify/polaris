@@ -18,12 +18,19 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   list-style: none;
   margin: 0;
   padding: 0;
+  border-top: border();
+}
+
+.ActionList,
+.Section:first-child {
+  > .Section-withoutTitle .Actions {
+    border-top: none;
+  }
 }
 
 .Title {
   @include text-style-subheading;
   padding: (spacing(tight) * 1.5) spacing();
-  border-bottom: border();
 }
 
 .Item {
