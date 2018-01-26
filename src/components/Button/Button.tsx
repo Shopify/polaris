@@ -26,6 +26,8 @@ export interface Props {
   submit?: boolean,
   disclosure?: boolean,
   accessibilityLabel?: string,
+  ariaControls?: string,
+  ariaExpanded?: boolean,
   icon?: IconProps['source'],
   onClick?(): void,
   onFocus?(): void,
@@ -38,6 +40,8 @@ export default function Button({
   loading,
   children,
   accessibilityLabel,
+  ariaControls,
+  ariaExpanded,
   onClick,
   onFocus,
   onBlur,
@@ -126,6 +130,8 @@ export default function Button({
         className={className}
         disabled={isDisabled}
         aria-label={accessibilityLabel}
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
         role={loading ? 'alert' : undefined}
         aria-busy={loading ? true : undefined}
       >

@@ -79,10 +79,17 @@ describe('<Button />', () => {
   describe('accessibilityLabel', () => {
     it('sets the aria-label on the button', () => {
       const button = shallow(<Button accessibilityLabel="This deletes a thing" icon="delete" />);
-
-      // For some reason, TSLint complains about needing to pass an explicit prop.
-      // tslint:disable-next-line
       expect(button.find('button').prop('aria-label')).toBe('This deletes a thing');
+    });
+
+    it('sets the aria-controls on the button', () => {
+      const button = shallow(<Button ariaControls="controler-id" icon="delete" />);
+      expect(button.find('button').prop('aria-controls')).toBe('controler-id');
+    });
+
+    it('sets the aria-expanded on the button', () => {
+      const button = shallow(<Button ariaExpanded icon="delete" />);
+      expect(button.find('button').prop('aria-expanded')).toBe(true);
     });
   });
 });
