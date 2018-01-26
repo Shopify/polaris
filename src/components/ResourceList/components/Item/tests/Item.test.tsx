@@ -17,6 +17,13 @@ describe('<Item />', () => {
     unsubscribe: noop,
   };
 
+  const mockSelectableContext = {
+    ...mockDefaultContext,
+    selectMode: true,
+    selectable: true,
+    onSelectionChange: jest.fn(),
+  };
+
   const url = 'http://test-link.com';
 
   describe('url', () => {
@@ -87,6 +94,39 @@ describe('<Item />', () => {
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
       expect(onClick).toBeCalledWith(id);
+    });
+  });
+
+  describe('in selectMode', () => {
+    it('it should not call onClick when clicking the item', () => {
+      const id = 'itemId';
+      const onClick = jest.fn();
+      const wrapper = mount(
+        <Item
+          id={id}
+          onClick={onClick}
+        />,
+        {context: mockSelectableContext},
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      expect(onClick).not.toBeCalledWith(id);
+    });
+
+    it('it should call onSelectionChange with the id of the item even if url or onClick is present', () => {
+      const id = 'itemId';
+      const onClick = jest.fn();
+      const wrapper = mount(
+        <Item
+          id={id}
+          url={url}
+          onClick={onClick}
+        />,
+        {context: mockSelectableContext},
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(true, id);
     });
   });
 });

@@ -252,6 +252,12 @@ export default class Item extends React.PureComponent<Props, State> {
   private handleClick(event: React.MouseEvent<any>) {
     const {id, onClick, url} = this.props;
     const anchor = this.node && this.node.querySelector('a');
+    const {selectMode} = this.context;
+
+    if (selectMode) {
+      this.handleLargerSelectionArea(event);
+      return;
+    }
 
     if (anchor === event.target) { return; }
 
