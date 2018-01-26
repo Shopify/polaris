@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {layeredComponent} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
+import Portal from '../Portal';
 import TooltipOverlay from './TooltipOverlay';
 import * as styles from './Tooltip.scss';
 
@@ -25,18 +25,18 @@ export interface Props {
 
 export interface State {
   active: boolean,
+  activatorNode: HTMLElement | null,
 }
 
 const getUniqueID = createUniqueIDFactory('TooltipContent');
 
-@layeredComponent({idPrefix: 'Tooltip'})
 export default class Tooltip extends React.PureComponent<Props, State> {
   state: State = {
     active: false,
+    activatorNode: null,
   };
 
   private id = getUniqueID();
-  private activatorNode: HTMLElement | null;
   private activatorContainer: HTMLElement | null;
 
   componentDidMount() {
@@ -47,35 +47,42 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     this.setAccessibilityAttributes();
   }
 
-  renderLayer() {
-    const {id, activatorNode} = this;
-    if (activatorNode == null) { return null; }
+  render() {
+    const {
+      id,
+    } = this;
 
     const {
-      preferredPosition = 'below',
+      children,
+      content,
       active,
       light,
-      content,
+      preferredPosition = 'below',
+      activatorWrapper: WrapperComponent = 'div',
     } = this.props;
 
-    return (
-      <TooltipOverlay
-        id={id}
-        preferredPosition={preferredPosition}
-        activator={activatorNode}
-        active={active || this.state.active}
-        onClose={noop}
-        light={light}
-      >
-        <div className={styles.Label}>
-          {content}
-        </div>
-      </TooltipOverlay>
-    );
-  }
+    const {
+      activatorNode,
+    } = this.state;
 
-  render() {
-    const {activatorWrapper: WrapperComponent = 'span'} = this.props;
+    const portal = activatorNode
+      ? (
+        <Portal idPrefix="Tooltip">
+          <TooltipOverlay
+            id={id}
+            preferredPosition={preferredPosition}
+            activator={activatorNode}
+            active={active || this.state.active}
+            onClose={noop}
+            light={light}
+          >
+            <div className={styles.Label}>
+              {content}
+            </div>
+          </TooltipOverlay>
+        </Portal>
+      )
+      : null;
 
     return (
       <WrapperComponent
@@ -85,7 +92,8 @@ export default class Tooltip extends React.PureComponent<Props, State> {
         onMouseLeave={this.handleMouseLeave}
         ref={this.setActivator}
       >
-        {this.props.children}
+        {children}
+        {portal}
       </WrapperComponent>
     );
   }
@@ -93,12 +101,12 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   @autobind
   private setActivator(node: HTMLElement | null) {
     if (node == null) {
-      this.activatorNode = null;
       this.activatorContainer = null;
+      this.setState({activatorNode: null});
       return;
     }
 
-    this.activatorNode = node.firstElementChild as HTMLElement;
+    this.setState({activatorNode: node.firstElementChild as HTMLElement});
     this.activatorContainer = node;
   }
 
