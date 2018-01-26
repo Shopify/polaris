@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {CSSTransition} from 'react-transition-group';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {CSSTransition, Transition} from 'react-transition-group';
+import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {DisableableAction, Action} from '../../../../types';
 import {Duration} from '../../../shared';
@@ -8,6 +8,7 @@ import {
   ActionList,
   Popover,
   Button,
+  EventListener,
 } from '../../../';
 import {ActionListSection} from '../../../ActionList/Section';
 import CheckableButton from '../CheckableButton';
@@ -16,6 +17,8 @@ import * as styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
 export type BulkActionListSection = ActionListSection;
+
+export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
@@ -35,15 +38,9 @@ export interface Props {
 export interface State {
   smallScreenPopoverVisible: boolean,
   largeScreenPopoverVisible: boolean,
+  containerWidth: number,
+  measuring: boolean,
 }
-
-const fadeClasses = {
-  appear: classNames(styles.Fade, styles['Fade-appear']),
-  appearActive: classNames(styles.Fade, styles['Fade-appearing']),
-  enter: classNames(styles.Fade, styles['Fade-enter']),
-  enterActive: classNames(styles.Fade, styles['Fade-entering']),
-  exit: classNames(styles.Fade, styles['Fade-exit']),
-};
 
 const slideClasses = {
   appear: classNames(styles.Slide, styles['Slide-appear']),
@@ -57,10 +54,45 @@ export default class BulkActions extends React.PureComponent<Props, State> {
   state = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
+    containerWidth: 0,
+    measuring: true,
   };
 
   private actionsActivatorLabel = 'Actions';
   private moreActionsActivatorLabel = 'More actions';
+  private containerNode: HTMLElement | null;
+  private largeScreenButtonsNode: HTMLElement | null;
+  private moreActionsNode: HTMLElement | null;
+  private promotedActionsWidths: number[] = [];
+  private bulkActionsWidth = 0;
+  private addedMoreActionsWidthForMeasuring = 0;
+
+  private get numberOfPromotedActionsToRender(): number {
+    const {promotedActions} = this.props;
+    const {containerWidth, measuring} = this.state;
+
+    if (!promotedActions) { return 0; }
+
+    if ((containerWidth >= this.bulkActionsWidth) || measuring) {
+      return promotedActions.length;
+    }
+
+    let sufficientSpace = false;
+    let counter = promotedActions.length - 1;
+    let totalWidth = 0;
+
+    while (!sufficientSpace && counter >= 0) {
+      totalWidth = totalWidth + this.promotedActionsWidths[counter];
+      const widthWithRemovedAction = this.bulkActionsWidth - totalWidth + this.addedMoreActionsWidthForMeasuring;
+      if (containerWidth >= widthWithRemovedAction) {
+        sufficientSpace = true;
+      } else {
+        counter--;
+      }
+    }
+
+    return counter;
+  }
 
   private get hasActions() {
     const {promotedActions, actions} = this.props;
@@ -86,6 +118,23 @@ export default class BulkActions extends React.PureComponent<Props, State> {
     }
   }
 
+  componentDidMount() {
+    const {actions, promotedActions} = this.props;
+
+    if (promotedActions && !actions && this.moreActionsNode) {
+      this.addedMoreActionsWidthForMeasuring = this.moreActionsNode.getBoundingClientRect().width;
+    }
+
+    this.bulkActionsWidth = this.largeScreenButtonsNode ? this.largeScreenButtonsNode.getBoundingClientRect().width - this.addedMoreActionsWidthForMeasuring : 0;
+
+    if (this.containerNode) {
+      this.setState({
+        containerWidth: this.containerNode.getBoundingClientRect().width,
+        measuring: false,
+      });
+    }
+  }
+
   render() {
     const {
       selectMode,
@@ -103,15 +152,19 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       console.warn(`To provide a better user experience. There should only be a maximum of ${MAX_PROMOTED_ACTIONS} promoted actions.`);
     }
 
-    const {smallScreenPopoverVisible, largeScreenPopoverVisible} = this.state;
+    const {
+      smallScreenPopoverVisible,
+      largeScreenPopoverVisible,
+      measuring,
+    } = this.state;
 
     const paginatedSelectAllActionMarkup = paginatedSelectAllAction
-    ? (
-      <Button onClick={paginatedSelectAllAction.onAction} plain>
-        {paginatedSelectAllAction.content}
-      </Button>
-    )
-    : null;
+      ? (
+        <Button onClick={paginatedSelectAllAction.onAction} plain>
+          {paginatedSelectAllAction.content}
+        </Button>
+      )
+      : null;
 
     const paginatedSelectAllTextMarkup = paginatedSelectAllText && paginatedSelectAllAction
       ? (
@@ -134,9 +187,11 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       </button>
     );
 
+    const numberOfPromotedActionsToRender = this.numberOfPromotedActionsToRender;
+
     const allActionsPopover = this.hasActions
       ? (
-        <div className={styles.Popover}>
+        <div className={styles.Popover} ref={this.setMoreActionsNode}>
           <Popover
             active={smallScreenPopoverVisible}
             activator={
@@ -158,15 +213,19 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const promotedActionsMarkup = promotedActions && promotedActions.length > 0
-      ? promotedActions.map((action, index) => (
-        <BulkActionButton {...action} key={index} />
-      ))
+    const promotedActionsMarkup = promotedActions && numberOfPromotedActionsToRender > 0
+      ? [...promotedActions].slice(0, numberOfPromotedActionsToRender).map(
+        (action, index) => <BulkActionButton {...action} key={index} handleMeasurement={this.handleMeasurement} />,
+      )
       : null;
 
-    const actionsPopover = this.actionSections
+    const rolledInPromotedActions = promotedActions && (numberOfPromotedActionsToRender < promotedActions.length)
+      ? [...promotedActions].slice(numberOfPromotedActionsToRender)
+      : [];
+
+    const actionsPopover = this.actionSections || rolledInPromotedActions.length > 0 || measuring
       ? (
-        <div className={styles.Popover}>
+        <div className={styles.Popover} ref={this.setMoreActionsNode}>
           <Popover
             active={largeScreenPopoverVisible}
             activator={
@@ -179,6 +238,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
             onClose={this.toggleLargeScreenPopover}
           >
             <ActionList
+              items={rolledInPromotedActions}
               sections={this.actionSections}
               onActionAnyItem={this.toggleLargeScreenPopover}
             />
@@ -187,72 +247,93 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       )
       : null;
 
-    const smallScreenGroupClassName = classNames(styles.Group, styles['Group-smallScreen']);
-
     const checkableButtonProps = {
       accessibilityLabel,
       label,
       selected,
       selectMode,
       onToggleAll,
+      measuring,
     };
 
     const smallScreenGroup = (
-      <div key="smallScreenGroup" className={smallScreenGroupClassName}>
-        <CSSTransition
-          in={selectMode}
-          timeout={Duration.Base}
-          classNames={fadeClasses}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div className={styles.FadeContainer}>
-            <div className={styles.ButtonGroup}>
-              <CSSTransition
-                in={selectMode}
-                timeout={Duration.Base}
-                classNames={slideClasses}
-                mountOnEnter
-                unmountOnExit
-                appear
-              >
-                <CheckableButton {...checkableButtonProps} />
-              </CSSTransition>
-              {allActionsPopover}
-              {cancelButton}
-            </div>
-            {paginatedSelectAllMarkup}
-          </div>
-        </CSSTransition>
-      </div>
+      <Transition timeout={0} in={selectMode} key="smallGroup">
+        {
+          (status: TransitionStatus) => {
+            const smallScreenGroupClassName = classNames(
+              styles.Group,
+              styles['Group-smallScreen'],
+              styles[`Group-${status}`],
+            );
+            return (
+              <div className={smallScreenGroupClassName}>
+                <div className={styles.ButtonGroup}>
+                  <CSSTransition
+                    in={selectMode}
+                    timeout={Duration.Base}
+                    classNames={slideClasses}
+                    appear
+                  >
+                    <CheckableButton {...checkableButtonProps} />
+                  </CSSTransition>
+                  {allActionsPopover}
+                  {cancelButton}
+                </div>
+                {paginatedSelectAllMarkup}
+              </div>
+            );
+          }
+        }
+      </Transition>
     );
 
-    const largeScreenGroupClassName = classNames(styles.Group, styles['Group-largeScreen']);
     const largeScreenGroup = (
-      <div key="largeScreenGroup" className={largeScreenGroupClassName}>
-        <CSSTransition
-          in={selectMode}
-          timeout={Duration.Slow}
-          classNames={fadeClasses}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div className={styles.FadeContainer}>
-            <div className={styles.ButtonGroup}>
-              <CheckableButton {...checkableButtonProps} />
-              {promotedActionsMarkup}
-              {actionsPopover}
-            </div>
-           {paginatedSelectAllMarkup}
-          </div>
-        </CSSTransition>
-      </div>
+      <Transition timeout={0} in={selectMode} key="largeGroup">
+        {
+          (status: TransitionStatus) => {
+            const largeScreenGroupClassName = classNames(
+              styles.Group,
+              styles['Group-largeScreen'],
+              !measuring && styles[`Group-${status}`],
+              measuring && styles['Group-measuring'],
+            );
+            return (
+              <div className={largeScreenGroupClassName}>
+                <EventListener event="resize" handler={this.handleResize} />
+                <div className={styles.ButtonGroup} ref={this.setLargeScreenButtonsNode}>
+                  <CheckableButton {...checkableButtonProps} />
+                  {promotedActionsMarkup}
+                  {actionsPopover}
+                </div>
+                {paginatedSelectAllMarkup}
+              </div>
+            );
+          }
+        }
+      </Transition>
     );
 
-    return [
-      smallScreenGroup,
-      largeScreenGroup,
-    ];
+    return (
+      <div ref={this.setContainerNode}>
+        {smallScreenGroup}
+        {largeScreenGroup}
+      </div>
+    );
+  }
+
+  @autobind
+  private setLargeScreenButtonsNode(node: HTMLElement | null) {
+    this.largeScreenButtonsNode = node;
+  }
+
+  @autobind
+  private setContainerNode(node: HTMLElement | null) {
+    this.containerNode = node;
+  }
+
+  @autobind
+  private setMoreActionsNode(node: HTMLElement | null) {
+    this.moreActionsNode = node;
   }
 
   @autobind private setSelectMode(val: boolean) {
@@ -270,6 +351,25 @@ export default class BulkActions extends React.PureComponent<Props, State> {
   @autobind
   private toggleLargeScreenPopover() {
     this.setState(({largeScreenPopoverVisible}) => ({largeScreenPopoverVisible: !largeScreenPopoverVisible}));
+  }
+
+  @autobind
+  @debounce(50, { trailing: true })
+  private handleResize() {
+    if (this.containerNode) {
+      const containerWidth = this.containerNode.getBoundingClientRect().width;
+      if (containerWidth > 0) {
+        this.setState({containerWidth});
+      }
+    }
+  }
+
+  @autobind
+  private handleMeasurement(width: number) {
+    const {measuring} = this.state;
+    if (measuring) {
+      this.promotedActionsWidths.push(width);
+    }
   }
 }
 

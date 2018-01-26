@@ -106,7 +106,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       ? `${items.length}+`
       : selectedItems.length;
 
-    return (isSmallScreen()) ? `${selectedItemsCount}` : `${selectedItemsCount} selected`;
+    return `${selectedItemsCount} selected`;
   }
 
   @autobind

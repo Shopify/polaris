@@ -10,24 +10,46 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   &:not(:first-child) {
     margin-left: -1px;
   }
+
+  .Group-measuring & {
+    font-size: font-size(button);
+  }
 }
 
 .Group {
   @include text-style-input;
-  display: flex;
+  width: 100%;
+  will-change: opacity, display;
+  transition: opacity easing() duration();
+  display: none;
   align-items: center;
   flex-wrap: wrap;
+  opacity: 0;
+
+  &.Group-measuring {
+    transition: none;
+    display: flex;
+    opacity: 0;
+  }
+}
+
+.Group-entering,
+.Group-exiting {
+  opacity: 0;
+  display: flex;
+}
+
+.Group-entered {
+  opacity: 1;
+  display: flex;
+}
+
+.Group-exited {
+  opacity: 0;
+  display: none;
 }
 
 .Group-smallScreen {
-  width: 100%;
-  display: flex;
-
-  .FadeContainer {
-    width: 100%;
-    display: block;
-  }
-
   @include breakpoint-after($resource-list-breakpoint-small) {
     display: none;
   }
@@ -36,14 +58,17 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Group-largeScreen {
   display: none;
 
-  .FadeContainer {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
   @include breakpoint-after($resource-list-breakpoint-small) {
     display: flex;
+
+    &.Group-exiting {
+      transition: none;
+    }
+
+    &.Group-exited {
+      opacity: 0;
+      display: none;
+    }
   }
 }
 
@@ -60,6 +85,11 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
     width: auto;
     justify-content: flex-start;
     margin-right: spacing(tight);
+  }
+
+  .Group-measuring & {
+    position: absolute;
+    width: auto;
   }
 
   .Button {
@@ -125,30 +155,6 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   padding: spacing(extra-tight) 0;
 }
 
-.Fade {
-  will-change: opacity;
-  opacity: 1;
-  transition: opacity easing() duration();
-}
-
-.Fade-appear,
-.Fade-enter,
-.Fade-exit {
-  opacity: 0;
-}
-
-.Fade-exit {
-  @include breakpoint-after($resource-list-breakpoint-small) {
-    transition: none;
-  }
-}
-
-.Fade-appearing,
-.Fade-entering {
-  // Safari bug with using opacity 1
-  opacity: 0.99;
-}
-
 .Slide {
   will-change: transform;
   transform: translateY(0);
@@ -165,3 +171,4 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Slide-entering {
   transform: translateY(0);
 }
+

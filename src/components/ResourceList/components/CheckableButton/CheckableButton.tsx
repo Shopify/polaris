@@ -10,16 +10,18 @@ export interface Props {
   selected?: boolean | 'indeterminate',
   selectMode?: boolean,
   plain?: boolean,
+  measuring?: boolean,
   onToggleAll?(): void,
 }
 
-export default function CheckableButton({accessibilityLabel, label = '', onToggleAll, selected, selectMode, plain}: Props) {
+export default function CheckableButton({accessibilityLabel, label = '', onToggleAll, selected, selectMode, plain, measuring}: Props) {
   const className = plain
     ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
     : classNames(
       styles.CheckableButton,
       selectMode && styles['CheckableButton-selectMode'],
       selected && styles['CheckableButton-selected'],
+      measuring && styles['CheckableButton-measuring'],
     );
 
   return (
