@@ -36,6 +36,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Updated Popover to use the new Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))
 * Brought FlashMessage over from polaris-next and updated it to use Portal ([#945](https://github.com/Shopify/polaris-react/pull/945))
 
+* Updated Tooltip to use Portal instead of layeredComponent. ([#982](https://github.com/Shopify/polaris-react/pull/982))
+
 ### Breaking Changes
 - Dropped support for React < 16. Upgrade `react` and `react-dom` packages to v16. ([#936](https://github.com/shopify/polaris-react/pull/936))
 
