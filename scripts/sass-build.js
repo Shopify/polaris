@@ -24,11 +24,13 @@ export default function generateSassBuild(destinationDir) {
 
   const buildSass = resolve(destinationDir, 'sass');
   const buildStyles = join(buildSass, 'styles');
+  const global = join(buildStyles, 'global');
   const foundation = join(buildStyles, 'foundation');
   const shared = join(buildStyles, 'shared');
   const components = join(buildStyles, 'components');
 
-  mkdir('-p', components, foundation, shared);
+  mkdir('-p', components, foundation, global, shared);
+  cp(join(srcStyles, 'global', '*.scss'), global);
   cp(join(srcStyles, 'foundation', '*.scss'), foundation);
   cp(join(srcStyles, 'shared', '*.scss'), shared);
   cp(join(srcStyles, 'global.scss'), join(buildStyles, 'global.scss'));

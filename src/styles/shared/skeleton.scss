@@ -1,18 +1,10 @@
 /// Used to create the shimmer effect of skeleton components
 $skeleton-shimmer-duration: duration(slower) * 2;
 
-@keyframes skeletonShimmerAnimation {
-  0% {
-    opacity: 0.45;
-  }
-
-  100% {
-    opacity: 0.9;
-  }
-}
-
 @mixin skeleton-shimmer {
-  animation: skeletonShimmerAnimation $skeleton-shimmer-duration linear infinite alternate;
+  :global {
+    animation: polaris-SkeletonShimmerAnimation $skeleton-shimmer-duration linear infinite alternate;
+  }
   will-change: opacity;
 }
 
