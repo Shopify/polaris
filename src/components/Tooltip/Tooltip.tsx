@@ -58,7 +58,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
       active,
       light,
       preferredPosition = 'below',
-      activatorWrapper: WrapperComponent = 'div',
+      activatorWrapper: WrapperComponent = 'span',
     } = this.props;
 
     const {
