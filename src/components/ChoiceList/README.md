@@ -208,6 +208,46 @@ Use when to let merchants make multiple sections from a list of choices.
 />
 ```
 
+### Single-choice or multi-choice list with children content (always rendered)
+Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
+
+```jsx
+<ChoiceList
+  title="Discount minimum requirements"
+  choices={[
+    {label: 'None', value: 'none'},
+    {label: 'Minimum purchase', value: 'minimum_purchase'},
+    {
+      label: 'Minimum quantity',
+      value: 'minimum_quantity',
+      renderChildren: () => <TextField label="Minimum Quantity" />,
+    },
+  ]}
+  selected={['none']}
+/>
+```
+
+### Single-choice or multi-choice list with children content (only rendered when choice is selected)
+Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
+
+```jsx
+<ChoiceList
+  title="Discount minimum requirements"
+  choices={[
+    {label: 'None', value: 'none'},
+    {label: 'Minimum purchase', value: 'minimum_purchase'},
+    {
+      label: 'Minimum quantity',
+      value: 'minimum_quantity',
+      renderChildren: (isSelected: boolean) => {
+        return isSelected && <TextField label="Minimum Quantity" />;
+      },
+    },
+  ]}
+  selected={['none']}
+/>
+```
+
 ---
 
 ## Related components
