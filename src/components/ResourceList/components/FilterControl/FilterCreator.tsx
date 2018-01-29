@@ -146,7 +146,11 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
       key: selectedFilterKey,
       value: this.state.selectedFilterValue || '',
     });
-    this.setState({popoverActive: false});
+    this.setState({
+      popoverActive: false,
+      selectedFilter: undefined,
+      selectedFilterValue: undefined,
+    });
   }
 }
 
