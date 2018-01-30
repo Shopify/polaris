@@ -170,7 +170,8 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
     if (
       selectedItems && selectedItems.length > 0 &&
-      (!nextProps.selectedItems || nextProps.selectedItems.length === 0)
+      (!nextProps.selectedItems || nextProps.selectedItems.length === 0) &&
+      !isSmallScreen()
     ) {
       this.setState({selectMode: false});
     }
