@@ -330,13 +330,15 @@ export default class ResourceList extends React.PureComponent<Props, State> {
 
   @autobind
   private handleSelectionChange(selected: boolean, id: string) {
-    const {onSelectionChange, selectedItems} = this.props;
+    const {onSelectionChange, selectedItems, items, idForItem = defaultIdForItem} = this.props;
 
     if (selectedItems == null || onSelectionChange == null) {
       return;
     }
 
-    const newlySelectedItems = Array.isArray(selectedItems) ? [...selectedItems] : [];
+    const newlySelectedItems = (selectedItems === SELECT_ALL_ITEMS)
+      ? getAllItemsOnPage(items, idForItem)
+      : [...selectedItems];
 
     if (selected) {
       newlySelectedItems.push(id);
