@@ -1,9 +1,10 @@
 # Changelog
 
-* Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
-
 <!-- ## Unreleased -->
+### Bug fixes
+* Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
 * Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
+* Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
 
 ## 1.10.2 - 2018-01-22
 

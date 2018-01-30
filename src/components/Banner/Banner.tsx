@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
-import {Action} from '../../types';
+import {Action, DisableableAction, LoadableAction} from '../../types';
 import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
@@ -22,7 +22,7 @@ export interface Props {
   icon?: IconProps['source'],
   title?: string,
   status?: Status,
-  action?: Action,
+  action?: DisableableAction & LoadableAction,
   secondaryAction?: Action,
   children?: React.ReactNode,
   onDismiss?(): void,
