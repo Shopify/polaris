@@ -1,5 +1,7 @@
 # Changelog
 
+* Exposed Option from the Select component. ([#976](https://github.com/Shopify/polaris-react/pull/976))
+
 <!-- ## Unreleased -->
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
