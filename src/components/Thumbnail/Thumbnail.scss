@@ -7,9 +7,10 @@ $stacking-order: (
   position: relative;
   display: block;
   overflow: hidden;
+  min-width: $small-size;
+  max-width: 100%;
   background: color(white);
   border-radius: border-radius();
-  max-width: 100%;
 
   &::after {
     content: '';
@@ -38,8 +39,11 @@ $stacking-order: (
   position: absolute;
   z-index: z-index(image, $stacking-order);
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  max-width: 100%;
+  margin: auto;
 
   @supports (object-fit: cover) {
     object-fit: cover;

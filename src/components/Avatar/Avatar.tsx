@@ -62,18 +62,8 @@ export default function Avatar({
   const initialsMarkup = initials
     ? (
       <div className={styles.Initials}>
-        <svg
-          width="48"
-          height="26"
-          viewBox="0 0 48 26"
-        >
-          <text
-            x="50%"
-            y="50%"
-            textAnchor="middle"
-            dy="9"
-            fill="white"
-          >
+        <svg width="48" height="48" viewBox="0 0 48 48">
+          <text x="50%" y="50%" dy="0.35em">
             {initials}
           </text>
         </svg>

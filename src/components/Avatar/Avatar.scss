@@ -6,8 +6,8 @@ $large-size: rem(60px);
   position: relative;
   display: block;
   overflow: hidden;
+  min-width: $small-size;
   max-width: 100%;
-  padding: 2px;
   background: color(teal);
   border-radius: 50%;
   user-select: none;
@@ -29,10 +29,10 @@ $large-size: rem(60px);
 
 .Initials {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  bottom: 2px;
-  left: 2px;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,13 @@ $large-size: rem(60px);
   svg {
     max-width: 100%;
     height: auto;
-    font-size: rem(26px);
+  }
+
+  text {
+    fill: color(white);
+    letter-spacing: 0.05em;
+    font-size: 26px;
+    text-anchor: middle;
   }
 }
 
