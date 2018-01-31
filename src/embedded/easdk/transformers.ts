@@ -36,6 +36,7 @@ export function transformBreadcrumb(
   };
 }
 
+// use and keep in sync with the Page ActionGroup interface
 export {ActionGroup};
 
 export interface EASDKBaseButton {
@@ -91,16 +92,41 @@ export function transformActionGroup(
 }
 
 function getTargetFromURL(url: string): EASDKTarget {
-  if (url.charAt(0) === '/') {
+  if (isRootRelative(url)) {
     return 'shopify';
   } else if (
-    url.indexOf(window.location.hostname) >= 0 ||
-    (url.charAt(0) !== '/' && url.indexOf('http') !== 0)
+    isSameHost(url) ||
+    isFragment(url) ||
+    isRelative(url) ||
+    isSchemeRelative(url)
   ) {
     return 'app';
   } else {
     return 'new';
   }
+}
+
+function isRootRelative(url: string): boolean {
+  return url.charAt(0) === '/' && url.charAt(1) !== '/';
+}
+
+function isSameHost(url: string): boolean {
+  const hostIndex = url.indexOf(window.location.hostname);
+  const firstDotIndex = url.indexOf('.');
+
+  return hostIndex >= 0 && hostIndex < firstDotIndex;
+}
+
+function isFragment(url: string): boolean {
+  return url.charAt(0) === '#';
+}
+
+function isRelative(url: string): boolean {
+  return url.charAt(0) !== '/' && url.toLowerCase().indexOf('http') !== 0;
+}
+
+function isSchemeRelative(url: string): boolean {
+  return url.indexOf('//') === 0;
 }
 
 function generateCallback(url: string | undefined) {
