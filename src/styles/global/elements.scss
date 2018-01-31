@@ -7,7 +7,6 @@ body {
 
 html {
   position: relative;
-  box-sizing: border-box;
   font-size: ($base-font-size / $default-browser-font-size) * 100%;
   -webkit-font-smoothing: antialiased;
 
@@ -26,8 +25,10 @@ body {
   background-color: color(sky, light);
 }
 
-* {
-  box-sizing: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 h1,
