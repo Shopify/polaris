@@ -7,9 +7,8 @@ $stacking-order: (
   position: relative;
   display: block;
   overflow: hidden;
-  min-width: $small-size;
-  max-width: 100%;
   background: color(white);
+  max-width: 100%;
   border-radius: border-radius();
 
   &::after {
