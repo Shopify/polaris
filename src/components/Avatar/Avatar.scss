@@ -10,25 +10,29 @@ $avatar-initial-offset: 2px;
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
   background: color(teal);
   border-radius: 50%;
   user-select: none;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
 }
 
 .sizeSmall {
-  height: $small-size;
   width: $small-size;
   font-size: rem(14px);
 }
 
 .sizeMedium {
-  height: $medium-size;
   width: $medium-size;
   font-size: rem(18px);
 }
 
 .sizeLarge {
-  height: $large-size;
   width: $large-size;
   font-size: rem(26px);
 }
@@ -58,8 +62,10 @@ $avatar-initial-offset: 2px;
 }
 
 .Image {
-  width: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .Initials {
