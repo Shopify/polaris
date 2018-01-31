@@ -66,6 +66,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
       @include recolor-icon(color(ink, lightest), color(white));
     }
   }
+
+  &::-moz-focus-inner {
+    border: none;
+  }
 }
 
 .Content {

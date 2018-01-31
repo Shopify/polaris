@@ -71,8 +71,7 @@ $spinner-size: rem(20px);
   @include button-outline(color(ink, lighter));
 
   &.disabled {
-    border-color: color(sky, dark);
-    color: color(ink, lightest);
+    @include button-outline-disabled(color(ink, lighter));
   }
 }
 
