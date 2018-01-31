@@ -60,7 +60,25 @@ export default function Avatar({
     : null;
 
   const initialsMarkup = initials
-    ? <span aria-hidden className={styles.Initials}>{initials}</span>
+    ? (
+      <div className={styles.Initials}>
+        <svg
+          width="48"
+          height="26"
+          viewBox="0 0 48 26"
+        >
+          <text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dy="9"
+            fill="white"
+          >
+            {initials}
+          </text>
+        </svg>
+      </div>
+    )
     : null;
 
   return (

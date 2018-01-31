@@ -2,15 +2,12 @@ $small-size: rem(32px);
 $medium-size: rem(40px);
 $large-size: rem(60px);
 
-$avatar-initial-offset: 2px;
-
 .Avatar {
   position: relative;
-  display: flex;
+  display: block;
   overflow: hidden;
-  justify-content: center;
-  align-items: center;
   max-width: 100%;
+  padding: 2px;
   background: color(teal);
   border-radius: 50%;
   user-select: none;
@@ -22,19 +19,41 @@ $avatar-initial-offset: 2px;
   }
 }
 
+.Image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.Initials {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+    font-size: rem(26px);
+  }
+}
+
 .sizeSmall {
   width: $small-size;
-  font-size: rem(14px);
 }
 
 .sizeMedium {
   width: $medium-size;
-  font-size: rem(18px);
 }
 
 .sizeLarge {
   width: $large-size;
-  font-size: rem(26px);
 }
 
 .styleOne {
@@ -59,19 +78,4 @@ $avatar-initial-offset: 2px;
 
 .styleSix {
   background: color(purple);
-}
-
-.Image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.Initials {
-  line-height: 0;
-  color: color(white);
-  text-transform: uppercase;
-  margin-left: $avatar-initial-offset;
-  letter-spacing: $avatar-initial-offset;
 }
