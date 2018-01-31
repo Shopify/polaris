@@ -19,37 +19,6 @@ $large-size: rem(60px);
   }
 }
 
-.Image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border-radius: 50%;
-}
-
-.Initials {
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  bottom: 3px;
-  left: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    max-width: 100%;
-    height: auto;
-  }
-
-  text {
-    fill: color(white);
-    letter-spacing: 0.05em;
-    font-size: 26px;
-    text-anchor: middle;
-  }
-}
-
 .sizeSmall {
   width: $small-size;
 }
@@ -84,4 +53,35 @@ $large-size: rem(60px);
 
 .styleSix {
   background: color(purple);
+}
+
+.Image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.Initials {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  text {
+    fill: color(white);
+    letter-spacing: 0.05em;
+    font-size: 26px;
+    text-anchor: middle;
+  }
 }
