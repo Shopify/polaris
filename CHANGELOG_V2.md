@@ -7,6 +7,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ## Unreleased
 - Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
 
+### Breaking Changes
+- All elements are now globally set to `box-sizing: border-box;` instead of `box-sizing: inherit;`. There is a very small chance of seeing any visual regressions in existing applications. ([#996](https://github.com/Shopify/polaris-react/pull/996))
+- Pseudo-elements (`*::before`) and (`*::after`) are now globally set to `box-sizing: border-box;`. Visual regressions are expected in applications setting `padding` and `border` on pseudo-elements. ([#996](https://github.com/Shopify/polaris-react/pull/996))
+
 ## 2.0.0-beta.7 - 2018-02-14
 - Updated ResourceList docs for new component API
 
