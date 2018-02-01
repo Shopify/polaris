@@ -252,6 +252,20 @@ describe('<TextField />', () => {
         const buttons = element.find('[role="button"]');
         expect(buttons.length).toBe(0);
       });
+
+      it('increments correctly when a value step or both are float numbers', () => {
+        const spy = jest.fn();
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" value="3.02" step={1.044} onChange={spy} />);
+        element.find('[role="button"]').first().simulate('click');
+        expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
+      });
+
+      it('decrements correctly when a value step or both are float numbers', () => {
+        const spy = jest.fn();
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" value="3.02" step={1.044} onChange={spy} />);
+        element.find('[role="button"]').last().simulate('click');
+        expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
+      });
     });
   });
 });
