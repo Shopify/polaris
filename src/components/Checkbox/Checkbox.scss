@@ -6,7 +6,7 @@
   // The basic checked styles have more specificity than this, so need to
   // basically duplicate that selector here, too.
   // stylelint-disable-next-line selector-max-specificity
-  .Input.Input-checked + .Backdrop,
+  .Input:checked + .Backdrop,
   .Input.Input-indeterminate + .Backdrop,
   .Backdrop {
     @include control-backdrop(error);
@@ -29,14 +29,14 @@
 
   &:focus,
   &:active,
-  &.Input-checked,
+  &:checked,
   &.Input-indeterminate {
     + .Backdrop {
       background: color(indigo);
     }
   }
 
-  &.Input-checked,
+  &:checked,
   &.Input-indeterminate {
     ~ .Icon {
       transform: translate(-50%, -50%) scale(1);

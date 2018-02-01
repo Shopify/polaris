@@ -100,6 +100,11 @@ export {
 } from './DisplayText';
 
 export {
+  default as EmptySearchResult,
+  Props as EmptySearchResultProps,
+} from './EmptySearchResult';
+
+export {
   default as EmptyState,
   Props as EmptyStateProps,
 } from './EmptyState';
@@ -191,6 +196,11 @@ export {
 } from './Popover';
 
 export {
+  default as Portal,
+  Props as PortalProps,
+} from './Portal';
+
+export {
   default as RadioButton,
   Props as RadioButtonProps,
 } from './RadioButton';
@@ -198,6 +208,13 @@ export {
 export {
   default as ResourceList,
   Props as ResourceListProps,
+  SelectedItems as ResourceListSelectedItems,
+  FilterControlProps,
+  Filter,
+  AppliedFilter,
+  FilterType,
+  FilterSelect,
+  FilterTextField,
 } from './ResourceList';
 
 export {
@@ -208,6 +225,7 @@ export {
 export {
   default as Select,
   Props as SelectProps,
+  Option as SelectOption,
 } from './Select';
 
 export {

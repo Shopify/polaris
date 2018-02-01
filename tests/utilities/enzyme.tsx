@@ -105,17 +105,6 @@ export function layeredContent(root: ReactWrapper<any, any>) {
   });
 }
 
-export function findInLayeredContent<S>(
-  root: ReactWrapper<any, any>,
-  selector: S,
-) {
-  // note that we need to use findWhere instead of find, because it traverses all nested JSX elements.
-  // this brings up an additional error when the node has length 0 ¯\_(ツ)_/¯
-  return layeredContent(root).findWhere(
-    (node: ReactWrapper<any, any>) => node.length > 0 && node.is(selector),
-  );
-}
-
 export interface ReactWrapperPredicate {
   (wrapper: ReactWrapper<any, any>): boolean,
 }

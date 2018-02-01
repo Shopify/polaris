@@ -13,8 +13,8 @@ $partially-condensed-min-page: $partially-condensed-content + $partially-condens
 $nav-size: em(layout-width(nav));
 $nav-min-window: em(layout-width(page-with-nav));
 
-@function breakpoint($value) {
-  @return em($value);
+@function breakpoint($value, $adjustment: 0) {
+  @return em($value) + em($adjustment);
 }
 
 // These end up being too awkward because they are already multiline.
@@ -78,14 +78,14 @@ $nav-min-window: em(layout-width(page-with-nav));
 
 // stylelint-enable media-query-list-comma-newline-after
 
-@mixin breakpoint-after($breakpoint) {
-  @media (min-width: #{breakpoint($breakpoint)}) {
+@mixin breakpoint-after($breakpoint, $inclusive: true) {
+  @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
     @content;
   }
 }
 
-@mixin breakpoint-before($breakpoint) {
-  @media (max-width: #{breakpoint($breakpoint)}) {
+@mixin breakpoint-before($breakpoint, $inclusive: true) {
+  @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
     @content;
   }
 }
@@ -122,6 +122,18 @@ $nav-min-window: em(layout-width(page-with-nav));
 
 @mixin page-content-when-not-fully-condensed() {
   @include page-content-breakpoint-after($partially-condensed-content) {
+    @content;
+  }
+}
+
+@mixin frame-when-nav-displayed() {
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    @content;
+  }
+}
+
+@mixin frame-when-nav-hidden() {
+  @include breakpoint-before(layout-width(page-with-nav), false) {
     @content;
   }
 }

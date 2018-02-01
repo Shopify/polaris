@@ -41,15 +41,3 @@ p {
   font-size: 1em;
   font-weight: 400;
 }
-
-a:not([data-polaris-unstyled]) {
-  color: color(blue);
-  text-decoration: none;
-
-  &:hover,
-  &:focus,
-  &:active {
-    outline: none;
-    color: color(blue, dark);
-  }
-}
