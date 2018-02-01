@@ -72,6 +72,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
       ? (
         <Portal idPrefix="Tooltip">
           <TooltipOverlay
+            testID={id}
             id={id}
             preferredPosition={preferredPosition}
             activator={activatorNode}

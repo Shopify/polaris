@@ -1,46 +1,56 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import Tooltip from '../Tooltip';
 import Link from '../../Link';
 
 describe('<Tooltip />', () => {
-  it('renders on mouseenter', () => {
-    const tooltip = shallow(
-      <Tooltip content="Test">
-        <Link>test</Link>
+  it('renders its children', () => {
+    const tooltip = mount(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
       </Tooltip>,
     );
+    expect(tooltip.find('button').exists()).toBe(true);
+  });
+
+  it('renders on mouseenter', () => {
+    const tooltip = mount(
+      <Tooltip content="overlay content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
     tooltip.simulate('mouseEnter');
-    expect(tooltip.state('active')).toBe(true);
+    expect(tooltip.find('[role="tooltip"]').exists()).toBe(true);
   });
 
   it('renders on focus', () => {
-    const tooltip = shallow(
-      <Tooltip content="Test">
-        <Link>test</Link>
+    const tooltip = mount(
+      <Tooltip content="overlay content">
+        <Link>link content</Link>
       </Tooltip>,
     );
     tooltip.simulate('focus');
-    expect(tooltip.state('active')).toBe(true);
+    expect(tooltip.find('[role="tooltip"]').exists()).toBe(true);
   });
 
-  it('unrenders on blur', () => {
-    const tooltip = shallow(
-      <Tooltip content="Test">
-        <Link>test</Link>
+  it('unrenders its children on blur', () => {
+    const tooltip = mount(
+      <Tooltip content="overlay content">
+        <Link>link content</Link>
       </Tooltip>,
     );
     tooltip.simulate('blur');
-    expect(tooltip.state('active')).toBe(false);
+    expect(tooltip.find('[role="tooltip"]').exists()).toBe(false);
   });
 
-  it('unrenders on mouseLeave', () => {
-    const tooltip = shallow(
-      <Tooltip content="Test">
-        <Link>test</Link>
+  it('unrenders its children on mouseLeave', () => {
+    const tooltip = mount(
+      <Tooltip content="overlay content">
+        <Link>link content</Link>
       </Tooltip>,
     );
     tooltip.simulate('mouseLeave');
-    expect(tooltip.state('active')).toBe(false);
+    expect(tooltip.find('[role="tooltip"]').exists()).toBe(false);
   });
 });
