@@ -17,7 +17,7 @@ export default function Link({
 }: Props) {
   return url
     ? (
-      <UnstyledLink className={styles.Link} url={url} external={external}>
+      <UnstyledLink onClick={onClick} className={styles.Link} url={url} external={external}>
         {children}
       </UnstyledLink>
     )

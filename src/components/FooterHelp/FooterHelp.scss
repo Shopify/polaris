@@ -19,8 +19,11 @@ $border-radius: 999px;
   padding: spacing() spacing(loose) spacing() spacing();
   border-top: border();
   border-bottom: border();
+  width: 100%;
+  justify-content: center;
 
   @include page-content-when-not-fully-condensed() {
+    width: auto;
     border: border();
     border-radius: $border-radius;
   }
