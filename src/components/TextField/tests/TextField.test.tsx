@@ -4,7 +4,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import TextField from '..';
 
 describe('<TextField />', () => {
-  it('sets all pass through properties on the input', () => {
+  it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
     const input = shallow(
       <TextField
@@ -38,6 +38,24 @@ describe('<TextField />', () => {
     expect(input.prop('spellCheck')).toBe(false);
     expect(input.prop('pattern')).toBe(pattern);
   });
+
+  it('blocks props not listed as component props to pass on the input', () => {
+    const input = shallow(
+      <TextField
+        label="TextField"
+        disabled
+        readOnly={false}
+        onChange={noop}
+        name="TextField"
+        placeholder="A placeholder"
+        value="Some value"
+        prefix="test-prefix"
+      />,
+    ).find('input');
+
+    expect(input.prop('prefix')).toBe(undefined);
+  });
+
 
   it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
     const element = mount(
