@@ -57,7 +57,7 @@ export default class TextField extends React.PureComponent<Props, State> {
   private input: HTMLElement;
 
   constructor(props: Props) {
-    super();
+    super(props);
 
     this.state = {
       height: null,
@@ -213,11 +213,18 @@ export default class TextField extends React.PureComponent<Props, State> {
     const {onChange, value, step = 1, min = -Infinity, max = Infinity} = this.props;
     if (onChange == null) { return; }
 
+    // Returns the length of decimal places in a number
+    const dpl = (num: number) => (num.toString().split('.')[1] || []).length;
+
     const numericValue = value ? parseFloat(value) : 0;
     if (isNaN(numericValue)) { return; }
 
+    // Making sure the new value has the same length of decimal places as the
+    // step / value has.
+    const decimalPlaces = Math.max(dpl(numericValue), dpl(step));
+
     const newValue = Math.min(max, Math.max(numericValue + (steps * step), min));
-    onChange(String(newValue), this.state.id);
+    onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
   }
 
   @autobind

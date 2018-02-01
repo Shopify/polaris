@@ -35,6 +35,7 @@ $stacking-order: (
 .focus > .Input,
 .Input:focus {
   outline: none;
+  border: border(transparent);
 
   ~ .Backdrop {
     border-color: color(indigo);
@@ -101,6 +102,8 @@ $stacking-order: (
   appearance: none;
 
   &:disabled {
+    background: none;
+    border: border(transparent);
     color: currentColor;
     opacity: 1;
     -webkit-text-fill-color: currentColor;

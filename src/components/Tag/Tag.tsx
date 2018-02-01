@@ -13,6 +13,7 @@ export default function Tag({children, onRemove}: Props) {
     <span className={styles.Tag}>
       <span>{children}</span>
       <button
+        type="button"
         aria-label="Remove"
         className={styles.Button}
         onClick={onRemove}
