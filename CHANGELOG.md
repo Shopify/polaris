@@ -10,6 +10,8 @@
 * Exposed Option from the Select component ([#976](https://github.com/Shopify/polaris-react/pull/976))
 
 ## 1.10.2 - 2018-01-22
+### Enhancements
+* Added `allowRange` as a property for DatePicker [#884](https://github.com/Shopify/polaris-react/pull/884)
 ### Bug fixes
 * Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
 

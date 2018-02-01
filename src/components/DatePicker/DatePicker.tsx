@@ -28,6 +28,7 @@ export interface Props {
   selected?: Date | Range,
   month: Months,
   year: Year,
+  allowRange?: boolean,
   disableDatesBefore?: Date,
   disableDatesAfter?: Date,
   multiMonth?: boolean,
@@ -58,6 +59,7 @@ export default class DatePicker extends React.PureComponent<Props, State> {
     const {
       month,
       year,
+      allowRange,
       multiMonth,
       disableDatesBefore,
       disableDatesAfter,
@@ -65,7 +67,6 @@ export default class DatePicker extends React.PureComponent<Props, State> {
     } = this.props;
 
     const {hoverDate, focusDate} = this.state;
-    const allowRange = selected != null && !(selected instanceof Date);
     const range = selected != null && selected instanceof Date
       ? {start: selected, end: selected}
       : selected;
