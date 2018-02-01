@@ -1,17 +1,40 @@
 # Changelog
 
 ## Unreleased
+### Bug fixes
+* Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
+* Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
+* Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
+* Increased bottom padding of tabs titles ([#893](https://github.com/Shopify/polaris-react/pull/893))
+* Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
+* Allows specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))
+* Updated Image Component to allow only specific properties ([#906](https://github.com/Shopify/polaris-react/pull/906))
+### Documentation
+* Fixed capitalization of prop names in Pagination component’s documentation (thanks [donnguyen](https://github.com/donnguyen) for the [original issue](https://github.com/Shopify/polaris/issues/141)) ([#975](https://github.com/Shopify/polaris-react/pull/975))
+* Exposed Option from the Select component ([#976](https://github.com/Shopify/polaris-react/pull/976))
 
-- Increased bottom padding of tabs titles ([#893](https://github.com/Shopify/polaris-react/pull/893))
-- Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
-- Updated Image Component to allow only specific properties ([#906](https://github.com/Shopify/polaris-react/pull/906))
+## 1.10.2 - 2018-01-22
+### Enhancements
+* Added `allowRange` as a property for DatePicker [#884](https://github.com/Shopify/polaris-react/pull/884)
+### Bug fixes
+* Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
+
+## 1.10.1 - 2018-01-19
+### Bug fixes
+* Fixed CSS only checkbox (thanks [daddy88](https://github.com/daddy88) for the [original issue](https://github.com/Shopify/polaris/issues/252)) ([#932](https://github.com/Shopify/polaris-react/pull/932))
+
+## 1.10.0 - 2018-01-17
+* Restored the correct `latest` version to the CDN
+* Fixed rgbToHsb function when red is the largest number and added tests (thanks [emcmanus](https://github.com/emcmanus) for the [original issue](https://github.com/Shopify/polaris/issues/251)) ([#877](https://github.com/Shopify/polaris-react/pull/877))
+* Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
+* Added `onClick` to `UnstyledLink` ([#832](https://github.com/Shopify/polaris-react/pull/832))
+* Added tests to `Link` ([#832](https://github.com/Shopify/polaris-react/pull/897))
 
 ## 1.9.1 - 2017-12-21
 ### Documentation
 * Ammending changelog
 
 ## 1.9.0 - 2017-12-21
-
 ### Enhancements
 * Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item ([#792](https://github.com/Shopify/polaris-react/pull/792))
 * Added `content` prop to tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))

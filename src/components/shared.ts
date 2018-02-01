@@ -17,3 +17,13 @@ export const unstyled = {
   props: {'data-polaris-unstyled': true},
   selector: '[data-polaris-unstyled]',
 };
+
+// these match our values in duration.scss
+export enum Duration {
+  Instant = 0,
+  Fast = 100,
+  Base = 200,
+  Slow = 300,
+  Slower = 400,
+  Slowest = 500,
+}

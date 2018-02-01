@@ -1,0 +1,88 @@
+@import '../../variables';
+
+$button-vertical-padding: ($resource-list-button-min-height - line-height(body) - rem(2px)) / 2;
+$control-size: rem(16px);
+$chekbox-label-margin: rem(20px);
+
+.CheckableButton{
+  @include text-style-button;
+  display: inline-flex;
+  align-items: center;
+  min-height: $resource-list-button-min-height;
+  min-width: $resource-list-button-min-height;
+  margin: 0;
+  padding: $button-vertical-padding spacing();
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  flex: 1 1 0;
+  text-align: left;
+  background: color(white);
+  border: border(dark);
+  border-radius: border-radius() 0 0 border-radius();
+  border-right-color: transparent;
+
+  &.CheckableButton-measuring {
+    font-size: font-size(button);
+    font-weight: bold;
+
+    // simulates measuring with an additional digit (e.g. 00 instead of 0)
+    &::before {
+      content: '';
+      display: inline-block;
+      width: font-size(button);
+    }
+  }
+
+  @include breakpoint-after($resource-list-breakpoint-small) {
+    flex: 0 1 auto;
+
+    &:only-child{
+      border-radius: border-radius();
+      border: border(dark);
+    }
+  }
+
+  &:hover,
+  &:active {
+    border-right-color: transparent;
+  }
+
+  &:focus{
+    outline: none;
+  }
+
+  &.CheckableButton-plain {
+    border: border(transparent);
+    border-radius: border-radius();
+  }
+
+  &.CheckableButton-selectMode {
+    @include text-emphasis-subdued;
+    font-weight: 600;
+  }
+
+  &.CheckableButton-selected {
+    color: color(indigo);
+    @include breakpoint-after($resource-list-breakpoint-small) {
+      border-color: color(sky, dark);
+    }
+  }
+}
+
+.Checkbox {
+  pointer-events: none;
+  height: $control-size;
+  width: $control-size;
+  margin-left: (-1 * (spacing(tight) + rem(1px))); // 1px accounts for border
+}
+
+.Label {
+  margin-left: $chekbox-label-margin;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: rem(1px) 0; // fixing bottom of letters being cutoff by overflow: hidden
+}

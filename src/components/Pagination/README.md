@@ -59,8 +59,8 @@ There are no editable content elements that are specific to the pagination compo
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
 | plain | boolean | A more subdued control for use in headers |
-| nextUrl | string | The URL of the next page |
-| previousUrl | string | The URL of the previous page |
+| nextURL | string | The URL of the next page |
+| previousURL | string | The URL of the previous page |
 | hasNext | boolean | Whether there is a next page to show |
 | hasPrevious | boolean | Whether there is a previous page to show |
 | onNext | function | Callback when next button is clicked |

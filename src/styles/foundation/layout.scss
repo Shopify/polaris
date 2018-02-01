@@ -6,24 +6,24 @@
 $layout-width-data: (
   primary: (
     min: rem(480px),
-    max: rem(672px)
+    max: rem(662px)
   ),
   secondary: (
     min: rem(240px),
-    max: rem(344px)
+    max: rem(320px)
   ),
   nav: (
     base: rem(240px)
   ),
   page-with-nav: (
-    base: rem(700px)
+    base: rem(769px)
   ),
   page-content: (
     not-condensed: rem(680px),
     partially-condensed: rem(450px)
   ),
   inner-spacing: (
-    base: spacing(loose)
+    base: spacing()
   ),
   outer-spacing: (
     min: spacing(loose),

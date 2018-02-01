@@ -30,8 +30,13 @@ $stacking-order: (
   }
 }
 
+.isColored {
+  color: color(white);
+}
+
 .colorWhite {
   fill: color(white);
+  color: transparent;
 }
 
 .colorBlack {
@@ -219,7 +224,6 @@ $stacking-order: (
   z-index: z-index(icon, $stacking-order);
   display: block;
   width: 100%;
-  color: color(white);
   max-width: 100%;
   max-height: 100%;
 }
