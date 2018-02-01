@@ -9,8 +9,6 @@
 
 - Allows specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))
 
-- Updated Image Component to allow only specific properties ([#906](https://github.com/Shopify/polaris-react/pull/906))
-
 ### Enhancements
 - Added EmptySearchResult component ([#955](https://github.com/Shopify/polaris-react/pull/955))
 - Added Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))
