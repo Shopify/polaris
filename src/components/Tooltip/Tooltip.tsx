@@ -55,7 +55,6 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     const {
       children,
       content,
-      active,
       light,
       preferredPosition = 'below',
       activatorWrapper: WrapperComponent = 'span',
@@ -65,6 +64,10 @@ export default class Tooltip extends React.PureComponent<Props, State> {
       activatorNode,
     } = this.state;
 
+    const {
+      active,
+    } = this.state;
+
     const portal = activatorNode
       ? (
         <Portal idPrefix="Tooltip">
@@ -72,7 +75,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
             id={id}
             preferredPosition={preferredPosition}
             activator={activatorNode}
-            active={active || this.state.active}
+            active={active}
             onClose={noop}
             light={light}
           >
