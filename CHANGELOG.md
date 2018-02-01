@@ -8,6 +8,7 @@
 * Increased bottom padding of tabs titles ([#893](https://github.com/Shopify/polaris-react/pull/893))
 * Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
 * Allows specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))
+* Updated Image Component to allow only specific properties ([#906](https://github.com/Shopify/polaris-react/pull/906))
 ### Documentation
 * Fixed capitalization of prop names in Pagination component’s documentation (thanks [donnguyen](https://github.com/donnguyen) for the [original issue](https://github.com/Shopify/polaris/issues/141)) ([#975](https://github.com/Shopify/polaris-react/pull/975))
 * Exposed Option from the Select component ([#976](https://github.com/Shopify/polaris-react/pull/976))
