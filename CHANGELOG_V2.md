@@ -1,5 +1,9 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [these versioning and changelog guidelines][changelog-guidelines].
+
 ## Unreleased
 ### Enhancements
 - Added `allowRange` as a property for DatePicker [#884](https://github.com/Shopify/polaris-react/pull/884)
@@ -30,3 +34,5 @@
 - Tabs no longer accept `title` as a prop. Use `content` instead. ([#909](https://github.com/Shopify/polaris-react/pull/909))
 - Removed default white color from Icon CSS. Use `color` prop instead ([#540](https://github.com/Shopify/polaris-react/pull/540))
 - Updated TextField onChange prop to be required if not disabled or readonly (thanks to [@buggy](https://github.com/buggy) for the [original issue](https://github.com/Shopify/polaris/issues/82)) ([#870](https://github.com/Shopify/polaris-react/pull/870))
+
+[changelog-guidelines]: https://github.com/Shopify/polaris/blob/master/documentation/Versioning%20and%20changelog.md
