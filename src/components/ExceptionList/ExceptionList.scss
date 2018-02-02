@@ -9,7 +9,7 @@
   color: color(ink, lighter);
 
   + .Item {
-  margin-top: 4px;
+    margin-top: spacing(extra-tight);
   }
 }
 
@@ -17,58 +17,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin-right: 4px;
+  min-width: rem(20px);
+  height: rem(20px);
+  margin-right: spacing(extra-tight);
+  @include recolor-icon(color(ink, lightest));
+
+  .statusWarning & {
+    @include recolor-icon(color(orange, dark));
+  }
+
+  .statusCritical & {
+    @include recolor-icon(color(red, dark));
+  }
 }
 
 .Bullet {
-  width: 6px;
-  height: 6px;
+  width: rem(6px);
+  height: rem(6px);
   border-radius: 100%;
   background-color: color(ink, lightest);
-}
 
-.Summary {
-  + .Description::before {
-  content: ' – ';
-  }
-}
-
-.Item {
-  .Icon svg {
-  fill: color(ink, lightest);
-  }
-}
-
-/* Warning item variant */
-.Item--warning {
-  .Summary {
-  color: color(orange, dark);
-  font-weight: 500;
-  }
-
-  .Icon svg {
-    fill: color(orange, dark);
-  }
-
-  .Bullet {
+  .statusWarning & {
     background-color: color(orange, dark);
   }
+
+  .statusCritical & {
+    background-color: color(red, dark);
+  }
 }
 
-/* Critical item variant */
-.Item--critical {
-  .Summary {
-  color: color(red, dark);
-  font-weight: 500;
+.Title {
+  + .Description::before {
+    content: ' – ';
   }
 
-  .Icon svg {
-    fill: color(red, dark);
+  .statusWarning &,
+  .statusCritical & {
+    font-weight: 500
   }
 
-  .Bullet {
-    background-color: color(red, dark);
+  .statusWarning & {
+    color: color(orange, dark)
+  }
+
+  .statusCritical & {
+    color: color(red, dark)
   }
 }

@@ -1,14 +1,15 @@
 import React from 'react';
-import classnames from 'classnames';
+import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon from '../Icon';
 import Truncate from '../Truncate';
+import {IconProps} from '../../components';
 
 import * as styles from './ExceptionList.scss';
 
 export interface Item {
   status?: 'critical' | 'warning',
-  icon?: 'conversation' | 'risk', // | 'notification' // include after PR merge of 1017
+  icon?: IconProps['source'],
   title?: string,
   description: string,
   truncate?: boolean,
@@ -28,9 +29,9 @@ export default function ExceptionList({items: itemsList}: Props) {
       truncate = false,
     } = item;
 
-    const itemClasses = classnames(
+    const itemClasses = classNames(
       styles.Item,
-      status && styles[`Item--${status}`],
+      status && styles[variationName('status', status)],
     );
 
     const iconMarkup = icon
@@ -38,24 +39,34 @@ export default function ExceptionList({items: itemsList}: Props) {
       : <span className={styles.Bullet} />;
 
     const titleMarkup = title && (
-      <span className={styles.Summary}>{title}</span>
+      <span className={styles.Title}>{title}</span>
     );
 
     const descriptionMarkup = description && (
       <span className={styles.Description}>{description}</span>
     );
 
-    const Element = truncate ? Truncate : 'span';
+    // React types package does not currently include React.Fragment
+    const Fragment = (React as any).Fragment;
+
+    const contentMarkup = truncate ? (
+      <Truncate>
+        {titleMarkup}
+        {descriptionMarkup}
+      </Truncate>
+    ) : (
+      <Fragment>
+        {titleMarkup}
+        {descriptionMarkup}
+      </Fragment>
+    );
 
     return (
       <li className={itemClasses} key={index}>
         <span className={styles.Icon}>
           {iconMarkup}
         </span>
-        <Element>
-          {titleMarkup}
-          {descriptionMarkup}
-        </Element>
+        {contentMarkup}
       </li>
     );
   });
