@@ -24,7 +24,7 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
       fullWidth,
       secondaryActions,
       title = '',
-      breadcrumbs = 0,
+      breadcrumbs,
     } = this.props;
 
     const className = classNames(

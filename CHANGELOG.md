@@ -1,6 +1,7 @@
 # Changelog
 
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
+* Added breadcrumbs to SkeletonPage ([#985](https://github.com/Shopify/polaris-react/pull/985))
 
 <!-- ## Unreleased -->
 
