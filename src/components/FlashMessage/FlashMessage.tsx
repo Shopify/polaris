@@ -13,10 +13,7 @@ export interface Props {
   onDismiss?(): void,
 }
 
-// @layeredComponent({idPrefix: 'FlashMessage'})
 export default class FlashMessage extends React.Component<Props, never> {
-  // tslint:disable-next-line:prefer-function-over-method
-
   componentDidUpdate() {
     this.triggerDismissalTimeout();
   }
@@ -51,7 +48,7 @@ export default class FlashMessage extends React.Component<Props, never> {
       : null;
 
     return (
-      <Portal idPrefix="FlashMessage">
+      <Portal idPrefix="flashMessage">
         <div className={styles.FlashMessage}>
           <span className={className}>
             {children}
