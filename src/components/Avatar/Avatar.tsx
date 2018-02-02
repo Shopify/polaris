@@ -59,14 +59,21 @@ export default function Avatar({
     ? <Image className={styles.Image} source={finalSource} alt="" role="presentation" />
     : null;
 
-  // Use CSS `dominant-baseline: central` instead of `dy` when Edge supports it.
+  // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
   const initialsMarkup = initials
     ? (
       <span className={styles.Initials}>
-        <svg className={styles.Svg} width="44" height="44" viewBox="0 0 44 44">
-          <text className={styles.SvgText} x="50%" y="50%" dy={verticalOffset}>
+        <svg className={styles.Svg} viewBox="0 0 48 48">
+          <text
+            x="50%"
+            y="50%"
+            dy={verticalOffset}
+            fill="currentColor"
+            fontSize="26"
+            textAnchor="middle"
+          >
             {initials}
           </text>
         </svg>

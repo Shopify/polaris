@@ -72,16 +72,11 @@ $large-size: rem(60px);
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: rem(4px);
+  padding: rem(2px);
 }
 
 .Svg {
-  max-width: 100%;
+  width: rem(48px);
   height: auto;
-}
-
-.SvgText {
-  fill: color(white);
-  font-size: rem(26px);
-  text-anchor: middle;
+  color: color(white);
 }
