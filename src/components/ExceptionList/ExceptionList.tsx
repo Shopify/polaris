@@ -8,7 +8,7 @@ import * as styles from './ExceptionList.scss';
 
 export interface Item {
   status?: 'critical' | 'warning',
-  icon?: 'conversation' | 'notification' | 'risk',
+  icon?: 'conversation' | 'risk', // | 'notification' // include after PR merge of 1017
   title?: string,
   description: string,
   truncate?: boolean,

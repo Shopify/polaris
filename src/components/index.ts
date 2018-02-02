@@ -115,6 +115,11 @@ export {
 } from './EventListener';
 
 export {
+  default as ExceptionList,
+  Props as ExceptionListProps,
+} from './ExceptionList';
+
+export {
   default as FlashMesage,
   Props as FlashMessagProps,
 } from './FlashMessage';
@@ -287,6 +292,11 @@ export {
   default as Tooltip,
   Props as TooltipProps,
 } from './Tooltip';
+
+export {
+  default as Truncate,
+  Props as TruncateProps,
+} from './Truncate';
 
 export {
   default as UnstyledLink,
