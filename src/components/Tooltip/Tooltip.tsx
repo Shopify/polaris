@@ -70,7 +70,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
 
     const portal = activatorNode
       ? (
-        <Portal idPrefix="Tooltip">
+        <Portal idPrefix="tooltip">
           <TooltipOverlay
             testID={id}
             id={id}
