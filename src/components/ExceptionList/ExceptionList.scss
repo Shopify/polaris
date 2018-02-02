@@ -1,0 +1,74 @@
+.ExceptionList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Item {
+  display: flex;
+  color: color(ink, lighter);
+
+  + .Item {
+  margin-top: 4px;
+  }
+}
+
+.Icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+
+.Bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: color(ink, lightest);
+}
+
+.Summary {
+  + .Description::before {
+  content: ' – ';
+  }
+}
+
+.Item {
+  .Icon svg {
+  fill: color(ink, lightest);
+  }
+}
+
+/* Warning item variant */
+.Item--warning {
+  .Summary {
+  color: color(orange, dark);
+  font-weight: 500;
+  }
+
+  .Icon svg {
+    fill: color(orange, dark);
+  }
+
+  .Bullet {
+    background-color: color(orange, dark);
+  }
+}
+
+/* Critical item variant */
+.Item--critical {
+  .Summary {
+  color: color(red, dark);
+  font-weight: 500;
+  }
+
+  .Icon svg {
+    fill: color(red, dark);
+  }
+
+  .Bullet {
+    background-color: color(red, dark);
+  }
+}
