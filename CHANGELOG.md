@@ -7,6 +7,8 @@
 * Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
 * Fixed Tag so the onRemove function is not imporperly called (thanks [chaddjohnson](https://github.com/chaddjohnson) for the [original issue](https://github.com/Shopify/polaris/issues/235) ) ([#970](https://github.com/Shopify/polaris-react/pull/970))
 * Fixed border on inputs disabled state ([#1007](https://github.com/Shopify/polaris-react/pull/1007))
+* Fixed an issue in TextInput, when you increment or decrement with a float value, and the digits after the decimal point where wrong ([#833](https://github.com/Shopify/polaris-react/pull/898)) (thanks to [@cgidzinski](https://github.com/cgidzinski) for the [original issue](https://github.com/Shopify/polaris-react/issues/761))
+* Added top alignment to FormLayout.Group [#876](https://github.com/Shopify/polaris-react/pull/876)
 
 ### Documentation
 * Fixed capitalization of prop names in Pagination component’s documentation (thanks [donnguyen](https://github.com/donnguyen) for the [original issue](https://github.com/Shopify/polaris/issues/141)) ([#975](https://github.com/Shopify/polaris-react/pull/975))
@@ -15,8 +17,6 @@
 ## 1.10.2 - 2018-01-22
 ### Bug fixes
 * Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
-* Fixed an issue in TextInput, when you increment or decrement with a float value, and the digits after the decimal point where wrong ([#833](https://github.com/Shopify/polaris-react/pull/898)) (thanks to [@cgidzinski](https://github.com/cgidzinski) for the [original issue](https://github.com/Shopify/polaris-react/issues/761))
-* Added top alignment to FormLayout.Group [#876](https://github.com/Shopify/polaris-react/pull/876)
 
 ## 1.10.1 - 2018-01-19
 ### Bug fixes
