@@ -1,17 +1,29 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [these versioning and changelog guidelines][changelog-guidelines].
+
+## Unreleased
+### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
 * Added breadcrumbs to SkeletonPage ([#985](https://github.com/Shopify/polaris-react/pull/985))
+* Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
+* Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
+* Fixed Tag so the onRemove function is not imporperly called (thanks [chaddjohnson](https://github.com/chaddjohnson) for the [original issue](https://github.com/Shopify/polaris/issues/235) ) ([#970](https://github.com/Shopify/polaris-react/pull/970))
+* Fixed border on inputs disabled state ([#1007](https://github.com/Shopify/polaris-react/pull/1007))
+* Fixed an issue in TextInput, when you increment or decrement with a float value, and the digits after the decimal point where wrong ([#833](https://github.com/Shopify/polaris-react/pull/898)) (thanks to [@cgidzinski](https://github.com/cgidzinski) for the [original issue](https://github.com/Shopify/polaris-react/issues/761))
+* Added top alignment to FormLayout.Group [#876](https://github.com/Shopify/polaris-react/pull/876)
 
-<!-- ## Unreleased -->
+### Documentation
+* Fixed capitalization of prop names in Pagination component’s documentation (thanks [donnguyen](https://github.com/donnguyen) for the [original issue](https://github.com/Shopify/polaris/issues/141)) ([#975](https://github.com/Shopify/polaris-react/pull/975))
+* Exposed Option from the Select component ([#976](https://github.com/Shopify/polaris-react/pull/976))
 
 ## 1.10.2 - 2018-01-22
-
 ### Bug fixes
 * Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
 
 ## 1.10.1 - 2018-01-19
-
 ### Bug fixes
 * Fixed CSS only checkbox (thanks [daddy88](https://github.com/daddy88) for the [original issue](https://github.com/Shopify/polaris/issues/252)) ([#932](https://github.com/Shopify/polaris-react/pull/932))
 
@@ -27,7 +39,6 @@
 * Ammending changelog
 
 ## 1.9.0 - 2017-12-21
-
 ### Enhancements
 * Added `onActionAnyItem` prop to action list and used to close page `actionGroups` on click or keypress of any item ([#792](https://github.com/Shopify/polaris-react/pull/792))
 * Added `content` prop to tabs and deprecated use of `title` ([#808](https://github.com/Shopify/polaris-react/pull/808))
@@ -328,3 +339,5 @@ Various documentation fixes.
 
 ## 1.0.0 - 2017-04-20
 * Initial release
+
+[changelog-guidelines]: https://github.com/Shopify/polaris/blob/master/documentation/Versioning%20and%20changelog.md
