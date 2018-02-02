@@ -12,6 +12,7 @@ export interface Props {
   fullWidth?: boolean,
   secondaryActions?: number,
   title?: string,
+  breadcrumbs?: boolean,
 }
 
 export default class SkeletonPage extends React.PureComponent<Props, never> {
@@ -23,6 +24,7 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
       fullWidth,
       secondaryActions,
       title = '',
+      breadcrumbs,
     } = this.props;
 
     const className = classNames(
@@ -33,6 +35,7 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
     const headerClassName = classNames(
       styles.Header,
       secondaryActions && styles['Header-hasSecondaryActions'],
+      breadcrumbs && styles['Header-hasBreadcrumbs'],
     );
 
     const titleMarkup = title !== null
@@ -43,8 +46,14 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
       ? renderSecondaryActions(secondaryActions)
       : null;
 
+    const breadcrumbMarkup = breadcrumbs
+      ? renderSecondaryActions(1)
+      : null;
+
+
     const headerMarkup = !this.context.easdk
       ? <div className={headerClassName}>
+          {breadcrumbMarkup}
           {titleMarkup}
           {secondaryActionsMarkup}
         </div>
