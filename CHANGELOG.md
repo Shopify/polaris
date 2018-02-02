@@ -1,5 +1,9 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [these versioning and changelog guidelines][changelog-guidelines].
+
 ## Unreleased
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
@@ -334,3 +338,5 @@ Various documentation fixes.
 
 ## 1.0.0 - 2017-04-20
 * Initial release
+
+[changelog-guidelines]: https://github.com/Shopify/polaris/blob/master/documentation/Versioning%20and%20changelog.md

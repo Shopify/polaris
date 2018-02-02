@@ -2,7 +2,7 @@
 
 The changelog is prepared manually immediately before a release. Each changelog entry should follow this structure:
 
-```
+```md
 ## 2.0.0 - 2017-04-20
 ### Breaking changes
 * A change ([#100](https://github.com/shopify/polaris/pull/100))
@@ -20,6 +20,22 @@ The possible groups in which to categorize changes are:
 * Style guide
 * Sketch UIKit (design changes without matching implementations)
 * Chores (non-documentation tasks on the repo itself)
+
+## Unreleased changes
+
+Unreleased changes must go under the `## Unreleased` section (inspired by <https://keepachangelog.com>):
+
+```md
+## Unreleased
+### Bug fixes
+* Fixed something ([#100](https://github.com/shopify/polaris/pull/100))
+```
+
+This heading must be commented (leaving it for an easy future use) when publishing a release:
+
+```md
+<!-- ## Unreleased -->
+```
 
 ## Versioning scheme
 
