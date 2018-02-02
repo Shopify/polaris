@@ -225,6 +225,7 @@ export {
 export {
   default as Select,
   Props as SelectProps,
+  Option as SelectOption,
 } from './Select';
 
 export {

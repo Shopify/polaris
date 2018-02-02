@@ -122,6 +122,14 @@
   }
 }
 
+@mixin button-outline-disabled($outline-color) {
+  background: transparent;
+  border-color: rgba($outline-color, 0.25);
+  box-shadow: none;
+  color: color(ink, lightest);
+  @include recolor-icon(color(ink, lightest));
+}
+
 @function plain-button-background() {
   @return rgba(color(ink), 0.1);
 }

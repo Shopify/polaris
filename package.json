@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.0.0-beta.5",
+  "version": "2.0.0-beta.6",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -22,7 +22,7 @@
   "jsnext:main": "index.es.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint:js": "eslint . --max-warnings 0",
+    "lint:js": "eslint . --max-warnings 0 --format codeframe",
     "lint:ts": "tslint --config ./config/tslint/full.json './src/**/*.{ts,tsx}' --project tsconfig.json",
     "lint": "npm-run-all lint:js lint:ts",
     "ts": "tsc --noEmit",

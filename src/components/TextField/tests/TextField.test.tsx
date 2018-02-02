@@ -4,7 +4,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import TextField from '..';
 
 describe('<TextField />', () => {
-  it('sets all pass through properties on the input', () => {
+  it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
     const input = shallow(
       <TextField
@@ -38,6 +38,24 @@ describe('<TextField />', () => {
     expect(input.prop('spellCheck')).toBe(false);
     expect(input.prop('pattern')).toBe(pattern);
   });
+
+  it('blocks props not listed as component props to pass on the input', () => {
+    const input = shallow(
+      <TextField
+        label="TextField"
+        disabled
+        readOnly={false}
+        onChange={noop}
+        name="TextField"
+        placeholder="A placeholder"
+        value="Some value"
+        prefix="test-prefix"
+      />,
+    ).find('input');
+
+    expect(input.prop('prefix')).toBe(undefined);
+  });
+
 
   it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
     const element = mount(
@@ -253,6 +271,20 @@ describe('<TextField />', () => {
         const element = mount(<TextField id="MyNumberField" label="NumberField" type="number" disabled />);
         const buttons = element.find('[role="button"]');
         expect(buttons.length).toBe(0);
+      });
+
+      it('increments correctly when a value step or both are float numbers', () => {
+        const spy = jest.fn();
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" value="3.02" step={1.044} onChange={spy} />);
+        element.find('[role="button"]').first().simulate('click');
+        expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
+      });
+
+      it('decrements correctly when a value step or both are float numbers', () => {
+        const spy = jest.fn();
+        const element = mount(<TextField id="MyTextField" label="TextField" type="number" value="3.02" step={1.044} onChange={spy} />);
+        element.find('[role="button"]').last().simulate('click');
+        expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
       });
     });
   });

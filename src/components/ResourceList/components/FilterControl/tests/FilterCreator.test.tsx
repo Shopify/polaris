@@ -95,6 +95,42 @@ describe('<FilterCreator />', () => {
     expect(wrapper.find(Popover).prop('active')).toBe(false);
   });
 
+  it('does not renders FilterValueSelector after add filter button was clicked', () => {
+    const onAddFilter = jest.fn();
+    const wrapper = mount(
+      <FilterCreator
+        {...mockDefaultProps}
+        onAddFilter={onAddFilter}
+      />,
+    );
+
+    activatePopover(wrapper);
+    selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
+    selectFilterValue(wrapper, 'Bundle');
+
+    expect(wrapper.find(FilterValueSelector).exists()).toBe(true);
+    clickAddFilter(wrapper);
+    expect(wrapper.find(FilterValueSelector).exists()).toBe(false);
+  });
+
+  it('renders Select with no value after add filter button was clicked', () => {
+    const onAddFilter = jest.fn();
+    const wrapper = mount(
+      <FilterCreator
+        {...mockDefaultProps}
+        onAddFilter={onAddFilter}
+      />,
+    );
+
+    activatePopover(wrapper);
+    selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
+    selectFilterValue(wrapper, 'Bundle');
+
+    expect(wrapper.find(Select).at(0).prop('value')).toBeDefined();
+    clickAddFilter(wrapper);
+    expect(wrapper.find(Select).at(0).prop('value')).toBeUndefined();
+  });
+
   describe('filters', () => {
     it('has the correct options prop when popover is active', () => {
       const wrapper = mount(
