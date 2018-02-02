@@ -1,20 +1,24 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [these versioning and changelog guidelines][changelog-guidelines].
+
 ## Unreleased
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
 * Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
 * Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
-* Increased bottom padding of tabs titles ([#893](https://github.com/Shopify/polaris-react/pull/893))
-* Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
-* Allows specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))
+* Fixed Tag so the onRemove function is not imporperly called (thanks [chaddjohnson](https://github.com/chaddjohnson) for the [original issue](https://github.com/Shopify/polaris/issues/235) ) ([#970](https://github.com/Shopify/polaris-react/pull/970))
+* Fixed border on inputs disabled state ([#1007](https://github.com/Shopify/polaris-react/pull/1007))
+* Fixed an issue in TextInput, when you increment or decrement with a float value, and the digits after the decimal point where wrong ([#833](https://github.com/Shopify/polaris-react/pull/898)) (thanks to [@cgidzinski](https://github.com/cgidzinski) for the [original issue](https://github.com/Shopify/polaris-react/issues/761))
+* Added top alignment to FormLayout.Group [#876](https://github.com/Shopify/polaris-react/pull/876)
+
 ### Documentation
 * Fixed capitalization of prop names in Pagination component’s documentation (thanks [donnguyen](https://github.com/donnguyen) for the [original issue](https://github.com/Shopify/polaris/issues/141)) ([#975](https://github.com/Shopify/polaris-react/pull/975))
 * Exposed Option from the Select component ([#976](https://github.com/Shopify/polaris-react/pull/976))
 
 ## 1.10.2 - 2018-01-22
-### Enhancements
-* Added `allowRange` as a property for DatePicker [#884](https://github.com/Shopify/polaris-react/pull/884)
 ### Bug fixes
 * Fixed the public repository’s build (which was missing the new CircleCI configuration files) ([#951](https://github.com/Shopify/polaris-react/pull/951))
 
@@ -334,3 +338,5 @@ Various documentation fixes.
 
 ## 1.0.0 - 2017-04-20
 * Initial release
+
+[changelog-guidelines]: https://github.com/Shopify/polaris/blob/master/documentation/Versioning%20and%20changelog.md

@@ -22,7 +22,7 @@
   "jsnext:main": "index.es.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint:js": "eslint . --max-warnings 0",
+    "lint:js": "eslint . --max-warnings 0 --format codeframe",
     "lint:ts": "tslint --config ./config/tslint/full.json './src/**/*.{ts,tsx}' --project tsconfig.json",
     "lint": "npm-run-all lint:js lint:ts",
     "ts": "tsc --noEmit",
