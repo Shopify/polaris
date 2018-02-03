@@ -134,30 +134,71 @@ Resource list doesn’t include pagination, but the [pagination](#link) componen
 
 ---
 
+## Build
+
+Using a resource list in a project involves combining the following components and subcomponents:
+
+- ResourceList
+- [ResourceList.Item](#subcomponent-item) or a [a customized version](#study-custom-item) of this subcomponent
+- [ResourceList.FilterControl](#subcomponent-filter-control) (optional)
+- Pagination component (optional)
+
+<!-- hint -->
+The resource list component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
+<!-- end -->
+
+View the [case study](#study) for a walkthrough of how to use this component to build an index page for customers.
+
+---
+
 ## Purpose
 
-_Coming soon_
+Shopify is organized around objects that represent a merchant’s business, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _show page_.
+
+### Problem
+
+Take orders as an example. Merchants may have a lot of them. They need a way to scan their orders, see what state they’re in and find out which ones need action first. In other words, they need a way find an individual order, call up more information about it, and take action on it.
+
+### Solution
+
+Resource lists function as:
+
+- A content format, presenting a set of individual resources in a compact form
+- A system for taking action on one or more individual resources
+- A way to navigate to an individual resource’s show page
+
+Because a show page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these show pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
+
+<!--
+![Schematic showing content from a show page being surfaces on a resource list]()
+-->
+
+<!-- hint -->
+#### A resource list isn’t a data table
+On wide screens, a resource list often looks like a table, especially if some content is aligned in columns. Despite this, resource lists and data tables have different purposes.
+
+A data table is a form of data visualization. It works best to present highly structured data for comparison and analysis.
+
+If your use case is more about visualizing or analyzing data, use the data table component. If your use case is more about finding and taking action on objects, use a resource list.
+<!-- end -->
 
 ---
 
 ## Best practices
 
-Resource lists can live in many places in Shopify. You could include a short resource list in a card summarizing recent marketing activities, or dedicate an entire page to a resource list, such as Shopify’s existing products or orders index pages.
+Resource lists can live in many places in Shopify. You could include a short resource list in a card summarizing recent marketing activities. You could also dedicate an entire page to a resource list like Shopify’s main products index.
 
 Resource lists should:
 
 - Have items that perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
-- Support sorting if the list can contain many items, and especially if different merchant tasks benefit from different sort orders.
-- Support filtering if the list can contain many items, especially if the list supports pagination.
-- Paginate when the list contains more than 50 items.
+- [Customize the content and layout](#study-custom-item) of their list items to support merchants’ needs.
+- Support [sorting](#study-sorting) if the list can be long, and especially if different merchant tasks benefit from different sort orders.
+- Support [filtering](#study-filtering) if the list can be long.
+- [Paginate](#study-pagination) when the current list contains more than 50 items.
 
 Resource lists can optionally:
 
-- Provide bulk actions for tasks that are often applied to many resources at once. For example, a merchant may want to bulk add tags to a selection of products.
-
-Resource list should not:
-
-- Be used to present a list of resources where the primary task is not managing that resource (or an entry point into managing that resource). A good example of a case where a resource list isn’t appropriate is a list of products that is being added to a draft order. Even though the list is a list of resources, linking to the products’ show pages isn’t in line with the merchant’s task and conflicts with the main actions they would want to take (namely removing the product from the draft).
+- Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, a merchant may want to add the same tag to a large number of products.
 
 ---
 
@@ -165,34 +206,32 @@ Resource list should not:
 
 Resource lists should:
 
-- Introduce the type of resource by name for a list of all products.
+- Identify the type of resource, usually with a heading
 
     <!-- usagelist -->
     #### Do
-
     - Products
     - Showing 50 products
 
     #### Don’t
-
-    - _No title_
+    - _No heading_
     <!-- end -->
 
-- Indicate how the list is filtered if it’s a subset of all resource items. For a card summarizing and linking to recently purchased products.
+- Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
     <!-- usagelist -->
     #### Do
-
     - Popular products this week
 
     #### Don’t
-
     - Products
     <!-- end -->
 
-- Follow the verb + noun formula for bulk actions.
+- Follow the verb + noun formula for [bulk actions](#study-bulk-actions-content-guidelines)
 
-- Follow the content formulas for sort options.
+- Follow the [content formula for sort options](#study-sorting-content-guidelines)
+
+- Follow the [content guidelines for filter options and applied filters](#study-filtering-content-guidelines)
 
 ---
 
