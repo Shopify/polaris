@@ -27,11 +27,14 @@ keywords:
 
 A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 
+<!-- ![Resource list anatomy, showing filters, header, and items]() -->
+
 Resource lists can also:
 
-- Support customized list items
-- Include bulk actions so merchants can act on multiple objects at once
-- Support sorting, filtering, and pagination of long lists
+- Support [customized list items](#study-custom-item)
+- Include [bulk actions](#study-bulk-actions) so merchants can act on multiple objects at once
+- Support [sorting](#study-sorting) and filtering [filtering](#study-filtering) of long lists
+- Be paired with [pagination](#study-pagination) to make long lists digestible
 
 ---
 
@@ -39,78 +42,229 @@ Resource lists can also:
 
 ### Simple resource list
 
-Example of a resource list with simple items and no bulk actions, sorting, or filtering.
+A resource list with simple items and no bulk actions, sorting, or filtering. See the [case study below](#study) for implementation details.
 
 ```jsx
 <ResourceList
   resourceName={{singular: 'customer', plural: 'customers'}}
-  items={[{
-    id: 1,
-    url: 'customers/123',
-    avatarSource: null,
-    name: 'Adam West',
-    location: 'Gotham City, USA',
-  }]}
-  renderItem={(item, index) => {
-    const {id, url, avatarSource, name, location} = item;
+  items={[
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ]}
+  renderItem={(item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
 
     return (
-      <ResourceList.Item
-        id={id}
-        url={url}
-        media={
-          <Avatar customer size="medium" name={name} source={avatarSource} />
-        }
-      >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
-        <p>{location}</p>
+      <ResourceList.Item id={id} url={url} media={media}>
+        <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+        <div>{location}</div>
       </ResourceList.Item>
     );
   }}
 />
 ```
 
-### Resource list with custom list item
-
-Because each resource is different, it’s often best to create your own list item component that builds on the basic resource list item.
-
-```jsx
-<p>Coming soon</p>
-```
-
 ### Resource list with bulk actions
 
-Allows the merchant to select items and perform actions on the selection.
+Allows the merchant to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.
 
 ```jsx
-<p>Coming soon</p>
-}
+<ResourceList
+  resourceName={{singular: 'customer', plural: 'customers'}}
+  items={[
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ]}
+  renderItem={(item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item id={id} url={url} media={media}>
+        <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  }}
+  selectedItems={[]}
+  onSelectionChange={(selectedItems) => {
+    console.log(
+      `Selected items changed to ${selectedItems}.`,
+      'Todo: use setState to apply this change.'
+    );
+  }}
+  promotedBulkActions={[
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+    // Add a second promoted action if needed
+  ]}
+  bulkActions={[
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    }
+  ]}
+/>
 ```
 
 ### Resource list with sorting
 
-Allows the merchant to change the way the list is sorted by selecting one of several options from a dropdown menu.
+Allows the merchant to change the way the list is sorted by selecting one of several options from a [Select](/components/forms/select) control. See the [the sorting section of the case study](#study-sorting) for implementation details.
 
 ```jsx
-<p>Coming soon</p>
+<ResourceList
+  resourceName={{singular: 'customer', plural: 'customers'}}
+  items={[
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ]}
+  renderItem={(item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item id={id} url={url} media={media}>
+        <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  }}
+  sortValue="DATE_MODIFIED_DESC"
+  sortOptions={[
+    { label: 'Newest update', value: 'DATE_MODIFIED_DESC' },
+    { label: 'Oldest update', value: 'DATE_MODIFIED_ASC' },
+  ]}
+  onSortChange={(selected) => {
+    console.log(
+      `Sort option changed to ${selected}.`,
+      'Todo: use setState to apply this change.'
+    );
+  }}
+/>
 ```
 
 ### Resource list with filtering
 
-Allows the merchant to narrow the resource list to a subset of the original items.
+Allows the merchant to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
 
 ```jsx
-<p>Coming soon</p>
-```
+<ResourceList
+  resourceName={{ singular: 'customer', plural: 'customers' }}
+  items={[
+    {
+      id: 341,
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+    },
+    {
+      id: 256,
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+    },
+  ]}
+  renderItem={(item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
 
-### Resource list with pagination
-
-Resource list doesn’t include pagination, but the [pagination](#link) component can be used to achieve this.
-
-```jsx
-<p>Coming soon</p>
+    return (
+      <ResourceList.Item id={id} url={url} media={media}>
+        <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  }}
+  filterControl={
+    <ResourceList.FilterControl
+      resourceName={{ singular: 'customer', plural: 'customers' }}
+      filters={[
+        {
+          key: 'totalSpentFilter',
+          label: 'Total spent',
+          operatorText: 'is greater than',
+          type: FilterType.TextField,
+        },
+        {
+          key: 'accountStatusFilter',
+          label: 'Account status',
+          operatorText: 'is',
+          type: FilterType.Select,
+          options: [
+            'Enabled',
+            'Invited',
+            'Not invited',
+            'Declined',
+          ]
+        },
+      ]}
+      appliedFilters={[
+        {
+          key: 'accountStatusFilter',
+          value: 'Account enabled',
+        },
+      ]}
+      onFiltersChange={(appliedFilters) => {
+        console.log(
+          `Applied filters changed to ${appliedFilters}.`,
+          'Todo: use setState to apply this change.'
+        );
+      }}
+      searchValue=""
+      onSearchChange={(searchValue) => {
+        console.log(
+          `Search value changed to ${searchValue}.`,
+          'Todo: use setState to apply this change.'
+        );
+      }}
+      additionalAction={{
+        content: 'Save',
+        onAction: () => console.log('Todo: handle save filters.'),
+      }}
+    />
+  }
+/>
 ```
 
 ---
@@ -131,6 +285,7 @@ Resource list doesn’t include pagination, but the [pagination](#link) componen
 | sortOptions   | Option[] | Collection of sort options to choose from |
 | onSortChange  | function(selected: string, id: string): void | Callback when sort option is changed |
 | filterControl | React.ReactNode | Accepts an element to use as the filtering UI; Normally `ResourceList.FilterControl` is passed here |
+| hasMoreItems | boolean | If true and all items are selected, shows an option to select all items across a paginated list |
 
 ---
 
