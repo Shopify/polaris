@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
@@ -52,6 +53,8 @@ export interface Context {
 }
 
 export type CombinedProps = Props & WithProviderProps;
+
+const getUniqueID = createUniqueIDFactory('Select');
 
 export class ResourceList extends React.Component<CombinedProps, State> {
   static Item = Item;
@@ -257,11 +260,19 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
+    const selectId = getUniqueID();
+
+    const sortingLabelMarkup = (
+      <label className={styles.SortLabel} htmlFor={selectId}>{translate('ResourceList.sortingLabel')}</label>
+    );
+
     const sortingSelectMarkup = sortOptions && sortOptions.length > 0
       ? (
         <div className={styles.SortWrapper}>
+          {sortingLabelMarkup}
           <Select
-            label={translate('ResourceList.sortingLabel')}
+            label={''}
+            id={selectId}
             labelHidden
             options={sortOptions}
             onChange={onSortChange}
