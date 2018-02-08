@@ -13,6 +13,7 @@ export interface ChoiceDescriptor {
   label: string,
   disabled?: boolean,
   helpText?: React.ReactNode,
+  renderChildren?(isSelected: boolean): React.ReactNode | false,
 }
 
 export type Choice = ChoiceDescriptor;
@@ -65,7 +66,12 @@ export default function ChoiceList({
     : null;
 
   const choicesMarkup = choices.map((choice) => {
-    const {value, label, helpText, disabled} = choice;
+    const {
+      value,
+      label,
+      helpText,
+      disabled,
+    } = choice;
 
     function handleChange(checked: boolean) {
       onChange(
@@ -73,6 +79,15 @@ export default function ChoiceList({
         name,
       );
     }
+
+    const isSelected = choiceIsSelected(choice, selected);
+    const children = choice.renderChildren
+      ? (
+        <div className={styles.ChoiceChildren}>
+          {choice.renderChildren(isSelected)}
+        </div>
+      )
+      : null;
 
     return (
       <li key={value}>
@@ -85,6 +100,7 @@ export default function ChoiceList({
           helpText={helpText}
           onChange={handleChange}
         />
+        {children}
       </li>
     );
   });
