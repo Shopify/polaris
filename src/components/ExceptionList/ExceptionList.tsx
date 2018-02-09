@@ -49,24 +49,17 @@ export default function ExceptionList({items: itemsList}: Props) {
     // React types package does not currently include React.Fragment
     const Fragment = (React as any).Fragment;
 
-    const contentMarkup = truncate ? (
-      <Truncate>
-        {titleMarkup}
-        {descriptionMarkup}
-      </Truncate>
-    ) : (
-      <Fragment>
-        {titleMarkup}
-        {descriptionMarkup}
-      </Fragment>
-    );
+    const Element = truncate ? Truncate : Fragment;
 
     return (
       <li className={itemClasses} key={index}>
         <span className={styles.Icon}>
           {iconMarkup}
         </span>
-        {contentMarkup}
+        <Element>
+          {titleMarkup}
+          {descriptionMarkup}
+        </Element>
       </li>
     );
   });
