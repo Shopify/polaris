@@ -3,6 +3,7 @@ import {Option} from '../../../Select';
 export interface AppliedFilter {
   key: string,
   value: string,
+  label?: string,
 }
 
 export enum FilterType {

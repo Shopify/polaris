@@ -5,7 +5,7 @@ import {trigger} from '../../../../../../tests/utilities';
 
 import FilterControl, {Props} from '../';
 import FilterCreator from '../FilterCreator';
-import {Filter, FilterType} from '../types';
+import {Filter, FilterType, FilterSelect, FilterTextField} from '../types';
 import {TextField, Tag, Button} from '../../../../';
 
 describe('<FilterControl />', () => {
@@ -38,7 +38,8 @@ describe('<FilterControl />', () => {
     },
     {
       key: 'filterKey2',
-      label: 'Tagged with',
+      label: 'Tagged',
+      operatorText: 'with',
       type: FilterType.TextField,
     },
   ];
@@ -204,6 +205,155 @@ describe('<FilterControl />', () => {
           ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
         ]);
     });
+
+    it('renders the correct applied filter string when applied filter label exist', () => {
+      const appliedFilterLabel = 'shorten electronic';
+      const filter: FilterSelect = {
+        key: 'filterKey1',
+        label: 'Product type',
+        operatorText: 'is',
+        type: FilterType.Select,
+        options: [{
+          value: 'electronic_value',
+          label: 'Electronic',
+        }],
+      };
+      const appliedFilters = {
+        key: filter.key,
+        value: appliedFilterLabel,
+      };
+      const wrapper = mount(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${appliedFilterLabel}`);
+    });
+
+    it('renders the correct applied filter string when filter value exist in FilterSelect as an option string', () => {
+      const filterValue = 'Bundle';
+      const filter: FilterSelect = {
+        key: 'filterKey1',
+        label: 'Product type',
+        operatorText: 'is',
+        type: FilterType.Select,
+        options: [filterValue],
+      };
+      const appliedFilters = {
+        key: filter.key,
+        value: filterValue,
+      };
+      const wrapper = mount(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${filterValue}`);
+    });
+
+    it('renders the correct applied filter string when filter value exist in FilterSelect as an option obejct', () => {
+      const filterValue = 'Electronic';
+      const filter: FilterSelect = {
+        key: 'filterKey1',
+        label: 'Product type',
+        operatorText: 'is',
+        type: FilterType.Select,
+        options: [{
+          value: 'electronic_value',
+          label: filterValue,
+        }],
+      };
+      const appliedFilters = {
+        key: filter.key,
+        value: filterValue,
+      };
+      const wrapper = mount(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${filterValue}`);
+    });
+
+    it('renders the correct applied filter string when filter value cannot be found in FilterSelect options', () => {
+      const appliedFilterValue = 'new Bundle';
+      const filter: FilterSelect = {
+        key: 'filterKey1',
+        label: 'Product type',
+        operatorText: 'is',
+        type: FilterType.Select,
+        options: ['Bundle'],
+      };
+      const appliedFilters = {
+        key: filter.key,
+        value: appliedFilterValue,
+      };
+      const wrapper = mount(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${appliedFilterValue}`);
+    });
+
+    it('renders the correct applied filter string when filter is a FilterTextField', () => {
+      const appliedFilterValue = 'new Bundle';
+      const filter: FilterTextField = {
+        key: 'filterKey2',
+        label: 'Tagged',
+        operatorText: 'with',
+        type: FilterType.TextField,
+      };
+      const appliedFilters = {
+        key: filter.key,
+        value: appliedFilterValue,
+      };
+      const wrapper = mount(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${appliedFilterValue}`);
+    });
+
+    it('renders the correct applied filter string when filter key cannot be found', () => {
+      const appliedFilterValue = 'new Bundle';
+      const appliedFilters = {
+        key: 'filter key',
+        value: appliedFilterValue,
+      };
+      const wrapper = mount(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[]}
+          appliedFilters={[appliedFilters]}
+        />,
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(appliedFilterValue);
+    });
+
   });
 
   describe('additionalAction', () => {
