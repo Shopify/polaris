@@ -124,6 +124,7 @@ Add a menu item
 | Prop        | Type   | Description |
 | ---         | ---    | --- |
 | title*      | string | Page title, in large type |
+| titleHidden | boolean | Visually hide the title |
 | icon        | string | App icon, for pages that are part of Shopify apps |
 | breadcrumbs | BreadcrumbProps['breadcrumbs'] | Collection of breadcrumbs |
 | children    | React.ReactNode | The contents of the page |
