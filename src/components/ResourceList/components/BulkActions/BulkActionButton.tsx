@@ -10,7 +10,6 @@ import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
 import * as styles from './BulkActions.scss';
 
-
 export type Props = {
   disclosure?: boolean,
   handleMeasurement?(width: number): void,
@@ -56,7 +55,6 @@ export default class BulkActionButton extends React.PureComponent<Props, never> 
     if (url) {
       return (
         <UnstyledLink
-          key={content}
           external={external}
           url={url}
           onMouseUp={handleMouseUpByBlurring}
@@ -75,7 +73,6 @@ export default class BulkActionButton extends React.PureComponent<Props, never> 
 
     return (
       <button
-        key={content}
         className={className}
         onClick={onAction}
         onMouseUp={handleMouseUpByBlurring}
