@@ -8,7 +8,7 @@ $spacing: tight;
   margin: 0;
   display: flex;
   flex-wrap: nowrap;
-  margin-top: -1 * spacing($spacing);
+  margin-top: -1 * $resource-list-header-padding-small;
   margin-left: -1 * $resource-list-header-padding-small;
   margin-right: -1 * $resource-list-header-padding-small;
 
@@ -28,6 +28,7 @@ $spacing: tight;
     flex-wrap: wrap;
     margin-right: 0;
     margin-left: -1 * spacing($spacing);
+    margin-top: -1 * spacing(base);
 
     &::after {
       content: none;
