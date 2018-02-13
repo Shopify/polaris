@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+## 1.11.0 - 2018-02-13
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
 ### Enhancements
 * Added `renderChildren` prop to choice list component ([#993](https://github.com/Shopify/polaris-react/pull/993))
