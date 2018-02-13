@@ -39,6 +39,8 @@ export interface Props {
   selectedItems?: SelectedItems;
   persistActions?: boolean;
   hasMoreItems?: boolean;
+  /** Boolean to show or hide the header */
+  showHeader?: boolean;
   /** Current value of the sort control */
   sortValue?: string;
   /** Collection of sort options to choose from */
@@ -333,17 +335,22 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
     );
 
-    const headerMarkup = itemsExist ? (
-      <div className={headerClassName} testID="ResourceList-Header">
-        <div className={styles.HeaderContentWrapper}>
-          {itemCountTextMarkup}
-          {checkableButtonMarkup}
-          {sortingSelectMarkup}
-          {selectButtonMarkup}
+    const needsHeader = this.selectable || (sortOptions && sortOptions.length > 0);
+    const {showHeader = false} = this.props;
+
+    const headerMarkup = !showHeader && !needsHeader
+      ? null
+      : itemsExist && (
+        <div className={headerClassName} testID="ResourceList-Header">
+          <div className={styles.HeaderContentWrapper}>
+            {itemCountTextMarkup}
+            {checkableButtonMarkup}
+            {sortingSelectMarkup}
+            {selectButtonMarkup}
+          </div>
+          {bulkActionsMarkup}
         </div>
-        {bulkActionsMarkup}
-      </div>
-    ) : null;
+      );
 
     const emptyStateMarkup =
       filterControl && !itemsExist ? (
