@@ -10,7 +10,7 @@ describe('<Popover />', () => {
     const popover = mount(
       <Popover
         active={false}
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -34,7 +34,7 @@ describe('<Popover />', () => {
     const popover = mount(
       <Popover
         active
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -46,7 +46,7 @@ describe('<Popover />', () => {
     const popover = mount(
       <Popover
         active={false}
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -59,7 +59,7 @@ describe('<Popover />', () => {
       <Popover
         active={false}
         preferredPosition="above"
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -72,7 +72,7 @@ describe('<Popover />', () => {
       <Popover
         active={false}
         preferredPosition="above"
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -85,7 +85,7 @@ describe('<Popover />', () => {
         active={false}
         activatorWrapper="span"
         preferredPosition="above"
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -97,7 +97,7 @@ describe('<Popover />', () => {
       <Popover
         active={false}
         preventAutofocus
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -110,7 +110,7 @@ describe('<Popover />', () => {
       <Popover
         active={false}
         sectioned
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -123,7 +123,7 @@ describe('<Popover />', () => {
       <Popover
         active={false}
         fullWidth
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
@@ -136,7 +136,7 @@ describe('<Popover />', () => {
       <Popover
         active
         fullWidth
-        activator={<div testID="activator">Activator</div>}
+        activator={<div>Activator</div>}
         onClose={spy}
       />,
     );
