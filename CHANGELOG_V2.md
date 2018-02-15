@@ -6,7 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
-# 2.0.0-beta.6 - 2018-02-02
+## 2.0.0-beta.7 - 2018-02-14
+- Updated ResourceList docs for new component API
+
+## 2.0.0-beta.6 - 2018-02-02
 ### Enhancements
 - Added `allowRange` as a property for DatePicker ([#884](https://github.com/Shopify/polaris-react/pull/884))
 
@@ -21,6 +24,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added EmptySearchResult component ([#955](https://github.com/Shopify/polaris-react/pull/955))
 - Added Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))
 - Updated Popover to use the new Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))
+* Brought FlashMessage over from polaris-next and updated it to use Portal ([#945](https://github.com/Shopify/polaris-react/pull/945))
 
 ### Breaking Changes
 - Dropped support for React < 16. Upgrade `react` and `react-dom` packages to v16. ([#936](https://github.com/shopify/polaris-react/pull/936))

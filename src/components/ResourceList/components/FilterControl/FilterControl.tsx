@@ -147,7 +147,11 @@ export default class FilterControl extends React.Component<Props> {
     onFiltersChange(newAppliedFilters);
   }
 
-  private getFilterLabel({key, value}: AppliedFilter): string {
+  private getFilterLabel({key, value, label}: AppliedFilter): string {
+    if (label) {
+      return label;
+    }
+
     const {filters = []} = this.props;
 
     const filter = filters.find(
