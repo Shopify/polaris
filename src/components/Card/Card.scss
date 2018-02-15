@@ -28,12 +28,21 @@
   }
 }
 
+.Section-fullWidth{
+  padding: spacing(none);
+}
+
 .Section-subdued {
   background-color: color(sky, lighter);
 }
 
 .SectionHeader {
   padding-bottom: spacing(tight);
+
+  .Section-fullWidth & {
+    padding: spacing(loose) spacing(loose) spacing(tight);
+  }
+
 }
 
 .Footer {
