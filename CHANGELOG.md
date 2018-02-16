@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## 1.10.2 - 2018-01-22
-
 ## Unreleased
 * Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
 
