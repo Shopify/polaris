@@ -56,7 +56,7 @@ describe('<ResourceList />', () => {
   describe('header markup', () => {
     it('renders when items is not empty', () => {
       const resourceList = mountWithProvider(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
+        <ResourceList showHeader items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
         true,
