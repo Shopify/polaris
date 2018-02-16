@@ -1,8 +1,38 @@
-$resource-list-breakpoint-small: 458px;
-$resource-list-header-min-height: rem(56px);
-$resource-list-header-padding-small: rem(12px);
-$resource-list-header-vertical-padding: rem(10px);
-$resource-list-min-width: rem(320px);
-$resource-list-bulkactions-wrapper-z-index: 1;
-$resource-list-button-min-height: control-height();
-$resource-list-header-content-min-height: control-height();
+$resource-list-variables: (
+  breakpoint-small: 458px,
+  header-min-height: rem(56px),
+  header-padding-small: rem(12px),
+  header-vertical-padding: rem(10px),
+  min-width: rem(320px),
+  button-min-height: control-height(),
+  header-content-min-height: control-height(),
+  content-wrapper-stacking-order: 1,
+  bulk-actions-wrapper-stacking-order: 2,
+);
+
+@function resource-list($variable) {
+  @return map-get($resource-list-variables, $variable);
+}
+
+$resource-list-item-variables: (
+  padding: rem(12px),
+  control-indent: -1 * rem(12px),
+  min-height: rem(44px),
+  handle-width: rem(48px),
+  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight), // handle-width - padding
+  link-stacking-order: 1,
+  content-stacking-order: 2,
+  avatar-small-size: rem(32px),
+  avatar-medium-size: rem(40px),
+  avatar-large-size: rem(60px),
+  thumbnail-small-size: rem(40px),
+  thumbnail-medium-size: rem(60px),
+  thumbnail-large-size: rem(80px),
+);
+
+@function resource-list-item($variable) {
+  @return map-get($resource-list-item-variables, $variable);
+}
+
+
+
