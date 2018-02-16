@@ -33,6 +33,7 @@ export {default as help} from './help.svg';
 export {default as horizontalDots} from './horizontal-dots.svg';
 export {default as import} from './import.svg';
 export {default as notes} from './notes.svg';
+export {default as notification} from './notification.svg';
 export {default as print} from './print.svg';
 export {default as subtract} from './subtract.svg';
 export {default as refresh} from './refresh.svg';

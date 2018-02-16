@@ -7,8 +7,20 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ## 1.10.2 - 2018-01-22
 
 ## Unreleased
+* Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
+
+### Bug fixes
+* Fixed TextField overflow issues when inside Scrollable ([#967](https://github.com/Shopify/polaris-react/pull/967))
+
+## 1.11.0 - 2018-02-13
+* Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
+### Enhancements
+* Added `renderChildren` prop to choice list component ([#993](https://github.com/Shopify/polaris-react/pull/993))
+* Added `titleHidden` prop to Page ([#1033](https://github.com/Shopify/polaris-react/pull/1033))
+
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
+* Added breadcrumbs to SkeletonPage ([#985](https://github.com/Shopify/polaris-react/pull/985))
 * Added max-width and auto margin to EmptyState ([#969](https://github.com/Shopify/polaris-react/pull/969))
 * Fixed outline button disabled state styles ([#972](https://github.com/Shopify/polaris-react/pull/972))
 * Fixed Tag so the onRemove function is not imporperly called (thanks [chaddjohnson](https://github.com/chaddjohnson) for the [original issue](https://github.com/Shopify/polaris/issues/235) ) ([#970](https://github.com/Shopify/polaris-react/pull/970))

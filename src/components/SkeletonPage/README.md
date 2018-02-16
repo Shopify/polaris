@@ -60,6 +60,7 @@ Use filler content that will change when the page fully loads.
 | title | string | Page title, in large type | Empty String |
 | fullwidth | boolean | Remove the normal max-width on the page |
 | secondaryActions | number | Number of secondary page-level actions to display |
+| breadcrumbs | boolean | Shows a skeleton over the breadcrumb |
 
 ## Examples
 
