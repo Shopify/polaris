@@ -93,6 +93,14 @@ $color-palette-data: (
     dark: #202e78,
     darker: #000639,
     text: #3e4155
+  ),
+
+  state: (
+    hover: rgba(223, 227, 232, .3),
+    focused: rgba(223, 227, 232, .3),
+    active: rgba(179, 188, 245, .1),
+    selected: rgba(179, 188, 245, .15),
+    subdued: rgba(249, 250, 251, 1),
   )
 );
 

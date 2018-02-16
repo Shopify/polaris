@@ -1,0 +1,10 @@
+@mixin state($interaction-states...) {
+  $backgrounds: ();
+
+  @each $state in $interaction-states {
+    $colors: color(state, $state);
+    $backgrounds: append($backgrounds, linear-gradient($colors, $colors), comma);
+  }
+
+  background-image: $backgrounds;
+}

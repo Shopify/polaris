@@ -5,16 +5,41 @@
   cursor: pointer;
 
   &:hover {
-    background-color: color(sky, lighter);
+    @include state(hover);
+  }
+
+  &:active {
+    @include state(active);
   }
 }
 
 .Item-focused {
   box-shadow: inset rem(2px) 0 0 color(indigo);
+  @include state(focused);
+
+  &:hover {
+    @include state(focused, hover);
+  }
+
+  &:active {
+    @include state(focused, active);
+  }
 }
 
 .Item-selected {
-  background-color: color(indigo, lighter);
+  @include state(selected);
+
+  &.Item-focused {
+    @include state(selected, focused);
+  }
+
+  &:hover {
+    @include state(selected, hover);
+  }
+
+  &:active {
+    @include state(selected, active);
+  }
 }
 
 .Link {

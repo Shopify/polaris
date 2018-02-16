@@ -218,8 +218,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         className={className}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onMouseEnter={this.mouseEnter}
-        onMouseLeave={this.mouseLeave}
         onClick={this.handleClick}
         testID="Item-Wrapper"
       >
@@ -285,16 +283,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleContextUpdate() {
     this.forceUpdate();
-  }
-
-  @autobind
-  private mouseEnter() {
-    this.setState({focused: true});
-  }
-
-  @autobind
-  private mouseLeave() {
-    this.setState({focused: false});
   }
 
   @autobind
