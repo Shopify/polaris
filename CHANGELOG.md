@@ -16,6 +16,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Update `TextField` type with currency ([#908](https://github.com/Shopify/polaris-react/pull/908))
 * Added `ariaControls`, `ariaExpanded` prop to Button ([#978](https://github.com/Shopify/polaris-react/pull/978/))
 
+### Chores
+* Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
+
 ## 1.11.0 - 2018-02-13
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
 ### Enhancements
