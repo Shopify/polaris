@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 * Fixed TextField overflow issues when inside Scrollable ([#967](https://github.com/Shopify/polaris-react/pull/967))
+* Fixed Select focus state bug occuring in Firefox ([#910](https://github.com/Shopify/polaris-react/pull/910))
 
 ### Enhancements
 * Changed Checkbox label to allow string or React.ReactNode ([#894](https://github.com/Shopify/polaris-react/pull/894))
