@@ -61,11 +61,8 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     } = this.props;
 
     const {
-      activatorNode,
-    } = this.state;
-
-    const {
       active,
+      activatorNode,
     } = this.state;
 
     const portal = activatorNode
