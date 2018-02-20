@@ -249,6 +249,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       promotedBulkActions,
       bulkActions,
       filterControl,
+      showHeader = false,
       sortOptions,
       sortValue,
       onSortChange,
@@ -336,7 +337,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
 
     const needsHeader = this.selectable || (sortOptions && sortOptions.length > 0);
-    const {showHeader = false} = this.props;
 
     const headerMarkup = !showHeader && !needsHeader
       ? null
