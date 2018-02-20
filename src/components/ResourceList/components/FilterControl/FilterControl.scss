@@ -19,7 +19,7 @@ $spacing: tight;
 
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling-x: touch;
+  -webkit-overflow-scrolling: touch;
 
   // account for scrollbar
   padding-bottom: spacing($spacing);
