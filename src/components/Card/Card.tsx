@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {Action} from '../../types';
+import {Action, DisableableAction} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
@@ -14,7 +14,7 @@ export interface Props {
   children?: React.ReactNode,
   subdued?: boolean,
   sectioned?: boolean,
-  actions?: Action[],
+  actions?: DisableableAction[],
   primaryFooterAction?: Action,
   secondaryFooterAction?: Action,
 }

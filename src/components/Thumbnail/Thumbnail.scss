@@ -1,3 +1,6 @@
+$small-size: rem(40px);
+$medium-size: rem(60px);
+$large-size: rem(80px);
 $stacking-order: (
   image: 10,
   shadow: 20,
@@ -8,35 +11,31 @@ $stacking-order: (
   display: block;
   overflow: hidden;
   background: color(white);
+  min-width: $small-size;
+  max-width: 100%;
   border-radius: border-radius();
 
   &::after {
     content: '';
-    position: absolute;
+    position: relative;
     z-index: z-index(shadow, $stacking-order);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: block;
+    padding-bottom: 100%;
     box-shadow: inset 0 0 0 1px rgba(33, 43, 54, 0.1);
     border-radius: border-radius();
   }
 }
 
 .sizeSmall {
-  height: rem(40px);
-  width: rem(40px);
+  width: $small-size;
 }
 
 .sizeMedium {
-  height: rem(60px);
-  width: rem(60px);
+  width: $medium-size;
 }
 
 .sizeLarge {
-  height: rem(80px);
-  width: rem(80px);
+  width: $large-size;
 }
 
 .Image {

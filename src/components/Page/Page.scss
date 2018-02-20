@@ -93,6 +93,10 @@ html, body {
   word-break: break-word;
 }
 
+.Title-hidden {
+  @include visually-hidden;
+}
+
 .Actions {
   @include page-actions-layout;
 }

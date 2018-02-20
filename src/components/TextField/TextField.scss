@@ -19,6 +19,7 @@ $stacking-order: (
 
 .multiline {
   padding: 0;
+  overflow: hidden;
 
   > .Input {
     overflow: auto;

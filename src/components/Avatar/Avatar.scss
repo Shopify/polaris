@@ -2,35 +2,33 @@ $small-size: rem(32px);
 $medium-size: rem(40px);
 $large-size: rem(60px);
 
-$avatar-initial-offset: 2px;
-
 .Avatar {
   position: relative;
-  display: flex;
+  display: block;
   overflow: hidden;
-  justify-content: center;
-  align-items: center;
+  min-width: $small-size;
+  max-width: 100%;
   background: color(teal);
   border-radius: 50%;
   user-select: none;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
 }
 
 .sizeSmall {
-  height: $small-size;
   width: $small-size;
-  font-size: rem(14px);
 }
 
 .sizeMedium {
-  height: $medium-size;
   width: $medium-size;
-  font-size: rem(18px);
 }
 
 .sizeLarge {
-  height: $large-size;
   width: $large-size;
-  font-size: rem(26px);
 }
 
 .styleOne {
@@ -60,12 +58,25 @@ $avatar-initial-offset: 2px;
 .Image {
   width: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
 }
 
 .Initials {
-  line-height: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: rem(2px);
+}
+
+.Svg {
+  width: rem(48px);
+  height: auto;
   color: color(white);
-  text-transform: uppercase;
-  margin-left: $avatar-initial-offset;
-  letter-spacing: $avatar-initial-offset;
 }
