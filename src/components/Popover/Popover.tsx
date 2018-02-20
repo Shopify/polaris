@@ -66,8 +66,9 @@ export default class Popover extends React.PureComponent<Props, State> {
 
     const portal = activatorNode
       ? (
-        <Portal idPrefix="popover">
+        <Portal idPrefix="popover" testID="portal">
           <PopoverOverlay
+            testID="popoverOverlay"
             id={this.id}
             activator={activatorNode}
             onClose={this.handleClose}
