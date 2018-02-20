@@ -5,31 +5,31 @@ import {wrapWithComponent} from '@shopify/react-utilities/components';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {TransitionGroup} from 'react-transition-group';
-import {Scrollable, Icon, Spinner, Portal} from '@shopify/polaris';
+import {Scrollable, Icon, Spinner, Portal} from '../';
 
-import {memoizedBind} from '../../utilities';
+import memoizedBind from '../../utilities/memoized-bind';
 import {Dialog, Footer, FooterProps, Header, Section} from './components';
 import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
 export interface Props extends FooterProps {
-  open?: boolean;
-  src?: string;
-  title?: React.ReactNode;
-  children?: React.ReactNode;
-  footer?: React.ReactNode;
-  instant?: boolean;
-  sectioned?: boolean;
-  large?: boolean;
-  limitHeight?: boolean;
-  loading?: boolean;
-  onClose(): void;
-  onTransitionEnd?(): void;
+  open?: boolean,
+  src?: string,
+  title?: React.ReactNode,
+  children?: React.ReactNode,
+  footer?: React.ReactNode,
+  instant?: boolean,
+  sectioned?: boolean,
+  large?: boolean,
+  limitHeight?: boolean,
+  loading?: boolean,
+  onClose(): void,
+  onTransitionEnd?(): void,
 }
 
-interface State {
-  iframeHeight: number;
+export interface State {
+  iframeHeight: number,
 }
 
 let idIndex = 1;
