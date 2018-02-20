@@ -10,6 +10,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 * Fixed TextField overflow issues when inside Scrollable ([#967](https://github.com/Shopify/polaris-react/pull/967))
 
+### Enhancements
+* Changed Checkbox label to allow string or React.ReactNode ([#894](https://github.com/Shopify/polaris-react/pull/894))
+
 ## 1.11.0 - 2018-02-13
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
 ### Enhancements
