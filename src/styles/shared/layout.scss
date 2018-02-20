@@ -6,3 +6,39 @@
   min-width: 0;
   max-width: 100%;
 }
+
+/// Returns a safe-area-inset for iPhone X screen obtrusions.
+///
+/// @param {String} $property - The property name i.e. padding-left.
+/// @param {Space} $spacing - The spacing value to be added to the safe-area value. i.e. spacing().
+/// @param {string} $area - The area where the inset is to be added. i.e. left
+///
+/// If overriding an existing padding / margin that value should be used as $spacing.
+@mixin safe-area-for($property, $spacing, $area) {
+  $spacing: if($spacing == 0, #{$spacing}px, $spacing);
+  #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));
+  #{$property}: calc(#{$spacing} + env(safe-area-inset-#{$area}));
+}
+
+@mixin after-topbar-sheet {
+  @include breakpoint-after(450px) {
+    @content;
+  }
+}
+
+@mixin logo-width($theme: 'default') {
+  $logo-width: 104px;
+
+  @if $theme == 'shopify-plus' {
+    $logo-width: 140px;
+  }
+
+  @if $theme == 'shopify-gold' {
+    $logo-width: 128px;
+  }
+
+  @if $theme == 'rogers' {
+    $logo-width: 132px;
+  }
+  width: rem($logo-width);
+}

@@ -152,3 +152,15 @@ $typography-condensed: em(640px);
   font-weight: 400;
   color: color(ink, $for-background: $for-background);
 }
+
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin print-hidden {
+  @media print {
+    display: none;
+  }
+}
