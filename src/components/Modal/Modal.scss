@@ -1,3 +1,4 @@
+$top-bar-height: rem(56px);
 $top-offset-slide-in-start: rem(200px);
 $entry-iterations: 1;
 $small-width: rem(620px);
@@ -7,8 +8,8 @@ $button-height: rem(36px);
 $modal-ui-bar-height: $button-height + (spacing() * 2);
 $body-max-height: rem(500px);
 $body-width-offset: spacing(extra-loose) * 2;
-$body-height-offset: top-bar-height() + $modal-ui-bar-height;
-$body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
+$body-height-offset: $top-bar-height + $modal-ui-bar-height;
+$body-height-offset-with-footer: $top-bar-height + ($modal-ui-bar-height * 2);
 
 .Container {
   position: absolute;
@@ -21,7 +22,7 @@ $body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
   flex-direction: column;
   justify-content: flex-end;
 
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after(layout-width(page-with-nav)) {
     justify-content: center;
   }
 }
@@ -81,7 +82,7 @@ $body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-height: calc(100vh - #{top-bar-height()});
+  max-height: calc(100vh - $top-bar-height);
   background: color(white);
   box-shadow: shadow(layer);
 
@@ -89,7 +90,7 @@ $body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
     outline: 0;
   }
 
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after(layout-width(page-with-nav)) {
     max-width: $small-width;
     margin: 0 auto;
     border-radius: border-radius(large);
@@ -97,7 +98,7 @@ $body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
 }
 
 .Modal-large {
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after(layout-width(page-with-nav)) {
     max-width: calc(100vw - #{$body-width-offset});
   }
 
@@ -126,7 +127,7 @@ $body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
   max-height: calc(100vh - #{$body-height-offset});
 
   .Modal-limitHeight & {
-    @include breakpoint-after(nav-min-window-corrected()) {
+    @include breakpoint-after(layout-width(page-with-nav)) {
       height: rem($body-max-height);
     }
   }
@@ -176,7 +177,7 @@ $body-height-offset-with-footer: top-bar-height() + ($modal-ui-bar-height * 2);
   max-width: 100vw;
   border: none;
 
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after(layout-width(page-with-nav)) {
     max-width: $small-width;
   }
 }

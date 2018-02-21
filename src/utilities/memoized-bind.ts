@@ -6,4 +6,4 @@ function memoizedBind<T>(callback: (...args: any[]) => T, ...args: any[]) {
   };
 }
 
-export default memoize(memoizedBind);
+export default memoize(memoizedBind) as Function;

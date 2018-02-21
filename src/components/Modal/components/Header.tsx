@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {Icon, DisplayText, Stack} from '@shopify/polaris';
-import {memoizedBind} from '../../../utilities';
+import {Icon, DisplayText, Stack} from '../../';
+import memoizedBind from '../../../utilities/memoized-bind';
 import * as styles from '../Modal.scss';
 
 export interface Props {
-  id: string;
-  children?: React.ReactNode;
-  onClose(): void;
+  id: string,
+  children?: React.ReactNode,
+  onClose(): void,
 }
 
 export default function Header({id, children, onClose}: Props) {

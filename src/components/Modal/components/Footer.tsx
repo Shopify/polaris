@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {ComplexAction, buttonsFrom, ButtonGroup, Stack} from '@shopify/polaris';
+import {buttonsFrom, ButtonGroup, Stack} from '../../';
+import {ComplexAction} from '../../../types';
 import * as styles from '../Modal.scss';
 
 export interface Props {
-  primaryAction?: ComplexAction;
-  secondaryActions?: ComplexAction[];
-  children?: React.ReactNode;
+  primaryAction?: ComplexAction,
+  secondaryActions?: ComplexAction[],
+  children?: React.ReactNode,
 }
 
 export default function Footer({

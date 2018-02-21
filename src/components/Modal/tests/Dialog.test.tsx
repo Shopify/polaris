@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {KeypressListener} from '@shopify/polaris';
+import {KeypressListener} from '../../';
 
-import {animationFrame, trigger} from 'tests/utilities';
+import {animationFrame, trigger} from '../../../../tests/utilities';
 
 import {Dialog} from '../components';
 

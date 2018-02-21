@@ -14,6 +14,10 @@ export interface BaseAction {
 
 export interface Action extends BaseAction {}
 
+export interface AnimationProps {
+  in?: boolean,
+}
+
 export interface BaseLinkAction {
   id?: string;
   content?: string;

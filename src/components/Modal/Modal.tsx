@@ -1,9 +1,11 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {wrapWithComponent} from '@shopify/react-utilities/components';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {Scrollable, Icon, Spinner, Portal} from '../';
 
@@ -13,7 +15,14 @@ import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
-export interface Props extends FooterProps {
+export type Width = 'large' | 'fullwidth';
+
+export interface EASDKProps {
+  width?: Width,
+  height?: number,
+}
+
+export interface Props extends FooterProps, EASDKProps {
   open?: boolean,
   src?: string,
   title?: React.ReactNode,
@@ -32,12 +41,10 @@ export interface State {
   iframeHeight: number,
 }
 
-let idIndex = 1;
-function uniqueId() {
-  return `modal-header-${idIndex++}`;
-}
+const getUniqueID = createUniqueIDFactory('modal-header');
 
 export default class Modal extends React.Component<Props, State> {
+  static contextTypes = {easdk: PropTypes.object};
   static Dialog = Dialog;
   static Section = Section;
   focusReturnPointNode: HTMLElement;
@@ -46,17 +53,37 @@ export default class Modal extends React.Component<Props, State> {
     iframeHeight: IFRAME_LOADING_HEIGHT,
   };
 
-  private headerId = uniqueId();
+  private headerId = getUniqueID();
 
-  componentWillReceiveProps({open: willBeOpen}: Props) {
+  componentDidMount() {
+    if (this.context.easdk == null) { return; }
     const {open} = this.props;
-
-    if (willBeOpen && !open) {
+    if (open) {
+      this.handleEASDKMessaging();
       this.focusReturnPointNode = document.activeElement as HTMLElement;
     }
   }
 
+  componentDidUpdate({open: wasOpen}: Props) {
+    if (this.context.easdk == null) { return; }
+
+    const {open} = this.props;
+
+    if (wasOpen !== open) {
+      this.handleEASDKMessaging();
+    }
+
+    if (!wasOpen && open) {
+      this.focusReturnPointNode = document.activeElement as HTMLElement;
+    } else if (wasOpen && !open && this.focusReturnPointNode != null && document.contains(this.focusReturnPointNode)) {
+      this.focusReturnPointNode.focus();
+      this.focusReturnPointNode = null as any;
+    }
+  }
+
   render() {
+    if (this.context.easdk != null) { return null; }
+
     const {
       children,
       onClose,
@@ -193,5 +220,17 @@ export default class Modal extends React.Component<Props, State> {
     this.setState({
       iframeHeight: iframe.contentWindow.document.body.scrollHeight,
     });
+  }
+
+  private handleEASDKMessaging() {
+    const {easdk} = this.context;
+    const {open} = this.props;
+    if (easdk == null) { return; }
+
+    if (open) {
+      easdk.Modal.open(this.props);
+    } else {
+      easdk.Modal.close();
+    }
   }
 }

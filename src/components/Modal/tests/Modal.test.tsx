@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Badge, Spinner, Portal} from '@shopify/polaris';
+import {Badge, Spinner, Portal} from '../../';
 
-import {animationFrame, findByTestID, trigger} from 'tests/utilities';
+import {animationFrame, findByTestID, trigger} from '../../../../tests/utilities';
 
 import Modal from '../Modal';
 import Footer from '../components/Footer';

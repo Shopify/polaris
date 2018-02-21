@@ -1,21 +1,23 @@
 import * as React from 'react';
-import {Keys, KeypressListener} from '@shopify/polaris';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {memoizedBind} from '../../../utilities';
+import {KeypressListener} from '../../';
+import {Keys} from '../../../types';
+import memoizedBind from '../../../utilities/memoized-bind';
 import {TrapFocus} from '../../Focus';
-import {Duration, AnimationProps} from '../../animation';
+import {Duration} from '../../shared';
+import {AnimationProps} from '../../../types';
 import * as styles from '../Modal.scss';
 
-interface DialogProps {
-  labelledBy: string;
-  instant?: boolean;
-  children?: React.ReactNode;
-  limitHeight?: boolean;
-  large?: boolean;
-  onClose(): void;
-  onEntered?(): void;
-  onExited?(): void;
+export interface DialogProps {
+  labelledBy: string,
+  instant?: boolean,
+  children?: React.ReactNode,
+  limitHeight?: boolean,
+  large?: boolean,
+  onClose(): void,
+  onEntered?(): void,
+  onExited?(): void,
 }
 
 export type Props = DialogProps & AnimationProps;
@@ -33,7 +35,7 @@ export default function Dialog({
   onEntered,
   large,
   limitHeight,
-  ...props
+  ...props,
 }: Props) {
   const classes = classNames(
     styles.Modal,
@@ -76,14 +78,6 @@ export default function Dialog({
   );
 }
 
-function FadeUp({children, ...props}: any) {
-  return (
-    <CSSTransition {...props} classNames={fadeUpClasses}>
-      {children}
-    </CSSTransition>
-  );
-}
-
 const fadeUpClasses = {
   enter: classNames(styles.FadeUp, styles.entering),
   enterActive: classNames(styles.FadeUp, styles.entered),
@@ -91,9 +85,9 @@ const fadeUpClasses = {
   exitActive: classNames(styles.FadeUp, styles.exited),
 };
 
-function ScaleIn({children, ...props}: any) {
+function FadeUp({children, ...props}: any) {
   return (
-    <CSSTransition {...props} classNames={scaleInClasses}>
+    <CSSTransition {...props} classNames={fadeUpClasses}>
       {children}
     </CSSTransition>
   );
@@ -105,3 +99,11 @@ const scaleInClasses = {
   exit: classNames(styles.ScaleIn, styles.exiting),
   exitActive: classNames(styles.ScaleIn, styles.exited),
 };
+
+function ScaleIn({children, ...props}: any) {
+  return (
+    <CSSTransition {...props} classNames={scaleInClasses}>
+      {children}
+    </CSSTransition>
+  );
+}
