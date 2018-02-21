@@ -140,6 +140,6 @@ Use to let merchants connect or disconnect their store to their third-party acco
     content: 'Connect'
   }}
   details="No account connected"
-  termsOfService={<p>By clicking <strong>Connect</strong>, you agree to accept Sample App’s <Link url="Example App">terms and conditions</Link>. You’ll pay a commission rate of 15% on sales made through Example App.</p>}
+  termsOfService={<p>By clicking <strong>Connect</strong>, you agree to accept Sample App’s <Link url="Example App">terms and conditions</Link>. You’ll pay a commission rate of 15% on sales made through Sample App.</p>}
 />
 ```
