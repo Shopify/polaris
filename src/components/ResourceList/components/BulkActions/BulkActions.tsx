@@ -227,9 +227,15 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       ? this.actionsActivatorLabel
       : this.moreActionsActivatorLabel;
 
-    const combinedActions =  this.actionSections && rolledInPromotedActions.length > 0
-      ? [{items: rolledInPromotedActions}, ...this.actionSections]
-      : this.actionSections;
+    let combinedActions: ActionListSection[] = [];
+
+    if (this.actionSections && rolledInPromotedActions.length > 0) {
+      combinedActions = [{items: rolledInPromotedActions}, ...this.actionSections];
+    } else if (this.actionSections) {
+      combinedActions = this.actionSections;
+    } else if (rolledInPromotedActions.length > 0) {
+      combinedActions = [{items: rolledInPromotedActions}];
+    }
 
     const actionsPopover = this.actionSections || rolledInPromotedActions.length > 0 || measuring
       ? (
