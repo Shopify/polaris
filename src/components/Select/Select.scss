@@ -55,7 +55,7 @@ $input-vertical-adjust: rem(1px);
   }
 
   &.error .Input:-moz-focusring {
-    color:transparent;
+    color: transparent;
     text-shadow: 0 0 0 color(ink, base);
   }
 }
@@ -107,7 +107,7 @@ $input-vertical-adjust: rem(1px);
   }
 
   &:-moz-focusring {
-    color:transparent;
+    color: transparent;
     text-shadow: 0 0 0 color(ink, base);
   }
 }
