@@ -48,9 +48,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const {
-      id,
-    } = this;
+    const {id} = this;
 
     const {
       children,
@@ -69,7 +67,6 @@ export default class Tooltip extends React.PureComponent<Props, State> {
       ? (
         <Portal idPrefix="tooltip">
           <TooltipOverlay
-            testID={id}
             id={id}
             preferredPosition={preferredPosition}
             activator={activatorNode}
@@ -77,7 +74,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
             onClose={noop}
             light={light}
           >
-            <div className={styles.Label}>
+            <div className={styles.Label} testID="TooltipOverlayLabel">
               {content}
             </div>
           </TooltipOverlay>
@@ -87,6 +84,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
 
     return (
       <WrapperComponent
+        testID="WrapperComponent"
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onMouseEnter={this.handleMouseEnter}
