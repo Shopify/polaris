@@ -776,24 +776,33 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 ## Case study
 
-To cover the resource list component in depth, we’ll create a customer list as an example. We’ll start by customizing the built-in resource list item to make a reusable custom item. Then we’ll integrate that into a resource list and add features to enhance the experience.
+To cover the resource list component in depth, we’ll create a customer list as an example. We’ll start by implementing a basic resoure list step by step. Then we’ll customize the built-in resource list item to better display our customers. Finally, we’ll add features to make the list more useful to merchants.
 
 1. [Development setup](#study-setup) (optional)
+1. [A basic resource list](#study-basic-list)
 1. [Building a reusable custom list item](#study-custom-item)
-1. [Integrating the custom list item](#study-integrating-item)
 1. [Adding bulk actions](#study-bulk-actions)
 1. [Adding sorting](#study-sorting)
 1. [Adding filtering](#study-filtering)
 1. [Adding pagination](#study-pagination)
-1. [End result](#study-end-result)
+
+You can also [jump straight to the end result](#study-end-result).
 
 <a name="study-setup"></a>
 
 ### Development setup (optional)
 
-If you want to follow along with the code, our setup will be based on Create React App. [Learn how to get started with Create React App on GitHub](https://github.com/facebook/create-react-app)
+If you want to follow along with the code, our setup will be based on Create React App. If you’ve never used Create React App, you can get started by using `npx` (NPM 5.2+):
 
-Our project directory looks like this:
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+Your browser will open to `localhost:3000` and update as you code. You can [learn more about Create React App on GitHub](https://github.com/facebook/create-react-app)
+
+The main files in our project directory look like this:
 
 ```
 my-app/
@@ -808,13 +817,118 @@ my-app/
     index.js
 ```
 
-The first thing we’ll do is create a customized resource list item, which means creating our very own component.
+We’ll open our `App.js` and replace it with this:
+
+```jsx
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return <p>Hello world</p>;
+  }
+}
+
+export default App;
+```
+
+You should now see “Hello World” in your browser.
+
+Next, we need to add the React Polaris library to our project. We’ll install it using NPM:
+
+```bash
+npm install @shopify/polaris@">=2.0.0-beta.7" --save
+```
+
+The last thing before we start building is to import the Polaris styles and the components we’ll need.
+
+```jsx
+import React, { Component } from 'react';
+import {
+  Page,
+  Card,
+  ResourceList,
+  TextStyle,
+  Avatar,
+} from '@shopify/polaris';
+import '@shopify/polaris/styles.css';
+...
+```
+
+Let’s start with some sample data. In a real app the customer data would come from an API endpoint or as part of the initial payload from the server.
+
+```jsx
+...
+const customers = [
+  {
+    id: 341,
+    url: 'customers/341',
+    name: 'Mae Jemison',
+    location: 'Decatur, USA',
+  },
+  {
+    id: 256,
+    url: 'customers/256',
+    name: 'Ellen Ochoa',
+    location: 'Los Angeles, USA',
+  },
+];
+...
+```
+
+Notice that we’ve included an `id` for each customer. This should be a unique identifier from our database.
+
+We also should make sure to sort our items in a way that makes sense to merchants. For this case study, let’s assume we’ve sorted this list by most recent update.
+
+With our sample data in place we can now display a simple resource list:
+
+```jsx
+...
+const resourceName = {
+  singular: 'customer',
+  plural: 'customers',
+};
+
+class App extends Component {
+  render() {
+    return (
+      <Page title="Customers">
+        <Card>
+          <ResourceList
+            resourceName={resourceName}
+            items={customers}
+            renderItem={(item) => {
+              const { id, url, name, location } = item;
+              const media = <Avatar customer size="medium" name={name} />;
+
+              return (
+                <ResourceList.Item id={id} url={url} media={media}>
+                  <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </Card>
+      </Page>
+    );
+  }
+}
+...
+```
+
+Let’s take a closer look this code.
+
+Notice we’re providing a prop for the singular and plural name of our resource (“customers”). The resource list component will use these strings to build various pieces of content in the component, such as “Showing 50 customers”.
+
+We’ve broken out our item renderer as a separate function to keep things clean.
+
+Next, we’ll build is a customized resource list item.
 
 <a name="study-custom-item"></a>
 
 ### Building a reusable custom list item
 
-A list of orders is different than a list of products and is used by merchants differently. As a result, most resource lists benefit from careful choice of content and a customized layout. The best way to do this is to customize the built-in[resource list item](#subcomponent-item).
+A list of orders is different than a list of products and is used by merchants differently. As a result, most resource lists benefit from careful choice of content and a customized layout. The best way to do this is to customize the built-in [resource list item](#subcomponent-item).
 
 In this section, we’ll build a custom resource list item for customers:
 
@@ -896,7 +1010,7 @@ Whenever possible, use badges conditionally, showing them only when there is an 
 
 ##### Building it
 
-At this point we have enough information to start coding. We’ll create a components directory under `src` and add three files, `CustomerListItem.js`, `CustomerListItem.css`, and `index.js`:
+We’ll start by creating a `src/components/CustomerListItem` directory and adding three files, `CustomerListItem.js`, `CustomerListItem.css`, and `index.js`:
 
 ```
 my-app/
@@ -920,25 +1034,36 @@ In `CustomerListItem.js`, we’ll add the following:
 
 ```jsx
 // CustomerListItem.js
-import * as React from 'react';
-import {ResourceList} from '@shopify/polaris';
+...
+import React from 'react';
+import {
+  ResourceList,
+  Avatar,
+  TextStyle,
+} from '@shopify/polaris';
+import '@shopify/polaris/styles.css';
 
 export default function CustomerListItem(props) {
-  const {id, url, children} = props;
+  const { id, url, name, location } = props;
+  const media = <Avatar customer size="medium" name={name} />;
 
   return (
-    <ResourceList.Item id={id} url={url}>
-      {children}
-    </ResourceList.Item>
+    <div className="CustomerListItem">
+      <ResourceList.Item id={id} url={url} media={media}>
+        <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    </div>
   );
 }
+...
 ```
 
-Notice that our component is just a regular JavaScript function. This type of component is called a [functional component](https://reactjs.org/docs/components-and-props.html#functional-and-class-components).
+This component is also a good example of [composition in React](https://reactjs.org/docs/composition-vs-inheritance.html#specialization). Notice that most of the code here is the same as what we had in our `App.js` before. However, now we can build a more specific API for our customer list item on top of the basic resource list item we had before.
 
-Our component is also a good example of [composition in React](https://reactjs.org/docs/composition-vs-inheritance.html#specialization). Through composition, we can build a more specific API for our customer list item on top of the [built-in resource list item](#subcomponent-item).
+Notice also that our component is just a regular JavaScript function. This type of component is called a [functional component](https://reactjs.org/docs/components-and-props.html#functional-and-class-components).
 
-We’ll also add a boilerplate index.js so we can use a more concise path when importing the component:
+Now we’ll add a boilerplate index.js so we can use a more concise import path for it:
 
 ```jsx
 // index.js
@@ -946,16 +1071,62 @@ import CustomerListItem from './CustomerListItem';
 export default CustomerListItem;
 ```
 
-Right now we’re just passing through the props required by `ResourceList.Item` (`id` and `url`) plus arbitrary content (`children`). Let’s expand on this to add the content we defined above:
+In our `App.js`, we can now import the component like so:
+
+```jsx
+// App.js
+import CustomerListItem from './components/CustomerListItem';
+```
+
+And we can use it in place of our basic resource list item, replacing the entire function we’d passed to `renderItem` with a one-liner:
+
+```jsx
+renderItem={(customer) => <CustomerListItem {...customer} />}
+```
+
+Let’s also flesh out our sample data to match the content we decided to show in our customized resource list item:
+
+```jsx
+// App.js
+...
+const customers = [
+  {
+    id: 341,
+    url: 'customers/341',
+    avatarSource: 'https://avatars.io/twitter/maejemison',
+    name: 'Mae Jemison',
+    location: 'Decatur, USA',
+    orderCount: 5,
+    totalSpent: '$497.76',
+    note: 'This customer is awesome! Make sure to treat them right',
+  },
+  {
+    id: 256,
+    url: 'customers/256',
+    avatarSource: 'https://avatars.io/twitter/Astro_Ellen',
+    name: 'Ellen Ochoa',
+    location: 'Los Angeles, USA',
+    orderCount: 1,
+    totalSpent: '$48.28',
+  },
+  {
+    id: 145,
+    url: 'customers/145',
+    avatarSource: 'https://avatars.io/twitter/Astro_Soyeon',
+    name: 'Yi So-Yeon',
+    location: 'Gwangju, South Korea',
+    orderCount: 2,
+    totalSpent: '$73.98',
+  },
+];
+...
+```
+
+Now let’s come back to our customer list item and include the new content.
 
 ```jsx
 // CustomerListItem.js
-import * as React from 'react';
-import {
-  ResourceList,
-  Avatar,
-} from '@shopify/polaris';
-
+...
 export default function CustomerListItem(props) {
   const {
     id,
@@ -972,22 +1143,24 @@ export default function CustomerListItem(props) {
   );
 
   return (
-    <ResourceList.Item id={id} url={url} media={media}>
-      <h3 className="CustomerListItem__Title">{name}</h3>
-      <div className="CustomerListItem__Location">{location}</div>
-      <div className="CustomerListItem__OrderCount">
-        {orderCount} {orderCount === 1 ? 'order' : 'orders'}
-      </div>
-      <div className="CustomerListItem__TotalSpent">{totalSpent} spent</div>
-    </ResourceList.Item>
+    <div className="CustomerListItem">
+      <ResourceList.Item id={id} url={url} media={media}>
+        <h3>{name}</h3>
+        <div>{location}</div>
+        <div>
+          {orderCount} {orderCount === 1 ? 'order' : 'orders'}
+        </div>
+        <div>{totalSpent} spent</div>
+      </ResourceList.Item>
+    </div>
   );
 }
 ```
 
-It’s worth noting that we’re not really doing anything with `id` and `url`. We’re just “forwarding” them on to `ResourceList.Item`. Optionally, we can use rest and spread operators to make this explicit, unpacking only the props we need. This also makes our component more resilient. By default, `CustomerListItem` now accepts any prop that `ResourceList.Item` does.
+It’s worth noting that we’re not really doing anything with `id` and `url` in this component. We’re just “forwarding” them on to `ResourceList.Item`. We can use the rest and spread operators to make this more resilient, so that `CustomerListItem` accepts any prop that `ResourceList.Item` does:
 
 ```jsx
-…
+...
 export default function CustomerListItem(props) {
   const {
     avatarSource,
@@ -1003,11 +1176,9 @@ export default function CustomerListItem(props) {
   );
 
   return (
-    <ResourceList.Item {...rest} media={media}>
-      …
-    </ResourceList.Item>
-  );
-}
+    <div className="CustomerListItem">
+      <ResourceList.Item {...rest} media={media}>
+        ...
 ```
 
 We now have our content in place, but it has no layout.
@@ -1054,44 +1225,37 @@ When laying out media content:
 
 ##### Building it
 
-To handle the layout, we’ll need a little bit of extra markup.
+To handle the layout, we’ll need some class names and some wrapping markup.
 
 ```jsx
-  …
-  const media = (
-    <Avatar customer size="medium" name={name} source={avatarSource} />
-  );
-
-  return (
-    <ResourceList.Item id={id} url={url} media={media}>
-      <h3 className="CustomerListItem__Title">{name}</h3>
-      <div className="CustomerListItem__Location">{location}</div>
-      <div className="CustomerListItem__Orders">
-        <div className="CustomerListItem__OrderCount">
-          {orderCount} {orderCount === 1 ? 'order' : 'orders'}
+  ...
+    <div className="CustomerListItem">
+      <ResourceList.Item {...rest} media={media}>
+        <h3 className="CustomerListItem__Title">{name}</h3>
+        <div className="CustomerListItem__Location">{location}</div>
+        <div className="CustomerListItem__Orders">
+          <div className="CustomerListItem__OrderCount">
+            {orderCount} {orderCount === 1 ? 'order' : 'orders'}
+          </div>
+          <div className="CustomerListItem__TotalSpent">{totalSpent} spent</div>
         </div>
-        <div className="CustomerListItem__TotalSpent">{totalSpent} spent</div>
-      </div>
-    </ResourceList.Item>
-  );
-  …
+      </ResourceList.Item>
+    </div>
+  ...
 ```
 
-And we’ll need to write some CSS. We can import our (so far empty) CSS file from our component. This tells Create React App (using WebPack under the hood) to pull in the styles and include them in our stylesheet.
+And we’ll need to write some CSS. We can import our (so far empty) CSS file from our component.
 
 ```jsx
 // CustomerListItem.js
-…
-  Avatar,
-} from '@shopify/polaris';
-
 import './CustomerListItem.css';
-…
 ```
 
 In the CSS itself, we’re going to start mobile first. We’ll open up the CSS file we just imported and write some styles for our content elements:
 
 ```css
+.CustomerListItem {}
+
 .CustomerListItem__Title {
   font-weight: 600;
 }
@@ -1123,11 +1287,7 @@ Note that we’ve annotated the colors here to show that they correspond to the 
 Now that we have our small screen layout, we can layer on the layouts for medium and wide screens. This requires some additional wrappers. With this extra markup, it’s a good time to split out some of this out to clean up the code:
 
 ```jsx
-  …
-  const media = (
-    <Avatar customer size="medium" name={name} source={avatarSource} />
-  );
-
+  ...
   const profile = (
     <div className="CustomerListItem__Profile">
       <h3 className="CustomerListItem__Title">{name}</h3>
@@ -1147,20 +1307,22 @@ Now that we have our small screen layout, we can layer on the layouts for medium
   );
 
   return (
-    <ResourceList.Item id={id} url={url} media={media}>
-      <div className="CustomerListItem__Main">
-        {profile}
-        {orders}
-      </div>
-    </ResourceList.Item>
+    <div className="CustomerListItem">
+      <ResourceList.Item {...rest} media={media}>
+        <div className="CustomerListItem__Main">
+          {profile}
+          {orders}
+        </div>
+      </ResourceList.Item>
+    </div>
   );
-  …
+}
 ```
 
 Now we can write our styles:
 
 ```css
-…
+...
 @media (min-width: 640px) {
   .CustomerListItem__Main {
     display: flex;
@@ -1200,8 +1362,6 @@ Now we can write our styles:
 }
 ```
 
-Note the `min-width` values used for creating column alignment as explained in the guidelines above.
-
 <a name="study-custom-item-conditional-content"></a>
 
 #### Adding conditional content
@@ -1222,18 +1382,41 @@ Actions can also be presented conditionally, based on the state of the item. For
 
 ##### Building it
 
-To build this, we’ll accept a few more props and use them to render an exception list item and a button under the right conditions:
+To build this, we’ll add a couple new values to our data and accept them as props:
 
 ```jsx
-  …
-  Avatar,
+// App.js
+...
+const customers = [
+  {
+    id: 341,
+    url: 'customers/341',
+    avatarSource: 'https://avatars.io/twitter/maejemison',
+    name: 'Mae Jemison',
+    location: 'Decatur, USA',
+    orderCount: 5,
+    totalSpent: '$497.76',
+    note: 'This customer is awesome! Make sure to treat them right',
+    openOrderCount: 2,
+    openOrdersUrl: 'orders/1456',
+  },
+  ...
+```
+
+We’ll need to import some additional components from Polaris…
+
+```jsx
+  ...
+  ExceptionList,
   Button,
 } from '@shopify/polaris';
+...
+```
 
-import ExceptionList from '../ExceptionList';
+…and use them, along with our new data, to render an exception list and a button under the right conditions:
 
-import './CustomerListItem.css';
-
+```jsx
+...
 export default function CustomerListItem(props) {
   const {
     avatarSource,
@@ -1247,7 +1430,7 @@ export default function CustomerListItem(props) {
     ...rest,
   } = props;
 
-  …
+  ...
 
   let exceptions = [];
   let conditionalAction = null;
@@ -1261,7 +1444,7 @@ export default function CustomerListItem(props) {
     const summary = `${openOrderCount} open ${label}`;
     exceptions.push({ status: 'warning', icon: 'alert', summary });
     conditionalAction = (
-      <Button plain url={openOrdersUrl}>
+      <Button plain url={openOrdersUrl} external>
         View open orders
       </Button>
     );
@@ -1284,22 +1467,25 @@ export default function CustomerListItem(props) {
     : null;
 
   return (
-    <ResourceList.Item {...rest} media={media}>
-      <div className="CustomerListItem__Main">
-        {profile}
-        {orders}
-      </div>
-      {exceptionList}
-      {conditionalActions}
-    </ResourceList.Item>
+    <div className="CustomerListItem">
+      <ResourceList.Item {...rest} media={media}>
+        <div className="CustomerListItem__Main">
+          {profile}
+          {orders}
+        </div>
+        {exceptionList}
+        {conditionalActions}
+      </ResourceList.Item>
+    </div>
   );
 }
 ```
 
-We can finish this off with a couple of simple styles that apply across all breakpoints.
+We can finish this off with a couple of simple styles:
 
 ```css
-…
+/* CustomerListItem.css */
+...
 .CustomerListItem__TotalSpent {
   display: flex;
   min-width: 0;
@@ -1313,9 +1499,7 @@ We can finish this off with a couple of simple styles that apply across all brea
 .CustomerListItem__ConditionalActions {
   margin-top: 4px;
 }
-
-@media (min-width: 640px) {
-…
+...
 ```
 
 <a name="study-custom-item-shortcut-actions"></a>
@@ -1376,172 +1560,34 @@ Shortcut actions can be defined as part of our custom list item, or we can leave
 If we were to build a shortcut action into the custom item, we could offer the merchant a link to the customer’s most recent order instead of conditional actions. We could add a prop to allow this:
 
 ```jsx
-    …
+    ...
     openOrderCount,
     openOrdersUrl,
-    latestOrderUrl
+    latestOrderUrl,
     ...rest,
   } = props;
 
-  …
-
-  const conditionalActions = conditionalAction
-    ? (
-      <div className="CustomerListItem__ConditionalActions">
-        {conditionalAction}
-      </div>
-    )
-    : null;
+  ...
 
   const shortcutActions = openOrdersUrl
-    ? [{content: 'View latest order', url: openOrdersUrl}]
+    ? [{ content: 'View latest order', url: openOrdersUrl }]
     : null;
 
   return (
-    <ResourceList.Item
-      {...rest}
-      media={media}
-      shortcutActions={shortcutActions}
-    >
-      <div className="CustomerListItem__Main">
-        {profile}
-        {orders}
-      </div>
-      {exceptionList}
-      {conditionalActions}
-    </ResourceList.Item>
-  );
-}
+    <div className="CustomerListItem">
+      <ResourceList.Item
+        {...rest}
+        media={media}
+        shortcutActions={shortcutActions}
+      >
+      ...
 ```
 
-With that, our custom list item is done. Let’s see it in action.
-
-<a name="study-integrating-item"></a>
-
-### Integrating a custom list item
-
-In the previous section we built a customer list item.
+With that, our custom list item is done.
 
 <!-- [Download sample code for the customer list item]() -->
 
-We’ll integrate it into a resource list by opening our App component and starting with a basic scaffold.
-
-```jsx
-import * as React from 'react';
-
-class App extends React.Component {
-  render() {
-    return (<p>Test</p>);
-  }
-}
-```
-
-Next we’ll import `ResourceList` from Polaris and use it in our `render` method. For now we’ll just pass in the name of our resource in singular and plural form. The resource list component will use these strings to build various pieces of content, such as “Showing 50 customers”.
-
-```jsx
-import * as React from 'react';
-import {
-  ResourceList,
-} from '@shopify/polaris';
-
-const resourceName = {
-  singular: 'customer',
-  plural: 'customers',
-};
-
-class App extends React.Component {
-  render() {
-    return (
-      <ResourceList
-        resourceName={resourceName}
-      />
-    );
-  }
-}
-```
-
-Now we’ll add some mock data. In a real app this would come from an API endpoint (or as part of the initial payload from the server).
-
-We should also make sure that our items are sorted in a way that makes sense to merchants, even before we offer the option to change the sort order. We’re going to display the customers in the order they were most recently updated—either by the merchant, or by the customer themselves by placing a new order. For this case study we’ll assume the query we performed to get the data has sorted them this way.
-
-We can pass this data to our list’s `items` prop.
-
-```jsx
-…
-const resourceName = {
-  singular: 'customer',
-  plural: 'customers',
-};
-
-// This would normally come from an API request
-const customers = [
-  {
-    id: 341,
-    url: 'customers/341',
-    avatarSource: 'https://avatars.io/twitter/maejemison',
-    name: 'Mae Jemison',
-    location: 'Decatur, USA',
-    orderCount: 5,
-    totalSpent: '$497.76',
-    note: 'This customer is awesome! Make sure to treat them right',
-  },
-  {
-    id: 256,
-    url: 'customers/256',
-    avatarSource: 'https://avatars.io/twitter/Astro_Ellen',
-    name: 'Ellen Ochoa',
-    location: 'Los Angeles, USA',
-    orderCount: 1,
-    totalSpent: '$48.28',
-  },
-  {
-    id: 145,
-    url: 'customers/145',
-    avatarSource: 'https://avatars.io/twitter/Astro_Soyeon',
-    name: 'Yi So-Yeon',
-    location: 'Gwangju, South Korea',
-    orderCount: 2,
-    totalSpent: '$73.98',
-  },
-];
-
-class App extends React.Component {
-  render() {
-    return (
-      <ResourceList
-        resourceName={resourceName}
-        items={customers}
-      />
-    );
-  }
-}
-```
-
-Notice we’ve included an `id` in our data object. This should be a unique identifier from our database.
-
-Finally, we’ll import the custom list item we created previously and use it in the `renderItem` callback.
-
-```jsx
-  …
-  ResourceList,
-} from '@shopify/polaris';
-
-import CustomerListItem from 'components/CustomerListItem';
-
-…
-
-class App extends React.Component {
-  render() {
-    return (
-      <ResourceList
-        resourceName={resourceName}
-        items={customers}
-        renderItem={(customer) => <CustomerListItem {...customer} />}
-      />
-    );
-  }
-  …
-```
+Now let’s save our merchants some time by using more features of the resource list component.
 
 <a name="study-bulk-actions"></a>
 
@@ -1591,55 +1637,7 @@ Be strategic about what type of buik actions you provide to merchants—ask your
 
 ##### Button and menu item copy
 
- Bulk action buttons and menu items should use the full verb + noun pattern.
-
-##### Confirmation modal copy
-
-Confirmation modal titles should concisely ask if the merchant wants to continue with the action using a clear {verb}+{noun} question.
-
-The body copy should clearly explain if the action is irreversible or difficult to undo, and use [plain language](https://polaris.shopify.com/content/product-content#write-for-a-grade-7-reading-level).
-
-The modal’s primary action should use a verb alone, like “Delete”, instead of the verb + noun content formula. This is because the action word is in close proximity to the title and body copy that already explains what will happen if a merchant takes the action. The modal’s secondary action should say “Cancel”.
-
-Title:
-
-<!-- usagelist -->
-#### Do
-- Delete 5 collections?
-
-#### Don’t
-- Are you sure you want to delete?
-<!-- end -->
-
-Body:
-
-<!-- usagelist -->
-#### Do
-- This can’t be undone.
-
-#### Don’t
-- Are you sure you want to delete 5 collections? This action cannot be reversed.
-<!-- end -->
-
-Primary action (confirms the action):
-
-<!-- usagelist -->
-#### Do
-- Delete
-
-#### Don’t
-- Delete collections
-<!-- end -->
-
-Secondary action (cancels the action):
-
-<!-- usagelist -->
-#### Do
-- Cancel
-
-#### Don’t
-- Discard
-<!-- end -->
+Bulk action buttons and menu items should use the full verb + noun pattern.
 
 <a name="study-bulk-actions-applying"></a>
 
@@ -1653,15 +1651,6 @@ For our customers list, we’ve decided to offer the following bulk actions:
 | Add tags |  |
 | Remove tags |  |
 | Delete customers | Should present a confirmation modal to ensure merchants really intend a bulk delete action. |
-
-Our confirmation modal will contain the following copy:
-
-| Content element | Copy |
-| --- | --- |
-| Modal title | Delete {number} customers |
-| Modal body | This action can’t be undone |
-| Primary action | Delete |
-| Secondary action | Cancel |
 
 <a name="study-bulk-actions-building"></a>
 
@@ -1678,8 +1667,8 @@ Now we’ll add the bulk actions. We’ll need to do several things to get this 
 The way we keep track of the current selection is with state.
 
 ```jsx
-…
-class App extends React.Component {
+...
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -1687,16 +1676,18 @@ class App extends React.Component {
       selectedItems: [],
     }
 
-    this.handleSelectionChange = handleSelectionChange.bind(this);
+    this.handleSelectionChange = this.handleSelectionChange.bind(this);
   }
 
   render() {
+    const { selectedItems } = this.state;
+
     return (
       <ResourceList
         resourceName={resourceName}
         items={customers}
         renderItem={(customer) => <CustomerListItem {...customer} />}
-        selectedItems={this.state.selectedItems}
+        selectedItems={selectedItems}
         onSelectionChange={this.handleSelectionChange}
         promotedBulkActions={[
           { content: 'Edit customers' },
@@ -1711,7 +1702,7 @@ class App extends React.Component {
   }
 
   handleSelectionChange(selectedItems) {
-    this.setState({selectedItems: selectedItems});
+    this.setState({ selectedItems });
   }
 }
 ```
@@ -1719,8 +1710,8 @@ class App extends React.Component {
 This allows merchants to make a selection and see the change. Next, we’ll wire up the bulk action buttons.
 
 ```jsx
-…
-class App extends React.Component {
+...
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -1728,7 +1719,7 @@ class App extends React.Component {
       selectedItems: [],
     }
 
-    this.handleSelectionChange = handleSelectionChange.bind(this);
+    this.handleSelectionChange = this.handleSelectionChange.bind(this);
     this.handleBulkEdit = this.handleBulkEdit.bind(this);
     this.handleBulkAddTags = this.handleBulkAddTags.bind(this);
     this.handleBulkRemoveTags = this.handleBulkRemoveTags.bind(this);
@@ -1736,13 +1727,11 @@ class App extends React.Component {
   }
 
   render() {
+    const { selectedItems } = this.state;
+
     return (
       <ResourceList
-        resourceName={resourceName}
-        items={customers}
-        renderItem={(customer) => <CustomerListItem {...customer} />}
-        selectedItems={this.state.selectedItems}
-        onSelectionChange={this.handleSelectionChange}
+        ...
         promotedBulkActions={[
           { content: 'Edit customers', onAction: this.handleBulkEdit },
         ]}
@@ -1756,7 +1745,7 @@ class App extends React.Component {
   }
 
   handleSelectionChange(selectedItems) {
-    this.setState({selectedItems: selectedItems});
+    this.setState({ selectedItems });
   }
 
   handleBulkEdit() {
@@ -1776,8 +1765,7 @@ class App extends React.Component {
   handleBulkDelete() {
     console.log('Handling bulk customer deletion…');
     // Since this action destroys resources in bulk, show a
-    // confirmation modal (“Are you sure you want to delete {n}
-    // customers”) before completing the action.
+    // confirmation modal before completing the action.
   }
 }
 ```
@@ -1923,11 +1911,7 @@ As with bulk actions, there are broadly three parts to the implementation:
 1. Setting up a handler to respond to and update the state when the merchant changes the sort option
 
 ```jsx
-…
-const customers = [
-  …
-];
-
+...
 const sortOptions = [
   { label: 'Newest update', value: 'DATE_MODIFIED_DESC' },
   { label: 'Oldest update', value: 'DATE_MODIFIED_ASC' },
@@ -1937,7 +1921,7 @@ const sortOptions = [
   { label: 'Last name Z–A', value: 'ALPHABETICAL_DESC' },
 ];
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -1945,28 +1929,31 @@ class App extends React.Component {
       selectedItems: [],
       sortValue: 'DATE_MODIFIED_DESC',
     }
-    …
+    ...
+    this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   render() {
+    const {selectedItems, sortValue} = this.state;
+
     return (
       <ResourceList
-        …
+        ...
         sortOptions={sortOptions}
-        sortValue={this.state.sortValue}
+        sortValue={sortValue}
         onSortChange={this.handleSortChange}
       />
     );
   }
 
-  handleSortChange(sortValue: string) {
-    this.setState({sortValue: sortValue});
+  handleSortChange(sortValue) {
+    this.setState({ sortValue });
   }
 
   handleSelectionChange(selectedItems) {
-    this.setState({selectedItems: selectedItems});
+    this.setState({ selectedItems });
   }
-  …
+  ...
 ```
 
 We still have one issue though: our items haven’t been re-sorted. To do this, we’ll need to move the items into state. When our sort change handler is called, we’ll build a new array of options and update the items in state.
@@ -1974,7 +1961,7 @@ We still have one issue though: our items haven’t been re-sorted. To do this, 
 The actual logic used to build the new items array is dependent on your app, and so the implementation here has been left as a stub. However, it will likely involve fetching new item data from the server.
 
 ```jsx
-…
+...
 const sortOptions = [
   { label: 'Newest update', value: 'DATE_MODIFIED_DESC' },
   { label: 'Oldest update', value: 'DATE_MODIFIED_ASC' },
@@ -1989,7 +1976,7 @@ function fetchCustomers() {
   return customers;
 }
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -1999,38 +1986,29 @@ class App extends React.Component {
       sortValue: 'DATE_MODIFIED_DESC',
     }
 
-    …
+    ...
   }
 
   render() {
+    const { items, selectedItems, sortValue } = this.state;
+
     return (
       <ResourceList
-        …
-        items={this.state.items}
-        …
+        ...
+        items={items}
+        ...
         sortOptions={sortOptions}
-        sortValue={this.state.sortValue}
+        sortValue={sortValue}
         onSortChange={this.handleSortChange}
       />
     );
   }
 
-  handleSortChange(sortValue: string) {
+  handleSortChange(sortValue) {
     const items = fetchCustomers();
-    this.setState({
-      items: items,
-      sortValue: sortValue
-    });
+    this.setState({ items, sortValue });
   }
   …
-```
-
-We can also use ES2015 shorthand for object literals to make our `setState` call a little more concise:
-
-```jsx
-    …
-    this.setState({items, sortValue});
-    …
 ```
 
 <a name="study-filtering"></a>
@@ -2075,11 +2053,8 @@ Based on merchant research and following the best practices and content guidelin
 We’ll start with the bulk actions and sorting we added previously and create an object representing the available filters.
 
 ```jsx
-  …
-  { label: 'Last name A–Z', value: 'ALPHABETICAL_ASC' },
-  { label: 'Last name Z–A', value: 'ALPHABETICAL_DESC' },
-];
-
+// App.js
+...
 const availableFilters = [
   {
     key: 'spentFilter',
@@ -2126,22 +2101,17 @@ const availableFilters = [
     type: FilterType.Select,
   },
 ];
-
-// Not implemented
-function fetchCustomers() {
-  return customers;
-}
-…
+...
 ```
 
-Resource list doesn’t accept these available filters directly. Instead, it delegates rendering of the filter control to a separate component. Here we’ll use the built-in [resource list filter control](#subcomponent-filter-control), and this subcomponent is where we’ll pass our available filters.
+Resource list doesn’t accept these available filters directly. Instead, it delegates rendering of the filter control to a separate component. Here we’ll use the built-in [resource list filter control](#subcomponent-filter-control).
 
 ```jsx
-  …
+  ...
   render() {
     return (
       <ResourceList
-        …
+        ...
         onSortChange={this.handleSortChange}
         filterControl={
           <ResourceList.FilterControl
@@ -2152,14 +2122,14 @@ Resource list doesn’t accept these available filters directly. Instead, it del
       />
     );
   }
-  …
+  ...
 ```
 
 Next, we need to deal with state. We’ll add 2 new properties to our state object. One will handle the text input in the filter control’s search field. The other property will handle the rest of the filters. As we did in our sorting implementation, we’ll add handler methods that call `setState` to update the UI when the merchant changes the filters.
 
 ```jsx
-…
-class App extends React.Component {
+...
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -2168,24 +2138,35 @@ class App extends React.Component {
       selectedItems: [],
       sortValue: 'DATE_MODIFIED_DESC',
       appliedFilters: [],
+      searchValue: '',
     }
-    …
+    ...
+    this.handleFiltersChange = this.handleFiltersChange.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   render() {
     return (
+      const {
+        items,
+        selectedItems,
+        sortValue,
+        appliedFilters,
+        searchValue
+      } = this.state;
+
       <ResourceList
-        …
+        ...
         sortOptions={sortOptions}
-        sortValue={this.state.sortValue}
+        sortValue={sortValue}
         onSortChange={this.handleSortChange}
         filterControl={
           <ResourceList.FilterControl
             resourceName={resourceName}
             filters={availableFilters}
-            appliedFilters={this.state.appliedFilters}
+            appliedFilters={appliedFilters}
             onFiltersChange={this.handleFiltersChange}
-            searchValue={this.state.searchValue}
+            searchValue={searchValue}
             onSearchChange={this.handleSearchChange}
           />
         }
@@ -2195,14 +2176,14 @@ class App extends React.Component {
 
   handleFiltersChange(appliedFilters) {
     const items = fetchCustomers();
-    this.setState({items, appliedFilters});
+    this.setState({ items, appliedFilters });
   }
 
   handleSearchChange(searchValue) {
     const items = fetchCustomers();
-    this.setState({items, searchValue});
+    this.setState({ items, searchValue });
   }
-  …
+  ...
 }
 ```
 
@@ -2279,8 +2260,9 @@ my-app/
 
 ```jsx
 // CustomerListFooter.js
-import * as React from 'react';
-import * as styles from './CustomerListFooter.css';
+import React from 'react';
+
+import './CustomerListFooter.css'
 
 export default function CustomerListFooter(props) {
   return <div className="CustomerListFooter">{props.children}</div>;
@@ -2289,20 +2271,28 @@ export default function CustomerListFooter(props) {
 
 ```jsx
 // index.js
-import CustomerListFooter from 'CustomerListFooter';
+import CustomerListFooter from './CustomerListFooter';
 export default CustomerListFooter;
 ```
 
 Now we can use this component to add our pagination.
 
 ```jsx
-…
-import CustomerListItem from 'components/CustomerListItem';
-import CustomerListFooter from 'components/CustomerListFooter';
+import React from 'react';
+import {
+  Page,
+  Card,
+  ResourceList,
+  Pagination,
+} from '@shopify/polaris';
+import '@shopify/polaris/styles.css';
 
-…
+import CustomerListItem from './components/CustomerListItem';
+import CustomerListFooter from './components/CustomerListFooter';
 
-class App extends React.Component {
+...
+
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -2311,20 +2301,32 @@ class App extends React.Component {
       selectedItems: [],
       sortValue: 'DATE_MODIFIED_DESC',
       appliedFilters: [],
-      searchValue: null,
+      searchValue: '',
       isFirstPage: true,
       isLastPage: false,
     }
-    …
+    ...
+    this.handlePreviousPage = this.handlePreviousPage.bind(this);
+    this.handleNextPage = this.handleNextPage.bind(this);
   }
 
   render() {
-    const paginationMarkup = this.state.items.length > 0
+    const {
+      items,
+      selectedItems,
+      sortValue,
+      appliedFilters,
+      searchValue,
+      isFirstPage,
+      isLastPage,
+    } = this.state;
+
+    const paginationMarkup = items.length > 0
       ? (
         <CustomerListFooter>
           <Pagination
-            hasPrevious={!this.state.isFirstPage}
-            hasNext={!this.state.isLastPage}
+            hasPrevious={!isFirstPage}
+            hasNext={!isLastPage}
             onPrevious={this.handlePreviousPage}
             onNext={this.handleNextPage}
           />
@@ -2334,7 +2336,7 @@ class App extends React.Component {
 
     return (
       <ResourceList
-        …
+        ...
       />
 
       {paginationMarkup}
@@ -2345,35 +2347,27 @@ class App extends React.Component {
     const items = fetchCustomers();
     // Todo: figure out how to determine if items represent
     // first or last page.
-    this.setState({items, isFirstPage: true, isLastPage: false});
+    this.setState({ items, isFirstPage: true, isLastPage: false });
   }
 
   handleNextPage() {
     const items = fetchCustomers();
     // Todo: figure out how to determine if items represent
     // first or last page.
-    this.setState({items, isFirstPage: false, isLastPage: true});
+    this.setState({ items, isFirstPage: false, isLastPage: true });
   }
-  …
+  ...
 ```
 
 If we want to allow selecting all items across all pages in our paginated resource list, we can enable this interaction with the `hasMoreItems` boolean prop.
 
 ```jsx
-      …
+      ...
       <ResourceList
-        …
-        sortOptions={sortOptions}
-        sortValue={this.state.sortValue}
-        onSortChange={this.handleSortChange}
+        ...
         filterControl={
           <ResourceList.FilterControl
-            resourceName={resourceName}
-            filters={availableFilters}
-            appliedFilters={this.state.appliedFilters}
-            onFiltersChange={this.handleFiltersChange}
-            searchValue={this.state.searchValue}
-            onSearchChange={this.handleSearchChange}
+            ...
           />
         }
         hasMoreItems
@@ -2387,16 +2381,18 @@ If we want to allow selecting all items across all pages in our paginated resour
 And with that, our resource list UI is complete. Here is our finished code:
 
 ```jsx
-import * as React from 'react';
+import React, { Component } from 'react';
 import {
   Page,
   Card,
   ResourceList,
+  FilterType,
   Pagination,
 } from '@shopify/polaris';
+import '@shopify/polaris/styles.css';
 
-import CustomerListItem from 'components/CustomerListItem';
-import CustomerListFooter from 'components/CustomerListFooter';
+import CustomerListItem from './components/CustomerListItem';
+import CustomerListFooter from './components/CustomerListFooter';
 
 const resourceName = {
   singular: 'customer',
@@ -2413,6 +2409,7 @@ const customers = [
     location: 'Decatur, USA',
     orderCount: 5,
     totalSpent: '$497.76',
+
     note: 'This customer is awesome! Make sure to treat them right',
   },
   {
@@ -2448,19 +2445,19 @@ const availableFilters = [
   {
     key: 'spentFilter',
     label: 'Money spent',
-    operatorText:'is greater than',
+    operatorText: 'is greater than',
     type: FilterType.TextField,
   },
   {
     key: 'orderCountFilter',
     label: 'Number of orders',
-    operatorText:'is greater than',
+    operatorText: 'is greater than',
     type: FilterType.TextField,
   },
   {
     key: 'orderDateFilter',
     label: 'Order date',
-    operatorText:'is',
+    operatorText: 'is',
     type: FilterType.Select,
     options: [
       'In the last week',
@@ -2496,7 +2493,7 @@ function fetchCustomers(options) {
   return customers;
 }
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -2505,7 +2502,7 @@ class App extends React.Component {
       selectedItems: [],
       sortValue: 'DATE_MODIFIED_DESC',
       appliedFilters: [],
-      searchValue: null,
+      searchValue: '',
       isFirstPage: true,
       isLastPage: false,
     }
@@ -2520,15 +2517,27 @@ class App extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handlePreviousPage = this.handlePreviousPage.bind(this);
     this.handleSaveFilters = this.handleSaveFilters.bind(this);
+    this.handlePreviousPage = this.handlePreviousPage.bind(this);
+    this.handleNextPage = this.handleNextPage.bind(this);
   }
 
   render() {
-    const paginationMarkup = this.state.items.length > 0
+    const {
+      items,
+      selectedItems,
+      sortValue,
+      appliedFilters,
+      searchValue,
+      isFirstPage,
+      isLastPage,
+    } = this.state;
+
+    const paginationMarkup = items.length > 0
       ? (
         <CustomerListFooter>
           <Pagination
-            hasPrevious={!this.state.isFirstPage}
-            hasNext={!this.state.isLastPage}
+            hasPrevious={!isFirstPage}
+            hasNext={!isLastPage}
             onPrevious={this.handlePreviousPage}
             onNext={this.handleNextPage}
           />
@@ -2537,16 +2546,13 @@ class App extends React.Component {
       : null;
 
     return (
-      <Page
-        title="Customers"
-        primaryAction={{content: 'Add customer', url="customers/new" }}
-      >
+      <Page title="Customers">
         <Card>
           <ResourceList
             resourceName={resourceName}
-            items={this.state.items}
+            items={items}
             renderItem={(customer) => <CustomerListItem {...customer} />}
-            selectedItems={this.state.selectedItems}
+            selectedItems={selectedItems}
             onSelectionChange={this.handleSelectionChange}
             promotedBulkActions={[
               { content: 'Edit customers', onAction: this.handleBulkEdit },
@@ -2557,15 +2563,15 @@ class App extends React.Component {
               { content: 'Delete customers', onAction: this.handleBulkDelete },
             ]}
             sortOptions={sortOptions}
-            sortValue={this.state.sortValue}
+            sortValue={sortValue}
             onSortChange={this.handleSortChange}
             filterControl={
               <ResourceList.FilterControl
                 resourceName={resourceName}
                 filters={availableFilters}
-                appliedFilters={this.state.appliedFilters}
+                appliedFilters={appliedFilters}
                 onFiltersChange={this.handleFiltersChange}
-                searchValue={this.state.searchValue}
+                searchValue={searchValue}
                 onSearchChange={this.handleSearchChange}
                 additionalAction={{
                   content: 'Save',
@@ -2586,37 +2592,34 @@ class App extends React.Component {
     const items = fetchCustomers();
     // Todo: figure out how to determine if items represent
     // first or last page.
-    this.setState({items, isFirstPage: true, isLastPage: false});
+    this.setState({ items, isFirstPage: true, isLastPage: false });
   }
 
   handleNextPage() {
     const items = fetchCustomers();
     // Todo: figure out how to determine if items represent
     // first or last page.
-    this.setState({items, isFirstPage: false, isLastPage: true});
+    this.setState({ items, isFirstPage: false, isLastPage: true });
   }
 
 
   handleFiltersChange(appliedFilters) {
     const items = fetchCustomers();
-    this.setState({items, appliedFilters});
+    this.setState({ items, appliedFilters });
   }
 
   handleSearchChange(searchValue) {
     const items = fetchCustomers();
-    this.setState({searchValue});
+    this.setState({ items, searchValue });
   }
 
-  handleSortChange(sortValue: string) {
+  handleSortChange(sortValue) {
     const items = fetchCustomers();
-    this.setState({
-      items: items,
-      sortValue: sortValue
-    });
+    this.setState({ items, sortValue });
   }
 
-  handleSelectionChange(selectedItems: string[]) {
-    this.setState({selectedItems});
+  handleSelectionChange(selectedItems) {
+    this.setState({ selectedItems });
   }
 
   handleBulkEdit() {
@@ -2644,4 +2647,6 @@ class App extends React.Component {
     console.log('Saving current filters…');
   }
 }
+
+export default App;
 ```
