@@ -33,6 +33,7 @@ export interface Props extends FooterProps, EASDKProps {
   large?: boolean,
   limitHeight?: boolean,
   loading?: boolean,
+  onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void,
   onClose(): void,
   onTransitionEnd?(): void,
 }
@@ -220,6 +221,12 @@ export default class Modal extends React.Component<Props, State> {
     this.setState({
       iframeHeight: iframe.contentWindow.document.body.scrollHeight,
     });
+
+    const {onIFrameLoad} = this.props;
+
+    if (onIFrameLoad != null) {
+      onIFrameLoad(evt);
+    }
   }
 
   private handleEASDKMessaging() {

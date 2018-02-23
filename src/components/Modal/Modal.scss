@@ -1,18 +1,14 @@
-$top-bar-height: rem(56px);
 $top-offset-slide-in-start: rem(200px);
 $entry-iterations: 1;
 $small-width: rem(620px);
 $large-width: rem(980px);
+$height-limit: 600px;
+$vertical-spacing: 60px;
+$horizontal-spacing: spacing(extra-loose) * 2;
 $backdrop-color: rgba(33, 43, 54, 0.4);
-$button-height: rem(36px);
-$modal-ui-bar-height: $button-height + (spacing() * 2);
-$body-max-height: rem(500px);
-$body-width-offset: spacing(extra-loose) * 2;
-$body-height-offset: $top-bar-height + $modal-ui-bar-height;
-$body-height-offset-with-footer: $top-bar-height + ($modal-ui-bar-height * 2);
 
 .Container {
-  position: absolute;
+  position: fixed;
   z-index: z-index(overlay);
   top: 0;
   right: 0;
@@ -24,6 +20,55 @@ $body-height-offset-with-footer: $top-bar-height + ($modal-ui-bar-height * 2);
 
   @include breakpoint-after(layout-width(page-with-nav)) {
     justify-content: center;
+  }
+}
+
+.Modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  max-height: calc(100vh - #{$vertical-spacing});
+  background: color(white);
+  box-shadow: shadow(layer);
+
+  @include frame-when-nav-hidden {
+    top: top-bar-height();
+    max-height: calc(100% - #{top-bar-height()});
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    position: relative;
+    max-width: $small-width;
+    margin: 0 auto;
+    border-radius: border-radius(large);
+  }
+}
+
+.Modal-limitHeight {
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    @media (min-height: $height-limit + $vertical-spacing) {
+      max-height: $height-limit;
+    }
+  }
+}
+
+.Modal-large {
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    max-width: calc(100vw - #{$horizontal-spacing});
+  }
+
+  @include breakpoint-after($large-width + $horizontal-spacing) {
+    max-width: $large-width;
   }
 }
 
@@ -77,36 +122,6 @@ $body-height-offset-with-footer: $top-bar-height + ($modal-ui-bar-height * 2);
   }
 }
 
-.Modal {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  max-height: calc(100vh - $top-bar-height);
-  background: color(white);
-  box-shadow: shadow(layer);
-
-  &:focus {
-    outline: 0;
-  }
-
-  @include breakpoint-after(layout-width(page-with-nav)) {
-    max-width: $small-width;
-    margin: 0 auto;
-    border-radius: border-radius(large);
-  }
-}
-
-.Modal-large {
-  @include breakpoint-after(layout-width(page-with-nav)) {
-    max-width: calc(100vw - #{$body-width-offset});
-  }
-
-  @include breakpoint-after($large-width + $body-width-offset) {
-    max-width: $large-width;
-  }
-}
-
 .graphic .CloseButton {
   position: absolute;
   right: spacing(tight);
@@ -123,23 +138,24 @@ $body-height-offset-with-footer: $top-bar-height + ($modal-ui-bar-height * 2);
   align-items: flex-end;
 }
 
-.Body {
-  max-height: calc(100vh - #{$body-height-offset});
-
-  .Modal-limitHeight & {
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      height: rem($body-max-height);
-    }
-  }
+.BodyWrapper {
+  display: flex;
+  flex-grow: 1;
+  border-radius: border-radius(large);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.Body-hasFooter {
-  max-height: calc(100vh - #{$body-height-offset-with-footer});
+.Body {
+  overflow: visible;
+  width: 100%;
 }
 
 .Footer {
   display: flex;
   align-self: flex-end;
+  align-items: center;
   width: 100%;
   min-height: spacing() * 4;
   padding: spacing();
@@ -182,13 +198,8 @@ $body-height-offset-with-footer: $top-bar-height + ($modal-ui-bar-height * 2);
   }
 }
 
-.BodyWrapper {
-  overflow: hidden;
-  border-radius: border-radius(large);
-}
-
 .Backdrop {
-  position: absolute;
+  position: fixed;
   z-index: z-index(overlay) - 1;
   top: 0;
   right: 0;
