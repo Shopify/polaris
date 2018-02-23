@@ -6,9 +6,19 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 * Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
+* Exposed Status from the Banner component. ([#998](https://github.com/Shopify/polaris-react/pull/998))
 
 ### Bug fixes
 * Fixed TextField overflow issues when inside Scrollable ([#967](https://github.com/Shopify/polaris-react/pull/967))
+* Fixed Select focus state bug occuring in Firefox ([#910](https://github.com/Shopify/polaris-react/pull/910))
+
+### Enhancements
+* Changed Checkbox label to allow string or React.ReactNode ([#894](https://github.com/Shopify/polaris-react/pull/894))
+* Update `TextField` type with currency ([#908](https://github.com/Shopify/polaris-react/pull/908))
+* Added `ariaControls`, `ariaExpanded` prop to Button ([#978](https://github.com/Shopify/polaris-react/pull/978/))
+
+### Chores
+* Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
 
 ## 1.11.0 - 2018-02-13
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
