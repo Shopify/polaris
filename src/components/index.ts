@@ -21,6 +21,7 @@ export {
 export {
   default as Banner,
   Props as BannerProps,
+  Status as BannerStatus,
 } from './Banner';
 
 export {default as Button} from './Button';

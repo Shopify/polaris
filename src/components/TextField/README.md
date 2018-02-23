@@ -167,7 +167,7 @@ You didn’t enter a store name.
 | error | boolean or string | Error to display beneath the label |
 | connectedRight | React.ReactNode | An element connected to the right of the input |
 | connectedLeft | React.ReactNode | An element connected to the left of the input |
-| type | enum['text', 'email', 'number', 'password', 'search', 'tel', 'url', 'date', 'datetime-local', 'month', 'time', 'week'] | Determine type of input |
+| type | enum['text', 'email', 'number', 'password', 'search', 'tel', 'url', 'date', 'datetime-local', 'month', 'time', 'week', 'currency'] | Determine type of input |
 | name | string | Name of the input |
 | id | string | ID for the input |
 | step | number | Limit increment value for numeric and date-time inputs |

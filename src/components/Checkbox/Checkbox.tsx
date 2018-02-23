@@ -8,7 +8,7 @@ import Icon from '../Icon';
 import * as styles from './Checkbox.scss';
 
 export interface Props {
-  label: string,
+  label: React.ReactNode,
   labelHidden?: boolean,
   checked?: boolean | 'indeterminate',
   helpText?: React.ReactNode,

@@ -10,7 +10,7 @@ import Resizer from './Resizer';
 import Spinner from './Spinner';
 import * as styles from './TextField.scss';
 
-export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week';
+export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
 
 export interface State {
   height?: number | null,
@@ -123,6 +123,8 @@ export default class TextField extends React.PureComponent<Props, State> {
       this.state.focus && styles.focus,
     );
 
+    const inputType = type === 'currency' ? 'text' : type;
+
     const prefixMarkup = prefix
       ? <div className={styles.Prefix} id={`${id}Prefix`}>{prefix}</div>
       : null;
@@ -159,7 +161,6 @@ export default class TextField extends React.PureComponent<Props, State> {
     const input = React.createElement(multiline ? 'textarea' : 'input', {
       name,
       id,
-      type,
       disabled,
       readOnly,
       autoFocus,
@@ -178,6 +179,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       maxLength,
       spellCheck,
       pattern,
+      type: inputType,
       'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
       'aria-labelledby': labelledBy.join(' '),
       'aria-invalid': Boolean(error),

@@ -46,6 +46,17 @@ copy(['./src/**/*.md', docs], { up: 1 })
 
 copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
   .then(() => {
+    [
+      resolvePath(intermediateBuild, './styles/global.scss'),
+      resolvePath(intermediateBuild, './configure.js'),
+    ].forEach((file) => {
+      writeFileSync(
+        file,
+        readFileSync(file, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version)
+      );
+    });
+  })
+  .then(() => {
     writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
       {
         "presets": [

@@ -7,7 +7,7 @@ export type Error = boolean | string;
 
 export interface Props {
   id: string,
-  label: string,
+  label: React.ReactNode,
   error?: Error,
   labelHidden?: boolean,
   children?: React.ReactNode,

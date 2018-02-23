@@ -39,19 +39,19 @@ Skeleton page component should:
 
 ## Content guidelines
 
-Show page titles that never change for a page. For example, keep Products on the product index page, but use skeleton loading for product titles that change on the product show page. Don’t use filler content for titles that will change when the page fully loads.
+Show page titles that never change for a page. For example, keep the title “Products” on the product index page, but use skeleton loading for titles that change on the product show page. Don’t use placeholder content for titles that will change when the page fully loads.
 
 Secondary actions are always represented with skeleton content. You can change the number of skeleton actions that best represent the number of actions once loaded.
 
 <!-- usageblock -->
 
 #### Do
-Use skeleton loading for dynamic content but keep unchanging content for static content.
+Use skeleton loading for dynamic content, and use actual content for content that doesn’t change.
 <div class="TypographyUsageBlockImg">![Image showing skeleton loading for changing content](skeleton/do-use-skeleton-for-changing-content.png)</div>
 
 #### Don’t
-Use filler content that will change when the page fully loads.
-<div class="TypographyUsageBlockImg">![Image showing filler content that will change](skeleton/dont-use-filler-content-that-will-change.png)</div>
+Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience. 
+<div class="TypographyUsageBlockImg">![Image showing placeholder content that will change](skeleton/dont-use-placeholder-content-that-will-change.png)</div>
 
 <!-- end -->
 
