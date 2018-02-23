@@ -27,7 +27,9 @@ keywords:
 
 A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 
-<!-- ![Resource list anatomy, showing filters, header, and items]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Resource list anatomy, showing filters, header, and items](resource-list/anatomy-wide.png)
+</div>
 
 Resource lists can also:
 
@@ -274,7 +276,7 @@ Allows the merchant to narrow the resource list to a subset of the original item
 | Prop          | Type | Description |
 | ---           | --- | --- |
 | resourceName  | {singular: string, plural: string} | Name of the resource, such as customers or products |
-| items\*       | any[] | Item data; each item is passed to `renderItem` |
+| items\*       | any[] | Item data; each item is passed to \`renderItem\` |
 | renderItem\*  | function(item: any, id: string): React.ReactNode | Function to render each list item |
 | idForItem     | function(item: any, index: number): string | Function to customize the unique ID for each item |
 | selectedItems | string[] | Collection of IDs for the currently selected items |
@@ -284,7 +286,7 @@ Allows the merchant to narrow the resource list to a subset of the original item
 | sortValue     | string | Current value of the sort control |
 | sortOptions   | Option[] | Collection of sort options to choose from |
 | onSortChange  | function(selected: string, id: string): void | Callback when sort option is changed |
-| filterControl | React.ReactNode | Accepts an element to use as the filtering UI; Normally `ResourceList.FilterControl` is passed here |
+| filterControl | React.ReactNode | Accepts an element to use as the filtering UI; Normally \`ResourceList.FilterControl\` |
 | hasMoreItems | boolean | If true and all items are selected, shows an option to select all items across a paginated list |
 
 ---
@@ -324,11 +326,13 @@ Resource lists function as:
 
 Because a show page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these show pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
-<!--
-![Schematic showing content from a show page being surfaces on a resource list]()
--->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Schematic showing content from a show page being surfaced on a resource list](resource-list/list-surfacing-show.png)
+</div>
 
 <!-- hint -->
+#### Hint
+
 #### A resource list isn’t a data table
 
 On wide screens, a resource list often looks like a table, especially if some content is aligned in columns. Despite this, resource lists and data tables have different purposes.
@@ -401,6 +405,10 @@ Because the content of items depends on the type of resource and merchant tasks,
 
 See the case study section for [more about customizing and using resource list items](#study-custom-item).
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Resource list item anatomy, showing handle, media and details](resource-list/item-anatomy-wide.png)
+</div>
+
 <a name="subcomponent-item-examples"></a>
 
 ### Item examples
@@ -408,6 +416,10 @@ See the case study section for [more about customizing and using resource list i
 #### Simple resource list item
 
 A basic resource list item with its details filled in at the point of use.
+
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Blog post list item](resource-list/item-example-simple.png)
+</div>
 
 ```jsx
 <ResourceList
@@ -442,16 +454,20 @@ A basic resource list item with its details filled in at the point of use.
 
 The media element can hold an [avatar](/components/images-and-icons/avatar), [thumbnail](/components/images-and-icons/thumbnail) or other small-format graphic.
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example customer list item](resource-list/item-example-media.png)
+</div>
+
 ```jsx
 <ResourceList
   resourceName={{singular: 'customer', plural: 'customers'}}
   items={[
     {
-      id: 341,
-      url: 'customers/341',
-      avatarSource: 'https://avatars.io/twitter/maejemison',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
+      id: 145,
+      url: 'customers/145',
+      avatarSource: 'https://avatars.io/twitter/Astro_Soyeon',
+      name: 'Yi So-Yeon',
+      location: 'Gwangju, South Korea',
     },
   ]}
   renderItem={(item) => {
@@ -477,16 +493,20 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
 
 Shortcut actions present popular actions from the resource’s show page for easy access.
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Shortcut actions are shown on hover](resource-list/item-example-shortcuts.png)
+</div>
+
 ```jsx
 <ResourceList
   resourceName={{singular: 'customer', plural: 'customers'}}
   items={[
     {
-      id: 341,
-      url: 'customers/341',
-      avatarSource: 'https://avatars.io/twitter/maejemison',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
+      id: 145,
+      url: 'customers/145',
+      avatarSource: 'https://avatars.io/twitter/Astro_Soyeon',
+      name: 'Yi So-Yeon',
+      location: 'Gwangju, South Korea',
       latestOrderUrl: 'orders/1456',
     },
   ]}
@@ -520,11 +540,11 @@ Shortcut actions present popular actions from the resource’s show page for eas
 | Prop      | Type            | Description |
 | ---       | ---             | --- |
 | id\*      | string          | Unique identifier for the item within the list |
-| url       | string          | URL for the resource’s show page (required unless `onClick` is provided) |
-| onClick   | function(id: string): void | Callback when clicked (required if `url` is omitted) |
+| url       | string          | URL for the resource’s show page (required unless \`onClick\` is provided) |
+| onClick   | function(id: string): void | Callback when clicked (required if \`url\` is omitted) |
 | media     | React.reactNode | Content for the media area at the left of the item, usually an Avatar or Thumbnail |
 | children  | React.reactNode | Content for the details area |
-| shortcutActions | DisableableAction[] | 1 or 2 shortcut actions; must be available on the page linked to by `url` |
+| shortcutActions | DisableableAction[] | 1 or 2 shortcut actions; must be available on the page linked to by \`url\` |
 
 <a name="subcomponent-item-best-practices"></a>
 
@@ -563,9 +583,13 @@ See the [case study](#study-custom-item) for content guidelines in action.
 
 <a name="subcomponent-filter-control"></a>
 
-## Resource List filter control
+## Resource list filter control
 
-Provides a default interface for applying filters and reflecting filter status. Supports a search term via text input and any number of straightforward filters via a menu.
+Provides a default interface for adding and removing filters. Supports quick filtering using a text field. A more advanced filter builder can be accessed from a popover. Applied filters are represented as removeable tags.
+
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Resource list with filter control](resource-list/filter-control-anatomy.png)
+</div>
 
 <a name="subcomponent-filter-control-examples"></a>
 
@@ -574,6 +598,10 @@ Provides a default interface for applying filters and reflecting filter status. 
 #### Resource list with filter control
 
 Filter control showing a state with applied filters and an additional action (optional).
+
+<div class="TypeContainerImage">
+  ![Example filter control](resource-list/filter-control-example.png)
+</div>
 
 ```jsx
 <ResourceList
@@ -608,8 +636,8 @@ Filter control showing a state with applied filters and an additional action (op
       resourceName={{ singular: 'customer', plural: 'customers' }}
       filters={[
         {
-          key: 'totalSpentFilter',
-          label: 'Total spent',
+          key: 'orderCountFilter',
+          label: 'Number of orders',
           operatorText: 'is greater than',
           type: FilterType.TextField,
         },
@@ -628,8 +656,14 @@ Filter control showing a state with applied filters and an additional action (op
       ]}
       appliedFilters={[
         {
+          key: 'orderCountFilter',
+          value: '1',
+          label: 'Has orders',
+        },
+        {
           key: 'accountStatusFilter',
-          value: 'Account enabled',
+          value: 'Enabled',
+          label: 'Account enabled',
         },
       ]}
       onFiltersChange={(appliedFilters) => {
@@ -638,7 +672,7 @@ Filter control showing a state with applied filters and an additional action (op
           'Todo: use setState to apply this change.'
         );
       }}
-      searchValue=""
+      searchValue="USA"
       onSearchChange={(searchValue) => {
         console.log(
           `Search value changed to ${searchValue}.`,
@@ -682,42 +716,47 @@ A Resource list’s filter control should:
 
 ### Filter control content guidelines
 
-Content for this subcomponent appears in two places: the UI for adding filters, and the tags that represent applied filters.
+Content for the filter control appears in two places: the filter builder and the removable tags that represent applied filters.
 
-#### Add filter content
+#### Filter builder content
 
-<!-- ![Examples of the add filter UI showing the three content elements]() -->
+The filter builder itself has three parts: the **label**, the **operator text**, and the **filter input**.
 
-The content for the add filter UI is made of three parts: the label, the operator text, and the filter input. For example:
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example filter builder in a popover](resource-list/filter-control-filter-builder.png)
+</div>
 
-> Show all customers where: | Account status | is | Enabled
+In this example:
 
-Here’s that sentence broken down:
+- “Account status” is the **label**
+- “is” is the **operator text**
+- “Enabled” is one of several options that make up the **filter input**
 
-- “Account status” is called the _label_
-- “is” is the _operator text_
-- “Enabled” is one of several options for the filter input, which in this case is represented by a [select component](/components/forms/select)
+Here’s another example:
 
-Here’s another example of filter content:
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Second filter builder example](resource-list/filter-control-filter-builder-2.png)
+</div>
 
-> Show all customers where: Number of orders | is greater than | 10
-
-In this case, a [text field](/components/forms/text-field) is used as the filter input, in which case there is no copy to consider.
+In this case, a the **filter input** is a text field, so you only need to consider copy for the **label**, “Number of orders” and **operator text**, “is greater than”.
 
 - Filter label and filter input should follow the [select menu options guidelines](https://polaris.shopify.com/components/forms/select#section-content-guidelines)
 - Operator text should start with a lowercase letter
-- All three content elements should form a sentence when read out in the order they appears
+- All three content elements should form a sentence
 - Operator text may be left out if the sentence reads more clearly without it
 
-### Applied filter content
-<!-- ![Example of applied filter tags]() -->
+### Applied filter tags
+
+<div class="TypeContainerImage">
+  ![Example of applied filter tags](resource-list/filter-control-filter-tags.png)
+</div>
 
 The content that represents applied filter tags should use short, clear, non-technical labels.
 
 <!-- usagelist -->
 #### Do
 - Has orders
-- 10 or more orders
+- More than 10 orders
 
 #### Don’t
 - Number of orders is greater than 0
@@ -775,11 +814,13 @@ The first thing we’ll do is create a customized resource list item, which mean
 
 ### Building a reusable custom list item
 
-A list of orders is different than a list of products and is used by merchants differently. As a result, most resource lists benefit from careful choice of content and a customized layout. The best way to do this is to customize the [built-in resource list item subcomponent](#subcomponent-item).
+A list of orders is different than a list of products and is used by merchants differently. As a result, most resource lists benefit from careful choice of content and a customized layout. The best way to do this is to customize the built-in[resource list item](#subcomponent-item).
 
 In this section, we’ll build a custom resource list item for customers:
 
-<!-- ![Preview of customer list item]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Preview of customer list item](resource-list/study-list-item-preview.png)
+</div>
 
 <!-- [Download sample code for this customer list item](link) -->
 
@@ -793,7 +834,9 @@ We’ll start by figuring out what information and actions merchants need when w
 - What content do merchants need to find a specific customer?
 - What content related to the customer will help merchants fulfill an order or make a sale?
 
-The customer name is essential. Their physical location is helpful too, especially for merchants with retail stores or multiple locations. Since orders and customer loyalty are important, the customer’s total order count and total spent are also useful for customer loyalty purposes. Finally, the customer avatar is nice to have and adds some visual interest to the item. This gives us the following content, ranked roughly by importance:
+The customer name is essential. Their physical location is helpful too, especially for merchants with retail stores or multiple locations. Since orders and customer loyalty are important, the customer’s total order count and total spent are also useful for customer loyalty purposes. Finally, we’ll include an avatar for demonstration purposes. Since customers may not have avatars, consider leaving this out.
+
+This gives us the following content, ranked roughly by importance:
 
 1. Customer name
 1. Location
@@ -845,13 +888,15 @@ Resource lists don’t have column headings, so care must be taken to avoid ambi
 
 The [badge component](/components/images-and-icons/badge) calls strong attention to itself. Showing a badge on every item in a list will distract from the rest of the content.
 
-Whenever possible, use badges conditionally, showing them only when there is an issue or something strongly notable about the state of a particular resource in the list.
+Whenever possible, use badges conditionally, showing them only when there is an issue or something strongly notable about a particular resource.
 
-<!-- ![Example of a badge highlighting open orders on an item]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example of a badge highlighting open orders on an item](resource-list/study-list-item-badges.png)
+</div>
 
 ##### Building it
 
-At this point we have enough information to start coding. We’ll create a components directory under `src` and add three files:
+At this point we have enough information to start coding. We’ll create a components directory under `src` and add three files, `CustomerListItem.js`, `CustomerListItem.css`, and `index.js`:
 
 ```
 my-app/
@@ -889,9 +934,9 @@ export default function CustomerListItem(props) {
 }
 ```
 
-Notice that our component is just a regular JavaScript function. This type of component is called a [functional component](https://reactjs.org/docs/components-and-props.html#functional-and-class-components). It’s a simpler way to go when a component doesn’t need to manage any internal state.
+Notice that our component is just a regular JavaScript function. This type of component is called a [functional component](https://reactjs.org/docs/components-and-props.html#functional-and-class-components).
 
-What our functional component is doing here is an example of [composition in React](https://reactjs.org/docs/composition-vs-inheritance.html#specialization). Through composition, we can build a more specific API for our customer list item on top of the [built-in resource list item](#subcomponent-item).
+Our component is also a good example of [composition in React](https://reactjs.org/docs/composition-vs-inheritance.html#specialization). Through composition, we can build a more specific API for our customer list item on top of the [built-in resource list item](#subcomponent-item).
 
 We’ll also add a boilerplate index.js so we can use a more concise path when importing the component:
 
@@ -974,9 +1019,9 @@ We now have our content in place, but it has no layout.
 When laying out details content:
 
 - Place the most distinctive and relevant piece of content at the top left. Set it in bold using the strong [text style](/components/titles-and-text/text-style) variation.
-- Arrange secondary content to the right, [optionally arranged in columns](#study-custom-item-columns), or below the title.
+- Arrange secondary content to the right, and if necessary, below.
 
-To make use of the available space on wide screens, some content can be arranged in columns. Implementing this requires some care since items aren’t aware of each others’ content like in a data table. Column alignment works best for content that’s short and predictable in length.
+To make use of the available space on wide screens, some content can be arranged in columns. Implementing this requires some care, since items aren’t aware of each other like in a data table. Column alignment works best for content that’s short and predictable in length.
 
 Use the following guidelines:
 
@@ -984,23 +1029,28 @@ Use the following guidelines:
 - Set this as the minimum width of the content element. Using a minimum width ensures that if content occasionally exceeds the expected width, it won’t break the layout.
 - Choose the alignment of text within the container. Numbers should be right-aligned.
 
-<!-- ![Example of minimum widths of different content elements]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example of column-aligned content](resource-list/study-list-item-column-alignment.png)
+</div>
 
 To accommodate smaller screen sizes, follow these guidelines:
 
 - As screen size is reduced, alter the layout by stacking some content elements. Layout changes should happen at the same point for all items.
-- As the layout stacks, remove column alignment as needed and remove any minimum widths.
+- As the layout stacks, remove column alignment and any minimum widths.
 - On small screens, when multiple pieces of content fit on a single line, use a bullet character to separate them.
 
-<!-- ![Example of stacking across breakpoints]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Preview of customer list item](resource-list/study-list-item-content-stacking.png)
+</div>
 
 When laying out media content:
 
 - If the resource doesn’t have a visual representation, it can be left out.
 - Alter size of the media content across screen sizes to improve content density and visual alignment.
 
-<!-- ![Example of a small avatar used on a widescreen layout]() -->
-<!-- ![Example of a medium avatar used on a narrower layout]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example of resizing media based on screen size](resource-list/study-list-item-media-sizing.png)
+</div>
 
 ##### Building it
 
@@ -1156,15 +1206,19 @@ Note the `min-width` values used for creating column alignment as explained in t
 
 #### Adding conditional content
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example of conditionally showing customer notes](resource-list/study-list-item-conditional-content.png)
+</div>
+
 Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s show page. This is information the merchant took time to write down, and it’s worth surfacing in the list.
 
 Unlike a customer’s name, we want to show this customer note only if it’s present. A good way to display conditional content in a resource list item is to use the exception list component (coming soon).
 
-<!-- ![Showing a customer note using an exception list]() -->
-
 Actions can also be presented conditionally, based on the state of the item. For example, for customers that have an open order, we can highlight this and provide a link to those orders.
 
-<!-- ![Example of a conditional action]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example of conditionally showing a link to open orders](resource-list/study-list-item-conditional-actions.png)
+</div>
 
 ##### Building it
 
@@ -1268,6 +1322,10 @@ We can finish this off with a couple of simple styles that apply across all brea
 
 #### Adding shortcut actions to resource list items
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Example of a shortcut to a customer’s latest order](resource-list/study-list-item-shortcut-actions.png)
+</div>
+
 Occasionally a resource has an action that merchants use a lot. Fulfilling orders is a good example. This action is not only popular, it’s the most important action for open orders.
 
 It makes sense to surface this key action from the show page on each list item, but adding this action to each item would be visually repetitive.
@@ -1275,8 +1333,6 @@ It makes sense to surface this key action from the show page on each list item, 
 Shortcut actions resolve this. They provide a way to promote popular actions by showing them when the merchant hovers their mouse over a list item. As long as the shortcut action remains available on the resource’s show page, merchants using devices without a mouse can still access them.
 
 Our customer list item can benefit from a shortcut action that lets merchants jump to a customer’s most recent order.
-
-<!-- ![Example of shortcut actions on a customer list]() -->
 
 ##### Best practices
 
@@ -1362,7 +1418,7 @@ With that, our custom list item is done. Let’s see it in action.
 
 <a name="study-integrating-item"></a>
 
-## Integrating a custom list item
+### Integrating a custom list item
 
 In the previous section we built a customer list item.
 
@@ -1491,9 +1547,11 @@ class App extends React.Component {
 
 ### Adding bulk actions to a resource list
 
-Resource lists support optional bulk actions. These allow merchants to select items and perform an action on the selection.
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Image showing bulk selection and actions](resource-list/study-bulk-lead.png)
+</div>
 
-<!-- ![Image showing bulk selection and actions]() -->
+Resource lists support optional bulk actions. These allow merchants to select items and perform an action on the selection.
 
 Taking action on many items at once can save merchants a lot of time. However, it can also be difficult to undo. Merchants need to have a high degree of confidence that they aren’t making mistakes in bulk.
 
@@ -1502,11 +1560,15 @@ Taking action on many items at once can save merchants a lot of time. However, i
 
 Because resource lists prioritize acting on individual items, selection checkboxes are hidden by default on small screens to save space for content. A bulk actions mode can be toggled on or off using a button that is made visible at these screen sizes.
 
-<!-- ![Sequence showing bulk actions on a small device]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Sequence showing bulk actions on a small device](resource-list/study-bulk-narrow.png)
+</div>
 
 Up to two frequently-used bulk actions may be visually promoted outside of the actions menu to improve ease of access and discoverability. On narrower screens, promoted actions move back into the actions menu, but always appear at the top of the list.
 
-<!-- ![The bulk actions user interface on a wide screen and a narrow screen]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Promoted actions on wide and narrow screens](resource-list/study-bulk-promoted.png)
+</div>
 
 <a name="study-bulk-actions-best-practices"></a>
 
@@ -1588,13 +1650,14 @@ For our customers list, we’ve decided to offer the following bulk actions:
 | Bulk action copy | Notes |
 | --- | --- |
 | Edit customers | Opens the bulk editor to allow mass edits. This will be a primary bulk action. |
-| Add tags | |
-| Remove tags | |
+| Add tags |  |
+| Remove tags |  |
 | Delete customers | Should present a confirmation modal to ensure merchants really intend a bulk delete action. |
 
 Our confirmation modal will contain the following copy:
 
 | Content element | Copy |
+| --- | --- |
 | Modal title | Delete {number} customers |
 | Modal body | This action can’t be undone |
 | Primary action | Delete |
@@ -1725,13 +1788,15 @@ If you’re new to React or ES2015 you might be wondering about the lines in our
 
 ### Adding sorting to the list
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Detail of the resource list header showing the sort control](resource-list/study-sort-control.png)
+</div>
+
 When a merchant sorts a list of resources they’re changing the order of the entire set. This is different from filtering, which is when the list of resources is narrowed down to a subset of the original list.
 
 Whether or not you provide sort options, resource lists should have a default sort order that makes sense to merchants and supports their most common tasks.
 
 When you provide sort options to merchants, they’re presented using a [select component](/components/forms/select) placed in a standard position in the list header. Each option represents the content element to sort by and a sort direction (ascending or descending).
-
-<!-- ![Detail of the resource list header showing the sort control]() -->
 
 <a name="study-sorting-best-practices"></a>
 
@@ -1972,9 +2037,11 @@ We can also use ES2015 shorthand for object literals to make our `setState` call
 
 ### Adding filtering to the list
 
-Filtering allows a resource list to be narrowed based on one or more criteria. The resource list component provides standard filter controls and a way to display applied filters. However, it doesn’t prescribe the UI for configuring and applying the filters themselves.
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Filter control example](resource-list/filter-control-example.png)
+</div>
 
-<!-- ![Detail of the bulk actions filter control with applied filters]() -->
+Filtering allows a resource list to be narrowed based on one or more criteria. The resource list component provides a standard filter control.
 
 <a name="study-filtering-best-practices"></a>
 <a name="study-filtering-content-guidelines"></a>
@@ -2000,8 +2067,6 @@ Based on merchant research and following the best practices and content guidelin
 | Is an email subscriber | | Yes<br/>No |
 | Tagged with | | _Textfield_ |
 | Located in | country | _Textfield_ |
-
-<!-- ![Showing the chosen filters in action]() -->
 
 <a name="study-filtering-building"></a>
 
@@ -2147,15 +2212,19 @@ As with sorting, exactly how the new items array is generated depends on your ap
 
 ### Adding pagination to the list
 
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![A resource list with pagination](resource-list/study-pagination.png)
+</div>
+
 Resource lists can be long. To make the list digestible, it should be split into pages at 50 items or fewer. Use the [pagination component](/components/navigation/pagination) to allow navigation between pages.
 
 Place the pagination immediate below the resource list.
 
-<!-- ![Showing a resource list with pagination]() -->
-
 Pagination interacts with bulk actions. When a resource list is paginated, the Select all control selects only the visible items. You can offer the option to select everything in the entire list.
 
-<!-- ![Showing the UI for selecting across pages in a paginated list]() -->
+<div class="TypeContainerImage TypeContainerImage--PageBackground">
+  ![Selecting across pages in a paginated list](resource-list/study-pagination-bulk.png)
+</div>
 
 <a name="study-pagination-best-practices"></a>
 
@@ -2168,14 +2237,6 @@ Resource lists should:
 - Disable the pagination component’s previous (or next) button on the first (or last) page in the list.
 
 Align the pagination controls to the left, or centered. The exact layout is flexible.
-
-<a name="study-pagination-applyin"></a>
-
-#### Applying the guidelines
-
-Because our customer list is intended to take up a full page, we’ll give our pagination a fair amount of space. We’ll use the wide variant and center it under the list.
-
-<!-- ![Pagination image]() -->
 
 <a name="study-pagination-building"></a>
 
