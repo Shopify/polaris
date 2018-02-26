@@ -2381,6 +2381,7 @@ If we want to allow selecting all items across all pages in our paginated resour
 And with that, our resource list UI is complete. Here is our finished code:
 
 ```jsx
+// App.js
 import React, { Component } from 'react';
 import {
   Page,
@@ -2409,8 +2410,9 @@ const customers = [
     location: 'Decatur, USA',
     orderCount: 5,
     totalSpent: '$497.76',
-
     note: 'This customer is awesome! Make sure to treat them right',
+    openOrderCount: 2,
+    openOrdersUrl: 'http://google.com',
   },
   {
     id: 256,
@@ -2601,7 +2603,6 @@ class App extends Component {
     // first or last page.
     this.setState({ items, isFirstPage: false, isLastPage: true });
   }
-
 
   handleFiltersChange(appliedFilters) {
     const items = fetchCustomers();
