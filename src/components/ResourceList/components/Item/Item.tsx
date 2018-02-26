@@ -139,6 +139,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       );
     }
 
+    const hasActions = shortcutActions || persistActions;
+
     const className = classNames(
       styles.Item,
       focused && styles['Item-focused'],
@@ -146,6 +148,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       selected && styles['Item-selected'],
       selectMode && styles['Item-selectMode'],
       persistActions && styles['Item-persistActions'],
+      hasActions && styles['Item-hasActions'],
       mediaType && styles[variationName('Item-media', mediaType)],
       mediaSize && styles[variationName('Item-size', mediaSize)],
     );
@@ -233,8 +236,18 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleFocus() {
-    this.setState({focused: true});
+  private handleFocus(event: React.FocusEvent<HTMLElement>) {
+    const status = (event.target as HTMLInputElement).checked;
+
+    // isSelected is called with outdated props
+    // setTimeout is used to defer the comparison
+    // and place it at the end of the stack
+    setTimeout(() => {
+      const selected = this.isSelected();
+      if (status !== undefined && selected === status) {
+        this.setState({focused: true});
+      }
+    }, 0);
   }
 
   @autobind

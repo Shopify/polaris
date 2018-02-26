@@ -13,19 +13,6 @@
   }
 }
 
-.Item-focused {
-  box-shadow: inset rem(2px) 0 0 color(indigo);
-  @include state(focused);
-
-  &:hover {
-    @include state(focused, hover);
-  }
-
-  &:active {
-    @include state(focused, active);
-  }
-}
-
 .Item-selected {
   @include state(selected);
 
@@ -39,6 +26,22 @@
 
   &:active {
     @include state(selected, active);
+  }
+}
+
+.Item-focused {
+  @include state(focused);
+
+  &:hover {
+    @include state(focused, hover);
+  }
+
+  &:active {
+    @include state(focused, active);
+  }
+
+  &.Item-hasActions {
+    box-shadow: none;
   }
 }
 
