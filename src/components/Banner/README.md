@@ -129,7 +129,7 @@ banners
 Your online store has a maximum of 20 themes. Delete unused themes to add more.
 
 #### Don’t
-You have reached your theme limit. Your online store has reached it’s maximum
+You have reached your theme limit. Your online store has reached its maximum
 of 20 themes. To add more themes, delete themes you’re no longer using.
 <!-- end -->
 
