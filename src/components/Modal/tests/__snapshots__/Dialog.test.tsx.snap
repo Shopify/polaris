@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Dialog> renders CloseKeypressListener with correct props when \`in\` is true 1`] = `
-Object {
-  "handler": [Function],
-  "keyCode": 27,
-  "testID": "CloseKeypressListener",
-}
-`;

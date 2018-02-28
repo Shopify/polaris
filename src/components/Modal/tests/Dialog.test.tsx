@@ -23,7 +23,6 @@ describe('<Dialog>', () => {
     ).find(KeypressListener);
 
     expect(listener.exists()).toBe(true);
-    expect(listener.props()).toMatchSnapshot();
   });
 
   it('triggers an onEntered prop', () => {

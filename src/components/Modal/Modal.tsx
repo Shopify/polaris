@@ -212,7 +212,10 @@ export default class Modal extends React.Component<Props, State> {
     this.setState({
       iframeHeight: IFRAME_LOADING_HEIGHT,
     });
-    write(() => focusFirstFocusableNode(this.focusReturnPointNode, false));
+
+    if (this.focusReturnPointNode) {
+      write(() => focusFirstFocusableNode(this.focusReturnPointNode, false));
+    }
   }
 
   @autobind
