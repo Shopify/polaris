@@ -61,11 +61,14 @@ $content-max-width: rem(400px);
   flex-direction: column;
   border-radius: border-radius(large);
   max-width: $content-max-width;
-  max-height: $content-max-height;
 
   &:focus {
     outline: none;
   }
+}
+
+.Content-limitHeight {
+  max-height: $content-max-height;
 }
 
 .Tip {

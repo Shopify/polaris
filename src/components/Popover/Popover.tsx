@@ -20,6 +20,7 @@ export interface Props {
   preventAutofocus?: boolean,
   sectioned?: boolean,
   fullWidth?: boolean,
+  limitHeight?: boolean,
   onClose(source: CloseSource): void,
 }
 

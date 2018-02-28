@@ -32,6 +32,7 @@ export interface Props {
   activator: HTMLElement,
   preferredPosition?: PreferredPosition,
   fullWidth?: boolean,
+  limitHeight?: boolean,
   render(overlayDetails: OverlayDetails): React.ReactNode,
   onScrollOut?(): void,
 }

@@ -32,6 +32,7 @@ export interface Props {
   preventAutofocus?: boolean,
   sectioned?: boolean,
   fullWidth?: boolean,
+  limitHeight?: boolean,
   preferredPosition?: PreferredPosition,
   children?: React.ReactNode,
   onClose(source: CloseSource): void,
@@ -79,6 +80,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       active,
       activator,
       fullWidth,
+      limitHeight = false,
       preferredPosition = 'below',
     } = this.props;
 
@@ -86,6 +88,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       <PositionedOverlay
         testID="positionedOverlay"
         fullWidth={fullWidth}
+        limitHeight={limitHeight}
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
@@ -110,6 +113,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       children,
       sectioned,
       fullWidth,
+      limitHeight,
     } = this.props;
 
     const className = classNames(
@@ -117,6 +121,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       transitionStatus && animationVariations(transitionStatus),
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
+      limitHeight && styles['Content-limitHeight'],
       measuring && styles.measuring,
     );
 
