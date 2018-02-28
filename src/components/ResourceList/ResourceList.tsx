@@ -336,11 +336,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
     );
 
-    const needsHeader = this.selectable || (sortOptions && sortOptions.length > 0);
+    const needsHeader =
+      this.selectable || (sortOptions && sortOptions.length > 0);
 
-    const headerMarkup = !showHeader && !needsHeader
-      ? null
-      : itemsExist && (
+    const headerMarkup = (showHeader || needsHeader) &&
+      itemsExist && (
         <div className={headerClassName} testID="ResourceList-Header">
           <div className={styles.HeaderContentWrapper}>
             {itemCountTextMarkup}
