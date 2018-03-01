@@ -4,18 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
-* Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
-* Exposed Status from the Banner component. ([#998](https://github.com/Shopify/polaris-react/pull/998))
+<!--## Unreleased-->
+## 1.12.0 - 2018-02-28
 
 ### Bug fixes
 * Fixed TextField overflow issues when inside Scrollable ([#967](https://github.com/Shopify/polaris-react/pull/967))
 * Fixed Select focus state bug occuring in Firefox ([#910](https://github.com/Shopify/polaris-react/pull/910))
+* Fixed vertical alignment of text within full width variant of the button component ([#1083](https://github.com/Shopify/polaris-react/pull/1017))
 
 ### Enhancements
 * Changed Checkbox label to allow string or React.ReactNode ([#894](https://github.com/Shopify/polaris-react/pull/894))
 * Update `TextField` type with currency ([#908](https://github.com/Shopify/polaris-react/pull/908))
 * Added `ariaControls`, `ariaExpanded` prop to Button ([#978](https://github.com/Shopify/polaris-react/pull/978/))
+* Updated the base red color to improve contrast ([#1076](https://github.com/Shopify/polaris-react/pull/1076))
+* Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
+* Exposed Status from the Banner component ([#998](https://github.com/Shopify/polaris-react/pull/998))
 
 ### Chores
 * Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
