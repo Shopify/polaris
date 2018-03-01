@@ -84,6 +84,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     return (
       <PositionedOverlay
+        testID="positionedOverlay"
         fullWidth={fullWidth}
         active={active}
         activator={activator}

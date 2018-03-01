@@ -102,7 +102,7 @@ Add a menu item
 | url | string | A destination to link to, rendered in the href attribute of a link |
 | primary | boolean | Provides extra visual weight and identifies the primary action in a set of buttons |
 | destructive | boolean | Indicates a dangerous or potentially negative action |
-| disabled | boolean | Disables the button, disallowing merchant interactiion |
+| disabled | boolean | Disables the button, disallowing merchant interaction |
 | loading | boolean | Replaces button text with a spinner while a background action is being performed |
 | size | enum['slim', 'large'] | Changes the size of the button, giving it more or less padding |
 | outline | boolean | Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops |

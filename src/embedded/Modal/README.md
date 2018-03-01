@@ -6,6 +6,7 @@ keywords:
   - embedded
   - pop up
   - overlays
+  - dialog
   - disruptive
   - disruptor
   - multiple sections

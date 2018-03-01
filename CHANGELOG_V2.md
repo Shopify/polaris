@@ -4,7 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+## 2.0.0-beta.8 - 2018-03-01
+### Enhancements
+- Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
+
+### Breaking Changes
+- All elements are now globally set to `box-sizing: border-box;` instead of `box-sizing: inherit;`. There is a very small chance of seeing any visual regressions in existing applications. ([#996](https://github.com/Shopify/polaris-react/pull/996))
+- Pseudo-elements (`*::before`) and (`*::after`) are now globally set to `box-sizing: border-box;`. Visual regressions are expected in applications setting `padding` and `border` on pseudo-elements. ([#996](https://github.com/Shopify/polaris-react/pull/996))
 
 ## 2.0.0-beta.7 - 2018-02-14
 - Updated ResourceList docs for new component API
@@ -12,6 +19,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ## 2.0.0-beta.6 - 2018-02-02
 ### Enhancements
 - Added `allowRange` as a property for DatePicker ([#884](https://github.com/Shopify/polaris-react/pull/884))
+- Added ExceptionList and Truncate components
 
 ### Bug fixes
 - Allows specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))

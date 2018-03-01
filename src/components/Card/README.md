@@ -189,7 +189,7 @@ text for buttons.
 | children | React.ReactNode | Inner content of the card |
 | subdued | boolean | A less prominent card |
 | sectioned | boolean | Auto wrap content in section |
-| actions | Action[] | Card header actions |
+| actions | DisableableAction[] | Card header actions |
 | primaryFooterAction | Action | Primary action in the card footer |
 | secondaryFooterAction | Action | Secondary action in the card footer |
 
@@ -222,10 +222,12 @@ Use when you have a simple message to communicate to merchants that requires the
 
 ### Card with call to action in the heading
 
-Use when there’s a persistent action available to merchants (example: an Edit link), or when you want to provide them with a way to navigate to another section of Shopify.
+Use when there’s a persistent action available to merchants (example: an Edit link), or when you want to provide them with a way to navigate to another section of Shopify. Actions can be disabled.
 
 ```jsx
-<Card title="Online store dashboard" actions={[{content: 'Edit'}]}>
+<Card title="Online store dashboard" actions={[{
+  content: 'Edit',
+  disabled: true}]}>
   <Card.Section>
     <p>View a summary of your online store’s performance.</p>
   </Card.Section>

@@ -99,7 +99,7 @@ You agree to the Terms of Service
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
-| label | string | Label for the checkbox |
+| label | string or React.ReactNode | Label for the checkbox |
 | labelHidden | boolean | Visually hide the label |
 | checked | boolean or 'indeterminate' | Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox |
 | helpText | string or React.ReactNode | Additional text to aide in use |

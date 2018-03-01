@@ -223,6 +223,20 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       ? [...promotedActions].slice(numberOfPromotedActionsToRender)
       : [];
 
+    const activatorLabel = !promotedActions || (promotedActions && numberOfPromotedActionsToRender === 0) && !measuring
+      ? this.actionsActivatorLabel
+      : this.moreActionsActivatorLabel;
+
+    let combinedActions: ActionListSection[] = [];
+
+    if (this.actionSections && rolledInPromotedActions.length > 0) {
+      combinedActions = [{items: rolledInPromotedActions}, ...this.actionSections];
+    } else if (this.actionSections) {
+      combinedActions = this.actionSections;
+    } else if (rolledInPromotedActions.length > 0) {
+      combinedActions = [{items: rolledInPromotedActions}];
+    }
+
     const actionsPopover = this.actionSections || rolledInPromotedActions.length > 0 || measuring
       ? (
         <div className={styles.Popover} ref={this.setMoreActionsNode}>
@@ -232,14 +246,13 @@ export default class BulkActions extends React.PureComponent<Props, State> {
               <BulkActionButton
                 disclosure
                 onAction={this.toggleLargeScreenPopover}
-                content={this.moreActionsActivatorLabel}
+                content={activatorLabel}
               />
             }
             onClose={this.toggleLargeScreenPopover}
           >
             <ActionList
-              items={rolledInPromotedActions}
-              sections={this.actionSections}
+              sections={combinedActions}
               onActionAnyItem={this.toggleLargeScreenPopover}
             />
           </Popover>
@@ -356,11 +369,20 @@ export default class BulkActions extends React.PureComponent<Props, State> {
   @autobind
   @debounce(50, { trailing: true })
   private handleResize() {
+    const {
+      smallScreenPopoverVisible,
+      largeScreenPopoverVisible,
+    } = this.state;
+
     if (this.containerNode) {
       const containerWidth = this.containerNode.getBoundingClientRect().width;
       if (containerWidth > 0) {
         this.setState({containerWidth});
       }
+    }
+
+    if (smallScreenPopoverVisible || largeScreenPopoverVisible) {
+      this.setState({smallScreenPopoverVisible: false, largeScreenPopoverVisible: false });
     }
   }
 

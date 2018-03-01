@@ -53,6 +53,11 @@ $input-vertical-adjust: rem(1px);
     // stylelint-disable-next-line color-no-hex
     color: #9c9798;
   }
+
+  &.error .Input:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 color(ink, base);
+  }
 }
 
 .Backdrop {
@@ -99,5 +104,10 @@ $input-vertical-adjust: rem(1px);
 
   &:disabled {
     color: color(ink, lightest);
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 color(ink, base);
   }
 }

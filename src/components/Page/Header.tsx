@@ -25,6 +25,7 @@ export interface ActionGroup {
 
 export interface Props {
   title: string,
+  titleHidden?: boolean,
   icon?: string,
   separator?: boolean,
   breadcrumbs?: BreadcrumbProps['breadcrumbs'],
@@ -48,6 +49,7 @@ export default class Header extends React.PureComponent<Props, State> {
     const {
       title,
       breadcrumbs = [],
+      titleHidden = false,
       primaryAction,
       pagination,
       separator,
@@ -56,6 +58,7 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const className = classNames(
       styles.Header,
+      titleHidden && styles['Title-hidden'],
       pagination && styles['Header-hasPagination'],
       separator && styles['Header-hasSeparator'],
       breadcrumbs && breadcrumbs.length && styles['Header-hasBreadcrumbs'],

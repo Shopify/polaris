@@ -6,7 +6,12 @@ import RadioButton from '../../RadioButton';
 import Checkbox from '../../Checkbox';
 
 describe('<ChoiceList />', () => {
-  let choices: ({label: string, value: string, helpText?: React.ReactNode})[];
+  let choices: ({
+    label: string,
+    value: string,
+    helpText?: React.ReactNode,
+    renderChildren?(): React.ReactNode,
+  })[];
 
   beforeEach(() => {
     choices = [
@@ -42,6 +47,86 @@ describe('<ChoiceList />', () => {
         expect(choiceElement.prop('label')).toBe(choices[index].label);
         expect(choiceElement.prop('value')).toBe(choices[index].value);
         expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
+      });
+    });
+
+    describe('with valid children property returning node', () => {
+      const children = <span>Child</span>;
+      const renderChildrenSpy = jest.fn(() => children);
+
+      it('renders a choice with children content', () => {
+        choices = [
+          choices[0],
+          choices[1],
+          {
+            ...choices[2],
+            renderChildren: renderChildrenSpy,
+        },
+        ] as any;
+
+        const choiceElements = shallow(<ChoiceList selected={[]} choices={choices} />);
+
+        expect(renderChildrenSpy).toHaveBeenCalled();
+        expect(choiceElements.contains(children)).toBe(true);
+      });
+    });
+
+    describe('with valid children property returning node when current choice is selected', () => {
+      const children = <span>Child</span>;
+      const renderChildrenSpy = jest.fn((isSelected) => isSelected && children);
+
+      it('renders a choice with children content when choice is selected ', () => {
+        const selectedIndexes = [2];
+        const selected = selectedIndexes.map((index) => choices[index].value);
+
+        choices = [
+          choices[0],
+          choices[1],
+          {
+            ...choices[2],
+            renderChildren: renderChildrenSpy,
+        },
+        ] as any;
+
+        const choiceElements = shallow(<ChoiceList selected={selected} choices={choices} />);
+
+        expect(renderChildrenSpy).toHaveBeenCalled();
+        expect(choiceElements.contains(children)).toBe(true);
+      });
+
+      it('does not render a choice with children content when choice is not selected', () => {
+          choices = [
+            choices[0],
+            choices[1],
+            {
+              ...choices[2],
+              renderChildren: renderChildrenSpy,
+          },
+          ] as any;
+
+          const choiceElements = shallow(<ChoiceList selected={[]} choices={choices} />);
+
+          expect(renderChildrenSpy).toHaveBeenCalled();
+          expect(choiceElements.contains(children)).toBe(false);
+        });
+      });
+
+    describe('with invalid children property', () => {
+      const children = <span>Invalid Child</span>;
+
+      it('does not render a choice with children content', () => {
+        choices = [
+          choices[0],
+          choices[1],
+          {
+            ...choices[2],
+            children,
+        },
+        ] as any;
+
+        const choiceElements = shallow(<ChoiceList selected={[]} choices={choices} />);
+
+        expect(choiceElements.contains(children)).toBe(false);
       });
     });
   });
