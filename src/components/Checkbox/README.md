@@ -119,7 +119,23 @@ You agree to the Terms of Service
 Use in forms to toggle the state of something on or off. Default checkboxes can appear in two states: selected and disabled, or unselected.
 
 ```jsx
-<Checkbox label="Basic checkbox" />
+class ActionListDemo extends React.Component {
+  state = {
+    checked: false,
+  };
+
+  render() {
+    const {checked} = this.state;
+
+    return (
+      <Checkbox checked={checked} label="Basic checkbox" onChange={this.handleChange} />
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({checked: value});
+  }
+}
 ```
 
 ---
