@@ -69,11 +69,42 @@ There are no content elements that are specific to the collapsible component. Fo
 Use for a basic “show more” interaction when you need to display more content.
 
 ```jsx
-<Collapsible open>
-  <TextContainer>
-    Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products.
-  </TextContainer>
-</Collapsible>
+class CollapsibleDemo extends React.Component {
+  state = {
+    open: true,
+  }
+
+  render() {
+    const {open} = this.state;
+
+    return (
+      <Card sectioned>
+        <Stack vertical>
+          <Button
+            onClick={this.handleToggleClick}
+            aria-expanded={open}
+          >
+            Toggle
+          </Button>
+          <Collapsible open={open}>
+            <TextContainer>
+              Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products.
+            </TextContainer>
+          </Collapsible>
+        </Stack>
+      </Card>
+    );
+  }
+
+  handleToggleClick = () => {
+    this.setState((state) => {
+      const open = !state.open;
+      return {
+        open,
+      }
+    });
+  }
+}
 ```
 
 ---
