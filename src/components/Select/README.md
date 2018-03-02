@@ -117,11 +117,32 @@ The placeholder option should be the text “Select”.
 Use when a merchant needs to choose one option from a list of four or more.
 
 ```jsx
-<Select
-  label="One"
-  options={['two', 'three', {label: 'four', value: '4'}]}
-  placeholder="Select"
-/>
+class SelectExample extends React.Component {
+  state = {
+    selected: 'today',
+  };
+
+  handleChange = (newValue) => {
+    this.setState({selected: newValue});
+  }
+
+  render() {
+    const options = [
+      {label: 'Today', value: 'today'},
+      {label: 'Yesterday', value: 'yesterday'},
+      {label: 'Last 7 days', value: 'lastWeek'},
+    ]
+
+    return (
+      <Select
+        label="Date range"
+        options={options}
+        onChange={this.handleChange}
+        value={this.state.selected}
+      />
+    );
+  }
+}
 ```
 
 ### Disabled select
@@ -130,10 +151,13 @@ Use for selections that aren’t currently available. The surrounding interface 
 
 ```jsx
 <Select
-  label="One"
+  label="Date range"
   disabled
-  options={['two', 'three', {label: 'four', value: '4'}]}
-  placeholder="Select"
+  options={[
+    {label: 'Today', value: 'today'},
+    {label: 'Yesterday', value: 'yesterday'},
+    {label: 'Last 7 days', value: 'lastWeek'},
+  ]}
 />
 ```
 
