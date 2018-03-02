@@ -173,15 +173,32 @@ If your list contains helper text, only the description below the list item shou
 Use when you need merchants to make a single selection from a list of choices.
 
 ```jsx
-<ChoiceList
-  title="Company name"
-  choices={[
-    {label: 'Hidden', value: 'hidden'},
-    {label: 'Optional', value: 'optional'},
-    {label: 'Required', value: 'required'},
-  ]}
-  selected={['hidden']}
-/>
+class ChoiceListDemo extends React.Component {
+  state = {
+    selected: ['hidden'],
+  };
+
+  render() {
+    const {selected} = this.state;
+
+    return (
+      <ChoiceList
+        title={'Company name'}
+        choices={[
+          {label: 'Hidden', value: 'hidden'},
+          {label: 'Optional', value: 'optional'},
+          {label: 'Required', value: 'required'},
+        ]}
+        selected={selected}
+        onChange={this.handleChange}
+      />
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({selected: value});
+  }
+}
 ```
 
 ### Multi-choice list
@@ -189,63 +206,144 @@ Use when you need merchants to make a single selection from a list of choices.
 Use when to let merchants make multiple sections from a list of choices.
 
 ```jsx
-<ChoiceList
-  allowMultiple
-  title="While the customer is checking out"
-  choices={[
-    {
-      label: 'Use the shipping address as the billing address by default',
-      value: 'shipping',
-      helpText: 'Reduces the number of fields required to check out. The billing address can still be edited.',
-    },
-    {
-      label: 'Require a confirmation step',
-      value: 'confirmation',
-      helpText: 'Customers must review their order details before purchasing.',
-    },
-  ]}
-  selected={['shipping']}
-/>
+class ChoiceListDemo extends React.Component {
+  state = {
+    selected: ['hidden'],
+  };
+
+  render() {
+    const {selected} = this.state;
+
+    return (
+      <ChoiceList
+        allowMultiple
+        title={'While the customer is checking out'}
+        choices={[
+          {
+            label: 'Use the shipping address as the billing address by default',
+            value: 'shipping',
+            helpText: 'Reduces the number of fields required to check out. The billing address can still be edited.',
+          },
+          {
+            label: 'Require a confirmation step',
+            value: 'confirmation',
+            helpText: 'Customers must review their order details before purchasing.',
+          },
+        ]}
+        selected={selected}
+        onChange={this.handleChange}
+      />
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({selected: value});
+  }
+}
 ```
 
 ### Single-choice or multi-choice list with children content (always rendered)
+
 Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
 
 ```jsx
-<ChoiceList
-  title="Discount minimum requirements"
-  choices={[
-    {label: 'None', value: 'none'},
-    {label: 'Minimum purchase', value: 'minimum_purchase'},
-    {
-      label: 'Minimum quantity',
-      value: 'minimum_quantity',
-      renderChildren: () => <TextField label="Minimum Quantity" />,
-    },
-  ]}
-  selected={['none']}
-/>
+class ChoiceListDemo extends React.Component {
+  state = {
+    selected: ['none'],
+    textFieldValue: '',
+  };
+
+  render() {
+    const {selected, textFieldValue} = this.state;
+
+    return (
+      <ChoiceList
+        title={'Discount minimum requirements'}
+        choices={[
+          {label: 'None', value: 'none'},
+          {label: 'Minimum purchase', value: 'minimum_purchase'},
+          {
+            label: 'Minimum quantity',
+            value: 'minimum_quantity',
+            renderChildren: () => {
+              return (
+                <TextField
+                  label="Minimum Quantity"
+                  labelHidden
+                  onChange={this.handleTextFieldChange}
+                  value={textFieldValue}
+                />
+              );
+            },
+          },
+        ]}
+        selected={selected}
+        onChange={this.handleChange}
+      />
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({selected: value});
+  }
+
+  handleTextFieldChange = (value) => {
+    this.setState({textFieldValue: value});
+  }
+}
 ```
 
 ### Single-choice or multi-choice list with children content (only rendered when choice is selected)
+
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 
 ```jsx
-<ChoiceList
-  title="Discount minimum requirements"
-  choices={[
-    {label: 'None', value: 'none'},
-    {label: 'Minimum purchase', value: 'minimum_purchase'},
-    {
-      label: 'Minimum quantity',
-      value: 'minimum_quantity',
-      renderChildren: (isSelected: boolean) => {
-        return isSelected && <TextField label="Minimum Quantity" />;
-      },
-    },
-  ]}
-  selected={['none']}
-/>
+class ChoiceListDemo extends React.Component {
+  state = {
+    selected: ['none'],
+    textFieldValue: '',
+  };
+
+  render() {
+    const {selected, textFieldValue} = this.state;
+
+    return (
+      <div style={{height: '150px'}}>
+        <ChoiceList
+          title={'Discount minimum requirements'}
+          choices={[
+            {label: 'None', value: 'none'},
+            {label: 'Minimum purchase', value: 'minimum_purchase'},
+            {
+              label: 'Minimum quantity',
+              value: 'minimum_quantity',
+              renderChildren: (isSelected) => {
+                return isSelected && (
+                  <TextField
+                    label="Minimum Quantity"
+                    labelHidden
+                    onChange={this.handleTextFieldChange}
+                    value={textFieldValue}
+                  />
+                );
+              },
+            },
+          ]}
+          selected={selected}
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({selected: value});
+  }
+
+  handleTextFieldChange = (value) => {
+    this.setState({textFieldValue: value});
+  }
+}
 ```
 
 ---
