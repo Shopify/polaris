@@ -16,6 +16,7 @@ import Intl from '../Intl';
 import Link from '../Link';
 import {Props as AppProviderProps} from '../AppProvider';
 import EASDK from '../EASDK';
+import StickyManager from '../StickyManager';
 
 import {name, version} from '../../../../package.json';
 
@@ -96,6 +97,55 @@ export function withAppProvider<OwnProps>() {
   };
 }
 
+export function withSticky() {
+  return function addStickyManager<OwnProps, C>(
+    WrappedComponent:
+      | React.ComponentClass<OwnProps & WithProviderProps> & C
+      | React.SFC<OwnProps & WithProviderProps> & C,
+  ): any & C {
+    class WithStickyManager extends React.Component<
+      {},
+      OwnProps & WithProviderProps
+    > {
+      static childContextTypes = polarisProviderContextTypes;
+      static contextTypes = WrappedComponent.contextTypes
+        ? merge(WrappedComponent.contextTypes, polarisProviderContextTypes)
+        : polarisProviderContextTypes;
+
+      private stickyManager: StickyManager = new StickyManager();
+      private polarisContext: any;
+
+      constructor(props: OwnProps & WithProviderProps, context: Context) {
+        super(props);
+
+        this.polarisContext = {
+          ...context.polaris,
+          stickyManager: this.stickyManager,
+        };
+      }
+
+      getChildContext(): Context {
+        return {
+          polaris: this.polarisContext,
+        };
+      }
+
+      render() {
+        return (
+          <WrappedComponent {...this.props} polaris={this.polarisContext} />
+        );
+      }
+    }
+
+    const FinalComponent = hoistStatics(
+      WithStickyManager,
+      WrappedComponent as React.ComponentClass<any>,
+    );
+    return FinalComponent as React.ComponentClass<any> & C;
+  };
+}
+
+
 export function createPolarisContext({
   i18n,
   linkComponent,
@@ -103,6 +153,7 @@ export function createPolarisContext({
   shopOrigin,
   forceRedirect,
   debug,
+  stickyManager,
 }: AppProviderProps = {}) {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
@@ -122,7 +173,9 @@ export function createPolarisContext({
     polaris: {
       intl,
       link,
+      stickyManager: stickyManager || new StickyManager(),
     },
     easdk,
   };
 }
+

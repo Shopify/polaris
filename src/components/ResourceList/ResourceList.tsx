@@ -3,7 +3,7 @@ import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Button, EventListener} from '../../';
+import {Button, EventListener, Sticky} from '../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
 import {
@@ -23,6 +23,7 @@ const SMALL_SCREEN_WIDTH = 458;
 
 export interface State {
   selectMode: boolean;
+  listNode: HTMLElement | null;
 }
 
 export interface Props {
@@ -75,7 +76,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   static FilterControl: typeof FilterControl = FilterControl;
   static childContextTypes = contextTypes;
 
-  state: State = {selectMode: false};
+  state: State = {
+    selectMode: false,
+    listNode: null,
+  };
 
   private subscriptions: {(): void}[] = [];
   private defaultResourceName: {singular: string; plural: string};
@@ -298,7 +302,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       onSortChange,
       polaris: {intl},
     } = this.props;
-    const {selectMode} = this.state;
+    const {selectMode, listNode = null} = this.state;
     const itemsExist = items.length > 0;
 
     const filterControlMarkup = filterControl ? (
@@ -379,26 +383,39 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const headerClassName = classNames(
-      styles.HeaderWrapper,
-      sortOptions && sortOptions.length > 0 && styles['HeaderWrapper-hasSort'],
-      this.selectable && styles['HeaderWrapper-hasSelect'],
-      this.selectable && selectMode && styles['HeaderWrapper-inSelectMode'],
-    );
-
     const needsHeader =
       this.selectable || (sortOptions && sortOptions.length > 0);
 
     const headerMarkup = (showHeader || needsHeader) &&
+      listNode &&
       itemsExist && (
-        <div className={headerClassName} testID="ResourceList-Header">
-          <div className={styles.HeaderContentWrapper}>
-            {itemCountTextMarkup}
-            {checkableButtonMarkup}
-            {sortingSelectMarkup}
-            {selectButtonMarkup}
-          </div>
-          {bulkActionsMarkup}
+        <div className={styles.HeaderOuterWrapper}>
+          <Sticky boundingElement={listNode}>
+            {(isSticky: boolean) => {
+              const headerClassName = classNames(
+                styles.HeaderWrapper,
+                sortOptions &&
+                  sortOptions.length > 0 &&
+                  styles['HeaderWrapper-hasSort'],
+                this.selectable && styles['HeaderWrapper-hasSelect'],
+                this.selectable &&
+                  selectMode &&
+                  styles['HeaderWrapper-inSelectMode'],
+                isSticky && styles['HeaderWrapper-isSticky'],
+              );
+              return (
+                <div className={headerClassName} testID="ResourceList-Header">
+                  <div className={styles.HeaderContentWrapper}>
+                    {itemCountTextMarkup}
+                    {checkableButtonMarkup}
+                    {sortingSelectMarkup}
+                    {selectButtonMarkup}
+                  </div>
+                  {bulkActionsMarkup}
+                </div>
+              );
+            }}
+          </Sticky>
         </div>
       );
 
@@ -451,6 +468,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       !isSmallScreen()
     ) {
       this.handleSelectMode(false);
+    }
+  }
+
+  @autobind
+  private setListNode(node: HTMLElement | null) {
+    if (node != null) {
+      this.setState({listNode: node});
     }
   }
 

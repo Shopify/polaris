@@ -12,6 +12,16 @@
   }
 }
 
+.HeaderOuterWrapper {
+  position: relative;
+  background-color: color('white');
+  z-index: resource-list(header-outer-wrapper-stacking-order);
+
+  + .ResourceList {
+    border-top: border();
+  }
+}
+
 .HeaderWrapper {
   display: flex;
   width: 100%;
@@ -19,15 +29,16 @@
   align-items: flex-start;
   padding: resource-list(header-vertical-padding) resource-list(header-padding-small);
   position: relative;
+  background-color: color('white');
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
     padding: resource-list(header-vertical-padding) spacing();
   }
+}
 
-  + .ResourceList {
-    border-top: border();
-  }
+.HeaderWrapper-isSticky {
+  box-shadow: shadow();
 }
 
 .HeaderContentWrapper {

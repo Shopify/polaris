@@ -6,7 +6,7 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
-
+import {withSticky, WithProviderProps} from '../Provider';
 import {scrollable} from '../shared';
 
 import * as styles from './Scrollable.scss';
@@ -36,7 +36,8 @@ export interface State {
   scrollPosition: number;
 }
 
-export default class Scrollable extends React.Component<Props, State> {
+export type CombinedProps = Props & WithProviderProps;
+class Scrollable extends React.Component<CombinedProps, State> {
   static forNode(node: HTMLElement): HTMLElement | Document {
     return (
       (closest(node, scrollable.selector) as HTMLElement | null) || document
@@ -52,9 +53,11 @@ export default class Scrollable extends React.Component<Props, State> {
   private scrollArea: HTMLElement | null;
 
   componentDidMount() {
+    const {polaris} = this.props;
     if (this.scrollArea == null) {
       return;
     }
+    polaris.stickyManager.setContainer(this.scrollArea);
     addEventListener(this.scrollArea, 'scroll', () => {
       window.requestAnimationFrame(this.handleScroll);
     });
@@ -68,11 +71,13 @@ export default class Scrollable extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
+    const {polaris} = this.props;
     if (this.scrollArea == null) {
       return;
     }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
     removeEventListener(window, 'resize', this.handleResize);
+    polaris.stickyManager.removeScrollListener();
   }
 
   componentDidUpdate() {
@@ -222,3 +227,5 @@ function prefersReducedMotion() {
     return false;
   }
 }
+
+export default withSticky()(Scrollable);
