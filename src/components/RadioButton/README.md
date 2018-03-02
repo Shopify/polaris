@@ -92,15 +92,31 @@ Radio button labels should:
 
 ## Examples
 
-### Default radio buttons
+### Default radio button
 
 Use radio buttons where merchants must make a single selection.
 
 ```jsx
-<RadioButton
-  label="Accounts are disabled"
-  helpText="Customers will only be able to check out as guests."
-/>
+class RadioButtonExample extends React.Component {
+  state = {
+    checked: false,
+  };
+
+  handleChange = (newValue) => {
+    this.setState({checked: newValue});
+  }
+
+  render() {
+    return (
+      <RadioButton
+        label="Accounts are disabled"
+        helpText="Customers will only be able to check out as guests."
+        checked={this.state.checked}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 ```
 
 ---
