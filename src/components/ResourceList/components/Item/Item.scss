@@ -1,24 +1,5 @@
 @import '../../variables';
 
-$stacking-order: (
-  link: 10,
-  content: 20,
-);
-
-$avatar-small-size: rem(32px);
-$avatar-medium-size: rem(40px);
-$avatar-large-size: rem(60px);
-
-$thumbnail-small-size: rem(40px);
-$thumbnail-medium-size: rem(60px);
-$thumbnail-large-size: rem(80px);
-
-$resource-list-item-padding: rem(12px);
-$resource-list-item-control-indent: -1 * rem(12px);
-$resource-list-item-min-height: rem(44px);
-$handle-width: rem(48px);
-$item-translate-offset: $handle-width - $resource-list-item-padding + spacing(extra-tight);
-
 .Item {
   position: relative;
   cursor: pointer;
@@ -38,7 +19,7 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 
 .Link {
   position: absolute;
-  z-index: z-index(link, $stacking-order);
+  z-index: resource-list-item(link-stacking-order);
   top: 0;
   left: 0;
   height: 100%;
@@ -49,14 +30,14 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 // Item inner container
 .Container {
   position: relative;
-  z-index: z-index(content, $stacking-order);
-  padding: $resource-list-item-padding spacing();
-  min-height: $resource-list-item-min-height;
+  z-index: resource-list-item(content-stacking-order);
+  padding: resource-list-item(padding) spacing();
+  min-height: resource-list-item(min-height);
   display: flex;
   align-items: flex-start;
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
-    padding: $resource-list-item-padding spacing(loose);
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    padding: resource-list-item(padding) spacing(loose);
   }
 }
 
@@ -67,25 +48,25 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 
 // Item handle
 .Handle {
-  width: $handle-width;
-  min-height: $resource-list-item-min-height;
+  width: resource-list-item(handle-width);
+  min-height: resource-list-item(min-height);
   justify-content: center;
   align-items: center;
-  margin: (-1 * $resource-list-item-padding) spacing(extra-tight) (-1 * $resource-list-item-padding) $resource-list-item-control-indent;
+  margin: (-1 * resource-list-item(padding)) spacing(extra-tight) (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 }
 
 .Item-selectable {
-  width: calc(100% + $item-translate-offset);
-  transform: translateX(-$item-translate-offset);
+  width: calc(100% + resource-list-item(translate-offset));
+  transform: translateX(-1 * resource-list-item(translate-offset));
   transition: transform easing() duration();
-  margin-right: -$item-translate-offset;
+  margin-right: -1 * resource-list-item(translate-offset);
 
   &.Item-selectMode {
     transform: translateX(0);
   }
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     transform: translateX(0);
     margin-right: 0;
   }
@@ -98,19 +79,19 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 .Item-mediaAvatar {
   &.Item-sizeSmall {
     .Actions {
-      height: $avatar-small-size;
+      height: resource-list-item(avatar-small-size);
     }
   }
 
   &.Item-sizeMedium {
     .Actions {
-      height: $avatar-medium-size;
+      height: resource-list-item(avatar-medium-size);
     }
   }
 
   &.Item-sizeLarge {
     .Actions {
-      height: $avatar-large-size;
+      height: resource-list-item(avatar-large-size);
     }
   }
 }
@@ -118,19 +99,19 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 .Item-mediaThumbnail {
   &.Item-sizeSmall {
     .Actions {
-      height: $thumbnail-small-size;
+      height: resource-list-item(thumbnail-small-size);
     }
   }
 
   &.Item-sizeMedium {
     .Actions {
-      height: $thumbnail-medium-size;
+      height: resource-list-item(thumbnail-medium-size);
     }
   }
 
   &.Item-sizeLarge {
     .Actions {
-      height: $thumbnail-large-size;
+      height: resource-list-item(thumbnail-large-size);
     }
   }
 }
@@ -152,7 +133,7 @@ $item-translate-offset: $handle-width - $resource-list-item-padding + spacing(ex
 // Item actions
 .Actions {
   position: absolute;
-  right: $resource-list-item-padding;
+  right: resource-list-item(padding);
   display: none;
   pointer-events: initial;
   .Item-focused & {
