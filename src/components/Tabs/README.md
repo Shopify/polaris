@@ -88,32 +88,54 @@ Where possible, follow this pattern when writing tabs.
 Use for most cases, especially when the number of tabs may be more than three.
 
 ```jsx
-<Tabs
-  selected={0}
-  tabs={[
-    {
-      id: 'all-customers',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
-    },
-    {
-      id: 'accepts-marketing',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
-    },
-    {
-      id: 'repeat-customers',
-      content: 'Repeat customers',
-      panelID: 'repeat-customers-content',
-    },
-    {
-      id: 'prospects',
-      content: 'Prospects',
-      panelID: 'prospects-content',
-    }
-  ]}
-/>
+class TabsExample extends React.Component {
+  state = {
+    selected: 0,
+  };
+
+  handleTabChange = (selectedTabIndex) => {
+    this.setState({selected: selectedTabIndex});
+  }
+
+  render() {
+    const tabs = [
+      {
+        id: 'all-customers',
+        content: 'All',
+        accessibilityLabel: 'All customers',
+        panelID: 'all-customers-content',
+      },
+      {
+        id: 'accepts-marketing',
+        content: 'Accepts marketing',
+        panelID: 'accepts-marketing-content',
+      },
+      {
+        id: 'repeat-customers',
+        content: 'Repeat customers',
+        panelID: 'repeat-customers-content',
+      },
+      {
+        id: 'prospects',
+        content: 'Prospects',
+        panelID: 'prospects-content',
+      }
+    ];
+
+    return (
+      <div style={{height: '130px'}}>
+        <Tabs
+          tabs={tabs}
+          selected={this.state.selected}
+          onSelect={this.handleTabChange}
+        />
+        <div style={{padding: '1.6rem'}}>
+          <p>Tab {this.state.selected} selected</p>
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 ### Fitted tabs
@@ -121,21 +143,43 @@ Use for most cases, especially when the number of tabs may be more than three.
 Use when tabs contain a few (2 or 3) items within a narrow column.
 
 ```jsx
-<Tabs
-  fitted
-  selected={0}
-  tabs={[
-    {
-      id: 'all-customers',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
-    },
-    {
-      id: 'accepts-marketing',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
-    }
-  ]}
-/>
+class FittedTabsExample extends React.Component {
+  state = {
+    selected: 0,
+  };
+
+  handleTabChange = (selectedTabIndex) => {
+    this.setState({selected: selectedTabIndex});
+  }
+
+  render() {
+    const tabs = [
+      {
+        id: 'all-customers',
+        content: 'All',
+        accessibilityLabel: 'All customers',
+        panelID: 'all-customers-content',
+      },
+      {
+        id: 'accepts-marketing',
+        content: 'Accepts marketing',
+        panelID: 'accepts-marketing-content',
+      }
+    ];
+
+    return (
+      <div style={{height: '130px'}}>
+        <Tabs
+          tabs={tabs}
+          selected={this.state.selected}
+          onSelect={this.handleTabChange}
+          fitted
+        />
+        <div style={{padding: '1.6rem'}}>
+          <p>Tab {this.state.selected} selected</p>
+        </div>
+      </div>
+    );
+  }
+}
 ```
