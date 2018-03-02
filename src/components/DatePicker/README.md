@@ -73,7 +73,7 @@ Learn how to [format dates and numbers](/content/grammar-and-mechanics#dates-and
 Use when merchants need to select a date range close to today (today is the default starting position for the date picker).
 
 ```jsx
-class DatePickerDemo extends React.Component {
+class DatePickerExample extends React.Component {
   state = {
     month: 1,
     year: 2018,

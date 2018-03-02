@@ -62,7 +62,7 @@ Use when the merchant needs to select a color to make the selection a visual
 task rather than a technical one.
 
 ```jsx
-class ColorPickerDemo extends React.Component {
+class ColorPickerExample extends React.Component {
   state = {
     color: {
       hue: 120,
@@ -94,7 +94,7 @@ Use when attached to a visual builder to allow the designated object to have a
 transparent background that allows underlying objects to show through.
 
 ```jsx
-class ColorPickerDemo extends React.Component {
+class ColorPickerExample extends React.Component {
   state = {
     color: {
       hue: 300,

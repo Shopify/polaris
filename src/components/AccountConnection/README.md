@@ -129,12 +129,12 @@ Connect to app
 
 ## Examples
 
-### Default account connection component
+### Default account connection
 
 Use to let merchants connect or disconnect their store to their third-party accounts (e.g. Facebook).
 
 ```jsx
-class AccountConnectionDemo extends React.Component {
+class AccountConnectionExample extends React.Component {
   state = {
     connected: false,
     accountName: '',
@@ -143,6 +143,12 @@ class AccountConnectionDemo extends React.Component {
   render() {
     const {accountName, connected} = this.state;
     const buttonText = connected ? 'Disconnect' : 'Connect';
+    const details = connected ? 'Account connected' : 'No account connected';
+    const terms = connected
+      ? null
+      : (
+        <p>By clicking <strong>Connect</strong>, you agree to accept Sample App’s <Link url="Example App">terms and conditions</Link>. You’ll pay a commission rate of 15% on sales made through Sample App.</p>
+      );
 
     return (
       <AccountConnection
@@ -153,8 +159,8 @@ class AccountConnectionDemo extends React.Component {
           content: buttonText,
           onAction: this.handleAction,
         }}
-        details="No account connected"
-        termsOfService={<p>By clicking <strong>Connect</strong>, you agree to accept Sample App’s <Link url="Example App">terms and conditions</Link>. You’ll pay a commission rate of 15% on sales made through Sample App.</p>}
+        details={details}
+        termsOfService={terms}
       />
     )
   }

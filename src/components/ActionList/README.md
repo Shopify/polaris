@@ -97,15 +97,28 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 Use for the least important actions so the merchant isn’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
-class ActionListDemo extends React.Component {
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+    	return {active: !active};
+    });
+  }
+
   render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
     return (
-      <div style={{height: '200px'}}>
+      <div style={{height: '250px'}}>
         <Popover
-          active
-          ref={'popover'}
-          activator={<Button disclosure>More actions</Button>}
-          onClose={this.handlePopoverClose}
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
         >
           <ActionList
             items={[
@@ -121,13 +134,7 @@ class ActionListDemo extends React.Component {
       </div>
     );
   }
-
-  handlePopoverClose = () => {
-    console.log('Popover closed');
-  }
 }
-
-
 ```
 
 ### Action list with icons or image
@@ -135,7 +142,7 @@ class ActionListDemo extends React.Component {
 Use when the items benefit from an associated action or image (e.g. a list of products).
 
 ```jsx
-class ActionListDemo extends React.Component {
+class ActionListExample extends React.Component {
   render() {
     return (
       <div style={{height: '200px'}}>
@@ -167,15 +174,28 @@ class ActionListDemo extends React.Component {
 Use when the items benefit from sections to help differentiate actions.
 
 ```jsx
-class ActionListDemo extends React.Component {
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+    	return {active: !active};
+    });
+  }
+
   render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
     return (
-      <div style={{height: '200px'}}>
+      <div style={{height: '250px'}}>
         <Popover
-          active
-          ref={'popover'}
-          activator={<Button disclosure>More actions</Button>}
-          onClose={this.handlePopoverClose}
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
         >
           <ActionList
             sections={[{
@@ -189,10 +209,6 @@ class ActionListDemo extends React.Component {
         </Popover>
       </div>
     );
-  }
-
-  handlePopoverClose = () => {
-    console.log('Popover closed');
   }
 }
 ```

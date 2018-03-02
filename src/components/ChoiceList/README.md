@@ -173,7 +173,7 @@ If your list contains helper text, only the description below the list item shou
 Use when you need merchants to make a single selection from a list of choices.
 
 ```jsx
-class ChoiceListDemo extends React.Component {
+class ChoiceListExample extends React.Component {
   state = {
     selected: ['hidden'],
   };
@@ -206,7 +206,7 @@ class ChoiceListDemo extends React.Component {
 Use when to let merchants make multiple sections from a list of choices.
 
 ```jsx
-class ChoiceListDemo extends React.Component {
+class ChoiceListExample extends React.Component {
   state = {
     selected: ['hidden'],
   };
@@ -247,7 +247,7 @@ class ChoiceListDemo extends React.Component {
 Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
 
 ```jsx
-class ChoiceListDemo extends React.Component {
+class ChoiceListExample extends React.Component {
   state = {
     selected: ['none'],
     textFieldValue: '',
@@ -298,7 +298,7 @@ class ChoiceListDemo extends React.Component {
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 
 ```jsx
-class ChoiceListDemo extends React.Component {
+class ChoiceListExample extends React.Component {
   state = {
     selected: ['none'],
     textFieldValue: '',

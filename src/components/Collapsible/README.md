@@ -69,7 +69,7 @@ There are no content elements that are specific to the collapsible component. Fo
 Use for a basic “show more” interaction when you need to display more content.
 
 ```jsx
-class CollapsibleDemo extends React.Component {
+class CollapsibleExample extends React.Component {
   state = {
     open: true,
   }
