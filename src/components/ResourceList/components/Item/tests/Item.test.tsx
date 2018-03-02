@@ -51,6 +51,7 @@ describe('<Item />', () => {
   };
 
   const url = 'http://test-link.com';
+  const ariaLabel = 'View Item';
 
   describe('accessibilityLabel', () => {
     it('is used on the UnstyledLink for the aria-label attribute', () => {
@@ -73,34 +74,50 @@ describe('<Item />', () => {
 
   describe('url', () => {
     it('does not renders a UnstyledLink by default', () => {
-      const element = shallowWithProvider(<Item id="itemId" onClick={noop} />, {
-        context: mockDefaultContext,
-      });
+      const element = shallowWithProvider(
+        <Item id="itemId" onClick={noop} accessibilityLabel={ariaLabel} />,
+        {context: mockDefaultContext},
+      );
 
       expect(element.find(UnstyledLink).exists()).toBe(false);
     });
 
     it('renders a UnstyledLink', () => {
-      const element = shallowWithProvider(<Item id="itemId" url={url} />, {
-        context: mockDefaultContext,
-      });
+      const element = shallowWithProvider(
+        <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />,
+        {context: mockDefaultContext},
+      );
 
       expect(element.find(UnstyledLink).exists()).toBe(true);
     });
 
     it('renders a UnstyledLink with url', () => {
-      const element = shallowWithProvider(<Item id="itemId" url={url} />, {
-        context: mockDefaultContext,
-      });
+      const element = shallowWithProvider(
+        <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />,
+        {context: mockDefaultContext},
+      );
 
       expect(element.find(UnstyledLink).prop('url')).toBe(url);
+    });
+
+    it(`renders a UnstyledLink with an aria-label of ${ariaLabel}`, () => {
+      const element = shallowWithProvider(
+        <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />,
+        {context: mockDefaultContext},
+      );
+
+      expect(element.find(UnstyledLink).prop('aria-label')).toBe(ariaLabel);
     });
   });
 
   describe('id', () => {
     it('is used on the content node and for the description of a link', () => {
       const item = mountWithProvider(
-        <Item id={itemId} url="https://shopify.com" />,
+        <Item
+          id={itemId}
+          url="https://shopify.com"
+          accessibilityLabel={ariaLabel}
+        />,
         {context: mockDefaultContext},
       );
 
@@ -113,10 +130,8 @@ describe('<Item />', () => {
     it('calls onClick when clicking on the item when onClick exist', () => {
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item id={itemId} onClick={onClick} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />,
+        {context: mockDefaultContext},
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
@@ -126,7 +141,12 @@ describe('<Item />', () => {
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item id={itemId} onClick={onClick} url={url} />,
+        <Item
+          id={itemId}
+          onClick={onClick}
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
         {context: mockDefaultContext},
       );
 
@@ -166,7 +186,7 @@ describe('<Item />', () => {
     it("it should not call 'onClick' when clicking the item", () => {
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item id={itemId} onClick={onClick} />,
+        <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />,
         {context: mockSelectModeContext},
       );
 
@@ -177,7 +197,12 @@ describe('<Item />', () => {
     it("it should call 'onSelectionChange' with the id of the item even if url or onClick is present", () => {
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item id={itemId} url={url} onClick={onClick} />,
+        <Item
+          id={itemId}
+          url={url}
+          onClick={onClick}
+          accessibilityLabel={ariaLabel}
+        />,
         {context: mockSelectableContext},
       );
 

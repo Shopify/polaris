@@ -425,7 +425,11 @@ function renderCustomMarkup(item: any) {
 
 function renderItem(item: any, id: any) {
   return (
-    <ResourceList.Item id={id} url={item.url}>
+    <ResourceList.Item
+      id={id}
+      url={item.url}
+      accessibilityLabel={`View details for ${item.title}`}
+    >
       <div>Item {id}</div>
       <div>{item.title}</div>
     </ResourceList.Item>

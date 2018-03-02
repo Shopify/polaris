@@ -20,7 +20,7 @@ $resource-list-item-variables: (
   min-height: rem(44px),
   handle-width: rem(48px),
   translate-offset: rem(48px) - rem(12px) + spacing(extra-tight), // handle-width - padding
-  link-stacking-order: 1,
+  clickable-stacking-order: 1,
   content-stacking-order: 2,
   avatar-small-size: rem(32px),
   avatar-medium-size: rem(40px),
