@@ -7,17 +7,17 @@ import {SortDirection, ColumnContentType} from './DataTable';
 import * as styles from './DataTable.scss';
 
 export interface Props {
-  /* TODO(enhancement): custom renderCell prop? It's possible that devs will want/need to pass in more than just a string or number as cell content. We could also just accept a React.ReactNode instead in addition to strings and numbers. The initial thought behind having an optional custom cell render function was to allow users of the component to 'roll their own' sortability, but I think that's best done with an onSort prop that we add to the implementation of the default sort functionality we'll be building in. */
   testID?: string,
   content?: React.ReactNode,
   contentType?: ColumnContentType,
   presentational?: boolean,
   fixed?: boolean,
   header?: boolean,
-  summary?: boolean,
+  total?: boolean,
   sorted?: boolean,
   sortable?: boolean,
   sortDirection?: SortDirection,
+  defaultSortDirection?: SortDirection,
   onSort?(): void,
 }
 
@@ -27,20 +27,21 @@ export default function Cell({
   presentational,
   fixed,
   header,
+  total,
   sorted,
   sortable,
   sortDirection,
-  summary,
+  defaultSortDirection,
   onSort,
 }: Props) {
 
-  const numeric = contentType === 'numeric' || contentType === 'currency';
+  const numeric = contentType === 'numeric';
 
   const className = classNames(
     styles.Cell,
     presentational && styles['Cell-presentational'],
     fixed && styles['Cell-fixed'],
-    summary && styles['Cell-summary'],
+    total && styles['Cell-total'],
     header && styles['Cell-header'],
     numeric && styles['Cell-numeric'],
     sorted && styles['Cell-sorted'],
@@ -51,26 +52,52 @@ export default function Cell({
     header && styles['Heading'],
   );
 
+  const iconClassName = classNames(
+    sortable && styles['Heading-sortable'],
+  );
+
   const presentationalMarkup = header
     ? <th aria-hidden role="presentation" className={className} />
     : <td aria-hidden role="presentation" className={className} />;
 
-  let direction;
-  if (sorted) { direction = sortDirection === 'ascending' ? 'Up' : 'Down'; }
-  const source = `caret${direction}`;
-  const iconMarkup = sortable && sorted ? <Icon source={source as IconSource} /> : null;
+  let sortedIconMarkup = null;
+  let sortableIconMarkup = null;
+  let sortAccessibilityLabel;
+
+  if (sortable) {
+    // i18n string variable
+    sortAccessibilityLabel = `sort by ${(content as string).toLowerCase()}`;
+
+    if (sorted) {
+      const direction = sortDirection === 'ascending' ? 'Up' : 'Down';
+      const source = `caret${direction}`;
+      sortedIconMarkup = <Icon source={source as IconSource} />;
+    } else {
+      const direction = defaultSortDirection === 'ascending' ? 'Up' : 'Down';
+      const source = `caret${direction}`;
+      sortableIconMarkup = <Icon source={source as IconSource} />;
+    }
+  }
 
   const columnHeadingContent = sortable
     ? (
-      <span className={headerClassName} aria-label={`sort by ${(content as string).toLowerCase()}`}>
+      <span className={headerClassName}>
+        <span className={iconClassName}>{sortableIconMarkup}</span>
+        <span>{sortedIconMarkup}</span>
         {content}
-        <span>{iconMarkup}</span>
       </span>
     )
     : content;
 
   const sortProps = sortable
-    ? {onClick: onSort, 'aria-sort': sortDirection}
+    ? {
+      role: 'button',
+      onClick: onSort,
+      onKeyDown: onKeyDownEnter(onSort),
+      'aria-sort': sortDirection,
+      'aria-label': sortAccessibilityLabel,
+      tabIndex: 0,
+    }
     : {'aria-disabled': true};
 
   const headingMarkup = header
@@ -90,4 +117,11 @@ export default function Cell({
     : nonPresentationalMarkup;
 
   return cellMarkup;
+}
+
+function onKeyDownEnter(sortFunc?: () => void) {
+  return function handleKeyPress(event: React.KeyboardEvent<HTMLElement>) {
+    const {keyCode} = event;
+    if (keyCode === 13 && sortFunc !== undefined) { sortFunc(); }
+  };
 }

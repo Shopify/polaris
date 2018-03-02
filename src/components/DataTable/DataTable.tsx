@@ -8,10 +8,10 @@ import Navigation from './Navigation';
 
 import * as styles from './DataTable.scss';
 
-export type TableRow = Props['headings'] | Props['rows'] | Props['summary'];
-export type TableData = string | number;
+export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
+export type TableData = string | number | React.ReactNode;
 export type SortDirection = 'ascending' | 'descending' | 'none';
-export type ColumnContentType = 'text' | 'numeric' | 'date' | 'currency';
+export type ColumnContentType = 'text' | 'numeric';
 
 export interface ColumnVisibilityData {
   leftEdge: number,
@@ -31,9 +31,9 @@ interface TableMeasurements {
 export interface Props {
   columnContentTypes: ColumnContentType[],
   headings: string[],
-  summary?: TableData[],
+  totals?: TableData[],
   rows: TableData[][],
-  footer?: TableData[][],
+  footerContent?: TableData,
   sortable?: boolean[],
   defaultSortDirection?: SortDirection,
   initialSortColumnIndex?: number,
@@ -75,9 +75,9 @@ export default class DataTable extends React.PureComponent<Props, State> {
 
     const {
       headings,
-      summary,
+      totals,
       rows,
-      footer,
+      footerContent,
       sortable,
       defaultSortDirection = 'ascending',
       initialSortColumnIndex = 0,
@@ -85,37 +85,32 @@ export default class DataTable extends React.PureComponent<Props, State> {
 
     const {
       collapsed,
-      currentColumn,
       columnVisibilityData,
-      sortDirection = defaultSortDirection,
+      currentColumn,
       sortedColumnIndex = initialSortColumnIndex,
+      sortDirection = defaultSortDirection,
     } = this.state;
 
     const className = classNames(
       styles.DataTable,
       collapsed && styles.collapsed,
+      footerContent && styles['hasFooter'],
     );
 
     const footerClassName = classNames(
-      footer && styles.TableFoot,
+      footerContent && styles.TableFoot,
     );
 
-    const footerMarkup = footer
+    const footerMarkup = footerContent
       ? (
         <tfoot className={footerClassName}>
-          {footer.map((footerRow: TableData[], index: number) => {
-            return (
-              <tr key={`footer-row-${index}`}>
-                {footerRow.map(renderSummary)}
-              </tr>
-            );
-          })}
+          <tr>{this.renderFooter()}</tr>
         </tfoot>
       )
       : null;
 
-    const summaryMarkup = summary
-      ? <tr>{insertPresentationalCell(summary).map(renderSummary)}</tr>
+    const totalsMarkup = totals
+      ? <tr>{insertPresentationalCell(totals).map(renderTotals)}</tr>
       : null;
 
     const headingMarkup = (
@@ -135,9 +130,10 @@ export default class DataTable extends React.PureComponent<Props, State> {
               : 'none';
 
             sortableHeadingProps = {
+              sorted: isSorted,
               sortable: isSortable,
               sortDirection: direction,
-              sorted: isSorted,
+              defaultSortDirection,
             };
           }
 
@@ -176,7 +172,7 @@ export default class DataTable extends React.PureComponent<Props, State> {
           <table className={styles.TableWrapper} ref={this.setTable}>
             <thead>
               {headingMarkup}
-              {summaryMarkup}
+              {totalsMarkup}
             </thead>
             <tbody>{bodyMarkup}</tbody>
             {footerMarkup}
@@ -297,6 +293,17 @@ export default class DataTable extends React.PureComponent<Props, State> {
   }
 
   @autobind
+  private renderFooter() {
+    return (
+      <Cell
+        total
+        testID="footer-cell"
+        content={this.props.footerContent}
+      />
+    );
+  }
+
+  @autobind
   private defaultOnSort(headingIndex: number) {
     const {onSort, defaultSortDirection = 'ascending', initialSortColumnIndex} = this.props;
     const {sortDirection, sortedColumnIndex = initialSortColumnIndex} = this.state;
@@ -327,18 +334,37 @@ function insertPresentationalCell(arr: TableRow = []) {
   return [fixedCell, presentationalCell, ...arr.slice(1)];
 }
 
-function renderFirstTwoColumnCells(index: number) {
-  const id = `summary-cell-${index}`;
+function renderTotals(totals: TableData, index ?: number) {
+  const id = `totals-cell-${index}`;
+  return (
+    totals === '' && index !== undefined
+      ? renderFirstTwoTotalsCells(index)
+      : (
+        <Cell
+          total
+          testID={id}
+          key={id}
+          contentType="numeric"
+          content={totals}
+        />
+      )
+  );
+}
+
+function renderFirstTwoTotalsCells(index: number) {
+  // i18n string variable
+  const totalsRowHeading = 'Totals';
+  const id = `totals-cell-${index}`;
 
   if (index === 0) {
     return (
       <Cell
         fixed
-        summary
+        total
         testID={id}
         key={id}
         contentType="numeric"
-        content={'Summary'}
+        content={totalsRowHeading}
       />
     );
   }
@@ -347,28 +373,11 @@ function renderFirstTwoColumnCells(index: number) {
 
   return (
     <Cell
-      summary
+      total
       testID={id}
       key={id}
       contentType="numeric"
     />
-  );
-}
-
-function renderSummary(summary: TableData, index: number) {
-  const id = `summary-cell-${index}`;
-  return (
-    summary === ''
-      ? renderFirstTwoColumnCells(index)
-      : (
-        <Cell
-          summary
-          testID={id}
-          key={id}
-          contentType="numeric"
-          content={summary}
-        />
-      )
   );
 }
 

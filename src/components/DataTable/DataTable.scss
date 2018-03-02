@@ -29,6 +29,14 @@ $breakpoint: 768px;
   }
 }
 
+.hasFooter {
+
+  .ScrollContainer {
+    margin-bottom: rem(52px);
+  }
+}
+
+
 .TableWrapper {
   margin-left: $fixed-column-width * -1;
   width: calc(100% + #{$fixed-column-width});
@@ -70,7 +78,6 @@ $breakpoint: 768px;
 .ScrollContainer {
   overflow-x: scroll;
   margin-left: $fixed-column-width;
-  margin-bottom: rem(52px);
 
   @include breakpoint-after($breakpoint) {
     margin-left: $fixed-column-width * 2;
@@ -84,24 +91,19 @@ $breakpoint: 768px;
       background: color(sky, lighter);
     }
   }
-  // stripe rows for better small screen scannability
-  // &:nth-child(odd) {
-  //   @include breakpoint-before($breakpoint) {
-  //     .Cell {
-  //       background: color(sky, lighter);
-  //     }
-  //   }
-  // }
 }
 
 .TableFoot {
   border-bottom: 0;
+
   .Cell-presentational {
     border-bottom: 0;
   }
-  .Cell-summary {
+
+  .Cell-total {
     @include text-emphasis-normal;
-    color: color(ink, lightest);
+    background: color(sky, light);
+    color: color(ink, lighter);
     text-align: center;
     width: 100%;
     position: absolute;
@@ -120,38 +122,38 @@ $breakpoint: 768px;
   white-space: nowrap;
   text-align: left;
   transition: background-color .2s ease-in-out;
-  // remove borders, as rows are striped on small screens
-  // @include breakpoint-before($breakpoint) {
-  //   &:not(.Cell-header):not(.Cell-summary) {
-  //     border-bottom: 0;
-  //   }
-  // }
 }
 
 .Cell-header {
   @include text-emphasis-normal;
   border-bottom: border(dark);
 
-  &.Cell-numeric {
-
-    &.Cell-sorted {
-      padding-right: calc(#{spacing()} - #{rem(4px)});
-    }
-  }
-
   &.Cell-sortable {
 
     .Heading {
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: flex-end;
       position: relative;
       transition: fill duration() easing(), color duration() easing();
     }
 
-    &:hover {
+    .Heading-sortable {
+      @include recolor-icon(color(indigo));
+      opacity: 0;
+      transition: opacity duration() easing();
+    }
+
+    &:hover,
+    &:focus {
       @include recolor-icon(color(indigo));
       color: color(indigo);
       cursor: pointer;
+
+      .Heading-sortable {
+        opacity: 1;
+      }
+
       &:focus {
         outline: none;
       }
@@ -159,9 +161,9 @@ $breakpoint: 768px;
   }
 }
 
-.Cell-summary {
+.Cell-total {
   @include text-emphasis-strong;
-  background: color(sky, light);
+  background: color(sky, lighter);
   border-bottom: border();
 }
 
@@ -169,7 +171,6 @@ $breakpoint: 768px;
   text-align: right;
 }
 
-// TODO(bugfix): There's a bug in the UI when the height of any of the collapsed cells is greater than the fixed cell in its row--the fixed cell's height doesn't grow, so there is a jagged row height.
 .Cell-fixed {
   @include text-emphasis-normal;
   width: $fixed-column-width;
@@ -179,7 +180,8 @@ $breakpoint: 768px;
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  text-align: left; // stop painting on scroll
+  text-align: left;
+  // stop painting on scroll
   backface-visibility: hidden;
 
   @include breakpoint-after($breakpoint) {
@@ -187,7 +189,7 @@ $breakpoint: 768px;
     min-width: $fixed-column-width * 2;
   }
 
-  &.Cell-summary {
+  &.Cell-total {
     @include text-emphasis-strong;
   }
 }

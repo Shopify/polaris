@@ -12,6 +12,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Merged latest changes from v1 into v2
 
 ## 2.0.0-beta.8 - 2018-03-01
+
+### New Components
+- Data table component ([#780](https://github.com/Shopify/polaris-react/pull/780))
+
 ### Enhancements
 - Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
 - Added translation and Provider support to Resource List ([#1097](https://github.com/Shopify/polaris-react/pull/1097))

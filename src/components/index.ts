@@ -85,9 +85,9 @@ export {
 export {
   default as DataTable,
   Props as DataTableProps,
-  TableHeading,
   TableData,
   TableRow,
+  SortDirection,
   ColumnContentType,
 } from './DataTable';
 
