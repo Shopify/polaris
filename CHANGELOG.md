@@ -4,7 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!--## Unreleased-->
+## Unreleased
+### Bug fixes
+* Fixed server-side environments ([#1120](https://github.com/Shopify/polaris-react/pull/1120))
+
 ## 1.12.0 - 2018-02-28
 
 ### Bug fixes
