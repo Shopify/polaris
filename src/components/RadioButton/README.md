@@ -99,21 +99,34 @@ Use radio buttons where merchants must make a single selection.
 ```jsx
 class RadioButtonExample extends React.Component {
   state = {
-    checked: false,
+    value: 'disabled',
   };
 
-  handleChange = (newValue) => {
-    this.setState({checked: newValue});
+  handleChange = (checked, newValue) => {
+    this.setState({value: newValue});
   }
 
   render() {
+    const {value} = this.state;
     return (
-      <RadioButton
-        label="Accounts are disabled"
-        helpText="Customers will only be able to check out as guests."
-        checked={this.state.checked}
-        onChange={this.handleChange}
-      />
+      <Stack vertical>
+        <RadioButton
+          label="Accounts are disabled"
+          helpText="Customers will only be able to check out as guests."
+          checked={(value === 'disabled')}
+          id="disabled"	
+          name="accounts"
+          onChange={this.handleChange}
+        />
+        <RadioButton
+          label="Accounts are optional"
+          helpText="Customers will be able to check out with a customer account or as a guest."
+          id="optional"
+          name="accounts"
+          checked={(value === 'optional')}
+          onChange={this.handleChange}
+        />
+      </Stack>
     );
   }
 }

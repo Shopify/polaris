@@ -98,6 +98,7 @@ class TabsExample extends React.Component {
   }
 
   render() {
+    const {selected} = this.state;
     const tabs = [
       {
         id: 'all-customers',
@@ -123,16 +124,16 @@ class TabsExample extends React.Component {
     ];
 
     return (
-      <div style={{height: '130px'}}>
+      <Card>
         <Tabs
           tabs={tabs}
-          selected={this.state.selected}
+          selected={selected}
           onSelect={this.handleTabChange}
         />
-        <div style={{padding: '1.6rem'}}>
-          <p>Tab {this.state.selected} selected</p>
-        </div>
-      </div>
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Card>
     );
   }
 }
@@ -153,6 +154,8 @@ class FittedTabsExample extends React.Component {
   }
 
   render() {
+    const {selected} = this.state;
+
     const tabs = [
       {
         id: 'all-customers',
@@ -168,17 +171,17 @@ class FittedTabsExample extends React.Component {
     ];
 
     return (
-      <div style={{height: '130px'}}>
+      <Card>
         <Tabs
           tabs={tabs}
-          selected={this.state.selected}
+          selected={selected}
           onSelect={this.handleTabChange}
           fitted
         />
-        <div style={{padding: '1.6rem'}}>
-          <p>Tab {this.state.selected} selected</p>
-        </div>
-      </div>
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Card>
     );
   }
 }

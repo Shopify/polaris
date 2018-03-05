@@ -5,8 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 ## Unreleased
+
 ### Bug fixes
 * Fixed server-side environments ([#1120](https://github.com/Shopify/polaris-react/pull/1120))
+
+### Documentation
+* Updated component examples that use state to use an es6 class. ([#1118](https://github.com/Shopify/polaris-react/pull/1118))
 
 ## 1.12.0 - 2018-02-28
 * Added link to accessibility best practices in vault ([#1101](https://github.com/Shopify/polaris-react/pull/1101))

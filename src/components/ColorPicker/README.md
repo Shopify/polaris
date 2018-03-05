@@ -120,14 +120,4 @@ class ColorPickerExample extends React.Component {
     this.setState({color});
   }
 }
-
-<ColorPicker
-  color={{
-    hue: 300,
-    brightness: 1,
-    saturation: 0.7,
-    alpha: 0.7
-  }}
-  allowAlpha
-/>
 ```

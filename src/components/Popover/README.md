@@ -134,7 +134,7 @@ class PopoverExample extends React.Component {
 
   togglePopover = () => {
     this.setState(({active}) => {
-    	return {active: !active};
+      return {active: !active};
     });
   }
 
@@ -176,7 +176,7 @@ class PopoverContentExample extends React.Component {
 
   togglePopover = () => {
     this.setState(({active}) => {
-    	return {active: !active};
+      return {active: !active};
     });
   }
 
@@ -218,20 +218,27 @@ class PopoverContentExample extends React.Component {
 Use to present secondary input tasks on demand.
 
 ```jsx
-class PopoverContentExample extends React.Component {
+class PopoverFormExample extends React.Component {
   state = {
     active: false,
+    tagValue: '',
   };
 
   togglePopover = () => {
     this.setState(({active}) => {
-    	return {active: !active};
+      return {active: !active};
+    });
+  }
+  
+  handleTagChange = (value) => {
+    this.setState({
+      tagValue: value,
     });
   }
 
   render() {
     const activator = (
-      <Button onClick={this.togglePopover}>April 20–21, 2017</Button>
+      <Button onClick={this.togglePopover} disclosure>Filter</Button>
     );
 
     return (
@@ -243,12 +250,13 @@ class PopoverContentExample extends React.Component {
           sectioned
         >
           <FormLayout>
-            <Select label="Date range" options={['Custom']} />
-
-            <FormLayout.Group condensed>
-              <TextField label="Starting" value="2017-04-20" />
-              <TextField label="Ending" value="2017-04-21" />
-            </FormLayout.Group>
+            <Select label="Show all customers where:" options={['Tagged with']} />
+            <TextField
+              label="Tags"
+              value={this.state.tagValue}
+              onChange={this.handleTagChange}
+            />
+            <Button size="slim">Add filter</Button>
           </FormLayout>
         </Popover>
       </div>

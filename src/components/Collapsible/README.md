@@ -78,21 +78,23 @@ class CollapsibleExample extends React.Component {
     const {open} = this.state;
 
     return (
-      <Card sectioned>
-        <Stack vertical>
-          <Button
-            onClick={this.handleToggleClick}
-            aria-expanded={open}
-          >
-            Toggle
-          </Button>
-          <Collapsible open={open}>
-            <TextContainer>
-              Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products.
-            </TextContainer>
-          </Collapsible>
-        </Stack>
-      </Card>
+      <div style={{height: '200px'}}>
+        <Card sectioned>
+          <Stack vertical>
+            <Button
+              onClick={this.handleToggleClick}
+              aria-expanded={open}
+            >
+              Toggle
+            </Button>
+            <Collapsible open={open}>
+              <TextContainer>
+                Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products.
+              </TextContainer>
+            </Collapsible>
+          </Stack>
+        </Card>
+      </div>
     );
   }
 

@@ -195,13 +195,13 @@ class TextFieldExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
     return (
       <TextField
-      	label="Store name"
+        label="Store name"
         value={this.state.value}
         onChange={this.handleChange}
       />
@@ -221,7 +221,7 @@ class NumberFieldExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -248,7 +248,7 @@ class EmailFieldExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -275,7 +275,7 @@ class MultilineFieldExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -298,11 +298,16 @@ Use to visually hide the label when the text field’s purpose is clear from con
 ```jsx
 class HiddenLabelExample extends React.Component {
   state = {
-    value: '12'
+    value: '12',
+    selected: 'yes',
   };
 
-  handleChange = (value) => {
-  	this.setState({value});
+  handleValueChange = (value) => {
+    this.setState({value});
+  }
+
+  handleSelectionChange = (selected) => {
+    this.setState({selected: selected[0]});
   }
 
   render() {
@@ -314,14 +319,16 @@ class HiddenLabelExample extends React.Component {
             {label: 'Gift cards never expire', value: 'no'},
             {label: 'Gift cards expire', value: 'yes'},
           ]}
-          selected={['yes']}
+          selected={[this.state.selected]}
+          onChange={this.handleSelectionChange}
         />
         <TextField
           label="Gift cards expire after"
           type="number"
           labelHidden
           value={this.state.value}
-          onChange={this.handleChange}
+          disabled={this.state.selected === 'no'}
+          onChange={this.handleValueChange}
           connectedRight={
             <Select
               label="Unit of time"
@@ -346,7 +353,7 @@ class LabelActionExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -373,7 +380,7 @@ class PlaceholderExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -400,7 +407,7 @@ class HelpTextExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -428,7 +435,7 @@ class PrefixExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -456,7 +463,7 @@ class ConnectedFieldsExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
@@ -486,7 +493,7 @@ class ValidationErrorExample extends React.Component {
   };
 
   handleChange = (value) => {
-  	this.setState({value});
+    this.setState({value});
   }
 
   render() {
