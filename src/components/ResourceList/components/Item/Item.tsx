@@ -3,6 +3,7 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {noop} from '@shopify/javascript-utilities/other';
 
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
@@ -42,6 +43,7 @@ export interface PropsWithClick extends GenericProps {
 export interface State {
   actionsMenuVisible: boolean,
   focused: boolean,
+  focusedInner: boolean,
 }
 
 export type CombinedProps = PropsWithUrl | PropsWithClick;
@@ -55,6 +57,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   state: State = {
     actionsMenuVisible: false,
     focused: false,
+    focusedInner: false,
   };
 
   private node: HTMLElement | null = null;
@@ -86,9 +89,13 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       selectMode,
     } = this.context;
 
-    const selected = this.isSelected();
+    const {
+      actionsMenuVisible,
+      focused,
+      focusedInner,
+    } = this.state;
 
-    const {actionsMenuVisible, focused} = this.state;
+    const selected = this.isSelected();
 
     let mediaSize: MediaSize | null = null;
     let mediaType: MediaType | null = null;
@@ -139,8 +146,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       );
     }
 
-    const hasActions = shortcutActions || persistActions;
-
     const className = classNames(
       styles.Item,
       focused && styles['Item-focused'],
@@ -148,7 +153,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       selected && styles['Item-selected'],
       selectMode && styles['Item-selectMode'],
       persistActions && styles['Item-persistActions'],
-      hasActions && styles['Item-hasActions'],
+      focusedInner && styles['Item-focusedInner'],
       mediaType && styles[variationName('Item-media', mediaType)],
       mediaSize && styles[variationName('Item-size', mediaSize)],
     );
@@ -215,6 +220,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       )
       : null;
 
+    const tabIndex = this.props.onClick ? 0 : -1;
+
     return (
       <div
         ref={this.setNode}
@@ -222,6 +229,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onClick={this.handleClick}
+        onKeyUp={this.handleKeypress}
+        onMouseDown={this.handleMouseDown}
+        tabIndex={tabIndex}
         testID="Item-Wrapper"
       >
         {urlMarkup}
@@ -236,24 +246,22 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleFocus(event: React.FocusEvent<HTMLElement>) {
-    const status = (event.target as HTMLInputElement).checked;
+  private handleFocus() {
+    this.setState({focused: true});
+  }
 
-    // isSelected is called with outdated props
-    // setTimeout is used to defer the comparison
-    // and place it at the end of the stack
-    setTimeout(() => {
-      const selected = this.isSelected();
-      if (status !== undefined && selected === status) {
-        this.setState({focused: true});
-      }
-    }, 0);
+  @autobind
+  private handleMouseDown() {
+    this.setState({focusedInner: true});
   }
 
   @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
+    const isInside = this.compareEventNode(event);
     if (this.node == null || !this.node.contains(event.relatedTarget as HTMLElement)) {
-      this.setState({focused: false});
+      this.setState({focused: false, focusedInner: false});
+    } else if (isInside) {
+      this.setState({focusedInner: true});
     }
   }
 
@@ -269,6 +277,16 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     const {onSelectionChange} = this.context;
     if (id == null || onSelectionChange == null) { return; }
     onSelectionChange(value, id);
+  }
+
+  @autobind
+  private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
+    const {onClick = noop} = this.props;
+    const {key} = event;
+
+    if (key === 'Enter') {
+      onClick();
+    }
   }
 
   @autobind
@@ -306,6 +324,12 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleCloseRequest() {
     this.setState({actionsMenuVisible: false});
+  }
+
+  private compareEventNode(event: React.FocusEvent<HTMLElement>) {
+    return this.props.onClick
+      ? event.target === this.node
+      : (event.target as HTMLElement).tagName.toLowerCase() === 'a';
   }
 
   private isSelected() {

@@ -39,10 +39,12 @@
   &:active {
     @include state(focused, active);
   }
+}
 
-  &.Item-hasActions {
-    box-shadow: none;
-  }
+.Item-focusedInner,
+.Item-focusedInner.Item-focused,
+.Item-focusedInner.Item-focused.Item-selected {
+  box-shadow: none;
 }
 
 .Link {
