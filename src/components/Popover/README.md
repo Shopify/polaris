@@ -127,17 +127,40 @@ If the menu items in a popover menu include a series of navigational links, each
 Use when presenting a set of actions in a disclosable menu.
 
 ```jsx
-<Popover
-  active
-  activator={<Button>More actions</Button>}
->
-  <ActionList
-    items={[
-      {content: 'Import'},
-      {content: 'Export'},
-    ]}
-  />
-</Popover>
+class PopoverExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  }
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            items={[
+              {content: 'Import'},
+              {content: 'Export'},
+            ]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
 ```
 
 
@@ -146,25 +169,48 @@ Use when presenting a set of actions in a disclosable menu.
 Use to present a combination of content, instructions, and actions is a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
 
 ```jsx
-<Popover
-  active
-  activator={<Button>Sales channels</Button>}
->
-  <Popover.Pane fixed>
-    <Popover.Section>
-      <p>Available sales channels</p>
-    </Popover.Section>
-  </Popover.Pane>
-  <Popover.Pane>
-    <ActionList
-      items={[
-        {content: 'Online store'},
-        {content: 'Facebook'},
-        {content: 'Shopify POS'},
-      ]}
-    />
-  </Popover.Pane>
-</Popover>
+class PopoverContentExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  }
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>Sales channels</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <Popover.Pane fixed>
+            <Popover.Section>
+              <p>Available sales channels</p>
+            </Popover.Section>
+          </Popover.Pane>
+          <Popover.Pane>
+            <ActionList
+              items={[
+                {content: 'Online store'},
+                {content: 'Facebook'},
+                {content: 'Shopify POS'},
+              ]}
+            />
+          </Popover.Pane>
+        </Popover>
+      </div>
+    );
+  }
+}
 ```
 
 ###  Popover with form components
@@ -172,20 +218,51 @@ Use to present a combination of content, instructions, and actions is a panel fo
 Use to present secondary input tasks on demand.
 
 ```jsx
-<Popover
-  active
-  activator={<Button>April 20–21, 2017</Button>}
-  sectioned
->
-  <FormLayout>
-    <Select label="Date range" options={['Custom']} />
+class PopoverFormExample extends React.Component {
+  state = {
+    active: false,
+    tagValue: '',
+  };
 
-    <FormLayout.Group condensed>
-      <TextField label="Starting" value="2017-04-20" />
-      <TextField label="Ending" value="2017-04-21" />
-    </FormLayout.Group>
-  </FormLayout>
-</Popover>
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  }
+  
+  handleTagChange = (value) => {
+    this.setState({
+      tagValue: value,
+    });
+  }
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover} disclosure>Filter</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+          sectioned
+        >
+          <FormLayout>
+            <Select label="Show all customers where:" options={['Tagged with']} />
+            <TextField
+              label="Tags"
+              value={this.state.tagValue}
+              onChange={this.handleTagChange}
+            />
+            <Button size="slim">Add filter</Button>
+          </FormLayout>
+        </Popover>
+      </div>
+    );
+  }
+}
 ```
 
 ---
