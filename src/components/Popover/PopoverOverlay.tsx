@@ -80,7 +80,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       active,
       activator,
       fullWidth,
-      fullHeight = false,
       preferredPosition = 'below',
     } = this.props;
 
@@ -88,7 +87,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       <PositionedOverlay
         testID="positionedOverlay"
         fullWidth={fullWidth}
-        fullHeight={fullHeight}
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
@@ -121,7 +119,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       transitionStatus && animationVariations(transitionStatus),
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
-      fullHeight && styles['Content-fullHeight'],
       measuring && styles.measuring,
     );
 
@@ -140,12 +137,10 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       ? undefined
       : {height: desiredHeight};
 
-    const contentClassNames = fullHeight
-      ? (classNames(
-        styles.Content,
-        styles['Content-fullHeight'])
-      )
-      : (styles.Content);
+    const contentClassNames = classNames(
+      styles.Content,
+      fullHeight && styles['Content-fullHeight'],
+    );
 
     const content = (
       <div
