@@ -8,7 +8,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {Scrollable, Icon, Spinner, Portal} from '../';
-
+import {DisableableAction} from '../../types';
 import memoizedBind from '../../utilities/memoized-bind';
 import {Dialog, Footer, FooterProps, Header, Section} from './components';
 import * as styles from './Modal.scss';
@@ -17,13 +17,7 @@ const IFRAME_LOADING_HEIGHT = 200;
 
 export type Width = 'large' | 'fullwidth';
 
-export interface EASDKProps {
-  width?: Width,
-  height?: number,
-}
-
-export interface Props extends FooterProps, EASDKProps {
-  open?: boolean,
+export interface ModalProps extends FooterProps {
   src?: string,
   title?: React.ReactNode,
   children?: React.ReactNode,
@@ -37,6 +31,30 @@ export interface Props extends FooterProps, EASDKProps {
   onClose(): void,
   onTransitionEnd?(): void,
 }
+
+export interface EASDKProps {
+  src: string,
+  title?: string,
+  width?: Width,
+  height?: number,
+  primaryAction?: DisableableAction,
+  secondaryActions?: DisableableAction[],
+  onClose(): void,
+}
+
+export interface AlertProps {
+  children?: string,
+  title?: string,
+  destructive?: boolean,
+  confirmContent: string,
+  cancelContent?: string,
+  onClose?(): void,
+  onConfirm(): void,
+}
+
+export type Props = {
+  open: boolean,
+} & ( ModalProps | AlertProps | EASDKProps);
 
 export interface State {
   iframeHeight: number,
@@ -97,7 +115,7 @@ export default class Modal extends React.Component<Props, State> {
       loading,
       large,
       limitHeight,
-    } = this.props;
+    } = (this.props as Props & ModalProps);
 
     const {iframeHeight} = this.state;
 
@@ -174,6 +192,7 @@ export default class Modal extends React.Component<Props, State> {
 
     const animated = !instant;
 
+    handleWarning('modal', this.props);
     return (
       <Portal idPrefix="modal">
         <div className={title ? '' : styles.graphic}>
@@ -187,7 +206,7 @@ export default class Modal extends React.Component<Props, State> {
   }
 
   private renderFooter() {
-    const {footer, primaryAction, secondaryActions} = this.props;
+    const {footer, primaryAction, secondaryActions} = this.props as ModalProps;
     if (!footer && !primaryAction && !secondaryActions) {
       return null;
     }
@@ -201,7 +220,7 @@ export default class Modal extends React.Component<Props, State> {
 
   @autobind
   private handleEntered() {
-    const {onTransitionEnd} = this.props;
+    const {onTransitionEnd} = this.props as ModalProps;
     if (onTransitionEnd) {
       onTransitionEnd();
     }
@@ -225,7 +244,7 @@ export default class Modal extends React.Component<Props, State> {
       iframeHeight: iframe.contentWindow.document.body.scrollHeight,
     });
 
-    const {onIFrameLoad} = this.props;
+    const {onIFrameLoad} = this.props as ModalProps;
 
     if (onIFrameLoad != null) {
       onIFrameLoad(evt);
@@ -234,13 +253,53 @@ export default class Modal extends React.Component<Props, State> {
 
   private handleEASDKMessaging() {
     const {easdk} = this.context;
-    const {open} = this.props;
+    const {open, children} = this.props;
     if (easdk == null) { return; }
 
     if (open) {
-      easdk.Modal.open(this.props);
+      if (typeof children === 'string') {
+        handleWarning('alert', this.props);
+        easdk.Modal.alert(this.props);
+      } else {
+        handleWarning('easdk', this.props);
+        easdk.Modal.open(this.props);
+      }
     } else {
       easdk.Modal.close();
     }
   }
+}
+
+export type Warn = 'alert' | 'easdk' | 'modal';
+
+function handleWarning(type: Warn, props: AlertProps | EASDKProps | ModalProps) {
+  const reqProps = {
+    modal: {
+      open: 'open',
+      onClose: 'onClose',
+    },
+    alert: {
+      open: 'open',
+      confirmContent: 'confirmContent',
+      onConfirm: 'onConfirm',
+    },
+    easdk: {
+      open: 'open',
+      src: 'src',
+      onClose: 'onClose',
+    },
+  };
+
+  const missingProps = Object.keys(reqProps[type]).reduce((acc: string[], key) => {
+    if (!props.hasOwnProperty(key)) {
+      acc.push(key);
+    }
+    return acc;
+  }, []);
+
+  if (missingProps.length > 0) {
+    // tslint:disable-next-line no-console
+    console.warn(`These required properties are missing from Modal: ${missingProps.join(', ')}`);
+  }
+  return;
 }

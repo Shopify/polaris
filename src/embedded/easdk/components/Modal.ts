@@ -22,7 +22,7 @@ export interface AlertConfig {
   destructive?: boolean;
   confirmContent: string;
   cancelContent?: string;
-  onCancel?(): void;
+  onClose?(): void;
   onConfirm(): void;
 }
 
@@ -66,7 +66,7 @@ export default class Modal {
       destructive,
       confirmContent,
       cancelContent,
-      onCancel,
+      onClose,
       onConfirm,
     } = config;
 
@@ -75,12 +75,12 @@ export default class Modal {
         if (onConfirm) {
           onConfirm();
         }
-      } else if (onCancel) {
-        onCancel();
+      } else if (onClose) {
+        onClose();
       }
     });
 
-    if (onCancel && cancelContent) {
+    if (onClose && cancelContent) {
       this.messenger.send('Shopify.API.Modal.confirm', {
         message: {
           title,

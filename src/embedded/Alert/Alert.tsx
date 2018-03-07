@@ -15,7 +15,7 @@ export interface Props {
   /** The content of the cancel button */
   cancelContent?: string;
   /** Callback when the confirmation button is clicked */
-  onCancel?(): void;
+  onClose?(): void,
   /** Callback when the alert is closed, or when the cancel button is clicked */
   onConfirm(): void;
 }
