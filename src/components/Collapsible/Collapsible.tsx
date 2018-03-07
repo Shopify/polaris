@@ -8,7 +8,9 @@ import {read} from '@shopify/javascript-utilities/fastdom';
 import * as styles from './Collapsible.scss';
 
 export interface Props {
+  /** Toggle whether the collapsible is expanded or not. */
   open: boolean,
+  /** The content to display inside the collapsible. */
   children?: React.ReactNode,
 }
 

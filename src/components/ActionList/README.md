@@ -84,12 +84,6 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| items | Action[] | Collection of actions for list |
-| sections | Section[] | Collection of sectioned action items |
-| onActionAnyItem | function() | Callback when any item is clicked or keypressed |
-
 ## Examples
 
 ### Action list in a popover

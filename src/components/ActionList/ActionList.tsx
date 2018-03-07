@@ -5,8 +5,11 @@ import Section, {ActionListSection} from './Section';
 import * as styles from './ActionList.scss';
 
 export interface Props {
+  /** Collection of actions for list */
   items?: ItemProps[],
+  /** Collection of sectioned action items */
   sections?: ActionListSection[],
+  /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ItemProps['onAction'],
 }
 

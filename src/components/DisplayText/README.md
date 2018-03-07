@@ -74,13 +74,6 @@ merchants
   statement without an exclamation mark
   * Written in sentence case
 
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| element | enum['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] | Name of element to use for text |
-| size | enum['small', 'medium', 'large', 'extraLarge'] | Size of the text |
-| children | string or React.ReactNode | Content to display |
-
 ## Examples
 
 ### Extra large

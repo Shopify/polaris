@@ -70,15 +70,6 @@ Post reach is the number of people who have seen your post in their News Feed.
 To continue using Shopify, this amount must be paid immediately.
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The children that activate the tooltip |
-| content | string | The content to display within the tooltip |
-| light | boolean | Display tooltip with a light background |
-| active | boolean | Toggle whether the tooltip is visible |
-| preferredPosition | enum['above', 'below'] | The direction the tooltip tries to display |
-| activatorWrapper | string | The element type to wrap the activator in |
-
 ## Examples
 
 ### Default tooltip

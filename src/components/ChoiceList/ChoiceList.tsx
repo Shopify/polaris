@@ -19,12 +19,19 @@ export interface ChoiceDescriptor {
 export type Choice = ChoiceDescriptor;
 
 export interface Props {
+  /** Label for list of choices */
   title?: string,
-  titleHidden?: boolean,
+  /** Collection of choices */
   choices: Choice[],
+  /** Collection of selected choices */
   selected: string[],
+  /** Name for form input */
   name?: string,
+  /** Allow merchants to select multiple options at once */
   allowMultiple?: boolean,
+  /** Toggles display of the title */
+  titleHidden?: boolean,
+  /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void,
 }
 

@@ -114,9 +114,13 @@ export const BUNDLED_ICONS = {
 const COLORS_WITH_BACKDROPS = ['teal', 'tealDark', 'greenDark', 'redDark', 'yellowDark', 'ink', 'inkLighter'];
 
 export interface Props {
+  /** The SVG contents to display in the icon */
   source: SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS,
+  /** Sets the color for the SVG fill */
   color?: Color,
+  /** Show a backdrop behind the icon */
   backdrop?: boolean,
+  /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string,
 }
 

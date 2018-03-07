@@ -182,17 +182,6 @@ doesn’t set expectations about what’s next.
 * Similar to buttons: Follow the same content guidelines as when you’re writing
 text for buttons.
 
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| title | string | Title content for the card |
-| children | React.ReactNode | Inner content of the card |
-| subdued | boolean | A less prominent card |
-| sectioned | boolean | Auto wrap content in section |
-| actions | DisableableAction[] | Card header actions |
-| primaryFooterAction | Action | Primary action in the card footer |
-| secondaryFooterAction | Action | Secondary action in the card footer |
-
 ## Examples
 
 ### Default card

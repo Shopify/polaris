@@ -15,10 +15,15 @@ const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
 const PREFERS_REDUCED_MOTION = prefersReducedMotion();
 
 export interface Props extends React.HTMLProps<HTMLDivElement> {
+  /** Content to display in scrollable area */
   children?: React.ReactNode,
+  /** Scroll content vertically */
   vertical?: boolean,
+  /** Scroll content horizontally */
   horizontal?: boolean,
+  /** Add a shadow when content is scrollable */
   shadow?: boolean,
+  /** Slightly hints content upon mounting when scrollable */
   hint?: boolean,
 }
 

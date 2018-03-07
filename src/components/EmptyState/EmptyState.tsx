@@ -11,12 +11,19 @@ import DisplayText from '../DisplayText';
 import * as styles from './EmptyState.scss';
 
 export interface Props {
-  image: string,
-  largeImage?: string,
-  imageContained?: boolean,
+  /** The empty state heading */
   heading?: string,
+  /** The image to use for small screens */
+  image: string,
+  /** The image to use for large screens */
+  largeImage?: string,
+  /** The image to use for large screens */
+  imageContained?: boolean,
+  /** Elements to display inside empty state */
   children?: React.ReactNode,
+  /** Primary action for empty state */
   action: Action,
+  /** Secondary action for empty state */
   secondaryAction?: Action,
 }
 

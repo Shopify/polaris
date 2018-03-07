@@ -18,8 +18,11 @@ export interface Color extends HSBColor {
 }
 
 export interface Props {
+  /** The currently selected color */
   color: Color,
+  /** Allow user to select an alpha value */
   allowAlpha?: boolean,
+  /** Callback when color is selected */
   onChange(color: HSBAColor): void,
 }
 

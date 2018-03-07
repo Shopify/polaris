@@ -7,8 +7,11 @@ export type Status = 'success' | 'info' | 'attention' | 'warning';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 
 export interface Props {
+  /** The content to display inside the badge. */
   children?: string,
+  /** Set the color of the badge for the given status. */
   status?: Status,
+  /** Render a pip showing the progress of a given task. */
   progress?: Progress,
 }
 

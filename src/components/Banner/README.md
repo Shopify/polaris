@@ -225,16 +225,6 @@ To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
 <!-- end -->
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| title | string | Title content for the banner. |
-| icon | SVG | Icon to display in the banner. |
-| status | enum['success', 'info', 'warning', 'critical'] | Sets the status of the banner. |
-| children | React.ReactNode | The child elements to render in the banner. |
-| action | Action | Action for banner |
-| secondaryAction | Action | Displays a secondary action |
-| onDismiss() | function() | Callback when banner is dismissed |
-
 ## Examples
 
 ### Default banners

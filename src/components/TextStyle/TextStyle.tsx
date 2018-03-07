@@ -5,7 +5,9 @@ import * as styles from './TextStyle.scss';
 export type Variation = 'positive' | 'negative' | 'strong' | 'subdued';
 
 export interface Props {
+  /** Give text additional visual meaning */
   variation?: Variation,
+  /** The content that should get the intended styling */
   children?: React.ReactNode,
 }
 

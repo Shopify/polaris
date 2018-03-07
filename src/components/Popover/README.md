@@ -108,18 +108,6 @@ If the menu items in a popover menu include a series of navigational links, each
 - Sales channel
 <!-- end -->
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| children | React.ReactNode | The content to display inside the popover |
-| fullWidth | boolean | If true, the popover will stretch to the full width of it's activator |
-| preferredPosition | enum['above', 'below'] | The preferred direction to open the popover |
-| active | boolean | Show or hide the Popover |
-| activator | React.ReactElement | The element to activate the Popover |
-| activatorWrapper | string | The element type to wrap the activator with |
-| preventAutofocus | boolean | Prevent automatic focus of the first field on activation |
-| sectioned | boolean | Automatically add wrap content in a section |
-| onClose | function(source: React.ReactElement) | Callback when popover is closed |
-
 ## Examples
 
 ###  Popover with action list

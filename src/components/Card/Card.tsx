@@ -10,12 +10,19 @@ import Section from './Section';
 import * as styles from './Card.scss';
 
 export interface Props {
+  /** Title content for the card */
   title?: string,
+  /** Inner content of the card */
   children?: React.ReactNode,
+  /** A less prominent card */
   subdued?: boolean,
+  /** Auto wrap content in section */
   sectioned?: boolean,
+  /** Card header actions */
   actions?: DisableableAction[],
+  /** Primary action in the card footer */
   primaryFooterAction?: Action,
+  /** Secondary action in the card footer */
   secondaryFooterAction?: Action,
 }
 

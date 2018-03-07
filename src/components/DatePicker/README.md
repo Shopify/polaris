@@ -55,17 +55,6 @@ is required
 There are no content elements that are specific to the date picker.
 Learn how to [format dates and numbers](/content/grammar-and-mechanics#dates-and-numbers) in your interface content.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| selected | Date or Range | The selected date or range of dates |
-| month | Months | The month to show |
-| year | Year | The year to show |
-| disableDatesBefore | Date | Disable selecting dates before this. |
-| disableDatesAfter | Date |  Disable selecting dates after this.|
-| multiMonth | boolean | The selection can span multiple months |
-| onChange | function(date: Range) | Callback when date is selected. |
-| onMonthChange | function(month: Months, year: Year) | Callback when month is changed. |
-
 ## Examples
 
 ### Default date picker

@@ -160,14 +160,6 @@ Secondary actions should:
 - Follow the same guidelines as [the button component](/components/actions/button).
 - Use a single verb as their label, since the object on which they act should be the list item itself (e.g. “Edit”, “Delete”). Secondary actions should use the {noun} + {verb} format when necessary to avoid ambiguity (e.g. “View listing”).
 
-
-| Prop | Type | Description |
-| --- | --- | --- |
-| items* | any[] | Item data; each item is passed to renderItem |
-| renderItem* | function | Function to render each item |
-| idForItem | function | Function to generate unique identifier for each item passed |
-
-
 ## Examples
 
 ### Simple resource list

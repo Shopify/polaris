@@ -6,9 +6,12 @@ import * as styles from './Thumbnail.scss';
 export type Size = 'small' | 'medium' | 'large';
 
 export interface Props {
-  source: string,
-  alt: string,
+  /** Size of thumbnail */
   size?: Size,
+  /** URL for the avatar image */
+  source: string,
+  /** Alt text for the thumbnail image */
+  alt: string,
 }
 
 export default function Thumbnail({

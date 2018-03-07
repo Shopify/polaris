@@ -78,11 +78,6 @@ Conversational headings for areas like empty states and home cards are the only 
 - Two-step authentication
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| element | string | The element name to use for the heading |
-| children | string or React.ReactNode | The content to display inside the heading |
-
 ## Examples
 
 ### Typographic heading
