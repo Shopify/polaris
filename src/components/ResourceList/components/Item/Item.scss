@@ -2,6 +2,7 @@
 
 .Item {
   position: relative;
+  outline: none;
   cursor: pointer;
 
   &:hover {
@@ -18,6 +19,10 @@
 
   &.Item-focused {
     @include state(selected, focused);
+
+    &:hover {
+      @include state(selected, focused, hover);
+    }
   }
 
   &:hover {
