@@ -1,3 +1,42 @@
 {
-  "Common": {}
+  "Common": {
+    "undo": "Undo"
+  },
+
+  "ResourceList": {
+    "sortingLabel": "Select how to sort",
+    "defaultItemSingular": "item",
+    "defaultItemPlural": "items",
+    "showing": "Showing {itemsCount} {resource}",
+    "selected": "{selectedItemsCount} selected",
+    "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+    "selectAllItems": "Select all {itemsLength}+ ${resourceNamePlural} in your store",
+    "emptySearchResultTitle": "No {resourceNamePlural} found",
+    "emptySearchResultDescription": "Try changing the filters or search term",
+
+    "Item": {
+      "selectItem": "Select Item",
+      "actionsDropdown": "Actions dropdown"
+    },
+
+    "BulkActions": {
+      "actionsActivatorLabel": "Actions",
+      "moreActionsActivatorLabel": "More actions"
+    },
+
+    "FilterCreator": {
+      "filterButtonLabel": "Filter",
+      "selectFilterKeyPlaceholder": "Select a filter\u2026",
+      "addFilterButtonLabel": "Add filter",
+      "showAllWhere": "Show all {resourceNamePlural} where:"
+    },
+
+    "FilterControl": {
+      "textFieldLabel": "Search {resourceNamePlural}"
+    },
+
+    "FilterValueSelector": {
+      "selectFilterValuePlaceholder": "Select a filter\u2026"
+    }
+  }
 }

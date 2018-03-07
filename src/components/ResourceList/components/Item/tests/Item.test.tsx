@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
-import {findByTestID} from '../../../../../../tests/utilities';
+import {findByTestID, shallowWithProvider, mountWithProvider} from '../../../../../../tests/utilities';
 
 import {UnstyledLink} from '../../../../';
 import Item from '../Item';
@@ -28,7 +27,7 @@ describe('<Item />', () => {
 
   describe('url', () => {
     it('does not renders a UnstyledLink by default', () => {
-      const element = shallow(
+      const element = shallowWithProvider(
         <Item
           id="itemId"
           onClick={noop}
@@ -40,7 +39,7 @@ describe('<Item />', () => {
     });
 
     it('renders a UnstyledLink', () => {
-      const element = shallow(
+      const element = shallowWithProvider(
         <Item
           id="itemId"
           url={url}
@@ -52,7 +51,7 @@ describe('<Item />', () => {
     });
 
     it('renders a UnstyledLink with url', () => {
-      const element = shallow(
+      const element = shallowWithProvider(
         <Item
           id="itemId"
           url={url}
@@ -68,7 +67,7 @@ describe('<Item />', () => {
     it('calls onClick when clicking on the item when onClick exist', () => {
       const id = 'itemId';
       const onClick = jest.fn();
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Item
           id={id}
           onClick={onClick}
@@ -83,7 +82,7 @@ describe('<Item />', () => {
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
       const id = 'itemId';
       const onClick = jest.fn();
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Item
           id={id}
           onClick={onClick}
@@ -101,7 +100,7 @@ describe('<Item />', () => {
     it('it should not call onClick when clicking the item', () => {
       const id = 'itemId';
       const onClick = jest.fn();
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Item
           id={id}
           onClick={onClick}
@@ -116,7 +115,7 @@ describe('<Item />', () => {
     it('it should call onSelectionChange with the id of the item even if url or onClick is present', () => {
       const id = 'itemId';
       const onClick = jest.fn();
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Item
           id={id}
           url={url}

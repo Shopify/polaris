@@ -5,6 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
+import {withProvider, WithProviderProps} from '../../components/Provider';
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
@@ -50,7 +51,9 @@ export interface Context {
   unsubscribe(callback: () => void): void,
 }
 
-export default class ResourceList extends React.PureComponent<Props, State> {
+export type CombinedProps = Props & WithProviderProps;
+
+export class ResourceList extends React.Component<CombinedProps, State> {
   static Item = Item;
   static FilterControl = FilterControl;
   static childContextTypes = contextTypes;
@@ -58,8 +61,18 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   state: State = {selectMode: false};
 
   private subscriptions: {(): void}[] = [];
-  private sortingLabel = 'Select how to sort';
-  private defaultResourceName = {singular: 'item', plural: 'items'};
+  private defaultResourceName: {singular: string, plural: string};
+
+  constructor(props: CombinedProps) {
+    super(props);
+
+    const {polaris} = props;
+
+    this.defaultResourceName = {
+      singular: polaris.translate('ResourceList.defaultItemSingular'),
+      plural: polaris.translate('ResourceList.defaultItemPlural'),
+    };
+  }
 
 
   private get selectable() {
@@ -87,12 +100,16 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const {
       resourceName = this.defaultResourceName,
       items,
+      polaris: {translate},
     } = this.props;
 
     const itemsCount = items.length;
     const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
 
-    return `Showing ${itemsCount} ${resource}`;
+    return translate('ResourceList.showing', {
+      itemsCount,
+      resource,
+    });
   }
 
   @autobind
@@ -100,39 +117,60 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const {
       selectedItems = [],
       items,
+      polaris: {translate},
     } = this.props;
 
     const selectedItemsCount = (selectedItems === SELECT_ALL_ITEMS)
       ? `${items.length}+`
       : selectedItems.length;
 
-    return `${selectedItemsCount} selected`;
+    return translate('ResourceList.selected', {
+      selectedItemsCount,
+    });
   }
 
   @autobind
   private get paginatedSelectAllText() {
-    const {hasMoreItems, selectedItems, items, resourceName = this.defaultResourceName} = this.props;
+    const {
+      hasMoreItems,
+      selectedItems,
+      items,
+      resourceName = this.defaultResourceName,
+      polaris: {translate},
+    } = this.props;
 
     if (!this.selectable || !hasMoreItems) {
       return;
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return `All ${items.length}+ ${resourceName.plural} in your store are selected.`;
+      return translate('ResourceList.allItemsSelected', {
+        itemsLength: items.length,
+        resourceNamePlural: resourceName.plural,
+      });
     }
   }
 
   @autobind
   private get paginatedSelectAllAction() {
-    const {hasMoreItems, selectedItems, items, resourceName = this.defaultResourceName} = this.props;
+    const {
+      hasMoreItems,
+      selectedItems,
+      items,
+      resourceName = this.defaultResourceName,
+      polaris: {translate},
+    } = this.props;
 
     if (!this.selectable || !hasMoreItems) {
       return;
     }
 
     const actionText = (selectedItems === SELECT_ALL_ITEMS)
-      ? 'Undo'
-      : `Select all ${items.length}+ ${resourceName.plural} in your store`;
+      ? translate('Common.undo')
+      : translate('ResourceList.selectAllItems', {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        });
 
     return {
       content: actionText,
@@ -141,11 +179,14 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   }
 
   private get emptySearchResultText() {
-    const {resourceName = this.defaultResourceName} = this.props;
+    const {
+      polaris: {translate},
+      resourceName = this.defaultResourceName,
+    } = this.props;
 
     return {
-      title: `No ${resourceName.plural.toLocaleLowerCase()} found`,
-      description: 'Try changing the filters or search term',
+      title: translate('ResourceList.emptySearchResultTitle', {resourceNamePlural: resourceName.plural}),
+      description: translate('ResourceList.emptySearchResultDescription'),
     };
   }
 
@@ -186,6 +227,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       sortOptions,
       sortValue,
       onSortChange,
+      polaris: {translate},
     } = this.props;
     const {selectMode} = this.state;
     const itemsExist = items.length > 0;
@@ -219,7 +261,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       ? (
         <div className={styles.SortWrapper}>
           <Select
-            label={this.sortingLabel}
+            label={translate('ResourceList.sortingLabel')}
             labelHidden
             options={sortOptions}
             onChange={onSortChange}
@@ -412,3 +454,4 @@ function isSmallScreen() {
   return typeof window === 'undefined' ? false : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
+export default withProvider()(ResourceList);

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 
+import {withProvider, WithProviderProps} from '../../../Provider';
+
 import {ComplexAction} from '../../../../types';
 import {
   buttonsFrom,
@@ -29,13 +31,9 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void,
 }
 
-export default class FilterControl extends React.Component<Props> {
-  private get textFieldLabel() {
-    const resourceNamePlural =
-      this.props.resourceName.plural.toLocaleLowerCase();
-    return `Search ${resourceNamePlural}`;
-  }
+export type CombinedProps = Props & WithProviderProps;
 
+class FilterControl extends React.Component<CombinedProps> {
   render() {
     const {
       resourceName,
@@ -46,7 +44,12 @@ export default class FilterControl extends React.Component<Props> {
       filters = [],
       onSearchBlur,
       onSearchChange,
+      polaris: {translate},
     } = this.props;
+
+    const textFieldLabel = translate('ResourceList.FilterControl.textFieldLabel', {
+      resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+    });
 
     const additionalActionButton =
       (additionalAction && buttonsFrom(additionalAction)) || null;
@@ -85,9 +88,9 @@ export default class FilterControl extends React.Component<Props> {
         <TextField
           connectedLeft={filterCreatorMarkup}
           connectedRight={additionalActionButton}
-          label={this.textFieldLabel}
+          label={textFieldLabel}
           labelHidden
-          placeholder={this.textFieldLabel}
+          placeholder={textFieldLabel}
           prefix={<Icon source="search" color="skyDark" />}
           value={searchValue}
           onChange={onSearchChange}
@@ -196,3 +199,5 @@ function findFilterLabelByType(
 
   return appliedFilterValue;
 }
+
+export default withProvider()(FilterControl);

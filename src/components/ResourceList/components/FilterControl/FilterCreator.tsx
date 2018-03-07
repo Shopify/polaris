@@ -2,6 +2,7 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {Button, Popover, Select, FormLayout} from '../../../';
+import {withProvider, WithProviderProps} from '../../../Provider';
 
 import FilterValueSelector from './FilterValueSelector';
 import {AppliedFilter, Filter} from './types';
@@ -15,25 +16,18 @@ export interface Props {
   onAddFilter?(newFilter: AppliedFilter): void,
 }
 
+export type CombinedProps = Props & WithProviderProps;
+
 export interface State {
   popoverActive: boolean,
   selectedFilter?: Filter,
   selectedFilterValue?: AppliedFilter['value'],
 }
 
-export default class FilterCreator extends React.PureComponent<Props, State> {
+class FilterCreator extends React.PureComponent<CombinedProps, State> {
   state: State = {
     popoverActive: false,
   };
-
-  private filterButtonLabel = 'Filter';
-  private selectFilterKeyPlaceholder = 'Select a filter\u2026';
-  private addFilterButtonLabel = 'Add filter';
-  private get selectFilterKeyLabel() {
-    const resourceNamePlural =
-      this.props.resourceName.plural.toLocaleLowerCase();
-    return `Show all ${resourceNamePlural} where:`;
-  }
 
   private get canAddFilter() {
     return Boolean(
@@ -43,7 +37,11 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const {filters} = this.props;
+    const {
+      filters,
+      resourceName,
+      polaris: {translate},
+    } = this.props;
     const {
       popoverActive,
       selectedFilter,
@@ -56,7 +54,7 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
         disclosure
         testID="FilterCreator-FilterActivator"
       >
-        {this.filterButtonLabel}
+        {translate('ResourceList.FilterCreator.filterButtonLabel')}
       </Button>
     );
 
@@ -78,7 +76,7 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
         disabled={!this.canAddFilter}
         testID="FilterCreator-AddFilterButton"
       >
-        {this.addFilterButtonLabel}
+        {translate('ResourceList.FilterCreator.addFilterButtonLabel')}
       </Button>
     ) : null;
 
@@ -91,8 +89,8 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
       >
         <FormLayout>
           <Select
-            label={this.selectFilterKeyLabel}
-            placeholder={this.selectFilterKeyPlaceholder}
+            label={translate('ResourceList.FilterCreator.showAllWhere', {resourceNamePlural: resourceName.plural.toLocaleLowerCase()})}
+            placeholder={translate('ResourceList.FilterCreator.selectFilterKeyPlaceholder')}
             options={filterOptions}
             onChange={this.handleFilterKeyChange}
             value={selectedFilter && selectedFilter.key}
@@ -154,3 +152,4 @@ export default class FilterCreator extends React.PureComponent<Props, State> {
   }
 }
 
+export default withProvider()(FilterCreator);
