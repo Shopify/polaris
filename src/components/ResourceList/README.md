@@ -47,34 +47,36 @@ Resource lists can also:
 A resource list with simple items and no bulk actions, sorting, or filtering. See the [case study below](#study) for implementation details.
 
 ```jsx
-<ResourceList
-  resourceName={{singular: 'customer', plural: 'customers'}}
-  items={[
-    {
-      id: 341,
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-    },
-    {
-      id: 256,
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-    },
-  ]}
-  renderItem={(item) => {
-    const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+<Card>
+  <ResourceList
+    resourceName={{singular: 'customer', plural: 'customers'}}
+    items={[
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ]}
+    renderItem={(item) => {
+      const {id, url, name, location} = item;
+      const media = <Avatar customer size="medium" name={name} />;
 
-    return (
-      <ResourceList.Item id={id} url={url} media={media}>
-        <h3><TextStyle variation="strong">{name}</TextStyle></h3>
-        <div>{location}</div>
-      </ResourceList.Item>
-    );
-  }}
-/>
+      return (
+        <ResourceList.Item id={id} url={url} media={media}>
+          <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+          <div>{location}</div>
+        </ResourceList.Item>
+      );
+    }}
+  />
+</Card>
 ```
 
 ### Resource list with bulk actions
@@ -82,23 +84,16 @@ A resource list with simple items and no bulk actions, sorting, or filtering. Se
 Allows the merchant to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.
 
 ```jsx
-<ResourceList
-  resourceName={{singular: 'customer', plural: 'customers'}}
-  items={[
-    {
-      id: 341,
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-    },
-    {
-      id: 256,
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-    },
-  ]}
-  renderItem={(item) => {
+class ResourceListExample extends React.Component {
+  state = {
+    selectedItems: [],
+  };
+
+  handleSelectionChange = (selectedItems) => {
+    this.setState({selectedItems});
+  }
+
+  renderItem = (item) => {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -108,36 +103,66 @@ Allows the merchant to select items and perform an action on the selection. See 
         <div>{location}</div>
       </ResourceList.Item>
     );
-  }}
-  selectedItems={[]}
-  onSelectionChange={(selectedItems) => {
-    console.log(
-      `Selected items changed to ${selectedItems}.`,
-      'Todo: use setState to apply this change.'
+  }
+
+  render() {
+    const resourceName = {
+      singular: 'customer',
+      plural: 'customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    const promotedBulkActions = [
+      {
+        content: 'Edit customers',
+        onAction: () => console.log('Todo: implement bulk edit'),
+      },
+    ];
+
+    const bulkActions = [
+      {
+        content: 'Add tags',
+        onAction: () => console.log('Todo: implement bulk add tags'),
+      },
+      {
+        content: 'Remove tags',
+        onAction: () => console.log('Todo: implement bulk remove tags'),
+      },
+      {
+        content: 'Delete customers',
+        onAction: () => console.log('Todo: implement bulk delete'),
+      }
+    ];
+
+    return (
+      <Card>
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={this.renderItem}
+          selectedItems={this.state.selectedItems}
+          onSelectionChange={this.handleSelectionChange}
+          promotedBulkActions={promotedBulkActions}
+          bulkActions={bulkActions}
+        />
+      </Card>
     );
-  }}
-  promotedBulkActions={[
-    {
-      content: 'Edit customers',
-      onAction: () => console.log('Todo: implement bulk edit'),
-    },
-    // Add a second promoted action if needed
-  ]}
-  bulkActions={[
-    {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
-    },
-    {
-      content: 'Remove tags',
-      onAction: () => console.log('Todo: implement bulk remove tags'),
-    },
-    {
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
-    }
-  ]}
-/>
+  }
+}
 ```
 
 ### Resource list with sorting
@@ -145,23 +170,16 @@ Allows the merchant to select items and perform an action on the selection. See 
 Allows the merchant to change the way the list is sorted by selecting one of several options from a [Select](/components/forms/select) control. See the [the sorting section of the case study](#study-sorting) for implementation details.
 
 ```jsx
-<ResourceList
-  resourceName={{singular: 'customer', plural: 'customers'}}
-  items={[
-    {
-      id: 341,
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-    },
-    {
-      id: 256,
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-    },
-  ]}
-  renderItem={(item) => {
+class ResourceListExample extends React.Component {
+  state = {
+    sortValue: 'DATE_MODIFIED_DESC',
+  };
+
+  handleSortChange = (sortValue) => {
+    this.setState({sortValue});
+  }
+
+  renderItem = (item) => {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -171,19 +189,49 @@ Allows the merchant to change the way the list is sorted by selecting one of sev
         <div>{location}</div>
       </ResourceList.Item>
     );
-  }}
-  sortValue="DATE_MODIFIED_DESC"
-  sortOptions={[
-    { label: 'Newest update', value: 'DATE_MODIFIED_DESC' },
-    { label: 'Oldest update', value: 'DATE_MODIFIED_ASC' },
-  ]}
-  onSortChange={(selected) => {
-    console.log(
-      `Sort option changed to ${selected}.`,
-      'Todo: use setState to apply this change.'
+  }
+
+  render() {
+    const resourceName = {
+      singular: 'customer',
+      plural: 'customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    return (
+      <Card>
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={this.renderItem}
+          sortValue={this.state.sortValue}
+          sortOptions={[
+            { label: 'Newest update', value: 'DATE_MODIFIED_DESC' },
+            { label: 'Oldest update', value: 'DATE_MODIFIED_ASC' },
+          ]}
+          onSortChange={(selected) => {
+            this.setState({sortValue: selected});
+            console.log(`Sort option changed to ${selected}.`);
+          }}
+        />
+      </Card>
     );
-  }}
-/>
+  }
+}
 ```
 
 ### Resource list with filtering
@@ -191,23 +239,26 @@ Allows the merchant to change the way the list is sorted by selecting one of sev
 Allows the merchant to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
 
 ```jsx
-<ResourceList
-  resourceName={{ singular: 'customer', plural: 'customers' }}
-  items={[
-    {
-      id: 341,
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-    },
-    {
-      id: 256,
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-    },
-  ]}
-  renderItem={(item) => {
+class ResourceListExample extends React.Component {
+  state = {
+    searchValue: '',
+    appliedFilters: [
+      {
+        key: 'accountStatusFilter',
+        value: 'Account enabled',
+      },
+    ],
+  };
+
+  handleSearchChange = (searchValue) => {
+    this.setState({searchValue});
+  }
+
+  handleFiltersChange = (appliedFilters) => {
+    this.setState({appliedFilters});
+  }
+
+  renderItem = (item) => {
     const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
@@ -217,56 +268,77 @@ Allows the merchant to narrow the resource list to a subset of the original item
         <div>{location}</div>
       </ResourceList.Item>
     );
-  }}
-  filterControl={
-    <ResourceList.FilterControl
-      resourceName={{ singular: 'customer', plural: 'customers' }}
-      filters={[
-        {
-          key: 'totalSpentFilter',
-          label: 'Total spent',
-          operatorText: 'is greater than',
-          type: FilterType.TextField,
-        },
-        {
-          key: 'accountStatusFilter',
-          label: 'Account status',
-          operatorText: 'is',
-          type: FilterType.Select,
-          options: [
-            'Enabled',
-            'Invited',
-            'Not invited',
-            'Declined',
-          ]
-        },
-      ]}
-      appliedFilters={[
-        {
-          key: 'accountStatusFilter',
-          value: 'Account enabled',
-        },
-      ]}
-      onFiltersChange={(appliedFilters) => {
-        console.log(
-          `Applied filters changed to ${appliedFilters}.`,
-          'Todo: use setState to apply this change.'
-        );
-      }}
-      searchValue=""
-      onSearchChange={(searchValue) => {
-        console.log(
-          `Search value changed to ${searchValue}.`,
-          'Todo: use setState to apply this change.'
-        );
-      }}
-      additionalAction={{
-        content: 'Save',
-        onAction: () => console.log('Todo: handle save filters.'),
-      }}
-    />
   }
-/>
+
+  render() {
+    const resourceName = {
+      singular: 'customer',
+      plural: 'customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    const filters = [
+      {
+        key: 'orderCountFilter',
+        label: 'Number of orders',
+        operatorText: 'is greater than',
+        type: FilterType.TextField,
+      },
+      {
+        key: 'accountStatusFilter',
+        label: 'Account status',
+        operatorText: 'is',
+        type: FilterType.Select,
+        options: [
+          'Enabled',
+          'Invited',
+          'Not invited',
+          'Declined',
+        ]
+      },
+    ];
+
+    const filterControl = (
+      <ResourceList.FilterControl
+        resourceName={resourceName}
+        filters={filters}
+        appliedFilters={this.state.appliedFilters}
+        onFiltersChange={this.handleFiltersChange}
+        searchValue={this.state.searchValue}
+        onSearchChange={this.handleSearchChange}
+        additionalAction={{
+          content: 'Save',
+          onAction: () => console.log('New filter saved'),
+        }}
+      />
+    );
+
+    return (
+      <Card>
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={this.renderItem}
+          filterControl={filterControl}
+        />
+      </Card>
+    );
+  }
+}
 ```
 
 ---
