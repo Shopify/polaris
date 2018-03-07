@@ -32,6 +32,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Updated the base red color to improve contrast ([#1076](https://github.com/Shopify/polaris-react/pull/1076))
 * Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
 * Exposed Status from the Banner component ([#998](https://github.com/Shopify/polaris-react/pull/998))
+* Added `titleHidden` prop to Page ([#1033](https://github.com/Shopify/polaris-react/pull/1033))
 
 ### Chores
 * Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
@@ -40,7 +41,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
 ### Enhancements
 * Added `renderChildren` prop to choice list component ([#993](https://github.com/Shopify/polaris-react/pull/993))
-* Added `titleHidden` prop to Page ([#1033](https://github.com/Shopify/polaris-react/pull/1033))
 
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))
