@@ -5,7 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!--## Unreleased-->
+
+## 1.12.1 - 2018-03-06
+
+### Bug fixes
+* Fixed server-side environments ([#1120](https://github.com/Shopify/polaris-react/pull/1120))
+
+### Documentation
+* Updated component examples that use state to use an es6 class. ([#1118](https://github.com/Shopify/polaris-react/pull/1118))
+
 ## 1.12.0 - 2018-02-28
+* Added link to accessibility best practices in vault ([#1101](https://github.com/Shopify/polaris-react/pull/1101))
+* Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
+* Exposed Status from the Banner component. ([#998](https://github.com/Shopify/polaris-react/pull/998))
+* Fixed vertical alignment of text within full width variant of the button component ([#1083](https://github.com/Shopify/polaris-react/pull/1017))
 
 ### Bug fixes
 * Fixed TextField overflow issues when inside Scrollable ([#967](https://github.com/Shopify/polaris-react/pull/967))

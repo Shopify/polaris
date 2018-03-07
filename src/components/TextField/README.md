@@ -189,7 +189,25 @@ You didn’t enter a store name.
 Use to allow merchants to provide text input when the expected input is short. For longer input, use the auto grow or multiline options.
 
 ```jsx
-<TextField label="Store name" onChange={(value, id) => {console.log(id, value)}} />
+class TextFieldExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Store name"
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 ```
 
 ### Number field
@@ -197,7 +215,26 @@ Use to allow merchants to provide text input when the expected input is short. F
 Use when input text should be a number.
 
 ```jsx
-<TextField label="Quantity" type="number" value="1" onChange={(value, id) => {console.log(id, value)}} />
+class NumberFieldExample extends React.Component {
+  state = {
+    value: '1'
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Quantity"
+        type="number"
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 ```
 
 ### Email field
@@ -205,7 +242,26 @@ Use when input text should be a number.
 Use when the text input should be an email address.
 
 ```jsx
-<TextField label="Email" type="email" onChange={(value, id) => {console.log(id, value)}} />
+class EmailFieldExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Email"
+        type="email"
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 ```
 
 ### Multiline text field
@@ -213,7 +269,26 @@ Use when the text input should be an email address.
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
 
 ```jsx
-<TextField label="Shipping address" multiline onChange={(value, id) => {console.log(id, value)}} />
+class MultilineFieldExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Shipping address"
+        value={this.state.value}
+        onChange={this.handleChange}
+        multiline
+      />
+    );
+  }
+}
 ```
 
 ### Text field with hidden label
@@ -221,27 +296,50 @@ Use when the expected input could be more than one line. The field will automati
 Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
 
 ```jsx
-<FormLayout>
-  <ChoiceList
-    title="Gift card auto-expiration"
-    choices={[
-      {label: 'Gift cards never expire', value: 'no'},
-      {label: 'Gift cards expire', value: 'yes'},
-    ]}
-    selected={['yes']}
-  />
-  <TextField
-    label="Gift cards expire after"
-    labelHidden
-    value="12"
-    onChange={(value, id) => {console.log(id, value)}}
-    connectedRight={
-      <Select
-        label="Unit of time"
-        labelHidden
-        options={['months after purchase']} />
-    } />
-</FormLayout>
+class HiddenLabelExample extends React.Component {
+  state = {
+    value: '12',
+    selected: 'yes',
+  };
+
+  handleValueChange = (value) => {
+    this.setState({value});
+  }
+
+  handleSelectionChange = (selected) => {
+    this.setState({selected: selected[0]});
+  }
+
+  render() {
+    return (
+      <FormLayout>
+        <ChoiceList
+          title="Gift card auto-expiration"
+          choices={[
+            {label: 'Gift cards never expire', value: 'no'},
+            {label: 'Gift cards expire', value: 'yes'},
+          ]}
+          selected={[this.state.selected]}
+          onChange={this.handleSelectionChange}
+        />
+        <TextField
+          label="Gift cards expire after"
+          type="number"
+          labelHidden
+          value={this.state.value}
+          disabled={this.state.selected === 'no'}
+          onChange={this.handleValueChange}
+          connectedRight={
+            <Select
+              label="Unit of time"
+              labelHidden
+              options={['months after purchase']} />
+          }
+        />
+      </FormLayout>
+    );
+  }
+}
 ```
 
 ### Text field with label action
@@ -249,7 +347,26 @@ Use to visually hide the label when the text field’s purpose is clear from con
 Use when an optional, secondary action is closely associated with a text field. For example, on a field for entering a customs tariff code, a label action might be to look up the appropriate code from a table.
 
 ```jsx
-<TextField label="Tariff code" labelAction={{content: 'Look up codes'}}  onChange={(value, id) => {console.log(id, value)}} />
+class LabelActionExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Tariff code"
+        value={this.state.value}
+        onChange={this.handleChange}
+        labelAction={{content: 'Look up codes'}}
+      />
+    );
+  }
+}
 ```
 
 ### Text field with placeholder text
@@ -257,7 +374,26 @@ Use when an optional, secondary action is closely associated with a text field. 
 Use to provide a short, non-essential hint about the expected input. Placeholder text is low-contrast, so don’t rely on it for important information.
 
 ```jsx
-<TextField label="Zone name" placeholder="e.g. North America, Europe" onChange={(value, id) => {console.log(id, value)}} />
+class PlaceholderExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Shipping zone name"
+        value={this.state.value}
+        onChange={this.handleChange}
+        placeholder="e.g. North America, Europe"
+      />
+    );
+  }
+}
 ```
 
 ### Text field with help text
@@ -265,7 +401,27 @@ Use to provide a short, non-essential hint about the expected input. Placeholder
 Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and the merchant doesn’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
 
 ```jsx
-<TextField label="Account email" type="email" onChange={(value, id) => {console.log(id, value)}} helpText="We’ll use this address if we need to contact you about your account." />
+class HelpTextExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Account email"
+        type="email"
+        value={this.state.value}
+        onChange={this.handleChange}
+        helpText="We’ll use this address if we need to contact you about your account."
+      />
+    );
+  }
+}
 ```
 
 ### Text field with prefix or suffix
@@ -273,7 +429,27 @@ Use to show short instructional content below the text field. Use especially whe
 Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (e.g. “$”, “¥”, “£”). Use suffix for things like units of measure (e.g. “in”, “cm”).
 
 ```jsx
-<TextField label="Price" type="number" prefix="$" onChange={(value, id) => {console.log(id, value)}} />
+class PrefixExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Price"
+        type="number"
+        value={this.state.value}
+        onChange={this.handleChange}
+        prefix="$"
+      />
+    );
+  }
+}
 ```
 
 ### Text field with connected fields
@@ -281,14 +457,29 @@ Use as a special form of help text that works best inline. Use a prefix for thin
 Use when a text field and several related fields make up a logical unit. If inputting weight as a number and a separate unit of measurement, use a text field with a <select dropdown menu> (e.g. “kg”, “lb”) as a connected field.
 
 ```jsx
-<TextField
-  label="Weight"
-  type="number"
-  onChange={(value, id) => {console.log(id, value)}}
-  connectedRight={
-    <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+class ConnectedFieldsExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
   }
-  />
+
+  render() {
+    return (
+      <TextField
+        label="Weight"
+        type="number"
+        value={this.state.value}
+        onChange={this.handleChange}
+        connectedRight={
+          <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+        }
+      />
+    );
+  }
+}
 ```
 
 ### Text field with validation errors
@@ -296,7 +487,26 @@ Use when a text field and several related fields make up a logical unit. If inpu
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
 
 ```jsx
-<TextField label="Store name" error="Store name is required" onChange={(value, id) => {console.log(id, value)}} />
+class ValidationErrorExample extends React.Component {
+  state = {
+    value: ''
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <TextField
+        label="Store name"
+        value={this.state.value}
+        onChange={this.handleChange}
+        error="Store name is required"
+      />
+    );
+  }
+}
 ```
 
 ### Disabled text field
@@ -304,7 +514,7 @@ Use to let merchants know if their input is valid or if there’s an error. When
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
 ```jsx
-<TextField label="Store name" disabled onChange={(value, id) => {console.log(id, value)}} />
+<TextField label="Store name" disabled />
 ```
 
 ---
