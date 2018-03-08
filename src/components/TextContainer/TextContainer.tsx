@@ -7,7 +7,7 @@ export type Spacing = 'tight' | 'loose';
 export interface Props {
   /** The amount of vertical spacing children will get between them */
   spacing?: Spacing,
-  /** The child elements to render in the text container. */
+  /** The content to render in the text container. */
   children?: React.ReactNode,
 }
 

@@ -5,13 +5,21 @@ import {DisableableAction} from '../../types';
 export type Width = 'large' | 'fullwidth';
 
 export interface Props {
+  /** The URL that will be loaded as the content of the modal */
   src: string,
+  /** Whether the modal is open or not */
   open: boolean,
+  /** The content for the title of the modal */
   title?: string,
+  /** Controls the width of the modal (in pixels) */
   width?: Width,
+  /** Controls the height of the modal (in pixels) */
   height?: number,
+  /** Primary action for the modal */
   primaryAction?: DisableableAction,
+  /** Collection of secondary action for the modal */
   secondaryActions?: DisableableAction[],
+  /** Callback when the modal is closed */
   onClose(): void,
 }
 

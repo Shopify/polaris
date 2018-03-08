@@ -8,7 +8,7 @@ export type Size = 'small' | 'medium' | 'large';
 export interface Props {
   /** Size of thumbnail */
   size?: Size,
-  /** URL for the avatar image */
+  /** URL for the image */
   source: string,
   /** Alt text for the thumbnail image */
   alt: string,

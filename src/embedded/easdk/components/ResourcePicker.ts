@@ -6,12 +6,19 @@ export interface SelectionResult {
   collections?: object[],
 }
 export interface OpenOptions {
+  /** The title of the picker */
   title?: string,
+  /** Whether to allow the merchant to select products */
   products?: boolean,
+  /** Whether to allow the merchant to select collections */
   collections?: boolean,
+  /** Whether multiple selections are allowed */
   allowMultiple?: boolean,
+  /** Whether to display resources that are not published (hidden) in the context of a channel. Defaults to true. */
   showHidden?: boolean,
+  /** Callback when the picker is closed without selection */
   onCancel?(): void,
+  /** Callback after a selection was made */
   onSelection?(resources: SelectionResult): void,
 }
 

@@ -11,11 +11,11 @@ import TextStyle from '../TextStyle';
 import * as styles from './AccountConnection.scss';
 
 export interface Props {
-  /** Element containing title */
+  /** Content to display as title */
   title?: React.ReactNode,
-  /** Element containing details */
+  /** Content to display as additional details */
   details?: React.ReactNode,
-  /** Element containing terms of service */
+  /** Content to display as terms of service */
   termsOfService?: React.ReactNode,
   /** The name of the service */
   accountName?: string,

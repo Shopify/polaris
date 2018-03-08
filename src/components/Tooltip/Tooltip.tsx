@@ -9,7 +9,7 @@ import TooltipOverlay from './TooltipOverlay';
 import * as styles from './Tooltip.scss';
 
 export interface Props {
-  /** The children that activate the tooltip */
+  /** The element that will activate to tooltip */
   children?: React.ReactNode,
   /** The content to display within the tooltip */
   content: string,
