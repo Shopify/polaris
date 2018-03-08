@@ -61,12 +61,6 @@ with no text
 Follow the [content guidelines](/components/actions/button#content-guidelines)
 outlined in the button component.
 
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| segmented | boolean | Join buttons as segmented group |
-| children | React.ReactElement | Button components |
-
 ## Examples
 
 ### Default button group

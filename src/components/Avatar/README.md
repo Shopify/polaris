@@ -63,15 +63,6 @@ image:
 * `alt="Business’s name"` if the avatar represents a business
 * `alt=""` if the name of the person/business appears next to the avatar as text
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| size | enum['small', 'medium', 'large'] | Size of avatar |
-| name | string | The name of the person |
-| initials | string | Initials of person to display |
-| customer | boolean | Whether the avatar is for a customer |
-| source | string | URL of the avatar image |
-| accessibilityLabel | string | Accessible label for the avatar image |
-
 ## Examples
 
 ### Default avatar

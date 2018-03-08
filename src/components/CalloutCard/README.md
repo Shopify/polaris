@@ -156,15 +156,6 @@ Add menu item
 Add a menu item
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The content to display inside the callout card. |
-| title | string | The title of the card |
-| illustration | string | URL to the card illustration |
-| primaryAction | Action | Primary action for the card |
-| secondaryAction | Action | Secondary action for the card |
-
-
 ## Examples
 
 ### Default callout card

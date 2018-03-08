@@ -53,12 +53,6 @@ Visually hidden should:
 
 There are no content elements specific to this component. Follow any guidelines appropriate to the element being hidden.
 
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The content to be hidden visually |
-
-
 ## Examples
 
 ### Visually hidden heading

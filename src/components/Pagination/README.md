@@ -55,18 +55,6 @@ Pagination should:
 
 There are no editable content elements that are specific to the pagination component.
 
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| plain | boolean | A more subdued control for use in headers |
-| nextURL | string | The URL of the next page |
-| previousURL | string | The URL of the previous page |
-| hasNext | boolean | Whether there is a next page to show |
-| hasPrevious | boolean | Whether there is a previous page to show |
-| onNext | function | Callback when next button is clicked |
-| onPrevious | function | Callback when previous button is clicked |
-
-
 ## Examples
 
 ### Default pagination

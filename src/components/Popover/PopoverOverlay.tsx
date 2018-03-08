@@ -26,14 +26,14 @@ export enum CloseSource {
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 export interface Props {
-  id: string,
+  children?: React.ReactNode,
+  fullWidth?: boolean,
+  preferredPosition?: PreferredPosition,
   active: boolean,
+  id: string,
   activator: HTMLElement,
   preventAutofocus?: boolean,
   sectioned?: boolean,
-  fullWidth?: boolean,
-  preferredPosition?: PreferredPosition,
-  children?: React.ReactNode,
   onClose(source: CloseSource): void,
 }
 

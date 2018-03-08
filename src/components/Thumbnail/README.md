@@ -52,13 +52,6 @@ For thumbnails, we recommend using a format that describes what will show in the
 * An empty `alt=""` attribute ignores the image in assistive technologies such as screen readers, and may be used on decorative thumbnails
 
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| size | enum['small', 'medium', 'large'] | Size of thumbnail |
-| source* | string | URL for the avatar image |
-| alt* | string | Alt text for the thumbnail image |
-
-
 ## Examples
 
 ### Default thumbnail

@@ -18,17 +18,6 @@ This component only works within embedded apps. Read the [EASDK getting started 
 
 ---
 
-## Properties
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| apiKey | string | The API key for your application from the Partner dashboard |
-| shopOrigin | string | The current shop’s origin, provided in the session from the Shopify API |
-| forceRedirect | boolean | Forces a redirect to the relative admin path when not rendered in an iframe |
-| debug | boolean | Prints logs of each message passed through the EASDK |
-
----
-
 ## Examples
 
 ### Initializing

@@ -11,8 +11,11 @@ export type Size = 'small' | 'large';
 const COLORS_FOR_LARGE_SPINNER = ['teal', 'inkLightest'];
 
 export interface Props {
-  size?: Size,
+  /** Color of spinner */
   color?: Color,
+  /** Size of spinner */
+  size?: Size,
+  /** Accessible label for the spinner */
   accessibilityLabel?: string,
 }
 

@@ -41,11 +41,6 @@ Progress bar components should:
 
 There are no content elements that are specific to progress bar.
 
-| Prop  | Type   | Description | Default |
-| ---   | ---    | ---     | ---     |
-| progress | number | the progression of certain tasks |
-| size  | enum['small', 'medium', 'large'] | Size of progressbar | medium
-
 ## Examples
 
 ### Default

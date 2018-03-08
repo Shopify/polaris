@@ -5,9 +5,12 @@ import Item from './Item';
 import * as styles from './ResourceList.scss';
 
 export interface Props {
+  /** Item data; each item is passed to renderItem */
   items: any[],
-  idForItem?(item: any, index: number): string | number,
+  /** Function to generate unique identifier for each item passed */
   renderItem(item: any, index: number): React.ReactNode,
+  /** Function to render each item */
+  idForItem?(item: any, index: number): string | number,
 }
 
 export default class ResourceList extends React.PureComponent<Props, never> {

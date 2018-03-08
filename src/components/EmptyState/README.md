@@ -140,16 +140,6 @@ Secondary actions are used for less important actions such as “Learn more” o
 “Close” buttons. They should follow all the other content rules outlined for
 primary buttons.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| heading | string | The empty state heading |
-| image | string | The image to use for small screens |
-| largeImage | string | The image to use for large screens |
-| imageContained | boolean | The image to use for large screens |
-| children | React.ReactNode | Elements to display inside empty state |
-| action | Action | Primary action for empty state |
-| secondaryAction | Action | Secondary action for empty state |
-
 ## Examples
 
 ### Default empty state

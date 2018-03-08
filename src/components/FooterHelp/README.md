@@ -73,10 +73,6 @@ Clearly labeled: Merchants should not need to guess where they’ll end up if th
 - Find out about [themes].
 <!-- end -->
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| children | React.ReactNode | The content to display inside the layout. |
-
 ## Examples
 
 ### Footer help box

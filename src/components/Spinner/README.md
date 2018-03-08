@@ -25,12 +25,6 @@ When a merchant completes an action on a page like clicking a button, it’s unc
 
 Spinner notifies the merchant that the request has been received and is being processed.
 
-| Prop  | Type   | Description | Default |
-| ---   | ---    | ---     | ---     |
-| color | enum['teal', 'inkLightest', 'white'] | Color of spinner | teal
-| size  | enum['small', 'large'] | Size of spinner | large
-| accessibilityLabel | string | Accessible label for the spinner |
-
 ## Examples
 
 ### Default spinner

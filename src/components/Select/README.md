@@ -92,24 +92,6 @@ make a selection
 ### Placeholder option
 The placeholder option should be the text “Select”.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| options | Option[] | List of options to choose from |
-| groups | (Group or Option)[] | List of option groups to choose from |
-| label | string | Label for the select |
-| labelAction | Action | Adds an action to the label |
-| labelHidden | boolean | Visually hide the label |
-| disabled | boolean | Disable input |
-| helpText | string or React.ReactNode | Additional text to aide in use |
-| placeholder | string | Example text to display as placeholder |
-| id | string | ID for form input |
-| name | string | Name for form input |
-| value | string | Value for form input |
-| error | Error | Display an error state |
-| onChange | function(newValue: string, id: string) | Callback when selection is changed |
-| onFocus | function() | Callback when select is focussed |
-| onBlur | function() | Callback when focus is removed |
-
 ## Examples
 
 ### Default select

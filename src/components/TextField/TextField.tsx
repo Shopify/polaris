@@ -19,35 +19,65 @@ export interface State {
 }
 
 export interface Props {
+  /** Text to display before value */
   prefix?: React.ReactNode,
+  /** Text to display after value */
   suffix?: React.ReactNode,
+  /** Hint text to display */
   placeholder?: string,
+  /** Initial value for the input */
   value?: string,
+  /** Additional hint text to display */
   helpText?: React.ReactNode,
+  /** Label for the input */
   label: string,
+  /** Adds an action to the label */
   labelAction?: Action,
+  /** Visually hide the label */
   labelHidden?: boolean,
+  /** Disable the input */
   disabled?: boolean,
+  /** Disable editing of the input */
   readOnly?: boolean,
+  /** Automatically focus the input */
   autoFocus?: boolean,
+  /** Force the focus state on the input */
   focused?: boolean,
+  /** Allow for multiple lines of input */
   multiline?: boolean | number,
+  /** Error to display beneath the label */
   error?: Error,
+  /** An element connected to the right of the input */
   connectedRight?: React.ReactNode,
+  /** An element connected to the left of the input */
   connectedLeft?: React.ReactNode,
+  /** Determine type of input */
   type?: Type,
+  /** Name of the input */
   name?: string,
+  /** ID for the input */
   id?: string,
+  /** Limit increment value for numeric and date-time inputs */
   step?: number,
+  /** Enable automatic completion by the browser */
   autoComplete?: boolean,
+  /** Mimics the behavior of the native HTML attribute, limiting how high the spinner can increment the value */
   max?: number,
+  /** Maximum character length for an input */
   maxLength?: number,
+  /** Mimics the behavior of the native HTML attribute, limiting how low the spinner can decrement the value */
   min?: number,
+  /** Minimum character length for an input */
   minLength?: number,
+  /** A regular expression to check the value against */
   pattern?: string,
+  /** Indicate whether value should have spelling checked */
   spellCheck?: boolean,
+  /** Callback when value is changed */
   onChange?(value: string, id: string): void,
+  /** Callback when input is focused */
   onFocus?(): void,
+  /** Callback when focus is removed */
   onBlur?(): void,
 }
 

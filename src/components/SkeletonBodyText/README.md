@@ -56,10 +56,6 @@ Use skeleton body text for static content or use placeholder content for dynamic
 
 <!-- end -->
 
-| Prop | Type | Description | Default |
-| ---- | ---- | ----------- | ------- |
-| lines | number | Number of lines to display | 3 |
-
 ## Examples
 
 ### Default paragraph

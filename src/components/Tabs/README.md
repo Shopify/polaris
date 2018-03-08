@@ -73,14 +73,6 @@ And for the customers section, the tabs are:
 
 Where possible, follow this pattern when writing tabs.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children* | React.ReactNode | Content to display in tabs |
-| selected* | number | Index of selected tab |
-| tabs* | TabDescriptor[] | List of tabs |
-| fitted | boolean | Fit tabs to container |
-| onSelect | function(selectedTabIndex: number) | Callback when tab is selected |
-
 ## Examples
 
 ### Default tabs

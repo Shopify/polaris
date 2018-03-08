@@ -48,12 +48,6 @@ transparent color
 ## Content guidelines
 There are no customizable content elements in the color picker component.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| color | Color | The currently selected color |
-| allowAlpha | boolean | Allow user to select an alpha value |
-| onChange | function(color: HSBAColor) | Callback when color is selected |
-
 ## Examples
 
 ### Default color picker

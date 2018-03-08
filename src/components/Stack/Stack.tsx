@@ -10,11 +10,17 @@ export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 export type Distribution = 'equalSpacing' | 'leading' | 'trailing' | 'center' | 'fill' | 'fillEvenly';
 
 export interface Props {
+  /** Elements to display inside stack */
   children?: any,
+  /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
   wrap?: boolean,
+  /** Stack the elements vertically */
   vertical?: boolean,
+  /** Adjust spacing between elements */
   spacing?: Spacing,
+  /** Adjust vertical alignment of elements */
   alignment?: Alignment,
+  /** Adjust horizontal alignment of elements */
   distribution?: Distribution,
 }
 

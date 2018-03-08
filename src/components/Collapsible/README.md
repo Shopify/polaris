@@ -57,11 +57,6 @@ an immediate action
 ## Content guidelines
 There are no content elements that are specific to the collapsible component. Follow the [content guidelines for cards](/components/structure/card) to make sure your headings, body content, links, and buttons are written consistently and clearly.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| open | boolean | Toggle whether the collapsible is expanded or not. |
-| children | React.ReactNode | The content to display inside the collapsible. |
-
 ## Examples
 
 ### Default collapsible component

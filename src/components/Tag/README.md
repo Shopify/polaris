@@ -43,11 +43,6 @@ Tags should:
 
 Tags are either automatically generated or are created by merchants. There are no specific content guidelines for creating them.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | string | Content to display in the tag |
-| onRemove | function() | Callback when tag is removed |
-
 ## Examples
 
 ### Default tag

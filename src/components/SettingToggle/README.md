@@ -77,12 +77,6 @@ say “Enable” to allow merchants to turn it on.
 - Turn off
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | Inner content of the card |
-| action | Action[] | Card header actions |
-| enabled | boolean | Sets toggle state to enabled or disabled |
-
 ## Examples
 
 ### Default setting toggle

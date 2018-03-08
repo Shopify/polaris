@@ -76,20 +76,6 @@ Radio button labels should:
 - Red;
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| label | string | Label for the radio button |
-| labelHidden | boolean | Visually hide the label |
-| checked | boolean | Radio button is selected |
-| helpText | string or React.ReactNode | Additional text to aid in use |
-| disabled | boolean | Disable input |
-| id | string | ID for form input |
-| name | string | Name for form input |
-| value | string | Value for form input |
-| onChange | function(newValue: boolean, id: string) | Callback when the radio button is toggled |
-| onFocus | function() | Callback when radio button is focussed |
-| onBlur | function() | Callback when focus is removed |
-
 ## Examples
 
 ### Default radio button

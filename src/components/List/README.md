@@ -85,11 +85,6 @@ When a line of text is placed next to an icon, it should:
 * Follow all the rules for list items
 * Elaborate on the meaning conveyed by the icon
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| type | enum['bullet', 'number'] | Type of list to display |
-| children | React.ReactNode | List item elements |
-
 ## Examples
 
 ### Bulleted list

@@ -97,21 +97,6 @@ I agree to the Terms of Service.
 You agree to the Terms of Service
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| label | string or React.ReactNode | Label for the checkbox |
-| labelHidden | boolean | Visually hide the label |
-| checked | boolean or 'indeterminate' | Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox |
-| helpText | string or React.ReactNode | Additional text to aide in use |
-| disabled | boolean | Disable input |
-| id | string | ID for form input |
-| name | string | Name for form input |
-| value | string | Value for form input |
-| error | string | Display an error message |
-| onChange | function(newValue: boolean, id: string) | Callback when checkbox is toggled |
-| onFocus | function() | Callback when checkbox is focussed |
-| onBlur | function() | Callback when focus is removed |
-
 ## Examples
 
 ### Default checkboxes

@@ -11,10 +11,15 @@ import Image from '../Image';
 import * as styles from './CalloutCard.scss';
 
 export interface Props {
-  title: string,
+  /** The content to display inside the callout card. */
   children?: React.ReactNode,
+  /** The title of the card */
+  title: string,
+  /** URL to the card illustration */
   illustration: string,
+  /** Primary action for the card */
   primaryAction: Action,
+  /** Secondary action for the card */
   secondaryAction?: Action,
 }
 

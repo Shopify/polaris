@@ -5,7 +5,9 @@ import * as styles from './TextContainer.scss';
 
 export type Spacing = 'tight' | 'loose';
 export interface Props {
+  /** The amount of vertical spacing children will get between them */
   spacing?: Spacing,
+  /** The content to render in the text container. */
   children?: React.ReactNode,
 }
 

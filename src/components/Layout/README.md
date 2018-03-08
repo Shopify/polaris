@@ -163,11 +163,6 @@ The descriptions in annotated sections should:
 - Not repeat the section title
 - Use complete sentences and regular punctuation
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| sectioned | boolean | Automatically adds sections to layout. |
-| children | React.ReactNode | The content to display inside the layout. |
-
 ## Examples
 
 ###  One-column layout
