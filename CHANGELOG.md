@@ -76,6 +76,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added `onClick` to `UnstyledLink` ([#832](https://github.com/Shopify/polaris-react/pull/832))
 * Added tests to `Link` ([#832](https://github.com/Shopify/polaris-react/pull/897))
 
+* Added tests for ColorPicker color utilities ([#905](https://github.com/Shopify/polaris-react/pull/905))
+
 ## 1.9.1 - 2017-12-21
 ### Documentation
 * Ammending changelog
