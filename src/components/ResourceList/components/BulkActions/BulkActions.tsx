@@ -162,7 +162,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
 
     const paginatedSelectAllActionMarkup = paginatedSelectAllAction
       ? (
-        <Button onClick={paginatedSelectAllAction.onAction} plain>
+        <Button onClick={paginatedSelectAllAction.onAction} plain testID="paginated-action">
           {paginatedSelectAllAction.content}
         </Button>
       )
@@ -177,14 +177,14 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
 
     const paginatedSelectAllMarkup = paginatedSelectAllActionMarkup || paginatedSelectAllTextMarkup
       ? (
-        <div className={styles.PaginatedSelectAll}>
+        <div className={styles.PaginatedSelectAll} testID="paginated-select-all">
           {paginatedSelectAllTextMarkup} {paginatedSelectAllActionMarkup}
         </div>
       ) : null;
 
     const cancelButtonClassName = classNames(styles.Button, styles['Button-cancel']);
     const cancelButton = (
-      <button className={cancelButtonClassName} onClick={this.setSelectMode.bind(this, false)}>
+      <button className={cancelButtonClassName} onClick={this.setSelectMode.bind(this, false)} testID="btn-cancel">
         Cancel
       </button>
     );
@@ -351,7 +351,8 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
     this.moreActionsNode = node;
   }
 
-  @autobind private setSelectMode(val: boolean) {
+  @autobind
+  private setSelectMode(val: boolean) {
     const {onSelectModeToggle} = this.props;
     if (onSelectModeToggle) {
       onSelectModeToggle(val);
