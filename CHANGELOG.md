@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!--## Unreleased-->
+### Bug fixes
+* Fixed disclosure centering on the tab component ([#1131](https://github.com/Shopify/polaris-react/pull/1131))
 
 ## 1.12.1 - 2018-03-06
 
