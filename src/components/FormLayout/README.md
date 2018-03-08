@@ -34,20 +34,6 @@ Use form layout to arrange fields within a form using standard spacing. By defau
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to fill out information across Shopify.
-
-### Solution
-
-The form layout makes forms easier to scan and complete because it stacks fields vertically on the interface.
-
----
-
 ## Best practices
 
 Forms should:

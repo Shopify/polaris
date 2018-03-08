@@ -26,22 +26,6 @@ business in the interface.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-A merchant may manage multiple businesses on Shopify or may have more than one
-person working in a store.
-
-### Solution
-
-Avatars visually clarify the business or the person being represented at
-various locations in the interface.
-
----
-
 ## Best practices
 
 Avatars should be one of 3 sizes:

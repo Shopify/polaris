@@ -30,20 +30,6 @@ sales channels section of Shopify.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may not know about Shopify features designed to help them run their business.
-
-### Solution
-
-Callout cards introduce features and give merchants a way to take action.
-
----
-
 ## Best practices
 
 Callout cards should:

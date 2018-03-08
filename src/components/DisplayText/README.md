@@ -32,22 +32,6 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-When all the typography on Shopify is the same size, it can be hard to tell a
-story visually.
-
-### Solution
-
-Display text can be used thoughtfully to create an impact and make a bold
-statement.
-
----
-
 ## Best Practices
 
 - Use when the primary goal of the page is communication rather than

@@ -22,20 +22,6 @@ Icons are used to visually communicate core parts of the product and available a
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants are pressed for time. They need visual ways to identify what’s happening in Shopify.
-
-### Solution
-
-Icons can alert merchants to changes in status and make the interface easier to scan.
-
----
-
 ## Best practices
 
 * Icons should be accessible: remember that people with people with limited vision may not be able to see icons. Review our [alternative text guidelines](/content/alternative-text) to make sure your use of icon works for all merchants.

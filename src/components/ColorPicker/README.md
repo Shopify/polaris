@@ -22,22 +22,6 @@ email templates for their shop.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants occasionally need to select a color and they need to be able to see
-a sample of available colors to make the best decision.
-
-### Solution
-
-The color picker component displays swatches of colors to make the selection
-process visual for merchants.
-
----
-
 ## Best practices
 
 * Use the alpha slider if you want to allow merchants to be able to select a

@@ -21,20 +21,6 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may need to choose more than one item from a list of options.
-
-### Solution
-
-A checkbox lets merchants choose one or many things from a list.
-
----
-
 ## Best practices
 
 Checkboxes should:

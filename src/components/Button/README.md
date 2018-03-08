@@ -29,20 +29,6 @@ click or tap. They can be used for any type of action, including navigation.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-An action needs to be completed by a merchant.
-
-### Solution
-
-The button component can be used to help merchants find and complete actions across Shopify.
-
----
-
 ## Best practices
 
 Buttons should:
