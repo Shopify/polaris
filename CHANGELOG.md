@@ -6,6 +6,11 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!--## Unreleased-->
 
+## 1.12.2 - 2018-03-08
+
+### Documentation
+* Moving property descriptions out of READMEs and into source files. ([#1125](https://github.com/Shopify/polaris-react/pull/1125))
+
 ## 1.12.1 - 2018-03-06
 
 ### Bug fixes
