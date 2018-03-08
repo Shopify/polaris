@@ -13,9 +13,7 @@ keywords:
 
 # Provider
 
-Provider enables the customizabilty of components. It works by sharing global settings down through the hierarchy of your application.
-
-For example, it enables internalization of strings in Polaris components. In the future, we'll update it with further functionality that will make components more customizable and powerful.
+Provider is a required component that enables the internationalization of strings in Polaris components by sharing global settings throughout the hierarchy of your application.
 
 ---
 
