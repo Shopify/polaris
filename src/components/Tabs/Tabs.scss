@@ -128,11 +128,10 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .DisclosureTab {
   display: none;
-  padding-top: (0.625 * spacing());
 }
 
 .DisclosureTab-visible {
-  display: block;
+  display: flex;
 }
 
 .DisclosureActivator {
