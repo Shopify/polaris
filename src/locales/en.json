@@ -4,7 +4,7 @@
   },
 
   "ResourceList": {
-    "sortingLabel": "Select how to sort",
+    "sortingLabel": "Sort by",
     "defaultItemSingular": "item",
     "defaultItemPlural": "items",
     "showing": "Showing {itemsCount} {resource}",

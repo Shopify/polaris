@@ -52,6 +52,9 @@
 }
 
 .SortWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
   position: relative;
 
@@ -68,6 +71,15 @@
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       padding-right: 0;
     }
+  }
+}
+
+.SortLabel {
+  margin-right: spacing(tight);
+  display: none;
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    display: block;
   }
 }
 
