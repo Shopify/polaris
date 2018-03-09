@@ -14,8 +14,6 @@ export {CloseSource};
 export interface Props {
   /** The content to display inside the popover */
   children?: React.ReactNode,
-  /** If true, the popover will stretch to the full width of it's activator */
-  fullWidth?: boolean,
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition,
   /** Show or hide the Popover */
