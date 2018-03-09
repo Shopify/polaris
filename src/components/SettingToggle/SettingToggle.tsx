@@ -6,9 +6,12 @@ import SettingAction from '../SettingAction';
 import {ComplexAction} from '../../types';
 
 export interface Props {
-  enabled?: boolean,
-  action?: ComplexAction,
+  /** Inner content of the card */
   children?: React.ReactNode,
+  /** Card header actions */
+  action?: ComplexAction,
+  /** Sets toggle state to enabled or disabled */
+  enabled?: boolean,
 }
 
 export default function SettingToggle({enabled, action, children}: Props) {

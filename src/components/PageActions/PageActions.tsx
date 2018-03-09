@@ -8,7 +8,9 @@ import {buttonsFrom} from '../Button';
 import * as styles from './PageActions.scss';
 
 export interface Props {
+  /** The primary action for the page */
   primaryAction?: DisableableAction & LoadableAction,
+  /** The secondary actions for the page */
   secondaryActions?: ComplexAction[],
 }
 

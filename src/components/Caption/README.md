@@ -64,11 +64,6 @@ Captions are primarily used in [data visualizations](/visuals/data-visualization
 * This is your recent activity
 <!-- end -->
 
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The content to use as a graph label or timestamp |
-
 ## Examples
 
 ### Default caption

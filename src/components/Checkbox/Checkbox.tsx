@@ -8,17 +8,29 @@ import Icon from '../Icon';
 import * as styles from './Checkbox.scss';
 
 export interface Props {
+  /** Label for the checkbox */
   label: React.ReactNode,
+  /** Visually hide the label */
   labelHidden?: boolean,
+  /** Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox */
   checked?: boolean | 'indeterminate',
+  /** Additional text to aide in use */
   helpText?: React.ReactNode,
-  id?: string,
-  name?: string,
-  value?: string,
-  error?: Error,
+  /** Disable input */
   disabled?: boolean,
+  /** ID for form input */
+  id?: string,
+  /** Name for form input */
+  name?: string,
+  /** Value for form input */
+  value?: string,
+  /** Display an error message */
+  error?: Error,
+  /** Callback when checkbox is toggled */
   onChange?(newChecked: boolean, id: string): void,
+  /** Callback when checkbox is focussed */
   onFocus?(): void,
+  /** Callback when focus is removed */
   onBlur?(): void,
 }
 

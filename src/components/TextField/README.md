@@ -149,39 +149,6 @@ Store name is required
 You didn’t enter a store name.
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| prefix | React.ReactNode | Text to display before value |
-| suffix | React.ReactNode | Text to display after value |
-| placeholder | string | Hint text to display |
-| value | string | Initial value for the input |
-| helpText | React.ReactNode | Additional hint text to display |
-| label | string | Label for the input |
-| labelAction | Action | Adds an action to the label |
-| labelHidden | boolean | Visually hide the label |
-| disabled | boolean | Disable the input |
-| readOnly | boolean | Disable editing of the input |
-| autoFocus | boolean | Automatically focus the input |
-| focused | boolean | Force the focus state on the input |
-| multiline | boolean or number | Allow for multiple lines of input |
-| error | boolean or string | Error to display beneath the label |
-| connectedRight | React.ReactNode | An element connected to the right of the input |
-| connectedLeft | React.ReactNode | An element connected to the left of the input |
-| type | enum['text', 'email', 'number', 'password', 'search', 'tel', 'url', 'date', 'datetime-local', 'month', 'time', 'week', 'currency'] | Determine type of input |
-| name | string | Name of the input |
-| id | string | ID for the input |
-| step | number | Limit increment value for numeric and date-time inputs |
-| autoComplete | boolean | Enable automatic completion by the browser |
-| max | number | Mimics the behavior of the native HTML attribute, limiting how high the spinner can increment the value |
-| maxLength | number | Maximum character length for an input |
-| min | number | Mimics the behavior of the native HTML attribute, limiting how low the spinner can decrement the value |
-| minLength | number | Minimum character length for an input|
-| pattern | string | A regular expression to check the value against |
-| spellCheck | boolean | Indicate whether value should have spelling checked |
-| onChange* | function(value: string, id: string) | Callback when value is changed |
-| onFocus | function() | Callback when input is focused |
-| onBlur | function() | Callback when focus is removed |
-
 ## Examples
 
 ### Default text field

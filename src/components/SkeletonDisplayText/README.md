@@ -63,10 +63,6 @@ Show skeleton display text for dynamic page titles.
 
 <!-- end -->
 
-| Prop | Type | Description | Default |
-| ---- | ---- | ----------- | ------- |
-| size | enum['small', 'medium', 'large', 'extraLarge'] | Size of the text | medium
-
 ## Examples
 
 ### Medium and large display text

@@ -5,7 +5,9 @@ import Item from './Item';
 import * as styles from './ButtonGroup.scss';
 
 export interface Props {
+  /** Join buttons as segmented group */
   segmented?: boolean,
+  /** Button components */
   children?: React.ReactNode,
 }
 

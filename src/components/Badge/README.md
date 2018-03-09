@@ -81,12 +81,6 @@ The available badges for fulfillment status are:
 Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the status you need.
 <!-- end -->
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| children | string | The content to display inside the badge. |
-| status | enum['success', 'info', 'attention', 'warning'] | Set the color of the badge for the given status. |
-| progress | enum['incomplete', 'partiallyComplete', 'complete'] | Render a pip showing the progress of a given task. |
-
 ## Examples
 
 ### Default badge

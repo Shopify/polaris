@@ -156,16 +156,6 @@ Every item in a choice list should:
 
 If your list contains helper text, only the description below the list item should contain punctuation.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| title | string | Label for list of choices |
-| choices* | Choice[] | Collection of choices |
-| selected* | string[] | Collection of selected choices |
-| name | string | Name for form input |
-| allowMultiple | boolean | Allow merchants to select multiple options at once |
-| titleHidden | boolean | Toggles display of the title |
-| onChange | function(selected: string[], name: string) | Callback when the selected choices change |
-
 ## Examples
 
 ### Single choice list

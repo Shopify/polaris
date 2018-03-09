@@ -2,13 +2,21 @@ import * as React from 'react';
 import {withEASDK, WithEASDKProps} from '../easdk';
 
 export interface Props {
+  /** Whether the alert is open or not */
   open: boolean,
+  /** The content to display inside the alert */
   children?: string,
+  /** The alert title */
   title?: string,
+  /** For confirming a destructive or dangerous action */
   destructive?: boolean,
+  /** The content of the confirmation button */
   confirmContent: string,
+  /** The content of the cancel button */
   cancelContent?: string,
+  /** Callback when the confirmation button is clicked */
   onCancel?(): void,
+  /** Callback when the alert is closed, or when the cancel button is clicked */
   onConfirm(): void,
 }
 

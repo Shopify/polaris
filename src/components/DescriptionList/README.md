@@ -97,10 +97,6 @@ products added and the customer’s details.
 
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| items | Item[] | Collection of items for list |
-
 ## Examples
 
 ### Default description list

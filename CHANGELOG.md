@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!--## Unreleased-->
+### Bug fixes
+* Fixed disclosure centering on the tab component ([#1131](https://github.com/Shopify/polaris-react/pull/1131))
+
+## 1.12.2 - 2018-03-08
+
+### Documentation
+* Moving property descriptions out of READMEs and into source files. ([#1125](https://github.com/Shopify/polaris-react/pull/1125))
 
 ## 1.12.1 - 2018-03-06
 
@@ -70,6 +77,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Fixed an issue where a hard-coded path would cause the build to fail on Windows ([#833](https://github.com/Shopify/polaris-react/pull/833)) (thanks to [@Invader444](https://github.com/Invader444) for the [original issue](https://github.com/Shopify/polaris/issues/245) and [pull request](https://github.com/Shopify/polaris/pull/246))
 * Added `onClick` to `UnstyledLink` ([#832](https://github.com/Shopify/polaris-react/pull/832))
 * Added tests to `Link` ([#832](https://github.com/Shopify/polaris-react/pull/897))
+
+* Added tests for ColorPicker color utilities ([#905](https://github.com/Shopify/polaris-react/pull/905))
 
 ## 1.9.1 - 2017-12-21
 ### Documentation

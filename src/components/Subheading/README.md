@@ -68,11 +68,6 @@ beneath them
 
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| element | string | 	The element name to use for the subheading |
-| children | string | Text to display in subheading |
-
 ## Examples
 
 ### Subheading in a card

@@ -12,25 +12,45 @@ import * as styles from './Button.scss';
 export type Size = 'slim' | 'large';
 
 export interface Props {
-  url?: string,
+  /** The content to display inside the button */
   children?: string,
-  size?: Size,
-  fullWidth?: boolean,
+  /** A destination to link to, rendered in the href attribute of a link */
+  url?: string,
+  /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean,
-  outline?: boolean,
+  /** Indicates a dangerous or potentially negative action */
   destructive?: boolean,
+  /** Disables the button, disallowing merchant interaction */
   disabled?: boolean,
+  /** Replaces button text with a spinner while a background action is being performed */
   loading?: boolean,
-  plain?: boolean,
-  external?: boolean,
-  submit?: boolean,
+  /** Changes the size of the button, giving it more or less padding */
+  size?: Size,
+  /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
+  outline?: boolean,
+  /** Allows the button to grow to the width of its container */
+  fullWidth?: boolean,
+  /** Displays the button with a disclosure icon */
   disclosure?: boolean,
-  accessibilityLabel?: string,
-  ariaControls?: string,
-  ariaExpanded?: boolean,
+  /** Allows the button to submit a form */
+  submit?: boolean,
+  /** Renders a button that looks like a link */
+  plain?: boolean,
+  /** Forces url to open in a new tab */
+  external?: boolean,
+  /** Icon to display to the left of the button content */
   icon?: IconProps['source'],
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string,
+  /** Id of the element the button controls */
+  ariaControls?: string,
+  /** Tells screen reader the controlled element is expanded */
+  ariaExpanded?: boolean,
+  /** Callback when clicked */
   onClick?(): void,
+  /** Callback when button becomes focussed */
   onFocus?(): void,
+  /** Callback when focus leaves button */
   onBlur?(): void,
 }
 

@@ -9,11 +9,17 @@ import TooltipOverlay from './TooltipOverlay';
 import * as styles from './Tooltip.scss';
 
 export interface Props {
+  /** The element that will activate to tooltip */
   children?: React.ReactNode,
+  /** The content to display within the tooltip */
   content: string,
-  active?: boolean,
+  /** Display tooltip with a light background */
   light?: boolean,
+  /** Toggle whether the tooltip is visible */
+  active?: boolean,
+  /** The direction the tooltip tries to display */
   preferredPosition?: PreferredPosition,
+  /** The element type to wrap the activator in */
   activatorWrapper?: string,
 }
 

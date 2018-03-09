@@ -76,13 +76,6 @@ Orders
 To orders section
 <!-- end -->
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| url | string | The url to link to. |
-| children | string or React.ReactNode | The content to display inside link |
-| external | boolean | Use for a links that open a different site |
-| onClick | function() | Callback when a link is clicked |
-
 ## Examples
 
 ###  Default links

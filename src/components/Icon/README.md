@@ -53,13 +53,6 @@ Alt text should be written in [plain language](/content/grammar-and-mechanics#pl
 - Write in the [active voice](/content/grammar-and-mechanics#active-and-passive-voice)
 - Use words and language that our merchants use (avoid technical jargon)
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| source | SVGSource | The SVG contents to display in the icon |
-| color | Color | Sets the color for the SVG fill |
-| backdrop | boolean | Show a backdrop behind the icon |
-| accessibilityLabel | string | Descriptive text to be read to screenreaders |
-
 ## Examples
 
 ### Default icon

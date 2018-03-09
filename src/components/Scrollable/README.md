@@ -92,15 +92,6 @@ first.
 * Clear: use the verb “need” to help merchants understand when they’re
 required to do something.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | Content to display in scrollable area |
-| vertical | boolean | Scroll content vertically |
-| horizontal | boolean | Scroll content horizontally |
-| shadow | boolean | Add a shadow when content is scrollable |
-| hint | boolean | Slightly hints content upon mounting when scrollable |
-| nodeRef | function(node: HTMLElement) | Callback that passes a reference to the scrollable node |
-
 ## Examples
 
 ### Default scrollable container

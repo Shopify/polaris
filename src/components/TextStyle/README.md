@@ -48,11 +48,6 @@ Text style should be:
 * Strong for input fields, or for a row total in a price table
 * Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| variation | enum['subdued', 'strong', 'positive', 'negative'] | Give text additional visual meaning |
-| children | string or React.ReactNode | The content that should get the intended styling |
-
 ## Examples
 
 ### Subdued textstyle

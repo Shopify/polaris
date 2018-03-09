@@ -12,15 +12,27 @@ import Section from './Section';
 export {CloseSource};
 
 export interface Props {
-  active: boolean,
-  activator: React.ReactElement<any>,
+  /** The content to display inside the popover */
   children?: React.ReactNode,
-  preferredPosition?: PreferredPosition,
-  activatorWrapper?: string,
-  preventAutofocus?: boolean,
-  sectioned?: boolean,
+  /** If true, the popover will stretch to the full width of it's activator */
   fullWidth?: boolean,
+  /** The preferred direction to open the popover */
+  preferredPosition?: PreferredPosition,
+  /** Show or hide the Popover */
+  active: boolean,
+  /** The element to activate the Popover */
+  activator: React.ReactElement<any>,
+  /** The element type to wrap the activator with */
+  activatorWrapper?: string,
+  /** Prevent automatic focus of the first field on activation */
+  preventAutofocus?: boolean,
+  /** Automatically add wrap content in a section */
+  sectioned?: boolean,
+  /** Allow popover to stretch to the full width of it's activator */
+  fullWidth?: boolean,
+  /** Allow popover to stretch to fit content vertically */
   fullHeight?: boolean,
+  /** Callback when popover is closed */
   onClose(source: CloseSource): void,
 }
 

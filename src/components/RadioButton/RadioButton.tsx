@@ -4,16 +4,27 @@ import Choice, {helpTextID} from '../Choice';
 import * as styles from './RadioButton.scss';
 
 export interface Props {
+  /** Label for the radio button */
   label: string,
+  /** Visually hide the label */
   labelHidden?: boolean,
-  helpText?: React.ReactNode,
+  /** Radio button is selected */
   checked?: boolean,
-  id?: string,
-  name?: string,
-  value?: string,
+  /** Additional text to aid in use */
+  helpText?: React.ReactNode,
+  /** Disable input */
   disabled?: boolean,
+  /** ID for form input */
+  id?: string,
+  /** Name for form input */
+  name?: string,
+  /** Value for form input */
+  value?: string,
+  /** Callback when the radio button is toggled */
   onChange?(newValue: boolean, id: string): void,
+  /** Callback when radio button is focussed */
   onFocus?(): void,
+  /** Callback when focus is removed */
   onBlur?(): void,
 }
 

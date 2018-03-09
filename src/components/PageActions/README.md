@@ -82,11 +82,6 @@ Add menu item
 Add a menu item
 <!-- end -->
 
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| primaryAction | DisableableAction | The primary action for the page |
-| secondaryActions | ComplexAction[] | The secondary actions for the page |
-
 ## Examples
 
 ### Default page actions

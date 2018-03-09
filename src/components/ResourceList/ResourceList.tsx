@@ -23,6 +23,7 @@ export interface State {
 }
 
 export interface Props {
+  /** Item data; each item is passed to renderItem */
   items: any[],
   filterControl?: React.ReactNode,
   resourceName?: {

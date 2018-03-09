@@ -3,6 +3,7 @@ import {withEASDK, WithEASDKProps} from '../easdk';
 import {OpenOptions} from '../easdk/components/ResourcePicker';
 
 export interface Props extends OpenOptions {
+  /** Whether the picker is open or not */
   open: boolean,
 }
 

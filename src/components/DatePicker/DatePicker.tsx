@@ -25,14 +25,23 @@ export {
 };
 
 export interface Props {
+  /** The selected date or range of dates */
   selected?: Date | Range,
+  /** The month to show */
   month: Months,
+  /** The year to show */
   year: Year,
+  /** Allow a range of dates to be selected */
   allowRange?: boolean,
+  /** Disable selecting dates before this. */
   disableDatesBefore?: Date,
+  /** Disable selecting dates after this. */
   disableDatesAfter?: Date,
+  /** The selection can span multiple months */
   multiMonth?: boolean,
+  /** Callback when date is selected. */
   onChange?(date: Range): void,
+  /** Callback when month is changed. */
   onMonthChange?(month: Months, year: Year): void,
 }
 
