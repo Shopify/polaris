@@ -26,20 +26,30 @@ export interface Props {
   /** Item data; each item is passed to renderItem */
   items: any[],
   filterControl?: React.ReactNode,
+  /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string,
     plural: string,
   },
+  /** Up to 2 bulk actions that will be given more prominence */
   promotedBulkActions?: BulkActionsProps['promotedActions'],
+  /** Actions available on the currently selected items */
   bulkActions?: BulkActionsProps['actions'],
+  /** Collection of IDs for the currently selected items */
   selectedItems?: SelectedItems,
   persistActions?: boolean,
   hasMoreItems?: boolean,
+  /** Current value of the sort control */
   sortValue?: string,
+  /** Collection of sort options to choose from */
   sortOptions?: Option[],
+  /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void,
+  /** Callback when selection is changed */
   onSelectionChange?(selectedItems: SelectedItems): void,
+  /** Function to render each list item	 */
   renderItem(item: any, id: string): React.ReactNode,
+  /** Function to customize the unique ID for each item */
   idForItem?(item: any, index: number): string,
 }
 
