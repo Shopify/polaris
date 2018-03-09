@@ -8,13 +8,14 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 * Fixed disclosure centering on the tab component ([#1131](https://github.com/Shopify/polaris-react/pull/1131))
 
-## 1.12.2 - 2018-03-08
+### Documentation
+* Removed purpose section from component READMEs ([#1134](https://github.com/Shopify/polaris-react/pull/1134))
 
+## 1.12.2 - 2018-03-08
 ### Documentation
 * Moving property descriptions out of READMEs and into source files. ([#1125](https://github.com/Shopify/polaris-react/pull/1125))
 
 ## 1.12.1 - 2018-03-06
-
 ### Bug fixes
 * Fixed server-side environments ([#1120](https://github.com/Shopify/polaris-react/pull/1120))
 
