@@ -208,18 +208,6 @@ Column content should:
 
 Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 in others.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-|columnContentTypes*| string[] | Array of enum values, either numeric or text, which maps to column content alignment. Numeric content aligns right and text content aligns left. |
-| headings* | string[] | Array of strings, which maps to table heading cells for each of the table’s columns. |
-| totals | TableData[] | Array of strings, numbers, or React.ReactNodes which maps to the cells of the totals row in the table header for each column. Use empty strings as placeholders for columns with no total. |
-| rows* | TableData[][]|  Array of arrays, which maps to table body rows containing the React.ReactNode, string, or number content of each table body cell. |
-| footerContent | TableData | React.ReactNode, string, or number content centered in the full width cell of the table footer row. |
-| sortable | boolean[] | Array of booleans that maps to whether sorting the table by each column is enabled or not. Defaults to false for all columns. |
-| defaultSortDirection | enum['ascending', 'descending'] | The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.|
-| initialSortColumnIndex | number | The index of the heading that the table rows are initially sorted by. Defaults to the first column. |
-| onSort | function(headingIndex: number, direction: string | Callback fired on click or keypress of sortable column heading. The direction string parameter value is either ascending or descending. |
-
 ---
 ## Related components
 

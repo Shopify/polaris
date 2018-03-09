@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
+import {mountWithProvider as mount} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
-import DataTable, {Props, ColumnContentType} from '../DataTable';
+import DataTable, {CombinedProps as Props, ColumnContentType} from '../DataTable';
 import Cell from '../Cell';
 
 interface DataTableTestProps {

@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
+import {withProvider, WithProviderProps} from '../../components/Provider';
 import Icon, {IconSource} from '../Icon';
 import {SortDirection, ColumnContentType} from './DataTable';
 
 import * as styles from './DataTable.scss';
+
+export type CombinedProps = Props & WithProviderProps;
 
 export interface Props {
   testID?: string,
@@ -21,7 +24,7 @@ export interface Props {
   onSort?(): void,
 }
 
-export default function Cell({
+function Cell({
   content,
   contentType,
   presentational,
@@ -32,8 +35,9 @@ export default function Cell({
   sortable,
   sortDirection,
   defaultSortDirection,
+  polaris: {intl: {translate}},
   onSort,
-}: Props) {
+}: CombinedProps) {
 
   const numeric = contentType === 'numeric';
 
@@ -66,7 +70,10 @@ export default function Cell({
 
   if (sortable) {
     // i18n string variable
-    sortAccessibilityLabel = `sort by ${(content as string).toLowerCase()}`;
+    sortAccessibilityLabel = translate(
+      'Polaris.DataTable.sortAccessibilityLabel',
+      {content: (content as string).toLowerCase()},
+    );
 
     if (sorted) {
       const direction = sortDirection === 'ascending' ? 'Up' : 'Down';
@@ -125,3 +132,5 @@ function onKeyDownEnter(sortFunc?: () => void) {
     if (keyCode === 13 && sortFunc !== undefined) { sortFunc(); }
   };
 }
+
+export default withProvider()(Cell);

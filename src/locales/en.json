@@ -4,6 +4,11 @@
       "undo": "Undo"
     },
 
+    "DataTable": {
+      "sortAccessibilityLabel": "sort by {content}",
+      "totalsRowHeading": "Totals"
+    },
+
     "ResourceList": {
       "sortingLabel": "Sort by",
       "defaultItemSingular": "item",

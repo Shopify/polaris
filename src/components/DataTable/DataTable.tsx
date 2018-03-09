@@ -2,12 +2,16 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
+import {withProvider, WithProviderProps} from '../../components/Provider';
 import EventListener from '../EventListener';
+
 import Cell, {Props as CellProps} from './Cell';
 import Navigation from './Navigation';
 
+
 import * as styles from './DataTable.scss';
 
+export type CombinedProps = Props & WithProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
 export type TableData = string | number | React.ReactNode;
 export type SortDirection = 'ascending' | 'descending' | 'none';
@@ -29,14 +33,23 @@ interface TableMeasurements {
 }
 
 export interface Props {
+  /** List of data types, which determines content alignment for each column. Numeric content aligns right and text content aligns left. */
   columnContentTypes: ColumnContentType[],
+  /** List of column headings. */
   headings: string[],
+   /** List of numeric column totals, highlighted in the table's header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[],
+  /** Lists of data points which map to table body rows. */
   rows: TableData[][],
+  /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData,
+  /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[],
+  /** The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending. */
   defaultSortDirection?: SortDirection,
+  /** The index of the heading that the table rows are initially sorted by. Defaults to the first column. */
   initialSortColumnIndex?: number,
+  /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: SortDirection): void,
 }
 
@@ -50,7 +63,7 @@ export interface State {
   sortDirection?: SortDirection,
 }
 
-export default class DataTable extends React.PureComponent<Props, State> {
+export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   state: State = {
     collapsed: false,
@@ -61,6 +74,15 @@ export default class DataTable extends React.PureComponent<Props, State> {
   private dataTable: HTMLElement;
   private scrollContainer: HTMLElement;
   private table: HTMLElement;
+  private totalsRowHeading: string;
+
+  constructor(props: CombinedProps) {
+    super(props);
+
+    const {polaris: {intl: {translate}}} = props;
+
+    this.totalsRowHeading = translate('Polaris.DataTable.totalsRowHeading');
+  }
 
   componentDidMount() {
     // We need to defer the calculation in development so the styles have time to be injected.
@@ -110,7 +132,7 @@ export default class DataTable extends React.PureComponent<Props, State> {
       : null;
 
     const totalsMarkup = totals
-      ? <tr>{insertPresentationalCell(totals).map(renderTotals)}</tr>
+      ? <tr>{insertPresentationalCell(totals).map(this.renderTotals)}</tr>
       : null;
 
     const headingMarkup = (
@@ -269,6 +291,53 @@ export default class DataTable extends React.PureComponent<Props, State> {
   }
 
   @autobind
+  private renderTotals(totals: TableData, index?: number) {
+  const id = `totals-cell-${index}`;
+  return (
+    totals === '' && index !== undefined
+      ? this.renderFirstTwoTotalsCells(index)
+      : (
+        <Cell
+          total
+          testID={id}
+          key={id}
+          contentType="numeric"
+          content={totals}
+        />
+      )
+  );
+}
+
+@autobind
+private renderFirstTwoTotalsCells(index: number) {
+  const id = `totals-cell-${index}`;
+
+  if (index === 0) {
+    return (
+      <Cell
+        fixed
+        total
+        testID={id}
+        key={id}
+        contentType="numeric"
+        content={this.totalsRowHeading}
+      />
+    );
+  }
+
+  if (index === 1) { return <Cell testID={id} key={id} presentational />; }
+
+  return (
+    <Cell
+      total
+      testID={id}
+      key={id}
+      contentType="numeric"
+    />
+  );
+}
+
+  @autobind
   private defaultRenderRow(row: TableData[], index: number) {
     const className = classNames(styles.TableRow);
     const contentTypes = this.getContentTypes();
@@ -334,53 +403,6 @@ function insertPresentationalCell(arr: TableRow = []) {
   return [fixedCell, presentationalCell, ...arr.slice(1)];
 }
 
-function renderTotals(totals: TableData, index ?: number) {
-  const id = `totals-cell-${index}`;
-  return (
-    totals === '' && index !== undefined
-      ? renderFirstTwoTotalsCells(index)
-      : (
-        <Cell
-          total
-          testID={id}
-          key={id}
-          contentType="numeric"
-          content={totals}
-        />
-      )
-  );
-}
-
-function renderFirstTwoTotalsCells(index: number) {
-  // i18n string variable
-  const totalsRowHeading = 'Totals';
-  const id = `totals-cell-${index}`;
-
-  if (index === 0) {
-    return (
-      <Cell
-        fixed
-        total
-        testID={id}
-        key={id}
-        contentType="numeric"
-        content={totalsRowHeading}
-      />
-    );
-  }
-
-  if (index === 1) { return <Cell testID={id} key={id} presentational />; }
-
-  return (
-    <Cell
-      total
-      testID={id}
-      key={id}
-      contentType="numeric"
-    />
-  );
-}
-
 function measureColumn(tableData: TableMeasurements) {
   return function(column: HTMLElement, index: number) {
     const {
@@ -430,3 +452,5 @@ function getPrevAndCurrentColumns(tableData: TableMeasurements, columnData: Stat
 
   return {previousColumn, currentColumn};
 }
+
+export default withProvider()(DataTable);
