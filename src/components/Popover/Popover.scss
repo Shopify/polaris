@@ -68,6 +68,10 @@ $content-max-width: rem(400px);
   }
 }
 
+.Content-fullHeight {
+  max-height: none;
+}
+
 .Tip {
   position: absolute;
   top: 0;

@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 - Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
 - Added translation and Provider support to Resource List ([#1097](https://github.com/Shopify/polaris-react/pull/1097))
+- Added fullHeight prop to Popover to override max-height ([#1099](https://github.com/Shopify/polaris-react/pull/1099))
 
 ### Breaking Changes
 - All elements are now globally set to `box-sizing: border-box;` instead of `box-sizing: inherit;`. There is a very small chance of seeing any visual regressions in existing applications. ([#996](https://github.com/Shopify/polaris-react/pull/996))
