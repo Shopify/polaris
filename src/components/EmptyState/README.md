@@ -29,22 +29,6 @@ tried yet, and provide encouragement and support to help merchants progress.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-When a merchant first encounters a new product or feature, they need to
-understand what it is and be encouraged to try it.
-
-### Solution
-
-Empty states are an opportunity to provide explanation about the purpose and
-benefit of a feature, while gently encouraging merchants to give it a try.
-
----
-
 ## Best Practices
 
 Empty states should:

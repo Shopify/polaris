@@ -19,23 +19,6 @@ click.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants who use Shopify represent a range of levels of experience and
-familiarity with using software. It can be challenging to build
-experiences that are clear to all merchants, all the time.
-
-### Solution
-
-Tooltips can provide additional explanations to merchants who need more
-information or help without cluttering up the interface.
-
----
-
 ## Best practices
 
 Tooltips should:

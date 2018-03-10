@@ -25,20 +25,6 @@ Text style enhances text with additional visual meaning. For example, using subd
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Using regular text alone isn’t always enough to guide merchants’ eyes when presented with a lot of information.
-
-### Solution
-
-Text style helps merchants interpret meaning by providing visual cues.
-
----
-
 ## Best practices
 
 Text style should be:

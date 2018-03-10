@@ -27,20 +27,6 @@ Links are used to embed actions or pathways to more information in a sentence.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to be able to navigate to other sections of Shopify or take actions wherever they are in the interface.
-
-### Solution
-
-Links provide merchants with a way to navigate or take an action in the context of a string of content.
-
----
-
 ## Best practices
 
 Links should:

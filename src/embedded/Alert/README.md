@@ -37,22 +37,6 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
-## Purpose
-
-Think about the merchant problems this component solves when you’re using it:
-
-### Problems
-
-1. Merchants need a way to be notified about urgent information that requires acknowledgment and doesn’t offer a next step
-2. Merchants need a way to be notified and prevented from immediately completing critical tasks that can’t be undone, or are very difficult to undo
-
-### Solutions
-
-1. Embedded alerts require merchants to acknowledge they’ve seen important information before continuing. In this case, follow the content guidelines for alert messaging.
-2. Embedded alerts can also require merchants to confirm (or back out of) an action before they can continue. It helps them maintain focus and helps prevent them from accidentally making mistakes that are difficult to reverse. In this case, follow the content guidelines for confirmation messaging.
-
----
-
 ## Best practices
 
 Embedded alerts should:

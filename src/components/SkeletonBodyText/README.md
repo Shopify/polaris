@@ -14,20 +14,6 @@ Skeleton body text is used to provide a low fidelity representation of content b
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Things like slow internet connection, outdated hardware, and data fetching restrictions can create long wait times for merchants when loading data and UI.
-
-### Solution
-
-With skeleton loading we can create the illusion of faster load times by showing layouts and static content before the data from the request is returned.
-
----
-
 ## Best practices
 
 Skeleton body text component should:

@@ -21,20 +21,6 @@ Badges are used to inform merchants of the status of a piece of information or o
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants are pressed for time. They need indicators that let them identify important status changes in Shopify.
-
-### Solution
-
-Badges are designed as short, color-coded indicators that help merchants identify critical information quickly.
-
----
-
 ## Best practices
 
 Great badges benefit merchants by:

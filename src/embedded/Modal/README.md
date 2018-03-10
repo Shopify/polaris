@@ -24,20 +24,6 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
-## Purpose
-
-Think about the merchant problem this component solves when you’re using it:
-
-### Problem
-
-Merchants need a way to focus on certain tasks that can’t be left half-finished.
-
-### Solution
-
-Embedded modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
-
----
-
 ## Best practices
 
 Embedded modals should:

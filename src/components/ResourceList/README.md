@@ -46,20 +46,6 @@ directly from the list, without navigating to a detail page.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants want to find a particular object, such as an order, among other similar objects. Once they locate the object, they need to be able to view it in more detail or take quick actions on it such as marking it as archived or fulfilled.
-
-### Solution
-
-Resource lists group similar types of objects into a list. Merchants can click or tap on list items to view more details. Optionally, actions from the detail view can also be made available to merchants at the list level as shortcuts.
-
----
-
 ## Best practices
 
 Resource lists should:

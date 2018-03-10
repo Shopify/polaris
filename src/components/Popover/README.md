@@ -26,20 +26,6 @@ Popovers are small overlays that open on demand, usually when the merchant click
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-There are lots of different paths a merchant can take and listing them all out in the interface would make the experience feel overwhelming and cluttered.
-
-### Solution
-
-Popovers allow merchants to expose and hide additional information and actions when they’re ready to explore them. Popovers show next to the button that triggers them, so they demand minimal shift in merchant attention.
-
----
-
 ## Best practices
 
 Popovers should:
@@ -217,7 +203,7 @@ class PopoverFormExample extends React.Component {
       return {active: !active};
     });
   }
-  
+
   handleTagChange = (value) => {
     this.setState({
       tagValue: value,
