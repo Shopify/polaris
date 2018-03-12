@@ -24,6 +24,45 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
+## Properties
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| open* | boolean | Whether the modal is open or not |
+| src* | string | The URL that will be loaded as the content of the modal |
+| title | string | Modal title, in large type |
+| width | enum['large', 'fullwidth'] | Controls the width of the modal |
+| height | number | The height of the modal (in pixels) |
+| primaryAction | Action | Primary action |
+| secondaryActions | Action[] | Collection of secondary actions |
+| onClose* | function() | Callback when the modal is closed |
+
+---
+
+## Screenshot examples
+
+This static image is provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.
+
+### Modal
+
+![Screenshot modal component](embedded/modal/modal.jpg)
+
+---
+
+## Purpose
+
+Think about the merchant problem this component solves when you’re using it:
+
+### Problem
+
+Merchants need a way to focus on certain tasks that can’t be left half-finished.
+
+### Solution
+
+Embedded modals require merchants to take an action before they can continue working in other parts of Shopify. It helps them maintain focus or stay in the workflow because the changes can’t be automatically saved.
+
+---
+
 ## Best practices
 
 Embedded modals should:
@@ -129,15 +168,15 @@ Add a menu item
 
 ```jsx
 <Modal
-  src="https://my-app.com/update-information"
+  src="https://my-app.com/upgrade-to-retail-package"
   open={this.state.open}
-  title="Edit account information"
+  title="Upgrade your Shopify POS with the Retail Package"
   primaryAction={{
-    content: 'Update account',
+    content: 'Add Retail Package',
     onAction: () => this.setState({open: false}),
   }}
   secondaryActions={[{
-    content: 'Change account',
+    content: 'Cancel',
     onAction: () => this.setState({open: false}),
   }]}
   onClose={() => this.setState({open: false})}

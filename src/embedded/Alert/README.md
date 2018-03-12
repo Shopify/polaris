@@ -37,6 +37,51 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
+## Properties
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| open* | boolean | Whether the alert is open |
+| children* | string | The content to display inside the alert |
+| title | string | The alert title |
+| destructive | boolean | For confirming a destructive or dangerous action |
+| confirmContent* | string | The content of the confirmation button |
+| cancelContent | string | The content of the cancel button |
+| onConfirm* | function() | Callback when the confirmation button is clicked |
+| onCancel* | function() | Callback when the alert is closed, or when the cancel button is clicked |
+
+---
+
+## Screenshot examples
+
+These static images are provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.
+
+### Basic alert
+
+![Screenshot basic alert component](embedded/alert/basic-alert.jpg)
+
+### Destructive warning
+
+![Screenshot destructive warning component](embedded/alert/destructive-warning.jpg)
+
+---
+
+## Purpose
+
+Think about the merchant problems this component solves when you’re using it:
+
+### Problems
+
+1. Merchants need a way to be notified about urgent information that requires acknowledgment and doesn’t offer a next step
+2. Merchants need a way to be notified and prevented from immediately completing critical tasks that can’t be undone, or are very difficult to undo
+
+### Solutions
+
+1. Embedded alerts require merchants to acknowledge they’ve seen important information before continuing. In this case, follow the content guidelines for alert messaging.
+2. Embedded alerts can also require merchants to confirm (or back out of) an action before they can continue. It helps them maintain focus and helps prevent them from accidentally making mistakes that are difficult to reverse. In this case, follow the content guidelines for confirmation messaging.
+
+---
+
 ## Best practices
 
 Embedded alerts should:
@@ -211,15 +256,15 @@ Use passing `destructive` to make it clear to the merchant that the action is po
 
 ```jsx
 <Alert
-  title="Unsaved changes"
+  title="Discard unsaved changes?"
   open={this.state.open}
-  destructive={true}
-  confirmContent="Discard changes"
+  destructive
+  confirmContent="Keep editing"
   onConfirm={() => this.setState({open: false, confirmed: true})}
-  cancelContent="Continue editing"
+  cancelContent="Discard"
   onCancel={() => this.setState({open: false, confirmed: false})}
 >
-  Leaving will cause the changes to your product to be lost.
+  This will delete all edits since you last saved.
 </Alert>
 ```
 
