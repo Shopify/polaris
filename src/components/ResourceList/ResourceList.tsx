@@ -80,11 +80,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
-    const {polaris} = props;
+    const {polaris: {intl}} = props;
 
     this.defaultResourceName = {
-      singular: polaris.translate('ResourceList.defaultItemSingular'),
-      plural: polaris.translate('ResourceList.defaultItemPlural'),
+      singular: intl.translate('ResourceList.defaultItemSingular'),
+      plural: intl.translate('ResourceList.defaultItemPlural'),
     };
   }
 
@@ -114,13 +114,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const {
       resourceName = this.defaultResourceName,
       items,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
 
     const itemsCount = items.length;
     const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
 
-    return translate('ResourceList.showing', {
+    return intl.translate('ResourceList.showing', {
       itemsCount,
       resource,
     });
@@ -131,14 +131,14 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const {
       selectedItems = [],
       items,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
 
     const selectedItemsCount = (selectedItems === SELECT_ALL_ITEMS)
       ? `${items.length}+`
       : selectedItems.length;
 
-    return translate('ResourceList.selected', {
+    return intl.translate('ResourceList.selected', {
       selectedItemsCount,
     });
   }
@@ -150,7 +150,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       selectedItems,
       items,
       resourceName = this.defaultResourceName,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
 
     if (!this.selectable || !hasMoreItems) {
@@ -158,7 +158,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return translate('ResourceList.allItemsSelected', {
+      return intl.translate('ResourceList.allItemsSelected', {
         itemsLength: items.length,
         resourceNamePlural: resourceName.plural,
       });
@@ -172,7 +172,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       selectedItems,
       items,
       resourceName = this.defaultResourceName,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
 
     if (!this.selectable || !hasMoreItems) {
@@ -180,8 +180,8 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
 
     const actionText = (selectedItems === SELECT_ALL_ITEMS)
-      ? translate('Common.undo')
-      : translate('ResourceList.selectAllItems', {
+      ? intl.translate('Common.undo')
+      : intl.translate('ResourceList.selectAllItems', {
           itemsLength: items.length,
           resourceNamePlural: resourceName.plural,
         });
@@ -194,13 +194,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   private get emptySearchResultText() {
     const {
-      polaris: {translate},
+      polaris: {intl},
       resourceName = this.defaultResourceName,
     } = this.props;
 
     return {
-      title: translate('ResourceList.emptySearchResultTitle', {resourceNamePlural: resourceName.plural}),
-      description: translate('ResourceList.emptySearchResultDescription'),
+      title: intl.translate('ResourceList.emptySearchResultTitle', {resourceNamePlural: resourceName.plural}),
+      description: intl.translate('ResourceList.emptySearchResultDescription'),
     };
   }
 
@@ -241,7 +241,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       sortOptions,
       sortValue,
       onSortChange,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
     const {selectMode} = this.state;
     const itemsExist = items.length > 0;
@@ -274,7 +274,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const selectId = getUniqueID();
 
     const sortingLabelMarkup = (
-      <label className={styles.SortLabel} htmlFor={selectId}>{translate('ResourceList.sortingLabel')}</label>
+      <label className={styles.SortLabel} htmlFor={selectId}>{intl.translate('ResourceList.sortingLabel')}</label>
     );
 
     const sortingSelectMarkup = sortOptions && sortOptions.length > 0
@@ -282,8 +282,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         <div className={styles.SortWrapper}>
           {sortingLabelMarkup}
           <Select
-            label={''}
-            id={selectId}
+            label={intl.translate('ResourceList.sortingLabel')}
             labelHidden
             options={sortOptions}
             onChange={onSortChange}

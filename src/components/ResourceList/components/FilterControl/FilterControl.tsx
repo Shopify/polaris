@@ -44,10 +44,10 @@ class FilterControl extends React.Component<CombinedProps> {
       filters = [],
       onSearchBlur,
       onSearchChange,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
 
-    const textFieldLabel = translate('ResourceList.FilterControl.textFieldLabel', {
+    const textFieldLabel = intl.translate('ResourceList.FilterControl.textFieldLabel', {
       resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
     });
 

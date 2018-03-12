@@ -5,6 +5,7 @@ import {get, merge} from 'lodash';
 import {en} from '../../src/locales';
 
 import Intl from '../../src/components/Provider/Intl';
+import Link from '../../src/components/Provider/Link';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -131,10 +132,16 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 function mergeProviderOptions(options: any = {}): any {
-  const polaris = new Intl(en);
-  const context = {polaris};
+  const intl = new Intl(en);
+  const link = new Link();
+  const context = {
+    polaris: {
+      intl,
+      link,
+    },
+  };
 
-  return merge(options, {context});
+  return merge(merge({}, {context}, options));
 }
 
 export function mountWithProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {

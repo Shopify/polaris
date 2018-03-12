@@ -31,7 +31,7 @@ export default class Intl {
   @autobind
   translate(
     id: string,
-    replacements: PrimitiveReplacementDictionary | ComplexReplacementDictionary,
+    replacements?: PrimitiveReplacementDictionary | ComplexReplacementDictionary,
   ): string {
     return translate(id, this.translation, replacements);
   }

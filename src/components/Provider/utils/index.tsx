@@ -3,6 +3,8 @@ import {get, merge} from 'lodash';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 
+import {WithProviderProps} from '../types';
+
 import {
   polarisProviderContextTypes,
   TranslationDictionary,
@@ -39,10 +41,6 @@ export function translate(
   }
 
   return text;
-}
-
-export interface WithProviderProps {
-  polaris: any,
 }
 
 export function withProvider() {

@@ -13,7 +13,7 @@ export type CombinedProps = Props & WithProviderProps;
 
 class FilterValueSelector extends React.PureComponent<CombinedProps> {
   render() {
-    const {filter, value, onChange, polaris: {translate}} = this.props;
+    const {filter, value, onChange, polaris: {intl}} = this.props;
 
     const selectedFilterLabel = filter.operatorText || '';
 
@@ -23,7 +23,7 @@ class FilterValueSelector extends React.PureComponent<CombinedProps> {
           <Select
             label={selectedFilterLabel}
             options={filter.options}
-            placeholder={translate('ResourceList.FilterValueSelector.selectFilterValuePlaceholder')}
+            placeholder={intl.translate('ResourceList.FilterValueSelector.selectFilterValuePlaceholder')}
             value={value}
             onChange={onChange}
           />

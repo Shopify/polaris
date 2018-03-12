@@ -146,7 +146,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
-      polaris: {translate},
+      polaris: {intl},
     } = this.props;
 
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
@@ -200,7 +200,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
               <BulkActionButton
                 disclosure
                 onAction={this.toggleSmallScreenPopover}
-                content={translate('ResourceList.BulkActions.actionsActivatorLabel')}
+                content={intl.translate('ResourceList.BulkActions.actionsActivatorLabel')}
               />
             }
             onClose={this.toggleSmallScreenPopover}
@@ -226,8 +226,8 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       : [];
 
     const activatorLabel = !promotedActions || (promotedActions && numberOfPromotedActionsToRender === 0) && !measuring
-      ? translate('ResourceList.BulkActions.actionsActivatorLabel')
-      : translate('ResourceList.BulkActions.moreActionsActivatorLabel');
+      ? intl.translate('ResourceList.BulkActions.actionsActivatorLabel')
+      : intl.translate('ResourceList.BulkActions.moreActionsActivatorLabel');
 
     let combinedActions: ActionListSection[] = [];
 
