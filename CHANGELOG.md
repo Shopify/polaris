@@ -11,6 +11,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Documentation
 * Removed purpose section from component READMEs ([#1134](https://github.com/Shopify/polaris-react/pull/1134))
+* Added Embedded page under the Embedded section ([#956](https://github.com/Shopify/polaris-react/pull/956))
 * Added screenshots to the embedded components ([#1008](https://github.com/Shopify/polaris-react/pull/1008))
 
 ## 1.12.2 - 2018-03-08
