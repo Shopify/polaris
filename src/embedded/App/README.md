@@ -1,6 +1,7 @@
 ---
 name: Embedded app
 category: Embedded
+order: 1
 hidePlayground: true
 keywords:
   - application wrapper

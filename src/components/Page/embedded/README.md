@@ -1,6 +1,7 @@
 ---
 name: Embedded page
 category: Embedded
+order: 2
 hidePlayground: true
 keywords:
   - breadcrumbs

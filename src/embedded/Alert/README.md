@@ -1,6 +1,7 @@
 ---
 name: Embedded alert
 category: Embedded
+order: 3
 hidePlayground: true
 keywords:
   - embedded
