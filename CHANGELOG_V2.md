@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!-- ## Unreleased -->
+## 2.0.0-beta.9 - 2018-03-12
+- Merged latest changes from v1 into v2
+
 ## 2.0.0-beta.8 - 2018-03-01
 ### Enhancements
 - Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
