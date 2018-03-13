@@ -38,15 +38,6 @@ Stacks should:
 ## Content guidelines
 There are no content elements that are specific to stack.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | Elements to display inside stack |
-| wrap | boolean | Wrap stack elements to additional rows as needed on small screens (Defaults to true) |
-| vertical | boolean | Stack the elements vertically |
-| spacing | enum['extraTight', 'tight', 'loose', 'extraLoose', 'none'] | Adjust spacing between elements |
-| alignment | enum['leading', 'trailing', 'center', 'fill', 'baseline'] | Adjust vertical alignment of elements |
-| distribution | enum['equalSpacing', 'leading', 'trailing', 'center', 'fill', 'fillEvenly'] | Adjust horizontal alignment of elements |
-
 ## Examples
 
 ### Default behavior

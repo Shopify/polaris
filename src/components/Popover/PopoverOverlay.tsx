@@ -26,14 +26,15 @@ export enum CloseSource {
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 export interface Props {
-  id: string,
+  children?: React.ReactNode,
+  fullWidth?: boolean,
+  fullHeight?: boolean,
+  preferredPosition?: PreferredPosition,
   active: boolean,
+  id: string,
   activator: HTMLElement,
   preventAutofocus?: boolean,
   sectioned?: boolean,
-  fullWidth?: boolean,
-  preferredPosition?: PreferredPosition,
-  children?: React.ReactNode,
   onClose(source: CloseSource): void,
 }
 
@@ -110,6 +111,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       children,
       sectioned,
       fullWidth,
+      fullHeight,
     } = this.props;
 
     const className = classNames(
@@ -135,11 +137,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       ? undefined
       : {height: desiredHeight};
 
+    const contentClassNames = classNames(
+      styles.Content,
+      fullHeight && styles['Content-fullHeight'],
+    );
+
     const content = (
       <div
         id={id}
         tabIndex={-1}
-        className={styles.Content}
+        className={contentClassNames}
         style={contentStyles}
         ref={this.setContentNode}
       >

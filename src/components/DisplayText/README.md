@@ -32,22 +32,6 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-When all the typography on Shopify is the same size, it can be hard to tell a
-story visually.
-
-### Solution
-
-Display text can be used thoughtfully to create an impact and make a bold
-statement.
-
----
-
 ## Best Practices
 
 - Use when the primary goal of the page is communication rather than
@@ -73,13 +57,6 @@ merchants
   * Avoid using exclamation marks—display text already makes enough of a
   statement without an exclamation mark
   * Written in sentence case
-
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| element | enum['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] | Name of element to use for text |
-| size | enum['small', 'medium', 'large', 'extraLarge'] | Size of the text |
-| children | string or React.ReactNode | Content to display |
 
 ## Examples
 

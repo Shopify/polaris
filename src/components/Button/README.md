@@ -29,20 +29,6 @@ click or tap. They can be used for any type of action, including navigation.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-An action needs to be completed by a merchant.
-
-### Solution
-
-The button component can be used to help merchants find and complete actions across Shopify.
-
----
-
 ## Best practices
 
 Buttons should:
@@ -94,28 +80,6 @@ Add menu item
 #### Don’t
 Add a menu item
 <!-- end -->
-
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | string | The content to display inside the button |
-| url | string | A destination to link to, rendered in the href attribute of a link |
-| primary | boolean | Provides extra visual weight and identifies the primary action in a set of buttons |
-| destructive | boolean | Indicates a dangerous or potentially negative action |
-| disabled | boolean | Disables the button, disallowing merchant interaction |
-| loading | boolean | Replaces button text with a spinner while a background action is being performed |
-| size | enum['slim', 'large'] | Changes the size of the button, giving it more or less padding |
-| outline | boolean | Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops |
-| fullWidth | boolean |  Allows the button to grow to the width of its container |
-| disclosure | boolean | Displays the button with a disclosure icon |
-| submit | boolean | Allows the button to submit a form |
-| plain | boolean | Renders a button that looks like a link |
-| external | boolean | Forces url to open in a new tab |
-| icon | SVG | Icon to display to the left of the button content |
-| accessibilityLabel | string | Visually hidden text for screen readers |
-| onClick | function() | Callback when clicked |
-| onFocus | function() | Callback when button becomes focussed |
-| onBlur | function() | Callback when focus leaves button |
 
 ## Examples
 

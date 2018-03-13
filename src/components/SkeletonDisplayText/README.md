@@ -14,20 +14,6 @@ Skeleton display text is used to provide a low fidelity representation of conten
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Things like slow internet connection, outdated hardware, and data fetching restrictions can create long wait times for merchants when loading data and UI.
-
-### Solution
-
-With skeleton display text we can create the illusion of faster load times by showing layouts and static content before the data from the request is returned.
-
----
-
 ## Best practices
 
 Skeleton display text component should:
@@ -62,10 +48,6 @@ Show skeleton display text for dynamic page titles.
 <div class="TypographyUsageBlockImg">![Image showing skeleton display text for dynamic page title](skeleton/do-use-skeleton-for-dynamic-page-titles.png)</div>
 
 <!-- end -->
-
-| Prop | Type | Description | Default |
-| ---- | ---- | ----------- | ------- |
-| size | enum['small', 'medium', 'large', 'extraLarge'] | Size of the text | medium
 
 ## Examples
 

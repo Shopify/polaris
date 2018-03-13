@@ -2,9 +2,11 @@ import * as React from 'react';
 
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Button} from '../../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
+import {withProvider, WithProviderProps} from '../../components/Provider';
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
@@ -21,22 +23,33 @@ export interface State {
 }
 
 export interface Props {
+  /** Item data; each item is passed to renderItem */
   items: any[],
   filterControl?: React.ReactNode,
+  /** Name of the resource, such as customers or products */
   resourceName?: {
     singular: string,
     plural: string,
   },
+  /** Up to 2 bulk actions that will be given more prominence */
   promotedBulkActions?: BulkActionsProps['promotedActions'],
+  /** Actions available on the currently selected items */
   bulkActions?: BulkActionsProps['actions'],
+  /** Collection of IDs for the currently selected items */
   selectedItems?: SelectedItems,
   persistActions?: boolean,
   hasMoreItems?: boolean,
+  /** Current value of the sort control */
   sortValue?: string,
+  /** Collection of sort options to choose from */
   sortOptions?: Option[],
+  /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void,
+  /** Callback when selection is changed */
   onSelectionChange?(selectedItems: SelectedItems): void,
+  /** Function to render each list item	 */
   renderItem(item: any, id: string): React.ReactNode,
+  /** Function to customize the unique ID for each item */
   idForItem?(item: any, index: number): string,
 }
 
@@ -50,7 +63,11 @@ export interface Context {
   unsubscribe(callback: () => void): void,
 }
 
-export default class ResourceList extends React.PureComponent<Props, State> {
+export type CombinedProps = Props & WithProviderProps;
+
+const getUniqueID = createUniqueIDFactory('Select');
+
+export class ResourceList extends React.Component<CombinedProps, State> {
   static Item = Item;
   static FilterControl = FilterControl;
   static childContextTypes = contextTypes;
@@ -58,8 +75,18 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   state: State = {selectMode: false};
 
   private subscriptions: {(): void}[] = [];
-  private sortingLabel = 'Select how to sort';
-  private defaultResourceName = {singular: 'item', plural: 'items'};
+  private defaultResourceName: {singular: string, plural: string};
+
+  constructor(props: CombinedProps) {
+    super(props);
+
+    const {polaris: {intl}} = props;
+
+    this.defaultResourceName = {
+      singular: intl.translate('ResourceList.defaultItemSingular'),
+      plural: intl.translate('ResourceList.defaultItemPlural'),
+    };
+  }
 
 
   private get selectable() {
@@ -87,12 +114,16 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const {
       resourceName = this.defaultResourceName,
       items,
+      polaris: {intl},
     } = this.props;
 
     const itemsCount = items.length;
     const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
 
-    return `Showing ${itemsCount} ${resource}`;
+    return intl.translate('ResourceList.showing', {
+      itemsCount,
+      resource,
+    });
   }
 
   @autobind
@@ -100,39 +131,60 @@ export default class ResourceList extends React.PureComponent<Props, State> {
     const {
       selectedItems = [],
       items,
+      polaris: {intl},
     } = this.props;
 
     const selectedItemsCount = (selectedItems === SELECT_ALL_ITEMS)
       ? `${items.length}+`
       : selectedItems.length;
 
-    return `${selectedItemsCount} selected`;
+    return intl.translate('ResourceList.selected', {
+      selectedItemsCount,
+    });
   }
 
   @autobind
   private get paginatedSelectAllText() {
-    const {hasMoreItems, selectedItems, items, resourceName = this.defaultResourceName} = this.props;
+    const {
+      hasMoreItems,
+      selectedItems,
+      items,
+      resourceName = this.defaultResourceName,
+      polaris: {intl},
+    } = this.props;
 
     if (!this.selectable || !hasMoreItems) {
       return;
     }
 
     if (selectedItems === SELECT_ALL_ITEMS) {
-      return `All ${items.length}+ ${resourceName.plural} in your store are selected.`;
+      return intl.translate('ResourceList.allItemsSelected', {
+        itemsLength: items.length,
+        resourceNamePlural: resourceName.plural,
+      });
     }
   }
 
   @autobind
   private get paginatedSelectAllAction() {
-    const {hasMoreItems, selectedItems, items, resourceName = this.defaultResourceName} = this.props;
+    const {
+      hasMoreItems,
+      selectedItems,
+      items,
+      resourceName = this.defaultResourceName,
+      polaris: {intl},
+    } = this.props;
 
     if (!this.selectable || !hasMoreItems) {
       return;
     }
 
     const actionText = (selectedItems === SELECT_ALL_ITEMS)
-      ? 'Undo'
-      : `Select all ${items.length}+ ${resourceName.plural} in your store`;
+      ? intl.translate('Common.undo')
+      : intl.translate('ResourceList.selectAllItems', {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        });
 
     return {
       content: actionText,
@@ -141,11 +193,14 @@ export default class ResourceList extends React.PureComponent<Props, State> {
   }
 
   private get emptySearchResultText() {
-    const {resourceName = this.defaultResourceName} = this.props;
+    const {
+      polaris: {intl},
+      resourceName = this.defaultResourceName,
+    } = this.props;
 
     return {
-      title: `No ${resourceName.plural.toLocaleLowerCase()} found`,
-      description: 'Try changing the filters or search term',
+      title: intl.translate('ResourceList.emptySearchResultTitle', {resourceNamePlural: resourceName.plural}),
+      description: intl.translate('ResourceList.emptySearchResultDescription'),
     };
   }
 
@@ -186,6 +241,7 @@ export default class ResourceList extends React.PureComponent<Props, State> {
       sortOptions,
       sortValue,
       onSortChange,
+      polaris: {intl},
     } = this.props;
     const {selectMode} = this.state;
     const itemsExist = items.length > 0;
@@ -215,11 +271,18 @@ export default class ResourceList extends React.PureComponent<Props, State> {
         </div>
       ) : null;
 
+    const selectId = getUniqueID();
+
+    const sortingLabelMarkup = (
+      <label className={styles.SortLabel} htmlFor={selectId}>{intl.translate('ResourceList.sortingLabel')}</label>
+    );
+
     const sortingSelectMarkup = sortOptions && sortOptions.length > 0
       ? (
         <div className={styles.SortWrapper}>
+          {sortingLabelMarkup}
           <Select
-            label={this.sortingLabel}
+            label={intl.translate('ResourceList.sortingLabel')}
             labelHidden
             options={sortOptions}
             onChange={onSortChange}
@@ -412,3 +475,4 @@ function isSmallScreen() {
   return typeof window === 'undefined' ? false : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
+export default withProvider()(ResourceList);

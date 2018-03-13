@@ -1,9 +1,25 @@
-import {hsbToRgb, rgbToHex, rgbToHsb} from '../color-utilities';
+import {hsbToRgb, rgbToHex, rgbToHsb, rgbString, hsbToHex} from '../color-utilities';
 
 describe('colorUtilities', () => {
+  describe('rgbString', () => {
+    it('returns rgb string for rgb', () => {
+      expect(rgbString({red: 132, green: 11, blue: 2})).toMatch('rgb(132, 11, 2)');
+    });
+
+    it('returns rgb string for rgb with alpha', () => {
+      expect(rgbString({red: 132, green: 11, blue: 2, alpha: 0.2})).toMatch('rgba(132, 11, 2, 0.2)');
+    });
+  });
+
   describe('rgbToHex()', () => {
     it('returns hex strings for rgb', () => {
       expect(rgbToHex({red: 132, green: 11, blue: 2})).toMatch('#840b02');
+    });
+  });
+
+  describe('hsbToHex', () => {
+    it('returns a hex for hsb', () => {
+      expect(hsbToHex({hue: 300, saturation: 0.5, brightness: 0.5})).toMatch('#804080');
     });
   });
 

@@ -8,13 +8,13 @@ $spacing: tight;
   margin: 0;
   display: flex;
   flex-wrap: nowrap;
-  margin-top: -1 * $resource-list-header-padding-small;
-  margin-left: -1 * $resource-list-header-padding-small;
-  margin-right: -1 * $resource-list-header-padding-small;
+  margin-top: -1 * resource-list(header-padding-small);
+  margin-left: -1 * resource-list(header-padding-small);
+  margin-right: -1 * resource-list(header-padding-small);
 
   &::after {
     content: "";
-    flex: 0 0 $resource-list-header-padding-small;
+    flex: 0 0 resource-list(header-padding-small);
   }
 
   overflow-x: auto;
@@ -24,7 +24,7 @@ $spacing: tight;
   // account for scrollbar
   padding-bottom: spacing($spacing);
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-wrap: wrap;
     margin-right: 0;
     margin-left: -1 * spacing($spacing);
@@ -40,10 +40,10 @@ $spacing: tight;
 .AppliedFilter {
   flex: 1 0 auto;
   margin-top: spacing($spacing);
-  margin-left: $resource-list-header-padding-small;
+  margin-left: resource-list(header-padding-small);
   max-width: calc(100% - #{spacing($spacing)});
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 0 1 auto;
     margin-left: spacing($spacing);
   }

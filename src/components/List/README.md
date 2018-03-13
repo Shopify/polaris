@@ -17,22 +17,6 @@ bullet, a number, or less commonly, with an icon.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants are pressed for time and want content to be scannable and easy to
-read.
-
-### Solution
-
-Breaking related chunks of content into a list can make content easier to read
-and understand.
-
----
-
 ## Best practices
 Lists should:
 
@@ -84,11 +68,6 @@ Every item in a list should:
 When a line of text is placed next to an icon, it should:
 * Follow all the rules for list items
 * Elaborate on the meaning conveyed by the icon
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| type | enum['bullet', 'number'] | Type of list to display |
-| children | React.ReactNode | List item elements |
 
 ## Examples
 

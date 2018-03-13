@@ -33,21 +33,6 @@ Banners show at the top of the page or section they apply to.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to find out about important information and actions. For
-example, when an order needs to be reviewed because it has a high risk for fraud.
-
-### Solution
-
-Banners are a highly visible way to bring something to a merchant’s attention.
-
----
-
 ## Best practices
 
 Banners should:
@@ -224,16 +209,6 @@ including packaging.
 To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
 <!-- end -->
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| title | string | Title content for the banner. |
-| icon | SVG | Icon to display in the banner. |
-| status | enum['success', 'info', 'warning', 'critical'] | Sets the status of the banner. |
-| children | React.ReactNode | The child elements to render in the banner. |
-| action | Action | Action for banner |
-| secondaryAction | Action | Displays a secondary action |
-| onDismiss() | function() | Callback when banner is dismissed |
 
 ## Examples
 

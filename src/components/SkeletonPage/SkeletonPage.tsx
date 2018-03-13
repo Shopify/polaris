@@ -8,11 +8,16 @@ import SkeletonBodyText from '../SkeletonBodyText';
 import * as styles from './SkeletonPage.scss';
 
 export interface Props {
-  children?: React.ReactNode,
-  fullWidth?: boolean,
-  secondaryActions?: number,
+  /** Page title, in large type */
   title?: string,
+  /** Remove the normal max-width on the page */
+  fullWidth?: boolean,
+  /** Number of secondary page-level actions to display */
+  secondaryActions?: number,
+  /** Shows a skeleton over the breadcrumb */
   breadcrumbs?: boolean,
+  /** The child elements to render in the skeleton page. */
+  children?: React.ReactNode,
 }
 
 export default class SkeletonPage extends React.PureComponent<Props, never> {

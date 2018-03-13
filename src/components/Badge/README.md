@@ -21,20 +21,6 @@ Badges are used to inform merchants of the status of a piece of information or o
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants are pressed for time. They need indicators that let them identify important status changes in Shopify.
-
-### Solution
-
-Badges are designed as short, color-coded indicators that help merchants identify critical information quickly.
-
----
-
 ## Best practices
 
 Great badges benefit merchants by:
@@ -80,12 +66,6 @@ The available badges for fulfillment status are:
 
 Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the status you need.
 <!-- end -->
-
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| children | string | The content to display inside the badge. |
-| status | enum['success', 'info', 'attention', 'warning'] | Set the color of the badge for the given status. |
-| progress | enum['incomplete', 'partiallyComplete', 'complete'] | Render a pip showing the progress of a given task. |
 
 ## Examples
 

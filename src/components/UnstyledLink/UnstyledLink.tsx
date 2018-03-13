@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import {unstyled} from '../shared';
+import {withProvider, WithProviderProps} from '../Provider';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   url: string,
@@ -9,18 +10,17 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   [key: string]: any,
 }
 
-export type LinkLikeComponent = ReactComponent<Props>;
+export type LinkLikeComponent = ReactComponent<Props> | undefined;
+export type CombinedProps = Props & WithProviderProps;
 
-let LinkComponent: LinkLikeComponent;
-
-export default class UnstyledLink extends React.PureComponent<Props, never> {
-  static use(NewLinkComponent: LinkLikeComponent) {
-    LinkComponent = NewLinkComponent;
-  }
-
+class UnstyledLink extends React.PureComponent<CombinedProps, never> {
   render() {
-    if (LinkComponent) {
-      return <LinkComponent {...unstyled.props} {...this.props}/>;
+    const {polaris} = this.props;
+    if (polaris && polaris.link) {
+      const LinkComponent = polaris.link.linkComponent;
+      if (LinkComponent) {
+        return <LinkComponent {...unstyled.props} {...this.props}/>;
+      }
     }
 
     const {external, url, ...rest} = this.props;
@@ -29,3 +29,5 @@ export default class UnstyledLink extends React.PureComponent<Props, never> {
     return <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />;
   }
 }
+
+export default withProvider()(UnstyledLink);

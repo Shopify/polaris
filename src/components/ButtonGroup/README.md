@@ -24,22 +24,6 @@ arrangement and the spacing of calls to action.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to understand when a set of actions are related so they can take
-the appropriate next step.
-
-### Solution
-
-Button group lays out a set of buttons horizontally as a set and lets them wrap
-if necessary.
-
----
-
 ## Best practices
 
 Button groups should:
@@ -60,12 +44,6 @@ with no text
 
 Follow the [content guidelines](/components/actions/button#content-guidelines)
 outlined in the button component.
-
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| segmented | boolean | Join buttons as segmented group |
-| children | React.ReactElement | Button components |
 
 ## Examples
 

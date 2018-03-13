@@ -6,6 +6,7 @@ import Item, {Props as ItemProps} from './Item';
 import * as styles from './FormLayout.scss';
 
 export interface Props {
+  /** The content to display inside the layout. */
   children?: React.ReactNode,
 }
 

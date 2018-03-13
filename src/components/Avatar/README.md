@@ -26,22 +26,6 @@ business in the interface.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-A merchant may manage multiple businesses on Shopify or may have more than one
-person working in a store.
-
-### Solution
-
-Avatars visually clarify the business or the person being represented at
-various locations in the interface.
-
----
-
 ## Best practices
 
 Avatars should be one of 3 sizes:
@@ -62,15 +46,6 @@ image:
 * `alt="Person’s name"` if the avatar represents a person
 * `alt="Business’s name"` if the avatar represents a business
 * `alt=""` if the name of the person/business appears next to the avatar as text
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| size | enum['small', 'medium', 'large'] | Size of avatar |
-| name | string | The name of the person |
-| initials | string | Initials of person to display |
-| customer | boolean | Whether the avatar is for a customer |
-| source | string | URL of the avatar image |
-| accessibilityLabel | string | Accessible label for the avatar image |
 
 ## Examples
 

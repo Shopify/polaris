@@ -12,11 +12,17 @@ const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
 const AVATAR_IMAGES = Object.keys(avatars).map((key: keyof typeof avatars) => avatars[key]);
 
 export interface Props {
+  /** Size of avatar */
   size?: Size,
+  /** The name of the person */
   name?: string,
+  /** Initials of person to display */
   initials?: string,
+  /** Whether the avatar is for a customer */
   customer?: boolean,
+  /** URL of the avatar image */
   source?: string,
+  /** Accessible label for the avatar image */
   accessibilityLabel?: string,
 }
 

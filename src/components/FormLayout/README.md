@@ -34,20 +34,6 @@ Use form layout to arrange fields within a form using standard spacing. By defau
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to fill out information across Shopify.
-
-### Solution
-
-The form layout makes forms easier to scan and complete because it stacks fields vertically on the interface.
-
----
-
 ## Best practices
 
 Forms should:
@@ -106,10 +92,6 @@ My phone number is:
 ### Help text
 
 Help text provides extra guidance to people filling out a form field. This text is easy for people to ignore, so merchants should not need to depend on it to fill out a form. As with all forms, help text should be succinct and easy to read.
-
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| children | React.ReactNode | The content to display inside the layout. |
 
 ## Examples
 

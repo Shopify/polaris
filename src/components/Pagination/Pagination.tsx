@@ -8,16 +8,24 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Pagination.scss';
 
 export interface PaginationDescriptor {
-  hasNext?: boolean,
-  hasPrevious?: boolean,
+  /** The URL of the next page */
   nextURL?: string,
+  /** The URL of the previous page */
   previousURL?: string,
+  /** Whether there is a next page to show */
+  hasNext?: boolean,
+  /** Whether there is a previous page to show */
+  hasPrevious?: boolean,
+  /** Accessible label for the pagination */
   accessibilityLabel?: string,
+  /** Callback when next button is clicked */
   onNext?(): void,
+  /** Callback when previous button is clicked */
   onPrevious?(): void,
 }
 
 export interface Props extends PaginationDescriptor {
+  /** A more subdued control for use in headers */
   plain?: boolean,
 }
 

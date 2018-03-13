@@ -20,23 +20,6 @@ The scrollable component is a container for long form content, such as terms of 
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Legal disclaimers such as terms of service can be long and unwieldy. Exposing
-the full text in an interface could feel overwhelming and take up a lot of
-space.
-
-### Solution
-
-Scrollable containers hold longer form text and let merchants scroll as they
-read to expose more information when they’re ready to see it.
-
----
-
 ## Best practices
 Scrollable containers should:
 
@@ -91,15 +74,6 @@ Now you can accept the terms and conditions.
 first.
 * Clear: use the verb “need” to help merchants understand when they’re
 required to do something.
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | Content to display in scrollable area |
-| vertical | boolean | Scroll content vertically |
-| horizontal | boolean | Scroll content horizontally |
-| shadow | boolean | Add a shadow when content is scrollable |
-| hint | boolean | Slightly hints content upon mounting when scrollable |
-| nodeRef | function(node: HTMLElement) | Callback that passes a reference to the scrollable node |
 
 ## Examples
 

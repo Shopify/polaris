@@ -25,20 +25,6 @@ Text style enhances text with additional visual meaning. For example, using subd
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Using regular text alone isn’t always enough to guide merchants’ eyes when presented with a lot of information.
-
-### Solution
-
-Text style helps merchants interpret meaning by providing visual cues.
-
----
-
 ## Best practices
 
 Text style should be:
@@ -47,11 +33,6 @@ Text style should be:
 * Subdued if the text is less important than its surrounding text
 * Strong for input fields, or for a row total in a price table
 * Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| variation | enum['subdued', 'strong', 'positive', 'negative'] | Give text additional visual meaning |
-| children | string or React.ReactNode | The content that should get the intended styling |
 
 ## Examples
 

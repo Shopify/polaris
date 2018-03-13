@@ -14,6 +14,7 @@ import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {contextTypes, SELECT_ALL_ITEMS} from '../../types';
+import {withProvider, WithProviderProps} from '../../../Provider';
 
 import * as styles from './Item.scss';
 
@@ -21,24 +22,34 @@ export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export type Props = {
+export interface GenericProps extends WithProviderProps {
   id: string,
-  url?: string,
   media?: React.ReactElement<AvatarProps | ThumbnailProps>,
   shortcutActions?: DisableableAction[],
   children?: React.ReactNode,
+}
+
+export interface PropsWithUrl extends GenericProps {
+  url: string,
   onClick?(id?: string): void,
-} & ({url: string} | {onClick(id?: string): void});
+}
+
+export interface PropsWithClick extends GenericProps {
+  url?: string,
+  onClick(id?: string): void,
+}
 
 export interface State {
   actionsMenuVisible: boolean,
   focused: boolean,
 }
 
+export type CombinedProps = PropsWithUrl | PropsWithClick;
+
 const getUniqueID = createUniqueIDFactory('ResourceListItem');
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
-export default class Item extends React.PureComponent<Props, State> {
+export class Item extends React.PureComponent<CombinedProps, State> {
   static contextTypes = contextTypes;
 
   state: State = {
@@ -66,6 +77,7 @@ export default class Item extends React.PureComponent<Props, State> {
       url,
       media,
       shortcutActions,
+      polaris: {intl},
     } = this.props;
 
     const {
@@ -108,7 +120,7 @@ export default class Item extends React.PureComponent<Props, State> {
           <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
               id={this.checkboxId}
-              label="Select item"
+              label={intl.translate('ResourceList.Item.selectItem')}
               labelHidden
               onChange={this.handleSelection}
               checked={selected}
@@ -154,7 +166,7 @@ export default class Item extends React.PureComponent<Props, State> {
         disclosureMarkup = (
           <div className={styles.Disclosure} onClick={stopPropagation}>
             <Popover
-              activator={<Button aria-label="Actions dropdown" onClick={this.handleActionsClick} plain icon="horizontalDots" />}
+              activator={<Button aria-label={intl.translate('ResourceList.Item.actionsDropdown')} onClick={this.handleActionsClick} plain icon="horizontalDots" />}
               onClose={this.handleCloseRequest}
               active={actionsMenuVisible}
             >
@@ -305,3 +317,5 @@ export default class Item extends React.PureComponent<Props, State> {
 function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
+
+export default withProvider()(Item);

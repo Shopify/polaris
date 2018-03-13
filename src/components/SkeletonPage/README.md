@@ -14,20 +14,6 @@ Skeleton page is used with other skeleton loading components to provide a low fi
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Things like slow internet connection, outdated hardware, and data fetching restrictions can create long wait times for merchants when loading data and content in the UI.
-
-### Solution
-
-With skeleton loading we can create the illusion of faster load times by showing layouts and static content before the data from the request is returned to the UI.
-
----
-
 ## Best practices
 
 Skeleton page component should:
@@ -50,17 +36,10 @@ Use skeleton loading for dynamic content, and use actual content for content tha
 <div class="TypographyUsageBlockImg">![Image showing skeleton loading for changing content](skeleton/do-use-skeleton-for-changing-content.png)</div>
 
 #### Don’t
-Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience. 
+Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience.
 <div class="TypographyUsageBlockImg">![Image showing placeholder content that will change](skeleton/dont-use-placeholder-content-that-will-change.png)</div>
 
 <!-- end -->
-
-| Prop | Type | Description | Default |
-| ---- | ---- | ----------- | ------- |
-| title | string | Page title, in large type | Empty String |
-| fullwidth | boolean | Remove the normal max-width on the page |
-| secondaryActions | number | Number of secondary page-level actions to display |
-| breadcrumbs | boolean | Shows a skeleton over the breadcrumb |
 
 ## Examples
 

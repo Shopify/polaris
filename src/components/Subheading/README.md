@@ -22,21 +22,6 @@ sections. Generally, sections of a card use subheadings for their titles
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants want to find a particular piece of content quickly.
-
-### Solution
-
-Subheadings provide visual wayfinding cues in a card or page section so merchants
-can scan to understand what’s most relevant to them.
-
----
-
 ## Best Practices
 
 Subheadings should:
@@ -67,11 +52,6 @@ beneath them
 - The package will be shipped to this address:
 
 <!-- end -->
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| element | string | 	The element name to use for the subheading |
-| children | string | Text to display in subheading |
 
 ## Examples
 

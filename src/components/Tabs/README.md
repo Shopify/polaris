@@ -15,20 +15,6 @@ Use to alternate among related views within the same context.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants benefit from several different views into the same or closely related content to accomplish different tasks. They also need to be able to navigate to sub-views inside their current view.
-
-### Solution
-
-Tabs are a way to show related subsections of interface in relation to each other and allow merchants to move easily between them.
-
----
-
 ## Best practices
 
 Tabs should:
@@ -73,14 +59,6 @@ And for the customers section, the tabs are:
 
 Where possible, follow this pattern when writing tabs.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children* | React.ReactNode | Content to display in tabs |
-| selected* | number | Index of selected tab |
-| tabs* | TabDescriptor[] | List of tabs |
-| fitted | boolean | Fit tabs to container |
-| onSelect | function(selectedTabIndex: number) | Callback when tab is selected |
-
 ## Examples
 
 ### Default tabs
@@ -88,32 +66,55 @@ Where possible, follow this pattern when writing tabs.
 Use for most cases, especially when the number of tabs may be more than three.
 
 ```jsx
-<Tabs
-  selected={0}
-  tabs={[
-    {
-      id: 'all-customers',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
-    },
-    {
-      id: 'accepts-marketing',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
-    },
-    {
-      id: 'repeat-customers',
-      content: 'Repeat customers',
-      panelID: 'repeat-customers-content',
-    },
-    {
-      id: 'prospects',
-      content: 'Prospects',
-      panelID: 'prospects-content',
-    }
-  ]}
-/>
+class TabsExample extends React.Component {
+  state = {
+    selected: 0,
+  };
+
+  handleTabChange = (selectedTabIndex) => {
+    this.setState({selected: selectedTabIndex});
+  }
+
+  render() {
+    const {selected} = this.state;
+    const tabs = [
+      {
+        id: 'all-customers',
+        content: 'All',
+        accessibilityLabel: 'All customers',
+        panelID: 'all-customers-content',
+      },
+      {
+        id: 'accepts-marketing',
+        content: 'Accepts marketing',
+        panelID: 'accepts-marketing-content',
+      },
+      {
+        id: 'repeat-customers',
+        content: 'Repeat customers',
+        panelID: 'repeat-customers-content',
+      },
+      {
+        id: 'prospects',
+        content: 'Prospects',
+        panelID: 'prospects-content',
+      }
+    ];
+
+    return (
+      <Card>
+        <Tabs
+          tabs={tabs}
+          selected={selected}
+          onSelect={this.handleTabChange}
+        />
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Card>
+    );
+  }
+}
 ```
 
 ### Fitted tabs
@@ -121,21 +122,45 @@ Use for most cases, especially when the number of tabs may be more than three.
 Use when tabs contain a few (2 or 3) items within a narrow column.
 
 ```jsx
-<Tabs
-  fitted
-  selected={0}
-  tabs={[
-    {
-      id: 'all-customers',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-content',
-    },
-    {
-      id: 'accepts-marketing',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-content',
-    }
-  ]}
-/>
+class FittedTabsExample extends React.Component {
+  state = {
+    selected: 0,
+  };
+
+  handleTabChange = (selectedTabIndex) => {
+    this.setState({selected: selectedTabIndex});
+  }
+
+  render() {
+    const {selected} = this.state;
+
+    const tabs = [
+      {
+        id: 'all-customers',
+        content: 'All',
+        accessibilityLabel: 'All customers',
+        panelID: 'all-customers-content',
+      },
+      {
+        id: 'accepts-marketing',
+        content: 'Accepts marketing',
+        panelID: 'accepts-marketing-content',
+      }
+    ];
+
+    return (
+      <Card>
+        <Tabs
+          tabs={tabs}
+          selected={selected}
+          onSelect={this.handleTabChange}
+          fitted
+        />
+        <Card.Section title={tabs[selected].content}>
+          <p>Tab {selected} selected</p>
+        </Card.Section>
+      </Card>
+    );
+  }
+}
 ```

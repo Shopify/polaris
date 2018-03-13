@@ -14,20 +14,6 @@ Skeleton body text is used to provide a low fidelity representation of content b
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Things like slow internet connection, outdated hardware, and data fetching restrictions can create long wait times for merchants when loading data and UI.
-
-### Solution
-
-With skeleton loading we can create the illusion of faster load times by showing layouts and static content before the data from the request is returned.
-
----
-
 ## Best practices
 
 Skeleton body text component should:
@@ -55,10 +41,6 @@ Use skeleton body text for static content or use placeholder content for dynamic
 ![Image showing skeleton body text for static content](skeleton/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text.png)
 
 <!-- end -->
-
-| Prop | Type | Description | Default |
-| ---- | ---- | ----------- | ------- |
-| lines | number | Number of lines to display | 3 |
 
 ## Examples
 

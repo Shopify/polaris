@@ -19,20 +19,6 @@ Action lists render a list of actions or selectable options. This component is u
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-There are lots of different paths a merchant can take. Listing them all out in the interface would make the experience feel overwhelming and cluttered.
-
-### Solution
-
-Action lists in popovers let merchants expose additional information and actions when they’re ready to explore them.
-
----
-
 ## Best practices
 
 Actions lists should:
@@ -84,12 +70,6 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| items | Action[] | Collection of actions for list |
-| sections | Section[] | Collection of sectioned action items |
-| onActionAnyItem | function() | Callback when any item is clicked or keypressed |
-
 ## Examples
 
 ### Action list in a popover
@@ -97,12 +77,44 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 Use for the least important actions so the merchant isn’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
-<ActionList
-  items={[
-    {content: 'Import file', onAction: () => {}},
-    {content: 'Export file', onAction: () => {}},
-  ]}
-/>
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  }
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            items={[
+              {content: 'Import file', onAction: () => {
+                console.log('File imported')
+              }},
+              {content: 'Export file', onAction: () => {
+                console.log('File exported')
+              }},
+            ]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
 ```
 
 ### Action list with icons or image
@@ -110,12 +122,40 @@ Use for the least important actions so the merchant isn’t distracted by second
 Use when the items benefit from an associated action or image (e.g. a list of products).
 
 ```jsx
-<ActionList
-  items={[
-    {content: 'Import file', icon: 'import'},
-    {content: 'Export file', icon: 'export'},
-  ]}
-/>
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  }
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
+    return (
+      <div style={{height: '200px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            items={[
+              {content: 'Import file', icon: 'import'},
+              {content: 'Export file', icon: 'export'},
+            ]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
 ```
 
 ### Sectioned action list
@@ -123,15 +163,43 @@ Use when the items benefit from an associated action or image (e.g. a list of pr
 Use when the items benefit from sections to help differentiate actions.
 
 ```jsx
-<ActionList
-  sections={[{
-    title: "File options",
-    items: [
-      {content: 'Import file', icon: 'import'},
-      {content: 'Export file', icon: 'export'},
-    ]
-  }]}
-/>
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  }
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            sections={[{
+              title: "File options",
+              items: [
+                {content: 'Import file', icon: 'import'},
+                {content: 'Export file', icon: 'export'},
+              ]
+            }]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
 ```
 ---
 

@@ -22,20 +22,6 @@ Caption text size is smaller than the recommended size for general reading. It s
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to understand a complex graphic or arrangement of content in a small area.
-
-### Solution
-
-Use smaller text for short labels on graphs or lists where space is limited.
-
----
-
 ## Best practices
 
 - Use for secondary labels in graphs and charts
@@ -63,11 +49,6 @@ Captions are primarily used in [data visualizations](/visuals/data-visualization
 * Order #1001 was received on April 21, 2017
 * This is your recent activity
 <!-- end -->
-
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The content to use as a graph label or timestamp |
 
 ## Examples
 

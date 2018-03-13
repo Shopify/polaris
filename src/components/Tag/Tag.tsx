@@ -4,7 +4,9 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tag.scss';
 
 export interface Props {
+  /** Content to display in the tag */
   children?: string,
+  /** Callback when tag is removed */
   onRemove?(): void,
 }
 

@@ -7,6 +7,7 @@ export interface Item {
 }
 
 export interface Props {
+  /** Collection of items for list */
   items: Item[],
 }
 

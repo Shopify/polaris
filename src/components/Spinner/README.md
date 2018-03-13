@@ -13,24 +13,6 @@ Spinners are used to notify merchants that their action is being processed. For 
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-When a merchant completes an action on a page like clicking a button, it’s unclear if the app is working to complete the action.
-
-### Solution
-
-Spinner notifies the merchant that the request has been received and is being processed.
-
-| Prop  | Type   | Description | Default |
-| ---   | ---    | ---     | ---     |
-| color | enum['teal', 'inkLightest', 'white'] | Color of spinner | teal
-| size  | enum['small', 'large'] | Size of spinner | large
-| accessibilityLabel | string | Accessible label for the spinner |
-
 ## Examples
 
 ### Default spinner

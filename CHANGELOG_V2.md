@@ -5,9 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!-- ## Unreleased -->
+## 2.0.0-beta.9 - 2018-03-12
+- Merged latest changes from v1 into v2
+
 ## 2.0.0-beta.8 - 2018-03-01
 ### Enhancements
 - Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
+- Added translation and Provider support to Resource List ([#1097](https://github.com/Shopify/polaris-react/pull/1097))
+- Added fullHeight prop to Popover to override max-height ([#1099](https://github.com/Shopify/polaris-react/pull/1099))
 
 ### Breaking Changes
 - All elements are now globally set to `box-sizing: border-box;` instead of `box-sizing: inherit;`. There is a very small chance of seeing any visual regressions in existing applications. ([#996](https://github.com/Shopify/polaris-react/pull/996))
@@ -32,7 +37,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added EmptySearchResult component ([#955](https://github.com/Shopify/polaris-react/pull/955))
 - Added Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))
 - Updated Popover to use the new Portal component ([#742](https://github.com/Shopify/polaris-react/pull/742))
-* Brought FlashMessage over from polaris-next and updated it to use Portal ([#945](https://github.com/Shopify/polaris-react/pull/945))
+- Brought FlashMessage over from polaris-next and updated it to use Portal ([#945](https://github.com/Shopify/polaris-react/pull/945))
+- Updated Tooltip to use Portal instead of layeredComponent. ([#982](https://github.com/Shopify/polaris-react/pull/982))
 
 ### Breaking Changes
 - Dropped support for React < 16. Upgrade `react` and `react-dom` packages to v16. ([#936](https://github.com/shopify/polaris-react/pull/936))

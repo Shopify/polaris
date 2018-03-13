@@ -30,20 +30,6 @@ sales channels section of Shopify.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may not know about Shopify features designed to help them run their business.
-
-### Solution
-
-Callout cards introduce features and give merchants a way to take action.
-
----
-
 ## Best practices
 
 Callout cards should:
@@ -155,15 +141,6 @@ Add menu item
 #### Don’t
 Add a menu item
 <!-- end -->
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The content to display inside the callout card. |
-| title | string | The title of the card |
-| illustration | string | URL to the card illustration |
-| primaryAction | Action | Primary action for the card |
-| secondaryAction | Action | Secondary action for the card |
-
 
 ## Examples
 

@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {shallow, mount, ReactWrapper} from 'enzyme';
+import {ReactWrapper} from 'enzyme';
 import {
   trigger,
   findByTestID,
+  shallowWithProvider,
+  mountWithProvider,
 } from '../../../../../../tests/utilities';
 
 import FilterCreator, {Props} from '../FilterCreator';
@@ -48,7 +50,7 @@ describe('<FilterCreator />', () => {
   };
 
   it('renders just a button by default', () => {
-    const wrapper = mount(
+    const wrapper = mountWithProvider(
       <FilterCreator {...mockDefaultProps} />,
     );
 
@@ -59,7 +61,7 @@ describe('<FilterCreator />', () => {
   });
 
   it('renders a non-active popover on default', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithProvider(
       <FilterCreator {...mockDefaultProps} />,
     );
 
@@ -67,7 +69,7 @@ describe('<FilterCreator />', () => {
   });
 
   it('renders a active popover with a Select on click of the activator button', () => {
-    const wrapper = mount(
+    const wrapper = mountWithProvider(
       <FilterCreator {...mockDefaultProps} />,
     );
 
@@ -79,7 +81,7 @@ describe('<FilterCreator />', () => {
 
   it('renders a non-active popover after add filter button was clicked and onAddFilter was triggered', () => {
     const onAddFilter = jest.fn();
-    const wrapper = mount(
+    const wrapper = mountWithProvider(
       <FilterCreator
         {...mockDefaultProps}
         onAddFilter={onAddFilter}
@@ -97,7 +99,7 @@ describe('<FilterCreator />', () => {
 
   it('does not renders FilterValueSelector after add filter button was clicked', () => {
     const onAddFilter = jest.fn();
-    const wrapper = mount(
+    const wrapper = mountWithProvider(
       <FilterCreator
         {...mockDefaultProps}
         onAddFilter={onAddFilter}
@@ -115,7 +117,7 @@ describe('<FilterCreator />', () => {
 
   it('renders Select with no value after add filter button was clicked', () => {
     const onAddFilter = jest.fn();
-    const wrapper = mount(
+    const wrapper = mountWithProvider(
       <FilterCreator
         {...mockDefaultProps}
         onAddFilter={onAddFilter}
@@ -133,7 +135,7 @@ describe('<FilterCreator />', () => {
 
   describe('filters', () => {
     it('has the correct options prop when popover is active', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -148,7 +150,7 @@ describe('<FilterCreator />', () => {
 
   describe('<FilterValueSelector />', () => {
     it('does not render by default', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -159,7 +161,7 @@ describe('<FilterCreator />', () => {
     });
 
     it('updates FilterValueSelector when user select a filter key', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -173,7 +175,7 @@ describe('<FilterCreator />', () => {
     });
 
     it('updates value correctly when user select a filter value', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -188,7 +190,7 @@ describe('<FilterCreator />', () => {
 
   describe('filter add button', () => {
     it('is enabled when filter key and filter value are both selected', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -205,7 +207,7 @@ describe('<FilterCreator />', () => {
     });
 
     it('is disabled when filter key and value are not selected', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -221,7 +223,7 @@ describe('<FilterCreator />', () => {
     });
 
     it('is disabled when filter value is an empty string', () => {
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
@@ -242,7 +244,7 @@ describe('<FilterCreator />', () => {
   describe('onAddFilter', () => {
     it('gets call with selected filter key & value when both value are valid and add filter button was clicked', () => {
       const onAddFilter = jest.fn();
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <FilterCreator
           {...mockDefaultProps}
           onAddFilter={onAddFilter}

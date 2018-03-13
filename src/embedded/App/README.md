@@ -1,6 +1,7 @@
 ---
 name: Embedded app
 category: Embedded
+order: 1
 hidePlayground: true
 keywords:
   - application wrapper
@@ -15,17 +16,6 @@ keywords:
 Embedded app is a wrapper for your entire application which provides access to the Shopify admin using the [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/getting-started). The props passed to this component initialize your connection to the Shopify admin. Once connected, components in your application can send and receive messages using the EASDK.
 
 This component only works within embedded apps. Read the [EASDK getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
-
----
-
-## Properties
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| apiKey | string | The API key for your application from the Partner dashboard |
-| shopOrigin | string | The current shop’s origin, provided in the session from the Shopify API |
-| forceRedirect | boolean | Forces a redirect to the relative admin path when not rendered in an iframe |
-| debug | boolean | Prints logs of each message passed through the EASDK |
 
 ---
 
@@ -54,3 +44,9 @@ ReactDOM.render(
   </EmbeddedApp>
 )
 ```
+
+---
+
+## Additional methods
+
+Some functionality of the underlying EASDK API, like displaying a flash message from within your embedded app, can be accessed through [various methods](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md#access-to-further-easdk-apis). Please note, these methods are scheduled to be removed in a future release of updated Polaris components and the current implementation will be deprecated. At that time, new methods will be provided and the old methods will become backwards compatible.

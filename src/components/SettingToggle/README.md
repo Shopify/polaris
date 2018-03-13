@@ -22,21 +22,6 @@ on or off.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to be able to turn settings on or off based on their preferences.
-
-### Solution
-
-Settings toggle is a visual indicator and control that lets merchants
-enable or disable something.
-
----
-
 ## Best Practices
 Settings toggles should:
 
@@ -76,12 +61,6 @@ say “Enable” to allow merchants to turn it on.
 - Turn on
 - Turn off
 <!-- end -->
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | Inner content of the card |
-| action | Action[] | Card header actions |
-| enabled | boolean | Sets toggle state to enabled or disabled |
 
 ## Examples
 

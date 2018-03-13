@@ -19,20 +19,35 @@ export interface Group {
 }
 
 export interface Props {
+  /** List of options to choose from */
   options?: Option[],
+  /** List of option groups to choose from */
   groups?: (Group | Option)[],
+  /** Label for the select */
   label: string,
+  /** Adds an action to the label */
   labelAction?: Action,
+  /** Visually hide the label */
   labelHidden?: boolean,
-  helpText?: React.ReactNode,
-  id?: string,
-  name?: string,
-  error?: Error,
+  /** Disable input */
   disabled?: boolean,
-  value?: string,
+  /** Additional text to aide in use */
+  helpText?: React.ReactNode,
+  /** Example text to display as placeholder */
   placeholder?: string,
+  /** ID for form input */
+  id?: string,
+  /** Name for form input */
+  name?: string,
+  /** Value for form input */
+  value?: string,
+  /** Display an error state */
+  error?: Error,
+  /** Callback when selection is changed */
   onChange?(selected: string, id: string): void,
+  /** Callback when select is focussed */
   onFocus?(): void,
+  /** Callback when focus is removed */
   onBlur?(): void,
 }
 

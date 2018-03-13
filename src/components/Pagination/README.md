@@ -25,20 +25,6 @@ Use pagination to allow navigation between pages that represent an ordered colle
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Long pages or lists of information can be overwhelming and hard to navigate. Alternatively, it can be a convenience to jump between objects related to each other in a sequence.
-
-### Solution
-
-Pagination helps to break up long sections of information. Alternatively, pagination provides a shortcut to navigate between pages when they represent items within a collection.
-
----
-
 ## Best practices
 
 Pagination should:
@@ -54,18 +40,6 @@ Pagination should:
 ## Content guidelines
 
 There are no editable content elements that are specific to the pagination component.
-
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| plain | boolean | A more subdued control for use in headers |
-| nextURL | string | The URL of the next page |
-| previousURL | string | The URL of the previous page |
-| hasNext | boolean | Whether there is a next page to show |
-| hasPrevious | boolean | Whether there is a previous page to show |
-| onNext | function | Callback when next button is clicked |
-| onPrevious | function | Callback when previous button is clicked |
-
 
 ## Examples
 

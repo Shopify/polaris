@@ -21,20 +21,6 @@ Headings are used as the titles of each major section of a page in the interface
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-There are lots of different sections in the Shopify product and sometimes it can be hard for merchants to orient themselves.
-
-### Solution
-
-Headings clearly remind merchants where they are in the product and help frame the interface.
-
----
-
 ## Best practices
 
 Headings should:
@@ -77,11 +63,6 @@ Conversational headings for areas like empty states and home cards are the only 
 #### Don’t
 - Two-step authentication
 <!-- end -->
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| element | string | The element name to use for the heading |
-| children | string or React.ReactNode | The content to display inside the heading |
 
 ## Examples
 

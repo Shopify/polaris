@@ -19,20 +19,6 @@ Page actions let merchants take key actions at the bottom of specific pages in t
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to be able to take important page actions, even after they’ve scrolled to the bottom of the page.
-
-### Solution
-
-Page actions show at the bottom of pages so that merchants don’t need to scroll up to take important actions.
-
----
-
 ## Best practices
 
 Page actions should:
@@ -81,11 +67,6 @@ Add menu item
 #### Don’t
 Add a menu item
 <!-- end -->
-
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| primaryAction | DisableableAction | The primary action for the page |
-| secondaryActions | ComplexAction[] | The secondary actions for the page |
 
 ## Examples
 

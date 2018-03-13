@@ -22,22 +22,6 @@ email templates for their shop.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants occasionally need to select a color and they need to be able to see
-a sample of available colors to make the best decision.
-
-### Solution
-
-The color picker component displays swatches of colors to make the selection
-process visual for merchants.
-
----
-
 ## Best practices
 
 * Use the alpha slider if you want to allow merchants to be able to select a
@@ -48,12 +32,6 @@ transparent color
 ## Content guidelines
 There are no customizable content elements in the color picker component.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| color | Color | The currently selected color |
-| allowAlpha | boolean | Allow user to select an alpha value |
-| onChange | function(color: HSBAColor) | Callback when color is selected |
-
 ## Examples
 
 ### Default color picker
@@ -62,13 +40,30 @@ Use when the merchant needs to select a color to make the selection a visual
 task rather than a technical one.
 
 ```jsx
-<ColorPicker
-  color={{
-    hue: 120,
-    brightness: 1,
-    saturation: 1,
-  }}
-/>
+class ColorPickerExample extends React.Component {
+  state = {
+    color: {
+      hue: 120,
+      brightness: 1,
+      saturation: 1,
+    },
+  };
+
+  render() {
+    const {color} = this.state;
+
+    return (
+      <ColorPicker
+        onChange={this.handleChange}
+        color={color}
+      />
+    )
+  }
+
+  handleChange = (color) => {
+    this.setState({color});
+  }
+}
 ```
 
 ### Colorpicker with transparent value
@@ -77,13 +72,30 @@ Use when attached to a visual builder to allow the designated object to have a
 transparent background that allows underlying objects to show through.
 
 ```jsx
-<ColorPicker
-  color={{
-    hue: 300,
-    brightness: 1,
-    saturation: 0.7,
-    alpha: 0.7
-  }}
-  allowAlpha
-/>
+class ColorPickerExample extends React.Component {
+  state = {
+    color: {
+      hue: 300,
+      brightness: 1,
+      saturation: 0.7,
+      alpha: 0.7
+    },
+  };
+
+  render() {
+    const {color} = this.state;
+
+    return (
+      <ColorPicker
+        onChange={this.handleChange}
+        color={color}
+        allowAlpha
+      />
+    )
+  }
+
+  handleChange = (color) => {
+    this.setState({color});
+  }
+}
 ```

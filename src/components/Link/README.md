@@ -27,20 +27,6 @@ Links are used to embed actions or pathways to more information in a sentence.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to be able to navigate to other sections of Shopify or take actions wherever they are in the interface.
-
-### Solution
-
-Links provide merchants with a way to navigate or take an action in the context of a string of content.
-
----
-
 ## Best practices
 
 Links should:
@@ -75,13 +61,6 @@ Orders
 #### Don’t
 To orders section
 <!-- end -->
-
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| url | string | The url to link to. |
-| children | string or React.ReactNode | The content to display inside link |
-| external | boolean | Use for a links that open a different site |
-| onClick | function() | Callback when a link is clicked |
 
 ## Examples
 

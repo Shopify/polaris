@@ -1,9 +1,9 @@
 @import './variables';
 
 .FiltersWrapper {
-  padding: $resource-list-header-padding-small $resource-list-header-padding-small 0;
+  padding: resource-list(header-padding-small) resource-list(header-padding-small) 0;
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     padding: spacing(base) spacing(base) 0;
   }
 
@@ -15,14 +15,14 @@
 .HeaderWrapper {
   display: flex;
   width: 100%;
-  min-height: $resource-list-header-min-height;
+  min-height: resource-list(header-min-height);
   align-items: flex-start;
-  padding: $resource-list-header-vertical-padding $resource-list-header-padding-small;
+  padding: resource-list(header-vertical-padding) resource-list(header-padding-small);
   position: relative;
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
-    padding: $resource-list-header-vertical-padding spacing();
+    padding: resource-list(header-vertical-padding) spacing();
   }
 
   + .ResourceList {
@@ -32,18 +32,19 @@
 
 .HeaderContentWrapper {
   display: flex;
-  min-height: $resource-list-header-content-min-height;
+  min-height: resource-list(header-content-min-height);
   position: absolute;
-  left: $resource-list-header-padding-small;
-  right: $resource-list-header-padding-small;
+  left: resource-list(header-padding-small);
+  right: resource-list(header-padding-small);
   opacity: 1;
   transition: opacity easing() duration();
+  z-index: resource-list(content-wrapper-stacking-order);
 
   .HeaderWrapper-inSelectMode & {
     opacity: 0;
   }
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     right: spacing();
     left: spacing();
     align-self: flex-start;
@@ -51,6 +52,9 @@
 }
 
 .SortWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
   position: relative;
 
@@ -58,7 +62,7 @@
     padding-right: spacing(tight);
   }
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 0 1 auto;
     position: relative;
     left: auto;
@@ -67,6 +71,15 @@
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       padding-right: 0;
     }
+  }
+}
+
+.SortLabel {
+  margin-right: spacing(tight);
+  display: none;
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    display: block;
   }
 }
 
@@ -81,7 +94,7 @@
     display: none;
   }
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     .HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       display: none;
@@ -95,10 +108,10 @@
 
 .BulkActionsWrapper {
   position: relative;
-  z-index: $resource-list-bulkactions-wrapper-z-index;
+  z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 0 1 auto;
     align-self: flex-start;
   }
@@ -107,7 +120,7 @@
 .CheckableButtonWrapper {
   display: none;
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 1;
     display: block;
   }
@@ -117,7 +130,7 @@
   flex: none;
   position: relative;
 
-  @include breakpoint-after($resource-list-breakpoint-small) {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
     display: none;
   }
 }
@@ -133,7 +146,8 @@
 }
 
 .ResourceListWrapper {
-  min-width: $resource-list-min-width;
+  min-width: resource-list(min-width);
+  position: relative;
 }
 
 .ResourceList {

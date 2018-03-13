@@ -17,20 +17,6 @@ Tags represent a set of interactive, merchant-supplied keywords that help label,
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to be able to add and remove keywords from objects (e.g. products or orders) to organize and categorize them.
-
-### Solution
-
-Tags are visual indicators of categories that can be changed or removed. They help merchants organize objects in the Shopify interface.
-
----
-
 ## Best Practices
 
 Tags should:
@@ -42,11 +28,6 @@ Tags should:
 ## Content guidelines
 
 Tags are either automatically generated or are created by merchants. There are no specific content guidelines for creating them.
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | string | Content to display in the tag |
-| onRemove | function() | Callback when tag is removed |
 
 ## Examples
 

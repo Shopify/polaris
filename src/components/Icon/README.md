@@ -22,20 +22,6 @@ Icons are used to visually communicate core parts of the product and available a
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants are pressed for time. They need visual ways to identify what’s happening in Shopify.
-
-### Solution
-
-Icons can alert merchants to changes in status and make the interface easier to scan.
-
----
-
 ## Best practices
 
 * Icons should be accessible: remember that people with people with limited vision may not be able to see icons. Review our [alternative text guidelines](/content/alternative-text) to make sure your use of icon works for all merchants.
@@ -52,13 +38,6 @@ Alt text should be written in [plain language](/content/grammar-and-mechanics#pl
 - Keep it short by excluding unnecessary words
 - Write in the [active voice](/content/grammar-and-mechanics#active-and-passive-voice)
 - Use words and language that our merchants use (avoid technical jargon)
-
-| Properties | Type | Description |
-| ---------- | ---- | ----------- |
-| source | SVGSource | The SVG contents to display in the icon |
-| color | Color | Sets the color for the SVG fill |
-| backdrop | boolean | Show a backdrop behind the icon |
-| accessibilityLabel | string | Descriptive text to be read to screenreaders |
 
 ## Examples
 

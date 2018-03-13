@@ -6,10 +6,15 @@ import Modal from './components/Modal';
 import ResourcePicker from './components/ResourcePicker';
 
 export interface Options {
+  /** The API key for your application from the Partner dashboard */
   apiKey: string,
+  /** The current shop’s origin, provided in the session from the Shopify API */
   shopOrigin: string,
+  /** Forces a redirect to the relative admin path when not rendered in an iframe */
   forceRedirect?: boolean,
+  /**  Metadata for the embedded app */
   metadata?: object,
+  /** Prints logs of each message passed through the EASDK */
   debug?: boolean,
 }
 

@@ -22,10 +22,15 @@ export interface TabDescriptor {
 }
 
 export interface Props {
-  selected: number,
-  tabs: TabDescriptor[],
-  fitted?: boolean,
+  /** Content to display in tabs */
   children?: React.ReactNode,
+  /** Index of selected tab */
+  selected: number,
+  /** List of tabs */
+  tabs: TabDescriptor[],
+  /** Fit tabs to container */
+  fitted?: boolean,
+  /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void,
 }
 

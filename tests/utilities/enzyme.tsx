@@ -1,6 +1,11 @@
-import {ReactWrapper, CommonWrapper} from 'enzyme';
+import {ReactWrapper, CommonWrapper, shallow, mount, ShallowWrapper, MountRendererProps, ShallowRendererProps} from 'enzyme';
 import * as React from 'react';
-import {get} from 'lodash';
+import {get, merge} from 'lodash';
+
+import {en} from '../../src/locales';
+
+import Intl from '../../src/components/Provider/Intl';
+import Link from '../../src/components/Provider/Link';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -124,4 +129,31 @@ function getInstance(wrapper: AnyWrapper) {
 
 function updateRoot(wrapper: AnyWrapper) {
   (wrapper as any).root().update();
+}
+
+function mergeProviderOptions(options: any = {}): any {
+  const intl = new Intl(en);
+  const link = new Link();
+  const context = {
+    polaris: {
+      intl,
+      link,
+    },
+  };
+
+  return merge(merge({}, {context}, options));
+}
+
+export function mountWithProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {
+  return mount(
+    node,
+    mergeProviderOptions(options),
+  );
+}
+
+export function shallowWithProvider<P>(node: React.ReactElement<P>, options?: ShallowRendererProps): ShallowWrapper<P, any> {
+  return shallow(
+    node,
+    mergeProviderOptions(options),
+  ).dive(options);
 }

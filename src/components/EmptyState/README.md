@@ -29,22 +29,6 @@ tried yet, and provide encouragement and support to help merchants progress.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-When a merchant first encounters a new product or feature, they need to
-understand what it is and be encouraged to try it.
-
-### Solution
-
-Empty states are an opportunity to provide explanation about the purpose and
-benefit of a feature, while gently encouraging merchants to give it a try.
-
----
-
 ## Best Practices
 
 Empty states should:
@@ -139,16 +123,6 @@ Add a menu item
 Secondary actions are used for less important actions such as “Learn more” or
 “Close” buttons. They should follow all the other content rules outlined for
 primary buttons.
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| heading | string | The empty state heading |
-| image | string | The image to use for small screens |
-| largeImage | string | The image to use for large screens |
-| imageContained | boolean | The image to use for large screens |
-| children | React.ReactNode | Elements to display inside empty state |
-| action | Action | Primary action for empty state |
-| secondaryAction | Action | Secondary action for empty state |
 
 ## Examples
 

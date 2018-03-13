@@ -19,23 +19,6 @@ click.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants who use Shopify represent a range of levels of experience and
-familiarity with using software. It can be challenging to build
-experiences that are clear to all merchants, all the time.
-
-### Solution
-
-Tooltips can provide additional explanations to merchants who need more
-information or help without cluttering up the interface.
-
----
-
 ## Best practices
 
 Tooltips should:
@@ -70,15 +53,6 @@ Post reach is the number of people who have seen your post in their News Feed.
 To continue using Shopify, this amount must be paid immediately.
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The children that activate the tooltip |
-| content | string | The content to display within the tooltip |
-| light | boolean | Display tooltip with a light background |
-| active | boolean | Toggle whether the tooltip is visible |
-| preferredPosition | enum['above', 'below'] | The direction the tooltip tries to display |
-| activatorWrapper | string | The element type to wrap the activator in |
-
 ## Examples
 
 ### Default tooltip
@@ -86,9 +60,11 @@ To continue using Shopify, this amount must be paid immediately.
 Use only when necessary to provide an explanation for an interface element.
 
 ```jsx
-<Tooltip content="This order has shipping labels.">
-  <Link>Order #1001</Link>
-</Tooltip>
+<div style={{padding: '75px 0'}}>
+  <Tooltip content="This order has shipping labels.">
+    <Link>Order #1001</Link>
+  </Tooltip>
+</div>
 ```
 
 ---

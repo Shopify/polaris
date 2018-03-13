@@ -39,6 +39,20 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
+## Screenshot examples
+
+These static images are provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.
+
+### Product picker - multiple product selection
+
+![Screenshot product picker - multiple product selection component](embedded/resource-picker/product-picker-multiple.jpg)
+
+### Collection and product picker - single product selection
+
+![Screenshot collection picker - single product selection component](embedded/resource-picker/collection-picker-single.jpg)
+
+---
+
 ## Examples
 
 ### Product picker
@@ -48,6 +62,7 @@ When you ask for products, the `onSelection` callback is called with an object t
 ```jsx
 <ResourcePicker
   products
+  allowMultiple
   open={this.state.open}
   onSelection={(resources) => {
     console.log('Selected products: ', resources.products);
@@ -65,7 +80,6 @@ Passing both `products` and `collections` allows the user to select from one or 
 <ResourcePicker
   products
   collections
-  allowMultiple
   open={this.state.open}
   onSelection={(resources) => {
     console.log('Selected products: ', resources.products);

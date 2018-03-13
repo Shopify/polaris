@@ -21,20 +21,6 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may need to choose more than one item from a list of options.
-
-### Solution
-
-A checkbox lets merchants choose one or many things from a list.
-
----
-
 ## Best practices
 
 Checkboxes should:
@@ -97,21 +83,6 @@ I agree to the Terms of Service.
 You agree to the Terms of Service
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| label | string or React.ReactNode | Label for the checkbox |
-| labelHidden | boolean | Visually hide the label |
-| checked | boolean or 'indeterminate' | Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox |
-| helpText | string or React.ReactNode | Additional text to aide in use |
-| disabled | boolean | Disable input |
-| id | string | ID for form input |
-| name | string | Name for form input |
-| value | string | Value for form input |
-| error | string | Display an error message |
-| onChange | function(newValue: boolean, id: string) | Callback when checkbox is toggled |
-| onFocus | function() | Callback when checkbox is focussed |
-| onBlur | function() | Callback when focus is removed |
-
 ## Examples
 
 ### Default checkboxes
@@ -119,7 +90,23 @@ You agree to the Terms of Service
 Use in forms to toggle the state of something on or off. Default checkboxes can appear in two states: selected and disabled, or unselected.
 
 ```jsx
-<Checkbox label="Basic checkbox" />
+class CheckboxExample extends React.Component {
+  state = {
+    checked: false,
+  };
+
+  render() {
+    const {checked} = this.state;
+
+    return (
+      <Checkbox checked={checked} label="Basic checkbox" onChange={this.handleChange} />
+    );
+  }
+
+  handleChange = (value) => {
+    this.setState({checked: value});
+  }
+}
 ```
 
 ---

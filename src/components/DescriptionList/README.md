@@ -20,22 +20,6 @@ glossary.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may need to reference a range of concepts to understand how they work
-at Shopify.
-
-### Solution
-
-Description lists associate a list item with a definition or description in a
-format that’s easy to reference and scan.
-
----
-
 ## Best practices
 
 Description lists should:
@@ -96,10 +80,6 @@ products added and the customer’s details.
 - Abandoned checkout: Details of products added to checkout but not purchased
 
 <!-- end -->
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| items | Item[] | Collection of items for list |
 
 ## Examples
 

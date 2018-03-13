@@ -3,7 +3,9 @@ import {HeadingTagName} from '../../types';
 import * as styles from './Heading.scss';
 
 export interface Props {
+  /** The element name to use for the heading */
   element?: HeadingTagName,
+  /** The content to display inside the heading */
   children?: React.ReactNode,
 }
 

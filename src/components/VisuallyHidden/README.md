@@ -24,20 +24,6 @@ Use when an element needs to be available to assistive technology (e.g. screen r
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-A content element may be visually redundant but provides important context to merchants who are using a screen reader.
-
-### Solution
-
-Wrap the piece of text in the visually hidden component so it doesn’t show on the interface, but will still be available to merchants using a screen reader.
-
----
-
 ## Best practices
 
 Visually hidden should:
@@ -52,12 +38,6 @@ Visually hidden should:
 ## Content guidelines
 
 There are no content elements specific to this component. Follow any guidelines appropriate to the element being hidden.
-
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| children | React.ReactNode | The content to be hidden visually |
-
 
 ## Examples
 

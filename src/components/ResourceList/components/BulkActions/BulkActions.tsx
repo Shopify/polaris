@@ -10,6 +10,7 @@ import {
   Button,
   EventListener,
 } from '../../../';
+import {withProvider, WithProviderProps} from '../../../Provider';
 import {ActionListSection} from '../../../ActionList/Section';
 import CheckableButton from '../CheckableButton';
 import BulkActionButton from './BulkActionButton';
@@ -50,7 +51,9 @@ const slideClasses = {
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
 
-export default class BulkActions extends React.PureComponent<Props, State> {
+export type CombinedProps = Props & WithProviderProps;
+
+class BulkActions extends React.PureComponent<CombinedProps, State> {
   state = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
@@ -58,8 +61,6 @@ export default class BulkActions extends React.PureComponent<Props, State> {
     measuring: true,
   };
 
-  private actionsActivatorLabel = 'Actions';
-  private moreActionsActivatorLabel = 'More actions';
   private containerNode: HTMLElement | null;
   private largeScreenButtonsNode: HTMLElement | null;
   private moreActionsNode: HTMLElement | null;
@@ -145,6 +146,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
+      polaris: {intl},
     } = this.props;
 
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
@@ -198,7 +200,7 @@ export default class BulkActions extends React.PureComponent<Props, State> {
               <BulkActionButton
                 disclosure
                 onAction={this.toggleSmallScreenPopover}
-                content={this.actionsActivatorLabel}
+                content={intl.translate('ResourceList.BulkActions.actionsActivatorLabel')}
               />
             }
             onClose={this.toggleSmallScreenPopover}
@@ -224,8 +226,8 @@ export default class BulkActions extends React.PureComponent<Props, State> {
       : [];
 
     const activatorLabel = !promotedActions || (promotedActions && numberOfPromotedActionsToRender === 0) && !measuring
-      ? this.actionsActivatorLabel
-      : this.moreActionsActivatorLabel;
+      ? intl.translate('ResourceList.BulkActions.actionsActivatorLabel')
+      : intl.translate('ResourceList.BulkActions.moreActionsActivatorLabel');
 
     let combinedActions: ActionListSection[] = [];
 
@@ -414,3 +416,5 @@ function instanceOfBulkActionArray(
 
   return actions.length === validList.length;
 }
+
+export default withProvider()(BulkActions);

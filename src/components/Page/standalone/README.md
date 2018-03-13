@@ -29,20 +29,6 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need a quick way to understand where they are, where they came from, and what they can do on a page in Shopify.
-
-### Solution
-
-Use the page component to provide the outer structure for a page, which creates consistent margins and supports the page title, breadcrumbs and page header actions.
-
----
-
 ## Best Practices
 
 The page component should:
@@ -119,23 +105,6 @@ Add menu item
 #### Don’t
 Add a menu item
 <!-- end -->
-
-
-| Prop        | Type   | Description |
-| ---         | ---    | --- |
-| title*      | string | Page title, in large type |
-| titleHidden | boolean | Visually hide the title |
-| icon        | string | App icon, for pages that are part of Shopify apps |
-| breadcrumbs | BreadcrumbProps['breadcrumbs'] | Collection of breadcrumbs |
-| children    | React.ReactNode | The contents of the page |
-| fullWidth   | boolean | Remove the normal max-width on the page |
-| singleColumn   | boolean | Decreases the maximum layout width. Intended for single-column layouts |
-| separator   | boolean | Adds a border to the bottom of the page header |
-| secondaryActions | ComplexAction[] | Collection of secondary page-level actions |
-| actionGroups   | ActionGroup[] | Collection of page-level groups of secondary actions |
-| primaryAction | DisableableAction | Primary page-level action |
-| pagination | PaginationDescriptor | Page-level pagination |
-
 
 ## Examples
 

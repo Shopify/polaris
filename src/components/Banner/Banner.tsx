@@ -19,12 +19,19 @@ import infoIcon from './icons/circle-information.svg';
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
 export interface Props {
-  icon?: IconProps['source'],
+  /** Title content for the banner. */
   title?: string,
+  /** Icon to display in the banner. */
+  icon?: IconProps['source'],
+  /** Sets the status of the banner. */
   status?: Status,
-  action?: DisableableAction & LoadableAction,
-  secondaryAction?: Action,
+  /** The child elements to render in the banner. */
   children?: React.ReactNode,
+  /** Action for banner */
+  action?: DisableableAction & LoadableAction,
+  /** Action | Displays a secondary action */
+  secondaryAction?: Action,
+  /** Callback when banner is dismissed */
   onDismiss?(): void,
 }
 

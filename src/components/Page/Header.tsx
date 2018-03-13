@@ -1,16 +1,17 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {IconableAction, DisableableAction, LoadableAction} from '../../types';
+import {IconableAction, DisableableAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
 import {Props as ItemProps} from '../ActionList/Item';
-import Breadcrumbs, {Props as BreadcrumbProps} from '../Breadcrumbs';
-import Pagination, {PaginationDescriptor} from '../Pagination';
+import Breadcrumbs from '../Breadcrumbs';
+import Pagination from '../Pagination';
 import DisplayText from '../DisplayText';
 import Popover from '../Popover';
 import ActionList from '../ActionList';
 
 import Action from './Action';
+import {HeaderProps} from './Page';
 import * as styles from './Page.scss';
 
 export type SecondaryAction = IconableAction & DisableableAction;
@@ -23,17 +24,7 @@ export interface ActionGroup {
   onActionAnyItem?: ItemProps['onAction'],
 }
 
-export interface Props {
-  title: string,
-  titleHidden?: boolean,
-  icon?: string,
-  separator?: boolean,
-  breadcrumbs?: BreadcrumbProps['breadcrumbs'],
-  primaryAction?: DisableableAction & LoadableAction,
-  secondaryActions?: SecondaryAction[],
-  pagination?: PaginationDescriptor,
-  actionGroups?: ActionGroup[],
-}
+export interface Props extends HeaderProps {}
 
 export interface State {
   openActionGroup?: string,
