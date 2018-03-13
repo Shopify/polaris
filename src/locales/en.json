@@ -1,42 +1,44 @@
 {
-  "Common": {
-    "undo": "Undo"
-  },
-
-  "ResourceList": {
-    "sortingLabel": "Sort by",
-    "defaultItemSingular": "item",
-    "defaultItemPlural": "items",
-    "showing": "Showing {itemsCount} {resource}",
-    "selected": "{selectedItemsCount} selected",
-    "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
-    "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
-    "emptySearchResultTitle": "No {resourceNamePlural} found",
-    "emptySearchResultDescription": "Try changing the filters or search term",
-
-    "Item": {
-      "selectItem": "Select Item",
-      "actionsDropdown": "Actions dropdown"
+  "Polaris": {
+    "Common": {
+      "undo": "Undo"
     },
 
-    "BulkActions": {
-      "actionsActivatorLabel": "Actions",
-      "moreActionsActivatorLabel": "More actions"
-    },
+    "ResourceList": {
+      "sortingLabel": "Sort by",
+      "defaultItemSingular": "item",
+      "defaultItemPlural": "items",
+      "showing": "Showing {itemsCount} {resource}",
+      "selected": "{selectedItemsCount} selected",
+      "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "emptySearchResultTitle": "No {resourceNamePlural} found",
+      "emptySearchResultDescription": "Try changing the filters or search term",
 
-    "FilterCreator": {
-      "filterButtonLabel": "Filter",
-      "selectFilterKeyPlaceholder": "Select a filter\u2026",
-      "addFilterButtonLabel": "Add filter",
-      "showAllWhere": "Show all {resourceNamePlural} where:"
-    },
+      "Item": {
+        "selectItem": "Select Item",
+        "actionsDropdown": "Actions dropdown"
+      },
 
-    "FilterControl": {
-      "textFieldLabel": "Search {resourceNamePlural}"
-    },
+      "BulkActions": {
+        "actionsActivatorLabel": "Actions",
+        "moreActionsActivatorLabel": "More actions"
+      },
 
-    "FilterValueSelector": {
-      "selectFilterValuePlaceholder": "Select a filter\u2026"
+      "FilterCreator": {
+        "filterButtonLabel": "Filter",
+        "selectFilterKeyPlaceholder": "Select a filter\u2026",
+        "addFilterButtonLabel": "Add filter",
+        "showAllWhere": "Show all {resourceNamePlural} where:"
+      },
+
+      "FilterControl": {
+        "textFieldLabel": "Search {resourceNamePlural}"
+      },
+
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Select a filter\u2026"
+      }
     }
   }
 }

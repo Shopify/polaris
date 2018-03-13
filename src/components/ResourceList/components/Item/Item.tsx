@@ -120,7 +120,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
           <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
               id={this.checkboxId}
-              label={intl.translate('ResourceList.Item.selectItem')}
+              label={intl.translate('Polaris.ResourceList.Item.selectItem')}
               labelHidden
               onChange={this.handleSelection}
               checked={selected}
@@ -166,7 +166,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         disclosureMarkup = (
           <div className={styles.Disclosure} onClick={stopPropagation}>
             <Popover
-              activator={<Button aria-label={intl.translate('ResourceList.Item.actionsDropdown')} onClick={this.handleActionsClick} plain icon="horizontalDots" />}
+              activator={<Button aria-label={intl.translate('Polaris.ResourceList.Item.actionsDropdown')} onClick={this.handleActionsClick} plain icon="horizontalDots" />}
               onClose={this.handleCloseRequest}
               active={actionsMenuVisible}
             >

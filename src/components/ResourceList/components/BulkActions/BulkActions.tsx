@@ -200,7 +200,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
               <BulkActionButton
                 disclosure
                 onAction={this.toggleSmallScreenPopover}
-                content={intl.translate('ResourceList.BulkActions.actionsActivatorLabel')}
+                content={intl.translate('Polaris.ResourceList.BulkActions.actionsActivatorLabel')}
               />
             }
             onClose={this.toggleSmallScreenPopover}
@@ -226,8 +226,8 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
       : [];
 
     const activatorLabel = !promotedActions || (promotedActions && numberOfPromotedActionsToRender === 0) && !measuring
-      ? intl.translate('ResourceList.BulkActions.actionsActivatorLabel')
-      : intl.translate('ResourceList.BulkActions.moreActionsActivatorLabel');
+      ? intl.translate('Polaris.ResourceList.BulkActions.actionsActivatorLabel')
+      : intl.translate('Polaris.ResourceList.BulkActions.moreActionsActivatorLabel');
 
     let combinedActions: ActionListSection[] = [];
 

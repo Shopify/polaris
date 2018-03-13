@@ -47,7 +47,7 @@ class FilterControl extends React.Component<CombinedProps> {
       polaris: {intl},
     } = this.props;
 
-    const textFieldLabel = intl.translate('ResourceList.FilterControl.textFieldLabel', {
+    const textFieldLabel = intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
       resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
     });
 
