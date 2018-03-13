@@ -45,6 +45,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
 * Exposed Status from the Banner component ([#998](https://github.com/Shopify/polaris-react/pull/998))
 
+### Documentation
+* Clarified intended usage for EmptyState ([#1068](https://github.com/Shopify/polaris-react/pull/1068))
+
 ### Chores
 * Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
 
