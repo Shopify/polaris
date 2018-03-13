@@ -27,21 +27,6 @@ clutter up the interface.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may need to select a single item from a longer list of choices.
-
-### Solution
-
-The select component displays a long list of options in a drop down menu that
-merchants can scroll through before they make a selection.
-
----
-
 ## Best Practices
 The select component should:
 

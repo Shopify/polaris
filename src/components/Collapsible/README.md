@@ -28,21 +28,6 @@ all the time.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may occasionally need access to information that might overwhelm
-the interface or push important details too far down the page.
-
-### Solution
-
-The collapsible component lets merchants read longer form information on their own time.
-
----
-
 ## Best practices
 The collapsible component should:
 

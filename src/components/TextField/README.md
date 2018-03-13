@@ -46,20 +46,6 @@ options and supports several text formats including numbers.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to add information to Shopify.
-
-### Solution
-
-Text fields are input fields that merchants can type into.
-
----
-
 ## Best practices
 
 Text fields should:

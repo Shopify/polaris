@@ -21,20 +21,6 @@ Footer help is used to refer merchants to more information in the Shopify Help d
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants want to understand how a product or feature works in more detail than we have room for in the interface.
-
-### Solution
-
-Footer help lets merchants find more information by linking to help documentation in the context of the product or feature the merchant is viewing.
-
----
-
 ## Best practices
 
 Footer help should:

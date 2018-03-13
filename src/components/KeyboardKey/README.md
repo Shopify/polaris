@@ -17,20 +17,6 @@ Keyboard key is used to educate merchants about keyboard shortcuts.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Some merchants, particularly power users, may want to find ways to speed up their workflows.
-
-### Solution
-
-The keyboard key component demonstrates how to speed up work using shortcuts.
-
----
-
 ## Best practices
 
 The keyboard key component should:

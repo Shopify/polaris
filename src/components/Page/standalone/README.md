@@ -29,20 +29,6 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need a quick way to understand where they are, where they came from, and what they can do on a page in Shopify.
-
-### Solution
-
-Use the page component to provide the outer structure for a page, which creates consistent margins and supports the page title, breadcrumbs and page header actions.
-
----
-
 ## Best Practices
 
 The page component should:

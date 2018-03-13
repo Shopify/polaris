@@ -4,17 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!--## Unreleased-->
+## Unreleased
+
 ### Bug fixes
 * Fixed disclosure centering on the tab component ([#1131](https://github.com/Shopify/polaris-react/pull/1131))
 
-## 1.12.2 - 2018-03-08
+### Documentation
+* Removed purpose section from component READMEs ([#1134](https://github.com/Shopify/polaris-react/pull/1134))
+* Added Embedded page under the Embedded section ([#956](https://github.com/Shopify/polaris-react/pull/956))
+* Added “Using embedded components” section ([#959](https://github.com/Shopify/polaris-react/pull/959))
+* Added screenshots to the embedded components ([#1008](https://github.com/Shopify/polaris-react/pull/1008))
 
+## 1.12.2 - 2018-03-08
 ### Documentation
 * Moving property descriptions out of READMEs and into source files. ([#1125](https://github.com/Shopify/polaris-react/pull/1125))
 
 ## 1.12.1 - 2018-03-06
-
 ### Bug fixes
 * Fixed server-side environments ([#1120](https://github.com/Shopify/polaris-react/pull/1120))
 

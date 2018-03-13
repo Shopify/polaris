@@ -17,20 +17,6 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants are scanning the page, orienting themselves or searching visually for a particular item.
-
-### Solution
-
-Thumbnails provide a visual anchor and help structure the page. Because they are a visual representation, thumbnails make individual items identifiable at a glance.
-
----
-
 ## Best practices
 
 Thumbnails should:

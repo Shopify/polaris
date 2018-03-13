@@ -343,26 +343,6 @@ class ResourceListExample extends React.Component {
 
 ---
 
-## Properties
-
-| Prop          | Type | Description |
-| ---           | --- | --- |
-| resourceName  | {singular: string, plural: string} | Name of the resource, such as customers or products |
-| items\*       | any[] | Item data; each item is passed to \`renderItem\` |
-| renderItem\*  | function(item: any, id: string): React.ReactNode | Function to render each list item |
-| idForItem     | function(item: any, index: number): string | Function to customize the unique ID for each item |
-| selectedItems | string[] | Collection of IDs for the currently selected items |
-| onSelectionChange | (selectedItems: string[]): void | Callback when selection is changed |
-| bulkActions   | (BulkAction &#124; BulkActionListSection)[] | Actions available on the currently selected items |
-| promotedBulkActions | BulkAction[] | Up to 2 bulk actions that will be given more prominence |
-| sortValue     | string | Current value of the sort control |
-| sortOptions   | Option[] | Collection of sort options to choose from |
-| onSortChange  | function(selected: string, id: string): void | Callback when sort option is changed |
-| filterControl | React.ReactNode | Accepts an element to use as the filtering UI; Normally \`ResourceList.FilterControl\` |
-| hasMoreItems | boolean | If true and all items are selected, shows an option to select all items across a paginated list |
-
----
-
 ## Build
 
 Using a resource list in a project involves combining the following components and subcomponents:

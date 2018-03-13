@@ -27,22 +27,6 @@ choices.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to be able to select from a set of options that are related to
-one another.
-
-### Solution
-
-Grouping things together in a choice list is a way to visually present options
-so that merchants can decide what to select.
-
----
-
 ## Best practices
 
 Choice lists should:

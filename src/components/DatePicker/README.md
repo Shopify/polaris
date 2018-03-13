@@ -23,22 +23,6 @@ consistently applied wherever dates need to be selected across Shopify.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need to choose dates in a way that’s visual and avoids confusion
-caused by localization issues.
-
-### Solution
-
-A consistent date picker lets merchants quickly select a date or range of
-dates.
-
----
-
 ## Best practices
 
 Date pickers should:

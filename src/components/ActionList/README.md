@@ -19,20 +19,6 @@ Action lists render a list of actions or selectable options. This component is u
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-There are lots of different paths a merchant can take. Listing them all out in the interface would make the experience feel overwhelming and cluttered.
-
-### Solution
-
-Action lists in popovers let merchants expose additional information and actions when they’re ready to explore them.
-
----
-
 ## Best practices
 
 Actions lists should:

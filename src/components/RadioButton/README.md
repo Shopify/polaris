@@ -19,20 +19,6 @@ make a single selection.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Sometimes only one choice or option is available to merchants. There are only a few choices to display, and the [choice list component](/components/forms/choice-list) can’t be used.
-
-### Solution
-
-Radio buttons present multiple items and require merchants to pick only one thing from a list.
-
----
-
 ## Best practices
 
 Radio buttons should:
@@ -100,7 +86,7 @@ class RadioButtonExample extends React.Component {
           label="Accounts are disabled"
           helpText="Customers will only be able to check out as guests."
           checked={(value === 'disabled')}
-          id="disabled"	
+          id="disabled"
           name="accounts"
           onChange={this.handleChange}
         />

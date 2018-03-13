@@ -1,6 +1,7 @@
 ---
 name: Embedded app
 category: Embedded
+order: 1
 hidePlayground: true
 keywords:
   - application wrapper
@@ -43,3 +44,9 @@ ReactDOM.render(
   </EmbeddedApp>
 )
 ```
+
+---
+
+## Additional methods
+
+Some functionality of the underlying EASDK API, like displaying a flash message from within your embedded app, can be accessed through [various methods](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md#access-to-further-easdk-apis). Please note, these methods are scheduled to be removed in a future release of updated Polaris components and the current implementation will be deprecated. At that time, new methods will be provided and the old methods will become backwards compatible.

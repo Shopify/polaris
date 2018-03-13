@@ -27,22 +27,6 @@ easier for merchants to scan, read, and get things done.
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants may be feeling overwhelmed by too much information or too many
-different tasks.
-
-### Solution
-
-Grouping tasks and concepts into digestible sections using cards helps
-merchants complete their tasks faster.
-
----
-
 ## Best practices
 
 Cards should:

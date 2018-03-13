@@ -22,20 +22,6 @@ The layout component is used to create the main layout on a page. Layouts sectio
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Merchants need information to be organized consistently so they can manage and complete tasks on Shopify.
-
-### Solution
-
-The layout component ensures that pages across Shopify can be organized to accommodate the complicated information and tasks merchants need, while following consistent interface patterns.
-
----
-
 ## Best practices
 
 The layout component should:

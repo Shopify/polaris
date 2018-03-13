@@ -1,6 +1,7 @@
 ---
 name: Embedded alert
 category: Embedded
+order: 3
 hidePlayground: true
 keywords:
   - embedded
@@ -34,6 +35,35 @@ keywords:
 Embedded alerts are similar to [embedded modals](https://polaris.shopify.com/components/embedded/embedded-modal), but use no more than two calls to action and only one string of body text. They are simpler to implement than embedded modals, and add consistency for alert and confirmation messages.
 
 This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
+
+---
+
+## Properties
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| open* | boolean | Whether the alert is open |
+| children* | string | The content to display inside the alert |
+| title | string | The alert title |
+| destructive | boolean | For confirming a destructive or dangerous action |
+| confirmContent* | string | The content of the confirmation button |
+| cancelContent | string | The content of the cancel button |
+| onConfirm* | function() | Callback when the confirmation button is clicked |
+| onCancel* | function() | Callback when the alert is closed, or when the cancel button is clicked |
+
+---
+
+## Screenshot examples
+
+These static images are provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.
+
+### Basic alert
+
+![Screenshot basic alert component](embedded/alert/basic-alert.jpg)
+
+### Destructive warning
+
+![Screenshot destructive warning component](embedded/alert/destructive-warning.jpg)
 
 ---
 
@@ -227,15 +257,15 @@ Use passing `destructive` to make it clear to the merchant that the action is po
 
 ```jsx
 <Alert
-  title="Unsaved changes"
+  title="Discard unsaved changes?"
   open={this.state.open}
-  destructive={true}
-  confirmContent="Discard changes"
+  destructive
+  confirmContent="Keep editing"
   onConfirm={() => this.setState({open: false, confirmed: true})}
-  cancelContent="Continue editing"
+  cancelContent="Discard"
   onCancel={() => this.setState({open: false, confirmed: false})}
 >
-  Leaving will cause the changes to your product to be lost.
+  This will delete all edits since you last saved.
 </Alert>
 ```
 

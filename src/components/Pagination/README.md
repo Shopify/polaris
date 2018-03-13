@@ -25,20 +25,6 @@ Use pagination to allow navigation between pages that represent an ordered colle
 
 ---
 
-## Purpose
-
-Put the merchant first by identifying the problem they face and the component that helps them solve it.
-
-### Problem
-
-Long pages or lists of information can be overwhelming and hard to navigate. Alternatively, it can be a convenience to jump between objects related to each other in a sequence.
-
-### Solution
-
-Pagination helps to break up long sections of information. Alternatively, pagination provides a shortcut to navigate between pages when they represent items within a collection.
-
----
-
 ## Best practices
 
 Pagination should:
