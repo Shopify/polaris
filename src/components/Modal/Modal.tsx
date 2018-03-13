@@ -18,41 +18,68 @@ const IFRAME_LOADING_HEIGHT = 200;
 export type Width = 'large' | 'fullwidth';
 
 export interface ModalProps extends FooterProps {
+  /** The url that will be loaded as the content of the modal */
   src?: string,
+  /** Modal title, in large type */
   title?: React.ReactNode,
+  /** The content to display inside modal */
   children?: React.ReactNode,
+  /** Inner content of the footer */
   footer?: React.ReactNode,
+  /** Disable animations and open modal instantly */
   instant?: boolean,
+  /** Automatically adds sections to modal */
   sectioned?: boolean,
+  /** Increases the modal width */
   large?: boolean,
+  /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean,
+  /** Replaces modal content with a spinner while a background action is being performed */
   loading?: boolean,
+  /** Callback when iframe has loaded */
   onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void,
+  /** Callback when the modal is closed */
   onClose(): void,
+  /** Callback when modal transition animation has ended */
   onTransitionEnd?(): void,
 }
 
 export interface EASDKProps {
+  /** The URL that will be loaded as the content of the modal */
   src: string,
+  /** The content for the title of the modal */
   title?: string,
+  /** Controls the width of the modal (in pixels) */
   width?: Width,
+  /** Controls the height of the modal (in pixels) */
   height?: number,
+  /** Primary action for the modal */
   primaryAction?: DisableableAction,
+  /** Collection of secondary action for the modal */
   secondaryActions?: DisableableAction[],
+  /** Callback when the modal is closed */
   onClose(): void,
 }
 
 export interface AlertProps {
+  /** The content to display inside the alert */
   children?: string,
+  /** The alert title */
   title?: string,
+  /** For confirming a destructive or dangerous action */
   destructive?: boolean,
+  /** The content of the confirmation button */
   confirmContent: string,
+  /** The content of the cancel button */
   cancelContent?: string,
+  /** Callback when the alert is closed, or when the cancel button is clicked */
   onClose?(): void,
+  /** Callback when the confirmation button is clicked */
   onConfirm(): void,
 }
 
 export type Props = {
+  /** Whether the modal is open or not */
   open: boolean,
 } & ( ModalProps | AlertProps | EASDKProps);
 

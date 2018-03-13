@@ -4,8 +4,11 @@ import {ComplexAction} from '../../../types';
 import * as styles from '../Modal.scss';
 
 export interface Props {
+  /** Primary action */
   primaryAction?: ComplexAction,
+  /** ollection of secondary actions */
   secondaryActions?: ComplexAction[],
+  /** The content to display inside modal */
   children?: React.ReactNode,
 }
 

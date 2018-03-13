@@ -246,13 +246,8 @@ Use passing `destructive` to make it clear to the merchant that the action is po
   destructive
   confirmContent="Keep editing"
   onConfirm={() => this.setState({open: false, confirmed: true})}
-<<<<<<< HEAD
   cancelContent="Discard"
-  onCancel={() => this.setState({open: false, confirmed: false})}
-=======
-  cancelContent="Continue editing"
   onClose={() => this.setState({open: false, confirmed: false})}
->>>>>>> Added embedded alert to modal and changed onCancel to onClose
 >
   This will delete all edits since you last saved.
 </Alert>
