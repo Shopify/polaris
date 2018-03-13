@@ -24,9 +24,6 @@ The closer the spacing, the closer the relationship between content topics. The 
 Use tight spacing to relate content topics to each other
 Use loose spacing to separate concepts that are independent of each other
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| spacing | enum['tight', 'loose'] | The amount of vertical spacing children will get between them |
 ## Examples
 
 ### Default text container
