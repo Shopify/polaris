@@ -16,6 +16,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Update `TextField` type with currency ([#908](https://github.com/Shopify/polaris-react/pull/908))
 * Added `ariaControls`, `ariaExpanded` prop to Button ([#978](https://github.com/Shopify/polaris-react/pull/978/))
 
+### Documentation
+* Clarified intended usage for EmptyState ([#1068](https://github.com/Shopify/polaris-react/pull/1068))
+
 ### Chores
 * Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
 
