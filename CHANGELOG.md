@@ -14,6 +14,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added Embedded page under the Embedded section ([#956](https://github.com/Shopify/polaris-react/pull/956))
 * Added “Using embedded components” section ([#959](https://github.com/Shopify/polaris-react/pull/959))
 * Added screenshots to the embedded components ([#1008](https://github.com/Shopify/polaris-react/pull/1008))
+* Clarified usage of card header and footer actions ([#1143](https://github.com/Shopify/polaris-react/pull/1143))
 
 ## 1.12.2 - 2018-03-08
 ### Documentation
