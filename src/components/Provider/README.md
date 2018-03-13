@@ -111,7 +111,7 @@ With an `i18n` object, the provider component will override default English tran
 
 ### With linkComponent
 
-With a `linkComponent`, the provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughtout in your application instead of the default `a` tag.
+With a `linkComponent`, the provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughout your application instead of the default `a` tag.
 
 ```jsx
 class ProviderLinkExample extends React.Component {
