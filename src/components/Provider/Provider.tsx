@@ -7,6 +7,7 @@ import Link from './Link';
 import {polarisProviderContextTypes, TranslationDictionary} from './types';
 
 export interface Props {
+  /** A locale object or array of locale objects that overrides default translations */
   i18n?: TranslationDictionary | TranslationDictionary[],
   linkComponent?: LinkLikeComponent,
 }

@@ -13,17 +13,13 @@ keywords:
 
 # Provider
 
-Provider is a required component that enables the internationalization of strings in Polaris components by sharing global settings throughout the hierarchy of your application.
+Provider is a required component that enables sharing global settings throughout the hierarchy of your application.
 
 ---
 
 ## Best practices
 
-Provider is required. Without it, your application will break. You must wrap the root (the top) of your application in the provider component. We've created [several examples to show how that's done](https://github.com/Shopify/polaris/blob/master/examples/README.md).
-
-| Prop  | Type   | Description | Default |
-| ----- | ------ | ----------- | ------- |
-| i18n | any | A locale object or array of locale objects that overrides default translations | English |
+Provider is required. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the provider component. We've created [several examples to show how that's done](https://github.com/Shopify/polaris/blob/master/examples/README.md).
 
 ## Examples
 
