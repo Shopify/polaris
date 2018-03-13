@@ -14,6 +14,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added Embedded page under the Embedded section ([#956](https://github.com/Shopify/polaris-react/pull/956))
 * Added “Using embedded components” section ([#959](https://github.com/Shopify/polaris-react/pull/959))
 * Added screenshots to the embedded components ([#1008](https://github.com/Shopify/polaris-react/pull/1008))
+* Clarified usage of card header and footer actions ([#1143](https://github.com/Shopify/polaris-react/pull/1143))
 
 ## 1.12.2 - 2018-03-08
 ### Documentation
@@ -44,6 +45,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Updated the base red color to improve contrast ([#1076](https://github.com/Shopify/polaris-react/pull/1076))
 * Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
 * Exposed Status from the Banner component ([#998](https://github.com/Shopify/polaris-react/pull/998))
+* Added `titleHidden` prop to Page ([#1033](https://github.com/Shopify/polaris-react/pull/1033))
+
+### Documentation
+* Clarified intended usage for EmptyState ([#1068](https://github.com/Shopify/polaris-react/pull/1068))
 
 ### Chores
 * Added version number to source ([#856](https://github.com/Shopify/polaris-react/pull/856))
@@ -52,7 +57,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Changed Action to Disableable Action in Card ([#838](https://github.com/Shopify/polaris-react/pull/838))
 ### Enhancements
 * Added `renderChildren` prop to choice list component ([#993](https://github.com/Shopify/polaris-react/pull/993))
-* Added `titleHidden` prop to Page ([#1033](https://github.com/Shopify/polaris-react/pull/1033))
 
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices ([#759](https://github.com/Shopify/polaris-react/issues/759))

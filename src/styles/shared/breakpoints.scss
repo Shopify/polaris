@@ -14,7 +14,18 @@ $nav-size: em(layout-width(nav));
 $nav-min-window: em(layout-width(page-with-nav));
 
 @function breakpoint($value, $adjustment: 0) {
-  @return em($value) + em($adjustment);
+  $adjusted-value: em($adjustment);
+
+  // Reduces chances to have a style void
+  // between two media queries
+  // See https://github.com/sass-mq/sass-mq/issues/6
+  @if ($adjustment == -1px) {
+    $adjusted-value: -0.01em;
+  } @else if ($adjustment == 1px) {
+    $adjusted-value: 0.01em;
+  }
+
+  @return em($value) + $adjusted-value;
 }
 
 // These end up being too awkward because they are already multiline.
