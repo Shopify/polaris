@@ -7,6 +7,10 @@
 
   &:hover {
     @include state(hover);
+
+    .Actions {
+      display: flex;
+    }
   }
 
   &:active {
