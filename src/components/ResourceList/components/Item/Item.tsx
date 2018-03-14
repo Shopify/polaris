@@ -3,7 +3,6 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {noop} from '@shopify/javascript-utilities/other';
 
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
@@ -216,11 +215,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
           aria-describedby={this.id}
           className={styles.Link}
           url={url}
+          onFocus={this.handleAnchorFocus}
+          onBlur={this.handleFocusedBlur}
         />
       )
       : null;
-
-    const tabIndex = this.props.onClick ? 0 : -1;
 
     return (
       <div
@@ -229,9 +228,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onClick={this.handleClick}
-        onKeyUp={this.handleKeypress}
-        onMouseDown={this.handleMouseDown}
-        tabIndex={tabIndex}
         testID="Item-Wrapper"
       >
         {urlMarkup}
@@ -246,21 +242,34 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleFocus() {
-    this.setState({focused: true});
+  private handleAnchorFocus() {
+    this.setState({focused: true, focusedInner: false});
   }
 
   @autobind
-  private handleMouseDown() {
-    this.setState({focusedInner: true});
+  private handleFocusedBlur() {
+    this.setState({focused: true, focusedInner: true});
+  }
+
+  @autobind
+  private handleFocus(event: React.FocusEvent<HTMLElement>) {
+    const status = (event.target as HTMLInputElement).checked;
+    // isSelected is called with outdated props
+    // setTimeout is used to defer the comparison
+    // and place it at the end of the stack
+    setTimeout(() => {
+      const selected = this.isSelected();
+      if (status !== undefined && selected === status) {
+        this.setState({focused: true});
+      }
+    }, 0);
   }
 
   @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
-    const isInside = this.compareEventNode(event);
     if (this.node == null || !this.node.contains(event.relatedTarget as HTMLElement)) {
       this.setState({focused: false, focusedInner: false});
-    } else if (isInside) {
+    } else if ((event.target as HTMLInputElement).type === 'checkbox') {
       this.setState({focusedInner: true});
     }
   }
@@ -276,17 +285,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     const {id} = this.props;
     const {onSelectionChange} = this.context;
     if (id == null || onSelectionChange == null) { return; }
+    this.setState({focused: true, focusedInner: true});
     onSelectionChange(value, id);
-  }
-
-  @autobind
-  private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
-    const {onClick = noop} = this.props;
-    const {key} = event;
-
-    if (key === 'Enter') {
-      onClick();
-    }
   }
 
   @autobind
@@ -324,12 +324,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleCloseRequest() {
     this.setState({actionsMenuVisible: false});
-  }
-
-  private compareEventNode(event: React.FocusEvent<HTMLElement>) {
-    return this.props.onClick
-      ? event.target === this.node
-      : (event.target as HTMLElement).tagName.toLowerCase() === 'a';
   }
 
   private isSelected() {
