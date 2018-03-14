@@ -11,26 +11,32 @@ const CheckableButtonProps = {
 };
 
 describe('<CheckableButton />', () => {
-  describe('props', () => {
-    it('selected is correctly passed down to CheckableButton', () => {
+  describe('select', () => {
+    it('correctly passes down to Checkbox', () => {
       const {selected} = CheckableButtonProps;
       const element = shallow(<CheckableButton {...CheckableButtonProps} />);
       expect(element.find(Checkbox).prop('checked')).toEqual(selected);
     });
+  });
 
-    it('label is correctly passed down to CheckableButton', () => {
+  describe('label', () => {
+    it('correctly passes down to Checkbox', () => {
       const {label} = CheckableButtonProps;
       const element = shallow(<CheckableButton {...CheckableButtonProps} />);
       expect(element.find(Checkbox).prop('label')).toEqual(label);
     });
+  });
 
-    it('accessibilityLabel is applied when provided', () => {
+  describe('accessibilityLabel', () => {
+    it('sets the aria-label attribute when provided', () => {
       const {accessibilityLabel} = CheckableButtonProps;
       const element = shallow(<CheckableButton {...CheckableButtonProps} />);
       expect(element.find('div').first().prop('aria-label')).toEqual(accessibilityLabel);
     });
+  });
 
-    it('onToggleAll is correctly called on click', () => {
+  describe('onToggleAll', () => {
+    it('is called when the CheckableButton is clicked', () => {
       const spy = jest.fn();
       const element = mount(<CheckableButton {...CheckableButtonProps} onToggleAll={spy}/>);
       element.find('div').first().simulate('click');
