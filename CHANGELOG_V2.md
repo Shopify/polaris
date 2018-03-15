@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!-- ## Unreleased -->
+
+### New Components
+- Data table component ([#780](https://github.com/Shopify/polaris-react/pull/780))
+
 ### Enhancements
 - Added optional `id` props to more components, and restructured the prop definitions to allow projects to make `id` props mandatory ([#1138](https://github.com/Shopify/polaris-react/pull/1138))
 
@@ -12,9 +16,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Merged latest changes from v1 into v2
 
 ## 2.0.0-beta.8 - 2018-03-01
-
-### New Components
-- Data table component ([#780](https://github.com/Shopify/polaris-react/pull/780))
 
 ### Enhancements
 - Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))

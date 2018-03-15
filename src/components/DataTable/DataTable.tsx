@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {withProvider, WithProviderProps} from '../../components/Provider';
@@ -32,6 +32,11 @@ interface TableMeasurements {
   fixedColumnWidth: number,
 }
 
+export interface ScrollPosition {
+  left: number,
+  top?: number,
+}
+
 export interface Props {
   /** List of data types, which determines content alignment for each column. Numeric content aligns right and text content aligns left. */
   columnContentTypes: ColumnContentType[],
@@ -41,6 +46,8 @@ export interface Props {
   totals?: TableData[],
   /** Lists of data points which map to table body rows. */
   rows: TableData[][],
+  /** Truncate content in first column instead of wrapping. */
+  truncate?: boolean,
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData,
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
@@ -61,6 +68,8 @@ export interface State {
   sorted?: boolean,
   sortedColumnIndex?: number,
   sortDirection?: SortDirection,
+  heights: number[],
+  preservedScrollPosition: ScrollPosition,
 }
 
 export class DataTable extends React.PureComponent<CombinedProps, State> {
@@ -69,6 +78,8 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     collapsed: false,
     columnVisibilityData: [],
     sorted: (this.props.sortable && this.props.sortable.length > 0),
+    heights: [],
+    preservedScrollPosition: {left: 0},
   };
 
   private dataTable: HTMLElement;
@@ -94,11 +105,11 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 
   render() {
-
     const {
       headings,
       totals,
       rows,
+      truncate,
       footerContent,
       sortable,
       defaultSortDirection = 'ascending',
@@ -108,6 +119,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const {
       collapsed,
       columnVisibilityData,
+      heights,
       currentColumn,
       sortedColumnIndex = initialSortColumnIndex,
       sortDirection = defaultSortDirection,
@@ -132,7 +144,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       : null;
 
     const totalsMarkup = totals
-      ? <tr>{insertPresentationalCell(totals).map(this.renderTotals)}</tr>
+      ? <tr >{insertPresentationalCell(totals).map(this.renderTotals)}</tr>
       : null;
 
     const headingMarkup = (
@@ -152,24 +164,28 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
               : 'none';
 
             sortableHeadingProps = {
+              defaultSortDirection,
               sorted: isSorted,
               sortable: isSortable,
               sortDirection: direction,
-              defaultSortDirection,
+              onSort: this.defaultOnSort(index),
             };
           }
+
+          const height = !truncate ? heights[0] : null;
 
           return (
             <Cell
               header
               key={id}
               testID={id}
+              height={height}
               content={heading}
               contentType={contentTypes[headingIndex]}
               fixed={headingIndex === 0}
+              truncate={truncate}
               presentational={headingIndex === 1}
               {...sortableHeadingProps}
-              onSort={this.defaultOnSort(index)}
             />
           );
         })}
@@ -177,6 +193,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     );
 
     const bodyMarkup = rows.map(this.defaultRenderRow);
+    const style = footerContent ? {marginBottom: `${heights[heights.length - 1]}px`} : {};
 
     return (
       <div className={className} ref={this.setDataTable}>
@@ -188,7 +205,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             navigateTableRight={this.navigateTable('right')}
           />
         </div>
-        <div className={styles.ScrollContainer} ref={this.setScrollContainer}>
+        <div className={styles.ScrollContainer} ref={this.setScrollContainer} style={style}>
           <EventListener event="resize" handler={this.handleResize} />
           <EventListener capture event="scroll" handler={this.scrollListener} />
           <table className={styles.TableWrapper} ref={this.setTable}>
@@ -220,13 +237,52 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
+  @debounce()
   private handleResize() {
+    const {footerContent, truncate} = this.props;
     const collapsed = this.table.scrollWidth > this.dataTable.offsetWidth;
     this.scrollContainer.scrollLeft = 0;
-    this.setState({
-      collapsed,
-      ...this.calculateColumnVisibilityData(collapsed),
-    });
+    this.setState(
+      {
+        collapsed,
+        heights: [],
+        ...this.calculateColumnVisibilityData(collapsed),
+      },
+      () => { if (footerContent || !truncate) { this.setHeightsAndScrollPosition(); } },
+    );
+  }
+
+  @autobind
+  private tallestCellHeights() {
+    const {footerContent, truncate} = this.props;
+    const rows = Array.from(this.table.getElementsByTagName('tr') as NodeListOf<HTMLElement>);
+    let {heights} = this.state;
+
+    if (!truncate) {
+      return heights = rows.map((row) => {
+        const fixedCell = (row.childNodes as NodeListOf<HTMLElement>)[0];
+        return Math.max(row.clientHeight, fixedCell.clientHeight);
+      });
+    }
+
+    if (footerContent) {
+      const footerCellHeight = (rows[rows.length - 1].childNodes as NodeListOf<HTMLElement>)[0].clientHeight;
+      heights = [footerCellHeight];
+    }
+
+    return heights;
+  }
+
+  @autobind
+  private resetScrollPosition() {
+    const {preservedScrollPosition} = this.state;
+    this.scrollContainer.scrollLeft = preservedScrollPosition.left;
+    window.scrollTo(0, preservedScrollPosition.top);
+  }
+
+  @autobind
+  private setHeightsAndScrollPosition() {
+    this.setState({heights: this.tallestCellHeights()}, this.resetScrollPosition);
   }
 
   @autobind
@@ -291,68 +347,86 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private renderTotals(totals: TableData, index?: number) {
-  const id = `totals-cell-${index}`;
-  return (
-    totals === '' && index !== undefined
-      ? this.renderFirstTwoTotalsCells(index)
-      : (
+  private renderFirstTwoTotalsCells(index: number) {
+    let height;
+    const id = `totals-cell-${index}`;
+    const {heights} = this.state;
+    const {truncate = false} = this.props;
+    if (!truncate) { height = heights[1]; }
+
+    if (index === 0) {
+      return (
         <Cell
+          fixed
           total
           testID={id}
           key={id}
-          contentType="numeric"
-          content={totals}
+          height={height}
+          content={this.totalsRowHeading}
+          truncate={truncate}
         />
-      )
-  );
-}
+      );
+    }
 
-@autobind
-private renderFirstTwoTotalsCells(index: number) {
-  const id = `totals-cell-${index}`;
+    if (index === 1) { return <Cell testID={id} key={id} presentational />; }
 
-  if (index === 0) {
     return (
       <Cell
-        fixed
         total
         testID={id}
         key={id}
         contentType="numeric"
-        content={this.totalsRowHeading}
       />
     );
   }
 
-  if (index === 1) { return <Cell testID={id} key={id} presentational />; }
+  @autobind
+  private renderTotals(total: TableData, index: number) {
+    let height;
+    const id = `totals-cell-${index}`;
+    const {heights} = this.state;
+    const {truncate = false} = this.props;
+    if (!truncate) { height = heights[1]; }
 
-  return (
-    <Cell
-      total
-      testID={id}
-      key={id}
-      contentType="numeric"
-    />
-  );
-}
+    return (
+      total === ''
+        ? this.renderFirstTwoTotalsCells(index)
+        : (
+          <Cell
+            total
+            testID={id}
+            key={id}
+            height={height}
+            contentType="numeric"
+            content={total}
+          />
+        )
+    );
+  }
 
   @autobind
   private defaultRenderRow(row: TableData[], index: number) {
     const className = classNames(styles.TableRow);
     const contentTypes = this.getContentTypes();
+    const {totals, footerContent, truncate = false} = this.props;
+    const {heights} = this.state;
+    const bodyCellHeights = totals ? heights.slice(2) : heights.slice(1);
+    if (footerContent) { bodyCellHeights.pop(); }
 
     return (
       <tr key={`row-${index}`} className={className}>
         {insertPresentationalCell(row).map((content: CellProps['content'], cellIndex: number) => {
           const id = `cell-${cellIndex}-row-${index}`;
+
           return (
             <Cell
               key={id}
               testID={id}
+              height={bodyCellHeights[index]}
               content={content}
               contentType={contentTypes[cellIndex]}
               fixed={cellIndex === 0}
+              truncate={truncate}
               presentational={cellIndex === 1}
             />
           );
@@ -363,18 +437,23 @@ private renderFirstTwoTotalsCells(index: number) {
 
   @autobind
   private renderFooter() {
+    const {heights} = this.state;
+    const footerCellHeight = heights[heights.length - 1];
+
     return (
       <Cell
-        total
+        footer
         testID="footer-cell"
+        height={footerCellHeight}
         content={this.props.footerContent}
+        truncate={this.props.truncate}
       />
     );
   }
 
   @autobind
   private defaultOnSort(headingIndex: number) {
-    const {onSort, defaultSortDirection = 'ascending', initialSortColumnIndex} = this.props;
+    const {onSort, truncate, defaultSortDirection = 'ascending', initialSortColumnIndex} = this.props;
     const {sortDirection, sortedColumnIndex = initialSortColumnIndex} = this.state;
     let newSortDirection = defaultSortDirection;
 
@@ -389,7 +468,21 @@ private renderFirstTwoTotalsCells(index: number) {
           sortDirection: newSortDirection,
           sortedColumnIndex: headingIndex,
         },
-        () => { if (onSort) { onSort(headingIndex, newSortDirection); } },
+        () => {
+          if (onSort) {
+            onSort(headingIndex, newSortDirection);
+
+            if (!truncate) {
+              const preservedScrollPosition = {
+                left: this.scrollContainer.scrollLeft,
+                top: window.scrollY,
+              };
+
+              this.setState({preservedScrollPosition});
+              this.handleResize();
+            }
+          }
+        },
       );
     };
 

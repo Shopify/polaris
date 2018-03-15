@@ -48,7 +48,7 @@ class DataTableExample extends React.Component {
 
 ### Sortable data table
 
-Use to present data for merchants to compare and analyze dynamically.
+Use when clarity of the table's content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
 ```jsx
 class SortableDataTableExample extends React.Component {

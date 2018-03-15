@@ -11,12 +11,15 @@ export type CombinedProps = Props & WithProviderProps;
 
 export interface Props {
   testID?: string,
+  height?: number,
   content?: React.ReactNode,
   contentType?: ColumnContentType,
-  presentational?: boolean,
   fixed?: boolean,
+  truncate?: boolean,
+  presentational?: boolean,
   header?: boolean,
   total?: boolean,
+  footer?: boolean,
   sorted?: boolean,
   sortable?: boolean,
   sortDirection?: SortDirection,
@@ -25,12 +28,15 @@ export interface Props {
 }
 
 function Cell({
+  height,
   content,
   contentType,
-  presentational,
   fixed,
+  truncate,
+  presentational,
   header,
   total,
+  footer,
   sorted,
   sortable,
   sortDirection,
@@ -43,14 +49,18 @@ function Cell({
 
   const className = classNames(
     styles.Cell,
-    presentational && styles['Cell-presentational'],
     fixed && styles['Cell-fixed'],
-    total && styles['Cell-total'],
+    (fixed && truncate) && styles['Cell-truncated'],
+    presentational && styles['Cell-presentational'],
     header && styles['Cell-header'],
+    total && styles['Cell-total'],
+    footer && styles['Cell-footer'],
     numeric && styles['Cell-numeric'],
     sorted && styles['Cell-sorted'],
     sortable && styles['Cell-sortable'],
   );
+
+  const style = height ? {height: `${height}px`} : undefined;
 
   const headerClassName = classNames(
     header && styles['Heading'],
@@ -109,15 +119,15 @@ function Cell({
 
   const headingMarkup = header
     ? (
-      <th className={className} scope="col" {...sortProps}>
+      <th className={className} scope="col" style={style} {...sortProps}>
         {columnHeadingContent}
       </th>
     )
-    : <th className={className} scope="row">{content}</th>;
+    : <th className={className} scope="row"style={style}>{content}</th>;
 
   const nonPresentationalMarkup = header || fixed
     ? headingMarkup
-    : <td className={className}>{content}</td>;
+    : <td className={className} style={style}>{content}</td>;
 
   const cellMarkup = presentational
     ? presentationalMarkup
