@@ -988,7 +988,14 @@ In this section, we’ll build a custom resource list item for customers:
   ![Preview of customer list item](resource-list/study-list-item-preview.png)
 </div>
 
-<!-- [Download sample code for this customer list item](link) -->
+<!-- resources -->
+#### Resources
+
+##### Get the example code
+https://github.com/Shopify/polaris-resource-list-examples/tree/v0.1.0/src/components/CustomerListItem
+View example code for custom resource list items
+dev
+<!-- end -->
 
 <a name="subcomponent-custom-item-content"></a>
 
@@ -1637,7 +1644,14 @@ If we were to build a shortcut action into the custom item, we could offer the m
 
 With that, our custom list item is done.
 
-<!-- [Download sample code for the customer list item]() -->
+<!-- resources -->
+#### Resources
+
+##### Get the example code
+https://github.com/Shopify/polaris-resource-list-examples/tree/v0.1.0/src/components/CustomerListItem
+View example code for custom resource list items
+dev
+<!-- end -->
 
 Now let’s save our merchants some time by using more features of the resource list component.
 
