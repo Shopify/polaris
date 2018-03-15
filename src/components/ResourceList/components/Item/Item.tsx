@@ -46,7 +46,6 @@ export interface State {
 
 export type CombinedProps = PropsWithUrl | PropsWithClick;
 
-const getUniqueID = createUniqueIDFactory('ResourceListItem');
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
 export class Item extends React.PureComponent<CombinedProps, State> {
@@ -58,7 +57,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   };
 
   private node: HTMLElement | null = null;
-  private id = getUniqueID();
   private checkboxId = getUniqueCheckboxID();
 
   componentDidMount() {
@@ -194,7 +192,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       : null;
 
     const containerMarkup = (
-      <div className={styles.Container} id={this.id}>
+      <div testID="Item-Content" className={styles.Container} id={this.props.id}>
         {ownedMarkup}
         {content}
         {actionsMarkup}
@@ -205,7 +203,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     const urlMarkup = url
       ? (
         <UnstyledLink
-          aria-describedby={this.id}
+          aria-describedby={this.props.id}
           className={styles.Link}
           url={url}
         />

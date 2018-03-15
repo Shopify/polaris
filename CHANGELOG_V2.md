@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!-- ## Unreleased -->
+### Enhancements
+- Added optional `id` props to more components, and restructured the prop definitions to allow projects to make `id` props mandatory ([#1138](https://github.com/Shopify/polaris-react/pull/1138))
+
 ## 2.0.0-beta.9 - 2018-03-12
 - Merged latest changes from v1 into v2
 

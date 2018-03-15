@@ -17,7 +17,9 @@ export interface Color extends HSBColor {
   alpha?: HSBAColor['alpha'],
 }
 
-export interface Props {
+export interface BaseProps {
+  /** ID for the element */
+  id?: string,
   /** The currently selected color */
   color: Color,
   /** Allow user to select an alpha value */
@@ -25,6 +27,8 @@ export interface Props {
   /** Callback when color is selected */
   onChange(color: HSBAColor): void,
 }
+
+export interface Props extends BaseProps {}
 
 export default class ColorPicker extends React.PureComponent<Props, State> {
   state: State = {
@@ -47,7 +51,7 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const {color, allowAlpha} = this.props;
+    const {id, color, allowAlpha} = this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
     const {pickerSize} = this.state;
 
@@ -68,7 +72,7 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
       : null;
 
     return (
-      <div className={styles.ColorPicker}>
+      <div className={styles.ColorPicker} id={id}>
         <div
           ref={this.setColorNode}
           className={styles.MainColor}
