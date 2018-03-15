@@ -2,6 +2,7 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {Button, Popover, Select, FormLayout} from '../../../';
+import Form from '../../../Form';
 import {withProvider, WithProviderProps} from '../../../Provider';
 
 import FilterValueSelector from './FilterValueSelector';
@@ -79,22 +80,24 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
         onClose={this.togglePopover}
         sectioned
       >
-        <FormLayout>
-          <Select
-            label={intl.translate(
-              'Polaris.ResourceList.FilterCreator.showAllWhere',
-              {resourceNamePlural: resourceName.plural.toLocaleLowerCase()},
-            )}
-            placeholder={intl.translate(
-              'Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder',
-            )}
-            options={filterOptions}
-            onChange={this.handleFilterKeyChange}
-            value={selectedFilter && selectedFilter.key}
-          />
-          {filterValueSelectionMarkup}
-          {addFilterButtonMarkup}
-        </FormLayout>
+        <Form onSubmit={this.handleAddFilter}>
+          <FormLayout>
+            <Select
+              label={intl.translate(
+                'Polaris.ResourceList.FilterCreator.showAllWhere',
+                {resourceNamePlural: resourceName.plural.toLocaleLowerCase()},
+              )}
+              placeholder={intl.translate(
+                'Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder',
+              )}
+              options={filterOptions}
+              onChange={this.handleFilterKeyChange}
+              value={selectedFilter && selectedFilter.key}
+            />
+            {filterValueSelectionMarkup}
+            {addFilterButtonMarkup}
+          </FormLayout>
+        </Form>
       </Popover>
     );
   }
