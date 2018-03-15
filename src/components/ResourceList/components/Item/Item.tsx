@@ -3,6 +3,7 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {noop} from '@shopify/javascript-utilities/other';
 
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
@@ -221,6 +222,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       )
       : null;
 
+    const tabIndex = url ? -1 : 0;
+    const role = url ? undefined : 'button';
+
     return (
       <div
         ref={this.setNode}
@@ -228,6 +232,10 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onClick={this.handleClick}
+        onMouseDown={this.handleMouseDown}
+        onKeyUp={this.handleKeypress}
+        tabIndex={tabIndex}
+        role={role}
         testID="Item-Wrapper"
       >
         {urlMarkup}
@@ -252,24 +260,21 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleFocus(event: React.FocusEvent<HTMLElement>) {
-    const status = (event.target as HTMLInputElement).checked;
-    // isSelected is called with outdated props
-    // setTimeout is used to defer the comparison
-    // and place it at the end of the stack
-    setTimeout(() => {
-      const selected = this.isSelected();
-      if (status !== undefined && selected === status) {
-        this.setState({focused: true});
-      }
-    }, 0);
+  private handleFocus() {
+    this.setState({focused: true});
+  }
+
+  @autobind
+  private handleMouseDown() {
+    this.setState({focusedInner: true});
   }
 
   @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
+    const isInside = this.compareEventNode(event);
     if (this.node == null || !this.node.contains(event.relatedTarget as HTMLElement)) {
       this.setState({focused: false, focusedInner: false});
-    } else if ((event.target as HTMLInputElement).type === 'checkbox') {
+    } else if (isInside) {
       this.setState({focusedInner: true});
     }
   }
@@ -312,6 +317,17 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
+  private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
+    const {onClick = noop} = this.props;
+    const {selectMode} = this.context;
+    const {key} = event;
+
+    if (key === 'Enter' && !selectMode) {
+      onClick();
+    }
+  }
+
+  @autobind
   private handleContextUpdate() {
     this.forceUpdate();
   }
@@ -330,6 +346,12 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     const {id} = this.props;
     const {selectedItems} = this.context;
     return selectedItems && ((Array.isArray(selectedItems) && selectedItems.includes(id)) || selectedItems === SELECT_ALL_ITEMS);
+  }
+
+  private compareEventNode(event: React.FocusEvent<HTMLElement>) {
+    return this.props.onClick
+      ? event.target === this.node
+      : (event.target as HTMLElement).tagName.toLowerCase() === 'a';
   }
 }
 
