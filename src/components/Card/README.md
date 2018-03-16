@@ -9,7 +9,6 @@ keywords:
   - panel
   - card with call to action in the footer
   - card with call to action in the heading
-  - card with an action menu in the heading
   - card with button in the footer
   - card with button in the heading
   - card with multiple sections
@@ -178,43 +177,31 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
-### Card with call to action in the footer
+### Card with header actions
 
-Use when you have a simple message to communicate to merchants that requires them to take an action. Put a call-to-action in the footer when you need merchants to read the content in the card before taking the action.
+Use for less important card actions, or actions the merchant may do before reviewing the contents of the card. For example, a merchant may want to add items to a card containing a long list, or enter a customer’s new address.
+
+```jsx
+<Card sectioned title="Variants" actions={[{content: 'Add variant']}>
+  <p>Add variants if this product comes in multiple versions, like different sizes or colors.</p>
+</Card>
+```
+
+### Card with footer actions
+
+Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, a merchant should review the contents of a shipment before important actions like cancelling or adding tracking information.
 
 ```jsx
 <Card
-  title="Online store dashboard"
-  primaryFooterAction={{content: 'View dashboard'}}
+  title="Shipment 1234"
+  secondaryFooterAction={{content: 'Cancel shipment'}}
+  primaryFooterAction={{content: 'Add tracking number'}}
 >
-  <Card.Section>
-    <p>View a summary of your online store’s performance.</p>
-  </Card.Section>
-</Card>
-```
-
-### Card with call to action in the heading
-
-Use when there’s a persistent action available to merchants (example: an Edit link), or when you want to provide them with a way to navigate to another section of Shopify. Actions can be disabled.
-
-```jsx
-<Card title="Online store dashboard" actions={[{
-  content: 'Edit',
-  disabled: true}]}>
-  <Card.Section>
-    <p>View a summary of your online store’s performance.</p>
-  </Card.Section>
-</Card>
-```
-
-### Card with an action menu in the heading
-
-Use if there are multiple optional actions a merchant can take on the information in the card. Clicking on the link will open a popover that contains a menu of actions.
-
-```jsx
-<Card title="Online store dashboard" actions={[{content: 'Edit'}]}>
-  <Card.Section>
-    <p>View a summary of your online store’s performance.</p>
+  <Card.Section title="Items">
+    <List>
+      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+    </List>
   </Card.Section>
 </Card>
 ```

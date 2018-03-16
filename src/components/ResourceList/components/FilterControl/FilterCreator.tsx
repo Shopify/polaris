@@ -54,7 +54,7 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
         disclosure
         testID="FilterCreator-FilterActivator"
       >
-        {intl.translate('ResourceList.FilterCreator.filterButtonLabel')}
+        {intl.translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
       </Button>
     );
 
@@ -76,7 +76,7 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
         disabled={!this.canAddFilter}
         testID="FilterCreator-AddFilterButton"
       >
-        {intl.translate('ResourceList.FilterCreator.addFilterButtonLabel')}
+        {intl.translate('Polaris.ResourceList.FilterCreator.addFilterButtonLabel')}
       </Button>
     ) : null;
 
@@ -89,8 +89,8 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
       >
         <FormLayout>
           <Select
-            label={intl.translate('ResourceList.FilterCreator.showAllWhere', {resourceNamePlural: resourceName.plural.toLocaleLowerCase()})}
-            placeholder={intl.translate('ResourceList.FilterCreator.selectFilterKeyPlaceholder')}
+            label={intl.translate('Polaris.ResourceList.FilterCreator.showAllWhere', {resourceNamePlural: resourceName.plural.toLocaleLowerCase()})}
+            placeholder={intl.translate('Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder')}
             options={filterOptions}
             onChange={this.handleFilterKeyChange}
             value={selectedFilter && selectedFilter.key}

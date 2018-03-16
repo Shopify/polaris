@@ -18,7 +18,7 @@ export interface Group {
   options: Option[],
 }
 
-export interface Props {
+export interface BaseProps {
   /** List of options to choose from */
   options?: Option[],
   /** List of option groups to choose from */
@@ -50,6 +50,8 @@ export interface Props {
   /** Callback when focus is removed */
   onBlur?(): void,
 }
+
+export interface Props extends BaseProps {}
 
 const PLACEHOLDER_VALUE = '__placeholder__';
 const getUniqueID = createUniqueIDFactory('Select');

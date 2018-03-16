@@ -3,7 +3,8 @@ import {IconProps} from './components';
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
-export interface Action {
+export interface BaseAction {
+  id?: string,
   content?: string,
   accessibilityLabel?: string,
   url?: string,
@@ -11,17 +12,25 @@ export interface Action {
   onAction?(): void,
 }
 
-export interface LinkAction {
+export interface Action extends BaseAction {}
+
+export interface BaseLinkAction {
+  id?: string,
   content?: string,
   accessibilityLabel?: string,
   url: string,
 }
 
-export interface CallbackAction {
+export interface LinkAction extends BaseLinkAction {}
+
+export interface BaseCallbackAction {
+  id?: string,
   content?: string,
   accessibilityLabel?: string,
   onAction(): void,
 }
+
+export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
   disabled?: boolean,

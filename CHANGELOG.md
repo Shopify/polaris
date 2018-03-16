@@ -14,6 +14,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added Embedded page under the Embedded section
 * Added “Using embedded components” section
 * Added screenshots to the embedded components
+* Clarified usage of card header and footer actions
 
 ## 1.12.2 - 2018-03-08
 ### Documentation
@@ -44,6 +45,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Updated the base red color to improve contrast
 * Added a notification icon to the bundled icons available to use in the icon component's source prop
 * Exposed Status from the Banner component
+* Added `titleHidden` prop to Page
+
+### Documentation
+* Clarified intended usage for EmptyState
 
 ### Chores
 * Added version number to source
@@ -52,7 +57,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Changed Action to Disableable Action in Card
 ### Enhancements
 * Added `renderChildren` prop to choice list component
-* Added `titleHidden` prop to Page
 
 ### Bug fixes
 * Fixed an issue with footer help links not expanding to full-width on mobile devices

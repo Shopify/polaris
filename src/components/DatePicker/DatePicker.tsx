@@ -24,7 +24,9 @@ export {
   Year,
 };
 
-export interface Props {
+export interface BaseProps {
+  /** ID for the element */
+  id?: string,
   /** The selected date or range of dates */
   selected?: Date | Range,
   /** The month to show */
@@ -44,6 +46,8 @@ export interface Props {
   /** Callback when month is changed. */
   onMonthChange?(month: Months, year: Year): void,
 }
+
+export interface Props extends BaseProps {}
 
 export interface State {
   hoverDate?: Date,
@@ -66,6 +70,7 @@ export default class DatePicker extends React.PureComponent<Props, State> {
 
   render() {
     const {
+      id,
       month,
       year,
       allowRange,
@@ -112,7 +117,7 @@ export default class DatePicker extends React.PureComponent<Props, State> {
       : null;
 
     return (
-      <div className={styles.DatePicker} onKeyDown={handleKeyDown} onKeyUp={this.handleKeyUp}>
+      <div id={id} className={styles.DatePicker} onKeyDown={handleKeyDown} onKeyUp={this.handleKeyUp}>
         <div className={styles.Header}>
           <Button
             plain

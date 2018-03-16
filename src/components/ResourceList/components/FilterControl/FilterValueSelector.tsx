@@ -23,7 +23,7 @@ class FilterValueSelector extends React.PureComponent<CombinedProps> {
           <Select
             label={selectedFilterLabel}
             options={filter.options}
-            placeholder={intl.translate('ResourceList.FilterValueSelector.selectFilterValuePlaceholder')}
+            placeholder={intl.translate('Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder')}
             value={value}
             onChange={onChange}
           />

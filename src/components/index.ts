@@ -83,6 +83,15 @@ export {
 } from './Connected';
 
 export {
+  default as DataTable,
+  Props as DataTableProps,
+  TableData,
+  TableRow,
+  SortDirection,
+  ColumnContentType,
+} from './DataTable';
+
+export {
   default as DatePicker,
   Props as DatePickerProps,
   Range,
@@ -99,6 +108,11 @@ export {
   default as DisplayText,
   Props as DisplayTextProps,
 } from './DisplayText';
+
+export {
+  default as DropZone,
+  Props as DropZoneProps,
+} from './DropZone';
 
 export {
   default as EmptySearchResult,

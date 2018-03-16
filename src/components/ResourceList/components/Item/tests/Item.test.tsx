@@ -63,6 +63,22 @@ describe('<Item />', () => {
     });
   });
 
+  describe('id', () => {
+    it('is used on the content node and for the description of a link', () => {
+      const id = 'itemId';
+      const item = mountWithProvider(
+        <Item
+          id={id}
+          url="https://shopify.com"
+        />,
+        {context: mockDefaultContext},
+      );
+
+      expect(findByTestID(item, 'Item-Content').prop('id')).toBe(id);
+      expect(item.find(UnstyledLink).prop('aria-describedby')).toBe(id);
+    });
+  });
+
   describe('onClick()', () => {
     it('calls onClick when clicking on the item when onClick exist', () => {
       const id = 'itemId';

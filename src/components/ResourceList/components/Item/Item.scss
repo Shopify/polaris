@@ -2,19 +2,58 @@
 
 .Item {
   position: relative;
+  outline: none;
   cursor: pointer;
 
   &:hover {
-    background-color: color(sky, lighter);
+    @include state(hover);
+
+    .Actions {
+      display: flex;
+    }
+  }
+
+  &:active {
+    @include state(active);
+  }
+}
+
+.Item-selected {
+  @include state(selected);
+
+  &.Item-focused {
+    @include state(selected, focused);
+
+    &:hover {
+      @include state(selected, focused, hover);
+    }
+  }
+
+  &:hover {
+    @include state(selected, hover);
+  }
+
+  &:active {
+    @include state(selected, active);
   }
 }
 
 .Item-focused {
-  box-shadow: inset rem(2px) 0 0 color(indigo);
+  @include state(focused);
+
+  &:hover {
+    @include state(focused, hover);
+  }
+
+  &:active {
+    @include state(focused, active);
+  }
 }
 
-.Item-selected {
-  background-color: color(indigo, lighter);
+.Item-focusedInner,
+.Item-focusedInner.Item-focused,
+.Item-focusedInner.Item-focused.Item-selected {
+  box-shadow: none;
 }
 
 .Link {

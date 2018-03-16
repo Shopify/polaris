@@ -3,7 +3,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Choice, {helpTextID} from '../Choice';
 import * as styles from './RadioButton.scss';
 
-export interface Props {
+export interface BaseProps {
   /** Label for the radio button */
   label: string,
   /** Visually hide the label */
@@ -27,6 +27,8 @@ export interface Props {
   /** Callback when focus is removed */
   onBlur?(): void,
 }
+
+export interface Props extends BaseProps {}
 
 const getUniqueID = createUniqueIDFactory('RadioButton');
 

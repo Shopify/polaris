@@ -82,4 +82,19 @@ describe('<ColorPicker />', () => {
       });
     });
   });
+
+  describe('id', () => {
+    it('is passed down to the first child', () => {
+      const id = 'MyID';
+      const colorPicker = mount(
+        <ColorPicker
+          id={id}
+          color={red}
+          onChange={jest.fn()}
+        />,
+      );
+
+      expect(colorPicker.childAt(0).prop('id')).toBe(id);
+    });
+  });
 });

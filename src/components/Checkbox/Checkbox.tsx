@@ -7,7 +7,7 @@ import Icon from '../Icon';
 
 import * as styles from './Checkbox.scss';
 
-export interface Props {
+export interface BaseProps {
   /** Label for the checkbox */
   label: React.ReactNode,
   /** Visually hide the label */
@@ -33,6 +33,8 @@ export interface Props {
   /** Callback when focus is removed */
   onBlur?(): void,
 }
+
+export interface Props extends BaseProps {}
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
 

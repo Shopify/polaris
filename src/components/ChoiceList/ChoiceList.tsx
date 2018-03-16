@@ -18,7 +18,7 @@ export interface ChoiceDescriptor {
 
 export type Choice = ChoiceDescriptor;
 
-export interface Props {
+export interface BaseProps {
   /** Label for list of choices */
   title?: string,
   /** Collection of choices */
@@ -34,6 +34,8 @@ export interface Props {
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void,
 }
+
+export interface Props extends BaseProps {}
 
 type ChooseableComponent = ReactComponent<{
   label: string,

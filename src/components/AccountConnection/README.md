@@ -103,16 +103,6 @@ Connect to app
 
 <!-- end -->
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| title | React.ReactNode | Element containing title |
-| details | React.ReactNode | Element containing details |
-| termsOfService | React.ReactNode | Element containing terms of service |
-| accountName | string | The name of the service |
-| avatarUrl | string | URL for the user’s avatar image |
-| connected | boolean | Set if the account is connected |
-| action | Action | Action for account connection |
-
 ## Examples
 
 ### Default account connection
