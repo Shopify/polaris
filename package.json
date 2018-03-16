@@ -54,7 +54,7 @@
     "start": "echo \"Warning: no 'start' task specified. Run 'yarn dev' instead.\" && yarn dev"
   },
   "devDependencies": {
-    "@shopify/js-uploader": "github:Shopify/js-uploader",
+    "@shopify/js-uploader": "github:shopify/js-uploader",
     "@types/enzyme": "^2.8.12",
     "@types/jest": "^21.1.2",
     "@types/lodash": "^4.14.66",

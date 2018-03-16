@@ -67,9 +67,9 @@
     lodash "^4.17.4"
     lodash-decorators "^4.3.5"
 
-"@shopify/js-uploader@github:Shopify/js-uploader":
+"@shopify/js-uploader@github:shopify/js-uploader":
   version "0.1.0"
-  resolved "https://codeload.github.com/Shopify/js-uploader/tar.gz/a12eedd7a95d6e2e1da52093e5c354379d4310bc"
+  resolved "https://codeload.github.com/shopify/js-uploader/tar.gz/a12eedd7a95d6e2e1da52093e5c354379d4310bc"
   dependencies:
     aws-sdk "2.6.8"
     mime-types "2.1.12"

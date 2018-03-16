@@ -1,0 +1,196 @@
+$fixed-column-width: rem(145px);
+$breakpoint: 768px;
+
+.DataTable {
+  position: relative;
+  max-width: 100vw;
+}
+
+.collapsed {
+
+  .TableWrapper {
+
+    &::after {
+      display: block;
+
+      @include breakpoint-after($breakpoint) {
+        left: $fixed-column-width * 2;
+      }
+    }
+  }
+
+  .Navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(100% - #{$fixed-column-width});
+    margin: 0 0 0 $fixed-column-width;
+    padding: spacing();
+  }
+}
+
+.hasFooter {
+
+  .ScrollContainer {
+    margin-bottom: rem(52px);
+  }
+}
+
+.TableWrapper {
+  margin-left: $fixed-column-width * -1;
+  width: calc(100% + #{$fixed-column-width});
+  border-spacing: 0;
+
+  @include breakpoint-after($breakpoint) {
+    margin-left: $fixed-column-width * -2;
+    width: calc(100% + #{$fixed-column-width * 2});
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: $fixed-column-width;
+    display: none;
+    width: .6rem;
+    background: linear-gradient(to right, rgba(color(black), 0.12), rgba(color(black), 0));
+  }
+}
+
+.Navigation {
+  display: none;
+}
+
+.Pip {
+  height: rem(6px);
+  width: rem(6px);
+  background: color(ink, lightest);
+  border-radius: border-radius();
+  margin-top: rem(-3.2px);
+}
+
+.Pip-visible {
+  background: color(black);
+}
+
+.ScrollContainer {
+  overflow-x: scroll;
+  margin-left: $fixed-column-width;
+
+  @include breakpoint-after($breakpoint) {
+    margin-left: $fixed-column-width * 2;
+  }
+}
+
+.TableRow {
+
+  &:hover .Cell {
+    @include breakpoint-after($breakpoint) {
+      background: color(sky, lighter);
+    }
+  }
+}
+
+.TableFoot {
+  border-bottom: 0;
+}
+
+.Cell {
+  padding: spacing();
+  background: color(white);
+  border-bottom: 1px solid color(sky, light);
+  white-space: nowrap;
+  text-align: left;
+  transition: background-color .2s ease-in-out;
+}
+
+.Cell-numeric {
+  text-align: right;
+}
+
+.Cell-fixed {
+  @include text-emphasis-normal;
+  width: $fixed-column-width;
+  position: absolute;
+  top: auto;
+  left: 0;
+  white-space: unset;
+  word-wrap: break-word;
+  text-align: left;
+  // stops painting on scroll
+  backface-visibility: hidden;
+
+  @include breakpoint-after($breakpoint) {
+    width: $fixed-column-width * 2;
+    min-width: $fixed-column-width * 2;
+  }
+}
+
+.Cell-truncated {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.Cell-presentational {
+  min-width: $fixed-column-width;
+  width: $fixed-column-width;
+
+  @include breakpoint-after($breakpoint) {
+    width: $fixed-column-width * 2;
+    min-width: $fixed-column-width * 2;
+  }
+}
+
+.Cell-header {
+  @include text-emphasis-normal;
+  border-bottom: border(dark);
+
+  &.Cell-sortable {
+    .Heading {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      transition: fill duration() easing(), color duration() easing();
+    }
+
+    .Heading-sortable {
+      @include recolor-icon(color(indigo));
+      opacity: 0;
+      transition: opacity duration() easing();
+    }
+
+    &:hover,
+    &:focus {
+      @include recolor-icon(color(indigo));
+      color: color(indigo);
+      outline: none;
+      cursor: pointer;
+
+      .Heading-sortable {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Cell-total {
+  @include text-emphasis-strong;
+  background: color(sky, lighter);
+  border-bottom: border();
+}
+
+.Cell-footer {
+  @include text-emphasis-normal;
+  background: color(sky, light);
+  color: color(ink, lighter);
+  white-space: unset;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: auto;
+  border-bottom: 0;
+}
