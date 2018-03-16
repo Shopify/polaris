@@ -4,8 +4,8 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
-
+<!-- ## Unreleased -->
+## 1.12.3 - 2018-03-16
 ### Bug fixes
 * Fixed disclosure centering on the tab component ([#1131](https://github.com/Shopify/polaris-react/pull/1131))
 * Fixed an issue where a style void would appear between breakpoints at high text zoom levels ([#1071](https://github.com/Shopify/polaris-react/pull/1071))
