@@ -1,17 +1,37 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
+export type AutoComplete = 'off' | 'on';
+
 export interface Props {
-  children: React.ReactNode,
+  /** Grants the broswer the ability to autocomplete input elements */
+  autoComplete?: AutoComplete,
+  /** The content to display inside the form. */
+  children?: React.ReactNode,
+  /** A unique name for the form */
+  name?: string,
+  /** Wheather or not form is validated when submitting */
+  noValidate?: boolean,
+  /** Callback when for is submitted */
   onSubmit(): void,
 }
 
 export default class Form extends React.PureComponent<Props> {
   render() {
-    const {children} = this.props;
+    const {
+      autoComplete,
+      children,
+      name,
+      noValidate,
+    } = this.props;
 
     return (
-      <form key="Form wrapper" onSubmit={this.handleSubmit}>
+      <form
+        autoComplete={autoComplete}
+        name={name}
+        noValidate={noValidate}
+        onSubmit={this.handleSubmit}
+      >
         {children}
       </form>
     );
