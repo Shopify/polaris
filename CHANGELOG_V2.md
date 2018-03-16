@@ -8,6 +8,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### New Components
 - Data table component ([#780](https://github.com/Shopify/polaris-react/pull/780))
+- Drop zone component ([#1063](https://github.com/Shopify/polaris-react/pull/1063))
 
 ### Enhancements
 - Added optional `id` props to more components, and restructured the prop definitions to allow projects to make `id` props mandatory ([#1138](https://github.com/Shopify/polaris-react/pull/1138))

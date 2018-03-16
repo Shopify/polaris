@@ -110,6 +110,11 @@ export {
 } from './DisplayText';
 
 export {
+  default as DropZone,
+  Props as DropZoneProps,
+} from './DropZone';
+
+export {
   default as EmptySearchResult,
   Props as EmptySearchResultProps,
 } from './EmptySearchResult';

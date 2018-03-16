@@ -4,6 +4,20 @@
       "undo": "Undo"
     },
 
+    "DropZone": {
+      "overlayTextFile": "Drop file to upload",
+      "overlayTextImage": "Drop image to upload",
+      "errorOverlayTextFile": "File type is not valid",
+      "errorOverlayTextImage": "Image type is not valid",
+
+      "FileUpload": {
+        "actionTitleFile": "Add file",
+        "actionTitleImage": "Add image",
+        "actionHintFile": "or drop files to upload",
+        "actionHintImage": "or drop images to upload"
+      }
+    },
+
     "DataTable": {
       "sortAccessibilityLabel": "sort by {content}",
       "totalsRowHeading": "Totals"

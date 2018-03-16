@@ -1,0 +1,97 @@
+$dropzone-padding: rem(15px);
+$dropzone-border-width: rem(2px);
+$dropzone-border-style: dashed;
+$dropzone-border-color: color(sky);
+$dropzone-border-color-error: color(red);
+$dropzone-background: color(white);
+$dropzone-border-radius: border-radius();
+$dropzone-min-height-large: rem(205px);
+$dropzone-min-height-medium: rem(114px);
+$dropzone-min-height-small: rem(50px);
+
+$dropzone-overlay-color: color(indigo);
+$dropzone-overlay-color-error: color(red);
+$dropzone-overlay-border-color: color(indigo);
+$dropzone-overlay-border-color-error: color(red);
+$dropzone-overlay-background: color(indigo, lighter);
+$dropzone-overlay-background-error: color(red, lighter);
+
+.DropZone {
+  position: relative;
+  padding: $dropzone-padding;
+  display: flex;
+  justify-content: center;
+  background: $dropzone-background;
+  border-radius: $dropzone-border-radius;
+}
+
+.hasOutline {
+  border: $dropzone-border-width $dropzone-border-style $dropzone-border-color;
+}
+
+.isDragging {
+  border-color: $dropzone-overlay-border-color;
+  background: $dropzone-overlay-background;
+}
+
+.hasError {
+  border-color: $dropzone-border-color-error;
+  background: $dropzone-overlay-background-error;
+}
+
+.isDisabled {
+  cursor: not-allowed;
+}
+
+.sizeLarge {
+  min-height: $dropzone-min-height-large;
+}
+
+.sizeMedium {
+  min-height: $dropzone-min-height-medium;
+  align-items: center;
+}
+
+.sizeSmall {
+  padding: 0;
+  align-items: center;
+  min-height: $dropzone-min-height-small;
+}
+
+.Container {
+  flex: 1;
+}
+
+.Overlay {
+  position: absolute;
+  padding: $dropzone-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  color: $dropzone-overlay-color;
+  z-index: 30;
+  border: $dropzone-border-width $dropzone-border-style $dropzone-overlay-color;
+  background: $dropzone-overlay-background;
+  border-radius: $dropzone-border-radius;
+
+  .hasOutline & {
+    border: none;
+  }
+
+  .hasError & {
+    color: $dropzone-overlay-color-error;
+    border-color: $dropzone-overlay-border-color-error;
+    background: $dropzone-overlay-background-error;
+  }
+
+  .sizeSmall & {
+    padding: 0;
+  }
+}
