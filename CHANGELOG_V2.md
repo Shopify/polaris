@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.10 - 2018-03-16
+
 ### New Components
 - Data table component ([#780](https://github.com/Shopify/polaris-react/pull/780))
 - Drop zone component ([#1063](https://github.com/Shopify/polaris-react/pull/1063))
