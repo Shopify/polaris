@@ -1,0 +1,21 @@
+.Header {
+  padding: spacing() spacing(loose);
+  border-bottom: border();
+}
+
+.withoutTitle {
+  position: absolute;
+  right: spacing(tight);
+}
+
+.CloseButton {
+  @include unstyled-button;
+  margin-right: -1 * spacing(tight);
+  padding: spacing(tight);
+
+  &:focus,
+  &:active {
+    border-radius: border-radius(large);
+    background: plain-button-background();
+  }
+}

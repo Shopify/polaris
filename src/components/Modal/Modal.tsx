@@ -3,14 +3,16 @@ import * as PropTypes from 'prop-types';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {wrapWithComponent} from '@shopify/react-utilities/components';
-import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
-import {Scrollable, Icon, Spinner, Portal} from '../';
+import {Scrollable, Spinner, Portal} from '../';
 import {DisableableAction} from '../../types';
 import memoizedBind from '../../utilities/memoized-bind';
-import {Dialog, Footer, FooterProps, Header, Section} from './components';
+import Dialog from './components/Dialog';
+import Header, {CloseButton} from './components/Header';
+import Section from './components/Section';
+import Footer, {FooterProps} from './components/Footer';
 import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
@@ -136,13 +138,15 @@ export default class Modal extends React.Component<Props, State> {
       title,
       src,
       open,
-      footer,
       instant,
       sectioned,
       loading,
       large,
       limitHeight,
-    } = (this.props as Props & ModalProps);
+      footer,
+      primaryAction,
+      secondaryActions,
+    } = (this.props as Props & ModalProps & FooterProps);
 
     const {iframeHeight} = this.state;
 
@@ -151,7 +155,13 @@ export default class Modal extends React.Component<Props, State> {
     let dialog: React.ReactNode;
     let backdrop: React.ReactNode;
     if (open) {
-      const footerMarkup = this.renderFooter();
+      const footerMarkup = (!footer && !primaryAction && !secondaryActions)
+        ? null
+        : (
+          <Footer primaryAction={primaryAction} secondaryActions={secondaryActions}>
+            {footer}
+          </Footer>
+        );
 
       const content = sectioned
         ? wrapWithComponent(children, Section)
@@ -175,10 +185,7 @@ export default class Modal extends React.Component<Props, State> {
       ) : (
         <Scrollable
           shadow
-          className={classNames(
-            styles.Body,
-            footer && styles['Body-hasFooter'],
-          )}
+          className={styles.Body}
         >
           {body}
         </Scrollable>
@@ -189,13 +196,11 @@ export default class Modal extends React.Component<Props, State> {
           {title}
         </Header>
       ) : (
-        <button
+        <CloseButton
           onClick={handleClose}
+          title={false}
           testID="ModalCloseButton"
-          className={styles.CloseButton}
-        >
-          <Icon source="cancel" color="inkLighter" />
-        </button>
+        />
       );
 
       dialog = (
@@ -222,26 +227,11 @@ export default class Modal extends React.Component<Props, State> {
     handleWarning('modal', this.props);
     return (
       <Portal idPrefix="modal">
-        <div className={title ? '' : styles.graphic}>
           <TransitionGroup appear={animated} enter={animated} exit={animated}>
             {dialog}
           </TransitionGroup>
           {backdrop}
-        </div>
       </Portal>
-    );
-  }
-
-  private renderFooter() {
-    const {footer, primaryAction, secondaryActions} = this.props as ModalProps;
-    if (!footer && !primaryAction && !secondaryActions) {
-      return null;
-    }
-
-    return (
-      <Footer primaryAction={primaryAction} secondaryActions={secondaryActions}>
-        {footer}
-      </Footer>
     );
   }
 

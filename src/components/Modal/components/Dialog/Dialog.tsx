@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {KeypressListener} from '../../';
-import {Keys} from '../../../types';
-import memoizedBind from '../../../utilities/memoized-bind';
-import {TrapFocus} from '../../Focus';
-import {Duration} from '../../shared';
-import {AnimationProps} from '../../../types';
-import * as styles from '../Modal.scss';
+import {KeypressListener} from '../../../';
+import {Keys} from '../../../../types';
+import memoizedBind from '../../../../utilities/memoized-bind';
+import {TrapFocus} from '../../../Focus';
+import {Duration} from '../../../shared';
+import {AnimationProps} from '../../../../types';
+import * as styles from './Dialog.scss';
 
 export interface DialogProps {
   labelledBy: string,
@@ -39,8 +39,8 @@ export default function Dialog({
 }: Props) {
   const classes = classNames(
     styles.Modal,
-    large && styles['Modal-large'],
-    limitHeight && styles['Modal-limitHeight'],
+    large && styles.sizeLarge,
+    limitHeight && styles.limitHeight,
   );
   const handleClose = memoizedBind(onClose);
   const animation = large ? ScaleIn : FadeUp;
@@ -79,10 +79,10 @@ export default function Dialog({
 }
 
 const fadeUpClasses = {
-  enter: classNames(styles.FadeUp, styles.entering),
-  enterActive: classNames(styles.FadeUp, styles.entered),
-  exit: classNames(styles.FadeUp, styles.exiting),
-  exitActive: classNames(styles.FadeUp, styles.exited),
+  enter: classNames(styles.animateFadeUp, styles.entering),
+  enterActive: classNames(styles.animateFadeUp, styles.entered),
+  exit: classNames(styles.animateFadeUp, styles.exiting),
+  exitActive: classNames(styles.animateFadeUp, styles.exited),
 };
 
 function FadeUp({children, ...props}: any) {
@@ -94,10 +94,10 @@ function FadeUp({children, ...props}: any) {
 }
 
 const scaleInClasses = {
-  enter: classNames(styles.ScaleIn, styles.entering),
-  enterActive: classNames(styles.ScaleIn, styles.entered),
-  exit: classNames(styles.ScaleIn, styles.exiting),
-  exitActive: classNames(styles.ScaleIn, styles.exited),
+  enter: classNames(styles.animateScaleIn, styles.entering),
+  enterActive: classNames(styles.animateScaleIn, styles.entered),
+  exit: classNames(styles.animateScaleIn, styles.exiting),
+  exitActive: classNames(styles.animateScaleIn, styles.exited),
 };
 
 function ScaleIn({children, ...props}: any) {

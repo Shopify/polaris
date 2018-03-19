@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {Icon, DisplayText, Stack} from '../../';
-import memoizedBind from '../../../utilities/memoized-bind';
-import * as styles from '../Modal.scss';
+import {DisplayText, Stack} from '../../../';
+import memoizedBind from '../../../../utilities/memoized-bind';
+import * as styles from './Header.scss';
+import {CloseButton} from './';
 
 export interface Props {
   id: string,
@@ -23,9 +24,7 @@ export default function Header({id, children, onClose}: Props) {
           </div>
         </Stack.Item>
 
-        <button onClick={handleClose} className={styles.CloseButton}>
-          <Icon source="cancel" color="inkLighter" />
-        </button>
+        <CloseButton onClick={handleClose} />
       </Stack>
     </div>
   );

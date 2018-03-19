@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {buttonsFrom, ButtonGroup, Stack} from '../../';
-import {ComplexAction} from '../../../types';
-import * as styles from '../Modal.scss';
+import {buttonsFrom, ButtonGroup, Stack} from '../../../';
+import {ComplexAction} from '../../../../types';
+import * as styles from './Footer.scss';
 
 export interface Props {
   /** Primary action */

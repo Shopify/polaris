@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from '../Modal.scss';
+import * as styles from './Section.scss';
 
 export interface Props {
   children?: React.ReactNode,

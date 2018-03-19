@@ -1,0 +1,20 @@
+.Section {
+  flex: 0 0 auto;
+  padding: spacing() spacing(loose);
+
+  &:first-of-type {
+    padding-top: spacing(loose);
+  }
+
+  &:not(:last-of-type) {
+    border-bottom: border();
+  }
+
+  &.subdued {
+    background: color(sky, light);
+  }
+
+  &.flush {
+    padding: 0;
+  }
+}
