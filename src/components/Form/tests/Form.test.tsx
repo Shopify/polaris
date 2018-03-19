@@ -3,7 +3,6 @@ import {mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
 import Form from '../Form';
 
-const autoComplete = 'off';
 const name = 'form-name';
 const noValidate = true;
 
@@ -11,13 +10,14 @@ const acceptCharset = 'UTF-8';
 const action = 'shopifyapi.com';
 const encType = 'text/plain';
 const method = 'get';
-const preventDefault = false;
 const target = '_blank';
 
 describe('<Form />', () => {
   describe('acceptCharset', () => {
     it('sets the acceptCharset attribute when provided', () => {
-      const wrapper = mount(<Form acceptCharset={acceptCharset} onSubmit={noop} />);
+      const wrapper = mount(
+        <Form acceptCharset={acceptCharset} onSubmit={noop} />,
+      );
       expect(wrapper.prop('acceptCharset')).toBe(acceptCharset);
     });
   });
@@ -31,8 +31,8 @@ describe('<Form />', () => {
 
   describe('autoComplete', () => {
     it('sets the autocomplete attribute when provided', () => {
-      const wrapper = mount(<Form autoComplete={autoComplete} onSubmit={noop} />);
-      expect(wrapper.prop('autoComplete')).toBe(autoComplete);
+      const wrapper = mount(<Form autoComplete={false} onSubmit={noop} />);
+      expect(wrapper.prop('autoComplete')).toBe(false);
     });
   });
 
@@ -79,7 +79,9 @@ describe('<Form />', () => {
       const onSubmitSpy = jest.fn();
       const preventDefaultSpy = jest.fn();
 
-      const wrapper = mount(<Form preventDefault={preventDefault} onSubmit={onSubmitSpy} />);
+      const wrapper = mount(
+        <Form preventDefault={false} onSubmit={onSubmitSpy} />,
+      );
 
       wrapper.simulate('submit', {
         preventDefault: preventDefaultSpy,
@@ -87,7 +89,6 @@ describe('<Form />', () => {
 
       expect(preventDefaultSpy).not.toHaveBeenCalled();
     });
-
 
     it('submits the form with preventDefault when the prop is not provided', () => {
       const onSubmitSpy = jest.fn();

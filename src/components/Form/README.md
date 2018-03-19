@@ -15,16 +15,16 @@ keywords:
 
 # Form
 
-A wrapper component that handles the submission of Forms.
+A wrapper component that handles the submission of forms.
 
 ---
 
-## Best Practices
+## Best practices
 
-The form component should:
+The form component should be used to:
 
-* Be used to wrap around all form input elements
-* Be used too emulate the native HTML `form` element behaviour with a custom `onSubmit` callback
+* Wrap around all form input elements
+* Emulate the native HTML `form` element behaviour with a custom `onSubmit` callback
 
 ---
 
@@ -59,7 +59,7 @@ class FormExample extends React.Component {
             label="Email"
             type="email"
             helpText={
-              <span>Please enter your email.</span>
+              <span>We'll use this email address to inform you on future changes to Polaris.</span>
             }
           />
 
@@ -103,11 +103,8 @@ class FormExample extends React.Component {
           <TextField
             value={url}
             onChange={this.handleChange('url')}
-            label="Url"
+            label="App URL"
             type="url"
-            helpText={
-              <span>Please enter website url.</span>
-            }
           />
 
           <Button submit>
@@ -118,7 +115,7 @@ class FormExample extends React.Component {
     );
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
     this.setState({url: ''});
   }
 
@@ -132,5 +129,5 @@ class FormExample extends React.Component {
 
 ## Related components
 
-* For a layout component, [use form layout](/components/forms/form-layout)
-* To see form elements, [visit the form section](/components/forms/checkbox#navigation)
+* To arrange fields within a form using standard spacing, [use the form layout component](/components/forms/form-layout)
+* To see all of the components that make up a form, [visit the form section](/components/forms/checkbox#navigation) of the component library
