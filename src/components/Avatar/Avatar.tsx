@@ -59,6 +59,7 @@ export default function Avatar({
     styles.Avatar,
     styles[variationName('style', styleClass(nameString))],
     size && styles[variationName('size', size)],
+    finalSource && styles.hasImage,
   );
 
   const imageMarkUp = finalSource

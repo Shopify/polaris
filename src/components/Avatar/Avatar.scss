@@ -55,6 +55,10 @@ $large-size: rem(60px);
   background: color(purple);
 }
 
+.hasImage {
+  background: transparent;
+}
+
 .Image {
   width: 100%;
   position: absolute;
