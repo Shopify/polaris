@@ -182,7 +182,7 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 Use for less important card actions, or actions the merchant may do before reviewing the contents of the card. For example, a merchant may want to add items to a card containing a long list, or enter a customer’s new address.
 
 ```jsx
-<Card sectioned title="Variants" actions={[{content: 'Add variant']}>
+<Card sectioned title="Variants" actions={[{content: 'Add variant'}]}>
   <p>Add variants if this product comes in multiple versions, like different sizes or colors.</p>
 </Card>
 ```
