@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+### Bug fixes
+* Fixed a syntax error in one of the Card component examples ([#1175](https://github.com/Shopify/polaris-react/pull/1175)) (thanks [meecrobe](https://github.com/meecrobe) for the [original issue](https://github.com/Shopify/polaris/issues/281))
 
 ## 1.12.4 - 2018-03-19
 * Enhanced Avatar to work better when provided non-square images ([#1124](https://github.com/Shopify/polaris-react/pull/1124))
