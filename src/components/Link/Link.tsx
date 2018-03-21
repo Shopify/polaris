@@ -15,18 +15,19 @@ export interface Props {
   onClick?(): void;
 }
 
-export default function Link({url, children, onClick, external}: Props) {
+export default function Link({url, children, onClick, external, id}: Props) {
   return url ? (
     <UnstyledLink
       onClick={onClick}
       className={styles.Link}
       url={url}
       external={external}
+      id={id}
     >
       {children}
     </UnstyledLink>
   ) : (
-    <button onClick={onClick} className={styles.Link}>
+    <button onClick={onClick} className={styles.Link} id={id}>
       {children}
     </button>
   );

@@ -48,22 +48,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private contentNode: HTMLElement | null;
   private transitionStatus: TransitionStatus;
 
-  componentDidUpdate({active: wasActive}: Props) {
-    const {active, preventAutofocus} = this.props;
-    if (!active || preventAutofocus || active === wasActive) {
-      return;
+  componentDidMount() {
+    if (this.props.active) {
+      this.focusContent();
     }
-    if (this.contentNode == null) {
-      return;
-    }
+  }
 
-    write(() => {
-      if (this.contentNode == null) {
-        return;
-      }
-      const focusableChild = findFirstFocusableNode(this.contentNode);
-      (focusableChild || this.contentNode).focus();
-    });
+  componentDidUpdate(oldProps: Props) {
+    if (this.props.active && !oldProps.active) {
+      this.focusContent();
+    }
   }
 
   render() {
@@ -128,7 +122,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       activatorRect,
     } = overlayDetails;
 
-    const {id, children, sectioned, fullWidth} = this.props;
+    const {id, children, sectioned, fullWidth, fullHeight} = this.props;
 
     const className = classNames(
       styles.Popover,

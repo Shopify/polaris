@@ -208,7 +208,7 @@ describe('<TextField />', () => {
 
     it('connects the input to the prefix, suffix, and label', () => {
       const textField = mount(
-        <TextField label="TextField" prefix="$" suffix=".00" />,
+        <TextField label="TextField" prefix="$" suffix=".00" onChange={noop} />,
       );
       const labels = textField
         .find('input')
