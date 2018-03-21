@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!-- ## Unreleased -->
+### Bug fixes
+- Fixes overflow bug causing TextFields border to be cut off ([#1180](https://github.com/Shopify/polaris-react/pull/1180))
 
 ## 2.0.0-beta.10 - 2018-03-16
 
