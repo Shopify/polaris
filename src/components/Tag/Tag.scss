@@ -10,6 +10,13 @@ $icon-size: rem(16px);
   background-color: color(sky);
   border-radius: border-radius();
   color: color(ink);
+
+  &.disabled {
+    @include recolor-icon(color(ink, lightest));
+    transition: none;
+    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
+    color: color(ink, lightest);
+  }
 }
 
 .Button {
@@ -29,6 +36,12 @@ $icon-size: rem(16px);
   &:active {
     @include recolor-icon(color(ink));
     background: color(sky, dark);
+  }
+
+  &:disabled {
+    @include recolor-icon(color(ink, lightest));
+    cursor: default;
+    pointer-events: none;
   }
 
   &:active {

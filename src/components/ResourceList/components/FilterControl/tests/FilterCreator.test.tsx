@@ -43,6 +43,7 @@ describe('<FilterCreator />', () => {
       singular: 'Item',
       plural: 'Items',
     },
+    disabled: false,
   };
 
   it('renders just a button by default', () => {

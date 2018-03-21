@@ -13,6 +13,7 @@ export interface Props {
     singular: string;
     plural: string;
   };
+  disabled: boolean;
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 
@@ -34,7 +35,7 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {filters, resourceName, polaris: {intl}} = this.props;
+    const {filters, resourceName, disabled, polaris: {intl}} = this.props;
     const {popoverActive, selectedFilter, selectedFilterValue} = this.state;
 
     const activator = (
@@ -42,6 +43,7 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
         onClick={this.togglePopover}
         disclosure
         testID="FilterCreator-FilterActivator"
+        disabled={disabled}
       >
         {intl.translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
       </Button>
