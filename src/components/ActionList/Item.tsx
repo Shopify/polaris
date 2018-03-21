@@ -18,6 +18,7 @@ export default function Item({
   icon,
   image,
   disabled,
+  external,
 }: Props) {
   const className = classNames(styles.Item, disabled && styles.disabled);
   let imageElement = null;
@@ -48,7 +49,12 @@ export default function Item({
   );
 
   const control = url ? (
-    <UnstyledLink url={url} onClick={onAction} className={styles.Item}>
+    <UnstyledLink
+      url={url}
+      onClick={onAction}
+      className={styles.Item}
+      external={external}
+    >
       {contentElement}
     </UnstyledLink>
   ) : (
