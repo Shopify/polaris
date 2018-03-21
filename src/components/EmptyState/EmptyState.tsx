@@ -12,19 +12,19 @@ import * as styles from './EmptyState.scss';
 
 export interface Props {
   /** The empty state heading */
-  heading?: string,
+  heading?: string;
   /** The image to use for small screens */
-  image: string,
+  image: string;
   /** The image to use for large screens */
-  largeImage?: string,
+  largeImage?: string;
   /** The image to use for large screens */
-  imageContained?: boolean,
+  imageContained?: boolean;
   /** Elements to display inside empty state */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Primary action for empty state */
-  action: Action,
+  action: Action;
   /** Secondary action for empty state */
-  secondaryAction?: Action,
+  secondaryAction?: Action;
 }
 
 export default class EmptyState extends React.PureComponent<Props, never> {
@@ -44,21 +44,26 @@ export default class EmptyState extends React.PureComponent<Props, never> {
       imageContained && styles.imageContained,
     );
 
-    const imageMarkup = largeImage
-      ? (
-        <Image
-          alt=""
-          role="presentation"
-          className={styles.Image}
-          source={largeImage}
-          sourceSet={[
-            {source: image, descriptor: '568w'},
-            {source: largeImage, descriptor: '1136w'},
-          ]}
-          sizes="(max-width: 568px) 60vw"
-        />
-      )
-      : <Image role="presentation" alt="" className={styles.Image} source={image} />;
+    const imageMarkup = largeImage ? (
+      <Image
+        alt=""
+        role="presentation"
+        className={styles.Image}
+        source={largeImage}
+        sourceSet={[
+          {source: image, descriptor: '568w'},
+          {source: largeImage, descriptor: '1136w'},
+        ]}
+        sizes="(max-width: 568px) 60vw"
+      />
+    ) : (
+      <Image
+        role="presentation"
+        alt=""
+        className={styles.Image}
+        source={image}
+      />
+    );
 
     const secondaryActionMarkup = secondaryAction
       ? buttonFrom(secondaryAction, {plain: true})
@@ -71,9 +76,7 @@ export default class EmptyState extends React.PureComponent<Props, never> {
             <div className={styles.Details}>
               <TextContainer>
                 <DisplayText size="medium">{heading}</DisplayText>
-                <div className={styles.Content}>
-                  {children}
-                </div>
+                <div className={styles.Content}>{children}</div>
               </TextContainer>
 
               <div className={styles.Actions}>
@@ -85,9 +88,7 @@ export default class EmptyState extends React.PureComponent<Props, never> {
             </div>
           </div>
 
-          <div className={styles.ImageContainer}>
-            {imageMarkup}
-          </div>
+          <div className={styles.ImageContainer}>{imageMarkup}</div>
         </div>
       </div>
     );

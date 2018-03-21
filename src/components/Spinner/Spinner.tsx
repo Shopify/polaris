@@ -12,11 +12,11 @@ const COLORS_FOR_LARGE_SPINNER = ['teal', 'inkLightest'];
 
 export interface Props {
   /** Color of spinner */
-  color?: Color,
+  color?: Color;
   /** Size of spinner */
-  size?: Size,
+  size?: Size;
   /** Accessible label for the spinner */
-  accessibilityLabel?: string,
+  accessibilityLabel?: string;
 }
 
 export default function Spinner({
@@ -24,13 +24,17 @@ export default function Spinner({
   color = 'teal',
   accessibilityLabel,
 }: Props) {
-
-
   if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
     if (process.env.NODE_ENV === 'development') {
-      // tslint:disable-next-line no-console
-      console.warn(`The color ${color} is not meant to be used on ${size} spinners. The colors available on large spinners are: ${COLORS_FOR_LARGE_SPINNER.join(', ')}`);
+      // eslint-disable-next-line no-console
+      console.warn(
+        `The color ${color} is not meant to be used on ${size} spinners. The colors available on large spinners are: ${COLORS_FOR_LARGE_SPINNER.join(
+          ', ',
+        )}`,
+      );
     }
+
+    // eslint-disable-next-line no-param-reassign
     size = 'small';
   }
 
@@ -40,17 +44,15 @@ export default function Spinner({
     size && styles[variationName('size', size)],
   );
 
-  const spinnerSVG = size === 'large'
-    ? spinnerSVGLarge
-    : spinnerSVGSmall;
+  const spinnerSVG = size === 'large' ? spinnerSVGLarge : spinnerSVGSmall;
 
   return (
-      <svg
-        viewBox={spinnerSVG.viewBox}
-        dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
-        className={className}
-        aria-label={accessibilityLabel}
-        role="status"
-      />
+    <svg
+      viewBox={spinnerSVG.viewBox}
+      dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
+      className={className}
+      aria-label={accessibilityLabel}
+      role="status"
+    />
   );
 }

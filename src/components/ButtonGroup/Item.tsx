@@ -5,11 +5,11 @@ import {Props as ButtonProps} from '../Button';
 import * as styles from './ButtonGroup.scss';
 
 export interface Props {
-  button: React.ReactElement<ButtonProps>,
+  button: React.ReactElement<ButtonProps>;
 }
 
 export interface State {
-  focused: boolean,
+  focused: boolean;
 }
 
 export default class Item extends React.PureComponent<Props, State> {

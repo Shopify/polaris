@@ -5,27 +5,27 @@ import * as styles from './RadioButton.scss';
 
 export interface Props {
   /** Label for the radio button */
-  label: string,
+  label: string;
   /** Visually hide the label */
-  labelHidden?: boolean,
+  labelHidden?: boolean;
   /** Radio button is selected */
-  checked?: boolean,
+  checked?: boolean;
   /** Additional text to aid in use */
-  helpText?: React.ReactNode,
+  helpText?: React.ReactNode;
   /** Disable input */
-  disabled?: boolean,
+  disabled?: boolean;
   /** ID for form input */
-  id?: string,
+  id?: string;
   /** Name for form input */
-  name?: string,
+  name?: string;
   /** Value for form input */
-  value?: string,
+  value?: string;
   /** Callback when the radio button is toggled */
-  onChange?(newValue: boolean, id: string): void,
+  onChange?(newValue: boolean, id: string): void;
   /** Callback when radio button is focussed */
-  onFocus?(): void,
+  onFocus?(): void;
   /** Callback when focus is removed */
-  onBlur?(): void,
+  onBlur?(): void;
 }
 
 const getUniqueID = createUniqueIDFactory('RadioButton');
@@ -44,13 +44,13 @@ export default function RadioButton({
   value,
 }: Props) {
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
-    if (onChange == null) { return; }
+    if (onChange == null) {
+      return;
+    }
     onChange(currentTarget.checked, id);
   }
 
-  const describedBy = helpText
-    ? helpTextID(id)
-    : null;
+  const describedBy = helpText ? helpTextID(id) : null;
 
   return (
     <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>

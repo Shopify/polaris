@@ -8,48 +8,47 @@ import Popover from '../Popover';
 
 import List from './List';
 import Tab from './Tab';
-import TabMeasurer from './TabMeasurer';
-import {Measurements} from './TabMeasurer';
+import TabMeasurer, {Measurements} from './TabMeasurer';
 import Panel from './Panel';
 import * as styles from './Tabs.scss';
 
 export interface GenericTabDescriptor {
-  id: string,
-  url?: string,
-  panelID?: string,
-  accessibilityLabel?: string,
+  id: string;
+  url?: string;
+  panelID?: string;
+  accessibilityLabel?: string;
 }
 export interface TabWithTitleDescriptor extends GenericTabDescriptor {
-  title: string,
+  title: string;
 }
 
 export interface TabWithContentDescriptor extends GenericTabDescriptor {
-  content: string,
+  content: string;
 }
 
 export type TabDescriptor = TabWithTitleDescriptor | TabWithContentDescriptor;
 
 export interface Props {
   /** Content to display in tabs */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Index of selected tab */
-  selected: number,
+  selected: number;
   /** List of tabs */
-  tabs: TabDescriptor[],
+  tabs: TabDescriptor[];
   /** Fit tabs to container */
-  fitted?: boolean,
+  fitted?: boolean;
   /** Callback when tab is selected */
-  onSelect?(selectedTabIndex: number): void,
+  onSelect?(selectedTabIndex: number): void;
 }
 
 export interface State {
-  disclosureWidth: number,
-  tabWidths: number[],
-  visibleTabs: number[],
-  hiddenTabs: number[],
-  containerWidth: number,
-  showDisclosure: boolean,
-  tabToFocus: number,
+  disclosureWidth: number;
+  tabWidths: number[];
+  visibleTabs: number[];
+  hiddenTabs: number[];
+  containerWidth: number;
+  showDisclosure: boolean;
+  tabToFocus: number;
 }
 
 export default class Tabs extends React.PureComponent<Props, State> {
@@ -68,7 +67,13 @@ export default class Tabs extends React.PureComponent<Props, State> {
   componentWillReceiveProps(nextProps: Props) {
     const {selected} = this.props;
     const {disclosureWidth, tabWidths, containerWidth, tabToFocus} = this.state;
-    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(nextProps.tabs, nextProps.selected, disclosureWidth, tabWidths, containerWidth);
+    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
+      nextProps.tabs,
+      nextProps.selected,
+      disclosureWidth,
+      tabWidths,
+      containerWidth,
+    );
 
     this.setState({
       visibleTabs,
@@ -83,16 +88,14 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
 
-    const panelMarkup = children
-      ? (
-        <Panel
-          id={tabs[selected].panelID || `${tabs[selected].id}-panel`}
-          tabID={tabs[selected].id}
-        >
-          {children}
-        </Panel>
-      )
-      : null;
+    const panelMarkup = children ? (
+      <Panel
+        id={tabs[selected].panelID || `${tabs[selected].id}-panel`}
+        tabID={tabs[selected].id}
+      >
+        {children}
+      </Panel>
+    ) : null;
 
     const tabsMarkup = visibleTabs
       .sort((tabA, tabB) => tabA - tabB)
@@ -179,7 +182,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     if (key === 'ArrowLeft' || key === 'ArrowUp') {
       newFocus -= 1;
-    if (newFocus === -1) {
+      if (newFocus === -1) {
         newFocus = tabsArrayInOrder.length - 1;
       }
     }
@@ -220,8 +223,11 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     // If we are explicitly focusing one of the non-selected tabs, use it
     // move the focus to it
-    const target = (event.target as HTMLElement);
-    if (target.classList.contains(styles.Tab) || target.classList.contains(styles.Item)) {
+    const target = event.target as HTMLElement;
+    if (
+      target.classList.contains(styles.Tab) ||
+      target.classList.contains(styles.Item)
+    ) {
       let tabToFocus = -1;
 
       tabs.every((tab, index) => {
@@ -270,7 +276,10 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const target = event.relatedTarget as HTMLElement;
 
     // If we are going to anywhere other than another tab, lose the last focused tab
-    if (!target.classList.contains(styles.Tab) && !target.classList.contains(styles.Item)) {
+    if (
+      !target.classList.contains(styles.Tab) &&
+      !target.classList.contains(styles.Item)
+    ) {
       this.setState({tabToFocus: -1});
     }
   }
@@ -291,8 +300,18 @@ export default class Tabs extends React.PureComponent<Props, State> {
   private handleMeasurement(measurements: Measurements) {
     const {tabs, selected} = this.props;
     const {tabToFocus} = this.state;
-    const {hiddenTabWidths: tabWidths, containerWidth, disclosureWidth} = measurements;
-    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(tabs, selected, disclosureWidth, tabWidths, containerWidth);
+    const {
+      hiddenTabWidths: tabWidths,
+      containerWidth,
+      disclosureWidth,
+    } = measurements;
+    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
+      tabs,
+      selected,
+      disclosureWidth,
+      tabWidths,
+      containerWidth,
+    );
 
     this.setState({
       tabToFocus: tabToFocus === -1 ? -1 : selected,
@@ -309,7 +328,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const {tabs, onSelect = noop} = this.props;
 
     const tab = tabs.find((aTab) => aTab.id === id);
-    if (tab == null) { return; }
+    if (tab == null) {
+      return;
+    }
 
     const selectedIndex = tabs.indexOf(tab);
     onSelect(selectedIndex);
@@ -319,7 +340,12 @@ export default class Tabs extends React.PureComponent<Props, State> {
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
-  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+  if (
+    key === 'ArrowUp' ||
+    key === 'ArrowDown' ||
+    key === 'ArrowLeft' ||
+    key === 'ArrowRight'
+  ) {
     event.preventDefault();
     event.stopPropagation();
   }
@@ -367,8 +393,10 @@ function getVisibleAndHiddenTabIndices(
 
 export function getTabContent(tab: TabDescriptor) {
   if (isTabWithTitle(tab)) {
-    // tslint:disable-next-line no-console
-    console.warn('The `title` property on Tabs has been deprecated. Use `content` instead.');
+    // eslint-disable-next-line no-console
+    console.warn(
+      'The `title` property on Tabs has been deprecated. Use `content` instead.',
+    );
     return tab.title;
   } else {
     return tab.content;

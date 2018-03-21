@@ -9,16 +9,16 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tabs.scss';
 
 export interface Props {
-  id: string,
-  focused?: boolean,
-  siblingTabHasFocus?: boolean,
-  selected?: boolean,
-  panelID?: string,
-  children?: React.ReactNode,
-  url?: string,
-  measuring?: boolean,
-  accessibilityLabel?: string,
-  onClick?(id: string): void,
+  id: string;
+  focused?: boolean;
+  siblingTabHasFocus?: boolean;
+  selected?: boolean;
+  panelID?: string;
+  children?: React.ReactNode;
+  url?: string;
+  measuring?: boolean;
+  accessibilityLabel?: string;
+  onClick?(id: string): void;
 }
 
 export default class Tab extends React.PureComponent<Props, never> {
@@ -30,12 +30,15 @@ export default class Tab extends React.PureComponent<Props, never> {
   componentDidMount() {
     const {id, measuring, selected, panelID, focused} = this.props;
 
-    if (measuring) { return; }
+    if (measuring) {
+      return;
+    }
 
     // Because of timing issues with the render, we may still have the old,
     // in-disclosure version of the tab that has focus. Check for this
     // as a second indicator of focus
-    const itemHadFocus = focused || (document.activeElement && document.activeElement.id === id);
+    const itemHadFocus =
+      focused || (document.activeElement && document.activeElement.id === id);
 
     // If we just check for selected, the panel for the active tab will
     // be focused on page load, which we don’t want
@@ -48,7 +51,9 @@ export default class Tab extends React.PureComponent<Props, never> {
     const {selected: wasSelected} = previousProps;
     const {focused, measuring, selected, panelID} = this.props;
 
-    if (measuring) { return; }
+    if (measuring) {
+      return;
+    }
 
     if (selected && !wasSelected && panelID != null) {
       focusPanelID(panelID);
@@ -88,8 +93,7 @@ export default class Tab extends React.PureComponent<Props, never> {
       tabIndex = -1;
     }
 
-    const markup = url
-      ? (
+    const markup = url ? (
       <UnstyledLink
         id={id}
         url={url}
@@ -102,28 +106,23 @@ export default class Tab extends React.PureComponent<Props, never> {
         aria-label={accessibilityLabel}
         onMouseUp={handleMouseUpByBlurring}
       >
-        <span className={styles.Title}>
-          {children}
-        </span>
+        <span className={styles.Title}>{children}</span>
       </UnstyledLink>
-      )
-      : (
-        <button
-          id={id}
-          role="tab"
-          tabIndex={tabIndex}
-          className={className}
-          onClick={handleClick}
-          aria-selected={selected}
-          aria-controls={panelID}
-          aria-label={accessibilityLabel}
-          onMouseUp={handleMouseUpByBlurring}
-        >
-          <span className={styles.Title}>
-            {children}
-          </span>
-        </button>
-      );
+    ) : (
+      <button
+        id={id}
+        role="tab"
+        tabIndex={tabIndex}
+        className={className}
+        onClick={handleClick}
+        aria-selected={selected}
+        aria-controls={panelID}
+        aria-label={accessibilityLabel}
+        onMouseUp={handleMouseUpByBlurring}
+      >
+        <span className={styles.Title}>{children}</span>
+      </button>
+    );
 
     return (
       <li
@@ -144,5 +143,7 @@ export default class Tab extends React.PureComponent<Props, never> {
 
 function focusPanelID(panelID: string) {
   const panel = document.getElementById(panelID);
-  if (panel) { panel.focus(); }
+  if (panel) {
+    panel.focus();
+  }
 }

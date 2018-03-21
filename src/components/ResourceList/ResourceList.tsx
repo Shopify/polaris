@@ -6,11 +6,11 @@ import * as styles from './ResourceList.scss';
 
 export interface Props {
   /** Item data; each item is passed to renderItem */
-  items: any[],
+  items: any[];
   /** Function to generate unique identifier for each item passed */
-  renderItem(item: any, index: number): React.ReactNode,
+  renderItem(item: any, index: number): React.ReactNode;
   /** Function to render each item */
-  idForItem?(item: any, index: number): string | number,
+  idForItem?(item: any, index: number): string | number;
 }
 
 export default class ResourceList extends React.PureComponent<Props, never> {
@@ -20,9 +20,7 @@ export default class ResourceList extends React.PureComponent<Props, never> {
     const {items} = this.props;
 
     return (
-      <ul className={styles.ResourceList}>
-        {items.map(this.renderItem)}
-      </ul>
+      <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
     );
   }
 

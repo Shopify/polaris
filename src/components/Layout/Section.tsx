@@ -3,9 +3,9 @@ import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Layout.scss';
 
 export interface Props {
-  children?: React.ReactNode,
-  secondary?: boolean,
-  fullWidth?: boolean,
+  children?: React.ReactNode;
+  secondary?: boolean;
+  fullWidth?: boolean;
 }
 
 export default function Section({children, secondary, fullWidth}: Props) {
@@ -15,9 +15,5 @@ export default function Section({children, secondary, fullWidth}: Props) {
     fullWidth && styles['Section-fullWidth'],
   );
 
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 }

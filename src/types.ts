@@ -4,47 +4,52 @@ export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
 export interface Action {
-  content?: string,
-  accessibilityLabel?: string,
-  url?: string,
-  external?: boolean,
-  onAction?(): void,
+  content?: string;
+  accessibilityLabel?: string;
+  url?: string;
+  external?: boolean;
+  onAction?(): void;
 }
 
 export interface LinkAction {
-  content?: string,
-  accessibilityLabel?: string,
-  url: string,
+  content?: string;
+  accessibilityLabel?: string;
+  url: string;
 }
 
 export interface CallbackAction {
-  content?: string,
-  accessibilityLabel?: string,
-  onAction(): void,
+  content?: string;
+  accessibilityLabel?: string;
+  onAction(): void;
 }
 
 export interface DisableableAction extends Action {
-  disabled?: boolean,
+  disabled?: boolean;
 }
 
 export interface DestructableAction extends Action {
-  destructive?: boolean,
+  destructive?: boolean;
 }
 
 export interface EASDKAction extends Action {
-  target?: EASDKTarget,
+  target?: EASDKTarget;
 }
 
 export interface IconableAction extends Action {
-  icon?: IconProps['source'],
+  icon?: IconProps['source'];
 }
 
 export interface LoadableAction extends Action {
-  loading?: boolean,
+  loading?: boolean;
 }
 
-export interface ComplexAction extends Action, DisableableAction, DestructableAction, EASDKAction, IconableAction, LoadableAction {
-}
+export interface ComplexAction
+  extends Action,
+    DisableableAction,
+    DestructableAction,
+    EASDKAction,
+    IconableAction,
+    LoadableAction {}
 
 export enum Keys {
   BACKSPACE = 8,

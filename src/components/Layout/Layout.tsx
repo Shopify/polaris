@@ -5,9 +5,9 @@ import * as styles from './Layout.scss';
 
 export interface Props {
   /** Automatically adds sections to layout. */
-  sectioned?: boolean,
+  sectioned?: boolean;
   /** The content to display inside the layout. */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default class Layout extends React.Component<Props, never> {
@@ -17,14 +17,8 @@ export default class Layout extends React.Component<Props, never> {
   render() {
     const {children, sectioned} = this.props;
 
-    const content = sectioned
-      ? <Section>{children}</Section>
-      : children;
+    const content = sectioned ? <Section>{children}</Section> : children;
 
-    return (
-      <div className={styles.Layout}>
-        {content}
-      </div>
-    );
+    return <div className={styles.Layout}>{content}</div>;
   }
 }

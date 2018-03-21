@@ -4,10 +4,13 @@ import {OpenOptions} from '../easdk/components/ResourcePicker';
 
 export interface Props extends OpenOptions {
   /** Whether the picker is open or not */
-  open: boolean,
+  open: boolean;
 }
 
-export class ResourcePicker extends React.PureComponent<Props & WithEASDKProps, never> {
+export class ResourcePicker extends React.PureComponent<
+  Props & WithEASDKProps,
+  never
+> {
   private focusReturnPoint: HTMLElement | null = null;
 
   componentDidMount() {
@@ -27,20 +30,26 @@ export class ResourcePicker extends React.PureComponent<Props & WithEASDKProps, 
 
     if (!wasOpen && open) {
       this.focusReturnPoint = document.activeElement as HTMLElement;
-    } else if (wasOpen && !open && this.focusReturnPoint != null && document.contains(this.focusReturnPoint)) {
+    } else if (
+      wasOpen &&
+      !open &&
+      this.focusReturnPoint != null &&
+      document.contains(this.focusReturnPoint)
+    ) {
       this.focusReturnPoint.focus();
       this.focusReturnPoint = null;
     }
   }
 
-  // tslint:disable-next-line prefer-function-over-method
   render() {
     return null;
   }
 
   private handleEASDKMessaging() {
     const {open, easdk} = this.props;
-    if (easdk == null) { return; }
+    if (easdk == null) {
+      return;
+    }
 
     if (open) {
       easdk.ResourcePicker.open(this.props);

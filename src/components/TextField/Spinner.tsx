@@ -4,8 +4,8 @@ import Icon from '../Icon';
 import * as styles from './TextField.scss';
 
 export interface Props {
-  onChange(delta: number): void,
-  onClick?(): void,
+  onChange(delta: number): void;
+  onClick?(): void;
 }
 
 export default function Spinner({onChange, onClick}: Props) {

@@ -9,29 +9,29 @@ import * as styles from './Checkbox.scss';
 
 export interface Props {
   /** Label for the checkbox */
-  label: React.ReactNode,
+  label: React.ReactNode;
   /** Visually hide the label */
-  labelHidden?: boolean,
+  labelHidden?: boolean;
   /** Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox */
-  checked?: boolean | 'indeterminate',
+  checked?: boolean | 'indeterminate';
   /** Additional text to aide in use */
-  helpText?: React.ReactNode,
+  helpText?: React.ReactNode;
   /** Disable input */
-  disabled?: boolean,
+  disabled?: boolean;
   /** ID for form input */
-  id?: string,
+  id?: string;
   /** Name for form input */
-  name?: string,
+  name?: string;
   /** Value for form input */
-  value?: string,
+  value?: string;
   /** Display an error message */
-  error?: Error,
+  error?: Error;
   /** Callback when checkbox is toggled */
-  onChange?(newChecked: boolean, id: string): void,
+  onChange?(newChecked: boolean, id: string): void;
   /** Callback when checkbox is focussed */
-  onFocus?(): void,
+  onFocus?(): void;
   /** Callback when focus is removed */
-  onBlur?(): void,
+  onBlur?(): void;
 }
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
@@ -50,29 +50,33 @@ export default function Checkbox({
   name,
   value,
 }: Props) {
-
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if (onChange == null) { return; }
+    if (onChange == null) {
+      return;
+    }
     const {currentTarget} = event;
     onChange(currentTarget.checked, id);
   }
 
   const describedBy: string[] = [];
-  if (typeof error === 'string') { describedBy.push(errorID(id)); }
-  if (helpText) { describedBy.push(helpTextID(id)); }
-  const ariaDescribedBy = describedBy.length ? describedBy.join(' ') : undefined;
+  if (typeof error === 'string') {
+    describedBy.push(errorID(id));
+  }
+  if (helpText) {
+    describedBy.push(helpTextID(id));
+  }
+  const ariaDescribedBy = describedBy.length
+    ? describedBy.join(' ')
+    : undefined;
 
-  const wrapperClassName = classNames(
-    styles.Checkbox,
-    error && styles.error,
-  );
+  const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
 
   const isIndeterminate = checked === 'indeterminate';
   const isChecked = !isIndeterminate && Boolean(checked);
 
   const indeterminateAttributes = isIndeterminate
     ? {indeterminate: 'true', 'aria-checked': 'mixed'}
-    : {'aria-checked' : isChecked};
+    : {'aria-checked': isChecked};
 
   const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
 
@@ -82,6 +86,7 @@ export default function Checkbox({
   );
 
   return (
+    /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
     <Choice
       id={id}
       label={label}
@@ -112,5 +117,6 @@ export default function Checkbox({
         </div>
       </div>
     </Choice>
+    /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
   );
 }

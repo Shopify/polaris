@@ -9,40 +9,40 @@ import RadioButton from '../RadioButton';
 import * as styles from './ChoiceList.scss';
 
 export interface ChoiceDescriptor {
-  value: string,
-  label: string,
-  disabled?: boolean,
-  helpText?: React.ReactNode,
-  renderChildren?(isSelected: boolean): React.ReactNode | false,
+  value: string;
+  label: string;
+  disabled?: boolean;
+  helpText?: React.ReactNode;
+  renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
 
 export type Choice = ChoiceDescriptor;
 
 export interface Props {
   /** Label for list of choices */
-  title?: string,
+  title?: string;
   /** Collection of choices */
-  choices: Choice[],
+  choices: Choice[];
   /** Collection of selected choices */
-  selected: string[],
+  selected: string[];
   /** Name for form input */
-  name?: string,
+  name?: string;
   /** Allow merchants to select multiple options at once */
-  allowMultiple?: boolean,
+  allowMultiple?: boolean;
   /** Toggles display of the title */
-  titleHidden?: boolean,
+  titleHidden?: boolean;
   /** Callback when the selected choices change */
-  onChange?(selected: string[], name: string): void,
+  onChange?(selected: string[], name: string): void;
 }
 
 type ChooseableComponent = ReactComponent<{
-  label: string,
-  name?: string,
-  value?: string,
-  disabled?: boolean,
-  checked?: boolean,
-  helpText?: React.ReactNode,
-  onChange?(checked: boolean, id: string): void,
+  label: string;
+  name?: string;
+  value?: string;
+  disabled?: boolean;
+  checked?: boolean;
+  helpText?: React.ReactNode;
+  onChange?(checked: boolean, id: string): void;
 }>;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
@@ -56,7 +56,6 @@ export default function ChoiceList({
   onChange = noop,
   name = getUniqueID(),
 }: Props) {
-
   const ControlComponent: ChooseableComponent = allowMultiple
     ? Checkbox
     : RadioButton;
@@ -68,17 +67,12 @@ export default function ChoiceList({
     titleHidden && styles.titleHidden,
   );
 
-  const titleMarkup = title
-    ? <legend className={styles.Title}>{title}</legend>
-    : null;
+  const titleMarkup = title ? (
+    <legend className={styles.Title}>{title}</legend>
+  ) : null;
 
   const choicesMarkup = choices.map((choice) => {
-    const {
-      value,
-      label,
-      helpText,
-      disabled,
-    } = choice;
+    const {value, label, helpText, disabled} = choice;
 
     function handleChange(checked: boolean) {
       onChange(
@@ -88,13 +82,11 @@ export default function ChoiceList({
     }
 
     const isSelected = choiceIsSelected(choice, selected);
-    const children = choice.renderChildren
-      ? (
-        <div className={styles.ChoiceChildren}>
-          {choice.renderChildren(isSelected)}
-        </div>
-      )
-      : null;
+    const children = choice.renderChildren ? (
+      <div className={styles.ChoiceChildren}>
+        {choice.renderChildren(isSelected)}
+      </div>
+    ) : null;
 
     return (
       <li key={value}>
@@ -115,9 +107,7 @@ export default function ChoiceList({
   return (
     <fieldset className={className}>
       {titleMarkup}
-      <ul className={styles.Choices}>
-        {choicesMarkup}
-      </ul>
+      <ul className={styles.Choices}>{choicesMarkup}</ul>
     </fieldset>
   );
 }
@@ -126,7 +116,12 @@ function choiceIsSelected({value}: Choice, selected: string[]) {
   return selected.indexOf(value) >= 0;
 }
 
-function updateSelectedChoices({value}: Choice, checked: boolean, selected: string[], allowMultiple = false) {
+function updateSelectedChoices(
+  {value}: Choice,
+  checked: boolean,
+  selected: string[],
+  allowMultiple = false,
+) {
   if (checked) {
     return allowMultiple ? [...selected, value] : [value];
   }

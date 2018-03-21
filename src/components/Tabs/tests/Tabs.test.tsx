@@ -9,10 +9,7 @@ describe('<Tabs />', () => {
   let tabs: Props['tabs'];
 
   beforeEach(() => {
-    tabs = [
-      {content: 'Tab 1', id: 'tab-1'},
-      {content: 'Tab 2', id: 'tab-2'},
-    ];
+    tabs = [{content: 'Tab 1', id: 'tab-1'}, {content: 'Tab 2', id: 'tab-2'}];
   });
 
   describe('tabs', () => {
@@ -20,16 +17,29 @@ describe('<Tabs />', () => {
       const wrapper = mount(<Tabs selected={0} tabs={tabs} />);
 
       tabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('id')).toBe(tab.id);
+        expect(
+          wrapper
+            .find(Tab)
+            .at(index)
+            .prop('id'),
+        ).toBe(tab.id);
       });
     });
 
     it('uses the panelID passed in for the tabs', () => {
-      const panelIDedTabs = [{...tabs[0], panelID: 'panel-1'}, {...tabs[1], panelID: 'panel-2'}];
+      const panelIDedTabs = [
+        {...tabs[0], panelID: 'panel-1'},
+        {...tabs[1], panelID: 'panel-2'},
+      ];
       const wrapper = mount(<Tabs selected={0} tabs={panelIDedTabs} />);
 
       panelIDedTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
+        expect(
+          wrapper
+            .find(Tab)
+            .at(index)
+            .prop('panelID'),
+        ).toBe(tab.panelID);
       });
     });
 
@@ -37,18 +47,29 @@ describe('<Tabs />', () => {
       const wrapper = mount(<Tabs selected={0} tabs={tabs} />);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find(Tab).at(index).prop('panelID');
+        const panelID = wrapper
+          .find(Tab)
+          .at(index)
+          .prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
       });
     });
 
     it('sets the tab URL if passed in the tab descriptor', () => {
-      const urlTabs = [{...tabs[0], url: 'https://shopify.com'}, {...tabs[1], url: 'https://google.com'}];
+      const urlTabs = [
+        {...tabs[0], url: 'https://shopify.com'},
+        {...tabs[1], url: 'https://google.com'},
+      ];
       const wrapper = mount(<Tabs selected={0} tabs={urlTabs} />);
 
       urlTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('url')).toEqual(tab.url);
+        expect(
+          wrapper
+            .find(Tab)
+            .at(index)
+            .prop('url'),
+        ).toEqual(tab.url);
       });
     });
 
@@ -60,19 +81,29 @@ describe('<Tabs />', () => {
       const wrapper = mount(<Tabs selected={0} tabs={labelledTabs} />);
 
       labelledTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('accessibilityLabel')).toEqual(tab.accessibilityLabel);
+        expect(
+          wrapper
+            .find(Tab)
+            .at(index)
+            .prop('accessibilityLabel'),
+        ).toEqual(tab.accessibilityLabel);
       });
     });
 
     it('sets the content for each of the tabs if given a title', () => {
       const titledTabs = [
-        { title: 'Tab 1', id: 'tab-1' },
-        { title: 'Tab 2', id: 'tab-2' },
+        {title: 'Tab 1', id: 'tab-1'},
+        {title: 'Tab 2', id: 'tab-2'},
       ];
       const wrapper = mount(<Tabs selected={0} tabs={titledTabs} />);
 
       titledTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('children')).toEqual(tab.title);
+        expect(
+          wrapper
+            .find(Tab)
+            .at(index)
+            .prop('children'),
+        ).toEqual(tab.title);
       });
     });
   });
@@ -97,7 +128,11 @@ describe('<Tabs />', () => {
         {...tabs[1], panelID: 'panel-2'},
       ];
 
-      const wrapper = mount(<Tabs selected={0} tabs={panelIDedTabs}>Panel contents</Tabs>);
+      const wrapper = mount(
+        <Tabs selected={0} tabs={panelIDedTabs}>
+          Panel contents
+        </Tabs>,
+      );
       wrapper.setProps({selected: 1});
       expect(panelStub.focus).toHaveBeenCalled();
     });
@@ -107,10 +142,7 @@ describe('<Tabs />', () => {
     it('wraps the children in a panel with matching aria attributes to the tab', () => {
       const content = <p>Tab content</p>;
       const wrapper = mount(
-        <Tabs
-          selected={0}
-          tabs={tabs}
-        >
+        <Tabs selected={0} tabs={tabs}>
           {content}
         </Tabs>,
       );
@@ -124,13 +156,13 @@ describe('<Tabs />', () => {
     });
 
     it('uses a custom panelID', () => {
-      const panelIDedTabs = [{...tabs[0], panelID: 'my-custom-panel-id'}, tabs[1]];
+      const panelIDedTabs = [
+        {...tabs[0], panelID: 'my-custom-panel-id'},
+        tabs[1],
+      ];
       const content = <p>Tab content</p>;
       const wrapper = mount(
-        <Tabs
-          selected={0}
-          tabs={panelIDedTabs}
-        >
+        <Tabs selected={0} tabs={panelIDedTabs}>
           {content}
         </Tabs>,
       );
@@ -145,7 +177,11 @@ describe('<Tabs />', () => {
     it('is called with the index of the clicked tab', () => {
       const spy = jest.fn();
       const wrapper = mount(<Tabs selected={0} tabs={tabs} onSelect={spy} />);
-      wrapper.find(Tab).at(1).find('button').simulate('click');
+      wrapper
+        .find(Tab)
+        .at(1)
+        .find('button')
+        .simulate('click');
       expect(spy).toHaveBeenCalledWith(1);
     });
   });

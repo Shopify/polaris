@@ -14,7 +14,9 @@ export function rgbString(color: RGBColor | RGBAColor) {
 export const rgbaString = rgbString;
 
 export function rgbToHex({red, green, blue}: RGBColor) {
-  return `#${componentToHex(red)}${componentToHex(green)}${componentToHex(blue)}`;
+  return `#${componentToHex(red)}${componentToHex(green)}${componentToHex(
+    blue,
+  )}`;
 }
 
 function componentToHex(component: number) {
@@ -101,15 +103,13 @@ export function rgbToHsb(color: RGBAColor): HSBAColor {
   const smallestComponent = Math.min(r, g, b);
 
   const delta = largestComponent - smallestComponent;
-  const saturation = largestComponent === 0
-    ? 0
-    : delta / largestComponent;
+  const saturation = largestComponent === 0 ? 0 : delta / largestComponent;
 
   let huePercentage = 0;
   switch (largestComponent) {
     case r:
       huePercentage = (g - b) / delta + (g < b ? 6 : 0);
-     break;
+      break;
     case g:
       huePercentage = (b - r) / delta + 2;
       break;

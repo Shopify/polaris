@@ -4,14 +4,20 @@ import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {classNames} from '@shopify/react-utilities/styles';
-import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities/components';
+import {
+  isElementOfType,
+  wrapWithComponent,
+} from '@shopify/react-utilities/components';
 import {Transition} from 'react-transition-group';
 
 import {Keys} from '../../types';
 import {overlay} from '../shared';
 import EventListener from '../EventListener';
 import KeypressListener from '../KeypressListener';
-import PositionedOverlay, {OverlayDetails, PreferredPosition} from '../PositionedOverlay';
+import PositionedOverlay, {
+  OverlayDetails,
+  PreferredPosition,
+} from '../PositionedOverlay';
 
 import Pane, {Props as PaneProps} from './Pane';
 import * as styles from './Popover.scss';
@@ -26,15 +32,15 @@ export enum CloseSource {
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 export interface Props {
-  children?: React.ReactNode,
-  fullWidth?: boolean,
-  preferredPosition?: PreferredPosition,
-  active: boolean,
-  id: string,
-  activator: HTMLElement,
-  preventAutofocus?: boolean,
-  sectioned?: boolean,
-  onClose(source: CloseSource): void,
+  children?: React.ReactNode;
+  fullWidth?: boolean;
+  preferredPosition?: PreferredPosition;
+  active: boolean;
+  id: string;
+  activator: HTMLElement;
+  preventAutofocus?: boolean;
+  sectioned?: boolean;
+  onClose(source: CloseSource): void;
 }
 
 export default class PopoverOverlay extends React.PureComponent<Props, never> {
@@ -43,11 +49,17 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
   componentDidUpdate({active: wasActive}: Props) {
     const {active, preventAutofocus} = this.props;
-    if (!active || preventAutofocus || active === wasActive) { return; }
-    if (this.contentNode == null) { return; }
+    if (!active || preventAutofocus || active === wasActive) {
+      return;
+    }
+    if (this.contentNode == null) {
+      return;
+    }
 
     write(() => {
-      if (this.contentNode == null) { return; }
+      if (this.contentNode == null) {
+        return;
+      }
       const focusableChild = findFirstFocusableNode(this.contentNode);
       (focusableChild || this.contentNode).focus();
     });
@@ -77,6 +89,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
+        // eslint-disable-next-line react/jsx-no-bind
         render={this.renderPopover.bind(this, transitionStatus)}
         onScrollOut={this.handleScrollOut}
       />
@@ -84,7 +97,10 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private renderPopover(transitionStatus: TransitionStatus, overlayDetails: OverlayDetails) {
+  private renderPopover(
+    transitionStatus: TransitionStatus,
+    overlayDetails: OverlayDetails,
+  ) {
     const {
       measuring,
       left,
@@ -93,12 +109,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       activatorRect,
     } = overlayDetails;
 
-    const {
-      id,
-      children,
-      sectioned,
-      fullWidth,
-    } = this.props;
+    const {id, children, sectioned, fullWidth} = this.props;
 
     const className = classNames(
       styles.Popover,
@@ -110,18 +121,14 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     this.transitionStatus = transitionStatus;
 
-    const tipMarkup = !measuring
-      ? (
-        <div
-          style={{left: activatorRect.center.x - left}}
-          className={styles.Tip}
-        />
-      )
-      : null;
+    const tipMarkup = !measuring ? (
+      <div
+        style={{left: activatorRect.center.x - left}}
+        className={styles.Tip}
+      />
+    ) : null;
 
-    const contentStyles = measuring
-      ? undefined
-      : {height: desiredHeight};
+    const contentStyles = measuring ? undefined : {height: desiredHeight};
 
     const content = (
       <div
@@ -141,11 +148,19 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         <EventListener event="touchstart" handler={this.handleClick} />
         <KeypressListener keyCode={Keys.ESCAPE} handler={this.handleEscape} />
         {tipMarkup}
-        <div className={styles.FocusTracker} tabIndex={0} onFocus={this.handleFocusFirstItem} />
-        <div className={styles.Wrapper}>
-          {content}
-        </div>
-        <div className={styles.FocusTracker} tabIndex={0} onFocus={this.handleFocusLastItem} />
+        <div
+          className={styles.FocusTracker}
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0}
+          onFocus={this.handleFocusFirstItem}
+        />
+        <div className={styles.Wrapper}>{content}</div>
+        <div
+          className={styles.FocusTracker}
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0}
+          onFocus={this.handleFocusLastItem}
+        />
       </div>
     );
   }
@@ -159,9 +174,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private handleClick(event: Event) {
     const target = event.target as HTMLElement;
     const {contentNode, props: {activator, onClose}} = this;
-    const isDescendant = contentNode != null && nodeContainsDescendant(contentNode, target);
+    const isDescendant =
+      contentNode != null && nodeContainsDescendant(contentNode, target);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
-    if (isDescendant || isActivatorDescendant || this.transitionStatus !== 'entered') { return; }
+    if (
+      isDescendant ||
+      isActivatorDescendant ||
+      this.transitionStatus !== 'entered'
+    ) {
+      return;
+    }
     onClose(CloseSource.Click);
   }
 
@@ -186,9 +208,14 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   }
 }
 
-function renderPopoverContent(children: React.ReactNode, props?: Partial<PaneProps>) {
+function renderPopoverContent(
+  children: React.ReactNode,
+  props?: Partial<PaneProps>,
+) {
   const childrenArray = React.Children.toArray(children);
-  if (isElementOfType(childrenArray[0], Pane)) { return childrenArray; }
+  if (isElementOfType(childrenArray[0], Pane)) {
+    return childrenArray;
+  }
   return wrapWithComponent(childrenArray, Pane, props);
 }
 

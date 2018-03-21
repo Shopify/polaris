@@ -12,15 +12,15 @@ import * as styles from './CalloutCard.scss';
 
 export interface Props {
   /** The content to display inside the callout card. */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** The title of the card */
-  title: string,
+  title: string;
   /** URL to the card illustration */
-  illustration: string,
+  illustration: string;
   /** Primary action for the card */
-  primaryAction: Action,
+  primaryAction: Action;
   /** Secondary action for the card */
-  secondaryAction?: Action,
+  secondaryAction?: Action;
 }
 
 export default function CalloutCard({
@@ -35,14 +35,14 @@ export default function CalloutCard({
     ? buttonFrom(secondaryAction, {plain: true})
     : null;
 
-  const buttonMarkup = secondaryActionMarkup
-    ? (
-      <ButtonGroup>
-        {primaryActionMarkup}
-        {secondaryActionMarkup}
-      </ButtonGroup>
-    )
-    : primaryActionMarkup;
+  const buttonMarkup = secondaryActionMarkup ? (
+    <ButtonGroup>
+      {primaryActionMarkup}
+      {secondaryActionMarkup}
+    </ButtonGroup>
+  ) : (
+    primaryActionMarkup
+  );
 
   return (
     <Card sectioned>
@@ -51,12 +51,8 @@ export default function CalloutCard({
           <div className={styles.Title}>
             <Heading>{title}</Heading>
           </div>
-          <TextContainer>
-            {children}
-          </TextContainer>
-          <div className={styles.Buttons}>
-            {buttonMarkup}
-          </div>
+          <TextContainer>{children}</TextContainer>
+          <div className={styles.Buttons}>{buttonMarkup}</div>
         </div>
 
         <Image alt="" className={styles.Image} source={illustration} />

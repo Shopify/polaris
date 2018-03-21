@@ -5,12 +5,12 @@ export function useLinkComponent(LinkComponent: LinkLikeComponent) {
 }
 
 export interface Polaris {
-  VERSION: string,
+  VERSION: string;
 }
 
 declare global {
   interface Window {
-    Polaris: Polaris,
+    Polaris: Polaris;
   }
 }
 

@@ -3,6 +3,15 @@
   "javascript.validate.enable": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
   "jest.autoEnable": false,
+  "editor.formatOnSave": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.eslintIntegration": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,

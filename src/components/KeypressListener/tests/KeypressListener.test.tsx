@@ -6,7 +6,7 @@ import KeypressListener from '../KeypressListener';
 import {Keys} from '../../../types';
 
 interface HandlerMap {
-  [eventName: string]: (event: any) => void,
+  [eventName: string]: (event: any) => void;
 }
 
 const originalAddEventListener = document.addEventListener;
@@ -32,12 +32,7 @@ describe('<KeypressListener />', () => {
   it('attaches a listener for the given key on mount', () => {
     const spy = jest.fn();
 
-    mount(
-      <KeypressListener
-        handler={spy}
-        keyCode={Keys.ESCAPE}
-      />,
-    );
+    mount(<KeypressListener handler={spy} keyCode={Keys.ESCAPE} />);
 
     listenerMap.keyup({keyCode: Keys.ESCAPE});
     listenerMap.keyup({keyCode: Keys.ENTER});
@@ -47,12 +42,7 @@ describe('<KeypressListener />', () => {
   it('removes listener for the given key on unmount', () => {
     const spy = jest.fn();
 
-    mount(
-      <KeypressListener
-        handler={spy}
-        keyCode={Keys.ESCAPE}
-      />,
-    ).unmount();
+    mount(<KeypressListener handler={spy} keyCode={Keys.ESCAPE} />).unmount();
 
     listenerMap.keyup({keyCode: Keys.ESCAPE});
     expect(spy).not.toBeCalled();

@@ -5,12 +5,7 @@ import Checkbox from '..';
 describe('<Checkbox />', () => {
   it('sets all pass through properties on the input', () => {
     const input = shallow(
-      <Checkbox
-        label="Checkbox"
-        checked
-        name="Checkbox"
-        value="Some value"
-      />,
+      <Checkbox label="Checkbox" checked name="Checkbox" value="Some value" />,
     ).find('input');
 
     expect(input.prop('checked')).toBe(true);
@@ -21,7 +16,9 @@ describe('<Checkbox />', () => {
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mount(<Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />);
+      const element = mount(
+        <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
+      );
       (element.find('input') as any).instance().checked = true;
       element.find('input').simulate('change');
       expect(spy).toHaveBeenCalledWith(true, 'MyCheckbox');
@@ -48,12 +45,16 @@ describe('<Checkbox />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(<Checkbox id="MyCheckbox" label="Checkbox" />).find('input').prop('id');
+      const id = shallow(<Checkbox id="MyCheckbox" label="Checkbox" />)
+        .find('input')
+        .prop('id');
       expect(id).toBe('MyCheckbox');
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<Checkbox label="Checkbox" />).find('input').prop('id');
+      const id = shallow(<Checkbox label="Checkbox" />)
+        .find('input')
+        .prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
     });
@@ -76,8 +77,12 @@ describe('<Checkbox />', () => {
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const checkbox = mount(<Checkbox label="Checkbox" helpText="Some help" />);
-      const helpTextID = checkbox.find('input').prop<string>('aria-describedby');
+      const checkbox = mount(
+        <Checkbox label="Checkbox" helpText="Some help" />,
+      );
+      const helpTextID = checkbox
+        .find('input')
+        .prop<string>('aria-describedby');
       expect(typeof helpTextID).toBe('string');
       expect(checkbox.find(`#${helpTextID}`).text()).toBe('Some help');
     });
@@ -100,8 +105,13 @@ describe('<Checkbox />', () => {
     });
 
     it('connects the input to both an error and help text', () => {
-      const checkbox = mount(<Checkbox label="Checkbox" error="Some error" helpText="Some help" />);
-      const descriptions = checkbox.find('input').prop<string>('aria-describedby').split(' ');
+      const checkbox = mount(
+        <Checkbox label="Checkbox" error="Some error" helpText="Some help" />,
+      );
+      const descriptions = checkbox
+        .find('input')
+        .prop<string>('aria-describedby')
+        .split(' ');
       expect(descriptions.length).toBe(2);
       expect(checkbox.find(`#${descriptions[0]}`).text()).toBe('Some error');
       expect(checkbox.find(`#${descriptions[1]}`).text()).toBe('Some help');
@@ -111,33 +121,23 @@ describe('<Checkbox />', () => {
   describe('indeterminate', () => {
     it('sets the indeterminate attribute to be true on the input when checked is "indeterminate"', () => {
       const checkbox = shallow(
-        <Checkbox
-          label="Checkbox"
-          checked="indeterminate"
-        />,
+        <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('indeterminate')).toBe('true');
     });
 
     it('sets the aria-checked attribute on the input as mixed when checked is "indeterminate"', () => {
       const checkbox = shallow(
-        <Checkbox
-          label="Checkbox"
-          checked="indeterminate"
-        />,
+        <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('aria-checked')).toBe('mixed');
     });
 
     it('sets the checked attribute on the input to false when checked is "indeterminate"', () => {
       const checkbox = shallow(
-        <Checkbox
-          label="Checkbox"
-          checked="indeterminate"
-        />,
+        <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('checked')).toBe(false);
     });
   });
-
 });

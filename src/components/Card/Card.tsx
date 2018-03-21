@@ -11,19 +11,19 @@ import * as styles from './Card.scss';
 
 export interface Props {
   /** Title content for the card */
-  title?: string,
+  title?: string;
   /** Inner content of the card */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** A less prominent card */
-  subdued?: boolean,
+  subdued?: boolean;
   /** Auto wrap content in section */
-  sectioned?: boolean,
+  sectioned?: boolean;
   /** Card header actions */
-  actions?: DisableableAction[],
+  actions?: DisableableAction[];
   /** Primary action in the card footer */
-  primaryFooterAction?: Action,
+  primaryFooterAction?: Action;
   /** Secondary action in the card footer */
-  secondaryFooterAction?: Action,
+  secondaryFooterAction?: Action;
 }
 
 export default class Card extends React.PureComponent<Props, never> {
@@ -42,13 +42,11 @@ export default class Card extends React.PureComponent<Props, never> {
 
     const className = classNames(styles.Card, subdued && styles.subdued);
 
-    const headerMarkup = title
-      ? <Header actions={actions}>{title}</Header>
-      : null;
+    const headerMarkup = title ? (
+      <Header actions={actions}>{title}</Header>
+    ) : null;
 
-    const content = sectioned
-      ? <Section>{children}</Section>
-      : children;
+    const content = sectioned ? <Section>{children}</Section> : children;
 
     const primaryFooterActionMarkup = primaryFooterAction
       ? buttonFrom(primaryFooterAction, {primary: true})
@@ -58,16 +56,15 @@ export default class Card extends React.PureComponent<Props, never> {
       ? buttonFrom(secondaryFooterAction)
       : null;
 
-    const footerMarkup = primaryFooterActionMarkup || secondaryFooterActionMarkup
-      ? (
+    const footerMarkup =
+      primaryFooterActionMarkup || secondaryFooterActionMarkup ? (
         <div className={styles.Footer}>
           <ButtonGroup>
             {primaryFooterActionMarkup}
             {secondaryFooterActionMarkup}
           </ButtonGroup>
         </div>
-      )
-      : null;
+      ) : null;
 
     return (
       <div className={className}>

@@ -19,12 +19,7 @@ describe('<ColorPicker />', () => {
     describe('onChange', () => {
       it('is called when the user mouse downs', () => {
         const spy = jest.fn();
-        mount(
-          <ColorPicker
-            color={red}
-            onChange={spy}
-          />,
-        )
+        mount(<ColorPicker color={red} onChange={spy} />)
           .find(Slidable)
           .at(Slidables.BrightnessSaturation)
           .simulate('mousedown');
@@ -36,12 +31,7 @@ describe('<ColorPicker />', () => {
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
-         mount(
-          <ColorPicker
-            color={red}
-            onChange={spy}
-          />,
-        );
+        mount(<ColorPicker color={red} onChange={spy} />);
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
@@ -53,12 +43,7 @@ describe('<ColorPicker />', () => {
     describe('onChange', () => {
       it('is called when the user mouse downs', () => {
         const spy = jest.fn();
-        mount(
-          <ColorPicker
-            color={red}
-            onChange={spy}
-          />,
-        )
+        mount(<ColorPicker color={red} onChange={spy} />)
           .find(Slidable)
           .at(Slidables.Hue)
           .simulate('mousedown');
@@ -70,12 +55,7 @@ describe('<ColorPicker />', () => {
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
-         mount(
-          <ColorPicker
-            color={red}
-            onChange={spy}
-          />,
-        );
+        mount(<ColorPicker color={red} onChange={spy} />);
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();

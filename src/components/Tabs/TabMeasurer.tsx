@@ -11,18 +11,18 @@ import Tab from './Tab';
 import * as styles from './Tabs.scss';
 
 export interface Measurements {
-  containerWidth: number,
-  disclosureWidth: number,
-  hiddenTabWidths: number[],
+  containerWidth: number;
+  disclosureWidth: number;
+  hiddenTabWidths: number[];
 }
 
 export interface Props {
-  tabToFocus: number,
-  siblingTabHasFocus: boolean,
-  activator: React.ReactElement<{}>,
-  selected: number,
-  tabs: TabDescriptor[],
-  handleMeasurement(measurements: Measurements): void,
+  tabToFocus: number;
+  siblingTabHasFocus: boolean;
+  activator: React.ReactElement<{}>;
+  selected: number;
+  tabs: TabDescriptor[];
+  handleMeasurement(measurements: Measurements): void;
 }
 
 export default class TabMeasurer extends React.PureComponent<Props, never> {
@@ -45,7 +45,13 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
   }
 
   render() {
-    const {selected, tabs, activator, tabToFocus, siblingTabHasFocus} = this.props;
+    const {
+      selected,
+      tabs,
+      activator,
+      tabToFocus,
+      siblingTabHasFocus,
+    } = this.props;
 
     const tabsMarkup = tabs.map((tab, index) => {
       const tabContent = getTabContent(tab);
@@ -65,10 +71,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       );
     });
 
-    const classname = classNames(
-      styles.Tabs,
-      styles.TabMeasurer,
-    );
+    const classname = classNames(styles.Tabs, styles.TabMeasurer);
 
     return (
       <div className={classname} ref={this.setContainerNode}>
@@ -86,7 +89,9 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
 
   @autobind
   private handleMeasurement() {
-    if (this.containerNode == null) { return; }
+    if (this.containerNode == null) {
+      return;
+    }
 
     const {handleMeasurement} = this.props;
     const containerWidth = this.containerNode.offsetWidth;

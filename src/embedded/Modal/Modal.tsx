@@ -6,21 +6,21 @@ export type Width = 'large' | 'fullwidth';
 
 export interface Props {
   /** The URL that will be loaded as the content of the modal */
-  src: string,
+  src: string;
   /** Whether the modal is open or not */
-  open: boolean,
+  open: boolean;
   /** The content for the title of the modal */
-  title?: string,
+  title?: string;
   /** Controls the width of the modal (in pixels) */
-  width?: Width,
+  width?: Width;
   /** Controls the height of the modal (in pixels) */
-  height?: number,
+  height?: number;
   /** Primary action for the modal */
-  primaryAction?: DisableableAction,
+  primaryAction?: DisableableAction;
   /** Collection of secondary action for the modal */
-  secondaryActions?: DisableableAction[],
+  secondaryActions?: DisableableAction[];
   /** Callback when the modal is closed */
-  onClose(): void,
+  onClose(): void;
 }
 
 export class Modal extends React.PureComponent<Props & WithEASDKProps, never> {
@@ -43,20 +43,26 @@ export class Modal extends React.PureComponent<Props & WithEASDKProps, never> {
 
     if (!wasOpen && open) {
       this.focusReturnPoint = document.activeElement as HTMLElement;
-    } else if (wasOpen && !open && this.focusReturnPoint != null && document.contains(this.focusReturnPoint)) {
+    } else if (
+      wasOpen &&
+      !open &&
+      this.focusReturnPoint != null &&
+      document.contains(this.focusReturnPoint)
+    ) {
       this.focusReturnPoint.focus();
       this.focusReturnPoint = null;
     }
   }
 
-  // tslint:disable-next-line prefer-function-over-method
   render() {
     return null;
   }
 
   private handleEASDKMessaging() {
     const {open, easdk} = this.props;
-    if (easdk == null) { return; }
+    if (easdk == null) {
+      return;
+    }
 
     if (open) {
       easdk.Modal.open(this.props);

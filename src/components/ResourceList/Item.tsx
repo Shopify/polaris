@@ -21,31 +21,31 @@ export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
 export interface BadgeDescriptor {
-  status: Status,
-  content: string,
+  status: Status;
+  content: string;
 }
 
 export interface ExceptionDescriptor {
-  status?: ExceptionStatus,
-  title?: string,
-  description?: string,
+  status?: ExceptionStatus;
+  title?: string;
+  description?: string;
 }
 
 export interface Props {
-  url?: string,
-  media?: React.ReactElement<AvatarProps | ThumbnailProps>,
-  attributeOne: string,
-  attributeTwo?: React.ReactNode,
-  attributeThree?: React.ReactNode,
-  badges?: BadgeDescriptor[],
-  exceptions?: ExceptionDescriptor[],
-  actions?: DisableableAction[],
-  persistActions?: boolean,
+  url?: string;
+  media?: React.ReactElement<AvatarProps | ThumbnailProps>;
+  attributeOne: string;
+  attributeTwo?: React.ReactNode;
+  attributeThree?: React.ReactNode;
+  badges?: BadgeDescriptor[];
+  exceptions?: ExceptionDescriptor[];
+  actions?: DisableableAction[];
+  persistActions?: boolean;
 }
 
 export interface State {
-  actionsMenuVisible: boolean,
-  focused: boolean,
+  actionsMenuVisible: boolean;
+  focused: boolean;
 }
 
 const getUniqueID = createUniqueIDFactory('ResourceListItem');
@@ -74,21 +74,23 @@ export default class Item extends React.PureComponent<Props, State> {
 
     const {actionsMenuVisible, focused} = this.state;
 
-    const attributeTwoMarkup = attributeTwo
-      ? <div className={styles.AttributeTwo}>{attributeTwo}</div>
-      : null;
+    const attributeTwoMarkup = attributeTwo ? (
+      <div className={styles.AttributeTwo}>{attributeTwo}</div>
+    ) : null;
 
-    const badgeMarkup = badges
-      ? <div className={styles.Badge}>{badges.map(renderBadge)}</div>
-      : null;
+    const badgeMarkup = badges ? (
+      <div className={styles.Badge}>{badges.map(renderBadge)}</div>
+    ) : null;
 
-    const attributeThreeMarkup = attributeThree
-      ? <div className={styles.AttributeThree}>{attributeThree}</div>
-      : null;
+    const attributeThreeMarkup = attributeThree ? (
+      <div className={styles.AttributeThree}>{attributeThree}</div>
+    ) : null;
 
-    const exceptionsMarkup = exceptions
-      ? <ul className={styles.ExceptionList}>{exceptions.map(renderException)}</ul>
-      : null;
+    const exceptionsMarkup = exceptions ? (
+      <ul className={styles.ExceptionList}>
+        {exceptions.map(renderException)}
+      </ul>
+    ) : null;
 
     let mediaSize: MediaSize | null = null;
     let mediaType: MediaType | null = null;
@@ -105,11 +107,7 @@ export default class Item extends React.PureComponent<Props, State> {
         mediaType = 'thumbnail';
       }
 
-      mediaMarkup = (
-        <div className={styles.Media}>
-          {media}
-        </div>
-      );
+      mediaMarkup = <div className={styles.Media}>{media}</div>;
     }
 
     const className = classNames(
@@ -137,7 +135,14 @@ export default class Item extends React.PureComponent<Props, State> {
         disclosureMarkup = (
           <div className={styles.Disclosure}>
             <Popover
-              activator={<Button aria-label="Actions dropdown" onClick={this.handleClick} plain icon="horizontalDots" />}
+              activator={
+                <Button
+                  aria-label="Actions dropdown"
+                  onClick={this.handleClick}
+                  plain
+                  icon="horizontalDots"
+                />
+              }
               onClose={this.handleCloseRequest}
               active={actionsMenuVisible}
             >
@@ -161,9 +166,7 @@ export default class Item extends React.PureComponent<Props, State> {
         {mediaMarkup}
         <div className={styles.Content}>
           <div className={styles.Attributes}>
-            <p className={styles.AttributeOne}>
-              {attributeOne}
-            </p>
+            <p className={styles.AttributeOne}>{attributeOne}</p>
             {attributeTwoMarkup}
             {badgeMarkup}
             {attributeThreeMarkup}
@@ -175,36 +178,34 @@ export default class Item extends React.PureComponent<Props, State> {
       </div>
     );
 
-    return url
-      ? (
-        <div
-          ref={this.setNode}
-          className={className}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}
-        >
-          <UnstyledLink
-            aria-describedby={this.id}
-            className={styles.Link}
-            url={url}
-          />
-          {containerMarkup}
-        </div>
-      )
-      : (
-        <div
-          ref={this.setNode}
-          className={className}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}
-        >
-          {containerMarkup}
-        </div>
-      );
+    return url ? (
+      <div
+        ref={this.setNode}
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseLeave}
+      >
+        <UnstyledLink
+          aria-describedby={this.id}
+          className={styles.Link}
+          url={url}
+        />
+        {containerMarkup}
+      </div>
+    ) : (
+      <div
+        ref={this.setNode}
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseLeave}
+      >
+        {containerMarkup}
+      </div>
+    );
   }
 
   @autobind
@@ -219,7 +220,10 @@ export default class Item extends React.PureComponent<Props, State> {
 
   @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
-    if (this.node == null || !this.node.contains(event.relatedTarget as HTMLElement)) {
+    if (
+      this.node == null ||
+      !this.node.contains(event.relatedTarget as HTMLElement)
+    ) {
       this.setState({focused: false});
     }
   }
@@ -246,7 +250,11 @@ export default class Item extends React.PureComponent<Props, State> {
 }
 
 function renderBadge(badge: BadgeDescriptor) {
-  return <Badge key={badge.content} status={badge.status}>{badge.content}</Badge>;
+  return (
+    <Badge key={badge.content} status={badge.status}>
+      {badge.content}
+    </Badge>
+  );
 }
 
 function renderException(exception: ExceptionDescriptor, index: number) {
@@ -256,13 +264,13 @@ function renderException(exception: ExceptionDescriptor, index: number) {
     status && styles[variationName('ExceptionItem-status', status)],
   );
 
-  const titleMarkup = title != null
-    ? <div className={styles.Title}>{title}</div>
-    : null;
+  const titleMarkup =
+    title != null ? <div className={styles.Title}>{title}</div> : null;
 
-  const descriptionMarkup = description != null
-    ? <div className={styles.Description}>{description}</div>
-    : null;
+  const descriptionMarkup =
+    description != null ? (
+      <div className={styles.Description}>{description}</div>
+    ) : null;
 
   return (
     <li key={index} className={className}>

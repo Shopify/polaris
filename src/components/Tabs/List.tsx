@@ -7,10 +7,10 @@ import {TabDescriptor, getTabContent} from './Tabs';
 import * as styles from './Tabs.scss';
 
 export interface Props {
-  focusIndex: number,
-  disclosureTabs: TabDescriptor[],
-  onClick?(id: string): void,
-  onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void,
+  focusIndex: number;
+  disclosureTabs: TabDescriptor[];
+  onClick?(id: string): void;
+  onKeyPress?(event: React.KeyboardEvent<HTMLElement>): void;
 }
 
 export default class List extends React.PureComponent<Props, never> {
@@ -25,6 +25,7 @@ export default class List extends React.PureComponent<Props, never> {
           panelID={tab.panelID}
           focused={index === focusIndex}
           accessibilityLabel={tab.accessibilityLabel}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={onClick.bind(null, tab.id)}
         >
           {tabContent}
@@ -53,7 +54,12 @@ export default class List extends React.PureComponent<Props, never> {
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
-  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+  if (
+    key === 'ArrowUp' ||
+    key === 'ArrowDown' ||
+    key === 'ArrowLeft' ||
+    key === 'ArrowRight'
+  ) {
     event.preventDefault();
     event.stopPropagation();
   }

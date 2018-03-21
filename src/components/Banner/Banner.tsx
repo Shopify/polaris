@@ -20,19 +20,19 @@ export type Status = 'success' | 'info' | 'warning' | 'critical';
 
 export interface Props {
   /** Title content for the banner. */
-  title?: string,
+  title?: string;
   /** Icon to display in the banner. */
-  icon?: IconProps['source'],
+  icon?: IconProps['source'];
   /** Sets the status of the banner. */
-  status?: Status,
+  status?: Status;
   /** The child elements to render in the banner. */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Action for banner */
-  action?: DisableableAction & LoadableAction,
+  action?: DisableableAction & LoadableAction;
   /** Action | Displays a secondary action */
-  secondaryAction?: Action,
+  secondaryAction?: Action;
   /** Callback when banner is dismissed */
-  onDismiss?(): void,
+  onDismiss?(): void;
 }
 
 export default function Banner({
@@ -53,7 +53,7 @@ export default function Banner({
       color = 'greenDark';
       defaultIcon = successIcon;
       break;
-    case 'info' :
+    case 'info':
       color = 'tealDark';
       defaultIcon = infoIcon;
       break;
@@ -97,16 +97,14 @@ export default function Banner({
     ? secondaryActionFrom(secondaryAction)
     : null;
 
-  const actionMarkup = action
-    ? (
-      <div className={styles.Actions}>
-        <ButtonGroup>
-          {buttonFrom(action, {outline: true})}
-          {secondaryActionMarkup}
-        </ButtonGroup>
-      </div>
-    )
-    : null;
+  const actionMarkup = action ? (
+    <div className={styles.Actions}>
+      <ButtonGroup>
+        {buttonFrom(action, {outline: true})}
+        {secondaryActionMarkup}
+      </ButtonGroup>
+    </div>
+  ) : null;
 
   let contentMarkup = null;
   let contentID: string | undefined;
@@ -121,22 +119,21 @@ export default function Banner({
     );
   }
 
-  const dismissButton = onDismiss
-    ? (
-      <div className={styles.Dismiss}>
-        <Button
-          plain
-          icon="cancelSmall"
-          onClick={onDismiss}
-          accessibilityLabel="Dismiss notification"
-        />
-      </div>
-    )
-    : null;
+  const dismissButton = onDismiss ? (
+    <div className={styles.Dismiss}>
+      <Button
+        plain
+        icon="cancelSmall"
+        onClick={onDismiss}
+        accessibilityLabel="Dismiss notification"
+      />
+    </div>
+  ) : null;
 
   return (
     <div
       className={className}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
       tabIndex={0}
       role={ariaRoleType}
       aria-live="polite"
