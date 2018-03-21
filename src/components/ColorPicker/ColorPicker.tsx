@@ -19,7 +19,7 @@ export interface Color extends HSBColor {
 
 export interface BaseProps {
   /** ID for the element */
-  id?: string,
+  id?: string;
   /** The currently selected color */
   color: Color;
   /** Allow user to select an alpha value */
@@ -73,7 +73,7 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     ) : null;
 
     return (
-<div className={styles.ColorPicker} id={id}>
+      <div className={styles.ColorPicker} id={id}>
         <div ref={this.setColorNode} className={styles.MainColor}>
           <div
             className={styles.ColorLayer}

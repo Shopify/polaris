@@ -67,10 +67,7 @@ describe('<FilterControl />', () => {
     it('renders with searchValue as its value', () => {
       const searchValue = 'search value';
       const wrapper = mountWithProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          searchValue={searchValue}
-        />,
+        <FilterControl {...mockDefaultProps} searchValue={searchValue} />,
       );
 
       const searchField = wrapper.find(TextField);
@@ -83,10 +80,7 @@ describe('<FilterControl />', () => {
       const newSearchValue = 'new search value';
       const onSearchChange = jest.fn();
       const wrapper = mountWithProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          onSearchChange={onSearchChange}
-        />,
+        <FilterControl {...mockDefaultProps} onSearchChange={onSearchChange} />,
       );
 
       trigger(wrapper.find(TextField), 'onChange', newSearchValue);
@@ -107,10 +101,7 @@ describe('<FilterControl />', () => {
 
     it('renders <FilterCreator /> if there is filters', () => {
       const wrapper = mountWithProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={mockFilters}
-        />,
+        <FilterControl {...mockDefaultProps} filters={mockFilters} />,
       );
 
       expect(wrapper.find(FilterCreator).exists()).toBe(true);
@@ -118,14 +109,12 @@ describe('<FilterControl />', () => {
 
     it('renders <FilterCreator /> with filters', () => {
       const wrapper = mountWithProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={mockFilters}
-        />,
+        <FilterControl {...mockDefaultProps} filters={mockFilters} />,
       );
 
-      expect(wrapper.find(FilterCreator).prop('filters'))
-        .toMatchObject(mockFilters);
+      expect(wrapper.find(FilterCreator).prop('filters')).toMatchObject(
+        mockFilters,
+      );
     });
   });
 
@@ -148,11 +137,10 @@ describe('<FilterControl />', () => {
 
       trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
 
-      expect(onFiltersChange)
-        .toBeCalledWith([
-          ...mockAppliedFilters,
-          newFilter,
-        ]);
+      expect(onFiltersChange).toBeCalledWith([
+        ...mockAppliedFilters,
+        newFilter,
+      ]);
     });
 
     it('does not get call if the new filter already exist when FilterCreator.onAddFilter is triggered', () => {
@@ -199,10 +187,9 @@ describe('<FilterControl />', () => {
       const tags = wrapper.find(Tag);
       trigger(tags.at(0), 'onRemove', mockAppliedFilters[0].key);
 
-      expect(onFiltersChange)
-        .toBeCalledWith([
-          ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
-        ]);
+      expect(onFiltersChange).toBeCalledWith([
+        ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
+      ]);
     });
 
     it('renders the correct applied filter string when applied filter label exist', () => {
@@ -212,10 +199,12 @@ describe('<FilterControl />', () => {
         label: 'Product type',
         operatorText: 'is',
         type: FilterType.Select,
-        options: [{
-          value: 'electronic_value',
-          label: 'Electronic',
-        }],
+        options: [
+          {
+            value: 'electronic_value',
+            label: 'Electronic',
+          },
+        ],
       };
       const appliedFilters = {
         key: filter.key,
@@ -230,7 +219,9 @@ describe('<FilterControl />', () => {
       );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${appliedFilterLabel}`);
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${filter.operatorText} ${appliedFilterLabel}`,
+      );
     });
 
     it('renders the correct applied filter string when filter value exist in FilterSelect as an option string', () => {
@@ -255,7 +246,9 @@ describe('<FilterControl />', () => {
       );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${filterValue}`);
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${filter.operatorText} ${filterValue}`,
+      );
     });
 
     it('renders the correct applied filter string when filter value exist in FilterSelect as an option obejct', () => {
@@ -265,10 +258,12 @@ describe('<FilterControl />', () => {
         label: 'Product type',
         operatorText: 'is',
         type: FilterType.Select,
-        options: [{
-          value: 'electronic_value',
-          label: filterValue,
-        }],
+        options: [
+          {
+            value: 'electronic_value',
+            label: filterValue,
+          },
+        ],
       };
       const appliedFilters = {
         key: filter.key,
@@ -283,7 +278,9 @@ describe('<FilterControl />', () => {
       );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${filterValue}`);
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${filter.operatorText} ${filterValue}`,
+      );
     });
 
     it('renders the correct applied filter string when filter value cannot be found in FilterSelect options', () => {
@@ -308,7 +305,9 @@ describe('<FilterControl />', () => {
       );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${appliedFilterValue}`);
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
+      );
     });
 
     it('renders the correct applied filter string when filter is a FilterTextField', () => {
@@ -332,7 +331,9 @@ describe('<FilterControl />', () => {
       );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(`${filter.label} ${filter.operatorText} ${appliedFilterValue}`);
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
+      );
     });
 
     it('renders the correct applied filter string when filter key cannot be found', () => {
@@ -352,7 +353,6 @@ describe('<FilterControl />', () => {
       const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(appliedFilterValue);
     });
-
   });
 
   describe('additionalAction', () => {
@@ -371,10 +371,7 @@ describe('<FilterControl />', () => {
         onAction: jest.fn(),
       };
       const wrapper = mountWithProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          additionalAction={action}
-        />,
+        <FilterControl {...mockDefaultProps} additionalAction={action} />,
       );
 
       expect(wrapper.find(Button).exists()).toBe(true);

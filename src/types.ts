@@ -4,30 +4,30 @@ export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
 export interface BaseAction {
-  id?: string,
-  content?: string,
-  accessibilityLabel?: string,
-  url?: string,
-  external?: boolean,
-  onAction?(): void,
+  id?: string;
+  content?: string;
+  accessibilityLabel?: string;
+  url?: string;
+  external?: boolean;
+  onAction?(): void;
 }
 
 export interface Action extends BaseAction {}
 
 export interface BaseLinkAction {
-  id?: string,
-  content?: string,
-  accessibilityLabel?: string,
-  url: string,
+  id?: string;
+  content?: string;
+  accessibilityLabel?: string;
+  url: string;
 }
 
 export interface LinkAction extends BaseLinkAction {}
 
 export interface BaseCallbackAction {
-  id?: string,
-  content?: string,
-  accessibilityLabel?: string,
-  onAction(): void,
+  id?: string;
+  content?: string;
+  accessibilityLabel?: string;
+  onAction(): void;
 }
 
 export interface CallbackAction extends BaseCallbackAction {}

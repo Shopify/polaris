@@ -15,9 +15,9 @@ export interface BaseProps {
   /** The content to display inside the button */
   children?: string;
   /** A destination to link to, rendered in the href attribute of a link */
-  url?: string,
+  url?: string;
   /** A unique identifier for the button */
-  id?: string,
+  id?: string;
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
   /** Indicates a dangerous or potentially negative action */

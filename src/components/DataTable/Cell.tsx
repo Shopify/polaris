@@ -10,21 +10,21 @@ import * as styles from './DataTable.scss';
 export type CombinedProps = Props & WithProviderProps;
 
 export interface Props {
-  testID?: string,
-  height?: number,
-  content?: React.ReactNode,
-  contentType?: ColumnContentType,
-  fixed?: boolean,
-  truncate?: boolean,
-  presentational?: boolean,
-  header?: boolean,
-  total?: boolean,
-  footer?: boolean,
-  sorted?: boolean,
-  sortable?: boolean,
-  sortDirection?: SortDirection,
-  defaultSortDirection?: SortDirection,
-  onSort?(): void,
+  testID?: string;
+  height?: number;
+  content?: React.ReactNode;
+  contentType?: ColumnContentType;
+  fixed?: boolean;
+  truncate?: boolean;
+  presentational?: boolean;
+  header?: boolean;
+  total?: boolean;
+  footer?: boolean;
+  sorted?: boolean;
+  sortable?: boolean;
+  sortDirection?: SortDirection;
+  defaultSortDirection?: SortDirection;
+  onSort?(): void;
 }
 
 function Cell({
@@ -44,13 +44,12 @@ function Cell({
   polaris: {intl: {translate}},
   onSort,
 }: CombinedProps) {
-
   const numeric = contentType === 'numeric';
 
   const className = classNames(
     styles.Cell,
     fixed && styles['Cell-fixed'],
-    (fixed && truncate) && styles['Cell-truncated'],
+    fixed && truncate && styles['Cell-truncated'],
     presentational && styles['Cell-presentational'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
@@ -62,17 +61,15 @@ function Cell({
 
   const style = height ? {height: `${height}px`} : undefined;
 
-  const headerClassName = classNames(
-    header && styles['Heading'],
-  );
+  const headerClassName = classNames(header && styles.Heading);
 
-  const iconClassName = classNames(
-    sortable && styles['Heading-sortable'],
-  );
+  const iconClassName = classNames(sortable && styles['Heading-sortable']);
 
-  const presentationalMarkup = header
-    ? <th aria-hidden role="presentation" className={className} />
-    : <td aria-hidden role="presentation" className={className} />;
+  const presentationalMarkup = header ? (
+    <th aria-hidden role="presentation" className={className} />
+  ) : (
+    <td aria-hidden role="presentation" className={className} />
+  );
 
   let sortedIconMarkup = null;
   let sortableIconMarkup = null;
@@ -96,38 +93,45 @@ function Cell({
     }
   }
 
-  const columnHeadingContent = sortable
-    ? (
-      <span className={headerClassName}>
-        <span className={iconClassName}>{sortableIconMarkup}</span>
-        <span>{sortedIconMarkup}</span>
-        {content}
-      </span>
-    )
-    : content;
+  const columnHeadingContent = sortable ? (
+    <span className={headerClassName}>
+      <span className={iconClassName}>{sortableIconMarkup}</span>
+      <span>{sortedIconMarkup}</span>
+      {content}
+    </span>
+  ) : (
+    content
+  );
 
   const sortProps = sortable
     ? {
-      role: 'button',
-      onClick: onSort,
-      onKeyDown: onKeyDownEnter(onSort),
-      'aria-sort': sortDirection,
-      'aria-label': sortAccessibilityLabel,
-      tabIndex: 0,
-    }
+        role: 'button',
+        onClick: onSort,
+        onKeyDown: onKeyDownEnter(onSort),
+        'aria-sort': sortDirection,
+        'aria-label': sortAccessibilityLabel,
+        tabIndex: 0,
+      }
     : {'aria-disabled': true};
 
-  const headingMarkup = header
-    ? (
-      <th className={className} scope="col" style={style} {...sortProps}>
-        {columnHeadingContent}
-      </th>
-    )
-    : <th className={className} scope="row"style={style}>{content}</th>;
+  const headingMarkup = header ? (
+    <th className={className} scope="col" style={style} {...sortProps}>
+      {columnHeadingContent}
+    </th>
+  ) : (
+    <th className={className} scope="row" style={style}>
+      {content}
+    </th>
+  );
 
-  const nonPresentationalMarkup = header || fixed
-    ? headingMarkup
-    : <td className={className} style={style}>{content}</td>;
+  const nonPresentationalMarkup =
+    header || fixed ? (
+      headingMarkup
+    ) : (
+      <td className={className} style={style}>
+        {content}
+      </td>
+    );
 
   const cellMarkup = presentational
     ? presentationalMarkup
@@ -139,7 +143,9 @@ function Cell({
 function onKeyDownEnter(sortFunc?: () => void) {
   return function handleKeyPress(event: React.KeyboardEvent<HTMLElement>) {
     const {keyCode} = event;
-    if (keyCode === 13 && sortFunc !== undefined) { sortFunc(); }
+    if (keyCode === 13 && sortFunc !== undefined) {
+      sortFunc();
+    }
   };
 }
 

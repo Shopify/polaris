@@ -19,7 +19,7 @@ class UnstyledLink extends React.PureComponent<CombinedProps, never> {
     if (polaris && polaris.link) {
       const LinkComponent = polaris.link.linkComponent;
       if (LinkComponent) {
-        return <LinkComponent {...unstyled.props} {...this.props}/>;
+        return <LinkComponent {...unstyled.props} {...this.props} />;
       }
     }
 

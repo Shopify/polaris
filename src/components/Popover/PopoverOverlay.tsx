@@ -76,11 +76,17 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   }
 
   private focusContent() {
-    if (this.props.preventAutofocus) { return; }
-    if (this.contentNode == null) { return; }
+    if (this.props.preventAutofocus) {
+      return;
+    }
+    if (this.contentNode == null) {
+      return;
+    }
 
     write(() => {
-      if (this.contentNode == null) { return; }
+      if (this.contentNode == null) {
+        return;
+      }
       const focusableChild = findFirstFocusableNode(this.contentNode);
       (focusableChild || this.contentNode).focus();
     });

@@ -73,20 +73,14 @@ export {
 
 export {default as DisplayText, Props as DisplayTextProps} from './DisplayText';
 
-export {
-  default as DropZone,
-  Props as DropZoneProps,
-} from './DropZone';
+export {default as DropZone, Props as DropZoneProps} from './DropZone';
 
 export {
   default as EmptySearchResult,
   Props as EmptySearchResultProps,
 } from './EmptySearchResult';
 
-export {
-  default as EmptyState,
-  Props as EmptyStateProps,
-} from './EmptyState';
+export {default as EmptyState, Props as EmptyStateProps} from './EmptyState';
 
 export {
   default as EventListener,
@@ -182,10 +176,7 @@ export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 
-export {
-  default as Truncate,
-  Props as TruncateProps,
-} from './Truncate';
+export {default as Truncate, Props as TruncateProps} from './Truncate';
 
 export {
   default as UnstyledLink,

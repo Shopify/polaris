@@ -112,9 +112,7 @@ describe('<Button />', () => {
   describe('id', () => {
     it('is passed down to an underlying button', () => {
       const id = 'MyID';
-      const button = shallow(
-        <Button id={id}>Button</Button>,
-      );
+      const button = shallow(<Button id={id}>Button</Button>);
 
       expect(button.find('button').prop('id')).toBe(id);
     });
@@ -122,7 +120,9 @@ describe('<Button />', () => {
     it('is passed down to an underlying link button', () => {
       const id = 'MyID';
       const button = shallow(
-        <Button url="https://shopify.com" id={id}>Button</Button>,
+        <Button url="https://shopify.com" id={id}>
+          Button
+        </Button>,
       );
 
       expect(button.find(UnstyledLink).prop('id')).toBe(id);

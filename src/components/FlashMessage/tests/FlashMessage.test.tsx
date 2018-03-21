@@ -5,9 +5,7 @@ import {findByTestID, trigger} from '../../../../tests/utilities/enzyme';
 
 describe('<FlashMessage />', () => {
   it('does not render the close button by default', () => {
-    const message = mount(
-      <FlashMessage duration={3000}/>,
-    );
+    const message = mount(<FlashMessage duration={3000} />);
 
     const button = findByTestID(message, 'button');
 
@@ -15,9 +13,7 @@ describe('<FlashMessage />', () => {
   });
 
   it('renders the close button when dismissible is true', () => {
-    const message = mount(
-      <FlashMessage duration={3000} dismissible />,
-    );
+    const message = mount(<FlashMessage duration={3000} dismissible />);
 
     const button = findByTestID(message, 'button');
 
@@ -41,9 +37,7 @@ describe('<FlashMessage />', () => {
     jest.useFakeTimers();
     const spy = jest.fn();
 
-    const message = mount(
-      <FlashMessage onDismiss={spy} duration={3000}/>,
-    );
+    const message = mount(<FlashMessage onDismiss={spy} duration={3000} />);
 
     const button = findByTestID(message, 'button');
 
@@ -58,9 +52,7 @@ describe('<FlashMessage />', () => {
     jest.useFakeTimers();
     const spy = jest.fn();
 
-    const message = mount(
-      <FlashMessage onDismiss={spy} duration={1000} />,
-    );
+    const message = mount(<FlashMessage onDismiss={spy} duration={1000} />);
 
     const button = findByTestID(message, 'button');
 
@@ -75,9 +67,7 @@ describe('<FlashMessage />', () => {
     jest.useFakeTimers();
     const spy = jest.fn();
 
-    const message = mount(
-      <FlashMessage onDismiss={spy} duration={3000}/>,
-    );
+    const message = mount(<FlashMessage onDismiss={spy} duration={3000} />);
 
     const button = findByTestID(message, 'button');
 

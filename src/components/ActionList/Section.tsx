@@ -53,5 +53,9 @@ export default function Section({
     </div>
   );
 
-  return hasMultipleSections ? <li className={styles.Section}>{sectionMarkup}</li> : sectionMarkup;
+  return hasMultipleSections ? (
+    <li className={styles.Section}>{sectionMarkup}</li>
+  ) : (
+    sectionMarkup
+  );
 }

@@ -8,20 +8,20 @@ import FilterValueSelector from './FilterValueSelector';
 import {AppliedFilter, Filter} from './types';
 
 export interface Props {
-  filters: Filter[],
+  filters: Filter[];
   resourceName: {
-    singular: string,
-    plural: string,
-  },
-  onAddFilter?(newFilter: AppliedFilter): void,
+    singular: string;
+    plural: string;
+  };
+  onAddFilter?(newFilter: AppliedFilter): void;
 }
 
 export type CombinedProps = Props & WithProviderProps;
 
 export interface State {
-  popoverActive: boolean,
-  selectedFilter?: Filter,
-  selectedFilterValue?: AppliedFilter['value'],
+  popoverActive: boolean;
+  selectedFilter?: Filter;
+  selectedFilterValue?: AppliedFilter['value'];
 }
 
 class FilterCreator extends React.PureComponent<CombinedProps, State> {
@@ -30,23 +30,12 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   };
 
   private get canAddFilter() {
-    return Boolean(
-      this.state.selectedFilter &&
-      this.state.selectedFilterValue,
-    );
+    return Boolean(this.state.selectedFilter && this.state.selectedFilterValue);
   }
 
   render() {
-    const {
-      filters,
-      resourceName,
-      polaris: {intl},
-    } = this.props;
-    const {
-      popoverActive,
-      selectedFilter,
-      selectedFilterValue,
-    } = this.state;
+    const {filters, resourceName, polaris: {intl}} = this.props;
+    const {popoverActive, selectedFilter, selectedFilterValue} = this.state;
 
     const activator = (
       <Button
@@ -59,7 +48,8 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
     );
 
     const filterOptions = filters.map(({key, label}) => ({
-      value: key, label,
+      value: key,
+      label,
     }));
 
     const filterValueSelectionMarkup = selectedFilter ? (
@@ -76,7 +66,9 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
         disabled={!this.canAddFilter}
         testID="FilterCreator-AddFilterButton"
       >
-        {intl.translate('Polaris.ResourceList.FilterCreator.addFilterButtonLabel')}
+        {intl.translate(
+          'Polaris.ResourceList.FilterCreator.addFilterButtonLabel',
+        )}
       </Button>
     ) : null;
 
@@ -89,8 +81,13 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
       >
         <FormLayout>
           <Select
-            label={intl.translate('Polaris.ResourceList.FilterCreator.showAllWhere', {resourceNamePlural: resourceName.plural.toLocaleLowerCase()})}
-            placeholder={intl.translate('Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder')}
+            label={intl.translate(
+              'Polaris.ResourceList.FilterCreator.showAllWhere',
+              {resourceNamePlural: resourceName.plural.toLocaleLowerCase()},
+            )}
+            placeholder={intl.translate(
+              'Polaris.ResourceList.FilterCreator.selectFilterKeyPlaceholder',
+            )}
             options={filterOptions}
             onChange={this.handleFilterKeyChange}
             value={selectedFilter && selectedFilter.key}
@@ -111,11 +108,11 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   private handleFilterKeyChange(filterKey: string) {
     const {filters} = this.props;
 
-    const foundFilter = filters.find((filter) => (
-      filter.key === filterKey
-    ));
+    const foundFilter = filters.find((filter) => filter.key === filterKey);
 
-    if (!foundFilter) { return; }
+    if (!foundFilter) {
+      return;
+    }
 
     this.setState({
       selectedFilter: foundFilter,
@@ -134,11 +131,9 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
     const selectedFilterKey =
       this.state.selectedFilter && this.state.selectedFilter.key;
 
-    if (
-      !onAddFilter ||
-      !this.canAddFilter ||
-      !selectedFilterKey
-    ) { return; }
+    if (!onAddFilter || !this.canAddFilter || !selectedFilterKey) {
+      return;
+    }
 
     onAddFilter({
       key: selectedFilterKey,

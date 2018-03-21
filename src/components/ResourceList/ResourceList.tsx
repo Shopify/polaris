@@ -19,48 +19,48 @@ import * as styles from './ResourceList.scss';
 const SMALL_SCREEN_WIDTH = 458;
 
 export interface State {
-  selectMode: boolean,
+  selectMode: boolean;
 }
 
 export interface Props {
   /** Item data; each item is passed to renderItem */
-  items: any[],
-  filterControl?: React.ReactNode,
+  items: any[];
+  filterControl?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
-    singular: string,
-    plural: string,
-  },
+    singular: string;
+    plural: string;
+  };
   /** Up to 2 bulk actions that will be given more prominence */
-  promotedBulkActions?: BulkActionsProps['promotedActions'],
+  promotedBulkActions?: BulkActionsProps['promotedActions'];
   /** Actions available on the currently selected items */
-  bulkActions?: BulkActionsProps['actions'],
+  bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
-  selectedItems?: SelectedItems,
-  persistActions?: boolean,
-  hasMoreItems?: boolean,
+  selectedItems?: SelectedItems;
+  persistActions?: boolean;
+  hasMoreItems?: boolean;
   /** Current value of the sort control */
-  sortValue?: string,
+  sortValue?: string;
   /** Collection of sort options to choose from */
-  sortOptions?: Option[],
+  sortOptions?: Option[];
   /** Callback when sort option is changed */
-  onSortChange?(selected: string, id: string): void,
+  onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
-  onSelectionChange?(selectedItems: SelectedItems): void,
+  onSelectionChange?(selectedItems: SelectedItems): void;
   /** Function to render each list item	 */
-  renderItem(item: any, id: string): React.ReactNode,
+  renderItem(item: any, id: string): React.ReactNode;
   /** Function to customize the unique ID for each item */
-  idForItem?(item: any, index: number): string,
+  idForItem?(item: any, index: number): string;
 }
 
 export interface Context {
-  selectMode: boolean,
-  selectable?: boolean,
-  selectedItems?: SelectedItems,
-  persistActions?: boolean,
-  onSelectionChange?(selected: boolean, id: string): void,
-  subscribe(callback: () => void): void,
-  unsubscribe(callback: () => void): void,
+  selectMode: boolean;
+  selectable?: boolean;
+  selectedItems?: SelectedItems;
+  persistActions?: boolean;
+  onSelectionChange?(selected: boolean, id: string): void;
+  subscribe(callback: () => void): void;
+  unsubscribe(callback: () => void): void;
 }
 
 export type CombinedProps = Props & WithProviderProps;
@@ -75,7 +75,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   state: State = {selectMode: false};
 
   private subscriptions: {(): void}[] = [];
-  private defaultResourceName: {singular: string, plural: string};
+  private defaultResourceName: {singular: string; plural: string};
 
   constructor(props: CombinedProps) {
     super(props);
@@ -88,12 +88,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-
   private get selectable() {
     const {promotedBulkActions, bulkActions} = this.props;
     return Boolean(
       (promotedBulkActions && promotedBulkActions.length > 0) ||
-      (bulkActions && bulkActions.length > 0),
+        (bulkActions && bulkActions.length > 0),
     );
   }
 
@@ -101,9 +100,15 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   private get bulkSelectState(): boolean | 'indeterminate' {
     const {selectedItems, items} = this.props;
     let selectState: boolean | 'indeterminate' = 'indeterminate';
-    if (!selectedItems || (Array.isArray(selectedItems) && selectedItems.length === 0)) {
+    if (
+      !selectedItems ||
+      (Array.isArray(selectedItems) && selectedItems.length === 0)
+    ) {
       selectState = false;
-    } else if (selectedItems === SELECT_ALL_ITEMS || (Array.isArray(selectedItems) && selectedItems.length === items.length)) {
+    } else if (
+      selectedItems === SELECT_ALL_ITEMS ||
+      (Array.isArray(selectedItems) && selectedItems.length === items.length)
+    ) {
       selectState = true;
     }
     return selectState;
@@ -118,7 +123,8 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     } = this.props;
 
     const itemsCount = items.length;
-    const resource = (itemsCount === 1) ? resourceName.singular : resourceName.plural;
+    const resource =
+      itemsCount === 1 ? resourceName.singular : resourceName.plural;
 
     return intl.translate('Polaris.ResourceList.showing', {
       itemsCount,
@@ -128,15 +134,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private get bulkActionsLabel() {
-    const {
-      selectedItems = [],
-      items,
-      polaris: {intl},
-    } = this.props;
+    const {selectedItems = [], items, polaris: {intl}} = this.props;
 
-    const selectedItemsCount = (selectedItems === SELECT_ALL_ITEMS)
-      ? `${items.length}+`
-      : selectedItems.length;
+    const selectedItemsCount =
+      selectedItems === SELECT_ALL_ITEMS
+        ? `${items.length}+`
+        : selectedItems.length;
 
     return intl.translate('Polaris.ResourceList.selected', {
       selectedItemsCount,
@@ -179,12 +182,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       return;
     }
 
-    const actionText = (selectedItems === SELECT_ALL_ITEMS)
-      ? intl.translate('Polaris.Common.undo')
-      : intl.translate('Polaris.ResourceList.selectAllItems', {
-          itemsLength: items.length,
-          resourceNamePlural: resourceName.plural,
-        });
+    const actionText =
+      selectedItems === SELECT_ALL_ITEMS
+        ? intl.translate('Polaris.Common.undo')
+        : intl.translate('Polaris.ResourceList.selectAllItems', {
+            itemsLength: items.length,
+            resourceNamePlural: resourceName.plural,
+          });
 
     return {
       content: actionText,
@@ -199,8 +203,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     } = this.props;
 
     return {
-      title: intl.translate('Polaris.ResourceList.emptySearchResultTitle', {resourceNamePlural: resourceName.plural}),
-      description: intl.translate('Polaris.ResourceList.emptySearchResultDescription'),
+      title: intl.translate('Polaris.ResourceList.emptySearchResultTitle', {
+        resourceNamePlural: resourceName.plural,
+      }),
+      description: intl.translate(
+        'Polaris.ResourceList.emptySearchResultDescription',
+      ),
     };
   }
 
@@ -224,7 +232,8 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     if (
-      selectedItems && selectedItems.length > 0 &&
+      selectedItems &&
+      selectedItems.length > 0 &&
       (!nextProps.selectedItems || nextProps.selectedItems.length === 0) &&
       !isSmallScreen()
     ) {
@@ -246,39 +255,36 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const {selectMode} = this.state;
     const itemsExist = items.length > 0;
 
-    const filterControlMarkup = filterControl
-      ? (
-        <div className={styles.FiltersWrapper}>
-          {filterControl}
-        </div>
-      )
-      : null;
+    const filterControlMarkup = filterControl ? (
+      <div className={styles.FiltersWrapper}>{filterControl}</div>
+    ) : null;
 
-    const bulkActionsMarkup = this.selectable
-      ? (
-        <div className={styles.BulkActionsWrapper}>
-          <BulkActions
-            label={this.bulkActionsLabel}
-            selected={this.bulkSelectState}
-            onToggleAll={this.handleToggleAll}
-            selectMode={selectMode}
-            onSelectModeToggle={this.handleSelectMode}
-            promotedActions={promotedBulkActions}
-            paginatedSelectAllAction={this.paginatedSelectAllAction}
-            paginatedSelectAllText={this.paginatedSelectAllText}
-            actions={bulkActions}
-          />
-        </div>
-      ) : null;
+    const bulkActionsMarkup = this.selectable ? (
+      <div className={styles.BulkActionsWrapper}>
+        <BulkActions
+          label={this.bulkActionsLabel}
+          selected={this.bulkSelectState}
+          onToggleAll={this.handleToggleAll}
+          selectMode={selectMode}
+          onSelectModeToggle={this.handleSelectMode}
+          promotedActions={promotedBulkActions}
+          paginatedSelectAllAction={this.paginatedSelectAllAction}
+          paginatedSelectAllText={this.paginatedSelectAllText}
+          actions={bulkActions}
+        />
+      </div>
+    ) : null;
 
     const selectId = getUniqueID();
 
     const sortingLabelMarkup = (
-      <label className={styles.SortLabel} htmlFor={selectId}>{intl.translate('Polaris.ResourceList.sortingLabel')}</label>
+      <label className={styles.SortLabel} htmlFor={selectId}>
+        {intl.translate('Polaris.ResourceList.sortingLabel')}
+      </label>
     );
 
-    const sortingSelectMarkup = sortOptions && sortOptions.length > 0
-      ? (
+    const sortingSelectMarkup =
+      sortOptions && sortOptions.length > 0 ? (
         <div className={styles.SortWrapper}>
           {sortingLabelMarkup}
           <Select
@@ -290,30 +296,35 @@ export class ResourceList extends React.Component<CombinedProps, State> {
             disabled={selectMode}
           />
         </div>
-      )
-      : null;
-
-    const itemCountTextMarkup = <div className={styles.ItemCountTextWrapper}>{this.itemCountText}</div>;
-
-    const selectButtonMarkup = this.selectable
-      ? (
-        <div className={styles.SelectButtonWrapper}>
-          <Button disabled={selectMode} icon={selectIcon} onClick={this.handleSelectMode.bind(this, true)}>Select</Button>
-        </div>
       ) : null;
 
-    const checkableButtonMarkup = this.selectable
-      ? (
-        <div className={styles.CheckableButtonWrapper}>
-          <CheckableButton
-            accessibilityLabel={this.itemCountText}
-            label={this.itemCountText}
-            onToggleAll={this.handleToggleAll}
-            plain
-          />
-        </div>
-      ) : null;
+    const itemCountTextMarkup = (
+      <div className={styles.ItemCountTextWrapper}>{this.itemCountText}</div>
+    );
 
+    const selectButtonMarkup = this.selectable ? (
+      <div className={styles.SelectButtonWrapper}>
+        <Button
+          disabled={selectMode}
+          icon={selectIcon}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={this.handleSelectMode.bind(this, true)}
+        >
+          Select
+        </Button>
+      </div>
+    ) : null;
+
+    const checkableButtonMarkup = this.selectable ? (
+      <div className={styles.CheckableButtonWrapper}>
+        <CheckableButton
+          accessibilityLabel={this.itemCountText}
+          label={this.itemCountText}
+          onToggleAll={this.handleToggleAll}
+          plain
+        />
+      </div>
+    ) : null;
 
     const headerClassName = classNames(
       styles.HeaderWrapper,
@@ -334,17 +345,18 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       </div>
     ) : null;
 
-    const emptyStateMarkup = filterControl && !itemsExist
-      ? (
+    const emptyStateMarkup =
+      filterControl && !itemsExist ? (
         <div className={styles.EmptySearchResultWrapper}>
           <EmptySearchResult {...this.emptySearchResultText} withIllustration />
         </div>
       ) : null;
 
-    const listMarkup =
-      itemsExist ? (
-        <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
-      ) : emptyStateMarkup;
+    const listMarkup = itemsExist ? (
+      <ul className={styles.ResourceList}>{items.map(this.renderItem)}</ul>
+    ) : (
+      emptyStateMarkup
+    );
 
     return (
       <div className={styles.ResourceListWrapper}>
@@ -362,21 +374,28 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   unsubscribe(callback: () => void) {
-    this.subscriptions = this.subscriptions.filter((subscription) => subscription !== callback);
+    this.subscriptions = this.subscriptions.filter(
+      (subscription) => subscription !== callback,
+    );
   }
 
   @autobind
   private handleSelectAllItemsInStore() {
-    const {onSelectionChange, selectedItems, items, idForItem = defaultIdForItem} = this.props;
+    const {
+      onSelectionChange,
+      selectedItems,
+      items,
+      idForItem = defaultIdForItem,
+    } = this.props;
 
-    const newlySelectedItems = (selectedItems === SELECT_ALL_ITEMS)
-      ? getAllItemsOnPage(items, idForItem)
-      : SELECT_ALL_ITEMS;
+    const newlySelectedItems =
+      selectedItems === SELECT_ALL_ITEMS
+        ? getAllItemsOnPage(items, idForItem)
+        : SELECT_ALL_ITEMS;
 
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
-    return;
   }
 
   @autobind
@@ -393,15 +412,21 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private handleSelectionChange(selected: boolean, id: string) {
-    const {onSelectionChange, selectedItems, items, idForItem = defaultIdForItem} = this.props;
+    const {
+      onSelectionChange,
+      selectedItems,
+      items,
+      idForItem = defaultIdForItem,
+    } = this.props;
 
     if (selectedItems == null || onSelectionChange == null) {
       return;
     }
 
-    const newlySelectedItems = (selectedItems === SELECT_ALL_ITEMS)
-      ? getAllItemsOnPage(items, idForItem)
-      : [...selectedItems];
+    const newlySelectedItems =
+      selectedItems === SELECT_ALL_ITEMS
+        ? getAllItemsOnPage(items, idForItem)
+        : [...selectedItems];
 
     if (selected) {
       newlySelectedItems.push(id);
@@ -440,7 +465,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
     let newlySelectedItems: string[] = [];
 
-    if ((Array.isArray(selectedItems) && selectedItems.length === items.length) || (selectedItems === SELECT_ALL_ITEMS)) {
+    if (
+      (Array.isArray(selectedItems) && selectedItems.length === items.length) ||
+      selectedItems === SELECT_ALL_ITEMS
+    ) {
       newlySelectedItems = [];
     } else {
       newlySelectedItems = items.map((item, index) => {
@@ -461,7 +489,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 }
 
-function getAllItemsOnPage(items: any, idForItem: (item: any, index: number) => string) {
+function getAllItemsOnPage(
+  items: any,
+  idForItem: (item: any, index: number) => string,
+) {
   return items.map((item: any, index: number) => {
     return idForItem(item, index);
   });
@@ -472,7 +503,9 @@ function defaultIdForItem(item: any, index: number) {
 }
 
 function isSmallScreen() {
-  return typeof window === 'undefined' ? false : window.innerWidth <= SMALL_SCREEN_WIDTH;
+  return typeof window === 'undefined'
+    ? false
+    : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
 export default withProvider()(ResourceList);

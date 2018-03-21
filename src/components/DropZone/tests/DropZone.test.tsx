@@ -70,21 +70,27 @@ describe('<DropZone />', () => {
   });
 
   it('calls the onDrop callback corrently when it accepts only jpeg', () => {
-    const dropZone = mountWithProvider(<DropZone onDrop={spy} accept="image/jpeg" />);
+    const dropZone = mountWithProvider(
+      <DropZone onDrop={spy} accept="image/jpeg" />,
+    );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
   it('calls the onDropAccepted callback corrently when it accepts only jpeg', () => {
-    const dropZone = mountWithProvider(<DropZone onDropAccepted={spy} accept="image/jpeg" />);
+    const dropZone = mountWithProvider(
+      <DropZone onDropAccepted={spy} accept="image/jpeg" />,
+    );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalledWith(acceptedFiles);
   });
 
   it('calls the onDropRejected callback corrently when it accepts only jpeg', () => {
-    const dropZone = mountWithProvider(<DropZone onDropRejected={spy} accept="image/jpeg" />);
+    const dropZone = mountWithProvider(
+      <DropZone onDropRejected={spy} accept="image/jpeg" />,
+    );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalledWith(rejectedFiles);
@@ -94,7 +100,9 @@ describe('<DropZone />', () => {
     const customValidator = (file: File) => {
       return file.type === 'image/jpeg';
     };
-    const dropZone = mountWithProvider(<DropZone onDrop={spy} customValidator={customValidator} />);
+    const dropZone = mountWithProvider(
+      <DropZone onDrop={spy} customValidator={customValidator} />,
+    );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
@@ -110,7 +118,8 @@ describe('<DropZone />', () => {
         onDragEnter={spy}
         onDragLeave={spy}
         onDragOver={spy}
-      />);
+      />,
+    );
     createEvent('drop');
     expect(spy).not.toBeCalled();
     createEvent('dragenter');

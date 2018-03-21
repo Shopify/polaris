@@ -3,24 +3,26 @@ import {get, merge} from 'lodash';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 
-import {WithProviderProps} from '../types';
-
 import {
   polarisProviderContextTypes,
   TranslationDictionary,
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
+  WithProviderProps,
 } from '../types';
+
+const REPLACE_REGEX = /{([^}]*)}/g;
 
 export function translate(
   id: string,
   translations: TranslationDictionary | TranslationDictionary[] | undefined,
   replacements?: PrimitiveReplacementDictionary | ComplexReplacementDictionary,
 ) {
-  const REPLACE_REGEX = /{([^}]*)}/g;
   const text = get(translations, id) as string;
 
-  if (!text) { return ''; }
+  if (!text) {
+    return '';
+  }
 
   if (replacements) {
     return replace(text, REPLACE_REGEX, (match: string) => {
@@ -45,9 +47,15 @@ export function translate(
 
 export function withProvider() {
   return function addProvider<OwnProps, C>(
-    WrappedComponent: React.ComponentClass<OwnProps & WithProviderProps> & C | React.SFC<OwnProps & WithProviderProps> & C,
+    WrappedComponent:
+      | React.ComponentClass<OwnProps & WithProviderProps> & C
+      | React.SFC<OwnProps & WithProviderProps> & C,
   ): any & C {
-    class WithTranslation extends React.Component<{}, OwnProps & WithProviderProps> {
+    // eslint-disable-next-line react/prefer-stateless-function
+    class WithTranslation extends React.Component<
+      {},
+      OwnProps & WithProviderProps
+    > {
       static contextTypes = WrappedComponent.contextTypes
         ? merge(WrappedComponent.contextTypes, polarisProviderContextTypes)
         : polarisProviderContextTypes;

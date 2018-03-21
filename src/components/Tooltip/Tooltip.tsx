@@ -24,8 +24,8 @@ export interface Props {
 }
 
 export interface State {
-  active: boolean,
-  activatorNode: HTMLElement | null,
+  active: boolean;
+  activatorNode: HTMLElement | null;
 }
 
 const getUniqueID = createUniqueIDFactory('TooltipContent');
@@ -58,29 +58,24 @@ export default class Tooltip extends React.PureComponent<Props, State> {
       activatorWrapper: WrapperComponent = 'span',
     } = this.props;
 
-    const {
-      active,
-      activatorNode,
-    } = this.state;
+    const {active, activatorNode} = this.state;
 
-    const portal = activatorNode
-      ? (
-        <Portal idPrefix="tooltip">
-          <TooltipOverlay
-            id={id}
-            preferredPosition={preferredPosition}
-            activator={activatorNode}
-            active={active}
-            onClose={noop}
-            light={light}
-          >
-            <div className={styles.Label} testID="TooltipOverlayLabel">
-              {content}
-            </div>
-          </TooltipOverlay>
-        </Portal>
-      )
-      : null;
+    const portal = activatorNode ? (
+      <Portal idPrefix="tooltip">
+        <TooltipOverlay
+          id={id}
+          preferredPosition={preferredPosition}
+          activator={activatorNode}
+          active={active}
+          onClose={noop}
+          light={light}
+        >
+          <div className={styles.Label} testID="TooltipOverlayLabel">
+            {content}
+          </div>
+        </TooltipOverlay>
+      </Portal>
+    ) : null;
 
     return (
       <WrapperComponent

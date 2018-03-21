@@ -174,7 +174,7 @@ export default function Icon({
   const className = classNames(
     styles.Icon,
     color && styles[variationName('color', color)],
-    (color && color !== 'white') && styles.isColored,
+    color && color !== 'white' && styles.isColored,
     backdrop && styles.hasBackdrop,
   );
 

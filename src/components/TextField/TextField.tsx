@@ -102,7 +102,11 @@ export interface BaseProps {
 
 export interface NonMutuallyExclusiveProps extends BaseProps {}
 
-export type Props = NonMutuallyExclusiveProps & ({readOnly: true} | {disabled: true} | {onChange(value: string, id: string): void});
+export type Props = NonMutuallyExclusiveProps &
+  (
+    | {readOnly: true}
+    | {disabled: true}
+    | {onChange(value: string, id: string): void});
 
 const getUniqueID = createUniqueIDFactory('TextField');
 

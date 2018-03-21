@@ -4,10 +4,7 @@ import {ValidationMap} from 'react';
 export const contextTypes: ValidationMap<any> = {
   selectMode: PropTypes.bool,
   selectable: PropTypes.bool,
-  selectedItems: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string,
-  ]),
+  selectedItems: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   persistActions: PropTypes.bool,
   onSelectionChange: PropTypes.func,
   subscribe: PropTypes.func,
