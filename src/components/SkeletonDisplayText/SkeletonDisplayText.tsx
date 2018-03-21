@@ -6,10 +6,10 @@ export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export interface Props {
   /** Size of the text */
-  size?: Size,
+  size?: Size;
 }
 
-export default function SkeletonDisplayText({size = 'medium'}) {
+export default function SkeletonDisplayText({size = 'medium'}: Props) {
   const className = classNames(
     styles.DisplayText,
     size && styles[variationName('size', size)],

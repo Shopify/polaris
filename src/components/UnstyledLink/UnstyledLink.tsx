@@ -4,10 +4,10 @@ import {unstyled} from '../shared';
 import {withProvider, WithProviderProps} from '../Provider';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
-  url: string,
-  external?: boolean,
-  children?: React.ReactNode,
-  [key: string]: any,
+  url: string;
+  external?: boolean;
+  children?: React.ReactNode;
+  [key: string]: any;
 }
 
 export type LinkLikeComponent = ReactComponent<Props> | undefined;
@@ -26,7 +26,9 @@ class UnstyledLink extends React.PureComponent<CombinedProps, never> {
     const {external, url, ...rest} = this.props;
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
-    return <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />;
+    return (
+      <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
+    );
   }
 }
 

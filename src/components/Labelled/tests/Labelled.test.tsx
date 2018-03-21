@@ -2,17 +2,13 @@ import * as React from 'react';
 import {shallow} from 'enzyme';
 import Labelled from '..';
 import Label from '../../Label';
-import { buttonFrom } from '../../Button';
+import {buttonFrom} from '../../Button';
 
 describe('<Labelled />', () => {
   it('passes relevant props along to the label', () => {
     const action = {content: 'Do something'};
     const element = shallow(
-      <Labelled
-        id="my-label"
-        action={action}
-        label="Label"
-      />,
+      <Labelled id="my-label" action={action} label="Label" />,
     );
     const label = element.find(Label);
 
@@ -21,10 +17,14 @@ describe('<Labelled />', () => {
   });
 
   it('renders the content as a child outside of the label', () => {
-    function MyComponent() { return <div />; }
+    function MyComponent() {
+      return <div />;
+    }
 
     const element = shallow(
-      <Labelled id="MyLabelled" label="Label"><MyComponent /></Labelled>,
+      <Labelled id="MyLabelled" label="Label">
+        <MyComponent />
+      </Labelled>,
     );
     expect(element.find(MyComponent).exists()).toBe(true);
   });
@@ -33,16 +33,14 @@ describe('<Labelled />', () => {
     it('renders a plain button with the specified attributes', () => {
       const action = {
         content: 'My action',
-        onAction() { return true; },
+        onAction() {
+          return true;
+        },
         accessibilityLabel: 'My action with more description',
       };
 
       const label = shallow(
-        <Labelled
-          id="MyLabelled"
-          label="Label"
-          action={action}
-        />,
+        <Labelled id="MyLabelled" label="Label" action={action} />,
       );
       const button = buttonFrom(action, {plain: true});
       expect(label.containsMatchingElement(button)).toBe(true);

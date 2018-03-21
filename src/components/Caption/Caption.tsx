@@ -3,7 +3,7 @@ import * as styles from './Caption.scss';
 
 export interface Props {
   /** The content to use as a graph label or timestamp */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default function Caption({children}: Props) {

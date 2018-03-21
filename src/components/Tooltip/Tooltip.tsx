@@ -10,17 +10,17 @@ import * as styles from './Tooltip.scss';
 
 export interface Props {
   /** The element that will activate to tooltip */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** The content to display within the tooltip */
-  content: string,
+  content: string;
   /** Display tooltip with a light background */
-  light?: boolean,
+  light?: boolean;
   /** Toggle whether the tooltip is visible */
-  active?: boolean,
+  active?: boolean;
   /** The direction the tooltip tries to display */
-  preferredPosition?: PreferredPosition,
+  preferredPosition?: PreferredPosition;
   /** The element type to wrap the activator in */
-  activatorWrapper?: string,
+  activatorWrapper?: string;
 }
 
 export interface State {
@@ -131,7 +131,9 @@ export default class Tooltip extends React.PureComponent<Props, State> {
 
   private setAccessibilityAttributes() {
     const {activatorContainer, id} = this;
-    if (activatorContainer == null) { return; }
+    if (activatorContainer == null) {
+      return;
+    }
 
     const firstFocusable = findFirstFocusableNode(activatorContainer);
     const accessibilityNode = firstFocusable || activatorContainer;

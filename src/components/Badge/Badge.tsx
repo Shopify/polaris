@@ -8,11 +8,11 @@ export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 
 export interface Props {
   /** The content to display inside the badge. */
-  children?: string,
+  children?: string;
   /** Set the color of the badge for the given status. */
-  status?: Status,
+  status?: Status;
   /** Render a pip showing the progress of a given task. */
-  progress?: Progress,
+  progress?: Progress;
 }
 
 const PROGRESS_LABELS = {
@@ -35,17 +35,15 @@ export default function Badge({children, status, progress}: Props) {
     progress && styles[variationName('progress', progress)],
   );
 
-  const pipMarkup = progress
-    ? (
-      <span className={styles.Pip}>
-        <VisuallyHidden>{PROGRESS_LABELS[progress]}</VisuallyHidden>
-      </span>
-    )
-    : null;
+  const pipMarkup = progress ? (
+    <span className={styles.Pip}>
+      <VisuallyHidden>{PROGRESS_LABELS[progress]}</VisuallyHidden>
+    </span>
+  ) : null;
 
-  const statusLabelMarkup = status
-    ? <VisuallyHidden>{STATUS_LABELS[status]}</VisuallyHidden>
-    : null;
+  const statusLabelMarkup = status ? (
+    <VisuallyHidden>{STATUS_LABELS[status]}</VisuallyHidden>
+  ) : null;
 
   return (
     <span className={className}>

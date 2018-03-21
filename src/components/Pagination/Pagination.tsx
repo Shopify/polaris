@@ -9,24 +9,24 @@ import * as styles from './Pagination.scss';
 
 export interface PaginationDescriptor {
   /** The URL of the next page */
-  nextURL?: string,
+  nextURL?: string;
   /** The URL of the previous page */
-  previousURL?: string,
+  previousURL?: string;
   /** Whether there is a next page to show */
-  hasNext?: boolean,
+  hasNext?: boolean;
   /** Whether there is a previous page to show */
-  hasPrevious?: boolean,
+  hasPrevious?: boolean;
   /** Accessible label for the pagination */
-  accessibilityLabel?: string,
+  accessibilityLabel?: string;
   /** Callback when next button is clicked */
-  onNext?(): void,
+  onNext?(): void;
   /** Callback when previous button is clicked */
-  onPrevious?(): void,
+  onPrevious?(): void;
 }
 
 export interface Props extends PaginationDescriptor {
   /** A more subdued control for use in headers */
-  plain?: boolean,
+  plain?: boolean;
 }
 
 export default function Pagination({
@@ -47,55 +47,48 @@ export default function Pagination({
     label = 'Pagination';
   }
 
-  const className = classNames(
-    styles.Pagination,
-    plain && styles.plain,
+  const className = classNames(styles.Pagination, plain && styles.plain);
+
+  const previousButton = previousURL ? (
+    <UnstyledLink
+      className={styles.Button}
+      url={previousURL}
+      onMouseUp={handleMouseUpByBlurring}
+      aria-label="Previous"
+    >
+      <Icon source="arrowLeft" />
+    </UnstyledLink>
+  ) : (
+    <button
+      onClick={onPrevious}
+      onMouseUp={handleMouseUpByBlurring}
+      className={styles.Button}
+      aria-label="Previous"
+      disabled={!hasPrevious}
+    >
+      <Icon source="arrowLeft" />
+    </button>
   );
 
-  const previousButton = previousURL
-    ? (
-      <UnstyledLink
-        className={styles.Button}
-        url={previousURL}
-        onMouseUp={handleMouseUpByBlurring}
-        aria-label="Previous"
-      >
-        <Icon source="arrowLeft" />
-      </UnstyledLink>
-    )
-    : (
-      <button
-        onClick={onPrevious}
-        onMouseUp={handleMouseUpByBlurring}
-        className={styles.Button}
-        aria-label="Previous"
-        disabled={!hasPrevious}
-      >
-        <Icon source="arrowLeft" />
-      </button>
-  );
-
-  const nextButton = nextURL
-    ? (
-      <UnstyledLink
-        className={styles.Button}
-        url={nextURL}
-        onMouseUp={handleMouseUpByBlurring}
-        aria-label="Next"
-      >
-        <Icon source="arrowRight" />
-      </UnstyledLink>
-    )
-    : (
-      <button
-        onClick={onNext}
-        onMouseUp={handleMouseUpByBlurring}
-        className={styles.Button}
-        aria-label="Next"
-        disabled={!hasNext}
-      >
-        <Icon source="arrowRight" />
-      </button>
+  const nextButton = nextURL ? (
+    <UnstyledLink
+      className={styles.Button}
+      url={nextURL}
+      onMouseUp={handleMouseUpByBlurring}
+      aria-label="Next"
+    >
+      <Icon source="arrowRight" />
+    </UnstyledLink>
+  ) : (
+    <button
+      onClick={onNext}
+      onMouseUp={handleMouseUpByBlurring}
+      className={styles.Button}
+      aria-label="Next"
+      disabled={!hasNext}
+    >
+      <Icon source="arrowRight" />
+    </button>
   );
 
   return (

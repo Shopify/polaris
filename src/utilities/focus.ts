@@ -1,3 +1,5 @@
-export function handleMouseUpByBlurring({currentTarget}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+export function handleMouseUpByBlurring({
+  currentTarget,
+}: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
   currentTarget.blur();
 }

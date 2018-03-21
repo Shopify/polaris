@@ -3,7 +3,7 @@ import * as styles from './SkeletonBodyText.scss';
 
 export interface Props {
   /** Number of lines to display */
-  lines?: number,
+  lines?: number;
 }
 
 export default function SkeletonBodyText({lines = 3}: Props) {
@@ -13,5 +13,7 @@ export default function SkeletonBodyText({lines = 3}: Props) {
     bodyTextLines.push(<div className={styles.SkeletonBodyText} key={i} />);
   }
 
-  return <div className={styles.SkeletonBodyTextContainer}>{bodyTextLines}</div>;
+  return (
+    <div className={styles.SkeletonBodyTextContainer}>{bodyTextLines}</div>
+  );
 }

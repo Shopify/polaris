@@ -21,7 +21,9 @@ describe('<RadioButton />', () => {
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mount(<RadioButton id="MyRadioButton" label="RadioButton" onChange={spy} />);
+      const element = mount(
+        <RadioButton id="MyRadioButton" label="RadioButton" onChange={spy} />,
+      );
       (element.find('input') as any).instance().checked = true;
       element.find('input').simulate('change');
       expect(spy).toHaveBeenCalledWith(true, 'MyRadioButton');
@@ -48,12 +50,16 @@ describe('<RadioButton />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(<RadioButton id="MyRadioButton" label="RadioButton" />).find('input').prop('id');
+      const id = shallow(<RadioButton id="MyRadioButton" label="RadioButton" />)
+        .find('input')
+        .prop('id');
       expect(id).toBe('MyRadioButton');
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<RadioButton label="RadioButton" />).find('input').prop('id');
+      const id = shallow(<RadioButton label="RadioButton" />)
+        .find('input')
+        .prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
     });
@@ -76,8 +82,12 @@ describe('<RadioButton />', () => {
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mount(<RadioButton label="RadioButton" helpText="Some help" />);
-      const helpTextID = textField.find('input').prop<string>('aria-describedby');
+      const textField = mount(
+        <RadioButton label="RadioButton" helpText="Some help" />,
+      );
+      const helpTextID = textField
+        .find('input')
+        .prop<string>('aria-describedby');
       expect(typeof helpTextID).toBe('string');
       expect(textField.find(`#${helpTextID}`).text()).toBe('Some help');
     });

@@ -4,16 +4,15 @@ import TextContainer from '../TextContainer';
 import * as styles from './Layout.scss';
 
 export interface Props {
-  children?: React.ReactNode,
-  title?: string,
-  description?: React.ReactNode,
+  children?: React.ReactNode;
+  title?: string;
+  description?: React.ReactNode;
 }
 
 export default function AnnotatedSection(props: Props) {
   const {children, title, description} = props;
-  const wrappedDescription = typeof description === 'string'
-    ? <p>{description}</p>
-    : description;
+  const wrappedDescription =
+    typeof description === 'string' ? <p>{description}</p> : description;
 
   return (
     <div className={styles.AnnotatedSection}>
@@ -25,9 +24,7 @@ export default function AnnotatedSection(props: Props) {
           </TextContainer>
         </div>
 
-        <div className={styles.AnnotationContent}>
-          {children}
-        </div>
+        <div className={styles.AnnotationContent}>{children}</div>
       </div>
     </div>
   );

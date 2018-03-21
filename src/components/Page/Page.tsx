@@ -10,38 +10,38 @@ import {Props as BreadcrumbProps} from '../Breadcrumbs';
 
 import Header, {ActionGroup, Props as HeaderProps} from './Header';
 
-export type SecondaryAction = IconableAction & DisableableAction;
-
 import * as styles from './Page.scss';
+
+export type SecondaryAction = IconableAction & DisableableAction;
 
 export interface HeaderProps {
   /** Page title, in large type */
-  title: string,
+  title: string;
   /** Visually hide the title */
-  titleHidden?: boolean,
+  titleHidden?: boolean;
   /** App icon, for pages that are part of Shopify apps */
-  icon?: string,
+  icon?: string;
   /** Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbProps['breadcrumbs'],
+  breadcrumbs?: BreadcrumbProps['breadcrumbs'];
   /** Adds a border to the bottom of the page header */
-  separator?: boolean,
+  separator?: boolean;
   /** Collection of secondary page-level actions */
-  secondaryActions?: SecondaryAction[],
+  secondaryActions?: SecondaryAction[];
   /** Collection of page-level groups of secondary actions */
-  actionGroups?: ActionGroup[],
+  actionGroups?: ActionGroup[];
   /** Primary page-level action */
-  primaryAction?: DisableableAction & LoadableAction,
+  primaryAction?: DisableableAction & LoadableAction;
   /** Page-level pagination */
-  pagination?: PaginationDescriptor,
+  pagination?: PaginationDescriptor;
 }
 
 export interface Props extends HeaderProps {
   /** The contents of the page */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Remove the normal max-width on the page */
-  fullWidth?: boolean,
+  fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
-  singleColumn?: boolean,
+  singleColumn?: boolean;
 }
 
 const EASDK_PROPS: (keyof Props)[] = [
@@ -58,12 +58,16 @@ export default class Page extends React.PureComponent<Props, never> {
   static contextTypes = {easdk: PropTypes.object};
 
   componentDidMount() {
-    if (this.context.easdk == null) { return; }
+    if (this.context.easdk == null) {
+      return;
+    }
     this.handleEASDKMessaging();
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (this.context.easdk == null) { return; }
+    if (this.context.easdk == null) {
+      return;
+    }
 
     const prevEASDKProps = pick(prevProps, EASDK_PROPS);
     const currentEASDKProps = pick(this.props, EASDK_PROPS);
@@ -74,12 +78,7 @@ export default class Page extends React.PureComponent<Props, never> {
   }
 
   render() {
-    const {
-      children,
-      fullWidth,
-      singleColumn,
-      ...rest,
-    } = this.props;
+    const {children, fullWidth, singleColumn, ...rest} = this.props;
 
     const className = classNames(
       styles.Page,
@@ -87,16 +86,15 @@ export default class Page extends React.PureComponent<Props, never> {
       singleColumn && styles.singleColumn,
     );
 
-    const headerMarkup = this.context.easdk || !this.hasHeaderContent()
-      ? null
-      : <Header {...rest} />;
+    const headerMarkup =
+      this.context.easdk || !this.hasHeaderContent() ? null : (
+        <Header {...rest} />
+      );
 
     return (
       <div className={className}>
         {headerMarkup}
-        <div className={styles.Content}>
-          {children}
-        </div>
+        <div className={styles.Content}>{children}</div>
       </div>
     );
   }
@@ -110,12 +108,12 @@ export default class Page extends React.PureComponent<Props, never> {
   }
 
   private hasHeaderContent() {
-    const { title, primaryAction, secondaryActions, breadcrumbs } = this.props;
+    const {title, primaryAction, secondaryActions, breadcrumbs} = this.props;
     return (
-      (title && title !== '')
-      || primaryAction
-      || (secondaryActions && secondaryActions.length > 0)
-      || (breadcrumbs && breadcrumbs.length > 0)
+      (title && title !== '') ||
+      primaryAction ||
+      (secondaryActions && secondaryActions.length > 0) ||
+      (breadcrumbs && breadcrumbs.length > 0)
     );
   }
 }

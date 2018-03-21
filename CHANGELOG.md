@@ -5,9 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 ## Unreleased
+### Bug fixes
+* Fixed a syntax error in one of the Card component examples ([#1175](https://github.com/Shopify/polaris-react/pull/1175)) (thanks [meecrobe](https://github.com/meecrobe) for the [original issue](https://github.com/Shopify/polaris/issues/281))
 
+## 1.12.4 - 2018-03-19
+* Enhanced Avatar to work better when provided non-square images ([#1124](https://github.com/Shopify/polaris-react/pull/1124))
+* Move documentation file so it's picked up by the styleguide ([#1162](https://github.com/Shopify/polaris-react/pull/1162))
+
+## 1.12.3 - 2018-03-16
 ### Bug fixes
 * Fixed disclosure centering on the tab component ([#1131](https://github.com/Shopify/polaris-react/pull/1131))
+* Fixed an issue where a style void would appear between breakpoints at high text zoom levels ([#1071](https://github.com/Shopify/polaris-react/pull/1071))
 
 ### Documentation
 * Removed purpose section from component READMEs ([#1134](https://github.com/Shopify/polaris-react/pull/1134))

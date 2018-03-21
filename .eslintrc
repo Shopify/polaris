@@ -1,0 +1,51 @@
+{
+  "extends": [
+    "plugin:shopify/esnext",
+    "plugin:shopify/node",
+    "plugin:shopify/polaris",
+    "plugin:shopify/typescript",
+    "plugin:shopify/typescript-react",
+    "plugin:shopify/typescript-prettier"
+  ],
+  "rules": {
+    "id-length": "off",
+    "func-style": "off",
+    "no-undefined": "off",
+    "no-process-env": "off",
+    "no-warning-comments": "off",
+    "no-negated-condition": "off",
+    "consistent-return": "off",
+    "prefer-destructuring": "off",
+    "match-default-export-name": "off",
+    "jsx-use-translation-function": "off",
+    "lines-around-comment": [
+      "error",
+      {
+        "beforeBlockComment": false,
+        "allowBlockStart": false
+      }
+    ],
+    "react/no-unused-state": "off",
+    "react/button-has-type": "off",
+    "react/no-array-index-key": "off",
+    "react/no-did-update-set-state": "off",
+    "react/no-access-state-in-setstate": "off",
+    "typescript/trailing-comma-interface": "off",
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ],
+    "jsx-a11y/no-autofocus": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/role-supports-aria-props": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "off"
+  }
+}

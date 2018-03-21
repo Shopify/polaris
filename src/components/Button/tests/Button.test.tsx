@@ -41,7 +41,11 @@ describe('<Button />', () => {
     });
 
     it('does not unset the disabled attribute on the button when loading', () => {
-      const button = shallow(<Button loading disabled={false}>Disabled test</Button>);
+      const button = shallow(
+        <Button loading disabled={false}>
+          Disabled test
+        </Button>,
+      );
       expect(button.find('button').prop('disabled')).toBe(true);
     });
   });
@@ -58,7 +62,11 @@ describe('<Button />', () => {
     });
 
     it('does not unset the disabled attribute on the button', () => {
-      const button = shallow(<Button disabled loading={false}>Loading test</Button>);
+      const button = shallow(
+        <Button disabled loading={false}>
+          Loading test
+        </Button>,
+      );
       expect(button.find('button').prop('disabled')).toBe(true);
     });
   });
@@ -80,12 +88,18 @@ describe('<Button />', () => {
 
   describe('accessibilityLabel', () => {
     it('sets the aria-label on the button', () => {
-      const button = shallow(<Button accessibilityLabel="This deletes a thing" icon="delete" />);
-      expect(button.find('button').prop('aria-label')).toBe('This deletes a thing');
+      const button = shallow(
+        <Button accessibilityLabel="This deletes a thing" icon="delete" />,
+      );
+      expect(button.find('button').prop('aria-label')).toBe(
+        'This deletes a thing',
+      );
     });
 
     it('sets the aria-controls on the button', () => {
-      const button = shallow(<Button ariaControls="controler-id" icon="delete" />);
+      const button = shallow(
+        <Button ariaControls="controler-id" icon="delete" />,
+      );
       expect(button.find('button').prop('aria-controls')).toBe('controler-id');
     });
 

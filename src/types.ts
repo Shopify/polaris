@@ -33,27 +33,32 @@ export interface BaseCallbackAction {
 export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
-  disabled?: boolean,
+  disabled?: boolean;
 }
 
 export interface DestructableAction extends Action {
-  destructive?: boolean,
+  destructive?: boolean;
 }
 
 export interface EASDKAction extends Action {
-  target?: EASDKTarget,
+  target?: EASDKTarget;
 }
 
 export interface IconableAction extends Action {
-  icon?: IconProps['source'],
+  icon?: IconProps['source'];
 }
 
 export interface LoadableAction extends Action {
-  loading?: boolean,
+  loading?: boolean;
 }
 
-export interface ComplexAction extends Action, DisableableAction, DestructableAction, EASDKAction, IconableAction, LoadableAction {
-}
+export interface ComplexAction
+  extends Action,
+    DisableableAction,
+    DestructableAction,
+    EASDKAction,
+    IconableAction,
+    LoadableAction {}
 
 export enum Keys {
   BACKSPACE = 8,

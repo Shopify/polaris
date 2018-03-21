@@ -3,27 +3,27 @@ import {transformAction} from '../transformers';
 import {Action} from '../../../types';
 
 export interface CloseCallback {
-  (result?: boolean, data?: any): void,
+  (result?: boolean, data?: any): void;
 }
 
 export interface OpenConfig {
-  src: string,
-  title?: string,
-  width?: string,
-  height?: number,
-  primaryAction?: Action,
-  secondaryActions?: Action[],
-  onClose?(): void,
+  src: string;
+  title?: string;
+  width?: string;
+  height?: number;
+  primaryAction?: Action;
+  secondaryActions?: Action[];
+  onClose?(): void;
 }
 
 export interface AlertConfig {
-  children?: string,
-  title?: string,
-  destructive?: boolean,
-  confirmContent: string,
-  cancelContent?: string,
-  onCancel?(): void,
-  onConfirm(): void,
+  children?: string;
+  title?: string;
+  destructive?: boolean;
+  confirmContent: string;
+  cancelContent?: string;
+  onCancel?(): void;
+  onConfirm(): void;
 }
 
 export default class Modal {
@@ -52,7 +52,9 @@ export default class Modal {
       height,
       buttons: {
         primary: primaryAction ? transformAction(primaryAction) : undefined,
-        secondary: secondaryActions ? secondaryActions.map(transformAction) : undefined,
+        secondary: secondaryActions
+          ? secondaryActions.map(transformAction)
+          : undefined,
       },
     });
   }
@@ -70,9 +72,11 @@ export default class Modal {
 
     this.storeCloseCallback((result: boolean) => {
       if (result) {
-        if (onConfirm) { onConfirm(); }
-      } else {
-        if (onCancel) { onCancel(); }
+        if (onConfirm) {
+          onConfirm();
+        }
+      } else if (onCancel) {
+        onCancel();
       }
     });
 
@@ -99,7 +103,9 @@ export default class Modal {
   }
 
   close(result?: boolean, data?: any) {
-    if (this.closeCallback == null) { return; }
+    if (this.closeCallback == null) {
+      return;
+    }
 
     this.messenger.send('Shopify.API.Modal.close', {
       result,

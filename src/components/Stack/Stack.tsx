@@ -1,27 +1,36 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-import {elementChildren, wrapWithComponent} from '@shopify/react-utilities/components';
+import {
+  elementChildren,
+  wrapWithComponent,
+} from '@shopify/react-utilities/components';
 
 import * as styles from './Stack.scss';
 import Item, {Props as ItemProps} from './Item';
 
 export type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
 export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
-export type Distribution = 'equalSpacing' | 'leading' | 'trailing' | 'center' | 'fill' | 'fillEvenly';
+export type Distribution =
+  | 'equalSpacing'
+  | 'leading'
+  | 'trailing'
+  | 'center'
+  | 'fill'
+  | 'fillEvenly';
 
 export interface Props {
   /** Elements to display inside stack */
-  children?: any,
+  children?: any;
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
-  wrap?: boolean,
+  wrap?: boolean;
   /** Stack the elements vertically */
-  vertical?: boolean,
+  vertical?: boolean;
   /** Adjust spacing between elements */
-  spacing?: Spacing,
+  spacing?: Spacing;
   /** Adjust vertical alignment of elements */
-  alignment?: Alignment,
+  alignment?: Alignment;
   /** Adjust horizontal alignment of elements */
-  distribution?: Distribution,
+  distribution?: Distribution;
 }
 
 export default class Stack extends React.PureComponent<Props, never> {
@@ -46,11 +55,10 @@ export default class Stack extends React.PureComponent<Props, never> {
       wrap === false && styles.noWrap,
     );
 
-    const itemMarkup = elementChildren(children)
-      .map((child, index) => {
-        const props = { key: index };
-        return wrapWithComponent(child, Item, props as ItemProps);
-      });
+    const itemMarkup = elementChildren(children).map((child, index) => {
+      const props = {key: index};
+      return wrapWithComponent(child, Item, props as ItemProps);
+    });
 
     return <div className={className}>{itemMarkup}</div>;
   }

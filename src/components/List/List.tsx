@@ -7,9 +7,9 @@ export type Type = 'bullet' | 'number';
 
 export interface Props {
   /** Type of list to display */
-  type?: Type,
+  type?: Type;
   /** List item elements */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default class ContentList extends React.PureComponent<Props, never> {

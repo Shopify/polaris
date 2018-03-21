@@ -3,36 +3,33 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {layer} from '../shared';
-import PositionedOverlay, {OverlayDetails, PreferredPosition} from '../PositionedOverlay';
+import PositionedOverlay, {
+  OverlayDetails,
+  PreferredPosition,
+} from '../PositionedOverlay';
 
 import * as styles from './Tooltip.scss';
 
 export interface Props {
-  id: string,
-  active: boolean,
-  light?: boolean,
-  preferredPosition?: PreferredPosition,
-  children?: React.ReactNode,
-  activator: HTMLElement,
-  onClose(): void,
+  id: string;
+  active: boolean;
+  light?: boolean;
+  preferredPosition?: PreferredPosition;
+  children?: React.ReactNode;
+  activator: HTMLElement;
+  onClose(): void;
 }
 
 export default class TooltipOverlay extends React.PureComponent<Props, never> {
   render() {
-    const markup = this.props.active
-      ? this.renderOverlay()
-      : null;
+    const markup = this.props.active ? this.renderOverlay() : null;
 
     return markup;
   }
 
   @autobind
   private renderOverlay() {
-    const {
-      active,
-      activator,
-      preferredPosition = 'below',
-    } = this.props;
+    const {active, activator, preferredPosition = 'below'} = this.props;
 
     return (
       <PositionedOverlay
@@ -69,13 +66,11 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
       positioning === 'above' && styles.positionedAbove,
     );
 
-    const contentStyles = measuring
-      ? undefined
-      : {maxHeight: desiredHeight};
+    const contentStyles = measuring ? undefined : {maxHeight: desiredHeight};
 
-    const tipMarkup = !measuring
-      ? <div style={tipStyle} className={styles.Tip} />
-      : null;
+    const tipMarkup = !measuring ? (
+      <div style={tipStyle} className={styles.Tip} />
+    ) : null;
 
     return (
       <div className={containerClassName} {...layer.props}>
