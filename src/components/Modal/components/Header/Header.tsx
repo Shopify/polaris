@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {DisplayText, Stack} from '../../../';
+import {DisplayText, Stack} from '../../../../components';
 import memoizedBind from '../../../../utilities/memoized-bind';
 import * as styles from './Header.scss';
 import {CloseButton} from './';
 
 export interface Props {
-  id: string,
-  children?: React.ReactNode,
-  onClose(): void,
+  id: string;
+  children?: React.ReactNode;
+  onClose(): void;
 }
 
 export default function Header({id, children, onClose}: Props) {

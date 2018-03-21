@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {KeypressListener} from '../../../../';
+import {KeypressListener} from '../../../../../components';
 
 import {animationFrame, trigger} from '../../../../../../tests/utilities';
 
-import Dialog from '../';
+import Dialog from '../../Dialog';
 
 describe('<Dialog>', () => {
   beforeEach(() => {

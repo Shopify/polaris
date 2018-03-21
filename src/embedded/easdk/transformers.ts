@@ -1,4 +1,9 @@
-import {EASDKTarget, ComplexAction, IconableAction} from '../../types';
+import {
+  EASDKTarget,
+  ComplexAction,
+  IconableAction,
+  EASDKAction,
+} from '../../types';
 
 export interface EASDKBreadcrumb {
   label: string;
@@ -57,7 +62,7 @@ export interface EASDKLinkButton extends EASDKBaseButton {
 
 export type EASDKButton = EASDKBaseButton | EASDKLinkButton;
 
-export function transformAction(action: ComplexAction): EASDKButton {
+export function transformAction(action: EASDKAction): EASDKButton {
   let style: EASDKButton['style'];
   if (action.disabled) {
     style = 'disabled';

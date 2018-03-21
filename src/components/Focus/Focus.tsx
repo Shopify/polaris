@@ -4,7 +4,7 @@ import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
 
 export interface Props {
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default class Focus extends React.PureComponent<Props, never> {
@@ -23,10 +23,6 @@ export default class Focus extends React.PureComponent<Props, never> {
     const Fragment = (React as any).Fragment;
     const {children} = this.props;
 
-    return (
-      <Fragment>
-        {children}
-      </Fragment>
-    );
+    return <Fragment>{children}</Fragment>;
   }
 }

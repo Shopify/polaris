@@ -1,6 +1,6 @@
 import Messenger from '../Messenger';
 import {transformAction} from '../transformers';
-import {Action} from '../../../types';
+import {EASDKAction} from '../../../types';
 
 export interface CloseCallback {
   (result?: boolean, data?: any): void;
@@ -11,8 +11,8 @@ export interface OpenConfig {
   title?: string;
   width?: string;
   height?: number;
-  primaryAction?: Action;
-  secondaryActions?: Action[];
+  primaryAction?: EASDKAction;
+  secondaryActions?: EASDKAction[];
   onClose?(): void;
 }
 

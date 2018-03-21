@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {Icon} from '../../../';
+import {Icon} from '../../../../components';
 import * as styles from './Header.scss';
 
 export interface Props {
-  title?: boolean,
-  onClick(): void,
+  title?: boolean;
+  onClick(): void;
 }
 
 export default function CloseButton({title = true, onClick}: Props) {

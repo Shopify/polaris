@@ -1,23 +1,22 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {KeypressListener} from '../../../';
-import {Keys} from '../../../../types';
+import {KeypressListener} from '../../../../components';
 import memoizedBind from '../../../../utilities/memoized-bind';
 import {TrapFocus} from '../../../Focus';
 import {Duration} from '../../../shared';
-import {AnimationProps} from '../../../../types';
+import {AnimationProps, Keys} from '../../../../types';
 import * as styles from './Dialog.scss';
 
 export interface DialogProps {
-  labelledBy: string,
-  instant?: boolean,
-  children?: React.ReactNode,
-  limitHeight?: boolean,
-  large?: boolean,
-  onClose(): void,
-  onEntered?(): void,
-  onExited?(): void,
+  labelledBy: string;
+  instant?: boolean;
+  children?: React.ReactNode;
+  limitHeight?: boolean;
+  large?: boolean;
+  onClose(): void;
+  onEntered?(): void;
+  onExited?(): void;
 }
 
 export type Props = DialogProps & AnimationProps;
@@ -35,7 +34,7 @@ export default function Dialog({
   onEntered,
   large,
   limitHeight,
-  ...props,
+  ...props
 }: Props) {
   const classes = classNames(
     styles.Modal,

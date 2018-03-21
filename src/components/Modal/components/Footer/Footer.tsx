@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {buttonsFrom, ButtonGroup, Stack} from '../../../';
-import {ComplexAction, DisableableAction} from '../../../../types';
+import {buttonsFrom, ButtonGroup, Stack} from '../../../../components';
+import {ComplexAction, EASDKAction} from '../../../../types';
 import * as styles from './Footer.scss';
 
 export interface Props {
-  /** Primary action (EASDK accepts disableable action) */
-  primaryAction?: DisableableAction | ComplexAction,
-  /** Collection of secondary actions (EASDK accepts disableable action) */
-  secondaryActions?: DisableableAction[] | ComplexAction[],
+  /** Primary action */
+  primaryAction?: EASDKAction | ComplexAction;
+  /** Collection of secondary actions */
+  secondaryActions?: EASDKAction[] | ComplexAction[];
   /** The content to display inside modal */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default function Footer({

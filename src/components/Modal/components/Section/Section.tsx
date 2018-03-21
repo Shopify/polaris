@@ -3,9 +3,9 @@ import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Section.scss';
 
 export interface Props {
-  children?: React.ReactNode,
-  flush?: boolean,
-  subdued?: boolean,
+  children?: React.ReactNode;
+  flush?: boolean;
+  subdued?: boolean;
 }
 
 export default function Section({

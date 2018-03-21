@@ -6,7 +6,8 @@ import {wrapWithComponent} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
-import {Scrollable, Spinner, Portal} from '../';
+import {ComplexAction} from '../../types';
+import {Scrollable, Spinner, Portal} from '../../components';
 import memoizedBind from '../../utilities/memoized-bind';
 import Dialog from './components/Dialog';
 import Header, {CloseButton} from './components/Header';
@@ -20,39 +21,39 @@ export type Width = 'large' | 'fullwidth';
 
 export interface Props extends FooterProps {
   /** Whether the modal is open or not */
-  open: boolean,
+  open: boolean;
   /** The url that will be loaded as the content of the modal */
-  src?: string,
-  /** The content for the title of the modal (String for EASDK) */
-  title?: string | React.ReactNode,
-  /** The content to display inside modal (Non EASDK only) */
-  children?: React.ReactNode,
-  /** Inner content of the footer (Non EASDK only) */
-  footer?: React.ReactNode,
-  /** Disable animations and open modal instantly (Non EASDK only) */
-  instant?: boolean,
-  /** Automatically adds sections to modal (Non EASDK only) */
-  sectioned?: boolean,
-  /** Increases the modal width (Non EASDK only) */
-  large?: boolean,
-  /** Limits modal height on large sceens with scrolling (Non EASDK only) */
-  limitHeight?: boolean,
-  /** Replaces modal content with a spinner while a background action is being performed (Non EASDK only) */
-  loading?: boolean,
-  /** Controls the width of the modal (EASDK only, in pixels) */
-  width?: Width,
-  /** Controls the height of the modal (EASDK only, in pixels) */
-  height?: number,
+  src?: string;
+  /** The content for the title of the modal (EASDK accepts string) */
+  title?: string | React.ReactNode;
+  /** The content to display inside modal (Modal use only) */
+  children?: React.ReactNode;
+  /** Inner content of the footer (Modal use only) */
+  footer?: React.ReactNode;
+  /** Disable animations and open modal instantly (Modal use only) */
+  instant?: boolean;
+  /** Automatically adds sections to modal (Modal use only) */
+  sectioned?: boolean;
+  /** Increases the modal width (Modal use only) */
+  large?: boolean;
+  /** Limits modal height on large sceens with scrolling (Modal use only) */
+  limitHeight?: boolean;
+  /** Replaces modal content with a spinner while a background action is being performed (Modal use only) */
+  loading?: boolean;
+  /** Controls the width of the modal (EASDK use only) */
+  width?: Width;
+  /** Controls the height of the modal (EASDK use only, in pixels) */
+  height?: number;
   /** Callback when the modal is closed */
-  onClose(): void,
-  /** Callback when iframe has loaded (Non EASDK only) */
-  onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void,
-  /** Callback when modal transition animation has ended (Non EASDK only) */
-  onTransitionEnd?(): void,
+  onClose(): void;
+  /** Callback when iframe has loaded (Modal use only) */
+  onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void;
+  /** Callback when modal transition animation has ended (Modal use only) */
+  onTransitionEnd?(): void;
 }
 
 export interface State {
-  iframeHeight: number,
+  iframeHeight: number;
 }
 
 const getUniqueID = createUniqueIDFactory('modal-header');
@@ -70,8 +71,12 @@ export default class Modal extends React.Component<Props, State> {
   private headerId = getUniqueID();
 
   componentDidMount() {
-    if (this.context.easdk == null) { return; }
+    if (this.context.easdk == null) {
+      return;
+    }
+
     const {open} = this.props;
+
     if (open) {
       this.handleEASDKMessaging();
       this.focusReturnPointNode = document.activeElement as HTMLElement;
@@ -79,7 +84,9 @@ export default class Modal extends React.Component<Props, State> {
   }
 
   componentDidUpdate({open: wasOpen}: Props) {
-    if (this.context.easdk == null) { return; }
+    if (this.context.easdk == null) {
+      return;
+    }
 
     const {open} = this.props;
 
@@ -89,14 +96,21 @@ export default class Modal extends React.Component<Props, State> {
 
     if (!wasOpen && open) {
       this.focusReturnPointNode = document.activeElement as HTMLElement;
-    } else if (wasOpen && !open && this.focusReturnPointNode != null && document.contains(this.focusReturnPointNode)) {
+    } else if (
+      wasOpen &&
+      !open &&
+      this.focusReturnPointNode != null &&
+      document.contains(this.focusReturnPointNode)
+    ) {
       this.focusReturnPointNode.focus();
       this.focusReturnPointNode = null as any;
     }
   }
 
   render() {
-    if (this.context.easdk != null) { return null; }
+    if (this.context.easdk != null) {
+      return null;
+    }
 
     const {
       children,
@@ -112,19 +126,23 @@ export default class Modal extends React.Component<Props, State> {
       footer,
       primaryAction,
       secondaryActions,
-    } = (this.props);
+    } = this.props;
 
     const {iframeHeight} = this.state;
+
+    const iframeTitle = 'body markup';
 
     const handleClose = memoizedBind(onClose);
 
     let dialog: React.ReactNode;
     let backdrop: React.ReactNode;
     if (open) {
-      const footerMarkup = (!footer && !primaryAction && !secondaryActions)
-        ? null
-        : (
-          <Footer primaryAction={primaryAction} secondaryActions={secondaryActions}>
+      const footerMarkup =
+        !footer && !primaryAction && !secondaryActions ? null : (
+          <Footer
+            primaryAction={primaryAction}
+            secondaryActions={secondaryActions}
+          >
             {footer}
           </Footer>
         );
@@ -143,16 +161,14 @@ export default class Modal extends React.Component<Props, State> {
 
       const bodyMarkup = src ? (
         <iframe
+          title={iframeTitle}
           src={src}
           className={styles.IFrame}
           onLoad={this.handleIFrameLoad}
           style={{height: `${iframeHeight}px`}}
         />
       ) : (
-        <Scrollable
-          shadow
-          className={styles.Body}
-        >
+        <Scrollable shadow className={styles.Body}>
           {body}
         </Scrollable>
       );
@@ -193,10 +209,10 @@ export default class Modal extends React.Component<Props, State> {
     handleWarning('modal', this.props);
     return (
       <Portal idPrefix="modal">
-          <TransitionGroup appear={animated} enter={animated} exit={animated}>
-            {dialog}
-          </TransitionGroup>
-          {backdrop}
+        <TransitionGroup appear={animated} enter={animated} exit={animated}>
+          {dialog}
+        </TransitionGroup>
+        {backdrop}
       </Portal>
     );
   }
@@ -237,7 +253,9 @@ export default class Modal extends React.Component<Props, State> {
   private handleEASDKMessaging() {
     const {easdk} = this.context;
     const {open} = this.props;
-    if (easdk == null) { return; }
+    if (easdk == null) {
+      return;
+    }
 
     if (open) {
       handleWarning('easdk', this.props);
@@ -263,16 +281,51 @@ function handleWarning(type: Warn, props: Props) {
     },
   };
 
-  const missingProps = Object.keys(reqProps[type]).reduce((acc: string[], key) => {
-    if (!props.hasOwnProperty(key)) {
-      acc.push(key);
-    }
-    return acc;
-  }, []);
+  const missingProps = Object.keys(reqProps[type]).reduce(
+    (acc: string[], key) => {
+      if (!props.hasOwnProperty(key)) {
+        acc.push(key);
+      }
+      return acc;
+    },
+    [],
+  );
 
   if (missingProps.length > 0) {
-    // tslint:disable-next-line no-console
-    console.warn(`These required properties are missing from Modal: ${missingProps.join(', ')}`);
+    // eslint-disable-next-line no-console
+    console.warn(
+      `These required properties are missing from Modal: ${missingProps.join(
+        ', ',
+      )}`,
+    );
   }
-  return;
+
+  const actionWarnings = handleActionWanrings(
+    props.primaryAction,
+    props.secondaryActions,
+  );
+
+  if (type === 'easdk' && actionWarnings.length > 0) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Modals inside of an embedded app will ignore: ${actionWarnings.join(
+        ', ',
+      )}`,
+    );
+  }
+}
+
+function handleActionWanrings(
+  primary: ComplexAction = {},
+  secondary: ComplexAction[] = [],
+): string[] {
+  const actions = [primary, ...secondary];
+  const actionKeysToIgnore = ['icon', 'loading'];
+  return actions.reduce((acc: string[], action: ComplexAction | any) => {
+    return acc.concat(
+      ...actionKeysToIgnore.filter(
+        (val: string) => action[val] && acc.indexOf(val) === -1 && val,
+      ),
+    );
+  }, []);
 }

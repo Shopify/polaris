@@ -11,8 +11,8 @@ import {EventListener} from '../../components';
 import Focus from './Focus';
 
 export interface Props {
-  trapping?: boolean,
-  children?: React.ReactNode,
+  trapping?: boolean;
+  children?: React.ReactNode;
 }
 
 export default class TrapFocus extends React.PureComponent<Props, never> {
