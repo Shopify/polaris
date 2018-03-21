@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {buttonsFrom, ButtonGroup, Stack} from '../../../';
-import {ComplexAction} from '../../../../types';
+import {ComplexAction, DisableableAction} from '../../../../types';
 import * as styles from './Footer.scss';
 
 export interface Props {
-  /** Primary action */
-  primaryAction?: ComplexAction,
-  /** ollection of secondary actions */
-  secondaryActions?: ComplexAction[],
+  /** Primary action (EASDK accepts disableable action) */
+  primaryAction?: DisableableAction | ComplexAction,
+  /** Collection of secondary actions (EASDK accepts disableable action) */
+  secondaryActions?: DisableableAction[] | ComplexAction[],
   /** The content to display inside modal */
   children?: React.ReactNode,
 }

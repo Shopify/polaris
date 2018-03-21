@@ -7,7 +7,6 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {Scrollable, Spinner, Portal} from '../';
-import {DisableableAction} from '../../types';
 import memoizedBind from '../../utilities/memoized-bind';
 import Dialog from './components/Dialog';
 import Header, {CloseButton} from './components/Header';
@@ -19,71 +18,38 @@ const IFRAME_LOADING_HEIGHT = 200;
 
 export type Width = 'large' | 'fullwidth';
 
-export interface ModalProps extends FooterProps {
-  /** The url that will be loaded as the content of the modal */
-  src?: string,
-  /** Modal title, in large type */
-  title?: React.ReactNode,
-  /** The content to display inside modal */
-  children?: React.ReactNode,
-  /** Inner content of the footer */
-  footer?: React.ReactNode,
-  /** Disable animations and open modal instantly */
-  instant?: boolean,
-  /** Automatically adds sections to modal */
-  sectioned?: boolean,
-  /** Increases the modal width */
-  large?: boolean,
-  /** Limits modal height on large sceens with scrolling */
-  limitHeight?: boolean,
-  /** Replaces modal content with a spinner while a background action is being performed */
-  loading?: boolean,
-  /** Callback when iframe has loaded */
-  onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void,
-  /** Callback when the modal is closed */
-  onClose(): void,
-  /** Callback when modal transition animation has ended */
-  onTransitionEnd?(): void,
-}
-
-export interface EASDKProps {
-  /** The URL that will be loaded as the content of the modal */
-  src: string,
-  /** The content for the title of the modal */
-  title?: string,
-  /** Controls the width of the modal (in pixels) */
-  width?: Width,
-  /** Controls the height of the modal (in pixels) */
-  height?: number,
-  /** Primary action for the modal */
-  primaryAction?: DisableableAction,
-  /** Collection of secondary action for the modal */
-  secondaryActions?: DisableableAction[],
-  /** Callback when the modal is closed */
-  onClose(): void,
-}
-
-export interface AlertProps {
-  /** The content to display inside the alert */
-  children?: string,
-  /** The alert title */
-  title?: string,
-  /** For confirming a destructive or dangerous action */
-  destructive?: boolean,
-  /** The content of the confirmation button */
-  confirmContent: string,
-  /** The content of the cancel button */
-  cancelContent?: string,
-  /** Callback when the alert is closed, or when the cancel button is clicked */
-  onClose?(): void,
-  /** Callback when the confirmation button is clicked */
-  onConfirm(): void,
-}
-
-export type Props = {
+export interface Props extends FooterProps {
   /** Whether the modal is open or not */
   open: boolean,
-} & ( ModalProps | AlertProps | EASDKProps);
+  /** The url that will be loaded as the content of the modal */
+  src?: string,
+  /** The content for the title of the modal (String for EASDK) */
+  title?: string | React.ReactNode,
+  /** The content to display inside modal (Non EASDK only) */
+  children?: React.ReactNode,
+  /** Inner content of the footer (Non EASDK only) */
+  footer?: React.ReactNode,
+  /** Disable animations and open modal instantly (Non EASDK only) */
+  instant?: boolean,
+  /** Automatically adds sections to modal (Non EASDK only) */
+  sectioned?: boolean,
+  /** Increases the modal width (Non EASDK only) */
+  large?: boolean,
+  /** Limits modal height on large sceens with scrolling (Non EASDK only) */
+  limitHeight?: boolean,
+  /** Replaces modal content with a spinner while a background action is being performed (Non EASDK only) */
+  loading?: boolean,
+  /** Controls the width of the modal (EASDK only, in pixels) */
+  width?: Width,
+  /** Controls the height of the modal (EASDK only, in pixels) */
+  height?: number,
+  /** Callback when the modal is closed */
+  onClose(): void,
+  /** Callback when iframe has loaded (Non EASDK only) */
+  onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void,
+  /** Callback when modal transition animation has ended (Non EASDK only) */
+  onTransitionEnd?(): void,
+}
 
 export interface State {
   iframeHeight: number,
@@ -146,7 +112,7 @@ export default class Modal extends React.Component<Props, State> {
       footer,
       primaryAction,
       secondaryActions,
-    } = (this.props as Props & ModalProps & FooterProps);
+    } = (this.props);
 
     const {iframeHeight} = this.state;
 
@@ -237,7 +203,7 @@ export default class Modal extends React.Component<Props, State> {
 
   @autobind
   private handleEntered() {
-    const {onTransitionEnd} = this.props as ModalProps;
+    const {onTransitionEnd} = this.props;
     if (onTransitionEnd) {
       onTransitionEnd();
     }
@@ -261,7 +227,7 @@ export default class Modal extends React.Component<Props, State> {
       iframeHeight: iframe.contentWindow.document.body.scrollHeight,
     });
 
-    const {onIFrameLoad} = this.props as ModalProps;
+    const {onIFrameLoad} = this.props;
 
     if (onIFrameLoad != null) {
       onIFrameLoad(evt);
@@ -270,35 +236,25 @@ export default class Modal extends React.Component<Props, State> {
 
   private handleEASDKMessaging() {
     const {easdk} = this.context;
-    const {open, children} = this.props;
+    const {open} = this.props;
     if (easdk == null) { return; }
 
     if (open) {
-      if (typeof children === 'string') {
-        handleWarning('alert', this.props);
-        easdk.Modal.alert(this.props);
-      } else {
-        handleWarning('easdk', this.props);
-        easdk.Modal.open(this.props);
-      }
+      handleWarning('easdk', this.props);
+      easdk.Modal.open(this.props);
     } else {
       easdk.Modal.close();
     }
   }
 }
 
-export type Warn = 'alert' | 'easdk' | 'modal';
+export type Warn = 'easdk' | 'modal';
 
-function handleWarning(type: Warn, props: AlertProps | EASDKProps | ModalProps) {
+function handleWarning(type: Warn, props: Props) {
   const reqProps = {
     modal: {
       open: 'open',
       onClose: 'onClose',
-    },
-    alert: {
-      open: 'open',
-      confirmContent: 'confirmContent',
-      onConfirm: 'onConfirm',
     },
     easdk: {
       open: 'open',
