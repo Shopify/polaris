@@ -6,9 +6,9 @@ import emptySearch from './illustrations/empty-search.svg';
 import styles from './EmptySearchResult.scss';
 
 export interface Props {
-  title: string,
-  description?: string,
-  withIllustration?: boolean,
+  title: string;
+  description?: string;
+  withIllustration?: boolean;
 }
 
 class EmptySearchResult extends React.PureComponent<Props, never> {

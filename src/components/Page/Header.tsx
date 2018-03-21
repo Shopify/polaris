@@ -17,18 +17,18 @@ import * as styles from './Page.scss';
 export type SecondaryAction = IconableAction & DisableableAction;
 
 export interface ActionGroup {
-  title: string,
-  icon?: IconableAction['icon'],
-  actions: ItemProps[],
-  details?: React.ReactNode,
-  onActionAnyItem?: ItemProps['onAction'],
+  title: string;
+  icon?: IconableAction['icon'];
+  actions: ItemProps[];
+  details?: React.ReactNode;
+  onActionAnyItem?: ItemProps['onAction'];
 }
 
 export interface Props extends HeaderProps {}
 
 export interface State {
-  openActionGroup?: string,
-  rollupOpen: boolean,
+  openActionGroup?: string;
+  rollupOpen: boolean;
 }
 
 export default class Header extends React.PureComponent<Props, State> {
@@ -54,28 +54,25 @@ export default class Header extends React.PureComponent<Props, State> {
       separator && styles['Header-hasSeparator'],
       breadcrumbs && breadcrumbs.length && styles['Header-hasBreadcrumbs'],
       this.hasRollup && styles['Header-hasRollup'],
-      secondaryActions && secondaryActions.length && styles['Header-hasSecondaryActions'],
+      secondaryActions &&
+        secondaryActions.length &&
+        styles['Header-hasSecondaryActions'],
     );
 
-    const breadcrumbMarkup = breadcrumbs.length > 0
-      ? <Breadcrumbs breadcrumbs={breadcrumbs} />
-      : null;
+    const breadcrumbMarkup =
+      breadcrumbs.length > 0 ? <Breadcrumbs breadcrumbs={breadcrumbs} /> : null;
 
-    const primaryActionMarkup = primaryAction
-      ? (
-        <div className={styles.PrimaryAction}>
-          {buttonsFrom(primaryAction, {primary: true})}
-        </div>
-      )
-      : null;
+    const primaryActionMarkup = primaryAction ? (
+      <div className={styles.PrimaryAction}>
+        {buttonsFrom(primaryAction, {primary: true})}
+      </div>
+    ) : null;
 
-    const paginationMarkup = pagination
-      ? (
-        <div className={styles.Pagination}>
-          <Pagination {...pagination} plain />
-        </div>
-      )
-      : null;
+    const paginationMarkup = pagination ? (
+      <div className={styles.Pagination}>
+        <Pagination {...pagination} plain />
+      </div>
+    ) : null;
 
     const nonPrimaryActionsMarkup = this.renderSecondaryActions();
 
@@ -86,41 +83,40 @@ export default class Header extends React.PureComponent<Props, State> {
       </div>
     );
 
-    const navigationMarkup = breadcrumbMarkup || paginationMarkup
-      ? (
+    const navigationMarkup =
+      breadcrumbMarkup || paginationMarkup ? (
         <div className={styles.Navigation}>
           {breadcrumbMarkup}
           {paginationMarkup}
         </div>
-      )
-      : null;
+      ) : null;
 
     const titleMarkup = (
       <div className={styles.Title}>
-        <DisplayText size="large" element="h1">{title}</DisplayText>
+        <DisplayText size="large" element="h1">
+          {title}
+        </DisplayText>
       </div>
     );
 
-    return primaryActionMarkup
-      ? (
-        <div className={className}>
-          {navigationMarkup}
-          <div className={styles.MainContent}>
-            <div className={styles.TitleAndActions}>
-              {titleMarkup}
-              {actionsMarkup}
-            </div>
-            {primaryActionMarkup}
+    return primaryActionMarkup ? (
+      <div className={className}>
+        {navigationMarkup}
+        <div className={styles.MainContent}>
+          <div className={styles.TitleAndActions}>
+            {titleMarkup}
+            {actionsMarkup}
           </div>
+          {primaryActionMarkup}
         </div>
-      )
-      : (
-        <div className={className}>
-          {navigationMarkup}
-          {titleMarkup}
-          {actionsMarkup}
-        </div>
-      );
+      </div>
+    ) : (
+      <div className={className}>
+        {navigationMarkup}
+        {titleMarkup}
+        {actionsMarkup}
+      </div>
+    );
   }
 
   private get hasRollup() {
@@ -136,74 +132,78 @@ export default class Header extends React.PureComponent<Props, State> {
       return null;
     }
 
-    const secondaryActionMarkup = secondaryActions.length > 0
-      ? secondaryActionsFrom(secondaryActions)
-      : null;
+    const secondaryActionMarkup =
+      secondaryActions.length > 0
+        ? secondaryActionsFrom(secondaryActions)
+        : null;
 
-    const actionGroupsMarkup = actionGroups.length > 0
-      ? (
-        actionGroups.map(({title, icon, actions, details}) => {
+    const actionGroupsMarkup =
+      actionGroups.length > 0
+        ? actionGroups.map(({title, icon, actions, details}) => {
+            const detailsClassName = classNames(
+              styles.Details,
+              actions &&
+                Array.isArray(actions) &&
+                actions.length > 0 &&
+                styles.withActions,
+            );
 
-          const detailsClassName = classNames(
-            styles.Details,
-            actions && Array.isArray(actions) && actions.length > 0 && styles.withActions,
-          );
+            const detailsMarkup = details ? (
+              <div className={detailsClassName}>{details}</div>
+            ) : null;
 
-          const detailsMarkup = details
-            ? <div className={detailsClassName}>{details}</div>
-            : null;
+            return (
+              <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
+                <Popover
+                  key={title}
+                  active={title === openActionGroup}
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onClose={this.handleActionGroupClose.bind(this, title)}
+                  activator={
+                    <Action
+                      disclosure
+                      icon={icon}
+                      // eslint-disable-next-line react/jsx-no-bind
+                      onAction={this.handleActionGroupOpen.bind(this, title)}
+                    >
+                      {title}
+                    </Action>
+                  }
+                >
+                  <ActionList
+                    items={actions}
+                    // eslint-disable-next-line react/jsx-no-bind
+                    onActionAnyItem={this.handleActionGroupClose.bind(
+                      this,
+                      title,
+                    )}
+                  />
+                  {detailsMarkup}
+                </Popover>
+              </div>
+            );
+          })
+        : null;
 
-          return (
-            <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
-              <Popover
-                key={title}
-                active={title === openActionGroup}
-                onClose={this.handleActionGroupClose.bind(this, title)}
-                activator={
-                  <Action
-                    disclosure
-                    icon={icon}
-                    onAction={this.handleActionGroupOpen.bind(this, title)}
-                  >
-                    {title}
-                  </Action>
-                }
-              >
-                <ActionList
-                  items={actions}
-                  onActionAnyItem={this.handleActionGroupClose.bind(this, title)}
-                />
-                {detailsMarkup}
-              </Popover>
-            </div>
-          );
-        })
-      )
-      : null;
-
-    const rollupMarkup = this.hasRollup
-      ? (
-        <div className={styles.Rollup}>
-          <Popover
-            active={rollupOpen}
-            onClose={this.handleRollupToggle}
-            activator={
-              <Button
-                disclosure
-                onClick={this.handleRollupToggle}
-              >
-                Actions
-              </Button>
-            }
-          >
-            <ActionList
-              items={secondaryActions}
-              sections={actionGroups.map(convertActionGroupToActionListSection)}
-              onActionAnyItem={this.handleRollupToggle}
-            />
-          </Popover>
-        </div>
-      ) : null;
+    const rollupMarkup = this.hasRollup ? (
+      <div className={styles.Rollup}>
+        <Popover
+          active={rollupOpen}
+          onClose={this.handleRollupToggle}
+          activator={
+            <Button disclosure onClick={this.handleRollupToggle}>
+              Actions
+            </Button>
+          }
+        >
+          <ActionList
+            items={secondaryActions}
+            sections={actionGroups.map(convertActionGroupToActionListSection)}
+            onActionAnyItem={this.handleRollupToggle}
+          />
+        </Popover>
+      </div>
+    ) : null;
 
     return (
       <div className={styles.SecondaryActions}>
@@ -222,11 +222,10 @@ export default class Header extends React.PureComponent<Props, State> {
   }
 
   private handleActionGroupClose(group: string) {
-    this.setState(({openActionGroup}) => (
-      openActionGroup === group
-        ? {openActionGroup: undefined}
-        : {}
-    ));
+    this.setState(
+      ({openActionGroup}) =>
+        openActionGroup === group ? {openActionGroup: undefined} : {},
+    );
   }
 
   private handleActionGroupOpen(group: string) {
@@ -238,8 +237,12 @@ function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
   return {title, items: actions};
 }
 
-function secondaryActionsFrom(actions: SecondaryAction[]): ReadonlyArray<JSX.Element> {
+function secondaryActionsFrom(
+  actions: SecondaryAction[],
+): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
-    <Action {...action} key={`Action-${content || index}`}>{content}</Action>
+    <Action {...action} key={`Action-${content || index}`}>
+      {content}
+    </Action>
   ));
 }

@@ -17,12 +17,15 @@ const METADATA = {
 export default class App extends React.Component<Props, never> {
   static childContextTypes = {easdk: PropTypes.instanceOf(EASDK)};
 
-  private easdk = new EASDK({
-    apiKey: this.props.apiKey,
-    shopOrigin: this.props.shopOrigin,
-    forceRedirect: this.props.forceRedirect,
-    debug: this.props.debug,
-  }, METADATA);
+  private easdk = new EASDK(
+    {
+      apiKey: this.props.apiKey,
+      shopOrigin: this.props.shopOrigin,
+      forceRedirect: this.props.forceRedirect,
+      debug: this.props.debug,
+    },
+    METADATA,
+  );
 
   getChildContext() {
     return {easdk: this.easdk};

@@ -9,15 +9,15 @@ import * as styles from './SkeletonPage.scss';
 
 export interface Props {
   /** Page title, in large type */
-  title?: string,
+  title?: string;
   /** Remove the normal max-width on the page */
-  fullWidth?: boolean,
+  fullWidth?: boolean;
   /** Number of secondary page-level actions to display */
-  secondaryActions?: number,
+  secondaryActions?: number;
   /** Shows a skeleton over the breadcrumb */
-  breadcrumbs?: boolean,
+  breadcrumbs?: boolean;
   /** The child elements to render in the skeleton page. */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default class SkeletonPage extends React.PureComponent<Props, never> {
@@ -32,10 +32,7 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
       breadcrumbs,
     } = this.props;
 
-    const className = classNames(
-      styles.Page,
-      fullWidth && styles.fullWidth,
-    );
+    const className = classNames(styles.Page, fullWidth && styles.fullWidth);
 
     const headerClassName = classNames(
       styles.Header,
@@ -43,33 +40,26 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
       breadcrumbs && styles['Header-hasBreadcrumbs'],
     );
 
-    const titleMarkup = title !== null
-      ? renderTitle(title)
-      : null;
+    const titleMarkup = title !== null ? renderTitle(title) : null;
 
     const secondaryActionsMarkup = secondaryActions
       ? renderSecondaryActions(secondaryActions)
       : null;
 
-    const breadcrumbMarkup = breadcrumbs
-      ? renderSecondaryActions(1)
-      : null;
+    const breadcrumbMarkup = breadcrumbs ? renderSecondaryActions(1) : null;
 
-
-    const headerMarkup = !this.context.easdk
-      ? <div className={headerClassName}>
-          {breadcrumbMarkup}
-          {titleMarkup}
-          {secondaryActionsMarkup}
-        </div>
-      : null;
+    const headerMarkup = !this.context.easdk ? (
+      <div className={headerClassName}>
+        {breadcrumbMarkup}
+        {titleMarkup}
+        {secondaryActionsMarkup}
+      </div>
+    ) : null;
 
     return (
       <div className={className} role="status" aria-label="Page loading">
         {headerMarkup}
-        <div className={styles.Content}>
-          {children}
-        </div>
+        <div className={styles.Content}>{children}</div>
       </div>
     );
   }
@@ -79,14 +69,23 @@ function renderSecondaryActions(actionCount: number) {
   const actions = [];
   for (let i = 0; i < actionCount; i++) {
     const width = Math.round(Math.random() * 40 + 60);
-    actions.push(<div className={styles.Action} style={{width}} key={i}><SkeletonBodyText lines={1} /></div>);
+    actions.push(
+      <div className={styles.Action} style={{width}} key={i}>
+        <SkeletonBodyText lines={1} />
+      </div>,
+    );
   }
   return <div className={styles.Actions}>{actions}</div>;
 }
 
 function renderTitle(title: string) {
-  const titleContent = title === ''
-    ? <SkeletonDisplayText size="large" />
-    : <DisplayText size="large" element="h1">{title}</DisplayText>;
+  const titleContent =
+    title === '' ? (
+      <SkeletonDisplayText size="large" />
+    ) : (
+      <DisplayText size="large" element="h1">
+        {title}
+      </DisplayText>
+    );
   return <div className={styles.Title}>{titleContent}</div>;
 }

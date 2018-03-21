@@ -7,9 +7,7 @@ import {DisplayText, TextStyle} from '../../';
 
 describe('<EmptySearchResult />', () => {
   it("displays the title with style 'Display Small'", () => {
-    const wrapper = mount(
-      <EmptySearchResult title="Foo" />,
-    );
+    const wrapper = mount(<EmptySearchResult title="Foo" />);
     const displaySmalls = wrapper.findWhere(
       (wrap) => wrap.is(DisplayText) && wrap.prop('size') === 'small',
     );
@@ -18,9 +16,7 @@ describe('<EmptySearchResult />', () => {
   });
 
   it("displays the description with style 'Body Subdued'", () => {
-    const wrapper = mount(
-      <EmptySearchResult title="Foo" description="Bar" />,
-    );
+    const wrapper = mount(<EmptySearchResult title="Foo" description="Bar" />);
     const subdued = wrapper.findWhere(
       (wrap) => wrap.is(TextStyle) && wrap.prop('variation') === 'subdued',
     );
@@ -29,9 +25,7 @@ describe('<EmptySearchResult />', () => {
   });
 
   it('does not display an image when `withIllustration` is false', () => {
-    const wrapper = mount(
-      <EmptySearchResult title="Foo" />,
-    );
+    const wrapper = mount(<EmptySearchResult title="Foo" />);
     const images = wrapper.find('img');
     expect(images).toHaveLength(0);
   });

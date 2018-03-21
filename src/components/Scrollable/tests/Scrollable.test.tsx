@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import {mount} from 'enzyme';
 import Scrollable from '../Scrollable';
 
 describe('<Scrollable />', () => {

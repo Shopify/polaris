@@ -4,19 +4,19 @@ import EventListener from '../EventListener';
 import * as styles from './ColorPicker.scss';
 
 export interface Position {
-  x: number,
-  y: number,
+  x: number;
+  y: number;
 }
 
 export interface State {
-  dragging: boolean,
+  dragging: boolean;
 }
 
 export interface Props {
-  draggerX?: number,
-  draggerY?: number,
-  onChange(position: Position): void,
-  onDraggerHeight?(height: number): void,
+  draggerX?: number;
+  draggerY?: number;
+  onChange(position: Position): void;
+  onDraggerHeight?(height: number): void;
 }
 
 export default class Slidable extends React.PureComponent<Props, State> {
@@ -29,10 +29,14 @@ export default class Slidable extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     const {onDraggerHeight} = this.props;
-    if (onDraggerHeight == null) { return; }
+    if (onDraggerHeight == null) {
+      return;
+    }
 
     const {draggerNode} = this;
-    if (draggerNode == null) { return; }
+    if (draggerNode == null) {
+      return;
+    }
 
     onDraggerHeight(draggerNode.clientWidth);
 
@@ -51,52 +55,27 @@ export default class Slidable extends React.PureComponent<Props, State> {
       transform: `translate3d(${draggerX}px, ${draggerY}px, 0)`,
     };
 
-    const moveListener = dragging
-      ? (
-        <EventListener
-          event="mousemove"
-          handler={this.handleMove}
-        />
-      )
-      : null;
+    const moveListener = dragging ? (
+      <EventListener event="mousemove" handler={this.handleMove} />
+    ) : null;
 
-    const touchMoveListener = dragging
-      ? (
-        <EventListener
-          event="touchmove"
-          handler={this.handleMove}
-        />
-      )
-      : null;
+    const touchMoveListener = dragging ? (
+      <EventListener event="touchmove" handler={this.handleMove} />
+    ) : null;
 
-    const endDragListener = dragging
-      ? (
-        <EventListener
-          event="mouseup"
-          handler={this.handleDragEnd}
-        />
-      )
-      : null;
+    const endDragListener = dragging ? (
+      <EventListener event="mouseup" handler={this.handleDragEnd} />
+    ) : null;
 
-    const touchEndListener = dragging
-      ? (
-        <EventListener
-          event="touchend"
-          handler={this.handleDragEnd}
-        />
-      )
-      : null;
+    const touchEndListener = dragging ? (
+      <EventListener event="touchend" handler={this.handleDragEnd} />
+    ) : null;
 
-    const touchCancelListener = dragging
-      ? (
-        <EventListener
-          event="touchcancel"
-          handler={this.handleDragEnd}
-        />
-      )
-      : null;
+    const touchCancelListener = dragging ? (
+      <EventListener event="touchcancel" handler={this.handleDragEnd} />
+    ) : null;
 
-    return(
+    return (
       <div
         ref={this.setNode}
         className={styles.Slidable}
@@ -128,7 +107,9 @@ export default class Slidable extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private startDrag(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) {
+  private startDrag(
+    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+  ) {
     if (event.type === 'mousedown') {
       const mouseEvent = event as React.MouseEvent<HTMLDivElement>;
       this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
@@ -155,18 +136,23 @@ export default class Slidable extends React.PureComponent<Props, State> {
     }
 
     const touchEvent = event as TouchEvent;
-    this.handleDraggerMove(touchEvent.touches[0].clientX, touchEvent.touches[0].clientY);
+    this.handleDraggerMove(
+      touchEvent.touches[0].clientX,
+      touchEvent.touches[0].clientY,
+    );
   }
 
   @autobind
   private handleDraggerMove(x: number, y: number) {
-    if (this.node == null) { return; }
+    if (this.node == null) {
+      return;
+    }
 
     const {onChange} = this.props;
 
     const rect = this.node.getBoundingClientRect();
     const offsetX = x - rect.left;
-    const offsetY  = y - rect.top;
+    const offsetY = y - rect.top;
     onChange({x: offsetX, y: offsetY});
   }
 }

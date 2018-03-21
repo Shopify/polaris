@@ -1,16 +1,20 @@
 import {EASDKTarget, ComplexAction, IconableAction} from '../../types';
 
 export interface EASDKBreadcrumb {
-  label: string,
-  href?: string,
-  target?: EASDKTarget,
-  loading?: boolean,
-  message?(): void,
+  label: string;
+  href?: string;
+  target?: EASDKTarget;
+  loading?: boolean;
+  message?(): void;
 }
 
-export function transformBreadcrumb(breadcrumb: ComplexAction): EASDKBreadcrumb {
+export function transformBreadcrumb(
+  breadcrumb: ComplexAction,
+): EASDKBreadcrumb {
   if (breadcrumb.content == null) {
-    throw new Error(`No content provided for breadcrumb (${JSON.stringify(breadcrumb)})`);
+    throw new Error(
+      `No content provided for breadcrumb (${JSON.stringify(breadcrumb)})`,
+    );
   }
 
   let target: EASDKBreadcrumb['target'];
@@ -26,28 +30,29 @@ export function transformBreadcrumb(breadcrumb: ComplexAction): EASDKBreadcrumb 
     label: breadcrumb.content,
     href: breadcrumb.url,
     target,
-    message: target === 'app' ? generateCallback(breadcrumb.url) : breadcrumb.onAction,
+    message:
+      target === 'app' ? generateCallback(breadcrumb.url) : breadcrumb.onAction,
   };
 }
 
 export interface ActionGroup {
-  title: string,
-  icon?: IconableAction['icon'],
-  actions: IconableAction[],
+  title: string;
+  icon?: IconableAction['icon'];
+  actions: IconableAction[];
 }
 
 export interface EASDKBaseButton {
-  label?: string,
-  href?: string,
-  style?: 'disabled' | 'danger',
-  target?: EASDKTarget,
-  loading?: boolean,
-  message?(): void,
+  label?: string;
+  href?: string;
+  style?: 'disabled' | 'danger';
+  target?: EASDKTarget;
+  loading?: boolean;
+  message?(): void;
 }
 
 export interface EASDKLinkButton extends EASDKBaseButton {
-  type: 'dropdown',
-  links: EASDKButton[],
+  type: 'dropdown';
+  links: EASDKButton[];
 }
 
 export type EASDKButton = EASDKBaseButton | EASDKLinkButton;
@@ -78,7 +83,9 @@ export function transformAction(action: ComplexAction): EASDKButton {
   };
 }
 
-export function transformActionGroup(actionGroup: ActionGroup): EASDKLinkButton {
+export function transformActionGroup(
+  actionGroup: ActionGroup,
+): EASDKLinkButton {
   return {
     type: 'dropdown',
     label: actionGroup.title,
@@ -91,7 +98,7 @@ function getTargetFromURL(url: string): EASDKTarget {
     return 'shopify';
   } else if (
     url.indexOf(window.location.hostname) >= 0 ||
-    (url[0] !== '/' &&  url.indexOf('http') !== 0)
+    (url[0] !== '/' && url.indexOf('http') !== 0)
   ) {
     return 'app';
   } else {
@@ -100,30 +107,43 @@ function getTargetFromURL(url: string): EASDKTarget {
 }
 
 function generateCallback(url: string | undefined) {
-  if (url == null) { return; }
-  return () => { window.location.assign(url); };
+  if (url == null) {
+    return;
+  }
+  return () => {
+    window.location.assign(url);
+  };
 }
 
 export interface Pagination {
-  hasNext?: boolean,
-  hasPrevious?: boolean,
-  nextURL?: string,
-  previousURL?: string,
-  onNext?(): void,
-  onPrevious?(): void,
+  hasNext?: boolean;
+  hasPrevious?: boolean;
+  nextURL?: string;
+  previousURL?: string;
+  onNext?(): void;
+  onPrevious?(): void;
 }
 
 export type PaginationDirection = {message(): void} | {href: string};
 
 export interface EASDKPagination {
-  next?: PaginationDirection,
-  previous?: PaginationDirection,
+  next?: PaginationDirection;
+  previous?: PaginationDirection;
 }
 
 export function transformPagination(pagination?: Pagination) {
-  if (pagination == null) { return undefined; }
+  if (pagination == null) {
+    return undefined;
+  }
 
-  const {hasNext, hasPrevious, nextURL, previousURL, onNext, onPrevious} = pagination;
+  const {
+    hasNext,
+    hasPrevious,
+    nextURL,
+    previousURL,
+    onNext,
+    onPrevious,
+  } = pagination;
   const finalPagination: EASDKPagination = {};
 
   if (hasNext) {

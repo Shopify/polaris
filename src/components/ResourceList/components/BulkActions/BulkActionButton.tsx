@@ -11,11 +11,14 @@ import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import * as styles from './BulkActions.scss';
 
 export type Props = {
-  disclosure?: boolean,
-  handleMeasurement?(width: number): void,
+  disclosure?: boolean;
+  handleMeasurement?(width: number): void;
 } & DisableableAction;
 
-export default class BulkActionButton extends React.PureComponent<Props, never> {
+export default class BulkActionButton extends React.PureComponent<
+  Props,
+  never
+> {
   componentDidMount() {
     const {handleMeasurement} = this.props;
     if (handleMeasurement) {
@@ -35,22 +38,20 @@ export default class BulkActionButton extends React.PureComponent<Props, never> 
       disabled,
     } = this.props;
 
-    const disclosureIconMarkup = disclosure
-      ? (
-        <span className={styles.ActionIcon}>
-          <Icon source="caretDown" />
-        </span>
-      )
-      : null;
+    const disclosureIconMarkup = disclosure ? (
+      <span className={styles.ActionIcon}>
+        <Icon source="caretDown" />
+      </span>
+    ) : null;
 
-    const contentMarkup = disclosureIconMarkup
-      ? (
-        <span className={styles.ActionContent}>
-          <span>{content}</span>
-          {disclosureIconMarkup}
-        </span>
-      )
-      : content;
+    const contentMarkup = disclosureIconMarkup ? (
+      <span className={styles.ActionContent}>
+        <span>{content}</span>
+        {disclosureIconMarkup}
+      </span>
+    ) : (
+      content
+    );
 
     if (url) {
       return (
@@ -66,10 +67,7 @@ export default class BulkActionButton extends React.PureComponent<Props, never> 
       );
     }
 
-    const className = classNames(
-      styles.Button,
-      disabled && styles.disabled,
-    );
+    const className = classNames(styles.Button, disabled && styles.disabled);
 
     return (
       <button

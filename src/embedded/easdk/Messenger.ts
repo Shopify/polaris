@@ -1,26 +1,25 @@
-// tslint:disable-next-line no-require-imports no-var-requires
 const CoreWeakMap: typeof WeakMap = require('core-js/library/es6/weak-map');
 
 export interface Message {
-  message: string,
-  data: any,
+  message: string;
+  data: any;
 }
 
 export interface Handler {
-  (data: object): void,
+  (data: object): void;
 }
 
 export interface HandlerMap {
-  [type: string]: Handler,
+  [type: string]: Handler;
 }
 
 type CallbackID = string;
 type Callback = (...args: any[]) => void;
 
 export interface Options {
-  name: string,
-  targetOrigin: string,
-  debug?: boolean,
+  name: string;
+  targetOrigin: string;
+  debug?: boolean;
 }
 
 export default class Messenger {
@@ -32,7 +31,11 @@ export default class Messenger {
   private callbacksToID = new CoreWeakMap<Callback, CallbackID>();
   private callbackIndex = 0;
 
-  constructor(private target: Window | null | undefined, private handlers: HandlerMap, options: Options) {
+  constructor(
+    private target: Window | null | undefined,
+    private handlers: HandlerMap,
+    options: Options,
+  ) {
     if (typeof window === 'undefined') {
       return;
     }
@@ -88,16 +91,20 @@ export default class Messenger {
   }
 
   private log(message: string) {
-    if (!this.debug) { return; }
+    if (!this.debug) {
+      return;
+    }
 
-    // tslint:disable-next-line no-console
+    // eslint-disable-next-line no-console
     console.log(`[${this.name} Messenger]: ${message}`);
   }
 
   private warn(message: string) {
-    if (!this.debug) { return; }
+    if (!this.debug) {
+      return;
+    }
 
-    // tslint:disable-next-line no-console
+    // eslint-disable-next-line no-console
     console.warn(`[${this.name} Messenger]: ${message}`);
   }
 
@@ -138,7 +145,11 @@ export default class Messenger {
 
   private handleMessage(event: MessageEvent) {
     if (!this.isFromTargetOrigin(event)) {
-      this.log(`client received ${event.data} from unknown origin ${event.origin}. Expected ${this.targetOrigin}`);
+      this.log(
+        `client received ${event.data} from unknown origin ${
+          event.origin
+        }. Expected ${this.targetOrigin}`,
+      );
       return;
     }
 
@@ -148,14 +159,17 @@ export default class Messenger {
     try {
       receivedMessage = JSON.parse(event.data) as Message;
     } catch (error) {
-      // tslint:disable-next-line
-      console.error(`Received received invalid JSON and cannot process the message. ${error} : ${event.data} : ${JSON.stringify(event.data)}`);
+      // eslint-disable-next-line no-console
+      console.error(
+        `Received received invalid JSON and cannot process the message. ${error} : ${
+          event.data
+        } : ${JSON.stringify(event.data)}`,
+      );
       return;
     }
 
     this.invokeCallback(receivedMessage);
     this.invokeHandler(receivedMessage);
-
   }
 
   private isFromTargetOrigin({origin}: MessageEvent): boolean {
@@ -165,6 +179,7 @@ export default class Messenger {
   private invokeCallback(receivedMessage: Message) {
     const callback = this.callbacks[receivedMessage.message];
     if (typeof callback === 'function') {
+      // eslint-disable-next-line callback-return
       callback();
     }
   }
@@ -175,6 +190,4 @@ export default class Messenger {
       handler(receivedMessage.data);
     }
   }
-
 }
-

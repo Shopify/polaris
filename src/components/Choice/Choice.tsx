@@ -6,12 +6,12 @@ import * as styles from './Choice.scss';
 export type Error = boolean | string;
 
 export interface Props {
-  id: string,
-  label: React.ReactNode,
-  error?: Error,
-  labelHidden?: boolean,
-  children?: React.ReactNode,
-  helpText?: React.ReactNode,
+  id: string;
+  label: React.ReactNode;
+  error?: Error;
+  labelHidden?: boolean;
+  children?: React.ReactNode;
+  helpText?: React.ReactNode;
 }
 
 export default function Choice({
@@ -22,7 +22,6 @@ export default function Choice({
   labelHidden,
   helpText,
 }: Props) {
-
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
@@ -35,36 +34,38 @@ export default function Choice({
     </label>
   );
 
-  const helpTextMarkup = helpText
-    ? <div className={styles.HelpText} id={helpTextID(id)}>{helpText}</div>
-    : null;
+  const helpTextMarkup = helpText ? (
+    <div className={styles.HelpText} id={helpTextID(id)}>
+      {helpText}
+    </div>
+  ) : null;
 
-  const errorMarkup = typeof error === 'string'
-    ? (
+  const errorMarkup =
+    typeof error === 'string' ? (
       <div className={styles.Error} id={errorID(id)}>
-        <div className={styles.ErrorIcon}><Icon source="alert" /></div>
+        <div className={styles.ErrorIcon}>
+          <Icon source="alert" />
+        </div>
         {error}
       </div>
-    )
-    : null;
+    ) : null;
 
-  const descriptionMarkup = helpTextMarkup || errorMarkup
-    ? (
+  const descriptionMarkup =
+    helpTextMarkup || errorMarkup ? (
       <div className={styles.Descriptions}>
         {errorMarkup}
         {helpTextMarkup}
       </div>
-    )
-    : null;
+    ) : null;
 
-  return descriptionMarkup
-    ? (
-      <div>
-        {labelMarkup}
-        {descriptionMarkup}
-      </div>
-    )
-    : labelMarkup;
+  return descriptionMarkup ? (
+    <div>
+      {labelMarkup}
+      {descriptionMarkup}
+    </div>
+  ) : (
+    labelMarkup
+  );
 }
 
 export function helpTextID(id: string) {

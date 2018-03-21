@@ -6,14 +6,18 @@ import * as styles from './ActionList.scss';
 
 export interface Props {
   /** Collection of actions for list */
-  items?: ItemProps[],
+  items?: ItemProps[];
   /** Collection of sectioned action items */
-  sections?: ActionListSection[],
+  sections?: ActionListSection[];
   /** Callback when any item is clicked or keypressed */
-  onActionAnyItem?: ItemProps['onAction'],
+  onActionAnyItem?: ItemProps['onAction'];
 }
 
-export default function ActionList({items, sections = [], onActionAnyItem}: Props) {
+export default function ActionList({
+  items,
+  sections = [],
+  onActionAnyItem,
+}: Props) {
   let finalSections: ActionListSection[] = [];
 
   if (items) {

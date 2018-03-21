@@ -6,11 +6,11 @@ import {ReactComponent} from '@shopify/react-utilities/types';
 import EASDK from './EASDK';
 
 interface Context {
-  easdk: EASDK,
+  easdk: EASDK;
 }
 
 export interface WithEASDKProps {
-  easdk: EASDK,
+  easdk: EASDK;
 }
 
 export const contextTypes = {
@@ -18,9 +18,12 @@ export const contextTypes = {
 };
 
 export function withEASDK({displayName}: {displayName?: string} = {}) {
-  return function addEASDK<OwnProps, C>(WrappedComponent: ReactComponent<OwnProps & WithEASDKProps> & C): ReactComponent<OwnProps> & C {
+  return function addEASDK<OwnProps, C>(
+    WrappedComponent: ReactComponent<OwnProps & WithEASDKProps> & C,
+  ): ReactComponent<OwnProps> & C {
     class WithEASDK extends React.Component<OwnProps, never> {
-      static displayName = `withEASDK(${displayName || getDisplayName(WrappedComponent)})`;
+      static displayName = `withEASDK(${displayName ||
+        getDisplayName(WrappedComponent)})`;
       static WrappedComponent = WrappedComponent;
       static contextTypes = contextTypes;
 
@@ -33,7 +36,10 @@ export function withEASDK({displayName}: {displayName?: string} = {}) {
       }
     }
 
-    const FinalComponent = hoistStatics(WithEASDK, WrappedComponent as React.ComponentClass<any>);
+    const FinalComponent = hoistStatics(
+      WithEASDK,
+      WrappedComponent as React.ComponentClass<any>,
+    );
     return FinalComponent as React.ComponentClass<OwnProps> & C;
   };
 }

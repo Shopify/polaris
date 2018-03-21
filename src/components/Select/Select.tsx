@@ -7,48 +7,50 @@ import Icon from '../Icon';
 
 import * as styles from './Select.scss';
 
-export type Option = string | {
-  value: string,
-  label: string,
-  disabled?: boolean,
-};
+export type Option =
+  | string
+  | {
+      value: string;
+      label: string;
+      disabled?: boolean;
+    };
 
 export interface Group {
-  title: string,
-  options: Option[],
+  title: string;
+  options: Option[];
 }
 
 export interface BaseProps {
   /** List of options to choose from */
-  options?: Option[],
+  options?: Option[];
   /** List of option groups to choose from */
-  groups?: (Group | Option)[],
+  groups?: (Group | Option)[];
   /** Label for the select */
-  label: string,
+  label: string;
   /** Adds an action to the label */
-  labelAction?: Action,
+  labelAction?: Action;
   /** Visually hide the label */
-  labelHidden?: boolean,
+  labelHidden?: boolean;
   /** Disable input */
-  disabled?: boolean,
+  disabled?: boolean;
   /** Additional text to aide in use */
-  helpText?: React.ReactNode,
+  helpText?: React.ReactNode;
   /** Example text to display as placeholder */
-  placeholder?: string,
+  placeholder?: string;
   /** ID for form input */
-  id?: string,
+  id?: string;
   /** Name for form input */
-  name?: string,
+  name?: string;
   /** Value for form input */
-  value?: string,
+  value?: string;
   /** Display an error state */
-  error?: Error,
+  error?: Error;
   /** Callback when selection is changed */
-  onChange?(selected: string, id: string): void,
+  onChange?(selected: string, id: string): void;
   /** Callback when select is focussed */
-  onFocus?(): void,
+  onFocus?(): void;
   /** Callback when focus is removed */
-  onBlur?(): void,
+  onBlur?(): void;
 }
 
 export interface Props extends BaseProps {}
@@ -90,21 +92,26 @@ export default function Select({
   );
 
   const handleChange = onChange
-    ? ((event: React.ChangeEvent<HTMLSelectElement>) => onChange(event.currentTarget.value, id))
+    ? (event: React.ChangeEvent<HTMLSelectElement>) =>
+        onChange(event.currentTarget.value, id)
     : undefined;
 
   const describedBy: string[] = [];
-  if (helpText) { describedBy.push(helpTextID(id)); }
-  if (error && typeof error === 'string') { describedBy.push(errorID(id)); }
+  if (helpText) {
+    describedBy.push(helpTextID(id));
+  }
+  if (error && typeof error === 'string') {
+    describedBy.push(errorID(id));
+  }
 
-  const placeholderOption = isPlaceholder
-    ? <option label={placeholder} value={PLACEHOLDER_VALUE} disabled hidden />
-    : null;
+  const placeholderOption = isPlaceholder ? (
+    <option label={placeholder} value={PLACEHOLDER_VALUE} disabled hidden />
+  ) : null;
 
   // When we have no onChange, React will complain about providing a `value`
   // (and vice versa for `defaultValue`)
-  const defaultValue = onChange ? undefined : (value || PLACEHOLDER_VALUE);
-  const finalValue = onChange ? (value || PLACEHOLDER_VALUE) : undefined;
+  const defaultValue = onChange ? undefined : value || PLACEHOLDER_VALUE;
+  const finalValue = onChange ? value || PLACEHOLDER_VALUE : undefined;
 
   return (
     <Labelled
@@ -127,7 +134,9 @@ export default function Select({
           onBlur={onBlur}
           onChange={handleChange}
           aria-invalid={Boolean(error)}
-          aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
+          aria-describedby={
+            describedBy.length ? describedBy.join(' ') : undefined
+          }
         >
           {placeholderOption}
           {optionsMarkup}
@@ -144,9 +153,21 @@ export default function Select({
 
 function renderOption(option: Option) {
   if (typeof option === 'string') {
-    return <option key={option} value={option}>{option}</option>;
+    return (
+      <option key={option} value={option}>
+        {option}
+      </option>
+    );
   } else {
-    return <option key={option.value} value={option.value} disabled={option.disabled}>{option.label}</option>;
+    return (
+      <option
+        key={option.value}
+        value={option.value}
+        disabled={option.disabled}
+      >
+        {option.label}
+      </option>
+    );
   }
 }
 

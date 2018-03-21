@@ -2,24 +2,39 @@ import * as React from 'react';
 import {mountWithProvider as mount} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
-import DataTable, {CombinedProps as Props, ColumnContentType} from '../DataTable';
+import DataTable, {
+  CombinedProps as Props,
+  ColumnContentType,
+} from '../DataTable';
 import Cell from '../Cell';
 
 interface DataTableTestProps {
-  sortable?: Props['sortable'],
-  defaultSortDirection?: Props['defaultSortDirection'],
-  initialSortColumnIndex?: Props['initialSortColumnIndex'],
-  onSort?: Props['onSort'],
+  sortable?: Props['sortable'];
+  defaultSortDirection?: Props['defaultSortDirection'];
+  initialSortColumnIndex?: Props['initialSortColumnIndex'];
+  onSort?: Props['onSort'];
 }
 
 const sortable = [false, true, false, false, true, false];
-const columnContentTypes: ColumnContentType[] = ['text', 'numeric', 'numeric', 'numeric', 'numeric'];
+const columnContentTypes: ColumnContentType[] = [
+  'text',
+  'numeric',
+  'numeric',
+  'numeric',
+  'numeric',
+];
 const spyOnSort = jest.fn();
 
 function setup(propOverrides?: DataTableTestProps) {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];
   const rows = [
-    ['Navy Merino Wool Blazer with khaki chinos and yellow belt', '$875.00', 124518, 83, '$122,500.00'],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      '$875.00',
+      124518,
+      83,
+      '$122,500.00',
+    ],
     ['Emerald Silk Gown', '$230.00', 124689, 32, '$19,090.00'],
     ['Mauve Cashmere Scarf', '$445.00', 124533, 140, '$14,240.00'],
   ];
@@ -42,7 +57,6 @@ function setup(propOverrides?: DataTableTestProps) {
 }
 
 describe('<DataTable />', () => {
-
   it('renders all table body rows', () => {
     const {dataTable} = setup();
 
@@ -58,7 +72,10 @@ describe('<DataTable />', () => {
 
   it('initial sort column defaults to first column if not specified', () => {
     const firstColumnSortable = [true, true, false, false, true, false];
-    const {dataTable} = setup({sortable: firstColumnSortable, onSort: spyOnSort});
+    const {dataTable} = setup({
+      sortable: firstColumnSortable,
+      onSort: spyOnSort,
+    });
     const firstHeadingCell = findByTestID(dataTable, `heading-cell-${0}`);
 
     expect(firstHeadingCell.props().sorted).toBe(true);
@@ -74,5 +91,4 @@ describe('<DataTable />', () => {
 
     expect(fifthHeadingCell.props().sorted).toBe(true);
   });
-
 });

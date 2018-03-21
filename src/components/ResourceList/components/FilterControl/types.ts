@@ -1,9 +1,9 @@
 import {Option} from '../../../Select';
 
 export interface AppliedFilter {
-  key: string,
-  value: string,
-  label?: string,
+  key: string;
+  value: string;
+  label?: string;
 }
 
 export enum FilterType {
@@ -12,21 +12,20 @@ export enum FilterType {
 }
 
 export interface FilterBase<FilterKeys = {}> {
-  label: string,
-  key: keyof FilterKeys | string,
-  operatorText?: string,
-  type: FilterType,
+  label: string;
+  key: keyof FilterKeys | string;
+  operatorText?: string;
+  type: FilterType;
 }
 
-export interface FilterSelect<FilterKeys = {}>
-  extends FilterBase<FilterKeys> {
-  type: FilterType.Select,
-  options: Option[],
+export interface FilterSelect<FilterKeys = {}> extends FilterBase<FilterKeys> {
+  type: FilterType.Select;
+  options: Option[];
 }
 
 export interface FilterTextField<FilterKeys = {}>
   extends FilterBase<FilterKeys> {
-  type: FilterType.TextField,
+  type: FilterType.TextField;
 }
 
 export type Filter<FilterKeys = {}> =

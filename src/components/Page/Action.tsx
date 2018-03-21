@@ -9,14 +9,14 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Page.scss';
 
 export interface Props {
-  children?: string,
-  disclosure?: boolean,
-  url?: IconableAction['url'],
-  external?: IconableAction['external'],
-  icon?: IconableAction['icon'],
-  onAction?: IconableAction['onAction'],
-  accessibilityLabel?: IconableAction['accessibilityLabel'],
-  disabled?: DisableableAction['disabled'],
+  children?: string;
+  disclosure?: boolean;
+  url?: IconableAction['url'];
+  external?: IconableAction['external'];
+  icon?: IconableAction['icon'];
+  onAction?: IconableAction['onAction'];
+  accessibilityLabel?: IconableAction['accessibilityLabel'];
+  disabled?: DisableableAction['disabled'];
 }
 
 export default function Action({
@@ -29,32 +29,28 @@ export default function Action({
   accessibilityLabel,
   disabled,
 }: Props) {
+  const iconMarkup = icon ? (
+    <span className={styles.ActionIcon}>
+      <Icon source={icon} />
+    </span>
+  ) : null;
 
-  const iconMarkup = icon
-    ? (
-      <span className={styles.ActionIcon}>
-        <Icon source={icon} />
-      </span>
-    )
-    : null;
+  const disclosureIconMarkup = disclosure ? (
+    <span className={styles.ActionIcon}>
+      <Icon source="caretDown" />
+    </span>
+  ) : null;
 
-  const disclosureIconMarkup = disclosure
-    ? (
-      <span className={styles.ActionIcon}>
-        <Icon source="caretDown" />
-      </span>
-    )
-    : null;
-
-  const contentMarkup = iconMarkup || disclosureIconMarkup
-    ? (
+  const contentMarkup =
+    iconMarkup || disclosureIconMarkup ? (
       <span className={styles.ActionContent}>
         {iconMarkup}
         <span>{children}</span>
         {disclosureIconMarkup}
       </span>
-    )
-    : children;
+    ) : (
+      children
+    );
 
   if (url) {
     return (

@@ -7,11 +7,11 @@ export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export interface Props {
   /** Name of element to use for text */
-  element?: HeadingTagName,
+  element?: HeadingTagName;
   /** Size of the text */
-  size?: Size,
+  size?: Size;
   /** Content to display */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default function DisplayText({

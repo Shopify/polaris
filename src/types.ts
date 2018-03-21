@@ -4,56 +4,61 @@ export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
 export interface BaseAction {
-  id?: string,
-  content?: string,
-  accessibilityLabel?: string,
-  url?: string,
-  external?: boolean,
-  onAction?(): void,
+  id?: string;
+  content?: string;
+  accessibilityLabel?: string;
+  url?: string;
+  external?: boolean;
+  onAction?(): void;
 }
 
 export interface Action extends BaseAction {}
 
 export interface BaseLinkAction {
-  id?: string,
-  content?: string,
-  accessibilityLabel?: string,
-  url: string,
+  id?: string;
+  content?: string;
+  accessibilityLabel?: string;
+  url: string;
 }
 
 export interface LinkAction extends BaseLinkAction {}
 
 export interface BaseCallbackAction {
-  id?: string,
-  content?: string,
-  accessibilityLabel?: string,
-  onAction(): void,
+  id?: string;
+  content?: string;
+  accessibilityLabel?: string;
+  onAction(): void;
 }
 
 export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
-  disabled?: boolean,
+  disabled?: boolean;
 }
 
 export interface DestructableAction extends Action {
-  destructive?: boolean,
+  destructive?: boolean;
 }
 
 export interface EASDKAction extends Action {
-  target?: EASDKTarget,
+  target?: EASDKTarget;
 }
 
 export interface IconableAction extends Action {
-  icon?: IconProps['source'],
+  icon?: IconProps['source'];
 }
 
 export interface LoadableAction extends Action {
-  loading?: boolean,
+  loading?: boolean;
 }
 
-export interface ComplexAction extends Action, DisableableAction, DestructableAction, EASDKAction, IconableAction, LoadableAction {
-}
+export interface ComplexAction
+  extends Action,
+    DisableableAction,
+    DestructableAction,
+    EASDKAction,
+    IconableAction,
+    LoadableAction {}
 
 export enum Keys {
   BACKSPACE = 8,

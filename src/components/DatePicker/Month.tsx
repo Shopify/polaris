@@ -20,35 +20,43 @@ import Day from './Day';
 import Weekday from './Weekday';
 
 export interface Props {
-  focusedDate?: Date,
-  selected?: Range,
-  hoverDate?: Date,
-  month: Months,
-  year: Year,
-  disableDatesBefore?: Date,
-  disableDatesAfter?: Date,
-  allowRange?: Boolean,
-  onChange?(date: Range): void,
-  onHover?(hoverEnd: Date): void,
-  onFocus?(date: Date): void,
-  monthName?(month: Months): string,
-  weekdayName?(weekday: Weekdays): string,
+  focusedDate?: Date;
+  selected?: Range;
+  hoverDate?: Date;
+  month: Months;
+  year: Year;
+  disableDatesBefore?: Date;
+  disableDatesAfter?: Date;
+  allowRange?: Boolean;
+  onChange?(date: Range): void;
+  onHover?(hoverEnd: Date): void;
+  onFocus?(date: Date): void;
+  monthName?(month: Months): string;
+  weekdayName?(weekday: Weekdays): string;
 }
 
-const WEEKDAYS = [Weekdays.Sunday, Weekdays.Monday, Weekdays.Tuesday, Weekdays.Wednesday, Weekdays.Thursday, Weekdays.Friday, Weekdays.Saturday];
+const WEEKDAYS = [
+  Weekdays.Sunday,
+  Weekdays.Monday,
+  Weekdays.Tuesday,
+  Weekdays.Wednesday,
+  Weekdays.Thursday,
+  Weekdays.Friday,
+  Weekdays.Saturday,
+];
 
 export default function Month({
-    focusedDate,
-    selected,
-    hoverDate,
-    disableDatesBefore,
-    disableDatesAfter,
-    allowRange,
-    onChange = noop,
-    onHover = noop,
-    onFocus = noop,
-    month,
-    year,
+  focusedDate,
+  selected,
+  hoverDate,
+  disableDatesBefore,
+  disableDatesAfter,
+  allowRange,
+  onChange = noop,
+  onHover = noop,
+  onFocus = noop,
+  month,
+  year,
 }: Props) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const current = new Date().getMonth() === month;
@@ -74,17 +82,14 @@ export default function Month({
     if (day == null) {
       const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
       return (
-        <Day
-          key={dayIndex}
-          onHover={onHover.bind(null, lastDayOfMonth)}
-        />
+        // eslint-disable-next-line react/jsx-no-bind
+        <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />
       );
     }
 
-    const disabled = (
-      disableDatesBefore && isDateBefore(day, disableDatesBefore) ||
-      disableDatesAfter && isDateAfter(day, disableDatesAfter)
-    );
+    const disabled =
+      (disableDatesBefore && isDateBefore(day, disableDatesBefore)) ||
+      (disableDatesAfter && isDateAfter(day, disableDatesAfter));
 
     return (
       <Day
@@ -97,7 +102,11 @@ export default function Month({
         selected={selected != null && dateIsSelected(day, selected)}
         inRange={selected != null && dateIsInRange(day, selected)}
         disabled={disabled}
-        inHoveringRange={selected != null && hoverDate != null && isInHoveringRange(day, selected, hoverDate)}
+        inHoveringRange={
+          selected != null &&
+          hoverDate != null &&
+          isInHoveringRange(day, selected, hoverDate)
+        }
       />
     );
   }
@@ -110,17 +119,25 @@ export default function Month({
 
   return (
     <div role="grid" className={styles.Month}>
-      <div className={className}>{Months[month]} {year}</div>
+      <div className={className}>
+        {Months[month]} {year}
+      </div>
       <div role="rowheader" className={styles.WeekHeadings}>
         {weekdays}
       </div>
       {weeksMarkup}
     </div>
-    );
+  );
 }
 
-function hoveringDateIsInRange(day: Date | null, range: Range, hoverEndDate: Date) {
-  if (day == null) { return false; }
+function hoveringDateIsInRange(
+  day: Date | null,
+  range: Range,
+  hoverEndDate: Date,
+) {
+  if (day == null) {
+    return false;
+  }
   const {start, end} = range;
-  return Boolean((start === end) && (day > start) && (day <= hoverEndDate));
+  return Boolean(start === end && day > start && day <= hoverEndDate);
 }

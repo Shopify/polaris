@@ -6,7 +6,14 @@ describe('<Select />', () => {
   describe('onChange()', () => {
     it('is called with the value of the newly-selected option', () => {
       const spy = jest.fn();
-      const element = mount(<Select id="MySelect" label="Select" options={['one', 'two']} onChange={spy} />);
+      const element = mount(
+        <Select
+          id="MySelect"
+          label="Select"
+          options={['one', 'two']}
+          onChange={spy}
+        />,
+      );
       (element.find('select') as any).instance().value = 'two';
       element.find('select').simulate('change');
       expect(spy).toHaveBeenCalledWith('two', 'MySelect');
@@ -16,7 +23,9 @@ describe('<Select />', () => {
   describe('onFocus()', () => {
     it('is called when the select is focused', () => {
       const spy = jest.fn();
-      shallow(<Select label="Select" options={[]} onFocus={spy} />).find('select').simulate('focus');
+      shallow(<Select label="Select" options={[]} onFocus={spy} />)
+        .find('select')
+        .simulate('focus');
       expect(spy).toHaveBeenCalled();
     });
   });
@@ -24,7 +33,9 @@ describe('<Select />', () => {
   describe('onBlur()', () => {
     it('is called when the select is blurred', () => {
       const spy = jest.fn();
-      const element = shallow(<Select label="Select" options={[]} onBlur={spy} />);
+      const element = shallow(
+        <Select label="Select" options={[]} onBlur={spy} />,
+      );
       element.find('select').simulate('focus');
       element.find('select').simulate('blur');
       expect(spy).toHaveBeenCalled();
@@ -34,7 +45,9 @@ describe('<Select />', () => {
   describe('options', () => {
     it('translates an array of strings into options', () => {
       const options = ['one', 'two'];
-      const optionElements = shallow(<Select label="Select" options={options} />).find('option');
+      const optionElements = shallow(
+        <Select label="Select" options={options} />,
+      ).find('option');
 
       options.forEach((option, index) => {
         const optionElement = optionElements.at(index);
@@ -49,7 +62,9 @@ describe('<Select />', () => {
         {value: 'one', label: 'One'},
         {value: 'two', label: 'Two'},
       ];
-      const optionElements = shallow(<Select label="Select" options={options} />).find('option');
+      const optionElements = shallow(
+        <Select label="Select" options={options} />,
+      ).find('option');
 
       options.forEach(({value, label}, index) => {
         const optionElement = optionElements.at(index);
@@ -65,12 +80,19 @@ describe('<Select />', () => {
         {value: 'two', label: 'Two', disabled: true},
         {value: 'three', label: 'Three', disabled: false},
       ];
-      const optionElements = shallow(<Select label="Select" options={options} />).find('option');
+      const optionElements = shallow(
+        <Select label="Select" options={options} />,
+      ).find('option');
 
-      options.forEach(({disabled}: {disabled?: boolean, value: string, label: string}, index) => {
-        const optionElement = optionElements.at(index);
-        expect(optionElement.prop('disabled')).toBe(disabled);
-      });
+      options.forEach(
+        (
+          {disabled}: {disabled?: boolean; value: string; label: string},
+          index,
+        ) => {
+          const optionElement = optionElements.at(index);
+          expect(optionElement.prop('disabled')).toBe(disabled);
+        },
+      );
     });
   });
 
@@ -82,7 +104,11 @@ describe('<Select />', () => {
         'two',
         {title: 'Group two', options: ['two.1', 'two.2']},
       ];
-      const optionOrOptgroupElements = shallow(<Select label="Select" groups={optionsAndGroups} />).find('select').children();
+      const optionOrOptgroupElements = shallow(
+        <Select label="Select" groups={optionsAndGroups} />,
+      )
+        .find('select')
+        .children();
 
       optionsAndGroups.forEach((optionOrGroup, index) => {
         const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
@@ -94,7 +120,9 @@ describe('<Select />', () => {
           expect(optionOrOptgroupElement.text()).toBe(optionOrGroup);
         } else {
           expect(optionOrOptgroupElement.type()).toBe('optgroup');
-          expect(optionOrOptgroupElement.prop('label')).toBe(optionOrGroup.title);
+          expect(optionOrOptgroupElement.prop('label')).toBe(
+            optionOrGroup.title,
+          );
           const options = optionOrOptgroupElement.children();
 
           optionOrGroup.options.forEach((option, optionIndex) => {
@@ -111,19 +139,32 @@ describe('<Select />', () => {
 
   describe('value', () => {
     it('uses the passed value for the select', () => {
-      const value = shallow(<Select label="Select" value="Some value" options={[]} onChange={jest.fn()} />).find('select').prop('value');
+      const value = shallow(
+        <Select
+          label="Select"
+          value="Some value"
+          options={[]}
+          onChange={jest.fn()}
+        />,
+      )
+        .find('select')
+        .prop('value');
       expect(value).toBe('Some value');
     });
   });
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(<Select label="Select" id="MySelect" options={[]} />).find('select').prop('id');
+      const id = shallow(<Select label="Select" id="MySelect" options={[]} />)
+        .find('select')
+        .prop('id');
       expect(id).toBe('MySelect');
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<Select label="Select" options={[]} />).find('select').prop('id');
+      const id = shallow(<Select label="Select" options={[]} />)
+        .find('select')
+        .prop('id');
       expect(typeof id).toBe('string');
       expect(id).toBeTruthy();
     });
@@ -146,7 +187,9 @@ describe('<Select />', () => {
 
   describe('helpText', () => {
     it('connects the select to the help text', () => {
-      const select = mount(<Select label="Select" options={[]} helpText="Some help" />);
+      const select = mount(
+        <Select label="Select" options={[]} helpText="Some help" />,
+      );
       const helpTextID = select.find('select').prop<string>('aria-describedby');
       expect(typeof helpTextID).toBe('string');
       expect(select.find(`#${helpTextID}`).text()).toBe('Some help');
@@ -155,7 +198,9 @@ describe('<Select />', () => {
 
   describe('placeholder', () => {
     it('renders an unselectable option for the placeholder', () => {
-      const select = shallow(<Select label="Select" placeholder="Choose something" options={[]} />).find('select');
+      const select = shallow(
+        <Select label="Select" placeholder="Choose something" options={[]} />,
+      ).find('select');
       const placeholderOption = select.find('option').first();
 
       expect(select.prop('defaultValue')).toBe(placeholderOption.prop('value'));
@@ -164,7 +209,14 @@ describe('<Select />', () => {
     });
 
     it('sets the placeholder value as the select value when there is an onChange handler', () => {
-      const select = shallow(<Select label="Select" placeholder="Choose something" options={[]} onChange={jest.fn()} />).find('select');
+      const select = shallow(
+        <Select
+          label="Select"
+          placeholder="Choose something"
+          options={[]}
+          onChange={jest.fn()}
+        />,
+      ).find('select');
       const placeholderOption = select.find('option').first();
 
       expect(select.prop('value')).toBe(placeholderOption.prop('value'));
@@ -172,7 +224,14 @@ describe('<Select />', () => {
     });
 
     it('does not render the placeholder when there is an existing value', () => {
-      const select = shallow(<Select label="Select" placeholder="Choose something" options={['one']} value="one" />);
+      const select = shallow(
+        <Select
+          label="Select"
+          placeholder="Choose something"
+          options={['one']}
+          value="one"
+        />,
+      );
       const placeholderOption = select.find('option');
       expect(placeholderOption.length).toBe(1);
       expect(placeholderOption.prop('disabled')).toBeFalsy();

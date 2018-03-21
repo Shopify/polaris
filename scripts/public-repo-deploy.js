@@ -214,7 +214,7 @@ If tests fail, you may have to troubleshoot the problem locally.
 `.trim();
 
 const updatePostObject = {
-  title: 'Update @shopify/polaris to the latest version 🚀',
+  title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
   body: updateBody,
   head: `update-polaris-${releaseVersion}`,
   base: baseBranch,

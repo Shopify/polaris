@@ -1,5 +1,8 @@
 import {translate} from '../utils';
-import {PrimitiveReplacementDictionary, ComplexReplacementDictionary} from '../types';
+import {
+  PrimitiveReplacementDictionary,
+  ComplexReplacementDictionary,
+} from '../types';
 
 describe('translate()', () => {
   it('returns a simple string value in the translation dictionary', () => {
@@ -17,7 +20,9 @@ describe('translate()', () => {
   describe('replacements', () => {
     function translateWithReplacements(
       id: string,
-      replacements: PrimitiveReplacementDictionary | ComplexReplacementDictionary,
+      replacements:
+        | PrimitiveReplacementDictionary
+        | ComplexReplacementDictionary,
     ) {
       return translate('value', {value: id}, replacements);
     }

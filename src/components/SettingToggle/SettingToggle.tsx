@@ -7,23 +7,19 @@ import {ComplexAction} from '../../types';
 
 export interface Props {
   /** Inner content of the card */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Card header actions */
-  action?: ComplexAction,
+  action?: ComplexAction;
   /** Sets toggle state to enabled or disabled */
-  enabled?: boolean,
+  enabled?: boolean;
 }
 
 export default function SettingToggle({enabled, action, children}: Props) {
-  const actionMarkup = action
-    ? buttonFrom(action, {primary: !enabled})
-    : null;
+  const actionMarkup = action ? buttonFrom(action, {primary: !enabled}) : null;
 
   return (
     <Card sectioned>
-      <SettingAction action={actionMarkup}>
-        {children}
-      </SettingAction>
+      <SettingAction action={actionMarkup}>{children}</SettingAction>
     </Card>
   );
 }

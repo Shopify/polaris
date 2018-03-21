@@ -8,13 +8,13 @@ import {polarisProviderContextTypes, TranslationDictionary} from './types';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */
-  i18n?: TranslationDictionary | TranslationDictionary[],
+  i18n?: TranslationDictionary | TranslationDictionary[];
   /** A custom component to use for all links used by Polaris components */
-  linkComponent?: LinkLikeComponent,
+  linkComponent?: LinkLikeComponent;
 }
 
 export interface Context {
-  polaris: {intl: Intl, link: Link},
+  polaris: {intl: Intl; link: Link};
 }
 
 export default class Provider extends React.Component<Props> {

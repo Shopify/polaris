@@ -9,17 +9,17 @@ export const polarisProviderContextTypes: ValidationMap<any> = {
 };
 
 export interface WithProviderProps {
-  polaris: {intl: Intl, link: Link},
+  polaris: {intl: Intl; link: Link};
 }
 
 export interface TranslationDictionary {
-  [key: string]: string | TranslationDictionary,
+  [key: string]: string | TranslationDictionary;
 }
 
 export interface PrimitiveReplacementDictionary {
-  [key: string]: string | number,
+  [key: string]: string | number;
 }
 
 export interface ComplexReplacementDictionary {
-  [key: string]: string | number | React.ReactNode,
+  [key: string]: string | number | React.ReactNode;
 }

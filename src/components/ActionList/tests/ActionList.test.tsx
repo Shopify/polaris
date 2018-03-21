@@ -23,7 +23,13 @@ describe('<ActionList />', () => {
   it('fires onActionAnyItem on click or keypress of an anchor item', () => {
     const actionList = mount(
       <ActionList
-        items={[{content: 'Share on Facebook', url: 'https://facebook.com', external: true}]}
+        items={[
+          {
+            content: 'Share on Facebook',
+            url: 'https://facebook.com',
+            external: true,
+          },
+        ]}
         onActionAnyItem={mockOnActionAnyItem}
       />,
     );

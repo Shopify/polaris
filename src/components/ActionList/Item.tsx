@@ -8,7 +8,7 @@ import UnstyledLink from '../UnstyledLink';
 import * as styles from './ActionList.scss';
 
 export interface Props extends IconableAction, DisableableAction {
-  image?: string,
+  image?: string;
 }
 
 export default function Item({
@@ -19,11 +19,7 @@ export default function Item({
   image,
   disabled,
 }: Props) {
-
-  const className = classNames(
-    styles.Item,
-    disabled && styles.disabled,
-  );
+  const className = classNames(styles.Item, disabled && styles.disabled);
   let imageElement = null;
 
   if (icon) {
@@ -42,22 +38,24 @@ export default function Item({
     );
   }
 
-  const contentElement = imageElement
-    ? (
-      <div className={styles.Content}>
-        {imageElement}
-        <div className={styles.Text}>{content}</div>
-      </div>
-    )
-    : content;
+  const contentElement = imageElement ? (
+    <div className={styles.Content}>
+      {imageElement}
+      <div className={styles.Text}>{content}</div>
+    </div>
+  ) : (
+    content
+  );
 
-  const control = url
-    ? <UnstyledLink url={url} onClick={onAction} className={styles.Item}>
-        {contentElement}
-      </UnstyledLink>
-    : <button onClick={onAction} className={className} disabled={disabled}>
-        {contentElement}
-      </button>;
+  const control = url ? (
+    <UnstyledLink url={url} onClick={onAction} className={styles.Item}>
+      {contentElement}
+    </UnstyledLink>
+  ) : (
+    <button onClick={onAction} className={className} disabled={disabled}>
+      {contentElement}
+    </button>
+  );
 
   return <li>{control}</li>;
 }

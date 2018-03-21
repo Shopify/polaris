@@ -7,18 +7,16 @@ import * as styles from './FormLayout.scss';
 import Item from './Item';
 
 export interface Props {
-  children?: React.ReactNode,
-  condensed?: boolean,
-  title?: string,
-  helpText?: React.ReactNode,
+  children?: React.ReactNode;
+  condensed?: boolean;
+  title?: string;
+  helpText?: React.ReactNode;
 }
 
 const getUniqueID = createUniqueIDFactory('FormLayoutGroup');
 
 export default function Group({children, condensed, title, helpText}: Props) {
-  const className = classNames(
-    condensed && styles.condensed,
-  );
+  const className = classNames(condensed && styles.condensed);
 
   const id = getUniqueID();
 
@@ -29,15 +27,25 @@ export default function Group({children, condensed, title, helpText}: Props) {
 
   if (helpText) {
     helpTextID = `${id}HelpText`;
-    helpTextElement = <div id={helpTextID} className={styles.HelpText}>{helpText}</div>;
+    helpTextElement = (
+      <div id={helpTextID} className={styles.HelpText}>
+        {helpText}
+      </div>
+    );
   }
 
   if (title) {
     titleID = `${id}Title`;
-    titleElement = <div id={titleID} className={styles.Title}>{title}</div>;
+    titleElement = (
+      <div id={titleID} className={styles.Title}>
+        {title}
+      </div>
+    );
   }
 
-  const itemsMarkup = React.Children.map(children, (child) => wrapWithComponent(child, Item));
+  const itemsMarkup = React.Children.map(children, (child) =>
+    wrapWithComponent(child, Item),
+  );
 
   return (
     <div
@@ -47,9 +55,7 @@ export default function Group({children, condensed, title, helpText}: Props) {
       aria-describedby={helpTextID}
     >
       {titleElement}
-      <div className={styles.Items}>
-        {itemsMarkup}
-      </div>
+      <div className={styles.Items}>{itemsMarkup}</div>
       {helpTextElement}
     </div>
   );

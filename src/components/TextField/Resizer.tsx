@@ -4,10 +4,10 @@ import EventListener from '../EventListener';
 import * as styles from './TextField.scss';
 
 export interface Props {
-  contents?: string,
-  currentHeight?: number | null,
-  minimumLines?: number,
-  onHeightChange(height: number): void,
+  contents?: string;
+  currentHeight?: number | null;
+  minimumLines?: number;
+  onHeightChange(height: number): void;
 }
 
 export default class Resizer extends React.PureComponent<Props, never> {
@@ -31,15 +31,15 @@ export default class Resizer extends React.PureComponent<Props, never> {
   render() {
     const {contents, minimumLines} = this.props;
 
-    const minimumLinesMarkup = minimumLines
-      ? (
-        <div
-          ref={this.setMinimumLinesNode}
-          className={styles.DummyInput}
-          dangerouslySetInnerHTML={{__html: getContentsForMinimumLines(minimumLines)}}
-        />
-      )
-      : null;
+    const minimumLinesMarkup = minimumLines ? (
+      <div
+        ref={this.setMinimumLinesNode}
+        className={styles.DummyInput}
+        dangerouslySetInnerHTML={{
+          __html: getContentsForMinimumLines(minimumLines),
+        }}
+      />
+    ) : null;
 
     return (
       <div aria-hidden className={styles.Resizer}>
@@ -56,10 +56,14 @@ export default class Resizer extends React.PureComponent<Props, never> {
 
   @autobind
   private handleHeightCheck() {
-    if (this.contentNode == null || this.minimumLinesNode == null) { return; }
+    if (this.contentNode == null || this.minimumLinesNode == null) {
+      return;
+    }
 
     const contentHeight = this.contentNode.offsetHeight;
-    const minimumHeight = this.setMinimumLinesNode ? this.minimumLinesNode.offsetHeight : 0;
+    const minimumHeight = this.setMinimumLinesNode
+      ? this.minimumLinesNode.offsetHeight
+      : 0;
     const newHeight = Math.max(contentHeight, minimumHeight);
 
     const {currentHeight, onHeightChange} = this.props;
