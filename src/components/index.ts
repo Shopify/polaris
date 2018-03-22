@@ -126,6 +126,8 @@ export {
   CloseSource as PopoverCloseSource,
 } from './Popover';
 
+export {default as Provider} from './Provider';
+
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 
 export {
