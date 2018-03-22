@@ -28,7 +28,7 @@ Subheadings should:
 
 * Be used to explain and clearly label logical groups in existing sections of a page
 * Not be used without a parent heading
-* Not be used in tables or list items, such as for the primary content in a [resource list](/components/lists/resource-list)
+* Not be used in tables or list items, such as for the primary content in a [resource list](/components/lists-and-tables/resource-list)
 
 ---
 
@@ -37,19 +37,22 @@ Subheadings should:
 Subheadings should be:
 
 * Informative and descriptive: they should label the type of content grouped
-beneath them
+  beneath them
 * Concise and scannable:
   * Use simple, clear language that can be read at a glance
   * Keep subheadings to single sentence and avoid using punctuation such as
-  periods, commas, or semicolons
+    periods, commas, or semicolons
   * Write in sentence case (first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
+
 #### Do
-- Shipping address
+
+* Shipping address
 
 #### Don’t
-- The package will be shipped to this address:
+
+* The package will be shipped to this address:
 
 <!-- end -->
 

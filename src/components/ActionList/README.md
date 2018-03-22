@@ -37,9 +37,11 @@ Each item in an action list should be clear and predictable. Merchants should be
 <!-- usagelist -->
 
 #### Do
+
 Buy shipping label
 
 #### Don’t
+
 Buy
 
 <!-- end -->
@@ -49,12 +51,14 @@ Each item in an action list should always lead with a strong verb that encourage
 <!-- usagelist -->
 
 #### Do
-- Rename
-- Edit HTML
+
+* Rename
+* Edit HTML
 
 #### Don’t
-- File name changes
-- HTML editing options
+
+* File name changes
+* HTML editing options
 
 <!-- end -->
 
@@ -63,10 +67,12 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 <!-- usagelist -->
 
 #### Do
-- Add menu item
+
+* Add menu item
 
 #### Don’t
-- Add a menu item
+
+* Add a menu item
 
 <!-- end -->
 
@@ -86,7 +92,7 @@ class ActionListExample extends React.Component {
     this.setState(({active}) => {
       return {active: !active};
     });
-  }
+  };
 
   render() {
     const activator = (
@@ -102,12 +108,18 @@ class ActionListExample extends React.Component {
         >
           <ActionList
             items={[
-              {content: 'Import file', onAction: () => {
-                console.log('File imported')
-              }},
-              {content: 'Export file', onAction: () => {
-                console.log('File exported')
-              }},
+              {
+                content: 'Import file',
+                onAction: () => {
+                  console.log('File imported');
+                },
+              },
+              {
+                content: 'Export file',
+                onAction: () => {
+                  console.log('File exported');
+                },
+              },
             ]}
           />
         </Popover>
@@ -131,7 +143,7 @@ class ActionListExample extends React.Component {
     this.setState(({active}) => {
       return {active: !active};
     });
-  }
+  };
 
   render() {
     const activator = (
@@ -172,7 +184,7 @@ class ActionListExample extends React.Component {
     this.setState(({active}) => {
       return {active: !active};
     });
-  }
+  };
 
   render() {
     const activator = (
@@ -187,13 +199,15 @@ class ActionListExample extends React.Component {
           onClose={this.togglePopover}
         >
           <ActionList
-            sections={[{
-              title: "File options",
-              items: [
-                {content: 'Import file', icon: 'import'},
-                {content: 'Export file', icon: 'export'},
-              ]
-            }]}
+            sections={[
+              {
+                title: 'File options',
+                items: [
+                  {content: 'Import file', icon: 'import'},
+                  {content: 'Export file', icon: 'export'},
+                ],
+              },
+            ]}
           />
         </Popover>
       </div>
@@ -201,9 +215,10 @@ class ActionListExample extends React.Component {
   }
 }
 ```
+
 ---
 
 ## Related components
 
 * To combine more than one button in a single layout, [use the button group component](/components/actions/button-group)
-* To display a list of related content, [use the list component](/components/lists/list)
+* To display a list of related content, [use the list component](/components/lists-and-tables/list)
