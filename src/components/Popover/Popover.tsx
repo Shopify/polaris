@@ -23,7 +23,10 @@ export interface Props {
   active: boolean;
   /** The element to activate the Popover */
   activator: React.ReactElement<any>;
-  /** The element type to wrap the activator with */
+  /**
+   * The element type to wrap the activator with
+   * @default 'div'
+   */
   activatorWrapper?: string;
   /** Prevent automatic focus of the first field on activation */
   preventAutofocus?: boolean;

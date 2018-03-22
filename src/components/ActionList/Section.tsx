@@ -29,16 +29,18 @@ export default function Section({
       }
     };
   };
-  const actionMarkup = section.items.map(({content, onAction, ...item}) => {
-    return (
-      <Item
-        key={content}
-        content={content}
-        onAction={handleAction(onAction)}
-        {...item}
-      />
-    );
-  });
+  const actionMarkup = section.items.map(
+    ({content, onAction, ...item}, index) => {
+      return (
+        <Item
+          key={`${content}-${index}`}
+          content={content}
+          onAction={handleAction(onAction)}
+          {...item}
+        />
+      );
+    },
+  );
 
   const className = section.title ? null : styles['Section-withoutTitle'];
 

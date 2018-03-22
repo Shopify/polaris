@@ -17,9 +17,15 @@ export interface Props {
   light?: boolean;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
-  /** The direction the tooltip tries to display */
+  /**
+   * The direction the tooltip tries to display
+   * @default 'below'
+   */
   preferredPosition?: PreferredPosition;
-  /** The element type to wrap the activator in */
+  /**
+   * The element type to wrap the activator in
+   * @default 'span'
+   */
   activatorWrapper?: string;
 }
 

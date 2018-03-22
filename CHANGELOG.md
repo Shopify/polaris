@@ -6,6 +6,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 ### Bug fixes
+* Fixed external prop not working within ActionList component ([#1177](https://github.com/Shopify/polaris-react/pull/1177))
 * Fixed a syntax error in one of the Card component examples ([#1175](https://github.com/Shopify/polaris-react/pull/1175)) (thanks [meecrobe](https://github.com/meecrobe) for the [original issue](https://github.com/Shopify/polaris/issues/281))
 
 ## 1.12.4 - 2018-03-19

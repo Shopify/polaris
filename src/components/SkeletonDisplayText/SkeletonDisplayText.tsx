@@ -5,7 +5,10 @@ import * as styles from './SkeletonDisplayText.scss';
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export interface Props {
-  /** Size of the text */
+  /**
+   * Size of the text
+   * @default 'medium'
+   */
   size?: Size;
 }
 

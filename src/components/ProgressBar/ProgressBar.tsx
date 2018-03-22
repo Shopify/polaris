@@ -5,9 +5,15 @@ import * as styles from './ProgressBar.scss';
 export type Size = 'small' | 'medium' | 'large';
 
 export interface Props {
-  /** The progression of certain tasks */
+  /**
+   * The progression of certain tasks
+   * @default 0
+   */
   progress?: number;
-  /** Size of progressbar */
+  /**
+   * Size of progressbar
+   * @default 'medium'
+   */
   size?: Size;
 }
 

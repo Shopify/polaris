@@ -2,7 +2,10 @@ import * as React from 'react';
 import * as styles from './SkeletonBodyText.scss';
 
 export interface Props {
-  /** Number of lines to display */
+  /**
+   * Number of lines to display
+   * @default 3
+   */
   lines?: number;
 }
 

@@ -23,6 +23,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint:js": "eslint './src/**/*.{ts,tsx}' --max-warnings 0 --format codeframe",
+    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix --max-warnings 0 --format codeframe",
     "lint": "npm-run-all lint:js",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",

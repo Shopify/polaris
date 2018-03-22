@@ -1,7 +1,8 @@
-# Polaris
+# Polaris React
+
 [![CircleCI](https://circleci.com/gh/Shopify/polaris-react.svg?style=svg&circle-token=c8498f3af1d113fe3974c8881c4ce32ef09423c2)](https://circleci.com/gh/Shopify/polaris-react)
 
-A UI component library written in our modern FED tech stack (TypeScript, React)
+The reference implementation of [Polaris](https://polaris.shopify.com), written in React and TypeScript.
 
 This is the internal version of the [Polaris repository](https://github.com/Shopify/polaris). All changes and issues should be made here, and the changes will be applied to the public version when we release a new version.
 
