@@ -1,6 +1,6 @@
 ---
 name: List
-category: Lists
+category: Lists and tables
 keywords:
   - bulleted lists
   - numbered lists

@@ -1,6 +1,6 @@
 ---
 name: Resource list
-category: Lists
+category: Lists and tables
 keywords:
   - ResourceList
   - collections

@@ -1,6 +1,6 @@
 ---
 name: Data table
-category: Lists
+category: Lists and tables
 keywords:
   - DataTable
   - data
