@@ -6,7 +6,10 @@ import * as styles from './Thumbnail.scss';
 export type Size = 'small' | 'medium' | 'large';
 
 export interface Props {
-  /** Size of thumbnail */
+  /**
+   * Size of thumbnail
+   * @default 'medium'
+   */
   size?: Size;
   /** URL for the image */
   source: string;

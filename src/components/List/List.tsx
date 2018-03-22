@@ -6,7 +6,10 @@ import Item from './Item';
 export type Type = 'bullet' | 'number';
 
 export interface Props {
-  /** Type of list to display */
+  /**
+   * Type of list to display
+   * @default 'bullet'
+   */
   type?: Type;
   /** List item elements */
   children?: React.ReactNode;

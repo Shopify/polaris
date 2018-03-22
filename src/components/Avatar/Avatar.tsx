@@ -14,7 +14,10 @@ const AVATAR_IMAGES = Object.keys(avatars).map(
 );
 
 export interface Props {
-  /** Size of avatar */
+  /**
+   * Size of avatar
+   * @default 'medium'
+   */
   size?: Size;
   /** The name of the person */
   name?: string;
