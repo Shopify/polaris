@@ -89,6 +89,8 @@ export {
 
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
 
+export {default as Form, Props as FormProps} from './Form';
+
 export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 
 export {default as Heading, Props as HeadingProps} from './Heading';
