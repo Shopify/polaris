@@ -1,6 +1,6 @@
 ---
 name: Resource list
-category: Lists
+category: Lists and tables
 keywords:
   - ResourceList
   - collections
@@ -820,7 +820,7 @@ The content that represents applied filter tags should use short, clear, non-tec
 ## Related components
 
 * To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the data table component (coming soon)
-* To display a simple list of related content, [use the list component](/components/lists/list)
+* To display a simple list of related content, [use the list component](/components/lists-and-tables/list)
 
 ---
 

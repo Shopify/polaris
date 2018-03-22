@@ -1,6 +1,6 @@
 ---
 name: Description list
-category: Lists
+category: Lists and tables
 keywords:
   - DescriptionList
   - glossary
