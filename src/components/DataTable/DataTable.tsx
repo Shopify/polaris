@@ -51,9 +51,15 @@ export interface Props {
   footerContent?: TableData;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[];
-  /** The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending. */
+  /**
+   * The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.
+   * @default 'ascending'
+   */
   defaultSortDirection?: SortDirection;
-  /** The index of the heading that the table rows are initially sorted by. Defaults to the first column. */
+  /**
+   * The index of the heading that the table rows are initially sorted by. Defaults to the first column.
+   * @default 0
+   */
   initialSortColumnIndex?: number;
   /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: SortDirection): void;

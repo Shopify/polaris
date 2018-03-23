@@ -39,21 +39,33 @@ export interface State {
 export interface Props {
   /** Allowed file types */
   accept?: string;
-  /** Whether is a file or an image */
+  /**
+   * Whether is a file or an image
+   * @default 'file'
+   */
   type: Type;
   /** Sets an active state */
   active?: boolean;
   /** Sets an error state */
   error?: boolean;
-  /** Displays an outline border */
+  /**
+   * Displays an outline border
+   * @default true
+   */
   outline?: boolean;
-  /** Displays an overlay on hover */
+  /**
+   * Displays an overlay on hover
+   * @default true
+   */
   overlay?: boolean;
   /** Text that appears in the overlay */
   overlayText?: string;
   /** Text that appears in the overlay when set in error state */
   errorOverlayText?: string;
-  /** Allows multiple files to be uploaded */
+  /**
+   * Allows multiple files to be uploaded
+   * @default true
+   */
   allowMultiple?: boolean;
   /** Sets a disabled state */
   disabled?: boolean;
