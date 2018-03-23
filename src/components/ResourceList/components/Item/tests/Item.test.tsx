@@ -162,7 +162,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(
+      expect(mockSelectModeContext.onSelectionChange).toHaveBeenCalledWith(
         true,
         itemId,
       );

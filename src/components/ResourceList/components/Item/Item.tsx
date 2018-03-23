@@ -113,6 +113,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         >
           <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
+              testID="Checkbox"
               id={this.checkboxId}
               label={intl.translate('Polaris.ResourceList.Item.selectItem')}
               labelHidden

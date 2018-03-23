@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 const IGNORE_ERROR_REGEXES = [
+  /React does not recognize the `testID` prop on a DOM element/,
   /Accessing PropTypes via the main React package is deprecated/,
   /ReactTestUtils has been moved to react-dom\/test-utils/,
   /Shallow renderer has been moved to react-test-renderer\/shallow/,
