@@ -220,7 +220,6 @@ describe('<Item />', () => {
         context: mockDefaultContext,
       });
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
-      expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
     });
 
     it('should render shortcut actions when some are provided', () => {
