@@ -6,14 +6,14 @@ import Slidable, {Position} from './Slidable';
 import * as styles from './ColorPicker.scss';
 
 export interface State {
-  dragging: boolean,
-  sliderHeight: number,
-  draggerHeight: number,
+  dragging: boolean;
+  sliderHeight: number;
+  draggerHeight: number;
 }
 
 export interface Props {
-  hue: number,
-  onChange(hue: number): void,
+  hue: number;
+  onChange(hue: number): void;
 }
 
 const VERTICAL_PADDING = 13;
@@ -32,7 +32,7 @@ export default class HuePicker extends React.PureComponent<Props, State> {
     const offset = offsetForHue(hue, sliderHeight, draggerHeight);
     const draggerY = clamp(offset, 0, sliderHeight);
 
-    return(
+    return (
       <div className={styles.HuePicker} ref={this.setSliderHeight}>
         <Slidable
           draggerY={draggerY}
@@ -46,7 +46,9 @@ export default class HuePicker extends React.PureComponent<Props, State> {
 
   @autobind
   private setSliderHeight(node: HTMLElement | null) {
-    if (node == null) { return; }
+    if (node == null) {
+      return;
+    }
 
     this.setState({sliderHeight: node.clientHeight});
 
@@ -76,13 +78,21 @@ export default class HuePicker extends React.PureComponent<Props, State> {
   }
 }
 
-function offsetForHue(hue: number, sliderHeight: number, draggerHeight: number): number {
+function offsetForHue(
+  hue: number,
+  sliderHeight: number,
+  draggerHeight: number,
+): number {
   const slidableArea = sliderHeight - (draggerHeight + VERTICAL_PADDING);
-  return clamp((hue / 360 * slidableArea) + VERTICAL_PADDING, 0, sliderHeight - draggerHeight);
+  return clamp(
+    hue / 360 * slidableArea + VERTICAL_PADDING,
+    0,
+    sliderHeight - draggerHeight,
+  );
 }
 
 function hueForOffset(offset: number, sliderHeight: number): number {
-  const selectionHeight = (offset - VERTICAL_PADDING);
-  const slidableArea = sliderHeight - (VERTICAL_PADDING * 2);
-  return clamp((selectionHeight / slidableArea) * 360, 0, 360);
+  const selectionHeight = offset - VERTICAL_PADDING;
+  const slidableArea = sliderHeight - VERTICAL_PADDING * 2;
+  return clamp(selectionHeight / slidableArea * 360, 0, 360);
 }

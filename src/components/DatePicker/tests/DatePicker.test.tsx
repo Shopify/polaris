@@ -35,13 +35,7 @@ describe('<DatePicker />', () => {
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';
-      const datePicker = mount(
-        <DatePicker
-          id={id}
-          month={0}
-          year={2018}
-        />,
-      );
+      const datePicker = mount(<DatePicker id={id} month={0} year={2018} />);
 
       expect(datePicker.childAt(0).prop('id')).toBe(id);
     });

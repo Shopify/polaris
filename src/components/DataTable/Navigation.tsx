@@ -7,10 +7,10 @@ import {ColumnVisibilityData} from './DataTable';
 import * as styles from './DataTable.scss';
 
 export interface Props {
-  currentColumn?: ColumnVisibilityData,
-  columnVisibilityData: ColumnVisibilityData[],
-  navigateTableLeft?(): void,
-  navigateTableRight?(): void,
+  currentColumn?: ColumnVisibilityData;
+  columnVisibilityData: ColumnVisibilityData[];
+  navigateTableLeft?(): void;
+  navigateTableRight?(): void;
 }
 
 export default function Navigation({
@@ -19,7 +19,6 @@ export default function Navigation({
   navigateTableLeft,
   navigateTableRight,
 }: Props) {
-
   const pipMarkup = columnVisibilityData.map((column, index) => {
     const className = classNames(
       styles.Pip,

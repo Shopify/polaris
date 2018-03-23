@@ -8,15 +8,15 @@ import {hsbToRgb} from './color-utilities';
 import * as styles from './ColorPicker.scss';
 
 export interface State {
-  dragging: boolean,
-  sliderHeight: number,
-  draggerHeight: number,
+  dragging: boolean;
+  sliderHeight: number;
+  draggerHeight: number;
 }
 
 export interface Props {
-  color: HSBColor,
-  alpha: number,
-  onChange(hue: number): void,
+  color: HSBColor;
+  alpha: number;
+  onChange(hue: number): void;
 }
 
 const VERTICAL_PADDING = 13;
@@ -36,11 +36,8 @@ export default class AlphaPicker extends React.PureComponent<Props, State> {
     const draggerY = clamp(offset, 0, sliderHeight);
     const background = alphaGradientForColor(color);
 
-    return(
-      <div
-        className={styles.AlphaPicker}
-        ref={this.setSliderHeight}
-      >
+    return (
+      <div className={styles.AlphaPicker} ref={this.setSliderHeight}>
         <div className={styles.ColorLayer} style={{background}} />
         <Slidable
           draggerY={draggerY}
@@ -54,7 +51,9 @@ export default class AlphaPicker extends React.PureComponent<Props, State> {
 
   @autobind
   private setSliderHeight(node: HTMLElement | null) {
-    if (node == null) { return; }
+    if (node == null) {
+      return;
+    }
 
     this.setState({sliderHeight: node.clientHeight});
 
@@ -83,14 +82,22 @@ export default class AlphaPicker extends React.PureComponent<Props, State> {
 }
 
 function alphaForOffset(offset: number, sliderHeight: number): number {
-  const selectionHeight = (offset - VERTICAL_PADDING);
-  const slidableArea = sliderHeight - (VERTICAL_PADDING * 2);
-  return clamp(1 - (selectionHeight / slidableArea), 0, 1);
+  const selectionHeight = offset - VERTICAL_PADDING;
+  const slidableArea = sliderHeight - VERTICAL_PADDING * 2;
+  return clamp(1 - selectionHeight / slidableArea, 0, 1);
 }
 
-function offsetForAlpha(alpha: number, sliderHeight: number, draggerHeight: number) {
+function offsetForAlpha(
+  alpha: number,
+  sliderHeight: number,
+  draggerHeight: number,
+) {
   const slidableArea = sliderHeight - (draggerHeight + VERTICAL_PADDING);
-  return clamp(((1 - alpha) * slidableArea) + VERTICAL_PADDING, 0, sliderHeight - draggerHeight);
+  return clamp(
+    (1 - alpha) * slidableArea + VERTICAL_PADDING,
+    0,
+    sliderHeight - draggerHeight,
+  );
 }
 
 function alphaGradientForColor(color: HSBColor) {

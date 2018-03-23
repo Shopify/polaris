@@ -3,7 +3,10 @@ import * as PropTypes from 'prop-types';
 import {capitalize} from 'lodash';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
-import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
+import {
+  addEventListener,
+  removeEventListener,
+} from '@shopify/javascript-utilities/events';
 
 import Icon from '../Icon';
 import Stack from '../Stack';
@@ -25,57 +28,69 @@ import * as styles from './DropZone.scss';
 export type Type = 'file' | 'image';
 
 export interface State {
-  size: string,
-  type: string,
-  error?: boolean,
-  dragging: boolean,
-  overlayText?: string,
-  errorOverlayText?: string,
+  size: string;
+  type: string;
+  error?: boolean;
+  dragging: boolean;
+  overlayText?: string;
+  errorOverlayText?: string;
 }
 
 export interface Props {
   /** Allowed file types */
-  accept?: string,
-  /** Whether is a file or an image */
-  type: Type,
+  accept?: string;
+  /**
+   * Whether is a file or an image
+   * @default 'file'
+   */
+  type: Type;
   /** Sets an active state */
-  active?: boolean,
+  active?: boolean;
   /** Sets an error state */
-  error?: boolean,
-  /** Displays an outline border */
-  outline?: boolean,
-  /** Displays an overlay on hover */
-  overlay?: boolean,
+  error?: boolean;
+  /**
+   * Displays an outline border
+   * @default true
+   */
+  outline?: boolean;
+  /**
+   * Displays an overlay on hover
+   * @default true
+   */
+  overlay?: boolean;
   /** Text that appears in the overlay */
-  overlayText?: string,
+  overlayText?: string;
   /** Text that appears in the overlay when set in error state */
-  errorOverlayText?: string,
-  /** Allows multiple files to be uploaded */
-  allowMultiple?: boolean,
+  errorOverlayText?: string;
+  /**
+   * Allows multiple files to be uploaded
+   * @default true
+   */
+  allowMultiple?: boolean;
   /** Sets a disabled state */
-  disabled?: boolean,
+  disabled?: boolean;
   /** The child elements to render in the dropzone. */
-  children?: string | React.ReactNode,
+  children?: string | React.ReactNode;
   /** Allows a file to be dropped anywhere on the page */
-  dropOnPage?: boolean,
+  dropOnPage?: boolean;
   /** Adds custom validations */
-  customValidator?(file: File): boolean,
+  customValidator?(file: File): boolean;
   /** Callback triggered on click */
-  onClick?(event: React.MouseEvent<HTMLElement>): void,
+  onClick?(event: React.MouseEvent<HTMLElement>): void;
   /** Callback triggered on any file drop */
-  onDrop?(files: File[], acceptedFiles: File[], rejectedFiles: File[]): void,
+  onDrop?(files: File[], acceptedFiles: File[], rejectedFiles: File[]): void;
   /** Callback triggered when at least one of the files dropped was accepted */
-  onDropAccepted?(acceptedFiles: File[]): void,
+  onDropAccepted?(acceptedFiles: File[]): void;
   /** Callback triggered when at least one of the files dropped was rejected */
-  onDropRejected?(rejectedFiles: File[]): void,
+  onDropRejected?(rejectedFiles: File[]): void;
   /** Callback triggered when one or more files are dragging over the drag area */
-  onDragOver?(): void,
+  onDragOver?(): void;
   /** Callback triggered when one or more files entered the drag area */
-  onDragEnter?(): void,
+  onDragEnter?(): void;
   /** Callback triggered when one or more files left the drag area */
-  onDragLeave?(): void,
+  onDragLeave?(): void;
   /** Public method to trigger the default file picker */
-  open?(): void,
+  open?(): void;
 }
 
 export type CombinedProps = Props & WithProviderProps;
@@ -177,43 +192,39 @@ class DropZone extends React.Component<CombinedProps, State> {
     const classes = classNames(
       styles.DropZone,
       outline && styles.hasOutline,
-      ( active || dragging ) && styles.isDragging,
+      (active || dragging) && styles.isDragging,
       error && styles.hasError,
       size && size === 'large' && styles.sizeLarge,
       size && size === 'medium' && styles.sizeMedium,
       size && size === 'small' && styles.sizeSmall,
     );
 
-    const dragOverlay = ( active || dragging ) && !error && overlay
-    ? (
-      <div className={styles.Overlay}>
-        <Stack vertical spacing="tight">
-          <Icon source={IconDragDrop} color="indigo" />
-          { size === 'large' &&
-            <DisplayText size="small" element="p">
-              {overlayText}
-            </DisplayText>
-          }
-          { size === 'medium' &&
-            <Caption>{overlayText}</Caption>
-          }
-        </Stack>
-      </div>
-    ) : null;
+    const dragOverlay =
+      (active || dragging) && !error && overlay ? (
+        <div className={styles.Overlay}>
+          <Stack vertical spacing="tight">
+            <Icon source={IconDragDrop} color="indigo" />
+            {size === 'large' && (
+              <DisplayText size="small" element="p">
+                {overlayText}
+              </DisplayText>
+            )}
+            {size === 'medium' && <Caption>{overlayText}</Caption>}
+          </Stack>
+        </div>
+      ) : null;
 
-    const dragErrorOverlay = dragging && error
-    ? (
+    const dragErrorOverlay =
+      dragging && error ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={IconAlertCircle} color="red" />
-            { size === 'large' &&
+            {size === 'large' && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}
               </DisplayText>
-            }
-            { size === 'medium' &&
-              <Caption>{errorOverlayText}</Caption>
-            }
+            )}
+            {size === 'medium' && <Caption>{errorOverlayText}</Caption>}
           </Stack>
         </div>
       ) : null;
@@ -228,9 +239,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       >
         {dragOverlay}
         {dragErrorOverlay}
-        <div className={styles.Container}>
-          {children}
-        </div>
+        <div className={styles.Container}>{children}</div>
         <VisuallyHidden>
           <input {...inputAttributes} />
         </VisuallyHidden>
@@ -240,9 +249,12 @@ class DropZone extends React.Component<CombinedProps, State> {
 
   componentDidMount() {
     this.dragTargets = [];
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({error: this.props.error});
 
-    if (!this.dropNode) { return; }
+    if (!this.dropNode) {
+      return;
+    }
 
     addEventListener(this.dropNode, 'drop', this.handleDrop);
     addEventListener(this.dropNode, 'dragover', this.handleDragOver);
@@ -252,7 +264,9 @@ class DropZone extends React.Component<CombinedProps, State> {
   }
 
   componentWillUnmount() {
-    if (!this.dropNode) { return; }
+    if (!this.dropNode) {
+      return;
+    }
 
     removeEventListener(this.dropNode, 'drop', this.handleDrop);
     removeEventListener(this.dropNode, 'dragover', this.handleDragOver);
@@ -267,9 +281,11 @@ class DropZone extends React.Component<CombinedProps, State> {
   }
 
   @autobind
-  @debounce(50, { trailing: true })
+  @debounce(50, {trailing: true})
   private adjustSize() {
-    if (!this.node) { return; }
+    if (!this.node) {
+      return;
+    }
 
     let size = 'large';
     const width = this.node.getBoundingClientRect().width;
@@ -280,7 +296,7 @@ class DropZone extends React.Component<CombinedProps, State> {
       size = 'medium';
     }
 
-    this.setState({ size });
+    this.setState({size});
   }
 
   @autobind
@@ -291,7 +307,10 @@ class DropZone extends React.Component<CombinedProps, State> {
     const rejectedFiles: File[] = [];
 
     Array.from(files as File[]).forEach((file: File) => {
-      if (!fileAccepted(file, accept) || (customValidator && !customValidator(file))) {
+      if (
+        !fileAccepted(file, accept) ||
+        (customValidator && !customValidator(file))
+      ) {
         rejectedFiles.push(file);
       } else {
         acceptedFiles.push(file);
@@ -329,11 +348,11 @@ class DropZone extends React.Component<CombinedProps, State> {
   private handleClick(event: React.MouseEvent<HTMLElement>) {
     const {onClick, disabled} = this.props;
 
-    if (disabled) { return; }
+    if (disabled) {
+      return;
+    }
 
-    return onClick
-      ? onClick(event)
-      : this.open();
+    return onClick ? onClick(event) : this.open();
   }
 
   @autobind
@@ -343,11 +362,15 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     const {disabled, onDrop, onDropAccepted, onDropRejected} = this.props;
 
-    if (disabled) { return; }
+    if (disabled) {
+      return;
+    }
 
     const fileList = getDataTransferFiles(event);
 
-    const { files, acceptedFiles, rejectedFiles } = this.getValidatedFiles(fileList);
+    const {files, acceptedFiles, rejectedFiles} = this.getValidatedFiles(
+      fileList,
+    );
 
     this.dragTargets = [];
 
@@ -374,7 +397,9 @@ class DropZone extends React.Component<CombinedProps, State> {
     const {dragging} = this.state;
     const {disabled, onDragEnter} = this.props;
 
-    if (disabled) { return; }
+    if (disabled) {
+      return;
+    }
 
     const fileList = getDataTransferFiles(event);
 
@@ -382,9 +407,11 @@ class DropZone extends React.Component<CombinedProps, State> {
       this.dragTargets.push(event.target);
     }
 
-    if (dragging) { return false; }
+    if (dragging) {
+      return false;
+    }
 
-    const { rejectedFiles } = this.getValidatedFiles(fileList);
+    const {rejectedFiles} = this.getValidatedFiles(fileList);
 
     this.setState({dragging: true, error: rejectedFiles.length > 0});
 
@@ -400,7 +427,9 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     const {disabled, onDragOver} = this.props;
 
-    if (disabled) { return; }
+    if (disabled) {
+      return;
+    }
 
     if (onDragOver) {
       onDragOver();
@@ -415,15 +444,17 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     const {disabled, onDragLeave} = this.props;
 
-    if (disabled) { return; }
+    if (disabled) {
+      return;
+    }
 
     this.dragTargets = this.dragTargets.filter((el: Node) => {
-      return el !== event.target &&
-        this.dropNode &&
-        this.dropNode.contains(el);
+      return el !== event.target && this.dropNode && this.dropNode.contains(el);
     });
 
-    if (this.dragTargets.length > 0) { return; }
+    if (this.dragTargets.length > 0) {
+      return;
+    }
 
     this.setState({dragging: false, error: false});
 

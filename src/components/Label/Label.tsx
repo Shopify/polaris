@@ -4,9 +4,9 @@ import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Label.scss';
 
 export interface Props {
-  children?: string,
-  id: string,
-  hidden?: boolean,
+  children?: string;
+  id: string;
+  hidden?: boolean;
 }
 
 export function labelID(id: string) {
@@ -14,10 +14,7 @@ export function labelID(id: string) {
 }
 
 export default function Label({children, id, hidden}: Props) {
-  const className = classNames(
-    styles.Label,
-    hidden && styles.hidden,
-  );
+  const className = classNames(styles.Label, hidden && styles.hidden);
 
   return (
     <div className={className}>

@@ -5,9 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 ## Unreleased
+### Bug fixes
+* Fixed external prop not working within ActionList component
+* Fixed a syntax error in one of the Card component examples (thanks [meecrobe](https://github.com/meecrobe) for the [original issue](https://github.com/Shopify/polaris/issues/281))
 
+## 1.12.4 - 2018-03-19
+* Enhanced Avatar to work better when provided non-square images
+* Move documentation file so it's picked up by the styleguide
+
+## 1.12.3 - 2018-03-16
 ### Bug fixes
 * Fixed disclosure centering on the tab component
+* Fixed an issue where a style void would appear between breakpoints at high text zoom levels
 
 ### Documentation
 * Removed purpose section from component READMEs

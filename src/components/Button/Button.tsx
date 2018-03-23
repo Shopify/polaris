@@ -13,47 +13,47 @@ export type Size = 'slim' | 'large';
 
 export interface BaseProps {
   /** The content to display inside the button */
-  children?: string,
+  children?: string;
   /** A destination to link to, rendered in the href attribute of a link */
-  url?: string,
+  url?: string;
   /** A unique identifier for the button */
-  id?: string,
+  id?: string;
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
-  primary?: boolean,
+  primary?: boolean;
   /** Indicates a dangerous or potentially negative action */
-  destructive?: boolean,
+  destructive?: boolean;
   /** Disables the button, disallowing merchant interaction */
-  disabled?: boolean,
+  disabled?: boolean;
   /** Replaces button text with a spinner while a background action is being performed */
-  loading?: boolean,
+  loading?: boolean;
   /** Changes the size of the button, giving it more or less padding */
-  size?: Size,
+  size?: Size;
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
-  outline?: boolean,
+  outline?: boolean;
   /** Allows the button to grow to the width of its container */
-  fullWidth?: boolean,
+  fullWidth?: boolean;
   /** Displays the button with a disclosure icon */
-  disclosure?: boolean,
+  disclosure?: boolean;
   /** Allows the button to submit a form */
-  submit?: boolean,
+  submit?: boolean;
   /** Renders a button that looks like a link */
-  plain?: boolean,
+  plain?: boolean;
   /** Forces url to open in a new tab */
-  external?: boolean,
+  external?: boolean;
   /** Icon to display to the left of the button content */
-  icon?: IconProps['source'],
+  icon?: IconProps['source'];
   /** Visually hidden text for screen readers */
-  accessibilityLabel?: string,
+  accessibilityLabel?: string;
   /** Id of the element the button controls */
-  ariaControls?: string,
+  ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
-  ariaExpanded?: boolean,
+  ariaExpanded?: boolean;
   /** Callback when clicked */
-  onClick?(): void,
+  onClick?(): void;
   /** Callback when button becomes focussed */
-  onFocus?(): void,
+  onFocus?(): void;
   /** Callback when focus leaves button */
-  onBlur?(): void,
+  onBlur?(): void;
 }
 
 export interface Props extends BaseProps {}
@@ -95,82 +95,93 @@ export default function Button({
     icon && children == null && styles.iconOnly,
   );
 
-  const disclosureIconMarkup = disclosure
-    ? <span className={styles.Icon}><Icon source={loading ? 'placeholder' : 'caretDown'} /></span>
-    : null;
+  const disclosureIconMarkup = disclosure ? (
+    <span className={styles.Icon}>
+      <Icon source={loading ? 'placeholder' : 'caretDown'} />
+    </span>
+  ) : null;
 
-  const iconMarkup = icon
-    ? <span className={styles.Icon}><Icon source={loading ? 'placeholder' : icon} /></span>
-    : null;
+  const iconMarkup = icon ? (
+    <span className={styles.Icon}>
+      <Icon source={loading ? 'placeholder' : icon} />
+    </span>
+  ) : null;
 
   const childMarkup = children ? <span>{children}</span> : null;
 
   const spinnerColor = primary || destructive ? 'white' : 'inkLightest';
 
-  const spinnerSVGMarkup = loading
-    ? (
-      <span className={styles.Spinner}>
-        <Spinner size="small" color={spinnerColor} accessibilityLabel="Loading" />
-      </span>
-    )
-    : null;
+  const spinnerSVGMarkup = loading ? (
+    <span className={styles.Spinner}>
+      <Spinner size="small" color={spinnerColor} accessibilityLabel="Loading" />
+    </span>
+  ) : null;
 
-  const content = iconMarkup || disclosureIconMarkup
-    ? (
+  const content =
+    iconMarkup || disclosureIconMarkup ? (
       <span className={styles.Content}>
         {spinnerSVGMarkup}
         {iconMarkup}
         {childMarkup}
         {disclosureIconMarkup}
       </span>
-    )
-    : <span className={styles.Content}>{spinnerSVGMarkup}{childMarkup}</span>;
+    ) : (
+      <span className={styles.Content}>
+        {spinnerSVGMarkup}
+        {childMarkup}
+      </span>
+    );
 
   const type = submit ? 'submit' : 'button';
 
-  return (
-    url
-    ? (
-      <UnstyledLink
-        id={id}
-        url={url}
-        external={external}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onMouseUp={handleMouseUpByBlurring}
-        className={className}
-        disabled={isDisabled}
-        aria-label={accessibilityLabel}
-      >
-        {content}
-      </UnstyledLink>
-    )
-    : (
-      <button
-        id={id}
-        type={type}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onMouseUp={handleMouseUpByBlurring}
-        className={className}
-        disabled={isDisabled}
-        aria-label={accessibilityLabel}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        role={loading ? 'alert' : undefined}
-        aria-busy={loading ? true : undefined}
-      >
-        {content}
-      </button>
-    )
+  return url ? (
+    <UnstyledLink
+      id={id}
+      url={url}
+      external={external}
+      onClick={onClick}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onMouseUp={handleMouseUpByBlurring}
+      className={className}
+      disabled={isDisabled}
+      aria-label={accessibilityLabel}
+    >
+      {content}
+    </UnstyledLink>
+  ) : (
+    <button
+      id={id}
+      type={type}
+      onClick={onClick}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onMouseUp={handleMouseUpByBlurring}
+      className={className}
+      disabled={isDisabled}
+      aria-label={accessibilityLabel}
+      aria-controls={ariaControls}
+      aria-expanded={ariaExpanded}
+      role={loading ? 'alert' : undefined}
+      aria-busy={loading ? true : undefined}
+    >
+      {content}
+    </button>
   );
 }
 
-export function buttonsFrom(action: ComplexAction, overrides?: Partial<Props>): React.ReactElement<Props>;
-export function buttonsFrom(actions: ComplexAction[], overrides?: Partial<Props>): React.ReactElement<Props>[];
-export function buttonsFrom(actions: ComplexAction[] | ComplexAction, overrides: Partial<Props> = {}) {
+export function buttonsFrom(
+  action: ComplexAction,
+  overrides?: Partial<Props>,
+): React.ReactElement<Props>;
+export function buttonsFrom(
+  actions: ComplexAction[],
+  overrides?: Partial<Props>,
+): React.ReactElement<Props>[];
+export function buttonsFrom(
+  actions: ComplexAction[] | ComplexAction,
+  overrides: Partial<Props> = {},
+) {
   if (Array.isArray(actions)) {
     return actions.map((action, index) => buttonFrom(action, overrides, index));
   } else {
@@ -185,12 +196,8 @@ export function buttonFrom(
   key?: any,
 ) {
   return (
-    <Button
-      key={key}
-      children={content}
-      onClick={onAction}
-      {...action}
-      {...overrides}
-    />
+    <Button key={key} onClick={onAction} {...action} {...overrides}>
+      {content}
+    </Button>
   );
 }

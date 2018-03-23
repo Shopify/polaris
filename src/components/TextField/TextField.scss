@@ -19,7 +19,6 @@ $stacking-order: (
 
 .multiline {
   padding: 0;
-  overflow: hidden;
 
   > .Input {
     overflow: auto;
@@ -79,7 +78,6 @@ $stacking-order: (
 
   > .Backdrop {
     background-color: color(sky, lighter);
-    border: border();
     box-shadow: none;
   }
 }
@@ -190,6 +188,7 @@ $stacking-order: (
   right: 0;
   height: 0;
   visibility: hidden;
+  overflow: hidden;
 }
 
 .DummyInput {

@@ -14,13 +14,13 @@ export {Action, labelID};
 export type Error = boolean | string;
 
 export interface Props {
-  id: LabelProps['id'],
-  label: string,
-  error?: Error,
-  action?: Action,
-  helpText?: React.ReactNode,
-  children?: React.ReactNode,
-  labelHidden?: boolean,
+  id: LabelProps['id'];
+  label: string;
+  error?: Error;
+  action?: Action;
+  helpText?: React.ReactNode;
+  children?: React.ReactNode;
+  labelHidden?: boolean;
 }
 
 export default function Labelled({
@@ -31,39 +31,36 @@ export default function Labelled({
   helpText,
   children,
   labelHidden,
-  ...rest,
+  ...rest
 }: Props) {
-  const className = classNames(
-    labelHidden && styles.hidden,
-  );
+  const className = classNames(labelHidden && styles.hidden);
 
-  const actionMarkup = action
-    ? buttonFrom(action, {plain: true})
-    : null;
+  const actionMarkup = action ? buttonFrom(action, {plain: true}) : null;
 
-  const helpTextMarkup = helpText
-    ? <div className={styles.HelpText} id={helpTextID(id)}>{helpText}</div>
-    : null;
+  const helpTextMarkup = helpText ? (
+    <div className={styles.HelpText} id={helpTextID(id)}>
+      {helpText}
+    </div>
+  ) : null;
 
-  const errorMarkup = typeof error === 'string'
-    ? (
+  const errorMarkup =
+    typeof error === 'string' ? (
       <div id={errorID(id)} className={styles.Error}>
         <div className={styles.ErrorIcon}>
           <Icon source="alert" />
         </div>
         {error}
       </div>
-    )
-    : null;
+    ) : null;
 
-  const labelMarkup = label
-    ? (
-      <div className={styles.LabelWrapper}>
-        <Label id={id} {...rest} hidden={false}>{label}</Label>
-        {actionMarkup}
-      </div>
-    )
-    : null;
+  const labelMarkup = label ? (
+    <div className={styles.LabelWrapper}>
+      <Label id={id} {...rest} hidden={false}>
+        {label}
+      </Label>
+      {actionMarkup}
+    </div>
+  ) : null;
 
   return (
     <div className={className}>

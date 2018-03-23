@@ -2,24 +2,24 @@ import Messenger from '../Messenger';
 import Modal from './Modal';
 
 export interface SelectionResult {
-  products?: object[],
-  collections?: object[],
+  products?: object[];
+  collections?: object[];
 }
 export interface OpenOptions {
   /** The title of the picker */
-  title?: string,
+  title?: string;
   /** Whether to allow the merchant to select products */
-  products?: boolean,
+  products?: boolean;
   /** Whether to allow the merchant to select collections */
-  collections?: boolean,
+  collections?: boolean;
   /** Whether multiple selections are allowed */
-  allowMultiple?: boolean,
+  allowMultiple?: boolean;
   /** Whether to display resources that are not published (hidden) in the context of a channel. Defaults to true. */
-  showHidden?: boolean,
+  showHidden?: boolean;
   /** Callback when the picker is closed without selection */
-  onCancel?(): void,
+  onCancel?(): void;
   /** Callback after a selection was made */
-  onSelection?(resources: SelectionResult): void,
+  onSelection?(resources: SelectionResult): void;
 }
 
 export default class ResourcePicker {
@@ -29,33 +29,53 @@ export default class ResourcePicker {
     this.modal.close();
   }
 
-  open({title, products, collections, allowMultiple = false, showHidden = true, onCancel, onSelection}: OpenOptions) {
+  open({
+    title,
+    products,
+    collections,
+    allowMultiple = false,
+    showHidden = true,
+    onCancel,
+    onSelection,
+  }: OpenOptions) {
     this.modal.storeCloseCallback((success: boolean, data: any) => {
       if (!success) {
-        if (onCancel != null) { onCancel(); }
+        if (onCancel != null) {
+          onCancel();
+        }
         return;
       }
 
-      if (onSelection == null) { return; }
+      if (onSelection == null) {
+        return;
+      }
       onSelection(data);
     });
 
     const resources: string[] = [];
-    if (products) { resources.push('products'); }
-    if (collections) { resources.push('collections'); }
+    if (products) {
+      resources.push('products');
+    }
+    if (collections) {
+      resources.push('collections');
+    }
 
     if (collections) {
       this.messenger.send('Shopify.API.Modal.collectionPicker', {
         title,
         selectMultiple: allowMultiple,
+        // eslint-disable-next-line camelcase
         show_hidden: showHidden,
+        // eslint-disable-next-line camelcase
         selectable_resources: resources,
       });
     } else {
       this.messenger.send('Shopify.API.Modal.productPicker', {
         title,
         selectMultiple: allowMultiple,
+        // eslint-disable-next-line camelcase
         show_hidden: showHidden,
+        // eslint-disable-next-line camelcase
         selectable_resources: resources,
       });
     }

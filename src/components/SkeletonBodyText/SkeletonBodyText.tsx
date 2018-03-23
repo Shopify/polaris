@@ -2,8 +2,11 @@ import * as React from 'react';
 import * as styles from './SkeletonBodyText.scss';
 
 export interface Props {
-  /** Number of lines to display */
-  lines?: number,
+  /**
+   * Number of lines to display
+   * @default 3
+   */
+  lines?: number;
 }
 
 export default function SkeletonBodyText({lines = 3}: Props) {
@@ -13,5 +16,7 @@ export default function SkeletonBodyText({lines = 3}: Props) {
     bodyTextLines.push(<div className={styles.SkeletonBodyText} key={i} />);
   }
 
-  return <div className={styles.SkeletonBodyTextContainer}>{bodyTextLines}</div>;
+  return (
+    <div className={styles.SkeletonBodyTextContainer}>{bodyTextLines}</div>
+  );
 }

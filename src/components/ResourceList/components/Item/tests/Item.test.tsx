@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {findByTestID, shallowWithProvider, mountWithProvider} from '../../../../../../tests/utilities';
+import {
+  findByTestID,
+  shallowWithProvider,
+  mountWithProvider,
+} from '../../../../../../tests/utilities';
 
 import {UnstyledLink} from '../../../../';
 import Item from '../Item';
@@ -27,37 +31,25 @@ describe('<Item />', () => {
 
   describe('url', () => {
     it('does not renders a UnstyledLink by default', () => {
-      const element = shallowWithProvider(
-        <Item
-          id="itemId"
-          onClick={noop}
-        />,
-        {context: mockDefaultContext},
-      );
+      const element = shallowWithProvider(<Item id="itemId" onClick={noop} />, {
+        context: mockDefaultContext,
+      });
 
       expect(element.find(UnstyledLink).exists()).toBe(false);
     });
 
     it('renders a UnstyledLink', () => {
-      const element = shallowWithProvider(
-        <Item
-          id="itemId"
-          url={url}
-        />,
-        {context: mockDefaultContext},
-      );
+      const element = shallowWithProvider(<Item id="itemId" url={url} />, {
+        context: mockDefaultContext,
+      });
 
       expect(element.find(UnstyledLink).exists()).toBe(true);
     });
 
     it('renders a UnstyledLink with url', () => {
-      const element = shallowWithProvider(
-        <Item
-          id="itemId"
-          url={url}
-        />,
-        {context: mockDefaultContext},
-      );
+      const element = shallowWithProvider(<Item id="itemId" url={url} />, {
+        context: mockDefaultContext,
+      });
 
       expect(element.find(UnstyledLink).prop('url')).toBe(url);
     });
@@ -67,10 +59,7 @@ describe('<Item />', () => {
     it('is used on the content node and for the description of a link', () => {
       const id = 'itemId';
       const item = mountWithProvider(
-        <Item
-          id={id}
-          url="https://shopify.com"
-        />,
+        <Item id={id} url="https://shopify.com" />,
         {context: mockDefaultContext},
       );
 
@@ -83,13 +72,9 @@ describe('<Item />', () => {
     it('calls onClick when clicking on the item when onClick exist', () => {
       const id = 'itemId';
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
-        <Item
-          id={id}
-          onClick={onClick}
-        />,
-        {context: mockDefaultContext},
-      );
+      const wrapper = mountWithProvider(<Item id={id} onClick={onClick} />, {
+        context: mockDefaultContext,
+      });
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
       expect(onClick).toBeCalledWith(id);
@@ -99,11 +84,7 @@ describe('<Item />', () => {
       const id = 'itemId';
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item
-          id={id}
-          onClick={onClick}
-          url={url}
-        />,
+        <Item id={id} onClick={onClick} url={url} />,
         {context: mockDefaultContext},
       );
 
@@ -116,13 +97,9 @@ describe('<Item />', () => {
     it('it should not call onClick when clicking the item', () => {
       const id = 'itemId';
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
-        <Item
-          id={id}
-          onClick={onClick}
-        />,
-        {context: mockSelectableContext},
-      );
+      const wrapper = mountWithProvider(<Item id={id} onClick={onClick} />, {
+        context: mockSelectableContext,
+      });
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
       expect(onClick).not.toBeCalledWith(id);
@@ -132,16 +109,15 @@ describe('<Item />', () => {
       const id = 'itemId';
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item
-          id={id}
-          url={url}
-          onClick={onClick}
-        />,
+        <Item id={id} url={url} onClick={onClick} />,
         {context: mockSelectableContext},
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(true, id);
+      expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(
+        true,
+        id,
+      );
     });
   });
 });

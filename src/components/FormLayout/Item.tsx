@@ -2,11 +2,9 @@ import * as React from 'react';
 import * as styles from './FormLayout.scss';
 
 export interface Props {
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default function Item(props: Props) {
-  return (
-    <div className={styles.Item}>{props.children}</div>
-  );
+  return <div className={styles.Item}>{props.children}</div>;
 }

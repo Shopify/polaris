@@ -2,8 +2,7 @@ import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {noop} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
@@ -24,26 +23,26 @@ export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
 export interface GenericProps extends WithProviderProps {
-  id: string,
-  media?: React.ReactElement<AvatarProps | ThumbnailProps>,
-  shortcutActions?: DisableableAction[],
-  children?: React.ReactNode,
+  id: string;
+  media?: React.ReactElement<AvatarProps | ThumbnailProps>;
+  shortcutActions?: DisableableAction[];
+  children?: React.ReactNode;
 }
 
 export interface PropsWithUrl extends GenericProps {
-  url: string,
-  onClick?(id?: string): void,
+  url: string;
+  onClick?(id?: string): void;
 }
 
 export interface PropsWithClick extends GenericProps {
-  url?: string,
-  onClick(id?: string): void,
+  url?: string;
+  onClick(id?: string): void;
 }
 
 export interface State {
-  actionsMenuVisible: boolean,
-  focused: boolean,
-  focusedInner: boolean,
+  actionsMenuVisible: boolean;
+  focused: boolean;
+  focusedInner: boolean;
 }
 
 export type CombinedProps = PropsWithUrl | PropsWithClick;
@@ -73,25 +72,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {
-      children,
-      url,
-      media,
-      shortcutActions,
-      polaris: {intl},
-    } = this.props;
+    const {children, url, media, shortcutActions, polaris: {intl}} = this.props;
 
-    const {
-      persistActions = false,
-      selectable,
-      selectMode,
-    } = this.context;
+    const {persistActions = false, selectable, selectMode} = this.context;
 
-    const {
-      actionsMenuVisible,
-      focused,
-      focusedInner,
-    } = this.state;
+    const {actionsMenuVisible, focused, focusedInner} = this.state;
 
     const selected = this.isSelected();
 
@@ -112,11 +97,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         mediaType = 'thumbnail';
       }
 
-      mediaMarkup = (
-        <div className={styles.Media}>
-          {media}
-        </div>
-      );
+      mediaMarkup = <div className={styles.Media}>{media}</div>;
     }
 
     if (selectable) {
@@ -172,7 +153,16 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         disclosureMarkup = (
           <div className={styles.Disclosure} onClick={stopPropagation}>
             <Popover
-              activator={<Button aria-label={intl.translate('Polaris.ResourceList.Item.actionsDropdown')} onClick={this.handleActionsClick} plain icon="horizontalDots" />}
+              activator={
+                <Button
+                  aria-label={intl.translate(
+                    'Polaris.ResourceList.Item.actionsDropdown',
+                  )}
+                  onClick={this.handleActionsClick}
+                  plain
+                  icon="horizontalDots"
+                />
+              }
               onClose={this.handleCloseRequest}
               active={actionsMenuVisible}
             >
@@ -191,16 +181,16 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    const content = children
-      ? (
-        <div className={styles.Content}>
-          {children}
-        </div>
-      )
-      : null;
+    const content = children ? (
+      <div className={styles.Content}>{children}</div>
+    ) : null;
 
     const containerMarkup = (
-      <div testID="Item-Content" className={styles.Container} id={this.props.id}>
+      <div
+        testID="Item-Content"
+        className={styles.Container}
+        id={this.props.id}
+      >
         {ownedMarkup}
         {content}
         {actionsMarkup}
@@ -208,17 +198,15 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       </div>
     );
 
-    const urlMarkup = url
-      ? (
-        <UnstyledLink
-          aria-describedby={this.props.id}
-          className={styles.Link}
-          url={url}
-          onFocus={this.handleAnchorFocus}
-          onBlur={this.handleFocusedBlur}
-        />
-      )
-      : null;
+    const urlMarkup = url ? (
+      <UnstyledLink
+        aria-describedby={this.props.id}
+        className={styles.Link}
+        url={url}
+        onFocus={this.handleAnchorFocus}
+        onBlur={this.handleFocusedBlur}
+      />
+    ) : null;
 
     const tabIndex = url ? -1 : 0;
     const role = url ? undefined : 'button';
@@ -270,7 +258,10 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
     const isInside = this.compareEventNode(event);
-    if (this.node == null || !this.node.contains(event.relatedTarget as HTMLElement)) {
+    if (
+      this.node == null ||
+      !this.node.contains(event.relatedTarget as HTMLElement)
+    ) {
       this.setState({focused: false, focusedInner: false});
     } else if (isInside) {
       this.setState({focusedInner: true});
@@ -287,7 +278,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   private handleSelection(value: boolean) {
     const {id} = this.props;
     const {onSelectionChange} = this.context;
-    if (id == null || onSelectionChange == null) { return; }
+    if (id == null || onSelectionChange == null) {
+      return;
+    }
     this.setState({focused: true, focusedInner: true});
     onSelectionChange(value, id);
   }
@@ -303,7 +296,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    if (anchor === event.target) { return; }
+    if (anchor === event.target) {
+      return;
+    }
 
     if (onClick) {
       onClick(id);
@@ -343,7 +338,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   private isSelected() {
     const {id} = this.props;
     const {selectedItems} = this.context;
-    return selectedItems && ((Array.isArray(selectedItems) && selectedItems.includes(id)) || selectedItems === SELECT_ALL_ITEMS);
+    return (
+      selectedItems &&
+      ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
+        selectedItems === SELECT_ALL_ITEMS)
+    );
   }
 
   private compareEventNode(event: React.FocusEvent<HTMLElement>) {

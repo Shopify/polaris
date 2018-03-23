@@ -10,11 +10,7 @@ import {
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../FilterValueSelector';
 import {FilterType} from '../types';
-import {
-  Button,
-  Select,
-  Popover,
-} from '../../../../';
+import {Button, Select, Popover} from '../../../../';
 
 describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {
@@ -47,15 +43,15 @@ describe('<FilterCreator />', () => {
       singular: 'Item',
       plural: 'Items',
     },
+    disabled: false,
   };
 
   it('renders just a button by default', () => {
-    const wrapper = mountWithProvider(
-      <FilterCreator {...mockDefaultProps} />,
-    );
+    const wrapper = mountWithProvider(<FilterCreator {...mockDefaultProps} />);
 
-    expect(findByTestID(wrapper, 'FilterCreator-FilterActivator').exists())
-      .toBe(true);
+    expect(
+      findByTestID(wrapper, 'FilterCreator-FilterActivator').exists(),
+    ).toBe(true);
     expect(wrapper.find(Button)).toHaveLength(1);
     expect(wrapper.find(Select).exists()).toBe(false);
   });
@@ -69,9 +65,7 @@ describe('<FilterCreator />', () => {
   });
 
   it('renders a active popover with a Select on click of the activator button', () => {
-    const wrapper = mountWithProvider(
-      <FilterCreator {...mockDefaultProps} />,
-    );
+    const wrapper = mountWithProvider(<FilterCreator {...mockDefaultProps} />);
 
     activatePopover(wrapper);
 
@@ -82,10 +76,7 @@ describe('<FilterCreator />', () => {
   it('renders a non-active popover after add filter button was clicked and onAddFilter was triggered', () => {
     const onAddFilter = jest.fn();
     const wrapper = mountWithProvider(
-      <FilterCreator
-        {...mockDefaultProps}
-        onAddFilter={onAddFilter}
-      />,
+      <FilterCreator {...mockDefaultProps} onAddFilter={onAddFilter} />,
     );
 
     activatePopover(wrapper);
@@ -100,10 +91,7 @@ describe('<FilterCreator />', () => {
   it('does not renders FilterValueSelector after add filter button was clicked', () => {
     const onAddFilter = jest.fn();
     const wrapper = mountWithProvider(
-      <FilterCreator
-        {...mockDefaultProps}
-        onAddFilter={onAddFilter}
-      />,
+      <FilterCreator {...mockDefaultProps} onAddFilter={onAddFilter} />,
     );
 
     activatePopover(wrapper);
@@ -118,19 +106,26 @@ describe('<FilterCreator />', () => {
   it('renders Select with no value after add filter button was clicked', () => {
     const onAddFilter = jest.fn();
     const wrapper = mountWithProvider(
-      <FilterCreator
-        {...mockDefaultProps}
-        onAddFilter={onAddFilter}
-      />,
+      <FilterCreator {...mockDefaultProps} onAddFilter={onAddFilter} />,
     );
 
     activatePopover(wrapper);
     selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
     selectFilterValue(wrapper, 'Bundle');
 
-    expect(wrapper.find(Select).at(0).prop('value')).toBeDefined();
+    expect(
+      wrapper
+        .find(Select)
+        .at(0)
+        .prop('value'),
+    ).toBeDefined();
     clickAddFilter(wrapper);
-    expect(wrapper.find(Select).at(0).prop('value')).toBeUndefined();
+    expect(
+      wrapper
+        .find(Select)
+        .at(0)
+        .prop('value'),
+    ).toBeUndefined();
   });
 
   describe('filters', () => {
@@ -142,8 +137,14 @@ describe('<FilterCreator />', () => {
       activatePopover(wrapper);
 
       expect(findFilterKeySelect(wrapper).prop('options')).toMatchObject([
-        {value: mockDefaultProps.filters[0].key, label: mockDefaultProps.filters[0].label},
-        {value: mockDefaultProps.filters[1].key, label: mockDefaultProps.filters[1].label},
+        {
+          value: mockDefaultProps.filters[0].key,
+          label: mockDefaultProps.filters[0].label,
+        },
+        {
+          value: mockDefaultProps.filters[1].key,
+          label: mockDefaultProps.filters[1].label,
+        },
       ]);
     });
   });
@@ -156,8 +157,7 @@ describe('<FilterCreator />', () => {
 
       activatePopover(wrapper);
 
-      expect(wrapper.find(FilterValueSelector).exists())
-        .toBe(false);
+      expect(wrapper.find(FilterValueSelector).exists()).toBe(false);
     });
 
     it('updates FilterValueSelector when user select a filter key', () => {
@@ -168,10 +168,10 @@ describe('<FilterCreator />', () => {
       activatePopover(wrapper);
       selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
 
-      expect(wrapper.find(FilterValueSelector).prop('filter'))
-        .toMatchObject(mockDefaultProps.filters[0]);
-      expect(wrapper.find(FilterValueSelector).prop('value'))
-        .toBeUndefined();
+      expect(wrapper.find(FilterValueSelector).prop('filter')).toMatchObject(
+        mockDefaultProps.filters[0],
+      );
+      expect(wrapper.find(FilterValueSelector).prop('value')).toBeUndefined();
     });
 
     it('updates value correctly when user select a filter value', () => {
@@ -183,8 +183,7 @@ describe('<FilterCreator />', () => {
       selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
       selectFilterValue(wrapper, 'Bundle');
 
-      expect(wrapper.find(FilterValueSelector).prop('value'))
-        .toBe('Bundle');
+      expect(wrapper.find(FilterValueSelector).prop('value')).toBe('Bundle');
     });
   });
 
@@ -199,10 +198,7 @@ describe('<FilterCreator />', () => {
       selectFilterValue(wrapper, 'Bundle');
 
       expect(
-        findByTestID(
-          wrapper,
-          'FilterCreator-AddFilterButton',
-        ).prop('disabled'),
+        findByTestID(wrapper, 'FilterCreator-AddFilterButton').prop('disabled'),
       ).toBe(false);
     });
 
@@ -215,10 +211,7 @@ describe('<FilterCreator />', () => {
       selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
 
       expect(
-        findByTestID(
-          wrapper,
-          'FilterCreator-AddFilterButton',
-        ).prop('disabled'),
+        findByTestID(wrapper, 'FilterCreator-AddFilterButton').prop('disabled'),
       ).toBe(true);
     });
 
@@ -232,23 +225,16 @@ describe('<FilterCreator />', () => {
       selectFilterValue(wrapper, '');
 
       expect(
-        findByTestID(
-          wrapper,
-          'FilterCreator-AddFilterButton',
-        ).prop('disabled'),
+        findByTestID(wrapper, 'FilterCreator-AddFilterButton').prop('disabled'),
       ).toBe(true);
     });
-
   });
 
   describe('onAddFilter', () => {
     it('gets call with selected filter key & value when both value are valid and add filter button was clicked', () => {
       const onAddFilter = jest.fn();
       const wrapper = mountWithProvider(
-        <FilterCreator
-          {...mockDefaultProps}
-          onAddFilter={onAddFilter}
-        />,
+        <FilterCreator {...mockDefaultProps} onAddFilter={onAddFilter} />,
       );
 
       activatePopover(wrapper);
@@ -265,23 +251,14 @@ describe('<FilterCreator />', () => {
 });
 
 function activatePopover(wrapper: ReactWrapper<Props, any>) {
-  trigger(
-    findByTestID(
-      wrapper,
-      'FilterCreator-FilterActivator',
-    ),
-    'onClick',
-  );
+  trigger(findByTestID(wrapper, 'FilterCreator-FilterActivator'), 'onClick');
 }
 
 function findFilterKeySelect(popover: ReactWrapper<Props, any>) {
   return popover.find(Select);
 }
 
-function selectFilterKey(
-  wrapper: ReactWrapper<Props, any>,
-  filterKey: string,
-) {
+function selectFilterKey(wrapper: ReactWrapper<Props, any>, filterKey: string) {
   trigger(wrapper.find(Select), 'onChange', filterKey);
 }
 
@@ -289,19 +266,9 @@ function selectFilterValue(
   wrapper: ReactWrapper<Props, any>,
   filterValue: string,
 ) {
-  trigger(
-    wrapper.find(FilterValueSelector),
-    'onChange',
-    filterValue,
-  );
+  trigger(wrapper.find(FilterValueSelector), 'onChange', filterValue);
 }
 
 function clickAddFilter(wrapper: ReactWrapper<Props, any>) {
-  trigger(
-    findByTestID(
-      wrapper,
-      'FilterCreator-AddFilterButton',
-    ),
-    'onClick',
-  );
+  trigger(findByTestID(wrapper, 'FilterCreator-AddFilterButton'), 'onClick');
 }

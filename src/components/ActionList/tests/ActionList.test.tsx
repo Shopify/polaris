@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
 import ActionList from '../ActionList';
+import Item from '../Item';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -23,7 +24,13 @@ describe('<ActionList />', () => {
   it('fires onActionAnyItem on click or keypress of an anchor item', () => {
     const actionList = mount(
       <ActionList
-        items={[{content: 'Share on Facebook', url: 'https://facebook.com', external: true}]}
+        items={[
+          {
+            content: 'Share on Facebook',
+            url: 'https://facebook.com',
+            external: true,
+          },
+        ]}
         onActionAnyItem={mockOnActionAnyItem}
       />,
     );
@@ -42,5 +49,22 @@ describe('<ActionList />', () => {
     actionList.find('button').simulate('click');
     expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
     expect(mockOnAction).toHaveBeenCalledTimes(1);
+  });
+
+  it('generates a unique key for each item from the content and index', () => {
+    const items = [
+      {
+        content: 'Add Discount',
+      },
+      {
+        content: 'Share on Facebook',
+      },
+    ];
+
+    const actionList = mount(<ActionList items={items} />);
+    actionList.find(Item).forEach((item, index) => {
+      const expectedKey = `${items[index].content}-${index}`;
+      expect(item.key()).toBe(expectedKey);
+    });
   });
 });

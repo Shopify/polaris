@@ -6,19 +6,18 @@ import * as styles from './Thumbnail.scss';
 export type Size = 'small' | 'medium' | 'large';
 
 export interface Props {
-  /** Size of thumbnail */
-  size?: Size,
+  /**
+   * Size of thumbnail
+   * @default 'medium'
+   */
+  size?: Size;
   /** URL for the image */
-  source: string,
+  source: string;
   /** Alt text for the thumbnail image */
-  alt: string,
+  alt: string;
 }
 
-export default function Thumbnail({
-  source,
-  alt,
-  size = 'medium',
-}: Props) {
+export default function Thumbnail({source, alt, size = 'medium'}: Props) {
   const className = classNames(
     styles.Thumbnail,
     size && styles[variationName('size', size)],

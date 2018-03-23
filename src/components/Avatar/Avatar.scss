@@ -9,7 +9,7 @@ $large-size: rem(60px);
   min-width: $small-size;
   max-width: 100%;
   background: color(teal);
-  border-radius: 50%;
+  border-radius: $large-size / 2;
   user-select: none;
 
   &::after {
@@ -55,12 +55,17 @@ $large-size: rem(60px);
   background: color(purple);
 }
 
+.hasImage {
+  background: transparent;
+}
+
 .Image {
   width: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  border-radius: $large-size / 2;
+  transform: translate(-50%, -50%);
 }
 
 .Initials {

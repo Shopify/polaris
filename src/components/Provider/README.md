@@ -19,7 +19,7 @@ Provider is a required component that enables sharing global settings throughout
 
 ## Best practices
 
-Provider is required. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the provider component. We've created [several examples to show how that's done](https://github.com/Shopify/polaris/blob/master/examples/README.md).
+Provider is required. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the provider component. We’ve created [several examples to show how that's done](https://github.com/Shopify/polaris/blob/v2/examples/README.md).
 
 ## Examples
 
@@ -69,10 +69,12 @@ With an `i18n` object, the provider component will override default English tran
 
 ```jsx
 <Provider i18n={ {
-  'ResourceList': {
-    showing: '{itemsCount} {resource} affichés',
-    defaultItemPlural: 'articles',
-    defaultItemSingular: 'article'
+  'Polaris': {
+    'ResourceList': {
+      showing: '{itemsCount} {resource} affichés',
+      defaultItemPlural: 'articles',
+      defaultItemSingular: 'article'
+    }
   }
 } }>
   <Page>

@@ -4,33 +4,31 @@ import * as styles from './Link.scss';
 
 export interface Props {
   /** ID for the link */
-  id?: string,
+  id?: string;
   /** The url to link to */
-  url?: string,
+  url?: string;
   /** The content to display inside link */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Use for a links that open a different site */
-  external?: boolean,
+  external?: boolean;
   /** Callback when a link is clicked */
-  onClick?(): void,
+  onClick?(): void;
 }
 
-export default function Link({
-  id,
-  url,
-  children,
-  onClick,
-  external,
-}: Props) {
-  return url
-    ? (
-      <UnstyledLink id={id} onClick={onClick} className={styles.Link} url={url} external={external}>
-        {children}
-      </UnstyledLink>
-    )
-    : (
-      <button id={id} onClick={onClick} className={styles.Link}>
-        {children}
-      </button>
-    );
+export default function Link({url, children, onClick, external, id}: Props) {
+  return url ? (
+    <UnstyledLink
+      onClick={onClick}
+      className={styles.Link}
+      url={url}
+      external={external}
+      id={id}
+    >
+      {children}
+    </UnstyledLink>
+  ) : (
+    <button onClick={onClick} className={styles.Link} id={id}>
+      {children}
+    </button>
+  );
 }

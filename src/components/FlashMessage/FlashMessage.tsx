@@ -6,11 +6,11 @@ import Portal from '../Portal';
 import * as styles from './FlashMessage.scss';
 
 export interface Props {
-  children?: React.ReactNode,
-  dismissible?: boolean,
-  error?: boolean,
-  duration: number,
-  onDismiss?(): void,
+  children?: React.ReactNode;
+  dismissible?: boolean;
+  error?: boolean;
+  duration: number;
+  onDismiss?(): void;
 }
 
 export default class FlashMessage extends React.Component<Props, never> {
@@ -23,29 +23,19 @@ export default class FlashMessage extends React.Component<Props, never> {
   }
 
   render() {
-    const {
-      children,
-      dismissible,
-      onDismiss,
-      error,
-    } = this.props;
+    const {children, dismissible, onDismiss, error} = this.props;
 
-    const className = classNames(
-      styles.Content,
-      error && styles.error,
-    );
+    const className = classNames(styles.Content, error && styles.error);
 
-    const dismissMarkup = dismissible
-      ? (
-        <button
-          testID="button"
-          className={styles.CloseButton}
-          onClick={onDismiss}
-        >
-          <Icon source="cancel" />
-        </button>
-      )
-      : null;
+    const dismissMarkup = dismissible ? (
+      <button
+        testID="button"
+        className={styles.CloseButton}
+        onClick={onDismiss}
+      >
+        <Icon source="cancel" />
+      </button>
+    ) : null;
 
     return (
       <Portal idPrefix="flashMessage">

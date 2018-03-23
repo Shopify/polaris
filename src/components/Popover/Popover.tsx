@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {focusFirstFocusableNode, findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import {
+  focusFirstFocusableNode,
+  findFirstFocusableNode,
+} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
 import Portal from '../Portal';
@@ -13,30 +16,33 @@ export {CloseSource};
 
 export interface Props {
   /** The content to display inside the popover */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** The preferred direction to open the popover */
-  preferredPosition?: PreferredPosition,
+  preferredPosition?: PreferredPosition;
   /** Show or hide the Popover */
-  active: boolean,
+  active: boolean;
   /** The element to activate the Popover */
-  activator: React.ReactElement<any>,
-  /** The element type to wrap the activator with */
-  activatorWrapper?: string,
+  activator: React.ReactElement<any>;
+  /**
+   * The element type to wrap the activator with
+   * @default 'div'
+   */
+  activatorWrapper?: string;
   /** Prevent automatic focus of the first field on activation */
-  preventAutofocus?: boolean,
+  preventAutofocus?: boolean;
   /** Automatically add wrap content in a section */
-  sectioned?: boolean,
+  sectioned?: boolean;
   /** Allow popover to stretch to the full width of it's activator */
-  fullWidth?: boolean,
+  fullWidth?: boolean;
   /** Allow popover to stretch to fit content vertically */
-  fullHeight?: boolean,
+  fullHeight?: boolean;
   /** Callback when popover is closed */
-  onClose(source: CloseSource): void,
+  onClose(source: CloseSource): void;
 }
 
 export interface State {
-  activatorFocused: boolean,
-  activatorNode: HTMLElement | null,
+  activatorFocused: boolean;
+  activatorNode: HTMLElement | null;
 }
 
 const getUniqueID = createUniqueIDFactory('Popover');
@@ -67,30 +73,27 @@ export default class Popover extends React.PureComponent<Props, State> {
       children,
       onClose,
       activator,
+      activatorWrapper,
       active,
-      ...rest,
+      ...rest
     } = this.props;
 
-    const {
-      activatorNode,
-    } = this.state;
+    const {activatorNode} = this.state;
 
-    const portal = activatorNode
-      ? (
-        <Portal idPrefix="popover" testID="portal">
-          <PopoverOverlay
-            testID="popoverOverlay"
-            id={this.id}
-            activator={activatorNode}
-            onClose={this.handleClose}
-            active={active}
-            {...rest}
-          >
-            {children}
-          </PopoverOverlay>
-        </Portal>
-      )
-      : null;
+    const portal = activatorNode ? (
+      <Portal idPrefix="popover" testID="portal">
+        <PopoverOverlay
+          testID="popoverOverlay"
+          id={this.id}
+          activator={activatorNode}
+          onClose={this.handleClose}
+          active={active}
+          {...rest}
+        >
+          {children}
+        </PopoverOverlay>
+      </Portal>
+    ) : null;
 
     return (
       <WrapperComponent ref={this.setActivator}>
@@ -102,7 +105,9 @@ export default class Popover extends React.PureComponent<Props, State> {
 
   private setAccessibilityAttributes() {
     const {id, activatorContainer} = this;
-    if (activatorContainer == null) { return; }
+    if (activatorContainer == null) {
+      return;
+    }
 
     const firstFocusable = findFirstFocusableNode(activatorContainer);
     const focusableActivator = firstFocusable || activatorContainer;
@@ -117,7 +122,9 @@ export default class Popover extends React.PureComponent<Props, State> {
   private handleClose(source: CloseSource) {
     this.props.onClose(source);
 
-    if (this.activatorContainer == null) { return; }
+    if (this.activatorContainer == null) {
+      return;
+    }
     if (
       source === CloseSource.FocusOut ||
       source === CloseSource.EscapeKeypress

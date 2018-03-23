@@ -4,9 +4,9 @@ import {withProvider, WithProviderProps} from '../../../Provider';
 import {Filter, AppliedFilter, FilterType} from './types';
 
 export interface Props {
-  filter: Filter,
-  value?: AppliedFilter['value'],
-  onChange(filterValue: AppliedFilter['value']): void,
+  filter: Filter;
+  value?: AppliedFilter['value'];
+  onChange(filterValue: AppliedFilter['value']): void;
 }
 
 export type CombinedProps = Props & WithProviderProps;
@@ -23,7 +23,9 @@ class FilterValueSelector extends React.PureComponent<CombinedProps> {
           <Select
             label={selectedFilterLabel}
             options={filter.options}
-            placeholder={intl.translate('Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder')}
+            placeholder={intl.translate(
+              'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
+            )}
             value={value}
             onChange={onChange}
           />

@@ -6,12 +6,12 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import * as styles from './Tabs.scss';
 
 export interface Props {
-  id: string,
-  focused: boolean,
-  panelID?: string,
-  children?: React.ReactNode,
-  accessibilityLabel?: string,
-  onClick?(): void,
+  id: string;
+  focused: boolean;
+  panelID?: string;
+  children?: React.ReactNode;
+  accessibilityLabel?: string;
+  onClick?(): void;
 }
 
 export default class Item extends React.PureComponent<Props, never> {
@@ -36,11 +36,15 @@ export default class Item extends React.PureComponent<Props, never> {
   }
 
   render() {
-    const {id, children, panelID, onClick = noop, accessibilityLabel} = this.props;
+    const {
+      id,
+      children,
+      panelID,
+      onClick = noop,
+      accessibilityLabel,
+    } = this.props;
 
-    const className = classNames(
-      styles.Item,
-    );
+    const className = classNames(styles.Item);
 
     return (
       <li role="presentation">

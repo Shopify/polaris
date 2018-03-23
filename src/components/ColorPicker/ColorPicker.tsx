@@ -10,22 +10,22 @@ import Slidable, {Position} from './Slidable';
 import * as styles from './ColorPicker.scss';
 
 export interface State {
-  pickerSize: number,
+  pickerSize: number;
 }
 
 export interface Color extends HSBColor {
-  alpha?: HSBAColor['alpha'],
+  alpha?: HSBAColor['alpha'];
 }
 
 export interface BaseProps {
   /** ID for the element */
-  id?: string,
+  id?: string;
   /** The currently selected color */
-  color: Color,
+  color: Color;
   /** Allow user to select an alpha value */
-  allowAlpha?: boolean,
+  allowAlpha?: boolean;
   /** Callback when color is selected */
-  onChange(color: HSBAColor): void,
+  onChange(color: HSBAColor): void;
 }
 
 export interface Props extends BaseProps {}
@@ -39,8 +39,11 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     const {colorNode} = this;
-    if (colorNode == null) { return; }
+    if (colorNode == null) {
+      return;
+    }
 
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({pickerSize: colorNode.clientWidth});
 
     if (process.env.NODE_ENV === 'development') {
@@ -59,35 +62,30 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     const {red, green, blue} = hsbToRgb({hue, saturation: 1, brightness: 1});
     const colorString = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
     const draggerX = clamp(saturation * pickerSize, 0, pickerSize);
-    const draggerY = clamp(pickerSize - (brightness * pickerSize), 0, pickerSize);
+    const draggerY = clamp(pickerSize - brightness * pickerSize, 0, pickerSize);
 
-    const alphaSliderMarkup = allowAlpha
-      ? (
-        <AlphaPicker
-          alpha={alpha}
-          color={color}
-          onChange={this.handleAlphaChange}
-        />
-      )
-      : null;
+    const alphaSliderMarkup = allowAlpha ? (
+      <AlphaPicker
+        alpha={alpha}
+        color={color}
+        onChange={this.handleAlphaChange}
+      />
+    ) : null;
 
     return (
       <div className={styles.ColorPicker} id={id}>
-        <div
-          ref={this.setColorNode}
-          className={styles.MainColor}
-        >
-          <div className={styles.ColorLayer} style={{backgroundColor: colorString}} />
+        <div ref={this.setColorNode} className={styles.MainColor}>
+          <div
+            className={styles.ColorLayer}
+            style={{backgroundColor: colorString}}
+          />
           <Slidable
             onChange={this.handleDraggerMove}
             draggerX={draggerX}
             draggerY={draggerY}
           />
         </div>
-        <HuePicker
-          hue={hue}
-          onChange={this.handleHueChange}
-        />
+        <HuePicker hue={hue} onChange={this.handleHueChange} />
         {alphaSliderMarkup}
       </div>
     );

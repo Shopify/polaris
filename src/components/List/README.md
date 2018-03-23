@@ -1,6 +1,6 @@
 ---
 name: List
-category: Lists
+category: Lists and tables
 keywords:
   - bulleted lists
   - numbered lists
@@ -18,10 +18,11 @@ bullet, a number, or less commonly, with an icon.
 ---
 
 ## Best practices
+
 Lists should:
 
 * Break up chunks of related content to make the information easier for
-merchants to scan
+  merchants to scan
 * Be phrased consistently (e.g. try to start each item with a noun or a
   verb and be consistent with each item)
 * Not be used for lists of actionable choices that the merchants needs to choose between
@@ -38,34 +39,42 @@ Every item in a list should:
 * Not use commas or semicolons at the end of each line
 
 <!-- usagelist -->
+
 #### Do
-- Red
-- Yellow
-- Blue
+
+* Red
+* Yellow
+* Blue
 
 #### Don’t
-- Red;
-- Yellow;
-- Blue.
-<!-- end -->
 
-- Be written in sentence case
+* Red;
+* Yellow;
+* Blue.
+
+  <!-- end -->
+
+* Be written in sentence case
 
 <!-- usagelist -->
+
 #### Do
-- Item one
-- Item two
-- Item three
+
+* Item one
+* Item two
+* Item three
 
 #### Don’t
-- Item One
-- Item Two
-- Item Three
-<!-- end -->
+
+* Item One
+* Item Two
+* Item Three
+  <!-- end -->
 
 ### Icon list text
 
 When a line of text is placed next to an icon, it should:
+
 * Follow all the rules for list items
 * Elaborate on the meaning conveyed by the icon
 
@@ -100,5 +109,5 @@ Use for a text-only list of related items when an inherent order, priority, or s
 ## Related components
 
 * To create a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list)
-* To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](/components/lists/resource-list)
-* When text labels for each item are useful for describing the content, [use the Description List component](/components/lists/description-list)
+* To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](/components/lists-and-tables/resource-list)
+* When text labels for each item are useful for describing the content, [use the Description List component](/components/lists-and-tables/description-list)

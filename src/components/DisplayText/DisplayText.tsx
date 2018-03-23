@@ -6,12 +6,18 @@ import * as styles from './DisplayText.scss';
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export interface Props {
-  /** Name of element to use for text */
-  element?: HeadingTagName,
-  /** Size of the text */
-  size?: Size,
+  /**
+   * Name of element to use for text
+   * @default 'p'
+   */
+  element?: HeadingTagName;
+  /**
+   * Size of the text
+   * @default 'medium'
+   */
+  size?: Size;
   /** Content to display */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
 }
 
 export default function DisplayText({

@@ -8,11 +8,7 @@ describe('<Popover />', () => {
 
   it('renders a portal', () => {
     const popover = mount(
-      <Popover
-        active={false}
-        activator={<div>Activator</div>}
-        onClose={spy}
-      />,
+      <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
     );
     const portal = findByTestID(popover, 'portal');
     expect(portal.exists()).toBeTruthy();
@@ -32,11 +28,7 @@ describe('<Popover />', () => {
 
   it('renders a positionedOverlay when active is true', () => {
     const popover = mount(
-      <Popover
-        active
-        activator={<div>Activator</div>}
-        onClose={spy}
-      />,
+      <Popover active activator={<div>Activator</div>} onClose={spy} />,
     );
     const positionedOverlay = findByTestID(popover, 'positionedOverlay');
     expect(positionedOverlay.exists()).toBeTruthy();
@@ -44,11 +36,7 @@ describe('<Popover />', () => {
 
   it("doesn't render a popover when active is false", () => {
     const popover = mount(
-      <Popover
-        active={false}
-        activator={<div>Activator</div>}
-        onClose={spy}
-      />,
+      <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
     );
     const positionedOverlay = findByTestID(popover, 'positionedOverlay');
     expect(positionedOverlay.exists()).toBeFalsy();

@@ -31,15 +31,25 @@ describe('<CheckableButton />', () => {
     it('sets the aria-label attribute when provided', () => {
       const {accessibilityLabel} = CheckableButtonProps;
       const element = shallow(<CheckableButton {...CheckableButtonProps} />);
-      expect(element.find('div').first().prop('aria-label')).toEqual(accessibilityLabel);
+      expect(
+        element
+          .find('div')
+          .first()
+          .prop('aria-label'),
+      ).toEqual(accessibilityLabel);
     });
   });
 
   describe('onToggleAll', () => {
     it('is called when the CheckableButton is clicked', () => {
       const spy = jest.fn();
-      const element = mount(<CheckableButton {...CheckableButtonProps} onToggleAll={spy}/>);
-      element.find('div').first().simulate('click');
+      const element = mount(
+        <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
+      );
+      element
+        .find('div')
+        .first()
+        .simulate('click');
       expect(spy).toHaveBeenCalled();
     });
   });

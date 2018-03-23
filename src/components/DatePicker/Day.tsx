@@ -7,15 +7,15 @@ import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 import * as styles from './DatePicker.scss';
 
 export interface Props {
-  focused?: boolean,
-  day?: Date,
-  selected?: boolean,
-  inRange?: boolean,
-  inHoveringRange?: boolean,
-  disabled?: boolean,
-  onClick?(day: Date): void,
-  onHover?(day: Date): void,
-  onFocus?(day: Date): void,
+  focused?: boolean;
+  day?: Date;
+  selected?: boolean;
+  inRange?: boolean;
+  inHoveringRange?: boolean;
+  disabled?: boolean;
+  onClick?(day: Date): void;
+  onHover?(day: Date): void;
+  onFocus?(day: Date): void;
 }
 
 export default class Day extends React.PureComponent<Props, never> {
@@ -42,7 +42,7 @@ export default class Day extends React.PureComponent<Props, never> {
 
     const handleHover = onHover.bind(null, day);
     if (!day) {
-      return <div className={styles.EmptyDay} onMouseOver={handleHover}/>;
+      return <div className={styles.EmptyDay} onMouseOver={handleHover} />;
     }
     const handleClick = onClick && !disabled ? onClick.bind(null, day) : noop;
     const today = isSameDay(new Date(), day);
@@ -54,9 +54,8 @@ export default class Day extends React.PureComponent<Props, never> {
       (inRange || inHoveringRange) && !disabled && styles['Day-inRange'],
     );
     const date = day.getDate();
-    const tabIndex = (focused || selected || today || date === 1) && !disabled
-      ? 0
-      : -1;
+    const tabIndex =
+      (focused || selected || today || date === 1) && !disabled ? 0 : -1;
     const ariaLabel = [
       `${today ? 'Today ' : ''}`,
       `${Months[day.getMonth()]} `,
@@ -66,6 +65,7 @@ export default class Day extends React.PureComponent<Props, never> {
 
     return (
       <button
+        // eslint-disable-next-line react/jsx-no-bind
         onFocus={onFocus.bind(null, day)}
         ref={this.setNode}
         tabIndex={tabIndex}

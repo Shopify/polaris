@@ -19,13 +19,13 @@ import {DropZoneContext} from './types';
 import * as styles from './FileUpload.scss';
 
 export interface State {
-  actionTitle?: string,
-  actionHint?: string,
+  actionTitle?: string;
+  actionHint?: string;
 }
 
 export interface BaseProps {
-  actionTitle?: string,
-  actionHint?: string,
+  actionTitle?: string;
+  actionHint?: string;
 }
 
 export type Props = BaseProps & WithProviderProps;
@@ -44,7 +44,9 @@ class FileUpload extends React.Component<Props, State> {
     const {polaris: {intl: {translate}}} = props;
 
     this.state = {
-      actionTitle: translate(`Polaris.DropZone.FileUpload.actionTitle${suffix}`),
+      actionTitle: translate(
+        `Polaris.DropZone.FileUpload.actionTitle${suffix}`,
+      ),
       actionHint: translate(`Polaris.DropZone.FileUpload.actionHint${suffix}`),
     };
   }
@@ -73,35 +75,39 @@ class FileUpload extends React.Component<Props, State> {
     const {size, type} = this.context;
     const {actionTitle, actionHint} = this.state;
 
-    const largeView = size === 'large'
-    ? (
-      <Stack vertical>
-        { type === 'file' && <img className={styles.Image} src={AssetFileUpload} /> }
-        { type === 'image' && <img className={styles.Image} src={AssetImageUpload} /> }
-        <Button>{actionTitle}</Button>
-        <TextStyle variation="subdued">{actionHint}</TextStyle>
-      </Stack>
-    ) : null;
-
-    const mediumView = size === 'medium'
-    ? (
-      <Stack vertical spacing="tight">
-        <Link>{actionTitle}</Link>
-        <Caption>
+    const largeView =
+      size === 'large' ? (
+        <Stack vertical>
+          {type === 'file' && (
+            <img className={styles.Image} src={AssetFileUpload} alt="" />
+          )}
+          {type === 'image' && (
+            <img className={styles.Image} src={AssetImageUpload} alt="" />
+          )}
+          <Button>{actionTitle}</Button>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Caption>
-      </Stack>
-    ) : null;
+        </Stack>
+      ) : null;
 
-    const smallView =  size === 'small'
-    ? (
-      <Stack vertical spacing="tight">
-        <Icon source={IconDragDrop} color="inkLightest" />
-      </Stack>
-    ) : null;
+    const mediumView =
+      size === 'medium' ? (
+        <Stack vertical spacing="tight">
+          <Link>{actionTitle}</Link>
+          <Caption>
+            <TextStyle variation="subdued">{actionHint}</TextStyle>
+          </Caption>
+        </Stack>
+      ) : null;
+
+    const smallView =
+      size === 'small' ? (
+        <Stack vertical spacing="tight">
+          <Icon source={IconDragDrop} color="inkLightest" />
+        </Stack>
+      ) : null;
 
     return (
-      <div className={ styles.FileUpload }>
+      <div className={styles.FileUpload}>
         {smallView}
         {mediumView}
         {largeView}

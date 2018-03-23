@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
-import {addEventListener, removeEventListener} from '@shopify/javascript-utilities/events';
+import {
+  addEventListener,
+  removeEventListener,
+} from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
 
@@ -16,26 +19,28 @@ const PREFERS_REDUCED_MOTION = prefersReducedMotion();
 
 export interface Props extends React.HTMLProps<HTMLDivElement> {
   /** Content to display in scrollable area */
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   /** Scroll content vertically */
-  vertical?: boolean,
+  vertical?: boolean;
   /** Scroll content horizontally */
-  horizontal?: boolean,
+  horizontal?: boolean;
   /** Add a shadow when content is scrollable */
-  shadow?: boolean,
+  shadow?: boolean;
   /** Slightly hints content upon mounting when scrollable */
-  hint?: boolean,
+  hint?: boolean;
 }
 
 export interface State {
-  topShadow: boolean,
-  bottomShadow: boolean,
-  scrollPosition: number,
+  topShadow: boolean;
+  bottomShadow: boolean;
+  scrollPosition: number;
 }
 
 export default class Scrollable extends React.Component<Props, State> {
   static forNode(node: HTMLElement): HTMLElement | Document {
-    return (closest(node, scrollable.selector) as HTMLElement | null) || document;
+    return (
+      (closest(node, scrollable.selector) as HTMLElement | null) || document
+    );
   }
 
   state: State = {
@@ -47,19 +52,25 @@ export default class Scrollable extends React.Component<Props, State> {
   private scrollArea: HTMLElement | null;
 
   componentDidMount() {
-    if (this.scrollArea == null) { return; }
+    if (this.scrollArea == null) {
+      return;
+    }
     addEventListener(this.scrollArea, 'scroll', () => {
       window.requestAnimationFrame(this.handleScroll);
     });
     addEventListener(window, 'resize', this.handleResize);
     window.requestAnimationFrame(() => {
       this.handleScroll();
-      if (this.props.hint) { this.scrollHint(); }
+      if (this.props.hint) {
+        this.scrollHint();
+      }
     });
   }
 
   componentWillUnmount() {
-    if (this.scrollArea == null) { return; }
+    if (this.scrollArea == null) {
+      return;
+    }
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
     removeEventListener(window, 'resize', this.handleResize);
   }
@@ -80,7 +91,7 @@ export default class Scrollable extends React.Component<Props, State> {
       vertical = true,
       shadow,
       hint,
-      ...rest,
+      ...rest
     } = this.props;
 
     const finalClassName = classNames(
@@ -113,9 +124,13 @@ export default class Scrollable extends React.Component<Props, State> {
   private handleScroll() {
     const {scrollArea} = this;
     const {shadow} = this.props;
-    if (scrollArea == null) { return; }
+    if (scrollArea == null) {
+      return;
+    }
     const {scrollTop, clientHeight, scrollHeight} = scrollArea;
-    const shouldBottomShadow = Boolean(shadow && !(scrollTop + clientHeight >= scrollHeight));
+    const shouldBottomShadow = Boolean(
+      shadow && !(scrollTop + clientHeight >= scrollHeight),
+    );
     const shouldTopShadow = Boolean(shadow && scrollTop > 0);
 
     this.setState({
@@ -126,7 +141,7 @@ export default class Scrollable extends React.Component<Props, State> {
   }
 
   @autobind
-  @debounce(50, { trailing: true })
+  @debounce(50, {trailing: true})
   private handleResize() {
     this.handleScroll();
   }
@@ -134,40 +149,57 @@ export default class Scrollable extends React.Component<Props, State> {
   @autobind
   private scrollHint() {
     const {scrollArea} = this;
-    if (scrollArea == null) { return; }
+    if (scrollArea == null) {
+      return;
+    }
     const {clientHeight, scrollHeight} = scrollArea;
-    if (PREFERS_REDUCED_MOTION
-      || this.state.scrollPosition > 0
-      || scrollHeight <= clientHeight) { return; }
+    if (
+      PREFERS_REDUCED_MOTION ||
+      this.state.scrollPosition > 0 ||
+      scrollHeight <= clientHeight
+    ) {
+      return;
+    }
 
     const scrollDistance = scrollHeight - clientHeight;
     this.toggleLock();
-    this.setState({scrollPosition: (scrollDistance > MAX_SCROLL_DISTANCE)
-        ? MAX_SCROLL_DISTANCE
-        : scrollDistance}, () => {
-      window.requestAnimationFrame(this.scrollStep);
-    });
+    this.setState(
+      {
+        scrollPosition:
+          scrollDistance > MAX_SCROLL_DISTANCE
+            ? MAX_SCROLL_DISTANCE
+            : scrollDistance,
+      },
+      () => {
+        window.requestAnimationFrame(this.scrollStep);
+      },
+    );
   }
 
   @autobind
   private scrollStep() {
-    this.setState(({scrollPosition}) => {
-      const delta = scrollPosition * DELTA_PERCENTAGE;
-      return {
-        scrollPosition: delta < DELTA_THRESHOLD ? 0 : scrollPosition - delta,
-      };
-    }, () => {
-      if (this.state.scrollPosition > 0) {
-        window.requestAnimationFrame(this.scrollStep);
-      } else {
-        this.toggleLock(false);
-      }
-    });
+    this.setState(
+      ({scrollPosition}) => {
+        const delta = scrollPosition * DELTA_PERCENTAGE;
+        return {
+          scrollPosition: delta < DELTA_THRESHOLD ? 0 : scrollPosition - delta,
+        };
+      },
+      () => {
+        if (this.state.scrollPosition > 0) {
+          window.requestAnimationFrame(this.scrollStep);
+        } else {
+          this.toggleLock(false);
+        }
+      },
+    );
   }
 
   private toggleLock(shouldLock = true) {
     const {scrollArea} = this;
-    if (scrollArea == null) { return; }
+    if (scrollArea == null) {
+      return;
+    }
 
     EVENTS_TO_LOCK.forEach((eventName) => {
       if (shouldLock) {

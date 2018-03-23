@@ -16,18 +16,18 @@ import {
 } from '../../../types';
 
 export interface UpdateConfig {
-  title: string,
-  icon?: string,
-  breadcrumbs?: LinkAction[],
-  primaryAction?: DisableableAction & LoadableAction,
-  secondaryActions?: ComplexAction[],
-  actionGroups: ActionGroup[],
+  title: string;
+  icon?: string;
+  breadcrumbs?: LinkAction[];
+  primaryAction?: DisableableAction & LoadableAction;
+  secondaryActions?: ComplexAction[];
+  actionGroups: ActionGroup[];
   pagination?: {
-    hasNext?: boolean,
-    hasPrevious?: boolean,
-    onNext?(): void,
-    onPrevious?(): void,
-  },
+    hasNext?: boolean;
+    hasPrevious?: boolean;
+    onNext?(): void;
+    onPrevious?(): void;
+  };
 }
 
 export default class Bar {
@@ -72,7 +72,7 @@ export default class Bar {
 }
 
 function getLastLevelBreadcrumb(breadcrumbs: UpdateConfig['breadcrumbs']) {
-  return (breadcrumbs && breadcrumbs.length > 0)
+  return breadcrumbs && breadcrumbs.length > 0
     ? transformBreadcrumb(breadcrumbs[breadcrumbs.length - 1])
     : undefined;
 }

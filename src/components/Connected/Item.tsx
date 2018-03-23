@@ -10,12 +10,12 @@ export enum Position {
 }
 
 export interface Props {
-  position: Position,
-  children?: React.ReactNode,
+  position: Position;
+  children?: React.ReactNode;
 }
 
 export interface State {
-  focused: boolean,
+  focused: boolean;
 }
 
 export default class Item extends React.PureComponent<Props, State> {
@@ -27,7 +27,9 @@ export default class Item extends React.PureComponent<Props, State> {
     const className = classNames(
       styles.Item,
       focused && styles['Item-focused'],
-      position === Position.Primary ? styles['Item-primary'] : styles['Item-connection'],
+      position === Position.Primary
+        ? styles['Item-primary']
+        : styles['Item-connection'],
     );
 
     return (

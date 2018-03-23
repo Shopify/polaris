@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as styles from './Tabs.scss';
 
 export interface Props {
-  id: string,
-  tabID: string,
-  children?: React.ReactNode,
+  id: string;
+  tabID: string;
+  children?: React.ReactNode;
 }
 
 export default function Panel({id, tabID, children}: Props) {
