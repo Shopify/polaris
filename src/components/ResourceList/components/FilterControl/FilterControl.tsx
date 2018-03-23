@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
-
 import {withProvider, WithProviderProps} from '../../../Provider';
-
+import {contextTypes} from '../../types';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../../';
 
@@ -28,7 +27,11 @@ export interface Props {
 export type CombinedProps = Props & WithProviderProps;
 
 class FilterControl extends React.Component<CombinedProps> {
+  static contextTypes = contextTypes;
+
   render() {
+    const {selectMode} = this.context;
+
     const {
       resourceName,
       searchValue,
@@ -48,6 +51,10 @@ class FilterControl extends React.Component<CombinedProps> {
       },
     );
 
+    if (additionalAction) {
+      additionalAction.disabled = selectMode;
+    }
+
     const additionalActionButton =
       (additionalAction && buttonsFrom(additionalAction)) || null;
 
@@ -57,6 +64,7 @@ class FilterControl extends React.Component<CombinedProps> {
           resourceName={resourceName}
           filters={filters}
           onAddFilter={this.handleAddFilter}
+          disabled={selectMode}
         />
       ) : null;
 
@@ -65,7 +73,10 @@ class FilterControl extends React.Component<CombinedProps> {
       const filterId = idFromFilter(appliedFilter);
       return (
         <li className={styles.AppliedFilter} key={filterId}>
-          <Tag onRemove={this.getRemoveFilterCallback(filterId)}>
+          <Tag
+            onRemove={this.getRemoveFilterCallback(filterId)}
+            disabled={selectMode}
+          >
             {activeFilterLabel}
           </Tag>
         </li>
@@ -90,6 +101,7 @@ class FilterControl extends React.Component<CombinedProps> {
           onChange={onSearchChange}
           onBlur={onSearchBlur}
           focused={focused}
+          disabled={selectMode}
         />
         {appliedFiltersWrapper}
       </FormLayout>
