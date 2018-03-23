@@ -139,7 +139,7 @@ export {
 
 export {default as Portal, Props as PortalProps} from './Portal';
 
-export {default as Provider} from './Provider';
+export {default as Provider, Props as ProviderProps} from './Provider';
 
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 

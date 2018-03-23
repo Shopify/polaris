@@ -97,14 +97,23 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         mediaType = 'thumbnail';
       }
 
-      mediaMarkup = <div className={styles.Media}>{media}</div>;
+      mediaMarkup = (
+        <div className={styles.Media} testID="Media">
+          {media}
+        </div>
+      );
     }
 
     if (selectable) {
       handleMarkup = (
-        <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
+        <div
+          className={styles.Handle}
+          onClick={this.handleLargerSelectionArea}
+          testID="LargerSelectionArea"
+        >
           <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
+              testID="Checkbox"
               id={this.checkboxId}
               label={intl.translate('Polaris.ResourceList.Item.selectItem')}
               labelHidden
@@ -173,7 +182,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       } else {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <ButtonGroup segmented>
+            <ButtonGroup segmented testID="ShortcutActions">
               {buttonsFrom(shortcutActions, {size: 'slim'})}
             </ButtonGroup>
           </div>

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Button} from '../../';
+import {Button, EventListener} from '../../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
 import {withProvider, WithProviderProps} from '../../components/Provider';
@@ -232,7 +232,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const {selectedItems} = this.props;
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-
     if (
       selectedItems &&
       selectedItems.length > 0 &&
@@ -275,6 +274,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
           paginatedSelectAllText={this.paginatedSelectAllText}
           actions={bulkActions}
         />
+        <EventListener event="resize" handler={this.handleResize} />
       </div>
     ) : null;
 
@@ -302,7 +302,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       ) : null;
 
     const itemCountTextMarkup = (
-      <div className={styles.ItemCountTextWrapper}>{this.itemCountText}</div>
+      <div
+        className={styles.ItemCountTextWrapper}
+        testID="ItemCountTextWrapper"
+      >
+        {this.itemCountText}
+      </div>
     );
 
     const selectButtonMarkup = this.selectable ? (
@@ -384,6 +389,22 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     this.subscriptions = this.subscriptions.filter(
       (subscription) => subscription !== callback,
     );
+  }
+
+  @debounce(50)
+  @autobind
+  private handleResize() {
+    const {selectedItems} = this.props;
+    const {selectMode} = this.state;
+
+    if (
+      selectedItems &&
+      selectedItems.length === 0 &&
+      selectMode &&
+      !isSmallScreen()
+    ) {
+      this.handleSelectMode(false);
+    }
   }
 
   @autobind

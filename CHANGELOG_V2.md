@@ -6,12 +6,18 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.12 - 2018-03-23
+
+### Bug fixes
+
+* Fixed Provider props export
+
 ## 2.0.0-beta.11 - 2018-03-23
 
 ### Bug fixes
 
-* Fixes Provider i18n demo code
-* Fixes overflow bug causing TextFields border to be cut off
+* Fixed Provider i18n demo code
+* Fixed overflow bug causing TextFields border to be cut off
 
 ## 2.0.0-beta.10 - 2018-03-16
 
