@@ -32,6 +32,7 @@ Provider works by default without any additional options passed to it.
   <Page>
     <Card>
       <ResourceList
+        showHeader
         items={[
           {
             id: 341,
@@ -52,7 +53,9 @@ Provider works by default without any additional options passed to it.
 
           return (
             <ResourceList.Item id={id} url={url} media={media}>
-              <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+              <h3>
+                <TextStyle variation="strong">{name}</TextStyle>
+              </h3>
               <div>{location}</div>
             </ResourceList.Item>
           );
@@ -68,18 +71,21 @@ Provider works by default without any additional options passed to it.
 With an `i18n` object, the provider component will override default English translations.
 
 ```jsx
-<Provider i18n={ {
-  'Polaris': {
-    'ResourceList': {
-      showing: '{itemsCount} {resource} affichés',
-      defaultItemPlural: 'articles',
-      defaultItemSingular: 'article'
-    }
-  }
-} }>
+<Provider
+  i18n={{
+    Polaris: {
+      ResourceList: {
+        showing: '{itemsCount} {resource} affichés',
+        defaultItemPlural: 'articles',
+        defaultItemSingular: 'article',
+      },
+    },
+  }}
+>
   <Page>
     <Card>
       <ResourceList
+        showHeader
         items={[
           {
             id: 341,
@@ -100,7 +106,9 @@ With an `i18n` object, the provider component will override default English tran
 
           return (
             <ResourceList.Item id={id} url={url} media={media}>
-              <h3><TextStyle variation="strong">{name}</TextStyle></h3>
+              <h3>
+                <TextStyle variation="strong">{name}</TextStyle>
+              </h3>
               <div>{location}</div>
             </ResourceList.Item>
           );
@@ -120,7 +128,11 @@ class ProviderLinkExample extends React.Component {
   render() {
     const CustomLinkComponent = ({children, url, ...rest}) => {
       return (
-        <a href={url} onClick={() => console.log('Custom link clicked')} {...rest}>
+        <a
+          href={url}
+          onClick={() => console.log('Custom link clicked')}
+          {...rest}
+        >
           {children}
         </a>
       );
@@ -129,9 +141,7 @@ class ProviderLinkExample extends React.Component {
     return (
       <Provider linkComponent={CustomLinkComponent}>
         <Page
-          breadcrumbs={[
-            {content: 'Products', url: '#'}
-          ]}
+          breadcrumbs={[{content: 'Products', url: '#'}]}
           title="Jar With Lock-Lid"
           primaryAction={{content: 'Save', disabled: true}}
           secondaryActions={[

@@ -6,12 +6,16 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Bug fixes
+
+* Fixed Provider props export ([#1195](https://github.com/Shopify/polaris-react/pull/1195))
+
 ## 2.0.0-beta.11 - 2018-03-23
 
 ### Bug fixes
 
-* Fixes Provider i18n demo code ([#1161](https://github.com/Shopify/polaris-react/pull/1161))
-* Fixes overflow bug causing TextFields border to be cut off ([#1180](https://github.com/Shopify/polaris-react/pull/1180))
+* Fixed Provider i18n demo code ([#1161](https://github.com/Shopify/polaris-react/pull/1161))
+* Fixed overflow bug causing TextFields border to be cut off ([#1180](https://github.com/Shopify/polaris-react/pull/1180))
 
 ## 2.0.0-beta.10 - 2018-03-16
 
