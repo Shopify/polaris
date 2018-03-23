@@ -9,6 +9,40 @@ import {
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const itemsWithID = [{id: '5', name: 'item 1'}, {id: '6', name: 'item 2'}];
+const sortOptions = [
+  'Product title (A-Z)',
+  {
+    value: 'PRODUCT_TITLE_DESC',
+    label: 'Product title (Z-A)',
+  },
+  {
+    value: 'EXTRA',
+    label: 'Disabled Option',
+    disabled: true,
+  },
+];
+const promotedBulkActions = [
+  {
+    content: 'Really long text on button 1',
+  },
+  {
+    content: 'long text button 2',
+    disabled: true,
+    url: 'http://www.google.com',
+  },
+];
+
+const bulkActions = [
+  {
+    content: 'button 4',
+  },
+  {
+    content: 'button 4',
+  },
+  {
+    content: 'button 5',
+  },
+];
 
 describe('<ResourceList />', () => {
   describe('idForItem()', () => {
@@ -54,17 +88,66 @@ describe('<ResourceList />', () => {
   });
 
   describe('header markup', () => {
-    it('renders when items is not empty', () => {
+    it("renders header markup if the list isn't selectable but the showHeader prop is true", () => {
       const resourceList = mountWithProvider(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
+        <ResourceList showHeader items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
         true,
       );
     });
+
     it('does not render when items is empty', () => {
       const resourceList = mountWithProvider(
         <ResourceList items={[]} renderItem={renderItem} />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        false,
+      );
+    });
+
+    it('renders when sort options are given', () => {
+      const resourceList = mountWithProvider(
+        <ResourceList
+          sortOptions={sortOptions}
+          items={itemsWithID}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        true,
+      );
+    });
+
+    it('renders when bulkActions are given', () => {
+      const resourceList = mountWithProvider(
+        <ResourceList
+          bulkActions={bulkActions}
+          items={itemsWithID}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        true,
+      );
+    });
+
+    it('renders when promotedBulkActions are given', () => {
+      const resourceList = mountWithProvider(
+        <ResourceList
+          promotedBulkActions={promotedBulkActions}
+          items={itemsWithID}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        true,
+      );
+    });
+
+    it('does not render when sort options, bulkActions and promotedBulkActions are not given', () => {
+      const resourceList = mountWithProvider(
+        <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
         false,
