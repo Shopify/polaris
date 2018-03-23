@@ -15,8 +15,12 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
-export {default as Button} from './Button';
-export {Props as ButtonProps, buttonFrom, buttonsFrom} from './Button';
+export {
+  default as Button,
+  Props as ButtonProps,
+  buttonFrom,
+  buttonsFrom,
+} from './Button';
 
 export {default as ButtonGroup, Props as ButtonGroupProps} from './ButtonGroup';
 
@@ -87,6 +91,11 @@ export {
   Props as EventListenerProps,
 } from './EventListener';
 
+export {
+  default as ExceptionList,
+  Props as ExceptionListProps,
+} from './ExceptionList';
+
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
 
 export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
@@ -125,6 +134,8 @@ export {
   Props as PopoverProps,
   CloseSource as PopoverCloseSource,
 } from './Popover';
+
+export {default as Portal, Props as PortalProps} from './Portal';
 
 export {default as Provider} from './Provider';
 
