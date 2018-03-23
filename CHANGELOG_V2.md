@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.12 - 2018-03-23
+
 ### Bug fixes
 
 * Fixed Provider props export ([#1195](https://github.com/Shopify/polaris-react/pull/1195))
