@@ -106,7 +106,7 @@ describe('<Item />', () => {
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
       const onClick = jest.fn();
       const wrapper = mountWithProvider(
-        <Item id={id} onClick={onClick} url={url} />,
+        <Item id={itemId} onClick={onClick} url={url} />,
         {context: mockDefaultContext},
       );
 

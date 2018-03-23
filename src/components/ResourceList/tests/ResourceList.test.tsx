@@ -119,7 +119,11 @@ describe('<ResourceList />', () => {
     describe('resoureName.singular', () => {
       it("should render default singular resource name when 'resourceName' isn't provided", () => {
         const resourceList = mountWithProvider(
-          <ResourceList items={singleItemNoID} renderItem={renderItem} />,
+          <ResourceList
+            showHeader
+            items={singleItemNoID}
+            renderItem={renderItem}
+          />,
         );
         expect(
           findByTestID(resourceList, 'ItemCountTextWrapper').text(),
@@ -132,6 +136,7 @@ describe('<ResourceList />', () => {
             items={singleItemNoID}
             renderItem={renderItem}
             resourceName={{singular: 'product', plural: 'products'}}
+            showHeader
           />,
         );
         expect(
@@ -143,7 +148,7 @@ describe('<ResourceList />', () => {
     describe('resoureName.plural', () => {
       it("should render default plural resource name when 'resourceName' isn't provided", () => {
         const resourceList = mountWithProvider(
-          <ResourceList items={itemsNoID} renderItem={renderItem} />,
+          <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
         expect(
           findByTestID(resourceList, 'ItemCountTextWrapper').text(),
@@ -156,6 +161,7 @@ describe('<ResourceList />', () => {
             items={itemsNoID}
             renderItem={renderItem}
             resourceName={{singular: 'product', plural: 'products'}}
+            showHeader
           />,
         );
         expect(
