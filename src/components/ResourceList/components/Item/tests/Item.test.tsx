@@ -27,6 +27,7 @@ describe('<Item />', () => {
 
   const itemId = 'itemId';
   const selectedItemId = 'selectedId';
+  const accessibilityLabel = 'link anchor aria-label';
 
   const mockSelectableContext = {
     ...mockDefaultContext,
@@ -50,6 +51,25 @@ describe('<Item />', () => {
   };
 
   const url = 'http://test-link.com';
+
+  describe('accessibilityLabel', () => {
+    it('is used on the UnstyledLink for the aria-label attribute', () => {
+      const item = mountWithProvider(
+        <Item
+          accessibilityLabel={accessibilityLabel}
+          id={itemId}
+          url="https://shopify.com"
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      expect(item.find(UnstyledLink).prop('aria-label')).toBe(
+        accessibilityLabel,
+      );
+    });
+  });
 
   describe('url', () => {
     it('does not renders a UnstyledLink by default', () => {
