@@ -8,9 +8,13 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';
 
+import pkg from '../../../package.json';
+
 import * as styles from './Collapsible.scss';
 
 export interface Props {
+  /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */
+  id?: string;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
   /** The content to display inside the collapsible. */
@@ -121,7 +125,7 @@ export default class Collapsible extends React.Component<Props, State> {
   }
 
   render() {
-    const {children, open} = this.props;
+    const {id, open, children} = this.props;
     const {animationState, height} = this.state;
 
     const animating = animationState !== 'idle';
@@ -135,9 +139,21 @@ export default class Collapsible extends React.Component<Props, State> {
     const displayHeight = collapsibleHeight(open, animationState, height);
 
     const content = animating || open ? children : null;
+    /* TODO before v2 release: remove this conditional and line 9 */
+    if (!id && pkg.version[0] === '1') {
+      /* eslint-disable no-console */
+      console.group('Polaris');
+      console.info(`You are currently using version ${pkg.version}.`);
+      console.warn(
+        '[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward.',
+      );
+      console.groupEnd();
+      /* eslint-enable no-console */
+    }
 
     return (
       <div
+        id={id}
         aria-hidden={!open}
         style={{height: displayHeight}}
         className={wrapperClassName}
