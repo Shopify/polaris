@@ -111,7 +111,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleLargerSelectionArea}
           testID="LargerSelectionArea"
         >
-          <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
+          <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
               testID="Checkbox"
               id={this.checkboxId}
@@ -120,7 +120,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
               onChange={this.handleSelection}
               checked={selected}
             />
-          </span>
+          </div>
         </div>
       );
     }
