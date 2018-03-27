@@ -1,106 +1,106 @@
 // Need to define the raw colors somewhere!
 // stylelint-disable color-no-hex, function-max-empty-lines, value-list-max-empty-lines
 $color-palette-data: (
-  white: (
-    base: #ffffff
+  'white': (
+    'base': #ffffff
   ),
 
-  black: (
-    base: #000000
+  'black': (
+    'base': #000000
   ),
 
-  sky: (
-    lighter: #f9fafb,
-    light: #f4f6f8,
-    base: #dfe3e8,
-    dark: #c4cdd5
+  'sky': (
+    'lighter': #f9fafb,
+    'light': #f4f6f8,
+    'base': #dfe3e8,
+    'dark': #c4cdd5
   ),
 
-  ink: (
-    lightest: #919eab,
-    lighter: #637381,
-    light: #454f5b,
-    base: #212b36
+  'ink': (
+    'lightest': #919eab,
+    'lighter': #637381,
+    'light': #454f5b,
+    'base': #212b36
   ),
 
-  blue: (
-    lighter: #ebf5fa,
-    light: #b4e1fa,
-    base: #007ace,
-    dark: #084e8a,
-    darker: #001429,
-    text: #3e4e57
+  'blue': (
+    'lighter': #ebf5fa,
+    'light': #b4e1fa,
+    'base': #007ace,
+    'dark': #084e8a,
+    'darker': #001429,
+    'text': #3e4e57
   ),
 
-  green: (
-    lighter: #e3f1df,
-    light: #bbe5b3,
-    base: #50b83c,
-    dark: #108043,
-    darker: #173630,
-    text: #414f3e
+  'green': (
+    'lighter': #e3f1df,
+    'light': #bbe5b3,
+    'base': #50b83c,
+    'dark': #108043,
+    'darker': #173630,
+    'text': #414f3e
   ),
 
-  yellow: (
-    lighter: #fcf1cd,
-    light: #ffea8a,
-    base: #eec200,
-    dark: #9c6f19,
-    darker: #573b00,
-    text: #595130
+  'yellow': (
+    'lighter': #fcf1cd,
+    'light': #ffea8a,
+    'base': #eec200,
+    'dark': #9c6f19,
+    'darker': #573b00,
+    'text': #595130
   ),
 
-  orange: (
-    lighter: #fcebdb,
-    light: #ffc58b,
-    base: #f49342,
-    dark: #c05717,
-    darker: #4a1504,
-    text: #594430
+  'orange': (
+    'lighter': #fcebdb,
+    'light': #ffc58b,
+    'base': #f49342,
+    'dark': #c05717,
+    'darker': #4a1504,
+    'text': #594430
   ),
 
-  red: (
-    lighter: #fbeae5,
-    light: #fead9a,
-    base: #de3618,
-    dark: #bf0711,
-    darker: #330101,
-    text: #583c35
+  'red': (
+    'lighter': #fbeae5,
+    'light': #fead9a,
+    'base': #de3618,
+    'dark': #bf0711,
+    'darker': #330101,
+    'text': #583c35
   ),
 
-  purple: (
-    lighter: #f6f0fd,
-    light: #e3d0ff,
-    base: #9c6ade,
-    dark: #50248f,
-    darker: #230051,
-    text: #50495a
+  'purple': (
+    'lighter': #f6f0fd,
+    'light': #e3d0ff,
+    'base': #9c6ade,
+    'dark': #50248f,
+    'darker': #230051,
+    'text': #50495a
   ),
 
-  teal: (
-    lighter: #e0f5f5,
-    light: #b7ecec,
-    base: #47c1bf,
-    dark: #00848e,
-    darker: #003135,
-    text: #405352
+  'teal': (
+    'lighter': #e0f5f5,
+    'light': #b7ecec,
+    'base': #47c1bf,
+    'dark': #00848e,
+    'darker': #003135,
+    'text': #405352
   ),
 
-  indigo: (
-    lighter: #f4f5fa,
-    light: #b3bcf5,
-    base: #5c6ac4,
-    dark: #202e78,
-    darker: #000639,
-    text: #3e4155
+  'indigo': (
+    'lighter': #f4f5fa,
+    'light': #b3bcf5,
+    'base': #5c6ac4,
+    'dark': #202e78,
+    'darker': #000639,
+    'text': #3e4155
   ),
 
-  state: (
-    hover: rgba(223, 227, 232, .3),
-    focused: rgba(223, 227, 232, .3),
-    active: rgba(179, 188, 245, .1),
-    selected: rgba(179, 188, 245, .15),
-    subdued: rgba(249, 250, 251, 1),
+  'state': (
+    'hover': rgba(223, 227, 232, .3),
+    'focused': rgba(223, 227, 232, .3),
+    'active': rgba(179, 188, 245, .1),
+    'selected': rgba(179, 188, 245, .15),
+    'subdued': rgba(249, 250, 251, 1)
   )
 );
 
@@ -127,7 +127,11 @@ $color-palette-data: (
   @if type-of($fetched-color) == color {
     @return $fetched-color;
   } @else {
-    @error 'Color `#{$hue} - #{$value}` not found. Available colors: #{available-names($color-palette-data)}';
+    // stylelint-disable
+    // prettier-ignore
+    @error 'Color `#{$hue} - #{$value}` not found.
+      Make sure arguments are strings - GOOD: color(\'yellow\'), BAD: color('yellow').
+      Available options: #{available-names($color-palette-data)}';
   }
 }
 
