@@ -6,6 +6,15 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Breaking changes
+
+* This change only impacts users of the Sass version of Polaris, more specifically the `color()` function.
+  The `color($hue, $value: base, $for-background: null)` function in Sass now accepts strings for `$hue` and `$value` as advertised in [the documentation](https://polaris.shopify.com/sassdoc/#undefined-function-color).
+  * Upgrade path:
+    * replace `\bcolor\(([a-z-]+)\)` with `color('$1')`
+    * replace `\bcolor\(([a-z-]+), ([a-z-]+)\)` with `color('$1', '$2')`
+    * replace `\bcolor\(([a-z-]+), ([a-z-]+), (.*)\)` with `color('$1', '$2', $3)`
+
 ### Bug fixes
 
 * Fixed an issue with Lodash to load only single functions instead of the whole library ([#1208](https://github.com/Shopify/polaris-react/pull/1208)) (thanks to [@KrasiNedew](https://github.com/KrasiNedew) for the [original issue](https://github.com/Shopify/polaris/issues/283))
