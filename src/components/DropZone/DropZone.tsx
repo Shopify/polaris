@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {capitalize} from 'lodash';
+import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {

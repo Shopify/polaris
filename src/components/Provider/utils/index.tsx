@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {get, merge} from 'lodash';
+import get from 'lodash/get';
+import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 
