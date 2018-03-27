@@ -60,10 +60,10 @@ $icon-horizontal-adjustment: 2px;
 .Error {
   display: flex;
   margin-bottom: spacing(extra-tight);
-  color: color(red, dark);
+  color: color('red', 'dark');
 }
 
 .ErrorIcon {
-  @include recolor-icon(color(red));
+  @include recolor-icon(color('red'));
   margin: 0 spacing(extra-tight) 0 (-1 * $icon-horizontal-adjustment);
 }

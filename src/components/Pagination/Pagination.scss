@@ -41,7 +41,7 @@ $stacking-order: (
 
     &:hover,
     &:active {
-      @include recolor-icon(color(ink));
+      @include recolor-icon(color('ink'));
       background: transparent;
       border: none;
       box-shadow: none;
@@ -57,7 +57,7 @@ $stacking-order: (
     }
 
     &:disabled {
-      @include recolor-icon(color(sky, dark));
+      @include recolor-icon(color('sky', 'dark'));
       background: transparent;
       border: none;
       box-shadow: none;
@@ -93,18 +93,18 @@ $stacking-order: (
 }
 
 .Button {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color('ink', 'lighter'));
   position: relative;
   z-index: z-index(item, $stacking-order);
   display: inline-block;
   min-width: $min-height;
   margin: 0;
   padding: $vertical-padding spacing(tight);
-  background: linear-gradient(to bottom, color(white), color(sky, lighter));
+  background: linear-gradient(to bottom, color('white'), color('sky', 'lighter'));
   border: border(dark);
   border-radius: border-radius();
   line-height: 1;
-  color: color(ink);
+  color: color('ink');
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -114,31 +114,31 @@ $stacking-order: (
   transition-timing-function: easing();
 
   &:hover {
-    background: linear-gradient(to bottom, color(sky, lighter), color(sky, light));
-    border-color: color(sky, dark);
+    background: linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'));
+    border-color: color('sky', 'dark');
   }
 
   &:focus {
     z-index: z-index(focused, $stacking-order);
-    border-color: color(indigo);
+    border-color: color('indigo');
     outline: 0;
-    box-shadow: 0 0 0 1px color(indigo);
+    box-shadow: 0 0 0 1px color('indigo');
   }
 
   &:active {
     // Same color gradient is necessary for background transitions
-    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
-    border-color: color(sky, dark);
+    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
+    border-color: color('sky', 'dark');
     box-shadow:
       0 0 0 0 transparent,
-      inset 0 1px 1px 0 rgba(color(ink, lighter), 0.1),
-      inset 0 1px 4px 0 rgba(color(ink, lighter), 0.2);
+      inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
+      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
 
   &:disabled {
-    @include recolor-icon(color(ink, lightest));
-    background: color(sky, light);
-    color: color(ink, lightest);
+    @include recolor-icon(color('ink', 'lightest'));
+    background: color('sky', 'light');
+    color: color('ink', 'lightest');
     cursor: default;
     box-shadow: none;
   }

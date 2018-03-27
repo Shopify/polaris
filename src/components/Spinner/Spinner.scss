@@ -26,13 +26,13 @@ $large-size: rem(44px);
 }
 
 .colorWhite {
-  fill: color(white);
+  fill: color('white');
 }
 
 .colorTeal {
-  fill: color(teal);
+  fill: color('teal');
 }
 
 .colorInkLightest {
-  fill: color(ink, lightest);
+  fill: color('ink', 'lightest');
 }

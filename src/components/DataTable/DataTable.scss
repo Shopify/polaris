@@ -54,7 +54,7 @@ $breakpoint: 768px;
     left: $fixed-column-width;
     display: none;
     width: .6rem;
-    background: linear-gradient(to right, rgba(color(black), 0.12), rgba(color(black), 0));
+    background: linear-gradient(to right, rgba(color('black'), 0.12), rgba(color('black'), 0));
   }
 }
 
@@ -65,13 +65,13 @@ $breakpoint: 768px;
 .Pip {
   height: rem(6px);
   width: rem(6px);
-  background: color(ink, lightest);
+  background: color('ink', 'lightest');
   border-radius: border-radius();
   margin-top: rem(-3.2px);
 }
 
 .Pip-visible {
-  background: color(black);
+  background: color('black');
 }
 
 .ScrollContainer {
@@ -87,7 +87,7 @@ $breakpoint: 768px;
 
   &:hover .Cell {
     @include breakpoint-after($breakpoint) {
-      background: color(sky, lighter);
+      background: color('sky', 'lighter');
     }
   }
 }
@@ -98,8 +98,8 @@ $breakpoint: 768px;
 
 .Cell {
   padding: spacing();
-  background: color(white);
-  border-bottom: 1px solid color(sky, light);
+  background: color('white');
+  border-bottom: 1px solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
   transition: background-color .2s ease-in-out;
@@ -157,15 +157,15 @@ $breakpoint: 768px;
     }
 
     .Heading-sortable {
-      @include recolor-icon(color(indigo));
+      @include recolor-icon(color('indigo'));
       opacity: 0;
       transition: opacity duration() easing();
     }
 
     &:hover,
     &:focus {
-      @include recolor-icon(color(indigo));
-      color: color(indigo);
+      @include recolor-icon(color('indigo'));
+      color: color('indigo');
       outline: none;
       cursor: pointer;
 
@@ -178,14 +178,14 @@ $breakpoint: 768px;
 
 .Cell-total {
   @include text-emphasis-strong;
-  background: color(sky, lighter);
+  background: color('sky', 'lighter');
   border-bottom: border();
 }
 
 .Cell-footer {
   @include text-emphasis-normal;
-  background: color(sky, light);
-  color: color(ink, lighter);
+  background: color('sky', 'light');
+  color: color('ink', 'lighter');
   white-space: unset;
   text-align: center;
   width: 100%;

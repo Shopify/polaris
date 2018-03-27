@@ -137,11 +137,11 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-placeholder() {
-  color: color(ink, lightest);
+  color: color('ink', 'lightest');
 }
 
 @mixin text-emphasis-subdued($for-background: null) {
-  color: color(ink, lighter, $for-background: $for-background);
+  color: color('ink', 'lighter', $for-background: $for-background);
 }
 
 @mixin text-emphasis-strong {

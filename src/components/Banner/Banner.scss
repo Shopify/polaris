@@ -20,7 +20,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .Banner {
-  @include banner-colors(color(ink, lighter), color(sky, light));
+  @include banner-colors(color('ink', 'lighter'), color('sky', 'light'));
   position: relative;
   display: flex;
   padding: spacing();
@@ -42,19 +42,19 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 .statusSuccess {
-  @include banner-colors(color(green), color(green, lighter));
+  @include banner-colors(color('green'), color('green', 'lighter'));
 }
 
 .statusInfo {
-  @include banner-colors(color(teal), color(teal, lighter));
+  @include banner-colors(color('teal'), color('teal', 'lighter'));
 }
 
 .statusWarning {
-  @include banner-colors(color(yellow), color(yellow, lighter));
+  @include banner-colors(color('yellow'), color('yellow', 'lighter'));
 }
 
 .statusCritical {
-  @include banner-colors(color(red), color(red, lighter));
+  @include banner-colors(color('red'), color('red', 'lighter'));
 }
 
 .Ribbon {
@@ -84,7 +84,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   @include unstyled-link;
   margin: (-1 * $secondary-action-vertical-padding) (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding $secondary-action-horizontal-padding;
-  color: color(ink);
+  color: color('ink');
 
   &:hover > .Text::after {
     opacity: 0.75;

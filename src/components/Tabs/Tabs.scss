@@ -60,7 +60,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     .Title {
       @include text-emphasis-normal;
       text-decoration: none;
-      border-bottom: $border-bottom-height solid color(sky);
+      border-bottom: $border-bottom-height solid color('sky');
     }
   }
 
@@ -69,17 +69,17 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
     .Title {
       @include text-emphasis-normal;
-      border-bottom: $border-bottom-height solid color(indigo, light);
+      border-bottom: $border-bottom-height solid color('indigo', 'light');
     }
   }
 
   &:visited {
-    color: color(ink, lighter);
+    color: color('ink', 'lighter');
   }
 
   &.Tab-selected {
     .Title {
-      border-bottom: $border-bottom-height solid color(indigo);
+      border-bottom: $border-bottom-height solid color('indigo');
     }
   }
 }
@@ -120,9 +120,9 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   &:hover,
   &:focus,
   &:active {
-    background: color(indigo);
+    background: color('indigo');
     outline: none;
-    color: color(white);
+    color: color('white');
   }
 }
 
@@ -135,7 +135,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 }
 
 .DisclosureActivator {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color('ink', 'lighter'));
   position: relative;
   justify-content: center;
   height: 100%;

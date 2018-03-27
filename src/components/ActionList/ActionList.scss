@@ -43,27 +43,27 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   text-align: left;
   cursor: pointer;
   border-radius: 0;
-  color: color(ink, light);
+  color: color('ink', 'light');
 
   &:hover,
   &:focus,
   &:active {
-    background: color(indigo);
+    background: color('indigo');
     outline: none;
-    color: color(white);
+    color: color('white');
 
     .Image {
-      @include recolor-icon(color(sky), color(white));
+      @include recolor-icon(color('sky'), color('white'));
     }
   }
 
   &.disabled {
-    color: color(ink, lightest);
+    color: color('ink', 'lightest');
     cursor: default;
     pointer-events: none;
 
     .Image {
-      @include recolor-icon(color(ink, lightest), color(white));
+      @include recolor-icon(color('ink', 'lightest'), color('white'));
     }
   }
 
@@ -78,7 +78,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 }
 
 .Image {
-  @include recolor-icon(color(ink, light), color(white));
+  @include recolor-icon(color('ink', 'light'), color('white'));
   display: flex;
   flex: 0 0 auto;
   justify-content: center;
