@@ -34,7 +34,7 @@ export default function CheckableButton({
 
   return (
     <div
-      tabIndex={0}
+      tabIndex={-1}
       role="button"
       aria-pressed="true"
       aria-label={accessibilityLabel || label}
