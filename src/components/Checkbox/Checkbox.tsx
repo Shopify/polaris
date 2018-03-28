@@ -96,7 +96,7 @@ export default function Checkbox({
       helpText={helpText}
       error={error}
     >
-      <div className={wrapperClassName}>
+      <span className={wrapperClassName}>
         <input
           id={id}
           name={name}
@@ -113,11 +113,11 @@ export default function Checkbox({
           role="checkbox"
           {...indeterminateAttributes}
         />
-        <div className={styles.Backdrop} />
-        <div className={styles.Icon}>
+        <span className={styles.Backdrop} />
+        <span className={styles.Icon}>
           <Icon source={iconSource} />
-        </div>
-      </div>
+        </span>
+      </span>
     </Choice>
     /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
   );

@@ -27,4 +27,32 @@ describe('<Choice />', () => {
 
     expect(label.containsMatchingElement(<MyComponent />)).toBe(true);
   });
+
+  it('does not render block-level elements in the label', () => {
+    const blockLevelElements = [
+      'p',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      'ol',
+      'ul',
+      'pre',
+      'address',
+      'blockquote',
+      'dl',
+      'div',
+      'fieldset',
+      'form',
+      'hr',
+      'table',
+    ];
+    const element = shallow(<Choice id="MyChoice" label="Label" />);
+    const label = element.find('label');
+    for (let i = 0; i < blockLevelElements.length; i++) {
+      expect(label.find(blockLevelElements[i])).toHaveLength(0);
+    }
+  });
 });
