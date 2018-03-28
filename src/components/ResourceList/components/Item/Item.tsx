@@ -31,6 +31,7 @@ export interface GenericProps extends WithProviderProps {
 
 export interface PropsWithUrl extends GenericProps {
   url: string;
+  accessibilityLabel?: string;
   onClick?(id?: string): void;
 }
 
@@ -72,7 +73,14 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {children, url, media, shortcutActions, polaris: {intl}} = this.props;
+    const {
+      children,
+      url,
+      media,
+      shortcutActions,
+      polaris: {intl},
+      accessibilityLabel,
+    } = this.props as CombinedProps & PropsWithUrl;
 
     const {persistActions = false, selectable, selectMode} = this.context;
 
@@ -209,6 +217,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const urlMarkup = url ? (
       <UnstyledLink
+        aria-label={accessibilityLabel}
         aria-describedby={this.props.id}
         className={styles.Link}
         url={url}
