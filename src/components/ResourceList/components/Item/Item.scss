@@ -1,5 +1,9 @@
 @import '../../variables';
 
+.CheckboxWrapper {
+  display: flex;
+}
+
 .Item {
   position: relative;
   outline: none;
