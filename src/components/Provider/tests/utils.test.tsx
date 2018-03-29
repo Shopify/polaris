@@ -1,8 +1,13 @@
-import {translate} from '../utils';
+import * as React from 'react';
+
+import {translate, createPolarisContext} from '../utils';
 import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
 } from '../types';
+
+import Intl from '../Intl';
+import Link from '../Link';
 
 describe('translate()', () => {
   it('returns a simple string value in the translation dictionary', () => {
@@ -38,5 +43,44 @@ describe('translate()', () => {
         translateWithReplacements('foo {next}', {notNext: 'bar'}),
       ).toThrow();
     });
+  });
+});
+
+describe('createPolarisContext()', () => {
+  it('returns the right context without properties', () => {
+    const context = createPolarisContext();
+    const mockContext = {
+      polaris: {
+        intl: new Intl(undefined),
+        link: new Link(),
+      },
+    };
+
+    expect(context).toEqual(mockContext);
+  });
+
+  it('returns the right context with properties', () => {
+    const i18n = {
+      Polaris: {
+        Common: {
+          undo: 'Custom Undo',
+        },
+      },
+    };
+    const CustomLinkComponent = () => {
+      return <a href="http://shopify.com">Custom Link Component</a>;
+    };
+    const context = createPolarisContext({
+      i18n,
+      linkComponent: CustomLinkComponent,
+    });
+    const mockContext = {
+      polaris: {
+        intl: new Intl(i18n),
+        link: new Link(CustomLinkComponent),
+      },
+    };
+
+    expect(context).toEqual(mockContext);
   });
 });

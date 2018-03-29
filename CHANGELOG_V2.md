@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Enhancements
+
+* Exposed createPolarisContext utility to make testing easier in external apps ([#1211](https://github.com/Shopify/polaris-react/pull/1211))
+
 ### Bug fixes
 
 * Fixed an issue with Lodash to load only single functions instead of the whole library ([#1208](https://github.com/Shopify/polaris-react/pull/1208)) (thanks to [@KrasiNedew](https://github.com/KrasiNedew) for the [original issue](https://github.com/Shopify/polaris/issues/283))
