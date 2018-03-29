@@ -12,6 +12,8 @@ import BulkActions from '../components/BulkActions';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
+const singleItemWithID = [{id: '1', url: 'item 1'}];
+
 const itemsWithID = [
   {id: '5', name: 'item 1', url: 'www.test.com', title: 'title 1'},
   {id: '6', name: 'item 2', url: 'www.test.com', title: 'title 2'},
@@ -168,6 +170,61 @@ describe('<ResourceList />', () => {
           findByTestID(resourceList, 'ItemCountTextWrapper').text(),
         ).toEqual('Showing 2 products');
       });
+    });
+  });
+
+  describe('bulkActionsAccessibilityLabel', () => {
+    it("should provide the BulkActions with the right accessibilityLabel if there's 1 item and it isn't selected", () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+        />,
+      );
+      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
+        'Select item',
+      );
+    });
+
+    it("should provide the BulkActions with the right accessibilityLabel if there's 1 item and it is selected ", () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={['1']}
+        />,
+      );
+      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
+        'Deselect item',
+      );
+    });
+
+    it("should provide the BulkActions with the right accessibilityLabel if there's multiple items and they are all selected", () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={['5', '6', '7']}
+        />,
+      );
+      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
+        'Deselect all 3 items',
+      );
+    });
+    it("should provide the BulkActions with the right accessibilityLabel if there's multiple items and some or none are selected", () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+        />,
+      );
+      expect(resourceList.find(BulkActions).prop('accessibilityLabel')).toBe(
+        'Select all 3 items',
+      );
     });
   });
 

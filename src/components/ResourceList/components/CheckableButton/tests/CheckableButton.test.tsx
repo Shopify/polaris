@@ -20,22 +20,22 @@ describe('<CheckableButton />', () => {
   });
 
   describe('label', () => {
-    it('correctly passes down to Checkbox', () => {
+    it('is correctly passed down to span', () => {
       const {label} = CheckableButtonProps;
       const element = shallow(<CheckableButton {...CheckableButtonProps} />);
-      expect(element.find(Checkbox).prop('label')).toEqual(label);
+      expect(element.find('span').text()).toEqual(label);
     });
   });
 
   describe('accessibilityLabel', () => {
-    it('sets the aria-label attribute when provided', () => {
+    it('sets the label on the Checkbox', () => {
       const {accessibilityLabel} = CheckableButtonProps;
       const element = shallow(<CheckableButton {...CheckableButtonProps} />);
       expect(
         element
-          .find('div')
+          .find(Checkbox)
           .first()
-          .prop('aria-label'),
+          .prop('label'),
       ).toEqual(accessibilityLabel);
     });
   });
