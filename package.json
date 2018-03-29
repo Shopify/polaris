@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -10,9 +10,9 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
-	"publishConfig": {
-	  "access": "public"
-	},
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "shopify",
     "polaris",
