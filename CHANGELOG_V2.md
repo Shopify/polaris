@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 2.0.0-beta.13 - 2018-03-29
 
 ### Enhancements
 
