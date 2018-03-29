@@ -1,0 +1,13 @@
+.Footer {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  width: 100%;
+  min-height: spacing() * 4;
+  padding: spacing();
+  border-top: border();
+}
+
+.FooterContent {
+  width: 100%;
+}

@@ -14,6 +14,10 @@ export interface BaseAction {
 
 export interface Action extends BaseAction {}
 
+export interface AnimationProps {
+  in?: boolean;
+}
+
 export interface BaseLinkAction {
   id?: string;
   content?: string;
@@ -40,7 +44,10 @@ export interface DestructableAction extends Action {
   destructive?: boolean;
 }
 
-export interface EASDKAction extends Action {
+export interface EASDKAction
+  extends Action,
+    DisableableAction,
+    DestructableAction {
   target?: EASDKTarget;
 }
 

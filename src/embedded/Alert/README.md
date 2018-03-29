@@ -49,7 +49,7 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 | confirmContent* | string | The content of the confirmation button |
 | cancelContent | string | The content of the cancel button |
 | onConfirm* | function() | Callback when the confirmation button is clicked |
-| onCancel* | function() | Callback when the alert is closed, or when the cancel button is clicked |
+| onClose* | function() | Callback when the alert is closed, or when the cancel button is clicked |
 
 ---
 
@@ -229,7 +229,7 @@ Secondary action:
   open={this.state.open}
   confirmContent="I accept"
   onConfirm={() => this.setState({open: false, confirmed: true})}
-  onCancel={() => this.setState({open: false})}
+  onClose={() => this.setState({open: false})}
 >
   You must accept the terms and conditions before proceeding.
 </Alert>
@@ -247,7 +247,7 @@ Use passing `destructive` to make it clear to the merchant that the action is po
   confirmContent="Keep editing"
   onConfirm={() => this.setState({open: false, confirmed: true})}
   cancelContent="Discard"
-  onCancel={() => this.setState({open: false, confirmed: false})}
+  onClose={() => this.setState({open: false, confirmed: false})}
 >
   This will delete all edits since you last saved.
 </Alert>
