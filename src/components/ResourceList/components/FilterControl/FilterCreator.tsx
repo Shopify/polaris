@@ -31,6 +31,8 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
     popoverActive: false,
   };
 
+  private node: HTMLButtonElement | null = null;
+
   private get canAddFilter() {
     return Boolean(this.state.selectedFilter && this.state.selectedFilterValue);
   }
@@ -45,6 +47,7 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
         disclosure
         testID="FilterCreator-FilterActivator"
         disabled={disabled}
+        onFocus={this.handleButtonFocus}
       >
         {intl.translate('Polaris.ResourceList.FilterCreator.filterButtonLabel')}
       </Button>
@@ -105,6 +108,14 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
+  private handleButtonFocus(...args: React.FocusEvent<HTMLButtonElement>[]) {
+    const event = args[0];
+    if (!this.node && event) {
+      this.node = event.target as HTMLButtonElement;
+    }
+  }
+
+  @autobind
   private togglePopover(): void {
     this.setState(({popoverActive}) => ({popoverActive: !popoverActive}));
   }
@@ -149,6 +160,10 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
       selectedFilter: undefined,
       selectedFilterValue: undefined,
     });
+
+    if (this.node != null) {
+      this.node.focus();
+    }
   }
 }
 
