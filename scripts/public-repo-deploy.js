@@ -179,7 +179,7 @@ const updateBody =
 
 See what’s new: https://github.com/Shopify/polaris/releases/tag/${releaseVersion}
 
-cc @kaelig @dfmcphee
+cc @kaelig @dfmcphee @amrocha
 
 ---
 
