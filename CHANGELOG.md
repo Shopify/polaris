@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 1.13.1 - 2018-03-29
+
+* Added missing `publishConfig.access` setting in `package.json`, in accordance with the new Shipit requirements for public npm packages
+
 ## 1.13.0 - 2018-03-29
 
 ### Enhancements

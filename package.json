@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
+	"publishConfig": {
+	  "access": "public"
+	},
   "keywords": [
     "shopify",
     "polaris",
