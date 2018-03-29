@@ -28,21 +28,21 @@ $content-max-width: rem(200px);
 
 .light {
   .Wrapper {
-    background: color(white);
-    color: color(ink);
+    background: color('white');
+    color: color('ink');
   }
 
   .Tip {
-    background: color(white);
+    background: color('white');
   }
 }
 
 .Wrapper {
   position: relative;
   display: flex;
-  background-color: color(ink);
+  background-color: color('ink');
   border-radius: border-radius();
-  color: color(white);
+  color: color('white');
   max-height: $content-max-height;
 }
 
@@ -61,7 +61,7 @@ $content-max-width: rem(200px);
   transform: translateX(-50%) rotate(45deg);
   height: $arrow-size;
   width: $arrow-size;
-  background: color(ink);
+  background: color('ink');
   box-shadow: shadow(deep);
 }
 

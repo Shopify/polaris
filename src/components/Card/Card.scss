@@ -1,6 +1,6 @@
 .Card {
   overflow: hidden;
-  background-color: color(white);
+  background-color: color('white');
   box-shadow: shadow();
 
   + .Card {
@@ -13,7 +13,7 @@
 }
 
 .subdued {
-  background-color: color(sky, lighter);
+  background-color: color('sky', 'lighter');
 }
 
 .Header {
@@ -24,7 +24,7 @@
   padding: spacing(loose);
 
   + .Section {
-    border-top: 1px solid color(sky);
+    border-top: 1px solid color('sky');
   }
 }
 
@@ -33,7 +33,7 @@
 }
 
 .Section-subdued {
-  background-color: color(sky, lighter);
+  background-color: color('sky', 'lighter');
 }
 
 .SectionHeader {

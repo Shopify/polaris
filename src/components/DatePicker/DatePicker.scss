@@ -56,11 +56,11 @@ $in-range-border-color: #9ca6de;
   cursor: pointer;
 
   &:hover {
-    background: color(sky);
+    background: color('sky');
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 2px color(indigo);
+    box-shadow: inset 0 0 0 2px color('indigo');
   }
 
   + .Day,
@@ -75,36 +75,36 @@ $in-range-border-color: #9ca6de;
 
 .Day-inRange {
   z-index: z-index(in-range, $stacking-order);
-  background: color(indigo, light);
+  background: color('indigo', 'light');
   border: 1px solid $in-range-border-color;
 
   &:hover {
-    background: darken(color(indigo, light), 5%);
+    background: darken(color('indigo', 'light'), 5%);
   }
 }
 
 .Day-selected {
   z-index: z-index(selected, $stacking-order);
-  background: color(indigo);
-  border: 1px solid color(indigo);
-  color: color(white);
+  background: color('indigo');
+  border: 1px solid color('indigo');
+  color: color('white');
 
   &:hover {
-    background: darken(color(indigo), 5%);
+    background: darken(color('indigo'), 5%);
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 2px color(indigo, dark);
+    box-shadow: inset 0 0 0 2px color('indigo', 'dark');
   }
 }
 
 .Day-disabled {
-  background-color: color(sky, lighter);
-  color: color(sky, dark);
+  background-color: color('sky', 'lighter');
+  color: color('sky', 'dark');
   cursor: default;
 
   &:hover {
-    background-color: color(sky, lighter);
+    background-color: color('sky', 'lighter');
   }
 
   &:focus {
@@ -132,7 +132,7 @@ $in-range-border-color: #9ca6de;
   padding: spacing(tight);
   background: transparent;
   font-size: $font-size;
-  color: color(ink, lighter);
+  color: color('ink', 'lighter');
   text-align: center;
 
   + .Weekday {
@@ -142,7 +142,7 @@ $in-range-border-color: #9ca6de;
 
 .Weekday-current {
   font-weight: bold;
-  color: color(black, base);
+  color: color('black', 'base');
 }
 
 .Header {

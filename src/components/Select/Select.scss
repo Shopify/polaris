@@ -45,7 +45,7 @@ $input-vertical-adjust: rem(1px);
 
 .placeholder {
   .Input {
-    color: color(ink, lightest);
+    color: color('ink', 'lightest');
   }
 
   &.error .Input {
@@ -56,7 +56,7 @@ $input-vertical-adjust: rem(1px);
 
   &.error .Input:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 color(ink, base);
+    text-shadow: 0 0 0 color('ink', 'base');
   }
 }
 
@@ -71,7 +71,7 @@ $input-vertical-adjust: rem(1px);
 }
 
 .Icon {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color('ink', 'lighter'));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -103,11 +103,11 @@ $input-vertical-adjust: rem(1px);
   }
 
   &:disabled {
-    color: color(ink, lightest);
+    color: color('ink', 'lightest');
   }
 
   &:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 color(ink, base);
+    text-shadow: 0 0 0 color('ink', 'base');
   }
 }

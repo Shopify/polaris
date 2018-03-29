@@ -28,16 +28,16 @@ $stacking-order: (
     (-0.5 * $difference-between-touch-area-and-backdrop)
     (-0.5 * $horizontal-padding);
   padding: $vertical-padding $horizontal-padding;
-  color: color(ink, lighter);
+  color: color('ink', 'lighter');
   text-decoration: none;
 
   &:hover,
   &:active {
-    color: color(ink);
+    color: color('ink');
     text-decoration: none;
 
     .Icon {
-      @include recolor-icon(color(ink));
+      @include recolor-icon(color('ink'));
     }
   }
 
@@ -70,7 +70,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color('ink', 'lighter'));
   height: $icon-size;
   width: $icon-size;
 

@@ -8,7 +8,7 @@ $large-size: rem(60px);
   overflow: hidden;
   min-width: $small-size;
   max-width: 100%;
-  background: color(teal);
+  background: color('teal');
   border-radius: $large-size / 2;
   user-select: none;
 
@@ -32,27 +32,27 @@ $large-size: rem(60px);
 }
 
 .styleOne {
-  background: color(teal);
+  background: color('teal');
 }
 
 .styleTwo {
-  background: color(red);
+  background: color('red');
 }
 
 .styleThree {
-  background: color(orange);
+  background: color('orange');
 }
 
 .styleFour {
-  background: color(green);
+  background: color('green');
 }
 
 .styleFive {
-  background: color(blue);
+  background: color('blue');
 }
 
 .styleSix {
-  background: color(purple);
+  background: color('purple');
 }
 
 .hasImage {
@@ -83,5 +83,5 @@ $large-size: rem(60px);
 .Svg {
   width: rem(48px);
   height: auto;
-  color: color(white);
+  color: color('white');
 }

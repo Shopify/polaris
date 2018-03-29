@@ -10,7 +10,7 @@ $stacking-order: (
   position: relative;
   display: block;
   overflow: hidden;
-  background: color(white);
+  background: color('white');
   min-width: $small-size;
   max-width: 100%;
   border-radius: border-radius();
