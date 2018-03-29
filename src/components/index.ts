@@ -96,6 +96,8 @@ export {
   Props as ExceptionListProps,
 } from './ExceptionList';
 
+export {default as Focus, Props as FocusProps, TrapFocus} from './Focus';
+
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
 
 export {default as Form, Props as FormProps} from './Form';
@@ -124,6 +126,8 @@ export {default as Layout, Props as LayoutProps} from './Layout';
 export {default as Link, Props as LinkProps} from './Link';
 
 export {default as List, Props as ListProps} from './List';
+
+export {default as Modal, Props as ModalProps} from './Modal';
 
 export {default as Page, Props as PageProps} from './Page';
 

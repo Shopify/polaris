@@ -2,10 +2,7 @@ import {ReactWrapper, CommonWrapper, shallow, mount, ShallowWrapper, MountRender
 import * as React from 'react';
 import {get, merge} from 'lodash';
 
-import {en} from '../../src/locales';
-
-import Intl from '../../src/components/Provider/Intl';
-import Link from '../../src/components/Provider/Link';
+import {createPolarisContext} from '../../src/components/Provider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -132,14 +129,7 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 function mergeProviderOptions(options: any = {}): any {
-  const intl = new Intl(en);
-  const link = new Link();
-  const context = {
-    polaris: {
-      intl,
-      link,
-    },
-  };
+  const context = createPolarisContext();
 
   return merge(merge({}, {context}, options));
 }

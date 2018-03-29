@@ -15,7 +15,7 @@ export type CombinedProps = Props & WithProviderProps;
 
 class UnstyledLink extends React.PureComponent<CombinedProps, never> {
   render() {
-    const {polaris} = this.props;
+    const {polaris, external, url, ...rest} = this.props;
     if (polaris && polaris.link) {
       const LinkComponent = polaris.link.linkComponent;
       if (LinkComponent) {
@@ -23,7 +23,6 @@ class UnstyledLink extends React.PureComponent<CombinedProps, never> {
       }
     }
 
-    const {external, url, ...rest} = this.props;
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
     return (

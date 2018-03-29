@@ -1,7 +1,11 @@
 import * as React from 'react';
-import {get, merge} from 'lodash';
+import get from 'lodash/get';
+import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
+
+import Intl from '../Intl';
+import Link from '../Link';
 
 import {
   polarisProviderContextTypes,
@@ -10,6 +14,13 @@ import {
   ComplexReplacementDictionary,
   WithProviderProps,
 } from '../types';
+
+import {LinkLikeComponent} from '../../UnstyledLink';
+
+export interface PolarisProps {
+  i18n?: TranslationDictionary | TranslationDictionary[] | undefined;
+  linkComponent?: LinkLikeComponent;
+}
 
 const REPLACE_REGEX = /{([^}]*)}/g;
 
@@ -71,5 +82,17 @@ export function withProvider() {
       WrappedComponent as React.ComponentClass<any>,
     );
     return FinalComponent as React.ComponentClass<any> & C;
+  };
+}
+
+export function createPolarisContext({i18n, linkComponent}: PolarisProps = {}) {
+  const intl = new Intl(i18n);
+  const link = new Link(linkComponent);
+
+  return {
+    polaris: {
+      intl,
+      link,
+    },
   };
 }

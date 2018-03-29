@@ -69,7 +69,7 @@ A resource list with simple items and no bulk actions, sorting, or filtering. Se
       const media = <Avatar customer size="medium" name={name} />;
 
       return (
-        <ResourceList.Item id={id} url={url} media={media}>
+        <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
           <h3><TextStyle variation="strong">{name}</TextStyle></h3>
           <div>{location}</div>
         </ResourceList.Item>
@@ -98,7 +98,7 @@ class ResourceListExample extends React.Component {
     const media = <Avatar customer size="medium" name={name} />;
 
     return (
-      <ResourceList.Item id={id} url={url} media={media}>
+      <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
         <h3><TextStyle variation="strong">{name}</TextStyle></h3>
         <div>{location}</div>
       </ResourceList.Item>
@@ -184,7 +184,7 @@ class ResourceListExample extends React.Component {
     const media = <Avatar customer size="medium" name={name} />;
 
     return (
-      <ResourceList.Item id={id} url={url} media={media}>
+      <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
         <h3><TextStyle variation="strong">{name}</TextStyle></h3>
         <div>{location}</div>
       </ResourceList.Item>
@@ -491,7 +491,7 @@ A basic resource list item with its details filled in at the point of use.
       : null;
 
     return (
-      <ResourceList.Item id={id} url={url}>
+      <ResourceList.Item id={id} url={url} accessibilityLabel={`View details for ${title}`}>
         <h3>
           <TextStyle variation="strong">{title}</TextStyle>
         </h3>
@@ -532,6 +532,7 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
         media={
           <Avatar customer size="medium" name={name} source={avatarSource} />
         }
+        accessibilityLabel={`View details for ${name}`}
       >
         <h3><TextStyle variation="strong">{name}</TextStyle></h3>
         <div>{location}</div>
@@ -576,6 +577,7 @@ Shortcut actions present popular actions from the resource’s show page for eas
           <Avatar customer size="medium" name={name} source={avatarSource} />
         }
         shortcutActions={shortcutActions}
+        accessibilityLabel={`View details for ${name}`}
       >
         <h3><TextStyle variation="strong">{name}</TextStyle></h3>
         <div>{location}</div>
@@ -591,8 +593,11 @@ Shortcut actions present popular actions from the resource’s show page for eas
 
 | Prop      | Type            | Description |
 | ---       | ---             | --- |
-| id\*      | string          | Unique identifier for the item within the list |
+| id*      | string          | Unique identifier for the item within the list |
 | url       | string          | URL for the resource’s show page (required unless \`onClick\` is provided) |
+| accessibilityLabel*      | string          | Accessibility label for item link |
+| ariaControls      | string          | Id of the element the item onClick controls |
+| ariaExpanded      | string          | Tells screen reader the controlled element is expanded |
 | onClick   | function(id: string): void | Callback when clicked (required if \`url\` is omitted) |
 | media     | React.reactNode | Content for the media area at the left of the item, usually an Avatar or Thumbnail |
 | children  | React.reactNode | Content for the details area |
@@ -677,7 +682,7 @@ Filter control showing a state with applied filters and an additional action (op
     const media = <Avatar customer size="medium" name={name} />;
 
     return (
-      <ResourceList.Item id={id} url={url} media={media}>
+      <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
         <h3><TextStyle variation="strong">{name}</TextStyle></h3>
         <div>{location}</div>
       </ResourceList.Item>
@@ -953,7 +958,7 @@ class App extends Component {
               const media = <Avatar customer size="medium" name={name} />;
 
               return (
-                <ResourceList.Item id={id} url={url} media={media}>
+                <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
                   <h3><TextStyle variation="strong">{name}</TextStyle></h3>
                   <div>{location}</div>
                 </ResourceList.Item>
@@ -1108,7 +1113,7 @@ export default function CustomerListItem(props) {
 
   return (
     <div className="CustomerListItem">
-      <ResourceList.Item id={id} url={url} media={media}>
+      <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
         <h3><TextStyle variation="strong">{name}</TextStyle></h3>
         <div>{location}</div>
       </ResourceList.Item>
@@ -1203,7 +1208,7 @@ export default function CustomerListItem(props) {
 
   return (
     <div className="CustomerListItem">
-      <ResourceList.Item id={id} url={url} media={media}>
+      <ResourceList.Item id={id} url={url} media={media} accessibilityLabel={`View details for ${name}`}>
         <h3>{name}</h3>
         <div>{location}</div>
         <div>
@@ -1236,7 +1241,7 @@ export default function CustomerListItem(props) {
 
   return (
     <div className="CustomerListItem">
-      <ResourceList.Item {...rest} media={media}>
+      <ResourceList.Item {...rest} media={media} accessibilityLabel={`View details for ${name}`}>
         ...
 ```
 
@@ -1289,7 +1294,7 @@ To handle the layout, we’ll need some class names and some wrapping markup.
 ```jsx
   ...
     <div className="CustomerListItem">
-      <ResourceList.Item {...rest} media={media}>
+      <ResourceList.Item {...rest} media={media} accessibilityLabel={`View details for ${name}`}>
         <h3 className="CustomerListItem__Title">{name}</h3>
         <div className="CustomerListItem__Location">{location}</div>
         <div className="CustomerListItem__Orders">
@@ -1367,7 +1372,7 @@ Now that we have our small screen layout, we can layer on the layouts for medium
 
   return (
     <div className="CustomerListItem">
-      <ResourceList.Item {...rest} media={media}>
+      <ResourceList.Item {...rest} media={media} accessibilityLabel={`View details for ${name}`}>
         <div className="CustomerListItem__Main">
           {profile}
           {orders}
@@ -1527,7 +1532,7 @@ export default function CustomerListItem(props) {
 
   return (
     <div className="CustomerListItem">
-      <ResourceList.Item {...rest} media={media}>
+      <ResourceList.Item {...rest} media={media} accessibilityLabel={`View details for ${name}`}>
         <div className="CustomerListItem__Main">
           {profile}
           {orders}
@@ -1638,6 +1643,7 @@ If we were to build a shortcut action into the custom item, we could offer the m
         {...rest}
         media={media}
         shortcutActions={shortcutActions}
+        accessibilityLabel={`View details for ${name}`}
       >
       ...
 ```

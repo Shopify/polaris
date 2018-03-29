@@ -1,6 +1,6 @@
 import Messenger from '../Messenger';
 import {transformAction} from '../transformers';
-import {Action} from '../../../types';
+import {EASDKAction} from '../../../types';
 
 export interface CloseCallback {
   (result?: boolean, data?: any): void;
@@ -11,8 +11,8 @@ export interface OpenConfig {
   title?: string;
   width?: string;
   height?: number;
-  primaryAction?: Action;
-  secondaryActions?: Action[];
+  primaryAction?: EASDKAction;
+  secondaryActions?: EASDKAction[];
   onClose?(): void;
 }
 
@@ -22,7 +22,7 @@ export interface AlertConfig {
   destructive?: boolean;
   confirmContent: string;
   cancelContent?: string;
-  onCancel?(): void;
+  onClose?(): void;
   onConfirm(): void;
 }
 
@@ -66,7 +66,7 @@ export default class Modal {
       destructive,
       confirmContent,
       cancelContent,
-      onCancel,
+      onClose,
       onConfirm,
     } = config;
 
@@ -75,12 +75,12 @@ export default class Modal {
         if (onConfirm) {
           onConfirm();
         }
-      } else if (onCancel) {
-        onCancel();
+      } else if (onClose) {
+        onClose();
       }
     });
 
-    if (onCancel && cancelContent) {
+    if (onClose && cancelContent) {
       this.messenger.send('Shopify.API.Modal.confirm', {
         message: {
           title,

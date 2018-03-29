@@ -4,6 +4,7 @@ import {LinkLikeComponent} from '../UnstyledLink';
 
 import Intl from './Intl';
 import Link from './Link';
+import {createPolarisContext} from './utils';
 import {polarisProviderContextTypes, TranslationDictionary} from './types';
 
 export interface Props {
@@ -19,33 +20,28 @@ export interface Context {
 
 export default class Provider extends React.Component<Props> {
   static childContextTypes = polarisProviderContextTypes;
-  private intl: Intl;
-  private link: Link;
+  public polarisContext: Context;
 
   constructor(props: Props) {
     super(props);
 
-    this.intl = new Intl(props.i18n);
-    this.link = new Link(props.linkComponent);
+    this.polarisContext = createPolarisContext({
+      i18n: props.i18n,
+      linkComponent: props.linkComponent,
+    });
   }
 
   componentWillReceiveProps({i18n, linkComponent}: Props) {
-    if (i18n !== this.props.i18n) {
-      this.intl = new Intl(i18n);
-    }
-
-    if (linkComponent !== this.props.linkComponent) {
-      this.link = new Link(linkComponent);
+    if (
+      i18n !== this.props.i18n ||
+      linkComponent !== this.props.linkComponent
+    ) {
+      this.polarisContext = createPolarisContext({i18n, linkComponent});
     }
   }
 
   getChildContext(): Context {
-    return {
-      polaris: {
-        intl: this.intl,
-        link: this.link,
-      },
-    };
+    return this.polarisContext;
   }
 
   render() {

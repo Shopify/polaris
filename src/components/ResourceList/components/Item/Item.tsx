@@ -23,6 +23,13 @@ export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
 export interface GenericProps extends WithProviderProps {
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** Id of the element the item onClick controls */
+  ariaControls?: string;
+  /** Tells screen reader the controlled element is expanded */
+  ariaExpanded?: boolean;
+  /** Unique identifier for the item */
   id: string;
   media?: React.ReactElement<AvatarProps | ThumbnailProps>;
   shortcutActions?: DisableableAction[];
@@ -72,7 +79,16 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {children, url, media, shortcutActions, polaris: {intl}} = this.props;
+    const {
+      children,
+      url,
+      media,
+      shortcutActions,
+      ariaControls,
+      ariaExpanded,
+      polaris: {intl},
+      accessibilityLabel,
+    } = this.props as CombinedProps & PropsWithUrl;
 
     const {persistActions = false, selectable, selectMode} = this.context;
 
@@ -111,7 +127,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleLargerSelectionArea}
           testID="LargerSelectionArea"
         >
-          <span onClick={stopPropagation} className={styles.CheckboxWrapper}>
+          <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
             <Checkbox
               testID="Checkbox"
               id={this.checkboxId}
@@ -120,7 +136,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
               onChange={this.handleSelection}
               checked={selected}
             />
-          </span>
+          </div>
         </div>
       );
     }
@@ -207,33 +223,39 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       </div>
     );
 
-    const urlMarkup = url ? (
+    const accessibleMarkup = url ? (
       <UnstyledLink
         aria-describedby={this.props.id}
+        aria-label={accessibilityLabel}
         className={styles.Link}
         url={url}
         onFocus={this.handleAnchorFocus}
         onBlur={this.handleFocusedBlur}
       />
-    ) : null;
-
-    const tabIndex = url ? -1 : 0;
-    const role = url ? undefined : 'button';
+    ) : (
+      <button
+        className={styles.Button}
+        aria-label={accessibilityLabel}
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
+        onClick={this.handleClick}
+        onFocus={this.handleAnchorFocus}
+        onBlur={this.handleFocusedBlur}
+      />
+    );
 
     return (
       <div
         ref={this.setNode}
         className={className}
+        onClick={this.handleClick}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}
         onKeyUp={this.handleKeypress}
-        tabIndex={tabIndex}
-        role={role}
         testID="Item-Wrapper"
       >
-        {urlMarkup}
+        {accessibleMarkup}
         {containerMarkup}
       </div>
     );
@@ -260,11 +282,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleMouseDown() {
-    this.setState({focusedInner: true});
-  }
-
-  @autobind
   private handleBlur(event: React.FocusEvent<HTMLElement>) {
     const isInside = this.compareEventNode(event);
     if (
@@ -275,6 +292,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     } else if (isInside) {
       this.setState({focusedInner: true});
     }
+  }
+
+  @autobind
+  private handleMouseDown() {
+    this.setState({focusedInner: true});
   }
 
   @autobind
@@ -298,6 +320,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   private handleClick(event: React.MouseEvent<any>) {
     const {id, onClick, url} = this.props;
     const anchor = this.node && this.node.querySelector('a');
+
     const {selectMode} = this.context;
 
     if (selectMode) {

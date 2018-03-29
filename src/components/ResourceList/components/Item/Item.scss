@@ -1,5 +1,9 @@
 @import '../../variables';
 
+.CheckboxWrapper {
+  display: flex;
+}
+
 .Item {
   position: relative;
   outline: none;
@@ -56,14 +60,19 @@
   box-shadow: none;
 }
 
-.Link {
+.Link, .Button {
   position: absolute;
-  z-index: resource-list-item(link-stacking-order);
+  z-index: resource-list-item(clickable-stacking-order);
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   opacity: 0;
+}
+
+.Button {
+  padding: 0;
+  border: none;
 }
 
 // Item inner container

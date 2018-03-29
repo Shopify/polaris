@@ -6,6 +6,17 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.13 - 2018-03-29
+
+### Enhancements
+
+* Added Modal to polaris-react and combined Embeded Modal with Modal
+* Exposed createPolarisContext utility to make testing easier in external apps
+
+### Bug fixes
+
+* Fixed an issue with Lodash to load only single functions instead of the whole library (thanks to [@KrasiNedew](https://github.com/KrasiNedew) for the [original issue](https://github.com/Shopify/polaris/issues/283))
+
 ## 2.0.0-beta.12 - 2018-03-23
 
 ### Bug fixes
