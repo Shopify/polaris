@@ -58,6 +58,10 @@
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Select a filter\u2026"
       }
+    },
+
+    "Tag": {
+      "ariaLabel": "Remove {children}"
     }
   }
 }
