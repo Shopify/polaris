@@ -10,6 +10,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+* Added Modal to polaris-react and combined Embeded Modal with Modal ([#1073](https://github.com/Shopify/polaris-react/pull/1073))
 * Exposed createPolarisContext utility to make testing easier in external apps ([#1211](https://github.com/Shopify/polaris-react/pull/1211))
 
 ### Bug fixes
