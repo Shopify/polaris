@@ -6,7 +6,7 @@ import {
   WithAppProviderProps,
 } from '../../components/AppProvider';
 import Icon, {IconSource} from '../Icon';
-import {SortDirection, ColumnContentType} from './DataTable';
+import {SortDirection} from './DataTable';
 
 import * as styles from './DataTable.scss';
 
@@ -16,7 +16,7 @@ export interface Props {
   testID?: string;
   height?: number;
   content?: React.ReactNode;
-  contentType?: ColumnContentType;
+  contentType?: 'text' | 'numeric';
   fixed?: boolean;
   truncate?: boolean;
   presentational?: boolean;

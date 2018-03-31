@@ -2,10 +2,7 @@ import * as React from 'react';
 import {mountWithProvider as mount} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
-import DataTable, {
-  CombinedProps as Props,
-  ColumnContentType,
-} from '../DataTable';
+import DataTable, {CombinedProps as Props} from '../DataTable';
 import Cell from '../Cell';
 
 interface DataTableTestProps {
@@ -16,13 +13,7 @@ interface DataTableTestProps {
 }
 
 const sortable = [false, true, false, false, true, false];
-const columnContentTypes: ColumnContentType[] = [
-  'text',
-  'numeric',
-  'numeric',
-  'numeric',
-  'numeric',
-];
+const columnContentTypes = ['text', 'numeric', 'numeric', 'numeric', 'numeric'];
 const spyOnSort = jest.fn();
 
 function setup(propOverrides?: DataTableTestProps) {
