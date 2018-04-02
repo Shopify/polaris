@@ -182,7 +182,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
 
     const paginatedSelectAllTextMarkup =
       paginatedSelectAllText && paginatedSelectAllAction ? (
-        <span>{paginatedSelectAllText}</span>
+        <span aria-live="polite">{paginatedSelectAllText}</span>
       ) : (
         paginatedSelectAllText
       );
