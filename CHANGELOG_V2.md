@@ -15,6 +15,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Breaking changes
 
+* Changed Alert onCancel prop to onClose ([#1073](https://github.com/Shopify/polaris-react/pull/1073))
 * This change only impacts users of the Sass version of Polaris, more specifically the `color()` function.
   The `color($hue, $value: base, $for-background: null)` function in Sass now accepts strings for `$hue` and `$value` as advertised in [the documentation](https://polaris.shopify.com/sassdoc/#undefined-function-color).
   * Upgrade path:
