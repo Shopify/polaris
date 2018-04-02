@@ -190,6 +190,8 @@ export default function Icon({
         className={styles.Svg}
         viewBox={iconSource.viewBox}
         dangerouslySetInnerHTML={{__html: iconSource.body}}
+        focusable="false"
+        aria-hidden="true"
       />
     );
   }
