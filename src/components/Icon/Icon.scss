@@ -31,192 +31,192 @@ $stacking-order: (
 }
 
 .isColored {
-  color: color(white);
+  color: color('white');
 }
 
 .colorWhite {
-  fill: color(white);
+  fill: color('white');
   color: transparent;
 }
 
 .colorBlack {
-  fill: color(black);
+  fill: color('black');
 }
 
 .colorSkyLighter {
-  fill: color(sky, lighter);
+  fill: color('sky', 'lighter');
 }
 
 .colorSkyLight {
-  fill: color(sky, light);
+  fill: color('sky', 'light');
 }
 
 .colorSky {
-  fill: color(sky);
+  fill: color('sky');
 }
 
 .colorSkyDark {
-  fill: color(sky, dark);
+  fill: color('sky', 'dark');
 }
 
 .colorInkLightest {
-  fill: color(ink, lightest);
+  fill: color('ink', 'lightest');
 }
 
 .colorInkLighter {
-  fill: color(ink, lighter);
+  fill: color('ink', 'lighter');
 
   &::after {
-    background-color: color(sky);
+    background-color: color('sky');
   }
 }
 
 .colorInkLight {
-  fill: color(ink, light);
+  fill: color('ink', 'light');
 }
 
 .colorInk {
-  fill: color(ink);
+  fill: color('ink');
 
   &::after {
-    background-color: color(sky);
+    background-color: color('sky');
   }
 }
 
 .colorBlueLighter {
-  fill: color(blue, lighter);
+  fill: color('blue', 'lighter');
 }
 
 .colorBlueLight {
-  fill: color(blue, light);
+  fill: color('blue', 'light');
 }
 
 .colorBlue {
-  fill: color(blue);
+  fill: color('blue');
 }
 
 .colorBlueDark {
-  fill: color(blue, dark);
+  fill: color('blue', 'dark');
 
   &::after {
-    background-color: color(blue, light);
+    background-color: color('blue', 'light');
   }
 }
 
 .colorBlueDarker {
-  fill: color(blue, darker);
+  fill: color('blue', 'darker');
 }
 
 .colorIndigoLighter {
-  fill: color(indigo, lighter);
+  fill: color('indigo', 'lighter');
 }
 
 .colorIndigoLight {
-  fill: color(indigo, light);
+  fill: color('indigo', 'light');
 }
 
 .colorIndigo {
-  fill: color(indigo);
+  fill: color('indigo');
 }
 
 .colorIndigoDark {
-  fill: color(indigo, dark);
+  fill: color('indigo', 'dark');
 }
 
 .colorIndigoDarker {
-  fill: color(indigo, darker);
+  fill: color('indigo', 'darker');
 }
 
 .colorTealLighter {
-  fill: color(teal, lighter);
+  fill: color('teal', 'lighter');
 }
 
 .colorTealLight {
-  fill: color(teal, light);
+  fill: color('teal', 'light');
 }
 
 .colorTeal {
-  fill: color(teal);
+  fill: color('teal');
 
   &::after {
-    background-color: color(white);
+    background-color: color('white');
   }
 }
 
 .colorTealDark {
-  fill: color(teal, dark);
+  fill: color('teal', 'dark');
 
   &::after {
-    background-color: color(teal, light);
+    background-color: color('teal', 'light');
   }
 }
 
 .colorTealDarker {
-  fill: color(teal, darker);
+  fill: color('teal', 'darker');
 }
 
 .colorGreenLighter {
-  fill: color(green, lighter);
+  fill: color('green', 'lighter');
 }
 
 .colorGreen {
-  fill: color(green);
+  fill: color('green');
 
   &::after {
-    background-color: color(green, lighter);
+    background-color: color('green', 'lighter');
   }
 }
 
 .colorGreenDark {
-  fill: color(green, dark);
+  fill: color('green', 'dark');
 
   &::after {
-    background-color: color(green, light);
+    background-color: color('green', 'light');
   }
 }
 
 .colorYellowLighter {
-  fill: color(yellow, lighter);
+  fill: color('yellow', 'lighter');
 }
 
 .colorYellow {
-  fill: color(yellow);
+  fill: color('yellow');
 }
 
 .colorYellowDark {
-  fill: color(yellow, dark);
+  fill: color('yellow', 'dark');
 
   &::after {
-    background-color: color(yellow, light);
+    background-color: color('yellow', 'light');
   }
 }
 
 .colorOrange {
-  fill: color(orange);
+  fill: color('orange');
 }
 
 .colorOrangeDark {
-  fill: color(orange, dark);
+  fill: color('orange', 'dark');
 }
 
 .colorRedLighter {
-  fill: color(red, lighter);
+  fill: color('red', 'lighter');
 }
 
 .colorRed {
-  fill: color(red);
+  fill: color('red');
 }
 
 .colorRedDark {
-  fill: color(red, dark);
+  fill: color('red', 'dark');
 
   &::after {
-    background-color: color(red, light);
+    background-color: color('red', 'light');
   }
 }
 
 .colorPurple {
-  fill: color(purple);
+  fill: color('purple');
 }
 
 .Svg {

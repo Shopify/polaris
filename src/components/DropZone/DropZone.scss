@@ -1,20 +1,20 @@
 $dropzone-padding: rem(15px);
 $dropzone-border-width: rem(2px);
 $dropzone-border-style: dashed;
-$dropzone-border-color: color(sky);
-$dropzone-border-color-error: color(red);
-$dropzone-background: color(white);
+$dropzone-border-color: color('sky');
+$dropzone-border-color-error: color('red');
+$dropzone-background: color('white');
 $dropzone-border-radius: border-radius();
 $dropzone-min-height-large: rem(205px);
 $dropzone-min-height-medium: rem(114px);
 $dropzone-min-height-small: rem(50px);
 
-$dropzone-overlay-color: color(indigo);
-$dropzone-overlay-color-error: color(red);
-$dropzone-overlay-border-color: color(indigo);
-$dropzone-overlay-border-color-error: color(red);
-$dropzone-overlay-background: color(indigo, lighter);
-$dropzone-overlay-background-error: color(red, lighter);
+$dropzone-overlay-color: color('indigo');
+$dropzone-overlay-color-error: color('red');
+$dropzone-overlay-border-color: color('indigo');
+$dropzone-overlay-border-color-error: color('red');
+$dropzone-overlay-background: color('indigo', 'lighter');
+$dropzone-overlay-background-error: color('red', 'lighter');
 
 .DropZone {
   position: relative;

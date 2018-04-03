@@ -4,9 +4,6 @@ import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 
-import Intl from '../Intl';
-import Link from '../Link';
-
 import {
   polarisProviderContextTypes,
   TranslationDictionary,
@@ -15,12 +12,19 @@ import {
   WithProviderProps,
 } from '../types';
 
-import {LinkLikeComponent} from '../../UnstyledLink';
+import Intl from '../Intl';
+import Link from '../Link';
+import {Props as ProviderProps} from '../Provider';
+import EASDK from '../EASDK';
 
-export interface PolarisProps {
-  i18n?: TranslationDictionary | TranslationDictionary[] | undefined;
-  linkComponent?: LinkLikeComponent;
-}
+import {name, version} from '../../../../package.json';
+
+const METADATA = {
+  interface: {
+    name,
+    version,
+  },
+};
 
 const REPLACE_REGEX = /{([^}]*)}/g;
 
@@ -72,8 +76,9 @@ export function withProvider() {
         : polarisProviderContextTypes;
 
       render() {
-        const {polaris} = this.context;
-        return <WrappedComponent {...this.props} polaris={polaris} />;
+        const {polaris, easdk} = this.context;
+        const polarisContext = {...polaris, easdk};
+        return <WrappedComponent {...this.props} polaris={polarisContext} />;
       }
     }
 
@@ -85,14 +90,33 @@ export function withProvider() {
   };
 }
 
-export function createPolarisContext({i18n, linkComponent}: PolarisProps = {}) {
+export function createPolarisContext({
+  i18n,
+  linkComponent,
+  apiKey,
+  shopOrigin,
+  forceRedirect,
+  debug,
+}: ProviderProps = {}) {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
+  const easdk = apiKey
+    ? new EASDK(
+        {
+          apiKey,
+          shopOrigin,
+          forceRedirect,
+          debug,
+        },
+        METADATA,
+      )
+    : undefined;
 
   return {
     polaris: {
       intl,
       link,
     },
+    easdk,
   };
 }

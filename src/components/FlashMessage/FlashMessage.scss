@@ -16,9 +16,9 @@ $Backdrop-opacity: 0.88;
   max-width: rem(400px);
   padding: spacing(tight) spacing();
   border-radius: border-radius();
-  background: rgba(color(black), $Backdrop-opacity);
+  background: rgba(color('black'), $Backdrop-opacity);
   box-shadow: shadow();
-  color: color(white);
+  color: color('white');
 
   @include breakpoint-after($breakpoint) {
     padding: spacing();
@@ -26,7 +26,7 @@ $Backdrop-opacity: 0.88;
 }
 
 .error {
-  background: rgba(color(red, dark), $Backdrop-opacity);
+  background: rgba(color('red', 'dark'), $Backdrop-opacity);
 }
 
 .CloseButton {
@@ -39,7 +39,7 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  fill: color(white);
+  fill: color('white');
   cursor: pointer;
 
   &:focus {

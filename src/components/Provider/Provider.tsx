@@ -1,4 +1,5 @@
 import * as React from 'react';
+import EASDK from './EASDK';
 
 import {LinkLikeComponent} from '../UnstyledLink';
 
@@ -12,10 +13,19 @@ export interface Props {
   i18n?: TranslationDictionary | TranslationDictionary[];
   /** A custom component to use for all links used by Polaris components */
   linkComponent?: LinkLikeComponent;
+  /** The API key for your application from the Partner dashboard */
+  apiKey?: string;
+  /** The current shop’s origin, provided in the session from the Shopify API */
+  shopOrigin?: string;
+  /** Forces a redirect to the relative admin path when not rendered in an iframe */
+  forceRedirect?: boolean;
+  /** Prints logs of each message passed through the EASDK */
+  debug?: boolean;
 }
 
 export interface Context {
   polaris: {intl: Intl; link: Link};
+  easdk?: EASDK;
 }
 
 export default class Provider extends React.Component<Props> {
@@ -25,18 +35,33 @@ export default class Provider extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
-    this.polarisContext = createPolarisContext({
-      i18n: props.i18n,
-      linkComponent: props.linkComponent,
-    });
+    this.polarisContext = createPolarisContext({...props});
   }
 
-  componentWillReceiveProps({i18n, linkComponent}: Props) {
+  componentWillReceiveProps({
+    i18n,
+    linkComponent,
+    apiKey,
+    shopOrigin,
+    forceRedirect,
+    debug,
+  }: Props) {
     if (
       i18n !== this.props.i18n ||
-      linkComponent !== this.props.linkComponent
+      linkComponent !== this.props.linkComponent ||
+      apiKey !== this.props.apiKey ||
+      shopOrigin !== this.props.shopOrigin ||
+      forceRedirect !== this.props.forceRedirect ||
+      debug !== this.props.debug
     ) {
-      this.polarisContext = createPolarisContext({i18n, linkComponent});
+      this.polarisContext = createPolarisContext({
+        i18n,
+        linkComponent,
+        apiKey,
+        shopOrigin,
+        forceRedirect,
+        debug,
+      });
     }
   }
 

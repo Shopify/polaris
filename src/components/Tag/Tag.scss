@@ -7,20 +7,20 @@ $icon-size: rem(16px);
   align-items: center;
   min-height: $height;
   padding-left: spacing(tight);
-  background-color: color(sky);
+  background-color: color('sky');
   border-radius: border-radius();
-  color: color(ink);
+  color: color('ink');
 
   &.disabled {
-    @include recolor-icon(color(ink, lightest));
+    @include recolor-icon(color('ink', 'lightest'));
     transition: none;
-    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
-    color: color(ink, lightest);
+    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
+    color: color('ink', 'lightest');
   }
 }
 
 .Button {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color('ink', 'lighter'));
   @include unstyled-button;
   display: block;
   height: $height;
@@ -34,17 +34,17 @@ $icon-size: rem(16px);
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color(ink));
-    background: color(sky, dark);
+    @include recolor-icon(color('ink'));
+    background: color('sky', 'dark');
   }
 
   &:disabled {
-    @include recolor-icon(color(ink, lightest));
+    @include recolor-icon(color('ink', 'lightest'));
     cursor: default;
     pointer-events: none;
   }
 
   &:active {
-    background: rgba(color(ink, lightest), 0.6);
+    background: rgba(color('ink', 'lightest'), 0.6);
   }
 }

@@ -1,9 +1,9 @@
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import Messenger from './Messenger';
-import Bar from './components/Bar';
-import Modal from './components/Modal';
-import ResourcePicker from './components/ResourcePicker';
+import Messenger from '../../embedded/easdk/Messenger';
+import Bar from '../../embedded/easdk/components/Bar';
+import Modal from '../../embedded/easdk/components/Modal';
+import ResourcePicker from '../../embedded/easdk/components/ResourcePicker';
 
 export interface Options {
   /** The API key for your application from the Partner dashboard */

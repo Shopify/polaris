@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -7,6 +6,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {IconableAction, DisableableAction, LoadableAction} from '../../types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
+import {withProvider, WithProviderProps} from '../Provider';
 
 import Header, {ActionGroup, Props as HeaderProps} from './Header';
 
@@ -44,6 +44,8 @@ export interface Props extends HeaderProps {
   singleColumn?: boolean;
 }
 
+export type ComposedProps = Props & WithProviderProps;
+
 const EASDK_PROPS: (keyof Props)[] = [
   'title',
   'icon',
@@ -54,18 +56,16 @@ const EASDK_PROPS: (keyof Props)[] = [
   'pagination',
 ];
 
-export default class Page extends React.PureComponent<Props, never> {
-  static contextTypes = {easdk: PropTypes.object};
-
+class Page extends React.PureComponent<ComposedProps, never> {
   componentDidMount() {
-    if (this.context.easdk == null) {
+    if (this.props.polaris.easdk == null) {
       return;
     }
     this.handleEASDKMessaging();
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.context.easdk == null) {
+  componentDidUpdate(prevProps: ComposedProps) {
+    if (this.props.polaris.easdk == null) {
       return;
     }
 
@@ -87,7 +87,7 @@ export default class Page extends React.PureComponent<Props, never> {
     );
 
     const headerMarkup =
-      this.context.easdk || !this.hasHeaderContent() ? null : (
+      this.props.polaris.easdk || !this.hasHeaderContent() ? null : (
         <Header {...rest} />
       );
 
@@ -100,7 +100,7 @@ export default class Page extends React.PureComponent<Props, never> {
   }
 
   private handleEASDKMessaging() {
-    const {easdk} = this.context;
+    const {easdk} = this.props.polaris;
 
     if (easdk) {
       easdk.Bar.update(this.props);
@@ -117,3 +117,5 @@ export default class Page extends React.PureComponent<Props, never> {
     );
   }
 }
+
+export default withProvider()(Page);
