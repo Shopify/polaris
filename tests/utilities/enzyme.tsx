@@ -1,6 +1,7 @@
 import {ReactWrapper, CommonWrapper, shallow, mount, ShallowWrapper, MountRendererProps, ShallowRendererProps} from 'enzyme';
 import * as React from 'react';
-import {get, merge} from 'lodash';
+import get from 'lodash/get';
+import merge from 'lodash/merge';
 
 import {createPolarisContext} from '../../src/components/Provider';
 
