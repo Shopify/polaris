@@ -33,8 +33,6 @@
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
       "emptySearchResultTitle": "No {resourceNamePlural} found",
       "emptySearchResultDescription": "Try changing the filters or search term",
-      "ariaLiveSingular": "{itemsLength} item",
-      "ariaLivePlural": "{itemsLength} items",
 
       "Item": {
         "selectItem": "Select Item",
