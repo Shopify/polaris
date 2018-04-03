@@ -3,7 +3,7 @@ import * as React from 'react';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 
-import {createPolarisContext} from '../../src/components/Provider';
+import {createPolarisContext} from '../../src/components/AppProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 

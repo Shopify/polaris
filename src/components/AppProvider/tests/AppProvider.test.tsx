@@ -2,11 +2,11 @@ import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
 
 import {createPolarisContext} from '../utils';
-import {polarisProviderContextTypes} from '../types';
+import {polarisAppProviderContextTypes} from '../types';
 
-import Provider from '../Provider';
+import AppProvider from '../AppProvider';
 
-describe('<Provider />', () => {
+describe('<AppProvider />', () => {
   it('passes i18n and withComponent properties to context', () => {
     const i18n = {
       Polaris: {
@@ -25,7 +25,7 @@ describe('<Provider />', () => {
 
     // eslint-disable-next-line react/prefer-stateless-function
     class Child extends React.Component {
-      static contextTypes = polarisProviderContextTypes;
+      static contextTypes = polarisAppProviderContextTypes;
 
       render() {
         return <div />;
@@ -33,9 +33,9 @@ describe('<Provider />', () => {
     }
 
     const wrapper = TestUtils.renderIntoDocument(
-      <Provider i18n={i18n} linkComponent={CustomLinkComponent}>
+      <AppProvider i18n={i18n} linkComponent={CustomLinkComponent}>
         <Child />
-      </Provider>,
+      </AppProvider>,
     );
 
     const child = TestUtils.findRenderedComponentWithType(

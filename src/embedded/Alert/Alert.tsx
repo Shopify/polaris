@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 export interface Props {
   /** Whether the alert is open or not */
@@ -21,7 +24,7 @@ export interface Props {
 }
 
 export class Alert extends React.PureComponent<
-  Props & WithProviderProps,
+  Props & WithAppProviderProps,
   never
 > {
   private focusReturnPoint: HTMLElement | null = null;
@@ -72,4 +75,4 @@ export class Alert extends React.PureComponent<
   }
 }
 
-export default withProvider()(Alert);
+export default withAppProvider()(Alert);

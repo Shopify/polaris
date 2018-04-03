@@ -14,7 +14,7 @@ import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {contextTypes, SELECT_ALL_ITEMS} from '../../types';
-import {withProvider, WithProviderProps} from '../../../Provider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import * as styles from './Item.scss';
 
@@ -22,7 +22,7 @@ export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export interface GenericProps extends WithProviderProps {
+export interface GenericProps extends WithAppProviderProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the item onClick controls */
@@ -388,4 +388,4 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-export default withProvider()(Item);
+export default withAppProvider()(Item);

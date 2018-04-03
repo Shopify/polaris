@@ -6,7 +6,10 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Button, EventListener} from '../../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
@@ -65,7 +68,7 @@ export interface Context {
   unsubscribe(callback: () => void): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Select');
 
@@ -549,4 +552,4 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withProvider()(ResourceList);
+export default withAppProvider()(ResourceList);
