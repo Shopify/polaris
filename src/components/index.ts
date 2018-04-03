@@ -144,10 +144,10 @@ export {
 export {default as Portal, Props as PortalProps} from './Portal';
 
 export {
-  default as Provider,
-  Props as ProviderProps,
+  default as AppProvider,
+  Props as AppProviderProps,
   createPolarisContext,
-} from './Provider';
+} from './AppProvider';
 
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 

@@ -8,7 +8,7 @@ import Stack from '../Stack';
 import Button from '../Button';
 import Caption from '../Caption';
 import TextStyle from '../TextStyle';
-import {withProvider, WithProviderProps} from '../Provider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import AssetFileUpload from './images/file-upload.svg';
@@ -28,7 +28,7 @@ export interface BaseProps {
   actionHint?: string;
 }
 
-export type Props = BaseProps & WithProviderProps;
+export type Props = BaseProps & WithAppProviderProps;
 
 class FileUpload extends React.Component<Props, State> {
   public static contextTypes = {
@@ -116,4 +116,4 @@ class FileUpload extends React.Component<Props, State> {
   }
 }
 
-export default withProvider()(FileUpload);
+export default withAppProvider()(FileUpload);

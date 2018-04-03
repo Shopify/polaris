@@ -5,16 +5,16 @@ import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 
 import {
-  polarisProviderContextTypes,
+  polarisAppProviderContextTypes,
   TranslationDictionary,
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
-  WithProviderProps,
+  WithAppProviderProps,
 } from '../types';
 
 import Intl from '../Intl';
 import Link from '../Link';
-import {Props as ProviderProps} from '../Provider';
+import {Props as AppProviderProps} from '../AppProvider';
 import EASDK from '../EASDK';
 
 import {name, version} from '../../../../package.json';
@@ -60,20 +60,20 @@ export function translate(
   return text;
 }
 
-export function withProvider() {
+export function withAppProvider() {
   return function addProvider<OwnProps, C>(
     WrappedComponent:
-      | React.ComponentClass<OwnProps & WithProviderProps> & C
-      | React.SFC<OwnProps & WithProviderProps> & C,
+      | React.ComponentClass<OwnProps & WithAppProviderProps> & C
+      | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): any & C {
     // eslint-disable-next-line react/prefer-stateless-function
     class WithTranslation extends React.Component<
       {},
-      OwnProps & WithProviderProps
+      OwnProps & WithAppProviderProps
     > {
       static contextTypes = WrappedComponent.contextTypes
-        ? merge(WrappedComponent.contextTypes, polarisProviderContextTypes)
-        : polarisProviderContextTypes;
+        ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
+        : polarisAppProviderContextTypes;
 
       render() {
         const {polaris, easdk} = this.context;
@@ -97,7 +97,7 @@ export function createPolarisContext({
   shopOrigin,
   forceRedirect,
   debug,
-}: ProviderProps = {}) {
+}: AppProviderProps = {}) {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const easdk = apiKey

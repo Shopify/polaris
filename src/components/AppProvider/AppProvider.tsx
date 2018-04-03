@@ -6,7 +6,7 @@ import {LinkLikeComponent} from '../UnstyledLink';
 import Intl from './Intl';
 import Link from './Link';
 import {createPolarisContext} from './utils';
-import {polarisProviderContextTypes, TranslationDictionary} from './types';
+import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */
@@ -28,8 +28,8 @@ export interface Context {
   easdk?: EASDK;
 }
 
-export default class Provider extends React.Component<Props> {
-  static childContextTypes = polarisProviderContextTypes;
+export default class AppProvider extends React.Component<Props> {
+  static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
 
   constructor(props: Props) {

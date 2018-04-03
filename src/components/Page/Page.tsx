@@ -6,7 +6,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {IconableAction, DisableableAction, LoadableAction} from '../../types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
-import {withProvider, WithProviderProps} from '../Provider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import Header, {ActionGroup, Props as HeaderProps} from './Header';
 
@@ -44,7 +44,7 @@ export interface Props extends HeaderProps {
   singleColumn?: boolean;
 }
 
-export type ComposedProps = Props & WithProviderProps;
+export type ComposedProps = Props & WithAppProviderProps;
 
 const EASDK_PROPS: (keyof Props)[] = [
   'title',
@@ -118,4 +118,4 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withProvider()(Page);
+export default withAppProvider()(Page);

@@ -13,7 +13,7 @@ import Stack from '../Stack';
 import Caption from '../Caption';
 import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
-import {withProvider, WithProviderProps} from '../Provider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import FileUpload from './FileUpload';
 
@@ -93,7 +93,7 @@ export interface Props {
   open?(): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
 class DropZone extends React.Component<CombinedProps, State> {
   public static FileUpload = FileUpload;
@@ -469,4 +469,4 @@ function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default withProvider()(DropZone);
+export default withAppProvider()(DropZone);

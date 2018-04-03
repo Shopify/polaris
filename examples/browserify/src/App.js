@@ -11,7 +11,7 @@ import {
   AccountConnection,
   ChoiceList,
   SettingToggle,
-  Provider,
+  AppProvider,
 } from '@shopify/polaris';
 
 class App extends Component {
@@ -40,7 +40,7 @@ class App extends Component {
     ];
 
     return (
-      <Provider>
+      <AppProvider>
         <Page
           title="Polaris"
           breadcrumbs={breadcrumbs}
@@ -117,7 +117,7 @@ class App extends Component {
 
           </Layout>
         </Page>
-      </Provider>
+      </AppProvider>
     );
   }
 

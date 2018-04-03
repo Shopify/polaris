@@ -5,7 +5,7 @@ import {
   mountWithProvider,
 } from '../../../../tests/utilities';
 
-import Link from '../../Provider/Link';
+import Link from '../../AppProvider/Link';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {
