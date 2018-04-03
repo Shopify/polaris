@@ -67,9 +67,7 @@ export default function Checkbox({
   if (helpText) {
     describedBy.push(helpTextID(id));
   }
-  const ariaDescribedBy = describedBy.length
-    ? describedBy.join(' ')
-    : undefined;
+  const ariaDescribedBy = describedBy.length ? describedBy.join(' ') : null;
 
   const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
 
