@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.14 - 2018-04-03
+
 ### Bug fixes
 
 * Fixed Lodash imports where the whole library was being loaded ([#1233](https://github.com/Shopify/polaris-react/pull/1233)) (thanks to [@KrasiNedew](https://github.com/KrasiNedew) for the [original issue](https://github.com/Shopify/polaris/issues/289))
