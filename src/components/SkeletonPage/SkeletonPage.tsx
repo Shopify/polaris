@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as PropTypes from 'prop-types';
 import DisplayText from '../DisplayText';
 import SkeletonDisplayText from '../SkeletonDisplayText';
 import SkeletonBodyText from '../SkeletonBodyText';
 
 import * as styles from './SkeletonPage.scss';
+import {withProvider, WithProviderProps} from '../Provider';
 
 export interface Props {
   /** Page title, in large type */
@@ -20,9 +20,9 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default class SkeletonPage extends React.PureComponent<Props, never> {
-  static contextTypes = {easdk: PropTypes.object};
+export type CombinedProps = Props & WithProviderProps;
 
+class SkeletonPage extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       children,
@@ -48,7 +48,7 @@ export default class SkeletonPage extends React.PureComponent<Props, never> {
 
     const breadcrumbMarkup = breadcrumbs ? renderSecondaryActions(1) : null;
 
-    const headerMarkup = !this.context.easdk ? (
+    const headerMarkup = !this.props.polaris.easdk ? (
       <div className={headerClassName}>
         {breadcrumbMarkup}
         {titleMarkup}
@@ -89,3 +89,5 @@ function renderTitle(title: string) {
     );
   return <div className={styles.Title}>{titleContent}</div>;
 }
+
+export default withProvider()(SkeletonPage);

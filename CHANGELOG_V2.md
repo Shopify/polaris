@@ -10,12 +10,20 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Fixed Lodash imports where the whole library was being loaded ([#1233](https://github.com/Shopify/polaris-react/pull/1233)) (thanks to [@KrasiNedew](https://github.com/KrasiNedew) for the [original issue](https://github.com/Shopify/polaris/issues/289))
 
+### Enhancements
+
+* Exposed createPolarisContext utility to make testing easier in external apps ([#1211](https://github.com/Shopify/polaris-react/pull/1211))
+
+### Breaking changes
+
+* Removed `EmbeddedApp` component in favour of using `Provider` ([#1199](https://github.com/Shopify/polaris-react/pull/1199))
+  * Upgrade path: Use `Provider` component with new embedded app props instead
+
 ## 2.0.0-beta.13 - 2018-03-29
 
 ### Enhancements
 
 * Added Modal to polaris-react and combined Embeded Modal with Modal ([#1073](https://github.com/Shopify/polaris-react/pull/1073))
-* Exposed createPolarisContext utility to make testing easier in external apps ([#1211](https://github.com/Shopify/polaris-react/pull/1211))
 
 ### Breaking changes
 

@@ -3,13 +3,15 @@ import {ValidationMap} from 'react';
 
 import Intl from './Intl';
 import Link from './Link';
+import EASDK from './EASDK';
 
 export const polarisProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
+  easdk: PropTypes.any,
 };
 
 export interface WithProviderProps {
-  polaris: {intl: Intl; link: Link};
+  polaris: {intl: Intl; link: Link; easdk: EASDK};
 }
 
 export interface TranslationDictionary {

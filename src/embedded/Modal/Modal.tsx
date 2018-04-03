@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {withEASDK, WithEASDKProps} from '../easdk';
+import {withProvider, WithProviderProps} from '../../components/Provider';
 import {DisableableAction} from '../../types';
 
 export type Width = 'large' | 'fullwidth';
@@ -23,7 +23,10 @@ export interface Props {
   onClose(): void;
 }
 
-export class Modal extends React.PureComponent<Props & WithEASDKProps, never> {
+export class Modal extends React.PureComponent<
+  Props & WithProviderProps,
+  never
+> {
   private focusReturnPoint: HTMLElement | null = null;
 
   componentDidMount() {
@@ -59,17 +62,17 @@ export class Modal extends React.PureComponent<Props & WithEASDKProps, never> {
   }
 
   private handleEASDKMessaging() {
-    const {open, easdk} = this.props;
-    if (easdk == null) {
+    const {open, polaris} = this.props;
+    if (polaris.easdk == null) {
       return;
     }
 
     if (open) {
-      easdk.Modal.open(this.props);
+      polaris.easdk.Modal.open(this.props);
     } else {
-      easdk.Modal.close();
+      polaris.easdk.Modal.close();
     }
   }
 }
 
-export default withEASDK()(Modal);
+export default withProvider()(Modal);

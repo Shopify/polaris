@@ -54,6 +54,7 @@ describe('createPolarisContext()', () => {
         intl: new Intl(undefined),
         link: new Link(),
       },
+      easdk: undefined,
     };
 
     expect(context).toEqual(mockContext);
@@ -68,7 +69,7 @@ describe('createPolarisContext()', () => {
       },
     };
     const CustomLinkComponent = () => {
-      return <a href="http://shopify.com">Custom Link Component</a>;
+      return <a href="test">Custom Link Component</a>;
     };
     const context = createPolarisContext({
       i18n,

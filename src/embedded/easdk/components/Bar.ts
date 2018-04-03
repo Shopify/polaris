@@ -21,7 +21,7 @@ export interface UpdateConfig {
   breadcrumbs?: LinkAction[];
   primaryAction?: DisableableAction & LoadableAction;
   secondaryActions?: ComplexAction[];
-  actionGroups: ActionGroup[];
+  actionGroups?: ActionGroup[];
   pagination?: {
     hasNext?: boolean;
     hasPrevious?: boolean;
