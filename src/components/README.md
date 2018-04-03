@@ -77,7 +77,7 @@ First, import the component into your project:
 import {AppProvider, Button} from '@shopify/polaris';
 ```
 
-Create an element using the Polaris React `AppProvider` component. The `AppProvider` component must wrap your entire app as the Polaris React components will not function without it:
+Create an element using the Polaris React `AppProvider` component. The `AppProvider` component must wrap your entire app because Polaris React components will not function without it:
 
 ```javascript
 const app = (
