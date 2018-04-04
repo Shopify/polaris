@@ -8,6 +8,7 @@ import {
 
 import Intl from '../Intl';
 import Link from '../Link';
+import StickyManager from '../StickyManager';
 
 describe('translate()', () => {
   it('returns a simple string value in the translation dictionary', () => {
@@ -53,6 +54,7 @@ describe('createPolarisContext()', () => {
       polaris: {
         intl: new Intl(undefined),
         link: new Link(),
+        stickyManager: new StickyManager(),
       },
       easdk: undefined,
     };
@@ -71,14 +73,17 @@ describe('createPolarisContext()', () => {
     const CustomLinkComponent = () => {
       return <a href="test">Custom Link Component</a>;
     };
+    const stickyManager = new StickyManager();
     const context = createPolarisContext({
       i18n,
       linkComponent: CustomLinkComponent,
+      stickyManager,
     });
     const mockContext = {
       polaris: {
         intl: new Intl(i18n),
         link: new Link(CustomLinkComponent),
+        stickyManager,
       },
     };
 

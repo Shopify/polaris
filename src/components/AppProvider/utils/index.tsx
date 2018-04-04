@@ -14,7 +14,7 @@ import {
 
 import Intl from '../Intl';
 import Link from '../Link';
-import {Props as AppProviderProps} from '../AppProvider';
+import {Props as AppProviderProps, Context} from '../AppProvider';
 import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
 
@@ -100,33 +100,36 @@ export function withAppProvider<OwnProps>() {
 export function withSticky() {
   return function addStickyManager<OwnProps, C>(
     WrappedComponent:
-      | React.ComponentClass<OwnProps & WithProviderProps> & C
-      | React.SFC<OwnProps & WithProviderProps> & C,
+      | React.ComponentClass<OwnProps & WithAppProviderProps> & C
+      | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): any & C {
     class WithStickyManager extends React.Component<
       {},
-      OwnProps & WithProviderProps
+      OwnProps & WithAppProviderProps
     > {
-      static childContextTypes = polarisProviderContextTypes;
+      static childContextTypes = polarisAppProviderContextTypes;
       static contextTypes = WrappedComponent.contextTypes
-        ? merge(WrappedComponent.contextTypes, polarisProviderContextTypes)
-        : polarisProviderContextTypes;
+        ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
+        : polarisAppProviderContextTypes;
 
       private stickyManager: StickyManager = new StickyManager();
       private polarisContext: any;
 
-      constructor(props: OwnProps & WithProviderProps, context: Context) {
+      constructor(props: OwnProps & WithAppProviderProps, context: Context) {
         super(props);
-
+        const {polaris, easdk} = context;
         this.polarisContext = {
-          ...context.polaris,
+          ...polaris,
           stickyManager: this.stickyManager,
+          easdk,
         };
       }
 
       getChildContext(): Context {
+        const {easdk, ...rest} = this.polarisContext;
         return {
-          polaris: this.polarisContext,
+          polaris: rest,
+          easdk,
         };
       }
 
@@ -144,7 +147,6 @@ export function withSticky() {
     return FinalComponent as React.ComponentClass<any> & C;
   };
 }
-
 
 export function createPolarisContext({
   i18n,
@@ -178,4 +180,3 @@ export function createPolarisContext({
     easdk,
   };
 }
-

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {polarisProviderContextTypes} from '../Provider/types';
+import {polarisAppProviderContextTypes} from '../AppProvider/types';
 
 export interface State {
   isSticky: boolean;
@@ -15,7 +15,7 @@ export type Props = {
   | {children(isSticky: boolean): React.ReactNode});
 
 export default class Sticky extends React.Component<Props, State> {
-  static contextTypes = polarisProviderContextTypes;
+  static contextTypes = polarisAppProviderContextTypes;
 
   state: State = {
     isSticky: false,

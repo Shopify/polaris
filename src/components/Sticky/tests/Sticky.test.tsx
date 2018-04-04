@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Sticky from '../Sticky';
-import {mountWithProvider} from '../../../../tests/utilities/enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities/enzyme';
 
 describe('<Sticky />', () => {
   it('renders children component', () => {
-    const element = mountWithProvider(
+    const element = mountWithAppProvider(
       <Sticky>
         <FunctionalComponent />
       </Sticky>,
@@ -12,7 +12,7 @@ describe('<Sticky />', () => {
     expect(element.find('h1').exists()).toBe(true);
   });
   it('renders a function as child component with a boolean argument set to false by default', () => {
-    const element = mountWithProvider(
+    const element = mountWithAppProvider(
       <Sticky>
         {(isSticky) => {
           if (isSticky === false) {

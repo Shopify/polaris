@@ -1,6 +1,6 @@
-import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
-import {throttle} from 'lodash-decorators';
+import throttle from 'lodash-decorators/throttle';
 import {
   addEventListener,
   removeEventListener,
@@ -53,7 +53,7 @@ export default class StickyManager {
     }
   }
 
-  @debounce(50)
+  @throttle(50)
   @autobind
   private handleResize() {
     this.manageStickyItems();

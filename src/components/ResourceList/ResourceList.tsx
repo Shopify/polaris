@@ -427,7 +427,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       ) : null;
 
     const listMarkup = itemsExist ? (
-      <ul className={styles.ResourceList} aria-live="polite">
+      <ul
+        className={styles.ResourceList}
+        ref={this.setListNode}
+        aria-live="polite"
+      >
         {items.map(this.renderItem)}
       </ul>
     ) : (

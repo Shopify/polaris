@@ -6,7 +6,7 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
-import {withSticky, WithProviderProps} from '../Provider';
+import {withSticky, WithAppProviderProps} from '../AppProvider';
 import {scrollable} from '../shared';
 
 import * as styles from './Scrollable.scss';
@@ -36,7 +36,7 @@ export interface State {
   scrollPosition: number;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 class Scrollable extends React.Component<CombinedProps, State> {
   static forNode(node: HTMLElement): HTMLElement | Document {
     return (
