@@ -190,11 +190,11 @@ function collapsibleHeight(
   height?: number | null,
 ) {
   if (animationState === 'idle' && open) {
-    return open ? 'auto' : null;
+    return open ? 'auto' : undefined;
   }
 
   if (animationState === 'measuring') {
-    return open ? null : 'auto';
+    return open ? undefined : 'auto';
   }
 
   return `${height || 0}px`;
