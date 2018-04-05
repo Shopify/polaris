@@ -48,7 +48,7 @@ const slideClasses = {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-class BulkActions extends React.PureComponent<CombinedProps, State> {
+export class BulkActions extends React.PureComponent<CombinedProps, State> {
   state = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
@@ -462,4 +462,4 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-export default withAppProvider()(BulkActions);
+export default withAppProvider<Props>()(BulkActions);

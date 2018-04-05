@@ -22,7 +22,7 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-class SkeletonPage extends React.PureComponent<CombinedProps, never> {
+export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       children,
@@ -90,4 +90,4 @@ function renderTitle(title: string) {
   return <div className={styles.Title}>{titleContent}</div>;
 }
 
-export default withAppProvider()(SkeletonPage);
+export default withAppProvider<Props>()(SkeletonPage);

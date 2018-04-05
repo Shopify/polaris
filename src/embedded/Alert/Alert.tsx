@@ -75,4 +75,4 @@ export class Alert extends React.PureComponent<
   }
 }
 
-export default withAppProvider()(Alert);
+export default withAppProvider<Props>()(Alert);

@@ -30,7 +30,7 @@ export interface BaseProps {
 
 export type Props = BaseProps & WithAppProviderProps;
 
-class FileUpload extends React.Component<Props, State> {
+export class FileUpload extends React.Component<Props, State> {
   public static contextTypes = {
     size: PropTypes.string,
     type: PropTypes.string,
@@ -116,4 +116,4 @@ class FileUpload extends React.Component<Props, State> {
   }
 }
 
-export default withAppProvider()(FileUpload);
+export default withAppProvider<Props>()(FileUpload);

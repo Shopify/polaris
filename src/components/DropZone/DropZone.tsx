@@ -95,8 +95,8 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-class DropZone extends React.Component<CombinedProps, State> {
-  public static FileUpload = FileUpload;
+export class DropZone extends React.Component<CombinedProps, State> {
+  public static FileUpload: any = FileUpload;
   public static childContextTypes = {
     size: PropTypes.string,
     type: PropTypes.string,
@@ -469,4 +469,4 @@ function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default withAppProvider()(DropZone);
+export default withAppProvider<Props>()(DropZone);

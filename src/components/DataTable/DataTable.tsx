@@ -174,7 +174,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             };
           }
 
-          const height = !truncate ? heights[0] : null;
+          const height = !truncate ? heights[0] : undefined;
 
           return (
             <Cell
@@ -602,4 +602,4 @@ function getPrevAndCurrentColumns(
   return {previousColumn, currentColumn};
 }
 
-export default withAppProvider()(DataTable);
+export default withAppProvider<Props>()(DataTable);

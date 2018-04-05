@@ -3,7 +3,6 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
-
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -22,7 +21,7 @@ export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export interface GenericProps extends WithAppProviderProps {
+export interface Props {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the item onClick controls */
@@ -36,12 +35,12 @@ export interface GenericProps extends WithAppProviderProps {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends GenericProps {
+export interface PropsWithUrl extends Props {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends GenericProps {
+export interface PropsWithClick extends Props {
   url?: string;
   onClick(id?: string): void;
 }
@@ -52,7 +51,9 @@ export interface State {
   focusedInner: boolean;
 }
 
-export type CombinedProps = PropsWithUrl | PropsWithClick;
+export type CombinedProps =
+  | PropsWithUrl & WithAppProviderProps
+  | PropsWithClick & WithAppProviderProps;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
@@ -88,7 +89,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       ariaExpanded,
       polaris: {intl},
       accessibilityLabel,
-    } = this.props as CombinedProps & PropsWithUrl;
+    } = this.props as CombinedProps;
 
     const {persistActions = false, selectable, selectMode} = this.context;
 
@@ -388,4 +389,4 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-export default withAppProvider()(Item);
+export default withAppProvider<PropsWithUrl | PropsWithClick>()(Item);

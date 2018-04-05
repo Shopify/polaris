@@ -26,7 +26,7 @@ export interface State {
   selectedFilterValue?: AppliedFilter['value'];
 }
 
-class FilterCreator extends React.PureComponent<CombinedProps, State> {
+export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   state: State = {
     popoverActive: false,
   };
@@ -152,4 +152,4 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-export default withAppProvider()(FilterCreator);
+export default withAppProvider<Props>()(FilterCreator);

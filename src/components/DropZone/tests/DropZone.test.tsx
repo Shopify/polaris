@@ -9,6 +9,7 @@ describe('<DropZone />', () => {
   let acceptedFiles: {}[];
   let rejectedFiles: {}[];
   let createEvent: any;
+  let defaultType: 'file';
 
   beforeEach(() => {
     spy = jest.fn();
@@ -35,35 +36,43 @@ describe('<DropZone />', () => {
   });
 
   it('calls the onDrop callback when a drop event is fired', () => {
-    const dropZone = mountWithProvider(<DropZone onDrop={spy} />);
+    const dropZone = mountWithProvider(
+      <DropZone onDrop={spy} type={defaultType} />,
+    );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalledWith(files, files, []);
   });
 
   it('calls the onDrop callback when a drop event is fired on document', () => {
-    mountWithProvider(<DropZone dropOnPage onDrop={spy} />);
+    mountWithProvider(<DropZone dropOnPage onDrop={spy} type={defaultType} />);
     const event = createEvent('drop');
     document.dispatchEvent(event);
     expect(spy).toBeCalledWith(files, files, []);
   });
 
   it('calls the onDragEnter callback when a dragEnter event is fired', () => {
-    const dropZone = mountWithProvider(<DropZone onDragEnter={spy} />);
+    const dropZone = mountWithProvider(
+      <DropZone onDragEnter={spy} type={defaultType} />,
+    );
     const event = createEvent('dragenter');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalled();
   });
 
   it('calls the onDragOver callback when a dragOver event is fired', () => {
-    const dropZone = mountWithProvider(<DropZone onDragOver={spy} />);
+    const dropZone = mountWithProvider(
+      <DropZone onDragOver={spy} type={defaultType} />,
+    );
     const event = createEvent('dragover');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalled();
   });
 
   it('calls the onDragLeave callback when a dragLeave event is fired', () => {
-    const dropZone = mountWithProvider(<DropZone onDragLeave={spy} />);
+    const dropZone = mountWithProvider(
+      <DropZone onDragLeave={spy} type={defaultType} />,
+    );
     const event = createEvent('dragleave');
     dropZone.getDOMNode().dispatchEvent(event);
     expect(spy).toBeCalled();
@@ -71,7 +80,7 @@ describe('<DropZone />', () => {
 
   it('calls the onDrop callback corrently when it accepts only jpeg', () => {
     const dropZone = mountWithProvider(
-      <DropZone onDrop={spy} accept="image/jpeg" />,
+      <DropZone onDrop={spy} accept="image/jpeg" type={defaultType} />,
     );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
@@ -80,7 +89,7 @@ describe('<DropZone />', () => {
 
   it('calls the onDropAccepted callback corrently when it accepts only jpeg', () => {
     const dropZone = mountWithProvider(
-      <DropZone onDropAccepted={spy} accept="image/jpeg" />,
+      <DropZone onDropAccepted={spy} accept="image/jpeg" type={defaultType} />,
     );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
@@ -89,7 +98,7 @@ describe('<DropZone />', () => {
 
   it('calls the onDropRejected callback corrently when it accepts only jpeg', () => {
     const dropZone = mountWithProvider(
-      <DropZone onDropRejected={spy} accept="image/jpeg" />,
+      <DropZone onDropRejected={spy} accept="image/jpeg" type={defaultType} />,
     );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
@@ -101,7 +110,11 @@ describe('<DropZone />', () => {
       return file.type === 'image/jpeg';
     };
     const dropZone = mountWithProvider(
-      <DropZone onDrop={spy} customValidator={customValidator} />,
+      <DropZone
+        onDrop={spy}
+        customValidator={customValidator}
+        type={defaultType}
+      />,
     );
     const event = createEvent('drop');
     dropZone.getDOMNode().dispatchEvent(event);
@@ -118,6 +131,7 @@ describe('<DropZone />', () => {
         onDragEnter={spy}
         onDragLeave={spy}
         onDragOver={spy}
+        type={defaultType}
       />,
     );
     createEvent('drop');
