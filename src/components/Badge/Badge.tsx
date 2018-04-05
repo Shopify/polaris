@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import VisuallyHidden from '../VisuallyHidden';
 import * as styles from './Badge.scss';
 
@@ -15,6 +19,8 @@ export interface Props {
   progress?: Progress;
 }
 
+export type CombinedProps = Props & WithAppProviderProps;
+
 const PROGRESS_LABELS = {
   incomplete: 'Incomplete',
   partiallyComplete: 'Partially complete',
@@ -28,7 +34,7 @@ const STATUS_LABELS = {
   attention: 'Attention',
 };
 
-export default function Badge({children, status, progress}: Props) {
+function Badge({children, status, progress, polaris: {intl}}: CombinedProps) {
   const className = classNames(
     styles.Badge,
     status && styles[variationName('status', status)],
@@ -53,3 +59,5 @@ export default function Badge({children, status, progress}: Props) {
     </span>
   );
 }
+
+export default withAppProvider()(Badge);

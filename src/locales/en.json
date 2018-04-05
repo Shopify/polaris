@@ -1,5 +1,24 @@
 {
   "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar with initials {initials}"
+    },
+
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Incomplete",
+        "partiallyComplete": "Partially complete",
+        "complete": "Complete"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Success",
+        "warning": "Warning",
+        "attention": "Attention"
+      }
+    },
+
     "Common": {
       "undo": "Undo"
     },
