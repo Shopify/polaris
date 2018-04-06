@@ -11,6 +11,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Renamed `Provider` component to `AppProvider ([#1234](https://github.com/Shopify/polaris-react/pull/1234))
   * To upgrade change name from `Provider` to `AppProvider` everywhere it is used
 
+### Bug fixes
+
+* Fixed Button disabled styles ([#1248](https://github.com/Shopify/polaris-react/pull/1248))
+
 ## 2.0.0-beta.14 - 2018-04-03
 
 ### Bug fixes
