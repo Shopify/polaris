@@ -8,6 +8,10 @@ $spinner-size: rem(20px);
 
 .Button {
   @include button-base;
+
+  &.disabled {
+    @include base-button-disabled;
+  }
 }
 
 .Content {
