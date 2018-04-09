@@ -35,7 +35,7 @@ export default function AccountConnection({
   title,
   details,
   termsOfService,
-}: Props) {
+}: Props): React.ReactNode {
   const initials = accountName
     ? accountName
         .split(/\s+/)

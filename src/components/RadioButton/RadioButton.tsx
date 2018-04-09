@@ -52,7 +52,7 @@ export default function RadioButton({
     onChange(currentTarget.checked, id);
   }
 
-  const describedBy = helpText ? helpTextID(id) : null;
+  const describedBy = helpText ? helpTextID(id) : undefined;
 
   return (
     <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>

@@ -367,19 +367,8 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
-    const itemsLength = items.length;
-
-    const ariaLive =
-      itemsLength > 1
-        ? intl.translate('Polaris.ResourceList.ariaLivePlural', {
-            itemsLength,
-          })
-        : intl.translate('Polaris.ResourceList.ariaLiveSingular', {
-            itemsLength,
-          });
-
     const listMarkup = itemsExist ? (
-      <ul className={styles.ResourceList} aria-live={ariaLive}>
+      <ul className={styles.ResourceList} aria-live="polite">
         {items.map(this.renderItem)}
       </ul>
     ) : (
