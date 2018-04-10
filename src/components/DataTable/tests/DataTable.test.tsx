@@ -2,10 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
-import DataTable, {
-  CombinedProps as Props,
-  ColumnContentType,
-} from '../DataTable';
+import DataTable, {CombinedProps as Props} from '../DataTable';
 import Cell from '../Cell';
 
 interface DataTableTestProps {
@@ -16,7 +13,7 @@ interface DataTableTestProps {
 }
 
 const sortable = [false, true, false, false, true, false];
-const columnContentTypes: ColumnContentType[] = [
+const columnContentTypes: Props['columnContentTypes'] = [
   'text',
   'numeric',
   'numeric',
