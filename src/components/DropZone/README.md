@@ -2,21 +2,16 @@
 name: Drop zone
 category: Actions
 keywords:
-  - lists
-  - detail
-  - page
-  - pager
-  - previous
-  - next
-  - navigation between pages
-  - page arrows
-  - list navigation
-  - list arrows
-  - list pagination
-  - list pages
-  - previous next buttons
-  - previous buttons
-  - next buttons
+  - upload
+  - image upload
+  - file upload
+  - drag
+  - drop
+  - area
+  - drop area
+  - file dialog
+  - upload placeholder
+  - drop placeholder
 ---
 
 # Drop zone
