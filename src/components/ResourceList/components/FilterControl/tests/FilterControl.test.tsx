@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger, mountWithProvider} from '../../../../../../tests/utilities';
+import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
 
 import FilterControl, {Props} from '../';
 import FilterCreator from '../FilterCreator';
@@ -56,7 +56,7 @@ describe('<FilterControl />', () => {
 
   describe('searchValue', () => {
     it('renders with TextField by default', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} />,
       );
 
@@ -66,7 +66,7 @@ describe('<FilterControl />', () => {
 
     it('renders with searchValue as its value', () => {
       const searchValue = 'search value';
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} searchValue={searchValue} />,
       );
 
@@ -79,7 +79,7 @@ describe('<FilterControl />', () => {
     it('calls onSearchChange with the new searchValue when onChange is triggered', () => {
       const newSearchValue = 'new search value';
       const onSearchChange = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} onSearchChange={onSearchChange} />,
       );
 
@@ -91,7 +91,7 @@ describe('<FilterControl />', () => {
 
   describe('filters', () => {
     it('renders no <FilterCreator /> if there are no filters', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} />,
       );
 
@@ -100,7 +100,7 @@ describe('<FilterControl />', () => {
     });
 
     it('renders <FilterCreator /> if there is filters', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} filters={mockFilters} />,
       );
 
@@ -108,7 +108,7 @@ describe('<FilterControl />', () => {
     });
 
     it('renders <FilterCreator /> with filters', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} filters={mockFilters} />,
       );
 
@@ -126,7 +126,7 @@ describe('<FilterControl />', () => {
       };
 
       const onFiltersChange = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={mockFilters}
@@ -146,7 +146,7 @@ describe('<FilterControl />', () => {
     it('does not get call if the new filter already exist when FilterCreator.onAddFilter is triggered', () => {
       const newFilter = mockAppliedFilters[0];
       const onFiltersChange = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={mockFilters}
@@ -163,7 +163,7 @@ describe('<FilterControl />', () => {
 
   describe('appliedFilters', () => {
     it('renders the same number of Tag as appliedFilters', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           appliedFilters={mockAppliedFilters}
@@ -176,7 +176,7 @@ describe('<FilterControl />', () => {
 
     it('calls onFiltersChange without the applied filter when user click remove on the appliedFilter', () => {
       const onFiltersChange = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           appliedFilters={mockAppliedFilters}
@@ -210,7 +210,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterLabel,
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={[filter]}
@@ -237,7 +237,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: filterValue,
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={[filter]}
@@ -269,7 +269,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: filterValue,
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={[filter]}
@@ -296,7 +296,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={[filter]}
@@ -322,7 +322,7 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={[filter]}
@@ -342,7 +342,7 @@ describe('<FilterControl />', () => {
         key: 'filter key',
         value: appliedFilterValue,
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl
           {...mockDefaultProps}
           filters={[]}
@@ -357,7 +357,7 @@ describe('<FilterControl />', () => {
 
   describe('additionalAction', () => {
     it('renders no connectedRight prop on TextField if there is no additionalAction', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} />,
       );
 
@@ -370,7 +370,7 @@ describe('<FilterControl />', () => {
         content: 'button label',
         onAction: jest.fn(),
       };
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} additionalAction={action} />,
       );
 

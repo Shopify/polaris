@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {findByTestID} from '../../../../../../tests/utilities/enzyme';
-import {mountWithProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../../../tests/utilities';
 import BulkActions from '../';
 import {BulkAction} from '../BulkActions';
 import BulkActionButton from '../BulkActionButton';
@@ -57,7 +57,9 @@ describe('<BulkActions />', () => {
   describe('actions', () => {
     it('promotedActions render in the correct position on intial load', () => {
       const {promotedActions} = bulkActionProps;
-      const element = mountWithProvider(<BulkActions {...bulkActionProps} />);
+      const element = mountWithAppProvider(
+        <BulkActions {...bulkActionProps} />,
+      );
       const count = element.find(BulkActionButton).filterWhere((el: any) => {
         const content = el.props().content;
         return (
@@ -70,7 +72,9 @@ describe('<BulkActions />', () => {
 
     it('bulkActions render in the correct position on initial load', () => {
       const {bulkActions} = bulkActionProps;
-      const element = mountWithProvider(<BulkActions {...bulkActionProps} />);
+      const element = mountWithAppProvider(
+        <BulkActions {...bulkActionProps} />,
+      );
       const count = element.find(BulkActionButton).filterWhere((el: any) => {
         const content = el.props().content;
         return (
@@ -87,7 +91,9 @@ describe('<BulkActions />', () => {
     describe('accessibilityLabel', () => {
       it('correctly passes down to CheckableButton', () => {
         const {accessibilityLabel} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...bulkActionProps} />);
+        const element = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
         const checkableButton = element.find(CheckableButton);
         expect(
           searchCheckableButton(
@@ -100,7 +106,7 @@ describe('<BulkActions />', () => {
 
       it('does not pass down to CheckableButton when the property is not provided', () => {
         const {accessibilityLabel, ...props} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...props} />);
+        const element = mountWithAppProvider(<BulkActions {...props} />);
         expect(
           searchCheckableButton(
             element,
@@ -114,7 +120,9 @@ describe('<BulkActions />', () => {
     describe('label', () => {
       it('correctly passes down to CheckableButton', () => {
         const {label} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...bulkActionProps} />);
+        const element = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
         const checkableButton = element.find(CheckableButton);
         expect(searchCheckableButton(element, 'label', label)).toBe(
           checkableButton.length,
@@ -123,7 +131,7 @@ describe('<BulkActions />', () => {
 
       it('does not pass down to CheckableButton when the property is not provided', () => {
         const {label, ...props} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...props} />);
+        const element = mountWithAppProvider(<BulkActions {...props} />);
         expect(searchCheckableButton(element, 'label', label)).toBe(0);
       });
     });
@@ -131,7 +139,9 @@ describe('<BulkActions />', () => {
     describe('selected', () => {
       it('correctly passes down to CheckableButton', () => {
         const {selected} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...bulkActionProps} />);
+        const element = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
         const length = element.find(CheckableButton).length;
         expect(searchCheckableButton(element, 'selected', selected)).toBe(
           length,
@@ -140,7 +150,7 @@ describe('<BulkActions />', () => {
 
       it('does not pass down to CheckableButton when the property is not provided', () => {
         const {selected, ...props} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...props} />);
+        const element = mountWithAppProvider(<BulkActions {...props} />);
         expect(searchCheckableButton(element, 'selected', selected)).toBe(0);
       });
     });
@@ -148,7 +158,9 @@ describe('<BulkActions />', () => {
     describe('paginatedSelectAllText', () => {
       it('correctly renders when provided', () => {
         const {paginatedSelectAllText} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...bulkActionProps} />);
+        const element = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
         const text = findByTestID(element, 'paginated-select-all')
           .text()
           .trim();
@@ -157,7 +169,7 @@ describe('<BulkActions />', () => {
 
       it('does not render when not provided', () => {
         const {paginatedSelectAllText, ...props} = bulkActionProps;
-        const element = mountWithProvider(<BulkActions {...props} />);
+        const element = mountWithAppProvider(<BulkActions {...props} />);
         expect(findByTestID(element, 'paginated-select-all').exists()).toBe(
           false,
         );
@@ -167,7 +179,7 @@ describe('<BulkActions />', () => {
     describe('paginatedSelectAllAction', () => {
       it('onAction is correctly called when CheckableButton is clicked', () => {
         const spy = jest.fn();
-        const element = mountWithProvider(
+        const element = mountWithAppProvider(
           <BulkActions
             {...bulkActionProps}
             paginatedSelectAllAction={{content: 'content', onAction: spy}}

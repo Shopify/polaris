@@ -3,8 +3,8 @@ import {ResourceList, Select} from '../../';
 import EmptySearchResult from '../../EmptySearchResult/';
 import {
   findByTestID,
-  shallowWithProvider,
-  mountWithProvider,
+  shallowWithAppProvider,
+  mountWithAppProvider,
   trigger,
 } from '../../../../tests/utilities';
 import Item from '../components/Item';
@@ -35,14 +35,14 @@ const sortOptions = [
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
     it('should render list items', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
       expect(resourceList.find('li').length).toBe(3);
     });
 
     it('should render custom markup', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
       expect(
@@ -57,14 +57,14 @@ describe('<ResourceList />', () => {
 
   describe('Selectable', () => {
     it("should not render bulk actions if the 'promotedBulkActions' and the 'bulkActions' props are not provided", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find(BulkActions).exists()).toBe(false);
     });
 
     it("should render bulk actions if the 'promotedBulkActions' prop is provided", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -75,7 +75,7 @@ describe('<ResourceList />', () => {
     });
 
     it("should render bulk actions if the 'bulkActions' prop is provided", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -88,7 +88,7 @@ describe('<ResourceList />', () => {
 
   describe('hasMoreItems', () => {
     it("should not add a prop of 'paginatedSelectAllAction' to BulkActions if omitted", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
@@ -101,7 +101,7 @@ describe('<ResourceList />', () => {
     });
 
     it("should add a prop of 'paginatedSelectAllAction' to BulkActions if included", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
           hasMoreItems
@@ -118,7 +118,7 @@ describe('<ResourceList />', () => {
   describe('resourceName', () => {
     describe('resoureName.singular', () => {
       it("should render default singular resource name when 'resourceName' isn't provided", () => {
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList
             showHeader
             items={singleItemNoID}
@@ -131,7 +131,7 @@ describe('<ResourceList />', () => {
       });
 
       it("should render the given singular resource name when 'resourceName' is provided", () => {
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList
             items={singleItemNoID}
             renderItem={renderItem}
@@ -147,7 +147,7 @@ describe('<ResourceList />', () => {
 
     describe('resoureName.plural', () => {
       it("should render default plural resource name when 'resourceName' isn't provided", () => {
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
         expect(
@@ -156,7 +156,7 @@ describe('<ResourceList />', () => {
       });
 
       it("should render the given plural resource name when 'resourceName' is provided", () => {
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsNoID}
             renderItem={renderItem}
@@ -173,7 +173,7 @@ describe('<ResourceList />', () => {
 
   describe('idForItem()', () => {
     it("should generate a key using the index if there's no idForItem prop and no ID in data", () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsNoID} renderItem={shallowRenderItem} />,
       );
       expect(
@@ -185,7 +185,7 @@ describe('<ResourceList />', () => {
     });
 
     it("should generate a key using the ID if there's no idForItem prop but there and ID key in the data", () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
       expect(
@@ -197,7 +197,7 @@ describe('<ResourceList />', () => {
     });
 
     it('should generate a key using the idForItem prop callback when one is provided', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList
           idForItem={idForItem}
           items={itemsWithID}
@@ -216,7 +216,7 @@ describe('<ResourceList />', () => {
   describe('onSelectionChange()', () => {
     it('should call onSelectionChange() when an item is clicked', () => {
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
           selectedItems={[]}
@@ -233,7 +233,7 @@ describe('<ResourceList />', () => {
 
   describe('header markup', () => {
     it("renders header markup if the list isn't selectable but the showHeader prop is true", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList showHeader items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
@@ -242,7 +242,7 @@ describe('<ResourceList />', () => {
     });
 
     it('does not render when items is empty', () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList items={[]} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
@@ -251,7 +251,7 @@ describe('<ResourceList />', () => {
     });
 
     it('renders when sort options are given', () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           sortOptions={sortOptions}
           items={itemsWithID}
@@ -264,7 +264,7 @@ describe('<ResourceList />', () => {
     });
 
     it('renders when bulkActions are given', () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           bulkActions={bulkActions}
           items={itemsWithID}
@@ -277,7 +277,7 @@ describe('<ResourceList />', () => {
     });
 
     it('renders when promotedBulkActions are given', () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           promotedBulkActions={promotedBulkActions}
           items={itemsWithID}
@@ -290,7 +290,7 @@ describe('<ResourceList />', () => {
     });
 
     it('does not render when sort options, bulkActions and promotedBulkActions are not given', () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
@@ -301,7 +301,7 @@ describe('<ResourceList />', () => {
 
   describe('filterControl', () => {
     it('renders when exist', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList
           items={itemsNoID}
           renderItem={shallowRenderItem}
@@ -314,7 +314,7 @@ describe('<ResourceList />', () => {
 
   describe('emptySearchResult', () => {
     it('renders when filterControl exists and items is empty', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList
           items={[]}
           renderItem={shallowRenderItem}
@@ -324,13 +324,13 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
     });
     it('does not render when filterControl does not exist', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList items={[]} renderItem={shallowRenderItem} />,
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
     it('does not render when items is not empty', () => {
-      const resourceList = shallowWithProvider(
+      const resourceList = shallowWithAppProvider(
         <ResourceList
           items={itemsNoID}
           renderItem={shallowRenderItem}
@@ -343,14 +343,14 @@ describe('<ResourceList />', () => {
 
   describe('Sorting', () => {
     it("it should not render a sort select if 'sortOptions' aren't provided", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find(Select).exists()).toBe(false);
     });
 
     it("it should render a sort select if 'sortOptions' are provided", () => {
-      const resourceList = mountWithProvider(
+      const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -362,7 +362,7 @@ describe('<ResourceList />', () => {
 
     describe('sortOptions', () => {
       it("should pass a 'sortOptions' to the Select options", () => {
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -378,7 +378,7 @@ describe('<ResourceList />', () => {
 
     describe('sortValue', () => {
       it("should pass a 'sortValue' to the Select value", () => {
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -396,7 +396,7 @@ describe('<ResourceList />', () => {
     describe('onSortChange', () => {
       it('should call onSortChange when the Sort Select changes', () => {
         const onSortChange = jest.fn();
-        const resourceList = mountWithProvider(
+        const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsWithID}
             onSortChange={onSortChange}

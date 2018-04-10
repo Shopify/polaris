@@ -2,8 +2,8 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {
   findByTestID,
-  shallowWithProvider,
-  mountWithProvider,
+  shallowWithAppProvider,
+  mountWithAppProvider,
 } from '../../../../../../tests/utilities';
 import {
   UnstyledLink,
@@ -55,7 +55,7 @@ describe('<Item />', () => {
 
   describe('accessibilityLabel', () => {
     it('is used on the UnstyledLink for the aria-label attribute', () => {
-      const item = mountWithProvider(
+      const item = mountWithAppProvider(
         <Item
           accessibilityLabel={accessibilityLabel}
           id={itemId}
@@ -74,7 +74,7 @@ describe('<Item />', () => {
 
   describe('url', () => {
     it('does not renders a UnstyledLink by default', () => {
-      const element = shallowWithProvider(
+      const element = shallowWithAppProvider(
         <Item id="itemId" onClick={noop} accessibilityLabel={ariaLabel} />,
         {context: mockDefaultContext},
       );
@@ -83,7 +83,7 @@ describe('<Item />', () => {
     });
 
     it('renders a UnstyledLink', () => {
-      const element = shallowWithProvider(
+      const element = shallowWithAppProvider(
         <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />,
         {context: mockDefaultContext},
       );
@@ -92,7 +92,7 @@ describe('<Item />', () => {
     });
 
     it('renders a UnstyledLink with url', () => {
-      const element = shallowWithProvider(
+      const element = shallowWithAppProvider(
         <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />,
         {context: mockDefaultContext},
       );
@@ -101,7 +101,7 @@ describe('<Item />', () => {
     });
 
     it(`renders a UnstyledLink with an aria-label of ${ariaLabel}`, () => {
-      const element = shallowWithProvider(
+      const element = shallowWithAppProvider(
         <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />,
         {context: mockDefaultContext},
       );
@@ -112,7 +112,7 @@ describe('<Item />', () => {
 
   describe('id', () => {
     it('is used on the content node and for the description of a link', () => {
-      const item = mountWithProvider(
+      const item = mountWithAppProvider(
         <Item
           id={itemId}
           url="https://shopify.com"
@@ -129,7 +129,7 @@ describe('<Item />', () => {
   describe('onClick()', () => {
     it('calls onClick when clicking on the item when onClick exist', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />,
         {context: mockDefaultContext},
       );
@@ -140,7 +140,7 @@ describe('<Item />', () => {
 
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item
           id={itemId}
           onClick={onClick}
@@ -158,7 +158,7 @@ describe('<Item />', () => {
   describe('Selectable', () => {
     it("it should not call the Item 'onClick' when clicking the 'LargerSelectionArea'", () => {
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={itemId} onClick={onClick} />,
         {
           context: mockSelectableContext,
@@ -170,7 +170,7 @@ describe('<Item />', () => {
     });
 
     it("it should call 'onSelectionChange' with the id of the item when clicking the 'LargerSelectionArea'", () => {
-      const wrapper = mountWithProvider(<Item id={itemId} url={url} />, {
+      const wrapper = mountWithAppProvider(<Item id={itemId} url={url} />, {
         context: mockSelectableContext,
       });
 
@@ -185,7 +185,7 @@ describe('<Item />', () => {
   describe('SelectMode', () => {
     it("it should not call 'onClick' when clicking the item", () => {
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />,
         {context: mockSelectModeContext},
       );
@@ -196,7 +196,7 @@ describe('<Item />', () => {
 
     it("it should call 'onSelectionChange' with the id of the item even if url or onClick is present", () => {
       const onClick = jest.fn();
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item
           id={itemId}
           url={url}
@@ -214,7 +214,7 @@ describe('<Item />', () => {
     });
 
     it("should render a checked Checkbox if the item is in the 'selectedItems' context", () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={selectedItemId} url={url} />,
         {context: mockSelectModeContext},
       );
@@ -224,14 +224,14 @@ describe('<Item />', () => {
 
   describe('media', () => {
     it('should not include media if not is provided', () => {
-      const wrapper = mountWithProvider(<Item id={itemId} url={url} />, {
+      const wrapper = mountWithAppProvider(<Item id={itemId} url={url} />, {
         context: mockDefaultContext,
       });
       expect(findByTestID(wrapper, 'Media').exists()).toBe(false);
     });
 
     it("should include and 'Avatar' if one is provided", () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={itemId} url={url} media={<Avatar customer />} />,
         {
           context: mockDefaultContext,
@@ -245,7 +245,7 @@ describe('<Item />', () => {
     });
 
     it("should include and 'Thumbnail' if one is provided", () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item
           id={itemId}
           url={url}
@@ -263,14 +263,14 @@ describe('<Item />', () => {
 
   describe('shortcutActions', () => {
     it("shouldn't render shortcut actions if none are provided", () => {
-      const wrapper = mountWithProvider(<Item id={itemId} url={url} />, {
+      const wrapper = mountWithAppProvider(<Item id={itemId} url={url} />, {
         context: mockDefaultContext,
       });
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
     });
 
     it('should render shortcut actions when some are provided', () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={itemId} url={url} shortcutActions={[{content: 'action'}]} />,
         {context: mockDefaultContext},
       );
@@ -278,7 +278,7 @@ describe('<Item />', () => {
     });
 
     it("should render persistent shortcut actions if 'persistActions' is true in context", () => {
-      const wrapper = mountWithProvider(
+      const wrapper = mountWithAppProvider(
         <Item id={itemId} url={url} shortcutActions={[{content: 'action'}]} />,
         {context: mockPersistActionsContext},
       );

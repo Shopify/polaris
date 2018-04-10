@@ -3,11 +3,11 @@ import Tooltip from '../Tooltip';
 import Link from '../../Link';
 import {
   findByTestID,
-  mountWithProvider,
+  mountWithAppProvider,
 } from '../../../../tests/utilities/enzyme';
 
 describe('<Tooltip />', () => {
-  const tooltip = mountWithProvider(
+  const tooltip = mountWithAppProvider(
     <Tooltip content="Inner content">
       <Link>link content</Link>
     </Tooltip>,

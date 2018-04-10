@@ -129,22 +129,22 @@ function updateRoot(wrapper: AnyWrapper) {
   (wrapper as any).root().update();
 }
 
-function mergeProviderOptions(options: any = {}): any {
+function mergeAppProviderOptions(options: any = {}): any {
   const context = createPolarisContext();
 
   return merge(merge({}, {context}, options));
 }
 
-export function mountWithProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {
+export function mountWithAppProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {
   return mount(
     node,
-    mergeProviderOptions(options),
+    mergeAppProviderOptions(options),
   );
 }
 
-export function shallowWithProvider<P>(node: React.ReactElement<P>, options?: ShallowRendererProps): ShallowWrapper<P, any> {
+export function shallowWithAppProvider<P>(node: React.ReactElement<P>, options?: ShallowRendererProps): ShallowWrapper<P, any> {
   return shallow(
     node,
-    mergeProviderOptions(options),
+    mergeAppProviderOptions(options),
   ).dive(options);
 }

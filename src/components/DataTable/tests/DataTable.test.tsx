@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithProvider as mount} from '../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
 import DataTable, {
@@ -47,7 +47,7 @@ function setup(propOverrides?: DataTableTestProps) {
     summary,
     ...propOverrides,
   };
-  const dataTable = mount(<DataTable {...props} />);
+  const dataTable = mountWithAppProvider(<DataTable {...props} />);
 
   return {
     ...props,

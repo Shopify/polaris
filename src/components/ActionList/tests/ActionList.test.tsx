@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ActionList from '../ActionList';
 import Item from '../Item';
-import {mountWithProvider} from '../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -11,7 +11,7 @@ describe('<ActionList />', () => {
   });
 
   it('fires onActionAnyItem on click or keypress of a button item', () => {
-    const actionList = mountWithProvider(
+    const actionList = mountWithAppProvider(
       <ActionList
         items={[{content: 'Add discount'}]}
         onActionAnyItem={mockOnActionAnyItem}
@@ -22,7 +22,7 @@ describe('<ActionList />', () => {
   });
 
   it('fires onActionAnyItem on click or keypress of an anchor item', () => {
-    const actionList = mountWithProvider(
+    const actionList = mountWithAppProvider(
       <ActionList
         items={[
           {
@@ -40,7 +40,7 @@ describe('<ActionList />', () => {
 
   it('fires onActionAnyItem and Item.onAction on click or keypress of an item', () => {
     const mockOnAction = jest.fn();
-    const actionList = mountWithProvider(
+    const actionList = mountWithAppProvider(
       <ActionList
         items={[{content: 'Add discount', onAction: mockOnAction}]}
         onActionAnyItem={mockOnActionAnyItem}
@@ -61,7 +61,7 @@ describe('<ActionList />', () => {
       },
     ];
 
-    const actionList = mountWithProvider(<ActionList items={items} />);
+    const actionList = mountWithAppProvider(<ActionList items={items} />);
     actionList.find(Item).forEach((item, index) => {
       const expectedKey = `${items[index].content}-${index}`;
       expect(item.key()).toBe(expectedKey);
