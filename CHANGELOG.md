@@ -5,11 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
 <!-- ## Unreleased -->
+
+## 1.14.1 - 2018-04-10
+
+### Bug fixes
+
+* Fixing an error with the release process
+
 ## 1.14.0 - 2018-04-10
 
 ### Enhancements
 
-* Changed `term` in `DescriptionList` component to accept `React.ReactNode` to allow for more than just `string` type 
+* Changed `term` in `DescriptionList` component to accept `React.ReactNode` to allow for more than just `string` type
 
 ## 1.13.1 - 2018-03-29
 
