@@ -75,6 +75,15 @@ export function withAppProvider<OwnProps>() {
       render() {
         const {polaris, easdk} = this.context;
         const polarisContext = {...polaris, easdk};
+
+        if (!polaris) {
+          throw new Error(
+            `The <AppProvider> component is required as of v2.0 of Polaris React. See
+            https://polaris-v2.shopify.com/components/structure/app-provider for implementation
+            instructions.`,
+          );
+        }
+
         return <WrappedComponent {...this.props} polaris={polarisContext} />;
       }
     }

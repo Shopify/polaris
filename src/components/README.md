@@ -125,7 +125,7 @@ The embedded section includes
 
 ### Embedded apps
 
-In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the [`<AppProvider />`](https://polaris.shopify.com/components/structure/app-provider) component:
+In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the [`<AppProvider />`](/components/structure/app-provider) component:
 
 ```jsx
 import React from 'react';
@@ -187,7 +187,7 @@ if you want to import a subset of the components.
 
 Your app must be wrapped by the `<AppProvider />` component. This component initializes the EASDK using the `apiKey` and `shopOrigin` you provide.
 
-* [`<AppProvider />`](https://polaris.shopify.com/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
+* [`<AppProvider />`](/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
 * [`<Page />`](https://polaris.shopify.com/components/embedded/embedded-page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
 * [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
 * [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.

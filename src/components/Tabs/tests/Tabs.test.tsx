@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
+import {mountWithProvider} from '../../../../tests/utilities';
 
 import Tabs, {Props} from '..';
 import Tab from '../Tab';
@@ -14,7 +14,7 @@ describe('<Tabs />', () => {
 
   describe('tabs', () => {
     it('uses the IDs passed in for the tabs', () => {
-      const wrapper = mount(<Tabs selected={0} tabs={tabs} />);
+      const wrapper = mountWithProvider(<Tabs selected={0} tabs={tabs} />);
 
       tabs.forEach((tab, index) => {
         expect(
@@ -31,7 +31,9 @@ describe('<Tabs />', () => {
         {...tabs[0], panelID: 'panel-1'},
         {...tabs[1], panelID: 'panel-2'},
       ];
-      const wrapper = mount(<Tabs selected={0} tabs={panelIDedTabs} />);
+      const wrapper = mountWithProvider(
+        <Tabs selected={0} tabs={panelIDedTabs} />,
+      );
 
       panelIDedTabs.forEach((tab, index) => {
         expect(
@@ -44,7 +46,7 @@ describe('<Tabs />', () => {
     });
 
     it('uses an auto-generated panelID if none is provided', () => {
-      const wrapper = mount(<Tabs selected={0} tabs={tabs} />);
+      const wrapper = mountWithProvider(<Tabs selected={0} tabs={tabs} />);
 
       tabs.forEach((_, index) => {
         const panelID = wrapper
@@ -61,7 +63,7 @@ describe('<Tabs />', () => {
         {...tabs[0], url: 'https://shopify.com'},
         {...tabs[1], url: 'https://google.com'},
       ];
-      const wrapper = mount(<Tabs selected={0} tabs={urlTabs} />);
+      const wrapper = mountWithProvider(<Tabs selected={0} tabs={urlTabs} />);
 
       urlTabs.forEach((tab, index) => {
         expect(
@@ -78,7 +80,9 @@ describe('<Tabs />', () => {
         {...tabs[0], accessibilityLabel: 'Tab 1'},
         {...tabs[1], accessibilityLabel: 'Tab 2'},
       ];
-      const wrapper = mount(<Tabs selected={0} tabs={labelledTabs} />);
+      const wrapper = mountWithProvider(
+        <Tabs selected={0} tabs={labelledTabs} />,
+      );
 
       labelledTabs.forEach((tab, index) => {
         expect(
@@ -95,7 +99,9 @@ describe('<Tabs />', () => {
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},
       ];
-      const wrapper = mount(<Tabs selected={0} tabs={tabsWithContent} />);
+      const wrapper = mountWithProvider(
+        <Tabs selected={0} tabs={tabsWithContent} />,
+      );
 
       tabsWithContent.forEach((tab, index) => {
         expect(
@@ -128,7 +134,7 @@ describe('<Tabs />', () => {
         {...tabs[1], panelID: 'panel-2'},
       ];
 
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Tabs selected={0} tabs={panelIDedTabs}>
           Panel contents
         </Tabs>,
@@ -141,7 +147,7 @@ describe('<Tabs />', () => {
   describe('children', () => {
     it('wraps the children in a panel with matching aria attributes to the tab', () => {
       const content = <p>Tab content</p>;
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Tabs selected={0} tabs={tabs}>
           {content}
         </Tabs>,
@@ -161,7 +167,7 @@ describe('<Tabs />', () => {
         tabs[1],
       ];
       const content = <p>Tab content</p>;
-      const wrapper = mount(
+      const wrapper = mountWithProvider(
         <Tabs selected={0} tabs={panelIDedTabs}>
           {content}
         </Tabs>,
@@ -176,7 +182,9 @@ describe('<Tabs />', () => {
   describe('onSelect()', () => {
     it('is called with the index of the clicked tab', () => {
       const spy = jest.fn();
-      const wrapper = mount(<Tabs selected={0} tabs={tabs} onSelect={spy} />);
+      const wrapper = mountWithProvider(
+        <Tabs selected={0} tabs={tabs} onSelect={spy} />,
+      );
       wrapper
         .find(Tab)
         .at(1)

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
 import Tooltip from '../Tooltip';
 import Link from '../../Link';
-import {findByTestID} from '../../../../tests/utilities/enzyme';
+import {
+  findByTestID,
+  mountWithProvider,
+} from '../../../../tests/utilities/enzyme';
 
 describe('<Tooltip />', () => {
-  const tooltip = mount(
+  const tooltip = mountWithProvider(
     <Tooltip content="Inner content">
       <Link>link content</Link>
     </Tooltip>,

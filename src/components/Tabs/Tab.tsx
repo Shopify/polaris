@@ -4,6 +4,7 @@ import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import UnstyledLink from '../UnstyledLink';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Tabs.scss';
@@ -21,7 +22,9 @@ export interface Props {
   onClick?(id: string): void;
 }
 
-export default class Tab extends React.PureComponent<Props, never> {
+export type CombinedProps = Props & WithAppProviderProps;
+
+export class Tab extends React.PureComponent<CombinedProps, never> {
   private node: HTMLElement | null = null;
 
   // A tab can start selected when it is moved from the disclosure dropdown
@@ -147,3 +150,5 @@ function focusPanelID(panelID: string) {
     panel.focus();
   }
 }
+
+export default withAppProvider<Props>()(Tab);
