@@ -15,7 +15,7 @@ import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import FileUpload from './FileUpload';
+import FileUpload from './components/FileUpload/';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import IconAlertCircle from './icons/alert-circle.svg';
@@ -29,7 +29,7 @@ export type Type = 'file' | 'image';
 
 export interface State {
   size: string;
-  type: string;
+  type?: string;
   error?: boolean;
   dragging: boolean;
   overlayText?: string;
@@ -43,7 +43,7 @@ export interface Props {
    * Whether is a file or an image
    * @default 'file'
    */
-  type: Type;
+  type?: Type;
   /** Sets an active state */
   active?: boolean;
   /** Sets an error state */
@@ -95,8 +95,8 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-class DropZone extends React.Component<CombinedProps, State> {
-  public static FileUpload = FileUpload;
+export class DropZone extends React.Component<CombinedProps, State> {
+  public static FileUpload: typeof FileUpload = FileUpload;
   public static childContextTypes = {
     size: PropTypes.string,
     type: PropTypes.string,
@@ -118,8 +118,7 @@ class DropZone extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
-    const {type} = props;
-    const {polaris: {intl: {translate}}} = props;
+    const {polaris: {intl: {translate}}, type} = props;
     const suffix = capitalize(type);
 
     this.state = {
@@ -135,7 +134,7 @@ class DropZone extends React.Component<CombinedProps, State> {
   getChildContext(): DropZoneContext {
     return {
       size: this.state.size,
-      type: this.state.type,
+      type: this.state.type || 'file',
     };
   }
 
@@ -403,7 +402,7 @@ class DropZone extends React.Component<CombinedProps, State> {
 
     const fileList = getDataTransferFiles(event);
 
-    if (this.dragTargets.indexOf(event.target) === -1) {
+    if (event.target && this.dragTargets.indexOf(event.target) === -1) {
       this.dragTargets.push(event.target);
     }
 
@@ -469,4 +468,4 @@ function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default withAppProvider()(DropZone);
+export default withAppProvider<Props>()(DropZone);

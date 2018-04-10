@@ -152,4 +152,4 @@ function onKeyDownEnter(sortFunc?: () => void) {
   };
 }
 
-export default withAppProvider()(Cell);
+export default withAppProvider<Props>()(Cell);

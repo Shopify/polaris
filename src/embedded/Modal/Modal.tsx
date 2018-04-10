@@ -78,4 +78,4 @@ export class Modal extends React.PureComponent<
   }
 }
 
-export default withAppProvider()(Modal);
+export default withAppProvider<Props>()(Modal);

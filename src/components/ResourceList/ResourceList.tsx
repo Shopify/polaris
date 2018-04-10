@@ -13,8 +13,8 @@ import {
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
-import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import FilterControl from './components/FilterControl';
+import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import BulkActions, {Props as BulkActionsProps} from './components/BulkActions';
 
 import * as styles from './ResourceList.scss';
@@ -73,8 +73,8 @@ export type CombinedProps = Props & WithAppProviderProps;
 const getUniqueID = createUniqueIDFactory('Select');
 
 export class ResourceList extends React.Component<CombinedProps, State> {
-  static Item = Item;
-  static FilterControl = FilterControl;
+  static Item: typeof Item = Item;
+  static FilterControl: typeof FilterControl = FilterControl;
   static childContextTypes = contextTypes;
 
   state: State = {selectMode: false};
@@ -541,4 +541,4 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withAppProvider()(ResourceList);
+export default withAppProvider<Props>()(ResourceList);

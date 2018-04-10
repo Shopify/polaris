@@ -62,4 +62,4 @@ export class ResourcePicker extends React.PureComponent<
   }
 }
 
-export default withAppProvider()(ResourcePicker);
+export default withAppProvider<Props>()(ResourcePicker);

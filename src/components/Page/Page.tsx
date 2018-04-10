@@ -56,7 +56,7 @@ const EASDK_PROPS: (keyof Props)[] = [
   'pagination',
 ];
 
-class Page extends React.PureComponent<ComposedProps, never> {
+export class Page extends React.PureComponent<ComposedProps, never> {
   componentDidMount() {
     if (this.props.polaris.easdk == null) {
       return;
@@ -118,4 +118,4 @@ class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider()(Page);
+export default withAppProvider<Props>()(Page);

@@ -2,19 +2,19 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import capitalize from 'lodash/capitalize';
 
-import Link from '../Link';
-import Icon from '../Icon';
-import Stack from '../Stack';
-import Button from '../Button';
-import Caption from '../Caption';
-import TextStyle from '../TextStyle';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import Link from '../../../Link';
+import Icon from '../../../Icon';
+import Stack from '../../../Stack';
+import Button from '../../../Button';
+import Caption from '../../../Caption';
+import TextStyle from '../../../TextStyle';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import IconDragDrop from './icons/drag-drop.svg';
-import AssetFileUpload from './images/file-upload.svg';
-import AssetImageUpload from './images/image-upload.svg';
+import IconDragDrop from '../../icons/drag-drop.svg';
+import AssetFileUpload from '../../images/file-upload.svg';
+import AssetImageUpload from '../../images/image-upload.svg';
 
-import {DropZoneContext} from './types';
+import {DropZoneContext} from '../../types';
 
 import * as styles from './FileUpload.scss';
 
@@ -23,20 +23,20 @@ export interface State {
   actionHint?: string;
 }
 
-export interface BaseProps {
+export interface Props {
   actionTitle?: string;
   actionHint?: string;
 }
 
-export type Props = BaseProps & WithAppProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
-class FileUpload extends React.Component<Props, State> {
+export class FileUpload extends React.Component<CombinedProps, State> {
   public static contextTypes = {
     size: PropTypes.string,
     type: PropTypes.string,
   };
 
-  constructor(props: Props, context: DropZoneContext) {
+  constructor(props: CombinedProps, context: DropZoneContext) {
     super(props);
 
     const {type} = context;
@@ -116,4 +116,4 @@ class FileUpload extends React.Component<Props, State> {
   }
 }
 
-export default withAppProvider()(FileUpload);
+export default withAppProvider<Props>()(FileUpload);

@@ -13,7 +13,7 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
 export type LinkLikeComponent = ReactComponent<Props> | undefined;
 export type CombinedProps = Props & WithAppProviderProps;
 
-class UnstyledLink extends React.PureComponent<CombinedProps, never> {
+export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
   render() {
     const {polaris, external, url, ...rest} = this.props;
     if (polaris && polaris.link) {
@@ -31,4 +31,4 @@ class UnstyledLink extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider()(UnstyledLink);
+export default withAppProvider<Props>()(UnstyledLink);

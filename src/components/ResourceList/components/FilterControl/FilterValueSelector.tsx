@@ -11,7 +11,7 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-class FilterValueSelector extends React.PureComponent<CombinedProps> {
+export class FilterValueSelector extends React.PureComponent<CombinedProps> {
   render() {
     const {filter, value, onChange, polaris: {intl}} = this.props;
 
@@ -44,4 +44,4 @@ class FilterValueSelector extends React.PureComponent<CombinedProps> {
   }
 }
 
-export default withAppProvider()(FilterValueSelector);
+export default withAppProvider<Props>()(FilterValueSelector);

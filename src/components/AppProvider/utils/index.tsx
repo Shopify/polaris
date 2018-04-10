@@ -60,17 +60,14 @@ export function translate(
   return text;
 }
 
-export function withAppProvider() {
-  return function addProvider<OwnProps, C>(
+export function withAppProvider<OwnProps>() {
+  return function addProvider<C>(
     WrappedComponent:
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
-  ): any & C {
+  ): React.ComponentClass<OwnProps> & C {
     // eslint-disable-next-line react/prefer-stateless-function
-    class WithTranslation extends React.Component<
-      {},
-      OwnProps & WithAppProviderProps
-    > {
+    class WithProvider extends React.Component<OwnProps, never> {
       static contextTypes = WrappedComponent.contextTypes
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;
@@ -83,10 +80,10 @@ export function withAppProvider() {
     }
 
     const FinalComponent = hoistStatics(
-      WithTranslation,
+      WithProvider,
       WrappedComponent as React.ComponentClass<any>,
     );
-    return FinalComponent as React.ComponentClass<any> & C;
+    return FinalComponent as React.ComponentClass<OwnProps> & C;
   };
 }
 

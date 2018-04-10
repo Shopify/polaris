@@ -26,7 +26,7 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-class FilterControl extends React.Component<CombinedProps> {
+export class FilterControl extends React.Component<CombinedProps> {
   static contextTypes = contextTypes;
 
   render() {
@@ -204,4 +204,4 @@ function findFilterLabelByType(
   return appliedFilterValue;
 }
 
-export default withAppProvider()(FilterControl);
+export default withAppProvider<Props>()(FilterControl);

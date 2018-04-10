@@ -56,9 +56,9 @@ Validation error messages should be:
 * In sentence case: capitalize only the first word in the message
 * Concise: use simple, clear language that can be read at a glance. For example:
 
-```File size must be less than 20MB```
+`File size must be less than 20MB`
 
-```File type must be .gif, .jpg, .png or .svg```
+`File type must be .gif, .jpg, .png or .svg`
 
 ### Server-side upload error messages
 
@@ -87,7 +87,7 @@ Use to allow merchants to upload files. They can drag and drop files into the da
 ```jsx
 class DropZoneExample extends React.Component {
   state = {
-    files: []
+    files: [],
   };
 
   render() {
@@ -97,7 +97,7 @@ class DropZoneExample extends React.Component {
     const fileUpload = !files.length && <DropZone.FileUpload />;
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map(file => (
+        {files.map((file) => (
           <Stack alignment="center">
             <Thumbnail
               size="small"
@@ -118,7 +118,7 @@ class DropZoneExample extends React.Component {
 
     return (
       <DropZone
-        onDrop={files => {
+        onDrop={(files) => {
           this.setState({files: [...this.state.files, ...files]});
         }}
       >
@@ -137,7 +137,7 @@ Use to allow merchants to upload files. They can drag and drop files into the da
 ```jsx
 class DropZoneExample extends React.Component {
   state = {
-    files: []
+    files: [],
   };
 
   render() {
@@ -146,7 +146,7 @@ class DropZoneExample extends React.Component {
 
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map(file => (
+        {files.map((file) => (
           <Stack alignment="center">
             <Thumbnail
               size="small"
@@ -167,7 +167,7 @@ class DropZoneExample extends React.Component {
 
     return (
       <DropZone
-        onDrop={files => {
+        onDrop={(files) => {
           this.setState({files: [...this.state.files, ...files]});
         }}
       >
@@ -187,7 +187,7 @@ class DropZoneExample extends React.Component {
   state = {
     files: [],
     rejectedFiles: [],
-    hasError: false
+    hasError: false,
   };
 
   render() {
@@ -196,7 +196,7 @@ class DropZoneExample extends React.Component {
     const fileUpload = !files.length && <DropZone.FileUpload />;
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map(file => (
+        {files.map((file) => (
           <Stack alignment="center">
             <Thumbnail
               size="small"
@@ -217,9 +217,11 @@ class DropZoneExample extends React.Component {
         status="critical"
       >
         <List type="bullets">
-          {rejectedFiles.map(file => (
+          {rejectedFiles.map((file) => (
             <List.Item>
-              {`"${file.name}" is not supported. File type must be .gif, .jpg, .png or .svg.`}
+              {`"${
+                file.name
+              }" is not supported. File type must be .gif, .jpg, .png or .svg.`}
             </List.Item>
           ))}
         </List>
@@ -236,7 +238,7 @@ class DropZoneExample extends React.Component {
             this.setState({
               files: [...this.state.files, ...acceptedFiles],
               rejectedFiles: rejectedFiles,
-              hasError: rejectedFiles.length > 0
+              hasError: rejectedFiles.length > 0,
             });
           }}
         >
@@ -256,7 +258,7 @@ Use to accept files for upload when dropped anywhere on the page.
 ```jsx
 class DropZoneExample extends React.Component {
   state = {
-    files: []
+    files: [],
   };
 
   render() {
@@ -265,7 +267,7 @@ class DropZoneExample extends React.Component {
 
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map(file => (
+        {files.map((file) => (
           <Stack alignment="center">
             <Thumbnail
               size="small"
@@ -286,9 +288,7 @@ class DropZoneExample extends React.Component {
 
     return (
       <Page
-        breadcrumbs={[
-          {content: 'Products'}
-        ]}
+        breadcrumbs={[{content: 'Products'}]}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
         secondaryActions={[
@@ -302,7 +302,7 @@ class DropZoneExample extends React.Component {
       >
         <DropZone
           dropOnPage
-          onDrop={files => {
+          onDrop={(files) => {
             this.setState({files: [...this.state.files, ...files]});
           }}
         >
@@ -323,7 +323,7 @@ class DropZoneExample extends React.Component {
   state = {
     files: [],
     rejectedFiles: [],
-    hasError: false
+    hasError: false,
   };
 
   render() {
@@ -331,7 +331,7 @@ class DropZoneExample extends React.Component {
 
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map(file => (
+        {files.map((file) => (
           <Stack alignment="center">
             <Thumbnail
               size="small"
@@ -352,7 +352,7 @@ class DropZoneExample extends React.Component {
         status="critical"
       >
         <List type="bullets">
-          {rejectedFiles.map(file => (
+          {rejectedFiles.map((file) => (
             <List.Item>
               {`"${file.name}" is not supported. File type must be .svg.`}
             </List.Item>
@@ -372,7 +372,7 @@ class DropZoneExample extends React.Component {
             this.setState({
               files: [...this.state.files, ...acceptedFiles],
               rejectedFiles: rejectedFiles,
-              hasError: rejectedFiles.length > 0
+              hasError: rejectedFiles.length > 0,
             });
           }}
         >
@@ -391,7 +391,7 @@ Use to allow merchants to upload files in a wider area than the visible drop zon
 ```jsx
 class DropZoneExample extends React.Component {
   state = {
-    files: []
+    files: [],
   };
 
   render() {
@@ -401,7 +401,7 @@ class DropZoneExample extends React.Component {
     const fileUpload = !files.length && <DropZone.FileUpload />;
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map(file => (
+        {files.map((file) => (
           <Stack alignment="center">
             <Thumbnail
               size="small"
@@ -423,7 +423,7 @@ class DropZoneExample extends React.Component {
     return (
       <DropZone
         outline={false}
-        onDrop={files => {
+        onDrop={(files) => {
           this.setState({files: [...this.state.files, ...files]});
         }}
       >
@@ -471,10 +471,10 @@ Use file upload with the drop zone component to let merchants select files for u
 
 ### File upload properties
 
-| Prop        | Type                  | Description                        | Default                   |
-| ----------- | --------------------- | ---------------------------------- | ------------------------- |
-| actionTitle | string                | String that appears in file upload | 'Add file'                |
-| actionHint  | string                | String that appears in file upload | 'or drop files to upload' |
+| Prop        | Type   | Description                        | Default                   |
+| ----------- | ------ | ---------------------------------- | ------------------------- |
+| actionTitle | string | String that appears in file upload | 'Add file'                |
+| actionHint  | string | String that appears in file upload | 'or drop files to upload' |
 
 ---
 
