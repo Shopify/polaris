@@ -73,8 +73,8 @@ export type CombinedProps = Props & WithAppProviderProps;
 const getUniqueID = createUniqueIDFactory('Select');
 
 export class ResourceList extends React.Component<CombinedProps, State> {
-  static Item: any = Item;
-  static FilterControl: any = FilterControl;
+  static Item: typeof Item = Item;
+  static FilterControl: typeof FilterControl = FilterControl;
   static childContextTypes = contextTypes;
 
   state: State = {selectMode: false};

@@ -29,7 +29,7 @@ export type Type = 'file' | 'image';
 
 export interface State {
   size: string;
-  type: string;
+  type?: string;
   error?: boolean;
   dragging: boolean;
   overlayText?: string;
@@ -96,7 +96,7 @@ export interface Props {
 export type CombinedProps = Props & WithAppProviderProps;
 
 export class DropZone extends React.Component<CombinedProps, State> {
-  public static FileUpload: any = FileUpload;
+  public static FileUpload: typeof FileUpload = FileUpload;
   public static childContextTypes = {
     size: PropTypes.string,
     type: PropTypes.string,
@@ -118,8 +118,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
-    const {type = 'file'} = props;
-    const {polaris: {intl: {translate}}} = props;
+    const {polaris: {intl: {translate}}, type} = props;
     const suffix = capitalize(type);
 
     this.state = {
@@ -135,7 +134,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
   getChildContext(): DropZoneContext {
     return {
       size: this.state.size,
-      type: this.state.type,
+      type: this.state.type || 'file',
     };
   }
 

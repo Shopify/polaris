@@ -61,7 +61,6 @@ export function translate(
 }
 
 export function withAppProvider<OwnProps>() {
-  // console.log(props);
   return function addProvider<C>(
     WrappedComponent:
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
