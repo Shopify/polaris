@@ -233,7 +233,9 @@ describe('<Item />', () => {
     it("should include and 'Avatar' if one is provided", () => {
       const wrapper = mountWithProvider(
         <Item id={itemId} url={url} media={<Avatar customer />} />,
-        {context: mockDefaultContext},
+        {
+          context: mockDefaultContext,
+        },
       );
       expect(
         findByTestID(wrapper, 'Media')

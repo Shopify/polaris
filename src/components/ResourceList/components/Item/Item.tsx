@@ -21,7 +21,7 @@ export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export interface Props {
+export interface BaseProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the item onClick controls */
@@ -35,15 +35,17 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends Props {
+export interface PropsWithUrl extends BaseProps {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends Props {
+export interface PropsWithClick extends BaseProps {
   url?: string;
   onClick(id?: string): void;
 }
+
+export type Props = PropsWithUrl | PropsWithClick;
 
 export interface State {
   actionsMenuVisible: boolean;

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {shallowWithProvider} from '../../../../tests/utilities';
+import {shallowWithProvider} from '../../../../../../tests/utilities';
 
-import Link from '../../Link';
-import Icon from '../../Icon';
-import Button from '../../Button';
-import DropZone from '../DropZone';
-import Caption from '../../Caption';
-import TextStyle from '../../TextStyle';
+import Link from '../../../../Link';
+import Icon from '../../../../Icon';
+import Button from '../../../../Button';
+import DropZone from '../../../DropZone';
+import Caption from '../../../../Caption';
+import TextStyle from '../../../../TextStyle';
 
 describe('<DropZone />', () => {
   it('renders large view', () => {

@@ -15,7 +15,7 @@ import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import FileUpload from './FileUpload';
+import FileUpload from './components/FileUpload/';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import IconAlertCircle from './icons/alert-circle.svg';
@@ -43,7 +43,7 @@ export interface Props {
    * Whether is a file or an image
    * @default 'file'
    */
-  type: Type;
+  type?: Type;
   /** Sets an active state */
   active?: boolean;
   /** Sets an error state */
@@ -118,7 +118,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
-    const {type} = props;
+    const {type = 'file'} = props;
     const {polaris: {intl: {translate}}} = props;
     const suffix = capitalize(type);
 
