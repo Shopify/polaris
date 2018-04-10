@@ -23,20 +23,20 @@ export interface State {
   actionHint?: string;
 }
 
-export interface BaseProps {
+export interface Props {
   actionTitle?: string;
   actionHint?: string;
 }
 
-export type Props = BaseProps & WithAppProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
-export class FileUpload extends React.Component<Props, State> {
+export class FileUpload extends React.Component<CombinedProps, State> {
   public static contextTypes = {
     size: PropTypes.string,
     type: PropTypes.string,
   };
 
-  constructor(props: Props, context: DropZoneContext) {
+  constructor(props: CombinedProps, context: DropZoneContext) {
     super(props);
 
     const {type} = context;
