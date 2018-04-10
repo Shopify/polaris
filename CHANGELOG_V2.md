@@ -4,12 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
 
 ### Breaking changes
 
-* Renamed `Provider` component to `AppProvider ([#1234](https://github.com/Shopify/polaris-react/pull/1234))
-  * To upgrade change name from `Provider` to `AppProvider` everywhere it is used
+* Renamed `Provider` component to `AppProvider` ([#1234](https://github.com/Shopify/polaris-react/pull/1234))
+  * To upgrade, replace `Provider` with `AppProvider`
 
 ### Bug fixes
 
