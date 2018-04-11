@@ -41,7 +41,7 @@ $base-font-size: 10px;
   }
 }
 
-/// Returns the value in pixels for a given pixel value. Note that this
+/// Returns the value in ems for a given pixel value. Note that this
 /// only works for elements that have had no font-size changes.
 /// @param {Number} $value - The pixel value to be converted.
 /// @return {Number} The converted value in ems.
