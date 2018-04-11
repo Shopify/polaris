@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
-import {withProvider, WithProviderProps} from '../../../Provider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {contextTypes} from '../../types';
 import {ComplexAction} from '../../../../types';
 import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../../';
@@ -24,9 +24,9 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
-class FilterControl extends React.Component<CombinedProps> {
+export class FilterControl extends React.Component<CombinedProps> {
   static contextTypes = contextTypes;
 
   render() {
@@ -204,4 +204,4 @@ function findFilterLabelByType(
   return appliedFilterValue;
 }
 
-export default withProvider()(FilterControl);
+export default withAppProvider<Props>()(FilterControl);

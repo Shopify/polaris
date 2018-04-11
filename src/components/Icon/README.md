@@ -24,7 +24,7 @@ Icons are used to visually communicate core parts of the product and available a
 
 ## Best practices
 
-* Icons should be accessible: remember that people with people with limited vision may not be able to see icons. Review our [alternative text guidelines](/content/alternative-text) to make sure your use of icon works for all merchants.
+* Icons should be accessible: remember that people with limited vision may not be able to see icons. Review our [alternative text guidelines](/content/alternative-text) to make sure your use of icon works for all merchants.
 
 ---
 
@@ -35,9 +35,10 @@ Icons are used to visually communicate core parts of the product and available a
 Screen readers read alt text for icons on hover. Use alt text (`accessibilityLabel` prop or `aria-label` attribute) to communicate icon meaning.
 
 Alt text should be written in [plain language](/content/grammar-and-mechanics#plain-language):
-- Keep it short by excluding unnecessary words
-- Write in the [active voice](/content/grammar-and-mechanics#active-and-passive-voice)
-- Use words and language that our merchants use (avoid technical jargon)
+
+* Keep it short by excluding unnecessary words
+* Write in the [active voice](/content/grammar-and-mechanics#active-and-passive-voice)
+* Use words and language that our merchants use (avoid technical jargon)
 
 ## Examples
 

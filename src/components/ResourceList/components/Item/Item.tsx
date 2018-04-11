@@ -3,7 +3,6 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
-
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -14,7 +13,7 @@ import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {contextTypes, SELECT_ALL_ITEMS} from '../../types';
-import {withProvider, WithProviderProps} from '../../../Provider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import * as styles from './Item.scss';
 
@@ -22,7 +21,7 @@ export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
-export interface GenericProps extends WithProviderProps {
+export interface BaseProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the item onClick controls */
@@ -36,15 +35,17 @@ export interface GenericProps extends WithProviderProps {
   children?: React.ReactNode;
 }
 
-export interface PropsWithUrl extends GenericProps {
+export interface PropsWithUrl extends BaseProps {
   url: string;
   onClick?(id?: string): void;
 }
 
-export interface PropsWithClick extends GenericProps {
+export interface PropsWithClick extends BaseProps {
   url?: string;
   onClick(id?: string): void;
 }
+
+export type Props = PropsWithUrl | PropsWithClick;
 
 export interface State {
   actionsMenuVisible: boolean;
@@ -52,7 +53,9 @@ export interface State {
   focusedInner: boolean;
 }
 
-export type CombinedProps = PropsWithUrl | PropsWithClick;
+export type CombinedProps =
+  | PropsWithUrl & WithAppProviderProps
+  | PropsWithClick & WithAppProviderProps;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
@@ -88,7 +91,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       ariaExpanded,
       polaris: {intl},
       accessibilityLabel,
-    } = this.props as CombinedProps & PropsWithUrl;
+    } = this.props as CombinedProps;
 
     const {persistActions = false, selectable, selectMode} = this.context;
 
@@ -388,4 +391,4 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-export default withProvider()(Item);
+export default withAppProvider<PropsWithUrl | PropsWithClick>()(Item);

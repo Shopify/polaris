@@ -50,7 +50,7 @@ Use React components in most cases, especially if you’re building a highly int
 * Include the CSS in your HTML to implement:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-beta.14/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-beta.15/polaris.min.css" />
 ```
 
 * Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
@@ -68,22 +68,29 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-beta.14/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-beta.15/polaris.min.css" />
 ```
 
-Include the component in your project:
+First, import the component into your project:
 
 ```javascript
-import {Button} from '@shopify/polaris';
+import {AppProvider, Button} from '@shopify/polaris';
 ```
 
-Tell React to render the element in the DOM:
+Create an element using the Polaris React `AppProvider` component. The `AppProvider` component must wrap your entire app because Polaris React components will not function without it:
 
 ```javascript
-ReactDOM.render(
-  <Button onClick={() => alert('Button clicked!')}>Example button</Button>,
-  domContainerNode
+const app = (
+  <AppProvider>
+    <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+  </AppProvider>
 );
+```
+
+Tell React to render that element in the DOM:
+
+```javascript
+ReactDOM.render(app, domContainerNode);
 ```
 
 ### CSS components
@@ -91,7 +98,7 @@ ReactDOM.render(
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-beta.14/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-beta.15/polaris.min.css" />
 ```
 
 Add the appropriate classes to your HTML elements:
@@ -110,7 +117,7 @@ With embedded apps, you can add value to a merchant’s day-to-day business oper
 
 The embedded section includes
 
-* Embedded app wrapper for your entire application
+* Configuring the `AppProvider` with your embedded app config
 * Top bar with title, icon, breadcrumbs, buttons, pagination, and dropdown menus
 * Custom modal windows
 * Alert and confirmation dialogs
@@ -118,20 +125,19 @@ The embedded section includes
 
 ### Embedded apps
 
-In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through an [`<EmbeddedApp />`](https://polaris.shopify.com/components/embedded/embedded-app) component:
+In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the [`<AppProvider />`](/components/structure/app-provider) component:
 
 ```jsx
 import React from 'react';
 import {render} from 'react-dom';
 import * as PropTypes from 'prop-types';
-import {Page, Card, Button} from '@shopify/polaris';
-import {EmbeddedApp} from '@shopify/polaris/embedded';
+import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 
 class MyApp extends React.Component {
   // This line is very important! It tells React to attach the `easdk`
   // object to `this.context` within your component.
   static contextTypes = {
-    easdk: PropTypes.object
+    easdk: PropTypes.object,
   };
 
   render() {
@@ -151,13 +157,13 @@ class MyApp extends React.Component {
 }
 
 render(
-  <EmbeddedApp
+  <AppProvider
     apiKey="YOUR_APP_API_KEY"
     shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
   >
     <MyApp />
-  </EmbeddedApp>,
-  document.querySelector('#app')
+  </AppProvider>,
+  document.querySelector('#app'),
 );
 ```
 
@@ -174,14 +180,14 @@ import * as Embedded from '@shopify/polaris/embedded';
 or
 
 ```javascript
-import {EmbeddedApp, Alert, Modal} from '@shopify/polaris/embedded';
+import {Alert, ResourcePicker} from '@shopify/polaris/embedded';
 ```
 
 if you want to import a subset of the components.
 
-All EASDK components must be wrapped by the `<EmbeddedApp />` component. This component initializes the EASDK using the `apiKey` and `shopOrigin` you provide.
+Your app must be wrapped by the `<AppProvider />` component. This component initializes the EASDK using the `apiKey` and `shopOrigin` you provide.
 
-* [`<EmbeddedApp />`](https://polaris.shopify.com/components/embedded/embedded-app): The root component that manages the communication with the Shopify admin.
+* [`<AppProvider />`](/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
 * [`<Page />`](https://polaris.shopify.com/components/embedded/embedded-page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
 * [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
 * [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.

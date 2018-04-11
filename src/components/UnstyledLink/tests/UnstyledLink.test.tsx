@@ -1,11 +1,11 @@
 import * as React from 'react';
 import UnstyledLink from '../UnstyledLink';
 import {
-  shallowWithProvider,
-  mountWithProvider,
+  shallowWithAppProvider,
+  mountWithAppProvider,
 } from '../../../../tests/utilities';
 
-import Link from '../../Provider/Link';
+import Link from '../../AppProvider/Link';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {
@@ -13,7 +13,7 @@ describe('<UnstyledLink />', () => {
       const CustomLinkComponent = () => <div />;
       const link = new Link(CustomLinkComponent);
       const mockContext = {context: {polaris: {link}}};
-      const anchorElement = mountWithProvider(
+      const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
         mockContext,
       ).find(CustomLinkComponent);
@@ -24,7 +24,7 @@ describe('<UnstyledLink />', () => {
 
   describe('external', () => {
     it('adds the correct attributes', () => {
-      const anchorElement = shallowWithProvider(
+      const anchorElement = shallowWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
       ).find('a');
       expect(anchorElement.prop('target')).toBe('_blank');

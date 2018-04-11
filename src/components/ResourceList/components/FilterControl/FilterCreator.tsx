@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {Button, Popover, Select, FormLayout} from '../../../';
 import Form from '../../../Form';
-import {withProvider, WithProviderProps} from '../../../Provider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import FilterValueSelector from './FilterValueSelector';
 import {AppliedFilter, Filter} from './types';
@@ -18,7 +18,7 @@ export interface Props {
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   popoverActive: boolean;
@@ -26,7 +26,7 @@ export interface State {
   selectedFilterValue?: AppliedFilter['value'];
 }
 
-class FilterCreator extends React.PureComponent<CombinedProps, State> {
+export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   state: State = {
     popoverActive: false,
   };
@@ -152,4 +152,4 @@ class FilterCreator extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-export default withProvider()(FilterCreator);
+export default withAppProvider<Props>()(FilterCreator);

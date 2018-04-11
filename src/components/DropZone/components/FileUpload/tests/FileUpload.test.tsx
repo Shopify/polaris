@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {shallowWithProvider} from '../../../../tests/utilities';
+import {shallowWithAppProvider} from '../../../../../../tests/utilities';
 
-import Link from '../../Link';
-import Icon from '../../Icon';
-import Button from '../../Button';
-import DropZone from '../DropZone';
-import Caption from '../../Caption';
-import TextStyle from '../../TextStyle';
+import Link from '../../../../Link';
+import Icon from '../../../../Icon';
+import Button from '../../../../Button';
+import DropZone from '../../../DropZone';
+import Caption from '../../../../Caption';
+import TextStyle from '../../../../TextStyle';
 
 describe('<DropZone />', () => {
   it('renders large view', () => {
-    const fileUpload = shallowWithProvider(<DropZone.FileUpload />, {
+    const fileUpload = shallowWithAppProvider(<DropZone.FileUpload />, {
       context: {
         size: 'large',
         type: 'file',
@@ -23,7 +23,7 @@ describe('<DropZone />', () => {
   });
 
   it('renders medium view', () => {
-    const fileUpload = shallowWithProvider(<DropZone.FileUpload />, {
+    const fileUpload = shallowWithAppProvider(<DropZone.FileUpload />, {
       context: {
         size: 'medium',
       },
@@ -34,7 +34,7 @@ describe('<DropZone />', () => {
   });
 
   it('renders small view', () => {
-    const fileUpload = shallowWithProvider(<DropZone.FileUpload />, {
+    const fileUpload = shallowWithAppProvider(<DropZone.FileUpload />, {
       context: {
         size: 'small',
       },

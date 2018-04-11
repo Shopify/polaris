@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Select, TextField} from '../../../';
-import {withProvider, WithProviderProps} from '../../../Provider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {Filter, AppliedFilter, FilterType} from './types';
 
 export interface Props {
@@ -9,9 +9,9 @@ export interface Props {
   onChange(filterValue: AppliedFilter['value']): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
-class FilterValueSelector extends React.PureComponent<CombinedProps> {
+export class FilterValueSelector extends React.PureComponent<CombinedProps> {
   render() {
     const {filter, value, onChange, polaris: {intl}} = this.props;
 
@@ -44,4 +44,4 @@ class FilterValueSelector extends React.PureComponent<CombinedProps> {
   }
 }
 
-export default withProvider()(FilterValueSelector);
+export default withAppProvider<Props>()(FilterValueSelector);

@@ -1,11 +1,8 @@
 import * as React from 'react';
-import {mountWithProvider as mount} from '../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
-import DataTable, {
-  CombinedProps as Props,
-  ColumnContentType,
-} from '../DataTable';
+import DataTable, {CombinedProps as Props} from '../DataTable';
 import Cell from '../Cell';
 
 interface DataTableTestProps {
@@ -16,7 +13,7 @@ interface DataTableTestProps {
 }
 
 const sortable = [false, true, false, false, true, false];
-const columnContentTypes: ColumnContentType[] = [
+const columnContentTypes: Props['columnContentTypes'] = [
   'text',
   'numeric',
   'numeric',
@@ -47,7 +44,7 @@ function setup(propOverrides?: DataTableTestProps) {
     summary,
     ...propOverrides,
   };
-  const dataTable = mount(<DataTable {...props} />);
+  const dataTable = mountWithAppProvider(<DataTable {...props} />);
 
   return {
     ...props,

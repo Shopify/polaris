@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {DisableableAction} from '../../types';
 
 export type Width = 'large' | 'fullwidth';
@@ -24,7 +27,7 @@ export interface Props {
 }
 
 export class Modal extends React.PureComponent<
-  Props & WithProviderProps,
+  Props & WithAppProviderProps,
   never
 > {
   private focusReturnPoint: HTMLElement | null = null;
@@ -75,4 +78,4 @@ export class Modal extends React.PureComponent<
   }
 }
 
-export default withProvider()(Modal);
+export default withAppProvider<Props>()(Modal);

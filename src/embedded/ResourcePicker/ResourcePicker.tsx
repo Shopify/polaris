@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {OpenOptions} from '../easdk/components/ResourcePicker';
 
 export interface Props extends OpenOptions {
@@ -8,7 +11,7 @@ export interface Props extends OpenOptions {
 }
 
 export class ResourcePicker extends React.PureComponent<
-  Props & WithProviderProps,
+  Props & WithAppProviderProps,
   never
 > {
   private focusReturnPoint: HTMLElement | null = null;
@@ -59,4 +62,4 @@ export class ResourcePicker extends React.PureComponent<
   }
 }
 
-export default withProvider()(ResourcePicker);
+export default withAppProvider<Props>()(ResourcePicker);

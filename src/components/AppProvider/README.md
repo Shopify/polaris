@@ -1,7 +1,8 @@
 ---
-name: Provider
-category: Behavior
+name: App provider
+category: Structure
 keywords:
+  - app
   - provider
   - internationalization
   - i18n
@@ -16,24 +17,24 @@ keywords:
   - SDK
 ---
 
-# Provider
+# App provider
 
-Provider is a required component that enables sharing global settings throughout the hierarchy of your application.
+App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
 
 ---
 
 ## Best practices
 
-Provider is required. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the provider component. We’ve created [several examples to show how that's done](https://github.com/Shopify/polaris/blob/v2/examples/README.md).
+The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that's done](https://github.com/Shopify/polaris/blob/v2/examples/README.md).
 
 ## Examples
 
 ### Default
 
-Provider works by default without any additional options passed to it.
+AppProvider works by default without any additional options passed to it.
 
 ```jsx
-<Provider>
+<AppProvider>
   <Page>
     <Card>
       <ResourceList
@@ -68,15 +69,15 @@ Provider works by default without any additional options passed to it.
       />
     </Card>
   </Page>
-</Provider>
+</AppProvider>
 ```
 
 ### With i18n object
 
-With an `i18n` object, the provider component will override default English translations.
+With an `i18n` object, the app provider component will override default English translations.
 
 ```jsx
-<Provider
+<AppProvider
   i18n={{
     Polaris: {
       ResourceList: {
@@ -121,12 +122,12 @@ With an `i18n` object, the provider component will override default English tran
       />
     </Card>
   </Page>
-</Provider>
+</AppProvider>
 ```
 
 ### With linkComponent
 
-With a `linkComponent`, the provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughout your application instead of the default `a` tag.
+With a `linkComponent`, the app provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughout your application instead of the default `a` tag.
 
 ```jsx
 class ProviderLinkExample extends React.Component {
@@ -144,7 +145,7 @@ class ProviderLinkExample extends React.Component {
     };
 
     return (
-      <Provider linkComponent={CustomLinkComponent}>
+      <AppProvider linkComponent={CustomLinkComponent}>
         <Page
           breadcrumbs={[{content: 'Products', url: '#'}]}
           title="Jar With Lock-Lid"
@@ -156,7 +157,7 @@ class ProviderLinkExample extends React.Component {
         >
           <p>Page content</p>
         </Page>
-      </Provider>
+      </AppProvider>
     );
   }
 }
@@ -175,13 +176,13 @@ const shopOrigin = document.querySelector('#ShopOrigin').textContent;
 const apiKey = document.querySelector('#APIKey').textContent;
 
 ReactDOM.render(
-  <Provider shopOrigin={shopOrigin} apiKey={apiKey}>
+  <AppProvider shopOrigin={shopOrigin} apiKey={apiKey}>
     <ResourcePicker
       open
       products
       onSelection={(resources) => console.log('Selected resources ', resources)}
     />
-  </Provider>,
+  </AppProvider>,
 );
 ```
 

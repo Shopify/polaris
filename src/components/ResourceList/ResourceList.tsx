@@ -6,12 +6,15 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Button, EventListener} from '../../';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
 import Item from './components/Item';
-import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import FilterControl from './components/FilterControl';
+import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import BulkActions, {Props as BulkActionsProps} from './components/BulkActions';
 
 import * as styles from './ResourceList.scss';
@@ -65,13 +68,13 @@ export interface Context {
   unsubscribe(callback: () => void): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Select');
 
 export class ResourceList extends React.Component<CombinedProps, State> {
-  static Item = Item;
-  static FilterControl = FilterControl;
+  static Item: typeof Item = Item;
+  static FilterControl: typeof FilterControl = FilterControl;
   static childContextTypes = contextTypes;
 
   state: State = {selectMode: false};
@@ -364,19 +367,8 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
-    const itemsLength = items.length;
-
-    const ariaLive =
-      itemsLength > 1
-        ? intl.translate('Polaris.ResourceList.ariaLivePlural', {
-            itemsLength,
-          })
-        : intl.translate('Polaris.ResourceList.ariaLiveSingular', {
-            itemsLength,
-          });
-
     const listMarkup = itemsExist ? (
-      <ul className={styles.ResourceList} aria-live={ariaLive}>
+      <ul className={styles.ResourceList} aria-live="polite">
         {items.map(this.renderItem)}
       </ul>
     ) : (
@@ -549,4 +541,4 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withProvider()(ResourceList);
+export default withAppProvider<Props>()(ResourceList);

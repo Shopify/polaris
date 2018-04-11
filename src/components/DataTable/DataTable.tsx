@@ -2,7 +2,10 @@ import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import EventListener from '../EventListener';
 
 import Cell, {Props as CellProps} from './Cell';
@@ -10,7 +13,7 @@ import Navigation from './Navigation';
 
 import * as styles from './DataTable.scss';
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
 export type TableData = string | number | React.ReactNode;
 export type SortDirection = 'ascending' | 'descending' | 'none';
@@ -171,7 +174,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             };
           }
 
-          const height = !truncate ? heights[0] : null;
+          const height = !truncate ? heights[0] : undefined;
 
           return (
             <Cell
@@ -599,4 +602,4 @@ function getPrevAndCurrentColumns(
   return {previousColumn, currentColumn};
 }
 
-export default withProvider()(DataTable);
+export default withAppProvider<Props>()(DataTable);

@@ -5,12 +5,12 @@ import Intl from './Intl';
 import Link from './Link';
 import EASDK from './EASDK';
 
-export const polarisProviderContextTypes: ValidationMap<any> = {
+export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
   easdk: PropTypes.any,
 };
 
-export interface WithProviderProps {
+export interface WithAppProviderProps {
   polaris: {intl: Intl; link: Link; easdk: EASDK};
 }
 

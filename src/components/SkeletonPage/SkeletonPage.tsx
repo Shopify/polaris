@@ -5,7 +5,7 @@ import SkeletonDisplayText from '../SkeletonDisplayText';
 import SkeletonBodyText from '../SkeletonBodyText';
 
 import * as styles from './SkeletonPage.scss';
-import {withProvider, WithProviderProps} from '../Provider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props {
   /** Page title, in large type */
@@ -20,9 +20,9 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
-class SkeletonPage extends React.PureComponent<CombinedProps, never> {
+export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       children,
@@ -90,4 +90,4 @@ function renderTitle(title: string) {
   return <div className={styles.Title}>{titleContent}</div>;
 }
 
-export default withProvider()(SkeletonPage);
+export default withAppProvider<Props>()(SkeletonPage);

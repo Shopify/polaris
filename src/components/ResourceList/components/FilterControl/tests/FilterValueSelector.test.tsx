@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger, shallowWithProvider} from '../../../../../../tests/utilities';
+import {
+  trigger,
+  shallowWithAppProvider,
+} from '../../../../../../tests/utilities';
 
 import FilterValueSelector from '../FilterValueSelector';
 import {Filter, FilterType} from '../types';
@@ -29,7 +32,7 @@ describe('<FilterValueSelector />', () => {
       };
 
       it('renders a Select field', () => {
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} onChange={noop} />,
         );
 
@@ -38,7 +41,7 @@ describe('<FilterValueSelector />', () => {
       });
 
       it('renders label using the operatorText', () => {
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} onChange={noop} />,
         );
 
@@ -48,7 +51,7 @@ describe('<FilterValueSelector />', () => {
 
       it('renders value using the value prop', () => {
         const value = 'test';
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} value={value} onChange={noop} />,
         );
 
@@ -58,7 +61,7 @@ describe('<FilterValueSelector />', () => {
 
       it('calls onChange when the Select was changed', () => {
         const onChange = jest.fn();
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} onChange={onChange} />,
         );
 
@@ -75,7 +78,7 @@ describe('<FilterValueSelector />', () => {
       };
 
       it('renders a TextField', () => {
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} onChange={noop} />,
         );
 
@@ -84,7 +87,7 @@ describe('<FilterValueSelector />', () => {
       });
 
       it('renders label as empty string if operatorText does not exist', () => {
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} onChange={noop} />,
         );
 
@@ -94,7 +97,7 @@ describe('<FilterValueSelector />', () => {
 
       it('renders value using the value prop', () => {
         const value = 'test';
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} value={value} onChange={noop} />,
         );
 
@@ -104,7 +107,7 @@ describe('<FilterValueSelector />', () => {
 
       it('calls onChange when the text field was changed', () => {
         const onChange = jest.fn();
-        const wrapper = shallowWithProvider(
+        const wrapper = shallowWithAppProvider(
           <FilterValueSelector filter={filter} onChange={onChange} />,
         );
 

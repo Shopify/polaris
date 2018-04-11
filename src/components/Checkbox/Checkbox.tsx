@@ -77,7 +77,7 @@ export default function Checkbox({
   const isChecked = !isIndeterminate && Boolean(checked);
 
   const indeterminateAttributes = isIndeterminate
-    ? {indeterminate: 'true', 'aria-checked': 'mixed'}
+    ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
     : {'aria-checked': isChecked};
 
   const iconSource = isIndeterminate ? 'subtract' : 'checkmark';

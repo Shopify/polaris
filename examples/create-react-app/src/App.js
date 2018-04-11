@@ -11,7 +11,7 @@ import {
   AccountConnection,
   ChoiceList,
   SettingToggle,
-  Provider,
+  AppProvider,
 } from '@shopify/polaris';
 
 class App extends Component {
@@ -40,7 +40,7 @@ class App extends Component {
     ];
 
     return (
-      <Provider>
+      <AppProvider>
         <Page
           title="Polaris"
           breadcrumbs={breadcrumbs}
@@ -61,7 +61,7 @@ class App extends Component {
               </SettingToggle>
             </Layout.AnnotatedSection>
 
-          {this.renderAccount()}
+            {this.renderAccount()}
 
             <Layout.AnnotatedSection
               title="Form"
@@ -112,12 +112,14 @@ class App extends Component {
             </Layout.AnnotatedSection>
 
             <Layout.Section>
-              <FooterHelp>For more details on Polaris, visit our <Link url="https://polaris.shopify.com">styleguide</Link>.</FooterHelp>
+              <FooterHelp>
+                For more details on Polaris, visit our{' '}
+                <Link url="https://polaris.shopify.com">styleguide</Link>.
+              </FooterHelp>
             </Layout.Section>
-
           </Layout>
         </Page>
-      </Provider>
+      </AppProvider>
     );
   }
 
@@ -140,7 +142,14 @@ class App extends Component {
             onAction: this.toggleConnection.bind(this, this.state),
           }}
           details="No account connected"
-          termsOfService={<p>By clicking Connect, you are accepting Sample’s <Link url="https://polaris.shopify.com">Terms and Conditions</Link>, including a commission rate of 15% on sales.</p>}
+          termsOfService={
+            <p>
+              By clicking Connect, you are accepting Sample’s{' '}
+              <Link url="https://polaris.shopify.com">
+                Terms and Conditions
+              </Link>, including a commission rate of 15% on sales.
+            </p>
+          }
         />
       </Layout.AnnotatedSection>
     );
@@ -149,9 +158,9 @@ class App extends Component {
   disconnectAccountMarkup() {
     return (
       <Layout.AnnotatedSection
-          title="Account"
-          description="Disconnect your account from your Shopify store."
-        >
+        title="Account"
+        description="Disconnect your account from your Shopify store."
+      >
         <AccountConnection
           connected
           action={{

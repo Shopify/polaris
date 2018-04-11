@@ -5,16 +5,16 @@ import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 
 import {
-  polarisProviderContextTypes,
+  polarisAppProviderContextTypes,
   TranslationDictionary,
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
-  WithProviderProps,
+  WithAppProviderProps,
 } from '../types';
 
 import Intl from '../Intl';
 import Link from '../Link';
-import {Props as ProviderProps} from '../Provider';
+import {Props as AppProviderProps} from '../AppProvider';
 import EASDK from '../EASDK';
 
 import {name, version} from '../../../../package.json';
@@ -60,33 +60,39 @@ export function translate(
   return text;
 }
 
-export function withProvider() {
-  return function addProvider<OwnProps, C>(
+export function withAppProvider<OwnProps>() {
+  return function addProvider<C>(
     WrappedComponent:
-      | React.ComponentClass<OwnProps & WithProviderProps> & C
-      | React.SFC<OwnProps & WithProviderProps> & C,
-  ): any & C {
+      | React.ComponentClass<OwnProps & WithAppProviderProps> & C
+      | React.SFC<OwnProps & WithAppProviderProps> & C,
+  ): React.ComponentClass<OwnProps> & C {
     // eslint-disable-next-line react/prefer-stateless-function
-    class WithTranslation extends React.Component<
-      {},
-      OwnProps & WithProviderProps
-    > {
+    class WithProvider extends React.Component<OwnProps, never> {
       static contextTypes = WrappedComponent.contextTypes
-        ? merge(WrappedComponent.contextTypes, polarisProviderContextTypes)
-        : polarisProviderContextTypes;
+        ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
+        : polarisAppProviderContextTypes;
 
       render() {
         const {polaris, easdk} = this.context;
         const polarisContext = {...polaris, easdk};
+
+        if (!polaris) {
+          throw new Error(
+            `The <AppProvider> component is required as of v2.0 of Polaris React. See
+            https://polaris-v2.shopify.com/components/structure/app-provider for implementation
+            instructions.`,
+          );
+        }
+
         return <WrappedComponent {...this.props} polaris={polarisContext} />;
       }
     }
 
     const FinalComponent = hoistStatics(
-      WithTranslation,
+      WithProvider,
       WrappedComponent as React.ComponentClass<any>,
     );
-    return FinalComponent as React.ComponentClass<any> & C;
+    return FinalComponent as React.ComponentClass<OwnProps> & C;
   };
 }
 
@@ -97,7 +103,7 @@ export function createPolarisContext({
   shopOrigin,
   forceRedirect,
   debug,
-}: ProviderProps = {}) {
+}: AppProviderProps = {}) {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const easdk = apiKey

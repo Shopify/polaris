@@ -1,13 +1,16 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Icon, {IconSource} from '../Icon';
 import {SortDirection, ColumnContentType} from './DataTable';
 
 import * as styles from './DataTable.scss';
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
 export interface Props {
   testID?: string;
@@ -149,4 +152,4 @@ function onKeyDownEnter(sortFunc?: () => void) {
   };
 }
 
-export default withProvider()(Cell);
+export default withAppProvider<Props>()(Cell);

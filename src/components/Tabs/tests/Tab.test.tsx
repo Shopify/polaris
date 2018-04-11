@@ -1,23 +1,27 @@
 import * as React from 'react';
-import {shallow, mount, ShallowWrapper} from 'enzyme';
+import {ShallowWrapper} from 'enzyme';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+} from '../../../../tests/utilities';
 import Tab from '../Tab';
 
 describe('<Tab />', () => {
   it('has the correct role', () => {
-    const tab = shallow(<Tab id="my-tab">Tab</Tab>);
+    const tab = shallowWithAppProvider(<Tab id="my-tab">Tab</Tab>);
     expect(tab.find('button').prop('role')).toBe('tab');
   });
 
   describe('id', () => {
     it('uses the ID for the underlying actionable item', () => {
-      const tab = shallow(<Tab id="my-tab">Tab</Tab>);
+      const tab = shallowWithAppProvider(<Tab id="my-tab">Tab</Tab>);
       expect(tab.find('button').prop('id')).toBe('my-tab');
     });
   });
 
   describe('selected', () => {
     it('is aria-selected when the tab is selected', () => {
-      const tab = shallow(
+      const tab = shallowWithAppProvider(
         <Tab id="my-tab" selected>
           Tab
         </Tab>,
@@ -28,12 +32,12 @@ describe('<Tab />', () => {
     });
 
     it('is not aria-selected when the tab is not selected', () => {
-      let tab = shallow(<Tab id="my-tab">Tab</Tab>);
+      let tab = shallowWithAppProvider(<Tab id="my-tab">Tab</Tab>);
       expect(
         (tab.find('button') as ShallowWrapper<any, any>).prop('aria-selected'),
       ).toBeFalsy();
 
-      tab = shallow(
+      tab = shallowWithAppProvider(
         <Tab id="my-tab" selected={false}>
           Tab
         </Tab>,
@@ -46,7 +50,7 @@ describe('<Tab />', () => {
 
   describe('panelID', () => {
     it('uses the panelID as the controlled element’s ID', () => {
-      const tab = shallow(
+      const tab = shallowWithAppProvider(
         <Tab id="my-tab" panelID="my-panel">
           Tab
         </Tab>,
@@ -59,7 +63,7 @@ describe('<Tab />', () => {
 
   describe('url', () => {
     it('uses an anchor tag when a URL is passed', () => {
-      const tab = mount(
+      const tab = mountWithAppProvider(
         <Tab url="https://shopify.com" id="my-tab">
           Tab
         </Tab>,
@@ -73,7 +77,7 @@ describe('<Tab />', () => {
   describe('onClick()', () => {
     it('is called when the underlying button is clicked', () => {
       const spy = jest.fn();
-      const tab = shallow(
+      const tab = shallowWithAppProvider(
         <Tab id="my-tab" onClick={spy}>
           Tab
         </Tab>,
@@ -87,14 +91,14 @@ describe('<Tab />', () => {
     it('uses the label for aria-label', () => {
       const label = 'Tab contents';
 
-      const button = mount(
+      const button = mountWithAppProvider(
         <Tab id="my-tab" accessibilityLabel={label}>
           Tab
         </Tab>,
       ).find('button');
       expect(button.prop<string>('aria-label')).toBe(label);
 
-      const anchor = mount(
+      const anchor = mountWithAppProvider(
         <Tab id="my-tab" url="https://shopify.com" accessibilityLabel={label}>
           Tab
         </Tab>,

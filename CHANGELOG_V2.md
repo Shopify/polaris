@@ -6,6 +6,17 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.15 - 2018-04-11
+
+### Breaking changes
+
+* Renamed `Provider` component to `AppProvider`
+  * To upgrade, replace `Provider` with `AppProvider`
+
+### Bug fixes
+
+* Fixed Button disabled styles
+
 ## 2.0.0-beta.14 - 2018-04-03
 
 ### Bug fixes

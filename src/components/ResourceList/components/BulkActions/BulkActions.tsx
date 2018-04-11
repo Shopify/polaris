@@ -5,7 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {DisableableAction, Action} from '../../../../types';
 import {Duration} from '../../../shared';
 import {ActionList, Popover, Button, EventListener} from '../../../';
-import {withProvider, WithProviderProps} from '../../../Provider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {ActionListSection} from '../../../ActionList/Section';
 import CheckableButton from '../CheckableButton';
 import BulkActionButton from './BulkActionButton';
@@ -46,9 +46,9 @@ const slideClasses = {
   exit: classNames(styles.Slide, styles['Slide-exit']),
 };
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
-class BulkActions extends React.PureComponent<CombinedProps, State> {
+export class BulkActions extends React.PureComponent<CombinedProps, State> {
   state = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
@@ -182,7 +182,7 @@ class BulkActions extends React.PureComponent<CombinedProps, State> {
 
     const paginatedSelectAllTextMarkup =
       paginatedSelectAllText && paginatedSelectAllAction ? (
-        <span>{paginatedSelectAllText}</span>
+        <span aria-live="polite">{paginatedSelectAllText}</span>
       ) : (
         paginatedSelectAllText
       );
@@ -462,4 +462,4 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-export default withProvider()(BulkActions);
+export default withAppProvider<Props>()(BulkActions);
