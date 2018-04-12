@@ -146,6 +146,7 @@ export {default as Portal, Props as PortalProps} from './Portal';
 export {
   default as AppProvider,
   Props as AppProviderProps,
+  polarisAppProviderContextTypes as polarisContextTypes,
   createPolarisContext,
 } from './AppProvider';
 

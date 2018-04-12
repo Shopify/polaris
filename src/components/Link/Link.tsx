@@ -1,7 +1,6 @@
 import * as React from 'react';
 import UnstyledLink from '../UnstyledLink';
 import * as styles from './Link.scss';
-import {withAppProvider} from '../AppProvider';
 
 export interface Props {
   /** ID for the link */
@@ -16,7 +15,7 @@ export interface Props {
   onClick?(): void;
 }
 
-export function Link({url, children, onClick, external, id}: Props) {
+export default function Link({url, children, onClick, external, id}: Props) {
   return url ? (
     <UnstyledLink
       onClick={onClick}
@@ -33,5 +32,3 @@ export function Link({url, children, onClick, external, id}: Props) {
     </button>
   );
 }
-
-export default withAppProvider<Props>()(Link);

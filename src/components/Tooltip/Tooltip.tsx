@@ -7,7 +7,6 @@ import {PreferredPosition} from '../PositionedOverlay';
 import Portal from '../Portal';
 import TooltipOverlay from './TooltipOverlay';
 import * as styles from './Tooltip.scss';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props {
   /** The element that will activate to tooltip */
@@ -37,9 +36,7 @@ export interface State {
 
 const getUniqueID = createUniqueIDFactory('TooltipContent');
 
-export type CombinedProps = Props & WithAppProviderProps;
-
-export class Tooltip extends React.PureComponent<CombinedProps, State> {
+export default class Tooltip extends React.PureComponent<Props, State> {
   state: State = {
     active: false,
     activatorNode: null,
@@ -146,5 +143,3 @@ export class Tooltip extends React.PureComponent<CombinedProps, State> {
     accessibilityNode.setAttribute('aria-describedby', id);
   }
 }
-
-export default withAppProvider<Props>()(Tooltip);
