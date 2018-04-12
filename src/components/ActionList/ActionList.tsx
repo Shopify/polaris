@@ -3,7 +3,6 @@ import {Props as ItemProps} from './Item';
 import Section, {ActionListSection} from './Section';
 
 import * as styles from './ActionList.scss';
-import {withAppProvider} from '../AppProvider';
 
 export interface Props {
   /** Collection of actions for list */
@@ -14,7 +13,11 @@ export interface Props {
   onActionAnyItem?: ItemProps['onAction'];
 }
 
-export function ActionList({items, sections = [], onActionAnyItem}: Props) {
+export default function ActionList({
+  items,
+  sections = [],
+  onActionAnyItem,
+}: Props) {
   let finalSections: ActionListSection[] = [];
 
   if (items) {
@@ -38,5 +41,3 @@ export function ActionList({items, sections = [], onActionAnyItem}: Props) {
 
   return <Element className={styles.ActionList}>{sectionMarkup}</Element>;
 }
-
-export default withAppProvider<Props>()(ActionList);

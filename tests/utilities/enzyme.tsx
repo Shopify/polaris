@@ -3,7 +3,7 @@ import * as React from 'react';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 
-import {createPolarisContext} from '../../src/components/AppProvider';
+import {createPolarisContext, polarisAppProviderContextTypes} from '../../src/components/AppProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -132,7 +132,10 @@ function updateRoot(wrapper: AnyWrapper) {
 function mergeAppProviderOptions(options: any = {}): any {
   const context = createPolarisContext();
 
-  return merge(merge({}, {context}, options));
+  return merge(merge({}, {
+    context,
+    childContextTypes: polarisAppProviderContextTypes
+  }, options));
 }
 
 export function mountWithAppProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {

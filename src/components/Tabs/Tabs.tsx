@@ -11,7 +11,6 @@ import Tab from './Tab';
 import TabMeasurer, {Measurements} from './TabMeasurer';
 import Panel from './Panel';
 import * as styles from './Tabs.scss';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface TabDescriptor {
   id: string;
@@ -34,8 +33,6 @@ export interface Props {
   onSelect?(selectedTabIndex: number): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
-
 export interface State {
   disclosureWidth: number;
   tabWidths: number[];
@@ -46,7 +43,7 @@ export interface State {
   tabToFocus: number;
 }
 
-export class Tabs extends React.PureComponent<CombinedProps, State> {
+export default class Tabs extends React.PureComponent<Props, State> {
   static Panel = Panel;
 
   state: State = {
@@ -383,5 +380,3 @@ function getVisibleAndHiddenTabIndices(
     hiddenTabs,
   };
 }
-
-export default withAppProvider<Props>()(Tabs);

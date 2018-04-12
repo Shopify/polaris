@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon from '../Icon';
@@ -39,9 +39,6 @@ export default function ExceptionList({items: itemsList}: Props) {
     const descriptionMarkup = description && (
       <span className={styles.Description}>{description}</span>
     );
-
-    // React types package does not currently include React.Fragment
-    const Fragment = (React as any).Fragment;
 
     const Element = truncate ? Truncate : Fragment;
 

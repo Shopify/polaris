@@ -1,63 +1,51 @@
 import * as React from 'react';
-import {ShallowWrapper} from 'enzyme';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import Tab from '../Tab';
 
 describe('<Tab />', () => {
   it('has the correct role', () => {
-    const tab = shallowWithAppProvider(<Tab id="my-tab">Tab</Tab>);
+    const tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
     expect(tab.find('button').prop('role')).toBe('tab');
   });
 
   describe('id', () => {
     it('uses the ID for the underlying actionable item', () => {
-      const tab = shallowWithAppProvider(<Tab id="my-tab">Tab</Tab>);
+      const tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
       expect(tab.find('button').prop('id')).toBe('my-tab');
     });
   });
 
   describe('selected', () => {
     it('is aria-selected when the tab is selected', () => {
-      const tab = shallowWithAppProvider(
+      const tab = mountWithAppProvider(
         <Tab id="my-tab" selected>
           Tab
         </Tab>,
       );
-      expect(
-        (tab.find('button') as ShallowWrapper<any, any>).prop('aria-selected'),
-      ).toBe(true);
+      expect(tab.find('button').prop('aria-selected')).toBe(true);
     });
 
     it('is not aria-selected when the tab is not selected', () => {
-      let tab = shallowWithAppProvider(<Tab id="my-tab">Tab</Tab>);
-      expect(
-        (tab.find('button') as ShallowWrapper<any, any>).prop('aria-selected'),
-      ).toBeFalsy();
+      let tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
+      expect(tab.find('button').prop('aria-selected')).toBeFalsy();
 
-      tab = shallowWithAppProvider(
+      tab = mountWithAppProvider(
         <Tab id="my-tab" selected={false}>
           Tab
         </Tab>,
       );
-      expect(
-        (tab.find('button') as ShallowWrapper<any, any>).prop('aria-selected'),
-      ).toBeFalsy();
+      expect(tab.find('button').prop('aria-selected')).toBeFalsy();
     });
   });
 
   describe('panelID', () => {
     it('uses the panelID as the controlled element’s ID', () => {
-      const tab = shallowWithAppProvider(
+      const tab = mountWithAppProvider(
         <Tab id="my-tab" panelID="my-panel">
           Tab
         </Tab>,
       );
-      expect(
-        (tab.find('button') as ShallowWrapper<any, any>).prop('aria-controls'),
-      ).toBe('my-panel');
+      expect(tab.find('button').prop('aria-controls')).toBe('my-panel');
     });
   });
 
@@ -77,7 +65,7 @@ describe('<Tab />', () => {
   describe('onClick()', () => {
     it('is called when the underlying button is clicked', () => {
       const spy = jest.fn();
-      const tab = shallowWithAppProvider(
+      const tab = mountWithAppProvider(
         <Tab id="my-tab" onClick={spy}>
           Tab
         </Tab>,

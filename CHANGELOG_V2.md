@@ -6,6 +6,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.16 - 2018-04-12
+
+### Enhancements
+
+* Exposed polarisContextTypes to make testing easier for external apps
+
 ## 2.0.0-beta.15 - 2018-04-11
 
 ### Breaking changes
