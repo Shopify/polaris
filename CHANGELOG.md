@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Bug fixes
+
+* Fixed an issue in the select component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers ([#1282](https://github.com/Shopify/polaris-react/pull/1282))
+
 ## 2.0.0 - 2018-05-04
 
 Summary: This is the first major version of Polaris React since launch. Included in this release are:
