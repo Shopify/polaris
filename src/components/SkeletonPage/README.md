@@ -1,6 +1,7 @@
 ---
 name: Skeleton page
 category: Feedback indicators
+releasedIn: 1.7.0
 keywords:
   - SkeletonPage
   - skeleton
@@ -32,11 +33,15 @@ Secondary actions are always represented with skeleton content. You can change t
 <!-- usageblock -->
 
 #### Do
+
 Use skeleton loading for dynamic content, and use actual content for content that doesn’t change.
+
 <div class="TypographyUsageBlockImg">![Image showing skeleton loading for changing content](skeleton/do-use-skeleton-for-changing-content.png)</div>
 
 #### Don’t
+
 Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience.
+
 <div class="TypographyUsageBlockImg">![Image showing placeholder content that will change](skeleton/dont-use-placeholder-content-that-will-change.png)</div>
 
 <!-- end -->
@@ -100,32 +105,21 @@ Use this component to compose a loading version of a page where the page title a
 Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 
 ```jsx
-<SkeletonPage
-  title="Products"
-  secondaryActions={2}
->
+<SkeletonPage title="Products" secondaryActions={2}>
   <Layout>
     <Layout.Section>
       <Card sectioned>
         <SkeletonBodyText />
       </Card>
-      <Card
-        sectioned
-        title="Images"
-      >
+      <Card sectioned title="Images">
         <SkeletonBodyText />
       </Card>
-      <Card
-        sectioned
-        title="Variants"
-      >
+      <Card sectioned title="Variants">
         <SkeletonBodyText />
       </Card>
     </Layout.Section>
     <Layout.Section secondary>
-      <Card
-        title="Sales channels"
-      >
+      <Card title="Sales channels">
         <Card.Section>
           <SkeletonBodyText lines={2} />
         </Card.Section>
@@ -133,10 +127,7 @@ Use this component to compose a loading version of a page where the page title a
           <SkeletonBodyText lines={1} />
         </Card.Section>
       </Card>
-      <Card
-        title="Organization"
-        subdued
-      >
+      <Card title="Organization" subdued>
         <Card.Section>
           <SkeletonBodyText lines={2} />
         </Card.Section>

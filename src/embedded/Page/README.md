@@ -3,6 +3,7 @@ name: Embedded page
 category: Embedded
 order: 2
 hidePlayground: true
+releasedIn: 1.12.3
 keywords:
   - breadcrumbs
   - view
@@ -98,6 +99,7 @@ Page header action labels should be:
   action. To provide enough context to merchants, use the {verb}+{noun} format.
 
 <!-- usagelist -->
+
 #### Do
 
 * Create order
@@ -107,15 +109,17 @@ Page header action labels should be:
 
 * Create
 * Postmates deliveries
+
 <!-- end -->
 
-- Short: for secondary actions, when the noun represents the same object as
+* Short: for secondary actions, when the noun represents the same object as
   the page itself, a verb alone may be used. If there is ambiguity (such as
   with the verb “Cancel”), always use the {verb}+{noun} format.
 
 In the context of the orders list page:
 
 <!-- usagelist -->
+
 #### Do
 
 * Import
@@ -125,9 +129,10 @@ In the context of the orders list page:
 
 * Import orders
 * Export orders
+
 <!-- end -->
 
-- Scannable: avoid unnecessary words and articles such as the, an, or a.
+* Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usageblock -->
 
@@ -149,27 +154,27 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 
 ```jsx
 <Page
-  breadcrumbs={[{content: "Products"}]}
+  breadcrumbs={[{content: 'Products'}]}
   title="Product reviews"
   primaryAction={{
-    content: "Save",
-    disabled: true
+    content: 'Save',
+    disabled: true,
   }}
-  secondaryActions={[{content: "Duplicate"}, {content: "Upgrade"}]}
+  secondaryActions={[{content: 'Duplicate'}, {content: 'Upgrade'}]}
   actionGroups={[
     {
-      title: "Promote",
+      title: 'Promote',
       actions: [
         {
-          content: "Share on Facebook",
-          onAction: this.performFacebookShare
+          content: 'Share on Facebook',
+          onAction: this.performFacebookShare,
         },
         {
-          content: "Share on Pinterest",
-          onAction: this.performPinterestShare
-        }
-      ]
-    }
+          content: 'Share on Pinterest',
+          onAction: this.performPinterestShare,
+        },
+      ],
+    },
   ]}
 >
   <p>Page content</p>
