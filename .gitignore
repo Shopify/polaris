@@ -16,3 +16,5 @@ node_modules
 *.scss.d.ts
 /playground/.cache
 /playground/assets/*
+/shrink-ray-build/.cache
+/shrink-ray-build/build
