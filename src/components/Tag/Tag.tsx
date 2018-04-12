@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {withProvider, WithProviderProps} from '../../components/Provider';
 import Icon from '../Icon/';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tag.scss';
@@ -14,23 +13,15 @@ export interface Props {
   onRemove?(): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
-
-function Tag({
-  children,
-  disabled = false,
-  onRemove,
-  polaris: {intl},
-}: CombinedProps) {
+export default function Tag({children, disabled = false, onRemove}: Props) {
   const className = classNames(disabled && styles.disabled, styles.Tag);
-  const ariaLabel = intl.translate('Polaris.Tag.ariaLabel', {children});
 
   return (
     <span className={className}>
       <span>{children}</span>
       <button
         type="button"
-        aria-label={ariaLabel}
+        aria-label="Remove"
         className={styles.Button}
         onClick={onRemove}
         onMouseUp={handleMouseUpByBlurring}
@@ -41,5 +32,3 @@ function Tag({
     </span>
   );
 }
-
-export default withProvider()(Tag);
