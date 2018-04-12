@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {withProvider, WithProviderProps} from '../../components/Provider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Icon from '../Icon/';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tag.scss';
@@ -14,7 +17,7 @@ export interface Props {
   onRemove?(): void;
 }
 
-export type CombinedProps = Props & WithProviderProps;
+export type CombinedProps = Props & WithAppProviderProps;
 
 function Tag({
   children,
@@ -42,4 +45,4 @@ function Tag({
   );
 }
 
-export default withProvider()(Tag);
+export default withAppProvider<Props>()(Tag);
