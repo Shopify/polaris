@@ -16,3 +16,4 @@ node_modules
 *.scss.d.ts
 /playground/.cache
 /playground/assets/*
+/src/styles/polaris-tokens
