@@ -42,7 +42,8 @@
       "ariaLivePlural": "{itemsLength} items",
 
       "Item": {
-        "selectItem": "Select Item",
+        "selectItem": "Select item",
+        "deselectItem": "Deselect item",
         "actionsDropdown": "Actions dropdown"
       },
 
