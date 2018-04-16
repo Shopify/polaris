@@ -156,7 +156,11 @@ describe('<TextField />', () => {
   describe('error', () => {
     it('marks the input as invalid', () => {
       const textField = shallow(
-        <TextField error label="TextField" onChange={noop} />,
+        <TextField
+          error={<span>Invalid</span>}
+          label="TextField"
+          onChange={noop}
+        />,
       );
       expect(textField.find('input').prop<string>('aria-invalid')).toBe(true);
 

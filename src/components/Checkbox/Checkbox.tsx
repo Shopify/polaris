@@ -2,8 +2,9 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Choice, {Error, errorID, helpTextID} from '../Choice';
+import Choice, {errorID, helpTextID} from '../Choice';
 import Icon from '../Icon';
+import {Error} from '../../types';
 
 import * as styles from './Checkbox.scss';
 
@@ -61,7 +62,7 @@ export default function Checkbox({
   }
 
   const describedBy: string[] = [];
-  if (typeof error === 'string') {
+  if (error) {
     describedBy.push(errorID(id));
   }
   if (helpText) {

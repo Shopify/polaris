@@ -5,6 +5,8 @@ import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
+import Icon from '../Icon';
+import {Error} from '../../types';
 
 import * as styles from './ChoiceList.scss';
 
@@ -31,6 +33,8 @@ export interface BaseProps {
   allowMultiple?: boolean;
   /** Toggles display of the title */
   titleHidden?: boolean;
+  /** Display an error message */
+  error?: Error;
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
 }
@@ -48,6 +52,7 @@ type ChooseableComponent = ReactComponent<{
 }>;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
+const getUniqueError = createUniqueIDFactory('Error');
 
 export default function ChoiceList({
   title,
@@ -56,6 +61,7 @@ export default function ChoiceList({
   choices,
   selected,
   onChange = noop,
+  error,
   name = getUniqueID(),
 }: Props) {
   const ControlComponent: ChooseableComponent = allowMultiple
@@ -106,10 +112,22 @@ export default function ChoiceList({
     );
   });
 
+  const errorMarkup = error && (
+    <div className={styles.Error} id={getUniqueError()}>
+      {typeof error === 'string' && (
+        <div className={styles.ErrorIcon}>
+          <Icon source="alert" />
+        </div>
+      )}
+      {error}
+    </div>
+  );
+
   return (
     <fieldset className={className}>
       {titleMarkup}
       <ul className={styles.Choices}>{choicesMarkup}</ul>
+      {errorMarkup}
     </fieldset>
   );
 }

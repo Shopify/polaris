@@ -3,6 +3,11 @@ import {IconProps} from './components';
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
+export type Error =
+  | string
+  | React.ReactElement<any>
+  | (string | React.ReactElement<any>)[];
+
 export interface BaseAction {
   id?: string;
   content?: string;

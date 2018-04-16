@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {Action} from '../../types';
+import {Action, Error} from '../../types';
 
 import {buttonFrom} from '../Button';
 import Label, {Props as LabelProps, labelID} from '../Label';
@@ -10,8 +10,6 @@ import Icon from '../Icon';
 import * as styles from './Labelled.scss';
 
 export {Action, labelID};
-
-export type Error = boolean | string;
 
 export interface Props {
   id: LabelProps['id'];
@@ -43,15 +41,16 @@ export default function Labelled({
     </div>
   ) : null;
 
-  const errorMarkup =
-    typeof error === 'string' ? (
-      <div id={errorID(id)} className={styles.Error}>
+  const errorMarkup = error && (
+    <div id={errorID(id)} className={styles.Error}>
+      {typeof error === 'string' && (
         <div className={styles.ErrorIcon}>
           <Icon source="alert" />
         </div>
-        {error}
-      </div>
-    ) : null;
+      )}
+      {error}
+    </div>
+  );
 
   const labelMarkup = label ? (
     <div className={styles.LabelWrapper}>

@@ -3,17 +3,12 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {
-  Action,
-  Error,
-  helpTextID,
-  errorID,
-  labelID,
-} from '../Labelled';
+import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import Resizer from './Resizer';
 import Spinner from './Spinner';
+import {Error} from '../../types';
 import * as styles from './TextField.scss';
 
 export type Type =
@@ -214,7 +209,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       ) : null;
 
     const describedBy: string[] = [];
-    if (error && typeof error === 'string') {
+    if (error) {
       describedBy.push(errorID(id));
     }
     if (helpText) {

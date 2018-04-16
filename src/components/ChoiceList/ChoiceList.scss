@@ -11,9 +11,9 @@ $control-size: rem(16px);
 }
 
 .Choices {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .ChoiceChildren {
@@ -25,4 +25,15 @@ $control-size: rem(16px);
   display: block;
   margin: 0 0 spacing(extra-tight);
   padding: 0;
+}
+
+.Error {
+  display: flex;
+  margin-bottom: spacing(extra-tight);
+  color: color('red', 'dark');
+}
+
+.ErrorIcon {
+  @include recolor-icon(color('red'));
+  margin: 0 spacing(extra-tight) 0 -2px;
 }
