@@ -28,11 +28,13 @@ export default function generateSassBuild(destinationDir) {
   const foundation = join(buildStyles, 'foundation');
   const shared = join(buildStyles, 'shared');
   const components = join(buildStyles, 'components');
+  const tokens = join(buildStyles, 'polaris-tokens');
 
-  mkdir('-p', components, foundation, global, shared);
+  mkdir('-p', components, foundation, global, shared, tokens);
   cp(join(srcStyles, 'global', '*.scss'), global);
   cp(join(srcStyles, 'foundation', '*.scss'), foundation);
   cp(join(srcStyles, 'shared', '*.scss'), shared);
+  cp(join(srcStyles, 'polaris-tokens', '*.scss'), tokens);
   cp(join(srcStyles, 'global.scss'), join(buildStyles, 'global.scss'));
   cp(join(srcStyles, 'foundation.scss'), join(buildStyles, 'foundation.scss'));
   cp(join(srcStyles, 'shared.scss'), join(buildStyles, 'shared.scss'));
@@ -64,8 +66,11 @@ export default function generateSassBuild(destinationDir) {
     });
 
     // Create component index with imports
-    const sassImports = glob.sync(join(componentBuildDirectory, '**/*.scss'))
-      .map((absPath) => relative(componentBuildDirectory, absPath).replace('.scss', ''))
+    const sassImports = glob
+      .sync(join(componentBuildDirectory, '**/*.scss'))
+      .map((absPath) =>
+        relative(componentBuildDirectory, absPath).replace('.scss', ''),
+      )
       .map((relativePath) => `@import '${componentName}/${relativePath}';`)
       .join('\n');
 
@@ -102,7 +107,8 @@ function generateSassZip(sourceDir, destinationDir) {
 function createSassIndex(dir) {
   const directory = basename(dir);
 
-  const sassImports = glob.sync(join(dir, '**/*.scss'))
+  const sassImports = glob
+    .sync(join(dir, '**/*.scss'))
     .map((absPath) => relative(dir, absPath).replace('.scss', ''))
     .map((relativePath) => `@import '${directory}/${relativePath}';`)
     .join('\n');
@@ -111,7 +117,9 @@ function createSassIndex(dir) {
 }
 
 function namespaceSassClasses(filePath, file, tokens) {
-  if (basename(filePath, '.scss') === 'variables') { return file; }
+  if (basename(filePath, '.scss') === 'variables') {
+    return file;
+  }
 
   const sassPath = resolve(filePath);
   const namespaces = tokens[sassPath];
@@ -123,7 +131,12 @@ function namespaceSassClasses(filePath, file, tokens) {
 
   return Object.keys(namespaces)
     .filter(Boolean)
-    .reduce((sass, className) => (
-      sass.replace(new RegExp(`\\.${className}(?!-)\\b`, 'g'), `.${namespaces[className]}`)
-    ), file);
+    .reduce(
+      (sass, className) =>
+        sass.replace(
+          new RegExp(`\\.${className}(?!-)\\b`, 'g'),
+          `.${namespaces[className]}`,
+        ),
+      file,
+    );
 }
