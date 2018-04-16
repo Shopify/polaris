@@ -87,6 +87,7 @@ $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2)
   margin-top: spacing(loose) * -1;
   margin-left: $illustration-left-margin;
   width: $illustration-width-cropped;
+  max-width: none;
 
   @include page-content-when-not-fully-condensed {
     margin-left: 0;
