@@ -9,6 +9,7 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 import Spinner from '../Spinner';
+import Indicator from '../Indicator';
 
 import * as styles from './Button.scss';
 
@@ -45,6 +46,8 @@ export interface Props {
   external?: boolean;
   /** Icon to display to the left of the button content */
   icon?: IconProps['source'];
+  /**  Display a dot indicator */
+  indicator?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the button controls */
@@ -75,6 +78,7 @@ function Button({
   onBlur,
   external,
   icon,
+  indicator,
   primary,
   outline,
   destructive,
@@ -157,6 +161,7 @@ function Button({
       disabled={isDisabled}
       aria-label={accessibilityLabel}
     >
+      <Indicator active={indicator} />
       {content}
     </UnstyledLink>
   ) : (
@@ -175,6 +180,7 @@ function Button({
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >
+      <Indicator active={indicator} />
       {content}
     </button>
   );

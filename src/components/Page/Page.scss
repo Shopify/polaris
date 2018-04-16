@@ -238,3 +238,12 @@ body {
     border-top: border();
   }
 }
+
+.outline {
+  @include button-base;
+  @include button-outline(color('ink', 'lighter'));
+
+  &.disabled {
+    @include button-outline-disabled(color('ink', 'lighter'));
+  }
+}

@@ -47,6 +47,14 @@ $pip-spacing: ($height - $pip-size) / 2;
   color: color('orange', 'text');
 }
 
+.statusNew {
+  background: color('teal');
+  color: color('white');
+  border-radius: rem(10px);
+  border: none;
+  padding: 0 spacing(tight);
+}
+
 .progressIncomplete .Pip {
   background: transparent;
 }

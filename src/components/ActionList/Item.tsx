@@ -4,12 +4,14 @@ import {classNames} from '@shopify/react-utilities';
 import {ItemDescriptor} from './types';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
+import Badge from '../Badge';
 
 import * as styles from './ActionList.scss';
 
 export type Props = ItemDescriptor;
 
 export default function Item({
+  badge,
   content,
   url,
   onAction,
@@ -48,6 +50,12 @@ export default function Item({
     contentMarkup
   );
 
+  const badgeElement = badge && (
+    <span className={styles.BadgeWrapper}>
+      <Badge status={badge.status}>{badge.content}</Badge>
+    </span>
+  );
+
   const control = url ? (
     <UnstyledLink
       url={url}
@@ -56,10 +64,12 @@ export default function Item({
       external={external}
     >
       {contentElement}
+      {badgeElement}
     </UnstyledLink>
   ) : (
     <button onClick={onAction} className={className} disabled={disabled}>
       {contentElement}
+      {badgeElement}
     </button>
   );
 
