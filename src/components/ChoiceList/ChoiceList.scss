@@ -31,6 +31,7 @@ $control-size: rem(16px);
   display: flex;
   margin-bottom: spacing(extra-tight);
   color: color('red', 'dark');
+  padding-left: spacing(tight) + $control-size;
 }
 
 .ErrorIcon {
