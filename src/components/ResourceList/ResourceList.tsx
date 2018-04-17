@@ -40,7 +40,6 @@ export interface Props {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: SelectedItems;
-  persistActions?: boolean;
   hasMoreItems?: boolean;
   /** Boolean to show or hide the header */
   showHeader?: boolean;
@@ -62,7 +61,6 @@ export interface Context {
   selectMode: boolean;
   selectable?: boolean;
   selectedItems?: SelectedItems;
-  persistActions?: boolean;
   onSelectionChange?(selected: boolean, id: string): void;
   subscribe(callback: () => void): void;
   unsubscribe(callback: () => void): void;
@@ -218,13 +216,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   getChildContext(): Context {
-    const {selectedItems, persistActions} = this.props;
+    const {selectedItems} = this.props;
     const {selectMode} = this.state;
     return {
       selectable: this.selectable,
       selectedItems,
       selectMode,
-      persistActions,
       onSelectionChange: this.handleSelectionChange,
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,

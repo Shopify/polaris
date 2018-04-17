@@ -31,6 +31,7 @@ export interface BaseProps {
   /** Unique identifier for the item */
   id: string;
   media?: React.ReactElement<AvatarProps | ThumbnailProps>;
+  persistActions?: boolean;
   shortcutActions?: DisableableAction[];
   children?: React.ReactNode;
 }
@@ -89,11 +90,12 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       shortcutActions,
       ariaControls,
       ariaExpanded,
+      persistActions = false,
       polaris: {intl},
       accessibilityLabel,
     } = this.props as CombinedProps;
 
-    const {persistActions = false, selectable, selectMode} = this.context;
+    const {selectable, selectMode} = this.context;
 
     const {actionsMenuVisible, focused, focusedInner} = this.state;
 
