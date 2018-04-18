@@ -11,6 +11,7 @@ export interface EASDKBreadcrumb {
 
 export function transformBreadcrumb(
   breadcrumb: ComplexAction,
+  shopOrigin?: string,
 ): EASDKBreadcrumb {
   if (breadcrumb.content == null) {
     throw new Error(
@@ -22,7 +23,7 @@ export function transformBreadcrumb(
   if (breadcrumb.target) {
     target = breadcrumb.target;
   } else if (breadcrumb.url) {
-    target = getTargetFromURL(breadcrumb.url);
+    target = getTargetFromURL(breadcrumb.url, shopOrigin);
   } else {
     target = undefined;
   }
@@ -55,44 +56,49 @@ export interface EASDKLinkButton extends EASDKBaseButton {
 
 export type EASDKButton = EASDKBaseButton | EASDKLinkButton;
 
-export function transformAction(action: EASDKAction): EASDKButton {
-  let style: EASDKButton['style'];
-  if (action.disabled) {
-    style = 'disabled';
-  } else if (action.destructive) {
-    style = 'danger';
-  }
+export function transformAction(shopOrigin: string) {
+  return (action: ComplexAction): EASDKButton => {
+    let style: EASDKButton['style'];
+    if (action.disabled) {
+      style = 'disabled';
+    } else if (action.destructive) {
+      style = 'danger';
+    }
 
-  let target: EASDKBaseButton['target'];
-  if (action.target) {
-    target = action.target;
-  } else if (action.url) {
-    target = action.external ? 'new' : getTargetFromURL(action.url);
-  } else {
-    target = undefined;
-  }
+    let target: EASDKBaseButton['target'];
+    if (action.target) {
+      target = action.target;
+    } else if (action.url) {
+      target = action.external
+        ? 'new'
+        : getTargetFromURL(action.url, shopOrigin);
+    } else {
+      target = undefined;
+    }
 
-  return {
-    label: action.content,
-    href: action.url,
-    target,
-    message: target === 'app' ? generateCallback(action.url) : action.onAction,
-    style,
+    return {
+      label: action.content,
+      href: action.url,
+      target,
+      message:
+        target === 'app' ? generateCallback(action.url) : action.onAction,
+      style,
+    };
   };
 }
 
-export function transformActionGroup(
-  actionGroup: ActionGroup,
-): EASDKLinkButton {
-  return {
-    type: 'dropdown',
-    label: actionGroup.title,
-    links: actionGroup.actions.map(transformAction),
+export function transformActionGroup(shopOrigin: string) {
+  return (actionGroup: ActionGroup): EASDKLinkButton => {
+    return {
+      type: 'dropdown',
+      label: actionGroup.title,
+      links: actionGroup.actions.map(transformAction(shopOrigin)),
+    };
   };
 }
 
-function getTargetFromURL(url: string): EASDKTarget {
-  if (isRootRelative(url)) {
+function getTargetFromURL(url: string, shopOrigin?: string): EASDKTarget {
+  if (isRootRelative(url) || isOriginHost(url, shopOrigin)) {
     return 'shopify';
   } else if (
     isSameHost(url) ||
@@ -108,6 +114,10 @@ function getTargetFromURL(url: string): EASDKTarget {
 
 function isRootRelative(url: string): boolean {
   return url.charAt(0) === '/' && url.charAt(1) !== '/';
+}
+
+function isOriginHost(url: string, shopOrigin?: string) {
+  return shopOrigin && url.indexOf(shopOrigin) !== -1;
 }
 
 function isSameHost(url: string): boolean {

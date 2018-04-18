@@ -1,8 +1,19 @@
-import {transformAction} from '../transformers';
+import {transformAction, transformBreadcrumb} from '../transformers';
+
+const shopOrigin = 'shop1.myshopify.com';
+
+describe('transformBreadcrumb', () => {
+  it('throws an error if the breadcrumb has no content', () => {
+    expect(() => transformBreadcrumb({url: '/orders'}, shopOrigin)).toThrow(
+      // prettier-ignore
+      `No content provided for breadcrumb ({"url":"/orders"})`,
+    );
+  });
+});
 
 describe('transformAction', () => {
   it('returns a disabled action', () => {
-    const disabledAction = transformAction({
+    const disabledAction = transformAction(shopOrigin)({
       content: 'Save',
       disabled: true,
     });
@@ -11,7 +22,7 @@ describe('transformAction', () => {
   });
 
   it('returns a destructive action', () => {
-    const destructiveAction = transformAction({
+    const destructiveAction = transformAction(shopOrigin)({
       content: 'Delete',
       destructive: true,
     });
@@ -20,7 +31,7 @@ describe('transformAction', () => {
   });
 
   it('returns an action with the specified target', () => {
-    const targetAction = transformAction({
+    const targetAction = transformAction(shopOrigin)({
       content: 'See all orders',
       target: 'app',
     });
@@ -29,7 +40,7 @@ describe('transformAction', () => {
   });
 
   it('returns an action that opens a new window or tab when called with an external action', () => {
-    const externalLinkAction = transformAction({
+    const externalLinkAction = transformAction(shopOrigin)({
       content: 'Promote',
       external: true,
       url: 'https://facebook.com/business',
@@ -38,8 +49,8 @@ describe('transformAction', () => {
     expect(externalLinkAction.target).toBe('new');
   });
 
-  it('returns an action that targets the shopify window', () => {
-    const shopifyLinkAction = transformAction({
+  it('returns an action that targets the shopify window when the url is root relative', () => {
+    const shopifyLinkAction = transformAction(shopOrigin)({
       content: 'View orders',
       url: '/orders',
     });
@@ -47,10 +58,19 @@ describe('transformAction', () => {
     expect(shopifyLinkAction.target).toBe('shopify');
   });
 
+  it('returns an action that targets the shopify window when the url is of shop origin', () => {
+    const shopOriginLinkAction = transformAction(shopOrigin)({
+      content: 'View orders',
+      url: 'shop1.myshopify.com/orders',
+    });
+
+    expect(shopOriginLinkAction.target).toBe('shopify');
+  });
+
   it('returns an action that targets the app window when the url is of the same origin as the app window', () => {
     mockHostname();
 
-    const sameHostLinkAction = transformAction({
+    const sameHostLinkAction = transformAction(shopOrigin)({
       content: 'Edit in bulk',
       url: 'https://web-foundation-apps.myshopify.io/bulk-edit',
     });
@@ -61,7 +81,7 @@ describe('transformAction', () => {
   });
 
   it('returns an action that targets the app window when the url is a relative path', () => {
-    const relativeLinkAction = transformAction({
+    const relativeLinkAction = transformAction(shopOrigin)({
       content: 'Bulk update orders',
       url: 'orders',
     });
@@ -72,7 +92,7 @@ describe('transformAction', () => {
   it('returns an action that opens a new window or tab when the url is not targeting the shopify or the app window', () => {
     mockHostname();
 
-    const inherentExternalLinkAction = transformAction({
+    const inherentExternalLinkAction = transformAction(shopOrigin)({
       content: 'Promote',
       url: 'https://www.facebook.com/business',
     });
@@ -83,7 +103,7 @@ describe('transformAction', () => {
   });
 
   it('returns an action with an undefined target', () => {
-    const genericAction = transformAction({
+    const genericAction = transformAction(shopOrigin)({
       content: 'Promote',
       onAction: () => ({}),
     });
@@ -92,7 +112,7 @@ describe('transformAction', () => {
   });
 
   it('returns an action with a callback message generated from a url', () => {
-    const urlCallbackAction = transformAction({
+    const urlCallbackAction = transformAction(shopOrigin)({
       content: 'Bulk update orders',
       url: 'https://web-foundation-apps.myshopify.io/',
     });
@@ -101,7 +121,7 @@ describe('transformAction', () => {
   });
 
   it('returns an action with a callback message when onAction exists', () => {
-    const callbackAction = transformAction({
+    const callbackAction = transformAction(shopOrigin)({
       content: 'Bulk update orders',
       url: 'orders',
       onAction: () => ({}),

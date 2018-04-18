@@ -27,8 +27,9 @@ export default class Messenger {
     SET_WINDOW_LOCATION: 'Shopify.API.setWindowLocation',
   });
 
+  targetOrigin = '*';
+
   private name: string;
-  private targetOrigin = '*';
   private debug: boolean;
   private queue: Message[] = [];
   private callbacks: {[key: string]: Callback} = {};

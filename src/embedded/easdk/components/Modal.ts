@@ -51,9 +51,11 @@ export default class Modal {
       width,
       height,
       buttons: {
-        primary: primaryAction ? transformAction(primaryAction) : undefined,
+        primary: primaryAction
+          ? transformAction(this.messenger.targetOrigin)(primaryAction)
+          : undefined,
         secondary: secondaryActions
-          ? secondaryActions.map(transformAction)
+          ? secondaryActions.map(transformAction(this.messenger.targetOrigin))
           : undefined,
       },
     });
