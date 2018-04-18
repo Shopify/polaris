@@ -166,7 +166,6 @@ function secondaryActionFrom(action: Action) {
   if (action.url) {
     return (
       <UnstyledLink
-        testID="secondaryLink"
         className={styles.SecondaryAction}
         url={action.url}
         external={action.external}

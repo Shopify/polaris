@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {findByTestID} from '../../../../tests/utilities/enzyme';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import Banner from '..';
 import Button from '../../Button';
+import UnstyledLink from '../../UnstyledLink';
 
 describe('<Banner />', () => {
   describe('onDismiss()', () => {
@@ -19,7 +19,6 @@ describe('<Banner />', () => {
       title="Test"
       action={{
         content: 'Primary action',
-        // onAction: null,
       }}
       secondaryAction={{
         content: 'Secondary external link',
@@ -31,16 +30,13 @@ describe('<Banner />', () => {
     </Banner>,
   );
 
-  const anchorElement = findByTestID(
-    bannerWithSecondaryAction,
-    'secondaryLink',
-  ).find('a');
+  const unstyledLink = bannerWithSecondaryAction.find(UnstyledLink).find('a');
 
   it('creates an external link when external prop is true in secondaryAction', () => {
-    expect(anchorElement.prop('target')).toBe('_blank');
+    expect(unstyledLink.prop('target')).toBe('_blank');
   });
 
   it('adds the correct accessibility attributes to external link in secondaryAction', () => {
-    expect(anchorElement.prop('rel')).toBe('noopener noreferrer');
+    expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
   });
 });
