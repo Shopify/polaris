@@ -126,6 +126,10 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     }
 
     if (selectable) {
+      const label = selected
+        ? intl.translate('Polaris.ResourceList.Item.deselectItem')
+        : intl.translate('Polaris.ResourceList.Item.selectItem');
+
       handleMarkup = (
         <div
           className={styles.Handle}
@@ -136,7 +140,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
             <Checkbox
               testID="Checkbox"
               id={this.checkboxId}
-              label={intl.translate('Polaris.ResourceList.Item.selectItem')}
+              label={label}
               labelHidden
               onChange={this.handleSelection}
               checked={selected}

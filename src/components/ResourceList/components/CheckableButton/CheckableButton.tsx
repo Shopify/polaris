@@ -33,13 +33,9 @@ export default function CheckableButton({
       );
 
   return (
-    <div
-      aria-label={accessibilityLabel || label}
-      className={className}
-      onClick={onToggleAll}
-    >
+    <div className={className} onClick={onToggleAll}>
       <div className={styles.Checkbox}>
-        <Checkbox label={label} labelHidden checked={selected} />
+        <Checkbox label={accessibilityLabel} labelHidden checked={selected} />
       </div>
       <span className={styles.Label}>{label}</span>
     </div>

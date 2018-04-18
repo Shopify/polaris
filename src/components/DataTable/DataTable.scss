@@ -75,7 +75,7 @@ $breakpoint: 768px;
 }
 
 .ScrollContainer {
-  overflow-x: scroll;
+  overflow-x: auto;
   margin-left: $fixed-column-width;
 
   @include breakpoint-after($breakpoint) {
@@ -191,6 +191,6 @@ $breakpoint: 768px;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: auto;
+  top: 100%;
   border-bottom: 0;
 }

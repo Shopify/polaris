@@ -150,6 +150,50 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   @autobind
+  private get bulkActionsAccessibilityLabel() {
+    const {
+      resourceName = this.defaultResourceName,
+      selectedItems = [],
+      items,
+      polaris: {intl},
+    } = this.props;
+
+    const selectedItemsCount = selectedItems.length;
+    const totalItemsCount = items.length;
+    const allSelected = selectedItemsCount === totalItemsCount;
+
+    if (totalItemsCount === 1 && allSelected) {
+      return intl.translate(
+        'Polaris.ResourceList.a11yCheckboxDeselectAllSingle',
+        {resourceNameSingular: resourceName.singular},
+      );
+    } else if (totalItemsCount === 1) {
+      return intl.translate(
+        'Polaris.ResourceList.a11yCheckboxSelectAllSingle',
+        {
+          resourceNameSingular: resourceName.singular,
+        },
+      );
+    } else if (allSelected) {
+      return intl.translate(
+        'Polaris.ResourceList.a11yCheckboxDeselectAllMultiple',
+        {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
+    } else {
+      return intl.translate(
+        'Polaris.ResourceList.a11yCheckboxSelectAllMultiple',
+        {
+          itemsLength: items.length,
+          resourceNamePlural: resourceName.plural,
+        },
+      );
+    }
+  }
+
+  @autobind
   private get paginatedSelectAllText() {
     const {
       hasMoreItems,
@@ -265,6 +309,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles.BulkActionsWrapper}>
         <BulkActions
           label={this.bulkActionsLabel}
+          accessibilityLabel={this.bulkActionsAccessibilityLabel}
           selected={this.bulkSelectState}
           onToggleAll={this.handleToggleAll}
           selectMode={selectMode}
@@ -318,7 +363,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >
-          Select
+          {intl.translate('Polaris.ResourceList.selectButtonText')}
         </Button>
       </div>
     ) : null;
@@ -326,7 +371,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const checkableButtonMarkup = this.selectable ? (
       <div className={styles.CheckableButtonWrapper}>
         <CheckableButton
-          accessibilityLabel={this.itemCountText}
+          accessibilityLabel={this.bulkActionsAccessibilityLabel}
           label={this.itemCountText}
           onToggleAll={this.handleToggleAll}
           plain

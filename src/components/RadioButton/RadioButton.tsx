@@ -56,7 +56,7 @@ export default function RadioButton({
 
   return (
     <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>
-      <div className={styles.RadioButton}>
+      <span className={styles.RadioButton}>
         <input
           id={id}
           name={name}
@@ -70,9 +70,9 @@ export default function RadioButton({
           onBlur={onBlur}
           aria-describedby={describedBy}
         />
-        <div className={styles.Backdrop} />
-        <div className={styles.Icon} />
-      </div>
+        <span className={styles.Backdrop} />
+        <span className={styles.Icon} />
+      </span>
     </Choice>
   );
 }

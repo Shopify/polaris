@@ -8,9 +8,15 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Enforce subdued description text style in `AnnotatedSection` ([#1294](https://github.com/Shopify/polaris-react/pull/1294))
 
+
 ### Breaking changes
 
 * Moved persistActions from a prop on ResourceList to a prop on ResourceList.Item ([#1300](https://github.com/Shopify/polaris-react/pull/1300))
+
+### Bug fixes
+
+* Fixed horizontal scrollbar and footer bottom alignment on Data Table ([#1286](https://github.com/Shopify/polaris-react/pull/1286))
+
 
 ## 2.0.0-beta.17 - 2018-04-12
 
