@@ -361,7 +361,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with item shortcut actions
 
-Gives merchants easy access to popular actions from the resource’s show page. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
+Shortcut actions are intended to provide quick access to popular actions from the resource’s show page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
 
 ```jsx
 <Card>
@@ -411,7 +411,7 @@ Gives merchants easy access to popular actions from the resource’s show page. 
 
 ### Resource list with persistent item shortcut actions
 
-Gives merchants easy access to popular actions from the resource’s show page. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
+Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s show page. Persistent shortcut actions roll up into an overflow menu on small screens.
 
 ```jsx
 <Card>
@@ -461,6 +461,7 @@ Gives merchants easy access to popular actions from the resource’s show page. 
 ```
 
 ---
+
 ## Build
 
 Using a resource list in a project involves combining the following components and subcomponents:
