@@ -1,6 +1,7 @@
 ---
 name: Text container
 category: Titles and text
+releasedIn: 1.9.0
 keywords:
  - spacing
  - heading
@@ -32,8 +33,11 @@ Use this component for default vertical spacing.
 
 ```jsx
 <TextContainer>
- <Heading>Install the Shopify POS App</Heading>
- <p>Shopify POS is the easiest way to sell your products in person. Available for iPad, iPhone, and Android.</p>
+  <Heading>Install the Shopify POS App</Heading>
+  <p>
+    Shopify POS is the easiest way to sell your products in person. Available
+    for iPad, iPhone, and Android.
+  </p>
 </TextContainer>
 ```
 
@@ -43,8 +47,11 @@ Use the tight spacing option to relate content topics to each other.
 
 ```jsx
 <TextContainer spacing="tight">
- <Heading>Install the Shopify POS App</Heading>
- <p>Shopify POS is the easiest way to sell your products in person. Available for iPad, iPhone, and Android.</p>
+  <Heading>Install the Shopify POS App</Heading>
+  <p>
+    Shopify POS is the easiest way to sell your products in person. Available
+    for iPad, iPhone, and Android.
+  </p>
 </TextContainer>
 ```
 
@@ -54,8 +61,15 @@ Use the loose spacing option to separate concepts that are independent of each o
 
 ```jsx
 <TextContainer spacing="loose">
-  <p>Manage your Shopify store on-the-go with real-time notifications, access to your dashboard, and order management, all from your smartphone.</p>
-  <p>Shopify POS is the fastest and easiest way to start accepting Visa, Mastercard, American Express, and Discover right from your smartphone or tablet.</p>
+  <p>
+    Manage your Shopify store on-the-go with real-time notifications, access to
+    your dashboard, and order management, all from your smartphone.
+  </p>
+  <p>
+    Shopify POS is the fastest and easiest way to start accepting Visa,
+    Mastercard, American Express, and Discover right from your smartphone or
+    tablet.
+  </p>
 </TextContainer>
 ```
 

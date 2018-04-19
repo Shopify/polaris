@@ -1,6 +1,7 @@
 ---
 name: Skeleton body text
 category: Feedback indicators
+releasedIn: 1.7.0
 keywords:
   - SkeletonBodyText
   - skeleton
@@ -33,10 +34,12 @@ Show static content that never changes on a page and use skeleton loading for dy
 <!-- usageblock -->
 
 #### Do
+
 Use skeleton body text for dynamic content.
 ![Image showing skeleton body text for dynamic content](skeleton/do-use-skeleton-body-for-dynamic-content.png)
 
 #### Don’t
+
 Use skeleton body text for static content or use placeholder content for dynamic content.
 ![Image showing skeleton body text for static content](skeleton/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text.png)
 
