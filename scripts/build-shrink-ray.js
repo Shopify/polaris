@@ -6,8 +6,11 @@ const {execSync} = require('child_process');
 
 const repo = 'polaris-react';
 const sha = process.env.CIRCLE_SHA1; // eslint-disable-line no-process-env
-const pullRequestURL = process.env.CIRCLE_PULL_REQUEST.split('/'); // eslint-disable-line no-process-env
-const pullRequestID = pullRequestURL[pullRequestURL.length - 1];
+const pullRequestURL =
+  process.env.CIRCLE_PULL_REQUEST && process.env.CIRCLE_PULL_REQUEST.split('/'); // eslint-disable-line no-process-env
+const pullRequestID = pullRequestURL
+  ? pullRequestURL[pullRequestURL.length - 1]
+  : undefined;
 
 const postWebpackReportURL = `https://shrink-ray.shopifycloud.com/repos/${repo}/commits/${sha}/reports`;
 
@@ -18,14 +21,12 @@ process.on('unhandledRejection', (reason) => {
   throw reason;
 });
 
-if (sha && pullRequestID) {
+if (sha) {
   setupShrinkRay();
 } else {
   console.log(
-    'sha and PR ID not available, building bundle without pinging shrink-ray',
+    'sha is not available, building bundle without pinging shrink-ray',
   );
-  console.log('sha: ', sha);
-  console.log('pullRequestID: ', pullRequestID);
   buildPackages(false);
 }
 
@@ -88,7 +89,12 @@ function postReportToShrinkRay() {
   // fetch latest in BuildKite pipeline
   execSync('git fetch origin master');
 
+  const masterSha = execSync('git merge-base HEAD origin/master', {
+    encoding: 'utf8',
+  }).trim();
+
   console.log('[shrink-ray] pullRequestID: ', pullRequestID);
+  console.log('[shrink-ray] masterSha: ', masterSha);
 
   return fetch(postWebpackReportURL, {
     method: 'POST',
@@ -98,6 +104,7 @@ function postReportToShrinkRay() {
     body: JSON.stringify({
       report: readFileSync(report, 'utf8'),
       pr_id: pullRequestID, // eslint-disable-line camelcase
+      masterSha,
     }),
   });
 }

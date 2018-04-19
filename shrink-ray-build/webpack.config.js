@@ -18,7 +18,7 @@ module.exports = {
     path.join(__dirname, 'index.tsx'),
   ],
   output: {
-    filename: 'build/frig.js',
+    filename: 'build/bundle.js',
     publicPath: '/assets/',
   },
   resolve: {
