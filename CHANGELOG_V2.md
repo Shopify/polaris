@@ -11,6 +11,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 
 * Fixed horizontal scrollbar and footer bottom alignment on Data Table ([#1286](https://github.com/Shopify/polaris-react/pull/1286))
+* Fixed Sass variable interpolation on ResourceList Item ([#1306](https://github.com/Shopify/polaris-react/pull/1306)). (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/299))
 
 ## 2.0.0-beta.17 - 2018-04-12
 
