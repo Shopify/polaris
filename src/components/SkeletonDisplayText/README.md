@@ -1,6 +1,7 @@
 ---
 name: Skeleton display text
 category: Feedback indicators
+releasedIn: 1.7.0
 keywords:
   - SkeletonDisplayText
   - skeleton
@@ -32,10 +33,12 @@ Show static display text that that never changes on a page. For example, keep pa
 <!-- usageblock -->
 
 #### Do
+
 Show actual display text for static content and use skeleton display text for dynamic content.
 ![Image showing skeleton display text for dynamic content](skeleton/do-show-display-text-for-static-content.png)
 
 #### Don’t
+
 Use skeleton display text for static content or placeholder content for dynamic content.
 ![Image showing skeleton display text for static content and placeholder text for dynamic content](skeleton/dont-use-skeleton-for-static-or-placeholder-content-for-dynamic.png)
 
@@ -44,7 +47,9 @@ Use skeleton display text for static content or placeholder content for dynamic 
 <!-- usageblock -->
 
 #### Do
+
 Show skeleton display text for dynamic page titles.
+
 <div class="TypographyUsageBlockImg">![Image showing skeleton display text for dynamic page title](skeleton/do-use-skeleton-for-dynamic-page-titles.png)</div>
 
 <!-- end -->

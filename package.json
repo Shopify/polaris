@@ -41,6 +41,7 @@
     "prebuild-consumer": "npm-run-all build hide-private-readme",
     "build-consumer": "babel-node ./scripts/build-consumer",
     "postbuild-consumer": "yarn run show-private-readme",
+    "build-shrink-ray": "node ./scripts/build-shrink-ray.js",
     "precdn": "yarn run build",
     "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "cdn:deploy": "node ./scripts/deploy.js",
@@ -150,9 +151,11 @@
     "babel-runtime": "^6.23.0",
     "core-js": "^2.5.1",
     "hoist-non-react-statics": "^2.5.0",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.3.0",
-    "tslib": "^1.8.0"
+    "tslib": "^1.8.0",
+    "webpack-bundle-analyzer": "^2.11.1"
   }
 }

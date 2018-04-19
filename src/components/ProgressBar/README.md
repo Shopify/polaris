@@ -1,6 +1,7 @@
 ---
 name: Progress bar
 category: Feedback indicators
+releasedIn: 1.8.0
 keywords:
   - ProgressBar
   - progress indicator

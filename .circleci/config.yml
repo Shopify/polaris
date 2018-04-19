@@ -15,3 +15,4 @@ jobs:
          paths:
            - node_modules
       - run: yarn run check:ci
+      - run: yarn run build-shrink-ray

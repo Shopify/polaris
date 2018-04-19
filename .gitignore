@@ -17,3 +17,6 @@ node_modules
 /playground/.cache
 /playground/assets/*
 /src/styles/polaris-tokens
+/shrink-ray-build/.cache
+/shrink-ray-build/build
+
