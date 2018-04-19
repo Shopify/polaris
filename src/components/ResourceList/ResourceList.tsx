@@ -61,6 +61,11 @@ export interface Context {
   selectMode: boolean;
   selectable?: boolean;
   selectedItems?: SelectedItems;
+  persistActions?: boolean;
+  resourceName?: {
+    singular: string;
+    plural: string;
+  };
   onSelectionChange?(selected: boolean, id: string): void;
   subscribe(callback: () => void): void;
   unsubscribe(callback: () => void): void;
@@ -260,12 +265,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   getChildContext(): Context {
-    const {selectedItems} = this.props;
+    const {selectedItems, resourceName = this.defaultResourceName} = this.props;
     const {selectMode} = this.state;
     return {
       selectable: this.selectable,
       selectedItems,
       selectMode,
+      resourceName,
       onSelectionChange: this.handleSelectionChange,
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,

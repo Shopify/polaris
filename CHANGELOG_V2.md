@@ -19,6 +19,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Fixed Sass variable interpolation on ResourceList Item ([#1306](https://github.com/Shopify/polaris-react/pull/1306)). (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/299))
 
 
+### Breaking changes
+
+* Moved resourceName prop from ResourceList.FilterControl to context ([#1307](https://github.com/Shopify/polaris-react/pull/1307))
+
 ## 2.0.0-beta.17 - 2018-04-12
 
 ## 2.0.0-beta.16 - 2018-04-12
