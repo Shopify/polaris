@@ -23,8 +23,8 @@ Action lists render a list of actions or selectable options. This component is u
 
 Actions lists should:
 
-* Be used for secondary or less important information and actions since they’re hidden until the merchant exposes them by opening a popover
-* Contain actions that are related to each other
+- Be used for secondary or less important information and actions since they’re hidden until the merchant exposes them by opening a popover
+- Contain actions that are related to each other
 
 ---
 
@@ -52,13 +52,13 @@ Each item in an action list should always lead with a strong verb that encourage
 
 #### Do
 
-* Rename
-* Edit HTML
+- Rename
+- Edit HTML
 
 #### Don’t
 
-* File name changes
-* HTML editing options
+- File name changes
+- HTML editing options
 
 <!-- end -->
 
@@ -68,11 +68,11 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 #### Do
 
-* Add menu item
+- Add menu item
 
 #### Don’t
 
-* Add a menu item
+- Add a menu item
 
 <!-- end -->
 
@@ -216,9 +216,58 @@ class ActionListExample extends React.Component {
 }
 ```
 
+### Action list with a badge
+
+Use to draw the merchants attention to a new item
+
+```jsx
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  };
+
+  render() {
+    const {active} = this.state;
+
+    const activator = (
+      <Button onClick={this.togglePopover} indicator={!active}>
+        More actions
+      </Button>
+    );
+
+    return (
+      <div style={{height: '200px'}}>
+        <Popover
+          active={active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            items={[
+              {content: 'Import file', icon: 'import'},
+              {
+                content: 'Export file',
+                icon: 'export',
+                badge: {status: 'new', content: 'New'},
+              },
+            ]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
+```
+
 ---
 
 ## Related components
 
-* To combine more than one button in a single layout, [use the button group component](/components/actions/button-group)
-* To display a list of related content, [use the list component](/components/lists-and-tables/list)
+- To combine more than one button in a single layout, [use the button group component](/components/actions/button-group)
+- To display a list of related content, [use the list component](/components/lists-and-tables/list)

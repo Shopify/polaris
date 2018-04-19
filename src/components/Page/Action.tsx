@@ -18,8 +18,8 @@ export interface Props {
   onAction?: IconableAction['onAction'];
   accessibilityLabel?: IconableAction['accessibilityLabel'];
   disabled?: DisableableAction['disabled'];
-  indicator?: boolean;
-  active?: boolean;
+  showIndicator?: boolean;
+  hasIndicator?: boolean;
 }
 
 export default function Action({
@@ -31,8 +31,8 @@ export default function Action({
   disclosure,
   accessibilityLabel,
   disabled,
-  indicator,
-  active,
+  showIndicator,
+  hasIndicator,
 }: Props) {
   const iconMarkup = icon ? (
     <span className={styles.ActionIcon}>
@@ -72,11 +72,13 @@ export default function Action({
     );
   }
 
+  const indicatorMarkup = showIndicator && !hasIndicator && <Indicator />;
+
   const className = classNames(
     styles.Action,
     disabled && styles.disabled,
     icon && children == null && styles.iconOnly,
-    indicator && styles.outline,
+    showIndicator && styles['Action-outline'],
   );
 
   return (
@@ -89,7 +91,7 @@ export default function Action({
       type="button"
       disabled={disabled}
     >
-      <Indicator active={indicator && !active} />
+      {indicatorMarkup}
       {contentMarkup}
     </button>
   );

@@ -131,6 +131,8 @@ function Button({
     </span>
   ) : null;
 
+  const indicatorMarkup = indicator && <Indicator />;
+
   const content =
     iconMarkup || disclosureIconMarkup ? (
       <span className={styles.Content}>
@@ -161,7 +163,7 @@ function Button({
       disabled={isDisabled}
       aria-label={accessibilityLabel}
     >
-      <Indicator active={indicator} />
+      {indicatorMarkup}
       {content}
     </UnstyledLink>
   ) : (
@@ -180,7 +182,7 @@ function Button({
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >
-      <Indicator active={indicator} />
+      {indicatorMarkup}
       {content}
     </button>
   );

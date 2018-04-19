@@ -109,7 +109,7 @@ body {
 
 .IndividualActions {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
   > .Action,
   > .ActionGroup {
@@ -239,9 +239,15 @@ body {
   }
 }
 
-.outline {
+.Action-outline {
   @include button-base;
   @include button-outline(color('ink', 'lighter'));
+
+  &::after {
+    top: auto;
+    left: auto;
+    right: auto;
+  }
 
   &.disabled {
     @include button-outline-disabled(color('ink', 'lighter'));

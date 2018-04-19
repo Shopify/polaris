@@ -169,8 +169,8 @@ export default class Header extends React.PureComponent<Props, State> {
                   onClose={this.handleActionGroupClose.bind(this, title)}
                   activator={
                     <Action
-                      indicator={showIndicator}
-                      active={active}
+                      showIndicator={showIndicator}
+                      hasIndicator={active}
                       disclosure
                       icon={icon}
                       // eslint-disable-next-line react/jsx-no-bind
@@ -251,7 +251,7 @@ export default class Header extends React.PureComponent<Props, State> {
   }
 }
 
-function hasNewStatus(actions: ItemProps[]) {
+function hasNewStatus(actions: ItemDescriptor[]) {
   for (let i = 0; i < actions.length; i++) {
     const {badge} = actions[i];
     if (badge && badge.status === 'new') {

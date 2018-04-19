@@ -41,19 +41,25 @@ export default function Item({
   }
 
   const contentMarkup = ellipsis && content ? `${content}…` : content;
-  const contentElement = imageElement ? (
-    <div className={styles.Content}>
-      {imageElement}
-      <div className={styles.Text}>{contentMarkup}</div>
-    </div>
+
+  const badgeMarkup = badge && (
+    <span className={styles.BadgeWrapper}>
+      <Badge status={badge.status}>{badge.content}</Badge>
+    </span>
+  );
+
+  const textMarkup = imageElement ? (
+    <div className={styles.Text}>{contentMarkup}</div>
   ) : (
     contentMarkup
   );
 
-  const badgeElement = badge && (
-    <span className={styles.BadgeWrapper}>
-      <Badge status={badge.status}>{badge.content}</Badge>
-    </span>
+  const contentElement = (
+    <div className={styles.Content}>
+      {imageElement}
+      {textMarkup}
+      {badgeMarkup}
+    </div>
   );
 
   const control = url ? (
@@ -64,12 +70,10 @@ export default function Item({
       external={external}
     >
       {contentElement}
-      {badgeElement}
     </UnstyledLink>
   ) : (
     <button onClick={onAction} className={className} disabled={disabled}>
       {contentElement}
-      {badgeElement}
     </button>
   );
 
