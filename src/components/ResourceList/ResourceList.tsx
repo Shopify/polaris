@@ -61,7 +61,6 @@ export interface Context {
   selectMode: boolean;
   selectable?: boolean;
   selectedItems?: SelectedItems;
-  persistActions?: boolean;
   resourceName?: {
     singular: string;
     plural: string;
