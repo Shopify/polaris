@@ -52,7 +52,7 @@ type ChooseableComponent = ReactComponent<{
 }>;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
-const getUniqueError = createUniqueIDFactory('Error');
+const getUniqueErrorID = createUniqueIDFactory('Error');
 
 export default function ChoiceList({
   title,
@@ -113,12 +113,10 @@ export default function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <div className={styles.Error} id={getUniqueError()}>
-      {typeof error === 'string' && (
-        <div className={styles.ErrorIcon}>
-          <Icon source="alert" />
-        </div>
-      )}
+    <div className={styles.Error} id={getUniqueErrorID()}>
+      <div className={styles.ErrorIcon}>
+        <Icon source="alert" />
+      </div>
       {error}
     </div>
   );

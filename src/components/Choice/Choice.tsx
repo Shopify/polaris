@@ -41,11 +41,9 @@ export default function Choice({
 
   const errorMarkup = error && (
     <div className={styles.Error} id={errorID(id)}>
-      {typeof error === 'string' && (
-        <div className={styles.ErrorIcon}>
-          <Icon source="alert" />
-        </div>
-      )}
+      <div className={styles.ErrorIcon}>
+        <Icon source="alert" />
+      </div>
       {error}
     </div>
   );

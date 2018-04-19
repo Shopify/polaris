@@ -43,11 +43,9 @@ export default function Labelled({
 
   const errorMarkup = error && (
     <div id={errorID(id)} className={styles.Error}>
-      {typeof error === 'string' && (
-        <div className={styles.ErrorIcon}>
-          <Icon source="alert" />
-        </div>
-      )}
+      <div className={styles.ErrorIcon}>
+        <Icon source="alert" />
+      </div>
       {error}
     </div>
   );
