@@ -5,6 +5,13 @@ export {
 
 export {default as ActionList, Props as ActionListProps} from './ActionList';
 
+export {
+  default as AppProvider,
+  Props as AppProviderProps,
+  polarisAppProviderContextTypes as polarisContextTypes,
+  createPolarisContext,
+} from './AppProvider';
+
 export {default as Avatar, Props as AvatarProps} from './Avatar';
 
 export {default as Badge, Props as BadgeProps} from './Badge';
@@ -59,7 +66,6 @@ export {
   TableData,
   TableRow,
   SortDirection,
-  ColumnContentType,
 } from './DataTable';
 
 export {
@@ -142,13 +148,6 @@ export {
 } from './Popover';
 
 export {default as Portal, Props as PortalProps} from './Portal';
-
-export {
-  default as AppProvider,
-  Props as AppProviderProps,
-  polarisAppProviderContextTypes as polarisContextTypes,
-  createPolarisContext,
-} from './AppProvider';
 
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 
