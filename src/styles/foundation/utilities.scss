@@ -94,3 +94,21 @@ $base-font-size: 10px;
 
   @return $output;
 }
+
+// Merge multiple maps into one.
+// @param {Map} $map - Initial default map.
+// @param {ArgList} $maps - Other maps to merge.
+// @return {Map} The final merged map.
+@function map-extend($map, $maps...) {
+  @for $i from 1 through length($maps) {
+    @each $key, $value in nth($maps, $i) {
+      $map: map-merge($map,  ($key: $value));
+
+      @if (type-of($value) == map) and (type-of(map-get($map, $key)) == map) {
+        $value: map-extend(map-get($map, $key), $value);
+      }
+    }
+  }
+
+  @return $map;
+}

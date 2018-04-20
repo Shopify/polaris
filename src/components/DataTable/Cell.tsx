@@ -6,7 +6,7 @@ import {
   WithAppProviderProps,
 } from '../../components/AppProvider';
 import Icon, {IconSource} from '../Icon';
-import {SortDirection, ColumnContentType} from './DataTable';
+import {SortDirection} from './DataTable';
 
 import * as styles from './DataTable.scss';
 
@@ -16,7 +16,7 @@ export interface Props {
   testID?: string;
   height?: number;
   content?: React.ReactNode;
-  contentType?: ColumnContentType;
+  contentType?: string;
   fixed?: boolean;
   truncate?: boolean;
   presentational?: boolean;
@@ -64,7 +64,10 @@ function Cell({
 
   const style = height ? {height: `${height}px`} : undefined;
 
-  const headerClassName = classNames(header && styles.Heading);
+  const headerClassName = classNames(
+    header && styles.Heading,
+    header && contentType === 'text' && styles['Heading-left'],
+  );
 
   const iconClassName = classNames(sortable && styles['Heading-sortable']);
 
@@ -96,15 +99,22 @@ function Cell({
     }
   }
 
-  const columnHeadingContent = sortable ? (
-    <span className={headerClassName}>
-      <span className={iconClassName}>{sortableIconMarkup}</span>
-      <span>{sortedIconMarkup}</span>
-      {content}
-    </span>
-  ) : (
-    content
-  );
+  const sortableHeadingContent =
+    contentType === 'text' ? (
+      <span className={headerClassName}>
+        {content}
+        <span className={iconClassName}>{sortableIconMarkup}</span>
+        <span>{sortedIconMarkup}</span>
+      </span>
+    ) : (
+      <span className={headerClassName}>
+        <span className={iconClassName}>{sortableIconMarkup}</span>
+        <span>{sortedIconMarkup}</span>
+        {content}
+      </span>
+    );
+
+  const columnHeadingContent = sortable ? sortableHeadingContent : content;
 
   const sortProps = sortable
     ? {

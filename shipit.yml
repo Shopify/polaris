@@ -1,0 +1,5 @@
+ci:
+  hide:
+    - shrink-ray
+  require:
+    - ci/circleci

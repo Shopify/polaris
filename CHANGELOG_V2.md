@@ -6,6 +6,19 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-beta.18 - 2018-04-20
+
+### Breaking changes
+
+* Moved persistActions from a prop on ResourceList to a prop on ResourceList.Item
+
+### Bug fixes
+
+* Enforce subdued description text style in `AnnotatedSection`
+* Fixed horizontal scrollbar and footer bottom alignment on Data Table
+* Fixed Sass variable interpolation on ResourceList Item. (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/299))
+* Fixed sortable column heading alignment when content type is "text". (thanks [@FelixTellmann](https://github.com/FelixTellmann) for the [original issue](https://github.com/Shopify/polaris/issues/300))
+
 ## 2.0.0-beta.17 - 2018-04-12
 
 ## 2.0.0-beta.16 - 2018-04-12

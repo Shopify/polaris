@@ -33,9 +33,17 @@
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
       "emptySearchResultTitle": "No {resourceNamePlural} found",
       "emptySearchResultDescription": "Try changing the filters or search term",
+      "selectButtonText": "Select",
+      "a11yCheckboxDeselectAllSingle": "Deselect {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselect all {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Select all {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} item",
+      "ariaLivePlural": "{itemsLength} items",
 
       "Item": {
-        "selectItem": "Select Item",
+        "selectItem": "Select item",
+        "deselectItem": "Deselect item",
         "actionsDropdown": "Actions dropdown"
       },
 

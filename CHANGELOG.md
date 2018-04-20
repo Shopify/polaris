@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+* Added external link to secondary action for banner. Thank you to ([Andrew Cargill](https://github.com/cargix1)) for the issue ([#236](https://github.com/Shopify/polaris/issues/236))
+
 ## 1.14.1 - 2018-04-10
 
 ### Bug fixes

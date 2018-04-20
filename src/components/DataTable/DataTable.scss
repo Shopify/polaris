@@ -41,11 +41,6 @@ $breakpoint: 768px;
   width: calc(100% + #{$fixed-column-width});
   border-spacing: 0;
 
-  @include breakpoint-after($breakpoint) {
-    margin-left: $fixed-column-width * -2;
-    width: calc(100% + #{$fixed-column-width * 2});
-  }
-
   &::after {
     content: '';
     position: absolute;
@@ -75,12 +70,8 @@ $breakpoint: 768px;
 }
 
 .ScrollContainer {
-  overflow-x: scroll;
+  overflow-x: auto;
   margin-left: $fixed-column-width;
-
-  @include breakpoint-after($breakpoint) {
-    margin-left: $fixed-column-width * 2;
-  }
 }
 
 .TableRow {
@@ -120,11 +111,6 @@ $breakpoint: 768px;
   text-align: left;
   // stops painting on scroll
   backface-visibility: hidden;
-
-  @include breakpoint-after($breakpoint) {
-    width: $fixed-column-width * 2;
-    min-width: $fixed-column-width * 2;
-  }
 }
 
 .Cell-truncated {
@@ -136,11 +122,6 @@ $breakpoint: 768px;
 .Cell-presentational {
   min-width: $fixed-column-width;
   width: $fixed-column-width;
-
-  @include breakpoint-after($breakpoint) {
-    width: $fixed-column-width * 2;
-    min-width: $fixed-column-width * 2;
-  }
 }
 
 .Cell-header {
@@ -154,6 +135,10 @@ $breakpoint: 768px;
       justify-content: flex-end;
       position: relative;
       transition: fill duration() easing(), color duration() easing();
+    }
+
+    .Heading-left {
+      justify-content: flex-start;
     }
 
     .Heading-sortable {
@@ -191,6 +176,6 @@ $breakpoint: 768px;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: auto;
+  top: 100%;
   border-bottom: 0;
 }

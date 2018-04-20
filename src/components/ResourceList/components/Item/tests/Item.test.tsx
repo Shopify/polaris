@@ -19,7 +19,6 @@ describe('<Item />', () => {
     selectMode: false,
     selectable: false,
     selectedItems: [],
-    persistActions: false,
     onSelectionChange: noop,
     subscribe: noop,
     unsubscribe: noop,
@@ -43,11 +42,6 @@ describe('<Item />', () => {
     selectMode: true,
     selectable: true,
     onSelectionChange: jest.fn(),
-  };
-
-  const mockPersistActionsContext = {
-    ...mockDefaultContext,
-    persistActions: true,
   };
 
   const url = 'http://test-link.com';
@@ -277,10 +271,15 @@ describe('<Item />', () => {
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(true);
     });
 
-    it("should render persistent shortcut actions if 'persistActions' is true in context", () => {
+    it("should render persistent shortcut actions if 'persistActions' is true", () => {
       const wrapper = mountWithAppProvider(
-        <Item id={itemId} url={url} shortcutActions={[{content: 'action'}]} />,
-        {context: mockPersistActionsContext},
+        <Item
+          id={itemId}
+          url={url}
+          shortcutActions={[{content: 'action'}]}
+          persistActions
+        />,
+        {context: mockDefaultContext},
       );
       expect(wrapper.find(ButtonGroup).exists()).toBe(true);
     });

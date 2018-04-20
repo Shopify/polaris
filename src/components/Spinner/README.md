@@ -1,10 +1,11 @@
 ---
 name: Spinner
+category: Feedback indicators
+releasedIn: 1.7.0
 keywords:
   - spinner
   - loader
   - loading
-category: Feedback indicators
 ---
 
 # Spinner
