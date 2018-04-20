@@ -122,7 +122,7 @@ class SortableDataTableExample extends React.Component {
             ]}
             rows={rows}
             totals={['', '', '', 255, '$155,830.00']}
-            sortable={[false, true, false, false, true, false]}
+            sortable={[false, true, false, false, true]}
             defaultSortDirection="descending"
             initialSortColumnIndex={4}
             onSort={this.handleSort(rows)}
