@@ -41,7 +41,7 @@
     "prebuild-consumer": "npm-run-all build hide-private-readme",
     "build-consumer": "babel-node ./scripts/build-consumer",
     "postbuild-consumer": "yarn run show-private-readme",
-    "build-shrink-ray": "node ./scripts/build-shrink-ray.js",
+    "build-shrink-ray": "yarn copy-polaris-tokens && node ./scripts/build-shrink-ray.js",
     "precdn": "yarn run build",
     "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "cdn:deploy": "node ./scripts/deploy.js",
