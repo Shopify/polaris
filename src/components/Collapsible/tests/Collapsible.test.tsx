@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
+import {shallowWithAppProvider} from '../../../../tests/utilities';
 import Collapsible from '../Collapsible';
 
 describe('<Collapsible />', () => {
   const ariaHiddenSelector = '[aria-hidden=true]';
 
   it('indicates hidden with aria-hidden', () => {
-    const collapsible = shallow(
+    const collapsible = shallowWithAppProvider(
       <Collapsible id="test-collapsible" open={false}>
         content
       </Collapsible>,
@@ -17,7 +17,7 @@ describe('<Collapsible />', () => {
   });
 
   it('does not render aria-hidden when open', () => {
-    const collapsible = shallow(
+    const collapsible = shallowWithAppProvider(
       <Collapsible id="test-collapsible" open>
         content
       </Collapsible>,

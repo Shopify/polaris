@@ -48,7 +48,7 @@ const CONTEXT_TYPES = {
   parentCollapsibleExpanding: PropTypes.bool,
 };
 
-class Collapsible extends React.Component<CombinedProps, State> {
+export class Collapsible extends React.Component<CombinedProps, State> {
   static contextTypes = CONTEXT_TYPES;
   static childContextTypes = CONTEXT_TYPES;
 

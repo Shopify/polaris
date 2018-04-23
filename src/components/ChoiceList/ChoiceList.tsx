@@ -1,8 +1,11 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {ReactComponent} from '@shopify/react-utilities/types';
 import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
 import Icon from '../Icon';
@@ -40,21 +43,12 @@ export interface BaseProps {
 }
 
 export interface Props extends BaseProps {}
-
-type ChooseableComponent = ReactComponent<{
-  label: string;
-  name?: string;
-  value?: string;
-  disabled?: boolean;
-  checked?: boolean;
-  helpText?: React.ReactNode;
-  onChange?(checked: boolean, id: string): void;
-}>;
+export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
 const getUniqueErrorID = createUniqueIDFactory('Error');
 
-export default function ChoiceList({
+function ChoiceList({
   title,
   titleHidden,
   allowMultiple,
@@ -63,8 +57,8 @@ export default function ChoiceList({
   onChange = noop,
   error,
   name = getUniqueID(),
-}: Props) {
-  const ControlComponent: ChooseableComponent = allowMultiple
+}: CombinedProps) {
+  const ControlComponent: typeof Checkbox | typeof RadioButton = allowMultiple
     ? Checkbox
     : RadioButton;
 
@@ -146,3 +140,5 @@ function updateSelectedChoices(
 
   return selected.filter((selectedChoice) => selectedChoice !== value);
 }
+
+export default withAppProvider<Props>()(ChoiceList);

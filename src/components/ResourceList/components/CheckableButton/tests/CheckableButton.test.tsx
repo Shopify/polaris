@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+} from '../../../../../../tests/utilities';
 import CheckableButton from '../';
 import Checkbox from '../../../../Checkbox';
 
@@ -14,7 +17,9 @@ describe('<CheckableButton />', () => {
   describe('select', () => {
     it('correctly passes down to Checkbox', () => {
       const {selected} = CheckableButtonProps;
-      const element = shallow(<CheckableButton {...CheckableButtonProps} />);
+      const element = shallowWithAppProvider(
+        <CheckableButton {...CheckableButtonProps} />,
+      );
       expect(element.find(Checkbox).prop('checked')).toEqual(selected);
     });
   });
@@ -22,7 +27,9 @@ describe('<CheckableButton />', () => {
   describe('label', () => {
     it('is correctly passed down to span', () => {
       const {label} = CheckableButtonProps;
-      const element = shallow(<CheckableButton {...CheckableButtonProps} />);
+      const element = shallowWithAppProvider(
+        <CheckableButton {...CheckableButtonProps} />,
+      );
       expect(element.find('span').text()).toEqual(label);
     });
   });
@@ -30,7 +37,9 @@ describe('<CheckableButton />', () => {
   describe('accessibilityLabel', () => {
     it('sets the label on the Checkbox', () => {
       const {accessibilityLabel} = CheckableButtonProps;
-      const element = shallow(<CheckableButton {...CheckableButtonProps} />);
+      const element = shallowWithAppProvider(
+        <CheckableButton {...CheckableButtonProps} />,
+      );
       expect(
         element
           .find(Checkbox)
@@ -43,7 +52,7 @@ describe('<CheckableButton />', () => {
   describe('onToggleAll', () => {
     it('is called when the CheckableButton is clicked', () => {
       const spy = jest.fn();
-      const element = mount(
+      const element = mountWithAppProvider(
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
       element

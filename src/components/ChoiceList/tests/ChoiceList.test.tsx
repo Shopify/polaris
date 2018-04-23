@@ -1,5 +1,9 @@
 import * as React from 'react';
-import {shallow, mount, ReactWrapper} from 'enzyme';
+import {ReactWrapper} from 'enzyme';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+} from '../../../../tests/utilities';
 
 import ChoiceList from '..';
 import RadioButton from '../../RadioButton';
@@ -22,13 +26,15 @@ describe('<ChoiceList />', () => {
   });
 
   it('renders a fieldset', () => {
-    const element = shallow(<ChoiceList selected={[]} choices={choices} />);
+    const element = shallowWithAppProvider(
+      <ChoiceList selected={[]} choices={choices} />,
+    );
     expect(element.find('fieldset').exists()).toBe(true);
   });
 
   describe('title', () => {
     it('renders a legend for the fieldset', () => {
-      const element = shallow(
+      const element = shallowWithAppProvider(
         <ChoiceList title="My title" selected={[]} choices={choices} />,
       );
       expect(element.find('legend').text()).toBe('My title');
@@ -43,7 +49,7 @@ describe('<ChoiceList />', () => {
         {...choices[2], helpText: 'Some help text'},
       ];
 
-      const choiceElements = shallow(
+      const choiceElements = shallowWithAppProvider(
         <ChoiceList selected={[]} choices={choices} />,
       ).find(RadioButton);
 
@@ -68,7 +74,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallow(
+        const choiceElements = shallowWithAppProvider(
           <ChoiceList selected={[]} choices={choices} />,
         );
 
@@ -94,7 +100,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallow(
+        const choiceElements = shallowWithAppProvider(
           <ChoiceList selected={selected} choices={choices} />,
         );
 
@@ -112,7 +118,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallow(
+        const choiceElements = shallowWithAppProvider(
           <ChoiceList selected={[]} choices={choices} />,
         );
 
@@ -134,7 +140,7 @@ describe('<ChoiceList />', () => {
           },
         ] as any;
 
-        const choiceElements = shallow(
+        const choiceElements = shallowWithAppProvider(
           <ChoiceList selected={[]} choices={choices} />,
         );
 
@@ -147,7 +153,7 @@ describe('<ChoiceList />', () => {
     it('sets the appropriate choices to be selected', () => {
       const selectedIndexes = [0, 2];
       const selected = selectedIndexes.map((index) => choices[index].value);
-      const choiceElements = shallow(
+      const choiceElements = shallowWithAppProvider(
         <ChoiceList selected={selected} choices={choices} />,
       ).find(RadioButton);
 
@@ -165,7 +171,7 @@ describe('<ChoiceList />', () => {
       const spy = jest.fn((newSelected: string[]) => {
         selected = newSelected;
       });
-      const choiceList = mount(
+      const choiceList = mountWithAppProvider(
         <ChoiceList
           name="MyChoiceList"
           allowMultiple
@@ -208,7 +214,7 @@ describe('<ChoiceList />', () => {
 
   describe('name', () => {
     it('provides a unique name when none is provided', () => {
-      const choiceElements = shallow(
+      const choiceElements = shallowWithAppProvider(
         <ChoiceList selected={[]} choices={choices} />,
       ).find(RadioButton);
       let name: string;
@@ -227,7 +233,7 @@ describe('<ChoiceList />', () => {
 
     it('uses the same name for every choice', () => {
       const name = 'MyChoiceList';
-      const choiceElements = shallow(
+      const choiceElements = shallowWithAppProvider(
         <ChoiceList name={name} selected={[]} choices={choices} />,
       ).find(RadioButton);
       choiceElements.forEach((choiceElement) => {
@@ -237,7 +243,7 @@ describe('<ChoiceList />', () => {
 
     it('postpends [] when multiple options are allowed', () => {
       const name = 'MyChoiceList';
-      const choiceElements = shallow(
+      const choiceElements = shallowWithAppProvider(
         <ChoiceList
           allowMultiple
           name={name}
@@ -254,11 +260,13 @@ describe('<ChoiceList />', () => {
 
   describe('allowMultiple', () => {
     it('renders a radio button for each option when allowMultiple is not true', () => {
-      let element = shallow(<ChoiceList selected={[]} choices={choices} />);
+      let element = shallowWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} />,
+      );
       expect(element.find(RadioButton).length).toBe(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
 
-      element = shallow(
+      element = shallowWithAppProvider(
         <ChoiceList selected={[]} choices={choices} allowMultiple={false} />,
       );
       expect(element.find(RadioButton).length).toBe(choices.length);
@@ -266,7 +274,7 @@ describe('<ChoiceList />', () => {
     });
 
     it('renders a checkbox each option when allowMultiple is true', () => {
-      const element = shallow(
+      const element = shallowWithAppProvider(
         <ChoiceList allowMultiple selected={[]} choices={choices} />,
       );
       expect(element.find(RadioButton).exists()).toBe(false);
