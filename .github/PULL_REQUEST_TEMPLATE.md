@@ -5,7 +5,6 @@
   OR: if a GitHub issue exists, link to it below.
 -->
 
-
 ### WHAT is this pull request doing?
 
 <!--
@@ -13,9 +12,7 @@
   Before / after screenshots appreciated for UI changes.
 -->
 
-
-<!-- ℹ️ Delete the following for small / trivial changes -->
----
+## <!-- ℹ️ Delete the following for small / trivial changes -->
 
 ### How to 🎩
 
@@ -31,31 +28,31 @@
 <summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
 
 ```jsx
-// tslint:disable
+/* eslint-disable */
 
 import * as React from 'react';
-import {Page} from '@shopify/polaris';
+import {Page, AppProvider} from '@shopify/polaris';
 
-interface State {
-
-}
+interface State {}
 
 export default class Playground extends React.Component<never, State> {
   render() {
     return (
-      <Page title="Playground">
-      </Page>
+      <AppProvider>
+        <Page title="Playground" />
+      </AppProvider>
     );
   }
 }
 
-// tslint:enable
+/* eslint-enable */
 ```
+
 </details>
 
 ### 🎩 checklist
 
-- [ ] Tested on mobile
-- [ ] Tested on multiple browsers
-- [ ] Tested for [accessibility](https://vault.shopify.com/Accessibility#implementation-best-practices)
-- [ ] Updated [CHANGELOG.md](https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md)
+* [ ] Tested on mobile
+* [ ] Tested on multiple browsers
+* [ ] Tested for [accessibility](https://vault.shopify.com/Accessibility#implementation-best-practices)
+* [ ] Updated [CHANGELOG.md](https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md)
