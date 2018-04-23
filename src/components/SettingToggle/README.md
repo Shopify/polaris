@@ -17,34 +17,38 @@ keywords:
 ---
 
 # Setting toggle
+
 Use to give the merchant control over a feature or option that can be turned
 on or off.
 
 ---
 
 ## Best Practices
+
 Settings toggles should:
 
 * Include different body content for the enabled and disabled states
 * Clearly indicate whether the setting is enabled or disabled and explain the
-implications of the state of the setting to merchants (e.g. “Automatic messages
-are disabled. Your customers won’t receive automatic shipping updates.”)
+  implications of the state of the setting to merchants (e.g. “Automatic messages
+  are disabled. Your customers won’t receive automatic shipping updates.”)
 * Clearly state when a setting or feature is not available and why. Provide
-actionable steps for merchants to unlock the functionality.
+  actionable steps for merchants to unlock the functionality.
 
 ---
 
 ## Content guidelines
 
 ### Toggle description
+
 Toggle descriptions should:
 
 * Clearly indicate whether the setting is enabled or disabled
 * Explain the implications of the state of the setting to merchants
-(e.g. “Automatic messages are disabled. Your customers won’t receive automatic
-shipping updates.”)
+  (e.g. “Automatic messages are disabled. Your customers won’t receive automatic
+  shipping updates.”)
 
 ### Primary button
+
 The primary buttons for the setting toggle should always say either “Enable” or
 “Disable” depending on whether the setting can be turned on or off.
 
@@ -53,13 +57,17 @@ allow merchants to turn it off. If the setting toggle is off, the button should
 say “Enable” to allow merchants to turn it on.
 
 <!-- usagelist -->
+
 #### Do
-- Enable
-- Disable
+
+* Enable
+* Disable
 
 #### Don’t
-- Turn on
-- Turn off
+
+* Turn on
+* Turn off
+
 <!-- end -->
 
 ## Examples
@@ -69,13 +77,35 @@ say “Enable” to allow merchants to turn it on.
 Use on settings pages to allow merchants to toggle a setting that has an enabled or a disabled state.
 
 ```jsx
-<SettingToggle
-  action={{
-    content: 'Enable',
-  }}
->
-  This setting is <TextStyle variation="strong">disabled</TextStyle>.
-</SettingToggle>
+class SettingToggleExample extends React.Component {
+  state = {
+    enabled: false,
+  };
+
+  render() {
+    const {enabled} = this.state;
+    const contentStatus = enabled ? 'Disable' : 'Enable';
+    const textStatus = enabled ? 'enabled' : 'disabled';
+
+    return (
+      <SettingToggle
+        action={{
+          content: contentStatus,
+          onAction: this.handleChange,
+        }}
+        enabled={enabled}
+      >
+        This setting is <TextStyle variation="strong">{textStatus}</TextStyle>.
+      </SettingToggle>
+    );
+  }
+
+  handleChange = () => {
+    this.setState(({enabled}) => {
+      return {enabled: !enabled};
+    });
+  };
+}
 ```
 
 ---
