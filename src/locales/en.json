@@ -23,6 +23,14 @@
       "undo": "Undo"
     },
 
+    "Collapsible": {
+      "deprecationMessage": {
+        "group": "Polaris",
+        "info": "You are currently using version {pkgVersion}.",
+        "warn": "[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward."
+      }
+    },
+
     "DropZone": {
       "overlayTextFile": "Drop file to upload",
       "overlayTextImage": "Drop image to upload",
@@ -68,7 +76,8 @@
 
       "BulkActions": {
         "actionsActivatorLabel": "Actions",
-        "moreActionsActivatorLabel": "More actions"
+        "moreActionsActivatorLabel": "More actions",
+        "warningMessage": "To provide a better user experience. There should only be a maximum of {maxPromotedActions} promoted actions."
       },
 
       "FilterCreator": {
@@ -85,6 +94,10 @@
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Select a filter\u2026"
       }
+    },
+
+    "Spinner": {
+      "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
     },
 
     "Tag": {

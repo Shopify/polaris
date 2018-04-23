@@ -7,6 +7,10 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import pkg from '../../../package.json';
 
@@ -20,6 +24,8 @@ export interface Props {
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
+
+export type CombinedProps = Props & WithAppProviderProps;
 
 export type AnimationState =
   | 'idle'
@@ -42,7 +48,7 @@ const CONTEXT_TYPES = {
   parentCollapsibleExpanding: PropTypes.bool,
 };
 
-export default class Collapsible extends React.Component<Props, State> {
+class Collapsible extends React.Component<CombinedProps, State> {
   static contextTypes = CONTEXT_TYPES;
   static childContextTypes = CONTEXT_TYPES;
 
@@ -126,7 +132,7 @@ export default class Collapsible extends React.Component<Props, State> {
   }
 
   render() {
-    const {id, open, children} = this.props;
+    const {id, open, children, polaris: {intl}} = this.props;
     const {animationState, height} = this.state;
 
     const animating = animationState !== 'idle';
@@ -143,10 +149,16 @@ export default class Collapsible extends React.Component<Props, State> {
     /* TODO before v2 release: remove this conditional and line 9 */
     if (!id && pkg.version[0] === '1') {
       /* eslint-disable no-console */
-      console.group('Polaris');
-      console.info(`You are currently using version ${pkg.version}.`);
+      console.group(
+        intl.translate('Polaris.Collapsible.deprecationMessage.group'),
+      );
+      console.info(
+        intl.translate('Polaris.Collapsible.deprecationMessage.info', {
+          pkgVersion: pkg.version,
+        }),
+      );
       console.warn(
-        '[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward.',
+        intl.translate('Polaris.Collapsible.deprecationMessage.warn'),
       );
       console.groupEnd();
       /* eslint-enable no-console */
@@ -199,3 +211,5 @@ function collapsibleHeight(
 
   return `${height || 0}px`;
 }
+
+export default withAppProvider<Props>()(Collapsible);
