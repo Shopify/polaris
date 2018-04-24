@@ -12,10 +12,6 @@ $breakpoint: 768px;
 
     &::after {
       display: block;
-
-      @include breakpoint-after($breakpoint) {
-        left: $fixed-column-width * 2;
-      }
     }
   }
 
