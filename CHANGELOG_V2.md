@@ -6,6 +6,14 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Enhancements
+
+* Added error prop to ChoiceList([#1292](https://github.com/Shopify/polaris-react/pull/1292))
+
+### Breaking changes
+
+* TextField, Select and Checkbox now accept the types string or react element for the error prop([#1292](https://github.com/Shopify/polaris-react/pull/1292))
+
 ## 2.0.0-beta.18 - 2018-04-20
 
 ### Breaking changes

@@ -16,6 +16,14 @@ describe('<Labelled />', () => {
     expect(label.prop('children')).toBe('Label');
   });
 
+  it('renders error markup when provided with a value', () => {
+    const label = shallow(
+      <Labelled id="MyLabelled" label="Label" error="Error message" />,
+    );
+
+    expect(label.find('#MyLabelledError').text()).toContain('Error message');
+  });
+
   it('renders the content as a child outside of the label', () => {
     function MyComponent() {
       return <div />;

@@ -90,7 +90,9 @@ describe('<Checkbox />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const checkbox = shallow(<Checkbox error label="Checkbox" />);
+      const checkbox = shallow(
+        <Checkbox error={<span>Error</span>} label="Checkbox" />,
+      );
       expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
 
       checkbox.setProps({error: 'Some error'});

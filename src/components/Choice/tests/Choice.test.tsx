@@ -11,6 +11,14 @@ describe('<Choice />', () => {
     expect(label.text()).toBe('Label');
   });
 
+  it('renders error markup when provided with a value', () => {
+    const element = shallow(
+      <Choice id="MyChoice" label="Label" error="Error message" />,
+    );
+
+    expect(element.find('#MyChoiceError').text()).toContain('Error message');
+  });
+
   // We want the entire choice to be clickable, including the space
   // between the choice and the visual appearance of the label.
   it('renders the content as a child of the label', () => {

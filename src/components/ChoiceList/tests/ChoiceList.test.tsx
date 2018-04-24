@@ -273,4 +273,14 @@ describe('<ChoiceList />', () => {
       expect(element.find(Checkbox).length).toBe(choices.length);
     });
   });
+
+  describe('error', () => {
+    it('renders error markup when provided a value', () => {
+      const element = shallow(
+        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+      );
+
+      expect(element.text()).toContain('Error message');
+    });
+  });
 });
