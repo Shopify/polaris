@@ -10,10 +10,6 @@ import {AppliedFilter, Filter, FilterType} from './types';
 import * as styles from './FilterControl.scss';
 
 export interface Props {
-  resourceName: {
-    singular: string;
-    plural: string;
-  };
   searchValue?: string;
   appliedFilters?: AppliedFilter[];
   additionalAction?: ComplexAction;
@@ -30,10 +26,9 @@ export class FilterControl extends React.Component<CombinedProps> {
   static contextTypes = contextTypes;
 
   render() {
-    const {selectMode} = this.context;
+    const {selectMode, resourceName} = this.context;
 
     const {
-      resourceName,
       searchValue,
       appliedFilters = [],
       additionalAction,

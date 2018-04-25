@@ -9,11 +9,15 @@ import {TextField, Tag, Button} from '../../../../';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {
-    resourceName: {
-      singular: 'Item',
-      plural: 'Items',
-    },
     onSearchChange: noop,
+  };
+
+  const mockDefaultContext = {
+    resourceName: {
+      singlar: 'item',
+      plural: 'items,',
+    },
+    selectable: false,
   };
 
   const mockFilters: Filter[] = [
@@ -58,6 +62,9 @@ describe('<FilterControl />', () => {
     it('renders with TextField by default', () => {
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const searchField = wrapper.find(TextField);
@@ -68,6 +75,9 @@ describe('<FilterControl />', () => {
       const searchValue = 'search value';
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} searchValue={searchValue} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const searchField = wrapper.find(TextField);
@@ -81,6 +91,9 @@ describe('<FilterControl />', () => {
       const onSearchChange = jest.fn();
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} onSearchChange={onSearchChange} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       trigger(wrapper.find(TextField), 'onChange', newSearchValue);
@@ -93,6 +106,9 @@ describe('<FilterControl />', () => {
     it('renders no <FilterCreator /> if there are no filters', () => {
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const searchField = wrapper.find(TextField);
@@ -102,6 +118,9 @@ describe('<FilterControl />', () => {
     it('renders <FilterCreator /> if there is filters', () => {
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} filters={mockFilters} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       expect(wrapper.find(FilterCreator).exists()).toBe(true);
@@ -110,6 +129,9 @@ describe('<FilterControl />', () => {
     it('renders <FilterCreator /> with filters', () => {
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} filters={mockFilters} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       expect(wrapper.find(FilterCreator).prop('filters')).toMatchObject(
@@ -133,6 +155,9 @@ describe('<FilterControl />', () => {
           appliedFilters={mockAppliedFilters}
           onFiltersChange={onFiltersChange}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
@@ -153,6 +178,9 @@ describe('<FilterControl />', () => {
           appliedFilters={mockAppliedFilters}
           onFiltersChange={onFiltersChange}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
@@ -168,6 +196,9 @@ describe('<FilterControl />', () => {
           {...mockDefaultProps}
           appliedFilters={mockAppliedFilters}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const tags = wrapper.find(Tag);
@@ -182,6 +213,9 @@ describe('<FilterControl />', () => {
           appliedFilters={mockAppliedFilters}
           onFiltersChange={onFiltersChange}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const tags = wrapper.find(Tag);
@@ -216,6 +250,9 @@ describe('<FilterControl />', () => {
           filters={[filter]}
           appliedFilters={[appliedFilters]}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -243,6 +280,9 @@ describe('<FilterControl />', () => {
           filters={[filter]}
           appliedFilters={[appliedFilters]}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -275,6 +315,9 @@ describe('<FilterControl />', () => {
           filters={[filter]}
           appliedFilters={[appliedFilters]}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -302,6 +345,9 @@ describe('<FilterControl />', () => {
           filters={[filter]}
           appliedFilters={[appliedFilters]}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -328,6 +374,9 @@ describe('<FilterControl />', () => {
           filters={[filter]}
           appliedFilters={[appliedFilters]}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -348,6 +397,9 @@ describe('<FilterControl />', () => {
           filters={[]}
           appliedFilters={[appliedFilters]}
         />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -359,6 +411,9 @@ describe('<FilterControl />', () => {
     it('renders no connectedRight prop on TextField if there is no additionalAction', () => {
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       const searchField = wrapper.find(TextField);
@@ -372,6 +427,9 @@ describe('<FilterControl />', () => {
       };
       const wrapper = mountWithAppProvider(
         <FilterControl {...mockDefaultProps} additionalAction={action} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       expect(wrapper.find(Button).exists()).toBe(true);

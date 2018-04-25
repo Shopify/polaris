@@ -332,7 +332,6 @@ class ResourceListExample extends React.Component {
 
     const filterControl = (
       <ResourceList.FilterControl
-        resourceName={resourceName}
         filters={filters}
         appliedFilters={this.state.appliedFilters}
         onFiltersChange={this.handleFiltersChange}
@@ -834,7 +833,6 @@ Filter control showing a state with applied filters and an additional action (op
   }}
   filterControl={
     <ResourceList.FilterControl
-      resourceName={{singular: 'customer', plural: 'customers'}}
       filters={[
         {
           key: 'orderCountFilter',
@@ -888,16 +886,15 @@ Filter control showing a state with applied filters and an additional action (op
 
 ### Filter control properties
 
-| Prop            | Type                                            | Description                                         |
-| --------------- | ----------------------------------------------- | --------------------------------------------------- |
-| resourceName\*  | {singular: string, plural: string}              | Name of the resource, such as customers or products |
-| searchValue     | string                                          | Currently entered text in the search term field     |
-| appliedFilters  | AppliedFilter[]                                 | Collection of currently applied filters             |
-| focused         | boolean                                         | Whether the search term field is focused            |
-| filters         | Filter[]                                        | Available filters                                   |
-| onSearchBlur    | function(): void                                | Callback when the search term field is blurred      |
-| onSearchChange  | function(searchvalue: string, id: string): void | Callback when the search term field is changed      |
-| onFiltersChange | function(appliedFilters: AppliedFilter[]): void | Callback when the applied filters are changed       |
+| Prop            | Type                                            | Description                                     |
+| --------------- | ----------------------------------------------- | ----------------------------------------------- |
+| searchValue     | string                                          | Currently entered text in the search term field |
+| appliedFilters  | AppliedFilter[]                                 | Collection of currently applied filters         |
+| focused         | boolean                                         | Whether the search term field is focused        |
+| filters         | Filter[]                                        | Available filters                               |
+| onSearchBlur    | function(): void                                | Callback when the search term field is blurred  |
+| onSearchChange  | function(searchvalue: string, id: string): void | Callback when the search term field is changed  |
+| onFiltersChange | function(appliedFilters: AppliedFilter[]): void | Callback when the applied filters are changed   |
 
 <a name="subcomponent-filter-best-practices"></a>
 
@@ -2374,7 +2371,6 @@ Resource list doesn’t accept these available filters directly. Instead, it del
         onSortChange={this.handleSortChange}
         filterControl={
           <ResourceList.FilterControl
-            resourceName={resourceName}
             filters={availableFilters}
           />
         }
@@ -2421,7 +2417,6 @@ class App extends Component {
         onSortChange={this.handleSortChange}
         filterControl={
           <ResourceList.FilterControl
-            resourceName={resourceName}
             filters={availableFilters}
             appliedFilters={appliedFilters}
             onFiltersChange={this.handleFiltersChange}
@@ -2824,7 +2819,6 @@ class App extends Component {
             onSortChange={this.handleSortChange}
             filterControl={
               <ResourceList.FilterControl
-                resourceName={resourceName}
                 filters={availableFilters}
                 appliedFilters={appliedFilters}
                 onFiltersChange={this.handleFiltersChange}
