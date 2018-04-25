@@ -284,7 +284,7 @@ describe('<ChoiceList />', () => {
 
   describe('error', () => {
     it('renders error markup when provided a value', () => {
-      const element = shallow(
+      const element = shallowWithAppProvider(
         <ChoiceList selected={[]} choices={choices} error="Error message" />,
       );
 
