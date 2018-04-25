@@ -8,6 +8,7 @@ $resource-list-variables: (
   header-content-min-height: control-height(),
   content-wrapper-stacking-order: 1,
   bulk-actions-wrapper-stacking-order: 2,
+  header-outer-wrapper-stacking-order: 1,
 );
 
 @function resource-list($variable) {

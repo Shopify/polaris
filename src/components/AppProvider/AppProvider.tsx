@@ -5,6 +5,7 @@ import {LinkLikeComponent} from '../UnstyledLink';
 
 import Intl from './Intl';
 import Link from './Link';
+import StickyManager from './StickyManager';
 import {createPolarisContext} from './utils';
 import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
 
@@ -21,21 +22,33 @@ export interface Props {
   forceRedirect?: boolean;
   /** Prints logs of each message passed through the EASDK */
   debug?: boolean;
+  /** A class used to manage Sticky components elements in a container */
+  stickyManager?: StickyManager;
 }
 
 export interface Context {
-  polaris: {intl: Intl; link: Link};
+  polaris: {intl: Intl; link: Link; stickyManager: StickyManager};
   easdk?: EASDK;
 }
 
 export default class AppProvider extends React.Component<Props> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
+  private stickyManager: StickyManager;
 
   constructor(props: Props) {
     super(props);
+    this.stickyManager = new StickyManager();
+    this.polarisContext = createPolarisContext({
+      ...props,
+      stickyManager: this.stickyManager,
+    });
+  }
 
-    this.polarisContext = createPolarisContext({...props});
+  componentDidMount() {
+    if (document != null) {
+      this.stickyManager.setContainer(document);
+    }
   }
 
   componentWillReceiveProps({
@@ -54,6 +67,7 @@ export default class AppProvider extends React.Component<Props> {
       forceRedirect !== this.props.forceRedirect ||
       debug !== this.props.debug
     ) {
+      const stickyManager = this.stickyManager;
       this.polarisContext = createPolarisContext({
         i18n,
         linkComponent,
@@ -61,6 +75,7 @@ export default class AppProvider extends React.Component<Props> {
         shopOrigin,
         forceRedirect,
         debug,
+        stickyManager,
       });
     }
   }

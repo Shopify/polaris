@@ -3,6 +3,7 @@ import TestUtils from 'react-dom/test-utils';
 
 import {createPolarisContext} from '../utils';
 import {polarisAppProviderContextTypes} from '../types';
+import StickyManager from '../StickyManager';
 
 import AppProvider from '../AppProvider';
 
@@ -18,9 +19,11 @@ describe('<AppProvider />', () => {
     const CustomLinkComponent = () => {
       return <a href="test">Custom Link Component</a>;
     };
+    const stickyManager = new StickyManager(document);
     const context = createPolarisContext({
       i18n,
       linkComponent: CustomLinkComponent,
+      stickyManager,
     });
 
     // eslint-disable-next-line react/prefer-stateless-function
@@ -43,6 +46,7 @@ describe('<AppProvider />', () => {
       Child,
     );
 
-    expect(child.context).toEqual(context);
+    // https://github.com/facebook/jest/issues/1772
+    expect(JSON.stringify(child.context)).toBe(JSON.stringify(context));
   });
 });
