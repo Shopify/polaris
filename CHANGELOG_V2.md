@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 
 * Added error prop to ChoiceList([#1292](https://github.com/Shopify/polaris-react/pull/1292))
+* Added 'Sticky' Bulk Actions to Resource List([#1119](https://github.com/Shopify/polaris-react/pull/1119))
 
 ### Breaking changes
 
