@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import Image from '../Image';
 
@@ -31,14 +35,17 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-export default function Avatar({
+export type CombinedProps = Props & WithAppProviderProps;
+
+function Avatar({
   name,
   source,
   initials,
   customer,
   size = 'medium',
   accessibilityLabel,
-}: Props) {
+  polaris: {intl},
+}: CombinedProps) {
   const nameString = name || initials;
 
   let finalSource: string | undefined;
@@ -49,9 +56,12 @@ export default function Avatar({
   } else if (name) {
     label = name;
   } else if (initials) {
-    label = `Avatar with initials ${initials.split('').join(' ')}`;
+    const splitInitials = initials.split('').join(' ');
+    label = intl.translate('Polaris.Avatar.labelWithInitials', {
+      initials: splitInitials,
+    });
   } else {
-    label = 'Avatar';
+    label = intl.translate('Polaris.Avatar.label');
   }
 
   if (source) {
@@ -115,3 +125,5 @@ function customerPlaceholder(name?: string) {
     ? AVATAR_IMAGES[name.charCodeAt(0) % AVATAR_IMAGES.length]
     : AVATAR_IMAGES[0];
 }
+
+export default withAppProvider<Props>()(Avatar);

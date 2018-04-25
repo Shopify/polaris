@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Checkbox} from '../../../';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../components/AppProvider';
 
 import * as styles from './CheckableButton.scss';
 
@@ -13,8 +17,9 @@ export interface Props {
   measuring?: boolean;
   onToggleAll?(): void;
 }
+export type CombinedProps = Props & WithAppProviderProps;
 
-export default function CheckableButton({
+function CheckableButton({
   accessibilityLabel,
   label = '',
   onToggleAll,
@@ -22,7 +27,7 @@ export default function CheckableButton({
   selectMode,
   plain,
   measuring,
-}: Props) {
+}: CombinedProps) {
   const className = plain
     ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
     : classNames(
@@ -41,3 +46,5 @@ export default function CheckableButton({
     </div>
   );
 }
+
+export default withAppProvider<Props>()(CheckableButton);

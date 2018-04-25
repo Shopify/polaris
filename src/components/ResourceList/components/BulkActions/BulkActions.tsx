@@ -160,7 +160,9 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
       // eslint-disable-next-line no-console
       console.warn(
-        `To provide a better user experience. There should only be a maximum of ${MAX_PROMOTED_ACTIONS} promoted actions.`,
+        intl.translate('Polaris.ResourceList.BulkActions.warningMessage', {
+          maxPromotedActions: MAX_PROMOTED_ACTIONS,
+        }),
       );
     }
 

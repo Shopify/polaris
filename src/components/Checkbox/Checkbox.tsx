@@ -2,6 +2,10 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Choice, {errorID, helpTextID} from '../Choice';
 import Icon from '../Icon';
 import {Error} from '../../types';
@@ -36,10 +40,11 @@ export interface BaseProps {
 }
 
 export interface Props extends BaseProps {}
+export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
 
-export default function Checkbox({
+function Checkbox({
   id = getUniqueID(),
   label,
   labelHidden,
@@ -52,7 +57,7 @@ export default function Checkbox({
   onBlur,
   name,
   value,
-}: Props) {
+}: CombinedProps) {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (onChange == null) {
       return;
@@ -123,3 +128,5 @@ export default function Checkbox({
     /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
   );
 }
+
+export default withAppProvider<Props>()(Checkbox);

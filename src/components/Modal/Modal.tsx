@@ -7,6 +7,10 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {ComplexAction} from '../../types';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {Scrollable, Spinner, Portal} from '../../components';
 import memoizedBind from '../../utilities/memoized-bind';
 import Dialog from './components/Dialog';
@@ -51,6 +55,7 @@ export interface Props extends FooterProps {
   /** Callback when modal transition animation has ended (Modal use only) */
   onTransitionEnd?(): void;
 }
+export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   iframeHeight: number;
@@ -58,7 +63,7 @@ export interface State {
 
 const getUniqueID = createUniqueIDFactory('modal-header');
 
-export default class Modal extends React.Component<Props, State> {
+export class Modal extends React.Component<CombinedProps, State> {
   static contextTypes = {easdk: PropTypes.object};
   static Dialog = Dialog;
   static Section = Section;
@@ -329,3 +334,5 @@ function handleActionWanrings(
     );
   }, []);
 }
+
+export default withAppProvider<Props>()(Modal);
