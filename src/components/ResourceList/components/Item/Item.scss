@@ -12,8 +12,10 @@
   &:hover {
     @include state(hover);
 
-    .Actions {
-      display: flex;
+    &:not(.Item-persistActions){
+      .Actions {
+        display: flex;
+      }
     }
   }
 
@@ -121,50 +123,6 @@
   }
 }
 
-
-// Item media
-// Had min-height style below instead of height. Need height for IE11 vertical centering
-// to work with display: flex. Reference: http://stackoverflow.com/questions/19371626/flexbox-not-centering-vertically-in-ie
-.Item-mediaAvatar {
-  &.Item-sizeSmall {
-    .Actions {
-      height: resource-list-item(avatar-small-size);
-    }
-  }
-
-  &.Item-sizeMedium {
-    .Actions {
-      height: resource-list-item(avatar-medium-size);
-    }
-  }
-
-  &.Item-sizeLarge {
-    .Actions {
-      height: resource-list-item(avatar-large-size);
-    }
-  }
-}
-
-.Item-mediaThumbnail {
-  &.Item-sizeSmall {
-    .Actions {
-      height: resource-list-item(thumbnail-small-size);
-    }
-  }
-
-  &.Item-sizeMedium {
-    .Actions {
-      height: resource-list-item(thumbnail-medium-size);
-    }
-  }
-
-  &.Item-sizeLarge {
-    .Actions {
-      height: resource-list-item(thumbnail-large-size);
-    }
-  }
-}
-
 .Media {
   flex: 0 0 auto;
   margin-right: spacing(loose);
@@ -182,11 +140,15 @@
 // Item actions
 .Actions {
   position: absolute;
+  top: 0;
   right: resource-list-item(padding);
   display: none;
   pointer-events: initial;
+  height: 100%;
+  max-height: resource-list-item(actions-height);
+
   .Item-focused & {
-      display: flex;
+    display: flex;
   }
 }
 
@@ -195,6 +157,7 @@
     display: flex;
     flex: 0 0 auto;
     align-items: center;
+    margin-top: 0;
     margin-left: spacing();
     pointer-events: initial;
     position: relative;
@@ -209,8 +172,19 @@
 .Disclosure {
   display: none;
   pointer-events: initial;
+  width: resource-list-item(disclosure-width);
+  min-height: resource-list-item(min-height);
+  position: relative;
+  top: -1 * resource-list-item(padding);
+  right: -1 * spacing();
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    right: -1 * spacing(loose);
+  }
 
   @include page-content-when-partially-condensed {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

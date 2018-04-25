@@ -14,6 +14,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Added error prop to ChoiceList([#1292](https://github.com/Shopify/polaris-react/pull/1292))
 * Added 'Sticky' Bulk Actions to Resource List([#1119](https://github.com/Shopify/polaris-react/pull/1119))
+* Fixed alignment on ResourceList Actions ([#1327](https://github.com/Shopify/polaris-react/pull/1327)) (thanks to [@mbaumbach](https://github.com/mbaumbach) for the [original issue](https://github.com/Shopify/polaris/issues/302))
 
 ### Breaking changes
 

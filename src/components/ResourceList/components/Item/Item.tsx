@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
@@ -167,8 +167,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       selectMode && styles['Item-selectMode'],
       persistActions && styles['Item-persistActions'],
       focusedInner && styles['Item-focusedInner'],
-      mediaType && styles[variationName('Item-media', mediaType)],
-      mediaSize && styles[variationName('Item-size', mediaSize)],
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -368,7 +366,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleActionsClick() {
-    this.setState({actionsMenuVisible: true});
+    this.setState(({actionsMenuVisible}) => ({
+      actionsMenuVisible: !actionsMenuVisible,
+    }));
   }
 
   @autobind
