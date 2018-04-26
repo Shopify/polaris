@@ -1,13 +1,13 @@
 import {LinkLikeComponent} from '../UnstyledLink';
 
 export default class Link {
-  constructor(private link?: LinkLikeComponent) {}
+  constructor(private linkComponent?: LinkLikeComponent) {}
 
-  set linkComponent(link: LinkLikeComponent) {
-    this.link = link;
+  setLinkComponent(link: LinkLikeComponent) {
+    this.linkComponent = link;
   }
 
-  get linkComponent(): LinkLikeComponent {
-    return this.link;
+  getLinkComponent(): LinkLikeComponent {
+    return this.linkComponent;
   }
 }

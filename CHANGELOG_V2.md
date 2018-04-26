@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Bug fixes
+
+* Fixed linkComponent bug on app provider where custom links could not be created ([#1233](https://github.com/Shopify/polaris-react/pull/#1303)) (thanks to [@Siic19](https://github.com/Siic19) for the [original issue](https://github.com/Shopify/polaris/issues/295))
+
 ### Enhancements
 
 * Added error prop to ChoiceList([#1292](https://github.com/Shopify/polaris-react/pull/1292))
