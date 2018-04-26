@@ -18,9 +18,13 @@ $breakpoint: 768px;
   .Navigation {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     width: 100%;
     padding: spacing() spacing(tight);
+
+    @include breakpoint-after($breakpoint, inclusive) {
+      justify-content: flex-end;
+    }
   }
 }
 
@@ -40,7 +44,10 @@ $breakpoint: 768px;
   width: rem(6px);
   background: color('ink', 'lightest');
   border-radius: border-radius();
-  margin-right: spacing(extra-tight);
+
+  &:not(:last-of-type) {
+    margin-right: spacing(extra-tight);
+  }
 }
 
 .Pip-visible {
