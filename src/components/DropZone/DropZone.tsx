@@ -73,8 +73,8 @@ export interface Props {
   children?: string | React.ReactNode;
   /** Allows a file to be dropped anywhere on the page */
   dropOnPage?: boolean;
-  /** Triggers the default file picker */
-  open?: boolean;
+  /** Sets the default file dialog state */
+  openFileDialog?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -159,7 +159,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       this.setState({errorOverlayText: props.errorOverlayText});
     }
 
-    if (props.open) {
+    if (props.openFileDialog) {
       this.open();
     }
   }
@@ -268,7 +268,9 @@ export class DropZone extends React.Component<CombinedProps, State> {
     addEventListener(window, 'resize', this.adjustSize);
 
     // This is the only way to detect when file dialog closes
-    document.body.onfocus = this.props.onFileDialogClose;
+    if (this.props.onFileDialogClose) {
+      document.body.onfocus = this.props.onFileDialogClose;
+    }
   }
 
   componentWillUnmount() {

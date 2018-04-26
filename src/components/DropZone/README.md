@@ -465,12 +465,12 @@ Use to allow merchants to upload files. They can drag and drop files into the da
 ```jsx
 class DropZoneExample extends React.Component {
   state = {
-    open: false,
+    openFileDialog: false,
     files: [],
   };
 
   render() {
-    const {files, open} = this.state;
+    const {files, openFileDialog} = this.state;
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
     const uploadedFiles = files.length > 0 && (
@@ -502,18 +502,18 @@ class DropZoneExample extends React.Component {
           {
             content: 'Upload Image',
             onAction: () => {
-              this.setState({open: true});
+              this.setState({openFileDialog: true});
             },
           },
         ]}
       >
         <DropZone
-          open={open}
+          openFileDialog={openFileDialog}
           onDrop={(files) => {
             this.setState({files: [...this.state.files, ...files]});
           }}
           onFileDialogClose={() => {
-            this.setState({open: false});
+            this.setState({openFileDialog: false});
           }}
         >
           {uploadedFiles}
