@@ -7,11 +7,16 @@ import {IconProps} from '../../components';
 
 import * as styles from './ExceptionList.scss';
 
+export type Description =
+  | string
+  | React.ReactElement<any>
+  | (string | React.ReactElement<any>)[];
+
 export interface Item {
   status?: 'critical' | 'warning';
   icon?: IconProps['source'];
   title?: string;
-  description: string;
+  description: Description;
   truncate?: boolean;
 }
 
