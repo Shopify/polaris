@@ -199,7 +199,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       : {};
 
     return (
-      <div className={className} ref={this.setDataTable}>
+      <div className={className}>
         <div className={styles.Navigation}>
           <Navigation
             currentColumn={currentColumn}
@@ -208,21 +208,27 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             navigateTableRight={this.navigateTable('right')}
           />
         </div>
-        <div
-          className={styles.ScrollContainer}
-          ref={this.setScrollContainer}
-          style={style}
-        >
-          <EventListener event="resize" handler={this.handleResize} />
-          <EventListener capture event="scroll" handler={this.scrollListener} />
-          <table className={styles.TableWrapper} ref={this.setTable}>
-            <thead>
-              {headingMarkup}
-              {totalsMarkup}
-            </thead>
-            <tbody>{bodyMarkup}</tbody>
-            {footerMarkup}
-          </table>
+        <div className={className} ref={this.setDataTable}>
+          <div
+            className={styles.ScrollContainer}
+            ref={this.setScrollContainer}
+            style={style}
+          >
+            <EventListener event="resize" handler={this.handleResize} />
+            <EventListener
+              capture
+              event="scroll"
+              handler={this.scrollListener}
+            />
+            <table className={styles.TableWrapper} ref={this.setTable}>
+              <thead>
+                {headingMarkup}
+                {totalsMarkup}
+              </thead>
+              <tbody>{bodyMarkup}</tbody>
+              {footerMarkup}
+            </table>
+          </div>
         </div>
       </div>
     );

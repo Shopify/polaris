@@ -19,9 +19,9 @@ $breakpoint: 768px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: calc(100% - #{$fixed-column-width});
-    margin: 0 0 0 $fixed-column-width;
-    padding: spacing();
+    width: 100%;
+    padding: spacing() spacing(tight);
+    margin-bottom: -0.4rem;
   }
 }
 
@@ -31,6 +31,11 @@ $breakpoint: 768px;
     margin-bottom: rem(52px);
   }
 }
+
+.DataTableWrapper {
+  color: black;
+}
+
 
 .TableWrapper {
   margin-left: $fixed-column-width * -1;
@@ -123,6 +128,7 @@ $breakpoint: 768px;
 .Cell-header {
   @include text-emphasis-normal;
   border-bottom: border(dark);
+  border-top: border();
 
   &.Cell-sortable {
     .Heading {

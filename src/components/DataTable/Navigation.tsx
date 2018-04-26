@@ -39,7 +39,7 @@ export default function Navigation({
   }
 
   return (
-    <Stack alignment="center" spacing="tight">
+    <Stack alignment="center" spacing="extraTight">
       <Button
         plain
         icon="chevronLeft"
