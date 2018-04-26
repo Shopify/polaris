@@ -92,7 +92,7 @@ export interface Props {
   /** Callback triggered when one or more files left the drag area */
   onDragLeave?(): void;
   /** Callback triggered when the file dialog is canceled */
-  onFileDialogClose(): void;
+  onFileDialogClose?(): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
