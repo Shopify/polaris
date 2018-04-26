@@ -8,7 +8,7 @@ $breakpoint: 768px;
 
 .collapsed {
 
-  .TableWrapper {
+  .Table {
 
     &::after {
       display: block;
@@ -21,7 +21,6 @@ $breakpoint: 768px;
     justify-content: flex-end;
     width: 100%;
     padding: spacing() spacing(tight);
-    margin-bottom: -0.4rem;
   }
 }
 
@@ -32,12 +31,23 @@ $breakpoint: 768px;
   }
 }
 
-.DataTableWrapper {
-  color: black;
+.Navigation {
+  display: none;
 }
 
+.Pip {
+  height: rem(6px);
+  width: rem(6px);
+  background: color('ink', 'lightest');
+  border-radius: border-radius();
+  margin-right: spacing(extra-tight);
+}
 
-.TableWrapper {
+.Pip-visible {
+  background: color('ink');
+}
+
+.Table {
   margin-left: $fixed-column-width * -1;
   width: calc(100% + #{$fixed-column-width});
   border-spacing: 0;
@@ -52,22 +62,6 @@ $breakpoint: 768px;
     width: .6rem;
     background: linear-gradient(to right, rgba(color('black'), 0.12), rgba(color('black'), 0));
   }
-}
-
-.Navigation {
-  display: none;
-}
-
-.Pip {
-  height: rem(6px);
-  width: rem(6px);
-  background: color('ink', 'lightest');
-  border-radius: border-radius();
-  margin-top: rem(-3.2px);
-}
-
-.Pip-visible {
-  background: color('black');
 }
 
 .ScrollContainer {
@@ -110,7 +104,7 @@ $breakpoint: 768px;
   white-space: unset;
   word-wrap: break-word;
   text-align: left;
-  // stops painting on scroll
+  // stops painting on scroll (due to positioning)
   backface-visibility: hidden;
 }
 
@@ -180,4 +174,6 @@ $breakpoint: 768px;
   left: 0;
   top: 100%;
   border-bottom: 0;
+  // stops painting on scroll (due to positioning)
+  backface-visibility: hidden;
 }

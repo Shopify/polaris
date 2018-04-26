@@ -137,6 +137,11 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       footerContent && styles.hasFooter,
     );
 
+    const wrapperClassName = classNames(
+      styles.TableWrapper,
+      collapsed && styles.collapsed,
+    );
+
     const footerClassName = classNames(footerContent && styles.TableFoot);
 
     const footerMarkup = footerContent ? (
@@ -199,15 +204,13 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       : {};
 
     return (
-      <div className={className}>
-        <div className={styles.Navigation}>
-          <Navigation
-            currentColumn={currentColumn}
-            columnVisibilityData={columnVisibilityData}
-            navigateTableLeft={this.navigateTable('left')}
-            navigateTableRight={this.navigateTable('right')}
-          />
-        </div>
+      <div className={wrapperClassName}>
+        <Navigation
+          currentColumn={currentColumn}
+          columnVisibilityData={columnVisibilityData}
+          navigateTableLeft={this.navigateTable('left')}
+          navigateTableRight={this.navigateTable('right')}
+        />
         <div className={className} ref={this.setDataTable}>
           <div
             className={styles.ScrollContainer}
@@ -220,7 +223,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
               event="scroll"
               handler={this.scrollListener}
             />
-            <table className={styles.TableWrapper} ref={this.setTable}>
+            <table className={styles.Table} ref={this.setTable}>
               <thead>
                 {headingMarkup}
                 {totalsMarkup}
