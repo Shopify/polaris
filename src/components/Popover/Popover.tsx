@@ -96,7 +96,7 @@ export default class Popover extends React.PureComponent<Props, State> {
     ) : null;
 
     return (
-      <WrapperComponent ref={this.setActivator}>
+      <WrapperComponent testID="wrapper-component" ref={this.setActivator}>
         {React.Children.only(this.props.activator)}
         {portal}
       </WrapperComponent>

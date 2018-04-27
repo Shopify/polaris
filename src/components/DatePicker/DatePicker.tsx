@@ -12,7 +12,10 @@ import {
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
 } from '@shopify/javascript-utilities/dates';
-
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Button from '../Button';
 
 import Month from './Month';
@@ -44,14 +47,15 @@ export interface BaseProps {
 }
 
 export interface Props extends BaseProps {}
+export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   hoverDate?: Date;
   focusDate?: Date;
 }
 
-export default class DatePicker extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
+export class DatePicker extends React.PureComponent<CombinedProps, State> {
+  constructor(props: CombinedProps) {
     super(props);
 
     const {selected} = props;
@@ -73,6 +77,7 @@ export default class DatePicker extends React.PureComponent<Props, State> {
       disableDatesBefore,
       disableDatesAfter,
       selected,
+      polaris: {intl},
     } = this.props;
 
     const {hoverDate, focusDate} = this.state;
@@ -123,7 +128,10 @@ export default class DatePicker extends React.PureComponent<Props, State> {
           <Button
             plain
             icon="arrowLeft"
-            accessibilityLabel={`Show previous month, ${previousMonthName} ${showPreviousYear}`}
+            accessibilityLabel={intl.translate(
+              'Polaris.DatePicker.previousMonth',
+              {previousMonthName, showPreviousYear},
+            )}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
@@ -134,7 +142,10 @@ export default class DatePicker extends React.PureComponent<Props, State> {
           <Button
             plain
             icon="arrowRight"
-            accessibilityLabel={`Show next month, ${nextMonth} ${nextYear}`}
+            accessibilityLabel={intl.translate('Polaris.DatePicker.nextMonth', {
+              nextMonth,
+              nextYear,
+            })}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
@@ -279,3 +290,5 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.stopPropagation();
   }
 }
+
+export default withAppProvider<Props>()(DatePicker);

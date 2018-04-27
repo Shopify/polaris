@@ -19,8 +19,26 @@
       }
     },
 
+    "Button": {
+      "accessibilityLabel": "Loading"
+    },
+
     "Common": {
       "undo": "Undo"
+    },
+
+    "Collapsible": {
+      "deprecationMessage": {
+        "group": "Polaris",
+        "info": "You are currently using version {pkgVersion}.",
+        "warn": "[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward."
+      }
+    },
+
+    "DatePicker": {
+      "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Show next month, {nextMonth} {nextYear}",
+      "today": "Today "
     },
 
     "DropZone": {
@@ -40,6 +58,10 @@
     "DataTable": {
       "sortAccessibilityLabel": "sort by {content}",
       "totalsRowHeading": "Totals"
+    },
+
+    "Icon": {
+      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
 
     "ResourceList": {

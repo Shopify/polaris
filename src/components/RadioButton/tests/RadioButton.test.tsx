@@ -1,10 +1,13 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+} from '../../../../tests/utilities';
 import RadioButton from '..';
 
 describe('<RadioButton />', () => {
   it('sets all pass through properties on the input', () => {
-    const input = shallow(
+    const input = shallowWithAppProvider(
       <RadioButton
         label="RadioButton"
         checked
@@ -21,7 +24,7 @@ describe('<RadioButton />', () => {
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mount(
+      const element = mountWithAppProvider(
         <RadioButton id="MyRadioButton" label="RadioButton" onChange={spy} />,
       );
       (element.find('input') as any).instance().checked = true;
@@ -33,7 +36,9 @@ describe('<RadioButton />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mount(<RadioButton label="RadioButton" onFocus={spy} />);
+      const element = mountWithAppProvider(
+        <RadioButton label="RadioButton" onFocus={spy} />,
+      );
       element.find('input').simulate('focus');
       expect(spy).toHaveBeenCalled();
     });
@@ -42,7 +47,9 @@ describe('<RadioButton />', () => {
   describe('onBlur()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mount(<RadioButton label="RadioButton" onBlur={spy} />);
+      const element = mountWithAppProvider(
+        <RadioButton label="RadioButton" onBlur={spy} />,
+      );
       element.find('input').simulate('blur');
       expect(spy).toHaveBeenCalled();
     });
@@ -50,14 +57,16 @@ describe('<RadioButton />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(<RadioButton id="MyRadioButton" label="RadioButton" />)
+      const id = shallowWithAppProvider(
+        <RadioButton id="MyRadioButton" label="RadioButton" />,
+      )
         .find('input')
         .prop('id');
       expect(id).toBe('MyRadioButton');
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<RadioButton label="RadioButton" />)
+      const id = shallowWithAppProvider(<RadioButton label="RadioButton" />)
         .find('input')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -67,22 +76,26 @@ describe('<RadioButton />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the input', () => {
-      const button = shallow(<RadioButton label="RadioButton" disabled />);
+      const button = shallowWithAppProvider(
+        <RadioButton label="RadioButton" disabled />,
+      );
       expect(button.find('input').prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let element = shallow(<RadioButton label="RadioButton" />);
+      let element = shallowWithAppProvider(<RadioButton label="RadioButton" />);
       expect(element.find('input').prop('disabled')).toBeFalsy();
 
-      element = shallow(<RadioButton label="RadioButton" disabled={false} />);
+      element = shallowWithAppProvider(
+        <RadioButton label="RadioButton" disabled={false} />,
+      );
       expect(element.find('input').prop('disabled')).toBeFalsy();
     });
   });
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <RadioButton label="RadioButton" helpText="Some help" />,
       );
       const helpTextID = textField

@@ -1,10 +1,12 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import Choice from '..';
 
 describe('<Choice />', () => {
   it('uses the id as the for attribute of a label', () => {
-    const element = shallow(<Choice id="MyChoice" label="Label" />);
+    const element = mountWithAppProvider(
+      <Choice id="MyChoice" label="Label" />,
+    );
     const label = element.find('label');
 
     expect(label.prop('htmlFor')).toBe('MyChoice');
@@ -12,7 +14,7 @@ describe('<Choice />', () => {
   });
 
   it('renders error markup when provided with a value', () => {
-    const element = shallow(
+    const element = mountWithAppProvider(
       <Choice id="MyChoice" label="Label" error="Error message" />,
     );
 
@@ -26,7 +28,7 @@ describe('<Choice />', () => {
       return <div />;
     }
 
-    const element = shallow(
+    const element = mountWithAppProvider(
       <Choice id="MyChoice" label="Label">
         <MyComponent />
       </Choice>,
@@ -57,7 +59,9 @@ describe('<Choice />', () => {
       'hr',
       'table',
     ];
-    const element = shallow(<Choice id="MyChoice" label="Label" />);
+    const element = mountWithAppProvider(
+      <Choice id="MyChoice" label="Label" />,
+    );
     const label = element.find('label');
     for (let i = 0; i < blockLevelElements.length; i++) {
       expect(label.find(blockLevelElements[i])).toHaveLength(0);

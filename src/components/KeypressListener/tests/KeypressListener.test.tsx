@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import KeypressListener from '../KeypressListener';
 import {Keys} from '../../../types';
@@ -32,7 +32,9 @@ describe('<KeypressListener />', () => {
   it('attaches a listener for the given key on mount', () => {
     const spy = jest.fn();
 
-    mount(<KeypressListener handler={spy} keyCode={Keys.ESCAPE} />);
+    mountWithAppProvider(
+      <KeypressListener handler={spy} keyCode={Keys.ESCAPE} />,
+    );
 
     listenerMap.keyup({keyCode: Keys.ESCAPE});
     listenerMap.keyup({keyCode: Keys.ENTER});
@@ -42,7 +44,9 @@ describe('<KeypressListener />', () => {
   it('removes listener for the given key on unmount', () => {
     const spy = jest.fn();
 
-    mount(<KeypressListener handler={spy} keyCode={Keys.ESCAPE} />).unmount();
+    mountWithAppProvider(
+      <KeypressListener handler={spy} keyCode={Keys.ESCAPE} />,
+    ).unmount();
 
     listenerMap.keyup({keyCode: Keys.ESCAPE});
     expect(spy).not.toBeCalled();

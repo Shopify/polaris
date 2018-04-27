@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities';
 
-import {ComplexAction} from '../../types';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
@@ -11,7 +14,7 @@ import * as styles from './Button.scss';
 
 export type Size = 'slim' | 'large';
 
-export interface BaseProps {
+export interface Props {
   /** The content to display inside the button */
   children?: string;
   /** A destination to link to, rendered in the href attribute of a link */
@@ -56,9 +59,9 @@ export interface BaseProps {
   onBlur?(): void;
 }
 
-export interface Props extends BaseProps {}
+export type CombinedProps = Props & WithAppProviderProps;
 
-export default function Button({
+function Button({
   id,
   url,
   disabled,
@@ -80,7 +83,8 @@ export default function Button({
   submit,
   size,
   fullWidth,
-}: Props) {
+  polaris: {intl},
+}: CombinedProps) {
   const isDisabled = disabled || loading;
   const className = classNames(
     styles.Button,
@@ -113,7 +117,11 @@ export default function Button({
 
   const spinnerSVGMarkup = loading ? (
     <span className={styles.Spinner}>
-      <Spinner size="small" color={spinnerColor} accessibilityLabel="Loading" />
+      <Spinner
+        size="small"
+        color={spinnerColor}
+        accessibilityLabel={intl.translate('Polaris.Button.accessibilityLabel')}
+      />
     </span>
   ) : null;
 
@@ -170,34 +178,4 @@ export default function Button({
   );
 }
 
-export function buttonsFrom(
-  action: ComplexAction,
-  overrides?: Partial<Props>,
-): React.ReactElement<Props>;
-export function buttonsFrom(
-  actions: ComplexAction[],
-  overrides?: Partial<Props>,
-): React.ReactElement<Props>[];
-export function buttonsFrom(
-  actions: ComplexAction[] | ComplexAction,
-  overrides: Partial<Props> = {},
-) {
-  if (Array.isArray(actions)) {
-    return actions.map((action, index) => buttonFrom(action, overrides, index));
-  } else {
-    const action = actions;
-    return buttonFrom(action, overrides);
-  }
-}
-
-export function buttonFrom(
-  {content, onAction, ...action}: ComplexAction,
-  overrides?: Partial<Props>,
-  key?: any,
-) {
-  return (
-    <Button key={key} onClick={onAction} {...action} {...overrides}>
-      {content}
-    </Button>
-  );
-}
+export default withAppProvider<Props>()(Button);

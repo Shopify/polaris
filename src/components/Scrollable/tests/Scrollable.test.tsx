@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import Scrollable from '../Scrollable';
 
 describe('<Scrollable />', () => {
   it('mounts', () => {
-    const mounted = mount(<Scrollable />);
+    const mounted = mountWithAppProvider(<Scrollable />);
     expect(mounted).toBeTruthy();
   });
 });
