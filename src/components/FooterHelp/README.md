@@ -1,6 +1,6 @@
 ---
 name: Footer help
-category: Titles and text
+category: Navigation
 keywords:
   - FooterHelp
   - learn more about
