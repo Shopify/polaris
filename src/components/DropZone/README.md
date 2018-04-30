@@ -460,7 +460,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 
 ### Drop zone with custom file dialog trigger
 
-Use to allow merchants to upload files. They can drag and drop files into the dashed area, or upload traditionally by clicking anywhere inside the dashed area.
+Use to trigger the file dialog from an action somewhere else on the page.
 
 ```jsx
 class DropZoneExample extends React.Component {
