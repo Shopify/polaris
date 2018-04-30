@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
 
 import UnstyledLink from '../UnstyledLink';
 
@@ -12,28 +11,11 @@ export interface Props {
   children?: React.ReactNode;
   /** Use for a links that open a different site */
   external?: boolean;
-  /** Use either 'left' or 'right' to align content of the button the component renders when a url is not provided */
-  alignContent?: string;
   /** Callback when a link is clicked */
   onClick?(): void;
 }
 
-export default function Link({
-  url,
-  children,
-  external,
-  alignContent,
-  onClick,
-}: Props) {
-  const alignLeft = alignContent === 'left';
-  const alignRight = alignContent === 'right';
-
-  const buttonClassName = classNames(
-    styles.Link,
-    alignLeft && styles['Link-alignLeft'],
-    alignRight && styles['Link-alignRight'],
-  );
-
+export default function Link({url, children, external, onClick}: Props) {
   return url ? (
     <UnstyledLink
       onClick={onClick}
@@ -44,7 +26,7 @@ export default function Link({
       {children}
     </UnstyledLink>
   ) : (
-    <button onClick={onClick} className={buttonClassName}>
+    <button onClick={onClick} className={styles.Link}>
       {children}
     </button>
   );

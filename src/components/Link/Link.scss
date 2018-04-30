@@ -1,6 +1,7 @@
 .Link {
   appearance: none;
   display: inline;
+  text-align: inherit;
   padding: 0;
   background: none;
   border: none;
@@ -15,12 +16,4 @@
     outline: none;
     color: color(blue, dark);
   }
-}
-
-.Link-alignLeft {
-  text-align: left;
-}
-
-.Link-alignRight {
-  text-align: right;
 }

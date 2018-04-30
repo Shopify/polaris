@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Bug fixes
+
+* Fixed text alignment of link so that it inherits from its parent node ([#1343](https://github.com/Shopify/polaris-react/pull/1343#discussion_r185069280))
+
 ## 1.14.1 - 2018-04-10
 
 ### Bug fixes
