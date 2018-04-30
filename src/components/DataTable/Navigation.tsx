@@ -2,7 +2,6 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import Button from '../Button';
-import Stack from '../Stack';
 import {ColumnVisibilityData} from './DataTable';
 import * as styles from './DataTable.scss';
 
@@ -39,7 +38,7 @@ export default function Navigation({
   }
 
   return (
-    <Stack alignment="center" spacing="tight">
+    <div className={styles.Navigation}>
       <Button
         plain
         icon="chevronLeft"
@@ -55,6 +54,6 @@ export default function Navigation({
         accessibilityLabel="Scroll table right one column"
         onClick={navigateTableRight}
       />
-    </Stack>
+    </div>
   );
 }
