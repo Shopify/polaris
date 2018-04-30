@@ -161,12 +161,12 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const className = classNames(
       styles.Item,
-      focused && styles['Item-focused'],
-      selectable && styles['Item-selectable'],
-      selected && styles['Item-selected'],
-      selectMode && styles['Item-selectMode'],
-      persistActions && styles['Item-persistActions'],
-      focusedInner && styles['Item-focusedInner'],
+      focused && styles.focused,
+      selectable && styles.selectable,
+      selected && styles.selected,
+      selectMode && styles.selectMode,
+      persistActions && styles.persistActions,
+      focusedInner && styles.focusedInner,
     );
 
     let actionsMarkup: React.ReactNode | null = null;

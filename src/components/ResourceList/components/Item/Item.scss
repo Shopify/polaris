@@ -12,7 +12,7 @@
   &:hover {
     @include state(hover);
 
-    &:not(.Item-persistActions){
+    &:not(.persistActions){
       .Actions {
         display: flex;
       }
@@ -24,10 +24,10 @@
   }
 }
 
-.Item-selected {
+.selected {
   @include state(selected);
 
-  &.Item-focused {
+  &.focused {
     @include state(selected, focused);
 
     &:hover {
@@ -44,7 +44,7 @@
   }
 }
 
-.Item-focused {
+.focused {
   @include state(focused);
 
   &:hover {
@@ -56,9 +56,9 @@
   }
 }
 
-.Item-focusedInner,
-.Item-focusedInner.Item-focused,
-.Item-focusedInner.Item-focused.Item-selected {
+.focusedInner,
+.focusedInner.focused,
+.focusedInner.focused.selected {
   box-shadow: none;
 }
 
@@ -106,13 +106,13 @@
   display: flex;
 }
 
-.Item-selectable {
+.selectable {
   width: calc(100% + #{resource-list-item(translate-offset)});
   transform: translateX(-1 * resource-list-item(translate-offset));
   transition: transform easing() duration();
   margin-right: -1 * resource-list-item(translate-offset);
 
-  &.Item-selectMode {
+  &.selectMode {
     transform: translateX(0);
   }
 
@@ -147,12 +147,12 @@
   height: 100%;
   max-height: resource-list-item(actions-height);
 
-  .Item-focused & {
+  .focused & {
     display: flex;
   }
 }
 
-.Item-persistActions {
+.persistActions {
   .Actions {
     display: flex;
     flex: 0 0 auto;
