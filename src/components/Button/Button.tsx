@@ -120,7 +120,9 @@ function Button({
       <Spinner
         size="small"
         color={spinnerColor}
-        accessibilityLabel={intl.translate('Polaris.Button.accessibilityLabel')}
+        accessibilityLabel={intl.translate(
+          'Polaris.Button.spinnerAccessibilityLabel',
+        )}
       />
     </span>
   ) : null;

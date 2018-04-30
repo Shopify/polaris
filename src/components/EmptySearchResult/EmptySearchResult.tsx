@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {DisplayText, TextStyle, Image, Stack} from '../';
 
 import emptySearch from './illustrations/empty-search.svg';
@@ -11,17 +15,22 @@ export interface Props {
   withIllustration?: boolean;
 }
 
-class EmptySearchResult extends React.PureComponent<Props, never> {
-  private altText = 'Empty search results';
+export type CombinedProps = Props & WithAppProviderProps;
 
+export class EmptySearchResult extends React.PureComponent<
+  CombinedProps,
+  never
+> {
   render() {
-    const {title, description, withIllustration} = this.props;
+    const {title, description, withIllustration, polaris: {intl}} = this.props;
+
+    const altText = intl.translate('Polaris.EmptySearchResult.altText');
 
     const descriptionMarkup = description ? <p>{description}</p> : null;
 
     const illustrationMarkup = withIllustration ? (
       <Image
-        alt={this.altText}
+        alt={altText}
         source={emptySearch}
         className={styles.Image}
         draggable={false}
@@ -38,4 +47,4 @@ class EmptySearchResult extends React.PureComponent<Props, never> {
   }
 }
 
-export default EmptySearchResult;
+export default withAppProvider<Props>()(EmptySearchResult);

@@ -20,19 +20,11 @@
     },
 
     "Button": {
-      "accessibilityLabel": "Loading"
+      "spinnerAccessibilityLabel": "Loading"
     },
 
     "Common": {
       "undo": "Undo"
-    },
-
-    "Collapsible": {
-      "deprecationMessage": {
-        "group": "Polaris",
-        "info": "You are currently using version {pkgVersion}.",
-        "warn": "[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward."
-      }
     },
 
     "DatePicker": {
@@ -60,8 +52,29 @@
       "totalsRowHeading": "Totals"
     },
 
+    "EmptySearchResult": {
+      "altText": "Empty search results"
+    },
+
     "Icon": {
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
+    },
+
+    "Modal": {
+      "iFrameTitle": "body markup",
+      "modalWarning": "These required properties are missing from Modal: {missingProps}",
+      "actionWarning": "Modals inside of an embedded app will ignore: {actionWarnings}"
+    },
+
+    "Pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "pagination": "Pagination"
+    },
+
+    "ProgressBar": {
+      "negativeWarningMessage": "Values passed to the progress prop shouldn’t be negative. Resetting {progress} to 0.",
+      "exceedWarningMessage": "Values passed to the progress prop shouldn’t exceed 100. Setting {progress} to 100."
     },
 
     "ResourceList": {
