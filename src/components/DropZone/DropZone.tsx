@@ -261,16 +261,21 @@ export class DropZone extends React.Component<CombinedProps, State> {
       return;
     }
 
+    const onFileDialogClose = () => {
+      if (this.props.onFileDialogClose) {
+        this.open();
+        this.props.onFileDialogClose();
+
+        removeEventListener(window, 'focus', onFileDialogClose);
+      }
+    };
+
     addEventListener(this.dropNode, 'drop', this.handleDrop);
     addEventListener(this.dropNode, 'dragover', this.handleDragOver);
     addEventListener(this.dropNode, 'dragenter', this.handleDragEnter);
     addEventListener(this.dropNode, 'dragleave', this.handleDragLeave);
     addEventListener(window, 'resize', this.adjustSize);
-
-    // This is the only way to detect when file dialog closes
-    if (this.props.onFileDialogClose) {
-      document.body.onfocus = this.props.onFileDialogClose;
-    }
+    addEventListener(window, 'focus', onFileDialogClose);
   }
 
   componentWillUnmount() {
@@ -286,7 +291,11 @@ export class DropZone extends React.Component<CombinedProps, State> {
   }
 
   @autobind
-  public open() {
+  private open() {
+    if (!this.fileInputNode) {
+      return;
+    }
+
     this.fileInputNode.click();
   }
 
