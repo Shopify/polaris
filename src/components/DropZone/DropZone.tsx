@@ -161,6 +161,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     if (props.openFileDialog) {
       this.open();
+
+      if (this.props.onFileDialogClose) {
+        this.props.onFileDialogClose();
+      }
     }
   }
 
@@ -261,11 +265,6 @@ export class DropZone extends React.Component<CombinedProps, State> {
       return;
     }
 
-    if (this.props.openFileDialog) {
-      addEventListener(window, 'focus', this.handleFileDialogClose);
-      this.open();
-    }
-
     addEventListener(this.dropNode, 'drop', this.handleDrop);
     addEventListener(this.dropNode, 'dragover', this.handleDragOver);
     addEventListener(this.dropNode, 'dragenter', this.handleDragEnter);
@@ -283,15 +282,6 @@ export class DropZone extends React.Component<CombinedProps, State> {
     removeEventListener(this.dropNode, 'dragenter', this.handleDragEnter);
     removeEventListener(this.dropNode, 'dragleave', this.handleDragLeave);
     removeEventListener(window, 'resize', this.adjustSize);
-  }
-
-  @autobind
-  private handleFileDialogClose() {
-    if (this.props.onFileDialogClose) {
-      this.props.onFileDialogClose();
-    }
-
-    removeEventListener(window, 'focus', this.handleFileDialogClose);
   }
 
   @autobind
