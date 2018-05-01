@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-rc.1 - 2018-05-01
+
 ### Bug fixes
 
 * Fixed linkComponent bug on app provider where custom links could not be created ([#1233](https://github.com/Shopify/polaris-react/pull/#1303)) (thanks to [@Siic19](https://github.com/Siic19) for the [original issue](https://github.com/Shopify/polaris/issues/295))
