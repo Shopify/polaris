@@ -1,14 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import {DisableableAction} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
-import Avatar, {Props as AvatarProps} from '../../../Avatar';
+import {Props as AvatarProps} from '../../../Avatar';
 import UnstyledLink from '../../../UnstyledLink';
-import Thumbnail, {Props as ThumbnailProps} from '../../../Thumbnail';
+import {Props as ThumbnailProps} from '../../../Thumbnail';
 import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
@@ -101,29 +100,15 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const selected = this.isSelected();
 
-    let mediaSize: MediaSize | null = null;
-    let mediaType: MediaType | null = null;
-    let mediaMarkup: React.ReactNode = null;
+    // let mediaMarkup: React.ReactNode = null;
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
-    if (media) {
-      if (isElementOfType(media, Avatar as React.ComponentType)) {
-        mediaSize = media.props.size || 'medium';
-        mediaType = 'avatar';
-      }
-
-      if (isElementOfType(media, Thumbnail as React.ComponentType)) {
-        mediaSize = media.props.size || 'medium';
-        mediaType = 'thumbnail';
-      }
-
-      mediaMarkup = (
-        <div className={styles.Media} testID="Media">
-          {media}
-        </div>
-      );
-    }
+    const mediaMarkup = media ? (
+      <div className={styles.Media} testID="Media">
+        {media}
+      </div>
+    ) : null;
 
     if (selectable) {
       const label = selected
