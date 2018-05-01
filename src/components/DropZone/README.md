@@ -458,6 +458,72 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
+### Drop zone with custom file dialog trigger
+
+Use to trigger the file dialog from an action somewhere else on the page.
+
+```jsx
+class DropZoneExample extends React.Component {
+  state = {
+    openFileDialog: false,
+    files: [],
+  };
+
+  render() {
+    const {files, openFileDialog} = this.state;
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+    const uploadedFiles = files.length > 0 && (
+      <Stack vertical>
+        {files.map((file) => (
+          <Stack alignment="center">
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.indexOf(file.type) > 0
+                  ? window.URL.createObjectURL(file)
+                  : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
+              }
+            />
+            <div>
+              {file.name} <Caption>{file.size} bytes</Caption>
+            </div>
+          </Stack>
+        ))}
+      </Stack>
+    );
+
+    return (
+      <Card
+        sectioned
+        title="Product Images"
+        actions={[
+          {
+            content: 'Upload Image',
+            onAction: () => {
+              this.setState({openFileDialog: true});
+            },
+          },
+        ]}
+      >
+        <DropZone
+          openFileDialog={openFileDialog}
+          onDrop={(files) => {
+            this.setState({files: [...this.state.files, ...files]});
+          }}
+          onFileDialogClose={() => {
+            this.setState({openFileDialog: false});
+          }}
+        >
+          {uploadedFiles}
+        </DropZone>
+      </Card>
+    );
+  }
+}
+```
+
 ---
 
 ## Drop zone file upload

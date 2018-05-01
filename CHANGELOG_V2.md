@@ -18,6 +18,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Breaking changes
 
 * TextField, Select and Checkbox now accept the types string or react element for the error prop([#1292](https://github.com/Shopify/polaris-react/pull/1292))
+* Added `openFileDialog` and `onFileDialogClose` props to use instead of the public `open` instance method on Drop zone ([#1347](https://github.com/Shopify/polaris-react/pull/1347))
 
 ## 2.0.0-beta.18 - 2018-04-20
 
