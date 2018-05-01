@@ -8,7 +8,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
-* Removed margins on segmented ButtonGroup ([#1352](https://github.com/Shopify/polaris-react/pull/1352))
+* Add margin-left spacing to disclosure icon within Button component ([#1354](https://github.com/Shopify/polaris-react/pull/1354))
+* Remove margins on segmented ButtonGroup ([#1352](https://github.com/Shopify/polaris-react/pull/1352))
 * Fixed text alignment of link so that it inherits from its parent node ([#1343](https://github.com/Shopify/polaris-react/pull/1343#discussion_r185069280))
 
 ## 1.14.1 - 2018-04-10
