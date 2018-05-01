@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
@@ -161,14 +161,12 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const className = classNames(
       styles.Item,
-      focused && styles['Item-focused'],
-      selectable && styles['Item-selectable'],
-      selected && styles['Item-selected'],
-      selectMode && styles['Item-selectMode'],
-      persistActions && styles['Item-persistActions'],
-      focusedInner && styles['Item-focusedInner'],
-      mediaType && styles[variationName('Item-media', mediaType)],
-      mediaSize && styles[variationName('Item-size', mediaSize)],
+      focused && styles.focused,
+      selectable && styles.selectable,
+      selected && styles.selected,
+      selectMode && styles.selectMode,
+      persistActions && styles.persistActions,
+      focusedInner && styles.focusedInner,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -368,7 +366,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleActionsClick() {
-    this.setState({actionsMenuVisible: true});
+    this.setState(({actionsMenuVisible}) => ({
+      actionsMenuVisible: !actionsMenuVisible,
+    }));
   }
 
   @autobind
