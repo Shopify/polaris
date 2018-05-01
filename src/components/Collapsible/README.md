@@ -21,6 +21,7 @@ keywords:
 ---
 
 # Collapsible
+
 The collapsible component is used to put long sections of information under a
 block that can be expanded or collapsed by the merchant. Generally this is
 used for lower priority information or content that merchants don’t need to see
@@ -29,17 +30,19 @@ all the time.
 ---
 
 ## Best practices
+
 The collapsible component should:
 
 * Be used for information that is lower priority or that merchants don’t need
-to see all the time
+  to see all the time
 * Be shown by default in an expanded state when a merchant loads a screen
 * Not be used to hide error messages or other critical information that requires
-an immediate action
+  an immediate action
 
 ---
 
 ## Content guidelines
+
 There are no content elements that are specific to the collapsible component. Follow the [content guidelines for cards](/components/structure/card) to make sure your headings, body content, links, and buttons are written consistently and clearly.
 
 ## Examples
@@ -52,7 +55,7 @@ Use for a basic “show more” interaction when you need to display more conten
 class CollapsibleExample extends React.Component {
   state = {
     open: true,
-  }
+  };
 
   render() {
     const {open} = this.state;
@@ -61,15 +64,14 @@ class CollapsibleExample extends React.Component {
       <div style={{height: '200px'}}>
         <Card sectioned>
           <Stack vertical>
-            <Button
-              onClick={this.handleToggleClick}
-              aria-expanded={open}
-            >
+            <Button onClick={this.handleToggleClick} aria-expanded={open}>
               Toggle
             </Button>
-            <Collapsible open={open}>
+            <Collapsible open={open} id="basic-collapsible">
               <TextContainer>
-                Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products.
+                Your mailing list lets you contact customers or visitors who
+                have shown an interest in your store. Reach out to them with
+                exclusive offers or updates about your products.
               </TextContainer>
             </Collapsible>
           </Stack>
@@ -83,9 +85,9 @@ class CollapsibleExample extends React.Component {
       const open = !state.open;
       return {
         open,
-      }
+      };
     });
-  }
+  };
 }
 ```
 

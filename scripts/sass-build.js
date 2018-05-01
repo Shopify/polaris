@@ -31,14 +31,27 @@ export default function generateSassBuild(destinationDir) {
   const tokens = join(buildStyles, 'polaris-tokens');
 
   mkdir('-p', components, foundation, global, shared, tokens);
-  cp(join(srcStyles, 'global', '*.scss'), global);
   cp(join(srcStyles, 'foundation', '*.scss'), foundation);
-  cp(join(srcStyles, 'shared', '*.scss'), shared);
   cp(join(srcStyles, 'polaris-tokens', '*.scss'), tokens);
   cp(join(srcStyles, 'global.scss'), join(buildStyles, 'global.scss'));
   cp(join(srcStyles, 'foundation.scss'), join(buildStyles, 'foundation.scss'));
   cp(join(srcStyles, 'shared.scss'), join(buildStyles, 'shared.scss'));
   cp(resolve(srcStyles, '../styles.scss'), join(buildSass, 'styles.scss'));
+
+  const dirWithCssModulesGlobals = ['global', 'shared'];
+
+  dirWithCssModulesGlobals.forEach((dir) => {
+    const srcDir = join(srcStyles, dir);
+    const destDir = join(buildStyles, dir);
+    const regex = /:global\s*\(([^)]+)\)|:global\s*{\s*([^}]+)\s*}\s*/;
+
+    glob.sync(join(srcDir, '/**/*.scss')).forEach((srcFile) => {
+      const sassFile = srcFile.replace(srcDir, '');
+      let file = readFileSync(srcFile, 'utf8');
+      file = file.replace(new RegExp(regex, 'g'), '$1$2');
+      outputFileSync(join(destDir, sassFile), file);
+    });
+  });
 
   glob.sync(join(srcComponents, '*')).forEach((componentPath) => {
     if (!lstatSync(componentPath).isDirectory()) {
@@ -87,7 +100,9 @@ function generateSassZip(sourceDir, destinationDir) {
   // eslint-disable-next-line promise/param-names
   return new Promise((resolveSass, reject) => {
     const output = createWriteStream(join(destinationDir, 'Sass.zip'));
-    const archive = archiver('zip', {store: true});
+    const archive = archiver('zip', {
+      store: true,
+    });
 
     output.on('close', () => {
       console.log(`Sass zip complete: ${archive.pointer()} total bytes`);

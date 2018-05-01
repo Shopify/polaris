@@ -12,8 +12,10 @@
   &:hover {
     @include state(hover);
 
-    .Actions {
-      display: flex;
+    &:not(.persistActions){
+      .Actions {
+        display: flex;
+      }
     }
   }
 
@@ -22,10 +24,10 @@
   }
 }
 
-.Item-selected {
+.selected {
   @include state(selected);
 
-  &.Item-focused {
+  &.focused {
     @include state(selected, focused);
 
     &:hover {
@@ -42,7 +44,7 @@
   }
 }
 
-.Item-focused {
+.focused {
   @include state(focused);
 
   &:hover {
@@ -54,9 +56,9 @@
   }
 }
 
-.Item-focusedInner,
-.Item-focusedInner.Item-focused,
-.Item-focusedInner.Item-focused.Item-selected {
+.focusedInner,
+.focusedInner.focused,
+.focusedInner.focused.selected {
   box-shadow: none;
 }
 
@@ -104,13 +106,13 @@
   display: flex;
 }
 
-.Item-selectable {
+.selectable {
   width: calc(100% + #{resource-list-item(translate-offset)});
   transform: translateX(-1 * resource-list-item(translate-offset));
   transition: transform easing() duration();
   margin-right: -1 * resource-list-item(translate-offset);
 
-  &.Item-selectMode {
+  &.selectMode {
     transform: translateX(0);
   }
 
@@ -118,50 +120,6 @@
     width: 100%;
     transform: translateX(0);
     margin-right: 0;
-  }
-}
-
-
-// Item media
-// Had min-height style below instead of height. Need height for IE11 vertical centering
-// to work with display: flex. Reference: http://stackoverflow.com/questions/19371626/flexbox-not-centering-vertically-in-ie
-.Item-mediaAvatar {
-  &.Item-sizeSmall {
-    .Actions {
-      height: resource-list-item(avatar-small-size);
-    }
-  }
-
-  &.Item-sizeMedium {
-    .Actions {
-      height: resource-list-item(avatar-medium-size);
-    }
-  }
-
-  &.Item-sizeLarge {
-    .Actions {
-      height: resource-list-item(avatar-large-size);
-    }
-  }
-}
-
-.Item-mediaThumbnail {
-  &.Item-sizeSmall {
-    .Actions {
-      height: resource-list-item(thumbnail-small-size);
-    }
-  }
-
-  &.Item-sizeMedium {
-    .Actions {
-      height: resource-list-item(thumbnail-medium-size);
-    }
-  }
-
-  &.Item-sizeLarge {
-    .Actions {
-      height: resource-list-item(thumbnail-large-size);
-    }
   }
 }
 
@@ -182,19 +140,24 @@
 // Item actions
 .Actions {
   position: absolute;
+  top: 0;
   right: resource-list-item(padding);
   display: none;
   pointer-events: initial;
-  .Item-focused & {
-      display: flex;
+  height: 100%;
+  max-height: resource-list-item(actions-height);
+
+  .focused & {
+    display: flex;
   }
 }
 
-.Item-persistActions {
+.persistActions {
   .Actions {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
+    margin-top: 0;
     margin-left: spacing();
     pointer-events: initial;
     position: relative;
@@ -209,8 +172,19 @@
 .Disclosure {
   display: none;
   pointer-events: initial;
+  width: resource-list-item(disclosure-width);
+  min-height: resource-list-item(min-height);
+  position: relative;
+  top: -1 * resource-list-item(padding);
+  right: -1 * spacing();
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    right: -1 * spacing(loose);
+  }
 
   @include page-content-when-partially-condensed {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

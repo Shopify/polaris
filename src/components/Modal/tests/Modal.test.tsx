@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
 import {Badge, Spinner, Portal} from '../../../components';
 
 import {
   animationFrame,
   findByTestID,
   trigger,
+  mountWithAppProvider,
 } from '../../../../tests/utilities';
 
 import Modal from '../Modal';
@@ -22,7 +22,7 @@ describe('<Modal>', () => {
 
   describe('open', () => {
     it('renders <Portal /> with idPrefix modal', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open>
           <Badge />
         </Modal>,
@@ -34,7 +34,7 @@ describe('<Modal>', () => {
 
   describe('closed', () => {
     it('does not render children', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal open={false} onClose={jest.fn()}>
           <Badge />
         </Modal>,
@@ -46,7 +46,7 @@ describe('<Modal>', () => {
 
   describe('opening / closing', () => {
     it('renders modal content when open = true', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal open onClose={jest.fn()}>
           <Badge />
         </Modal>,
@@ -56,7 +56,7 @@ describe('<Modal>', () => {
     });
 
     it('does not render modal content when open = false', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal open={false} onClose={jest.fn()}>
           <Badge />
         </Modal>,
@@ -66,7 +66,7 @@ describe('<Modal>', () => {
     });
 
     it('triggers an onTransitionEnd prop', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal
           onClose={jest.fn()}
           open
@@ -80,7 +80,7 @@ describe('<Modal>', () => {
     });
 
     it('triggers onTransitionEnd from Dialog', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal
           open
           onClose={jest.fn()}
@@ -95,19 +95,21 @@ describe('<Modal>', () => {
 
   describe('header', () => {
     it('renders a header when title is present', () => {
-      const modal = mount(<Modal onClose={jest.fn()} open title="foo" />);
+      const modal = mountWithAppProvider(
+        <Modal onClose={jest.fn()} open title="foo" />,
+      );
 
       expect(findByTestID(modal, 'ModalHeader').exists()).toBe(true);
     });
 
     it('does not render a header when title is not present', () => {
-      const modal = mount(<Modal onClose={jest.fn()} open />);
+      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
 
       expect(findByTestID(modal, 'ModalHeader').exists()).toBe(false);
     });
 
     it('renders a close button when title is not present', () => {
-      const modal = mount(<Modal onClose={jest.fn()} open />);
+      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
 
       expect(findByTestID(modal, 'ModalCloseButton').exists()).toBe(true);
     });
@@ -115,13 +117,13 @@ describe('<Modal>', () => {
 
   describe('footer', () => {
     it('does not render footer by default', () => {
-      const modal = mount(<Modal onClose={jest.fn()} open />);
+      const modal = mountWithAppProvider(<Modal onClose={jest.fn()} open />);
 
       expect(modal.find(Footer).exists()).toBeFalsy();
     });
 
     it('renders if footer are passed in', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open footer="Footer content" />,
       );
 
@@ -129,7 +131,7 @@ describe('<Modal>', () => {
     });
 
     it('renders if primaryAction are passed in', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal
           onClose={jest.fn()}
           open
@@ -141,7 +143,7 @@ describe('<Modal>', () => {
     });
 
     it('renders if secondaryActions are passed in', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal
           onClose={jest.fn()}
           open
@@ -155,7 +157,7 @@ describe('<Modal>', () => {
 
   describe('body', () => {
     it('limits dialog height from limitHeight prop', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open loading limitHeight>
           <Badge />
         </Modal>,
@@ -167,7 +169,7 @@ describe('<Modal>', () => {
 
   describe('loading', () => {
     it('renders a spinner', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open loading>
           <Badge />
         </Modal>,
@@ -177,7 +179,7 @@ describe('<Modal>', () => {
     });
 
     it('does not render children', () => {
-      const modal = mount(
+      const modal = mountWithAppProvider(
         <Modal onClose={jest.fn()} open loading>
           <Badge />
         </Modal>,

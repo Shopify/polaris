@@ -2,8 +2,9 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Labelled, {Action, Error, helpTextID, errorID} from '../Labelled';
+import Labelled, {Action, helpTextID, errorID} from '../Labelled';
 import Icon from '../Icon';
+import {Error} from '../../types';
 
 import * as styles from './Select.scss';
 
@@ -100,7 +101,7 @@ export default function Select({
   if (helpText) {
     describedBy.push(helpTextID(id));
   }
-  if (error && typeof error === 'string') {
+  if (error) {
     describedBy.push(errorID(id));
   }
 

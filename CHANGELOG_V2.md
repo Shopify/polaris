@@ -6,6 +6,23 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-rc.1 - 2018-05-01
+
+### Bug fixes
+
+* Fixed linkComponent bug on app provider where custom links could not be created (thanks to [@Siic19](https://github.com/Siic19) for the [original issue](https://github.com/Shopify/polaris/issues/295))
+
+### Enhancements
+
+* Added error prop to ChoiceList
+* Added 'Sticky' Bulk Actions to Resource List
+* Fixed alignment on ResourceList Actions (thanks to [@mbaumbach](https://github.com/mbaumbach) for the [original issue](https://github.com/Shopify/polaris/issues/302))
+
+### Breaking changes
+
+* TextField, Select and Checkbox now accept the types string or react element for the error prop
+* Added `openFileDialog` and `onFileDialogClose` props to use instead of the public `open` instance method on Drop zone
+
 ## 2.0.0-beta.18 - 2018-04-20
 
 ### Breaking changes
@@ -18,6 +35,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Fixed horizontal scrollbar and footer bottom alignment on Data Table
 * Fixed Sass variable interpolation on ResourceList Item. (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/299))
 * Fixed sortable column heading alignment when content type is "text". (thanks [@FelixTellmann](https://github.com/FelixTellmann) for the [original issue](https://github.com/Shopify/polaris/issues/300))
+
+### Breaking changes
+
+* Moved resourceName prop from ResourceList.FilterControl to context
 
 ## 2.0.0-beta.17 - 2018-04-12
 

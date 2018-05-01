@@ -73,6 +73,8 @@ export interface Props {
   children?: string | React.ReactNode;
   /** Allows a file to be dropped anywhere on the page */
   dropOnPage?: boolean;
+  /** Sets the default file dialog state */
+  openFileDialog?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -89,8 +91,8 @@ export interface Props {
   onDragEnter?(): void;
   /** Callback triggered when one or more files left the drag area */
   onDragLeave?(): void;
-  /** Public method to trigger the default file picker */
-  open?(): void;
+  /** Callback triggered when the file dialog is canceled */
+  onFileDialogClose?(): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -155,6 +157,14 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     if (props.errorOverlayText && errorOverlayText !== props.errorOverlayText) {
       this.setState({errorOverlayText: props.errorOverlayText});
+    }
+
+    if (props.openFileDialog) {
+      this.open();
+
+      if (this.props.onFileDialogClose) {
+        this.props.onFileDialogClose();
+      }
     }
   }
 
@@ -275,7 +285,11 @@ export class DropZone extends React.Component<CombinedProps, State> {
   }
 
   @autobind
-  public open() {
+  private open() {
+    if (!this.fileInputNode) {
+      return;
+    }
+
     this.fileInputNode.click();
   }
 

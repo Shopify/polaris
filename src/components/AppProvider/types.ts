@@ -4,6 +4,7 @@ import {ValidationMap} from 'react';
 import Intl from './Intl';
 import Link from './Link';
 import EASDK from './EASDK';
+import StickyManager from './StickyManager';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
@@ -11,7 +12,7 @@ export const polarisAppProviderContextTypes: ValidationMap<any> = {
 };
 
 export interface WithAppProviderProps {
-  polaris: {intl: Intl; link: Link; easdk: EASDK};
+  polaris: {intl: Intl; link: Link; easdk: EASDK; stickyManager: StickyManager};
 }
 
 export interface TranslationDictionary {

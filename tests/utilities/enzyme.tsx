@@ -4,7 +4,6 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 
 import {createPolarisContext, polarisAppProviderContextTypes} from '../../src/components/AppProvider';
-
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
 export function findByTestID(root: ReactWrapper<any, any>, id: string) {

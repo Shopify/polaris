@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import {Error} from '../../types';
 import Icon from '../Icon';
 import * as styles from './Choice.scss';
-
-export type Error = boolean | string;
 
 export interface Props {
   id: string;
@@ -40,15 +39,14 @@ export default function Choice({
     </div>
   ) : null;
 
-  const errorMarkup =
-    typeof error === 'string' ? (
-      <div className={styles.Error} id={errorID(id)}>
-        <div className={styles.ErrorIcon}>
-          <Icon source="alert" />
-        </div>
-        {error}
+  const errorMarkup = error && (
+    <div className={styles.Error} id={errorID(id)}>
+      <div className={styles.ErrorIcon}>
+        <Icon source="alert" />
       </div>
-    ) : null;
+      {error}
+    </div>
+  );
 
   const descriptionMarkup =
     helpTextMarkup || errorMarkup ? (

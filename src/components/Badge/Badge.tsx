@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import VisuallyHidden from '../VisuallyHidden';
 import * as styles from './Badge.scss';
 
@@ -15,34 +19,69 @@ export interface Props {
   progress?: Progress;
 }
 
+export type CombinedProps = Props & WithAppProviderProps;
+
 const PROGRESS_LABELS = {
-  incomplete: 'Incomplete',
-  partiallyComplete: 'Partially complete',
-  complete: 'Complete',
+  incomplete: 'incomplete',
+  partiallyComplete: 'partiallyComplete',
+  complete: 'complete',
 };
 
 const STATUS_LABELS = {
-  info: 'Info',
-  success: 'Success',
-  warning: 'Warning',
-  attention: 'Attention',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  attention: 'attention',
 };
 
-export default function Badge({children, status, progress}: Props) {
+function Badge({children, status, progress, polaris: {intl}}: CombinedProps) {
   const className = classNames(
     styles.Badge,
     status && styles[variationName('status', status)],
     progress && styles[variationName('progress', progress)],
   );
 
+  let progressMarkup;
+  switch (progress) {
+    case PROGRESS_LABELS.incomplete:
+      progressMarkup = intl.translate(
+        'Polaris.Badge.PROGRESS_LABELS.incomplete',
+      );
+      break;
+    case PROGRESS_LABELS.partiallyComplete:
+      progressMarkup = intl.translate(
+        'Polaris.Badge.PROGRESS_LABELS.partiallyComplete',
+      );
+      break;
+    case PROGRESS_LABELS.complete:
+      progressMarkup = intl.translate('Polaris.Badge.PROGRESS_LABELS.complete');
+      break;
+  }
+
   const pipMarkup = progress ? (
     <span className={styles.Pip}>
-      <VisuallyHidden>{PROGRESS_LABELS[progress]}</VisuallyHidden>
+      <VisuallyHidden>{progressMarkup}</VisuallyHidden>
     </span>
   ) : null;
 
+  let statusMarkup;
+  switch (status) {
+    case STATUS_LABELS.info:
+      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.info');
+      break;
+    case STATUS_LABELS.success:
+      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.success');
+      break;
+    case STATUS_LABELS.warning:
+      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.warning');
+      break;
+    case STATUS_LABELS.attention:
+      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.attention');
+      break;
+  }
+
   const statusLabelMarkup = status ? (
-    <VisuallyHidden>{STATUS_LABELS[status]}</VisuallyHidden>
+    <VisuallyHidden>{statusMarkup}</VisuallyHidden>
   ) : null;
 
   return (
@@ -53,3 +92,5 @@ export default function Badge({children, status, progress}: Props) {
     </span>
   );
 }
+
+export default withAppProvider<Props>()(Badge);
