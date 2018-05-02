@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 1.14.2 - 2018-05-02
+
+_This will be the last v1.x release outside of critical security fixes._
+
 ### Bug fixes
 
 * Add margin-left spacing to disclosure icon within Button component ([#1354](https://github.com/Shopify/polaris-react/pull/1354))
