@@ -17,7 +17,8 @@ $color-palette-data: map-extend($color-palette-data,
       'focused': rgba(223, 227, 232, .3),
       'active': rgba(179, 188, 245, .1),
       'selected': rgba(179, 188, 245, .15),
-      'subdued': rgba(249, 250, 251, 1)
+      'subdued': rgba(249, 250, 251, 1),
+      'disabled': rgba(249, 250, 251, 1)
     )
   )
 );
