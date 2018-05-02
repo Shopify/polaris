@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Enhancements
+
+* Added disabled interactive state to the state mixin([#1355](https://github.com/Shopify/polaris-react/pull/1355))
+
 ## 2.0.0-rc.1 - 2018-05-01
 
 ### Bug fixes
