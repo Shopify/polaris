@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {IconableAction, DisableableAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
-import {Props as ItemProps} from '../ActionList/Item';
+import {ItemDescriptor} from '../ActionList/types';
 import Breadcrumbs from '../Breadcrumbs';
 import Pagination from '../Pagination';
 import DisplayText from '../DisplayText';
@@ -19,9 +19,9 @@ export type SecondaryAction = IconableAction & DisableableAction;
 export interface ActionGroup {
   title: string;
   icon?: IconableAction['icon'];
-  actions: ItemProps[];
+  actions: ItemDescriptor[];
   details?: React.ReactNode;
-  onActionAnyItem?: ItemProps['onAction'];
+  onActionAnyItem?: ItemDescriptor['onAction'];
 }
 
 export interface Props extends HeaderProps {}
