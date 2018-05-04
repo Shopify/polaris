@@ -14,8 +14,25 @@ $item-spacing: spacing(tight);
   margin-left: (-1 * $item-spacing);
 }
 
+.Item {
+  margin-top: $item-spacing;
+  margin-left: $item-spacing;
+}
+
+.Item-plain {
+  &:not(:first-child) {
+    margin-left: $item-spacing + $plain-horizontal-spacing;
+  }
+
+  &:not(:last-child) {
+    margin-right: $plain-horizontal-spacing;
+  }
+}
+
 .segmented {
   display: flex;
+  margin-top: 0;
+  margin-left: 0;
 
   // This is a violation of our component model, but it's the cleanest
   // way to remove the border radii on connected elements.
@@ -24,6 +41,8 @@ $item-spacing: spacing(tight);
   .Item {
     position: relative;
     z-index: z-index(item, $stacking-order);
+    margin-top: 0;
+    margin-left: 0;
 
     &:not(:first-child) {
       margin-left: -1px;
@@ -48,20 +67,5 @@ $item-spacing: spacing(tight);
 
   .Item-focused {
     z-index: z-index(focused, $stacking-order);
-  }
-}
-
-.Item {
-  margin-top: $item-spacing;
-  margin-left: $item-spacing;
-}
-
-.Item-plain {
-  &:not(:first-child) {
-    margin-left: $item-spacing + $plain-horizontal-spacing;
-  }
-
-  &:not(:last-child) {
-    margin-right: $plain-horizontal-spacing;
   }
 }

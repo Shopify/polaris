@@ -12,7 +12,7 @@
   &:hover {
     @include state(hover);
 
-    &:not(.persistActions){
+    &:not(.persistActions) {
       .Actions {
         display: flex;
       }
@@ -62,7 +62,8 @@
   box-shadow: none;
 }
 
-.Link, .Button {
+.Link,
+.Button {
   position: absolute;
   z-index: resource-list-item(clickable-stacking-order);
   top: 0;
@@ -102,7 +103,10 @@
   min-height: resource-list-item(min-height);
   justify-content: center;
   align-items: center;
-  margin: (-1 * resource-list-item(padding)) spacing(extra-tight) (-1 * resource-list-item(padding)) resource-list-item(control-indent);
+  margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
+    (
+      -1 * resource-list-item(padding)
+    ) resource-list-item(control-indent);
   display: flex;
 }
 
@@ -154,14 +158,14 @@
 
 .persistActions {
   .Actions {
+    position: relative;
     display: flex;
     flex: 0 0 auto;
+    flex-basis: auto;
     align-items: center;
     margin-top: 0;
     margin-left: spacing();
     pointer-events: initial;
-    position: relative;
-    flex-basis: auto;
 
     @include page-content-when-partially-condensed {
       display: none;
@@ -170,13 +174,13 @@
 }
 
 .Disclosure {
-  display: none;
-  pointer-events: initial;
-  width: resource-list-item(disclosure-width);
-  min-height: resource-list-item(min-height);
   position: relative;
   top: -1 * resource-list-item(padding);
   right: -1 * spacing();
+  display: none;
+  width: resource-list-item(disclosure-width);
+  min-height: resource-list-item(min-height);
+  pointer-events: initial;
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     right: -1 * spacing(loose);
@@ -184,7 +188,7 @@
 
   @include page-content-when-partially-condensed {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 }

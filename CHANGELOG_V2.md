@@ -8,7 +8,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
-Upgrade to TypeScript 2.8.3 ([#1353](https://github.com/Shopify/polaris-react/pull/#1353))
+* Upgrade to TypeScript 2.8.3 ([#1353](https://github.com/Shopify/polaris-react/pull/#1353))
+* Added disabled interactive state to the state mixin([#1355](https://github.com/Shopify/polaris-react/pull/1355))
 
 ## 2.0.0-rc.1 - 2018-05-01
 

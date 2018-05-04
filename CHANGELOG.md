@@ -6,7 +6,15 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
-* Added external link to secondary action for banner. Thank you to ([Andrew Cargill](https://github.com/cargix1)) for the issue ([#236](https://github.com/Shopify/polaris/issues/236))
+## 1.14.2 - 2018-05-02
+
+_This will be the last v1.x release outside of critical security fixes._
+
+### Bug fixes
+
+* Add margin-left spacing to disclosure icon within Button component ([#1354](https://github.com/Shopify/polaris-react/pull/1354))
+* Remove margins on segmented ButtonGroup ([#1352](https://github.com/Shopify/polaris-react/pull/1352))
+* Fixed text alignment of link so that it inherits from its parent node ([#1343](https://github.com/Shopify/polaris-react/pull/1343#discussion_r185069280))
 
 ## 1.14.1 - 2018-04-10
 
