@@ -988,7 +988,7 @@ You can also [jump straight to the end result](#study-end-result).
 
 ### Development setup (optional)
 
-If you want to follow along with the code, our setup will be based on Create React App. If you’ve never used Create React App, you can get started by using `npx` (NPM 5.2+):
+If you want to follow along with the code, our setup will be based on Create React App. If you’ve never used Create React App, you can get started by using `npx` (npm 5.2+):
 
 ```bash
 npx create-react-app my-app
@@ -1029,7 +1029,7 @@ export default App;
 
 You should now see “Hello World” in your browser.
 
-Next, we need to add the React Polaris library to our project. We’ll install it using NPM:
+Next, we need to add the React Polaris library to our project. We’ll install it using npm:
 
 ```bash
 npm install @shopify/polaris@">=2.0.0-beta.7" --save
