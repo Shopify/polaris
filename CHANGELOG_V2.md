@@ -6,6 +6,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-rc.3 - 2018-05-04
+
+### Enhancements
+
+* Documentation improvements and fixes
+
 ## 2.0.0-rc.2 - 2018-05-04
 
 ### Enhancements
