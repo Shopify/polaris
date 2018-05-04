@@ -1032,7 +1032,7 @@ You should now see “Hello World” in your browser.
 Next, we need to add the React Polaris library to our project. We’ll install it using npm:
 
 ```bash
-npm install @shopify/polaris@">=2.0.0-beta.7" --save
+npm install @shopify/polaris --save
 ```
 
 The last thing before we start building is to import the Polaris styles and the components we’ll need.
