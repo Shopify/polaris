@@ -898,7 +898,7 @@ Filter control showing a state with applied filters and an additional action (op
 | onSearchChange  | function(searchvalue: string, id: string): void | Callback when the search term field is changed  |
 | onFiltersChange | function(appliedFilters: AppliedFilter[]): void | Callback when the applied filters are changed   |
 
-<a name="subcomponent-filter-best-practices"></a>
+<a name="subcomponent-filter-control-best-practices"></a>
 
 ### Filter control best practices
 
@@ -2297,7 +2297,7 @@ Filtering allows a resource list to be narrowed based on one or more criteria. T
 For filtering guidelines, see the corresponding section under the resource list filter control subcomponent:
 
 * [Resource list filter control best practices](#subcomponent-filter-control-best-practices)
-* [Resource list filter control content guidelines](#subcomponent-filter-control-best-practices)
+* [Resource list filter control content guidelines](#subcomponent-filter-control-content-guidelines)
 
 <a name="study-filtering-applying"></a>
 
