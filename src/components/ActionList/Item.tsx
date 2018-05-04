@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
-import {IconableAction, DisableableAction} from '../../types';
+import {ItemDescriptor} from './types';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 
 import * as styles from './ActionList.scss';
 
-export interface Props extends IconableAction, DisableableAction {
-  image?: string;
-}
+export type Props = ItemDescriptor;
 
 export default function Item({
   content,

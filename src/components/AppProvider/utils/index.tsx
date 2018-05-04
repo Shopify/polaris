@@ -159,17 +159,18 @@ export function createPolarisContext({
 }: AppProviderProps = {}) {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
-  const easdk = apiKey
-    ? new EASDK(
-        {
-          apiKey,
-          shopOrigin,
-          forceRedirect,
-          debug,
-        },
-        METADATA,
-      )
-    : undefined;
+  const easdk =
+    apiKey && shopOrigin
+      ? new EASDK(
+          {
+            apiKey,
+            shopOrigin,
+            forceRedirect,
+            debug,
+          },
+          METADATA,
+        )
+      : undefined;
 
   return {
     polaris: {

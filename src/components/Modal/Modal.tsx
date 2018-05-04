@@ -244,9 +244,11 @@ export class Modal extends React.Component<CombinedProps, State> {
   @autobind
   private handleIFrameLoad(evt: React.SyntheticEvent<HTMLIFrameElement>) {
     const iframe = evt.target as HTMLIFrameElement;
-    this.setState({
-      iframeHeight: iframe.contentWindow.document.body.scrollHeight,
-    });
+    if (iframe && iframe.contentWindow) {
+      this.setState({
+        iframeHeight: iframe.contentWindow.document.body.scrollHeight,
+      });
+    }
 
     const {onIFrameLoad} = this.props;
 

@@ -30,18 +30,19 @@ $spinner-size: rem(20px);
   &:first-child {
     // This compensates for the typical icon used in buttons being
     // inset within its bounding box.
-    margin-left: rem(-4px);
+    margin-left: -(spacing(extra-tight));
   }
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
     // inset within the viewbox (and makes it look like there is too much
     // spacing on the right of the button)
-    margin-right: rem(-8px);
+    margin-right: -(spacing(tight));
+    margin-left: spacing(extra-tight);
   }
 
   & + *:not(.Icon) {
-    margin-left: rem(4px);
+    margin-left: spacing(extra-tight);
   }
 }
 
