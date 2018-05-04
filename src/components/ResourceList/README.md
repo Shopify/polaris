@@ -1050,6 +1050,10 @@ import '@shopify/polaris/styles.css';
 ...
 ```
 
+<a name="study-basic-list"></a>
+
+### A basic resource list
+
 Let’s start with some sample data. In a real app the customer data would come from an API endpoint or as part of the initial payload from the server.
 
 ```jsx
