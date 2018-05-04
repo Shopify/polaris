@@ -542,7 +542,7 @@ Resource lists should:
 
 * Identify the type of resource, usually with a heading
 
-    <!-- usagelist -->
+  <!-- usagelist -->
 
   #### Do
 
@@ -552,11 +552,12 @@ Resource lists should:
   #### Don’t
 
   * _No heading_
-    <!-- end -->
+
+  <!-- end -->
 
 * Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-    <!-- usagelist -->
+  <!-- usagelist -->
 
   #### Do
 
@@ -565,7 +566,8 @@ Resource lists should:
   #### Don’t
 
   * Products
-    <!-- end -->
+
+  <!-- end -->
 
 * Follow the verb + noun formula for [bulk actions](#study-bulk-actions-content-guidelines)
 
@@ -957,7 +959,8 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 * Number of orders is greater than 0
 * order_count >= 10
-  <!-- end -->
+
+<!-- end -->
 
 ---
 
@@ -1185,7 +1188,8 @@ Resource lists don’t have column headings, so care must be taken to avoid ambi
 
     * 3
     * $492.76
-      <!-- end -->
+
+    <!-- end -->
 
 2.  If a value alone is ambiguous, like the number of orders and total spent, add text to make it clear. When possible, use a short phrase rather than a label with a colon.
 
@@ -1199,7 +1203,8 @@ Resource lists don’t have column headings, so care must be taken to avoid ambi
 
     * 3
     * Total orders: 3
-      <!-- end -->
+
+    <!-- end -->
 
 3.  If a content value is empty for a given item, use a phrase to describe the empty state. For a customer with no orders, use “No orders”. If the value is numeric, “0” may be used. Don’t indicated empty values with em dash (“—”).
 
@@ -1215,7 +1220,8 @@ Resource lists don’t have column headings, so care must be taken to avoid ambi
     #### Don’t
 
     * —
-      <!-- end -->
+
+    <!-- end -->
 
 ##### Using badges as content
 
@@ -1754,7 +1760,7 @@ Shortcut actions should:
 
 * Not include the noun from their label if the noun refers to the resource itself. For example, for a list of orders:
 
-    <!-- usagelist -->
+  <!-- usagelist -->
 
   #### Do
 
@@ -1763,11 +1769,12 @@ Shortcut actions should:
   #### Don’t
 
   * Start fulfilling order
-    <!-- end -->
+
+  <!-- end -->
 
 * Use the full verb + noun formula for actions that refer to another object.
 
-    <!-- usagelist -->
+  <!-- usagelist -->
 
   #### Do
 
@@ -1776,7 +1783,8 @@ Shortcut actions should:
   #### Don’t
 
   * Latest order
-    <!-- end -->
+
+  <!-- end -->
 
 ##### Building it
 
