@@ -56,7 +56,7 @@ export interface BaseProps {
 
 export interface Props extends BaseProps {}
 
-const PLACEHOLDER_VALUE = '__placeholder__';
+const PLACEHOLDER_VALUE = '';
 const getUniqueID = createUniqueIDFactory('Select');
 
 export default function Select({
@@ -84,12 +84,12 @@ export default function Select({
     optionsMarkup = groups.map(renderGroup);
   }
 
-  const isPlaceholder = value == null && placeholder != null;
+  const isPlaceholder = Boolean(!value && placeholder);
+
   const className = classNames(
     styles.Select,
     error && styles.error,
     disabled && styles.disabled,
-    isPlaceholder && styles.placeholder,
   );
 
   const handleChange = onChange
@@ -105,9 +105,11 @@ export default function Select({
     describedBy.push(errorID(id));
   }
 
-  const placeholderOption = isPlaceholder ? (
-    <option label={placeholder} value={PLACEHOLDER_VALUE} disabled hidden />
-  ) : null;
+  const placeholderOption = isPlaceholder && (
+    <option value={PLACEHOLDER_VALUE} disabled hidden>
+      {placeholder}
+    </option>
+  );
 
   // When we have no onChange, React will complain about providing a `value`
   // (and vice versa for `defaultValue`)

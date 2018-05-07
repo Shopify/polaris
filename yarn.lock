@@ -109,6 +109,12 @@
   version "21.1.5"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-21.1.5.tgz#3db93d069d12602ca115d3604550e15131d8eb7a"
 
+"@types/lodash-decorators@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/lodash-decorators/-/lodash-decorators-4.0.0.tgz#c09e271f1c4d723d59d1ab2df7bc361fb960341c"
+  dependencies:
+    lodash-decorators "*"
+
 "@types/lodash@^4.14.108":
   version "4.14.108"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.108.tgz#02656af3add2e5b3174f830862c47421c00ef817"
@@ -5375,6 +5381,12 @@ locate-path@^2.0.0:
   dependencies:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
+
+lodash-decorators@*:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/lodash-decorators/-/lodash-decorators-5.0.0.tgz#daf8e6888a7831e6d4088db0ed39ecdc11ec85e5"
+  dependencies:
+    tslib "^1.7.1"
 
 lodash-decorators@^4.3.5:
   version "4.4.1"

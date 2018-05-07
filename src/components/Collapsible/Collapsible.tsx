@@ -12,13 +12,11 @@ import {
   WithAppProviderProps,
 } from '../../components/AppProvider';
 
-import pkg from '../../../package.json';
-
 import * as styles from './Collapsible.scss';
 
 export interface Props {
   /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */
-  id?: string;
+  id: string;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
   /** The content to display inside the collapsible. */
@@ -132,7 +130,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
   }
 
   render() {
-    const {id, open, children, polaris: {intl}} = this.props;
+    const {id, open, children} = this.props;
     const {animationState, height} = this.state;
 
     const animating = animationState !== 'idle';
@@ -146,23 +144,6 @@ export class Collapsible extends React.Component<CombinedProps, State> {
     const displayHeight = collapsibleHeight(open, animationState, height);
 
     const content = animating || open ? children : null;
-    /* TODO before v2 release: remove this conditional and line 9 */
-    if (!id && pkg.version[0] === '1') {
-      /* eslint-disable no-console */
-      console.group(
-        intl.translate('Polaris.Collapsible.deprecationMessage.group'),
-      );
-      console.info(
-        intl.translate('Polaris.Collapsible.deprecationMessage.info', {
-          pkgVersion: pkg.version,
-        }),
-      );
-      console.warn(
-        intl.translate('Polaris.Collapsible.deprecationMessage.warn'),
-      );
-      console.groupEnd();
-      /* eslint-enable no-console */
-    }
 
     return (
       <div

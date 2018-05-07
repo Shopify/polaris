@@ -44,10 +44,6 @@ $input-vertical-adjust: rem(1px);
 }
 
 .placeholder {
-  .Input {
-    color: color('ink', 'lightest');
-  }
-
   &.error .Input {
     // This is the only place this color is used.
     // stylelint-disable-next-line color-no-hex

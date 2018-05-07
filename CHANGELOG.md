@@ -6,7 +6,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
-## 2.0.0 - 2018-05-04
+## 2.0.0 - 2018-05-07
 
 Summary: This is the first major version of Polaris React since launch. Included in this release are:
 
@@ -31,6 +31,14 @@ The `AppProvider` component is now required in your app for Polaris components t
 ##### Upgrade instructions
 
 Wrap your application in the `AppProvider` component.
+
+#### EmbeddedApp component has been removed
+
+The `EmbeddedApp` component has been removed. The `AppProvider` component now accepts the configuration needed to intialize an embedded app.
+
+##### Upgrade instructions
+
+Use the `AppProvider` component with the `apiKey` and `shopOrigin` props.
 
 #### [Resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list#navigation)
 
@@ -128,6 +136,7 @@ The app provider is a required component that enables sharing global application
 * Fixed overflow bug causing TextFields border to be cut off
 * Allowed specific props in TextField Component to pass through properties on the input
 * Fixed ActionList component to provide section dividers when a title was not provided
+* Fixed an issue in the select component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers
 
 ## 1.14.2 - 2018-05-02
 
