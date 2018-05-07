@@ -32,6 +32,14 @@ The `AppProvider` component is now required in your app for Polaris components t
 
 Wrap your application in the `AppProvider` component.
 
+#### EmbeddedApp component has been removed
+
+The `EmbeddedApp` component has been removed. The `AppProvider` component now accepts the configuration needed to intialize an embedded app.
+
+##### Upgrade instructions
+
+Use the `AppProvider` component with the `apiKey` and `shopOrigin` props.
+
 #### [Resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list#navigation)
 
 Shopify is organized around objects that represent a merchant’s business, such as customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects resources.
