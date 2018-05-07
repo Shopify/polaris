@@ -38,13 +38,18 @@ const changelog = resolve(polarisPrivate, 'CHANGELOG.md');
 // isMajorPrerelease('2.0.0-beta.1') => true
 // isMajorPrerelease('3.0.0-alpha') => true
 function isMajorPrerelease(version) {
-  return semver.prerelease(version) &&
+  return (
+    // TODO remove the following line once v2.0.0 is out
+    semver.major(version) > 2 &&
+    semver.prerelease(version) &&
     semver.minor(version) === 0 &&
-    semver.patch(version) === 0;
+    semver.patch(version) === 0
+  );
 }
 
 const baseBranch = isMajorPrerelease(packageVersion)
-  ? `v${semver.major(packageVersion)}` : 'master';
+  ? `v${semver.major(packageVersion)}`
+  : 'master';
 
 // Files to 🔥
 const privateFiles = [
@@ -79,9 +84,18 @@ const privateScripts = [
 
 mkdir(sandbox);
 const execOpts = {stdio: 'inherit'};
-execSync(`git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${PRIVATE}.git ${polarisPrivate}`, execOpts);
-execSync(`git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${PUBLIC}.git ${polarisPublic}`, execOpts);
-execSync(`git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/polaris-styleguide.git ${polarisStyleguide}`, execOpts);
+execSync(
+  `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${PRIVATE}.git ${polarisPrivate}`,
+  execOpts,
+);
+execSync(
+  `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${PUBLIC}.git ${polarisPublic}`,
+  execOpts,
+);
+execSync(
+  `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/polaris-styleguide.git ${polarisStyleguide}`,
+  execOpts,
+);
 
 // Strip package.json scripts
 const packageJSON = require(polarisPackage);
@@ -110,30 +124,40 @@ const hiddenFilesToKeepInPublicRepository = [
 const hiddenFilesGlob = `{${hiddenFilesToKeepInPublicRepository}}`;
 
 // 🔥 ./sandbox/polaris
-rm('-rf', [
-  join(polarisPublic, '*'),
-  join(polarisPublic, hiddenFilesGlob),
-]);
+rm('-rf', [join(polarisPublic, '*'), join(polarisPublic, hiddenFilesGlob)]);
 
 // There should always be a .git folder as a match
 const emptyRepoFiles = glob.sync(join(polarisPublic, '{.*,*}'));
 if (emptyRepoFiles.length !== 1) {
-  throw new Error(`Stale files exist in the public Polaris repo. Found ${JSON.stringify(emptyRepoFiles)}.`);
+  throw new Error(
+    `Stale files exist in the public Polaris repo. Found ${JSON.stringify(
+      emptyRepoFiles,
+    )}.`,
+  );
 }
 if (basename(emptyRepoFiles[0]) !== '.git') {
-  throw new Error(`.git directory must exist to preserve commit history. Found ${JSON.stringify(emptyRepoFiles)}.`);
+  throw new Error(
+    `.git directory must exist to preserve commit history. Found ${JSON.stringify(
+      emptyRepoFiles,
+    )}.`,
+  );
 }
 
-cp('-rf', [
-  resolve(polarisPrivate, '*'),
-  resolve(polarisPrivate, hiddenFilesGlob),
-], polarisPublic);
+cp(
+  '-rf',
+  [resolve(polarisPrivate, '*'), resolve(polarisPrivate, hiddenFilesGlob)],
+  polarisPublic,
+);
 
 // Dump sandbox/polaris-react/public into sandbox/polaris
-cp('-rf', [
-  resolve(polarisPrivate, 'public', '.github'),
-  resolve(polarisPrivate, 'public', '*'),
-], polarisPublic);
+cp(
+  '-rf',
+  [
+    resolve(polarisPrivate, 'public', '.github'),
+    resolve(polarisPrivate, 'public', '*'),
+  ],
+  polarisPublic,
+);
 rm('-rf', join(polarisPublic, 'public'));
 rm('-rf', polarisPrivate);
 
@@ -141,21 +165,30 @@ rm('-rf', polarisPrivate);
 const publicReadme = resolve(polarisPublic, 'README.md');
 writeFileSync(
   publicReadme,
-  readFileSync(publicReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageVersion),
+  readFileSync(publicReadme, 'utf8').replace(
+    /\{\{VERSION\}\}/g,
+    packageVersion,
+  ),
 );
 
 // Replace variables in the component README with the appropriate details
 const componentReadme = resolve(polarisPublic, './src/components/README.md');
 writeFileSync(
   componentReadme,
-  readFileSync(componentReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageVersion),
+  readFileSync(componentReadme, 'utf8').replace(
+    /\{\{VERSION\}\}/g,
+    packageVersion,
+  ),
 );
 
 // Used to make git operations in polarisPublic dir instead of current working dir
 const gitDirectoryOverride = `--git-dir ${polarisPublic}/.git --work-tree=${polarisPublic}`;
 const shopifyPolarisBotGitOverride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
 execSync(`git ${gitDirectoryOverride} add .`, execOpts);
-execSync(`${shopifyPolarisBotGitOverride} git ${gitDirectoryOverride} commit --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}"`, execOpts);
+execSync(
+  `${shopifyPolarisBotGitOverride} git ${gitDirectoryOverride} commit --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}"`,
+  execOpts,
+);
 execSync(`git ${gitDirectoryOverride} tag ${releaseVersion}`, execOpts);
 execSync(`git ${gitDirectoryOverride} push origin ${baseBranch}`);
 execSync(`git ${gitDirectoryOverride} push --tags`);
@@ -167,14 +200,31 @@ console.log(`Done: Succesfully pushed to ${PUBLIC}`);
 
 // Used to make git operations in polarisStyleguide dir instead of current working dir
 const gitPolarisStyleguideDirectoryOverride = `--git-dir ${polarisStyleguide}/.git --work-tree=${polarisStyleguide}`;
-execSync(`git ${gitPolarisStyleguideDirectoryOverride} checkout -b update-polaris-${releaseVersion}`, execOpts);
-execSync(`yarn upgrade @shopify/polaris@${releaseVersion.replace('v', '')} --no-progress --ignore-engines`, {cwd: polarisStyleguide});
-execSync(`git ${gitPolarisStyleguideDirectoryOverride} add package.json yarn.lock`, execOpts);
-execSync(`${shopifyPolarisBotGitOverride} git ${gitPolarisStyleguideDirectoryOverride} commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`, execOpts);
-execSync(`git ${gitPolarisStyleguideDirectoryOverride} push origin update-polaris-${releaseVersion}`, execOpts);
+execSync(
+  `git ${gitPolarisStyleguideDirectoryOverride} checkout -b update-polaris-${releaseVersion}`,
+  execOpts,
+);
+execSync(
+  `yarn upgrade @shopify/polaris@${releaseVersion.replace(
+    'v',
+    '',
+  )} --no-progress --ignore-engines`,
+  {cwd: polarisStyleguide},
+);
+execSync(
+  `git ${gitPolarisStyleguideDirectoryOverride} add package.json yarn.lock`,
+  execOpts,
+);
+execSync(
+  `${shopifyPolarisBotGitOverride} git ${gitPolarisStyleguideDirectoryOverride} commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
+  execOpts,
+);
+execSync(
+  `git ${gitPolarisStyleguideDirectoryOverride} push origin update-polaris-${releaseVersion}`,
+  execOpts,
+);
 
-const updateBody =
-`
+const updateBody = `
 ## Version ${releaseVersion} of @shopify/polaris just got published!
 
 See what’s new: https://github.com/Shopify/polaris/releases/tag/${releaseVersion}
@@ -214,5 +264,12 @@ const updatePostObject = {
   base: baseBranch,
 };
 
-execSync(`curl -d '${JSON.stringify(updatePostObject)}' -X POST https://api.github.com/repos/shopify/polaris-styleguide/pulls?access_token=${polarisBotToken}`, execOpts);
-console.log('Done: a pull request was opened at https://github.com/shopify/polaris-styleguide/pulls');
+execSync(
+  `curl -d '${JSON.stringify(
+    updatePostObject,
+  )}' -X POST https://api.github.com/repos/shopify/polaris-styleguide/pulls?access_token=${polarisBotToken}`,
+  execOpts,
+);
+console.log(
+  'Done: a pull request was opened at https://github.com/shopify/polaris-styleguide/pulls',
+);
