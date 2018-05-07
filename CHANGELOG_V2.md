@@ -10,6 +10,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+* Fixed an issue in the select component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers ([#1282](https://github.com/Shopify/polaris-react/pull/1282))
 * Fixed missing dependency for lodash-decorators ([#1362](https://github.com/Shopify/polaris-react/pull/#1362)) (thanks to [@paul-phan](https://github.com/paul-phan) for the [original issue](https://github.com/Shopify/polaris/issues/310))
 
 ## 2.0.0-rc.3 - 2018-05-04
