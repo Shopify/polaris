@@ -23,14 +23,6 @@
       "undo": "Undo"
     },
 
-    "Collapsible": {
-      "deprecationMessage": {
-        "group": "Polaris",
-        "info": "You are currently using version {pkgVersion}.",
-        "warn": "[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward."
-      }
-    },
-
     "DropZone": {
       "overlayTextFile": "Drop file to upload",
       "overlayTextImage": "Drop image to upload",

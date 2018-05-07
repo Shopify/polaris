@@ -130,7 +130,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
   }
 
   render() {
-    const {id, open, children, polaris: {intl}} = this.props;
+    const {id, open, children} = this.props;
     const {animationState, height} = this.state;
 
     const animating = animationState !== 'idle';
