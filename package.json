@@ -64,6 +64,7 @@
     "@types/enzyme": "^2.8.12",
     "@types/jest": "^21.1.2",
     "@types/lodash": "^4.14.108",
+    "@types/lodash-decorators": "^4.0.0",
     "@types/node": "^8.0.0",
     "@types/react-hot-loader": "^3.0.6",
     "archiver": "^2.1.0",
@@ -154,6 +155,7 @@
     "core-js": "^2.5.1",
     "hoist-non-react-statics": "^2.5.0",
     "lodash": "^4.17.4",
+    "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.3.0",
     "tslib": "^1.8.0"
