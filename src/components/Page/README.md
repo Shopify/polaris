@@ -33,11 +33,11 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 The page component should:
 
-- Always provide a title for the page header.
-- Always provide breadcrumbs when a page has a parent page.
-- Be organized around a primary activity. If that primary activity is a single action, provide it as a primary button in the page header.
-- Provide other page-level actions as secondary actions in the page header.
-- When the page represents an object of a certain type, provide pagination links to the previous and next object of the same type.
+* Always provide a title for the page header.
+* Always provide breadcrumbs when a page has a parent page.
+* Be organized around a primary activity. If that primary activity is a single action, provide it as a primary button in the page header.
+* Provide other page-level actions as secondary actions in the page header.
+* When the page represents an object of a certain type, provide pagination links to the previous and next object of the same type.
 
 ---
 
@@ -47,16 +47,16 @@ The page component should:
 
 Titles should:
 
-- Describe the page in as few words as possible.
-- Be the name of the object type (pluralized) when the page is a list of objects. For a list of orders, the page title should be “Orders”.
-- Not be truncated.
+* Describe the page in as few words as possible.
+* Be the name of the object type (pluralized) when the page is a list of objects. For a list of orders, the page title should be “Orders”.
+* Not be truncated.
 
 ### App icon
 
 App icons should:
 
-- Provide their app icon
-- Only be provided for pages that are part of a Shopify app
+* Provide their app icon
+* Only be provided for pages that are part of a Shopify app
 
 ### Breadcrumbs
 
@@ -67,43 +67,53 @@ The content of each breadcrumb link should be the title of the page to which it 
 Page header action labels should be:
 
 * Clear and predictable: merchants should be able to anticipate what will
-happen when they click a page action. Never deceive a merchant by mislabeling an action.
+  happen when they click a page action. Never deceive a merchant by mislabeling an action.
 
 * Action-led: they should always lead with a strong verb that encourages
-action. To provide enough context to merchants, use the {verb}+{noun} format.
+  action. To provide enough context to merchants, use the {verb}+{noun} format.
 
 <!-- usagelist -->
+
 #### Do
-- Create order
-- View in Postmates
+
+* Create order
+* View in Postmates
 
 #### Don’t
-- Create
-- Postmates deliveries
-<!-- end -->
 
-* Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
+* Create
+* Postmates deliveries
+  <!-- end -->
 
-    In the context of the orders list page:
+- Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
+
+  In the context of the orders list page:
 
 <!-- usagelist -->
+
 #### Do
-- Import
-- Export
+
+* Import
+* Export
 
 #### Don’t
-- Import orders
-- Export orders
-<!-- end -->
 
-* Scannable: avoid unnecessary words and articles such as the, an, or a.
+* Import orders
+* Export orders
+  <!-- end -->
+
+- Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usageblock -->
+
 #### Do
+
 Add menu item
 
 #### Don’t
+
 Add a menu item
+
 <!-- end -->
 
 ## Examples
@@ -114,15 +124,10 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 
 ```jsx
 <Page
-  breadcrumbs={[
-    {content: 'Products'}
-  ]}
+  breadcrumbs={[{content: 'Products'}]}
   title="Jar With Lock-Lid"
   primaryAction={{content: 'Save', disabled: true}}
-  secondaryActions={[
-    {content: 'Duplicate'},
-    {content: 'View on your store'},
-  ]}
+  secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
   pagination={{
     hasPrevious: true,
     hasNext: true,
@@ -138,9 +143,7 @@ Use when a primary action functions better as part of the page content instead o
 
 ```jsx
 <Page
-  breadcrumbs={[
-    {content: 'Orders'}
-  ]}
+  breadcrumbs={[{content: 'Orders'}]}
   title="#1085"
   secondaryActions={[
     {content: 'Print'},
@@ -154,7 +157,9 @@ Use when a primary action functions better as part of the page content instead o
 >
   <Card sectioned title="Fulfill order">
     <Stack alignment="center">
-      <Stack.Item fill><p>Buy postage and ship remaining 2 items</p></Stack.Item>
+      <Stack.Item fill>
+        <p>Buy postage and ship remaining 2 items</p>
+      </Stack.Item>
       <Button primary>Continue</Button>
     </Stack>
   </Card>
@@ -167,14 +172,15 @@ Use when a secondary action links to another website. Actions marked external op
 
 ```jsx
 <Page
-  title='Jar With Lock-Lid'
-  primaryAction={{content: 'Save', disabled: true,}}
+  title="Jar With Lock-Lid"
+  primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[
     {
       content: 'Promote',
       external: true,
       icon: 'external',
-      url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
+      url:
+        'https://www.facebook.com/business/learn/facebook-page-build-audience',
     },
   ]}
 >
@@ -188,9 +194,7 @@ Use when the page doesn’t represent a list of objects or a detail view for an 
 
 ```jsx
 <Page
-  breadcrumbs={[
-    {content: 'Settings'}
-  ]}
+  breadcrumbs={[{content: 'Settings'}]}
   title="General"
   primaryAction={{content: 'Save'}}
 >
@@ -207,9 +211,7 @@ Use for layouts that benefit from more screen width, such as wide tables or list
   fullWidth
   title="Orders"
   primaryAction={{content: 'Create order'}}
-  secondaryActions={[
-    {content: 'Export'},
-  ]}
+  secondaryActions={[{content: 'Export'}]}
   pagination={{
     hasNext: true,
   }}
@@ -225,16 +227,11 @@ Use a single column layout if the page supports a single unified task. When the 
 ```jsx
 <Page
   singleColumn
-  breadcrumbs={[
-    {content: 'Orders'}
-  ]}
+  breadcrumbs={[{content: 'Orders'}]}
   title="Add payment method"
   primaryAction={{content: 'Save', disabled: true}}
 >
-  <Card
-    title="Credit card"
-    sectioned
-  >
+  <Card title="Credit card" sectioned>
     <p>Credit card information</p>
   </Card>
   <PageActions
@@ -255,7 +252,7 @@ Use action groups for sets of actions that relate to one another, particularly w
     {
       title: 'Promote',
       actions: [
-        {content: 'Share on Facebook', onAction: this.performFacebookShare}
+        {content: 'Share on Facebook', onAction: this.performFacebookShare},
       ],
     },
   ]}
@@ -269,10 +266,7 @@ Use action groups for sets of actions that relate to one another, particularly w
 Use a separator for pages that have an [empty state](/components/structure/empty-state) as their only content, or that have an [annotated section](/components/structure/layout) as the first component on the page.
 
 ```jsx
-<Page
-  title="Settings"
-  separator
->
+<Page title="Settings" separator>
   <Layout>
     <Layout.AnnotatedSection title="Store details">
       <p>Annotated section content</p>
@@ -286,4 +280,4 @@ Use a separator for pages that have an [empty state](/components/structure/empty
 ## Related components
 
 * To lay out the content within a page, [use the layout component](/components/structure/layout)
-* When using `Page` within an [`EmbeddedApp` component](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK
+* When using `Page` within an [embedded app](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK
