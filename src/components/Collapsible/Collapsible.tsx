@@ -12,7 +12,7 @@ import * as styles from './Collapsible.scss';
 
 export interface Props {
   /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */
-  id?: string;
+  id: string;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
   /** The content to display inside the collapsible. */
