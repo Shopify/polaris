@@ -10,9 +10,9 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@shopify/polaris": "^1.0.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "@shopify/polaris": "^2.0.0-rc.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
     "babel-core": "6.24.0",
