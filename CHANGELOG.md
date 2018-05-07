@@ -6,7 +6,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
-## 2.0.0 - 2018-05-04
+## 2.0.0 - 2018-05-07
 
 Summary: This is the first major version of Polaris React since launch. Included in this release are:
 
