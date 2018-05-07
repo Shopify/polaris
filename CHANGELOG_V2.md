@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0-rc.4 - 2018-05-07
+
 ### Bug fixes
 
 * Fixed missing dependency for lodash-decorators ([#1362](https://github.com/Shopify/polaris-react/pull/#1362)) (thanks to [@paul-phan](https://github.com/paul-phan) for the [original issue](https://github.com/Shopify/polaris/issues/310))
