@@ -144,9 +144,10 @@ const COLORS_WITH_BACKDROPS = [
   'inkLighter',
 ];
 
+export type IconSource = SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS;
 export interface Props {
   /** The SVG contents to display in the icon */
-  source: SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS;
+  source: IconSource;
   /** Sets the color for the SVG fill */
   color?: Color;
   /** Show a backdrop behind the icon */
@@ -173,6 +174,7 @@ export default function Icon({
   const className = classNames(
     styles.Icon,
     color && styles[variationName('color', color)],
+    color && color !== 'white' && styles.isColored,
     backdrop && styles.hasBackdrop,
   );
 
@@ -188,6 +190,8 @@ export default function Icon({
         className={styles.Svg}
         viewBox={iconSource.viewBox}
         dangerouslySetInnerHTML={{__html: iconSource.body}}
+        focusable="false"
+        aria-hidden="true"
       />
     );
   }

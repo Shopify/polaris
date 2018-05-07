@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from './Item';
-import {TabDescriptor, getTabContent} from './Tabs';
+import {TabDescriptor} from './Tabs';
 import * as styles from './Tabs.scss';
 
 export interface Props {
@@ -17,7 +17,6 @@ export default class List extends React.PureComponent<Props, never> {
   render() {
     const {focusIndex, disclosureTabs, onClick = noop} = this.props;
     const tabs = disclosureTabs.map((tab, index) => {
-      const tabContent = getTabContent(tab);
       return (
         <Item
           key={tab.id}
@@ -28,7 +27,7 @@ export default class List extends React.PureComponent<Props, never> {
           // eslint-disable-next-line react/jsx-no-bind
           onClick={onClick.bind(null, tab.id)}
         >
-          {tabContent}
+          {tab.content}
         </Item>
       );
     });

@@ -1,10 +1,15 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {ReactComponent} from '@shopify/react-utilities/types';
 import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
+import Icon from '../Icon';
+import {Error} from '../../types';
 
 import * as styles from './ChoiceList.scss';
 
@@ -18,7 +23,7 @@ export interface ChoiceDescriptor {
 
 export type Choice = ChoiceDescriptor;
 
-export interface Props {
+export interface BaseProps {
   /** Label for list of choices */
   title?: string;
   /** Collection of choices */
@@ -31,32 +36,29 @@ export interface Props {
   allowMultiple?: boolean;
   /** Toggles display of the title */
   titleHidden?: boolean;
+  /** Display an error message */
+  error?: Error;
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
 }
 
-type ChooseableComponent = ReactComponent<{
-  label: string;
-  name?: string;
-  value?: string;
-  disabled?: boolean;
-  checked?: boolean;
-  helpText?: React.ReactNode;
-  onChange?(checked: boolean, id: string): void;
-}>;
+export interface Props extends BaseProps {}
+export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
+const getUniqueErrorID = createUniqueIDFactory('Error');
 
-export default function ChoiceList({
+function ChoiceList({
   title,
   titleHidden,
   allowMultiple,
   choices,
   selected,
   onChange = noop,
+  error,
   name = getUniqueID(),
-}: Props) {
-  const ControlComponent: ChooseableComponent = allowMultiple
+}: CombinedProps) {
+  const ControlComponent: typeof Checkbox | typeof RadioButton = allowMultiple
     ? Checkbox
     : RadioButton;
 
@@ -104,10 +106,20 @@ export default function ChoiceList({
     );
   });
 
+  const errorMarkup = error && (
+    <div className={styles.Error} id={getUniqueErrorID()}>
+      <div className={styles.ErrorIcon}>
+        <Icon source="alert" />
+      </div>
+      {error}
+    </div>
+  );
+
   return (
     <fieldset className={className}>
       {titleMarkup}
       <ul className={styles.Choices}>{choicesMarkup}</ul>
+      {errorMarkup}
     </fieldset>
   );
 }
@@ -128,3 +140,5 @@ function updateSelectedChoices(
 
   return selected.filter((selectedChoice) => selectedChoice !== value);
 }
+
+export default withAppProvider<Props>()(ChoiceList);

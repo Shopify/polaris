@@ -7,6 +7,10 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import * as styles from './Collapsible.scss';
 
@@ -18,6 +22,8 @@ export interface Props {
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
+
+export type CombinedProps = Props & WithAppProviderProps;
 
 export type AnimationState =
   | 'idle'
@@ -40,11 +46,12 @@ const CONTEXT_TYPES = {
   parentCollapsibleExpanding: PropTypes.bool,
 };
 
-export default class Collapsible extends React.Component<Props, State> {
+export class Collapsible extends React.Component<CombinedProps, State> {
   static contextTypes = CONTEXT_TYPES;
   static childContextTypes = CONTEXT_TYPES;
 
   context: Partial<Context>;
+
   state: State = {
     height: null,
     animationState: 'idle',
@@ -123,7 +130,7 @@ export default class Collapsible extends React.Component<Props, State> {
   }
 
   render() {
-    const {id, open, children} = this.props;
+    const {id, open, children, polaris: {intl}} = this.props;
     const {animationState, height} = this.state;
 
     const animating = animationState !== 'idle';
@@ -176,12 +183,14 @@ function collapsibleHeight(
   height?: number | null,
 ) {
   if (animationState === 'idle' && open) {
-    return open ? 'auto' : null;
+    return open ? 'auto' : undefined;
   }
 
   if (animationState === 'measuring') {
-    return open ? null : 'auto';
+    return open ? undefined : 'auto';
   }
 
   return `${height || 0}px`;
 }
+
+export default withAppProvider<Props>()(Collapsible);

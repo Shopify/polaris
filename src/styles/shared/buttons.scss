@@ -1,3 +1,59 @@
+@mixin button-base {
+  $min-height: control-height();
+  $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+
+  @include recolor-icon(color('ink', 'lighter'));
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $min-height;
+  min-width: $min-height;
+  margin: 0;
+  padding: $vertical-padding spacing();
+  background: linear-gradient(to bottom, color('white'), color('sky', 'lighter'));
+  border: border(dark);
+  box-shadow: shadow(faint);
+  border-radius: border-radius();
+  line-height: 1;
+  color: color('ink');
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition-property: background, border, box-shadow;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  &:hover {
+    background: linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'));
+    border-color: color('sky', 'dark');
+  }
+
+  &:focus {
+    border-color: color('indigo');
+    outline: 0;
+    box-shadow: 0 0 0 1px color('indigo');
+  }
+
+  &:active {
+    // Same color gradient is necessary for background transitions
+    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
+    border-color: color('sky', 'dark');
+    box-shadow:
+      0 0 0 0 transparent,
+      inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
+      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
+  }
+}
+
+@mixin base-button-disabled {
+  @include recolor-icon(color('ink', 'lightest'));
+  transition: none;
+  background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
+  color: color('ink', 'lightest');
+}
+
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
   $border-color: darken($button-color, 10%);
   $active-color: darken($button-color, 15%);
@@ -8,12 +64,12 @@
     inset 0 1px 0 0 lighten($button-color, 3%),
     shadow(faint),
     0 0 0 0 transparent;
-  color: color(white);
+  color: color('white');
 
   &:hover {
     background: linear-gradient(to bottom, $button-color, darken($button-color, 5%));
     border-color: $border-color;
-    color: color(white);
+    color: color('white');
     text-decoration: none;
   }
 
@@ -36,12 +92,12 @@
 }
 
 @mixin button-filled-disabled($button-color) {
-  @include recolor-icon(color(white));
+  @include recolor-icon(color('white'));
   // Transition gradient to gradient to avoid flicker
   background: linear-gradient(to bottom, lighten($button-color, 25%), lighten($button-color, 25%));
   border-color: lighten($button-color, 20%);
   box-shadow: none;
-  color: color(white);
+  color: color('white');
 }
 
 @mixin button-outline($outline-color) {
@@ -70,12 +126,12 @@
   background: transparent;
   border-color: rgba($outline-color, 0.25);
   box-shadow: none;
-  color: color(ink, lightest);
-  @include recolor-icon(color(ink, lightest));
+  color: color('ink', 'lightest');
+  @include recolor-icon(color('ink', 'lightest'));
 }
 
 @function plain-button-background() {
-  @return rgba(color(ink), 0.1);
+  @return rgba(color('ink'), 0.1);
 }
 
 @mixin plain-button-backdrop() {

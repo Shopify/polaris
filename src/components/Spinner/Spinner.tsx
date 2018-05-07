@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import * as styles from './Spinner.scss';
 import spinnerSVGLarge from './icons/spinner-large.svg';
 import spinnerSVGSmall from './icons/spinner-small.svg';
@@ -25,18 +29,23 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-export default function Spinner({
+export type CombinedProps = Props & WithAppProviderProps;
+
+function Spinner({
   size = 'large',
   color = 'teal',
   accessibilityLabel,
-}: Props) {
+  polaris: {intl},
+}: CombinedProps) {
   if (size === 'large' && COLORS_FOR_LARGE_SPINNER.indexOf(color) < 0) {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
       console.warn(
-        `The color ${color} is not meant to be used on ${size} spinners. The colors available on large spinners are: ${COLORS_FOR_LARGE_SPINNER.join(
-          ', ',
-        )}`,
+        intl.translate('Polaris.Spinner.warningMessage', {
+          color,
+          size,
+          colors: COLORS_FOR_LARGE_SPINNER.join(', '),
+        }),
       );
     }
 
@@ -62,3 +71,5 @@ export default function Spinner({
     />
   );
 }
+
+export default withAppProvider<Props>()(Spinner);

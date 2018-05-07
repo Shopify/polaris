@@ -34,6 +34,7 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 export interface Props {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  fullHeight?: boolean;
   preferredPosition?: PreferredPosition;
   active: boolean;
   id: string;
@@ -47,9 +48,29 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   private contentNode: HTMLElement | null;
   private transitionStatus: TransitionStatus;
 
-  componentDidUpdate({active: wasActive}: Props) {
-    const {active, preventAutofocus} = this.props;
-    if (!active || preventAutofocus || active === wasActive) {
+  componentDidMount() {
+    if (this.props.active) {
+      this.focusContent();
+    }
+  }
+
+  componentDidUpdate(oldProps: Props) {
+    if (this.props.active && !oldProps.active) {
+      this.focusContent();
+    }
+  }
+
+  render() {
+    const {active} = this.props;
+    return (
+      <Transition in={active} timeout={500} mountOnEnter unmountOnExit>
+        {this.renderOverlay}
+      </Transition>
+    );
+  }
+
+  private focusContent() {
+    if (this.props.preventAutofocus) {
       return;
     }
     if (this.contentNode == null) {
@@ -65,15 +86,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     });
   }
 
-  render() {
-    const {active} = this.props;
-    return (
-      <Transition in={active} timeout={500} mountOnEnter unmountOnExit>
-        {this.renderOverlay}
-      </Transition>
-    );
-  }
-
   @autobind
   private renderOverlay(transitionStatus: TransitionStatus) {
     const {
@@ -85,6 +97,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     return (
       <PositionedOverlay
+        testID="positionedOverlay"
         fullWidth={fullWidth}
         active={active}
         activator={activator}
@@ -109,7 +122,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       activatorRect,
     } = overlayDetails;
 
-    const {id, children, sectioned, fullWidth} = this.props;
+    const {id, children, sectioned, fullWidth, fullHeight} = this.props;
 
     const className = classNames(
       styles.Popover,
@@ -130,11 +143,16 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
 
+    const contentClassNames = classNames(
+      styles.Content,
+      fullHeight && styles['Content-fullHeight'],
+    );
+
     const content = (
       <div
         id={id}
         tabIndex={-1}
-        className={styles.Content}
+        className={contentClassNames}
         style={contentStyles}
         ref={this.setContentNode}
       >

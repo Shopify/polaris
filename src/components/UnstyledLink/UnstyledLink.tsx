@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import {unstyled} from '../shared';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   url: string;
@@ -9,21 +10,19 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   [key: string]: any;
 }
 
-export type LinkLikeComponent = ReactComponent<Props>;
+export type LinkLikeComponent = ReactComponent<Props> | undefined;
+export type CombinedProps = Props & WithAppProviderProps;
 
-let LinkComponent: LinkLikeComponent;
-
-export default class UnstyledLink extends React.PureComponent<Props, never> {
-  static use(NewLinkComponent: LinkLikeComponent) {
-    LinkComponent = NewLinkComponent;
-  }
-
+export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
   render() {
-    if (LinkComponent) {
-      return <LinkComponent {...unstyled.props} {...this.props} />;
+    const {polaris, external, url, ...rest} = this.props;
+    if (polaris && polaris.link) {
+      const LinkComponent = polaris.link.getLinkComponent();
+      if (LinkComponent) {
+        return <LinkComponent {...unstyled.props} {...this.props} />;
+      }
     }
 
-    const {external, url, ...rest} = this.props;
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
     return (
@@ -31,3 +30,5 @@ export default class UnstyledLink extends React.PureComponent<Props, never> {
     );
   }
 }
+
+export default withAppProvider<Props>()(UnstyledLink);

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Heading from '../Heading';
 import TextContainer from '../TextContainer';
+import TextStyle from '../TextStyle';
 import * as styles from './Layout.scss';
 
 export interface Props {
@@ -20,7 +21,7 @@ export default function AnnotatedSection(props: Props) {
         <div className={styles.Annotation}>
           <TextContainer>
             <Heading>{title}</Heading>
-            {wrappedDescription}
+            <TextStyle variation="subdued">{wrappedDescription}</TextStyle>
           </TextContainer>
         </div>
 

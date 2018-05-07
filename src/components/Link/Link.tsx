@@ -5,7 +5,9 @@ import UnstyledLink from '../UnstyledLink';
 import * as styles from './Link.scss';
 
 export interface Props {
-  /** The url to link to. */
+  /** ID for the link */
+  id?: string;
+  /** The url to link to */
   url?: string;
   /** The content to display inside link */
   children?: React.ReactNode;
@@ -15,18 +17,19 @@ export interface Props {
   onClick?(): void;
 }
 
-export default function Link({url, children, external, onClick}: Props) {
+export default function Link({url, children, onClick, external, id}: Props) {
   return url ? (
     <UnstyledLink
       onClick={onClick}
       className={styles.Link}
       url={url}
       external={external}
+      id={id}
     >
       {children}
     </UnstyledLink>
   ) : (
-    <button onClick={onClick} className={styles.Link}>
+    <button onClick={onClick} className={styles.Link} id={id}>
       {children}
     </button>
   );

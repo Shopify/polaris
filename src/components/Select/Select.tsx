@@ -2,8 +2,9 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Labelled, {Action, Error, helpTextID, errorID} from '../Labelled';
+import Labelled, {Action, helpTextID, errorID} from '../Labelled';
 import Icon from '../Icon';
+import {Error} from '../../types';
 
 import * as styles from './Select.scss';
 
@@ -20,7 +21,7 @@ export interface Group {
   options: Option[];
 }
 
-export interface Props {
+export interface BaseProps {
   /** List of options to choose from */
   options?: Option[];
   /** List of option groups to choose from */
@@ -52,6 +53,8 @@ export interface Props {
   /** Callback when focus is removed */
   onBlur?(): void;
 }
+
+export interface Props extends BaseProps {}
 
 const PLACEHOLDER_VALUE = '__placeholder__';
 const getUniqueID = createUniqueIDFactory('Select');
@@ -98,7 +101,7 @@ export default function Select({
   if (helpText) {
     describedBy.push(helpTextID(id));
   }
-  if (error && typeof error === 'string') {
+  if (error) {
     describedBy.push(errorID(id));
   }
 

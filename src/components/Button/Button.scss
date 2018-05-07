@@ -7,55 +7,10 @@ $large-vertical-padding: ($large-min-height - line-height(body) - rem(2px)) / 2;
 $spinner-size: rem(20px);
 
 .Button {
-  @include recolor-icon(color(ink, lighter));
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: $min-height;
-  min-width: $min-height;
-  margin: 0;
-  padding: $vertical-padding spacing();
-  background: linear-gradient(to bottom, color(white), color(sky, lighter));
-  border: border(dark);
-  box-shadow: shadow(faint);
-  border-radius: border-radius();
-  line-height: 1;
-  color: color(ink);
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-  transition-property: background, border, box-shadow;
-  transition-duration: duration();
-  transition-timing-function: easing();
-
-  &:hover {
-    background: linear-gradient(to bottom, color(sky, lighter), color(sky, light));
-    border-color: color(sky, dark);
-  }
-
-  &:focus {
-    border-color: color(indigo);
-    outline: 0;
-    box-shadow: 0 0 0 1px color(indigo);
-  }
-
-  &:active {
-    // Same color gradient is necessary for background transitions
-    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
-    border-color: color(sky, dark);
-    box-shadow:
-      0 0 0 0 transparent,
-      inset 0 1px 1px 0 rgba(color(ink, lighter), 0.1),
-      inset 0 1px 4px 0 rgba(color(ink, lighter), 0.2);
-  }
+  @include button-base;
 
   &.disabled {
-    @include recolor-icon(color(ink, lightest));
-    transition: none;
-    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
-    color: color(ink, lightest);
+    @include base-button-disabled;
   }
 }
 
@@ -100,34 +55,34 @@ $spinner-size: rem(20px);
 }
 
 .primary {
-  @include button-filled(color(indigo), color(indigo, dark));
-  @include recolor-icon(color(white));
+  @include button-filled(color('indigo'), color('indigo', 'dark'));
+  @include recolor-icon(color('white'));
 
   &.disabled {
-    @include button-filled-disabled(color(indigo));
+    @include button-filled-disabled(color('indigo'));
   }
 }
 
 .destructive {
-  @include button-filled(color(red), color(red, dark));
-  @include recolor-icon(color(white));
+  @include button-filled(color('red'), color('red', 'dark'));
+  @include recolor-icon(color('white'));
 
   &.disabled {
-    @include button-filled-disabled(color(red));
+    @include button-filled-disabled(color('red'));
   }
 }
 
 .outline {
-  @include button-outline(color(ink, lighter));
+  @include button-outline(color('ink', 'lighter'));
 
   &.disabled {
-    @include button-outline-disabled(color(ink, lighter));
+    @include button-outline-disabled(color('ink', 'lighter'));
   }
 }
 
 .destructive.outline {
-  @include button-outline(color(red));
-  @include recolor-icon(color(red, dark));
+  @include button-outline(color('red'));
+  @include recolor-icon(color('red', 'dark'));
 }
 
 .disabled {
@@ -158,23 +113,23 @@ $spinner-size: rem(20px);
 // stylelint-disable selector-max-specificity
 
 .plain {
-  @include recolor-icon(color(blue));
+  @include recolor-icon(color('blue'));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: rem(8px);
   padding-right: rem(8px);
   background: transparent;
   border: border(transparent);
   box-shadow: none;
-  color: color(blue);
+  color: color('blue');
 
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color(blue, dark));
+    @include recolor-icon(color('blue', 'dark'));
     background: transparent;
     border: border(transparent);
     box-shadow: none;
-    color: color(blue, dark);
+    color: color('blue', 'dark');
   }
 
   &:focus > .Content::after {
@@ -200,18 +155,18 @@ $spinner-size: rem(20px);
   }
 
   &.iconOnly {
-    @include recolor-icon(color(ink, lighter));
+    @include recolor-icon(color('ink', 'lighter'));
     margin: -0.5 * ($min-height - icon-size());
 
     &:focus,
     &:active {
-      @include recolor-icon(color(ink, lighter));
+      @include recolor-icon(color('ink', 'lighter'));
       background: plain-button-background();
     }
 
     &:hover,
     &:active {
-      @include recolor-icon(color(ink));
+      @include recolor-icon(color('ink'));
     }
 
     > .Content::after {
@@ -219,7 +174,7 @@ $spinner-size: rem(20px);
     }
 
     &.disabled {
-      @include recolor-icon(color(sky, dark));
+      @include recolor-icon(color('sky', 'dark'));
     }
   }
 

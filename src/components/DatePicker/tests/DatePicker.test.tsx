@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
+import DatePicker from '../DatePicker';
 import MonthComponent from '../Month';
 import Day from '../Day';
 
@@ -28,6 +29,15 @@ describe('<DatePicker />', () => {
       const day = component.find(Day);
       day.first().simulate('click');
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('id', () => {
+    it('is passed down to the first child', () => {
+      const id = 'MyID';
+      const datePicker = mount(<DatePicker id={id} month={0} year={2018} />);
+
+      expect(datePicker.childAt(0).prop('id')).toBe(id);
     });
   });
 });

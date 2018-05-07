@@ -12,21 +12,13 @@ import TabMeasurer, {Measurements} from './TabMeasurer';
 import Panel from './Panel';
 import * as styles from './Tabs.scss';
 
-export interface GenericTabDescriptor {
+export interface TabDescriptor {
   id: string;
   url?: string;
+  content: string;
   panelID?: string;
   accessibilityLabel?: string;
 }
-export interface TabWithTitleDescriptor extends GenericTabDescriptor {
-  title: string;
-}
-
-export interface TabWithContentDescriptor extends GenericTabDescriptor {
-  content: string;
-}
-
-export type TabDescriptor = TabWithTitleDescriptor | TabWithContentDescriptor;
 
 export interface Props {
   /** Content to display in tabs */
@@ -198,8 +190,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const {selected} = this.props;
     const {tabToFocus} = this.state;
 
-    const tabContent = getTabContent(tab);
-
     return (
       <Tab
         key={`${index}-${tab.id}`}
@@ -212,7 +202,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
-        {tabContent}
+        {tab.content}
       </Tab>
     );
   }
@@ -389,20 +379,4 @@ function getVisibleAndHiddenTabIndices(
     visibleTabs,
     hiddenTabs,
   };
-}
-
-export function getTabContent(tab: TabDescriptor) {
-  if (isTabWithTitle(tab)) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'The `title` property on Tabs has been deprecated. Use `content` instead.',
-    );
-    return tab.title;
-  } else {
-    return tab.content;
-  }
-}
-
-function isTabWithTitle(tab: TabDescriptor): tab is TabWithTitleDescriptor {
-  return tab.hasOwnProperty('title');
 }

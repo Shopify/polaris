@@ -11,11 +11,13 @@ import * as styles from './Button.scss';
 
 export type Size = 'slim' | 'large';
 
-export interface Props {
+export interface BaseProps {
   /** The content to display inside the button */
   children?: string;
   /** A destination to link to, rendered in the href attribute of a link */
   url?: string;
+  /** A unique identifier for the button */
+  id?: string;
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
   /** Indicates a dangerous or potentially negative action */
@@ -54,7 +56,10 @@ export interface Props {
   onBlur?(): void;
 }
 
+export interface Props extends BaseProps {}
+
 export default function Button({
+  id,
   url,
   disabled,
   loading,
@@ -131,6 +136,7 @@ export default function Button({
 
   return url ? (
     <UnstyledLink
+      id={id}
       url={url}
       external={external}
       onClick={onClick}
@@ -145,6 +151,7 @@ export default function Button({
     </UnstyledLink>
   ) : (
     <button
+      id={id}
       type={type}
       onClick={onClick}
       onFocus={onFocus}

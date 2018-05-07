@@ -1,0 +1,35 @@
+$resource-list-variables: (
+  breakpoint-small: 458px,
+  header-min-height: rem(56px),
+  header-padding-small: rem(12px),
+  header-vertical-padding: rem(10px),
+  min-width: rem(320px),
+  button-min-height: control-height(),
+  header-content-min-height: control-height(),
+  content-wrapper-stacking-order: 1,
+  bulk-actions-wrapper-stacking-order: 2,
+  header-outer-wrapper-stacking-order: 1,
+);
+
+@function resource-list($variable) {
+  @return map-get($resource-list-variables, $variable);
+}
+
+$resource-list-item-variables: (
+  padding: rem(12px),
+  control-indent: -1 * rem(12px),
+  min-height: rem(44px),
+  handle-width: rem(48px),
+  disclosure-width: rem(48px),
+  translate-offset: rem(48px) - rem(12px) + spacing(extra-tight), // handle-width - padding
+  clickable-stacking-order: 1,
+  content-stacking-order: 2,
+  actions-height: rem(56px),
+);
+
+@function resource-list-item($variable) {
+  @return map-get($resource-list-item-variables, $variable);
+}
+
+
+

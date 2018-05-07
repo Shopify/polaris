@@ -1,0 +1,107 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar with initials {initials}"
+    },
+
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Incomplete",
+        "partiallyComplete": "Partially complete",
+        "complete": "Complete"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Success",
+        "warning": "Warning",
+        "attention": "Attention"
+      }
+    },
+
+    "Common": {
+      "undo": "Undo"
+    },
+
+    "Collapsible": {
+      "deprecationMessage": {
+        "group": "Polaris",
+        "info": "You are currently using version {pkgVersion}.",
+        "warn": "[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward."
+      }
+    },
+
+    "DropZone": {
+      "overlayTextFile": "Drop file to upload",
+      "overlayTextImage": "Drop image to upload",
+      "errorOverlayTextFile": "File type is not valid",
+      "errorOverlayTextImage": "Image type is not valid",
+
+      "FileUpload": {
+        "actionTitleFile": "Add file",
+        "actionTitleImage": "Add image",
+        "actionHintFile": "or drop files to upload",
+        "actionHintImage": "or drop images to upload"
+      }
+    },
+
+    "DataTable": {
+      "sortAccessibilityLabel": "sort by {content}",
+      "totalsRowHeading": "Totals"
+    },
+
+    "ResourceList": {
+      "sortingLabel": "Sort by",
+      "defaultItemSingular": "item",
+      "defaultItemPlural": "items",
+      "showing": "Showing {itemsCount} {resource}",
+      "selected": "{selectedItemsCount} selected",
+      "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} in your store are selected.",
+      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural} in your store",
+      "emptySearchResultTitle": "No {resourceNamePlural} found",
+      "emptySearchResultDescription": "Try changing the filters or search term",
+      "selectButtonText": "Select",
+      "a11yCheckboxDeselectAllSingle": "Deselect {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselect all {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Select all {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} item",
+      "ariaLivePlural": "{itemsLength} items",
+
+      "Item": {
+        "selectItem": "Select item",
+        "deselectItem": "Deselect item",
+        "actionsDropdown": "Actions dropdown"
+      },
+
+      "BulkActions": {
+        "actionsActivatorLabel": "Actions",
+        "moreActionsActivatorLabel": "More actions",
+        "warningMessage": "To provide a better user experience. There should only be a maximum of {maxPromotedActions} promoted actions."
+      },
+
+      "FilterCreator": {
+        "filterButtonLabel": "Filter",
+        "selectFilterKeyPlaceholder": "Select a filter\u2026",
+        "addFilterButtonLabel": "Add filter",
+        "showAllWhere": "Show all {resourceNamePlural} where:"
+      },
+
+      "FilterControl": {
+        "textFieldLabel": "Search {resourceNamePlural}"
+      },
+
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Select a filter\u2026"
+      }
+    },
+
+    "Spinner": {
+      "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
+    },
+
+    "Tag": {
+      "ariaLabel": "Remove {children}"
+    }
+  }
+}

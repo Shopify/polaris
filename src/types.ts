@@ -3,7 +3,13 @@ import {IconProps} from './components';
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
 
-export interface Action {
+export type Error =
+  | string
+  | React.ReactElement<any>
+  | (string | React.ReactElement<any>)[];
+
+export interface BaseAction {
+  id?: string;
   content?: string;
   accessibilityLabel?: string;
   url?: string;
@@ -11,17 +17,29 @@ export interface Action {
   onAction?(): void;
 }
 
-export interface LinkAction {
+export interface Action extends BaseAction {}
+
+export interface AnimationProps {
+  in?: boolean;
+}
+
+export interface BaseLinkAction {
+  id?: string;
   content?: string;
   accessibilityLabel?: string;
   url: string;
 }
 
-export interface CallbackAction {
+export interface LinkAction extends BaseLinkAction {}
+
+export interface BaseCallbackAction {
+  id?: string;
   content?: string;
   accessibilityLabel?: string;
   onAction(): void;
 }
+
+export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
   disabled?: boolean;
@@ -31,7 +49,10 @@ export interface DestructableAction extends Action {
   destructive?: boolean;
 }
 
-export interface EASDKAction extends Action {
+export interface EASDKAction
+  extends Action,
+    DisableableAction,
+    DestructableAction {
   target?: EASDKTarget;
 }
 

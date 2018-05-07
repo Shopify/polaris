@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
+
 import Button from '..';
+import UnstyledLink from '../../UnstyledLink';
 
 describe('<Button />', () => {
   describe('onClick()', () => {
@@ -104,6 +106,26 @@ describe('<Button />', () => {
     it('sets the aria-expanded on the button', () => {
       const button = shallow(<Button ariaExpanded icon="delete" />);
       expect(button.find('button').prop('aria-expanded')).toBe(true);
+    });
+  });
+
+  describe('id', () => {
+    it('is passed down to an underlying button', () => {
+      const id = 'MyID';
+      const button = shallow(<Button id={id}>Button</Button>);
+
+      expect(button.find('button').prop('id')).toBe(id);
+    });
+
+    it('is passed down to an underlying link button', () => {
+      const id = 'MyID';
+      const button = shallow(
+        <Button url="https://shopify.com" id={id}>
+          Button
+        </Button>,
+      );
+
+      expect(button.find(UnstyledLink).prop('id')).toBe(id);
     });
   });
 });

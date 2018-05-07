@@ -1,15 +1,17 @@
 import * as React from 'react';
 import {shallow, mount} from 'enzyme';
+import {noop} from '@shopify/javascript-utilities/other';
 import TextField from '..';
 
 describe('<TextField />', () => {
-  it('sets all pass through properties on the input', () => {
+  it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
     const input = shallow(
       <TextField
         label="TextField"
         disabled
         readOnly={false}
+        onChange={noop}
         autoFocus
         name="TextField"
         placeholder="A placeholder"
@@ -37,12 +39,25 @@ describe('<TextField />', () => {
     expect(input.prop('pattern')).toBe(pattern);
   });
 
-  it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
-    const element = mount(<TextField label="TextField" />);
+  it('blocks props not listed as component props to pass on the input', () => {
+    const input = shallow(
+      <TextField
+        label="TextField"
+        disabled
+        readOnly={false}
+        onChange={noop}
+        name="TextField"
+        placeholder="A placeholder"
+        value="Some value"
+        prefix="test-prefix"
+      />,
+    ).find('input');
 
-    expect(element.getDOMNode().querySelector('input')).not.toBe(
-      document.activeElement,
-    );
+    expect(input.prop('prefix')).toBe(undefined);
+  });
+
+  it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
+    const element = mount(<TextField label="TextField" onChange={noop} />);
     element.setProps({focused: true});
     expect(element.getDOMNode().querySelector('input')).toBe(
       document.activeElement,
@@ -64,7 +79,7 @@ describe('<TextField />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      shallow(<TextField label="TextField" onFocus={spy} />)
+      shallow(<TextField label="TextField" onFocus={spy} onChange={noop} />)
         .find('input')
         .simulate('focus');
       expect(spy).toHaveBeenCalled();
@@ -74,7 +89,9 @@ describe('<TextField />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
-      const element = shallow(<TextField label="TextField" onBlur={spy} />);
+      const element = shallow(
+        <TextField label="TextField" onBlur={spy} onChange={noop} />,
+      );
       element.find('input').simulate('focus');
       element.find('input').simulate('blur');
       expect(spy).toHaveBeenCalled();
@@ -83,14 +100,16 @@ describe('<TextField />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(<TextField label="TextField" id="MyField" />)
+      const id = shallow(
+        <TextField label="TextField" id="MyField" onChange={noop} />,
+      )
         .find('input')
         .prop('id');
       expect(id).toBe('MyField');
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<TextField label="TextField" />)
+      const id = shallow(<TextField label="TextField" onChange={noop} />)
         .find('input')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -100,19 +119,23 @@ describe('<TextField />', () => {
 
   describe('autoComplete', () => {
     it('defaults to no autoComplete attribute', () => {
-      const textField = shallow(<TextField label="TextField" />);
+      const textField = shallow(
+        <TextField label="TextField" onChange={noop} />,
+      );
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
     it('sets autoComplete to "off" when false', () => {
       const textField = shallow(
-        <TextField label="TextField" autoComplete={false} />,
+        <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
     it('sets autoComplete to "on" when false', () => {
-      const textField = shallow(<TextField label="TextField" autoComplete />);
+      const textField = shallow(
+        <TextField label="TextField" autoComplete onChange={noop} />,
+      );
       expect(textField.find('input').prop('autoComplete')).toBe('on');
     });
   });
@@ -120,7 +143,7 @@ describe('<TextField />', () => {
   describe('helpText', () => {
     it('connects the input to the help text', () => {
       const textField = mount(
-        <TextField label="TextField" helpText="Some help" />,
+        <TextField label="TextField" helpText="Some help" onChange={noop} />,
       );
       const helpTextID = textField
         .find('input')
@@ -132,7 +155,13 @@ describe('<TextField />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const textField = shallow(<TextField error label="TextField" />);
+      const textField = shallow(
+        <TextField
+          error={<span>Invalid</span>}
+          label="TextField"
+          onChange={noop}
+        />,
+      );
       expect(textField.find('input').prop<string>('aria-invalid')).toBe(true);
 
       textField.setProps({error: 'Some error'});
@@ -141,7 +170,7 @@ describe('<TextField />', () => {
 
     it('connects the input to the error', () => {
       const textField = mount(
-        <TextField label="TextField" error="Some error" />,
+        <TextField label="TextField" error="Some error" onChange={noop} />,
       );
       const errorID = textField.find('input').prop<string>('aria-describedby');
       expect(typeof errorID).toBe('string');
@@ -150,7 +179,12 @@ describe('<TextField />', () => {
 
     it('connects the input to both an error and help text', () => {
       const textField = mount(
-        <TextField label="TextField" error="Some error" helpText="Some help" />,
+        <TextField
+          label="TextField"
+          error="Some error"
+          helpText="Some help"
+          onChange={noop}
+        />,
       );
       const descriptions = textField
         .find('input')
@@ -164,7 +198,9 @@ describe('<TextField />', () => {
 
   describe('prefix', () => {
     it('connects the input to the prefix and label', () => {
-      const textField = mount(<TextField label="TextField" prefix="$" />);
+      const textField = mount(
+        <TextField label="TextField" prefix="$" onChange={noop} />,
+      );
       const labels = textField
         .find('input')
         .prop<string>('aria-labelledby')
@@ -176,7 +212,7 @@ describe('<TextField />', () => {
 
     it('connects the input to the prefix, suffix, and label', () => {
       const textField = mount(
-        <TextField label="TextField" prefix="$" suffix=".00" />,
+        <TextField label="TextField" prefix="$" suffix=".00" onChange={noop} />,
       );
       const labels = textField
         .find('input')
@@ -191,7 +227,9 @@ describe('<TextField />', () => {
 
   describe('suffix', () => {
     it('connects the input to the suffix and label', () => {
-      const textField = mount(<TextField label="TextField" suffix="kg" />);
+      const textField = mount(
+        <TextField label="TextField" suffix="kg" onChange={noop} />,
+      );
       const labels = textField
         .find('input')
         .prop<string>('aria-labelledby')
@@ -204,7 +242,9 @@ describe('<TextField />', () => {
 
   describe('type', () => {
     it('sets the type on the input', () => {
-      const type = shallow(<TextField label="TextField" type="email" />)
+      const type = shallow(
+        <TextField label="TextField" type="email" onChange={noop} />,
+      )
         .find('input')
         .prop('type');
       expect(type).toBe('email');

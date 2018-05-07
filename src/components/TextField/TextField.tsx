@@ -3,17 +3,12 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {
-  Action,
-  Error,
-  helpTextID,
-  errorID,
-  labelID,
-} from '../Labelled';
+import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import Resizer from './Resizer';
 import Spinner from './Spinner';
+import {Error} from '../../types';
 import * as styles from './TextField.scss';
 
 export type Type =
@@ -37,7 +32,7 @@ export interface State {
   id: string;
 }
 
-export interface Props {
+export interface BaseProps {
   /** Text to display before value */
   prefix?: React.ReactNode;
   /** Text to display after value */
@@ -100,6 +95,14 @@ export interface Props {
   onBlur?(): void;
 }
 
+export interface NonMutuallyExclusiveProps extends BaseProps {}
+
+export type Props = NonMutuallyExclusiveProps &
+  (
+    | {readOnly: true}
+    | {disabled: true}
+    | {onChange(value: string, id: string): void});
+
 const getUniqueID = createUniqueIDFactory('TextField');
 
 export default class TextField extends React.PureComponent<Props, State> {
@@ -154,8 +157,12 @@ export default class TextField extends React.PureComponent<Props, State> {
       onFocus,
       onBlur,
       autoComplete,
-      focused,
-      ...rest
+      min,
+      max,
+      minLength,
+      maxLength,
+      spellCheck,
+      pattern,
     } = this.props;
 
     const {height} = this.state;
@@ -202,7 +209,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       ) : null;
 
     const describedBy: string[] = [];
-    if (error && typeof error === 'string') {
+    if (error) {
       describedBy.push(errorID(id));
     }
     if (helpText) {
@@ -218,7 +225,6 @@ export default class TextField extends React.PureComponent<Props, State> {
     }
 
     const input = React.createElement(multiline ? 'textarea' : 'input', {
-      ...rest,
       name,
       id,
       disabled,
@@ -233,6 +239,12 @@ export default class TextField extends React.PureComponent<Props, State> {
       className: styles.Input,
       onChange: this.handleChange,
       ref: this.setInput,
+      min,
+      max,
+      minLength,
+      maxLength,
+      spellCheck,
+      pattern,
       type: inputType,
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')

@@ -13,7 +13,7 @@ export interface Props {
 }
 
 export default function Subheading({element: Element = 'h3', children}: Props) {
-  const ariaLabel = typeof children === 'string' ? children : null;
+  const ariaLabel = typeof children === 'string' ? children : undefined;
   return (
     <Element aria-label={ariaLabel} className={styles.Subheading}>
       {children}

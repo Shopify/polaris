@@ -155,14 +155,14 @@ html, body {
   margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
   margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
   padding: 0 $action-horizontal-padding;
-  color: color(ink, light);
+  color: color('ink', 'light');
 
   &:hover,
   &:active {
-    color: color(ink);
+    color: color('ink');
 
     .ActionIcon {
-      @include recolor-icon(color(ink));
+      @include recolor-icon(color('ink'), color('white'));
     }
   }
 
@@ -190,12 +190,12 @@ html, body {
   }
 
   &.disabled {
-    color: color(ink, lightest);
+    color: color('ink', 'lightest');
     cursor: default;
     pointer-events: none;
 
     .ActionIcon {
-      @include recolor-icon(color(ink, lightest));
+      @include recolor-icon(color('ink', 'lightest'));
     }
   }
 }
@@ -206,7 +206,7 @@ html, body {
 }
 
 .ActionIcon {
-  @include recolor-icon(color(ink, lighter));
+  @include recolor-icon(color('ink', 'lighter'), color('white'));
   display: inline-block;
 
   &:first-child {
@@ -223,7 +223,7 @@ html, body {
   }
 
   &.disabled {
-    @include recolor-icon(color(ink, lightest));
+    @include recolor-icon(color('ink', 'lightest'));
   }
 }
 

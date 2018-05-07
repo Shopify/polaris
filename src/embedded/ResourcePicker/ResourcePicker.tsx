@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {withEASDK, WithEASDKProps} from '../easdk';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {OpenOptions} from '../easdk/components/ResourcePicker';
 
 export interface Props extends OpenOptions {
@@ -8,7 +11,7 @@ export interface Props extends OpenOptions {
 }
 
 export class ResourcePicker extends React.PureComponent<
-  Props & WithEASDKProps,
+  Props & WithAppProviderProps,
   never
 > {
   private focusReturnPoint: HTMLElement | null = null;
@@ -46,17 +49,17 @@ export class ResourcePicker extends React.PureComponent<
   }
 
   private handleEASDKMessaging() {
-    const {open, easdk} = this.props;
-    if (easdk == null) {
+    const {open, polaris} = this.props;
+    if (polaris.easdk == null) {
       return;
     }
 
     if (open) {
-      easdk.ResourcePicker.open(this.props);
+      polaris.easdk.ResourcePicker.open(this.props);
     } else {
-      easdk.ResourcePicker.close();
+      polaris.easdk.ResourcePicker.close();
     }
   }
 }
 
-export default withEASDK()(ResourcePicker);
+export default withAppProvider<Props>()(ResourcePicker);

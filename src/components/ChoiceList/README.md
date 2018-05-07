@@ -326,4 +326,4 @@ class ChoiceListExample extends React.Component {
 
 * To present a long list of radio buttons or when space is constrained, [use the select component](/components/forms/select)
 * To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](/components/forms/radio-button) or [checkbox component](/components/forms/checkbox)
-* To display a simple, non-interactive list of related content, [use the list component](/components/lists/list)
+* To display a simple, non-interactive list of related content, [use the list component](/components/lists-and-tables/list)

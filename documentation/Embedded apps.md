@@ -1,19 +1,19 @@
 # Embedded apps
 
-In addition to the [visual components](https://polaris.shopify.com/components/get-started) provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through an `EmbeddedApp` component:
+In addition to the [visual components](https://polaris.shopify.com/components/get-started) provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the `AppProvider` component:
 
 ```js
 import React from 'react';
 import {render} from 'react-dom';
-import {Page, Card} from '@shopify/polaris';
-import {EmbeddedApp} from '@shopify/polaris/embedded';
+import {AppProvider, Page, Card} from '@shopify/polaris';
 
 class MyApp extends React.Component {
   render() {
     return (
       <Page title="Example application">
         <Card sectioned>
-          Insert the rest of your app here, including those components detailed below, which can now communicate with the Embedded App SDK.
+          Insert the rest of your app here, including those components detailed
+          below, which can now communicate with the Embedded App SDK.
         </Card>
       </Page>
     );
@@ -21,25 +21,26 @@ class MyApp extends React.Component {
 }
 
 render(
-  <EmbeddedApp
+  <AppProvider
     apiKey="YOUR_APP_API_KEY"
     shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
   >
     <MyApp />
-  </EmbeddedApp>,
-  document.querySelector('#app') // or another DOM element you want to mount the app in
+  </AppProvider>,
+  document.querySelector('#app'), // or another DOM element you want to mount the app in
 );
 ```
 
 Your apiKey and shopOrigin attributes are required. The [EASDK init section](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-init-config) describes the details of these attributes and where to find them.
 
 ## Components
+
 To access the EASDK components you need to add them to you project:
-`import * as Embedded from '@shopify/polaris/embedded';` or `import {EmbeddedApp, Alert, Modal} from '@shopify/polaris/embedded';` if you want to import a subset of the components.
+`import * as Embedded from '@shopify/polaris/embedded';` or `import {Alert, ResourcePicker} from '@shopify/polaris/embedded';` if you want to import a subset of the components.
 
-All EASDK components must be wrapped by the `<EmbeddedApp />` component. This component initializes the EASDK using the apiKey and shopOrigin you provide.
+All components must be wrapped by the `<AppProvider />` component. This component initializes the EASDK using the apiKey and shopOrigin you provide.
 
-* [`<EmbeddedApp />`](https://polaris.shopify.com/components/embedded/embedded-app): The root component that manages the communication with the Shopify admin.
+* [`<AppProvider />`](https://polaris.shopify.com/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
 * [`<Page />`](https://polaris.shopify.com/components/structure/page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
 * [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
 * [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.
@@ -51,13 +52,11 @@ We've provided access to some functionality of the underlying EASDK API. This en
 
 In order to call these methods, you must get the `easdk` object that we add to [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `easdk` object from React's `context`:
 
-
 ```js
 import React from 'react';
 import {render} from 'react-dom';
 import * as PropTypes from 'prop-types';
-import {Page, Card, Button} from '@shopify/polaris';
-import {EmbeddedApp} from '@shopify/polaris/embedded';
+import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 
 class MyApp extends React.Component {
   // This line is very important! It tells React to attach the `easdk`
@@ -70,8 +69,12 @@ class MyApp extends React.Component {
     return (
       <Page title="Example application">
         <Card sectioned>
-          <Button onClick={() => this.context.easdk.startLoading()}>Start loading</Button>
-          <Button onClick={() => this.context.easdk.stopLoading()}>Stop loading</Button>
+          <Button onClick={() => this.context.easdk.startLoading()}>
+            Start loading
+          </Button>
+          <Button onClick={() => this.context.easdk.stopLoading()}>
+            Stop loading
+          </Button>
         </Card>
       </Page>
     );
@@ -79,15 +82,16 @@ class MyApp extends React.Component {
 }
 
 render(
-  <EmbeddedApp
+  <AppProvider
     apiKey="YOUR_APP_API_KEY"
     shopOrigin="https://CURRENT_LOGGED_IN_SHOP.myshopify.com"
   >
     <MyApp />
-  </EmbeddedApp>,
-  document.querySelector('#app')
+  </AppProvider>,
+  document.querySelector('#app'),
 );
 ```
+
 ### Methods provided:
 
 We provide the following methods, (annotated with the types of their parameters and return values):
@@ -117,9 +121,11 @@ Flash messages should:
 * Be short and specific (2 or 3 words)
 
 ###### Do
+
 Changes saved
 
 ###### Don’t
+
 Successfully saved changes
 
 #### `easdk.pushState()`

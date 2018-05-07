@@ -6,7 +6,7 @@
   background: none;
   border: none;
   font-size: inherit;
-  color: color(blue);
+  color: color('blue');
   text-decoration: none;
   cursor: pointer;
 
@@ -14,6 +14,6 @@
   &:focus,
   &:active {
     outline: none;
-    color: color(blue, dark);
+    color: color('blue', 'dark');
   }
 }

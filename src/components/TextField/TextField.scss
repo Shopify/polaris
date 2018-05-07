@@ -13,13 +13,12 @@ $stacking-order: (
   display: flex;
   align-items: center;
   padding: 0 $backdrop-horizontal-spacing;
-  color: color(ink, lightest);
+  color: color('ink', 'lightest');
   cursor: text;
 }
 
 .multiline {
   padding: 0;
-  overflow: hidden;
 
   > .Input {
     overflow: auto;
@@ -30,7 +29,7 @@ $stacking-order: (
 }
 
 .hasValue {
-  color: color(ink);
+  color: color('ink');
 }
 
 .focus > .Input,
@@ -39,10 +38,10 @@ $stacking-order: (
   border: border(transparent);
 
   ~ .Backdrop {
-    border-color: color(indigo);
+    border-color: color('indigo');
     box-shadow:
       inset shadow(transparent),
-      0 0 0 1px color(indigo);
+      0 0 0 1px color('indigo');
   }
 }
 
@@ -54,32 +53,31 @@ $stacking-order: (
   }
 
   > .Input ~ .Backdrop {
-    background-color: color(red, lighter);
-    border-color: color(red);
+    background-color: color('red', 'lighter');
+    border-color: color('red');
     box-shadow: none;
   }
 
   // We need this to override the box-shadow in the focus state.
   // stylelint-disable-next-line selector-max-specificity
   > .Input:focus ~ .Backdrop {
-    border-color: color(indigo);
+    border-color: color('indigo');
     box-shadow:
       inset shadow(transparent),
-      0 0 0 1px color(indigo);
+      0 0 0 1px color('indigo');
   }
 }
 
 .readOnly > .Backdrop {
-  background-color: color(sky, lighter);
+  background-color: color('sky', 'lighter');
 }
 
 .disabled {
-  color: color(ink, lightest);
+  color: color('ink', 'lightest');
   cursor: initial;
 
   > .Backdrop {
-    background-color: color(sky, lighter);
-    border: border();
+    background-color: color('sky', 'lighter');
     box-shadow: none;
   }
 }
@@ -116,7 +114,7 @@ $stacking-order: (
   }
 
   &::placeholder {
-    color: color(ink, lightest);
+    color: color('ink', 'lightest');
   }
 
   // These properties are used to remove the default "spinner" controls
@@ -139,9 +137,9 @@ $stacking-order: (
   bottom: 0;
   left: 0;
   right: 0;
-  background: color(white);
+  background: color('white');
   border: border(dark);
-  box-shadow: inset 0 1px 0 0 rgba(color(ink, lighter), 0.05);
+  box-shadow: inset 0 1px 0 0 rgba(color('ink', 'lighter'), 0.05);
   border-radius: border-radius();
   will-change: box-shadow, border-color;
   transition-property: box-shadow, border-color;
@@ -174,7 +172,7 @@ $stacking-order: (
   flex-direction: column;
   width: rem(22px);
   margin: 1px calc(-#{$backdrop-horizontal-spacing} + 1px) 1px $backdrop-horizontal-spacing;
-  color: color(ink);
+  color: color('ink');
   cursor: pointer;
 }
 
@@ -190,6 +188,7 @@ $stacking-order: (
   right: 0;
   height: 0;
   visibility: hidden;
+  overflow: hidden;
 }
 
 .DummyInput {
@@ -209,7 +208,7 @@ $stacking-order: (
   justify-content: center;
   align-items: center;
   appearance: none;
-  background: linear-gradient(to bottom, color(white), color(sky, lighter));
+  background: linear-gradient(to bottom, color('white'), color('sky', 'lighter'));
   border: none;
   border-left: border(dark);
   will-change: background, box-shadow;
@@ -222,10 +221,10 @@ $stacking-order: (
   }
 
   &:active {
-    background: linear-gradient(to bottom, color(sky, light), color(sky, light));
+    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
     box-shadow:
-      inset 0 1px 1px 0 rgba(color(ink, lighter), 0.1),
-      inset 0 1px 4px 0 rgba(color(ink, lighter), 0.2);
+      inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
+      inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
 
   &:not(:first-child) {

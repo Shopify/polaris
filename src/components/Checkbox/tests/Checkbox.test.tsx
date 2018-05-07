@@ -1,10 +1,13 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+} from '../../../../tests/utilities';
 import Checkbox from '..';
 
 describe('<Checkbox />', () => {
   it('sets all pass through properties on the input', () => {
-    const input = shallow(
+    const input = shallowWithAppProvider(
       <Checkbox label="Checkbox" checked name="Checkbox" value="Some value" />,
     ).find('input');
 
@@ -16,7 +19,7 @@ describe('<Checkbox />', () => {
   describe('onChange()', () => {
     it('is called with the new checked value of the input on change', () => {
       const spy = jest.fn();
-      const element = mount(
+      const element = mountWithAppProvider(
         <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
       );
       (element.find('input') as any).instance().checked = true;
@@ -28,7 +31,9 @@ describe('<Checkbox />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mount(<Checkbox label="Checkbox" onFocus={spy} />);
+      const element = mountWithAppProvider(
+        <Checkbox label="Checkbox" onFocus={spy} />,
+      );
       element.find('input').simulate('focus');
       expect(spy).toHaveBeenCalled();
     });
@@ -37,7 +42,9 @@ describe('<Checkbox />', () => {
   describe('onBlur()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      const element = mount(<Checkbox label="Checkbox" onBlur={spy} />);
+      const element = mountWithAppProvider(
+        <Checkbox label="Checkbox" onBlur={spy} />,
+      );
       element.find('input').simulate('blur');
       expect(spy).toHaveBeenCalled();
     });
@@ -45,14 +52,16 @@ describe('<Checkbox />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(<Checkbox id="MyCheckbox" label="Checkbox" />)
+      const id = shallowWithAppProvider(
+        <Checkbox id="MyCheckbox" label="Checkbox" />,
+      )
         .find('input')
         .prop('id');
       expect(id).toBe('MyCheckbox');
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<Checkbox label="Checkbox" />)
+      const id = shallowWithAppProvider(<Checkbox label="Checkbox" />)
         .find('input')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -62,22 +71,26 @@ describe('<Checkbox />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the input', () => {
-      const button = shallow(<Checkbox label="Checkbox" disabled />);
+      const button = shallowWithAppProvider(
+        <Checkbox label="Checkbox" disabled />,
+      );
       expect(button.find('input').prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let element = shallow(<Checkbox label="Checkbox" />);
+      let element = shallowWithAppProvider(<Checkbox label="Checkbox" />);
       expect(element.find('input').prop('disabled')).toBeFalsy();
 
-      element = shallow(<Checkbox label="Checkbox" disabled={false} />);
+      element = shallowWithAppProvider(
+        <Checkbox label="Checkbox" disabled={false} />,
+      );
       expect(element.find('input').prop('disabled')).toBeFalsy();
     });
   });
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const checkbox = mount(
+      const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" helpText="Some help" />,
       );
       const helpTextID = checkbox
@@ -90,7 +103,9 @@ describe('<Checkbox />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const checkbox = shallow(<Checkbox error label="Checkbox" />);
+      const checkbox = shallowWithAppProvider(
+        <Checkbox error={<span>Error</span>} label="Checkbox" />,
+      );
       expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
 
       checkbox.setProps({error: 'Some error'});
@@ -98,14 +113,16 @@ describe('<Checkbox />', () => {
     });
 
     it('connects the input to the error', () => {
-      const checkbox = mount(<Checkbox label="Checkbox" error="Some error" />);
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="Checkbox" error="Some error" />,
+      );
       const errorID = checkbox.find('input').prop<string>('aria-describedby');
       expect(typeof errorID).toBe('string');
       expect(checkbox.find(`#${errorID}`).text()).toBe('Some error');
     });
 
     it('connects the input to both an error and help text', () => {
-      const checkbox = mount(
+      const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" error="Some error" helpText="Some help" />,
       );
       const descriptions = checkbox
@@ -120,21 +137,21 @@ describe('<Checkbox />', () => {
 
   describe('indeterminate', () => {
     it('sets the indeterminate attribute to be true on the input when checked is "indeterminate"', () => {
-      const checkbox = shallow(
+      const checkbox = shallowWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('indeterminate')).toBe('true');
     });
 
     it('sets the aria-checked attribute on the input as mixed when checked is "indeterminate"', () => {
-      const checkbox = shallow(
+      const checkbox = shallowWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('aria-checked')).toBe('mixed');
     });
 
     it('sets the checked attribute on the input to false when checked is "indeterminate"', () => {
-      const checkbox = shallow(
+      const checkbox = shallowWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('checked')).toBe(false);

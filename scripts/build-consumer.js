@@ -17,6 +17,7 @@ const files = [
   'README.md',
   'LICENSE.md',
   'CHANGELOG.md',
+  'CHANGELOG_V2.md',
   ...packageJSON.files,
 ];
 

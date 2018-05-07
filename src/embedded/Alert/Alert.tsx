@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {withEASDK, WithEASDKProps} from '../easdk';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 export interface Props {
   /** Whether the alert is open or not */
@@ -15,12 +18,15 @@ export interface Props {
   /** The content of the cancel button */
   cancelContent?: string;
   /** Callback when the confirmation button is clicked */
-  onCancel?(): void;
+  onClose?(): void;
   /** Callback when the alert is closed, or when the cancel button is clicked */
   onConfirm(): void;
 }
 
-export class Alert extends React.PureComponent<Props & WithEASDKProps, never> {
+export class Alert extends React.PureComponent<
+  Props & WithAppProviderProps,
+  never
+> {
   private focusReturnPoint: HTMLElement | null = null;
 
   componentDidMount() {
@@ -56,17 +62,17 @@ export class Alert extends React.PureComponent<Props & WithEASDKProps, never> {
   }
 
   private handleEASDKMessaging() {
-    const {open, easdk} = this.props;
-    if (easdk == null) {
+    const {open, polaris} = this.props;
+    if (polaris.easdk == null) {
       return;
     }
 
     if (open) {
-      easdk.Modal.alert(this.props);
+      polaris.easdk.Modal.alert(this.props);
     } else {
-      easdk.Modal.close();
+      polaris.easdk.Modal.close();
     }
   }
 }
 
-export default withEASDK()(Alert);
+export default withAppProvider<Props>()(Alert);

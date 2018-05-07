@@ -110,9 +110,9 @@ export default class PositionedOverlay extends React.PureComponent<
     const {render} = this.props;
 
     const style = {
-      top,
-      left,
-      width,
+      top: top || undefined,
+      left: left || undefined,
+      width: width || undefined,
       zIndex: zIndex == null ? undefined : zIndex,
     };
 
@@ -210,7 +210,7 @@ export default class PositionedOverlay extends React.PureComponent<
           activatorRect: getRectForNode(activator),
           left: horizontalPosition,
           top: verticalPosition.top,
-          height: verticalPosition.height,
+          height: verticalPosition.height || 0,
           width: fullWidth ? overlayRect.width : null,
           positioning: verticalPosition.positioning as Positioning,
           outsideScrollableContainer:

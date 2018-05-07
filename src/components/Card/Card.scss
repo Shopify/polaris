@@ -1,6 +1,6 @@
 .Card {
   overflow: hidden;
-  background-color: color(white);
+  background-color: color('white');
   box-shadow: shadow();
 
   + .Card {
@@ -13,7 +13,7 @@
 }
 
 .subdued {
-  background-color: color(sky, lighter);
+  background-color: color('sky', 'lighter');
 }
 
 .Header {
@@ -24,16 +24,25 @@
   padding: spacing(loose);
 
   + .Section {
-    border-top: 1px solid color(sky);
+    border-top: 1px solid color('sky');
   }
 }
 
+.Section-fullWidth{
+  padding: spacing(none);
+}
+
 .Section-subdued {
-  background-color: color(sky, lighter);
+  background-color: color('sky', 'lighter');
 }
 
 .SectionHeader {
   padding-bottom: spacing(tight);
+
+  .Section-fullWidth & {
+    padding: spacing(loose) spacing(loose) spacing(tight);
+  }
+
 }
 
 .Footer {

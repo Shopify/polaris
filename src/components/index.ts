@@ -5,6 +5,13 @@ export {
 
 export {default as ActionList, Props as ActionListProps} from './ActionList';
 
+export {
+  default as AppProvider,
+  Props as AppProviderProps,
+  polarisAppProviderContextTypes as polarisContextTypes,
+  createPolarisContext,
+} from './AppProvider';
+
 export {default as Avatar, Props as AvatarProps} from './Avatar';
 
 export {default as Badge, Props as BadgeProps} from './Badge';
@@ -15,8 +22,12 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
-export {default as Button} from './Button';
-export {Props as ButtonProps, buttonFrom, buttonsFrom} from './Button';
+export {
+  default as Button,
+  Props as ButtonProps,
+  buttonFrom,
+  buttonsFrom,
+} from './Button';
 
 export {default as ButtonGroup, Props as ButtonGroupProps} from './ButtonGroup';
 
@@ -50,6 +61,14 @@ export {
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
 export {
+  default as DataTable,
+  Props as DataTableProps,
+  TableData,
+  TableRow,
+  SortDirection,
+} from './DataTable';
+
+export {
   default as DatePicker,
   Props as DatePickerProps,
   Range,
@@ -64,6 +83,13 @@ export {
 
 export {default as DisplayText, Props as DisplayTextProps} from './DisplayText';
 
+export {default as DropZone, Props as DropZoneProps} from './DropZone';
+
+export {
+  default as EmptySearchResult,
+  Props as EmptySearchResultProps,
+} from './EmptySearchResult';
+
 export {default as EmptyState, Props as EmptyStateProps} from './EmptyState';
 
 export {
@@ -71,7 +97,16 @@ export {
   Props as EventListenerProps,
 } from './EventListener';
 
+export {
+  default as ExceptionList,
+  Props as ExceptionListProps,
+} from './ExceptionList';
+
+export {default as Focus, Props as FocusProps, TrapFocus} from './Focus';
+
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
+
+export {default as Form, Props as FormProps} from './Form';
 
 export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 
@@ -98,6 +133,8 @@ export {default as Link, Props as LinkProps} from './Link';
 
 export {default as List, Props as ListProps} from './List';
 
+export {default as Modal, Props as ModalProps} from './Modal';
+
 export {default as Page, Props as PageProps} from './Page';
 
 export {default as PageActions, Props as PageActionsProps} from './PageActions';
@@ -110,11 +147,20 @@ export {
   CloseSource as PopoverCloseSource,
 } from './Popover';
 
+export {default as Portal, Props as PortalProps} from './Portal';
+
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 
 export {
   default as ResourceList,
   Props as ResourceListProps,
+  SelectedItems as ResourceListSelectedItems,
+  FilterControlProps,
+  Filter,
+  AppliedFilter,
+  FilterType,
+  FilterSelect,
+  FilterTextField,
 } from './ResourceList';
 
 export {default as Scrollable, Props as ScrollableProps} from './Scrollable';
@@ -134,6 +180,8 @@ export {default as Spinner, Props as SpinnerProps} from './Spinner';
 
 export {default as Stack, Props as StackProps} from './Stack';
 
+export {default as Sticky, Props as StickyProps} from './Sticky';
+
 export {default as Subheading, Props as SubheadingProps} from './Subheading';
 
 export {default as Tabs, Props as TabsProps} from './Tabs';
@@ -152,6 +200,8 @@ export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
+
+export {default as Truncate, Props as TruncateProps} from './Truncate';
 
 export {
   default as UnstyledLink,

@@ -165,7 +165,11 @@ function handleMouseUp({currentTarget}: React.MouseEvent<HTMLDivElement>) {
 function secondaryActionFrom(action: Action) {
   if (action.url) {
     return (
-      <UnstyledLink className={styles.SecondaryAction} url={action.url}>
+      <UnstyledLink
+        className={styles.SecondaryAction}
+        url={action.url}
+        external={action.external}
+      >
         <span className={styles.Text}>{action.content}</span>
       </UnstyledLink>
     );

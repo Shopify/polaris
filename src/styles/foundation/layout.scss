@@ -44,3 +44,17 @@ $layout-width-data: (
     @error 'Column `#{$name} - #{$value}` not found. Available columns: #{available-names($layout-width-data)}';
   }
 }
+
+$dismiss-icon-size: 32px;
+
+@function top-bar-height() {
+  @return rem(56px);
+}
+
+@function mobile-nav-width() {
+  @return calc(100vw - #{rem($dismiss-icon-size) + spacing() * 2});
+}
+
+@function nav-min-window-corrected() {
+  @return rem(769px);
+}

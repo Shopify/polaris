@@ -3,7 +3,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Choice, {helpTextID} from '../Choice';
 import * as styles from './RadioButton.scss';
 
-export interface Props {
+export interface BaseProps {
   /** Label for the radio button */
   label: string;
   /** Visually hide the label */
@@ -28,6 +28,8 @@ export interface Props {
   onBlur?(): void;
 }
 
+export interface Props extends BaseProps {}
+
 const getUniqueID = createUniqueIDFactory('RadioButton');
 
 export default function RadioButton({
@@ -50,11 +52,11 @@ export default function RadioButton({
     onChange(currentTarget.checked, id);
   }
 
-  const describedBy = helpText ? helpTextID(id) : null;
+  const describedBy = helpText ? helpTextID(id) : undefined;
 
   return (
     <Choice label={label} labelHidden={labelHidden} id={id} helpText={helpText}>
-      <div className={styles.RadioButton}>
+      <span className={styles.RadioButton}>
         <input
           id={id}
           name={name}
@@ -68,9 +70,9 @@ export default function RadioButton({
           onBlur={onBlur}
           aria-describedby={describedBy}
         />
-        <div className={styles.Backdrop} />
-        <div className={styles.Icon} />
-      </div>
+        <span className={styles.Backdrop} />
+        <span className={styles.Icon} />
+      </span>
     </Choice>
   );
 }

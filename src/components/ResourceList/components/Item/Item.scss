@@ -1,0 +1,194 @@
+@import '../../variables';
+
+.CheckboxWrapper {
+  display: flex;
+}
+
+.Item {
+  position: relative;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    @include state(hover);
+
+    &:not(.persistActions) {
+      .Actions {
+        display: flex;
+      }
+    }
+  }
+
+  &:active {
+    @include state(active);
+  }
+}
+
+.selected {
+  @include state(selected);
+
+  &.focused {
+    @include state(selected, focused);
+
+    &:hover {
+      @include state(selected, focused, hover);
+    }
+  }
+
+  &:hover {
+    @include state(selected, hover);
+  }
+
+  &:active {
+    @include state(selected, active);
+  }
+}
+
+.focused {
+  @include state(focused);
+
+  &:hover {
+    @include state(focused, hover);
+  }
+
+  &:active {
+    @include state(focused, active);
+  }
+}
+
+.focusedInner,
+.focusedInner.focused,
+.focusedInner.focused.selected {
+  box-shadow: none;
+}
+
+.Link,
+.Button {
+  position: absolute;
+  z-index: resource-list-item(clickable-stacking-order);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.Button {
+  padding: 0;
+  border: none;
+}
+
+// Item inner container
+.Container {
+  position: relative;
+  z-index: resource-list-item(content-stacking-order);
+  padding: resource-list-item(padding) spacing();
+  min-height: resource-list-item(min-height);
+  display: flex;
+  align-items: flex-start;
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    padding: resource-list-item(padding) spacing(loose);
+  }
+}
+
+.Owned {
+  display: flex;
+  align-self: flex-start;
+}
+
+// Item handle
+.Handle {
+  width: resource-list-item(handle-width);
+  min-height: resource-list-item(min-height);
+  justify-content: center;
+  align-items: center;
+  margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
+    (
+      -1 * resource-list-item(padding)
+    ) resource-list-item(control-indent);
+  display: flex;
+}
+
+.selectable {
+  width: calc(100% + #{resource-list-item(translate-offset)});
+  transform: translateX(-1 * resource-list-item(translate-offset));
+  transition: transform easing() duration();
+  margin-right: -1 * resource-list-item(translate-offset);
+
+  &.selectMode {
+    transform: translateX(0);
+  }
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    width: 100%;
+    transform: translateX(0);
+    margin-right: 0;
+  }
+}
+
+.Media {
+  flex: 0 0 auto;
+  margin-right: spacing(loose);
+  color: inherit;
+  text-decoration: none;
+}
+
+// Item content
+.Content {
+  @include layout-flex-fix;
+  flex: 1 1 auto;
+  align-self: center;
+}
+
+// Item actions
+.Actions {
+  position: absolute;
+  top: 0;
+  right: resource-list-item(padding);
+  display: none;
+  pointer-events: initial;
+  height: 100%;
+  max-height: resource-list-item(actions-height);
+
+  .focused & {
+    display: flex;
+  }
+}
+
+.persistActions {
+  .Actions {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-basis: auto;
+    align-items: center;
+    margin-top: 0;
+    margin-left: spacing();
+    pointer-events: initial;
+
+    @include page-content-when-partially-condensed {
+      display: none;
+    }
+  }
+}
+
+.Disclosure {
+  position: relative;
+  top: -1 * resource-list-item(padding);
+  right: -1 * spacing();
+  display: none;
+  width: resource-list-item(disclosure-width);
+  min-height: resource-list-item(min-height);
+  pointer-events: initial;
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    right: -1 * spacing(loose);
+  }
+
+  @include page-content-when-partially-condensed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

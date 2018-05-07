@@ -1,0 +1,66 @@
+.ExceptionList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Item {
+  display: flex;
+  color: color('ink', 'lighter');
+
+  + .Item {
+    margin-top: spacing(extra-tight);
+  }
+}
+
+.Icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: rem(20px);
+  height: rem(20px);
+  margin-right: spacing(extra-tight);
+  @include recolor-icon(color('ink', 'lightest'));
+
+  .statusWarning & {
+    @include recolor-icon(color('orange', 'dark'));
+  }
+
+  .statusCritical & {
+    @include recolor-icon(color('red', 'dark'));
+  }
+}
+
+.Bullet {
+  width: rem(6px);
+  height: rem(6px);
+  border-radius: 100%;
+  background-color: color('ink', 'lightest');
+
+  .statusWarning & {
+    background-color: color('orange', 'dark');
+  }
+
+  .statusCritical & {
+    background-color: color('red', 'dark');
+  }
+}
+
+.Title {
+  + .Description::before {
+    content: ' – ';
+  }
+
+  .statusWarning &,
+  .statusCritical & {
+    font-weight: 500
+  }
+
+  .statusWarning & {
+    color: color('orange', 'dark')
+  }
+
+  .statusCritical & {
+    color: color('red', 'dark')
+  }
+}

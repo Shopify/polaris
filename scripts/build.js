@@ -44,7 +44,7 @@ copy(['./src/**/*.md', docs], { up: 1 })
     process.exit(1);
   });
 
-copy(['./src/**/*.{scss,svg,png,jpg,jpeg}', intermediateBuild], {up: 1})
+copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   .then(() => {
     [
       resolvePath(intermediateBuild, './styles/global.scss'),

@@ -20,13 +20,17 @@ import * as styles from './DatePicker.scss';
 
 export {Range, Months, Year};
 
-export interface Props {
+export interface BaseProps {
+  /** ID for the element */
+  id?: string;
   /** The selected date or range of dates */
   selected?: Date | Range;
   /** The month to show */
   month: Months;
   /** The year to show */
   year: Year;
+  /** Allow a range of dates to be selected */
+  allowRange?: boolean;
   /** Disable selecting dates before this. */
   disableDatesBefore?: Date;
   /** Disable selecting dates after this. */
@@ -38,6 +42,8 @@ export interface Props {
   /** Callback when month is changed. */
   onMonthChange?(month: Months, year: Year): void;
 }
+
+export interface Props extends BaseProps {}
 
 export interface State {
   hoverDate?: Date;
@@ -59,8 +65,10 @@ export default class DatePicker extends React.PureComponent<Props, State> {
 
   render() {
     const {
+      id,
       month,
       year,
+      allowRange,
       multiMonth,
       disableDatesBefore,
       disableDatesAfter,
@@ -68,7 +76,6 @@ export default class DatePicker extends React.PureComponent<Props, State> {
     } = this.props;
 
     const {hoverDate, focusDate} = this.state;
-    const allowRange = selected != null && !(selected instanceof Date);
     const range =
       selected != null && selected instanceof Date
         ? {start: selected, end: selected}
@@ -107,6 +114,7 @@ export default class DatePicker extends React.PureComponent<Props, State> {
 
     return (
       <div
+        id={id}
         className={styles.DatePicker}
         onKeyDown={handleKeyDown}
         onKeyUp={this.handleKeyUp}

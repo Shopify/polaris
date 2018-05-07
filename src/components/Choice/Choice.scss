@@ -15,8 +15,15 @@ $icon-horizontal-adjustment: 2px;
 }
 
 .labelHidden {
+  padding: 0;
+
   > .Label {
     @include visually-hidden;
+  }
+
+  .Control {
+    margin-top: 0;
+    margin-right: 0;
   }
 }
 
@@ -24,8 +31,8 @@ $icon-horizontal-adjustment: 2px;
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
-  height: $control-size;
   width: $control-size;
+  height: $control-size;
   margin-top: $control-vertical-adjustment;
   margin-right: spacing(tight);
 
@@ -52,10 +59,10 @@ $icon-horizontal-adjustment: 2px;
 .Error {
   display: flex;
   margin-bottom: spacing(extra-tight);
-  color: color(red, dark);
+  color: color('red', 'dark');
 }
 
 .ErrorIcon {
-  @include recolor-icon(color(red));
+  @include recolor-icon(color('red'));
   margin: 0 spacing(extra-tight) 0 (-1 * $icon-horizontal-adjustment);
 }

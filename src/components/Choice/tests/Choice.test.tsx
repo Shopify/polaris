@@ -11,6 +11,14 @@ describe('<Choice />', () => {
     expect(label.text()).toBe('Label');
   });
 
+  it('renders error markup when provided with a value', () => {
+    const element = shallow(
+      <Choice id="MyChoice" label="Label" error="Error message" />,
+    );
+
+    expect(element.find('#MyChoiceError').text()).toContain('Error message');
+  });
+
   // We want the entire choice to be clickable, including the space
   // between the choice and the visual appearance of the label.
   it('renders the content as a child of the label', () => {
@@ -29,8 +37,30 @@ describe('<Choice />', () => {
   });
 
   it('does not render block-level elements in the label', () => {
+    const blockLevelElements = [
+      'p',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      'ol',
+      'ul',
+      'pre',
+      'address',
+      'blockquote',
+      'dl',
+      'div',
+      'fieldset',
+      'form',
+      'hr',
+      'table',
+    ];
     const element = shallow(<Choice id="MyChoice" label="Label" />);
     const label = element.find('label');
-    expect(label.find('div')).toHaveLength(0);
+    for (let i = 0; i < blockLevelElements.length; i++) {
+      expect(label.find(blockLevelElements[i])).toHaveLength(0);
+    }
   });
 });

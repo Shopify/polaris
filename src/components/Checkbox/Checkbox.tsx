@@ -2,12 +2,17 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Choice, {Error, errorID, helpTextID} from '../Choice';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
+import Choice, {errorID, helpTextID} from '../Choice';
 import Icon from '../Icon';
+import {Error} from '../../types';
 
 import * as styles from './Checkbox.scss';
 
-export interface Props {
+export interface BaseProps {
   /** Label for the checkbox */
   label: React.ReactNode;
   /** Visually hide the label */
@@ -34,9 +39,12 @@ export interface Props {
   onBlur?(): void;
 }
 
+export interface Props extends BaseProps {}
+export type CombinedProps = Props & WithAppProviderProps;
+
 const getUniqueID = createUniqueIDFactory('Checkbox');
 
-export default function Checkbox({
+function Checkbox({
   id = getUniqueID(),
   label,
   labelHidden,
@@ -49,7 +57,7 @@ export default function Checkbox({
   onBlur,
   name,
   value,
-}: Props) {
+}: CombinedProps) {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (onChange == null) {
       return;
@@ -59,7 +67,7 @@ export default function Checkbox({
   }
 
   const describedBy: string[] = [];
-  if (typeof error === 'string') {
+  if (error) {
     describedBy.push(errorID(id));
   }
   if (helpText) {
@@ -75,7 +83,7 @@ export default function Checkbox({
   const isChecked = !isIndeterminate && Boolean(checked);
 
   const indeterminateAttributes = isIndeterminate
-    ? {indeterminate: 'true', 'aria-checked': 'mixed'}
+    ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
     : {'aria-checked': isChecked};
 
   const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
@@ -94,7 +102,7 @@ export default function Checkbox({
       helpText={helpText}
       error={error}
     >
-      <div className={wrapperClassName}>
+      <span className={wrapperClassName}>
         <input
           id={id}
           name={name}
@@ -111,12 +119,14 @@ export default function Checkbox({
           role="checkbox"
           {...indeterminateAttributes}
         />
-        <div className={styles.Backdrop} />
-        <div className={styles.Icon}>
+        <span className={styles.Backdrop} />
+        <span className={styles.Icon}>
           <Icon source={iconSource} />
-        </div>
-      </div>
+        </span>
+      </span>
     </Choice>
     /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
   );
 }
+
+export default withAppProvider<Props>()(Checkbox);

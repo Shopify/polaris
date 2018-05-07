@@ -9,9 +9,10 @@ export interface Props {
   title?: string;
   children?: React.ReactNode;
   subdued?: boolean;
+  fullWidth?: boolean;
 }
 
-export default function Section({children, title, subdued}: Props) {
+export default function Section({children, title, subdued, fullWidth}: Props) {
   const headerContent = title ? (
     <div className={styles.SectionHeader}>
       <Subheading>{title}</Subheading>
@@ -21,6 +22,7 @@ export default function Section({children, title, subdued}: Props) {
   const className = classNames(
     styles.Section,
     subdued && styles['Section-subdued'],
+    fullWidth && styles['Section-fullWidth'],
   );
 
   return (

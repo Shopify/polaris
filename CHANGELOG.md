@@ -6,6 +6,137 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.0.0 - 2018-05-04
+
+Summary: This is the first major version of Polaris React since launch. Included in this release are:
+
+* Several new components, including data table, drop zone, app provider, and modal
+* Improvements to existing components, such as resource list, choice list, and cards
+* A few breaking API changes
+
+### Breaking changes
+
+#### React 16+
+
+We're removing support for React 15 in order to make full use of some of the new feature in React 16, such as fragments, error boundaries, and improved server-side rendering.
+
+##### Upgrade instructions
+
+Upgrade your app to the latest version of React.
+
+#### App provider
+
+The `AppProvider` component is now required in your app for Polaris components to function properly.
+
+##### Upgrade instructions
+
+Wrap your application in the `AppProvider` component.
+
+#### EmbeddedApp component has been removed
+
+The `EmbeddedApp` component has been removed. The `AppProvider` component now accepts the configuration needed to intialize an embedded app.
+
+##### Upgrade instructions
+
+Use the `AppProvider` component with the `apiKey` and `shopOrigin` props.
+
+#### [Resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list#navigation)
+
+Shopify is organized around objects that represent a merchant’s business, such as customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects resources.
+
+The resource list component functions as:
+
+* A content format, presenting a set of individual resources in a compact form
+* A system for taking action on one or more individual resources
+* A way to navigate to the show page of an individual resource
+
+Our current resource list component gave you some nice defaults out of the box, but didn't take you much further than that. We recognized that each of these lists is unique and contains different information that is important to the merchant.
+
+Our new resource list allow you to build custom items in the list, with their own layout, content, and styling. This gives you a powerful way to build these sorts of lists going forward.
+
+We've also included in depth documentation and a tutorial on how to build your own custom resource list items.
+
+#### Tabs no longer accept title prop
+
+To be more consistent with our other component APIs, the Tabs now use content instead of title.
+
+##### Upgrade instructions
+
+Change all instances of title to be content instead.
+
+#### TextField onChange is required
+
+Because we require you to manage state for your inputs, we decided to make onChange required for TextField to avoid confusion.
+
+##### Upgrade instructions
+
+Add an `onChange` callback to each use of `TextField` that is not disabled or readonly.
+
+#### Removed default white color from Icon CSS
+
+The CSS for Icons will no longer apply a color to icons by default. You must use the `color` prop on the Icon component to specify the color.
+
+##### Upgrade instructions
+
+Use `color` prop on all instances of `Icon` component.
+
+#### Anchor tags are no longer styled by Polaris components
+
+To avoid conflicts with other styling or frameworks, we're removing the styling we globally applied to all `a` tags.
+
+##### Upgrade instructions
+
+Use the `Link` component instead.
+
+#### Changed Alert onCancel prop to onClose
+
+This change only impacts users of the Sass version of Polaris, more specifically the `color()` function. The `color($hue, $value: base, $for-background: null)` function in Sass now accepts strings for `$hue` and `$value` as advertised in [the documentation](https://polaris.shopify.com/sassdoc/#undefined-function-color).
+
+##### Upgrade instructions
+
+* replace `\bcolor\(([a-z-]+)\)` with `color('$1')`
+* replace `\bcolor\(([a-z-]+), ([a-z-]+)\)` with `color('$1', '$2')`
+* replace `\bcolor\(([a-z-]+), ([a-z-]+), (.*)\)` with `color('$1', '$2', $3)`
+
+### New components
+
+#### [Data table](https://polaris.shopify.com/components/lists-and-tables/data-table)
+
+Since launching Polaris components, we’ve had many people ask why we didn’t include tables. While we have been moving away from using tables for comparisons that aren't tabular data (resource lists, for example), we recognize that there are still cases to use them.
+
+The data table component is our answer to those cases. While data visualizations represents part of a data set, data tables are used to organize and display all the information from a data set, allowing merchants view details from the entire set. This helps merchants compare and analyze all the data in a unified way.
+
+#### [Drop zone](https://polaris.shopify.com/components/actions/drop-zone#navigation)
+
+Currently we have several different interfaces for uploading files across Shopify, which leads to a lack of consistency and some missing features and capabilities. To solve this problem, we’re releasing a new drop zone component.
+
+This new component allows merchants to upload files by dragging and dropping them into an area on a page. The component handles file type validation, dropping onto the window, and more, meaning more ease of use for merchants.
+
+#### [Modal](https://polaris.shopify.com/components/overlays/modal#navigation)
+
+In the original Polaris React, the modal component was only available to embedded apps. No longer. Our new modal component is universal in that it can be used in either standalone or embedded apps, and will handle the correct behavior for you.
+
+#### [App provider](https://polaris.shopify.com/components/structure/app-provider#navigation)
+
+The app provider is a required component that enables sharing global application config with the components in Polaris. This is used for the internationalization of strings in Polaris components, as well as set other configuration such as a custom link component that all the Polaris components will use. This unlocks new ways for us to share configuration at an application level and have the components react to that configuration.
+
+### Enhancements
+
+* Added error prop to ChoiceList([#1292](https://github.com/Shopify/polaris-react/pull/1292))
+* TextField, Select, and Checkbox now accept the types string or react element for the error prop([#1292](https://github.com/Shopify/polaris-react/pull/1292))
+* Added optional `id` props to more components, and restructured the prop definitions to allow projects to make `id` props mandatory ([#1138](https://github.com/Shopify/polaris-react/pull/1138))
+* Added fullWidth prop to Card.Section ([#1051](https://github.com/Shopify/polaris-react/pull/1051))
+* Added fullHeight prop to Popover to override max-height ([#1099](https://github.com/Shopify/polaris-react/pull/1099))
+* Added `allowRange` as a property for DatePicker ([#884](https://github.com/Shopify/polaris-react/pull/884))
+* Added external link to secondary action for banner. Thank you to ([Andrew Cargill](https://github.com/cargix1)) for the issue ([#236](https://github.com/Shopify/polaris/issues/236))
+
+### Bug fixes
+
+* Enforced subdued description text style in `AnnotatedSection` ([#1294](https://github.com/Shopify/polaris-react/pull/1294))
+* Fixed overflow bug causing TextFields border to be cut off ([#1180](https://github.com/Shopify/polaris-react/pull/1180))
+* Allowed specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))
+* Fixed ActionList component to provide section dividers when a title was not provided ([#926](https://github.com/Shopify/polaris-react/pull/926))
+
 ## 1.14.2 - 2018-05-02
 
 _This will be the last v1.x release outside of critical security fixes._
@@ -67,7 +198,7 @@ _This will be the last v1.x release outside of critical security fixes._
 
 ### Documentation
 
-* Moving property descriptions out of READMEs and into source files. ([#1125](https://github.com/Shopify/polaris-react/pull/1125))
+* Moving property descriptions out of READMEs and into source files ([#1125](https://github.com/Shopify/polaris-react/pull/1125))
 
 ## 1.12.1 - 2018-03-06
 
@@ -77,7 +208,7 @@ _This will be the last v1.x release outside of critical security fixes._
 
 ### Documentation
 
-* Updated component examples that use state to use an es6 class. ([#1118](https://github.com/Shopify/polaris-react/pull/1118))
+* Updated component examples that use state to use an es6 class ([#1118](https://github.com/Shopify/polaris-react/pull/1118))
 
 ## 1.12.0 - 2018-02-28
 
