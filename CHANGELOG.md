@@ -6,10 +6,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
-### Bug fixes
-
-* Fixed an issue in the select component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers ([#1282](https://github.com/Shopify/polaris-react/pull/1282))
-
 ## 2.0.0 - 2018-05-04
 
 Summary: This is the first major version of Polaris React since launch. Included in this release are:
@@ -140,6 +136,7 @@ The app provider is a required component that enables sharing global application
 * Fixed overflow bug causing TextFields border to be cut off ([#1180](https://github.com/Shopify/polaris-react/pull/1180))
 * Allowed specific props in TextField Component to pass through properties on the input ([#907](https://github.com/Shopify/polaris-react/pull/907))
 * Fixed ActionList component to provide section dividers when a title was not provided ([#926](https://github.com/Shopify/polaris-react/pull/926))
+* Fixed an issue in the select component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers ([#1282](https://github.com/Shopify/polaris-react/pull/1282))
 
 ## 1.14.2 - 2018-05-02
 
