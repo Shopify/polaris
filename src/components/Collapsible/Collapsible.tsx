@@ -8,8 +8,6 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';
 
-import pkg from '../../../package.json';
-
 import * as styles from './Collapsible.scss';
 
 export interface Props {
@@ -139,17 +137,6 @@ export default class Collapsible extends React.Component<Props, State> {
     const displayHeight = collapsibleHeight(open, animationState, height);
 
     const content = animating || open ? children : null;
-    /* TODO before v2 release: remove this conditional and line 9 */
-    if (!id && pkg.version[0] === '1') {
-      /* eslint-disable no-console */
-      console.group('Polaris');
-      console.info(`You are currently using version ${pkg.version}.`);
-      console.warn(
-        '[Deprecation] The new `id` prop on Collapsible will be required from version 2.0.0 onward.',
-      );
-      console.groupEnd();
-      /* eslint-enable no-console */
-    }
 
     return (
       <div
