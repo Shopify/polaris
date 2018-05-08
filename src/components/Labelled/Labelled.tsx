@@ -12,12 +12,19 @@ import * as styles from './Labelled.scss';
 export {Action, labelID};
 
 export interface Props {
+  /** A unique identifier for the label */
   id: LabelProps['id'];
+  /** Text for the label */
   label: string;
+  /** Error to display beneath the label */
   error?: Error;
+  /** A action */
   action?: Action;
+  /** Additional hint text to display */
   helpText?: React.ReactNode;
+  /** The content to display inside the connected */
   children?: React.ReactNode;
+  /** Visually hide the label */
   labelHidden?: boolean;
 }
 

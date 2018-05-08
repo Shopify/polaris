@@ -4,8 +4,11 @@ import {unstyled} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
+  /** A destination to link to */
   url: string;
+  /** Forces url to open in a new tab */
   external?: boolean;
+  /**	The content to display inside the link */
   children?: React.ReactNode;
   [key: string]: any;
 }

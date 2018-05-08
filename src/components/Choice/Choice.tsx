@@ -5,11 +5,17 @@ import Icon from '../Icon';
 import * as styles from './Choice.scss';
 
 export interface Props {
+  /** A unique identifier for the action */
   id: string;
+  /**	Label for the choice */
   label: React.ReactNode;
+  /** Display an error message */
   error?: Error;
+  /** Visually hide the label */
   labelHidden?: boolean;
+  /**  The content to display inside the choice */
   children?: React.ReactNode;
+  /** Additional text to aide in use */
   helpText?: React.ReactNode;
 }
 

@@ -9,11 +9,15 @@ export interface RGBAColor extends RGBColor {
 }
 
 export interface HSBColor {
+  /** The color */
   hue: number;
+  /** Intensity of the color */
   brightness: number;
+  /** Purity of the color */
   saturation: number;
 }
 
 export interface HSBAColor extends HSBColor {
+  /** Level of transparency */
   alpha: number;
 }

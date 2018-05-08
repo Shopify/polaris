@@ -3,7 +3,9 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import * as styles from './DescriptionList.scss';
 
 export interface Item {
+  /** Title of the item */
   term: React.ReactNode;
+  /**  Content for the item */
   description: React.ReactNode;
 }
 

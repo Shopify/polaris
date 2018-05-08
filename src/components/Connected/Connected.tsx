@@ -3,8 +3,11 @@ import Item, {Position} from './Item';
 import * as styles from './Connected.scss';
 
 export interface Props {
+  /** Content to display on the left */
   left?: React.ReactNode;
+  /** Content to disiplay on the right */
   right?: React.ReactNode;
+  /** The content to display inside the connected */
   children?: React.ReactNode;
 }
 

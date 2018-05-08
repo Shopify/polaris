@@ -5,13 +5,18 @@ import {ItemDescriptor} from './types';
 import * as styles from './ActionList.scss';
 
 export interface ActionListSection {
+  /** Title of the section */
   title?: string;
+  /** List of items */
   items: ItemDescriptor[];
 }
 
 export interface Props {
+  /** Section of the action */
   section: ActionListSection;
+  /** Should their be multiple sections */
   hasMultipleSections: boolean;
+  /** Callback when any action takes place */
   onActionAnyItem?: ItemDescriptor['onAction'];
 }
 

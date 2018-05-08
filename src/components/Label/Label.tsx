@@ -4,8 +4,11 @@ import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Label.scss';
 
 export interface Props {
+  /** The content to display inside the connected */
   children?: string;
+  /** A unique identifier for the action */
   id: string;
+  /** Visually hide the label */
   hidden?: boolean;
 }
 
