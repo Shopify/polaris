@@ -8,7 +8,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## 2.0.0 - 2018-05-07
 
-Summary: This is the first major version of Polaris React since launch. Included in this release are:
+Summary: this is the first major version of Polaris React since launch. Included in this release are:
 
 * Several new components, including data table, drop zone, app provider, and modal
 * Improvements to existing components, such as resource list, choice list, and cards
@@ -18,23 +18,31 @@ Summary: This is the first major version of Polaris React since launch. Included
 
 #### React 16+
 
-We're removing support for React 15 in order to make full use of some of the new feature in React 16, such as fragments, error boundaries, and improved server-side rendering.
+We’re removing support for React 15 in order to make full use of some of the new features in React 16, such as fragments, error boundaries, and improved server-side rendering.
 
 ##### Upgrade instructions
 
 Upgrade your app to the latest version of React.
 
-#### App provider
+#### [App provider](https://polaris.shopify.com/components/structure/app-provider)
 
 The `AppProvider` component is now required in your app for Polaris components to function properly.
 
 ##### Upgrade instructions
 
-Wrap your application in the `AppProvider` component.
+Wrap your app in the `AppProvider` component.
+
+#### [Collapsible](https://polaris.shopify.com/components/behavior/collapsible) component requires an `id` prop
+
+For accessibility reasons, the `id` prop is now required on the Collapsible component.
+
+##### Upgrade instructions
+
+Pass a unique value as an `id` to all `<Collapsible>` components. For example, `<Collapsible id="my-unique-id">`.
 
 #### EmbeddedApp component has been removed
 
-The `EmbeddedApp` component has been removed. The `AppProvider` component now accepts the configuration needed to intialize an embedded app.
+The `EmbeddedApp` component has been removed. The `AppProvider` component now accepts the configuration needed to initialize an embedded app.
 
 ##### Upgrade instructions
 
@@ -50,23 +58,23 @@ The resource list component functions as:
 * A system for taking action on one or more individual resources
 * A way to navigate to the show page of an individual resource
 
-Our current resource list component gave you some nice defaults out of the box, but didn't take you much further than that. We recognized that each of these lists is unique and contains different information that is important to the merchant.
+Our current resource list component gave you some nice defaults out of the box, but didn’t take you much further than that. We recognized that each of these lists is unique and contains different information that is important to the merchant.
 
 Our new resource list allow you to build custom items in the list, with their own layout, content, and styling. This gives you a powerful way to build these sorts of lists going forward.
 
-We've also included in depth documentation and a tutorial on how to build your own custom resource list items.
+We’ve also included in depth documentation and a tutorial on how to build your own custom resource list items.
 
-#### Tabs no longer accept title prop
+#### Tabs no longer accept `title` prop
 
-To be more consistent with our other component APIs, the Tabs now use content instead of title.
+To be more consistent with our other component APIs, the `Tabs` component now uses `content` instead of `title`.
 
 ##### Upgrade instructions
 
-Change all instances of title to be content instead.
+Change all instances of `title` to be `content` instead.
 
 #### TextField onChange is required
 
-Because we require you to manage state for your inputs, we decided to make onChange required for TextField to avoid confusion.
+Because we require you to manage state for your inputs, we decided to make `onChange` required for `TextField` to avoid confusion.
 
 ##### Upgrade instructions
 
@@ -82,7 +90,7 @@ Use `color` prop on all instances of `Icon` component.
 
 #### Anchor tags are no longer styled by Polaris components
 
-To avoid conflicts with other styling or frameworks, we're removing the styling we globally applied to all `a` tags.
+To avoid conflicts with other styling or frameworks, we’re removing the styling we globally applied to all `a` elements.
 
 ##### Upgrade instructions
 
@@ -90,9 +98,11 @@ Use the `Link` component instead.
 
 #### Changed Alert onCancel prop to onClose
 
-This change only impacts users of the Sass version of Polaris, more specifically the `color()` function. The `color($hue, $value: base, $for-background: null)` function in Sass now accepts strings for `$hue` and `$value` as advertised in [the documentation](https://polaris.shopify.com/sassdoc/#undefined-function-color).
+This change only impacts users of the Sass version of Polaris, more specifically the `color()` function. The `color($hue, $value: base, $for-background: null)` function in Sass now accepts strings for `$hue` and `$value` as advertised in [the color function documentation](https://polaris.shopify.com/sassdoc/#undefined-function-color).
 
 ##### Upgrade instructions
+
+If you’re using VS Code, here are the exact search / replace instructions to follow (toggle “Use Regular Expression”):
 
 * replace `\bcolor\(([a-z-]+)\)` with `color('$1')`
 * replace `\bcolor\(([a-z-]+), ([a-z-]+)\)` with `color('$1', '$2')`
@@ -102,7 +112,7 @@ This change only impacts users of the Sass version of Polaris, more specifically
 
 #### [Data table](https://polaris.shopify.com/components/lists-and-tables/data-table)
 
-Since launching Polaris components, we’ve had many people ask why we didn’t include tables. While we have been moving away from using tables for comparisons that aren't tabular data (resource lists, for example), we recognize that there are still cases to use them.
+Since launching Polaris components, we’ve had many people ask why we didn’t include tables. While we have been moving away from using tables for comparisons that aren’t tabular data (resource lists, for example), we recognize that there are still cases to use them.
 
 The data table component is our answer to those cases. While data visualizations represents part of a data set, data tables are used to organize and display all the information from a data set, allowing merchants view details from the entire set. This helps merchants compare and analyze all the data in a unified way.
 
@@ -118,25 +128,25 @@ In the original Polaris React, the modal component was only available to embedde
 
 #### [App provider](https://polaris.shopify.com/components/structure/app-provider#navigation)
 
-The app provider is a required component that enables sharing global application config with the components in Polaris. This is used for the internationalization of strings in Polaris components, as well as set other configuration such as a custom link component that all the Polaris components will use. This unlocks new ways for us to share configuration at an application level and have the components react to that configuration.
+The app provider is a required component that enables sharing global app config with the components in Polaris. This is used for the internationalization of strings in Polaris components, as well as set other configuration such as a custom link component that all the Polaris components will use. This unlocks new ways for us to share configuration at an app level and have the components react to that configuration.
 
 ### Enhancements
 
-* Added error prop to ChoiceList
-* TextField, Select, and Checkbox now accept the types string or react element for the error prop
+* Added `error` prop to ChoiceList
+* `TextField`, `Select`, and `Checkbox` now accept the types `string` or `ReactElement` for the `error` prop
 * Added optional `id` props to more components, and restructured the prop definitions to allow projects to make `id` props mandatory
-* Added fullWidth prop to Card.Section
-* Added fullHeight prop to Popover to override max-height
-* Added `allowRange` as a property for DatePicker
-* Added external link to secondary action for banner. Thank you to ([Andrew Cargill](https://github.com/cargix1)) for the issue ([#236](https://github.com/Shopify/polaris/issues/236))
+* Added `fullWidth` prop to `Card.Section`
+* Added `fullHeight` prop to `Popover` to override max-height
+* Added `allowRange` as a property for `DatePicker`
+* Added the `external` option to the `secondaryAction.action` prop on the `Banner` component. Thank you to ([Andrew Cargill](https://github.com/cargix1)) for the issue ([#236](https://github.com/Shopify/polaris/issues/236))
 
 ### Bug fixes
 
 * Enforced subdued description text style in `AnnotatedSection`
-* Fixed overflow bug causing TextFields border to be cut off
-* Allowed specific props in TextField Component to pass through properties on the input
-* Fixed ActionList component to provide section dividers when a title was not provided
-* Fixed an issue in the select component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers
+* Fixed an overflow bug causing the border of `TextField` to be cut off
+* Allowed specific props in the `TextField` component to pass through properties to the input child
+* Fixed `ActionList` component to provide section dividers when a `title` was not provided
+* Fixed an issue in the `Select` component where placeholder didn’t properly appear on Firefox and appeared disabled on all browsers
 
 ## 1.14.2 - 2018-05-02
 

@@ -27,19 +27,19 @@ yarn add @shopify/polaris
 1.  Include the CSS in your HTML:
 
 ```html
- <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-rc.4/polaris.min.css" />
+ <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0/polaris.min.css" />
 ```
 
 > Note: you can import the CSS directly into your project if your asset packager supports it:
 >
 > ```javascript
-> import '@shopify/polaris/styles.css';
+> import "@shopify/polaris/styles.css";
 > ```
 
 2.  Include any of the provided components in your project:
 
 ```javascript
-import {AppProvider, Page, Card, Button} from '@shopify/polaris';
+import { AppProvider, Page, Card, Button } from "@shopify/polaris";
 ```
 
 3.  Tell React to render the element in the DOM:
@@ -49,11 +49,11 @@ ReactDOM.render(
   <AppProvider>
     <Page title="Example app">
       <Card sectioned>
-        <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+        <Button onClick={() => alert("Button clicked!")}>Example button</Button>
       </Card>
     </Page>
   </AppProvider>,
-  document.querySelector('#app'),
+  document.querySelector("#app")
 );
 ```
 
@@ -70,7 +70,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 1.  Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-rc.4/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0/polaris.min.css" />
 ```
 
 2.  Include the markup and associated classes in your HTML document:

@@ -50,7 +50,7 @@ Use React components in most cases, especially if you’re building a highly int
 * Include the CSS in your HTML to implement:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-rc.4/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0/polaris.min.css" />
 ```
 
 * Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
@@ -68,13 +68,13 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-rc.4/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0/polaris.min.css" />
 ```
 
 First, import the component into your project:
 
 ```javascript
-import {AppProvider, Button} from '@shopify/polaris';
+import { AppProvider, Button } from "@shopify/polaris";
 ```
 
 Create an element using the Polaris React `AppProvider` component. The `AppProvider` component must wrap your entire app because Polaris React components will not function without it:
@@ -82,7 +82,7 @@ Create an element using the Polaris React `AppProvider` component. The `AppProvi
 ```javascript
 const app = (
   <AppProvider>
-    <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+    <Button onClick={() => alert("Button clicked!")}>Example button</Button>
   </AppProvider>
 );
 ```
@@ -98,7 +98,7 @@ ReactDOM.render(app, domContainerNode);
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0-rc.4/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.0.0/polaris.min.css" />
 ```
 
 Add the appropriate classes to your HTML elements:
@@ -128,16 +128,16 @@ The embedded section includes
 In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the [`<AppProvider />`](/components/structure/app-provider) component:
 
 ```jsx
-import React from 'react';
-import {render} from 'react-dom';
-import * as PropTypes from 'prop-types';
-import {AppProvider, Page, Card, Button} from '@shopify/polaris';
+import React from "react";
+import { render } from "react-dom";
+import * as PropTypes from "prop-types";
+import { AppProvider, Page, Card, Button } from "@shopify/polaris";
 
 class MyApp extends React.Component {
   // This line is very important! It tells React to attach the `easdk`
   // object to `this.context` within your component.
   static contextTypes = {
-    easdk: PropTypes.object,
+    easdk: PropTypes.object
   };
 
   render() {
@@ -163,7 +163,7 @@ render(
   >
     <MyApp />
   </AppProvider>,
-  document.querySelector('#app'),
+  document.querySelector("#app")
 );
 ```
 
@@ -174,13 +174,13 @@ Your `apiKey` and `shopOrigin` attributes are required. The [EASDK init section]
 To access the EASDK components you need to add them to you project:
 
 ```javascript
-import * as Embedded from '@shopify/polaris/embedded';
+import * as Embedded from "@shopify/polaris/embedded";
 ```
 
 or
 
 ```javascript
-import {Alert, ResourcePicker} from '@shopify/polaris/embedded';
+import { Alert, ResourcePicker } from "@shopify/polaris/embedded";
 ```
 
 if you want to import a subset of the components.
