@@ -11,9 +11,9 @@ export interface RGBAColor extends RGBColor {
 export interface HSBColor {
   /** The color */
   hue: number;
-  /** Intensity of the color */
+  /** Brightness of the color */
   brightness: number;
-  /** Purity of the color */
+  /** Saturation of the color */
   saturation: number;
 }
 

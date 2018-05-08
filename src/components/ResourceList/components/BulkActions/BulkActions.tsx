@@ -21,23 +21,23 @@ const MAX_PROMOTED_ACTIONS = 2;
 export interface Props {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
-  /** Label for the bulk action */
+  /** Label for the bulk actions */
   label?: string;
-  /** Bulkaction is selected */
+  /** State of the bulk actions checkbox */
   selected?: boolean | 'indeterminate';
-  /** Able to select */
+  /** List is in a selectable state */
   selectMode?: boolean;
   /** Actions that will be given more prominence */
   promotedActions?: BulkAction[];
   /** List of actions */
   actions?: (BulkAction | BulkActionListSection)[];
-  /** Text for select all */
+  /** Text to select all across pages */
   paginatedSelectAllText?: string;
-  /** Action for selecting all */
+  /** Action for selecting all across pages */
   paginatedSelectAllAction?: Action;
-  /** Callback when all items are toggled */
+  /** Callback when the select all checkbox is clicked */
   onToggleAll?(): void;
-  /** Callback when select mode is toggled */
+  /** Callback when selectable state of list is changed */
   onSelectModeToggle?(selectMode: boolean): void;
 }
 

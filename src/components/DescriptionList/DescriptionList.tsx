@@ -5,7 +5,7 @@ import * as styles from './DescriptionList.scss';
 export interface Item {
   /** Title of the item */
   term: React.ReactNode;
-  /**  Content for the item */
+  /**  Item content */
   description: React.ReactNode;
 }
 

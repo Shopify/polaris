@@ -18,7 +18,7 @@ export interface Props {
   label: string;
   /** Error to display beneath the label */
   error?: Error;
-  /** A action */
+  /** An action */
   action?: Action;
   /** Additional hint text to display */
   helpText?: React.ReactNode;

@@ -5,7 +5,7 @@ import Icon from '../Icon';
 import * as styles from './Choice.scss';
 
 export interface Props {
-  /** A unique identifier for the action */
+  /** A unique identifier for the choice */
   id: string;
   /**	Label for the choice */
   label: React.ReactNode;

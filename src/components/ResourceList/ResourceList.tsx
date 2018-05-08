@@ -41,7 +41,7 @@ export interface Props {
   bulkActions?: BulkActionsProps['actions'];
   /** Collection of IDs for the currently selected items */
   selectedItems?: SelectedItems;
-  /** If there are items to display */
+  /** If there are more items than currently in the list */
   hasMoreItems?: boolean;
   /** Boolean to show or hide the header */
   showHeader?: boolean;
