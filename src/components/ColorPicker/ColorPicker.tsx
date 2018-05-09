@@ -14,6 +14,7 @@ export interface State {
 }
 
 export interface Color extends HSBColor {
+  /** Level of transparency */
   alpha?: HSBAColor['alpha'];
 }
 

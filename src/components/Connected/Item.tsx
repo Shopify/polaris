@@ -10,7 +10,9 @@ export enum Position {
 }
 
 export interface Props {
+  /** Position of the item */
   position: Position;
+  /** Item content */
   children?: React.ReactNode;
 }
 

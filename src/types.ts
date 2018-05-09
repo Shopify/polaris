@@ -9,11 +9,17 @@ export type Error =
   | (string | React.ReactElement<any>)[];
 
 export interface BaseAction {
+  /** A unique identifier for the action */
   id?: string;
+  /** Content the action displays */
   content?: string;
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** A destination to link to, rendered in the action */
   url?: string;
+  /** Forces url to open in a new tab */
   external?: boolean;
+  /** Callback when an action takes place */
   onAction?(): void;
 }
 
@@ -24,28 +30,38 @@ export interface AnimationProps {
 }
 
 export interface BaseLinkAction {
+  /** A unique identifier for the action */
   id?: string;
+  /** Content the action displays */
   content?: string;
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** A destination to link to */
   url: string;
 }
 
 export interface LinkAction extends BaseLinkAction {}
 
 export interface BaseCallbackAction {
+  /** A unique identifier for the action */
   id?: string;
+  /** Content the action displays */
   content?: string;
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Callback when an action takes place */
   onAction(): void;
 }
 
 export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
+  /** Should the action be disabled */
   disabled?: boolean;
 }
 
 export interface DestructableAction extends Action {
+  /** Destructive action */
   destructive?: boolean;
 }
 
@@ -53,14 +69,17 @@ export interface EASDKAction
   extends Action,
     DisableableAction,
     DestructableAction {
+  /** Where to display the target link */
   target?: EASDKTarget;
 }
 
 export interface IconableAction extends Action {
+  /** Source of the icon */
   icon?: IconProps['source'];
 }
 
 export interface LoadableAction extends Action {
+  /** Should a spinner be displayed */
   loading?: boolean;
 }
 

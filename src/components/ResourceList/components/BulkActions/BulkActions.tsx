@@ -19,15 +19,25 @@ export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 const MAX_PROMOTED_ACTIONS = 2;
 
 export interface Props {
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Label for the bulk actions */
   label?: string;
+  /** State of the bulk actions checkbox */
   selected?: boolean | 'indeterminate';
+  /** List is in a selectable state */
   selectMode?: boolean;
+  /** Actions that will be given more prominence */
   promotedActions?: BulkAction[];
+  /** List of actions */
   actions?: (BulkAction | BulkActionListSection)[];
+  /** Text to select all across pages */
   paginatedSelectAllText?: string;
+  /** Action for selecting all across pages */
   paginatedSelectAllAction?: Action;
+  /** Callback when the select all checkbox is clicked */
   onToggleAll?(): void;
+  /** Callback when selectable state of list is changed */
   onSelectModeToggle?(selectMode: boolean): void;
 }
 
