@@ -8,7 +8,7 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   url: string;
   /** Forces url to open in a new tab */
   external?: boolean;
-  /**	The content to display inside the link */
+  /**	Content to display inside the link */
   children?: React.ReactNode;
   [key: string]: any;
 }

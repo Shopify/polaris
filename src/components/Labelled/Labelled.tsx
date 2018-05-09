@@ -22,7 +22,7 @@ export interface Props {
   action?: Action;
   /** Additional hint text to display */
   helpText?: React.ReactNode;
-  /** The content to display inside the connected */
+  /** Content to display inside the connected */
   children?: React.ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;

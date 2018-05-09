@@ -17,7 +17,7 @@ import * as styles from './Page.scss';
 export type SecondaryAction = IconableAction & DisableableAction;
 
 export interface ActionGroup {
-  /** The action group title */
+  /** Action group title */
   title: string;
   /** Icon to display */
   icon?: IconableAction['icon'];

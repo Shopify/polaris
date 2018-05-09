@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from './Label.scss';
 
 export interface Props {
-  /** The label content */
+  /** Label content */
   children?: string;
   /** A unique identifier for the label */
   id: string;

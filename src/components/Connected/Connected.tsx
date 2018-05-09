@@ -7,7 +7,7 @@ export interface Props {
   left?: React.ReactNode;
   /** Content to display on the right */
   right?: React.ReactNode;
-  /** The connected content */
+  /** Connected content */
   children?: React.ReactNode;
 }
 

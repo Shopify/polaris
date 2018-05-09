@@ -11,7 +11,7 @@ export interface StickyItem {
   stickyNode: HTMLElement;
   /** Placeholder element */
   placeHolderNode: HTMLElement;
-  /** The bounding element */
+  /** Bounding element */
   boundingElement: HTMLElement | null;
   /** Method to handle positioning */
   handlePositioning(

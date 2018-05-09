@@ -13,7 +13,7 @@ export interface Props {
   error?: Error;
   /** Visually hide the label */
   labelHidden?: boolean;
-  /**  The content to display inside the choice */
+  /**  Content to display inside the choice */
   children?: React.ReactNode;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
