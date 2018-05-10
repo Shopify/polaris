@@ -1,8 +1,11 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
 import {KeypressListener} from '../../../../../components';
 
-import {animationFrame, trigger} from '../../../../../../tests/utilities';
+import {
+  animationFrame,
+  trigger,
+  mountWithAppProvider,
+} from '../../../../../../tests/utilities';
 
 import Dialog from '../../Dialog';
 
@@ -16,7 +19,7 @@ describe('<Dialog>', () => {
   });
 
   it('renders CloseKeypressListener with correct props when `in` is true', () => {
-    const listener = mount(
+    const listener = mountWithAppProvider(
       <Dialog labelledBy="test" onClose={jest.fn()} in>
         something
       </Dialog>,
@@ -26,7 +29,7 @@ describe('<Dialog>', () => {
   });
 
   it('triggers an onEntered prop', () => {
-    const dialog = mount(
+    const dialog = mountWithAppProvider(
       <Dialog labelledBy="test" onClose={jest.fn()} onEntered={jest.fn()}>
         something
       </Dialog>,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import {findByTestID} from '../../../../tests/utilities/enzyme';
 import Popover from '../Popover';
 
@@ -7,7 +7,7 @@ describe('<Popover />', () => {
   const spy = jest.fn();
 
   it('renders a portal', () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
     );
     const portal = findByTestID(popover, 'portal');
@@ -15,7 +15,7 @@ describe('<Popover />', () => {
   });
 
   it('renders an activator', () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover
         active
         activator={<div testID="activator">Activator</div>}
@@ -27,7 +27,7 @@ describe('<Popover />', () => {
   });
 
   it('renders a positionedOverlay when active is true', () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover active activator={<div>Activator</div>} onClose={spy} />,
     );
     const positionedOverlay = findByTestID(popover, 'positionedOverlay');
@@ -35,7 +35,7 @@ describe('<Popover />', () => {
   });
 
   it("doesn't render a popover when active is false", () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
     );
     const positionedOverlay = findByTestID(popover, 'positionedOverlay');
@@ -43,7 +43,7 @@ describe('<Popover />', () => {
   });
 
   it("passes 'preferredPosition' to PopoverOverlay", () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover
         active={false}
         preferredPosition="above"
@@ -56,7 +56,7 @@ describe('<Popover />', () => {
   });
 
   it('has a div as activatorWrapper by default', () => {
-    const popover = shallow(
+    const popover = mountWithAppProvider(
       <Popover
         active={false}
         preferredPosition="above"
@@ -64,11 +64,12 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    expect(popover.type()).toBe('div');
+    const activatorWrapper = findByTestID(popover, 'wrapper-component');
+    expect(activatorWrapper.type()).toBe('div');
   });
 
   it('has a span as activatorWrapper when activatorWrapper prop is set to span', () => {
-    const popover = shallow(
+    const popover = mountWithAppProvider(
       <Popover
         active={false}
         activatorWrapper="span"
@@ -77,11 +78,12 @@ describe('<Popover />', () => {
         onClose={spy}
       />,
     );
-    expect(popover.type()).toBe('span');
+    const activatorWrapper = findByTestID(popover, 'wrapper-component');
+    expect(activatorWrapper.type()).toBe('span');
   });
 
   it("passes 'preventAutofocus' to PopoverOverlay", () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover
         active={false}
         preventAutofocus
@@ -94,7 +96,7 @@ describe('<Popover />', () => {
   });
 
   it("passes 'sectioned' to PopoverOverlay", () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover
         active={false}
         sectioned
@@ -107,7 +109,7 @@ describe('<Popover />', () => {
   });
 
   it("passes 'fullWidth' to PopoverOverlay", () => {
-    const popover = mount(
+    const popover = mountWithAppProvider(
       <Popover
         active={false}
         fullWidth
@@ -120,7 +122,7 @@ describe('<Popover />', () => {
   });
 
   it('calls onClose when you click outside the Popover', () => {
-    mount(
+    mountWithAppProvider(
       <Popover
         active
         fullWidth

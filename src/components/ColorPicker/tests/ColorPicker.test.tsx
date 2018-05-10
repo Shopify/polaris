@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import ColorPicker from '../ColorPicker';
 import Slidable from '../Slidable';
 
@@ -19,7 +19,7 @@ describe('<ColorPicker />', () => {
     describe('onChange', () => {
       it('is called when the user mouse downs', () => {
         const spy = jest.fn();
-        mount(<ColorPicker color={red} onChange={spy} />)
+        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />)
           .find(Slidable)
           .at(Slidables.BrightnessSaturation)
           .simulate('mousedown');
@@ -31,7 +31,7 @@ describe('<ColorPicker />', () => {
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
-        mount(<ColorPicker color={red} onChange={spy} />);
+        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />);
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
@@ -43,7 +43,7 @@ describe('<ColorPicker />', () => {
     describe('onChange', () => {
       it('is called when the user mouse downs', () => {
         const spy = jest.fn();
-        mount(<ColorPicker color={red} onChange={spy} />)
+        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />)
           .find(Slidable)
           .at(Slidables.Hue)
           .simulate('mousedown');
@@ -55,7 +55,7 @@ describe('<ColorPicker />', () => {
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
-        mount(<ColorPicker color={red} onChange={spy} />);
+        mountWithAppProvider(<ColorPicker color={red} onChange={spy} />);
 
         window.dispatchEvent(new Event('mousemove'));
         expect(spy).not.toHaveBeenCalled();
@@ -66,7 +66,7 @@ describe('<ColorPicker />', () => {
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';
-      const colorPicker = mount(
+      const colorPicker = mountWithAppProvider(
         <ColorPicker id={id} color={red} onChange={jest.fn()} />,
       );
 

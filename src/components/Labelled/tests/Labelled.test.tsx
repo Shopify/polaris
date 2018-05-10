@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import Labelled from '..';
 import Label from '../../Label';
 import {buttonFrom} from '../../Button';
@@ -7,7 +7,7 @@ import {buttonFrom} from '../../Button';
 describe('<Labelled />', () => {
   it('passes relevant props along to the label', () => {
     const action = {content: 'Do something'};
-    const element = shallow(
+    const element = mountWithAppProvider(
       <Labelled id="my-label" action={action} label="Label" />,
     );
     const label = element.find(Label);
@@ -17,7 +17,7 @@ describe('<Labelled />', () => {
   });
 
   it('renders error markup when provided with a value', () => {
-    const label = shallow(
+    const label = mountWithAppProvider(
       <Labelled id="MyLabelled" label="Label" error="Error message" />,
     );
 
@@ -29,7 +29,7 @@ describe('<Labelled />', () => {
       return <div />;
     }
 
-    const element = shallow(
+    const element = mountWithAppProvider(
       <Labelled id="MyLabelled" label="Label">
         <MyComponent />
       </Labelled>,
@@ -47,7 +47,7 @@ describe('<Labelled />', () => {
         accessibilityLabel: 'My action with more description',
       };
 
-      const label = shallow(
+      const label = mountWithAppProvider(
         <Labelled id="MyLabelled" label="Label" action={action} />,
       );
       const button = buttonFrom(action, {plain: true});
@@ -55,7 +55,7 @@ describe('<Labelled />', () => {
     });
 
     it('does not render any block-level elements in the label element', () => {
-      const label = shallow(
+      const label = mountWithAppProvider(
         <Labelled
           id="MyThing"
           action={{content: 'My action'}}

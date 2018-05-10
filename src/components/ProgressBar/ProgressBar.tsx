@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import * as styles from './ProgressBar.scss';
 
 export type Size = 'small' | 'medium' | 'large';
@@ -17,13 +21,25 @@ export interface Props {
   size?: Size;
 }
 
-export default function ProgressBar({progress = 0, size = 'medium'}: Props) {
+export type CombinedProps = Props & WithAppProviderProps;
+
+function ProgressBar({
+  progress = 0,
+  size = 'medium',
+  polaris: {intl},
+}: CombinedProps) {
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
   );
 
-  const parsedProgress = parseProgress(progress);
+  const warningMessage = intl.translate(
+    progress < 0
+      ? 'Polaris.ProgressBar.negativeWarningMessage'
+      : 'Polaris.ProgressBar.exceedWarningMessage',
+    {progress},
+  );
+  const parsedProgress = parseProgress(progress, warningMessage);
 
   return (
     <div className={className}>
@@ -40,22 +56,18 @@ export default function ProgressBar({progress = 0, size = 'medium'}: Props) {
   );
 }
 
-function parseProgress(progress: number) {
+function parseProgress(progress: number, warningMessage: string) {
   let progressWidth;
   if (progress < 0) {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
-      console.warn(
-        `Values passed to the progress prop shouldn’t be negative. Resetting ${progress} to 0.`,
-      );
+      console.warn(warningMessage);
     }
     progressWidth = 0;
   } else if (progress > 100) {
     if (process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
-      console.warn(
-        `Values passed to the progress prop shouldn’t exceed 100. Setting ${progress} to 100.`,
-      );
+      console.warn(warningMessage);
     }
     progressWidth = 100;
   } else {
@@ -63,3 +75,5 @@ function parseProgress(progress: number) {
   }
   return progressWidth;
 }
+
+export default withAppProvider<Props>()(ProgressBar);

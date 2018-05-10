@@ -22,6 +22,7 @@ import * as styles from './Modal.scss';
 const IFRAME_LOADING_HEIGHT = 200;
 
 export type Width = 'large' | 'fullwidth';
+export type Warn = 'easdk' | 'modal';
 
 export interface Props extends FooterProps {
   /** Whether the modal is open or not */
@@ -131,11 +132,12 @@ export class Modal extends React.Component<CombinedProps, State> {
       footer,
       primaryAction,
       secondaryActions,
+      polaris: {intl},
     } = this.props;
 
     const {iframeHeight} = this.state;
 
-    const iframeTitle = 'body markup';
+    const iframeTitle = intl.translate('Polaris.Modal.iFrameTitle');
 
     const handleClose = memoizedBind(onClose);
 
@@ -211,7 +213,7 @@ export class Modal extends React.Component<CombinedProps, State> {
 
     const animated = !instant;
 
-    handleWarning('modal', this.props);
+    this.handleWarning('modal');
     return (
       <Portal idPrefix="modal">
         <TransitionGroup appear={animated} enter={animated} exit={animated}>
@@ -265,60 +267,59 @@ export class Modal extends React.Component<CombinedProps, State> {
     }
 
     if (open) {
-      handleWarning('easdk', this.props);
+      this.handleWarning('easdk');
       easdk.Modal.open(this.props);
     } else {
       easdk.Modal.close();
     }
   }
-}
 
-export type Warn = 'easdk' | 'modal';
+  private handleWarning(type: Warn) {
+    const {polaris: {intl}} = this.props;
+    const reqProps = {
+      modal: {
+        open: 'open',
+        onClose: 'onClose',
+      },
+      easdk: {
+        open: 'open',
+        src: 'src',
+        onClose: 'onClose',
+      },
+    };
 
-function handleWarning(type: Warn, props: Props) {
-  const reqProps = {
-    modal: {
-      open: 'open',
-      onClose: 'onClose',
-    },
-    easdk: {
-      open: 'open',
-      src: 'src',
-      onClose: 'onClose',
-    },
-  };
-
-  const missingProps = Object.keys(reqProps[type]).reduce(
-    (acc: string[], key) => {
-      if (!props.hasOwnProperty(key)) {
-        acc.push(key);
-      }
-      return acc;
-    },
-    [],
-  );
-
-  if (missingProps.length > 0) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `These required properties are missing from Modal: ${missingProps.join(
-        ', ',
-      )}`,
+    const missingProps = Object.keys(reqProps[type]).reduce(
+      (acc: string[], key) => {
+        if (!this.props.hasOwnProperty(key)) {
+          acc.push(key);
+        }
+        return acc;
+      },
+      [],
     );
-  }
 
-  const actionWarnings = handleActionWanrings(
-    props.primaryAction,
-    props.secondaryActions,
-  );
+    if (missingProps.length > 0) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        intl.translate('Polaris.Modal.modalWarning', {
+          missingProps: missingProps.join(', '),
+        }),
+      );
+    }
 
-  if (type === 'easdk' && actionWarnings.length > 0) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Modals inside of an embedded app will ignore: ${actionWarnings.join(
-        ', ',
-      )}`,
+    const actionWarnings = handleActionWanrings(
+      this.props.primaryAction,
+      this.props.secondaryActions,
     );
+
+    if (type === 'easdk' && actionWarnings.length > 0) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        intl.translate('Polaris.Modal.actionWarning', {
+          actionWarnings: actionWarnings.join(', '),
+        }),
+      );
+    }
   }
 }
 
