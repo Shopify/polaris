@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon from '../Icon';
@@ -16,7 +16,7 @@ export interface Item {
   status?: 'critical' | 'warning';
   icon?: IconProps['source'];
   title?: string;
-  description: Description;
+  description?: Description;
   truncate?: boolean;
 }
 
@@ -45,7 +45,7 @@ export default function ExceptionList({items: itemsList}: Props) {
       <span className={styles.Description}>{description}</span>
     );
 
-    const Element = truncate ? Truncate : Fragment;
+    const Element = truncate ? Truncate : React.Fragment;
 
     return (
       <li className={itemClasses} key={index}>
