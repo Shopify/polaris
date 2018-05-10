@@ -40,7 +40,11 @@ export interface BaseLinkAction {
   url: string;
 }
 
-export interface LinkAction extends BaseLinkAction {}
+export interface EASDKBreadcrumbTarget {
+  target?: EASDKTarget;
+}
+
+export interface LinkAction extends BaseLinkAction, EASDKBreadcrumbTarget {}
 
 export interface BaseCallbackAction {
   /** A unique identifier for the action */
