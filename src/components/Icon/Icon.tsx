@@ -193,15 +193,17 @@ function Icon({
   } else {
     const iconSource =
       typeof source === 'string' ? BUNDLED_ICONS[source] : source;
-    contentMarkup = (
-      <svg
-        className={styles.Svg}
-        viewBox={iconSource.viewBox}
-        dangerouslySetInnerHTML={{__html: iconSource.body}}
-        focusable="false"
-        aria-hidden="true"
-      />
-    );
+    contentMarkup = iconSource &&
+      iconSource.viewBox &&
+      iconSource.body && (
+        <svg
+          className={styles.Svg}
+          viewBox={iconSource.viewBox}
+          dangerouslySetInnerHTML={{__html: iconSource.body}}
+          focusable="false"
+          aria-hidden="true"
+        />
+      );
   }
 
   return (
