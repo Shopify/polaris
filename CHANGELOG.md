@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Enhancements
+
+* Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
+
 ### Bug fixes
 
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
