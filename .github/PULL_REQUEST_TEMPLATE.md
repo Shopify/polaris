@@ -1,3 +1,11 @@
+<!--
+  ☝️How to write a good PR title:
+  - Prefix it with [ComponentName] (if applicable), for example: [Button]
+  - Start with a verb, for example: Add, Delete, Improve, Fix…
+  - Give as much context as necessary and as little as possible
+  - Prefix it with [WIP] while it’s a work in progress
+-->
+
 ### WHY are these changes introduced?
 
 <!--
