@@ -1,6 +1,5 @@
 $fixed-column-width: rem(145px);
 $breakpoint: 768px;
-
 .DataTable {
   position: relative;
   max-width: 100vw;
@@ -12,14 +11,12 @@ $breakpoint: 768px;
       display: block;
     }
   }
-
   .Navigation {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     padding: spacing() spacing(tight);
-
     @include breakpoint-after($breakpoint, inclusive) {
       justify-content: flex-end;
     }
@@ -41,7 +38,6 @@ $breakpoint: 768px;
   width: rem(6px);
   background: color('ink', 'lightest');
   border-radius: border-radius();
-
   &:not(:last-of-type) {
     margin-right: spacing(extra-tight);
   }
@@ -55,7 +51,6 @@ $breakpoint: 768px;
   margin-left: $fixed-column-width * -1;
   width: calc(100% + #{$fixed-column-width});
   border-spacing: 0;
-
   &::after {
     content: '';
     position: absolute;
@@ -64,11 +59,7 @@ $breakpoint: 768px;
     left: $fixed-column-width;
     display: none;
     width: 0.6rem;
-    background: linear-gradient(
-      to right,
-      rgba(color('black'), 0.12),
-      rgba(color('black'), 0)
-    );
+    background: linear-gradient( to right, rgba(color('black'), 0.12), rgba(color('black'), 0));
   }
 }
 
@@ -91,7 +82,6 @@ $breakpoint: 768px;
 
 .Cell {
   padding: spacing();
-  background: color('white');
   border-bottom: 1px solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
@@ -111,8 +101,7 @@ $breakpoint: 768px;
   white-space: unset;
   word-wrap: break-word;
   text-align: left;
-  // stops painting on scroll (due to positioning)
-  backface-visibility: hidden;
+  backface-visibility: hidden; // stops painting on scroll (due to positioning)
 }
 
 .Cell-truncated {
@@ -130,7 +119,6 @@ $breakpoint: 768px;
   @include text-emphasis-normal;
   border-bottom: border(dark);
   border-top: border();
-
   &.Cell-sortable {
     // stylelint-disable-next-line selector-max-class
     .Heading {
@@ -139,27 +127,21 @@ $breakpoint: 768px;
       justify-content: flex-end;
       align-items: center;
       transition: fill duration() easing(), color duration() easing();
-    }
-
-    // stylelint-disable-next-line selector-max-class
+    } // stylelint-disable-next-line selector-max-class
     .Heading-left {
       justify-content: flex-start;
     }
-
     .Heading-sortable {
       @include recolor-icon(color('indigo'));
       opacity: 0;
       transition: opacity duration() easing();
     }
-
     &:hover,
     &:focus {
       @include recolor-icon(color('indigo'));
       color: color('indigo');
       outline: none;
-      cursor: pointer;
-
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity
+      cursor: pointer; // stylelint-disable-next-line selector-max-class, selector-max-specificity
       .Heading-sortable {
         opacity: 1;
       }
@@ -184,6 +166,5 @@ $breakpoint: 768px;
   color: color('ink', 'lighter');
   white-space: unset;
   text-align: center;
-  // stops painting on scroll (due to positioning)
-  backface-visibility: hidden;
+  backface-visibility: hidden; // stop painting on scroll (due to positioning)
 }
