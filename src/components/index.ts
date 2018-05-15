@@ -152,6 +152,8 @@ export {default as Portal, Props as PortalProps} from './Portal';
 
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 
+export {default as RangeSlider, Props as RangeSliderProps} from './RangeSlider';
+
 export {
   default as ResourceList,
   Props as ResourceListProps,

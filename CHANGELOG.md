@@ -17,6 +17,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## 2.1.2 - 2018-06-06
 
+### New components
+
+#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
+
+Use Range slider to select a number value between a min and max range.
+
 ### Enhancements
 
 - Added support for cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))

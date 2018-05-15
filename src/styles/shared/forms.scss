@@ -1,0 +1,15 @@
+@mixin unstyled-input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+}
