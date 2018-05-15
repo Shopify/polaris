@@ -109,6 +109,12 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     }
   }
 
+  componentDidUpdate(prevProps: CombinedProps) {
+    if (!this.props.truncate && prevProps.truncate !== this.props.truncate) {
+      this.handleResize();
+    }
+  }
+
   render() {
     const {
       headings,
@@ -201,11 +207,6 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const style = footerContent
       ? {marginBottom: `${heights[heights.length - 1]}px`}
       : {};
-
-    console.log(
-      'PRESERVED SCROLL POSITION: ',
-      this.state.preservedScrollPosition,
-    );
 
     return (
       <div className={wrapperClassName}>
