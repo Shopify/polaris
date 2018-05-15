@@ -17,6 +17,7 @@ export default function Item({
   image,
   disabled,
   external,
+  ellipsis,
 }: Props) {
   const className = classNames(styles.Item, disabled && styles.disabled);
   let imageElement = null;
@@ -37,13 +38,14 @@ export default function Item({
     );
   }
 
+  const contentMarkup = ellipsis && content ? `${content}…` : content;
   const contentElement = imageElement ? (
     <div className={styles.Content}>
       {imageElement}
-      <div className={styles.Text}>{content}</div>
+      <div className={styles.Text}>{contentMarkup}</div>
     </div>
   ) : (
-    content
+    contentMarkup
   );
 
   const control = url ? (

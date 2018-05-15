@@ -26,4 +26,14 @@ describe('<Item />', () => {
     );
     expect(item.find(UnstyledLink).prop('external')).toBe(true);
   });
+
+  it('renders an ellipsis when the ellipsis prop is true', () => {
+    const item = mountWithAppProvider(<Item content="Test" ellipsis />);
+    expect(item.text()).toBe('Test…');
+  });
+
+  it('does not render a label when content is undefined and ellipsis is true', () => {
+    const item = mountWithAppProvider(<Item ellipsis />);
+    expect(item.text()).toBe('');
+  });
 });
