@@ -80,7 +80,7 @@ export function withAppProvider<OwnProps>() {
         if (!polaris) {
           throw new Error(
             `The <AppProvider> component is required as of v2.0 of Polaris React. See
-            https://polaris-v2.shopify.com/components/structure/app-provider for implementation
+            https://polaris.shopify.com/components/structure/app-provider for implementation
             instructions.`,
           );
         }

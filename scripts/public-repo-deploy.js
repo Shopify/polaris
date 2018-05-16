@@ -26,7 +26,6 @@ const scripts = resolve(polarisPrivate, 'scripts');
 const polarisPackage = resolve(polarisPrivate, 'package.json');
 const releaseVersion = `v${packageVersion}`;
 const changelog = resolve(polarisPrivate, 'CHANGELOG.md');
-const changelogV2 = resolve(polarisPrivate, 'CHANGELOG_V2.md');
 
 // Compute the base branch on polaris-styleguide (default: master)
 // Example: will open a PR against the v4 branch if the
@@ -40,8 +39,6 @@ const changelogV2 = resolve(polarisPrivate, 'CHANGELOG_V2.md');
 // isMajorPrerelease('3.0.0-alpha') => true
 function isMajorPrerelease(version) {
   return (
-    // TODO remove the following line once v2.0.0 is out
-    semver.major(version) > 2 &&
     semver.prerelease(version) &&
     semver.minor(version) === 0 &&
     semver.patch(version) === 0
@@ -110,11 +107,6 @@ rm(privateFiles);
 let changelogFile = readFileSync(changelog, 'utf8');
 changelogFile = changelogFile.replace(STRIP_PRIVATE_LINKS, '');
 writeFileSync(changelog, changelogFile);
-
-// Regex to remove polaris-react links in CHANGELOG_V2.md
-let changelogV2File = readFileSync(changelogV2, 'utf8');
-changelogV2File = changelogV2File.replace(STRIP_PRIVATE_LINKS, '');
-writeFileSync(changelogV2, changelogV2File);
 
 const hiddenFilesToKeepInPublicRepository = [
   '.circleci',
