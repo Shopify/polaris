@@ -169,6 +169,7 @@ export {
   default as Select,
   Props as SelectProps,
   Option as SelectOption,
+  Group as SelectGroup,
 } from './Select';
 
 export {
