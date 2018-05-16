@@ -20,6 +20,18 @@ describe('<UnstyledLink />', () => {
 
       expect(anchorElement.length).toBe(1);
     });
+
+    it("doesn't have polaris prop", () => {
+      const CustomLinkComponent = () => <div />;
+      const link = new Link(CustomLinkComponent);
+      const mockContext = {context: {polaris: {link}}};
+      const anchorElement = mountWithAppProvider(
+        <UnstyledLink external url="https://shopify.com" />,
+        mockContext,
+      ).find(CustomLinkComponent);
+
+      expect(anchorElement.prop('polaris')).not.toBeDefined();
+    });
   });
 
   describe('external', () => {
