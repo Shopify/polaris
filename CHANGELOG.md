@@ -10,10 +10,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Exposed Group interface from the Select component ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 * Added an `ellipsis` prop to ActionList.Item allowing for an ellipsis suffix after the content ([#1377](https://github.com/Shopify/polaris-react/pull/1377))
-
-### Enhancements
-
 * Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
+* Added exception list component ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
 
 ### Bug fixes
 
