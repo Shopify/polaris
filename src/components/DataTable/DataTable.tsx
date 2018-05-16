@@ -48,7 +48,9 @@ export interface Props {
   totals?: TableData[];
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
-  /** Truncate content in first column instead of wrapping. */
+  /** Truncate content in first column instead of wrapping.
+   * @default false
+   */
   truncate?: boolean;
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData;
@@ -110,7 +112,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 
   componentDidUpdate(prevProps: CombinedProps) {
-    if (!this.props.truncate && prevProps.truncate !== this.props.truncate) {
+    if (!this.props.truncate && prevProps.truncate) {
       this.handleResize();
     }
   }
@@ -417,10 +419,12 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     }
 
     if (index === 1) {
-      return <Cell testID={id} key={id} presentational />;
+      return <Cell testID={id} key={id} presentational height={height} />;
     }
 
-    return <Cell total testID={id} key={id} contentType="numeric" />;
+    return (
+      <Cell total testID={id} key={id} contentType="numeric" height={height} />
+    );
   }
 
   @autobind

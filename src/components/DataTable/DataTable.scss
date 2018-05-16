@@ -1,5 +1,6 @@
 $fixed-column-width: rem(145px);
 $breakpoint: 768px;
+
 .DataTable {
   position: relative;
   max-width: 100vw;
@@ -11,12 +12,14 @@ $breakpoint: 768px;
       display: block;
     }
   }
+
   .Navigation {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     padding: spacing() spacing(tight);
+
     @include breakpoint-after($breakpoint, inclusive) {
       justify-content: flex-end;
     }
@@ -38,6 +41,7 @@ $breakpoint: 768px;
   width: rem(6px);
   background: color('ink', 'lightest');
   border-radius: border-radius();
+
   &:not(:last-of-type) {
     margin-right: spacing(extra-tight);
   }
@@ -51,6 +55,7 @@ $breakpoint: 768px;
   margin-left: $fixed-column-width * -1;
   width: calc(100% + #{$fixed-column-width});
   border-spacing: 0;
+
   &::after {
     content: '';
     position: absolute;
@@ -59,7 +64,11 @@ $breakpoint: 768px;
     left: $fixed-column-width;
     display: none;
     width: 0.6rem;
-    background: linear-gradient( to right, rgba(color('black'), 0.12), rgba(color('black'), 0));
+    background: linear-gradient(
+      to right,
+      rgba(color('black'), 0.12),
+      rgba(color('black'), 0)
+    );
   }
 }
 
@@ -119,6 +128,7 @@ $breakpoint: 768px;
   @include text-emphasis-normal;
   border-bottom: border(dark);
   border-top: border();
+
   &.Cell-sortable {
     // stylelint-disable-next-line selector-max-class
     .Heading {
@@ -131,11 +141,13 @@ $breakpoint: 768px;
     .Heading-left {
       justify-content: flex-start;
     }
+
     .Heading-sortable {
       @include recolor-icon(color('indigo'));
       opacity: 0;
       transition: opacity duration() easing();
     }
+
     &:hover,
     &:focus {
       @include recolor-icon(color('indigo'));
