@@ -9,14 +9,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 
 * Added an `ellipsis` prop to ActionList.Item allowing for an ellipsis suffix after the content ([#1377](https://github.com/Shopify/polaris-react/pull/1377))
-
-### Enhancements
-
 * Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
 
 ### Bug fixes
 
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
+* Fixed margins of a fullWidth Popover that appears above its activator ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
 
 ## 2.0.0 - 2018-05-07
 
