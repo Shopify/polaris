@@ -28,6 +28,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Fixed rendering of Popover when activator rerenders ([#1414](https://github.com/Shopify/polaris-react/pull/1414)) (thanks to [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/324))
 * Fixed z-index calculation for PositionOverlay and Dialog ([#1421]([https://github.com/Shopify/polaris-react/pull/1421]))
 * Fixed an issue where selecting a date in DatePicker would submit its enclosing form ([#1413](https://github.com/Shopify/polaris-react/pull/1413))
+* Fixed ResourceList reverse tabbing focus interaction on Action Buttons ([#1406](https://github.com/Shopify/polaris-react/pull/1406))
 
 ## 2.0.0 - 2018-05-07
 
