@@ -11,6 +11,7 @@ import {
   getNextDisplayMonth,
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
+  isSameDay,
 } from '@shopify/javascript-utilities/dates';
 import {
   withAppProvider,
@@ -50,22 +51,34 @@ export interface Props extends BaseProps {}
 export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
+  range?: Range;
   hoverDate?: Date;
   focusDate?: Date;
 }
 
 export class DatePicker extends React.PureComponent<CombinedProps, State> {
-  constructor(props: CombinedProps) {
-    super(props);
-
-    const {selected} = props;
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
+    const {selected} = nextProps;
     const range =
       selected instanceof Date ? {start: selected, end: selected} : selected;
 
-    this.state = {
+    if (
+      range != null &&
+      prevState.range != null &&
+      isSameDay(range.start, prevState.range.start) &&
+      isSameDay(range.end, prevState.range.end)
+    ) {
+      return null;
+    }
+
+    return {
+      range,
+      focusDate: undefined,
       hoverDate: range && range.end,
     };
   }
+
+  state: State = {};
 
   render() {
     const {
@@ -76,15 +89,10 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       multiMonth,
       disableDatesBefore,
       disableDatesAfter,
-      selected,
       polaris: {intl},
     } = this.props;
 
-    const {hoverDate, focusDate} = this.state;
-    const range =
-      selected != null && selected instanceof Date
-        ? {start: selected, end: selected}
-        : selected;
+    const {range, hoverDate, focusDate} = this.state;
 
     const showNextYear = getNextDisplayYear(month, year);
     const showNextMonth = getNextDisplayMonth(month);
@@ -184,11 +192,9 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
     const {key} = event;
-    const {selected, disableDatesBefore, disableDatesAfter} = this.props;
+    const {disableDatesBefore, disableDatesAfter} = this.props;
 
-    const {focusDate} = this.state;
-    const range =
-      selected instanceof Date ? {start: selected, end: selected} : selected;
+    const {focusDate, range} = this.state;
     const focusedDate = focusDate || (range && range.start);
 
     if (focusedDate == null) {
@@ -245,16 +251,18 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleDateSelection(selected: Range) {
-    const {end: endDate} = selected;
+  private handleDateSelection(range: Range) {
+    const {end} = range;
     const {onChange = noop} = this.props;
 
-    this.setState({
-      hoverDate: endDate,
-      focusDate: new Date(endDate),
-    });
-
-    onChange(selected);
+    this.setState(
+      {
+        range,
+        hoverDate: end,
+        focusDate: new Date(end),
+      },
+      () => onChange(range),
+    );
   }
 
   @autobind
