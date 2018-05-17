@@ -16,6 +16,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
+* Fixed visual representation of disabled bulk action buttons in ResourceList ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
 
 ## 2.0.0 - 2018-05-07
 
