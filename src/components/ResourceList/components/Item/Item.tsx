@@ -280,7 +280,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       this.node == null ||
       !this.node.contains(event.relatedTarget as HTMLElement)
     ) {
-      this.setState({focused: false, focusedInner: false});
+      this.setState({focused: false});
     } else if (isInside) {
       this.setState({focusedInner: true});
     }
