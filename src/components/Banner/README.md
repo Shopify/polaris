@@ -39,20 +39,20 @@ Banners should:
 
 * Be placed in the appropriate context:
   * Banners relevant to an entire page should show at the top of that page at
-full-width
+    full-width
   * Banners related to a specific section or element of a page (such as a card,
-  popover, or modal) should show inside of that element
+    popover, or modal) should show inside of that element
 * Focus on a single theme, piece of information, or required action to avoid
-overwhelming merchants
+  overwhelming merchants
 * Be dismissible unless they contain critical information or an important step
-a merchant needs to take
+  a merchant needs to take
 * Be concise and scannable—merchants shouldn’t need to spend a lot of time
-figuring out what they need to know and do
+  figuring out what they need to know and do
 * Be limited to a few important calls to action with no more than one primary
-action
+  action
 * Be used thoughtfully and sparingly for only the most important information
 * Not be used as the primary entry point or mechanism to access information or
-actions a merchant needs to take on a regular basis
+  actions a merchant needs to take on a regular basis
 * Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead
 
 ---
@@ -65,57 +65,69 @@ Banner headings should be:
 
 * Descriptive: help merchants understand what they’ll find in the card.
   * Communicate when a situation is serious enough to warrant using a critical or
-warning banner. People who are unable to see the color of the banner need to
-clearly understand the importance of the situation without the benefit of
-seeing the color of the banner. Learn more about [accessibility](/principles/accessibility).
+    warning banner. People who are unable to see the color of the banner need to
+    clearly understand the importance of the situation without the benefit of
+    seeing the color of the banner. Learn more about [accessibility](/guides/accessibility).
 
 <!-- usagelist -->
+
 #### Do
+
 You’ve received a chargeback
 
 #### Don’t
+
 Have a look at this
+
 <!-- end -->
 
 * Concise and scannable:
+
   * Use simple, clear language that can be read at a glance
   * Keep headings to a single sentence and avoid using punctuation such as
-periods, commas, or semicolons
+    periods, commas, or semicolons
   * Where possible, avoid articles (the, a, an) to keep content short and
-actionable
+    actionable
 
 * Informative:
   * Label the type of information in the body content
   * Sentence case: capitalize only the first word in the heading and proper
-nouns
+    nouns
 
 <!-- usagelist -->
 
 #### Do
+
 Order archived
 
 #### Don’t
+
 Your Order was Archived Today
+
 <!-- end -->
 
 ### Body content
 
 Body content should:
+
 * Be concise: keep content to 1 to 2 sentences where possible
 * Clarify the benefit of the main task
 * Be written in sentence case and use appropriate punctuation
 * Avoid repeating the heading
 * Explain how to resolve the issue, particularly for warning and critical
-banners
-
+  banners
 
 <!-- usagelist -->
+
 #### Do
+
 Your online store has a maximum of 20 themes. Delete unused themes to add more.
 
 #### Don’t
+
 You have reached your theme limit. Your online store has reached its maximum
 of 20 themes. To add more themes, delete themes you’re no longer using.
+
 <!-- end -->
 
 ### Button and links
@@ -123,37 +135,49 @@ of 20 themes. To add more themes, delete themes you’re no longer using.
 Buttons and links should be:
 
 * Clear and predictable: merchants should be able to anticipate what will
-happen when they click a button. Never deceive a merchant by mislabeling a
-button.
+  happen when they click a button. Never deceive a merchant by mislabeling a
+  button.
 
 <!-- usagelist -->
+
 #### Do
+
 Buy shipping label
 
 #### Don’t
+
 Buy
+
 <!-- end -->
 
 * Action-led: buttons should always lead with a strong verb that encourages
-action. To provide enough context to merchants use the {verb}+{noun} format on
-buttons except in the case of common actions like Save, Close, Cancel, or OK.
+  action. To provide enough context to merchants use the {verb}+{noun} format on
+  buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- usagelist -->
+
 #### Do
+
 Activate Apple Pay
 
 #### Don’t
+
 Try Apple Pay
+
 <!-- end -->
 
 * Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
+
 #### Do
+
 Add menu item
 
 #### Don’t
+
 Add a menu item
+
 <!-- end -->
 
 Link text should:
@@ -161,22 +185,30 @@ Link text should:
 * Set the expectation of where the merchant will be taken
 
 <!-- usagelist -->
+
 #### Do
+
 Order #001
 
 #### Don’t
+
 Order
+
 <!-- end -->
 
 * Use consistent content to label navigation. For example, if a navigational
-link leads to a page called Orders, label the link Orders.
+  link leads to a page called Orders, label the link Orders.
 
 <!-- usagelist -->
+
 #### Do
+
 Payments
 
 #### Don’t
+
 Finance section
+
 <!-- end -->
 
 ### Secondary body content
@@ -184,30 +216,38 @@ Finance section
 Body content should be:
 
 * Actionable: start sentences with imperative verbs when telling a merchant
-what actions are available to them (especially something new). Don’t use
-permissive language like “you can”.
+  what actions are available to them (especially something new). Don’t use
+  permissive language like “you can”.
 
 <!-- usagelist -->
+
 #### Do
+
 Get performance data for all your sales channels.
 
 #### Don’t
+
 Now you can get performance data for all your sales channels.
+
 <!-- end -->
 
 * Structured for merchant success: always put the most critical information
-first.
+  first.
 * Clear: use the verb “need” to help merchants understand when they’re required
-to do something.
+  to do something.
 
 <!-- usagelist -->
+
 #### Do
+
 To buy a shipping label, you need to enter the total weight of your shipment,
 including packaging.
 
 #### Don’t
+
 To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
+
 <!-- end -->
 
 ## Examples
@@ -228,7 +268,10 @@ Make all banners dismissible, unless they contain critical information or an imp
 
 ```jsx
 <Banner onDismiss={() => {}}>
-  <p>Use your finance report to get detailed information about your business. <Link url="">Let us know what you think.</Link></p>
+  <p>
+    Use your finance report to get detailed information about your business.{' '}
+    <Link url="">Let us know what you think.</Link>
+  </p>
 </Banner>
 ```
 
@@ -242,7 +285,10 @@ Use when you want merchants to take an action after reading the banner.
   status="warning"
   action={{content: 'Edit variant weights'}}
 >
-  <p>Add weights to show accurate rates at checkout and when buying shipping labels in Shopify.</p>
+  <p>
+    Add weights to show accurate rates at checkout and when buying shipping
+    labels in Shopify.
+  </p>
 </Banner>
 ```
 
@@ -283,7 +329,10 @@ Use to display information that needs attention or that the merchant needs to ta
   status="warning"
 >
   <List>
-    <List.Item>The name of the city you’re shipping to has characters that aren’t allowed. City name can only include spaces and hyphens.</List.Item>
+    <List.Item>
+      The name of the city you’re shipping to has characters that aren’t
+      allowed. City name can only include spaces and hyphens.
+    </List.Item>
   </List>
 </Banner>
 ```
@@ -298,9 +347,14 @@ Use to communicate problems that have to be resolved immediately for merchants t
   action={{content: 'Review risk analysis'}}
   status="critical"
 >
-  <p>Before fulfilling this order or capturing payment, please <Link url="">review the Risk Analysis</Link> and determine if this order is fraudulent.</p>
+  <p>
+    Before fulfilling this order or capturing payment, please{' '}
+    <Link url="">review the Risk Analysis</Link> and determine if this order is
+    fraudulent.
+  </p>
 </Banner>
 ```
+
 ---
 
 ## Related components
