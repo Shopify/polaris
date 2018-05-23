@@ -190,6 +190,7 @@
   "dependencies": {
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.1.0",
+    "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/react-utilities": "2.0.0-beta.9",
     "@types/prop-types": "^15.5.2",
     "@types/react": "^16.3.5",

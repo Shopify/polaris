@@ -111,6 +111,8 @@ export {default as Form, Props as FormProps} from './Form';
 
 export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 
+export {default as Frame, Props as FrameProps} from './Frame';
+
 export {default as Heading, Props as HeadingProps} from './Heading';
 
 export {default as Icon, Props as IconProps} from './Icon';

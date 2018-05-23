@@ -1,13 +1,17 @@
 $breakpoint: em(640px);
 $Backdrop-opacity: 0.88;
 
-.FlashMessage {
-  position: absolute;
-  z-index: z-index(overlay);
+.Flash {
+  position: fixed;
+  z-index: z-index(flash, $fixed-element-stacking-order);
   right: 0;
   bottom: spacing(loose);
   left: 0;
   text-align: center;
+}
+
+.error .Content {
+  background: rgba(color('red', 'dark'), $Backdrop-opacity);
 }
 
 .Content {
@@ -23,10 +27,6 @@ $Backdrop-opacity: 0.88;
   @include breakpoint-after($breakpoint) {
     padding: spacing();
   }
-}
-
-.error {
-  background: rgba(color('red', 'dark'), $Backdrop-opacity);
 }
 
 .CloseButton {
