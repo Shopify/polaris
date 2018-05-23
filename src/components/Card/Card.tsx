@@ -11,7 +11,7 @@ import * as styles from './Card.scss';
 
 export interface Props {
   /** Title content for the card */
-  title?: string;
+  title?: React.ReactNode;
   /** Inner content of the card */
   children?: React.ReactNode;
   /** A less prominent card */
