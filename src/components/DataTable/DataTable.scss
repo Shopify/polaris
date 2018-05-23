@@ -7,9 +7,7 @@ $breakpoint: 768px;
 }
 
 .collapsed {
-
   .Table {
-
     &::after {
       display: block;
     }
@@ -29,7 +27,6 @@ $breakpoint: 768px;
 }
 
 .hasFooter {
-
   .ScrollContainer {
     margin-bottom: rem(52px);
   }
@@ -66,7 +63,7 @@ $breakpoint: 768px;
     bottom: 0;
     left: $fixed-column-width;
     display: none;
-    width: .6rem;
+    width: 0.6rem;
     background: linear-gradient(to right, rgba(color('black'), 0.12), rgba(color('black'), 0));
   }
 }
@@ -77,7 +74,6 @@ $breakpoint: 768px;
 }
 
 .TableRow {
-
   &:hover .Cell {
     @include breakpoint-after($breakpoint) {
       background: color('sky', 'lighter');
@@ -95,7 +91,7 @@ $breakpoint: 768px;
   border-bottom: 1px solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
-  transition: background-color .2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .Cell-numeric {
@@ -104,10 +100,10 @@ $breakpoint: 768px;
 
 .Cell-fixed {
   @include text-emphasis-normal;
-  width: $fixed-column-width;
   position: absolute;
   top: auto;
   left: 0;
+  width: $fixed-column-width;
   white-space: unset;
   word-wrap: break-word;
   text-align: left;
@@ -133,10 +129,10 @@ $breakpoint: 768px;
 
   &.Cell-sortable {
     .Heading {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
       position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       transition: fill duration() easing(), color duration() easing();
     }
 
@@ -172,15 +168,15 @@ $breakpoint: 768px;
 
 .Cell-footer {
   @include text-emphasis-normal;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 0;
   background: color('sky', 'light');
   color: color('ink', 'lighter');
   white-space: unset;
   text-align: center;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  border-bottom: 0;
   // stops painting on scroll (due to positioning)
   backface-visibility: hidden;
 }

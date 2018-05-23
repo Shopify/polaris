@@ -77,11 +77,11 @@ $stacking-order: (
 
     &::after {
       content: '';
-      display: block;
       position: absolute;
       top: 0.5 * $difference-between-touch-area-and-backdrop;
-      left: 0;
       right: 0;
+      left: 0;
+      display: block;
       height: control-slim-height();
       border-radius: border-radius();
       will-change: background;

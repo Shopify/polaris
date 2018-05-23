@@ -18,7 +18,7 @@ $actions-vertical-spacing: spacing(tight);
   margin: spacing(loose) 0;
 
   @include page-content-when-not-partially-condensed {
-  margin-top: spacing(loose);
+    margin-top: spacing(loose);
   }
 }
 

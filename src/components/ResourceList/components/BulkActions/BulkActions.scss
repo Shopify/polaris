@@ -106,10 +106,10 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   }
 
   .Button-cancel {
-    flex: 0 0 auto;
-    border-radius: 0 border-radius() border-radius() 0;
     z-index: 0;
+    flex: 0 0 auto;
     margin-left: -1px;
+    border-radius: 0 border-radius() border-radius() 0;
 
     &:focus {
       z-index: 1;

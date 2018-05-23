@@ -23,12 +23,12 @@
 }
 
 .HeaderWrapper {
+  position: relative;
   display: flex;
+  align-items: flex-start;
   width: 100%;
   min-height: resource-list(header-min-height);
-  align-items: flex-start;
   padding: resource-list(header-vertical-padding) resource-list(header-padding-small);
-  position: relative;
   background-color: color('white');
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
@@ -42,14 +42,14 @@
 }
 
 .HeaderContentWrapper {
+  position: absolute;
+  z-index: resource-list(content-wrapper-stacking-order);
+  right: resource-list(header-padding-small);
+  left: resource-list(header-padding-small);
   display: flex;
   min-height: resource-list(header-content-min-height);
-  position: absolute;
-  left: resource-list(header-padding-small);
-  right: resource-list(header-padding-small);
   opacity: 1;
   transition: opacity easing() duration();
-  z-index: resource-list(content-wrapper-stacking-order);
 
   .HeaderWrapper-inSelectMode & {
     opacity: 0;
@@ -63,19 +63,19 @@
 }
 
 .SortWrapper {
-  display: flex;
-  align-items: center;
-  flex: 1;
   position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
 
   .HeaderWrapper-hasSelect & {
     padding-right: spacing(tight);
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    flex: 0 1 auto;
     position: relative;
     left: auto;
+    flex: 0 1 auto;
     margin-left: spacing();
 
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
@@ -137,8 +137,8 @@
 }
 
 .SelectButtonWrapper {
-  flex: none;
   position: relative;
+  flex: none;
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     display: none;
@@ -156,8 +156,8 @@
 }
 
 .ResourceListWrapper {
-  min-width: resource-list(min-width);
   position: relative;
+  min-width: resource-list(min-width);
 }
 
 .ResourceList {

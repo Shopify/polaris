@@ -57,7 +57,6 @@
 @mixin button-filled($button-color, $focus-color, $outline-color: null) {
   $border-color: darken($button-color, 10%);
   $active-color: darken($button-color, 15%);
-
   background: linear-gradient(to bottom, lighten($button-color, 2%), darken($button-color, 2%));
   border-color: $border-color;
   box-shadow:
@@ -127,6 +126,7 @@
   border-color: rgba($outline-color, 0.25);
   box-shadow: none;
   color: color('ink', 'lightest');
+
   @include recolor-icon(color('ink', 'lightest'));
 }
 

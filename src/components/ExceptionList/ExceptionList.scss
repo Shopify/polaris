@@ -20,6 +20,7 @@
   min-width: rem(20px);
   height: rem(20px);
   margin-right: spacing(extra-tight);
+
   @include recolor-icon(color('ink', 'lightest'));
 
   .statusWarning & {

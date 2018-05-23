@@ -11,18 +11,17 @@ $spacing: tight;
   margin-top: -1 * resource-list(header-padding-small);
   margin-left: -1 * resource-list(header-padding-small);
   margin-right: -1 * resource-list(header-padding-small);
-
-  &::after {
-    content: "";
-    flex: 0 0 resource-list(header-padding-small);
-  }
-
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 
   // account for scrollbar
   padding-bottom: spacing($spacing);
+
+  &::after {
+    content: '';
+    flex: 0 0 resource-list(header-padding-small);
+  }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-wrap: wrap;

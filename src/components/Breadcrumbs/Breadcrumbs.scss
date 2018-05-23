@@ -51,12 +51,12 @@ $stacking-order: (
 
   &::after {
     content: '';
-    display: block;
     position: absolute;
     z-index: z-index(focus-backdrop, $stacking-order);
     top: 0.5 * $difference-between-touch-area-and-backdrop;
-    left: 0;
     right: 0;
+    left: 0;
+    display: block;
     height: control-slim-height();
     border-radius: border-radius();
     will-change: background;
