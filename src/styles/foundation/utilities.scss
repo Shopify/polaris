@@ -77,7 +77,8 @@ $base-font-size: 10px;
 
   @if $level == 1 {
     @each $key, $value in $map {
-      $output: $output + '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
+      $output: $output +
+        '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
     }
   } @else {
     $output: '(';

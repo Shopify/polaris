@@ -2,7 +2,8 @@ $vertical-padding: (control-height() - line-height(body)) / 2;
 $horizontal-padding: spacing(tight);
 $icon-size: rem(20px);
 
-$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
+$difference-between-touch-area-and-backdrop: control-height() -
+  control-slim-height();
 
 $stacking-order: (
   focus-backdrop: 10,
@@ -22,6 +23,7 @@ $stacking-order: (
   // on the right side. We have to do negative margin on top and bottom
   // to compensate for the focus backdrop being smaller than the actual
   // hit area.
+  // prettier-ignore
   margin:
     (-0.5 * $difference-between-touch-area-and-backdrop)
     (-1 * $horizontal-padding)

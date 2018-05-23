@@ -41,7 +41,7 @@ $spinner-size: rem(20px);
     margin-left: spacing(extra-tight);
   }
 
-  & + *:not(.Icon) {
+  + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
 }

@@ -1,11 +1,15 @@
 $typography-condensed: em(640px);
 
 @mixin when-typography-not-condensed {
-  @include breakpoint-after($typography-condensed) { @content; }
+  @include breakpoint-after($typography-condensed) {
+    @content;
+  }
 }
 
 @mixin when-typography-condensed {
-  @include breakpoint-before($typography-condensed) { @content; }
+  @include breakpoint-before($typography-condensed) {
+    @content;
+  }
 }
 
 @mixin text-style-caption {

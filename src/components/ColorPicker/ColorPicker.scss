@@ -5,17 +5,17 @@ $inner-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
 $stacking-order: (
   color: 10,
   adjustments: 20,
-  dragger: 30,
+  dragger: 30
 );
 
 @mixin checkers {
-  background-image:
-    linear-gradient(45deg, color('sky') 25%, transparent 25%),
+  background-image: linear-gradient(45deg, color('sky') 25%, transparent 25%),
     linear-gradient(-45deg, color('sky') 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, color('sky') 75%),
     linear-gradient(-45deg, transparent 75%, color('sky') 75%);
   background-size: spacing() spacing();
-  background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight), -1 * spacing(tight) 0;
+  background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight),
+    -1 * spacing(tight) 0;
 }
 
 .ColorPicker {
@@ -101,7 +101,16 @@ $huepicker-bottom-padding-start: $picker-size - $dragger-size;
 }
 
 .HuePicker {
-  background-image: linear-gradient(to bottom, red $dragger-size, yellow, $green, cyan, blue, $purple, red $huepicker-bottom-padding-start);
+  background-image: linear-gradient(
+    to bottom,
+    red $dragger-size,
+    yellow,
+    $green,
+    cyan,
+    blue,
+    $purple,
+    red $huepicker-bottom-padding-start
+  );
   box-shadow: $inner-shadow;
 }
 

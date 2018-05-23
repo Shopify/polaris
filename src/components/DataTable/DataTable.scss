@@ -64,7 +64,11 @@ $breakpoint: 768px;
     left: $fixed-column-width;
     display: none;
     width: 0.6rem;
-    background: linear-gradient(to right, rgba(color('black'), 0.12), rgba(color('black'), 0));
+    background: linear-gradient(
+      to right,
+      rgba(color('black'), 0.12),
+      rgba(color('black'), 0)
+    );
   }
 }
 

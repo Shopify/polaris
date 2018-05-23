@@ -2,7 +2,7 @@ $detail-width: rem(336px);
 
 $stacking-order: (
   illustration: 0,
-  details: 10,
+  details: 10
 );
 
 $left-offset: 35%;
@@ -15,7 +15,9 @@ $illustration-left-margin: $left-offset * -2;
 $illustration-width: calc(100% + #{$left-offset} * 2);
 
 // Respect the right offset on mobile so the illustration shows the correct crop zone
-$illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2);
+$illustration-width-cropped: calc(
+  #{$illustration-width} + #{$right-offset} * 2
+);
 
 .EmptyState {
   display: flex;
@@ -24,7 +26,8 @@ $illustration-width-cropped: calc(#{$illustration-width} + #{$right-offset} * 2)
   width: 100%;
   margin: spacing(loose) auto 0 auto;
   padding: spacing(loose) 0;
-  max-width: layout-width(primary, max) + layout-width(secondary, max) + layout-width(inner-spacing);
+  max-width: layout-width(primary, max) + layout-width(secondary, max) +
+    layout-width(inner-spacing);
 }
 
 .imageContained {

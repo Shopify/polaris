@@ -84,7 +84,9 @@ $input-vertical-adjust: rem(1px);
   width: 100%;
   min-height: control-height();
   margin: 0;
-  padding: control-vertical-padding() ($input-horizontal-padding + $icon-size) control-vertical-padding() $input-horizontal-padding;
+  // prettier-ignore
+  padding: control-vertical-padding() ($input-horizontal-padding + $icon-size)
+    control-vertical-padding() $input-horizontal-padding;
   background: transparent;
   border: border(transparent);
   appearance: none;

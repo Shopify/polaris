@@ -54,14 +54,14 @@
 
   .statusWarning &,
   .statusCritical & {
-    font-weight: 500
+    font-weight: 500;
   }
 
   .statusWarning & {
-    color: color('orange', 'dark')
+    color: color('orange', 'dark');
   }
 
   .statusCritical & {
-    color: color('red', 'dark')
+    color: color('red', 'dark');
   }
 }

@@ -65,7 +65,8 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   }
 
   &:focus {
-    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color, 0 0 2px 0 $focus-state-box-shadow-color;
+    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color;
 
     .Title {
       @include text-emphasis-normal;

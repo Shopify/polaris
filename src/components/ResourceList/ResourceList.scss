@@ -1,7 +1,8 @@
 @import './variables';
 
 .FiltersWrapper {
-  padding: resource-list(header-padding-small) resource-list(header-padding-small) 0;
+  padding: resource-list(header-padding-small)
+    resource-list(header-padding-small) 0;
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     padding: spacing(base) spacing(base) 0;
@@ -28,7 +29,8 @@
   align-items: flex-start;
   width: 100%;
   min-height: resource-list(header-min-height);
-  padding: resource-list(header-vertical-padding) resource-list(header-padding-small);
+  padding: resource-list(header-vertical-padding)
+    resource-list(header-padding-small);
   background-color: color('white');
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
