@@ -13,6 +13,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
 * Added exception list component ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
 * Added a `preferredAlignment` prop to Popover allowing it to be aligned to the left, center, or right of its activator ([#1390](https://github.com/Shopify/polaris-react/pull/1390))
+* Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
 
 ### Bug fixes
 

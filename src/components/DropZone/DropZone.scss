@@ -18,7 +18,6 @@ $dropzone-overlay-background-error: color('red', 'lighter');
 
 .DropZone {
   position: relative;
-  padding: $dropzone-padding;
   display: flex;
   justify-content: center;
   background: $dropzone-background;
