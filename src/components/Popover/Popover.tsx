@@ -6,7 +6,7 @@ import {
   findFirstFocusableNode,
 } from '@shopify/javascript-utilities/focus';
 
-import {PreferredPosition} from '../PositionedOverlay';
+import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import Portal from '../Portal';
 import PopoverOverlay, {CloseSource} from './PopoverOverlay';
 import Pane from './Pane';
@@ -19,6 +19,8 @@ export interface Props {
   children?: React.ReactNode;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
+  /** The preferred alignment of the popover relative to its activator */
+  preferredAlignment?: PreferredAlignment;
   /** Show or hide the Popover */
   active: boolean;
   /** The element to activate the Popover */

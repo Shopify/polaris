@@ -9,6 +9,7 @@ import {layer} from '../shared';
 
 import {
   PreferredPosition,
+  PreferredAlignment,
   calculateVerticalPosition,
   calculateHorizontalPosition,
   rectIsOutsideOfRect,
@@ -16,7 +17,7 @@ import {
 
 import * as styles from './PositionedOverlay.scss';
 
-export {PreferredPosition};
+export {PreferredPosition, PreferredAlignment};
 export type Positioning = 'above' | 'below';
 
 export interface OverlayDetails {
@@ -31,6 +32,7 @@ export interface Props {
   active: boolean;
   activator: HTMLElement;
   preferredPosition?: PreferredPosition;
+  preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
@@ -163,6 +165,7 @@ export default class PositionedOverlay extends React.PureComponent<
         const {
           activator,
           preferredPosition = 'below',
+          preferredAlignment = 'center',
           onScrollOut,
           fullWidth,
         } = this.props;
@@ -203,6 +206,8 @@ export default class PositionedOverlay extends React.PureComponent<
           activatorRect,
           overlayRect,
           containerRect,
+          overlayMargins,
+          preferredAlignment,
         );
 
         this.setState({

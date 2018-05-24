@@ -17,6 +17,7 @@ import KeypressListener from '../KeypressListener';
 import PositionedOverlay, {
   OverlayDetails,
   PreferredPosition,
+  PreferredAlignment,
 } from '../PositionedOverlay';
 
 import Pane, {Props as PaneProps} from './Pane';
@@ -36,6 +37,7 @@ export interface Props {
   fullWidth?: boolean;
   fullHeight?: boolean;
   preferredPosition?: PreferredPosition;
+  preferredAlignment?: PreferredAlignment;
   active: boolean;
   id: string;
   activator: HTMLElement;
@@ -93,6 +95,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       activator,
       fullWidth,
       preferredPosition = 'below',
+      preferredAlignment = 'center',
     } = this.props;
 
     return (
@@ -102,6 +105,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         active={active}
         activator={activator}
         preferredPosition={preferredPosition}
+        preferredAlignment={preferredAlignment}
         // eslint-disable-next-line react/jsx-no-bind
         render={this.renderPopover.bind(this, transitionStatus)}
         onScrollOut={this.handleScrollOut}

@@ -1,6 +1,7 @@
 import {Rect} from '@shopify/javascript-utilities/geometry';
 
 export type PreferredPosition = 'above' | 'below' | 'mostSpace';
+export type PreferredAlignment = 'left' | 'center' | 'right';
 
 export interface Margins {
   activator: number;
@@ -83,8 +84,27 @@ export function calculateHorizontalPosition(
   activatorRect: Rect,
   overlayRect: Rect,
   containerRect: Rect,
+  overlayMargins: Margins,
+  preferredAlignment: PreferredAlignment,
 ) {
   const maximum = containerRect.width - overlayRect.width;
+
+  if (preferredAlignment === 'left') {
+    return Math.min(
+      maximum,
+      Math.max(0, activatorRect.left - overlayMargins.horizontal),
+    );
+  } else if (preferredAlignment === 'right') {
+    const activatorRight = activatorRect.left + activatorRect.width;
+    return Math.min(
+      maximum,
+      Math.max(
+        0,
+        activatorRight - overlayRect.width + overlayMargins.horizontal,
+      ),
+    );
+  }
+
   return Math.min(
     maximum,
     Math.max(0, activatorRect.center.x - overlayRect.width / 2),
