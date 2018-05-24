@@ -38,6 +38,7 @@ $nav-min-window: em(layout-width(page-with-nav));
 // stylelint-disable media-query-list-comma-newline-after
 // stylelint-disable at-rule-name-space-after
 // stylelint-disable media-query-list-comma-space-after
+// stylelint-disable max-line-length
 
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
@@ -47,17 +48,23 @@ $nav-min-window: em(layout-width(page-with-nav));
       // prettier-ignore
       @media
         (max-width: #{min($nav-min-window, $size)}),
-        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) { @content; }
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
+        @content;
+      }
     } @else if $size < $not-condensed-content {
       // prettier-ignore
       @media
         (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
-        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) { @content; }
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+        @content;
+      }
     } @else {
       // prettier-ignore
       @media
         (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
-        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) { @content; }
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+        @content;
+      }
     }
   } @else {
     @if $size < $partially-condensed-content {
@@ -84,17 +91,23 @@ $nav-min-window: em(layout-width(page-with-nav));
       // prettier-ignore
       @media
         (max-width: #{$nav-min-window}) and (min-width: #{$size}),
-        (min-width: #{$nav-size + $size}) { @content; }
+        (min-width: #{$nav-size + $size}) {
+        @content;
+      }
     } @else if $size < $not-condensed-content {
       // prettier-ignore
       @media
         (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
-        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) { @content; }
+        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+        @content;
+      }
     } @else {
       // prettier-ignore
       @media
         (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
-        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) { @content; }
+        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+        @content;
+      }
     }
   } @else {
     @if $size < $partially-condensed-content {
@@ -113,6 +126,7 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
+// stylelint-enable max-line-length
 // stylelint-enable media-query-list-comma-space-after
 // stylelint-enable at-rule-name-space-after
 // stylelint-enable media-query-list-comma-newline-after

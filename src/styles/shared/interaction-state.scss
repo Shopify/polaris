@@ -1,6 +1,8 @@
-/// Sets the background-image and box-shadow for single or multiple given interaction states.
+/// Sets the background-image and box-shadow for single or multiple given
+/// interaction states.
 ///
-/// @param {argList} $interaction-states... - Accepts single or multiple interactions states.
+/// @param {argList} $interaction-states... - Accepts single or multiple
+/// interactions states.
 @mixin state($interaction-states...) {
   $backgrounds: ();
 

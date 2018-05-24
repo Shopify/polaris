@@ -1,7 +1,10 @@
 $accent-height: 3px;
 $dismiss-size: rem(16px);
 $ribbon-flex-basis: rem(32px);
-$secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
+// Don't reformat because sometimes prettier can't count. See https://github.com/prettier/prettier/issues/4460
+// prettier-ignore
+$secondary-action-vertical-padding: 0.5 * (control-height() -
+      line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 @mixin banner-colors($highlight, $background) {
@@ -78,7 +81,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .SecondaryAction {
   @include unstyled-button;
   @include unstyled-link;
-  margin: (-1 * $secondary-action-vertical-padding) (-0.5 * $secondary-action-horizontal-padding);
+  // Don't reformat because sometimes prettier can't count. See https://github.com/prettier/prettier/issues/4460
+  // prettier-ignore
+  margin: (-1 * $secondary-action-vertical-padding)
+    (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
     $secondary-action-horizontal-padding;
   color: color('ink');
