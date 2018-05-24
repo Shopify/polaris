@@ -19,6 +19,7 @@ $breakpoint: 550px;
     flex: 0 1 25%;
     padding: spacing() spacing() spacing() 0;
 
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
     .Description + & + .Description {
       border-top: border();
     }
@@ -37,6 +38,7 @@ $breakpoint: 550px;
     flex: 1 1 51%;
     padding: spacing() 0;
 
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators
     + .Term + .Description {
       border-top: border();
     }

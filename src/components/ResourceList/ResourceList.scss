@@ -80,6 +80,7 @@
     flex: 0 1 auto;
     margin-left: spacing();
 
+    // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       padding-right: 0;
     }
@@ -107,6 +108,7 @@
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
+    // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       display: none;

@@ -35,7 +35,6 @@ $nav-min-window: em(layout-width(page-with-nav));
 }
 
 // These end up being too awkward because they are already multiline.
-// stylelint-disable media-query-list-comma-newline-after
 // stylelint-disable at-rule-name-space-after
 // stylelint-disable media-query-list-comma-space-after
 // stylelint-disable max-line-length
@@ -129,7 +128,6 @@ $nav-min-window: em(layout-width(page-with-nav));
 // stylelint-enable max-line-length
 // stylelint-enable media-query-list-comma-space-after
 // stylelint-enable at-rule-name-space-after
-// stylelint-enable media-query-list-comma-newline-after
 
 @mixin breakpoint-after($breakpoint, $inclusive: true) {
   @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {

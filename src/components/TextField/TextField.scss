@@ -37,6 +37,7 @@ $stacking-order: (
   outline: none;
   border: border(transparent);
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   ~ .Backdrop {
     border-color: color('indigo');
     box-shadow: inset shadow(transparent), 0 0 0 1px color('indigo');
@@ -50,6 +51,7 @@ $stacking-order: (
     color: #9c9798;
   }
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   > .Input ~ .Backdrop {
     background-color: color('red', 'lighter');
     border-color: color('red');
@@ -57,7 +59,7 @@ $stacking-order: (
   }
 
   // We need this to override the box-shadow in the focus state.
-  // stylelint-disable-next-line selector-max-specificity
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
   > .Input:focus ~ .Backdrop {
     border-color: color('indigo');
     box-shadow: inset shadow(transparent), 0 0 0 1px color('indigo');

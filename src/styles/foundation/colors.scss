@@ -51,16 +51,17 @@ $color-palette-data: map-extend(
   @if type-of($fetched-color) == color {
     @return $fetched-color;
   } @else {
-    // stylelint-disable
+    // stylelint-disable string-no-newline
     // prettier-ignore
     @error 'Color `#{$hue} - #{$value}` not found.
       Make sure arguments are strings - GOOD: color(\'yellow\'), BAD: color('yellow').
       Available options: #{available-names($color-palette-data)}';
+    // stylelint-enable
   }
 }
 
-/// Darkens the foreground color by the background color. This is the same as the
-/// “multiply” filter in graphics apps.
+/// Darkens the foreground color by the background color. This is the same as
+/// the "multiply" filter in graphics apps.
 ///
 /// @param {Color} $foreground - The color to darken.
 /// @param {Color} $background - The background to base darkening on.
@@ -68,10 +69,9 @@ $color-palette-data: map-extend(
 
 @function color-multiply($foreground, $background: null) {
   @if $background == null {
+    // stylelint-disable-next-line color-no-hex
     $background: #ffffff;
   }
 
   @return $foreground * $background / 255;
 }
-
-// stylelint-enable color-no-hex, function-max-empty-lines, value-list-max-empty-lines

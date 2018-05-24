@@ -13,6 +13,7 @@
     @include state(hover);
 
     &:not(.persistActions) {
+      // stylelint-disable-next-line selector-max-specificity
       .Actions {
         display: flex;
       }
@@ -56,6 +57,7 @@
   }
 }
 
+// stylelint-disable-next-line selector-max-class
 .focusedInner,
 .focusedInner.focused,
 .focusedInner.focused.selected {

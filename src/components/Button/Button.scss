@@ -169,6 +169,7 @@ $spinner-size: rem(20px);
       @include recolor-icon(color('ink'));
     }
 
+    // stylelint-disable-next-line selector-max-class
     > .Content::after {
       display: none;
     }

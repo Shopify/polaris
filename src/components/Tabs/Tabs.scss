@@ -79,6 +79,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   }
 
   &.Tab-selected {
+    // stylelint-disable-next-line selector-max-class
     .Title {
       border-bottom: $border-bottom-height solid color('indigo');
     }

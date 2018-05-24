@@ -52,6 +52,7 @@ $stacking-order: (
       border: none;
       box-shadow: none;
 
+      // stylelint-disable-next-line selector-max-specificity
       &::after {
         background: plain-button-background();
       }

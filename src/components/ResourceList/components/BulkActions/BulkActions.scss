@@ -100,6 +100,7 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
       z-index: z-index(focused, $bulk-actions-button-stacking-order);
     }
 
+    // stylelint-disable-next-line selector-max-specificity
     &:last-child:not(:first-child) {
       border-radius: 0 border-radius() border-radius() 0;
     }

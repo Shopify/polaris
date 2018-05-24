@@ -132,6 +132,7 @@ $breakpoint: 768px;
   border-top: border();
 
   &.Cell-sortable {
+    // stylelint-disable-next-line selector-max-class
     .Heading {
       position: relative;
       display: flex;
@@ -140,6 +141,7 @@ $breakpoint: 768px;
       transition: fill duration() easing(), color duration() easing();
     }
 
+    // stylelint-disable-next-line selector-max-class
     .Heading-left {
       justify-content: flex-start;
     }
@@ -157,6 +159,7 @@ $breakpoint: 768px;
       outline: none;
       cursor: pointer;
 
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity
       .Heading-sortable {
         opacity: 1;
       }
