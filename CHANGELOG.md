@@ -19,6 +19,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
 * Fixed margins of a fullWidth Popover that appears above its activator ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
+* Fixed rendering of Popover when activator rerenders ([#1414](https://github.com/Shopify/polaris-react/pull/1414)) (thanks to [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/324))
 
 ## 2.0.0 - 2018-05-07
 
