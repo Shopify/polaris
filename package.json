@@ -65,6 +65,7 @@
       "stylelint-config-shopify/prettier"
     ],
     "rules": {
+      "selector-class-pattern": "^[a-zA-Z][a-zA-Z0-9-]+$",
       "indentation": [
         2,
         {
