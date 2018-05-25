@@ -1,14 +1,7 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "javascript.validate.enable": false,
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "jest.autoEnable": false,
-  "editor.formatOnSave": true,
   "css.validate": false,
-  "scss.validate": false,
-  "stylelint.enable": true,
-  "prettier.stylelintIntegration": true,
-  "prettier.eslintIntegration": true,
+  "editor.formatOnSave": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -16,36 +9,43 @@
     "typescriptreact"
   ],
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
     "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
     "**/node_modules": true,
-    "build/": true,
     "build-esnext/": true,
     "build-intermediate/": true,
+    "build/": true,
     "docs/": true,
-    "esnext/": true,
-    "styles/": true,
-    "types/": true,
-    "index.*": true,
     "embedded.*": true,
+    "esnext/": true,
+    "index.*": true,
+    "sandbox": true,
     "styles.{css,scss}": true,
-    "sandbox": true
+    "styles/": true,
+    "types/": true
   },
+  "javascript.validate.enable": false,
+  "jest.autoEnable": false,
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "scss.validate": false,
   "search.exclude": {
-    "**/node_modules": true,
     "**/bower_components": true,
+    "**/node_modules": true,
     "build-intermediate/": true,
-    "build/": true,
     "build-esnext/": true,
+    "build/": true,
     "docs/": true,
-    "esnext/": true,
-    "styles/": true,
-    "types/": true,
-    "index.*": true,
     "embedded.*": true,
+    "esnext/": true,
+    "index.*": true,
+    "sandbox": true,
     "styles.{css,scss}": true,
-    "sandbox": true
-  }
+    "styles/": true,
+    "types/": true
+  },
+  "stylelint.enable": true,
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }
