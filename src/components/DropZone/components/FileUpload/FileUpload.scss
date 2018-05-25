@@ -6,5 +6,7 @@ $fileupload-padding: rem(15px);
 }
 
 .Image {
-  width: 90px;
+  &.sizeExtraLarge { width: 90px }
+
+  &.sizeLarge { width: 60px }
 }
