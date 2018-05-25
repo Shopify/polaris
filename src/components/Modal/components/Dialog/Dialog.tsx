@@ -22,7 +22,11 @@ export interface DialogProps {
 export type Props = DialogProps & AnimationProps;
 
 function DialogContainer(props: {children: React.ReactNode}) {
-  return <div className={styles.Container}>{props.children}</div>;
+  return (
+    <div className={styles.Container} data-polaris-layer data-polaris-overlay>
+      {props.children}
+    </div>
+  );
 }
 
 export default function Dialog({
@@ -48,8 +52,6 @@ export default function Dialog({
   return (
     <TransitionChild
       {...props}
-      data-polaris-layer
-      data-polaris-overlay
       mountOnEnter
       unmountOnExit
       timeout={Duration.Base}
