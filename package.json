@@ -59,7 +59,7 @@
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "dev": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
     "dev:host": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline --host $(ipconfig getifaddr en0)",
-    "start": "echo \"Warning: no 'start' task specified. Run 'yarn dev' instead.\" && yarn dev"
+    "start": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/"
   },
   "stylelint": {
     "extends": [
