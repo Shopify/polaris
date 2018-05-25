@@ -14,7 +14,11 @@ $icon-size: rem(16px);
   &.disabled {
     @include recolor-icon(color('ink', 'lightest'));
     transition: none;
-    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
+    background: linear-gradient(
+      to bottom,
+      color('sky', 'light'),
+      color('sky', 'light')
+    );
     color: color('ink', 'lightest');
   }
 }

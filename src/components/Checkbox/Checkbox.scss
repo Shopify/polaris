@@ -31,6 +31,7 @@
   &:active,
   &:checked,
   &.Input-indeterminate {
+    // stylelint-disable-next-line selector-max-class
     + .Backdrop {
       background: color('indigo');
     }
@@ -38,6 +39,7 @@
 
   &:checked,
   &.Input-indeterminate {
+    // stylelint-disable-next-line selector-max-class
     ~ .Icon {
       transform: translate(-50%, -50%) scale(1);
     }

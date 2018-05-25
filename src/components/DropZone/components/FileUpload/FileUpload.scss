@@ -2,7 +2,9 @@ $fileupload-padding: rem(15px);
 
 .FileUpload {
   padding: $fileupload-padding;
-  text-align: center
+  text-align: center;
 }
 
-.Image { width: 90px }
+.Image {
+  width: 90px;
+}

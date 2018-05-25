@@ -1,6 +1,6 @@
 $stacking-order: (
   item: 10,
-  focused: 20,
+  focused: 20
 );
 
 $plain-horizontal-spacing: spacing(tight);
@@ -48,15 +48,18 @@ $item-spacing: spacing(tight);
       margin-left: -1px;
     }
 
+    // stylelint-disable-next-line selector-max-combinators
     * {
       border-radius: 0 !important;
     }
 
+    // stylelint-disable-next-line selector-max-combinators
     &:first-child * {
       border-top-left-radius: border-radius() !important;
       border-bottom-left-radius: border-radius() !important;
     }
 
+    // stylelint-disable-next-line selector-max-combinators
     &:last-child * {
       border-top-right-radius: border-radius() !important;
       border-bottom-right-radius: border-radius() !important;

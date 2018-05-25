@@ -4,6 +4,9 @@
   "typescript.tsdk": "./node_modules/typescript/lib",
   "jest.autoEnable": false,
   "editor.formatOnSave": true,
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true,
   "prettier.stylelintIntegration": true,
   "prettier.eslintIntegration": true,
   "eslint.validate": [

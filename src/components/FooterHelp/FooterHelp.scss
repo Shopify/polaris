@@ -7,7 +7,7 @@ $border-radius: 999px;
   margin: spacing(loose) 0;
   width: 100%;
 
-  @include page-content-when-not-fully-condensed() {
+  @include page-content-when-not-fully-condensed {
     margin: spacing(loose);
     width: auto;
   }
@@ -22,7 +22,7 @@ $border-radius: 999px;
   width: 100%;
   justify-content: center;
 
-  @include page-content-when-not-fully-condensed() {
+  @include page-content-when-not-fully-condensed {
     width: auto;
     border: border();
     border-radius: $border-radius;

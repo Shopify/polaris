@@ -6,5 +6,6 @@
 
 @mixin plain-list {
   @warn '[DEPRECATION] The `plain-list` mixin has been replaced with `unstyled-list`. Please update your app to use the new mixin.';
+
   @include unstyled-list;
 }

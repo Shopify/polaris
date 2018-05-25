@@ -3,6 +3,7 @@
 }
 
 .Content {
+  // stylelint-disable-next-line selector-max-combinators
   > * + * {
     margin-top: spacing(tight);
   }

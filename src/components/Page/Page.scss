@@ -2,14 +2,16 @@ $navigation-elements-height: rem(36px);
 $title-height: line-height(display-large, large-screen);
 $action-horizontal-padding: (1.5 * spacing(tight));
 
-$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
+$difference-between-touch-area-and-backdrop: control-height() -
+  control-slim-height();
 
 $stacking-order: (
   title: 10,
-  breadcrumbs: 20,
+  breadcrumbs: 20
 );
 
-html, body {
+html,
+body {
   min-height: 100%;
   height: 100%;
 }
@@ -144,17 +146,17 @@ html, body {
 .Action {
   @include unstyled-button;
   @include text-style-body;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  position: relative;
   min-height: control-height();
-  text-decoration: none;
 
   // Negative margin vertically for the amount that is not covered by
   // the focus overlay
   margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
   margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
   padding: 0 $action-horizontal-padding;
+  text-decoration: none;
   color: color('ink', 'light');
 
   &:hover,
@@ -175,11 +177,11 @@ html, body {
 
   &::after {
     content: '';
-    display: block;
     position: absolute;
-    left: spacing(extra-tight);
-    right: spacing(extra-tight);
     top: 0.5 * $difference-between-touch-area-and-backdrop;
+    right: spacing(extra-tight);
+    left: spacing(extra-tight);
+    display: block;
     height: control-slim-height();
     border-radius: border-radius();
     background: transparent;
