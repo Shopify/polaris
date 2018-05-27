@@ -14,6 +14,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added exception list component ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
 * Added a `preferredAlignment` prop to Popover allowing it to be aligned to the left, center, or right of its activator ([#1390](https://github.com/Shopify/polaris-react/pull/1390))
 * Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
+* Added new size to DropZone component ([#1419](https://github.com/Shopify/polaris-react/pull/1419))
 
 ### Bug fixes
 
