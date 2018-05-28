@@ -7,7 +7,7 @@
     margin-top: spacing(loose);
   }
 
-  @include page-content-when-not-partially-condensed {
+  @include page-content-when-not-fully-condensed {
     border-radius: border-radius();
   }
 }
