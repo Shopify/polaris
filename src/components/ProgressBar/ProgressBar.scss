@@ -3,7 +3,7 @@
   $data: (
     small: rem($base / 2),
     base: rem($base),
-    large: rem($base * 2),
+    large: rem($base * 2)
   );
 
   @return map-get($data, $height);

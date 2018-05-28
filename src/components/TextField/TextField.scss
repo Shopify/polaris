@@ -4,7 +4,7 @@ $spinner-icon-size: rem(12px);
 
 $stacking-order: (
   contents: 20,
-  backdrop: 10,
+  backdrop: 10
 );
 
 .TextField {
@@ -37,11 +37,10 @@ $stacking-order: (
   outline: none;
   border: border(transparent);
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   ~ .Backdrop {
     border-color: color('indigo');
-    box-shadow:
-      inset shadow(transparent),
-      0 0 0 1px color('indigo');
+    box-shadow: inset shadow(transparent), 0 0 0 1px color('indigo');
   }
 }
 
@@ -52,6 +51,7 @@ $stacking-order: (
     color: #9c9798;
   }
 
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
   > .Input ~ .Backdrop {
     background-color: color('red', 'lighter');
     border-color: color('red');
@@ -59,12 +59,10 @@ $stacking-order: (
   }
 
   // We need this to override the box-shadow in the focus state.
-  // stylelint-disable-next-line selector-max-specificity
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity, selector-max-combinators
   > .Input:focus ~ .Backdrop {
     border-color: color('indigo');
-    box-shadow:
-      inset shadow(transparent),
-      0 0 0 1px color('indigo');
+    box-shadow: inset shadow(transparent), 0 0 0 1px color('indigo');
   }
 }
 
@@ -108,7 +106,7 @@ $stacking-order: (
     -webkit-text-fill-color: currentColor;
   }
 
-  //remove the box shadow in Firefox when the input is invalid
+  // remove the box shadow in Firefox when the input is invalid
   &:invalid {
     box-shadow: none;
   }
@@ -171,7 +169,8 @@ $stacking-order: (
   align-self: stretch;
   flex-direction: column;
   width: rem(22px);
-  margin: 1px calc(-#{$backdrop-horizontal-spacing} + 1px) 1px $backdrop-horizontal-spacing;
+  margin: 1px calc(-#{$backdrop-horizontal-spacing} + 1px) 1px
+    $backdrop-horizontal-spacing;
   color: color('ink');
   cursor: pointer;
 }
@@ -208,12 +207,15 @@ $stacking-order: (
   justify-content: center;
   align-items: center;
   appearance: none;
-  background: linear-gradient(to bottom, color('white'), color('sky', 'lighter'));
+  background: linear-gradient(
+    to bottom,
+    color('white'),
+    color('sky', 'lighter')
+  );
   border: none;
   border-left: border(dark);
   will-change: background, box-shadow;
-  transition:
-    background duration(fast) easing(),
+  transition: background duration(fast) easing(),
     box-shadow duration(fast) easing();
 
   &:focus {
@@ -221,9 +223,12 @@ $stacking-order: (
   }
 
   &:active {
-    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
-    box-shadow:
-      inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
+    background: linear-gradient(
+      to bottom,
+      color('sky', 'light'),
+      color('sky', 'light')
+    );
+    box-shadow: inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }
 

@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const {svgOptions: svgOptimizationOptions} = require('@shopify/images/optimize');
+const {
+  svgOptions: svgOptimizationOptions,
+} = require('@shopify/images/optimize');
 const postcssShopify = require('postcss-shopify');
 
 const ICON_PATH_REGEX = /icons\//;
@@ -9,6 +11,10 @@ const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 module.exports = {
   target: 'web',
   devtool: 'eval',
+  devServer: {
+    // eslint-disable-next-line no-process-env
+    port: process.env.PORT || 8080,
+  },
   entry: [
     'react-hot-loader/patch',
     '@shopify/polaris/styles/global.scss',
@@ -50,15 +56,19 @@ module.exports = {
       },
       {
         test(resource) {
-          return IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource);
+          return (
+            IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource)
+          );
         },
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            emitFile: true,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              emitFile: true,
+            },
           },
-        }],
+        ],
       },
       {
         test: /\.tsx?$/,
@@ -109,16 +119,20 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: false,
-              includePaths: [
-                path.resolve(__dirname, '..', 'src', 'styles'),
-              ],
+              includePaths: [path.resolve(__dirname, '..', 'src', 'styles')],
             },
           },
           {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                path.resolve(__dirname, '..', 'src', 'styles', 'foundation.scss'),
+                path.resolve(
+                  __dirname,
+                  '..',
+                  'src',
+                  'styles',
+                  'foundation.scss',
+                ),
                 path.resolve(__dirname, '..', 'src', 'styles', 'shared.scss'),
               ],
             },

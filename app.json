@@ -1,0 +1,20 @@
+{
+  "name": "polaris-react",
+  "scripts": {},
+  "env": {
+    "YARN_PRODUCTION": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

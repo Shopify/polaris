@@ -1,7 +1,8 @@
 $skeleton-display-text-max-width: rem(120px);
 
-@mixin skeleton-display-text-height($size){
+@mixin skeleton-display-text-height($size) {
   height: line-height($size);
+
   @include when-typography-not-condensed {
     height: line-height($size, large-screen);
   }
@@ -9,6 +10,7 @@ $skeleton-display-text-max-width: rem(120px);
 
 .DisplayText {
   max-width: $skeleton-display-text-max-width;
+
   @include skeleton-shimmer;
   @include skeleton-content;
 }

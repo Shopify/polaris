@@ -1,3 +1,12 @@
-.FileUpload { text-align: center }
+$fileupload-padding: rem(15px);
 
-.Image { width: 90px }
+.FileUpload {
+  padding: $fileupload-padding;
+  text-align: center;
+}
+
+.Image {
+  &.sizeExtraLarge { width: 90px }
+
+  &.sizeLarge { width: 60px }
+}

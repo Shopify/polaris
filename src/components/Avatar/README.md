@@ -38,7 +38,7 @@ Avatars should be one of 3 sizes:
 
 ## Content guidelines
 
-Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](/content/alternative-text). Doing this is important for [accessibility](/principles/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
+Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](/content/alternative-text). Doing this is important for [accessibility](/guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
 
 For avatars, we recommend using a format that describes what will show in the
 image:
@@ -56,6 +56,7 @@ Use to present an avatar for a merchant, customer, or business.
 ```jsx
 <Avatar customer name="Farrah" />
 ```
+
 ---
 
 ## Related components

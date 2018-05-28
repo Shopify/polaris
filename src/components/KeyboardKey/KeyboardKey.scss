@@ -7,8 +7,7 @@ $bottom-shadow-size: 2px;
   margin: 0 (spacing(extra-tight) / 2) $bottom-shadow-size;
   padding: 0 spacing(extra-tight);
   background-color: color('white', 'base');
-  box-shadow:
-    0 0 0 1px color('sky', 'dark'),
+  box-shadow: 0 0 0 1px color('sky', 'dark'),
     0 $bottom-shadow-size 0 0 color('white'),
     0 $bottom-shadow-size 0 1px color('sky', 'dark');
   border-radius: border-radius();

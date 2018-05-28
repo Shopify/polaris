@@ -18,9 +18,7 @@
   @if $style == base {
     background: color('sky', 'dark');
     border: border(transparent);
-    box-shadow:
-      0 0 0 1px transparent,
-      shadow(faint);
+    box-shadow: 0 0 0 1px transparent, shadow(faint);
     border-radius: border-radius();
     transition-property: box-shadow, background;
     transition-duration: duration();
@@ -34,30 +32,40 @@
       left: 0;
       right: 0;
       display: block;
-      background: linear-gradient(to bottom, color('white'), color('sky', 'lighter'));
+      background: linear-gradient(
+        to bottom,
+        color('white'),
+        color('sky', 'lighter')
+      );
       border-radius: calc(#{border-radius()} - 1px);
     }
   } @else if $style == focused {
     background: color('indigo');
-    box-shadow:
-      0 0 0 1px color('indigo'),
-      shadow(transparent);
+    box-shadow: 0 0 0 1px color('indigo'), shadow(transparent);
 
-    &::after { background: color('white'); }
+    &::after {
+      background: color('white');
+    }
   } @else if $style == error {
     background: color('red');
     box-shadow: 0 0 0 1px transparent;
 
-    &::after { background: color('red', 'lighter'); }
+    &::after {
+      background: color('red', 'lighter');
+    }
   } @else if $style == disabled {
     background: color('sky');
     box-shadow: none;
 
-    &::after { background: color('sky', 'lighter'); }
+    &::after {
+      background: color('sky', 'lighter');
+    }
   } @else if $style == focused-error {
     background: color('indigo');
     box-shadow: 0 0 0 1px color('indigo');
 
-    &::after { background: color('red', 'lighter'); }
+    &::after {
+      background: color('red', 'lighter');
+    }
   }
 }

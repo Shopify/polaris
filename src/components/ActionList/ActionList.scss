@@ -23,6 +23,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .ActionList,
 .Section:first-child {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
   > .Section-withoutTitle .Actions {
     border-top: none;
   }

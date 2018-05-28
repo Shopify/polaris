@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import capitalize from 'lodash/capitalize';
+import {classNames} from '@shopify/react-utilities/styles';
 
 import Link from '../../../Link';
 import Icon from '../../../Icon';
@@ -74,18 +75,39 @@ export class FileUpload extends React.Component<CombinedProps, State> {
   render() {
     const {size, type} = this.context;
     const {actionTitle, actionHint} = this.state;
+    const imageClasses = classNames(
+      styles.Image,
+      size && size === 'extraLarge' && styles.sizeExtraLarge,
+      size && size === 'large' && styles.sizeLarge,
+    );
 
-    const largeView =
-      size === 'large' ? (
+    const extraLargeView =
+      size === 'extraLarge' ? (
         <Stack vertical>
           {type === 'file' && (
-            <img className={styles.Image} src={AssetFileUpload} alt="" />
+            <img className={imageClasses} src={AssetFileUpload} alt="" />
           )}
           {type === 'image' && (
-            <img className={styles.Image} src={AssetImageUpload} alt="" />
+            <img className={imageClasses} src={AssetImageUpload} alt="" />
           )}
           <Button>{actionTitle}</Button>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
+        </Stack>
+      ) : null;
+
+    const largeView =
+      size === 'large' ? (
+        <Stack vertical spacing="tight">
+          {type === 'file' && (
+            <img className={imageClasses} src={AssetFileUpload} alt="" />
+          )}
+          {type === 'image' && (
+            <img className={imageClasses} src={AssetImageUpload} alt="" />
+          )}
+          <Button size="slim">{actionTitle}</Button>
+          <Caption>
+            <TextStyle variation="subdued">{actionHint}</TextStyle>
+          </Caption>
         </Stack>
       ) : null;
 
@@ -111,6 +133,7 @@ export class FileUpload extends React.Component<CombinedProps, State> {
         {smallView}
         {mediumView}
         {largeView}
+        {extraLargeView}
       </div>
     );
   }

@@ -50,7 +50,11 @@ Use skeleton display text for static content or placeholder content for dynamic 
 
 Show skeleton display text for dynamic page titles.
 
-<div class="TypographyUsageBlockImg">![Image showing skeleton display text for dynamic page title](skeleton/do-use-skeleton-for-dynamic-page-titles.png)</div>
+<div class="TypographyUsageBlockImg">
+
+![Image showing skeleton display text for dynamic page title](skeleton/do-use-skeleton-for-dynamic-page-titles.png)
+
+</div>
 
 <!-- end -->
 
