@@ -152,6 +152,12 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   }
 }
 
+.disabled {
+  @include base-button-disabled;
+  cursor: default;
+  pointer-events: none;
+}
+
 .PaginatedSelectAll {
   padding: spacing(extra-tight) 0;
 }
