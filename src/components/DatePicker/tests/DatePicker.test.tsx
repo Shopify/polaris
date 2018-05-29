@@ -32,6 +32,19 @@ describe('<DatePicker />', () => {
     });
   });
 
+  it('does not submit an enclosing form', () => {
+    const spy = jest.fn();
+    const component = mountWithAppProvider(
+      <form onSubmit={spy}>
+        <DatePicker month={0} year={2018} />
+      </form>,
+    );
+
+    const day = component.find(Day);
+    day.first().simulate('click');
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';

@@ -14,12 +14,15 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added exception list component ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
 * Added a `preferredAlignment` prop to Popover allowing it to be aligned to the left, center, or right of its activator ([#1390](https://github.com/Shopify/polaris-react/pull/1390))
 * Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
+* Added new size to DropZone component ([#1419](https://github.com/Shopify/polaris-react/pull/1419))
 
 ### Bug fixes
 
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
+* Fixed visual representation of disabled bulk action buttons in ResourceList ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
 * Fixed margins of a fullWidth Popover that appears above its activator ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
 * Fixed rendering of Popover when activator rerenders ([#1414](https://github.com/Shopify/polaris-react/pull/1414)) (thanks to [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/324))
+* Fixed an issue where selecting a date in DatePicker would submit its enclosing form ([#1413](https://github.com/Shopify/polaris-react/pull/1413))
 
 ## 2.0.0 - 2018-05-07
 

@@ -2,7 +2,5 @@
   "arrowParens": "always",
   "singleQuote": true,
   "trailingComma": "all",
-  "bracketSpacing": false,
-  "proseWrap": "always",
-  "printWidth": 80
+  "bracketSpacing": false
 }
