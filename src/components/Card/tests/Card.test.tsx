@@ -23,22 +23,15 @@ describe('<Card />', () => {
     expect(div.exists()).toBe(true);
   });
 
-  it('card with a title of type string has a header tag', () => {
+  it('has a header tag when the title is a string', () => {
     const title = 'Online store';
     const card = mountWithAppProvider(<Card title="Online store" />);
     expect(card.find('h2').text()).toBe(title);
   });
 
-  it('card can have a badge for a title', () => {
-    const titleText = 'I am a badge';
-    const title = <Badge>{titleText}</Badge>;
-    const card = mountWithAppProvider(<Card title={title} />);
-    expect(card.find('Badge').text()).toBe(titleText);
-  });
-
-  it('card can have both a badge and a string for a title', () => {
-    const titleString = 'Online store'
-    const badgeString = 'I am a badge'
+  it('can have any valid react element as the title', () => {
+    const titleString = 'Online store';
+    const badgeString = 'I am a badge';
     const titleMarkup = (
       <h2>
         {titleString}
