@@ -74,6 +74,7 @@ export class Day extends React.PureComponent<CombinedProps, never> {
       <button
         // eslint-disable-next-line react/jsx-no-bind
         onFocus={onFocus.bind(null, day)}
+        type="button"
         ref={this.setNode}
         tabIndex={tabIndex}
         className={className}
