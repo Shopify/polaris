@@ -7,18 +7,23 @@ import {
 } from '../../components/AppProvider';
 
 import {Option} from './components';
-import {arraysAreEqual} from './utilities';
+import {arraysAreEqual} from '../../utilities/arrays';
 
 import * as styles from './OptionsList.scss';
 
 export interface OptionDescriptor {
+  /** Value of the option */
   value: string;
+  /** Display label for the option */
   label: string;
+  /** Should the option be disabled */
   disabled?: boolean;
 }
 
 export interface SectionDescriptor {
+  /** Collection of options within the section */
   options: OptionDescriptor[];
+  /** Title of the section */
   title?: string;
 }
 
@@ -27,21 +32,21 @@ const getUniqueId = createUniqueIDFactory('OptionsList');
 export interface Props {
   /** A unique identifier for the options list */
   id?: string;
-  /** */
+  /** Title of the list */
   title?: string;
-  /** Collection of options to be listed*/
+  /** Collection of options to be listed */
   options?: OptionDescriptor[];
-  /** */
+  /** Collection of sectioned options */
   sections?: SectionDescriptor[];
-  /** */
+  /** The selected options */
   selected: string[];
-  /** */
+  /** Allow more than one option to be selected */
   allowMultiple?: boolean;
   /** Callback when selection is changed */
   onChange(selected: string[]): void;
 }
 
-interface State {
+export interface State {
   normalizedOptions: SectionDescriptor[];
 }
 
@@ -104,24 +109,25 @@ export class OptionsList extends React.Component<CombinedProps, State> {
           const titleMarkup = title ? (
             <p className={styles.Title}>{title}</p>
           ) : null;
+          const optionsMarkup =
+            options &&
+            options.map((option, optionIndex) => {
+              const isSelected = selected.includes(option.value);
+              const id = `${this.id}-${sectionIndex}-${optionIndex}`;
 
-          const optionsMarkup = options.map((option, optionIndex) => {
-            const isSelected = selected.includes(option.value);
-            const id = `${this.id}-${sectionIndex}-${optionIndex}`;
-
-            return (
-              <Option
-                {...option}
-                key={id}
-                id={id}
-                section={sectionIndex}
-                index={optionIndex}
-                onClick={this.handleClick}
-                select={isSelected}
-                allowMultiple={allowMultiple}
-              />
-            );
-          });
+              return (
+                <Option
+                  {...option}
+                  key={id}
+                  id={id}
+                  section={sectionIndex}
+                  index={optionIndex}
+                  onClick={this.handleClick}
+                  select={isSelected}
+                  allowMultiple={allowMultiple}
+                />
+              );
+            });
 
           return (
             <li
@@ -157,13 +163,15 @@ export class OptionsList extends React.Component<CombinedProps, State> {
     onChange([selectedValue]);
   }
 }
+
 function createNormalizedOptions(
   options?: OptionDescriptor[],
   sections?: SectionDescriptor[],
   title?: string,
 ): SectionDescriptor[] {
   if (options == null || options === []) {
-    return sections || [];
+    const section = {options: [], title};
+    return sections == null ? [] : [section, ...sections];
   }
   if (sections == null) {
     return [

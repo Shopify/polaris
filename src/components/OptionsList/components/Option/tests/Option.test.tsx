@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../../../tests/utilities';
 
 import Option, {Props} from '..';
 import {Checkbox} from '../..';

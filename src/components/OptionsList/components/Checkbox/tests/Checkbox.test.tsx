@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../../../tests/utilities';
 import {noop} from '@shopify/javascript-utilities/other';
 
 import Checkbox, {Props} from '..';
