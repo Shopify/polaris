@@ -1,0 +1,38 @@
+$min-height: control-height();
+$control-size: rem(16px);
+
+.Option {
+  @include unstyled-button;
+  @include unstyled-link;
+  width: 100%;
+  min-height: $min-height;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: color('indigo');
+    color: color('white');
+  }
+}
+
+.SingleSelectOption {
+  @include unstyled-button;
+  color: inherit;
+}
+
+.Label,
+.SingleSelectOption {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: spacing(tight) spacing();
+}
+
+.Checkbox {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  width: $control-size;
+  height: $control-size;
+  margin-right: spacing(tight);
+}
