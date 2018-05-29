@@ -21,6 +21,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
 * Fixed visual representation of disabled bulk action buttons in ResourceList ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
 * Fixed margins of a fullWidth Popover that appears above its activator ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
+* Fixed z-index calculation for PositionOverlay and Dialog ([#1421]([https://github.com/Shopify/polaris-react/pull/1421]))
 * Fixed an issue where selecting a date in DatePicker would submit its enclosing form ([#1413](https://github.com/Shopify/polaris-react/pull/1413))
 
 ## 2.0.0 - 2018-05-07
