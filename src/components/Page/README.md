@@ -83,9 +83,10 @@ Page header action labels should be:
 
 * Create
 * Postmates deliveries
-  <!-- end -->
 
-- Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
+<!-- end -->
+
+* Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
 
   In the context of the orders list page:
 
@@ -100,9 +101,10 @@ Page header action labels should be:
 
 * Import orders
 * Export orders
-  <!-- end -->
 
-- Scannable: avoid unnecessary words and articles such as the, an, or a.
+<!-- end -->
+
+* Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usageblock -->
 

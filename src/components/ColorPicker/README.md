@@ -16,6 +16,7 @@ keywords:
 ---
 
 # Color picker
+
 The color picker is used to let the merchant select a color visually. For
 example, merchants use the color picker to customize the accent color of the
 email templates for their shop.
@@ -25,11 +26,12 @@ email templates for their shop.
 ## Best practices
 
 * Use the alpha slider if you want to allow merchants to be able to select a
-transparent color
+  transparent color
 
 ---
 
 ## Content guidelines
+
 There are no customizable content elements in the color picker component.
 
 ## Examples
@@ -52,17 +54,12 @@ class ColorPickerExample extends React.Component {
   render() {
     const {color} = this.state;
 
-    return (
-      <ColorPicker
-        onChange={this.handleChange}
-        color={color}
-      />
-    )
+    return <ColorPicker onChange={this.handleChange} color={color} />;
   }
 
   handleChange = (color) => {
     this.setState({color});
-  }
+  };
 }
 ```
 
@@ -78,7 +75,7 @@ class ColorPickerExample extends React.Component {
       hue: 300,
       brightness: 1,
       saturation: 0.7,
-      alpha: 0.7
+      alpha: 0.7,
     },
   };
 
@@ -86,16 +83,12 @@ class ColorPickerExample extends React.Component {
     const {color} = this.state;
 
     return (
-      <ColorPicker
-        onChange={this.handleChange}
-        color={color}
-        allowAlpha
-      />
-    )
+      <ColorPicker onChange={this.handleChange} color={color} allowAlpha />
+    );
   }
 
   handleChange = (color) => {
     this.setState({color});
-  }
+  };
 }
 ```

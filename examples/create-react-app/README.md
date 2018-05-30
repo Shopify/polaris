@@ -1,10 +1,13 @@
 # Example App: Create React App
+
 Demonstrates Polaris inside a [create-react-app](https://github.com/facebookincubator/create-react-app) project with minimal setup and configuration.
 
 ## Dependencies
-- [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
+
+* [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
 
 ## Getting started
+
 ### Installation
 
 Install all the project dependencies.
@@ -22,6 +25,7 @@ npm install
 ```
 
 ### Development
+
 Run the local `create-react-app` development server with Polaris preconfigured.
 
 **With Yarn**

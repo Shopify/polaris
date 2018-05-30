@@ -32,10 +32,10 @@ The account component should:
 * Identify the name of the platform or service the merchant can connect to
 * Show whether the account is connected or disconnected so that merchants can easily connect or disconnect an account
 * Include a link to the relevant sales channel or platform terms and conditions,
-including information about any charges or fees that a merchant may incur by
-using the channel or platform
+  including information about any charges or fees that a merchant may incur by
+  using the channel or platform
 * Link to terms and conditions, which should open up on the sales channel
-developer’s website in a new browser window
+  developer’s website in a new browser window
 
 ---
 
@@ -55,9 +55,11 @@ merchants will connect to, followed by the word “account”.
 <!-- usagelist -->
 
 #### Do
+
 Facebook account
 
 #### Don’t
+
 Connect your Account
 
 <!-- end -->
@@ -67,9 +69,11 @@ Headings should be written in sentence case.
 <!-- usagelist -->
 
 #### Do
+
 Instagram account
 
 #### Don’t
+
 Instagram Account
 
 <!-- end -->
@@ -81,10 +85,12 @@ Clearly link to your terms and conditions and let merchants know about any addit
 <!-- usagelist -->
 
 #### Do
+
 By clicking Connect, you agree to accept Sample’s terms and conditions.
 You’ll pay a commission rate of 15% on sales made through Sample.
 
 #### Don’t
+
 Learn about terms, conditions, and payment details.
 
 <!-- end -->
@@ -96,9 +102,11 @@ Always use the verb Connect in the button of the account connection component. W
 <!-- usagelist -->
 
 #### Do
+
 Connect
 
 #### Don’t
+
 Connect to app
 
 <!-- end -->
@@ -114,17 +122,20 @@ class AccountConnectionExample extends React.Component {
   state = {
     connected: false,
     accountName: '',
-  }
+  };
 
   render() {
     const {accountName, connected} = this.state;
     const buttonText = connected ? 'Disconnect' : 'Connect';
     const details = connected ? 'Account connected' : 'No account connected';
-    const terms = connected
-      ? null
-      : (
-        <p>By clicking <strong>Connect</strong>, you agree to accept Sample App’s <Link url="Example App">terms and conditions</Link>. You’ll pay a commission rate of 15% on sales made through Sample App.</p>
-      );
+    const terms = connected ? null : (
+      <p>
+        By clicking <strong>Connect</strong>, you agree to accept Sample App’s <Link url="Example App">
+          terms and conditions
+        </Link>. You’ll pay a commission rate of 15% on sales made through
+        Sample App.
+      </p>
+    );
 
     return (
       <AccountConnection
@@ -138,7 +149,7 @@ class AccountConnectionExample extends React.Component {
         details={details}
         termsOfService={terms}
       />
-    )
+    );
   }
 
   handleAction = () => {
@@ -149,8 +160,8 @@ class AccountConnectionExample extends React.Component {
       return {
         connected,
         accountName,
-      }
+      };
     });
-  }
+  };
 }
 ```

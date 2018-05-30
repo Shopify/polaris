@@ -68,13 +68,17 @@ A label is a short description of the requested input. Labels are not instructio
 * Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
+
 #### Do
+
 * Email address
 * Phone number
 
 #### Don’t
+
 * What is your email address?
 * My phone number is:
+
 <!-- end -->
 
 ### Field placeholder text
@@ -87,11 +91,15 @@ input. Field placeholder text should:
 * Include “e.g.” before an example
 
 <!-- usagelist -->
+
 #### Do
+
 e.g. FALLSALE
 
 #### Don’t
+
 Name your discount code
+
 <!-- end -->
 
 ### Designating optional fields
@@ -100,11 +108,15 @@ Try to only ask for information that’s required. If you need to ask merchants
 to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
 
 <!-- usagelist -->
+
 #### Do
+
 Phone number (optional)
 
 #### Don’t
-First name*
+
+First name\*
+
 <!-- end -->
 
 ### Help text
@@ -112,11 +124,15 @@ First name*
 Help text provides extra guidance or instruction to people filling out a form field. It can also be used to clarify how the information will be used. As with all form content, help text should be succinct and easy to read.
 
 <!-- usagelist -->
+
 #### Do
+
 9-digit number
 
 #### Don’t
+
 Example: 123-456-789
+
 <!-- end -->
 
 ### Validation error messages
@@ -128,11 +144,15 @@ Error messages should:
 * Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed them for the error
 
 <!-- usagelist -->
+
 #### Do
+
 Store name is required
 
 #### Don’t
+
 You didn’t enter a store name.
+
 <!-- end -->
 
 ## Examples
@@ -144,12 +164,12 @@ Use to allow merchants to provide text input when the expected input is short. F
 ```jsx
 class TextFieldExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -170,12 +190,12 @@ Use when input text should be a number.
 ```jsx
 class NumberFieldExample extends React.Component {
   state = {
-    value: '1'
+    value: '1',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -197,12 +217,12 @@ Use when the text input should be an email address.
 ```jsx
 class EmailFieldExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -224,12 +244,12 @@ Use when the expected input could be more than one line. The field will automati
 ```jsx
 class MultilineFieldExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -257,11 +277,11 @@ class HiddenLabelExample extends React.Component {
 
   handleValueChange = (value) => {
     this.setState({value});
-  }
+  };
 
   handleSelectionChange = (selected) => {
     this.setState({selected: selected[0]});
-  }
+  };
 
   render() {
     return (
@@ -286,7 +306,8 @@ class HiddenLabelExample extends React.Component {
             <Select
               label="Unit of time"
               labelHidden
-              options={['months after purchase']} />
+              options={['months after purchase']}
+            />
           }
         />
       </FormLayout>
@@ -302,12 +323,12 @@ Use when an optional, secondary action is closely associated with a text field. 
 ```jsx
 class LabelActionExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -329,12 +350,12 @@ Use to provide a short, non-essential hint about the expected input. Placeholder
 ```jsx
 class PlaceholderExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -356,12 +377,12 @@ Use to show short instructional content below the text field. Use especially whe
 ```jsx
 class HelpTextExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -384,12 +405,12 @@ Use as a special form of help text that works best inline. Use a prefix for thin
 ```jsx
 class PrefixExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -412,12 +433,12 @@ Use when a text field and several related fields make up a logical unit. If inpu
 ```jsx
 class ConnectedFieldsExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (
@@ -442,12 +463,12 @@ Use to let merchants know if their input is valid or if there’s an error. When
 ```jsx
 class ValidationErrorExample extends React.Component {
   state = {
-    value: ''
+    value: '',
   };
 
   handleChange = (value) => {
     this.setState({value});
-  }
+  };
 
   render() {
     return (

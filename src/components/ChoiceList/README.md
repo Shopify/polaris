@@ -44,14 +44,18 @@ Choice lists should:
 List titles should:
 
 * Help merchants understand how the items in the list are grouped together, or
-should explain what kind of choice the merchant is making
+  should explain what kind of choice the merchant is making
 
 <!-- usagelist -->
+
 #### Do
+
 Pick a shipping method
 
 #### Don’t
+
 Pick one
+
 <!-- end -->
 
 * Be concise and scannable:
@@ -61,17 +65,23 @@ Pick one
   * Should be written in sentence case
 
 <!-- usagelist -->
+
 #### Do
+
 Shipping options
 
 #### Don’t
+
 Shipping Options
+
 <!-- end -->
 
 * Not use colons
 
 <!-- usageblock -->
+
 #### Do
+
 If the customer abandons their checkout, send them an email reminder to complete their order
 
 <p>
@@ -81,6 +91,7 @@ If the customer abandons their checkout, send them an email reminder to complete
 </p>
 
 #### Don’t
+
 If the customer abandons their checkout, send them an email reminder to complete their order:
 
 <p>
@@ -97,43 +108,55 @@ Every item in a choice list should:
 * Start with a capital letter
 
 <!-- usageblock -->
+
 #### Do
-- Option 1
-- Option 2
-- Option 3
+
+* Option 1
+* Option 2
+* Option 3
 
 #### Don’t
-- option 1
-- option 2
-- option 3
+
+* option 1
+* option 2
+* option 3
+
 <!-- end -->
 
 * Not use commas or semicolons at the end of each line
 
 <!-- usageblock -->
+
 #### Do
-- Red
-- Yellow
-- Blue
+
+* Red
+* Yellow
+* Blue
 
 #### Don’t
-- Red;
-- Yellow;
-- Blue.
+
+* Red;
+* Yellow;
+* Blue.
+
 <!-- end -->
 
 * Be written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usageblock -->
+
 #### Do
-- Item one
-- Item two
-- Item three
+
+* Item one
+* Item two
+* Item three
 
 #### Don’t
-- Item One
-- Item Two
-- Item Three
+
+* Item One
+* Item Two
+* Item Three
+
 <!-- end -->
 
 ### Helper text and descriptions
@@ -171,7 +194,7 @@ class ChoiceListExample extends React.Component {
 
   handleChange = (value) => {
     this.setState({selected: value});
-  }
+  };
 }
 ```
 
@@ -196,12 +219,14 @@ class ChoiceListExample extends React.Component {
           {
             label: 'Use the shipping address as the billing address by default',
             value: 'shipping',
-            helpText: 'Reduces the number of fields required to check out. The billing address can still be edited.',
+            helpText:
+              'Reduces the number of fields required to check out. The billing address can still be edited.',
           },
           {
             label: 'Require a confirmation step',
             value: 'confirmation',
-            helpText: 'Customers must review their order details before purchasing.',
+            helpText:
+              'Customers must review their order details before purchasing.',
           },
         ]}
         selected={selected}
@@ -212,7 +237,7 @@ class ChoiceListExample extends React.Component {
 
   handleChange = (value) => {
     this.setState({selected: value});
-  }
+  };
 }
 ```
 
@@ -259,11 +284,11 @@ class ChoiceListExample extends React.Component {
 
   handleChange = (value) => {
     this.setState({selected: value});
-  }
+  };
 
   handleTextFieldChange = (value) => {
     this.setState({textFieldValue: value});
-  }
+  };
 }
 ```
 
@@ -292,13 +317,15 @@ class ChoiceListExample extends React.Component {
               label: 'Minimum quantity',
               value: 'minimum_quantity',
               renderChildren: (isSelected) => {
-                return isSelected && (
-                  <TextField
-                    label="Minimum Quantity"
-                    labelHidden
-                    onChange={this.handleTextFieldChange}
-                    value={textFieldValue}
-                  />
+                return (
+                  isSelected && (
+                    <TextField
+                      label="Minimum Quantity"
+                      labelHidden
+                      onChange={this.handleTextFieldChange}
+                      value={textFieldValue}
+                    />
+                  )
                 );
               },
             },
@@ -312,11 +339,11 @@ class ChoiceListExample extends React.Component {
 
   handleChange = (value) => {
     this.setState({selected: value});
-  }
+  };
 
   handleTextFieldChange = (value) => {
     this.setState({textFieldValue: value});
-  }
+  };
 }
 ```
 
