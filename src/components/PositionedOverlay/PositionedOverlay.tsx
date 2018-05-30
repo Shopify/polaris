@@ -261,8 +261,11 @@ function getMarginsForNode(node: HTMLElement) {
 
 function getZIndexForLayerFromNode(node: HTMLElement) {
   const layerNode = closest(node, layer.selector) || document.body;
-  const zIndex = parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
-  return isNaN(zIndex) ? null : zIndex;
+  const zIndex =
+    layerNode === document.body
+      ? 'auto'
+      : parseInt(window.getComputedStyle(layerNode).zIndex || '0', 10);
+  return zIndex === 'auto' || isNaN(zIndex) ? null : zIndex;
 }
 
 function windowRect() {
