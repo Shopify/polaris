@@ -50,6 +50,7 @@ Use Exception lists to draw the merchant’s attention to important information 
 * Fixed z-index calculation for PositionOverlay and Dialog ([#1421]([https://github.com/Shopify/polaris-react/pull/1421]))
 * Fixed an issue where selecting a date in DatePicker would submit its enclosing form ([#1413](https://github.com/Shopify/polaris-react/pull/1413))
 * Fixed ResourceList reverse tabbing focus interaction on Action Buttons ([#1406](https://github.com/Shopify/polaris-react/pull/1406))
+* Fixed padding in the case where a Resource list had no filters ([#1438](https://github.com/Shopify/polaris-react/pull/1438))
 
 ## 2.0.0 - 2018-05-07
 
