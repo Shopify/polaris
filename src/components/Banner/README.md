@@ -355,6 +355,81 @@ Use to communicate problems that have to be resolved immediately for merchants t
 </Banner>
 ```
 
+### Banner in a modal
+
+Banners inside of modals render with less spacing and a paired-back design to fit within a content context.
+
+```jsx
+class ModalExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  render() {
+    const {active} = this.state;
+
+    return (
+      <div style={{height: '500px'}}>
+        <Button onClick={this.handleChange}>Open</Button>
+        <Modal
+          open={active}
+          onClose={this.handleChange}
+          title="Reach more shoppers with Instagram product tags"
+          primaryAction={{
+            content: 'Add Instagram',
+            onAction: this.handleChange,
+          }}
+          secondaryActions={[
+            {
+              content: 'Learn more',
+              onAction: this.handleChange,
+            },
+          ]}
+        >
+          <Modal.Section>
+            <TextContainer>
+              <Banner action={{content: 'Connect account'}} status="warning">
+                <p>
+                  Connect your instagram account to your shop before proceeding.
+                </p>
+              </Banner>
+              <p>
+                Use Instagram posts to share your products with millions of
+                people. Let shoppers buy from your store without leaving
+                Instagram.
+              </p>
+            </TextContainer>
+          </Modal.Section>
+        </Modal>
+      </div>
+    );
+  }
+
+  handleChange = () => {
+    this.setState(({active}) => ({active: !active}));
+  };
+}
+```
+
+### Banner in a card
+
+Banners inside of cards render with less spacing and a paired-back design to fit within a content context.
+
+```jsx
+<Card title="Online store dashboard" sectioned>
+  <TextContainer>
+    <Banner onDismiss={() => {}}>
+      <p>
+        Use your finance report to get detailed information about your business.{' '}
+        <Link url="">Let us know what you think.</Link>
+      </p>
+    </Banner>
+
+    <p>View a summary of your online store’s performance.</p>
+  </TextContainer>
+</Card>
+```
+
 ---
 
 ## Related components

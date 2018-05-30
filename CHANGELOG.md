@@ -8,6 +8,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+* Updated styling for Banners that appear in Cards or Modals ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 * Exposed Group interface from the Select component ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 * Added an `ellipsis` prop to ActionList.Item allowing for an ellipsis suffix after the content ([#1377](https://github.com/Shopify/polaris-react/pull/1377))
 * Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))

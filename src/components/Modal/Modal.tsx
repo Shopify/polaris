@@ -6,7 +6,7 @@ import {wrapWithComponent} from '@shopify/react-utilities/components';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
-import {ComplexAction} from '../../types';
+import {ComplexAction, contentContextTypes} from '../../types';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -66,6 +66,8 @@ const getUniqueID = createUniqueIDFactory('modal-header');
 
 export class Modal extends React.Component<CombinedProps, State> {
   static contextTypes = {easdk: PropTypes.object};
+  static childContextTypes = contentContextTypes;
+
   static Dialog = Dialog;
   static Section = Section;
   focusReturnPointNode: HTMLElement;
@@ -75,6 +77,12 @@ export class Modal extends React.Component<CombinedProps, State> {
   };
 
   private headerId = getUniqueID();
+
+  getChildContext() {
+    return {
+      withinContentContainer: true,
+    };
+  }
 
   componentDidMount() {
     if (this.context.easdk == null) {

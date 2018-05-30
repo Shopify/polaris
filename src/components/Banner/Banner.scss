@@ -1,76 +1,160 @@
 $accent-height: 3px;
-$dismiss-size: rem(16px);
+$heading-offset: rem(2px);
+$intermediate-spacing: rem(12px);
 $ribbon-flex-basis: rem(32px);
-// Don't reformat because sometimes prettier can't count. See https://github.com/prettier/prettier/issues/4460
+// Don't reformat because sometimes prettier can't count
+// See https://github.com/prettier/prettier/issues/4460
 // prettier-ignore
 $secondary-action-vertical-padding: 0.5 * (control-height() -
       line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
-@mixin banner-colors($highlight, $background) {
-  background-color: $background;
-  box-shadow: inset 0 $accent-height 0 0 $highlight, inset shadow(transparent),
-    shadow();
+@mixin banner-attributes($highlight, $background, $in-page, $tint) {
+  transition: box-shadow duration() easing();
+  transition-delay: duration(fast);
+
+  @if $in-page {
+    // Prettier puts this on one line and breaks stylelint
+    // prettier-ignore
+    box-shadow:
+      inset 0 $accent-height 0 0 $highlight,
+      inset shadow(transparent),
+      shadow();
+  }
+
+  @if $tint {
+    background-color: mix(white, $background, 44%);
+  } @else {
+    background-color: $background;
+  }
 
   &:focus {
-    box-shadow: inset 0 $accent-height 0 0 $highlight,
-      inset 0 0 0 $accent-height $highlight, shadow();
+    outline: none;
+    // For consistency
+    // prettier-ignore
+    box-shadow:
+      inset 0 $accent-height 0 0 $highlight,
+      inset 0 0 0 $accent-height $highlight,
+      shadow();
+  }
+}
+
+@mixin banner-variants($in-page: false) {
+  @include banner-attributes(
+    color('ink', 'lighter'),
+    color('sky', 'light'),
+    $in-page,
+    false
+  );
+
+  &.statusSuccess {
+    @include banner-attributes(
+      color('green'),
+      color('green', 'lighter'),
+      $in-page,
+      true
+    );
+  }
+
+  &.statusInfo {
+    @include banner-attributes(
+      color('teal'),
+      color('teal', 'lighter'),
+      $in-page,
+      true
+    );
+  }
+
+  &.statusWarning {
+    @include banner-attributes(
+      color('yellow'),
+      color('yellow', 'lighter'),
+      $in-page,
+      true
+    );
+  }
+
+  &.statusCritical {
+    @include banner-attributes(
+      color('red'),
+      color('red', 'lighter'),
+      $in-page,
+      true
+    );
   }
 }
 
 .Banner {
-  @include banner-colors(color('ink', 'lighter'), color('sky', 'light'));
   position: relative;
   display: flex;
-  padding: spacing();
+}
+
+.withinContentContainer {
+  border-radius: border-radius();
+  padding: spacing(tight) $intermediate-spacing;
+  margin-left: (spacing(tight) * -1);
+  margin-right: (spacing(tight) * -1);
+
+  @include banner-variants;
+
+  + .Banner {
+    margin-top: spacing(tight);
+  }
+
+  .Ribbon {
+    padding-right: $intermediate-spacing;
+  }
+
+  .Actions {
+    padding: $intermediate-spacing 0 spacing(extra-tight) 0;
+  }
+
+  .Dismiss {
+    right: $intermediate-spacing;
+    top: $intermediate-spacing;
+    position: absolute;
+  }
+}
+
+.withinPage {
   border-radius: 0 0 border-radius() border-radius();
-  transition: box-shadow duration() easing();
-  transition-delay: duration(fast);
+  padding: spacing();
+
+  @include banner-variants(true);
 
   + .Banner {
     margin-top: spacing(loose);
   }
 
-  &:focus {
-    outline: none;
+  .Ribbon {
+    padding-right: spacing();
+  }
+
+  .Actions {
+    padding-top: spacing();
+  }
+
+  .Dismiss {
+    right: spacing();
+    top: spacing(loose);
+    position: absolute;
   }
 }
 
 .hasDismiss {
-  padding-right: $dismiss-size + (2 * spacing());
+  padding-right: spacing() + spacing(extra-tight) + control-height();
 }
 
-.statusSuccess {
-  @include banner-colors(color('green'), color('green', 'lighter'));
+.Heading {
+  padding-top: $heading-offset;
 }
 
-.statusInfo {
-  @include banner-colors(color('teal'), color('teal', 'lighter'));
-}
-
-.statusWarning {
-  @include banner-colors(color('yellow'), color('yellow', 'lighter'));
-}
-
-.statusCritical {
-  @include banner-colors(color('red'), color('red', 'lighter'));
+.Content {
+  padding: spacing(extra-tight) 0;
 }
 
 .Ribbon {
   flex: 0 0 $ribbon-flex-basis;
-  margin-right: spacing();
-}
-
-.Heading {
-  margin-top: spacing(extra-tight);
-}
-
-.Actions {
-  margin-top: spacing();
-}
-
-.Content {
-  margin: spacing(tight) 0;
 }
 
 // We need pretty high specificity to do the descendant selectors
@@ -81,7 +165,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .SecondaryAction {
   @include unstyled-button;
   @include unstyled-link;
-  // Don't reformat because sometimes prettier can't count. See https://github.com/prettier/prettier/issues/4460
+  // Don't reformat because sometimes prettier can't count
+  // See https://github.com/prettier/prettier/issues/4460
   // prettier-ignore
   margin: (-1 * $secondary-action-vertical-padding)
     (-0.5 * $secondary-action-horizontal-padding);
@@ -109,7 +194,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 }
 
 // stylelint-enable selector-max-specificity
-
 .Text {
   position: relative;
 
@@ -134,11 +218,4 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     will-change: opacity;
     transition: opacity duration() easing();
   }
-}
-
-.Dismiss {
-  position: absolute;
-  top: $accent-height;
-  right: 0;
-  padding: (spacing(tight) * 1.5);
 }
