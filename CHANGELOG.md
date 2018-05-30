@@ -4,18 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 2.1.0 - 2018-05-03
+
+### New components
+
+#### [Exception list](https://polaris.shopify.com/components/lists-and-tables/exception-list)
+
+Use Exception lists to draw the merchant’s attention to important information that adds extra context to a task.
 
 ### Enhancements
 
-* Updated styling for Banners that appear in Cards or Modals ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
-* Exposed Group interface from the Select component ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 * Added an `ellipsis` prop to ActionList.Item allowing for an ellipsis suffix after the content ([#1377](https://github.com/Shopify/polaris-react/pull/1377))
-* Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
-* Added exception list component ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
 * Added a `preferredAlignment` prop to Popover allowing it to be aligned to the left, center, or right of its activator ([#1390](https://github.com/Shopify/polaris-react/pull/1390))
-* Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
+* Updated styling for Banners that appear in Cards or Modals ([#1394](https://github.com/Shopify/polaris-react/pull/1394))
 * Added new size to DropZone component ([#1419](https://github.com/Shopify/polaris-react/pull/1419))
+* Exposed Group interface from the Select component ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
+* Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
+* Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
 
 ### Bug fixes
 
