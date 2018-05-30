@@ -66,6 +66,13 @@ export default class Popover extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate() {
+    if (
+      this.activatorContainer &&
+      this.state.activatorNode &&
+      !this.activatorContainer.contains(this.state.activatorNode)
+    ) {
+      this.setActivator(this.activatorContainer);
+    }
     this.setAccessibilityAttributes();
   }
 
