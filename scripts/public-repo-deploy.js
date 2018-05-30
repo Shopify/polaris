@@ -115,8 +115,11 @@ const hiddenFilesToKeepInPublicRepository = [
   '.babelrc',
   '.editorconfig',
   '.eslintignore',
+  '.eslintrc',
   '.gitignore',
   '.nvmrc',
+  '.prettierrc',
+  '.prettierignore',
   '.yarnclean',
 ].join(',');
 const hiddenFilesGlob = `{${hiddenFilesToKeepInPublicRepository}}`;
