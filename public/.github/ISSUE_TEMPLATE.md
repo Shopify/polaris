@@ -41,4 +41,4 @@
 ---
 
 ⚓️ We’re not accepting pull requests at this time<br />
-🗒 This repo is for reporting issues and feature requests only
+🗒 This repository is for reporting issues and feature requests only
