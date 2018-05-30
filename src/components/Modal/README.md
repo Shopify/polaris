@@ -106,7 +106,7 @@ Actions should be:
 * New order
 * Buy
 
-  <!-- end -->
+<!-- end -->
 
 * Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
@@ -122,7 +122,7 @@ Actions should be:
 * Try Apple Pay
 * View your settings
 
-  <!-- end -->
+<!-- end -->
 
 * Scannable: avoid unnecessary words and articles such as the, an, or a.
 

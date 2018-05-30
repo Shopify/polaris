@@ -21,6 +21,7 @@ keywords:
 ---
 
 # Select
+
 Select lets merchants choose one option from a list in a dropdown menu. It
 works well for lists of more than four choices when displaying them could
 clutter up the interface.
@@ -28,22 +29,24 @@ clutter up the interface.
 ---
 
 ## Best Practices
+
 The select component should:
 
 * Be used for lists of four or more items
 * List items within the menu alphabetically or some other logical order so
-merchants can easily find the selection they need
+  merchants can easily find the selection they need
 * Provide a label to clearly identify the content being presented in the drop
-down menu
+  down menu
 * Have a default option selected, where possible
-* Have a placeholder option with the text “Select”  if there is no logical
-default option
+* Have a placeholder option with the text “Select” if there is no logical
+  default option
 
 ---
 
 ## Content guidelines
 
 ### Field label
+
 A label is a short description of the requested input. Labels are not help
 text, and they don’t provide instruction, but they should be meaningful and
 clearly indicate what is expected. Labels should be:
@@ -53,28 +56,39 @@ clearly indicate what is expected. Labels should be:
 * Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
+
 #### Do
+
 Email address
 
 #### Don’t
+
 What is your email address?
+
 <!-- end -->
+
 <!-- usagelist -->
+
 #### Do
+
 Phone number
 
 #### Don’t
+
 My phone number is:
+
 <!-- end -->
 
 ### Menu options
+
 The list of options in a menu should:
 
 * Be concise but still give the merchant enough information so they can easily
-make a selection
+  make a selection
 * Be arranged alphabetically or in some other clear logical order
 
 ### Placeholder option
+
 The placeholder option should be the text “Select”.
 
 ## Examples
@@ -91,14 +105,14 @@ class SelectExample extends React.Component {
 
   handleChange = (newValue) => {
     this.setState({selected: newValue});
-  }
+  };
 
   render() {
     const options = [
       {label: 'Today', value: 'today'},
       {label: 'Yesterday', value: 'yesterday'},
       {label: 'Last 7 days', value: 'lastWeek'},
-    ]
+    ];
 
     return (
       <Select
@@ -133,7 +147,7 @@ Use for selections that aren’t currently available. The surrounding interface 
 ## Related components
 
 * To let merchants make a single selection from a list with four or fewer
-options, [use the choice list component](/components/forms/choice-list)
+  options, [use the choice list component](/components/forms/choice-list)
 * To present merchants with a list of choices where they can make multiple
-selections, [use the choice list component](/components/forms/choice-list) with
-the `allow multiple` option
+  selections, [use the choice list component](/components/forms/choice-list) with
+  the `allow multiple` option

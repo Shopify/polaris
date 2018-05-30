@@ -18,6 +18,7 @@ keywords:
 ---
 
 # Date picker
+
 Date pickers let merchants choose dates from a visual calendar that’s
 consistently applied wherever dates need to be selected across Shopify.
 
@@ -30,12 +31,13 @@ Date pickers should:
 * Use smart defaults and highlight common selections (e.g. Today)
 * Close after a single date is selected unless a start and end date is required
 * Set the start date on first click and the end date on second click if a range
-is required
+  is required
 * Not be used to enter a date that is many years in the future or the past
 
 ---
 
 ## Content guidelines
+
 There are no content elements that are specific to the date picker.
 Learn how to [format dates and numbers](/content/grammar-and-mechanics#dates-and-numbers) in your interface content.
 
@@ -53,7 +55,7 @@ class DatePickerExample extends React.Component {
     selected: {
       start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
       end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-    }
+    },
   };
 
   render() {
@@ -72,13 +74,13 @@ class DatePickerExample extends React.Component {
 
   handleChange = (value) => {
     this.setState({selected: value});
-  }
+  };
 
   handleMonthChange = (month, year) => {
     this.setState({
       month,
-      year
-    })
-  }
+      year,
+    });
+  };
 }
 ```

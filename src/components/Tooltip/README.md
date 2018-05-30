@@ -13,6 +13,7 @@ keywords:
 ---
 
 # Tooltip
+
 Tooltips are floating labels that briefly explain the function of a user
 interface element. They can be triggered when merchants hover, focus, tap, or
 click.
@@ -26,12 +27,12 @@ Tooltips should:
 * Provide useful, additional information or clarification.
 * Succinctly describe or expand on the element they point to.
 * Be provided for icon-only buttons or a button with an associated keyboard
-shortcut.
+  shortcut.
 * Not be used to communicate critical information, including errors in forms or
-other interaction feedback.
+  other interaction feedback.
 * Not contain any links or buttons.
 * Be used sparingly. If you’re building something that requires a lot of
-tooltips, work on clarifying the design and the language in the experience.
+  tooltips, work on clarifying the design and the language in the experience.
 
 ---
 
@@ -46,11 +47,15 @@ Tooltips should:
 * Not be used to communicate error messages or important account information
 
 <!-- usageblock -->
+
 #### Do
+
 Post reach is the number of people who have seen your post in their News Feed.
 
 #### Don’t
+
 To continue using Shopify, this amount must be paid immediately.
+
 <!-- end -->
 
 ## Examples

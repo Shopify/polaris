@@ -26,15 +26,15 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 Checkboxes should:
 
 * Work independently from each other: selecting one checkbox shouldn’t change
-the selection status of another checkbox in the list. The exception is when a
-checkbox is used to make a bulk selection of multiple items.
+  the selection status of another checkbox in the list. The exception is when a
+  checkbox is used to make a bulk selection of multiple items.
 * Be framed positively: for example, `Turn on notifications` instead of
-`Turn off notifications`
+  `Turn off notifications`
 * Always have a label when being used to toggling a setting on or off
 * Be listed according to a logical order, whether it’s alphabetical, numerical,
-time-based, or some other clear system.
+  time-based, or some other clear system.
 * Link to more information or include a subtitle as required to provide more
-explanation. Don’t rely on tooltips to explain a checkbox.
+  explanation. Don’t rely on tooltips to explain a checkbox.
 
 ---
 
@@ -47,40 +47,52 @@ Lists that use checkboxes should:
 * Start with a capital letter
 
 <!-- usageblock -->
+
 #### Do
-- Option 1
-- Option 2
-- Option 3
+
+* Option 1
+* Option 2
+* Option 3
 
 #### Don’t
-- option 1
-- option 2
-- option 3
+
+* option 1
+* option 2
+* option 3
+
 <!-- end -->
 
 * Not use commas or semicolons at the end of each line
 
 <!-- usageblock -->
+
 #### Do
-- Red
-- Yellow
-- Blue
+
+* Red
+* Yellow
+* Blue
 
 #### Don’t
-- Red;
-- Yellow;
-- Blue.
+
+* Red;
+* Yellow;
+* Blue.
+
 <!-- end -->
 
 * In the rare case where the checkbox is asking the merchant to agree to terms
-or service, use the first person
+  or service, use the first person
 
 <!-- usageblock -->
+
 #### Do
+
 I agree to the Terms of Service.
 
 #### Don’t
+
 You agree to the Terms of Service
+
 <!-- end -->
 
 ## Examples
@@ -99,13 +111,17 @@ class CheckboxExample extends React.Component {
     const {checked} = this.state;
 
     return (
-      <Checkbox checked={checked} label="Basic checkbox" onChange={this.handleChange} />
+      <Checkbox
+        checked={checked}
+        label="Basic checkbox"
+        onChange={this.handleChange}
+      />
     );
   }
 
   handleChange = (value) => {
     this.setState({checked: value});
-  }
+  };
 }
 ```
 

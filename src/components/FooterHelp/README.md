@@ -50,13 +50,17 @@ Links should be:
 Clearly labeled: Merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
 
 <!-- usagelist -->
+
 #### Do
-- Learn more about [shipping zones].
-- Learn more about [themes] on the Shopify blog.
+
+* Learn more about [shipping zones].
+* Learn more about [themes] on the Shopify blog.
 
 #### Don’t
-- Go to [docs] to learn about zones.
-- Find out about [themes].
+
+* Go to [docs] to learn about zones.
+* Find out about [themes].
+
 <!-- end -->
 
 ## Examples
@@ -67,7 +71,10 @@ Use to direct merchants to more information related to the product or feature th
 
 ```jsx
 <FooterHelp>
-  Learn more about <Link url="https://help.shopify.com/manual/orders/fulfill-orders">fulfilling orders</Link>.
+  Learn more about{' '}
+  <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+    fulfilling orders
+  </Link>.
 </FooterHelp>
 ```
 

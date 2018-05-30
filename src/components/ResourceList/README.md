@@ -995,13 +995,13 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 To cover the resource list component in depth, we’ll create a customer list as an example. We’ll start by implementing a basic resoure list step by step. Then we’ll customize the built-in resource list item to better display our customers. Finally, we’ll add features to make the list more useful to merchants.
 
-1.  [Development setup](#study-setup) (optional)
-1.  [A basic resource list](#study-basic-list)
-1.  [Building a reusable custom list item](#study-custom-item)
-1.  [Adding bulk actions](#study-bulk-actions)
-1.  [Adding sorting](#study-sorting)
-1.  [Adding filtering](#study-filtering)
-1.  [Adding pagination](#study-pagination)
+1. [Development setup](#study-setup) (optional)
+1. [A basic resource list](#study-basic-list)
+1. [Building a reusable custom list item](#study-custom-item)
+1. [Adding bulk actions](#study-bulk-actions)
+1. [Adding sorting](#study-sorting)
+1. [Adding filtering](#study-filtering)
+1. [Adding pagination](#study-pagination)
 
 You can also [jump straight to the end result](#study-end-result).
 
@@ -1185,63 +1185,63 @@ The customer name is essential. Their physical location is helpful too, especial
 
 This gives us the following content, ranked roughly by importance:
 
-1.  Customer name
-1.  Location
-1.  Number of orders
-1.  Total spent
-1.  Avatar
+1. Customer name
+1. Location
+1. Number of orders
+1. Total spent
+1. Avatar
 
 ##### Crafting the copy
 
 Resource lists don’t have column headings, so care must be taken to avoid ambiguous copy.
 
-1.  Start by listing out typical values for each piece of content. If the value alone speaks for itself we can use it as-is.
+1. Start by listing out typical values for each piece of content. If the value alone speaks for itself we can use it as-is.
 
-    <!-- usagelist -->
+   <!-- usagelist -->
 
-    #### Do
+   #### Do
 
-    * Adam West
-    * Ottawa, Canada
+   * Adam West
+   * Ottawa, Canada
 
-    #### Don’t
+   #### Don’t
 
-    * 3
-    * $492.76
+   * 3
+   * $492.76
 
-    <!-- end -->
+   <!-- end -->
 
-2.  If a value alone is ambiguous, like the number of orders and total spent, add text to make it clear. When possible, use a short phrase rather than a label with a colon.
+2. If a value alone is ambiguous, like the number of orders and total spent, add text to make it clear. When possible, use a short phrase rather than a label with a colon.
 
-    <!-- usagelist -->
+   <!-- usagelist -->
 
-    #### Do
+   #### Do
 
-    * 3 orders
+   * 3 orders
 
-    #### Don’t
+   #### Don’t
 
-    * 3
-    * Total orders: 3
+   * 3
+   * Total orders: 3
 
-    <!-- end -->
+   <!-- end -->
 
-3.  If a content value is empty for a given item, use a phrase to describe the empty state. For a customer with no orders, use “No orders”. If the value is numeric, “0” may be used. Don’t indicated empty values with em dash (“—”).
+3. If a content value is empty for a given item, use a phrase to describe the empty state. For a customer with no orders, use “No orders”. If the value is numeric, “0” may be used. Don’t indicated empty values with em dash (“—”).
 
-    When a core content element is empty, show it grayed out using the subdued [text style](/components/titles-and-text/text-style) variation.
+   When a core content element is empty, show it grayed out using the subdued [text style](/components/titles-and-text/text-style) variation.
 
-    <!-- usagelist -->
+   <!-- usagelist -->
 
-    #### Do
+   #### Do
 
-    * No orders
-    * 0 orders
+   * No orders
+   * 0 orders
 
-    #### Don’t
+   #### Don’t
 
-    * —
+   * —
 
-    <!-- end -->
+   <!-- end -->
 
 ##### Using badges as content
 
@@ -1944,9 +1944,9 @@ We’ll start where we left off previously, with our items being rendered.
 
 Now we’ll add the bulk actions. We’ll need to do several things to get this wired up:
 
-1.  Define our bulk actions and pass them to the resource list
-2.  Add a handler to respond when the merchant begins making a bulk selection
-3.  Add a way to keep track of which items have been selected and make sure our component knows, so it can display the change
+1. Define our bulk actions and pass them to the resource list
+2. Add a handler to respond when the merchant begins making a bulk selection
+3. Add a way to keep track of which items have been selected and make sure our component knows, so it can display the change
 
 The way we keep track of the current selection is with state.
 
@@ -2088,110 +2088,110 @@ Sort options should:
 
 A sort order is always based on a content element, like the customer name or the number of orders. For now, let’s refer to this content element as the “sort basis”.
 
-1.  The basic content formula for sort options is {sort direction} + {sort basis}.
+1. The basic content formula for sort options is {sort direction} + {sort basis}.
 
-    The sort direction should consist of words like “Most”/“Least”, “High”/“Low”, or “Newest”/“Oldest”.
+   The sort direction should consist of words like “Most”/“Least”, “High”/“Low”, or “Newest”/“Oldest”.
 
-    <!-- usageblock -->
+   <!-- usageblock -->
 
-    #### Do
+   #### Do
 
-    _Sort by_<br/>
-    Most spent<br/>
-    Least spent
+   _Sort by_<br/>
+   Most spent<br/>
+   Least spent
 
-    #### Don’t
+   #### Don’t
 
-    _Sort by_<br/>
-    High spend<br/>
-    Low spend
+   _Sort by_<br/>
+   High spend<br/>
+   Low spend
 
-    <!-- end -->
+   <!-- end -->
 
-    <!-- usageblock -->
+   <!-- usageblock -->
 
-    #### Do
+   #### Do
 
-    _Sort by_<br/>
-    High conversion<br/>
-    Low conversion
+   _Sort by_<br/>
+   High conversion<br/>
+   Low conversion
 
-    #### Don’t
+   #### Don’t
 
-    _Sort by_<br/>
-    Largest conversion<br/>
-    Smallest conversion
+   _Sort by_<br/>
+   Largest conversion<br/>
+   Smallest conversion
 
-    <!-- end -->
+   <!-- end -->
 
-    The sort basis can consist of multiple words to avoid ambiguity.
+   The sort basis can consist of multiple words to avoid ambiguity.
 
-    <!-- usageblock -->
+   <!-- usageblock -->
 
-    #### Do
+   #### Do
 
-    _Sort by_<br/>
-    Most online store visits
+   _Sort by_<br/>
+   Most online store visits
 
-    #### Don’t
+   #### Don’t
 
-    _Sort by_<br/>
-    Most visits
+   _Sort by_<br/>
+   Most visits
 
-    <!-- end -->
+   <!-- end -->
 
-    Avoid using multiple words for the sort direction. Adding “-est” may help.
+   Avoid using multiple words for the sort direction. Adding “-est” may help.
 
-    <!-- usageblock -->
+   <!-- usageblock -->
 
-    #### Do
+   #### Do
 
-    _Sort by_<br/>
-    Newest update<br/>
-    Oldest update
+   _Sort by_<br/>
+   Newest update<br/>
+   Oldest update
 
-    #### Don’t
+   #### Don’t
 
-    _Sort by_<br/>
-    Most recent update<br/>
-    Least recent update
+   _Sort by_<br/>
+   Most recent update<br/>
+   Least recent update
 
-    <!-- end -->
+   <!-- end -->
 
-2.  If sorting alphabetically, the formula is slightly different. Indicate the sort direction with “A–Z” or “Z–A” at the end of the text, without parentheses. Note the use of an en dash without spaces on either side.
+2. If sorting alphabetically, the formula is slightly different. Indicate the sort direction with “A–Z” or “Z–A” at the end of the text, without parentheses. Note the use of an en dash without spaces on either side.
 
-    <!-- usageblock -->
+   <!-- usageblock -->
 
-    #### Do
+   #### Do
 
-    _Sort by_<br/>
-    Product title A–Z<br/>
-    Product title Z–A
+   _Sort by_<br/>
+   Product title A–Z<br/>
+   Product title Z–A
 
-    #### Don’t
+   #### Don’t
 
-    _Sort by_<br/>
-    Product title (A - Z)<br/>
-    Product title (Z - A)
+   _Sort by_<br/>
+   Product title (A - Z)<br/>
+   Product title (Z - A)
 
-    <!-- end -->
+   <!-- end -->
 
-3.  Sometimes it doesn’t make sense to offer both sort directions, such as when sorting by overall relevance. It’s not a requirement to offer both directions. When offering a single sort direction, the sort direction text can be omitted from the formula.
+3. Sometimes it doesn’t make sense to offer both sort directions, such as when sorting by overall relevance. It’s not a requirement to offer both directions. When offering a single sort direction, the sort direction text can be omitted from the formula.
 
-    <!-- usageblock -->
+   <!-- usageblock -->
 
-    #### Do
+   #### Do
 
-    _Sort by_<br/>
-    Relevance
+   _Sort by_<br/>
+   Relevance
 
-    #### Don’t
+   #### Don’t
 
-    _Sort by_<br/>
-    Most relevant<br/>
-    Least relevant
+   _Sort by_<br/>
+   Most relevant<br/>
+   Least relevant
 
-    <!-- end -->
+   <!-- end -->
 
 <a name="study-sorting-applying"></a>
 
@@ -2216,9 +2216,9 @@ We’ll start where we left off, with bulk actions in place. Remember that even 
 
 As with bulk actions, there are broadly three parts to the implementation:
 
-1.  Defining the sort options and passing them to our list
-1.  Tracking the currently selected option in state and making sure our list receives the value in `render`
-1.  Setting up a handler to respond to and update the state when the merchant changes the sort option
+1. Defining the sort options and passing them to our list
+1. Tracking the currently selected option in state and making sure our list receives the value in `render`
+1. Setting up a handler to respond to and update the state when the merchant changes the sort option
 
 ```jsx
 ...

@@ -21,8 +21,8 @@ Keyboard key is used to educate merchants about keyboard shortcuts.
 
 The keyboard key component should:
 
-- Include a heading to introduce and explain the shortcuts being described when more than one shortcut is listed
-- Include an action label to describe what will happen if merchants use the key combination
+* Include a heading to introduce and explain the shortcuts being described when more than one shortcut is listed
+* Include an action label to describe what will happen if merchants use the key combination
 
 ---
 
@@ -32,13 +32,13 @@ The keyboard key component should:
 
 Headings above the keyboard key should be:
 
-- Informative and descriptive
-  - They should label the type of keyboard shortcuts being presented
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) to keep content short and actionable
-  - Be written in sentence case (first word capitalized, the rest is lowercase)
+* Informative and descriptive
+  * They should label the type of keyboard shortcuts being presented
+* Concise and scannable:
+  * Use simple, clear language that can be read at a glance
+  * Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
+  * Avoid articles (the, a, an) to keep content short and actionable
+  * Be written in sentence case (first word capitalized, the rest is lowercase)
 
 ### Shortcut description
 

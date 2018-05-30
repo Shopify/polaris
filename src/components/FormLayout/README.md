@@ -58,11 +58,15 @@ Section titles should be:
 * Be written in sentence case
 
 <!-- usagelist -->
+
 #### Do
+
 Business details
 
 #### Don’t
+
 Enter details about your business
+
 <!-- end -->
 
 ### Field label
@@ -74,19 +78,27 @@ A label is a short description of a field. Labels are not help text, and they sh
 * Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
+
 #### Do
+
 Email address
 
 #### Don’t
+
 What is your email address?
+
 <!-- end -->
 
 <!-- usagelist -->
+
 #### Do
+
 Phone number
 
 #### Don’t
+
 My phone number is:
+
 <!-- end -->
 
 ### Help text
@@ -101,13 +113,8 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 
 ```jsx
 <FormLayout>
-  <TextField
-    label="Store name"
-  />
-  <TextField
-    type="email"
-    label="Account email"
-  />
+  <TextField label="Store name" />
+  <TextField type="email" label="Account email" />
 </FormLayout>
 ```
 

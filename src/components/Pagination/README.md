@@ -50,9 +50,14 @@ Use for pagination at the bottom of lists.
 ```jsx
 <Pagination
   hasPrevious
-  onPrevious={() => {console.log('Previous')}}
+  onPrevious={() => {
+    console.log('Previous');
+  }}
   hasNext
-  onNext={() => {console.log('Next')}} />
+  onNext={() => {
+    console.log('Next');
+  }}
+/>
 ```
 
 ---

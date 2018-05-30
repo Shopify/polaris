@@ -24,11 +24,11 @@ Caption text size is smaller than the recommended size for general reading. It s
 
 ## Best practices
 
-- Use for secondary labels in graphs and charts
-- May be used for timestamps in lists of content
-- Don’t use this component for other cases
-- Don’t use this component for text longer than a few words
-- Don’t use this component for aesthetic effect or to break from the standard text size
+* Use for secondary labels in graphs and charts
+* May be used for timestamps in lists of content
+* Don’t use this component for other cases
+* Don’t use this component for text longer than a few words
+* Don’t use this component for aesthetic effect or to break from the standard text size
 
 ---
 
@@ -39,15 +39,19 @@ Caption text size is smaller than the recommended size for general reading. It s
 Captions are primarily used in [data visualizations](/visuals/data-visualizations). Stick to a few words and don’t use this component for complete sentences or longer content.
 
 <!-- usagelist -->
+
 #### Do
+
 * Use caption for labelling data visualizations
-![Diagram of using captions to label graphs and other data content](typography/display-styles/do-use-caption-for-labeling-data-visualizations.png)
+  ![Diagram of using captions to label graphs and other data content](typography/display-styles/do-use-caption-for-labeling-data-visualizations.png)
 
 * Received April 21, 2017
 
 #### Don’t
+
 * Order #1001 was received on April 21, 2017
 * This is your recent activity
+
 <!-- end -->
 
 ## Examples
@@ -58,7 +62,11 @@ Use to provide details in situations where content is compact and space is tight
 
 ```jsx
 <List>
-  <List.Item>Order #1001 <Caption>Received April 21, 2017</Caption></List.Item>
-  <List.Item>Order #1002 <Caption>Received April 22, 2017</Caption></List.Item>
+  <List.Item>
+    Order #1001 <Caption>Received April 21, 2017</Caption>
+  </List.Item>
+  <List.Item>
+    Order #1002 <Caption>Received April 22, 2017</Caption>
+  </List.Item>
 </List>
 ```

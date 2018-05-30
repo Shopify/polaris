@@ -26,11 +26,11 @@ The layout component is used to create the main layout on a page. Layouts sectio
 
 The layout component should:
 
-- Use sections with white backgrounds for primary content and sections with grey backgrounds for secondary content that is less important
-- Center cards on the background when there is no secondary card on the page to stop the content from becoming too wide
-- Group similar concepts and actions together in cards
-- Separate different cards using a full-width divider
-- Structure two-column layouts so the primary ⅔ section is used for main information and the secondary ⅓ section is used for information that might not be used as often but remains helpful for context or secondary tasks
+* Use sections with white backgrounds for primary content and sections with grey backgrounds for secondary content that is less important
+* Center cards on the background when there is no secondary card on the page to stop the content from becoming too wide
+* Group similar concepts and actions together in cards
+* Separate different cards using a full-width divider
+* Structure two-column layouts so the primary ⅔ section is used for main information and the secondary ⅓ section is used for information that might not be used as often but remains helpful for context or secondary tasks
 
 ---
 
@@ -42,116 +42,141 @@ The content from the layout component comes from cards and annotated sections.
 
 Headings should be:
 
-- Informative and descriptive
-  - They should label the type of content grouped in the card
-- Concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep to a single sentence and avoid using punctuation such as periods, commas, or semicolons
-  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
-  - Write in sentence case (first word capitalized, the rest is lowercase)
+* Informative and descriptive
+  * They should label the type of content grouped in the card
+* Concise and scannable:
+  * Use simple, clear language that can be read at a glance
+  * Keep to a single sentence and avoid using punctuation such as periods, commas, or semicolons
+  * Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
+  * Write in sentence case (first word capitalized, the rest is lowercase)
 
 <!-- usagelist -->
+
 #### Do
+
 Online store dashboard
 
 #### Don’t
+
 This is your online store dashboard
+
 <!-- end -->
 
 ### Body content
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like “you can”.
+* Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
 <!-- usagelist -->
+
 #### Do
+
 Get performance for all your sales channels.
 
 #### Don’t
+
 Now you can get performance data for all your sales channels.
+
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information first.
-- Clear: use the verb “need” to help merchants understand when they’re required to do something.
+* Structured for merchant success: always put the most critical information first.
+* Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
 <!-- usagelist -->
+
 #### Do
+
 To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
+
 To buy a shipping label, you must enter the total weight of your shipment, including packaging.
+
 <!-- end -->
 
 ### Call-to-action button
 
 Buttons should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+* Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
 
 <!-- usagelist -->
+
 #### Do
+
 Buy shipping label
 
 #### Don’t
+
 Buy
+
 <!-- end -->
 
-- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+* Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- usagelist -->
+
 #### Do
+
 Activate Apple Pay
 
 #### Don’t
+
 Try Apple Pay
+
 <!-- end -->
 
-- Scannable: avoid unnecessary words and articles such as the, an, or a.
+* Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
+
 #### Do
+
 Add menu item
 
 #### Don’t
+
 Add a menu item
+
 <!-- end -->
 
 ### Section titles
+
 Section titles should be:
 
-- Informative: they should label the type of content grouped in the body content below
-- Like headings: follow the same content guidelines as when you’re writing headings
+* Informative: they should label the type of content grouped in the body content below
+* Like headings: follow the same content guidelines as when you’re writing headings
 
 ### Action links
 
 Links should be:
 
-- Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions that a merchant may take at any time (e.g. a persistent Edit link).
-- Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
-- Similar to buttons: follow the same content guidelines as when you’re writing buttons.
+* Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions that a merchant may take at any time (e.g. a persistent Edit link).
+* Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+* Similar to buttons: follow the same content guidelines as when you’re writing buttons.
 
 ### Annotated content titles
 
 Annotated content titles should be:
 
-- Informative: they should label the type of content grouped in the body content below
-- Like headings: follow the same content guidelines as when you’re writing headings
+* Informative: they should label the type of content grouped in the body content below
+* Like headings: follow the same content guidelines as when you’re writing headings
 
 ### Annotated content descriptions
 
 The descriptions in annotated sections should:
 
-- Be used if the explanation or purpose of the associated cards isn’t clear
-- Provide instructions for any choices the merchant needs to make, or explain the purpose of the section
-- Be short, no more than 1–3 sentences
-- Direct merchants to more content in the Help Center with “Learn more” links
-- Not repeat the section title
-- Use complete sentences and regular punctuation
+* Be used if the explanation or purpose of the associated cards isn’t clear
+* Provide instructions for any choices the merchant needs to make, or explain the purpose of the section
+* Be short, no more than 1–3 sentences
+* Direct merchants to more content in the Help Center with “Learn more” links
+* Not repeat the section title
+* Use complete sentences and regular punctuation
 
 ## Examples
 
-###  One-column layout
+### One-column layout
 
 Use to have a single section on its own in a full-width container. Use for simple pages and as a container for banners and other full-width content.
 
@@ -183,6 +208,7 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
   </Layout.Section>
 </Layout>
 ```
+
 ### Annotated layout
 
 Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
@@ -191,16 +217,12 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 <Layout>
   <Layout.AnnotatedSection
     title="Store details"
-    description="Shopify and your customers will use this information to contact you.">
+    description="Shopify and your customers will use this information to contact you."
+  >
     <Card sectioned>
       <FormLayout>
-        <TextField
-          label="Store name"
-        />
-        <TextField
-          type="email"
-          label="Account email"
-        />
+        <TextField label="Store name" />
+        <TextField type="email" label="Account email" />
       </FormLayout>
     </Card>
   </Layout.AnnotatedSection>
