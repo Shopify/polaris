@@ -1,10 +1,13 @@
 # Example app using Browserify
+
 Demonstrates [Polaris](https://polaris.shopify.com) inside a [React](https://facebook.github.io/react/) app bundled via [Browserify](http://browserify.org/).
 
 ## Dependencies
-- [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
+
+* [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
 
 ## Getting started
+
 ### Installation
 
 Clone this project and install all the project dependencies.
@@ -22,6 +25,7 @@ npm install
 ```
 
 ### Development
+
 Start your development server.
 
 **With Yarn**
@@ -35,6 +39,7 @@ yarn start
 ```bash
 npm start
 ```
+
 This will generate a `./build` directory with an `index.html` and `bundle.js` file. Open the `./build/index.html` file into a web browser to see the example application.
 
 `./build/index.html` loads all the Polaris styles via the Polaris CDN and scripts via `./build/bundle.js`.

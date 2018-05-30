@@ -29,14 +29,14 @@ arrangement and the spacing of calls to action.
 Button groups should:
 
 * Only use buttons that follow the
-[best practices outlined in the button component](/components/actions/button#best-practices)
+  [best practices outlined in the button component](/components/actions/button#best-practices)
 * Group together calls to action that have a relationship
 * Be used with consideration that too many calls to action can cause merchants
-to be unsure of what to do next
+  to be unsure of what to do next
 * Be thoughtful about how multiple horizontally placed buttons will look and work
-on small screens
+  on small screens
 * Only be used in groups of up to six buttons if the buttons contain an icon
-with no text
+  with no text
 
 ---
 
@@ -69,6 +69,7 @@ Use to emphasize several buttons as a thematically-related set among other contr
   <Button>Underline</Button>
 </ButtonGroup>
 ```
+
 ---
 
 ## Related components

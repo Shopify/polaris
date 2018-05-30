@@ -38,7 +38,7 @@ Callout cards should:
 * Provide merchants with a clear call to action
 * Be targeted to merchants who will most benefit from the feature
 * Be dismissable so merchants can get rid of cards about features they’re not
-interested in
+  interested in
 * Use an illustration that helps to communicate the subject or merchant benefit
 
 ---
@@ -51,13 +51,13 @@ Headings should be:
 
 * Descriptive: help merchants understand what they’ll find in the callout card
 * Concise and scannable:
- * Use simple, clear language that can be read at a glance
- * Keep headings to a single sentence and avoid using punctuation such as
-periods, commas, or semicolons
- * Sentence case (first word capitalized, the rest lowercase)
-
+* Use simple, clear language that can be read at a glance
+* Keep headings to a single sentence and avoid using punctuation such as
+  periods, commas, or semicolons
+* Sentence case (first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
+
 #### Do
 
 Messenger
@@ -65,14 +65,19 @@ Messenger
 #### Don’t
 
 Chat with customers on Messenger
+
 <!-- end -->
 
 <!-- usagelist -->
+
 #### Do
+
 Get help from a Shopify Expert
 
 #### Don’t
+
 Get Help From a Shopify Expert!
+
 <!-- end -->
 
 ### Body content
@@ -80,30 +85,38 @@ Get Help From a Shopify Expert!
 Body content should be:
 
 * Actionable: start sentences with imperative verbs when telling a merchant
-what actions are available to them (especially something new). Don’t use
-permissive language like “you can”.
+  what actions are available to them (especially something new). Don’t use
+  permissive language like “you can”.
 
 <!-- usagelist -->
+
 #### Do
+
 Get performance data for all your sales channels.
 
 #### Don’t
+
 Now you can get performance data for all your sales channels.
+
 <!-- end -->
 
 * Structured for merchant success: always put the most critical information
-first
+  first
 * Clear: use the verb “need” to help merchants understand when they’re required
-to do something
+  to do something
 
 <!-- usagelist -->
+
 #### Do
+
 To buy a shipping label, you need to enter the total weight of your shipment,
 including packaging.
 
 #### Don’t
+
 To buy a shipping label, you must enter the total weight of your shipment,
 including packaging.
+
 <!-- end -->
 
 ### Call to action
@@ -113,33 +126,45 @@ Buttons should be:
 Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
 
 <!-- usagelist -->
+
 #### Do
+
 Buy shipping label
 
 #### Don’t
+
 Buy
+
 <!-- end -->
 
 * Action-led: buttons should always lead with a strong verb that encourages
-action. To provide enough context to merchants use the {verb}+{noun} format on
-buttons except in the case of common actions like Save, Close, Cancel, or OK.
+  action. To provide enough context to merchants use the {verb}+{noun} format on
+  buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- usagelist -->
+
 #### Do
+
 View shipping settings
 
 #### Don’t
+
 View your settings
+
 <!-- end -->
 
 * Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
+
 #### Do
+
 Add menu item
 
 #### Don’t
+
 Add a menu item
+
 <!-- end -->
 
 ## Examples
@@ -152,7 +177,10 @@ Use to let merchants know about a feature or opportunity where there is a clear,
 <CalloutCard
   title="Customize the style of your checkout"
   illustration="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
-  primaryAction={{content: 'Customize checkout', url: 'https://www.shopify.com'}}
+  primaryAction={{
+    content: 'Customize checkout',
+    url: 'https://www.shopify.com',
+  }}
 >
   <p>Upload your store’s logo, change colors and fonts, and more.</p>
 </CalloutCard>

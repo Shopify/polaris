@@ -6,6 +6,36 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.1.0 - 2018-05-03
+
+### New components
+
+#### [Exception list](https://polaris.shopify.com/components/lists-and-tables/exception-list)
+
+Use Exception lists to draw the merchant’s attention to important information that adds extra context to a task.
+
+### Enhancements
+
+* Added an `ellipsis` prop to ActionList.Item allowing for an ellipsis suffix after the content
+* Added a `preferredAlignment` prop to Popover allowing it to be aligned to the left, center, or right of its activator
+* Updated styling for Banners that appear in Cards or Modals
+* Added new size to DropZone component
+* Exposed Group interface from the Select component
+* Renamed `plain-list` mixin to `unstyled-list`
+* Removed padding from DropZone and applied it to FileUpload instead
+
+### Bug fixes
+
+* Fixed unexpected window scroll on rendering data table (thanks to [@mfurniss](https://github.com/mfurniss) for the [original issue](https://github.com/Shopify/polaris/issues/317))
+* Fixed focused inner interaction state on resource list item for reverse tabbing
+* Fixed border radius on card to match the padding on page
+* Added target to the breadcrumb prop on page (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
+* Fixed visual representation of disabled bulk action buttons in ResourceList
+* Fixed margins of a fullWidth Popover that appears above its activator
+* Fixed rendering of Popover when activator rerenders (thanks to [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/324))
+* Fixed z-index calculation for PositionOverlay and Dialog
+* Fixed an issue where selecting a date in DatePicker would submit its enclosing form
+
 ## 2.0.0 - 2018-05-07
 
 Summary: this is the first major version of Polaris React since launch. Included in this release are:

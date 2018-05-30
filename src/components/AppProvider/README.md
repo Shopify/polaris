@@ -4,6 +4,7 @@ category: Structure
 keywords:
   - app
   - provider
+  - appprovider
   - internationalization
   - i18n
   - localization

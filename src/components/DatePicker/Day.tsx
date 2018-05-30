@@ -3,6 +3,10 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import * as styles from './DatePicker.scss';
 
@@ -18,7 +22,9 @@ export interface Props {
   onFocus?(day: Date): void;
 }
 
-export default class Day extends React.PureComponent<Props, never> {
+export type CombinedProps = Props & WithAppProviderProps;
+
+export class Day extends React.PureComponent<CombinedProps, never> {
   private dayNode: HTMLElement | null = null;
 
   componentDidUpdate() {
@@ -38,6 +44,7 @@ export default class Day extends React.PureComponent<Props, never> {
       inRange,
       inHoveringRange,
       disabled,
+      polaris: {intl},
     } = this.props;
 
     const handleHover = onHover.bind(null, day);
@@ -57,7 +64,7 @@ export default class Day extends React.PureComponent<Props, never> {
     const tabIndex =
       (focused || selected || today || date === 1) && !disabled ? 0 : -1;
     const ariaLabel = [
-      `${today ? 'Today ' : ''}`,
+      `${today ? intl.translate('Polaris.DatePicker.today') : ''}`,
       `${Months[day.getMonth()]} `,
       `${date} `,
       `${day.getFullYear()}`,
@@ -67,6 +74,7 @@ export default class Day extends React.PureComponent<Props, never> {
       <button
         // eslint-disable-next-line react/jsx-no-bind
         onFocus={onFocus.bind(null, day)}
+        type="button"
         ref={this.setNode}
         tabIndex={tabIndex}
         className={className}
@@ -87,3 +95,5 @@ export default class Day extends React.PureComponent<Props, never> {
     this.dayNode = node;
   }
 }
+
+export default withAppProvider<Props>()(Day);

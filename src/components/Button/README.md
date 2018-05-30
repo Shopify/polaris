@@ -36,9 +36,9 @@ Buttons should:
 * Be clearly and accurately labeled.
 * Lead with strong, actionable verbs.
 * Use established button colors appropriately. For example, only use a red
-button for an action that’s difficult or impossible to undo.
+  button for an action that’s difficult or impossible to undo.
 * Prioritize the most important actions. Too many calls to action can cause
-confusion and make merchants unsure of what to do next.
+  confusion and make merchants unsure of what to do next.
 * Be positioned in consistent locations in the interface.
 
 ---
@@ -48,13 +48,17 @@ confusion and make merchants unsure of what to do next.
 Buttons should be clear and predictable—merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
 
 <!-- usagelist -->
+
 #### Do
-- Create order
-- Buy shipping label
+
+* Create order
+* Buy shipping label
 
 #### Don’t
-- New order
-- Buy
+
+* New order
+* Buy
+
 <!-- end -->
 
 Buttons should always lead with a strong verb that encourages
@@ -62,23 +66,31 @@ action. To provide enough context to merchants use the {verb}+{noun} format on
 buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- usagelist -->
+
 #### Do
-- Activate Apple Pay
-- View shipping settings
+
+* Activate Apple Pay
+* View shipping settings
 
 #### Don’t
-- Try Apple Pay
-- View your settings
+
+* Try Apple Pay
+* View your settings
+
 <!-- end -->
 
 Buttons should be scannable—avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
+
 #### Do
+
 Add menu item
 
 #### Don’t
+
 Add a menu item
+
 <!-- end -->
 
 ## Examples

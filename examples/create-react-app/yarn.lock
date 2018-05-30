@@ -15,9 +15,9 @@
     lodash "^4.17.4"
     lodash-decorators "^4.3.5"
 
-"@shopify/polaris@^2.0.0-rc.3":
-  version "2.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-2.0.0-rc.3.tgz#afab8462fe843638af85589111930e4f7b993c00"
+"@shopify/polaris@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-2.0.0.tgz#a40131535076a12607708360871ecae5de1b64ce"
   dependencies:
     "@shopify/images" "^1.1.0"
     "@shopify/javascript-utilities" "^2.1.0"
@@ -30,6 +30,7 @@
     core-js "^2.5.1"
     hoist-non-react-statics "^2.5.0"
     lodash "^4.17.4"
+    lodash-decorators "^4.3.5"
     prop-types "^15.6.1"
     react-transition-group "^2.3.0"
     tslib "^1.8.0"

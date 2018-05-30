@@ -10,10 +10,12 @@
 /// Returns a safe-area-inset for iPhone X screen obtrusions.
 ///
 /// @param {String} $property - The property name i.e. padding-left.
-/// @param {Space} $spacing - The spacing value to be added to the safe-area value. i.e. spacing().
+/// @param {Space} $spacing - The spacing value to be added to the safe-area
+/// value. i.e. spacing().
 /// @param {string} $area - The area where the inset is to be added. i.e. left
 ///
-/// If overriding an existing padding / margin that value should be used as $spacing.
+/// If overriding an existing padding / margin that value should be used as
+/// $spacing.
 @mixin safe-area-for($property, $spacing, $area) {
   $spacing: if($spacing == 0, #{$spacing}px, $spacing);
   #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));

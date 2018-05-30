@@ -8,6 +8,7 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Breadcrumbs.scss';
 
 export interface Props {
+  /** Collection of breadcrumbs */
   breadcrumbs: LinkAction[];
 }
 

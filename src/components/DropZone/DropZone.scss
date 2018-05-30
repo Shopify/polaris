@@ -5,7 +5,8 @@ $dropzone-border-color: color('sky');
 $dropzone-border-color-error: color('red');
 $dropzone-background: color('white');
 $dropzone-border-radius: border-radius();
-$dropzone-min-height-large: rem(205px);
+$dropzone-min-height-extra-large: rem(205px);
+$dropzone-min-height-large: rem(160px);
 $dropzone-min-height-medium: rem(114px);
 $dropzone-min-height-small: rem(50px);
 
@@ -18,7 +19,6 @@ $dropzone-overlay-background-error: color('red', 'lighter');
 
 .DropZone {
   position: relative;
-  padding: $dropzone-padding;
   display: flex;
   justify-content: center;
   background: $dropzone-background;
@@ -43,6 +43,10 @@ $dropzone-overlay-background-error: color('red', 'lighter');
   cursor: not-allowed;
 }
 
+.sizeExtraLarge {
+  min-height: $dropzone-min-height-extra-large;
+}
+
 .sizeLarge {
   min-height: $dropzone-min-height-large;
 }
@@ -64,30 +68,30 @@ $dropzone-overlay-background-error: color('red', 'lighter');
 
 .Overlay {
   position: absolute;
-  padding: $dropzone-padding;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  z-index: 30;
   top: 0;
   right: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  color: $dropzone-overlay-color;
-  z-index: 30;
+  padding: $dropzone-padding;
   border: $dropzone-border-width $dropzone-border-style $dropzone-overlay-color;
-  background: $dropzone-overlay-background;
   border-radius: $dropzone-border-radius;
+  text-align: center;
+  color: $dropzone-overlay-color;
+  background: $dropzone-overlay-background;
 
   .hasOutline & {
     border: none;
   }
 
   .hasError & {
-    color: $dropzone-overlay-color-error;
     border-color: $dropzone-overlay-border-color-error;
+    color: $dropzone-overlay-color-error;
     background: $dropzone-overlay-background-error;
   }
 

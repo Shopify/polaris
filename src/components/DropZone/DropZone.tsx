@@ -125,7 +125,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     this.state = {
       type,
-      size: 'large',
+      size: 'extraLarge',
       dragging: false,
       error: false,
       overlayText: translate(`Polaris.DropZone.overlayText${suffix}`),
@@ -203,6 +203,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       outline && styles.hasOutline,
       (active || dragging) && styles.isDragging,
       error && styles.hasError,
+      size && size === 'extraLarge' && styles.sizeExtraLarge,
       size && size === 'large' && styles.sizeLarge,
       size && size === 'medium' && styles.sizeMedium,
       size && size === 'small' && styles.sizeSmall,
@@ -213,12 +214,14 @@ export class DropZone extends React.Component<CombinedProps, State> {
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={IconDragDrop} color="indigo" />
-            {size === 'large' && (
+            {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {overlayText}
               </DisplayText>
             )}
-            {size === 'medium' && <Caption>{overlayText}</Caption>}
+            {(size === 'medium' || size === 'large') && (
+              <Caption>{overlayText}</Caption>
+            )}
           </Stack>
         </div>
       ) : null;
@@ -228,12 +231,14 @@ export class DropZone extends React.Component<CombinedProps, State> {
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
             <Icon source={IconAlertCircle} color="red" />
-            {size === 'large' && (
+            {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}
               </DisplayText>
             )}
-            {size === 'medium' && <Caption>{errorOverlayText}</Caption>}
+            {(size === 'medium' || size === 'large') && (
+              <Caption>{overlayText}</Caption>
+            )}
           </Stack>
         </div>
       ) : null;
@@ -300,13 +305,15 @@ export class DropZone extends React.Component<CombinedProps, State> {
       return;
     }
 
-    let size = 'large';
+    let size = 'extraLarge';
     const width = this.node.getBoundingClientRect().width;
 
     if (width < 114) {
       size = 'small';
-    } else if (width < 300) {
+    } else if (width < 160) {
       size = 'medium';
+    } else if (width < 300) {
+      size = 'large';
     }
 
     this.setState({size});

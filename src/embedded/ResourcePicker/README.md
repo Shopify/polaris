@@ -18,6 +18,7 @@ keywords:
 ---
 
 # Embedded resource picker
+
 Resource pickers are overlays that allow the merchant to select one or more products or collections. They provide a very powerful search-based UI to help merchants find the appropriate resources, and then provide that information to you through the callbacks the component accepts.
 
 This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
@@ -26,16 +27,16 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ## Properties
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| open* | boolean | Whether the picker is open or not |
-| title | string | The title of the picker |
-| products | boolean | Whether to allow the merchant to select products |
-| collections | boolean | Whether to allow the merchant to select collections |
-| allowMultiple | boolean | Whether multiple selections are allowed |
-| showHidden | boolean | Whether to display resources that are not published (hidden) in the context of a channel. Defaults to true. |
-| onSelection | function() | Callback after a selection was made |
-| onCancel | function() | Callback when the picker is closed without selection |
+| Prop          | Type       | Description                                                                                                 |
+| ------------- | ---------- | ----------------------------------------------------------------------------------------------------------- |
+| open\*        | boolean    | Whether the picker is open or not                                                                           |
+| title         | string     | The title of the picker                                                                                     |
+| products      | boolean    | Whether to allow the merchant to select products                                                            |
+| collections   | boolean    | Whether to allow the merchant to select collections                                                         |
+| allowMultiple | boolean    | Whether multiple selections are allowed                                                                     |
+| showHidden    | boolean    | Whether to display resources that are not published (hidden) in the context of a channel. Defaults to true. |
+| onSelection   | function() | Callback after a selection was made                                                                         |
+| onCancel      | function() | Callback when the picker is closed without selection                                                        |
 
 ---
 

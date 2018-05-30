@@ -1,7 +1,8 @@
 @import './variables';
 
 .FiltersWrapper {
-  padding: resource-list(header-padding-small) resource-list(header-padding-small) 0;
+  padding: resource-list(header-padding-small)
+    resource-list(header-padding-small) 0;
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     padding: spacing(base) spacing(base) 0;
@@ -23,12 +24,13 @@
 }
 
 .HeaderWrapper {
+  position: relative;
   display: flex;
+  align-items: flex-start;
   width: 100%;
   min-height: resource-list(header-min-height);
-  align-items: flex-start;
-  padding: resource-list(header-vertical-padding) resource-list(header-padding-small);
-  position: relative;
+  padding: resource-list(header-vertical-padding)
+    resource-list(header-padding-small);
   background-color: color('white');
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
@@ -42,14 +44,14 @@
 }
 
 .HeaderContentWrapper {
+  position: absolute;
+  z-index: resource-list(content-wrapper-stacking-order);
+  right: resource-list(header-padding-small);
+  left: resource-list(header-padding-small);
   display: flex;
   min-height: resource-list(header-content-min-height);
-  position: absolute;
-  left: resource-list(header-padding-small);
-  right: resource-list(header-padding-small);
   opacity: 1;
   transition: opacity easing() duration();
-  z-index: resource-list(content-wrapper-stacking-order);
 
   .HeaderWrapper-inSelectMode & {
     opacity: 0;
@@ -63,21 +65,22 @@
 }
 
 .SortWrapper {
-  display: flex;
-  align-items: center;
-  flex: 1;
   position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
 
   .HeaderWrapper-hasSelect & {
     padding-right: spacing(tight);
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    flex: 0 1 auto;
     position: relative;
     left: auto;
+    flex: 0 1 auto;
     margin-left: spacing();
 
+    // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       padding-right: 0;
     }
@@ -105,6 +108,7 @@
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
+    // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       display: none;
@@ -137,8 +141,8 @@
 }
 
 .SelectButtonWrapper {
-  flex: none;
   position: relative;
+  flex: none;
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     display: none;
@@ -156,8 +160,8 @@
 }
 
 .ResourceListWrapper {
-  min-width: resource-list(min-width);
   position: relative;
+  min-width: resource-list(min-width);
 }
 
 .ResourceList {

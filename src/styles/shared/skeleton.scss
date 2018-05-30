@@ -3,7 +3,10 @@ $skeleton-shimmer-duration: duration(slower) * 2;
 
 @mixin skeleton-shimmer {
   :global {
-    animation: polaris-SkeletonShimmerAnimation $skeleton-shimmer-duration linear infinite alternate;
+    // This is a global animation, defined in /src/styles/global/animations.scss
+    // stylelint-disable-next-line no-unknown-animations
+    animation: polaris-SkeletonShimmerAnimation $skeleton-shimmer-duration
+      linear infinite alternate;
   }
   will-change: opacity;
 }

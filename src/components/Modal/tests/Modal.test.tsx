@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Badge, Spinner, Portal} from '../../../components';
+import {contentContextTypes} from '../../../types';
 
 import {
   animationFrame,
@@ -18,6 +19,24 @@ describe('<Modal>', () => {
 
   afterEach(() => {
     animationFrame.restore();
+  });
+
+  it('has a child with contentContext', () => {
+    const Child: React.SFC<{}> = (_props, context) =>
+      context.withinContentContainer ? <div /> : null;
+    Child.contextTypes = contentContextTypes;
+
+    const containedChild = mountWithAppProvider(
+      <Modal open onClose={jest.fn()}>
+        <Child />
+      </Modal>,
+    );
+
+    const div = containedChild
+      .find(Child)
+      .find('div')
+      .first();
+    expect(div.exists()).toBe(true);
   });
 
   describe('open', () => {

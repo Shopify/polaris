@@ -6,7 +6,7 @@ import {
   findFirstFocusableNode,
 } from '@shopify/javascript-utilities/focus';
 
-import {PreferredPosition} from '../PositionedOverlay';
+import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import Portal from '../Portal';
 import PopoverOverlay, {CloseSource} from './PopoverOverlay';
 import Pane from './Pane';
@@ -19,6 +19,8 @@ export interface Props {
   children?: React.ReactNode;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
+  /** The preferred alignment of the popover relative to its activator */
+  preferredAlignment?: PreferredAlignment;
   /** Show or hide the Popover */
   active: boolean;
   /** The element to activate the Popover */
@@ -64,6 +66,13 @@ export default class Popover extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate() {
+    if (
+      this.activatorContainer &&
+      this.state.activatorNode &&
+      !this.activatorContainer.contains(this.state.activatorNode)
+    ) {
+      this.setActivator(this.activatorContainer);
+    }
     this.setAccessibilityAttributes();
   }
 
@@ -96,7 +105,7 @@ export default class Popover extends React.PureComponent<Props, State> {
     ) : null;
 
     return (
-      <WrapperComponent ref={this.setActivator}>
+      <WrapperComponent testID="wrapper-component" ref={this.setActivator}>
         {React.Children.only(this.props.activator)}
         {portal}
       </WrapperComponent>

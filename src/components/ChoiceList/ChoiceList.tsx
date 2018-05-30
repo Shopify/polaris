@@ -14,10 +14,15 @@ import {Error} from '../../types';
 import * as styles from './ChoiceList.scss';
 
 export interface ChoiceDescriptor {
+  /** Value of the choice */
   value: string;
+  /** Label for the choice */
   label: string;
+  /** Disable choice */
   disabled?: boolean;
+  /** Additional text to aide in use */
   helpText?: React.ReactNode;
+  /**  Method to render children with a choice */
   renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
 

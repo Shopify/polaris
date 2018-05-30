@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import DatePicker from '../DatePicker';
 import MonthComponent from '../Month';
 import Day from '../Day';
@@ -16,7 +16,7 @@ describe('<DatePicker />', () => {
   describe('onChange()', () => {
     it('is called on click on Day component', () => {
       const spy = jest.fn();
-      const component = shallow(
+      const component = mountWithAppProvider(
         <MonthComponent
           focusedDate={new Date()}
           selected={selected}
@@ -32,10 +32,25 @@ describe('<DatePicker />', () => {
     });
   });
 
+  it('does not submit an enclosing form', () => {
+    const spy = jest.fn();
+    const component = mountWithAppProvider(
+      <form onSubmit={spy}>
+        <DatePicker month={0} year={2018} />
+      </form>,
+    );
+
+    const day = component.find(Day);
+    day.first().simulate('click');
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';
-      const datePicker = mount(<DatePicker id={id} month={0} year={2018} />);
+      const datePicker = mountWithAppProvider(
+        <DatePicker id={id} month={0} year={2018} />,
+      );
 
       expect(datePicker.childAt(0).prop('id')).toBe(id);
     });

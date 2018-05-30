@@ -17,7 +17,9 @@ export type Option =
     };
 
 export interface Group {
+  /** Title for the group */
   title: string;
+  /** List of options */
   options: Option[];
 }
 

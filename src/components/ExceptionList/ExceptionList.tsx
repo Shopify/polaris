@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon from '../Icon';
@@ -13,14 +13,20 @@ export type Description =
   | (string | React.ReactElement<any>)[];
 
 export interface Item {
+  /** Set the color of the icon and title for the given item. */
   status?: 'critical' | 'warning';
+  /** Icon displayed by the list item */
   icon?: IconProps['source'];
+  /** Text displayed beside the icon */
   title?: string;
-  description: Description;
+  /** Text displayed for the item */
+  description?: Description;
+  /** Should the description be truncated at end of line */
   truncate?: boolean;
 }
 
 export interface Props {
+  /** Collection of items for list */
   items: Item[];
 }
 
@@ -45,7 +51,7 @@ export default function ExceptionList({items: itemsList}: Props) {
       <span className={styles.Description}>{description}</span>
     );
 
-    const Element = truncate ? Truncate : Fragment;
+    const Element = truncate ? Truncate : React.Fragment;
 
     return (
       <li className={itemClasses} key={index}>

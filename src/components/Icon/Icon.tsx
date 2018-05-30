@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {SVGSource} from '@shopify/images';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import {
   add,
@@ -156,18 +160,22 @@ export interface Props {
   accessibilityLabel?: string;
 }
 
-export default function Icon({
+export type CombinedProps = Props & WithAppProviderProps;
+
+function Icon({
   source,
   color,
   backdrop,
   accessibilityLabel,
-}: Props) {
+  polaris: {intl},
+}: CombinedProps) {
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
     // eslint-disable-next-line no-console
     console.warn(
-      `The ${color} icon doesn’t accept backdrops. The icon colors that have backdrops are: ${COLORS_WITH_BACKDROPS.join(
-        ', ',
-      )}`,
+      intl.translate('Polaris.Icon.backdropWarning', {
+        color,
+        colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
+      }),
     );
   }
 
@@ -185,15 +193,17 @@ export default function Icon({
   } else {
     const iconSource =
       typeof source === 'string' ? BUNDLED_ICONS[source] : source;
-    contentMarkup = (
-      <svg
-        className={styles.Svg}
-        viewBox={iconSource.viewBox}
-        dangerouslySetInnerHTML={{__html: iconSource.body}}
-        focusable="false"
-        aria-hidden="true"
-      />
-    );
+    contentMarkup = iconSource &&
+      iconSource.viewBox &&
+      iconSource.body && (
+        <svg
+          className={styles.Svg}
+          viewBox={iconSource.viewBox}
+          dangerouslySetInnerHTML={{__html: iconSource.body}}
+          focusable="false"
+          aria-hidden="true"
+        />
+      );
   }
 
   return (
@@ -202,3 +212,5 @@ export default function Icon({
     </span>
   );
 }
+
+export default withAppProvider<Props>()(Icon);

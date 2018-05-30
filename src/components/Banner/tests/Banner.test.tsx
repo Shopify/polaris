@@ -39,4 +39,24 @@ describe('<Banner />', () => {
   it('adds the correct accessibility attributes to external link in secondaryAction', () => {
     expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
   });
+
+  const mockContext = {
+    withinContentContainer: true,
+  };
+
+  const bannerWithContentContext = mountWithAppProvider(
+    <Banner
+      action={{
+        content: 'Primary action',
+      }}
+    >
+      Some content
+    </Banner>,
+    {context: mockContext},
+  );
+
+  it('renders a slim button with contentContext', () => {
+    const button = bannerWithContentContext.find(Button);
+    expect(button.prop('size')).toBe('slim');
+  });
 });

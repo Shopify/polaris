@@ -7,9 +7,13 @@ import {
 } from '@shopify/javascript-utilities/events';
 
 export interface StickyItem {
+  /** Node of the sticky element */
   stickyNode: HTMLElement;
+  /** Placeholder element */
   placeHolderNode: HTMLElement;
+  /** Bounding element */
   boundingElement: HTMLElement | null;
+  /** Method to handle positioning */
   handlePositioning(
     stick: boolean,
     top?: number,

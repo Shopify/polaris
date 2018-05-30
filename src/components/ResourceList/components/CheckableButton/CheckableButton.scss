@@ -1,10 +1,12 @@
 @import '../../variables';
 
-$button-vertical-padding: (resource-list(button-min-height) - line-height(body) - rem(2px)) / 2;
+$button-vertical-padding: (
+    resource-list(button-min-height) - line-height(body) - rem(2px)
+  ) / 2;
 $control-size: rem(16px);
 $chekbox-label-margin: rem(20px);
 
-.CheckableButton{
+.CheckableButton {
   @include text-style-button;
   display: inline-flex;
   align-items: center;
@@ -25,7 +27,7 @@ $chekbox-label-margin: rem(20px);
 
   &.CheckableButton-measuring {
     font-size: font-size(button);
-    font-weight: bold;
+    font-weight: 700;
 
     // simulates measuring with an additional digit (e.g. 00 instead of 0)
     &::before {
@@ -38,7 +40,7 @@ $chekbox-label-margin: rem(20px);
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 0 1 auto;
 
-    &:only-child{
+    &:only-child {
       border-radius: border-radius();
       border: border(dark);
     }
@@ -49,7 +51,7 @@ $chekbox-label-margin: rem(20px);
     border-right-color: transparent;
   }
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 
@@ -65,6 +67,7 @@ $chekbox-label-margin: rem(20px);
 
   &.CheckableButton-selected {
     color: color('indigo');
+
     @include breakpoint-after(resource-list(breakpoint-small)) {
       border-color: color('sky', 'dark');
     }
@@ -84,5 +87,6 @@ $chekbox-label-margin: rem(20px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: rem(1px) 0; // fixing bottom of letters being cutoff by overflow: hidden
+  // padding to fix the bottom of letters being cutoff by overflow: hidden
+  padding: rem(1px) 0;
 }

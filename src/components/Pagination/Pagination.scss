@@ -1,6 +1,7 @@
 $min-height: control-height();
 $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
-$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
+$difference-between-touch-area-and-backdrop: control-height() -
+  control-slim-height();
 
 // This is the adjustment needed to get the icon to appear flush with other
 // content around it.
@@ -8,7 +9,7 @@ $plain-horizontal-adjustment: spacing(tight);
 
 $stacking-order: (
   item: 10,
-  focused: 20,
+  focused: 20
 );
 
 .Pagination {
@@ -51,6 +52,7 @@ $stacking-order: (
       border: none;
       box-shadow: none;
 
+      // stylelint-disable-next-line selector-max-specificity
       &::after {
         background: plain-button-background();
       }
@@ -77,11 +79,11 @@ $stacking-order: (
 
     &::after {
       content: '';
-      display: block;
       position: absolute;
       top: 0.5 * $difference-between-touch-area-and-backdrop;
-      left: 0;
       right: 0;
+      left: 0;
+      display: block;
       height: control-slim-height();
       border-radius: border-radius();
       will-change: background;
@@ -100,7 +102,11 @@ $stacking-order: (
   min-width: $min-height;
   margin: 0;
   padding: $vertical-padding spacing(tight);
-  background: linear-gradient(to bottom, color('white'), color('sky', 'lighter'));
+  background: linear-gradient(
+    to bottom,
+    color('white'),
+    color('sky', 'lighter')
+  );
   border: border(dark);
   border-radius: border-radius();
   line-height: 1;
@@ -114,7 +120,11 @@ $stacking-order: (
   transition-timing-function: easing();
 
   &:hover {
-    background: linear-gradient(to bottom, color('sky', 'lighter'), color('sky', 'light'));
+    background: linear-gradient(
+      to bottom,
+      color('sky', 'lighter'),
+      color('sky', 'light')
+    );
     border-color: color('sky', 'dark');
   }
 
@@ -127,10 +137,13 @@ $stacking-order: (
 
   &:active {
     // Same color gradient is necessary for background transitions
-    background: linear-gradient(to bottom, color('sky', 'light'), color('sky', 'light'));
+    background: linear-gradient(
+      to bottom,
+      color('sky', 'light'),
+      color('sky', 'light')
+    );
     border-color: color('sky', 'dark');
-    box-shadow:
-      0 0 0 0 transparent,
+    box-shadow: 0 0 0 0 transparent,
       inset 0 1px 1px 0 rgba(color('ink', 'lighter'), 0.1),
       inset 0 1px 4px 0 rgba(color('ink', 'lighter'), 0.2);
   }

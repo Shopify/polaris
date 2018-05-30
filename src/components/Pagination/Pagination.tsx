@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -29,7 +33,9 @@ export interface Props extends PaginationDescriptor {
   plain?: boolean;
 }
 
-export default function Pagination({
+export type CombinedProps = Props & WithAppProviderProps;
+
+function Pagination({
   hasNext,
   hasPrevious,
   nextURL,
@@ -38,13 +44,14 @@ export default function Pagination({
   onPrevious,
   plain,
   accessibilityLabel,
-}: Props) {
+  polaris: {intl},
+}: CombinedProps) {
   let label: string;
 
   if (accessibilityLabel) {
     label = accessibilityLabel;
   } else {
-    label = 'Pagination';
+    label = intl.translate('Polaris.Pagination.pagination');
   }
 
   const className = classNames(styles.Pagination, plain && styles.plain);
@@ -54,7 +61,7 @@ export default function Pagination({
       className={styles.Button}
       url={previousURL}
       onMouseUp={handleMouseUpByBlurring}
-      aria-label="Previous"
+      aria-label={intl.translate('Polaris.Pagination.previous')}
     >
       <Icon source="arrowLeft" />
     </UnstyledLink>
@@ -63,7 +70,7 @@ export default function Pagination({
       onClick={onPrevious}
       onMouseUp={handleMouseUpByBlurring}
       className={styles.Button}
-      aria-label="Previous"
+      aria-label={intl.translate('Polaris.Pagination.previous')}
       disabled={!hasPrevious}
     >
       <Icon source="arrowLeft" />
@@ -75,7 +82,7 @@ export default function Pagination({
       className={styles.Button}
       url={nextURL}
       onMouseUp={handleMouseUpByBlurring}
-      aria-label="Next"
+      aria-label={intl.translate('Polaris.Pagination.next')}
     >
       <Icon source="arrowRight" />
     </UnstyledLink>
@@ -84,7 +91,7 @@ export default function Pagination({
       onClick={onNext}
       onMouseUp={handleMouseUpByBlurring}
       className={styles.Button}
-      aria-label="Next"
+      aria-label={intl.translate('Polaris.Pagination.next')}
       disabled={!hasNext}
     >
       <Icon source="arrowRight" />
@@ -98,3 +105,5 @@ export default function Pagination({
     </nav>
   );
 }
+
+export default withAppProvider<Props>()(Pagination);

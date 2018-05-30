@@ -100,16 +100,17 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
       z-index: z-index(focused, $bulk-actions-button-stacking-order);
     }
 
-    &:last-child:not(:first-child){
+    // stylelint-disable-next-line selector-max-specificity
+    &:last-child:not(:first-child) {
       border-radius: 0 border-radius() border-radius() 0;
     }
   }
 
   .Button-cancel {
-    flex: 0 0 auto;
-    border-radius: 0 border-radius() border-radius() 0;
     z-index: 0;
+    flex: 0 0 auto;
     margin-left: -1px;
+    border-radius: 0 border-radius() border-radius() 0;
 
     &:focus {
       z-index: 1;
@@ -151,7 +152,13 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   }
 }
 
-.PaginatedSelectAll{
+.disabled {
+  @include base-button-disabled;
+  cursor: default;
+  pointer-events: none;
+}
+
+.PaginatedSelectAll {
   padding: spacing(extra-tight) 0;
 }
 
@@ -171,4 +178,3 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
 .Slide-entering {
   transform: translateY(0);
 }
-

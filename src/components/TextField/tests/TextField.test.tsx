@@ -1,12 +1,15 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+} from '../../../../tests/utilities';
 import {noop} from '@shopify/javascript-utilities/other';
 import TextField from '..';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
     const pattern = '\\d\\d';
-    const input = shallow(
+    const input = shallowWithAppProvider(
       <TextField
         label="TextField"
         disabled
@@ -40,7 +43,7 @@ describe('<TextField />', () => {
   });
 
   it('blocks props not listed as component props to pass on the input', () => {
-    const input = shallow(
+    const input = shallowWithAppProvider(
       <TextField
         label="TextField"
         disabled
@@ -57,7 +60,9 @@ describe('<TextField />', () => {
   });
 
   it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
-    const element = mount(<TextField label="TextField" onChange={noop} />);
+    const element = mountWithAppProvider(
+      <TextField label="TextField" onChange={noop} />,
+    );
     element.setProps({focused: true});
     expect(element.getDOMNode().querySelector('input')).toBe(
       document.activeElement,
@@ -67,7 +72,7 @@ describe('<TextField />', () => {
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
-      const element = mount(
+      const element = mountWithAppProvider(
         <TextField id="MyTextField" label="TextField" onChange={spy} />,
       );
       (element.find('input') as any).instance().value = 'two';
@@ -79,7 +84,9 @@ describe('<TextField />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      shallow(<TextField label="TextField" onFocus={spy} onChange={noop} />)
+      shallowWithAppProvider(
+        <TextField label="TextField" onFocus={spy} onChange={noop} />,
+      )
         .find('input')
         .simulate('focus');
       expect(spy).toHaveBeenCalled();
@@ -89,7 +96,7 @@ describe('<TextField />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
-      const element = shallow(
+      const element = shallowWithAppProvider(
         <TextField label="TextField" onBlur={spy} onChange={noop} />,
       );
       element.find('input').simulate('focus');
@@ -100,7 +107,7 @@ describe('<TextField />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallow(
+      const id = shallowWithAppProvider(
         <TextField label="TextField" id="MyField" onChange={noop} />,
       )
         .find('input')
@@ -109,7 +116,9 @@ describe('<TextField />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallow(<TextField label="TextField" onChange={noop} />)
+      const id = shallowWithAppProvider(
+        <TextField label="TextField" onChange={noop} />,
+      )
         .find('input')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -119,21 +128,21 @@ describe('<TextField />', () => {
 
   describe('autoComplete', () => {
     it('defaults to no autoComplete attribute', () => {
-      const textField = shallow(
+      const textField = shallowWithAppProvider(
         <TextField label="TextField" onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
     it('sets autoComplete to "off" when false', () => {
-      const textField = shallow(
+      const textField = shallowWithAppProvider(
         <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
     it('sets autoComplete to "on" when false', () => {
-      const textField = shallow(
+      const textField = shallowWithAppProvider(
         <TextField label="TextField" autoComplete onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBe('on');
@@ -142,7 +151,7 @@ describe('<TextField />', () => {
 
   describe('helpText', () => {
     it('connects the input to the help text', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" helpText="Some help" onChange={noop} />,
       );
       const helpTextID = textField
@@ -155,7 +164,7 @@ describe('<TextField />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const textField = shallow(
+      const textField = shallowWithAppProvider(
         <TextField
           error={<span>Invalid</span>}
           label="TextField"
@@ -169,7 +178,7 @@ describe('<TextField />', () => {
     });
 
     it('connects the input to the error', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" error="Some error" onChange={noop} />,
       );
       const errorID = textField.find('input').prop<string>('aria-describedby');
@@ -178,7 +187,7 @@ describe('<TextField />', () => {
     });
 
     it('connects the input to both an error and help text', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <TextField
           label="TextField"
           error="Some error"
@@ -198,7 +207,7 @@ describe('<TextField />', () => {
 
   describe('prefix', () => {
     it('connects the input to the prefix and label', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" prefix="$" onChange={noop} />,
       );
       const labels = textField
@@ -211,7 +220,7 @@ describe('<TextField />', () => {
     });
 
     it('connects the input to the prefix, suffix, and label', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" prefix="$" suffix=".00" onChange={noop} />,
       );
       const labels = textField
@@ -227,7 +236,7 @@ describe('<TextField />', () => {
 
   describe('suffix', () => {
     it('connects the input to the suffix and label', () => {
-      const textField = mount(
+      const textField = mountWithAppProvider(
         <TextField label="TextField" suffix="kg" onChange={noop} />,
       );
       const labels = textField
@@ -242,7 +251,7 @@ describe('<TextField />', () => {
 
   describe('type', () => {
     it('sets the type on the input', () => {
-      const type = shallow(
+      const type = shallowWithAppProvider(
         <TextField label="TextField" type="email" onChange={noop} />,
       )
         .find('input')
@@ -253,7 +262,7 @@ describe('<TextField />', () => {
     describe('number', () => {
       it('adds an increment button that increases the value', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -271,7 +280,7 @@ describe('<TextField />', () => {
 
       it('adds a decrement button that increases the value', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -289,7 +298,7 @@ describe('<TextField />', () => {
 
       it('handles incrementing from no value', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -306,7 +315,7 @@ describe('<TextField />', () => {
 
       it('uses the step prop when incrementing', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -325,7 +334,7 @@ describe('<TextField />', () => {
 
       it('respects a min value', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -351,7 +360,7 @@ describe('<TextField />', () => {
 
       it('respects a max value', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -377,7 +386,7 @@ describe('<TextField />', () => {
 
       it('brings an invalid value up to the min', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -403,7 +412,7 @@ describe('<TextField />', () => {
 
       it('brings an invalid value down to the max', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -428,7 +437,7 @@ describe('<TextField />', () => {
       });
 
       it('removes increment and decrement buttons when disabled', () => {
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyNumberField"
             label="NumberField"
@@ -442,7 +451,7 @@ describe('<TextField />', () => {
 
       it('increments correctly when a value step or both are float numbers', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"
@@ -461,7 +470,7 @@ describe('<TextField />', () => {
 
       it('decrements correctly when a value step or both are float numbers', () => {
         const spy = jest.fn();
-        const element = mount(
+        const element = mountWithAppProvider(
           <TextField
             id="MyTextField"
             label="TextField"

@@ -1,3 +1,5 @@
+import * as PropTypes from 'prop-types';
+import {ValidationMap} from 'react';
 import {IconProps} from './components';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
@@ -9,11 +11,17 @@ export type Error =
   | (string | React.ReactElement<any>)[];
 
 export interface BaseAction {
+  /** A unique identifier for the action */
   id?: string;
+  /** Content the action displays */
   content?: string;
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** A destination to link to, rendered in the action */
   url?: string;
+  /** Forces url to open in a new tab */
   external?: boolean;
+  /** Callback when an action takes place */
   onAction?(): void;
 }
 
@@ -24,28 +32,42 @@ export interface AnimationProps {
 }
 
 export interface BaseLinkAction {
+  /** A unique identifier for the action */
   id?: string;
+  /** Content the action displays */
   content?: string;
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** A destination to link to */
   url: string;
 }
 
-export interface LinkAction extends BaseLinkAction {}
+export interface EASDKBreadcrumbTarget {
+  target?: EASDKTarget;
+}
+
+export interface LinkAction extends BaseLinkAction, EASDKBreadcrumbTarget {}
 
 export interface BaseCallbackAction {
+  /** A unique identifier for the action */
   id?: string;
+  /** Content the action displays */
   content?: string;
+  /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Callback when an action takes place */
   onAction(): void;
 }
 
 export interface CallbackAction extends BaseCallbackAction {}
 
 export interface DisableableAction extends Action {
+  /** Should the action be disabled */
   disabled?: boolean;
 }
 
 export interface DestructableAction extends Action {
+  /** Destructive action */
   destructive?: boolean;
 }
 
@@ -53,14 +75,17 @@ export interface EASDKAction
   extends Action,
     DisableableAction,
     DestructableAction {
+  /** Where to display the target link */
   target?: EASDKTarget;
 }
 
 export interface IconableAction extends Action {
+  /** Source of the icon */
   icon?: IconProps['source'];
 }
 
 export interface LoadableAction extends Action {
+  /** Should a spinner be displayed */
   loading?: boolean;
 }
 
@@ -173,3 +198,7 @@ export enum Keys {
   CLOSE_BRACKET = 221,
   SINGLE_QUOTE = 222,
 }
+
+export const contentContextTypes: ValidationMap<any> = {
+  withinContentContainer: PropTypes.bool,
+};

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {Action, DisableableAction} from '../../types';
+import {Action, DisableableAction, contentContextTypes} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
@@ -28,6 +28,13 @@ export interface Props {
 
 export default class Card extends React.PureComponent<Props, never> {
   static Section = Section;
+  static childContextTypes = contentContextTypes;
+
+  getChildContext() {
+    return {
+      withinContentContainer: true,
+    };
+  }
 
   render() {
     const {

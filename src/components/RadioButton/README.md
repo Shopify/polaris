@@ -14,6 +14,7 @@ keywords:
 ---
 
 # Radio button
+
 Use radio buttons to present each item in a list of options where merchants must
 make a single selection.
 
@@ -28,9 +29,9 @@ Radio buttons should:
   * Include at least two or more choices.
   * Are used to have merchants select only one option.
   * Include mutually exclusive options—this means that each option must be
-  independent from every other option in the list. For example: Red, blue, and
-  yellow are mutually exclusive. Red, blue, yellow, red/blue are not mutually
-  exclusive.
+    independent from every other option in the list. For example: Red, blue, and
+    yellow are mutually exclusive. Red, blue, yellow, red/blue are not mutually
+    exclusive.
   * List options in a rational order that makes logical sense.
 
 ---
@@ -45,21 +46,29 @@ Radio button labels should:
 * Start with a capital letter
 
 <!-- usagelist -->
+
 #### Do
-- Option 1
+
+* Option 1
 
 #### Don’t
-- option 1
+
+* option 1
+
 <!-- end -->
 
 * Not end in punctuation if it’s a single sentence, word, or a fragment
 
 <!-- usagelist -->
+
 #### Do
-- Red
+
+* Red
 
 #### Don’t
-- Red;
+
+* Red;
+
 <!-- end -->
 
 ## Examples
@@ -76,7 +85,7 @@ class RadioButtonExample extends React.Component {
 
   handleChange = (checked, newValue) => {
     this.setState({value: newValue});
-  }
+  };
 
   render() {
     const {value} = this.state;
@@ -85,7 +94,7 @@ class RadioButtonExample extends React.Component {
         <RadioButton
           label="Accounts are disabled"
           helpText="Customers will only be able to check out as guests."
-          checked={(value === 'disabled')}
+          checked={value === 'disabled'}
           id="disabled"
           name="accounts"
           onChange={this.handleChange}
@@ -95,7 +104,7 @@ class RadioButtonExample extends React.Component {
           helpText="Customers will be able to check out with a customer account or as a guest."
           id="optional"
           name="accounts"
-          checked={(value === 'optional')}
+          checked={value === 'optional'}
           onChange={this.handleChange}
         />
       </Stack>

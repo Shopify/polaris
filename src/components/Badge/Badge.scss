@@ -52,7 +52,13 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .progressPartiallyComplete .Pip {
-  background: linear-gradient(to top, currentColor, currentColor 50%, transparent 50%, transparent);
+  background: linear-gradient(
+    to top,
+    currentColor,
+    currentColor 50%,
+    transparent 50%,
+    transparent
+  );
 }
 
 .progressComplete .Pip {

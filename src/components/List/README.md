@@ -52,7 +52,7 @@ Every item in a list should:
 * Yellow;
 * Blue.
 
-  <!-- end -->
+<!-- end -->
 
 * Be written in sentence case
 
@@ -69,7 +69,8 @@ Every item in a list should:
 * Item One
 * Item Two
 * Item Three
-  <!-- end -->
+
+<!-- end -->
 
 ### Icon list text
 

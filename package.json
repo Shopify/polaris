@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -25,9 +25,12 @@
   "jsnext:main": "index.es.js",
   "types": "types/index.d.ts",
   "scripts": {
+    "lint": "npm-run-all lint:js lint:css",
+    "lint:css": "stylelint './**/*.scss' --max-warnings 0",
     "lint:js": "eslint './src/**/*.{ts,tsx}' --max-warnings 0 --format codeframe",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix --max-warnings 0 --format codeframe",
-    "lint": "npm-run-all lint:js",
+    "format": "npm-run-all format:js format:css",
+    "format:css": "prettier-stylelint-formatter -q --write",
+    "format:js": "eslint './src/**/*.{ts,tsx}' --fix --max-warnings 0 --format codeframe",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
     "test:ci": "yarn run test --runInBand",
@@ -41,7 +44,43 @@
     "build-shrink-ray": "yarn copy-polaris-tokens && node ./scripts/build-shrink-ray.js",
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
     "dev": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
-    "start": "echo \"Warning: no 'start' task specified. Run 'yarn dev' instead.\" && yarn dev"
+    "start": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-shopify/prettier"
+    ],
+    "rules": {
+      "selector-class-pattern": "^[a-zA-Z][a-zA-Z0-9-]+$",
+      "indentation": [
+        2,
+        {
+          "ignore": [
+            "value"
+          ]
+        }
+      ],
+      "max-line-length": [
+        80,
+        {
+          "ignorePattern": [
+            "/https?://[0-9,a-z]*.*/",
+            "/stylelint-disable/",
+            "/@error/",
+            "/@warn/",
+            "/@debug/"
+          ]
+        }
+      ],
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global"
+          ]
+        }
+      ]
+    }
   },
   "devDependencies": {
     "@shopify/js-uploader": "github:shopify/js-uploader",
@@ -88,6 +127,7 @@
     "postcss-modules-scope": "^1.1.0",
     "postcss-modules-values": "^1.3.0",
     "postcss-shopify": "^1.0.0",
+    "prettier-stylelint-formatter": "^0.5.1-beta.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-test-renderer": "^16.3.1",
@@ -104,6 +144,8 @@
     "shelljs": "^0.7.7",
     "shx": "^0.2.2",
     "style-loader": "^0.19.0",
+    "stylelint": "^9.2.1",
+    "stylelint-config-shopify": "^5.0.1",
     "svgo": "^0.7.2",
     "tslint": "^5.8.0",
     "typescript": "^2.8.3",

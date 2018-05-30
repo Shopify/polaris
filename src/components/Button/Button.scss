@@ -41,7 +41,7 @@ $spinner-size: rem(20px);
     margin-left: spacing(extra-tight);
   }
 
-  & + *:not(.Icon) {
+  + *:not(.Icon) {
     margin-left: spacing(extra-tight);
   }
 }
@@ -118,7 +118,7 @@ $spinner-size: rem(20px);
   padding-left: rem(8px);
   padding-right: rem(8px);
   background: transparent;
-  border: border(transparent);
+  border: 0;
   box-shadow: none;
   color: color('blue');
 
@@ -127,7 +127,7 @@ $spinner-size: rem(20px);
   &:active {
     @include recolor-icon(color('blue', 'dark'));
     background: transparent;
-    border: border(transparent);
+    border: 0;
     box-shadow: none;
     color: color('blue', 'dark');
   }
@@ -169,6 +169,7 @@ $spinner-size: rem(20px);
       @include recolor-icon(color('ink'));
     }
 
+    // stylelint-disable-next-line selector-max-class
     > .Content::after {
       display: none;
     }

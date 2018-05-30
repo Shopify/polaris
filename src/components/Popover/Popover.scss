@@ -40,6 +40,10 @@ $content-max-width: rem(400px);
 .positionedAbove {
   margin: spacing() spacing() $visible-portion-of-arrow;
 
+  &.fullWidth {
+    margin: 0 0 $visible-portion-of-arrow;
+  }
+
   .Tip {
     top: inherit;
     bottom: 0;

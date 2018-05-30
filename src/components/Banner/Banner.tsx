@@ -1,7 +1,12 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
-import {Action, DisableableAction, LoadableAction} from '../../types';
+import {
+  Action,
+  DisableableAction,
+  LoadableAction,
+  contentContextTypes,
+} from '../../types';
 import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
@@ -35,122 +40,134 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export default function Banner({
-  icon,
-  action,
-  secondaryAction,
-  title,
-  children,
-  status,
-  onDismiss,
-}: Props) {
-  let color: IconProps['color'];
-  let defaultIcon: IconProps['source'];
-  let ariaRoleType = 'status';
+export default class Banner extends React.PureComponent<Props, never> {
+  static contextTypes = contentContextTypes;
 
-  switch (status) {
-    case 'success':
-      color = 'greenDark';
-      defaultIcon = successIcon;
-      break;
-    case 'info':
-      color = 'tealDark';
-      defaultIcon = infoIcon;
-      break;
-    case 'warning':
-      color = 'yellowDark';
-      defaultIcon = warningIcon;
-      ariaRoleType = 'alert';
-      break;
-    case 'critical':
-      color = 'redDark';
-      defaultIcon = criticalIcon;
-      ariaRoleType = 'alert';
-      break;
-    default:
-      color = 'inkLighter';
-      defaultIcon = fallbackIcon;
-  }
+  render() {
+    const {
+      icon,
+      action,
+      secondaryAction,
+      title,
+      children,
+      status,
+      onDismiss,
+    } = this.props;
+    const {withinContentContainer} = this.context;
 
-  const className = classNames(
-    styles.Banner,
-    status && styles[variationName('status', status)],
-    onDismiss && styles.hasDismiss,
-  );
+    let color: IconProps['color'];
+    let defaultIcon: IconProps['source'];
+    let ariaRoleType = 'status';
 
-  const id = uniqueID();
-  const iconName = icon || defaultIcon;
+    switch (status) {
+      case 'success':
+        color = 'greenDark';
+        defaultIcon = successIcon;
+        break;
+      case 'info':
+        color = 'tealDark';
+        defaultIcon = infoIcon;
+        break;
+      case 'warning':
+        color = 'yellowDark';
+        defaultIcon = warningIcon;
+        ariaRoleType = 'alert';
+        break;
+      case 'critical':
+        color = 'redDark';
+        defaultIcon = criticalIcon;
+        ariaRoleType = 'alert';
+        break;
+      default:
+        color = 'inkLighter';
+        defaultIcon = fallbackIcon;
+    }
 
-  let headingMarkup: React.ReactNode = null;
-  let headingID: string | undefined;
+    const className = classNames(
+      styles.Banner,
+      status && styles[variationName('status', status)],
+      onDismiss && styles.hasDismiss,
+      withinContentContainer
+        ? styles.withinContentContainer
+        : styles.withinPage,
+    );
 
-  if (title) {
-    headingID = `${id}Heading`;
-    headingMarkup = (
-      <div className={styles.Heading} id={headingID}>
-        <Heading element="p">{title}</Heading>
+    const id = uniqueID();
+    const iconName = icon || defaultIcon;
+
+    let headingMarkup: React.ReactNode = null;
+    let headingID: string | undefined;
+
+    if (title) {
+      headingID = `${id}Heading`;
+      headingMarkup = (
+        <div className={styles.Heading} id={headingID}>
+          <Heading element="p">{title}</Heading>
+        </div>
+      );
+    }
+
+    const buttonSizeValue = withinContentContainer ? 'slim' : undefined;
+
+    const secondaryActionMarkup = secondaryAction
+      ? secondaryActionFrom(secondaryAction)
+      : null;
+
+    const actionMarkup = action ? (
+      <div className={styles.Actions}>
+        <ButtonGroup>
+          {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+          {secondaryActionMarkup}
+        </ButtonGroup>
+      </div>
+    ) : null;
+
+    let contentMarkup = null;
+    let contentID: string | undefined;
+
+    if (children || actionMarkup) {
+      contentID = `${id}Content`;
+      contentMarkup = (
+        <div className={styles.Content} id={contentID}>
+          {children}
+          {actionMarkup}
+        </div>
+      );
+    }
+
+    const dismissButton = onDismiss ? (
+      <div className={styles.Dismiss}>
+        <Button
+          plain
+          icon="cancelSmall"
+          onClick={onDismiss}
+          accessibilityLabel="Dismiss notification"
+        />
+      </div>
+    ) : null;
+
+    return (
+      <div
+        className={className}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        role={ariaRoleType}
+        aria-live="polite"
+        onMouseUp={handleMouseUp}
+        aria-labelledby={headingID}
+        aria-describedby={contentID}
+      >
+        {dismissButton}
+        <div className={styles.Ribbon}>
+          <Icon source={iconName} color={color} backdrop />
+        </div>
+        <div>
+          {headingMarkup}
+          {contentMarkup}
+        </div>
       </div>
     );
   }
-
-  const secondaryActionMarkup = secondaryAction
-    ? secondaryActionFrom(secondaryAction)
-    : null;
-
-  const actionMarkup = action ? (
-    <div className={styles.Actions}>
-      <ButtonGroup>
-        {buttonFrom(action, {outline: true})}
-        {secondaryActionMarkup}
-      </ButtonGroup>
-    </div>
-  ) : null;
-
-  let contentMarkup = null;
-  let contentID: string | undefined;
-
-  if (children || actionMarkup) {
-    contentID = `${id}Content`;
-    contentMarkup = (
-      <div className={styles.Content} id={contentID}>
-        {children}
-        {actionMarkup}
-      </div>
-    );
-  }
-
-  const dismissButton = onDismiss ? (
-    <div className={styles.Dismiss}>
-      <Button
-        plain
-        icon="cancelSmall"
-        onClick={onDismiss}
-        accessibilityLabel="Dismiss notification"
-      />
-    </div>
-  ) : null;
-
-  return (
-    <div
-      className={className}
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-      tabIndex={0}
-      role={ariaRoleType}
-      aria-live="polite"
-      onMouseUp={handleMouseUp}
-      aria-labelledby={headingID}
-      aria-describedby={contentID}
-    >
-      {dismissButton}
-      <div className={styles.Ribbon}>
-        <Icon source={iconName} color={color} backdrop />
-      </div>
-      <div>
-        {headingMarkup}
-        {contentMarkup}
-      </div>
-    </div>
-  );
 }
 
 let index = 1;

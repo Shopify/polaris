@@ -31,8 +31,8 @@ Links are used to embed actions or pathways to more information in a sentence.
 
 Links should:
 
-- Consist of text that clearly describes either the action that the merchant will take or the location they’ll navigate to.
-- Only be used in a sentence. For stand-alone navigational actions, [use the button component](/components/actions/button)
+* Consist of text that clearly describes either the action that the merchant will take or the location they’ll navigate to.
+* Only be used in a sentence. For stand-alone navigational actions, [use the button component](/components/actions/button)
 
 ---
 
@@ -42,29 +42,37 @@ Links should:
 
 Links should:
 
-- Set the expectation of where the merchant will be taken or what action will be performed.
-- Be consistent with the content they point to. If a navigational link leads to a page called Orders, label the link “orders”.
-- Use descriptive text and avoid using generic content such as “click here”.
+* Set the expectation of where the merchant will be taken or what action will be performed.
+* Be consistent with the content they point to. If a navigational link leads to a page called Orders, label the link “orders”.
+* Use descriptive text and avoid using generic content such as “click here”.
 
 <!-- usageblock -->
+
 #### Do
+
 Learn more about <a>fulfilling orders</a> at the Shopify Help Center
 
 #### Don’t
+
 <a>Click here</a> to learn more about fulfilling orders
+
 <!-- end -->
 
 <!-- usagelist -->
+
 #### Do
+
 Orders
 
 #### Don’t
+
 To orders section
+
 <!-- end -->
 
 ## Examples
 
-###  Default links
+### Default links
 
 Use for text links in larger spans of text.
 

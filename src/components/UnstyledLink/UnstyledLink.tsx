@@ -4,8 +4,11 @@ import {unstyled} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
+  /** A destination to link to */
   url: string;
+  /** Forces url to open in a new tab */
   external?: boolean;
+  /**	Content to display inside the link */
   children?: React.ReactNode;
   [key: string]: any;
 }
@@ -19,7 +22,8 @@ export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
     if (polaris && polaris.link) {
       const LinkComponent = polaris.link.getLinkComponent();
       if (LinkComponent) {
-        return <LinkComponent {...unstyled.props} {...this.props} />;
+        const {polaris, ...rest} = this.props;
+        return <LinkComponent {...unstyled.props} {...rest} />;
       }
     }
 

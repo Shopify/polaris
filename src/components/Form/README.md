@@ -59,13 +59,14 @@ class FormExample extends React.Component {
             label="Email"
             type="email"
             helpText={
-              <span>We'll use this email address to inform you on future changes to Polaris.</span>
+              <span>
+                We'll use this email address to inform you on future changes to
+                Polaris.
+              </span>
             }
           />
 
-          <Button submit>
-            Submit
-          </Button>
+          <Button submit>Submit</Button>
         </Form>
       </FormLayout>
     );
@@ -73,11 +74,11 @@ class FormExample extends React.Component {
 
   handleSubmit = (event) => {
     this.setState({newsletter: false, email: ''});
-  }
+  };
 
   handleChange = (field) => {
     return (value) => this.setState({[field]: value});
-  }
+  };
 }
 ```
 
@@ -96,10 +97,7 @@ class FormExample extends React.Component {
 
     return (
       <FormLayout>
-        <Form
-          noValidate
-          onSubmit={this.handleSubmit}
-        >
+        <Form noValidate onSubmit={this.handleSubmit}>
           <TextField
             value={url}
             onChange={this.handleChange('url')}
@@ -107,9 +105,7 @@ class FormExample extends React.Component {
             type="url"
           />
 
-          <Button submit>
-            Submit
-          </Button>
+          <Button submit>Submit</Button>
         </Form>
       </FormLayout>
     );
@@ -117,11 +113,11 @@ class FormExample extends React.Component {
 
   handleSubmit = (event) => {
     this.setState({url: ''});
-  }
+  };
 
   handleChange = (field) => {
     return (value) => this.setState({[field]: value});
-  }
+  };
 }
 ```
 

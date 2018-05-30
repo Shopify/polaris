@@ -1,6 +1,6 @@
 $stacking-order: (
   in-range: 20,
-  selected: 30,
+  selected: 30
 );
 
 $font-size: rem(12px);
@@ -29,7 +29,7 @@ $in-range-border-color: #9ca6de;
 }
 
 .Month-current {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .Week,
@@ -70,7 +70,7 @@ $in-range-border-color: #9ca6de;
 }
 
 .Day-today {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .Day-inRange {
@@ -141,7 +141,7 @@ $in-range-border-color: #9ca6de;
 }
 
 .Weekday-current {
-  font-weight: bold;
+  font-weight: 700;
   color: color('black', 'base');
 }
 
