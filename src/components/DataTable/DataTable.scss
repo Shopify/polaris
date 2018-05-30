@@ -91,7 +91,6 @@ $breakpoint: 768px;
 
 .Cell {
   padding: spacing();
-  background: color('white');
   border-bottom: 1px solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
@@ -111,8 +110,7 @@ $breakpoint: 768px;
   white-space: unset;
   word-wrap: break-word;
   text-align: left;
-  // stops painting on scroll (due to positioning)
-  backface-visibility: hidden;
+  backface-visibility: hidden; // stops painting on scroll (due to positioning)
 }
 
 .Cell-truncated {
@@ -139,9 +137,7 @@ $breakpoint: 768px;
       justify-content: flex-end;
       align-items: center;
       transition: fill duration() easing(), color duration() easing();
-    }
-
-    // stylelint-disable-next-line selector-max-class
+    } // stylelint-disable-next-line selector-max-class
     .Heading-left {
       justify-content: flex-start;
     }
@@ -157,9 +153,7 @@ $breakpoint: 768px;
       @include recolor-icon(color('indigo'));
       color: color('indigo');
       outline: none;
-      cursor: pointer;
-
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity
+      cursor: pointer; // stylelint-disable-next-line selector-max-class, selector-max-specificity
       .Heading-sortable {
         opacity: 1;
       }
@@ -184,6 +178,5 @@ $breakpoint: 768px;
   color: color('ink', 'lighter');
   white-space: unset;
   text-align: center;
-  // stops painting on scroll (due to positioning)
-  backface-visibility: hidden;
+  backface-visibility: hidden; // stop painting on scroll (due to positioning)
 }

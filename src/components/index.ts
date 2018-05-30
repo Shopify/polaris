@@ -66,6 +66,7 @@ export {
   TableData,
   TableRow,
   SortDirection,
+  ColumnContentType,
 } from './DataTable';
 
 export {

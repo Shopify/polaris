@@ -19,6 +19,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+* Fixed unexpected window scroll on rendering data table ([#1383](https://github.com/Shopify/polaris-react/pull/1383)) (thanks to [@mfurniss](https://github.com/mfurniss) for the [original issue](https://github.com/Shopify/polaris/issues/317))
 * Fixed focused inner interaction state on resource list item for reverse tabbing ([#1403](https://github.com/Shopify/polaris-react/pull/1403))
 * Fixed border radius on card to match the padding on page ([#1424](https://github.com/Shopify/polaris-react/pull/1424))
 * Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))

@@ -17,6 +17,7 @@ export type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
 export type TableData = string | number | React.ReactNode;
 export type SortDirection = 'ascending' | 'descending' | 'none';
+export type ColumnContentType = 'text' | 'numeric';
 
 export interface ColumnVisibilityData {
   leftEdge: number;
@@ -34,20 +35,22 @@ interface TableMeasurements {
 }
 
 export interface ScrollPosition {
-  left: number;
+  left?: number;
   top?: number;
 }
 
 export interface Props {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
-  columnContentTypes: string[];
+  columnContentTypes: ColumnContentType[];
   /** List of column headings. */
   headings: string[];
   /** List of numeric column totals, highlighted in the table's header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
-  /** Truncate content in first column instead of wrapping. */
+  /** Truncate content in first column instead of wrapping.
+   * @default false
+   */
   truncate?: boolean;
   /** Content centered in the full width cell of the table footer row. */
   footerContent?: TableData;
@@ -85,7 +88,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     columnVisibilityData: [],
     sorted: this.props.sortable && this.props.sortable.length > 0,
     heights: [],
-    preservedScrollPosition: {left: 0},
+    preservedScrollPosition: {},
   };
 
   private dataTable: HTMLElement;
@@ -95,9 +98,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   constructor(props: CombinedProps) {
     super(props);
-
     const {polaris: {intl: {translate}}} = props;
-
     this.totalsRowHeading = translate('Polaris.DataTable.totalsRowHeading');
   }
 
@@ -107,6 +108,12 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       setTimeout(() => {
         this.handleResize();
       }, 10);
+    }
+  }
+
+  componentDidUpdate(prevProps: CombinedProps) {
+    if (!this.props.truncate && prevProps.truncate) {
+      this.handleResize();
     }
   }
 
@@ -299,9 +306,13 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private resetScrollPosition() {
-    const {preservedScrollPosition} = this.state;
-    this.scrollContainer.scrollLeft = preservedScrollPosition.left;
-    window.scrollTo(0, preservedScrollPosition.top);
+    const {preservedScrollPosition: {left, top}} = this.state;
+    if (left) {
+      this.scrollContainer.scrollLeft = left;
+    }
+    if (top) {
+      window.scrollTo(0, top);
+    }
   }
 
   @autobind
@@ -408,10 +419,12 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     }
 
     if (index === 1) {
-      return <Cell testID={id} key={id} presentational />;
+      return <Cell testID={id} key={id} presentational height={height} />;
     }
 
-    return <Cell total testID={id} key={id} contentType="numeric" />;
+    return (
+      <Cell total testID={id} key={id} contentType="numeric" height={height} />
+    );
   }
 
   @autobind

@@ -72,9 +72,9 @@ function Cell({
   const iconClassName = classNames(sortable && styles['Heading-sortable']);
 
   const presentationalMarkup = header ? (
-    <th aria-hidden role="presentation" className={className} />
+    <th aria-hidden role="presentation" className={className} style={style} />
   ) : (
-    <td aria-hidden role="presentation" className={className} />
+    <td aria-hidden role="presentation" className={className} style={style} />
   );
 
   let sortedIconMarkup = null;
