@@ -118,7 +118,7 @@ $spinner-size: rem(20px);
   padding-left: rem(8px);
   padding-right: rem(8px);
   background: transparent;
-  border: border(transparent);
+  border: 0;
   box-shadow: none;
   color: color('blue');
 
@@ -127,7 +127,7 @@ $spinner-size: rem(20px);
   &:active {
     @include recolor-icon(color('blue', 'dark'));
     background: transparent;
-    border: border(transparent);
+    border: 0;
     box-shadow: none;
     color: color('blue', 'dark');
   }

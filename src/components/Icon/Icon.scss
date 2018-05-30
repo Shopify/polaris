@@ -16,16 +16,16 @@ $stacking-order: (
   position: relative;
   display: flex;
   align-items: center;
-  margin: spacing(tight);
+  margin: spacing(extra-tight);
 
   &::after {
     content: '';
     position: absolute;
     z-index: z-index(backdrop, $stacking-order);
-    top: -1 * spacing(tight);
-    bottom: -1 * spacing(tight);
-    left: -1 * spacing(tight);
-    right: -1 * spacing(tight);
+    top: -1 * spacing(extra-tight);
+    bottom: -1 * spacing(extra-tight);
+    left: -1 * spacing(extra-tight);
+    right: -1 * spacing(extra-tight);
     border-radius: 50%;
   }
 }

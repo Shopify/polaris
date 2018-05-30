@@ -1,3 +1,5 @@
+import * as PropTypes from 'prop-types';
+import {ValidationMap} from 'react';
 import {IconProps} from './components';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
@@ -196,3 +198,7 @@ export enum Keys {
   CLOSE_BRACKET = 221,
   SINGLE_QUOTE = 222,
 }
+
+export const contentContextTypes: ValidationMap<any> = {
+  withinContentContainer: PropTypes.bool,
+};
