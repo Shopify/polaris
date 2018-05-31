@@ -60,6 +60,8 @@ export {
 
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
+export {default as ContextBar, ContextBarProps} from './ContextBar';
+
 export {
   default as DataTable,
   Props as DataTableProps,

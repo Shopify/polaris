@@ -2,22 +2,26 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navBarCollapsed} from '../../utilities/breakpoints';
-import Button from '../Button';
-import Icon from '../Icon';
-import EventListener from '../EventListener';
-import TrapFocus from '../Focus/TrapFocus';
 import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
 import {ToastManager, Loading} from './components';
+
+import {
+  Button,
+  Icon,
+  EventListener,
+  TrapFocus,
+  ContextBar,
+  ContextBarProps,
+} from '../index';
+
 import * as styles from './Frame.scss';
 
 export interface Props {
   skipToContent?: string;
   topBar?: React.ReactNode;
-  contextBar?: React.ReactNode;
   nav?: React.ReactNode;
   banners?: React.ReactNode;
   showMobileNav?: boolean;
-  showContextBar?: boolean;
   onNavDismiss?(): void;
 }
 
@@ -27,6 +31,7 @@ export interface State {
   bannerHeight: number;
   loadingStack: number;
   toastMessages: (ToastDescriptor & {id: string})[];
+  contextBar: ContextBarProps | null;
 }
 
 export const APP_FRAME_MAIN = 'AppFrameMain';
@@ -40,6 +45,7 @@ export default class Frame extends React.PureComponent<Props, State> {
     bannerHeight: 0,
     loadingStack: 0,
     toastMessages: [],
+    contextBar: null,
   };
 
   private navContainer: HTMLElement | null = null;
@@ -53,6 +59,8 @@ export default class Frame extends React.PureComponent<Props, State> {
         startLoading: this.startLoading,
         resetLoading: this.resetLoading,
         stopLoading: this.stopLoading,
+        setContextBar: this.setContextBar,
+        removeContextBar: this.removeContextBar,
       },
     };
   }
@@ -101,15 +109,14 @@ export default class Frame extends React.PureComponent<Props, State> {
       bannerHeight,
       loadingStack,
       toastMessages,
+      contextBar,
     } = this.state;
     const {
       children,
       nav,
       topBar,
       banners,
-      contextBar,
       showMobileNav,
-      showContextBar,
       skipToContent,
     } = this.props;
 
@@ -151,12 +158,14 @@ export default class Frame extends React.PureComponent<Props, State> {
 
     const contextBarClassName = classNames(
       styles.ContextBar,
-      showContextBar && styles['ContextBar-visible'],
+      contextBar && styles['ContextBar-visible'],
     );
 
-    const contextBarMarkup = contextBar ? (
-      <div className={contextBarClassName}>{contextBar}</div>
-    ) : null;
+    const contextBarMarkup = contextBar && (
+      <div className={contextBarClassName}>
+        <ContextBar {...contextBar} />
+      </div>
+    );
 
     const topBarMarkup = topBar ? (
       <div className={styles.TopBar} data-polaris-layer>
@@ -246,6 +255,16 @@ export default class Frame extends React.PureComponent<Props, State> {
         toastMessages: toastMessages.filter(({id: toastId}) => id !== toastId),
       };
     });
+  }
+
+  @autobind
+  private setContextBar(props: ContextBarProps) {
+    this.setState({contextBar: {...props}});
+  }
+
+  @autobind
+  private removeContextBar() {
+    this.setState({contextBar: null});
   }
 
   @autobind
