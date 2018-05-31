@@ -104,7 +104,7 @@
     "@types/jest": "^21.1.2",
     "@types/lodash": "^4.14.108",
     "@types/lodash-decorators": "^4.0.0",
-    "@types/node": "^8.0.0",
+    "@types/node": "^8.10.17",
     "@types/react-hot-loader": "^3.0.6",
     "archiver": "^2.1.0",
     "awesome-typescript-loader": "^3.1.3",
