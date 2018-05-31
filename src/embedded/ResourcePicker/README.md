@@ -25,21 +25,6 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
-## Properties
-
-| Prop          | Type       | Description                                                                                                 |
-| ------------- | ---------- | ----------------------------------------------------------------------------------------------------------- |
-| open\*        | boolean    | Whether the picker is open or not                                                                           |
-| title         | string     | The title of the picker                                                                                     |
-| products      | boolean    | Whether to allow the merchant to select products                                                            |
-| collections   | boolean    | Whether to allow the merchant to select collections                                                         |
-| allowMultiple | boolean    | Whether multiple selections are allowed                                                                     |
-| showHidden    | boolean    | Whether to display resources that are not published (hidden) in the context of a channel. Defaults to true. |
-| onSelection   | function() | Callback after a selection was made                                                                         |
-| onCancel      | function() | Callback when the picker is closed without selection                                                        |
-
----
-
 ## Screenshot examples
 
 These static images are provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.

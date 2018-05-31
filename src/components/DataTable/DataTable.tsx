@@ -44,7 +44,7 @@ export interface Props {
   columnContentTypes: ColumnContentType[];
   /** List of column headings. */
   headings: string[];
-  /** List of numeric column totals, highlighted in the table's header below column headings. Use empty strings as placeholders for columns with no total. */
+  /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
   /** Lists of data points which map to table body rows. */
   rows: TableData[][];
@@ -166,7 +166,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
         {insertPresentationalCell(headings).map((heading, headingIndex) => {
           let sortableHeadingProps = {};
           const id = `heading-cell-${headingIndex}`;
-          // we account for the presentational heading cell's index when accessing elements from arrays passed as props and when comparing a heading index with the sorted column's index
+          // we account for the presentational heading cell’s index when
+          // accessing elements from arrays passed as props and when comparing
+          // a heading index with the sorted column’s index
           const index = headingIndex <= 1 ? headingIndex : headingIndex - 1;
           const contentTypes = this.getContentTypes();
 

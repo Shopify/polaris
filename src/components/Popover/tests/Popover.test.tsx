@@ -34,7 +34,7 @@ describe('<Popover />', () => {
     expect(positionedOverlay.exists()).toBeTruthy();
   });
 
-  it("doesn't render a popover when active is false", () => {
+  it('doesn’t render a popover when active is false', () => {
     const popover = mountWithAppProvider(
       <Popover active={false} activator={<div>Activator</div>} onClose={spy} />,
     );

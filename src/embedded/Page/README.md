@@ -30,22 +30,6 @@ Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Sho
 
 ---
 
-## Properties
-
-| Prop             | Type                           | Description                                          |
-| ---------------- | ------------------------------ | ---------------------------------------------------- |
-| title\*          | string                         | Page title, in large type                            |
-| icon             | string                         | App icon for Shopify app pages                       |
-| breadcrumbs      | BreadcrumbProps['breadcrumbs'] | Collection of breadcrumbs                            |
-| children         | React.ReactNode                | The contents of the page                             |
-| secondaryActions | ComplexAction[]                | Collection of secondary page-level actions           |
-| actionGroups     | ActionGroup[]                  | Collection of page-level groups of secondary actions |
-| primaryAction    | DisableableAction              | Primary page-level action                            |
-
-The code for embedded page is similar to the standalone page component, however, fullWidth, singleColumn, and separator props can’t be used.
-
----
-
 ## Screenshot examples
 
 Static images are provided to help visualize the interface as embedded components can only be rendered inside the Shopify admin.

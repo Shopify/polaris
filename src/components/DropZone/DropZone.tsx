@@ -308,7 +308,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
     let size = 'extraLarge';
     const width = this.node.getBoundingClientRect().width;
 
-    if (width < 114) {
+    if (width < 100) {
       size = 'small';
     } else if (width < 160) {
       size = 'medium';

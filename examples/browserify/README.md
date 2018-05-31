@@ -44,4 +44,4 @@ This will generate a `./build` directory with an `index.html` and `bundle.js` fi
 
 `./build/index.html` loads all the Polaris styles via the Polaris CDN and scripts via `./build/bundle.js`.
 
-The `start` npm script uses `watchify` to recompile `./build/bundle.js` with changes you've made in the `./src` directory. Reload the `./build/index.html` page in your browser to see the updated changes.
+The `start` npm script uses `watchify` to recompile `./build/bundle.js` with changes you’ve made in the `./src` directory. Reload the `./build/index.html` page in your browser to see the updated changes.

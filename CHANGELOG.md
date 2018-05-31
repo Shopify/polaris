@@ -6,6 +6,16 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.1.1 - 2018-05-03
+
+### Bug fixes
+
+* DropZone: fixed a bug where it would kick into small-size too soon
+
+### Documentation
+
+* Various content and markdown fixes
+
 ## 2.1.0 - 2018-05-03
 
 ### New components
@@ -218,7 +228,7 @@ _This will be the last v1.x release outside of critical security fixes._
 ## 1.12.4 - 2018-03-19
 
 * Enhanced Avatar to work better when provided non-square images
-* Move documentation file so it's picked up by the styleguide
+* Move documentation file so it’s picked up by the styleguide
 
 ## 1.12.3 - 2018-03-16
 
@@ -265,7 +275,7 @@ _This will be the last v1.x release outside of critical security fixes._
 * Update `TextField` type with currency
 * Added `ariaControls`, `ariaExpanded` prop to Button
 * Updated the base red color to improve contrast
-* Added a notification icon to the bundled icons available to use in the icon component's source prop
+* Added a notification icon to the bundled icons available to use in the icon component’s source prop
 * Exposed Status from the Banner component
 * Added `titleHidden` prop to Page
 

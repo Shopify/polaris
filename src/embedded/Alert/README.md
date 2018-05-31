@@ -38,21 +38,6 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
-## Properties
-
-| Prop             | Type       | Description                                                             |
-| ---------------- | ---------- | ----------------------------------------------------------------------- |
-| open\*           | boolean    | Whether the alert is open                                               |
-| children\*       | string     | The content to display inside the alert                                 |
-| title            | string     | The alert title                                                         |
-| destructive      | boolean    | For confirming a destructive or dangerous action                        |
-| confirmContent\* | string     | The content of the confirmation button                                  |
-| cancelContent    | string     | The content of the cancel button                                        |
-| onConfirm\*      | function() | Callback when the confirmation button is clicked                        |
-| onClose\*        | function() | Callback when the alert is closed, or when the cancel button is clicked |
-
----
-
 ## Screenshot examples
 
 These static images are provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.
