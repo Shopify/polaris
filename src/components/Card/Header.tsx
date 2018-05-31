@@ -18,16 +18,20 @@ export default function Header({children, actions}: Props) {
     <ButtonGroup>{buttonsFrom(actions, {plain: true})}</ButtonGroup>
   ) : null;
 
+  const childrenMarkup = React.isValidElement(children) ? (
+    children
+  ) : (
+    <Heading>{children}</Heading>
+  );
+
   const headingMarkup = actionMarkup ? (
     <Stack alignment="baseline">
-      <Stack.Item fill>
-        <Heading>{children}</Heading>
-      </Stack.Item>
+      <Stack.Item fill>{childrenMarkup}</Stack.Item>
 
       {actionMarkup}
     </Stack>
   ) : (
-    <Heading>{children}</Heading>
+    childrenMarkup
   );
 
   return <div className={styles.Header}>{headingMarkup}</div>;

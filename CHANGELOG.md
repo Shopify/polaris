@@ -33,6 +33,7 @@ Use Exception lists to draw the merchant’s attention to important information 
 * Exposed Group interface from the Select component ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 * Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
 * Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
+* Allow cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))
 
 ### Bug fixes
 
