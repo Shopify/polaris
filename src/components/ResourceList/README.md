@@ -809,7 +809,9 @@ Provides a default interface for adding and removing filters. Supports quick fil
 Filter control showing a state with applied filters and an additional action (optional).
 
 <div class="TypeContainerImage">
-  ![Example filter control](resource-list/filter-control-example.png)
+
+![Example filter control](resource-list/filter-control-example.png)
+
 </div>
 
 ```jsx
@@ -961,7 +963,9 @@ In this case, a the **filter input** is a text field, so you only need to consid
 ### Applied filter tags
 
 <div class="TypeContainerImage">
-  ![Example of applied filter tags](resource-list/filter-control-filter-tags.png)
+
+![Example of applied filter tags](resource-list/filter-control-filter-tags.png)
+
 </div>
 
 The content that represents applied filter tags should use short, clear, non-technical labels.

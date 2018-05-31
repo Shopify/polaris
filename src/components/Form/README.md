@@ -60,7 +60,7 @@ class FormExample extends React.Component {
             type="email"
             helpText={
               <span>
-                We'll use this email address to inform you on future changes to
+                We’ll use this email address to inform you on future changes to
                 Polaris.
               </span>
             }

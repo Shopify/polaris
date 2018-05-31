@@ -26,7 +26,7 @@ The drop zone component lets merchants upload files by dragging and dropping fil
 
 Drop zones should:
 
-* Inform merchants when the file(s) can't be uploaded:
+* Inform merchants when the file(s) can’t be uploaded:
   * When possible, use validation errors on drag to detect and explain things like file size limits or file types accepted.
   * Use the [banner component](/components/feedback-indicators/banner) with a critical status to communicate errors that happen on the server.
 * Provide feedback once the file(s) have been dropped and uploading begins.
@@ -47,7 +47,7 @@ Client-side validation errors give instant feedback.
 
 Validation error messages should be:
 
-* Explicit: help merchants understand why their file can't be uploaded and what they should change to successfully upload their file
+* Explicit: help merchants understand why their file can’t be uploaded and what they should change to successfully upload their file
 * In sentence case: capitalize only the first word in the message
 * Concise: use simple, clear language that can be read at a glance. For example:
 
@@ -63,10 +63,10 @@ Upload error messages should:
 
 * Be displayed as a [banner](/components/feedback-indicators/banner) with a critical status
 * Show the name of the file(s) that were not uploaded successfully
-* Describe why the file(s) couldn't be uploaded and what the merchant should change to upload their file successfully, as seen below
+* Describe why the file(s) couldn’t be uploaded and what the merchant should change to upload their file successfully, as seen below
 
 ```
-The following images couldn't be uploaded:
+The following images couldn’t be uploaded:
 
 * “keep-it-real.png” is too large. Try a file size less than 20MB.
 * “realer-than-real.zip” is not supported. File type must be .gif, .jpg, .png or .svg.
@@ -208,7 +208,7 @@ class DropZoneExample extends React.Component {
 
     const errorMessage = hasError && (
       <Banner
-        title="The following images couldn't be uploaded:"
+        title="The following images couldn’t be uploaded:"
         status="critical"
       >
         <List type="bullets">
@@ -343,7 +343,7 @@ class DropZoneExample extends React.Component {
 
     const errorMessage = hasError && (
       <Banner
-        title="The following images couldn't be uploaded:"
+        title="The following images couldn’t be uploaded:"
         status="critical"
       >
         <List type="bullets">

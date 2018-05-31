@@ -18,7 +18,7 @@ describe('<Sticky />', () => {
           if (isSticky === false) {
             return <h1>it worked!</h1>;
           } else {
-            return <h2> {"it didn't"} </h2>;
+            return <h2> {'it didn’t'} </h2>;
           }
         }}
       </Sticky>,

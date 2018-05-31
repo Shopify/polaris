@@ -54,7 +54,7 @@ $base-font-size: 10px;
   } @else if $unit == 'em' {
     @return $value;
   } @else if $unit == 'rem' {
-    // Don't reformat because sometimes prettier can't count. See https://github.com/prettier/prettier/issues/4460
+    // Don’t reformat because sometimes prettier can’t count. See https://github.com/prettier/prettier/issues/4460
     // prettier-ignore
     @return $value / 1rem * 1em *
       ($base-font-size / $default-browser-font-size);

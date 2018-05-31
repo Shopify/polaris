@@ -8,7 +8,7 @@ const awsConfig = require('../secrets.json').aws; // eslint-disable-line import/
 const currentVersion = require('../package.json').version;
 
 // Check if the current version is stable
-// and doesn't include -alpha.x, -beta.x, -rc.x tags
+// and doesn’t include -alpha.x, -beta.x, -rc.x tags
 const isStableVersion = !semver.prerelease(currentVersion);
 
 const files = [

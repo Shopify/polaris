@@ -1,7 +1,7 @@
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 interface FrameCallback {
-  (time: number): any,
+  (time: number): any;
 }
 
 export default class AnimationFrame {
@@ -44,7 +44,7 @@ export default class AnimationFrame {
   runFrame() {
     this.ensureAnimationFrameIsFake();
     // We need to do it this way so that frames that queue other frames
-    // don't get removed
+    // don’t get removed
     Object.keys(this.queued).forEach((frame: any) => {
       const callback = this.queued[frame];
       delete this.queued[frame];

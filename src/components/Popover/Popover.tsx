@@ -34,7 +34,7 @@ export interface Props {
   preventAutofocus?: boolean;
   /** Automatically add wrap content in a section */
   sectioned?: boolean;
-  /** Allow popover to stretch to the full width of it's activator */
+  /** Allow popover to stretch to the full width of its activator */
   fullWidth?: boolean;
   /** Allow popover to stretch to fit content vertically */
   fullHeight?: boolean;
