@@ -6,6 +6,16 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.1.1 - 2018-05-03
+
+### Bug fixes
+
+* DropZone: fixed a bug where it would kick into small-size too soon ([#1434](https://github.com/Shopify/polaris-react/pull/1434))
+
+### Documentation
+
+* Various content and markdown fixes
+
 ## 2.1.0 - 2018-05-03
 
 ### New components
