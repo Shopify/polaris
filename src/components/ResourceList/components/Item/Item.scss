@@ -1,5 +1,17 @@
 @import '../../variables';
 
+@mixin action-hide {
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+}
+
+@mixin action-unhide {
+  clip: auto;
+  overflow: visible;
+  height: 100%;
+}
+
 .CheckboxWrapper {
   display: flex;
 }
@@ -15,7 +27,12 @@
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
-        display: flex;
+        @include action-unhide;
+
+        // stylelint-disable-next-line max-nesting-depth
+        @include page-content-when-partially-condensed {
+          display: none;
+        }
       }
     }
   }
@@ -148,13 +165,15 @@
   position: absolute;
   top: 0;
   right: resource-list-item(padding);
-  display: none;
+  display: flex;
   pointer-events: initial;
   height: 100%;
   max-height: resource-list-item(actions-height);
 
+  @include action-hide;
+
   .focused & {
-    display: flex;
+    @include action-unhide;
   }
 }
 
@@ -168,6 +187,7 @@
     margin-top: 0;
     margin-left: spacing();
     pointer-events: initial;
+    height: 100%;
 
     @include page-content-when-partially-condensed {
       display: none;
