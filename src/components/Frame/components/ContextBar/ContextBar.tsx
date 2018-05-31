@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {variationName, classNames} from '@shopify/react-utilities/styles';
-import {Button, Image, Stack, ContextBarProps} from '../../../';
+import {Button, Image, Stack, ContextBarProps} from '../../..';
 
 import * as styles from './ContextBar.scss';
 

@@ -2,18 +2,11 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navBarCollapsed} from '../../utilities/breakpoints';
+import {Button, Icon, EventListener, TrapFocus} from '..';
+
 import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
-import {ToastManager, Loading} from './components';
 
-import {
-  Button,
-  Icon,
-  EventListener,
-  TrapFocus,
-  ContextBar,
-  ContextBarProps,
-} from '../index';
-
+import {ToastManager, Loading, ContextBar, ContextBarProps} from './components';
 import * as styles from './Frame.scss';
 
 export interface Props {

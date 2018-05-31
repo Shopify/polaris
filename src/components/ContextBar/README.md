@@ -60,4 +60,4 @@ Use primary action and second action to control your form
 
 ## Related components
 
-* To wrap around your app for higher levle control, use the [Frame](/components/edit-after-frame-readme/frame)
+* To wrap around your app for higher level control, use the [Frame](/components/edit-after-frame-readme/frame)

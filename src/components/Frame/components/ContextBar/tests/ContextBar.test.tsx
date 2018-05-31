@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import {Button} from '../../../../';
+import {Button} from '../../../..';
 import ContextBar from '../ContextBar';
 
 describe('<ContextBar />', () => {
