@@ -2,7 +2,7 @@ $accent-height: 3px;
 $heading-offset: rem(2px);
 $intermediate-spacing: rem(12px);
 $ribbon-flex-basis: rem(32px);
-// Don't reformat because sometimes prettier can't count
+// Don’t reformat because sometimes prettier can’t count
 // See https://github.com/prettier/prettier/issues/4460
 // prettier-ignore
 $secondary-action-vertical-padding: 0.5 * (control-height() -
@@ -165,7 +165,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .SecondaryAction {
   @include unstyled-button;
   @include unstyled-link;
-  // Don't reformat because sometimes prettier can't count
+  // Don’t reformat because sometimes prettier can’t count
   // See https://github.com/prettier/prettier/issues/4460
   // prettier-ignore
   margin: (-1 * $secondary-action-vertical-padding)

@@ -67,7 +67,7 @@ export function trigger(wrapper: AnyWrapper, keypath: string, ...args: any[]) {
 
 /**
  * This is needed for updating the enzyme wrapper and react instance when we deeply change the context.
- * root.update() should work, but it doesn't currently (see https://github.com/airbnb/enzyme/issues/1329).
+ * root.update() should work, but it doesn’t currently (see https://github.com/airbnb/enzyme/issues/1329).
  */
 export function forceUpdate(root: AnyWrapper) {
   getInstance(root).forceUpdate();

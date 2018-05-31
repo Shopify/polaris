@@ -27,7 +27,7 @@ $color-palette-data: map-extend(
 
 /// Returns the color value for a given color name and group.
 ///
-/// @param {String} $hue - The color's hue.
+/// @param {String} $hue - The color’s hue.
 /// @param {String} $value - The darkness/lightness of the color. Defaults to
 /// base.
 /// @param {Color} $for-background - The background color on which this color

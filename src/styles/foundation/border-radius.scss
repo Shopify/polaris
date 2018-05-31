@@ -4,7 +4,7 @@ $border-radius-data: (
 );
 
 /// Returns the border radius of the specified size.
-/// @param {String} $size - The border radius's size.
+/// @param {String} $size - The border radius’s size.
 /// @return {Number} The border radius value.
 
 @function border-radius($size: base) {

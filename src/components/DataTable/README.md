@@ -66,7 +66,7 @@ class DataTableExample extends React.Component {
 
 ### Sortable data table
 
-Use when clarity of the table's content is needed. For example, to note the number of rows currently shown in a data table with pagination.
+Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
 ```jsx
 class SortableDataTableExample extends React.Component {
@@ -136,7 +136,7 @@ class SortableDataTableExample extends React.Component {
 
 ### Data table with footer
 
-Use when clarity of the table's content is needed. For example, to note the number of rows currently shown in a data table with pagination.
+Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
 ```jsx
 class DataTableFooterExample extends React.Component {

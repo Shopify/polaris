@@ -218,7 +218,7 @@ _This will be the last v1.x release outside of critical security fixes._
 ## 1.12.4 - 2018-03-19
 
 * Enhanced Avatar to work better when provided non-square images ([#1124](https://github.com/Shopify/polaris-react/pull/1124))
-* Move documentation file so it's picked up by the styleguide ([#1162](https://github.com/Shopify/polaris-react/pull/1162))
+* Move documentation file so it’s picked up by the styleguide ([#1162](https://github.com/Shopify/polaris-react/pull/1162))
 
 ## 1.12.3 - 2018-03-16
 
@@ -265,7 +265,7 @@ _This will be the last v1.x release outside of critical security fixes._
 * Update `TextField` type with currency ([#908](https://github.com/Shopify/polaris-react/pull/908))
 * Added `ariaControls`, `ariaExpanded` prop to Button ([#978](https://github.com/Shopify/polaris-react/pull/978/))
 * Updated the base red color to improve contrast ([#1076](https://github.com/Shopify/polaris-react/pull/1076))
-* Added a notification icon to the bundled icons available to use in the icon component's source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
+* Added a notification icon to the bundled icons available to use in the icon component’s source prop ([#1017](https://github.com/Shopify/polaris-react/pull/1017))
 * Exposed Status from the Banner component ([#998](https://github.com/Shopify/polaris-react/pull/998))
 * Added `titleHidden` prop to Page ([#1033](https://github.com/Shopify/polaris-react/pull/1033))
 

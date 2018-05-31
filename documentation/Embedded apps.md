@@ -48,9 +48,9 @@ All components must be wrapped by the `<AppProvider />` component. This componen
 
 ## Access to further EASDK APIs
 
-We've provided access to some functionality of the underlying EASDK API. This enables performing actions like redirects or displaying a flash message from within your embedded app.
+We’ve provided access to some functionality of the underlying EASDK API. This enables performing actions like redirects or displaying a flash message from within your embedded app.
 
-In order to call these methods, you must get the `easdk` object that we add to [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `easdk` object from React's `context`:
+In order to call these methods, you must get the `easdk` object that we add to [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `easdk` object from React’s `context`:
 
 ```js
 import React from 'react';

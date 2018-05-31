@@ -256,7 +256,7 @@ describe('<Item />', () => {
   });
 
   describe('shortcutActions', () => {
-    it("shouldn't render shortcut actions if none are provided", () => {
+    it('shouldn’t render shortcut actions if none are provided', () => {
       const wrapper = mountWithAppProvider(<Item id={itemId} url={url} />, {
         context: mockDefaultContext,
       });

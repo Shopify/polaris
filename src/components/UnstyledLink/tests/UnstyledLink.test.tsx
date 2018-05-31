@@ -21,7 +21,7 @@ describe('<UnstyledLink />', () => {
       expect(anchorElement.length).toBe(1);
     });
 
-    it("doesn't have polaris prop", () => {
+    it('doesn’t have polaris prop', () => {
       const CustomLinkComponent = () => <div />;
       const link = new Link(CustomLinkComponent);
       const mockContext = {context: {polaris: {link}}};

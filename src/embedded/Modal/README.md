@@ -25,21 +25,6 @@ This component only works within embedded apps. Read the [Embedded App SDK (EASD
 
 ---
 
-## Properties
-
-| Prop             | Type                       | Description                                             |
-| ---------------- | -------------------------- | ------------------------------------------------------- |
-| open\*           | boolean                    | Whether the modal is open or not                        |
-| src\*            | string                     | The URL that will be loaded as the content of the modal |
-| title            | string                     | Modal title, in large type                              |
-| width            | enum['large', 'fullwidth'] | Controls the width of the modal                         |
-| height           | number                     | The height of the modal (in pixels)                     |
-| primaryAction    | Action                     | Primary action                                          |
-| secondaryActions | Action[]                   | Collection of secondary actions                         |
-| onClose\*        | function()                 | Callback when the modal is closed                       |
-
----
-
 ## Screenshot examples
 
 This static image is provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.

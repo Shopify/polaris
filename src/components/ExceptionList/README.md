@@ -1,5 +1,5 @@
 ---
-name: ExceptionList
+name: Exception list
 category: Lists and tables
 keywords:
   - exception list

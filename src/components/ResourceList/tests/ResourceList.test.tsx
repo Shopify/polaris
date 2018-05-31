@@ -119,7 +119,7 @@ describe('<ResourceList />', () => {
 
   describe('resourceName', () => {
     describe('resoureName.singular', () => {
-      it("should render default singular resource name when 'resourceName' isn't provided", () => {
+      it("should render default singular resource name when 'resourceName' isn’t provided", () => {
         const resourceList = mountWithAppProvider(
           <ResourceList
             showHeader
@@ -148,7 +148,7 @@ describe('<ResourceList />', () => {
     });
 
     describe('resoureName.plural', () => {
-      it("should render default plural resource name when 'resourceName' isn't provided", () => {
+      it("should render default plural resource name when 'resourceName' isn’t provided", () => {
         const resourceList = mountWithAppProvider(
           <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
@@ -174,7 +174,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('bulkActionsAccessibilityLabel', () => {
-    it("should provide the BulkActions with the right accessibilityLabel if there's 1 item and it isn't selected", () => {
+    it('should provide the BulkActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={singleItemWithID}
@@ -187,7 +187,7 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it("should provide the BulkActions with the right accessibilityLabel if there's 1 item and it is selected ", () => {
+    it('should provide the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected ', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={singleItemWithID}
@@ -201,7 +201,7 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it("should provide the BulkActions with the right accessibilityLabel if there's multiple items and they are all selected", () => {
+    it('should provide the BulkActions with the right accessibilityLabel if there’s multiple items and they are all selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -214,7 +214,7 @@ describe('<ResourceList />', () => {
         'Deselect all 3 items',
       );
     });
-    it("should provide the BulkActions with the right accessibilityLabel if there's multiple items and some or none are selected", () => {
+    it('should provide the BulkActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -229,7 +229,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('idForItem()', () => {
-    it("should generate a key using the index if there's no idForItem prop and no ID in data", () => {
+    it('should generate a key using the index if there’s no idForItem prop and no ID in data', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsNoID} renderItem={shallowRenderItem} />,
       );
@@ -241,7 +241,7 @@ describe('<ResourceList />', () => {
       ).toBe('0');
     });
 
-    it("should generate a key using the ID if there's no idForItem prop but there and ID key in the data", () => {
+    it('should generate a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
@@ -289,7 +289,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('header markup', () => {
-    it("renders header markup if the list isn't selectable but the showHeader prop is true", () => {
+    it('renders header markup if the list isn’t selectable but the showHeader prop is true', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList showHeader items={itemsWithID} renderItem={renderItem} />,
       );
@@ -399,7 +399,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('Sorting', () => {
-    it("it should not render a sort select if 'sortOptions' aren't provided", () => {
+    it("it should not render a sort select if 'sortOptions' aren’t provided", () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
