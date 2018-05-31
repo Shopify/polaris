@@ -1,13 +1,13 @@
 import * as React from 'react';
-
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navBarCollapsed} from '../../utilities/breakpoints';
-import {Button, Icon, EventListener, TrapFocus} from '../';
-
-import {FlashDescriptor, FrameContext, frameContextTypes} from '../types';
-
-import {Flash, Loading} from './components';
+import Button from '../Button';
+import Icon from '../Icon';
+import EventListener from '../EventListener';
+import TrapFocus from '../Focus/TrapFocus';
+import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
+import {ToastManager, Loading} from './components';
 import * as styles from './Frame.scss';
 
 export interface Props {
@@ -26,7 +26,7 @@ export interface State {
   skipFocused?: boolean;
   bannerHeight: number;
   loadingStack: number;
-  flashMessages: (FlashDescriptor & {id: string})[];
+  toastMessages: (ToastDescriptor & {id: string})[];
 }
 
 export const APP_FRAME_MAIN = 'AppFrameMain';
@@ -39,7 +39,7 @@ export default class Frame extends React.PureComponent<Props, State> {
     skipFocused: false,
     bannerHeight: 0,
     loadingStack: 0,
-    flashMessages: [],
+    toastMessages: [],
   };
 
   private navContainer: HTMLElement | null = null;
@@ -48,8 +48,8 @@ export default class Frame extends React.PureComponent<Props, State> {
   getChildContext(): FrameContext {
     return {
       frame: {
-        showFlash: this.showFlash,
-        hideFlash: this.hideFlash,
+        showToast: this.showToast,
+        hideToast: this.hideToast,
         startLoading: this.startLoading,
         resetLoading: this.resetLoading,
         stopLoading: this.stopLoading,
@@ -100,7 +100,7 @@ export default class Frame extends React.PureComponent<Props, State> {
       skipFocused,
       bannerHeight,
       loadingStack,
-      flashMessages,
+      toastMessages,
     } = this.state;
     const {
       children,
@@ -198,13 +198,6 @@ export default class Frame extends React.PureComponent<Props, State> {
       </div>
     ) : null;
 
-    const lastFlashMessage = flashMessages[flashMessages.length - 1];
-    const flashMessageMarkup = lastFlashMessage ? (
-      <div className={styles.FlashMessages}>
-        <Flash {...lastFlashMessage} />
-      </div>
-    ) : null;
-
     return (
       <div className={styles.Frame} data-polaris-layer>
         {skipMarkup}
@@ -226,7 +219,7 @@ export default class Frame extends React.PureComponent<Props, State> {
             {children}
           </div>
         </main>
-        {flashMessageMarkup}
+        <ToastManager toastMessages={toastMessages} />
         {bannerMarkup}
         {bannerSizeMeasureListener}
       </div>
@@ -234,21 +227,21 @@ export default class Frame extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private showFlash(flash: {id: string} & FlashDescriptor) {
-    this.setState(({flashMessages}: State) => {
-      const hasFlashById =
-        flashMessages.find(({id}) => id === flash.id) != null;
+  private showToast(toast: {id: string} & ToastDescriptor) {
+    this.setState(({toastMessages}: State) => {
+      const hasToastById =
+        toastMessages.find(({id}) => id === toast.id) != null;
       return {
-        flashMessages: hasFlashById ? flashMessages : [...flashMessages, flash],
+        toastMessages: hasToastById ? toastMessages : [...toastMessages, toast],
       };
     });
   }
 
   @autobind
-  private hideFlash({id}: {id: string}) {
-    this.setState(({flashMessages}: State) => {
+  private hideToast({id}: {id: string}) {
+    this.setState(({toastMessages}: State) => {
       return {
-        flashMessages: flashMessages.filter(({id: flashId}) => id !== flashId),
+        toastMessages: toastMessages.filter(({id: toastId}) => id !== toastId),
       };
     });
   }
