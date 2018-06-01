@@ -10,6 +10,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Allow cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))
 
+### Bug fixes
+
+* DatePicker: Fixed unexpected focus jumps when date picker props are updated ([#1399](https://github.com/Shopify/polaris-react/pull/1399))
+
 ## 2.1.1 - 2018-05-03
 
 ### Bug fixes
