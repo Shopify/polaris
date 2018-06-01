@@ -14,6 +14,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 
 - Added missing `'Shopify.API.setWindowLocation'` message handler to the EASDK ([#1539](https://github.com/Shopify/polaris-react/pull/1539))
+- Fixed a bug in EASDK action transforms that prevented external urls in embedded apps from opening ([#794](https://github.com/Shopify/polaris-react/pull/794)) (thanks [@dansundy](https://github.com/dansundy) for the [original issue](https://github.com/Shopify/polaris/issues/203))
 
 ## 2.1.2 - 2018-06-06
 

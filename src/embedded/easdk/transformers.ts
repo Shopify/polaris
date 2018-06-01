@@ -1,5 +1,5 @@
 import {EASDKTarget, ComplexAction} from '../../types';
-import {ActionGroup} from '../../components/Page/Header';
+import {ActionGroup} from '../../components/Page/types';
 
 export interface EASDKBreadcrumb {
   label: string;
@@ -97,6 +97,7 @@ export function transformActionGroup(shopOrigin: string) {
   };
 }
 
+// see https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax for more info on the URI scheme
 function getTargetFromURL(url: string, shopOrigin?: string): EASDKTarget {
   if (isRootRelative(url) || isOriginHost(url, shopOrigin)) {
     return 'shopify';

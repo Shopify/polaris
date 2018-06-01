@@ -80,6 +80,15 @@ describe('transformAction', () => {
     resetHostname();
   });
 
+  it('returns an action that targets the app window when the url is a hash marked fragment', () => {
+    const fragmentLinkAction = transformAction(shopOrigin)({
+      content: 'Bulk update orders',
+      url: '#some-fragment',
+    });
+
+    expect(fragmentLinkAction.target).toBe('app');
+  });
+
   it('returns an action that targets the app window when the url is a relative path', () => {
     const relativeLinkAction = transformAction(shopOrigin)({
       content: 'Bulk update orders',
@@ -87,6 +96,15 @@ describe('transformAction', () => {
     });
 
     expect(relativeLinkAction.target).toBe('app');
+  });
+
+  it('returns an action that targets the app window when the url is a scheme relative path', () => {
+    const schemeRelativeLinkAction = transformAction(shopOrigin)({
+      content: 'Bulk update orders',
+      url: '//web-foundation-apps.myshopify.io/bulk-edit',
+    });
+
+    expect(schemeRelativeLinkAction.target).toBe('app');
   });
 
   it('returns an action that opens a new window or tab when the url is not targeting the shopify or the app window', () => {
