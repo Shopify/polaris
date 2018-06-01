@@ -2,10 +2,10 @@
 
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
-    resource-list(header-padding-small) 0;
+    resource-list(header-padding-small);
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    padding: spacing(base) spacing(base) 0;
+    padding: spacing();
   }
 
   + .ResourceList {
@@ -21,6 +21,10 @@
   + .ResourceList {
     border-top: border();
   }
+}
+
+.FiltersWrapper + .HeaderOuterWrapper {
+  margin-top: -1 * spacing();
 }
 
 .HeaderWrapper {

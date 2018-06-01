@@ -15,9 +15,6 @@ $spacing: tight;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 
-  // account for scrollbar
-  padding-bottom: spacing($spacing);
-
   &::after {
     content: '';
     flex: 0 0 resource-list(header-padding-small);
@@ -33,6 +30,11 @@ $spacing: tight;
       content: none;
       flex: none;
     }
+  }
+
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    // account for scrollbar
+    padding-bottom: spacing($spacing);
   }
 }
 
