@@ -10,6 +10,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 * Allow cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))
 * Add an intermediate prop typing for `Link` to allow redefinition of prop definitions ([#1439](https://github.com/Shopify/polaris-react/pull/1439))
+* Fix the spacing around the title and description delimiter + Wrap the long description ([#1503](https://github.com/Shopify/polaris-react/pull/1503))
 
 ### Bug fixes
 
