@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 
 * Allow cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))
+* Add an intermediate prop typing for `Link` to allow redefinition of prop definitions ([#1439](https://github.com/Shopify/polaris-react/pull/1439))
 
 ### Bug fixes
 
