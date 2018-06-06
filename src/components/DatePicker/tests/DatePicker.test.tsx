@@ -118,7 +118,7 @@ describe('<DatePicker />', () => {
         .prop('focused'),
     ).toBe(true);
 
-    component.setProps({selected: new Date(2016, 11, 8)});
+    component.setProps({selected: new Date(2016, 11, 8)}).update();
 
     expect(
       component
