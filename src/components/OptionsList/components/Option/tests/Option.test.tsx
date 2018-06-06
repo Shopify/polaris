@@ -7,9 +7,9 @@ import {Checkbox} from '../..';
 
 describe('<Option />', () => {
   const defaultProps: Props = {
-    id: 'r2d2',
-    label: 'R two D two',
-    value: 'R2D2',
+    id: 'itemId',
+    label: 'Option Item',
+    value: 'option_item',
     section: 0,
     index: 0,
     onClick: noop,

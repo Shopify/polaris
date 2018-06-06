@@ -15,17 +15,22 @@ keywords:
 
 # Options List
 
-An options list displays a list of similar selectable items, like tags or
-product collections.
+The options list component lets you create a list of grouped items that
+merchants can pick from. This can include single selection or multiple selection
+of options. Options list usually appears in a popover, and sometimes in a modal
+or a sidebar. Options lists are styled differently than
+[choice lists](/components/forms/choice-list) and should not be used within a form, but as a standalone menu.
 
 ---
 
 ## Best practices
 
-Options lists should:
+The options list component should:
 
-* Contain options of the same type
-* Place an options list inside a popover to preserve available screen space
+- Be placed on its own inside a container. Usually the container behaves like a
+  menu, as it does with [popover](/components/overlays/popover). Don’t
+  place other components within the same container.
+- Not be used when a [select component](/components/forms/select) will do.
 
 ---
 
@@ -33,7 +38,7 @@ Options lists should:
 
 ### Options lists
 
-Each item in an options list should be clear and predictable.
+Each item in an options list should be clear and descriptive.
 
 <!-- usagelist -->
 
@@ -53,8 +58,7 @@ Source
 
 ### Simple options list
 
-Use when you have a group of similar selectable items and only one should be
-selectable at once.
+Use for a group of similar selectable items when only one should be selectable at once.
 
 ```jsx
 class OptionsListExample extends React.Component {
@@ -85,8 +89,7 @@ class OptionsListExample extends React.Component {
 
 ### Multiple options list
 
-Use when you have a group of similar selectable items and more than one item can
-be selected at once.
+Use when you have a group of similar selectable items and more than one item can be selected at once.
 
 ```jsx
 class OptionsListExample extends React.Component {
@@ -158,7 +161,7 @@ class OptionsListExample extends React.Component {
 
 ### Options list in a popover
 
-Use when a set of selections won't fit in the available screen space.
+Use when a set of selections won’t fit in the available screen space.
 
 ```jsx
 class OptionsListExample extends React.Component {
@@ -208,5 +211,9 @@ class OptionsListExample extends React.Component {
 
 ## Related components
 
-* To display a list of actions,
+- To render a list of actions,
   [use the action list component](/components/actions/action-list)
+- To create a list of grouped radio buttons or checkboxes,
+  [use the choice list component](/components/forms/choice-list)
+- For a basic version of option list as a single choice menu,
+  [use the select component](/components/forms/select)

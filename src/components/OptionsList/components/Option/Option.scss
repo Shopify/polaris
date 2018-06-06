@@ -10,14 +10,16 @@ $control-size: rem(16px);
   cursor: pointer;
 
   &:hover {
-    background: color('indigo');
-    color: color('white');
+    @include state(hover);
   }
 }
 
 .SingleSelectOption {
   @include unstyled-button;
-  color: inherit;
+
+  &:not(.disabled) {
+    color: inherit;
+  }
 }
 
 .Label,
@@ -35,4 +37,28 @@ $control-size: rem(16px);
   width: $control-size;
   height: $control-size;
   margin-right: spacing(tight);
+}
+
+.focused {
+  @include state(focused);
+
+  &:hover {
+    @include state(focused, hover);
+  }
+}
+
+.disabled {
+  @include state(disabled);
+}
+
+.select {
+  @include state(selected);
+
+  &.focused {
+    @include state(selected, focused);
+
+    &:hover {
+      @include state(selected, focused, hover);
+    }
+  }
 }

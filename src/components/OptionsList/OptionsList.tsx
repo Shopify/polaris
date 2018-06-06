@@ -16,14 +16,14 @@ export interface OptionDescriptor {
   value: string;
   /** Display label for the option */
   label: string;
-  /** Should the option be disabled */
+  /** Whether the option is disabled or not */
   disabled?: boolean;
 }
 
 export interface SectionDescriptor {
   /** Collection of options within the section */
   options: OptionDescriptor[];
-  /** Title of the section */
+  /** Section title */
   title?: string;
 }
 
@@ -32,11 +32,11 @@ const getUniqueId = createUniqueIDFactory('OptionsList');
 export interface Props {
   /** A unique identifier for the options list */
   id?: string;
-  /** Title of the list */
+  /** List title */
   title?: string;
   /** Collection of options to be listed */
   options?: OptionDescriptor[];
-  /** Collection of sectioned options */
+  /** Sections containing a header and related options */
   sections?: SectionDescriptor[];
   /** The selected options */
   selected: string[];
@@ -140,8 +140,10 @@ export class OptionsList extends React.Component<CombinedProps, State> {
           );
         })
       : null;
+
     return <ul className={styles.OptionsList}>{optionsMarkup}</ul>;
   }
+
   @autobind
   private handleClick(sectionIndex: number, optionIndex: number) {
     const {selected, onChange, allowMultiple} = this.props;
@@ -169,7 +171,7 @@ function createNormalizedOptions(
   sections?: SectionDescriptor[],
   title?: string,
 ): SectionDescriptor[] {
-  if (options == null || options === []) {
+  if (options == null) {
     const section = {options: [], title};
     return sections == null ? [] : [section, ...sections];
   }
@@ -189,6 +191,7 @@ function createNormalizedOptions(
     ...sections,
   ];
 }
+
 function testSectionsPropEquality(
   previousSection: SectionDescriptor,
   currentSection: SectionDescriptor,

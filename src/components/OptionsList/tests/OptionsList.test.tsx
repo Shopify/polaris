@@ -14,47 +14,47 @@ import {Option} from '../components';
 
 describe('<OptionsList />', () => {
   const defaultProps: Props = {
-    id: 'some-memes',
-    title: 'Recommended memes',
+    id: 'recommended-products',
+    title: 'Recommended products',
     options: [
       {
-        value: 'doge',
-        label: 'Doge',
+        value: '5',
+        label: 'Item one',
       },
       {
-        value: 'forever-alone',
-        label: 'Forever alone',
+        value: '6',
+        label: 'Item two',
         disabled: true,
       },
       {
-        value: 'me-gusta',
-        label: 'Me gusta',
+        value: '7',
+        label: 'Item three',
       },
     ],
     sections: [
       {
-        title: 'Other memes',
+        title: 'Other products',
         options: [
           {
-            value: 'y-u-no-guy',
-            label: '"Y U NO" guy',
+            value: '8',
+            label: 'Item four',
           },
           {
-            value: 'neil-degrasse-tyson',
-            label: 'Neil deGrasse Tyson reaction',
+            value: '9',
+            label: 'Item five',
           },
         ],
       },
       {
         options: [
           {
-            value: 'rage-face',
-            label: 'Rage face',
+            value: '10',
+            label: 'Item six',
             disabled: true,
           },
           {
-            value: 'not-bad-obama',
-            label: '"Not bad" Obama face',
+            value: '11',
+            label: 'Item seven',
           },
         ],
       },
@@ -100,12 +100,12 @@ describe('<OptionsList />', () => {
 
     const newOptions: OptionDescriptor[] = [
       {
-        value: 'doge',
-        label: 'Doge',
+        value: '5',
+        label: 'Item one',
       },
       {
-        value: 'forever-alone',
-        label: 'Forever alone',
+        value: '6',
+        label: 'Item two',
         disabled: true,
       },
     ];
@@ -124,15 +124,15 @@ describe('<OptionsList />', () => {
 
     const newSections: SectionDescriptor[] = [
       {
-        title: 'Other memes',
+        title: 'Other products',
         options: [
           {
-            value: 'y-u-no-guy',
-            label: '"Y U NO" guy',
+            value: '8',
+            label: 'Item four',
           },
           {
-            value: 'neil-degrasse-tyson',
-            label: 'Neil deGrasse Tyson reaction',
+            value: '9',
+            label: 'Item five',
           },
         ],
       },
@@ -151,27 +151,27 @@ describe('<OptionsList />', () => {
 
     const newOptions: OptionDescriptor[] = [
       {
-        value: 'doge',
-        label: 'Doge',
+        value: '5',
+        label: 'Item one',
       },
       {
-        value: 'forever-alone',
-        label: 'Forever alone',
+        value: '6',
+        label: 'Item two',
         disabled: true,
       },
     ];
 
     const newSections: SectionDescriptor[] = [
       {
-        title: 'Other memes',
+        title: 'Other products',
         options: [
           {
-            value: 'y-u-no-guy',
-            label: '"Y U NO" guy',
+            value: '8',
+            label: 'Item four',
           },
           {
-            value: 'neil-degrasse-tyson',
-            label: 'Neil deGrasse Tyson reaction',
+            value: '9',
+            label: 'Item five',
           },
         ],
       },
@@ -214,15 +214,15 @@ describe('<OptionsList />', () => {
 
     const newSections: SectionDescriptor[] = [
       {
-        title: 'Other memes',
+        title: 'Other products',
         options: [
           {
-            value: 'y-u-no-guy',
-            label: '"Y U NO" guy',
+            value: '8',
+            label: 'Item four',
           },
           {
-            value: 'neil-degrasse-tyson',
-            label: 'Neil deGrasse Tyson reaction',
+            value: '9',
+            label: 'Item five',
           },
         ],
       },
@@ -241,12 +241,12 @@ describe('<OptionsList />', () => {
 
     const newOptions: OptionDescriptor[] = [
       {
-        value: 'doge',
-        label: 'Doge',
+        value: '5',
+        label: 'Item one',
       },
       {
-        value: 'forever-alone',
-        label: 'Forever alone',
+        value: '6',
+        label: 'Item two',
         disabled: true,
       },
     ];
@@ -309,12 +309,12 @@ describe('<OptionsList />', () => {
 
       const newOptions: OptionDescriptor[] = [
         {
-          value: 'doge',
-          label: 'Doge',
+          value: '5',
+          label: 'Item one',
         },
         {
-          value: 'forever-alone',
-          label: 'Forever alone',
+          value: '6',
+          label: 'Item two',
           disabled: true,
         },
       ];
@@ -333,15 +333,15 @@ describe('<OptionsList />', () => {
 
       const newSections: SectionDescriptor[] = [
         {
-          title: 'Other memes',
+          title: 'Other products',
           options: [
             {
-              value: 'y-u-no-guy',
-              label: '"Y U NO" guy',
+              value: '8',
+              label: 'Item four',
             },
             {
-              value: 'neil-degrasse-tyson',
-              label: 'Neil deGrasse Tyson reaction',
+              value: '9',
+              label: 'Item five',
             },
           ],
         },
@@ -360,27 +360,27 @@ describe('<OptionsList />', () => {
 
       const newOptions: OptionDescriptor[] = [
         {
-          value: 'doge',
-          label: 'Doge',
+          value: '5',
+          label: 'Item one',
         },
         {
-          value: 'forever-alone',
-          label: 'Forever alone',
+          value: '6',
+          label: 'Item two',
           disabled: true,
         },
       ];
 
       const newSections: SectionDescriptor[] = [
         {
-          title: 'Other memes',
+          title: 'Other products',
           options: [
             {
-              value: 'y-u-no-guy',
-              label: '"Y U NO" guy',
+              value: '8',
+              label: 'Item four',
             },
             {
-              value: 'neil-degrasse-tyson',
-              label: 'Neil deGrasse Tyson reaction',
+              value: '9',
+              label: 'Item five',
             },
           ],
         },
@@ -425,15 +425,15 @@ describe('<OptionsList />', () => {
 
       const newSections: SectionDescriptor[] = [
         {
-          title: 'Other memes',
+          title: 'Other products',
           options: [
             {
-              value: 'y-u-no-guy',
-              label: '"Y U NO" guy',
+              value: '8',
+              label: 'Item four',
             },
             {
-              value: 'neil-degrasse-tyson',
-              label: 'Neil deGrasse Tyson reaction',
+              value: '9',
+              label: 'Item five',
             },
           ],
         },
@@ -452,12 +452,12 @@ describe('<OptionsList />', () => {
 
       const newOptions: OptionDescriptor[] = [
         {
-          value: 'doge',
-          label: 'Doge',
+          value: '5',
+          label: 'Item one',
         },
         {
-          value: 'forever-alone',
-          label: 'Forever alone',
+          value: '6',
+          label: 'Item two',
           disabled: true,
         },
       ];
@@ -486,7 +486,7 @@ describe('<OptionsList />', () => {
       it('selects an item when multiple items are selected', () => {
         const spy = jest.fn();
         const {options, sections} = defaultProps;
-        const selected = ['not-bad-obama', 'y-u-no-guy'];
+        const selected = ['11', '8'];
 
         const inputWrappers = mountWithAppProvider<Props>(
           <OptionsList
@@ -509,7 +509,7 @@ describe('<OptionsList />', () => {
       it('deselects an item when it is already selected', () => {
         const spy = jest.fn();
         const {options, sections} = defaultProps;
-        const selected = ['not-bad-obama', 'y-u-no-guy', 'doge'];
+        const selected = ['10', '8', '5'];
 
         const inputWrappers = mountWithAppProvider<Props>(
           <OptionsList

@@ -8,9 +8,9 @@ describe('<Checkbox />', () => {
   const defaultProps: Props = {
     checked: true,
     disabled: false,
-    id: 'some id',
-    name: 'R2D2',
-    value: 'r2d2',
+    id: 'checkboxId',
+    name: 'Checkbox',
+    value: 'checkbox',
     onChange: noop,
   };
 
