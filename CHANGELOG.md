@@ -4,19 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 2.1.2 - 2018-06-06
 
 ### Enhancements
 
-* Allow cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))
-* Add an intermediate prop typing for `Link` to allow redefinition of prop definitions ([#1439](https://github.com/Shopify/polaris-react/pull/1439))
-* Fix the spacing around the title and description delimiter + Wrap the long description ([#1503](https://github.com/Shopify/polaris-react/pull/1503))
+* Added support for cards to accept a block for a title ([#1412](https://github.com/Shopify/polaris-react/pull/1412))
+* Added an intermediate prop typing for `Link` to allow redefinition of prop definitions ([#1439](https://github.com/Shopify/polaris-react/pull/1439))
 
 ### Bug fixes
 
-* DatePicker: Fixed unexpected focus jumps when date picker props are updated ([#1399](https://github.com/Shopify/polaris-react/pull/1399))
+* Fixed an issue where resource list filters lost padding ([#1438](https://github.com/Shopify/polaris-react/pull/1438)) (thanks to [@BarryCarlyon](https://github.com/BarryCarlyon) for the [original issue](https://github.com/Shopify/polaris/issues/330))
+* Fixed unexpected focus jumps when date picker props are updated ([#1399](https://github.com/Shopify/polaris-react/pull/1399))
+* Fixed the spacing and text wrapping of exception list title and description ([#1503](https://github.com/Shopify/polaris-react/pull/1503))
 
-## 2.1.1 - 2018-05-03
+## 2.1.1 - 2018-05-30
 
 ### Bug fixes
 
