@@ -141,7 +141,7 @@ Error messages should:
 
 * Clearly explain what went wrong and how to fix it
 * Be short and concise, no more than a single sentence
-* Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed them for the error
+* Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
 <!-- usagelist -->
 
