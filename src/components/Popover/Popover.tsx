@@ -38,6 +38,8 @@ export interface Props {
   fullWidth?: boolean;
   /** Allow popover to stretch to fit content vertically */
   fullHeight?: boolean;
+  /** Remains in a fixed position */
+  fixed?: boolean;
   /** Callback when popover is closed */
   onClose(source: CloseSource): void;
 }
@@ -58,7 +60,7 @@ export default class Popover extends React.PureComponent<Props, State> {
     activatorNode: null,
   };
 
-  private activatorContainer: HTMLElement | null;
+  private activatorContainer: HTMLElement | null = null;
   private id = getUniqueID();
 
   componentDidMount() {
@@ -84,6 +86,7 @@ export default class Popover extends React.PureComponent<Props, State> {
       activator,
       activatorWrapper,
       active,
+      fixed,
       ...rest
     } = this.props;
 
@@ -97,6 +100,7 @@ export default class Popover extends React.PureComponent<Props, State> {
           activator={activatorNode}
           onClose={this.handleClose}
           active={active}
+          fixed={fixed}
           {...rest}
         >
           {children}

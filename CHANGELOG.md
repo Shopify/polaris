@@ -12,6 +12,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Added a fixed prop to popover allowing for a fixed position ([#1524](https://github.com/Shopify/polaris-react/pull/1524))
 - Added badge prop to the item descriptor type and action group ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
 - Added `text-breakword` mixin for easier word breaking when dealing with long unspaced strings ([#1543](https://github.com/Shopify/polaris-react/pull/1543))
 

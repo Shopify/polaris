@@ -3,6 +3,10 @@
   z-index: z-index(overlay);
 }
 
+.fixed {
+  position: fixed;
+}
+
 .calculating {
   visibility: hidden;
 }
