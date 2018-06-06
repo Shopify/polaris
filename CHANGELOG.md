@@ -6,7 +6,20 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
-## 2.1.1 - 2018-05-03
+## 2.1.2 - 2018-06-06
+
+### Enhancements
+
+* Added support for cards to accept a block for a title
+* Added an intermediate prop typing for `Link` to allow redefinition of prop definitions
+
+### Bug fixes
+
+* Fixed an issue where resource list filters lost padding (thanks to [@BarryCarlyon](https://github.com/BarryCarlyon) for the [original issue](https://github.com/Shopify/polaris/issues/330))
+* Fixed unexpected focus jumps when date picker props are updated
+* Fixed the spacing and text wrapping of exception list title and description
+
+## 2.1.1 - 2018-05-30
 
 ### Bug fixes
 
@@ -45,6 +58,8 @@ Use Exception lists to draw the merchant’s attention to important information 
 * Fixed rendering of Popover when activator rerenders (thanks to [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/324))
 * Fixed z-index calculation for PositionOverlay and Dialog
 * Fixed an issue where selecting a date in DatePicker would submit its enclosing form
+* Fixed ResourceList reverse tabbing focus interaction on Action Buttons
+* Fixed padding in the case where a Resource list had no filters
 
 ## 2.0.0 - 2018-05-07
 

@@ -27,8 +27,8 @@ export type CombinedProps = Props & WithAppProviderProps;
 export class Day extends React.PureComponent<CombinedProps, never> {
   private dayNode: HTMLElement | null = null;
 
-  componentDidUpdate() {
-    if (this.props.focused && this.dayNode) {
+  componentDidUpdate(prevProps: CombinedProps) {
+    if (!prevProps.focused && this.props.focused && this.dayNode) {
       this.dayNode.focus();
     }
   }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import DatePicker from '../DatePicker';
 import MonthComponent from '../Month';
@@ -54,5 +55,44 @@ describe('<DatePicker />', () => {
 
       expect(datePicker.childAt(0).prop('id')).toBe(id);
     });
+  });
+
+  it('unfocuses currently focused day when selected prop is updated', () => {
+    const selected = {
+      start: new Date(2016, 11, 8),
+      end: new Date(2016, 11, 18),
+    };
+    const month = 0;
+    const year = 2017;
+
+    const component = mountWithAppProvider(
+      <DatePicker
+        selected={selected}
+        month={month}
+        year={year}
+        onChange={noop}
+      />,
+    );
+
+    component
+      .find(Day)
+      .first()
+      .simulate('click');
+
+    expect(
+      component
+        .find(Day)
+        .first()
+        .prop('focused'),
+    ).toBe(true);
+
+    component.setProps({selected: new Date(2016, 11, 8)});
+
+    expect(
+      component
+        .find(Day)
+        .first()
+        .prop('focused'),
+    ).toBe(false);
   });
 });

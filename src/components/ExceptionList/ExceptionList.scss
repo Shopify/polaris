@@ -5,7 +5,8 @@
 }
 
 .Item {
-  display: flex;
+  position: relative;
+  padding-left: rem(24px);
   color: color('ink', 'lighter');
 
   + .Item {
@@ -14,6 +15,9 @@
 }
 
 .Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +53,8 @@
 
 .Title {
   + .Description::before {
-    content: ' – ';
+    content: '–';
+    margin: 0 spacing(extra-tight);
   }
 
   .statusWarning &,

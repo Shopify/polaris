@@ -4,7 +4,7 @@ import UnstyledLink from '../UnstyledLink';
 
 import * as styles from './Link.scss';
 
-export interface Props {
+export interface BaseProps {
   /** ID for the link */
   id?: string;
   /** The url to link to */
@@ -16,6 +16,8 @@ export interface Props {
   /** Callback when a link is clicked */
   onClick?(): void;
 }
+
+export interface Props extends BaseProps {}
 
 export default function Link({url, children, onClick, external, id}: Props) {
   return url ? (
