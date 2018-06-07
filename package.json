@@ -163,7 +163,7 @@
     "stylelint-config-shopify": "^5.0.1",
     "svgo": "^0.7.2",
     "tslint": "^5.8.0",
-    "typescript": "^2.8.3",
+    "typescript": "^2.9.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.7.1",
     "webpack-bundle-analyzer": "^2.11.1",

@@ -18,12 +18,12 @@ import {Props as AppProviderProps, Context} from '../AppProvider';
 import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
 
-import {name, version} from '../../../../package.json';
+import packageJSON from '../../../../package.json';
 
 const METADATA = {
   interface: {
-    name,
-    version,
+    name: packageJSON.name,
+    version: packageJSON.version,
   },
 };
 
