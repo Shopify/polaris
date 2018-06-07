@@ -13,3 +13,8 @@ trim_trailing_whitespace = true
 # See https://daringfireball.net/projects/markdown/syntax#p
 [*.md]
 trim_trailing_whitespace = false
+
+# Disable trailing whitespace removal in diff files,
+# where whitespace is meaningful
+[*.diff]
+trim_trailing_whitespace = false

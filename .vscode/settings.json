@@ -26,8 +26,6 @@
     "styles/": true,
     "types/": true
   },
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
   "javascript.validate.enable": false,
   "jest.autoEnable": false,
   "prettier.eslintIntegration": true,
