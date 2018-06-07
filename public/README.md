@@ -108,13 +108,11 @@ We ensure that our components are made for everyone. They meet accessibility sta
 
 We make our components flexible enough to meet diverse needs. They present the information you pass in and give you smart callbacks when something has changed, but they don’t enforce any structure beyond that. No matter what type of experience you’re creating, you can use components as the building blocks of your product or feature.
 
+## Contributing
+
+We’re working on making this project fully open source. We aren’t accepting pull requests, but issue reports and feature requests are welcome. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md) for more information.
+
 ## Licenses
 
 - Source code is licensed under [MIT](https://opensource.org/licenses/MIT)
 - All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
-
-## Feedback
-
-[Create an issue or feature request](https://github.com/Shopify/polaris/issues/new).
-
-At this point in time we’re not accepting pull requests. This is something we’ll support in the future. Stay tuned.
