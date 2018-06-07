@@ -13,15 +13,21 @@ The changelog is prepared manually immediately before a release. Each changelog 
 The possible groups in which to categorize changes are:
 
 * Breaking changes
-* Markup changes
+* New components
 * Enhancements (new variations, accessibility improvements, etc.)
 * Design updates (non-breaking design changes implemented in code)
 * Bug fixes
 * Documentation
 * Dependency upgrades
-* Style guide
-* Sketch UIKit (design changes without matching implementations)
-* Chores (non-documentation tasks on the repo itself)
+
+## Out of scope for CHANGELOG.md
+
+Generally, changes related to these topics can be omitted:
+
+* Style guide (update the [“What’s new” page](https://github.com/Shopify/polaris-styleguide/tree/master/pages/whats-new) instead)
+* Sketch UIKit (unless noteworthy)
+* Dev dependencies upgrades
+* Chores (infrastructure, release process…)
 
 ## Unreleased changes
 
