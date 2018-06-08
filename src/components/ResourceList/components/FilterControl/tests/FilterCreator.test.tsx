@@ -10,7 +10,7 @@ import {
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../FilterValueSelector';
 import {FilterType} from '../types';
-import {Button, Select, Popover} from '../../../../';
+import {Button, Select, Popover} from '../../../..';
 
 describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {

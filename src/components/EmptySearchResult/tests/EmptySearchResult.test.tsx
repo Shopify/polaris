@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 
-import EmptySearchResult from '../';
+import EmptySearchResult from '..';
 import emptySearch from '../illustrations/empty-search.svg';
-import {DisplayText, TextStyle} from '../../';
+import {DisplayText, TextStyle} from '../..';
 
 describe('<EmptySearchResult />', () => {
   it("displays the title with style 'Display Small'", () => {

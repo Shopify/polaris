@@ -44,7 +44,9 @@ function Cell({
   sortable,
   sortDirection,
   defaultSortDirection,
-  polaris: {intl: {translate}},
+  polaris: {
+    intl: {translate},
+  },
   onSort,
 }: CombinedProps) {
   const numeric = contentType === 'numeric';
