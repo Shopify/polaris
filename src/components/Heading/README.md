@@ -25,9 +25,9 @@ Headings are used as the titles of each major section of a page in the interface
 
 Headings should:
 
-* Clearly describe the section of interface they refer to
-* Highlight the most important concept or piece of information a merchant needs to know
-* Sit at the top of the section of interface they’re referring to
+- Clearly describe the section of interface they refer to
+- Highlight the most important concept or piece of information a merchant needs to know
+- Sit at the top of the section of interface they’re referring to
 
 ---
 
@@ -37,13 +37,13 @@ Headings should:
 
 Headings should be:
 
-* Informative and descriptive:
-  * They should label the type of content grouped in the interface below
-* Concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
-  * Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
-  * Write in sentence case (first word capitalized, the rest is lowercase)
+- Informative and descriptive:
+  - They should label the type of content grouped in the interface below
+- Concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
+  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
+  - Write in sentence case (first word capitalized, the rest is lowercase)
 
 Microcopy headings should be easy for merchants to scan and understand instantly.
 
@@ -51,11 +51,11 @@ Microcopy headings should be easy for merchants to scan and understand instantly
 
 #### Do
 
-* Custom reports
+- Custom reports
 
 #### Don’t
 
-* These are your custom reports
+- These are your custom reports
 
 <!-- end -->
 
@@ -65,11 +65,11 @@ Conversational headings for areas like empty states and home cards are the only 
 
 #### Do
 
-* Secure your account with two-step authentication
+- Secure your account with two-step authentication
 
 #### Don’t
 
-* Two-step authentication
+- Two-step authentication
 
 <!-- end -->
 
@@ -87,4 +87,4 @@ Use for the title of each top-level page section.
 
 ## Related components
 
-* To break up a section with a heading into sub-sections, [use the subheading component](/components/subheading)
+- To break up a section with a heading into sub-sections, [use the subheading component](/components/subheading)

@@ -77,4 +77,4 @@ Use the loose spacing option to separate concepts that are independent of each o
 
 ## Related components
 
-* For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](/components/structure/stack).
+- For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](/components/structure/stack).

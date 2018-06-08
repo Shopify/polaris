@@ -24,7 +24,7 @@ yarn add @shopify/polaris
 
 ### Usage
 
-1. Include the CSS in your HTML:
+1.  Include the CSS in your HTML:
 
 ```html
  <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{VERSION}}/polaris.min.css" />
@@ -36,13 +36,13 @@ yarn add @shopify/polaris
 > import '@shopify/polaris/styles.css';
 > ```
 
-2. Include any of the provided components in your project:
+2.  Include any of the provided components in your project:
 
 ```javascript
 import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ```
 
-3. Tell React to render the element in the DOM:
+3.  Tell React to render the element in the DOM:
 
 ```javascript
 ReactDOM.render(
@@ -67,13 +67,13 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 ### Usage
 
-1. Include the CSS in your HTML:
+1.  Include the CSS in your HTML:
 
 ```html
 <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{VERSION}}/polaris.min.css" />
 ```
 
-2. Include the markup and associated classes in your HTML document:
+2.  Include the markup and associated classes in your HTML document:
 
 ```html
 <button class="Polaris-Button">Example button</button>
@@ -83,10 +83,10 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 We have created example applications to document some of the ways you could include Polaris in one of your own applications. Each of these examples includes further documentation on how to install dependencies and run the app:
 
-* [create-react-app example](https://github.com/Shopify/polaris/tree/master/examples/create-react-app)
-* [Webpack example](https://github.com/Shopify/polaris/tree/master/examples/webpack)
-* [Browserify example](https://github.com/Shopify/polaris/tree/master/examples/browserify)
-* [CSS-only example](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles)
+- [create-react-app example](https://github.com/Shopify/polaris/tree/master/examples/create-react-app)
+- [Webpack example](https://github.com/Shopify/polaris/tree/master/examples/webpack)
+- [Browserify example](https://github.com/Shopify/polaris/tree/master/examples/browserify)
+- [CSS-only example](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles)
 
 We’ve also created a simple, hot-reloading playground for these components. You can edit the `playground/Playground.tsx` file to import the components you want to play with, and run `yarn dev` in order to start the development server.
 
@@ -96,9 +96,9 @@ If you’re new to React, we recommend you start with the [official React Gettin
 
 Additional resources:
 
-* Online training courses at [reacttraining.com](http://reacttraining.com), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](http://reactforbeginners.com).
-* The community resources in [Awesome React](https://github.com/enaqx/awesome-react).
-* As questions and find answers in the various [React support communities](https://facebook.github.io/react/community/support.html).
+- Online training courses at [reacttraining.com](http://reacttraining.com), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](http://reactforbeginners.com).
+- The community resources in [Awesome React](https://github.com/enaqx/awesome-react).
+- As questions and find answers in the various [React support communities](https://facebook.github.io/react/community/support.html).
 
 ## Methodology
 
@@ -110,8 +110,8 @@ We make our components flexible enough to meet diverse needs. They present the i
 
 ## Licenses
 
-* Source code is licensed under [MIT](https://opensource.org/licenses/MIT)
-* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
+- Source code is licensed under [MIT](https://opensource.org/licenses/MIT)
+- All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
 
 ## Feedback
 

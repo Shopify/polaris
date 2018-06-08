@@ -25,12 +25,12 @@ glossary.
 
 Description lists should:
 
-* Contain terms and associated explanations, or descriptions for each term.
-* Provide information that isn’t action-oriented.
-* Not be an excuse for using unnecessarily complicated or jargon-filled
+- Contain terms and associated explanations, or descriptions for each term.
+- Provide information that isn’t action-oriented.
+- Not be an excuse for using unnecessarily complicated or jargon-filled
   language. Generally, if merchants need a description list to understand the
   language in Shopify, we should look for opportunities to simplify the language.
-* Not be used to upsell merchants on a feature or service.
+- Not be used to upsell merchants on a feature or service.
 
 ---
 
@@ -40,17 +40,17 @@ Description lists should:
 
 Terms should be:
 
-* Written in sentence case (the first word capitalized, the rest lowercase)
+- Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
 
 #### Do
 
-* Discount code
+- Discount code
 
 #### Don’t
 
-* Discount Code
+- Discount Code
 
 <!-- end -->
 
@@ -58,38 +58,38 @@ Terms should be:
 
 Terms descriptions should be:
 
-* Directly related to the term they’re describing
+- Directly related to the term they’re describing
 
 <!-- usagelist -->
 
 #### Do
 
-* Discount code: A series of numbers and/or letters that an online shopper may enter at checkout
+- Discount code: A series of numbers and/or letters that an online shopper may enter at checkout
   to get a discount or special offer.
 
 #### Don’t
 
-* Discount code: Having a sale on your store is a great way to sell products quickly.
+- Discount code: Having a sale on your store is a great way to sell products quickly.
 
 <!-- end -->
 
-* Written to describe the merchant benefit or utility
-* No more than one or two short sentences in length
-* Written in sentence case with all appropriate punctuation, including ending
+- Written to describe the merchant benefit or utility
+- No more than one or two short sentences in length
+- Written in sentence case with all appropriate punctuation, including ending
   each sentence with a period
-* Conversational by using articles (the, a, an)
-* Written using plain language
+- Conversational by using articles (the, a, an)
+- Written using plain language
 
 <!-- usagelist -->
 
 #### Do
 
-* Abandoned checkout: The details of a checkout that was started but not completed, including the
+- Abandoned checkout: The details of a checkout that was started but not completed, including the
   products added and the customer’s details.
 
 #### Don’t
 
-* Abandoned checkout: Details of products added to checkout but not purchased
+- Abandoned checkout: Details of products added to checkout but not purchased
 
 <!-- end -->
 
@@ -125,4 +125,4 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 ## Related components
 
-* To create a list of actions or navigation, [use the action list component](/components/actions/action-list).
+- To create a list of actions or navigation, [use the action list component](/components/actions/action-list).

@@ -24,15 +24,15 @@ make a single selection.
 
 Radio buttons should:
 
-* Always be used with an associated label component.
-* Be part of a list of radio buttons that:
-  * Include at least two or more choices.
-  * Are used to have merchants select only one option.
-  * Include mutually exclusive options—this means that each option must be
+- Always be used with an associated label component.
+- Be part of a list of radio buttons that:
+  - Include at least two or more choices.
+  - Are used to have merchants select only one option.
+  - Include mutually exclusive options—this means that each option must be
     independent from every other option in the list. For example: Red, blue, and
     yellow are mutually exclusive. Red, blue, yellow, red/blue are not mutually
     exclusive.
-  * List options in a rational order that makes logical sense.
+  - List options in a rational order that makes logical sense.
 
 ---
 
@@ -42,32 +42,32 @@ Radio buttons should:
 
 Radio button labels should:
 
-* Be introduced with a colon or a heading
-* Start with a capital letter
+- Be introduced with a colon or a heading
+- Start with a capital letter
 
 <!-- usagelist -->
 
 #### Do
 
-* Option 1
+- Option 1
 
 #### Don’t
 
-* option 1
+- option 1
 
 <!-- end -->
 
-* Not end in punctuation if it’s a single sentence, word, or a fragment
+- Not end in punctuation if it’s a single sentence, word, or a fragment
 
 <!-- usagelist -->
 
 #### Do
 
-* Red
+- Red
 
 #### Don’t
 
-* Red;
+- Red;
 
 <!-- end -->
 
@@ -117,7 +117,7 @@ class RadioButtonExample extends React.Component {
 
 ## Related components
 
-* To make simple lists of radio buttons easier to build, [use the choice list component](/components/forms/choice-list)
-* For long lists of options, [consider the select component](/components/forms/select) to avoid overwhelming merchants
-* To present merchants with a list of checkboxes, [use the choice list component](/components/forms/choice-list) with the “allow multiple” option
-* To display non-interactive list of related content, [use the content list component](/components/lists-and-tables/list)
+- To make simple lists of radio buttons easier to build, [use the choice list component](/components/forms/choice-list)
+- For long lists of options, [consider the select component](/components/forms/select) to avoid overwhelming merchants
+- To present merchants with a list of checkboxes, [use the choice list component](/components/forms/choice-list) with the “allow multiple” option
+- To display non-interactive list of related content, [use the content list component](/components/lists-and-tables/list)

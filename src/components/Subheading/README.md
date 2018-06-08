@@ -26,9 +26,9 @@ sections. Generally, sections of a card use subheadings for their titles
 
 Subheadings should:
 
-* Be used to explain and clearly label logical groups in existing sections of a page
-* Not be used without a parent heading
-* Not be used in tables or list items, such as for the primary content in a [resource list](/components/lists-and-tables/resource-list)
+- Be used to explain and clearly label logical groups in existing sections of a page
+- Not be used without a parent heading
+- Not be used in tables or list items, such as for the primary content in a [resource list](/components/lists-and-tables/resource-list)
 
 ---
 
@@ -36,23 +36,23 @@ Subheadings should:
 
 Subheadings should be:
 
-* Informative and descriptive: they should label the type of content grouped
+- Informative and descriptive: they should label the type of content grouped
   beneath them
-* Concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep subheadings to single sentence and avoid using punctuation such as
+- Concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep subheadings to single sentence and avoid using punctuation such as
     periods, commas, or semicolons
-  * Write in sentence case (first word capitalized, the rest lowercase)
+  - Write in sentence case (first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
 
 #### Do
 
-* Shipping address
+- Shipping address
 
 #### Don’t
 
-* The package will be shipped to this address:
+- The package will be shipped to this address:
 
 <!-- end -->
 
@@ -70,5 +70,5 @@ Use to structure content in a card.
 
 ## Related components
 
-* To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card)
-* To create a title for a card or top-level page section, [use the heading component](/components/titles-and-text/heading)
+- To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card)
+- To create a title for a card or top-level page section, [use the heading component](/components/titles-and-text/heading)

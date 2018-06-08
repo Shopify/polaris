@@ -28,11 +28,11 @@ consistently applied wherever dates need to be selected across Shopify.
 
 Date pickers should:
 
-* Use smart defaults and highlight common selections (e.g. Today)
-* Close after a single date is selected unless a start and end date is required
-* Set the start date on first click and the end date on second click if a range
+- Use smart defaults and highlight common selections (e.g. Today)
+- Close after a single date is selected unless a start and end date is required
+- Set the start date on first click and the end date on second click if a range
   is required
-* Not be used to enter a date that is many years in the future or the past
+- Not be used to enter a date that is many years in the future or the past
 
 ---
 

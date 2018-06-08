@@ -50,10 +50,10 @@ options and supports several text formats including numbers.
 
 Text fields should:
 
-* Be clearly labeled so it’s obvious to the merchant what they should enter into the field
-* Be labeled as “Optional” when you need to request input that’s not required
-* Only ask for information that’s really needed
-* Validate input as soon as merchant has finished interacting with a field (but not before)
+- Be clearly labeled so it’s obvious to the merchant what they should enter into the field
+- Be labeled as “Optional” when you need to request input that’s not required
+- Only ask for information that’s really needed
+- Validate input as soon as merchant has finished interacting with a field (but not before)
 
 ---
 
@@ -63,21 +63,21 @@ Text fields should:
 
 A label is a short description of the requested input. Labels are not instructional text but they should be meaningful and clearly indicate what is expected. Labels should be:
 
-* Placed above or beside the form field
-* Short and succinct (1–3 words)
-* Written in sentence case (the first word capitalized, the rest lowercase)
+- Placed above or beside the form field
+- Short and succinct (1–3 words)
+- Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
 
 #### Do
 
-* Email address
-* Phone number
+- Email address
+- Phone number
 
 #### Don’t
 
-* What is your email address?
-* My phone number is:
+- What is your email address?
+- My phone number is:
 
 <!-- end -->
 
@@ -86,9 +86,9 @@ A label is a short description of the requested input. Labels are not instructio
 Placeholder text is shown inside the form field to teach the merchant what to
 input. Field placeholder text should:
 
-* Be used only for supplementary information because the text has low contrast and is not visible when text is entered
-* Be written as examples instead of instructions
-* Include “e.g.” before an example
+- Be used only for supplementary information because the text has low contrast and is not visible when text is entered
+- Be written as examples instead of instructions
+- Include “e.g.” before an example
 
 <!-- usagelist -->
 
@@ -139,9 +139,9 @@ Example: 123-456-789
 
 Error messages should:
 
-* Clearly explain what went wrong and how to fix it
-* Be short and concise, no more than a single sentence
-* Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
+- Clearly explain what went wrong and how to fix it
+- Be short and concise, no more than a single sentence
+- Use [passive voice](/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
 <!-- usagelist -->
 
@@ -495,4 +495,4 @@ Use to show that a textfield is not available for interaction. Most often used i
 
 ## Related components
 
-* To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout)
+- To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout)
