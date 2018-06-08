@@ -123,9 +123,7 @@
   justify-content: center;
   align-items: center;
   margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
-    (
-      -1 * resource-list-item(padding)
-    ) resource-list-item(control-indent);
+    (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
 }
 

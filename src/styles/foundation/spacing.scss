@@ -6,7 +6,7 @@ $spacing-data: (
   tight: rem($unit * 2),
   base: rem($unit * 4),
   loose: rem($unit * 5),
-  extra-loose: rem($unit * 8)
+  extra-loose: rem($unit * 8),
 );
 
 /// Returns the spacing value for a given variant.
