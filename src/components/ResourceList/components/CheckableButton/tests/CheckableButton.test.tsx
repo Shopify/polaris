@@ -3,7 +3,7 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from '../../../../../../tests/utilities';
-import CheckableButton from '../';
+import CheckableButton from '..';
 import Checkbox from '../../../../Checkbox';
 
 const CheckableButtonProps = {

@@ -27,11 +27,11 @@ on or off.
 
 Settings toggles should:
 
-* Include different body content for the enabled and disabled states
-* Clearly indicate whether the setting is enabled or disabled and explain the
+- Include different body content for the enabled and disabled states
+- Clearly indicate whether the setting is enabled or disabled and explain the
   implications of the state of the setting to merchants (e.g. “Automatic messages
   are disabled. Your customers won’t receive automatic shipping updates.”)
-* Clearly state when a setting or feature is not available and why. Provide
+- Clearly state when a setting or feature is not available and why. Provide
   actionable steps for merchants to unlock the functionality.
 
 ---
@@ -42,8 +42,8 @@ Settings toggles should:
 
 Toggle descriptions should:
 
-* Clearly indicate whether the setting is enabled or disabled
-* Explain the implications of the state of the setting to merchants
+- Clearly indicate whether the setting is enabled or disabled
+- Explain the implications of the state of the setting to merchants
   (e.g. “Automatic messages are disabled. Your customers won’t receive automatic
   shipping updates.”)
 
@@ -60,13 +60,13 @@ say “Enable” to allow merchants to turn it on.
 
 #### Do
 
-* Enable
-* Disable
+- Enable
+- Disable
 
 #### Don’t
 
-* Turn on
-* Turn off
+- Turn on
+- Turn off
 
 <!-- end -->
 
@@ -112,4 +112,4 @@ class SettingToggleExample extends React.Component {
 
 ## Related components
 
-* To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](/components/actions/account-connection)
+- To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](/components/actions/account-connection)

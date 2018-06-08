@@ -28,13 +28,13 @@ account to their Shopify store.
 
 The account component should:
 
-* Be placed at the top of the Account page for the relevant sales channel
-* Identify the name of the platform or service the merchant can connect to
-* Show whether the account is connected or disconnected so that merchants can easily connect or disconnect an account
-* Include a link to the relevant sales channel or platform terms and conditions,
+- Be placed at the top of the Account page for the relevant sales channel
+- Identify the name of the platform or service the merchant can connect to
+- Show whether the account is connected or disconnected so that merchants can easily connect or disconnect an account
+- Include a link to the relevant sales channel or platform terms and conditions,
   including information about any charges or fees that a merchant may incur by
   using the channel or platform
-* Link to terms and conditions, which should open up on the sales channel
+- Link to terms and conditions, which should open up on the sales channel
   developer’s website in a new browser window
 
 ---
@@ -48,9 +48,9 @@ merchants will connect to, followed by the word “account”.
 
 #### For example:
 
-* Facebook account
-* Mailchimp account
-* Instagram account
+- Facebook account
+- Mailchimp account
+- Instagram account
 
 <!-- usagelist -->
 

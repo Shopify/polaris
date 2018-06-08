@@ -23,8 +23,8 @@ Page actions let merchants take key actions at the bottom of specific pages in t
 
 Page actions should:
 
-* Include a single primary action on the right. It should be the same as the primary action that shows in the title bar at the top of the page.
-* Include a maximum of two secondary actions, but doesn’t have to include any secondary actions.
+- Include a single primary action on the right. It should be the same as the primary action that shows in the title bar at the top of the page.
+- Include a maximum of two secondary actions, but doesn’t have to include any secondary actions.
 
 ---
 
@@ -34,39 +34,39 @@ Page actions should:
 
 Buttons should be:
 
-* Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
 
 <!-- usagelist -->
 
 #### Do
 
-* Create order
-* Buy shipping label
+- Create order
+- Buy shipping label
 
 #### Don’t
 
-* New order
-* Buy
+- New order
+- Buy
 
 <!-- end -->
 
-* Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- usagelist -->
 
 #### Do
 
-* Activate Apple Pay
-* View shipping settings
+- Activate Apple Pay
+- View shipping settings
 
 #### Don’t
 
-* Try Apple Pay
-* View your settings
+- Try Apple Pay
+- View your settings
 
 <!-- end -->
 
-* Scannable: avoid unnecessary words and articles such as the, an, or a.
+- Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
 
@@ -115,4 +115,4 @@ Not all page actions require a secondary action.
 
 ## Related components
 
-* To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page
+- To create a regular call to action, [use the button component](/components/actions/button) to expand content in place in the page

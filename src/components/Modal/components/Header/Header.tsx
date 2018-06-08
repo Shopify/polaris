@@ -2,7 +2,7 @@ import * as React from 'react';
 import {DisplayText, Stack} from '../../../../components';
 import memoizedBind from '../../../../utilities/memoized-bind';
 import * as styles from './Header.scss';
-import {CloseButton} from './';
+import {CloseButton} from '.';
 
 export interface Props {
   id: string;

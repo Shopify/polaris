@@ -35,10 +35,10 @@ A resource list displays a collection of objects of the same type, like products
 
 Resource lists can also:
 
-* Support [customized list items](#study-custom-item)
-* Include [bulk actions](#study-bulk-actions) so merchants can act on multiple objects at once
-* Support [sorting](#study-sorting) and filtering [filtering](#study-filtering) of long lists
-* Be paired with [pagination](#study-pagination) to make long lists digestible
+- Support [customized list items](#study-custom-item)
+- Include [bulk actions](#study-bulk-actions) so merchants can act on multiple objects at once
+- Support [sorting](#study-sorting) and filtering [filtering](#study-filtering) of long lists
+- Be paired with [pagination](#study-pagination) to make long lists digestible
 
 ---
 
@@ -467,10 +467,10 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
 
 Using a resource list in a project involves combining the following components and subcomponents:
 
-* ResourceList
-* [ResourceList.Item](#subcomponent-item) or a [a customized version](#study-custom-item) of this subcomponent
-* [ResourceList.FilterControl](#subcomponent-filter-control) (optional)
-* Pagination component (optional)
+- ResourceList
+- [ResourceList.Item](#subcomponent-item) or a [a customized version](#study-custom-item) of this subcomponent
+- [ResourceList.FilterControl](#subcomponent-filter-control) (optional)
+- Pagination component (optional)
 
 <!-- hint -->
 
@@ -494,9 +494,9 @@ Take orders as an example. Merchants may have a lot of them. They need a way to 
 
 Resource lists function as:
 
-* A content format, presenting a set of individual resources in a compact form
-* A system for taking action on one or more individual resources
-* A way to navigate to an individual resource’s show page
+- A content format, presenting a set of individual resources in a compact form
+- A system for taking action on one or more individual resources
+- A way to navigate to an individual resource’s show page
 
 Because a show page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these show pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
@@ -528,15 +528,15 @@ Resource lists can live in many places in Shopify. You could include a short res
 
 Resource lists should:
 
-* Have items that perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
-* [Customize the content and layout](#study-custom-item) of their list items to support merchants’ needs.
-* Support [sorting](#study-sorting) if the list can be long, and especially if different merchant tasks benefit from different sort orders.
-* Support [filtering](#study-filtering) if the list can be long.
-* [Paginate](#study-pagination) when the current list contains more than 50 items.
+- Have items that perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
+- [Customize the content and layout](#study-custom-item) of their list items to support merchants’ needs.
+- Support [sorting](#study-sorting) if the list can be long, and especially if different merchant tasks benefit from different sort orders.
+- Support [filtering](#study-filtering) if the list can be long.
+- [Paginate](#study-pagination) when the current list contains more than 50 items.
 
 Resource lists can optionally:
 
-* Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, a merchant may want to add the same tag to a large number of products.
+- Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, a merchant may want to add the same tag to a large number of products.
 
 ---
 
@@ -544,40 +544,40 @@ Resource lists can optionally:
 
 Resource lists should:
 
-* Identify the type of resource, usually with a heading
+- Identify the type of resource, usually with a heading
 
   <!-- usagelist -->
 
   #### Do
 
-  * Products
-  * Showing 50 products
+  - Products
+  - Showing 50 products
 
   #### Don’t
 
-  * _No heading_
+  - _No heading_
 
   <!-- end -->
 
-* Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
+- Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
   <!-- usagelist -->
 
   #### Do
 
-  * Popular products this week
+  - Popular products this week
 
   #### Don’t
 
-  * Products
+  - Products
 
   <!-- end -->
 
-* Follow the verb + noun formula for [bulk actions](#study-bulk-actions-content-guidelines)
+- Follow the verb + noun formula for [bulk actions](#study-bulk-actions-content-guidelines)
 
-* Follow the [content formula for sort options](#study-sorting-content-guidelines)
+- Follow the [content formula for sort options](#study-sorting-content-guidelines)
 
-* Follow the [content guidelines for filter options and applied filters](#study-filtering-content-guidelines)
+- Follow the [content guidelines for filter options and applied filters](#study-filtering-content-guidelines)
 
 ---
 
@@ -758,14 +758,14 @@ Shortcut actions present popular actions from the resource’s show page for eas
 
 Resource list items should:
 
-* Perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
-* Be tailored to the specific type of resource being displayed.
-* Lay out the content effectively across all screen sizes.
+- Perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
+- Be tailored to the specific type of resource being displayed.
+- Lay out the content effectively across all screen sizes.
 
 Resource list items can optionally:
 
-* Use [conditional content](#study-custom-item-conditional-content) to help merchants deal with items in unusual states
-* Provide [shortcut actions](#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s show page
+- Use [conditional content](#study-custom-item-conditional-content) to help merchants deal with items in unusual states
+- Provide [shortcut actions](#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s show page
 
 Read the [case study](#study-custom-item) to see how the best practices are applied.
 
@@ -775,14 +775,14 @@ Read the [case study](#study-custom-item) to see how the best practices are appl
 
 Resource list items should:
 
-* Present the content merchants need to find the items they’re looking for.
-* Support merchants’ tasks for the particular type of resource.
-* Present content elements concisely. For example, add a label or clarifying phrase only when necessary.
-* Avoid truncating content where possible.
-* Avoid colons.
-* [Conditional actions](#study-custom-item-conditional-content) should follow the verb + noun content formula for buttons.
-* If a content value is empty, don’t use an em dash (“—”) like in a table. Instead, use a phrase like “No orders.”
-* [Shortcut actions](#study-custom-item-shortcut-actions) don’t need to follow the full verb + noun formula for buttons.
+- Present the content merchants need to find the items they’re looking for.
+- Support merchants’ tasks for the particular type of resource.
+- Present content elements concisely. For example, add a label or clarifying phrase only when necessary.
+- Avoid truncating content where possible.
+- Avoid colons.
+- [Conditional actions](#study-custom-item-conditional-content) should follow the verb + noun content formula for buttons.
+- If a content value is empty, don’t use an em dash (“—”) like in a table. Instead, use a phrase like “No orders.”
+- [Shortcut actions](#study-custom-item-shortcut-actions) don’t need to follow the full verb + noun formula for buttons.
 
 See the [case study](#study-custom-item) for content guidelines in action.
 
@@ -920,8 +920,8 @@ Filter control showing a state with applied filters and an additional action (op
 
 A Resource list’s filter control should:
 
-* Make filters available that make common merchant tasks easy. For example, provide the option for merchants to filter a customer’s list to email subscribers only. Don’t offer arbitrary filters.
-* Show relevant results for a wide range of search inputs, including partial words. For example, if a merchant types “unful” in the search field for an orders list, it should return all unfulfilled orders as a the result (as well as orders with this string elsewhere in Shopify, such as in an order note).
+- Make filters available that make common merchant tasks easy. For example, provide the option for merchants to filter a customer’s list to email subscribers only. Don’t offer arbitrary filters.
+- Show relevant results for a wide range of search inputs, including partial words. For example, if a merchant types “unful” in the search field for an orders list, it should return all unfulfilled orders as a the result (as well as orders with this string elsewhere in Shopify, such as in an order note).
 
 <a name="subcomponent-filter-control-content-guidelines"></a>
 
@@ -941,9 +941,9 @@ The filter builder itself has three parts: the **label**, the **operator text**,
 
 In this example:
 
-* “Account status” is the **label**
-* “is” is the **operator text**
-* “Enabled” is one of several options that make up the **filter input**
+- “Account status” is the **label**
+- “is” is the **operator text**
+- “Enabled” is one of several options that make up the **filter input**
 
 Here’s another example:
 
@@ -955,10 +955,10 @@ Here’s another example:
 
 In this case, a the **filter input** is a text field, so you only need to consider copy for the **label**, “Number of orders” and **operator text**, “is greater than”.
 
-* Filter label and filter input should follow the [select menu options guidelines](https://polaris.shopify.com/components/forms/select#section-content-guidelines)
-* Operator text should start with a lowercase letter
-* All three content elements should form a sentence
-* Operator text may be left out if the sentence reads more clearly without it
+- Filter label and filter input should follow the [select menu options guidelines](https://polaris.shopify.com/components/forms/select#section-content-guidelines)
+- Operator text should start with a lowercase letter
+- All three content elements should form a sentence
+- Operator text may be left out if the sentence reads more clearly without it
 
 ### Applied filter tags
 
@@ -974,13 +974,13 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 #### Do
 
-* Has orders
-* More than 10 orders
+- Has orders
+- More than 10 orders
 
 #### Don’t
 
-* Number of orders is greater than 0
-* order_count >= 10
+- Number of orders is greater than 0
+- order_count >= 10
 
 <!-- end -->
 
@@ -988,8 +988,8 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 ## Related components
 
-* To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the data table component (coming soon)
-* To display a simple list of related content, [use the list component](/components/lists-and-tables/list)
+- To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the data table component (coming soon)
+- To display a simple list of related content, [use the list component](/components/lists-and-tables/list)
 
 ---
 
@@ -999,13 +999,13 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 To cover the resource list component in depth, we’ll create a customer list as an example. We’ll start by implementing a basic resoure list step by step. Then we’ll customize the built-in resource list item to better display our customers. Finally, we’ll add features to make the list more useful to merchants.
 
-1. [Development setup](#study-setup) (optional)
-1. [A basic resource list](#study-basic-list)
-1. [Building a reusable custom list item](#study-custom-item)
-1. [Adding bulk actions](#study-bulk-actions)
-1. [Adding sorting](#study-sorting)
-1. [Adding filtering](#study-filtering)
-1. [Adding pagination](#study-pagination)
+1.  [Development setup](#study-setup) (optional)
+1.  [A basic resource list](#study-basic-list)
+1.  [Building a reusable custom list item](#study-custom-item)
+1.  [Adding bulk actions](#study-bulk-actions)
+1.  [Adding sorting](#study-sorting)
+1.  [Adding filtering](#study-filtering)
+1.  [Adding pagination](#study-pagination)
 
 You can also [jump straight to the end result](#study-end-result).
 
@@ -1169,9 +1169,9 @@ In this section, we’ll build a custom resource list item for customers:
 
 ##### Get the example code
 
-* https://github.com/Shopify/polaris-resource-list-examples/tree/v0.1.0/src/components/CustomerListItem
-* View example code for custom resource list items
-* dev
+- https://github.com/Shopify/polaris-resource-list-examples/tree/v0.1.0/src/components/CustomerListItem
+- View example code for custom resource list items
+- dev
 
 <!-- end -->
 
@@ -1181,71 +1181,71 @@ In this section, we’ll build a custom resource list item for customers:
 
 We’ll start by figuring out what information and actions merchants need when working with customers.
 
-* What content is useful to describe the customer?
-* What content do merchants need to find a specific customer?
-* What content related to the customer will help merchants fulfill an order or make a sale?
+- What content is useful to describe the customer?
+- What content do merchants need to find a specific customer?
+- What content related to the customer will help merchants fulfill an order or make a sale?
 
 The customer name is essential. Their physical location is helpful too, especially for merchants with retail stores or multiple locations. Since orders and customer loyalty are important, the customer’s total order count and total spent are also useful for customer loyalty purposes. Finally, we’ll include an avatar for demonstration purposes. Since customers may not have avatars, consider leaving this out.
 
 This gives us the following content, ranked roughly by importance:
 
-1. Customer name
-1. Location
-1. Number of orders
-1. Total spent
-1. Avatar
+1.  Customer name
+1.  Location
+1.  Number of orders
+1.  Total spent
+1.  Avatar
 
 ##### Crafting the copy
 
 Resource lists don’t have column headings, so care must be taken to avoid ambiguous copy.
 
-1. Start by listing out typical values for each piece of content. If the value alone speaks for itself we can use it as-is.
+1.  Start by listing out typical values for each piece of content. If the value alone speaks for itself we can use it as-is.
 
-   <!-- usagelist -->
+    <!-- usagelist -->
 
-   #### Do
+    #### Do
 
-   * Adam West
-   * Ottawa, Canada
+    - Adam West
+    - Ottawa, Canada
 
-   #### Don’t
+    #### Don’t
 
-   * 3
-   * $492.76
+    - 3
+    - $492.76
 
-   <!-- end -->
+    <!-- end -->
 
-2. If a value alone is ambiguous, like the number of orders and total spent, add text to make it clear. When possible, use a short phrase rather than a label with a colon.
+2.  If a value alone is ambiguous, like the number of orders and total spent, add text to make it clear. When possible, use a short phrase rather than a label with a colon.
 
-   <!-- usagelist -->
+    <!-- usagelist -->
 
-   #### Do
+    #### Do
 
-   * 3 orders
+    - 3 orders
 
-   #### Don’t
+    #### Don’t
 
-   * 3
-   * Total orders: 3
+    - 3
+    - Total orders: 3
 
-   <!-- end -->
+    <!-- end -->
 
-3. If a content value is empty for a given item, use a phrase to describe the empty state. For a customer with no orders, use “No orders”. If the value is numeric, “0” may be used. Don’t indicated empty values with em dash (“—”).
+3.  If a content value is empty for a given item, use a phrase to describe the empty state. For a customer with no orders, use “No orders”. If the value is numeric, “0” may be used. Don’t indicated empty values with em dash (“—”).
 
-   When a core content element is empty, show it grayed out using the subdued [text style](/components/titles-and-text/text-style) variation.
+    When a core content element is empty, show it grayed out using the subdued [text style](/components/titles-and-text/text-style) variation.
 
-   <!-- usagelist -->
+    <!-- usagelist -->
 
-   #### Do
+    #### Do
 
-   * No orders
-   * 0 orders
+    - No orders
+    - 0 orders
 
-   #### Don’t
+    #### Don’t
 
-   * —
+    - —
 
-   <!-- end -->
+    <!-- end -->
 
 ##### Using badges as content
 
@@ -1440,16 +1440,16 @@ We now have our content in place, but it has no layout.
 
 When laying out details content:
 
-* Place the most distinctive and relevant piece of content at the top left. Set it in bold using the strong [text style](/components/titles-and-text/text-style) variation.
-* Arrange secondary content to the right, and if necessary, below.
+- Place the most distinctive and relevant piece of content at the top left. Set it in bold using the strong [text style](/components/titles-and-text/text-style) variation.
+- Arrange secondary content to the right, and if necessary, below.
 
 To make use of the available space on wide screens, some content can be arranged in columns. Implementing this requires some care, since items aren’t aware of each other like in a data table. Column alignment works best for content that’s short and predictable in length.
 
 Use the following guidelines:
 
-* Estimate the maximum expected length of the content and add a buffer.
-* Set this as the minimum width of the content element. Using a minimum width ensures that if content occasionally exceeds the expected width, it won’t break the layout.
-* Choose the alignment of text within the container. Numbers should be right-aligned.
+- Estimate the maximum expected length of the content and add a buffer.
+- Set this as the minimum width of the content element. Using a minimum width ensures that if content occasionally exceeds the expected width, it won’t break the layout.
+- Choose the alignment of text within the container. Numbers should be right-aligned.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
@@ -1459,9 +1459,9 @@ Use the following guidelines:
 
 To accommodate smaller screen sizes, follow these guidelines:
 
-* As screen size is reduced, alter the layout by stacking some content elements. Layout changes should happen at the same point for all items.
-* As the layout stacks, remove column alignment and any minimum widths.
-* On small screens, when multiple pieces of content fit on a single line, use a bullet character to separate them.
+- As screen size is reduced, alter the layout by stacking some content elements. Layout changes should happen at the same point for all items.
+- As the layout stacks, remove column alignment and any minimum widths.
+- On small screens, when multiple pieces of content fit on a single line, use a bullet character to separate them.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
@@ -1471,8 +1471,8 @@ To accommodate smaller screen sizes, follow these guidelines:
 
 When laying out media content:
 
-* If the resource doesn’t have a visual representation, it can be left out.
-* Alter size of the media content across screen sizes to improve content density and visual alignment.
+- If the resource doesn’t have a visual representation, it can be left out.
+- Alter size of the media content across screen sizes to improve content density and visual alignment.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
@@ -1785,42 +1785,42 @@ Our customer list item can benefit from a shortcut action that lets merchants ju
 
 Shortcut actions on resource list items must:
 
-* Be present on the resource’s show page so they’re accessible without a mouse.
+- Be present on the resource’s show page so they’re accessible without a mouse.
 
 Shortcut actions should:
 
-* Only be provided for actions that are part of a critical, common merchant task.
-* Be available on every item in the list. If the state of a particular resource doesn’t permit the action, it can be left out.
+- Only be provided for actions that are part of a critical, common merchant task.
+- Be available on every item in the list. If the state of a particular resource doesn’t permit the action, it can be left out.
 
 ##### Content guidelines
 
 Shortcut actions should:
 
-* Not include the noun from their label if the noun refers to the resource itself. For example, for a list of orders:
+- Not include the noun from their label if the noun refers to the resource itself. For example, for a list of orders:
 
   <!-- usagelist -->
 
   #### Do
 
-  * Start fulfilling
+  - Start fulfilling
 
   #### Don’t
 
-  * Start fulfilling order
+  - Start fulfilling order
 
   <!-- end -->
 
-* Use the full verb + noun formula for actions that refer to another object.
+- Use the full verb + noun formula for actions that refer to another object.
 
   <!-- usagelist -->
 
   #### Do
 
-  * View latest order
+  - View latest order
 
   #### Don’t
 
-  * Latest order
+  - Latest order
 
   <!-- end -->
 
@@ -1863,9 +1863,9 @@ With that, our custom list item is done.
 
 ##### Get the example code
 
-* https://github.com/Shopify/polaris-resource-list-examples/tree/v0.1.0/src/components/CustomerListItem
-* View example code for custom resource list items
-* dev
+- https://github.com/Shopify/polaris-resource-list-examples/tree/v0.1.0/src/components/CustomerListItem
+- View example code for custom resource list items
+- dev
 
 <!-- end -->
 
@@ -1885,8 +1885,8 @@ Resource lists support optional bulk actions. These allow merchants to select it
 
 Taking action on many items at once can save merchants a lot of time. However, it can also be difficult to undo. Merchants need to have a high degree of confidence that they aren’t making mistakes in bulk.
 
-* Be deliberate about content elements shown on each list item. Make sure merchants have the content and context they need to be confident about taking action on many resources at once.
-* Provide [conditional content](#study-custom-item-conditional-content) to make merchants aware when a resource is in a notable or exceptional state.
+- Be deliberate about content elements shown on each list item. Make sure merchants have the content and context they need to be confident about taking action on many resources at once.
+- Provide [conditional content](#study-custom-item-conditional-content) to make merchants aware when a resource is in a notable or exceptional state.
 
 Because resource lists prioritize acting on individual items, selection checkboxes are hidden by default on small screens to save space for content. A bulk actions mode can be toggled on or off using a button that is made visible at these screen sizes.
 
@@ -1912,10 +1912,10 @@ Bulk actions are optional. If a resource list is always very short, or if there�
 
 When offering bulk actions, they should:
 
-* Save merchants time (it makes sense to take the action on many resources at once)
-* Warn merchants when a bulk action is irreversible using a confirmation modal
-* Be shown as promoted bulk actions if they are frequently used
-* Be shown in the in order they are most often used
+- Save merchants time (it makes sense to take the action on many resources at once)
+- Warn merchants when a bulk action is irreversible using a confirmation modal
+- Be shown as promoted bulk actions if they are frequently used
+- Be shown in the in order they are most often used
 
 <a name="study-bulk-actions-content-guidelines"></a>
 
@@ -1948,9 +1948,9 @@ We’ll start where we left off previously, with our items being rendered.
 
 Now we’ll add the bulk actions. We’ll need to do several things to get this wired up:
 
-1. Define our bulk actions and pass them to the resource list
-2. Add a handler to respond when the merchant begins making a bulk selection
-3. Add a way to keep track of which items have been selected and make sure our component knows, so it can display the change
+1.  Define our bulk actions and pass them to the resource list
+2.  Add a handler to respond when the merchant begins making a bulk selection
+3.  Add a way to keep track of which items have been selected and make sure our component knows, so it can display the change
 
 The way we keep track of the current selection is with state.
 
@@ -2082,9 +2082,9 @@ When you provide sort options to merchants, they’re presented using a [select 
 
 Sort options should:
 
-* Be offered for long lists, especially paginated lists.
-* Usually correspond to visible content elements in the list, but don’t have to.
-* Avoid offering more than about 8 sort options. Use research to determine the most common ways merchants want to sort a particular list.
+- Be offered for long lists, especially paginated lists.
+- Usually correspond to visible content elements in the list, but don’t have to.
+- Avoid offering more than about 8 sort options. Use research to determine the most common ways merchants want to sort a particular list.
 
 <a name="study-sorting-content-guidelines"></a>
 
@@ -2092,110 +2092,110 @@ Sort options should:
 
 A sort order is always based on a content element, like the customer name or the number of orders. For now, let’s refer to this content element as the “sort basis”.
 
-1. The basic content formula for sort options is {sort direction} + {sort basis}.
+1.  The basic content formula for sort options is {sort direction} + {sort basis}.
 
-   The sort direction should consist of words like “Most”/“Least”, “High”/“Low”, or “Newest”/“Oldest”.
+    The sort direction should consist of words like “Most”/“Least”, “High”/“Low”, or “Newest”/“Oldest”.
 
-   <!-- usageblock -->
+    <!-- usageblock -->
 
-   #### Do
+    #### Do
 
-   _Sort by_<br/>
-   Most spent<br/>
-   Least spent
+    _Sort by_<br/>
+    Most spent<br/>
+    Least spent
 
-   #### Don’t
+    #### Don’t
 
-   _Sort by_<br/>
-   High spend<br/>
-   Low spend
+    _Sort by_<br/>
+    High spend<br/>
+    Low spend
 
-   <!-- end -->
+    <!-- end -->
 
-   <!-- usageblock -->
+    <!-- usageblock -->
 
-   #### Do
+    #### Do
 
-   _Sort by_<br/>
-   High conversion<br/>
-   Low conversion
+    _Sort by_<br/>
+    High conversion<br/>
+    Low conversion
 
-   #### Don’t
+    #### Don’t
 
-   _Sort by_<br/>
-   Largest conversion<br/>
-   Smallest conversion
+    _Sort by_<br/>
+    Largest conversion<br/>
+    Smallest conversion
 
-   <!-- end -->
+    <!-- end -->
 
-   The sort basis can consist of multiple words to avoid ambiguity.
+    The sort basis can consist of multiple words to avoid ambiguity.
 
-   <!-- usageblock -->
+    <!-- usageblock -->
 
-   #### Do
+    #### Do
 
-   _Sort by_<br/>
-   Most online store visits
+    _Sort by_<br/>
+    Most online store visits
 
-   #### Don’t
+    #### Don’t
 
-   _Sort by_<br/>
-   Most visits
+    _Sort by_<br/>
+    Most visits
 
-   <!-- end -->
+    <!-- end -->
 
-   Avoid using multiple words for the sort direction. Adding “-est” may help.
+    Avoid using multiple words for the sort direction. Adding “-est” may help.
 
-   <!-- usageblock -->
+    <!-- usageblock -->
 
-   #### Do
+    #### Do
 
-   _Sort by_<br/>
-   Newest update<br/>
-   Oldest update
+    _Sort by_<br/>
+    Newest update<br/>
+    Oldest update
 
-   #### Don’t
+    #### Don’t
 
-   _Sort by_<br/>
-   Most recent update<br/>
-   Least recent update
+    _Sort by_<br/>
+    Most recent update<br/>
+    Least recent update
 
-   <!-- end -->
+    <!-- end -->
 
-2. If sorting alphabetically, the formula is slightly different. Indicate the sort direction with “A–Z” or “Z–A” at the end of the text, without parentheses. Note the use of an en dash without spaces on either side.
+2.  If sorting alphabetically, the formula is slightly different. Indicate the sort direction with “A–Z” or “Z–A” at the end of the text, without parentheses. Note the use of an en dash without spaces on either side.
 
-   <!-- usageblock -->
+    <!-- usageblock -->
 
-   #### Do
+    #### Do
 
-   _Sort by_<br/>
-   Product title A–Z<br/>
-   Product title Z–A
+    _Sort by_<br/>
+    Product title A–Z<br/>
+    Product title Z–A
 
-   #### Don’t
+    #### Don’t
 
-   _Sort by_<br/>
-   Product title (A - Z)<br/>
-   Product title (Z - A)
+    _Sort by_<br/>
+    Product title (A - Z)<br/>
+    Product title (Z - A)
 
-   <!-- end -->
+    <!-- end -->
 
-3. Sometimes it doesn’t make sense to offer both sort directions, such as when sorting by overall relevance. It’s not a requirement to offer both directions. When offering a single sort direction, the sort direction text can be omitted from the formula.
+3.  Sometimes it doesn’t make sense to offer both sort directions, such as when sorting by overall relevance. It’s not a requirement to offer both directions. When offering a single sort direction, the sort direction text can be omitted from the formula.
 
-   <!-- usageblock -->
+    <!-- usageblock -->
 
-   #### Do
+    #### Do
 
-   _Sort by_<br/>
-   Relevance
+    _Sort by_<br/>
+    Relevance
 
-   #### Don’t
+    #### Don’t
 
-   _Sort by_<br/>
-   Most relevant<br/>
-   Least relevant
+    _Sort by_<br/>
+    Most relevant<br/>
+    Least relevant
 
-   <!-- end -->
+    <!-- end -->
 
 <a name="study-sorting-applying"></a>
 
@@ -2220,9 +2220,9 @@ We’ll start where we left off, with bulk actions in place. Remember that even 
 
 As with bulk actions, there are broadly three parts to the implementation:
 
-1. Defining the sort options and passing them to our list
-1. Tracking the currently selected option in state and making sure our list receives the value in `render`
-1. Setting up a handler to respond to and update the state when the merchant changes the sort option
+1.  Defining the sort options and passing them to our list
+1.  Tracking the currently selected option in state and making sure our list receives the value in `render`
+1.  Setting up a handler to respond to and update the state when the merchant changes the sort option
 
 ```jsx
 ...
@@ -2344,8 +2344,8 @@ Filtering allows a resource list to be narrowed based on one or more criteria. T
 
 For filtering guidelines, see the corresponding section under the resource list filter control subcomponent:
 
-* [Resource list filter control best practices](#subcomponent-filter-control-best-practices)
-* [Resource list filter control content guidelines](#subcomponent-filter-control-content-guidelines)
+- [Resource list filter control best practices](#subcomponent-filter-control-best-practices)
+- [Resource list filter control content guidelines](#subcomponent-filter-control-content-guidelines)
 
 <a name="study-filtering-applying"></a>
 
@@ -2531,9 +2531,9 @@ Pagination interacts with bulk actions. When a resource list is paginated, the S
 
 Resource lists should:
 
-* Have a URL for each page.
-* Be paginated when they have more than 50 items.
-* Disable the pagination component’s previous (or next) button on the first (or last) page in the list.
+- Have a URL for each page.
+- Be paginated when they have more than 50 items.
+- Disable the pagination component’s previous (or next) button on the first (or last) page in the list.
 
 Align the pagination controls to the left, or centered. The exact layout is flexible.
 

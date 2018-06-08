@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Select, TextField} from '../../../';
+import {Select, TextField} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {Filter, AppliedFilter, FilterType} from './types';
 
@@ -13,7 +13,12 @@ export type CombinedProps = Props & WithAppProviderProps;
 
 export class FilterValueSelector extends React.PureComponent<CombinedProps> {
   render() {
-    const {filter, value, onChange, polaris: {intl}} = this.props;
+    const {
+      filter,
+      value,
+      onChange,
+      polaris: {intl},
+    } = this.props;
 
     const selectedFilterLabel = filter.operatorText || '';
 

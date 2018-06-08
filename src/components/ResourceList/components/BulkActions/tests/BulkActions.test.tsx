@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {findByTestID} from '../../../../../../tests/utilities/enzyme';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import BulkActions from '../';
+import BulkActions from '..';
 import {BulkAction} from '../BulkActions';
 import BulkActionButton from '../BulkActionButton';
 import CheckableButton from '../../CheckableButton';

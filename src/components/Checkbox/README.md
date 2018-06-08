@@ -25,15 +25,15 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 
 Checkboxes should:
 
-* Work independently from each other: selecting one checkbox shouldn’t change
+- Work independently from each other: selecting one checkbox shouldn’t change
   the selection status of another checkbox in the list. The exception is when a
   checkbox is used to make a bulk selection of multiple items.
-* Be framed positively: for example, `Turn on notifications` instead of
+- Be framed positively: for example, `Turn on notifications` instead of
   `Turn off notifications`
-* Always have a label when being used to toggling a setting on or off
-* Be listed according to a logical order, whether it’s alphabetical, numerical,
+- Always have a label when being used to toggling a setting on or off
+- Be listed according to a logical order, whether it’s alphabetical, numerical,
   time-based, or some other clear system.
-* Link to more information or include a subtitle as required to provide more
+- Link to more information or include a subtitle as required to provide more
   explanation. Don’t rely on tooltips to explain a checkbox.
 
 ---
@@ -44,43 +44,43 @@ Checkboxes should:
 
 Lists that use checkboxes should:
 
-* Start with a capital letter
+- Start with a capital letter
 
 <!-- usageblock -->
 
 #### Do
 
-* Option 1
-* Option 2
-* Option 3
+- Option 1
+- Option 2
+- Option 3
 
 #### Don’t
 
-* option 1
-* option 2
-* option 3
+- option 1
+- option 2
+- option 3
 
 <!-- end -->
 
-* Not use commas or semicolons at the end of each line
+- Not use commas or semicolons at the end of each line
 
 <!-- usageblock -->
 
 #### Do
 
-* Red
-* Yellow
-* Blue
+- Red
+- Yellow
+- Blue
 
 #### Don’t
 
-* Red;
-* Yellow;
-* Blue.
+- Red;
+- Yellow;
+- Blue.
 
 <!-- end -->
 
-* In the rare case where the checkbox is asking the merchant to agree to terms
+- In the rare case where the checkbox is asking the merchant to agree to terms
   or service, use the first person
 
 <!-- usageblock -->
@@ -129,6 +129,6 @@ class CheckboxExample extends React.Component {
 
 ## Related components
 
-* To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button)
-* To display a list of related content, [use the choice list component](/components/forms/choice-list)
-* To create an ungrouped list, [use the content list component](/components/lists-and-tables/list)
+- To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button)
+- To display a list of related content, [use the choice list component](/components/forms/choice-list)
+- To create an ungrouped list, [use the content list component](/components/lists-and-tables/list)

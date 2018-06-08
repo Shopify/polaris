@@ -24,11 +24,11 @@ Caption text size is smaller than the recommended size for general reading. It s
 
 ## Best practices
 
-* Use for secondary labels in graphs and charts
-* May be used for timestamps in lists of content
-* Don’t use this component for other cases
-* Don’t use this component for text longer than a few words
-* Don’t use this component for aesthetic effect or to break from the standard text size
+- Use for secondary labels in graphs and charts
+- May be used for timestamps in lists of content
+- Don’t use this component for other cases
+- Don’t use this component for text longer than a few words
+- Don’t use this component for aesthetic effect or to break from the standard text size
 
 ---
 
@@ -42,15 +42,15 @@ Captions are primarily used in [data visualizations](/visuals/data-visualization
 
 #### Do
 
-* Use caption for labelling data visualizations
+- Use caption for labelling data visualizations
   ![Diagram of using captions to label graphs and other data content](typography/display-styles/do-use-caption-for-labeling-data-visualizations.png)
 
-* Received April 21, 2017
+- Received April 21, 2017
 
 #### Don’t
 
-* Order #1001 was received on April 21, 2017
-* This is your recent activity
+- Order #1001 was received on April 21, 2017
+- This is your recent activity
 
 <!-- end -->
 

@@ -30,10 +30,10 @@ Use to notify merchants that their requested action is being processed.
 
 The spinner component should:
 
-* Notify the merchant that their request has been received and the action will soon complete.
-* Be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.
-* Not be used to give feedback for an entire page load.
-* White can only be used with small spinners on actionable components like buttons.
+- Notify the merchant that their request has been received and the action will soon complete.
+- Be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.
+- Not be used to give feedback for an entire page load.
+- White can only be used with small spinners on actionable components like buttons.
 
 ---
 
@@ -43,12 +43,12 @@ The spinner component should:
 
 Spinner accessibility label should:
 
-* Accurately explain the state of the requested action. For example, “Loading”, “Submitting”, “Processing.”
-* Use as few words to describe the state as possible.
+- Accurately explain the state of the requested action. For example, “Loading”, “Submitting”, “Processing.”
+- Use as few words to describe the state as possible.
 
 ---
 
 ## Related components
 
-* To improve user experience and reduce the appearance of long loading times, use the [Progress bar](/components/feedback-indicators/progress-bar) component.
-* To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.
+- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](/components/feedback-indicators/progress-bar) component.
+- To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.

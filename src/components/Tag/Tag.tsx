@@ -4,7 +4,7 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../components/AppProvider';
-import Icon from '../Icon/';
+import Icon from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tag.scss';
 

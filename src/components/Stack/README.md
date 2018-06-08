@@ -30,10 +30,10 @@ children. Options provide control of the wrapping, spacing, and relative size of
 
 Stacks should:
 
-* Be used for small-scale layout tasks when you want a row of components that should wrap on small screen widths
-* Be used to vertically center two elements
-* Not be used for complex or unique arrangements of components
-* Not be used for large-scale page layout
+- Be used for small-scale layout tasks when you want a row of components that should wrap on small screen widths
+- Be used to vertically center two elements
+- Not be used for complex or unique arrangements of components
+- Not be used for large-scale page layout
 
 ---
 
@@ -138,4 +138,4 @@ Use for aligning buttons or secondary content to the right edge of another eleme
 
 ## Related components
 
-* To create the large-scale structure of pages, [use the layout component](/components/structure/layout)
+- To create the large-scale structure of pages, [use the layout component](/components/structure/layout)

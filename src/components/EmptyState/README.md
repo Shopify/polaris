@@ -32,17 +32,17 @@ Empty states are used when a list, table, or chart has no items or data to show.
 
 Empty states should:
 
-* Orient merchants by clearly explaining the benefit and utility of a product
+- Orient merchants by clearly explaining the benefit and utility of a product
   or feature
-* Simplify a complicated experience by focusing on a few key features and
+- Simplify a complicated experience by focusing on a few key features and
   benefits
-* Use simple and clear language that empowers merchants to move their business
+- Use simple and clear language that empowers merchants to move their business
   forward
-* Be encouraging and never make merchants feel unsuccessful or guilty because
+- Be encouraging and never make merchants feel unsuccessful or guilty because
   they haven’t used a product or feature
-* Explain the steps a merchant needs to take to activate a product or feature
-* Use illustrations thoughtfully as outlined in our [illustration guidelines](/visuals/illustrations)
-* Use only one primary call-to-action button
+- Explain the steps a merchant needs to take to activate a product or feature
+- Use illustrations thoughtfully as outlined in our [illustration guidelines](/visuals/illustrations)
+- Use only one primary call-to-action button
 
 ---
 
@@ -50,14 +50,14 @@ Empty states should:
 
 ### Title
 
-* Descriptive: help merchants understand the feature or product related to the
+- Descriptive: help merchants understand the feature or product related to the
   empty state
-* Concise and scannable:
-  * Use simple, clear language that can be read at-a-glance
-  * Keep titles to single sentence and avoid using punctuation such as periods,
+- Concise and scannable:
+  - Use simple, clear language that can be read at-a-glance
+  - Keep titles to single sentence and avoid using punctuation such as periods,
     commas, or semicolons
-  * Written in sentence case (the first word capitalized, the rest lowercase)
-  * Action-oriented: encourage the merchant to take the step required to
+  - Written in sentence case (the first word capitalized, the rest lowercase)
+  - Action-oriented: encourage the merchant to take the step required to
     activate the product or feature
 
 <!-- usagelist -->
@@ -76,15 +76,15 @@ Orders and invoices
 
 Empty state subtitles act like body content. They should:
 
-* Describe or explain what’s in the empty state title or item title
-* Be conversational: include articles such as the, a, and an
+- Describe or explain what’s in the empty state title or item title
+- Be conversational: include articles such as the, a, and an
 
 ### Primary action
 
 Buttons are used for the most important actions you want a merchant to take.
 They should be:
 
-* Clear and predictable: merchants should be able to anticipate what will
+- Clear and predictable: merchants should be able to anticipate what will
   happen when they click a button. Never deceive a merchant by using misleading
   titles.
 
@@ -92,17 +92,17 @@ They should be:
 
 #### Do
 
-* Create order
-* Buy shipping label
+- Create order
+- Buy shipping label
 
 #### Don’t
 
-* New order
-* Buy
+- New order
+- Buy
 
 <!-- end -->
 
-* Action-led: buttons should always lead with a strong verb that encourages
+- Action-led: buttons should always lead with a strong verb that encourages
   action. To provide enough context to merchants use the {verb}+{noun} format on
   buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
@@ -110,17 +110,17 @@ They should be:
 
 #### Do
 
-* Activate Apple Pay
-* View shipping settings
+- Activate Apple Pay
+- View shipping settings
 
 #### Don’t
 
-* Try Apple Pay
-* View your settings
+- Try Apple Pay
+- View your settings
 
 <!-- end -->
 
-* Scannable: avoid unnecessary words and articles such as the, an, or a.
+- Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
 
@@ -161,6 +161,6 @@ Use to explain a single feature before a merchant has used it.
 
 ## Related components
 
-* To learn more about illustrations for empty states, [read the illustration guidelines](/visuals/illustrations)
-* To create page-level layout, [use the layout component](/components/structure/layout)
-* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
+- To learn more about illustrations for empty states, [read the illustration guidelines](/visuals/illustrations)
+- To create page-level layout, [use the layout component](/components/structure/layout)
+- To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)

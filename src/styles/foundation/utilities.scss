@@ -106,7 +106,12 @@ $base-font-size: 10px;
 @function map-extend($map, $maps...) {
   @for $i from 1 through length($maps) {
     @each $key, $value in nth($maps, $i) {
-      $map: map-merge($map,  ($key: $value));
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
 
       @if (type-of($value) == map) and (type-of(map-get($map, $key)) == map) {
         $value: map-extend(map-get($map, $key), $value);

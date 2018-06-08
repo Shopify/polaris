@@ -98,7 +98,11 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   constructor(props: CombinedProps) {
     super(props);
-    const {polaris: {intl: {translate}}} = props;
+    const {
+      polaris: {
+        intl: {translate},
+      },
+    } = props;
     this.totalsRowHeading = translate('Polaris.DataTable.totalsRowHeading');
   }
 
@@ -308,7 +312,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private resetScrollPosition() {
-    const {preservedScrollPosition: {left, top}} = this.state;
+    const {
+      preservedScrollPosition: {left, top},
+    } = this.state;
     if (left) {
       this.scrollContainer.scrollLeft = left;
     }

@@ -25,9 +25,9 @@ Badges are used to inform merchants of the status of a piece of information or o
 
 Great badges benefit merchants by:
 
-* Using established color patterns so that merchants can quickly identify their status or importance level
-* Being clearly labeled with short, scannable text
-* Being positioned to clearly identify the object they’re informing or labelling (e.g. an order)
+- Using established color patterns so that merchants can quickly identify their status or importance level
+- Being clearly labeled with short, scannable text
+- Being positioned to clearly identify the object they’re informing or labelling (e.g. an order)
 
 ---
 
@@ -37,29 +37,29 @@ Great badges benefit merchants by:
 
 Badge labels should:
 
-* Use a single word to describe the status of an object.
-* Only use two words if you need to describe a complex state. For example, “Partially refunded” and “Partially fulfilled”.
-* Always describe the status in the past tense. For example, refunded not refund.
+- Use a single word to describe the status of an object.
+- Only use two words if you need to describe a complex state. For example, “Partially refunded” and “Partially fulfilled”.
+- Always describe the status in the past tense. For example, refunded not refund.
 
 The available badges for financial status are:
 
-* Authorized
-* Pending
-* Paid
-* Unpaid
-* Pending
-* Voided
-* Partially paid
-* Partially refunded
-* Refunded
+- Authorized
+- Pending
+- Paid
+- Unpaid
+- Pending
+- Voided
+- Partially paid
+- Partially refunded
+- Refunded
 
 The available badges for fulfillment status are:
 
-* Fulfilled
-* Complete
-* Partial
-* Unfulfilled
-* Restocked
+- Fulfilled
+- Complete
+- Partial
+- Unfulfilled
+- Restocked
 
 <!-- usagelist -->
 
@@ -139,4 +139,4 @@ Use to indicate when a given task has been completed. For example, when a mercha
 
 ## Related components
 
-* To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag)
+- To represent an interactive list of categories provided by merchants, [use tags](/components/forms/tag)

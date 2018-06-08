@@ -6,7 +6,11 @@ $fileupload-padding: rem(15px);
 }
 
 .Image {
-  &.sizeExtraLarge { width: 90px }
+  &.sizeExtraLarge {
+    width: 90px;
+  }
 
-  &.sizeLarge { width: 60px }
+  &.sizeLarge {
+    width: 60px;
+  }
 }

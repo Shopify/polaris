@@ -32,13 +32,13 @@ clutter up the interface.
 
 The select component should:
 
-* Be used for lists of four or more items
-* List items within the menu alphabetically or some other logical order so
+- Be used for lists of four or more items
+- List items within the menu alphabetically or some other logical order so
   merchants can easily find the selection they need
-* Provide a label to clearly identify the content being presented in the drop
+- Provide a label to clearly identify the content being presented in the drop
   down menu
-* Have a default option selected, where possible
-* Have a placeholder option with the text “Select” if there is no logical
+- Have a default option selected, where possible
+- Have a placeholder option with the text “Select” if there is no logical
   default option
 
 ---
@@ -51,9 +51,9 @@ A label is a short description of the requested input. Labels are not help
 text, and they don’t provide instruction, but they should be meaningful and
 clearly indicate what is expected. Labels should be:
 
-* Placed above or beside the form field
-* Short and succinct (1–3 words)
-* Written in sentence case (the first word capitalized, the rest lowercase)
+- Placed above or beside the form field
+- Short and succinct (1–3 words)
+- Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
 
@@ -83,9 +83,9 @@ My phone number is:
 
 The list of options in a menu should:
 
-* Be concise but still give the merchant enough information so they can easily
+- Be concise but still give the merchant enough information so they can easily
   make a selection
-* Be arranged alphabetically or in some other clear logical order
+- Be arranged alphabetically or in some other clear logical order
 
 ### Placeholder option
 
@@ -146,8 +146,8 @@ Use for selections that aren’t currently available. The surrounding interface 
 
 ## Related components
 
-* To let merchants make a single selection from a list with four or fewer
+- To let merchants make a single selection from a list with four or fewer
   options, [use the choice list component](/components/forms/choice-list)
-* To present merchants with a list of choices where they can make multiple
+- To present merchants with a list of choices where they can make multiple
   selections, [use the choice list component](/components/forms/choice-list) with
   the `allow multiple` option

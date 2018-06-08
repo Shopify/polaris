@@ -7,7 +7,7 @@ import {
 
 import FilterValueSelector from '../FilterValueSelector';
 import {Filter, FilterType} from '../types';
-import {Select, TextField} from '../../../../';
+import {Select, TextField} from '../../../..';
 
 describe('<FilterValueSelector />', () => {
   describe('filter.type', () => {

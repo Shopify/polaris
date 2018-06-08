@@ -44,11 +44,11 @@ Static images are provided to help visualize the interface as embedded component
 
 The page component should:
 
-* Always provide a title for the page header.
-* Always provide breadcrumbs when a page has a parent page.
-* Be organized around a primary activity. If that primary activity is a single action, provide it as a primary button in the page header.
-* Provide other page-level actions as secondary actions in the page header.
-* When the page represents an object of a certain type, provide pagination links to the previous and next object of the same type.
+- Always provide a title for the page header.
+- Always provide breadcrumbs when a page has a parent page.
+- Be organized around a primary activity. If that primary activity is a single action, provide it as a primary button in the page header.
+- Provide other page-level actions as secondary actions in the page header.
+- When the page represents an object of a certain type, provide pagination links to the previous and next object of the same type.
 
 ---
 
@@ -58,16 +58,16 @@ The page component should:
 
 Titles should:
 
-* Describe the page in as few words as possible.
-* Be the name of the object type (pluralized) when the page is a list of objects. For a list of orders, the page title should be “Orders”.
-* Not be truncated.
+- Describe the page in as few words as possible.
+- Be the name of the object type (pluralized) when the page is a list of objects. For a list of orders, the page title should be “Orders”.
+- Not be truncated.
 
 ### App icon
 
 App icons should:
 
-* Provide their app icon
-* Only be provided for pages that are part of a Shopify app
+- Provide their app icon
+- Only be provided for pages that are part of a Shopify app
 
 ### Breadcrumbs
 
@@ -77,26 +77,26 @@ The content of each breadcrumb link should be the title of the page to which it 
 
 Page header action labels should be:
 
-* Clear and predictable: merchants should be able to anticipate what will
+- Clear and predictable: merchants should be able to anticipate what will
   happen when they click a page action. Never deceive a merchant by mislabeling an action.
-* Action-led: they should always lead with a strong verb that encourages
+- Action-led: they should always lead with a strong verb that encourages
   action. To provide enough context to merchants, use the {verb}+{noun} format.
 
 <!-- usagelist -->
 
 #### Do
 
-* Create order
-* View in Postmates
+- Create order
+- View in Postmates
 
 #### Don’t
 
-* Create
-* Postmates deliveries
+- Create
+- Postmates deliveries
 
 <!-- end -->
 
-* Short: for secondary actions, when the noun represents the same object as
+- Short: for secondary actions, when the noun represents the same object as
   the page itself, a verb alone may be used. If there is ambiguity (such as
   with the verb “Cancel”), always use the {verb}+{noun} format.
 
@@ -106,17 +106,17 @@ In the context of the orders list page:
 
 #### Do
 
-* Import
-* Export
+- Import
+- Export
 
 #### Don’t
 
-* Import orders
-* Export orders
+- Import orders
+- Export orders
 
 <!-- end -->
 
-* Scannable: avoid unnecessary words and articles such as the, an, or a.
+- Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usageblock -->
 
@@ -169,5 +169,5 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 
 ## Related components
 
-* To lay out the content within a page, [use the layout component](/components/structure/layout)
-* To build the outer wrapper of a standalone page (not embedded), [use the page component](https://polaris.shopify.com/components/structure/page#navigation)
+- To lay out the content within a page, [use the layout component](/components/structure/layout)
+- To build the outer wrapper of a standalone page (not embedded), [use the page component](https://polaris.shopify.com/components/structure/page#navigation)

@@ -34,11 +34,11 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 ## Best Practices
 
-* Use when the primary goal of the page is communication rather than
+- Use when the primary goal of the page is communication rather than
   interaction.
-* Use larger display text sizes when a page is focused around a single message.
+- Use larger display text sizes when a page is focused around a single message.
   In these cases it may be paired with an illustration.
-* Use smaller display text to pair with larger text, or alone as part of more
+- Use smaller display text to pair with larger text, or alone as part of more
   complex data displays such as dashboards.
 
 ---
@@ -47,16 +47,16 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 ### Display text
 
-* Be benefits-driven and focused on information that is most important to
+- Be benefits-driven and focused on information that is most important to
   merchants
-* Concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep display text content to a short sentence that’s just a few words in
+- Concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep display text content to a short sentence that’s just a few words in
     length
-  * Avoid using punctuation such as periods, commas, or semicolons
-  * Avoid using exclamation marks—display text already makes enough of a
+  - Avoid using punctuation such as periods, commas, or semicolons
+  - Avoid using exclamation marks—display text already makes enough of a
     statement without an exclamation mark
-  * Written in sentence case
+  - Written in sentence case
 
 ## Examples
 
