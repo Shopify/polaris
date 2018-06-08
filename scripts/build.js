@@ -28,7 +28,7 @@ execSync(`${resolvePath(root, './node_modules/.bin/tsc')} --outDir ${intermediat
 });
 
 mv(resolvePath(root, 'types/src/*'), types);
-rm(resolvePath(root, 'types/src'));
+rm('-rf', resolvePath(root, 'types/src'));
 
 writeFileSync(resolvePath(root, 'embedded.d.ts'), "export * from './types/embedded';\n");
 
