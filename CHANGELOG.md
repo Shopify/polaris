@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Bug fixes
+
+- Fixed unexpected form submission when switching tabs in a tabs component wrapped in a form ([#1542](https://github.com/Shopify/polaris-react/pull/1542))
+
 ### Enhancements
 
 - Added `indicator` prop to button ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
