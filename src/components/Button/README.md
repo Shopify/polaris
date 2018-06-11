@@ -175,6 +175,14 @@ Use when a button has been pressed and the associated action is in progress.
 <Button loading>Save product</Button>
 ```
 
+### Indicator State
+
+Use to indicate a new feature that is not within view
+
+```jsx
+<Button indicator>Open popover</Button>
+```
+
 ---
 
 ## Related components

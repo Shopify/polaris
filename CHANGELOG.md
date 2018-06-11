@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Enhancements
+
+- Added `indicator` prop to button ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
+- Added badge prop to the item descriptor type and action group ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
 
 ## 2.1.2 - 2018-06-06
 

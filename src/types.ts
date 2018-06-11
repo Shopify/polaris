@@ -48,6 +48,13 @@ export interface EASDKBreadcrumbTarget {
 
 export interface LinkAction extends BaseLinkAction, EASDKBreadcrumbTarget {}
 
+export interface BadgeAction {
+  badge?: {
+    status: 'new';
+    content: string;
+  };
+}
+
 export interface BaseCallbackAction {
   /** A unique identifier for the action */
   id?: string;

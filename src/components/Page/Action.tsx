@@ -3,6 +3,7 @@ import {classNames} from '@shopify/react-utilities';
 
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
+import Indicator from '../Indicator';
 import {IconableAction, DisableableAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
@@ -17,6 +18,8 @@ export interface Props {
   onAction?: IconableAction['onAction'];
   accessibilityLabel?: IconableAction['accessibilityLabel'];
   disabled?: DisableableAction['disabled'];
+  showIndicator?: boolean;
+  hasIndicator?: boolean;
 }
 
 export default function Action({
@@ -28,6 +31,8 @@ export default function Action({
   disclosure,
   accessibilityLabel,
   disabled,
+  showIndicator,
+  hasIndicator,
 }: Props) {
   const iconMarkup = icon ? (
     <span className={styles.ActionIcon}>
@@ -67,10 +72,13 @@ export default function Action({
     );
   }
 
+  const indicatorMarkup = showIndicator && !hasIndicator && <Indicator />;
+
   const className = classNames(
     styles.Action,
     disabled && styles.disabled,
     icon && children == null && styles.iconOnly,
+    showIndicator && styles['Action-outline'],
   );
 
   return (
@@ -83,6 +91,7 @@ export default function Action({
       type="button"
       disabled={disabled}
     >
+      {indicatorMarkup}
       {contentMarkup}
     </button>
   );
