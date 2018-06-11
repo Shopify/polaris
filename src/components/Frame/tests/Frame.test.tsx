@@ -3,7 +3,7 @@ import {
   animationFrame,
   mountWithAppProvider,
 } from '../../../../tests/utilities';
-import {TrapFocus} from '../../';
+import TrapFocus from '../../Focus/TrapFocus';
 import Frame from '../Frame';
 
 describe('<Frame />', () => {

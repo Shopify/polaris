@@ -1,0 +1,33 @@
+:root {
+  --toast-translate-y-out: rem(150px);
+  --toast-translate-y-in: 0;
+}
+
+.ToastManager {
+  position: fixed;
+  z-index: z-index(toast, $fixed-element-stacking-order);
+  right: 0;
+  left: 0;
+  text-align: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.ToastWrapper {
+  position: absolute;
+  transition: transform duration(slow) ease, opacity duration(slow) ease;
+  display: inline-flex;
+}
+
+.ToastWrapper-enter,
+.ToastWrapper-exit {
+  transform: translateY(var(--toast-translate-y-out));
+  opacity: 0;
+}
+
+.ToastWrapper-enter-done {
+  transform: translateY(var(--toast-translate-y-in));
+  opacity: 1;
+}

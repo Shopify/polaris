@@ -1,8 +1,8 @@
 import * as PropTypes from 'prop-types';
 
 export interface FrameManager {
-  showFlash(flash: {id: string} & FlashDescriptor): void;
-  hideFlash(flash: {id: string}): void;
+  showToast(toast: {id: string} & ToastDescriptor): void;
+  hideToast(toast: {id: string}): void;
   startLoading(): void;
   stopLoading(): void;
   resetLoading(): void;
@@ -16,10 +16,14 @@ export const frameContextTypes = {
   frame: PropTypes.object.isRequired,
 };
 
-export interface FlashDescriptor {
+export interface ToastDescriptor {
+  /** The content that should appear in the toast message */
   children?: React.ReactNode;
-  error?: boolean;
+  status?: TransitionStatus;
+  /** The length of time in milliseconds the toast message should persist (defaults to 5000) */
   duration?: number;
-  dismissible?: boolean;
+  /** Callback when the dismiss icon is clicked */
   onDismiss(): void;
 }
+
+export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
