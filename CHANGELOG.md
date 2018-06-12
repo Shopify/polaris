@@ -4,11 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
 
-### Bug fixes
+## 2.2.0 - 2018-06-12
 
-- Fixed unexpected form submission when switching tabs in a tabs component wrapped in a form ([#1542](https://github.com/Shopify/polaris-react/pull/1542))
+### New components
+
+#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
+
+Use range slider to select a number value between a min and max range.
 
 ### Enhancements
 
@@ -18,15 +22,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+- Fixed unexpected form submission when switching tabs in a tabs component wrapped in a form ([#1542](https://github.com/Shopify/polaris-react/pull/1542))
 - Added missing `'Shopify.API.setWindowLocation'` message handler to the EASDK ([#1539](https://github.com/Shopify/polaris-react/pull/1539))
 
 ## 2.1.2 - 2018-06-06
-
-### New components
-
-#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
-
-Use Range slider to select a number value between a min and max range.
 
 ### Enhancements
 
