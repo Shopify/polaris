@@ -30,7 +30,7 @@ Use to indicate that the page is loading.
 
 ## Required components
 
-The loading component must be wrapped in the frame component.
+The loading component must be wrapped in the [frame](/components/structure/frame) component.
 
 ---
 
@@ -50,13 +50,13 @@ The loading component should:
 
 The loading accessibility label should:
 
-- Accurately explain the state of the requested action. For example, “Loading”.
-- Use as few words to describe the state as possible.
+- Accurately explain the state of the requested action. For example, “Loading your search results”.
+- Use as few words as possible to describe the state.
 
 ---
 
 ## Related components
 
-- To notify that an action has been received, use the [Spinner](/components/feedback-indicators/spinner)
+- To indicate that an action has been received, use the [Spinner](/components/feedback-indicators/spinner)
 - To improve user experience and reduce the appearance of long loading times, use the [Progress bar](/components/feedback-indicators/progress-bar) component.
 - To better represent loading content, use [Skeleton page](/components/feedback-indicators/skeleton-page) along with [Skeleton body text](/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) components.
