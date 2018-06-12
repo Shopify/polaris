@@ -197,8 +197,8 @@ $stacking-order: (
 
   // We need the following properties in order to have long, unbroken
   // strings wrap in the same way they do in textareas.
+  @include text-breakword;
   white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 .Segment {

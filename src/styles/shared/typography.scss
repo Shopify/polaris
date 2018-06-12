@@ -157,6 +157,12 @@ $typography-condensed: em(640px);
   color: color(ink, $for-background: $for-background);
 }
 
+@mixin text-breakword {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 @mixin truncate {
   overflow: hidden;
   white-space: nowrap;
