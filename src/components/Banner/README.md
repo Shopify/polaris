@@ -37,23 +37,23 @@ Banners show at the top of the page or section they apply to.
 
 Banners should:
 
-* Be placed in the appropriate context:
-  * Banners relevant to an entire page should show at the top of that page at
+- Be placed in the appropriate context:
+  - Banners relevant to an entire page should show at the top of that page at
     full-width
-  * Banners related to a specific section or element of a page (such as a card,
+  - Banners related to a specific section or element of a page (such as a card,
     popover, or modal) should show inside of that element
-* Focus on a single theme, piece of information, or required action to avoid
+- Focus on a single theme, piece of information, or required action to avoid
   overwhelming merchants
-* Be dismissible unless they contain critical information or an important step
+- Be dismissible unless they contain critical information or an important step
   a merchant needs to take
-* Be concise and scannable—merchants shouldn’t need to spend a lot of time
+- Be concise and scannable—merchants shouldn’t need to spend a lot of time
   figuring out what they need to know and do
-* Be limited to a few important calls to action with no more than one primary
+- Be limited to a few important calls to action with no more than one primary
   action
-* Be used thoughtfully and sparingly for only the most important information
-* Not be used as the primary entry point or mechanism to access information or
+- Be used thoughtfully and sparingly for only the most important information
+- Not be used as the primary entry point or mechanism to access information or
   actions a merchant needs to take on a regular basis
-* Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead
+- Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead
 
 ---
 
@@ -63,8 +63,8 @@ Banners should:
 
 Banner headings should be:
 
-* Descriptive: help merchants understand what they’ll find in the card.
-  * Communicate when a situation is serious enough to warrant using a critical or
+- Descriptive: help merchants understand what they’ll find in the card.
+  - Communicate when a situation is serious enough to warrant using a critical or
     warning banner. People who are unable to see the color of the banner need to
     clearly understand the importance of the situation without the benefit of
     seeing the color of the banner. Learn more about [accessibility](/guides/accessibility).
@@ -81,17 +81,17 @@ Have a look at this
 
 <!-- end -->
 
-* Concise and scannable:
+- Concise and scannable:
 
-  * Use simple, clear language that can be read at a glance
-  * Keep headings to a single sentence and avoid using punctuation such as
+  - Use simple, clear language that can be read at a glance
+  - Keep headings to a single sentence and avoid using punctuation such as
     periods, commas, or semicolons
-  * Where possible, avoid articles (the, a, an) to keep content short and
+  - Where possible, avoid articles (the, a, an) to keep content short and
     actionable
 
-* Informative:
-  * Label the type of information in the body content
-  * Sentence case: capitalize only the first word in the heading and proper
+- Informative:
+  - Label the type of information in the body content
+  - Sentence case: capitalize only the first word in the heading and proper
     nouns
 
 <!-- usagelist -->
@@ -110,11 +110,11 @@ Your Order was Archived Today
 
 Body content should:
 
-* Be concise: keep content to 1 to 2 sentences where possible
-* Clarify the benefit of the main task
-* Be written in sentence case and use appropriate punctuation
-* Avoid repeating the heading
-* Explain how to resolve the issue, particularly for warning and critical
+- Be concise: keep content to 1 to 2 sentences where possible
+- Clarify the benefit of the main task
+- Be written in sentence case and use appropriate punctuation
+- Avoid repeating the heading
+- Explain how to resolve the issue, particularly for warning and critical
   banners
 
 <!-- usagelist -->
@@ -134,7 +134,7 @@ of 20 themes. To add more themes, delete themes you’re no longer using.
 
 Buttons and links should be:
 
-* Clear and predictable: merchants should be able to anticipate what will
+- Clear and predictable: merchants should be able to anticipate what will
   happen when they click a button. Never deceive a merchant by mislabeling a
   button.
 
@@ -150,7 +150,7 @@ Buy
 
 <!-- end -->
 
-* Action-led: buttons should always lead with a strong verb that encourages
+- Action-led: buttons should always lead with a strong verb that encourages
   action. To provide enough context to merchants use the {verb}+{noun} format on
   buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
@@ -166,7 +166,7 @@ Try Apple Pay
 
 <!-- end -->
 
-* Scannable: avoid unnecessary words and articles such as the, an, or a.
+- Scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
 
@@ -182,7 +182,7 @@ Add a menu item
 
 Link text should:
 
-* Set the expectation of where the merchant will be taken
+- Set the expectation of where the merchant will be taken
 
 <!-- usagelist -->
 
@@ -196,7 +196,7 @@ Order
 
 <!-- end -->
 
-* Use consistent content to label navigation. For example, if a navigational
+- Use consistent content to label navigation. For example, if a navigational
   link leads to a page called Orders, label the link Orders.
 
 <!-- usagelist -->
@@ -215,7 +215,7 @@ Finance section
 
 Body content should be:
 
-* Actionable: start sentences with imperative verbs when telling a merchant
+- Actionable: start sentences with imperative verbs when telling a merchant
   what actions are available to them (especially something new). Don’t use
   permissive language like “you can”.
 
@@ -231,9 +231,9 @@ Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
-* Structured for merchant success: always put the most critical information
+- Structured for merchant success: always put the most critical information
   first.
-* Clear: use the verb “need” to help merchants understand when they’re required
+- Clear: use the verb “need” to help merchants understand when they’re required
   to do something.
 
 <!-- usagelist -->
@@ -434,5 +434,5 @@ Banners inside of cards render with less spacing and a paired-back design to fit
 
 ## Related components
 
-* To inform merchants about a new feature or opportunity, [use callout cards](/components/structure/callout-card)
-* To group similar concepts together in the interface, [use a card](/components/structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](/components/structure/callout-card)
+- To group similar concepts together in the interface, [use a card](/components/structure/card)

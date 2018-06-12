@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {ResourceList, Select} from '../../';
-import EmptySearchResult from '../../EmptySearchResult/';
+import {ResourceList, Select} from '../..';
+import EmptySearchResult from '../../EmptySearchResult';
 import {
   findByTestID,
   shallowWithAppProvider,

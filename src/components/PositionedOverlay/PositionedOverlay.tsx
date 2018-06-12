@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import {classNames} from '@shopify/react-utilities/styles';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 
@@ -34,6 +35,7 @@ export interface Props {
   preferredPosition?: PreferredPosition;
   preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
+  fixed?: boolean;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
 }
@@ -48,6 +50,7 @@ export interface State {
   positioning: Positioning;
   zIndex: number | null;
   outsideScrollableContainer: boolean;
+  lockPosition: boolean;
 }
 
 export default class PositionedOverlay extends React.PureComponent<
@@ -64,14 +67,15 @@ export default class PositionedOverlay extends React.PureComponent<
     positioning: 'below',
     zIndex: null,
     outsideScrollableContainer: false,
+    lockPosition: false,
   };
 
-  private overlay: HTMLElement | null;
-  private scrollableContainer: HTMLElement | Document | null;
+  private overlay: HTMLElement | null = null;
+  private scrollableContainer: HTMLElement | Document | null = null;
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
-    if (this.scrollableContainer) {
+    if (this.scrollableContainer && !this.props.fixed) {
       this.scrollableContainer.addEventListener(
         'scroll',
         this.handleMeasurement,
@@ -81,7 +85,7 @@ export default class PositionedOverlay extends React.PureComponent<
   }
 
   componentWillUnmount() {
-    if (this.scrollableContainer) {
+    if (this.scrollableContainer && !this.props.fixed) {
       this.scrollableContainer.removeEventListener(
         'scroll',
         this.handleMeasurement,
@@ -109,7 +113,7 @@ export default class PositionedOverlay extends React.PureComponent<
 
   render() {
     const {left, top, zIndex, width} = this.state;
-    const {render} = this.props;
+    const {render, fixed} = this.props;
 
     const style = {
       top: top || undefined,
@@ -118,12 +122,13 @@ export default class PositionedOverlay extends React.PureComponent<
       zIndex: zIndex == null ? undefined : zIndex,
     };
 
+    const className = classNames(
+      styles.PositionedOverlay,
+      fixed && styles.fixed,
+    );
+
     return (
-      <div
-        className={styles.PositionedOverlay}
-        style={style}
-        ref={this.setOverlay}
-      >
+      <div className={className} style={style} ref={this.setOverlay}>
         <EventListener event="resize" handler={this.handleMeasurement} />
         {render(this.overlayDetails())}
       </div>
@@ -150,10 +155,12 @@ export default class PositionedOverlay extends React.PureComponent<
 
   @autobind
   private handleMeasurement() {
+    const {lockPosition, top} = this.state;
+
     this.setState(
       {
         left: 0,
-        top: 0,
+        top: lockPosition ? top : 0,
         height: 0,
         positioning: 'below',
         measuring: true,
@@ -168,6 +175,7 @@ export default class PositionedOverlay extends React.PureComponent<
           preferredAlignment = 'center',
           onScrollOut,
           fullWidth,
+          fixed,
         } = this.props;
 
         const activatorRect = getRectForNode(activator);
@@ -201,6 +209,7 @@ export default class PositionedOverlay extends React.PureComponent<
           scrollableContainerRect,
           containerRect,
           preferredPosition,
+          fixed,
         );
         const horizontalPosition = calculateHorizontalPosition(
           activatorRect,
@@ -214,7 +223,8 @@ export default class PositionedOverlay extends React.PureComponent<
           measuring: false,
           activatorRect: getRectForNode(activator),
           left: horizontalPosition,
-          top: verticalPosition.top,
+          top: lockPosition ? top : verticalPosition.top,
+          lockPosition: Boolean(fixed),
           height: verticalPosition.height || 0,
           width: fullWidth ? overlayRect.width : null,
           positioning: verticalPosition.positioning as Positioning,

@@ -9,6 +9,7 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 import Spinner from '../Spinner';
+import Indicator from '../Indicator';
 
 import * as styles from './Button.scss';
 
@@ -85,6 +86,7 @@ function Button({
   fullWidth,
   polaris: {intl},
 }: CombinedProps) {
+  const indicator = false;
   const isDisabled = disabled || loading;
   const className = classNames(
     styles.Button,
@@ -127,6 +129,8 @@ function Button({
     </span>
   ) : null;
 
+  const indicatorMarkup = indicator && <Indicator />;
+
   const content =
     iconMarkup || disclosureIconMarkup ? (
       <span className={styles.Content}>
@@ -157,6 +161,7 @@ function Button({
       disabled={isDisabled}
       aria-label={accessibilityLabel}
     >
+      {indicatorMarkup}
       {content}
     </UnstyledLink>
   ) : (
@@ -175,6 +180,7 @@ function Button({
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >
+      {indicatorMarkup}
       {content}
     </button>
   );

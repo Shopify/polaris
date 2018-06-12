@@ -5,7 +5,7 @@ $duration-data: (
   base: $unit * 2,
   slow: $unit * 3,
   slower: $unit * 4,
-  slowest: $unit * 5
+  slowest: $unit * 5,
 );
 
 /// Returns the duration value for a given variant.

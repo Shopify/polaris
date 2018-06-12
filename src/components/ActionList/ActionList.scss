@@ -99,3 +99,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   @include layout-flex-fix;
   flex: 1 0 auto;
 }
+
+.BadgeWrapper {
+  margin-left: spacing();
+}

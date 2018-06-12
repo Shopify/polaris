@@ -4,12 +4,14 @@ import {classNames} from '@shopify/react-utilities';
 import {ItemDescriptor} from './types';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
+import Badge from '../Badge';
 
 import * as styles from './ActionList.scss';
 
 export type Props = ItemDescriptor;
 
 export default function Item({
+  badge,
   content,
   url,
   onAction,
@@ -39,13 +41,25 @@ export default function Item({
   }
 
   const contentMarkup = ellipsis && content ? `${content}…` : content;
-  const contentElement = imageElement ? (
-    <div className={styles.Content}>
-      {imageElement}
-      <div className={styles.Text}>{contentMarkup}</div>
-    </div>
+
+  const badgeMarkup = badge && (
+    <span className={styles.BadgeWrapper}>
+      <Badge status={badge.status}>{badge.content}</Badge>
+    </span>
+  );
+
+  const textMarkup = imageElement ? (
+    <div className={styles.Text}>{contentMarkup}</div>
   ) : (
     contentMarkup
+  );
+
+  const contentElement = (
+    <div className={styles.Content}>
+      {imageElement}
+      {textMarkup}
+      {badgeMarkup}
+    </div>
   );
 
   const control = url ? (

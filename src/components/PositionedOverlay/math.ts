@@ -16,6 +16,7 @@ export function calculateVerticalPosition(
   scrollableContainerRect: Rect,
   containerRect: Rect,
   preferredPosition: PreferredPosition,
+  fixed: boolean | undefined,
 ) {
   const activatorTop = activatorRect.top;
   const activatorBottom = activatorTop + activatorRect.height;
@@ -40,16 +41,17 @@ export function calculateVerticalPosition(
     distanceToBottomScroll >= minimumSpaceToScroll;
   const heightIfBelow = Math.min(spaceBelow, desiredHeight);
   const heightIfAbove = Math.min(spaceAbove, desiredHeight);
+  const containerRectTop = fixed ? 0 : containerRect.top;
 
   const positionIfAbove = {
     height: heightIfAbove - verticalMargins,
-    top: activatorTop + containerRect.top - heightIfAbove,
+    top: activatorTop + containerRectTop - heightIfAbove,
     positioning: 'above',
   };
 
   const positionIfBelow = {
     height: heightIfBelow - verticalMargins,
-    top: activatorBottom + containerRect.top,
+    top: activatorBottom + containerRectTop,
     positioning: 'below',
   };
 

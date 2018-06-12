@@ -44,7 +44,9 @@ function Cell({
   sortable,
   sortDirection,
   defaultSortDirection,
-  polaris: {intl: {translate}},
+  polaris: {
+    intl: {translate},
+  },
   onSort,
 }: CombinedProps) {
   const numeric = contentType === 'numeric';
@@ -71,9 +73,12 @@ function Cell({
 
   const iconClassName = classNames(sortable && styles['Heading-sortable']);
 
+  // TODO work out a better way for fix this lint violation
   const presentationalMarkup = header ? (
+    // eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
     <th aria-hidden role="presentation" className={className} style={style} />
   ) : (
+    // eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
     <td aria-hidden role="presentation" className={className} style={style} />
   );
 

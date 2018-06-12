@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {Button, Popover, Select, FormLayout} from '../../../';
+import {Button, Popover, Select, FormLayout} from '../../..';
 import Form from '../../../Form';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
@@ -38,7 +38,12 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {filters, resourceName, disabled, polaris: {intl}} = this.props;
+    const {
+      filters,
+      resourceName,
+      disabled,
+      polaris: {intl},
+    } = this.props;
     const {popoverActive, selectedFilter, selectedFilterValue} = this.state;
 
     const activator = (

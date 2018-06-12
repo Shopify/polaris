@@ -31,9 +31,9 @@ choices.
 
 Choice lists should:
 
-* Include a title that tells the merchant what to do or explains the available options
-* Label options clearly based on what the option will do
-* Avoid mutually exclusive options when allowing multiple selection
+- Include a title that tells the merchant what to do or explains the available options
+- Label options clearly based on what the option will do
+- Avoid mutually exclusive options when allowing multiple selection
 
 ---
 
@@ -43,7 +43,7 @@ Choice lists should:
 
 List titles should:
 
-* Help merchants understand how the items in the list are grouped together, or
+- Help merchants understand how the items in the list are grouped together, or
   should explain what kind of choice the merchant is making
 
 <!-- usagelist -->
@@ -58,11 +58,11 @@ Pick one
 
 <!-- end -->
 
-* Be concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep list titles to a single sentence
-  * It the title introduces the list, it should end with a colon
-  * Should be written in sentence case
+- Be concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep list titles to a single sentence
+  - It the title introduces the list, it should end with a colon
+  - Should be written in sentence case
 
 <!-- usagelist -->
 
@@ -76,7 +76,7 @@ Shipping Options
 
 <!-- end -->
 
-* Not use colons
+- Not use colons
 
 <!-- usageblock -->
 
@@ -105,57 +105,57 @@ If the customer abandons their checkout, send them an email reminder to complete
 
 Every item in a choice list should:
 
-* Start with a capital letter
+- Start with a capital letter
 
 <!-- usageblock -->
 
 #### Do
 
-* Option 1
-* Option 2
-* Option 3
+- Option 1
+- Option 2
+- Option 3
 
 #### Don’t
 
-* option 1
-* option 2
-* option 3
+- option 1
+- option 2
+- option 3
 
 <!-- end -->
 
-* Not use commas or semicolons at the end of each line
+- Not use commas or semicolons at the end of each line
 
 <!-- usageblock -->
 
 #### Do
 
-* Red
-* Yellow
-* Blue
+- Red
+- Yellow
+- Blue
 
 #### Don’t
 
-* Red;
-* Yellow;
-* Blue.
+- Red;
+- Yellow;
+- Blue.
 
 <!-- end -->
 
-* Be written in sentence case (the first word capitalized, the rest lowercase)
+- Be written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usageblock -->
 
 #### Do
 
-* Item one
-* Item two
-* Item three
+- Item one
+- Item two
+- Item three
 
 #### Don’t
 
-* Item One
-* Item Two
-* Item Three
+- Item One
+- Item Two
+- Item Three
 
 <!-- end -->
 
@@ -351,6 +351,6 @@ class ChoiceListExample extends React.Component {
 
 ## Related components
 
-* To present a long list of radio buttons or when space is constrained, [use the select component](/components/forms/select)
-* To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](/components/forms/radio-button) or [checkbox component](/components/forms/checkbox)
-* To display a simple, non-interactive list of related content, [use the list component](/components/lists-and-tables/list)
+- To present a long list of radio buttons or when space is constrained, [use the select component](/components/forms/select)
+- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](/components/forms/radio-button) or [checkbox component](/components/forms/checkbox)
+- To display a simple, non-interactive list of related content, [use the list component](/components/lists-and-tables/list)

@@ -4,7 +4,7 @@ Demonstrates Polaris inside a [create-react-app](https://github.com/facebookincu
 
 ## Dependencies
 
-* [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
+- [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
 
 ## Getting started
 

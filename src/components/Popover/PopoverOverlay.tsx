@@ -43,12 +43,13 @@ export interface Props {
   activator: HTMLElement;
   preventAutofocus?: boolean;
   sectioned?: boolean;
+  fixed?: boolean;
   onClose(source: CloseSource): void;
 }
 
 export default class PopoverOverlay extends React.PureComponent<Props, never> {
-  private contentNode: HTMLElement | null;
-  private transitionStatus: TransitionStatus;
+  private contentNode: HTMLElement | null = null;
+  private transitionStatus: TransitionStatus | null = null;
 
   componentDidMount() {
     if (this.props.active) {
@@ -96,6 +97,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       fullWidth,
       preferredPosition = 'below',
       preferredAlignment = 'center',
+      fixed,
     } = this.props;
 
     return (
@@ -108,6 +110,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         preferredAlignment={preferredAlignment}
         // eslint-disable-next-line react/jsx-no-bind
         render={this.renderPopover.bind(this, transitionStatus)}
+        fixed={fixed}
         onScrollOut={this.handleScrollOut}
       />
     );
@@ -195,7 +198,10 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   @autobind
   private handleClick(event: Event) {
     const target = event.target as HTMLElement;
-    const {contentNode, props: {activator, onClose}} = this;
+    const {
+      contentNode,
+      props: {activator, onClose},
+    } = this;
     const isDescendant =
       contentNode != null && nodeContainsDescendant(contentNode, target);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);

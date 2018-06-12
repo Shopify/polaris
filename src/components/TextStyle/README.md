@@ -29,10 +29,10 @@ Text style enhances text with additional visual meaning. For example, using subd
 
 Text style should be:
 
-* Used when enhancing the text will help the merchant undertand its meaning
-* Subdued if the text is less important than its surrounding text
-* Strong for input fields, or for a row total in a price table
-* Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
+- Used when enhancing the text will help the merchant undertand its meaning
+- Subdued if the text is less important than its surrounding text
+- Strong for input fields, or for a row total in a price table
+- Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
 
 ## Examples
 

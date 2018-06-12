@@ -4,7 +4,7 @@ Demonstrates [Polaris](https://polaris.shopify.com) inside a [React](https://fac
 
 ## Dependencies
 
-* [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
+- [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
 
 ## Getting started
 

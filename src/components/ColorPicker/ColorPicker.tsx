@@ -99,20 +99,29 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
 
   @autobind
   private handleHueChange(hue: number) {
-    const {color: {brightness, saturation, alpha = 1}, onChange} = this.props;
+    const {
+      color: {brightness, saturation, alpha = 1},
+      onChange,
+    } = this.props;
     onChange({hue, brightness, saturation, alpha});
   }
 
   @autobind
   private handleAlphaChange(alpha: number) {
-    const {color: {hue, brightness, saturation}, onChange} = this.props;
+    const {
+      color: {hue, brightness, saturation},
+      onChange,
+    } = this.props;
     onChange({hue, brightness, saturation, alpha});
   }
 
   @autobind
   private handleDraggerMove({x, y}: Position) {
     const {pickerSize} = this.state;
-    const {color: {hue, alpha = 1}, onChange} = this.props;
+    const {
+      color: {hue, alpha = 1},
+      onChange,
+    } = this.props;
 
     const saturation = clamp(x / pickerSize, 0, 1);
     const brightness = clamp(1 - y / pickerSize, 0, 1);

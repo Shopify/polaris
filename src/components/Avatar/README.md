@@ -30,9 +30,9 @@ business in the interface.
 
 Avatars should be one of 3 sizes:
 
-* Small (32 x 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
-* Medium (40 x 40 px): use as the default size
-* Large (60 x 60 px): use when an avatar is a focal point (e.g. on a single customer card)
+- Small (32 x 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
+- Medium (40 x 40 px): use as the default size
+- Large (60 x 60 px): use when an avatar is a focal point (e.g. on a single customer card)
 
 ---
 
@@ -43,9 +43,9 @@ Any time you use an image to communicate a concept on Shopify, it’s important 
 For avatars, we recommend using a format that describes what will show in the
 image:
 
-* `alt="Person’s name"` if the avatar represents a person
-* `alt="Business’s name"` if the avatar represents a business
-* `alt=""` if the name of the person/business appears next to the avatar as text
+- `alt="Person’s name"` if the avatar represents a person
+- `alt="Business’s name"` if the avatar represents a business
+- `alt=""` if the name of the person/business appears next to the avatar as text
 
 ## Examples
 
@@ -61,4 +61,4 @@ Use to present an avatar for a merchant, customer, or business.
 
 ## Related components
 
-* To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail)
+- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail)

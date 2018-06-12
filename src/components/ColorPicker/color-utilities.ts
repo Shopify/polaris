@@ -35,7 +35,7 @@ export function hsbToRgb(color: HSBAColor): RGBAColor {
   const {hue, saturation, brightness, alpha = 1} = color;
   const chroma = brightness * saturation;
   const huePrime = hue / 60;
-  const hueDelta = 1 - Math.abs(huePrime % 2 - 1);
+  const hueDelta = 1 - Math.abs((huePrime % 2) - 1);
   const intermediateValue = chroma * hueDelta;
 
   let red = 0;
@@ -117,7 +117,7 @@ export function rgbToHsb(color: RGBAColor): HSBAColor {
       huePercentage = (r - g) / delta + 4;
   }
 
-  const hue = Math.round(huePercentage / 6 * 360);
+  const hue = Math.round((huePercentage / 6) * 360);
 
   return {
     hue: clamp(hue, 0, 360) || 0,

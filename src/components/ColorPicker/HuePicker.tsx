@@ -85,7 +85,7 @@ function offsetForHue(
 ): number {
   const slidableArea = sliderHeight - (draggerHeight + VERTICAL_PADDING);
   return clamp(
-    hue / 360 * slidableArea + VERTICAL_PADDING,
+    (hue / 360) * slidableArea + VERTICAL_PADDING,
     0,
     sliderHeight - draggerHeight,
   );
@@ -94,5 +94,5 @@ function offsetForHue(
 function hueForOffset(offset: number, sliderHeight: number): number {
   const selectionHeight = offset - VERTICAL_PADDING;
   const slidableArea = sliderHeight - VERTICAL_PADDING * 2;
-  return clamp(selectionHeight / slidableArea * 360, 0, 360);
+  return clamp((selectionHeight / slidableArea) * 360, 0, 360);
 }

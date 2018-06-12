@@ -3,7 +3,7 @@ import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Button, EventListener, Sticky} from '../';
+import {Button, EventListener, Sticky} from '..';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
 import {
@@ -92,7 +92,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
-    const {polaris: {intl}} = props;
+    const {
+      polaris: {intl},
+    } = props;
 
     this.defaultResourceName = {
       singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
@@ -146,7 +148,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private get bulkActionsLabel() {
-    const {selectedItems = [], items, polaris: {intl}} = this.props;
+    const {
+      selectedItems = [],
+      items,
+      polaris: {intl},
+    } = this.props;
 
     const selectedItemsCount =
       selectedItems === SELECT_ALL_ITEMS

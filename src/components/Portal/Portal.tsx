@@ -15,9 +15,10 @@ export default class Portal extends React.PureComponent<Props, never> {
 
   private portalNode: HTMLElement;
 
-  private portalId = this.props.idPrefix !== ''
-    ? `${this.props.idPrefix}-${getUniqueID()}`
-    : getUniqueID();
+  private portalId =
+    this.props.idPrefix !== ''
+      ? `${this.props.idPrefix}-${getUniqueID()}`
+      : getUniqueID();
 
   componentWillMount() {
     if (isServer) {

@@ -103,12 +103,12 @@ $breakpoint: 768px;
 
 .Cell-fixed {
   @include text-emphasis-normal;
+  @include text-breakword;
   position: absolute;
   top: auto;
   left: 0;
   width: $fixed-column-width;
   white-space: unset;
-  word-wrap: break-word;
   text-align: left;
   backface-visibility: hidden; // stops painting on scroll (due to positioning)
 }

@@ -8,7 +8,7 @@ $resource-list-variables: (
   header-content-min-height: control-height(),
   content-wrapper-stacking-order: 1,
   bulk-actions-wrapper-stacking-order: 2,
-  header-outer-wrapper-stacking-order: 1
+  header-outer-wrapper-stacking-order: 1,
 );
 
 @function resource-list($variable) {
@@ -25,7 +25,7 @@ $resource-list-item-variables: (
   translate-offset: rem(48px) - rem(12px) + spacing(extra-tight),
   clickable-stacking-order: 1,
   content-stacking-order: 2,
-  actions-height: rem(56px)
+  actions-height: rem(56px),
 );
 
 @function resource-list-item($variable) {

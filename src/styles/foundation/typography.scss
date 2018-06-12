@@ -11,35 +11,95 @@ $font-family-data: (
   monospace: #{Monaco,
   Consolas,
   'Lucida Console',
-  monospace}
+  monospace},
 );
 
 $line-height-data: (
-  caption: (base: rem(20px), large-screen: rem(16px)),
-  heading: (base: rem(24px)),
-  subheading: (base: rem(16px)),
-  input: (base: rem(24px)),
-  body: (base: rem(20px)),
-  button: (base: rem(16px)),
-  button-large: (base: rem(20px)),
-  display-x-large: (base: rem(36px), large-screen: rem(44px)),
-  display-large: (base: rem(28px), large-screen: rem(32px)),
-  display-medium: (base: rem(28px), large-screen: rem(32px)),
-  display-small: (base: rem(24px), large-screen: rem(28px))
+  caption: (
+    base: rem(20px),
+    large-screen: rem(16px),
+  ),
+  heading: (
+    base: rem(24px),
+  ),
+  subheading: (
+    base: rem(16px),
+  ),
+  input: (
+    base: rem(24px),
+  ),
+  body: (
+    base: rem(20px),
+  ),
+  button: (
+    base: rem(16px),
+  ),
+  button-large: (
+    base: rem(20px),
+  ),
+  display-x-large: (
+    base: rem(36px),
+    large-screen: rem(44px),
+  ),
+  display-large: (
+    base: rem(28px),
+    large-screen: rem(32px),
+  ),
+  display-medium: (
+    base: rem(28px),
+    large-screen: rem(32px),
+  ),
+  display-small: (
+    base: rem(24px),
+    large-screen: rem(28px),
+  ),
 );
 
 $font-size-data: (
-  caption: (base: rem(13px), large-screen: rem(12px)),
-  heading: (base: rem(17px), large-screen: rem(16px)),
-  subheading: (base: rem(13px), large-screen: rem(12px)),
-  input: (base: rem(16px), large-screen: rem(14px)),
-  body: (base: rem(15px), large-screen: rem(14px)),
-  button: (base: rem(15px), large-screen: rem(14px)),
-  button-large: (base: rem(17px), large-screen: rem(16px)),
-  display-x-large: (base: rem(27px), large-screen: rem(42px)),
-  display-large: (base: rem(24px), large-screen: rem(28px)),
-  display-medium: (base: rem(21px), large-screen: rem(26px)),
-  display-small: (base: rem(16px), large-screen: rem(20px))
+  caption: (
+    base: rem(13px),
+    large-screen: rem(12px),
+  ),
+  heading: (
+    base: rem(17px),
+    large-screen: rem(16px),
+  ),
+  subheading: (
+    base: rem(13px),
+    large-screen: rem(12px),
+  ),
+  input: (
+    base: rem(16px),
+    large-screen: rem(14px),
+  ),
+  body: (
+    base: rem(15px),
+    large-screen: rem(14px),
+  ),
+  button: (
+    base: rem(15px),
+    large-screen: rem(14px),
+  ),
+  button-large: (
+    base: rem(17px),
+    large-screen: rem(16px),
+  ),
+  display-x-large: (
+    base: rem(27px),
+    large-screen: rem(42px),
+  ),
+  display-large: (
+    base: rem(24px),
+    large-screen: rem(28px),
+  ),
+  display-medium: (
+    base: rem(21px),
+    large-screen: rem(26px),
+  ),
+  display-small: (
+    base: rem(16px),
+    large-screen: rem(20px),
+  ),
 );
 
 /// Returns the font stack for a given family.

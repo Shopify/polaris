@@ -23,8 +23,8 @@ A wrapper component that handles the submission of forms.
 
 The form component should be used to:
 
-* Wrap around all form input elements
-* Emulate the native HTML `form` element behaviour with a custom `onSubmit` callback
+- Wrap around all form input elements
+- Emulate the native HTML `form` element behaviour with a custom `onSubmit` callback
 
 ---
 
@@ -125,5 +125,5 @@ class FormExample extends React.Component {
 
 ## Related components
 
-* To arrange fields within a form using standard spacing, [use the form layout component](/components/forms/form-layout)
-* To see all of the components that make up a form, [visit the form section](/components/forms/checkbox#navigation) of the component library
+- To arrange fields within a form using standard spacing, [use the form layout component](/components/forms/form-layout)
+- To see all of the components that make up a form, [visit the form section](/components/forms/checkbox#navigation) of the component library

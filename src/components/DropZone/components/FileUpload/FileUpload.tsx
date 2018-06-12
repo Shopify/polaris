@@ -42,7 +42,11 @@ export class FileUpload extends React.Component<CombinedProps, State> {
 
     const {type} = context;
     const suffix = capitalize(type);
-    const {polaris: {intl: {translate}}} = props;
+    const {
+      polaris: {
+        intl: {translate},
+      },
+    } = props;
 
     this.state = {
       actionTitle: translate(

@@ -4,7 +4,7 @@ Demonstrates Polaris inside a React app served via `webpack` and `webpack-dev-se
 
 ## Dependencies
 
-* [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
+- [yarn](https://github.com/yarnpkg/yarn/) or [npm](https://www.npmjs.com/)
 
 ## Getting started
 

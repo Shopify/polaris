@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "rootDir": "./src",
+    "baseUrl": "./",
+    "rootDir": "./",
     "target": "es2016",
     "module": "es2015",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "declaration": true,
     "declarationDir": "types",
     "jsx": "react-native",
@@ -27,6 +28,7 @@
   },
   "include": [
     "./config/typescript/**/*",
-    "./src/**/*"
+    "./src/**/*",
+    "./package.json"
   ]
 }

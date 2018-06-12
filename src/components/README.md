@@ -23,9 +23,9 @@ The component library was designed to help developers quickly create the best ex
 
 Each component includes information to help you implement them, such as:
 
-* Explanations of the merchant problem it solves in the interface
-* Interactive examples so you can see the component in action
-* Best practices and guidelines to use the component correctly
+- Explanations of the merchant problem it solves in the interface
+- Interactive examples so you can see the component in action
+- Best practices and guidelines to use the component correctly
 
 Learn more about developing apps and themes for Shopify on our [developer hub](https://developers.shopify.com/).
 
@@ -39,21 +39,21 @@ There are two options for installing and implementing our components, React or C
 
 Use React components in most cases, especially if you’re building a highly interactive experience. This can be done with or without a build system.
 
-* [Implementation instructions](https://github.com/Shopify/polaris) (requires HTML, React, a JS build tool)
+- [Implementation instructions](https://github.com/Shopify/polaris) (requires HTML, React, a JS build tool)
 
-* Have a look at the [React component examples](https://github.com/Shopify/polaris/tree/master/examples) to see how it’s done
+- Have a look at the [React component examples](https://github.com/Shopify/polaris/tree/master/examples) to see how it’s done
 
 ### CSS components
 
-* Use CSS components if you don’t have or want a build system for your project
+- Use CSS components if you don’t have or want a build system for your project
 
-* Include the CSS in your HTML to implement:
+- Include the CSS in your HTML to implement:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.1.2/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.2.0/polaris.min.css" />
 ```
 
-* Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
+- Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
 
 ---
 
@@ -68,7 +68,7 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.1.2/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.2.0/polaris.min.css" />
 ```
 
 First, import the component into your project:
@@ -98,7 +98,7 @@ ReactDOM.render(app, domContainerNode);
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.1.2/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/2.2.0/polaris.min.css" />
 ```
 
 Add the appropriate classes to your HTML elements:
@@ -117,11 +117,11 @@ With embedded apps, you can add value to a merchant’s day-to-day business oper
 
 The embedded section includes
 
-* Configuring the `AppProvider` with your embedded app config
-* Top bar with title, icon, breadcrumbs, buttons, pagination, and dropdown menus
-* Custom modal windows
-* Alert and confirmation dialogs
-* Product and collection resource pickers
+- Configuring the `AppProvider` with your embedded app config
+- Top bar with title, icon, breadcrumbs, buttons, pagination, and dropdown menus
+- Custom modal windows
+- Alert and confirmation dialogs
+- Product and collection resource pickers
 
 ### Embedded apps
 
@@ -187,11 +187,11 @@ if you want to import a subset of the components.
 
 Your app must be wrapped by the `<AppProvider />` component. This component initializes the EASDK using the `apiKey` and `shopOrigin` you provide.
 
-* [`<AppProvider />`](/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
-* [`<Page />`](https://polaris.shopify.com/components/embedded/embedded-page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
-* [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
-* [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.
-* [`<ResourcePicker />`](https://polaris.shopify.com/components/embedded/embedded-resource-picker): A modal dialog that allows the user to select one or more of their products or collections, and provides you with details on the selected resources. This replaces the [`ShopifyApp.Modal.productPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-productpicker-options-fn) and [`ShopifyApp.Modal.collectionPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-collectionpicker-options-fn) EASDK methods.
+- [`<AppProvider />`](/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
+- [`<Page />`](https://polaris.shopify.com/components/embedded/embedded-page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
+- [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
+- [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.
+- [`<ResourcePicker />`](https://polaris.shopify.com/components/embedded/embedded-resource-picker): A modal dialog that allows the user to select one or more of their products or collections, and provides you with details on the selected resources. This replaces the [`ShopifyApp.Modal.productPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-productpicker-options-fn) and [`ShopifyApp.Modal.collectionPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-collectionpicker-options-fn) EASDK methods.
 
 ---
 
@@ -205,9 +205,9 @@ If you’re new to React, start with the official [React Getting Started documen
 
 Here are some additional resources:
 
-* Online training at [reacttraining.com](https://reacttraining.com/), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](https://reactforbeginners.com)
-* Community resources in [Awesome React](https://github.com/enaqx/awesome-react)
-* Answers in the various [React support communities](https://facebook.github.io/react/community/support.html)
+- Online training at [reacttraining.com](https://reacttraining.com/), [buildwithreact.com](http://buildwithreact.com), and [reactforbeginners.com](https://reactforbeginners.com)
+- Community resources in [Awesome React](https://github.com/enaqx/awesome-react)
+- Answers in the various [React support communities](https://facebook.github.io/react/community/support.html)
 
 ### Shopify’s developer hub
 

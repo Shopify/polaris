@@ -26,12 +26,12 @@ The drop zone component lets merchants upload files by dragging and dropping fil
 
 Drop zones should:
 
-* Inform merchants when the file(s) can’t be uploaded:
-  * When possible, use validation errors on drag to detect and explain things like file size limits or file types accepted.
-  * Use the [banner component](/components/feedback-indicators/banner) with a critical status to communicate errors that happen on the server.
-* Provide feedback once the file(s) have been dropped and uploading begins.
-* For convenience, allow files to be dropped anywhere on the page by enabling `dropOnPage`.
-* Provide a file upload button to allow merchants to select files for upload in a traditional way. Do this by using the `DropZone.FileUpload` subcomponent.
+- Inform merchants when the file(s) can’t be uploaded:
+  - When possible, use validation errors on drag to detect and explain things like file size limits or file types accepted.
+  - Use the [banner component](/components/feedback-indicators/banner) with a critical status to communicate errors that happen on the server.
+- Provide feedback once the file(s) have been dropped and uploading begins.
+- For convenience, allow files to be dropped anywhere on the page by enabling `dropOnPage`.
+- Provide a file upload button to allow merchants to select files for upload in a traditional way. Do this by using the `DropZone.FileUpload` subcomponent.
 
 ### Validation errors
 
@@ -47,9 +47,9 @@ Client-side validation errors give instant feedback.
 
 Validation error messages should be:
 
-* Explicit: help merchants understand why their file can’t be uploaded and what they should change to successfully upload their file
-* In sentence case: capitalize only the first word in the message
-* Concise: use simple, clear language that can be read at a glance. For example:
+- Explicit: help merchants understand why their file can’t be uploaded and what they should change to successfully upload their file
+- In sentence case: capitalize only the first word in the message
+- Concise: use simple, clear language that can be read at a glance. For example:
 
 `File size must be less than 20MB`
 
@@ -61,9 +61,9 @@ Server-side upload errors give feedback after file submission.
 
 Upload error messages should:
 
-* Be displayed as a [banner](/components/feedback-indicators/banner) with a critical status
-* Show the name of the file(s) that were not uploaded successfully
-* Describe why the file(s) couldn’t be uploaded and what the merchant should change to upload their file successfully, as seen below
+- Be displayed as a [banner](/components/feedback-indicators/banner) with a critical status
+- Show the name of the file(s) that were not uploaded successfully
+- Describe why the file(s) couldn’t be uploaded and what the merchant should change to upload their file successfully, as seen below
 
 ```
 The following images couldn’t be uploaded:
@@ -541,5 +541,5 @@ Use file upload with the drop zone component to let merchants select files for u
 
 ## Related components
 
-* To provide context to upload errors when they occur, use the [banner component](/components/feedback-indicators/banner)
-* To provide feedback during file upload, use the [spinner component](/components/feedback-indicators/spinner)
+- To provide context to upload errors when they occur, use the [banner component](/components/feedback-indicators/banner)
+- To provide feedback during file upload, use the [spinner component](/components/feedback-indicators/spinner)

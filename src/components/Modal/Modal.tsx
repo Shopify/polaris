@@ -283,7 +283,9 @@ export class Modal extends React.Component<CombinedProps, State> {
   }
 
   private handleWarning(type: Warn) {
-    const {polaris: {intl}} = this.props;
+    const {
+      polaris: {intl},
+    } = this.props;
     const reqProps = {
       modal: {
         open: 'open',

@@ -28,10 +28,10 @@ Use when an element needs to be available to assistive technology (e.g. screen r
 
 Visually hidden should:
 
-* Not be used if semantic markup can make content understandable to people using assistive technology
-* Be used to provide extra context when semantic markup isn’t enough
-* Be used on any content that is normally present but is being omitted
-* Make sense in context when used with a screen reader
+- Not be used if semantic markup can make content understandable to people using assistive technology
+- Be used to provide extra context when semantic markup isn’t enough
+- Be used on any content that is normally present but is being omitted
+- Make sense in context when used with a screen reader
 
 ---
 

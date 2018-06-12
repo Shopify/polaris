@@ -3,7 +3,7 @@ import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {contextTypes} from '../../types';
 import {ComplexAction} from '../../../../types';
-import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../../';
+import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
 
 import FilterCreator from './FilterCreator';
 import {AppliedFilter, Filter, FilterType} from './types';

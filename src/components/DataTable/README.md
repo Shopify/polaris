@@ -247,24 +247,24 @@ class DataTableLinkExample extends React.Component {
 
 Data tables should:
 
-* Show values across multiple categories and measures.
-* Allow for filtering and ordering when comparison is not a priority.
-* Help merchants visualize and scan many values from an entire data set.
-* Help merchants find other values in the data hierarchy through use of links.
-* Minimize clutter by only including values that supports the data’s purpose.
-* Include a summary row to surface the column totals.
-* Not include calculations within the summary row.
-* Wrap instead of truncate content. This is because if row titles start with the same word, they’ll all appear the same when truncated.
-* Not to be used for an actionable list of items that link to show pages. For this functionality, use the [resource list] component.
+- Show values across multiple categories and measures.
+- Allow for filtering and ordering when comparison is not a priority.
+- Help merchants visualize and scan many values from an entire data set.
+- Help merchants find other values in the data hierarchy through use of links.
+- Minimize clutter by only including values that supports the data’s purpose.
+- Include a summary row to surface the column totals.
+- Not include calculations within the summary row.
+- Wrap instead of truncate content. This is because if row titles start with the same word, they’ll all appear the same when truncated.
+- Not to be used for an actionable list of items that link to show pages. For this functionality, use the [resource list] component.
 
 ### Alignment
 
 Column content types are built into the component props so the following alignment rules are followed:
 
-* Numerical = Right aligned
-* Textual data = Left aligned
-* Align headers with their related data
-* Don’t center align
+- Numerical = Right aligned
+- Textual data = Left aligned
+- Align headers with their related data
+- Don’t center align
 
 ---
 
@@ -272,10 +272,10 @@ Column content types are built into the component props so the following alignme
 
 Headers should:
 
-* Be informative and descriptive
-* Concise and scannable
-* Include units of measurement symbols so they aren’t repeated throughout the columns
-* Use sentence case (first word capitalized, rest lowercase)
+- Be informative and descriptive
+- Concise and scannable
+- Include units of measurement symbols so they aren’t repeated throughout the columns
+- Use sentence case (first word capitalized, rest lowercase)
 
 <!-- usagelist -->
 
@@ -291,9 +291,9 @@ Temperature
 
 Column content should:
 
-* Be concise and scannable
-* Not include units of measurement symbols (put those symbols in the headers)
-* Use sentence case (first word capitalized, rest lowercase)
+- Be concise and scannable
+- Not include units of measurement symbols (put those symbols in the headers)
+- Use sentence case (first word capitalized, rest lowercase)
 
 ### Decimals
 
@@ -303,4 +303,4 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Related components
 
-* To create an actionable list of related items that link to show pages, such as a list of customers, use the [resource list component](/components/lists-and-tables/resource-list).
+- To create an actionable list of related items that link to show pages, such as a list of customers, use the [resource list component](/components/lists-and-tables/resource-list).
