@@ -196,6 +196,7 @@ export default class Header extends React.PureComponent<Props, State> {
         : null;
 
     const showIndicator =
+      false &&
       actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
 
     const rollupMarkup = this.hasRollup ? (
@@ -205,8 +206,7 @@ export default class Header extends React.PureComponent<Props, State> {
           onClose={this.handleRollupToggle}
           activator={
             <Button
-              indicator={showIndicator && !rollupOpen}
-              outline={showIndicator}
+              outline={false && showIndicator}
               disclosure
               onClick={this.handleRollupToggle}
             >

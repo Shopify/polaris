@@ -12,7 +12,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
-- Added `indicator` prop to button ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
 - Added badge prop to the item descriptor type and action group ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
 
 ### Bug fixes
