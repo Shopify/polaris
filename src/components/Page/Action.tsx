@@ -72,13 +72,15 @@ export default function Action({
     );
   }
 
-  const indicatorMarkup = showIndicator && !hasIndicator && <Indicator />;
+  const indicatorMarkup = false &&
+    showIndicator &&
+    !hasIndicator && <Indicator />;
 
   const className = classNames(
     styles.Action,
     disabled && styles.disabled,
     icon && children == null && styles.iconOnly,
-    showIndicator && styles['Action-outline'],
+    false && showIndicator && styles['Action-outline'],
   );
 
   return (

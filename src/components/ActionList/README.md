@@ -216,55 +216,6 @@ class ActionListExample extends React.Component {
 }
 ```
 
-### Action list with a badge
-
-Use to draw the merchants attention to a new item
-
-```jsx
-class ActionListExample extends React.Component {
-  state = {
-    active: false,
-  };
-
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
-
-  render() {
-    const {active} = this.state;
-
-    const activator = (
-      <Button onClick={this.togglePopover} indicator={!active}>
-        More actions
-      </Button>
-    );
-
-    return (
-      <div style={{height: '200px'}}>
-        <Popover
-          active={active}
-          activator={activator}
-          onClose={this.togglePopover}
-        >
-          <ActionList
-            items={[
-              {content: 'Import file', icon: 'import'},
-              {
-                content: 'Export file',
-                icon: 'export',
-                badge: {status: 'new', content: 'New'},
-              },
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
-}
-```
-
 ---
 
 ## Related components

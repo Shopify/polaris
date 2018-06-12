@@ -46,8 +46,6 @@ export interface Props {
   external?: boolean;
   /** Icon to display to the left of the button content */
   icon?: IconProps['source'];
-  /**  Display a dot indicator */
-  indicator?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the button controls */
@@ -78,7 +76,6 @@ function Button({
   onBlur,
   external,
   icon,
-  indicator,
   primary,
   outline,
   destructive,
@@ -89,6 +86,7 @@ function Button({
   fullWidth,
   polaris: {intl},
 }: CombinedProps) {
+  const indicator = false;
   const isDisabled = disabled || loading;
   const className = classNames(
     styles.Button,
