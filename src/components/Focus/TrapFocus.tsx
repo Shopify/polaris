@@ -6,6 +6,7 @@ import {
   findFirstFocusableNode,
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
+
 import {EventListener} from '../../components';
 
 import Focus from './Focus';
@@ -42,7 +43,7 @@ export default class TrapFocus extends React.PureComponent<Props, never> {
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
-    if (relatedTarget == null || !trapping) {
+    if (relatedTarget == null || trapping === false) {
       return;
     }
 

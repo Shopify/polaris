@@ -1,0 +1,14 @@
+// We're matching that here and relatively stacking other fixed components.
+$fixed-element-stacking-order: (
+  banner: 500,
+  toast: 501,
+  top-bar: 502,
+  context-bar: 503,
+  skip-to-content: 504,
+  nav-overlay: 505,
+  nav: 506,
+  loading-bar: 507,
+  modal-backdrop: 508,
+  modal: 509,
+  dev-ui: 510
+);
