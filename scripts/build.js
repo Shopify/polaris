@@ -23,25 +23,37 @@ const scripts = resolvePath(root, 'scripts');
 const types = resolvePath(root, 'types');
 const tsBuild = resolvePath(scripts, 'tsconfig.json');
 
-execSync(`${resolvePath(root, './node_modules/.bin/tsc')} --outDir ${intermediateBuild} --project ${tsBuild}`, {
-  stdio: 'inherit',
-});
+execSync(
+  `${resolvePath(
+    root,
+    './node_modules/.bin/tsc',
+  )} --outDir ${intermediateBuild} --project ${tsBuild}`,
+  {
+    stdio: 'inherit',
+  },
+);
 
 mv(resolvePath(root, 'types/src/*'), types);
 rm('-rf', resolvePath(root, 'types/src'));
 
-writeFileSync(resolvePath(root, 'embedded.d.ts'), "export * from './types/embedded';\n");
+writeFileSync(
+  resolvePath(root, 'embedded.d.ts'),
+  "export * from './types/embedded';\n",
+);
 
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 
 const srcReadme = resolvePath(root, './src/components/README.md');
 const destinationReadme = resolvePath(docs, './components/README.md');
 
-copy(['./src/**/*.md', docs], { up: 1 })
+copy(['./src/**/*.md', docs], {up: 1})
   .then(() => {
     writeFileSync(
       destinationReadme,
-      readFileSync(srcReadme, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version)
+      readFileSync(srcReadme, 'utf8').replace(
+        /\{\{POLARIS_VERSION\}\}/g,
+        packageJSON.version,
+      ),
     );
   })
   .catch((error) => {
@@ -58,12 +70,17 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
     ].forEach((file) => {
       writeFileSync(
         file,
-        readFileSync(file, 'utf8').replace(/\{\{VERSION\}\}/g, packageJSON.version)
+        readFileSync(file, 'utf8').replace(
+          /\{\{POLARIS_VERSION\}\}/g,
+          packageJSON.version,
+        ),
       );
     });
   })
   .then(() => {
-    writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
+    writeFileSync(
+      resolvePath(intermediateBuild, '.babelrc'),
+      `
       {
         "presets": [
           "shopify/react",
@@ -73,46 +90,57 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
           "../config/babel/plugins/sass-namespace-to-default-import.js"
         ]
       }
-    `);
+    `,
+    );
   })
   // Main bundle: supports all our supported browsers, CommonJS, and
   // uses the full class names for any Sass imports
-  .then(() => runRollup({
-    entry: mainEntry,
-    output: 'polaris.js',
-    format: 'cjs',
-    css: true,
-  }))
+  .then(() =>
+    runRollup({
+      entry: mainEntry,
+      output: 'polaris.js',
+      format: 'cjs',
+      css: true,
+    }),
+  )
   // ES bundle: supports all our supported browsers, but uses ES imports
   // (for tree shaking), uses the full class names for any Sass imports
-  .then(() => runRollup({
-    entry: mainEntry,
-    output: 'polaris.es.js',
-    format: 'es',
-    css: false,
-    useExistingClassTokens: true,
-  }))
+  .then(() =>
+    runRollup({
+      entry: mainEntry,
+      output: 'polaris.es.js',
+      format: 'es',
+      css: false,
+      useExistingClassTokens: true,
+    }),
+  )
   // Embedded bundle, supports all our supported browsers, CommonJS, no
   // styles because no embedded-only components have styles
-  .then(() => runRollup({
-    entry: embeddedEntry,
-    output: 'embedded.js',
-    format: 'cjs',
-    css: false,
-  }))
-  .then(() => Promise.all([
-    cp('build/polaris.js', './index.js'),
-    cp('build/embedded.js', './embedded.js'),
-    cp('build/polaris.es.js', './index.es.js'),
-    cp('build/polaris.css', './styles.css'),
-  ]))
+  .then(() =>
+    runRollup({
+      entry: embeddedEntry,
+      output: 'embedded.js',
+      format: 'cjs',
+      css: false,
+    }),
+  )
+  .then(() =>
+    Promise.all([
+      cp('build/polaris.js', './index.js'),
+      cp('build/embedded.js', './embedded.js'),
+      cp('build/polaris.es.js', './index.es.js'),
+      cp('build/polaris.css', './styles.css'),
+    ]),
+  )
   // Main Sass build that includes the full CSS class names
   .then(() => generateSassBuild(build))
   .then(() => {
     cp('-r', resolvePath(build, 'sass', '*'), root);
   })
   .then(() => {
-    writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
+    writeFileSync(
+      resolvePath(intermediateBuild, '.babelrc'),
+      `
       {
         "presets": [
           "shopify/react"
@@ -121,22 +149,27 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
           "../config/babel/plugins/sass-namespace-to-default-import.js"
         ]
       }
-    `);
+    `,
+    );
   })
   .then(() => ensureDirSync(finalEsnext))
   // Custom build consumed by Sewing Kit: it preserves all ESNext features
   // including imports/ exports for better tree shaking, and includes
   // only the minified CSS class names
-  .then(() => runRollup({
-    entry: mainEntry,
-    output: 'polaris.js',
-    outputDir: buildEsnext,
-    format: 'es',
-    css: true,
-    minifyClassnames: true,
-  }))
+  .then(() =>
+    runRollup({
+      entry: mainEntry,
+      output: 'polaris.js',
+      outputDir: buildEsnext,
+      format: 'es',
+      css: true,
+      minifyClassnames: true,
+    }),
+  )
   .then(() => {
-    writeFileSync(resolvePath(intermediateBuild, '.babelrc'), `
+    writeFileSync(
+      resolvePath(intermediateBuild, '.babelrc'),
+      `
       {
         "presets": [
           "shopify/react",
@@ -146,26 +179,34 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
           "../config/babel/plugins/sass-namespace-to-default-import.js"
         ]
       }
-    `);
+    `,
+    );
   })
   // Custom build consumed by Sewing Kit for the server: matches ES features
   // available in Node 6+ but does not preserve imports/ exports since this
   // package is resolved natively by Node. Uses the same minified class names.
-  .then(() => runRollup({
-    entry: mainEntry,
-    output: 'polaris-server.js',
-    outputDir: buildEsnext,
-    format: 'cjs',
-    css: false,
-    useExistingClassTokens: true,
-  }))
+  .then(() =>
+    runRollup({
+      entry: mainEntry,
+      output: 'polaris-server.js',
+      outputDir: buildEsnext,
+      format: 'cjs',
+      css: false,
+      useExistingClassTokens: true,
+    }),
+  )
   // Sass build with the minified class names
   .then(() => generateSassBuild(buildEsnext))
-  .then(() => Promise.all([
-    cp(join(buildEsnext, 'polaris.js'), join(finalEsnext, 'index.js')),
-    cp(join(buildEsnext, 'polaris-server.js'), join(finalEsnext, 'server.js')),
-    cp('-R', join(buildEsnext, 'sass', 'styles'), finalEsnext),
-  ]))
+  .then(() =>
+    Promise.all([
+      cp(join(buildEsnext, 'polaris.js'), join(finalEsnext, 'index.js')),
+      cp(
+        join(buildEsnext, 'polaris-server.js'),
+        join(finalEsnext, 'server.js'),
+      ),
+      cp('-R', join(buildEsnext, 'sass', 'styles'), finalEsnext),
+    ]),
+  )
   .catch((error) => {
     // eslint-disable-next-line no-console
     console.error(error);
@@ -189,11 +230,12 @@ function runRollup({
     cssPath: resolvePath(outputDir, 'polaris.css'),
   });
 
-  return rollup(config)
-    .then((bundle) => bundle.write({
+  return rollup(config).then((bundle) =>
+    bundle.write({
       format,
       file: resolvePath(outputDir, output),
-    }));
+    }),
+  );
 }
 
 function copy(paths, config) {

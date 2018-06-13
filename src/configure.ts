@@ -10,5 +10,5 @@ declare global {
 
 if (typeof window !== 'undefined') {
   window.Polaris = window.Polaris || {};
-  window.Polaris.VERSION = '{{VERSION}}';
+  window.Polaris.VERSION = '{{POLARIS_VERSION}}';
 }
