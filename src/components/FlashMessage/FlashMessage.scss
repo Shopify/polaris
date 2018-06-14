@@ -1,7 +1,16 @@
 $breakpoint: em(640px);
 $Backdrop-opacity: 0.88;
 
-.Toast {
+.FlashMessage {
+  position: absolute;
+  z-index: z-index(overlay);
+  right: 0;
+  bottom: spacing(loose);
+  left: 0;
+  text-align: center;
+}
+
+.Content {
   @include text-style-display-small;
   display: inline-flex;
   max-width: rem(400px);
@@ -10,11 +19,14 @@ $Backdrop-opacity: 0.88;
   background: rgba(color('black'), $Backdrop-opacity);
   box-shadow: shadow();
   color: color('white');
-  margin-bottom: spacing(loose);
 
   @include breakpoint-after($breakpoint) {
     padding: spacing();
   }
+}
+
+.error {
+  background: rgba(color('red', 'dark'), $Backdrop-opacity);
 }
 
 .CloseButton {

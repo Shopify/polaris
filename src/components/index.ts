@@ -103,15 +103,13 @@ export {
   Props as ExceptionListProps,
 } from './ExceptionList';
 
-export {default as Focus, TrapFocus, Props as FocusProps} from './Focus';
+export {default as Focus, Props as FocusProps, TrapFocus} from './Focus';
 
 export {default as FooterHelp, Props as FooterHelpProps} from './FooterHelp';
 
 export {default as Form, Props as FormProps} from './Form';
 
 export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
-
-export {default as Frame, Props as FrameProps} from './Frame';
 
 export {default as Heading, Props as HeadingProps} from './Heading';
 
@@ -135,8 +133,6 @@ export {default as Layout, Props as LayoutProps} from './Layout';
 export {default as Link, Props as LinkProps} from './Link';
 
 export {default as List, Props as ListProps} from './List';
-
-export {default as Loading, Props as LoadingProps} from './Loading';
 
 export {default as Modal, Props as ModalProps} from './Modal';
 
@@ -206,8 +202,6 @@ export {default as TextField, Props as TextFieldProps} from './TextField';
 export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
 
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
-
-export {default as Toast, Props as ToastProps} from './Toast';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 
