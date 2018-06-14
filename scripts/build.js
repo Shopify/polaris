@@ -65,15 +65,14 @@ copy(['./src/**/*.md', docs], {up: 1})
 copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   .then(() => {
     [
-      resolvePath(intermediateBuild, './styles/global.scss'),
+      resolvePath(intermediateBuild, './styles/global/elements.scss'),
       resolvePath(intermediateBuild, './configure.js'),
     ].forEach((file) => {
       writeFileSync(
         file,
-        readFileSync(file, 'utf8').replace(
-          /\{\{POLARIS_VERSION\}\}/g,
-          packageJSON.version,
-        ),
+        readFileSync(file, 'utf8')
+          .replace(/\{\{POLARIS_VERSION\}\}/g, packageJSON.version)
+          .replace(/<%= POLARIS_VERSION %>/g, packageJSON.version),
       );
     });
   })
