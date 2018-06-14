@@ -24,7 +24,7 @@ A wrapper component that handles the submission of forms.
 The form component should be used to:
 
 - Wrap around all form input elements
-- Emulate the native HTML `form` element behaviour with a custom `onSubmit` callback
+- Emulate the native HTML `form` element behavior with a custom `onSubmit` callback
 
 ---
 
@@ -45,8 +45,8 @@ class FormExample extends React.Component {
     const {newsletter, email} = this.state;
 
     return (
-      <FormLayout>
-        <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
+        <FormLayout>
           <Checkbox
             label="Sign up for the Polaris newsletter"
             checked={newsletter}
@@ -67,8 +67,8 @@ class FormExample extends React.Component {
           />
 
           <Button submit>Submit</Button>
-        </Form>
-      </FormLayout>
+        </FormLayout>
+      </Form>
     );
   }
 
@@ -96,8 +96,8 @@ class FormExample extends React.Component {
     const {url} = this.state;
 
     return (
-      <FormLayout>
-        <Form noValidate onSubmit={this.handleSubmit}>
+      <Form noValidate onSubmit={this.handleSubmit}>
+        <FormLayout>
           <TextField
             value={url}
             onChange={this.handleChange('url')}
@@ -106,8 +106,8 @@ class FormExample extends React.Component {
           />
 
           <Button submit>Submit</Button>
-        </Form>
-      </FormLayout>
+        </FormLayout>
+      </Form>
     );
   }
 

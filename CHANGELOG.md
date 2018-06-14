@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Documentation
+
+- Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
 
 ## 2.2.0 - 2018-06-12
 
