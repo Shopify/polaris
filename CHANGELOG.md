@@ -105,6 +105,7 @@ Use Option list to present a group of selectable items outside of the context of
 - Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
 - Performance: optimized avatar SVG files ([#1662](https://github.com/Shopify/polaris-react/pull/1662))
 - Updated `yarn run optimize` to add new line at the end of SVG files ([#1685](https://github.com/Shopify/polaris-react/pull/1685))
+- Added a more compact variant of `Select`, with the form label appearing inside the control) ([#1576](https://github.com/Shopify/polaris-react/pull/1576))
 
 ### Bug fixes
 
