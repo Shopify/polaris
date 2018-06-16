@@ -6,42 +6,41 @@ As you make changes, non-obvious things can break. Manual testing (we call it �
 
 ## When should you 🎩?
 
-- When you‘re adding a big or global feature and want to make sure it works.
-- When you‘re refactoring existing code and need to make sure the current behavior is still there.
+- When you‘re adding a feature and want to make sure it works
+- When you‘re refactoring existing code and need to make sure the current behavior is still there
 
 ## What should you 🎩?
 
-**Do a thorough tophat when making a big or potentially breaking change.**
-Obvious problems often won‘t be caught in the console on page load. This is why it‘s good to try at least one realistic workflow to test your changes. This might seem tedious (a few extra clicks), but catching bugs before they reach users is much less expensive.
+**Do a thorough 🎩 when making a big or potentially breaking change.** Obvious problems often won‘t be caught in the console on page load. This is why it‘s good to try at least one realistic workflow to test your changes. This might seem tedious (a few extra clicks), but catching bugs before they reach users is much less expensive. Depending on the nature of the change, a 🎩 could range from UI only, or it could mean ad hoc testing on the API, or both.
 
-Depending on the nature of the change, a 🎩 could range from UI only, or it could mean ad hoc testing on the API, or both. **Consider testing:**
+**Consider testing:**
 
-- Existing functionality which could break as a result of the changes in the PR (if you are changing anything global, expect it to break easily).
-- New functionality being introduced. Ensure that it meets the intended behavior.
-- All different permutations (flows, states, conditions, etc) that are possible.
-- If you are modifying something which are used in multiple places, whether these are UI changes or backend changes, identify where these components are used so that you can 🎩 all affected areas, not just what you intended to change as part of the PR.
+- Existing functionality which could break as a result of the changes in the PR (if you are changing anything global, expect it to break easily)
+- New functionality being introduced. Ensure that it meets the intended behavior
+- All different permutations (flows, states, conditions, etc) that are possible
+- If you are modifying something which is used in multiple places, 🎩 all affected areas not just what you intend to change
 
-## Approach to writing Tophatting instructions
+## Approach to writing tophatting instructions
 
-Spending the extra time to provide clear instructions saves everybody time and reviewers will thank you for making their job easy.
+Spending the extra time to provide clear instructions saves everybody time, and reviewers will thank you for making their job easy.
 
-- Start by guiding users on how to achieve a clean state.
-- Consider writing step-by-step instructions on which areas need 🎩 and how to interact with them.
-- Include how to 🎩 any conditional situations in your code.
-- Be explicit about the scope of your changes so that unrelated bugs don’t block the PR.
-- Be explicit about your own 🎩, and any areas or interactions you might be unsure about.
-- Include a screenshot of the expected result of a successful 🎩.
-- Be grateful. (“Thanks for catching that. Does this work?”) Reviewers are taking time out of their day to help you and that’s a special kind of gift.
+- Start by guiding users on how to achieve a clean state
+- Consider writing step-by-step instructions on which areas need 🎩 and how to interact with them
+- Include how to 🎩 any conditional situations in your code
+- Be explicit about the scope of your changes so that unrelated bugs don’t block the PR
+- Be explicit about your own 🎩, and any areas or interactions you might be unsure about
+- Include a screenshot of the expected result of a successful 🎩
+- Be grateful (e.g. “Thanks for catching that!”) – reviewers are taking time out of their day to help you and that’s a special kind of gift
 
-## Approach to Tophatting someone’s PR
+## Approach to tophatting someone’s PR
 
-Giving someone a thorough Tophat builds trust and trains your attention to detail.
+Giving someone a thorough 🎩 builds trust and trains your attention to detail.
 
-- Make sure you understand the scope and purpose of the author’s PR. If not, don’t hesitate to ask the author to clarify.
-- Consider any areas the author’s change may break, and test those.
-- Detail what steps you took for 🎩 and your findings.
-- Remember that unrelated bugs are better done in a separate PR. Don’t block something unless it’s necessary.
-- Include a screenshot with any issues that arise.
+- Make sure you understand the scope and purpose of the author’s PR – if not, don’t hesitate to ask the author to clarify
+- Consider any areas the author’s change may break, and test those
+- Detail what steps you took for 🎩 and your findings
+- Remember that unrelated bugs are better done in a separate PR Don’t block something unless it’s necessary
+- Include a screenshot with any issues that arise
 
 ## Cross browser testing
 
@@ -78,9 +77,9 @@ I‘ve tophatted these changes in the following browsers:
 
 ## History of the phrase
 
-The 🎩 emoji began its life at Shopify back in 2013 on the Admin team. When doing PR reviews in GitHub the team would always give a thumbs up if code review was good. This was back in the days before GitHub had the review feature. For web UI work we realized that code reviews and automated tests were not enough, especially since the code needed to be tested in multiple browsers to confirm it rendered properly and we weren’t missing any polyfills. So the team quite randomly decided on:
+The 🎩 emoji began its life at Shopify in 2013 on the admin team. When doing PR reviews in GitHub the team would always give a thumbs up if code review was good. This was before GitHub had the review feature. For web UI work we realized that code reviews and automated tests were not enough, especially since the code needed to be tested in multiple browsers to confirm it rendered properly and we weren’t missing any polyfills. So the team quite randomly decided on:
 
 🎩
 💯
 
-Eventually we just dropped the 💯 and it was shortened to simply 🎩 which lives on today. [source: @nsimmons]
+Eventually we dropped the 💯 and it was shortened to 🎩. That emoji lives on today.
