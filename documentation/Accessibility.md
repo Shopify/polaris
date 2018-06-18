@@ -6,16 +6,11 @@ At Shopify, we want to create inclusive experiences for all our users. We don’
 
 Did you know that:
 
-- ~ 3 - 10% of people worldwide have vision problems (low vision, no vision)
+- ~3–10% of people worldwide have vision problems (low vision, no vision)
 - ~4.5% of people worldwide have one form of colorblindness
 - 8% have some mobility problems (e.g. may not be able to use a mouse or keyboard)
 - 6% have cognitive disabilities (e.g. require clear instructions and well-ordered content)
 - In Canada, vision loss is expected to increase nearly 30% by 2024
-
-Common misconceptions include:
-
-- The majority of people with visual impairment are partially sighted (only 18% classify as totally blind)
-- Only 10% of people with visual impairment can read braille
 
 Overall:
 
@@ -29,7 +24,7 @@ Sources: [Summary Health Statistics for U.S.Adults: National Health Interview Su
 
 For those looking to skip ahead, check out our own **[best practices](#implementation-best-practices)**.
 
-The technical standards for accessibility come from the Web Content Accessibility Guidelines (WCAG). For a number of years we've been working with [WCAG 2.0](https://www.w3.org/TR/WCAG20/), but as of June 2018, [WCAG 2.1](https://www.w3.org/TR/WCAG21/) is the new recommendation. WCAG is an ISO standard, too!
+The technical standards for accessibility come from the Web Content Accessibility Guidelines (WCAG). For a number of years we‘ve been working with [WCAG 2.0](https://www.w3.org/TR/WCAG20/), but as of June 2018, [WCAG 2.1](https://www.w3.org/TR/WCAG21/) is the new recommendation. WCAG is an ISO standard, too!
 
 WCAG includes recommendations around how users, especially those with disabilities, expect to interact with websites, including complex web apps. These standards are designed to make websites work correctly with a wide variety of assistive technologies, such as screen readers, high contrast and magnification tools, speech recognition software, custom input devices. They also help to support users who have trouble with memory, attention, reading, color, information processing, and other similar issues.
 
@@ -42,26 +37,26 @@ the ones that are most readable, up-to-date, and relevant.
 - [University of Washington Accessible Technology](http://www.washington.edu/accessibility/web/)
 - [A11y Project](http://a11yproject.com/)
 
-It's also important to think about accessibility as a design and usability issue, not just a technical issue. [We Are the Original Lifehackers](https://www.nytimes.com/2018/05/30/opinion/disability-design-lifehacks.html) outlines how design is improved when people with disabilities participate.
+It‘s also important to think about accessibility as a design and usability issue, not just a technical issue. [We Are the Original Lifehackers](https://www.nytimes.com/2018/05/30/opinion/disability-design-lifehacks.html) outlines how design is improved when people with disabilities participate.
 
 ## Implementation best practices
 
 - Color contrast should be sufficient
   - light text on light backgrounds can be very difficult to read (e.g. outside on a sunny day, on a glossy monitor, after staring at a screen all day)
-  - check contrast [with Tanaguru Contract-Finder](http://contrast-finder.tanaguru.com) or a similar tool and aim for a ratio as close as possible to **4.5** – this includes **copy**, **headings**, and **form fields**
-  - all should **stand out** from the background – be especially careful when setting text against a noisy background image
+  - check contrast [with Tanaguru Contract-Finder](http://contrast-finder.tanaguru.com) or a similar tool and aim for a ratio as close as possible to **4.5**—this includes **copy**, **headings**, and **form fields**
+  - all should **stand out** from the background—be especially careful when setting text against a noisy background image
 - HTML is valid and semantically correct
   - heading levels follow hierarchy (`<h1>` > `<h2>` > `<h3>`)
-  - all form inputs have a valid label - `<label for="<INPUT ID>"` or fallback
+  - all form inputs have a valid label—`<label for="INPUT_ID">` or fallback
   - if not pointing to a URL, use a `<button type="button">` element for your interactive controls
-    - see [this article on buttons versus links for more context](http://www.karlgroves.com/2013/05/14/links-are-not-buttons-neither-are-divs-and-spans/)
+    - see [this article on buttons versus links for more context](https://ux.shopify.com/semantic-html-the-unbearable-rightness-of-being-9b3c493e1791)
 - Strive to make features work with a keyboard alone
-  - keep focus outlines on links and toggles, without these, it is **impossible** for keyboard users to navigate – the outline can be customized if the default style isn’t preferred, though keep in mind that the default comes for free!
+  - keep focus outlines on links and toggles, without these, it is **impossible** for keyboard users to navigate—the outline can be customized if the default style isn’t preferred, though keep in mind that the default comes for free!
   - update focus as new content is revealed (e.g. auto-scrolling to new page section, updating filtered results, opening a modal window)
   - bind `esc` to quickly cancel modals, popups, and similar interactions
   - put your mouse away, what happens? At the very least, the site must be navigable, forms can be manipulated and submitted
-  - whatever happens on **hover**, should also happen on **focus** – this includes styles and JS functionality
-- Don’t make users guess what to do next when it comes to forms – have clear, informative error states that detail next steps
+  - whatever happens on **hover**, should also happen on **focus**—this includes styles and JS functionality
+- Don’t make users guess what to do next when it comes to forms—have clear, informative error states that detail next steps
 - Icon-only buttons should have screen reader friendly titles so they make sense
 
   ```html
@@ -76,42 +71,27 @@ It's also important to think about accessibility as a design and usability issue
   - if unsure, ask for help or **leave it out**, ARIA that’s untested can make things worse
   - you should automatically check for issues using a tool like [WAVE](https://wave.webaim.org/) in order to validate the WCAG compliance
   - tips on NVDA with VMWare [1](http://www.paciellogroup.com/blog/2013/08/insert-key-usage-in-windows-on-a-mac/), [2](https://www.marcozehe.de/2015/06/07/how-to-map-your-macs-capslock-key-to-a-nvda-or-jaws-key-in-a-windows-virtual-machine/)
-- **All of the above** counts for **mobile** as well – iOS and macOS have VoiceOver built in, and there are many [awesome apps](http://www.bemyeyes.org/) that create new possibilities for the blind
+- **All of the above** counts for **mobile** as well—iOS and macOS have VoiceOver built in, and there are many [awesome apps](http://www.bemyeyes.org/) that create new possibilities for the blind
   - for more on accessibility and mobile, see the [WebAIM screen reader survey on mobile](http://webaim.org/projects/screenreadersurvey5/#mobile)
 
 ## Testing
 
 Curious about testing yourself? The best thing is to manually test your pages with a keyboard only and fire up a screen reader to test for yourself. Automated tools can be useful but are usually for catching trends and low-hanging fruit like missing alt attributes. Here are a few recommended testing frameworks:
 
-- [tota11y](https://vault.shopify.com/Accessibility/tota11y)
+- [tota11y](http://khan.github.io/tota11y/)
 - [Tenon.io](http://tenon.io)
 - [WAVE](https://wave.webaim.org/toolbar/)
 - [pa11y](https://github.com/pa11y)
-
-Also check out the following when conducting an assessment:
-
-- [Assessment Checklist](https://vault.shopify.com/Accessibility/Assessment-Checklist)
-- [Color Contrast](https://vault.shopify.com/Accessibility/Color-Contrast)
-- [Component Template](https://vault.shopify.com/Accessibility/Component-Template)
-- [Issue Template](https://vault.shopify.com/Accessibility/Issue-Template)
-- [Automated Issue Template](https://vault.shopify.com/Accessibility/Automated-Issue-Template)
-
-### Enable keyboard navigation
-
-- [Safari Keyboard Navigation](https://vault.shopify.com/Safari-Keyboard-Navigation)
-- [Firefox Keyboard Navigation](https://vault.shopify.com/Firefox-Keyboard-Navigation)
 
 ## Tools and resources
 
 ### Test tools
 
-- Introduction to using [Voice Over (built-in screen reader on MacOS and iOS)](https://vault.shopify.com/Using-VoiceOver)
+- Introduction to using [Voice Over (built-in screen reader on MacOS and iOS)](https://help.apple.com/voiceover/info/guide/10.12/#/vo7e30a848e8)
 - Introduction to using [NVDA (free screen reader for Windows)](https://gist.github.com/svinkle/a4efd704837e90adc928)
-- General a11y testing with [tota11y](https://vault.shopify.com/Accessibility/tota11y)
-- Recommended color contrast tools for design and dev:
-  - [Contrast Checker](http://contrast-finder.tanaguru.com)
-  - [Accessible Colour Palette](http://colorsafe.co/)
-  - [Contrast Ratio Checker with a nice UI](http://leaverou.github.io/contrast-ratio/)
+- Recommended color contrast tools:
+  - [Accessible Color Palette](http://colorsafe.co/)
+  - [Contrast Ratio Checker](http://leaverou.github.io/contrast-ratio/)
 - [More screen reader intros and other related tools](http://a11yproject.com/resources.html)
 
 ### Patterns and design systems
@@ -136,12 +116,12 @@ Also check out the following when conducting an assessment:
 - [Material Design (for Android and iOS): Accessibility](https://material.io/design/usability/accessibility.html)
 - [Basic Android Accessibility : making sure everyone can use what you create!](https://codelabs.developers.google.com/codelabs/basic-android-accessibility/index.html?index=..%2F..%2Findex#0)
 
-## Legal Stuff
+## Legal
 
 For regulations around the world. These are long documents often written in legal-ese, not recommended as a place to learn about accessibility, but valuable for anyone interested in regulation and how it can be used and abused.
 
 - [AODA](http://www.mcss.gov.on.ca/en/mcss/programs/accessibility/info_comm/index.aspx) - Ontario’s legal requirement for accessibility for all public websites
-- [ADA](https://www.ada.gov/) - The US's Americans with Disabilities Act
+- [ADA](https://www.ada.gov/) - The US‘s Americans with Disabilities Act
 - [Section 508](http://www.section508.gov/) - US regulation for accessibility for technologies used in government
 - [Intro to WCAG](http://www.w3.org/WAI/intro/wcag) - Global W3C checklist for accessibility (if you’re very curious!)
 - [Compliance Isn’t Enough](http://www.karlgroves.com/2015/01/06/to-hell-with-compliance/) - Article putting legal requirements in perspective
@@ -149,4 +129,4 @@ For regulations around the world. These are long documents often written in lega
 - [List of Web Accessibility-Related Litigation and Settlements](http://www.karlgroves.com/2011/11/15/list-of-web-accessibility-related-litigation-and-settlements/)
 - [Disability Lawsuits Against Small Businesses Soar](http://www.wsj.com/articles/disabled-access-new-legal-push-1413411545)
 - [U.S. Aims To Speed Up The Internet For The Disabled](http://www.npr.org/2015/03/07/391435879/u-s-aims-to-speed-up-the-internet-for-the-disabled)
-- ["DOJ affirms "longstanding position that the #ADA applies to websites of public accommodations"](https://twitter.com/LFLegal/status/614231627040821248)
+- [DOJ affirms "longstanding position that the #ADA applies to websites of public accommodations"](https://twitter.com/LFLegal/status/614231627040821248)
