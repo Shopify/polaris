@@ -44,17 +44,7 @@ Giving someone a thorough 🎩 builds trust and trains your attention to detail.
 
 ## Cross browser testing
 
-We support:
-
-- Edge (last three versions)
-- Firefox (last three versions)
-- Chrome (last three versions)
-- Safari (last two versions)
-- Opera (last three versions)
-- iOS (last two versions)
-- Chrome for Android (last three versions)
-
-Here is a checklist for browser tophatting. Please feel free to use it in your PRs:
+We support the [following browsers](https://help.shopify.com/manual/intro-to-shopify/shopify-admin/supported-browsers). Here is a checklist for browser tophatting. Please feel free to use it in your PRs:
 
 ```md
 I‘ve tophatted these changes in the following browsers:
@@ -63,7 +53,6 @@ I‘ve tophatted these changes in the following browsers:
 - [ ] FF latest
 - [ ] Safari latest
 - [ ] Edge
-- [ ] IE 11
 - [ ] In at least one of the above browsers, test both retina and non-retina displays
 - [ ] iPhone (4/5/SE) (+9) Safari Mobile
 - [ ] iPad (+9) Safari Mobile
