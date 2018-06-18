@@ -166,6 +166,43 @@ class RangeSliderExample extends React.Component {
 }
 ```
 
+### Prefix and suffix elements
+
+Because a range slider can also output a `label` and `helpText`, the height of the overall component can vary. `prefix` and `suffix` props allow you to pass in a React element to be placed before or after the rendered `input`, allowing for perfect vertical alignment and easier stylistic control.
+
+```jsx
+class RangeSliderExample extends React.Component {
+  state = {
+    value: 100,
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  render() {
+    const suffixStyles = {
+      minWidth: '24px',
+      textAlign: 'right',
+    };
+
+    return (
+      <Card sectioned>
+        <RangeSlider
+          label="Hue color mix"
+          min={0}
+          max={360}
+          value={this.state.value}
+          onChange={this.handleChange}
+          prefix={<p>Hue</p>}
+          suffix={<p style={suffixStyles}>{this.state.value}</p>}
+        />
+      </Card>
+    );
+  }
+}
+```
+
 ---
 
 ## Related components
