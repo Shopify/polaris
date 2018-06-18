@@ -4,23 +4,11 @@ import {classNames} from '@shopify/react-utilities';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 import Indicator from '../Indicator';
-import {IconableAction, DisableableAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
-import * as styles from './Page.scss';
+import {ActionProps as Props} from './types';
 
-export interface Props {
-  children?: string;
-  disclosure?: boolean;
-  url?: IconableAction['url'];
-  external?: IconableAction['external'];
-  icon?: IconableAction['icon'];
-  onAction?: IconableAction['onAction'];
-  accessibilityLabel?: IconableAction['accessibilityLabel'];
-  disabled?: DisableableAction['disabled'];
-  showIndicator?: boolean;
-  hasIndicator?: boolean;
-}
+import * as styles from './Page.scss';
 
 export default function Action({
   icon,

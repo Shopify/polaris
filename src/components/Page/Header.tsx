@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {IconableAction, DisableableAction, BadgeAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
-import {ItemDescriptor} from '../ActionList/types';
 import Breadcrumbs from '../Breadcrumbs';
 import Pagination from '../Pagination';
 import DisplayText from '../DisplayText';
@@ -11,23 +9,9 @@ import Popover from '../Popover';
 import ActionList from '../ActionList';
 
 import Action from './Action';
-import {HeaderProps} from './Page';
+import {HeaderProps, SecondaryAction, ActionGroup} from './types';
+
 import * as styles from './Page.scss';
-
-export type SecondaryAction = IconableAction & DisableableAction;
-
-export interface ActionGroup extends BadgeAction {
-  /** Action group title */
-  title: string;
-  /** Icon to display */
-  icon?: IconableAction['icon'];
-  /** List of actions */
-  actions: ItemDescriptor[];
-  /** Action details */
-  details?: React.ReactNode;
-  /** Callback when any action takes place */
-  onActionAnyItem?: ItemDescriptor['onAction'];
-}
 
 export interface Props extends HeaderProps {}
 
@@ -251,7 +235,7 @@ export default class Header extends React.PureComponent<Props, State> {
   }
 }
 
-function hasNewStatus(actions: ItemDescriptor[]) {
+function hasNewStatus(actions: ActionGroup['actions']) {
   for (let i = 0; i < actions.length; i++) {
     const {badge} = actions[i];
     if (badge && badge.status === 'new') {

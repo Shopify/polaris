@@ -46,15 +46,24 @@ export default class Bar {
 
     this.messenger.send('Shopify.API.Bar.initialize', {
       buttons: {
-        primary: primaryAction ? transformAction(primaryAction) : undefined,
+        primary: primaryAction
+          ? transformAction(this.messenger.targetOrigin)(primaryAction)
+          : undefined,
         secondary: [
-          ...(secondaryActions || []).map(transformAction),
-          ...(actionGroups || []).map(transformActionGroup),
+          ...(secondaryActions || []).map(
+            transformAction(this.messenger.targetOrigin),
+          ),
+          ...(actionGroups || []).map(
+            transformActionGroup(this.messenger.targetOrigin),
+          ),
         ],
       },
       title,
       icon,
-      breadcrumb: getLastLevelBreadcrumb(breadcrumbs),
+      breadcrumb: getLastLevelBreadcrumb(
+        breadcrumbs,
+        this.messenger.targetOrigin,
+      ),
       pagination: transformPagination(pagination),
     });
 
@@ -71,8 +80,11 @@ export default class Bar {
   }
 }
 
-function getLastLevelBreadcrumb(breadcrumbs: UpdateConfig['breadcrumbs']) {
+function getLastLevelBreadcrumb(
+  breadcrumbs: UpdateConfig['breadcrumbs'],
+  shopOrigin: string,
+) {
   return breadcrumbs && breadcrumbs.length > 0
-    ? transformBreadcrumb(breadcrumbs[breadcrumbs.length - 1])
+    ? transformBreadcrumb(breadcrumbs[breadcrumbs.length - 1], shopOrigin)
     : undefined;
 }
