@@ -41,6 +41,10 @@ export interface BaseProps {
   error?: Error;
   /** Disable input */
   disabled?: boolean;
+  /** Element to display before the input */
+  prefix?: React.ReactNode;
+  /** Element to display after the input */
+  suffix?: React.ReactNode;
   /** Callback when the range input is changed */
   onChange(value: number, id: string): void;
   /** Callback when range input is focused */
@@ -84,6 +88,8 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
       helpText,
       error,
       disabled,
+      prefix,
+      suffix,
       onFocus,
       onBlur,
     } = this.props;
@@ -123,6 +129,14 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
         </output>
       );
 
+    const prefixMarkup = prefix && (
+      <div className={styles.Prefix}>{prefix}</div>
+    );
+
+    const suffixMarkup = suffix && (
+      <div className={styles.Suffix}>{suffix}</div>
+    );
+
     const className = classNames(
       styles.RangeSlider,
       error && styles.error,
@@ -139,26 +153,30 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
         helpText={helpText}
       >
         <div className={className} style={cssVars}>
-          <input
-            type="range"
-            className={styles.Input}
-            id={id}
-            name={id}
-            min={min}
-            max={max}
-            step={step}
-            value={value}
-            disabled={disabled}
-            onChange={this.handleChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            aria-valuemin={min}
-            aria-valuemax={max}
-            aria-valuenow={value}
-            aria-invalid={Boolean(error)}
-            aria-describedby={ariaDescribedBy}
-          />
-          {outputMarkup}
+          {prefixMarkup}
+          <div className={styles.InputWrapper}>
+            <input
+              type="range"
+              className={styles.Input}
+              id={id}
+              name={id}
+              min={min}
+              max={max}
+              step={step}
+              value={value}
+              disabled={disabled}
+              onChange={this.handleChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              aria-valuemin={min}
+              aria-valuemax={max}
+              aria-valuenow={value}
+              aria-invalid={Boolean(error)}
+              aria-describedby={ariaDescribedBy}
+            />
+            {outputMarkup}
+          </div>
+          {suffixMarkup}
         </div>
       </Labelled>
     );

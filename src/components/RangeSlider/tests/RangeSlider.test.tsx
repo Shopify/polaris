@@ -206,6 +206,42 @@ describe('<RangeSlider />', () => {
     });
   });
 
+  describe('prefix', () => {
+    const text = 'prefix text';
+
+    it('outputs the provided prefix element', () => {
+      const element = mountWithAppProvider(
+        <RangeSlider
+          label="RangeSlider"
+          value={50}
+          prefix={<p>{text}</p>}
+          onChange={noop}
+        />,
+      );
+      const prefixElement = element.find('p');
+
+      expect(prefixElement.text()).toBe(text);
+    });
+  });
+
+  describe('suffix', () => {
+    const text = 'suffix text';
+
+    it('outputs the provided suffix element', () => {
+      const element = mountWithAppProvider(
+        <RangeSlider
+          label="RangeSlider"
+          value={50}
+          suffix={<p>{text}</p>}
+          onChange={noop}
+        />,
+      );
+      const suffixElement = element.find('p');
+
+      expect(suffixElement.text()).toBe(text);
+    });
+  });
+
   describe('invertNumber', () => {
     it('returns a negative number when the argument is positive', () => {
       const negative = invertNumber(10);
@@ -240,10 +276,7 @@ describe('<RangeSlider />', () => {
         '--Polaris-RangeSlider-progress': '25%',
         '--Polaris-RangeSlider-output-factor': 0.25,
       };
-      const actual = element
-        .find('input')
-        .parent()
-        .prop('style');
+      const actual = element.find('[style]').prop('style');
 
       expect(expected).toEqual(actual);
     });

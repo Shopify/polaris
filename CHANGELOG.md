@@ -10,6 +10,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
 
+### Enhancements
+
+- Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
+
 ## 2.2.0 - 2018-06-12
 
 ### New components

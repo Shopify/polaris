@@ -16,84 +16,9 @@ $range-thumb-shadow-hover: (
 $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
 $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
-@mixin range-track {
-  --progress-lower: #{color('indigo')};
-  --progress-upper: #{color('sky', 'dark')};
-  cursor: pointer;
-  width: 100%;
-  height: $range-track-height;
-  background-color: var(--progress-upper, color('sky', 'dark'));
-  background-image: linear-gradient(
-    to right,
-    var(--progress-lower, transparent) 0%,
-    var(--progress-lower, transparent)
-      var(--Polaris-RangeSlider-progress, 0%),
-    var(--progress-upper, transparent)
-      var(--Polaris-RangeSlider-progress, 100%),
-    var(--progress-upper, transparent) 100%
-  );
-  border: none;
-  border-radius: $range-track-height;
-}
-
-@mixin range-track-error {
-  --progress-lower: #{color('red')};
-  background-color: color('red', 'light');
-}
-
-@mixin range-track-focus {
-  // repeated so that `focus` can override `error`
-  --progress-lower: #{color('indigo')};
-  background-color: color('sky', 'dark');
-}
-
-@mixin range-track-disabled {
-  cursor: auto;
-  background-image: none;
-}
-
-@mixin range-thumb {
-  // stylelint-disable-next-line value-no-vendor-prefix
-  cursor: -webkit-grab;
-  width: $range-thumb-size;
-  height: $range-thumb-size;
-  border: rem(1px) solid color('sky', 'lighter');
-  border-radius: 50%;
-  background: linear-gradient(color('white'), color('sky', 'lighter'));
-  box-shadow: $range-thumb-shadow;
-  appearance: none;
-  transition-property: border-color, box-shadow;
-  transition-duration: duration();
-  transition-timing-function: easing();
-
-  &:hover {
-    background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
-    box-shadow: $range-thumb-shadow-hover;
-  }
-}
-
-@mixin range-thumb-error {
-  border-color: color('red');
-  box-shadow: $range-thumb-shadow-error;
-}
-
-@mixin range-thumb-focus {
-  background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
-  border-color: color('indigo');
-  box-shadow: $range-thumb-shadow-focus;
-}
-
-@mixin range-thumb-disabled {
-  cursor: not-allowed;
-  border-color: color('sky', 'dark');
-}
-
 .RangeSlider {
-  position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
-  height: $range-thumb-size;
 
   &:not(:first-child) {
     margin-top: spacing(tight);
@@ -104,131 +29,134 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   }
 }
 
+.InputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  height: $range-thumb-size;
+}
+
+.Prefix {
+  flex: 0 0 auto;
+  margin-right: spacing();
+}
+
+.Suffix {
+  flex: 0 0 auto;
+  margin-left: spacing();
+}
+
 .Input {
+  --progress-lower: #{color('indigo')};
+  --progress-upper: #{color('sky', 'dark')};
+
+  &::-ms-tooltip {
+    display: none;
+  }
+
   @include unstyled-input;
   position: relative;
   z-index: z-index('input', $stacking-order);
   flex: 1 1 auto;
 
-  ///
-  /// Range track
-  &::-ms-track {
-    @include range-track;
+  @include range-track-selectors {
+    cursor: pointer;
+    width: 100%;
+    height: $range-track-height;
+    background-color: var(--progress-upper, color('sky', 'dark'));
+    background-image: linear-gradient(
+      to right,
+      var(--progress-lower, transparent) 0%,
+      var(--progress-lower, transparent)
+        var(--Polaris-RangeSlider-progress, 0%),
+      var(--progress-upper, transparent)
+        var(--Polaris-RangeSlider-progress, 100%),
+      var(--progress-upper, transparent) 100%
+    );
+    border: none;
+    border-radius: $range-track-height;
   }
 
-  &::-moz-range-track {
-    @include range-track;
+  @include range-thumb-selectors {
+    // stylelint-disable-next-line value-no-vendor-prefix
+    cursor: -webkit-grab;
+    width: $range-thumb-size;
+    height: $range-thumb-size;
+    border: rem(1px) solid color('sky', 'lighter');
+    border-radius: 50%;
+    background: linear-gradient(
+      color('white'),
+      color('sky', 'lighter')
+    );
+    box-shadow: $range-thumb-shadow;
+    appearance: none;
+    transition-property: border-color, box-shadow;
+    transition-duration: duration();
+    transition-timing-function: easing();
+
+    &:hover {
+      background: linear-gradient(
+        color('sky', 'lighter'),
+        color('sky', 'light')
+      );
+      box-shadow: $range-thumb-shadow-hover;
+    }
   }
 
-  &::-webkit-slider-runnable-track {
-    @include range-track;
-  }
-
-  ///
-  /// Range thumb
   &::-ms-thumb {
-    @include range-thumb;
     margin-top: 0;
     transform: translateY($range-thumb-size / 5) scale(0.4);
   }
 
-  &::-moz-range-thumb {
-    @include range-thumb;
-  }
 
   &::-webkit-slider-thumb {
-    @include range-thumb;
     margin-top: -($range-thumb-size - $range-track-height) / 2;
   }
 
-  ///
-  /// Range tooltip
-  &::-ms-tooltip {
-    display: none;
-  }
-
-  ///
-  /// State
   .error & {
-    &::-ms-track {
-      @include range-track-error;
+    --progress-lower: #{color('red')};
+
+    @include range-track-selectors {
+      background-color: color('red', 'light');
     }
 
-    &::-moz-range-track {
-      @include range-track-error;
-    }
-
-    &::-webkit-slider-runnable-track {
-      @include range-track-error;
-    }
-
-    &::-ms-thumb {
-      @include range-thumb-error;
-    }
-
-    &::-moz-range-thumb {
-      @include range-thumb-error;
-    }
-
-    &::-webkit-slider-thumb {
-      @include range-thumb-error;
+    @include range-thumb-selectors {
+      border-color: color('red');
+      box-shadow: $range-thumb-shadow-error;
     }
   }
 
   .disabled & {
-    &::-ms-track {
-      @include range-track-disabled;
+    @include range-track-selectors {
+      cursor: auto;
+      background-image: none;
     }
 
-    &::-moz-range-track {
-      @include range-track-disabled;
-    }
-
-    &::-webkit-slider-runnable-track {
-      @include range-track-disabled;
-    }
-
-    &::-ms-thumb {
-      @include range-thumb-disabled;
-    }
-
-    &::-moz-range-thumb {
-      @include range-thumb-disabled;
-    }
-
-    &::-webkit-slider-thumb {
-      @include range-thumb-disabled;
+    @include range-thumb-selectors {
+      cursor: not-allowed;
+      border-color: color('sky', 'dark');
     }
   }
 
   // match `error` specificity for interaction styles
-  // stylelint-disable selector-max-specificity
   .RangeSlider &:focus {
-    &::-ms-track {
-      @include range-track-focus;
+    // repeated so that `focus` can override `error`
+    --progress-lower: #{color('indigo')};
+
+    @include range-track-selectors {
+      background-color: color('sky', 'dark');
     }
 
-    &::-moz-range-track {
-      @include range-track-focus;
-    }
-
-    &::-webkit-slider-runnable-track {
-      @include range-track-focus;
-    }
-
-    &::-ms-thumb {
-      @include range-thumb-focus;
-    }
-
-    &::-moz-range-thumb {
-      @include range-thumb-focus;
-    }
-
-    &::-webkit-slider-thumb {
-      @include range-thumb-focus;
+    @include range-thumb-selectors {
+      background: linear-gradient(
+        color('sky', 'lighter'),
+        color('sky', 'light')
+      );
+      border-color: color('indigo');
+      box-shadow: $range-thumb-shadow-focus;
     }
   }
-  // stylelint-enable selector-max-specificity
 }
 
 ///
