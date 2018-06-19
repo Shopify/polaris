@@ -2,7 +2,6 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
-import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {classNames} from '@shopify/react-utilities/styles';
 import {
   isElementOfType,
@@ -48,7 +47,7 @@ export interface Props {
 }
 
 export default class PopoverOverlay extends React.PureComponent<Props, never> {
-  private contentNode: HTMLElement | null = null;
+  private contentNode = React.createRef<HTMLDivElement>();
   private transitionStatus: TransitionStatus | null = null;
 
   componentDidMount() {
@@ -81,11 +80,11 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     }
 
     write(() => {
-      if (this.contentNode == null) {
+      if (this.contentNode.current == null) {
         return;
       }
-      const focusableChild = findFirstFocusableNode(this.contentNode);
-      (focusableChild || this.contentNode).focus();
+
+      this.contentNode.current.focus();
     });
   }
 
@@ -161,7 +160,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         tabIndex={-1}
         className={contentClassNames}
         style={contentStyles}
-        ref={this.setContentNode}
+        ref={this.contentNode}
       >
         {renderPopoverContent(children, {sectioned})}
       </div>
@@ -191,11 +190,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  private setContentNode(node: HTMLElement | null) {
-    this.contentNode = node;
-  }
-
-  @autobind
   private handleClick(event: Event) {
     const target = event.target as HTMLElement;
     const {
@@ -203,7 +197,8 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       props: {activator, onClose},
     } = this;
     const isDescendant =
-      contentNode != null && nodeContainsDescendant(contentNode, target);
+      contentNode.current != null &&
+      nodeContainsDescendant(contentNode.current, target);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
     if (
       isDescendant ||
