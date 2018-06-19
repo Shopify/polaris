@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {IconableAction, DisableableAction} from '../../types';
 import Button, {buttonsFrom} from '../Button';
-import {ItemDescriptor} from '../ActionList/types';
 import Breadcrumbs from '../Breadcrumbs';
 import Pagination from '../Pagination';
 import DisplayText from '../DisplayText';
@@ -11,23 +9,9 @@ import Popover from '../Popover';
 import ActionList from '../ActionList';
 
 import Action from './Action';
-import {HeaderProps} from './Page';
+import {HeaderProps, SecondaryAction, ActionGroup} from './types';
+
 import * as styles from './Page.scss';
-
-export type SecondaryAction = IconableAction & DisableableAction;
-
-export interface ActionGroup {
-  /** Action group title */
-  title: string;
-  /** Icon to display */
-  icon?: IconableAction['icon'];
-  /** List of actions */
-  actions: ItemDescriptor[];
-  /** Action details */
-  details?: React.ReactNode;
-  /** Callback when any action takes place */
-  onActionAnyItem?: ItemDescriptor['onAction'];
-}
 
 export interface Props extends HeaderProps {}
 
@@ -157,15 +141,20 @@ export default class Header extends React.PureComponent<Props, State> {
               <div className={detailsClassName}>{details}</div>
             ) : null;
 
+            const showIndicator = hasNewStatus(actions);
+            const active = title === openActionGroup;
+
             return (
               <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
                 <Popover
                   key={title}
-                  active={title === openActionGroup}
+                  active={active}
                   // eslint-disable-next-line react/jsx-no-bind
                   onClose={this.handleActionGroupClose.bind(this, title)}
                   activator={
                     <Action
+                      showIndicator={showIndicator}
+                      hasIndicator={active}
                       disclosure
                       icon={icon}
                       // eslint-disable-next-line react/jsx-no-bind
@@ -190,13 +179,21 @@ export default class Header extends React.PureComponent<Props, State> {
           })
         : null;
 
+    const showIndicator =
+      false &&
+      actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
+
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
         <Popover
           active={rollupOpen}
           onClose={this.handleRollupToggle}
           activator={
-            <Button disclosure onClick={this.handleRollupToggle}>
+            <Button
+              outline={false && showIndicator}
+              disclosure
+              onClick={this.handleRollupToggle}
+            >
               Actions
             </Button>
           }
@@ -236,6 +233,16 @@ export default class Header extends React.PureComponent<Props, State> {
   private handleActionGroupOpen(group: string) {
     this.setState({openActionGroup: group});
   }
+}
+
+function hasNewStatus(actions: ActionGroup['actions']) {
+  for (let i = 0; i < actions.length; i++) {
+    const {badge} = actions[i];
+    if (badge && badge.status === 'new') {
+      return true;
+    }
+  }
+  return false;
 }
 
 function convertActionGroupToActionListSection({title, actions}: ActionGroup) {

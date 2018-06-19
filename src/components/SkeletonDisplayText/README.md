@@ -19,8 +19,8 @@ Skeleton display text is used to provide a low fidelity representation of conten
 
 Skeleton display text component should:
 
-* Give merchants an indication of what the page content will be once loaded
-* Use real content for display text that never changes
+- Give merchants an indication of what the page content will be once loaded
+- Use real content for display text that never changes
 
 ---
 
@@ -88,5 +88,5 @@ Use this component to represent small display text such as content headings.
 
 ## Related components
 
-* Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton body text](/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
-* When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.
+- Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton body text](/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
+- When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.

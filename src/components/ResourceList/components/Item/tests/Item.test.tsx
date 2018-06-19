@@ -11,7 +11,7 @@ import {
   Thumbnail,
   ButtonGroup,
   Checkbox,
-} from '../../../../';
+} from '../../../..';
 import Item from '../Item';
 
 describe('<Item />', () => {

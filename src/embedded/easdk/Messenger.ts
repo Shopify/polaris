@@ -23,8 +23,13 @@ export interface Options {
 }
 
 export default class Messenger {
+  static Messages = Object.freeze({
+    SET_WINDOW_LOCATION: 'Shopify.API.setWindowLocation',
+  });
+
+  targetOrigin = '*';
+
   private name: string;
-  private targetOrigin = '*';
   private debug: boolean;
   private queue: Message[] = [];
   private callbacks: {[key: string]: Callback} = {};
@@ -168,8 +173,12 @@ export default class Messenger {
       return;
     }
 
-    this.invokeCallback(receivedMessage);
-    this.invokeHandler(receivedMessage);
+    if (receivedMessage.message === Messenger.Messages.SET_WINDOW_LOCATION) {
+      this.windowLocation = receivedMessage.data as Location;
+    } else {
+      this.invokeCallback(receivedMessage);
+      this.invokeHandler(receivedMessage);
+    }
   }
 
   private isFromTargetOrigin({origin}: MessageEvent): boolean {
@@ -189,5 +198,9 @@ export default class Messenger {
     if (typeof handler === 'function') {
       handler(receivedMessage.data);
     }
+  }
+
+  private set windowLocation(location: Location) {
+    window.location = location;
   }
 }

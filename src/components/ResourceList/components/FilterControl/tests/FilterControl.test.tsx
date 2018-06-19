@@ -2,10 +2,10 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
 
-import FilterControl, {Props} from '../';
+import FilterControl, {Props} from '..';
 import FilterCreator from '../FilterCreator';
 import {Filter, FilterType, FilterSelect, FilterTextField} from '../types';
-import {TextField, Tag, Button} from '../../../../';
+import {TextField, Tag, Button} from '../../../..';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {

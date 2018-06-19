@@ -21,7 +21,7 @@ Tags represent a set of interactive, merchant-supplied keywords that help label,
 
 Tags should:
 
-* Be presented close to or within the input control that allows merchants to add and remove tags
+- Be presented close to or within the input control that allows merchants to add and remove tags
 
 ---
 
@@ -43,4 +43,4 @@ Use to represent a list of attributes on an object that can be added or removed.
 
 ## Related components
 
-* To show the status of an object, [use the badge component](/components/images-and-icons/badge)
+- To show the status of an object, [use the badge component](/components/images-and-icons/badge)

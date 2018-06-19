@@ -7,7 +7,7 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
 $stacking-order: (
   title: 10,
-  breadcrumbs: 20
+  breadcrumbs: 20,
 );
 
 html,
@@ -91,8 +91,7 @@ body {
 
 .Title {
   @include layout-flex-fix;
-  word-wrap: break-word;
-  word-break: break-word;
+  @include text-breakword;
 }
 
 .Title-hidden {
@@ -109,7 +108,7 @@ body {
 
 .IndividualActions {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
   > .Action,
   > .ActionGroup {
@@ -236,5 +235,20 @@ body {
   &.withActions {
     margin-top: -1 * spacing(tight);
     border-top: border();
+  }
+}
+
+.Action-outline {
+  @include button-base;
+  @include button-outline(color('ink', 'lighter'));
+
+  &::after {
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  &.disabled {
+    @include button-outline-disabled(color('ink', 'lighter'));
   }
 }

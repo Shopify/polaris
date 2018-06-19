@@ -112,6 +112,7 @@ export default class Tab extends React.PureComponent<Props, never> {
       <button
         id={id}
         role="tab"
+        type="button"
         tabIndex={tabIndex}
         className={className}
         onClick={handleClick}

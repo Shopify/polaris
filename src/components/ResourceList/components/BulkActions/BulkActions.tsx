@@ -4,7 +4,7 @@ import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {DisableableAction, Action} from '../../../../types';
 import {Duration} from '../../../shared';
-import {ActionList, Popover, Button, EventListener} from '../../../';
+import {ActionList, Popover, Button, EventListener} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {ActionListSection} from '../../../ActionList/Section';
 import CheckableButton from '../CheckableButton';

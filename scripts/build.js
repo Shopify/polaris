@@ -2,7 +2,7 @@ import {execSync} from 'child_process';
 import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {join, resolve as resolvePath} from 'path';
 import {rollup} from 'rollup';
-import {cp} from 'shelljs';
+import {cp, mv, rm} from 'shelljs';
 import copyfiles from 'copyfiles';
 
 import createRollupConfig from '../config/rollup';
@@ -20,13 +20,19 @@ const mainEntry = resolvePath(intermediateBuild, './index.js');
 const embeddedEntry = resolvePath(intermediateBuild, './embedded/index.js');
 
 const scripts = resolvePath(root, 'scripts');
+const types = resolvePath(root, 'types');
 const tsBuild = resolvePath(scripts, 'tsconfig.json');
 
 execSync(`${resolvePath(root, './node_modules/.bin/tsc')} --outDir ${intermediateBuild} --project ${tsBuild}`, {
   stdio: 'inherit',
 });
 
+mv(resolvePath(root, 'types/src/*'), types);
+rm('-rf', resolvePath(root, 'types/src'));
+
 writeFileSync(resolvePath(root, 'embedded.d.ts'), "export * from './types/embedded';\n");
+
+mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 
 const srcReadme = resolvePath(root, './src/components/README.md');
 const destinationReadme = resolvePath(docs, './components/README.md');

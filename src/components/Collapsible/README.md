@@ -33,10 +33,10 @@ all the time.
 
 The collapsible component should:
 
-* Be used for information that is lower priority or that merchants don’t need
+- Be used for information that is lower priority or that merchants don’t need
   to see all the time
-* Be shown by default in an expanded state when a merchant loads a screen
-* Not be used to hide error messages or other critical information that requires
+- Be shown by default in an expanded state when a merchant loads a screen
+- Not be used to hide error messages or other critical information that requires
   an immediate action
 
 ---
@@ -95,4 +95,4 @@ class CollapsibleExample extends React.Component {
 
 ## Related components
 
-* To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)
+- To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)

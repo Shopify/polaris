@@ -20,10 +20,10 @@ Use to alternate among related views within the same context.
 
 Tabs should:
 
-* Represent the same kind of content, such as a list-view with different filters applied. Don’t use tabs to group content that is dissimilar.
-* Only be active one at a time.
-* Not force merchants to jump back and forth to do a single task. A merchant should be able to complete their work and find what they need under each tab.
-* Not be used for primary navigation.
+- Represent the same kind of content, such as a list-view with different filters applied. Don’t use tabs to group content that is dissimilar.
+- Only be active one at a time.
+- Not force merchants to jump back and forth to do a single task. A merchant should be able to complete their work and find what they need under each tab.
+- Not be used for primary navigation.
 
 ---
 
@@ -33,30 +33,30 @@ Tabs should:
 
 Tabs should:
 
-* Be clearly labeled to help differentiate the different sections beneath them.
-* Have short and scannable labels, generally kept to single word.
-* Relate to the section of Shopify they’re on. Imagine the page section title is an invisible noun after the tab. For example, the tabs for the orders section are:
+- Be clearly labeled to help differentiate the different sections beneath them.
+- Have short and scannable labels, generally kept to single word.
+- Relate to the section of Shopify they’re on. Imagine the page section title is an invisible noun after the tab. For example, the tabs for the orders section are:
 
-  * All
-  * Open
-  * Unfulfilled
-  * Unpaid
+  - All
+  - Open
+  - Unfulfilled
+  - Unpaid
 
 The tabs for the gift cards section are:
 
-* All
-* New
-* Partially used
-* Used
-* Disabled
+- All
+- New
+- Partially used
+- Used
+- Disabled
 
 And for the customers section, the tabs are:
 
-* All
-* New
-* Returning
-* Abandoned checkouts
-* Email subscribers
+- All
+- New
+- Returning
+- Abandoned checkouts
+- Email subscribers
 
 Where possible, follow this pattern when writing tabs.
 

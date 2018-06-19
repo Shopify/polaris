@@ -30,10 +30,10 @@ Popovers are small overlays that open on demand, usually when the merchant click
 
 Popovers should:
 
-* Always show next to the button or other interface element that triggers them
-* Be used for secondary or less important information and actions since they’re hidden until the merchant hits the trigger
-* Contain navigation or actions that share a relationships to each other
-* Be triggered by a clearly labeled button
+- Always show next to the button or other interface element that triggers them
+- Be used for secondary or less important information and actions since they’re hidden until the merchant hits the trigger
+- Contain navigation or actions that share a relationships to each other
+- Be triggered by a clearly labeled button
 
 ---
 
@@ -43,41 +43,41 @@ Popovers should:
 
 If the menu items in a popover menu include a series of actions, each item should:
 
-* Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive a merchant by mislabeling an action.
+- Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive a merchant by mislabeling an action.
 
 <!-- usagelist -->
 
 #### Do
 
-* Create order
-* Buy shipping label
+- Create order
+- Buy shipping label
 
 #### Don’t
 
-* New order
-* Buy
+- New order
+- Buy
 
 <!-- end -->
 
-* Be action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Be action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- usagelist -->
 
 #### Do
 
-* Rename
-* Edit HTML
-* Duplicate
+- Rename
+- Edit HTML
+- Duplicate
 
 #### Don’t
 
-* HTML editing options
-* File name changes
-* Duplicate this order so that you can make edits, updates, or changes
+- HTML editing options
+- File name changes
+- Duplicate this order so that you can make edits, updates, or changes
 
 <!-- end -->
 
-* Be scannable: avoid unnecessary words and articles such as the, an, or a.
+- Be scannable: avoid unnecessary words and articles such as the, an, or a.
 
 <!-- usagelist -->
 
@@ -93,20 +93,20 @@ Add a menu item
 
 If the menu items in a popover menu include a series of navigational links, each item should:
 
-* Be concise but still give the merchant enough information so they can easily find and accurately navigate to the path they want.
+- Be concise but still give the merchant enough information so they can easily find and accurately navigate to the path they want.
 
 <!-- usagelist -->
 
 #### Do
 
-* Online store
-* Messenger
-* Facebook
-* Buy Button
+- Online store
+- Messenger
+- Facebook
+- Buy Button
 
 #### Don’t
 
-* Sales channel
+- Sales channel
 
 <!-- end -->
 
@@ -258,5 +258,5 @@ class PopoverFormExample extends React.Component {
 
 ## Related components
 
-* To put a list of actions in a popover, [use the action list component](/components/actions/action-list)
-* To group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and take action on, [use the card component](/components/structure/card)
+- To put a list of actions in a popover, [use the action list component](/components/actions/action-list)
+- To group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and take action on, [use the card component](/components/structure/card)

@@ -33,13 +33,13 @@ click or tap. They can be used for any type of action, including navigation.
 
 Buttons should:
 
-* Be clearly and accurately labeled.
-* Lead with strong, actionable verbs.
-* Use established button colors appropriately. For example, only use a red
+- Be clearly and accurately labeled.
+- Lead with strong, actionable verbs.
+- Use established button colors appropriately. For example, only use a red
   button for an action that’s difficult or impossible to undo.
-* Prioritize the most important actions. Too many calls to action can cause
+- Prioritize the most important actions. Too many calls to action can cause
   confusion and make merchants unsure of what to do next.
-* Be positioned in consistent locations in the interface.
+- Be positioned in consistent locations in the interface.
 
 ---
 
@@ -51,13 +51,13 @@ Buttons should be clear and predictable—merchants should be able to anticipate
 
 #### Do
 
-* Create order
-* Buy shipping label
+- Create order
+- Buy shipping label
 
 #### Don’t
 
-* New order
-* Buy
+- New order
+- Buy
 
 <!-- end -->
 
@@ -69,13 +69,13 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 #### Do
 
-* Activate Apple Pay
-* View shipping settings
+- Activate Apple Pay
+- View shipping settings
 
 #### Don’t
 
-* Try Apple Pay
-* View your settings
+- Try Apple Pay
+- View your settings
 
 <!-- end -->
 
@@ -179,5 +179,5 @@ Use when a button has been pressed and the associated action is in progress.
 
 ## Related components
 
-* To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group)
-* To embed an action into a line of text, [use the link component](/components/navigation/link)
+- To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group)
+- To embed an action into a line of text, [use the link component](/components/navigation/link)

@@ -38,9 +38,9 @@ Use form layout to arrange fields within a form using standard spacing. By defau
 
 Forms should:
 
-* Be considerate of a merchant’s time and privacy by only asking for information that’s required
-* Group related tasks under section titles to provide more context and make the interface easier to scan
-* Follow a logical, predictable order—for example, always ask for first name first, and last name second on forms
+- Be considerate of a merchant’s time and privacy by only asking for information that’s required
+- Group related tasks under section titles to provide more context and make the interface easier to scan
+- Follow a logical, predictable order—for example, always ask for first name first, and last name second on forms
 
 ---
 
@@ -50,12 +50,12 @@ Forms should:
 
 Section titles should be:
 
-* Informative and descriptive: they should label the type of content grouped in the section
-* Concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep section titles to 1 or 2 words and avoid using punctuation such as periods, commas, or semicolons
-  * Avoid articles (the, a, an) to keep content short and actionable
-* Be written in sentence case
+- Informative and descriptive: they should label the type of content grouped in the section
+- Concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep section titles to 1 or 2 words and avoid using punctuation such as periods, commas, or semicolons
+  - Avoid articles (the, a, an) to keep content short and actionable
+- Be written in sentence case
 
 <!-- usagelist -->
 
@@ -73,9 +73,9 @@ Enter details about your business
 
 A label is a short description of a field. Labels are not help text, and they shouldn’t be used to provide instruction, but they should be meaningful and clearly indicate what is expected. Labels should be:
 
-* Placed above or beside the form field
-* Short and succinct (1–3 words)
-* Written in sentence case (the first word capitalized, the rest lowercase)
+- Placed above or beside the form field
+- Short and succinct (1–3 words)
+- Written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usagelist -->
 
@@ -154,4 +154,4 @@ For very short inputs, the width of the inputs may be reduced in order to fit mo
 
 ## Related components
 
-* To arrange the largest sections of a page, [use the layout component](/components/structure/layout)
+- To arrange the largest sections of a page, [use the layout component](/components/structure/layout)

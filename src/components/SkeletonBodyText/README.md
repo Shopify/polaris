@@ -19,9 +19,9 @@ Skeleton body text is used to provide a low fidelity representation of content b
 
 Skeleton body text component should:
 
-* Be used with [Skeleton page](/components/feedback-indicators/skeleton-page) when page content loads all at once. Together, these components give merchants an indication of what the page layout will be once loaded.
-* Be used on its own, inside any content container component (like a [card](/components/structure/card)), and when content loads after the main page load.
-* Try to match the number of lines to the content being loaded so it gives an accurate representation.
+- Be used with [Skeleton page](/components/feedback-indicators/skeleton-page) when page content loads all at once. Together, these components give merchants an indication of what the page layout will be once loaded.
+- Be used on its own, inside any content container component (like a [card](/components/structure/card)), and when content loads after the main page load.
+- Try to match the number of lines to the content being loaded so it gives an accurate representation.
 
 ---
 
@@ -67,5 +67,5 @@ Use this component to represent a short, single line of text, like a timestamp.
 
 ## Related components
 
-* Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) to represent the content of a page while it’s loading.
-* When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.
+- Use this component with [Skeleton page](/components/feedback-indicators/skeleton-page) and [Skeleton display text](/components/feedback-indicators/skeleton-display-text) to represent the content of a page while it’s loading.
+- When giving feedback for in-context operations, use [Progress bar](/components/feedback-indicators/progress-bar) or [Spinner](/components/feedback-indicators/spinner) component.

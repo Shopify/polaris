@@ -7,7 +7,7 @@ import {
 import VisuallyHidden from '../VisuallyHidden';
 import * as styles from './Badge.scss';
 
-export type Status = 'success' | 'info' | 'attention' | 'warning';
+export type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 
 export interface Props {
@@ -32,6 +32,7 @@ const STATUS_LABELS = {
   success: 'success',
   warning: 'warning',
   attention: 'attention',
+  new: 'new',
 };
 
 function Badge({children, status, progress, polaris: {intl}}: CombinedProps) {

@@ -15,7 +15,7 @@ import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import FileUpload from './components/FileUpload/';
+import FileUpload from './components/FileUpload';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import IconAlertCircle from './icons/alert-circle.svg';
@@ -120,7 +120,12 @@ export class DropZone extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 
-    const {polaris: {intl: {translate}}, type} = props;
+    const {
+      polaris: {
+        intl: {translate},
+      },
+      type,
+    } = props;
     const suffix = capitalize(type);
 
     this.state = {

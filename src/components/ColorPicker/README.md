@@ -25,7 +25,7 @@ email templates for their shop.
 
 ## Best practices
 
-* Use the alpha slider if you want to allow merchants to be able to select a
+- Use the alpha slider if you want to allow merchants to be able to select a
   transparent color
 
 ---

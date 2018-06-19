@@ -25,9 +25,9 @@ The scrollable component is a container for long form content, such as terms of 
 
 Scrollable containers should:
 
-* Be used when it’s helpful to provide an extra visual cue to let merchants
+- Be used when it’s helpful to provide an extra visual cue to let merchants
   know that content exists below or above the fold
-* Only be used for length text such as terms of service or other legal
+- Only be used for length text such as terms of service or other legal
   disclaimers and never for instructional or action-oriented text
 
 ---
@@ -40,14 +40,14 @@ Scrollable containers are cards with scrolling functionality.
 
 Headings should be:
 
-* Informative and descriptive: they should label the type of content grouped in
+- Informative and descriptive: they should label the type of content grouped in
   the card.
-* Concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep headings to single sentence and avoid using punctuation such as
+- Concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep headings to single sentence and avoid using punctuation such as
     periods, commas, or semicolons
-  * Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
-  * Write in sentence case (first word capitalized, the rest is lowercase)
+  - Avoid articles (the, a, an) in [microcopy headings](/content/grammar-and-mechanics#headings-and-subheadings) to keep content short and actionable
+  - Write in sentence case (first word capitalized, the rest is lowercase)
 
 <!-- usagelist -->
 
@@ -65,7 +65,7 @@ This is your online store dashboard
 
 Body content should be:
 
-* Actionable: start sentences with imperative verbs when telling a merchant
+- Actionable: start sentences with imperative verbs when telling a merchant
   what actions are available to them (especially something new). Don’t use
   permissive language like “you can”.
 
@@ -81,9 +81,9 @@ Now you can accept the terms and conditions.
 
 <!-- end -->
 
-* Structured for merchant success: Always put the most critical information
+- Structured for merchant success: Always put the most critical information
   first.
-* Clear: use the verb “need” to help merchants understand when they’re
+- Clear: use the verb “need” to help merchants understand when they’re
   required to do something.
 
 ## Examples
@@ -112,4 +112,4 @@ Use when you need to make a region within the page independently scrollable. It�
 
 ## Related components
 
-* To put long sections of information under a block that can be expanded or collapsed by the merchant, [use the collapsible component](/components/collapsible)
+- To put long sections of information under a block that can be expanded or collapsed by the merchant, [use the collapsible component](/components/collapsible)

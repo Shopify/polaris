@@ -4,7 +4,7 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../components/AppProvider';
-import {DisplayText, TextStyle, Image, Stack} from '../';
+import {DisplayText, TextStyle, Image, Stack} from '..';
 
 import emptySearch from './illustrations/empty-search.svg';
 import styles from './EmptySearchResult.scss';
@@ -22,7 +22,12 @@ export class EmptySearchResult extends React.PureComponent<
   never
 > {
   render() {
-    const {title, description, withIllustration, polaris: {intl}} = this.props;
+    const {
+      title,
+      description,
+      withIllustration,
+      polaris: {intl},
+    } = this.props;
 
     const altText = intl.translate('Polaris.EmptySearchResult.altText');
 

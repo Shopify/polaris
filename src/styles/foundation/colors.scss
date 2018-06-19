@@ -11,17 +11,15 @@ $color-palette-data: $polaris-colors;
 // Add state colors to the palette
 $color-palette-data: map-extend(
   $color-palette-data,
-
   (
-    'state':
-      (
-        'hover': rgba(223, 227, 232, 0.3),
-        'focused': rgba(223, 227, 232, 0.3),
-        'active': rgba(179, 188, 245, 0.1),
-        'selected': rgba(179, 188, 245, 0.15),
-        'subdued': rgba(249, 250, 251, 1),
-        'disabled': rgba(249, 250, 251, 1)
-      )
+    'state': (
+      'hover': rgba(223, 227, 232, 0.3),
+      'focused': rgba(223, 227, 232, 0.3),
+      'active': rgba(179, 188, 245, 0.1),
+      'selected': rgba(179, 188, 245, 0.15),
+      'subdued': rgba(249, 250, 251, 1),
+      'disabled': rgba(249, 250, 251, 1),
+    ),
   )
 );
 

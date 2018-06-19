@@ -40,11 +40,11 @@ To access the EASDK components you need to add them to you project:
 
 All components must be wrapped by the `<AppProvider />` component. This component initializes the EASDK using the apiKey and shopOrigin you provide.
 
-* [`<AppProvider />`](https://polaris.shopify.com/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
-* [`<Page />`](https://polaris.shopify.com/components/structure/page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
-* [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
-* [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.
-* [`<ResourcePicker />`](https://polaris.shopify.com/components/embedded/embedded-resource-picker): A modal dialog that allows the user to select one or more of their products or collections, and provides you with details on the selected resources. This replaces the [`ShopifyApp.Modal.productPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-productpicker-options-fn) and [`ShopifyApp.Modal.collectionPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-collectionpicker-options-fn) EASDK methods.
+- [`<AppProvider />`](https://polaris.shopify.com/components/structure/app-provider): The root component that manages the communication with the Shopify admin.
+- [`<Page />`](https://polaris.shopify.com/components/structure/page): An outer wrapper of the embedded app content used to control page title and associated page actions. This replaces the [`ShopifyApp.Bar.initialize`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-initialize-config), [`ShopifyApp.Bar.setTitle`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-settitle-title), [`ShopifyApp.Bar.setIcon`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-seticon-icon), [`ShopifyApp.Bar.setPagination`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setpagination-config) and [`ShopifyApp.Bar.setBreadcrumb`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-bar-setbreadcrumb-config)
+- [`<Alert />`](https://polaris.shopify.com/components/embedded/embedded-alert): A modal alert presented to the user with a configurable option to cancel or confirm. This replaces the [`ShopifyApp.Modal.alert`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-alert-options-fn) and [`ShopifyApp.Modal.confirm`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-confirm-options-fn) EASDK methods.
+- [`<Modal />`](https://polaris.shopify.com/components/embedded/embedded-modal): A modal dialog presented over top of your application. This dialog will present another page of your choice from your application. This replaces the [`ShopifyApp.Modal.open`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-open-init-fn) EASDK method.
+- [`<ResourcePicker />`](https://polaris.shopify.com/components/embedded/embedded-resource-picker): A modal dialog that allows the user to select one or more of their products or collections, and provides you with details on the selected resources. This replaces the [`ShopifyApp.Modal.productPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-productpicker-options-fn) and [`ShopifyApp.Modal.collectionPicker`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-modal-collectionpicker-options-fn) EASDK methods.
 
 ## Access to further EASDK APIs
 
@@ -116,9 +116,9 @@ Make flash messages very short and scannable.
 
 Flash messages should:
 
-* Follow a {noun} + {verb} pattern (e.g. Settings saved, Buy Button removed, Discount deleted)
-* Confirm a previous call to action performed by the merchant (e.g. if the merchant selects a button that says “Add channel”, the flash message that follows should say “Channel added”)
-* Be short and specific (2 or 3 words)
+- Follow a {noun} + {verb} pattern (e.g. Settings saved, Buy Button removed, Discount deleted)
+- Confirm a previous call to action performed by the merchant (e.g. if the merchant selects a button that says “Add channel”, the flash message that follows should say “Channel added”)
+- Be short and specific (2 or 3 words)
 
 ###### Do
 

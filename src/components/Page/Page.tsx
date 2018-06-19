@@ -3,46 +3,14 @@ import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {IconableAction, DisableableAction, LoadableAction} from '../../types';
-import {PaginationDescriptor} from '../Pagination';
-import {Props as BreadcrumbProps} from '../Breadcrumbs';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import Header, {ActionGroup, Props as HeaderProps} from './Header';
+import Header from './Header';
+import {PageProps} from './types';
 
 import * as styles from './Page.scss';
 
-export type SecondaryAction = IconableAction & DisableableAction;
-
-export interface HeaderProps {
-  /** Page title, in large type */
-  title: string;
-  /** Visually hide the title */
-  titleHidden?: boolean;
-  /** App icon, for pages that are part of Shopify apps */
-  icon?: string;
-  /** Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbProps['breadcrumbs'];
-  /** Adds a border to the bottom of the page header */
-  separator?: boolean;
-  /** Collection of secondary page-level actions */
-  secondaryActions?: SecondaryAction[];
-  /** Collection of page-level groups of secondary actions */
-  actionGroups?: ActionGroup[];
-  /** Primary page-level action */
-  primaryAction?: DisableableAction & LoadableAction;
-  /** Page-level pagination */
-  pagination?: PaginationDescriptor;
-}
-
-export interface Props extends HeaderProps {
-  /** The contents of the page */
-  children?: React.ReactNode;
-  /** Remove the normal max-width on the page */
-  fullWidth?: boolean;
-  /** Decreases the maximum layout width. Intended for single-column layouts */
-  singleColumn?: boolean;
-}
+export interface Props extends PageProps {}
 
 export type ComposedProps = Props & WithAppProviderProps;
 

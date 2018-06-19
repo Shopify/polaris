@@ -8,6 +8,7 @@
     "jsx": "react",
     "strictNullChecks": true,
     "noImplicitAny": true,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedParameters": true,
