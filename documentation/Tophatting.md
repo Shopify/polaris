@@ -1,17 +1,17 @@
 # Tophatting 🎩
 
-TL;DR This is a collection of lessons learned from breaking things. It‘s not enough to rely on automated tests.
+TL;DR This is a collection of lessons learned from breaking things. It’s not enough to rely on automated tests.
 
-As you make changes, non-obvious things can break. Manual testing (we call it “tophatting”, or 🎩 for short) adds that extra degree of certainty that what you‘re shipping works and behaves as expected. Both you, as the author of a PR, and someone on your team, should 🎩 before merging.
+As you make changes, non-obvious things can break. Manual testing (we call it “tophatting”, or 🎩 for short) adds that extra degree of certainty that what you’re shipping works and behaves as expected. Both you, as the author of a PR, and someone on your team, should 🎩 before merging.
 
 ## When should you 🎩?
 
-- When you‘re adding a feature and want to make sure it works
-- When you‘re refactoring existing code and need to make sure the current behavior is still there
+- When you’re adding a feature and want to make sure it works
+- When you’re refactoring existing code and need to make sure the current behavior is still there
 
 ## What should you 🎩?
 
-**Do a thorough 🎩 when making a big or potentially breaking change.** Obvious problems often won‘t be caught in the console on page load. This is why it‘s good to try at least one realistic workflow to test your changes. This might seem tedious (a few extra clicks), but catching bugs before they reach users is much less expensive. Depending on the nature of the change, a 🎩 could range from UI only, or it could mean ad hoc testing on the API, or both.
+**Do a thorough 🎩 when making a big or potentially breaking change.** Obvious problems often won’t be caught in the console on page load. This is why it’s good to try at least one realistic workflow to test your changes. This might seem tedious (a few extra clicks), but catching bugs before they reach users is much less expensive. Depending on the nature of the change, a 🎩 could range from UI only, or it could mean ad hoc testing on the API, or both.
 
 **Consider testing:**
 
@@ -47,7 +47,7 @@ Giving someone a thorough 🎩 builds trust and trains your attention to detail.
 We support the [following browsers](https://help.shopify.com/manual/intro-to-shopify/shopify-admin/supported-browsers). Here is a checklist for browser tophatting. Please feel free to use it in your PRs:
 
 ```md
-I‘ve tophatted these changes in the following browsers:
+I’ve tophatted these changes in the following browsers:
 
 - [ ] Chrome latest
 - [ ] FF latest
