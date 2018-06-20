@@ -14,6 +14,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
 
+### Bug fixes
+
+- Fixed a regression where the version of Polaris wasn’t globally available anymore ([#1555](https://github.com/Shopify/polaris-react/pull/1555))
+
 ## 2.2.0 - 2018-06-12
 
 ### New components

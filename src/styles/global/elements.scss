@@ -1,3 +1,7 @@
+:root {
+  --polaris-version-number: '<%= POLARIS_VERSION %>';
+}
+
 html,
 body {
   @include text-style-body;
