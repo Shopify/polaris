@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+
+.Search {
+  position: absolute;
+  z-index: z-index(search, $stacking-order);
+  top: top-bar-height();
+  left: 0;
+  display: flex;
+  align-items: stretch;
+  width: 100vw;
+  height: calc(100vh - #{top-bar-height() + spacing(tight)});
+  visibility: hidden;
+  pointer-events: none;
+
+  @include page-content-when-not-fully-condensed {
+    align-items: flex-start;
+  }
+}
+
+.visible {
+  visibility: initial;
+  pointer-events: all;
+}
+
+.Overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+
+  > * {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  @include page-content-when-not-fully-condensed {
+    max-height: 60vh;
+  }
+
+  @include frame-when-nav-displayed {
+    margin-top: -1 * spacing(extra-tight);
+    margin-right: spacing(loose);
+    margin-left: layout-width(secondary, min) + spacing(loose);
+  }
+
+  // Only after the nav is open and the page has reached non-condensed state
+  @include breakpoint-after($large-width) {
+    margin-left: layout-width(secondary, min) + spacing(extra-loose);
+  }
+}

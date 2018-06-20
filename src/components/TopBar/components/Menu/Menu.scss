@@ -1,0 +1,41 @@
+.Activator {
+  @include unstyled-button;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: rem(36px);
+  height: top-bar-height();
+  margin: 0;
+  padding: spacing(tight) spacing() spacing(tight) spacing();
+  border: 0;
+  border-left: 1px solid rgba(color('black'), 0.42);
+  cursor: pointer;
+  transition: background-color 0.1s;
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    display: none;
+  }
+
+  &:focus {
+    background-color: rgba(color('white'), 0.16);
+    outline: none;
+  }
+
+  &:hover {
+    background-color: rgba(color('white'), 0.08);
+  }
+
+  &:active,
+  &[aria-expanded='true'] {
+    background-color: rgba(color('black'), 0.28);
+    outline: none;
+    transition: none;
+  }
+}
+
+.Section {
+  margin-top: spacing(tight);
+  padding-top: spacing(tight);
+  border-top: border();
+}

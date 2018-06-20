@@ -209,6 +209,8 @@ export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 
+export {default as TopBar, Props as TopBarProps} from './TopBar';
+
 export {default as Truncate, Props as TruncateProps} from './Truncate';
 
 export {
