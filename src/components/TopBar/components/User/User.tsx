@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {IconableAction} from '../../../../types';
+
 import {Avatar, AvatarProps} from '../../../../components';
-import Indicator from '../Indicator';
-import styles from './User.scss';
-import {Menu} from '..';
 import {MessageProps} from '../Menu/components';
+import {Menu} from '../../components';
+import Indicator from '../Indicator';
+
+import styles from './User.scss';
 
 export interface Props {
   actions: {items: IconableAction[]}[];
@@ -46,7 +48,7 @@ export default function User({
       </span>
     </div>
   );
-  console.log('hi');
+
   return (
     <Menu
       activator={activator}

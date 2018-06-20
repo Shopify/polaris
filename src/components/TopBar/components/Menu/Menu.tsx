@@ -1,5 +1,4 @@
 import * as React from 'react';
-// Forked ActionList from Polaris-react repo. See issue https://github.com/Shopify/web/issues/2504
 import {Message, MessageProps} from './components';
 import {ActionList, ActionListProps, Popover} from '../../../../components';
 import styles from './Menu.scss';

@@ -5,16 +5,7 @@ import {camelCase} from 'change-case';
 import {menu} from '../../icons';
 import {Icon, Image, UnstyledLink} from '../../components';
 
-import {
-  TextField,
-  TextFieldProps,
-  User,
-  UserProps,
-  Search,
-  SearchProps,
-  Menu,
-  MenuProps,
-} from './components';
+import {TextField, User, Search, SearchProps, Menu} from './components';
 
 import * as styles from './TopBar.scss';
 
@@ -41,8 +32,6 @@ export interface State {
   focused: boolean;
 }
 
-export {TextFieldProps, UserProps, MenuProps};
-
 export default class TopBar extends React.PureComponent<Props, State> {
   static User = User;
   static TextField = TextField;
@@ -67,17 +56,17 @@ export default class TopBar extends React.PureComponent<Props, State> {
 
     const {focused} = this.state;
 
-    const iconMarkup = logoAction ? (
+    const iconMarkup = logoAction && (
       <Image
         source={logoAction.source}
         alt={logoAction.accessibilityLabel}
         className={styles.Logo}
       />
-    ) : null;
+    );
 
     const className = classNames(styles.NavIcon, focused && styles.focused);
 
-    const navButtonMarkup = hasNav ? (
+    const navButtonMarkup = hasNav && (
       <button
         type="button"
         className={className}
@@ -88,37 +77,36 @@ export default class TopBar extends React.PureComponent<Props, State> {
       >
         <Icon source={menu} color="white" />
       </button>
-    ) : null;
+    );
 
-    const linkMarkup = logoAction ? (
+    const linkMarkup = logoAction && (
       <UnstyledLink url={logoAction.url} className={styles.LogoLink}>
         {iconMarkup}
       </UnstyledLink>
-    ) : null;
+    );
 
-    const searchMarkup = search ? (
+    const searchMarkup = search && (
       <Search visible={searchVisible} onDismiss={onSearchDismiss}>
         {search}
       </Search>
-    ) : null;
+    );
 
     const logoContainerClassName = classNames(
       styles.LogoContainer,
       logoAction && styles[variationName('logo', camelCase(logoAction.id))],
     );
 
+    const logoMarkup = (linkMarkup && linkMarkup) || iconMarkup;
+
     return (
       <div className={styles.TopBar} data-polaris-top-bar>
         {navButtonMarkup}
-        <div className={logoContainerClassName}>
-          {(linkMarkup && linkMarkup) || iconMarkup}
-        </div>
+        <div className={logoContainerClassName}>{logoMarkup}</div>
         <div className={styles.Contents}>
           {searchField}
           {secondaryMenu}
           {user}
         </div>
-
         {searchMarkup}
       </div>
     );

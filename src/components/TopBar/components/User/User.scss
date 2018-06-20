@@ -5,9 +5,6 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
   spacing(tight);
 
 .User {
-  // Remove this z-index from here when https://github.com/Shopify/polaris-react/pull/1005
-  // has been merged and Polaris has been updated in this app.
-  z-index: 2;
   display: flex;
 
   @include safe-area-for(padding-right, spacing(tight), right);

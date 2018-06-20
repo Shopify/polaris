@@ -39,17 +39,16 @@ export default class TextField extends React.Component<Props, never> {
   render() {
     const {value, focused, active, placeholder} = this.props;
 
-    const clearMarkup =
-      value === '' ? null : (
-        <button
-          type="button"
-          aria-label="Clear"
-          className={styles.Clear}
-          onClick={this.handleClear}
-        >
-          <Icon source="circleCancel" />
-        </button>
-      );
+    const clearMarkup = value !== '' && (
+      <button
+        type="button"
+        aria-label="Clear"
+        className={styles.Clear}
+        onClick={this.handleClear}
+      >
+        <Icon source="circleCancel" />
+      </button>
+    );
 
     const className = classNames(
       styles.TextField,

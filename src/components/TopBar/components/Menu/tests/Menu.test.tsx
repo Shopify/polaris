@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger} from '../../../../../../tests/utilities';
+import {mountWithAppProvider, trigger} from '../../../../../../tests/utilities';
 
-import {ActionList, Popover} from '../components';
+import {ActionList, Popover} from '../../../../../components';
 import Menu from '../Menu';
 
 describe('<Menu />', () => {
@@ -17,7 +16,9 @@ describe('<Menu />', () => {
 
   it('renders the activator content', () => {
     const content = <div>Hello</div>;
-    const menu = mount(<Menu {...defaultProps} activator={content} />);
+    const menu = mountWithAppProvider(
+      <Menu {...defaultProps} activator={content} />,
+    );
 
     expect(menu.contains(content)).toBe(true);
   });
@@ -33,13 +34,15 @@ describe('<Menu />', () => {
       },
     ];
 
-    const menu = mount(<Menu {...defaultProps} actions={actions} open />);
+    const menu = mountWithAppProvider(
+      <Menu {...defaultProps} actions={actions} open />,
+    );
 
     expect(menu.find(ActionList).prop('sections')).toBe(actions);
   });
 
   it('passes the open prop down to the Popover component', () => {
-    const menu = mount(<Menu {...defaultProps} open />);
+    const menu = mountWithAppProvider(<Menu {...defaultProps} open />);
 
     const popover = menu.find(Popover);
 
@@ -48,7 +51,9 @@ describe('<Menu />', () => {
 
   it('calls the onClose prop in the Popover onClose', () => {
     const onClose = jest.fn();
-    const menu = mount(<Menu {...defaultProps} onClose={onClose} open />);
+    const menu = mountWithAppProvider(
+      <Menu {...defaultProps} onClose={onClose} open />,
+    );
 
     trigger(menu.find(Popover), 'onClose');
     expect(onClose).toHaveBeenCalled();
@@ -56,7 +61,9 @@ describe('<Menu />', () => {
 
   it('calls the onClose callback when clicking on any ActionList item', () => {
     const onClose = jest.fn();
-    const menu = mount(<Menu {...defaultProps} onClose={onClose} open />);
+    const menu = mountWithAppProvider(
+      <Menu {...defaultProps} onClose={onClose} open />,
+    );
 
     trigger(menu.find(ActionList), 'onActionAnyItem');
     expect(onClose).toHaveBeenCalled();
@@ -64,7 +71,9 @@ describe('<Menu />', () => {
 
   it('calls the onOpen callback when clicking on the activator button', () => {
     const onOpenCallback = jest.fn();
-    const menu = mount(<Menu {...defaultProps} onOpen={onOpenCallback} />);
+    const menu = mountWithAppProvider(
+      <Menu {...defaultProps} onOpen={onOpenCallback} />,
+    );
 
     trigger(menu.find('button'), 'onClick');
     expect(onOpenCallback).toHaveBeenCalled();

@@ -119,9 +119,7 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: border-radius();
-  // background-color: var(--top-bar-text-field-background);
-  background-color: rebeccapurple;
+  background-color: var(--top-bar-text-field-background);
   will-change: background-color;
   transition: background-color duration() easing();
 }

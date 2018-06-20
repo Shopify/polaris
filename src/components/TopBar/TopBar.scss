@@ -1,24 +1,12 @@
 @import './styles/variables';
 
-$stacking-order: (
-  content: 10,
-  search: 20,
-);
-
-// TODO: Replace `$large-width` breakpoints with
-// `page-content-when-not-partially-condensed`
-// Once the frame is rendering our React routes
-$large-width: layout-width(primary, max) + layout-width(secondary, max) +
-  spacing(tight);
-
 $icon-size: rem(20px);
 
 .TopBar {
   position: relative;
   display: flex;
   height: top-bar-height();
-  // background-color: var(--top-bar-background);
-  background-color: papayawhip;
+  background-color: var(--top-bar-background);
 }
 
 .LogoContainer {
@@ -30,8 +18,7 @@ $icon-size: rem(20px);
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
-    // background-color: var(--top-bar-background-darker);
-    background-color: palevioletred;
+    background-color: var(--top-bar-background-darker);
 
     @include safe-area-for(flex-basis, layout-width(nav), left);
     @include safe-area-for(padding-left, spacing(), left);

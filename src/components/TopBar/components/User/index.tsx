@@ -1,4 +1,4 @@
 import User from './User';
 
-export * from './User';
+export {Props} from './User';
 export default User;

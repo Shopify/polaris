@@ -29,6 +29,9 @@ export default function Message({
     <Badge status={badge.status}>{badge.content}</Badge>
   );
 
+  const {to, content: linkContent} = link;
+  const {onClick, content: actionContent} = action;
+
   return (
     <div className={styles.Section}>
       <Popover.Section>
@@ -41,10 +44,10 @@ export default function Message({
             <p>{description}</p>
           </TextContainer>
 
-          <Link url={link.to}>{link.content}</Link>
+          <Link url={to}>{linkContent}</Link>
 
-          <Button plain onClick={action.onClick}>
-            {action.content}
+          <Button plain onClick={onClick}>
+            {actionContent}
           </Button>
         </Stack>
       </Popover.Section>
