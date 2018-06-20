@@ -22,9 +22,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### New components
 
-#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
+#### [Options list](https://polaris.shopify.com/components/options-list)
 
-Use range slider to select a number value between a min and max range.
+Use Options list to present a group of selectable items outside of the context of a form.
 
 ### Enhancements
 
