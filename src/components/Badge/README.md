@@ -5,7 +5,6 @@ keywords:
   - pills
   - status indicators
   - color-coded indicators
-  - colour-coded indicators
   - informational badge
   - success badge
   - attention badge
