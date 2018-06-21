@@ -44,23 +44,35 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   text-align: left;
   cursor: pointer;
   border-radius: 0;
-  color: color('ink', 'light');
 
-  &:hover,
-  &:focus,
   &:active {
-    background: color('indigo');
-    outline: none;
-    color: color('white');
+    @include state(active);
 
-    .Image {
-      @include recolor-icon(color('sky'), color('white'));
+    &:hover {
+      @include state(active, hover);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:focus {
+        @include state(active, hover, focused);
+      }
     }
   }
 
+  &:hover {
+    @include state(hover);
+
+    &:focus {
+      @include state(hover, focused);
+    }
+  }
+
+  &:focus {
+    @include state(focused);
+  }
+
   &.disabled {
+    @include state(disabled);
     color: color('ink', 'lightest');
-    cursor: default;
     pointer-events: none;
 
     .Image {
