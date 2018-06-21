@@ -91,9 +91,8 @@ export default class EASDK {
   }
 
   @autobind
-  showFlashNotice(message: string, options: {error?: boolean} = {}) {
-    const {error = false} = options;
-    const type = error ? 'Shopify.API.flash.error' : 'Shopify.API.flash.notice';
+  showFlashNotice(message: string) {
+    const type = 'Shopify.API.flash.notice';
     this.messenger.send(type, {message});
   }
 
