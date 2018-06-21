@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Heading from '../Heading';
 import TextContainer from '../TextContainer';
-import TextStyle from '../TextStyle';
 import * as styles from './Layout.scss';
 
 export interface Props {
@@ -12,7 +11,8 @@ export interface Props {
 
 export default function AnnotatedSection(props: Props) {
   const {children, title, description} = props;
-  const wrappedDescription =
+
+  const descriptionMarkup =
     typeof description === 'string' ? <p>{description}</p> : description;
 
   return (
@@ -21,7 +21,9 @@ export default function AnnotatedSection(props: Props) {
         <div className={styles.Annotation}>
           <TextContainer>
             <Heading>{title}</Heading>
-            <TextStyle variation="subdued">{wrappedDescription}</TextStyle>
+            <div className={styles.AnnotationDescription}>
+              {descriptionMarkup}
+            </div>
           </TextContainer>
         </div>
 
