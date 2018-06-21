@@ -25,7 +25,7 @@ export interface Action {
 export interface Props {
   /**  Logo information */
   branding: Brand;
-  /** Control the rendering */
+  /** Toggle whether the context bar is visible */
   visible: boolean;
   /** Content the context bar displays */
   message?: string;
@@ -52,19 +52,14 @@ class ContextBar extends React.PureComponent<Props, never> {
   }
 
   componentDidUpdate(oldProps: Props) {
-    const {visible, message, primaryAction, cancelAction} = this.props;
+    const {visible} = this.props;
 
     if (!visible && oldProps.visible) {
       this.context.frame.removeContextBar();
       return;
     }
 
-    if (
-      (visible && !oldProps.visible) ||
-      message !== oldProps.message ||
-      !isEqual(primaryAction, oldProps.primaryAction) ||
-      !isEqual(cancelAction, oldProps.cancelAction)
-    ) {
+    if (contextBarHasChanged(this.props, oldProps)) {
       this.context.frame.setContextBar(this.props);
     }
   }
@@ -72,6 +67,23 @@ class ContextBar extends React.PureComponent<Props, never> {
   render() {
     return null;
   }
+}
+
+function contextBarHasChanged(
+  {visible, message, primaryAction, cancelAction}: Props,
+  {
+    visible: oldVisible,
+    message: oldMessage,
+    primaryAction: oldPrimaryAction,
+    cancelAction: oldCancelAction,
+  }: Props,
+) {
+  return Boolean(
+    (visible && !oldVisible) ||
+      message !== oldMessage ||
+      !isEqual(primaryAction, oldPrimaryAction) ||
+      !isEqual(cancelAction, oldCancelAction),
+  );
 }
 
 export default ContextBar;

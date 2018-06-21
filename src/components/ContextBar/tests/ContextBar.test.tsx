@@ -8,7 +8,7 @@ describe('<ContextBar />', () => {
   const props = {
     primaryAction: {content: 'Save', onAction: noop},
     cancelAction: {content: 'Discard', onAction: noop},
-    branding: {id: 'contextbar id', src: 'google.com'},
+    branding: {id: 'contextbar-id', src: 'src/assets/shopify.png'},
     message: 'Hello',
   };
 
