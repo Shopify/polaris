@@ -1,0 +1,12 @@
+.Container {
+  display: flex;
+  overflow: auto;
+}
+
+.Constrained {
+  flex: 1;
+}
+
+.FullHeight {
+  height: 100%;
+}
