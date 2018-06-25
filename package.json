@@ -13,6 +13,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": [
+    "./src/styles/global.scss",
+    "./src/styles/global/**/*.scss"
+  ],
   "keywords": [
     "shopify",
     "polaris",
