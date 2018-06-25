@@ -57,6 +57,10 @@
       "altText": "Empty search results"
     },
 
+    "Frame": {
+      "skipToContent": "Skip to content"
+    },
+
     "Icon": {
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },

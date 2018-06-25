@@ -4,6 +4,10 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {navBarCollapsed} from '../../utilities/breakpoints';
 import {Button, Icon, EventListener} from '../../components';
 import {TrapFocus} from '../Focus';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
 
@@ -11,7 +15,6 @@ import {ToastManager, Loading, ContextBar, ContextBarProps} from './components';
 import * as styles from './Frame.scss';
 
 export interface Props {
-  skipToContent?: string;
   topBar?: React.ReactNode;
   nav?: React.ReactNode;
   banners?: React.ReactNode;
@@ -30,7 +33,9 @@ export interface State {
 
 export const APP_FRAME_MAIN = 'AppFrameMain';
 
-export default class Frame extends React.PureComponent<Props, State> {
+export type CombinedProps = Props & WithAppProviderProps;
+
+export class Frame extends React.PureComponent<CombinedProps, State> {
   static childContextTypes = frameContextTypes;
 
   state: State = {
@@ -111,7 +116,7 @@ export default class Frame extends React.PureComponent<Props, State> {
       topBar,
       banners,
       showMobileNav,
-      skipToContent,
+      polaris: {intl},
     } = this.props;
 
     const className = classNames(
@@ -191,17 +196,17 @@ export default class Frame extends React.PureComponent<Props, State> {
       skipFocused && styles.focused,
     );
 
-    const skipMarkup = skipToContent ? (
+    const skipMarkup = (
       <div className={skipClassName}>
         <Button
           onClick={this.handleClick}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         >
-          {skipToContent}
+          {intl.translate('Polaris.Frame.skipToContent')}
         </Button>
       </div>
-    ) : null;
+    );
 
     return (
       <div className={styles.Frame} data-polaris-layer>
@@ -345,3 +350,5 @@ export default class Frame extends React.PureComponent<Props, State> {
 function focusAppFrameMain() {
   window.location.assign(`${window.location.pathname}#${APP_FRAME_MAIN}`);
 }
+
+export default withAppProvider<Props>()(Frame);
