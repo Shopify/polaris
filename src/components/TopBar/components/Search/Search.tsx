@@ -10,6 +10,8 @@ export interface Props {
 }
 
 export default class Search extends React.PureComponent<Props, never> {
+  private node: HTMLElement | null = null;
+
   render() {
     const {visible, children} = this.props;
 
@@ -19,20 +21,26 @@ export default class Search extends React.PureComponent<Props, never> {
     );
 
     return (
-      <div className={searchClassName} onClick={this.handleDismiss}>
+      <div
+        ref={this.setNode}
+        className={searchClassName}
+        onClick={this.handleDismiss}
+      >
         <div className={styles.Overlay}>{children}</div>
       </div>
     );
   }
 
   @autobind
+  setNode(node: HTMLElement | null) {
+    this.node = node;
+  }
+
+  @autobind
   private handleDismiss({target}: React.MouseEvent<HTMLElement>) {
     const {onDismiss} = this.props;
 
-    if (
-      onDismiss != null &&
-      (target as HTMLElement).classList.contains(styles.Search)
-    ) {
+    if (onDismiss != null && target === this.node) {
       onDismiss();
     }
   }
