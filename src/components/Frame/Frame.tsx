@@ -2,7 +2,8 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navBarCollapsed} from '../../utilities/breakpoints';
-import {Button, Icon, EventListener, TrapFocus} from '..';
+import {Button, Icon, EventListener} from '../../components';
+import {TrapFocus} from '../Focus';
 
 import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
 
