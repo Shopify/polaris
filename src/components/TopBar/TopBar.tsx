@@ -93,7 +93,9 @@ export default class TopBar extends React.PureComponent<Props, State> {
 
     const logoContainerClassName = classNames(
       styles.LogoContainer,
-      logoAction && styles[variationName('logo', camelCase(logoAction.id))],
+      logoAction &&
+        logoAction.id &&
+        styles[variationName('logo', camelCase(logoAction.id))],
     );
 
     const logoMarkup = linkMarkup || iconMarkup;
