@@ -19,6 +19,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Fixed a regression where the version of Polaris wasn’t globally available anymore ([#1555](https://github.com/Shopify/polaris-react/pull/1555))
 - Updated the interaction state visuals for ActionList ([#1585](https://github.com/Shopify/polaris-react/pull/1585))
+- Fixed an issue where Radio Buttons were not focusable in Safari ([#1626](https://github.com/Shopify/polaris-react/pull/1626))
 
 ### Dependency updates
 
