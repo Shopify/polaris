@@ -147,6 +147,8 @@ export {default as Modal, Props as ModalProps} from './Modal';
 
 export {default as OptionList} from './OptionList';
 
+export {default as Nav, Props as NavProps} from './Nav';
+
 export {default as Page, Props as PageProps} from './Page';
 
 export {default as PageActions, Props as PageActionsProps} from './PageActions';

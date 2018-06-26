@@ -1,0 +1,21 @@
+$nav-variables: (
+  mobile-spacing: rem(10px),
+  desktop-spacing: rem(6px),
+  mobile-height: rem(40px),
+  desktop-height: rem(32px),
+  icon-size: rem(20px),
+  item-line-height: rem(40px),
+);
+
+@function nav($variable) {
+  @return map-get($nav-variables, $variable);
+}
+
+$nav-animation-variables: (
+  items-to-stagger: 12,
+  stagger-interval: 50,
+);
+
+@function nav-animation($variable) {
+  @return map-get($nav-animation-variables, $variable);
+}

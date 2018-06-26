@@ -1,0 +1,57 @@
+@import './variables';
+
+$nav-max-width: rem(360px);
+
+.Nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: mobile-nav-width();
+  min-width: layout-width(nav);
+  max-width: $nav-max-width;
+  height: 100%;
+  min-height: 100%;
+  background: color('sky', 'light');
+  -webkit-overflow-scrolling: touch;
+
+  @include safe-area-for(padding-left, 0, left);
+  @include safe-area-for(padding-bottom, 0, bottom);
+
+  &:focus {
+    outline: none;
+  }
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    max-width: layout-width(nav);
+    border-right: border();
+
+    @include safe-area-for(max-width, layout-width(nav), left);
+  }
+}
+
+.User {
+  flex: 0 0 auto;
+}
+
+.PrimaryNav {
+  display: flex;
+  overflow: visible;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 100%;
+}
+
+.RollupToggle {
+  @include text-emphasis-normal;
+  @include text-emphasis-subdued;
+
+  &:hover {
+    @include recolor-icon(color('indigo'));
+    color: color('indigo');
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

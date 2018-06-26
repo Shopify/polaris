@@ -1,0 +1,189 @@
+@import '../../variables';
+
+$badge-size: rem(16px);
+$badge-padding: rem(5px);
+$badge-font-size: rem(20px);
+$text-line-height: rem(20px);
+$disabled-fade: 0.6;
+$item-font-size: rem(16px);
+$item-font-size-small: rem(14px);
+$item-line-height-small: rem(32px);
+
+.Item {
+  @include unstyled-button;
+  font-size: $item-font-size;
+  font-weight: 400;
+  line-height: nav(item-line-height);
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  max-width: 100%;
+  padding: 0 spacing();
+  color: color('ink');
+  text-decoration: none;
+  text-align: left;
+
+  &:hover {
+    color: color('black');
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    .Icon {
+      @include recolor-icon(color('ink', 'lighter'), color('white'));
+    }
+  }
+
+  &:focus {
+    color: color('indigo');
+
+    .Icon {
+      @include recolor-icon(color('indigo'), color('white'));
+    }
+  }
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    font-size: $item-font-size-small;
+    font-weight: 500;
+    line-height: $item-line-height-small;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+.Badge {
+  font-size: $badge-font-size;
+  line-height: $badge-size;
+  margin-right: spacing(extra-tight);
+  margin-left: spacing(tight);
+  padding: 0 $badge-padding;
+  border-radius: $badge-size / 2;
+  background: color('teal');
+  color: color('white');
+}
+
+.Icon {
+  @include recolor-icon(color('ink', 'lightest'), color('white'));
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: nav(icon-size);
+  height: nav(icon-size);
+  margin-top: nav(mobile-spacing);
+  margin-right: spacing(loose);
+  margin-bottom: nav(mobile-spacing);
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    margin-top: nav(desktop-spacing);
+    margin-right: spacing();
+    margin-bottom: nav(desktop-spacing);
+  }
+
+  .selected &,
+  .selected:hover &,
+  .subNavActive &,
+  .subNavActive:hover &,
+  .subNavActive:focus & {
+    @include recolor-icon(color('indigo'), color('white'));
+  } // The regular nav items are wrapped in polaris icon components which add
+  // the styles we're missing which causes the channel items to shift down
+  svg {
+    display: block;
+  }
+}
+
+.selected {
+  font-weight: 600;
+  color: color('indigo');
+
+  .Icon,
+  &:focus .Icon {
+    @include recolor-icon(color('indigo'), color('white'));
+  }
+
+  &:hover {
+    color: color('indigo');
+  }
+}
+
+.disabled {
+  color: color('ink', 'lightest');
+  pointer-events: none;
+  opacity: $disabled-fade;
+}
+
+.ListItem {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  .RollupSection &,
+  .SecondaryNav & {
+    opacity: 0;
+    animation: fade-in duration(slowest) 1 forwards;
+  }
+
+  @for $i from 1 through nav-animation(items-to-stagger) {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * nav-animation(stagger-interval)}ms;
+    }
+  }
+}
+
+.ListItem-hasAction .Item {
+  max-width: calc(
+    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+  );
+  padding-right: 0;
+}
+
+.Text {
+  flex: 1 1 auto;
+  margin-top: nav(mobile-spacing);
+  margin-bottom: nav(mobile-spacing);
+  line-height: $text-line-height;
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    margin-top: nav(desktop-spacing);
+    margin-bottom: nav(desktop-spacing);
+  }
+}
+
+.SecondaryAction {
+  @include recolor-icon(color('ink', 'lightest'), color('white'));
+  display: flex;
+  align-items: center;
+  height: nav(mobile-height);
+  margin-right: spacing(extra-tight);
+  padding: spacing(extra-tight) spacing();
+  border-radius: border-radius();
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    height: nav(desktop-height);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include recolor-icon(color('indigo'), color('white'));
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: rgba(color('sky'), 0.5);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
