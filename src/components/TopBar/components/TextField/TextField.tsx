@@ -19,20 +19,28 @@ export default class TextField extends React.Component<Props, never> {
   private input: HTMLInputElement | null = null;
 
   componentDidMount() {
-    if (this.input && this.props.focused) {
-      this.input.focus();
+    const {input, props} = this;
+    const {focused} = props;
+
+    if (input && focused) {
+      input.focus();
     }
   }
 
   componentDidUpdate({focused: wasFocused}: Props) {
-    if (this.input == null) {
+    const {input} = this;
+
+    if (input == null) {
       return;
     }
 
-    if (this.props.focused && !wasFocused) {
-      this.input.focus();
-    } else if (!this.props.focused && wasFocused) {
-      this.input.blur();
+    const {focused} = this.props;
+    const {focus, blur} = input;
+
+    if (focused && !wasFocused) {
+      focus();
+    } else if (!focused && wasFocused) {
+      blur();
     }
   }
 
@@ -85,30 +93,38 @@ export default class TextField extends React.Component<Props, never> {
 
   @autobind
   private handleFocus() {
-    if (this.props.onFocus) {
-      this.props.onFocus();
+    const {onFocus} = this.props;
+
+    if (onFocus) {
+      onFocus();
     }
   }
 
   @autobind
   private handleBlur() {
-    if (this.props.onBlur) {
-      this.props.onBlur();
+    const {onBlur} = this.props;
+
+    if (onBlur) {
+      onBlur();
     }
   }
 
   @autobind
   private handleClear() {
-    this.props.onChange('');
+    const {input, props} = this;
+    const {onChange} = props;
 
-    if (this.input) {
-      this.input.focus();
+    onChange('');
+
+    if (input) {
+      input.focus();
     }
   }
 
   @autobind
   private handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
-    this.props.onChange(currentTarget.value);
+    const {onChange} = this.props;
+    onChange(currentTarget.value);
   }
 
   @autobind

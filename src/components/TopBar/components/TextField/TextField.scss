@@ -1,6 +1,7 @@
 @import '../../styles/variables';
 
 $icon-size: rem(20px);
+$input-height: rem(34px);
 
 $stacking-order: (
   backdrop: 1,
@@ -64,7 +65,7 @@ $stacking-order: (
   @include text-style-input;
   z-index: z-index(input, $stacking-order);
   width: 100%;
-  height: rem(34px);
+  height: $input-height;
   padding: 0 0 0 $icon-size + spacing();
   border: none;
   background-color: transparent;

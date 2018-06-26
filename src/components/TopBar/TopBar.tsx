@@ -96,7 +96,7 @@ export default class TopBar extends React.PureComponent<Props, State> {
       logoAction && styles[variationName('logo', camelCase(logoAction.id))],
     );
 
-    const logoMarkup = (linkMarkup && linkMarkup) || iconMarkup;
+    const logoMarkup = linkMarkup || iconMarkup;
 
     return (
       <div className={styles.TopBar} data-polaris-top-bar>
