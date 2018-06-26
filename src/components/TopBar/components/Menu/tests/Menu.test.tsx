@@ -4,6 +4,7 @@ import {mountWithAppProvider, trigger} from '../../../../../../tests/utilities';
 
 import {ActionList, Popover} from '../../../../../components';
 import Menu from '../Menu';
+import Message from '../components/Message';
 
 describe('<Menu />', () => {
   const defaultProps = {
@@ -12,6 +13,15 @@ describe('<Menu />', () => {
     onOpen: noop,
     onClose: noop,
     open: false,
+    message: {
+      title: 'polaris',
+      description: 'hello polaris',
+      action: {onClick: noop, content: 'onClick'},
+      link: {
+        to: '/',
+        content: 'Home',
+      },
+    },
   };
 
   it('renders the activator content', () => {
@@ -77,5 +87,11 @@ describe('<Menu />', () => {
 
     trigger(menu.find('button'), 'onClick');
     expect(onOpenCallback).toHaveBeenCalled();
+  });
+
+  it('renders the message content when a message is provided', () => {
+    const menu = mountWithAppProvider(<Menu {...defaultProps} />);
+
+    expect(menu.find(Message)).toBeTruthy();
   });
 });
