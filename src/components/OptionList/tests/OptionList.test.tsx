@@ -5,14 +5,14 @@ import {
   mountWithAppProvider,
 } from '../../../../tests/utilities';
 
-import OptionsList, {
+import OptionList, {
   Props,
   OptionDescriptor,
   SectionDescriptor,
-} from '../OptionsList';
+} from '../OptionList';
 import {Option} from '../components';
 
-describe('<OptionsList />', () => {
+describe('<OptionList />', () => {
   const defaultProps: Props = {
     id: 'recommended-products',
     title: 'Recommended products',
@@ -66,7 +66,7 @@ describe('<OptionsList />', () => {
   it('renders options and sections', () => {
     const {options, sections} = defaultProps;
     const optionWrappers = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+      <OptionList {...defaultProps} />,
     ).find(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
@@ -76,7 +76,7 @@ describe('<OptionsList />', () => {
     const {sections} = defaultProps;
     const options: OptionDescriptor[] = [];
     const optionWrappers = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} options={options} />,
+      <OptionList {...defaultProps} options={options} />,
     ).find(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
@@ -86,7 +86,7 @@ describe('<OptionsList />', () => {
     const {options} = defaultProps;
     const sections: SectionDescriptor[] = [];
     const optionWrappers = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} sections={sections} />,
+      <OptionList {...defaultProps} sections={sections} />,
     ).find(Option);
 
     expect(optionWrappers).toHaveLength(totalOptions(options, sections));
@@ -94,8 +94,8 @@ describe('<OptionsList />', () => {
 
   it('re-renders with new options passed in', () => {
     const {sections} = defaultProps;
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
     const newOptions: OptionDescriptor[] = [
@@ -110,16 +110,16 @@ describe('<OptionsList />', () => {
       },
     ];
 
-    optionsList.setProps({options: newOptions});
+    optionList.setProps({options: newOptions});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, sections));
   });
 
   it('re-renders with new sections passed in', () => {
     const {options} = defaultProps;
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
     const newSections: SectionDescriptor[] = [
@@ -138,15 +138,15 @@ describe('<OptionsList />', () => {
       },
     ];
 
-    optionsList.setProps({sections: newSections});
+    optionList.setProps({sections: newSections});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions(options, newSections));
   });
 
   it('re-renders with new options and new sections passed in', () => {
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
     const newOptions: OptionDescriptor[] = [
@@ -177,39 +177,39 @@ describe('<OptionsList />', () => {
       },
     ];
 
-    optionsList.setProps({options: newOptions, sections: newSections});
+    optionList.setProps({options: newOptions, sections: newSections});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, newSections));
   });
 
   it('re-renders with undefined options', () => {
     const {sections} = defaultProps;
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
-    optionsList.setProps({options: undefined});
+    optionList.setProps({options: undefined});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions([], sections));
   });
 
   it('re-renders with undefined sections', () => {
     const {options} = defaultProps;
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
-    optionsList.setProps({sections: undefined});
+    optionList.setProps({sections: undefined});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions(options, []));
   });
 
   it('re-renders with undefined options and new sections', () => {
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
     const newSections: SectionDescriptor[] = [
@@ -228,15 +228,15 @@ describe('<OptionsList />', () => {
       },
     ];
 
-    optionsList.setProps({options: undefined, sections: newSections});
+    optionList.setProps({options: undefined, sections: newSections});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions(undefined, newSections));
   });
 
   it('re-renders with new options and undefined sections', () => {
-    const optionsList = shallowWithAppProvider<Props>(
-      <OptionsList {...defaultProps} />,
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
     );
 
     const newOptions: OptionDescriptor[] = [
@@ -251,9 +251,9 @@ describe('<OptionsList />', () => {
       },
     ];
 
-    optionsList.setProps({options: newOptions, sections: undefined});
+    optionList.setProps({options: newOptions, sections: undefined});
 
-    const optionWrappers = optionsList.find(Option);
+    const optionWrappers = optionList.find(Option);
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, undefined));
   });
 
@@ -262,7 +262,7 @@ describe('<OptionsList />', () => {
     const {options, sections} = defaultProps;
 
     const buttonWrappers = mountWithAppProvider<Props>(
-      <OptionsList {...defaultProps} onChange={spy} />,
+      <OptionList {...defaultProps} onChange={spy} />,
     ).find('button');
 
     buttonWrappers.at(0).simulate('click');
@@ -275,7 +275,7 @@ describe('<OptionsList />', () => {
     it('renders options and sections', () => {
       const {options, sections} = defaultProps;
       const optionWrappers = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+        <OptionList {...defaultProps} allowMultiple />,
       ).find(Option);
 
       expect(optionWrappers).toHaveLength(totalOptions(options, sections));
@@ -285,7 +285,7 @@ describe('<OptionsList />', () => {
       const {sections} = defaultProps;
       const options: OptionDescriptor[] = [];
       const optionWrappers = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} options={options} allowMultiple />,
+        <OptionList {...defaultProps} options={options} allowMultiple />,
       ).find(Option);
 
       expect(optionWrappers).toHaveLength(totalOptions(options, sections));
@@ -295,7 +295,7 @@ describe('<OptionsList />', () => {
       const {options} = defaultProps;
       const sections: SectionDescriptor[] = [];
       const optionWrappers = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} sections={sections} allowMultiple />,
+        <OptionList {...defaultProps} sections={sections} allowMultiple />,
       ).find(Option);
 
       expect(optionWrappers).toHaveLength(totalOptions(options, sections));
@@ -303,8 +303,8 @@ describe('<OptionsList />', () => {
 
     it('re-renders with new options passed in', () => {
       const {sections} = defaultProps;
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
       const newOptions: OptionDescriptor[] = [
@@ -319,16 +319,16 @@ describe('<OptionsList />', () => {
         },
       ];
 
-      optionsList.setProps({options: newOptions});
+      optionList.setProps({options: newOptions});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(totalOptions(newOptions, sections));
     });
 
     it('re-renders with new sections passed in', () => {
       const {options} = defaultProps;
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
       const newSections: SectionDescriptor[] = [
@@ -347,15 +347,15 @@ describe('<OptionsList />', () => {
         },
       ];
 
-      optionsList.setProps({sections: newSections});
+      optionList.setProps({sections: newSections});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(totalOptions(options, newSections));
     });
 
     it('re-renders with new options and new sections passed in', () => {
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
       const newOptions: OptionDescriptor[] = [
@@ -386,9 +386,9 @@ describe('<OptionsList />', () => {
         },
       ];
 
-      optionsList.setProps({options: newOptions, sections: newSections});
+      optionList.setProps({options: newOptions, sections: newSections});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(
         totalOptions(newOptions, newSections),
       );
@@ -396,31 +396,31 @@ describe('<OptionsList />', () => {
 
     it('re-renders with undefined options', () => {
       const {sections} = defaultProps;
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
-      optionsList.setProps({options: undefined});
+      optionList.setProps({options: undefined});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(totalOptions(undefined, sections));
     });
 
     it('re-renders with undefined sections', () => {
       const {options} = defaultProps;
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
-      optionsList.setProps({sections: undefined});
+      optionList.setProps({sections: undefined});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(totalOptions(options, undefined));
     });
 
     it('re-renders with undefined options and new sections', () => {
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
       const newSections: SectionDescriptor[] = [
@@ -439,15 +439,15 @@ describe('<OptionsList />', () => {
         },
       ];
 
-      optionsList.setProps({options: undefined, sections: newSections});
+      optionList.setProps({options: undefined, sections: newSections});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(totalOptions(undefined, newSections));
     });
 
     it('re-renders with new options and undefined sections', () => {
-      const optionsList = shallowWithAppProvider<Props>(
-        <OptionsList {...defaultProps} allowMultiple />,
+      const optionList = shallowWithAppProvider<Props>(
+        <OptionList {...defaultProps} allowMultiple />,
       );
 
       const newOptions: OptionDescriptor[] = [
@@ -462,9 +462,9 @@ describe('<OptionsList />', () => {
         },
       ];
 
-      optionsList.setProps({options: newOptions, sections: undefined});
+      optionList.setProps({options: newOptions, sections: undefined});
 
-      const optionWrappers = optionsList.find(Option);
+      const optionWrappers = optionList.find(Option);
       expect(optionWrappers).toHaveLength(totalOptions(newOptions, undefined));
     });
 
@@ -474,7 +474,7 @@ describe('<OptionsList />', () => {
         const {options, sections} = defaultProps;
 
         const inputWrappers = mountWithAppProvider<Props>(
-          <OptionsList {...defaultProps} onChange={spy} allowMultiple />,
+          <OptionList {...defaultProps} onChange={spy} allowMultiple />,
         ).find('input');
 
         inputWrappers.at(0).simulate('change');
@@ -489,7 +489,7 @@ describe('<OptionsList />', () => {
         const selected = ['11', '8'];
 
         const inputWrappers = mountWithAppProvider<Props>(
-          <OptionsList
+          <OptionList
             {...defaultProps}
             onChange={spy}
             selected={selected}
@@ -512,7 +512,7 @@ describe('<OptionsList />', () => {
         const selected = ['10', '8', '5'];
 
         const inputWrappers = mountWithAppProvider<Props>(
-          <OptionsList
+          <OptionList
             {...defaultProps}
             onChange={spy}
             selected={selected}

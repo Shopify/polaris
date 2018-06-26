@@ -9,7 +9,7 @@ import {
 import {Option} from './components';
 import {arraysAreEqual} from '../../utilities/arrays';
 
-import * as styles from './OptionsList.scss';
+import * as styles from './OptionList.scss';
 
 export interface OptionDescriptor {
   /** Value of the option */
@@ -27,10 +27,10 @@ export interface SectionDescriptor {
   title?: string;
 }
 
-const getUniqueId = createUniqueIDFactory('OptionsList');
+const getUniqueId = createUniqueIDFactory('OptionList');
 
 export interface Props {
-  /** A unique identifier for the options list */
+  /** A unique identifier for the option list */
   id?: string;
   /** List title */
   title?: string;
@@ -52,7 +52,7 @@ export interface State {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-export class OptionsList extends React.Component<CombinedProps, State> {
+export class OptionList extends React.Component<CombinedProps, State> {
   state: State = {
     normalizedOptions: createNormalizedOptions(
       this.props.options,
@@ -141,7 +141,7 @@ export class OptionsList extends React.Component<CombinedProps, State> {
         })
       : null;
 
-    return <ul className={styles.OptionsList}>{optionsMarkup}</ul>;
+    return <ul className={styles.OptionList}>{optionsMarkup}</ul>;
   }
 
   @autobind
@@ -203,4 +203,4 @@ function testSectionsPropEquality(
   return optionsAreEqual && titlesAreEqual;
 }
 
-export default withAppProvider<Props>()(OptionsList);
+export default withAppProvider<Props>()(OptionList);

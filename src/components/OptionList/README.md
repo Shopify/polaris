@@ -1,8 +1,8 @@
 ---
-name: Options list
+name: Option list
 category: Lists and tables
 keywords:
-  - options list
+  - option list
   - choices
   - decision
   - list
@@ -13,19 +13,19 @@ keywords:
   - list selection
 ---
 
-# Options List
+# Option List
 
-The options list component lets you create a list of grouped items that
+The option list component lets you create a list of grouped items that
 merchants can pick from. This can include single selection or multiple selection
-of options. Options list usually appears in a popover, and sometimes in a modal
-or a sidebar. Options lists are styled differently than
+of options. Option list usually appears in a popover, and sometimes in a modal
+or a sidebar. Option lists are styled differently than
 [choice lists](/components/forms/choice-list) and should not be used within a form, but as a standalone menu.
 
 ---
 
 ## Best practices
 
-The options list component should:
+The option list component should:
 
 - Be placed on its own inside a container. Usually the container behaves like a
   menu, as it does with [popover](/components/overlays/popover). Don’t
@@ -36,9 +36,9 @@ The options list component should:
 
 ## Content guidelines
 
-### Options lists
+### Option lists
 
-Each item in an options list should be clear and descriptive.
+Each item in an option list should be clear and descriptive.
 
 <!-- usagelist -->
 
@@ -56,18 +56,18 @@ Source
 
 ## Examples
 
-### Simple options list
+### Simple option list
 
 Use for a group of similar selectable items when only one should be selectable at once.
 
 ```jsx
-class OptionsListExample extends React.Component {
+class OptionListExample extends React.Component {
   state = {selected: []};
 
   render() {
     return (
       <Card>
-        <OptionsList
+        <OptionList
           title="Inventory Location"
           onChange={(updated) => {
             this.setState({selected: updated});
@@ -87,18 +87,18 @@ class OptionsListExample extends React.Component {
 }
 ```
 
-### Multiple options list
+### Multiple option list
 
 Use when you have a group of similar selectable items and more than one item can be selected at once.
 
 ```jsx
-class OptionsListExample extends React.Component {
+class OptionListExample extends React.Component {
   state = {selected: []};
 
   render() {
     return (
       <Card>
-        <OptionsList
+        <OptionList
           title="Manage sales channels availability"
           onChange={(updated) => {
             this.setState({selected: updated});
@@ -119,18 +119,18 @@ class OptionsListExample extends React.Component {
 }
 ```
 
-### Options list with sections
+### Option list with sections
 
 Use sections when you have multiple groups of similar selectable items.
 
 ```jsx
-class OptionsListExample extends React.Component {
+class OptionListExample extends React.Component {
   state = {selected: []};
 
   render() {
     return (
       <Card>
-        <OptionsList
+        <OptionList
           onChange={(updated) => {
             this.setState({selected: updated});
           }}
@@ -159,12 +159,12 @@ class OptionsListExample extends React.Component {
 }
 ```
 
-### Options list in a popover
+### Option list in a popover
 
 Use when a set of selections won’t fit in the available screen space.
 
 ```jsx
-class OptionsListExample extends React.Component {
+class OptionListExample extends React.Component {
   state = {
     selected: [],
     popoverActive: false,
@@ -186,7 +186,7 @@ class OptionsListExample extends React.Component {
           activator={activator}
           onClose={this.togglePopover}
         >
-          <OptionsList
+          <OptionList
             title="Inventory Location"
             onChange={(updated) => {
               this.setState({selected: updated});
