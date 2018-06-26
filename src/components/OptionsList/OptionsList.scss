@@ -1,9 +1,9 @@
 .OptionsList {
-  @include plain-list;
+  @include unstyled-list;
 }
 
 .Options {
-  @include plain-list;
+  @include unstyled-list;
 }
 
 .Title {

@@ -13,12 +13,18 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 
 - Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
+- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1595](https://github.com/Shopify/polaris-react/pull/1595))
 
 ### Bug fixes
 
 - Fixed a regression where the version of Polaris wasn’t globally available anymore ([#1555](https://github.com/Shopify/polaris-react/pull/1555))
 - Updated the interaction state visuals for ActionList ([#1585](https://github.com/Shopify/polaris-react/pull/1585))
 - Fixed z-index on resource list header with sorting options ([#1629](https://github.com/Shopify/polaris-react/pull/1629)) (thanks [@janklimo](https://github.com/janklimo) for the [original issue](https://github.com/Shopify/polaris/issues/355))
+- Fixed an issue where Radio Buttons were not focusable in Safari ([#1626](https://github.com/Shopify/polaris-react/pull/1626))
+
+### Dependency updates
+
+- Updated [`@shopify/polaris-tokens`](https://npmjs.com/package/@shopify/polaris-tokens), the single source of truth for colors
 
 ## 2.2.0 - 2018-06-12
 
