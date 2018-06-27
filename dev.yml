@@ -6,6 +6,10 @@ up:
   - git_hooks:
       pre-commit: pre-commit
 
+open:
+  app: http://localhost:8080/
+  shipit: https://shipit.shopify.io/shopify/polaris-react/production
+
 commands:
   # People new to the project might be tempted to run some
   # common commands, so let’s have them in here.
