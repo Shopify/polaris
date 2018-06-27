@@ -6,10 +6,15 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### New components
+
+#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+
+Use Option list to present a group of selectable items outside of the context of a form.
+
 ### Documentation
 
 - Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
-- Renamed `OptionsList` to `OptionList` ([#1621](https://github.com/Shopify/polaris-react/pull/1621))
 
 ### Enhancements
 
@@ -29,12 +34,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Updated [`@shopify/polaris-tokens`](https://npmjs.com/package/@shopify/polaris-tokens), the single source of truth for colors
 
 ## 2.2.0 - 2018-06-12
-
-### New components
-
-#### [Option list](https://polaris.shopify.com/components/option-list)
-
-Use Option list to present a group of selectable items outside of the context of a form.
 
 ### Enhancements
 
