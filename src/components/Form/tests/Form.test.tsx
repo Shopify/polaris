@@ -49,6 +49,20 @@ describe('<Form />', () => {
     });
   });
 
+  describe('implicitSubmit', () => {
+    it('renders a button when the prop is set to true', () => {
+      const wrapper = mountWithAppProvider(<Form onSubmit={noop} />);
+      expect(wrapper.find('button')).toHaveLength(1);
+    });
+
+    it('does not render a button when the prop is set to false', () => {
+      const wrapper = mountWithAppProvider(
+        <Form onSubmit={noop} implicitSubmit={false} />,
+      );
+      expect(wrapper.find('button')).toHaveLength(0);
+    });
+  });
+
   describe('method', () => {
     it('sets the method attribute when provided', () => {
       const wrapper = mountWithAppProvider(

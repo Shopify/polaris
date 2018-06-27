@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- Unreleased -->
 
+### Enhancements
+
+- Changed Form to submit a form by default when the Enter key is pressed, and added the prop `implicitSubmit` to disable this default ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
+
 ## 2.3.1 - 2018-07-05
 
 ### Enhancements
@@ -38,7 +42,6 @@ Use Option list to present a group of selectable items outside of the context of
 - Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
 - Performance: optimized avatar SVG files ([#1662](https://github.com/Shopify/polaris-react/pull/1662))
 - Updated `yarn run optimize` to add new line at the end of SVG files ([#1685](https://github.com/Shopify/polaris-react/pull/1685))
-- Changed Form to submit a form by default when the Enter key is pressed, and added the prop `implicitSubmit` to disable this default ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
 
 ### Bug fixes
 
