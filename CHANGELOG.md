@@ -35,6 +35,12 @@ Use Option list to present a group of selectable items outside of the context of
 
 ## 2.2.0 - 2018-06-12
 
+### New components
+
+#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
+
+Use range slider to select a number value between a min and max range.
+
 ### Enhancements
 
 - Added a fixed prop to popover allowing for a fixed position ([#1524](https://github.com/Shopify/polaris-react/pull/1524))
