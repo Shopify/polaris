@@ -9,7 +9,12 @@ export interface State {
 }
 
 export type Props = {
+  /** Element outlining the fixed position boundaries */
   boundingElement?: HTMLElement | null;
+  /** Offset vertical spacing from the top of the scrollable container */
+  offset?: boolean;
+  /** Should the element remain in a fixed position when the layout is stacked (smaller screens)  */
+  disableWhenStacked?: boolean;
 } & (
   | {children: React.ReactNode}
   | {children(isSticky: boolean): React.ReactNode});
@@ -27,13 +32,15 @@ export default class Sticky extends React.Component<Props, State> {
 
   componentDidMount() {
     const {stickyManager} = this.context.polaris;
-    const {boundingElement} = this.props;
+    const {boundingElement, offset, disableWhenStacked} = this.props;
 
     stickyManager.registerStickyItem({
       stickyNode: this.stickyNode,
       placeHolderNode: this.placeHolderNode,
       handlePositioning: this.handlePositioning,
+      offset,
       boundingElement,
+      disableWhenStacked,
     });
   }
 
