@@ -12,7 +12,6 @@ $stacking-order: (
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 $backdrop-horizontal-spacing;
   color: color('ink', 'lightest');
   cursor: text;
 }
@@ -90,7 +89,7 @@ $stacking-order: (
   min-width: 0;
   min-height: control-height();
   margin: 0;
-  padding: control-vertical-padding() 0;
+  padding: control-vertical-padding() $backdrop-horizontal-spacing;
   background: none;
   border: border(transparent);
   font-family: inherit;
@@ -169,8 +168,7 @@ $stacking-order: (
   align-self: stretch;
   flex-direction: column;
   width: rem(22px);
-  margin: 1px calc(-#{$backdrop-horizontal-spacing} + 1px) 1px
-    $backdrop-horizontal-spacing;
+  margin: 1px;
   color: color('ink');
   cursor: pointer;
 }
