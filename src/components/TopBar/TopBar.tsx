@@ -74,6 +74,7 @@ export default class TopBar extends React.PureComponent<Props, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
+        testID="nav-button"
       >
         <Icon source={menu} color="white" />
       </button>
