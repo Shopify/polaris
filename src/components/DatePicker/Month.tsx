@@ -59,7 +59,8 @@ export default function Month({
   year,
 }: Props) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
-  const current = new Date().getMonth() === month;
+  const now = new Date();
+  const current = now.getMonth() === month && now.getFullYear() === year;
   const className = classNames(
     styles.Title,
     current && styles['Month-current'],
