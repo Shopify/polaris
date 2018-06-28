@@ -21,7 +21,7 @@ export const frameContextTypes = {
 
 export interface ToastDescriptor {
   /** The content that should appear in the toast message */
-  children?: React.ReactNode;
+  content: string;
   /** The length of time in milliseconds the toast message should persist (defaults to 5000) */
   duration?: number;
   /** Callback when the dismiss icon is clicked */

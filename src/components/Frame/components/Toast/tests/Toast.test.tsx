@@ -3,7 +3,6 @@ import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
 import {noop} from '../../../../../utilities/other';
 import Toast, {Props} from '../Toast';
-import TextContainer from '../../../../TextContainer';
 import {Keys} from '../../../../../types';
 
 interface HandlerMap {
@@ -11,7 +10,10 @@ interface HandlerMap {
 }
 
 describe('<Toast />', () => {
-  const mockProps: Props = {onDismiss: noop};
+  const mockProps: Props = {
+    content: 'Image uploaded',
+    onDismiss: noop,
+  };
 
   beforeEach(() => {
     timer.mock();
@@ -23,46 +25,9 @@ describe('<Toast />', () => {
 
   const message = mountWithAppProvider(<Toast {...mockProps} />);
 
-  it('renders its children', () => {
-    const message = mountWithAppProvider(
-      <Toast {...mockProps}>
-        <TextContainer>
-          <p>Toast message</p>
-        </TextContainer>
-      </Toast>,
-    );
-    expect(message.find(TextContainer).exists()).toBe(true);
-  });
-
-  it('renders multiple toasts', () => {
-    const message1 = mountWithAppProvider(
-      <Toast {...mockProps}>
-        <TextContainer>
-          <p>Toast 1</p>
-        </TextContainer>
-      </Toast>,
-    );
-    const message2 = mountWithAppProvider(
-      <Toast {...mockProps}>
-        <TextContainer>
-          <span>Toast 2</span>
-        </TextContainer>
-      </Toast>,
-    );
-
-    expect(
-      message1
-        .find(TextContainer)
-        .find('p')
-        .exists(),
-    ).toBe(true);
-
-    expect(
-      message2
-        .find(TextContainer)
-        .find('span')
-        .exists(),
-    ).toBe(true);
+  it('renders its content', () => {
+    const message = mountWithAppProvider(<Toast {...mockProps} />);
+    expect(message.prop('content')).toEqual('Image uploaded');
   });
 
   describe('dismiss button', () => {
@@ -75,7 +40,7 @@ describe('<Toast />', () => {
     it('is called when the dismiss button is pressed', () => {
       const spy = jest.fn();
       const message = mountWithAppProvider(
-        <Toast {...mockProps} onDismiss={spy} />,
+        <Toast content="Image uploaded" onDismiss={spy} />,
       );
 
       message.find('button').simulate('click');
@@ -89,7 +54,7 @@ describe('<Toast />', () => {
       });
 
       const spy = jest.fn();
-      mountWithAppProvider(<Toast {...mockProps} onDismiss={spy} />);
+      mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
 
       listenerMap.keyup({keyCode: Keys.ESCAPE});
 
@@ -105,7 +70,7 @@ describe('<Toast />', () => {
       const duration = 5000;
 
       mountWithAppProvider(
-        <Toast {...mockProps} onDismiss={spy} duration={duration} />,
+        <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
       );
       expect(spy).not.toHaveBeenCalled();
 
@@ -117,7 +82,7 @@ describe('<Toast />', () => {
       const spy = jest.fn();
       const duration = 5000;
       const toast = mountWithAppProvider(
-        <Toast {...mockProps} onDismiss={spy} duration={duration} />,
+        <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
       );
       toast.unmount();
       timer.runAllTimers();

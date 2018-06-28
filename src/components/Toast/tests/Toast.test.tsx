@@ -9,7 +9,7 @@ import Toast from '../Toast';
 
 describe('<Toast />', () => {
   it('shows the toast with a unique ID on mount', () => {
-    const props = {children: 'Hello world!', onDismiss: noop};
+    const props = {content: 'Image uploaded', onDismiss: noop};
     const composedProps = {
       ...props,
       ...createPolarisContext(),
@@ -22,7 +22,9 @@ describe('<Toast />', () => {
   });
 
   it('hides the toast based on ID on unmount', () => {
-    const {toast, frame} = mountWithContext(<Toast onDismiss={noop} />);
+    const {toast, frame} = mountWithContext(
+      <Toast content="Message sent" onDismiss={noop} />,
+    );
     expect(frame.hideToast).not.toHaveBeenCalled();
     toast.unmount();
 

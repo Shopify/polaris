@@ -18,13 +18,14 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   private id = createId();
 
   componentDidMount() {
-    const {props, context, id} = this;
+    const {context, id} = this;
+    const {children, ...rest} = this.props;
     const {easdk} = this.props.polaris;
 
     if (easdk == null) {
       context.frame.showToast({
         id,
-        ...(props as Props),
+        ...(rest as Props),
       });
     } else {
       easdk.showFlashNotice('this will change');

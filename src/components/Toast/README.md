@@ -96,19 +96,11 @@ class ToastExample extends React.Component {
   render() {
     const {showToast1, showToast2} = this.state;
     const toastMarkup1 = showToast1 ? (
-      <Toast onDismiss={this.toggleToast1}>
-        <TextContainer>
-          <p>Toast message 1</p>
-        </TextContainer>
-      </Toast>
+      <Toast content="Message sent" onDismiss={this.toggleToast1} />
     ) : null;
 
     const toastMarkup2 = showToast2 ? (
-      <Toast onDismiss={this.toggleToast2}>
-        <TextContainer>
-          <p>Toast message 2</p>
-        </TextContainer>
-      </Toast>
+      <Toast content="Image uploaded" onDismiss={this.toggleToast1} />
     ) : null;
 
     return (
@@ -146,11 +138,11 @@ class ToastExample extends React.Component {
   render() {
     const {showToast} = this.state;
     const toastMarkup = showToast ? (
-      <Toast onDismiss={this.toggleToast} duration={4500}>
-        <TextContainer>
-          <p>Toast message</p>
-        </TextContainer>
-      </Toast>
+      <Toast
+        content="Message sent"
+        onDismiss={this.toggleToast}
+        duration={4500}
+      />
     ) : null;
 
     return (
