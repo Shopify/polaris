@@ -5,7 +5,7 @@ import Search from '../Search';
 describe('<Search />', () => {
   it('mounts', () => {
     const search = mountWithAppProvider(<Search />);
-    expect(search).toBeTruthy();
+    expect(search.exists()).toBe(true);
   });
 
   it('renders its children', () => {
@@ -13,7 +13,7 @@ describe('<Search />', () => {
     expect(search.text()).toContain('Hello Polaris');
   });
 
-  it('calls onDismiss when search is click', () => {
+  it('calls onDismiss when search is clicked', () => {
     const spy = jest.fn();
     const search = mountWithAppProvider(<Search onDismiss={spy} />);
     search.simulate('click');

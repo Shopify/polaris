@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export default class Search extends React.PureComponent<Props, never> {
-  private node: HTMLElement | null = null;
+  private node = React.createRef<HTMLDivElement>();
 
   render() {
     const {visible, children} = this.props;
@@ -22,7 +22,7 @@ export default class Search extends React.PureComponent<Props, never> {
 
     return (
       <div
-        ref={this.setNode}
+        ref={this.node}
         className={searchClassName}
         onClick={this.handleDismiss}
       >
@@ -32,15 +32,10 @@ export default class Search extends React.PureComponent<Props, never> {
   }
 
   @autobind
-  setNode(node: HTMLElement | null) {
-    this.node = node;
-  }
-
-  @autobind
   private handleDismiss({target}: React.MouseEvent<HTMLElement>) {
     const {onDismiss} = this.props;
 
-    if (onDismiss != null && target === this.node) {
+    if (onDismiss != null && target === this.node.current) {
       onDismiss();
     }
   }
