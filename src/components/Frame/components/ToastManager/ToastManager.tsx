@@ -45,7 +45,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
       <Portal idPrefix="ToastMessages">
         <EventListener event="resize" handler={this.updateToasts} />
         <div className={styles.ToastManager}>
-          <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
+          <TransitionGroup component="div">{toastsMarkup}</TransitionGroup>
         </div>
       </Portal>
     );
