@@ -18,13 +18,16 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   private id = createId();
 
   componentDidMount() {
-    if (this.props.polaris.easdk == null) {
-      this.context.frame.showToast({
-        id: this.id,
-        ...(this.props as Props),
+    const {props, context, id} = this;
+    const {easdk} = this.props.polaris;
+
+    if (easdk == null) {
+      context.frame.showToast({
+        id,
+        ...(props as Props),
       });
     } else {
-      this.handleEASDKMessaging();
+      easdk.showFlashNotice('this will change');
     }
   }
 
@@ -34,15 +37,6 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
 
   render() {
     return null;
-  }
-
-  private handleEASDKMessaging() {
-    const {easdk} = this.props.polaris;
-
-    if (!easdk) {
-      return;
-    }
-    easdk.showFlashNotice('this.props');
   }
 }
 

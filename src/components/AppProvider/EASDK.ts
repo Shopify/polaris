@@ -92,8 +92,7 @@ export default class EASDK {
 
   @autobind
   showFlashNotice(message: string) {
-    const type = 'Shopify.API.flash.notice';
-    this.messenger.send(type, {message});
+    this.messenger.send('Shopify.API.flash.notice', {message});
   }
 
   @autobind
