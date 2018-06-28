@@ -29,6 +29,28 @@ describe('<TextField />', () => {
 
       expect(findInput(textField).getDOMNode()).toBe(document.activeElement);
     });
+
+    it('will give input focus if focus has been toggled', () => {
+      const textField = mountWithAppProvider(
+        <TextField value="" onChange={noop} focused={false} />,
+      );
+      expect(findInput(textField).getDOMNode()).not.toBe(
+        document.activeElement,
+      );
+      textField.setProps({value: '', onChange: noop, focused: true});
+      expect(findInput(textField).getDOMNode()).toBe(document.activeElement);
+    });
+
+    it('will blur input if focused has been toggled', () => {
+      const textField = mountWithAppProvider(
+        <TextField value="" onChange={noop} focused />,
+      );
+
+      textField.setProps({value: '', onChange: noop, focused: false});
+      expect(findInput(textField).getDOMNode()).not.toBe(
+        document.activeElement,
+      );
+    });
   });
 
   describe('clear content', () => {

@@ -19,28 +19,24 @@ export default class TextField extends React.Component<Props, never> {
   private input: HTMLInputElement | null = null;
 
   componentDidMount() {
-    const {input, props} = this;
-    const {focused} = props;
+    const {focused} = this.props;
 
-    if (input && focused) {
-      input.focus();
+    if (this.input && focused) {
+      this.input.focus();
     }
   }
 
   componentDidUpdate({focused: wasFocused}: Props) {
-    const {input} = this;
-
-    if (input == null) {
+    if (this.input == null) {
       return;
     }
 
     const {focused} = this.props;
-    const {focus, blur} = input;
 
     if (focused && !wasFocused) {
-      focus();
+      this.input.focus();
     } else if (!focused && wasFocused) {
-      blur();
+      this.input.blur();
     }
   }
 
@@ -111,13 +107,12 @@ export default class TextField extends React.Component<Props, never> {
 
   @autobind
   private handleClear() {
-    const {input, props} = this;
-    const {onChange} = props;
+    const {onChange} = this.props;
 
     onChange('');
 
-    if (input) {
-      input.focus();
+    if (this.input) {
+      this.input.focus();
     }
   }
 
