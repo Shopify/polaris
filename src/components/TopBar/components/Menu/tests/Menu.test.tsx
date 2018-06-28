@@ -59,6 +59,27 @@ describe('<Menu />', () => {
     expect(popover.prop('active')).toBe(true);
   });
 
+  it('passes badge to the Message component when it exists on the message prop', () => {
+    const message = {
+      title: 'polaris',
+      description: 'hello polaris',
+      action: {onClick: noop, content: 'onClick'},
+      link: {
+        to: '/',
+        content: 'Home',
+      },
+      badge: {
+        content: 'new',
+        status: 'new' as 'new',
+      },
+    };
+    const menu = mountWithAppProvider(
+      <Menu {...defaultProps} message={message} open />,
+    );
+
+    expect(menu.find(Message).prop('badge')).toEqual(message.badge);
+  });
+
   it('calls the onClose prop in the Popover onClose', () => {
     const onClose = jest.fn();
     const menu = mountWithAppProvider(
@@ -90,8 +111,23 @@ describe('<Menu />', () => {
   });
 
   it('renders the message content when a message is provided', () => {
-    const menu = mountWithAppProvider(<Menu {...defaultProps} />);
+    const menu = mountWithAppProvider(<Menu {...defaultProps} open />);
 
-    expect(menu.find(Message)).toBeTruthy();
+    expect(menu.find(Message).exists()).toBe(true);
+  });
+
+  describe('isFullHeight', () => {
+    it('passes isFullHeight to popover as false if menu is not provided a message', () => {
+      const {message, ...rest} = defaultProps;
+      const menu = mountWithAppProvider(<Menu {...rest} open />);
+
+      expect(menu.find(Popover).prop('fullHeight')).toBe(false);
+    });
+
+    it('passes isFullHeight to popover as true if menu is provided a message', () => {
+      const menu = mountWithAppProvider(<Menu {...defaultProps} open />);
+
+      expect(menu.find(Popover).prop('fullHeight')).toBe(true);
+    });
   });
 });

@@ -18,7 +18,7 @@ describe('<Message />', () => {
   it('mounts', () => {
     const message = mountWithAppProvider(<Message {...messageProps} />);
 
-    expect(message).toBeTruthy();
+    expect(message.exists()).toBe(true);
   });
 
   it('will not render badge content by default', () => {
