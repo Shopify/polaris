@@ -64,7 +64,8 @@
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "dev": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
     "dev:host": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline --host $(ipconfig getifaddr en0)",
-    "start": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/"
+    "start": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/",
+    "start:vrt": "node visual-regression-testing-build/index.js"
   },
   "stylelint": {
     "extends": [
@@ -222,6 +223,7 @@
     "@types/react-transition-group": "^2.0.7",
     "babel-runtime": "^6.23.0",
     "core-js": "^2.5.1",
+    "express": "^4.16.3",
     "hoist-non-react-statics": "^2.5.0",
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.3.5",
