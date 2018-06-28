@@ -1764,7 +1764,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
+babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -3296,10 +3296,6 @@ deep-strict-equal@^0.2.0:
   dependencies:
     core-assert "^0.2.0"
 
-deepmerge@^2.0.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
-
 deepmerge@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.0.1.tgz#25c1c24f110fb914f80001b925264dd77f3f4312"
@@ -4415,6 +4411,10 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
+fibers@~2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/fibers/-/fibers-2.0.2.tgz#36db63ea61c543174e2264675fea8c2783371366"
+
 figures@^1.3.5, figures@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -5161,6 +5161,10 @@ has-gulplog@^0.1.0:
   resolved "https://registry.yarnpkg.com/has-gulplog/-/has-gulplog-0.1.0.tgz#6414c82913697da51590397dafb12f22967811ce"
   dependencies:
     sparkles "^1.0.0"
+
+has-symbols@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.0.tgz#ba1a8f1af2a0fc39650f5c850367704122063b44"
 
 has-unicode@^2.0.0:
   version "2.0.1"
@@ -6947,17 +6951,9 @@ logalot@^2.0.0:
     figures "^1.3.5"
     squeak "^1.0.0"
 
-loglevel-plugin-prefix@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/loglevel-plugin-prefix/-/loglevel-plugin-prefix-0.5.3.tgz#8e9131b96e4697a0dba517996f76b9e6c3f43210"
-
 loglevel@^1.4.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.5.1.tgz#189078c94ab9053ee215a0acdbf24244ea0f6502"
-
-loglevel@^1.6.0:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.1.tgz#e0fc95133b6ef276cdc8887cdaf24aa6f156f8fa"
 
 long@^3.2.0:
   version "3.2.0"
@@ -7824,11 +7820,24 @@ object-keys@^1.0.10, object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
+object-keys@^1.0.11:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.12.tgz#09c53855377575310cca62f55bb334abff7b3ed2"
+
 object-visit@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/object-visit/-/object-visit-1.0.1.tgz#f79c4493af0c5377b59fe39d395e41042dd045bb"
   dependencies:
     isobject "^3.0.0"
+
+object.assign@^4.0.3:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.1.0.tgz#968bf1100d7956bb3ca086f006f846b3bc4008da"
+  dependencies:
+    define-properties "^1.1.2"
+    function-bind "^1.1.1"
+    has-symbols "^1.0.0"
+    object-keys "^1.0.11"
 
 object.assign@^4.0.4:
   version "4.0.4"
@@ -11668,44 +11677,25 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-wdio-config@^5.0.0-alpha.7:
-  version "5.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/wdio-config/-/wdio-config-5.0.0-alpha.7.tgz#ed9a5214ef21511707c5566864a583566771df03"
-  dependencies:
-    deepmerge "^2.0.1"
-    glob "^7.1.2"
-    wdio-logger "^5.0.0-alpha.7"
-
-wdio-dot-reporter@^5.0.0-alpha.7:
-  version "5.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/wdio-dot-reporter/-/wdio-dot-reporter-5.0.0-alpha.7.tgz#1d28cc3efbce836ba45d5fba6583e162531f6465"
-  dependencies:
-    chalk "^2.3.0"
-    wdio-reporter "^5.0.0-alpha.7"
-
-wdio-dot-reporter@~0.0.8:
+wdio-dot-reporter@^0.0.9, wdio-dot-reporter@~0.0.8:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/wdio-dot-reporter/-/wdio-dot-reporter-0.0.9.tgz#929b2adafd49d6b0534fda068e87319b47e38fe5"
 
-wdio-logger@^5.0.0-alpha.7:
-  version "5.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/wdio-logger/-/wdio-logger-5.0.0-alpha.7.tgz#577c91cd0ab03227418171e644c773938c63685f"
+wdio-mocha-framework@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/wdio-mocha-framework/-/wdio-mocha-framework-0.6.1.tgz#e34aaf61b6790839e07d01b62fac0dd27d5ed533"
   dependencies:
-    chalk "^2.3.0"
-    loglevel "^1.6.0"
-    loglevel-plugin-prefix "^0.5.3"
-
-wdio-mocha-framework@^5.0.0-alpha.7:
-  version "5.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/wdio-mocha-framework/-/wdio-mocha-framework-5.0.0-alpha.7.tgz#82651b978aee656d80730f648a824e5ef5fc699b"
-  dependencies:
+    babel-runtime "^6.23.0"
     mocha "^5.0.0"
-    wdio-config "^5.0.0-alpha.7"
-    wdio-logger "^5.0.0-alpha.7"
+    wdio-sync "0.7.1"
 
-wdio-reporter@^5.0.0-alpha.7:
-  version "5.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/wdio-reporter/-/wdio-reporter-5.0.0-alpha.7.tgz#43addac156148283138e6818cec9161e31ba54e2"
+wdio-sync@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/wdio-sync/-/wdio-sync-0.7.1.tgz#00847fbbce16826c3225618f4259d28b60a42483"
+  dependencies:
+    babel-runtime "6.26.0"
+    fibers "~2.0.0"
+    object.assign "^4.0.3"
 
 webdriverio@^4.13.1:
   version "4.13.1"
