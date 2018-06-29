@@ -25,6 +25,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Fixed z-index on resource list header with sorting options ([#1629](https://github.com/Shopify/polaris-react/pull/1629)) (thanks [@janklimo](https://github.com/janklimo) for the [original issue](https://github.com/Shopify/polaris/issues/355))
 - Fixed an issue where Radio Buttons were not focusable in Safari ([#1626](https://github.com/Shopify/polaris-react/pull/1626))
 - Fixed spacing for annotated section descriptions ([#1604](https://github.com/Shopify/polaris-react/pull/1604))
+- Fixed a bug in EASDK action transforms that prevented external urls in embedded apps from opening ([#794](https://github.com/Shopify/polaris-react/pull/794)) (thanks [@dansundy](https://github.com/dansundy) for the [original issue](https://github.com/Shopify/polaris/issues/203))
 
 ### Dependency updates
 
@@ -48,7 +49,6 @@ Use Option list to present a group of selectable items outside of the context of
 
 - Fixed unexpected form submission when switching tabs in a tabs component wrapped in a form ([#1542](https://github.com/Shopify/polaris-react/pull/1542))
 - Added missing `'Shopify.API.setWindowLocation'` message handler to the EASDK ([#1539](https://github.com/Shopify/polaris-react/pull/1539))
-- Fixed a bug in EASDK action transforms that prevented external urls in embedded apps from opening ([#794](https://github.com/Shopify/polaris-react/pull/794)) (thanks [@dansundy](https://github.com/dansundy) for the [original issue](https://github.com/Shopify/polaris/issues/203))
 
 ## 2.1.2 - 2018-06-06
 
