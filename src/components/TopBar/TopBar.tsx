@@ -56,14 +56,6 @@ export default class TopBar extends React.PureComponent<Props, State> {
 
     const {focused} = this.state;
 
-    const iconMarkup = logoAction && (
-      <Image
-        source={logoAction.source}
-        alt={logoAction.accessibilityLabel}
-        className={styles.Logo}
-      />
-    );
-
     const className = classNames(styles.NavIcon, focused && styles.focused);
 
     const navButtonMarkup = hasNav && (
@@ -80,9 +72,13 @@ export default class TopBar extends React.PureComponent<Props, State> {
       </button>
     );
 
-    const linkMarkup = logoAction && (
+    const logoMarkup = logoAction && (
       <UnstyledLink url={logoAction.url} className={styles.LogoLink}>
-        {iconMarkup}
+        <Image
+          source={logoAction.source}
+          alt={logoAction.accessibilityLabel}
+          className={styles.Logo}
+        />
       </UnstyledLink>
     );
 
@@ -98,8 +94,6 @@ export default class TopBar extends React.PureComponent<Props, State> {
         logoAction.id &&
         styles[variationName('logo', camelCase(logoAction.id))],
     );
-
-    const logoMarkup = linkMarkup || iconMarkup;
 
     return (
       <div className={styles.TopBar} data-polaris-top-bar>
