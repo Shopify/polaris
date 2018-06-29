@@ -11,7 +11,12 @@ import {
 
 import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
 
-import {ToastManager, Loading, ContextBar, ContextBarProps} from './components';
+import {
+  ToastManager,
+  Loading,
+  ContextualSaveBar,
+  ContextualSaveBarProps,
+} from './components';
 import * as styles from './Frame.scss';
 
 export interface Props {
@@ -28,7 +33,7 @@ export interface State {
   bannerHeight: number;
   loadingStack: number;
   toastMessages: (ToastDescriptor & {id: string})[];
-  contextBar: ContextBarProps | null;
+  contextualSaveBar: ContextualSaveBarProps | null;
 }
 
 export const APP_FRAME_MAIN = 'AppFrameMain';
@@ -44,7 +49,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     bannerHeight: 0,
     loadingStack: 0,
     toastMessages: [],
-    contextBar: null,
+    contextualSaveBar: null,
   };
 
   private navContainer: HTMLElement | null = null;
@@ -58,8 +63,8 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         startLoading: this.startLoading,
         resetLoading: this.resetLoading,
         stopLoading: this.stopLoading,
-        setContextBar: this.setContextBar,
-        removeContextBar: this.removeContextBar,
+        setContextualSaveBar: this.setContextualSaveBar,
+        removeContextualSaveBar: this.removeContextualSaveBar,
       },
     };
   }
@@ -108,7 +113,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       bannerHeight,
       loadingStack,
       toastMessages,
-      contextBar,
+      contextualSaveBar,
     } = this.state;
     const {
       children,
@@ -155,14 +160,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextBarClassName = classNames(
-      styles.ContextBar,
-      contextBar && styles['ContextBar-visible'],
+    const contextualSaveBarClassName = classNames(
+      styles.ContextualSaveBar,
+      contextualSaveBar && styles['ContextualSaveBar-visible'],
     );
 
-    const contextBarMarkup = contextBar && (
-      <div className={contextBarClassName}>
-        <ContextBar {...contextBar} />
+    const contextualSaveBarMarkup = contextualSaveBar && (
+      <div className={contextualSaveBarClassName}>
+        <ContextualSaveBar {...contextualSaveBar} />
       </div>
     );
 
@@ -212,7 +217,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       <div className={styles.Frame} data-polaris-layer>
         {skipMarkup}
         {topBarMarkup}
-        {contextBarMarkup}
+        {contextualSaveBarMarkup}
         {loadingMarkup}
         <div
           className={navOverlayClassName}
@@ -257,13 +262,13 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private setContextBar(props: ContextBarProps) {
-    this.setState({contextBar: {...props}});
+  private setContextualSaveBar(props: ContextualSaveBarProps) {
+    this.setState({contextualSaveBar: {...props}});
   }
 
   @autobind
-  private removeContextBar() {
-    this.setState({contextBar: null});
+  private removeContextualSaveBar() {
+    this.setState({contextualSaveBar: null});
   }
 
   @autobind

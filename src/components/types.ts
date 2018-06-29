@@ -1,11 +1,11 @@
 import * as PropTypes from 'prop-types';
-import {ContextBarProps} from '../components/ContextBar';
+import {ContextualSaveBarProps} from '../components/ContextualSaveBar';
 
 export interface FrameManager {
   showToast(toast: {id: string} & ToastDescriptor): void;
   hideToast(toast: {id: string}): void;
-  setContextBar(props: ContextBarProps): void;
-  removeContextBar(): void;
+  setContextualSaveBar(props: ContextualSaveBarProps): void;
+  removeContextualSaveBar(): void;
   startLoading(): void;
   stopLoading(): void;
   resetLoading(): void;

@@ -4,4 +4,7 @@ export {
   Props as ToastManagerProps,
 } from './ToastManager';
 export {default as Loading, Props as LoadingProps} from './Loading';
-export {default as ContextBar, Props as ContextBarProps} from './ContextBar';
+export {
+  default as ContextualSaveBar,
+  Props as ContextualSaveBarProps,
+} from './ContextualSaveBar';

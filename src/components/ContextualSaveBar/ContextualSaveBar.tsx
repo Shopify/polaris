@@ -25,42 +25,42 @@ export interface Action {
 export interface Props {
   /**  Logo information */
   branding: Brand;
-  /** Toggle whether the context bar is visible */
+  /** A boolean property indicating  whether the contextual save bar is currently visible */
   visible: boolean;
-  /** Content the context bar displays */
+  /** Accepts a string of content that will be rendered to the left of the actions */
   message?: string;
-  /** Primary context bar action */
-  primaryAction?: Action;
-  /**  Cancel action */
-  cancelAction?: Action;
+  /** Save or commit contextual save bar action with text defaulting to 'Save' */
+  saveAction?: Action;
+  /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
+  discardAction?: Action;
 }
 
-class ContextBar extends React.PureComponent<Props, never> {
+class ContextualSaveBar extends React.PureComponent<Props, never> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
 
   componentDidMount() {
     if (this.props.visible) {
-      this.context.frame.setContextBar(this.props);
+      this.context.frame.setContextualSaveBar(this.props);
     } else {
-      this.context.frame.removeContextBar();
+      this.context.frame.removeContextualSaveBar();
     }
   }
 
   componentWillUnmount() {
-    this.context.frame.removeContextBar();
+    this.context.frame.removeContextualSaveBar();
   }
 
   componentDidUpdate(oldProps: Props) {
     const {visible} = this.props;
 
     if (!visible && oldProps.visible) {
-      this.context.frame.removeContextBar();
+      this.context.frame.removeContextualSaveBar();
       return;
     }
 
-    if (contextBarHasChanged(this.props, oldProps)) {
-      this.context.frame.setContextBar(this.props);
+    if (contextualSaveBarHasChanged(this.props, oldProps)) {
+      this.context.frame.setContextualSaveBar(this.props);
     }
   }
 
@@ -69,21 +69,21 @@ class ContextBar extends React.PureComponent<Props, never> {
   }
 }
 
-function contextBarHasChanged(
-  {visible, message, primaryAction, cancelAction}: Props,
+function contextualSaveBarHasChanged(
+  {visible, message, saveAction, discardAction}: Props,
   {
     visible: oldVisible,
     message: oldMessage,
-    primaryAction: oldPrimaryAction,
-    cancelAction: oldCancelAction,
+    saveAction: oldsaveAction,
+    discardAction: oldDiscardAction,
   }: Props,
 ) {
   return Boolean(
     (visible && !oldVisible) ||
       message !== oldMessage ||
-      !isEqual(primaryAction, oldPrimaryAction) ||
-      !isEqual(cancelAction, oldCancelAction),
+      !isEqual(saveAction, oldsaveAction) ||
+      !isEqual(discardAction, oldDiscardAction),
   );
 }
 
-export default ContextBar;
+export default ContextualSaveBar;
