@@ -15,6 +15,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1595](https://github.com/Shopify/polaris-react/pull/1595))
+- Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
 
 ### Bug fixes
 
