@@ -30,7 +30,10 @@ function parseCodeExamples(data) {
   const [, ...examples] = examplesAndHeader;
 
   return [
-    matter.data.name.replace(/ /g, '').toLowerCase(),
+    matter.data.name
+      .replace(/’/g, '')
+      .replace(/\s+/g, '-')
+      .toLowerCase(),
     examples
       .map((example) => {
         return example.split('```')[1].split('jsx')[1];

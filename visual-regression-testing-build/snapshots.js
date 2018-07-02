@@ -42,7 +42,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
     [...document.querySelectorAll('a')].map((element) =>
       element.getAttribute('href'),),);
 
-  urls = urls.filter((url, index) => !url.includes('embedded'));
+  urls = urls.filter((url) => !url.includes('embedded'));
 
   urls.map((path) => {
     const currentBrowser = browsers[browserIndex % 2];
@@ -50,8 +50,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
     currentBrowser.taken = currentBrowser.taken.then(async () => {
       console.log('Snapshotting ', path);
       await currentBrowser.page.goto(`http://localhost:3000${path}`);
-      return currentBrowser.page.screenshot({path: 'idk.png'});
-      // return percy.snapshot(`Snapshot of ${path}`, currentBrowser.page);
+      return percy.snapshot(`Snapshot of ${path}`, currentBrowser.page);
     });
   });
 
