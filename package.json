@@ -65,7 +65,8 @@
     "dev": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
     "dev:host": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline --host $(ipconfig getifaddr en0)",
     "start": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/",
-    "start:vrt": "node visual-regression-testing-build/index.js"
+    "start:vrt": "node visual-regression-testing-build/index.js",
+    "test:percy": "node visual-regression-testing-build/snapshots.js"
   },
   "stylelint": {
     "extends": [
