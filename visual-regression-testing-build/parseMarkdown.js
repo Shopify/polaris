@@ -2,14 +2,6 @@ import fs from 'fs';
 import glob from 'glob';
 import grayMatter from 'gray-matter';
 
-interface ComponentMatterData {
-  name: string;
-  category: string;
-  keywords?: string[] | null;
-  order?: number | null;
-  hidePlayground?: boolean | null;
-}
-
 export default function readMarkDownFiles() {
   const files = glob.sync(
     `${__dirname}/../src/{components,embedded}/**/README.md`,
@@ -22,7 +14,7 @@ export default function readMarkDownFiles() {
   });
 }
 
-function parseCodeExamples(data: string) {
+function parseCodeExamples(data) {
   const matter = grayMatter(data);
   const introAndComponentSections = matter.content
     .split(/(?=\n---\n|\n## Examples\n)/)
@@ -38,7 +30,7 @@ function parseCodeExamples(data: string) {
   const [, ...examples] = examplesAndHeader;
 
   return [
-    (matter.data as ComponentMatterData).name
+    matter.data.name
       .replace(/’/g, '')
       .replace(/\s+/g, '-')
       .toLowerCase(),

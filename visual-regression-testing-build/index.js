@@ -8,7 +8,7 @@ const express = require('express');
 
 const config = require('./webpack.config.js');
 const render = require('./render.tsx').default;
-const readMarkDownFiles = require('./parseMarkdown.ts').default;
+const readMarkDownFiles = require('./parseMarkdown.js').default;
 
 const compiler = webpack(config);
 const app = express();

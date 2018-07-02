@@ -29,7 +29,8 @@ jobs:
          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
          paths:
            - node_modules
-      - run: yarn run start:vrt & sleep 30; yarn run test:percy
+      - run: cp -r node_modules/@shopify/polaris-tokens/dist src/styles/polaris-tokens
+      - run: yarn run start:vrt & sleep 45; yarn run test:percy
 
 workflows:
   version: 2
