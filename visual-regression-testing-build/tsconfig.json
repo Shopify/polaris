@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
+    "baseUrl": "./",
+    "rootDir": "./",
     "target": "es2016",
     "module": "es2015",
     "moduleResolution": "node",
     "jsx": "react",
     "strictNullChecks": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedParameters": true,
@@ -23,9 +23,12 @@
       "dom.iterable",
       "scripthost"
     ],
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationDir": "types",
     "paths": {
       "@shopify/polaris": [
-        "../config/typescript/*",
+        "../config/typescript",
         "../src"
       ]
     }

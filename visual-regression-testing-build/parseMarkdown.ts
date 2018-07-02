@@ -1,6 +1,14 @@
-const fs = require('fs');
-const glob = require('glob');
-const grayMatter = require('gray-matter');
+import fs from 'fs';
+import glob from 'glob';
+import grayMatter from 'gray-matter';
+
+interface ComponentMatterData {
+  name: string;
+  category: string;
+  keywords?: string[] | null;
+  order?: number | null;
+  hidePlayground?: boolean | null;
+}
 
 export default function readMarkDownFiles() {
   const files = glob.sync(
@@ -14,7 +22,7 @@ export default function readMarkDownFiles() {
   });
 }
 
-function parseCodeExamples(data) {
+function parseCodeExamples(data: string) {
   const matter = grayMatter(data);
   const introAndComponentSections = matter.content
     .split(/(?=\n---\n|\n## Examples\n)/)
@@ -30,7 +38,7 @@ function parseCodeExamples(data) {
   const [, ...examples] = examplesAndHeader;
 
   return [
-    matter.data.name
+    (matter.data as ComponentMatterData).name
       .replace(/’/g, '')
       .replace(/\s+/g, '-')
       .toLowerCase(),

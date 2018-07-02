@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const puppeteer = require('puppeteer');
 const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
 
@@ -40,7 +41,9 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
   await page.goto('http://localhost:3000');
   let urls = await page.evaluate(() =>
     [...document.querySelectorAll('a')].map((element) =>
-      element.getAttribute('href'),),);
+      element.getAttribute('href'),
+    ),
+  );
 
   urls = urls.filter((url) => !url.includes('embedded'));
 
