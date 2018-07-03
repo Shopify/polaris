@@ -28,7 +28,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
         ...(rest as Props),
       });
     } else {
-      easdk.showFlashNotice('this will change');
+      easdk.showFlashNotice(this.props.content);
     }
   }
 
