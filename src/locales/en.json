@@ -24,6 +24,7 @@
     },
 
     "Common": {
+      "checkbox": "checkbox",
       "undo": "Undo"
     },
 
@@ -96,8 +97,8 @@
       "ariaLivePlural": "{itemsLength} items",
 
       "Item": {
-        "selectItem": "Select item",
-        "deselectItem": "Deselect item",
+        "selectItem": "Select: {accessibilityLabel}",
+        "deselectItem": "Deselect: {accessibilityLabel}",
         "actionsDropdown": "Actions dropdown"
       },
 

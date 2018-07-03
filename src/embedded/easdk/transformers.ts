@@ -1,9 +1,5 @@
-import {
-  EASDKTarget,
-  ComplexAction,
-  IconableAction,
-  EASDKAction,
-} from '../../types';
+import {EASDKTarget, ComplexAction} from '../../types';
+import {ActionGroup} from '../../components/Page/types';
 
 export interface EASDKBreadcrumb {
   label: string;
@@ -15,6 +11,7 @@ export interface EASDKBreadcrumb {
 
 export function transformBreadcrumb(
   breadcrumb: ComplexAction,
+  shopOrigin?: string,
 ): EASDKBreadcrumb {
   if (breadcrumb.content == null) {
     throw new Error(
@@ -26,7 +23,7 @@ export function transformBreadcrumb(
   if (breadcrumb.target) {
     target = breadcrumb.target;
   } else if (breadcrumb.url) {
-    target = getTargetFromURL(breadcrumb.url);
+    target = getTargetFromURL(breadcrumb.url, shopOrigin);
   } else {
     target = undefined;
   }
@@ -40,11 +37,8 @@ export function transformBreadcrumb(
   };
 }
 
-export interface ActionGroup {
-  title: string;
-  icon?: IconableAction['icon'];
-  actions: IconableAction[];
-}
+// use and keep in sync with the Page ActionGroup interface
+export {ActionGroup};
 
 export interface EASDKBaseButton {
   label?: string;
@@ -62,53 +56,88 @@ export interface EASDKLinkButton extends EASDKBaseButton {
 
 export type EASDKButton = EASDKBaseButton | EASDKLinkButton;
 
-export function transformAction(action: EASDKAction): EASDKButton {
-  let style: EASDKButton['style'];
-  if (action.disabled) {
-    style = 'disabled';
-  } else if (action.destructive) {
-    style = 'danger';
-  }
+export function transformAction(shopOrigin: string) {
+  return (action: ComplexAction): EASDKButton => {
+    let style: EASDKButton['style'];
+    if (action.disabled) {
+      style = 'disabled';
+    } else if (action.destructive) {
+      style = 'danger';
+    }
 
-  let target: EASDKBaseButton['target'];
-  if (action.target) {
-    target = action.target;
-  } else if (action.url) {
-    target = getTargetFromURL(action.url);
-  } else {
-    target = undefined;
-  }
+    let target: EASDKBaseButton['target'];
+    if (action.target) {
+      target = action.target;
+    } else if (action.url) {
+      target = action.external
+        ? 'new'
+        : getTargetFromURL(action.url, shopOrigin);
+    } else {
+      target = undefined;
+    }
 
-  return {
-    label: action.content,
-    href: action.url,
-    target,
-    message: target === 'app' ? generateCallback(action.url) : action.onAction,
-    style,
+    return {
+      label: action.content,
+      href: action.url,
+      target,
+      message:
+        target === 'app' ? generateCallback(action.url) : action.onAction,
+      style,
+    };
   };
 }
 
-export function transformActionGroup(
-  actionGroup: ActionGroup,
-): EASDKLinkButton {
-  return {
-    type: 'dropdown',
-    label: actionGroup.title,
-    links: actionGroup.actions.map(transformAction),
+export function transformActionGroup(shopOrigin: string) {
+  return (actionGroup: ActionGroup): EASDKLinkButton => {
+    return {
+      type: 'dropdown',
+      label: actionGroup.title,
+      links: actionGroup.actions.map(transformAction(shopOrigin)),
+    };
   };
 }
 
-function getTargetFromURL(url: string): EASDKTarget {
-  if (url[0] === '/') {
+// see https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax for more info on the URI scheme
+function getTargetFromURL(url: string, shopOrigin?: string): EASDKTarget {
+  if (isRootRelative(url) || isOriginHost(url, shopOrigin)) {
     return 'shopify';
   } else if (
-    url.indexOf(window.location.hostname) >= 0 ||
-    (url[0] !== '/' && url.indexOf('http') !== 0)
+    isSameHost(url) ||
+    isFragment(url) ||
+    isRelative(url) ||
+    isSchemeRelative(url)
   ) {
     return 'app';
   } else {
     return 'new';
   }
+}
+
+function isRootRelative(url: string): boolean {
+  return url.charAt(0) === '/' && url.charAt(1) !== '/';
+}
+
+function isOriginHost(url: string, shopOrigin?: string) {
+  return shopOrigin && url.indexOf(shopOrigin) !== -1;
+}
+
+function isSameHost(url: string): boolean {
+  const hostIndex = url.indexOf(window.location.hostname);
+  const firstDotIndex = url.indexOf('.');
+
+  return hostIndex >= 0 && hostIndex < firstDotIndex;
+}
+
+function isFragment(url: string): boolean {
+  return url.charAt(0) === '#';
+}
+
+function isRelative(url: string): boolean {
+  return url.charAt(0) !== '/' && url.toLowerCase().indexOf('http') !== 0;
+}
+
+function isSchemeRelative(url: string): boolean {
+  return url.indexOf('//') === 0;
 }
 
 function generateCallback(url: string | undefined) {

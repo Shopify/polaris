@@ -4,7 +4,38 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## 2.3.0 - 2018-07-03
+
+### New components
+
+#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+
+Use Option list to present a group of selectable items outside of the context of a form.
+
+### Documentation
+
+- Fixed `Form` examples
+
+### Enhancements
+
+- Added `prefix` and `suffix` props to `RangeSlider` for better layout control
+- Added testing documentation and examples in AppProvider
+- Performance: optimized avatar SVG files
+- Updated yarn optimize to add new line at the end of SVG files
+
+### Bug fixes
+
+- Adjusted padding on text field to work with Chrome’s autofill
+- Fixed a regression where the version of Polaris wasn’t globally available anymore
+- Updated the interaction state visuals for ActionList
+- Fixed z-index on resource list header with sorting options (thanks [@janklimo](https://github.com/janklimo) for the [original issue](https://github.com/Shopify/polaris/issues/355))
+- Fixed an issue where Radio Buttons were not focusable in Safari
+- Fixed spacing for annotated section descriptions
+- Fixed a bug in EASDK action transforms that prevented external urls in embedded apps from opening (thanks [@dansundy](https://github.com/dansundy) for the [original issue](https://github.com/Shopify/polaris/issues/203))
+
+### Dependency updates
+
+- Updated [`@shopify/polaris-tokens`](https://npmjs.com/package/@shopify/polaris-tokens), the single source of truth for colors
 
 ## 2.2.0 - 2018-06-12
 
@@ -647,7 +678,7 @@ Various documentation fixes.
 - Aria attributes are now on the actionable elements of `Tabs` instead of in the list items
 - Exposed `Panel` as `Tabs.Panel` instead of `Tabs.panel`
 - Fixed the alignment of `prefix` and `suffix` content of `TextField` (thanks [bdillon3](https://github.com/bdillon3) for the [original issue](https://github.com/Shopify/polaris/issues/60))
-- Fixed the disabled text colour in `TextField`
+- Fixed the disabled text color in `TextField`
 - `Checkbox`s and `RadioButton`s no longer generate invalid HTML in their labels (thanks [Ernesto](https://github.com/ernestogutierrez) for the [original issue](https://github.com/Shopify/polaris/issues/88))
 - `Tabs` no longer steals focus from contained elements (thanks [Alex](https://github.com/alexdover) for the [original issue](https://github.com/Shopify/polaris/issues/74))
 

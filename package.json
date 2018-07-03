@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@shopify/js-uploader": "github:shopify/js-uploader",
-    "@shopify/polaris-tokens": "0.16.0",
+    "@shopify/polaris-tokens": "^1.2.0",
     "@types/enzyme": "^2.8.12",
     "@types/jest": "^21.1.2",
     "@types/lodash": "^4.14.108",

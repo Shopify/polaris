@@ -61,11 +61,11 @@ Section titles should be:
 
 #### Do
 
-Business details
+- Business details
 
 #### Don’t
 
-Enter details about your business
+- Enter details about your business
 
 <!-- end -->
 
@@ -81,11 +81,11 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 #### Do
 
-Email address
+- Email address
 
 #### Don’t
 
-What is your email address?
+- What is your email address?
 
 <!-- end -->
 
@@ -93,11 +93,11 @@ What is your email address?
 
 #### Do
 
-Phone number
+- Phone number
 
 #### Don’t
 
-My phone number is:
+- My phone number is:
 
 <!-- end -->
 

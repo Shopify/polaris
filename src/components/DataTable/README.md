@@ -243,6 +243,8 @@ class DataTableLinkExample extends React.Component {
 }
 ```
 
+---
+
 ## Best practices
 
 Data tables should:

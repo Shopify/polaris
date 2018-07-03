@@ -110,10 +110,17 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const checkboxAccessibilityLabel =
+      accessibilityLabel || intl.translate('Polaris.Common.checkbox');
+
     if (selectable) {
       const label = selected
-        ? intl.translate('Polaris.ResourceList.Item.deselectItem')
-        : intl.translate('Polaris.ResourceList.Item.selectItem');
+        ? intl.translate('Polaris.ResourceList.Item.deselectItem', {
+            accessibilityLabel: checkboxAccessibilityLabel,
+          })
+        : intl.translate('Polaris.ResourceList.Item.selectItem', {
+            accessibilityLabel: checkboxAccessibilityLabel,
+          });
 
       handleMarkup = (
         <div

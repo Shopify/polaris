@@ -71,3 +71,7 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-top: spacing(loose);
   margin-left: spacing(loose);
 }
+
+.AnnotationDescription {
+  @include text-emphasis-subdued;
+}

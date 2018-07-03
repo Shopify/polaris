@@ -122,13 +122,13 @@ Buttons should be:
 
 #### Do
 
-Create order
-Buy shipping label
+- Create order
+- Buy shipping label
 
 #### Don’t
 
-New order
-Buy
+- New order
+- Buy
 
 <!-- end -->
 
@@ -140,13 +140,13 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 #### Do
 
-Activate Apple Pay
-View shipping settings
+- Activate Apple Pay
+- View shipping settings
 
 #### Don’t
 
-Try Apple Pay
-View your settings
+- Try Apple Pay
+- View your settings
 
 <!-- end -->
 

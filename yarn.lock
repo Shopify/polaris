@@ -110,9 +110,9 @@
     mime-types "2.1.12"
     request "2.78.0"
 
-"@shopify/polaris-tokens@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-0.16.0.tgz#f73dd988b61c74a49caa4dd8df90fce990077ede"
+"@shopify/polaris-tokens@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-1.2.0.tgz#dca924fd88438f21c94cccf51fa80bbec0fff277"
 
 "@shopify/react-utilities@2.0.0-beta.9":
   version "2.0.0-beta.9"
@@ -198,10 +198,10 @@
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.18.tgz#c08eea79ada55bf10b5353e18c21797dd17afa23"
 
 "@types/react@^16.3.5":
-  version "16.3.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.5.tgz#bd3b21285602ea7cadb4b9e0d9711d96fd5692cc"
+  version "16.4.1"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.1.tgz#c53bbfb4a78933db587da085ac60dbf5fcf73f8f"
   dependencies:
-    csstype "^2.0.0"
+    csstype "^2.2.0"
 
 abab@^1.0.3:
   version "1.0.4"
@@ -2563,9 +2563,9 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.1.0.tgz#4a84bba2717d06549f391ac4eb7651aa1b7d0976"
+csstype@^2.2.0:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.3.tgz#2504152e6e1cc59b32098b7f5d6a63f16294c1f7"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

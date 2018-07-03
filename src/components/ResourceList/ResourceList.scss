@@ -169,6 +169,8 @@
 }
 
 .ResourceList {
+  position: relative;
+  z-index: resource-list(list-stacking-order);
   margin: 0;
   padding: 0;
   list-style: none;

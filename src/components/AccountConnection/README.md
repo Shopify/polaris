@@ -86,8 +86,8 @@ Clearly link to your terms and conditions and let merchants know about any addit
 
 #### Do
 
-By clicking Connect, you agree to accept Sample’s terms and conditions.
-You’ll pay a commission rate of 15% on sales made through Sample.
+- By clicking Connect, you agree to accept Sample’s terms and conditions.
+- You’ll pay a commission rate of 15% on sales made through Sample.
 
 #### Don’t
 

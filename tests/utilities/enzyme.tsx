@@ -131,10 +131,10 @@ function updateRoot(wrapper: AnyWrapper) {
 function mergeAppProviderOptions(options: any = {}): any {
   const context = createPolarisContext();
 
-  return merge(merge({}, {
+  return merge({}, {
     context,
     childContextTypes: polarisAppProviderContextTypes
-  }, options));
+  }, options);
 }
 
 export function mountWithAppProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {

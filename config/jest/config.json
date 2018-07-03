@@ -3,7 +3,7 @@
     "<rootDir>/config/jest/shim.js",
     "<rootDir>/tests/setup.ts"
   ],
-  "testRegex": "[\\w+]\\.test\\.(tsx?|js)$",
+  "testRegex": "[\\w+]\\.test\\.(tsx?|js|ts)$",
   "rootDir": "../..",
   "roots": [
     "<rootDir>/src",
