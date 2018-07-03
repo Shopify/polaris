@@ -4,12 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+## 2.3.0 - 2018-07-03
 
 ### Documentation
 
 - Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
-- Renamed `OptionsList` to `OptionList` ([#1621](https://github.com/Shopify/polaris-react/pull/1621))
 
 ### Enhancements
 
