@@ -76,8 +76,7 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
 
   render() {
     const {id} = this.state;
-    const min = this.props.min || 0;
-    const max = this.props.max || 100;
+    const {min = 0, max = 100} = this.props;
     const {
       label,
       labelAction,
