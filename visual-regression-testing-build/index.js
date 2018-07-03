@@ -34,7 +34,7 @@ const buildPromise = new Promise((resolve) => {
     resolve();
   });
 }).then(() => {
-  console.log('Done building!');
+  console.log('✅ Component examples build complete');
 });
 
 app.use((req, res, next) => buildPromise.then(next, next));
@@ -48,4 +48,7 @@ app.use(
 
 app.use('*', appMiddleware);
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+app.listen(3000, () => {
+  console.log('Example app running on http://localhost:3000');
+  console.log('⏳ Building code examples from component README files…');
+});

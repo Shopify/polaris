@@ -12,7 +12,7 @@ interface CodeExamples {
 
 const {data: codeExamples} = getSerialized('codeExamples');
 
-function renderPlayground() {
+function renderApp() {
   render(
     <Polaris.AppProvider>
       <BrowserRouter>
@@ -47,4 +47,4 @@ function renderPlayground() {
   );
 }
 
-renderPlayground();
+renderApp();
