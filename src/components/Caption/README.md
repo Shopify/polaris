@@ -44,7 +44,6 @@ Captions are primarily used in [data visualizations](/visuals/data-visualization
 
 - Use caption for labelling data visualizations
   ![Diagram of using captions to label graphs and other data content](typography/display-styles/do-use-caption-for-labeling-data-visualizations.png)
-
 - Received April 21, 2017
 
 #### Don’t

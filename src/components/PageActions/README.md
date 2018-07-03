@@ -72,11 +72,11 @@ Buttons should be:
 
 #### Do
 
-Add menu item
+- Add menu item
 
 #### Don’t
 
-Add a menu item
+- Add a menu item
 
 <!-- end -->
 

@@ -62,11 +62,11 @@ Learn more about <a>fulfilling orders</a> at the Shopify Help Center
 
 #### Do
 
-Orders
+- Orders
 
 #### Don’t
 
-To orders section
+- To orders section
 
 <!-- end -->
 

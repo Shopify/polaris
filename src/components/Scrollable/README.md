@@ -53,11 +53,11 @@ Headings should be:
 
 #### Do
 
-Online store dashboard
+- Online store dashboard
 
 #### Don’t
 
-This is your online store dashboard
+- This is your online store dashboard
 
 <!-- end -->
 
@@ -73,11 +73,11 @@ Body content should be:
 
 #### Do
 
-You need to accept the terms and conditions to continue.
+- You need to accept the terms and conditions to continue.
 
 #### Don’t
 
-Now you can accept the terms and conditions.
+- Now you can accept the terms and conditions.
 
 <!-- end -->
 

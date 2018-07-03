@@ -94,11 +94,11 @@ input. Field placeholder text should:
 
 #### Do
 
-e.g. FALLSALE
+- e.g. FALLSALE
 
 #### Don’t
 
-Name your discount code
+- Name your discount code
 
 <!-- end -->
 

@@ -54,11 +54,11 @@ Headings should be:
 
 #### Do
 
-Online store dashboard
+- Online store dashboard
 
 #### Don’t
 
-This is your online store dashboard
+- This is your online store dashboard
 
 <!-- end -->
 
@@ -72,11 +72,11 @@ Body content should be:
 
 #### Do
 
-Get performance for all your sales channels.
+- Get performance for all your sales channels.
 
 #### Don’t
 
-Now you can get performance data for all your sales channels.
+- Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
@@ -87,11 +87,11 @@ Now you can get performance data for all your sales channels.
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
+- To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment, including packaging.
+- To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -105,11 +105,11 @@ Buttons should be:
 
 #### Do
 
-Buy shipping label
+- Buy shipping label
 
 #### Don’t
 
-Buy
+- Buy
 
 <!-- end -->
 
@@ -119,11 +119,11 @@ Buy
 
 #### Do
 
-Activate Apple Pay
+- Activate Apple Pay
 
 #### Don’t
 
-Try Apple Pay
+- Try Apple Pay
 
 <!-- end -->
 
@@ -133,11 +133,11 @@ Try Apple Pay
 
 #### Do
 
-Add menu item
+- Add menu item
 
 #### Don’t
 
-Add a menu item
+- Add a menu item
 
 <!-- end -->
 

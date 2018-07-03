@@ -61,11 +61,11 @@ to provide optional information, mark the field optional by placing the text “
 
 #### Do
 
-Banner width (optional)
+- Banner width (optional)
 
 #### Don’t
 
-Banner width
+- Banner width
 
 <!-- end -->
 
@@ -77,11 +77,11 @@ Help text provides extra guidance or instruction to people filling out a form fi
 
 #### Do
 
-Video duration is calculated in seconds
+- Video duration is calculated in seconds
 
 #### Don’t
 
-Example: 134 seconds
+- Example: 134 seconds
 
 <!-- end -->
 
@@ -97,11 +97,11 @@ Error messages should:
 
 #### Do
 
-Video duration is required
+- Video duration is required
 
 #### Don’t
 
-You didn’t enter a duration
+- You didn’t enter a duration
 
 <!-- end -->
 

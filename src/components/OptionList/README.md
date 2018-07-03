@@ -44,11 +44,11 @@ Each item in an option list should be clear and descriptive.
 
 #### Do
 
-Traffic referrer source
+- Traffic referrer source
 
 #### Don’t
 
-Source
+- Source
 
 <!-- end -->
 

@@ -64,11 +64,11 @@ Empty states should:
 
 #### Do
 
-Create orders and send invoices
+- Create orders and send invoices
 
 #### Don’t
 
-Orders and invoices
+- Orders and invoices
 
 <!-- end -->
 
@@ -126,11 +126,11 @@ They should be:
 
 #### Do
 
-Add menu item
+- Add menu item
 
 #### Don’t
 
-Add a menu item
+- Add a menu item
 
 <!-- end -->
 

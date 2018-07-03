@@ -47,11 +47,11 @@ Titles should be:
 
 #### Do
 
-Edit email address
+- Edit email address
 
 #### Don’t
 
-Edit the email address for this order
+- Edit the email address for this order
 
 <!-- end -->
 
@@ -65,11 +65,11 @@ Body content should be:
 
 #### Do
 
-Notification emails will be sent to this address.
+- Notification emails will be sent to this address.
 
 #### Don’t
 
-You can edit the email address where emails will be sent.
+- You can edit the email address where emails will be sent.
 
 <!-- end -->
 
@@ -80,11 +80,11 @@ You can edit the email address where emails will be sent.
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
+- To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment, including packaging.
+- To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -130,11 +130,11 @@ Actions should be:
 
 #### Do
 
-Add menu item
+- Add menu item
 
 #### Don’t
 
-Add a menu item
+- Add a menu item
 
 <!-- end -->
 
@@ -148,11 +148,11 @@ Body content should be:
 
 #### Do
 
-Notification emails will be sent to this address.
+- Notification emails will be sent to this address.
 
 #### Don’t
 
-You can edit the email address where emails will be sent.
+- You can edit the email address where emails will be sent.
 
 <!-- end -->
 
@@ -163,11 +163,11 @@ You can edit the email address where emails will be sent.
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
+- To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment, including packaging.
+- To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
