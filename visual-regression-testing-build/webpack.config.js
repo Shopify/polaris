@@ -9,9 +9,7 @@ const ICON_PATH_REGEX = /icons\//;
 const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = {
-  mode: 'development',
   target: 'web',
-  devtool: 'eval',
   entry: [
     '@shopify/polaris/styles/global.scss',
     path.join(__dirname, 'index.tsx'),
@@ -34,7 +32,7 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [
+    loaders: [
       {
         test(resource) {
           return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
