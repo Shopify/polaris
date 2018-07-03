@@ -26,7 +26,7 @@ function optimizeFile(file) {
       removeSync(file);
 
       const newFile = resolvePath(dirname(file), `${paramCase(basename(file, '.svg'))}.svg`);
-      writeFileSync(newFile, result.data);
+      writeFileSync(newFile, `${result.data}\n`);
       resolve();
     });
   });
