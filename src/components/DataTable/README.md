@@ -259,8 +259,6 @@ Data tables should:
 - Wrap instead of truncate content. This is because if row titles start with the same word, they’ll all appear the same when truncated.
 - Not to be used for an actionable list of items that link to show pages. For this functionality, use the [resource list] component.
 
----
-
 ### Alignment
 
 Column content types are built into the component props so the following alignment rules are followed:
