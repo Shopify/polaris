@@ -1,5 +1,9 @@
 @import '../../styles/variables';
 
+@mixin text-field-margin($variant: base) {
+  margin: 0 calc(#{spacing($variant) - rem(1px)});
+}
+
 $icon-size: rem(20px);
 $input-height: rem(34px);
 
@@ -15,14 +19,16 @@ $stacking-order: (
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  margin: 0 spacing();
+  border: 1px solid transparent;
+
+  @include text-field-margin;
 
   @include page-content-when-not-fully-condensed {
-    margin: 0 spacing(loose);
+    @include text-field-margin(loose);
   }
 
   @include breakpoint-after($large-width) {
-    margin: 0 spacing(extra-loose);
+    @include text-field-margin(extra-loose);
   }
 }
 
