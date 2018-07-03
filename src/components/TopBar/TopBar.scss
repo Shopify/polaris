@@ -7,6 +7,14 @@ $icon-size: rem(20px);
   display: flex;
   height: top-bar-height();
   background-color: var(--top-bar-background);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid transparent;
+  }
 }
 
 .LogoContainer {
