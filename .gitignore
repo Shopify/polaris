@@ -21,6 +21,3 @@ node_modules
 /shrink-ray-build/build
 /visual-regression-testing-build/.cache
 /visual-regression-testing-build/assets
-geckodriver
-errorShots/
-selenium-server-standalone-*.jar
