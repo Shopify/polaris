@@ -2,11 +2,10 @@ import * as React from 'react';
 
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
-import Nav from '../../Nav';
-
 import {navBarCollapsed} from '../../../../utilities/breakpoints';
-import {Icon, IconProps, UnstyledLink} from '../../../../components';
 
+import Secondary from './components/Secondary';
+import {Icon, IconProps, UnstyledLink} from '../../../../components';
 import {Context, contextTypes} from '../../types';
 
 import * as styles from './Item.scss';
@@ -179,7 +178,7 @@ export default class Item extends React.Component<Props, State> {
 
       secondaryNavMarkup = (
         <div className={styles.SecondaryNav}>
-          <Nav.Secondary expanded={showExpanded}>
+          <Secondary expanded={showExpanded}>
             {subNavItems.map((item) => {
               const {label, ...rest} = item;
               return (
@@ -192,7 +191,7 @@ export default class Item extends React.Component<Props, State> {
                 />
               );
             })}
-          </Nav.Secondary>
+          </Secondary>
         </div>
       );
     }

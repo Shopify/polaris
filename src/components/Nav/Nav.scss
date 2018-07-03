@@ -41,17 +41,3 @@ $nav-max-width: rem(360px);
   align-items: stretch;
   max-width: 100%;
 }
-
-.RollupToggle {
-  @include text-emphasis-normal;
-  @include text-emphasis-subdued;
-
-  &:hover {
-    @include recolor-icon(color('indigo'));
-    color: color('indigo');
-  }
-
-  &:focus {
-    outline: none;
-  }
-}

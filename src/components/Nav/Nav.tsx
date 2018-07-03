@@ -6,7 +6,6 @@ import ScrollLock from '../ScrollLock';
 import Item from './components/Item';
 import User from './components/User';
 import Section from './components/Section';
-import Secondary from './components/Secondary';
 import {contextTypes, SectionType} from './types';
 
 import * as styles from './Nav.scss';
@@ -23,7 +22,6 @@ export default class Nav extends React.Component<Props, never> {
   static Item = Item;
   static User = User;
   static Section = Section;
-  static Secondary = Secondary;
   static childContextTypes = contextTypes;
 
   getChildContext() {

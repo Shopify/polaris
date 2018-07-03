@@ -7,7 +7,7 @@ import {add} from '../../../../../icons';
 import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
 
 import Item, {Props as ItemProps} from '../Item';
-import Nav from '../../../Nav';
+import Secondary from '../components/Secondary';
 
 describe('<Nav.Item />', () => {
   beforeEach(() => {
@@ -106,35 +106,35 @@ describe('<Nav.Item />', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders');
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(true);
     });
 
     it('renders expanded when a url is a startsWith match for location', () => {
       const item = itemForLocation('/admin/orders?foo=bar');
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(true);
     });
 
     it('renders expanded when a child is a perfect match for location', () => {
       const item = itemForLocation('/admin/draft_orders');
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(true);
     });
 
     it('renders expanded when a child is a startsWith match for location', () => {
       const item = itemForLocation('/admin/draft_orders?foo=bar');
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(true);
     });
 
     it('does not render expanded when parent and children both have no match on the location', () => {
       const item = itemForLocation('/admin/notARealRoute');
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(false);
     });
   });
@@ -143,21 +143,21 @@ describe('<Nav.Item />', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders', {exactMatch: true});
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(true);
     });
 
     it('does not render expanded when no exact match on url', () => {
       const item = itemForLocation('/admin/orders/1', {exactMatch: true});
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(false);
     });
 
     it('still renders expanded when there is a match on url for one of it`s children', () => {
       const item = itemForLocation('/admin/draft_orders', {exactMatch: true});
 
-      const secondary = item.find(Nav.Secondary);
+      const secondary = item.find(Secondary);
       expect(secondary.exists()).toBe(true);
     });
   });
@@ -170,8 +170,7 @@ describe('<Nav.Item />', () => {
           context: {location: 'bar'},
         },
       );
-
-      expect(item.find(Icon).exists()).toBe(true);
+      expect(item.find(Icon).prop('source')).toBe(add);
     });
 
     it('delegates label to <UnstyledLink />', () => {

@@ -57,6 +57,7 @@ export default class User extends React.PureComponent<Props, State> {
         return (
           <div className={styles.Section} key={section.id}>
             {section.items.map((item) => {
+              const icon = item.icon;
               return item.url ? (
                 <UnstyledLink
                   url={item.url}
@@ -65,9 +66,9 @@ export default class User extends React.PureComponent<Props, State> {
                   tabIndex={tabIndex}
                   onClick={this.handleClick}
                 >
-                  {item.icon && (
+                  {icon && (
                     <span className={styles.Icon}>
-                      <Icon source={item.icon} />
+                      <Icon source={icon} />
                     </span>
                   )}
                   {item.content}

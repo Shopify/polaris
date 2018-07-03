@@ -8,17 +8,15 @@ import {contextTypes} from '../../types';
 
 import {ellipsis} from '../../../../icons';
 
-import Nav from '../../Nav';
-import {Props as ItemProps} from '../Item';
+import Item, {Props as ItemProps} from '../Item';
 
 import * as styles from './Section.scss';
-
-type Item = ItemProps;
+import * as itemStyles from '../Item/Item.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
 export interface Props {
-  items: Item[];
+  items: ItemProps[];
   icon?: IconProps['source'];
   title?: string;
   fill?: boolean;
@@ -78,7 +76,7 @@ export default class Section extends React.Component<Props, State> {
 
     const sectionHeadingMarkup = title && (
       <li className={styles.SectionHeading}>
-        <span className={styles.Text}>{title}</span>
+        <span className={itemStyles.Text}>{title}</span>
         {actionMarkup}
       </li>
     );
@@ -87,7 +85,7 @@ export default class Section extends React.Component<Props, State> {
       const {onClick, label, ...rest} = item;
 
       return (
-        <Nav.Item
+        <Item
           {...rest}
           key={label}
           label={label}
@@ -96,25 +94,31 @@ export default class Section extends React.Component<Props, State> {
       );
     });
 
+    const toggleClassName = classNames(
+      itemStyles.Item,
+      itemStyles.RollupToggle,
+    );
+    const ariaLabel = rollup && (expanded ? rollup.hide : rollup.view);
+
     const toggleRollup = rollup &&
       items.length > rollup.after && (
-        <div className={styles.ListItem} key="List Item">
+        <div className={itemStyles.ListItem} key="List Item">
           <button
             type="button"
-            className={classNames(styles.Item, styles.RollupToggle)}
+            className={toggleClassName}
             onClick={this.toggleViewAll}
-            aria-label={expanded ? rollup.hide : rollup.view}
+            aria-label={ariaLabel}
             testID="ToggleViewAll"
           >
-            <span className={styles.Icon}>
+            <span className={itemStyles.Icon}>
               <Icon source={ellipsis} />
             </span>
-            {expanded ? rollup.hide : rollup.view}
+            {ariaLabel}
           </button>
         </div>
       );
 
-    const activeItemIndex = items.findIndex((item: Item) => {
+    const activeItemIndex = items.findIndex((item: ItemProps) => {
       if (!rollup) {
         return false;
       }
@@ -152,7 +156,7 @@ export default class Section extends React.Component<Props, State> {
       additionalItems.length > 0 && (
         <li className={styles.RollupSection}>
           <Collapsible id={additionalItemsId} open={expanded}>
-            <ul className={styles.List}>{additionalItems}</ul>
+            <ul className={itemStyles.List}>{additionalItems}</ul>
           </Collapsible>
           {toggleRollup}
         </li>
@@ -168,7 +172,7 @@ export default class Section extends React.Component<Props, State> {
   }
 
   @memoize()
-  private handleClick(onClick: Item['onClick']) {
+  private handleClick(onClick: ItemProps['onClick']) {
     return () => {
       if (onClick) {
         onClick();
