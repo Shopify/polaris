@@ -6,6 +6,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## 2.3.0 - 2018-07-03
 
+### New components
+
+#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+
+Use Option list to present a group of selectable items outside of the context of a form.
+
 ### Documentation
 
 - Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
@@ -35,9 +41,9 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### New components
 
-#### [Option list](https://polaris.shopify.com/components/option-list)
+#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
 
-Use Option list to present a group of selectable items outside of the context of a form.
+Use range slider to select a number value between a min and max range.
 
 ### Enhancements
 
