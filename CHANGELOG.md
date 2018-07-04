@@ -12,6 +12,18 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 Use Option list to present a group of selectable items outside of the context of a form.
 
+### Bug fixes
+
+- Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights ([#1619](https://github.com/Shopify/polaris-react/pull/1619)) (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
+
+## 2.3.0 - 2018-07-03
+
+### New components
+
+#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+
+Use Option list to present a group of selectable items outside of the context of a form.
+
 ### Documentation
 
 - Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
