@@ -11,7 +11,6 @@ import {ellipsis} from '../../../../icons';
 import Item, {Props as ItemProps} from '../Item';
 
 import * as styles from './Section.scss';
-import * as itemStyles from '../Item/Item.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
@@ -76,7 +75,7 @@ export default class Section extends React.Component<Props, State> {
 
     const sectionHeadingMarkup = title && (
       <li className={styles.SectionHeading}>
-        <span className={itemStyles.Text}>{title}</span>
+        <span className={styles.Text}>{title}</span>
         {actionMarkup}
       </li>
     );
@@ -94,15 +93,12 @@ export default class Section extends React.Component<Props, State> {
       );
     });
 
-    const toggleClassName = classNames(
-      itemStyles.Item,
-      itemStyles.RollupToggle,
-    );
+    const toggleClassName = classNames(styles.Item, styles.RollupToggle);
     const ariaLabel = rollup && (expanded ? rollup.hide : rollup.view);
 
     const toggleRollup = rollup &&
       items.length > rollup.after && (
-        <div className={itemStyles.ListItem} key="List Item">
+        <div className={styles.ListItem} key="List Item">
           <button
             type="button"
             className={toggleClassName}
@@ -110,7 +106,7 @@ export default class Section extends React.Component<Props, State> {
             aria-label={ariaLabel}
             testID="ToggleViewAll"
           >
-            <span className={itemStyles.Icon}>
+            <span className={styles.Icon}>
               <Icon source={ellipsis} />
             </span>
             {ariaLabel}
@@ -156,7 +152,7 @@ export default class Section extends React.Component<Props, State> {
       additionalItems.length > 0 && (
         <li className={styles.RollupSection}>
           <Collapsible id={additionalItemsId} open={expanded}>
-            <ul className={itemStyles.List}>{additionalItems}</ul>
+            <ul className={styles.List}>{additionalItems}</ul>
           </Collapsible>
           {toggleRollup}
         </li>

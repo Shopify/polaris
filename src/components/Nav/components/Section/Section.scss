@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .Section {
   @include unstyled-list;
   flex: 0 0 auto;
@@ -64,4 +66,24 @@
   &:focus {
     outline: none;
   }
+}
+
+.List {
+  @include unstyled-list;
+}
+
+.Item {
+  @include nav-item-attributes;
+}
+
+.Icon {
+  @include nav-item-icon-attributes;
+}
+
+.ListItem {
+  @include nav-listitem-attributes;
+}
+
+.Text {
+  @include nav-item-text-attributes;
 }
