@@ -4,13 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## 2.3.0 - 2018-07-03
-
-### New components
-
-#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
-
-Use Option list to present a group of selectable items outside of the context of a form.
+## Unreleased
 
 ### Bug fixes
 
