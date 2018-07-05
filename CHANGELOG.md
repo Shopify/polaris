@@ -20,6 +20,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 
 - Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights ([#1619](https://github.com/Shopify/polaris-react/pull/1619)) (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
+- Fixed DatePicker month styling for previous years ([#1657](https://github.com/Shopify/polaris-react/pull/1658))
 
 ## 2.3.0 - 2018-07-03
 
