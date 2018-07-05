@@ -4,14 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- Unreleased -->
 
-### Bug fixes
-
-- Resolve issue with RangeSlider not accepting `0` as a `max` value ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
-- Slightly reduce RangeSlider's `prefix/suffix` spacing ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
-
-## 2.3.0 - 2018-07-03
+## 2.3.1 - 2018-07-05
 
 ### Enhancements
 
@@ -19,6 +14,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+- Resolve issue with RangeSlider not accepting `0` as a `max` value ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+- Slightly reduce RangeSlider's `prefix/suffix` spacing ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
 - Fixed spacing for prefix and suffix on the text field component ([#1698](https://github.com/Shopify/polaris-react/pull/1698))
 - Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights ([#1619](https://github.com/Shopify/polaris-react/pull/1619)) (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
 - Fixed DatePicker month styling for previous years ([#1657](https://github.com/Shopify/polaris-react/pull/1658))
