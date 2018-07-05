@@ -10,11 +10,12 @@ import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
   WithAppProviderProps,
+  CreatePolarisContext,
 } from '../types';
 
 import Intl from '../Intl';
 import Link from '../Link';
-import {Props as AppProviderProps, Context} from '../AppProvider';
+import {Context} from '../AppProvider';
 import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
 
@@ -156,7 +157,7 @@ export function createPolarisContext({
   forceRedirect,
   debug,
   stickyManager,
-}: AppProviderProps = {}) {
+}: CreatePolarisContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const easdk =
