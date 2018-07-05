@@ -6,6 +6,13 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Bug fixes
+
+- Resolve issue with RangeSlider not accepting `0` as a `max` value ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+- Slightly reduce RangeSlider's `prefix/suffix` spacing ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+
+## 2.3.0 - 2018-07-03
+
 ### Enhancements
 
 - Removed the min-width of 320px from Resource list ([#1599](https://github.com/Shopify/polaris-react/pull/1599))
