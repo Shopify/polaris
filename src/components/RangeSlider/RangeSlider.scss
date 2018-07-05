@@ -39,12 +39,12 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
 .Prefix {
   flex: 0 0 auto;
-  margin-right: spacing();
+  margin-right: spacing(tight);
 }
 
 .Suffix {
   flex: 0 0 auto;
-  margin-left: spacing();
+  margin-left: spacing(tight);
 }
 
 .Input {

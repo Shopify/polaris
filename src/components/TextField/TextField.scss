@@ -148,7 +148,7 @@ $stacking-order: (
   position: relative;
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
-  margin-right: $addon-horizontal-spacing;
+  margin: 0 $addon-horizontal-spacing 0 $backdrop-horizontal-spacing;
   color: currentColor;
   pointer-events: none;
 }
@@ -157,7 +157,7 @@ $stacking-order: (
   position: relative;
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
-  margin-left: $addon-horizontal-spacing;
+  margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
   color: currentColor;
   pointer-events: none;
 }

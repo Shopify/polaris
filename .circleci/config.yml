@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  check:
     docker:
       - image: circleci/node:8.11.2
     steps:
@@ -16,3 +16,25 @@ jobs:
            - node_modules
       - run: yarn run check:ci
       - run: yarn run build-shrink-ray
+  percy:
+    docker:
+      - image: circleci/node:8.11.2-browsers
+    steps:
+      - checkout
+      - restore_cache:
+         # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
+         # When these files are changed, this key will fail and a clean install will happen.
+         key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+      - run: yarn
+      - save_cache:
+         key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+         paths:
+           - node_modules
+      - run: yarn run start:vrt & sleep 60; yarn run test:percy
+
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - check
+      - percy

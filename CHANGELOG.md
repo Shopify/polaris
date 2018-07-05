@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
+<!-- Unreleased -->
+
+## 2.3.1 - 2018-07-05
+
+### Enhancements
+
+- Removed the min-width of 320px from Resource list
+
+### Bug fixes
+
+- Resolve issue with RangeSlider not accepting `0` as a `max` value
+- Slightly reduce RangeSlider's `prefix/suffix` spacing
+- Fixed spacing for prefix and suffix on the text field component
+- Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
+- Fixed DatePicker month styling for previous years
+
 ## 2.3.0 - 2018-07-03
 
 ### New components
