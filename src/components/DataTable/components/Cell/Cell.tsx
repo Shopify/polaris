@@ -70,13 +70,10 @@ function Cell({
 
   const iconClassName = classNames(sortable && styles['Heading-sortable']);
 
-  // TODO work out a better way for fix this lint violation
   const presentationalMarkup = header ? (
-    // eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
-    <th aria-hidden role="presentation" className={className} style={style} />
+    <th aria-hidden className={className} style={style} />
   ) : (
-    // eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
-    <td aria-hidden role="presentation" className={className} style={style} />
+    <td aria-hidden className={className} style={style} />
   );
 
   let sortedIconMarkup = null;
@@ -127,7 +124,7 @@ function Cell({
         'aria-label': sortAccessibilityLabel,
         tabIndex: 0,
       }
-    : {'aria-disabled': true};
+    : undefined;
 
   const headingMarkup = header ? (
     <th className={className} scope="col" style={style} {...sortProps}>
