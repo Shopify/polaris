@@ -8,7 +8,6 @@ export interface FrameManager {
   removeContextualSaveBar(): void;
   startLoading(): void;
   stopLoading(): void;
-  resetLoading(): void;
 }
 
 export interface FrameContext {

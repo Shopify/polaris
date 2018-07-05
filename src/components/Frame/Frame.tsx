@@ -61,7 +61,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         showToast: this.showToast,
         hideToast: this.hideToast,
         startLoading: this.startLoading,
-        resetLoading: this.resetLoading,
         stopLoading: this.stopLoading,
         setContextualSaveBar: this.setContextualSaveBar,
         removeContextualSaveBar: this.removeContextualSaveBar,
@@ -283,11 +282,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     this.setState(({loadingStack}: State) => ({
       loadingStack: Math.max(0, loadingStack - 1),
     }));
-  }
-
-  @autobind
-  private resetLoading() {
-    this.setState({loadingStack: 0});
   }
 
   @autobind
