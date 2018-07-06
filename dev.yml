@@ -15,8 +15,8 @@ commands:
   # common commands, so let’s have them in here.
   # For a list of Common Commands in Projects, check out:
   # https://github.com/Shopify/dev/wiki/Common-Commands-in-Projects
-  build: yarn build
-  server: yarn dev
-  style: yarn lint
-  test: yarn test
-  type-check: yarn ts
+  build: yarn run build
+  server: yarn run dev
+  style: yarn run lint
+  test: yarn run test
+  type-check: yarn run ts

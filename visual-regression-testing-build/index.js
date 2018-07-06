@@ -5,13 +5,14 @@ require('babel-register')({
 });
 const webpack = require('webpack');
 const express = require('express');
+const argv = require('yargs').argv;
 
 const config = require('./webpack.config.js');
 const render = require('./render.tsx').default;
 const readMarkDownFiles = require('./parseMarkdown.js').default;
 
-const compiler = webpack(config);
 const app = express();
+const port = process.env.PORT || 3000;
 
 const codeExampleTuples = readMarkDownFiles();
 const codeExamples = {};
@@ -26,18 +27,20 @@ function appMiddleware(req, res, next) {
   next();
 }
 
-const buildPromise = new Promise((resolve) => {
-  compiler.watch({}, (err) => {
-    if (err) {
-      console.log(err);
-    }
-    resolve();
+if (argv.watch) {
+  const buildPromise = new Promise((resolve) => {
+    webpack(config).watch({}, (err) => {
+      if (err) {
+        console.log(err);
+      }
+      resolve();
+    });
+  }).then(() => {
+    console.log('✅ Component examples build complete');
   });
-}).then(() => {
-  console.log('✅ Component examples build complete');
-});
 
-app.use((req, res, next) => buildPromise.then(next, next));
+  app.use((req, res, next) => buildPromise.then(next, next));
+}
 
 app.use(
   '/assets/',
@@ -48,7 +51,9 @@ app.use(
 
 app.use('*', appMiddleware);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('Example app running on http://localhost:3000');
-  console.log('⏳ Building code examples from component README files…');
+  if (argv.watch) {
+    console.log('⏳ Building code examples from component README files…');
+  }
 });

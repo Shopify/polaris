@@ -30,7 +30,8 @@ jobs:
          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
          paths:
            - node_modules
-      - run: yarn run start:vrt & sleep 60; yarn run test:percy
+      - run: yarn run heroku-postbuild
+      - run: yarn start & sleep 20; yarn run test:percy
 
 workflows:
   version: 2

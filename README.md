@@ -46,14 +46,14 @@ Also, when running `yarn install` (which often happens as part of `dev up`), cop
 
 1.  Build and start the component examples server:
     ```
-    yarn start:vrt
+    yarn run start:vrt
     ```
 2.  In a separate terminal session, run:
     ```
     PERCY_TOKEN=aaaabbbbcccc \
     PERCY_PROJECT=Shopify/polaris-react \
     PERCY_BRANCH=local \
-    yarn test:percy
+    yarn run test:percy
     ```
     Where `aaaabbbbcccc` is the API key available in the
     [Percy project settings page for polaris-react](https://percy.io/Shopify/polaris-react/settings).

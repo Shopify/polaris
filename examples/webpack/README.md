@@ -49,13 +49,13 @@ You can bundle up your application using the preconfigured webpack build.
 **With Yarn**
 
 ```bash
-yarn build
+yarn run build
 ```
 
 **With npm**
 
 ```bash
-npm build
+npm run build
 ```
 
 This generates a `build` directory containing `index.html` and `bundle.js`. The index loads all Polaris styles via the Polaris CDN and the application scripts via `bundle.js`
