@@ -31,6 +31,14 @@ describe('<Toast />', () => {
     const {id} = frame.showToast.mock.calls[0][0];
     expect(frame.hideToast).toHaveBeenCalledWith({id});
   });
+
+  it('shows easdk flash notice content on mount', () => {
+    const content = 'Message sent';
+    const {easdk} = mountWithEasdk(
+      <Toast content={content} onDismiss={noop} />,
+    );
+    expect(easdk.showFlashNotice).toHaveBeenCalledWith(content);
+  });
 });
 
 function mountWithContext(element: React.ReactElement<any>) {
@@ -41,4 +49,14 @@ function mountWithContext(element: React.ReactElement<any>) {
   });
 
   return {toast, frame};
+}
+
+function mountWithEasdk(element: React.ReactElement<any>) {
+  const easdk = {showFlashNotice: jest.fn()};
+  const toast = mountWithAppProvider(element, {
+    context: {frame: {}, easdk},
+    childContextTypes: {frame: PropTypes.any},
+  });
+
+  return {toast, easdk};
 }
