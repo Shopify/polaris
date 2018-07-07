@@ -112,11 +112,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       setTimeout(() => {
         this.handleResize();
       }, 10);
-    }
-  }
-
-  componentDidUpdate(prevProps: CombinedProps) {
-    if (!this.props.truncate && prevProps.truncate) {
+    } else {
       this.handleResize();
     }
   }

@@ -50,7 +50,7 @@ Use React components in most cases, especially if you’re building a highly int
 - Include the CSS in your HTML to implement:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{VERSION}}/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{POLARIS_VERSION}}/polaris.min.css" />
 ```
 
 - Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
@@ -68,7 +68,7 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{VERSION}}/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{POLARIS_VERSION}}/polaris.min.css" />
 ```
 
 First, import the component into your project:
@@ -98,7 +98,7 @@ ReactDOM.render(app, domContainerNode);
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{VERSION}}/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{POLARIS_VERSION}}/polaris.min.css" />
 ```
 
 Add the appropriate classes to your HTML elements:
@@ -125,7 +125,7 @@ The embedded section includes
 
 ### Embedded apps
 
-In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-redirect-path). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the [`<AppProvider />`](/components/structure/app-provider) component:
+In addition to the visual components provided as part of Polaris, we provide React wrappers around Shopify’s [Embedded App SDK (EASDK)](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods). When using Polaris, you don’t need to go through the initialization of the EASDK as described [in the docs](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/initialization). Instead, configure the connection to the Admin through the [`<AppProvider />`](/components/structure/app-provider) component:
 
 ```jsx
 import React from 'react';

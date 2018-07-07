@@ -1,5 +1,7 @@
 const execSync = require('child_process').execSync;
 const fs = require('fs-extra');
+const glob = require('glob');
+const packageJSON = require('../package.json');
 
 describe('build', () => {
   beforeAll(() => {
@@ -75,6 +77,41 @@ describe('build', () => {
   it('generates the necessary typescript definition files', () => {
     expect(fs.existsSync('./types/index.d.ts')).toBe(true);
     expect(fs.existsSync('./embedded.d.ts')).toBe(true);
+  });
+
+  it('replaces all occurrences of POLARIS_VERSION', async () => {
+    const files = glob.sync('./build/**/*.{js,scss,css}');
+    const total = files.reduce((acc, file) => {
+      const contents = fs.readFileSync(file, 'utf-8');
+      return acc + Number(contents.includes('POLARIS_VERSION'));
+    }, 0);
+    expect(total).toBe(0);
+  });
+
+  it('features the version of Polaris in all compiled files', async () => {
+    const files = glob.sync('./build/**/*.{js,scss,css}');
+    const total = files.reduce((acc, file) => {
+      const contents = fs.readFileSync(file, 'utf-8');
+      return acc + Number(contents.includes(packageJSON.version));
+    }, 0);
+    expect(total).toBe(6);
+  });
+
+  it('features the version of Polaris in those specific files', async () => {
+    const globFiles = [
+      'embedded.js',
+      'polaris.css',
+      'polaris.es.js',
+      'polaris.js',
+      'polaris.min.css',
+      'sass/styles/global/elements.scss',
+    ].join(',');
+    const files = glob.sync(`./build/{${globFiles}}`);
+    const total = files.reduce((acc, file) => {
+      const contents = fs.readFileSync(file, 'utf-8');
+      return acc + Number(contents.includes(packageJSON.version));
+    }, 0);
+    expect(total).toBe(6);
   });
 
   describe('esnext', () => {

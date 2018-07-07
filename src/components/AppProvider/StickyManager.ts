@@ -1,18 +1,24 @@
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {getRectForNode} from '@shopify/javascript-utilities/geometry';
+import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import throttle from 'lodash-decorators/throttle';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
+import tokens from '@shopify/polaris-tokens';
+import {stackedContent} from '../../utilities/breakpoints';
 
 export interface StickyItem {
   /** Node of the sticky element */
   stickyNode: HTMLElement;
   /** Placeholder element */
   placeHolderNode: HTMLElement;
-  /** Bounding element */
+  /** Element outlining the fixed position boundaries */
   boundingElement: HTMLElement | null;
+  /** Offset vertical spacing from the top of the scrollable container */
+  offset: boolean;
+  /** Should the element remain in a fixed position when the layout is stacked (smaller screens)  */
+  disableWhenStacked: boolean;
   /** Method to handle positioning */
   handlePositioning(
     stick: boolean,
@@ -48,6 +54,7 @@ export default class StickyManager {
     this.container = el;
     addEventListener(this.container, 'scroll', this.handleScroll);
     addEventListener(window, 'resize', this.handleResize);
+    this.manageStickyItems();
   }
 
   removeScrollListener() {
@@ -102,35 +109,50 @@ export default class StickyManager {
     left: number;
     width: string | number;
   } {
-    const {stickyNode, placeHolderNode, boundingElement} = stickyItem;
-    const stickyOffset = this.getOffset(stickyNode);
+    const {
+      stickyNode,
+      placeHolderNode,
+      boundingElement,
+      offset,
+      disableWhenStacked,
+    } = stickyItem;
+
+    if (disableWhenStacked && stackedContent().matches) {
+      return {
+        sticky: false,
+        top: 0,
+        left: 0,
+        width: 'auto',
+      };
+    }
+
+    const stickyOffset = offset
+      ? this.getOffset(stickyNode) + parseInt(tokens.spacingLoose, 10)
+      : this.getOffset(stickyNode);
+
     const scrollPosition = scrollTop + stickyOffset;
     const placeHolderNodeCurrentTop =
       placeHolderNode.getBoundingClientRect().top - containerTop + scrollTop;
     const top = containerTop + stickyOffset;
+    const width = placeHolderNode.getBoundingClientRect().width;
+    const left = placeHolderNode.getBoundingClientRect().left;
+
+    let sticky: boolean;
 
     if (boundingElement == null) {
-      return {
-        sticky: scrollPosition >= placeHolderNodeCurrentTop,
-        top,
-        left: 0,
-        width: '100%',
-      };
+      sticky = scrollPosition >= placeHolderNodeCurrentTop;
+    } else {
+      const stickyItemHeight = stickyNode.getBoundingClientRect().height;
+      const stickyItemBottomPosition =
+        boundingElement.getBoundingClientRect().bottom -
+        stickyItemHeight +
+        scrollTop -
+        containerTop;
+
+      sticky =
+        scrollPosition >= placeHolderNodeCurrentTop &&
+        scrollPosition < stickyItemBottomPosition;
     }
-
-    const stickyItemHeight = stickyNode.getBoundingClientRect().height;
-    const stickyItemBottomPosition =
-      boundingElement.getBoundingClientRect().bottom -
-      stickyItemHeight +
-      scrollTop -
-      containerTop;
-
-    const sticky =
-      scrollPosition >= placeHolderNodeCurrentTop &&
-      scrollPosition < stickyItemBottomPosition;
-
-    const left = boundingElement.getBoundingClientRect().left;
-    const width = boundingElement.getBoundingClientRect().width;
 
     return {
       sticky,
@@ -169,11 +191,15 @@ export default class StickyManager {
     let offset = 0;
     let count = 0;
     const stuckNodesLength = this.stuckItems.length;
+    const nodeRect = getRectForNode(node);
 
     while (count < stuckNodesLength) {
       const stuckNode = this.stuckItems[count].stickyNode;
       if (stuckNode !== node) {
-        offset += getRectForNode(stuckNode).height;
+        const stuckNodeRect = getRectForNode(stuckNode);
+        if (!horizontallyOverlaps(nodeRect, stuckNodeRect)) {
+          offset += getRectForNode(stuckNode).height;
+        }
       } else {
         break;
       }
@@ -200,4 +226,13 @@ function scrollTopFor(container: HTMLElement | Document) {
   return isDocument(container)
     ? document.body.scrollTop || document.documentElement.scrollTop
     : container.scrollTop;
+}
+
+function horizontallyOverlaps(rect1: Rect, rect2: Rect) {
+  const rect1Left = rect1.left;
+  const rect1Right = rect1.left + rect1.width;
+  const rect2Left = rect2.left;
+  const rect2Right = rect2.left + rect2.width;
+
+  return rect2Right < rect1Left || rect1Right < rect2Left;
 }

@@ -83,11 +83,11 @@ If the menu items in a popover menu include a series of actions, each item shoul
 
 #### Do
 
-Add menu item
+- Add menu item
 
 #### Don’t
 
-Add a menu item
+- Add a menu item
 
 <!-- end -->
 

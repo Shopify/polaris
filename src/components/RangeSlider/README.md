@@ -61,11 +61,11 @@ to provide optional information, mark the field optional by placing the text “
 
 #### Do
 
-Banner width (optional)
+- Banner width (optional)
 
 #### Don’t
 
-Banner width
+- Banner width
 
 <!-- end -->
 
@@ -77,11 +77,11 @@ Help text provides extra guidance or instruction to people filling out a form fi
 
 #### Do
 
-Video duration is calculated in seconds
+- Video duration is calculated in seconds
 
 #### Don’t
 
-Example: 134 seconds
+- Example: 134 seconds
 
 <!-- end -->
 
@@ -97,11 +97,11 @@ Error messages should:
 
 #### Do
 
-Video duration is required
+- Video duration is required
 
 #### Don’t
 
-You didn’t enter a duration
+- You didn’t enter a duration
 
 <!-- end -->
 
@@ -159,6 +159,43 @@ class RangeSliderExample extends React.Component {
           step={5}
           value={this.state.value}
           onChange={this.handleChange}
+        />
+      </Card>
+    );
+  }
+}
+```
+
+### Prefix and suffix elements
+
+Because a range slider can also output a `label` and `helpText`, the height of the overall component can vary. `prefix` and `suffix` props allow you to pass in a React element to be placed before or after the rendered `input`, allowing for perfect vertical alignment and easier stylistic control.
+
+```jsx
+class RangeSliderExample extends React.Component {
+  state = {
+    value: 100,
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  render() {
+    const suffixStyles = {
+      minWidth: '24px',
+      textAlign: 'right',
+    };
+
+    return (
+      <Card sectioned>
+        <RangeSlider
+          label="Hue color mix"
+          min={0}
+          max={360}
+          value={this.state.value}
+          onChange={this.handleChange}
+          prefix={<p>Hue</p>}
+          suffix={<p style={suffixStyles}>{this.state.value}</p>}
         />
       </Card>
     );

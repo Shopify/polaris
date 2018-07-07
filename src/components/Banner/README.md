@@ -6,7 +6,7 @@ keywords:
   - update
   - changes
   - conditions
-  - dismissable banners
+  - dismissible banners
   - banner with footer call-to-action
   - banner with footer button
   - banner with button
@@ -88,6 +88,7 @@ Have a look at this
     periods, commas, or semicolons
   - Where possible, avoid articles (the, a, an) to keep content short and
     actionable
+  - Avoid unnecessary terms, for example don’t use “successfully” in banners that confirm an action
 
 - Informative:
   - Label the type of information in the body content

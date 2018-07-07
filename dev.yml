@@ -6,13 +6,17 @@ up:
   - git_hooks:
       pre-commit: pre-commit
 
+open:
+  app: http://localhost:8080/
+  shipit: https://shipit.shopify.io/shopify/polaris-react/production
+
 commands:
   # People new to the project might be tempted to run some
   # common commands, so let’s have them in here.
   # For a list of Common Commands in Projects, check out:
   # https://github.com/Shopify/dev/wiki/Common-Commands-in-Projects
-  build: yarn build
-  server: yarn dev
-  style: yarn lint
-  test: yarn test
-  type-check: yarn ts
+  build: yarn run build
+  server: yarn run dev
+  style: yarn run lint
+  test: yarn run test
+  type-check: yarn run ts

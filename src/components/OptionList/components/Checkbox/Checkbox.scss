@@ -1,0 +1,58 @@
+.Checkbox {
+  position: relative;
+  width: 100%;
+}
+
+.Input {
+  @include visually-hidden;
+
+  &:focus,
+  &:active,
+  &:checked {
+    + .Backdrop {
+      background: color('indigo');
+    }
+  }
+
+  &:checked {
+    ~ .Icon {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:focus,
+  &:active {
+    + .Backdrop {
+      @include control-backdrop(focused);
+    }
+  }
+
+  &:disabled {
+    + .Backdrop {
+      @include control-backdrop(disabled);
+    }
+
+    ~ .Icon {
+      @include recolor-icon(color('ink', 'lightest'));
+    }
+  }
+}
+
+.Backdrop {
+  @include control-backdrop;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.Icon {
+  @include recolor-icon(color('indigo'));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: 50% 50%;
+  transition: control-icon-transition();
+}

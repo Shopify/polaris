@@ -2358,8 +2358,8 @@ Based on merchant research and following the best practices and content guidelin
 | Money spent            | is greater than | _TextField_                                                                              |
 | Number of orders       | is greater than | _TextField_                                                                              |
 | Order date             | is              | In the last week<br/>In the last month<br/>In the last three months<br/>In the last year |
-| Is an email subscriber |                 | Yes<br/>No                                                                               |
-| Tagged with            |                 | _Textfield_                                                                              |
+| Is an email subscriber | &nbsp;          | Yes<br/>No                                                                               |
+| Tagged with            | &nbsp;          | _Textfield_                                                                              |
 | Located in             | country         | _Textfield_                                                                              |
 
 <a name="study-filtering-building"></a>

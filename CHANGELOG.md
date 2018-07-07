@@ -4,11 +4,54 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- Unreleased -->
+
+## 2.3.1 - 2018-07-05
+
+### Enhancements
+
+- Removed the min-width of 320px from Resource list ([#1599](https://github.com/Shopify/polaris-react/pull/1599))
+
+### Bug fixes
+
+- Resolve issue with RangeSlider not accepting `0` as a `max` value ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+- Slightly reduce RangeSlider's `prefix/suffix` spacing ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+- Fixed spacing for prefix and suffix on the text field component ([#1698](https://github.com/Shopify/polaris-react/pull/1698))
+- Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights ([#1619](https://github.com/Shopify/polaris-react/pull/1619)) (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
+- Fixed DatePicker month styling for previous years ([#1657](https://github.com/Shopify/polaris-react/pull/1658))
+
+## 2.3.0 - 2018-07-03
+
+### New components
+
+#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+
+Use Option list to present a group of selectable items outside of the context of a form.
 
 ### Documentation
 
 - Fixed `Form` examples ([#1565](https://github.com/Shopify/polaris-react/pull/1565))
+
+### Enhancements
+
+- Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
+- Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
+- Performance: optimized avatar SVG files ([#1662](https://github.com/Shopify/polaris-react/pull/1662))
+- Updated `yarn run optimize` to add new line at the end of SVG files ([#1685](https://github.com/Shopify/polaris-react/pull/1685))
+
+### Bug fixes
+
+- Adjusted padding on text field to work with Chrome’s autofill ([#1415](https://github.com/Shopify/polaris-react/pull/1415))
+- Fixed a regression where the version of Polaris wasn’t globally available anymore ([#1555](https://github.com/Shopify/polaris-react/pull/1555))
+- Updated the interaction state visuals for ActionList ([#1585](https://github.com/Shopify/polaris-react/pull/1585))
+- Fixed z-index on resource list header with sorting options ([#1629](https://github.com/Shopify/polaris-react/pull/1629)) (thanks [@janklimo](https://github.com/janklimo) for the [original issue](https://github.com/Shopify/polaris/issues/355))
+- Fixed an issue where Radio Buttons were not focusable in Safari ([#1626](https://github.com/Shopify/polaris-react/pull/1626))
+- Fixed spacing for annotated section descriptions ([#1604](https://github.com/Shopify/polaris-react/pull/1604))
+- Fixed a bug in EASDK action transforms that prevented external urls in embedded apps from opening ([#794](https://github.com/Shopify/polaris-react/pull/794)) (thanks [@dansundy](https://github.com/dansundy) for the [original issue](https://github.com/Shopify/polaris/issues/203))
+
+### Dependency updates
+
+- Updated [`@shopify/polaris-tokens`](https://npmjs.com/package/@shopify/polaris-tokens), the single source of truth for colors
 
 ## 2.2.0 - 2018-06-12
 
@@ -28,7 +71,6 @@ Use range slider to select a number value between a min and max range.
 
 - Fixed unexpected form submission when switching tabs in a tabs component wrapped in a form ([#1542](https://github.com/Shopify/polaris-react/pull/1542))
 - Added missing `'Shopify.API.setWindowLocation'` message handler to the EASDK ([#1539](https://github.com/Shopify/polaris-react/pull/1539))
-- Fixed a bug in EASDK action transforms that prevented external urls in embedded apps from opening ([#794](https://github.com/Shopify/polaris-react/pull/794)) (thanks [@dansundy](https://github.com/dansundy) for the [original issue](https://github.com/Shopify/polaris/issues/203))
 
 ## 2.1.2 - 2018-06-06
 
@@ -652,7 +694,7 @@ Various documentation fixes.
 - Aria attributes are now on the actionable elements of `Tabs` instead of in the list items ([#347](https://github.com/Shopify/polaris-react/pull/347))
 - Exposed `Panel` as `Tabs.Panel` instead of `Tabs.panel` ([#347](https://github.com/Shopify/polaris-react/pull/347))
 - Fixed the alignment of `prefix` and `suffix` content of `TextField` (thanks [bdillon3](https://github.com/bdillon3) for the [original issue](https://github.com/Shopify/polaris/issues/60)) ([#372](https://github.com/Shopify/polaris-react/pull/372))
-- Fixed the disabled text colour in `TextField` ([#372](https://github.com/Shopify/polaris-react/pull/372))
+- Fixed the disabled text color in `TextField` ([#372](https://github.com/Shopify/polaris-react/pull/372))
 - `Checkbox`s and `RadioButton`s no longer generate invalid HTML in their labels (thanks [Ernesto](https://github.com/ernestogutierrez) for the [original issue](https://github.com/Shopify/polaris/issues/88)) ([#391](https://github.com/Shopify/polaris-react/pull/391))
 - `Tabs` no longer steals focus from contained elements (thanks [Alex](https://github.com/alexdover) for the [original issue](https://github.com/Shopify/polaris/issues/74)) ([#347](https://github.com/Shopify/polaris-react/pull/347))
 

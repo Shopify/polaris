@@ -13,3 +13,31 @@
     border: 0;
   }
 }
+
+@mixin range-track-selectors {
+  &::-ms-track {
+    @content;
+  }
+
+  &::-moz-range-track {
+    @content;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @content;
+  }
+}
+
+@mixin range-thumb-selectors {
+  &::-ms-thumb {
+    @content;
+  }
+
+  &::-moz-range-thumb {
+    @content;
+  }
+
+  &::-webkit-slider-thumb {
+    @content;
+  }
+}

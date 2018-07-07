@@ -167,7 +167,7 @@ const publicReadme = resolve(polarisPublic, 'README.md');
 writeFileSync(
   publicReadme,
   readFileSync(publicReadme, 'utf8').replace(
-    /\{\{VERSION\}\}/g,
+    /\{\{POLARIS_VERSION\}\}/g,
     packageVersion,
   ),
 );
@@ -177,7 +177,7 @@ const componentReadme = resolve(polarisPublic, './src/components/README.md');
 writeFileSync(
   componentReadme,
   readFileSync(componentReadme, 'utf8').replace(
-    /\{\{VERSION\}\}/g,
+    /\{\{POLARIS_VERSION\}\}/g,
     packageVersion,
   ),
 );

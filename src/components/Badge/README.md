@@ -5,7 +5,6 @@ keywords:
   - pills
   - status indicators
   - color-coded indicators
-  - colour-coded indicators
   - informational badge
   - success badge
   - attention badge
@@ -75,7 +74,7 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 
 Use to give a non-critical status update on a piece of information or action.
 
-```tsx
+```jsx
 <Badge>Fulfilled</Badge>
 ```
 

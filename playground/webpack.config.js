@@ -14,6 +14,7 @@ module.exports = {
   devServer: {
     // eslint-disable-next-line no-process-env
     port: process.env.PORT || 8080,
+    disableHostCheck: true,
   },
   entry: [
     'react-hot-loader/patch',

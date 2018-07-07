@@ -38,4 +38,28 @@ Also, when running `yarn install` (which often happens as part of `dev up`), cop
 
 ---
 
+## Visual regression testing
+
+[Percy](https://percy.io/) runs for every pull request using [Puppeteer](https://pptr.dev/).
+
+### Running visual regression tests locally
+
+1.  Build and start the component examples server:
+    ```
+    yarn run start:vrt
+    ```
+2.  In a separate terminal session, run:
+    ```
+    PERCY_TOKEN=aaaabbbbcccc \
+    PERCY_PROJECT=Shopify/polaris-react \
+    PERCY_BRANCH=local \
+    yarn run test:percy
+    ```
+    Where `aaaabbbbcccc` is the API key available in the
+    [Percy project settings page for polaris-react](https://percy.io/Shopify/polaris-react/settings).
+3.  Check tests results: <https://percy.io/Shopify/polaris-react> (can’t
+    view the results? [Ask for access on Slack](https://shopify.slack.com/messages/C4Y8N30KD))
+
+---
+
 See [Neutron Technical Brief: Outside Admin](https://docs.google.com/document/d/1d5ZnRvNYWB2Z7_60Rr6V8_ujXB5S2wPQ4BlqvPxeLjE/edit#heading=h.m7ed1jg4h8vu) for more details.

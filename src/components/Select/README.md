@@ -59,11 +59,11 @@ clearly indicate what is expected. Labels should be:
 
 #### Do
 
-Email address
+- Email address
 
 #### Don’t
 
-What is your email address?
+- What is your email address?
 
 <!-- end -->
 
@@ -71,11 +71,11 @@ What is your email address?
 
 #### Do
 
-Phone number
+- Phone number
 
 #### Don’t
 
-My phone number is:
+- My phone number is:
 
 <!-- end -->
 
