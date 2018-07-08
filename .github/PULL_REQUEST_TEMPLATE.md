@@ -25,7 +25,7 @@
 ### How to 🎩
 
 🖥 [Local development instructions](https://github.com/Shopify/polaris-react/blob/master/README.md#development)
-🗒 [General tophatting guidelines](https://vault.shopify.com/developers/Tophatting)
+🗒 [General tophatting guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md)
 
 <!--
   Give as much information as needed to experiment with the component
@@ -60,7 +60,6 @@ export default class Playground extends React.Component<never, State> {
 
 ### 🎩 checklist
 
-* [ ] Tested on mobile
-* [ ] Tested on multiple browsers
-* [ ] Tested for [accessibility](https://vault.shopify.com/Accessibility#implementation-best-practices)
-* [ ] Updated [CHANGELOG.md](https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md)
+* [ ] Tested on [mobile](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md#cross-browser-testing)
+* [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/intro-to-shopify/shopify-admin/supported-browsers)
+* [ ] Tested for [accessibility](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility.md#implementation-best-practices)
