@@ -6,10 +6,6 @@ about: Ask a question or report a problem with Polaris or the documentation
 # Issue summary
 
 <!--
-🚨 If you work at Shopify, post your issue on our internal repo instead of this one
--->
-
-<!--
 Write a short description of the issue here ↓
 -->
 
@@ -46,6 +42,4 @@ Tip: include an error message (in a `<details></details>` tag) if your issue is 
 
 ---
 
-⚓️ We’re not accepting pull requests at this time<br />
-🗒 We _are_ accepting issue reports and feature requests<br />
-🌟 Feature requests that we can’t get to right away will be closed. However, we track all requests and will use it to set priorities. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md) for more information.
+🌟 Feature requests that are not yet planned will be closed. We then use the issue’s [:+1: upvotes](https://help.github.com/articles/about-conversations-on-github/) to track and set priorities. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md) for more information.
