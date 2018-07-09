@@ -8,7 +8,7 @@ import {
   Button,
 } from '../../../../components';
 import Badge, {Props as BadgeProps} from '../../../Badge';
-import styles from '../User/User.scss';
+import styles from './Message.scss';
 
 export interface Props {
   title: string;

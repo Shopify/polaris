@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Icon} from '../../../../components';
 
-import * as styles from './TextField.scss';
+import * as styles from './SearchField.scss';
 
 export interface Props {
   value: string;
@@ -15,7 +15,7 @@ export interface Props {
   onBlur?(): void;
 }
 
-export default class TextField extends React.Component<Props, never> {
+export default class SearchField extends React.Component<Props, never> {
   private input: HTMLInputElement | null = null;
 
   componentDidMount() {
@@ -55,7 +55,7 @@ export default class TextField extends React.Component<Props, never> {
     );
 
     const className = classNames(
-      styles.TextField,
+      styles.SearchField,
       (focused || active) && styles.focused,
     );
 

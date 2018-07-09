@@ -2,11 +2,11 @@ import * as React from 'react';
 import {IconableAction} from '../../../../types';
 
 import {Avatar, AvatarProps} from '../../../../components';
-import {MessageProps} from '../Menu/components';
+import {Props as MessageProps} from '../Menu/components/Message';
 import {Menu} from '../../components';
-import Indicator from '../Indicator';
+import MessageIndicator from '../../../MessageIndicator';
 
-import styles from './User.scss';
+import styles from './UserMenu.scss';
 
 export interface Props {
   actions: {items: IconableAction[]}[];
@@ -19,7 +19,7 @@ export interface Props {
   onToggle(): void;
 }
 
-export default function User({
+export default function UserMenu({
   name,
   detail,
   avatar,
@@ -31,15 +31,15 @@ export default function User({
 }: Props) {
   const showIndicator = Boolean(message);
 
-  const activator = (
-    <div className={styles.User}>
-      <Indicator active={showIndicator}>
+  const activatorContentMarkup = (
+    <div className={styles.UserMenu}>
+      <MessageIndicator active={showIndicator}>
         <Avatar
           size="small"
           source={avatar}
           initials={initials && initials.replace(' ', '')}
         />
-      </Indicator>
+      </MessageIndicator>
       <span className={styles.Details}>
         <p className={styles.Name} title="altText">
           {name}
@@ -51,7 +51,7 @@ export default function User({
 
   return (
     <Menu
-      activator={activator}
+      activatorContent={activatorContentMarkup}
       open={open}
       onOpen={onToggle}
       onClose={onToggle}

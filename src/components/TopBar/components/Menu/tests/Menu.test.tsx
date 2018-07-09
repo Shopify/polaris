@@ -8,7 +8,7 @@ import Message from '../components/Message';
 
 describe('<Menu />', () => {
   const defaultProps = {
-    activator: 'Activate',
+    activatorContent: 'Activate',
     actions: [],
     onOpen: noop,
     onClose: noop,
@@ -27,7 +27,7 @@ describe('<Menu />', () => {
   it('renders the activator content', () => {
     const content = <div>Hello</div>;
     const menu = mountWithAppProvider(
-      <Menu {...defaultProps} activator={content} />,
+      <Menu {...defaultProps} activatorContent={content} />,
     );
 
     expect(menu.contains(content)).toBe(true);

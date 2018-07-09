@@ -1,10 +1,10 @@
 $indicator-size: rem(8px);
 
-.IndicatorWrapper {
+.MessageIndicatorWrapper {
   position: relative;
 }
 
-.Indicator {
+.MessageIndicator {
   position: absolute;
   z-index: 1;
   top: 0;

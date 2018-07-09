@@ -4,7 +4,7 @@
 $large-width: layout-width(primary, max) + layout-width(secondary, max) +
   spacing(tight);
 
-.User {
+.UserMenu {
   display: flex;
 
   @include safe-area-for(padding-right, spacing(tight), right);

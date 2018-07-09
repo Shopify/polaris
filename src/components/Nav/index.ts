@@ -8,5 +8,3 @@ export {
   SubNavItem,
   isNavItemActive,
 } from './components/Item';
-
-export {default as Message, Props as MessageProps} from './components/Message';

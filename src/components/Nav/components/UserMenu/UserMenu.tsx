@@ -4,10 +4,10 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 
 import {Avatar, AvatarProps, Icon, UnstyledLink} from '../../../../components';
-import Indicator from '../Indicator';
 import {IconableAction} from '../../../../types';
+import MessageIndicator from '../../../MessageIndicator';
 import Message, {Props as MessageProps} from '../Message';
-import * as styles from './User.scss';
+import * as styles from './UserMenu.scss';
 
 interface UserActionSection {
   id: string;
@@ -27,7 +27,7 @@ interface State {
   userMenuExpanded?: boolean;
 }
 
-export default class User extends React.PureComponent<Props, State> {
+export default class UserMenu extends React.PureComponent<Props, State> {
   state: State = {
     userMenuExpanded: false,
   };
@@ -44,7 +44,7 @@ export default class User extends React.PureComponent<Props, State> {
     const {userMenuExpanded} = this.state;
 
     const className = classNames(
-      styles.User,
+      styles.UserMenu,
       userMenuExpanded && styles.expanded,
     );
 
@@ -127,13 +127,13 @@ export default class User extends React.PureComponent<Props, State> {
           onMouseUp={handleMouseUp}
         >
           <span className={styles.Avatar}>
-            <Indicator active={showIndicator}>
+            <MessageIndicator active={showIndicator}>
               <Avatar
                 size="small"
                 source={avatarSource}
                 initials={avatarInitials && avatarInitials.replace(' ', '')}
               />
-            </Indicator>
+            </MessageIndicator>
           </span>
           <span className={styles.Details}>
             <span className={styles.Name}>{name}</span>

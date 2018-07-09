@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Message, MessageProps} from './components';
+import Message, {Props as MessageProps} from './components/Message';
 import {ActionList, ActionListProps, Popover} from '../../../../components';
 import styles from './Menu.scss';
 
 export interface Props {
-  activator: React.ReactNode;
+  activatorContent: React.ReactNode;
   actions: ActionListProps['sections'];
   message?: MessageProps;
   open: boolean;
@@ -13,7 +13,7 @@ export interface Props {
 }
 
 export default function Menu(props: Props) {
-  const {actions, onOpen, onClose, open, activator, message} = props;
+  const {actions, onOpen, onClose, open, activatorContent, message} = props;
 
   const badgeProps = message &&
     message.badge && {
@@ -39,7 +39,7 @@ export default function Menu(props: Props) {
     <Popover
       activator={
         <button type="button" className={styles.Activator} onClick={onOpen}>
-          {activator}
+          {activatorContent}
         </button>
       }
       active={open}

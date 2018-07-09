@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-@mixin text-field-margin($variant: base) {
+@mixin search-field-margin($variant: base) {
   margin: 0 calc(#{spacing($variant) - rem(1px)});
 }
 
@@ -14,21 +14,21 @@ $stacking-order: (
   action: 3,
 );
 
-.TextField {
+.SearchField {
   position: relative;
   display: flex;
   flex: 1 1 auto;
   align-items: center;
   border: 1px solid transparent;
 
-  @include text-field-margin;
+  @include search-field-margin;
 
   @include page-content-when-not-fully-condensed {
-    @include text-field-margin(loose);
+    @include search-field-margin(loose);
   }
 
   @include breakpoint-after($large-width) {
-    @include text-field-margin(extra-loose);
+    @include search-field-margin(extra-loose);
   }
 }
 
@@ -126,7 +126,7 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--top-bar-text-field-background);
+  background-color: var(--top-bar-search-field-background);
   will-change: background-color;
   transition: background-color duration() easing();
 }

@@ -5,7 +5,7 @@ import {camelCase} from 'change-case';
 import {menu} from '../../icons';
 import {Icon, Image, UnstyledLink} from '../../components';
 
-import {TextField, User, Search, SearchProps, Menu} from './components';
+import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 
 import * as styles from './TopBar.scss';
 
@@ -17,14 +17,14 @@ export interface LogoAction {
 }
 
 export interface Props {
-  hasNav?: boolean;
-  user?: React.ReactNode;
+  showNavToggle?: boolean;
+  userMenu?: React.ReactNode;
   secondaryMenu?: React.ReactNode;
   logoAction?: LogoAction;
   searchField?: React.ReactNode;
-  search?: React.ReactNode;
-  searchVisible?: boolean;
-  onSearchDismiss?: SearchProps['onDismiss'];
+  searchResults?: React.ReactNode;
+  searchResultsVisible?: boolean;
+  onSearchResultsDismiss?: SearchProps['onDismiss'];
   onNavToggle?(): void;
 }
 
@@ -33,8 +33,8 @@ export interface State {
 }
 
 export default class TopBar extends React.PureComponent<Props, State> {
-  static User = User;
-  static TextField = TextField;
+  static UserMenu = UserMenu;
+  static SearchField = SearchField;
   static Menu = Menu;
 
   state: State = {
@@ -43,22 +43,22 @@ export default class TopBar extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      hasNav,
-      user,
-      search,
+      showNavToggle,
+      userMenu,
+      searchResults,
       searchField,
       secondaryMenu,
-      searchVisible,
+      searchResultsVisible,
       logoAction,
       onNavToggle,
-      onSearchDismiss,
+      onSearchResultsDismiss,
     } = this.props;
 
     const {focused} = this.state;
 
     const className = classNames(styles.NavIcon, focused && styles.focused);
 
-    const navButtonMarkup = hasNav && (
+    const navButtonMarkup = showNavToggle && (
       <button
         type="button"
         className={className}
@@ -82,9 +82,9 @@ export default class TopBar extends React.PureComponent<Props, State> {
       </UnstyledLink>
     );
 
-    const searchMarkup = search && (
-      <Search visible={searchVisible} onDismiss={onSearchDismiss}>
-        {search}
+    const searchMarkup = searchResults && (
+      <Search visible={searchResultsVisible} onDismiss={onSearchResultsDismiss}>
+        {searchResults}
       </Search>
     );
 
@@ -102,7 +102,7 @@ export default class TopBar extends React.PureComponent<Props, State> {
         <div className={styles.Contents}>
           {searchField}
           {secondaryMenu}
-          {user}
+          {userMenu}
         </div>
         {searchMarkup}
       </div>

@@ -2,12 +2,12 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import TextField from '../TextField';
+import SearchField from '../SearchField';
 
 describe('<TextField />', () => {
   it('mounts', () => {
     const textField = mountWithAppProvider(
-      <TextField value="" onChange={noop} />,
+      <SearchField value="" onChange={noop} />,
     );
 
     expect(textField.exists()).toBe(true);
@@ -15,7 +15,7 @@ describe('<TextField />', () => {
 
   it('passes the placeholder prop to input', () => {
     const textField = mountWithAppProvider(
-      <TextField value="" onChange={noop} placeholder="hello polaris" />,
+      <SearchField value="" onChange={noop} placeholder="hello polaris" />,
     );
 
     expect(findInput(textField).prop('placeholder')).toBe('hello polaris');
@@ -24,7 +24,7 @@ describe('<TextField />', () => {
   describe('focused', () => {
     it('will give input focus when the focused prop is true', () => {
       const textField = mountWithAppProvider(
-        <TextField value="" onChange={noop} focused />,
+        <SearchField value="" onChange={noop} focused />,
       );
 
       expect(findInput(textField).getDOMNode()).toBe(document.activeElement);
@@ -32,7 +32,7 @@ describe('<TextField />', () => {
 
     it('will give input focus if focus has been toggled', () => {
       const textField = mountWithAppProvider(
-        <TextField value="" onChange={noop} focused={false} />,
+        <SearchField value="" onChange={noop} focused={false} />,
       );
       expect(findInput(textField).getDOMNode()).not.toBe(
         document.activeElement,
@@ -43,7 +43,7 @@ describe('<TextField />', () => {
 
     it('will blur input if focused has been toggled', () => {
       const textField = mountWithAppProvider(
-        <TextField value="" onChange={noop} focused />,
+        <SearchField value="" onChange={noop} focused />,
       );
 
       textField.setProps({value: '', onChange: noop, focused: false});
@@ -56,7 +56,7 @@ describe('<TextField />', () => {
   describe('clear content', () => {
     it('will render a cancel icon when a value is provided', () => {
       const textField = mountWithAppProvider(
-        <TextField value="hello polaris" onChange={noop} />,
+        <SearchField value="hello polaris" onChange={noop} />,
       );
 
       expect(
@@ -69,7 +69,7 @@ describe('<TextField />', () => {
     it('will call the onChange with an empty string when the cancel button is pressed', () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
-        <TextField value="hello polaris" onChange={spy} />,
+        <SearchField value="hello polaris" onChange={spy} />,
       );
 
       textField.find('button').simulate('click');
@@ -81,7 +81,7 @@ describe('<TextField />', () => {
     it('is called when the text field is blurred', () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
-        <TextField value="hello polaris" onChange={noop} onBlur={spy} />,
+        <SearchField value="hello polaris" onChange={noop} onBlur={spy} />,
       );
 
       textField.simulate('blur');
@@ -93,7 +93,7 @@ describe('<TextField />', () => {
     it('is called when the text field is focused', () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
-        <TextField value="hello polaris" onChange={noop} onFocus={spy} />,
+        <SearchField value="hello polaris" onChange={noop} onFocus={spy} />,
       );
 
       textField.simulate('focus');
@@ -105,7 +105,7 @@ describe('<TextField />', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
-        <TextField value="hello polaris" onChange={spy} />,
+        <SearchField value="hello polaris" onChange={spy} />,
       );
 
       (findInput(textField) as any).instance().value = 'hello world';
@@ -118,7 +118,7 @@ describe('<TextField />', () => {
     it("will prevent default on the 'enter' keydown", () => {
       const spy = jest.fn();
       const textField = mountWithAppProvider(
-        <TextField value="hello polaris" onChange={noop} />,
+        <SearchField value="hello polaris" onChange={noop} />,
       );
 
       findInput(textField).simulate('keydown', {

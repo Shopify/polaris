@@ -139,3 +139,18 @@ $nav-animation-variables: (
     opacity: 1;
   }
 }
+
+@mixin usermenu-section-attributes {
+  position: relative;
+  margin-top: spacing();
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: spacing(tight) * -1;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: color('sky');
+  }
+}

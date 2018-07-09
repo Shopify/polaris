@@ -1,14 +1,12 @@
 @import '../../variables';
 
 $avatar-size: rem(32px);
-$message-min-height: rem(40px);
-$message-vertical-padding: ($message-min-height - line-height(body)) / 2;
 $stacking-order: (
   userlist: 10,
   userbutton: 20,
 );
 
-.User {
+.UserMenu {
   position: relative;
   flex: 0 0 auto;
   width: 100%;
@@ -17,6 +15,10 @@ $stacking-order: (
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;
   }
+}
+
+.Section + .Section {
+  @include usermenu-section-attributes;
 }
 
 .Button {
@@ -116,21 +118,6 @@ $stacking-order: (
   }
 }
 
-.Section + .Section {
-  position: relative;
-  margin-top: spacing();
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: spacing(tight) * -1;
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: color('sky');
-  }
-}
-
 .DisclosureIcon {
   align-self: center;
   height: nav(icon-size);
@@ -139,21 +126,5 @@ $stacking-order: (
 
   .expanded & {
     transform: rotate(180deg);
-  }
-}
-
-.Message {
-  display: block;
-  width: 100%;
-  max-width: rem(325px);
-  min-height: $message-min-height;
-  padding: $message-vertical-padding spacing();
-  border-radius: 0;
-  text-align: left;
-  cursor: pointer;
-  color: color('ink', 'light');
-
-  &::-moz-focus-inner {
-    border: none;
   }
 }

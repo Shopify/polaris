@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID} from '../../../../tests/utilities';
 import TopBar from '../TopBar';
 import {Image, UnstyledLink, Card, ActionList} from '../../../components';
-import {Menu, TextField, User, Search} from '../components';
+import {Menu, SearchField, UserMenu, Search} from '../components';
 
 const search = (
   <Card>
@@ -48,7 +48,7 @@ describe('<TopBar />', () => {
   describe('compound components', () => {
     it('renders the user prop', () => {
       const user = (
-        <TopBar.User
+        <TopBar.UserMenu
           actions={actions}
           message={{
             title: 'Polaris',
@@ -63,22 +63,22 @@ describe('<TopBar />', () => {
           onToggle={noop}
         />
       );
-      const topBar = mountWithAppProvider(<TopBar user={user} />);
-      expect(topBar.find(User)).toHaveLength(1);
+      const topBar = mountWithAppProvider(<TopBar userMenu={user} />);
+      expect(topBar.find(UserMenu)).toHaveLength(1);
     });
 
     it('renders the searchField prop', () => {
       const searchField = (
-        <TopBar.TextField onChange={noop} value="" placeholder="Search" />
+        <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
       );
       const topBar = mountWithAppProvider(<TopBar searchField={searchField} />);
-      expect(topBar.find(TextField)).toHaveLength(1);
+      expect(topBar.find(SearchField)).toHaveLength(1);
     });
 
     it('renders the secondaryMenu prop', () => {
       const secondaryMenu = (
         <TopBar.Menu
-          activator="Toggle menu"
+          activatorContent="Toggle menu"
           actions={actions}
           open={false}
           onClose={noop}
@@ -94,28 +94,30 @@ describe('<TopBar />', () => {
 
   describe('nav content', () => {
     it('renders a nav button when hasNav is true', () => {
-      const topBar = mountWithAppProvider(<TopBar hasNav />);
+      const topBar = mountWithAppProvider(<TopBar showNavToggle />);
 
       expect(findByTestID(topBar, 'nav-button')).toHaveLength(1);
     });
 
     it('sets onToggleNav on the nav button', () => {
       const spy = jest.fn();
-      const topBar = mountWithAppProvider(<TopBar hasNav onNavToggle={spy} />);
+      const topBar = mountWithAppProvider(
+        <TopBar showNavToggle onNavToggle={spy} />,
+      );
 
       findByTestID(topBar, 'nav-button').simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('will set focused state to true when the nav button is focused', () => {
-      const topBar = mountWithAppProvider(<TopBar hasNav />);
+      const topBar = mountWithAppProvider(<TopBar showNavToggle />);
 
       findByTestID(topBar, 'nav-button').simulate('focus');
       expect(topBar.state('focused')).toBe(true);
     });
 
     it('will set focused state to false when the nav button is blurred', () => {
-      const topBar = mountWithAppProvider(<TopBar hasNav />);
+      const topBar = mountWithAppProvider(<TopBar showNavToggle />);
 
       findByTestID(topBar, 'nav-button').simulate('focus');
       findByTestID(topBar, 'nav-button').simulate('blur');
@@ -139,7 +141,7 @@ describe('<TopBar />', () => {
 
   describe('search content', () => {
     it('renders the search results', () => {
-      const topBar = mountWithAppProvider(<TopBar search={search} />);
+      const topBar = mountWithAppProvider(<TopBar searchResults={search} />);
 
       expect(topBar.find(Search)).toHaveLength(1);
     });
@@ -147,14 +149,14 @@ describe('<TopBar />', () => {
     it('renders the search prop', () => {
       const search = <div id="search-content">Hello</div>;
 
-      const topBar = mountWithAppProvider(<TopBar search={search} />);
+      const topBar = mountWithAppProvider(<TopBar searchResults={search} />);
 
       expect(topBar.find('#search-content')).toHaveLength(1);
     });
 
     it('passes the visible prop to search', () => {
       const topBar = mountWithAppProvider(
-        <TopBar search={search} searchVisible={false} />,
+        <TopBar searchResults={search} searchResultsVisible={false} />,
       );
 
       expect(topBar.find(Search).prop('visible')).toBe(false);
@@ -162,7 +164,7 @@ describe('<TopBar />', () => {
 
     it('passes the onSearchDismiss prop to search', () => {
       const topBar = mountWithAppProvider(
-        <TopBar search={search} onSearchDismiss={noop} />,
+        <TopBar searchResults={search} onSearchResultsDismiss={noop} />,
       );
 
       expect(topBar.find(Search).prop('onDismiss')).toBe(noop);

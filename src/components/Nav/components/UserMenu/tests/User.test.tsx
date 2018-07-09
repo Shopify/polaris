@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import User from '../User';
+import UserMenu from '../UserMenu';
 
 const actions = [
   {
@@ -38,21 +38,21 @@ const userProps = {
   avatarInitials: 'am',
 };
 
-describe('<User />', () => {
+describe('<UserMenu />', () => {
   it('mounts', () => {
-    const user = mountWithAppProvider(<User {...userProps} />);
+    const user = mountWithAppProvider(<UserMenu {...userProps} />);
 
     expect(user.exists()).toBe(true);
   });
 
   it('passes the actions prop', () => {
-    const user = mountWithAppProvider(<User {...userProps} />);
+    const user = mountWithAppProvider(<UserMenu {...userProps} />);
 
     expect(user.prop('actions')).toBe(actions);
   });
 
   it('passes the message prop', () => {
-    const user = mountWithAppProvider(<User {...userProps} />);
+    const user = mountWithAppProvider(<UserMenu {...userProps} />);
 
     expect(user.prop('message')).toBe(message);
   });

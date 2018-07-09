@@ -1,0 +1,24 @@
+@import '../../variables';
+
+$message-min-height: rem(40px);
+$message-vertical-padding: ($message-min-height - line-height(body)) / 2;
+
+.Section + .Section {
+  @include usermenu-section-attributes;
+}
+
+.Message {
+  display: block;
+  width: 100%;
+  max-width: rem(325px);
+  min-height: $message-min-height;
+  padding: $message-vertical-padding spacing();
+  border-radius: 0;
+  text-align: left;
+  cursor: pointer;
+  color: color('ink', 'light');
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+}
