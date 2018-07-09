@@ -47,6 +47,8 @@ export default class Loading extends React.Component<Props, State> {
           className={styles.Level}
           style={customStyles}
           aria-valuenow={ariaValuenow}
+          aria-valuemin={0}
+          aria-valuemax={100}
           role="progressbar"
         />
       </div>
