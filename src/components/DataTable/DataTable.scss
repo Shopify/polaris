@@ -128,36 +128,57 @@ $breakpoint: 768px;
   @include text-emphasis-normal;
   border-bottom: border(dark);
   border-top: border();
+}
 
-  &.Cell-sortable {
-    // stylelint-disable-next-line selector-max-class
+.Cell-sortable {
+  cursor: pointer;
+
+  &:hover {
     .Heading {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      transition: fill duration() easing(), color duration() easing();
-    } // stylelint-disable-next-line selector-max-class
-    .Heading-left {
-      justify-content: flex-start;
-    }
-
-    .Heading-sortable {
-      @include recolor-icon(color('indigo'));
-      opacity: 0;
-      transition: opacity duration() easing();
-    }
-
-    &:hover,
-    &:focus {
       @include recolor-icon(color('indigo'));
       color: color('indigo');
-      outline: none;
-      cursor: pointer; // stylelint-disable-next-line selector-max-class, selector-max-specificity
-      .Heading-sortable {
-        opacity: 1;
-      }
     }
+
+    .Icon {
+      opacity: 1;
+    }
+  }
+}
+
+.Icon {
+  display: flex;
+  align-self: flex-end;
+  opacity: 0;
+  transition: opacity duration() easing(), fill duration() easing();
+}
+
+.Heading {
+  @include unstyled-button;
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  transition: color duration() easing();
+
+  &:hover,
+  &:focus {
+    @include recolor-icon(color('indigo'));
+    color: color('indigo');
+
+    .Icon {
+      opacity: 1;
+    }
+  }
+}
+
+.Heading-left {
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+.Cell-sorted {
+  .Icon {
+    opacity: 1;
   }
 }
 

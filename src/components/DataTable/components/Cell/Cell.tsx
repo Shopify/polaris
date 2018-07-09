@@ -7,8 +7,6 @@ import {SortDirection} from '../../DataTable';
 
 import * as styles from '../../DataTable.scss';
 
-export type CombinedProps = Props & WithAppProviderProps;
-
 export interface Props {
   testID?: string;
   height?: number;
@@ -26,6 +24,8 @@ export interface Props {
   defaultSortDirection?: SortDirection;
   onSort?(): void;
 }
+
+export type CombinedProps = Props & WithAppProviderProps;
 
 function Cell({
   height,
@@ -57,77 +57,62 @@ function Cell({
     total && styles['Cell-total'],
     footer && styles['Cell-footer'],
     numeric && styles['Cell-numeric'],
-    sorted && styles['Cell-sorted'],
     sortable && styles['Cell-sortable'],
+    sorted && styles['Cell-sorted'],
   );
-
-  const style = height ? {height: `${height}px`} : undefined;
 
   const headerClassName = classNames(
     header && styles.Heading,
     header && contentType === 'text' && styles['Heading-left'],
   );
 
-  const iconClassName = classNames(sortable && styles['Heading-sortable']);
+  const iconClassName = classNames(sortable && styles.Icon);
+
+  const style = {
+    height: height ? `${height}px` : undefined,
+  };
 
   const presentationalMarkup = header ? (
-    <th aria-hidden className={className} style={style} />
+    <th className={className} style={style} />
   ) : (
-    <td aria-hidden className={className} style={style} />
+    <td className={className} style={style} />
   );
 
-  let sortedIconMarkup = null;
-  let sortableIconMarkup = null;
-  let sortAccessibilityLabel;
+  const direction = sorted ? sortDirection : defaultSortDirection;
+  const source = `caret${direction === 'ascending' ? 'Up' : 'Down'}`;
+  const oppositeDirection =
+    sortDirection === 'ascending' ? 'descending' : 'ascending';
 
-  if (sortable) {
-    // i18n string variable
-    sortAccessibilityLabel = translate(
-      'Polaris.DataTable.sortAccessibilityLabel',
-      {content: (content as string).toLowerCase()},
-    );
+  const sortAccessibilityLabel = translate(
+    'Polaris.DataTable.sortAccessibilityLabel',
+    {direction: sorted ? oppositeDirection : direction},
+  );
 
-    if (sorted) {
-      const direction = sortDirection === 'ascending' ? 'Up' : 'Down';
-      const source = `caret${direction}`;
-      sortedIconMarkup = <Icon source={source as IconSource} />;
-    } else {
-      const direction = defaultSortDirection === 'ascending' ? 'Up' : 'Down';
-      const source = `caret${direction}`;
-      sortableIconMarkup = <Icon source={source as IconSource} />;
-    }
-  }
+  const iconMarkup = (
+    <span className={iconClassName}>
+      <Icon
+        source={source as IconSource}
+        accessibilityLabel={sortAccessibilityLabel}
+      />
+    </span>
+  );
 
-  const sortableHeadingContent =
-    contentType === 'text' ? (
-      <span className={headerClassName}>
-        {content}
-        <span className={iconClassName}>{sortableIconMarkup}</span>
-        <span>{sortedIconMarkup}</span>
-      </span>
-    ) : (
-      <span className={headerClassName}>
-        <span className={iconClassName}>{sortableIconMarkup}</span>
-        <span>{sortedIconMarkup}</span>
-        {content}
-      </span>
-    );
+  const sortableHeadingContent = (
+    <button className={headerClassName} onClick={onSort}>
+      {iconMarkup}
+      {content}
+    </button>
+  );
 
   const columnHeadingContent = sortable ? sortableHeadingContent : content;
 
-  const sortProps = sortable
-    ? {
-        role: 'button',
-        onClick: onSort,
-        onKeyDown: onKeyDownEnter(onSort),
-        'aria-sort': sortDirection,
-        'aria-label': sortAccessibilityLabel,
-        tabIndex: 0,
-      }
-    : undefined;
-
   const headingMarkup = header ? (
-    <th className={className} scope="col" style={style} {...sortProps}>
+    <th
+      className={className}
+      scope="col"
+      aria-sort={sortDirection}
+      style={style}
+    >
       {columnHeadingContent}
     </th>
   ) : (
@@ -150,15 +135,6 @@ function Cell({
     : nonPresentationalMarkup;
 
   return cellMarkup;
-}
-
-function onKeyDownEnter(sortFunc?: () => void) {
-  return function handleKeyPress(event: React.KeyboardEvent<HTMLElement>) {
-    const {keyCode} = event;
-    if (keyCode === 13 && sortFunc !== undefined) {
-      sortFunc();
-    }
-  };
 }
 
 export default withAppProvider<Props>()(Cell);

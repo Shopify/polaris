@@ -161,7 +161,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const headingMarkup = (
       <tr>
         {insertPresentationalCell(headings).map((heading, headingIndex) => {
-          let sortableHeadingProps = {};
+          let sortableHeadingProps;
           const id = `heading-cell-${headingIndex}`;
           // we account for the presentational heading cell’s index when
           // accessing elements from arrays passed as props and when comparing
@@ -171,9 +171,8 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
           if (sortable) {
             const isSortable = sortable[index];
-            const isSorted = isSortable && sortedColumnIndex === index;
-            const direction =
-              isSorted && sortedColumnIndex === index ? sortDirection : 'none';
+            const isSorted = sortedColumnIndex === index;
+            const direction = isSorted ? sortDirection : 'none';
 
             sortableHeadingProps = {
               defaultSortDirection,
@@ -207,7 +206,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const bodyMarkup = rows.map(this.defaultRenderRow);
     const style = footerContent
       ? {marginBottom: `${heights[heights.length - 1]}px`}
-      : {};
+      : undefined;
 
     return (
       <div className={wrapperClassName}>

@@ -62,6 +62,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Fixed text field padding when a prefix or suffix is included ([#1740](https://github.com/Shopify/polaris-react/pull/1740))
 
+### Bug fixes
+
+- Fixed data table markup semantics that caused incorrect column count and content skipping in assistive technologies ([#1723](https://github.com/Shopify/polaris-react/pull/1723))
+
 ## 2.3.1 - 2018-07-05
 
 ### Enhancements
