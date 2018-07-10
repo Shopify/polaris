@@ -3,11 +3,9 @@ name: Issue
 about: Ask a question or report a problem with Polaris or the documentation
 ---
 
-# Issue summary
+<!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md -->
 
-<!--
-🚨 If you work at Shopify, post your issue on our internal repo instead of this one
--->
+# Issue summary
 
 <!--
 Write a short description of the issue here ↓
@@ -43,9 +41,3 @@ Tip: include an error message (in a `<details></details>` tag) if your issue is 
 - Browser:
 - Device:
 - Operating System:
-
----
-
-⚓️ We’re not accepting pull requests at this time<br />
-🗒 We _are_ accepting issue reports and feature requests<br />
-🌟 Feature requests that we can’t get to right away will be closed. However, we track all requests and will use it to set priorities. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md) for more information.
