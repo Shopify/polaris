@@ -3,6 +3,8 @@ name: Issue
 about: Ask a question or report a problem with Polaris or the documentation
 ---
 
+<!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md -->
+
 # Issue summary
 
 <!--
@@ -39,7 +41,3 @@ Tip: include an error message (in a `<details></details>` tag) if your issue is 
 - Browser:
 - Device:
 - Operating System:
-
----
-
-🌟 Feature requests that are not yet planned will be closed. We then use the issue’s [:+1: upvotes](https://help.github.com/articles/about-conversations-on-github/) to track and set priorities. See the [contribution guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md) for more information.
