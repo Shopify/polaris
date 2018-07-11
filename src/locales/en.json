@@ -30,6 +30,7 @@
 
     "DataTable": {
       "sortAccessibilityLabel": "sort {direction} by",
+      "navAccessibilityLabel": "Scroll table {direction} one column",
       "totalsRowHeading": "Totals"
     },
 

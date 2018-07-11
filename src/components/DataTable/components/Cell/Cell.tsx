@@ -14,7 +14,6 @@ export interface Props {
   contentType?: string;
   fixed?: boolean;
   truncate?: boolean;
-  presentational?: boolean;
   header?: boolean;
   total?: boolean;
   footer?: boolean;
@@ -33,7 +32,6 @@ function Cell({
   contentType,
   fixed,
   truncate,
-  presentational,
   header,
   total,
   footer,
@@ -52,7 +50,6 @@ function Cell({
     styles.Cell,
     fixed && styles['Cell-fixed'],
     fixed && truncate && styles['Cell-truncated'],
-    presentational && styles['Cell-presentational'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     footer && styles['Cell-footer'],
@@ -71,12 +68,6 @@ function Cell({
   const style = {
     height: height ? `${height}px` : undefined,
   };
-
-  const presentationalMarkup = header ? (
-    <th className={className} style={style} />
-  ) : (
-    <td className={className} style={style} />
-  );
 
   const direction = sorted ? sortDirection : defaultSortDirection;
   const source = `caret${direction === 'ascending' ? 'Up' : 'Down'}`;
@@ -121,7 +112,7 @@ function Cell({
     </th>
   );
 
-  const nonPresentationalMarkup =
+  const cellMarkup =
     header || fixed ? (
       headingMarkup
     ) : (
@@ -129,10 +120,6 @@ function Cell({
         {content}
       </td>
     );
-
-  const cellMarkup = presentational
-    ? presentationalMarkup
-    : nonPresentationalMarkup;
 
   return cellMarkup;
 }

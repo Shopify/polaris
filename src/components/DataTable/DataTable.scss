@@ -24,6 +24,10 @@ $breakpoint: 768px;
       justify-content: flex-end;
     }
   }
+
+  .ScrollContainer {
+    margin-left: rem($fixed-column-width);
+  }
 }
 
 .hasFooter {
@@ -51,9 +55,15 @@ $breakpoint: 768px;
   background: color('ink');
 }
 
+.ScrollContainer {
+  overflow-x: auto;
+  // account for a mysterious gap in Safari when not collapsed
+  margin-left: rem(140px);
+  -webkit-overflow-scrolling: touch;
+}
+
 .Table {
-  margin-left: $fixed-column-width * -1;
-  width: calc(100% + #{$fixed-column-width});
+  width: 100%;
   border-spacing: 0;
 
   &::after {
@@ -70,11 +80,6 @@ $breakpoint: 768px;
       rgba(color('black'), 0)
     );
   }
-}
-
-.ScrollContainer {
-  overflow-x: auto;
-  margin-left: $fixed-column-width;
 }
 
 .TableRow {
@@ -117,11 +122,6 @@ $breakpoint: 768px;
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
-}
-
-.Cell-presentational {
-  min-width: $fixed-column-width;
-  width: $fixed-column-width;
 }
 
 .Cell-header {
