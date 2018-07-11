@@ -10,6 +10,14 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0;
   will-change: opacity;
   transition: opacity duration() easing();
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid transparent;
+  }
 }
 
 .visible {
