@@ -86,6 +86,32 @@ For example:
 |------------|---------------|
 | Do this | Don’t do this |
 
+## Subcomponent name
+
+This section is only used for components with subcomponents. Include a short intro description of the subcomponent purpose and how it relates to the main component.
+
+Example for the resource list component: The content of a resource list consists of resource list items. Each item summarizes an individual resource and should link to its show page.
+
+Because the content of items depends on the type of resource and merchant tasks, resource list items are flexible.
+
+Include an image if applicable:
+> ![Aww kitty](http://placekitten.com/300/100)
+
+### Subcomponent examples
+
+{Example name} 
+One sentence describing what makes this example unique from the other examples.
+
+Example: 
+ITEM EXAMPLES
+**Simple resource list item**
+A basic resource list item with its details filled in at the point of use.
+
+Include an image if applicable:
+> ![Aww kitty](http://placekitten.com/300/100)
+
+{Props}
+
 ## Related components
 
 - To {describe how the other component works}, [use the {x} component]
