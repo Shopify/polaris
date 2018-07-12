@@ -16,6 +16,13 @@ Other formats for the second sentence:
 Example:
 >Icons are used to {visually communicate core parts of the product and available actions}. They can {act as wayfinding tools} to help merchants {more easily understand where they are in the product, and common interaction patterns that are available}.
 
+## Required components
+
+This section is optional. Use only to clarify that this component is dependent upon another component.
+
+Example:
+>The {x} component depends on the {y} component.
+
 ## Examples
 
 Description of example (clearly differentiate examples from each other):
@@ -30,13 +37,14 @@ Example for Callout card with secondary action:
 And include an image if applicable:
 > ![](http://placekitten.com/300/100)
 
-## Props - now automatically pulled in
+## Props
 
-Write good descriptions in code :)
+Prop descriptions are pulled in from comments written above the prop.
 
-## Required components (optional):
+For example:
 
-The {x} component depends on the {y} component.
+> /** Toggles whether or not the account is connected. Defaults to false. */
+> connected?: boolean;
 
 ## Best practices:
 
