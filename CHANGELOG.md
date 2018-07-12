@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- Unreleased -->
 
+## 2.4.0 - 2018-07-12
+
 ### Enhancements
 
 - Changed Form to submit a form by default when the Enter key is pressed, and added the prop `implicitSubmit` to disable this default ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
