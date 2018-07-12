@@ -40,7 +40,7 @@ And include an image if applicable:
 
 Prop descriptions are pulled in from comments written above the prop.
 
-For example:
+For example, in your component `.tsx` file:
 
 ```tsx
 export interface Props {
