@@ -17,10 +17,13 @@ Example:
 
 ## Required components
 
-This section is optional. Use only to clarify that this component is dependent upon another component.
+This section is only used for components that depend on another component. Include a link to the required component and a short explanation of how they interact.
 
 Example:
-> The {x} component depends on the {y} component.
+> The {x} component must be wrapped in the {y} component.
+
+Example:
+> The {x} component must be passed to the {y} component.
 
 ## Examples
 
@@ -99,10 +102,10 @@ Include an image if applicable:
 
 ### Subcomponent examples
 
-{Example name} 
+{Example name}
 One sentence describing what makes this example unique from the other examples.
 
-Example: 
+Example:
 ITEM EXAMPLES
 **Simple resource list item**
 A basic resource list item with its details filled in at the point of use.
