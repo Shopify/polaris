@@ -38,13 +38,27 @@ And include an image if applicable:
 
 ## Props
 
-Prop descriptions are pulled in from comments written above the prop.
+Prop descriptions are pulled in from comments written above the prop type decalaration in your component `.tsx` file.
 
-For example, in your component `.tsx` file:
+For example:
 
 ```tsx
 export interface Props {
   /** Show or hide foo */
+  showFoo: boolean;
+}
+```
+
+You can also define a default value for a prop.
+
+For example:
+
+```tsx
+export interface Props {
+  /**
+   * Show or hide foo
+   * @default false
+   */
   showFoo: boolean;
 }
 ```
