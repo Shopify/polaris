@@ -97,6 +97,10 @@ $stacking-order: (
   font-weight: inherit;
   appearance: none;
 
+  .Prefix + & {
+    padding-left: 0;
+  }
+
   &:disabled {
     background: none;
     border: border(transparent);
@@ -125,6 +129,10 @@ $stacking-order: (
       margin: 0;
     }
   }
+}
+
+.Input-suffixed {
+  padding-right: 0;
 }
 
 .Backdrop {
