@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -34,21 +34,21 @@
     "format:prettier": "prettier '**/*.md' --write",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
-    "test:ci": "yarn run test --runInBand",
-    "test:watch": "yarn run test --watch",
+    "test:ci": "yarn test --runInBand",
+    "test:watch": "yarn test --watch",
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
-    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' 'styles.{css,scss}'",
+    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './visual-regression-testing-build/.cache' './visual-regression-testing-build/assets' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize copy-polaris-tokens",
     "build": "babel-node ./scripts/build.js",
-    "build-shrink-ray": "yarn copy-polaris-tokens && node ./scripts/build-shrink-ray.js",
+    "build-shrink-ray": "yarn run copy-polaris-tokens && node ./scripts/build-shrink-ray.js",
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
-    "dev": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/ --hot --inline",
-    "start": "yarn copy-polaris-tokens && webpack-dev-server --config playground/webpack.config.js --content-base playground/",
-    "start:vrt": "node visual-regression-testing-build/index.js",
-    "test:percy": "node visual-regression-testing-build/snapshots.js",
-    "prestart:vrt": "yarn run copy-polaris-tokens"
+    "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
+    "start:vrt": "yarn run copy-polaris-tokens && node ./visual-regression-testing-build/index.js --watch",
+    "test:percy": "node ./visual-regression-testing-build/snapshots.js",
+    "start": "node ./visual-regression-testing-build/index.js",
+    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./visual-regression-testing-build/webpack.config.js --output-path ./visual-regression-testing-build/assets"
   },
   "stylelint": {
     "extends": [
@@ -180,7 +180,8 @@
     "url-loader": "^1.0.1",
     "webpack": "^3.7.1",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^2.9.3",
+    "yargs": "^12.0.1"
   },
   "peerDependencies": {
     "react": "^16.3.1",

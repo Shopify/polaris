@@ -6,6 +6,16 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- Unreleased -->
 
+## 2.4.0 - 2018-07-12
+
+### Enhancements
+
+- Changed Form to submit a form by default when the Enter key is pressed, and added the prop `implicitSubmit` to disable this default
+
+### Bug fixes
+
+- Fixed text field padding when a prefix or suffix is included
+
 ## 2.3.1 - 2018-07-05
 
 ### Enhancements
@@ -37,7 +47,7 @@ Use Option list to present a group of selectable items outside of the context of
 - Added `prefix` and `suffix` props to `RangeSlider` for better layout control
 - Added testing documentation and examples in AppProvider
 - Performance: optimized avatar SVG files
-- Updated yarn optimize to add new line at the end of SVG files
+- Updated `yarn run optimize` to add new line at the end of SVG files
 
 ### Bug fixes
 

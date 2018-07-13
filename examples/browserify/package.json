@@ -7,7 +7,7 @@
   "scripts": {
     "prebuild": "shx rm -rf build && shx mkdir build && shx cp src/index.html build",
     "build": "browserify src/index.js -o build/bundle.js",
-    "start": "yarn build && budo src/index.js:bundle.js --dir build --live --open"
+    "start": "yarn run build && budo src/index.js:bundle.js --dir build --live --open"
   },
   "dependencies": {
     "@shopify/polaris": "^2.0.0",

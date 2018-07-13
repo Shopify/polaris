@@ -224,6 +224,11 @@ export default class TextField extends React.PureComponent<Props, State> {
       labelledBy.push(`${id}Suffix`);
     }
 
+    const inputClassName = classNames(
+      styles.Input,
+      suffix && styles['Input-suffixed'],
+    );
+
     const input = React.createElement(multiline ? 'textarea' : 'input', {
       name,
       id,
@@ -236,7 +241,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       onBlur,
       style,
       autoComplete: normalizeAutoComplete(autoComplete),
-      className: styles.Input,
+      className: inputClassName,
       onChange: this.handleChange,
       ref: this.setInput,
       min,
