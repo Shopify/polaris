@@ -125,7 +125,6 @@ export class OptionList extends React.Component<CombinedProps, State> {
               const isSelected = selected.includes(option.value);
               const id =
                 option.id || `${this.id}-${sectionIndex}-${optionIndex}`;
-
               return (
                 <Option
                   {...option}

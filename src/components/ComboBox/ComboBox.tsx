@@ -1,0 +1,357 @@
+import * as React from 'react';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {autobind} from '@shopify/javascript-utilities/decorators';
+
+import TextField from './components/TextField';
+import OptionList, {OptionDescriptor} from '../OptionList';
+import Popover from '../Popover';
+import {PreferredPosition} from '../PositionedOverlay';
+import {contextTypes} from './types';
+
+const getUniqueId = createUniqueIDFactory('ComboBox');
+
+export interface State {
+  selectedOption?: OptionDescriptor | undefined;
+  selectedIndex: number;
+  selectedOptions: string[];
+  navigableOptions?: OptionDescriptor[];
+  popoverActive: boolean;
+}
+
+export interface Props {
+  /** A unique identifier for the ComboBox */
+  id?: string;
+  /** Collection of options to be listed */
+  options: OptionDescriptor[];
+  /** The selected options */
+  selected: string[];
+  /** The text field component attached to the list of options */
+  textField: React.ReactElement<any>;
+  /** Toggles whether a the options should be presented in a popover */
+  popover?: boolean;
+  /** The preferred direction to open the popover */
+  preferredPosition?: PreferredPosition;
+  /** Title of the list of options */
+  listTitle?: string;
+  /** Allow more than one option to be selected */
+  allowMultiple?: boolean;
+  /** Content to be displayed before the list of options */
+  prepend?: React.ReactNode;
+  /** Content to be displayed after the list of options */
+  append?: React.ReactNode;
+  /** Callback when the selection of options is changed */
+  onSelect(selected: string[]): void;
+}
+
+export interface Context {
+  comboBoxId: string;
+  selectedOptionId?: string;
+  subscribe(callback: () => void): void;
+  unsubscribe(callback: () => void): void;
+}
+
+export default class ComboBox extends React.PureComponent<Props, State> {
+  static TextField = TextField;
+  static OptionList = OptionList;
+  static childContextTypes = contextTypes;
+
+  state: State = {
+    selectedOption: undefined,
+    selectedIndex: -1,
+    selectedOptions: this.props.selected,
+    navigableOptions: this.props.options,
+    popoverActive: false,
+  };
+
+  private id = this.props.id || getUniqueId();
+  private subscriptions: {(): void}[] = [];
+
+  getChildContext(): Context {
+    return {
+      comboBoxId: this.id,
+      selectedOptionId: this.getSelectedOptionId(),
+      subscribe: this.subscribe,
+      unsubscribe: this.unsubscribe,
+    };
+  }
+
+  componentWillMount() {
+    const {options} = this.props;
+    this.assignOptionIds(options);
+  }
+
+  componentWillUpdate(nextProps: Props, nextState: State) {
+    const {navigableOptions} = this.state;
+    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
+
+    const optionsChanged =
+      navigableOptions &&
+      nextState.navigableOptions &&
+      !this.optionsAreEqual(navigableOptions, nextState.navigableOptions);
+
+    if (optionsChanged) {
+      this.resetVisuallySelectedOptions();
+    }
+  }
+
+  componentWillReceiveProps({
+    options: nextOptions,
+    selected: nextSelected,
+  }: Props) {
+    const {options, selected} = this.props;
+    const optionsChanged =
+      options && nextOptions && !this.optionsAreEqual(options, nextOptions);
+
+    if (optionsChanged) {
+      this.assignOptionIds(nextOptions);
+      this.setState({
+        navigableOptions: nextOptions,
+      });
+    }
+
+    if (selected !== nextSelected) {
+      this.setState({selectedOptions: nextSelected});
+    }
+  }
+
+  render() {
+    const {
+      popover,
+      textField,
+      listTitle,
+      allowMultiple,
+      preferredPosition,
+      prepend,
+      append,
+    } = this.props;
+
+    const optionsMarkup = (
+      <OptionList
+        id={this.id}
+        role="listbox"
+        optionRole="option"
+        options={this.state.navigableOptions}
+        onChange={this.selectOptions}
+        selected={this.state.selectedOptions}
+        title={listTitle}
+        allowMultiple={allowMultiple}
+      />
+    );
+
+    return popover ? (
+      <div onKeyDown={this.handleKeyDown} onClick={this.handleClick}>
+        <Popover
+          activator={textField}
+          active={this.state.popoverActive}
+          onClose={this.handlePopoverClose}
+          preferredPosition={preferredPosition}
+          fullWidth
+          preventAutofocus
+        >
+          {prepend}
+          {optionsMarkup}
+          {append}
+        </Popover>
+      </div>
+    ) : (
+      <div onKeyUp={this.handleKeyDown} onClick={this.handleClick}>
+        {textField}
+        {prepend}
+        {optionsMarkup}
+        {append}
+      </div>
+    );
+  }
+
+  @autobind
+  subscribe(callback: () => void) {
+    this.subscriptions.push(callback);
+  }
+
+  @autobind
+  unsubscribe(callback: () => void) {
+    this.subscriptions = this.subscriptions.filter(
+      (subscription) => subscription !== callback,
+    );
+  }
+
+  @autobind
+  private handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+    const {key} = event;
+
+    if (key === 'ArrowDown') {
+      this.selectNextOption();
+      event.preventDefault();
+    }
+    if (key === 'ArrowUp') {
+      event.preventDefault();
+      this.selectPreviousOption();
+    }
+    if (key === 'Enter') {
+      this.state.selectedOption &&
+        this.handleSelection(this.state.selectedOption.value);
+    }
+
+    this.openPopoverOnKeyDown(key);
+  }
+
+  @autobind
+  private handleClick() {
+    this.props.popover &&
+      !this.state.popoverActive &&
+      this.setState({popoverActive: true});
+  }
+
+  @autobind
+  private handleSelection(newSelected: string) {
+    const {selected, allowMultiple} = this.props;
+    let newlySelectedOptions = selected;
+    if (selected.includes(newSelected)) {
+      newlySelectedOptions.splice(newlySelectedOptions.indexOf(newSelected), 1);
+    } else if (allowMultiple) {
+      newlySelectedOptions.push(newSelected);
+    } else {
+      newlySelectedOptions = [newSelected];
+    }
+
+    this.selectOptions(newlySelectedOptions);
+  }
+
+  @autobind
+  private selectOptions(selected: string[]) {
+    const {onSelect, allowMultiple} = this.props;
+    selected && onSelect(selected);
+    if (!allowMultiple) {
+      this.resetVisuallySelectedOptions();
+      this.setState({popoverActive: false});
+    }
+  }
+
+  @autobind
+  private resetVisuallySelectedOptions() {
+    const {navigableOptions} = this.state;
+    this.setState({
+      selectedOption: undefined,
+      selectedIndex: -1,
+    });
+    navigableOptions &&
+      navigableOptions.forEach((option) => {
+        option.active = false;
+      });
+  }
+
+  @autobind
+  private handlePopoverClose() {
+    this.setState({popoverActive: false});
+  }
+
+  @autobind
+  private openPopoverOnKeyDown(key: string) {
+    const {popover} = this.props;
+    const {popoverActive, navigableOptions} = this.state;
+
+    popover &&
+      !popoverActive &&
+      key !== 'Escape' &&
+      navigableOptions &&
+      navigableOptions.length > 0 &&
+      this.setState({popoverActive: true});
+  }
+
+  @autobind
+  private selectNextOption() {
+    const {selectedIndex, navigableOptions} = this.state;
+
+    if (!navigableOptions || navigableOptions.length === 0) {
+      return;
+    }
+
+    let newIndex = selectedIndex;
+
+    if (selectedIndex + 1 >= navigableOptions.length) {
+      newIndex = 0;
+    } else {
+      newIndex++;
+    }
+
+    this.selectOptionAtIndex(newIndex);
+  }
+
+  @autobind
+  private selectPreviousOption() {
+    const {selectedIndex, navigableOptions} = this.state;
+
+    if (!navigableOptions || navigableOptions.length === 0) {
+      return;
+    }
+
+    let newIndex = selectedIndex;
+
+    if (selectedIndex <= 0) {
+      newIndex = navigableOptions.length - 1;
+    } else {
+      newIndex--;
+    }
+
+    this.selectOptionAtIndex(newIndex);
+  }
+
+  @autobind
+  private selectOptionAtIndex(newOptionIndex: number) {
+    const {navigableOptions} = this.state;
+    if (!navigableOptions || navigableOptions.length === 0) {
+      return;
+    }
+    const newSelectedOption = navigableOptions[newOptionIndex];
+    const oldSelectedOption = this.state.selectedOption;
+
+    this.setState({
+      selectedOption: newSelectedOption,
+      selectedIndex: newOptionIndex,
+    });
+
+    this.visuallyUpdateSelectedOption(newSelectedOption, oldSelectedOption);
+  }
+
+  @autobind
+  private visuallyUpdateSelectedOption(
+    newOption: OptionDescriptor,
+    oldOption: OptionDescriptor | undefined,
+  ) {
+    if (newOption) {
+      newOption.active = true;
+    }
+    if (oldOption) {
+      oldOption.active = false;
+    }
+  }
+
+  @autobind
+  private assignOptionIds(options: OptionDescriptor[] | undefined) {
+    if (options) {
+      options.map((option, optionIndex) => {
+        option.id = `${this.id}-${optionIndex}`;
+      });
+    }
+  }
+
+  @autobind
+  private getSelectedOptionId(): string | undefined {
+    const {selectedOption, selectedIndex} = this.state;
+    return selectedOption ? `${this.id}-${selectedIndex}` : undefined;
+  }
+
+  @autobind
+  private optionsAreEqual(
+    firstOptions: OptionDescriptor[],
+    secondOptions: OptionDescriptor[],
+  ) {
+    if (firstOptions.length !== secondOptions.length) {
+      return false;
+    }
+    return firstOptions.every((firstItem, index) => {
+      const secondItem = secondOptions[index];
+      return firstItem.value === secondItem.value;
+    });
+  }
+}

@@ -46,6 +46,17 @@ export default class Option extends React.Component<Props, State> {
     active: false,
   };
 
+  componentWillReceiveProps(nextProps: Props) {
+    if (
+      nextProps.active !== this.props.active &&
+      nextProps.active !== this.state.active
+    ) {
+      nextProps.active
+        ? this.setState({active: true})
+        : this.setState({active: false});
+    }
+  }
+
   render() {
     const {
       label,
@@ -98,11 +109,13 @@ export default class Option extends React.Component<Props, State> {
     ) : (
       <button
         type="button"
+        id={id}
         className={singleSelectClassName}
         onClick={this.handleClick}
         disabled={disabled}
         onFocus={this.toggleFocus}
         onBlur={this.toggleFocus}
+        role={role}
       >
         {mediaMarkup}
         {label}

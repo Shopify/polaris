@@ -178,7 +178,6 @@ export default class TextField extends React.PureComponent<Props, State> {
       ariaAutocomplete,
       ariaControls,
     } = this.props;
-
     const {height} = this.state;
 
     const className = classNames(
