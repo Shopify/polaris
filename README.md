@@ -46,7 +46,7 @@ Also, when running `yarn install` (which often happens as part of `dev up`), cop
 
 1.  Build and start the component examples server:
     ```
-    yarn run start:vrt
+    yarn run tophat
     ```
 2.  In a separate terminal session, run:
     ```
