@@ -14,10 +14,8 @@ $stacking-order: (
     linear-gradient(45deg, transparent 75%, color('sky') 75%),
     linear-gradient(-45deg, transparent 75%, color('sky') 75%);
   background-size: spacing() spacing();
-  // Don’t reformat because sometimes prettier can’t count. See https://github.com/prettier/prettier/issues/4460
-  // prettier-ignore
-  background-position: 0 0, 0 spacing(tight),
-    spacing(tight) -1 * spacing(tight), -1 * spacing(tight) 0;
+  background-position: 0 0, 0 spacing(tight), spacing(tight) -1 * spacing(tight),
+    -1 * spacing(tight) 0;
 }
 
 .ColorPicker {
