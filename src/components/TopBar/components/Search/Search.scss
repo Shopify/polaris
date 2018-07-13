@@ -1,16 +1,26 @@
 @import '../../styles/variables';
 
+$search-results-mobile-nav-toggle-offset: rem(-46px);
+$search-results-desktop-width-offset: layout-width(secondary, min) + spacing() +
+  spacing(tight);
+$search-results-desktop-large-width-offset: layout-width(secondary, min) +
+  spacing(extra-loose) + spacing(tight);
+
 .Search {
   position: absolute;
   z-index: z-index(search, $stacking-order);
   top: top-bar-height();
-  left: 0;
+  left: $search-results-mobile-nav-toggle-offset;
   display: flex;
   align-items: stretch;
   width: 100vw;
   height: calc(100vh - #{top-bar-height() + spacing(tight)});
   visibility: hidden;
   pointer-events: none;
+
+  @include frame-when-nav-displayed {
+    left: 0;
+  }
 
   @include page-content-when-not-fully-condensed {
     align-items: flex-start;
@@ -28,6 +38,14 @@
   align-items: stretch;
   width: 100%;
 
+  @include frame-when-nav-displayed {
+    width: calc(100% - #{$search-results-desktop-width-offset});
+  }
+
+  @include breakpoint-after($large-width) {
+    width: calc(100% - #{$search-results-desktop-large-width-offset});
+  }
+
   > * {
     flex: 1 1 auto;
     width: 100%;
@@ -40,11 +58,11 @@
   @include frame-when-nav-displayed {
     margin-top: -1 * spacing(extra-tight);
     margin-right: spacing(loose);
-    margin-left: layout-width(secondary, min) + spacing(loose);
+    margin-left: spacing(loose);
   }
 
   // Only after the nav is open and the page has reached non-condensed state
   @include breakpoint-after($large-width) {
-    margin-left: layout-width(secondary, min) + spacing(extra-loose);
+    margin-left: spacing(extra-loose);
   }
 }

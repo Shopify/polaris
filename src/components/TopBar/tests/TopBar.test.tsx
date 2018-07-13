@@ -2,22 +2,8 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID} from '../../../../tests/utilities';
 import TopBar from '../TopBar';
-import {Image, UnstyledLink, Card, ActionList} from '../../../components';
+import {Image, UnstyledLink} from '../../../components';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-
-const search = (
-  <Card>
-    <ActionList
-      items={[
-        {content: 'form'},
-        {content: 'form layout'},
-        {content: 'text field'},
-        {content: 'button'},
-        {content: 'checkbox'},
-      ]}
-    />
-  </Card>
-);
 
 const logoAction = {
   id: 'polaris-logo',
@@ -140,23 +126,35 @@ describe('<TopBar />', () => {
   });
 
   describe('search content', () => {
+    const searchField = (
+      <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
+    );
+
+    const searchResults = <div id="search-content">Hello</div>;
+
     it('renders the search results', () => {
-      const topBar = mountWithAppProvider(<TopBar searchResults={search} />);
+      const topBar = mountWithAppProvider(
+        <TopBar searchResults={searchResults} searchField={searchField} />,
+      );
 
       expect(topBar.find(Search)).toHaveLength(1);
     });
 
     it('renders the search prop', () => {
-      const search = <div id="search-content">Hello</div>;
-
-      const topBar = mountWithAppProvider(<TopBar searchResults={search} />);
+      const topBar = mountWithAppProvider(
+        <TopBar searchResults={searchResults} searchField={searchField} />,
+      );
 
       expect(topBar.find('#search-content')).toHaveLength(1);
     });
 
     it('passes the visible prop to search', () => {
       const topBar = mountWithAppProvider(
-        <TopBar searchResults={search} searchResultsVisible={false} />,
+        <TopBar
+          searchResults={searchResults}
+          searchField={searchField}
+          searchResultsVisible={false}
+        />,
       );
 
       expect(topBar.find(Search).prop('visible')).toBe(false);
@@ -164,7 +162,11 @@ describe('<TopBar />', () => {
 
     it('passes the onSearchDismiss prop to search', () => {
       const topBar = mountWithAppProvider(
-        <TopBar searchResults={search} onSearchResultsDismiss={noop} />,
+        <TopBar
+          searchResults={searchResults}
+          onSearchResultsDismiss={noop}
+          searchField={searchField}
+        />,
       );
 
       expect(topBar.find(Search).prop('onDismiss')).toBe(noop);

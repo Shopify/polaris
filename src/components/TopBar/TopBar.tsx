@@ -82,10 +82,17 @@ export default class TopBar extends React.PureComponent<Props, State> {
       </UnstyledLink>
     );
 
-    const searchMarkup = searchResults && (
+    const searchResultsMarkup = searchResults && (
       <Search visible={searchResultsVisible} onDismiss={onSearchResultsDismiss}>
         {searchResults}
       </Search>
+    );
+
+    const searchMarkup = searchField && (
+      <React.Fragment>
+        {searchField}
+        {searchResultsMarkup}
+      </React.Fragment>
     );
 
     const logoContainerClassName = classNames(
@@ -100,11 +107,10 @@ export default class TopBar extends React.PureComponent<Props, State> {
         {navButtonMarkup}
         <div className={logoContainerClassName}>{logoMarkup}</div>
         <div className={styles.Contents}>
-          {searchField}
+          {searchMarkup}
           {secondaryMenu}
           {userMenu}
         </div>
-        {searchMarkup}
       </div>
     );
   }
