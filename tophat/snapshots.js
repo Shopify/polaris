@@ -6,7 +6,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
   const percy = new Percy({
     loaders: [
       new FileSystemAssetLoader({
-        buildDir: './visual-regression-testing-build/assets',
+        buildDir: './tophat/assets',
         mountPath: '/assets',
       }),
     ],
