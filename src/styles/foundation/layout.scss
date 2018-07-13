@@ -1,3 +1,5 @@
+$nav-width: 240px !default;
+
 ////
 /// Layout
 /// @group foundation/layout
@@ -13,7 +15,7 @@ $layout-width-data: (
     max: rem(320px),
   ),
   nav: (
-    base: rem(240px),
+    base: rem($nav-width),
   ),
   page-with-nav: (
     base: rem(769px),

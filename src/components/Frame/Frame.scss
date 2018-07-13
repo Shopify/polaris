@@ -123,7 +123,9 @@ $skip-vertical-offset: rem(10px);
   height: calc(100% - #{top-bar-height()});
   padding-top: top-bar-height();
   @include frame-when-nav-displayed {
-    padding-left: layout-width(nav);
+    [data-has-nav] & {
+      padding-left: layout-width(nav);
+    }
   }
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-bottom, 0, right);
@@ -135,8 +137,10 @@ $skip-vertical-offset: rem(10px);
   bottom: 0;
   width: 100%;
   @include frame-when-nav-displayed {
-    left: layout-width(nav);
-    width: calc(100% - #{layout-width(nav)});
+    [data-has-nav] & {
+      left: layout-width(nav);
+      width: calc(100% - #{layout-width(nav)});
+    }
   }
 }
 

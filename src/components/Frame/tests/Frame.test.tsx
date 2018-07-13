@@ -41,4 +41,15 @@ describe('<Frame />', () => {
 
     expect(skipToContentButtonText).toEqual('Skip to content');
   });
+
+  it('renders with a has nav data attribute when nav is passed', () => {
+    const nav = <div />;
+    const frame = mountWithAppProvider(<Frame nav={nav} />);
+    expect(frame.find('[data-has-nav]')).toHaveLength(1);
+  });
+
+  it('does not render with a has nav data attribute when nav is not passed', () => {
+    const frame = mountWithAppProvider(<Frame />);
+    expect(frame.find('[data-has-nav]')).toHaveLength(0);
+  });
 });

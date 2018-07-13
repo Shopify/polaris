@@ -219,8 +219,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       </div>
     );
 
+    const navAttributes = nav
+      ? {
+          'data-has-nav': true,
+        }
+      : {};
+
     return (
-      <div className={styles.Frame} data-polaris-layer>
+      <div className={styles.Frame} data-polaris-layer {...navAttributes}>
         {skipMarkup}
         {topBarMarkup}
         {contextualSaveBarMarkup}
