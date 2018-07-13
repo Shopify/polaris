@@ -1,0 +1,14 @@
+filename: CHANGELOG.md
+include:
+  - /^config\//
+  - /^documentation\//
+  - /^scripts\//
+  - /^src\//
+  - /^.babelrc$/
+  - /^.eslintrc$/
+  - /^.nvmrc$/
+  - /^.prettierrc$/
+  - /^app.json$/
+  - /^LICENSE.md$/
+  - /^package.json$/
+  - /^tsconfig.json$/
