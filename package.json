@@ -60,7 +60,7 @@
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
-    "start:vrt": "yarn run copy-polaris-tokens && node ./visual-regression-testing-build/index.js --watch",
+    "tophat": "yarn run copy-polaris-tokens && node ./visual-regression-testing-build/index.js --watch",
     "test:percy": "node ./visual-regression-testing-build/snapshots.js",
     "start": "node ./visual-regression-testing-build/index.js",
     "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./visual-regression-testing-build/webpack.config.js --output-path ./visual-regression-testing-build/assets"
