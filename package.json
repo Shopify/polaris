@@ -38,7 +38,7 @@
     "test:watch": "yarn test --watch",
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
-    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './visual-regression-testing-build/.cache' './visual-regression-testing-build/assets' 'styles.{css,scss}'",
+    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize copy-polaris-tokens",
     "build": "babel-node ./scripts/build.js",
@@ -60,10 +60,10 @@
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
-    "tophat": "yarn run copy-polaris-tokens && node ./visual-regression-testing-build/index.js --watch",
-    "test:percy": "node ./visual-regression-testing-build/snapshots.js",
-    "start": "node ./visual-regression-testing-build/index.js",
-    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./visual-regression-testing-build/webpack.config.js --output-path ./visual-regression-testing-build/assets"
+    "tophat": "yarn run copy-polaris-tokens && node ./tophat/index.js --watch",
+    "test:percy": "node ./tophat/snapshots.js",
+    "start": "node ./tophat/index.js",
+    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets"
   },
   "stylelint": {
     "extends": [

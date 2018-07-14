@@ -19,5 +19,8 @@ commands:
   server: yarn run dev
   style: yarn run lint
   test: yarn run test
-  tophat: yarn run tophat
+  🎩:
+    desc: |
+      Start a local server with all of the component examples. {{info:ctrl+cmd+space}} to open the emoji selector in macOS
+    run: yarn run tophat
   type-check: yarn run ts
