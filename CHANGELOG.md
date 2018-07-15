@@ -4,7 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- Unreleased -->
+## Unreleased
+
+### Development workflow
+
+- Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match ([#1754](https://github.com/Shopify/polaris-react/pull/1754), [#1764](https://github.com/Shopify/polaris-react/pull/1764))
+
+## 2.4.0 - 2018-07-12
+
+### Enhancements
+
+- Changed Form to submit a form by default when the Enter key is pressed, and added the prop `implicitSubmit` to disable this default ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
+
+### Bug fixes
+
+- Fixed text field padding when a prefix or suffix is included ([#1740](https://github.com/Shopify/polaris-react/pull/1740))
 
 ## 2.3.1 - 2018-07-05
 

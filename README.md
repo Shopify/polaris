@@ -157,7 +157,7 @@ Pull requests are welcome. See the [contribution guidelines](https://github.com/
 
 1.  Build and start the component examples server:
     ```
-    yarn run start:vrt
+    yarn run tophat
     ```
 2.  In a separate terminal session, run:
     ```

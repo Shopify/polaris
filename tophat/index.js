@@ -44,7 +44,7 @@ if (argv.watch) {
 
 app.use(
   '/assets/',
-  express.static(`${__dirname}/../visual-regression-testing-build/assets/`, {
+  express.static(`${__dirname}/../tophat/assets/`, {
     maxAge: '365d',
   }),
 );

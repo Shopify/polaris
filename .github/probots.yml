@@ -1,1 +1,4 @@
-- wip
+enabled:
+  - wip
+  - triage-new-issues
+  - changelog

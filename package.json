@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -29,8 +29,8 @@
     "lint:css": "stylelint './**/*.scss' --max-warnings 0",
     "lint:js": "eslint './src/**/*.{ts,tsx}' --max-warnings 0 --format codeframe",
     "format": "npm-run-all format:js format:css format:prettier",
-    "format:css": "prettier-stylelint-formatter -q --write",
-    "format:js": "eslint './src/**/*.{ts,tsx}' --fix --max-warnings 0 --format codeframe",
+    "format:css": "yarn run lint:css --fix",
+    "format:js": "yarn run lint:js --fix",
     "format:prettier": "prettier '**/*.md' --write",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
@@ -38,7 +38,7 @@
     "test:watch": "yarn test --watch",
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
-    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './visual-regression-testing-build/.cache' './visual-regression-testing-build/assets' 'styles.{css,scss}'",
+    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize copy-polaris-tokens",
     "build": "babel-node ./scripts/build.js",
@@ -60,10 +60,10 @@
     "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
     "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
-    "start:vrt": "yarn run copy-polaris-tokens && node ./visual-regression-testing-build/index.js --watch",
-    "test:percy": "node ./visual-regression-testing-build/snapshots.js",
-    "start": "node ./visual-regression-testing-build/index.js",
-    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./visual-regression-testing-build/webpack.config.js --output-path ./visual-regression-testing-build/assets"
+    "tophat": "yarn run copy-polaris-tokens && node ./tophat/index.js --watch",
+    "test:percy": "node ./tophat/snapshots.js",
+    "start": "node ./tophat/index.js",
+    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets"
   },
   "stylelint": {
     "extends": [
@@ -71,26 +71,6 @@
     ],
     "rules": {
       "selector-class-pattern": "^[a-zA-Z][a-zA-Z0-9-]+$",
-      "indentation": [
-        2,
-        {
-          "ignore": [
-            "value"
-          ]
-        }
-      ],
-      "max-line-length": [
-        80,
-        {
-          "ignorePattern": [
-            "/https?://[0-9,a-z]*.*/",
-            "/stylelint-disable/",
-            "/@error/",
-            "/@warn/",
-            "/@debug/"
-          ]
-        }
-      ],
       "selector-pseudo-class-no-unknown": [
         true,
         {
@@ -167,7 +147,6 @@
     "postcss-modules-values": "^1.3.0",
     "postcss-shopify": "^1.0.0",
     "prettier": "^1.13.4",
-    "prettier-stylelint-formatter": "^0.5.1-beta.1",
     "puppeteer": "^1.5.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
@@ -188,7 +167,7 @@
     "shx": "^0.2.2",
     "style-loader": "^0.19.0",
     "stylelint": "^9.2.1",
-    "stylelint-config-shopify": "^5.0.1",
+    "stylelint-config-shopify": "v6.0.0-stylelint-prettier-beta.1",
     "svgo": "^0.7.2",
     "tslint": "^5.8.0",
     "typescript": "^2.9.1",

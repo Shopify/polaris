@@ -2,11 +2,7 @@ $accent-height: 3px;
 $heading-offset: rem(2px);
 $intermediate-spacing: rem(12px);
 $ribbon-flex-basis: rem(32px);
-// Don’t reformat because sometimes prettier can’t count
-// See https://github.com/prettier/prettier/issues/4460
-// prettier-ignore
-$secondary-action-vertical-padding: 0.5 * (control-height() -
-      line-height(body));
+$secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 @mixin banner-attributes($highlight, $background, $in-page, $tint) {
@@ -14,11 +10,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   transition-delay: duration(fast);
 
   @if $in-page {
-    // Prettier puts this on one line and breaks stylelint
-    // prettier-ignore
-    box-shadow:
-      inset 0 $accent-height 0 0 $highlight,
-      inset shadow(transparent),
+    box-shadow: inset 0 $accent-height 0 0 $highlight, inset shadow(transparent),
       shadow();
   }
 
@@ -30,12 +22,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &:focus {
     outline: none;
-    // For consistency
-    // prettier-ignore
-    box-shadow:
-      inset 0 $accent-height 0 0 $highlight,
-      inset 0 0 0 $accent-height $highlight,
-      shadow();
+    box-shadow: inset 0 $accent-height 0 0 $highlight,
+      inset 0 0 0 $accent-height $highlight, shadow();
   }
 }
 
@@ -165,9 +153,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .SecondaryAction {
   @include unstyled-button;
   @include unstyled-link;
-  // Don’t reformat because sometimes prettier can’t count
-  // See https://github.com/prettier/prettier/issues/4460
-  // prettier-ignore
   margin: (-1 * $secondary-action-vertical-padding)
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
