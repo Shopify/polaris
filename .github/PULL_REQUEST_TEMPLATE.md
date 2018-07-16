@@ -8,9 +8,10 @@
 
 ### WHY are these changes introduced?
 
+Resolves #0000 <!-- link to issue if one exists -->
+
 <!--
   Context about the problem that’s being addressed.
-  OR: if a GitHub issue exists, link to it below.
 -->
 
 ### WHAT is this pull request doing?
