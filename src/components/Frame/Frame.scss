@@ -1,13 +1,12 @@
 $button-size: rem(32px);
 $transition-duration: 260ms;
 $skip-vertical-offset: rem(10px);
-
 .Frame {
   width: 100%;
   height: 100%;
 }
 
-.Nav {
+.Navigation {
   position: fixed;
   z-index: z-index(nav, $fixed-element-stacking-order);
   top: 0;
@@ -19,7 +18,6 @@ $skip-vertical-offset: rem(10px);
   transform: translateX(-100%);
   will-change: transform;
   outline: none;
-
   @include frame-when-nav-displayed {
     z-index: 1;
     top: top-bar-height();
@@ -28,21 +26,20 @@ $skip-vertical-offset: rem(10px);
     will-change: none;
     transition: none;
   }
-
   &:focus {
     outline: none;
   }
 }
 
-.Nav-animating {
+.Navigation-animating {
   transition: transform $transition-duration ease;
 }
 
-.Nav-visible {
+.Navigation-visible {
   transform: none;
 }
 
-.NavDismiss {
+.NavigationDismiss {
   position: absolute;
   top: 0;
   left: 100%;
@@ -57,24 +54,21 @@ $skip-vertical-offset: rem(10px);
   will-change: opacity;
   transition: opacity duration(fast) easing();
   cursor: pointer;
-
-  .Nav-visible & {
+  .Navigation-visible & {
     pointer-events: all;
     opacity: 1;
   }
-
   &:focus {
     border-radius: border-radius();
     background-color: rgba(color('white'), 0.16);
     outline: none;
   }
-
   @include frame-when-nav-displayed {
     display: none;
   }
 }
 
-.NavOverlay {
+.NavigationOverlay {
   position: fixed;
   z-index: z-index(nav-overlay, $fixed-element-stacking-order);
   top: 0;
@@ -86,13 +80,12 @@ $skip-vertical-offset: rem(10px);
   pointer-events: none;
   opacity: 0;
   will-change: opacity;
-
   @include frame-when-nav-displayed {
     display: none;
   }
 }
 
-.NavOverlay-covering {
+.NavigationOverlay-covering {
   pointer-events: all;
   opacity: 1;
 }
@@ -122,11 +115,9 @@ $skip-vertical-offset: rem(10px);
   display: block;
   height: calc(100% - #{top-bar-height()});
   padding-top: top-bar-height();
-
   @include frame-when-nav-displayed {
     padding-left: layout-width(nav);
   }
-
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-bottom, 0, right);
 }
@@ -136,7 +127,6 @@ $skip-vertical-offset: rem(10px);
   z-index: z-index(banner, $fixed-element-stacking-order);
   bottom: 0;
   width: 100%;
-
   @include frame-when-nav-displayed {
     left: layout-width(nav);
     width: calc(100% - #{layout-width(nav)});
@@ -149,7 +139,6 @@ $skip-vertical-offset: rem(10px);
   top: top-bar-height();
   right: 0;
   left: 0;
-
   @include frame-when-nav-hidden {
     top: 0;
   }
@@ -162,7 +151,6 @@ $skip-vertical-offset: rem(10px);
   left: spacing(tight);
   opacity: 0;
   pointer-events: none;
-
   &.focused {
     pointer-events: all;
     opacity: 1;

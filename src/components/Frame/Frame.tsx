@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {navBarCollapsed} from '../../utilities/breakpoints';
+import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Button, Icon, EventListener} from '../../components';
 import {TrapFocus} from '../Focus';
 import {
@@ -21,14 +21,14 @@ import * as styles from './Frame.scss';
 
 export interface Props {
   topBar?: React.ReactNode;
-  nav?: React.ReactNode;
+  navigation?: React.ReactNode;
   banners?: React.ReactNode;
-  showMobileNav?: boolean;
-  onNavDismiss?(): void;
+  showMobileNavigation?: boolean;
+  onNavigationDismiss?(): void;
 }
 
 export interface State {
-  navAnimating?: boolean;
+  navigationAnimating?: boolean;
   skipFocused?: boolean;
   bannerHeight: number;
   loadingStack: number;
@@ -44,7 +44,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   static childContextTypes = frameContextTypes;
 
   state: State = {
-    navAnimating: false,
+    navigationAnimating: false,
     skipFocused: false,
     bannerHeight: 0,
     loadingStack: 0,
@@ -52,7 +52,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     contextualSaveBar: null,
   };
 
-  private navContainer: HTMLElement | null = null;
+  private navigationContainer: HTMLElement | null = null;
   private bannerContainer: HTMLDivElement | null = null;
 
   getChildContext(): FrameContext {
@@ -71,8 +71,8 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   componentWillReceiveProps(newProps: Props) {
     const {bannerContainer} = this;
 
-    if (newProps.showMobileNav !== this.props.showMobileNav) {
-      this.setState({navAnimating: true});
+    if (newProps.showMobileNavigation !== this.props.showMobileNavigation) {
+      this.setState({navigationAnimating: true});
     }
 
     if (bannerContainer) {
@@ -83,31 +83,37 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   componentDidMount() {
-    const {navContainer} = this;
+    const {navigationContainer} = this;
 
-    if (navContainer == null) {
+    if (navigationContainer == null) {
       return;
     }
 
-    navContainer.addEventListener('transitionend', this.handleTransitionEnd);
-    navContainer.addEventListener('keydown', this.handleNavKeydown);
+    navigationContainer.addEventListener(
+      'transitionend',
+      this.handleTransitionEnd,
+    );
+    navigationContainer.addEventListener('keydown', this.handleNavKeydown);
   }
 
   componentWillUnmount() {
-    if (this.navContainer == null) {
+    if (this.navigationContainer == null) {
       return;
     }
-    this.navContainer.removeEventListener(
+    this.navigationContainer.removeEventListener(
       'transitionend',
       this.handleTransitionEnd,
     );
 
-    this.navContainer.removeEventListener('keydown', this.handleNavKeydown);
+    this.navigationContainer.removeEventListener(
+      'keydown',
+      this.handleNavKeydown,
+    );
   }
 
   render() {
     const {
-      navAnimating,
+      navigationAnimating,
       skipFocused,
       bannerHeight,
       loadingStack,
@@ -116,35 +122,35 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     } = this.state;
     const {
       children,
-      nav,
+      navigation,
       topBar,
       banners,
-      showMobileNav,
+      showMobileNavigation,
       polaris: {intl},
     } = this.props;
 
     const className = classNames(
-      styles.Nav,
-      showMobileNav && styles['Nav-visible'],
-      navAnimating && styles['Nav-animating'],
+      styles.Navigation,
+      showMobileNavigation && styles['Navigation-visible'],
+      navigationAnimating && styles['Navigation-animating'],
     );
 
-    const tabIndex = showMobileNav ? 0 : -1;
+    const tabIndex = showMobileNavigation ? 0 : -1;
     const contentStyles = {paddingBottom: `${bannerHeight}px`};
 
-    const navMarkup = nav ? (
+    const navigationMarkup = navigation ? (
       <div
         className={className}
-        ref={this.setNavContainerRef}
-        aria-hidden={!showMobileNav}
+        ref={this.setNavigationContainerRef}
+        aria-hidden={!showMobileNavigation}
         tabIndex={tabIndex}
       >
-        {nav}
+        {navigation}
         <button
           type="button"
-          className={styles.NavDismiss}
-          onClick={this.handleNavDismiss}
-          aria-hidden={!showMobileNav}
+          className={styles.NavigationDismiss}
+          onClick={this.handleNavigationDismiss}
+          aria-hidden={!showMobileNavigation}
           tabIndex={tabIndex}
         >
           <Icon source="cancel" color="white" />
@@ -190,9 +196,9 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       <EventListener event="resize" handler={this.handleResize} />
     ) : null;
 
-    const navOverlayClassName = classNames(
-      styles.NavOverlay,
-      showMobileNav && styles['NavOverlay-covering'],
+    const navigationOverlayClassName = classNames(
+      styles.NavigationOverlay,
+      showMobileNavigation && styles['NavigationOverlay-covering'],
     );
 
     const skipClassName = classNames(
@@ -219,11 +225,13 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         {contextualSaveBarMarkup}
         {loadingMarkup}
         <div
-          className={navOverlayClassName}
-          onClick={this.handleNavDismiss}
-          onTouchStart={this.handleNavDismiss}
+          className={navigationOverlayClassName}
+          onClick={this.handleNavigationDismiss}
+          onTouchStart={this.handleNavigationDismiss}
         />
-        <TrapFocus trapping={showMobileNav}>{navMarkup}</TrapFocus>
+        <TrapFocus trapping={showMobileNavigation}>
+          {navigationMarkup}
+        </TrapFocus>
         <main
           className={styles.Main}
           id={APP_FRAME_MAIN}
@@ -315,14 +323,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleTransitionEnd() {
     setTimeout(() => {
-      this.setState({navAnimating: false});
+      this.setState({navigationAnimating: false});
     }, 100);
   }
 
   @autobind
-  private handleNavDismiss() {
-    if (this.props.onNavDismiss != null) {
-      this.props.onNavDismiss();
+  private handleNavigationDismiss() {
+    if (this.props.onNavigationDismiss != null) {
+      this.props.onNavigationDismiss();
     }
   }
 
@@ -332,15 +340,15 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private setNavContainerRef(node: HTMLDivElement) {
-    this.navContainer = node;
+  private setNavigationContainerRef(node: HTMLDivElement) {
+    this.navigationContainer = node;
   }
 
   @autobind
   private handleNavKeydown() {
-    const {showMobileNav} = this.props;
+    const {showMobileNavigation} = this.props;
 
-    if (!showMobileNav && navBarCollapsed().matches) {
+    if (!showMobileNavigation && navigationBarCollapsed().matches) {
       focusAppFrameMain();
     }
   }

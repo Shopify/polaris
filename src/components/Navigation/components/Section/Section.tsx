@@ -122,8 +122,8 @@ export default class Section extends React.Component<Props, State> {
       return (
         rollup.activePath === item.url ||
         (item.url && rollup.activePath.startsWith(item.url)) ||
-        (item.subNavItems
-          ? item.subNavItems.some(({url: itemUrl}) =>
+        (item.subNavigationItems
+          ? item.subNavigationItems.some(({url: itemUrl}) =>
               rollup.activePath.startsWith(itemUrl),
             )
           : false)

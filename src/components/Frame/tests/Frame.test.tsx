@@ -16,8 +16,8 @@ describe('<Frame />', () => {
     animationFrame.restore();
   });
 
-  it('renders TrapFocus with trapping prop true when showMobileNav is true', () => {
-    const trapFocus = mountWithAppProvider(<Frame showMobileNav />).find(
+  it('renders TrapFocus with trapping prop true when showMobileNavigation is true', () => {
+    const trapFocus = mountWithAppProvider(<Frame showMobileNavigation />).find(
       TrapFocus,
     );
 
@@ -25,9 +25,9 @@ describe('<Frame />', () => {
     expect(trapFocus.prop('trapping')).toBe(true);
   });
 
-  it('renders TrapFocus with trapping prop false when showMobileNav is false', () => {
+  it('renders TrapFocus with trapping prop false when showMobileNavigation is false', () => {
     const trapFocus = mountWithAppProvider(
-      <Frame showMobileNav={false} />,
+      <Frame showMobileNavigation={false} />,
     ).find(TrapFocus);
 
     expect(trapFocus.exists()).toBe(true);

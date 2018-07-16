@@ -73,32 +73,32 @@ describe('<TopBar />', () => {
     });
   });
 
-  describe('nav content', () => {
-    it('renders a nav button when hasNav is true', () => {
-      const topBar = mountWithAppProvider(<TopBar showNavToggle />);
+  describe('navigation content', () => {
+    it('renders a navigation button when hasNavigation is true', () => {
+      const topBar = mountWithAppProvider(<TopBar showNavigationToggle />);
 
       expect(topBar.find('[aria-label="Toggle menu"]')).toHaveLength(1);
     });
 
-    it('sets onToggleNav on the nav button', () => {
+    it('sets onToggleNavigation on the navigation button', () => {
       const spy = jest.fn();
       const topBar = mountWithAppProvider(
-        <TopBar showNavToggle onNavToggle={spy} />,
+        <TopBar showNavigationToggle onNavigationToggle={spy} />,
       );
 
       topBar.find('[aria-label="Toggle menu"]').simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('will set focused state to true when the nav button is focused', () => {
-      const topBar = shallowWithAppProvider(<TopBar showNavToggle />);
+    it('will set focused state to true when the navigation button is focused', () => {
+      const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
 
       topBar.find('[aria-label="Toggle menu"]').simulate('focus');
       expect(topBar.state('focused')).toBe(true);
     });
 
-    it('will set focused state to false when the nav button is blurred', () => {
-      const topBar = shallowWithAppProvider(<TopBar showNavToggle />);
+    it('will set focused state to false when the navigation button is blurred', () => {
+      const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
 
       topBar.find('[aria-label="Toggle menu"]').simulate('focus');
       topBar.find('[aria-label="Toggle menu"]').simulate('blur');

@@ -1,17 +1,17 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {mountWithAppProvider} from '../../../../tests/utilities';
-import Nav from '../Nav';
+import Navigation from '../Navigation';
 
 const childContextTypes = {
   location: PropTypes.string,
-  onNavDismiss: PropTypes.func,
+  onNavigationDismiss: PropTypes.func,
 };
 
-describe('<Nav />', () => {
+describe('<Navigation />', () => {
   it('mounts', () => {
-    const nav = mountWithAppProvider(<Nav location="/" />);
-    expect(nav.exists()).toBe(true);
+    const navigation = mountWithAppProvider(<Navigation location="/" />);
+    expect(navigation.exists()).toBe(true);
   });
 
   it('passes context', () => {
@@ -19,13 +19,13 @@ describe('<Nav />', () => {
       context.location ? <div /> : null;
     Child.contextTypes = childContextTypes;
 
-    const nav = mountWithAppProvider(
-      <Nav location="/">
+    const navigation = mountWithAppProvider(
+      <Navigation location="/">
         <Child />
-      </Nav>,
+      </Navigation>,
     );
 
-    const div = nav
+    const div = navigation
       .find(Child)
       .find('div')
       .first();

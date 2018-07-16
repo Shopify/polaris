@@ -14,14 +14,14 @@ import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 import * as styles from './TopBar.scss';
 
 export interface Props {
-  showNavToggle?: boolean;
+  showNavigationToggle?: boolean;
   userMenu?: React.ReactNode;
   secondaryMenu?: React.ReactNode;
   searchField?: React.ReactNode;
   searchResults?: React.ReactNode;
   searchResultsVisible?: boolean;
   onSearchResultsDismiss?: SearchProps['onDismiss'];
-  onNavToggle?(): void;
+  onNavigationToggle?(): void;
 }
 
 export type ComposedProps = Props & WithAppProviderProps;
@@ -41,13 +41,13 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
   render() {
     const {
-      showNavToggle,
+      showNavigationToggle,
       userMenu,
       searchResults,
       searchField,
       secondaryMenu,
       searchResultsVisible,
-      onNavToggle,
+      onNavigationToggle,
       onSearchResultsDismiss,
       polaris: {
         theme: {logo},
@@ -56,13 +56,16 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
     const {focused} = this.state;
 
-    const className = classNames(styles.NavIcon, focused && styles.focused);
+    const className = classNames(
+      styles.NavigationIcon,
+      focused && styles.focused,
+    );
 
-    const navButtonMarkup = showNavToggle && (
+    const navigationButtonMarkup = showNavigationToggle && (
       <button
         type="button"
         className={className}
-        onClick={onNavToggle}
+        onClick={onNavigationToggle}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
@@ -103,7 +106,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
     return (
       <div className={styles.TopBar} data-polaris-top-bar>
-        {navButtonMarkup}
+        {navigationButtonMarkup}
         <div className={styles.LogoContainer}>{logoMarkup}</div>
         <div className={styles.Contents}>
           {searchMarkup}

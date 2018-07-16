@@ -3,7 +3,7 @@ import {IconProps} from '../../components';
 
 export interface Context {
   location: string;
-  onNavDismiss?(): void;
+  onNavigationDismiss?(): void;
 }
 
 export interface ItemType {
@@ -20,5 +20,5 @@ export interface SectionType {
 
 export const contextTypes = {
   location: PropTypes.string,
-  onNavDismiss: PropTypes.func,
+  onNavigationDismiss: PropTypes.func,
 };

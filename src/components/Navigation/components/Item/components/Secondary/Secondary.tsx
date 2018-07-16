@@ -5,7 +5,9 @@ import {Collapsible} from '../../../../../../components';
 
 import styles from './Secondary.scss';
 
-const createSecondaryNavId = createUniqueIDFactory('SecondaryNav');
+const createSecondaryNavigationId = createUniqueIDFactory(
+  'SecondaryNavigation',
+);
 
 interface Props {
   expanded: boolean;
@@ -13,9 +15,9 @@ interface Props {
 }
 
 export default function Secondary({children, expanded}: Props) {
-  const secondaryNavId = createSecondaryNavId();
+  const secondaryNavigationId = createSecondaryNavigationId();
   return (
-    <Collapsible id={secondaryNavId} open={expanded}>
+    <Collapsible id={secondaryNavigationId} open={expanded}>
       <ul className={styles.List}>{children}</ul>
     </Collapsible>
   );

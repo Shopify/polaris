@@ -18,7 +18,7 @@ describe('<Nav.Item />', () => {
     matchMedia.restore();
   });
 
-  it('sets expanded to false on resize when !navBarCollapsed and location does not match', () => {
+  it('sets expanded to false on resize when !navigationBarCollapsed and location does not match', () => {
     const spy = jest.fn();
     matchMedia.setMedia(() => ({addListener: spy}));
     const item = mountWithAppProvider(
@@ -26,7 +26,7 @@ describe('<Nav.Item />', () => {
         label="some label"
         url="/admin/orders"
         disabled={false}
-        subNavItems={[
+        subNavigationItems={[
           {
             url: '/admin/draft_orders',
             disabled: false,
@@ -55,7 +55,7 @@ describe('<Nav.Item />', () => {
     expect(item.state('expanded')).toBe(false);
   });
 
-  it('remains expanded on resize when navBarCollapsed and location matches', () => {
+  it('remains expanded on resize when navigationBarCollapsed and location matches', () => {
     const item = itemForLocation('/admin/orders');
 
     matchMedia.setMedia(() => ({matches: true}));
@@ -77,7 +77,7 @@ describe('<Nav.Item />', () => {
         <Item
           label="some label"
           disabled={false}
-          subNavItems={[
+          subNavigationItems={[
             {
               url: '/admin/draft_orders',
               disabled: false,
@@ -102,7 +102,7 @@ describe('<Nav.Item />', () => {
     });
   });
 
-  describe('with SubNavItems', () => {
+  describe('with SubNavigationItems', () => {
     it('renders expanded when given url is a perfect match for location', () => {
       const item = itemForLocation('/admin/orders');
 
@@ -256,10 +256,10 @@ describe('<Nav.Item />', () => {
       });
     });
 
-    it('calls onNavDismiss from context on click', () => {
+    it('calls onNavigationDismiss from context on click', () => {
       const context = {
         location: 'foo',
-        onNavDismiss: jest.fn(),
+        onNavigationDismiss: jest.fn(),
       };
 
       const item = mountWithAppProvider(
@@ -267,13 +267,13 @@ describe('<Nav.Item />', () => {
         {context},
       );
       item.find(UnstyledLink).simulate('click');
-      expect(context.onNavDismiss).toHaveBeenCalledTimes(1);
+      expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
 
-    it('calls onNavDismiss from context on sub item click', () => {
+    it('calls onNavigationDismiss from context on sub item click', () => {
       const context = {
         location: 'foo',
-        onNavDismiss: jest.fn(),
+        onNavigationDismiss: jest.fn(),
       };
 
       const item = mountWithAppProvider(
@@ -281,7 +281,7 @@ describe('<Nav.Item />', () => {
           label="some label"
           url="foo"
           disabled={false}
-          subNavItems={[
+          subNavigationItems={[
             {
               label: 'bar',
               url: 'baz',
@@ -295,7 +295,7 @@ describe('<Nav.Item />', () => {
         .find(UnstyledLink)
         .last()
         .simulate('click');
-      expect(context.onNavDismiss).toHaveBeenCalledTimes(1);
+      expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
   });
 });
@@ -306,7 +306,7 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
       label="some label"
       url="/admin/orders"
       disabled={false}
-      subNavItems={[
+      subNavigationItems={[
         {
           url: '/admin/draft_orders',
           disabled: false,

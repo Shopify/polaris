@@ -1,13 +1,10 @@
 @import './styles/variables';
-
 $icon-size: rem(20px);
-
 .TopBar {
   position: relative;
   display: flex;
   height: top-bar-height();
   background-color: var(--top-bar-background);
-
   &::after {
     content: '';
     position: absolute;
@@ -19,7 +16,6 @@ $icon-size: rem(20px);
 
 .LogoContainer {
   display: none;
-
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
     flex: 0 0 layout-width(nav);
@@ -27,7 +23,6 @@ $icon-size: rem(20px);
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
     background-color: var(--top-bar-background-darker);
-
     @include safe-area-for(flex-basis, layout-width(nav), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
@@ -38,27 +33,22 @@ $icon-size: rem(20px);
   display: block;
 }
 
-.NavIcon {
+.NavigationIcon {
   @include unstyled-button;
   position: relative;
   align-self: center;
   margin-left: spacing(tight) + rem(2px);
   padding: spacing(tight);
   border-radius: border-radius();
-
   &.focused {
     background-color: rgba(color('white'), 0.16);
   }
-
   &.focused:active {
     background-color: rgba(color('black'), 0.28);
   }
-
   &:hover {
     background-color: rgba(color('white'), 0.08);
-  }
-
-  // This increases hit point size.
+  } // This increases hit point size.
   &::after {
     content: '';
     position: absolute;
@@ -67,7 +57,6 @@ $icon-size: rem(20px);
     width: calc(100% + #{spacing(loose)});
     height: calc(100% + #{spacing(loose)});
   }
-
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;
   }

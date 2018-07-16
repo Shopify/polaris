@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
-import {navBarCollapsed} from '../../../../utilities/breakpoints';
+import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import Secondary from './components/Secondary';
 import {Icon, IconProps, UnstyledLink} from '../../../../components';
@@ -18,7 +18,7 @@ interface ItemURLDetails {
   excludePaths?: string[];
 }
 
-export interface SubNavItem extends ItemURLDetails {
+export interface SubNavigationItem extends ItemURLDetails {
   url: string;
   label: string;
   disabled?: boolean;
@@ -40,7 +40,7 @@ export interface Props extends ItemURLDetails {
   accessibilityLabel?: string;
   selected?: boolean;
   exactMatch?: boolean;
-  subNavItems?: SubNavItem[];
+  subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
   onClick?(): void;
 }
@@ -67,11 +67,11 @@ export default class Item extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    navBarCollapsed().addListener(this.handleResize);
+    navigationBarCollapsed().addListener(this.handleResize);
   }
 
   componentWillUnmount() {
-    navBarCollapsed().removeListener(this.handleResize);
+    navigationBarCollapsed().removeListener(this.handleResize);
   }
 
   render(): React.ReactElement<Props> {
@@ -82,7 +82,7 @@ export default class Item extends React.Component<Props, State> {
       icon,
       label,
       badge,
-      subNavItems = [],
+      subNavigationItems = [],
       secondaryAction,
       disabled,
       onClick,
@@ -91,7 +91,7 @@ export default class Item extends React.Component<Props, State> {
       selected: selectedOverride,
     } = this.props;
 
-    const {location, onNavDismiss} = this.context;
+    const {location, onNavigationDismiss} = this.context;
 
     const badgeMarkup = badge && <span className={styles.Badge}>{badge}</span>;
 
@@ -141,7 +141,7 @@ export default class Item extends React.Component<Props, State> {
 
     const matchState = matchStateForItem(this.props, location);
 
-    const matchingSubNavItems = subNavItems.filter((item) => {
+    const matchingSubNavigationItems = subNavigationItems.filter((item) => {
       const subMatchState = matchStateForItem(item, location);
       return (
         subMatchState === MatchState.MatchForced ||
@@ -150,7 +150,7 @@ export default class Item extends React.Component<Props, State> {
       );
     });
 
-    const childIsActive = matchingSubNavItems.length > 0;
+    const childIsActive = matchingSubNavigationItems.length > 0;
 
     const selected =
       selectedOverride == null
@@ -164,22 +164,22 @@ export default class Item extends React.Component<Props, State> {
     const itemClassName = classNames(
       styles.Item,
       disabled && styles.disabled,
-      selected && subNavItems.length === 0 && styles.selected,
-      showExpanded && styles.subNavActive,
+      selected && subNavigationItems.length === 0 && styles.selected,
+      showExpanded && styles.subNavigationActive,
     );
 
-    let secondaryNavMarkup: React.ReactNode = null;
+    let secondaryNavigationMarkup: React.ReactNode = null;
 
-    if (subNavItems.length > 0 && showExpanded) {
-      const longestMatch = matchingSubNavItems.sort(
+    if (subNavigationItems.length > 0 && showExpanded) {
+      const longestMatch = matchingSubNavigationItems.sort(
         ({url: firstUrl}, {url: secondUrl}) =>
           secondUrl.length - firstUrl.length,
       )[0];
 
-      secondaryNavMarkup = (
-        <div className={styles.SecondaryNav}>
+      secondaryNavigationMarkup = (
+        <div className={styles.SecondaryNavigation}>
           <Secondary expanded={showExpanded}>
-            {subNavItems.map((item) => {
+            {subNavigationItems.map((item) => {
               const {label, ...rest} = item;
               return (
                 <Item
@@ -187,7 +187,7 @@ export default class Item extends React.Component<Props, State> {
                   key={label}
                   label={label}
                   matches={item === longestMatch}
-                  onClick={onNavDismiss}
+                  onClick={onNavigationDismiss}
                 />
               );
             })}
@@ -215,14 +215,14 @@ export default class Item extends React.Component<Props, State> {
           {badgeMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
-        {secondaryNavMarkup}
+        {secondaryNavigationMarkup}
       </li>
     );
   }
 
   @autobind
   private handleResize() {
-    if (!navBarCollapsed().matches) {
+    if (!navigationBarCollapsed().matches) {
       this.setState({expanded: false});
     }
   }
@@ -232,37 +232,44 @@ export default class Item extends React.Component<Props, State> {
   private getClickHandler(onClick: Props['onClick']) {
     return (event: React.MouseEvent<HTMLElement>) => {
       const {currentTarget} = event;
-      const {subNavItems} = this.props;
-      const {location, onNavDismiss} = this.context;
+      const {subNavigationItems} = this.props;
+      const {location, onNavigationDismiss} = this.context;
 
       if (currentTarget.getAttribute('href') === location) {
         event.preventDefault();
       }
 
-      if (subNavItems && subNavItems.length > 0 && navBarCollapsed().matches) {
+      if (
+        subNavigationItems &&
+        subNavigationItems.length > 0 &&
+        navigationBarCollapsed().matches
+      ) {
         event.preventDefault();
         this.setState(({expanded}) => ({expanded: !expanded}));
-      } else if (onNavDismiss) {
-        onNavDismiss();
-        if (onClick && onClick !== onNavDismiss) {
+      } else if (onNavigationDismiss) {
+        onNavigationDismiss();
+        if (onClick && onClick !== onNavigationDismiss) {
           onClick();
         }
         return;
       }
 
-      if (onClick && !navBarCollapsed().matches) {
+      if (onClick && !navigationBarCollapsed().matches) {
         onClick();
       }
     };
   }
 }
 
-export function isNavItemActive(navItem: Props, currentPath: string) {
-  const matchState = matchStateForItem(navItem, currentPath);
+export function isNavigationItemActive(
+  navigationItem: Props,
+  currentPath: string,
+) {
+  const matchState = matchStateForItem(navigationItem, currentPath);
 
-  const matchingSubNavItems =
-    navItem.subNavItems &&
-    navItem.subNavItems.filter((item) => {
+  const matchingSubNavigationItems =
+    navigationItem.subNavigationItems &&
+    navigationItem.subNavigationItems.filter((item) => {
       const subMatchState = matchStateForItem(item, currentPath);
       return (
         subMatchState === MatchState.MatchForced ||
@@ -271,7 +278,8 @@ export function isNavItemActive(navItem: Props, currentPath: string) {
       );
     });
 
-  const childIsActive = matchingSubNavItems && matchingSubNavItems.length > 0;
+  const childIsActive =
+    matchingSubNavigationItems && matchingSubNavigationItems.length > 0;
 
   const selected =
     matchState === MatchState.MatchForced ||
