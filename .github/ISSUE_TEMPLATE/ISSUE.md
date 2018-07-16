@@ -34,6 +34,10 @@ Tip: include an error message (in a `<details></details>` tag) if your issue is 
 1.
 1.
 
+## Reduced test case
+
+The best way to get your bug fixed is to provide a reduced test case. This [CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
+
 ## Specifications
 
 - Are you using the React components? (Y/N):
