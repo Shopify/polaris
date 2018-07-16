@@ -93,7 +93,7 @@ For example:
 
 This section is only used for components with subcomponents. Include a short intro description of the subcomponent purpose and how it relates to the main component.
 
-Example for the resource list component: 
+Example for the resource list component:
 > The content of a resource list consists of resource list items. Each item summarizes an individual resource and should link to its show page.
 
 > Because the content of items depends on the type of resource and merchant tasks, resource list items are flexible.
@@ -114,11 +114,9 @@ Example:
 Include an image if applicable:
 > ![Aww kitty](http://placekitten.com/300/100)
 
-> {Props}
-
 ## Related components
 
 - To {describe how the other component works}, [use the {x} component]
 
-Example: 
+Example:
 > To {learn how to embed a link in a piece of text}, use the {link} component
