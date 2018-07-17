@@ -154,9 +154,9 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-1.2.0.tgz#dca924fd88438f21c94cccf51fa80bbec0fff277"
 
-"@shopify/react-html@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@shopify/react-html/-/react-html-3.0.2.tgz#8d9f08b59f5c9a29b2ade9d009d3ba903bd02cae"
+"@shopify/react-html@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@shopify/react-html/-/react-html-3.0.3.tgz#247773a23bdfa46769ac74112c09c4c2bd6785d8"
   dependencies:
     "@shopify/react-serialize" "^1.0.6"
     react-helmet "^5.2.0"

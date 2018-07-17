@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Development workflow
 
 - Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match ([#1754](https://github.com/Shopify/polaris-react/pull/1754), [#1764](https://github.com/Shopify/polaris-react/pull/1764))
+- Improved `yarn tophat`’s design, and added a `/all-components` route ([#1709](https://github.com/Shopify/polaris-react/pull/1709))
 
 ## 2.4.0 - 2018-07-12
 
