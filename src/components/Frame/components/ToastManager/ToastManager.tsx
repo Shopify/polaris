@@ -27,11 +27,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
       return (
         <CSSTransition
           key={toast.id}
-          in
-          enter
-          mountOnEnter
-          unmountOnExit
-          timeout={{enter: 0, exit: 300}}
+          timeout={{enter: 0, exit: 400}}
           classNames={toastClasses}
         >
           <div ref={this.toastNodes[index]} aria-live="polite">
@@ -42,7 +38,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
     });
 
     return (
-      <Portal idPrefix="ToastMessages">
+      <Portal idPrefix="toast-manager">
         <EventListener event="resize" handler={this.updateToasts} />
         <div className={styles.ToastManager}>
           <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
@@ -56,9 +52,11 @@ export default class ToastManager extends React.PureComponent<Props, never> {
     const {toastMessages} = this.props;
 
     let targetInPos = 0;
+
     toastMessages.forEach((_toast, i) => {
       const currentToast = this.toastNodes[i].current;
       if (currentToast) {
+        targetInPos += currentToast.clientHeight;
         currentToast.style.setProperty(
           '--toast-translate-y-in',
           `-${targetInPos}px`,
@@ -67,7 +65,6 @@ export default class ToastManager extends React.PureComponent<Props, never> {
           '--toast-translate-y-out',
           `${-targetInPos + 150}px`,
         );
-        targetInPos += currentToast.clientHeight;
       }
     });
   }
