@@ -7,7 +7,7 @@ $large-width: rem(980px);
 
 .Container {
   position: fixed;
-  z-index: z-index(overlay);
+  z-index: z-index(modal, $fixed-element-stacking-order);
   top: 0;
   right: 0;
   bottom: 0;
@@ -30,14 +30,13 @@ $large-width: rem(980px);
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
   background: color('white');
   box-shadow: shadow(layer);
 
   @include frame-when-nav-hidden {
-    top: top-bar-height();
-    max-height: calc(100% - #{top-bar-height()});
+    bottom: 0;
+    max-height: 100%;
   }
 
   &:focus {

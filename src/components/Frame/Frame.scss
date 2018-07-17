@@ -4,6 +4,7 @@ $skip-vertical-offset: rem(10px);
 .Frame {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .Navigation {
@@ -98,10 +99,8 @@ $skip-vertical-offset: rem(10px);
 }
 
 .TopBar {
-  position: fixed;
+  position: relative;
   z-index: z-index(top-bar, $fixed-element-stacking-order);
-  top: 0;
-  left: 0;
   width: 100%;
 }
 
@@ -120,8 +119,8 @@ $skip-vertical-offset: rem(10px);
 
 .Main {
   display: block;
-  height: calc(100% - #{top-bar-height()});
-  padding-top: top-bar-height();
+  height: 100%;
+
   @include frame-when-nav-displayed {
     [data-has-navigation] & {
       padding-left: layout-width(nav);

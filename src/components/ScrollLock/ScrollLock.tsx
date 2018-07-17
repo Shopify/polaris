@@ -1,93 +1,37 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
-import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from './ScrollLock.scss';
+import './ScrollLock.scss';
 
-export interface Props {
-  children?: React.ReactNode;
-  constrained?: boolean;
-}
+export const SCROLL_LOCKING_ATTRIBUTE = 'data-lock-scrolling';
 
-interface State {
-  touchStartY: number;
-  touchEndY: number;
-  touchUp: boolean;
-}
+export default class ScrollLock extends React.Component<{}, never> {
+  componentDidMount() {
+    const scrollPosition = window.scrollY;
 
-export default class ScrollLock extends React.PureComponent<Props, State> {
-  state: State = {
-    touchStartY: 0,
-    touchEndY: 0,
-    touchUp: false,
-  };
+    const {body} = document;
+
+    body.style.paddingRight = `${scrollBarPadding()}px`;
+    body.setAttribute(SCROLL_LOCKING_ATTRIBUTE, '');
+    body.scrollTop = scrollPosition;
+  }
+
+  componentWillUnmount() {
+    document.body.removeAttribute(SCROLL_LOCKING_ATTRIBUTE);
+    document.body.removeAttribute('style');
+  }
 
   render() {
-    const {constrained} = this.props;
-
-    return (
-      <div
-        className={classNames(
-          styles.Container,
-          constrained ? styles.Constrained : styles.FullHeight,
-        )}
-        onTouchStart={this.handleTouchStart}
-        onTouchMove={this.handleScrolling}
-        onWheel={this.handleScrolling}
-      >
-        {this.props.children}
-      </div>
-    );
+    return null;
   }
+}
 
-  @autobind
-  private handleScrolling(event: any) {
-    const pane = event.currentTarget;
-    const touchMove = event.type === 'touchmove';
-    const [height, scrollHeight, scrollTop] = [
-      pane.offsetHeight,
-      pane.scrollHeight,
-      pane.scrollTop,
-    ];
+function scrollBarPadding() {
+  if (!document || !window) return 0;
 
-    const delta = touchMove
-      ? this.state.touchStartY - event.touches[0].pageY
-      : event.deltaY;
-    const up = touchMove ? this.state.touchUp : delta < 0;
+  const paddingRight = document.body.style.paddingRight || '0';
 
-    const scrollingUpPastTop = up && -delta > scrollTop;
-    const scrollingDownPastBottom =
-      !up && delta > scrollHeight - height - scrollTop;
+  const currentPadding = parseInt(paddingRight, 10) || 0;
+  const clientWidth = document.body ? document.body.clientWidth : 0;
+  const adjustedPadding = window.innerWidth - clientWidth + currentPadding || 0;
 
-    event.stopPropagation();
-
-    if (touchMove) {
-      this.setState({touchEndY: event.changedTouches[0].screenY});
-      this.swipeDirection();
-    }
-
-    if (scrollingUpPastTop) {
-      pane.scrollTop = 0;
-      preventScrolling();
-    }
-
-    if (scrollingDownPastBottom) {
-      pane.scrollTop = scrollHeight;
-      preventScrolling();
-    }
-
-    function preventScrolling() {
-      event.preventDefault();
-    }
-  }
-
-  @autobind
-  private handleTouchStart(event: React.TouchEvent<HTMLElement>) {
-    this.setState({touchStartY: event.changedTouches[0].screenY});
-  }
-
-  @autobind
-  private swipeDirection() {
-    const {touchStartY, touchEndY} = this.state;
-    this.setState({touchUp: touchEndY >= touchStartY});
-  }
+  return adjustedPadding;
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import {Button, Icon, EventListener} from '../../components';
+import {Button, Icon, EventListener, Sticky} from '../../components';
 import {TrapFocus} from '../Focus';
 import {
   withAppProvider,
@@ -38,6 +38,9 @@ export interface State {
 }
 
 export const APP_FRAME_MAIN = 'AppFrameMain';
+const APP_FRAME_NAV = 'AppFrameNav';
+const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
+const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 export type CombinedProps = Props & WithAppProviderProps;
 
@@ -146,6 +149,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         ref={this.setNavigationContainerRef}
         aria-hidden={!showMobileNavigation && navigationCollapsed}
         onKeyDown={this.handleNavKeydown}
+        id={APP_FRAME_NAV}
       >
         {navigation}
         <button
@@ -165,7 +169,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
     const loadingMarkup =
       loadingStack > 0 ? (
-        <div className={styles.LoadingBar}>
+        <div className={styles.LoadingBar} id={APP_FRAME_LOADING_BAR}>
           <Loading />
         </div>
       ) : null;
@@ -182,8 +186,8 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     );
 
     const topBarMarkup = topBar ? (
-      <div className={styles.TopBar} data-polaris-layer>
-        {topBar}
+      <div className={styles.TopBar} data-polaris-layer id={APP_FRAME_TOP_BAR}>
+        <Sticky>{topBar}</Sticky>
       </div>
     ) : null;
 

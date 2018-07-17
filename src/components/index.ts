@@ -22,6 +22,8 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
+export {default as Backdrop, BackdropProps} from './Backdrop';
+
 export {
   default as Button,
   Props as ButtonProps,

@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {Scrollable} from '../../components';
-import ScrollLock from '../ScrollLock';
 
 import UserMenu from './components/UserMenu';
 import Section from './components/Section';
@@ -35,11 +34,7 @@ export default class Navigation extends React.Component<Props, never> {
     return (
       <nav className={styles.Navigation}>
         <div className={styles.UserMenu}>{userMenu}</div>
-        <ScrollLock>
-          <Scrollable className={styles.PrimaryNavigation}>
-            {children}
-          </Scrollable>
-        </ScrollLock>
+        <Scrollable className={styles.PrimaryNavigation}>{children}</Scrollable>
       </nav>
     );
   }
