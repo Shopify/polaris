@@ -22,8 +22,6 @@ export interface Props {
   forceRedirect?: boolean;
   /** Prints logs of each message passed through the EASDK */
   debug?: boolean;
-  /** A class used to manage Sticky components elements in a container */
-  stickyManager?: StickyManager;
 }
 
 export interface Context {
