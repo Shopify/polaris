@@ -1,21 +1,24 @@
 import * as React from 'react';
 
-import {variationName, classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/react-utilities/styles';
 import {Button, Image, Stack, ContextualSaveBarProps} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {getWidth} from '../../../../utilities/getWidth';
 
 import * as styles from './ContextualSaveBar.scss';
 
 export type Props = ContextualSaveBarProps;
 export type CombinedProps = Props & WithAppProviderProps;
 
-export function ContextualSaveBar({
+function ContextualSaveBar({
   message,
-  branding,
   visible,
   discardAction,
   saveAction,
-  polaris: {intl},
+  polaris: {
+    theme: {logo},
+    intl,
+  },
 }: CombinedProps) {
   const className = classNames(
     styles.ContextualSaveBar,
@@ -57,18 +60,17 @@ export function ContextualSaveBar({
     </Button>
   );
 
-  const imageMarkup = branding && (
-    <Image source={branding.src} className={styles.Logo} alt="" />
-  );
+  const width = getWidth(logo, 104);
 
-  const logoContainerClassName = classNames(
-    styles.LogoContainer,
-    branding && styles[variationName('logo', branding.id)],
+  const imageMarkup = logo && (
+    <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
   );
 
   return (
     <div className={className}>
-      <div className={logoContainerClassName}>{imageMarkup}</div>
+      <div className={styles.LogoContainer} style={{width}}>
+        {imageMarkup}
+      </div>
       <div className={styles.Contents}>
         <h2 className={styles.Message}>{message}</h2>
         <Stack spacing="tight" wrap={false}>

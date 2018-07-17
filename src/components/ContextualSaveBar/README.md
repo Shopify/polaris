@@ -9,7 +9,6 @@ keywords:
   - save
   - cancel
   - logo
-  - branding
 ---
 
 # Contextual Save Bar
@@ -87,10 +86,6 @@ Use the save action to provide an opportunity to save changes. Use the discard a
     discardAction={{
       onAction: () => console.log('add clear form logic'),
     }}
-    branding={{
-      id: 'shopifyPlus',
-      src: 'add image source',
-    }}
   />
 </Frame>
 ```
@@ -111,10 +106,6 @@ Use the save action to provide an opportunity to save a newly-created resource. 
     }}
     discardAction={{
       onAction: () => console.log('add clear form logic'),
-    }}
-    branding={{
-      id: 'shopifyPlus',
-      src: 'add image source',
     }}
   />
 </Frame>

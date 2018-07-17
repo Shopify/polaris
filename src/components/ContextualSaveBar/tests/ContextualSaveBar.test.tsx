@@ -8,7 +8,6 @@ describe('<ContextualSaveBar />', () => {
   const props = {
     saveAction: {content: 'Save', onAction: noop},
     discardAction: {content: 'Discard', onAction: noop},
-    branding: {id: 'contextualsavebar-id', src: 'src/assets/shopify.png'},
     message: 'Unsaved changes',
   };
 

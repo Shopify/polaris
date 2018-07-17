@@ -2,13 +2,6 @@ import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {FrameContext, frameContextTypes} from '../types';
 
-export interface Brand {
-  /** A unique identifier */
-  id: string;
-  /** The source of the content to be displayed */
-  src: string;
-}
-
 export interface Action {
   /** A destination to link to */
   url?: string;
@@ -23,8 +16,6 @@ export interface Action {
 }
 
 export interface Props {
-  /**  Logo information */
-  branding: Brand;
   /** A boolean property indicating  whether the contextual save bar is currently visible */
   visible: boolean;
   /** Accepts a string of content that will be rendered to the left of the actions */

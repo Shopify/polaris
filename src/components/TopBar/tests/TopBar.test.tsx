@@ -1,16 +1,11 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider, findByTestID} from '../../../../tests/utilities';
+import {
+  mountWithAppProvider,
+  shallowWithAppProvider,
+} from '../../../../tests/utilities';
 import TopBar from '../TopBar';
-import {Image, UnstyledLink} from '../../../components';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-
-const logoAction = {
-  id: 'polaris-logo',
-  url: 'polaris.shopify.com',
-  source: 'src/assets/polaris',
-  accessibilityLabel: 'polaris-logo',
-};
 
 const actions = [
   {
@@ -82,7 +77,7 @@ describe('<TopBar />', () => {
     it('renders a nav button when hasNav is true', () => {
       const topBar = mountWithAppProvider(<TopBar showNavToggle />);
 
-      expect(findByTestID(topBar, 'nav-button')).toHaveLength(1);
+      expect(topBar.find('[aria-label="Toggle menu"]')).toHaveLength(1);
     });
 
     it('sets onToggleNav on the nav button', () => {
@@ -91,37 +86,23 @@ describe('<TopBar />', () => {
         <TopBar showNavToggle onNavToggle={spy} />,
       );
 
-      findByTestID(topBar, 'nav-button').simulate('click');
+      topBar.find('[aria-label="Toggle menu"]').simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('will set focused state to true when the nav button is focused', () => {
-      const topBar = mountWithAppProvider(<TopBar showNavToggle />);
+      const topBar = shallowWithAppProvider(<TopBar showNavToggle />);
 
-      findByTestID(topBar, 'nav-button').simulate('focus');
+      topBar.find('[aria-label="Toggle menu"]').simulate('focus');
       expect(topBar.state('focused')).toBe(true);
     });
 
     it('will set focused state to false when the nav button is blurred', () => {
-      const topBar = mountWithAppProvider(<TopBar showNavToggle />);
+      const topBar = shallowWithAppProvider(<TopBar showNavToggle />);
 
-      findByTestID(topBar, 'nav-button').simulate('focus');
-      findByTestID(topBar, 'nav-button').simulate('blur');
+      topBar.find('[aria-label="Toggle menu"]').simulate('focus');
+      topBar.find('[aria-label="Toggle menu"]').simulate('blur');
       expect(topBar.state('focused')).toBe(false);
-    });
-  });
-
-  describe('logo content', () => {
-    it('renders an image', () => {
-      const topBar = mountWithAppProvider(<TopBar logoAction={logoAction} />);
-
-      expect(topBar.find(Image)).toHaveLength(1);
-    });
-
-    it('renders an unstyledlink', () => {
-      const topBar = mountWithAppProvider(<TopBar logoAction={logoAction} />);
-
-      expect(topBar.find(UnstyledLink)).toHaveLength(1);
     });
   });
 

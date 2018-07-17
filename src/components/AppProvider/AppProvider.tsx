@@ -1,4 +1,5 @@
 import * as React from 'react';
+import isEqual from 'lodash/isEqual';
 import EASDK from './EASDK';
 
 import {LinkLikeComponent} from '../UnstyledLink';
@@ -6,8 +7,13 @@ import {LinkLikeComponent} from '../UnstyledLink';
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
-import {createPolarisContext} from './utils';
-import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
+import {createPolarisContext, setColors} from './utils';
+import {
+  polarisAppProviderContextTypes,
+  TranslationDictionary,
+  Theme,
+  ThemeContext,
+} from './types';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */
@@ -22,10 +28,17 @@ export interface Props {
   forceRedirect?: boolean;
   /** Prints logs of each message passed through the EASDK */
   debug?: boolean;
+  /** Custom logos and colors provided to select components */
+  theme?: Theme;
 }
 
 export interface Context {
-  polaris: {intl: Intl; link: Link; stickyManager: StickyManager};
+  polaris: {
+    intl: Intl;
+    link: Link;
+    stickyManager: StickyManager;
+    theme?: ThemeContext;
+  };
   easdk?: EASDK;
 }
 
@@ -44,6 +57,9 @@ export default class AppProvider extends React.Component<Props> {
   }
 
   componentDidMount() {
+    const {theme} = this.props;
+    setColors(theme);
+
     if (document != null) {
       this.stickyManager.setContainer(document);
     }
@@ -56,6 +72,7 @@ export default class AppProvider extends React.Component<Props> {
     shopOrigin,
     forceRedirect,
     debug,
+    theme,
   }: Props) {
     if (
       i18n !== this.props.i18n ||
@@ -76,6 +93,12 @@ export default class AppProvider extends React.Component<Props> {
         stickyManager,
       });
     }
+
+    if (isEqual(theme, this.props.theme)) {
+      return;
+    }
+
+    setColors(theme);
   }
 
   getChildContext(): Context {

@@ -3,6 +3,22 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
+import tokens from '@shopify/polaris-tokens';
+import {needsVariantList} from '../config';
+import {HSLColor} from '../../ColorPicker/types';
+import {
+  colorToHsla,
+  hslToString,
+  hslToRgb,
+} from '../../../utilities/color-transformers';
+import {isLight} from '../../../utilities/color-validation';
+import {constructColorName} from '../../../utilities/color-names';
+import {
+  createDarkColor,
+  createLightColor,
+} from '../../../utilities/color-manipulation';
+import {compose} from '../../../utilities/compose';
+import {setRootProperty} from '../../../utilities/setRootProperty';
 
 import {
   polarisAppProviderContextTypes,
@@ -11,6 +27,8 @@ import {
   ComplexReplacementDictionary,
   WithAppProviderProps,
   CreatePolarisContext,
+  Theme,
+  ColorsToParse,
 } from '../types';
 
 import Intl from '../Intl';
@@ -149,6 +167,10 @@ export function withSticky() {
   };
 }
 
+export interface ContextProps extends AppProviderProps {
+  stickyManager?: StickyManager;
+}
+
 export function createPolarisContext({
   i18n,
   linkComponent,
@@ -157,6 +179,7 @@ export function createPolarisContext({
   forceRedirect,
   debug,
   stickyManager,
+  theme = {logo: null},
 }: CreatePolarisContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
@@ -173,12 +196,85 @@ export function createPolarisContext({
         )
       : undefined;
 
+  const {logo} = theme;
+
   return {
     polaris: {
       intl,
       link,
       stickyManager: stickyManager || new StickyManager(),
+      theme: {
+        logo,
+      },
     },
     easdk,
   };
+}
+
+export function setColors(theme: Theme | undefined) {
+  if (theme && theme.colors) {
+    Object.entries(theme.colors).forEach((color) => {
+      parseColors(color);
+    });
+  }
+}
+
+function needsVariant(name: string) {
+  return needsVariantList.indexOf(name) !== -1;
+}
+
+const darkenToString: (
+  color: HSLColor | string,
+  lightness: number,
+  saturation: number,
+) => string = compose(
+  hslToString,
+  createDarkColor,
+);
+
+const lightenToString: (
+  color: HSLColor | string,
+  lightness: number,
+  saturation: number,
+) => string = compose(
+  hslToString,
+  createLightColor,
+);
+
+function setTextColor(name: string, color: string | HSLColor) {
+  if (typeof color === 'string') {
+    return;
+  }
+
+  const rgbColor = hslToRgb(color);
+
+  if (isLight(rgbColor)) {
+    setRootProperty(name, tokens.colorInkBase);
+    return;
+  }
+
+  setRootProperty(name, tokens.colorSkyLighter);
+}
+
+function parseColors([baseName, colors]: [string, ColorsToParse]) {
+  const keys = Object.keys(colors);
+  for (let i = 0; i < keys.length; i++) {
+    setRootProperty(constructColorName(baseName, keys[i]), colors[keys[i]]);
+
+    if (needsVariant(baseName)) {
+      const hslColor = colorToHsla(colors[keys[i]]);
+
+      setTextColor(constructColorName(baseName, null, 'color'), hslColor);
+
+      setRootProperty(
+        constructColorName(baseName, keys[i], 'darker'),
+        darkenToString(hslColor, 9, 10),
+      );
+
+      setRootProperty(
+        constructColorName(baseName, keys[i], 'lighter'),
+        lightenToString(hslColor, 14, 30),
+      );
+    }
+  }
 }

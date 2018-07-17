@@ -38,22 +38,6 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 
-.Logo {
-  @include logo-width;
-}
-
-.logoShopifyPlus .Logo {
-  @include logo-width('shopify-plus');
-}
-
-.logoShopifyGold .Logo {
-  @include logo-width('shopify-gold');
-}
-
-.logoRogers .Logo {
-  @include logo-width('rogers');
-}
-
 .Contents {
   display: flex;
   flex: 1 1 auto;

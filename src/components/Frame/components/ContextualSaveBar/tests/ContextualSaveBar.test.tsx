@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import {Button} from '../../../..';
+import {ContextProps} from '../../../../AppProvider/utils';
+import {createPolarisContext, Button, Image} from '../../../../../components';
+import {polarisAppProviderContextTypes} from '../../../../AppProvider/types';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
   const defaultProps = {
     visible: true,
-    branding: {
-      id: 'SHOPIFY',
-      src: '/shopify-logo.svg',
-    },
   };
 
   describe('discardAction', () => {
@@ -73,4 +71,68 @@ describe('<ContextualSaveBar />', () => {
       expect(commitButton.text()).toBe('Save');
     });
   });
+
+  describe('logo', () => {
+    it('will render an image with the contextual save bar source', () => {
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar {...defaultProps} />,
+        addPolarisContext({
+          theme: {
+            logo: {
+              width: 200,
+              contextualSaveBarSource: './assets/monochrome_shopify.svg',
+            },
+          },
+        }),
+      );
+      expect(contextualSaveBar.find(Image).prop('source')).toBe(
+        './assets/monochrome_shopify.svg',
+      );
+    });
+
+    it('will render an image with the width provided', () => {
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar {...defaultProps} />,
+        addPolarisContext({
+          theme: {
+            logo: {
+              width: 200,
+              contextualSaveBarSource: './assets/monochrome_shopify.svg',
+            },
+          },
+        }),
+      );
+      expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
+        'width',
+        '200px',
+      );
+    });
+
+    it('will render the image with a default width if 0 is provided', () => {
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar {...defaultProps} />,
+        addPolarisContext({
+          theme: {
+            logo: {
+              contextualSaveBarSource: './assets/monochrome_shopify.svg',
+              width: 0,
+            },
+          },
+        }),
+      );
+      expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
+        'width',
+        '104px',
+      );
+    });
+  });
 });
+
+function addPolarisContext(logo: ContextProps) {
+  const context = createPolarisContext(logo);
+
+  return {
+    context,
+    childContextTypes: polarisAppProviderContextTypes,
+  };
+}

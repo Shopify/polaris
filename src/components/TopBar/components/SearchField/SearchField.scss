@@ -126,7 +126,7 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--top-bar-search-field-background);
+  background-color: var(--top-bar-background-lighter);
   will-change: background-color;
   transition: background-color duration() easing();
 }

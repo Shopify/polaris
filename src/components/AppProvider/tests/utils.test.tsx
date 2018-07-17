@@ -55,6 +55,9 @@ describe('createPolarisContext()', () => {
         intl: new Intl(undefined),
         link: new Link(),
         stickyManager: new StickyManager(),
+        theme: {
+          logo: null,
+        },
       },
       easdk: undefined,
     };
@@ -84,6 +87,9 @@ describe('createPolarisContext()', () => {
         intl: new Intl(i18n),
         link: new Link(CustomLinkComponent),
         stickyManager,
+        theme: {
+          logo: null,
+        },
       },
     };
 

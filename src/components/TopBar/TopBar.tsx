@@ -1,26 +1,22 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {variationName, classNames} from '@shopify/react-utilities/styles';
-import {camelCase} from 'change-case';
+import {classNames} from '@shopify/react-utilities/styles';
+import {getWidth} from '../../utilities/getWidth';
 import {menu} from '../../icons';
 import {Icon, Image, UnstyledLink} from '../../components';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 
 import * as styles from './TopBar.scss';
 
-export interface LogoAction {
-  id: string;
-  url: string;
-  source: string;
-  accessibilityLabel: string;
-}
-
 export interface Props {
   showNavToggle?: boolean;
   userMenu?: React.ReactNode;
   secondaryMenu?: React.ReactNode;
-  logoAction?: LogoAction;
   searchField?: React.ReactNode;
   searchResults?: React.ReactNode;
   searchResultsVisible?: boolean;
@@ -28,11 +24,13 @@ export interface Props {
   onNavToggle?(): void;
 }
 
+export type ComposedProps = Props & WithAppProviderProps;
+
 export interface State {
   focused: boolean;
 }
 
-export default class TopBar extends React.PureComponent<Props, State> {
+export class TopBar extends React.PureComponent<ComposedProps, State> {
   static UserMenu = UserMenu;
   static SearchField = SearchField;
   static Menu = Menu;
@@ -49,9 +47,11 @@ export default class TopBar extends React.PureComponent<Props, State> {
       searchField,
       secondaryMenu,
       searchResultsVisible,
-      logoAction,
       onNavToggle,
       onSearchResultsDismiss,
+      polaris: {
+        theme: {logo},
+      },
     } = this.props;
 
     const {focused} = this.state;
@@ -66,18 +66,24 @@ export default class TopBar extends React.PureComponent<Props, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
-        testID="nav-button"
       >
         <Icon source={menu} color="white" />
       </button>
     );
 
-    const logoMarkup = logoAction && (
-      <UnstyledLink url={logoAction.url} className={styles.LogoLink}>
+    const width = getWidth(logo, 104);
+
+    const logoMarkup = logo && (
+      <UnstyledLink
+        url={logo.topBarSource || ''}
+        className={styles.LogoLink}
+        style={{width}}
+      >
         <Image
-          source={logoAction.source}
-          alt={logoAction.accessibilityLabel}
+          source={logo.topBarSource || ''}
+          alt={logo.accessibilityLabel || ''}
           className={styles.Logo}
+          style={{width}}
         />
       </UnstyledLink>
     );
@@ -95,17 +101,10 @@ export default class TopBar extends React.PureComponent<Props, State> {
       </React.Fragment>
     );
 
-    const logoContainerClassName = classNames(
-      styles.LogoContainer,
-      logoAction &&
-        logoAction.id &&
-        styles[variationName('logo', camelCase(logoAction.id))],
-    );
-
     return (
       <div className={styles.TopBar} data-polaris-top-bar>
         {navButtonMarkup}
-        <div className={logoContainerClassName}>{logoMarkup}</div>
+        <div className={styles.LogoContainer}>{logoMarkup}</div>
         <div className={styles.Contents}>
           {searchMarkup}
           {secondaryMenu}
@@ -125,3 +124,5 @@ export default class TopBar extends React.PureComponent<Props, State> {
     this.setState({focused: false});
   }
 }
+
+export default withAppProvider<Props>()(TopBar);
