@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Bug fixes
+
+- Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
+
 ### Development workflow
 
 - Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match ([#1754](https://github.com/Shopify/polaris-react/pull/1754), [#1764](https://github.com/Shopify/polaris-react/pull/1764))
