@@ -1,7 +1,7 @@
 import {pluckDeep} from './pluckDeep';
 
 export function getWidth(
-  value: {[key: string]: any} | number | null | undefined,
+  value: {[key: string]: any} | number | null | undefined = {},
   defaultWidth: number | null = 0,
   key: string = 'width',
 ) {

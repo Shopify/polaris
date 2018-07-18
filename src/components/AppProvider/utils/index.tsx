@@ -167,10 +167,6 @@ export function withSticky() {
   };
 }
 
-export interface ContextProps extends AppProviderProps {
-  stickyManager?: StickyManager;
-}
-
 export function createPolarisContext({
   i18n,
   linkComponent,

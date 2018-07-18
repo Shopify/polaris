@@ -1,9 +1,6 @@
 import isObject from 'lodash/isObject';
 
-export function pluckDeep(
-  obj: {[key: string]: any} | null | undefined,
-  key: string,
-): any {
+export function pluckDeep(obj: {[key: string]: any} | null, key: string): any {
   if (!obj) {
     return null;
   }
