@@ -93,6 +93,8 @@ Add a menu item
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Basic button

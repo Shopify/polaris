@@ -186,6 +186,8 @@ Links should be:
 - Similar to buttons: Follow the same content guidelines as when you’re writing
   text for buttons.
 
+---
+
 ## Examples
 
 ### Default card

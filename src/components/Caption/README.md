@@ -53,6 +53,8 @@ Captions are primarily used in [data visualizations](/visuals/data-visualization
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default caption

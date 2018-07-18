@@ -73,6 +73,8 @@ The following images couldn’t be uploaded:
 * “so-so-real.png” was interrupted due to weak network connection, [retry upload](#)
 ```
 
+---
+
 ## Examples
 
 ### Drop zone with file upload

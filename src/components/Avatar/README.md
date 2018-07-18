@@ -47,6 +47,8 @@ image:
 - `alt="Business’s name"` if the avatar represents a business
 - `alt=""` if the name of the person/business appears next to the avatar as text
 
+---
+
 ## Examples
 
 ### Default avatar

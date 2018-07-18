@@ -76,6 +76,8 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Action list in a popover
