@@ -11,6 +11,7 @@ import {
   getNextDisplayMonth,
   getPreviousDisplayYear,
   getPreviousDisplayMonth,
+  Weekdays,
   isSameDay,
 } from '@shopify/javascript-utilities/dates';
 import {
@@ -41,6 +42,8 @@ export interface BaseProps {
   disableDatesAfter?: Date;
   /** The selection can span multiple months */
   multiMonth?: boolean;
+  /** First day of week. Sunday by default */
+  weekStartsOn?: Weekdays;
   /** Callback when date is selected. */
   onChange?(date: Range): void;
   /** Callback when month is changed. */
@@ -89,6 +92,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       multiMonth,
       disableDatesBefore,
       disableDatesAfter,
+      weekStartsOn = Weekdays.Sunday,
       polaris: {intl},
     } = this.props;
 
@@ -122,6 +126,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
         disableDatesBefore={disableDatesBefore}
         disableDatesAfter={disableDatesAfter}
         allowRange={allowRange}
+        weekStartsOn={weekStartsOn}
       />
     ) : null;
 
@@ -138,7 +143,10 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
             icon="arrowLeft"
             accessibilityLabel={intl.translate(
               'Polaris.DatePicker.previousMonth',
-              {previousMonthName, showPreviousYear},
+              {
+                previousMonthName,
+                showPreviousYear,
+              },
             )}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
@@ -175,6 +183,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
             disableDatesBefore={disableDatesBefore}
             disableDatesAfter={disableDatesAfter}
             allowRange={allowRange}
+            weekStartsOn={weekStartsOn}
           />
           {secondDatePicker}
         </div>
