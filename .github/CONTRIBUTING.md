@@ -1,6 +1,6 @@
 # How to contribute
 
-Polaris React is Shopify's largest open source project. It is the only project that is both under very active development and is used to build Shopify and Shopify apps every day. We want to make it as easy and transparent as possible to contribute to this project. Hopefully this document makes the process for contributing clear and answers some questions that you may have. If we are missing anything or can make the process easier in any way, [please let us know][polaris-email].
+Polaris React is Shopify’s largest open source project. It is the only project that is both under very active development and is used to build Shopify and Shopify apps every day. We want to make it as easy and transparent as possible to contribute to this project. Hopefully this document makes the process for contributing clear and answers some questions that you may have. If we are missing anything or can make the process easier in any way, [please let us know][polaris-email].
 
 ## Code of conduct
 
@@ -51,7 +51,7 @@ If you intend to build a new component, change a public API, or make any non-tri
 
 Please use [this template for proposing new components or changes to existing components][new-component].
 
-If you're only fixing a bug, it's okay to submit a pull request right away but we still recommend you file an issue detailing what you're fixing. This is helpful in case we don't accept that specific fix but want to keep track of the issue.
+If you’re only fixing a bug, it’s okay to submit a pull request right away but we still recommend you file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
 
 ## Your first pull request
 
@@ -61,26 +61,26 @@ Working on your first Pull Request? You can learn how from this free video serie
 
 To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues][good-first-issues] that contain bugs that have a relatively limited scope. This is a great place to get started.
 
-If you decide to fix an issue, please be sure to check the comment thread in case somebody is already working on a fix. If nobody is working on it at the moment, please leave a comment stating that you intend to work on it so other people don't accidentally duplicate your effort.
+If you decide to fix an issue, please be sure to check the comment thread in case somebody is already working on a fix. If nobody is working on it at the moment, please leave a comment stating that you intend to work on it so other people don’t accidentally duplicate your effort.
 
-If somebody claims an issue but doesn't follow up for more than two weeks, it's fine to take it over but you should still leave a comment.
+If somebody claims an issue but doesn’t follow up for more than two weeks, it’s fine to take it over but you should still leave a comment.
 
 ### Sending a pull request
 
-We'll review your pull request and either merge it, request changes to it, or close it with an explanation. We'll do our best to provide updates and feedback throughout the process.
+We’ll review your pull request and either merge it, request changes to it, or close it with an explanation. We’ll do our best to provide updates and feedback throughout the process.
 
 **Before submitting a pull request**, please make sure the following is done:
 
 1. Fork the repository and create your branch from `master`
 1. Run `yarn` in the repository root
-1. If you've fixed a bug or added code that [should be tested][best-practices-testing], add tests
+1. If you’ve fixed a bug or added code that [should be tested][best-practices-testing], add tests
 1. Ensure the test suite passes with `yarn test` (protip: `yarn test:watch TestName` is helpful in development)
 1. If your pull request contains SVG run `yarn optimize`
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn ts`
 1. [Tophat 🎩][tophatting] your changes locally with `yarn dev`
-1. If you haven't already, complete the CLA
+1. If you haven’t already, complete the CLA
 
 ### Contributor License Agreement (CLA)
 
@@ -105,7 +105,7 @@ After cloning Polaris React, run `yarn` to fetch its dependencies. Then, you can
 - `yarn test <pattern>` runs tests with matching filenames
 - `yarn tophat` runs a local development server and mounts all of the component examples
 
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However it can be handy to try your build of Polaris React in a real project.
+We recommend running `yarn test` (or its variations above) to make sure you don’t introduce any regressions as you work on your change. However it can be handy to try your build of Polaris React in a real project.
 
 Run `yarn run build-consumer <project>` where `<project>` is the directory the build will be copied. **The `<project>` directory must be a sibling of the `polaris-react` directory**.
 
