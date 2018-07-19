@@ -43,6 +43,23 @@ Toast should:
 Messages should be:
 
 - Short and affirmative
+- Written in the pattern of: noun + verb
+
+<!-- usagelist -->
+
+#### Do
+
+- Settings saved
+- Buy Button removed
+- Discount deleted
+
+#### Don’t
+
+- Your settings were saved
+- Removed
+- Deleted discount
+
+<!-- end -->
 
 ## Examples
 
@@ -59,11 +76,7 @@ class ToastExample extends React.Component {
   render() {
     const {showToast} = this.state;
     const toastMarkup = showToast ? (
-      <Toast onDismiss={this.toggleToast}>
-        <TextContainer>
-          <p>Toast message</p>
-        </TextContainer>
-      </Toast>
+      <Toast content="Message sent" onDismiss={this.toggleToast} />
     ) : null;
 
     return (
