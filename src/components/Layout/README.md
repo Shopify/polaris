@@ -221,8 +221,8 @@ Use for settings pages. When settings are grouped thematically in annotated sect
   >
     <Card sectioned>
       <FormLayout>
-        <TextField label="Store name" />
-        <TextField type="email" label="Account email" />
+        <TextField label="Store name" onChange={() => {}} />
+        <TextField type="email" label="Account email" onChange={() => {}} />
       </FormLayout>
     </Card>
   </Layout.AnnotatedSection>

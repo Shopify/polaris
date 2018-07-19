@@ -51,8 +51,12 @@ Always provide a heading for a major page section such as a card. In rare cases 
     <Heading>Title and description</Heading>
   </VisuallyHidden>
   <FormLayout>
-    <TextField label="Title" value="Artisanal Wooden Spoon" />
-    <TextField label="Description" multiline />
+    <TextField
+      label="Title"
+      value="Artisanal Wooden Spoon"
+      onChange={() => {}}
+    />
+    <TextField label="Description" multiline onChange={() => {}} />
   </FormLayout>
 </Card>
 ```
