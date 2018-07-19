@@ -93,6 +93,8 @@ export default class Item extends React.Component<Props, State> {
 
     const {location, onNavigationDismiss} = this.context;
 
+    const tabIndex = disabled ? -1 : 0;
+
     const badgeMarkup = badge && <span className={styles.Badge}>{badge}</span>;
 
     const iconMarkup = iconBody ? (
@@ -116,6 +118,7 @@ export default class Item extends React.Component<Props, State> {
           <button
             type="button"
             className={className}
+            disabled={disabled}
             aria-disabled={disabled}
             aria-label={accessibilityLabel}
             onClick={this.getClickHandler(onClick)}
@@ -133,6 +136,8 @@ export default class Item extends React.Component<Props, State> {
         external
         url={secondaryAction.url}
         className={styles.SecondaryAction}
+        tabIndex={tabIndex}
+        aria-disabled={disabled}
         aria-label={secondaryAction.accessibilityLabel}
       >
         <Icon source={secondaryAction.icon} />
@@ -206,6 +211,7 @@ export default class Item extends React.Component<Props, State> {
         <UnstyledLink
           url={url}
           className={itemClassName}
+          tabIndex={tabIndex}
           aria-disabled={disabled}
           aria-label={accessibilityLabel}
           onClick={this.getClickHandler(onClick)}
