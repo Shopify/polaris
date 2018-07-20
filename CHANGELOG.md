@@ -16,7 +16,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
 
-## Documentation
+### Documentation
 
 - Added iOS and Android examples for the card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
 
