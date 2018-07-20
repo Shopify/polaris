@@ -18,6 +18,7 @@ $skip-vertical-offset: rem(10px);
   transform: translateX(-100%);
   will-change: transform;
   outline: none;
+
   @include frame-when-nav-displayed {
     z-index: 1;
     top: top-bar-height();
@@ -26,6 +27,11 @@ $skip-vertical-offset: rem(10px);
     will-change: none;
     transition: none;
   }
+
+  @include frame-when-nav-hidden {
+    display: none;
+  }
+
   &:focus {
     outline: none;
   }
@@ -37,6 +43,7 @@ $skip-vertical-offset: rem(10px);
 
 .Navigation-visible {
   transform: none;
+  display: initial;
 }
 
 .NavigationDismiss {

@@ -80,11 +80,13 @@ $stacking-order: (
   box-shadow: shadow();
   will-change: transform, opacity;
   transition: transform duration() easing(), opacity duration() easing();
+  display: none;
 
   .expanded & {
     transform: translateY(0);
     opacity: 1;
     pointer-events: initial;
+    display: initial;
   }
 }
 

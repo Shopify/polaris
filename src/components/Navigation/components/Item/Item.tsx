@@ -228,7 +228,7 @@ export default class Item extends React.Component<Props, State> {
 
   @autobind
   private handleResize() {
-    if (!navigationBarCollapsed().matches) {
+    if (!navigationBarCollapsed().matches && this.state.expanded) {
       this.setState({expanded: false});
     }
   }

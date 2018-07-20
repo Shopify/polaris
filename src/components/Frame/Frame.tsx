@@ -29,6 +29,7 @@ export interface Props {
 
 export interface State {
   navigationAnimating?: boolean;
+  navigationCollapsed?: boolean;
   skipFocused?: boolean;
   bannerHeight: number;
   loadingStack: number;
@@ -45,6 +46,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   state: State = {
     navigationAnimating: false,
+    navigationCollapsed: false,
     skipFocused: false,
     bannerHeight: 0,
     loadingStack: 0,
@@ -85,6 +87,10 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   componentDidMount() {
     const {navigationContainer} = this;
 
+    if (navigationBarCollapsed().matches) {
+      this.setState({navigationCollapsed: true});
+    }
+
     if (navigationContainer == null) {
       return;
     }
@@ -93,27 +99,23 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       'transitionend',
       this.handleTransitionEnd,
     );
-    navigationContainer.addEventListener('keydown', this.handleNavKeydown);
   }
 
   componentWillUnmount() {
     if (this.navigationContainer == null) {
       return;
     }
+
     this.navigationContainer.removeEventListener(
       'transitionend',
       this.handleTransitionEnd,
-    );
-
-    this.navigationContainer.removeEventListener(
-      'keydown',
-      this.handleNavKeydown,
     );
   }
 
   render() {
     const {
       navigationAnimating,
+      navigationCollapsed,
       skipFocused,
       bannerHeight,
       loadingStack,
@@ -135,22 +137,25 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       navigationAnimating && styles['Navigation-animating'],
     );
 
-    const tabIndex = showMobileNavigation ? 0 : -1;
+    const tabIndex = showMobileNavigation && navigationCollapsed ? 0 : -1;
     const contentStyles = {paddingBottom: `${bannerHeight}px`};
 
     const navigationMarkup = navigation ? (
       <div
         className={className}
         ref={this.setNavigationContainerRef}
-        aria-hidden={!showMobileNavigation}
-        tabIndex={tabIndex}
+        aria-hidden={!showMobileNavigation && navigationCollapsed}
+        onKeyDown={this.handleNavKeydown}
       >
         {navigation}
         <button
           type="button"
           className={styles.NavigationDismiss}
           onClick={this.handleNavigationDismiss}
-          aria-hidden={!showMobileNavigation}
+          aria-hidden={!showMobileNavigation && navigationCollapsed}
+          aria-label={intl.translate(
+            'Polaris.Frame.Navigation.closeMobileNavigationLabel',
+          )}
           tabIndex={tabIndex}
         >
           <Icon source="cancel" color="white" />
@@ -192,10 +197,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const bannerSizeMeasureListener = banners ? (
-      <EventListener event="resize" handler={this.handleResize} />
-    ) : null;
-
     const navigationOverlayClassName = classNames(
       styles.NavigationOverlay,
       showMobileNavigation && styles['NavigationOverlay-covering'],
@@ -229,7 +230,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleNavigationDismiss}
           onTouchStart={this.handleNavigationDismiss}
         />
-        <TrapFocus trapping={showMobileNavigation}>
+        <TrapFocus trapping={showMobileNavigation && navigationCollapsed}>
           {navigationMarkup}
         </TrapFocus>
         <main
@@ -243,7 +244,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         </main>
         <ToastManager toastMessages={toastMessages} />
         {bannerMarkup}
-        {bannerSizeMeasureListener}
+        <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
   }
@@ -294,6 +295,12 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleResize() {
+    const {navigationCollapsed} = this.state;
+
+    if (navigationBarCollapsed().matches !== navigationCollapsed) {
+      this.setState({navigationCollapsed: !navigationCollapsed});
+    }
+
     const {bannerContainer} = this;
 
     if (bannerContainer == null) {
@@ -345,11 +352,11 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleNavKeydown() {
-    const {showMobileNavigation} = this.props;
+  private handleNavKeydown(event: React.KeyboardEvent<HTMLElement>) {
+    const {key} = event;
 
-    if (!showMobileNavigation && navigationBarCollapsed().matches) {
-      focusAppFrameMain();
+    if (key === 'Escape') {
+      this.handleNavigationDismiss();
     }
   }
 }

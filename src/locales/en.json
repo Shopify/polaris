@@ -63,7 +63,10 @@
     },
 
     "Frame": {
-      "skipToContent": "Skip to content"
+      "skipToContent": "Skip to content",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Close navigation"
+      }
     },
 
     "Icon": {
