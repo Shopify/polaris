@@ -5,6 +5,16 @@ import {noop} from '../../../../../utilities/other';
 import Toast from '../../Toast';
 import Frame from '../../../Frame';
 
+window.matchMedia =
+  window.matchMedia ||
+  function() {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 describe('<Toast />', () => {
   it('renders multiple toasts', () => {
     const multipleMessages = mountWithAppProvider(
