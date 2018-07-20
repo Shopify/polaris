@@ -1,6 +1,10 @@
 ---
 name: Card
 category: Structure
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - layout
   - container
@@ -200,9 +204,25 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
+<!-- content-for: android -->
+
+![Default card with a title and a short body](components/Card/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default card with a title and a short body](components/Card/ios/default.png)
+
+<!-- /content-for -->
+
 ### Card with header actions
 
+<!-- content-for: web -->
+
 Use for less important card actions, or actions the merchant may do before reviewing the contents of the card. For example, a merchant may want to add items to a card containing a long list, or enter a customer’s new address.
+
+<!-- /content-for -->
 
 ```jsx
 <Card sectioned title="Variants" actions={[{content: 'Add variant'}]}>
@@ -213,9 +233,34 @@ Use for less important card actions, or actions the merchant may do before revie
 </Card>
 ```
 
+<!-- content-for: ios, android -->
+
+Use for less important card actions, or actions the merchant may do before reviewing the contents of the card.
+
+- Use an icon for the action, if possible
+- Include no more than 2 actions
+
+<!-- /content-for -->
+
+<!-- content-for: android -->
+
+![Card with a title (Conditions), a short body and a header action to add a condition](components/Card/android/header-actions.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Card with a title (Conditions), a short body and a header action to add a condition](components/Card/ios/header-actions.png)
+
+<!-- /content-for -->
+
 ### Card with footer actions
 
+<!-- content-for: web -->
+
 Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, a merchant should review the contents of a shipment before important actions like cancelling or adding tracking information.
+
+<!-- /content-for -->
 
 ```jsx
 <Card
@@ -231,6 +276,27 @@ Use footer actions for a card’s most important actions, or actions merchants s
   </Card.Section>
 </Card>
 ```
+
+<!-- content-for: android, ios -->
+
+Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card.
+
+- Use buttons with labels
+- If you have more than 2 actions, consider using an overflow menu on the card
+
+<!-- /content-for -->
+
+<!-- content-for: android -->
+
+![Card featuring footer actions: add variant, edit options](components/Card/android/footer-actions.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Card featuring footer actions: add variant, edit options](components/Card/ios/footer-actions.png)
+
+<!-- /content-for -->
 
 ### Card with multiple sections
 
@@ -251,6 +317,18 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
+<!-- content-for: android -->
+
+![Shipping costs card with multiple sections: domestic, international](components/Card/android/multiple-sections.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Shipping costs card with multiple sections: domestic, international](components/Card/ios/multiple-sections.png)
+
+<!-- /content-for -->
+
 ### Card with multiple titled sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
@@ -270,7 +348,21 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
+<!-- content-for: android -->
+
+![Customer card with multiple titled sections: note, shipping address](components/Card/android/multiple-titled-sections.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Customer card with multiple titled sections: note, shipping address](components/Card/ios/multiple-titled-sections.png)
+
+<!-- /content-for -->
+
 ### Card with a subdued section
+
+<!-- example-for: web -->
 
 Use to indicate when one of the sections in your card contains inactive or disabled content.
 
@@ -293,6 +385,8 @@ Use to indicate when one of the sections in your card contains inactive or disab
 ```
 
 ### Subdued card for secondary content
+
+<!-- example-for: web -->
 
 Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
 
