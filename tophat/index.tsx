@@ -1,16 +1,18 @@
 import * as React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import * as Polaris from '@shopify/polaris';
 import {getSerialized} from '@shopify/react-serialize';
 
-import Example from './Example';
+import Example, {ExampleProps} from './Example';
 
-interface CodeExamples {
-  [key: string]: string[];
+interface Component {
+  name: string;
+  slug: string;
+  examples: ExampleProps[];
 }
 
-const {data: codeExamples} = getSerialized('codeExamples');
+const {data: components}: {data: Component[]} = getSerialized('codeExamples');
 
 function renderApp() {
   render(
@@ -18,28 +20,55 @@ function renderApp() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <ul id="examples">
-              {Object.entries(codeExamples as CodeExamples).map((tuple) =>
-                tuple[1].map((_, index) => (
-                  <li key={`${tuple[0]}${index}link`}>
-                    <Link to={`/${tuple[0]}/${index}`}>{`/${
-                      tuple[0]
-                    }/${index}`}</Link>
-                  </li>
-                )),
-              )}
-            </ul>
+            <Polaris.Page title="Polaris React component examples">
+              <Polaris.Layout>
+                {components.map((component) => (
+                  <Polaris.Layout.AnnotatedSection
+                    title={component.name}
+                    key={`${component.name}link`}
+                  >
+                    <Polaris.Card sectioned>
+                      <Polaris.List>
+                        {component.examples.map(({name}, index) => (
+                          <Polaris.List.Item
+                            key={`${component.slug}${index}listitem`}
+                          >
+                            <Polaris.Link url={`/${component.slug}/${index}`}>
+                              {name}
+                            </Polaris.Link>
+                          </Polaris.List.Item>
+                        ))}
+                      </Polaris.List>
+                    </Polaris.Card>
+                  </Polaris.Layout.AnnotatedSection>
+                ))}
+              </Polaris.Layout>
+            </Polaris.Page>
           </Route>
-          {Object.entries(codeExamples as CodeExamples).map((tuple) =>
-            tuple[1].map((example, index) => (
+          {components.map((component) =>
+            component.examples.map((example, index) => (
               <Route
-                key={`${tuple[0]}${index}route`}
-                path={`/${tuple[0]}/${index}`}
+                key={`${component.slug}${index}route`}
+                path={`/${component.slug}/${index}`}
               >
-                <Example example={example} />
+                <Example code={example.code} name={example.name} />
               </Route>
             )),
           )}
+          <Route path="/all-components" exact>
+            <React.Fragment>
+              {components.map((component) =>
+                component.examples.map((example) => (
+                  <div
+                    style={{marginTop: '3rem', marginBottom: '3rem'}}
+                    key={`${component.name}/${example.name}`}
+                  >
+                    <Example code={example.code} name={example.name} />
+                  </div>
+                )),
+              )}
+            </React.Fragment>
+          </Route>
         </Switch>
       </BrowserRouter>
     </Polaris.AppProvider>,

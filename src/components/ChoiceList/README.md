@@ -163,6 +163,8 @@ Every item in a choice list should:
 
 If your list contains helper text, only the description below the list item should contain punctuation.
 
+---
+
 ## Examples
 
 ### Single choice list

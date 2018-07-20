@@ -41,7 +41,7 @@ Empty states should:
 - Be encouraging and never make merchants feel unsuccessful or guilty because
   they haven’t used a product or feature
 - Explain the steps a merchant needs to take to activate a product or feature
-- Use illustrations thoughtfully as outlined in our [illustration guidelines](/visuals/illustrations)
+- Use illustrations thoughtfully as outlined in our [illustration guidelines](/design/illustrations)
 - Use only one primary call-to-action button
 
 ---
@@ -161,6 +161,6 @@ Use to explain a single feature before a merchant has used it.
 
 ## Related components
 
-- To learn more about illustrations for empty states, [read the illustration guidelines](/visuals/illustrations)
+- To learn more about illustrations for empty states, [read the illustration guidelines](/design/illustrations)
 - To create page-level layout, [use the layout component](/components/structure/layout)
 - To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)

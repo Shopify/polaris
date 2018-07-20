@@ -111,6 +111,8 @@ Connect to app
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default account connection

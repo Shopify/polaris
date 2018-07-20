@@ -5,11 +5,12 @@ import {parse} from '@babel/parser';
 import generate from '@babel/generator';
 import {transform} from '@babel/standalone';
 
-interface Props {
-  example: string;
+export interface ExampleProps {
+  name: string;
+  code: string;
 }
 
-export default function Example(props: Props) {
+export default function Example(props: ExampleProps) {
   const scope = {React, ...Polaris};
   const tempScope: Object[] = [];
 
@@ -17,7 +18,7 @@ export default function Example(props: Props) {
     tempScope.push(scope[scopeProp]);
   });
 
-  const ast = astFromCode(props.example);
+  const ast = astFromCode(props.code);
   const compiledCode = compileCode(scope, ast);
 
   // eslint-disable-next-line no-eval

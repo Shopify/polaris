@@ -14,11 +14,7 @@ const readMarkDownFiles = require('./parseMarkdown.js').default;
 const app = express();
 const port = process.env.PORT || 3000;
 
-const codeExampleTuples = readMarkDownFiles();
-const codeExamples = {};
-codeExampleTuples.forEach((tuple) => {
-  codeExamples[tuple[0]] = tuple[1];
-});
+const codeExamples = readMarkDownFiles();
 
 function appMiddleware(req, res, next) {
   const html = render([{path: '/assets/main.js'}], {codeExamples});
@@ -52,7 +48,7 @@ app.use(
 app.use('*', appMiddleware);
 
 app.listen(port, () => {
-  console.log('Example app running on http://localhost:3000');
+  console.log(`Example app running on http://localhost:${port}`);
   if (argv.watch) {
     console.log('⏳ Building code examples from component README files…');
   }

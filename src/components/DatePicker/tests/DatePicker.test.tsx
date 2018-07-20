@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import DatePicker from '../DatePicker';
 import MonthComponent from '../Month';
 import Day from '../Day';
+import Weekday from '../Weekday';
 
 describe('<DatePicker />', () => {
   const selected = {
@@ -13,6 +15,35 @@ describe('<DatePicker />', () => {
   const hoverDate = selected.end;
   const month = 0;
   const year = 2017;
+
+  it('renders Sunday as first day of the week by default', () => {
+    const component = mountWithAppProvider(
+      <DatePicker month={0} year={2018} />,
+    );
+
+    const weekday = component.find(Weekday);
+    expect(weekday.first().text()).toEqual('Su');
+  });
+
+  describe('when weekStartsOn is passed', () => {
+    it('week starts on Monday', () => {
+      const component = mountWithAppProvider(
+        <DatePicker month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
+      );
+
+      const weekday = component.find(Weekday);
+      expect(weekday.first().text()).toEqual('Mo');
+    });
+
+    it('week starts on Saturday', () => {
+      const component = mountWithAppProvider(
+        <DatePicker month={0} year={2018} weekStartsOn={Weekdays.Saturday} />,
+      );
+
+      const weekday = component.find(Weekday);
+      expect(weekday.first().text()).toEqual('Sa');
+    });
+  });
 
   describe('onChange()', () => {
     it('is called on click on Day component', () => {
@@ -25,6 +56,7 @@ describe('<DatePicker />', () => {
           month={month}
           year={year}
           onChange={spy}
+          weekStartsOn={Weekdays.Sunday}
         />,
       );
       const day = component.find(Day);

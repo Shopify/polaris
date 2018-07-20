@@ -93,6 +93,8 @@ Terms descriptions should be:
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default description list

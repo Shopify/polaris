@@ -4,11 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 2.5.0 - 2018-07-20
+
+### Enhancements
+
+- Added `weekStartsOn` prop to Datepicker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
+
+### Bug fixes
+
+- Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
+
+### Documentation
+
+- Added iOS and Android examples for the card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
 
 ### Development workflow
 
 - Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match ([#1754](https://github.com/Shopify/polaris-react/pull/1754), [#1764](https://github.com/Shopify/polaris-react/pull/1764))
+- Improved `yarn tophat`’s design, and added a `/all-components` route ([#1709](https://github.com/Shopify/polaris-react/pull/1709))
 
 ## 2.4.0 - 2018-07-12
 

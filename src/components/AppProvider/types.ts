@@ -1,5 +1,6 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
+import {Props as AppProviderProps} from '../AppProvider';
 
 import Intl from './Intl';
 import Link from './Link';
@@ -25,4 +26,8 @@ export interface PrimitiveReplacementDictionary {
 
 export interface ComplexReplacementDictionary {
   [key: string]: string | number | React.ReactNode;
+}
+
+export interface CreatePolarisContext extends AppProviderProps {
+  stickyManager?: StickyManager;
 }

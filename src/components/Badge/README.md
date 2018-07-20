@@ -68,6 +68,8 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default badge

@@ -151,7 +151,11 @@ Pull requests are welcome. See the [contribution guidelines](https://github.com/
 
 ### Visual regression testing
 
-[Percy](https://percy.io/) runs for every pull request using [Puppeteer](https://pptr.dev/).
+[Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
+
+Percy is not always 100% accurate. Since it uses screenshot comparison, even browser subpixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgement to determine whether you need to address it or not. This is why the choice to approve something or not is always left to the contributor.
+
+Percy is a tool that’s supposed to help you and give you more confidence, not some checker that you need to appease. The final call lies with you as a contributor.
 
 #### Running visual regression tests locally
 
