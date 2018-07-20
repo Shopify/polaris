@@ -6,12 +6,19 @@ import {Icon} from '../../../../components';
 import * as styles from './SearchField.scss';
 
 export interface Props {
+  /** Initial value for the input */
   value: string;
+  /** Hint text to display */
   placeholder?: string;
+  /** Force the focus state on the input */
   focused?: boolean;
+  /** Force a state where search is active but the text field component is not focused */
   active?: boolean;
+  /** Callback when value is changed */
   onChange(value: string): void;
+  /** Callback when input is focused */
   onFocus?(): void;
+  /** Callback when focus is removed */
   onBlur?(): void;
 }
 

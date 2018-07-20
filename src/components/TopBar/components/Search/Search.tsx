@@ -4,8 +4,11 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import * as styles from './Search.scss';
 
 export interface Props {
+  /** Toggles whether or not the search is visible */
   visible?: boolean;
+  /** The content to display inside the search */
   children?: React.ReactNode;
+  /** Callback when the search is dismissed */
   onDismiss?(): void;
 }
 

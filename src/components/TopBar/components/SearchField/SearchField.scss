@@ -129,4 +129,5 @@ $stacking-order: (
   background-color: var(--top-bar-background-lighter);
   will-change: background-color;
   transition: background-color duration() easing();
+  border-radius: border-radius();
 }
