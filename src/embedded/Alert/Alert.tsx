@@ -30,7 +30,13 @@ export class Alert extends React.PureComponent<
   private focusReturnPoint: HTMLElement | null = null;
 
   componentDidMount() {
-    const {open} = this.props;
+    const {open, children} = this.props;
+    if (typeof children !== 'string') {
+      throw new Error(
+        'The alert component’s children can only be strings of text. Remove incompatible characters and try again.',
+      );
+    }
+
     if (open) {
       this.handleEASDKMessaging();
       this.focusReturnPoint = document.activeElement as HTMLElement;
