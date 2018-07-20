@@ -39,7 +39,7 @@ Exception lists aren’t clickable. If you’re a partner and have an idea that 
 Exception lists should:
 
 - Highlight an exceptional state that helps the merchant make a decision
-- Use the appropriate [color](https://polaris.shopify.com/visuals/colors) to suit the tone of the message
+- Use the appropriate [color](https://polaris.shopify.com/design/colors) to suit the tone of the message
 - Have a description (a title is optional)
 - Be concise
 

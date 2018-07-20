@@ -19,6 +19,7 @@ The possible groups in which to categorize changes are:
 - Bug fixes
 - Documentation
 - Dependency upgrades
+- Development workflow (new yarn commands or changes to existing commands)
 
 ## Out of scope for CHANGELOG.md
 

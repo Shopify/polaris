@@ -3,15 +3,19 @@ import glob from 'glob';
 import grayMatter from 'gray-matter';
 
 export default function readMarkDownFiles() {
-  const files = glob.sync(
-    `${__dirname}/../src/{components,embedded}/**/README.md`,
-    {},
-  );
+  const files = glob.sync(`${__dirname}/../src/components/***/README.md`);
 
   return files.map((file) => {
     const data = fs.readFileSync(file, 'utf8');
     return parseCodeExamples(data);
   });
+}
+
+function stripCodeBlock(block: string) {
+  return block
+    .replace(/```jsx/, '')
+    .replace('```', '')
+    .trim();
 }
 
 function parseCodeExamples(data) {
@@ -29,15 +33,19 @@ function parseCodeExamples(data) {
 
   const [, ...examples] = examplesAndHeader;
 
-  return [
-    matter.data.name
+  return {
+    name: matter.data.name,
+    slug: matter.data.name
       .replace(/’/g, '')
       .replace(/\s+/g, '-')
       .toLowerCase(),
-    examples
-      .map((example) => {
-        return example.split('```')[1].split('jsx')[1];
-      })
-      .filter((content) => content !== ''),
-  ];
+    examples: examples.map((example) => {
+      const nameMatches = example.match(/(.)*/);
+      const codeBlock = example.match(/```jsx(.|\n)*?```/g);
+      return {
+        name: nameMatches === null ? '' : nameMatches[0].trim(),
+        code: codeBlock === null ? '' : stripCodeBlock(codeBlock[0]),
+      };
+    }),
+  };
 }

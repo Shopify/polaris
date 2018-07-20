@@ -41,6 +41,8 @@ Date pickers should:
 There are no content elements that are specific to the date picker.
 Learn how to [format dates and numbers](/content/grammar-and-mechanics#dates-and-numbers) in your interface content.
 
+---
+
 ## Examples
 
 ### Default date picker

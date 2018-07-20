@@ -28,6 +28,7 @@ export interface Props {
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
   allowRange?: Boolean;
+  weekStartsOn: Weekdays;
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
@@ -57,6 +58,7 @@ export default function Month({
   onFocus = noop,
   month,
   year,
+  weekStartsOn,
 }: Props) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
@@ -65,8 +67,8 @@ export default function Month({
     styles.Title,
     current && styles['Month-current'],
   );
-  const weeks = getWeeksForMonth(month, year);
-  const weekdays = WEEKDAYS.map((weekday) => (
+  const weeks = getWeeksForMonth(month, year, weekStartsOn);
+  const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => (
     <Weekday
       key={weekday}
       title={abbreviationForWeekday(weekday)}
@@ -141,4 +143,10 @@ function hoveringDateIsInRange(
   }
   const {start, end} = range;
   return Boolean(start === end && day > start && day <= hoverEndDate);
+}
+
+function getWeekdaysOrdered(weekStartsOn: Weekdays): Weekdays[] {
+  const weekDays = [...WEEKDAYS];
+  const restOfDays = weekDays.splice(weekStartsOn);
+  return [...restOfDays, ...weekDays];
 }

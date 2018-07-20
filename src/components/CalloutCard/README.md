@@ -167,6 +167,8 @@ Add a menu item
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default callout card

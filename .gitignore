@@ -19,5 +19,5 @@ node_modules
 /src/styles/polaris-tokens
 /shrink-ray-build/.cache
 /shrink-ray-build/build
-/visual-regression-testing-build/.cache
-/visual-regression-testing-build/assets
+/tophat/.cache
+/tophat/assets

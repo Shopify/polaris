@@ -95,6 +95,8 @@ You agree to the Terms of Service
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default checkboxes

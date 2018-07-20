@@ -1540,7 +1540,7 @@ In the CSS itself, we’re going to start mobile first. We’ll open up the CSS 
 }
 ```
 
-Note that we’ve annotated the colors here to show that they correspond to the [Polaris color palette](https://polaris.shopify.com/visuals/colors#section-color-palette).
+Note that we’ve annotated the colors here to show that they correspond to the [Polaris color palette](https://polaris.shopify.com/design/colors#section-color-palette).
 
 Now that we have our small screen layout, we can layer on the layouts for medium and wide screens. This requires some additional wrappers. With this extra markup, it’s a good time to split out some of this out to clean up the code:
 

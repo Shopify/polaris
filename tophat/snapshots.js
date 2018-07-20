@@ -6,7 +6,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
   const percy = new Percy({
     loaders: [
       new FileSystemAssetLoader({
-        buildDir: './visual-regression-testing-build/assets',
+        buildDir: './tophat/assets',
         mountPath: '/assets',
       }),
     ],
@@ -38,13 +38,11 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
   try {
     await percy.startBuild();
     await page.goto('http://localhost:3000');
-    let urls = await page.evaluate(() =>
+    const urls = await page.evaluate(() =>
       [...document.querySelectorAll('a')].map((element) =>
         element.getAttribute('href'),
       ),
     );
-
-    urls = urls.filter((url) => !url.includes('embedded'));
 
     urls.map((path) => {
       const currentBrowser = browsers[browserIndex % 2];

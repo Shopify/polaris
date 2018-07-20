@@ -45,6 +45,8 @@ Button groups should:
 Follow the [content guidelines](/components/actions/button#content-guidelines)
 outlined in the button component.
 
+---
+
 ## Examples
 
 ### Default button group

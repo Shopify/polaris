@@ -4,7 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- Unreleased -->
+<!-- ## Unreleased -->
+
+## 2.5.0 - 2018-07-20
+
+### Enhancements
+
+- Added `weekStartsOn` prop to Datepicker
+
+### Bug fixes
+
+- Remove stickyManager from app provider props interface
+
+## Documentation
+
+- Added iOS and Android examples for the card component
+
+### Development workflow
+
+- Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match
+- Improved `yarn tophat`’s design, and added a `/all-components` route
 
 ## 2.4.0 - 2018-07-12
 
