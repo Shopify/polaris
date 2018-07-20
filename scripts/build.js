@@ -48,13 +48,7 @@ const destinationReadme = resolvePath(docs, './components/README.md');
 
 copy(['./src/**/*.md', docs], {up: 1})
   .then(() => {
-    writeFileSync(
-      destinationReadme,
-      readFileSync(srcReadme, 'utf8').replace(
-        /\{\{POLARIS_VERSION\}\}/g,
-        packageJSON.version,
-      ),
-    );
+    writeFileSync(destinationReadme, readFileSync(srcReadme, 'utf8'));
   })
   .catch((error) => {
     // eslint-disable-next-line no-console
