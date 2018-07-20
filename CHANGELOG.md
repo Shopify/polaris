@@ -30,6 +30,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
 - Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
+- Remove extra padding from annotated section ([#1805](https://github.com/Shopify/polaris-react/pull/1805))
 
 ### Documentation
 
