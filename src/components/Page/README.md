@@ -282,4 +282,4 @@ Use a separator for pages that have an [empty state](/components/structure/empty
 ## Related components
 
 - To lay out the content within a page, [use the layout component](/components/structure/layout)
-- When using `Page` within an [embedded app](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK
+- When using `Page` within an [embedded app](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK

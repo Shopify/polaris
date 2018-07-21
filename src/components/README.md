@@ -39,9 +39,9 @@ There are two options for installing and implementing our components, React or C
 
 Use React components in most cases, especially if you’re building a highly interactive experience. This can be done with or without a build system.
 
-- [Implementation instructions](https://github.com/Shopify/polaris) (requires HTML, React, a JS build tool)
+- [Implementation instructions](https://github.com/Shopify/polaris-react) (requires HTML, React, a JS build tool)
 
-- Have a look at the [React component examples](https://github.com/Shopify/polaris/tree/master/examples) to see how it’s done
+- Have a look at the [React component examples](https://github.com/Shopify/polaris-react/tree/master/examples) to see how it’s done
 
 ### CSS components
 
@@ -53,13 +53,13 @@ Use React components in most cases, especially if you’re building a highly int
 <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/{{POLARIS_VERSION}}/polaris.min.css" />
 ```
 
-- Have a look at the [CSS examples](https://github.com/Shopify/polaris/tree/master/examples/cdn-styles) to see how it’s done
+- Have a look at the [CSS examples](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles) to see how it’s done
 
 ---
 
 ## Using components
 
-You can find comprehensive [instructions](https://github.com/Shopify/polaris) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris/tree/master/examples) to explore.
+You can find comprehensive [instructions](https://github.com/Shopify/polaris-react) on how to use components in the Polaris GitHub repo. There are also [example applications](https://github.com/Shopify/polaris-react/tree/master/examples) to explore.
 
 Here are some basic instructions to help you get started for both React and CSS-only:
 
@@ -227,4 +227,4 @@ We ensure that our components are made for everyone. They meet accessibility sta
 
 ## Feedback
 
-Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris/issues). At this time we’re not accepting pull requests. This is something we’ll support in the future.
+Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris-react/issues). At this time we’re not accepting pull requests. This is something we’ll support in the future.

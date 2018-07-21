@@ -21,7 +21,7 @@ keywords:
 
 Resource pickers are overlays that allow the merchant to select one or more products or collections. They provide a very powerful search-based UI to help merchants find the appropriate resources, and then provide that information to you through the callbacks the component accepts.
 
-This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
+This component only works within embedded apps. Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
 
 ---
 

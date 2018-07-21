@@ -26,7 +26,7 @@ App provider is a required component that enables sharing global settings throug
 
 ## Best practices
 
-The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris/blob/master/examples/README.md).
+The app provider component is required to use Polaris. Without it, the components in your application will not function correctly. You must wrap the root (the top) of your application in the app provider component. We’ve created [several examples to show how that’s done](https://github.com/Shopify/polaris-react/blob/master/examples/README.md).
 
 ---
 
@@ -199,10 +199,10 @@ To make this easier for you, we've provided:
 
 - a `createPolarisContext()` function to create the Polaris context for you
 - a `polarisContextTypes` variable that contains all the necessary context types
-- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris/tree/master/examples/create-react-app) you can reference
+- a fully-working [example app with Jest and Enzyme](https://github.com/Shopify/polaris-react/tree/master/examples/create-react-app) you can reference
 
 ---
 
 ## Additional methods
 
-Some functionality of the underlying EASDK API, like displaying a flash message from within your embedded app, can be accessed through [various methods](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md#access-to-further-easdk-apis). Please note, these methods are scheduled to be removed in a future release of updated Polaris components and the current implementation will be deprecated. At that time, new methods will be provided and the old methods will become backwards compatible.
+Some functionality of the underlying EASDK API, like displaying a flash message from within your embedded app, can be accessed through [various methods](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md#access-to-further-easdk-apis). Please note, these methods are scheduled to be removed in a future release of updated Polaris components and the current implementation will be deprecated. At that time, new methods will be provided and the old methods will become backwards compatible.
