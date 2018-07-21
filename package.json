@@ -42,7 +42,7 @@
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean optimize copy-polaris-tokens",
     "build": "babel-node ./scripts/build.js",
-    "prebuild-consumer": "npm-run-all build",
+    "prebuild-consumer": "yarn run build",
     "build-consumer": "babel-node ./scripts/build-consumer",
     "build-shrink-ray": "yarn run copy-polaris-tokens && node ./scripts/build-shrink-ray.js",
     "secrets": "ejson decrypt -o secrets.json secrets.ejson",
@@ -52,7 +52,7 @@
     "preopen-styleguide-pr": "rimraf sandbox && yarn run secrets",
     "open-styleguide-pr": "babel-node ./scripts/open-styleguide-pr",
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
-    "prepublish": "in-publish && npm-run-all build || :",
+    "prepublish": "in-publish && yarn run build || :",
     "postpublish": "in-publish && npm-run-all cdn open-styleguide-pr || :",
     "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
@@ -61,7 +61,7 @@
     "start": "node ./tophat/index.js",
     "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets",
     "readme-update-version": "babel-node ./scripts/readme-update-version",
-    "version-bump": "babel-node ./scripts/version-bump"
+    "version": "yarn run readme-update-version"
   },
   "stylelint": {
     "extends": [

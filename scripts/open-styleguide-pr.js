@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {execSync} from 'child_process';
 import {resolve} from 'path';
 import {mkdir} from 'shelljs';
@@ -79,7 +78,7 @@ execSync(
 const updateBody = `
 ## Version ${releaseVersion} of @shopify/polaris just got published!
 
-See what’s new: https://github.com/Shopify/polaris/releases/tag/${releaseVersion}
+See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${releaseVersion}
 
 cc @kaelig @dfmcphee @amrocha
 
@@ -122,6 +121,7 @@ execSync(
   )}' -X POST https://api.github.com/repos/shopify/polaris-styleguide/pulls?access_token=${polarisBotToken}`,
   execOpts,
 );
+// eslint-disable-next-line no-console
 console.log(
   'Done: a pull request was opened at https://github.com/shopify/polaris-styleguide/pulls',
 );

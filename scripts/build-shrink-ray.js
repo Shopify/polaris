@@ -20,6 +20,7 @@ process.on('unhandledRejection', (reason) => {
 if (sha) {
   setupShrinkRay();
 } else {
+  // eslint-disable-next-line no-console
   console.log(
     'sha is not available, building bundle without pinging shrink-ray',
   );
@@ -33,26 +34,35 @@ function buildPackages(includeReport) {
 }
 
 function setupShrinkRay() {
+  // eslint-disable-next-line no-console
   console.log('[shrink-ray] Running shrink-ray prebuild script...');
   sendCommitStatus('pending')
     .then((response) => {
+      // eslint-disable-next-line no-console
       console.log(`[shrink-ray] status: ${response.status}`);
+      // eslint-disable-next-line no-console
       console.log(`[shrink-ray] statusText: ${response.statusText}`);
+      // eslint-disable-next-line no-console
       console.log('[shrink-ray] shrink-ray prebuild script completed.');
       buildPackages(true);
       return postReportToShrinkRay();
     })
     .then((response) => {
+      // eslint-disable-next-line no-console
       console.log(`[shrink-ray] Status: ${response.status}`);
+      // eslint-disable-next-line no-console
       console.log(`[shrink-ray] Status text: ${response.statusText}`);
       return response.text();
     })
     .then((responseText) => {
+      // eslint-disable-next-line no-console
       console.log(`[shrink-ray] Response text: ${responseText}`);
+      // eslint-disable-next-line no-console
       console.log('[shrink-ray] Postbuild script completed.');
       return true;
     })
     .catch((error) => {
+      // eslint-disable-next-line no-console
       console.log('ERROR: ', error);
 
       // eslint-disable-next-line promise/no-nesting
@@ -69,12 +79,15 @@ function setupShrinkRay() {
 function sendCommitStatus(state) {
   // prettier-ignore
   const statusUrl = `https://shrink-ray.shopifycloud.com/repos/${repo}/commits/${sha}/status/${state}`;
+  // eslint-disable-next-line no-console
   console.log(`[shrink-ray] POST ${statusUrl}`);
   return fetch(statusUrl, {method: 'POST'});
 }
 
 function postReportToShrinkRay() {
+  // eslint-disable-next-line no-console
   console.log('[shrink-ray] Running shrink-ray postbuild script...');
+  // eslint-disable-next-line no-console
   console.log(`[shrink-ray] POST ${postWebpackReportURL}`);
 
   if (!existsSync(report)) {
@@ -89,6 +102,7 @@ function postReportToShrinkRay() {
     encoding: 'utf8',
   }).trim();
 
+  // eslint-disable-next-line no-console
   console.log('[shrink-ray] masterSha: ', masterSha);
 
   return fetch(postWebpackReportURL, {

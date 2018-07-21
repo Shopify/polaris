@@ -46,15 +46,11 @@ mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 const srcReadme = resolvePath(root, './src/components/README.md');
 const destinationReadme = resolvePath(docs, './components/README.md');
 
-copy(['./src/**/*.md', docs], {up: 1})
-  .then(() => {
-    writeFileSync(destinationReadme, readFileSync(srcReadme, 'utf8'));
-  })
-  .catch((error) => {
-    // eslint-disable-next-line no-console
-    console.error(error);
-    process.exit(1);
-  });
+copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
+  // eslint-disable-next-line no-console
+  console.error(error);
+  process.exit(1);
+});
 
 copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   .then(() => {
