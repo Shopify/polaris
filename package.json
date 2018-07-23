@@ -5,10 +5,10 @@
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://github.com/Shopify/polaris#readme",
-  "repository": "https://github.com/Shopify/polaris",
+  "homepage": "https://github.com/Shopify/polaris-react#readme",
+  "repository": "https://github.com/Shopify/polaris-react",
   "bugs": {
-    "url": "https://github.com/Shopify/polaris/issues"
+    "url": "https://github.com/Shopify/polaris-react/issues"
   },
   "publishConfig": {
     "access": "public"

@@ -26,7 +26,7 @@ keywords:
 
 The embedded page component builds the outer wrapper of a page for embedded apps, including the page title and associated actions. It’s a customized version of the standalone [page component](https://polaris.shopify.com/components/structure/page#navigation).
 
-Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
+Read the [Embedded App SDK (EASDK) getting started guide](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md) for more details on how to use the EASDK with Polaris.
 
 ---
 
