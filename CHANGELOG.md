@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+### Enhancements
+
+- Added `Scrollable.ScrollTo` subcomponent ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
+
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements

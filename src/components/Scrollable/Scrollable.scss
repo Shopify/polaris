@@ -6,6 +6,7 @@ $shadow-top: inset 0 $shadow-size $shadow-size (-1 * $shadow-size) $shadow-color
 
 .Scrollable {
   -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
 .horizontal {
