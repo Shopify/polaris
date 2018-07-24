@@ -20,10 +20,15 @@ export default function AnnotatedSection(props: Props) {
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
           <TextContainer>
-            <Heading>{title}</Heading>
-            <div className={styles.AnnotationDescription}>
-              {descriptionMarkup}
-            </div>
+            <Heading testID="AnnotationTitle">{title}</Heading>
+            {descriptionMarkup && (
+              <div
+                className={styles.AnnotationDescription}
+                testID="AnnotationDescription"
+              >
+                {descriptionMarkup}
+              </div>
+            )}
           </TextContainer>
         </div>
 
