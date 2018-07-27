@@ -248,4 +248,34 @@ describe('<Button />', () => {
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('onKeyPress()', () => {
+    it('is called when a keypress event is registered on the button', () => {
+      const spy = jest.fn();
+      shallowWithAppProvider(<Button onKeyPress={spy}>Test</Button>).simulate(
+        'keypress',
+      );
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('onKeyUp()', () => {
+    it('is called when a keyup event is registered on the button', () => {
+      const spy = jest.fn();
+      shallowWithAppProvider(<Button onKeyUp={spy}>Test</Button>).simulate(
+        'keyup',
+      );
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('onKeyDown()', () => {
+    it('is called when a keydown event is registered on the button', () => {
+      const spy = jest.fn();
+      shallowWithAppProvider(<Button onKeyDown={spy}>Test</Button>).simulate(
+        'keydown',
+      );
+      expect(spy).toHaveBeenCalled();
+    });
+  });
 });
