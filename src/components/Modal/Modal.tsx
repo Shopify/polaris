@@ -29,6 +29,8 @@ export interface Props extends FooterProps {
   open: boolean;
   /** The url that will be loaded as the content of the modal */
   src?: string;
+  /** The name of the modal content iframe */
+  iFrameName?: string;
   /** The content for the title of the modal (EASDK accepts string) */
   title?: string | React.ReactNode;
   /** The content to display inside modal (Modal use only) */
@@ -131,6 +133,7 @@ export class Modal extends React.Component<CombinedProps, State> {
       onClose,
       title,
       src,
+      iFrameName,
       open,
       instant,
       sectioned,
@@ -176,6 +179,7 @@ export class Modal extends React.Component<CombinedProps, State> {
 
       const bodyMarkup = src ? (
         <iframe
+          name={iFrameName}
           title={iframeTitle}
           src={src}
           className={styles.IFrame}
