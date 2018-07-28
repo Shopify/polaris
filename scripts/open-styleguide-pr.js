@@ -55,6 +55,13 @@ execSync(
   `git ${gitPolarisStyleguideDirectoryOverride} checkout -b update-polaris-${releaseVersion}`,
   execOpts,
 );
+
+// Ensure all @shopify/* packages are pulled from the public registry
+execSync(
+  'npm config set @shopify:registry https://registry.yarnpkg.com',
+  execOpts,
+);
+
 execSync(
   `yarn upgrade @shopify/polaris@${releaseVersion.replace(
     'v',
