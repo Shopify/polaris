@@ -1,3 +1,5 @@
+🆕 🎉 📰 **July 30, 2018 – In the coming weeks, _all_ active development and issue tracking for Polaris React will move to this repository. At that time, we will start accepting pull requests. We look forward to your contributions!**
+
 # Polaris
 
 [![CircleCI](https://circleci.com/gh/Shopify/polaris.svg?style=svg)](https://circleci.com/gh/Shopify/polaris)
