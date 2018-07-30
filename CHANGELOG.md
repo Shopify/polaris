@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Enhancements
+
+- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 
 ## 2.5.0 - 2018-07-20
 
