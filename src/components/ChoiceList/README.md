@@ -174,6 +174,7 @@ If your list contains helper text, only the description below the list item shou
 ### Single choice list
 
 Allows the merchant to select one option from a list.
+
 - Make sure all options are an either/or choice.
 
 ```jsx
@@ -206,16 +207,21 @@ class ChoiceListExample extends React.Component {
 ```
 
 <!-- content-for: android -->
- ![Single choice list for Android](components/ChoiceList/android/single-choice.png)
- <!-- /content-for -->
 
- <!-- content-for: ios -->
- ![Single choice list for iOS](components/ChoiceList/ios/single-choice.png)
- <!-- /content-for -->
+![Single choice list for Android](components/ChoiceList/android/single-choice.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Single choice list for iOS](components/ChoiceList/ios/single-choice.png)
+
+<!-- /content-for -->
 
 ### Multi-choice list
 
 Allows the merchant to select multiple options from a list.
+
 - Avoid options that are an either/or choice.
 
 ```jsx
@@ -258,14 +264,19 @@ class ChoiceListExample extends React.Component {
 ```
 
 <!-- content-for: android -->
- ![Multi choice list for Android](components/ChoiceList/android/multi-choice.png)
- <!-- /content-for -->
 
- <!-- content-for: ios -->
- ![Multi choice list for iOS](components/ChoiceList/ios/multi-choice.png)
- <!-- /content-for -->
+![Multi choice list for Android](components/ChoiceList/android/multi-choice.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Multi choice list for iOS](components/ChoiceList/ios/multi-choice.png)
+
+<!-- /content-for -->
 
 ### Single-choice or multi-choice list with children content (always rendered)
+
 <!-- example-for: web -->
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
@@ -318,6 +329,7 @@ class ChoiceListExample extends React.Component {
 ```
 
 ### Single-choice or multi-choice list with children content (only rendered when choice is selected)
+
 <!-- example-for: web -->
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
