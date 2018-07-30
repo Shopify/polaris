@@ -17,7 +17,7 @@ export type Size = 'slim' | 'large';
 
 export interface Props {
   /** The content to display inside the button */
-  children?: string;
+  children?: string | string[];
   /** A destination to link to, rendered in the href attribute of a link */
   url?: string;
   /** A unique identifier for the button */

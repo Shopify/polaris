@@ -10,6 +10,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 
+### Bug fixes
+
+- Allowed an array of strings as Button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
+
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements
