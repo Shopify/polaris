@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {Action} from '../../types';
 import Image from '../Image';
 import {buttonFrom} from '../Button';
-import ButtonGroup from '../ButtonGroup';
+import Stack from '../Stack';
 import TextContainer from '../TextContainer';
 import DisplayText from '../DisplayText';
 
@@ -80,10 +80,10 @@ export default class EmptyState extends React.PureComponent<Props, never> {
               </TextContainer>
 
               <div className={styles.Actions}>
-                <ButtonGroup>
+                <Stack alignment="center">
                   {buttonFrom(action, {primary: true, size: 'large'})}
                   {secondaryActionMarkup}
-                </ButtonGroup>
+                </Stack>
               </div>
             </div>
           </div>
