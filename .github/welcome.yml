@@ -1,0 +1,13 @@
+# Configuration for welcome – https://github.com/Shopify/probot-shopify/tree/master/src/probots/welcome
+
+# Comment to be posted to on first time issues
+newIssueWelcomeComment: >
+  👋 Thanks for opening your first issue. A contributor should give feedback soon. If you haven’t already, please check out the [contributing guidelines](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md). You can also join [#polaris](https://shopifypartners.slack.com/messages/C8PTBMWNR) on the Shopify Partners Slack.
+
+# Comment to be posted to on PRs from first time contributors in your repository
+newPRWelcomeComment: >
+  👋 Thanks for opening your first pull request. A contributor should give feedback soon. If you haven’t already, please check out the [contributing guidelines](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md). You can also join [#polaris](https://shopifypartners.slack.com/messages/C8PTBMWNR) on the Shopify Partners Slack.
+
+# Comment to be posted to on pull requests merged by a first time user
+firstPRMergeComment: >
+  🎉 Thanks for your contribution to Polaris React!
