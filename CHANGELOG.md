@@ -12,6 +12,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+- Fixed alignement of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
 - Allowed an array of strings as Button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
 
 ## 2.5.0 - 2018-07-20
