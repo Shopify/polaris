@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import glob from 'glob';
 import {
   writeFileSync,
@@ -105,6 +103,7 @@ function generateSassZip(sourceDir, destinationDir) {
     });
 
     output.on('close', () => {
+      // eslint-disable-next-line no-console
       console.log(`Sass zip complete: ${archive.pointer()} total bytes`);
       resolveSass();
     });
@@ -140,6 +139,7 @@ function namespaceSassClasses(filePath, file, tokens) {
   const namespaces = tokens[sassPath];
 
   if (!namespaces) {
+    // eslint-disable-next-line no-console
     console.log(`File path not in tokens: ${filePath}`);
     return file;
   }
