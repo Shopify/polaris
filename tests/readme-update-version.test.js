@@ -3,20 +3,19 @@ const {semverRegExp, readmes} = require('../scripts/utilities');
 
 describe('readme-update-version', () => {
   it('matches 5 semver numbers in READMEs', () => {
-    let occurances = 0;
-    readmes.forEach((readmePath) => {
+    const occurrences = readmes.reduce((accumulator, readmePath) => {
       const readme = fs.readFileSync(readmePath, 'utf8');
-      occurances += (readme.match(semverRegExp) || []).length;
-    });
+      return accumulator + (readme.match(semverRegExp) || []).length;
+    }, 0);
 
-    expect(occurances).toBe(5);
+    expect(occurrences).toBe(5);
   });
 
   it('semverRegExp matches a variety of valid semver numbers', () => {
     const testCase =
-      'Both version 2.5.0 and 99.99.99-beta.1 are valid, foo.bar.qux is not';
-    const occurances = (testCase.match(semverRegExp) || []).length;
+      'Version 2.5.0 (or v2.5.0) and 99.99.99-beta.1 are valid, so is version v100.200.300. But, foo.bar.qux is not';
+    const occurrences = (testCase.match(semverRegExp) || []).length;
 
-    expect(occurances).toBe(2);
+    expect(occurrences).toBe(4);
   });
 });
