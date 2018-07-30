@@ -6,7 +6,7 @@ import {
 } from '../../components/AppProvider';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
-import ToolTip from '../Tooltip';
+import Tooltip from '../Tooltip';
 import KeypressListener from '../KeypressListener';
 import {Keys} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -115,13 +115,13 @@ function Pagination({
   );
 
   const constructedPrevious = previousTooltip ? (
-    <ToolTip content={previousTooltip}>{previousButton}</ToolTip>
+    <Tooltip content={previousTooltip}>{previousButton}</Tooltip>
   ) : (
     previousButton
   );
 
   const constructedNext = nextTooltip ? (
-    <ToolTip content={nextTooltip}>{nextButton}</ToolTip>
+    <Tooltip content={nextTooltip}>{nextButton}</Tooltip>
   ) : (
     nextButton
   );
@@ -129,9 +129,9 @@ function Pagination({
   const previousButtonEvents =
     previousKeys &&
     (previousURL || onPrevious) &&
-    previousKeys.map((key, idx) => (
+    previousKeys.map((key) => (
       <KeypressListener
-        key={idx}
+        key={key}
         keyCode={key}
         handler={
           previousURL
@@ -144,9 +144,9 @@ function Pagination({
   const nextButtonEvents =
     nextKeys &&
     (nextURL || onNext) &&
-    nextKeys.map((key, idx) => (
+    nextKeys.map((key) => (
       <KeypressListener
-        key={idx}
+        key={key}
         keyCode={key}
         handler={
           nextURL ? clickPaginationLink('nextURL') : (onNext as () => void)
