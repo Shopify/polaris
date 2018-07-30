@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
+- Added `Progress` export to Badge
 
 ### Bug fixes
 
