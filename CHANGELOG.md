@@ -10,6 +10,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 
+- Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
+
 ### Bug fixes
 
 - Allowed an array of strings as Button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
