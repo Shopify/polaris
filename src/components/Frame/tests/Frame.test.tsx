@@ -43,13 +43,13 @@ describe('<Frame />', () => {
   });
 
   it('renders with a has nav data attribute when nav is passed', () => {
-    const nav = <div />;
-    const frame = mountWithAppProvider(<Frame nav={nav} />);
-    expect(frame.find('[data-has-nav]')).toHaveLength(1);
+    const navigation = <div />;
+    const frame = mountWithAppProvider(<Frame navigation={navigation} />);
+    expect(frame.find('[data-has-navigation]')).toHaveLength(1);
   });
 
   it('does not render with a has nav data attribute when nav is not passed', () => {
     const frame = mountWithAppProvider(<Frame />);
-    expect(frame.find('[data-has-nav]')).toHaveLength(0);
+    expect(frame.find('[data-has-navigation]')).toHaveLength(0);
   });
 });

@@ -1,4 +1,4 @@
-$nav-width: 240px !default;
+$navigation-width: 240px !default;
 
 ////
 /// Layout
@@ -15,7 +15,7 @@ $layout-width-data: (
     max: rem(320px),
   ),
   nav: (
-    base: rem($nav-width),
+    base: rem($navigation-width),
   ),
   page-with-nav: (
     base: rem(769px),

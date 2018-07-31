@@ -123,7 +123,7 @@ $skip-vertical-offset: rem(10px);
   height: calc(100% - #{top-bar-height()});
   padding-top: top-bar-height();
   @include frame-when-nav-displayed {
-    [data-has-nav] & {
+    [data-has-navigation] & {
       padding-left: layout-width(nav);
     }
   }
@@ -137,7 +137,7 @@ $skip-vertical-offset: rem(10px);
   bottom: 0;
   width: 100%;
   @include frame-when-nav-displayed {
-    [data-has-nav] & {
+    [data-has-navigation] & {
       left: layout-width(nav);
       width: calc(100% - #{layout-width(nav)});
     }

@@ -45,7 +45,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @media
       (max-width: #{min($nav-min-window, $size)}),
       (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
-      [data-has-nav] {
+      [data-has-navigation] {
         @content;
       }
     }
@@ -58,7 +58,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @media
       (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
       (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-      [data-has-nav] {
+      [data-has-navigation] {
         @content;
       }
     }
@@ -71,7 +71,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @media
       (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
       (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-      [data-has-nav] {
+      [data-has-navigation] {
         @content;
       }
     }
@@ -90,7 +90,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @media
       (max-width: #{$nav-min-window}) and (min-width: #{$size}),
       (min-width: #{$nav-size + $size}) {
-      [data-has-nav] {
+      [data-has-navigation] {
         @content;
       }
     }
@@ -103,7 +103,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @media
       (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
       (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
-      [data-has-nav] {
+      [data-has-navigation] {
         @content;
       }
     }
@@ -116,7 +116,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @media
       (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
       (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-      [data-has-nav] {
+      [data-has-navigation] {
         @content;
       }
     }
