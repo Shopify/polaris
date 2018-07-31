@@ -4,8 +4,8 @@ import {
   isElementOfType,
 } from '@shopify/react-utilities/components';
 
-import Group from './Group';
-import Item, {Props as ItemProps} from './Item';
+import Group from './components/Group';
+import Item, {Props as ItemProps} from './components/Item';
 import * as styles from './FormLayout.scss';
 
 export interface Props {

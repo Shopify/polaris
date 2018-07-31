@@ -5,7 +5,7 @@ import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
 import Portal from '../Portal';
-import TooltipOverlay from './TooltipOverlay';
+import TooltipOverlay from './components/TooltipOverlay';
 import * as styles from './Tooltip.scss';
 
 export interface Props {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {elementChildren} from '@shopify/react-utilities/components';
-import Item from './Item';
+import Item from './components/Item/Item';
 import * as styles from './ButtonGroup.scss';
 
 export interface Props {

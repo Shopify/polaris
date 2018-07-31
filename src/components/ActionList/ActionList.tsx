@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ItemDescriptor} from './types';
-import Section, {ActionListSection} from './Section';
+import Section, {ActionListSection} from './components/Section';
 
 import * as styles from './ActionList.scss';
 

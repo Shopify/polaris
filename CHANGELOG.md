@@ -4,17 +4,32 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Enhancements
+
+- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
+- Added `Progress` export to Badge
+
+- Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
+
+### Bug fixes
+
+- Fixed alignement of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
+- Allowed an array of strings as Button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
 
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements
+
+- Updated sub component structure ([#1266](https://github.com/Shopify/polaris-react/pull/1266))
 
 - Added `weekStartsOn` prop to Datepicker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ### Bug fixes
 
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
+- Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
 
 ### Documentation
 

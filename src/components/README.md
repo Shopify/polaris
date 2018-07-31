@@ -1,10 +1,10 @@
 ---
 name: Get started
 slug: get-started
-icon:
-categoryName:
-categorySlug:
-order:
+icon: ~
+categoryName: ~
+categorySlug: ~
+order: ~
 ---
 
 # Components

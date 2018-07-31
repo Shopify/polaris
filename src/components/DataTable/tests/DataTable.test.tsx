@@ -3,7 +3,7 @@ import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
 import DataTable, {CombinedProps as Props} from '../DataTable';
-import Cell from '../Cell';
+import Cell from '../components/Cell/Cell';
 
 interface DataTableTestProps {
   sortable?: Props['sortable'];

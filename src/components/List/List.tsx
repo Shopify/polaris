@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import * as styles from './List.scss';
-import Item from './Item';
+import Item from './components/Item';
 
 export type Type = 'bullet' | 'number';
 

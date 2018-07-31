@@ -13,6 +13,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/configure.js"
+  ],
   "keywords": [
     "shopify",
     "polaris",
@@ -85,7 +90,6 @@
     "@babel/standalone": "^7.0.0-beta.51",
     "@percy/puppeteer": "^0.3.2",
     "@shopify/js-uploader": "github:shopify/js-uploader",
-    "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-serialize": "^1.0.6",
     "@types/enzyme": "^2.8.12",
     "@types/jest": "^21.1.2",
@@ -193,6 +197,7 @@
   "dependencies": {
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.0",
+    "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-html": "^3.0.3",
     "@shopify/react-utilities": "2.0.0-beta.9",
     "@types/prop-types": "^15.5.2",

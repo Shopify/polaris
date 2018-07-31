@@ -8,8 +8,8 @@ import {
 } from '../../components/AppProvider';
 import EventListener from '../EventListener';
 
-import Cell, {Props as CellProps} from './Cell';
-import Navigation from './Navigation';
+import Cell, {Props as CellProps} from './components/Cell';
+import Navigation from './components/Navigation';
 
 import * as styles from './DataTable.scss';
 
