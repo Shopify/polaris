@@ -15,7 +15,7 @@ const sandbox = resolve(root, 'sandbox');
 const polarisStyleguide = resolve(sandbox, STYLEGUIDE);
 const releaseVersion = `v${packageVersion}`;
 
-const baseBranch = 'open-development-dry-run';
+const baseBranch = 'master';
 
 mkdir(sandbox);
 const execOpts = {stdio: 'inherit'};
