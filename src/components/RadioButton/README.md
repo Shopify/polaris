@@ -1,6 +1,10 @@
 ---
 name: Radio button
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - RadioButton
   - selection
@@ -11,6 +15,8 @@ keywords:
   - choice form
   - option button
   - radio button form
+  - toggle
+  - switch
 ---
 
 # Radio button
@@ -71,6 +77,19 @@ Radio button labels should:
 
 <!-- end -->
 
+### Toggle (Android and iOS only)
+
+Toggle labels should:
+
+- Be clear what merchants are enabling or disabling
+- Start with a capital letter
+
+Toggle values should:
+
+- Never be labeled
+
+<!-- end -->
+
 ## Examples
 
 ### Default radio button
@@ -112,6 +131,34 @@ class RadioButtonExample extends React.Component {
   }
 }
 ```
+
+<!-- content-for: android -->
+
+![Default radio button on Android](components/RadioButton/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default radio button on iOS](components/RadioButton/ios/default.png)
+
+<!-- /content-for -->
+
+### Toggle
+
+Use toggles when merchants need to make a binary choice (on or off).
+
+<!-- content-for: android -->
+
+![Android toggle with on or off options](components/RadioButton/android/toggle.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![iOS toggle with on or off options](components/RadioButton/ios/toggle.png)
+
+<!-- /content-for -->
 
 ---
 
