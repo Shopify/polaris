@@ -208,7 +208,7 @@ execSync(
 
 // Ensure all @shopify/* packages are pulled from the public registry
 execSync(
-  'npm config set @shopify:registry https://registry.yarnpkg.com',
+  'npm config set @shopify:registry https://registry.npmjs.org',
   execOpts,
 );
 execSync(
