@@ -3,9 +3,9 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import DatePicker from '../DatePicker';
-import MonthComponent from '../Month';
-import Day from '../Day';
-import Weekday from '../Weekday';
+import MonthComponent from '../components/Month/Month';
+import Day from '../components/Day/Day';
+import Weekday from '../components/Weekday';
 
 describe('<DatePicker />', () => {
   const selected = {

@@ -20,7 +20,7 @@ import {
 } from '../../components/AppProvider';
 import Button from '../Button';
 
-import Month from './Month';
+import Month from './components/Month';
 import * as styles from './DatePicker.scss';
 
 export {Range, Months, Year};

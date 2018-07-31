@@ -14,7 +14,7 @@ import {
   calculateVerticalPosition,
   calculateHorizontalPosition,
   rectIsOutsideOfRect,
-} from './math';
+} from './utilities/math';
 
 import * as styles from './PositionedOverlay.scss';
 

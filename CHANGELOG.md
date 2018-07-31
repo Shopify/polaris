@@ -18,6 +18,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Updated sub component structure ([#1266](https://github.com/Shopify/polaris-react/pull/1266))
+
 - Added `weekStartsOn` prop to Datepicker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ### Bug fixes

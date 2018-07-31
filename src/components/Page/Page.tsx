@@ -5,7 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import Header from './Header';
+import Header from './components/Header';
 import {PageProps} from './types';
 
 import * as styles from './Page.scss';
