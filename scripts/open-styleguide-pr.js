@@ -15,32 +15,12 @@ const sandbox = resolve(root, 'sandbox');
 const polarisStyleguide = resolve(sandbox, STYLEGUIDE);
 const releaseVersion = `v${packageVersion}`;
 
-// Compute the base branch on polaris-styleguide (default: master)
-// Example: will open a PR against the v4 branch if the
-// version found in package.json is `4.0.0-beta.x`
-
-// Check if a version is a major pre-release:
-// isMajorPrerelease('2.0.0') => false
-// isMajorPrerelease('3.0.1-beta') => false
-// isMajorPrerelease('1.1.0-alpha') => false
-// isMajorPrerelease('2.0.0-beta.1') => true
-// isMajorPrerelease('3.0.0-alpha') => true
-function isMajorPrerelease(version) {
-  return (
-    semver.prerelease(version) &&
-    semver.minor(version) === 0 &&
-    semver.patch(version) === 0
-  );
-}
-
-const baseBranch = isMajorPrerelease(packageVersion)
-  ? `v${semver.major(packageVersion)}`
-  : 'master';
+const baseBranch = 'open-development-dry-run';
 
 mkdir(sandbox);
 const execOpts = {stdio: 'inherit'};
 execSync(
-  `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/polaris-styleguide.git ${polarisStyleguide}`,
+  `git clone --branch master --single-branch https://${polarisBotToken}@github.com/Shopify/polaris-styleguide.git ${polarisStyleguide}`,
   execOpts,
 );
 
