@@ -45,6 +45,8 @@ export interface ThemeContext {
   logo: Theme['logo'] | null;
 }
 
+export type ThemeVariant = 'light' | 'dark';
+
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
   theme: PropTypes.any,

@@ -1,6 +1,13 @@
 import * as React from 'react';
+import tokens from '@shopify/polaris-tokens';
 
-import {translate, createPolarisContext} from '../utils';
+import {documentHasStyle} from '../../../../tests/utilities';
+import {
+  translate,
+  createPolarisContext,
+  setTextColor,
+  setTheme,
+} from '../utils';
 import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
@@ -94,5 +101,36 @@ describe('createPolarisContext()', () => {
     };
 
     expect(context).toEqual(mockContext);
+  });
+});
+
+describe('setTextColor', () => {
+  it('sets a css variable to white if the variant is dark', () => {
+    setTextColor('topBar', 'dark');
+    expect(documentHasStyle('topBar', tokens.colorWhiteBase)).toBe(true);
+  });
+
+  it('sets a css variable to ink if the variant is light', () => {
+    setTextColor('topBar', 'light');
+    expect(documentHasStyle('topBar', tokens.colorInkBase)).toBe(true);
+  });
+});
+
+describe('setTheme', () => {
+  it('sets a base theme', () => {
+    setTheme(
+      {hue: 184, saturation: 100, lightness: 28},
+      'topBar',
+      'background',
+      'dark',
+    );
+    // document will have the variables in pascal case
+    expect(
+      documentHasStyle('TopBarBackgroundDarker', 'hsl(184, 110%, 19%, 1)'),
+    ).toBe(true);
+    expect(
+      documentHasStyle('TopBarBackgroundLighter', 'hsl(184, 70%, 42%, 1)'),
+    ).toBe(true);
+    expect(documentHasStyle('TopBarColor', 'rgb(255, 255, 255)')).toBe(true);
   });
 });

@@ -13,6 +13,7 @@ $activator-variables: (
 
 .Activator {
   @include unstyled-button;
+  color: var(--top-bar-color);
   position: relative;
   display: flex;
   justify-content: center;

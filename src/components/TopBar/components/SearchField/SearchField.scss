@@ -76,13 +76,13 @@ $stacking-order: (
   border: none;
   background-color: transparent;
   outline: none;
-  color: color('white');
+  color: var(--top-bar-color);
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: color('white');
+    color: var(--top-bar-color);
   }
 
   &::-webkit-search-decoration,
@@ -92,7 +92,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(color('white'));
+  @include recolor-icon(var(--top-bar-color));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -130,4 +130,11 @@ $stacking-order: (
   will-change: background-color;
   transition: background-color duration() easing();
   border-radius: border-radius();
+  animation: toLightBackground 0.01ms;
+}
+
+@keyframes toLightBackground {
+  to {
+    background-color: var(--top-bar-background-lighter);
+  }
 }

@@ -29,6 +29,7 @@ import {
   CreatePolarisContext,
   Theme,
   ColorsToParse,
+  ThemeVariant,
 } from '../types';
 
 import Intl from '../Intl';
@@ -237,19 +238,52 @@ const lightenToString: (
   createLightColor,
 );
 
-function setTextColor(name: string, color: string | HSLColor) {
-  if (typeof color === 'string') {
-    return;
-  }
-
-  const rgbColor = hslToRgb(color);
-
-  if (isLight(rgbColor)) {
+export function setTextColor(name: string, variant: ThemeVariant = 'dark') {
+  if (variant === 'light') {
     setRootProperty(name, tokens.colorInkBase);
     return;
   }
 
-  setRootProperty(name, tokens.colorSkyLighter);
+  setRootProperty(name, tokens.colorWhiteBase);
+}
+
+export function setTheme(
+  color: string | HSLColor,
+  baseName: string,
+  key: string,
+  variant: 'light' | 'dark',
+) {
+  switch (variant) {
+    case 'light':
+      setTextColor(constructColorName(baseName, null, 'color'), 'light');
+
+      setRootProperty(
+        constructColorName(baseName, key, 'darker'),
+        darkenToString(color, 14, 30),
+      );
+
+      setRootProperty(
+        constructColorName(baseName, key, 'lighter'),
+        lightenToString(color, 9, 10),
+      );
+
+      break;
+    case 'dark':
+      setTextColor(constructColorName(baseName, null, 'color'), 'dark');
+
+      setRootProperty(
+        constructColorName(baseName, key, 'darker'),
+        darkenToString(color, 9, 10),
+      );
+
+      setRootProperty(
+        constructColorName(baseName, key, 'lighter'),
+        lightenToString(color, 14, 30),
+      );
+
+      break;
+    default:
+  }
 }
 
 function parseColors([baseName, colors]: [string, ColorsToParse]) {
@@ -260,17 +294,17 @@ function parseColors([baseName, colors]: [string, ColorsToParse]) {
     if (needsVariant(baseName)) {
       const hslColor = colorToHsla(colors[keys[i]]);
 
-      setTextColor(constructColorName(baseName, null, 'color'), hslColor);
+      if (typeof hslColor === 'string') {
+        return;
+      }
 
-      setRootProperty(
-        constructColorName(baseName, keys[i], 'darker'),
-        darkenToString(hslColor, 9, 10),
-      );
+      const rgbColor = hslToRgb(hslColor);
 
-      setRootProperty(
-        constructColorName(baseName, keys[i], 'lighter'),
-        lightenToString(hslColor, 14, 30),
-      );
+      if (isLight(rgbColor)) {
+        setTheme(hslColor, baseName, keys[i], 'light');
+      } else {
+        setTheme(hslColor, baseName, keys[i], 'dark');
+      }
     }
   }
 }

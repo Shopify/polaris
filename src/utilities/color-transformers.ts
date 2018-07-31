@@ -237,7 +237,7 @@ export function hslToString(hslColor: HSLAColor | string) {
     return hslColor;
   }
 
-  const {alpha, hue, lightness, saturation} = hslColor;
+  const {alpha = 1, hue, lightness, saturation} = hslColor;
   return `hsl(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
 }
 

@@ -21,7 +21,7 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
   @include text-style-body;
   font-weight: 500;
   line-height: line-height(subheading);
-  color: color('white');
+  color: var(--top-bar-color);
   text-align: left;
 }
 
@@ -29,6 +29,6 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
   @include text-style-caption;
   @include truncate;
   opacity: 0.7;
-  color: color('white');
+  color: var(--top-bar-color);
   text-align: left;
 }

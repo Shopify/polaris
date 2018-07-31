@@ -90,14 +90,14 @@ describe('<TopBar />', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('will set focused state to true when the navigation button is focused', () => {
+    it('sets focused state to true when the navigation button is focused', () => {
       const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
 
       topBar.find('[aria-label="Toggle menu"]').simulate('focus');
       expect(topBar.state('focused')).toBe(true);
     });
 
-    it('will set focused state to false when the navigation button is blurred', () => {
+    it('sets focused state to false when the navigation button is blurred', () => {
       const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
 
       topBar.find('[aria-label="Toggle menu"]').simulate('focus');
