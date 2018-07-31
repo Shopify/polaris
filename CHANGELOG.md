@@ -19,7 +19,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Documentation
 
-- Added iOS and Android examples for the card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Added iOS and Android examples to the Card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Added iOS and Android examples to the ChoiceList component ([#1825](https://github.com/Shopify/polaris-react/pull/1825))
 
 ### Development workflow
 
