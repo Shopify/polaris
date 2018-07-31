@@ -1,6 +1,10 @@
 ---
 name: Banner
 category: Feedback indicators
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - inform
   - update
@@ -27,9 +31,7 @@ keywords:
 
 # Banner
 
-Banners are used to inform merchants about important changes or persistent
-conditions. They’re one of the most prominent ways to communicate to merchants.
-Banners show at the top of the page or section they apply to.
+Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners show at the top of the page or section they apply to.
 
 ---
 
@@ -257,7 +259,9 @@ including packaging.
 
 ### Default banners
 
-Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
+- Use to convey general information or actions that aren’t critical
+- For example, you might show a banner that asks for merchant feedback
+- Default banners contain lower priority information and should always be dismissible
 
 ```jsx
 <Banner title="Order archived">
@@ -265,7 +269,21 @@ Use to convey general information or actions that aren’t critical. For example
 </Banner>
 ```
 
+<!-- content-for: android -->
+
+![Default banner for Android](components/Banner/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default banner for iOS](components/Banner/ios/default.png)
+
+<!-- /content-for -->
+
 ### Dismissible banner
+
+<!-- example-for: web -->
 
 Make all banners dismissible, unless they contain critical information or an important action that a merchant is required to take.
 
@@ -295,6 +313,18 @@ Use when you want merchants to take an action after reading the banner.
 </Banner>
 ```
 
+<!-- content-for: android -->
+
+![Banner with footer call-to-action for Android](components/Banner/android/footer-action.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Banner with footer call-to-action for iOS](components/Banner/ios/footer-action.png)
+
+<!-- /content-for -->
+
 ### Informational banners
 
 Use to update merchants about a change or give them advice.
@@ -309,9 +339,23 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
+<!-- content-for: android -->
+
+![Informational banner for Android](components/Banner/android/informational.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Informational banner for iOS](components/Banner/ios/informational.png)
+
+<!-- /content-for -->
+
 ### Success banner
 
-Use to inform merchants when actions are successfully completed. Include next steps if applicable. If the feedback is delayed, persistent or has a call to action, use this banner.
+- Use to inform merchants when actions are successfully completed
+- Include next steps if applicable
+- If the feedback is delayed, persistent or has a call to action, use this banner
 
 ```jsx
 <Banner
@@ -321,9 +365,22 @@ Use to inform merchants when actions are successfully completed. Include next st
 />
 ```
 
+<!-- content-for: android -->
+
+![Success banner for Android](components/Banner/android/success.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Success banner for iOS](components/Banner/ios/success.png)
+
+<!-- /content-for -->
+
 ### Warning banners
 
-Use to display information that needs attention or that the merchant needs to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
+- Use to display information that needs attention or that the merchant needs to take action on
+- Seeing these banners can be stressful for merchants so be cautious about using them
 
 ```jsx
 <Banner
@@ -340,9 +397,23 @@ Use to display information that needs attention or that the merchant needs to ta
 </Banner>
 ```
 
+<!-- content-for: android -->
+
+![Warning banner for Android](components/Banner/android/warning.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Warning banner for iOS](components/Banner/ios/warning.png)
+
+<!-- /content-for -->
+
 ### Critical banners
 
-Use to communicate problems that have to be resolved immediately for merchants to complete a task, or for the highest priority issues such as orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
+- Use to communicate problems that have to be resolved immediately for merchants to complete a task
+- For example, you will show this banner for orders with high fraud risk
+- Seeing these banners can be stressful for merchants so be cautious about using them
 
 ```jsx
 <Banner
@@ -358,7 +429,21 @@ Use to communicate problems that have to be resolved immediately for merchants t
 </Banner>
 ```
 
+<!-- content-for: android -->
+
+![Critical banner for Android](components/Banner/android/critical.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Critical banner for iOS](components/Banner/ios/critical.png)
+
+<!-- /content-for -->
+
 ### Banner in a modal
+
+<!-- example-for: web -->
 
 Banners inside of modals render with less spacing and a paired-back design to fit within a content context.
 
@@ -415,6 +500,8 @@ class ModalExample extends React.Component {
 ```
 
 ### Banner in a card
+
+<!-- example-for: web -->
 
 Banners inside of cards render with less spacing and a paired-back design to fit within a content context.
 
