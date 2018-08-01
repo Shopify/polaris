@@ -18,6 +18,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
 - Allowed an array of strings as button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
+- Swapped the import and export icons ([#1849](https://github.com/Shopify/polaris-react/pull/1849))
 
 ## 2.5.0 - 2018-07-20
 
