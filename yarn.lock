@@ -142,6 +142,15 @@
     lodash "^4.17.4"
     lodash-decorators "^4.3.5"
 
+"@shopify/jest-dom-mocks@^2.0.5":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.0.7.tgz#56a6c641e030b7ff22e0c6576e8fc6ac3b90043d"
+  dependencies:
+    "@shopify/javascript-utilities" "^2.1.0"
+    "@types/fetch-mock" "^6.0.1"
+    fetch-mock "^6.3.0"
+    lolex "^2.3.2"
+
 "@shopify/javascript-utilities@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.2.0.tgz#948d44d4068d602136b0d72de66eed49820e2374"
