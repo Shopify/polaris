@@ -88,8 +88,6 @@ Toggle values should:
 
 - Never be labeled
 
-<!-- end -->
-
 ## Examples
 
 ### Default radio button
@@ -145,6 +143,8 @@ class RadioButtonExample extends React.Component {
 <!-- /content-for -->
 
 ### Toggle
+
+<!-- example-for: android, ios -->
 
 Use toggles when merchants need to make a binary choice (on or off).
 

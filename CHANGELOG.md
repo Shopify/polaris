@@ -14,6 +14,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Allowed an array of strings as Button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
 
+### Documentation
+
+- Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
+
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements
