@@ -1,5 +1,5 @@
 ---
-name: Contextual Save Bar
+name: Contextual save bar
 category: Forms
 keywords:
   - form
@@ -74,20 +74,30 @@ Actions in the contextual save bar component should consist of a strong verb tha
 Use the save action to provide an opportunity to save changes. Use the discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
 
 ```jsx
-<Frame>
-  <ContextualSaveBar
-    visible
-    message="Unsaved changes"
-    saveAction={{
-      onAction: () => console.log('add form submit logic'),
-      loading: false,
-      disabled: false,
-    }}
-    discardAction={{
-      onAction: () => console.log('add clear form logic'),
-    }}
-  />
-</Frame>
+<AppProvider
+  theme={{
+    logo: {
+      width: 130,
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+    },
+  }}
+>
+  <Frame>
+    <ContextualSaveBar
+      visible
+      message="Unsaved changes"
+      saveAction={{
+        onAction: () => console.log('add form submit logic'),
+        loading: false,
+        disabled: false,
+      }}
+      discardAction={{
+        onAction: () => console.log('add clear form logic'),
+      }}
+    />
+  </Frame>
+</AppProvider>
 ```
 
 ### Contextual save bar during creation
@@ -95,20 +105,31 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 Use the save action to provide an opportunity to save a newly-created resource. Use the discard action to allow merchants the option to discard a new resource. Use the message to provide helpful context on the nature of the new resource.
 
 ```jsx
-<Frame>
-  <ContextualSaveBar
-    visible
-    message="Unsaved product"
-    saveAction={{
-      onAction: () => console.log('add form submit logic'),
-      loading: false,
-      disabled: false,
-    }}
-    discardAction={{
-      onAction: () => console.log('add clear form logic'),
-    }}
-  />
-</Frame>
+<AppProvider
+  theme={{
+    logo: {
+      width: 130,
+      contextualSaveBarSource:
+        'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+    }
+  }}
+>
+  <Frame>
+    <ContextualSaveBar
+      visible
+      message="Unsaved product"
+      saveAction={{
+        onAction: () => console.log('add form submit logic'),
+        loading: false,
+        disabled: false,
+      }}
+      discardAction={{
+        onAction: () => console.log('add clear form logic'),
+      }}
+    />
+  </Frame>
+</AppProvider>
+);
 ```
 
 ---

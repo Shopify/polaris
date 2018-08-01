@@ -1,6 +1,6 @@
 ---
 name: Toast
-category: Overlays
+category: Feedback indicators
 keywords:
   - flash
   - flash message
@@ -113,14 +113,16 @@ class ToastExample extends React.Component {
     ) : null;
 
     const toastMarkup2 = showToast2 ? (
-      <Toast content="Image uploaded" onDismiss={this.toggleToast1} />
+      <Toast content="Image uploaded" onDismiss={this.toggleToast2} />
     ) : null;
 
     return (
       <Frame>
         <Page title="Toast example">
-          <Button onClick={this.toggleToast1}>Show toast 1</Button>
-          <Button onClick={this.toggleToast2}>Show toast 2</Button>
+          <ButtonGroup segmented>
+            <Button onClick={this.toggleToast1}>Show toast 1</Button>
+            <Button onClick={this.toggleToast2}>Show toast 2</Button>
+          </ButtonGroup>
           {toastMarkup1}
           {toastMarkup2}
         </Page>

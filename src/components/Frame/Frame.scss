@@ -5,6 +5,7 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  min-height: top-bar-height();
 }
 
 .Navigation {
