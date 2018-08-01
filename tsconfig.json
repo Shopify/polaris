@@ -8,7 +8,7 @@
     "resolveJsonModule": true,
     "declaration": true,
     "declarationDir": "types",
-    "jsx": "react-native",
+    "jsx": "react",
     "strictNullChecks": true,
     "noImplicitAny": true,
     "experimentalDecorators": true,
