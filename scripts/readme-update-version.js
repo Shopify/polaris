@@ -5,7 +5,6 @@ const {version: newVersion} = require('../package.json');
 const {semverRegExp, readmes} = require('./utilities');
 
 const root = resolve(__dirname, '..');
-const readmes = Object.freeze(['README.md', 'src/components/README.md']);
 
 // eslint-disable-next-line no-console
 console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
