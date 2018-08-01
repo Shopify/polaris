@@ -12,12 +12,8 @@ export default class ScrollTo extends React.Component<{}, never> {
     if (!scrollToPosition || !this.ref.current) {
       return;
     }
-    window.requestAnimationFrame(() => {
-      if (!scrollToPosition || !this.ref.current) {
-        return;
-      }
-      scrollToPosition(this.ref.current.offsetTop);
-    });
+
+    scrollToPosition(this.ref.current.offsetTop);
   }
 
   render() {
