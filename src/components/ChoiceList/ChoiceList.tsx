@@ -2,10 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
 import Icon from '../Icon';
