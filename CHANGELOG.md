@@ -10,25 +10,21 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 - Added `Progress` export to Badge
-
 - Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
+- Added `Scrollable.ScrollTo` subcomponent ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
 
 ### Bug fixes
 
-- Fixed alignement of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
-- Allowed an array of strings as Button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
-
-### Enhancements
-
-- Added `Scrollable.ScrollTo` subcomponent ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
+- Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
+- Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
+- Allowed an array of strings as button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
 
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements
 
 - Updated sub component structure ([#1266](https://github.com/Shopify/polaris-react/pull/1266))
-
-- Added `weekStartsOn` prop to Datepicker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
+- Added `weekStartsOn` prop to date picker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ### Bug fixes
 
