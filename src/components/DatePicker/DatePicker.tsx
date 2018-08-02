@@ -54,38 +54,31 @@ export interface Props extends BaseProps {}
 export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
-  range?: Range;
   hoverDate?: Date;
   focusDate?: Date;
 }
 
 export class DatePicker extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
-    const {selected} = nextProps;
-    const range =
-      selected instanceof Date ? {start: selected, end: selected} : selected;
+  state: State = {
+    hoverDate: undefined,
+    focusDate: undefined,
+  };
 
-    if (
-      range != null &&
-      prevState.range != null &&
-      isSameDay(range.start, prevState.range.start) &&
-      isSameDay(range.end, prevState.range.end)
-    ) {
-      return null;
+  componentDidUpdate(prevProps: Props) {
+    const selectedPropDidChange = !isSameSelectedDate(
+      prevProps.selected,
+      this.props.selected,
+    );
+
+    if (selectedPropDidChange) {
+      this.resetFocus();
     }
-
-    return {
-      range,
-      focusDate: undefined,
-      hoverDate: range && range.end,
-    };
   }
-
-  state: State = {};
 
   render() {
     const {
       id,
+      selected,
       month,
       year,
       allowRange,
@@ -96,7 +89,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    const {range, hoverDate, focusDate} = this.state;
+    const {hoverDate, focusDate} = this.state;
 
     const showNextYear = getNextDisplayYear(month, year);
     const showNextMonth = getNextDisplayMonth(month);
@@ -119,7 +112,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
         focusedDate={focusDate}
         month={showNextMonth}
         year={showNextYear}
-        selected={range}
+        selected={deriveRange(selected)}
         hoverDate={hoverDate}
         onChange={this.handleDateSelection}
         onHover={this.handleHover}
@@ -176,7 +169,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
             focusedDate={focusDate}
             month={month}
             year={year}
-            selected={range}
+            selected={deriveRange(selected)}
             hoverDate={hoverDate}
             onChange={this.handleDateSelection}
             onHover={this.handleHover}
@@ -193,17 +186,21 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleFocus(date: Date) {
-    this.setState({
-      focusDate: date,
-    });
+    this.setState({focusDate: date});
+  }
+
+  @autobind
+  private resetFocus() {
+    this.setState({focusDate: undefined});
   }
 
   @autobind
   private handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
     const {key} = event;
-    const {disableDatesBefore, disableDatesAfter} = this.props;
+    const {selected, disableDatesBefore, disableDatesAfter} = this.props;
 
-    const {focusDate, range} = this.state;
+    const {focusDate} = this.state;
+    const range = deriveRange(selected);
     const focusedDate = focusDate || (range && range.start);
 
     if (focusedDate == null) {
@@ -264,13 +261,8 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     const {end} = range;
     const {onChange = noop} = this.props;
 
-    this.setState(
-      {
-        range,
-        hoverDate: end,
-        focusDate: new Date(end),
-      },
-      () => onChange(range),
+    this.setState({hoverDate: end, focusDate: new Date(end)}, () =>
+      onChange(range),
     );
   }
 
@@ -283,6 +275,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     this.setState({
       focusDate: undefined,
     });
+
     onMonthChange(month, year);
   }
 
@@ -306,6 +299,32 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.preventDefault();
     event.stopPropagation();
   }
+}
+
+function isSameSelectedDate(
+  previousDate?: Props['selected'],
+  currentDate?: Props['selected'],
+) {
+  if (previousDate == null || currentDate == null) {
+    return previousDate == null && currentDate == null;
+  }
+
+  if (previousDate instanceof Date || currentDate instanceof Date) {
+    return (
+      previousDate instanceof Date &&
+      currentDate instanceof Date &&
+      isSameDay(previousDate, currentDate)
+    );
+  }
+
+  return (
+    isSameDay(previousDate.start, currentDate.start) &&
+    isSameDay(previousDate.end, currentDate.end)
+  );
+}
+
+function deriveRange(selected?: Date | Range) {
+  return selected instanceof Date ? {start: selected, end: selected} : selected;
 }
 
 export default withAppProvider<Props>()(DatePicker);

@@ -22,7 +22,11 @@ export default class BulkActionButton extends React.PureComponent<
   componentDidMount() {
     const {handleMeasurement} = this.props;
     if (handleMeasurement) {
-      const width = findDOMNode(this).getBoundingClientRect().width;
+      const bulkActionButtonNode = findDOMNode(this);
+      const width =
+        (bulkActionButtonNode instanceof Element &&
+          bulkActionButtonNode.getBoundingClientRect().width) ||
+        0;
       handleMeasurement(width);
     }
   }
