@@ -99,28 +99,28 @@ describe('<ComboBox/>', () => {
     });
   });
 
-  describe('append and prepend', () => {
-    it('renders content passed into append', () => {
+  describe('contentBefore and contentAfter', () => {
+    it('renders content passed into contentBefore', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox
           options={options}
           selected={[]}
           textField={renderTextField()}
           onSelect={emptyFunction}
-          append={renderNodeWithId()}
+          contentBefore={renderNodeWithId()}
         />,
       );
       expect(comboBox.find('#CustomNode').exists()).toBe(true);
     });
 
-    it('renders content passed into prepend', () => {
+    it('renders content passed into contentAfter', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox
           options={options}
           selected={[]}
           textField={renderTextField()}
           onSelect={emptyFunction}
-          prepend={renderNodeWithId()}
+          contentAfter={renderNodeWithId()}
         />,
       );
       expect(comboBox.find('#CustomNode').exists()).toBe(true);

@@ -46,17 +46,6 @@ export default class Option extends React.Component<Props, State> {
     active: false,
   };
 
-  componentWillReceiveProps(nextProps: Props) {
-    if (
-      nextProps.active !== this.props.active &&
-      nextProps.active !== this.state.active
-    ) {
-      nextProps.active
-        ? this.setState({active: true})
-        : this.setState({active: false});
-    }
-  }
-
   render() {
     const {
       label,

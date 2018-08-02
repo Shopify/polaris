@@ -11,6 +11,7 @@ import {contextTypes} from './types';
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
 export interface State {
+  comboBoxId: string;
   selectedOption?: OptionDescriptor | undefined;
   selectedIndex: number;
   selectedOptions: string[];
@@ -27,7 +28,7 @@ export interface Props {
   selected: string[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement<any>;
-  /** Toggles whether a the options should be presented in a popover */
+  /** Toggles whether the options should be presented in a popover */
   popover?: boolean;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
@@ -36,9 +37,9 @@ export interface Props {
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
   /** Content to be displayed before the list of options */
-  prepend?: React.ReactNode;
+  contentBefore?: React.ReactNode;
   /** Content to be displayed after the list of options */
-  append?: React.ReactNode;
+  contentAfter?: React.ReactNode;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
 }
@@ -55,63 +56,69 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   static OptionList = OptionList;
   static childContextTypes = contextTypes;
 
+  static getDerivedStateFromProps(
+    {options: nextOptions, selected: nextSelected}: Props,
+    {navigableOptions, selectedOptions, comboBoxId}: State,
+  ) {
+    const optionsChanged =
+      navigableOptions &&
+      nextOptions &&
+      !optionsAreEqual(navigableOptions, nextOptions);
+
+    if (optionsChanged && selectedOptions !== nextSelected) {
+      return {
+        navigableOptions: assignOptionIds(nextOptions, comboBoxId),
+        selectedOptions: nextSelected,
+      };
+    } else if (optionsChanged) {
+      return {
+        navigableOptions: assignOptionIds(nextOptions, comboBoxId),
+      };
+    } else if (selectedOptions !== nextSelected) {
+      return {selectedOptions: nextSelected};
+    }
+    return null;
+  }
+
   state: State = {
+    comboBoxId: this.getComboBoxId(),
     selectedOption: undefined,
     selectedIndex: -1,
     selectedOptions: this.props.selected,
-    navigableOptions: this.props.options,
+    navigableOptions: assignOptionIds(this.props.options, this.getComboBoxId()),
     popoverActive: false,
   };
 
-  private id = this.props.id || getUniqueId();
   private subscriptions: {(): void}[] = [];
 
   getChildContext(): Context {
     return {
-      comboBoxId: this.id,
+      comboBoxId: this.state.comboBoxId,
       selectedOptionId: this.getSelectedOptionId(),
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
     };
   }
 
-  componentWillMount() {
-    const {options} = this.props;
-    this.assignOptionIds(options);
-  }
-
-  componentWillUpdate(nextProps: Props, nextState: State) {
+  componentDidUpdate(_: Props, nextState: State) {
     const {navigableOptions} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
       navigableOptions &&
       nextState.navigableOptions &&
-      !this.optionsAreEqual(navigableOptions, nextState.navigableOptions);
+      !optionsAreEqual(navigableOptions, nextState.navigableOptions);
 
     if (optionsChanged) {
       this.resetVisuallySelectedOptions();
     }
   }
 
-  componentWillReceiveProps({
-    options: nextOptions,
-    selected: nextSelected,
-  }: Props) {
-    const {options, selected} = this.props;
-    const optionsChanged =
-      options && nextOptions && !this.optionsAreEqual(options, nextOptions);
-
-    if (optionsChanged) {
-      this.assignOptionIds(nextOptions);
-      this.setState({
-        navigableOptions: nextOptions,
-      });
+  getComboBoxId(): string {
+    if (this.state && this.state.comboBoxId) {
+      return this.state.comboBoxId;
     }
-
-    if (selected !== nextSelected) {
-      this.setState({selectedOptions: nextSelected});
-    }
+    return this.props.id || getUniqueId();
   }
 
   render() {
@@ -121,13 +128,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       listTitle,
       allowMultiple,
       preferredPosition,
-      prepend,
-      append,
+      contentBefore,
+      contentAfter,
     } = this.props;
 
     const optionsMarkup = (
       <OptionList
-        id={this.id}
+        id={this.state.comboBoxId}
         role="listbox"
         optionRole="option"
         options={this.state.navigableOptions}
@@ -148,17 +155,17 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           fullWidth
           preventAutofocus
         >
-          {prepend}
+          {contentBefore}
           {optionsMarkup}
-          {append}
+          {contentAfter}
         </Popover>
       </div>
     ) : (
       <div onKeyUp={this.handleKeyDown} onClick={this.handleClick}>
         {textField}
-        {prepend}
+        {contentBefore}
         {optionsMarkup}
-        {append}
+        {contentAfter}
       </div>
     );
   }
@@ -327,31 +334,34 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private assignOptionIds(options: OptionDescriptor[] | undefined) {
-    if (options) {
-      options.map((option, optionIndex) => {
-        option.id = `${this.id}-${optionIndex}`;
-      });
-    }
-  }
-
-  @autobind
   private getSelectedOptionId(): string | undefined {
-    const {selectedOption, selectedIndex} = this.state;
-    return selectedOption ? `${this.id}-${selectedIndex}` : undefined;
+    const {selectedOption, selectedIndex, comboBoxId} = this.state;
+    return selectedOption ? `${comboBoxId}-${selectedIndex}` : undefined;
   }
+}
 
-  @autobind
-  private optionsAreEqual(
-    firstOptions: OptionDescriptor[],
-    secondOptions: OptionDescriptor[],
-  ) {
-    if (firstOptions.length !== secondOptions.length) {
-      return false;
-    }
-    return firstOptions.every((firstItem, index) => {
-      const secondItem = secondOptions[index];
-      return firstItem.value === secondItem.value;
+function assignOptionIds(
+  options: OptionDescriptor[] | undefined,
+  comboBoxId: string,
+): OptionDescriptor[] | undefined {
+  if (options) {
+    options.map((option, optionIndex) => {
+      option.id = `${comboBoxId}-${optionIndex}`;
     });
+    return options;
   }
+  return undefined;
+}
+
+function optionsAreEqual(
+  firstOptions: OptionDescriptor[],
+  secondOptions: OptionDescriptor[],
+) {
+  if (firstOptions.length !== secondOptions.length) {
+    return false;
+  }
+  return firstOptions.every((firstItem, index) => {
+    const secondItem = secondOptions[index];
+    return firstItem.value === secondItem.value;
+  });
 }
