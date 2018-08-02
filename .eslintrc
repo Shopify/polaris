@@ -30,6 +30,7 @@
     "react/no-array-index-key": "off",
     "react/no-did-update-set-state": "off",
     "react/no-access-state-in-setstate": "off",
+    "shopify/strict-component-boundaries": "off",
     "typescript/trailing-comma-interface": "off",
     "jsx-a11y/label-has-for": [
       2,
