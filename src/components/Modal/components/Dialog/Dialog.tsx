@@ -46,8 +46,7 @@ export default function Dialog({
     limitHeight && styles.limitHeight,
   );
   const handleClose = memoizedBind(onClose);
-  const animation = large ? ScaleIn : FadeUp;
-  const TransitionChild = instant ? Transition : animation;
+  const TransitionChild = instant ? Transition : FadeUp;
 
   return (
     <TransitionChild
@@ -89,21 +88,6 @@ const fadeUpClasses = {
 function FadeUp({children, ...props}: any) {
   return (
     <CSSTransition {...props} classNames={fadeUpClasses}>
-      {children}
-    </CSSTransition>
-  );
-}
-
-const scaleInClasses = {
-  enter: classNames(styles.animateScaleIn, styles.entering),
-  enterActive: classNames(styles.animateScaleIn, styles.entered),
-  exit: classNames(styles.animateScaleIn, styles.exiting),
-  exitActive: classNames(styles.animateScaleIn, styles.exited),
-};
-
-function ScaleIn({children, ...props}: any) {
-  return (
-    <CSSTransition {...props} classNames={scaleInClasses}>
       {children}
     </CSSTransition>
   );
