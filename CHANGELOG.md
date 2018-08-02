@@ -12,6 +12,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `Progress` export to Badge
 - Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
 - Added `Scrollable.ScrollTo` subcomponent ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
+- Changed the primary focus target of an activated Popover from the first item to the overlay itself ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
 
 ### Bug fixes
 
