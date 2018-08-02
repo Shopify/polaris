@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {DisplayText, TextStyle, Image, Stack} from '..';
 
 import emptySearch from './illustrations/empty-search.svg';

@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Checkbox} from '../../..';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import * as styles from './CheckableButton.scss';
 

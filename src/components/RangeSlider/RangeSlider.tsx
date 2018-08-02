@@ -3,11 +3,8 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
 import {Error} from '../../types';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Labelled, {Action, helpTextID, errorID} from '../Labelled';
 
 import * as styles from './RangeSlider.scss';
