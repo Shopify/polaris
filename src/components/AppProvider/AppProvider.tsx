@@ -1,5 +1,6 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import EASDK from './EASDK';
 
 import {LinkLikeComponent} from '../UnstyledLink';
@@ -38,6 +39,8 @@ export interface Context {
     link: Link;
     stickyManager: StickyManager;
     theme?: ThemeContext;
+    subscribe?(callback: () => void): void;
+    unsubscribe?(callback: () => void): void;
   };
   easdk?: EASDK;
 }
@@ -46,6 +49,7 @@ export default class AppProvider extends React.Component<Props> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
   private stickyManager: StickyManager;
+  private subscriptions: {(): void}[] = [];
 
   constructor(props: Props) {
     super(props);
@@ -53,6 +57,8 @@ export default class AppProvider extends React.Component<Props> {
     this.polarisContext = createPolarisContext({
       ...props,
       stickyManager: this.stickyManager,
+      subscribe: this.subscribe,
+      unsubscribe: this.unsubscribe,
     });
   }
 
@@ -80,7 +86,8 @@ export default class AppProvider extends React.Component<Props> {
       apiKey !== this.props.apiKey ||
       shopOrigin !== this.props.shopOrigin ||
       forceRedirect !== this.props.forceRedirect ||
-      debug !== this.props.debug
+      debug !== this.props.debug ||
+      theme !== this.props.theme
     ) {
       const stickyManager = this.stickyManager;
       this.polarisContext = createPolarisContext({
@@ -91,8 +98,13 @@ export default class AppProvider extends React.Component<Props> {
         forceRedirect,
         debug,
         stickyManager,
+        theme,
+        subscribe: this.subscribe,
+        unsubscribe: this.unsubscribe,
       });
     }
+
+    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     if (isEqual(theme, this.props.theme)) {
       return;
@@ -107,5 +119,17 @@ export default class AppProvider extends React.Component<Props> {
 
   render() {
     return React.Children.only(this.props.children);
+  }
+
+  @autobind
+  subscribe(callback: () => void) {
+    this.subscriptions.push(callback);
+  }
+
+  @autobind
+  unsubscribe(callback: () => void) {
+    this.subscriptions = this.subscriptions.filter(
+      (subscription) => subscription !== callback,
+    );
   }
 }

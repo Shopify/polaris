@@ -60,6 +60,8 @@ export interface WithAppProviderProps {
     easdk: EASDK;
     stickyManager: StickyManager;
     theme: ThemeContext;
+    subscribe(callback: () => void): void;
+    unsubscribe(callback: () => void): void;
   };
 }
 
@@ -77,4 +79,6 @@ export interface ComplexReplacementDictionary {
 
 export interface CreatePolarisContext extends AppProviderProps {
   stickyManager?: StickyManager;
+  subscribe?(callback: () => void): void;
+  unsubscribe?(callback: () => void): void;
 }
