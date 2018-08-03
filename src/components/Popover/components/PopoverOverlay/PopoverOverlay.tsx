@@ -172,14 +172,14 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-          // tabIndex={0}
+          tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
         <div className={styles.Wrapper}>{content}</div>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-          // tabIndex={0}
+          tabIndex={0}
           onFocus={this.handleFocusLastItem}
         />
       </div>

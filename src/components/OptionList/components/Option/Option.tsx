@@ -98,13 +98,11 @@ export default class Option extends React.Component<Props, State> {
     ) : (
       <button
         type="button"
-        id={id}
         className={singleSelectClassName}
         onClick={this.handleClick}
         disabled={disabled}
         onFocus={this.toggleFocus}
         onBlur={this.toggleFocus}
-        role={role}
       >
         {mediaMarkup}
         {label}

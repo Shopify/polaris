@@ -24,11 +24,10 @@ export default class TextField extends React.PureComponent<
     return (
       <BaseTextField
         {...this.props}
-        role="combobox"
         autoComplete={false}
         ariaAutocomplete="list"
         ariaActiveDescendant={selectedOptionId}
-        ariaOwns={comboBoxId}
+        ariaControls={comboBoxId}
       />
     );
   }

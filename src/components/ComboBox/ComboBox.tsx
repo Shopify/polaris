@@ -28,8 +28,6 @@ export interface Props {
   selected: string[];
   /** The text field component attached to the list of options */
   textField: React.ReactElement<any>;
-  /** Toggles whether the options should be presented in a popover */
-  popover?: boolean;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
   /** Title of the list of options */
@@ -85,7 +83,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     selectedOption: undefined,
     selectedIndex: -1,
     selectedOptions: this.props.selected,
-    navigableOptions: assignOptionIds(this.props.options, this.getComboBoxId()),
+    navigableOptions: [],
     popoverActive: false,
   };
 
@@ -98,6 +96,15 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      navigableOptions: assignOptionIds(
+        this.props.options,
+        this.getComboBoxId(),
+      ),
+    });
   }
 
   componentDidUpdate(_: Props, nextState: State) {
@@ -123,7 +130,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      popover,
       textField,
       listTitle,
       allowMultiple,
@@ -145,8 +151,19 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       />
     );
 
-    return popover ? (
-      <div onKeyDown={this.handleKeyDown} onClick={this.handleClick}>
+    return (
+      <div
+        onKeyDown={this.handleKeyDown}
+        onClick={this.handleClick}
+        role="combobox"
+        aria-expanded={this.state.popoverActive}
+        aria-owns={this.state.comboBoxId}
+        aria-controls={this.state.comboBoxId}
+        aria-haspopup
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        tabIndex={0}
+      >
         <Popover
           activator={textField}
           active={this.state.popoverActive}
@@ -159,13 +176,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           {optionsMarkup}
           {contentAfter}
         </Popover>
-      </div>
-    ) : (
-      <div onKeyUp={this.handleKeyDown} onClick={this.handleClick}>
-        {textField}
-        {contentBefore}
-        {optionsMarkup}
-        {contentAfter}
       </div>
     );
   }
@@ -194,7 +204,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       event.preventDefault();
       this.selectPreviousOption();
     }
-    if (key === 'Enter') {
+    if (key === 'Enter' && this.state.popoverActive) {
       this.state.selectedOption &&
         this.handleSelection(this.state.selectedOption.value);
     }
@@ -203,10 +213,18 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   @autobind
+  private handleFocus() {
+    this.setState({popoverActive: true});
+  }
+
+  @autobind
+  private handleBlur() {
+    this.setState({popoverActive: false});
+  }
+
+  @autobind
   private handleClick() {
-    this.props.popover &&
-      !this.state.popoverActive &&
-      this.setState({popoverActive: true});
+    !this.state.popoverActive && this.setState({popoverActive: true});
   }
 
   @autobind
@@ -254,11 +272,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private openPopoverOnKeyDown(key: string) {
-    const {popover} = this.props;
     const {popoverActive, navigableOptions} = this.state;
 
-    popover &&
-      !popoverActive &&
+    !popoverActive &&
       key !== 'Escape' &&
       navigableOptions &&
       navigableOptions.length > 0 &&
