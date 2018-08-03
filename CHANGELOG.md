@@ -60,6 +60,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added examples for iOS and Android badge ([#1892](https://github.com/Shopify/polaris-react/pull/1892))
 - Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
 
+### New components
+
+#### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
+
+Use inline errors to describe custom form inputs or form groups when invalid.
+
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements
