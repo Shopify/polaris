@@ -216,7 +216,7 @@ export function setColors(theme: Theme | undefined) {
   }
 }
 
-function needsVariant(name: string) {
+export function needsVariant(name: string) {
   return needsVariantList.indexOf(name) !== -1;
 }
 
