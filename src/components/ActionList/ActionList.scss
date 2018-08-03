@@ -70,6 +70,41 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
     @include state(focused);
   }
 
+  &.destructive {
+    color: color('red', 'dark');
+
+    &:active {
+      @include state(active-destructive);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:hover {
+        @include state(active-destructive, hover-destructive);
+
+        // stylelint-disable-next-line selector-max-specificity, max-nesting-depth
+        &:focus {
+          @include state(
+            active-destructive,
+            hover-destructive,
+            focused-destructive
+          );
+        }
+      }
+    }
+
+    &:hover {
+      @include state(hover-destructive);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:focus {
+        @include state(hover-destructive, focused-destructive);
+      }
+    }
+
+    &:focus {
+      @include state(focused-destructive);
+    }
+  }
+
   &.disabled {
     @include state(disabled);
     color: color('ink', 'lightest');
