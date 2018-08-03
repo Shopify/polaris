@@ -218,6 +218,57 @@ class ActionListExample extends React.Component {
 }
 ```
 
+### Action list with destructive item
+
+Use to visually indicate that an action list item is destructive.
+
+```jsx
+class ActionListExample extends React.Component {
+  state = {
+    active: false,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  };
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            sections={[
+              {
+                title: 'File options',
+                items: [
+                  {content: 'Import file', icon: 'import'},
+                  {content: 'Export file', icon: 'export'},
+                  {
+                    destructive: true,
+                    content: 'Delete file',
+                    icon: 'delete',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
+```
+
 ---
 
 ## Related components
