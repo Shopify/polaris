@@ -6,10 +6,9 @@ import {noop} from '@shopify/javascript-utilities/other';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
-import List from './components/List';
-import Tab from './components/Tab';
-import TabMeasurer, {Measurements} from './components/TabMeasurer';
-import Panel from './components/Panel';
+import {List, Panel, Tab, TabMeasurer} from './components';
+import {Measurements} from './components/TabMeasurer';
+
 import * as styles from './Tabs.scss';
 
 export interface TabDescriptor {

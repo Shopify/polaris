@@ -6,8 +6,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
-import Resizer from './components/Resizer';
-import Spinner from './components/Spinner';
+import {Resizer, Spinner} from './components';
 import {Error} from '../../types';
 import * as styles from './TextField.scss';
 
