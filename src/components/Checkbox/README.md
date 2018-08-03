@@ -1,6 +1,10 @@
 ---
 name: Checkbox
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - accept
   - decline
@@ -126,6 +130,18 @@ class CheckboxExample extends React.Component {
   };
 }
 ```
+
+<!-- content-for: android -->
+
+![Default checkbox on Android](components/Checkbox/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default checkbox on iOS](components/Checkbox/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 
