@@ -20,6 +20,8 @@ export interface Props {
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
+  /** Callback when search field cancel button is clicked */
+  onCancel?(): void;
 }
 
 export default class SearchField extends React.Component<Props, never> {
@@ -114,9 +116,9 @@ export default class SearchField extends React.Component<Props, never> {
 
   @autobind
   private handleClear() {
-    const {onChange} = this.props;
+    const {onCancel} = this.props;
 
-    onChange('');
+    onCancel && onCancel();
 
     if (this.input) {
       this.input.focus();

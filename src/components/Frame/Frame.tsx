@@ -20,10 +20,15 @@ import {
 import * as styles from './Frame.scss';
 
 export interface Props {
+  /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
   topBar?: React.ReactNode;
+  /** Accepts a navigation component that will be rendered in the left sidebar of an application frame */
   navigation?: React.ReactNode;
-  banners?: React.ReactNode;
+  /** Accepts a global ribbon component that will be rendered fixed to the bottom of an application frame */
+  globalRibbon?: React.ReactNode;
+  /** A boolean property indicating whether the mobile navigation is currently visible */
   showMobileNavigation?: boolean;
+  /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
 }
 
@@ -129,7 +134,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       children,
       navigation,
       topBar,
-      banners,
+      globalRibbon,
       showMobileNavigation,
       polaris: {intl},
     } = this.props;
@@ -191,13 +196,13 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const bannerMarkup = banners ? (
+    const bannerMarkup = globalRibbon ? (
       <div
         className={styles.Banners}
         testID="FrameBannerContainer"
         ref={this.setBannerContainer}
       >
-        {banners}
+        {globalRibbon}
       </div>
     ) : null;
 
@@ -250,7 +255,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         <main
           className={styles.Main}
           id={APP_FRAME_MAIN}
-          data-has-banner={Boolean(banners)}
+          data-has-banner={Boolean(globalRibbon)}
         >
           <div style={contentStyles} testID="FrameContentStyles">
             {children}

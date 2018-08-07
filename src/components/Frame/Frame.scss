@@ -6,6 +6,7 @@ $skip-vertical-offset: rem(10px);
   height: 100%;
   overflow-x: hidden;
   min-height: top-bar-height();
+  background: color('sky', 'light');
 }
 
 .Navigation {
@@ -151,6 +152,7 @@ $skip-vertical-offset: rem(10px);
   right: 0;
   left: 0;
   @include frame-when-nav-hidden {
+    z-index: z-index(small-screen-loading-bar, $fixed-element-stacking-order);
     top: 0;
   }
 }

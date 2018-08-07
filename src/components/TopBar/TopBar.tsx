@@ -69,7 +69,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       focused && styles.focused,
     );
 
-    const navigationButtonMarkup = showNavigationToggle && (
+    const navigationButtonMarkup = showNavigationToggle ? (
       <button
         type="button"
         className={className}
@@ -80,11 +80,11 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       >
         <Icon source={menu} color="white" />
       </button>
-    );
+    ) : null;
 
     const width = getWidth(logo, 104);
 
-    const logoMarkup = logo && (
+    const logoMarkup = logo ? (
       <UnstyledLink
         url={logo.topBarSource || ''}
         className={styles.LogoLink}
@@ -97,20 +97,24 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
           style={{width}}
         />
       </UnstyledLink>
-    );
+    ) : null;
 
-    const searchResultsMarkup = searchResults && (
-      <Search visible={searchResultsVisible} onDismiss={onSearchResultsDismiss}>
-        {searchResults}
-      </Search>
-    );
+    const searchResultsMarkup =
+      searchResults && searchResultsVisible ? (
+        <Search
+          visible={searchResultsVisible}
+          onDismiss={onSearchResultsDismiss}
+        >
+          {searchResults}
+        </Search>
+      ) : null;
 
-    const searchMarkup = searchField && (
+    const searchMarkup = searchField ? (
       <React.Fragment>
         {searchField}
         {searchResultsMarkup}
       </React.Fragment>
-    );
+    ) : null;
 
     return (
       <div className={styles.TopBar} data-polaris-top-bar>

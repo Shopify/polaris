@@ -33,13 +33,14 @@ $search-results-desktop-large-width-offset: layout-width(secondary, min) +
 }
 
 .Overlay {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
 
   @include frame-when-nav-displayed {
-    width: calc(100% - #{$search-results-desktop-width-offset});
+    width: calc(100% - #{$search-results-desktop-width-offset};);
   }
 
   @include breakpoint-after($large-width) {

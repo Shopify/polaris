@@ -115,7 +115,11 @@ describe('<TopBar />', () => {
 
     it('renders the search results', () => {
       const topBar = mountWithAppProvider(
-        <TopBar searchResults={searchResults} searchField={searchField} />,
+        <TopBar
+          searchResults={searchResults}
+          searchResultsVisible
+          searchField={searchField}
+        />,
       );
 
       expect(topBar.find(Search)).toHaveLength(1);
@@ -123,7 +127,11 @@ describe('<TopBar />', () => {
 
     it('renders the search prop', () => {
       const topBar = mountWithAppProvider(
-        <TopBar searchResults={searchResults} searchField={searchField} />,
+        <TopBar
+          searchResults={searchResults}
+          searchResultsVisible
+          searchField={searchField}
+        />,
       );
 
       expect(topBar.find('#search-content')).toHaveLength(1);
@@ -134,11 +142,11 @@ describe('<TopBar />', () => {
         <TopBar
           searchResults={searchResults}
           searchField={searchField}
-          searchResultsVisible={false}
+          searchResultsVisible
         />,
       );
 
-      expect(topBar.find(Search).prop('visible')).toBe(false);
+      expect(topBar.find(Search).prop('visible')).toBe(true);
     });
 
     it('passes the onSearchDismiss prop to search', () => {
@@ -146,6 +154,7 @@ describe('<TopBar />', () => {
         <TopBar
           searchResults={searchResults}
           onSearchResultsDismiss={noop}
+          searchResultsVisible
           searchField={searchField}
         />,
       );
