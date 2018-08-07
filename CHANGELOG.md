@@ -8,6 +8,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Changed the `label` prop type to `React.ReactNode`' on radio button to allow for more than just `string` type ([#1880](https://github.com/Shopify/polaris-react/pull/1800))
 - Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
 - Added nextKeys and previousKeys props to Pagination to support keypresses on pagination buttons. Added nextTooltip and previousTooltip props to support pagination button tooltips. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
@@ -40,6 +41,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `weekStartsOn` prop to date picker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ### Bug fixes
+
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
 - Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
 - Remove extra padding from annotated section ([#1805](https://github.com/Shopify/polaris-react/pull/1805))

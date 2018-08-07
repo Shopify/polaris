@@ -5,7 +5,7 @@ import * as styles from './RadioButton.scss';
 
 export interface BaseProps {
   /** Label for the radio button */
-  label: string;
+  label: React.ReactNode;
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Radio button is selected */
