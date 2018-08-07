@@ -1,4 +1,5 @@
 import {EASDKTarget, ComplexAction} from '../../types';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {ActionGroup} from '../../components/Page/types';
 
 export interface EASDKBreadcrumb {
