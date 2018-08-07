@@ -13,6 +13,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Added `code` to the variations on TextStyle for snippets or code-like text([#1889](https://github.com/Shopify/polaris-react/pull/1889))
 - Added support for `FilterType.DateSelector` in `ResourceList` component ([#1898](https://github.com/Shopify/polaris-react/pull/1898))
 - Added new `border-width` SCSS function ([#1953](https://github.com/Shopify/polaris-react/pull/1953))
 - Added support for `fullWidth` and `connectedTop` props on `ButtonGroup` ([#1943](https://github.com/Shopify/polaris-react/pull/1943))

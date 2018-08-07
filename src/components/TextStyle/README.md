@@ -67,3 +67,14 @@ Use in combination with a symbol showing a decreasing value to indicate a downwa
 ```jsx
 <TextStyle variation="negative">Orders decreased</TextStyle>
 ```
+
+### Code textstyle
+
+Use to display snippets of code or code-like text.
+
+```jsx
+<TextStyle>
+  New URL that visitors should be forwarded to. If you want your store's
+  homepage, enter <TextStyle variation="code"> / </TextStyle> (a forward slash).
+</TextStyle>
+```
