@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {Checkbox} from '..';
-import {Scrollable} from '../../..';
+import {Scrollable} from '../../../../components';
 
 import * as styles from './Option.scss';
 
@@ -27,21 +27,19 @@ export interface State {
 }
 
 export default class Option extends React.Component<Props, State> {
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    if (
+      nextProps.active !== undefined &&
+      nextProps.active !== prevState.active
+    ) {
+      return nextProps.active ? {active: true} : {active: false};
+    }
+  }
+
   state: State = {
     focused: false,
     active: false,
   };
-
-  componentWillReceiveProps(nextProps: Props) {
-    if (
-      nextProps.active !== this.props.active &&
-      nextProps.active !== this.state.active
-    ) {
-      nextProps.active
-        ? this.setState({active: true})
-        : this.setState({active: false});
-    }
-  }
 
   render() {
     const {
