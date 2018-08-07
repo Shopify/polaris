@@ -27,9 +27,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Documentation
 
 - Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-
-### Documentation
-
 - Added iOS and Android examples for the banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
 
 ## 2.5.0 - 2018-07-20
@@ -40,6 +37,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `weekStartsOn` prop to date picker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ### Bug fixes
+
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
 - Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
 - Remove extra padding from annotated section ([#1805](https://github.com/Shopify/polaris-react/pull/1805))
