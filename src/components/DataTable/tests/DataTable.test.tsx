@@ -84,7 +84,7 @@ describe('<DataTable />', () => {
       onSort: spyOnSort,
       initialSortColumnIndex: 4,
     });
-    const fifthHeadingCell = findByTestID(dataTable, `heading-cell-${5}`);
+    const fifthHeadingCell = findByTestID(dataTable, `heading-cell-${4}`);
 
     expect(fifthHeadingCell.props().sorted).toBe(true);
   });

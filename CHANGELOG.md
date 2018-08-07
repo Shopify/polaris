@@ -23,6 +23,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
 - Allowed an array of strings as button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
 - Swapped the import and export icons ([#1849](https://github.com/Shopify/polaris-react/pull/1849))
+- Fixed data table markup that caused incorrect column count and content skipping in assistive technologies ([#1723](https://github.com/Shopify/polaris-react/pull/1723))
 
 ### Documentation
 

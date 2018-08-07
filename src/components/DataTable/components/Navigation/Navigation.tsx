@@ -1,23 +1,33 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
+
 import {ColumnVisibilityData} from '../../DataTable';
+
 import * as styles from '../../DataTable.scss';
 
 export interface Props {
-  currentColumn?: ColumnVisibilityData;
   columnVisibilityData: ColumnVisibilityData[];
+  isScrolledFarthestLeft?: boolean;
+  isScrolledFarthestRight?: boolean;
   navigateTableLeft?(): void;
   navigateTableRight?(): void;
 }
 
-export default function Navigation({
-  currentColumn,
+export type CombinedProps = Props & WithAppProviderProps;
+
+function Navigation({
   columnVisibilityData,
+  isScrolledFarthestLeft,
+  isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
-}: Props) {
+  polaris: {
+    intl: {translate},
+  },
+}: CombinedProps) {
   const pipMarkup = columnVisibilityData.map((column, index) => {
     const className = classNames(
       styles.Pip,
@@ -27,33 +37,33 @@ export default function Navigation({
     return <div className={className} key={`pip-${index}`} />;
   });
 
-  function reachedTableEnd(direction: string) {
-    if (currentColumn) {
-      return direction === 'left'
-        ? currentColumn.isScrolledFarthestLeft
-        : currentColumn.isScrolledFarthestRight;
-    }
+  const leftA11yLabel = translate('Polaris.DataTable.navAccessibilityLabel', {
+    direction: 'left',
+  });
 
-    return false;
-  }
+  const rightA11yLabel = translate('Polaris.DataTable.navAccessibilityLabel', {
+    direction: 'right',
+  });
 
   return (
     <div className={styles.Navigation}>
       <Button
         plain
         icon="chevronLeft"
-        disabled={reachedTableEnd('left')}
-        accessibilityLabel="Scroll table left one column"
+        disabled={isScrolledFarthestLeft}
+        accessibilityLabel={leftA11yLabel}
         onClick={navigateTableLeft}
       />
       {pipMarkup}
       <Button
         plain
         icon="chevronRight"
-        disabled={reachedTableEnd('right')}
-        accessibilityLabel="Scroll table right one column"
+        disabled={isScrolledFarthestRight}
+        accessibilityLabel={rightA11yLabel}
         onClick={navigateTableRight}
       />
     </div>
   );
 }
+
+export default withAppProvider<Props>()(Navigation);
