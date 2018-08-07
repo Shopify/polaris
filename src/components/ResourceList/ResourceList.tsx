@@ -7,12 +7,17 @@ import {Button, EventListener, Sticky} from '..';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import CheckableButton from './components/CheckableButton';
 import selectIcon from './icons/enable-selection.svg';
-import Item from './components/Item';
-import FilterControl from './components/FilterControl';
+
+import {
+  BulkActions,
+  BulkActionsProps,
+  CheckableButton,
+  FilterControl,
+  Item,
+} from './components';
+
 import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
-import BulkActions, {Props as BulkActionsProps} from './components/BulkActions';
 
 import * as styles from './ResourceList.scss';
 

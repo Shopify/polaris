@@ -5,7 +5,7 @@ import {
   mountWithAppProvider,
 } from '../../../../tests/utilities';
 import Layout from '../Layout';
-import Section from '../components/Section';
+import {Section} from '../components';
 
 describe('<Layout />', () => {
   it('renders children', () => {

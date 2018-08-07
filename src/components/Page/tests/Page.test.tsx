@@ -2,7 +2,7 @@ import * as React from 'react';
 import {shallowWithAppProvider} from '../../../../tests/utilities';
 import {LinkAction} from '../../../types';
 import Page from '../../Page';
-import Header from '../components/Header';
+import {Header} from '../components';
 
 const breadcrumbs: LinkAction[] = [
   {

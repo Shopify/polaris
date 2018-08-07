@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import ColorPicker from '../ColorPicker';
-import Slidable from '../components/Slidable/Slidable';
+import {Slidable} from '../components';
 
 const red = {
   hue: 0,

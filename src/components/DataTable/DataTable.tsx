@@ -5,8 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
 
-import Cell, {Props as CellProps} from './components/Cell';
-import Navigation from './components/Navigation';
+import {Cell, CellProps, Navigation} from './components';
 
 import * as styles from './DataTable.scss';
 

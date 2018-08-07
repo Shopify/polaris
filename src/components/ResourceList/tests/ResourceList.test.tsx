@@ -7,8 +7,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from '../../../../tests/utilities';
-import Item from '../components/Item';
-import BulkActions from '../components/BulkActions';
+import {BulkActions, Item} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];

@@ -15,7 +15,7 @@ import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import FileUpload from './components/FileUpload';
+import {FileUpload} from './components';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import IconAlertCircle from './icons/alert-circle.svg';

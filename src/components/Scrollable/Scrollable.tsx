@@ -10,7 +10,7 @@ import {withSticky, WithAppProviderProps} from '../AppProvider';
 import {scrollable} from '../shared';
 import {contextTypes} from './types';
 
-import ScrollTo from './components/ScrollTo';
+import {ScrollTo} from './components';
 
 import * as styles from './Scrollable.scss';
 
