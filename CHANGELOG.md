@@ -6,8 +6,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
-- Added major icons for the Navigation component (`home`, `onlineStore`, `orders`, `products`) and one minor icon (`circlePlusOutline`) ([#1771](https://github.com/Shopify/polaris-react/pull/1771))
-
 ### Enhancements
 
 - Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
@@ -29,9 +27,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Documentation
 
 - Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-
-### Documentation
-
 - Added iOS and Android examples for the banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
 
 ## 2.5.0 - 2018-07-20
@@ -51,8 +46,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added iOS and Android examples to the Card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
 - Added iOS and Android examples to the ChoiceList component ([#1825](https://github.com/Shopify/polaris-react/pull/1825))
-
-- Added Navigation component ([#1645](https://github.com/Shopify/polaris-react/pull/1645)), ([#1752](https://github.com/Shopify/polaris-react/pull/1752))
 
 ### Development workflow
 
@@ -97,7 +90,6 @@ Use Option list to present a group of selectable items outside of the context of
 
 ### Enhancements
 
-- Abstracted out EASDK methods into an enum ([#1731](https://github.com/Shopify/polaris-react/pull/1731))
 - Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
 - Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
 - Performance: optimized avatar SVG files ([#1662](https://github.com/Shopify/polaris-react/pull/1662))
@@ -135,8 +127,6 @@ Use range slider to select a number value between a min and max range.
 
 - Fixed unexpected form submission when switching tabs in a tabs component wrapped in a form ([#1542](https://github.com/Shopify/polaris-react/pull/1542))
 - Added missing `'Shopify.API.setWindowLocation'` message handler to the EASDK ([#1539](https://github.com/Shopify/polaris-react/pull/1539))
-
-* Added badge prop to the item descriptor type and action group ([#1295](https://github.com/Shopify/polaris-react/pull/1295))
 
 ## 2.1.2 - 2018-06-06
 
@@ -192,21 +182,6 @@ Use Exception lists to draw the merchant’s attention to important information 
 - Fixed an issue where selecting a date in DatePicker would submit its enclosing form ([#1413](https://github.com/Shopify/polaris-react/pull/1413))
 - Fixed ResourceList reverse tabbing focus interaction on Action Buttons ([#1406](https://github.com/Shopify/polaris-react/pull/1406))
 - Fixed padding in the case where a Resource list had no filters ([#1438](https://github.com/Shopify/polaris-react/pull/1438))
-- Exposed Group interface from the Select component ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
-- Added an `ellipsis` prop to ActionList.Item allowing for an ellipsis suffix after the content ([#1377](https://github.com/Shopify/polaris-react/pull/1377))
-- Renamed `plain-list` mixin to `unstyled-list` ([#1375](https://github.com/Shopify/polaris-react/pull/1375))
-- Added exception list component ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
-- Added a `preferredAlignment` prop to Popover allowing it to be aligned to the left, center, or right of its activator ([#1390](https://github.com/Shopify/polaris-react/pull/1390))
-- Removed padding from DropZone and applied it to FileUpload instead ([#1418](https://github.com/Shopify/polaris-react/pull/1418))
-- Added new size to DropZone component ([#1419](https://github.com/Shopify/polaris-react/pull/1419))
-
-### Bug fixes
-
-- Added target to the breadcrumb prop on page ([#1345](https://github.com/Shopify/polaris-react/pull/1345)) (thanks to [@sdn90](https://github.com/sdn90) for the [original issue](https://github.com/Shopify/polaris/issues/306))
-- Fixed visual representation of disabled bulk action buttons in ResourceList ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
-- Fixed margins of a fullWidth Popover that appears above its activator ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
-- Fixed z-index calculation for PositionOverlay and Dialog ([#1421]([https://github.com/Shopify/polaris-react/pull/1421]))
-- Fixed an issue where selecting a date in DatePicker would submit its enclosing form ([#1413](https://github.com/Shopify/polaris-react/pull/1413))
 
 ## 2.0.0 - 2018-05-07
 
