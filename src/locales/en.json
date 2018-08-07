@@ -5,6 +5,10 @@
       "labelWithInitials": "Avatar with initials {initials}"
     },
 
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Loading"
+    },
+
     "Badge": {
       "PROGRESS_LABELS": {
         "incomplete": "Incomplete",

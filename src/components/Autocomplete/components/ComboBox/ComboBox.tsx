@@ -3,9 +3,9 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import TextField from './components/TextField';
-import OptionList, {OptionDescriptor} from '../OptionList';
-import Popover from '../Popover';
-import {PreferredPosition} from '../PositionedOverlay';
+import OptionList, {OptionDescriptor} from '../../../OptionList';
+import Popover from '../../../Popover';
+import {PreferredPosition} from '../../../PositionedOverlay';
 import {contextTypes} from './types';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
@@ -108,6 +108,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(_: Props, nextState: State) {
+    const {contentBefore, contentAfter} = this.props;
     const {navigableOptions} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
@@ -118,6 +119,15 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
     if (optionsChanged) {
       this.resetVisuallySelectedOptions();
+    }
+
+    if (
+      navigableOptions &&
+      navigableOptions.length === 0 &&
+      !contentBefore &&
+      !contentAfter
+    ) {
+      this.setState({popoverActive: false});
     }
   }
 
@@ -130,6 +140,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   render() {
     const {
+      options,
       textField,
       listTitle,
       allowMultiple,
@@ -138,7 +149,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       contentAfter,
     } = this.props;
 
-    const optionsMarkup = (
+    const optionsMarkup = options.length > 0 && (
       <OptionList
         id={this.state.comboBoxId}
         role="listbox"

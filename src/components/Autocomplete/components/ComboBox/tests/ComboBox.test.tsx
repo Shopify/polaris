@@ -1,8 +1,7 @@
 import * as React from 'react';
 import ComboBox from '..';
-import OptionList from '../../OptionList';
-import Popover from '../../Popover';
-import {mountWithAppProvider} from '../../../../tests/utilities';
+import OptionList from '../../../../OptionList';
+import {mountWithAppProvider} from '../../../../../../tests/utilities';
 
 describe('<ComboBox/>', () => {
   const options = [
@@ -22,6 +21,7 @@ describe('<ComboBox/>', () => {
           onSelect={emptyFunction}
         />,
       );
+      comboBox.simulate('click');
       expect(comboBox.find(OptionList).prop('id')).toBe('CustomId');
     });
   });
@@ -41,34 +41,6 @@ describe('<ComboBox/>', () => {
     });
   });
 
-  describe('popover', () => {
-    it('renders a popover if the prop is true', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          popover
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={emptyFunction}
-        />,
-      );
-      expect(comboBox.find(Popover).exists()).toBe(true);
-    });
-
-    it('does not render a popover if the prop is false', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          popover={false}
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={emptyFunction}
-        />,
-      );
-      expect(comboBox.find(Popover).exists()).toBe(false);
-    });
-  });
-
   describe('allowMultiple', () => {
     it('renders a button if the prop is false', () => {
       const comboBox = mountWithAppProvider(
@@ -80,7 +52,7 @@ describe('<ComboBox/>', () => {
           allowMultiple={false}
         />,
       );
-
+      comboBox.simulate('click');
       expect(comboBox.find('button').exists()).toBe(true);
     });
 
@@ -94,7 +66,7 @@ describe('<ComboBox/>', () => {
           allowMultiple
         />,
       );
-
+      comboBox.simulate('click');
       expect(comboBox.find('input[type="checkbox"]').exists()).toBe(true);
     });
   });
@@ -110,6 +82,7 @@ describe('<ComboBox/>', () => {
           contentBefore={renderNodeWithId()}
         />,
       );
+      comboBox.simulate('click');
       expect(comboBox.find('#CustomNode').exists()).toBe(true);
     });
 
@@ -123,6 +96,7 @@ describe('<ComboBox/>', () => {
           contentAfter={renderNodeWithId()}
         />,
       );
+      comboBox.simulate('click');
       expect(comboBox.find('#CustomNode').exists()).toBe(true);
     });
   });
@@ -138,6 +112,7 @@ describe('<ComboBox/>', () => {
           onSelect={spy}
         />,
       );
+      comboBox.simulate('click');
       comboBox
         .find('button')
         .at(0)
@@ -156,6 +131,7 @@ describe('<ComboBox/>', () => {
           allowMultiple
         />,
       );
+      comboBox.simulate('click');
       comboBox
         .find('input[type="checkbox"]')
         .at(0)
