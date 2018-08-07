@@ -2,10 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {errorID, helpTextID} from '../Choice';
 import Icon from '../Icon';
 import {Error} from '../../types';

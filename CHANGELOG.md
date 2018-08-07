@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Enhancements
 
 - Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
+- Added nextKeys and previousKeys props to Pagination to support keypresses on pagination buttons. Added nextTooltip and previousTooltip props to support pagination button tooltips. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 - Added `Progress` export to Badge
 - Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
@@ -17,9 +18,19 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+- Fixed popover border radius and left and right alignment ([#1796](https://github.com/Shopify/polaris-react/pull/1796))
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
 - Allowed an array of strings as button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
+- Swapped the import and export icons ([#1849](https://github.com/Shopify/polaris-react/pull/1849))
+
+### Documentation
+
+- Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
+
+### Documentation
+
+- Added iOS and Android examples for the banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
 
 ## 2.5.0 - 2018-07-20
 
@@ -29,14 +40,14 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `weekStartsOn` prop to date picker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ### Bug fixes
-
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
 - Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
 - Remove extra padding from annotated section ([#1805](https://github.com/Shopify/polaris-react/pull/1805))
 
 ### Documentation
 
-- Added iOS and Android examples for the card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Added iOS and Android examples to the Card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Added iOS and Android examples to the ChoiceList component ([#1825](https://github.com/Shopify/polaris-react/pull/1825))
 
 ### Development workflow
 

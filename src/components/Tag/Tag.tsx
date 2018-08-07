@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import * as styles from './Tag.scss';

@@ -7,10 +7,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {ComplexAction, contentContextTypes} from '../../types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Scrollable, Spinner, Portal} from '../../components';
 import memoizedBind from '../../utilities/memoized-bind';
 import Dialog from './components/Dialog';
