@@ -26,9 +26,9 @@ import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
   WithAppProviderProps,
-  CreatePolarisContext,
   Theme,
   ColorsToParse,
+  CreatePolarisContext,
   ThemeVariant,
 } from '../types';
 

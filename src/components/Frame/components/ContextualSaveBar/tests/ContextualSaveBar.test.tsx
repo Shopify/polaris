@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import {ContextProps} from '../../../../AppProvider/utils';
 import {createPolarisContext, Button, Image} from '../../../../../components';
-import {polarisAppProviderContextTypes} from '../../../../AppProvider/types';
+import {
+  polarisAppProviderContextTypes,
+  CreatePolarisContext,
+} from '../../../../AppProvider/types';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
@@ -128,7 +130,7 @@ describe('<ContextualSaveBar />', () => {
   });
 });
 
-function addPolarisContext(logo: ContextProps) {
+function addPolarisContext(logo: CreatePolarisContext) {
   const context = createPolarisContext(logo);
 
   return {
