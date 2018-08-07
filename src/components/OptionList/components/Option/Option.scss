@@ -62,3 +62,7 @@ $control-size: rem(16px);
     }
   }
 }
+
+.active {
+  @include state(active);
+}

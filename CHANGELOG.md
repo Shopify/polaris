@@ -17,6 +17,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Changed the primary focus target of an activated Popover from the first item to the overlay itself ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
 - Added improved error message when embedded alert child is not a string ([#1803](https://github.com/Shopify/polaris-react/pull/1803))(thanks [@superwhykz](https://github.com/superwhykz) for the [original issue](https://github.com/Shopify/polaris/issues/378))
 - Added a minimum width to Tab items for touch target sizing and to account for smaller tab titles
+- Added accessibility extensions to `TextField` and `OptionList` ([#1879](https://github.com/Shopify/polaris-react/pull/1879))
 
 ### Bug fixes
 
