@@ -27,6 +27,8 @@ export interface Props {
   allowMultiple?: boolean;
   /** Display loading state */
   loading?: boolean;
+  /** Indicates if more results will load dynamically */
+  willLoadMoreResults?: boolean;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
@@ -50,6 +52,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, State> {
       listTitle,
       allowMultiple,
       loading,
+      willLoadMoreResults,
       onSelect,
       onLoadMoreResults,
       polaris: {intl},
@@ -66,7 +69,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const conditionalOptions = loading && !onLoadMoreResults ? [] : options;
+    const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
 
     return (
       <ComboBox
@@ -79,6 +82,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, State> {
         allowMultiple={allowMultiple}
         contentAfter={spinnerMarkup}
         onSelect={onSelect}
+        onEndReached={onLoadMoreResults}
       />
     );
   }

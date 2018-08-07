@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {
+  addEventListener,
+  removeEventListener,
+} from '@shopify/javascript-utilities/events';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import TextField from './components/TextField';
@@ -40,6 +44,8 @@ export interface Props {
   contentAfter?: React.ReactNode;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
+  /** Callback when the end of the list is reached */
+  onEndReached?(): void;
 }
 
 export interface Context {
@@ -88,6 +94,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   };
 
   private subscriptions: {(): void}[] = [];
+  private popoverScrollContainer: React.RefObject<
+    HTMLDivElement
+  > = React.createRef();
 
   getChildContext(): Context {
     return {
@@ -109,13 +118,15 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   componentDidUpdate(_: Props, nextState: State) {
     const {contentBefore, contentAfter} = this.props;
-    const {navigableOptions} = this.state;
+    const {navigableOptions, popoverActive} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
       navigableOptions &&
       nextState.navigableOptions &&
       !optionsAreEqual(navigableOptions, nextState.navigableOptions);
+
+    const popoverChanged = popoverActive === nextState.popoverActive;
 
     if (optionsChanged) {
       this.resetVisuallySelectedOptions();
@@ -128,6 +139,10 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       !contentAfter
     ) {
       this.setState({popoverActive: false});
+    }
+
+    if (popoverChanged) {
+      popoverActive ? this.addScrollListener() : this.removeScrollListener();
     }
   }
 
@@ -147,6 +162,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       preferredPosition,
       contentBefore,
       contentAfter,
+      onEndReached,
     } = this.props;
 
     const optionsMarkup = options.length > 0 && (
@@ -160,6 +176,10 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         title={listTitle}
         allowMultiple={allowMultiple}
       />
+    );
+
+    const scrollListenerMarkup = onEndReached && (
+      <div ref={this.popoverScrollContainer} />
     );
 
     return (
@@ -183,6 +203,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           fullWidth
           preventAutofocus
         >
+          {scrollListenerMarkup}
           {contentBefore}
           {optionsMarkup}
           {contentAfter}
@@ -205,9 +226,18 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+    const {selectedIndex, navigableOptions} = this.state;
+    const {onEndReached} = this.props;
     const {key} = event;
 
     if (key === 'ArrowDown') {
+      if (
+        navigableOptions &&
+        selectedIndex === navigableOptions.length - 1 &&
+        onEndReached
+      ) {
+        onEndReached();
+      }
       this.selectNextOption();
       event.preventDefault();
     }
@@ -236,6 +266,25 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   @autobind
   private handleClick() {
     !this.state.popoverActive && this.setState({popoverActive: true});
+  }
+
+  @autobind
+  private handleScroll() {
+    const {onEndReached} = this.props;
+    if (!onEndReached) {
+      return;
+    }
+
+    if (this.popoverScrollContainer.current) {
+      const scrollContainer = this.popoverScrollContainer.current.parentElement;
+      if (
+        scrollContainer &&
+        scrollContainer.scrollTop >
+          scrollContainer.scrollHeight - scrollContainer.offsetHeight - 1
+      ) {
+        onEndReached();
+      }
+    }
   }
 
   @autobind
@@ -364,6 +413,29 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   private getSelectedOptionId(): string | undefined {
     const {selectedOption, selectedIndex, comboBoxId} = this.state;
     return selectedOption ? `${comboBoxId}-${selectedIndex}` : undefined;
+  }
+
+  @autobind
+  private addScrollListener() {
+    this.popoverScrollContainer.current &&
+      this.popoverScrollContainer.current.parentElement &&
+      addEventListener(
+        this.popoverScrollContainer.current.parentElement,
+        'scroll',
+        this.handleScroll,
+        {passive: true},
+      );
+  }
+
+  @autobind
+  private removeScrollListener() {
+    this.popoverScrollContainer.current &&
+      this.popoverScrollContainer.current.parentElement &&
+      removeEventListener(
+        this.popoverScrollContainer.current.parentElement,
+        'scroll',
+        this.handleScroll,
+      );
   }
 }
 
