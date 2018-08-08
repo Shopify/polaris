@@ -10,7 +10,7 @@ import {
 } from '../../../../tests/utilities';
 
 import Modal from '../Modal';
-import Footer from '../components/Footer';
+import {Footer} from '../components';
 
 describe('<Modal>', () => {
   beforeEach(() => {

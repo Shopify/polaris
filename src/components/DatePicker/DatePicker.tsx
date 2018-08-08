@@ -18,7 +18,7 @@ import {
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Button from '../Button';
 
-import Month from './components/Month';
+import {Month} from './components';
 import * as styles from './DatePicker.scss';
 
 export {Range, Months, Year};

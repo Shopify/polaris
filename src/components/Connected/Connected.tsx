@@ -1,5 +1,7 @@
 import * as React from 'react';
-import Item, {Position} from './components/Item';
+
+import {Item} from './components';
+import {Position} from './components/Item';
 import * as styles from './Connected.scss';
 
 export interface Props {
