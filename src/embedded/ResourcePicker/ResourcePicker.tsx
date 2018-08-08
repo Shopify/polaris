@@ -1,9 +1,10 @@
 import * as React from 'react';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../components/AppProvider';
-import {OpenOptions} from '../easdk/components/ResourcePicker';
+import {OpenOptions} from '../easdk/components';
 
 export interface Props extends OpenOptions {
   /** Whether the picker is open or not */
