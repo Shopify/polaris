@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
+import isInputFocused from '../../utilities/isInputFocused';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
@@ -57,6 +58,7 @@ function Pagination({
   accessibilityLabel,
   polaris: {intl},
 }: CombinedProps) {
+  const node: React.RefObject<HTMLElement> = React.createRef();
   let label: string;
 
   if (accessibilityLabel) {
@@ -80,6 +82,7 @@ function Pagination({
   ) : (
     <button
       onClick={onPrevious}
+      type="button"
       onMouseUp={handleMouseUpByBlurring}
       className={styles.Button}
       aria-label={intl.translate('Polaris.Pagination.previous')}
@@ -102,6 +105,7 @@ function Pagination({
   ) : (
     <button
       onClick={onNext}
+      type="button"
       onMouseUp={handleMouseUpByBlurring}
       className={styles.Button}
       aria-label={intl.translate('Polaris.Pagination.next')}
@@ -132,8 +136,8 @@ function Pagination({
         keyCode={key}
         handler={
           previousURL
-            ? clickPaginationLink('previousURL')
-            : (onPrevious as () => void)
+            ? handleCallback(clickPaginationLink('previousURL', node))
+            : handleCallback(onPrevious as () => void)
         }
       />
     ));
@@ -146,13 +150,15 @@ function Pagination({
         key={key}
         keyCode={key}
         handler={
-          nextURL ? clickPaginationLink('nextURL') : (onNext as () => void)
+          nextURL
+            ? handleCallback(clickPaginationLink('nextURL', node))
+            : handleCallback(onNext as () => void)
         }
       />
     ));
 
   return (
-    <nav className={className} aria-label={label}>
+    <nav className={className} aria-label={label} ref={node}>
       {previousButtonEvents}
       {constructedPrevious}
       {nextButtonEvents}
@@ -161,12 +167,26 @@ function Pagination({
   );
 }
 
-function clickPaginationLink(id: string) {
+function clickPaginationLink(id: string, node: React.RefObject<HTMLElement>) {
   return () => {
-    const link = document.getElementById(id);
+    if (node.current == null) {
+      return;
+    }
+
+    const link: HTMLAnchorElement | null = node.current.querySelector(`#${id}`);
     if (link) {
       link.click();
     }
+  };
+}
+
+function handleCallback(fn: () => void) {
+  return () => {
+    if (isInputFocused()) {
+      return;
+    }
+
+    fn();
   };
 }
 
