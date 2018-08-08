@@ -468,7 +468,7 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
 Using a resource list in a project involves combining the following components and subcomponents:
 
 - ResourceList
-- [ResourceList.Item](#subcomponent-item) or a [a customized version](#study-custom-item) of this subcomponent
+- [ResourceList.Item](#subcomponent-item) or a [customized list item](#study-custom-item)
 - [ResourceList.FilterControl](#subcomponent-filter-control) (optional)
 - Pagination component (optional)
 
@@ -516,7 +516,7 @@ On wide screens, a resource list often looks like a table, especially if some co
 
 A data table is a form of data visualization. It works best to present highly structured data for comparison and analysis.
 
-If your use case is more about visualizing or analyzing data, use the data table component. If your use case is more about finding and taking action on objects, use a resource list.
+If your use case is more about visualizing or analyzing data, use the [data table component](/components/lists-and-tables/data-table). If your use case is more about finding and taking action on objects, use a resource list.
 
 <!-- end -->
 
@@ -988,7 +988,7 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 ## Related components
 
-- To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the data table component (coming soon)
+- To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the [data table component](/components/lists-and-tables/data-table)
 - To display a simple list of related content, [use the list component](/components/lists-and-tables/list)
 
 ---
