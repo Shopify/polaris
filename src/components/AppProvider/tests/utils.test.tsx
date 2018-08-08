@@ -5,9 +5,13 @@ import {documentHasStyle} from '../../../../tests/utilities';
 import {
   translate,
   createPolarisContext,
+  needsVariant,
+  setColors,
   setTextColor,
   setTheme,
 } from '../utils';
+import {needsVariantList} from '../config';
+
 import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
@@ -132,5 +136,26 @@ describe('setTheme', () => {
       documentHasStyle('TopBarBackgroundLighter', 'hsl(184, 70%, 42%, 1)'),
     ).toBe(true);
     expect(documentHasStyle('TopBarColor', 'rgb(255, 255, 255)')).toBe(true);
+  });
+});
+
+describe('needsVariant', () => {
+  it('will return false if the parameter is not on the list', () => {
+    const hasVariant = needsVariant('frame');
+    expect(hasVariant).toBe(needsVariantList.includes('frame'));
+  });
+
+  it('will return true if the paramater is on the list', () => {
+    const hasVariant = needsVariant('topBar');
+    expect(hasVariant).toBe(needsVariantList.includes('topBar'));
+  });
+});
+
+describe('setColors', () => {
+  it('iterates over colors when a theme is passed', () => {
+    const theme = {colors: {topBar: {background: '#eeeeee'}}};
+    const spy = jest.spyOn(Object, 'entries');
+    setColors(theme);
+    expect(spy).toHaveBeenCalledWith(theme.colors);
   });
 });
