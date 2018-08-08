@@ -2,6 +2,9 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
+import {Props as IconProps} from '../../../Icon';
+import {Props as ThumbnailProps} from '../../../Thumbnail';
+import {Props as AvatarProps} from '../../../Avatar';
 import {Checkbox} from '..';
 import {Scrollable} from '../../../../components';
 
@@ -13,6 +16,7 @@ export interface Props {
   value: string;
   section: number;
   index: number;
+  media?: React.ReactElement<IconProps | AvatarProps | ThumbnailProps>;
   disabled?: boolean;
   active?: boolean;
   select?: boolean;
@@ -34,6 +38,7 @@ export default class Option extends React.Component<Props, State> {
     ) {
       return nextProps.active ? {active: true} : {active: false};
     }
+    return null;
   }
 
   state: State = {
@@ -51,8 +56,13 @@ export default class Option extends React.Component<Props, State> {
       allowMultiple,
       disabled,
       role,
+      media,
     } = this.props;
     const {focused} = this.state;
+
+    const mediaMarkup = media ? (
+      <div className={styles.Media}>{media}</div>
+    ) : null;
 
     const singleSelectClassName = classNames(
       styles.SingleSelectOption,
@@ -82,6 +92,7 @@ export default class Option extends React.Component<Props, State> {
             role={checkBoxRole}
           />
         </div>
+        {mediaMarkup}
         {label}
       </label>
     ) : (
@@ -93,6 +104,7 @@ export default class Option extends React.Component<Props, State> {
         onFocus={this.toggleFocus}
         onBlur={this.toggleFocus}
       >
+        {mediaMarkup}
         {label}
       </button>
     );

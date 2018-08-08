@@ -4,6 +4,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {Option} from './components';
+import {IconProps, ThumbnailProps, AvatarProps} from '..';
 import {arraysAreEqual} from '../../utilities/arrays';
 
 import * as styles from './OptionList.scss';
@@ -19,6 +20,8 @@ export interface OptionDescriptor {
   active?: boolean;
   /** Unique identifier for the option */
   id?: string;
+  /** Media to display to the left of the option content */
+  media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
 export interface SectionDescriptor {
