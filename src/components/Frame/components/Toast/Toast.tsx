@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {KeypressListener} from '../../../../components';
+import {KeypressListener, ToastProps} from '../../../../components';
 import Icon from '../../../Icon';
 import {Keys} from '../../../../types';
-import {ToastDescriptor} from '../../../types';
+
 import * as styles from './Toast.scss';
 
-export type Props = ToastDescriptor;
+export type Props = ToastProps;
 
 export default class Toast extends React.Component<Props, never> {
   private timer?: number;

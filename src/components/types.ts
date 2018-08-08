@@ -1,8 +1,8 @@
 import * as PropTypes from 'prop-types';
-import {ContextualSaveBarProps} from '../components/ContextualSaveBar';
+import {ContextualSaveBarProps, ToastProps} from '../components';
 
 export interface FrameManager {
-  showToast(toast: {id: string} & ToastDescriptor): void;
+  showToast(toast: {id: string} & ToastProps): void;
   hideToast(toast: {id: string}): void;
   setContextualSaveBar(props: ContextualSaveBarProps): void;
   removeContextualSaveBar(): void;
@@ -17,14 +17,5 @@ export interface FrameContext {
 export const frameContextTypes = {
   frame: PropTypes.object.isRequired,
 };
-
-export interface ToastDescriptor {
-  /** The content that should appear in the toast message */
-  content: string;
-  /** The length of time in milliseconds the toast message should persist (defaults to 5000) */
-  duration?: number;
-  /** Callback when the dismiss icon is clicked */
-  onDismiss(): void;
-}
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';

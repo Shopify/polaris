@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {FrameContext, frameContextTypes, ToastDescriptor} from '../types';
+import {FrameContext, frameContextTypes} from '../types';
 import {
   withAppProvider,
   WithAppProviderProps,
@@ -8,7 +8,15 @@ import {
 
 const createId = createUniqueIDFactory('Toast');
 
-export type Props = ToastDescriptor;
+export interface Props {
+  /** The content that should appear in the toast message */
+  content: string;
+  /** The length of time in milliseconds the toast message should persist (defaults to 5000) */
+  duration?: number;
+  /** Callback when the dismiss icon is clicked */
+  onDismiss(): void;
+}
+
 export type ComposedProps = Props & WithAppProviderProps;
 
 export class Toast extends React.PureComponent<ComposedProps, never> {

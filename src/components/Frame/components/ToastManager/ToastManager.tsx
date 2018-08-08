@@ -3,12 +3,11 @@ import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import Toast from '../Toast';
-import {ToastDescriptor} from '../../../types';
-import {Portal, EventListener} from '../../..';
+import {Portal, EventListener, ToastProps} from '../../..';
 import * as styles from './ToastManager.scss';
 
 export interface Props {
-  toastMessages: (ToastDescriptor & {id: string})[];
+  toastMessages: (ToastProps & {id: string})[];
 }
 
 export default class ToastManager extends React.PureComponent<Props, never> {
