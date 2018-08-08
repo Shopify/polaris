@@ -70,6 +70,8 @@ export interface BaseProps {
   name?: string;
   /** ID for the input */
   id?: string;
+  /** Defines a specific role attribute for the input */
+  role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
   /** Enable automatic completion by the browser */
@@ -86,6 +88,14 @@ export interface BaseProps {
   pattern?: string;
   /** Indicate whether value should have spelling checked */
   spellCheck?: boolean;
+  /** Indicates the id of a component owned by the input */
+  ariaOwns?: string;
+  /** Indicates the id of a component controlled by the input */
+  ariaControls?: string;
+  /** Indicates the id of a related component's visually focused element ot the input */
+  ariaActiveDescendant?: string;
+  /** Indicates what kind of user input completion suggestions are provided */
+  ariaAutocomplete?: string;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -140,6 +150,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       placeholder,
       disabled,
       readOnly,
+      role,
       autoFocus,
       type,
       name,
@@ -162,6 +173,10 @@ export default class TextField extends React.PureComponent<Props, State> {
       maxLength,
       spellCheck,
       pattern,
+      ariaOwns,
+      ariaActiveDescendant,
+      ariaAutocomplete,
+      ariaControls,
     } = this.props;
 
     const {height} = this.state;
@@ -233,6 +248,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       id,
       disabled,
       readOnly,
+      role,
       autoFocus,
       value,
       placeholder,
@@ -253,8 +269,14 @@ export default class TextField extends React.PureComponent<Props, State> {
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')
         : undefined,
+      'aria-label': label,
       'aria-labelledby': labelledBy.join(' '),
       'aria-invalid': Boolean(error),
+      'aria-owns': ariaOwns,
+      'aria-activedescendant': ariaActiveDescendant,
+      'aria-autocomplete': ariaAutocomplete,
+      'aria-controls': ariaControls,
+      'aria-multiline': multiline,
     });
 
     return (
