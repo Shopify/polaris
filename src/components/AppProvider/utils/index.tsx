@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 import tokens from '@shopify/polaris-tokens';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {needsVariantList} from '../config';
 import {HSLColor} from '../../ColorPicker/types';
 import {
@@ -93,6 +94,26 @@ export function withAppProvider<OwnProps>() {
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;
 
+      componentDidMount() {
+        const {
+          polaris: {subscribe},
+        } = this.context;
+
+        if (subscribe) {
+          subscribe(this.handleContextUpdate);
+        }
+      }
+
+      componentWillUnmount() {
+        const {
+          polaris: {unsubscribe},
+        } = this.context;
+
+        if (unsubscribe) {
+          unsubscribe(this.handleContextUpdate);
+        }
+      }
+
       render() {
         const {polaris, easdk} = this.context;
         const polarisContext = {...polaris, easdk};
@@ -106,6 +127,11 @@ export function withAppProvider<OwnProps>() {
         }
 
         return <WrappedComponent {...this.props} polaris={polarisContext} />;
+      }
+
+      @autobind
+      private handleContextUpdate() {
+        this.forceUpdate();
       }
     }
 
@@ -177,6 +203,8 @@ export function createPolarisContext({
   debug,
   stickyManager,
   theme = {logo: null},
+  subscribe,
+  unsubscribe,
 }: CreatePolarisContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
@@ -203,6 +231,8 @@ export function createPolarisContext({
       theme: {
         logo,
       },
+      subscribe,
+      unsubscribe,
     },
     easdk,
   };
