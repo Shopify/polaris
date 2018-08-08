@@ -75,4 +75,17 @@ describe('<Frame />', () => {
     const frame = mountWithAppProvider(<Frame />);
     expect(frame.find('[data-has-navigation]')).toHaveLength(0);
   });
+
+  it('renders with a top bar data attribute if a topBar is passed', () => {
+    const topbar = <div />;
+    const topBar = mountWithAppProvider(<Frame topBar={topbar} />);
+
+    expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(1);
+  });
+
+  it('does not render with a top bar data attribute if none is passed', () => {
+    const topBar = mountWithAppProvider(<Frame />);
+
+    expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(0);
+  });
 });

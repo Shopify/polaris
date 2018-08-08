@@ -2,13 +2,8 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import {
-  Button,
-  Icon,
-  EventListener,
-  Sticky,
-  ToastProps,
-} from '../../components';
+import {Button, Icon, EventListener, ToastProps} from '../../components';
+import {dataPolarisTopBar, layer} from '../shared';
 import {TrapFocus} from '../Focus';
 import {
   withAppProvider,
@@ -197,8 +192,13 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     );
 
     const topBarMarkup = topBar ? (
-      <div className={styles.TopBar} data-polaris-layer id={APP_FRAME_TOP_BAR}>
-        <Sticky>{topBar}</Sticky>
+      <div
+        className={styles.TopBar}
+        {...layer.props}
+        {...dataPolarisTopBar.props}
+        id={APP_FRAME_TOP_BAR}
+      >
+        {topBar}
       </div>
     ) : null;
 
@@ -240,10 +240,16 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         }
       : {};
 
+    const frameClassName = classNames(
+      styles.Frame,
+      navigation && styles.hasNav,
+      topBar && styles.hasTopBar,
+    );
+
     return (
       <div
-        className={styles.Frame}
-        data-polaris-layer
+        className={frameClassName}
+        {...layer.props}
         {...navigationAttributes}
       >
         {skipMarkup}

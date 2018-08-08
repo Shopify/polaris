@@ -20,12 +20,6 @@ describe('<TopBar />', () => {
     expect(topBar.exists()).toBe(true);
   });
 
-  it('has the polaris top bar data attribute', () => {
-    const topBar = mountWithAppProvider(<TopBar />);
-
-    expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(1);
-  });
-
   describe('compound components', () => {
     it('renders the user prop', () => {
       const user = (

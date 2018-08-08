@@ -8,7 +8,6 @@ import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../components/AppProvider';
-
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 
 import * as styles from './TopBar.scss';
@@ -117,7 +116,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     ) : null;
 
     return (
-      <div className={styles.TopBar} data-polaris-top-bar>
+      <div className={styles.TopBar}>
         {navigationButtonMarkup}
         <div className={styles.LogoContainer}>{logoMarkup}</div>
         <div className={styles.Contents}>

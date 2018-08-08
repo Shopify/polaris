@@ -101,8 +101,10 @@ $skip-vertical-offset: rem(10px);
 }
 
 .TopBar {
-  position: relative;
+  position: fixed;
   z-index: z-index(top-bar, $fixed-element-stacking-order);
+  top: 0;
+  left: 0;
   width: 100%;
 }
 
@@ -124,12 +126,17 @@ $skip-vertical-offset: rem(10px);
   height: 100%;
 
   @include frame-when-nav-displayed {
-    [data-has-navigation] & {
+    .hasNav & {
       padding-left: layout-width(nav);
     }
   }
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-bottom, 0, right);
+
+  .hasTopBar & {
+    height: calc(100% - #{top-bar-height()});
+    padding-top: top-bar-height();
+  }
 }
 
 .Banners {
@@ -138,7 +145,7 @@ $skip-vertical-offset: rem(10px);
   bottom: 0;
   width: 100%;
   @include frame-when-nav-displayed {
-    [data-has-navigation] & {
+    .hasNav & {
       left: layout-width(nav);
       width: calc(100% - #{layout-width(nav)});
     }
@@ -148,7 +155,9 @@ $skip-vertical-offset: rem(10px);
 .LoadingBar {
   position: fixed;
   z-index: z-index(loading-bar, $fixed-element-stacking-order);
-  top: top-bar-height();
+  .hasTopBar & {
+    top: top-bar-height();
+  }
   right: 0;
   left: 0;
   @include frame-when-nav-hidden {
