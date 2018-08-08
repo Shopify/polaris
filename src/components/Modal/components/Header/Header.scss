@@ -1,6 +1,7 @@
 .Header {
   display: flex;
   align-items: flex-start;
+  flex-shrink: 0;
   padding: spacing() spacing(loose);
   border-bottom: border();
 }
