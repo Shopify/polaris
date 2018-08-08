@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {polarisAppProviderContextTypes} from '../AppProvider/types';
+import {polarisAppProviderContextTypes} from '../AppProvider';
 
 export interface State {
   isSticky: boolean;

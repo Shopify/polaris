@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {
-  wrapWithComponent,
-  isElementOfType,
-} from '@shopify/react-utilities/components';
+import {wrapWithComponent, isElementOfType} from '@shopify/react-utilities';
 
-import Group from './components/Group';
-import Item, {Props as ItemProps} from './components/Item';
+import {Group, Item, ItemProps} from './components';
 import * as styles from './FormLayout.scss';
 
 export interface Props {

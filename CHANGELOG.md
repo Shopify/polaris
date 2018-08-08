@@ -8,6 +8,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
+- Added nextKeys and previousKeys props to Pagination to support keypresses on pagination buttons. Added nextTooltip and previousTooltip props to support pagination button tooltips. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 - Added `Progress` export to Badge
 - Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
@@ -16,13 +18,18 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+- Fixed popover border radius and left and right alignment ([#1796](https://github.com/Shopify/polaris-react/pull/1796))
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
 - Allowed an array of strings as button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
+- Swapped the import and export icons ([#1849](https://github.com/Shopify/polaris-react/pull/1849))
+- Fixed data table markup that caused incorrect column count and content skipping in assistive technologies ([#1723](https://github.com/Shopify/polaris-react/pull/1723))
+- Fixed an issue where clicking an item in ActionList would submit an enclosing form ([#1865](https://github.com/Shopify/polaris-react/pull/1865))
 
 ### Documentation
 
 - Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
+- Added iOS and Android examples for the banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
 - Added iOS and Android examples for the ButtonGroup component ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 
 ## 2.5.0 - 2018-07-20
@@ -40,7 +47,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Documentation
 
-- Added iOS and Android examples for the card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Added iOS and Android examples to the Card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
+- Added iOS and Android examples to the ChoiceList component ([#1825](https://github.com/Shopify/polaris-react/pull/1825))
 
 ### Development workflow
 

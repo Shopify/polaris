@@ -88,22 +88,3 @@ $large-width: rem(980px);
     transform: translateY(0);
   }
 }
-
-.animateScaleIn {
-  will-change: transform, opacity;
-  opacity: 1;
-  transform: scale(1);
-  transition: transform easing() duration(), opacity easing() duration();
-
-  &.entering,
-  &.exiting,
-  &.exited {
-    opacity: 0;
-    transform: scale(1.15);
-  }
-
-  &.entered {
-    opacity: 1;
-    transform: scale(1);
-  }
-}

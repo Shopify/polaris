@@ -72,7 +72,12 @@ export default function Item({
       {contentElement}
     </UnstyledLink>
   ) : (
-    <button onClick={onAction} className={className} disabled={disabled}>
+    <button
+      onClick={onAction}
+      className={className}
+      disabled={disabled}
+      type="button"
+    >
       {contentElement}
     </button>
   );
