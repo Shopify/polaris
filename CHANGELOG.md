@@ -15,6 +15,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
 - Added `Scrollable.ScrollTo` subcomponent ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
 - Changed the primary focus target of an activated Popover from the first item to the overlay itself ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
+- Added improved error message when embedded alert child is not a string ([#1803](https://github.com/Shopify/polaris-react/pull/1803))(thanks [@superwhykz](https://github.com/superwhykz) for the [original issue](https://github.com/Shopify/polaris/issues/378))
 
 ### Bug fixes
 
@@ -54,6 +55,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match ([#1754](https://github.com/Shopify/polaris-react/pull/1754), [#1764](https://github.com/Shopify/polaris-react/pull/1764))
 - Improved `yarn tophat`’s design, and added a `/all-components` route ([#1709](https://github.com/Shopify/polaris-react/pull/1709))
+
+### Enhancements
+
+- Added `weekStartsOn` prop to Datepicker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ## 2.4.0 - 2018-07-12
 
