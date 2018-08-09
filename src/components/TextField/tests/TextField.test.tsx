@@ -5,7 +5,7 @@ import {
   mountWithAppProvider,
 } from '../../../../tests/utilities';
 import TextField from '../../TextField';
-import Resizer from '../components/Resizer';
+import {Resizer} from '../components';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
