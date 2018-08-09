@@ -1,0 +1,48 @@
+@import '../../../../variables';
+$secondary-item-font-size: rem(15px);
+.SecondaryNavigation {
+  flex-basis: 100%;
+  margin-bottom: spacing(tight);
+  margin-left: nav(icon-size) + spacing(loose);
+  overflow-x: hidden;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    margin-left: nav(icon-size) + spacing();
+  }
+  .List {
+    @include unstyled-list;
+  }
+  .Item {
+    font-size: $secondary-item-font-size;
+    font-weight: 400;
+    line-height: nav(item-line-height);
+    color: color('ink', 'lighter');
+    &:hover,
+    &:focus {
+      color: color('indigo');
+    }
+    @include breakpoint-after(nav-min-window-corrected()) {
+      font-size: rem(14px);
+      line-height: rem(28px);
+    }
+  }
+  .Text {
+    margin-top: nav(mobile-spacing);
+    margin-bottom: nav(mobile-spacing);
+    line-height: rem(20px);
+    @include breakpoint-after(nav-min-window-corrected()) {
+      margin-top: spacing(extra-tight);
+      margin-bottom: spacing(extra-tight);
+    }
+  }
+  .selected {
+    font-weight: 500;
+    color: color('indigo');
+    @include breakpoint-after(nav-min-window-corrected()) {
+      font-weight: 600;
+    }
+  }
+  .disabled {
+    font-weight: 400;
+    color: color('ink', 'lightest');
+  }
+}

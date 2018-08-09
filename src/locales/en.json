@@ -28,6 +28,11 @@
       "undo": "Undo"
     },
 
+    "ContextualSaveBar": {
+      "save": "Save",
+      "discard": "Discard"
+    },
+
     "DatePicker": {
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
@@ -55,6 +60,13 @@
 
     "EmptySearchResult": {
       "altText": "Empty search results"
+    },
+
+    "Frame": {
+      "skipToContent": "Skip to content",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Close navigation"
+      }
     },
 
     "Icon": {

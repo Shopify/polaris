@@ -1,0 +1,89 @@
+@import '../../variables';
+
+.Section {
+  @include unstyled-list;
+  flex: 0 0 auto;
+  padding: spacing() 0;
+
+  + .Section {
+    padding-top: spacing(extra-tight);
+  }
+}
+
+.Section-fill {
+  flex: 1 0 auto;
+}
+
+.Section-withSeparator {
+  border-top: border();
+}
+
+.SectionHeading {
+  @include text-style-subheading;
+  display: flex;
+  align-items: center;
+  min-height: nav(desktop-nav-height);
+  padding-left: spacing();
+  color: color('ink', 'lighter');
+
+  .Action {
+    @include unstyled-button;
+    @include recolor-icon(color('ink', 'lightest'), color('white'));
+    display: flex;
+    align-items: center;
+    height: nav(mobile-nav-height);
+    margin-right: spacing(extra-tight);
+    padding: spacing(extra-tight) spacing();
+    border-radius: border-radius();
+    transition: background-color duration() easing();
+
+    @include breakpoint-after(nav-min-window-corrected()) {
+      height: nav(desktop-nav-height);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      @include recolor-icon(color('indigo'));
+    }
+
+    &:focus,
+    &:active {
+      background-color: rgba(color('sky'), 0.5);
+    }
+  }
+}
+
+.RollupToggle {
+  @include text-emphasis-normal;
+  @include text-emphasis-subdued;
+
+  &:hover {
+    @include recolor-icon(color('indigo'));
+    color: color('indigo');
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.List {
+  @include unstyled-list;
+}
+
+.Item {
+  @include nav-item-attributes;
+}
+
+.Icon {
+  @include nav-item-icon-attributes;
+}
+
+.ListItem {
+  @include nav-listitem-attributes;
+}
+
+.Text {
+  @include nav-item-text-attributes;
+}

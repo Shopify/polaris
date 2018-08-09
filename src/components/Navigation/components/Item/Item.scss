@@ -1,0 +1,86 @@
+@import '../../variables';
+
+$badge-size: rem(16px);
+$badge-padding: rem(5px);
+$badge-font-size: rem(20px);
+$disabled-fade: 0.6;
+
+.Item {
+  @include nav-item-attributes;
+}
+
+.Badge {
+  font-size: $badge-font-size;
+  line-height: $badge-size;
+  margin-right: spacing(extra-tight);
+  margin-left: spacing(tight);
+  padding: 0 $badge-padding;
+  border-radius: $badge-size / 2;
+  background: color('teal');
+  color: color('white');
+}
+
+.Icon {
+  @include nav-item-icon-attributes;
+}
+
+.selected {
+  font-weight: 600;
+  color: color('indigo');
+
+  .Icon,
+  &:focus .Icon {
+    @include recolor-icon(color('indigo'), color('white'));
+  }
+
+  &:hover {
+    color: color('indigo');
+  }
+}
+
+.disabled {
+  color: color('ink', 'lightest');
+  pointer-events: none;
+  opacity: $disabled-fade;
+}
+
+.ListItem {
+  @include nav-listitem-attributes;
+}
+
+.ListItem-hasAction .Item {
+  max-width: calc(
+    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+  );
+  padding-right: 0;
+}
+
+.Text {
+  @include nav-item-text-attributes;
+}
+
+.SecondaryAction {
+  @include recolor-icon(color('ink', 'lightest'), color('white'));
+  display: flex;
+  align-items: center;
+  height: nav(mobile-height);
+  margin-right: spacing(extra-tight);
+  padding: spacing(extra-tight) spacing();
+  border-radius: border-radius();
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    height: nav(desktop-height);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include recolor-icon(color('indigo'), color('white'));
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: rgba(color('sky'), 0.5);
+  }
+}

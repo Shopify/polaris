@@ -1,4 +1,6 @@
 import * as React from 'react';
+import isEqual from 'lodash/isEqual';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import EASDK from './EASDK';
 
 import {LinkLikeComponent} from '../UnstyledLink';
@@ -6,8 +8,13 @@ import {LinkLikeComponent} from '../UnstyledLink';
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
-import {createPolarisContext} from './utils';
-import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
+import {createPolarisContext, setColors} from './utils';
+import {
+  polarisAppProviderContextTypes,
+  TranslationDictionary,
+  Theme,
+  ThemeContext,
+} from './types';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */
@@ -22,10 +29,19 @@ export interface Props {
   forceRedirect?: boolean;
   /** Prints logs of each message passed through the EASDK */
   debug?: boolean;
+  /** Custom logos and colors provided to select components */
+  theme?: Theme;
 }
 
 export interface Context {
-  polaris: {intl: Intl; link: Link; stickyManager: StickyManager};
+  polaris: {
+    intl: Intl;
+    link: Link;
+    stickyManager: StickyManager;
+    theme?: ThemeContext;
+    subscribe?(callback: () => void): void;
+    unsubscribe?(callback: () => void): void;
+  };
   easdk?: EASDK;
 }
 
@@ -33,6 +49,7 @@ export default class AppProvider extends React.Component<Props> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
   private stickyManager: StickyManager;
+  private subscriptions: {(): void}[] = [];
 
   constructor(props: Props) {
     super(props);
@@ -40,10 +57,15 @@ export default class AppProvider extends React.Component<Props> {
     this.polarisContext = createPolarisContext({
       ...props,
       stickyManager: this.stickyManager,
+      subscribe: this.subscribe,
+      unsubscribe: this.unsubscribe,
     });
   }
 
   componentDidMount() {
+    const {theme} = this.props;
+    setColors(theme);
+
     if (document != null) {
       this.stickyManager.setContainer(document);
     }
@@ -56,6 +78,7 @@ export default class AppProvider extends React.Component<Props> {
     shopOrigin,
     forceRedirect,
     debug,
+    theme,
   }: Props) {
     if (
       i18n !== this.props.i18n ||
@@ -63,7 +86,8 @@ export default class AppProvider extends React.Component<Props> {
       apiKey !== this.props.apiKey ||
       shopOrigin !== this.props.shopOrigin ||
       forceRedirect !== this.props.forceRedirect ||
-      debug !== this.props.debug
+      debug !== this.props.debug ||
+      theme !== this.props.theme
     ) {
       const stickyManager = this.stickyManager;
       this.polarisContext = createPolarisContext({
@@ -74,8 +98,19 @@ export default class AppProvider extends React.Component<Props> {
         forceRedirect,
         debug,
         stickyManager,
+        theme,
+        subscribe: this.subscribe,
+        unsubscribe: this.unsubscribe,
       });
     }
+
+    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
+
+    if (isEqual(theme, this.props.theme)) {
+      return;
+    }
+
+    setColors(theme);
   }
 
   getChildContext(): Context {
@@ -84,5 +119,17 @@ export default class AppProvider extends React.Component<Props> {
 
   render() {
     return React.Children.only(this.props.children);
+  }
+
+  @autobind
+  subscribe(callback: () => void) {
+    this.subscriptions.push(callback);
+  }
+
+  @autobind
+  unsubscribe(callback: () => void) {
+    this.subscriptions = this.subscriptions.filter(
+      (subscription) => subscription !== callback,
+    );
   }
 }
