@@ -29,6 +29,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Swapped the import and export icons ([#1849](https://github.com/Shopify/polaris-react/pull/1849))
 - Fixed data table markup that caused incorrect column count and content skipping in assistive technologies ([#1723](https://github.com/Shopify/polaris-react/pull/1723))
 - Fixed an issue where clicking an item in ActionList would submit an enclosing form ([#1865](https://github.com/Shopify/polaris-react/pull/1865))
+- Fixed text alignment on OptionList when option text was on two lines [#1905](https://github.com/Shopify/polaris-react/pull/1905)
 
 ### Documentation
 

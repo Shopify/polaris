@@ -16,6 +16,7 @@ $control-size: rem(16px);
 
 .SingleSelectOption {
   @include unstyled-button;
+  text-align: left;
 
   &:not(.disabled) {
     color: inherit;
