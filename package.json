@@ -39,6 +39,7 @@
     "format:prettier": "prettier '**/*.md' --write",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
+    "test:coverage": "yarn test --coverage --no-cache",
     "test:ci": "yarn test --runInBand",
     "test:watch": "yarn test --watch",
     "check": "npm-run-all lint ts test",

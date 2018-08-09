@@ -1,3 +1,4 @@
 node_modules/
 src/styles/polaris-tokens/
 /build
+/coverage
