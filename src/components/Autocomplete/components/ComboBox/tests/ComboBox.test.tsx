@@ -1,6 +1,5 @@
 import * as React from 'react';
 import ComboBox from '..';
-import OptionList from '../../../../OptionList';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
 
 describe('<ComboBox/>', () => {
@@ -9,22 +8,6 @@ describe('<ComboBox/>', () => {
     {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
     {value: 'pepperoni_pizza', label: 'Pepperoni Pizza'},
   ];
-
-  describe('id', () => {
-    it('passes the given id to its optionlist', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          id="CustomId"
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={emptyFunction}
-        />,
-      );
-      comboBox.simulate('click');
-      expect(comboBox.find(OptionList).prop('id')).toBe('CustomId');
-    });
-  });
 
   describe('textField', () => {
     it('renders a custom given input', () => {

@@ -6,20 +6,22 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import TextField from './components/TextField';
+import {TextField} from './components';
 import OptionList, {OptionDescriptor} from '../../../OptionList';
+import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
+import {ActionListItemDescriptor} from '../../../../types';
 import {contextTypes} from './types';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
 export interface State {
   comboBoxId: string;
-  selectedOption?: OptionDescriptor | undefined;
+  selectedOption?: OptionDescriptor | ActionListItemDescriptor | undefined;
   selectedIndex: number;
   selectedOptions: string[];
-  navigableOptions?: OptionDescriptor[];
+  navigableOptions: (OptionDescriptor | ActionListItemDescriptor)[];
   popoverActive: boolean;
 }
 
@@ -38,6 +40,10 @@ export interface Props {
   listTitle?: string;
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
+  /** Actions to be displayed before the list of options */
+  actionsBefore?: ActionListItemDescriptor[];
+  /** Actions to be displayed after the list of options */
+  actionsAfter?: ActionListItemDescriptor[];
   /** Content to be displayed before the list of options */
   contentBefore?: React.ReactNode;
   /** Content to be displayed after the list of options */
@@ -61,22 +67,41 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   static childContextTypes = contextTypes;
 
   static getDerivedStateFromProps(
-    {options: nextOptions, selected: nextSelected}: Props,
+    {
+      options: nextOptions,
+      selected: nextSelected,
+      actionsBefore: nextActionsBefore,
+      actionsAfter: nextActionsAfter,
+    }: Props,
     {navigableOptions, selectedOptions, comboBoxId}: State,
   ) {
     const optionsChanged =
-      navigableOptions &&
+      filterForOptions(navigableOptions) &&
       nextOptions &&
       !optionsAreEqual(navigableOptions, nextOptions);
 
+    let newNavigableOptions: (
+      | OptionDescriptor
+      | ActionListItemDescriptor)[] = [];
+    if (nextActionsBefore) {
+      newNavigableOptions = newNavigableOptions.concat(nextActionsBefore);
+    }
+    if (optionsChanged || nextActionsBefore) {
+      newNavigableOptions = newNavigableOptions.concat(nextOptions);
+    }
+    if (nextActionsAfter) {
+      newNavigableOptions = newNavigableOptions.concat(nextActionsAfter);
+    }
+    newNavigableOptions = assignOptionIds(newNavigableOptions, comboBoxId);
+
     if (optionsChanged && selectedOptions !== nextSelected) {
       return {
-        navigableOptions: assignOptionIds(nextOptions, comboBoxId),
+        navigableOptions: newNavigableOptions,
         selectedOptions: nextSelected,
       };
     } else if (optionsChanged) {
       return {
-        navigableOptions: assignOptionIds(nextOptions, comboBoxId),
+        navigableOptions: newNavigableOptions,
       };
     } else if (selectedOptions !== nextSelected) {
       return {selectedOptions: nextSelected};
@@ -108,11 +133,23 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   componentDidMount() {
+    const {options, actionsBefore, actionsAfter} = this.props;
+    const comboBoxId = this.getComboBoxId();
+    let navigableOptions: (OptionDescriptor | ActionListItemDescriptor)[] = [];
+
+    if (actionsBefore) {
+      navigableOptions = navigableOptions.concat(actionsBefore);
+    }
+    if (options) {
+      navigableOptions = navigableOptions.concat(options);
+    }
+    if (actionsAfter) {
+      navigableOptions = navigableOptions.concat(actionsAfter);
+    }
+    navigableOptions = assignOptionIds(navigableOptions, comboBoxId);
+
     this.setState({
-      navigableOptions: assignOptionIds(
-        this.props.options,
-        this.getComboBoxId(),
-      ),
+      navigableOptions,
     });
   }
 
@@ -160,17 +197,28 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       listTitle,
       allowMultiple,
       preferredPosition,
+      actionsBefore,
+      actionsAfter,
       contentBefore,
       contentAfter,
       onEndReached,
     } = this.props;
 
+    const actionsBeforeMarkup = actionsBefore &&
+      actionsBefore.length > 0 && (
+        <ActionList actionRole="option" items={actionsBefore} />
+      );
+
+    const actionsAfterMarkup = actionsAfter &&
+      actionsAfter.length > 0 && (
+        <ActionList actionRole="option" items={actionsAfter} />
+      );
+
     const optionsMarkup = options.length > 0 && (
       <OptionList
-        id={this.state.comboBoxId}
-        role="listbox"
+        role="presentation"
         optionRole="option"
-        options={this.state.navigableOptions}
+        options={filterForOptions(this.state.navigableOptions)}
         onChange={this.selectOptions}
         selected={this.state.selectedOptions}
         title={listTitle}
@@ -203,10 +251,18 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           fullWidth
           preventAutofocus
         >
-          {scrollListenerMarkup}
-          {contentBefore}
-          {optionsMarkup}
-          {contentAfter}
+          <div
+            id={this.state.comboBoxId}
+            role="listbox"
+            aria-multiselectable={allowMultiple}
+          >
+            {scrollListenerMarkup}
+            {contentBefore}
+            {actionsBeforeMarkup}
+            {optionsMarkup}
+            {actionsAfterMarkup}
+            {contentAfter}
+          </div>
         </Popover>
       </div>
     );
@@ -226,7 +282,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-    const {selectedIndex, navigableOptions} = this.state;
+    const {selectedIndex, selectedOption, navigableOptions} = this.state;
     const {onEndReached} = this.props;
     const {key} = event;
 
@@ -245,9 +301,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       event.preventDefault();
       this.selectPreviousOption();
     }
-    if (key === 'Enter' && this.state.popoverActive) {
-      this.state.selectedOption &&
-        this.handleSelection(this.state.selectedOption.value);
+    if (key === 'Enter' && this.state.popoverActive && selectedOption) {
+      if (isOption(selectedOption)) {
+        this.handleSelection(selectedOption.value);
+      } else {
+        selectedOption.onAction && selectedOption.onAction();
+      }
     }
 
     this.openPopoverOnKeyDown(key);
@@ -309,6 +368,20 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     if (!allowMultiple) {
       this.resetVisuallySelectedOptions();
       this.setState({popoverActive: false});
+    }
+  }
+
+  @autobind
+  private updateIndexOfSelectedOption(
+    newOptions: (OptionDescriptor | ActionListItemDescriptor)[],
+  ) {
+    const {selectedIndex, selectedOption} = this.state;
+    if (selectedOption && newOptions.includes(selectedOption)) {
+      this.selectOptionAtIndex(newOptions.indexOf(selectedOption));
+    } else if (selectedIndex > newOptions.length - 1) {
+      this.resetVisuallySelectedOptions();
+    } else {
+      this.selectOptionAtIndex(selectedIndex);
     }
   }
 
@@ -398,8 +471,8 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private visuallyUpdateSelectedOption(
-    newOption: OptionDescriptor,
-    oldOption: OptionDescriptor | undefined,
+    newOption: OptionDescriptor | ActionListItemDescriptor,
+    oldOption: OptionDescriptor | ActionListItemDescriptor | undefined,
   ) {
     if (newOption) {
       newOption.active = true;
@@ -440,27 +513,53 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 }
 
 function assignOptionIds(
-  options: OptionDescriptor[] | undefined,
+  options: (OptionDescriptor | ActionListItemDescriptor)[],
   comboBoxId: string,
-): OptionDescriptor[] | undefined {
-  if (options) {
-    options.map((option, optionIndex) => {
+): OptionDescriptor[] | ActionListItemDescriptor[] {
+  options.map(
+    (
+      option: OptionDescriptor | ActionListItemDescriptor,
+      optionIndex: number,
+    ) => {
       option.id = `${comboBoxId}-${optionIndex}`;
-    });
-    return options;
-  }
-  return undefined;
+    },
+  );
+  return options;
 }
 
 function optionsAreEqual(
-  firstOptions: OptionDescriptor[],
-  secondOptions: OptionDescriptor[],
+  firstOptions: (OptionDescriptor | ActionListItemDescriptor)[],
+  secondOptions: (OptionDescriptor | ActionListItemDescriptor)[],
 ) {
   if (firstOptions.length !== secondOptions.length) {
     return false;
   }
-  return firstOptions.every((firstItem, index) => {
-    const secondItem = secondOptions[index];
-    return firstItem.value === secondItem.value;
-  });
+  return firstOptions.every(
+    (firstItem: OptionDescriptor | ActionListItemDescriptor, index: number) => {
+      const secondItem = secondOptions[index];
+      if (isOption(firstItem)) {
+        if (isOption(secondItem)) {
+          return firstItem.value === secondItem.value;
+        }
+        return false;
+      } else {
+        if (!isOption(secondItem)) {
+          return firstItem.content === secondItem.content;
+        }
+        return false;
+      }
+    },
+  );
+}
+
+function isOption(
+  navigableOption: OptionDescriptor | ActionListItemDescriptor,
+): navigableOption is OptionDescriptor {
+  return (navigableOption as OptionDescriptor).value !== undefined;
+}
+
+function filterForOptions(
+  mixedArray: (ActionListItemDescriptor | OptionDescriptor)[],
+): OptionDescriptor[] {
+  return mixedArray.filter((item) => isOption(item)) as OptionDescriptor[];
 }

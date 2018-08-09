@@ -120,6 +120,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   }
 }
 
+.active {
+  @include state(active);
+}
+
 .Content {
   display: flex;
   align-items: center;

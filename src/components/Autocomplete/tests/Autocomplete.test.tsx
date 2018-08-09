@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Autocomplete from '..';
-import ComboBox from '../components/ComboBox';
+import {ComboBox} from '../components';
 import Spinner from '../../Spinner';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 

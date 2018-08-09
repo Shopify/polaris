@@ -27,23 +27,11 @@ export interface Props {
 
 export interface State {
   focused: boolean;
-  active: boolean;
 }
 
 export default class Option extends React.Component<Props, State> {
-  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (
-      nextProps.active !== undefined &&
-      nextProps.active !== prevState.active
-    ) {
-      return nextProps.active ? {active: true} : {active: false};
-    }
-    return null;
-  }
-
   state: State = {
     focused: false,
-    active: false,
   };
 
   render() {
@@ -97,6 +85,7 @@ export default class Option extends React.Component<Props, State> {
       </label>
     ) : (
       <button
+        id={id}
         type="button"
         className={singleSelectClassName}
         onClick={this.handleClick}

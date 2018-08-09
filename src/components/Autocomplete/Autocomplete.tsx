@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import ComboBox from './components/ComboBox';
+import {ComboBox} from './components';
 import {Spinner} from '..';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
+import {ActionListItemDescriptor} from '../../types';
 
 import * as styles from './Autocomplete.scss';
 
@@ -25,6 +26,8 @@ export interface Props {
   listTitle?: string;
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
+  /** An action to render above the list of options */
+  actionBefore?: ActionListItemDescriptor;
   /** Display loading state */
   loading?: boolean;
   /** Indicates if more results will load dynamically */
@@ -52,6 +55,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, State> {
       listTitle,
       allowMultiple,
       loading,
+      actionBefore,
       willLoadMoreResults,
       onSelect,
       onLoadMoreResults,
@@ -70,6 +74,8 @@ export class Autocomplete extends React.PureComponent<CombinedProps, State> {
     ) : null;
 
     const conditionalOptions = loading && !willLoadMoreResults ? [] : options;
+    const conditionalAction =
+      actionBefore && actionBefore !== [] ? [actionBefore] : undefined;
 
     return (
       <ComboBox
@@ -81,6 +87,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, State> {
         listTitle={listTitle}
         allowMultiple={allowMultiple}
         contentAfter={spinnerMarkup}
+        actionsBefore={conditionalAction}
         onSelect={onSelect}
         onEndReached={onLoadMoreResults}
       />
