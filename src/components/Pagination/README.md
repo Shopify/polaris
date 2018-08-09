@@ -60,6 +60,29 @@ Use for pagination at the bottom of lists.
 />
 ```
 
+### Pagination with keyboard navigation
+
+Use for keyboard navigation.
+
+```jsx
+<div style={{height: '100px'}}>
+  <Pagination
+    hasPrevious
+    previousKeys={[74]}
+    previousTooltip="j"
+    onPrevious={() => {
+      console.log('Previous');
+    }}
+    hasNext
+    nextKeys={[75]}
+    nextTooltip="k"
+    onNext={() => {
+      console.log('Next');
+    }}
+  />
+</div>
+```
+
 ---
 
 ## Related components
