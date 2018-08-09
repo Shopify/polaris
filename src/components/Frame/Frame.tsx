@@ -2,14 +2,20 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import {Button, Icon, EventListener, Sticky} from '../../components';
+import {
+  Button,
+  Icon,
+  EventListener,
+  Sticky,
+  ToastProps,
+} from '../../components';
 import {TrapFocus} from '../Focus';
 import {
   withAppProvider,
   WithAppProviderProps,
 } from '../../components/AppProvider';
 
-import {ToastDescriptor, FrameContext, frameContextTypes} from '../types';
+import {FrameContext, frameContextTypes} from '../types';
 
 import {
   ToastManager,
@@ -38,7 +44,7 @@ export interface State {
   skipFocused?: boolean;
   bannerHeight: number;
   loadingStack: number;
-  toastMessages: (ToastDescriptor & {id: string})[];
+  toastMessages: (ToastProps & {id: string})[];
   contextualSaveBar: ContextualSaveBarProps | null;
 }
 
@@ -269,7 +275,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private showToast(toast: {id: string} & ToastDescriptor) {
+  private showToast(toast: {id: string} & ToastProps) {
     this.setState(({toastMessages}: State) => {
       const hasToastById =
         toastMessages.find(({id}) => id === toast.id) != null;
