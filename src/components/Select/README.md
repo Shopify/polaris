@@ -126,6 +126,43 @@ class SelectExample extends React.Component {
 }
 ```
 
+### Select with inline label
+
+Use only for cases where the select must fit on a single line, such as in a toolbar.
+
+```jsx
+class InlineLabelExample extends React.Component {
+  state = {
+    selected: 'newestUpdate',
+  };
+
+  handleChange = (newValue) => {
+    this.setState({selected: newValue});
+  };
+
+  render() {
+    const options = [
+      {label: 'Newest update', value: 'newestUpdate'},
+      {label: 'Oldest update', value: 'oldestUpdate'},
+      {label: 'Most spent', value: 'mostSpent'},
+      {label: 'Most orders', value: 'mostOrders'},
+      {label: 'Last name A–Z', value: 'lastNameAlpha'},
+      {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
+    ];
+
+    return (
+      <Select
+        label="Sort by"
+        labelInline
+        options={options}
+        onChange={this.handleChange}
+        value={this.state.selected}
+      />
+    );
+  }
+}
+```
+
 ### Disabled select
 
 Use for selections that aren’t currently available. The surrounding interface should make it clear why the select box is disabled and how to activate it.
