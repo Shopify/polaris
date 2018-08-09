@@ -64,3 +64,7 @@ export default class Playground extends React.Component<never, State> {
 * [ ] Tested on multiple browsers
 * [ ] Tested for [accessibility](https://vault.shopify.com/Accessibility#implementation-best-practices)
 * [ ] Updated [CHANGELOG.md](https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md)
+
+<!--
+A note about Percy: if you are submitting a PR from another team and don't have access to Percy, a Polaris team member will tophat Percy as part of your PR review.
+-->
