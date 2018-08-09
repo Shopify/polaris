@@ -6,6 +6,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Development workflow
+
+- Added `yarn test:coverage` to gather and display test coverage ([#1906](https://github.com/Shopify/polaris-react/pull/1906))
+
 ### Enhancements
 
 - Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
