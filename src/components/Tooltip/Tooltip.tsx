@@ -38,7 +38,7 @@ const getUniqueID = createUniqueIDFactory('TooltipContent');
 
 export default class Tooltip extends React.PureComponent<Props, State> {
   state: State = {
-    active: false,
+    active: Boolean(this.props.active),
     activatorNode: null,
   };
 

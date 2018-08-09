@@ -37,6 +37,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Fixed text field resizer rendering when `multiline` was false ([#1853](https://github.com/Shopify/polaris-react/pull/1853))
 - Fixed modal header condensing ([#1894](https://github.com/Shopify/polaris-react/pull/1894))
+- Fixed tooltip so active prop activates on initial render ([#1903](https://github.com/Shopify/polaris-react/pull/1903))
 - Fixed popover border radius and left and right alignment ([#1796](https://github.com/Shopify/polaris-react/pull/1796))
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
