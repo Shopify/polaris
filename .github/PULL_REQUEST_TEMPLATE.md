@@ -66,5 +66,5 @@ export default class Playground extends React.Component<never, State> {
 * [ ] Updated [CHANGELOG.md](https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md)
 
 <!--
-A note about Percy: if you are submitting a PR from another team and don't have access to Percy, a Polaris team member will tophat Percy as part of your PR review.
+If you don't have access to Percy, please request access in the #polaris Slack channel.
 -->
