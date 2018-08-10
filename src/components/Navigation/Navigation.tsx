@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import {Scrollable} from '../../components';
 
-import UserMenu from './components/UserMenu';
-import Section from './components/Section';
+import {UserMenu, Section} from './components';
 import {contextTypes, SectionType} from './types';
 
 import * as styles from './Navigation.scss';
