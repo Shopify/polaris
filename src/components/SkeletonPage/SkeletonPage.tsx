@@ -12,6 +12,8 @@ export interface Props {
   title?: string;
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
+  /** Decreases the maximum layout width. Intended for single-column layouts */
+  singleColumn?: boolean;
   /** Number of secondary page-level actions to display */
   secondaryActions?: number;
   /** Shows a skeleton over the breadcrumb */
@@ -27,12 +29,17 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
     const {
       children,
       fullWidth,
+      singleColumn,
       secondaryActions,
       title = '',
       breadcrumbs,
     } = this.props;
 
-    const className = classNames(styles.Page, fullWidth && styles.fullWidth);
+    const className = classNames(
+      styles.Page,
+      fullWidth && styles.fullWidth,
+      singleColumn && styles.singleColumn,
+    );
 
     const headerClassName = classNames(
       styles.Header,
