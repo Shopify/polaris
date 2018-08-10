@@ -1,6 +1,6 @@
 ci:
   hide:
     - shrink-ray
-    - "ci/circleci: percy"
+    - 'ci/circleci: percy'
   require:
-    - "ci/circleci: check"
+    - 'ci/circleci: check'
