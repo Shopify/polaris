@@ -153,20 +153,20 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     });
   }
 
-  componentDidUpdate(_: Props, nextState: State) {
+  componentDidUpdate(_: Props, prevState: State) {
     const {contentBefore, contentAfter} = this.props;
     const {navigableOptions, popoverActive} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
       navigableOptions &&
-      nextState.navigableOptions &&
-      !optionsAreEqual(navigableOptions, nextState.navigableOptions);
+      prevState.navigableOptions &&
+      !optionsAreEqual(navigableOptions, prevState.navigableOptions);
 
-    const popoverChanged = popoverActive === nextState.popoverActive;
+    const popoverChanged = popoverActive === prevState.popoverActive;
 
     if (optionsChanged) {
-      this.resetVisuallySelectedOptions();
+      this.updateIndexOfSelectedOption(navigableOptions);
     }
 
     if (
@@ -474,11 +474,11 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     newOption: OptionDescriptor | ActionListItemDescriptor,
     oldOption: OptionDescriptor | ActionListItemDescriptor | undefined,
   ) {
-    if (newOption) {
-      newOption.active = true;
-    }
     if (oldOption) {
       oldOption.active = false;
+    }
+    if (newOption) {
+      newOption.active = true;
     }
   }
 
