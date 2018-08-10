@@ -212,15 +212,14 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const style = multiline && height ? {height} : null;
 
-    const resizer =
-      multiline != null ? (
-        <Resizer
-          contents={value || placeholder}
-          currentHeight={height}
-          minimumLines={typeof multiline === 'number' ? multiline : 1}
-          onHeightChange={this.handleExpandingResize}
-        />
-      ) : null;
+    const resizer = multiline ? (
+      <Resizer
+        contents={value || placeholder}
+        currentHeight={height}
+        minimumLines={typeof multiline === 'number' ? multiline : 1}
+        onHeightChange={this.handleExpandingResize}
+      />
+    ) : null;
 
     const describedBy: string[] = [];
     if (error) {

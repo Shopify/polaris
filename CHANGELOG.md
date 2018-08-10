@@ -22,6 +22,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
+- Fixed a bug where `TextField` would render a `Resizer` when `multiline` was false ([#1853](https://github.com/Shopify/polaris-react/pull/1853))
 - Fixed modal bug where the header was condensing ([#1894](https://github.com/Shopify/polaris-react/pull/1894))
 - Fixed popover border radius and left and right alignment ([#1796](https://github.com/Shopify/polaris-react/pull/1796))
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
