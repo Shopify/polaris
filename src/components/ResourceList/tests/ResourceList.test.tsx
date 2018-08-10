@@ -434,11 +434,13 @@ describe('<ResourceList />', () => {
 
     describe('sortValue', () => {
       it("should pass a 'sortValue' to the Select value", () => {
+        const onSortChange = jest.fn();
         const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
             sortValue="sortValue"
+            onSortChange={onSortChange}
             renderItem={renderItem}
           />,
         );

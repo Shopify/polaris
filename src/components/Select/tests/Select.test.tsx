@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ShallowWrapper} from 'enzyme';
 import {
   shallowWithAppProvider,
   mountWithAppProvider,
@@ -89,26 +90,59 @@ describe('<Select />', () => {
         <Select label="Select" options={options} />,
       ).find('option');
 
-      options.forEach(
-        (
-          {disabled}: {disabled?: boolean; value: string; label: string},
-          index,
-        ) => {
-          const optionElement = optionElements.at(index);
-          expect(optionElement.prop('disabled')).toBe(disabled);
-        },
-      );
+      options.forEach(({disabled}, index) => {
+        const optionElement = optionElements.at(index);
+        expect(optionElement.prop('disabled')).toBe(disabled);
+      });
     });
   });
 
   describe('groups', () => {
-    it('translates groups into optgroup tags', () => {
-      const optionsAndGroups = [
-        {title: 'Group one', options: ['one.1', 'one.2']},
-        'one',
-        'two',
-        {title: 'Group two', options: ['two.1', 'two.2']},
-      ];
+    const optionsAndGroups = [
+      {title: 'Group one', options: ['one.1', 'one.2']},
+      'one',
+      'two',
+      {title: 'Group two', options: ['two.1', 'two.2']},
+    ];
+
+    function testOptions(
+      optionOrGroup: string | {title: string; options: string[]},
+      optionOrOptgroupElement: ShallowWrapper,
+    ) {
+      if (typeof optionOrGroup === 'string') {
+        expect(optionOrOptgroupElement.type()).toBe('option');
+        expect(optionOrOptgroupElement.key()).toBe(optionOrGroup);
+        expect(optionOrOptgroupElement.prop('value')).toBe(optionOrGroup);
+        expect(optionOrOptgroupElement.text()).toBe(optionOrGroup);
+      } else {
+        expect(optionOrOptgroupElement.type()).toBe('optgroup');
+        expect(optionOrOptgroupElement.prop('label')).toBe(optionOrGroup.title);
+        const options = optionOrOptgroupElement.children();
+
+        optionOrGroup.options.forEach((option, optionIndex) => {
+          const optionElement = options.at(optionIndex);
+          expect(optionElement.type()).toBe('option');
+          expect(optionElement.key()).toBe(option);
+          expect(optionElement.prop('value')).toBe(option);
+          expect(optionElement.text()).toBe(option);
+        });
+      }
+    }
+
+    it('translates grouped options into optgroup tags', () => {
+      const optionOrOptgroupElements = shallowWithAppProvider(
+        <Select label="Select" options={optionsAndGroups} />,
+      )
+        .find('select')
+        .children();
+
+      optionsAndGroups.forEach((optionOrGroup, index) => {
+        const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
+        testOptions(optionOrGroup, optionOrOptgroupElement);
+      });
+    });
+
+    it('translates legacy groups into optgroup tags', () => {
       const optionOrOptgroupElements = shallowWithAppProvider(
         <Select label="Select" groups={optionsAndGroups} />,
       )
@@ -117,27 +151,7 @@ describe('<Select />', () => {
 
       optionsAndGroups.forEach((optionOrGroup, index) => {
         const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
-
-        if (typeof optionOrGroup === 'string') {
-          expect(optionOrOptgroupElement.type()).toBe('option');
-          expect(optionOrOptgroupElement.key()).toBe(optionOrGroup);
-          expect(optionOrOptgroupElement.prop('value')).toBe(optionOrGroup);
-          expect(optionOrOptgroupElement.text()).toBe(optionOrGroup);
-        } else {
-          expect(optionOrOptgroupElement.type()).toBe('optgroup');
-          expect(optionOrOptgroupElement.prop('label')).toBe(
-            optionOrGroup.title,
-          );
-          const options = optionOrOptgroupElement.children();
-
-          optionOrGroup.options.forEach((option, optionIndex) => {
-            const optionElement = options.at(optionIndex);
-            expect(optionElement.type()).toBe('option');
-            expect(optionElement.key()).toBe(option);
-            expect(optionElement.prop('value')).toBe(option);
-            expect(optionElement.text()).toBe(option);
-          });
-        }
+        testOptions(optionOrGroup, optionOrOptgroupElement);
       });
     });
   });
@@ -211,12 +225,13 @@ describe('<Select />', () => {
 
   describe('placeholder', () => {
     it('renders an unselectable option for the placeholder', () => {
+      const placeholderValue = '';
       const select = shallowWithAppProvider(
         <Select label="Select" placeholder="Choose something" options={[]} />,
       ).find('select');
       const placeholderOption = select.find('option').first();
 
-      expect(select.prop('defaultValue')).toBe(placeholderOption.prop('value'));
+      expect(placeholderValue).toBe(placeholderOption.prop('value'));
       expect(placeholderOption.prop('disabled')).toBe(true);
       expect(placeholderOption.prop('hidden')).toBe(true);
     });
@@ -233,21 +248,6 @@ describe('<Select />', () => {
       const placeholderOption = select.find('option').first();
 
       expect(select.prop('value')).toBe(placeholderOption.prop('value'));
-      expect(select.prop('defaultValue')).toBeUndefined();
-    });
-
-    it('does not render the placeholder when there is an existing value', () => {
-      const select = shallowWithAppProvider(
-        <Select
-          label="Select"
-          placeholder="Choose something"
-          options={['one']}
-          value="one"
-        />,
-      );
-      const placeholderOption = select.find('option');
-      expect(placeholderOption.length).toBe(1);
-      expect(placeholderOption.prop('disabled')).toBeFalsy();
     });
   });
 });
