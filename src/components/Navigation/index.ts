@@ -8,3 +8,5 @@ export {
   SubNavigationItem,
   isNavigationItemActive,
 } from './components/Item';
+
+export {MessageProps} from './components';
