@@ -1,0 +1,590 @@
+{
+  "http://localhost:3000/account-connection/0": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<a class=\"Link-Link_3tKep\" href=\"Example App\" data-polaris-unstyled=\"true\">terms and conditions</a>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div:nth-child(2) > p > a"
+    }
+  ],
+  "http://localhost:3000/app-provider/0": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
+      "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > ul > li:nth-child(1) > div > a"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" href=\"customers/256\" data-polaris-unstyled=\"true\"></a>",
+      "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > ul > li:nth-child(2) > div > a"
+    }
+  ],
+  "http://localhost:3000/app-provider/1": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
+      "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > ul > li:nth-child(1) > div > a"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" href=\"customers/256\" data-polaris-unstyled=\"true\"></a>",
+      "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > ul > li:nth-child(2) > div > a"
+    }
+  ],
+  "http://localhost:3000/banner/1": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<button class=\"Link-Link_3tKep\">Let us know what you think.</button>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#Banner1Content > p > button"
+    }
+  ],
+  "http://localhost:3000/banner/6": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<button class=\"Link-Link_3tKep\">review the Risk Analysis</button>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.12:1. Recommendation: change text colour to #000508.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#Banner1Content > p > button"
+    }
+  ],
+  "http://localhost:3000/banner/8": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<button class=\"Link-Link_3tKep\">Let us know what you think.</button>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#Banner1Content > p > button"
+    }
+  ],
+  "http://localhost:3000/button/2": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>View shipping settings</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > button > span > span"
+    }
+  ],
+  "http://localhost:3000/callout-card/1": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Learn more about customizing ch...</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > div:nth-child(3) > div > div:nth-child(2) > button > span > span"
+    }
+  ],
+  "http://localhost:3000/card/1": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Add variant</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    }
+  ],
+  "http://localhost:3000/drop-zone/0": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/1": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/2": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input accept=\"image/*\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input accept=\"image/*\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/3": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(2) > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(2) > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/4": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input accept=\"image/svg+xml\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input accept=\"image/svg+xml\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/5": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/6": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<button class=\"Link-Link_3tKep\">Add file</button>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > div > div:nth-child(1) > button"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/7": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > span > input"
+    }
+  ],
+  "http://localhost:3000/drop-zone/8": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Upload Image</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(2) > div > span > input"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(2) > div > span > input"
+    }
+  ],
+  "http://localhost:3000/empty-state/0": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Learn more</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2) > a > span > span"
+    }
+  ],
+  "http://localhost:3000/footer-help/0": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<a class=\"Link-Link_3tKep\" href=\"https://help.shopify.com/manual/orders/fulfill-orders\" data-polaris-unstyled=\"true\">fulfilling orders</a>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div:nth-child(2) > a"
+    }
+  ],
+  "http://localhost:3000/layout/2": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Manage</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Manage</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<div class=\"Item-Container_16G76\" id=\"341\"><div class=\"Item-Owned_1lLjn\"><...</div>",
+      "message": "Duplicate id attribute value \"341\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#341"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<div class=\"Item-Container_16G76\" id=\"256\"><div class=\"Item-Owned_1lLjn\"><...</div>",
+      "message": "Duplicate id attribute value \"256\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#256"
+    }
+  ],
+  "http://localhost:3000/layout/3": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Manage</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Manage</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<div class=\"Item-Container_16G76\" id=\"341\"><div class=\"Item-Owned_1lLjn\"><...</div>",
+      "message": "Duplicate id attribute value \"341\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#341"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<div class=\"Item-Container_16G76\" id=\"256\"><div class=\"Item-Owned_1lLjn\"><...</div>",
+      "message": "Duplicate id attribute value \"256\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#256"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Manage</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(3) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<div class=\"Item-Container_16G76\" id=\"341\"><div class=\"Item-Owned_1lLjn\"><...</div>",
+      "message": "Duplicate id attribute value \"341\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#341"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<div class=\"Item-Container_16G76\" id=\"256\"><div class=\"Item-Owned_1lLjn\"><...</div>",
+      "message": "Duplicate id attribute value \"256\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#256"
+    }
+  ],
+  "http://localhost:3000/link/0": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<a class=\"Link-Link_3tKep\" href=\"https://help.shopify.com/manual\" data-polaris-unstyled=\"true\">fulfilling orders</a>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > a"
+    }
+  ],
+  "http://localhost:3000/option-list/2": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<ul class=\"OptionList-Options_3Df-D\" id=\"OptionList1\" aria-multiselectable=\"true\"><li class=\"Option-Option_nue26\"...</ul>",
+      "message": "Duplicate id attribute value \"OptionList1\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#OptionList1"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
+      "context": "<ul class=\"OptionList-Options_3Df-D\" id=\"OptionList1\" aria-multiselectable=\"true\"><li class=\"Option-Option_nue26\"...</ul>",
+      "message": "Duplicate id attribute value \"OptionList1\" found on the web page.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#OptionList1"
+    }
+  ],
+  "http://localhost:3000/range-slider/0": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputRange.Name",
+      "context": "<input type=\"range\" class=\"RangeSlider-Input_1VkvL\" id=\"RangeSlider1\" name=\"RangeSlider1\" min=\"0\" max=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"32\" aria-invalid=\"false\" value=\"32\">",
+      "message": "This range input element does not have a name available to an accessibility API. Valid names are: element content.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#RangeSlider1"
+    }
+  ],
+  "http://localhost:3000/range-slider/1": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputRange.Name",
+      "context": "<input type=\"range\" class=\"RangeSlider-Input_1VkvL\" id=\"RangeSlider1\" name=\"RangeSlider1\" min=\"-10\" max=\"10\" step=\"5\" aria-valuemin=\"-10\" aria-valuemax=\"10\" aria-valuenow=\"5\" aria-invalid=\"false\" value=\"5\">",
+      "message": "This range input element does not have a name available to an accessibility API. Valid names are: element content.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#RangeSlider1"
+    }
+  ],
+  "http://localhost:3000/range-slider/2": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputRange.Name",
+      "context": "<input type=\"range\" class=\"RangeSlider-Input_1VkvL\" id=\"RangeSlider1\" name=\"RangeSlider1\" min=\"0\" max=\"360\" aria-valuemin=\"0\" aria-valuemax=\"360\" aria-valuenow=\"100\" aria-invalid=\"false\" value=\"100\">",
+      "message": "This range input element does not have a name available to an accessibility API. Valid names are: element content.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#RangeSlider1"
+    }
+  ],
+  "http://localhost:3000/resource-list/3": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
+      "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > ul > li:nth-child(1) > div > a"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "context": "<a aria-describedby=\"256\" class=\"Item-Link_2-raD\" href=\"customers/256\" data-polaris-unstyled=\"true\"></a>",
+      "message": "Anchor element found with a valid href attribute, but no link content has been supplied.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > ul > li:nth-child(2) > div > a"
+    }
+  ],
+  "http://localhost:3000/resource-list/5": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>View latest order</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#341 > div:nth-child(3) > div > div > a > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
+      "context": "<button type=\"button\" class=\"Button-Button_2pL_i Button-plain_RU0pa Button-iconOnly_2ZPSS\" tabindex=\"0\" aria-controls=\"Popover1\" aria-owns=\"Popover1\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"Button-Content_2iX...</button>",
+      "message": "This button element does not have a name available to an accessibility API. Valid names are: title attribute, element content, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#341 > div:nth-child(4) > div > button"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>View latest order</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#256 > div:nth-child(3) > div > div > a > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
+      "context": "<button type=\"button\" class=\"Button-Button_2pL_i Button-plain_RU0pa Button-iconOnly_2ZPSS\" tabindex=\"0\" aria-controls=\"Popover2\" aria-owns=\"Popover2\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"Button-Content_2iX...</button>",
+      "message": "This button element does not have a name available to an accessibility API. Valid names are: title attribute, element content, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#256 > div:nth-child(4) > div > button"
+    }
+  ],
+  "http://localhost:3000/tabs/0": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
+      "context": "<button tabindex=\"-1\" class=\"Tabs-DisclosureActivator_1avNu\"><span class=\"Icon-Icon_mXAal\"><...</button>",
+      "message": "This button element does not have a name available to an accessibility API. Valid names are: title attribute, element content, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > button"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F92,ARIA4",
+      "context": "<li role=\"presentation\" class=\"Tabs-DisclosureTab_1_TJd\"><div><button tabindex=\"-1\" clas...</li>",
+      "message": "This element's role is \"presentation\" but contains child elements with semantic meaning.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > ul > li:nth-child(5)"
+    }
+  ],
+  "http://localhost:3000/tabs/1": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
+      "context": "<button tabindex=\"-1\" class=\"Tabs-DisclosureActivator_1avNu\"><span class=\"Icon-Icon_mXAal\"><...</button>",
+      "message": "This button element does not have a name available to an accessibility API. Valid names are: title attribute, element content, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > button"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F92,ARIA4",
+      "context": "<li role=\"presentation\" class=\"Tabs-DisclosureTab_1_TJd\"><div><button tabindex=\"-1\" clas...</li>",
+      "message": "This element's role is \"presentation\" but contains child elements with semantic meaning.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > ul > li:nth-child(3)"
+    }
+  ],
+  "http://localhost:3000/text-field/5": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Look up codes</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > button > span > span"
+    }
+  ],
+  "http://localhost:3000/text-field/8": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<div class=\"TextField-Prefix_13iyu\" id=\"TextField1Prefix\">$</div>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.52:1. Recommendation: change text colour to #000a15.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#TextField1Prefix"
+    }
+  ],
+  "http://localhost:3000/tooltip/0": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<button class=\"Link-Link_3tKep\" tabindex=\"0\" aria-describedby=\"TooltipContent1\">Order #1001</button>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > span > button"
+    }
+  ]
+}

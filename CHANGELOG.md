@@ -10,6 +10,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added a `test:coverage` script to gather and display test coverage results ([#1906](https://github.com/Shopify/polaris-react/pull/1906))
 - Added Codecov test coverage checks to pull requests ([#1917](https://github.com/Shopify/polaris-react/pull/1917))
+- Added automated a11y testing to CI (https://github.com/Shopify/polaris-react/pull/1921)
 
 ### Enhancements
 
