@@ -19,9 +19,15 @@ export default function Item({
   image,
   disabled,
   external,
+  destructive,
   ellipsis,
 }: Props) {
-  const className = classNames(styles.Item, disabled && styles.disabled);
+  const className = classNames(
+    styles.Item,
+    disabled && styles.disabled,
+    destructive && styles.destructive,
+  );
+
   let imageElement = null;
 
   if (icon) {

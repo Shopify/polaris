@@ -21,6 +21,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added a minimum width to Tab items for touch target sizing and to account for smaller tab titles
 - Added accessibility extensions to `TextField` and `OptionList` ([#1879](https://github.com/Shopify/polaris-react/pull/1879))
 - Added `media` prop to options in `<OptionList />` ([#1895](https://github.com/Shopify/polaris-react/pull/1895))
+- Added support for destructive action list items ([#1860](https://github.com/Shopify/polaris-react/pull/1860))
 
 ### Bug fixes
 
