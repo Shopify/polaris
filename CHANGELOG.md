@@ -16,6 +16,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `singleColumn` prop to Skeleton Page for single column layouts ([#1912](https://github.com/Shopify/polaris-react/pull/1912))
 - Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
 - Added `nextKeys` and `previousKeys` props to Pagination to support keypresses on pagination buttons. Added `nextTooltip` and `previousTooltip` props to support pagination button tooltips. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
+- Added two examples to Layout for 50/50 and 33/33/33 layouts ([#1866](https://github.com/Shopify/polaris-react/pull/1866))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 - Added `Progress` export to Badge
 - Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
