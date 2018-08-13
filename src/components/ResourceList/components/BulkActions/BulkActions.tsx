@@ -6,6 +6,7 @@ import {DisableableAction, Action} from '../../../../types';
 import {Duration} from '../../../shared';
 import {ActionList, Popover, Button, EventListener} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {ActionListSection} from '../../../ActionList/components/Section/Section';
 import CheckableButton from '../CheckableButton';
 import BulkActionButton from './BulkActionButton';

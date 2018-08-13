@@ -1,4 +1,4 @@
 import Popover from './Popover';
 
-export {Props, CloseSource} from './Popover';
+export {Props, PopoverCloseSource} from './Popover';
 export default Popover;

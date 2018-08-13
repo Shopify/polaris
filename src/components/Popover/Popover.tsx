@@ -8,10 +8,9 @@ import {
 
 import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import Portal from '../Portal';
-import {Pane, PopoverOverlay, Section} from './components';
-import {CloseSource} from './components/PopoverOverlay';
+import {PopoverCloseSource, Pane, PopoverOverlay, Section} from './components';
 
-export {CloseSource};
+export {PopoverCloseSource};
 
 export interface Props {
   /** The content to display inside the popover */
@@ -40,7 +39,7 @@ export interface Props {
   /** Remains in a fixed position */
   fixed?: boolean;
   /** Callback when popover is closed */
-  onClose(source: CloseSource): void;
+  onClose(source: PopoverCloseSource): void;
 }
 
 export interface State {
@@ -131,15 +130,15 @@ export default class Popover extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleClose(source: CloseSource) {
+  private handleClose(source: PopoverCloseSource) {
     this.props.onClose(source);
 
     if (this.activatorContainer == null) {
       return;
     }
     if (
-      source === CloseSource.FocusOut ||
-      source === CloseSource.EscapeKeypress
+      source === PopoverCloseSource.FocusOut ||
+      source === PopoverCloseSource.EscapeKeypress
     ) {
       focusFirstFocusableNode(this.activatorContainer, false);
     }

@@ -4,6 +4,7 @@ import {
   LoadableAction,
   BadgeAction,
 } from '../../types';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {ItemDescriptor} from '../ActionList/types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
