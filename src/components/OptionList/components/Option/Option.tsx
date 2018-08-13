@@ -12,7 +12,7 @@ import * as styles from './Option.scss';
 
 export interface Props {
   id: string;
-  label: string;
+  label: React.ReactNode;
   value: string;
   section: number;
   index: number;

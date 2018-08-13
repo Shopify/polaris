@@ -13,7 +13,7 @@ export interface OptionDescriptor {
   /** Value of the option */
   value: string;
   /** Display label for the option */
-  label: string;
+  label: React.ReactNode;
   /** Whether the option is disabled or not */
   disabled?: boolean;
   /** Whether the option is active or not */
