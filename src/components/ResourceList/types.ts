@@ -6,6 +6,7 @@ export const contextTypes: ValidationMap<any> = {
   selectable: PropTypes.bool,
   selectedItems: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   resourceName: PropTypes.object,
+  loading: PropTypes.bool,
   onSelectionChange: PropTypes.func,
   subscribe: PropTypes.func,
   unsubscribe: PropTypes.func,

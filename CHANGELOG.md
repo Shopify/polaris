@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Enhancements
+
+- Added a `loading` prop to resource list that adds a spinner overtop items if true ([#1922](https://github.com/Shopify/polaris-react/pull/1922))
 
 ## 2.6.1 - 2018-08-21
 
