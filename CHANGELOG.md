@@ -9,6 +9,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Development workflow
 
 - Added `yarn test:coverage` to gather and display test coverage ([#1906](https://github.com/Shopify/polaris-react/pull/1906))
+- Added Codecov test coverage checks to pull requests ([#1917](https://github.com/Shopify/polaris-react/pull/1917))
 
 ### Enhancements
 
