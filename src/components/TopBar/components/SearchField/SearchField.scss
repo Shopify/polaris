@@ -1,9 +1,5 @@
 @import '../../styles/variables';
 
-@mixin search-field-margin($variant: base) {
-  margin: 0 calc(#{spacing($variant) - rem(1px)});
-}
-
 $icon-size: rem(20px);
 $input-height: rem(34px);
 
@@ -21,14 +17,14 @@ $stacking-order: (
   align-items: center;
   border: 1px solid transparent;
 
-  @include search-field-margin;
+  margin: 0 spacing();
 
   @include page-content-when-not-fully-condensed {
-    @include search-field-margin(loose);
+    margin: 0 spacing(loose);
   }
 
-  @include breakpoint-after($large-width) {
-    @include search-field-margin(extra-loose);
+  @include page-content-when-not-partially-condensed {
+    margin: 0 spacing(extra-loose);
   }
 }
 
