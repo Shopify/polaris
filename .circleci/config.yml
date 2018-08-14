@@ -15,6 +15,7 @@ jobs:
           paths:
             - node_modules
       - run: yarn run check:ci
+      - run: ./node_modules/.bin/codecov
       - run: yarn run build-shrink-ray
   percy:
     docker:
