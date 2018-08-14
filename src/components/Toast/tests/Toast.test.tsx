@@ -1,7 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import {createPolarisContext} from '../../AppProvider/utils';
+import {
+  mountWithAppProvider,
+  createPolarisProps,
+} from '../../../../tests/utilities';
 
 import {noop} from '../../../utilities/other';
 
@@ -12,7 +14,7 @@ describe('<Toast />', () => {
     const props = {content: 'Image uploaded', onDismiss: noop};
     const composedProps = {
       ...props,
-      ...createPolarisContext(),
+      ...createPolarisProps(),
     };
     const {frame} = mountWithContext(<Toast {...props} />);
     expect(frame.showToast).toHaveBeenCalledWith({

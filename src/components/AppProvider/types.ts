@@ -6,51 +6,15 @@ import Intl from './Intl';
 import Link from './Link';
 import EASDK from './EASDK';
 import StickyManager from './StickyManager';
-
-export type ColorsToParse = ThemeColor;
-
-export interface ThemeLogo {
-  /** Provides a path for a logo used on a dark background */
-  topBarSource?: string;
-  /** Provides a path for a logo used on a light background */
-  contextualSaveBarSource?: string;
-  /** Destination the merchant will navigate to when clicking the logo */
-  url?: string;
-  /** Accessible label the logo image */
-  accessibilityLabel?: string;
-  /** Number of pixels wide the logo image is */
-  width: number;
-}
-
-export interface ThemeColor {
-  [key: string]: string;
-}
-
-export interface TopBar extends ThemeColor {
-  background: string;
-}
-
-export type ThemeColors = {
-  topBar: TopBar;
-};
-
-export interface Theme {
-  /** Sets the logo for the top bar and contextual save bar components*/
-  logo?: ThemeLogo;
-  /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
-  colors?: ThemeColors;
-}
-
-export interface ThemeContext {
-  logo: Theme['logo'] | null;
-}
-
-export type ThemeVariant = 'light' | 'dark';
+import {
+  THEME_CONTENT_TYPES as theme,
+  ThemeContext,
+} from '../ThemeProvider/types';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
-  theme: PropTypes.any,
   easdk: PropTypes.any,
+  ...theme,
 };
 
 export interface WithAppProviderProps {

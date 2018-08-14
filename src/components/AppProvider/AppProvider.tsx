@@ -1,5 +1,4 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import EASDK from './EASDK';
 
@@ -8,13 +7,10 @@ import {LinkLikeComponent} from '../UnstyledLink';
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
-import {createPolarisContext, setColors} from './utils';
-import {
-  polarisAppProviderContextTypes,
-  TranslationDictionary,
-  Theme,
-  ThemeContext,
-} from './types';
+import {createPolarisContext} from './utils';
+import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
+import {Theme} from '../ThemeProvider/types';
+import ThemeProvider from '../ThemeProvider';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */
@@ -38,7 +34,6 @@ export interface Context {
     intl: Intl;
     link: Link;
     stickyManager: StickyManager;
-    theme?: ThemeContext;
     subscribe?(callback: () => void): void;
     unsubscribe?(callback: () => void): void;
   };
@@ -54,8 +49,9 @@ export default class AppProvider extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.stickyManager = new StickyManager();
+    const {theme, children, ...rest} = this.props;
     this.polarisContext = createPolarisContext({
-      ...props,
+      ...rest,
       stickyManager: this.stickyManager,
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
@@ -63,9 +59,6 @@ export default class AppProvider extends React.Component<Props> {
   }
 
   componentDidMount() {
-    const {theme} = this.props;
-    setColors(theme);
-
     if (document != null) {
       this.stickyManager.setContainer(document);
     }
@@ -78,7 +71,6 @@ export default class AppProvider extends React.Component<Props> {
     shopOrigin,
     forceRedirect,
     debug,
-    theme,
   }: Props) {
     if (
       i18n !== this.props.i18n ||
@@ -86,8 +78,7 @@ export default class AppProvider extends React.Component<Props> {
       apiKey !== this.props.apiKey ||
       shopOrigin !== this.props.shopOrigin ||
       forceRedirect !== this.props.forceRedirect ||
-      debug !== this.props.debug ||
-      theme !== this.props.theme
+      debug !== this.props.debug
     ) {
       const stickyManager = this.stickyManager;
       this.polarisContext = createPolarisContext({
@@ -98,19 +89,12 @@ export default class AppProvider extends React.Component<Props> {
         forceRedirect,
         debug,
         stickyManager,
-        theme,
         subscribe: this.subscribe,
         unsubscribe: this.unsubscribe,
       });
     }
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-
-    if (isEqual(theme, this.props.theme)) {
-      return;
-    }
-
-    setColors(theme);
   }
 
   getChildContext(): Context {
@@ -118,7 +102,12 @@ export default class AppProvider extends React.Component<Props> {
   }
 
   render() {
-    return React.Children.only(this.props.children);
+    const {theme = {logo: null}} = this.props;
+    return (
+      <ThemeProvider theme={theme}>
+        {React.Children.only(this.props.children)}
+      </ThemeProvider>
+    );
   }
 
   @autobind
