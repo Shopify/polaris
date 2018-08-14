@@ -1,0 +1,19 @@
+@mixin when-printing {
+  @media print {
+    @content;
+  }
+}
+
+@mixin when-not-printing {
+  @media not print {
+    @content;
+  }
+}
+
+@mixin hidden-when-printing {
+  @include when-printing {
+    // We really, really don't want to see this thing when it is printed.
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
