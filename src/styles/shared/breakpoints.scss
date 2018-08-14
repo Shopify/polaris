@@ -42,11 +42,11 @@ $nav-min-window: em(layout-width(page-with-nav));
 
   @if $size < $partially-condensed-content {
     // prettier-ignore
-    @media
-      (max-width: #{min($nav-min-window, $size)}),
-      (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
-      [data-has-navigation] & {
-        @content;
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media
+        (max-width: #{min($nav-min-window, $size)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
+          @content;
       }
     }
 
@@ -55,11 +55,11 @@ $nav-min-window: em(layout-width(page-with-nav));
     }
   } @else if $size < $not-condensed-content {
     // prettier-ignore
-    @media
-      (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
-      (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-      [data-has-navigation] & {
-        @content;
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media
+        (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
       }
     }
 
@@ -68,11 +68,11 @@ $nav-min-window: em(layout-width(page-with-nav));
     }
   } @else {
     // prettier-ignore
-    @media
-      (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
-      (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-      [data-has-navigation] & {
-        @content;
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media
+        (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
       }
     }
 
@@ -87,11 +87,11 @@ $nav-min-window: em(layout-width(page-with-nav));
 
   @if $size < $partially-condensed-content {
     // prettier-ignore
-    @media
-      (max-width: #{$nav-min-window}) and (min-width: #{$size}),
-      (min-width: #{$nav-size + $size}) {
-      [data-has-navigation] & {
-        @content;
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media
+        (max-width: #{$nav-min-window}) and (min-width: #{$size}),
+        (min-width: #{$nav-size + $size}) {
+          @content;
       }
     }
 
@@ -100,11 +100,11 @@ $nav-min-window: em(layout-width(page-with-nav));
     }
   } @else if $size < $not-condensed-content {
     // prettier-ignore
-    @media
-      (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
-      (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
-      [data-has-navigation] & {
-        @content;
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media
+        (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+          @content;
       }
     }
 
@@ -113,11 +113,11 @@ $nav-min-window: em(layout-width(page-with-nav));
     }
   } @else {
     // prettier-ignore
-    @media
-      (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
-      (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-      [data-has-navigation] & {
-        @content;
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media
+        (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
       }
     }
 
