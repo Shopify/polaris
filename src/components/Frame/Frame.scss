@@ -10,6 +10,7 @@ $skip-vertical-offset: rem(10px);
 }
 
 .Navigation {
+  @include hidden-when-printing;
   position: fixed;
   z-index: z-index(nav, $fixed-element-stacking-order);
   top: 0;
@@ -48,6 +49,7 @@ $skip-vertical-offset: rem(10px);
 }
 
 .NavigationDismiss {
+  @include hidden-when-printing;
   position: absolute;
   top: 0;
   left: 100%;
@@ -77,6 +79,7 @@ $skip-vertical-offset: rem(10px);
 }
 
 .NavigationOverlay {
+  @include hidden-when-printing;
   position: fixed;
   z-index: z-index(nav-overlay, $fixed-element-stacking-order);
   top: 0;
@@ -99,6 +102,7 @@ $skip-vertical-offset: rem(10px);
 }
 
 .TopBar {
+  @include hidden-when-printing;
   position: fixed;
   z-index: z-index(top-bar, $fixed-element-stacking-order);
   top: 0;
@@ -135,8 +139,10 @@ $skip-vertical-offset: rem(10px);
   }
 
   .hasTopBar & {
-    height: calc(100% - #{top-bar-height()});
-    padding-top: top-bar-height();
+    @include when-not-printing {
+      height: calc(100% - #{top-bar-height()});
+      padding-top: top-bar-height();
+    }
   }
 }
 
@@ -154,6 +160,7 @@ $skip-vertical-offset: rem(10px);
 }
 
 .LoadingBar {
+  @include hidden-when-printing;
   position: fixed;
   z-index: z-index(loading-bar, $fixed-element-stacking-order);
   .hasTopBar & {
