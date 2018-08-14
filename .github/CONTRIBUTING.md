@@ -1,10 +1,10 @@
 # How to contribute
 
-Polaris React is Shopify's largest open source project. It's the only project that's both under very active development and is used to build Shopify and Shopify apps every day. We want to make it as easy and transparent as possible to contribute. If we are missing anything or can make the process easier in any way, [please let us know](mailto:polaris@shopify.com).
+Polaris React is Shopify’s largest open source project. It’s the only project that’s both under very active development and is used to build Shopify and Shopify apps every day. We want to make it as easy and transparent as possible to contribute. If we are missing anything or can make the process easier in any way, [please let us know](mailto:polaris@shopify.com).
 
 ## Code of conduct
 
-We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris-react/blob/master/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren't tolerated.
+We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris-react/blob/master/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
 
 ## Open development
 
@@ -20,7 +20,7 @@ Every significant change is documented in the [CHANGELOG](https://github.com/Sho
 
 ## Branch organization
 
-We do our best to keep `master` releasable as a minor or patch version at all times, with work for major releases happening in separate branches. [Breaking changes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#major) should never be merged directly to `master`. Otherwise, if you send a pull request please do it against the `master` branch. Continue reading for more about pull requests and breaking changes.
+We do our best to keep `master` releasable at all times, with work for major releases happening in separate branches. [Breaking changes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#major) should never be merged directly to `master`. Otherwise, if you send a pull request please do it against the `master` branch. Continue reading for more about pull requests and breaking changes.
 
 ## Bugs
 
@@ -34,7 +34,7 @@ To reduce duplicates, look through open issues before filing one. When [opening 
 
 ## Feature requests
 
-Before requesting a feature, search the [existing feature requests](https://github.com/Shopify/polaris-react/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22feature+request%22+sort%3Areactions-%2B1-desc). You can [👍 upvote](https://help.github.com/articles/about-conversations-on-github/) feature requests to help the Polaris team set priorities. If a feature request is closed, you can still upvote! A closed feature request means it's not something we're currently working on, but we take all your input into account when planning what to work on next.
+Before requesting a feature, search the [existing feature requests](https://github.com/Shopify/polaris-react/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22feature+request%22+sort%3Areactions-%2B1-desc). You can [👍 upvote](https://help.github.com/articles/about-conversations-on-github/) feature requests to help the Polaris team set priorities. If a feature request is closed, you can still upvote! A closed feature request means it’s not something we’re currently working on, but we take all your input into account when planning what to work on next.
 
 Otherwise, [request a feature](https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md).
 
@@ -49,7 +49,7 @@ If you intend to build a new component, change a public API, make design improve
 
 Please use [this template for proposing new components or changes to existing components](https://github.com/Shopify/polaris-react/issues/new?template=NEW_COMPONENT.md).
 
-If you're only fixing a bug, it's okay to submit a pull request right away but we still recommend you file an issue detailing what you're fixing. This is helpful in case we don't accept that specific fix but want to keep track of the issue.
+If you’re only fixing a bug, it’s okay to submit a pull request right away but we still recommend you file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
 
 ## Your first pull request
 
@@ -61,24 +61,24 @@ To help you get familiar with our contribution process, we have a list of [good 
 
 If you decide to fix an issue, please check the comment thread in case somebody is already working on a fix. If nobody is working on it, leave a comment stating that you intend to work on it.
 
-If somebody claims an issue but doesn't follow up for more than two weeks, it's fine to take it over but still leave a comment stating that you intend to work on it.
+If somebody claims an issue but doesn’t follow up for more than two weeks, it’s fine to take it over but still leave a comment stating that you intend to work on it.
 
 ### Sending a pull request
 
-We'll review your pull request and either merge it, request changes to it, or close it with an explanation. We'll do our best to provide updates and feedback throughout the process.
+We’ll review your pull request and either merge it, request changes to it, or close it with an explanation. We’ll do our best to provide updates and feedback throughout the process.
 
 **Before submitting a pull request**, please:
 
 1. Fork the repository and create your branch from `master`
 1. Run `yarn` in the repository root
-1. If you've fixed a bug or added code that [should be tested](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Testing.md), add tests
+1. If you’ve fixed a bug or added code that [should be tested](https://github.com/Shopify/web-foundation/blob/master/Best%20practices/Testing.md), add tests
 1. Ensure the test suite passes with `yarn test` (protip: `yarn test:watch TestName` is helpful in development)
 1. If your pull request contains SVG run `yarn optimize`
 1. Format your code with `yarn format`
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn ts`
 1. [Tophat 🎩](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md) your changes locally with `yarn dev`
-1. If you haven't already, complete the CLA
+1. If you haven’t already, complete the CLA
 
 ### Contributor License Agreement (CLA)
 
@@ -104,7 +104,7 @@ After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can 
 - `yarn test <pattern>` runs tests with matching filenames
 - `yarn tophat` runs a local development server and mounts all of the component examples
 
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However it can be handy to try your build of Polaris React in a real project.
+We recommend running `yarn test` (or its variations above) to make sure you don’t introduce any regressions as you work on your change. However it can be handy to try your build of Polaris React in a real project.
 
 Run `yarn run build-consumer <project>` where `<project>` is the directory the build will be copied. **The `<project>` directory must be a sibling of the `polaris-react` directory**.
 
