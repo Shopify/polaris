@@ -40,7 +40,7 @@
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
     "test:coverage": "yarn test --coverage --no-cache",
-    "test:ci": "yarn test --runInBand --coverage && codecov",
+    "test:ci": "yarn test --runInBand --coverage",
     "test:watch": "yarn test --watch",
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
