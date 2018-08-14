@@ -7,8 +7,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from '../../../../tests/utilities';
-import Item from '../components/Item';
-import BulkActions from '../components/BulkActions';
+import {BulkActions, Item} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
@@ -435,11 +434,13 @@ describe('<ResourceList />', () => {
 
     describe('sortValue', () => {
       it("should pass a 'sortValue' to the Select value", () => {
+        const onSortChange = jest.fn();
         const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
             sortValue="sortValue"
+            onSortChange={onSortChange}
             renderItem={renderItem}
           />,
         );

@@ -5,10 +5,10 @@ $content-max-width: rem(400px);
 
 .Popover {
   max-width: calc(100vw - #{2 * spacing()});
-  margin: $visible-portion-of-arrow spacing() spacing();
+  margin: $visible-portion-of-arrow spacing(tight) spacing();
   opacity: 1;
   box-shadow: shadow(deep);
-  border-radius: border-radius(large);
+  border-radius: border-radius();
   will-change: opacity, left, top;
   transition: opacity duration() easing(in);
 }

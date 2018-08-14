@@ -7,8 +7,6 @@ import {SortDirection} from '../../DataTable';
 
 import * as styles from '../../DataTable.scss';
 
-export type CombinedProps = Props & WithAppProviderProps;
-
 export interface Props {
   testID?: string;
   height?: number;
@@ -16,7 +14,6 @@ export interface Props {
   contentType?: string;
   fixed?: boolean;
   truncate?: boolean;
-  presentational?: boolean;
   header?: boolean;
   total?: boolean;
   footer?: boolean;
@@ -27,13 +24,14 @@ export interface Props {
   onSort?(): void;
 }
 
+export type CombinedProps = Props & WithAppProviderProps;
+
 function Cell({
   height,
   content,
   contentType,
   fixed,
   truncate,
-  presentational,
   header,
   total,
   footer,
@@ -52,85 +50,60 @@ function Cell({
     styles.Cell,
     fixed && styles['Cell-fixed'],
     fixed && truncate && styles['Cell-truncated'],
-    presentational && styles['Cell-presentational'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     footer && styles['Cell-footer'],
     numeric && styles['Cell-numeric'],
-    sorted && styles['Cell-sorted'],
     sortable && styles['Cell-sortable'],
+    sorted && styles['Cell-sorted'],
   );
-
-  const style = height ? {height: `${height}px`} : undefined;
 
   const headerClassName = classNames(
     header && styles.Heading,
     header && contentType === 'text' && styles['Heading-left'],
   );
 
-  const iconClassName = classNames(sortable && styles['Heading-sortable']);
+  const iconClassName = classNames(sortable && styles.Icon);
 
-  // TODO work out a better way for fix this lint violation
-  const presentationalMarkup = header ? (
-    // eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
-    <th aria-hidden role="presentation" className={className} style={style} />
-  ) : (
-    // eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
-    <td aria-hidden role="presentation" className={className} style={style} />
+  const style = {
+    height: height ? `${height}px` : undefined,
+  };
+
+  const direction = sorted ? sortDirection : defaultSortDirection;
+  const source = `caret${direction === 'ascending' ? 'Up' : 'Down'}`;
+  const oppositeDirection =
+    sortDirection === 'ascending' ? 'descending' : 'ascending';
+
+  const sortAccessibilityLabel = translate(
+    'Polaris.DataTable.sortAccessibilityLabel',
+    {direction: sorted ? oppositeDirection : direction},
   );
 
-  let sortedIconMarkup = null;
-  let sortableIconMarkup = null;
-  let sortAccessibilityLabel;
+  const iconMarkup = (
+    <span className={iconClassName}>
+      <Icon
+        source={source as IconSource}
+        accessibilityLabel={sortAccessibilityLabel}
+      />
+    </span>
+  );
 
-  if (sortable) {
-    // i18n string variable
-    sortAccessibilityLabel = translate(
-      'Polaris.DataTable.sortAccessibilityLabel',
-      {content: (content as string).toLowerCase()},
-    );
-
-    if (sorted) {
-      const direction = sortDirection === 'ascending' ? 'Up' : 'Down';
-      const source = `caret${direction}`;
-      sortedIconMarkup = <Icon source={source as IconSource} />;
-    } else {
-      const direction = defaultSortDirection === 'ascending' ? 'Up' : 'Down';
-      const source = `caret${direction}`;
-      sortableIconMarkup = <Icon source={source as IconSource} />;
-    }
-  }
-
-  const sortableHeadingContent =
-    contentType === 'text' ? (
-      <span className={headerClassName}>
-        {content}
-        <span className={iconClassName}>{sortableIconMarkup}</span>
-        <span>{sortedIconMarkup}</span>
-      </span>
-    ) : (
-      <span className={headerClassName}>
-        <span className={iconClassName}>{sortableIconMarkup}</span>
-        <span>{sortedIconMarkup}</span>
-        {content}
-      </span>
-    );
+  const sortableHeadingContent = (
+    <button className={headerClassName} onClick={onSort}>
+      {iconMarkup}
+      {content}
+    </button>
+  );
 
   const columnHeadingContent = sortable ? sortableHeadingContent : content;
 
-  const sortProps = sortable
-    ? {
-        role: 'button',
-        onClick: onSort,
-        onKeyDown: onKeyDownEnter(onSort),
-        'aria-sort': sortDirection,
-        'aria-label': sortAccessibilityLabel,
-        tabIndex: 0,
-      }
-    : {'aria-disabled': true};
-
   const headingMarkup = header ? (
-    <th className={className} scope="col" style={style} {...sortProps}>
+    <th
+      className={className}
+      scope="col"
+      aria-sort={sortDirection}
+      style={style}
+    >
       {columnHeadingContent}
     </th>
   ) : (
@@ -139,7 +112,7 @@ function Cell({
     </th>
   );
 
-  const nonPresentationalMarkup =
+  const cellMarkup =
     header || fixed ? (
       headingMarkup
     ) : (
@@ -148,20 +121,7 @@ function Cell({
       </td>
     );
 
-  const cellMarkup = presentational
-    ? presentationalMarkup
-    : nonPresentationalMarkup;
-
   return cellMarkup;
-}
-
-function onKeyDownEnter(sortFunc?: () => void) {
-  return function handleKeyPress(event: React.KeyboardEvent<HTMLElement>) {
-    const {keyCode} = event;
-    if (keyCode === 13 && sortFunc !== undefined) {
-      sortFunc();
-    }
-  };
 }
 
 export default withAppProvider<Props>()(Cell);

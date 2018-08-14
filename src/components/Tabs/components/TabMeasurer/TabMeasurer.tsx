@@ -94,7 +94,9 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
 
     const {handleMeasurement} = this.props;
     const containerWidth = this.containerNode.offsetWidth;
-    const hiddenTabNodes = findDOMNode(this).children;
+    const tabMeasurerNode = findDOMNode(this);
+    const hiddenTabNodes =
+      tabMeasurerNode instanceof Element && tabMeasurerNode.children;
     const hiddenTabNodesArray: HTMLElement[] = [].slice.call(hiddenTabNodes);
     const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
       return node.getBoundingClientRect().width;

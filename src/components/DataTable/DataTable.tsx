@@ -2,14 +2,10 @@ import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
 
-import Cell, {Props as CellProps} from './components/Cell';
-import Navigation from './components/Navigation';
+import {Cell, CellProps, Navigation} from './components';
 
 import * as styles from './DataTable.scss';
 
@@ -22,16 +18,14 @@ export type ColumnContentType = 'text' | 'numeric';
 export interface ColumnVisibilityData {
   leftEdge: number;
   rightEdge: number;
-  isVisible: boolean;
-  isScrolledFarthestLeft?: boolean;
-  isScrolledFarthestRight?: boolean;
+  isVisible?: boolean;
 }
 
 interface TableMeasurements {
+  fixedColumnWidth: number;
+  firstVisibleColumnIndex: number;
   tableLeftVisibleEdge: number;
   tableRightVisibleEdge: number;
-  firstVisibleColumnIndex: number;
-  fixedColumnWidth: number;
 }
 
 export interface ScrollPosition {
@@ -79,7 +73,10 @@ export interface State {
   sortedColumnIndex?: number;
   sortDirection?: SortDirection;
   heights: number[];
+  fixedColumnWidth?: number;
   preservedScrollPosition: ScrollPosition;
+  isScrolledFarthestLeft?: boolean;
+  isScrolledFarthestRight?: boolean;
 }
 
 export class DataTable extends React.PureComponent<CombinedProps, State> {
@@ -89,6 +86,8 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     sorted: this.props.sortable && this.props.sortable.length > 0,
     heights: [],
     preservedScrollPosition: {},
+    isScrolledFarthestLeft: true,
+    isScrolledFarthestRight: false,
   };
 
   private dataTable: HTMLElement;
@@ -98,11 +97,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   constructor(props: CombinedProps) {
     super(props);
-    const {
-      polaris: {
-        intl: {translate},
-      },
-    } = props;
+    const {translate} = props.polaris.intl;
     this.totalsRowHeading = translate('Polaris.DataTable.totalsRowHeading');
   }
 
@@ -119,6 +114,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   render() {
     const {
+      columnContentTypes,
       headings,
       totals,
       rows,
@@ -133,9 +129,10 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       collapsed,
       columnVisibilityData,
       heights,
-      currentColumn,
       sortedColumnIndex = initialSortColumnIndex,
       sortDirection = defaultSortDirection,
+      isScrolledFarthestLeft,
+      isScrolledFarthestRight,
     } = this.state;
 
     const className = classNames(
@@ -158,32 +155,26 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     ) : null;
 
     const totalsMarkup = totals ? (
-      <tr>{insertPresentationalCell(totals).map(this.renderTotals)}</tr>
+      <tr>{totals.map(this.renderTotals)}</tr>
     ) : null;
 
     const headingMarkup = (
       <tr>
-        {insertPresentationalCell(headings).map((heading, headingIndex) => {
-          let sortableHeadingProps = {};
+        {headings.map((heading, headingIndex) => {
+          let sortableHeadingProps;
           const id = `heading-cell-${headingIndex}`;
-          // we account for the presentational heading cell’s index when
-          // accessing elements from arrays passed as props and when comparing
-          // a heading index with the sorted column’s index
-          const index = headingIndex <= 1 ? headingIndex : headingIndex - 1;
-          const contentTypes = this.getContentTypes();
 
           if (sortable) {
-            const isSortable = sortable[index];
-            const isSorted = isSortable && sortedColumnIndex === index;
-            const direction =
-              isSorted && sortedColumnIndex === index ? sortDirection : 'none';
+            const isSortable = sortable[headingIndex];
+            const isSorted = sortedColumnIndex === headingIndex;
+            const direction = isSorted ? sortDirection : 'none';
 
             sortableHeadingProps = {
               defaultSortDirection,
               sorted: isSorted,
               sortable: isSortable,
               sortDirection: direction,
-              onSort: this.defaultOnSort(index),
+              onSort: this.defaultOnSort(headingIndex),
             };
           }
 
@@ -196,10 +187,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
               testID={id}
               height={height}
               content={heading}
-              contentType={contentTypes[headingIndex]}
+              contentType={columnContentTypes[headingIndex]}
               fixed={headingIndex === 0}
               truncate={truncate}
-              presentational={headingIndex === 1}
               {...sortableHeadingProps}
             />
           );
@@ -210,13 +200,14 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const bodyMarkup = rows.map(this.defaultRenderRow);
     const style = footerContent
       ? {marginBottom: `${heights[heights.length - 1]}px`}
-      : {};
+      : undefined;
 
     return (
       <div className={wrapperClassName}>
         <Navigation
-          currentColumn={currentColumn}
           columnVisibilityData={columnVisibilityData}
+          isScrolledFarthestLeft={isScrolledFarthestLeft}
+          isScrolledFarthestRight={isScrolledFarthestRight}
           navigateTableLeft={this.navigateTable('left')}
           navigateTableRight={this.navigateTable('right')}
         />
@@ -265,7 +256,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   @debounce()
   private handleResize() {
     const {footerContent, truncate} = this.props;
-    const collapsed = this.table.scrollWidth > this.dataTable.offsetWidth;
+    const collapsed = this.table.scrollWidth > this.scrollContainer.clientWidth;
     this.scrollContainer.scrollLeft = 0;
     this.setState(
       {
@@ -333,23 +324,32 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
       const headerCells = this.table.querySelectorAll(
         '[class*=header]',
       ) as NodeListOf<HTMLElement>;
-      const collapsedHeaderCells = Array.from(headerCells).slice(2);
+      const collapsedHeaderCells = Array.from(headerCells).slice(1);
       const fixedColumnWidth = headerCells[0].offsetWidth;
+      const firstVisibleColumnIndex = collapsedHeaderCells.length - 1;
+      const tableLeftVisibleEdge =
+        this.scrollContainer.scrollLeft + fixedColumnWidth;
+      const tableRightVisibleEdge =
+        this.scrollContainer.scrollLeft + this.dataTable.offsetWidth;
       const tableData = {
         fixedColumnWidth,
-        firstVisibleColumnIndex: collapsedHeaderCells.length - 1,
-        tableLeftVisibleEdge: this.scrollContainer.scrollLeft,
-        tableRightVisibleEdge:
-          this.scrollContainer.scrollLeft +
-          (this.dataTable.offsetWidth - fixedColumnWidth),
+        firstVisibleColumnIndex,
+        tableLeftVisibleEdge,
+        tableRightVisibleEdge,
       };
+
       const columnVisibilityData = collapsedHeaderCells.map(
         measureColumn(tableData),
       );
 
+      const lastColumn = columnVisibilityData[columnVisibilityData.length - 1];
+
       return {
+        fixedColumnWidth,
         columnVisibilityData,
         ...getPrevAndCurrentColumns(tableData, columnVisibilityData),
+        isScrolledFarthestLeft: tableLeftVisibleEdge === fixedColumnWidth,
+        isScrolledFarthestRight: lastColumn.rightEdge <= tableRightVisibleEdge,
       };
     }
 
@@ -369,16 +369,17 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private navigateTable(direction: string) {
-    const {scrollContainer} = this;
-    const {currentColumn, previousColumn} = this.state;
+    const {currentColumn, previousColumn, fixedColumnWidth} = this.state;
 
     const handleScroll = () => {
-      if (direction === 'right' && currentColumn) {
-        scrollContainer.scrollLeft = currentColumn.rightEdge;
-      } else if (previousColumn) {
-        scrollContainer.scrollLeft =
-          previousColumn.leftEdge < 10 ? 0 : previousColumn.leftEdge;
+      if (!currentColumn || !previousColumn || !fixedColumnWidth) {
+        return;
       }
+
+      this.scrollContainer.scrollLeft =
+        direction === 'right'
+          ? currentColumn.rightEdge - fixedColumnWidth
+          : previousColumn.leftEdge - fixedColumnWidth;
 
       requestAnimationFrame(() => {
         this.setState({
@@ -391,66 +392,33 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private getContentTypes() {
-    const {columnContentTypes} = this.props;
-    const fixedCellType = columnContentTypes[0];
-
-    return [fixedCellType, ...columnContentTypes];
-  }
-
-  @autobind
-  private renderFirstTwoTotalsCells(index: number) {
-    let height;
+  private renderTotals(total: TableData, index: number) {
     const id = `totals-cell-${index}`;
     const {heights} = this.state;
     const {truncate = false} = this.props;
-    if (!truncate) {
-      height = heights[1];
-    }
+
+    let content;
+    let contentType;
 
     if (index === 0) {
-      return (
-        <Cell
-          fixed
-          total
-          testID={id}
-          key={id}
-          height={height}
-          content={this.totalsRowHeading}
-          truncate={truncate}
-        />
-      );
+      content = this.totalsRowHeading;
     }
 
-    if (index === 1) {
-      return <Cell testID={id} key={id} presentational height={height} />;
+    if (total !== '' && index > 0) {
+      contentType = 'numeric';
+      content = total;
     }
 
     return (
-      <Cell total testID={id} key={id} contentType="numeric" height={height} />
-    );
-  }
-
-  @autobind
-  private renderTotals(total: TableData, index: number) {
-    let height;
-    const id = `totals-cell-${index}`;
-    const {heights} = this.state;
-    const {truncate = false} = this.props;
-    if (!truncate) {
-      height = heights[1];
-    }
-
-    return total === '' ? (
-      this.renderFirstTwoTotalsCells(index)
-    ) : (
       <Cell
         total
+        fixed={index === 0}
         testID={id}
         key={id}
-        height={height}
-        contentType="numeric"
-        content={total}
+        height={heights[1]}
+        content={content}
+        contentType={contentType}
+        truncate={truncate}
       />
     );
   }
@@ -458,34 +426,36 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   @autobind
   private defaultRenderRow(row: TableData[], index: number) {
     const className = classNames(styles.TableRow);
-    const contentTypes = this.getContentTypes();
-    const {totals, footerContent, truncate = false} = this.props;
+    const {
+      columnContentTypes,
+      totals,
+      footerContent,
+      truncate = false,
+    } = this.props;
     const {heights} = this.state;
     const bodyCellHeights = totals ? heights.slice(2) : heights.slice(1);
+
     if (footerContent) {
       bodyCellHeights.pop();
     }
 
     return (
       <tr key={`row-${index}`} className={className}>
-        {insertPresentationalCell(row).map(
-          (content: CellProps['content'], cellIndex: number) => {
-            const id = `cell-${cellIndex}-row-${index}`;
+        {row.map((content: CellProps['content'], cellIndex: number) => {
+          const id = `cell-${cellIndex}-row-${index}`;
 
-            return (
-              <Cell
-                key={id}
-                testID={id}
-                height={bodyCellHeights[index]}
-                content={content}
-                contentType={contentTypes[cellIndex]}
-                fixed={cellIndex === 0}
-                truncate={truncate}
-                presentational={cellIndex === 1}
-              />
-            );
-          },
-        )}
+          return (
+            <Cell
+              key={id}
+              testID={id}
+              height={bodyCellHeights[index]}
+              content={content}
+              contentType={columnContentTypes[cellIndex]}
+              fixed={cellIndex === 0}
+              truncate={truncate}
+            />
+          );
+        })}
       </tr>
     );
   }
@@ -554,39 +524,21 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-function insertPresentationalCell(arr: TableRow = []) {
-  const fixedCell = arr[0];
-  const presentationalCell = '';
-  return [fixedCell, presentationalCell, ...arr.slice(1)];
-}
-
 function measureColumn(tableData: TableMeasurements) {
   return function(column: HTMLElement, index: number) {
     const {
-      tableLeftVisibleEdge,
-      tableRightVisibleEdge,
       firstVisibleColumnIndex,
+      tableLeftVisibleEdge: tableStart,
+      tableRightVisibleEdge: tableEnd,
       fixedColumnWidth,
     } = tableData;
 
-    const width = column.offsetWidth;
-    const leftEdge = column.offsetLeft - fixedColumnWidth;
-    const rightEdge = leftEdge + width;
-    const leftEdgeIsVisible = isEdgeVisible(
-      leftEdge,
-      tableLeftVisibleEdge,
-      tableRightVisibleEdge,
-    );
-    const rightEdgeIsVisible = isEdgeVisible(
-      rightEdge,
-      tableLeftVisibleEdge,
-      tableRightVisibleEdge,
-    );
-    const isCompletelyVisible =
-      leftEdge < tableLeftVisibleEdge && rightEdge > tableRightVisibleEdge;
+    const leftEdge = column.offsetLeft + fixedColumnWidth;
+    const rightEdge = leftEdge + column.offsetWidth;
+    const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd);
+    const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
+    const isVisible = isVisibleLeft || isVisibleRight;
 
-    const isVisible =
-      isCompletelyVisible || leftEdgeIsVisible || rightEdgeIsVisible;
     if (isVisible) {
       tableData.firstVisibleColumnIndex = Math.min(
         firstVisibleColumnIndex,
@@ -598,31 +550,22 @@ function measureColumn(tableData: TableMeasurements) {
   };
 }
 
-function isEdgeVisible(target: number, start: number, end: number) {
+function isEdgeVisible(position: number, start: number, end: number) {
   const minVisiblePixels = 30;
 
-  return target >= start + minVisiblePixels && target <= end - minVisiblePixels;
+  return (
+    position >= start + minVisiblePixels && position <= end - minVisiblePixels
+  );
 }
 
 function getPrevAndCurrentColumns(
   tableData: TableMeasurements,
   columnData: State['columnVisibilityData'],
 ) {
-  const {
-    tableRightVisibleEdge,
-    tableLeftVisibleEdge,
-    firstVisibleColumnIndex,
-  } = tableData;
+  const {firstVisibleColumnIndex} = tableData;
   const previousColumnIndex = Math.max(firstVisibleColumnIndex - 1, 0);
   const previousColumn = columnData[previousColumnIndex];
-  const lastColumnIndex = columnData.length - 1;
-  const lastColumn = columnData[lastColumnIndex];
-  const currentColumn = {
-    isScrolledFarthestLeft:
-      firstVisibleColumnIndex === 0 && tableLeftVisibleEdge === 0,
-    isScrolledFarthestRight: lastColumn.rightEdge <= tableRightVisibleEdge,
-    ...columnData[firstVisibleColumnIndex],
-  };
+  const currentColumn = columnData[firstVisibleColumnIndex];
 
   return {previousColumn, currentColumn};
 }

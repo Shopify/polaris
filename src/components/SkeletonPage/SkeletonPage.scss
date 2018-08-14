@@ -1,11 +1,14 @@
 $action-text-spacing: rem(24px);
-
 .Page {
   @include page-layout;
 }
 
 .fullWidth {
   max-width: none;
+}
+
+.singleColumn {
+  max-width: layout-width(primary, max);
 }
 
 .Content {
@@ -31,11 +34,9 @@ $action-text-spacing: rem(24px);
   min-height: control-height();
   padding-right: $action-text-spacing;
   margin-bottom: (-1 * spacing(extra-tight));
-
   &:first-child {
     padding-right: 0;
   }
-
   @include page-content-when-partially-condensed {
     &:not(:last-child) {
       display: none;

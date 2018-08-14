@@ -1,6 +1,14 @@
 ci:
   hide:
     - shrink-ray
-    - "ci/circleci: percy"
+    - 'ci/circleci: percy'
+    - codecov/patch
   require:
-    - "ci/circleci: check"
+    - 'ci/circleci: check'
+
+merge:
+  require:
+    - 'ci/circleci: check'
+    - shrink-ray
+  ignore:
+    - codecov/patch

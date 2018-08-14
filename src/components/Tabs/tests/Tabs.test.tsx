@@ -2,8 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import Tabs, {Props} from '..';
-import Tab from '../components/Tab';
-import Panel from '../components/Panel';
+import {Tab, Panel} from '../components';
 
 describe('<Tabs />', () => {
   let tabs: Props['tabs'];

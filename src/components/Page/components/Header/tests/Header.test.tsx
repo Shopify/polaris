@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import {LinkAction} from '../../../types';
-import Header from '../components/Header';
-import Breadcrumbs from '../../Breadcrumbs';
+import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {LinkAction} from '../../../../../types';
+import Header from '../Header';
+import Breadcrumbs from '../../../../Breadcrumbs';
 
 const breadcrumbs: LinkAction[] = [
   {

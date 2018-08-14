@@ -3,13 +3,13 @@ name: Text container
 category: Titles and text
 releasedIn: 1.9.0
 keywords:
- - spacing
- - heading
- - list
- - layout
- - vertical
- - margin
- - padding
+  - spacing
+  - heading
+  - list
+  - layout
+  - vertical
+  - margin
+  - padding
 ---
 
 # Text container
