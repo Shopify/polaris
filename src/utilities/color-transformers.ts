@@ -129,7 +129,7 @@ export function hslToRgb(color: HSLAColor): RGBAColor {
 }
 
 // ref https://en.wikipedia.org/wiki/HSL_and_HSV
-function rgbToHsbl(color: RGBAColor): HSBLAColor {
+function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
   const {red, green, blue, alpha = 1} = color;
   const r = red / 255;
   const g = green / 255;
@@ -139,7 +139,18 @@ function rgbToHsbl(color: RGBAColor): HSBLAColor {
   const smallestComponent = Math.min(r, g, b);
 
   const delta = largestComponent - smallestComponent;
-  const saturation = largestComponent === 0 ? 0 : delta / largestComponent;
+  const lightness = (largestComponent + smallestComponent) / 2;
+  let saturation = 0;
+  if (largestComponent === 0) {
+    saturation = 0;
+  } else if (type === 'b') {
+    saturation = delta / largestComponent;
+  } else if (type === 'l') {
+    saturation =
+      lightness > 0.5
+        ? delta / (2 - largestComponent - smallestComponent)
+        : delta / (largestComponent + smallestComponent);
+  }
 
   let huePercentage = 0;
   switch (largestComponent) {
@@ -159,7 +170,7 @@ function rgbToHsbl(color: RGBAColor): HSBLAColor {
     hue: clamp(hue, 0, 360) || 0,
     saturation: clamp(saturation, 0, 1),
     brightness: clamp(largestComponent, 0, 1),
-    lightness: (largestComponent + smallestComponent) / 2,
+    lightness,
     alpha,
   };
 }
@@ -167,7 +178,7 @@ function rgbToHsbl(color: RGBAColor): HSBLAColor {
 export function rgbToHsb(color: RGBColor): HSBColor;
 export function rgbToHsb(color: RGBAColor): HSBAColor;
 export function rgbToHsb(color: RGBAColor): HSBAColor {
-  const {hue, saturation, brightness, alpha} = rgbToHsbl(color);
+  const {hue, saturation, brightness, alpha} = rgbToHsbl(color, 'b');
   return {hue, saturation, brightness, alpha};
 }
 
@@ -179,7 +190,7 @@ export function rgbToHsl(color: RGBAColor): HSLAColor {
     saturation: rawSaturation,
     lightness: rawLightness,
     alpha,
-  } = rgbToHsbl(color);
+  } = rgbToHsbl(color, 'l');
   const saturation = rawSaturation * 100;
   const lightness = rawLightness * 100;
   return {hue, saturation, lightness, alpha};

@@ -88,13 +88,13 @@ export function setTheme(
 
       setRootProperty(
         constructColorName(baseName, key, 'darker'),
-        darkenToString(color, 14, 30),
+        darkenToString(color, 0, 0),
         node,
       );
 
       setRootProperty(
         constructColorName(baseName, key, 'lighter'),
-        lightenToString(color, 9, 10),
+        lightenToString(color, 12, 60),
         node,
       );
 
@@ -104,13 +104,13 @@ export function setTheme(
 
       setRootProperty(
         constructColorName(baseName, key, 'darker'),
-        darkenToString(color, 9, 10),
+        darkenToString(color, 5, -5),
         node,
       );
 
       setRootProperty(
         constructColorName(baseName, key, 'lighter'),
-        lightenToString(color, 14, 30),
+        lightenToString(color, 10, -20),
         node,
       );
 
