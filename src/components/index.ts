@@ -149,7 +149,14 @@ export {default as Modal, Props as ModalProps} from './Modal';
 
 export {default as OptionList} from './OptionList';
 
-export {default as Navigation, Props as NavigationProps} from './Navigation';
+export {
+  default as Navigation,
+  Props as NavigationProps,
+  ItemProps as NavigationItemProps,
+  MessageProps as NavigationMessageProps,
+  SubNavigationItem,
+  isNavigationItemActive,
+} from './Navigation';
 
 export {default as Page, Props as PageProps} from './Page';
 
