@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Button, Icon, EventListener, ToastProps} from '../../components';
 import {dataPolarisTopBar, layer} from '../shared';
@@ -34,8 +35,7 @@ export interface Props {
 }
 
 export interface State {
-  navigationAnimating?: boolean;
-  navigationCollapsed?: boolean;
+  mobileView?: boolean;
   skipFocused?: boolean;
   bannerHeight: number;
   loadingStack: number;
@@ -54,16 +54,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   static childContextTypes = frameContextTypes;
 
   state: State = {
-    navigationAnimating: false,
-    navigationCollapsed: false,
     skipFocused: false,
     bannerHeight: 0,
     loadingStack: 0,
     toastMessages: [],
     contextualSaveBar: null,
+    mobileView: isMobileView(),
   };
 
-  private navigationContainer: HTMLElement | null = null;
   private bannerContainer: HTMLDivElement | null = null;
 
   getChildContext(): FrameContext {
@@ -79,13 +77,12 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     };
   }
 
-  componentWillReceiveProps(newProps: Props) {
+  componentDidMount() {
+    this.handleResize();
+  }
+
+  componentWillReceiveProps() {
     const {bannerContainer} = this;
-
-    if (newProps.showMobileNavigation !== this.props.showMobileNavigation) {
-      this.setState({navigationAnimating: true});
-    }
-
     if (bannerContainer) {
       this.setState({
         bannerHeight: bannerContainer.offsetHeight,
@@ -93,43 +90,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     }
   }
 
-  componentDidMount() {
-    const {navigationContainer} = this;
-
-    if (navigationBarCollapsed().matches) {
-      this.setState({navigationCollapsed: true});
-    }
-
-    if (navigationContainer == null) {
-      return;
-    }
-
-    navigationContainer.addEventListener(
-      'transitionend',
-      this.handleTransitionEnd,
-    );
-  }
-
-  componentWillUnmount() {
-    if (this.navigationContainer == null) {
-      return;
-    }
-
-    this.navigationContainer.removeEventListener(
-      'transitionend',
-      this.handleTransitionEnd,
-    );
-  }
-
   render() {
     const {
-      navigationAnimating,
-      navigationCollapsed,
       skipFocused,
       bannerHeight,
       loadingStack,
       toastMessages,
       contextualSaveBar,
+      mobileView,
     } = this.state;
     const {
       children,
@@ -140,37 +108,38 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    const className = classNames(
+    const navClassName = classNames(
       styles.Navigation,
       showMobileNavigation && styles['Navigation-visible'],
-      navigationAnimating && styles['Navigation-animating'],
     );
 
-    const tabIndex = showMobileNavigation && navigationCollapsed ? 0 : -1;
+    const tabIndex = showMobileNavigation ? 0 : -1;
     const contentStyles = {paddingBottom: `${bannerHeight}px`};
 
+    const NavWrapper = mobileView ? this.NavTransition : 'div';
+
     const navigationMarkup = navigation ? (
-      <div
-        className={className}
-        ref={this.setNavigationContainerRef}
-        aria-hidden={!showMobileNavigation && navigationCollapsed}
-        onKeyDown={this.handleNavKeydown}
-        id={APP_FRAME_NAV}
-      >
-        {navigation}
-        <button
-          type="button"
-          className={styles.NavigationDismiss}
-          onClick={this.handleNavigationDismiss}
-          aria-hidden={!showMobileNavigation && navigationCollapsed}
-          aria-label={intl.translate(
-            'Polaris.Frame.Navigation.closeMobileNavigationLabel',
-          )}
-          tabIndex={tabIndex}
+      <NavWrapper>
+        <div
+          className={navClassName}
+          onKeyDown={this.handleNavKeydown}
+          id={APP_FRAME_NAV}
         >
-          <Icon source="cancel" color="white" />
-        </button>
-      </div>
+          {navigation}
+          <button
+            type="button"
+            className={styles.NavigationDismiss}
+            onClick={this.handleNavigationDismiss}
+            aria-hidden={!showMobileNavigation}
+            aria-label={intl.translate(
+              'Polaris.Frame.Navigation.closeMobileNavigationLabel',
+            )}
+            tabIndex={tabIndex}
+          >
+            <Icon source="cancel" color="white" />
+          </button>
+        </div>
+      </NavWrapper>
     ) : null;
 
     const loadingMarkup =
@@ -261,9 +230,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleNavigationDismiss}
           onTouchStart={this.handleNavigationDismiss}
         />
-        <TrapFocus trapping={showMobileNavigation && navigationCollapsed}>
-          {navigationMarkup}
-        </TrapFocus>
+        {navigationMarkup}
         <main
           className={styles.Main}
           id={APP_FRAME_MAIN}
@@ -277,6 +244,26 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         {bannerMarkup}
         <EventListener event="resize" handler={this.handleResize} />
       </div>
+    );
+  }
+
+  @autobind
+  private NavTransition({children}: any) {
+    const {showMobileNavigation} = this.props;
+    return (
+      <TrapFocus trapping>
+        <CSSTransition
+          appear
+          exit
+          in={showMobileNavigation}
+          timeout={100}
+          classNames={navTransitionClasses}
+          mountOnEnter
+          unmountOnExit
+        >
+          {children}
+        </CSSTransition>
+      </TrapFocus>
     );
   }
 
@@ -326,13 +313,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleResize() {
-    const {navigationCollapsed} = this.state;
-
-    if (navigationBarCollapsed().matches !== navigationCollapsed) {
-      this.setState({navigationCollapsed: !navigationCollapsed});
-    }
-
     const {bannerContainer} = this;
+    const {mobileView} = this.state;
+
+    if (isMobileView() && !mobileView) {
+      this.setState({mobileView: true});
+    } else if (!isMobileView() && mobileView) {
+      this.setState({mobileView: false});
+    }
 
     if (bannerContainer == null) {
       return;
@@ -359,27 +347,16 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleTransitionEnd() {
-    setTimeout(() => {
-      this.setState({navigationAnimating: false});
-    }, 100);
-  }
-
-  @autobind
   private handleNavigationDismiss() {
-    if (this.props.onNavigationDismiss != null) {
-      this.props.onNavigationDismiss();
+    const {onNavigationDismiss} = this.props;
+    if (onNavigationDismiss != null) {
+      onNavigationDismiss();
     }
   }
 
   @autobind
   private setBannerContainer(node: HTMLDivElement) {
     this.bannerContainer = node;
-  }
-
-  @autobind
-  private setNavigationContainerRef(node: HTMLDivElement) {
-    this.navigationContainer = node;
   }
 
   @autobind
@@ -392,8 +369,20 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 }
 
+const navTransitionClasses = {
+  enter: classNames(styles['Navigation-enter']),
+  enterActive: classNames(styles['Navigation-enterActive']),
+  enterDone: classNames(styles['Navigation-enterActive']),
+  exit: classNames(styles['Navigation-exit']),
+  exitActive: classNames(styles['Navigation-exitActive']),
+};
+
 function focusAppFrameMain() {
   window.location.assign(`${window.location.pathname}#${APP_FRAME_MAIN}`);
+}
+
+function isMobileView() {
+  return navigationBarCollapsed().matches;
 }
 
 export default withAppProvider<Props>()(Frame);

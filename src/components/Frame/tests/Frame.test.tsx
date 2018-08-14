@@ -33,28 +33,36 @@ describe('<Frame />', () => {
     });
   });
 
-  it('renders TrapFocus with trapping prop true when showMobileNavigation is true', () => {
+  it('renders a Navigation with TrapFocus trapping when a navigation is provided and showMobileNavigation is true', () => {
     Object.defineProperty(window, 'innerWidth', {
       configurable: true,
       writable: true,
       value: 500,
     });
-    const frame = mountWithAppProvider(<Frame showMobileNavigation />).find(
-      Frame,
-    );
+
+    const navigation = <div />;
+    const frame = mountWithAppProvider(
+      <Frame showMobileNavigation navigation={navigation} />,
+    ).find(Frame);
+
     const trapFocus = frame.find(TrapFocus);
 
     expect(trapFocus.exists()).toBe(true);
     expect(trapFocus.prop('trapping')).toBe(true);
   });
 
-  it('renders TrapFocus with trapping prop false when showMobileNavigation is false', () => {
+  it('does not render a Trapfocus Navigation when a navigation is provided and showMobileNavigation is false', () => {
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: 500,
+    });
+    const navigation = <div />;
     const trapFocus = mountWithAppProvider(
-      <Frame showMobileNavigation={false} />,
+      <Frame showMobileNavigation={false} navigation={navigation} />,
     ).find(TrapFocus);
 
-    expect(trapFocus.exists()).toBe(true);
-    expect(trapFocus.prop('trapping')).toBe(false);
+    expect(trapFocus.exists()).toBe(false);
   });
 
   it('renders a skip to content link with the proper text', () => {

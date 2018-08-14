@@ -18,21 +18,13 @@ $skip-vertical-offset: rem(10px);
   flex: 0 0 auto;
   align-items: stretch;
   height: 100%;
-  transform: translateX(-100%);
-  will-change: transform;
   outline: none;
+  transform: translateX(0%);
 
   @include frame-when-nav-displayed {
     z-index: 1;
     top: top-bar-height();
     height: calc(100% - #{top-bar-height()});
-    transform: none;
-    will-change: none;
-    transition: none;
-  }
-
-  @include frame-when-nav-hidden {
-    display: none;
   }
 
   &:focus {
@@ -40,13 +32,19 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
-.Navigation-animating {
+.Navigation-enter {
+  transform: translateX(-100%);
+}
+.Navigation-enterActive {
+  transform: translateX(0%);
   transition: transform $transition-duration ease;
 }
-
-.Navigation-visible {
-  transform: none;
-  display: initial;
+.Navigation-exit {
+  transform: translateX(0%);
+}
+.Navigation-exitActive {
+  transform: translateX(-100%);
+  transition: transform $transition-duration ease;
 }
 
 .NavigationDismiss {
@@ -125,13 +123,16 @@ $skip-vertical-offset: rem(10px);
   display: block;
   height: 100%;
 
+  @include safe-area-for(padding-right, 0, right);
+  @include safe-area-for(padding-left, 0, left);
+  @include safe-area-for(padding-bottom, 0, bottom);
+
   @include frame-when-nav-displayed {
     .hasNav & {
       padding-left: layout-width(nav);
+      @include safe-area-for(padding-left, layout-width(nav), left);
     }
   }
-  @include safe-area-for(padding-right, 0, right);
-  @include safe-area-for(padding-bottom, 0, right);
 
   .hasTopBar & {
     height: calc(100% - #{top-bar-height()});

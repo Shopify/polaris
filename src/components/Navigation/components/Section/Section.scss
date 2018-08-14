@@ -4,6 +4,7 @@
   @include unstyled-list;
   flex: 0 0 auto;
   padding: spacing() 0;
+  @include safe-area-for(padding-left, spacing(), left);
 
   + .Section {
     padding-top: spacing(extra-tight);
