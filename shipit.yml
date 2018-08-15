@@ -12,3 +12,6 @@ merge:
     - shrink-ray
   ignore:
     - codecov/patch
+
+deploy:
+  max_commits: false
