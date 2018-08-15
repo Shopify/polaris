@@ -2,7 +2,7 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {clamp} from '@shopify/javascript-utilities/math';
 
-import Slidable, {SlidablePosition} from '../Slidable';
+import Slidable, {Position} from '../Slidable';
 import {HSBColor} from '../../types';
 import {hsbToRgb} from '../../utilities/color-utilities';
 import * as styles from '../../ColorPicker.scss';
@@ -72,7 +72,7 @@ export default class AlphaPicker extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleChange({y}: SlidablePosition) {
+  private handleChange({y}: Position) {
     const {onChange} = this.props;
     const {sliderHeight} = this.state;
     const offsetY = clamp(y, 0, sliderHeight);

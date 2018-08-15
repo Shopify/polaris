@@ -4,7 +4,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {HSBColor, HSBAColor} from './types';
 import {hsbToRgb} from './utilities/color-utilities';
-import {AlphaPicker, HuePicker, Slidable, SlidablePosition} from './components';
+import {AlphaPicker, HuePicker, Slidable, Position} from './components';
 import * as styles from './ColorPicker.scss';
 
 export interface State {
@@ -114,7 +114,7 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleDraggerMove({x, y}: SlidablePosition) {
+  private handleDraggerMove({x, y}: Position) {
     const {pickerSize} = this.state;
     const {
       color: {hue, alpha = 1},

@@ -5,5 +5,5 @@ export {default as HuePicker, Props as HuePickerProps} from './HuePicker';
 export {
   default as Slidable,
   Props as SlidableProps,
-  SlidablePosition,
+  Position,
 } from './Slidable';

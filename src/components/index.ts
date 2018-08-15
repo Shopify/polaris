@@ -147,7 +147,7 @@ export {default as Pagination, Props as PaginationProps} from './Pagination';
 export {
   default as Popover,
   Props as PopoverProps,
-  PopoverCloseSource,
+  CloseSource as PopoverCloseSource,
 } from './Popover';
 
 export {default as Portal, Props as PortalProps} from './Portal';

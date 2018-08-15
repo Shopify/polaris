@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import EventListener from '../../../EventListener';
 import * as styles from '../../ColorPicker.scss';
 
-export interface SlidablePosition {
+export interface Position {
   x: number;
   y: number;
 }
@@ -15,7 +15,7 @@ export interface State {
 export interface Props {
   draggerX?: number;
   draggerY?: number;
-  onChange(position: SlidablePosition): void;
+  onChange(position: Position): void;
   onDraggerHeight?(height: number): void;
 }
 
