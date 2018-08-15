@@ -1,6 +1,6 @@
 # How to contribute
 
-Polaris React is Shopify’s largest open source project. It’s the only project that’s both under very active development and is used to build Shopify and Shopify apps every day. We want to make it as easy and transparent as possible to contribute. If we are missing anything or can make the process easier in any way, [please let us know](mailto:polaris@shopify.com).
+Polaris React is Shopify’s most active open source project. It’s the only project that’s both under very active development and is used to build Shopify and Shopify apps every day. We want to make it as easy and transparent as possible to contribute. If we are missing anything or can make the process easier in any way, [please let us know](mailto:polaris@shopify.com).
 
 ## Code of conduct
 
