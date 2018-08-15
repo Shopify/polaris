@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
-import {ItemDescriptor} from '../../types';
+import {ActionListItemDescriptor} from '../../../../types';
 import Icon from '../../../Icon';
 import UnstyledLink from '../../../UnstyledLink';
 import Badge from '../../../Badge';
 
 import * as styles from '../../ActionList.scss';
 
-export type Props = ItemDescriptor;
+export type Props = ActionListItemDescriptor;
 
 export default function Item({
   badge,
