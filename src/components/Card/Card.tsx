@@ -28,6 +28,7 @@ export interface Props {
 
 export default class Card extends React.PureComponent<Props, never> {
   static Section = Section;
+  static Header = Header;
   static childContextTypes = contentContextTypes;
 
   getChildContext() {
@@ -50,7 +51,7 @@ export default class Card extends React.PureComponent<Props, never> {
     const className = classNames(styles.Card, subdued && styles.subdued);
 
     const headerMarkup = title ? (
-      <Header actions={actions}>{title}</Header>
+      <Header actions={actions} title={title} />
     ) : null;
 
     const content = sectioned ? <Section>{children}</Section> : children;
