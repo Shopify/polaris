@@ -35,7 +35,7 @@ Drop zones should:
 
 ### Validation errors
 
-The drop zone component validates file type by default. File types you wish to accept can be defined by editing the `accept` property. This component also accepts custom validations using the `customValidation` property. When validation fails, the component sets itself to error mode.
+The drop zone component validates file type by default. File types you wish to accept can be defined by editing the `accept` property. This component also accepts custom validations using the `customValidator` property. When validation fails, the component sets itself to error mode.
 
 ---
 

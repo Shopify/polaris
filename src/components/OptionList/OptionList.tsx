@@ -4,6 +4,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {Option} from './components';
+import {IconProps, ThumbnailProps, AvatarProps} from '..';
 import {arraysAreEqual} from '../../utilities/arrays';
 
 import * as styles from './OptionList.scss';
@@ -12,9 +13,15 @@ export interface OptionDescriptor {
   /** Value of the option */
   value: string;
   /** Display label for the option */
-  label: string;
+  label: React.ReactNode;
   /** Whether the option is disabled or not */
   disabled?: boolean;
+  /** Whether the option is active or not */
+  active?: boolean;
+  /** Unique identifier for the option */
+  id?: string;
+  /** Media to display to the left of the option content */
+  media?: React.ReactElement<IconProps | ThumbnailProps | AvatarProps>;
 }
 
 export interface SectionDescriptor {
@@ -33,6 +40,10 @@ export interface Props {
   title?: string;
   /** Collection of options to be listed */
   options?: OptionDescriptor[];
+  /** Defines a specific role attribute for the list itself */
+  role?: string;
+  /** Defines a specific role attribute for each option in the list */
+  optionRole?: string;
   /** Sections containing a header and related options */
   sections?: SectionDescriptor[];
   /** The selected options */
@@ -98,19 +109,22 @@ export class OptionList extends React.Component<CombinedProps, State> {
 
   render() {
     const {normalizedOptions} = this.state;
-    const {selected, allowMultiple} = this.props;
+    const {selected, allowMultiple, role, optionRole} = this.props;
     const optionsExist = normalizedOptions.length > 0;
 
     const optionsMarkup = optionsExist
       ? normalizedOptions.map(({title, options}, sectionIndex) => {
           const titleMarkup = title ? (
-            <p className={styles.Title}>{title}</p>
+            <p className={styles.Title} role="presentation">
+              {title}
+            </p>
           ) : null;
           const optionsMarkup =
             options &&
             options.map((option, optionIndex) => {
               const isSelected = selected.includes(option.value);
-              const id = `${this.id}-${sectionIndex}-${optionIndex}`;
+              const id =
+                option.id || `${this.id}-${sectionIndex}-${optionIndex}`;
 
               return (
                 <Option
@@ -122,6 +136,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
                   onClick={this.handleClick}
                   select={isSelected}
                   allowMultiple={allowMultiple}
+                  role={optionRole}
                 />
               );
             });
@@ -132,7 +147,14 @@ export class OptionList extends React.Component<CombinedProps, State> {
               className={styles.Options}
             >
               {titleMarkup}
-              <ul className={styles.Options}>{optionsMarkup}</ul>
+              <ul
+                className={styles.Options}
+                id={this.id}
+                role={role}
+                aria-multiselectable={allowMultiple}
+              >
+                {optionsMarkup}
+              </ul>
             </li>
           );
         })

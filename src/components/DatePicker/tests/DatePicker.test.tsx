@@ -3,9 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import DatePicker from '../DatePicker';
-import MonthComponent from '../components/Month/Month';
-import Day from '../components/Day/Day';
-import Weekday from '../components/Weekday';
+import {Day, Month, Weekday} from '../components';
 
 describe('<DatePicker />', () => {
   const selected = {
@@ -49,7 +47,7 @@ describe('<DatePicker />', () => {
     it('is called on click on Day component', () => {
       const spy = jest.fn();
       const component = mountWithAppProvider(
-        <MonthComponent
+        <Month
           focusedDate={new Date()}
           selected={selected}
           hoverDate={hoverDate}

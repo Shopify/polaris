@@ -4,9 +4,8 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {HSBColor, HSBAColor} from './types';
 import {hsbToRgb} from '../../utilities/color-transformers';
-import HuePicker from './components/HuePicker';
-import AlphaPicker from './components/AlphaPicker';
-import Slidable, {Position} from './components/Slidable';
+import {AlphaPicker, HuePicker, Slidable} from './components';
+import {Position} from './components/Slidable';
 import * as styles from './ColorPicker.scss';
 
 export interface State {

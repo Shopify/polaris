@@ -19,6 +19,9 @@ $color-palette-data: map-extend(
       'selected': rgba(179, 188, 245, 0.15),
       'subdued': rgba(249, 250, 251, 1),
       'disabled': rgba(249, 250, 251, 1),
+      'hover-destructive': rgba(251, 234, 229, 0.4),
+      'focused-destructive': rgba(251, 234, 229, 0.4),
+      'active-destructive': rgba(220, 56, 37, 0.03),
     ),
   )
 );

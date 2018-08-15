@@ -3,10 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '@shopify/react-utilities/styles';
-import {
-  isElementOfType,
-  wrapWithComponent,
-} from '@shopify/react-utilities/components';
+import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {Transition} from 'react-transition-group';
 
 import {Keys} from '../../../../types';

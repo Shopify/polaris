@@ -1,10 +1,11 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from '../../../../tests/utilities';
-import {noop} from '@shopify/javascript-utilities/other';
-import TextField from '..';
+import TextField from '../../TextField';
+import {Resizer} from '../components';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
@@ -486,6 +487,20 @@ describe('<TextField />', () => {
           .simulate('click');
         expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
       });
+    });
+  });
+
+  describe('multiline', () => {
+    it('does not render a resizer if multiline is false', () => {
+      const textField = shallowWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={false}
+        />,
+      );
+      expect(textField.find(Resizer).exists()).toBe(false);
     });
   });
 });

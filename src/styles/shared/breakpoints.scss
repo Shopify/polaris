@@ -143,6 +143,12 @@ $nav-min-window: em(layout-width(page-with-nav));
   }
 }
 
+@mixin page-when-not-max-width() {
+  @include breakpoint-before($page-max-width) {
+    @content;
+  }
+}
+
 @mixin page-content-when-layout-stacked() {
   @include page-content-breakpoint-before($stacked-content) {
     @content;

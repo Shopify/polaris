@@ -228,13 +228,14 @@ Use when you need to programmatically scroll a child component into view in the 
       be posted here:{' '}
       <a href="https://www.shopify.com/legal/apple-pay">
         https://www.shopify.com/legal/apple-pay
-      </a>. Such amendments to the Apple Pay Platform Web Merchant Terms are effective
-      as of the date of posting. Your continued use of Apple Pay on your store after
-      the amended Apple Pay Platform Web Merchant Terms are posted constitutes your
-      agreement to, and acceptance of, the amended Apple Pay Platform Web Merchant
-      Terms. If you do not agree to any changes to the Apple Pay Platform Web Merchant
-      Terms, de-activate your Apple Pay account and do not continue to use Apple
-      Pay on your store.
+      </a>
+      . Such amendments to the Apple Pay Platform Web Merchant Terms are
+      effective as of the date of posting. Your continued use of Apple Pay on
+      your store after the amended Apple Pay Platform Web Merchant Terms are
+      posted constitutes your agreement to, and acceptance of, the amended Apple
+      Pay Platform Web Merchant Terms. If you do not agree to any changes to the
+      Apple Pay Platform Web Merchant Terms, de-activate your Apple Pay account
+      and do not continue to use Apple Pay on your store.
     </p>
     <p>2.4 Google Payment</p>
 
@@ -260,13 +261,14 @@ Use when you need to programmatically scroll a child component into view in the 
       the amended and restated version will be posted here:{' '}
       <a href="https://payments.developers.google.com/terms/sellertos">
         https://payments.developers.google.com/terms/sellertos
-      </a>. Such amendments to the Google Payment API Terms of Service are effective
-      as of the date of posting. Your continued use of Google Payment on your store
-      after the amended Google Payment API Terms of Service are posted constitutes
-      your agreement to, and acceptance of, the amended Google Payment API Terms
-      of Service. If you do not agree to any changes to the Google Payment API Terms
-      of Service, de-activate your Google Payment account and do not continue to
-      use Google Payment on your store.
+      </a>
+      . Such amendments to the Google Payment API Terms of Service are effective
+      as of the date of posting. Your continued use of Google Payment on your
+      store after the amended Google Payment API Terms of Service are posted
+      constitutes your agreement to, and acceptance of, the amended Google
+      Payment API Terms of Service. If you do not agree to any changes to the
+      Google Payment API Terms of Service, de-activate your Google Payment
+      account and do not continue to use Google Payment on your store.
     </p>
 
     <p>2.5 Domain Names</p>
