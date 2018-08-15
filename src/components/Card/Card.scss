@@ -24,7 +24,7 @@
   padding: spacing(loose);
 
   + .Section {
-    border-top: 1px solid color('sky');
+    border-top: border-width() solid color('sky');
   }
 }
 

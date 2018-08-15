@@ -45,7 +45,7 @@ $item-spacing: spacing(tight);
     margin-left: 0;
 
     &:not(:first-child) {
-      margin-left: -1px;
+      margin-left: -(border-width());
     }
 
     // stylelint-disable-next-line selector-max-combinators
