@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {findDOMNode} from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {setColors} from './utils';
@@ -7,6 +8,7 @@ import {Theme, ThemeContext, THEME_CONTENT_TYPES} from './types';
 export interface Props {
   /** Custom logos and colors provided to select components */
   theme: Theme;
+  useRoot?: boolean;
 }
 
 export interface Context {
@@ -16,6 +18,7 @@ export interface Context {
 export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTENT_TYPES;
   public polarisContext: Context;
+  private childNode: Element | Text | null;
   private subscriptions: {(): void}[] = [];
 
   constructor(props: Props) {
@@ -29,7 +32,9 @@ export default class ThemeProvider extends React.Component<Props> {
   }
 
   componentDidMount() {
-    setColors(this.props.theme);
+    const {useRoot, theme} = this.props;
+    this.childNode = useRoot ? null : setChildNode(this);
+    setColors(theme, this.childNode);
   }
 
   componentWillReceiveProps({theme}: Props) {
@@ -46,7 +51,7 @@ export default class ThemeProvider extends React.Component<Props> {
     }
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-    setColors(theme);
+    setColors(theme, this.childNode);
   }
 
   getChildContext() {
@@ -77,4 +82,13 @@ function setPolarisContext(
 ): Context {
   const {colors, logo = null, ...rest} = ctx;
   return {theme: {logo, subscribe, unsubscribe, ...rest}};
+}
+
+function setChildNode(instance: any) {
+  let childNode = findDOMNode(instance);
+  if (childNode instanceof Text) {
+    childNode = null;
+  }
+
+  return childNode;
 }

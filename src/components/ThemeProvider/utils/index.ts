@@ -24,17 +24,17 @@ import {
   ThemeColors,
 } from '../types';
 
-export function setColors(theme: Theme | undefined) {
+export function setColors(theme: Theme | undefined, node: Element | null) {
   if (theme && theme.colors) {
     Object.entries(theme.colors).forEach(([colorKey, pairs]) => {
       const colorKeys = Object.keys(pairs);
       if (colorKey === 'topBar' && colorKeys.length > 1) {
         colorKeys.forEach((key: string) => {
           const colors = (theme.colors as ThemeColors).topBar;
-          setRootProperty(constructColorName(colorKey, key), colors[key]);
+          setRootProperty(constructColorName(colorKey, key), colors[key], node);
         });
       } else {
-        parseColors([colorKey, pairs]);
+        parseColors([colorKey, pairs], node);
       }
     });
   }
@@ -62,13 +62,17 @@ const lightenToString: (
   createLightColor,
 );
 
-export function setTextColor(name: string, variant: ThemeVariant = 'dark') {
+export function setTextColor(
+  name: string,
+  variant: ThemeVariant = 'dark',
+  node: Element | null,
+) {
   if (variant === 'light') {
-    setRootProperty(name, tokens.colorInkBase);
+    setRootProperty(name, tokens.colorInkBase, node);
     return;
   }
 
-  setRootProperty(name, tokens.colorWhiteBase);
+  setRootProperty(name, tokens.colorWhiteBase, node);
 }
 
 export function setTheme(
@@ -76,33 +80,38 @@ export function setTheme(
   baseName: string,
   key: string,
   variant: 'light' | 'dark',
+  node: Element | null,
 ) {
   switch (variant) {
     case 'light':
-      setTextColor(constructColorName(baseName, null, 'color'), 'light');
+      setTextColor(constructColorName(baseName, null, 'color'), 'light', node);
 
       setRootProperty(
         constructColorName(baseName, key, 'darker'),
         darkenToString(color, 14, 30),
+        node,
       );
 
       setRootProperty(
         constructColorName(baseName, key, 'lighter'),
         lightenToString(color, 9, 10),
+        node,
       );
 
       break;
     case 'dark':
-      setTextColor(constructColorName(baseName, null, 'color'), 'dark');
+      setTextColor(constructColorName(baseName, null, 'color'), 'dark', node);
 
       setRootProperty(
         constructColorName(baseName, key, 'darker'),
         darkenToString(color, 9, 10),
+        node,
       );
 
       setRootProperty(
         constructColorName(baseName, key, 'lighter'),
         lightenToString(color, 14, 30),
+        node,
       );
 
       break;
@@ -110,10 +119,17 @@ export function setTheme(
   }
 }
 
-function parseColors([baseName, colors]: [string, ColorsToParse]) {
+function parseColors(
+  [baseName, colors]: [string, ColorsToParse],
+  node: Element | null,
+) {
   const keys = Object.keys(colors);
   for (let i = 0; i < keys.length; i++) {
-    setRootProperty(constructColorName(baseName, keys[i]), colors[keys[i]]);
+    setRootProperty(
+      constructColorName(baseName, keys[i]),
+      colors[keys[i]],
+      node,
+    );
 
     if (needsVariant(baseName)) {
       const hslColor = colorToHsla(colors[keys[i]]);
@@ -125,9 +141,9 @@ function parseColors([baseName, colors]: [string, ColorsToParse]) {
       const rgbColor = hslToRgb(hslColor);
 
       if (isLight(rgbColor)) {
-        setTheme(hslColor, baseName, keys[i], 'light');
+        setTheme(hslColor, baseName, keys[i], 'light', node);
       } else {
-        setTheme(hslColor, baseName, keys[i], 'dark');
+        setTheme(hslColor, baseName, keys[i], 'dark', node);
       }
     }
   }
