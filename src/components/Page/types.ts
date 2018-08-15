@@ -1,11 +1,10 @@
 import {
+  ActionListItemDescriptor,
   IconableAction,
   DisableableAction,
   LoadableAction,
   BadgeAction,
 } from '../../types';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {ItemDescriptor} from '../ActionList/types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
 
@@ -17,11 +16,11 @@ export interface ActionGroup extends BadgeAction {
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** List of actions */
-  actions: ItemDescriptor[];
+  actions: ActionListItemDescriptor[];
   /** Action details */
   details?: React.ReactNode;
   /** Callback when any action takes place */
-  onActionAnyItem?: ItemDescriptor['onAction'];
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
 export interface ActionProps {
