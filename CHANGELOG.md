@@ -46,7 +46,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Documentation
 
 - Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Added iOS and Android examples for the banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
+- Added iOS and Android examples for the Banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
+- Added iOS and Android examples for the Button component ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
 - Added iOS and Android examples for the ButtonGroup component ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 
 ## 2.5.0 - 2018-07-20
