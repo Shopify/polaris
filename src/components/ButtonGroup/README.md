@@ -102,6 +102,38 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 <!-- /content-for -->
 
+### Button group joined to the bottom of a preceeding component
+
+Use a combination of props (segmented, fullWidth, and connectedTop) to attach ButtonGroup to a preceeding element.
+
+```jsx
+<React.Fragment>
+  <div
+    style={{
+      border: '1px solid #c4cdd5',
+      borderBottom: 0,
+      borderRadius: '3px 3px 0 0',
+    }}
+  >
+    <DropZone outline={false}>
+      <DropZone.FileUpload />
+    </DropZone>
+  </div>
+
+  <ButtonGroup segmented fullWidth connectedTop>
+    <Button size="slim" fullWidth>
+      Left one
+    </Button>
+    <Button size="slim" fullWidth>
+      Middle two
+    </Button>
+    <Button size="slim" fullWidth>
+      Right three
+    </Button>
+  </ButtonGroup>
+</React.Fragment>
+```
+
 ---
 
 ## Related components

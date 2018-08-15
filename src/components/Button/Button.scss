@@ -209,8 +209,7 @@ $spinner-size: rem(20px);
 }
 
 .fullWidth {
-  display: flex;
-  width: 100%;
+  @include button-full-width;
 }
 
 .iconOnly {
