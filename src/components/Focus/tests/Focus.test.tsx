@@ -29,7 +29,7 @@ describe('<Focus />', () => {
       <Focus>
         <div>
           <span />
-        </div>,
+        </div>
       </Focus>,
     );
 
@@ -41,7 +41,7 @@ describe('<Focus />', () => {
       <Focus>
         <div>
           <input />
-        </div>,
+        </div>
       </Focus>,
     );
 

@@ -1,3 +1,6 @@
+$page-max-width: layout-width(primary, max) + layout-width(secondary, max) +
+  layout-width(inner-spacing);
+
 $stacked-content: em(
   layout-width(primary, min) + layout-width(secondary, min) +
     layout-width(inner-spacing)
