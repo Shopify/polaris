@@ -6,12 +6,12 @@ import {needsVariantList} from '../config';
 
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
-    setTextColor('topBar', 'dark');
+    setTextColor('topBar', 'dark', null);
     expect(documentHasStyle('topBar', tokens.colorWhiteBase)).toBe(true);
   });
 
   it('sets a css variable to ink if the variant is light', () => {
-    setTextColor('topBar', 'light');
+    setTextColor('topBar', 'light', null);
     expect(documentHasStyle('topBar', tokens.colorInkBase)).toBe(true);
   });
 });
@@ -23,6 +23,7 @@ describe('setTheme', () => {
       'topBar',
       'background',
       'dark',
+      null,
     );
     // document will have the variables in pascal case
     expect(
@@ -51,7 +52,7 @@ describe('setColors', () => {
   it('iterates over colors when a theme is passed', () => {
     const theme = {colors: {topBar: {background: '#eeeeee'}}};
     const spy = jest.spyOn(Object, 'entries');
-    setColors(theme);
+    setColors(theme, null);
     expect(spy).toHaveBeenCalledWith(theme.colors);
   });
 });

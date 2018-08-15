@@ -17,14 +17,14 @@ export interface Context {
 
 export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTENT_TYPES;
-  public polarisContext: Context;
-  private childNode: Element | Text | null;
+  public themeContext: Context;
+  private childNode: Element | null;
   private subscriptions: {(): void}[] = [];
 
   constructor(props: Props) {
     super(props);
 
-    this.polarisContext = setPolarisContext(
+    this.themeContext = setThemeContext(
       this.props.theme,
       this.subscribe,
       this.unsubscribe,
@@ -39,7 +39,7 @@ export default class ThemeProvider extends React.Component<Props> {
 
   componentWillReceiveProps({theme}: Props) {
     if (theme !== this.props.theme) {
-      this.polarisContext = setPolarisContext(
+      this.themeContext = setThemeContext(
         this.props.theme,
         this.subscribe,
         this.unsubscribe,
@@ -55,7 +55,7 @@ export default class ThemeProvider extends React.Component<Props> {
   }
 
   getChildContext() {
-    return this.polarisContext;
+    return this.themeContext;
   }
 
   render() {
@@ -75,7 +75,7 @@ export default class ThemeProvider extends React.Component<Props> {
   }
 }
 
-function setPolarisContext(
+function setThemeContext(
   ctx: Theme,
   subscribe: (callback: () => void) => void,
   unsubscribe: (callback: () => void) => void,

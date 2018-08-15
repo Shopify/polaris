@@ -7,6 +7,7 @@ export function setRootProperty(
     return;
   }
 
-  const styleNode = node ? node : document.documentElement;
+  const styleNode =
+    node && node instanceof HTMLElement ? node : document.documentElement;
   styleNode.style.setProperty(name, value);
 }
