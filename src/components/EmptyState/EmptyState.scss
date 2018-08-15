@@ -27,8 +27,7 @@ $illustration-width-cropped: calc(
   width: 100%;
   margin: spacing(loose) auto 0 auto;
   padding: spacing(loose) 0;
-  max-width: layout-width(primary, max) + layout-width(secondary, max) +
-    layout-width(inner-spacing);
+  max-width: $page-max-width;
 }
 
 .imageContained {

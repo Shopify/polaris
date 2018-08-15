@@ -29,6 +29,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `media` prop to options in `<OptionList />` ([#1895](https://github.com/Shopify/polaris-react/pull/1895))
 - Added support for destructive action list items ([#1860](https://github.com/Shopify/polaris-react/pull/1860))
 - Added ability for the `label` prop in options in `<OptionList />` to take React Nodes ([#1920](https://github.com/Shopify/polaris-react/pull/1920))
+- Added `$page-max-width` variable to capture `Page` calculated `max-width` value
+- Added `page-when-not-max-width` mixin to trigger when `Page` is resized horizontally
 
 ### Bug fixes
 
