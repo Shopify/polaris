@@ -1,6 +1,10 @@
 ---
 name: Button group
 category: Actions
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - ButtonGroup
   - choices
@@ -15,12 +19,15 @@ keywords:
   - set of buttons
   - set of actions
   - horizontal arrangement of buttons
+  - stacked
+  - segmented control
+  - ios
+  - android
 ---
 
 # Button group
 
-Button group displays multiple related actions in a row to help with horizontal
-arrangement and the spacing of calls to action.
+Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
 
 ---
 
@@ -33,8 +40,7 @@ Button groups should:
 - Group together calls to action that have a relationship
 - Be used with consideration that too many calls to action can cause merchants
   to be unsure of what to do next
-- Be thoughtful about how multiple horizontally placed buttons will look and work
-  on small screens
+- Be thoughtful about how multiple buttons will look and work on small screens
 - Only be used in groups of up to six buttons if the buttons contain an icon
   with no text
 
@@ -60,6 +66,18 @@ Use when you have multiple buttons to space them out evenly.
 </ButtonGroup>
 ```
 
+<!-- content-for: android -->
+
+![Alt text](components/ButtonGroup/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Alt text](components/ButtonGroup/ios/default.png)
+
+<!-- /content-for -->
+
 ### Button group with segmented buttons
 
 Use to emphasize several buttons as a thematically-related set among other controls.
@@ -71,6 +89,18 @@ Use to emphasize several buttons as a thematically-related set among other contr
   <Button>Underline</Button>
 </ButtonGroup>
 ```
+
+<!-- content-for: android -->
+
+![Alt text](components/ButtonGroup/android/segmented-button.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Alt text](components/ButtonGroup/ios/segmented-button.png)
+
+<!-- /content-for -->
 
 ---
 

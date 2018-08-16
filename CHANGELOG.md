@@ -6,28 +6,51 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+### Development workflow
+
+- Added a `test:coverage` script to gather and display test coverage results ([#1906](https://github.com/Shopify/polaris-react/pull/1906))
+- Added Codecov test coverage checks to pull requests ([#1917](https://github.com/Shopify/polaris-react/pull/1917))
+
 ### Enhancements
 
-- Updated the transtion on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
-- Added nextKeys and previousKeys props to Pagination to support keypresses on pagination buttons. Added nextTooltip and previousTooltip props to support pagination button tooltips. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
-- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, and raw style/image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
-- Added `Progress` export to Badge
-- Added `iFrameName` prop to `<Modal />` to allow named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
-- Added `Scrollable.ScrollTo` subcomponent ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
-- Changed the primary focus target of an activated Popover from the first item to the overlay itself ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
+- Added support for radio buttons to accept a block as a `label` ([#1880](https://github.com/Shopify/polaris-react/pull/1800))
+- Added a `singleColumn` prop to the skeleton page component ([#1912](https://github.com/Shopify/polaris-react/pull/1912))
+- Updated the transition on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
+- Added `nextKeys`, `previousKeys`, `nextTooltip`, and `previousTooltip` props to the pagination component to support keypress handling and tooltips in pagination buttons. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
+- Added examples to the layout component documentation for two and three column grid layouts ([#1866](https://github.com/Shopify/polaris-react/pull/1866))
+- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
+- Added an export for the `Progress` type to support downstream typechecking of the badge component `progress` prop ([#1821](https://github.com/Shopify/polaris-react/pull/1821))
+- Added an `iFrameName` prop to the modal component to support named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
+- Added a `ScrollTo` subcomponent to the scrollable component to support scrolling to a child node programmatically ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
+- Added support for the button component to accept an array of strings as children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
+- Changed the primary focus target of an activated popover from the first focusable child to the popover itself ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
+- Added an improved error message when the child of an embedded alert component is not a string ([#1803](https://github.com/Shopify/polaris-react/pull/1803))(thanks [@superwhykz](https://github.com/superwhykz) for the [original issue](https://github.com/Shopify/polaris/issues/378))
+- Added a minimum width to tab items to improve touch target sizing and account for smaller tab titles
+- Added support for additional accessibility attributes to the text field and option list components ([#1879](https://github.com/Shopify/polaris-react/pull/1879))
+- Added support for option lists with avatars, icons, and thumbnails when `options` descriptors have a `media` property ([#1895](https://github.com/Shopify/polaris-react/pull/1895))
+- Added support for destructive action list items ([#1860](https://github.com/Shopify/polaris-react/pull/1860))
+- Added support for option list `options` descriptors to accept a block for the `label` property ([#1920](https://github.com/Shopify/polaris-react/pull/1920))
+- Added `$page-max-width` variable to capture `Page` calculated `max-width` value
+- Added `page-when-not-max-width` mixin to trigger when `Page` is resized horizontally
 
 ### Bug fixes
 
+- Fixed text field resizer rendering when `multiline` was false ([#1853](https://github.com/Shopify/polaris-react/pull/1853))
+- Fixed modal header condensing ([#1894](https://github.com/Shopify/polaris-react/pull/1894))
 - Fixed popover border radius and left and right alignment ([#1796](https://github.com/Shopify/polaris-react/pull/1796))
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
-- Allowed an array of strings as button children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
 - Swapped the import and export icons ([#1849](https://github.com/Shopify/polaris-react/pull/1849))
+- Fixed incorrect data table column count and content skipping in assistive technologies ([#1723](https://github.com/Shopify/polaris-react/pull/1723))
+- Fixed unintended form submittal by action list items enclosed in a `form` ([#1865](https://github.com/Shopify/polaris-react/pull/1865) (thanks [andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/391)))
+- Fixed text alignment of multiline option list option text [#1905](https://github.com/Shopify/polaris-react/pull/1905)
 
 ### Documentation
 
-- Added iOS and Android examples for the RadioButton component ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Added iOS and Android examples for the banner component ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
+- Added examples for iOS and Android radio buttons ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
+- Added examples for iOS and Android banners ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
+- Added examples for iOS and Android buttons ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
+- Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 
 ## 2.5.0 - 2018-07-20
 
@@ -39,7 +62,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ### Bug fixes
 
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
-- Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
+- Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty ([#1766](https://github.com/Shopify/polaris-react/pull/1766))
 - Remove extra padding from annotated section ([#1805](https://github.com/Shopify/polaris-react/pull/1805))
 
 ### Documentation
@@ -51,6 +74,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match ([#1754](https://github.com/Shopify/polaris-react/pull/1754), [#1764](https://github.com/Shopify/polaris-react/pull/1764))
 - Improved `yarn tophat`’s design, and added a `/all-components` route ([#1709](https://github.com/Shopify/polaris-react/pull/1709))
+
+### Enhancements
+
+- Added `weekStartsOn` prop to Datepicker ([#1783](https://github.com/Shopify/polaris-react/pull/1783))
 
 ## 2.4.0 - 2018-07-12
 
@@ -94,6 +121,7 @@ Use Option list to present a group of selectable items outside of the context of
 - Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
 - Performance: optimized avatar SVG files ([#1662](https://github.com/Shopify/polaris-react/pull/1662))
 - Updated `yarn run optimize` to add new line at the end of SVG files ([#1685](https://github.com/Shopify/polaris-react/pull/1685))
+- Added a more compact variant of `Select`, with the form label appearing inside the control) ([#1576](https://github.com/Shopify/polaris-react/pull/1576))
 
 ### Bug fixes
 

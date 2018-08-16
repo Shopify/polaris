@@ -1,3 +1,6 @@
+$page-max-width: layout-width(primary, max) + layout-width(secondary, max) +
+  layout-width(inner-spacing);
+
 $stacked-content: em(
   layout-width(primary, min) + layout-width(secondary, min) +
     layout-width(inner-spacing)
@@ -139,6 +142,12 @@ $nav-min-window: em(layout-width(page-with-nav));
 
 @mixin breakpoint-before($breakpoint, $inclusive: true) {
   @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
+    @content;
+  }
+}
+
+@mixin page-when-not-max-width() {
+  @include breakpoint-before($page-max-width) {
     @content;
   }
 }

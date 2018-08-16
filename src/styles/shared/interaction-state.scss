@@ -17,6 +17,10 @@
     @if $state == 'focused' {
       box-shadow: inset rem(2px) 0 0 color('indigo');
     }
+
+    @if $state == 'focused-destructive' {
+      box-shadow: inset rem(2px) 0 0 color('red');
+    }
   }
   background-image: $backgrounds;
 }

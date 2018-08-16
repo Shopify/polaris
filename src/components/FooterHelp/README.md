@@ -74,7 +74,8 @@ Use to direct merchants to more information related to the product or feature th
   Learn more about{' '}
   <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
     fulfilling orders
-  </Link>.
+  </Link>
+  .
 </FooterHelp>
 ```
 

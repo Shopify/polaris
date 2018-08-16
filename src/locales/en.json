@@ -33,6 +33,12 @@
       "discard": "Discard"
     },
 
+    "DataTable": {
+      "sortAccessibilityLabel": "sort {direction} by",
+      "navAccessibilityLabel": "Scroll table {direction} one column",
+      "totalsRowHeading": "Totals"
+    },
+
     "DatePicker": {
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
@@ -51,11 +57,6 @@
         "actionHintFile": "or drop files to upload",
         "actionHintImage": "or drop images to upload"
       }
-    },
-
-    "DataTable": {
-      "sortAccessibilityLabel": "sort by {content}",
-      "totalsRowHeading": "Totals"
     },
 
     "EmptySearchResult": {
