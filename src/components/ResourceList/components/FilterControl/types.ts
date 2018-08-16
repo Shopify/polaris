@@ -9,6 +9,7 @@ export interface AppliedFilter {
 export enum FilterType {
   Select,
   TextField,
+  DateSelector,
 }
 
 export interface FilterBase<FilterKeys = {}> {
@@ -28,6 +29,15 @@ export interface FilterTextField<FilterKeys = {}>
   type: FilterType.TextField;
 }
 
+export interface FilterDateSelector<FilterKeys = {}>
+  extends FilterBase<FilterKeys> {
+  type: FilterType.DateSelector;
+  minKey: string;
+  maxKey: string;
+  dateOptionType?: 'past' | 'future' | 'full';
+}
+
 export type Filter<FilterKeys = {}> =
   | FilterSelect<FilterKeys>
-  | FilterTextField<FilterKeys>;
+  | FilterTextField<FilterKeys>
+  | FilterDateSelector<FilterKeys>;
