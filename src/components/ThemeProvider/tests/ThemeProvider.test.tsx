@@ -5,7 +5,7 @@ import {
   documentHasStyle,
 } from '../../../../tests/utilities';
 import ThemeProvider from '../ThemeProvider';
-import {THEME_CONTENT_TYPES} from '../types';
+import {THEME_CONTEXT_TYPES} from '../types';
 
 describe('<ThemeProvider />', () => {
   it('onRemove gets called when remove button is clicked', () => {
@@ -27,14 +27,14 @@ describe('<ThemeProvider />', () => {
           contextualSaveBarSource:
             'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
         },
+        subscribe: () => {},
+        unsubscribe: () => {},
       },
-      subscribe: () => {},
-      unsubscribe: () => {},
     };
 
     // eslint-disable-next-line react/prefer-stateless-function
     class Child extends React.Component {
-      static contextTypes = THEME_CONTENT_TYPES;
+      static contextTypes = THEME_CONTEXT_TYPES;
 
       render() {
         return <div />;
@@ -62,8 +62,10 @@ describe('<ThemeProvider />', () => {
       Child,
     );
 
-    // https://github.com/facebook/jest/issues/1772
-    expect(JSON.stringify(child.context)).toBe(JSON.stringify(context));
+    const {logo, subscribe, unsubscribe} = child.context.theme;
+    expect(logo).toEqual(context.theme.logo);
+    expect(typeof subscribe === 'function').toBe(true);
+    expect(typeof unsubscribe === 'function').toBe(true);
   });
 
   it('sets the child node correctly', () => {

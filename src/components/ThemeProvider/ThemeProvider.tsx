@@ -3,7 +3,7 @@ import {findDOMNode} from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {setColors} from './utils';
-import {Theme, ThemeContext, THEME_CONTENT_TYPES} from './types';
+import {Theme, ThemeContext, THEME_CONTEXT_TYPES} from './types';
 
 export interface Props {
   /** Custom logos and colors provided to select components */
@@ -16,7 +16,7 @@ export interface Context {
 }
 
 export default class ThemeProvider extends React.Component<Props> {
-  static childContextTypes = THEME_CONTENT_TYPES;
+  static childContextTypes = THEME_CONTEXT_TYPES;
   public themeContext: Context;
   private childNode: Element | null;
   private subscriptions: {(): void}[] = [];
@@ -38,17 +38,15 @@ export default class ThemeProvider extends React.Component<Props> {
   }
 
   componentWillReceiveProps({theme}: Props) {
-    if (theme !== this.props.theme) {
-      this.themeContext = setThemeContext(
-        this.props.theme,
-        this.subscribe,
-        this.unsubscribe,
-      );
-    }
-
     if (isEqual(theme, this.props.theme)) {
       return;
     }
+
+    this.themeContext = setThemeContext(
+      theme,
+      this.subscribe,
+      this.unsubscribe,
+    );
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
     setColors(theme, this.childNode);

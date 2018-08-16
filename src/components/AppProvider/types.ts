@@ -7,7 +7,7 @@ import Link from './Link';
 import EASDK from './EASDK';
 import StickyManager from './StickyManager';
 import {
-  THEME_CONTENT_TYPES as theme,
+  THEME_CONTEXT_TYPES as theme,
   ThemeContext,
 } from '../ThemeProvider/types';
 
