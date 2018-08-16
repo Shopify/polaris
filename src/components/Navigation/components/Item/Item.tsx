@@ -8,7 +8,7 @@ import Secondary from './components/Secondary';
 import {Icon, IconProps, UnstyledLink} from '../../../../components';
 import {Context, contextTypes} from '../../types';
 
-import * as styles from './Item.scss';
+import * as styles from '../../Navigation.scss';
 
 interface ItemURLDetails {
   url?: string;
@@ -111,7 +111,10 @@ export default class Item extends React.Component<Props, State> {
     );
 
     if (url == null) {
-      const className = classNames(styles.Item, disabled && styles.disabled);
+      const className = classNames(
+        styles.Item,
+        disabled && styles['Item-disabled'],
+      );
 
       return (
         <li className={styles.ListItem}>
@@ -168,8 +171,8 @@ export default class Item extends React.Component<Props, State> {
 
     const itemClassName = classNames(
       styles.Item,
-      disabled && styles.disabled,
-      selected && subNavigationItems.length === 0 && styles.selected,
+      disabled && styles['Item-disabled'],
+      selected && subNavigationItems.length === 0 && styles['Item-selected'],
       showExpanded && styles.subNavigationActive,
     );
 

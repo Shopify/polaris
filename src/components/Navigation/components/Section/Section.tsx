@@ -10,7 +10,7 @@ import {ellipsis} from '../../../../icons';
 
 import Item, {Props as ItemProps} from '../Item';
 
-import * as styles from './Section.scss';
+import * as styles from '../../Navigation.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 

@@ -130,3 +130,26 @@ $stacking-order: (
     transform: rotate(180deg);
   }
 }
+
+// Message styles
+$message-min-height: rem(40px);
+$message-vertical-padding: ($message-min-height - line-height(body)) / 2;
+
+.Message {
+  display: block;
+  width: 100%;
+  min-height: $message-min-height;
+  padding: $message-vertical-padding spacing();
+  border-radius: 0;
+  text-align: left;
+  cursor: pointer;
+  color: color('ink', 'light');
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+
+  &.Section + .Section {
+    @include usermenu-section-attributes;
+  }
+}

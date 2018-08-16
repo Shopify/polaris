@@ -75,8 +75,8 @@ $nav-animation-variables: (
     margin-right: spacing();
     margin-bottom: nav(desktop-spacing);
   }
-  .selected &,
-  .selected:hover &,
+  .Item-selected &,
+  .Item-selected:hover &,
   .subNavigationActive &,
   .subNavigationActive:hover &,
   .subNavigationActive:focus & {
@@ -131,6 +131,7 @@ $nav-animation-variables: (
     content: '';
     position: absolute;
     top: spacing(tight) * -1;
+    left: 0;
     display: block;
     width: 100%;
     height: 1px;
