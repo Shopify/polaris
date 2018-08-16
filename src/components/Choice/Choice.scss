@@ -23,6 +23,16 @@ $control-vertical-adjustment: 2px;
   }
 }
 
+.disabled {
+  > .Label {
+    color: color('ink', 'lightest');
+
+    @media (-ms-high-contrast: active) {
+      color: ms-high-contrast-color('disabled-text');
+    }
+  }
+}
+
 .Control {
   display: flex;
   flex: 0 0 auto;
