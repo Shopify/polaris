@@ -4,10 +4,6 @@ $control-size: rem(16px);
 // vertically centered with the label.
 $control-vertical-adjustment: 2px;
 
-// Negative margin on the left compensates for the icon being inset
-// within its viewbox.
-$icon-horizontal-adjustment: 2px;
-
 .Choice {
   display: inline-flex;
   justify-content: flex-start;
@@ -54,15 +50,4 @@ $icon-horizontal-adjustment: 2px;
   @include text-style-body;
   @include text-emphasis-subdued;
   margin-bottom: spacing(extra-tight);
-}
-
-.Error {
-  display: flex;
-  margin-bottom: spacing(extra-tight);
-  color: color('red', 'dark');
-}
-
-.ErrorIcon {
-  @include recolor-icon(color('red'));
-  margin: 0 spacing(extra-tight) 0 (-1 * $icon-horizontal-adjustment);
 }

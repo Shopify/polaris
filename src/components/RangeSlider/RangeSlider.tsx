@@ -5,7 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import {Error} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Labelled, {Action, helpTextID, errorID} from '../Labelled';
+import Labelled, {Action, helpTextID} from '../Labelled';
 
 import * as styles from './RangeSlider.scss';
 
@@ -93,7 +93,7 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
     const describedBy: string[] = [];
 
     if (error) {
-      describedBy.push(errorID(id));
+      describedBy.push(`${id}Error`);
     }
 
     if (helpText) {

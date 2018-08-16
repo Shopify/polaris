@@ -5,7 +5,7 @@ import {Action, Error} from '../../types';
 
 import {buttonFrom} from '../Button';
 import Label, {Props as LabelProps, labelID} from '../Label';
-import Icon from '../Icon';
+import InlineError from '../InlineError';
 
 import * as styles from './Labelled.scss';
 
@@ -49,11 +49,8 @@ export default function Labelled({
   ) : null;
 
   const errorMarkup = error && (
-    <div id={errorID(id)} className={styles.Error}>
-      <div className={styles.ErrorIcon}>
-        <Icon source="alert" />
-      </div>
-      {error}
+    <div className={styles.Error}>
+      <InlineError message={error} fieldID={id} />
     </div>
   );
 

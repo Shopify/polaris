@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
+import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Resizer, Spinner} from './components';
@@ -223,7 +223,7 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const describedBy: string[] = [];
     if (error) {
-      describedBy.push(errorID(id));
+      describedBy.push(`${id}Error`);
     }
     if (helpText) {
       describedBy.push(helpTextID(id));

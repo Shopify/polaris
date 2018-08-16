@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+
 import {Error} from '../../types';
-import Icon from '../Icon';
+import InlineError from '../InlineError';
+
 import * as styles from './Choice.scss';
 
 export interface Props {
@@ -46,11 +48,8 @@ export default function Choice({
   ) : null;
 
   const errorMarkup = error && (
-    <div className={styles.Error} id={errorID(id)}>
-      <div className={styles.ErrorIcon}>
-        <Icon source="alert" />
-      </div>
-      {error}
+    <div className={styles.Error}>
+      <InlineError message={error} fieldID={id} />
     </div>
   );
 
@@ -74,8 +73,4 @@ export default function Choice({
 
 export function helpTextID(id: string) {
   return `${id}HelpText`;
-}
-
-export function errorID(id: string) {
-  return `${id}Error`;
 }
