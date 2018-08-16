@@ -36,6 +36,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added support for option list `options` descriptors to accept a block for the `label` property ([#1920](https://github.com/Shopify/polaris-react/pull/1920))
 - Added `$page-max-width` variable to capture `Page` calculated `max-width` value
 - Added `page-when-not-max-width` mixin to trigger when `Page` is resized horizontally
+- Added support for select error messages to be optional ([#1941](https://github.com/Shopify/polaris-react/pull/1941))
+- Added support for text field error messages to be optional ([#1940](https://github.com/Shopify/polaris-react/pull/1941))
 
 ### Bug fixes
 

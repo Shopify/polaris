@@ -17,7 +17,7 @@ export interface Props {
   /** Text for the label */
   label: string;
   /** Error to display beneath the label */
-  error?: Error;
+  error?: Error | boolean;
   /** An action */
   action?: Action;
   /** Additional hint text to display */
@@ -48,11 +48,12 @@ export default function Labelled({
     </div>
   ) : null;
 
-  const errorMarkup = error && (
-    <div className={styles.Error}>
-      <InlineError message={error} fieldID={id} />
-    </div>
-  );
+  const errorMarkup = error &&
+    typeof error !== 'boolean' && (
+      <div className={styles.Error}>
+        <InlineError message={error} fieldID={id} />
+      </div>
+    );
 
   const labelMarkup = label ? (
     <div className={styles.LabelWrapper}>

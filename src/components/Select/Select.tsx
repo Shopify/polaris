@@ -61,7 +61,7 @@ export interface BaseProps {
   /** Value for form input */
   value?: string;
   /** Display an error state */
-  error?: Error;
+  error?: Error | boolean;
   /** Callback when selection is changed */
   onChange?(selected: string, id: string): void;
   /** Callback when select is focussed */

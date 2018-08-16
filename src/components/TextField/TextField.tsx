@@ -59,7 +59,7 @@ export interface BaseProps {
   /** Allow for multiple lines of input */
   multiline?: boolean | number;
   /** Error to display beneath the label */
-  error?: Error;
+  error?: Error | boolean;
   /** An element connected to the right of the input */
   connectedRight?: React.ReactNode;
   /** An element connected to the left of the input */
