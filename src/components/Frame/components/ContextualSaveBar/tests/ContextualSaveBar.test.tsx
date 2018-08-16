@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {createThemeContext} from '../../../../ThemeProvider/utils';
 import {createPolarisContext, Button, Image} from '../../../../../components';
-import {
-  polarisAppProviderContextTypes,
-  CreatePolarisContext,
-} from '../../../../AppProvider/types';
+import {polarisAppProviderContextTypes} from '../../../../AppProvider/types';
+import {ThemeContext} from '../../../../ThemeProvider/types';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
@@ -79,12 +78,12 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithAppProvider(
         <ContextualSaveBar {...defaultProps} />,
         addPolarisContext({
-          theme: {
-            logo: {
-              width: 200,
-              contextualSaveBarSource: './assets/monochrome_shopify.svg',
-            },
+          logo: {
+            width: 200,
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
           },
+          subscribe: () => {},
+          unsubscribe: () => {},
         }),
       );
       expect(contextualSaveBar.find(Image).prop('source')).toBe(
@@ -96,12 +95,12 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithAppProvider(
         <ContextualSaveBar {...defaultProps} />,
         addPolarisContext({
-          theme: {
-            logo: {
-              width: 200,
-              contextualSaveBarSource: './assets/monochrome_shopify.svg',
-            },
+          logo: {
+            width: 200,
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
           },
+          subscribe: () => {},
+          unsubscribe: () => {},
         }),
       );
       expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
@@ -114,12 +113,12 @@ describe('<ContextualSaveBar />', () => {
       const contextualSaveBar = mountWithAppProvider(
         <ContextualSaveBar {...defaultProps} />,
         addPolarisContext({
-          theme: {
-            logo: {
-              contextualSaveBarSource: './assets/monochrome_shopify.svg',
-              width: 0,
-            },
+          logo: {
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
+            width: 0,
           },
+          subscribe: () => {},
+          unsubscribe: () => {},
         }),
       );
       expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
@@ -130,8 +129,8 @@ describe('<ContextualSaveBar />', () => {
   });
 });
 
-function addPolarisContext(logo: CreatePolarisContext) {
-  const context = createPolarisContext(logo);
+function addPolarisContext(logo: ThemeContext) {
+  const context = {...createPolarisContext(logo), ...createThemeContext(logo)};
 
   return {
     context,

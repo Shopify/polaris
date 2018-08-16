@@ -225,6 +225,11 @@ export {default as TextStyle, Props as TextStyleProps} from './TextStyle';
 
 export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 
+export {
+  default as ThemeProvider,
+  Props as ThemeProviderProps,
+} from './ThemeProvider';
+
 export {default as Toast, Props as ToastProps} from './Toast';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';

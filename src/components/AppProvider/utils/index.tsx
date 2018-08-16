@@ -3,23 +3,7 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
-import tokens from '@shopify/polaris-tokens';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {needsVariantList} from '../config';
-import {HSLColor} from '../../ColorPicker/types';
-import {
-  colorToHsla,
-  hslToString,
-  hslToRgb,
-} from '../../../utilities/color-transformers';
-import {isLight} from '../../../utilities/color-validation';
-import {constructColorName} from '../../../utilities/color-names';
-import {
-  createDarkColor,
-  createLightColor,
-} from '../../../utilities/color-manipulation';
-import {compose} from '../../../utilities/compose';
-import {setRootProperty} from '../../../utilities/setRootProperty';
 
 import {
   polarisAppProviderContextTypes,
@@ -27,10 +11,7 @@ import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
   WithAppProviderProps,
-  Theme,
-  ColorsToParse,
   CreatePolarisContext,
-  ThemeVariant,
 } from '../types';
 
 import Intl from '../Intl';
@@ -96,27 +77,37 @@ export function withAppProvider<OwnProps>() {
 
       componentDidMount() {
         const {
-          polaris: {subscribe},
+          polaris: {subscribe: subscribeToPolaris},
+          theme: {subscribe: subscribeToTheme},
         } = this.context;
 
-        if (subscribe) {
-          subscribe(this.handleContextUpdate);
+        if (subscribeToPolaris) {
+          subscribeToPolaris(this.handleContextUpdate);
+        }
+
+        if (subscribeToTheme) {
+          subscribeToTheme(this.handleContextUpdate);
         }
       }
 
       componentWillUnmount() {
         const {
-          polaris: {unsubscribe},
+          polaris: {unsubscribe: unsubscribeToPolaris},
+          theme: {unsubscribe: unsubscribeToTheme},
         } = this.context;
 
-        if (unsubscribe) {
-          unsubscribe(this.handleContextUpdate);
+        if (unsubscribeToPolaris) {
+          unsubscribeToPolaris(this.handleContextUpdate);
+        }
+
+        if (unsubscribeToTheme) {
+          unsubscribeToTheme(this.handleContextUpdate);
         }
       }
 
       render() {
-        const {polaris, easdk} = this.context;
-        const polarisContext = {...polaris, easdk};
+        const {polaris, easdk, theme} = this.context;
+        const polarisContext = {...polaris, easdk, theme};
 
         if (!polaris) {
           throw new Error(
@@ -202,7 +193,6 @@ export function createPolarisContext({
   forceRedirect,
   debug,
   stickyManager,
-  theme = {logo: null},
   subscribe,
   unsubscribe,
 }: CreatePolarisContext = {}): Context {
@@ -221,120 +211,14 @@ export function createPolarisContext({
         )
       : undefined;
 
-  const {logo} = theme;
-
   return {
     polaris: {
       intl,
       link,
       stickyManager: stickyManager || new StickyManager(),
-      theme: {
-        logo,
-      },
       subscribe,
       unsubscribe,
     },
     easdk,
   };
-}
-
-export function setColors(theme: Theme | undefined) {
-  if (theme && theme.colors) {
-    Object.entries(theme.colors).forEach((color) => {
-      parseColors(color);
-    });
-  }
-}
-
-export function needsVariant(name: string) {
-  return needsVariantList.indexOf(name) !== -1;
-}
-
-const darkenToString: (
-  color: HSLColor | string,
-  lightness: number,
-  saturation: number,
-) => string = compose(
-  hslToString,
-  createDarkColor,
-);
-
-const lightenToString: (
-  color: HSLColor | string,
-  lightness: number,
-  saturation: number,
-) => string = compose(
-  hslToString,
-  createLightColor,
-);
-
-export function setTextColor(name: string, variant: ThemeVariant = 'dark') {
-  if (variant === 'light') {
-    setRootProperty(name, tokens.colorInkBase);
-    return;
-  }
-
-  setRootProperty(name, tokens.colorWhiteBase);
-}
-
-export function setTheme(
-  color: string | HSLColor,
-  baseName: string,
-  key: string,
-  variant: 'light' | 'dark',
-) {
-  switch (variant) {
-    case 'light':
-      setTextColor(constructColorName(baseName, null, 'color'), 'light');
-
-      setRootProperty(
-        constructColorName(baseName, key, 'darker'),
-        darkenToString(color, 14, 30),
-      );
-
-      setRootProperty(
-        constructColorName(baseName, key, 'lighter'),
-        lightenToString(color, 9, 10),
-      );
-
-      break;
-    case 'dark':
-      setTextColor(constructColorName(baseName, null, 'color'), 'dark');
-
-      setRootProperty(
-        constructColorName(baseName, key, 'darker'),
-        darkenToString(color, 9, 10),
-      );
-
-      setRootProperty(
-        constructColorName(baseName, key, 'lighter'),
-        lightenToString(color, 14, 30),
-      );
-
-      break;
-    default:
-  }
-}
-
-function parseColors([baseName, colors]: [string, ColorsToParse]) {
-  const keys = Object.keys(colors);
-  for (let i = 0; i < keys.length; i++) {
-    setRootProperty(constructColorName(baseName, keys[i]), colors[keys[i]]);
-
-    if (needsVariant(baseName)) {
-      const hslColor = colorToHsla(colors[keys[i]]);
-
-      if (typeof hslColor === 'string') {
-        return;
-      }
-
-      const rgbColor = hslToRgb(hslColor);
-
-      if (isLight(rgbColor)) {
-        setTheme(hslColor, baseName, keys[i], 'light');
-      } else {
-        setTheme(hslColor, baseName, keys[i], 'dark');
-      }
-    }
-  }
 }
