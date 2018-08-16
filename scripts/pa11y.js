@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 const pa11y = require('pa11y');
 const fs = require('fs');
-const a11yCheck = require('./pa11y-utilities.js').a11yCheck;
+const shitlistCheck = require('./pa11y-utilities.js').shitlistCheck;
 
 const shitlist = require('./../a11y_shitlist.json');
 
@@ -82,18 +82,27 @@ async function runPa11y() {
 
 (async () => {
   let rawResults;
-  let results;
   try {
     rawResults = await runPa11y();
 
     if (rawResults.length === 0) {
       throw new Error('Component URLs could not be crawled');
     }
-
-    results = a11yCheck(rawResults, shitlist);
   } catch (error) {
     console.log(error);
     process.exit(1);
+  }
+
+  const {results, remainingIssues} = shitlistCheck(rawResults, shitlist);
+
+  if (remainingIssues) {
+    console.log(
+      'The following items were fixed, and therefore should be removed from the shitlist.',
+    );
+    console.log(
+      'Please edit the file a11y_shitlist.json to remove them and run these tests again.',
+    );
+    console.log(remainingIssues);
   }
 
   if (results.length) {
@@ -107,9 +116,12 @@ async function runPa11y() {
       );
       console.log(JSON.stringify(result.issues, null, 2));
     });
-    process.exit(1);
   } else {
     console.log('No issues!');
-    process.exit(0);
   }
+
+  if (results.length || remainingIssues) {
+    process.exit(1);
+  }
+  process.exit(0);
 })();

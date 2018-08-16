@@ -1,10 +1,15 @@
-const a11yCheck = require('./../scripts/pa11y-utilities.js').a11yCheck;
+const shitlistCheck = require('./../scripts/pa11y-utilities.js').shitlistCheck;
 
-describe('a11yCheck', () => {
+describe('shitlistCheck', () => {
   const shitlist = {
     伊藤美来: [
       {
         code: 'ショッキングブルー',
+      },
+    ],
+    豊田萌絵: [
+      {
+        code: 'Pyxis',
       },
     ],
   };
@@ -17,17 +22,15 @@ describe('a11yCheck', () => {
       },
     ];
 
-    const filteredList = a11yCheck(issueList, shitlist);
+    const {results} = shitlistCheck(issueList, shitlist);
 
     expect(
-      filteredList[0].issues.findIndex(
-        ({code}) => code === 'ショッキングブルー',
-      ),
+      results[0].issues.findIndex(({code}) => code === 'ショッキングブルー'),
     ).toBe(-1);
-    expect(
-      filteredList[0].issues.findIndex(({code}) => code === '風の戦士'),
-    ).toBe(0);
-    expect(filteredList[0].issues.length).toBe(1);
+    expect(results[0].issues.findIndex(({code}) => code === '風の戦士')).toBe(
+      0,
+    );
+    expect(results[0].issues.length).toBe(1);
   });
 
   it('leaves errors not on the shitlist', () => {
@@ -38,9 +41,9 @@ describe('a11yCheck', () => {
       },
     ];
 
-    const filteredList = a11yCheck(issueList, shitlist);
+    const {results} = shitlistCheck(issueList, shitlist);
 
-    expect(filteredList[0].issues.length).toBe(2);
+    expect(results[0].issues.length).toBe(2);
   });
 
   it('removes entries with no issues from the list', () => {
@@ -51,8 +54,22 @@ describe('a11yCheck', () => {
       },
     ];
 
-    const filteredList = a11yCheck(issueList, shitlist);
+    const {results} = shitlistCheck(issueList, shitlist);
 
-    expect(filteredList.length).toBe(0);
+    expect(results.length).toBe(0);
+  });
+
+  it('returns a list with errors that werent found', () => {
+    const issueList = [
+      {
+        pageUrl: '伊藤美来',
+        issues: [{code: 'ショッキングブルー'}],
+      },
+    ];
+
+    const {remainingIssues} = shitlistCheck(issueList, shitlist);
+
+    expect(Object.keys(remainingIssues).length).toBe(1);
+    expect(Object.values(remainingIssues)[0][0].code).toBe('Pyxis');
   });
 });
