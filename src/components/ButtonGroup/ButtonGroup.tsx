@@ -7,14 +7,25 @@ import * as styles from './ButtonGroup.scss';
 export interface Props {
   /** Join buttons as segmented group */
   segmented?: boolean;
+  /** Buttons will stretch/shrink to occupy the full width */
+  fullWidth?: boolean;
+  /** Remove top left and right border radius */
+  connectedTop?: boolean;
   /** Button components */
   children?: React.ReactNode;
 }
 
-export default function ButtonGroup({children, segmented}: Props) {
+export default function ButtonGroup({
+  children,
+  segmented,
+  fullWidth,
+  connectedTop,
+}: Props) {
   const className = classNames(
     styles.ButtonGroup,
     segmented && styles.segmented,
+    fullWidth && styles.fullWidth,
+    connectedTop && styles.connectedTop,
   );
 
   const contents = elementChildren(children).map((child, index) => (

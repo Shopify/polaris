@@ -15,6 +15,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added support for `FilterType.DateSelector` in `ResourceList` component ([#1898](https://github.com/Shopify/polaris-react/pull/1898))
 - Added new `border-width` SCSS function ([#1953](https://github.com/Shopify/polaris-react/pull/1953))
+- Added support for `fullWidth` and `connectedTop` props on `ButtonGroup` ([#1943](https://github.com/Shopify/polaris-react/pull/1943))
 - Added support for radio buttons to accept a block as a `label` ([#1880](https://github.com/Shopify/polaris-react/pull/1800))
 - Added a `singleColumn` prop to the skeleton page component ([#1912](https://github.com/Shopify/polaris-react/pull/1912))
 - Updated the transition on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
