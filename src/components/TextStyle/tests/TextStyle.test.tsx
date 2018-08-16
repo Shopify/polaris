@@ -22,6 +22,27 @@ describe('<TextStyle />', () => {
     expect(textStyle.find('span')).toHaveLength(1);
   });
 
+  it('renders a span when the variant positive is provided', () => {
+    const textStyle = mountWithAppProvider(
+      <TextStyle variation="positive">Hello Polaris</TextStyle>,
+    );
+    expect(textStyle.find('span')).toHaveLength(1);
+  });
+
+  it('renders a span when the variant negative is provided', () => {
+    const textStyle = mountWithAppProvider(
+      <TextStyle variation="negative">Hello Polaris</TextStyle>,
+    );
+    expect(textStyle.find('span')).toHaveLength(1);
+  });
+
+  it('renders a span when the variant subdued is provided', () => {
+    const textStyle = mountWithAppProvider(
+      <TextStyle variation="subdued">Hello Polaris</TextStyle>,
+    );
+    expect(textStyle.find('span')).toHaveLength(1);
+  });
+
   it('renders a code tag when the code variant is provided', () => {
     const textStyle = mountWithAppProvider(
       <TextStyle variation="code">Hello Polaris</TextStyle>,
