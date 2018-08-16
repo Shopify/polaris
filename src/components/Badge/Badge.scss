@@ -16,7 +16,7 @@ $pip-spacing: ($height - $pip-size) / 2;
   align-items: center;
   padding: 0 $horizontal-padding;
   background-color: color('sky');
-  border: 2px solid color('white');
+  border: border-width(thick) solid color('white');
   border-radius: $height;
   font-size: rem(13px);
   line-height: $height;
@@ -77,6 +77,6 @@ $pip-spacing: ($height - $pip-size) / 2;
   height: $pip-size;
   width: $pip-size;
   margin: 0 spacing(extra-tight) 0 ($pip-spacing - $horizontal-padding);
-  border: rem(2px) solid currentColor;
+  border: border-width(thick) solid currentColor;
   border-radius: 50%;
 }
