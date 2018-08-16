@@ -40,6 +40,8 @@ export interface ActionProps {
 export interface HeaderProps {
   /** Page title, in large type */
   title: string;
+  /** Page title metadata */
+  titleMetadata?: React.ReactNode;
   /** Visually hide the title */
   titleHidden?: boolean;
   /** App icon, for pages that are part of Shopify apps */

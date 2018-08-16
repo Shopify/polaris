@@ -29,6 +29,7 @@ export default class Header extends React.PureComponent<Props, State> {
   render() {
     const {
       title,
+      titleMetadata,
       breadcrumbs = [],
       titleHidden = false,
       primaryAction,
@@ -90,6 +91,7 @@ export default class Header extends React.PureComponent<Props, State> {
         <DisplayText size="large" element="h1">
           {title}
         </DisplayText>
+        {titleMetadata}
       </div>
     );
 
