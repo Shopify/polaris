@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.5.0",
+  "version": "2.6.0-beta.8",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -201,10 +201,11 @@
   "dependencies": {
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.0",
+    "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-html": "^3.0.3",
     "@shopify/react-utilities": "2.0.0-beta.9",
-    "@types/prop-types": "^15.5.2",
+    "@types/prop-types": "^15.5.5",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
     "@types/react-transition-group": "^2.0.7",
@@ -214,7 +215,7 @@
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
-    "react-transition-group": "^2.3.0",
+    "react-transition-group": "^2.4.0",
     "tslib": "^1.8.0"
   }
 }

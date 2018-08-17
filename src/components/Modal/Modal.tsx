@@ -8,7 +8,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {ComplexAction, contentContextTypes} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Scrollable, Spinner, Portal} from '../../components';
+import {Scrollable, Spinner, Portal, Backdrop} from '../../components';
 import memoizedBind from '../../utilities/memoized-bind';
 import {
   CloseButton,
@@ -221,7 +221,7 @@ export class Modal extends React.Component<CombinedProps, State> {
         </Dialog>
       );
 
-      backdrop = <div className={styles.Backdrop} onClick={handleClose} />;
+      backdrop = <Backdrop onClick={handleClose} />;
     }
 
     const animated = !instant;

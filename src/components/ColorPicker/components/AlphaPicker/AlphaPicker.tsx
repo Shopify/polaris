@@ -4,7 +4,7 @@ import {clamp} from '@shopify/javascript-utilities/math';
 
 import Slidable, {Position} from '../Slidable';
 import {HSBColor} from '../../types';
-import {hsbToRgb} from '../../utilities/color-utilities';
+import {hsbToRgb} from '../../../../utilities/color-transformers';
 import * as styles from '../../ColorPicker.scss';
 
 export interface State {
