@@ -6,4 +6,8 @@ export {default as Panel, Props as PanelProps} from './Panel';
 
 export {default as Tab, Props as TabProps} from './Tab';
 
-export {default as TabMeasurer, Props as TabMeasurerProps} from './TabMeasurer';
+export {
+  default as TabMeasurer,
+  Props as TabMeasurerProps,
+  TabMeasurements,
+} from './TabMeasurer';

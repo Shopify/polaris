@@ -1,6 +1,7 @@
 import Messenger from '../Messenger';
 import Modal from './Modal';
-import {Messages} from '../../../components/AppProvider/EASDK';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {Messages} from '../../../components/AppProvider';
 
 export interface SelectionResult {
   products?: object[];

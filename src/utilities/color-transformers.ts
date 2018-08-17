@@ -7,7 +7,7 @@ import {
   HSLColor,
   HSLAColor,
   HSBLAColor,
-} from '../components/ColorPicker/types';
+} from '../components';
 import {compose} from './compose';
 
 export function rgbString(color: RGBColor | RGBAColor) {

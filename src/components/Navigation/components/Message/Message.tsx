@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
-import {
-  TextContainer,
-  Heading,
-  Link,
-  Stack,
-  Button,
-} from '../../../../components';
+
+import {TextContainer, Heading, Link, Stack, Button} from '../../..';
 import Badge, {Props as BadgeProps} from '../../../Badge';
-import styles from '../UserMenu/UserMenu.scss';
+import styles from './Message.scss';
 
 export interface Props {
   title: string;
@@ -25,14 +19,12 @@ export default function Message({
   link,
   badge,
 }: Props) {
-  const className = classNames(styles.Section, styles.Message);
-
   const badgeMarkup = badge && (
     <Badge status={badge.status}>{badge.content}</Badge>
   );
 
   return (
-    <div className={className}>
+    <div className={styles.Message}>
       <Stack vertical>
         <TextContainer>
           <Heading>

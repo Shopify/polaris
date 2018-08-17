@@ -3,13 +3,16 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import {Button, Icon, EventListener, ToastProps} from '../../components';
-import {dataPolarisTopBar, layer} from '../shared';
-import {TrapFocus} from '../Focus';
 import {
+  Button,
+  Icon,
+  EventListener,
+  ToastProps,
   withAppProvider,
   WithAppProviderProps,
-} from '../../components/AppProvider';
+} from '..';
+import {dataPolarisTopBar, layer} from '../shared';
+import {TrapFocus} from '../Focus';
 
 import {FrameContext, frameContextTypes} from '../types';
 

@@ -10,8 +10,14 @@ import {ComplexAction, contentContextTypes} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Scrollable, Spinner, Portal, Backdrop} from '../../components';
 import memoizedBind from '../../utilities/memoized-bind';
-import {Dialog, Footer, FooterProps, Header, Section} from './components';
-import {CloseButton} from './components/Header';
+import {
+  CloseButton,
+  Dialog,
+  Footer,
+  FooterProps,
+  Header,
+  Section,
+} from './components';
 import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;

@@ -12,6 +12,7 @@ import {
 import Item from '../../Item';
 import Section from '../Section';
 
+// eslint-disable-next-line shopify/strict-component-boundaries
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
 interface Context {

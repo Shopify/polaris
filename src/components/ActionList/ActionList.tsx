@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {ItemDescriptor} from './types';
-import {Section, ActionListSection} from './components';
+import {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {Section} from './components';
 
 import * as styles from './ActionList.scss';
 
 export interface Props {
   /** Collection of actions for list */
-  items?: ItemDescriptor[];
+  items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
   /** Callback when any item is clicked or keypressed */
-  onActionAnyItem?: ItemDescriptor['onAction'];
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
 export default function ActionList({

@@ -3,11 +3,13 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {getWidth} from '../../utilities/getWidth';
 import {menu} from '../../icons';
-import {Icon, Image, UnstyledLink} from '../../components';
 import {
+  Icon,
+  Image,
+  UnstyledLink,
   withAppProvider,
   WithAppProviderProps,
-} from '../../components/AppProvider';
+} from '../../components';
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 
 import * as styles from './TopBar.scss';

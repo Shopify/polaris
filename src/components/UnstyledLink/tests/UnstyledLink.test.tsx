@@ -5,6 +5,7 @@ import {
   mountWithAppProvider,
 } from '../../../../tests/utilities';
 
+// eslint-disable-next-line shopify/strict-component-boundaries
 import Link from '../../AppProvider/Link';
 
 describe('<UnstyledLink />', () => {

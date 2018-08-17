@@ -96,7 +96,7 @@ $breakpoint: 768px;
 
 .Cell {
   padding: spacing();
-  border-bottom: 1px solid color('sky', 'light');
+  border-bottom: border-width() solid color('sky', 'light');
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;

@@ -13,6 +13,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Added support for `FilterType.DateSelector` in `ResourceList` component ([#1898](https://github.com/Shopify/polaris-react/pull/1898))
+- Added `code` as an accepted `variation` of the text style component to provide support for accessible markup and styling of inline code snippets and code-like text ([#1889](https://github.com/Shopify/polaris-react/pull/1889))
+- Added new `border-width` SCSS function ([#1953](https://github.com/Shopify/polaris-react/pull/1953))
+- Added support for `fullWidth` and `connectedTop` props on `ButtonGroup` ([#1943](https://github.com/Shopify/polaris-react/pull/1943))
 - Added support for radio buttons to accept a block as a `label` ([#1880](https://github.com/Shopify/polaris-react/pull/1800))
 - Added a `singleColumn` prop to the skeleton page component ([#1912](https://github.com/Shopify/polaris-react/pull/1912))
 - Updated the transition on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
@@ -37,6 +41,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Fixed text field resizer rendering when `multiline` was false ([#1853](https://github.com/Shopify/polaris-react/pull/1853))
 - Fixed modal header condensing ([#1894](https://github.com/Shopify/polaris-react/pull/1894))
+- Fixed tooltip so active prop activates on initial render ([#1903](https://github.com/Shopify/polaris-react/pull/1903))
 - Fixed popover border radius and left and right alignment ([#1796](https://github.com/Shopify/polaris-react/pull/1796))
 - Fixed visibility of the hidden implicit submit button in form ([#1846](https://github.com/Shopify/polaris-react/pull/1846)) (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
 - Fixed alignment of wrapped empty state actions ([#1828](https://github.com/Shopify/polaris-react/pull/1828))
@@ -49,8 +54,11 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added examples for iOS and Android radio buttons ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
 - Added examples for iOS and Android banners ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
+- Added toast component ([#1844](https://github.com/Shopify/polaris-react/pull/1844))
 - Added examples for iOS and Android buttons ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
 - Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
+- Added examples for iOS and Android badge ([#1892](https://github.com/Shopify/polaris-react/pull/1892))
+- Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
 
 ## 2.5.0 - 2018-07-20
 
