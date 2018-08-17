@@ -1,7 +1,7 @@
 import {noop} from '@shopify/javascript-utilities/other';
 
 const Breakpoints = {
-  navBarCollapsed: '769px',
+  navigationBarCollapsed: '769px',
   stackedContent: '1043px',
 };
 
@@ -12,10 +12,10 @@ const noWindowMatches = {
   matches: false,
 };
 
-export function navBarCollapsed(): MediaQueryList {
+export function navigationBarCollapsed(): MediaQueryList {
   return typeof window === 'undefined'
     ? noWindowMatches
-    : window.matchMedia(`(max-width: ${Breakpoints.navBarCollapsed})`);
+    : window.matchMedia(`(max-width: ${Breakpoints.navigationBarCollapsed})`);
 }
 
 export function stackedContent(): MediaQueryList {

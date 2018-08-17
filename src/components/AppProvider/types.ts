@@ -6,14 +6,27 @@ import Intl from './Intl';
 import Link from './Link';
 import EASDK from './EASDK';
 import StickyManager from './StickyManager';
+import {
+  THEME_CONTEXT_TYPES as theme,
+  ThemeContext,
+} from '../ThemeProvider/types';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
   easdk: PropTypes.any,
+  ...theme,
 };
 
 export interface WithAppProviderProps {
-  polaris: {intl: Intl; link: Link; easdk: EASDK; stickyManager: StickyManager};
+  polaris: {
+    intl: Intl;
+    link: Link;
+    easdk: EASDK;
+    stickyManager: StickyManager;
+    theme: ThemeContext;
+    subscribe(callback: () => void): void;
+    unsubscribe(callback: () => void): void;
+  };
 }
 
 export interface TranslationDictionary {
@@ -30,4 +43,6 @@ export interface ComplexReplacementDictionary {
 
 export interface CreatePolarisContext extends AppProviderProps {
   stickyManager?: StickyManager;
+  subscribe?(callback: () => void): void;
+  unsubscribe?(callback: () => void): void;
 }

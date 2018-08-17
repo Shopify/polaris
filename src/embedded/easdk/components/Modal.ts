@@ -1,6 +1,7 @@
 import Messenger from '../Messenger';
 import {transformAction} from '../transformers';
 import {EASDKAction} from '../../../types';
+import {Messages} from '../../../components/AppProvider/EASDK';
 
 export interface CloseCallback {
   (result?: boolean, data?: any): void;
@@ -45,7 +46,7 @@ export default class Modal {
       this.storeCloseCallback(onClose);
     }
 
-    this.messenger.send('Shopify.API.Modal.open', {
+    this.messenger.send(Messages.MODAL_OPEN, {
       src,
       title,
       width,
@@ -83,7 +84,7 @@ export default class Modal {
     });
 
     if (onClose && cancelContent) {
-      this.messenger.send('Shopify.API.Modal.confirm', {
+      this.messenger.send(Messages.MODAL_CONFIRM, {
         message: {
           title,
           message: children,
@@ -93,7 +94,7 @@ export default class Modal {
         },
       });
     } else {
-      this.messenger.send('Shopify.API.Modal.alert', {
+      this.messenger.send(Messages.MODAL_ALERT, {
         message: {
           title,
           message: children,
@@ -109,7 +110,7 @@ export default class Modal {
       return;
     }
 
-    this.messenger.send('Shopify.API.Modal.close', {
+    this.messenger.send(Messages.MODAL_CLOSE, {
       result,
       data,
     });

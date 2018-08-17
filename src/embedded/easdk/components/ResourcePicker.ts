@@ -1,5 +1,6 @@
 import Messenger from '../Messenger';
 import Modal from './Modal';
+import {Messages} from '../../../components/AppProvider/EASDK';
 
 export interface SelectionResult {
   products?: object[];
@@ -61,7 +62,7 @@ export default class ResourcePicker {
     }
 
     if (collections) {
-      this.messenger.send('Shopify.API.Modal.collectionPicker', {
+      this.messenger.send(Messages.MODAL_COLLECTION_PICKER, {
         title,
         selectMultiple: allowMultiple,
         // eslint-disable-next-line camelcase
@@ -70,7 +71,7 @@ export default class ResourcePicker {
         selectable_resources: resources,
       });
     } else {
-      this.messenger.send('Shopify.API.Modal.productPicker', {
+      this.messenger.send(Messages.MODAL_PRODUCT_PICKER, {
         title,
         selectMultiple: allowMultiple,
         // eslint-disable-next-line camelcase

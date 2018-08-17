@@ -15,6 +15,7 @@ import {
   LinkAction,
   LoadableAction,
 } from '../../../types';
+import {Messages} from '../../../components/AppProvider/EASDK';
 
 export interface UpdateConfig {
   title: string;
@@ -45,7 +46,7 @@ export default class Bar {
       pagination,
     } = config;
 
-    this.messenger.send('Shopify.API.Bar.initialize', {
+    this.messenger.send(Messages.INITIALIZE, {
       buttons: {
         primary: primaryAction
           ? transformAction(this.messenger.targetOrigin)(primaryAction)
@@ -77,7 +78,7 @@ export default class Bar {
 
   @autobind
   private closeDropdown() {
-    this.messenger.send('Shopify.API.Bar.closeDropdown');
+    this.messenger.send(Messages.CLOSE_DROPDOWN);
   }
 }
 

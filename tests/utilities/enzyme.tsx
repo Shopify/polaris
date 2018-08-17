@@ -4,6 +4,7 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 
 import {createPolarisContext, polarisAppProviderContextTypes} from '../../src/components/AppProvider';
+import {createThemeContext} from '../../src/components/ThemeProvider/utils';
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
 export function findByTestID(root: ReactWrapper<any, any>, id: string) {
@@ -129,7 +130,7 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 function mergeAppProviderOptions(options: any = {}): any {
-  const context = createPolarisContext();
+  const context = {...createPolarisContext(), ...createThemeContext()};
 
   return merge({}, {
     context,
@@ -149,4 +150,10 @@ export function shallowWithAppProvider<P>(node: React.ReactElement<P>, options?:
     node,
     mergeAppProviderOptions(options),
   ).dive(options);
+}
+
+export function createPolarisProps() {
+  const {polaris, easdk} = createPolarisContext();
+  const polarisContext = {...polaris, easdk, ...createThemeContext()};
+  return {polaris: polarisContext};
 }
