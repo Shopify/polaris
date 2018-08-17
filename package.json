@@ -203,7 +203,7 @@
     "@shopify/javascript-utilities": "^2.2.0",
     "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-html": "^3.0.3",
-    "@shopify/react-utilities": "2.0.0-beta.9",
+    "@shopify/react-utilities": "^2.0.2",
     "@types/prop-types": "^15.5.2",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
