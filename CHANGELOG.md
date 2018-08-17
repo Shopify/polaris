@@ -56,6 +56,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added examples for iOS and Android banners ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
 - Added examples for iOS and Android buttons ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
 - Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
+- Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
 
 ## 2.5.0 - 2018-07-20
 
