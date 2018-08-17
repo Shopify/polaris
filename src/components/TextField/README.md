@@ -539,7 +539,7 @@ Use when a text field and several related fields make up a logical unit.
 
 <!-- content-for: web -->
 
-If inputting weight as a number and a separate unit of measurement, use a text field with a `<select dropdown menu>` (e.g. “kg”, “lb”) as a connected field.
+If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](/components/forms/select) (e.g. “kg”, “lb”) as a connected field.
 
 <!-- /content-for -->
 
@@ -586,6 +586,8 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 <!-- /content-for -->
 
 ### Text field with icon action
+
+<!-- example-for: android, ios -->
 
 Use to let merchants take an action on the field.
 
