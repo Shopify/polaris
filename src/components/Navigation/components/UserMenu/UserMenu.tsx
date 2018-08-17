@@ -104,16 +104,18 @@ export default class UserMenu extends React.PureComponent<Props, State> {
         status: message.badge.status,
       };
     const messageMarkup = message && (
-      <Message
-        title={message.title}
-        description={message.description}
-        action={{
-          onClick: message.action.onClick,
-          content: message.action.content,
-        }}
-        link={{to: message.link.to, content: message.link.content}}
-        badge={badgeProps}
-      />
+      <div className={styles.Section}>
+        <Message
+          title={message.title}
+          description={message.description}
+          action={{
+            onClick: message.action.onClick,
+            content: message.action.content,
+          }}
+          link={{to: message.link.to, content: message.link.content}}
+          badge={badgeProps}
+        />
+      </div>
     );
 
     const showIndicator = Boolean(message);
