@@ -4,7 +4,7 @@ import {mountWithAppProvider, trigger} from '../../../../../../tests/utilities';
 
 import {ActionList, Popover} from '../../../../../components';
 import Menu from '../Menu';
-import Message from '../components/Message';
+import {Message} from '../components';
 
 describe('<Menu />', () => {
   const defaultProps = {

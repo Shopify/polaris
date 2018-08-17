@@ -1,7 +1,8 @@
 import Messenger from '../Messenger';
 import {transformAction} from '../transformers';
 import {EASDKAction} from '../../../types';
-import {Messages} from '../../../components/AppProvider/EASDK';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {Messages} from '../../../components/AppProvider';
 
 export interface CloseCallback {
   (result?: boolean, data?: any): void;

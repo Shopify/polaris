@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {FrameContext, frameContextTypes} from '../types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '..';
 
 const createId = createUniqueIDFactory('Toast');
 

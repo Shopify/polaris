@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import Secondary from './components/Secondary';
+import {Secondary} from './components';
 import {Icon, IconProps, UnstyledLink} from '../../../../components';
 import {Context, contextTypes} from '../../types';
 

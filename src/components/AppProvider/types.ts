@@ -6,10 +6,7 @@ import Intl from './Intl';
 import Link from './Link';
 import EASDK from './EASDK';
 import StickyManager from './StickyManager';
-import {
-  THEME_CONTEXT_TYPES as theme,
-  ThemeContext,
-} from '../ThemeProvider/types';
+import {THEME_CONTEXT_TYPES as theme, ThemeContext} from '../ThemeProvider';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,

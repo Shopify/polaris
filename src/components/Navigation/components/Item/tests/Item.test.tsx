@@ -7,7 +7,7 @@ import {add} from '../../../../../icons';
 import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
 
 import Item, {Props as ItemProps} from '../Item';
-import Secondary from '../components/Secondary';
+import {Secondary} from '../components';
 
 describe('<Nav.Item />', () => {
   beforeEach(() => {

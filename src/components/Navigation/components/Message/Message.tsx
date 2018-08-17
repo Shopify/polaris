@@ -1,14 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {
-  TextContainer,
-  Heading,
-  Link,
-  Stack,
-  Button,
-} from '../../../../components';
+import {TextContainer, Heading, Link, Stack, Button} from '../../..';
 import Badge, {Props as BadgeProps} from '../../../Badge';
-import styles from '../UserMenu/UserMenu.scss';
+import {styles} from '../UserMenu';
 
 export interface Props {
   title: string;

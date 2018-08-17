@@ -1,7 +1,7 @@
 import tokens from '@shopify/polaris-tokens';
 import {noop} from '@shopify/javascript-utilities/other';
 import {needsVariantList} from '../config';
-import {HSLColor} from '../../ColorPicker/types';
+import {HSLColor} from '../../ColorPicker';
 import {
   colorToHsla,
   hslToString,

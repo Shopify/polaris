@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import {createThemeContext} from '../../../../ThemeProvider/utils';
+import {createThemeContext, ThemeContext} from '../../../../ThemeProvider';
 import {createPolarisContext, Button, Image} from '../../../../../components';
-import {polarisAppProviderContextTypes} from '../../../../AppProvider/types';
-import {ThemeContext} from '../../../../ThemeProvider/types';
+import {polarisAppProviderContextTypes} from '../../../../AppProvider';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {

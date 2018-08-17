@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {FrameContext, frameContextTypes} from '../types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '..';
 
 export interface Props {}
 export type ComposedProps = Props & WithAppProviderProps;

@@ -7,6 +7,7 @@ export {
   createPolarisContext,
   withSticky,
 } from './utils';
+export {Options, User, Messages} from './EASDK';
 export {LinkLikeComponent} from '../UnstyledLink';
 export * from './types';
 export default AppProvider;

@@ -9,8 +9,7 @@ import Link from './Link';
 import StickyManager from './StickyManager';
 import {createPolarisContext} from './utils';
 import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
-import {Theme} from '../ThemeProvider/types';
-import ThemeProvider from '../ThemeProvider';
+import ThemeProvider, {Theme} from '../ThemeProvider';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */

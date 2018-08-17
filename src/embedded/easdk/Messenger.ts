@@ -1,4 +1,5 @@
-import {Messages} from '../../components/AppProvider/EASDK';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {Messages} from '../../components/AppProvider';
 
 const CoreWeakMap: typeof WeakMap = require('core-js/library/es6/weak-map');
 
