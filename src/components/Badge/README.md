@@ -1,6 +1,10 @@
 ---
 name: Badge
 category: Images and icons
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - pills
   - status indicators
@@ -12,11 +16,13 @@ keywords:
   - object status
   - status
   - alert
+  - ios
+  - android
 ---
 
 # Badge
 
-Badges are used to inform merchants of the status of a piece of information or of an action that’s been taken. For example, when a customer has received the item they purchased from a merchant, a badge that says “Completed” shows next to the order number.
+Badges are used to inform merchants of the status of an object or of an action that’s been taken.
 
 ---
 
@@ -80,6 +86,18 @@ Use to give a non-critical status update on a piece of information or action.
 <Badge>Fulfilled</Badge>
 ```
 
+<!-- content-for: android -->
+
+![Default badge with gray background](components/Badge/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default badge with gray background](components/Badge/ios/default.png)
+
+<!-- /content-for -->
+
 ### Informational badge
 
 Use to call out an object or action as having an important attribute. For example, marking an option as “Recommended” or marking a theme as “Published”.
@@ -87,6 +105,18 @@ Use to call out an object or action as having an important attribute. For exampl
 ```jsx
 <Badge status="info">Published</Badge>
 ```
+
+<!-- content-for: android -->
+
+![Informational badge with blue background](components/Badge/android/informational.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Informational badge with blue background](components/Badge/ios/informational.png)
+
+<!-- /content-for -->
 
 ### Success badge
 
@@ -96,6 +126,18 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 <Badge status="success">Funds recovered</Badge>
 ```
 
+<!-- content-for: android -->
+
+![Success badge with green background](components/Badge/android/success.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Success badge with green background](components/Badge/ios/success.png)
+
+<!-- /content-for -->
+
 ### Attention badge
 
 Use when something requires a merchant’s attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by the merchant.
@@ -104,13 +146,59 @@ Use when something requires a merchant’s attention but the issue isn’t criti
 <Badge status="attention">Unfulfilled</Badge>
 ```
 
+<!-- content-for: android -->
+
+![Attention badge with yellow background](components/Card/android/attention.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Attention badge with yellow background](components/Card/ios/attention.png)
+
+<!-- /content-for -->
+
 ### Warning badge
 
-Use for the most critical and time sensitive issues that require a merchant’s attention. Keep in mind that seeing this badge can feel stressful for merchants so it should be used when absolutely necessary.
+Use for critical and time-sensitive issues that require a merchant’s attention and potential action. Warning events are often reversible.
+
+Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="warning">SSL unavailable</Badge>
 ```
+
+<!-- content-for: android -->
+
+![Warning badge with orange background](components/Badge/android/warning.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Warning badge with orange background](components/Badge/ios/warning.png)
+
+<!-- /content-for -->
+
+### Critical badge
+
+<!-- example-for: android, ios -->
+
+Use for critical and irreversible issues that require a merchant’s attention and potential action.
+
+Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+
+<!-- content-for: android -->
+
+![Critical badge with red background](components/Badge/android/critical.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Critical badge with red background](components/Badge/ios/critical.png)
+
+<!-- /content-for -->
 
 ### Incomplete badge
 
@@ -120,6 +208,18 @@ Use to indicate when a given task has not yet been completed. For example, when 
 <Badge progress="incomplete">Unfulfilled</Badge>
 ```
 
+<!-- content-for: android -->
+
+![Incomplete badge. Default badge with incomplete status](components/Badge/android/incomplete.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Incomplete badge. Default badge with incomplete status](components/Badge/ios/incomplete.png)
+
+<!-- /content-for -->
+
 ### Partially complete badge
 
 Use to indicate when a given task has been partially completed. For example, when a merchant has partially fulfilled an order.
@@ -128,6 +228,18 @@ Use to indicate when a given task has been partially completed. For example, whe
 <Badge progress="partiallyComplete">Partially fulfilled</Badge>
 ```
 
+<!-- content-for: android -->
+
+![Partially complete badge. Default badge with partially complete status](components/Badge/android/partially-complete.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Partially complete badge. Default badge with partially complete status](components/Badge/ios/partially-complete.png)
+
+<!-- /content-for -->
+
 ### Complete badge
 
 Use to indicate when a given task has been completed. For example, when a merchant has fulfilled an order.
@@ -135,6 +247,18 @@ Use to indicate when a given task has been completed. For example, when a mercha
 ```jsx
 <Badge progress="complete">Fulfilled</Badge>
 ```
+
+<!-- content-for: android -->
+
+![Complete badge. Default badge with complete status](components/Badge/android/complete.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Complete badge. Default badge with complete status](components/Badge/ios/complete.png)
+
+<!-- /content-for -->
 
 ---
 

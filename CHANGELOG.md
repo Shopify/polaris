@@ -57,6 +57,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added toast component ([#1844](https://github.com/Shopify/polaris-react/pull/1844))
 - Added examples for iOS and Android buttons ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
 - Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
+- Added examples for iOS and Android badge ([#1892](https://github.com/Shopify/polaris-react/pull/1892))
 - Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
 
 ## 2.5.0 - 2018-07-20
