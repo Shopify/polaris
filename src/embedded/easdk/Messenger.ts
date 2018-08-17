@@ -1,5 +1,3 @@
-import {Messages} from '../../components/AppProvider/EASDK';
-
 const CoreWeakMap: typeof WeakMap = require('core-js/library/es6/weak-map');
 
 export interface Message {
@@ -25,6 +23,10 @@ export interface Options {
 }
 
 export default class Messenger {
+  static Messages = Object.freeze({
+    SET_WINDOW_LOCATION: 'Shopify.API.setWindowLocation',
+  });
+
   targetOrigin = '*';
 
   private name: string;
@@ -171,7 +173,7 @@ export default class Messenger {
       return;
     }
 
-    if (receivedMessage.message === Messages.SET_WINDOW_LOCATION) {
+    if (receivedMessage.message === Messenger.Messages.SET_WINDOW_LOCATION) {
       this.windowLocation = receivedMessage.data as Location;
     } else {
       this.invokeCallback(receivedMessage);

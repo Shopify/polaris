@@ -7,7 +7,6 @@ import {
 } from '@shopify/javascript-utilities/events';
 import tokens from '@shopify/polaris-tokens';
 import {stackedContent} from '../../utilities/breakpoints';
-import {dataPolarisTopBar, scrollable} from '../shared';
 
 export interface StickyItem {
   /** Node of the sticky element */
@@ -33,7 +32,6 @@ export default class StickyManager {
   private stickyItems: StickyItem[] = [];
   private stuckItems: StickyItem[] = [];
   private container: Document | HTMLElement;
-  private topBarOffset: number = 0;
 
   constructor(container?: Document | HTMLElement) {
     if (container) {
@@ -54,9 +52,6 @@ export default class StickyManager {
 
   setContainer(el: Document | HTMLElement) {
     this.container = el;
-    if (isDocument(el)) {
-      this.setTopBarOffset();
-    }
     addEventListener(this.container, 'scroll', this.handleScroll);
     addEventListener(window, 'resize', this.handleResize);
     this.manageStickyItems();
@@ -69,13 +64,13 @@ export default class StickyManager {
     }
   }
 
-  @throttle(40)
+  @throttle(50)
   @autobind
   private handleResize() {
     this.manageStickyItems();
   }
 
-  @throttle(40)
+  @throttle(50)
   @autobind
   private handleScroll() {
     this.manageStickyItems();
@@ -87,7 +82,7 @@ export default class StickyManager {
     }
 
     const scrollTop = scrollTopFor(this.container);
-    const containerTop = getRectForNode(this.container).top + this.topBarOffset;
+    const containerTop = getRectForNode(this.container).top;
 
     this.stickyItems.forEach((stickyItem) => {
       const {handlePositioning} = stickyItem;
@@ -220,13 +215,6 @@ export default class StickyManager {
     );
 
     return nodeFound >= 0;
-  }
-
-  private setTopBarOffset() {
-    const topbarElement = this.container.querySelector(
-      `:not(${scrollable.selector}) ${dataPolarisTopBar.selector}`,
-    );
-    this.topBarOffset = topbarElement ? topbarElement.clientHeight : 0;
   }
 }
 

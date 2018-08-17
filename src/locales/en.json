@@ -28,11 +28,6 @@
       "undo": "Undo"
     },
 
-    "ContextualSaveBar": {
-      "save": "Save",
-      "discard": "Discard"
-    },
-
     "DataTable": {
       "sortAccessibilityLabel": "sort {direction} by",
       "navAccessibilityLabel": "Scroll table {direction} one column",
@@ -61,13 +56,6 @@
 
     "EmptySearchResult": {
       "altText": "Empty search results"
-    },
-
-    "Frame": {
-      "skipToContent": "Skip to content",
-      "Navigation": {
-        "closeMobileNavigationLabel": "Close navigation"
-      }
     },
 
     "Icon": {

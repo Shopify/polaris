@@ -19,17 +19,15 @@ export default class TrapFocus extends React.PureComponent<Props, never> {
   private focusTrapWrapper: HTMLElement;
 
   render() {
-    const {children, trapping} = this.props;
-    const focusTrapMarkup = (
-      <div ref={this.setFocusTrapWrapper}>
-        <EventListener event="focusout" handler={this.handleBlur} />
-        {children}
-      </div>
-    );
-    return trapping ? (
-      <Focus>{focusTrapMarkup}</Focus>
-    ) : (
-      <React.Fragment>{focusTrapMarkup}</React.Fragment>
+    const {children} = this.props;
+
+    return (
+      <Focus>
+        <div ref={this.setFocusTrapWrapper}>
+          <EventListener event="focusout" handler={this.handleBlur} />
+          {children}
+        </div>
+      </Focus>
     );
   }
 

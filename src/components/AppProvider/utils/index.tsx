@@ -3,7 +3,6 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {
   polarisAppProviderContextTypes,
@@ -75,39 +74,9 @@ export function withAppProvider<OwnProps>() {
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;
 
-      componentDidMount() {
-        const {
-          polaris: {subscribe: subscribeToPolaris},
-          theme: {subscribe: subscribeToTheme},
-        } = this.context;
-
-        if (subscribeToPolaris) {
-          subscribeToPolaris(this.handleContextUpdate);
-        }
-
-        if (subscribeToTheme) {
-          subscribeToTheme(this.handleContextUpdate);
-        }
-      }
-
-      componentWillUnmount() {
-        const {
-          polaris: {unsubscribe: unsubscribeToPolaris},
-          theme: {unsubscribe: unsubscribeToTheme},
-        } = this.context;
-
-        if (unsubscribeToPolaris) {
-          unsubscribeToPolaris(this.handleContextUpdate);
-        }
-
-        if (unsubscribeToTheme) {
-          unsubscribeToTheme(this.handleContextUpdate);
-        }
-      }
-
       render() {
-        const {polaris, easdk, theme} = this.context;
-        const polarisContext = {...polaris, easdk, theme};
+        const {polaris, easdk} = this.context;
+        const polarisContext = {...polaris, easdk};
 
         if (!polaris) {
           throw new Error(
@@ -118,11 +87,6 @@ export function withAppProvider<OwnProps>() {
         }
 
         return <WrappedComponent {...this.props} polaris={polarisContext} />;
-      }
-
-      @autobind
-      private handleContextUpdate() {
-        this.forceUpdate();
       }
     }
 
@@ -193,8 +157,6 @@ export function createPolarisContext({
   forceRedirect,
   debug,
   stickyManager,
-  subscribe,
-  unsubscribe,
 }: CreatePolarisContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
@@ -216,8 +178,6 @@ export function createPolarisContext({
       intl,
       link,
       stickyManager: stickyManager || new StickyManager(),
-      subscribe,
-      unsubscribe,
     },
     easdk,
   };

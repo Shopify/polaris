@@ -1,14 +1,18 @@
+$entry-iterations: 1;
 $small-width: rem(620px);
+$backdrop-color: rgba(33, 43, 54, 0.4);
 
 .BodyWrapper {
   display: flex;
   flex-grow: 1;
   border-radius: border-radius(large);
   overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .Body {
+  overflow: visible;
   width: 100%;
 }
 
@@ -20,6 +24,30 @@ $small-width: rem(620px);
 
   @include breakpoint-after(layout-width(page-with-nav)) {
     max-width: $small-width;
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  z-index: z-index(overlay) - 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background: $backdrop-color;
+  animation: fade-in duration() $entry-iterations forwards;
+  opacity: 1;
+  will-change: opacity;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 

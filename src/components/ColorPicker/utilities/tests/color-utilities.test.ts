@@ -4,7 +4,7 @@ import {
   rgbToHsb,
   rgbString,
   hsbToHex,
-} from '../color-transformers';
+} from '../color-utilities';
 
 describe('colorUtilities', () => {
   describe('rgbString', () => {

@@ -3,9 +3,8 @@ import {clamp} from '@shopify/javascript-utilities/math';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {HSBColor, HSBAColor} from './types';
-import {hsbToRgb} from '../../utilities/color-transformers';
-import {AlphaPicker, HuePicker, Slidable} from './components';
-import {Position} from './components/Slidable';
+import {hsbToRgb} from './utilities/color-utilities';
+import {AlphaPicker, HuePicker, Slidable, Position} from './components';
 import * as styles from './ColorPicker.scss';
 
 export interface State {

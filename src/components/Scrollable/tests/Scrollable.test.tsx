@@ -26,15 +26,4 @@ describe('<Scrollable />', () => {
       .first();
     expect(div.exists()).toBe(true);
   });
-
-  it('allows children to receive scroll events', () => {
-    const spy = jest.fn();
-    const scrollArea = mountWithAppProvider(
-      <Scrollable>
-        <div id="scrollContents" onScroll={spy} />
-      </Scrollable>,
-    );
-    scrollArea.find('#scrollContents').simulate('scroll');
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
 });

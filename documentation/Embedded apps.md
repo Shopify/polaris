@@ -99,7 +99,7 @@ We provide the following methods, (annotated with the types of their parameters 
 #### `easdk.showFlashNotice()`
 
 ```ts
-showFlashNotice(message: string): void;
+showFlashNotice(message: string, options?: {error?: boolean}): void;
 ```
 
 Presents a flash message in the Shopify admin and replaces the [`ShopifyApp.flashNotice`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-flashnotice-message) and [`ShopifyApp.flashError`](https://help.shopify.com/api/sdks/shopify-apps/embedded-app-sdk/methods#shopifyapp-flasherror-message) methods in the EASDK.
