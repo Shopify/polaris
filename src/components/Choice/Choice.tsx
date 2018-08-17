@@ -11,6 +11,8 @@ export interface Props {
   id: string;
   /**	Label for the choice */
   label: React.ReactNode;
+  /** Whether the associated form control is disabled */
+  disabled?: Boolean;
   /** Display an error message */
   error?: Error;
   /** Visually hide the label */
@@ -24,6 +26,7 @@ export interface Props {
 export default function Choice({
   id,
   label,
+  disabled,
   error,
   children,
   labelHidden,
@@ -32,6 +35,7 @@ export default function Choice({
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
+    disabled && styles.disabled,
   );
 
   const labelMarkup = (

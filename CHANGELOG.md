@@ -38,6 +38,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `page-when-not-max-width` mixin to trigger when `Page` is resized horizontally
 - Added support for select error messages to be optional ([#1941](https://github.com/Shopify/polaris-react/pull/1941))
 - Added support for text field error messages to be optional ([#1940](https://github.com/Shopify/polaris-react/pull/1941))
+- Added a `disabled` prop to the Choice component. Checkbox and Radio labels are now styled to reflect their disabled state ([#1920](https://github.com/Shopify/polaris-react/pull/1956))
+- Support Windows High Contrast mode in the Select, Checkbox and Radio components ([#1920](https://github.com/Shopify/polaris-react/pull/1956))
 
 ### Bug fixes
 

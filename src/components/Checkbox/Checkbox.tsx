@@ -98,6 +98,7 @@ function Checkbox({
       labelHidden={labelHidden}
       helpText={helpText}
       error={error}
+      disabled={disabled}
     >
       <span className={wrapperClassName}>
         <input

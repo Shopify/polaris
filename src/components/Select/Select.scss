@@ -14,9 +14,12 @@ $stacking-order: (
 }
 
 .disabled {
-  .Content,
-  .InlineLabel {
+  .Content {
     color: color('ink', 'lightest');
+  }
+
+  .InlineLabel {
+    color: inherit;
   }
 
   .Icon {
@@ -112,6 +115,59 @@ $stacking-order: (
   &:focus {
     ~ .Backdrop {
       @include control-backdrop(focused);
+    }
+  }
+}
+
+@media (-ms-high-contrast: active) {
+  .Content {
+    color: ms-high-contrast-color('text');
+    -ms-high-contrast-adjust: none;
+  }
+
+  .InlineLabel {
+    color: inherit;
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  .SelectedOption {
+    color: inherit;
+  }
+
+  .Icon {
+    @include recolor-icon(ms-high-contrast-color('button-text'));
+  }
+
+  .Backdrop {
+    &::after {
+      // Remove the dotted focus outline from the control-backdrop mixin.
+      display: none;
+    }
+  }
+
+  .Input:focus {
+    ~ .Content {
+      color: ms-high-contrast-color('selected-text');
+    }
+
+    ~ .Backdrop {
+      // Align with the native styling for this element, which differs from
+      // what the control-backdrop mixin provides.
+      background-color: ms-high-contrast-color('selected-text-background');
+    }
+  }
+
+  .disabled {
+    .Content {
+      color: ms-high-contrast-color('disabled-text');
+    }
+
+    .Icon {
+      @include recolor-icon(ms-high-contrast-color('disabled-text'));
+      opacity: 1;
     }
   }
 }
