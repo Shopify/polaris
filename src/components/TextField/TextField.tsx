@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
+import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Resizer, Spinner} from './components';
@@ -59,7 +59,7 @@ export interface BaseProps {
   /** Allow for multiple lines of input */
   multiline?: boolean | number;
   /** Error to display beneath the label */
-  error?: Error;
+  error?: Error | boolean;
   /** An element connected to the right of the input */
   connectedRight?: React.ReactNode;
   /** An element connected to the left of the input */
@@ -223,7 +223,7 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const describedBy: string[] = [];
     if (error) {
-      describedBy.push(errorID(id));
+      describedBy.push(`${id}Error`);
     }
     if (helpText) {
       describedBy.push(helpTextID(id));

@@ -5,7 +5,7 @@ import {Action, Error} from '../../types';
 
 import {buttonFrom} from '../Button';
 import Label, {Props as LabelProps, labelID} from '../Label';
-import Icon from '../Icon';
+import InlineError from '../InlineError';
 
 import * as styles from './Labelled.scss';
 
@@ -17,7 +17,7 @@ export interface Props {
   /** Text for the label */
   label: string;
   /** Error to display beneath the label */
-  error?: Error;
+  error?: Error | boolean;
   /** An action */
   action?: Action;
   /** Additional hint text to display */
@@ -48,14 +48,12 @@ export default function Labelled({
     </div>
   ) : null;
 
-  const errorMarkup = error && (
-    <div id={errorID(id)} className={styles.Error}>
-      <div className={styles.ErrorIcon}>
-        <Icon source="alert" />
+  const errorMarkup = error &&
+    typeof error !== 'boolean' && (
+      <div className={styles.Error}>
+        <InlineError message={error} fieldID={id} />
       </div>
-      {error}
-    </div>
-  );
+    );
 
   const labelMarkup = label ? (
     <div className={styles.LabelWrapper}>

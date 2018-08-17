@@ -36,6 +36,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added support for option list `options` descriptors to accept a block for the `label` property ([#1920](https://github.com/Shopify/polaris-react/pull/1920))
 - Added `$page-max-width` variable to capture `Page` calculated `max-width` value
 - Added `page-when-not-max-width` mixin to trigger when `Page` is resized horizontally
+- Added support for select error messages to be optional ([#1941](https://github.com/Shopify/polaris-react/pull/1941))
+- Added support for text field error messages to be optional ([#1940](https://github.com/Shopify/polaris-react/pull/1941))
 
 ### Bug fixes
 
@@ -60,6 +62,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 - Added examples for iOS and Android badge ([#1892](https://github.com/Shopify/polaris-react/pull/1892))
 - Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
+
+### New components
+
+#### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
+
+Use inline errors to describe custom form inputs or form groups when invalid.
 
 ## 2.5.0 - 2018-07-20
 

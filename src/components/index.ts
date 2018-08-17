@@ -117,6 +117,8 @@ export {default as Icon, Props as IconProps} from './Icon';
 
 export {default as Image, Props as ImageProps} from './Image';
 
+export {default as InlineError, Props as InlineErrorProps} from './InlineError';
+
 export {default as KeyboardKey, Props as KeyboardKeyProps} from './KeyboardKey';
 
 export {
