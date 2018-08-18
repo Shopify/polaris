@@ -176,9 +176,9 @@
   dependencies:
     serialize-javascript "^1.5.0"
 
-"@shopify/react-utilities@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-2.0.2.tgz#812c436b4b4ef95f89106faf2cb3445bdca7748f"
+"@shopify/react-utilities@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-2.0.3.tgz#424421e7202b402ec7934c137b5b7e035fbeb33c"
   dependencies:
     "@shopify/javascript-utilities" "^2.1.0"
     "@types/classnames" "^2.2.3"

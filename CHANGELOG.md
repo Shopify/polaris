@@ -56,6 +56,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Fixed text alignment of multiline option list option text [#1905](https://github.com/Shopify/polaris-react/pull/1905)
 - Fixed an issue where the stack component would render incorrectly nested items [#1924](https://github.com/Shopify/polaris-react/pull/1924)
 - Fixed spacing above annotated sections on smaller screens [#1972](https://github.com/Shopify/polaris-react/pull/1972)
+- Fixed an issue that cause problems for some build tools [#1978](https://github.com/Shopify/polaris-react/pull/1978)
 
 ### Documentation
 
