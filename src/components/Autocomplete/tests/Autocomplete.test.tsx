@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import Autocomplete from '..';
 import {ComboBox} from '../components';
 import Spinner from '../../Spinner';
@@ -16,7 +17,7 @@ describe('<Autocomplete/>', () => {
         options={options}
         selected={[]}
         textField={renderTextField()}
-        onSelect={emptyFunction}
+        onSelect={noop}
       />,
     );
     expect(autocomplete.find(Autocomplete).exists()).toBe(true);
@@ -28,7 +29,7 @@ describe('<Autocomplete/>', () => {
         options={options}
         selected={[]}
         textField={renderTextField()}
-        onSelect={emptyFunction}
+        onSelect={noop}
         loading
       />,
     );
@@ -38,9 +39,5 @@ describe('<Autocomplete/>', () => {
 });
 
 function renderTextField() {
-  return <ComboBox.TextField label="" onChange={emptyFunction} />;
-}
-
-function emptyFunction() {
-  return {};
+  return <ComboBox.TextField label="" onChange={noop} />;
 }

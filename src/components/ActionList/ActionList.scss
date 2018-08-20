@@ -45,6 +45,10 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   cursor: pointer;
   border-radius: 0;
 
+  &.active {
+    @include state(active);
+  }
+
   &:active {
     @include state(active);
 
@@ -118,10 +122,6 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
   &::-moz-focus-inner {
     border: none;
   }
-}
-
-.active {
-  @include state(active);
 }
 
 .Content {

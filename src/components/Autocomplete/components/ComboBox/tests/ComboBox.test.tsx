@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import ComboBox from '..';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
 
@@ -9,6 +10,13 @@ describe('<ComboBox/>', () => {
     {value: 'pepperoni_pizza', label: 'Pepperoni Pizza'},
   ];
 
+  const action = [
+    {
+      content: 'Add tag',
+      onAction: noop,
+    },
+  ];
+
   describe('textField', () => {
     it('renders a custom given input', () => {
       const comboBox = mountWithAppProvider(
@@ -16,7 +24,7 @@ describe('<ComboBox/>', () => {
           options={options}
           selected={[]}
           textField={<input type="text" />}
-          onSelect={emptyFunction}
+          onSelect={noop}
         />,
       );
       expect(comboBox.find('input').exists()).toBe(true);
@@ -31,7 +39,7 @@ describe('<ComboBox/>', () => {
           options={options}
           selected={[]}
           textField={renderTextField()}
-          onSelect={emptyFunction}
+          onSelect={noop}
           allowMultiple={false}
         />,
       );
@@ -45,7 +53,7 @@ describe('<ComboBox/>', () => {
           options={options}
           selected={[]}
           textField={renderTextField()}
-          onSelect={emptyFunction}
+          onSelect={noop}
           allowMultiple
         />,
       );
@@ -61,7 +69,7 @@ describe('<ComboBox/>', () => {
           options={options}
           selected={[]}
           textField={renderTextField()}
-          onSelect={emptyFunction}
+          onSelect={noop}
           contentBefore={renderNodeWithId()}
         />,
       );
@@ -75,7 +83,7 @@ describe('<ComboBox/>', () => {
           options={options}
           selected={[]}
           textField={renderTextField()}
-          onSelect={emptyFunction}
+          onSelect={noop}
           contentAfter={renderNodeWithId()}
         />,
       );
@@ -122,14 +130,91 @@ describe('<ComboBox/>', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('ids', () => {
+    it('passes an id to the options in OptionList', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          id="TestId"
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+        />,
+      );
+      comboBox.simulate('click');
+      expect(
+        comboBox
+          .find('button')
+          .at(0)
+          .prop('id'),
+      ).toBe('TestId-0');
+    });
+
+    it('passes an id to the actions in ActionList', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          id="TestId"
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsBefore={action}
+        />,
+      );
+      comboBox.simulate('click');
+      expect(
+        comboBox
+          .find('button')
+          .at(0)
+          .prop('id'),
+      ).toBe('TestId-0');
+    });
+  });
+
+  describe('actions', () => {
+    it('renders an action in actionsBefore', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsBefore={action}
+        />,
+      );
+      comboBox.simulate('click');
+      expect(
+        comboBox
+          .find('button')
+          .at(0)
+          .text(),
+      ).toBe('Add tag');
+    });
+
+    it('renders an action in actionsAfter', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsAfter={action}
+        />,
+      );
+      comboBox.simulate('click');
+      expect(
+        comboBox
+          .find('button')
+          .at(3)
+          .text(),
+      ).toBe('Add tag');
+    });
+  });
 });
 
 function renderTextField() {
-  return <ComboBox.TextField label="" onChange={emptyFunction} />;
-}
-
-function emptyFunction() {
-  return {};
+  return <ComboBox.TextField label="" onChange={noop} />;
 }
 
 function renderNodeWithId() {
