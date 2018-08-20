@@ -57,10 +57,12 @@ const getUniqueID = createUniqueIDFactory('RangeSlider');
 const cssVarPrefix = '--Polaris-RangeSlider-';
 
 export class RangeSlider extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(props: CombinedProps, state: State) {
-    return {
-      id: props.id || state.id,
-    };
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
+    return nextProps.id != null && nextProps.id !== prevState.id
+      ? {
+          id: nextProps.id || prevState.id,
+        }
+      : null;
   }
 
   constructor(props: CombinedProps) {

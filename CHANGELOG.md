@@ -17,6 +17,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added `code` as an accepted `variation` of the text style component to provide support for accessible markup and styling of inline code snippets and code-like text ([#1889](https://github.com/Shopify/polaris-react/pull/1889))
 - Added new `border-width` SCSS function ([#1953](https://github.com/Shopify/polaris-react/pull/1953))
 - Added support for `fullWidth` and `connectedTop` props on `ButtonGroup` ([#1943](https://github.com/Shopify/polaris-react/pull/1943))
+- Added `label` prop to `DropZone` for better accessibility ([#1950](https://github.com/Shopify/polaris-react/pull/1950))
 - Added support for radio buttons to accept a block as a `label` ([#1880](https://github.com/Shopify/polaris-react/pull/1800))
 - Added a `singleColumn` prop to the skeleton page component ([#1912](https://github.com/Shopify/polaris-react/pull/1912))
 - Updated the transition on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
