@@ -54,6 +54,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Fixed unintended form submittal by action list items enclosed in a `form` ([#1865](https://github.com/Shopify/polaris-react/pull/1865) (thanks [andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/391)))
 - Fixed text alignment of multiline option list option text [#1905](https://github.com/Shopify/polaris-react/pull/1905)
 - Fixed an issue where the stack component would render incorrectly nested items [#1924](https://github.com/Shopify/polaris-react/pull/1924)
+- Fixed spacing above annotated sections on smaller screens [#1972](https://github.com/Shopify/polaris-react/pull/1972)
 
 ### Documentation
 
