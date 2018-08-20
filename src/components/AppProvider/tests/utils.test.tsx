@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {translate, createPolarisContext} from '../utils';
+import {noop} from '@shopify/javascript-utilities/other';
+import {translate, createAppProviderContext} from '../utils';
 
 import {
   PrimitiveReplacementDictionary,
@@ -48,15 +49,17 @@ describe('translate()', () => {
   });
 });
 
-describe('createPolarisContext()', () => {
+describe('createAppProviderContext()', () => {
   it('returns the right context without properties', () => {
-    const context = createPolarisContext();
+    const context = createAppProviderContext();
     const mockContext = {
       polaris: {
         intl: new Intl(undefined),
         link: new Link(),
         stickyManager: new StickyManager(),
         scrollLockManager: new ScrollLockManager(),
+        subscribe: noop,
+        unsubscribe: noop,
       },
       easdk: undefined,
     };
@@ -77,7 +80,7 @@ describe('createPolarisContext()', () => {
     };
     const stickyManager = new StickyManager();
     const scrollLockManager = new ScrollLockManager();
-    const context = createPolarisContext({
+    const context = createAppProviderContext({
       i18n,
       linkComponent: CustomLinkComponent,
       stickyManager,
@@ -89,7 +92,10 @@ describe('createPolarisContext()', () => {
         link: new Link(CustomLinkComponent),
         stickyManager,
         scrollLockManager,
+        subscribe: noop,
+        unsubscribe: noop,
       },
+      easdk: undefined,
     };
 
     expect(context).toEqual(mockContext);

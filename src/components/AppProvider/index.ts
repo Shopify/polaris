@@ -1,9 +1,10 @@
 import AppProvider from './AppProvider';
 
-export {Props} from './AppProvider';
+export {Props, Context} from './AppProvider';
 export {
   translate,
   withAppProvider,
+  createAppProviderContext,
   createPolarisContext,
   withSticky,
 } from './utils';

@@ -12,7 +12,7 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 
 import {
-  createPolarisContext,
+  createAppProviderContext,
   polarisAppProviderContextTypes,
 } from '../../src/components/AppProvider';
 import {createThemeContext} from '../../src/components/ThemeProvider';
@@ -142,7 +142,7 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 function mergeAppProviderOptions(options: any = {}): any {
-  const context = {...createPolarisContext(), ...createThemeContext()};
+  const context = {...createAppProviderContext(), ...createThemeContext()};
 
   return merge(
     {},
@@ -169,7 +169,7 @@ export function shallowWithAppProvider<P>(
 }
 
 export function createPolarisProps() {
-  const {polaris, easdk} = createPolarisContext();
+  const {polaris, easdk} = createAppProviderContext();
   const polarisContext = {...polaris, easdk, ...createThemeContext()};
   return {polaris: polarisContext};
 }

@@ -16,12 +16,13 @@ import {
 import {compose} from '../../../utilities/compose';
 import {setRootProperty} from '../../../utilities/setRootProperty';
 
+import {Context as ThemeProviderContext} from '../ThemeProvider';
 import {
   Theme,
-  ThemeContext,
   ColorsToParse,
   ThemeVariant,
   ThemeColors,
+  ThemeContext,
 } from '../types';
 
 export function setColors(theme: Theme | undefined, node: Element | null) {
@@ -149,12 +150,11 @@ function parseColors(
   }
 }
 
-export function createThemeContext(
-  theme: ThemeContext = {
-    logo: null,
-    subscribe: noop,
-    unsubscribe: noop,
-  },
-): {theme: ThemeContext} {
-  return {theme};
+export function createThemeContext(theme?: ThemeContext): ThemeProviderContext {
+  if (!theme) {
+    return {theme: {logo: null, subscribe: noop, unsubscribe: noop}};
+  }
+
+  const {logo = null, subscribe = noop, unsubscribe = noop} = theme;
+  return {theme: {logo, subscribe, unsubscribe}};
 }

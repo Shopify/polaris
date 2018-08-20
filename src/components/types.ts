@@ -1,5 +1,14 @@
 import * as PropTypes from 'prop-types';
-import {ContextualSaveBarProps, ToastProps} from '../components';
+import {
+  ContextualSaveBarProps,
+  ToastProps,
+  AppProviderContext,
+  ThemeProviderContext,
+} from '../components';
+
+export interface PolarisContext
+  extends AppProviderContext,
+    ThemeProviderContext {}
 
 export interface FrameManager {
   showToast(toast: {id: string} & ToastProps): void;

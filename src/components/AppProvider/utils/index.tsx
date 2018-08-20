@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 import replace from 'lodash/replace';
@@ -11,8 +12,9 @@ import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
   WithAppProviderProps,
-  CreatePolarisContext,
+  CreateAppProviderContext,
 } from '../types';
+import {PolarisContext} from '../../types';
 
 import Intl from '../Intl';
 import Link from '../Link';
@@ -20,6 +22,10 @@ import {Context} from '../AppProvider';
 import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
+import {
+  createThemeContext,
+  ThemeContext as CreateThemeContext,
+} from '../../ThemeProvider';
 
 import packageJSON from '../../../../package.json';
 
@@ -186,7 +192,7 @@ export function withSticky() {
   };
 }
 
-export function createPolarisContext({
+export function createAppProviderContext({
   i18n,
   linkComponent,
   apiKey,
@@ -195,9 +201,9 @@ export function createPolarisContext({
   debug,
   stickyManager,
   scrollLockManager,
-  subscribe,
-  unsubscribe,
-}: CreatePolarisContext = {}): Context {
+  subscribe = noop,
+  unsubscribe = noop,
+}: CreateAppProviderContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const easdk =
@@ -224,4 +230,36 @@ export function createPolarisContext({
     },
     easdk,
   };
+}
+
+export function createPolarisContext(): PolarisContext;
+export function createPolarisContext(
+  contextOne: CreateAppProviderContext | CreateThemeContext,
+): PolarisContext;
+export function createPolarisContext(
+  contextOne: CreateAppProviderContext | CreateThemeContext,
+  contextTwo: CreateAppProviderContext | CreateThemeContext,
+): PolarisContext;
+export function createPolarisContext(
+  contextOne?: CreateAppProviderContext | CreateThemeContext,
+  contextTwo?: CreateAppProviderContext | CreateThemeContext,
+) {
+  let appProviderContext: CreateAppProviderContext | undefined;
+  let themeContext: CreateThemeContext | undefined;
+  if (contextOne && 'logo' in contextOne) {
+    themeContext = contextOne as CreateThemeContext;
+    appProviderContext = contextTwo;
+  } else {
+    appProviderContext = contextOne;
+    themeContext = contextTwo as CreateThemeContext | undefined;
+  }
+
+  const appProvider = appProviderContext
+    ? createAppProviderContext(appProviderContext)
+    : createAppProviderContext();
+  const theme = themeContext
+    ? createThemeContext(themeContext)
+    : createThemeContext();
+
+  return {...appProvider, ...theme};
 }
