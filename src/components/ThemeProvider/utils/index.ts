@@ -152,9 +152,9 @@ function parseColors(
 
 export function createThemeContext(theme?: ThemeContext): ThemeProviderContext {
   if (!theme) {
-    return {theme: {logo: null, subscribe: noop, unsubscribe: noop}};
+    return {polarisTheme: {logo: null, subscribe: noop, unsubscribe: noop}};
   }
 
   const {logo = null, subscribe = noop, unsubscribe = noop} = theme;
-  return {theme: {logo, subscribe, unsubscribe}};
+  return {polarisTheme: {logo, subscribe, unsubscribe}};
 }

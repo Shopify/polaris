@@ -85,7 +85,7 @@ export function withAppProvider<OwnProps>() {
       componentDidMount() {
         const {
           polaris: {subscribe: subscribeToPolaris},
-          theme: {subscribe: subscribeToTheme},
+          polarisTheme: {subscribe: subscribeToTheme},
         } = this.context;
 
         if (subscribeToPolaris) {
@@ -100,7 +100,7 @@ export function withAppProvider<OwnProps>() {
       componentWillUnmount() {
         const {
           polaris: {unsubscribe: unsubscribeToPolaris},
-          theme: {unsubscribe: unsubscribeToTheme},
+          polarisTheme: {unsubscribe: unsubscribeToTheme},
         } = this.context;
 
         if (unsubscribeToPolaris) {
@@ -113,8 +113,8 @@ export function withAppProvider<OwnProps>() {
       }
 
       render() {
-        const {polaris, easdk, theme} = this.context;
-        const polarisContext = {...polaris, easdk, theme};
+        const {polaris, easdk, polarisTheme} = this.context;
+        const polarisContext = {...polaris, easdk, theme: polarisTheme};
 
         if (!polaris) {
           throw new Error(

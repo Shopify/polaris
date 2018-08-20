@@ -19,7 +19,7 @@ describe('<ThemeProvider />', () => {
 
   it('passes theme into context', () => {
     const context = {
-      theme: {
+      polarisTheme: {
         logo: {
           width: 104,
           topBarSource:
@@ -62,8 +62,8 @@ describe('<ThemeProvider />', () => {
       Child,
     );
 
-    const {logo, subscribe, unsubscribe} = child.context.theme;
-    expect(logo).toEqual(context.theme.logo);
+    const {logo, subscribe, unsubscribe} = child.context.polarisTheme;
+    expect(logo).toEqual(context.polarisTheme.logo);
     expect(typeof subscribe === 'function').toBe(true);
     expect(typeof unsubscribe === 'function').toBe(true);
   });

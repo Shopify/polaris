@@ -8,14 +8,14 @@ import EASDK from './EASDK';
 import StickyManager from './StickyManager';
 import ScrollLockManager from './ScrollLockManager';
 import {
-  THEME_CONTEXT_TYPES as theme,
-  Context as ThemeProviderContext,
+  THEME_CONTEXT_TYPES as polarisTheme,
+  ThemeContext,
 } from '../ThemeProvider';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
   easdk: PropTypes.any,
-  ...theme,
+  ...polarisTheme,
 };
 
 export interface WithAppProviderProps {
@@ -25,7 +25,7 @@ export interface WithAppProviderProps {
     easdk: EASDK;
     stickyManager: StickyManager;
     scrollLockManager: ScrollLockManager;
-    theme: ThemeProviderContext['theme'];
+    theme: ThemeContext;
     subscribe(callback: () => void): void;
     unsubscribe(callback: () => void): void;
   };

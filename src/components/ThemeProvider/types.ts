@@ -42,4 +42,4 @@ export interface ThemeContext {
 
 export type ThemeVariant = 'light' | 'dark';
 
-export const THEME_CONTEXT_TYPES = {theme: PropTypes.any};
+export const THEME_CONTEXT_TYPES = {polarisTheme: PropTypes.any};
