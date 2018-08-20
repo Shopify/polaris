@@ -105,6 +105,10 @@ export interface ActionListItemDescriptor
   image?: string;
   /**  Add an ellipsis suffix to action content */
   ellipsis?: boolean;
+  /** Whether the action is active or not */
+  active?: boolean;
+  /** Defines a role for the action */
+  role?: string;
 }
 
 export interface ActionListSection {

@@ -92,7 +92,7 @@ export interface BaseProps {
   ariaOwns?: string;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
-  /** Indicates the id of a related component's visually focused element ot the input */
+  /** Indicates the id of a related component's visually focused element to the input */
   ariaActiveDescendant?: string;
   /** Indicates what kind of user input completion suggestions are provided */
   ariaAutocomplete?: string;

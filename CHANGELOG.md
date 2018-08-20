@@ -11,6 +11,12 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added a `test:coverage` script to gather and display test coverage results ([#1906](https://github.com/Shopify/polaris-react/pull/1906))
 - Added Codecov test coverage checks to pull requests ([#1917](https://github.com/Shopify/polaris-react/pull/1917))
 
+### New components
+
+#### [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete)
+
+Use the autocomplete component to present a searchable and selectable list of options attached to an input field.
+
 ### Enhancements
 
 - Added support for `FilterType.DateSelector` in `ResourceList` component ([#1898](https://github.com/Shopify/polaris-react/pull/1898))

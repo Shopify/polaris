@@ -14,6 +14,11 @@ export {
   WithAppProviderProps,
 } from './AppProvider';
 
+export {
+  default as Autocomplete,
+  Props as AutcompleteProps,
+} from './Autocomplete';
+
 export {default as Avatar, Props as AvatarProps} from './Avatar';
 
 export {default as Badge, Props as BadgeProps} from './Badge';

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
 import {ActionListItemDescriptor} from '../../../../types';
+import Scrollable from '../../../Scrollable';
 import Icon from '../../../Icon';
 import UnstyledLink from '../../../UnstyledLink';
 import Badge from '../../../Badge';
@@ -11,6 +12,7 @@ import * as styles from '../../ActionList.scss';
 export type Props = ActionListItemDescriptor;
 
 export default function Item({
+  id,
   badge,
   content,
   url,
@@ -21,11 +23,14 @@ export default function Item({
   external,
   destructive,
   ellipsis,
+  active,
+  role,
 }: Props) {
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
     destructive && styles.destructive,
+    active && styles.active,
   );
 
   let imageElement = null;
@@ -68,17 +73,21 @@ export default function Item({
     </div>
   );
 
+  const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
+
   const control = url ? (
     <UnstyledLink
+      id={id}
       url={url}
       onClick={onAction}
-      className={styles.Item}
+      className={className}
       external={external}
     >
       {contentElement}
     </UnstyledLink>
   ) : (
     <button
+      id={id}
       onClick={onAction}
       className={className}
       disabled={disabled}
@@ -88,5 +97,10 @@ export default function Item({
     </button>
   );
 
-  return <li>{control}</li>;
+  return (
+    <li role={role} aria-selected={active}>
+      {scrollMarkup}
+      {control}
+    </li>
+  );
 }
