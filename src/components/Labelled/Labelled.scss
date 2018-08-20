@@ -7,6 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .HelpText {
@@ -17,4 +19,6 @@
 
 .Error {
   margin-top: spacing(extra-tight);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
