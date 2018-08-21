@@ -4,13 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 2.6.0 - 2018-08-21
 
 ### Development workflow
 
 - Added a `test:coverage` script to gather and display test coverage results ([#1906](https://github.com/Shopify/polaris-react/pull/1906))
 - Added Codecov test coverage checks to pull requests ([#1917](https://github.com/Shopify/polaris-react/pull/1917))
-- Added automated a11y testing to CI (https://github.com/Shopify/polaris-react/pull/1921)
+- Added automated a11y testing to CI ([#1921](https://github.com/Shopify/polaris-react/pull/1921))
 
 ### Enhancements
 
@@ -28,20 +30,19 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Added an `iFrameName` prop to the modal component to support named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
 - Added a `ScrollTo` subcomponent to the scrollable component to support scrolling to a child node programmatically ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
 - Added support for the button component to accept an array of strings as children ([#1817](https://github.com/Shopify/polaris-react/pull/1817))
-- Changed the primary focus target of an activated popover from the first focusable child to the popover itself ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
+- Changed the primary focus target of an activated popover from the first focusable child to the popover itself ([#1589](https://github.com/Shopify/polaris-react/pull/1589))
 - Added an improved error message when the child of an embedded alert component is not a string ([#1803](https://github.com/Shopify/polaris-react/pull/1803))(thanks [@superwhykz](https://github.com/superwhykz) for the [original issue](https://github.com/Shopify/polaris/issues/378))
-- Added a minimum width to tab items to improve touch target sizing and account for smaller tab titles
+- Added a minimum width to tab items to improve touch target sizing and account for smaller tab titles ([#1901](https://github.com/Shopify/polaris-react/pull/1901))
 - Added support for additional accessibility attributes to the text field and option list components ([#1879](https://github.com/Shopify/polaris-react/pull/1879))
-- Added support for option lists with avatars, icons, and thumbnails when `options` descriptors have a `media` property ([#1895](https://github.com/Shopify/polaris-react/pull/1895))
+- Added support for option list with avatars, icons, and thumbnails when `options` descriptors have a `media` property ([#1895](https://github.com/Shopify/polaris-react/pull/1895))
 - Added support for destructive action list items ([#1860](https://github.com/Shopify/polaris-react/pull/1860))
 - Added support for option list `options` descriptors to accept a block for the `label` property ([#1920](https://github.com/Shopify/polaris-react/pull/1920))
-- Added `$page-max-width` variable to capture `Page` calculated `max-width` value
-- Added `page-when-not-max-width` mixin to trigger when `Page` is resized horizontally
+- Added `$page-max-width` variable to capture page calculated `max-width` value and `page-when-not-max-width` mixin to trigger when page is resized horizontally ([#1886](https://github.com/Shopify/polaris-react/pull/1886))
 - Added support for select error messages to be optional ([#1941](https://github.com/Shopify/polaris-react/pull/1941))
-- Added support for text field error messages to be optional ([#1940](https://github.com/Shopify/polaris-react/pull/1941))
-- Added a `disabled` prop to the Choice component. Checkbox and Radio labels are now styled to reflect their disabled state ([#1920](https://github.com/Shopify/polaris-react/pull/1956))
-- Support Windows High Contrast mode in the Select, Checkbox and Radio components ([#1920](https://github.com/Shopify/polaris-react/pull/1956))
-- Updated the breadcrumbs component to support the `CallbackAction` type as a prop ([#1966](https://github.com/Shopify/polaris-react/pull/1966))(thanks [@dylan](https://github.com/dylan) for the [current issue](https://github.com/Shopify/polaris/issues/278) and everyone who identified this.) 
+- Updated the breadcrumbs component to support the `CallbackAction` type as a prop ([#1966](https://github.com/Shopify/polaris-react/pull/1966))(thanks [@dylan](https://github.com/dylan) for the [current issue](https://github.com/Shopify/polaris/issues/278) and everyone who identified this.)
+- Added support for text field error messages to be optional ([#1940](https://github.com/Shopify/polaris-react/pull/1940))
+- Added a `disabled` prop to the choice component. Checkbox and radio labels are now styled to reflect their disabled state ([#1956](https://github.com/Shopify/polaris-react/pull/1956))
+- Added support for Windows High Contrast mode in the select, checkbox and radio components ([#1956](https://github.com/Shopify/polaris-react/pull/1956))
 
 ### Bug fixes
 
@@ -121,11 +122,11 @@ Use inline errors to describe custom form inputs or form groups when invalid.
 
 ### Bug fixes
 
-- Resolve issue with RangeSlider not accepting `0` as a `max` value ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
-- Slightly reduce RangeSlider's `prefix/suffix` spacing ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+- Resolve issue with range slider component not accepting `0` as a `max` value ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
+- Slightly reduce range slider's `prefix/suffix` spacing ([#1690](https://github.com/Shopify/polaris-react/pull/1690))
 - Fixed spacing for prefix and suffix on the text field component ([#1698](https://github.com/Shopify/polaris-react/pull/1698))
 - Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights ([#1619](https://github.com/Shopify/polaris-react/pull/1619)) (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
-- Fixed DatePicker month styling for previous years ([#1657](https://github.com/Shopify/polaris-react/pull/1658))
+- Fixed DatePicker month styling for previous years ([#1658](https://github.com/Shopify/polaris-react/pull/1658))
 
 ## 2.3.0 - 2018-07-03
 
@@ -141,8 +142,8 @@ Use Option list to present a group of selectable items outside of the context of
 
 ### Enhancements
 
-- Added `prefix` and `suffix` props to `RangeSlider` for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
-- Added testing documentation and examples in AppProvider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
+- Added `prefix` and `suffix` props to range slider for better layout control ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
+- Added testing documentation and examples in app provider ([#1556](https://github.com/Shopify/polaris-react/pull/1556))
 - Performance: optimized avatar SVG files ([#1662](https://github.com/Shopify/polaris-react/pull/1662))
 - Updated `yarn run optimize` to add new line at the end of SVG files ([#1685](https://github.com/Shopify/polaris-react/pull/1685))
 - Added a more compact variant of `Select`, with the form label appearing inside the control) ([#1576](https://github.com/Shopify/polaris-react/pull/1576))
@@ -151,7 +152,7 @@ Use Option list to present a group of selectable items outside of the context of
 
 - Adjusted padding on text field to work with Chrome’s autofill ([#1415](https://github.com/Shopify/polaris-react/pull/1415))
 - Fixed a regression where the version of Polaris wasn’t globally available anymore ([#1555](https://github.com/Shopify/polaris-react/pull/1555))
-- Updated the interaction state visuals for ActionList ([#1585](https://github.com/Shopify/polaris-react/pull/1585))
+- Updated the interaction state visuals for action list ([#1585](https://github.com/Shopify/polaris-react/pull/1585))
 - Fixed z-index on resource list header with sorting options ([#1629](https://github.com/Shopify/polaris-react/pull/1629)) (thanks [@janklimo](https://github.com/janklimo) for the [original issue](https://github.com/Shopify/polaris/issues/355))
 - Fixed an issue where Radio Buttons were not focusable in Safari ([#1626](https://github.com/Shopify/polaris-react/pull/1626))
 - Fixed spacing for annotated section descriptions ([#1604](https://github.com/Shopify/polaris-react/pull/1604))
