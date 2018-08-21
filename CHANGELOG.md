@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Development workflow
+
+- Moved `pa11y` and `object-hash` from dependencies to devDependencies ([#2003](https://github.com/Shopify/polaris-react/pull/2003))
 
 ## 2.6.0 - 2018-08-21
 
