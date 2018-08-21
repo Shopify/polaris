@@ -4,6 +4,10 @@
 
 Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
 
+## App development
+
+For more information about creating apps for the Shopify App Store, take a look at the [app development documentation](https://developers.shopify.com/app-development).
+
 ## Using the React components
 
 While we do offer a CSS-only version, **we strongly recommend using the React versions of our components**. It’s the version that we’ll be using at Shopify. It allows for rich, complex components like Tabs and Popovers, and will not have as many breaking changes as the CSS-only version.
