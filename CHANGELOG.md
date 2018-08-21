@@ -24,7 +24,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 - Updated the transition on large modals to match the default transition ([#1852](https://github.com/Shopify/polaris-react/pull/1852))
 - Added `nextKeys`, `previousKeys`, `nextTooltip`, and `previousTooltip` props to the pagination component to support keypress handling and tooltips in pagination buttons. ([#1696](https://github.com/Shopify/polaris-react/pull/1696))
 - Added examples to the layout component documentation for two and three column grid layouts ([#1866](https://github.com/Shopify/polaris-react/pull/1866))
-- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#1729](https://github.com/Shopify/polaris-react/pull/1729))
 - Added an export for the `Progress` type to support downstream typechecking of the badge component `progress` prop ([#1821](https://github.com/Shopify/polaris-react/pull/1821))
 - Added an `iFrameName` prop to the modal component to support named iframe children ([#1822](https://github.com/Shopify/polaris-react/pull/1822))
 - Added a `ScrollTo` subcomponent to the scrollable component to support scrolling to a child node programmatically ([#1816](https://github.com/Shopify/polaris-react/pull/1816))
