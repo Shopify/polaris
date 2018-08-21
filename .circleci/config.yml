@@ -56,4 +56,3 @@ workflows:
     jobs:
       - check
       - percy
-      - a11y
