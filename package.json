@@ -68,6 +68,7 @@
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
     "tophat": "yarn run copy-polaris-tokens && node ./tophat/index.js --watch",
     "test:percy": "node ./tophat/snapshots.js",
+    "test:a11y": "node ./scripts/pa11y.js",
     "start": "node ./tophat/index.js",
     "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets"
   },
@@ -213,6 +214,8 @@
     "hoist-non-react-statics": "^2.5.0",
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.3.5",
+    "object-hash": "^1.3.0",
+    "pa11y": "^5.0.4",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.3.0",
     "tslib": "^1.8.0"

@@ -33,6 +33,22 @@ jobs:
             - node_modules
       - run: yarn run heroku-postbuild
       - run: yarn start & sleep 20; yarn run test:percy
+  a11y:
+    docker:
+      - image: circleci/node:8.11.2-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
+          # When these files are changed, this key will fail and a clean install will happen.
+          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+      - run: yarn
+      - save_cache:
+          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          paths:
+            - node_modules
+      - run: yarn run heroku-postbuild
+      - run: yarn start & sleep 20; yarn run test:a11y
 
 workflows:
   version: 2
@@ -40,3 +56,4 @@ workflows:
     jobs:
       - check
       - percy
+      - a11y
