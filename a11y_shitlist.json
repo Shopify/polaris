@@ -75,6 +75,16 @@
       "selector": "#Banner1Content > p > button"
     }
   ],
+  "http://localhost:3000/callout-card/1": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Learn more about customizing ch...</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > div:nth-child(3) > div > div:nth-child(2) > button > span > span"
+    }
+  ],
   "http://localhost:3000/button/2": [
     {
       "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
@@ -85,14 +95,22 @@
       "selector": "#app > button > span > span"
     }
   ],
-  "http://localhost:3000/callout-card/1": [
+  "http://localhost:3000/button-group/2": [
     {
-      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
-      "context": "<span>Learn more about customizing ch...</span>",
-      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > div > div:nth-child(3) > div > div:nth-child(2) > button > span > span"
+      "selector": "#DropZone1"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/card/1": [
@@ -108,128 +126,126 @@
   "http://localhost:3000/drop-zone/0": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > span > input"
+      "selector": "#DropZone1"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > span > input"
-    }
-  ],
-  "http://localhost:3000/drop-zone/1": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > span > input"
-    },
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > span > input"
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/drop-zone/2": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input accept=\"image/*\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" accept=\"image/*\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > span > input"
+      "selector": "#DropZone1"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input accept=\"image/*\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" accept=\"image/*\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > span > input"
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/drop-zone/3": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div:nth-child(2) > div > span > input"
+      "selector": "#DropZone1"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div:nth-child(2) > div > span > input"
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/drop-zone/4": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input accept=\"image/svg+xml\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" accept=\"image/svg+xml\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > span > input"
+      "selector": "#DropZone1"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input accept=\"image/svg+xml\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" accept=\"image/svg+xml\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > span > input"
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/drop-zone/5": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone2\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > div > div > span > input"
+      "selector": "#DropZone2"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone2\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > div > div > div > span > input"
+      "selector": "#DropZone2"
     },
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > span > input"
+      "selector": "#DropZone1"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > span > input"
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/drop-zone/6": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#DropZone1"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#DropZone1"
+    },
     {
       "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
       "context": "<button class=\"Link-Link_3tKep\">Add file</button>",
@@ -237,43 +253,43 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#app > div > div > div > div > div > div:nth-child(1) > button"
-    },
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > div > span > input"
-    },
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > div > span > input"
     }
   ],
   "http://localhost:3000/drop-zone/7": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > span > input"
+      "selector": "#DropZone1"
     },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
       "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
       "type": "error",
       "typeCode": 1,
-      "selector": "#app > div > div > span > input"
+      "selector": "#DropZone1"
     }
   ],
   "http://localhost:3000/drop-zone/8": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#DropZone1"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "context": "<input id=\"DropZone1\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
+      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#DropZone1"
+    },
     {
       "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
       "context": "<span>Upload Image</span>",
@@ -281,22 +297,6 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#app > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
-    },
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > div:nth-child(2) > div > span > input"
-    },
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > div:nth-child(2) > div > span > input"
     }
   ],
   "http://localhost:3000/empty-state/0": [
@@ -521,6 +521,16 @@
       "selector": "#256 > div:nth-child(4) > div > button"
     }
   ],
+  "http://localhost:3000/select/4": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<button class=\"Link-Link_3tKep\">Manage shipping</button>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#unitError > span > span > p > button"
+    }
+  ],
   "http://localhost:3000/tabs/0": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
@@ -575,6 +585,16 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#TextField1Prefix"
+    }
+  ],
+  "http://localhost:3000/text-field/11": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
+      "context": "<button type=\"button\" class=\"Button-Button_2pL_i Button-iconOnly_2ZPSS\"><span class=\"Button-Content_2iX...</button>",
+      "message": "This button element does not have a name available to an accessibility API. Valid names are: title attribute, element content, aria-label attribute, aria-labelledby attribute.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div > div > div > div > div:nth-child(2) > button"
     }
   ],
   "http://localhost:3000/tooltip/0": [
