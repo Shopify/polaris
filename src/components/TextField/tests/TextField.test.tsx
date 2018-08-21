@@ -1,10 +1,13 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from '../../../../tests/utilities';
-import {noop} from '@shopify/javascript-utilities/other';
-import TextField from '..';
+
+import InlineError from '../../InlineError';
+import TextField from '../../TextField';
+import {Resizer} from '../components';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
@@ -186,6 +189,29 @@ describe('<TextField />', () => {
       expect(textField.find(`#${errorID}`).text()).toBe('Some error');
     });
 
+    it('connects the input to an error rendered separately', () => {
+      const errorMessage = 'Some error';
+      const textFieldID = 'collectionRuleType';
+      const fieldGroup = mountWithAppProvider(
+        <div>
+          <TextField
+            error={Boolean(errorMessage)}
+            id={textFieldID}
+            label="textField"
+            onChange={noop}
+          />
+          <InlineError message={errorMessage} fieldID={textFieldID} />
+        </div>,
+      );
+
+      const textField = fieldGroup.find(TextField).first();
+      const errorID = textField.find('input').prop<string>('aria-describedby');
+
+      expect(textField.find('input').prop('aria-invalid')).toBe(true);
+      expect(typeof errorID).toBe('string');
+      expect(fieldGroup.find(`#${errorID}`).text()).toBe('Some error');
+    });
+
     it('connects the input to both an error and help text', () => {
       const textField = mountWithAppProvider(
         <TextField
@@ -202,6 +228,22 @@ describe('<TextField />', () => {
       expect(descriptions.length).toBe(2);
       expect(textField.find(`#${descriptions[0]}`).text()).toBe('Some error');
       expect(textField.find(`#${descriptions[1]}`).text()).toBe('Some help');
+    });
+
+    it('only renders error markup when not a boolean', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          error
+          label="TextField"
+          helpText="Some help"
+          onChange={noop}
+        />,
+      );
+
+      expect(textField.find(InlineError)).toHaveLength(0);
+
+      textField.setProps({error: 'Some error'});
+      expect(textField.find(InlineError)).toHaveLength(1);
     });
   });
 
@@ -486,6 +528,20 @@ describe('<TextField />', () => {
           .simulate('click');
         expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
       });
+    });
+  });
+
+  describe('multiline', () => {
+    it('does not render a resizer if multiline is false', () => {
+      const textField = shallowWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={false}
+        />,
+      );
+      expect(textField.find(Resizer).exists()).toBe(false);
     });
   });
 });

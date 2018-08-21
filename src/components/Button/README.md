@@ -1,6 +1,10 @@
 ---
 name: Button
 category: Actions
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - CTA
   - call to action
@@ -20,12 +24,13 @@ keywords:
   - link
   - click
   - submit
+  - ios
+  - android
 ---
 
 # Button
 
-Buttons make common actions immediately visible and easy to perform with one
-click or tap. They can be used for any type of action, including navigation.
+Buttons are used to make common actions immediately visible and easy to perform with one click or tap. Merchants can use it to navigate, or take action.
 
 ---
 
@@ -105,7 +110,21 @@ Used most in the interface. Only use another style if a button requires more or 
 <Button>Add product</Button>
 ```
 
+<!-- content-for: android -->
+
+![Basic button for Android](components/Button/android/basic.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Basic button for iOS](components/Button/ios/basic.png)
+
+<!-- /content-for -->
+
 ### Outline button
+
+<!-- example-for: web -->
 
 Use against shaded or colorful backgrounds. An outline button will maintain the appropriate visual weight and won’t clash with the background color.
 
@@ -115,11 +134,23 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 
 ### Plain button
 
-Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as secondary actions in card headers.
+Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
 
 ```jsx
 <Button plain>View shipping settings</Button>
 ```
+
+<!-- content-for: android -->
+
+![Plain button for Android](components/Button/android/plain.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Plain button for iOS](components/Button/ios/plain.png)
+
+<!-- /content-for -->
 
 ### Primary buttons
 
@@ -129,6 +160,18 @@ Use to highlight the most important actions in any experience. Don’t use more 
 <Button primary>Save theme</Button>
 ```
 
+<!-- content-for: android -->
+
+![Primary button for Android](components/Button/android/primary.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Primary button for iOS](components/Button/ios/primary.png)
+
+<!-- /content-for -->
+
 ### Destructive buttons
 
 Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
@@ -137,7 +180,21 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 <Button destructive>Delete theme</Button>
 ```
 
+<!-- content-for: android -->
+
+![Destrutive plain and destructive basic button for Android](components/Button/android/destructive.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Destrutive plain and destructive basic button for iOS](components/Button/ios/destructive.png)
+
+<!-- /content-for -->
+
 ### Slim buttons
+
+<!-- example-for: web -->
 
 Use when a table or list has a set of actions on each item to avoid making items taller than they need to be. Don’t use slim buttons for primary actions.
 
@@ -147,6 +204,8 @@ Use when a table or list has a set of actions on each item to avoid making items
 
 ### Large buttons
 
+<!-- example-for: web -->
+
 Use for the main call to action in empty states or for calls to action shown with large illustrations.
 
 ```jsx
@@ -154,6 +213,8 @@ Use for the main call to action in empty states or for calls to action shown wit
 ```
 
 ### Full-width buttons
+
+<!-- example-for: web -->
 
 Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320 px wide.
 
@@ -169,7 +230,21 @@ Use for actions that aren’t currently available. The surrounding interface sho
 <Button disabled>Buy shipping label</Button>
 ```
 
+<!-- content-for: android -->
+
+![Disabled primary button for Android](components/Button/android/disabled.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Disabled primary button for iOS](components/Button/ios/disabled.png)
+
+<!-- /content-for -->
+
 ### Loading state
+
+<!-- example-for: web -->
 
 Use when a button has been pressed and the associated action is in progress.
 

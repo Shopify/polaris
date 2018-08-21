@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
-import {LinkAction} from '../../types';
+import {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Breadcrumbs.scss';
 
 export interface Props {
   /** Collection of breadcrumbs */
-  breadcrumbs: LinkAction[];
+  breadcrumbs: Array<CallbackAction | LinkAction>;
 }
 
 export default class Breadcrumbs extends React.PureComponent<Props, never> {
@@ -20,23 +20,42 @@ export default class Breadcrumbs extends React.PureComponent<Props, never> {
       return null;
     }
 
-    const {content, url} = breadcrumb;
+    const {content} = breadcrumb;
 
-    return (
-      // eslint-disable-next-line jsx-a11y/no-redundant-roles
-      <nav role="navigation">
+    const contentMarkup = (
+      <React.Fragment>
+        <span className={styles.Icon}>
+          <Icon source="chevronLeft" />
+        </span>
+        <span className={styles.Content}>{content}</span>
+      </React.Fragment>
+    );
+
+    const breadcrumbMarkup =
+      'url' in breadcrumb ? (
         <UnstyledLink
           key={content}
-          url={url}
+          url={breadcrumb.url}
           className={styles.Breadcrumb}
           onMouseUp={handleMouseUpByBlurring}
         >
-          <span className={styles.Icon}>
-            <Icon source="chevronLeft" />
-          </span>
-          <span className={styles.Content}>{content}</span>
+          {contentMarkup}
         </UnstyledLink>
-      </nav>
+      ) : (
+        <button
+          key={content}
+          className={styles.Breadcrumb}
+          onClick={breadcrumb.onAction}
+          onMouseUp={handleMouseUpByBlurring}
+          type="button"
+        >
+          {contentMarkup}
+        </button>
+      );
+
+    return (
+      // eslint-disable-next-line jsx-a11y/no-redundant-roles
+      <nav role="navigation">{breadcrumbMarkup}</nav>
     );
   }
 }

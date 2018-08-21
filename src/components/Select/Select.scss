@@ -1,15 +1,8 @@
 $stacking-order: (
   backdrop: 10,
-  input: 20,
-  icon: 30,
+  content: 20,
+  input: 30,
 );
-
-$icon-size: rem(16px);
-$input-horizontal-padding: spacing(tight) * 1.5;
-
-// Without a small amount of vertical adjustment, the text
-// in the Select does not appear vertically centered.
-$input-vertical-adjust: rem(1px);
 
 .Select {
   position: relative;
@@ -21,12 +14,20 @@ $input-vertical-adjust: rem(1px);
 }
 
 .disabled {
-  .Backdrop {
-    @include control-backdrop(disabled);
+  .Content {
+    color: color('ink', 'lightest');
+  }
+
+  .InlineLabel {
+    color: inherit;
   }
 
   .Icon {
     opacity: 0.4;
+  }
+
+  .Backdrop {
+    @include control-backdrop(disabled);
   }
 }
 
@@ -58,6 +59,35 @@ $input-vertical-adjust: rem(1px);
   }
 }
 
+.Content {
+  @include text-style-input;
+  position: relative;
+  z-index: z-index(content, $stacking-order);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: control-height();
+  padding: control-vertical-padding() rem(8px) control-vertical-padding()
+    rem(12px);
+}
+
+.InlineLabel {
+  @include text-emphasis-subdued;
+  margin-right: rem(4px);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.SelectedOption {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.Icon {
+  @include recolor-icon(color('ink', 'lighter'));
+}
+
 .Backdrop {
   @include control-backdrop;
   position: absolute;
@@ -68,45 +98,76 @@ $input-vertical-adjust: rem(1px);
   right: 0;
 }
 
-.Icon {
-  @include recolor-icon(color('ink', 'lighter'));
-  position: absolute;
-  z-index: z-index(icon, $stacking-order);
-  top: 50%;
-  right: $input-horizontal-padding;
-  transform: translateY(-50%);
-  margin-right: (-0.25 * $icon-size);
-  pointer-events: none;
-}
-
 .Input {
+  // Even though the input is invisible, text styles apply to the options menu
   @include text-style-input;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: z-index(input, $stacking-order);
   width: 100%;
-  min-height: control-height();
+  height: 100%;
   margin: 0;
-  padding: control-vertical-padding() ($input-horizontal-padding + $icon-size)
-    control-vertical-padding() $input-horizontal-padding;
-  background: transparent;
-  border: border(transparent);
+  // ChromeVox may hide content set to opacity: 0
+  opacity: 0.001;
   appearance: none;
-  line-height: rem(20px);
 
   &:focus {
-    outline: none;
-
     ~ .Backdrop {
       @include control-backdrop(focused);
     }
   }
+}
 
-  &:disabled {
-    color: color('ink', 'lightest');
+@media (-ms-high-contrast: active) {
+  .Content {
+    color: ms-high-contrast-color('text');
+    -ms-high-contrast-adjust: none;
   }
 
-  &:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 color('ink', 'base');
+  .InlineLabel {
+    color: inherit;
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  .SelectedOption {
+    color: inherit;
+  }
+
+  .Icon {
+    @include recolor-icon(ms-high-contrast-color('button-text'));
+  }
+
+  .Backdrop {
+    &::after {
+      // Remove the dotted focus outline from the control-backdrop mixin.
+      display: none;
+    }
+  }
+
+  .Input:focus {
+    ~ .Content {
+      color: ms-high-contrast-color('selected-text');
+    }
+
+    ~ .Backdrop {
+      // Align with the native styling for this element, which differs from
+      // what the control-backdrop mixin provides.
+      background-color: ms-high-contrast-color('selected-text-background');
+    }
+  }
+
+  .disabled {
+    .Content {
+      color: ms-high-contrast-color('disabled-text');
+    }
+
+    .Icon {
+      @include recolor-icon(ms-high-contrast-color('disabled-text'));
+      opacity: 1;
+    }
   }
 }

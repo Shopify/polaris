@@ -1,9 +1,13 @@
 import * as React from 'react';
+import {ShallowWrapper} from 'enzyme';
+import {noop} from '@shopify/javascript-utilities/other';
 import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from '../../../../tests/utilities';
-import Select from '..';
+
+import InlineError from '../../InlineError';
+import Select from '../../Select';
 
 describe('<Select />', () => {
   describe('onChange()', () => {
@@ -89,26 +93,59 @@ describe('<Select />', () => {
         <Select label="Select" options={options} />,
       ).find('option');
 
-      options.forEach(
-        (
-          {disabled}: {disabled?: boolean; value: string; label: string},
-          index,
-        ) => {
-          const optionElement = optionElements.at(index);
-          expect(optionElement.prop('disabled')).toBe(disabled);
-        },
-      );
+      options.forEach(({disabled}, index) => {
+        const optionElement = optionElements.at(index);
+        expect(optionElement.prop('disabled')).toBe(disabled);
+      });
     });
   });
 
   describe('groups', () => {
-    it('translates groups into optgroup tags', () => {
-      const optionsAndGroups = [
-        {title: 'Group one', options: ['one.1', 'one.2']},
-        'one',
-        'two',
-        {title: 'Group two', options: ['two.1', 'two.2']},
-      ];
+    const optionsAndGroups = [
+      {title: 'Group one', options: ['one.1', 'one.2']},
+      'one',
+      'two',
+      {title: 'Group two', options: ['two.1', 'two.2']},
+    ];
+
+    function testOptions(
+      optionOrGroup: string | {title: string; options: string[]},
+      optionOrOptgroupElement: ShallowWrapper,
+    ) {
+      if (typeof optionOrGroup === 'string') {
+        expect(optionOrOptgroupElement.type()).toBe('option');
+        expect(optionOrOptgroupElement.key()).toBe(optionOrGroup);
+        expect(optionOrOptgroupElement.prop('value')).toBe(optionOrGroup);
+        expect(optionOrOptgroupElement.text()).toBe(optionOrGroup);
+      } else {
+        expect(optionOrOptgroupElement.type()).toBe('optgroup');
+        expect(optionOrOptgroupElement.prop('label')).toBe(optionOrGroup.title);
+        const options = optionOrOptgroupElement.children();
+
+        optionOrGroup.options.forEach((option, optionIndex) => {
+          const optionElement = options.at(optionIndex);
+          expect(optionElement.type()).toBe('option');
+          expect(optionElement.key()).toBe(option);
+          expect(optionElement.prop('value')).toBe(option);
+          expect(optionElement.text()).toBe(option);
+        });
+      }
+    }
+
+    it('translates grouped options into optgroup tags', () => {
+      const optionOrOptgroupElements = shallowWithAppProvider(
+        <Select label="Select" options={optionsAndGroups} />,
+      )
+        .find('select')
+        .children();
+
+      optionsAndGroups.forEach((optionOrGroup, index) => {
+        const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
+        testOptions(optionOrGroup, optionOrOptgroupElement);
+      });
+    });
+
+    it('translates legacy groups into optgroup tags', () => {
       const optionOrOptgroupElements = shallowWithAppProvider(
         <Select label="Select" groups={optionsAndGroups} />,
       )
@@ -117,27 +154,7 @@ describe('<Select />', () => {
 
       optionsAndGroups.forEach((optionOrGroup, index) => {
         const optionOrOptgroupElement = optionOrOptgroupElements.at(index);
-
-        if (typeof optionOrGroup === 'string') {
-          expect(optionOrOptgroupElement.type()).toBe('option');
-          expect(optionOrOptgroupElement.key()).toBe(optionOrGroup);
-          expect(optionOrOptgroupElement.prop('value')).toBe(optionOrGroup);
-          expect(optionOrOptgroupElement.text()).toBe(optionOrGroup);
-        } else {
-          expect(optionOrOptgroupElement.type()).toBe('optgroup');
-          expect(optionOrOptgroupElement.prop('label')).toBe(
-            optionOrGroup.title,
-          );
-          const options = optionOrOptgroupElement.children();
-
-          optionOrGroup.options.forEach((option, optionIndex) => {
-            const optionElement = options.at(optionIndex);
-            expect(optionElement.type()).toBe('option');
-            expect(optionElement.key()).toBe(option);
-            expect(optionElement.prop('value')).toBe(option);
-            expect(optionElement.text()).toBe(option);
-          });
-        }
+        testOptions(optionOrGroup, optionOrOptgroupElement);
       });
     });
   });
@@ -211,12 +228,13 @@ describe('<Select />', () => {
 
   describe('placeholder', () => {
     it('renders an unselectable option for the placeholder', () => {
+      const placeholderValue = '';
       const select = shallowWithAppProvider(
         <Select label="Select" placeholder="Choose something" options={[]} />,
       ).find('select');
       const placeholderOption = select.find('option').first();
 
-      expect(select.prop('defaultValue')).toBe(placeholderOption.prop('value'));
+      expect(placeholderValue).toBe(placeholderOption.prop('value'));
       expect(placeholderOption.prop('disabled')).toBe(true);
       expect(placeholderOption.prop('hidden')).toBe(true);
     });
@@ -233,21 +251,93 @@ describe('<Select />', () => {
       const placeholderOption = select.find('option').first();
 
       expect(select.prop('value')).toBe(placeholderOption.prop('value'));
-      expect(select.prop('defaultValue')).toBeUndefined();
+    });
+  });
+
+  describe('error', () => {
+    it('marks the select as invalid', () => {
+      const select = shallowWithAppProvider(
+        <Select error={<span>Invalid</span>} label="Select" onChange={noop} />,
+      );
+
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+
+      select.setProps({error: 'Some error'});
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+
+      select.setProps({error: 'true'});
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
     });
 
-    it('does not render the placeholder when there is an existing value', () => {
-      const select = shallowWithAppProvider(
+    it('connects the select to the error', () => {
+      const select = mountWithAppProvider(
+        <Select label="Select" error="Some error" onChange={noop} />,
+      );
+      const errorID = select.find('select').prop<string>('aria-describedby');
+      expect(typeof errorID).toBe('string');
+      expect(select.find(`#${errorID}`).text()).toBe('Some error');
+    });
+
+    it('connects the select to an error rendered separately', () => {
+      const errorMessage = 'Some error';
+      const selectID = 'collectionRuleType';
+      const fieldGroup = mountWithAppProvider(
+        <div>
+          <Select
+            error={Boolean(errorMessage)}
+            id={selectID}
+            label="Select"
+            onChange={noop}
+          />
+          <InlineError message={errorMessage} fieldID={selectID} />
+        </div>,
+      );
+
+      const select = fieldGroup.find(Select).last();
+      const errorID = select.find('select').prop<string>('aria-describedby');
+
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+      expect(typeof errorID).toBe('string');
+      expect(fieldGroup.find(`#${errorID}`).text()).toBe('Some error');
+    });
+
+    it('connects the select to both an error and help text', () => {
+      const select = mountWithAppProvider(
         <Select
           label="Select"
-          placeholder="Choose something"
-          options={['one']}
-          value="one"
+          error="Some error"
+          helpText="Some help"
+          onChange={noop}
         />,
       );
-      const placeholderOption = select.find('option');
-      expect(placeholderOption.length).toBe(1);
-      expect(placeholderOption.prop('disabled')).toBeFalsy();
+      const descriptions = select
+        .find('select')
+        .prop<string>('aria-describedby')
+        .split(' ');
+      expect(descriptions.length).toBe(2);
+      expect(select.find(`#${descriptions[0]}`).text()).toBe('Some help');
+      expect(select.find(`#${descriptions[1]}`).text()).toBe('Some error');
+    });
+
+    it('renders error markup when a non-boolean value', () => {
+      const select = mountWithAppProvider(
+        <Select
+          label="Select"
+          helpText="Some help"
+          error="Some error"
+          onChange={noop}
+        />,
+      );
+
+      expect(select.find(InlineError)).toHaveLength(1);
+    });
+
+    it('does not render error markup when a boolean value', () => {
+      const select = mountWithAppProvider(
+        <Select error label="Select" helpText="Some help" onChange={noop} />,
+      );
+
+      expect(select.find(InlineError)).toHaveLength(0);
     });
   });
 });

@@ -3,11 +3,10 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
+import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
-import Resizer from './Resizer';
-import Spinner from './Spinner';
+import {Resizer, Spinner} from './components';
 import {Error} from '../../types';
 import * as styles from './TextField.scss';
 
@@ -60,7 +59,7 @@ export interface BaseProps {
   /** Allow for multiple lines of input */
   multiline?: boolean | number;
   /** Error to display beneath the label */
-  error?: Error;
+  error?: Error | boolean;
   /** An element connected to the right of the input */
   connectedRight?: React.ReactNode;
   /** An element connected to the left of the input */
@@ -71,6 +70,8 @@ export interface BaseProps {
   name?: string;
   /** ID for the input */
   id?: string;
+  /** Defines a specific role attribute for the input */
+  role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
   /** Enable automatic completion by the browser */
@@ -87,6 +88,14 @@ export interface BaseProps {
   pattern?: string;
   /** Indicate whether value should have spelling checked */
   spellCheck?: boolean;
+  /** Indicates the id of a component owned by the input */
+  ariaOwns?: string;
+  /** Indicates the id of a component controlled by the input */
+  ariaControls?: string;
+  /** Indicates the id of a related component's visually focused element ot the input */
+  ariaActiveDescendant?: string;
+  /** Indicates what kind of user input completion suggestions are provided */
+  ariaAutocomplete?: string;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -141,6 +150,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       placeholder,
       disabled,
       readOnly,
+      role,
       autoFocus,
       type,
       name,
@@ -163,6 +173,10 @@ export default class TextField extends React.PureComponent<Props, State> {
       maxLength,
       spellCheck,
       pattern,
+      ariaOwns,
+      ariaActiveDescendant,
+      ariaAutocomplete,
+      ariaControls,
     } = this.props;
 
     const {height} = this.state;
@@ -198,19 +212,18 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const style = multiline && height ? {height} : null;
 
-    const resizer =
-      multiline != null ? (
-        <Resizer
-          contents={value || placeholder}
-          currentHeight={height}
-          minimumLines={typeof multiline === 'number' ? multiline : 1}
-          onHeightChange={this.handleExpandingResize}
-        />
-      ) : null;
+    const resizer = multiline ? (
+      <Resizer
+        contents={value || placeholder}
+        currentHeight={height}
+        minimumLines={typeof multiline === 'number' ? multiline : 1}
+        onHeightChange={this.handleExpandingResize}
+      />
+    ) : null;
 
     const describedBy: string[] = [];
     if (error) {
-      describedBy.push(errorID(id));
+      describedBy.push(`${id}Error`);
     }
     if (helpText) {
       describedBy.push(helpTextID(id));
@@ -234,6 +247,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       id,
       disabled,
       readOnly,
+      role,
       autoFocus,
       value,
       placeholder,
@@ -254,8 +268,14 @@ export default class TextField extends React.PureComponent<Props, State> {
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')
         : undefined,
+      'aria-label': label,
       'aria-labelledby': labelledBy.join(' '),
       'aria-invalid': Boolean(error),
+      'aria-owns': ariaOwns,
+      'aria-activedescendant': ariaActiveDescendant,
+      'aria-autocomplete': ariaAutocomplete,
+      'aria-controls': ariaControls,
+      'aria-multiline': multiline,
     });
 
     return (

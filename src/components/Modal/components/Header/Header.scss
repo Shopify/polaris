@@ -1,4 +1,7 @@
 .Header {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
   padding: spacing() spacing(loose);
   border-bottom: border();
 }
@@ -10,6 +13,7 @@
 
 .CloseButton {
   @include unstyled-button;
+  margin-left: spacing(loose);
   margin-right: -1 * spacing(tight);
   padding: spacing(tight);
 
@@ -17,5 +21,15 @@
   &:active {
     border-radius: border-radius(large);
     background: plain-button-background();
+  }
+}
+
+.Title {
+  flex: 1;
+  margin-top: spacing(extra-tight);
+  word-break: break-word;
+
+  @include breakpoint-after($typography-condensed) {
+    margin-top: rem(2px);
   }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DisplayText, Stack} from '../../../../components';
+import {DisplayText} from '../../../../components';
 import memoizedBind from '../../../../utilities/memoized-bind';
 import * as styles from './Header.scss';
 import {CloseButton} from '.';
@@ -15,17 +15,13 @@ export default function Header({id, children, onClose}: Props) {
 
   return (
     <div className={styles.Header}>
-      <Stack alignment="center">
-        <Stack.Item fill>
-          <div id={id}>
-            <DisplayText element="h2" size="small">
-              {children}
-            </DisplayText>
-          </div>
-        </Stack.Item>
+      <div id={id} className={styles.Title}>
+        <DisplayText element="h2" size="small">
+          {children}
+        </DisplayText>
+      </div>
 
-        <CloseButton onClick={handleClose} />
-      </Stack>
+      <CloseButton onClick={handleClose} />
     </div>
   );
 }

@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
-import {OpenOptions} from '../easdk/components/ResourcePicker';
+import {withAppProvider, WithAppProviderProps} from '../../components';
+import {OpenOptions} from '../easdk/components';
 
 export interface Props extends OpenOptions {
   /** Whether the picker is open or not */

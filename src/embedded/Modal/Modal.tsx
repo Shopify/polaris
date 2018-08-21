@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../../components';
 import {DisableableAction} from '../../types';
 
 export type Width = 'large' | 'fullwidth';

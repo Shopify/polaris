@@ -6,24 +6,113 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 <!-- ## Unreleased -->
 
+## 2.6.1 - 2018-08-21
+
+### Development workflow
+
+- Moved `pa11y` and `object-hash` from dependencies to devDependencies
+
+### Bug fixes
+
+- Fixed inconsistent drop zone error styling
+
+## 2.6.0 - 2018-08-21
+
+### Development workflow
+
+- Added a `test:coverage` script to gather and display test coverage results
+- Added Codecov test coverage checks to pull requests
+- Added automated a11y testing to CI
+
+### Enhancements
+
+- Added support for `FilterType.DateSelector` in `ResourceList` component
+- Added `code` as an accepted `variation` of the text style component to provide support for accessible markup and styling of inline code snippets and code-like text
+- Added new `border-width` SCSS function
+- Added support for `fullWidth` and `connectedTop` props on `ButtonGroup`
+- Added `label` prop to `DropZone` for better accessibility
+- Added support for radio buttons to accept a block as a `label`
+- Added a `singleColumn` prop to the skeleton page component
+- Updated the transition on large modals to match the default transition
+- Added `nextKeys`, `previousKeys`, `nextTooltip`, and `previousTooltip` props to the pagination component to support keypress handling and tooltips in pagination buttons.
+- Added examples to the layout component documentation for two and three column grid layouts
+- Added an export for the `Progress` type to support downstream typechecking of the badge component `progress` prop
+- Added an `iFrameName` prop to the modal component to support named iframe children
+- Added a `ScrollTo` subcomponent to the scrollable component to support scrolling to a child node programmatically
+- Added support for the button component to accept an array of strings as children
+- Changed the primary focus target of an activated popover from the first focusable child to the popover itself
+- Added an improved error message when the child of an embedded alert component is not a string(thanks [@superwhykz](https://github.com/superwhykz) for the [original issue](https://github.com/Shopify/polaris/issues/378))
+- Added a minimum width to tab items to improve touch target sizing and account for smaller tab titles
+- Added support for additional accessibility attributes to the text field and option list components
+- Added support for option list with avatars, icons, and thumbnails when `options` descriptors have a `media` property
+- Added support for destructive action list items
+- Added support for option list `options` descriptors to accept a block for the `label` property
+- Added `$page-max-width` variable to capture page calculated `max-width` value and `page-when-not-max-width` mixin to trigger when page is resized horizontally
+- Added support for select error messages to be optional
+- Updated the breadcrumbs component to support the `CallbackAction` type as a prop(thanks [@dylan](https://github.com/dylan) for the [current issue](https://github.com/Shopify/polaris/issues/278) and everyone who identified this.)
+- Added support for text field error messages to be optional
+- Added a `disabled` prop to the choice component. Checkbox and radio labels are now styled to reflect their disabled state
+- Added support for Windows High Contrast mode in the select, checkbox and radio components
+
+### Bug fixes
+
+- Fixed text field resizer rendering when `multiline` was false
+- Fixed modal header condensing
+- Fixed tooltip so active prop activates on initial render
+- Fixed popover border radius and left and right alignment
+- Fixed visibility of the hidden implicit submit button in form (thanks [@cgenevier](https://github.com/cgenevier) for the [original issue](https://github.com/Shopify/polaris/issues/386))
+- Fixed alignment of wrapped empty state actions
+- Swapped the import and export icons
+- Fixed incorrect data table column count and content skipping in assistive technologies
+- Fixed unintended form submittal by action list items enclosed in a `form`)
+- Fixed text alignment of multiline option list option text [#1905](https://github.com/Shopify/polaris-react/pull/1905)
+- Fixed an issue where the stack component would render incorrectly nested items [#1924](https://github.com/Shopify/polaris-react/pull/1924)
+- Fixed spacing above annotated sections on smaller screens [#1972](https://github.com/Shopify/polaris-react/pull/1972)
+- Fixed an issue that cause problems for some build tools [#1978](https://github.com/Shopify/polaris-react/pull/1978)
+- Fixed the word-break of long text in labels and banners on small screens
+
+### Documentation
+
+- Added examples for iOS and Android radio buttons
+- Added examples for iOS and Android banners
+- Added toast component
+- Added examples for iOS and Android buttons
+- Added examples for iOS and Android button groups
+- Added examples for iOS and Android badge
+- Added stepper component
+
+### New components
+
+#### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
+
+Use inline errors to describe custom form inputs or form groups when invalid.
+
 ## 2.5.0 - 2018-07-20
 
 ### Enhancements
 
-- Added `weekStartsOn` prop to Datepicker
+- Updated sub component structure
+- Added `weekStartsOn` prop to date picker
 
 ### Bug fixes
 
 - Remove stickyManager from app provider props interface
+- Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
+- Remove extra padding from annotated section
 
-## Documentation
+### Documentation
 
-- Added iOS and Android examples for the card component
+- Added iOS and Android examples to the Card component
+- Added iOS and Android examples to the ChoiceList component
 
 ### Development workflow
 
 - Renamed `yarn start:vrt` to `yarn tophat` and updated the folder name to match
 - Improved `yarn tophat`’s design, and added a `/all-components` route
+
+### Enhancements
+
+- Added `weekStartsOn` prop to Datepicker
 
 ## 2.4.0 - 2018-07-12
 
@@ -43,8 +132,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
-- Resolve issue with RangeSlider not accepting `0` as a `max` value
-- Slightly reduce RangeSlider's `prefix/suffix` spacing
+- Resolve issue with range slider component not accepting `0` as a `max` value
+- Slightly reduce range slider's `prefix/suffix` spacing
 - Fixed spacing for prefix and suffix on the text field component
 - Fixed a bug which caused data tables not rendered on first page load to have skewed cell heights (thanks [@flewid](https://github.com/flewid) for the [original issue](https://github.com/Shopify/polaris/issues/344))
 - Fixed DatePicker month styling for previous years
@@ -63,16 +152,17 @@ Use Option list to present a group of selectable items outside of the context of
 
 ### Enhancements
 
-- Added `prefix` and `suffix` props to `RangeSlider` for better layout control
-- Added testing documentation and examples in AppProvider
+- Added `prefix` and `suffix` props to range slider for better layout control
+- Added testing documentation and examples in app provider
 - Performance: optimized avatar SVG files
 - Updated `yarn run optimize` to add new line at the end of SVG files
+- Added a more compact variant of `Select`, with the form label appearing inside the control)
 
 ### Bug fixes
 
 - Adjusted padding on text field to work with Chrome’s autofill
 - Fixed a regression where the version of Polaris wasn’t globally available anymore
-- Updated the interaction state visuals for ActionList
+- Updated the interaction state visuals for action list
 - Fixed z-index on resource list header with sorting options (thanks [@janklimo](https://github.com/janklimo) for the [original issue](https://github.com/Shopify/polaris/issues/355))
 - Fixed an issue where Radio Buttons were not focusable in Safari
 - Fixed spacing for annotated section descriptions

@@ -5,8 +5,7 @@ import {Action, DisableableAction, contentContextTypes} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
-import Header from './Header';
-import Section from './Section';
+import {Header, Section} from './components';
 import * as styles from './Card.scss';
 
 export interface Props {

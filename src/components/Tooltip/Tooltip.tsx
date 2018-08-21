@@ -5,7 +5,7 @@ import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
 import Portal from '../Portal';
-import TooltipOverlay from './TooltipOverlay';
+import {TooltipOverlay} from './components';
 import * as styles from './Tooltip.scss';
 
 export interface Props {
@@ -38,7 +38,7 @@ const getUniqueID = createUniqueIDFactory('TooltipContent');
 
 export default class Tooltip extends React.PureComponent<Props, State> {
   state: State = {
-    active: false,
+    active: Boolean(this.props.active),
     activatorNode: null,
   };
 

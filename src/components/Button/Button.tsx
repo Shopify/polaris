@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
@@ -17,7 +14,7 @@ export type Size = 'slim' | 'large';
 
 export interface Props {
   /** The content to display inside the button */
-  children?: string;
+  children?: string | string[];
   /** A destination to link to, rendered in the href attribute of a link */
   url?: string;
   /** A unique identifier for the button */

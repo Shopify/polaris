@@ -2,21 +2,22 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
-import {wrapWithComponent} from '@shopify/react-utilities/components';
+import {wrapWithComponent} from '@shopify/react-utilities';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
 import {ComplexAction, contentContextTypes} from '../../types';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Scrollable, Spinner, Portal} from '../../components';
 import memoizedBind from '../../utilities/memoized-bind';
-import Dialog from './components/Dialog';
-import Header, {CloseButton} from './components/Header';
-import Section from './components/Section';
-import Footer, {FooterProps} from './components/Footer';
+import {
+  CloseButton,
+  Dialog,
+  Footer,
+  FooterProps,
+  Header,
+  Section,
+} from './components';
 import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
@@ -29,6 +30,8 @@ export interface Props extends FooterProps {
   open: boolean;
   /** The url that will be loaded as the content of the modal */
   src?: string;
+  /** The name of the modal content iframe */
+  iFrameName?: string;
   /** The content for the title of the modal (EASDK accepts string) */
   title?: string | React.ReactNode;
   /** The content to display inside modal (Modal use only) */
@@ -131,6 +134,7 @@ export class Modal extends React.Component<CombinedProps, State> {
       onClose,
       title,
       src,
+      iFrameName,
       open,
       instant,
       sectioned,
@@ -176,6 +180,7 @@ export class Modal extends React.Component<CombinedProps, State> {
 
       const bodyMarkup = src ? (
         <iframe
+          name={iFrameName}
           title={iframeTitle}
           src={src}
           className={styles.IFrame}

@@ -8,9 +8,7 @@ import {
 
 import {PreferredPosition, PreferredAlignment} from '../PositionedOverlay';
 import Portal from '../Portal';
-import PopoverOverlay, {CloseSource} from './PopoverOverlay';
-import Pane from './Pane';
-import Section from './Section';
+import {CloseSource, Pane, PopoverOverlay, Section} from './components';
 
 export {CloseSource};
 

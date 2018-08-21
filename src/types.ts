@@ -96,6 +96,24 @@ export interface LoadableAction extends Action {
   loading?: boolean;
 }
 
+export interface ActionListItemDescriptor
+  extends IconableAction,
+    DisableableAction,
+    BadgeAction,
+    DestructableAction {
+  /** Image source */
+  image?: string;
+  /**  Add an ellipsis suffix to action content */
+  ellipsis?: boolean;
+}
+
+export interface ActionListSection {
+  /** Section title */
+  title?: string;
+  /** Collection of action items for the list */
+  items: ActionListItemDescriptor[];
+}
+
 export interface ComplexAction
   extends Action,
     DisableableAction,

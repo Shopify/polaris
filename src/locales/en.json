@@ -28,6 +28,12 @@
       "undo": "Undo"
     },
 
+    "DataTable": {
+      "sortAccessibilityLabel": "sort {direction} by",
+      "navAccessibilityLabel": "Scroll table {direction} one column",
+      "totalsRowHeading": "Totals"
+    },
+
     "DatePicker": {
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
@@ -46,11 +52,6 @@
         "actionHintFile": "or drop files to upload",
         "actionHintImage": "or drop images to upload"
       }
-    },
-
-    "DataTable": {
-      "sortAccessibilityLabel": "sort by {content}",
-      "totalsRowHeading": "Totals"
     },
 
     "EmptySearchResult": {
@@ -121,6 +122,37 @@
 
       "FilterValueSelector": {
         "selectFilterValuePlaceholder": "Select a filter\u2026"
+      },
+
+      "DateSelector": {
+        "dateFilterLabel": "Select a value",
+        "dateValueLabel": "Date",
+        "dateValueError": "Match YYYY-MM-DD format",
+        "dateValuePlaceholder": "YYYY-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "in the last week",
+          "PastMonth": "in the last month",
+          "PastQuarter": "in the last 3 months",
+          "PastYear": "in the last year",
+          "ComingWeek": "next week",
+          "ComingMonth": "next month",
+          "ComingQuarter": "in the next 3 months",
+          "ComingYear": "in the next year",
+          "OnOrBefore": "on or before",
+          "OnOrAfter": "on or after"
+        },
+        "FilterLabelForValue": {
+          "past_week": "in the last week",
+          "past_month": "in the last month",
+          "past_quarter": "in the last 3 months",
+          "past_year": "in the last year",
+          "coming_week": "next week",
+          "coming_month": "next month",
+          "coming_quarter": "in the next 3 months",
+          "coming_year": "in the next year",
+          "on_or_before": "on or before {date}",
+          "on_or_after": "on or after {date}"
+        }
       }
     },
 

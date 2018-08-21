@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ActionList from '../ActionList';
-import Item from '../Item';
+import {Item} from '../components';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 
 describe('<ActionList />', () => {

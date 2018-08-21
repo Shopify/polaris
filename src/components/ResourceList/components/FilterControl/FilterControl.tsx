@@ -154,22 +154,90 @@ export class FilterControl extends React.Component<CombinedProps> {
     onFiltersChange(newAppliedFilters);
   }
 
-  private getFilterLabel({key, value, label}: AppliedFilter): string {
+  private getFilterLabel(appliedFilter: AppliedFilter): string {
+    const {key, value, label} = appliedFilter;
+
     if (label) {
       return label;
     }
 
     const {filters = []} = this.props;
 
-    const filter = filters.find(({key: filterKey}) => filterKey === key);
+    const filter = filters.find((filter: any) => {
+      const {minKey, maxKey} = filter;
+
+      if (minKey || maxKey) {
+        return filter.key === key || minKey === key || maxKey === key;
+      }
+
+      return filter.key === key;
+    });
 
     if (!filter) {
       return value;
     }
 
-    const filterLabelByType = findFilterLabelByType(filter, value);
+    const filterLabelByType = this.findFilterLabelByType(filter, appliedFilter);
     const filterLabels = [filter.label, filter.operatorText, filterLabelByType];
     return filterLabels.join(' ');
+  }
+
+  private findFilterLabelByType(
+    filter: Filter,
+    appliedFilter: AppliedFilter,
+  ): string {
+    const {
+      polaris: {intl},
+    } = this.props;
+
+    const {value: appliedFilterValue} = appliedFilter;
+
+    if (filter.type === FilterType.Select) {
+      const foundFilterOption = filter.options.find(
+        (option) =>
+          typeof option === 'string'
+            ? option === appliedFilterValue
+            : option.value === appliedFilterValue,
+      );
+
+      if (foundFilterOption) {
+        return typeof foundFilterOption === 'string'
+          ? foundFilterOption
+          : foundFilterOption.label;
+      }
+    }
+
+    if (filter.type === FilterType.DateSelector) {
+      if (filter.key === appliedFilter.key) {
+        const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${
+          appliedFilter.value
+        }`;
+
+        return intl.translationKeyExists(filterLabelKey)
+          ? intl.translate(filterLabelKey)
+          : appliedFilter.value;
+      }
+
+      if (appliedFilter.key === filter.maxKey) {
+        return intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
+          {
+            date: formatDateForLabelDisplay(appliedFilter.value),
+          },
+        );
+      }
+
+      if (appliedFilter.key === filter.minKey) {
+        return intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
+          {
+            date: formatDateForLabelDisplay(appliedFilter.value),
+          },
+        );
+      }
+    }
+
+    return appliedFilterValue;
   }
 }
 
@@ -177,26 +245,12 @@ function idFromFilter(appliedFilter: AppliedFilter) {
   return `${appliedFilter.key}-${appliedFilter.value}`;
 }
 
-function findFilterLabelByType(
-  filter: Filter,
-  appliedFilterValue: AppliedFilter['value'],
-): string {
-  if (filter.type === FilterType.Select) {
-    const foundFilterOption = filter.options.find(
-      (option) =>
-        typeof option === 'string'
-          ? option === appliedFilterValue
-          : option.value === appliedFilterValue,
-    );
-
-    if (foundFilterOption) {
-      return typeof foundFilterOption === 'string'
-        ? foundFilterOption
-        : foundFilterOption.label;
-    }
+function formatDateForLabelDisplay(date: string) {
+  if (isNaN(new Date(date).getTime())) {
+    return date;
   }
 
-  return appliedFilterValue;
+  return new Date(date.replace(/-/g, '/')).toLocaleDateString();
 }
 
 export default withAppProvider<Props>()(FilterControl);

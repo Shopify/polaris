@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Item, {Position} from './Item';
+
+import {Item, ItemPosition} from './components';
 import * as styles from './Connected.scss';
 
 export interface Props {
@@ -12,7 +13,7 @@ export interface Props {
 }
 
 export interface State {
-  focused?: Position | null;
+  focused?: ItemPosition | null;
 }
 
 export default function Connected({children, left, right}: Props) {
@@ -21,17 +22,17 @@ export default function Connected({children, left, right}: Props) {
   }
 
   const leftConnectionMarkup = left ? (
-    <Item position={Position.Left}>{left}</Item>
+    <Item position={ItemPosition.Left}>{left}</Item>
   ) : null;
 
   const rightConnectionMarkup = right ? (
-    <Item position={Position.Right}>{right}</Item>
+    <Item position={ItemPosition.Right}>{right}</Item>
   ) : null;
 
   return (
     <div className={styles.Connected}>
       {leftConnectionMarkup}
-      <Item position={Position.Primary}>{children}</Item>
+      <Item position={ItemPosition.Primary}>{children}</Item>
       {rightConnectionMarkup}
     </div>
   );

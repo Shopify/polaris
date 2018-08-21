@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Section from './Section';
-import AnnotatedSection from './AnnotatedSection';
+import {AnnotatedSection, Section} from './components';
 import * as styles from './Layout.scss';
 
 export interface Props {

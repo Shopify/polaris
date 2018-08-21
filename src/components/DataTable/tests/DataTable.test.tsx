@@ -3,7 +3,7 @@ import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import {findByTestID} from '../../../../tests/utilities/enzyme';
 import DataTable, {CombinedProps as Props} from '../DataTable';
-import Cell from '../Cell';
+import {Cell} from '../components';
 
 interface DataTableTestProps {
   sortable?: Props['sortable'];
@@ -84,7 +84,7 @@ describe('<DataTable />', () => {
       onSort: spyOnSort,
       initialSortColumnIndex: 4,
     });
-    const fifthHeadingCell = findByTestID(dataTable, `heading-cell-${5}`);
+    const fifthHeadingCell = findByTestID(dataTable, `heading-cell-${4}`);
 
     expect(fifthHeadingCell.props().sorted).toBe(true);
   });

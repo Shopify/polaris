@@ -64,4 +64,8 @@
   background: color('indigo');
   border-radius: 50%;
   transition: control-icon-transition();
+
+  @media (-ms-high-contrast: active) {
+    background: ms-high-contrast-color('text');
+  }
 }
