@@ -10,6 +10,8 @@ export {
   Props as AppProviderProps,
   polarisAppProviderContextTypes as polarisContextTypes,
   createPolarisContext,
+  withAppProvider,
+  WithAppProviderProps,
 } from './AppProvider';
 
 export {default as Avatar, Props as AvatarProps} from './Avatar';
