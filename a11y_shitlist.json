@@ -75,16 +75,6 @@
       "selector": "#Banner1Content > p > button"
     }
   ],
-  "http://localhost:3000/button/2": [
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
-      "context": "<span>View shipping settings</span>",
-      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.15:1. Recommendation: change text colour to #000f19.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > button > span > span"
-    }
-  ],
   "http://localhost:3000/callout-card/1": [
     {
       "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
@@ -103,24 +93,6 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#app > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
-    }
-  ],
-  "http://localhost:3000/drop-zone/0": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This file input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > span > input"
-    },
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
-      "context": "<input type=\"file\" multiple=\"\" autocomplete=\"off\">",
-      "message": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#app > div > span > input"
     }
   ],
   "http://localhost:3000/drop-zone/1": [
