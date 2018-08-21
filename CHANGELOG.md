@@ -4,11 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [these versioning and changelog guidelines][changelog-guidelines].
 
-## Unreleased
+<!-- ## Unreleased -->
+
+## 2.6.1 - 2018-08-21
 
 ### Development workflow
 
 - Moved `pa11y` and `object-hash` from dependencies to devDependencies ([#2003](https://github.com/Shopify/polaris-react/pull/2003))
+
+### Bug fixes
+
+- Fixed inconsistent drop zone error styling ([#1981](https://github.com/Shopify/polaris-react/pull/1981))
 
 ## 2.6.0 - 2018-08-21
 
@@ -50,7 +56,6 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Bug fixes
 
-- Fixed inconsistent `DropZone` error styling ([#1981](https://github.com/Shopify/polaris-react/pull/1981))
 - Fixed text field resizer rendering when `multiline` was false ([#1853](https://github.com/Shopify/polaris-react/pull/1853))
 - Fixed modal header condensing ([#1894](https://github.com/Shopify/polaris-react/pull/1894))
 - Fixed tooltip so active prop activates on initial render ([#1903](https://github.com/Shopify/polaris-react/pull/1903))
