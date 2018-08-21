@@ -554,6 +554,92 @@ describe('<FilterControl />', () => {
       );
     });
 
+    it('renders the correct applied filter string when filter uses operators with filter label', () => {
+      const appliedFilterValue = '20';
+      const appliedFilterKey = 'times_used';
+      const appliedFilterLabel = 'is';
+
+      const filter: FilterTextField = {
+        key: 'filterKey1',
+        label: 'Times used',
+        operatorText: [
+          {
+            optionLabel: 'equal to',
+            filterLabel: appliedFilterLabel,
+            key: appliedFilterKey,
+          },
+          {
+            optionLabel: 'not equal to',
+            filterLabel: 'is not',
+            key: 'times_used_not',
+          },
+        ],
+        type: FilterType.TextField,
+      };
+      const appliedFilters = {
+        key: appliedFilterKey,
+        value: appliedFilterValue,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${appliedFilterLabel} ${appliedFilterValue}`,
+      );
+    });
+
+    it('renders the correct applied filter string when filter uses operators without filter label', () => {
+      const appliedFilterValue = '20';
+      const appliedFilterKey = 'times_used';
+      const appliedOperatorOptionLabel = 'equal to';
+
+      const filter: FilterTextField = {
+        key: 'filterKey1',
+        label: 'Times used',
+        operatorText: [
+          {
+            optionLabel: appliedOperatorOptionLabel,
+            key: appliedFilterKey,
+          },
+          {
+            optionLabel: 'not equal to',
+            key: 'times_used_not',
+          },
+        ],
+        type: FilterType.TextField,
+      };
+      const appliedFilters = {
+        key: appliedFilterKey,
+        value: appliedFilterValue,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${appliedOperatorOptionLabel} ${appliedFilterValue}`,
+      );
+    });
+
     it('renders the correct applied filter string when filter key cannot be found', () => {
       const appliedFilterValue = 'new Bundle';
       const appliedFilters = {

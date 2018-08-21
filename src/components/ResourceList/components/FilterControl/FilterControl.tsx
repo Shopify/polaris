@@ -6,7 +6,7 @@ import {ComplexAction} from '../../../../types';
 import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
 
 import FilterCreator from './FilterCreator';
-import {AppliedFilter, Filter, FilterType} from './types';
+import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import * as styles from './FilterControl.scss';
 
 export interface Props {
@@ -156,7 +156,6 @@ export class FilterControl extends React.Component<CombinedProps> {
 
   private getFilterLabel(appliedFilter: AppliedFilter): string {
     const {key, value, label} = appliedFilter;
-
     if (label) {
       return label;
     }
@@ -164,10 +163,19 @@ export class FilterControl extends React.Component<CombinedProps> {
     const {filters = []} = this.props;
 
     const filter = filters.find((filter: any) => {
-      const {minKey, maxKey} = filter;
+      const {minKey, maxKey, operatorText} = filter;
 
       if (minKey || maxKey) {
         return filter.key === key || minKey === key || maxKey === key;
+      }
+
+      if (operatorText && typeof operatorText !== 'string') {
+        return (
+          filter.key === key ||
+          operatorText.filter(
+            ({key: operatorKey}: Operator) => operatorKey === key,
+          ).length === 1
+        );
       }
 
       return filter.key === key;
@@ -177,9 +185,14 @@ export class FilterControl extends React.Component<CombinedProps> {
       return value;
     }
 
+    const filterOperatorLabel = findOperatorLabel(filter, appliedFilter);
     const filterLabelByType = this.findFilterLabelByType(filter, appliedFilter);
-    const filterLabels = [filter.label, filter.operatorText, filterLabelByType];
-    return filterLabels.join(' ');
+
+    if (!filterOperatorLabel) {
+      return `${filter.label} ${filterLabelByType}`;
+    }
+
+    return `${filter.label} ${filterOperatorLabel} ${filterLabelByType}`;
   }
 
   private findFilterLabelByType(
@@ -251,6 +264,22 @@ function formatDateForLabelDisplay(date: string) {
   }
 
   return new Date(date.replace(/-/g, '/')).toLocaleDateString();
+}
+
+function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
+  const {operatorText} = filter;
+
+  if (!operatorText || typeof operatorText === 'string') {
+    return operatorText;
+  }
+
+  const appliedOperator = operatorText.find((operator) => {
+    return operator.key === appliedFilter.key;
+  });
+
+  if (appliedOperator) {
+    return appliedOperator.filterLabel || appliedOperator.optionLabel;
+  }
 }
 
 export default withAppProvider<Props>()(FilterControl);
