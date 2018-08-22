@@ -149,4 +149,31 @@ describe('<DropZone />', () => {
     const input = dropZone.find('input[type="file"]');
     expect(input.prop('id')).toEqual(id);
   });
+
+  describe('labelAction', () => {
+    it("passes 'labelAction' to the Labelled options", () => {
+      const callbackDropZone = {
+        onAction: () => {},
+      };
+      const dropZone = mountWithAppProvider(
+        <DropZone label="My DropZone label" labelAction={callbackDropZone} />,
+      );
+      expect(dropZone.find(Labelled).props()).toHaveProperty(
+        'action',
+        callbackDropZone,
+      );
+    });
+  });
+
+  describe('labelHidden', () => {
+    it("passes 'labelHidden' to the Labelled options", () => {
+      const dropZone = mountWithAppProvider(
+        <DropZone label="My DropZone label" labelHidden />,
+      );
+      expect(dropZone.find(Labelled).props()).toHaveProperty(
+        'labelHidden',
+        true,
+      );
+    });
+  });
 });
