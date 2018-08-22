@@ -9,3 +9,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added iOS and Android examples for the TextField component ([#1893](https://github.com/Shopify/polaris-react/pull/1893))
 - Added documentation for the iOS and Android select component ([#2041](https://github.com/Shopify/polaris-react/pull/2041))
 - Added documentation for the iOS and Android keyboard accessories component ([#2033](https://github.com/Shopify/polaris-react/pull/2033))
+- Added documentation for the iOS and Android collapsible component ([#2031](https://github.com/Shopify/polaris-react/pull/2031))
