@@ -6,14 +6,11 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
-- Adjusted spacing for `ChoiceChildren` in a `ChoiceList` for readability ([#2016](https://github.com/Shopify/polaris-react/pull/2016))
+- Adjusted spacing for `ChoiceChildren` in choice list for readability ([#2016](https://github.com/Shopify/polaris-react/pull/2016))
 
 ### Enhancements
 
-- Added a `loading` prop to resource list that adds a spinner overtop items if true ([#1922](https://github.com/Shopify/polaris-react/pull/1922))
-
-### Enhancements
-
+- Added a `loading` prop to resource list that adds a spinner overtop items if true ([#1922](https://github.com/Shopify/polaris-react/pull/1922)) (thanks [@Garrett-Smith-iq](https://github.com/Garrett-Smith-iq) for the [original issue](https://github.com/Shopify/polaris/issues/393))
 - Updated the page component's primary action to support `Button` props. ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
 
 ## 2.6.1 - 2018-08-21
