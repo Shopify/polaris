@@ -10,6 +10,10 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 - Added a `loading` prop to resource list that adds a spinner overtop items if true ([#1922](https://github.com/Shopify/polaris-react/pull/1922))
 
+### Enhancements
+
+- Updated the page component's primary action to support `Button` props. ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
+
 ## 2.6.1 - 2018-08-21
 
 ### Development workflow
