@@ -78,29 +78,6 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
-.NavigationOverlay {
-  @include hidden-when-printing;
-  position: fixed;
-  z-index: z-index(nav-overlay, $fixed-element-stacking-order);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(color('ink'), 0.86);
-  transition: opacity duration() easing();
-  pointer-events: none;
-  opacity: 0;
-  will-change: opacity;
-  @include frame-when-nav-displayed {
-    display: none;
-  }
-}
-
-.NavigationOverlay-covering {
-  pointer-events: all;
-  opacity: 1;
-}
-
 .TopBar {
   @include hidden-when-printing;
   position: fixed;

@@ -11,12 +11,11 @@ $fixed-element-stacking-order: (
   top-bar: 113,
   context-bar: 114,
   small-screen-loading-bar: 115,
-  nav-overlay: 116,
+  backdrop: 116,
   nav: 117,
   skip-to-content: 118,
-  backdrop: 119,
-  modal: 120,
-  dev-ui: 121,
+  modal: 119,
+  dev-ui: 120,
 );
 
 /// Returns the z-index of the specified element.
