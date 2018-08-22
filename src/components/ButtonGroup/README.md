@@ -104,6 +104,8 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 ### Button group joined to the bottom of a preceeding component
 
+<!-- example-for: web -->
+
 Use a combination of props (segmented, fullWidth, and connectedTop) to attach ButtonGroup to a preceeding element.
 
 ```jsx
