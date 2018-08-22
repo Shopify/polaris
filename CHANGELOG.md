@@ -6,6 +6,8 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ## Unreleased
 
+- Adjusted spacing for `ChoiceChildren` in a `ChoiceList` for readability ([#2016](https://github.com/Shopify/polaris-react/pull/2016))
+
 ### Enhancements
 
 - Added a `loading` prop to resource list that adds a spinner overtop items if true ([#1922](https://github.com/Shopify/polaris-react/pull/1922))
