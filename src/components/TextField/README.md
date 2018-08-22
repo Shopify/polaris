@@ -232,7 +232,7 @@ class NumberFieldExample extends React.Component {
 
 <!-- content-for: android -->
 
-This will show you the right keyboard on mobile devices.
+This will display the right keyboard on mobile devices.
 
 ![Number text field with numeric keyboard](components/TextField/android/number.png)
 
@@ -240,7 +240,7 @@ This will show you the right keyboard on mobile devices.
 
 <!-- content-for: ios -->
 
-This will show you the right keyboard on mobile devices.
+This will display the right keyboard on mobile devices.
 
 ![Number text field with numeric keyboard](components/TextField/ios/number.png)
 
@@ -275,7 +275,7 @@ class EmailFieldExample extends React.Component {
 
 <!-- content-for: android -->
 
-This will show you the right keyboard on mobile devices.
+This will display the right keyboard on mobile devices.
 
 ![Email field with email keyboard](components/TextField/android/email.png)
 
@@ -283,7 +283,7 @@ This will show you the right keyboard on mobile devices.
 
 <!-- content-for: ios -->
 
-This will show you the right keyboard on mobile devices.
+This will display the right keyboard on mobile devices.
 
 ![Email field with email keyboard](components/TextField/ios/email.png)
 
@@ -589,7 +589,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 
 <!-- example-for: android, ios -->
 
-Use to let merchants take an action on the field.
+Use to let merchants take an action within the text field.
 
 For example, tap on a barcode icon to launch the camera and scan barcode for the barcode field. This helps merchant simplify their input.
 
