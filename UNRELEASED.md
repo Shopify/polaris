@@ -10,3 +10,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added documentation for the iOS and Android select component ([#2041](https://github.com/Shopify/polaris-react/pull/2041))
 - Added documentation for the iOS and Android keyboard accessories component ([#2033](https://github.com/Shopify/polaris-react/pull/2033))
 - Added documentation for the iOS and Android collapsible component ([#2031](https://github.com/Shopify/polaris-react/pull/2031))
+- Added documentation for iOS and Android list component ([#2030](https://github.com/Shopify/polaris-react/pull/2030))
