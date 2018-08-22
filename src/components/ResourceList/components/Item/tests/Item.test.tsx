@@ -44,6 +44,15 @@ describe('<Item />', () => {
     onSelectionChange: jest.fn(),
   };
 
+  const mockLoadingContext = {
+    ...mockDefaultContext,
+    selectedItems: [selectedItemId],
+    selectMode: true,
+    selectable: true,
+    loading: true,
+    onSelectionChange: jest.fn(),
+  };
+
   const url = 'http://test-link.com';
   const ariaLabel = 'View Item';
 
@@ -213,6 +222,14 @@ describe('<Item />', () => {
         {context: mockSelectModeContext},
       );
       expect(wrapper.find(Checkbox).props().checked).toBe(true);
+    });
+
+    it("renders a disabled checked Checkbox if 'loading' context is true", () => {
+      const wrapper = mountWithAppProvider(
+        <Item id={selectedItemId} url={url} />,
+        {context: mockLoadingContext},
+      );
+      expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
     });
   });
 
