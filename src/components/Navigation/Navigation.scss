@@ -33,7 +33,7 @@ $nav-max-width: rem(360px);
 
 .PrimaryNavigation {
   display: flex;
-  overflow: visible;
+  overflow: auto;
   flex: 1 1 auto;
   flex-direction: column;
   align-items: stretch;
