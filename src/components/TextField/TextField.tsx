@@ -350,8 +350,7 @@ export default class TextField extends React.PureComponent<Props, State> {
   private handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
     const {type} = this.props;
-    // eslint-disable-next-line no-useless-escape
-    const numbersSpec = /^[\d\.e\+-]$/i;
+    const numbersSpec = /[\d.eE+-]$/;
 
     if (type !== 'number' || which === Keys.ENTER || key.match(numbersSpec)) {
       return;
