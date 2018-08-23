@@ -15,5 +15,5 @@ export {
   createThemeContext,
   setTheme,
 } from './utils';
-export {Props} from './ThemeProvider';
+export {Props, Context} from './ThemeProvider';
 export default ThemeProvider;

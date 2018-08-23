@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export interface Context {
-  theme?: ThemeContext;
+  theme: ThemeContext;
 }
 
 export default class ThemeProvider extends React.Component<Props> {

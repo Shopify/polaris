@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
 
-import {createPolarisContext} from '../utils';
+import {createAppProviderContext} from '../utils';
 import {createThemeContext} from '../../ThemeProvider';
 import {polarisAppProviderContextTypes} from '../types';
 import StickyManager from '../StickyManager';
@@ -22,7 +22,7 @@ describe('<AppProvider />', () => {
     };
     const stickyManager = new StickyManager(document);
     const context = {
-      ...createPolarisContext({
+      ...createAppProviderContext({
         i18n,
         linkComponent: CustomLinkComponent,
         stickyManager,

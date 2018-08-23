@@ -8,7 +8,7 @@ import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
 import ScrollLockManager from './ScrollLockManager';
-import {createPolarisContext} from './utils';
+import {createAppProviderContext} from './utils';
 import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
 import ThemeProvider, {Theme} from '../ThemeProvider';
 
@@ -53,7 +53,7 @@ export default class AppProvider extends React.Component<Props> {
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
     const {theme, children, ...rest} = this.props;
-    this.polarisContext = createPolarisContext({
+    this.polarisContext = createAppProviderContext({
       ...rest,
       stickyManager: this.stickyManager,
       scrollLockManager: this.scrollLockManager,
@@ -85,7 +85,7 @@ export default class AppProvider extends React.Component<Props> {
       debug !== this.props.debug
     ) {
       const stickyManager = this.stickyManager;
-      this.polarisContext = createPolarisContext({
+      this.polarisContext = createAppProviderContext({
         i18n,
         linkComponent,
         apiKey,
