@@ -1,13 +1,26 @@
 # Versioning and Changelog
 
-The changelog is prepared manually immediately before a release. Each changelog entry should follow this structure:
+The changelog is prepared manually immediately before a release.
+
+How to write a CHANGELOG entry:
+
+- Use a positive, conversational tone (for example, use “support” over “allow” and other authoritative verbs)
+- Use sentence case (refer to components as plain nouns, for example drop zone and not DropZone)
+- Use plain language
+- Avoid redundancy when possible (try to phrase a bug fix entry without the word “bug”)
+
+Change log entry descriptions should be brief but descriptive and follow this structure:
 
 ```md
 ## 2.0.0 - 2018-05-07
 
 ### Breaking changes
 
-- A change ([#100](https://github.com/shopify/polaris/pull/100))
+- Past tense verb + brief issue/enhancement description ([#100](https://github.com/shopify/polaris/pull/100))
+
+Contributed from the community:
+
+- Past tense verb + brief issue/enhancement description ([#100](https://github.com/shopify/polaris/pull/100)) (thanks [GitHub handle](GitHub profile link) for the [original issue](issue link)) and/or (thanks [GitHub handle](GitHub profile link) for the [pull request](pull request link))
 ```
 
 The possible groups in which to categorize changes are:

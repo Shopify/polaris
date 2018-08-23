@@ -4,6 +4,7 @@ category: Structure
 keywords:
   - one column
   - two column
+  - three column
   - column
   - annotated
   - page
@@ -30,7 +31,8 @@ The layout component should:
 - Center cards on the background when there is no secondary card on the page to stop the content from becoming too wide
 - Group similar concepts and actions together in cards
 - Separate different cards using a full-width divider
-- Structure two-column layouts so the primary ⅔ section is used for main information and the secondary ⅓ section is used for information that might not be used as often but remains helpful for context or secondary tasks
+- Structure primary/secondary, two-column layouts so the primary ⅔ section is used for main information and the secondary ⅓ section is used for information that might not be used as often but remains helpful for context or secondary tasks
+- Use equal-width layouts with two or more colums when each layout section has the same importance
 
 ---
 
@@ -190,7 +192,7 @@ Use to have a single section on its own in a full-width container. Use for simpl
 </Layout>
 ```
 
-### Two-column layout
+### Two columns with primary and secondary widths
 
 Use to follow a normal section with a secondary section to create a 2/3 + 1/3 layout on detail pages (e.g. individual product or order pages). Can also be used on any page that needs to structure a lot of content. This layout will stack the columns on small screens.
 
@@ -204,6 +206,314 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
   <Layout.Section secondary>
     <Card title="Tags" sectioned>
       <p>Add tags to your order.</p>
+    </Card>
+  </Layout.Section>
+</Layout>
+```
+
+### Two columns with equal width
+
+Use to create a ½ + ½ layout. Can be used to display content of equal importance. This layout will stack the columns on small screens.
+
+```jsx
+<Layout>
+  <Layout.Section secondary>
+    <Card title="Florida" actions={[{content: 'Manage'}]}>
+      <Card.Section>
+        <TextStyle variation="subdued">455 units available</TextStyle>
+      </Card.Section>
+      <Card.Section title="Items">
+        <ResourceList
+          resourceName={{singular: 'product', plural: 'products'}}
+          items={[
+            {
+              id: 341,
+              url: 'produdcts/341',
+              name: 'Black & orange scarf',
+              sku: '9234194023',
+              quantity: '254',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                  alt="Black orange scarf"
+                />
+              ),
+            },
+            {
+              id: 256,
+              url: 'produdcts/256',
+              name: 'Tucan scarf',
+              sku: '9234194010',
+              quantity: '201',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                  alt="Tucan scarf"
+                />
+              ),
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, sku, media, quantity} = item;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <h3>
+                  <TextStyle variation="strong">{name}</TextStyle>
+                </h3>
+                <div>SKU: {sku}</div>
+                <div>{quantity} available</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card.Section>
+    </Card>
+  </Layout.Section>
+  <Layout.Section secondary>
+    <Card title="Nevada" actions={[{content: 'Manage'}]}>
+      <Card.Section>
+        <TextStyle variation="subdued">301 units available</TextStyle>
+      </Card.Section>
+      <Card.Section title="Items">
+        <ResourceList
+          resourceName={{singular: 'product', plural: 'products'}}
+          items={[
+            {
+              id: 341,
+              url: 'produdcts/341',
+              name: 'Black & orange scarf',
+              sku: '9234194023',
+              quantity: '100',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                  alt="Black orange scarf"
+                />
+              ),
+            },
+            {
+              id: 256,
+              url: 'produdcts/256',
+              name: 'Tucan scarf',
+              sku: '9234194010',
+              quantity: '201',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                  alt="Tucan scarf"
+                />
+              ),
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, sku, media, quantity} = item;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <h3>
+                  <TextStyle variation="strong">{name}</TextStyle>
+                </h3>
+                <div>SKU: {sku}</div>
+                <div>{quantity} available</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card.Section>
+    </Card>
+  </Layout.Section>
+</Layout>
+```
+
+### Three columns with equal width
+
+Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal importance. This layout will stack the columns on small screens.
+
+```jsx
+<Layout>
+  <Layout.Section secondary>
+    <Card title="Florida" actions={[{content: 'Manage'}]}>
+      <Card.Section>
+        <TextStyle variation="subdued">455 units available</TextStyle>
+      </Card.Section>
+      <Card.Section title="Items">
+        <ResourceList
+          resourceName={{singular: 'product', plural: 'products'}}
+          items={[
+            {
+              id: 341,
+              url: 'produdcts/341',
+              name: 'Black & orange scarf',
+              sku: '9234194023',
+              quantity: '254',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                  alt="Black orange scarf"
+                />
+              ),
+            },
+            {
+              id: 256,
+              url: 'produdcts/256',
+              name: 'Tucan scarf',
+              sku: '9234194010',
+              quantity: '201',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                  alt="Tucan scarf"
+                />
+              ),
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, sku, media, quantity} = item;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <h3>
+                  <TextStyle variation="strong">{name}</TextStyle>
+                </h3>
+                <div>SKU: {sku}</div>
+                <div>{quantity} available</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card.Section>
+    </Card>
+  </Layout.Section>
+  <Layout.Section secondary>
+    <Card title="Nevada" actions={[{content: 'Manage'}]}>
+      <Card.Section>
+        <TextStyle variation="subdued">301 units available</TextStyle>
+      </Card.Section>
+      <Card.Section title="Items">
+        <ResourceList
+          resourceName={{singular: 'product', plural: 'products'}}
+          items={[
+            {
+              id: 341,
+              url: 'produdcts/341',
+              name: 'Black & orange scarf',
+              sku: '9234194023',
+              quantity: '100',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                  alt="Black orange scarf"
+                />
+              ),
+            },
+            {
+              id: 256,
+              url: 'produdcts/256',
+              name: 'Tucan scarf',
+              sku: '9234194010',
+              quantity: '201',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                  alt="Tucan scarf"
+                />
+              ),
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, sku, media, quantity} = item;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <h3>
+                  <TextStyle variation="strong">{name}</TextStyle>
+                </h3>
+                <div>SKU: {sku}</div>
+                <div>{quantity} available</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card.Section>
+    </Card>
+  </Layout.Section>
+  <Layout.Section secondary>
+    <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
+      <Card.Section>
+        <TextStyle variation="subdued">1931 units available</TextStyle>
+      </Card.Section>
+      <Card.Section title="Items">
+        <ResourceList
+          resourceName={{singular: 'product', plural: 'products'}}
+          items={[
+            {
+              id: 341,
+              url: 'produdcts/341',
+              name: 'Black & orange scarf',
+              sku: '9234194023',
+              quantity: '1230',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                  alt="Black orange scarf"
+                />
+              ),
+            },
+            {
+              id: 256,
+              url: 'produdcts/256',
+              name: 'Tucan scarf',
+              sku: '9234194010',
+              quantity: '701',
+              media: (
+                <Thumbnail
+                  source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                  alt="Tucan scarf"
+                />
+              ),
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, sku, media, quantity} = item;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <h3>
+                  <TextStyle variation="strong">{name}</TextStyle>
+                </h3>
+                <div>SKU: {sku}</div>
+                <div>{quantity} available</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card.Section>
     </Card>
   </Layout.Section>
 </Layout>

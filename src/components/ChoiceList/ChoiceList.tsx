@@ -2,13 +2,10 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioButton';
-import Icon from '../Icon';
+import InlineError from '../InlineError';
 import {Error} from '../../types';
 
 import * as styles from './ChoiceList.scss';
@@ -51,7 +48,6 @@ export interface Props extends BaseProps {}
 export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('ChoiceList');
-const getUniqueErrorID = createUniqueIDFactory('Error');
 
 function ChoiceList({
   title,
@@ -112,16 +108,18 @@ function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <div className={styles.Error} id={getUniqueErrorID()}>
-      <div className={styles.ErrorIcon}>
-        <Icon source="alert" />
-      </div>
-      {error}
+    <div className={styles.ChoiceChildren}>
+      <InlineError message={error} fieldID={finalName} />
     </div>
   );
 
   return (
-    <fieldset className={className}>
+    <fieldset
+      className={className}
+      id={finalName}
+      aria-invalid={error != null}
+      aria-describedby={`${finalName}Error`}
+    >
       {titleMarkup}
       <ul className={styles.Choices}>{choicesMarkup}</ul>
       {errorMarkup}

@@ -2,11 +2,8 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
-import Choice, {errorID, helpTextID} from '../Choice';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import Choice, {helpTextID} from '../Choice';
 import Icon from '../Icon';
 import {Error} from '../../types';
 
@@ -68,7 +65,7 @@ function Checkbox({
 
   const describedBy: string[] = [];
   if (error) {
-    describedBy.push(errorID(id));
+    describedBy.push(`${id}Error`);
   }
   if (helpText) {
     describedBy.push(helpTextID(id));
@@ -101,6 +98,7 @@ function Checkbox({
       labelHidden={labelHidden}
       helpText={helpText}
       error={error}
+      disabled={disabled}
     >
       <span className={wrapperClassName}>
         <input

@@ -19,6 +19,9 @@ $color-palette-data: map-extend(
       'selected': rgba(179, 188, 245, 0.15),
       'subdued': rgba(249, 250, 251, 1),
       'disabled': rgba(249, 250, 251, 1),
+      'hover-destructive': rgba(251, 234, 229, 0.4),
+      'focused-destructive': rgba(251, 234, 229, 0.4),
+      'active-destructive': rgba(220, 56, 37, 0.03),
     ),
   )
 );
@@ -51,10 +54,16 @@ $color-palette-data: map-extend(
   } @else {
     // stylelint-disable string-no-newline
     // prettier-ignore
-    @error 'Color `#{$hue} - #{$value}` not found.
-      Make sure arguments are strings - GOOD: color(\'yellow\'), BAD: color('yellow').
-      Available options: #{available-names($color-palette-data)}';
+    $error: "
+Color `#{$hue}, #{$value}` not found. Make sure arguments are strings.
+GOOD: color('yellow')
+BAD: color(yellow)
+
+Available options: #{available-names($color-palette-data)}
+";
     // stylelint-enable
+
+    @error $error;
   }
 }
 
@@ -72,4 +81,47 @@ $color-palette-data: map-extend(
   }
 
   @return $foreground * $background / 255;
+}
+
+///
+/// Color palette for Windows high-contrast mode
+/// See https://bit.ly/2vN9aGO
+///
+/// @type map
+
+$ms-high-contrast-color-data: (
+  'text': windowText,
+  'disabled-text': grayText,
+  'selected-text': highlightText,
+  'selected-text-background': highlight,
+  'button-text': buttonText,
+  'button-text-background': buttonFace,
+  'background': window,
+);
+
+///
+/// Returns the color value for Windows high contrast mode
+///
+/// @param {String} $color - The name of the high-contrast color.
+/// @return {Color} The color value.
+
+@function ms-high-contrast-color($color) {
+  $fetched-color: map-get($ms-high-contrast-color-data, $color);
+
+  @if ($fetched-color) {
+    @return $fetched-color;
+  } @else {
+    // stylelint-disable string-no-newline
+    // prettier-ignore
+    $error: "
+Color `#{$color}` not found. Make sure argument is a string.
+GOOD: ms-high-contrast-color('selected-text')
+BAD: ms-high-contrast-color(selected-text).
+
+Available options: #{available-names($ms-high-contrast-color-data)}
+";
+    // stylelint-enable
+
+    @error $error;
+  }
 }

@@ -1,19 +1,9 @@
 {
-  "setupFiles": [
-    "<rootDir>/config/jest/shim.js",
-    "<rootDir>/tests/setup.ts"
-  ],
+  "setupFiles": ["<rootDir>/config/jest/shim.js", "<rootDir>/tests/setup.ts"],
   "testRegex": "[\\w+]\\.test\\.(tsx?|js|ts)$",
   "rootDir": "../..",
-  "roots": [
-    "<rootDir>/src",
-    "<rootDir>/tests"
-  ],
-  "moduleFileExtensions": [
-    "ts",
-    "tsx",
-    "js"
-  ],
+  "roots": ["<rootDir>/src", "<rootDir>/tests"],
+  "moduleFileExtensions": ["ts", "tsx", "js", "json"],
   "transform": {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/transformers/file.js",
     "\\.svg$": "<rootDir>/config/jest/transformers/svg.js",
@@ -21,5 +11,12 @@
   },
   "moduleNameMapper": {
     "\\.(s?css)$": "identity-obj-proxy"
-  }
+  },
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
+  "coverageDirectory": "coverage",
+  "coveragePathIgnorePatterns": [
+    "[\\w+]\\.(svg)$",
+    "index.*",
+    "types.*"
+  ]
 }

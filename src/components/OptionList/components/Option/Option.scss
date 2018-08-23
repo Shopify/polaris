@@ -16,9 +16,14 @@ $control-size: rem(16px);
 
 .SingleSelectOption {
   @include unstyled-button;
+  text-align: left;
 
   &:not(.disabled) {
     color: inherit;
+  }
+
+  .Media {
+    padding: 0 spacing(tight) 0 0;
   }
 }
 
@@ -49,6 +54,10 @@ $control-size: rem(16px);
 
 .disabled {
   @include state(disabled);
+
+  .Media {
+    @include recolor-icon(color('ink', 'lightest'), color('white'));
+  }
 }
 
 .select {
@@ -61,4 +70,13 @@ $control-size: rem(16px);
       @include state(selected, focused, hover);
     }
   }
+}
+
+.active {
+  @include state(active);
+}
+
+.Media {
+  @include recolor-icon(color('ink', 'light'), color('white'));
+  padding: 0 spacing(tight);
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import * as styles from './Form.scss';
+import VisuallyHidden from '../VisuallyHidden';
 
 export type Enctype =
   | 'application/x-www-form-urlencoded'
@@ -53,9 +53,11 @@ export default class Form extends React.PureComponent<Props> {
     } = this.props;
     const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
-    const submitMarkup = implicitSubmit && (
-      <button type="submit" className={styles.submit} aria-hidden="true" />
-    );
+    const submitMarkup = implicitSubmit ? (
+      <VisuallyHidden>
+        <button type="submit" aria-hidden="true" />
+      </VisuallyHidden>
+    ) : null;
 
     return (
       <form

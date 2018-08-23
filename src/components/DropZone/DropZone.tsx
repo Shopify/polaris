@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import capitalize from 'lodash/capitalize';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {
@@ -13,9 +14,10 @@ import Stack from '../Stack';
 import Caption from '../Caption';
 import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
+import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import FileUpload from './components/FileUpload';
+import {FileUpload} from './components';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import IconAlertCircle from './icons/alert-circle.svg';
@@ -28,6 +30,7 @@ import * as styles from './DropZone.scss';
 export type Type = 'file' | 'image';
 
 export interface State {
+  id: string;
   size: string;
   type?: string;
   error?: boolean;
@@ -37,6 +40,14 @@ export interface State {
 }
 
 export interface Props {
+  /** Label for the file input */
+  label?: string;
+  /** Adds an action to the label */
+  labelAction?: Action;
+  /** Visually hide the label */
+  labelHidden?: boolean;
+  /** ID for file input */
+  id?: string;
   /** Allowed file types */
   accept?: string;
   /**
@@ -97,6 +108,8 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
+const getUniqueID = createUniqueIDFactory('DropZone');
+
 export class DropZone extends React.Component<CombinedProps, State> {
   public static FileUpload: typeof FileUpload = FileUpload;
   public static childContextTypes = {
@@ -109,6 +122,39 @@ export class DropZone extends React.Component<CombinedProps, State> {
     overlay: true,
     allowMultiple: true,
   };
+
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
+    const {id, error, type, overlayText, errorOverlayText} = prevState;
+    const newState: any = {};
+
+    if (nextProps.id != null && id !== nextProps.id) {
+      newState.id = nextProps.id || id;
+    }
+
+    if (nextProps.error != null && error !== nextProps.error) {
+      newState.error = nextProps.error;
+    }
+
+    if (nextProps.type != null && type !== nextProps.type) {
+      newState.type = nextProps.type;
+    }
+
+    if (
+      nextProps.overlayText != null &&
+      overlayText !== nextProps.overlayText
+    ) {
+      newState.overlayText = nextProps.overlayText;
+    }
+
+    if (
+      nextProps.errorOverlayText != null &&
+      errorOverlayText !== nextProps.errorOverlayText
+    ) {
+      newState.errorOverlayText = nextProps.errorOverlayText;
+    }
+
+    return Object.keys(newState).length ? newState : null;
+  }
 
   context: Partial<DropZoneContext>;
 
@@ -130,6 +176,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     this.state = {
       type,
+      id: props.id || getUniqueID(),
       size: 'extraLarge',
       dragging: false,
       error: false,
@@ -145,45 +192,19 @@ export class DropZone extends React.Component<CombinedProps, State> {
     };
   }
 
-  updateStateFromProps(props: CombinedProps) {
-    const {error, type, overlayText, errorOverlayText} = this.state;
-
-    if (error !== props.error) {
-      this.setState({error: props.error});
-    }
-
-    if (props.type && type !== props.type) {
-      this.setState({type: props.type});
-    }
-
-    if (props.overlayText && overlayText !== props.overlayText) {
-      this.setState({overlayText: props.overlayText});
-    }
-
-    if (props.errorOverlayText && errorOverlayText !== props.errorOverlayText) {
-      this.setState({errorOverlayText: props.errorOverlayText});
-    }
-
-    if (props.openFileDialog) {
-      this.open();
-
-      if (this.props.onFileDialogClose) {
-        this.props.onFileDialogClose();
-      }
-    }
-  }
-
-  componentWillReceiveProps(props: CombinedProps) {
-    this.updateStateFromProps(props);
-  }
-
-  componentWillMount() {
-    this.updateStateFromProps(this.props);
-  }
-
   render() {
-    const {dragging, error, size, overlayText, errorOverlayText} = this.state;
     const {
+      id,
+      dragging,
+      error,
+      size,
+      overlayText,
+      errorOverlayText,
+    } = this.state;
+    const {
+      label,
+      labelAction,
+      labelHidden,
       children,
       disabled,
       outline,
@@ -194,6 +215,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
     } = this.props;
 
     const inputAttributes: object = {
+      id,
       accept,
       disabled,
       type: 'file',
@@ -248,7 +270,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
-    return (
+    const dropZoneMarkup = (
       <div
         ref={this.setNode}
         className={classes}
@@ -263,6 +285,19 @@ export class DropZone extends React.Component<CombinedProps, State> {
           <input {...inputAttributes} />
         </VisuallyHidden>
       </div>
+    );
+
+    return label ? (
+      <Labelled
+        id={id}
+        label={label}
+        action={labelAction}
+        labelHidden={labelHidden}
+      >
+        {dropZoneMarkup}
+      </Labelled>
+    ) : (
+      dropZoneMarkup
     );
   }
 
@@ -280,6 +315,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
     addEventListener(this.dropNode, 'dragenter', this.handleDragEnter);
     addEventListener(this.dropNode, 'dragleave', this.handleDragLeave);
     addEventListener(window, 'resize', this.adjustSize);
+
+    if (this.props.openFileDialog) {
+      this.triggerFileDialog();
+    }
   }
 
   componentWillUnmount() {
@@ -292,6 +331,21 @@ export class DropZone extends React.Component<CombinedProps, State> {
     removeEventListener(this.dropNode, 'dragenter', this.handleDragEnter);
     removeEventListener(this.dropNode, 'dragleave', this.handleDragLeave);
     removeEventListener(window, 'resize', this.adjustSize);
+  }
+
+  componentDidUpdate() {
+    if (this.props.openFileDialog) {
+      this.triggerFileDialog();
+    }
+  }
+
+  @autobind
+  private triggerFileDialog() {
+    this.open();
+
+    if (this.props.onFileDialogClose) {
+      this.props.onFileDialogClose();
+    }
   }
 
   @autobind

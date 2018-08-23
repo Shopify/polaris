@@ -7,10 +7,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import * as styles from './Collapsible.scss';
 

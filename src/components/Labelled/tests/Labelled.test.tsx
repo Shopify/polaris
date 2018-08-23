@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
-import Labelled from '..';
+
+import InlineError from '../../InlineError';
 import Label from '../../Label';
 import {buttonFrom} from '../../Button';
+import Labelled from '../../Labelled';
 
 describe('<Labelled />', () => {
   it('passes relevant props along to the label', () => {
@@ -16,12 +18,28 @@ describe('<Labelled />', () => {
     expect(label.prop('children')).toBe('Label');
   });
 
-  it('renders error markup when provided with a value', () => {
-    const label = mountWithAppProvider(
-      <Labelled id="MyLabelled" label="Label" error="Error message" />,
-    );
+  describe('error', () => {
+    it('renders error markup when provided with a value', () => {
+      const label = mountWithAppProvider(
+        <Labelled id="MyLabelled" label="Label" error="Error message" />,
+      );
 
-    expect(label.find('#MyLabelledError').text()).toContain('Error message');
+      const error = label.find(InlineError);
+      expect(error).toHaveLength(1);
+      expect(error.text()).toContain('Error message');
+    });
+
+    it('renders no error markup when provided with a boolean value', () => {
+      const label = mountWithAppProvider(
+        <Labelled
+          id="MyLabelled"
+          label="Label"
+          error={Boolean('Error message')}
+        />,
+      );
+
+      expect(label.find(InlineError)).toHaveLength(0);
+    });
   });
 
   it('renders the content as a child outside of the label', () => {

@@ -18,6 +18,7 @@ keywords:
   - field label
   - long list of options
   - long option list
+  - separate error message
 ---
 
 # Select
@@ -126,6 +127,43 @@ class SelectExample extends React.Component {
 }
 ```
 
+### Select with inline label
+
+Use only for cases where the select must fit on a single line, such as in a toolbar.
+
+```jsx
+class InlineLabelExample extends React.Component {
+  state = {
+    selected: 'newestUpdate',
+  };
+
+  handleChange = (newValue) => {
+    this.setState({selected: newValue});
+  };
+
+  render() {
+    const options = [
+      {label: 'Newest update', value: 'newestUpdate'},
+      {label: 'Oldest update', value: 'oldestUpdate'},
+      {label: 'Most spent', value: 'mostSpent'},
+      {label: 'Most orders', value: 'mostOrders'},
+      {label: 'Last name A–Z', value: 'lastNameAlpha'},
+      {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
+    ];
+
+    return (
+      <Select
+        label="Sort by"
+        labelInline
+        options={options}
+        onChange={this.handleChange}
+        value={this.state.selected}
+      />
+    );
+  }
+}
+```
+
 ### Disabled select
 
 Use for selections that aren’t currently available. The surrounding interface should make it clear why the select box is disabled and how to activate it.
@@ -140,6 +178,119 @@ Use for selections that aren’t currently available. The surrounding interface 
     {label: 'Last 7 days', value: 'lastWeek'},
   ]}
 />
+```
+
+<!-- /content-for -->
+
+### Select with validation error
+
+<!-- example-for: web -->
+
+Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
+
+```jsx
+class ValidationErrorExample extends React.Component {
+  state = {
+    value: '',
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  render() {
+    return (
+      <Select
+        label="Province"
+        options={['Alberta']}
+        value={this.state.value}
+        onChange={this.handleChange}
+        error="Province is required"
+      />
+    );
+  }
+}
+```
+
+### Select with separate validation error
+
+Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
+
+When the `error` prop has a boolean value of `true`, the select component indicates to merchants that their input is invalid without rendering an error message directly below it. It anticipates that an inline error component exists separately within the form.
+
+To render an invalid select and its validation error separately:
+
+- Set a unique identifier to the select component `id` prop
+- Set a boolean to the select component `error` prop
+- Use an [inline error component](/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
+
+```jsx
+class SeparateValidationErrorExample extends React.Component {
+  state = {
+    weight: '12',
+    unit: '',
+  };
+
+  render() {
+    const {weight, unit} = this.state;
+    const unitSelectID = 'unit';
+    const errorMessage = this.generateErrorMessage();
+    const formGroupMarkup = (
+      <Stack vertical spacing="extraTight">
+        <FormLayout>
+          <FormLayout.Group condensed>
+            <TextField
+              label="Product weight"
+              type="number"
+              value={weight}
+              onChange={this.handleChange('weight')}
+              error={Boolean(!weight && unit)}
+            />
+            <Select
+              id={unitSelectID}
+              label="Unit of measure"
+              placeholder="Select"
+              options={['oz', 'g', 'kg', 'lb']}
+              value={unit}
+              onChange={this.handleChange('unit')}
+              error={Boolean(!unit && weight)}
+            />
+          </FormLayout.Group>
+        </FormLayout>
+        <InlineError message={errorMessage} fieldID={unitSelectID} />
+      </Stack>
+    );
+
+    return <Card sectioned>{formGroupMarkup}</Card>;
+  }
+
+  handleChange = (field) => (value) => {
+    this.setState({[field]: value});
+  };
+
+  generateErrorMessage = () => {
+    const {weight, unit} = this.state;
+    const weightError =
+      !weight && unit ? 'The numeric weight of the product ' : '';
+    const unitError =
+      !unit && weight ? 'The unit of measure for the product weight' : '';
+
+    if (!weightError && !unitError) {
+      return '';
+    }
+
+    return (
+      <span>
+        <TextStyle variation="negative">
+          <p>
+            {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
+            <Link>Manage shipping</Link>
+          </p>
+        </TextStyle>
+      </span>
+    );
+  };
+}
 ```
 
 ---

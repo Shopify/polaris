@@ -13,7 +13,7 @@ export default class Focus extends React.PureComponent<Props, never> {
       const root = ReactDOM.findDOMNode(this) as HTMLElement | null;
       if (root) {
         if (!root.querySelector('[autofocus]')) {
-          focusFirstFocusableNode(root);
+          focusFirstFocusableNode(root, false);
         }
       }
     });

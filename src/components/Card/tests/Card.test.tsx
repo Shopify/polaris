@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import Card from '../../Card';
-import Badge from '../../Badge/Badge';
+import Badge from '../../Badge';
 import {contentContextTypes} from '../../../types';
 
 describe('<Card />', () => {

@@ -1,12 +1,13 @@
 import {
+  ActionListItemDescriptor,
+  Action,
   IconableAction,
   DisableableAction,
-  LoadableAction,
   BadgeAction,
 } from '../../types';
-import {ItemDescriptor} from '../ActionList/types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
+import {Props as ButtonProps} from '../Button';
 
 export type SecondaryAction = IconableAction & DisableableAction;
 
@@ -16,11 +17,11 @@ export interface ActionGroup extends BadgeAction {
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** List of actions */
-  actions: ItemDescriptor[];
+  actions: ActionListItemDescriptor[];
   /** Action details */
   details?: React.ReactNode;
   /** Callback when any action takes place */
-  onActionAnyItem?: ItemDescriptor['onAction'];
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
 export interface ActionProps {
@@ -52,7 +53,7 @@ export interface HeaderProps {
   /** Collection of page-level groups of secondary actions */
   actionGroups?: ActionGroup[];
   /** Primary page-level action */
-  primaryAction?: DisableableAction & LoadableAction;
+  primaryAction?: Action & ButtonProps;
   /** Page-level pagination */
   pagination?: PaginationDescriptor;
 }

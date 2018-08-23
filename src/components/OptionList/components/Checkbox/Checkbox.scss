@@ -38,6 +38,12 @@
   }
 }
 
+.active {
+  .Backdrop {
+    @include control-backdrop(focused);
+  }
+}
+
 .Backdrop {
   @include control-backdrop;
   position: absolute;

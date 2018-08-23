@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
-import {ItemDescriptor} from '../../types';
+import {ActionListItemDescriptor} from '../../../../types';
 import Icon from '../../../Icon';
 import UnstyledLink from '../../../UnstyledLink';
 import Badge from '../../../Badge';
 
 import * as styles from '../../ActionList.scss';
 
-export type Props = ItemDescriptor;
+export type Props = ActionListItemDescriptor;
 
 export default function Item({
   badge,
@@ -19,9 +19,15 @@ export default function Item({
   image,
   disabled,
   external,
+  destructive,
   ellipsis,
 }: Props) {
-  const className = classNames(styles.Item, disabled && styles.disabled);
+  const className = classNames(
+    styles.Item,
+    disabled && styles.disabled,
+    destructive && styles.destructive,
+  );
+
   let imageElement = null;
 
   if (icon) {
@@ -72,7 +78,12 @@ export default function Item({
       {contentElement}
     </UnstyledLink>
   ) : (
-    <button onClick={onAction} className={className} disabled={disabled}>
+    <button
+      onClick={onAction}
+      className={className}
+      disabled={disabled}
+      type="button"
+    >
       {contentElement}
     </button>
   );

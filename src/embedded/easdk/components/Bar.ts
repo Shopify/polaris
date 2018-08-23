@@ -9,6 +9,7 @@ import {
   ActionGroup,
 } from '../transformers';
 import {
+  CallbackAction,
   ComplexAction,
   DisableableAction,
   LinkAction,
@@ -18,7 +19,7 @@ import {
 export interface UpdateConfig {
   title: string;
   icon?: string;
-  breadcrumbs?: LinkAction[];
+  breadcrumbs?: Array<CallbackAction | LinkAction>;
   primaryAction?: DisableableAction & LoadableAction;
   secondaryActions?: ComplexAction[];
   actionGroups?: ActionGroup[];

@@ -10,6 +10,8 @@ export {
   Props as AppProviderProps,
   polarisAppProviderContextTypes as polarisContextTypes,
   createPolarisContext,
+  withAppProvider,
+  WithAppProviderProps,
 } from './AppProvider';
 
 export {default as Avatar, Props as AvatarProps} from './Avatar';
@@ -116,6 +118,8 @@ export {default as Heading, Props as HeadingProps} from './Heading';
 export {default as Icon, Props as IconProps} from './Icon';
 
 export {default as Image, Props as ImageProps} from './Image';
+
+export {default as InlineError, Props as InlineErrorProps} from './InlineError';
 
 export {default as KeyboardKey, Props as KeyboardKeyProps} from './KeyboardKey';
 
