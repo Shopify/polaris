@@ -34,8 +34,6 @@ export interface Props {
   paginatedSelectAllText?: string;
   /** Action for selecting all across pages */
   paginatedSelectAllAction?: Action;
-  /** Disables bulk actions */
-  disabled?: boolean;
   /** Callback when the select all checkbox is clicked */
   onToggleAll?(): void;
   /** Callback when selectable state of list is changed */
@@ -162,7 +160,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       label = '',
       onToggleAll,
       selected,
-      disabled,
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
@@ -189,7 +186,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
         onClick={paginatedSelectAllAction.onAction}
         plain
         testID="paginated-action"
-        disabled={disabled}
       >
         {paginatedSelectAllAction.content}
       </Button>
@@ -306,7 +302,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
                 disclosure
                 onAction={this.toggleLargeScreenPopover}
                 content={activatorLabel}
-                disabled={disabled}
               />
             }
             onClose={this.toggleLargeScreenPopover}
@@ -326,7 +321,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       selectMode,
       onToggleAll,
       measuring,
-      disabled,
     };
 
     const smallScreenGroup = (

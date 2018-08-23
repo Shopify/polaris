@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ResourceList, Select, Spinner} from '../..';
+import {ResourceList, Select} from '../..';
 import EmptySearchResult from '../../EmptySearchResult';
 import {
   findByTestID,
@@ -465,21 +465,6 @@ describe('<ResourceList />', () => {
         trigger(resourceList.find(Select), 'onChange', 'PRODUCT_TITLE_DESC');
         expect(onSortChange).toHaveBeenCalledWith('PRODUCT_TITLE_DESC');
       });
-    });
-  });
-
-  describe('loading', () => {
-    it('renders a spinner', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          items={itemsWithID}
-          sortOptions={sortOptions}
-          renderItem={renderItem}
-          loading
-        />,
-      );
-
-      expect(resourceList.find(Spinner).exists()).toBe(true);
     });
   });
 });
