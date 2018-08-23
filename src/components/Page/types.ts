@@ -1,12 +1,13 @@
 import {
   ActionListItemDescriptor,
+  Action,
   IconableAction,
   DisableableAction,
-  LoadableAction,
   BadgeAction,
 } from '../../types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
+import {Props as ButtonProps} from '../Button';
 
 export type SecondaryAction = IconableAction & DisableableAction;
 
@@ -39,6 +40,8 @@ export interface ActionProps {
 export interface HeaderProps {
   /** Page title, in large type */
   title: string;
+  /** Page title metadata */
+  titleMetadata?: React.ReactNode;
   /** Visually hide the title */
   titleHidden?: boolean;
   /** App icon, for pages that are part of Shopify apps */
@@ -52,7 +55,7 @@ export interface HeaderProps {
   /** Collection of page-level groups of secondary actions */
   actionGroups?: ActionGroup[];
   /** Primary page-level action */
-  primaryAction?: DisableableAction & LoadableAction;
+  primaryAction?: Action & ButtonProps;
   /** Page-level pagination */
   pagination?: PaginationDescriptor;
 }

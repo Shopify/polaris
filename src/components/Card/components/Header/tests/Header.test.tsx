@@ -1,0 +1,66 @@
+import * as React from 'react';
+import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import ButtonGroup from '../../../../ButtonGroup';
+import Heading from '../../../../Heading';
+import {buttonsFrom} from '../../../../Button';
+import Header from '../Header';
+
+jest.mock('../../../../Button', () => ({
+  ...require.requireActual('../../../../Button'),
+  buttonsFrom: jest.fn(),
+}));
+
+const buttonsFromMock = buttonsFrom as jest.Mock;
+
+describe('<Header />', () => {
+  describe('title', () => {
+    it('renders a heading when defined', () => {
+      const header = mountWithAppProvider(<Header title="Staff accounts" />);
+      expect(header.find(Heading).exists()).toBeTruthy();
+    });
+
+    it('renders the title directly if its a valid React element', () => {
+      const title = <div>Staff accounts</div>;
+      const header = mountWithAppProvider(<Header title={title} />);
+      expect(header.find(Heading).exists()).toBeFalsy();
+      expect(header.find(title)).toBeTruthy();
+    });
+
+    it('is used as the content for the heading', () => {
+      const title = 'Staff accounts';
+      const header = mountWithAppProvider(<Header title={title} />);
+      expect(header.find(Heading).prop('children')).toBe(title);
+    });
+  });
+
+  describe('actions', () => {
+    const mockActions = [{content: 'Preview'}];
+
+    it('renders a button group when defined', () => {
+      const header = mountWithAppProvider(<Header actions={mockActions} />);
+      expect(header.find(ButtonGroup).exists()).toBeTruthy();
+    });
+
+    it('renders buttons for each action', () => {
+      mountWithAppProvider(<Header actions={mockActions} />);
+      expect(buttonsFromMock).toBeCalledWith(mockActions, expect.anything());
+    });
+
+    it('does not render a button group when not defined', () => {
+      const header = mountWithAppProvider(<Header />);
+      expect(header.find(ButtonGroup).exists()).toBeFalsy();
+    });
+  });
+
+  describe('children', () => {
+    it('renders when defined', () => {
+      const Children = () => <div>Hello!</div>;
+      const header = mountWithAppProvider(
+        <Header>
+          <Children />
+        </Header>,
+      );
+      expect(header.find(Children).exists()).toBeTruthy();
+    });
+  });
+});

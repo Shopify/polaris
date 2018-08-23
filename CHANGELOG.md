@@ -1,10 +1,18 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
-The format is based on [these versioning and changelog guidelines][changelog-guidelines].
+---
 
-<!-- ## Unreleased -->
+## Unreleased
+
+- Adjusted spacing for `ChoiceChildren` in choice list for readability
+- Made `Card.Header` a seperate publically accessible component
+
+### Enhancements
+
+- Updated the page component's primary action to support `Button` props.
+- Added validation for non-numeric input in a type="number" `TextField`
 
 ## 2.6.1 - 2018-08-21
 
@@ -26,6 +34,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 
 ### Enhancements
 
+- Added support for `titleMetadata` in `Page` component
 - Added support for `FilterType.DateSelector` in `ResourceList` component
 - Added `code` as an accepted `variation` of the text style component to provide support for accessible markup and styling of inline code snippets and code-like text
 - Added new `border-width` SCSS function
@@ -908,5 +917,3 @@ Various documentation fixes.
 ## 1.0.0 - 2017-04-20
 
 - Initial release
-
-[changelog-guidelines]: https://github.com/Shopify/polaris/blob/master/documentation/Versioning%20and%20changelog.md

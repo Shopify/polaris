@@ -17,6 +17,7 @@ $control-size: rem(16px);
 }
 
 .ChoiceChildren {
+  margin-bottom: spacing(tight);
   padding-left: spacing(tight) + $control-size;
 }
 
