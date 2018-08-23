@@ -47,12 +47,11 @@ describe('<Card />', () => {
   });
 
   it('exposes the header component', () => {
-    const title = 'Staff members';
     const card = mountWithAppProvider(
       <Card>
-        <Card.Header title={title} />
+        <Card.Header />
       </Card>,
     );
-    expect(card.text()).toContain(title);
+    expect(card.find(Card.Header).exists()).toBeTruthy();
   });
 });
