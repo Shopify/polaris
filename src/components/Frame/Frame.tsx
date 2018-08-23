@@ -10,6 +10,7 @@ import {
   ToastProps,
   withAppProvider,
   WithAppProviderProps,
+  Backdrop,
 } from '..';
 import {dataPolarisTopBar, layer} from '../shared';
 import {TrapFocus} from '../Focus';
@@ -184,11 +185,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const navigationOverlayClassName = classNames(
-      styles.NavigationOverlay,
-      showMobileNavigation && styles['NavigationOverlay-covering'],
-    );
-
     const skipClassName = classNames(
       styles.Skip,
       skipFocused && styles.focused,
@@ -218,6 +214,15 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       topBar && styles.hasTopBar,
     );
 
+    const navigationOverlayMarkup =
+      showMobileNavigation && mobileView ? (
+        <Backdrop
+          belowNavigation
+          onClick={this.handleNavigationDismiss}
+          onTouchStart={this.handleNavigationDismiss}
+        />
+      ) : null;
+
     return (
       <div
         className={frameClassName}
@@ -228,11 +233,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         {topBarMarkup}
         {contextualSaveBarMarkup}
         {loadingMarkup}
-        <div
-          className={navigationOverlayClassName}
-          onClick={this.handleNavigationDismiss}
-          onTouchStart={this.handleNavigationDismiss}
-        />
+        {navigationOverlayMarkup}
         {navigationMarkup}
         <main
           className={styles.Main}

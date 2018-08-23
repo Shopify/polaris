@@ -9,6 +9,7 @@ import {
 import Intl from '../Intl';
 import Link from '../Link';
 import StickyManager from '../StickyManager';
+import ScrollLockManager from '../ScrollLockManager';
 
 describe('translate()', () => {
   it('returns a simple string value in the translation dictionary', () => {
@@ -55,6 +56,7 @@ describe('createPolarisContext()', () => {
         intl: new Intl(undefined),
         link: new Link(),
         stickyManager: new StickyManager(),
+        scrollLockManager: new ScrollLockManager(),
       },
       easdk: undefined,
     };
@@ -74,16 +76,19 @@ describe('createPolarisContext()', () => {
       return <a href="test">Custom Link Component</a>;
     };
     const stickyManager = new StickyManager();
+    const scrollLockManager = new ScrollLockManager();
     const context = createPolarisContext({
       i18n,
       linkComponent: CustomLinkComponent,
       stickyManager,
+      scrollLockManager,
     });
     const mockContext = {
       polaris: {
         intl: new Intl(i18n),
         link: new Link(CustomLinkComponent),
         stickyManager,
+        scrollLockManager,
       },
     };
 

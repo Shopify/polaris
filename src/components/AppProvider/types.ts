@@ -6,6 +6,7 @@ import Intl from './Intl';
 import Link from './Link';
 import EASDK from './EASDK';
 import StickyManager from './StickyManager';
+import ScrollLockManager from './ScrollLockManager';
 import {THEME_CONTEXT_TYPES as theme, ThemeContext} from '../ThemeProvider';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
@@ -20,6 +21,7 @@ export interface WithAppProviderProps {
     link: Link;
     easdk: EASDK;
     stickyManager: StickyManager;
+    scrollLockManager: ScrollLockManager;
     theme: ThemeContext;
     subscribe(callback: () => void): void;
     unsubscribe(callback: () => void): void;
@@ -40,6 +42,7 @@ export interface ComplexReplacementDictionary {
 
 export interface CreatePolarisContext extends AppProviderProps {
   stickyManager?: StickyManager;
+  scrollLockManager?: ScrollLockManager;
   subscribe?(callback: () => void): void;
   unsubscribe?(callback: () => void): void;
 }

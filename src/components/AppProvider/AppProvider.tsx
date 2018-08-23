@@ -7,6 +7,7 @@ import {LinkLikeComponent} from '../UnstyledLink';
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
+import ScrollLockManager from './ScrollLockManager';
 import {createPolarisContext} from './utils';
 import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
 import ThemeProvider, {Theme} from '../ThemeProvider';
@@ -33,6 +34,7 @@ export interface Context {
     intl: Intl;
     link: Link;
     stickyManager: StickyManager;
+    scrollLockManager: ScrollLockManager;
     subscribe?(callback: () => void): void;
     unsubscribe?(callback: () => void): void;
   };
@@ -43,15 +45,18 @@ export default class AppProvider extends React.Component<Props> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
   private stickyManager: StickyManager;
+  private scrollLockManager: ScrollLockManager;
   private subscriptions: {(): void}[] = [];
 
   constructor(props: Props) {
     super(props);
     this.stickyManager = new StickyManager();
+    this.scrollLockManager = new ScrollLockManager();
     const {theme, children, ...rest} = this.props;
     this.polarisContext = createPolarisContext({
       ...rest,
       stickyManager: this.stickyManager,
+      scrollLockManager: this.scrollLockManager,
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
     });

@@ -19,6 +19,7 @@ import Link from '../Link';
 import {Context} from '../AppProvider';
 import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
+import ScrollLockManager from '../ScrollLockManager';
 
 import packageJSON from '../../../../package.json';
 
@@ -193,6 +194,7 @@ export function createPolarisContext({
   forceRedirect,
   debug,
   stickyManager,
+  scrollLockManager,
   subscribe,
   unsubscribe,
 }: CreatePolarisContext = {}): Context {
@@ -216,6 +218,7 @@ export function createPolarisContext({
       intl,
       link,
       stickyManager: stickyManager || new StickyManager(),
+      scrollLockManager: scrollLockManager || new ScrollLockManager(),
       subscribe,
       unsubscribe,
     },
