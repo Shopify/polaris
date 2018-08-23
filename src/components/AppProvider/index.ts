@@ -10,4 +10,6 @@ export {
 export {Options, User, Messages} from './EASDK';
 export {LinkLikeComponent} from '../UnstyledLink';
 export * from './types';
+export {SCROLL_LOCKING_ATTRIBUTE} from './ScrollLockManager';
+
 export default AppProvider;

@@ -15,6 +15,10 @@ $backdrop-color: rgba(33, 43, 54, 0.4);
   will-change: opacity;
 }
 
+.belowNavigation {
+  z-index: z-index(nav-backdrop, $fixed-element-stacking-order);
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;

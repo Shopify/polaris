@@ -217,6 +217,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     const navigationOverlayMarkup =
       showMobileNavigation && mobileView ? (
         <Backdrop
+          belowNavigation
           onClick={this.handleNavigationDismiss}
           onTouchStart={this.handleNavigationDismiss}
         />
