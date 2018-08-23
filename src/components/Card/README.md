@@ -34,14 +34,14 @@ easier for merchants to scan, read, and get things done.
 
 Cards should:
 
-* Use headings that set clear expectations about the card’s purpose
-* Prioritize information so the content the merchant most needs to know comes
+- Use headings that set clear expectations about the card’s purpose
+- Prioritize information so the content the merchant most needs to know comes
   first
-* Stick to single user flows or break more complicated flows into multiple
+- Stick to single user flows or break more complicated flows into multiple
   sections
-* Avoid too many call-to-action buttons or links and only one primary call to
+- Avoid too many call-to-action buttons or links and only one primary call to
   action per card
-* Use calls to action on the bottom of the card for next steps and use the
+- Use calls to action on the bottom of the card for next steps and use the
   space in the upper right corner of the card for persistent, optional actions
   (e.g. an Edit link)
 
@@ -53,15 +53,15 @@ Cards should:
 
 Headings should be:
 
-* Descriptive: Help merchants understand what they’ll find in the card
-* Concise and scannable:
-  * Use simple, clear language that can be read at a glance
-  * Keep headings to single sentence and avoid using punctuation such as
+- Descriptive: Help merchants understand what they’ll find in the card
+- Concise and scannable:
+  - Use simple, clear language that can be read at a glance
+  - Keep headings to single sentence and avoid using punctuation such as
     periods, commas, or semicolons
-  * Where possible, avoid articles (the, a, an) to keep content short and
+  - Where possible, avoid articles (the, a, an) to keep content short and
     actionable
-  * Written in sentence case
-  * Informative: They should label the type of content grouped in the body
+  - Written in sentence case
+  - Informative: They should label the type of content grouped in the body
     content below
 
 <!-- usagelist -->
@@ -80,7 +80,7 @@ This is your online store dashboard
 
 Body content should be:
 
-* Actionable: start sentences with imperative verbs when telling a merchant what
+- Actionable: start sentences with imperative verbs when telling a merchant what
   actions are available to them (especially something new). Don’t use permissive
   language like “you can”.
 
@@ -96,9 +96,9 @@ Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
-* Structured for merchant success: always put the most critical information
+- Structured for merchant success: always put the most critical information
   first.
-* Clear: use the verb “need” to help merchants understand when they’re required
+- Clear: use the verb “need” to help merchants understand when they’re required
   to do something.
 
 <!-- usagelist -->
@@ -119,20 +119,20 @@ including packaging.
 
 Buttons should be:
 
-* Clear and predictable: merchants should be able to anticipate what will happen
+- Clear and predictable: merchants should be able to anticipate what will happen
   when they click a button. Never deceive a merchant by mislabeling a button.
 
 <!-- usagelist -->
 
 #### Do
 
-* Create order
-* Buy shipping label
+- Create order
+- Buy shipping label
 
 #### Don’t
 
-* New order
-* Buy
+- New order
+- Buy
 
 <!-- end -->
 
@@ -144,13 +144,13 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 #### Do
 
-* Activate Apple Pay
-* View shipping settings
+- Activate Apple Pay
+- View shipping settings
 
 #### Don’t
 
-* Try Apple Pay
-* View your settings
+- Try Apple Pay
+- View your settings
 
 <!-- end -->
 
@@ -172,22 +172,22 @@ Add a menu item
 
 Section titles should be:
 
-* Informative: they should label the type of content grouped in the body
+- Informative: they should label the type of content grouped in the body
   content below
-* Like headings: follow the same content guidelines as when you’re writing
+- Like headings: follow the same content guidelines as when you’re writing
   headings
 
 ### Action links
 
 Links should be:
 
-* Used for secondary or persistent actions: links should be used to represent
+- Used for secondary or persistent actions: links should be used to represent
   lower priority actions than buttons, or persistent actions that a merchant may
   take at any time (e.g. a persistent Edit link).
-* Clearly labeled: merchants should not need to guess where they’ll end up if
+- Clearly labeled: merchants should not need to guess where they’ll end up if
   they click on an action link. Never use “click here” as a link because it
   doesn’t set expectations about what’s next.
-* Similar to buttons: Follow the same content guidelines as when you’re writing
+- Similar to buttons: Follow the same content guidelines as when you’re writing
   text for buttons.
 
 ---
@@ -237,8 +237,8 @@ Use for less important card actions, or actions the merchant may do before revie
 
 Use for less important card actions, or actions the merchant may do before reviewing the contents of the card.
 
-* Use an icon for the action, if possible
-* Include no more than 2 actions
+- Use an icon for the action, if possible
+- Include no more than 2 actions
 
 <!-- /content-for -->
 
@@ -281,8 +281,8 @@ Use footer actions for a card’s most important actions, or actions merchants s
 
 Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card.
 
-* Use buttons with labels
-* If you have more than 2 actions, consider using an overflow menu on the card
+- Use buttons with labels
+- If you have more than 2 actions, consider using an overflow menu on the card
 
 <!-- /content-for -->
 
@@ -440,5 +440,5 @@ Use to be able to use custom React elements as header content.
 
 ## Related components
 
-* To create page-level layout, [use the layout component](/components/structure/layout)
-* To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
+- To create page-level layout, [use the layout component](/components/structure/layout)
+- To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
