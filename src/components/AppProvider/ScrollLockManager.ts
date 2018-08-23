@@ -1,4 +1,5 @@
 export const SCROLL_LOCKING_ATTRIBUTE = 'data-lock-scrolling';
+export const SCROLL_LOCKING_CUSTOM_PROPERTY = '--scroll-lock-body-padding';
 
 export default class ScrollLockManager {
   private scrollLocks: number = 0;
@@ -18,11 +19,13 @@ export default class ScrollLockManager {
     const {scrollLocks, body} = this;
     if (scrollLocks === 0) {
       body.removeAttribute(SCROLL_LOCKING_ATTRIBUTE);
-      body.removeAttribute('style');
+      body.style.setProperty(SCROLL_LOCKING_CUSTOM_PROPERTY, '0px');
     } else if (scrollLocks > 0) {
       const scrollPosition = window.scrollY;
-
-      body.style.paddingRight = `${scrollBarPadding()}px`;
+      body.style.setProperty(
+        SCROLL_LOCKING_CUSTOM_PROPERTY,
+        `${scrollBarPadding()}px`,
+      );
       body.setAttribute(SCROLL_LOCKING_ATTRIBUTE, '');
       body.scrollTop = scrollPosition;
     }
