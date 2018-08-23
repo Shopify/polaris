@@ -94,7 +94,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       accessibilityLabel,
     } = this.props as CombinedProps;
 
-    const {selectable, selectMode, loading} = this.context;
+    const {selectable, selectMode} = this.context;
 
     const {actionsMenuVisible, focused, focusedInner} = this.state;
 
@@ -136,7 +136,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
               labelHidden
               onChange={this.handleSelection}
               checked={selected}
-              disabled={loading}
             />
           </div>
         </div>
