@@ -35,7 +35,7 @@ Tags are either automatically generated or are created by merchants. There are n
 
 ### Default tag
 
-Use to add attributes to, and remove attributes from, an object.
+Use to allow merchants to add attributes to, and remove attributes from, an object.
 
 ```jsx
 <Tag>Wholesale</Tag>
