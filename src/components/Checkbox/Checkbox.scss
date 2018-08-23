@@ -80,4 +80,8 @@
   transform: translate(-50%, -50%) scale(0);
   transform-origin: 50% 50%;
   transition: control-icon-transition();
+
+  @media (-ms-high-contrast: active) {
+    fill: ms-high-contrast-color('text');
+  }
 }

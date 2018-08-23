@@ -139,6 +139,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .Content {
   padding: spacing(extra-tight) 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .Ribbon {

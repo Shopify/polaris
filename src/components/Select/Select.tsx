@@ -2,7 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import Labelled, {Action, helpTextID, errorID} from '../Labelled';
+import Labelled, {Action, helpTextID} from '../Labelled';
 import Icon from '../Icon';
 import {Error} from '../../types';
 
@@ -61,7 +61,7 @@ export interface BaseProps {
   /** Value for form input */
   value?: string;
   /** Display an error state */
-  error?: Error;
+  error?: Error | boolean;
   /** Callback when selection is changed */
   onChange?(selected: string, id: string): void;
   /** Callback when select is focussed */
@@ -111,7 +111,7 @@ export default function Select({
     describedBy.push(helpTextID(id));
   }
   if (error) {
-    describedBy.push(errorID(id));
+    describedBy.push(`${id}Error`);
   }
 
   if (groupsProp != null) {

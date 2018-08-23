@@ -37,6 +37,7 @@ keywords:
   - connected fields
   - label actions
   - hidden labels
+  - separate error message
 ---
 
 # Text field
@@ -456,7 +457,7 @@ class ConnectedFieldsExample extends React.Component {
 }
 ```
 
-### Text field with validation errors
+### Text field with validation error
 
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
 
@@ -483,6 +484,84 @@ class ValidationErrorExample extends React.Component {
 }
 ```
 
+### Text field with separate validation error
+
+Use to let merchants know when their text field input is invalid in the context of a group of form inputs that the text field depends on.
+
+When the `error` prop has a boolean value of `true`, the text field component indicates to merchants that their input is invalid without rendering an error message directly below it. It anticipates that an inline error component exists separately within the form.
+
+To render an invalid text field and its validation error separately:
+
+- Set a unique identifier on the text field component `id` prop
+- Set a boolean on the text field component `error` prop
+- Use an [inline error component](/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component's `id`
+
+```jsx
+class SeparateValidationErrorExample extends React.Component {
+  state = {
+    content: '',
+  };
+
+  render() {
+    const {content} = this.state;
+    const textFieldID = 'ruleContent';
+    const isInvalid = this.isInvalid(content);
+    const errorMessage = isInvalid
+      ? 'Enter 3 or more characters for product type is equal to'
+      : '';
+
+    const formGroupMarkup = (
+      <Stack wrap={false} alignment="leading" spacing="tight">
+        <Stack.Item fill>
+          <Stack distribution="fill" spacing="tight">
+            <Select
+              labelHidden
+              label="Collection rule type"
+              options={['Product type']}
+            />
+            <Select
+              labelHidden
+              label="Collection rule condition"
+              options={['is equal to']}
+            />
+            <TextField
+              labelHidden
+              label="Collection rule content"
+              error={isInvalid}
+              id={textFieldID}
+              value={content}
+              onChange={this.handleChange}
+            />
+          </Stack>
+          <div style={{marginTop: '4px'}}>
+            <InlineError message={errorMessage} fieldID={textFieldID} />
+          </div>
+        </Stack.Item>
+        <Button icon="delete" />
+      </Stack>
+    );
+
+    return (
+      <Card sectioned>
+        <FormLayout>{formGroupMarkup}</FormLayout>
+      </Card>
+    );
+  }
+
+  handleChange = (content) => {
+    this.setState({content});
+  };
+
+  isInvalid = (content) => {
+    if (!content) {
+      return true;
+    }
+
+    return content.length < 3;
+  };
+}
+```
+
 ### Disabled text field
 
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
@@ -495,4 +574,5 @@ Use to show that a textfield is not available for interaction. Most often used i
 
 ## Related components
 
-- To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout)
+- To lay out the elements of a responsive form, [use the form layout component](/components/forms/form-layout)
+- To describe an invalid form input with a separate validation error, [use the inline error component](/components/forms/inline-error)
