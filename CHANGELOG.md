@@ -7,6 +7,7 @@ The format is based on [these versioning and changelog guidelines][changelog-gui
 ## Unreleased
 
 - Adjusted spacing for `ChoiceChildren` in choice list for readability ([#2016](https://github.com/Shopify/polaris-react/pull/2016))
+- Made `Card.Header` a seperate publically accessible component ([#1946](https://github.com/Shopify/polaris-react/pull/1946))
 
 ### Enhancements
 
