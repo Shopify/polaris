@@ -29,8 +29,8 @@ export default function Header({children, title, actions}: Props) {
     actionMarkup || children ? (
       <Stack alignment="baseline">
         <Stack.Item fill>{titleMarkup}</Stack.Item>
-        {children}
         {actionMarkup}
+        {children}
       </Stack>
     ) : (
       titleMarkup
