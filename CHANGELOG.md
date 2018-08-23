@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to format new entries. 💜
 
-The format is based on [these versioning and changelog guidelines][changelog-guidelines].
+---
 
 ## Unreleased
 
@@ -917,5 +917,3 @@ Various documentation fixes.
 ## 1.0.0 - 2017-04-20
 
 - Initial release
-
-[changelog-guidelines]: https://github.com/Shopify/polaris/blob/master/documentation/Versioning%20and%20changelog.md
