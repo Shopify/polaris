@@ -64,6 +64,7 @@ export {
   HSBLAColor,
   rgbToHex,
   rgbToHsb,
+  rgbToHsl,
   hsbToRgb,
   hsbToHex,
   rgbString,
