@@ -23,6 +23,21 @@
   }
 }
 
+.HeaderWrapper-disabled {
+  pointer-events: none;
+}
+
+.HeaderWrapper-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: resource-list(header-overlay-stacking-order);
+  background-color: color('white');
+  opacity: 0.5;
+}
+
 .FiltersWrapper + .HeaderOuterWrapper {
   margin-top: -1 * spacing();
 }
@@ -182,4 +197,34 @@
   + .ItemWrapper {
     border-top: border();
   }
+}
+
+.Spinner {
+  position: absolute;
+  z-index: z-index(overlay) + 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.Loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.overlay {
+  opacity: 0.5;
+  background-color: color('white');
+  z-index: resource-list(list-stacking-order);
+}
+
+.disabled {
+  pointer-events: none;
 }

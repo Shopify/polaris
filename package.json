@@ -13,11 +13,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": [
-    "**/*.css",
-    "**/*.scss",
-    "**/configure.js"
-  ],
   "keywords": [
     "shopify",
     "polaris",
@@ -68,6 +63,7 @@
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
     "tophat": "yarn run copy-polaris-tokens && node ./tophat/index.js --watch",
     "test:percy": "node ./tophat/snapshots.js",
+    "test:a11y": "node ./scripts/pa11y.js",
     "start": "node ./tophat/index.js",
     "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets"
   },
@@ -93,6 +89,7 @@
     "@babel/standalone": "^7.0.0-beta.51",
     "@percy/puppeteer": "^0.3.2",
     "@shopify/js-uploader": "github:shopify/js-uploader",
+    "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-serialize": "^1.0.6",
     "@types/enzyme": "^3.1.10",
     "@types/jest": "^21.1.2",
@@ -143,6 +140,8 @@
     "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
+    "object-hash": "^1.3.0",
+    "pa11y": "^5.0.4",
     "postcss": "^6.0.1",
     "postcss-loader": "^2.0.5",
     "postcss-modules-extract-imports": "^1.1.0",
