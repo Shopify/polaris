@@ -7,3 +7,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Clarified when and how to use icons in the banner component ([#2106](https://github.com/Shopify/polaris-react/pull/2106))
+
+### Bug fixes
+
+- Fixed `EmptyState` horizontally scrolling when fully condensed ([#2062](https://github.com/Shopify/polaris-react/pull/2062))
