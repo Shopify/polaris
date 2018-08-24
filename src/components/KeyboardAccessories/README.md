@@ -40,11 +40,15 @@ Keyboard accessories should:
 Use the action accessories to add actions that are relevant to what the merchant is entering on the screen.
 
 <!-- content-for: android -->
-<!-- Image -->
+
+![Keyboard accessory with actions](components/KeyboardAccessories/android/toolbar.png)
+
 <!-- /content-for -->
 
 <!-- content-for: ios -->
-<!-- Image -->
+
+![Keyboard accessory with actions](components/KeyboardAccessories/ios/toolbar.png)
+
 <!-- /content-for -->
 
 ### Keyboard accessories with text field
@@ -54,11 +58,15 @@ Use the action accessories to add actions that are relevant to what the merchant
 Use to make message entry easier in messaging and chat-based products.
 
 <!-- content-for: android -->
-<!-- Image -->
+
+![Keyboard accessory with text field](components/KeyboardAccessories/android/text-field.png)
+
 <!-- /content-for -->
 
 <!-- content-for: ios -->
-<!-- Image -->
+
+![Keyboard accessory with text field](components/KeyboardAccessories/ios/text-field.png)
+
 <!-- /content-for -->
 
 ---
