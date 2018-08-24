@@ -14,6 +14,10 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated the page component's primary action to support `Button` props. ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
 - Added validation for non-numeric input in a type="number" `TextField` ([#2001](https://github.com/Shopify/polaris-react/pull/2001))
 
+### Documentation
+
+- Updated banner guidelines to make it clearer when success banners should be used vs success toasts.  ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
+
 ## 2.6.1 - 2018-08-21
 
 ### Development workflow
