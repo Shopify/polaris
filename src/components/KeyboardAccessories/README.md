@@ -14,7 +14,7 @@ keywords:
 
 # Keyboard accessories
 
-On iOS and Android you have software keyboards appearing on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. Example when updating a description and you want controls for bolding, italicizing, and underlining.
+On iOS and Android, software keyboards appear on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. For example, when the merchant is updating a description and needs controls for bolding, italicizing, and underlining.
 
 ---
 
@@ -25,9 +25,9 @@ Keyboard accessories should:
 - Have a maximum height of:
   - 44pt on iOS
   - 48dp on Android
-- Consider a horizontally swipeable interaction if you have many actions or a lot of content
+- Include a horizontally swipeable interaction if there is a lot of content or a large number of actions you need to make available to merchants
   - Provide an easy hint or introduction to make the merchant aware of the swipe interaction
-- Make actions grouped and expandable if possible. By doing this, you’ll reduce visual noise and complexity for the merchant
+- Make actions grouped and expandable if possible, in order to reduce visual noise and complexity for the merchant
 
 ---
 
@@ -37,7 +37,7 @@ Keyboard accessories should:
 
 <!-- example-for: ios, android -->
 
-Use the action accessories to add actions that are relevant to whatever it is that you’re entering on the screen.
+Use the action accessories to add actions that are relevant to what the merchant is entering on the screen.
 
 <!-- content-for: android -->
 <!-- Image -->
@@ -51,7 +51,7 @@ Use the action accessories to add actions that are relevant to whatever it is th
 
 <!-- example-for: ios, android -->
 
-For messaging and chat-based products you can use the keyboard accessory to make message entry easier.
+Use to make message entry easier in messaging and chat-based products.
 
 <!-- content-for: android -->
 <!-- Image -->
