@@ -94,11 +94,15 @@ Use for a text-only list of related items that don’t need to be in a specific 
 ```
 
 <!-- content-for: android -->
-<!-- Image -->
+
+![Bulleted list on Android](components/List/android/bullets.png)
+
 <!-- /content-for -->
 
 <!-- content-for: ios -->
-<!-- Image -->
+
+![Bulleted list on iOS](components/List/ios/bullets.png)
+
 <!-- /content-for -->
 
 ### Numbered list
@@ -114,11 +118,15 @@ Use for a text-only list of related items when an inherent order, priority, or s
 ```
 
 <!-- content-for: android -->
-<!-- Image -->
+
+![Numbered list on Android](components/List/android/numbered.png)
+
 <!-- /content-for -->
 
 <!-- content-for: ios -->
-<!-- Image -->
+
+![Numbered list on iOS](components/List/ios/numbered.png)
+
 <!-- /content-for -->
 
 ---
