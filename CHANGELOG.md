@@ -89,6 +89,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added examples for iOS and Android buttons ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
 - Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
 - Added examples for iOS and Android badge ([#1892](https://github.com/Shopify/polaris-react/pull/1892))
+- Added examples for iOS and Android avatar ([#1904](https://github.com/Shopify/polaris-react/pull/1904))
 - Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
 
 ### New components
