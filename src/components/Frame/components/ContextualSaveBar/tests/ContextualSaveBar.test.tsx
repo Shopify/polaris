@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider, trigger} from '../../../../../../tests/utilities';
 import {createThemeContext, ThemeContext} from '../../../../ThemeProvider';
 import {
   createAppProviderContext,
   Button,
   Image,
+  Modal,
 } from '../../../../../components';
 import {polarisAppProviderContextTypes} from '../../../../AppProvider';
 import ContextualSaveBar from '../ContextualSaveBar';
@@ -28,6 +29,52 @@ describe('<ContextualSaveBar />', () => {
       const button = contextualSaveBar.find(Button);
       expect(button.prop('onClick')).toBe(discardAction.onAction);
       expect(button.prop('children')).toBe(discardAction.content);
+    });
+
+    it('calls the discardAction when discardConfirmationModal is false', () => {
+      const discardAction = {
+        content: 'Discard',
+        onAction: jest.fn(),
+        discardConfirmationModal: false,
+      };
+
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+      );
+
+      contextualSaveBar.find(Button).simulate('click');
+      expect(discardAction.onAction).toHaveBeenCalled();
+    });
+
+    it('does not call the discardAction when discardConfirmationModal is true', () => {
+      const discardAction = {
+        content: 'Discard',
+        onAction: jest.fn(),
+        discardConfirmationModal: true,
+      };
+
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+      );
+
+      contextualSaveBar.find(Button).simulate('click');
+      expect(discardAction.onAction).not.toHaveBeenCalled();
+    });
+
+    it('opens a modal with the discardAction when discardConfirmationModal is true', () => {
+      const discardAction = {
+        content: 'Discard',
+        onAction: jest.fn(),
+        discardConfirmationModal: true,
+      };
+
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+      );
+
+      contextualSaveBar.find(Button).simulate('click');
+      trigger(contextualSaveBar.find(Modal), 'primaryAction.onAction');
+      expect(discardAction.onAction).toHaveBeenCalled();
     });
   });
 

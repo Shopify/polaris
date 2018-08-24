@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 import {classNames} from '@shopify/react-utilities/styles';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Button, Image, Stack, ContextualSaveBarProps} from '../../..';
+import {DiscardConfirmationModal} from './components';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {getWidth} from '../../../../utilities/getWidth';
 
@@ -10,76 +12,122 @@ import * as styles from './ContextualSaveBar.scss';
 export type Props = ContextualSaveBarProps;
 export type CombinedProps = Props & WithAppProviderProps;
 
-function ContextualSaveBar({
-  message,
-  visible,
-  discardAction,
-  saveAction,
-  polaris: {
-    theme: {logo},
-    intl,
-  },
-}: CombinedProps) {
-  const className = classNames(
-    styles.ContextualSaveBar,
-    visible && styles.visible,
-  );
+export interface State {
+  discardConfirmationModalVisible: boolean;
+}
 
-  const discardActionContent =
-    discardAction && discardAction.content
-      ? discardAction.content
-      : intl.translate('Polaris.ContextualSaveBar.discard');
+class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
+  state: State = {
+    discardConfirmationModalVisible: false,
+  };
 
-  const discardActionMarkup = discardAction && (
-    <Button
-      url={discardAction.url}
-      onClick={discardAction.onAction}
-      loading={discardAction.loading}
-      disabled={discardAction.disabled}
-      accessibilityLabel={discardAction.content}
-    >
-      {discardActionContent}
-    </Button>
-  );
+  render() {
+    const {discardConfirmationModalVisible} = this.state;
 
-  const saveActionContent =
-    saveAction && saveAction.content
-      ? saveAction.content
-      : intl.translate('Polaris.ContextualSaveBar.save');
+    const {
+      message,
+      visible,
+      discardAction,
+      saveAction,
+      polaris: {
+        theme: {logo},
+        intl,
+      },
+    } = this.props;
 
-  const saveActionMarkup = saveAction && (
-    <Button
-      primary
-      url={saveAction.url}
-      onClick={saveAction.onAction}
-      loading={saveAction.loading}
-      disabled={saveAction.disabled}
-      accessibilityLabel={saveAction.content}
-    >
-      {saveActionContent}
-    </Button>
-  );
+    const className = classNames(
+      styles.ContextualSaveBar,
+      visible && styles.visible,
+    );
 
-  const width = getWidth(logo, 104);
+    const discardActionContent =
+      discardAction && discardAction.content
+        ? discardAction.content
+        : intl.translate('Polaris.ContextualSaveBar.discard');
 
-  const imageMarkup = logo && (
-    <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
-  );
+    let discardActionHandler;
+    if (discardAction && discardAction.discardConfirmationModal) {
+      discardActionHandler = this.toggleDiscardConfirmationModal;
+    } else if (discardAction) {
+      discardActionHandler = discardAction.onAction;
+    }
 
-  return (
-    <div className={className}>
-      <div className={styles.LogoContainer} style={{width}}>
-        {imageMarkup}
-      </div>
-      <div className={styles.Contents}>
-        <h2 className={styles.Message}>{message}</h2>
-        <Stack spacing="tight" wrap={false}>
-          {discardActionMarkup}
-          {saveActionMarkup}
-        </Stack>
-      </div>
-    </div>
-  );
+    const discardConfirmationModalMarkup = discardAction &&
+      discardAction.onAction &&
+      discardAction.discardConfirmationModal && (
+        <DiscardConfirmationModal
+          open={discardConfirmationModalVisible}
+          onCancel={this.toggleDiscardConfirmationModal}
+          onDiscard={discardAction.onAction}
+        />
+      );
+
+    const discardActionMarkup = discardAction && (
+      <Button
+        url={discardAction.url}
+        onClick={discardActionHandler}
+        loading={discardAction.loading}
+        disabled={discardAction.disabled}
+        accessibilityLabel={discardAction.content}
+      >
+        {discardActionContent}
+      </Button>
+    );
+
+    const saveActionContent =
+      saveAction && saveAction.content
+        ? saveAction.content
+        : intl.translate('Polaris.ContextualSaveBar.save');
+
+    const saveActionMarkup = saveAction && (
+      <Button
+        primary
+        url={saveAction.url}
+        onClick={saveAction.onAction}
+        loading={saveAction.loading}
+        disabled={saveAction.disabled}
+        accessibilityLabel={saveAction.content}
+      >
+        {saveActionContent}
+      </Button>
+    );
+
+    const width = getWidth(logo, 104);
+
+    const imageMarkup = logo && (
+      <Image
+        style={{width}}
+        source={logo.contextualSaveBarSource || ''}
+        alt=""
+      />
+    );
+
+    return (
+      <React.Fragment>
+        <div className={className}>
+          <div className={styles.LogoContainer} style={{width}}>
+            {imageMarkup}
+          </div>
+          <div className={styles.Contents}>
+            <h2 className={styles.Message}>{message}</h2>
+            <Stack spacing="tight" wrap={false}>
+              {discardActionMarkup}
+              {saveActionMarkup}
+            </Stack>
+          </div>
+        </div>
+        {discardConfirmationModalMarkup}
+      </React.Fragment>
+    );
+  }
+
+  @autobind
+  private toggleDiscardConfirmationModal() {
+    this.setState({
+      discardConfirmationModalVisible: !this.state
+        .discardConfirmationModalVisible,
+    });
+  }
 }
 
 export default withAppProvider<Props>()(ContextualSaveBar);
