@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
+- Added iOS and Android examples for the TextField component ([#1893](https://github.com/Shopify/polaris-react/pull/1893))
 
 ## 2.6.1 - 2018-08-21
 
