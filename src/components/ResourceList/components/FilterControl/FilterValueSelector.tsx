@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {Select, TextField} from '../../..';
+import {autobind} from '@shopify/javascript-utilities/decorators';
+import {Select, Stack, TextField} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import DateSelector from './DateSelector';
-import {Filter, AppliedFilter, FilterType} from './types';
+import {Filter, AppliedFilter, FilterType, Operator} from './types';
 
 export interface Props {
   filter: Filter;
@@ -15,6 +16,23 @@ export interface Props {
 export type CombinedProps = Props & WithAppProviderProps;
 
 export class FilterValueSelector extends React.PureComponent<CombinedProps> {
+  componentDidMount() {
+    const {
+      filter: {operatorText, type},
+    } = this.props;
+
+    if (
+      type === FilterType.DateSelector ||
+      !operatorText ||
+      typeof operatorText === 'string' ||
+      operatorText.length === 0
+    ) {
+      return;
+    }
+
+    this.handleOperatorOptionChange(operatorText[0].key);
+  }
+
   render() {
     const {
       filter,
@@ -25,28 +43,52 @@ export class FilterValueSelector extends React.PureComponent<CombinedProps> {
       polaris: {intl},
     } = this.props;
 
-    const selectedFilterLabel = filter.operatorText || '';
+    const {operatorText} = filter;
+
+    const showOperatorOptions =
+      filter.type !== FilterType.DateSelector &&
+      operatorText &&
+      typeof operatorText !== 'string';
+    const operatorOptionsMarkup = showOperatorOptions ? (
+      <Select
+        label={filter.label}
+        labelHidden
+        options={buildOperatorOptions(operatorText)}
+        value={filterKey}
+        onChange={this.handleOperatorOptionChange}
+      />
+    ) : null;
+
+    const selectedFilterLabel =
+      typeof operatorText === 'string' ? operatorText : '';
 
     switch (filter.type) {
       case FilterType.Select:
         return (
-          <Select
-            label={selectedFilterLabel}
-            options={filter.options}
-            placeholder={intl.translate(
-              'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
-            )}
-            value={value}
-            onChange={onChange}
-          />
+          <Stack vertical>
+            {operatorOptionsMarkup}
+            <Select
+              label={selectedFilterLabel}
+              options={filter.options}
+              placeholder={intl.translate(
+                'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
+              )}
+              value={value}
+              onChange={onChange}
+            />
+          </Stack>
         );
       case FilterType.TextField:
         return (
-          <TextField
-            label={selectedFilterLabel}
-            value={value}
-            onChange={onChange}
-          />
+          <Stack vertical>
+            {operatorOptionsMarkup}
+            <TextField
+              label={selectedFilterLabel}
+              value={value}
+              type={filter.textFieldType}
+              onChange={onChange}
+            />
+          </Stack>
         );
       case FilterType.DateSelector:
         return (
@@ -64,6 +106,28 @@ export class FilterValueSelector extends React.PureComponent<CombinedProps> {
         return null;
     }
   }
+
+  @autobind
+  private handleOperatorOptionChange(operatorKey: string) {
+    const {value, onChange, onFilterKeyChange} = this.props;
+    onFilterKeyChange(operatorKey);
+
+    if (!value) {
+      return;
+    }
+
+    onChange(value);
+  }
+}
+
+function buildOperatorOptions(operatorText?: string | Operator[]) {
+  if (!operatorText || typeof operatorText === 'string') {
+    return [];
+  }
+
+  return operatorText.map(({key, optionLabel}) => {
+    return {value: key, label: optionLabel};
+  });
 }
 
 export default withAppProvider<Props>()(FilterValueSelector);
