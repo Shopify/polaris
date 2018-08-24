@@ -1,4 +1,4 @@
-filename: CHANGELOG.md
+filename: UNRELEASED.md
 include:
   - /^config\//
   - /^documentation\//
