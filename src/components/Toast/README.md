@@ -4,7 +4,6 @@ category: Feedback indicators
 platforms:
   - android
   - ios
-  - web
 keywords:
   - toast
   - flash message
