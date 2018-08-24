@@ -96,11 +96,15 @@ class CollapsibleExample extends React.Component {
 ```
 
 <!-- content-for: android -->
-<!-- Image -->
+
+![Collapsible on Android](components/Collapsible/android/default.png)
+
 <!-- /content-for -->
 
 <!-- content-for: ios -->
-<!-- Image -->
+
+![Collapsible on iOS](components/Collapsible/ios/default.png)
+
 <!-- /content-for -->
 
 ---
