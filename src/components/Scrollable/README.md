@@ -86,6 +86,8 @@ Body content should be:
 - Clear: use the verb “need” to help merchants understand when they’re
   required to do something.
 
+---
+
 ## Examples
 
 ### Default scrollable container

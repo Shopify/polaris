@@ -63,6 +63,8 @@ Clearly labeled: Merchants should not need to guess where they’ll end up if th
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Footer help box

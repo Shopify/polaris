@@ -44,6 +44,8 @@ Headings above the keyboard key should be:
 
 The shortcut description should describe what action will be taken if merchants tap certain keys. When a hotkey combination takes merchants to a location in the interface, the format should be:
 
+---
+
 ## Examples
 
 ### List of keyboard shortcuts
