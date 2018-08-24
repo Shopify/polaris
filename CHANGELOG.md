@@ -8,6 +8,16 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.6.1 - 2018-08-21
+
+### Development workflow
+
+- Moved `pa11y` and `object-hash` from dependencies to devDependencies ([#2003](https://github.com/Shopify/polaris-react/pull/2003))
+
+### Bug fixes
+
+- Fixed inconsistent drop zone error styling ([#1981](https://github.com/Shopify/polaris-react/pull/1981))
+
 ## 2.6.0 - 2018-08-21
 
 ### Development workflow
