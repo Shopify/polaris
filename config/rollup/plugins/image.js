@@ -17,10 +17,14 @@ export default function image(options = {}) {
     name: 'shopify-image',
 
     load(id) {
-      if (!filter(id)) { return null; }
+      if (!filter(id)) {
+        return null;
+      }
 
       const mime = MIME_TYPES[extname(id)];
-      if (!mime) { return null; }
+      if (!mime) {
+        return null;
+      }
 
       const data = readFileSync(id, 'base64');
       return `export default 'data:${mime};base64,${data}';`;

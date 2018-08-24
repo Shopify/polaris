@@ -25,7 +25,10 @@ function optimizeFile(file) {
     svgo.optimize(data, (result) => {
       removeSync(file);
 
-      const newFile = resolvePath(dirname(file), `${paramCase(basename(file, '.svg'))}.svg`);
+      const newFile = resolvePath(
+        dirname(file),
+        `${paramCase(basename(file, '.svg'))}.svg`,
+      );
       writeFileSync(newFile, `${result.data}\n`);
       resolve();
     });

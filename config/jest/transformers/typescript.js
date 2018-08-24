@@ -14,12 +14,7 @@ module.exports = {
   },
   process(src, path, ...rest) {
     if (path.endsWith('.ts') || path.endsWith('.tsx')) {
-      const tsOutput = tsc.transpile(
-        src,
-        tsConfig.compilerOptions,
-        path,
-        [],
-      );
+      const tsOutput = tsc.transpile(src, tsConfig.compilerOptions, path, []);
 
       const fakeJSPath = path.replace(/\.tsx?$/, '.js');
       return babelTransformer.process(tsOutput, fakeJSPath, ...rest);

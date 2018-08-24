@@ -2,9 +2,7 @@ const {join} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: [
-    join(__dirname, 'src/index.js'),
-  ],
+  entry: [join(__dirname, 'src/index.js')],
   output: {
     path: join(__dirname, 'build'),
     filename: 'bundle.js',
@@ -21,17 +19,19 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         include: join(__dirname, 'src'),
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            presets: ['env', 'react'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              presets: ['env', 'react'],
+            },
           },
-        }],
+        ],
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
