@@ -97,6 +97,7 @@ $stacking-order: (
 
 .Item {
   @include unstyled-button;
+  @include unstyled-link;
   display: flex;
   align-items: center;
   width: 100%;
@@ -106,17 +107,29 @@ $stacking-order: (
   text-decoration: none;
   cursor: pointer;
 
-  &:focus,
-  &:hover,
   &:active {
-    outline: none;
-    text-decoration: none;
-    background-color: color('indigo');
-    color: color('white');
+    @include state(active);
 
-    .Icon {
-      @include recolor-icon(color('white'));
+    &:hover {
+      @include state(active, hover);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:focus {
+        @include state(active, hover, focused);
+      }
     }
+  }
+
+  &:hover {
+    @include state(hover);
+
+    &:focus {
+      @include state(hover, focused);
+    }
+  }
+
+  &:focus {
+    @include state(focused);
   }
 }
 
