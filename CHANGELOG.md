@@ -29,7 +29,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Enhancements
 
 - Added support for `titleMetadata` in `Page` component ([#1960](https://github.com/Shopify/polaris-react/pull/1960))
-- Added circle information icon ([#1967](https://github.com/Shopify/polaris-react/pull/1967))
 - Added support for `FilterType.DateSelector` in `ResourceList` component ([#1898](https://github.com/Shopify/polaris-react/pull/1898))
 - Added `code` as an accepted `variation` of the text style component to provide support for accessible markup and styling of inline code snippets and code-like text ([#1889](https://github.com/Shopify/polaris-react/pull/1889))
 - Added new `border-width` SCSS function ([#1953](https://github.com/Shopify/polaris-react/pull/1953))
