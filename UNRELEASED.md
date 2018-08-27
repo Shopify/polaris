@@ -18,3 +18,14 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
+- Added documentation for iOS and Android section header ([#1918](https://github.com/Shopify/polaris-react/pull/1918))
+
+## 2.6.1 - 2018-08-21
+
+### Development workflow
+
+- Moved `pa11y` and `object-hash` from dependencies to devDependencies ([#2003](https://github.com/Shopify/polaris-react/pull/2003))
+
+### Bug fixes
+
+- Fixed inconsistent drop zone error styling ([#1981](https://github.com/Shopify/polaris-react/pull/1981))
