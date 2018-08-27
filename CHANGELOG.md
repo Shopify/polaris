@@ -10,13 +10,10 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ## 2.7.0 - 2018-08-27
 
-# Unreleased changes
+### Enhancements
 
 - Adjusted spacing for `ChoiceChildren` in choice list for readability
 - Made `Card.Header` a seperate publically accessible component
-
-### Enhancements
-
 - Added support for complex operators in `ResourceList` component
 - Updated the page component's primary action to support `Button` props.
 - Added validation for non-numeric input in a type="number" `TextField`
