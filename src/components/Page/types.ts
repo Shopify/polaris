@@ -1,9 +1,10 @@
 import {
   ActionListItemDescriptor,
-  BaseAction,
   IconableAction,
   DisableableAction,
   BadgeAction,
+  LoadableAction,
+  DestructableAction,
 } from '../../types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
@@ -36,11 +37,12 @@ export interface ActionProps {
   hasIndicator?: boolean;
 }
 
-export interface PrimaryActionProps extends BaseAction {
+export interface PrimaryActionProps
+  extends DisableableAction,
+    LoadableAction,
+    DestructableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
-  /** Indicates a dangerous or potentially negative action */
-  destructive?: boolean;
 }
 
 export interface HeaderProps {
