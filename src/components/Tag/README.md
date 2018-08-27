@@ -1,6 +1,10 @@
 ---
 name: Tag
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - indicator
   - label
@@ -43,13 +47,13 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 
 <!-- content-for: android -->
 
-![Tag for Android](.png)
+![Tag for Android](components/Tag/android/default.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Tag for iOS](.png)
+![Tag for iOS](components/Tag/ios/default.png)
 
 <!-- /content-for -->
 
@@ -58,3 +62,4 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 ## Related components
 
 - To show the status of an object, [use the badge component](/components/images-and-icons/badge)
+- To add and remove tags, [use the text field component](/components/forms/text-field)
