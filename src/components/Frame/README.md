@@ -20,7 +20,7 @@ fullSizeExamples: true
 
 # Frame
 
-The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](/components/navigation/navigation), [top bar](/components/structure/topbar), [toast](/components/structure/toast), [banner](/components/feedback-indicators/banner), [loading](/components/structure/loading), and [contextual save bar](/components/structure/contextual-save-bar) components.
+The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](/components/navigation/navigation), [top bar](/components/structure/topbar), [toast](/components/structure/toast), and [contextual save bar](/components/structure/contextual-save-bar) components.
 
 ---
 
