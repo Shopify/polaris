@@ -105,6 +105,8 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 Help text provides extra guidance to people filling out a form field. This text is easy for people to ignore, so merchants should not need to depend on it to fill out a form. As with all forms, help text should be succinct and easy to read.
 
+---
+
 ## Examples
 
 ### Default form layout

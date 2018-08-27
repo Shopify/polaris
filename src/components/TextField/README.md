@@ -156,6 +156,8 @@ You didn’t enter a store name.
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default text field

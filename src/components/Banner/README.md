@@ -101,11 +101,11 @@ Have a look at this
 
 #### Do
 
-Order archived
+Online store is password protected
 
 #### Don’t
 
-Your Order was Archived Today
+Your Online Store is now Password Protected
 
 <!-- end -->
 
@@ -353,9 +353,8 @@ Use to update merchants about a change or give them advice.
 
 ### Success banner
 
-- Use to inform merchants when actions are successfully completed
+- Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action
 - Include next steps if applicable
-- If the feedback is delayed, persistent or has a call to action, use this banner
 
 ```jsx
 <Banner

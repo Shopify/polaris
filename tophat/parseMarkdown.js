@@ -21,7 +21,7 @@ function stripCodeBlock(block: string) {
 function parseCodeExamples(data) {
   const matter = grayMatter(data);
   const introAndComponentSections = matter.content
-    .split(/(?=\n---\n|\n## Examples\n)/)
+    .split(/(\n---\n)/)
     .map((content) => content.replace('---\n', '').trim())
     .filter((content) => content !== '');
   const [, ...componentSections] = introAndComponentSections;

@@ -11,7 +11,9 @@ const IGNORE_ERROR_REGEXES = [
   /React\.createClass is deprecated and will be removed in version 16/,
 ];
 
+// eslint-disable-next-line no-console
 const originalConsoleError = console.error.bind(console);
+// eslint-disable-next-line no-console
 console.error = (...args: any[]) => {
   const [firstArgument] = args;
   if (
