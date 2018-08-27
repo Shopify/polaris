@@ -79,7 +79,7 @@ describe('build', () => {
     expect(fs.existsSync('./embedded.d.ts')).toBe(true);
   });
 
-  it('replaces all occurrences of POLARIS_VERSION', async () => {
+  it('replaces all occurrences of POLARIS_VERSION', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}');
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
@@ -88,7 +88,7 @@ describe('build', () => {
     expect(total).toBe(0);
   });
 
-  it('features the version of Polaris in all compiled files', async () => {
+  it('features the version of Polaris in all compiled files', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}');
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
@@ -97,7 +97,7 @@ describe('build', () => {
     expect(total).toBe(6);
   });
 
-  it('features the version of Polaris in those specific files', async () => {
+  it('features the version of Polaris in those specific files', () => {
     const globFiles = [
       'embedded.js',
       'polaris.css',
@@ -115,7 +115,7 @@ describe('build', () => {
   });
 
   describe('esnext', () => {
-    const STACK_CLASSNAME_MATCHER = /"Stack":\s*"([^"]*)"/;
+    const stackClassnameMatcher = /"Stack":\s*"([^"]*)"/;
 
     it('facilitates production builds without typescript', () => {
       expect(fs.existsSync('esnext/index.js')).toBe(true);
@@ -151,10 +151,10 @@ describe('build', () => {
     it('uses the correct class names in the server and index builds', () => {
       const indexStackClassname = fs
         .readFileSync('esnext/index.js', 'utf8')
-        .match(STACK_CLASSNAME_MATCHER);
+        .match(stackClassnameMatcher);
       const serverStackClassname = fs
         .readFileSync('esnext/server.js', 'utf8')
-        .match(STACK_CLASSNAME_MATCHER);
+        .match(stackClassnameMatcher);
       expect(indexStackClassname[1]).toBeTruthy();
       expect(indexStackClassname[1]).toBe(serverStackClassname[1]);
       expect(

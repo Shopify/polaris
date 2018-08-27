@@ -14,23 +14,31 @@ export default function getNamespacedClassName(localName, filePath) {
   const componentName = basename(filePath, '.scss');
   const nestedComponentMatch = NESTED_COMPONENT_PATH_REGEX.exec(filePath);
 
-  const polarisComponentName = nestedComponentMatch && (nestedComponentMatch.length > 1)
-    ? `${polarisClassName(nestedComponentMatch[1])}-${componentName}`
-    : polarisClassName(componentName);
+  const polarisComponentName =
+    nestedComponentMatch && nestedComponentMatch.length > 1
+      ? `${polarisClassName(nestedComponentMatch[1])}-${componentName}`
+      : polarisClassName(componentName);
 
   let className = file[localName];
 
   if (className == null) {
     if (isComponent(localName)) {
-      className = componentName === localName
-        ? polarisComponentName
-        : subcomponentClassName(polarisComponentName, localName);
+      className =
+        componentName === localName
+          ? polarisComponentName
+          : subcomponentClassName(polarisComponentName, localName);
     } else if (SUBCOMPONENT_VARIATION_SELECTOR.test(localName)) {
       const [subcomponent, variation] = localName.split('-');
-      const subcomponentName = subcomponentClassName(polarisComponentName, subcomponent);
+      const subcomponentName = subcomponentClassName(
+        polarisComponentName,
+        subcomponent,
+      );
       className = variationClassName(subcomponentName, camelCase(variation));
     } else {
-      className = variationClassName(polarisComponentName, camelCase(localName));
+      className = variationClassName(
+        polarisComponentName,
+        camelCase(localName),
+      );
     }
   }
 

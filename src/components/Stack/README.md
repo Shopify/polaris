@@ -41,6 +41,8 @@ Stacks should:
 
 There are no content elements that are specific to stack.
 
+---
+
 ## Examples
 
 ### Default behavior

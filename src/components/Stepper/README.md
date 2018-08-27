@@ -57,6 +57,8 @@ Avoid abbreviating values (10k, 1m), instead, make the text smaller to fit the s
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default stepper

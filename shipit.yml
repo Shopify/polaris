@@ -2,6 +2,7 @@ ci:
   hide:
     - shrink-ray
     - 'ci/circleci: percy'
+    - percy/polaris-react
     - codecov/patch
   require:
     - 'ci/circleci: check'

@@ -40,6 +40,8 @@ Alt text should be written in [plain language](/content/grammar-and-mechanics#pl
 - Write in the [active voice](/content/grammar-and-mechanics#active-and-passive-voice)
 - Use words and language that our merchants use (avoid technical jargon)
 
+---
+
 ## Examples
 
 ### Default icon

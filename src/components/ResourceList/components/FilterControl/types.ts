@@ -1,4 +1,11 @@
 import {Option} from '../../../Select';
+import {Type} from '../../../TextField';
+
+export interface Operator {
+  key: string;
+  optionLabel: string;
+  filterLabel?: string;
+}
 
 export interface AppliedFilter {
   key: string;
@@ -15,7 +22,7 @@ export enum FilterType {
 export interface FilterBase<FilterKeys = {}> {
   label: string;
   key: keyof FilterKeys | string;
-  operatorText?: string;
+  operatorText?: string | Operator[];
   type: FilterType;
 }
 
@@ -27,6 +34,7 @@ export interface FilterSelect<FilterKeys = {}> extends FilterBase<FilterKeys> {
 export interface FilterTextField<FilterKeys = {}>
   extends FilterBase<FilterKeys> {
   type: FilterType.TextField;
+  textFieldType?: Type;
 }
 
 export interface FilterDateSelector<FilterKeys = {}>

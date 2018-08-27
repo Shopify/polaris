@@ -7,7 +7,7 @@ import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Resizer, Spinner} from './components';
-import {Error} from '../../types';
+import {Error, Keys} from '../../types';
 import * as styles from './TextField.scss';
 
 export type Type =
@@ -253,6 +253,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       placeholder,
       onFocus,
       onBlur,
+      onKeyPress: this.handleKeyPress,
       style,
       autoComplete: normalizeAutoComplete(autoComplete),
       className: inputClassName,
@@ -343,6 +344,19 @@ export default class TextField extends React.PureComponent<Props, State> {
   @autobind
   private handleExpandingResize(height: number) {
     this.setState({height});
+  }
+
+  @autobind
+  private handleKeyPress(event: React.KeyboardEvent) {
+    const {key, which} = event;
+    const {type} = this.props;
+    const numbersSpec = /[\d.eE+-]$/;
+
+    if (type !== 'number' || which === Keys.ENTER || key.match(numbersSpec)) {
+      return;
+    }
+
+    event.preventDefault();
   }
 
   @autobind

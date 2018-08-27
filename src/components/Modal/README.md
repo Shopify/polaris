@@ -171,6 +171,8 @@ Body content should be:
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Basic modal

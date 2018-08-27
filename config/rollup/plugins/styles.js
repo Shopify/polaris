@@ -14,7 +14,10 @@ import postcssShopify from 'postcss-shopify';
 import genericNames from 'generic-names';
 
 export default function styles(options = {}) {
-  const filter = createFilter(options.include || ['**/*.css', '**/*.scss'], options.exclude);
+  const filter = createFilter(
+    options.include || ['**/*.css', '**/*.scss'],
+    options.exclude,
+  );
   const {
     output,
     includePaths = [],
@@ -24,11 +27,16 @@ export default function styles(options = {}) {
   const compiledStyles = [];
   const tokensByFile = {};
 
-  const generateScopedName = typeof userGenerateScopedName === 'function'
-    ? userGenerateScopedName
-    : genericNames(userGenerateScopedName || '[path]___[name]___[local]___[hash:base64:5]', {
-      context: process.cwd(),
-    });
+  const generateScopedName =
+    typeof userGenerateScopedName === 'function'
+      ? userGenerateScopedName
+      : genericNames(
+          userGenerateScopedName ||
+            '[path]___[name]___[local]___[hash:base64:5]',
+          {
+            context: process.cwd(),
+          },
+        );
 
   const includeAlwaysSource = includeAlways
     .map((resource) => readFileSync(resource, 'utf8'))
@@ -54,33 +62,41 @@ export default function styles(options = {}) {
     name: 'shopify-styles',
 
     transform(source, id) {
-      if (!filter(id)) { return null; }
+      if (!filter(id)) {
+        return null;
+      }
 
       return new Promise((resolve, reject) => {
-        render({
-          data: `${includeAlwaysSource}\n${source}`,
-          includePaths: includePaths.concat(dirname(id)),
-        }, (error, result) => {
-          if (error) {
-            reject(error);
-            return;
-          }
+        render(
+          {
+            data: `${includeAlwaysSource}\n${source}`,
+            includePaths: includePaths.concat(dirname(id)),
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+              return;
+            }
 
-          const sassOutput = result.css.toString();
-          resolve(getPostCSSOutput(processor, sassOutput, id));
-        });
-      })
-        .then(({css, tokens}) => {
-          tokensByFile[id] = tokens;
+            const sassOutput = result.css.toString();
+            resolve(getPostCSSOutput(processor, sassOutput, id));
+          },
+        );
+      }).then(({css, tokens}) => {
+        tokensByFile[id] = tokens;
 
-          const properties = Object
-            .keys(tokens)
-            .map((className) => `  ${JSON.stringify(className)}: ${JSON.stringify(tokens[className])},`)
-            .join('\n');
+        const properties = Object.keys(tokens)
+          .map(
+            (className) =>
+              `  ${JSON.stringify(className)}: ${JSON.stringify(
+                tokens[className],
+              )},`,
+          )
+          .join('\n');
 
-          compiledStyles.push(css);
-          return `export default {\n${properties}\n};`;
-        });
+        compiledStyles.push(css);
+        return `export default {\n${properties}\n};`;
+      });
     },
     ongenerate(generateOptions) {
       if (output === false) {
@@ -105,7 +121,9 @@ export default function styles(options = {}) {
       return Promise.all([
         write(cssDestination, css),
         write(tokensDestination, JSON.stringify(tokensByFile, null, 2)),
-        cssnano.process(css).then((result) => write(minifiedCSSDestination, result.css)),
+        cssnano
+          .process(css)
+          .then((result) => write(minifiedCSSDestination, result.css)),
       ]);
     },
   };

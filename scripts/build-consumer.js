@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import {cp, mkdir, rm} from 'shelljs';
 import {resolve} from 'path';
 

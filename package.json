@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.7.0-beta.1",
+  "version": "2.7.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -27,11 +27,11 @@
   "scripts": {
     "lint": "npm-run-all lint:js lint:css",
     "lint:css": "stylelint './**/*.scss' --max-warnings 0",
-    "lint:js": "eslint './src/**/*.{ts,tsx}' --max-warnings 0 --format codeframe",
+    "lint:js": "eslint './**/*.{js,jsx,ts,tsx}' --max-warnings 0 --format codeframe",
     "format": "npm-run-all format:js format:css format:prettier",
     "format:css": "yarn run lint:css --fix",
     "format:js": "yarn run lint:js --fix",
-    "format:prettier": "prettier '**/*.{md,yml}' --write",
+    "format:prettier": "prettier '**/*.{json,md,yml}' --write",
     "ts": "tsc --noEmit",
     "test": "jest --config ./config/jest/config.json",
     "test:coverage": "yarn test --coverage --no-cache",

@@ -105,6 +105,8 @@ Error messages should:
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default range slider

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 require('isomorphic-fetch');
 
 const {resolve} = require('path');

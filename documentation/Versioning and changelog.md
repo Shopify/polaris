@@ -1,13 +1,26 @@
-# Versioning and Changelog
+# Versioning and changelog
 
-The changelog is prepared manually immediately before a release. Each changelog entry should follow this structure:
+The changelog is prepared manually immediately before a release, by moving changelog entries from `UNRELEASED.md` to `CHANGELOG.md`, under a new heading for the version number.
+
+How to write a changelog entry:
+
+- Use a positive, conversational tone (for example, use “support” over “allow” and other authoritative verbs)
+- Use sentence case (refer to components as plain nouns, for example drop zone and not DropZone)
+- Use plain language
+- Avoid redundancy when possible (try to phrase a bug fix entry without the word “bug”)
+
+Change log entry descriptions should be brief but descriptive and follow this structure:
 
 ```md
 ## 2.0.0 - 2018-05-07
 
 ### Breaking changes
 
-- A change ([#100](https://github.com/shopify/polaris/pull/100))
+- Past tense verb + brief issue/enhancement description ([#100](https://github.com/shopify/polaris/pull/100))
+
+Contributed from the community:
+
+- Past tense verb + brief issue/enhancement description ([#100](https://github.com/shopify/polaris/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
 ```
 
 The possible groups in which to categorize changes are:
@@ -21,7 +34,7 @@ The possible groups in which to categorize changes are:
 - Dependency upgrades
 - Development workflow (new yarn commands or changes to existing commands)
 
-## Out of scope for CHANGELOG.md
+## Out of scope for `CHANGELOG.md`
 
 Generally, changes related to these topics can be omitted:
 
@@ -32,21 +45,15 @@ Generally, changes related to these topics can be omitted:
 
 ## Unreleased changes
 
-Unreleased changes must go under the `## Unreleased` section (inspired by <https://keepachangelog.com>):
+Unreleased changes must go under in the `UNRELEASED.md` file:
 
 ```md
-## Unreleased
-
 ### Bug fixes
 
 - Fixed something ([#100](https://github.com/shopify/polaris/pull/100))
 ```
 
-This heading must be commented (leaving it for an easy future use) when publishing a release:
-
-```md
-<!-- ## Unreleased -->
-```
+Entries must be moved from `UNRELEASED.md` to `CHANGELOG.md` at each release.
 
 ## Versioning scheme
 

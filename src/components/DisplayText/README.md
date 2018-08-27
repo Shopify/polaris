@@ -58,6 +58,8 @@ reassure a merchant such as in marketing content or to capture attention during 
     statement without an exclamation mark
   - Written in sentence case
 
+---
+
 ## Examples
 
 ### Extra large
