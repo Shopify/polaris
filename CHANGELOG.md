@@ -7,6 +7,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+
 ## 2.7.1 - 2018-08-27
 
 ### Documentation
@@ -26,7 +27,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Added support for complex operators in `ResourceList` component ([#2006](https://github.com/Shopify/polaris-react/pull/2006))
 - Updated the page component's primary action to support `Button` props. ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
 - Added validation for non-numeric input in a type="number" `TextField` ([#2001](https://github.com/Shopify/polaris-react/pull/2001))
-- Added support for Windows High Contrast mode in the popover component ([#1987](https://github.com/Shopify/polaris-react/pull/1987))
 - Added circle information icon ([#1967](https://github.com/Shopify/polaris-react/pull/1967))
 
 ### Documentation
