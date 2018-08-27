@@ -10,13 +10,10 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ## 2.7.0 - 2018-08-27
 
-# Unreleased changes
+### Enhancements
 
 - Adjusted spacing for `ChoiceChildren` in choice list for readability ([#2016](https://github.com/Shopify/polaris-react/pull/2016))
 - Made `Card.Header` a seperate publically accessible component ([#1946](https://github.com/Shopify/polaris-react/pull/1946))
-
-### Enhancements
-
 - Added support for complex operators in `ResourceList` component ([#2006](https://github.com/Shopify/polaris-react/pull/2006))
 - Updated the page component's primary action to support `Button` props. ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
 - Added validation for non-numeric input in a type="number" `TextField` ([#2001](https://github.com/Shopify/polaris-react/pull/2001))
