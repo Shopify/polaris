@@ -7,6 +7,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+
+## 2.7.2 - 2018-08-27
+
+### Bug fixes
+
+- Reverted a change that caused items in a popover component not to be clickable
+
 ## 2.7.1 - 2018-08-27
 
 ### Documentation
@@ -26,7 +33,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Added support for complex operators in `ResourceList` component
 - Updated the page component's primary action to support `Button` props.
 - Added validation for non-numeric input in a type="number" `TextField`
-- Added support for Windows High Contrast mode in the popover component
 - Added circle information icon
 
 ### Documentation
