@@ -148,13 +148,13 @@ Use when something requires a merchant’s attention but the issue isn’t criti
 
 <!-- content-for: android -->
 
-![Attention badge with yellow background](components/Card/android/attention.png)
+![Attention badge with yellow background](components/Badge/android/attention.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Attention badge with yellow background](components/Card/ios/attention.png)
+![Attention badge with yellow background](components/Badge/ios/attention.png)
 
 <!-- /content-for -->
 
