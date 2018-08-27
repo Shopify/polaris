@@ -12,3 +12,5 @@ include:
   - /^LICENSE.md$/
   - /^package.json$/
   - /^tsconfig.json$/
+inProgressMessage: missing an entry in UNRELEASED.md
+skipLabel: skip changelog

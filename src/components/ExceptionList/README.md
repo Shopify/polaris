@@ -63,6 +63,8 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Exception list with icon

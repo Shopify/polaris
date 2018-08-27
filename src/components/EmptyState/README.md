@@ -140,6 +140,8 @@ Secondary actions are used for less important actions such as “Learn more” o
 “Close” buttons. They should follow all the other content rules outlined for
 primary buttons.
 
+---
+
 ## Examples
 
 ### Default empty state

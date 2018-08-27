@@ -58,6 +58,8 @@ To continue using Shopify, this amount must be paid immediately.
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default tooltip

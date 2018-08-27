@@ -41,6 +41,8 @@ Pagination should:
 
 There are no editable content elements that are specific to the pagination component.
 
+---
+
 ## Examples
 
 ### Default pagination

@@ -176,6 +176,8 @@ The descriptions in annotated sections should:
 - Not repeat the section title
 - Use complete sentences and regular punctuation
 
+---
+
 ## Examples
 
 ### One-column layout

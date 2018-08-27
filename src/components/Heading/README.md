@@ -73,6 +73,8 @@ Conversational headings for areas like empty states and home cards are the only 
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Typographic heading
