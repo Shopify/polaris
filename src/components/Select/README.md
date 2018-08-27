@@ -92,6 +92,8 @@ The list of options in a menu should:
 
 The placeholder option should be the text “Select”.
 
+---
+
 ## Examples
 
 ### Default select

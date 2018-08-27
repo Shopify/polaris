@@ -88,6 +88,8 @@ Toggle values should:
 
 - Never be labeled
 
+---
+
 ## Examples
 
 ### Default radio button

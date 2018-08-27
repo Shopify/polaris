@@ -45,6 +45,8 @@ Use skeleton body text for static content or use placeholder content for dynamic
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default paragraph

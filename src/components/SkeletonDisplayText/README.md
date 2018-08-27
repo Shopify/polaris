@@ -58,6 +58,8 @@ Show skeleton display text for dynamic page titles.
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Medium and large display text

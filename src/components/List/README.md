@@ -79,6 +79,8 @@ When a line of text is placed next to an icon, it should:
 - Follow all the rules for list items
 - Elaborate on the meaning conveyed by the icon
 
+---
+
 ## Examples
 
 ### Bulleted list

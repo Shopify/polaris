@@ -37,6 +37,8 @@ For thumbnails, we recommend using a format that describes what will show in the
 - `alt="Photo of {product}"`, e.g. "Photo of black t-shirt with cartoon tiger"
 - An empty `alt=""` attribute ignores the image in assistive technologies such as screen readers, and may be used on decorative thumbnails
 
+---
+
 ## Examples
 
 ### Default thumbnail

@@ -56,6 +56,8 @@ Subheadings should be:
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Subheading in a card

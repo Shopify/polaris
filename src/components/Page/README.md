@@ -118,6 +118,8 @@ Add a menu item
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Page with all header elements
@@ -274,6 +276,26 @@ Use a separator for pages that have an [empty state](/components/structure/empty
       <p>Annotated section content</p>
     </Layout.AnnotatedSection>
   </Layout>
+</Page>
+```
+
+### Page with title metadata
+
+Use title metadata to communicate brief, important and non-interactive status information about an entire page.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Products'}]}
+  title="Jar With Lock-Lid"
+  titleMetadata={<Badge status="attention">Verified</Badge>}
+  primaryAction={{content: 'Save', disabled: true}}
+  secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
+  pagination={{
+    hasPrevious: true,
+    hasNext: true,
+  }}
+>
+  <p>Page content</p>
 </Page>
 ```
 

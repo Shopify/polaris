@@ -34,6 +34,8 @@ Text style should be:
 - Strong for input fields, or for a row total in a price table
 - Paired with symbols, like an arrow or dollar sign, when using positive or negative styles
 
+---
+
 ## Examples
 
 ### Subdued textstyle

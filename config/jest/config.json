@@ -14,9 +14,5 @@
   },
   "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
   "coverageDirectory": "coverage",
-  "coveragePathIgnorePatterns": [
-    "[\\w+]\\.(svg)$",
-    "index.*",
-    "types.*"
-  ]
+  "coveragePathIgnorePatterns": ["[\\w+]\\.(svg)$", "index.*", "types.*"]
 }

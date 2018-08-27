@@ -60,6 +60,8 @@ And for the customers section, the tabs are:
 
 Where possible, follow this pattern when writing tabs.
 
+---
+
 ## Examples
 
 ### Default tabs

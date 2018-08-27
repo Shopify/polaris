@@ -1,4 +1,4 @@
-const cssNames = (function* () {
+const cssNames = (function*() {
   // 10 Digits + 26 lowercase letters.
   const base = 36;
   const min = parseInt('a0', base);

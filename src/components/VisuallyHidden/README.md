@@ -39,6 +39,8 @@ Visually hidden should:
 
 There are no content elements specific to this component. Follow any guidelines appropriate to the element being hidden.
 
+---
+
 ## Examples
 
 ### Visually hidden heading

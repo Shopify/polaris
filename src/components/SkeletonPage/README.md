@@ -54,6 +54,8 @@ Use placeholder content that will change when the page fully loads. This will co
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Page with dynamic content

@@ -6,7 +6,7 @@ import Form from '../../../Form';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import FilterValueSelector from './FilterValueSelector';
-import {AppliedFilter, Filter} from './types';
+import {AppliedFilter, Filter, Operator} from './types';
 
 export interface Props {
   filters: Filter[];
@@ -144,7 +144,7 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
     const {filters} = this.props;
 
     const foundFilter = filters.find((filter: any) => {
-      const {minKey, maxKey} = filter;
+      const {minKey, maxKey, operatorText} = filter;
 
       if (minKey || maxKey) {
         return (
@@ -154,7 +154,15 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
         );
       }
 
-      return filter.key === filterKey;
+      if (operatorText && typeof operatorText !== 'string') {
+        return (
+          filter.key === filterKey ||
+          operatorText.filter(({key}: Operator) => key === filterKey).length ===
+            1
+        );
+      }
+
+      return filterKey.includes(filter.key);
     });
 
     if (!foundFilter) {

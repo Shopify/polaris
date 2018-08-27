@@ -110,6 +110,8 @@ If the menu items in a popover menu include a series of navigational links, each
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Popover with action list
