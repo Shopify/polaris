@@ -7,6 +7,15 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+## 2.7.1 - 2018-08-27
+
+### Documentation
+
+- Fixed paths to images in the “Attention badge” example
+
+### Bug fixes
+
+- Fixed the page component's primary action to support `LoadableAction`s and `DisableableAction`s
 
 ## 2.7.0 - 2018-08-27
 
