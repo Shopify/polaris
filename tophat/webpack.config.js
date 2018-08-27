@@ -14,6 +14,7 @@ module.exports = {
     '@shopify/polaris/styles/global.scss',
     path.join(__dirname, 'index.tsx'),
   ],
+  devtool: 'source-map',
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'assets'),
@@ -70,6 +71,7 @@ module.exports = {
           {
             loader: 'awesome-typescript-loader',
             options: {
+              sourceMap: true,
               silent: true,
               useBabel: true,
               useCache: true,
