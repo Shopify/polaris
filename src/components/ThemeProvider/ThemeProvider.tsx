@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export interface Context {
-  theme: ThemeContext;
+  polarisTheme?: ThemeContext;
 }
 
 export default class ThemeProvider extends React.Component<Props> {
@@ -79,7 +79,7 @@ function setThemeContext(
   unsubscribe: (callback: () => void) => void,
 ): Context {
   const {colors, logo = null, ...rest} = ctx;
-  return {theme: {logo, subscribe, unsubscribe, ...rest}};
+  return {polarisTheme: {logo, subscribe, unsubscribe, ...rest}};
 }
 
 function setChildNode(instance: any) {

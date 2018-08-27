@@ -119,7 +119,7 @@ describe('createPolarisContext()', () => {
         unsubscribe: noop,
       },
       easdk: undefined,
-      theme: {
+      polarisTheme: {
         logo: null,
         subscribe: noop,
         unsubscribe: noop,
@@ -179,7 +179,7 @@ describe('createPolarisContext()', () => {
         unsubscribe: noop,
       },
       easdk: undefined,
-      theme: {
+      polarisTheme: {
         logo: null,
         subscribe: mockSubscribe,
         unsubscribe: mockUnsubscribe,
@@ -218,7 +218,7 @@ describe('createPolarisContext()', () => {
         unsubscribe: noop,
       },
       easdk: undefined,
-      theme: {
+      polarisTheme: {
         logo: null,
         subscribe: noop,
         unsubscribe: noop,
@@ -248,7 +248,7 @@ describe('createPolarisContext()', () => {
         unsubscribe: noop,
       },
       easdk: undefined,
-      theme: {
+      polarisTheme: {
         logo: null,
         subscribe: mockSubscribe,
         unsubscribe: mockUnsubscribe,

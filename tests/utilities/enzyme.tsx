@@ -170,6 +170,7 @@ export function shallowWithAppProvider<P>(
 
 export function createPolarisProps() {
   const {polaris, easdk} = createAppProviderContext();
-  const polarisContext = {...polaris, easdk, ...createThemeContext()};
+  const theme = createThemeContext().polarisTheme;
+  const polarisContext = {...polaris, easdk, theme};
   return {polaris: polarisContext};
 }
