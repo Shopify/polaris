@@ -1,6 +1,10 @@
 ---
 name: Text field
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - TextField
   - input
@@ -38,6 +42,9 @@ keywords:
   - label actions
   - hidden labels
   - separate error message
+  - icon action
+  - ios
+  - android
 ---
 
 # Text field
@@ -186,6 +193,18 @@ class TextFieldExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Default text field](components/TextField/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default text field](components/TextField/ios/default.png)
+
+<!-- /content-for -->
+
 ### Number field
 
 Use when input text should be a number.
@@ -212,6 +231,22 @@ class NumberFieldExample extends React.Component {
   }
 }
 ```
+
+<!-- content-for: android -->
+
+This will display the right keyboard on mobile devices.
+
+![Number text field with numeric keyboard](components/TextField/android/number.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+This will display the right keyboard on mobile devices.
+
+![Number text field with numeric keyboard](components/TextField/ios/number.png)
+
+<!-- /content-for -->
 
 ### Email field
 
@@ -240,6 +275,22 @@ class EmailFieldExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+This will display the right keyboard on mobile devices.
+
+![Email field with email keyboard](components/TextField/android/email.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+This will display the right keyboard on mobile devices.
+
+![Email field with email keyboard](components/TextField/ios/email.png)
+
+<!-- /content-for -->
+
 ### Multiline text field
 
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
@@ -267,7 +318,21 @@ class MultilineFieldExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Multi-line text field](components/TextField/android/multi-line.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Multi-line text field](components/TextField/ios/multi-line.png)
+
+<!-- /content-for -->
+
 ### Text field with hidden label
+
+<!-- example-for: web -->
 
 Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
 
@@ -321,6 +386,8 @@ class HiddenLabelExample extends React.Component {
 
 ### Text field with label action
 
+<!-- example-for: web -->
+
 Use when an optional, secondary action is closely associated with a text field. For example, on a field for entering a customs tariff code, a label action might be to look up the appropriate code from a table.
 
 ```jsx
@@ -373,6 +440,18 @@ class PlaceholderExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Default text field with placeholder text hint](components/TextField/android/placeholder-text.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default text field with placeholder text hint](components/TextField/ios/placeholder-text.png)
+
+<!-- /content-for -->
+
 ### Text field with help text
 
 Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and the merchant doesn’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
@@ -401,9 +480,24 @@ class HelpTextExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Default text field with help text](components/TextField/android/help-text.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default text field with help text](components/TextField/ios/help-text.png)
+
+<!-- /content-for -->
+
 ### Text field with prefix or suffix
 
-Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (e.g. “$”, “¥”, “£”). Use suffix for things like units of measure (e.g. “in”, “cm”).
+Use as a special form of help text that works best inline.
+
+- Use a prefix for things like currency symbols (e.g. “$”, “¥”, “£”).
+- Use suffix for things like units of measure (e.g. “in”, “cm”).
 
 ```jsx
 class PrefixExample extends React.Component {
@@ -429,9 +523,27 @@ class PrefixExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Default text field with prefix and suffix](components/TextField/android/prefix-suffix.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default text field with prefix and suffix](components/TextField/ios/prefix-suffix.png)
+
+<!-- /content-for -->
+
 ### Text field with connected fields
 
-Use when a text field and several related fields make up a logical unit. If inputting weight as a number and a separate unit of measurement, use a text field with a <select dropdown menu> (e.g. “kg”, “lb”) as a connected field.
+Use when a text field and several related fields make up a logical unit.
+
+<!-- content-for: web -->
+
+If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](/components/forms/select) (for example “kg”, “lb”) as a connected field.
+
+<!-- /content-for -->
 
 ```jsx
 class ConnectedFieldsExample extends React.Component {
@@ -459,6 +571,42 @@ class ConnectedFieldsExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+If inputting weight as a number and a separate unit of measurement, use a text field with a selector (e.g. “kg”, “lb”) as a connected field.
+
+![Text field with connected selector](components/TextField/android/connected-fields.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+If inputting weight as a number and a separate unit of measurement, use a text field with a selector (e.g. “kg”, “lb”) as a connected field.
+
+![Text field with connected selector](components/TextField/ios/connected-fields.png)
+
+<!-- /content-for -->
+
+### Text field with icon action
+
+<!-- example-for: android, ios -->
+
+Use to let merchants take an action within the text field.
+
+For example, tap on a barcode icon to launch the camera and scan barcode for the barcode field. This helps merchant simplify their input.
+
+<!-- content-for: android -->
+
+![Text field with icon action inside the text field](components/TextField/android/accessory.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Text field with icon action inside the text field](components/TextField/ios/accessory.png)
+
+<!-- /content-for -->
+
 ### Text field with validation error
 
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
@@ -485,6 +633,18 @@ class ValidationErrorExample extends React.Component {
   }
 }
 ```
+
+<!-- content-for: android -->
+
+![Text field with error](components/TextField/android/error.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Text field with error](components/TextField/ios/error.png)
+
+<!-- /content-for -->
 
 ### Text field with separate validation error
 
@@ -566,6 +726,8 @@ class SeparateValidationErrorExample extends React.Component {
 
 ### Disabled text field
 
+<!-- example-for: web -->
+
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
 ```jsx
@@ -576,5 +738,6 @@ Use to show that a textfield is not available for interaction. Most often used i
 
 ## Related components
 
-- To lay out the elements of a responsive form, [use the form layout component](/components/forms/form-layout)
+- To lay out the elements in a responsive form, [use the form layout component](/components/forms/form-layout)
 - To describe an invalid form input with a separate validation error, [use the inline error component](/components/forms/inline-error)
+- It’s common to [use a select component](/components/forms/select) connected to the left or right of a text field.
