@@ -3,7 +3,6 @@ export const SCROLL_LOCKING_CUSTOM_PROPERTY = '--scroll-lock-body-padding';
 
 export default class ScrollLockManager {
   private scrollLocks: number = 0;
-  private body = document.body;
 
   registerScrollLock() {
     this.scrollLocks += 1;
@@ -16,7 +15,11 @@ export default class ScrollLockManager {
   }
 
   handleScrollLocking() {
-    const {scrollLocks, body} = this;
+    if (!document) return;
+
+    const {scrollLocks} = this;
+    const {body} = document;
+
     if (scrollLocks === 0) {
       body.removeAttribute(SCROLL_LOCKING_ATTRIBUTE);
       body.style.setProperty(SCROLL_LOCKING_CUSTOM_PROPERTY, '0px');
