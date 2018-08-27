@@ -1,13 +1,13 @@
 import {
   ActionListItemDescriptor,
-  Action,
   IconableAction,
   DisableableAction,
   BadgeAction,
+  LoadableAction,
+  DestructableAction,
 } from '../../types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
-import {Props as ButtonProps} from '../Button';
 
 export type SecondaryAction = IconableAction & DisableableAction;
 
@@ -37,6 +37,14 @@ export interface ActionProps {
   hasIndicator?: boolean;
 }
 
+export interface PrimaryActionProps
+  extends DisableableAction,
+    LoadableAction,
+    DestructableAction {
+  /** Provides extra visual weight and identifies the primary action in a set of buttons */
+  primary?: boolean;
+}
+
 export interface HeaderProps {
   /** Page title, in large type */
   title: string;
@@ -55,7 +63,7 @@ export interface HeaderProps {
   /** Collection of page-level groups of secondary actions */
   actionGroups?: ActionGroup[];
   /** Primary page-level action */
-  primaryAction?: Action & ButtonProps;
+  primaryAction?: PrimaryActionProps;
   /** Page-level pagination */
   pagination?: PaginationDescriptor;
 }

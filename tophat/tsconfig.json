@@ -14,7 +14,7 @@
     "noUnusedLocals": true,
     "noEmitHelpers": true,
     "importHelpers": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "lib": ["dom", "es2015", "es2016", "es2017", "dom.iterable", "scripthost"],
     "resolveJsonModule": true,
     "declaration": true,
