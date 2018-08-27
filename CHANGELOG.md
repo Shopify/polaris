@@ -7,6 +7,15 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+## 2.7.1 - 2018-08-27
+
+### Documentation
+
+- Fixed paths to images in the “Attention badge” example ([#2063](https://github.com/Shopify/polaris-react/pull/2063))
+
+### Bug fixes
+
+- Fixed the page component's primary action to support `LoadableAction`s and `DisableableAction`s ([#2075](https://github.com/Shopify/polaris-react/pull/2075))
 
 ## 2.7.0 - 2018-08-27
 
