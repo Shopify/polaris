@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.7.2 - 2018-08-27
+
+### Bug fixes
+
+- Reverted a change that caused items in a popover component not to be clickable ([#2080](https://github.com/Shopify/polaris-react/pull/2080))
+
 ## 2.7.1 - 2018-08-27
 
 ### Documentation
