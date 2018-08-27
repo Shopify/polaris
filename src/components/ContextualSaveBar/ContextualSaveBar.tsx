@@ -15,6 +15,13 @@ export interface Action {
   onAction?(): void;
 }
 
+interface DiscardActionProps {
+  /** Whether to show a modal confirming the discard action */
+  discardConfirmationModal?: boolean;
+}
+
+type CombinedActionProps = DiscardActionProps & Action;
+
 export interface Props {
   /** A boolean property indicating  whether the contextual save bar is currently visible */
   visible: boolean;
@@ -23,7 +30,7 @@ export interface Props {
   /** Save or commit contextual save bar action with text defaulting to 'Save' */
   saveAction?: Action;
   /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
-  discardAction?: Action;
+  discardAction?: CombinedActionProps;
 }
 
 class ContextualSaveBar extends React.PureComponent<Props, never> {

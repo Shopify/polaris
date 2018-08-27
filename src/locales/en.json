@@ -49,6 +49,13 @@
       "today": "Today "
     },
 
+    "DiscardConfirmationModal": {
+      "title": "Discard all unsaved changes",
+      "message": "If you discard changes, you'll delete any edits you made since you last saved.",
+      "primaryAction": "Discard changes",
+      "secondaryAction": "Continue editing"
+    },
+
     "DropZone": {
       "overlayTextFile": "Drop file to upload",
       "overlayTextImage": "Drop image to upload",
