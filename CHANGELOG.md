@@ -39,6 +39,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts.
 - Added documentation for iOS and Android section header
+- Added documentation for iOS and Android spinner
 
 ## 2.6.1 - 2018-08-21
 
