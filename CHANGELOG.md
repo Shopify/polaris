@@ -7,6 +7,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 <!-- Unreleased changes should go to UNRELEASED.md -->
 
 ---
+
+## 2.7.2 - 2018-08-27
+
+### Bug fixes
+
+- Reverted a change that caused items in a popover component not to be clickable ([#2080](https://github.com/Shopify/polaris-react/pull/2080))
+
 ## 2.7.1 - 2018-08-27
 
 ### Documentation
@@ -26,13 +33,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Added support for complex operators in `ResourceList` component ([#2006](https://github.com/Shopify/polaris-react/pull/2006))
 - Updated the page component's primary action to support `Button` props. ([#1994](https://github.com/Shopify/polaris-react/pull/1994))
 - Added validation for non-numeric input in a type="number" `TextField` ([#2001](https://github.com/Shopify/polaris-react/pull/2001))
-- Added support for Windows High Contrast mode in the popover component ([#1987](https://github.com/Shopify/polaris-react/pull/1987))
 - Added circle information icon ([#1967](https://github.com/Shopify/polaris-react/pull/1967))
 
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
 - Added documentation for iOS and Android section header ([#1918](https://github.com/Shopify/polaris-react/pull/1918))
+- Added documentation for iOS and Android spinner ([#1974](https://github.com/Shopify/polaris-react/pull/1974))
 
 ## 2.6.1 - 2018-08-21
 
