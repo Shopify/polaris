@@ -2,12 +2,25 @@
 
 The changelog is prepared manually immediately before a release, by moving changelog entries from `UNRELEASED.md` to `CHANGELOG.md`, under a new heading for the version number.
 
-How to write a changelog entry:
+### How to write a changelog entry:
 
 - Use a positive, conversational tone (for example, use “support” over “allow” and other authoritative verbs)
-- Use sentence case (refer to components as plain nouns, for example drop zone and not DropZone)
-- Use plain language
 - Avoid redundancy when possible (try to phrase a bug fix entry without the word “bug”)
+- Use sentence case
+- Use plain language
+
+### Component name formats:
+
+When referring to the concept of a component: use sentence case and include a space. For example, write “text field” instead of “TextField”. This format is helps non-developers with documentation comprehension.
+
+When referring to an actual React component:
+
+- Refer to components by their React name (singular).
+  - **Do:** Banner, Tabs, ResourceList
+  - **Don’t:** Banners, Avatars, resource list.
+- **Components:** use upper CamelCase, also known as PascalCase, wrapped in backticks. For example, `TextField`.
+- **Props:** use lower camelCase, wrapped in backticks. For example `primaryAction`.
+- **Putting it all together:** “Added a `primaryAction` prop to `TextField`”.
 
 Change log entry descriptions should be brief but descriptive and follow this structure:
 
@@ -16,11 +29,11 @@ Change log entry descriptions should be brief but descriptive and follow this st
 
 ### Breaking changes
 
-- Past tense verb + brief issue/enhancement description ([#100](https://github.com/shopify/polaris/pull/100))
+- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris/pull/100))
 
 Contributed from the community:
 
-- Past tense verb + brief issue/enhancement description ([#100](https://github.com/shopify/polaris/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
+- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
 ```
 
 The possible groups in which to categorize changes are:
