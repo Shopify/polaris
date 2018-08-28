@@ -27,7 +27,7 @@ export interface BaseProps {
   /** Value for form input */
   value?: string;
   /** Display an error message */
-  error?: Error;
+  error?: Error | boolean;
   /** Callback when checkbox is toggled */
   onChange?(newChecked: boolean, id: string): void;
   /** Callback when checkbox is focussed */
