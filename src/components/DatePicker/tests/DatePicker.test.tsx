@@ -24,7 +24,7 @@ describe('<DatePicker />', () => {
   });
 
   describe('when weekStartsOn is passed', () => {
-    it('week starts on Monday', () => {
+    it('renders Monday as first day of the week', () => {
       const component = mountWithAppProvider(
         <DatePicker month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );
@@ -33,7 +33,7 @@ describe('<DatePicker />', () => {
       expect(weekday.first().text()).toEqual('Mo');
     });
 
-    it('week starts on Saturday', () => {
+    it('renders Saturday as first day of the week', () => {
       const component = mountWithAppProvider(
         <DatePicker month={0} year={2018} weekStartsOn={Weekdays.Saturday} />,
       );
@@ -44,7 +44,7 @@ describe('<DatePicker />', () => {
   });
 
   describe('onChange()', () => {
-    it('is called on click on Day component', () => {
+    it('is called when Day component is clicked', () => {
       const spy = jest.fn();
       const component = mountWithAppProvider(
         <Month

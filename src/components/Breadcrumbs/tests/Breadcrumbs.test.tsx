@@ -6,11 +6,11 @@ import Breadcrumbs from '../Breadcrumbs';
 
 describe('<Breadcrumbs />', () => {
   describe('url', () => {
-    it('is using <a> tags when passed a LinkAction', () => {
+    it('uses <a> tags when passed a LinkAction', () => {
       const linkBreadcrumbs: LinkAction[] = [
         {
           content: 'Products',
-          url: 'https://www.google.com',
+          url: 'https://www.shopify.com',
           target: 'new',
         },
       ];
@@ -24,7 +24,7 @@ describe('<Breadcrumbs />', () => {
   });
 
   describe('onAction()', () => {
-    it('is using <button> tags when passed a CallbackAction', () => {
+    it('uses <button> tags when passed a CallbackAction', () => {
       const callbackBreadcrumbs: CallbackAction[] = [
         {
           content: 'Products',
@@ -39,7 +39,7 @@ describe('<Breadcrumbs />', () => {
       expect(breadcrumbs.find('button')).toHaveLength(1);
     });
 
-    it('is calling the correct function when clicked', () => {
+    it('calls the correct function when clicked', () => {
       const spy = jest.fn();
       const callbackBreadcrumbs: CallbackAction[] = [
         {
