@@ -1,6 +1,10 @@
 ---
 name: Empty state
 category: Structure
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - EmptyState
   - lander
@@ -158,6 +162,18 @@ Use to explain a single feature before a merchant has used it.
   <p>Track and receive your incoming inventory from suppliers.</p>
 </EmptyState>
 ```
+
+<!-- content-for: android -->
+
+![Default empty state](components/EmptyState/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default empty state](components/EmptyState/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 

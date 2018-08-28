@@ -1,6 +1,10 @@
 ---
 name: Select
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - on off
   - switch
@@ -19,13 +23,13 @@ keywords:
   - long list of options
   - long option list
   - separate error message
+  - ios
+  - android
 ---
 
 # Select
 
-Select lets merchants choose one option from a list in a dropdown menu. It
-works well for lists of more than four choices when displaying them could
-clutter up the interface.
+Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
 
 ---
 
@@ -33,28 +37,23 @@ clutter up the interface.
 
 The select component should:
 
-- Be used for lists of four or more items
-- List items within the menu alphabetically or some other logical order so
-  merchants can easily find the selection they need
-- Provide a label to clearly identify the content being presented in the drop
-  down menu
-- Have a default option selected, where possible
-- Have a placeholder option with the text “Select” if there is no logical
-  default option
+- Be used for selecting between 4 or more pre-defined options
+- Have a default option selected whenever possible
+- Use “Select” as a placeholder option only if there’s no logical default option
 
 ---
 
 ## Content guidelines
 
-### Field label
+### Select label
 
-A label is a short description of the requested input. Labels are not help
-text, and they don’t provide instruction, but they should be meaningful and
-clearly indicate what is expected. Labels should be:
+Labels should:
 
-- Placed above or beside the form field
-- Short and succinct (1–3 words)
-- Written in sentence case (the first word capitalized, the rest lowercase)
+- Give a short description (1–3 words) of the requested input.
+- Be written in sentence case (the first word capitalized, the rest lowercase).
+- Avoid punctuation and articles (“the”, “an”, “a”).
+- Be independent sentences. To support [internationalization](/guides/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
+- Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
 <!-- usagelist -->
 
@@ -80,17 +79,14 @@ clearly indicate what is expected. Labels should be:
 
 <!-- end -->
 
-### Menu options
+### Select options
 
-The list of options in a menu should:
+Options should:
 
-- Be concise but still give the merchant enough information so they can easily
-  make a selection
-- Be arranged alphabetically or in some other clear logical order
-
-### Placeholder option
-
-The placeholder option should be the text “Select”.
+- Use “Select” as the text for a placeholder option, if present
+- Be listed alphabetically or in another logical order so merchants can easily find the option they need
+- Be written in sentence case (the first word capitalized, the rest lowercase) and avoid using commas or semicolons at the end of each option
+- Be clearly labelled based on what the option will do
 
 ---
 
@@ -98,7 +94,9 @@ The placeholder option should be the text “Select”.
 
 ### Default select
 
-Use when a merchant needs to choose one option from a list of four or more.
+<!-- content-for: web -->
+
+Presents a classic dropdown menu or equivalent picker as determined by the merchant’s browser.
 
 ```jsx
 class SelectExample extends React.Component {
@@ -129,7 +127,27 @@ class SelectExample extends React.Component {
 }
 ```
 
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+The iOS picker expands in-line. Merchants scroll to select the item they want.
+
+![iOS select, and select with option menu](components/Select/ios/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: android -->
+
+The Android menu is similar in behavior to the web dropdown.
+
+![Android select, and select with option menu](components/Select/android/default.png)
+
+<!-- /content-for -->
+
 ### Select with inline label
+
+<!-- example-for: web -->
 
 Use only for cases where the select must fit on a single line, such as in a toolbar.
 
@@ -182,13 +200,23 @@ Use for selections that aren’t currently available. The surrounding interface 
 />
 ```
 
+<!-- content-for: ios -->
+
+![Disabled select component on iOS](components/Select/ios/disabled.png)
+
+<!-- /content-for -->
+
+<!-- content-for: android -->
+
+![Disabled select component on Android](components/Select/android/disabled.png)
+
 <!-- /content-for -->
 
 ### Select with validation error
 
 <!-- example-for: web -->
 
-Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
+Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
 
 ```jsx
 class ValidationErrorExample extends React.Component {
@@ -215,6 +243,8 @@ class ValidationErrorExample extends React.Component {
 ```
 
 ### Select with separate validation error
+
+<!-- example-for: web -->
 
 Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 
@@ -299,8 +329,5 @@ class SeparateValidationErrorExample extends React.Component {
 
 ## Related components
 
-- To let merchants make a single selection from a list with four or fewer
-  options, [use the choice list component](/components/forms/choice-list)
-- To present merchants with a list of choices where they can make multiple
-  selections, [use the choice list component](/components/forms/choice-list) with
-  the `allow multiple` option
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](/components/forms/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](/components/lists-and-tables/option-list) inside a [popover](/components/overlays/popover)

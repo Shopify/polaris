@@ -1,6 +1,10 @@
 ---
 name: List
 category: Lists and tables
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - bulleted lists
   - numbered lists
@@ -8,12 +12,13 @@ keywords:
   - list items
   - text lists
   - text-only lists
+  - ios
+  - android
 ---
 
 # List
 
-Lists display a series of related content. Each list item begins with a
-bullet, a number, or less commonly, with an icon.
+Lists display a set of related text-only content. Each list item begins with a bullet or a number.
 
 ---
 
@@ -25,7 +30,7 @@ Lists should:
   merchants to scan
 - Be phrased consistently (e.g. try to start each item with a noun or a
   verb and be consistent with each item)
-- Not be used for lists of actionable choices that the merchants needs to choose between
+- Not be used for lists where the entire item represents an action
 
 ---
 
@@ -72,13 +77,6 @@ Every item in a list should:
 
 <!-- end -->
 
-### Icon list text
-
-When a line of text is placed next to an icon, it should:
-
-- Follow all the rules for list items
-- Elaborate on the meaning conveyed by the icon
-
 ---
 
 ## Examples
@@ -95,6 +93,18 @@ Use for a text-only list of related items that don’t need to be in a specific 
 </List>
 ```
 
+<!-- content-for: android -->
+
+![Bulleted list on Android](components/List/android/bullets.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Bulleted list on iOS](components/List/ios/bullets.png)
+
+<!-- /content-for -->
+
 ### Numbered list
 
 Use for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
@@ -106,6 +116,18 @@ Use for a text-only list of related items when an inherent order, priority, or s
   <List.Item>Third Item</List.Item>
 </List>
 ```
+
+<!-- content-for: android -->
+
+![Numbered list on Android](components/List/android/numbered.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Numbered list on iOS](components/List/ios/numbered.png)
+
+<!-- /content-for -->
 
 ---
 
