@@ -7,6 +7,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
+- Added examples for iOS and Android section header ([#1918](https://github.com/Shopify/polaris-react/pull/1918))
+- Added examples for iOS and Android thumbnail ([#1962](https://github.com/Shopify/polaris-react/pull/1962))
 - Added examples for iOS and Android empty state ([#2021](https://github.com/Shopify/polaris-react/pull/2021))
 - Added examples for iOS and Android text field ([#1893](https://github.com/Shopify/polaris-react/pull/1893))
 - Added examples for iOS and Android select ([#2041](https://github.com/Shopify/polaris-react/pull/2041))
