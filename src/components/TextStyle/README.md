@@ -1,6 +1,10 @@
 ---
 name: Text style
 category: Titles and text
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - TextStyle
   - typographic
@@ -17,6 +21,8 @@ keywords:
   - decrease
   - input
   - fields
+  - android
+  - ios
 ---
 
 # Text style
@@ -38,7 +44,7 @@ Text style should be:
 
 ## Examples
 
-### Subdued textstyle
+### Subdued text style
 
 Use to de-emphasize a piece of text that is less important to the merchant than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
 
@@ -46,7 +52,19 @@ Use to de-emphasize a piece of text that is less important to the merchant than 
 <TextStyle variation="subdued">No supplier listed</TextStyle>
 ```
 
-### Strong textstyle
+<!-- content-for: android -->
+
+![Subdued textstyle](components/TextStyle/android/subdued.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Subdued text style](components/TextStyle/ios/subdued.png)
+
+<!-- /content-for -->
+
+### Strong text style
 
 Use to mark text representing user input, or to emphasize the totals row in a price table.
 
@@ -54,7 +72,19 @@ Use to mark text representing user input, or to emphasize the totals row in a pr
 <TextStyle variation="strong">Total</TextStyle>
 ```
 
-### Positive textstyle
+<!-- content-for: android -->
+
+![Strong text style](components/TextStyle/android/strong.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Strong text style](components/TextStyle/ios/strong.png)
+
+<!-- /content-for -->
+
+### Positive text style
 
 Use in combination with a symbol showing an increasing value to indicate an upward trend.
 
@@ -62,13 +92,37 @@ Use in combination with a symbol showing an increasing value to indicate an upwa
 <TextStyle variation="positive">Orders increased</TextStyle>
 ```
 
-### Negative textstyle
+<!-- content-for: android -->
+
+![Positive text style](components/TextStyle/android/positive.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Positive text style](components/TextStyle/ios/positive.png)
+
+<!-- /content-for -->
+
+### Negative text style
 
 Use in combination with a symbol showing a decreasing value to indicate a downward trend.
 
 ```jsx
 <TextStyle variation="negative">Orders decreased</TextStyle>
 ```
+
+<!-- content-for: android -->
+
+![Negative text style](components/TextStyle/android/negative.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Negative text style](components/TextStyle/ios/negative.png)
+
+<!-- /content-for -->
 
 ### Code text style
 
@@ -80,3 +134,15 @@ Use to display inline snippets of code or code-like text.
   homepage, enter <TextStyle variation="code"> / </TextStyle> (a forward slash).
 </p>
 ```
+
+<!-- content-for: android -->
+
+![Code text style](components/TextStyle/android/code.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Code text style](components/TextStyle/ios/code.png)
+
+<!-- /content-for -->

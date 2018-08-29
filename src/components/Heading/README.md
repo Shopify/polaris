@@ -1,6 +1,10 @@
 ---
 name: Heading
 category: Titles and text
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - titles
   - text
@@ -13,6 +17,8 @@ keywords:
   - section headings
   - heading text
   - heading font
+  - android
+  - ios
 ---
 
 # Heading
@@ -84,6 +90,18 @@ Use for the title of each top-level page section.
 ```jsx
 <Heading>Online store dashboard</Heading>
 ```
+
+<!-- content-for: android -->
+
+![Typographic heading](components/Heading/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Typographic heading](components/Heading/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 

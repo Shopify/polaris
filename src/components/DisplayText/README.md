@@ -1,6 +1,10 @@
 ---
 name: Display text
 category: Titles and text
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - DisplayText
   - announcement text
@@ -22,6 +26,8 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
+  - android
+  - ios
 ---
 
 # Display text
@@ -47,7 +53,9 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 ### Display text
 
-- Be benefits-driven and focused on information that is most important to
+Display text should be:
+
+- Benefits-driven and focused on information that is most important to
   merchants
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
@@ -70,6 +78,18 @@ Use this size sparingly and never multiple times on the same page.
 <DisplayText size="extraLarge">Good evening, Dominic.</DisplayText>
 ```
 
+<!-- content-for: android -->
+
+![Extra large display text](components/DisplayText/android/extra-large.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Extra large display text](components/DisplayText/ios/extra-large.png)
+
+<!-- /content-for -->
+
 ### Medium and large
 
 Use as part of complex data displays to highlight key numbers, or to harmonize with other display text.
@@ -78,7 +98,21 @@ Use as part of complex data displays to highlight key numbers, or to harmonize w
 <DisplayText size="medium">Good evening, Dominic.</DisplayText>
 ```
 
+<!-- content-for: android -->
+
+![Medium and large display text](components/DisplayText/android/medium-large.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Medium and large display text](components/DisplayText/ios/medium-large.png)
+
+<!-- /content-for -->
+
 ### Small
+
+<!-- example-for: web -->
 
 Use for text that would otherwise use body text, but that needs to scale with other display text.
 
