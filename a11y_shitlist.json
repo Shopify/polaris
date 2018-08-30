@@ -123,6 +123,24 @@
       "selector": "#app > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
     }
   ],
+  "http://localhost:3000/card/7": [
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Preview</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > div:nth-child(2) > div > div > button > span > span"
+    },
+    {
+      "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "context": "<span>Add account</span>",
+      "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 4.49:1. Recommendation: change text colour to #007acd.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#app > div > div:nth-child(1) > div > div:nth-child(3) > div > button > span > span:nth-child(1)"
+    }
+  ],
   "http://localhost:3000/drop-zone/0": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
@@ -469,7 +487,7 @@
       "selector": "#RangeSlider1"
     }
   ],
-  "http://localhost:3000/resource-list/3": [
+  "http://localhost:3000/resource-list/4": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
       "context": "<a aria-describedby=\"341\" class=\"Item-Link_2-raD\" href=\"customers/341\" data-polaris-unstyled=\"true\"></a>",
@@ -487,7 +505,7 @@
       "selector": "#app > div > div > ul > li:nth-child(2) > div > a"
     }
   ],
-  "http://localhost:3000/resource-list/5": [
+  "http://localhost:3000/resource-list/6": [
     {
       "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
       "context": "<span>View latest order</span>",

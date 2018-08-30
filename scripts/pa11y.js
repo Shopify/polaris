@@ -97,13 +97,33 @@ async function runPa11y() {
 
   if (remainingIssues) {
     console.log(
-      'The following items were fixed, and therefore should be removed from the shitlist.',
+      `
+========================================================================
+The following items were fixed, and therefore should be removed from the shitlist.
+Please edit the file a11y_shitlist.json to remove them and run these tests again.',
+========================================================================
+`,
     );
-    console.log(
-      'Please edit the file a11y_shitlist.json to remove them and run these tests again.',
-    );
-    console.log(remainingIssues);
+    remainingIssues.forEach((issue) => {
+      console.log(
+        '------------------------------------------------------------------------',
+      );
+      console.log(issue.pageUrl);
+      console.log(
+        '------------------------------------------------------------------------',
+      );
+      console.log(JSON.stringify(issue.issues, null, 2));
+    });
   }
+
+  console.log(
+    `
+
+========================================================================
+The following issues were discovered and need to be fixed before this code can be merged
+========================================================================
+`,
+  );
 
   if (results.length) {
     results.forEach((result) => {
