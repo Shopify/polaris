@@ -90,9 +90,17 @@ Use this size sparingly and never multiple times on the same page.
 
 <!-- /content-for -->
 
-### Medium and large
+### Large
 
-Use as part of complex data displays to highlight key numbers, or to harmonize with other display text.
+Use for display text that’s more important than the medium size, but less important than extra large.
+
+```jsx
+<DisplayText size="large">Good evening, Dominic.</DisplayText>
+```
+
+### Medium
+
+Use for display text that’s more important than the small size, but less important than large.
 
 ```jsx
 <DisplayText size="medium">Good evening, Dominic.</DisplayText>
