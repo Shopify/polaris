@@ -41,21 +41,22 @@ Banners should:
 
 - Be placed in the appropriate context:
   - Banners relevant to an entire page should show at the top of that page at
-    full-width
+    full-width.
   - Banners related to a specific section or element of a page (such as a card,
-    popover, or modal) should show inside of that element
+    popover, or modal) should show inside of that element.
 - Focus on a single theme, piece of information, or required action to avoid
-  overwhelming merchants
+  overwhelming merchants.
 - Be dismissible unless they contain critical information or an important step
-  a merchant needs to take
+  a merchant needs to take.
 - Be concise and scannable—merchants shouldn’t need to spend a lot of time
-  figuring out what they need to know and do
+  figuring out what they need to know and do.
 - Be limited to a few important calls to action with no more than one primary
-  action
-- Be used thoughtfully and sparingly for only the most important information
+  action.
+- Be used thoughtfully and sparingly for only the most important information.
 - Not be used as the primary entry point or mechanism to access information or
-  actions a merchant needs to take on a regular basis
-- Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead
+  actions a merchant needs to take on a regular basis.
+- Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead.
+- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](/design/icons#using-icons-in-your-designs).
 
 ---
 
