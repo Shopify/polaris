@@ -18,7 +18,7 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form acceptCharset={acceptCharset} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('acceptCharset')).toBe(acceptCharset);
+      expect(wrapper.prop('acceptCharset')).toBe(acceptCharset);
     });
   });
 
@@ -27,16 +27,16 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form action={action} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('action')).toBe(action);
+      expect(wrapper.prop('action')).toBe(action);
     });
   });
 
   describe('autoComplete', () => {
-    it('sets the autocomplete attribute to "off" when provided as false', () => {
+    it('sets the autocomplete attribute when provided', () => {
       const wrapper = mountWithAppProvider(
         <Form autoComplete={false} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('autoComplete')).toBe('off');
+      expect(wrapper.prop('autoComplete')).toBe(false);
     });
   });
 
@@ -45,7 +45,7 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form encType={encType} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('encType')).toBe(encType);
+      expect(wrapper.prop('encType')).toBe(encType);
     });
   });
 
@@ -68,12 +68,7 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form method={method} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('method')).toBe(method);
-    });
-
-    it('defaults to post when no method is set', () => {
-      const wrapper = mountWithAppProvider(<Form onSubmit={noop} />);
-      expect(wrapper.find('form').prop('method')).toBe('post');
+      expect(wrapper.prop('method')).toBe(method);
     });
   });
 
@@ -82,7 +77,7 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form name={name} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('name')).toBe(name);
+      expect(wrapper.prop('name')).toBe(name);
     });
   });
 
@@ -91,7 +86,7 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form noValidate={noValidate} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('noValidate')).toBe(noValidate);
+      expect(wrapper.prop('noValidate')).toBe(noValidate);
     });
   });
 
@@ -155,7 +150,7 @@ describe('<Form />', () => {
       const wrapper = mountWithAppProvider(
         <Form target={target} onSubmit={noop} />,
       );
-      expect(wrapper.find('form').prop('target')).toBe(target);
+      expect(wrapper.prop('target')).toBe(target);
     });
   });
 });
