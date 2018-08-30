@@ -1,6 +1,10 @@
 ---
 name: Caption
 category: Titles and text
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - labels
   - text
@@ -14,11 +18,13 @@ keywords:
   - time text
   - compact text
   - small text
+  - android
+  - ios
 ---
 
 # Caption
 
-Caption text size is smaller than the recommended size for general reading. It should be used only in a graph or as a timestamp in a list.
+Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items.
 
 ---
 
@@ -71,3 +77,15 @@ Use to provide details in situations where content is compact and space is tight
   </List.Item>
 </List>
 ```
+
+<!-- content-for: android -->
+
+![Default caption](components/Caption/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default caption](components/Caption/ios/default.png)
+
+<!-- /content-for -->

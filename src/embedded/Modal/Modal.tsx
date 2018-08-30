@@ -1,5 +1,9 @@
 import * as React from 'react';
-import {withAppProvider, WithAppProviderProps} from '../../components';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../components/AppProvider';
 import {DisableableAction} from '../../types';
 
 export type Width = 'large' | 'fullwidth';

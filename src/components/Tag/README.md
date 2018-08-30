@@ -1,6 +1,10 @@
 ---
 name: Tag
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - indicator
   - label
@@ -35,14 +39,27 @@ Tags are either automatically generated or are created by merchants. There are n
 
 ### Default tag
 
-Use to represent a list of attributes on an object that can be added or removed.
+Use to allow merchants to add attributes to, and remove attributes from, an object.
 
 ```jsx
 <Tag>Wholesale</Tag>
 ```
+
+<!-- content-for: android -->
+
+![Tag for Android](components/Tag/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Tag for iOS](components/Tag/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 
 ## Related components
 
 - To show the status of an object, [use the badge component](/components/images-and-icons/badge)
+- To add and remove tags, [use the text field component](/components/forms/text-field)

@@ -14,7 +14,7 @@ export interface Props {
   /** Whether the associated form control is disabled */
   disabled?: Boolean;
   /** Display an error message */
-  error?: Error;
+  error?: Error | boolean;
   /** Visually hide the label */
   labelHidden?: boolean;
   /**  Content to display inside the choice */
@@ -51,11 +51,12 @@ export default function Choice({
     </div>
   ) : null;
 
-  const errorMarkup = error && (
-    <div className={styles.Error}>
-      <InlineError message={error} fieldID={id} />
-    </div>
-  );
+  const errorMarkup = error &&
+    typeof error !== 'boolean' && (
+      <div className={styles.Error}>
+        <InlineError message={error} fieldID={id} />
+      </div>
+    );
 
   const descriptionMarkup =
     helpTextMarkup || errorMarkup ? (
