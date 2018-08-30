@@ -38,8 +38,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts.
-- Added documentation for iOS and Android section header
-- Added documentation for iOS and Android spinner
 
 ## 2.6.1 - 2018-08-21
 
@@ -107,17 +105,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Fixed an issue that cause problems for some build tools [#1978](https://github.com/Shopify/polaris-react/pull/1978)
 - Fixed the word-break of long text in labels and banners on small screens
 
-### Documentation
-
-- Added examples for iOS and Android radio buttons
-- Added examples for iOS and Android banners
-- Added toast component
-- Added examples for iOS and Android buttons
-- Added examples for iOS and Android button groups
-- Added examples for iOS and Android badge
-- Added examples for iOS and Android avatar
-- Added stepper component
-
 ### New components
 
 #### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
@@ -136,11 +123,6 @@ Use inline errors to describe custom form inputs or form groups when invalid.
 - Remove stickyManager from app provider props interface
 - Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty
 - Remove extra padding from annotated section
-
-### Documentation
-
-- Added iOS and Android examples to the Card component
-- Added iOS and Android examples to the ChoiceList component
 
 ### Development workflow
 

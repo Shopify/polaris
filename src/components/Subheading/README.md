@@ -1,6 +1,10 @@
 ---
 name: Subheading
 category: Titles and text
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - title bar
   - top-level
@@ -13,6 +17,8 @@ keywords:
   - card section headings
   - headings of card sections
   - card section subheadings
+  - android
+  - ios
 ---
 
 # Subheading
@@ -67,6 +73,18 @@ Use to structure content in a card.
 ```jsx
 <Subheading>Accounts</Subheading>
 ```
+
+<!-- content-for: android -->
+
+![Subheading in a card](components/Subheading/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Subheading in a card](components/Subheading/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 

@@ -7,25 +7,25 @@ describe('<InlineError />', () => {
   describe('fieldID', () => {
     it('renders with an ID generated from the fieldID', () => {
       const error = mountWithAppProvider(
-        <InlineError message="Some error message" fieldID="SomeInput" />,
+        <InlineError message="Title can't be blank" fieldID="ProductTitle" />,
       );
 
-      expect(error.find('#SomeInputError')).toHaveLength(1);
+      expect(error.find('#ProductTitleError')).toHaveLength(1);
     });
   });
 
   describe('message', () => {
     it('only renders error markup when message is truthy', () => {
       const error = mountWithAppProvider(
-        <InlineError message="Some error message" fieldID="SomeInput" />,
+        <InlineError message="Title can't be blank" fieldID="ProductTitle" />,
       );
 
-      expect(error.find('#SomeInputError').text()).toContain(
-        'Some error message',
+      expect(error.find('#ProductTitleError').text()).toContain(
+        "Title can't be blank",
       );
 
       error.setProps({message: ''});
-      expect(error.find('#SomeInputError')).toBeNull;
+      expect(error.find('#ProductTitleError')).toBeNull;
     });
   });
 });

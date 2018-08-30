@@ -5,7 +5,7 @@ import UnstyledLink from '../../UnstyledLink';
 import Link from '../Link';
 
 describe('<Link />', () => {
-  it('onClick gets called when clicking', () => {
+  it('calls onClick when clicking', () => {
     const spy = jest.fn();
     const link = mountWithAppProvider(<Link url="MyThing" onClick={spy} />);
     link.simulate('click');

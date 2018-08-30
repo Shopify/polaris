@@ -1,6 +1,10 @@
 ---
 name: Tabs
 category: Navigation
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - layout
   - navigate
@@ -8,6 +12,8 @@ keywords:
   - list views
   - list filters
   - fitted tabs
+  - segmented controls
+  - scrollable
 ---
 
 # Tabs
@@ -116,6 +122,18 @@ class TabsExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Default tabs on Android](components/Tabs/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default tabs on iOS](components/Tabs/ios/default.png)
+
+<!-- /content-for -->
+
 ### Fitted tabs
 
 Use when tabs contain a few (2 or 3) items within a narrow column.
@@ -163,3 +181,17 @@ class FittedTabsExample extends React.Component {
   }
 }
 ```
+
+<!-- content-for: android -->
+
+![Fixed tabs on Android](components/Tabs/android/fixed.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+Also known as [Segmented controls](https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/) on iOS.
+
+![Fixed tabs on iOS](components/Tabs/ios/fixed.png)
+
+<!-- /content-for -->

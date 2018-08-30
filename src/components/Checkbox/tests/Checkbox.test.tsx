@@ -121,6 +121,17 @@ describe('<Checkbox />', () => {
       expect(checkbox.find(`#${errorID}`).text()).toBe('Some error');
     });
 
+    it('marks the input as invalid but avoids rendering an error message when provided a boolean', () => {
+      const checkbox = mountWithAppProvider(
+        <Checkbox error={Boolean(true)} label="Checkbox" />,
+      );
+      const errorID = checkbox.find('input').prop<string>('aria-describedby');
+
+      expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
+      expect(typeof errorID).toBe('string');
+      expect(checkbox.find(`#${errorID}`)).toHaveLength(0);
+    });
+
     it('connects the input to both an error and help text', () => {
       const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" error="Some error" helpText="Some help" />,

@@ -110,7 +110,7 @@ describe('<DropZone />', () => {
     expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
-  it('should not call any callback when is disabled', () => {
+  it('should not call any callbacks when disabled', () => {
     mountWithAppProvider(
       <DropZone
         disabled
