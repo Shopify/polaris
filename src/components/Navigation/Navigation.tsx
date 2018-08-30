@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {Scrollable} from '../../components';
 
-import {UserMenu, Section} from './components';
+import {UserMenu, Section, Item} from './components';
 import {contextTypes, SectionType} from './types';
 
 import * as styles from './Navigation.scss';
@@ -16,6 +16,7 @@ export interface Props {
 }
 
 export default class Navigation extends React.Component<Props, never> {
+  static Item = Item;
   static UserMenu = UserMenu;
   static Section = Section;
   static childContextTypes = contextTypes;
