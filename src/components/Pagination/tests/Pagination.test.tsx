@@ -33,21 +33,21 @@ describe('<Pagination />', () => {
     removeEventListener.mockRestore();
   });
 
-  it('will render a tooltip if nextTooltip is provided', () => {
+  it('renders a tooltip if nextTooltip is provided', () => {
     const pagination = mountWithAppProvider(<Pagination nextTooltip="k" />);
     pagination.find(Tooltip).simulate('focus');
 
     expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('k');
   });
 
-  it('will render a tooltip if previousToolTip is provided', () => {
+  it('renders a tooltip if previousToolTip is provided', () => {
     const pagination = mountWithAppProvider(<Pagination previousTooltip="j" />);
     pagination.find(Tooltip).simulate('focus');
 
     expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('j');
   });
 
-  it('will render a tooltip for nextToolTip and previousToolTip when they are provided', () => {
+  it('renders a tooltip for nextToolTip and previousToolTip when they are provided', () => {
     const pagination = mountWithAppProvider(
       <Pagination previousTooltip="j" nextTooltip="k" />,
     );
@@ -55,7 +55,7 @@ describe('<Pagination />', () => {
     expect(pagination.find(Tooltip)).toHaveLength(2);
   });
 
-  it('will add a keypress event for nextKeys', () => {
+  it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(
       <Pagination nextKeys={[Keys.KEY_K]} onNext={spy} nextTooltip="k" />,
@@ -66,7 +66,7 @@ describe('<Pagination />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('will add a keypress event for previousKeys', () => {
+  it('adds a keypress event for previousKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(
       <Pagination
@@ -99,7 +99,7 @@ describe('<Pagination />', () => {
       getElementById.mockRestore();
     });
 
-    it('will navigate the browser to the anchors target when the designated key is pressed', () => {
+    it('navigates the browser to the anchors target when the designated key is pressed', () => {
       const spy = jest.fn();
       pagination = mountWithAppProvider(
         <Pagination

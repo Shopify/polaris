@@ -1,6 +1,10 @@
 ---
 name: Popover
 category: Overlays
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - interactive
   - container
@@ -18,11 +22,14 @@ keywords:
   - popover with form components
   - popover with action list
   - popover with content and actions
+  - action sheet
+  - ios
+  - android
 ---
 
 # Popover
 
-Popovers are small overlays that open on demand, usually when the merchant clicks a button. They let merchants access supplementary content and actions without cluttering the page.
+Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
 
 ---
 
@@ -30,7 +37,7 @@ Popovers are small overlays that open on demand, usually when the merchant click
 
 Popovers should:
 
-- Always show next to the button or other interface element that triggers them
+- Always be positioned next to the button or other interface element that triggers them
 - Be used for secondary or less important information and actions since they’re hidden until the merchant hits the trigger
 - Contain navigation or actions that share a relationships to each other
 - Be triggered by a clearly labeled button
@@ -41,7 +48,7 @@ Popovers should:
 
 ### Popover content
 
-If the menu items in a popover menu include a series of actions, each item should:
+If a popover contains actions, they should:
 
 - Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive a merchant by mislabeling an action.
 
@@ -77,7 +84,7 @@ If the menu items in a popover menu include a series of actions, each item shoul
 
 <!-- end -->
 
-- Be scannable: avoid unnecessary words and articles such as the, an, or a.
+- Be scannable, especially when the popover contains a list of actions or options. Avoid unnecessary words and articles such as “the”, “an”, or “a”.
 
 <!-- usagelist -->
 
@@ -91,7 +98,7 @@ If the menu items in a popover menu include a series of actions, each item shoul
 
 <!-- end -->
 
-If the menu items in a popover menu include a series of navigational links, each item should:
+If the popover includes a series of navigational links, each item should:
 
 - Be concise but still give the merchant enough information so they can easily find and accurately navigate to the path they want.
 
@@ -150,9 +157,21 @@ class PopoverExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Popover with action list for Android](components/Popover/android/action-list.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Popover with action list for iOS](components/Popover/ios/action-list.png)
+
+<!-- /content-for -->
+
 ### Popover with content and actions
 
-Use to present a combination of content, instructions, and actions is a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
+Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
 
 ```jsx
 class PopoverContentExample extends React.Component {
@@ -199,7 +218,21 @@ class PopoverContentExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Popover with content and actions for Android](components/Popover/android/action-content.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Popover with content and actions for iOS](components/Popover/ios/action-content.png)
+
+<!-- /content-for -->
+
 ### Popover with form components
+
+<!-- example-for: web -->
 
 Use to present secondary input tasks on demand.
 
@@ -230,7 +263,7 @@ class PopoverFormExample extends React.Component {
     );
 
     return (
-      <div style={{height: '250px'}}>
+      <div style={{height: '280px'}}>
         <Popover
           active={this.state.active}
           activator={activator}
@@ -256,9 +289,21 @@ class PopoverFormExample extends React.Component {
 }
 ```
 
+### Action sheet
+
+<!-- example-for: ios -->
+
+Use when you have few actions that affects the whole page. Action sheets doesn’t support icons or additional information.
+
+<!-- content-for: ios -->
+
+![iOS action sheet](components/Popover/ios/action-sheet.png)
+
+<!-- /content-for -->
+
 ---
 
 ## Related components
 
 - To put a list of actions in a popover, [use the action list component](/components/actions/action-list)
-- To group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and take action on, [use the card component](/components/structure/card)
+- To let merchants select simple options from a list, [use the select component](/components/forms/select)

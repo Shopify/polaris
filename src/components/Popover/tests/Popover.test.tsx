@@ -96,7 +96,7 @@ describe('<Popover />', () => {
     expect(activatorWrapper.type()).toBe('span');
   });
 
-  it("passes 'preventAutofocus' to PopoverOverlay", () => {
+  it('passes preventAutofocus to PopoverOverlay', () => {
     const popover = mountWithAppProvider(
       <Popover
         active={false}
@@ -109,7 +109,7 @@ describe('<Popover />', () => {
     expect(popoverOverlay.prop('preventAutofocus')).toBe(true);
   });
 
-  it("passes 'sectioned' to PopoverOverlay", () => {
+  it('passes sectioned to PopoverOverlay', () => {
     const popover = mountWithAppProvider(
       <Popover
         active={false}
@@ -122,7 +122,7 @@ describe('<Popover />', () => {
     expect(popoverOverlay.prop('sectioned')).toBe(true);
   });
 
-  it("passes 'fullWidth' to PopoverOverlay", () => {
+  it('passes fullWidth to PopoverOverlay', () => {
     const popover = mountWithAppProvider(
       <Popover
         active={false}

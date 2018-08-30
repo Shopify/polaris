@@ -8,6 +8,21 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.8.0 - 2018-08-30
+
+### Bug fixes
+
+- Reverted a change that caused the built embeded.js bundle to be way larger than it should be due to broad imports ([#2102](https://github.com/Shopify/polaris-react/pull/2102))
+
+### Enhancements
+
+- Added support for boolean type on Choice error prop ([#2085](https://github.com/shopify/polaris-react/pull/2085))
+
+### Documentation
+
+- Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
+- Updated display text documentation to have a separate example for medium and large display ([#2100](https://github.com/Shopify/polaris-react/pull/2100))
+
 ## 2.7.2 - 2018-08-27
 
 ### Bug fixes
@@ -38,8 +53,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
-- Added documentation for iOS and Android section header ([#1918](https://github.com/Shopify/polaris-react/pull/1918))
-- Added documentation for iOS and Android spinner ([#1974](https://github.com/Shopify/polaris-react/pull/1974))
 
 ## 2.6.1 - 2018-08-21
 
@@ -107,17 +120,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Fixed an issue that cause problems for some build tools [#1978](https://github.com/Shopify/polaris-react/pull/1978)
 - Fixed the word-break of long text in labels and banners on small screens ([#1982](https://github.com/Shopify/polaris-react/pull/1982))
 
-### Documentation
-
-- Added examples for iOS and Android radio buttons ([#1830](https://github.com/Shopify/polaris-react/pull/1830))
-- Added examples for iOS and Android banners ([#1829](https://github.com/Shopify/polaris-react/pull/1829))
-- Added toast component ([#1844](https://github.com/Shopify/polaris-react/pull/1844))
-- Added examples for iOS and Android buttons ([#1863](https://github.com/Shopify/polaris-react/pull/1863))
-- Added examples for iOS and Android button groups ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
-- Added examples for iOS and Android badge ([#1892](https://github.com/Shopify/polaris-react/pull/1892))
-- Added examples for iOS and Android avatar ([#1904](https://github.com/Shopify/polaris-react/pull/1904))
-- Added stepper component ([#1914](https://github.com/Shopify/polaris-react/pull/1914))
-
 ### New components
 
 #### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
@@ -136,11 +138,6 @@ Use inline errors to describe custom form inputs or form groups when invalid.
 - Remove stickyManager from app provider props interface ([#1706](https://github.com/Shopify/polaris-react/pull/1706))
 - Fixed a bug where `Layout.AnnotatedSection` would output a wrapper div for a `description` even when its contents were empty ([#1766](https://github.com/Shopify/polaris-react/pull/1766))
 - Remove extra padding from annotated section ([#1805](https://github.com/Shopify/polaris-react/pull/1805))
-
-### Documentation
-
-- Added iOS and Android examples to the Card component ([#1784](https://github.com/Shopify/polaris-react/pull/1784))
-- Added iOS and Android examples to the ChoiceList component ([#1825](https://github.com/Shopify/polaris-react/pull/1825))
 
 ### Development workflow
 
