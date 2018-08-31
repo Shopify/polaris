@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+
 import {FrameContext, frameContextTypes} from '../types';
 import {withAppProvider, WithAppProviderProps} from '..';
 
@@ -10,6 +11,8 @@ export interface Props {
   content: string;
   /** The length of time in milliseconds the toast message should persist (defaults to 5000) */
   duration?: number;
+  /** Display an error toast. */
+  error?: boolean;
   /** Callback when the dismiss icon is clicked */
   onDismiss(): void;
 }

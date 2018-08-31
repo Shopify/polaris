@@ -17,6 +17,10 @@ $Backdrop-opacity: 0.88;
   }
 }
 
+.error {
+  background: rgba(color('red', 'dark'), $Backdrop-opacity);
+}
+
 .CloseButton {
   display: flex;
   align-self: flex-start;
