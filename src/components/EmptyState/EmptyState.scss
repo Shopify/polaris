@@ -62,6 +62,10 @@ $illustration-width-cropped: calc(
   @include page-content-when-not-partially-condensed {
     flex-basis: 50%;
   }
+
+  @include page-content-when-fully-condensed {
+    overflow-x: hidden;
+  }
 }
 
 .Details {
