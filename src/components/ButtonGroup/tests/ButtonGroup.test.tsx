@@ -2,14 +2,14 @@ import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 
 import ButtonGroup from '../../ButtonGroup';
+import {Button} from '../../../components';
 
 describe('<ButtonGroup />', () => {
-  it('calls onClick when clicking', () => {
-    const spy = jest.fn();
-    const link = mountWithAppProvider(
-      <ButtonGroup url="MyThing" onClick={spy} />,
+  it('renders its children', () => {
+    const buttonMarkup = <Button>Save</Button>;
+    const buttonGroup = mountWithAppProvider(
+      <ButtonGroup>{buttonMarkup}</ButtonGroup>,
     );
-    link.simulate('click');
-    expect(spy).toHaveBeenCalled();
+    expect(buttonGroup.contains(buttonMarkup)).toBe(true);
   });
 });
