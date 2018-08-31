@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import Autocomplete from '..';
-import {ComboBox} from '../components';
 import Spinner from '../../Spinner';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 
@@ -39,5 +38,5 @@ describe('<Autocomplete/>', () => {
 });
 
 function renderTextField() {
-  return <ComboBox.TextField label="" onChange={noop} />;
+  return <Autocomplete.TextField label="" onChange={noop} />;
 }

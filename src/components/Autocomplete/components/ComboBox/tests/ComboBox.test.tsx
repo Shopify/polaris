@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import ComboBox from '..';
+import {TextField} from '../../../components';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
 
 describe('<ComboBox/>', () => {
@@ -28,7 +29,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       expect(comboBox.find('input').exists()).toBe(true);
-      expect(comboBox.find(ComboBox.TextField).exists()).toBe(false);
+      expect(comboBox.find(TextField).exists()).toBe(false);
     });
   });
 
@@ -214,7 +215,7 @@ describe('<ComboBox/>', () => {
 });
 
 function renderTextField() {
-  return <ComboBox.TextField label="" onChange={noop} />;
+  return <TextField label="" onChange={noop} />;
 }
 
 function renderNodeWithId() {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {ComboBox} from './components';
+import {ComboBox, TextField} from './components';
 import {Spinner} from '..';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
@@ -41,6 +41,7 @@ export interface Props {
 export type CombinedProps = Props & WithAppProviderProps;
 
 export class Autocomplete extends React.PureComponent<CombinedProps, State> {
+  static TextField = TextField;
   static ComboBox = ComboBox;
 
   state: State = {};

@@ -60,7 +60,7 @@ class AutocompleteExample extends React.Component {
           selected={this.state.selected}
           onSelect={this.updateSelection}
           textField={
-            <Autocomplete.ComboBox.TextField
+            <Autocomplete.TextField
               onChange={this.updateText}
               label=""
               value={this.state.inputText}
@@ -139,7 +139,7 @@ class MultiAutocompleteExample extends React.Component {
           options={this.state.options}
           selected={this.state.selected}
           textField={
-            <Autocomplete.ComboBox.TextField
+            <Autocomplete.TextField
               onChange={this.updateText}
               label=""
               value={this.state.inputText}
@@ -244,7 +244,7 @@ class AutocompleteExample extends React.Component {
           onSelect={this.updateSelection}
           loading={this.state.loading}
           textField={
-            <Autocomplete.ComboBox.TextField
+            <Autocomplete.TextField
               onChange={this.updateText}
               label=""
               value={this.state.inputText}

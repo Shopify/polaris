@@ -6,13 +6,13 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {TextField} from './components';
+import {TextField} from '../../components';
 import OptionList, {OptionDescriptor} from '../../../OptionList';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor} from '../../../../types';
-import {contextTypes} from './types';
+import {contextTypes} from '../types';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
