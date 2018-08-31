@@ -4,6 +4,7 @@ category: Feedback indicators
 platforms:
   - android
   - ios
+  - web
 keywords:
   - toast
   - flash message
@@ -20,6 +21,7 @@ keywords:
   - duration
   - ios
   - android
+  - web
 ---
 
 # Toast
@@ -112,11 +114,11 @@ Use to convey general confirmation or actions that aren’t critical. For exampl
 ```jsx
 class ToastExample extends React.Component {
   state = {
-    showToast: false
+    showToast: false,
   };
 
   render() {
-    const { showToast } = this.state;
+    const {showToast} = this.state;
     const toastMarkup = showToast ? (
       <Toast content="Message sent" onDismiss={this.toggleToast} />
     ) : null;
@@ -132,7 +134,7 @@ class ToastExample extends React.Component {
   }
 
   toggleToast = () => {
-    this.setState(({ showToast }) => ({ showToast: !showToast }));
+    this.setState(({showToast}) => ({showToast: !showToast}));
   };
 }
 ```
@@ -147,11 +149,11 @@ Use multiple toast messages to inform the merchant about distinct actions.
 class ToastExample extends React.Component {
   state = {
     showToast1: false,
-    showToast2: false
+    showToast2: false,
   };
 
   render() {
-    const { showToast1, showToast2 } = this.state;
+    const {showToast1, showToast2} = this.state;
     const toastMarkup1 = showToast1 ? (
       <Toast content="Message sent" onDismiss={this.toggleToast1} />
     ) : null;
@@ -175,11 +177,11 @@ class ToastExample extends React.Component {
   }
 
   toggleToast1 = () => {
-    this.setState(({ showToast1 }) => ({ showToast1: !showToast1 }));
+    this.setState(({showToast1}) => ({showToast1: !showToast1}));
   };
 
   toggleToast2 = () => {
-    this.setState(({ showToast2 }) => ({ showToast2: !showToast2 }));
+    this.setState(({showToast2}) => ({showToast2: !showToast2}));
   };
 }
 ```
@@ -193,11 +195,11 @@ Use to shorten or lengthen the default duration of 5000 miliseconds.
 ```jsx
 class ToastExample extends React.Component {
   state = {
-    showToast: false
+    showToast: false,
   };
 
   render() {
-    const { showToast } = this.state;
+    const {showToast} = this.state;
     const toastMarkup = showToast ? (
       <Toast
         content="Message sent"
@@ -217,7 +219,7 @@ class ToastExample extends React.Component {
   }
 
   toggleToast = () => {
-    this.setState(({ showToast }) => ({ showToast: !showToast }));
+    this.setState(({showToast}) => ({showToast: !showToast}));
   };
 }
 ```
@@ -262,11 +264,43 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 <!-- /content-for -->
 
-### Error
+### Error toast
 
-<!-- example-for: android, ios -->
+<!-- example-for: android, ios, web -->
 
-Use error toast to indicate that something failed. For example, your phone is offline and need to reconnect to the internet.
+Use error toast to indicate that an operation has failed. For example, your phone is offline and need to reconnect to the internet. For all other error message types, follow the [error message guidelines](/patterns/error-messages)
+
+<!-- content-for: web -->
+
+```jsx
+class ToastExample extends React.Component {
+  state = {
+    showToast: false,
+  };
+
+  render() {
+    const {showToast} = this.state;
+    const toastMarkup = showToast ? (
+      <Toast content="Server error" error onDismiss={this.toggleToast} />
+    ) : null;
+
+    return (
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={this.toggleToast}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    );
+  }
+
+  toggleToast = () => {
+    this.setState(({showToast}) => ({showToast: !showToast}));
+  };
+}
+```
+
+<!-- /content-for -->
 
 <!-- content-for: android -->
 
@@ -283,6 +317,8 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 <!-- /content-for -->
 
 ### With action
+
+<!-- example-for: android, ios -->
 
 Use action when you have the ability to act on the message. For example, undo changes, or edit message.
 Keep the action label short, preferably 1 verb action.

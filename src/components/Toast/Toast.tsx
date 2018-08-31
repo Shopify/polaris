@@ -11,7 +11,7 @@ export interface Props {
   content: string;
   /** The length of time in milliseconds the toast message should persist (defaults to 5000) */
   duration?: number;
-  /** Render Toast as an error. Use only in rare cases where following the Polaris Error messages guidelines is not possible https://polaris.shopify.com/patterns/error-messages */
+  /** Display an error toast. */
   error?: boolean;
   /** Callback when the dismiss icon is clicked */
   onDismiss(): void;
