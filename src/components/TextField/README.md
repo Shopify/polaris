@@ -648,6 +648,8 @@ class ValidationErrorExample extends React.Component {
 
 ### Text field with separate validation error
 
+<!-- example-for: web -->
+
 Use to let merchants know when their text field input is invalid in the context of a group of form inputs that the text field depends on.
 
 When the `error` prop has a boolean value of `true`, the text field component indicates to merchants that their input is invalid without rendering an error message directly below it. It anticipates that an inline error component exists separately within the form.

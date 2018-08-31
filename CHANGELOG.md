@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Bug fixes
 
-- Reverted a change that caused the built embeded.js bundle to be way larger than it should be due to broad imports
+- Reverted a change that caused the built embedded.js bundle to be way larger than it should be due to broad imports
 
 ### Enhancements
 
