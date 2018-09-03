@@ -1,6 +1,10 @@
 ---
 name: Form layout
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - FormLayout
   - Group
@@ -26,6 +30,8 @@ keywords:
   - short text fields
   - layout forms
   - layout input fields
+  - android
+  - ios
 ---
 
 # Form Layout
@@ -120,7 +126,19 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 </FormLayout>
 ```
 
-### With field group
+<!-- content-for: android -->
+
+![Default form layout for Android](components/FormLayout/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default form layout for iOS](components/FormLayout/ios/default.png)
+
+<!-- /content-for -->
+
+### Field group
 
 Use field groups to arrange multiple fields in a row.
 
@@ -137,7 +155,21 @@ Field groups will wrap automatically on smaller screens.
 </FormLayout>
 ```
 
+<!-- content-for: android -->
+
+![Form layout with field group for Android](components/FormLayout/android/field-group.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Form layout with field group for iOS](components/FormLayout/ios/field-group.png)
+
+<!-- /content-for -->
+
 ### Condensed field group
+
+<!-- example-for: web -->
 
 For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 
