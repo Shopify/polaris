@@ -1,6 +1,10 @@
 ---
 name: Modal
 category: Overlays
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - modal
   - src
@@ -21,6 +25,10 @@ keywords:
   - overlay
   - easdk
   - embedded app
+  - dialog
+  - alert
+  - android
+  - ios
 ---
 
 # Modal
@@ -37,6 +45,7 @@ Titles should be:
 
 - Informative and descriptive
   - They should label the type of content grouped in the modal
+  - Use a clear {verb}+{noun} question
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
   - Keep headings to single sentence and avoid using punctuation such as periods, commas, or semicolons
@@ -48,10 +57,14 @@ Titles should be:
 #### Do
 
 - Edit email address
+- Delete customer?
+- Discard unsaved changes?
 
 #### Don’t
 
 - Edit the email address for this order
+- Are you sure you want to delete customer?
+- Discard?
 
 <!-- end -->
 
@@ -66,10 +79,12 @@ Body content should be:
 #### Do
 
 - Notification emails will be sent to this address.
+- This can’t be undone.
 
 #### Don’t
 
 - You can edit the email address where emails will be sent.
+- Are you sure you want to delete the variant Dark Blue Tee/Small/Silk? You cannot reverse this.
 
 <!-- end -->
 
@@ -177,7 +192,9 @@ Body content should be:
 
 ### Basic modal
 
-A basic modal
+<!-- example-for: web -->
+
+Use as the default option for a modal.
 
 ```jsx
 class ModalExample extends React.Component {
@@ -228,7 +245,7 @@ class ModalExample extends React.Component {
 
 ### Modal with primary action
 
-Use to let merchants take a key action
+Use to let merchants take a key action.
 
 ```jsx
 const DISCOUNT_LINK = 'https://polaris.shopify.com/';
@@ -314,6 +331,18 @@ class ModalExample extends React.Component {
   };
 }
 ```
+
+<!-- content-for: android -->
+
+![Modal with primary action on Android](components/Modal/android/information.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Modal with primary action on iOS](components/Modal/ios/information.png)
+
+<!-- /content-for -->
 
 ### Modal with primary and secondary actions
 
@@ -408,9 +437,23 @@ class ModalExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Modal with primary and secondary actions on Android](components/Modal/android/basic.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Modal with primary and secondary actions on iOS](components/Modal/ios/basic.png)
+
+<!-- /content-for -->
+
 ### Large modal
 
-Use when you need to increase your modal width
+<!-- example-for: web -->
+
+Use when you need to increase the width of your modal.
 
 ```jsx
 class ModalExample extends React.Component {
@@ -472,6 +515,24 @@ class ModalExample extends React.Component {
   };
 }
 ```
+
+### Warning modal
+
+<!-- example-for: android, ios -->
+
+Use to make it clear to the merchant that the action is potentially dangerous. Only use this option when the merchant is about to perform an action that can’t be undone or is difficult to undo.
+
+<!-- content-for: android -->
+
+![Warning modal on Android](components/Modal/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Warning modal on iOS](components/Modal/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 
