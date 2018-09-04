@@ -5,6 +5,7 @@ import {mountWithAppProvider, findByTestID} from '../../../../tests/utilities';
 import {Keys} from '../../../types';
 import Pagination from '../../Pagination';
 import Tooltip from '../../Tooltip';
+import TextField from '../../TextField';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -29,6 +30,10 @@ describe('<Pagination />', () => {
   });
 
   afterEach(() => {
+    if (document.activeElement) {
+      (document.activeElement as HTMLElement).blur();
+    }
+
     addEventListener.mockRestore();
     removeEventListener.mockRestore();
   });
@@ -81,6 +86,26 @@ describe('<Pagination />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
+  describe('input elements', () => {
+    it('will not call paginations callback on keypress if a input element is focused', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <div>
+          <TextField label="test" value="" onChange={noop} />
+          <Pagination
+            nextTooltip="j"
+            previousKeys={[Keys.KEY_J]}
+            onPrevious={spy}
+            previousTooltip="j"
+          />
+        </div>,
+      );
+      focusElement(wrapper, 'input');
+      listenerMap.keyup({keyCode: Keys.KEY_J});
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
   describe('nextURL/previousURL', () => {
     let getElementById: jest.SpyInstance;
     let pagination: ReactWrapper<any, any>;
@@ -117,3 +142,15 @@ describe('<Pagination />', () => {
     });
   });
 });
+
+function focusElement(
+  wrapper: ReactWrapper<any, any>,
+  element: 'input' | 'textarea' | 'select',
+) {
+  const inputElement = wrapper
+    .find(element)
+    .at(0)
+    .getDOMNode() as HTMLInputElement;
+
+  inputElement.focus();
+}
