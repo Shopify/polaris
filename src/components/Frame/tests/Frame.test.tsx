@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   animationFrame,
   mountWithAppProvider,
+  documentHasStyle,
 } from '../../../../tests/utilities';
 import {TrapFocus} from '../../Focus';
 import Frame from '../Frame';
@@ -95,5 +96,16 @@ describe('<Frame />', () => {
     const topBar = mountWithAppProvider(<Frame />);
 
     expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(0);
+  });
+
+  it('sets a root property with global ribbon height if passed', () => {
+    mountWithAppProvider(<Frame globalRibbon={<div />} />);
+    expect(documentHasStyle('GlobalRibbonHeight', '0px')).toBe(true);
+  });
+
+  it('sets a root property with global ribbon height if new props are passed', () => {
+    const frame = mountWithAppProvider(<Frame />);
+    frame.setProps({globalRibbon: <div />});
+    expect(documentHasStyle('GlobalRibbonHeight', '0px')).toBe(true);
   });
 });
