@@ -163,12 +163,3 @@ $skip-vertical-offset: rem(10px);
     opacity: 1;
   }
 }
-
-.ToastMessages {
-  position: fixed;
-  z-index: z-index(toast, $fixed-element-stacking-order);
-  right: 0;
-  left: 0;
-  text-align: center;
-  bottom: spacing(loose);
-}
