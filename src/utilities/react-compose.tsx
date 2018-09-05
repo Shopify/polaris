@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import reactCompose from '@shopify/react-compose';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {WithRef, Provider as RefProvider} from '../components/WithRef';
+import {Provider as RefProvider} from '../components/WithRef';
 
 export type ComponentClass = React.ComponentClass<any>;
 
@@ -18,12 +18,12 @@ export default function compose<Props>(
   ): ReactComponent<Props> & C {
     const Result = reactCompose(...wrappingFunctions)(
       OriginalComponent,
-    ) as ReactComponent<ComposedProps & WithRef<any>>;
+    ) as ReactComponent<ComposedProps>;
     return React.forwardRef<Props>(
       (props: Props, ref: React.RefObject<any>) => {
         return (
           <RefProvider value={{forwardedRef: ref}}>
-            <Result {...props} forwardedRef={ref} />
+            <Result {...props} />
           </RefProvider>
         );
       },

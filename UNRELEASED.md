@@ -16,6 +16,7 @@ Use `withRef` with `compose` to forwardRefs to a component.
 
 ### Enhancements
 
+- `Tab.Item` with a `url` prop now renders an `UnstyledLink` instead of a `Button` when displayed in `Popover` and you can now keyboard navigate the disclosure in `Tabs` ([#2153](https://github.com/Shopify/polaris-react/pull/2153))
 - Refs can be placed on `DropZone.FileUpload` ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
 - Use the new context API in `ResourceList` ([#2216](https://github.com/Shopify/polaris-react/pull/2216))
 - Use the new context API in `DropZone` ([#2211](https://github.com/Shopify/polaris-react/pull/2211))
