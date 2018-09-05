@@ -12,6 +12,7 @@ export interface Props {
   selectMode?: boolean;
   plain?: boolean;
   measuring?: boolean;
+  disabled?: boolean;
   onToggleAll?(): void;
 }
 export type CombinedProps = Props & WithAppProviderProps;
@@ -24,6 +25,7 @@ function CheckableButton({
   selectMode,
   plain,
   measuring,
+  disabled,
 }: CombinedProps) {
   const className = plain
     ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
@@ -37,7 +39,12 @@ function CheckableButton({
   return (
     <div className={className} onClick={onToggleAll}>
       <div className={styles.Checkbox}>
-        <Checkbox label={accessibilityLabel} labelHidden checked={selected} />
+        <Checkbox
+          label={accessibilityLabel}
+          labelHidden
+          checked={selected}
+          disabled={disabled}
+        />
       </div>
       <span className={styles.Label}>{label}</span>
     </div>
