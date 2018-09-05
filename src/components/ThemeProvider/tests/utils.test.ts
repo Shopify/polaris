@@ -27,10 +27,10 @@ describe('setTheme', () => {
     );
     // document will have the variables in pascal case
     expect(
-      documentHasStyle('TopBarBackgroundDarker', 'hsl(184, 95%, 23%, 1)'),
+      documentHasStyle('TopBarBackgroundDarker', 'hsl(184, 105%, 23%, 1)'),
     ).toBe(true);
     expect(
-      documentHasStyle('TopBarBackgroundLighter', 'hsl(184, 120%, 38%, 1)'),
+      documentHasStyle('TopBarBackgroundLighter', 'hsl(184, 85%, 43%, 1)'),
     ).toBe(true);
     expect(documentHasStyle('TopBarColor', 'rgb(255, 255, 255)')).toBe(true);
   });
