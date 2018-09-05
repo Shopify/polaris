@@ -4,7 +4,7 @@ import {mountWithAppProvider} from '../../../../../../tests/utilities';
 import ScrollTo from '..';
 
 describe('<Scrollable.ScrollTo />', () => {
-  it('calls scrollToPostion on mount', () => {
+  it('calls scrollToPosition on mount', () => {
     const spy = jest.fn();
     const mockContext = {
       scrollToPosition: spy,
