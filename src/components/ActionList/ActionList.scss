@@ -144,7 +144,7 @@ $item-vertical-padding: ($item-min-height - line-height(body)) / 2;
 
 .Text {
   @include layout-flex-fix;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
 .BadgeWrapper {
