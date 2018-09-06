@@ -123,9 +123,14 @@ $skip-vertical-offset: rem(10px);
   }
 }
 
-.Banners {
+.Content {
+  min-height: 100%;
+  padding-bottom: var(--global-ribbon-height, 0);
+}
+
+.GlobalRibbonContainer {
   position: fixed;
-  z-index: z-index(banner, $fixed-element-stacking-order);
+  z-index: z-index(global-ribbon, $fixed-element-stacking-order);
   bottom: 0;
   width: 100%;
   @include frame-when-nav-displayed {

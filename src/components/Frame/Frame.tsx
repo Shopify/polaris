@@ -15,6 +15,8 @@ import {
 import {dataPolarisTopBar, layer} from '../shared';
 import {TrapFocus} from '../Focus';
 
+import {setRootProperty} from '../../utilities/setRootProperty';
+
 import {FrameContext, frameContextTypes} from '../types';
 
 import {
@@ -41,12 +43,13 @@ export interface Props {
 export interface State {
   mobileView?: boolean;
   skipFocused?: boolean;
-  bannerHeight: number;
+  globalRibbonHeight: number;
   loadingStack: number;
   toastMessages: (ToastProps & {id: string})[];
   contextualSaveBar: ContextualSaveBarProps | null;
 }
 
+export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
 export const APP_FRAME_MAIN = 'AppFrameMain';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
@@ -59,14 +62,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   state: State = {
     skipFocused: false,
-    bannerHeight: 0,
+    globalRibbonHeight: 0,
     loadingStack: 0,
     toastMessages: [],
     contextualSaveBar: null,
     mobileView: isMobileView(),
   };
 
-  private bannerContainer: HTMLDivElement | null = null;
+  private globalRibbonContainer: HTMLDivElement | null = null;
 
   getChildContext(): FrameContext {
     return {
@@ -85,19 +88,15 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     this.handleResize();
   }
 
-  componentWillReceiveProps() {
-    const {bannerContainer} = this;
-    if (bannerContainer) {
-      this.setState({
-        bannerHeight: bannerContainer.offsetHeight,
-      });
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.globalRibbon !== prevProps.globalRibbon) {
+      this.setGlobalRibbonHeight();
     }
   }
 
   render() {
     const {
       skipFocused,
-      bannerHeight,
       loadingStack,
       toastMessages,
       contextualSaveBar,
@@ -118,7 +117,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     );
 
     const tabIndex = showMobileNavigation ? 0 : -1;
-    const contentStyles = {paddingBottom: `${bannerHeight}px`};
 
     const NavWrapper = mobileView ? this.NavTransition : 'div';
 
@@ -175,11 +173,11 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const bannerMarkup = globalRibbon ? (
+    const globalRibbonMarkup = globalRibbon ? (
       <div
-        className={styles.Banners}
-        testID="FrameBannerContainer"
-        ref={this.setBannerContainer}
+        className={styles.GlobalRibbonContainer}
+        testID="GlobalRibbonContainer"
+        ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}
       </div>
@@ -238,14 +236,14 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         <main
           className={styles.Main}
           id={APP_FRAME_MAIN}
-          data-has-banner={Boolean(globalRibbon)}
+          data-has-global-ribbon={Boolean(globalRibbon)}
         >
-          <div style={contentStyles} testID="FrameContentStyles">
+          <div testID="FrameContentStyles" className={styles.Content}>
             {children}
           </div>
         </main>
         <ToastManager toastMessages={toastMessages} />
-        {bannerMarkup}
+        {globalRibbonMarkup}
         <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
@@ -269,6 +267,28 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         </CSSTransition>
       </TrapFocus>
     );
+  }
+
+  @autobind
+  private setGlobalRibbonHeight() {
+    const setGlobalRibbonRootProperty = () => {
+      const {globalRibbonHeight} = this.state;
+      setRootProperty(
+        GLOBAL_RIBBON_CUSTOM_PROPERTY,
+        `${globalRibbonHeight}px`,
+        null,
+      );
+    };
+
+    const {globalRibbonContainer} = this;
+    if (globalRibbonContainer) {
+      this.setState(
+        {
+          globalRibbonHeight: globalRibbonContainer.offsetHeight,
+        },
+        setGlobalRibbonRootProperty,
+      );
+    }
   }
 
   @autobind
@@ -317,7 +337,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleResize() {
-    const {bannerContainer} = this;
     const {mobileView} = this.state;
 
     if (isMobileView() && !mobileView) {
@@ -326,13 +345,9 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       this.setState({mobileView: false});
     }
 
-    if (bannerContainer == null) {
-      return;
+    if (this.props.globalRibbon) {
+      this.setGlobalRibbonHeight();
     }
-
-    this.setState({
-      bannerHeight: bannerContainer.offsetHeight,
-    });
   }
 
   @autobind
@@ -359,8 +374,8 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private setBannerContainer(node: HTMLDivElement) {
-    this.bannerContainer = node;
+  private setGlobalRibbonContainer(node: HTMLDivElement) {
+    this.globalRibbonContainer = node;
   }
 
   @autobind

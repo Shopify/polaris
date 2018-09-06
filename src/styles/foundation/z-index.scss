@@ -5,7 +5,7 @@ $global-elements: (
 
 // We're matching that here and relatively stacking other fixed components.
 $fixed-element-stacking-order: (
-  banner: 110,
+  global-ribbon: 110,
   toast: 111,
   loading-bar: 112,
   top-bar: 113,

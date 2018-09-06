@@ -9,7 +9,7 @@
   right: 0;
   left: 0;
   text-align: center;
-  bottom: 0;
+  bottom: var(---global-ribbon-height, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
