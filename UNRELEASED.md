@@ -6,7 +6,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Updated date filter labels in resource list ([2185](https://github.com/Shopify/polaris-react/pull/2185))
 - Changed `placeholder` prop in `Select` to be the default selection ([#2115](https://github.com/Shopify/polaris-react/pull/2115))
+- Added a `loading` prop to `ResourceList` that places a spinner overtop items and disables bulk actions ([#1922](https://github.com/Shopify/polaris-react/pull/1922))
 
 ### Documentation
 
@@ -20,7 +22,3 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed the bottom margin of elements inside `Page` being ignored in some browsers ([#2142](https://github.com/Shopify/polaris-react/pull/2142))
 - Added required `url` prop to `breadcrumbs` in `Page` component examples ([#2182](https://github.com/Shopify/polaris-react/pull/2182))
 - Fixed `ActionList` wrapping text within a `Popover` ([#2057](https://github.com/Shopify/polaris-react/pull/2057))
-
-### Enhancements
-
-- Added a `loading` prop to `ResourceList` that places a spinner overtop items and disables bulk actions ([#1922](https://github.com/Shopify/polaris-react/pull/1922))

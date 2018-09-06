@@ -150,8 +150,8 @@
           "coming_month": "next month",
           "coming_quarter": "in the next 3 months",
           "coming_year": "in the next year",
-          "on_or_before": "on or before {date}",
-          "on_or_after": "on or after {date}"
+          "on_or_before": "before {date}",
+          "on_or_after": "after {date}"
         }
       }
     },
