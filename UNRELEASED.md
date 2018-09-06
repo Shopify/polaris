@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Clarified when and how to use icons in the banner component ([#2106](https://github.com/Shopify/polaris-react/pull/2106))
+- Updated footer help component guidelines to include content instructions for app developers ([#2023](https://github.com/Shopify/polaris-react/pull/2023#pullrequestreview-150272766))
 
 ### Bug fixes
 
