@@ -23,3 +23,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed the bottom margin of elements inside `Page` being ignored in some browsers ([#2142](https://github.com/Shopify/polaris-react/pull/2142))
 - Added required `url` prop to `breadcrumbs` in `Page` component examples ([#2182](https://github.com/Shopify/polaris-react/pull/2182))
 - Fixed `ActionList` wrapping text within a `Popover` ([#2057](https://github.com/Shopify/polaris-react/pull/2057))
+- Fixed `Banner` spacing when inside of a section ([2188](https://github.com/Shopify/polaris-react/pull/2188))
