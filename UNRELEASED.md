@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Resource list component correctly handles inclusive filter keys ([#2189](https://github.com/Shopify/polaris-react/pull/2189))
 - Date field in DateSelector now does not render an error when date is added by the date picker and field is blurred ([#2180](https://github.com/Shopify/polaris-react/pull/2180))
 - Fixed pagination from firing keypress events while focus is inside inputs or contenteditables ([#1900](https://github.com/Shopify/polaris-react/pull/1900))
 - Fixed `EmptyState` horizontally scrolling when fully condensed ([#2062](https://github.com/Shopify/polaris-react/pull/2062))
