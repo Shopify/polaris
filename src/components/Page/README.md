@@ -323,11 +323,11 @@ Use a separator for pages that have an [empty state](/components/structure/empty
 </Page>
 ```
 
-### Page with title metadata
+### Page with content after title (title metadata)
 
 <!-- example-for: web -->
 
-Use title metadata to communicate brief, important and non-interactive status information about an entire page.
+Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
 
 ```jsx
 <Page
