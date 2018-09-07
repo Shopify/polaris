@@ -87,7 +87,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
     const logoMarkup = logo ? (
       <UnstyledLink
-        url={logo.topBarSource || ''}
+        url={logo.url || ''}
         className={styles.LogoLink}
         style={{width}}
       >
