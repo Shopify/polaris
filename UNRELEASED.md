@@ -25,3 +25,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added required `url` prop to `breadcrumbs` in `Page` component examples ([#2182](https://github.com/Shopify/polaris-react/pull/2182))
 - Fixed `ActionList` wrapping text within a `Popover` ([#2057](https://github.com/Shopify/polaris-react/pull/2057))
 - Fixed `Banner` spacing when inside of a section ([2188](https://github.com/Shopify/polaris-react/pull/2188))
+- Fixed `Stack` so it doesn't add extra spacing between items in Safari ([#2195](https://github.com/Shopify/polaris-react/pull/2195))
