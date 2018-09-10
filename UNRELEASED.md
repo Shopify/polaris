@@ -4,6 +4,16 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
+### New components
+
+#### withContext
+
+Use `withContext` to pass consumer context to a component.
+
+### Enhancements
+
+- Use the new context API in `DropZone` ([#2211](https://github.com/Shopify/polaris-react/pull/2211))
+
 ### Development workflow
 
 - Added `d.ts` files to test coverage ignore ([#2018](https://github.com/Shopify/polaris-react/pull/2018))
