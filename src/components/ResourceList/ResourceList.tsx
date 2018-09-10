@@ -3,7 +3,7 @@ import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Button, EventListener, Sticky} from '..';
+import {Button, EventListener, Sticky, Spinner} from '..';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Select, {Option} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
@@ -22,10 +22,13 @@ import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
 import * as styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
+const SMALL_SPINNER_HEIGHT = 28;
+const LARGE_SPINNER_HEIGHT = 45;
 
 export interface State {
   selectMode: boolean;
-  listNode: HTMLElement | null;
+  loadingPosition: number;
+  listNode: HTMLUListElement | null;
 }
 
 export interface Props {
@@ -45,6 +48,8 @@ export interface Props {
   selectedItems?: SelectedItems;
   /** If there are more items than currently in the list */
   hasMoreItems?: boolean;
+  /** Overlays item list with a spinner while a background action is being performed */
+  loading?: boolean;
   /** Boolean to show or hide the header */
   showHeader?: boolean;
   /** Current value of the sort control */
@@ -69,6 +74,7 @@ export interface Context {
     singular: string;
     plural: string;
   };
+  loading?: boolean;
   onSelectionChange?(selected: boolean, id: string): void;
   subscribe(callback: () => void): void;
   unsubscribe(callback: () => void): void;
@@ -85,11 +91,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   state: State = {
     selectMode: false,
+    loadingPosition: 0,
     listNode: null,
   };
 
   private subscriptions: {(): void}[] = [];
   private defaultResourceName: {singular: string; plural: string};
+  private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
   constructor(props: CombinedProps) {
     super(props);
@@ -277,13 +285,18 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   getChildContext(): Context {
-    const {selectedItems, resourceName = this.defaultResourceName} = this.props;
+    const {
+      selectedItems,
+      resourceName = this.defaultResourceName,
+      loading,
+    } = this.props;
     const {selectMode} = this.state;
     return {
       selectable: this.selectable,
       selectedItems,
       selectMode,
       resourceName,
+      loading,
       onSelectionChange: this.handleSelectionChange,
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
@@ -304,19 +317,39 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
+  componentDidMount() {
+    this.setState(
+      {
+        listNode: this.listRef.current,
+      },
+      () => {
+        if (this.props.loading) {
+          this.setLoadingPosition();
+        }
+      },
+    );
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.loading && !prevProps.loading) {
+      this.setLoadingPosition();
+    }
+  }
+
   render() {
     const {
       items,
       promotedBulkActions,
       bulkActions,
       filterControl,
+      loading,
       showHeader = false,
       sortOptions,
       sortValue,
       onSortChange,
       polaris: {intl},
     } = this.props;
-    const {selectMode, listNode = null} = this.state;
+    const {selectMode, loadingPosition, listNode} = this.state;
     const itemsExist = items.length > 0;
 
     const filterControlMarkup = filterControl ? (
@@ -336,6 +369,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
           paginatedSelectAllAction={this.paginatedSelectAllAction}
           paginatedSelectAllText={this.paginatedSelectAllText}
           actions={bulkActions}
+          disabled={loading}
         />
         <EventListener event="resize" handler={this.handleResize} />
       </div>
@@ -393,12 +427,17 @@ export class ResourceList extends React.Component<CombinedProps, State> {
           label={this.itemCountText}
           onToggleAll={this.handleToggleAll}
           plain
+          disabled={loading}
         />
       </div>
     ) : null;
 
     const needsHeader =
       this.selectable || (sortOptions && sortOptions.length > 0);
+
+    const headerWrapperOverlay = loading ? (
+      <div className={styles['HeaderWrapper-overlay']} />
+    ) : null;
 
     const headerMarkup = (showHeader || needsHeader) &&
       listNode &&
@@ -412,6 +451,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
                   sortOptions.length > 0 &&
                   styles['HeaderWrapper-hasSort'],
                 this.selectable && styles['HeaderWrapper-hasSelect'],
+                loading && styles['HeaderWrapper-disabled'],
                 this.selectable &&
                   selectMode &&
                   styles['HeaderWrapper-inSelectMode'],
@@ -419,6 +459,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
               );
               return (
                 <div className={headerClassName} testID="ResourceList-Header">
+                  {headerWrapperOverlay}
                   <div className={styles.HeaderContentWrapper}>
                     {itemCountTextMarkup}
                     {checkableButtonMarkup}
@@ -440,12 +481,35 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
+    const defaultTopPadding = 8;
+    const topPadding =
+      loadingPosition > 0 ? loadingPosition : defaultTopPadding;
+    const spinnerStyle = {paddingTop: `${topPadding}px`};
+
+    const spinnerSize = items.length === 1 ? 'small' : 'large';
+
+    const loadingOverlay = loading ? (
+      <React.Fragment>
+        <div className={styles.SpinnerContainer} style={spinnerStyle}>
+          <Spinner size={spinnerSize} accessibilityLabel="Items are loading" />
+        </div>
+        <div className={styles.LoadingOverlay} />
+      </React.Fragment>
+    ) : null;
+
+    const resourceListClassName = classNames(
+      styles.ResourceList,
+      loading && styles.disabledPointerEvents,
+    );
+
     const listMarkup = itemsExist ? (
       <ul
-        className={styles.ResourceList}
-        ref={this.setListNode}
+        className={resourceListClassName}
+        ref={this.listRef}
         aria-live="polite"
+        aria-busy={loading}
       >
+        {loadingOverlay}
         {items.map(this.renderItem)}
       </ul>
     ) : (
@@ -490,9 +554,33 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   @autobind
-  private setListNode(node: HTMLElement | null) {
-    if (node != null) {
-      this.setState({listNode: node});
+  private setLoadingPosition() {
+    const {listNode} = this.state;
+
+    if (listNode != null) {
+      if (typeof window === 'undefined') {
+        return;
+      }
+
+      const overlay = listNode.getBoundingClientRect();
+      const viewportHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0,
+      );
+
+      const overflow = viewportHeight - overlay.height;
+
+      const spinnerHeight =
+        this.props.items.length === 1
+          ? SMALL_SPINNER_HEIGHT
+          : LARGE_SPINNER_HEIGHT;
+
+      const spinnerPosition =
+        overflow > 0
+          ? (overlay.height - spinnerHeight) / 2
+          : (viewportHeight - overlay.top - spinnerHeight) / 2;
+
+      this.setState({loadingPosition: spinnerPosition});
     }
   }
 
@@ -517,11 +605,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private renderItem(item: any, index: number) {
-    const {renderItem, idForItem = defaultIdForItem} = this.props;
+    const {renderItem, idForItem = defaultIdForItem, loading} = this.props;
     const id = idForItem(item, index);
+    const tabIndex = loading ? -1 : 0;
 
     return (
-      <li key={id} className={styles.ItemWrapper}>
+      <li key={id} className={styles.ItemWrapper} tabIndex={tabIndex}>
         {renderItem(item, id)}
       </li>
     );

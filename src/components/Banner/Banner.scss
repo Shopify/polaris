@@ -80,8 +80,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .withinContentContainer {
   border-radius: border-radius();
   padding: spacing(tight) $intermediate-spacing;
-  margin-left: (spacing(tight) * -1);
-  margin-right: (spacing(tight) * -1);
 
   @include banner-variants;
 

@@ -102,6 +102,7 @@
     "babel-preset-shopify": "^16.2.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
+    "chalk": "^2.4.1",
     "change-case": "^3.0.1",
     "codecov": "^3.0.4",
     "copyfiles": "^1.2.0",

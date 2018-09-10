@@ -28,8 +28,8 @@ A text container is used to wrap text elements such as paragraphs, headings, and
 
 The closer the spacing, the closer the relationship between content topics. The closeness visually represents the relationship.
 
-Use tight spacing to relate content topics to each other
-Use loose spacing to separate concepts that are independent of each other
+- Use tight spacing to relate content topics to each other
+- Use loose spacing to separate concepts that are independent of each other
 
 ---
 

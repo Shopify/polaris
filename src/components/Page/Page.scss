@@ -18,6 +18,12 @@ body {
 
 .Page {
   @include page-layout;
+
+  // Ensure bottom margins of any children are contained
+  &::after {
+    content: '';
+    display: table;
+  }
 }
 
 .fullWidth {

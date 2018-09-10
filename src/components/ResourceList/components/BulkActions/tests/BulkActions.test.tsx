@@ -13,6 +13,7 @@ export interface Props {
   selected: boolean;
   accessibilityLabel: string;
   label: string;
+  disabled: boolean;
 }
 
 export type TestValue = BulkAction[] | string | boolean;
@@ -41,6 +42,7 @@ const bulkActionProps: Props = {
   selected: false,
   accessibilityLabel: 'test-aria-label',
   label: 'Test-Label',
+  disabled: false,
 };
 
 function searchCheckableButton(
@@ -152,6 +154,45 @@ describe('<BulkActions />', () => {
         const {selected, ...props} = bulkActionProps;
         const element = mountWithAppProvider(<BulkActions {...props} />);
         expect(searchCheckableButton(element, 'selected', selected)).toBe(0);
+      });
+    });
+
+    describe('disabled', () => {
+      const bulkActionProps: Props = {
+        bulkActions: [
+          {
+            content: 'button 3',
+          },
+          {
+            content: 'button 4',
+          },
+          {
+            content: 'button 5',
+          },
+        ],
+        promotedActions: [
+          {
+            content: 'button 1',
+          },
+          {
+            content: 'button 2',
+          },
+        ],
+        paginatedSelectAllText: 'paginated select all text string',
+        selected: false,
+        accessibilityLabel: 'test-aria-label',
+        label: 'Test-Label',
+        disabled: true,
+      };
+      it('correctly passes down to CheckableButton', () => {
+        const {disabled} = bulkActionProps;
+        const element = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
+        const length = element.find(CheckableButton).length;
+        expect(searchCheckableButton(element, 'disabled', disabled)).toBe(
+          length,
+        );
       });
     });
 

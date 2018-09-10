@@ -136,7 +136,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Products'}]}
+  breadcrumbs={[{content: 'Products', url: '/products'}]}
   title="Jar With Lock-Lid"
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
@@ -179,7 +179,7 @@ Use when a primary action functions better as part of the page content instead o
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Orders'}]}
+  breadcrumbs={[{content: 'Orders', url: '/orders'}]}
   title="#1085"
   secondaryActions={[
     {content: 'Print'},
@@ -234,7 +234,7 @@ Use when the page doesn’t represent a list of objects or a detail view for an 
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Settings'}]}
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
   title="General"
   primaryAction={{content: 'Save'}}
 >
@@ -271,7 +271,7 @@ Use a single column layout if the page supports a single unified task. When the 
 ```jsx
 <Page
   singleColumn
-  breadcrumbs={[{content: 'Orders'}]}
+  breadcrumbs={[{content: 'Orders', url: '/orders'}]}
   title="Add payment method"
   primaryAction={{content: 'Save', disabled: true}}
 >
@@ -323,15 +323,15 @@ Use a separator for pages that have an [empty state](/components/structure/empty
 </Page>
 ```
 
-### Page with title metadata
+### Page with content after title (title metadata)
 
 <!-- example-for: web -->
 
-Use title metadata to communicate brief, important and non-interactive status information about an entire page.
+Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Products'}]}
+  breadcrumbs={[{content: 'Products', url: '/products'}]}
   title="Jar With Lock-Lid"
   titleMetadata={<Badge status="attention">Verified</Badge>}
   primaryAction={{content: 'Save', disabled: true}}

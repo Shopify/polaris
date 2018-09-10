@@ -162,7 +162,7 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
         );
       }
 
-      return filterKey.includes(filter.key);
+      return filter.key === filterKey;
     });
 
     if (!foundFilter) {
