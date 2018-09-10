@@ -8,6 +8,31 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.9.0 - 2018-09-10
+
+### Enhancements
+
+- Updated date filter labels in resource list
+- Changed `placeholder` prop in `Select` to be the default selection
+- Added a `loading` prop to `ResourceList` that places a spinner overtop items and disables bulk actions
+
+### Documentation
+
+- Clarified when and how to use icons in the banner component
+- Updated footer help component guidelines to include content instructions for app developers
+
+### Bug fixes
+
+- Fixed resource list component to correctly handle inclusive filter keys
+- Fixed date field in DateSelector to not render an error when date is added by the date picker and field is blurred
+- Fixed pagination from firing keypress events while focus is inside inputs or contenteditables
+- Fixed `EmptyState` horizontally scrolling when fully condensed
+- Fixed the bottom margin of elements inside `Page` being ignored in some browsers
+- Added required `url` prop to `breadcrumbs` in `Page` component examples
+- Fixed `ActionList` wrapping text within a `Popover`
+- Fixed `Banner` spacing when inside of a section
+- Fixed `Stack` so it doesn't add extra spacing between items in Safari
+
 ## 2.8.0 - 2018-08-30
 
 ### Bug fixes
