@@ -43,8 +43,8 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
 
     const headerClassName = classNames(
       styles.Header,
-      secondaryActions && styles['Header-hasSecondaryActions'],
       breadcrumbs && styles['Header-hasBreadcrumbs'],
+      secondaryActions && styles['Header-hasSecondaryActions'],
     );
 
     const titleMarkup = title !== null ? renderTitle(title) : null;
@@ -53,7 +53,11 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
       ? renderSecondaryActions(secondaryActions)
       : null;
 
-    const breadcrumbMarkup = breadcrumbs ? renderSecondaryActions(1) : null;
+    const breadcrumbMarkup = breadcrumbs ? (
+      <div className={styles.BreadcrumbAction} style={{width: 60}}>
+        <SkeletonBodyText lines={1} />
+      </div>
+    ) : null;
 
     const headerMarkup = !this.props.polaris.easdk ? (
       <div className={headerClassName}>

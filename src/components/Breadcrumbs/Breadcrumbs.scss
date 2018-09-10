@@ -15,7 +15,7 @@ $stacking-order: (
   @include text-emphasis-subdued;
   @include unstyled-button;
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   min-height: control-height();
 
@@ -26,10 +26,7 @@ $stacking-order: (
   // hit area.
   // prettier-ignore
   margin:
-    (-0.5 * $difference-between-touch-area-and-backdrop)
-    (-1 * $horizontal-padding)
-    (-0.5 * $difference-between-touch-area-and-backdrop)
-    (-0.5 * $horizontal-padding);
+    (-0.5 * $difference-between-touch-area-and-backdrop) (-1 * $horizontal-padding) (-0.5 * $difference-between-touch-area-and-backdrop) (-0.5 * $horizontal-padding);
   padding: $vertical-padding $horizontal-padding;
   color: color('ink', 'lighter');
   text-decoration: none;
