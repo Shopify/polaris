@@ -6,6 +6,13 @@ import {
 } from '../../../../tests/utilities';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
+import {
+  createAppProviderContext,
+  Image,
+  UnstyledLink,
+} from '../../../components';
+import {createThemeContext, ThemeContext} from '../../ThemeProvider';
+import {polarisAppProviderContextTypes} from '../../AppProvider';
 
 const actions = [
   {
@@ -156,4 +163,86 @@ describe('<TopBar />', () => {
       expect(topBar.find(Search).prop('onDismiss')).toBe(noop);
     });
   });
+
+  describe('logo', () => {
+    it('will render an image with the logo top bar source', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        addPolarisContext({
+          logo: {
+            topBarSource: './assets/shopify.svg',
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(Image).prop('source')).toBe('./assets/shopify.svg');
+    });
+
+    it('will render an image with the logo accessibility label', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        addPolarisContext({
+          logo: {
+            accessibilityLabel: 'Shopify',
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(Image).prop('alt')).toBe('Shopify');
+    });
+
+    it('will render an unstyled link with the logo URL', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        addPolarisContext({
+          logo: {
+            url: 'https://shopify.com',
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(UnstyledLink).prop('url')).toBe('https://shopify.com');
+    });
+
+    it('will render an unstyled link with the logo width', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        addPolarisContext({
+          logo: {
+            width: 124,
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '124px'});
+    });
+
+    it('will render an unstyled link with a default width', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        addPolarisContext({
+          logo: {},
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
+    });
+  });
 });
+
+function addPolarisContext(logo: ThemeContext) {
+  const context = {
+    ...createAppProviderContext(),
+    ...createThemeContext(logo),
+  };
+
+  return {
+    context,
+    childContextTypes: polarisAppProviderContextTypes,
+  };
+}
