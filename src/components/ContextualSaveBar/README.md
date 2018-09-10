@@ -67,6 +67,8 @@ Actions in the contextual save bar component should consist of a strong verb tha
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default contextual save bar

@@ -181,6 +181,8 @@ The user menu component displays the current user’s avatar and name, and actio
 | avatarInitials | AvatarProps['initials'] | The merchant's initials, rendered in place of an avatar image when not provided                         |
 | avatarSource   | AvatarProps['source']   | An avatar image representing the merchant                                                               |
 
+---
+
 ## Examples
 
 ### Basic navigation
