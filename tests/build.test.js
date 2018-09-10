@@ -79,7 +79,7 @@ describe('build', () => {
     expect(fs.existsSync('./embedded.d.ts')).toBe(true);
   });
 
-  it('replaces all occurrences of POLARIS_VERSION', async () => {
+  it('replaces all occurrences of POLARIS_VERSION', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}');
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
@@ -88,7 +88,7 @@ describe('build', () => {
     expect(total).toBe(0);
   });
 
-  it('features the version of Polaris in all compiled files', async () => {
+  it('features the version of Polaris in all compiled files', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}');
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
@@ -97,7 +97,7 @@ describe('build', () => {
     expect(total).toBe(6);
   });
 
-  it('features the version of Polaris in those specific files', async () => {
+  it('features the version of Polaris in those specific files', () => {
     const globFiles = [
       'embedded.js',
       'polaris.css',
@@ -115,45 +115,62 @@ describe('build', () => {
   });
 
   describe('esnext', () => {
+    const stackClassnameMatcher = /"Stack":\s*"([^"]*)"/;
+
     it('facilitates production builds without typescript', () => {
       expect(fs.existsSync('esnext/index.js')).toBe(true);
+      expect(fs.existsSync('esnext/server.js')).toBe(true);
     });
 
     it('preserves classes to facilitate class-level tree shaking', () => {
       // `Stack` is a foundation class, so is unlikely to disappear from the build.
-      expect(fs.readFileSync('esnext/components/Stack/Stack.js', 'utf8')).toMatch('class Stack');
-    });
-
-    it('preserves jsx to give consumers control over Babel transforms', () => {
-      expect(fs.readFileSync('esnext/components/Stack/Stack.js', 'utf8')).toMatch(/return <div .+?<\/div>/);
-    });
-
-    it('provides scss files', () => {
-      expect(fs.existsSync('esnext/components/Stack/Stack.scss')).toBe(true);
-    });
-
-    it('preserves CSS class names to give consumers control over minification', () => {
-      expect(
-        fs.readFileSync('esnext/components/Stack/Stack.scss', 'utf8'),
-      ).toMatch('.Stack');
-    });
-
-    it('preserves ES script imports', () => {
-      const contents = fs.readFileSync('esnext/components/Avatar/index.js', 'utf8');
-      expect(contents).toMatch("import Avatar from './Avatar'");
-    });
-
-    it('preserves ES scss imports', () => {
-      const indexContents = fs.readFileSync(
-        'esnext/components/Avatar/Avatar.js',
-        'utf8',
+      expect(fs.readFileSync('esnext/index.js', 'utf8')).toMatch('class Stack');
+      expect(fs.readFileSync('esnext/server.js', 'utf8')).toMatch(
+        'class Stack',
       );
-      expect(indexContents).toMatch("import * as styles from './Avatar.scss';");
     });
 
-    it('gives consumers control over global.scss', () => {
+    it('generates scss files to be built from source in production builds', () => {
+      expect(fs.existsSync('esnext/styles/components/Stack.scss')).toBe(true);
+    });
+
+    it('minifies class names', () => {
+      expect(
+        fs.readFileSync('esnext/styles/components/Stack/Stack.scss', 'utf8'),
+      ).not.toMatch('Stack');
+      // Checks that we correctly minify on word boundaries and dasherized class names, fixing
+      // https://github.com/Shopify/polaris-react/issues/824
+      expect(
+        fs.readFileSync('esnext/styles/components/Tabs/Tabs.scss', 'utf8'),
+      ).not.toMatch('Measurer');
+      expect(
+        fs.readFileSync('esnext/styles/components/Card/Card.scss', 'utf8'),
+      ).not.toMatch('-subdued');
+    });
+
+    it('uses the correct class names in the server and index builds', () => {
+      const indexStackClassname = fs
+        .readFileSync('esnext/index.js', 'utf8')
+        .match(stackClassnameMatcher);
+      const serverStackClassname = fs
+        .readFileSync('esnext/server.js', 'utf8')
+        .match(stackClassnameMatcher);
+      expect(indexStackClassname[1]).toBeTruthy();
+      expect(indexStackClassname[1]).toBe(serverStackClassname[1]);
+      expect(
+        fs.readFileSync('esnext/styles/components/Stack/Stack.scss', 'utf8'),
+      ).toMatch(`.${indexStackClassname[1]}`);
+    });
+
+    it('preserves native imports in the index build', () => {
       const indexContents = fs.readFileSync('esnext/index.js', 'utf8');
-      expect(indexContents).not.toMatch(/import '.+\.scss'/);
+      expect(indexContents).toMatch('import ');
+    });
+
+    it('uses CommonJS in the server build', () => {
+      const indexContents = fs.readFileSync('esnext/server.js', 'utf8');
+      expect(indexContents).not.toMatch('import ');
+      expect(indexContents).toMatch('require(');
     });
   });
 });

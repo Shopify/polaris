@@ -29,6 +29,7 @@ export default class Header extends React.PureComponent<Props, State> {
   render() {
     const {
       title,
+      titleMetadata,
       breadcrumbs = [],
       titleHidden = false,
       primaryAction,
@@ -52,9 +53,13 @@ export default class Header extends React.PureComponent<Props, State> {
     const breadcrumbMarkup =
       breadcrumbs.length > 0 ? <Breadcrumbs breadcrumbs={breadcrumbs} /> : null;
 
+    const primary =
+      primaryAction &&
+      (primaryAction.primary === undefined ? true : primaryAction.primary);
+
     const primaryActionMarkup = primaryAction ? (
       <div className={styles.PrimaryAction}>
-        {buttonsFrom(primaryAction, {primary: true})}
+        {buttonsFrom(primaryAction, {primary})}
       </div>
     ) : null;
 
@@ -86,6 +91,7 @@ export default class Header extends React.PureComponent<Props, State> {
         <DisplayText size="large" element="h1">
           {title}
         </DisplayText>
+        {titleMetadata}
       </div>
     );
 

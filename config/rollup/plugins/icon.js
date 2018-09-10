@@ -17,8 +17,12 @@ export default function icon(options = {}) {
     name: 'shopify-icon',
 
     transform(source, id) {
-      if (extname(id) !== '.svg') { return null; }
-      if (!filter(id)) { return null; }
+      if (extname(id) !== '.svg') {
+        return null;
+      }
+      if (!filter(id)) {
+        return null;
+      }
 
       return new Promise((resolve) => {
         svgo.optimize(source, (result) => {

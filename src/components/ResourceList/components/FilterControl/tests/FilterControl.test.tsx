@@ -1,10 +1,16 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
-
 import FilterControl, {Props} from '..';
 import FilterCreator from '../FilterCreator';
-import {Filter, FilterType, FilterSelect, FilterTextField} from '../types';
+import {DateFilterOptions} from '../DateSelector';
+import {
+  Filter,
+  FilterType,
+  FilterSelect,
+  FilterTextField,
+  FilterDateSelector,
+} from '../types';
 import {TextField, Tag, Button} from '../../../..';
 
 describe('<FilterControl />', () => {
@@ -291,7 +297,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter value exist in FilterSelect as an option obejct', () => {
+    it('renders the correct applied filter string when filter value exist in FilterSelect as an option object', () => {
       const filterValue = 'Electronic';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -382,6 +388,249 @@ describe('<FilterControl />', () => {
       const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
+      );
+    });
+
+    it('renders the correct localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
+      const appliedFilterValue = DateFilterOptions.PastWeek;
+
+      const filter: FilterDateSelector = {
+        key: 'starts',
+        minKey: 'starts_min',
+        maxKey: 'starts_max',
+        label: 'Starts',
+        operatorText: 'is',
+        type: FilterType.DateSelector,
+      };
+      const appliedFilters = {
+        key: filter.key,
+        value: appliedFilterValue,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const expectedLocalizedLabel = wrapper
+        .instance()
+        .context.polaris.intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
+        );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${filter.operatorText} ${expectedLocalizedLabel}`,
+      );
+    });
+
+    it('renders the correct localized applied filter string when filter is a FilterDateSelector with minimum date predicate (on or after)', () => {
+      const selectedDate = '2018-09-16';
+      const filter: FilterDateSelector = {
+        key: 'starts',
+        minKey: 'starts_min',
+        maxKey: 'starts_max',
+        label: 'Starts',
+        operatorText: 'is',
+        type: FilterType.DateSelector,
+      };
+      const appliedFilters = {
+        key: filter.minKey,
+        value: selectedDate,
+      };
+
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const expectedLocalizedLabel = wrapper
+        .instance()
+        .context.polaris.intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
+          {
+            date: new Date(
+              selectedDate.replace(/-/g, '/'),
+            ).toLocaleDateString(),
+          },
+        );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
+    });
+
+    it('renders the correct localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
+      const selectedDate = '2018-09-16';
+      const filter: FilterDateSelector = {
+        key: 'starts',
+        minKey: 'starts_min',
+        maxKey: 'starts_max',
+        label: 'Starts',
+        operatorText: 'is',
+        type: FilterType.DateSelector,
+      };
+      const appliedFilters = {
+        key: filter.maxKey,
+        value: selectedDate,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const expectedLocalizedLabel = wrapper
+        .instance()
+        .context.polaris.intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
+          {
+            date: new Date(
+              selectedDate.replace(/-/g, '/'),
+            ).toLocaleDateString(),
+          },
+        );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
+    });
+
+    it('renders applied filter value when filter is a FilterDateSelector with invalid date predicate', () => {
+      const selectedDate = 'INVALID';
+      const filter: FilterDateSelector = {
+        key: 'starts',
+        minKey: 'starts_min',
+        maxKey: 'starts_max',
+        label: 'Starts',
+        operatorText: 'is',
+        type: FilterType.DateSelector,
+      };
+      const appliedFilters = {
+        key: filter.maxKey,
+        value: selectedDate,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const expectedLocalizedLabel = wrapper
+        .instance()
+        .context.polaris.intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
+          {
+            date: selectedDate,
+          },
+        );
+
+      const firstTag = wrapper.find(Tag).at(0);
+      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
+    });
+
+    it('renders the correct applied filter string when filter uses operators with filter label', () => {
+      const appliedFilterValue = '20';
+      const appliedFilterKey = 'times_used';
+      const appliedFilterLabel = 'is';
+
+      const filter: FilterTextField = {
+        key: 'filterKey1',
+        label: 'Times used',
+        operatorText: [
+          {
+            optionLabel: 'equal to',
+            filterLabel: appliedFilterLabel,
+            key: appliedFilterKey,
+          },
+          {
+            optionLabel: 'not equal to',
+            filterLabel: 'is not',
+            key: 'times_used_not',
+          },
+        ],
+        type: FilterType.TextField,
+      };
+      const appliedFilters = {
+        key: appliedFilterKey,
+        value: appliedFilterValue,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${appliedFilterLabel} ${appliedFilterValue}`,
+      );
+    });
+
+    it('renders the correct applied filter string when filter uses operators without filter label', () => {
+      const appliedFilterValue = '20';
+      const appliedFilterKey = 'times_used';
+      const appliedOperatorOptionLabel = 'equal to';
+
+      const filter: FilterTextField = {
+        key: 'filterKey1',
+        label: 'Times used',
+        operatorText: [
+          {
+            optionLabel: appliedOperatorOptionLabel,
+            key: appliedFilterKey,
+          },
+          {
+            optionLabel: 'not equal to',
+            key: 'times_used_not',
+          },
+        ],
+        type: FilterType.TextField,
+      };
+      const appliedFilters = {
+        key: appliedFilterKey,
+        value: appliedFilterValue,
+      };
+      const wrapper = mountWithAppProvider(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const firstTag = wrapper.find(Tag).at(0);
+
+      expect(firstTag.text()).toBe(
+        `${filter.label} ${appliedOperatorOptionLabel} ${appliedFilterValue}`,
       );
     });
 

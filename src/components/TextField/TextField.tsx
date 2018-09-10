@@ -3,11 +3,11 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import Labelled, {Action, helpTextID, errorID, labelID} from '../Labelled';
+import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Resizer, Spinner} from './components';
-import {Error} from '../../types';
+import {Error, Keys} from '../../types';
 import * as styles from './TextField.scss';
 
 export type Type =
@@ -59,7 +59,7 @@ export interface BaseProps {
   /** Allow for multiple lines of input */
   multiline?: boolean | number;
   /** Error to display beneath the label */
-  error?: Error;
+  error?: Error | boolean;
   /** An element connected to the right of the input */
   connectedRight?: React.ReactNode;
   /** An element connected to the left of the input */
@@ -223,7 +223,7 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const describedBy: string[] = [];
     if (error) {
-      describedBy.push(errorID(id));
+      describedBy.push(`${id}Error`);
     }
     if (helpText) {
       describedBy.push(helpTextID(id));
@@ -253,6 +253,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       placeholder,
       onFocus,
       onBlur,
+      onKeyPress: this.handleKeyPress,
       style,
       autoComplete: normalizeAutoComplete(autoComplete),
       className: inputClassName,
@@ -343,6 +344,19 @@ export default class TextField extends React.PureComponent<Props, State> {
   @autobind
   private handleExpandingResize(height: number) {
     this.setState({height});
+  }
+
+  @autobind
+  private handleKeyPress(event: React.KeyboardEvent) {
+    const {key, which} = event;
+    const {type} = this.props;
+    const numbersSpec = /[\d.eE+-]$/;
+
+    if (type !== 'number' || which === Keys.ENTER || key.match(numbersSpec)) {
+      return;
+    }
+
+    event.preventDefault();
   }
 
   @autobind

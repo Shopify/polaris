@@ -1,10 +1,11 @@
 import {
+  ActionListItemDescriptor,
   IconableAction,
   DisableableAction,
-  LoadableAction,
   BadgeAction,
+  LoadableAction,
+  DestructableAction,
 } from '../../types';
-import {ItemDescriptor} from '../ActionList/types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
 
@@ -16,11 +17,11 @@ export interface ActionGroup extends BadgeAction {
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** List of actions */
-  actions: ItemDescriptor[];
+  actions: ActionListItemDescriptor[];
   /** Action details */
   details?: React.ReactNode;
   /** Callback when any action takes place */
-  onActionAnyItem?: ItemDescriptor['onAction'];
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
 export interface ActionProps {
@@ -36,9 +37,19 @@ export interface ActionProps {
   hasIndicator?: boolean;
 }
 
+export interface PrimaryActionProps
+  extends DisableableAction,
+    LoadableAction,
+    DestructableAction {
+  /** Provides extra visual weight and identifies the primary action in a set of buttons */
+  primary?: boolean;
+}
+
 export interface HeaderProps {
   /** Page title, in large type */
   title: string;
+  /** Important and non-interactive status information shown immediately after the title. */
+  titleMetadata?: React.ReactNode;
   /** Visually hide the title */
   titleHidden?: boolean;
   /** App icon, for pages that are part of Shopify apps */
@@ -52,7 +63,7 @@ export interface HeaderProps {
   /** Collection of page-level groups of secondary actions */
   actionGroups?: ActionGroup[];
   /** Primary page-level action */
-  primaryAction?: DisableableAction & LoadableAction;
+  primaryAction?: PrimaryActionProps;
   /** Page-level pagination */
   pagination?: PaginationDescriptor;
 }

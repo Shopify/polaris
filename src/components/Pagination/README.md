@@ -1,6 +1,10 @@
 ---
 name: Pagination
 category: Navigation
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - lists
   - detail
@@ -17,23 +21,32 @@ keywords:
   - previous next buttons
   - previous buttons
   - next buttons
+  - ios
+  - android
 ---
 
 # Pagination
 
-Use pagination to allow navigation between pages that represent an ordered collection of items.
+Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
 
 ---
 
 ## Best practices
 
-Pagination should:
+On all platforms, pagination should:
+
+- Only be used for lists with more than 25 items
+
+Web pagination should:
 
 - Be placed at the bottom of a long list that has been split up into pages
-- Navigate to the previous and next set of items in a paged list
-- Be placed in the page header on detail pages (e.g. detail page for a product or order)
-- Navigate to the previous and next object of the same type (e.g. product or order) on a detail page
+- Pagination should navigate to the previous and next set of items in the paged list
 - Hint when the merchants is at the first or the last page by disabling the corresponding button
+
+iOS and Android pagination should:
+
+- Start loading items when the merchant is close to the bottom, roughly 5 items from the end
+- Show [a spinner](/components/feedback-indicators/spinner) below the list to indicate that items have been requested
 
 ---
 
@@ -41,9 +54,13 @@ Pagination should:
 
 There are no editable content elements that are specific to the pagination component.
 
+---
+
 ## Examples
 
 ### Default pagination
+
+<!-- example-for: web -->
 
 Use for pagination at the bottom of lists.
 
@@ -62,7 +79,9 @@ Use for pagination at the bottom of lists.
 
 ### Pagination with keyboard navigation
 
-Use for keyboard navigation.
+<!-- example-for: web -->
+
+Attach standard keyboard shortcuts to important pagination controls.
 
 ```jsx
 <div style={{height: '100px'}}>
@@ -83,9 +102,28 @@ Use for keyboard navigation.
 </div>
 ```
 
+### Infinite scroll
+
+<!-- example-for: ios, android -->
+
+Use for lists longer than 25 items. In mobile apps it’s natural to scroll to the bottom of the screen to load more items.
+
+<!-- content-for: android -->
+
+![Infinite scroll pagination on Android](components/Pagination/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Infinite scroll pagination on iOS](components/Pagination/ios/default.png)
+
+<!-- /content-for -->
+
 ---
 
 ## Related components
 
+- The [resource list component](/components/lists-and-tables/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
 - To create stand-alone navigational links or calls to action, [use the button component](/components/actions/button)
 - To embed actions or pathways to more information within a sentence, [use the link component](/components/navigation/link)

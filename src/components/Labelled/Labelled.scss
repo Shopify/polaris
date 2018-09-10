@@ -7,6 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .HelpText {
@@ -16,12 +18,7 @@
 }
 
 .Error {
-  display: flex;
   margin-top: spacing(extra-tight);
-  color: color('red', 'dark');
-}
-
-.ErrorIcon {
-  @include recolor-icon(color('red'));
-  margin: 0 spacing(extra-tight) 0 -2px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }

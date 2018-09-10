@@ -70,6 +70,8 @@ Learn more about <a>fulfilling orders</a> at the Shopify Help Center
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default links

@@ -1,6 +1,10 @@
 ---
 name: Page
 category: Structure
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - page
   - breadcrumbs
@@ -21,6 +25,8 @@ keywords:
   - page layouts
   - easdk
   - embedded app
+  - android
+  - ios
 ---
 
 # Page
@@ -118,15 +124,19 @@ Add a menu item
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Page with all header elements
+
+<!-- content-for: web -->
 
 Use for detail pages, which should have pagination and breadcrumbs, and also often have several actions.
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Products'}]}
+  breadcrumbs={[{content: 'Products', url: '/products'}]}
   title="Jar With Lock-Lid"
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
@@ -139,13 +149,37 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 </Page>
 ```
 
+<!-- /content-for -->
+
+<!-- content-for: android -->
+
+Use for detail pages, which should have breadcrumbs, and also often have several actions.
+
+Use for building any page on Android.
+
+![Page on Android](components/Page/android/with-header.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+Use for detail pages, which should have breadcrumbs, and also often have several actions.
+
+Use for building any page on iOS.
+
+![Page on iOS](components/Page/ios/with-header.png)
+
+<!-- /content-for -->
+
 ### Page without primary action in header
+
+<!-- example-for: web -->
 
 Use when a primary action functions better as part of the page content instead of in the page header.
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Orders'}]}
+  breadcrumbs={[{content: 'Orders', url: '/orders'}]}
   title="#1085"
   secondaryActions={[
     {content: 'Print'},
@@ -170,6 +204,8 @@ Use when a primary action functions better as part of the page content instead o
 
 ### Page with external link
 
+<!-- example-for: web -->
+
 Use when a secondary action links to another website. Actions marked external open in a new browser tab.
 
 ```jsx
@@ -192,11 +228,13 @@ Use when a secondary action links to another website. Actions marked external op
 
 ### Page without pagination
 
+<!-- example-for: web -->
+
 Use when the page doesn’t represent a list of objects or a detail view for an object.
 
 ```jsx
 <Page
-  breadcrumbs={[{content: 'Settings'}]}
+  breadcrumbs={[{content: 'Settings', url: '/settings'}]}
   title="General"
   primaryAction={{content: 'Save'}}
 >
@@ -205,6 +243,8 @@ Use when the page doesn’t represent a list of objects or a detail view for an 
 ```
 
 ### Full-width page
+
+<!-- example-for: web -->
 
 Use for layouts that benefit from more screen width, such as wide tables or lists.
 
@@ -224,12 +264,14 @@ Use for layouts that benefit from more screen width, such as wide tables or list
 
 ### Single-column page
 
+<!-- example-for: web -->
+
 Use a single column layout if the page supports a single unified task. When the merchant must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
 
 ```jsx
 <Page
   singleColumn
-  breadcrumbs={[{content: 'Orders'}]}
+  breadcrumbs={[{content: 'Orders', url: '/orders'}]}
   title="Add payment method"
   primaryAction={{content: 'Save', disabled: true}}
 >
@@ -244,6 +286,8 @@ Use a single column layout if the page supports a single unified task. When the 
 ```
 
 ### Page with action groups
+
+<!-- example-for: web -->
 
 Use action groups for sets of actions that relate to one another, particularly when there are too many to display as secondary actions. Note that these groups will be further rolled up into a single action for smaller displays so that actions do not wrap or overflow the page bounds.
 
@@ -265,6 +309,8 @@ Use action groups for sets of actions that relate to one another, particularly w
 
 ### Page with separator
 
+<!-- example-for: web -->
+
 Use a separator for pages that have an [empty state](/components/structure/empty-state) as their only content, or that have an [annotated section](/components/structure/layout) as the first component on the page.
 
 ```jsx
@@ -274,6 +320,28 @@ Use a separator for pages that have an [empty state](/components/structure/empty
       <p>Annotated section content</p>
     </Layout.AnnotatedSection>
   </Layout>
+</Page>
+```
+
+### Page with content after title (title metadata)
+
+<!-- example-for: web -->
+
+Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
+
+```jsx
+<Page
+  breadcrumbs={[{content: 'Products', url: '/products'}]}
+  title="Jar With Lock-Lid"
+  titleMetadata={<Badge status="attention">Verified</Badge>}
+  primaryAction={{content: 'Save', disabled: true}}
+  secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
+  pagination={{
+    hasPrevious: true,
+    hasNext: true,
+  }}
+>
+  <p>Page content</p>
 </Page>
 ```
 

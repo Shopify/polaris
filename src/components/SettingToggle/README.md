@@ -70,6 +70,8 @@ say “Enable” to allow merchants to turn it on.
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default setting toggle

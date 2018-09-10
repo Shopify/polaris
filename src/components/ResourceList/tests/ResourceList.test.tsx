@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ResourceList, Select} from '../..';
+import {ResourceList, Select, Spinner} from '../..';
 import EmptySearchResult from '../../EmptySearchResult';
 import {
   findByTestID,
@@ -35,14 +35,14 @@ const sortOptions = [
 
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
-    it('should render list items', () => {
+    it('renders list items', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
       expect(resourceList.find('li').length).toBe(3);
     });
 
-    it('should render custom markup', () => {
+    it('renders custom markup', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
@@ -57,14 +57,14 @@ describe('<ResourceList />', () => {
   });
 
   describe('Selectable', () => {
-    it("should not render bulk actions if the 'promotedBulkActions' and the 'bulkActions' props are not provided", () => {
+    it('does not render bulk actions if the promotedBulkActions and the bulkActions props are not provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find(BulkActions).exists()).toBe(false);
     });
 
-    it("should render bulk actions if the 'promotedBulkActions' prop is provided", () => {
+    it('does render bulk actions if the promotedBulkActions prop is provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -75,7 +75,7 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).exists()).toBe(true);
     });
 
-    it("should render bulk actions if the 'bulkActions' prop is provided", () => {
+    it('renders bulk actions if the bulkActions prop is provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -88,7 +88,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('hasMoreItems', () => {
-    it("should not add a prop of 'paginatedSelectAllAction' to BulkActions if omitted", () => {
+    it('does not add a prop of paginatedSelectAllAction to BulkActions if omitted', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
@@ -101,7 +101,7 @@ describe('<ResourceList />', () => {
       ).toBeUndefined();
     });
 
-    it("should add a prop of 'paginatedSelectAllAction' to BulkActions if included", () => {
+    it('adds a prop of paginatedSelectAllAction to BulkActions if included', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsNoID}
@@ -118,7 +118,7 @@ describe('<ResourceList />', () => {
 
   describe('resourceName', () => {
     describe('resoureName.singular', () => {
-      it("should render default singular resource name when 'resourceName' isn’t provided", () => {
+      it('renders default singular resource name when resourceName isn’t provided', () => {
         const resourceList = mountWithAppProvider(
           <ResourceList
             showHeader
@@ -131,7 +131,7 @@ describe('<ResourceList />', () => {
         ).toEqual('Showing 1 item');
       });
 
-      it("should render the given singular resource name when 'resourceName' is provided", () => {
+      it('renders the given singular resource name when resourceName is provided', () => {
         const resourceList = mountWithAppProvider(
           <ResourceList
             items={singleItemNoID}
@@ -147,7 +147,7 @@ describe('<ResourceList />', () => {
     });
 
     describe('resoureName.plural', () => {
-      it("should render default plural resource name when 'resourceName' isn’t provided", () => {
+      it('renders default plural resource name when resourceName isn’t provided', () => {
         const resourceList = mountWithAppProvider(
           <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
@@ -156,7 +156,7 @@ describe('<ResourceList />', () => {
         ).toEqual('Showing 2 items');
       });
 
-      it("should render the given plural resource name when 'resourceName' is provided", () => {
+      it('renders the given plural resource name when resourceName is provided', () => {
         const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsNoID}
@@ -173,7 +173,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('bulkActionsAccessibilityLabel', () => {
-    it('should provide the BulkActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={singleItemWithID}
@@ -186,7 +186,7 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it('should provide the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected ', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected ', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={singleItemWithID}
@@ -200,7 +200,7 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it('should provide the BulkActions with the right accessibilityLabel if there’s multiple items and they are all selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there’s multiple items and they are all selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -213,7 +213,7 @@ describe('<ResourceList />', () => {
         'Deselect all 3 items',
       );
     });
-    it('should provide the BulkActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -228,7 +228,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('idForItem()', () => {
-    it('should generate a key using the index if there’s no idForItem prop and no ID in data', () => {
+    it('generates a key using the index if there’s no idForItem prop and no ID in data', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsNoID} renderItem={shallowRenderItem} />,
       );
@@ -240,7 +240,7 @@ describe('<ResourceList />', () => {
       ).toBe('0');
     });
 
-    it('should generate a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
+    it('generates a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
@@ -252,7 +252,7 @@ describe('<ResourceList />', () => {
       ).toBe('5');
     });
 
-    it('should generate a key using the idForItem prop callback when one is provided', () => {
+    it('generates a key using the idForItem prop callback when one is provided', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList
           idForItem={idForItem}
@@ -270,7 +270,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('onSelectionChange()', () => {
-    it('should call onSelectionChange() when an item is clicked', () => {
+    it('calls onSelectionChange() when an item is clicked', () => {
       const onSelectionChange = jest.fn();
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -398,14 +398,14 @@ describe('<ResourceList />', () => {
   });
 
   describe('Sorting', () => {
-    it("it should not render a sort select if 'sortOptions' aren’t provided", () => {
+    it('does not render a sort select if sortOptions aren’t provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find(Select).exists()).toBe(false);
     });
 
-    it("it should render a sort select if 'sortOptions' are provided", () => {
+    it('renders a sort select if sortOptions are provided', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}
@@ -417,7 +417,7 @@ describe('<ResourceList />', () => {
     });
 
     describe('sortOptions', () => {
-      it("should pass a 'sortOptions' to the Select options", () => {
+      it('passes a sortOptions to the Select options', () => {
         const resourceList = mountWithAppProvider(
           <ResourceList
             items={itemsWithID}
@@ -433,7 +433,7 @@ describe('<ResourceList />', () => {
     });
 
     describe('sortValue', () => {
-      it("should pass a 'sortValue' to the Select value", () => {
+      it('passes a sortValue to the Select value', () => {
         const onSortChange = jest.fn();
         const resourceList = mountWithAppProvider(
           <ResourceList
@@ -452,7 +452,7 @@ describe('<ResourceList />', () => {
     });
 
     describe('onSortChange', () => {
-      it('should call onSortChange when the Sort Select changes', () => {
+      it('calls onSortChange when the Sort Select changes', () => {
         const onSortChange = jest.fn();
         const resourceList = mountWithAppProvider(
           <ResourceList
@@ -465,6 +465,21 @@ describe('<ResourceList />', () => {
         trigger(resourceList.find(Select), 'onChange', 'PRODUCT_TITLE_DESC');
         expect(onSortChange).toHaveBeenCalledWith('PRODUCT_TITLE_DESC');
       });
+    });
+  });
+
+  describe('loading', () => {
+    it('renders a spinner', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          sortOptions={sortOptions}
+          renderItem={renderItem}
+          loading
+        />,
+      );
+
+      expect(resourceList.find(Spinner).exists()).toBe(true);
     });
   });
 });

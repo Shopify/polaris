@@ -1,8 +1,20 @@
 @import './variables';
 
+@mixin disabled-pointer-events {
+  pointer-events: none;
+}
+
+@mixin resource-list-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .FiltersWrapper {
   padding: resource-list(header-padding-small)
-    resource-list(header-padding-small);
+    resource-list(header-padding-small) spacing();
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     padding: spacing();
@@ -21,6 +33,16 @@
   + .ResourceList {
     border-top: border();
   }
+}
+
+.HeaderWrapper-disabled {
+  @include disabled-pointer-events;
+}
+
+.HeaderWrapper-overlay {
+  @include resource-list-overlay;
+  z-index: resource-list(header-overlay-stacking-order);
+  background-color: resource-list(overlay-background);
 }
 
 .FiltersWrapper + .HeaderOuterWrapper {
@@ -182,4 +204,23 @@
   + .ItemWrapper {
     border-top: border();
   }
+}
+
+.SpinnerContainer {
+  @include resource-list-overlay;
+  z-index: resource-list(spinner-stacking-order);
+  display: flex;
+  justify-content: center;
+}
+
+.LoadingOverlay {
+  @include resource-list-overlay;
+  z-index: resource-list(list-stacking-order);
+  display: flex;
+  justify-content: center;
+  background-color: resource-list(overlay-background);
+}
+
+.DisabledPointerEvents {
+  @include disabled-pointer-events;
 }

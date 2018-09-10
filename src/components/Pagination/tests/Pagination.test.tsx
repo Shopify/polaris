@@ -5,6 +5,7 @@ import {mountWithAppProvider, findByTestID} from '../../../../tests/utilities';
 import {Keys} from '../../../types';
 import Pagination from '../../Pagination';
 import Tooltip from '../../Tooltip';
+import TextField from '../../TextField';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -29,25 +30,29 @@ describe('<Pagination />', () => {
   });
 
   afterEach(() => {
+    if (document.activeElement) {
+      (document.activeElement as HTMLElement).blur();
+    }
+
     addEventListener.mockRestore();
     removeEventListener.mockRestore();
   });
 
-  it('will render a tooltip if nextTooltip is provided', () => {
+  it('renders a tooltip if nextTooltip is provided', () => {
     const pagination = mountWithAppProvider(<Pagination nextTooltip="k" />);
     pagination.find(Tooltip).simulate('focus');
 
     expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('k');
   });
 
-  it('will render a tooltip if previousToolTip is provided', () => {
+  it('renders a tooltip if previousToolTip is provided', () => {
     const pagination = mountWithAppProvider(<Pagination previousTooltip="j" />);
     pagination.find(Tooltip).simulate('focus');
 
     expect(findByTestID(pagination, 'TooltipOverlayLabel').text()).toBe('j');
   });
 
-  it('will render a tooltip for nextToolTip and previousToolTip when they are provided', () => {
+  it('renders a tooltip for nextToolTip and previousToolTip when they are provided', () => {
     const pagination = mountWithAppProvider(
       <Pagination previousTooltip="j" nextTooltip="k" />,
     );
@@ -55,7 +60,7 @@ describe('<Pagination />', () => {
     expect(pagination.find(Tooltip)).toHaveLength(2);
   });
 
-  it('will add a keypress event for nextKeys', () => {
+  it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(
       <Pagination nextKeys={[Keys.KEY_K]} onNext={spy} nextTooltip="k" />,
@@ -66,7 +71,7 @@ describe('<Pagination />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('will add a keypress event for previousKeys', () => {
+  it('adds a keypress event for previousKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(
       <Pagination
@@ -79,6 +84,26 @@ describe('<Pagination />', () => {
     listenerMap.keyup({keyCode: Keys.KEY_J});
 
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  describe('input elements', () => {
+    it('will not call paginations callback on keypress if a input element is focused', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <div>
+          <TextField label="test" value="" onChange={noop} />
+          <Pagination
+            nextTooltip="j"
+            previousKeys={[Keys.KEY_J]}
+            onPrevious={spy}
+            previousTooltip="j"
+          />
+        </div>,
+      );
+      focusElement(wrapper, 'input');
+      listenerMap.keyup({keyCode: Keys.KEY_J});
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   describe('nextURL/previousURL', () => {
@@ -99,7 +124,7 @@ describe('<Pagination />', () => {
       getElementById.mockRestore();
     });
 
-    it('will navigate the browser to the anchors target when the designated key is pressed', () => {
+    it('navigates the browser to the anchors target when the designated key is pressed', () => {
       const spy = jest.fn();
       pagination = mountWithAppProvider(
         <Pagination
@@ -117,3 +142,15 @@ describe('<Pagination />', () => {
     });
   });
 });
+
+function focusElement(
+  wrapper: ReactWrapper<any, any>,
+  element: 'input' | 'textarea' | 'select',
+) {
+  const inputElement = wrapper
+    .find(element)
+    .at(0)
+    .getDOMNode() as HTMLInputElement;
+
+  inputElement.focus();
+}

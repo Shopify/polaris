@@ -76,7 +76,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
     cursor: -webkit-grab;
     width: $range-thumb-size;
     height: $range-thumb-size;
-    border: rem(1px) solid color('sky', 'lighter');
+    border: border-width() solid color('sky', 'lighter');
     border-radius: 50%;
     background: linear-gradient(color('white'), color('sky', 'lighter'));
     box-shadow: $range-thumb-shadow;

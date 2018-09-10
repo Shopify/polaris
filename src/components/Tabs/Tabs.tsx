@@ -6,8 +6,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
-import {List, Panel, Tab, TabMeasurer} from './components';
-import {Measurements} from './components/TabMeasurer';
+import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
 
 import * as styles from './Tabs.scss';
 
@@ -291,7 +290,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleMeasurement(measurements: Measurements) {
+  private handleMeasurement(measurements: TabMeasurements) {
     const {tabs, selected} = this.props;
     const {tabToFocus} = this.state;
     const {

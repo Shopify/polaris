@@ -76,7 +76,7 @@ $in-range-border-color: #9ca6de;
 .Day-inRange {
   z-index: z-index(in-range, $stacking-order);
   background: color('indigo', 'light');
-  border: 1px solid $in-range-border-color;
+  border: border-width() solid $in-range-border-color;
 
   &:hover {
     background: darken(color('indigo', 'light'), 5%);
@@ -86,7 +86,7 @@ $in-range-border-color: #9ca6de;
 .Day-selected {
   z-index: z-index(selected, $stacking-order);
   background: color('indigo');
-  border: 1px solid color('indigo');
+  border: border-width() solid color('indigo');
   color: color('white');
 
   &:hover {

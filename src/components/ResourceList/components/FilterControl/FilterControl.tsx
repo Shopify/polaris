@@ -6,7 +6,7 @@ import {ComplexAction} from '../../../../types';
 import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
 
 import FilterCreator from './FilterCreator';
-import {AppliedFilter, Filter, FilterType} from './types';
+import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import * as styles from './FilterControl.scss';
 
 export interface Props {
@@ -154,22 +154,103 @@ export class FilterControl extends React.Component<CombinedProps> {
     onFiltersChange(newAppliedFilters);
   }
 
-  private getFilterLabel({key, value, label}: AppliedFilter): string {
+  private getFilterLabel(appliedFilter: AppliedFilter): string {
+    const {key, value, label} = appliedFilter;
     if (label) {
       return label;
     }
 
     const {filters = []} = this.props;
 
-    const filter = filters.find(({key: filterKey}) => filterKey === key);
+    const filter = filters.find((filter: any) => {
+      const {minKey, maxKey, operatorText} = filter;
+
+      if (minKey || maxKey) {
+        return filter.key === key || minKey === key || maxKey === key;
+      }
+
+      if (operatorText && typeof operatorText !== 'string') {
+        return (
+          filter.key === key ||
+          operatorText.filter(
+            ({key: operatorKey}: Operator) => operatorKey === key,
+          ).length === 1
+        );
+      }
+
+      return filter.key === key;
+    });
 
     if (!filter) {
       return value;
     }
 
-    const filterLabelByType = findFilterLabelByType(filter, value);
-    const filterLabels = [filter.label, filter.operatorText, filterLabelByType];
-    return filterLabels.join(' ');
+    const filterOperatorLabel = findOperatorLabel(filter, appliedFilter);
+    const filterLabelByType = this.findFilterLabelByType(filter, appliedFilter);
+
+    if (!filterOperatorLabel) {
+      return `${filter.label} ${filterLabelByType}`;
+    }
+
+    return `${filter.label} ${filterOperatorLabel} ${filterLabelByType}`;
+  }
+
+  private findFilterLabelByType(
+    filter: Filter,
+    appliedFilter: AppliedFilter,
+  ): string {
+    const {
+      polaris: {intl},
+    } = this.props;
+
+    const {value: appliedFilterValue} = appliedFilter;
+
+    if (filter.type === FilterType.Select) {
+      const foundFilterOption = filter.options.find(
+        (option) =>
+          typeof option === 'string'
+            ? option === appliedFilterValue
+            : option.value === appliedFilterValue,
+      );
+
+      if (foundFilterOption) {
+        return typeof foundFilterOption === 'string'
+          ? foundFilterOption
+          : foundFilterOption.label;
+      }
+    }
+
+    if (filter.type === FilterType.DateSelector) {
+      if (filter.key === appliedFilter.key) {
+        const filterLabelKey = `Polaris.ResourceList.DateSelector.FilterLabelForValue.${
+          appliedFilter.value
+        }`;
+
+        return intl.translationKeyExists(filterLabelKey)
+          ? intl.translate(filterLabelKey)
+          : appliedFilter.value;
+      }
+
+      if (appliedFilter.key === filter.maxKey) {
+        return intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
+          {
+            date: formatDateForLabelDisplay(appliedFilter.value),
+          },
+        );
+      }
+
+      if (appliedFilter.key === filter.minKey) {
+        return intl.translate(
+          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
+          {
+            date: formatDateForLabelDisplay(appliedFilter.value),
+          },
+        );
+      }
+    }
+
+    return appliedFilterValue;
   }
 }
 
@@ -177,26 +258,35 @@ function idFromFilter(appliedFilter: AppliedFilter) {
   return `${appliedFilter.key}-${appliedFilter.value}`;
 }
 
-function findFilterLabelByType(
-  filter: Filter,
-  appliedFilterValue: AppliedFilter['value'],
-): string {
-  if (filter.type === FilterType.Select) {
-    const foundFilterOption = filter.options.find(
-      (option) =>
-        typeof option === 'string'
-          ? option === appliedFilterValue
-          : option.value === appliedFilterValue,
-    );
-
-    if (foundFilterOption) {
-      return typeof foundFilterOption === 'string'
-        ? foundFilterOption
-        : foundFilterOption.label;
-    }
+function formatDateForLabelDisplay(date: string) {
+  if (isNaN(new Date(date).getTime())) {
+    return date;
   }
 
-  return appliedFilterValue;
+  return new Date(date.replace(/-/g, '/')).toLocaleDateString();
+}
+
+function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
+  const {operatorText} = filter;
+
+  if (
+    filter.type === FilterType.DateSelector &&
+    (appliedFilter.key === filter.minKey || appliedFilter.key === filter.maxKey)
+  ) {
+    return '';
+  }
+
+  if (!operatorText || typeof operatorText === 'string') {
+    return operatorText;
+  }
+
+  const appliedOperator = operatorText.find((operator) => {
+    return operator.key === appliedFilter.key;
+  });
+
+  if (appliedOperator) {
+    return appliedOperator.filterLabel || appliedOperator.optionLabel;
+  }
 }
 
 export default withAppProvider<Props>()(FilterControl);

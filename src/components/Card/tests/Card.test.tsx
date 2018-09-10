@@ -45,4 +45,13 @@ describe('<Card />', () => {
     expect(headerMarkup.text().includes(titleString)).toBe(true);
     expect(headerMarkup.find('Badge').text()).toBe(badgeString);
   });
+
+  it('exposes the header component', () => {
+    const card = mountWithAppProvider(
+      <Card>
+        <Card.Header />
+      </Card>,
+    );
+    expect(card.find(Card.Header).exists()).toBeTruthy();
+  });
 });

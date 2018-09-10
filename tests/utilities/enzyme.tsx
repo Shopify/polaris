@@ -1,9 +1,21 @@
-import {ReactWrapper, CommonWrapper, shallow, mount, ShallowWrapper, MountRendererProps, ShallowRendererProps} from 'enzyme';
+import {
+  ReactWrapper,
+  CommonWrapper,
+  shallow,
+  mount,
+  ShallowWrapper,
+  MountRendererProps,
+  ShallowRendererProps,
+} from 'enzyme';
 import * as React from 'react';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 
-import {createPolarisContext, polarisAppProviderContextTypes} from '../../src/components/AppProvider';
+import {
+  createPolarisContext,
+  polarisAppProviderContextTypes,
+} from '../../src/components/AppProvider';
+
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
 export function findByTestID(root: ReactWrapper<any, any>, id: string) {
@@ -108,7 +120,7 @@ export function layeredContent(root: ReactWrapper<any, any>) {
 }
 
 export interface ReactWrapperPredicate {
-  (wrapper: ReactWrapper<any, any>): boolean,
+  (wrapper: ReactWrapper<any, any>): boolean;
 }
 
 export function findWhereInLayeredContent(
@@ -131,22 +143,26 @@ function updateRoot(wrapper: AnyWrapper) {
 function mergeAppProviderOptions(options: any = {}): any {
   const context = createPolarisContext();
 
-  return merge({}, {
-    context,
-    childContextTypes: polarisAppProviderContextTypes
-  }, options);
-}
-
-export function mountWithAppProvider<P>(node: React.ReactElement<P>, options?: MountRendererProps): ReactWrapper<P, any> {
-  return mount(
-    node,
-    mergeAppProviderOptions(options),
+  return merge(
+    {},
+    {
+      context,
+      childContextTypes: polarisAppProviderContextTypes,
+    },
+    options,
   );
 }
 
-export function shallowWithAppProvider<P>(node: React.ReactElement<P>, options?: ShallowRendererProps): ShallowWrapper<P, any> {
-  return shallow(
-    node,
-    mergeAppProviderOptions(options),
-  ).dive(options);
+export function mountWithAppProvider<P>(
+  node: React.ReactElement<P>,
+  options?: MountRendererProps,
+): ReactWrapper<P, any> {
+  return mount(node, mergeAppProviderOptions(options));
+}
+
+export function shallowWithAppProvider<P>(
+  node: React.ReactElement<P>,
+  options?: ShallowRendererProps,
+): ShallowWrapper<P, any> {
+  return shallow(node, mergeAppProviderOptions(options)).dive(options);
 }

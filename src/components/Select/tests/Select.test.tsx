@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {ShallowWrapper} from 'enzyme';
+import {noop} from '@shopify/javascript-utilities/other';
 import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from '../../../../tests/utilities';
-import Select from '..';
+
+import InlineError from '../../InlineError';
+import Select from '../../Select';
 
 describe('<Select />', () => {
   describe('onChange()', () => {
@@ -224,7 +227,7 @@ describe('<Select />', () => {
   });
 
   describe('placeholder', () => {
-    it('renders an unselectable option for the placeholder', () => {
+    it('renders the placeholder as the initially selected option', () => {
       const placeholderValue = '';
       const select = shallowWithAppProvider(
         <Select label="Select" placeholder="Choose something" options={[]} />,
@@ -233,7 +236,6 @@ describe('<Select />', () => {
 
       expect(placeholderValue).toBe(placeholderOption.prop('value'));
       expect(placeholderOption.prop('disabled')).toBe(true);
-      expect(placeholderOption.prop('hidden')).toBe(true);
     });
 
     it('sets the placeholder value as the select value when there is an onChange handler', () => {
@@ -246,8 +248,94 @@ describe('<Select />', () => {
         />,
       ).find('select');
       const placeholderOption = select.find('option').first();
-
       expect(select.prop('value')).toBe(placeholderOption.prop('value'));
+    });
+  });
+
+  describe('error', () => {
+    it('marks the select as invalid', () => {
+      const select = shallowWithAppProvider(
+        <Select error={<span>Invalid</span>} label="Select" onChange={noop} />,
+      );
+
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+
+      select.setProps({error: 'Some error'});
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+
+      select.setProps({error: 'true'});
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+    });
+
+    it('connects the select to the error', () => {
+      const select = mountWithAppProvider(
+        <Select label="Select" error="Some error" onChange={noop} />,
+      );
+      const errorID = select.find('select').prop<string>('aria-describedby');
+      expect(typeof errorID).toBe('string');
+      expect(select.find(`#${errorID}`).text()).toBe('Some error');
+    });
+
+    it('connects the select to an error rendered separately', () => {
+      const errorMessage = 'Some error';
+      const selectID = 'collectionRuleType';
+      const fieldGroup = mountWithAppProvider(
+        <div>
+          <Select
+            error={Boolean(errorMessage)}
+            id={selectID}
+            label="Select"
+            onChange={noop}
+          />
+          <InlineError message={errorMessage} fieldID={selectID} />
+        </div>,
+      );
+
+      const select = fieldGroup.find(Select).last();
+      const errorID = select.find('select').prop<string>('aria-describedby');
+
+      expect(select.find('select').prop<string>('aria-invalid')).toBe(true);
+      expect(typeof errorID).toBe('string');
+      expect(fieldGroup.find(`#${errorID}`).text()).toBe('Some error');
+    });
+
+    it('connects the select to both an error and help text', () => {
+      const select = mountWithAppProvider(
+        <Select
+          label="Select"
+          error="Some error"
+          helpText="Some help"
+          onChange={noop}
+        />,
+      );
+      const descriptions = select
+        .find('select')
+        .prop<string>('aria-describedby')
+        .split(' ');
+      expect(descriptions.length).toBe(2);
+      expect(select.find(`#${descriptions[0]}`).text()).toBe('Some help');
+      expect(select.find(`#${descriptions[1]}`).text()).toBe('Some error');
+    });
+
+    it('renders error markup when a non-boolean value', () => {
+      const select = mountWithAppProvider(
+        <Select
+          label="Select"
+          helpText="Some help"
+          error="Some error"
+          onChange={noop}
+        />,
+      );
+
+      expect(select.find(InlineError)).toHaveLength(1);
+    });
+
+    it('does not render error markup when a boolean value', () => {
+      const select = mountWithAppProvider(
+        <Select error label="Select" helpText="Some help" onChange={noop} />,
+      );
+
+      expect(select.find(InlineError)).toHaveLength(0);
     });
   });
 });

@@ -8,6 +8,7 @@ import {
 import ChoiceList from '..';
 import RadioButton from '../../RadioButton';
 import Checkbox from '../../Checkbox';
+import InlineError from '../../InlineError';
 
 describe('<ChoiceList />', () => {
   let choices: ({
@@ -283,12 +284,39 @@ describe('<ChoiceList />', () => {
   });
 
   describe('error', () => {
-    it('renders error markup when provided a value', () => {
-      const element = shallowWithAppProvider(
+    it('marks the fieldset as invalid', () => {
+      const element = mountWithAppProvider(
         <ChoiceList selected={[]} choices={choices} error="Error message" />,
       );
 
-      expect(element.text()).toContain('Error message');
+      expect(element.find('fieldset').prop<string>('aria-invalid')).toBe(true);
+    });
+
+    it('connects the fieldset to the error', () => {
+      const element = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+      );
+
+      const errorID = element.find('fieldset').prop<string>('aria-describedby');
+      expect(typeof errorID).toBe('string');
+      expect(element.find(`#${errorID}`).text()).toBe('Error message');
+    });
+
+    it('renders error markup when truthy', () => {
+      const element = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+      );
+
+      const error = element.find(InlineError);
+      expect(error.prop('message')).toBe('Error message');
+    });
+
+    it('renders no error markup when falsy', () => {
+      const element = mountWithAppProvider(
+        <ChoiceList selected={[]} choices={choices} error="" />,
+      );
+
+      expect(element.find(InlineError)).toHaveLength(0);
     });
   });
 });

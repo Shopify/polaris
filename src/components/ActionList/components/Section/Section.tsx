@@ -1,15 +1,8 @@
 import * as React from 'react';
 import Item from '../Item';
-import {ItemDescriptor} from '../../types';
+import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
 
 import * as styles from '../../ActionList.scss';
-
-export interface ActionListSection {
-  /** Section title */
-  title?: string;
-  /** Collection of action items for the list */
-  items: ItemDescriptor[];
-}
 
 export interface Props {
   /** Section of action items */
@@ -17,7 +10,7 @@ export interface Props {
   /** Should there be multiple sections */
   hasMultipleSections: boolean;
   /** Callback when any item is clicked or keypressed */
-  onActionAnyItem?: ItemDescriptor['onAction'];
+  onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
 export default function Section({
@@ -25,7 +18,7 @@ export default function Section({
   hasMultipleSections,
   onActionAnyItem,
 }: Props) {
-  const handleAction = (itemOnAction: ItemDescriptor['onAction']) => {
+  const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
     return () => {
       if (itemOnAction) {
         itemOnAction();

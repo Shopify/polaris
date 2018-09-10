@@ -151,6 +151,11 @@
   @include recolor-icon(color('ink', 'lightest'));
 }
 
+@mixin button-full-width {
+  display: flex;
+  width: 100%;
+}
+
 @function plain-button-background() {
   @return rgba(color('ink'), 0.1);
 }

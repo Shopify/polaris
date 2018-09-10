@@ -28,6 +28,8 @@ Progress bar components should:
 
 There are no content elements that are specific to progress bar.
 
+---
+
 ## Examples
 
 ### Default

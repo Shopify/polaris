@@ -1,6 +1,10 @@
 ---
 name: Text container
 category: Titles and text
+platforms:
+  - android
+  - ios
+  - web
 releasedIn: 1.9.0
 keywords:
   - spacing
@@ -10,6 +14,8 @@ keywords:
   - vertical
   - margin
   - padding
+  - android
+  - ios
 ---
 
 # Text container
@@ -22,8 +28,10 @@ A text container is used to wrap text elements such as paragraphs, headings, and
 
 The closer the spacing, the closer the relationship between content topics. The closeness visually represents the relationship.
 
-Use tight spacing to relate content topics to each other
-Use loose spacing to separate concepts that are independent of each other
+- Use tight spacing to relate content topics to each other
+- Use loose spacing to separate concepts that are independent of each other
+
+---
 
 ## Examples
 
@@ -41,6 +49,18 @@ Use this component for default vertical spacing.
 </TextContainer>
 ```
 
+<!-- content-for: android -->
+
+![Default text container](components/TextContainer/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default text container](components/TextContainer/ios/default.png)
+
+<!-- /content-for -->
+
 ### Tight text container
 
 Use the tight spacing option to relate content topics to each other.
@@ -54,6 +74,18 @@ Use the tight spacing option to relate content topics to each other.
   </p>
 </TextContainer>
 ```
+
+<!-- content-for: android -->
+
+![Tight text container](components/TextContainer/android/tight.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Tight text container](components/TextContainer/ios/tight.png)
+
+<!-- /content-for -->
 
 ### Loose text container
 
@@ -72,6 +104,18 @@ Use the loose spacing option to separate concepts that are independent of each o
   </p>
 </TextContainer>
 ```
+
+<!-- content-for: android -->
+
+![Loose text container](components/TextContainer/android/loose.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Loose text container](components/TextContainer/ios/loose.png)
+
+<!-- /content-for -->
 
 ---
 
