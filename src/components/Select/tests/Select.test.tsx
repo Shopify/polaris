@@ -227,7 +227,7 @@ describe('<Select />', () => {
   });
 
   describe('placeholder', () => {
-    it('renders an unselectable option for the placeholder', () => {
+    it('renders the placeholder as the initially selected option', () => {
       const placeholderValue = '';
       const select = shallowWithAppProvider(
         <Select label="Select" placeholder="Choose something" options={[]} />,
@@ -236,7 +236,6 @@ describe('<Select />', () => {
 
       expect(placeholderValue).toBe(placeholderOption.prop('value'));
       expect(placeholderOption.prop('disabled')).toBe(true);
-      expect(placeholderOption.prop('hidden')).toBe(true);
     });
 
     it('sets the placeholder value as the select value when there is an onChange handler', () => {
@@ -249,7 +248,6 @@ describe('<Select />', () => {
         />,
       ).find('select');
       const placeholderOption = select.find('option').first();
-
       expect(select.prop('value')).toBe(placeholderOption.prop('value'));
     });
   });

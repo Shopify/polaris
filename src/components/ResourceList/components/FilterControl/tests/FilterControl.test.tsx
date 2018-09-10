@@ -467,9 +467,7 @@ describe('<FilterControl />', () => {
         );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
-        `${filter.label} ${filter.operatorText} ${expectedLocalizedLabel}`,
-      );
+      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
     it('renders the correct localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
@@ -509,9 +507,7 @@ describe('<FilterControl />', () => {
         );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
-        `${filter.label} ${filter.operatorText} ${expectedLocalizedLabel}`,
-      );
+      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
     it('renders applied filter value when filter is a FilterDateSelector with invalid date predicate', () => {
@@ -549,9 +545,7 @@ describe('<FilterControl />', () => {
         );
 
       const firstTag = wrapper.find(Tag).at(0);
-      expect(firstTag.text()).toBe(
-        `${filter.label} ${filter.operatorText} ${expectedLocalizedLabel}`,
-      );
+      expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
     it('renders the correct applied filter string when filter uses operators with filter label', () => {

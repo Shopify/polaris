@@ -26,7 +26,7 @@ export type Status = 'success' | 'info' | 'warning' | 'critical';
 export interface Props {
   /** Title content for the banner. */
   title?: string;
-  /** Icon to display in the banner. */
+  /** Icon to display in the banner. Use only major, duotone icons */
   icon?: IconProps['source'];
   /** Sets the status of the banner. */
   status?: Status;

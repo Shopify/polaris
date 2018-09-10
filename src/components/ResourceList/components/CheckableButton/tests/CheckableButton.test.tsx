@@ -11,6 +11,7 @@ const CheckableButtonProps = {
   accessibilityLabel: 'Accessibility-Label',
   selected: true,
   selectMode: false,
+  disabled: false,
 };
 
 describe('<CheckableButton />', () => {
@@ -46,6 +47,21 @@ describe('<CheckableButton />', () => {
           .first()
           .prop('label'),
       ).toEqual(accessibilityLabel);
+    });
+
+    describe('disabled', () => {
+      it('is correctly passed down to checkbox', () => {
+        const {disabled} = CheckableButtonProps;
+        const element = shallowWithAppProvider(
+          <CheckableButton {...CheckableButtonProps} />,
+        );
+        expect(
+          element
+            .find(Checkbox)
+            .first()
+            .prop('disabled'),
+        ).toEqual(disabled);
+      });
     });
   });
 

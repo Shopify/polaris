@@ -269,6 +269,13 @@ function formatDateForLabelDisplay(date: string) {
 function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
   const {operatorText} = filter;
 
+  if (
+    filter.type === FilterType.DateSelector &&
+    (appliedFilter.key === filter.minKey || appliedFilter.key === filter.maxKey)
+  ) {
+    return '';
+  }
+
   if (!operatorText || typeof operatorText === 'string') {
     return operatorText;
   }

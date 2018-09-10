@@ -432,6 +432,20 @@ describe('<DateSelector />', () => {
     expect(wrapper.find(TextField).prop('error')).toBeUndefined();
   });
 
+  it('does not display error when date is added in date filed by DatePicker and date field is blurred', () => {
+    const wrapper = mountWithAppProvider(
+      <DateSelector
+        {...mockDefaultProps}
+        filterValue={DateFilterOptions.OnOrBefore}
+      />,
+    );
+
+    trigger(wrapper.find(DatePicker), 'onChange', {end: new Date()});
+    trigger(wrapper.find(TextField), 'onBlur');
+
+    expect(wrapper.find(TextField).prop('error')).toBeUndefined();
+  });
+
   function getOptionsValuesList(options?: any) {
     if (!options) {
       return [];

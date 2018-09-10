@@ -1,6 +1,10 @@
 ---
 name: Description list
 category: Lists and tables
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - DescriptionList
   - glossary
@@ -11,6 +15,8 @@ keywords:
   - text lists
   - list of terms
   - term explaination
+  - android
+  - ios
 ---
 
 # Description list
@@ -122,6 +128,18 @@ Use when you need to present merchants with a list of items or terms alongside d
   ]}
 />
 ```
+
+<!-- content-for: android -->
+
+![Description list for Android](components/DescriptionList/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Description list for iOS](components/DescriptionList/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 

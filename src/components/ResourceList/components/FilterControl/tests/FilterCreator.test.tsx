@@ -16,7 +16,7 @@ describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {
     filters: [
       {
-        key: 'filterKey1',
+        key: 'filterKey',
         label: 'Product type',
         operatorText: 'is',
         type: FilterType.Select,
@@ -189,10 +189,10 @@ describe('<FilterCreator />', () => {
       );
 
       activatePopover(wrapper);
-      selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
+      selectFilterKey(wrapper, mockDefaultProps.filters[1].key);
 
       expect(wrapper.find(FilterValueSelector).prop('filter')).toMatchObject(
-        mockDefaultProps.filters[0],
+        mockDefaultProps.filters[1],
       );
       expect(wrapper.find(FilterValueSelector).prop('value')).toBeUndefined();
     });
