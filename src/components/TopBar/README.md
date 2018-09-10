@@ -137,6 +137,8 @@ A text field component that is tailor-made for a search use-case.
 | onFocus()               | function | Callback when input is focused                                                   |
 | onBlur()                | function | Callback when focus is removed                                                   |
 
+---
+
 ## Examples
 
 ### Top bar with all of its elements

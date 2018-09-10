@@ -123,13 +123,13 @@ export default function Select({
 
   const options = optionsProp || groupsProp || [];
   let normalizedOptions = options.map(normalizeOption);
+
   if (placeholder) {
     normalizedOptions = [
       {
         label: placeholder,
         value: PLACEHOLDER_VALUE,
         disabled: true,
-        hidden: true,
       },
       ...normalizedOptions,
     ];

@@ -30,6 +30,8 @@ The autocomplete component should:
 
 - Follow the [text field component](/components/forms/text-field)'s content guidelines
 
+---
+
 ## Examples
 
 ### Basic autocomplete

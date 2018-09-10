@@ -326,9 +326,8 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
       onFilterValueChange,
     } = this.props;
-    const {userInputDate} = this.state;
 
-    if (!userInputDate || !isValidDate(userInputDate)) {
+    if (!this.dateTextFieldValue || !isValidDate(this.dateTextFieldValue)) {
       this.setState({
         selectedDate: undefined,
         userInputDateError: intl.translate(
@@ -337,6 +336,11 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       });
       onFilterValueChange(undefined);
 
+      return;
+    }
+
+    const {userInputDate} = this.state;
+    if (!userInputDate) {
       return;
     }
 

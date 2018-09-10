@@ -48,7 +48,7 @@ export interface PrimaryActionProps
 export interface HeaderProps {
   /** Page title, in large type */
   title: string;
-  /** Page title metadata */
+  /** Important and non-interactive status information shown immediately after the title. */
   titleMetadata?: React.ReactNode;
   /** Visually hide the title */
   titleHidden?: boolean;
