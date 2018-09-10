@@ -16,7 +16,7 @@ describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {
     filters: [
       {
-        key: 'filterKey1',
+        key: 'filterKey',
         label: 'Product type',
         operatorText: 'is',
         type: FilterType.Select,
@@ -36,6 +36,21 @@ describe('<FilterCreator />', () => {
       {
         key: 'filterKey2',
         label: 'Tagged with',
+        type: FilterType.TextField,
+      },
+      {
+        key: 'filterKey3',
+        label: 'Times used',
+        operatorText: [
+          {
+            optionLabel: 'less than',
+            key: 'times_used_max',
+          },
+          {
+            optionLabel: 'greater than',
+            key: 'times_used_min',
+          },
+        ],
         type: FilterType.TextField,
       },
     ],
@@ -149,6 +164,10 @@ describe('<FilterCreator />', () => {
           value: mockDefaultProps.filters[1].key,
           label: mockDefaultProps.filters[1].label,
         },
+        {
+          value: mockDefaultProps.filters[2].key,
+          label: mockDefaultProps.filters[2].label,
+        },
       ]);
     });
   });
@@ -164,21 +183,21 @@ describe('<FilterCreator />', () => {
       expect(wrapper.find(FilterValueSelector).exists()).toBe(false);
     });
 
-    it('updates FilterValueSelector when user select a filter key', () => {
+    it('updates FilterValueSelector when user selects a filter key', () => {
       const wrapper = mountWithAppProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
 
       activatePopover(wrapper);
-      selectFilterKey(wrapper, mockDefaultProps.filters[0].key);
+      selectFilterKey(wrapper, mockDefaultProps.filters[1].key);
 
       expect(wrapper.find(FilterValueSelector).prop('filter')).toMatchObject(
-        mockDefaultProps.filters[0],
+        mockDefaultProps.filters[1],
       );
       expect(wrapper.find(FilterValueSelector).prop('value')).toBeUndefined();
     });
 
-    it('updates value correctly when user select a filter value', () => {
+    it('updates value correctly when user selects a filter value', () => {
       const wrapper = mountWithAppProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
@@ -188,6 +207,28 @@ describe('<FilterCreator />', () => {
       selectFilterValue(wrapper, 'Bundle');
 
       expect(wrapper.find(FilterValueSelector).prop('value')).toBe('Bundle');
+    });
+
+    it('updates FilterValueSelector when filter key is updated to existing operator key', () => {
+      const wrapper = mountWithAppProvider(
+        <FilterCreator {...mockDefaultProps} />,
+      );
+
+      const newOperatorKey = 'times_used_max';
+
+      activatePopover(wrapper);
+      selectFilterKey(wrapper, mockDefaultProps.filters[2].key);
+      selectFilterValue(wrapper, 'Bundle');
+
+      trigger(
+        wrapper.find(FilterValueSelector),
+        'onFilterKeyChange',
+        newOperatorKey,
+      );
+
+      expect(wrapper.find(FilterValueSelector).prop('filterKey')).toBe(
+        newOperatorKey,
+      );
     });
   });
 

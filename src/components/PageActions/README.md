@@ -80,6 +80,8 @@ Buttons should be:
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Default page actions

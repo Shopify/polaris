@@ -5,7 +5,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import {Error} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Labelled, {Action, helpTextID, errorID} from '../Labelled';
+import Labelled, {Action, helpTextID} from '../Labelled';
 
 import * as styles from './RangeSlider.scss';
 
@@ -57,10 +57,12 @@ const getUniqueID = createUniqueIDFactory('RangeSlider');
 const cssVarPrefix = '--Polaris-RangeSlider-';
 
 export class RangeSlider extends React.PureComponent<CombinedProps, State> {
-  static getDerivedStateFromProps(props: CombinedProps, state: State) {
-    return {
-      id: props.id || state.id,
-    };
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
+    return nextProps.id != null && nextProps.id !== prevState.id
+      ? {
+          id: nextProps.id || prevState.id,
+        }
+      : null;
   }
 
   constructor(props: CombinedProps) {
@@ -93,7 +95,7 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
     const describedBy: string[] = [];
 
     if (error) {
-      describedBy.push(errorID(id));
+      describedBy.push(`${id}Error`);
     }
 
     if (helpText) {

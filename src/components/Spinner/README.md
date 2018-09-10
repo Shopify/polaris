@@ -2,10 +2,17 @@
 name: Spinner
 category: Feedback indicators
 releasedIn: 1.7.0
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - spinner
   - loader
   - loading
+  - progress indicator
+  - android
+  - ios
 ---
 
 # Spinner
@@ -24,6 +31,18 @@ Use to notify merchants that their requested action is being processed.
 <Spinner size="large" color="teal" />
 ```
 
+<!-- content-for: android -->
+
+![Material design spinner for Android](components/Spinner/android/default.gif)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Apple’s spinner for iOS](components/Spinner/ios/default.gif)
+
+<!-- /content-for -->
+
 ---
 
 ## Best practices
@@ -31,9 +50,9 @@ Use to notify merchants that their requested action is being processed.
 The spinner component should:
 
 - Notify the merchant that their request has been received and the action will soon complete.
-- Be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.
 - Not be used to give feedback for an entire page load.
 - White can only be used with small spinners on actionable components like buttons.
+- On web, be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.
 
 ---
 

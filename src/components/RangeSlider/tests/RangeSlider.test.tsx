@@ -127,7 +127,7 @@ describe('<RangeSlider />', () => {
       expect(element.find('output').prop<string>('htmlFor')).toBe(inputId);
     });
 
-    it('output contains correct value text', () => {
+    it('contains the correct value text', () => {
       const element = mountWithAppProvider(
         <RangeSlider label="RangeSlider" value={50} output onChange={noop} />,
       );

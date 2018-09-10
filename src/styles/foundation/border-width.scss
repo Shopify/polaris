@@ -1,0 +1,19 @@
+$border-width-data: (
+  base: rem(1px),
+  thick: rem(2px),
+  thicker: rem(3px),
+);
+
+/// Returns the width of the specified border type.
+/// @param {String} $variant [base] - The border variant key.
+/// @return {Number} The width for the border.
+
+@function border-width($variant: base) {
+  $fetched-value: map-get($border-width-data, $variant);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Border width variant `#{$variant}` not found. Available variants: #{available-names($border-width-data)}';
+  }
+}

@@ -3,8 +3,7 @@ $actions-vertical-spacing: spacing(tight);
 @mixin page-layout {
   margin: 0 auto;
   padding: 0;
-  max-width: layout-width(primary, max) + layout-width(secondary, max) +
-    layout-width(inner-spacing);
+  max-width: $page-max-width;
 
   @include page-content-when-not-fully-condensed {
     padding: 0 spacing(loose);

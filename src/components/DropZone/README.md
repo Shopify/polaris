@@ -35,7 +35,7 @@ Drop zones should:
 
 ### Validation errors
 
-The drop zone component validates file type by default. File types you wish to accept can be defined by editing the `accept` property. This component also accepts custom validations using the `customValidation` property. When validation fails, the component sets itself to error mode.
+The drop zone component validates file type by default. File types you wish to accept can be defined by editing the `accept` property. This component also accepts custom validations using the `customValidator` property. When validation fails, the component sets itself to error mode.
 
 ---
 
@@ -94,8 +94,8 @@ class DropZoneExample extends React.Component {
     const fileUpload = !files.length && <DropZone.FileUpload />;
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -127,52 +127,14 @@ class DropZoneExample extends React.Component {
 }
 ```
 
-### Drop zone
+### Drop zone with a label
 
-Use to allow merchants to upload files. They can drag and drop files into the dashed area, or upload traditionally by clicking anywhere inside the dashed area.
+Use to pair with a label for better accessibility.
 
 ```jsx
-class DropZoneExample extends React.Component {
-  state = {
-    files: [],
-  };
-
-  render() {
-    const {files} = this.state;
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-
-    const uploadedFiles = files.length > 0 && (
-      <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={
-                validImageTypes.indexOf(file.type) > 0
-                  ? window.URL.createObjectURL(file)
-                  : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
-              }
-            />
-            <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
-            </div>
-          </Stack>
-        ))}
-      </Stack>
-    );
-
-    return (
-      <DropZone
-        onDrop={(files) => {
-          this.setState({files: [...this.state.files, ...files]});
-        }}
-      >
-        {uploadedFiles}
-      </DropZone>
-    );
-  }
-}
+<DropZone label="Theme files">
+  <DropZone.FileUpload />
+</DropZone>
 ```
 
 ### Drop zone with image file upload
@@ -193,8 +155,8 @@ class DropZoneExample extends React.Component {
     const fileUpload = !files.length && <DropZone.FileUpload />;
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -213,9 +175,9 @@ class DropZoneExample extends React.Component {
         title="The following images couldn’t be uploaded:"
         status="critical"
       >
-        <List type="bullets">
-          {rejectedFiles.map((file) => (
-            <List.Item>
+        <List type="bullet">
+          {rejectedFiles.map((file, index) => (
+            <List.Item key={index}>
               {`"${
                 file.name
               }" is not supported. File type must be .gif, .jpg, .png or .svg.`}
@@ -264,8 +226,8 @@ class DropZoneExample extends React.Component {
 
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -328,8 +290,8 @@ class DropZoneExample extends React.Component {
 
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -348,9 +310,9 @@ class DropZoneExample extends React.Component {
         title="The following images couldn’t be uploaded:"
         status="critical"
       >
-        <List type="bullets">
-          {rejectedFiles.map((file) => (
-            <List.Item>
+        <List type="bullet">
+          {rejectedFiles.map((file, index) => (
+            <List.Item key={index}>
               {`"${file.name}" is not supported. File type must be .svg.`}
             </List.Item>
           ))}
@@ -398,8 +360,8 @@ class DropZoneExample extends React.Component {
     const fileUpload = !files.length && <DropZone.FileUpload />;
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -477,8 +439,8 @@ class DropZoneExample extends React.Component {
 
     const uploadedFiles = files.length > 0 && (
       <Stack vertical>
-        {files.map((file) => (
-          <Stack alignment="center">
+        {files.map((file, index) => (
+          <Stack alignment="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}

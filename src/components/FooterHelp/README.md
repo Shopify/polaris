@@ -17,7 +17,7 @@ keywords:
 
 # Footer help
 
-Footer help is used to refer merchants to more information in the Shopify Help documentation that’s related to the product or feature they’re using.
+Footer help is used to refer merchants to more information related to the product or feature they’re using.
 
 ---
 
@@ -28,8 +28,14 @@ Footer help should:
 - Be positioned at the bottom of the interface
 - Provide links to help that’s related to the experience on the screen
 - Not be used to promote features or provide explanations for how something works
-- Almost always provide a link to help documentation except in the rare case that a blog post or other type of content does a better job of walking the merchant through how to use the product or feature
 - Never link to information designed to upsell the merchant
+- In rare cases, link to blog posts when there isn’t any help documentation to help the merchant with the most logical next step in the workflow
+
+If you’re a Shopify app developer, footer help could also:
+
+- Provide links to contact information or a support ticketing system
+
+It’s recommended to link your footer help component to [help documentation](/content/help-documentation). Linking directly to your contact information might result in receiving a higher number of emails or calls.
 
 ---
 
@@ -41,20 +47,21 @@ By default, footer help should link to information in the Shopify Help Center an
 
 - Learn more about {X}.
 
-In the rare case that footer help links to a resource outside of the Shopify Help Center, it’s important to specify the destination by following this pattern:
-
-- Learn more about {X} at the Shopify blog.
-
 Links should be:
 
-Clearly labeled: Merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+Clearly labeled: Merchants shouldn't need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+
+For Shopify app developers linking to contact information, footer help should follow this content pattern:
+
+- Option 1: {Contact us} about [X].
+- Option 2: Reach out to us at {contact info}.
 
 <!-- usagelist -->
 
 #### Do
 
 - Learn more about [shipping zones].
-- Learn more about [themes] on the Shopify blog.
+- [Contact us] about email marketing.
 
 #### Don’t
 
@@ -62,6 +69,8 @@ Clearly labeled: Merchants should not need to guess where they’ll end up if th
 - Find out about [themes].
 
 <!-- end -->
+
+---
 
 ## Examples
 
@@ -81,7 +90,8 @@ Use to direct merchants to more information related to the product or feature th
 
 ---
 
-## Related components
+## Related components and documentation
 
 - To learn how to embed a link in a piece of text, [use the link component](/components/link)
 - To learn how to write documentation for an app or theme, [use the the guide on how to write product documentation](/content/help-documentation)
+- To learn how to provide support for an app, [use the guide on supporting your app](https://help.shopify.com/en/api/app-store/being-successful-in-the-app-store/supporting-your-app)

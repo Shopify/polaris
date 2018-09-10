@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from '../../Connected.scss';
 
-export enum Position {
+export enum ItemPosition {
   Left,
   Primary,
   Right,
@@ -11,7 +11,7 @@ export enum Position {
 
 export interface Props {
   /** Position of the item */
-  position: Position;
+  position: ItemPosition;
   /** Item content */
   children?: React.ReactNode;
 }
@@ -29,7 +29,7 @@ export default class Item extends React.PureComponent<Props, State> {
     const className = classNames(
       styles.Item,
       focused && styles['Item-focused'],
-      position === Position.Primary
+      position === ItemPosition.Primary
         ? styles['Item-primary']
         : styles['Item-connection'],
     );

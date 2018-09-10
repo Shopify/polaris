@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from '../../../../tests/utilities';
 import Choice from '..';
+import InlineError from '../../InlineError';
 
 describe('<Choice />', () => {
   it('uses the id as the for attribute of a label', () => {
@@ -19,6 +20,14 @@ describe('<Choice />', () => {
     );
 
     expect(element.find('#MyChoiceError').text()).toContain('Error message');
+  });
+
+  it('avoids rendering error markup when the error is a boolean value', () => {
+    const element = mountWithAppProvider(
+      <Choice id="MyChoice" label="Label" error={Boolean(true)} />,
+    );
+
+    expect(element.find(InlineError)).toHaveLength(0);
   });
 
   // We want the entire choice to be clickable, including the space

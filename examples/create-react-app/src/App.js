@@ -144,7 +144,8 @@ class App extends Component {
               By clicking Connect, you are accepting Sample’s{' '}
               <Link url="https://polaris.shopify.com">
                 Terms and Conditions
-              </Link>, including a commission rate of 15% on sales.
+              </Link>
+              , including a commission rate of 15% on sales.
             </p>
           }
         />

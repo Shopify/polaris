@@ -1,8 +1,6 @@
 $dropzone-padding: rem(15px);
-$dropzone-border-width: rem(2px);
 $dropzone-border-style: dashed;
 $dropzone-border-color: color('sky');
-$dropzone-border-color-error: color('red');
 $dropzone-background: color('white');
 $dropzone-border-radius: border-radius();
 $dropzone-min-height-extra-large: rem(205px);
@@ -21,22 +19,17 @@ $dropzone-overlay-background-error: color('red', 'lighter');
   position: relative;
   display: flex;
   justify-content: center;
-  background: $dropzone-background;
+  background-color: $dropzone-background;
   border-radius: $dropzone-border-radius;
 }
 
 .hasOutline {
-  border: $dropzone-border-width $dropzone-border-style $dropzone-border-color;
+  border: border-width(thick) $dropzone-border-style $dropzone-border-color;
 }
 
 .isDragging {
   border-color: $dropzone-overlay-border-color;
-  background: $dropzone-overlay-background;
-}
-
-.hasError {
-  border-color: $dropzone-border-color-error;
-  background: $dropzone-overlay-background-error;
+  background-color: $dropzone-overlay-background;
 }
 
 .isDisabled {
@@ -71,28 +64,29 @@ $dropzone-overlay-background-error: color('red', 'lighter');
   z-index: 30;
   top: 0;
   right: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   padding: $dropzone-padding;
-  border: $dropzone-border-width $dropzone-border-style $dropzone-overlay-color;
+  border: border-width(thick) $dropzone-border-style $dropzone-overlay-color;
   border-radius: $dropzone-border-radius;
   text-align: center;
   color: $dropzone-overlay-color;
-  background: $dropzone-overlay-background;
+  background-color: $dropzone-overlay-background;
 
   .hasOutline & {
-    border: none;
+    top: -(border-width(thick));
+    right: -(border-width(thick));
+    bottom: -(border-width(thick));
+    left: -(border-width(thick));
   }
 
   .hasError & {
     border-color: $dropzone-overlay-border-color-error;
     color: $dropzone-overlay-color-error;
-    background: $dropzone-overlay-background-error;
+    background-color: $dropzone-overlay-background-error;
   }
 
   .sizeSmall & {

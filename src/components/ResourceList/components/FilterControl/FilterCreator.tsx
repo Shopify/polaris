@@ -6,7 +6,7 @@ import Form from '../../../Form';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import FilterValueSelector from './FilterValueSelector';
-import {AppliedFilter, Filter} from './types';
+import {AppliedFilter, Filter, Operator} from './types';
 
 export interface Props {
   filters: Filter[];
@@ -23,6 +23,7 @@ export type CombinedProps = Props & WithAppProviderProps;
 export interface State {
   popoverActive: boolean;
   selectedFilter?: Filter;
+  selectedFilterKey?: AppliedFilter['key'];
   selectedFilterValue?: AppliedFilter['value'];
 }
 
@@ -34,7 +35,11 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   private node: HTMLButtonElement | null = null;
 
   private get canAddFilter() {
-    return Boolean(this.state.selectedFilter && this.state.selectedFilterValue);
+    return Boolean(
+      this.state.selectedFilter &&
+        this.state.selectedFilterKey &&
+        this.state.selectedFilterValue,
+    );
   }
 
   render() {
@@ -44,7 +49,13 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
       disabled,
       polaris: {intl},
     } = this.props;
-    const {popoverActive, selectedFilter, selectedFilterValue} = this.state;
+
+    const {
+      popoverActive,
+      selectedFilter,
+      selectedFilterKey,
+      selectedFilterValue,
+    } = this.state;
 
     const activator = (
       <Button
@@ -66,7 +77,9 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
     const filterValueSelectionMarkup = selectedFilter ? (
       <FilterValueSelector
         filter={selectedFilter}
+        filterKey={selectedFilterKey}
         value={selectedFilterValue}
+        onFilterKeyChange={this.handleFilterKeyChange}
         onChange={this.handleFilterValueChange}
       />
     ) : null;
@@ -89,6 +102,7 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
         activator={activator}
         onClose={this.togglePopover}
         sectioned
+        fullHeight
       >
         <Form onSubmit={this.handleAddFilter}>
           <FormLayout>
@@ -129,7 +143,27 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   private handleFilterKeyChange(filterKey: string) {
     const {filters} = this.props;
 
-    const foundFilter = filters.find((filter) => filter.key === filterKey);
+    const foundFilter = filters.find((filter: any) => {
+      const {minKey, maxKey, operatorText} = filter;
+
+      if (minKey || maxKey) {
+        return (
+          filter.key === filterKey ||
+          minKey === filterKey ||
+          maxKey === filterKey
+        );
+      }
+
+      if (operatorText && typeof operatorText !== 'string') {
+        return (
+          filter.key === filterKey ||
+          operatorText.filter(({key}: Operator) => key === filterKey).length ===
+            1
+        );
+      }
+
+      return filter.key === filterKey;
+    });
 
     if (!foundFilter) {
       return;
@@ -137,6 +171,7 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
 
     this.setState({
       selectedFilter: foundFilter,
+      selectedFilterKey: filterKey,
       selectedFilterValue: undefined,
     });
   }
@@ -149,8 +184,7 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   @autobind
   private handleAddFilter() {
     const {onAddFilter} = this.props;
-    const selectedFilterKey =
-      this.state.selectedFilter && this.state.selectedFilter.key;
+    const {selectedFilterKey} = this.state;
 
     if (!onAddFilter || !this.canAddFilter || !selectedFilterKey) {
       return;

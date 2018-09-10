@@ -57,10 +57,10 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Annotation {
   flex: 1 1 $secondary-basis;
-  padding: 0 spacing(loose) 0;
+  padding: spacing() spacing(loose) 0;
 
   @include page-content-when-not-fully-condensed {
-    padding: 0;
+    padding: spacing() 0 0;
   }
 
   @include page-content-when-layout-not-stacked {

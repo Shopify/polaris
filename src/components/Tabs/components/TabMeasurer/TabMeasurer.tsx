@@ -10,7 +10,7 @@ import {TabDescriptor} from '../../Tabs';
 import Tab from '../Tab';
 import * as styles from '../../Tabs.scss';
 
-export interface Measurements {
+export interface TabMeasurements {
   containerWidth: number;
   disclosureWidth: number;
   hiddenTabWidths: number[];
@@ -22,7 +22,7 @@ export interface Props {
   activator: React.ReactElement<{}>;
   selected: number;
   tabs: TabDescriptor[];
-  handleMeasurement(measurements: Measurements): void;
+  handleMeasurement(measurements: TabMeasurements): void;
 }
 
 export default class TabMeasurer extends React.PureComponent<Props, never> {

@@ -32,7 +32,7 @@ if (argv.watch) {
       resolve();
     });
   }).then(() => {
-    console.log('✅ Component examples build complete');
+    console.log('✅ Build complete.');
   });
 
   app.use((req, res, next) => buildPromise.then(next, next));
@@ -48,8 +48,11 @@ app.use(
 app.use('*', appMiddleware);
 
 app.listen(port, () => {
-  console.log(`Example app running on http://localhost:${port}`);
+  console.log();
+  console.log(
+    `⚡️ Example app running on http://localhost:${port} ← cmd + click to open`,
+  );
   if (argv.watch) {
-    console.log('⏳ Building code examples from component README files…');
+    console.log('⏳ Building the app…');
   }
 });

@@ -80,8 +80,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .withinContentContainer {
   border-radius: border-radius();
   padding: spacing(tight) $intermediate-spacing;
-  margin-left: (spacing(tight) * -1);
-  margin-right: (spacing(tight) * -1);
 
   @include banner-variants;
 
@@ -139,6 +137,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .Content {
   padding: spacing(extra-tight) 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .Ribbon {
@@ -198,7 +198,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     left: 0;
     right: 0;
     display: block;
-    border: 1px solid currentColor;
+    border: border-width() solid currentColor;
     opacity: 0.25;
     will-change: opacity;
     transition: opacity duration() easing();

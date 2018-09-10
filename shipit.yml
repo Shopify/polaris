@@ -2,6 +2,7 @@ ci:
   hide:
     - shrink-ray
     - 'ci/circleci: percy'
+    - percy/polaris-react
     - codecov/patch
   require:
     - 'ci/circleci: check'
@@ -12,3 +13,6 @@ merge:
     - shrink-ray
   ignore:
     - codecov/patch
+
+deploy:
+  max_commits: false

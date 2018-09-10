@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+
 import {Error} from '../../types';
-import Icon from '../Icon';
+import InlineError from '../InlineError';
+
 import * as styles from './Choice.scss';
 
 export interface Props {
@@ -9,8 +11,10 @@ export interface Props {
   id: string;
   /**	Label for the choice */
   label: React.ReactNode;
+  /** Whether the associated form control is disabled */
+  disabled?: Boolean;
   /** Display an error message */
-  error?: Error;
+  error?: Error | boolean;
   /** Visually hide the label */
   labelHidden?: boolean;
   /**  Content to display inside the choice */
@@ -22,6 +26,7 @@ export interface Props {
 export default function Choice({
   id,
   label,
+  disabled,
   error,
   children,
   labelHidden,
@@ -30,6 +35,7 @@ export default function Choice({
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
+    disabled && styles.disabled,
   );
 
   const labelMarkup = (
@@ -45,14 +51,12 @@ export default function Choice({
     </div>
   ) : null;
 
-  const errorMarkup = error && (
-    <div className={styles.Error} id={errorID(id)}>
-      <div className={styles.ErrorIcon}>
-        <Icon source="alert" />
+  const errorMarkup = error &&
+    typeof error !== 'boolean' && (
+      <div className={styles.Error}>
+        <InlineError message={error} fieldID={id} />
       </div>
-      {error}
-    </div>
-  );
+    );
 
   const descriptionMarkup =
     helpTextMarkup || errorMarkup ? (
@@ -74,8 +78,4 @@ export default function Choice({
 
 export function helpTextID(id: string) {
   return `${id}HelpText`;
-}
-
-export function errorID(id: string) {
-  return `${id}Error`;
 }

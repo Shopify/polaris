@@ -1,6 +1,10 @@
 ---
 name: Avatar
 category: Images and icons
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - photo
   - profile
@@ -17,6 +21,8 @@ keywords:
   - business avatar
   - customer thumbnail
   - business thumbnail
+  - ios
+  - android
 ---
 
 # Avatar
@@ -58,6 +64,18 @@ Use to present an avatar for a merchant, customer, or business.
 ```jsx
 <Avatar customer name="Farrah" />
 ```
+
+<!-- content-for: android -->
+
+![Default avatar](components/Avatar/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default avatar](components/Avatar/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 

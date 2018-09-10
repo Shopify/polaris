@@ -23,6 +23,17 @@ describe('<Tooltip />', () => {
     expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(false);
   });
 
+  it('renders initially when active is true', () => {
+    const tooltipActive = mountWithAppProvider(
+      <Tooltip content="Inner content" active>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+    expect(findByTestID(tooltipActive, 'TooltipOverlayLabel').exists()).toBe(
+      true,
+    );
+  });
+
   it('renders on mouseEnter', () => {
     wrapperComponent.simulate('mouseEnter');
     expect(findByTestID(tooltip, 'TooltipOverlayLabel').exists()).toBe(true);

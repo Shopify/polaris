@@ -130,6 +130,8 @@ Add a menu item
 
 <!-- end -->
 
+---
+
 ## Examples
 
 ### Page with all header elements

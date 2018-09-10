@@ -1,6 +1,10 @@
 ---
 name: Collapsible
 category: Behavior
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - hide
   - show
@@ -18,14 +22,13 @@ keywords:
   - show hide
   - expanding view
   - collapse
+  - ios
+  - android
 ---
 
 # Collapsible
 
-The collapsible component is used to put long sections of information under a
-block that can be expanded or collapsed by the merchant. Generally this is
-used for lower priority information or content that merchants don’t need to see
-all the time.
+The collapsible component is used to put long sections of information under a block that can be expanded or collapsed by the merchant.
 
 ---
 
@@ -35,7 +38,6 @@ The collapsible component should:
 
 - Be used for information that is lower priority or that merchants don’t need
   to see all the time
-- Be shown by default in an expanded state when a merchant loads a screen
 - Not be used to hide error messages or other critical information that requires
   an immediate action
 
@@ -93,8 +95,21 @@ class CollapsibleExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Collapsible on Android](components/Collapsible/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Collapsible on iOS](components/Collapsible/ios/default.png)
+
+<!-- /content-for -->
+
 ---
 
 ## Related components
 
+- To control a collapsible component, use the [button](/components/actions/button) component
 - To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)

@@ -1,7 +1,7 @@
 $borders-data: (
-  base: 1px solid color('sky'),
-  dark: 1px solid color('sky', 'dark'),
-  transparent: 1px solid transparent,
+  base: border-width() solid color('sky'),
+  dark: border-width() solid color('sky', 'dark'),
+  transparent: border-width() solid transparent,
 );
 
 /// Returns the default border.

@@ -8,7 +8,7 @@
   > .Item {
     margin-top: spacing($spacing);
     margin-left: spacing($spacing);
-    max-width: calc(100% - #{spacing($spacing)});
+    max-width: 100%;
   }
 }
 

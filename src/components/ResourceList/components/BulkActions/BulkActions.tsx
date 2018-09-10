@@ -2,11 +2,10 @@ import * as React from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {DisableableAction, Action} from '../../../../types';
+import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import {Duration} from '../../../shared';
 import {ActionList, Popover, Button, EventListener} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-import {ActionListSection} from '../../../ActionList/components/Section/Section';
 import CheckableButton from '../CheckableButton';
 import BulkActionButton from './BulkActionButton';
 import * as styles from './BulkActions.scss';
@@ -35,6 +34,8 @@ export interface Props {
   paginatedSelectAllText?: string;
   /** Action for selecting all across pages */
   paginatedSelectAllAction?: Action;
+  /** Disables bulk actions */
+  disabled?: boolean;
   /** Callback when the select all checkbox is clicked */
   onToggleAll?(): void;
   /** Callback when selectable state of list is changed */
@@ -161,6 +162,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       label = '',
       onToggleAll,
       selected,
+      disabled,
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
@@ -187,6 +189,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
         onClick={paginatedSelectAllAction.onAction}
         plain
         testID="paginated-action"
+        disabled={disabled}
       >
         {paginatedSelectAllAction.content}
       </Button>
@@ -303,6 +306,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
                 disclosure
                 onAction={this.toggleLargeScreenPopover}
                 content={activatorLabel}
+                disabled={disabled}
               />
             }
             onClose={this.toggleLargeScreenPopover}
@@ -322,6 +326,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       selectMode,
       onToggleAll,
       measuring,
+      disabled,
     };
 
     const smallScreenGroup = (
