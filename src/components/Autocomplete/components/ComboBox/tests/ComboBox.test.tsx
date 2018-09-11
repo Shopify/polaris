@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import ComboBox from '..';
-import {TextField} from '../../../components';
+import {TextField} from '../components';
 import {mountWithAppProvider} from '../../../../../../tests/utilities';
 
 describe('<ComboBox/>', () => {

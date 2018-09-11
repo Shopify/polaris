@@ -1,15 +1,14 @@
 import * as React from 'react';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {ComboBox, TextField} from './components';
+import {ComboBox} from './components';
 import {Spinner} from '..';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
 import {ActionListItemDescriptor} from '../../types';
+import {TextFieldProps} from '../../components';
 
 import * as styles from './Autocomplete.scss';
-
-export interface State {}
 
 export interface Props {
   /** A unique identifier for the Autocomplete */
@@ -40,11 +39,13 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-export class Autocomplete extends React.PureComponent<CombinedProps, State> {
+function TextField(props: TextFieldProps) {
+  return <ComboBox.TextField {...props} />;
+}
+
+export class Autocomplete extends React.PureComponent<CombinedProps, never> {
   static TextField = TextField;
   static ComboBox = ComboBox;
-
-  state: State = {};
 
   render() {
     const {
