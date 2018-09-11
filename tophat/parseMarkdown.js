@@ -10,14 +10,17 @@ export default function parseMarkdown() {
   console.log();
   console.log('🔎 Parsing examples in component README.md files:');
   console.log();
+  let errorCount = 0;
 
-  return files
+  const parsedExamples = files
     .map((file) => {
       const data = fs.readFileSync(file, 'utf8');
       let examples;
+
       try {
         examples = parseCodeExamples(data, file);
       } catch (err) {
+        errorCount++;
         if (process.env.CI) {
           throw new Error(err);
         } else {
@@ -29,6 +32,21 @@ export default function parseMarkdown() {
       return examples;
     })
     .filter((example) => example);
+
+  if (errorCount > 0) {
+    console.log();
+    console.log(
+      `${errorCount} error${
+        errorCount !== 1 ? 's' : ''
+      } found in component READMEs.`,
+    );
+    console.log('Troubleshooting tips and tricks:');
+    console.log(
+      'https://github.com/Shopify/polaris-react/blob/master/documentation/Component%20READMEs.md#troubleshooting',
+    );
+  }
+
+  return parsedExamples;
 }
 
 function stripCodeBlock(block: string) {
