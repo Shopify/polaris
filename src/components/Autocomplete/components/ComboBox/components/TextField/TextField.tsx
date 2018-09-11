@@ -4,8 +4,8 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {
   TextField as BaseTextField,
   TextFieldProps,
-} from '../../../../components';
-import {contextTypes} from '../types';
+} from '../../../../../../components';
+import {contextTypes} from '../../../types';
 
 export default class TextField extends React.PureComponent<
   TextFieldProps,
