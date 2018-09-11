@@ -36,7 +36,7 @@ The autocomplete component should:
 
 ### Basic autocomplete
 
-Use to let merchants to complete text input quickly from a list of options.
+Use to help merchants complete text input quickly from a list of options.
 
 ```jsx
 class AutocompleteExample extends React.Component {
@@ -111,7 +111,7 @@ class AutocompleteExample extends React.Component {
 
 ### Multiple tags autocomplete
 
-Use to allow merchants to select multiple options from a list curated by the text input.
+Use to help merchants select multiple options from a list curated by the text input.
 
 ```jsx
 class MultiAutocompleteExample extends React.Component {
@@ -218,7 +218,7 @@ function titleCase(string) {
 
 ### Autocomplete with loading
 
-Use to indicate loading state to merchants while option data is being requested.
+Use to indicate loading state to merchants while option data is processing.
 
 ```jsx
 class AutocompleteExample extends React.Component {
