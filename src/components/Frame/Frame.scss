@@ -144,15 +144,15 @@ $skip-vertical-offset: rem(10px);
 .LoadingBar {
   @include hidden-when-printing;
   position: fixed;
-  z-index: z-index(loading-bar, $fixed-element-stacking-order);
-  .hasTopBar & {
-    top: top-bar-height();
-  }
+  z-index: z-index(small-screen-loading-bar, $fixed-element-stacking-order);
+  top: 0;
   right: 0;
   left: 0;
-  @include frame-when-nav-hidden {
-    z-index: z-index(small-screen-loading-bar, $fixed-element-stacking-order);
-    top: 0;
+  @include frame-when-nav-displayed {
+    .hasTopBar & {
+      top: top-bar-height();
+      z-index: z-index(loading-bar, $fixed-element-stacking-order);
+    }
   }
 }
 
