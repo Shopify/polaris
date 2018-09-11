@@ -5,18 +5,18 @@ $global-elements: (
 
 // We're matching that here and relatively stacking other fixed components.
 $fixed-element-stacking-order: (
-  global-ribbon: 110,
-  toast: 111,
-  loading-bar: 112,
-  top-bar: 113,
-  context-bar: 114,
-  small-screen-loading-bar: 115,
-  nav-backdrop: 116,
-  nav: 117,
-  skip-to-content: 118,
-  backdrop: 119,
-  modal: 120,
-  dev-ui: 121,
+  global-ribbon: 210,
+  toast: 211,
+  loading-bar: 212,
+  top-bar: 213,
+  context-bar: 214,
+  small-screen-loading-bar: 215,
+  nav-backdrop: 216,
+  nav: 217,
+  skip-to-content: 218,
+  backdrop: 219,
+  modal: 220,
+  dev-ui: 221,
 );
 
 /// Returns the z-index of the specified element.
