@@ -1,5 +1,4 @@
 {
-  "http://localhost:3000/account-connection/0": [],
   "http://localhost:3000/app-provider/0": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
@@ -36,11 +35,6 @@
       "selector": "#app > div > div > div > div > ul > li:nth-child(2) > div > a"
     }
   ],
-  "http://localhost:3000/banner/1": [],
-  "http://localhost:3000/banner/6": [],
-  "http://localhost:3000/banner/8": [],
-  "http://localhost:3000/callout-card/1": [],
-  "http://localhost:3000/button/2": [],
   "http://localhost:3000/button-group/2": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
@@ -59,8 +53,6 @@
       "selector": "#DropZone1"
     }
   ],
-  "http://localhost:3000/card/1": [],
-  "http://localhost:3000/card/7": [],
   "http://localhost:3000/drop-zone/0": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
@@ -221,8 +213,6 @@
       "selector": "#DropZone1"
     }
   ],
-  "http://localhost:3000/empty-state/0": [],
-  "http://localhost:3000/footer-help/0": [],
   "http://localhost:3000/layout/2": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
@@ -275,7 +265,6 @@
       "selector": "#256"
     }
   ],
-  "http://localhost:3000/link/0": [],
   "http://localhost:3000/option-list/2": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_1.F77",
@@ -360,7 +349,6 @@
       "selector": "#256 > div:nth-child(4) > div > button"
     }
   ],
-  "http://localhost:3000/select/4": [],
   "http://localhost:3000/tabs/0": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
@@ -397,8 +385,6 @@
       "selector": "#app > div > div:nth-child(1) > ul > li:nth-child(3)"
     }
   ],
-  "http://localhost:3000/text-field/5": [],
-  "http://localhost:3000/text-field/8": [],
   "http://localhost:3000/text-field/11": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
@@ -408,6 +394,5 @@
       "typeCode": 1,
       "selector": "#app > div > div > div > div > div > div:nth-child(2) > button"
     }
-  ],
-  "http://localhost:3000/tooltip/0": []
+  ]
 }
