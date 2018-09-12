@@ -39,7 +39,19 @@ describe('<Toast />', () => {
     const {easdk} = mountWithEasdk(
       <Toast content={content} onDismiss={noop} />,
     );
-    expect(easdk.showFlashNotice).toHaveBeenCalledWith(content);
+    expect(easdk.showFlashNotice).toHaveBeenCalledWith(content, {
+      error: undefined,
+    });
+  });
+
+  it('shows easdk flash error content on mount', () => {
+    const content = 'Message sent';
+    const {easdk} = mountWithEasdk(
+      <Toast content={content} onDismiss={noop} error />,
+    );
+    expect(easdk.showFlashNotice).toHaveBeenCalledWith(content, {
+      error: true,
+    });
   });
 });
 

@@ -26,6 +26,7 @@ export enum Messages {
   LOADING_OFF = 'Shopify.API.Bar.loading.off',
   CLOSE_DROPDOWN = 'Shopify.API.Bar.closeDropdown',
   FLASH_NOTICE = 'Shopify.API.flash.notice',
+  FLASH_ERROR = 'Shopify.API.flash.error',
   MODAL_OPEN = 'Shopify.API.Modal.open',
   MODAL_CONFIRM = 'Shopify.API.Modal.confirm',
   MODAL_ALERT = 'Shopify.API.Modal.alert',
@@ -105,8 +106,10 @@ export default class EASDK {
   }
 
   @autobind
-  showFlashNotice(message: string) {
-    this.messenger.send(Messages.FLASH_NOTICE, {message});
+  showFlashNotice(message: string, options: {error?: boolean} = {}) {
+    const {error = false} = options;
+    const type = error ? Messages.FLASH_ERROR : Messages.FLASH_NOTICE;
+    this.messenger.send(type, {message});
   }
 
   @autobind
