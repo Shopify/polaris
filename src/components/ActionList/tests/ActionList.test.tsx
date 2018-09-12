@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
 import ActionList from '../ActionList';
+import Section from '../components/Section';
 import {Item} from '../components';
 
 describe('<ActionList />', () => {
@@ -66,5 +67,16 @@ describe('<ActionList />', () => {
       const expectedKey = `${items[index].content}-${index}`;
       expect(item.key()).toBe(expectedKey);
     });
+  });
+
+  it('it passes actionRole to Section', () => {
+    const actionList = mountWithAppProvider(
+      <ActionList
+        items={[{content: 'Add discount'}]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+    expect(actionList.find(Section).prop('actionRole')).toBe('option');
   });
 });
