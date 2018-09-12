@@ -2,7 +2,7 @@ const hash = require('object-hash');
 
 function shitlistCheck(results, immutableShitlist) {
   const mutableShitlist = {};
-  const remainingIssues = {};
+  const remainingIssues = [];
   Object.keys(immutableShitlist).forEach((key) => {
     mutableShitlist[key] = Array.from(immutableShitlist[key]);
   });
@@ -27,7 +27,10 @@ function shitlistCheck(results, immutableShitlist) {
 
   Object.keys(mutableShitlist).forEach((key) => {
     mutableShitlist[key].length
-      ? (remainingIssues[key] = mutableShitlist[key])
+      ? remainingIssues.push({
+          pageUrl: key,
+          issues: mutableShitlist[key],
+        })
       : undefined;
   });
 
