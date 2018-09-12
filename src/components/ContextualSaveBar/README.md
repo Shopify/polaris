@@ -79,9 +79,9 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 <AppProvider
   theme={{
     logo: {
-      width: 130,
+      width: 124,
       contextualSaveBarSource:
-        'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
     },
   }}
 >
@@ -110,9 +110,8 @@ Use the save action to provide an opportunity to save a newly-created resource. 
 <AppProvider
   theme={{
     logo: {
-      width: 130,
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+      width: 124,
+      contextualSaveBarSource: 'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
     }
   }}
 >

@@ -166,6 +166,187 @@ class ProviderLinkExample extends React.Component {
 }
 ```
 
+### With theme
+
+With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](/components/structure/topbar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](/components/structure/contextual-save-bar) components.
+
+```jsx
+class ProviderThemeExample extends React.Component {
+  state = {
+    isDirty: false,
+  };
+
+  render() {
+    const {isDirty} = this.state;
+
+    const theme = {
+      colors: {
+        topBar: {
+          background: '#1C3D4C',
+        },
+      },
+      logo: {
+        width: 124,
+        topBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+        url: 'http://jadedpixel.com',
+        accessibilityLabel: 'Jaded Pixel',
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    };
+
+    const searchFieldMarkup = <TopBar.SearchField placeholder="Search" />;
+
+    const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
+
+    const contentStatus = isDirty ? 'Disable' : 'Enable';
+    const textStatus = isDirty ? 'enabled' : 'disabled';
+
+    const pageMarkup = (
+      <Page title="Account">
+        <Layout>
+          <Layout.Section>
+            <SettingToggle
+              action={{
+                content: contentStatus,
+                onAction: this.toggleState('isDirty'),
+              }}
+              enabled={isDirty}
+            >
+              This setting is{' '}
+              <TextStyle variation="strong">{textStatus}</TextStyle>.
+            </SettingToggle>
+          </Layout.Section>
+        </Layout>
+      </Page>
+    );
+
+    const contextualSaveBarMarkup = (
+      <ContextualSaveBar
+        visible={isDirty}
+        message="Unsaved changes"
+        saveAction={{
+          onAction: this.toggleState('isDirty'),
+        }}
+        discardAction={{
+          onAction: this.toggleState('isDirty'),
+        }}
+      />
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <AppProvider theme={theme}>
+          <Frame topBar={topBarMarkup}>
+            {contextualSaveBarMarkup}
+            {pageMarkup}
+          </Frame>
+        </AppProvider>
+      </div>
+    );
+  }
+
+  toggleState = (key) => {
+    return () => {
+      this.setState((prevState) => ({[key]: !prevState[key]}));
+    };
+  };
+}
+```
+
+### With theme using all theme keys
+
+Provide specific keys and corresponding colors to the [top bar](/components/structure/topbar) component theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
+
+```jsx
+class ProviderThemeExample extends React.Component {
+  state = {
+    isDirty: false,
+  };
+
+  render() {
+    const {isDirty} = this.state;
+
+    const theme = {
+      colors: {
+        topBar: {
+          background: '#001429',
+          backgroundDarker: '#001429',
+          backgroundLighter: '#084E8A',
+          color: '#FFFFFF',
+        },
+      },
+      logo: {
+        width: 124,
+        topBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+        url: 'http://jadedpixel.com',
+        accessibilityLabel: 'Jaded Pixel',
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    };
+
+    const searchFieldMarkup = <TopBar.SearchField placeholder="Search" />;
+
+    const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
+
+    const contentStatus = isDirty ? 'Disable' : 'Enable';
+    const textStatus = isDirty ? 'enabled' : 'disabled';
+
+    const pageMarkup = (
+      <Page title="Account">
+        <Layout>
+          <Layout.Section>
+            <SettingToggle
+              action={{
+                content: contentStatus,
+                onAction: this.toggleState('isDirty'),
+              }}
+              enabled={isDirty}
+            >
+              This setting is{' '}
+              <TextStyle variation="strong">{textStatus}</TextStyle>.
+            </SettingToggle>
+          </Layout.Section>
+        </Layout>
+      </Page>
+    );
+
+    const contextualSaveBarMarkup = (
+      <ContextualSaveBar
+        visible={isDirty}
+        message="Unsaved changes"
+        saveAction={{
+          onAction: this.toggleState('isDirty'),
+        }}
+        discardAction={{
+          onAction: this.toggleState('isDirty'),
+        }}
+      />
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <AppProvider theme={theme}>
+          <Frame topBar={topBarMarkup}>
+            {contextualSaveBarMarkup}
+            {pageMarkup}
+          </Frame>
+        </AppProvider>
+      </div>
+    );
+  }
+
+  toggleState = (key) => {
+    return () => {
+      this.setState((prevState) => ({[key]: !prevState[key]}));
+    };
+  };
+}
+```
+
 ---
 
 ## Initializing the EASDK

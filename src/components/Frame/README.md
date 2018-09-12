@@ -45,8 +45,8 @@ Use to present the frame structure and all of its elements.
 ```jsx
 class FrameExample extends React.Component {
   defaultState = {
-    emailFieldValue: 'ellen@ochoacrafts.com',
-    nameFieldValue: 'Ochoa Crafts',
+    emailFieldValue: 'dharma@jadedpixel.com',
+    nameFieldValue: 'Jaded Pixel',
   };
 
   state = {
@@ -61,6 +61,8 @@ class FrameExample extends React.Component {
     nameFieldValue: this.defaultState.nameFieldValue,
     emailFieldValue: this.defaultState.emailFieldValue,
     storeName: this.defaultState.nameFieldValue,
+    supportSubject: '',
+    supportMessage: '',
   };
 
   render() {
@@ -85,27 +87,21 @@ class FrameExample extends React.Component {
       />
     ) : null;
 
+    const userMenuActions = [
+      {
+        items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
+      },
+      {
+        items: [{content: 'Community forums'}],
+      },
+    ];
+
     const navigationUserMenuMarkup = (
       <Navigation.UserMenu
-        actions={[
-          {
-            id: '123',
-            items: [
-              {content: 'Your profile', icon: 'profile'},
-              {content: 'Log out', icon: 'logOut'},
-            ],
-          },
-          {
-            id: '456',
-            items: [
-              {content: 'Shopify help center'},
-              {content: 'Community forums'},
-            ],
-          },
-        ]}
-        name="Ellen Ochoa"
+        actions={userMenuActions}
+        name="Dharma"
         detail={storeName}
-        avatarInitials="EO"
+        avatarInitials="D"
       />
     );
 
@@ -124,23 +120,10 @@ class FrameExample extends React.Component {
 
     const userMenuMarkup = (
       <TopBar.UserMenu
-        actions={[
-          {
-            items: [
-              {content: 'Your profile', icon: 'profile'},
-              {content: 'Log out', icon: 'logOut'},
-            ],
-          },
-          {
-            items: [
-              {content: 'Shopify help center'},
-              {content: 'Community forums'},
-            ],
-          },
-        ]}
-        name="Ellen Ochoa"
+        actions={userMenuActions}
+        name="Dharma"
         detail={storeName}
-        initials="EO"
+        initials="D"
         open={userMenuOpen}
         onToggle={this.toggleState('userMenuOpen')}
       />
@@ -180,9 +163,10 @@ class FrameExample extends React.Component {
     const navigationMarkup = (
       <Navigation location="/" userMenu={navigationUserMenuMarkup}>
         <Navigation.Section
+          title="Settings"
           items={[
             {
-              label: 'Home',
+              label: 'Account',
               icon: 'home',
               onClick: this.toggleState('isLoading'),
             },
@@ -191,26 +175,21 @@ class FrameExample extends React.Component {
               icon: 'orders',
               onClick: this.toggleState('isLoading'),
             },
-            {
-              label: 'Products',
-              icon: 'products',
-              onClick: this.toggleState('isLoading'),
-            },
           ]}
         />
         <Navigation.Section
-          title="Sales channels"
+          title="Support"
           items={[
             {
-              label: 'Online Store',
-              icon: 'onlineStore',
+              label: 'Help center',
+              icon: 'help',
               onClick: this.toggleState('isLoading'),
             },
           ]}
           separator
           action={{
-            icon: 'circlePlusOutline',
-            accessibilityLabel: 'Add a sales channel',
+            icon: 'conversation',
+            accessibilityLabel: 'Contact support',
             onClick: this.toggleState('modalActive'),
           }}
         />
@@ -220,22 +199,22 @@ class FrameExample extends React.Component {
     const loadingMarkup = isLoading ? <Loading /> : null;
 
     const actualPageMarkup = (
-      <Page title="Settings">
+      <Page title="Account">
         <Layout>
           <Layout.AnnotatedSection
-            title="Store details"
-            description="Shopify and your customers will use this information to contact you."
+            title="Billing details"
+            description="We will use this as your billing information."
           >
             <Card sectioned>
               <FormLayout>
                 <TextField
-                  label="Store name"
+                  label="Full name"
                   value={nameFieldValue}
                   onChange={this.handleNameFieldChange}
                 />
                 <TextField
                   type="email"
-                  label="Account email"
+                  label="Email"
                   value={emailFieldValue}
                   onChange={this.handleEmailFieldChange}
                 />
@@ -267,33 +246,26 @@ class FrameExample extends React.Component {
       <Modal
         open={modalActive}
         onClose={this.toggleState('modalActive')}
-        title="Add sales channel"
+        title="Contact support"
         primaryAction={{
-          content: 'Add Instagram',
+          content: 'Send',
           onAction: this.toggleState('modalActive'),
         }}
       >
         <Modal.Section>
-          <Stack wrap={false}>
-            <Stack.Item>
-              <img
-                style={{
-                  minWidth: '4rem',
-                  maxWidth: '4rem',
-                  height: '4rem',
-                }}
-                src="https://cdn.shopify.com/s/files/applications/e47f922e057de8e341967bbd31444fdb.png?1521134959"
-                alt="Instagram logo"
-              />
-            </Stack.Item>
-            <Stack.Item fill>
-              <p>
-                Sell your products directly on Instagram by tagging products in
-                your posts, to create a seamless shopping experience for your
-                customers.
-              </p>
-            </Stack.Item>
-          </Stack>
+          <FormLayout>
+            <TextField
+              label="Subject"
+              value={this.state.supportSubject}
+              onChange={this.handleSubjectChange}
+            />
+            <TextField
+              label="Message"
+              value={this.state.supportMessage}
+              onChange={this.handleMessageChange}
+              multiline
+            />
+          </FormLayout>
         </Modal.Section>
       </Modal>
     );
@@ -301,15 +273,17 @@ class FrameExample extends React.Component {
     const theme = {
       colors: {
         topBar: {
-          background: '#108043',
+          background: '#1C3D4C',
         },
       },
       logo: {
-        width: 104,
+        width: 124,
         topBarSource:
-          'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-white.svg',
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
         contextualSaveBarSource:
-          'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+        url: 'http://jadedpixel.com',
+        accessibilityLabel: 'Jaded Pixel',
       },
     };
 
@@ -386,6 +360,14 @@ class FrameExample extends React.Component {
       nameFieldValue: this.defaultState.nameFieldValue,
       isDirty: false,
     });
+  };
+
+  handleSubjectChange = (supportSubject) => {
+    this.setState({supportSubject});
+  };
+
+  handleMessageChange = (supportMessage) => {
+    this.setState({supportMessage});
   };
 }
 ```

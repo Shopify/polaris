@@ -18,7 +18,7 @@ keywords:
 
 # Top bar
 
-The top bar component is always visible at the top of a non-embedded application. Its logo and color can be customized using the [app provider](/components/structure/app-provider) component to reflect an application’s brand. Merchants can use it to search an application, access menus, and navigate by clicking on the logo.
+Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It's always visible at the top of non-embedded interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](/components/structure/app-provider) component and are required to use their own logo.
 
 ---
 
@@ -143,7 +143,7 @@ A text field component that is tailor-made for a search use-case.
 
 ### Top bar with all of its elements
 
-Use to provide structure for the top of an application.
+Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
 
 ```jsx
 class TopBarExample extends React.Component {
@@ -162,25 +162,34 @@ class TopBarExample extends React.Component {
     } = this;
     const {userMenuOpen, searchText, searchActive} = state;
 
+    const theme = {
+      colors: {
+        topBar: {
+          background: '#1C3D4C',
+        },
+      },
+      logo: {
+        width: 124,
+        topBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+        url: 'http://jadedpixel.com',
+        accessibilityLabel: 'Jaded Pixel',
+      },
+    };
+
     const userMenuMarkup = (
       <TopBar.UserMenu
         actions={[
           {
-            items: [
-              {content: 'Your profile', icon: 'profile'},
-              {content: 'Log out', icon: 'logOut'},
-            ],
+            items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
           },
           {
-            items: [
-              {content: 'Shopify help center'},
-              {content: 'Community forums'},
-            ],
+            items: [{content: 'Community forums'}],
           },
         ]}
-        name="Ellen Ochoa"
-        detail="Ochoa Crafts"
-        initials="EO"
+        name="Dharma"
+        detail="Jaded Pixel"
+        initials="D"
         open={userMenuOpen}
         onToggle={toggleUserMenu}
       />
@@ -219,18 +228,128 @@ class TopBarExample extends React.Component {
       />
     );
 
+    return (
+      <div style={{height: '250px'}}>
+        <AppProvider theme={theme}>
+          <Frame topBar={topBarMarkup} />
+        </AppProvider>
+      </div>
+    );
+  }
+
+  toggleUserMenu = () => {
+    this.setState(({userMenuOpen}) => ({userMenuOpen: !userMenuOpen}));
+  };
+
+  handleSearchResultsDismiss = () => {
+    this.setState(() => {
+      return {
+        searchActive: false,
+        searchText: '',
+      };
+    });
+  };
+
+  handleSearchChange = (value) => {
+    this.setState({searchText: value});
+    if (value.length > 0) {
+      this.setState({searchActive: true});
+    } else {
+      this.setState({searchActive: false});
+    }
+  };
+}
+```
+
+### Top bar themed with keys
+
+Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
+
+```jsx
+class TopBarExample extends React.Component {
+  state = {
+    userMenuOpen: false,
+    searchActive: false,
+    searchText: '',
+  };
+
+  render() {
+    const {
+      state,
+      handleSearchChange,
+      handleSearchResultsDismiss,
+      toggleUserMenu,
+    } = this;
+    const {userMenuOpen, searchText, searchActive} = state;
+
     const theme = {
       colors: {
         topBar: {
-          background: '#108043',
+          background: '#001429',
+          backgroundDarker: '#001429',
+          backgroundLighter: '#084E8A',
+          color: '#FFFFFF',
         },
       },
       logo: {
-        width: 130,
+        width: 124,
         topBarSource:
-          'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-white.svg',
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+        url: 'http://jadedpixel.com',
+        accessibilityLabel: 'Jaded Pixel',
       },
     };
+
+    const userMenuMarkup = (
+      <TopBar.UserMenu
+        actions={[
+          {
+            items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
+          },
+          {
+            items: [{content: 'Community forums'}],
+          },
+        ]}
+        name="Dharma"
+        detail="Jaded Pixel"
+        initials="D"
+        open={userMenuOpen}
+        onToggle={toggleUserMenu}
+      />
+    );
+
+    const searchResultsMarkup = (
+      <Card>
+        <ActionList
+          items={[
+            {content: 'Shopify help center'},
+            {content: 'Community forums'},
+          ]}
+        />
+      </Card>
+    );
+
+    const searchFieldMarkup = (
+      <TopBar.SearchField
+        onChange={handleSearchChange}
+        value={searchText}
+        placeholder="Search"
+      />
+    );
+
+    const topBarMarkup = (
+      <TopBar
+        showNavigationToggle={true}
+        userMenu={userMenuMarkup}
+        searchResultsVisible={searchActive}
+        searchField={searchFieldMarkup}
+        searchResults={searchResultsMarkup}
+        onSearchResultsDismiss={handleSearchResultsDismiss}
+        onNavigationToggle={() => {
+          console.log('toggle navigation visibility');
+        }}
+      />
+    );
 
     return (
       <div style={{height: '250px'}}>
