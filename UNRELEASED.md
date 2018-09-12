@@ -12,6 +12,7 @@ Use `withContext` to pass consumer context to a component.
 
 ### Enhancements
 
+- Use the new context API in `ResourceList` ([#2216](https://github.com/Shopify/polaris-react/pull/2216))
 - Use the new context API in `DropZone` ([#2211](https://github.com/Shopify/polaris-react/pull/2211))
 
 ### Development workflow

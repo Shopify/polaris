@@ -40,7 +40,6 @@ describe('<Item />', () => {
 
   const mockSelectModeContext = {
     ...mockDefaultContext,
-    test: false,
     selectedItems: [selectedItemId],
     selectMode: true,
     selectable: true,
