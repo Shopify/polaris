@@ -13,6 +13,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/configure.js"
+  ],
   "keywords": [
     "shopify",
     "polaris",
@@ -90,7 +95,6 @@
     "@percy/puppeteer": "^0.3.2",
     "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/js-uploader": "github:shopify/js-uploader",
-    "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-serialize": "^1.0.6",
     "@types/enzyme": "^3.1.10",
     "@types/jest": "^21.1.2",

@@ -14,6 +14,7 @@ Use the autocomplete component to present a searchable and selectable list of op
 
 - Changed `Form` to default the `method` to `post` in order to prevent accidental leaking of form details ([#2066](https://github.com/Shopify/polaris-react/pull/2066))
 - Added support for boolean type on Choice error prop ([#2085](https://github.com/shopify/polaris-react/pull/2085))
+- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#2226](https://github.com/Shopify/polaris-react/pull/2226))
 
 ### Documentation
 
