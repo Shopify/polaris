@@ -6,9 +6,31 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### New components
 
-#### [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete)
+We've released a suite of new components that, when combined, form the application frame of a standalone (or non-embedded) Polaris app.
 
-Use the autocomplete component to present a searchable and selectable list of options attached to an input field.
+#### [Frame](https://polaris.shopify.com/components/structure/frame)
+
+The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/topbar), [toast](https://polaris.shopify.com/components/structure/toast), [loading](https://polaris.shopify.com/components/structure/loading), and [contextual save bar](https://polaris.shopify.com/components/structure/contextual-save-bar) components.
+
+#### [Navigation](https://polaris.shopify.com/components/navigation/navigation)
+
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame/components/structure/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
+
+#### [TopBar](https://polaris.shopify.com/components/structure/top-bar)
+
+The top bar component is always visible at the top of a non-embedded application. Its logo and color can be customized using the [app provider](/components/structure/app-provider) component to reflect an application’s brand. Merchants can use it to search an application, access menus, and navigate by clicking on the logo.
+
+#### [Toast](https://polaris.shopify.com/components/feedback-indicators/toast)
+
+The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
+
+#### [Loading](https://polaris.shopify.com/components/feedback-indicators/loading)
+
+The loading component is used to indicate to merchants that a page is loading or an upload is processing.
+
+#### [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar)
+
+The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 
 ### Enhancements
 
