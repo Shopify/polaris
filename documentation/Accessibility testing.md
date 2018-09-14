@@ -14,7 +14,7 @@ Many accessibility tests can’t be automated, so you’ll want to do some manua
 
 Refer to the full [WCAG 2.1](https://www.w3.org/TR/WCAG21/) recommendation (and any other guidelines required) for all considerations that may impact your project.
 
-The [Polaris styleguide](https://polaris.shopify.com/) also provides guidelines for usability and consistency that should be considered.
+The [Polaris style guide](https://polaris.shopify.com/) also provides guidelines for usability and consistency that should be considered.
 
 ### Manual testing checklist
 
@@ -71,7 +71,7 @@ The [Polaris styleguide](https://polaris.shopify.com/) also provides guidelines 
 - Activating a control doesn’t cause a [change of context](https://www.w3.org/TR/WCAG21/#dfn-change-of-context) unless users are warned beforehand. ([3.2.2 On Input](https://www.w3.org/TR/WCAG21/#on-input))
   - Links that open new windows are conveyed with an icon that has a text alternative.
 
-#### Interoptibility
+#### Interoperability
 
 - Content can be accessed in portrait and landscape, unless the feature isn’t valid in more than one orientation. ([1.3.4 Orientation](https://www.w3.org/TR/WCAG21/#orientation))
 - Content can reflow without two-direction scrolling. ([1.4.10 Reflow](https://www.w3.org/TR/WCAG21/#reflow))
