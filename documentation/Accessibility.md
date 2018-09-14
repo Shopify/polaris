@@ -2,7 +2,7 @@
 
 At Shopify, we want to create inclusive experiences for all our users. We don’t want to limit who can use our product, and who can access our merchant’s products. We should set a high standard for usability.
 
-**Looking for a testing checklist before you submit a pull request? See our [accessibility testing guide](Accessibility testing.md)**.
+**Looking for a testing checklist before you submit a pull request? See our [accessibility testing guide](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility%20testing.md)**.
 
 Did you know that:
 
@@ -35,7 +35,7 @@ the ones that are most readable, up-to-date, and relevant.
 
 - [WebAIM Articles](https://webaim.org/articles/)
 - [University of Washington Accessible Technology](https://www.washington.edu/accessibility/web/)
-- [A11y Project](https://a11yproject.com/patterns)
+- [A11y Project](https://a11yproject.com/)
 
 It’s also important to think about accessibility as a design and usability issue, not just a technical issue. [We Are the Original Lifehackers](https://www.nytimes.com/2018/05/30/opinion/disability-design-lifehacks.html) outlines how design is improved when people with disabilities participate.
 
@@ -97,7 +97,7 @@ Curious about testing yourself? The best thing is to manually test your pages wi
 ### Patterns and design systems
 
 - [Design considerations](http://webaim.org/resources/designers/)
-- [Common UI patterns, built with accessibility](http://a11yproject.com/patterns/)
+- [Common UI patterns, built with accessibility](https://a11yproject.com/patterns)
 
 ### Books and online courses
 
