@@ -4,8 +4,6 @@ $skip-vertical-offset: rem(10px);
 .Frame {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  min-height: top-bar-height();
   background: color('sky', 'light');
 }
 
