@@ -126,7 +126,7 @@ For regulations around the world. These are long documents often written in lega
 - [Intro to WCAG](http://www.w3.org/WAI/intro/wcag) - Global W3C checklist for accessibility (if you’re very curious!)
 - [Compliance Isn’t Enough](http://www.karlgroves.com/2015/01/06/to-hell-with-compliance/) - Article putting legal requirements in perspective
 - Some litigation examples and articles:
-- [List of Web Accessibility-Related Litigation and Settlements](http://www.karlgroves.com/2011/11/15/list-of-web-accessibility-related-litigation-and-settlements/)
-- [Disability Lawsuits Against Small Businesses Soar](http://www.wsj.com/articles/disabled-access-new-legal-push-1413411545)
-- [U.S. Aims To Speed Up The Internet For The Disabled](http://www.npr.org/2015/03/07/391435879/u-s-aims-to-speed-up-the-internet-for-the-disabled)
-- [DOJ affirms “longstanding position that the #ADA applies to websites of public accommodations”](https://twitter.com/LFLegal/status/614231627040821248)
+  - [List of Web Accessibility-Related Litigation and Settlements](http://www.karlgroves.com/2011/11/15/list-of-web-accessibility-related-litigation-and-settlements/)
+  - [Disability Lawsuits Against Small Businesses Soar](http://www.wsj.com/articles/disabled-access-new-legal-push-1413411545)
+  - [U.S. Aims To Speed Up The Internet For The Disabled](http://www.npr.org/2015/03/07/391435879/u-s-aims-to-speed-up-the-internet-for-the-disabled)
+  - [DOJ affirms “longstanding position that the #ADA applies to websites of public accommodations”](https://twitter.com/LFLegal/status/614231627040821248)

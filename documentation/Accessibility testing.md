@@ -10,7 +10,7 @@ Pull requests to Polaris are reviewed using [Pa11y CI](https://github.com/pa11y/
 
 ## Manual testing
 
-Many accessibility tests can’t be automated, so you’ll want to do some manual testing on Playground content as well. This checklist includes items that will likely not be caught by Pa11y, but doesn’t include imtems which are reliant on specific content or language.
+Many accessibility tests can’t be automated, so you’ll want to do some manual testing on Playground content as well. This checklist includes items that will likely not be caught by Pa11y, but doesn’t include items reliant on specific content or language.
 
 Refer to the full [WCAG 2.1](https://www.w3.org/TR/WCAG21/) recommendation (and any other guidelines required) for all considerations that may impact your project.
 
@@ -83,6 +83,6 @@ The [Polaris styleguide](https://polaris.shopify.com/) also provides guidelines 
 - Video features support text alternatives like an audio track or audio description. ([1.2.1 Audio-only and Video-only (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded), [1.2.3 Audio Description or Media Alternative (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-description-or-media-alternative-prerecorded), [1.2.5 Audio Description (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-description-prerecorded))
 - Captions are supported. ([1.2.2 Captions (Prerecorded)](https://www.w3.org/TR/WCAG21/#captions-prerecorded), [1.2.4 Captions (Live)](https://www.w3.org/TR/WCAG21/#captions-live))
 
-## Find an issue?
+## Found an issue?
 
-If you’ve found an accessibility issue in an existing component, check the **Accessibility** label to make sure an issue has not already been logged. If you don’t find it, submit an issue.
+If you’ve found an accessibility issue in an existing component, check the [**Accessibility** label](https://github.com/Shopify/polaris-react/issues?q=label%3AAccessibility) to make sure an issue has not already been logged. If you don’t find it, submit an issue.
