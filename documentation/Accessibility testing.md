@@ -2,6 +2,8 @@
 
 We want Polaris and Shopify to be as accessible as possible. A large part of this is making sure that Polaris components can meet Level A and Level AA success criteria of the [Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/).
 
+**Looking for more information about accessibility? See our [accessibility overview](/Accessibility.md)**.
+
 ## Automated testing
 
 Pull requests to Polaris are reviewed using [Pa11y CI](https://github.com/pa11y/pa11y-ci) to identify simple-to-fix accessibility issues related to semantic markup, [Accessible Rich Internet Applications (ARIA)](https://www.w3.org/TR/wai-aria-1.1/), and styles. You can also run [Pa11y](https://github.com/pa11y/pa11y) locally before you submit your pull request.
