@@ -27,7 +27,9 @@ function Tag({
 
   return (
     <span className={className}>
-      <span>{children}</span>
+      <span title={children} className={styles.TagText}>
+        {children}
+      </span>
       <button
         type="button"
         aria-label={ariaLabel}
