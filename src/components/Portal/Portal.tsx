@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {createPortal} from 'react-dom';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {isServer} from '@shopify/react-utilities/target';
 
 export interface Props {
   children?: React.ReactNode;
@@ -27,9 +26,6 @@ export default class Portal extends React.PureComponent<Props, State> {
       : getUniqueID();
 
   componentDidMount() {
-    if (isServer) {
-      return;
-    }
     this.portalNode = document.createElement('div');
     this.portalNode.setAttribute('data-portal-id', this.portalId);
     document.body.appendChild(this.portalNode);
@@ -37,16 +33,12 @@ export default class Portal extends React.PureComponent<Props, State> {
   }
 
   componentWillUnmount() {
-    if (isServer) {
-      return;
-    }
     document.body.removeChild(this.portalNode);
   }
 
   render() {
-    if (isServer || !this.state.isMounted) {
-      return null;
-    }
-    return createPortal(this.props.children, this.portalNode);
+    return this.state.isMounted
+      ? createPortal(this.props.children, this.portalNode)
+      : null;
   }
 }
