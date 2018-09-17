@@ -118,10 +118,11 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
     const tabIndex = showMobileNavigation ? 0 : -1;
 
-    const NavWrapper = mobileView ? this.NavTransition : 'div';
-
     const navigationMarkup = navigation ? (
-      <NavWrapper>
+      <NavWrapper
+        showMobileNavigation={showMobileNavigation}
+        mobileView={mobileView}
+      >
         <div
           className={navClassName}
           onKeyDown={this.handleNavKeydown}
@@ -250,26 +251,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private NavTransition({children}: any) {
-    const {showMobileNavigation} = this.props;
-    return (
-      <TrapFocus trapping>
-        <CSSTransition
-          appear
-          exit
-          in={showMobileNavigation}
-          timeout={100}
-          classNames={navTransitionClasses}
-          mountOnEnter
-          unmountOnExit
-        >
-          {children}
-        </CSSTransition>
-      </TrapFocus>
-    );
-  }
-
-  @autobind
   private setGlobalRibbonHeight() {
     const setGlobalRibbonRootProperty = () => {
       const {globalRibbonHeight} = this.state;
@@ -386,6 +367,26 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       this.handleNavigationDismiss();
     }
   }
+}
+
+function NavWrapper({children, showMobileNavigation, mobileView}: any) {
+  return mobileView ? (
+    <TrapFocus trapping>
+      <CSSTransition
+        appear
+        exit
+        in={showMobileNavigation}
+        timeout={100}
+        classNames={navTransitionClasses}
+        mountOnEnter
+        unmountOnExit
+      >
+        {children}
+      </CSSTransition>
+    </TrapFocus>
+  ) : (
+    children
+  );
 }
 
 const navTransitionClasses = {
