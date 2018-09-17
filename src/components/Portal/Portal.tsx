@@ -8,10 +8,16 @@ export interface Props {
   idPrefix?: string;
 }
 
+export interface State {
+  isMounted: boolean;
+}
+
 const getUniqueID = createUniqueIDFactory('portal-');
 
-export default class Portal extends React.PureComponent<Props, never> {
+export default class Portal extends React.PureComponent<Props, State> {
   static defaultProps = {idPrefix: ''};
+
+  state: State = {isMounted: false};
 
   private portalNode: HTMLElement;
 
@@ -20,13 +26,14 @@ export default class Portal extends React.PureComponent<Props, never> {
       ? `${this.props.idPrefix}-${getUniqueID()}`
       : getUniqueID();
 
-  componentWillMount() {
+  componentDidMount() {
     if (isServer) {
       return;
     }
     this.portalNode = document.createElement('div');
     this.portalNode.setAttribute('data-portal-id', this.portalId);
     document.body.appendChild(this.portalNode);
+    this.setState({isMounted: true});
   }
 
   componentWillUnmount() {
@@ -37,7 +44,7 @@ export default class Portal extends React.PureComponent<Props, never> {
   }
 
   render() {
-    if (isServer) {
+    if (isServer || !this.state.isMounted) {
       return null;
     }
     return createPortal(this.props.children, this.portalNode);

@@ -38,6 +38,10 @@ The contextual save bar tells merchants their options once they have made change
 - Added support for boolean type on Choice error prop ([#2085](https://github.com/shopify/polaris-react/pull/2085))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#2226](https://github.com/Shopify/polaris-react/pull/2226))
 
+## Bug fixes
+
+- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount` ([#2243](https://github.com/Shopify/polaris-react/pull/2243));
+
 ### Documentation
 
 - Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
