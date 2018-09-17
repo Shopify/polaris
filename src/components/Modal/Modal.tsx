@@ -221,7 +221,7 @@ export class Modal extends React.Component<CombinedProps, State> {
         </Dialog>
       );
 
-      backdrop = <Backdrop onClick={handleClose} />;
+      backdrop = <Backdrop />;
     }
 
     const animated = !instant;
