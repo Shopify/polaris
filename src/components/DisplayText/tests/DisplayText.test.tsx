@@ -29,4 +29,11 @@ describe('<DisplayText />', () => {
     );
     expect(displayText.find('p')).toHaveLength(1);
   });
+
+  it('renders the specified size', () => {
+    const displayText = mountWithAppProvider(
+      <DisplayText size="extraLarge">Important text.</DisplayText>,
+    );
+    expect(displayText.prop('size')).toBe('extraLarge');
+  });
 });
