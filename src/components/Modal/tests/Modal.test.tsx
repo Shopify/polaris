@@ -10,7 +10,8 @@ import {
 } from '../../../../tests/utilities';
 
 import Modal from '../Modal';
-import {Footer} from '../components';
+import {Footer, Dialog} from '../components';
+import Scrollable from '../../Scrollable';
 
 describe('<Modal>', () => {
   beforeEach(() => {
@@ -37,6 +38,105 @@ describe('<Modal>', () => {
       .find('div')
       .first();
     expect(div.exists()).toBe(true);
+  });
+
+  describe('src', () => {
+    it('renders an iframe if src is provided', () => {
+      const modal = mountWithAppProvider(
+        <Modal src="Source" iFrameName="Name" onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      const iframe = modal.find('iframe').first();
+      expect(iframe.exists()).toBe(true);
+      expect(iframe.prop('name')).toEqual('Name');
+      expect(iframe.prop('src')).toEqual('Source');
+
+      const scrollable = modal.find(Scrollable).first();
+      expect(scrollable.exists()).toBe(false);
+    });
+
+    it('renders Scrollable if src is not provided', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      const iframe = modal.find('iframe').first();
+      expect(iframe.exists()).toBe(false);
+
+      const scrollable = modal.find(Scrollable).first();
+      expect(scrollable.exists()).toBe(true);
+      expect(scrollable.prop('shadow')).toBe(true);
+    });
+  });
+
+  describe('instant', () => {
+    it('passes instant to Dialog if true', () => {
+      const modal = mountWithAppProvider(
+        <Modal instant onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('instant')).toBe(true);
+    });
+
+    it('does not pass instant to Dialog be default', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('instant')).toBe(undefined);
+    });
+  });
+
+  describe('large', () => {
+    it('passes large to Dialog if true', () => {
+      const modal = mountWithAppProvider(
+        <Modal large onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('large')).toBe(true);
+    });
+
+    it('does not pass large to Dialog be default', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('large')).toBe(undefined);
+    });
+  });
+
+  describe('limitHeight', () => {
+    it('passes limitHeight to Dialog if true', () => {
+      const modal = mountWithAppProvider(
+        <Modal limitHeight onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('limitHeight')).toBe(true);
+    });
+
+    it('does not pass limitHeight to Dialog be default', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('limitHeight')).toBe(undefined);
+    });
   });
 
   describe('open', () => {
