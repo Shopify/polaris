@@ -9,7 +9,8 @@ $resource-list-variables: (
   bulk-actions-wrapper-stacking-order: 2,
   header-outer-wrapper-stacking-order: 2,
   header-overlay-stacking-order: 4,
-  spinner-stacking-order: 2,
+  spinner-stacking-order: 3,
+  overlay-stacking-order: 2,
   list-stacking-order: 1,
   overlay-background: rgba(color('white'), 0.5),
 );
