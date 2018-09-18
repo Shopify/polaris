@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CSSTransition} from 'react-transition-group';
 import {
   animationFrame,
   mountWithAppProvider,
@@ -28,13 +29,13 @@ describe('<Frame />', () => {
   afterEach(() => {
     animationFrame.restore();
     Object.defineProperty(window, 'innerWidth', {
-      configurable: false,
-      writable: false,
+      configurable: true,
+      writable: true,
       value: defaultWindowWidth,
     });
   });
 
-  it('renders a Navigation with TrapFocus trapping when a navigation is provided and showMobileNavigation is true', () => {
+  it('renders a TrapFocus around the navigation if a navigation is provided on small screen and showMobileNavigation is true', () => {
     Object.defineProperty(window, 'innerWidth', {
       configurable: true,
       writable: true,
@@ -52,18 +53,58 @@ describe('<Frame />', () => {
     expect(trapFocus.prop('trapping')).toBe(true);
   });
 
-  it('does not render a Trapfocus Navigation when a navigation is provided and showMobileNavigation is false', () => {
+  it('does not render TrapFocus around the navigation if a navigation is provided on large screen and even if showMobileNavigation is true', () => {
+    const navigation = <div />;
+    const trapFocus = mountWithAppProvider(
+      <Frame showMobileNavigation navigation={navigation} />,
+    ).find(TrapFocus);
+
+    expect(trapFocus.exists()).toBe(false);
+  });
+
+  it('renders a CSSTransition around the navigation with an `in` prop set to true if a navigation is provided on small screen and showMobileNavigation is true', () => {
     Object.defineProperty(window, 'innerWidth', {
       configurable: true,
       writable: true,
       value: 500,
     });
-    const navigation = <div />;
-    const trapFocus = mountWithAppProvider(
-      <Frame showMobileNavigation={false} navigation={navigation} />,
-    ).find(TrapFocus);
 
-    expect(trapFocus.exists()).toBe(false);
+    const navigation = <div />;
+    const frame = mountWithAppProvider(
+      <Frame showMobileNavigation navigation={navigation} />,
+    ).find(Frame);
+
+    const cssTransition = frame.find(CSSTransition);
+
+    expect(cssTransition.prop('in')).toBe(true);
+  });
+
+  it('renders a CSSTransition around the navigation with an `in` prop set to false if a navigation is provided on small screen and showMobileNavigation is false', () => {
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: 500,
+    });
+
+    const navigation = <div />;
+    const frame = mountWithAppProvider(
+      <Frame showMobileNavigation={false} navigation={navigation} />,
+    ).find(Frame);
+
+    const cssTransition = frame.find(CSSTransition);
+
+    expect(cssTransition.prop('in')).toBe(false);
+  });
+
+  it('does not render a CSSTransition around the navigation if a navigation is provided on large screens even if showMobileNavigation is true', () => {
+    const navigation = <div />;
+    const frame = mountWithAppProvider(
+      <Frame showMobileNavigation navigation={navigation} />,
+    ).find(Frame);
+
+    const cssTransition = frame.find(CSSTransition);
+
+    expect(cssTransition.exists()).toBe(false);
   });
 
   it('renders a skip to content link with the proper text', () => {
