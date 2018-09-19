@@ -9,10 +9,10 @@ export default class Playground extends React.Component<never, State> {
   render() {
     return (
       <AppProvider>
-        <Page title="Playground" />
+        <Page title="Playground">
+          {/* Add the code you want to test here */}
+        </Page>
       </AppProvider>
     );
   }
 }
-
-/* eslint-enable */
