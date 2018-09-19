@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import isEqual from 'lodash/isEqual';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
@@ -108,6 +109,13 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } else {
       this.handleResize();
     }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (isEqual(prevProps, this.props)) {
+      return;
+    }
+    this.handleResize();
   }
 
   render() {
