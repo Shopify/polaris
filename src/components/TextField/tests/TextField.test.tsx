@@ -8,6 +8,9 @@ import {
 import InlineError from '../../InlineError';
 import TextField from '../../TextField';
 import {Resizer} from '../components';
+import Labelled from '../../Labelled';
+import Connected from '../../Connected';
+import Select from '../../Select';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {
@@ -542,6 +545,98 @@ describe('<TextField />', () => {
         />,
       );
       expect(textField.find(Resizer).exists()).toBe(false);
+    });
+  });
+
+  describe('aria labels', () => {
+    it('sets aria labels on the input element', () => {
+      const textField = shallowWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          multiline={false}
+          ariaOwns="Aria owns"
+          ariaActiveDescendant="Aria active descendant"
+          ariaAutocomplete="Aria autocomplete"
+          ariaControls="Aria controls"
+        />,
+      );
+
+      expect(textField.find('input').prop('aria-owns')).toBe('Aria owns');
+      expect(textField.find('input').prop('aria-activedescendant')).toBe(
+        'Aria active descendant',
+      );
+      expect(textField.find('input').prop('aria-autocomplete')).toBe(
+        'Aria autocomplete',
+      );
+      expect(textField.find('input').prop('aria-controls')).toBe(
+        'Aria controls',
+      );
+    });
+  });
+
+  describe('Labelled', () => {
+    it('passes props to Labelled', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          helpText="Help text"
+        />,
+      );
+
+      expect(textField.find(Labelled).length).toEqual(1);
+      expect(textField.find(Labelled).prop('label')).toBe('TextField');
+      expect(textField.find(Labelled).prop('id')).toBe('MyField');
+      expect(textField.find(Labelled).prop('helpText')).toBe('Help text');
+    });
+
+    it('passes error to Labelled', () => {
+      const textField = mountWithAppProvider(
+        <TextField label="TextField" id="MyField" onChange={noop} error />,
+      );
+
+      expect(textField.find(Labelled).prop('error')).toBe(true);
+    });
+
+    it('passes labelHidden to Labelled', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          labelHidden
+        />,
+      );
+
+      expect(textField.find(Labelled).prop('labelHidden')).toBe(true);
+    });
+  });
+
+  describe('Connected', () => {
+    it('passes props to Connected', () => {
+      const connectedLeft = (
+        <Select label="Currency unit" labelHidden options={['$', '€']} />
+      );
+      const connectedRight = (
+        <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+      );
+      const textField = mountWithAppProvider(
+        <TextField
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+          connectedLeft={connectedLeft}
+          connectedRight={connectedRight}
+          prefix
+        />,
+      );
+
+      expect(textField.find(Connected).length).toEqual(1);
+      expect(textField.find(Connected).prop('left')).toEqual(connectedLeft);
+      expect(textField.find(Connected).prop('right')).toEqual(connectedRight);
     });
   });
 });
