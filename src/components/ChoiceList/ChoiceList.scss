@@ -21,6 +21,11 @@ $control-size: rem(16px);
   padding-left: spacing(tight) + $control-size;
 }
 
+.ChoiceError {
+  margin-top: spacing(extra-tight);
+  margin-bottom: spacing(tight);
+}
+
 .Title {
   @include text-style-body;
   display: block;
