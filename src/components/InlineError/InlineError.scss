@@ -1,3 +1,5 @@
+$error-icon-adjustment: rem(2px);
+
 .InlineError {
   display: flex;
   color: color('red', 'dark');
@@ -5,5 +7,6 @@
 
 .Icon {
   @include recolor-icon(color('red'));
-  margin: 0 spacing(extra-tight) 0 -2px;
+  margin-left: -1 * $error-icon-adjustment;
+  margin-right: spacing(extra-tight) + $error-icon-adjustment;
 }
