@@ -69,7 +69,7 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 ### Exception list with icon
 
-Example text
+Use icons to add clarity or assist in visualizing the meaning
 
 ```jsx
 <ExceptionList
