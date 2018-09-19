@@ -2,7 +2,7 @@ import * as React from 'react';
 import {shallowWithAppProvider} from '../../../../tests/utilities';
 
 import Button from '..';
-import UnstyledLink from '../../UnstyledLink';
+import {UnstyledLink, Icon} from '../..';
 
 describe('<Button />', () => {
   describe('onClick()', () => {
@@ -146,6 +146,29 @@ describe('<Button />', () => {
       );
 
       expect(button.find(UnstyledLink).prop('id')).toBe(id);
+    });
+  });
+
+  describe('icon', () => {
+    it("renders an icon if it's a string", () => {
+      const button = shallowWithAppProvider(
+        <Button ariaExpanded icon="delete" />,
+      );
+      expect(button.find(Icon).length).toBe(1);
+    });
+
+    it("renders an icon if it's an SVGSource object", () => {
+      const button = shallowWithAppProvider(
+        <Button ariaExpanded icon={{body: '<SVG />', viewBox: ''}} />,
+      );
+      expect(button.find(Icon).length).toBe(1);
+    });
+
+    it('renders a react node if it is one', () => {
+      const button = shallowWithAppProvider(
+        <Button ariaExpanded icon={<div>Hi there!</div>} />,
+      );
+      expect(button.find('div').text()).toBe('Hi there!');
     });
   });
 });

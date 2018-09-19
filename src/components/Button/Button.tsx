@@ -12,6 +12,8 @@ import * as styles from './Button.scss';
 
 export type Size = 'slim' | 'large';
 
+export type IconSource = IconProps['source'];
+
 export interface Props {
   /** The content to display inside the button */
   children?: string | string[];
@@ -42,7 +44,7 @@ export interface Props {
   /** Forces url to open in a new tab */
   external?: boolean;
   /** Icon to display to the left of the button content */
-  icon?: IconProps['source'];
+  icon?: React.ReactNode | IconSource;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the button controls */
@@ -104,11 +106,14 @@ function Button({
     </span>
   ) : null;
 
-  const iconMarkup = icon ? (
-    <span className={styles.Icon}>
-      <Icon source={loading ? 'placeholder' : icon} />
-    </span>
-  ) : null;
+  const iconMarkup =
+    icon && isIconSource(icon) ? (
+      <span className={styles.Icon}>
+        <Icon source={loading ? 'placeholder' : icon} />
+      </span>
+    ) : (
+      <span className={styles.Icon}>{icon}</span>
+    );
 
   const childMarkup = children ? <span>{children}</span> : null;
 
@@ -181,6 +186,10 @@ function Button({
       {content}
     </button>
   );
+}
+
+function isIconSource(x: any): x is IconSource {
+  return typeof x === 'string' || (typeof x === 'object' && x.body);
 }
 
 export default withAppProvider<Props>()(Button);
