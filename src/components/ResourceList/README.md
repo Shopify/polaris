@@ -456,7 +456,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with item shortcut actions
 
-Shortcut actions are intended to provide quick access to popular actions from the resource’s show page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
+Shortcut actions are intended to provide quick access to popular actions from the resource’s details page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
 
 ```jsx
 <Card>
@@ -506,7 +506,7 @@ Shortcut actions are intended to provide quick access to popular actions from th
 
 ### Resource list with persistent item shortcut actions
 
-Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s show page. Persistent shortcut actions roll up into an overflow menu on small screens.
+Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s details page. Persistent shortcut actions roll up into an overflow menu on small screens.
 
 ```jsx
 <Card>
@@ -572,13 +572,13 @@ The resource list component provides the UI elements for list sorting, filtering
 
 <!-- end -->
 
-View the [case study](#study) for a walkthrough of how to use this component to build an index page for customers.
+View the [case study](#study) for a walkthrough of how to use this component to build an list page for customers.
 
 ---
 
 ## Purpose
 
-Shopify is organized around objects that represent a merchant’s business, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _show page_.
+Shopify is organized around objects that represent a merchant’s business, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _details page_.
 
 ### Problem
 
@@ -590,13 +590,13 @@ Resource lists function as:
 
 - A content format, presenting a set of individual resources in a compact form
 - A system for taking action on one or more individual resources
-- A way to navigate to an individual resource’s show page
+- A way to navigate to an individual resource’s details page
 
-Because a show page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these show pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
+Because a details page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these details pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Schematic showing content from a show page being surfaced on a resource list](resource-list/list-surfacing-show.png)
+![Schematic showing content from a details page being surfaced on a resource list](resource-list/list-surfacing-show.png)
 
 </div>
 
@@ -618,11 +618,11 @@ If your use case is more about visualizing or analyzing data, use the [data tabl
 
 ## Best practices
 
-Resource lists can live in many places in Shopify. You could include a short resource list in a card summarizing recent marketing activities. You could also dedicate an entire page to a resource list like Shopify’s main products index.
+Resource lists can live in many places in Shopify. You could include a short resource list in a card summarizing recent marketing activities. You could also dedicate an entire page to a resource list like Shopify’s main products list.
 
 Resource lists should:
 
-- Have items that perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
+- Have items that perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
 - [Customize the content and layout](#study-custom-item) of their list items to support merchants’ needs.
 - Support [sorting](#study-sorting) if the list can be long, and especially if different merchant tasks benefit from different sort orders.
 - Support [filtering](#study-filtering) if the list can be long.
@@ -679,7 +679,7 @@ Resource lists should:
 
 ## Resource list item
 
-The content of a resource list consists of resource list items. Each item summarizes an individual resource and should link to its show page.
+The content of a resource list consists of resource list items. Each item summarizes an individual resource and should link to its details page.
 
 Because the content of items depends on the type of resource and merchant tasks, resource list items are flexible.
 
@@ -782,7 +782,7 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
 
 #### Item with shortcut actions
 
-Shortcut actions present popular actions from the resource’s show page for easy access.
+Shortcut actions present popular actions from the resource’s details page for easy access.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
@@ -836,7 +836,7 @@ Shortcut actions present popular actions from the resource’s show page for eas
 | Prop                 | Type                       | Description                                                                        |
 | -------------------- | -------------------------- | ---------------------------------------------------------------------------------- |
 | id\*                 | string                     | Unique identifier for the item within the list                                     |
-| url                  | string                     | URL for the resource’s show page (required unless \`onClick\` is provided)         |
+| url                  | string                     | URL for the resource’s details page (required unless \`onClick\` is provided)      |
 | accessibilityLabel\* | string                     | Accessibility label for item link                                                  |
 | ariaControls         | string                     | Id of the element the item onClick controls                                        |
 | ariaExpanded         | string                     | Tells screen reader the controlled element is expanded                             |
@@ -852,14 +852,14 @@ Shortcut actions present popular actions from the resource’s show page for eas
 
 Resource list items should:
 
-- Perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
+- Perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
 - Be tailored to the specific type of resource being displayed.
 - Lay out the content effectively across all screen sizes.
 
 Resource list items can optionally:
 
 - Use [conditional content](#study-custom-item-conditional-content) to help merchants deal with items in unusual states
-- Provide [shortcut actions](#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s show page
+- Provide [shortcut actions](#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s details page
 
 Read the [case study](#study-custom-item) to see how the best practices are applied.
 
@@ -1723,7 +1723,7 @@ Now we can write our styles:
 
 </div>
 
-Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s show page. This is information the merchant took time to write down, and it’s worth surfacing in the list.
+Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s details page. This is information the merchant took time to write down, and it’s worth surfacing in the list.
 
 Unlike a customer’s name, we want to show this customer note only if it’s present. A good way to display conditional content in a resource list item is to use the exception list component (coming soon).
 
@@ -1869,9 +1869,9 @@ We can finish this off with a couple of simple styles:
 
 Occasionally a resource has an action that merchants use a lot. Fulfilling orders is a good example. This action is not only popular, it’s the most important action for open orders.
 
-It makes sense to surface this key action from the show page on each list item, but adding this action to each item would be visually repetitive.
+It makes sense to surface this key action from the details page on each list item, but adding this action to each item would be visually repetitive.
 
-Shortcut actions resolve this. They provide a way to promote popular actions by showing them when the merchant hovers their mouse over a list item. As long as the shortcut action remains available on the resource’s show page, merchants using devices without a mouse can still access them.
+Shortcut actions resolve this. They provide a way to promote popular actions by showing them when the merchant hovers their mouse over a list item. As long as the shortcut action remains available on the resource’s details page, merchants using devices without a mouse can still access them.
 
 Our customer list item can benefit from a shortcut action that lets merchants jump to a customer’s most recent order.
 
@@ -1879,7 +1879,7 @@ Our customer list item can benefit from a shortcut action that lets merchants ju
 
 Shortcut actions on resource list items must:
 
-- Be present on the resource’s show page so they’re accessible without a mouse.
+- Be present on the resource’s details page so they’re accessible without a mouse.
 
 Shortcut actions should:
 

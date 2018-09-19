@@ -385,7 +385,7 @@ The resource list component functions as:
 
 - A content format, presenting a set of individual resources in a compact form
 - A system for taking action on one or more individual resources
-- A way to navigate to the show page of an individual resource
+- A way to navigate to the details page of an individual resource
 
 Our current resource list component gave you some nice defaults out of the box, but didn’t take you much further than that. We recognized that each of these lists is unique and contains different information that is important to the merchant.
 
