@@ -1,6 +1,10 @@
 ---
 name: Range slider
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - RangeSlider
   - input
@@ -137,7 +141,21 @@ class RangeSliderExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Range slider for Android](components/RangeSlider/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Range slider for iOS](components/RangeSlider/ios/default.png)
+
+<!-- /content-for -->
+
 ### More precise range control
+
+<!-- example-for: web -->
 
 For a more precise value, you can define a `min` and `max` range, as well as the amount with which the slider will be incremented.
 
@@ -169,6 +187,8 @@ class RangeSliderExample extends React.Component {
 ```
 
 ### Prefix and suffix elements
+
+<!-- example-for: web -->
 
 Because a range slider can also output a `label` and `helpText`, the height of the overall component can vary. `prefix` and `suffix` props allow you to pass in a React element to be placed before or after the rendered `input`, allowing for perfect vertical alignment and easier stylistic control.
 

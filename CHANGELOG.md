@@ -8,6 +8,20 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.10.0 - 2018-09-18
+
+### Enhancements
+
+- Updated `Button` to accept a `React.ReactNode` for its `icon` prop ([#2245](https://github.com/Shopify/polaris-react/pull/2245))
+
+### Documentation
+
+- Refined accessibility checklist ([#2235](https://github.com/Shopify/polaris-react/pull/2235))
+
+### Bug Fixes
+
+- Added truncation to `Tag` ([#2230](https://github.com/Shopify/polaris-react/pull/2230))
+
 ## 2.9.0 - 2018-09-10
 
 ### Enhancements

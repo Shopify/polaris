@@ -1,6 +1,10 @@
 ---
 name: Date picker
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - DatePicker
   - month
@@ -29,8 +33,8 @@ consistently applied wherever dates need to be selected across Shopify.
 Date pickers should:
 
 - Use smart defaults and highlight common selections (e.g. Today)
-- Close after a single date is selected unless a start and end date is required
-- Set the start date on first click and the end date on second click if a range
+- Close after a single date is selected unless a range with a start and end date is required
+- Set the start date on first click or tap and the end date on second click or tap if a range
   is required
 - Not be used to enter a date that is many years in the future or the past
 
@@ -86,3 +90,15 @@ class DatePickerExample extends React.Component {
   };
 }
 ```
+
+<!-- content-for: android -->
+
+![Date picker on Android](components/DatePicker/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Date picker on iOS](components/DatePicker/ios/default.png)
+
+<!-- /content-for -->
