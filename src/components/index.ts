@@ -33,6 +33,8 @@ export {
 
 export {default as Backdrop, BackdropProps} from './Backdrop';
 
+export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
+
 export {
   default as Button,
   Props as ButtonProps,
