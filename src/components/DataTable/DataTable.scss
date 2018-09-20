@@ -73,7 +73,7 @@ $breakpoint: 768px;
     bottom: 0;
     left: $fixed-column-width;
     display: none;
-    width: 0.6rem;
+    width: rem(6px);
     background: linear-gradient(
       to right,
       rgba(color('black'), 0.12),
