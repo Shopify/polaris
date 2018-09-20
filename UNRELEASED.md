@@ -37,15 +37,16 @@ The contextual save bar tells merchants their options once they have made change
 - Changed `Form` to default the `method` to `post` in order to prevent accidental leaking of form details ([#2066](https://github.com/Shopify/polaris-react/pull/2066))
 - Added support for boolean type on Choice error prop ([#2085](https://github.com/shopify/polaris-react/pull/2085))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#2226](https://github.com/Shopify/polaris-react/pull/2226))
+- Added `onPortalCreated` prop to `Portal` ([#2294](https://github.com/Shopify/polaris-react/pull/2294))
 
 ## Bug fixes
 
-- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount` ([#2243](https://github.com/Shopify/polaris-react/pull/2243));
 - Fixed console error and used new ref syntax in `DataTable` ([#2196](https://github.com/Shopify/polaris-react/pull/2196)) (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
 
 ## Breaking changes
 
 - Added padding top and bottom on `Card.Section` when set to full width ([#2280](https://github.com/Shopify/polaris-react/pull/2280))
+- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount` ([#2243](https://github.com/Shopify/polaris-react/pull/2243));
 
 ### Documentation
 

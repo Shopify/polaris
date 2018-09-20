@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {createPortal} from 'react-dom';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 
 export interface Props {
   children?: React.ReactNode;
   idPrefix?: string;
+  onPortalCreated?(): void;
 }
 
 export interface State {
@@ -30,6 +31,13 @@ export default class Portal extends React.PureComponent<Props, State> {
     this.portalNode.setAttribute('data-portal-id', this.portalId);
     document.body.appendChild(this.portalNode);
     this.setState({isMounted: true});
+  }
+
+  componentDidUpdate(_: Props, prevState: State) {
+    const {onPortalCreated = noop} = this.props;
+    if (!prevState.isMounted && this.state.isMounted) {
+      onPortalCreated();
+    }
   }
 
   componentWillUnmount() {
