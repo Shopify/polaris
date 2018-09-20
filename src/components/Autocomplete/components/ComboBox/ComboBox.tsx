@@ -13,7 +13,6 @@ import {ActionListItemDescriptor, Keys} from '../../../../types';
 import {contextTypes} from '../types';
 import {TextField} from './components';
 import KeypressListener from '../../../KeypressListener';
-// import EventListener from '../../../EventListener';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
