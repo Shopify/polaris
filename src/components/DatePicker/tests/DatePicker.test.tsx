@@ -119,7 +119,7 @@ describe('<DatePicker />', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={3} year={2018} />,
       );
-      const dateObject = new Date('2018-04-01T00:00:00.000Z');
+      const dateObject = new Date('2018-04-01T00:00:00');
       datePicker
         .find(Day)
         .first()
