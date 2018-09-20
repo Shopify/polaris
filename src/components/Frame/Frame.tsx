@@ -46,7 +46,7 @@ export interface State {
   globalRibbonHeight: number;
   loadingStack: number;
   toastMessages: (ToastProps & {id: string})[];
-  contextualSaveBar: ContextualSaveBarProps | null;
+  showContextualSaveBar: boolean;
 }
 
 export const GLOBAL_RIBBON_CUSTOM_PROPERTY = '--global-ribbon-height';
@@ -65,9 +65,11 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     globalRibbonHeight: 0,
     loadingStack: 0,
     toastMessages: [],
-    contextualSaveBar: null,
     mobileView: isMobileView(),
+    showContextualSaveBar: false,
   };
+
+  private contextualSaveBar: ContextualSaveBarProps | null;
 
   private globalRibbonContainer: HTMLDivElement | null = null;
 
@@ -99,7 +101,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       skipFocused,
       loadingStack,
       toastMessages,
-      contextualSaveBar,
+      showContextualSaveBar,
       mobileView,
     } = this.state;
     const {
@@ -122,6 +124,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       <NavWrapper
         showMobileNavigation={showMobileNavigation}
         mobileView={mobileView}
+        testID="NavWrapper"
       >
         <div
           className={navClassName}
@@ -152,15 +155,20 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         </div>
       ) : null;
 
-    const contextualSaveBarClassName = classNames(
-      styles.ContextualSaveBar,
-      contextualSaveBar && styles['ContextualSaveBar-visible'],
-    );
-
-    const contextualSaveBarMarkup = contextualSaveBar && (
-      <div className={contextualSaveBarClassName}>
-        <ContextualSaveBar {...contextualSaveBar} />
-      </div>
+    const contextualSaveBarMarkup = (
+      <CSSTransition
+        appear
+        exit
+        in={showContextualSaveBar}
+        timeout={300}
+        classNames={contextualSaveBarTransitionClasses}
+        mountOnEnter
+        unmountOnExit
+      >
+        <div className={styles.ContextualSaveBar}>
+          <ContextualSaveBar {...this.contextualSaveBar} />
+        </div>
+      </CSSTransition>
     );
 
     const topBarMarkup = topBar ? (
@@ -177,7 +185,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     const globalRibbonMarkup = globalRibbon ? (
       <div
         className={styles.GlobalRibbonContainer}
-        testID="GlobalRibbonContainer"
         ref={this.setGlobalRibbonContainer}
       >
         {globalRibbon}
@@ -239,9 +246,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           id={APP_FRAME_MAIN}
           data-has-global-ribbon={Boolean(globalRibbon)}
         >
-          <div testID="FrameContentStyles" className={styles.Content}>
-            {children}
-          </div>
+          <div className={styles.Content}>{children}</div>
         </main>
         <ToastManager toastMessages={toastMessages} />
         {globalRibbonMarkup}
@@ -294,12 +299,19 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private setContextualSaveBar(props: ContextualSaveBarProps) {
-    this.setState({contextualSaveBar: {...props}});
+    const {showContextualSaveBar} = this.state;
+    this.contextualSaveBar = {...props};
+    if (showContextualSaveBar === true) {
+      this.forceUpdate();
+    } else {
+      this.setState({showContextualSaveBar: true});
+    }
   }
 
   @autobind
   private removeContextualSaveBar() {
-    this.setState({contextualSaveBar: null});
+    this.contextualSaveBar = null;
+    this.setState({showContextualSaveBar: false});
   }
 
   @autobind
@@ -395,6 +407,14 @@ const navTransitionClasses = {
   enterDone: classNames(styles['Navigation-enterActive']),
   exit: classNames(styles['Navigation-exit']),
   exitActive: classNames(styles['Navigation-exitActive']),
+};
+
+const contextualSaveBarTransitionClasses = {
+  enter: classNames(styles['ContextualSaveBar-enter']),
+  enterActive: classNames(styles['ContextualSaveBar-enterActive']),
+  enterDone: classNames(styles['ContextualSaveBar-enterActive']),
+  exit: classNames(styles['ContextualSaveBar-exit']),
+  exitActive: classNames(styles['ContextualSaveBar-exitActive']),
 };
 
 function focusAppFrameMain() {

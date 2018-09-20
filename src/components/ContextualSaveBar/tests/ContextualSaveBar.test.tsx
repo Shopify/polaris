@@ -11,41 +11,47 @@ describe('<ContextualSaveBar />', () => {
     message: 'Unsaved changes',
   };
 
-  it('sets the contextual save bar on mount when visible with correct values', () => {
-    const {frame} = mountWithContext(<ContextualSaveBar {...props} visible />);
+  it('calls the contextual save bar on mount with correct values', () => {
+    const {frame} = mountWithContext(<ContextualSaveBar {...props} />);
     expect(frame.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
-      visible: true,
     });
-  });
-
-  it('sets the contextual save bar when visible is set to true', () => {
-    const {frame, contextualSaveBar} = mountWithContext(
-      <ContextualSaveBar {...props} visible={false} />,
-    );
-    contextualSaveBar.setProps({visible: true});
-    expect(frame.setContextualSaveBar).toHaveBeenCalledWith({
-      ...props,
-      visible: true,
-    });
-  });
-
-  it('removes the contextual save bar on mount when visible is false', () => {
-    const {frame, contextualSaveBar} = mountWithContext(
-      <ContextualSaveBar {...props} visible />,
-    );
-    contextualSaveBar.setProps({visible: false});
-    expect(frame.removeContextualSaveBar).toHaveBeenCalledWith();
   });
 
   it('removes the contextual save bar on unmount', () => {
     const {contextualSaveBar, frame} = mountWithContext(
-      <ContextualSaveBar {...props} visible />,
+      <ContextualSaveBar {...props} />,
     );
     expect(frame.removeContextualSaveBar).not.toHaveBeenCalled();
     contextualSaveBar.unmount();
-
     expect(frame.removeContextualSaveBar).toHaveBeenCalled();
+  });
+
+  it("calls the contextual save bar with correct values if it's props change after it mounted", () => {
+    const {frame, contextualSaveBar} = mountWithContext(
+      <ContextualSaveBar {...props} />,
+    );
+    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
+    const newProps = {
+      saveAction: {content: 'Save', onAction: noop, loading: true},
+      discardAction: {content: 'Discard', onAction: noop},
+      message: 'Unsaved changes',
+    };
+    contextualSaveBar.setProps({...newProps});
+    expect(frame.setContextualSaveBar).toHaveBeenCalledWith({
+      ...newProps,
+    });
+    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(2);
+  });
+
+  it("doesnt call the contextual save bar if it's props remain unchanged after it mounted", () => {
+    const {frame, contextualSaveBar} = mountWithContext(
+      <ContextualSaveBar {...props} />,
+    );
+    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
+    const newProps = {...props};
+    contextualSaveBar.setProps({...newProps});
+    expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
   });
 });
 

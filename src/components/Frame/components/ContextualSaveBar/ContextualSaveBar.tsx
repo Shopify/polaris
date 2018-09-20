@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Button, Image, Stack, ContextualSaveBarProps} from '../../..';
 import {DiscardConfirmationModal} from './components';
@@ -26,7 +25,6 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
 
     const {
       message,
-      visible,
       discardAction,
       saveAction,
       polaris: {
@@ -34,11 +32,6 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
         intl,
       },
     } = this.props;
-
-    const className = classNames(
-      styles.ContextualSaveBar,
-      visible && styles.visible,
-    );
 
     const discardActionContent =
       discardAction && discardAction.content
@@ -104,7 +97,7 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
 
     return (
       <React.Fragment>
-        <div className={className}>
+        <div className={styles.ContextualSaveBar}>
           <div className={styles.LogoContainer} style={{width}}>
             {imageMarkup}
           </div>
