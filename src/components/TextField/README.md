@@ -174,7 +174,7 @@ Use to allow merchants to provide text input when the expected input is short. F
 ```jsx
 class TextFieldExample extends React.Component {
   state = {
-    value: '',
+    value: 'Jaded Pixel',
   };
 
   handleChange = (value) => {
@@ -255,7 +255,7 @@ Use when the text input should be an email address.
 ```jsx
 class EmailFieldExample extends React.Component {
   state = {
-    value: '',
+    value: 'bernadette.lapresse@jadedpixel.com',
   };
 
   handleChange = (value) => {
@@ -298,7 +298,7 @@ Use when the expected input could be more than one line. The field will automati
 ```jsx
 class MultilineFieldExample extends React.Component {
   state = {
-    value: '',
+    value: '1776 Barnes Street\nOrlando, FL 32801',
   };
 
   handleChange = (value) => {
@@ -393,7 +393,7 @@ Use when an optional, secondary action is closely associated with a text field. 
 ```jsx
 class LabelActionExample extends React.Component {
   state = {
-    value: '',
+    value: '6201.11.0000',
   };
 
   handleChange = (value) => {
@@ -459,7 +459,7 @@ Use to show short instructional content below the text field. Use especially whe
 ```jsx
 class HelpTextExample extends React.Component {
   state = {
-    value: '',
+    value: 'bernadette.lapresse@jadedpixel.com',
   };
 
   handleChange = (value) => {
@@ -502,7 +502,7 @@ Use as a special form of help text that works best inline.
 ```jsx
 class PrefixExample extends React.Component {
   state = {
-    value: '',
+    value: '2.00',
   };
 
   handleChange = (value) => {
@@ -548,7 +548,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 ```jsx
 class ConnectedFieldsExample extends React.Component {
   state = {
-    value: '',
+    value: '10.6',
   };
 
   handleChange = (value) => {
