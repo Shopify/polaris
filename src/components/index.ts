@@ -24,6 +24,8 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
+export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
+
 export {
   default as Button,
   Props as ButtonProps,
