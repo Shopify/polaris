@@ -6,6 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed the ability to upload multiple files even when `allowedMultiple` prop is false ([#2297](https://github.com/Shopify/polaris-react/pull/2297))
 - Fixed `Datatable` so it resizes with new content ([#2285](https://github.com/Shopify/polaris-react/pull/2285)) (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/387))
 - Fixed `RangeSlider` linear-gradient so it doesn't break the css build ([#2418](https://github.com/Shopify/polaris-react/pull/2418)) (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/441))
 

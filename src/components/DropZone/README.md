@@ -115,9 +115,11 @@ class DropZoneExample extends React.Component {
 
     return (
       <DropZone
-        onDrop={(files) => {
-          this.setState({files: [...this.state.files, ...files]});
-        }}
+        onDrop={
+          (files, acceptedFiles, rejectedFiles) => {
+            this.setState({files: [...this.state.files, ...acceptedFiles]});
+          })
+        }
       >
         {uploadedFiles}
         {fileUpload}
