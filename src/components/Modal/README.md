@@ -199,7 +199,7 @@ Use as the default option for a modal.
 ```jsx
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   render() {
@@ -252,7 +252,7 @@ const DISCOUNT_LINK = 'https://polaris.shopify.com/';
 
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   node = null;
@@ -357,7 +357,7 @@ const CSV_PLAIN = 'csv_plain';
 
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
     selectedExport: [],
     selectedExportAs: [],
   };
@@ -458,7 +458,7 @@ Use when you need to increase the width of your modal.
 ```jsx
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
     checked: false,
   };
 
