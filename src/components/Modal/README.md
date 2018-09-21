@@ -516,6 +516,58 @@ class ModalExample extends React.Component {
 }
 ```
 
+### Modal without a title
+
+<!-- example-for: web -->
+
+We recommend you add a title to your modal, but you may leave it blank.
+
+```jsx
+class ModalExample extends React.Component {
+  state = {
+    active: true,
+  };
+
+  render() {
+    const {active} = this.state;
+
+    return (
+      <div style={{height: '500px'}}>
+        <Button onClick={this.handleChange}>Open</Button>
+        <Modal
+          open={active}
+          onClose={this.handleChange}
+          primaryAction={{
+            content: 'Add Instagram',
+            onAction: this.handleChange,
+          }}
+          secondaryActions={[
+            {
+              content: 'Learn more',
+              onAction: this.handleChange,
+            },
+          ]}
+        >
+          <Modal.Section>
+            <TextContainer>
+              <p>
+                Use Instagram posts to share your products with millions of
+                people. Let shoppers buy from your store without leaving
+                Instagram.
+              </p>
+            </TextContainer>
+          </Modal.Section>
+        </Modal>
+      </div>
+    );
+  }
+
+  handleChange = () => {
+    this.setState(({active}) => ({active: !active}));
+  };
+}
+```
+
 ### Warning modal
 
 <!-- example-for: android, ios -->
