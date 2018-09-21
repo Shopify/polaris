@@ -4,6 +4,7 @@ $skip-vertical-offset: rem(10px);
 .Frame {
   width: 100%;
   height: 100%;
+  display: flex;
   background: color('sky', 'light');
 }
 
@@ -108,8 +109,8 @@ $skip-vertical-offset: rem(10px);
 }
 
 .Main {
-  display: block;
-  height: 100%;
+  flex: 1;
+  display: flex;
 
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-left, 0, left);
@@ -124,15 +125,14 @@ $skip-vertical-offset: rem(10px);
 
   .hasTopBar & {
     @include when-not-printing {
-      height: calc(100% - #{top-bar-height()});
       padding-top: top-bar-height();
     }
   }
 }
 
 .Content {
-  min-height: 100%;
   padding-bottom: var(--global-ribbon-height, 0);
+  flex: 1;
 }
 
 .GlobalRibbonContainer {
