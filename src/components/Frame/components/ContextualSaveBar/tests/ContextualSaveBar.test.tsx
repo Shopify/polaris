@@ -11,10 +11,6 @@ import {polarisAppProviderContextTypes} from '../../../../AppProvider';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
-  const defaultProps = {
-    visible: true,
-  };
-
   describe('discardAction', () => {
     it('renders a button with the discardAction details', () => {
       const discardAction = {
@@ -23,7 +19,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+        <ContextualSaveBar discardAction={discardAction} />,
       );
 
       const button = contextualSaveBar.find(Button);
@@ -39,7 +35,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+        <ContextualSaveBar discardAction={discardAction} />,
       );
 
       contextualSaveBar.find(Button).simulate('click');
@@ -54,7 +50,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+        <ContextualSaveBar discardAction={discardAction} />,
       );
 
       contextualSaveBar.find(Button).simulate('click');
@@ -69,7 +65,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+        <ContextualSaveBar discardAction={discardAction} />,
       );
 
       contextualSaveBar.find(Button).simulate('click');
@@ -86,7 +82,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar saveAction={saveAction} {...defaultProps} />,
+        <ContextualSaveBar saveAction={saveAction} />,
       );
 
       const button = contextualSaveBar.find(Button);
@@ -102,7 +98,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar discardAction={discardAction} {...defaultProps} />,
+        <ContextualSaveBar discardAction={discardAction} />,
       );
 
       const discardButton = contextualSaveBar.find(Button);
@@ -115,7 +111,7 @@ describe('<ContextualSaveBar />', () => {
       };
 
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar saveAction={saveAction} {...defaultProps} />,
+        <ContextualSaveBar saveAction={saveAction} />,
       );
 
       const commitButton = contextualSaveBar.find(Button);
@@ -126,7 +122,7 @@ describe('<ContextualSaveBar />', () => {
   describe('logo', () => {
     it('will render an image with the contextual save bar source', () => {
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar {...defaultProps} />,
+        <ContextualSaveBar />,
         addPolarisContext({
           logo: {
             width: 200,
@@ -143,7 +139,7 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render an image with the width provided', () => {
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar {...defaultProps} />,
+        <ContextualSaveBar />,
         addPolarisContext({
           logo: {
             width: 200,
@@ -161,7 +157,7 @@ describe('<ContextualSaveBar />', () => {
 
     it('will render the image with a default width if 0 is provided', () => {
       const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar {...defaultProps} />,
+        <ContextualSaveBar />,
         addPolarisContext({
           logo: {
             contextualSaveBarSource: './assets/monochrome_shopify.svg',

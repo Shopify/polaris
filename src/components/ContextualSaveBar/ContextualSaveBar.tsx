@@ -23,8 +23,6 @@ interface DiscardActionProps {
 type CombinedActionProps = DiscardActionProps & Action;
 
 export interface Props {
-  /** A boolean property indicating  whether the contextual save bar is currently visible */
-  visible: boolean;
   /** Accepts a string of content that will be rendered to the left of the actions */
   message?: string;
   /** Save or commit contextual save bar action with text defaulting to 'Save' */
@@ -38,11 +36,7 @@ class ContextualSaveBar extends React.PureComponent<Props, never> {
   context: FrameContext;
 
   componentDidMount() {
-    if (this.props.visible) {
-      this.context.frame.setContextualSaveBar(this.props);
-    } else {
-      this.context.frame.removeContextualSaveBar();
-    }
+    this.context.frame.setContextualSaveBar(this.props);
   }
 
   componentWillUnmount() {
@@ -50,13 +44,6 @@ class ContextualSaveBar extends React.PureComponent<Props, never> {
   }
 
   componentDidUpdate(oldProps: Props) {
-    const {visible} = this.props;
-
-    if (!visible && oldProps.visible) {
-      this.context.frame.removeContextualSaveBar();
-      return;
-    }
-
     if (contextualSaveBarHasChanged(this.props, oldProps)) {
       this.context.frame.setContextualSaveBar(this.props);
     }
@@ -68,17 +55,15 @@ class ContextualSaveBar extends React.PureComponent<Props, never> {
 }
 
 function contextualSaveBarHasChanged(
-  {visible, message, saveAction, discardAction}: Props,
+  {message, saveAction, discardAction}: Props,
   {
-    visible: oldVisible,
     message: oldMessage,
     saveAction: oldsaveAction,
     discardAction: oldDiscardAction,
   }: Props,
 ) {
   return Boolean(
-    (visible && !oldVisible) ||
-      message !== oldMessage ||
+    message !== oldMessage ||
       !isEqual(saveAction, oldsaveAction) ||
       !isEqual(discardAction, oldDiscardAction),
   );

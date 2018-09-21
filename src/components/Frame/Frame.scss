@@ -91,11 +91,20 @@ $skip-vertical-offset: rem(10px);
   top: 0;
   left: 0;
   width: 100%;
-  pointer-events: none;
 }
-
-.ContextualSaveBar-visible {
-  pointer-events: initial;
+.ContextualSaveBar-enter {
+  opacity: 0;
+}
+.ContextualSaveBar-enterActive {
+  opacity: 1;
+  transition: opacity duration() ease;
+}
+.ContextualSaveBar-exit {
+  opacity: 1;
+}
+.ContextualSaveBar-exitActive {
+  opacity: 0;
+  transition: opacity duration() ease;
 }
 
 .Main {

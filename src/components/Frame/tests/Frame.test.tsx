@@ -4,10 +4,19 @@ import {
   animationFrame,
   mountWithAppProvider,
   documentHasStyle,
+  findByTestID,
 } from '../../../../tests/utilities';
 import {TrapFocus} from '../../Focus';
 import Frame from '../Frame';
 import Button from '../../Button';
+import {
+  ContextualSaveBar as FrameContextualSavebar,
+  Loading as FrameLoading,
+} from '../components';
+import {
+  ContextualSaveBar as PolarisContextualSavebar,
+  Loading as PolarisLoading,
+} from '../..';
 
 window.matchMedia =
   window.matchMedia ||
@@ -74,7 +83,8 @@ describe('<Frame />', () => {
       <Frame showMobileNavigation navigation={navigation} />,
     ).find(Frame);
 
-    const cssTransition = frame.find(CSSTransition);
+    const nav = findByTestID(frame, 'NavWrapper');
+    const cssTransition = nav.find(CSSTransition);
 
     expect(cssTransition.prop('in')).toBe(true);
   });
@@ -91,7 +101,8 @@ describe('<Frame />', () => {
       <Frame showMobileNavigation={false} navigation={navigation} />,
     ).find(Frame);
 
-    const cssTransition = frame.find(CSSTransition);
+    const nav = findByTestID(frame, 'NavWrapper');
+    const cssTransition = nav.find(CSSTransition);
 
     expect(cssTransition.prop('in')).toBe(false);
   });
@@ -102,7 +113,8 @@ describe('<Frame />', () => {
       <Frame showMobileNavigation navigation={navigation} />,
     ).find(Frame);
 
-    const cssTransition = frame.find(CSSTransition);
+    const nav = findByTestID(frame, 'NavWrapper');
+    const cssTransition = nav.find(CSSTransition);
 
     expect(cssTransition.exists()).toBe(false);
   });
@@ -148,5 +160,23 @@ describe('<Frame />', () => {
     const frame = mountWithAppProvider(<Frame />);
     frame.setProps({globalRibbon: <div />});
     expect(documentHasStyle('GlobalRibbonHeight', '0px')).toBe(true);
+  });
+
+  it('should render a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisContextualSavebar />
+      </Frame>,
+    );
+    expect(frame.find(FrameContextualSavebar).exists()).toBe(true);
+  });
+
+  it('should render a Frame Loading if Polaris Loading is rendered', () => {
+    const frame = mountWithAppProvider(
+      <Frame>
+        <PolarisLoading />
+      </Frame>,
+    );
+    expect(frame.find(FrameLoading).exists()).toBe(true);
   });
 });

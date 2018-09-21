@@ -7,9 +7,6 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: top-bar-height();
   background-color: color('white');
   box-shadow: $shadow;
-  opacity: 0;
-  will-change: opacity;
-  transition: opacity duration() easing();
 
   &::after {
     content: '';
@@ -18,10 +15,6 @@ $shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     border-bottom: 1px solid transparent;
   }
-}
-
-.visible {
-  opacity: 1;
 }
 
 .LogoContainer {
