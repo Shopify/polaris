@@ -87,7 +87,6 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 >
   <Frame>
     <ContextualSaveBar
-      visible
       message="Unsaved changes"
       saveAction={{
         onAction: () => console.log('add form submit logic'),
@@ -117,7 +116,6 @@ Use the save action to provide an opportunity to save a newly-created resource. 
 >
   <Frame>
     <ContextualSaveBar
-      visible
       message="Unsaved product"
       saveAction={{
         onAction: () => console.log('add form submit logic'),

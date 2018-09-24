@@ -105,9 +105,8 @@ class FrameExample extends React.Component {
       />
     );
 
-    const contextualSaveBarMarkup = (
+    const contextualSaveBarMarkup = isDirty ? (
       <ContextualSaveBar
-        visible={isDirty}
         message="Unsaved changes"
         saveAction={{
           onAction: this.handleSave,
@@ -116,7 +115,7 @@ class FrameExample extends React.Component {
           onAction: this.handleDiscard,
         }}
       />
-    );
+    ) : null;
 
     const userMenuMarkup = (
       <TopBar.UserMenu
