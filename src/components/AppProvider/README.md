@@ -222,9 +222,8 @@ class ProviderThemeExample extends React.Component {
       </Page>
     );
 
-    const contextualSaveBarMarkup = (
+    const contextualSaveBarMarkup = isDirty ? (
       <ContextualSaveBar
-        visible={isDirty}
         message="Unsaved changes"
         saveAction={{
           onAction: this.toggleState('isDirty'),
@@ -233,7 +232,7 @@ class ProviderThemeExample extends React.Component {
           onAction: this.toggleState('isDirty'),
         }}
       />
-    );
+    ) : null;
 
     return (
       <div style={{height: '250px'}}>
@@ -314,9 +313,8 @@ class ProviderThemeExample extends React.Component {
       </Page>
     );
 
-    const contextualSaveBarMarkup = (
+    const contextualSaveBarMarkup = isDirty ? (
       <ContextualSaveBar
-        visible={isDirty}
         message="Unsaved changes"
         saveAction={{
           onAction: this.toggleState('isDirty'),
@@ -325,7 +323,7 @@ class ProviderThemeExample extends React.Component {
           onAction: this.toggleState('isDirty'),
         }}
       />
-    );
+    ) : null;
 
     return (
       <div style={{height: '250px'}}>
