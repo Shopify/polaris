@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Replaced hardcoded `rem` values with globally scalable ones on DataTable’s collapsed shadow, and TextStyle code blocks ([#2293](https://github.com/Shopify/polaris-react/pull/2293))
 - Fixed spacing of numbered `List` for double digits ([#121](https://github.com/Shopify/polaris-ux/issues/121))
 - Fixed progress bar not showing up in Windows high contrast mode ([#1708](https://github.com/Shopify/polaris-react/issues/1708))
+- Top aligned all cells in `DataTable` ([#2278](https://github.com/Shopify/polaris-react/pull/2278))
 
 ### Documentation
 
