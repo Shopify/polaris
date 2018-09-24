@@ -107,6 +107,8 @@ Add the appropriate classes to your HTML elements:
 <button class="Polaris-Button">Example button</button>
 ```
 
+Note if you’re using CSS-only you’ll need to provide your own JavaScript.
+
 ---
 
 ## Using embedded components
