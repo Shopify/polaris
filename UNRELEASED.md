@@ -16,3 +16,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Made Modal examples show the modal dialog by default ([#2303](https://github.com/Shopify/polaris-react/pull/2303))
+- Changed fitted tabs to have equal width when enough space is present ([#2314](https://github.com/Shopify/polaris-react/issues/2314))
