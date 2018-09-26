@@ -112,7 +112,7 @@ $skip-vertical-offset: rem(10px);
   flex: 1;
   display: flex;
   align-items: stretch;
-
+  @include layout-flex-fix;
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-left, 0, left);
   @include safe-area-for(padding-bottom, 0, bottom);
@@ -134,6 +134,7 @@ $skip-vertical-offset: rem(10px);
 .Content {
   padding-bottom: var(--global-ribbon-height, 0);
   flex: 1;
+  @include layout-flex-fix;
 }
 
 .GlobalRibbonContainer {
