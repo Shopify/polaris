@@ -1,14 +1,11 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
-import {
-  mountWithAppProvider,
-  documentHasStyle,
-} from '../../../../tests/utilities';
+import {mountWithAppProvider} from '../../../../tests/utilities';
 import ThemeProvider from '../ThemeProvider';
 import {THEME_CONTEXT_TYPES} from '../types';
 
 describe('<ThemeProvider />', () => {
-  it('onRemove gets called when remove button is clicked', () => {
+  it('mounts', () => {
     const themeProvider = mountWithAppProvider(
       <ThemeProvider theme={{logo: null}}>
         <p>Hello</p>
@@ -68,41 +65,36 @@ describe('<ThemeProvider />', () => {
     expect(typeof unsubscribe === 'function').toBe(true);
   });
 
-  it('sets the child node correctly', () => {
-    const themeProvider = mountWithAppProvider(
-      <ThemeProvider
-        theme={{
-          colors: {
-            topBar: {
-              background: '#051',
-            },
-          },
-        }}
-      >
-        <div>Hello</div>
+  it('has a default theme', () => {
+    const wrapper = mountWithAppProvider(
+      <ThemeProvider theme={{}}>
+        <p />
       </ThemeProvider>,
     );
-    const child = themeProvider.find('div').getDOMNode();
-    const style =
-      child instanceof HTMLElement && (child.style as any).TopBarBackground;
-    expect(style).toBe('#051');
+
+    expect(wrapper.find('div').props().style).toBeDefined();
   });
 
-  it('sets the root node correctly with the useRoot prop', () => {
-    mountWithAppProvider(
+  it('sets a provided theme', () => {
+    const wrapper = mountWithAppProvider(
       <ThemeProvider
-        useRoot
         theme={{
           colors: {
             topBar: {
-              background: '#051',
+              background: '#108043',
             },
           },
         }}
       >
-        <div>Hello</div>
+        <p />
       </ThemeProvider>,
     );
-    expect(documentHasStyle('TopBarBackground', '#051')).toBe(true);
+
+    expect(wrapper.find('div').props().style).toEqual({
+      '--top-bar-background': '#108043',
+      '--top-bar-background-darker': 'hsl(147, 83%, 23.000000000000004%, 1)',
+      '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
+      '--top-bar-color': 'rgb(255, 255, 255)',
+    });
   });
 });
