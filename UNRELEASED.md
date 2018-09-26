@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed progress bar not showing up in Windows high contrast mode ([#1708](https://github.com/Shopify/polaris-react/issues/1708))
 - Top aligned all cells in `DataTable` ([#2278](https://github.com/Shopify/polaris-react/pull/2278))
 - Fixed stacking order of loading overlay in `ResourceList` ([#2258](https://github.com/Shopify/polaris-react/pull/2258))
+- Fixed form inputs in `Popover` that were disappearing instead of top aligning ([#2326](https://github.com/Shopify/polaris-react/pull/2326)) thanks to [@mbaumbach](https://github.com/mbaumbach) for the [original issue](https://github.com/Shopify/polaris/issues/435)
 
 ### Documentation
 
