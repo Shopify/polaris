@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {setColors} from './utils';
@@ -8,18 +7,26 @@ import {Theme, ThemeContext, THEME_CONTEXT_TYPES} from './types';
 export interface Props {
   /** Custom logos and colors provided to select components */
   theme: Theme;
-  useRoot?: boolean;
+  /** The content to display */
+  children?: React.ReactNode;
 }
 
 export interface Context {
   polarisTheme?: ThemeContext;
 }
 
+const defaultTheme = {
+  '--top-bar-background': '#00848e',
+  '--top-bar-color': '#f9fafb',
+  '--top-bar-background-darker': '#006d74',
+  '--top-bar-background-lighter': '#1d9ba4',
+};
+
 export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTEXT_TYPES;
   public themeContext: Context;
-  private childNode: Element | null;
   private subscriptions: {(): void}[] = [];
+  private colors: string[][] | undefined;
 
   constructor(props: Props) {
     super(props);
@@ -29,12 +36,8 @@ export default class ThemeProvider extends React.Component<Props> {
       this.subscribe,
       this.unsubscribe,
     );
-  }
 
-  componentDidMount() {
-    const {useRoot, theme} = this.props;
-    this.childNode = useRoot ? null : setChildNode(this);
-    setColors(theme, this.childNode);
+    this.colors = setColors(props.theme);
   }
 
   componentWillReceiveProps({theme}: Props) {
@@ -49,7 +52,7 @@ export default class ThemeProvider extends React.Component<Props> {
     );
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-    setColors(theme, this.childNode);
+    this.colors = setColors(theme);
   }
 
   getChildContext() {
@@ -57,7 +60,9 @@ export default class ThemeProvider extends React.Component<Props> {
   }
 
   render() {
-    return React.Children.only(this.props.children);
+    const styles = this.createStyles() || defaultTheme;
+
+    return <div style={styles}>{React.Children.only(this.props.children)}</div>;
   }
 
   @autobind
@@ -71,6 +76,15 @@ export default class ThemeProvider extends React.Component<Props> {
       (subscription) => subscription !== callback,
     );
   }
+
+  createStyles() {
+    return this.colors
+      ? this.colors.reduce(
+          (state, [key, value]) => ({...state, [key]: value}),
+          {},
+        )
+      : null;
+  }
 }
 
 function setThemeContext(
@@ -80,13 +94,4 @@ function setThemeContext(
 ): Context {
   const {colors, logo = null, ...rest} = ctx;
   return {polarisTheme: {logo, subscribe, unsubscribe, ...rest}};
-}
-
-function setChildNode(instance: any) {
-  let childNode = findDOMNode(instance);
-  if (childNode instanceof Text) {
-    childNode = null;
-  }
-
-  return childNode;
 }
