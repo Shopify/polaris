@@ -10,9 +10,6 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
-  "engines": {
-    "yarn": "<1.10.0"
-  },
   "publishConfig": {
     "access": "public"
   },
