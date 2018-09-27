@@ -108,7 +108,7 @@ export default class AppProvider extends React.Component<Props> {
   render() {
     const {theme = {logo: null}} = this.props;
     return (
-      <ThemeProvider theme={theme} useRoot>
+      <ThemeProvider theme={theme}>
         {React.Children.only(this.props.children)}
       </ThemeProvider>
     );

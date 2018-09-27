@@ -14,7 +14,6 @@ import {
   createLightColor,
 } from '../../../utilities/color-manipulation';
 import {compose} from '../../../utilities/compose';
-import {setRootProperty} from '../../../utilities/setRootProperty';
 
 import {Context as ThemeProviderContext} from '../ThemeProvider';
 import {
@@ -25,20 +24,23 @@ import {
   ThemeContext,
 } from '../types';
 
-export function setColors(theme: Theme | undefined, node: Element | null) {
+export function setColors(theme: Theme | undefined): string[][] | undefined {
+  let colorPairs;
   if (theme && theme.colors) {
     Object.entries(theme.colors).forEach(([colorKey, pairs]) => {
       const colorKeys = Object.keys(pairs);
       if (colorKey === 'topBar' && colorKeys.length > 1) {
-        colorKeys.forEach((key: string) => {
+        colorPairs = colorKeys.map((key: string) => {
           const colors = (theme.colors as ThemeColors).topBar;
-          setRootProperty(constructColorName(colorKey, key), colors[key], node);
+          return [constructColorName(colorKey, key), colors[key]];
         });
       } else {
-        parseColors([colorKey, pairs], node);
+        colorPairs = parseColors([colorKey, pairs]);
       }
     });
   }
+
+  return colorPairs;
 }
 
 export function needsVariant(name: string) {
@@ -66,14 +68,12 @@ const lightenToString: (
 export function setTextColor(
   name: string,
   variant: ThemeVariant = 'dark',
-  node: Element | null,
-) {
+): string[] {
   if (variant === 'light') {
-    setRootProperty(name, tokens.colorInkBase, node);
-    return;
+    return [name, tokens.colorInkBase];
   }
 
-  setRootProperty(name, tokens.colorWhiteBase, node);
+  return [name, tokens.colorWhiteBase];
 }
 
 export function setTheme(
@@ -81,73 +81,71 @@ export function setTheme(
   baseName: string,
   key: string,
   variant: 'light' | 'dark',
-  node: Element | null,
-) {
+): string[][] {
+  const colorPairs = [];
   switch (variant) {
     case 'light':
-      setTextColor(constructColorName(baseName, null, 'color'), 'light', node);
+      colorPairs.push(
+        setTextColor(constructColorName(baseName, null, 'color'), 'light'),
+      );
 
-      setRootProperty(
+      colorPairs.push([
         constructColorName(baseName, key, 'darker'),
         darkenToString(color, 0, 0),
-        node,
-      );
+      ]);
 
-      setRootProperty(
+      colorPairs.push([
         constructColorName(baseName, key, 'lighter'),
         lightenToString(color, 7, -10),
-        node,
-      );
+      ]);
 
       break;
     case 'dark':
-      setTextColor(constructColorName(baseName, null, 'color'), 'dark', node);
+      colorPairs.push(
+        setTextColor(constructColorName(baseName, null, 'color'), 'dark'),
+      );
 
-      setRootProperty(
+      colorPairs.push([
         constructColorName(baseName, key, 'darker'),
         darkenToString(color, 5, 5),
-        node,
-      );
+      ]);
 
-      setRootProperty(
+      colorPairs.push([
         constructColorName(baseName, key, 'lighter'),
         lightenToString(color, 15, 15),
-        node,
-      );
+      ]);
 
       break;
     default:
   }
+
+  return colorPairs;
 }
 
-function parseColors(
-  [baseName, colors]: [string, ColorsToParse],
-  node: Element | null,
-) {
+function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
   const keys = Object.keys(colors);
+  const colorPairs = [];
   for (let i = 0; i < keys.length; i++) {
-    setRootProperty(
-      constructColorName(baseName, keys[i]),
-      colors[keys[i]],
-      node,
-    );
+    colorPairs.push([constructColorName(baseName, keys[i]), colors[keys[i]]]);
 
     if (needsVariant(baseName)) {
       const hslColor = colorToHsla(colors[keys[i]]);
 
       if (typeof hslColor === 'string') {
-        return;
+        return colorPairs;
       }
 
       const rgbColor = hslToRgb(hslColor);
 
       if (isLight(rgbColor)) {
-        setTheme(hslColor, baseName, keys[i], 'light', node);
+        colorPairs.push(...setTheme(hslColor, baseName, keys[i], 'light'));
       } else {
-        setTheme(hslColor, baseName, keys[i], 'dark', node);
+        colorPairs.push(...setTheme(hslColor, baseName, keys[i], 'dark'));
       }
     }
   }
+
+  return colorPairs;
 }
 
 export function createThemeContext(theme?: ThemeContext): ThemeProviderContext {
