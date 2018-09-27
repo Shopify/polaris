@@ -28,7 +28,6 @@
     "react/no-unused-state": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
-    "react/no-deprecated": "off",
     "react/no-did-update-set-state": "off",
     "react/no-access-state-in-setstate": "off",
     "shopify/typescript/prefer-pascal-case-enums": "off",
