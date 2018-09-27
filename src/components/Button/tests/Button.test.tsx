@@ -1,174 +1,246 @@
 import * as React from 'react';
-import {shallowWithAppProvider} from '../../../../tests/utilities';
-
-import Button from '..';
-import {UnstyledLink, Icon} from '../..';
+import {
+  shallowWithAppProvider,
+  mountWithAppProvider,
+  trigger,
+} from '../../../../tests/utilities';
+import {UnstyledLink, Icon, Spinner} from '../..';
+import Button from '../Button';
 
 describe('<Button />', () => {
-  describe('onClick()', () => {
-    it('is called when the button is clicked', () => {
-      const spy = jest.fn();
-      shallowWithAppProvider(<Button onClick={spy}>Test</Button>).simulate(
-        'click',
-      );
-      expect(spy).toHaveBeenCalled();
+  describe('url', () => {
+    const mockUrl = 'http://google.com';
+
+    it('renders a link when present', () => {
+      const button = shallowWithAppProvider(<Button url={mockUrl} />);
+      expect(button.find(UnstyledLink).exists()).toBeTruthy();
+    });
+
+    it('gets passed into the link', () => {
+      const button = shallowWithAppProvider(<Button url={mockUrl} />);
+      expect(button.find(UnstyledLink).prop('url')).toBe(mockUrl);
+    });
+
+    it('renders a button when not present', () => {
+      const button = shallowWithAppProvider(<Button />);
+      expect(button.find('button').exists()).toBeTruthy();
     });
   });
 
-  describe('onFocus()', () => {
-    it('is called when the button is focused', () => {
-      const spy = jest.fn();
-      shallowWithAppProvider(<Button onFocus={spy}>Test</Button>).simulate(
-        'focus',
+  describe('children', () => {
+    it('renders the given children into the button', () => {
+      const label = 'Click me!';
+      const button = shallowWithAppProvider(<Button>{label}</Button>);
+      expect(button.text()).toContain(label);
+    });
+
+    it('renders the given children into the link', () => {
+      const label = 'Click me!';
+      const button = mountWithAppProvider(
+        <Button url="http://google.com">{label}</Button>,
       );
-      expect(spy).toHaveBeenCalled();
+      expect(button.text()).toContain(label);
     });
   });
 
-  describe('onBlur()', () => {
-    it('is called when the button is blurred', () => {
-      const spy = jest.fn();
-      shallowWithAppProvider(<Button onBlur={spy}>Test</Button>).simulate(
-        'blur',
+  describe('id', () => {
+    it('is passed into the button', () => {
+      const id = 'MyID';
+      const button = shallowWithAppProvider(<Button id={id} />);
+      expect(button.find('button').prop('id')).toBe(id);
+    });
+
+    it('is passed into the link', () => {
+      const id = 'MyID';
+      const button = shallowWithAppProvider(
+        <Button url="https://shopify.com" id={id} />,
       );
-      expect(spy).toHaveBeenCalled();
+      expect(button.find(UnstyledLink).prop('id')).toBe(id);
     });
   });
 
   describe('disabled', () => {
     it('sets the disabled attribute on the button', () => {
-      const button = shallowWithAppProvider(
-        <Button disabled>Disabled test</Button>,
-      );
-      expect(button.find('button').prop('disabled')).toBe(true);
+      const button = shallowWithAppProvider(<Button disabled />);
+      expect(button.find('button').prop('disabled')).toBeTruthy();
     });
 
-    it('sets the disabled attribute on the button', () => {
+    it('sets the disabled attribute on the link', () => {
       const button = shallowWithAppProvider(
-        <Button disabled={false}>Disabled test</Button>,
+        <Button disabled url="http://google.com" />,
       );
-      expect(button.find('button').prop('disabled')).toBeFalsy();
-    });
-
-    it('does not unset the disabled attribute on the button when loading', () => {
-      const button = shallowWithAppProvider(
-        <Button loading disabled={false}>
-          Disabled test
-        </Button>,
-      );
-      expect(button.find('button').prop('disabled')).toBe(true);
+      expect(button.find(UnstyledLink).prop('disabled')).toBeTruthy();
     });
   });
 
   describe('loading', () => {
     it('sets the disabled attribute on the button', () => {
-      const button = shallowWithAppProvider(
-        <Button loading>Loading test</Button>,
-      );
+      const button = shallowWithAppProvider(<Button loading />);
       expect(button.find('button').prop('disabled')).toBe(true);
     });
 
-    it('does not set the disabled attribute on the button when false', () => {
+    it('sets the disabled attribute on the link', () => {
       const button = shallowWithAppProvider(
-        <Button loading={false}>Loading test</Button>,
+        <Button loading url="http://google.com" />,
       );
-      expect(button.find('button').prop('disabled')).toBeFalsy();
+      expect(button.find(UnstyledLink).prop('disabled')).toBeTruthy();
     });
 
-    it('does not unset the disabled attribute on the button', () => {
+    it('renders a spinner into the button', () => {
+      const button = shallowWithAppProvider(<Button loading />);
+      expect(button.find(Spinner).exists()).toBeTruthy();
+    });
+
+    it('renders a spinner into the link', () => {
       const button = shallowWithAppProvider(
-        <Button disabled loading={false}>
-          Loading test
+        <Button loading url="http://google.com">
+          Click me!
         </Button>,
       );
-      expect(button.find('button').prop('disabled')).toBe(true);
+      expect(button.find(Spinner).exists()).toBeTruthy();
+    });
+
+    it('sets an alert role on the button', () => {
+      const button = shallowWithAppProvider(<Button loading />);
+      expect(button.find('button').prop('role')).toBe('alert');
+    });
+
+    it('sets aria-busy on the button', () => {
+      const button = shallowWithAppProvider(<Button loading />);
+      expect(button.find('button').prop('aria-busy')).toBeTruthy();
     });
   });
 
   describe('submit', () => {
-    it('sets the button’s type to submit', () => {
-      const button = shallowWithAppProvider(
-        <Button submit>Submit test</Button>,
-      );
+    it('sets a submit type on the button when present', () => {
+      const button = shallowWithAppProvider(<Button submit />);
       expect(button.find('button').prop('type')).toBe('submit');
     });
 
-    it('sets the button’s type to button when submit is not true', () => {
-      let button = shallowWithAppProvider(<Button>Button test</Button>);
-      expect(button.find('button').prop('type')).toBe('button');
-
-      button = shallowWithAppProvider(
-        <Button submit={false}>Button test</Button>,
-      );
+    it('sets a button type on the button when not present', () => {
+      const button = shallowWithAppProvider(<Button />);
       expect(button.find('button').prop('type')).toBe('button');
     });
   });
 
-  describe('accessibilityLabel', () => {
-    it('sets the aria-label on the button', () => {
+  describe('external', () => {
+    it('gets passed into the link', () => {
       const button = shallowWithAppProvider(
-        <Button accessibilityLabel="This deletes a thing" icon="delete" />,
+        <Button url="http://google.com" external />,
       );
-      expect(button.find('button').prop('aria-label')).toBe(
-        'This deletes a thing',
-      );
+      expect(button.find(UnstyledLink).prop('external')).toBeTruthy();
     });
 
-    it('sets the aria-controls on the button', () => {
-      const button = shallowWithAppProvider(
-        <Button ariaControls="controler-id" icon="delete" />,
-      );
-      expect(button.find('button').prop('aria-controls')).toBe('controler-id');
-    });
-
-    it('sets the aria-expanded on the button', () => {
-      const button = shallowWithAppProvider(
-        <Button ariaExpanded icon="delete" />,
-      );
-      expect(button.find('button').prop('aria-expanded')).toBe(true);
-    });
-  });
-
-  describe('id', () => {
-    it('is passed down to an underlying button', () => {
-      const id = 'MyID';
-      const button = shallowWithAppProvider(<Button id={id}>Button</Button>);
-
-      expect(button.find('button').prop('id')).toBe(id);
-    });
-
-    it('is passed down to an underlying link button', () => {
-      const id = 'MyID';
-      const button = shallowWithAppProvider(
-        <Button url="https://shopify.com" id={id}>
-          Button
-        </Button>,
-      );
-
-      expect(button.find(UnstyledLink).prop('id')).toBe(id);
+    it('is false when not set', () => {
+      const button = shallowWithAppProvider(<Button url="http://google.com" />);
+      expect(button.find(UnstyledLink).prop('external')).toBeFalsy();
     });
   });
 
   describe('icon', () => {
-    it("renders an icon if it's a string", () => {
-      const button = shallowWithAppProvider(
-        <Button ariaExpanded icon="delete" />,
-      );
-      expect(button.find(Icon).length).toBe(1);
+    it('renders an icon if it’s a string', () => {
+      const source = 'delete';
+      const button = shallowWithAppProvider(<Button icon={source} />);
+      expect(button.find(Icon).prop('source')).toBe(source);
     });
 
-    it("renders an icon if it's an SVGSource object", () => {
-      const button = shallowWithAppProvider(
-        <Button ariaExpanded icon={{body: '<SVG />', viewBox: ''}} />,
-      );
-      expect(button.find(Icon).length).toBe(1);
+    it('renders an icon if it’s an SVGSource object', () => {
+      const source = {body: '<SVG />', viewBox: ''};
+      const button = shallowWithAppProvider(<Button icon={source} />);
+      expect(button.find(Icon).prop('source')).toBe(source);
     });
 
     it('renders a react node if it is one', () => {
+      const Icon = () => <div>Hi there!</div>;
+      const button = shallowWithAppProvider(<Button icon={<Icon />} />);
+      expect(button.find(Icon).exists()).toBeTruthy();
+    });
+  });
+
+  describe('accessibilityLabel', () => {
+    it('sets an aria-label on the button', () => {
+      const label = 'This deletes a thing';
       const button = shallowWithAppProvider(
-        <Button ariaExpanded icon={<div>Hi there!</div>} />,
+        <Button accessibilityLabel={label} />,
       );
-      expect(button.find('div').text()).toBe('Hi there!');
+      expect(button.find('button').prop('aria-label')).toBe(label);
+    });
+
+    it('sets an aria-label on the link', () => {
+      const label = 'This deletes a thing';
+      const button = shallowWithAppProvider(
+        <Button accessibilityLabel={label} url="http://google.com" />,
+      );
+      expect(button.find(UnstyledLink).prop('aria-label')).toBe(label);
+    });
+  });
+
+  describe('ariaControls', () => {
+    it('sets an aria-controls on the button', () => {
+      const id = 'panel1';
+      const button = shallowWithAppProvider(<Button ariaControls={id} />);
+      expect(button.find('button').prop('aria-controls')).toBe(id);
+    });
+  });
+
+  describe('ariaExpanded', () => {
+    it('sets an aria-expended on the button', () => {
+      const button = shallowWithAppProvider(<Button ariaExpanded />);
+      expect(button.find('button').prop('aria-expanded')).toBeTruthy();
+    });
+  });
+
+  describe('onClick()', () => {
+    it('is called when the button is clicked', () => {
+      const onClickSpy = jest.fn();
+      const button = shallowWithAppProvider(<Button onClick={onClickSpy} />);
+      trigger(button.find('button'), 'onClick');
+      expect(onClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('is called when the link is clicked', () => {
+      const onClickSpy = jest.fn();
+      const button = shallowWithAppProvider(
+        <Button onClick={onClickSpy} url="http://google.com" />,
+      );
+      trigger(button.find(UnstyledLink), 'onClick');
+      expect(onClickSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onFocus()', () => {
+    it('is called when the button is focussed', () => {
+      const onFocusSpy = jest.fn();
+      const button = shallowWithAppProvider(<Button onFocus={onFocusSpy} />);
+      trigger(button.find('button'), 'onFocus');
+      expect(onFocusSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('is called when the link is focussed', () => {
+      const onFocusSpy = jest.fn();
+      const button = shallowWithAppProvider(
+        <Button onFocus={onFocusSpy} url="http://google.com" />,
+      );
+      trigger(button.find(UnstyledLink), 'onFocus');
+      expect(onFocusSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onBlur()', () => {
+    it('is called when the button is blurred', () => {
+      const onBlurSpy = jest.fn();
+      const button = shallowWithAppProvider(<Button onBlur={onBlurSpy} />);
+      trigger(button.find('button'), 'onBlur');
+      expect(onBlurSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('is called when the link is blurred', () => {
+      const onBlurSpy = jest.fn();
+      const button = shallowWithAppProvider(
+        <Button onBlur={onBlurSpy} url="http://google.com" />,
+      );
+      trigger(button.find(UnstyledLink), 'onBlur');
+      expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
