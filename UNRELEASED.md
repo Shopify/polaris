@@ -6,7 +6,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancments
 
-- Improved the tests for `<Portal />`.
 - Update example description in `ExceptionList` documentation ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
 
 ### Bug fixes
