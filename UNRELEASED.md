@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancments
 
 - Update example description in `ExceptionList` documentation ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
+- Move Modal CloseButton into its own subcomponent, instead of being part of the Header subcomponent. This is an internal implementation detail if you are using the React component. If you are using (s)css and are defining class names manually you will need to update references to `Polaris-Modal-Header__CloseButton` and `Polaris-Modal-Header--withoutTitle` to `Polaris-Modal-CloseButton` and `Polaris-Modal-CloseButton--withoutTitle` respectively. ([#2289](https://github.com/Shopify/polaris-react/pull/2289))
 
 ### Bug fixes
 
