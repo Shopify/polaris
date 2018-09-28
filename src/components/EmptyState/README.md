@@ -32,7 +32,7 @@ Empty states are used when a list, table, or chart has no items or data to show.
 
 ---
 
-## Best Practices
+## Best practices
 
 Empty states should:
 
