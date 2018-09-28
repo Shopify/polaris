@@ -101,19 +101,21 @@ function Button({
   );
 
   const disclosureIconMarkup = disclosure ? (
-    <span className={styles.Icon}>
+    <IconWrapper>
       <Icon source={loading ? 'placeholder' : 'caretDown'} />
-    </span>
+    </IconWrapper>
   ) : null;
 
-  const iconMarkup =
-    icon && isIconSource(icon) ? (
-      <span className={styles.Icon}>
-        <Icon source={loading ? 'placeholder' : icon} />
-      </span>
+  let iconMarkup;
+
+  if (icon) {
+    const iconInner = isIconSource(icon) ? (
+      <Icon source={loading ? 'placeholder' : icon} />
     ) : (
-      <span className={styles.Icon}>{icon}</span>
+      icon
     );
+    iconMarkup = <IconWrapper>{iconInner}</IconWrapper>;
+  }
 
   const childMarkup = children ? <span>{children}</span> : null;
 
@@ -186,6 +188,10 @@ function Button({
       {content}
     </button>
   );
+}
+
+export function IconWrapper({children}: any) {
+  return <span className={styles.Icon}>{children}</span>;
 }
 
 function isIconSource(x: any): x is IconSource {
