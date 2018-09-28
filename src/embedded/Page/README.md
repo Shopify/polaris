@@ -40,7 +40,7 @@ Static images are provided to help visualize the interface as embedded component
 
 ---
 
-## Best Practices
+## Best practices
 
 The page component should:
 
