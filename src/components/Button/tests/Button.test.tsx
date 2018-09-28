@@ -5,7 +5,7 @@ import {
   trigger,
 } from '../../../../tests/utilities';
 import {UnstyledLink, Icon, Spinner} from '../..';
-import Button from '../Button';
+import Button, {IconWrapper} from '../Button';
 
 describe('<Button />', () => {
   describe('url', () => {
@@ -154,6 +154,11 @@ describe('<Button />', () => {
       const Icon = () => <div>Hi there!</div>;
       const button = shallowWithAppProvider(<Button icon={<Icon />} />);
       expect(button.find(Icon).exists()).toBeTruthy();
+    });
+
+    it('does not render the markup for the icon if none is provided', () => {
+      const button = mountWithAppProvider(<Button />);
+      expect(button.find(IconWrapper).exists()).toBe(false);
     });
   });
 
