@@ -23,7 +23,7 @@ keywords:
   - list of resources
 ---
 
-# Resource List
+# Resource list
 
 A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 
