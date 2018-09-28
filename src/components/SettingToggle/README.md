@@ -23,7 +23,7 @@ on or off.
 
 ---
 
-## Best Practices
+## Best practices
 
 Settings toggles should:
 
