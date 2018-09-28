@@ -35,7 +35,7 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ---
 
-## Best Practices
+## Best practices
 
 The page component should:
 
