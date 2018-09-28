@@ -33,7 +33,7 @@ Select lets merchants choose one option from an options menu. Consider select wh
 
 ---
 
-## Best Practices
+## Best practices
 
 The select component should:
 
