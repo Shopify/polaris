@@ -38,7 +38,7 @@ reassure a merchant such as in marketing content or to capture attention during 
 
 ---
 
-## Best Practices
+## Best practices
 
 - Use when the primary goal of the page is communication rather than
   interaction.
