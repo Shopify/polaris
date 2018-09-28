@@ -287,6 +287,11 @@
     mime-types "2.1.12"
     request "2.78.0"
 
+"@shopify/polaris-icons@^1.0.0-beta.4":
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-1.0.0-beta.4.tgz#5e6f64169ceddc0256987ca89850ed251ec0f939"
+  integrity sha512-YZO1rp6BOVVHche6e8vie5TZTpWJ7s46pWwxklzvHQCB0vv8hc+jOWhpl0RyzyolrmyCtG30B7W/5gvHETbg+A==
+
 "@shopify/polaris-tokens@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.0.0.tgz#a7f7245d0520b232ef014f73bced89970151b086"
