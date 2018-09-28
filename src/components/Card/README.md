@@ -399,7 +399,7 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
 </Card>
 ```
 
-### Card with seperate header
+### Card with separate header
 
 <!-- example-for: web -->
 
