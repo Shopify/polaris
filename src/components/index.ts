@@ -244,3 +244,5 @@ export {
 export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
 
 export {default as withContext} from './WithContext';
+
+export {default as withRef, WithRef} from './WithRef';

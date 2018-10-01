@@ -1,7 +1,8 @@
 import * as React from 'react';
 import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
-import compose from '@shopify/react-compose';
+import compose from '../../../../utilities/react-compose';
+import withRef from '../../../WithRef';
 
 import {
   Link,
@@ -149,4 +150,5 @@ export class FileUpload extends React.Component<CombinedProps, State> {
 export default compose<Props>(
   withContext<Props, WithAppProviderProps, DropZoneContext>(Consumer),
   withAppProvider<Props>(),
+  withRef<Props>(),
 )(FileUpload);
