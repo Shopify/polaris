@@ -1,12 +1,8 @@
 import * as React from 'react';
-import UnstyledLink from '../UnstyledLink';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
-
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import Link from '../../AppProvider/Link';
+import Link from 'src/components/AppProvider/Link';
+import UnstyledLink from '../UnstyledLink';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {

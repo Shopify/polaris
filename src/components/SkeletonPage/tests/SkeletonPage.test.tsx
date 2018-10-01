@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {Layout, Card, SkeletonBodyText, DisplayText} from 'src/components';
 import SkeletonPage from '../SkeletonPage';
-import {Layout, Card, SkeletonBodyText, DisplayText} from '../../../components';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {

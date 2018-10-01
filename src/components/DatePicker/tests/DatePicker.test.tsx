@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import DatePicker from '../DatePicker';
+import {mountWithAppProvider} from 'tests/utilities';
 import {Day, Month, Weekday} from '../components';
+import DatePicker from '../DatePicker';
 
 describe('<DatePicker />', () => {
   const selected = {

@@ -3,8 +3,8 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
   trigger,
-} from '../../../../tests/utilities';
-import {UnstyledLink, Icon, Spinner} from '../..';
+} from 'tests/utilities';
+import {UnstyledLink, Icon, Spinner} from 'src/components';
 import Button, {IconWrapper} from '../Button';
 
 describe('<Button />', () => {

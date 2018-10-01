@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {UnstyledLink} from 'src/components';
 import Item from '../Item';
-import UnstyledLink from '../../../../UnstyledLink';
 
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {

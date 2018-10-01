@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {findByTestID} from '../../../../../../tests/utilities/enzyme';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import BulkActions from '..';
-import {BulkAction} from '../BulkActions';
-import BulkActionButton from '../BulkActionButton';
+import {mountWithAppProvider, findByTestID} from 'tests/utilities';
 import CheckableButton from '../../CheckableButton';
+import BulkActionButton from '../BulkActionButton';
+import BulkActions, {BulkAction} from '../BulkActions';
 
 export interface Props {
   bulkActions: BulkAction[];

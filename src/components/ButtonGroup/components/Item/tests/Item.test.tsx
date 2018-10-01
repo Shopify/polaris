@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
+import {Button} from 'src/components';
 import Item from '../Item';
-import Button from '../../../../Button';
 
 describe('<ButtonGroup />', () => {
   it('renders a button', () => {

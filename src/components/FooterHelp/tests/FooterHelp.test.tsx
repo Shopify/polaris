@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import FooterHelp from '..';
-import Icon from '../../Icon';
+import {mountWithAppProvider} from 'tests/utilities';
+import {Icon} from 'src/components';
+import FooterHelp from '../FooterHelp';
 
 describe('<FooterHelp />', () => {
   let children: string;

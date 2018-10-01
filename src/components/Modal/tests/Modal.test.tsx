@@ -1,17 +1,14 @@
 import * as React from 'react';
-import {Badge, Spinner, Portal} from '../../../components';
-import {contentContextTypes} from '../../../types';
-
 import {
   animationFrame,
   findByTestID,
   trigger,
   mountWithAppProvider,
-} from '../../../../tests/utilities';
-
-import Modal from '../Modal';
+} from 'tests/utilities';
+import {Badge, Spinner, Portal, Scrollable} from 'src/components';
+import {contentContextTypes} from 'src/types';
 import {Footer, Dialog} from '../components';
-import Scrollable from '../../Scrollable';
+import Modal from '../Modal';
 
 describe('<Modal>', () => {
   beforeEach(() => {

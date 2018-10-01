@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import Month from '../Month';
+import {mountWithAppProvider} from 'tests/utilities';
 import {Weekday} from '../../../components';
+import Month from '../Month';
 
 describe('<Month />', () => {
   describe('title', () => {

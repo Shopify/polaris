@@ -1,16 +1,9 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
-
-import InlineError from '../../InlineError';
-import TextField from '../../TextField';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {InlineError, Labelled, Connected, Select} from 'src/components';
 import {Resizer} from '../components';
-import Labelled from '../../Labelled';
-import Connected from '../../Connected';
-import Select from '../../Select';
+import TextField from '../TextField';
 
 describe('<TextField />', () => {
   it('allows specific props to pass through properties on the input', () => {

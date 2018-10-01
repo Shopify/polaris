@@ -1,19 +1,14 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-
-import DropZone from '../../../DropZone';
+import {Link, Icon, Button, Caption, TextStyle} from 'src/components';
+import {mountWithAppProvider} from 'tests/utilities';
 import {Provider} from '../../Context';
-import Link from '../../../../Link';
-import Icon from '../../../../Icon';
-import Button from '../../../../Button';
-import Caption from '../../../../Caption';
-import TextStyle from '../../../../TextStyle';
+import FileUpload from '../FileUpload';
 
 describe('<FileUpload />', () => {
   it('renders large view', () => {
     const fileUpload = mountWithAppProvider(
       <Provider value={{size: 'large', type: 'file'}}>
-        <DropZone.FileUpload />
+        <FileUpload />
       </Provider>,
     );
 
@@ -25,7 +20,7 @@ describe('<FileUpload />', () => {
   it('renders medium view', () => {
     const fileUpload = mountWithAppProvider(
       <Provider value={{size: 'medium', type: 'file'}}>
-        <DropZone.FileUpload />
+        <FileUpload />
       </Provider>,
     );
 
@@ -36,7 +31,7 @@ describe('<FileUpload />', () => {
   it('renders small view', () => {
     const fileUpload = mountWithAppProvider(
       <Provider value={{size: 'small', type: 'file'}}>
-        <DropZone.FileUpload />
+        <FileUpload />
       </Provider>,
     );
 

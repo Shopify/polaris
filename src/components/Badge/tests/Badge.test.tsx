@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {VisuallyHidden} from 'src/components';
 import Badge, {Status, Progress, PROGRESS_LABELS, STATUS_LABELS} from '..';
-import VisuallyHidden from '../../VisuallyHidden';
 
 describe('<Badge />', () => {
   it('renders its children', () => {

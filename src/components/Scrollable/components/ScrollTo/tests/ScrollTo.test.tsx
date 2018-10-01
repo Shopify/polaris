@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-
-import ScrollTo from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import ScrollTo from '../ScrollTo';
 
 describe('<Scrollable.ScrollTo />', () => {
   it('calls scrollToPosition on mount', () => {

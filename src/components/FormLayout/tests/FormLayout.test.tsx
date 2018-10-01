@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from '../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {TextField} from 'src/components';
 import FormLayout from '../FormLayout';
-import TextField from '../../TextField';
 
 describe('<FormLayout />', () => {
   it('renders its children', () => {

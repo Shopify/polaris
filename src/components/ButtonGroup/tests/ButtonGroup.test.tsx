@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
-import ButtonGroup from '../../ButtonGroup';
-import {Button} from '../../../components';
+import {mountWithAppProvider} from 'tests/utilities';
+import {Button} from 'src/components';
+import ButtonGroup from '../ButtonGroup';
 
 describe('<ButtonGroup />', () => {
   it('renders its children', () => {

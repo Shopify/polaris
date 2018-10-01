@@ -1,17 +1,14 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {Provider} from '../../Context';
-import {
-  findByTestID,
-  mountWithAppProvider,
-} from '../../../../../../tests/utilities';
+import {findByTestID, mountWithAppProvider} from 'tests/utilities';
 import {
   UnstyledLink,
   Avatar,
   Thumbnail,
   ButtonGroup,
   Checkbox,
-} from '../../../..';
+} from 'src/components';
+import {Provider} from '../../Context';
 import Item from '../Item';
 
 describe('<Item />', () => {

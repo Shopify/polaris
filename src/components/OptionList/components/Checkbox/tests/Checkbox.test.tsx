@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
 import {noop} from '@shopify/javascript-utilities/other';
-
-import Checkbox, {Props} from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import Checkbox, {Props} from '../Checkbox';
 
 describe('<Checkbox />', () => {
   const defaultProps: Props = {

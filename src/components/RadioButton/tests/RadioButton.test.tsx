@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
-import RadioButton from '..';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import RadioButton from '../RadioButton';
 
 describe('<RadioButton />', () => {
   it('sets all pass through properties on the input', () => {

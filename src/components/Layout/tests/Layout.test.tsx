@@ -3,9 +3,9 @@ import {
   findByTestID,
   matchByTestID,
   mountWithAppProvider,
-} from '../../../../tests/utilities';
-import Layout from '../Layout';
+} from 'tests/utilities';
 import {Section} from '../components';
+import Layout from '../Layout';
 
 describe('<Layout />', () => {
   it('renders children', () => {

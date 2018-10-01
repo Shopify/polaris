@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
+import {Label, Labelled} from 'src/components';
+import {mountWithAppProvider} from 'tests/utilities';
 import DropZone from '../DropZone';
-import Label from '../../Label';
-import Labelled from '../../Labelled';
 
 describe('<DropZone />', () => {
   let spy: jest.Mock;

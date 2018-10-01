@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {trigger, mountWithAppProvider} from 'tests/utilities';
+import {TextField, Tag, Button} from 'src/components';
 import {Provider} from '../../Context';
-import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
-import FilterControl, {Props} from '..';
-import FilterCreator from '../FilterCreator';
-import {DateFilterOptions} from '../DateSelector';
 import {
   Filter,
   FilterType,
@@ -12,7 +10,9 @@ import {
   FilterTextField,
   FilterDateSelector,
 } from '../types';
-import {TextField, Tag, Button} from '../../../..';
+import FilterControl, {Props} from '../FilterControl';
+import FilterCreator from '../FilterCreator';
+import {DateFilterOptions} from '../DateSelector';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {
