@@ -4,14 +4,27 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
+### New components
+
+#### withContext
+
+Use `withContext` to pass consumer context to a component.
+
+#### withRef
+
+Use `withRef` with `compose` to forwardRefs to a component.
+
+### Enhancements
+
+- Refs can be placed on `DropZone.FileUpload` ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
+- Use the new context API in `ResourceList` ([#2216](https://github.com/Shopify/polaris-react/pull/2216))
+- Use the new context API in `DropZone` ([#2211](https://github.com/Shopify/polaris-react/pull/2211))
+- Update example description in `ExceptionList` documentation ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
+- Move Modal CloseButton into its own subcomponent, instead of being part of the Header subcomponent. This is an internal implementation detail if you are using the React component. If you are using (s)css and are defining class names manually you will need to update references to `Polaris-Modal-Header__CloseButton` and `Polaris-Modal-Header--withoutTitle` to `Polaris-Modal-CloseButton` and `Polaris-Modal-CloseButton--withoutTitle` respectively. ([#2289](https://github.com/Shopify/polaris-react/pull/2289))
+
 ### Development workflow
 
 - Added `d.ts` files to test coverage ignore ([#2018](https://github.com/Shopify/polaris-react/pull/2018))
-
-### Enhancments
-
-- Update example description in `ExceptionList` documentation ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
-- Move Modal CloseButton into its own subcomponent, instead of being part of the Header subcomponent. This is an internal implementation detail if you are using the React component. If you are using (s)css and are defining class names manually you will need to update references to `Polaris-Modal-Header__CloseButton` and `Polaris-Modal-Header--withoutTitle` to `Polaris-Modal-CloseButton` and `Polaris-Modal-CloseButton--withoutTitle` respectively. ([#2289](https://github.com/Shopify/polaris-react/pull/2289))
 
 ### Bug fixes
 
