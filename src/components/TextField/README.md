@@ -8,6 +8,7 @@ platforms:
 keywords:
   - TextField
   - input
+  - textarea
   - type
   - add info
   - form field
