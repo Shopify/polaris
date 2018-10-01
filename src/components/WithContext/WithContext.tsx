@@ -24,9 +24,13 @@ export default function withContext<
       render() {
         return (
           <Consumer>
-            {(context: InjectedProps) => (
-              <WrappedComponent {...this.props} context={context} />
-            )}
+            {/* https://github.com/Microsoft/TypeScript/issues/10727 */}
+            {(ctx: InjectedProps & any) => {
+              const {context, ...rest} = this.props as any;
+              return (
+                <WrappedComponent {...rest} context={{...context, ...ctx}} />
+              );
+            }}
           </Consumer>
         );
       }

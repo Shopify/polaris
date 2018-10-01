@@ -2,7 +2,8 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
-import {DisableableAction} from '../../../../types';
+import compose from '@shopify/react-compose';
+import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {Props as AvatarProps} from '../../../Avatar';
@@ -11,10 +12,13 @@ import {Props as ThumbnailProps} from '../../../Thumbnail';
 import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
-import {contextTypes, SELECT_ALL_ITEMS} from '../../types';
+import {SELECT_ALL_ITEMS} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import * as styles from './Item.scss';
+import {ResourceListContext} from '../../ResourceList';
+import withContext from '../../../WithContext';
+import {Consumer} from '../Context';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
@@ -54,14 +58,14 @@ export interface State {
 }
 
 export type CombinedProps =
-  | PropsWithUrl & WithAppProviderProps
-  | PropsWithClick & WithAppProviderProps;
+  | PropsWithUrl & WithAppProviderProps & WithContextTypes<ResourceListContext>
+  | PropsWithClick &
+      WithAppProviderProps &
+      WithContextTypes<ResourceListContext>;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
 export class Item extends React.PureComponent<CombinedProps, State> {
-  static contextTypes = contextTypes;
-
   state: State = {
     actionsMenuVisible: false,
     focused: false,
@@ -70,16 +74,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   private node: HTMLElement | null = null;
   private checkboxId = getUniqueCheckboxID();
-
-  componentDidMount() {
-    const {subscribe} = this.context;
-    subscribe(this.handleContextUpdate);
-  }
-
-  componentWillUnmount() {
-    const {unsubscribe} = this.context;
-    unsubscribe(this.handleContextUpdate);
-  }
 
   render() {
     const {
@@ -92,9 +86,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       persistActions = false,
       polaris: {intl},
       accessibilityLabel,
-    } = this.props as CombinedProps;
-
-    const {selectable, selectMode, loading} = this.context;
+      context: {selectable, selectMode, loading},
+    } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner} = this.state;
 
@@ -307,8 +300,10 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleSelection(value: boolean) {
-    const {id} = this.props;
-    const {onSelectionChange} = this.context;
+    const {
+      id,
+      context: {onSelectionChange},
+    } = this.props;
     if (id == null || onSelectionChange == null) {
       return;
     }
@@ -318,10 +313,13 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleClick(event: React.MouseEvent<any>) {
-    const {id, onClick, url} = this.props;
+    const {
+      id,
+      onClick,
+      url,
+      context: {selectMode},
+    } = this.props;
     const anchor = this.node && this.node.querySelector('a');
-
-    const {selectMode} = this.context;
 
     if (selectMode) {
       this.handleLargerSelectionArea(event);
@@ -343,18 +341,15 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
-    const {onClick = noop} = this.props;
-    const {selectMode} = this.context;
+    const {
+      onClick = noop,
+      context: {selectMode},
+    } = this.props;
     const {key} = event;
 
     if (key === 'Enter' && !selectMode) {
       onClick();
     }
-  }
-
-  @autobind
-  private handleContextUpdate() {
-    this.forceUpdate();
   }
 
   @autobind
@@ -370,8 +365,10 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   private isSelected() {
-    const {id} = this.props;
-    const {selectedItems} = this.context;
+    const {
+      id,
+      context: {selectedItems},
+    } = this.props;
     return (
       selectedItems &&
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
@@ -390,4 +387,7 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-export default withAppProvider<PropsWithUrl | PropsWithClick>()(Item);
+export default compose<Props>(
+  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
+  withAppProvider<Props>(),
+)(Item);

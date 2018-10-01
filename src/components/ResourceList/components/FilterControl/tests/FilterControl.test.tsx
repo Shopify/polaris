@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {Provider} from '../../Context';
 import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
 import FilterControl, {Props} from '..';
 import FilterCreator from '../FilterCreator';
@@ -19,8 +20,9 @@ describe('<FilterControl />', () => {
   };
 
   const mockDefaultContext = {
+    selectMode: false,
     resourceName: {
-      singlar: 'item',
+      singular: 'item',
       plural: 'items,',
     },
     selectable: false,
@@ -67,10 +69,9 @@ describe('<FilterControl />', () => {
   describe('searchValue', () => {
     it('renders with TextField by default', () => {
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} />
+        </Provider>,
       );
 
       const searchField = wrapper.find(TextField);
@@ -80,10 +81,9 @@ describe('<FilterControl />', () => {
     it('renders with searchValue as its value', () => {
       const searchValue = 'search value';
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} searchValue={searchValue} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} searchValue={searchValue} />
+        </Provider>,
       );
 
       const searchField = wrapper.find(TextField);
@@ -96,10 +96,12 @@ describe('<FilterControl />', () => {
       const newSearchValue = 'new search value';
       const onSearchChange = jest.fn();
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} onSearchChange={onSearchChange} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            onSearchChange={onSearchChange}
+          />
+        </Provider>,
       );
 
       trigger(wrapper.find(TextField), 'onChange', newSearchValue);
@@ -111,10 +113,9 @@ describe('<FilterControl />', () => {
   describe('filters', () => {
     it('renders no <FilterCreator /> if there are no filters', () => {
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} />
+        </Provider>,
       );
 
       const searchField = wrapper.find(TextField);
@@ -123,10 +124,9 @@ describe('<FilterControl />', () => {
 
     it('renders <FilterCreator /> if there is filters', () => {
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} filters={mockFilters} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} filters={mockFilters} />
+        </Provider>,
       );
 
       expect(wrapper.find(FilterCreator).exists()).toBe(true);
@@ -134,10 +134,9 @@ describe('<FilterControl />', () => {
 
     it('renders <FilterCreator /> with filters', () => {
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} filters={mockFilters} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} filters={mockFilters} />
+        </Provider>,
       );
 
       expect(wrapper.find(FilterCreator).prop('filters')).toMatchObject(
@@ -155,15 +154,14 @@ describe('<FilterControl />', () => {
 
       const onFiltersChange = jest.fn();
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={mockFilters}
-          appliedFilters={mockAppliedFilters}
-          onFiltersChange={onFiltersChange}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={mockFilters}
+            appliedFilters={mockAppliedFilters}
+            onFiltersChange={onFiltersChange}
+          />
+        </Provider>,
       );
 
       trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
@@ -178,15 +176,14 @@ describe('<FilterControl />', () => {
       const newFilter = mockAppliedFilters[0];
       const onFiltersChange = jest.fn();
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={mockFilters}
-          appliedFilters={mockAppliedFilters}
-          onFiltersChange={onFiltersChange}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={mockFilters}
+            appliedFilters={mockAppliedFilters}
+            onFiltersChange={onFiltersChange}
+          />
+        </Provider>,
       );
 
       trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
@@ -198,13 +195,12 @@ describe('<FilterControl />', () => {
   describe('appliedFilters', () => {
     it('renders the same number of Tag as appliedFilters', () => {
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          appliedFilters={mockAppliedFilters}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            appliedFilters={mockAppliedFilters}
+          />
+        </Provider>,
       );
 
       const tags = wrapper.find(Tag);
@@ -214,14 +210,13 @@ describe('<FilterControl />', () => {
     it('calls onFiltersChange without the applied filter when user click remove on the appliedFilter', () => {
       const onFiltersChange = jest.fn();
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          appliedFilters={mockAppliedFilters}
-          onFiltersChange={onFiltersChange}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            appliedFilters={mockAppliedFilters}
+            onFiltersChange={onFiltersChange}
+          />
+        </Provider>,
       );
 
       const tags = wrapper.find(Tag);
@@ -251,14 +246,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterLabel,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -281,14 +275,13 @@ describe('<FilterControl />', () => {
         value: filterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -316,14 +309,13 @@ describe('<FilterControl />', () => {
         value: filterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -346,14 +338,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -375,14 +366,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -391,7 +381,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
+    it.only('renders the correct localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
       const appliedFilterValue = DateFilterOptions.PastWeek;
 
       const filter: FilterDateSelector = {
@@ -407,17 +397,17 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const expectedLocalizedLabel = wrapper
+        .find(FilterControl)
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
@@ -445,17 +435,17 @@ describe('<FilterControl />', () => {
       };
 
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const expectedLocalizedLabel = wrapper
+        .find(FilterControl)
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
@@ -485,17 +475,17 @@ describe('<FilterControl />', () => {
         value: selectedDate,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const expectedLocalizedLabel = wrapper
+        .find(FilterControl)
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
@@ -525,17 +515,17 @@ describe('<FilterControl />', () => {
         value: selectedDate,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const expectedLocalizedLabel = wrapper
+        .find(FilterControl)
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
@@ -575,14 +565,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -617,14 +606,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[filter]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[filter]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -641,14 +629,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl
-          {...mockDefaultProps}
-          filters={[]}
-          appliedFilters={[appliedFilters]}
-        />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={[]}
+            appliedFilters={[appliedFilters]}
+          />
+        </Provider>,
       );
 
       const firstTag = wrapper.find(Tag).at(0);
@@ -659,10 +646,9 @@ describe('<FilterControl />', () => {
   describe('additionalAction', () => {
     it('renders no connectedRight prop on TextField if there is no additionalAction', () => {
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} />
+        </Provider>,
       );
 
       const searchField = wrapper.find(TextField);
@@ -675,10 +661,9 @@ describe('<FilterControl />', () => {
         onAction: jest.fn(),
       };
       const wrapper = mountWithAppProvider(
-        <FilterControl {...mockDefaultProps} additionalAction={action} />,
-        {
-          context: mockDefaultContext,
-        },
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} additionalAction={action} />
+        </Provider>,
       );
 
       expect(wrapper.find(Button).exists()).toBe(true);

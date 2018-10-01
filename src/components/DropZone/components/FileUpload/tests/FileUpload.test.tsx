@@ -9,7 +9,7 @@ import Button from '../../../../Button';
 import Caption from '../../../../Caption';
 import TextStyle from '../../../../TextStyle';
 
-describe('<DropZone />', () => {
+describe('<FileUpload />', () => {
   it('renders large view', () => {
     const fileUpload = mountWithAppProvider(
       <Provider value={{size: 'large', type: 'file'}}>
