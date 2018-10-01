@@ -120,12 +120,10 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
     const tabIndex = showMobileNavigation ? 0 : -1;
 
-    const navigationMarkup = navigation ? (
-      <NavWrapper
-        showMobileNavigation={showMobileNavigation}
-        mobileView={mobileView}
-        testID="NavWrapper"
-      >
+    let navigationMarkup;
+
+    if (navigation != null) {
+      const navContent = (
         <div
           className={navClassName}
           onKeyDown={this.handleNavKeydown}
@@ -145,8 +143,26 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
             <Icon source="cancel" color="white" />
           </button>
         </div>
-      </NavWrapper>
-    ) : null;
+      );
+
+      navigationMarkup = mobileView ? (
+        <TrapFocus trapping>
+          <CSSTransition
+            appear
+            exit
+            in={showMobileNavigation}
+            timeout={300}
+            classNames={navTransitionClasses}
+            mountOnEnter
+            unmountOnExit
+          >
+            {navContent}
+          </CSSTransition>
+        </TrapFocus>
+      ) : (
+        <div key="desktopNavigation">{navContent}</div>
+      );
+    }
 
     const loadingMarkup =
       loadingStack > 0 ? (
@@ -379,26 +395,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       this.handleNavigationDismiss();
     }
   }
-}
-
-function NavWrapper({children, showMobileNavigation, mobileView}: any) {
-  return mobileView ? (
-    <TrapFocus trapping>
-      <CSSTransition
-        appear
-        exit
-        in={showMobileNavigation}
-        timeout={100}
-        classNames={navTransitionClasses}
-        mountOnEnter
-        unmountOnExit
-      >
-        {children}
-      </CSSTransition>
-    </TrapFocus>
-  ) : (
-    children
-  );
 }
 
 const navTransitionClasses = {
