@@ -34,7 +34,7 @@ Page actions should:
 
 Buttons should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
 <!-- usagelist -->
 

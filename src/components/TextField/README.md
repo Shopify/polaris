@@ -49,7 +49,7 @@ keywords:
 
 # Text field
 
-A text field is an input field that a merchant can type into. It has a range of
+A text field is an input field that merchants can type into. It has a range of
 options and supports several text formats including numbers.
 
 ---
@@ -58,10 +58,10 @@ options and supports several text formats including numbers.
 
 Text fields should:
 
-- Be clearly labeled so it’s obvious to the merchant what they should enter into the field
+- Be clearly labeled so it’s obvious to merchants what they should enter into the field
 - Be labeled as “Optional” when you need to request input that’s not required
 - Only ask for information that’s really needed
-- Validate input as soon as merchant has finished interacting with a field (but not before)
+- Validate input as soon as merchants have finished interacting with a field (but not before)
 
 ---
 
@@ -91,7 +91,7 @@ A label is a short description of the requested input. Labels are not instructio
 
 ### Field placeholder text
 
-Placeholder text is shown inside the form field to teach the merchant what to
+Placeholder text is shown inside the form field to teach merchants what to
 input. Field placeholder text should:
 
 - Be used only for supplementary information because the text has low contrast and is not visible when text is entered
@@ -454,7 +454,7 @@ class PlaceholderExample extends React.Component {
 
 ### Text field with help text
 
-Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and the merchant doesn’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
+Use to show short instructional content below the text field. Use especially when incorrect formatting will result in an error and merchants don’t know what format is required (e.g. to explain the correct format for dates, or requirements for a password). If more explanation is needed, link to the Shopify Help Center.
 
 ```jsx
 class HelpTextExample extends React.Component {
@@ -593,7 +593,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 
 Use to let merchants take an action within the text field.
 
-For example, tap on a barcode icon to launch the camera and scan barcode for the barcode field. This helps merchant simplify their input.
+For example, tap on a barcode icon to launch the camera and scan barcode for the barcode field. This helps merchants simplify their input.
 
 <!-- content-for: android -->
 
@@ -609,7 +609,7 @@ For example, tap on a barcode icon to launch the camera and scan barcode for the
 
 ### Text field with validation error
 
-Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as a merchant has finished interacting with a field (but not before). If a field already has an error, validate and remove errors as the merchant types so they can immediately see when an error has been fixed.
+Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as merchants have finished interacting with a field (but not before). If a field already has an error, validate and remove errors as merchants type so they can immediately see when an error has been fixed.
 
 ```jsx
 class ValidationErrorExample extends React.Component {

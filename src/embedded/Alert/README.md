@@ -59,8 +59,8 @@ Embedded alerts should:
 - Be used for in-context tasks that require information to be acknowledged before continuing, or require confirmation of an action that can’t be undone or is difficult to undo (with the option to back out).
 - For alert messages, keep body content to line of text and don’t use more than one call to action.
 - For confirmation messages, always give merchants the clear option to confirm or back out. Keep body content to one line of text and don’t use more than two calls to action.
-- Not be used as a way to present additional sections of content without actions because they can disrupt a merchant’s workflow.
-- Not be used for complicated flows that require a merchant to take multiple paths or complete more than one primary task.
+- Not be used as a way to present additional sections of content without actions because they can disrupt merchants’ workflows.
+- Not be used for complicated flows that require merchants to take multiple paths or complete more than one primary task.
 
 ---
 
@@ -72,7 +72,7 @@ Embedded alert titles should be:
 
 - Informative and descriptive:
   - For alert messages, they should label the type of content grouped in the alert
-  - For confirmation messages, they should concisely ask if the merchant wants to continue, using a clear {verb}+{noun} question
+  - For confirmation messages, they should concisely ask if merchants want to continue, using a clear {verb}+{noun} question
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
   - Keep to a single sentence and avoid using any punctuation, with the exception of question marks for confirmation messages
@@ -103,7 +103,7 @@ Embedded alert titles should be:
 
 Body content:
 
-- For alert messages, clearly explain what the merchant needs to acknowledge
+- For alert messages, clearly explain what merchants need to acknowledge
 - For confirmation messages, clearly explain if the action is irreversible or difficult to undo, and [use plain language](https://polaris.shopify.com/content/product-content#write-for-a-grade-7-reading-level).
 - Be concise: use only one line of text. Don’t start the sentence with, “Are you sure?”.
 
@@ -129,7 +129,7 @@ Body content:
 
 Actions should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling an action.
 - To provide enough context to merchants and to make the copy action-led, we usually use the {verb}+{noun} format in buttons. The exception is with alert and confirmation messaging where common actions are Discard, Cancel, Stay, OK, Got it, or Delete.
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
@@ -137,7 +137,7 @@ Actions should be:
 
 **Deletions**
 
-Before a merchant can delete objects like collections, transfers, products, and variants, we present them with a confirmation message with two calls to action, one to [Cancel] and one to [Delete]. We keep it short and don’t use {verb}+{noun} button copy to make it mobile-friendly.
+Before merchants can delete objects like collections, transfers, products, and variants, we present them with a confirmation message with two calls to action, one to [Cancel] and one to [Delete]. We keep it short and don’t use {verb}+{noun} button copy to make it mobile-friendly.
 
 Primary actions:
 
@@ -254,7 +254,7 @@ Secondary action:
 
 ### Destructive warning
 
-Use passing `destructive` to make it clear to the merchant that the action is potentially dangerous. Only use this option when the merchant is about to perform an action that they can’t undo.
+Use passing `destructive` to make it clear to merchants that the action is potentially dangerous. Only use this option when merchants are about to perform an action they can’t undo.
 
 ```jsx
 <Alert
@@ -276,4 +276,4 @@ Use passing `destructive` to make it clear to the merchant that the action is po
 
 - If you want to present general content in an overlay in an embedded app, [use the embedded modal component](https://polaris.shopify.com/components/embedded/embedded-modal)
 - To present confirmation that a merchant action was successful in an embedded app, [use the embedded flash notice method](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md#easdkshowflashnotice)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, and offers next steps, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
+- To communicate a change or condition that needs merchants’ attention within the context of a page, and offers next steps, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)

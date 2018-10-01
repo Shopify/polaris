@@ -49,7 +49,7 @@ Use to notify merchants that their requested action is being processed.
 
 The spinner component should:
 
-- Notify the merchant that their request has been received and the action will soon complete.
+- Notify merchants that their request has been received and the action will soon complete.
 - Not be used to give feedback for an entire page load.
 - White can only be used with small spinners on actionable components like buttons.
 - On web, be used in conjunction with skeleton loading to represent non-typographic content. For example, line graphs on the Merchant analytics dashboard.

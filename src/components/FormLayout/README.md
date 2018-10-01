@@ -44,7 +44,7 @@ Use form layout to arrange fields within a form using standard spacing. By defau
 
 Forms should:
 
-- Be considerate of a merchant’s time and privacy by only asking for information that’s required
+- Be considerate of merchants’ time and privacy by only asking for information that’s required
 - Group related tasks under section titles to provide more context and make the interface easier to scan
 - Follow a logical, predictable order—for example, always ask for first name first, and last name second on forms
 

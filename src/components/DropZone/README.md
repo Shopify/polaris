@@ -63,7 +63,7 @@ Upload error messages should:
 
 - Be displayed as a [banner](/components/feedback-indicators/banner) with a critical status
 - Show the name of the file(s) that were not uploaded successfully
-- Describe why the file(s) couldn’t be uploaded and what the merchant should change to upload their file successfully, as seen below
+- Describe why the file(s) couldn’t be uploaded and what merchants should change to upload their file successfully, as seen below
 
 ```
 The following images couldn’t be uploaded:

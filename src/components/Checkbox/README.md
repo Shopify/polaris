@@ -21,7 +21,7 @@ keywords:
 
 # Checkbox
 
-Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have a merchant indicate they agree to specific terms and services.
+Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
 
 ---
 
@@ -84,7 +84,7 @@ Lists that use checkboxes should:
 
 <!-- end -->
 
-- In the rare case where the checkbox is asking the merchant to agree to terms
+- In the rare case where the checkbox is asking merchants to agree to terms
   or service, use the first person
 
 <!-- usageblock -->

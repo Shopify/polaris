@@ -46,15 +46,14 @@ Banners should:
     popover, or modal) should show inside of that element.
 - Focus on a single theme, piece of information, or required action to avoid
   overwhelming merchants.
-- Be dismissible unless they contain critical information or an important step
-  a merchant needs to take.
+- Be dismissible unless they contain critical information or an important step merchants need to take.
 - Be concise and scannable—merchants shouldn’t need to spend a lot of time
   figuring out what they need to know and do.
 - Be limited to a few important calls to action with no more than one primary
   action.
 - Be used thoughtfully and sparingly for only the most important information.
 - Not be used as the primary entry point or mechanism to access information or
-  actions a merchant needs to take on a regular basis.
+  actions merchants need to take on a regular basis.
 - Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead.
 - Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](/design/icons#using-icons-in-your-designs).
 
@@ -139,7 +138,7 @@ of 20 themes. To add more themes, delete themes you’re no longer using.
 Buttons and links should be:
 
 - Clear and predictable: merchants should be able to anticipate what will
-  happen when they click a button. Never deceive a merchant by mislabeling a
+  happen when they click a button. Never deceive merchants by mislabeling a
   button.
 
 <!-- usagelist -->
@@ -186,7 +185,7 @@ Add a menu item
 
 Link text should:
 
-- Set the expectation of where the merchant will be taken
+- Set the expectation of where merchants will be taken
 
 <!-- usagelist -->
 
@@ -219,7 +218,7 @@ Finance section
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant
+- Actionable: start sentences with imperative verbs when telling merchants
   what actions are available to them (especially something new). Don’t use
   permissive language like “you can”.
 
@@ -286,7 +285,7 @@ including packaging.
 
 <!-- example-for: web -->
 
-Make all banners dismissible, unless they contain critical information or an important action that a merchant is required to take.
+Make all banners dismissible, unless they contain critical information or an important action that merchants are required to take.
 
 ```jsx
 <Banner onDismiss={() => {}}>
@@ -379,7 +378,7 @@ Use to update merchants about a change or give them advice.
 
 ### Warning banners
 
-- Use to display information that needs attention or that the merchant needs to take action on
+- Use to display information that needs attention or that merchants need to take action on
 - Seeing these banners can be stressful for merchants so be cautious about using them
 
 ```jsx

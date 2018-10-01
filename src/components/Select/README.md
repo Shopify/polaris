@@ -96,7 +96,7 @@ Options should:
 
 <!-- content-for: web -->
 
-Presents a classic dropdown menu or equivalent picker as determined by the merchant’s browser.
+Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
 
 ```jsx
 class SelectExample extends React.Component {

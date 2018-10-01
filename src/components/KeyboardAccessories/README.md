@@ -14,7 +14,7 @@ keywords:
 
 # Keyboard accessories
 
-On iOS and Android, software keyboards appear on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. For example, when the merchant is updating a description and needs controls for bolding, italicizing, and underlining.
+On iOS and Android, software keyboards appear on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. For example, when merchants are updating a description and need controls for bolding, italicizing, and underlining.
 
 ---
 
@@ -26,8 +26,8 @@ Keyboard accessories should:
   - 44pt on iOS
   - 48dp on Android
 - Include a horizontally swipeable interaction if there is a lot of content or a large number of actions you need to make available to merchants
-  - Provide an easy hint or introduction to make the merchant aware of the swipe interaction
-- Make actions grouped and expandable if possible, in order to reduce visual noise and complexity for the merchant
+  - Provide an easy hint or introduction to make merchants aware of the swipe interaction
+- Make actions grouped and expandable if possible, in order to reduce visual noise and complexity for merchants
 
 ---
 
@@ -37,7 +37,7 @@ Keyboard accessories should:
 
 <!-- example-for: ios, android -->
 
-Use the action accessories to add actions that are relevant to what the merchant is entering on the screen.
+Use the action accessories to add actions that are relevant to what merchants are entering on the screen.
 
 <!-- content-for: android -->
 

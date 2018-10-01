@@ -115,7 +115,7 @@ Note if you’re using CSS-only you’ll need to provide your own JavaScript.
 
 Building apps for merchants lets you quickly integrate your service into Shopify, or embed your web apps directly inside Shopify POS and the Shopify admin.
 
-With embedded apps, you can add value to a merchant’s day-to-day business operations by leveraging the familiar surroundings of the Shopify admin. Embedded apps are separately hosted and use the Shopify API.
+With embedded apps, you can add value to merchants’ day-to-day business operations by leveraging the familiar surroundings of the Shopify admin. Embedded apps are separately hosted and use the Shopify API.
 
 The embedded section includes
 

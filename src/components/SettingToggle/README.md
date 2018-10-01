@@ -18,7 +18,7 @@ keywords:
 
 # Setting toggle
 
-Use to give the merchant control over a feature or option that can be turned
+Use to give merchants control over a feature or option that can be turned
 on or off.
 
 ---

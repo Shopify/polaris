@@ -35,7 +35,7 @@ choices.
 
 Choice lists should:
 
-- Include a title that tells the merchant what to do or explains the available options
+- Include a title that tells merchants what to do or explains the available options
 - Label options clearly based on what the option will do
 - Avoid mutually exclusive options when allowing multiple selection
 
@@ -48,7 +48,7 @@ Choice lists should:
 List titles should:
 
 - Help merchants understand how the items in the list are grouped together, or
-  should explain what kind of choice the merchant is making
+  should explain what kind of choice merchants are making
 
 <!-- usagelist -->
 
@@ -173,7 +173,7 @@ If your list contains helper text, only the description below the list item shou
 
 ### Single choice list
 
-Allows the merchant to select one option from a list.
+Allows merchants to select one option from a list.
 
 - Make sure all options are an either/or choice.
 
@@ -220,7 +220,7 @@ class ChoiceListExample extends React.Component {
 
 ### Multi-choice list
 
-Allows the merchant to select multiple options from a list.
+Allows merchants to select multiple options from a list.
 
 - Avoid options that are an either/or choice.
 

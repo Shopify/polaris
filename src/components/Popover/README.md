@@ -38,7 +38,7 @@ Popovers are small overlays that open on demand. They let merchants access addit
 Popovers should:
 
 - Always be positioned next to the button or other interface element that triggers them
-- Be used for secondary or less important information and actions since they’re hidden until the merchant hits the trigger
+- Be used for secondary or less important information and actions since they’re hidden until merchants hit the trigger
 - Contain navigation or actions that share a relationships to each other
 - Be triggered by a clearly labeled button
 
@@ -50,7 +50,7 @@ Popovers should:
 
 If a popover contains actions, they should:
 
-- Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive a merchant by mislabeling an action.
+- Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive merchants by mislabeling an action.
 
 <!-- usagelist -->
 
@@ -100,7 +100,7 @@ If a popover contains actions, they should:
 
 If the popover includes a series of navigational links, each item should:
 
-- Be concise but still give the merchant enough information so they can easily find and accurately navigate to the path they want.
+- Be concise but still give merchants enough information so they can easily find and accurately navigate to the path they want.
 
 <!-- usagelist -->
 

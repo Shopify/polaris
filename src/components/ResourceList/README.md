@@ -90,7 +90,7 @@ A resource list with simple items and no bulk actions, sorting, or filtering. Se
 
 ### Resource list with bulk actions
 
-Allows the merchant to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.
+Allows merchants to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -183,7 +183,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with loading state
 
-Notifies the merchant that list items are being processed.
+Notifies merchants that list items are being processed.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -277,7 +277,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with sorting
 
-Allows the merchant to change the way the list is sorted by selecting one of several options from a [Select](/components/forms/select) control. See the [the sorting section of the case study](#study-sorting) for implementation details.
+Allows merchants to change the way the list is sorted by selecting one of several options from a [Select](/components/forms/select) control. See the [the sorting section of the case study](#study-sorting) for implementation details.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -353,7 +353,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with filtering
 
-Allows the merchant to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
+Allows merchants to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -578,7 +578,7 @@ View the [case study](#study) for a walkthrough of how to use this component to 
 
 ## Purpose
 
-Shopify is organized around objects that represent a merchant’s business, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _details page_.
+Shopify is organized around objects that represent merchants businesses, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _details page_.
 
 ### Problem
 
@@ -630,7 +630,7 @@ Resource lists should:
 
 Resource lists can optionally:
 
-- Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, a merchant may want to add the same tag to a large number of products.
+- Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, merchants may want to add the same tag to a large number of products.
 
 ---
 
@@ -1015,7 +1015,7 @@ Filter control showing a state with applied filters and an additional action (op
 A Resource list’s filter control should:
 
 - Make filters available that make common merchant tasks easy. For example, provide the option for merchants to filter a customer’s list to email subscribers only. Don’t offer arbitrary filters.
-- Show relevant results for a wide range of search inputs, including partial words. For example, if a merchant types “unful” in the search field for an orders list, it should return all unfulfilled orders as a the result (as well as orders with this string elsewhere in Shopify, such as in an order note).
+- Show relevant results for a wide range of search inputs, including partial words. For example, if merchants type “unful” in the search field for an orders list, it should return all unfulfilled orders as a the result (as well as orders with this string elsewhere in Shopify, such as in an order note).
 
 <a name="subcomponent-filter-control-content-guidelines"></a>
 
@@ -1082,7 +1082,7 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 ## Related components
 
-- To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the [data table component](/components/lists-and-tables/data-table)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](/components/lists-and-tables/data-table)
 - To display a simple list of related content, [use the list component](/components/lists-and-tables/list)
 
 ---
@@ -1723,7 +1723,7 @@ Now we can write our styles:
 
 </div>
 
-Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s details page. This is information the merchant took time to write down, and it’s worth surfacing in the list.
+Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s details page. This is information merchants took time to write down, so it’s worth surfacing in the list.
 
 Unlike a customer’s name, we want to show this customer note only if it’s present. A good way to display conditional content in a resource list item is to use the exception list component (coming soon).
 
@@ -1871,7 +1871,7 @@ Occasionally a resource has an action that merchants use a lot. Fulfilling order
 
 It makes sense to surface this key action from the details page on each list item, but adding this action to each item would be visually repetitive.
 
-Shortcut actions resolve this. They provide a way to promote popular actions by showing them when the merchant hovers their mouse over a list item. As long as the shortcut action remains available on the resource’s details page, merchants using devices without a mouse can still access them.
+Shortcut actions resolve this. They provide a way to promote popular actions by showing them when merchants hover their mouse over a list item. As long as the shortcut action remains available on the resource’s details page, merchants using devices without a mouse can still access them.
 
 Our customer list item can benefit from a shortcut action that lets merchants jump to a customer’s most recent order.
 
@@ -1922,7 +1922,7 @@ Shortcut actions should:
 
 Shortcut actions can be defined as part of our custom list item, or we can leave it up to the developer using our component to define them for each list, just as they would using `ResourceList.Item`.
 
-If we were to build a shortcut action into the custom item, we could offer the merchant a link to the customer’s most recent order instead of conditional actions. We could add a prop to allow this:
+If we were to build a shortcut action into the custom item, we could offer merchants a link to the customer’s most recent order instead of conditional actions. We could add a prop to allow this:
 
 ```jsx
     ...
@@ -2043,7 +2043,7 @@ We’ll start where we left off previously, with our items being rendered.
 Now we’ll add the bulk actions. We’ll need to do several things to get this wired up:
 
 1.  Define our bulk actions and pass them to the resource list
-2.  Add a handler to respond when the merchant begins making a bulk selection
+2.  Add a handler to respond when merchants begin making a bulk selection
 3.  Add a way to keep track of which items have been selected and make sure our component knows, so it can display the change
 
 The way we keep track of the current selection is with state.
@@ -2164,7 +2164,7 @@ If you’re new to React or ES2015 you might be wondering about the lines in our
 
 </div>
 
-When a merchant sorts a list of resources they’re changing the order of the entire set. This is different from filtering, which is when the list of resources is narrowed down to a subset of the original list.
+When merchants sort a list of resources they’re changing the order of the entire set. This is different from filtering, which is when the list of resources is narrowed down to a subset of the original list.
 
 Whether or not you provide sort options, resource lists should have a default sort order that makes sense to merchants and supports their most common tasks.
 
@@ -2316,7 +2316,7 @@ As with bulk actions, there are broadly three parts to the implementation:
 
 1.  Defining the sort options and passing them to our list
 1.  Tracking the currently selected option in state and making sure our list receives the value in `render`
-1.  Setting up a handler to respond to and update the state when the merchant changes the sort option
+1.  Setting up a handler to respond to and update the state when merchants change the sort option
 
 ```jsx
 ...
@@ -2534,7 +2534,7 @@ Resource list doesn’t accept these available filters directly. Instead, it del
   ...
 ```
 
-Next, we need to deal with state. We’ll add 2 new properties to our state object. One will handle the text input in the filter control’s search field. The other property will handle the rest of the filters. As we did in our sorting implementation, we’ll add handler methods that call `setState` to update the UI when the merchant changes the filters.
+Next, we need to deal with state. We’ll add 2 new properties to our state object. One will handle the text input in the filter control’s search field. The other property will handle the rest of the filters. As we did in our sorting implementation, we’ll add handler methods that call `setState` to update the UI when merchants change the filters.
 
 ```jsx
 ...
