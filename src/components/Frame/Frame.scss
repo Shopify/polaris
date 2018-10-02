@@ -14,7 +14,7 @@ $skip-vertical-offset: rem(10px);
   z-index: z-index(nav, $fixed-element-stacking-order);
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   flex: 0 0 auto;
   align-items: stretch;
   height: 100%;
@@ -24,12 +24,20 @@ $skip-vertical-offset: rem(10px);
   @include frame-when-nav-displayed {
     z-index: 1;
     top: top-bar-height();
+    display: flex;
     height: calc(100% - #{top-bar-height()});
   }
 
   &:focus {
     outline: none;
   }
+}
+
+.Navigation-enter,
+.Navigation-enterActive,
+.Navigation-exit,
+.Navigation-exitActive {
+  display: flex;
 }
 
 .Navigation-enter {
@@ -112,6 +120,7 @@ $skip-vertical-offset: rem(10px);
   flex: 1;
   display: flex;
   align-items: stretch;
+
   @include layout-flex-fix;
   @include safe-area-for(padding-right, 0, right);
   @include safe-area-for(padding-left, 0, left);

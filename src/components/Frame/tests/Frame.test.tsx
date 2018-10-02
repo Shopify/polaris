@@ -83,8 +83,7 @@ describe('<Frame />', () => {
       <Frame showMobileNavigation navigation={navigation} />,
     ).find(Frame);
 
-    const nav = findByTestID(frame, 'NavWrapper');
-    const cssTransition = nav.find(CSSTransition);
+    const cssTransition = frame.find(TrapFocus).find(CSSTransition);
 
     expect(cssTransition.prop('in')).toBe(true);
   });
@@ -101,8 +100,7 @@ describe('<Frame />', () => {
       <Frame showMobileNavigation={false} navigation={navigation} />,
     ).find(Frame);
 
-    const nav = findByTestID(frame, 'NavWrapper');
-    const cssTransition = nav.find(CSSTransition);
+    const cssTransition = frame.find(TrapFocus).find(CSSTransition);
 
     expect(cssTransition.prop('in')).toBe(false);
   });
