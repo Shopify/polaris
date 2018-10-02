@@ -37,6 +37,7 @@ Use `withRef` with `compose` to forwardRefs to a component.
 - Top aligned all cells in `DataTable` ([#2278](https://github.com/Shopify/polaris-react/pull/2278))
 - Fixed stacking order of loading overlay in `ResourceList` ([#2258](https://github.com/Shopify/polaris-react/pull/2258))
 - Fixed form inputs in `Popover` that were disappearing instead of top aligning ([#2326](https://github.com/Shopify/polaris-react/pull/2326)) thanks to [@mbaumbach](https://github.com/mbaumbach) for the [original issue](https://github.com/Shopify/polaris/issues/435)
+- Removed a redundant class on `OptionList` list items ([#2338](https://github.com/Shopify/polaris-react/pull/2338))
 
 ### Documentation
 

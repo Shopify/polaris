@@ -142,10 +142,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
             });
 
           return (
-            <li
-              key={title || `noTitle-${sectionIndex}`}
-              className={styles.Options}
-            >
+            <li key={title || `noTitle-${sectionIndex}`}>
               {titleMarkup}
               <ul
                 className={styles.Options}
