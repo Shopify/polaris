@@ -45,4 +45,8 @@ export default class ScrollLockManager {
       this.locked = true;
     }
   }
+
+  resetScrollPosition() {
+    scrollPosition = 0;
+  }
 }
