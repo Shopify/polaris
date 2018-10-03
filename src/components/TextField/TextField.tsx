@@ -137,6 +137,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     }
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(newProps: Props) {
     this.setState({
       id: newProps.id || this.state.id,

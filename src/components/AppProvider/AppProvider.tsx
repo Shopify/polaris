@@ -50,6 +50,7 @@ export default class AppProvider extends React.Component<Props> {
     }
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({
     i18n,
     linkComponent,

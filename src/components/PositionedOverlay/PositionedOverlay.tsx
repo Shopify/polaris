@@ -93,6 +93,7 @@ export default class PositionedOverlay extends React.PureComponent<
     }
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps() {
     this.handleMeasurement();
   }

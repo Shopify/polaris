@@ -1,3 +1,4 @@
+// eslint-disable-next-line typescript/no-var-requires
 const CoreWeakMap: typeof WeakMap = require('core-js/library/es6/weak-map');
 
 export interface Message {

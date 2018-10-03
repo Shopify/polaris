@@ -30,6 +30,8 @@
     "react/no-array-index-key": "off",
     "react/no-did-update-set-state": "off",
     "react/no-access-state-in-setstate": "off",
+    "shopify/typescript/prefer-pascal-case-enums": "off",
+    "shopify/typescript/prefer-singular-enums": "off",
     "typescript/trailing-comma-interface": "off",
     "jsx-a11y/label-has-for": [
       2,
@@ -47,5 +49,13 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "typescript/no-var-requires": "off"
+      }
+    }
+  ]
 }

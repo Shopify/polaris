@@ -3,11 +3,12 @@ import {mountWithAppProvider} from 'tests/utilities';
 import {Button} from 'src/components';
 import Item from '../Item';
 
-describe('<ButtonGroup />', () => {
-  it('renders a button', () => {
-    const item = mountWithAppProvider(
-      <Item button={<Button>Button text</Button>} />,
-    );
-    expect(item.find(Button).length).toBe(1);
+describe('<Item />', () => {
+  describe('button', () => {
+    it('renders the given button', () => {
+      const button = <Button>Button text</Button>;
+      const item = mountWithAppProvider(<Item button={button} />);
+      expect(item.contains(button)).toBeTruthy();
+    });
   });
 });
