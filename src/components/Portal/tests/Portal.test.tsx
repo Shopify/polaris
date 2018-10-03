@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {createPortal} from 'react-dom';
 import * as targets from '@shopify/react-utilities/target';
 import {mountWithAppProvider} from 'tests/utilities';
 import Portal from '../Portal';
 
 jest.mock('react-dom', () => ({
   ...require.requireActual('react-dom'),
-  createPortal: jest.fn(() => null),
+  createPortal: jest.fn(),
 }));
 
-const createPortalSpy = createPortal as jest.Mock;
+const {
+  createPortal: createPortalSpy,
+}: {[key: string]: jest.Mock} = require.requireMock('react-dom');
+
 const actualIsServer = targets.isServer;
 
 function lastSpyCall(spy: jest.Mock) {
@@ -21,6 +23,10 @@ function mockIsServer(value: boolean) {
 }
 
 describe('<Portal />', () => {
+  beforeEach(() => {
+    createPortalSpy.mockImplementation(() => null);
+  });
+
   afterEach(() => {
     mockIsServer(actualIsServer);
   });
@@ -65,14 +71,6 @@ describe('<Portal />', () => {
       appendChildSpy.mockRestore();
     });
 
-    it('doesnt get added when the env is the server', () => {
-      mockIsServer(true);
-      const appendChildSpy = jest.spyOn(document.body, 'appendChild');
-      mountWithAppProvider(<Portal />);
-      expect(appendChildSpy).not.toHaveBeenCalled();
-      appendChildSpy.mockRestore();
-    });
-
     it('gets removed from the DOM when the component unmounts', () => {
       const removeChildSpy = jest.spyOn(document.body, 'removeChild');
       const portal = mountWithAppProvider(<Portal />);
@@ -89,6 +87,9 @@ describe('<Portal />', () => {
   });
 
   it('has a child ref defined when onPortalCreated callback is called', () => {
+    createPortalSpy.mockImplementation(
+      require.requireActual('react-dom').createPortal,
+    );
     const ref: React.RefObject<HTMLDivElement> = React.createRef();
     const handlePortalCreated = jest.fn(() =>
       expect(ref.current).not.toBeNull(),

@@ -31,11 +31,8 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
-<<<<<<< HEAD
 export {default as Backdrop, BackdropProps} from './Backdrop';
 
-=======
->>>>>>> master
 export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
 
 export {
