@@ -118,14 +118,36 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   width: 100%;
   min-height: $item-min-height;
   padding: $item-vertical-padding spacing();
+  text-align: left;
   cursor: pointer;
 
-  &:hover,
-  &:focus,
   &:active {
-    background: color('indigo');
-    outline: none;
-    color: color('white');
+    @include state(active);
+
+    &:hover {
+      @include state(active, hover);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:focus {
+        @include state(active, hover, focused);
+      }
+    }
+  }
+
+  &:hover {
+    @include state(hover);
+
+    &:focus {
+      @include state(hover, focused);
+    }
+  }
+
+  &:focus {
+    @include state(focused);
+  }
+
+  &::-moz-focus-inner {
+    border: none;
   }
 }
 
