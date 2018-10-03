@@ -1,12 +1,8 @@
 import * as React from 'react';
-import UnstyledLink from '../UnstyledLink';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import Link from '../../AppProvider/Link';
+import Link from 'src/components/AppProvider/Link';
+import UnstyledLink from '../UnstyledLink';
 
 describe('<UnstyledLink />', () => {
   describe('custom link component', () => {
@@ -37,7 +33,7 @@ describe('<UnstyledLink />', () => {
 
   describe('external', () => {
     it('adds the correct attributes', () => {
-      const anchorElement = shallowWithAppProvider(
+      const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
       ).find('a');
       expect(anchorElement.prop('target')).toBe('_blank');

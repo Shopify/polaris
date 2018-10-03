@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import EventListener from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import EventListener from '../EventListener';
 
 describe('<EventListener />', () => {
   it('calls handler when the appropriate event is fired', () => {

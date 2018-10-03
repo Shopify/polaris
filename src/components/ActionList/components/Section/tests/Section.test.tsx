@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import Section from '../Section';
+import {mountWithAppProvider} from 'tests/utilities';
 import Item from '../../Item';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import Section from '../Section';
 
 describe('<Section />', () => {
   it('renders its items', () => {

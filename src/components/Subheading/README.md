@@ -28,7 +28,7 @@ sections. Generally, sections of a card use subheadings for their titles
 
 ---
 
-## Best Practices
+## Best practices
 
 Subheadings should:
 

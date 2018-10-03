@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import {findByTestID} from '../../../../tests/utilities/enzyme';
+import {mountWithAppProvider, findByTestID} from 'tests/utilities';
 import Popover from '../Popover';
 
 describe('<Popover />', () => {

@@ -84,7 +84,7 @@ Get Help From a Shopify Expert!
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant
+- Actionable: start sentences with imperative verbs when telling merchants
   what actions are available to them (especially something new). Don’t use
   permissive language like “you can”.
 
@@ -123,7 +123,7 @@ including packaging.
 
 Buttons should be:
 
-Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
 <!-- usagelist -->
 
@@ -209,4 +209,4 @@ Use to let merchants know about a feature or opportunity where there are two dis
 
 - To group similar concepts and tasks together, [use the card component](/components/structure/card)
 - To create page-level layout, [use the layout component](/components/structure/layout)
-- To explain a feature that a merchant hasn’t tried yet, [use the empty state component](/components/structure/empty-state)
+- To explain a feature that merchants haven’t tried yet, [use the empty state component](/components/structure/empty-state)

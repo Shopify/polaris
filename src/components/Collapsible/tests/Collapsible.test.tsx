@@ -5,7 +5,7 @@ import Collapsible from '../Collapsible';
 describe('<Collapsible />', () => {
   const ariaHiddenSelector = '[aria-hidden=true]';
 
-  it('indicates hidden with aria-hidden', () => {
+  it('does not render its children and indicates hidden with aria-hidden', () => {
     const collapsible = shallowWithAppProvider(
       <Collapsible id="test-collapsible" open={false}>
         content
@@ -14,9 +14,10 @@ describe('<Collapsible />', () => {
 
     const hidden = collapsible.find(ariaHiddenSelector);
     expect(hidden.exists()).toBe(true);
+    expect(collapsible.contains('content')).toBe(false);
   });
 
-  it('does not render aria-hidden when open', () => {
+  it('renders its children and does not render aria-hidden when open', () => {
     const collapsible = shallowWithAppProvider(
       <Collapsible id="test-collapsible" open>
         content
@@ -25,5 +26,6 @@ describe('<Collapsible />', () => {
 
     const hidden = collapsible.find(ariaHiddenSelector);
     expect(hidden.exists()).toBe(false);
+    expect(collapsible.contains('content')).toBe(true);
   });
 });

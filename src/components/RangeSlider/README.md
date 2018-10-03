@@ -17,7 +17,7 @@ keywords:
 
 # Range slider
 
-A range slider is an input field that a merchant can use to select a numeric value within a given range (minimum and maximum values).
+A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
 
 ---
 
@@ -28,7 +28,7 @@ Range sliders should:
 - Always be used with a label, even if that label is `hidden`.
 - When a label is visible, it should clearly communicate the purpose of the range input and its values (min, max, step, value)
 - Be labeled as “Optional” when you need to request input that’s not required
-- Validate input as soon as the merchant has finished interacting with a field (but not before)
+- Validate input as soon as merchants have finished interacting with a field (but not before)
 
 ---
 
@@ -115,7 +115,7 @@ Error messages should:
 
 ### Default range slider
 
-Use range sliders where a merchant may need to select a percentage between `0 — 100`.
+Use range sliders where merchants may need to select a percentage between `0 — 100`.
 
 ```jsx
 class RangeSliderExample extends React.Component {

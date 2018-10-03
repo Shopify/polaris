@@ -35,7 +35,7 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ---
 
-## Best Practices
+## Best practices
 
 The page component should:
 
@@ -73,7 +73,7 @@ The content of each breadcrumb link should be the title of the page to which it 
 Page header action labels should be:
 
 - Clear and predictable: merchants should be able to anticipate what will
-  happen when they click a page action. Never deceive a merchant by mislabeling an action.
+  happen when they click a page action. Never deceive merchants by mislabeling an action.
 
 - Action-led: they should always lead with a strong verb that encourages
   action. To provide enough context to merchants, use the {verb}+{noun} format.
@@ -266,7 +266,7 @@ Use for layouts that benefit from more screen width, such as wide tables or list
 
 <!-- example-for: web -->
 
-Use a single column layout if the page supports a single unified task. When the merchant must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
+Use a single column layout if the page supports a single unified task. When merchants must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
 
 ```jsx
 <Page

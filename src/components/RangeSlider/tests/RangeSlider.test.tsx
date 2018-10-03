@@ -1,10 +1,7 @@
 import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
 import {noop} from '@shopify/javascript-utilities/other';
-import RangeSlider, {invertNumber} from '..';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import RangeSlider, {invertNumber} from '../RangeSlider';
 
 describe('<RangeSlider />', () => {
   it('allows specific props to pass through properties on the input', () => {

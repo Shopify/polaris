@@ -26,7 +26,7 @@ Skeleton page component should:
 
 ## Content guidelines
 
-Show page titles that never change for a page. For example, keep the title “Products” on the product index page, but use skeleton loading for titles that change on the product show page. Don’t use placeholder content for titles that will change when the page fully loads.
+Show page titles that never change for a page. For example, keep the title “Products” on the product list page, but use skeleton loading for titles that change on the product details page. Don’t use placeholder content for titles that will change when the page fully loads.
 
 Secondary actions are always represented with skeleton content. You can change the number of skeleton actions that best represent the number of actions once loaded.
 

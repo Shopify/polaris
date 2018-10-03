@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import CalloutCard from '../../CalloutCard';
+import {mountWithAppProvider} from 'tests/utilities';
+import CalloutCard from '../CalloutCard';
 
 describe('<CalloutCard />', () => {
   const illustration =

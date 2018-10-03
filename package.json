@@ -96,7 +96,7 @@
     "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/js-uploader": "github:shopify/js-uploader",
     "@shopify/react-serialize": "^1.0.6",
-    "@types/enzyme": "^3.1.10",
+    "@types/enzyme": "^3.1.13",
     "@types/jest": "^21.1.2",
     "@types/lodash": "^4.14.108",
     "@types/lodash-decorators": "^4.0.0",
@@ -129,8 +129,8 @@
     "crypto": "^1.0.1",
     "css-loader": "^0.28.3",
     "cssnano": "^3.10.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^4.8.0",
     "eslint-plugin-shopify": "^23.1.0",
     "express": "^4.16.3",
@@ -206,7 +206,11 @@
   "dependencies": {
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.0",
+<<<<<<< HEAD
     "@shopify/polaris-tokens": "^1.2.0",
+=======
+    "@shopify/react-compose": "^0.1.6",
+>>>>>>> master
     "@shopify/react-html": "^3.0.3",
     "@shopify/react-utilities": "2.0.0-beta.9",
     "@types/prop-types": "^15.5.5",

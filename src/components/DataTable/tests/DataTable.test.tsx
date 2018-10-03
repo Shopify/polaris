@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
-import {findByTestID} from '../../../../tests/utilities/enzyme';
-import DataTable, {CombinedProps as Props} from '../DataTable';
+import {mountWithAppProvider, findByTestID} from 'tests/utilities';
 import {Cell, Navigation} from '../components';
+import DataTable, {CombinedProps as Props} from '../DataTable';
 
 interface DataTableTestProps {
   sortable?: Props['sortable'];

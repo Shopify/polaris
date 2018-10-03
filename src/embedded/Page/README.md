@@ -40,7 +40,7 @@ Static images are provided to help visualize the interface as embedded component
 
 ---
 
-## Best Practices
+## Best practices
 
 The page component should:
 
@@ -78,7 +78,7 @@ The content of each breadcrumb link should be the title of the page to which it 
 Page header action labels should be:
 
 - Clear and predictable: merchants should be able to anticipate what will
-  happen when they click a page action. Never deceive a merchant by mislabeling an action.
+  happen when they click a page action. Never deceive merchants by mislabeling an action.
 - Action-led: they should always lead with a strong verb that encourages
   action. To provide enough context to merchants, use the {verb}+{noun} format.
 

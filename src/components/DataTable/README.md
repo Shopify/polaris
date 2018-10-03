@@ -257,7 +257,7 @@ Data tables should:
 - Include a summary row to surface the column totals.
 - Not include calculations within the summary row.
 - Wrap instead of truncate content. This is because if row titles start with the same word, they’ll all appear the same when truncated.
-- Not to be used for an actionable list of items that link to show pages. For this functionality, use the [resource list] component.
+- Not to be used for an actionable list of items that link to details pages. For this functionality, use the [resource list] component.
 
 ### Alignment
 
@@ -305,4 +305,4 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Related components
 
-- To create an actionable list of related items that link to show pages, such as a list of customers, use the [resource list component](/components/lists-and-tables/resource-list).
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](/components/lists-and-tables/resource-list).

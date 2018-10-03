@@ -1,10 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {Button, Icon, UnstyledLink, Heading} from 'src/components';
 import Banner from '..';
-import Button from '../../Button';
-import Icon from '../../Icon';
-import UnstyledLink from '../../UnstyledLink';
-import Heading from '../../Heading';
 
 import successIcon from '../icons/circle-check-mark.svg';
 import fallbackIcon from '../icons/flag.svg';

@@ -1,14 +1,19 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
+import compose from '../../../../utilities/react-compose';
+import withRef from '../../../WithRef';
 
-import Link from '../../../Link';
-import Icon from '../../../Icon';
-import Stack from '../../../Stack';
-import Button from '../../../Button';
-import Caption from '../../../Caption';
-import TextStyle from '../../../TextStyle';
+import {
+  Link,
+  Icon,
+  Stack,
+  Button,
+  Caption,
+  TextStyle,
+} from '../../../../components';
+import withContext from '../../../WithContext';
+import {Consumer} from '../Context';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import IconDragDrop from '../../icons/drag-drop.svg';
@@ -16,6 +21,7 @@ import AssetFileUpload from '../../images/file-upload.svg';
 import AssetImageUpload from '../../images/image-upload.svg';
 
 import {DropZoneContext} from '../../types';
+import {WithContextTypes} from '../../../../types';
 
 import * as styles from './FileUpload.scss';
 
@@ -29,24 +35,20 @@ export interface Props {
   actionHint?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
-
+export type CombinedProps = Props &
+  WithAppProviderProps &
+  WithContextTypes<DropZoneContext>;
 export class FileUpload extends React.Component<CombinedProps, State> {
-  public static contextTypes = {
-    size: PropTypes.string,
-    type: PropTypes.string,
-  };
-
-  constructor(props: CombinedProps, context: DropZoneContext) {
+  constructor(props: CombinedProps) {
     super(props);
 
-    const {type} = context;
-    const suffix = capitalize(type);
     const {
       polaris: {
         intl: {translate},
       },
+      context: {type},
     } = props;
+    const suffix = capitalize(type);
 
     this.state = {
       actionTitle: translate(
@@ -77,7 +79,9 @@ export class FileUpload extends React.Component<CombinedProps, State> {
   }
 
   render() {
-    const {size, type} = this.context;
+    const {
+      context: {size, type},
+    } = this.props;
     const {actionTitle, actionHint} = this.state;
     const imageClasses = classNames(
       styles.Image,
@@ -143,4 +147,8 @@ export class FileUpload extends React.Component<CombinedProps, State> {
   }
 }
 
-export default withAppProvider<Props>()(FileUpload);
+export default compose<Props>(
+  withContext<Props, WithAppProviderProps, DropZoneContext>(Consumer),
+  withAppProvider<Props>(),
+  withRef<Props>(),
+)(FileUpload);

@@ -21,7 +21,7 @@ platforms:
 keywords:
   - keywords are useful
   - for improving search results
-  - in the styleguide
+  - in the style guide
 
 # Indicates the component takes over the entire viewport
 fullSizeExamples: false # Optional, default: false

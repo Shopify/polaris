@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
 import Alert from '../Alert';
 
 describe('<Alert>', () => {

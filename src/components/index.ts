@@ -31,8 +31,11 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
+<<<<<<< HEAD
 export {default as Backdrop, BackdropProps} from './Backdrop';
 
+=======
+>>>>>>> master
 export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
 
 export {
@@ -283,3 +286,7 @@ export {
 } from './SkeletonDisplayText';
 
 export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
+
+export {default as withContext} from './WithContext';
+
+export {default as withRef, WithRef} from './WithRef';

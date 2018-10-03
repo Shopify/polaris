@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import Image from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import Image from '../Image';
 
 describe('<Image />', () => {
   describe('accessibilityLabel', () => {

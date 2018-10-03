@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import Label, {labelID} from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import Label, {labelID} from '../Label';
 
 describe('<Label />', () => {
   describe('id', () => {
