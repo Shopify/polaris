@@ -4,11 +4,11 @@ import {
   TranslationDictionary,
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
-} from '../../types';
+} from './types';
 
 const REPLACE_REGEX = /{([^}]*)}/g;
 
-export function translate(
+export default function translate(
   id: string,
   translations: TranslationDictionary | TranslationDictionary[] | undefined,
   replacements?: PrimitiveReplacementDictionary | ComplexReplacementDictionary,

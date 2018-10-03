@@ -1,10 +1,11 @@
 import packageJSON from 'package.json';
-import {CreatePolarisContext} from '../../types';
+import {ValidationMap} from 'react';
+import PropTypes from 'prop-types';
 import Intl from '../Intl';
 import Link from '../Link';
-import {Context} from '../../AppProvider';
+import {Context, Props as AppProviderProps} from '../../AppProvider';
 import EASDK from '../EASDK';
-import StickyManager from '../StickyManager';
+import {StickyManager} from '../withSticky';
 
 const METADATA = {
   interface: {
@@ -13,7 +14,16 @@ const METADATA = {
   },
 };
 
-export function createPolarisContext({
+export interface CreatePolarisContext extends AppProviderProps {
+  stickyManager?: StickyManager;
+}
+
+export const polarisAppProviderContextTypes: ValidationMap<any> = {
+  polaris: PropTypes.any,
+  easdk: PropTypes.any,
+};
+
+export default function createPolarisContext({
   i18n,
   linkComponent,
   apiKey,

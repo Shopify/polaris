@@ -1,10 +1,15 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import merge from 'lodash/merge';
-import {
-  polarisAppProviderContextTypes,
-  WithAppProviderProps,
-} from '../../types';
+import Intl from '../Intl';
+import Link from '../Link';
+import EASDK from '../EASDK';
+import {StickyManager} from '../withSticky';
+import {polarisAppProviderContextTypes} from '../createPolarisContext';
+
+export interface WithAppProviderProps {
+  polaris: {intl: Intl; link: Link; easdk: EASDK; stickyManager: StickyManager};
+}
 
 export function withAppProvider<OwnProps>() {
   return function addProvider<C>(

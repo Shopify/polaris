@@ -1,1 +1,5 @@
-export {default} from './createPolarisContext';
+export {
+  default,
+  CreatePolarisContext,
+  polarisAppProviderContextTypes,
+} from './createPolarisContext';

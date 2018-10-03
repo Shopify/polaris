@@ -1,11 +1,14 @@
 import * as React from 'react';
-import EASDK from './EASDK';
-import {LinkLikeComponent} from '../UnstyledLink';
-import Intl from './Intl';
-import Link from './Link';
-import StickyManager from './StickyManager';
-import {createPolarisContext} from './utils';
-import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
+import {LinkLikeComponent} from 'src/components';
+import {
+  EASDK,
+  Intl,
+  Link,
+  StickyManager,
+  createPolarisContext,
+  polarisAppProviderContextTypes,
+  TranslationDictionary,
+} from './utilities';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */

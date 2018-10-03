@@ -1,14 +1,12 @@
 import * as React from 'react';
 import merge from 'lodash/merge';
 import hoistStatics from 'hoist-non-react-statics';
-import {
-  polarisAppProviderContextTypes,
-  WithAppProviderProps,
-} from '../../types';
+import {polarisAppProviderContextTypes} from '../createPolarisContext';
+import {WithAppProviderProps} from '../withAppProvider';
 import {Context} from '../../AppProvider';
 import StickyManager from './StickyManager';
 
-export function withSticky() {
+export default function withSticky() {
   return function addStickyManager<OwnProps, C>(
     WrappedComponent:
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C

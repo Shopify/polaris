@@ -1,13 +1,15 @@
-import AppProvider from './AppProvider';
-
-export {Props} from './AppProvider';
+export {Props, default} from './AppProvider';
 export {
-  translate,
-  withAppProvider,
   createPolarisContext,
+  polarisAppProviderContextTypes,
+  CreatePolarisContext,
   withSticky,
-} from './utils';
-export {default as Intl} from './Intl';
-export {LinkLikeComponent} from '../UnstyledLink';
-export * from './types';
-export default AppProvider;
+  Intl,
+  translate,
+  TranslationDictionary,
+  PrimitiveReplacementDictionary,
+  ComplexReplacementDictionary,
+  withAppProvider,
+  WithAppProviderProps,
+} from './utilities';
+export {LinkLikeComponent} from 'src/components';

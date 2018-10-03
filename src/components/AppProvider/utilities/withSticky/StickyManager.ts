@@ -6,7 +6,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import tokens from '@shopify/polaris-tokens';
-import {stackedContent} from '../../utilities/breakpoints';
+import {stackedContent} from 'src/utilities/breakpoints';
 
 export interface StickyItem {
   /** Node of the sticky element */
