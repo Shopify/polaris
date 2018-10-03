@@ -5,10 +5,15 @@ import {write} from '@shopify/javascript-utilities/fastdom';
 
 export interface Props {
   children?: React.ReactNode;
+  disabled?: boolean;
 }
 
 export default class Focus extends React.PureComponent<Props, never> {
   componentDidMount() {
+    if (this.props.disabled) {
+      return;
+    }
+
     write(() => {
       const root = ReactDOM.findDOMNode(this) as HTMLElement | null;
       if (root) {

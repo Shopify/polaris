@@ -4,9 +4,7 @@ import {
   animationFrame,
   mountWithAppProvider,
   documentHasStyle,
-  findByTestID,
 } from '../../../../tests/utilities';
-import {TrapFocus} from '../../Focus';
 import Frame from '../Frame';
 import Button from '../../Button';
 import {
@@ -14,9 +12,10 @@ import {
   Loading as FrameLoading,
 } from '../components';
 import {
+  TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
-} from '../..';
+} from '../../../components';
 
 window.matchMedia =
   window.matchMedia ||
@@ -44,7 +43,7 @@ describe('<Frame />', () => {
     });
   });
 
-  it('renders a TrapFocus around the navigation if a navigation is provided on small screen and showMobileNavigation is true', () => {
+  it('renders a TrapFocus with a `trapping` prop set to true around the navigation on small screens and showMobileNavigation is true', () => {
     Object.defineProperty(window, 'innerWidth', {
       configurable: true,
       writable: true,
@@ -62,16 +61,34 @@ describe('<Frame />', () => {
     expect(trapFocus.prop('trapping')).toBe(true);
   });
 
-  it('does not render TrapFocus around the navigation if a navigation is provided on large screen and even if showMobileNavigation is true', () => {
+  it('renders a TrapFocus with a `trapping` prop set to false prop around the navigation on small screens and showMobileNavigation is false', () => {
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      writable: true,
+      value: 500,
+    });
+
+    const navigation = <div />;
+    const frame = mountWithAppProvider(<Frame navigation={navigation} />).find(
+      Frame,
+    );
+
+    const trapFocus = frame.find(TrapFocus);
+    expect(trapFocus.exists()).toBe(true);
+    expect(trapFocus.prop('trapping')).toBe(false);
+  });
+
+  it('renders a TrapFocus with a `trapping` prop set to false prop around the navigation on large screens even if showMobileNavigation is true', () => {
     const navigation = <div />;
     const trapFocus = mountWithAppProvider(
       <Frame showMobileNavigation navigation={navigation} />,
     ).find(TrapFocus);
 
-    expect(trapFocus.exists()).toBe(false);
+    expect(trapFocus.exists()).toBe(true);
+    expect(trapFocus.prop('trapping')).toBe(false);
   });
 
-  it('renders a CSSTransition around the navigation with an `in` prop set to true if a navigation is provided on small screen and showMobileNavigation is true', () => {
+  it('renders a CSSTransition around the navigation with `appear` and `exit` set to true on small screen', () => {
     Object.defineProperty(window, 'innerWidth', {
       configurable: true,
       writable: true,
@@ -79,42 +96,50 @@ describe('<Frame />', () => {
     });
 
     const navigation = <div />;
-    const frame = mountWithAppProvider(
+    const cssTransition = mountWithAppProvider(
       <Frame showMobileNavigation navigation={navigation} />,
-    ).find(Frame);
+    )
+      .find(TrapFocus)
+      .find(CSSTransition);
 
-    const cssTransition = frame.find(TrapFocus).find(CSSTransition);
-
-    expect(cssTransition.prop('in')).toBe(true);
+    expect(cssTransition.prop('appear')).toBe(true);
+    expect(cssTransition.prop('exit')).toBe(true);
   });
 
-  it('renders a CSSTransition around the navigation with an `in` prop set to false if a navigation is provided on small screen and showMobileNavigation is false', () => {
-    Object.defineProperty(window, 'innerWidth', {
-      configurable: true,
-      writable: true,
-      value: 500,
-    });
-
+  it('renders a CSSTransition around the navigation with `appear` and `exit` set to false on large screen', () => {
     const navigation = <div />;
-    const frame = mountWithAppProvider(
-      <Frame showMobileNavigation={false} navigation={navigation} />,
-    ).find(Frame);
+    const cssTransition = mountWithAppProvider(
+      <Frame navigation={navigation} />,
+    )
+      .find(TrapFocus)
+      .find(CSSTransition);
 
-    const cssTransition = frame.find(TrapFocus).find(CSSTransition);
+    expect(cssTransition.prop('appear')).toBe(false);
+    expect(cssTransition.prop('exit')).toBe(false);
+  });
+
+  it('renders a CSSTransition around the navigation with an `in` prop set to false if showMobileNavigation is true', () => {
+    const navigation = <div />;
+    const cssTransition = mountWithAppProvider(
+      <Frame showMobileNavigation={false} navigation={navigation} />,
+    )
+      .find(Frame)
+      .find(TrapFocus)
+      .find(CSSTransition);
 
     expect(cssTransition.prop('in')).toBe(false);
   });
 
-  it('does not render a CSSTransition around the navigation if a navigation is provided on large screens even if showMobileNavigation is true', () => {
+  it('renders a CSSTransition around the navigation with an `in` prop set to true if showMobileNavigation is true', () => {
     const navigation = <div />;
-    const frame = mountWithAppProvider(
+    const cssTransition = mountWithAppProvider(
       <Frame showMobileNavigation navigation={navigation} />,
-    ).find(Frame);
+    )
+      .find(Frame)
+      .find(TrapFocus)
+      .find(CSSTransition);
 
-    const nav = findByTestID(frame, 'NavWrapper');
-    const cssTransition = nav.find(CSSTransition);
-
-    expect(cssTransition.exists()).toBe(false);
+    expect(cssTransition.prop('in')).toBe(true);
   });
 
   it('renders a skip to content link with the proper text', () => {
