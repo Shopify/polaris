@@ -11,20 +11,18 @@ import {
   withAppProvider,
   WithAppProviderProps,
   Backdrop,
+  TrapFocus,
 } from '..';
-import {dataPolarisTopBar, layer} from '../shared';
-import {TrapFocus} from '../Focus';
-
+import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
-
 import {FrameContext, frameContextTypes} from '../types';
-
 import {
   ToastManager,
   Loading,
   ContextualSaveBar,
   ContextualSaveBarProps,
 } from './components';
+
 import * as styles from './Frame.scss';
 
 export interface Props {
@@ -34,7 +32,9 @@ export interface Props {
   navigation?: React.ReactNode;
   /** Accepts a global ribbon component that will be rendered fixed to the bottom of an application frame */
   globalRibbon?: React.ReactNode;
-  /** A boolean property indicating whether the mobile navigation is currently visible */
+  /** A boolean property indicating whether the mobile navigation is currently visible
+   * @default false
+   */
   showMobileNavigation?: boolean;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
@@ -109,7 +109,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       navigation,
       topBar,
       globalRibbon,
-      showMobileNavigation,
+      showMobileNavigation = false,
       polaris: {intl},
     } = this.props;
 
@@ -118,51 +118,45 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       showMobileNavigation && styles['Navigation-visible'],
     );
 
-    const tabIndex = showMobileNavigation ? 0 : -1;
+    const mobileNavHidden = mobileView && !showMobileNavigation;
+    const mobileNavShowing = mobileView && showMobileNavigation;
+    const tabIndex = mobileNavShowing ? 0 : -1;
 
-    let navigationMarkup;
-
-    if (navigation != null) {
-      const navContent = (
-        <div
-          className={navClassName}
-          onKeyDown={this.handleNavKeydown}
-          id={APP_FRAME_NAV}
+    const navigationMarkup = navigation ? (
+      <TrapFocus trapping={mobileNavShowing}>
+        <CSSTransition
+          appear={mobileView}
+          exit={mobileView}
+          in={showMobileNavigation}
+          timeout={Duration.Base}
+          classNames={navTransitionClasses}
         >
-          {navigation}
-          <button
-            type="button"
-            className={styles.NavigationDismiss}
-            onClick={this.handleNavigationDismiss}
-            aria-hidden={!showMobileNavigation}
-            aria-label={intl.translate(
-              'Polaris.Frame.Navigation.closeMobileNavigationLabel',
-            )}
-            tabIndex={tabIndex}
+          <div
+            className={navClassName}
+            onKeyDown={this.handleNavKeydown}
+            id={APP_FRAME_NAV}
+            key="NavContent"
+            hidden={mobileNavHidden}
           >
-            <Icon source="cancel" color="white" />
-          </button>
-        </div>
-      );
-
-      navigationMarkup = mobileView ? (
-        <TrapFocus trapping>
-          <CSSTransition
-            appear
-            exit
-            in={showMobileNavigation}
-            timeout={300}
-            classNames={navTransitionClasses}
-            mountOnEnter
-            unmountOnExit
-          >
-            {navContent}
-          </CSSTransition>
-        </TrapFocus>
-      ) : (
-        <div key="desktopNavigation">{navContent}</div>
-      );
-    }
+            {navigation}
+            <button
+              type="button"
+              className={styles.NavigationDismiss}
+              onClick={this.handleNavigationDismiss}
+              aria-hidden={
+                mobileNavHidden || (!mobileView && !showMobileNavigation)
+              }
+              aria-label={intl.translate(
+                'Polaris.Frame.Navigation.closeMobileNavigationLabel',
+              )}
+              tabIndex={tabIndex}
+            >
+              <Icon source="cancel" color="white" />
+            </button>
+          </div>
+        </CSSTransition>
+      </TrapFocus>
+    ) : null;
 
     const loadingMarkup =
       loadingStack > 0 ? (

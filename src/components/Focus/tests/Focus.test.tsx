@@ -48,4 +48,17 @@ describe('<Focus />', () => {
     const input = focus.find('input').getDOMNode();
     expect(input).toBe(document.activeElement);
   });
+
+  it('will not focus the first focusable node is the `disabled` is true', () => {
+    const focus = mountWithAppProvider(
+      <Focus disabled>
+        <div>
+          <input />
+        </div>
+      </Focus>,
+    );
+
+    const input = focus.find('input').getDOMNode();
+    expect(input).not.toBe(document.activeElement);
+  });
 });

@@ -6,9 +6,8 @@ import {
   findFirstFocusableNode,
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
-import {EventListener} from '../../components';
 
-import Focus from './Focus';
+import {EventListener, Focus} from '../../components';
 
 export interface Props {
   trapping?: boolean;
@@ -16,20 +15,18 @@ export interface Props {
 }
 
 export default class TrapFocus extends React.PureComponent<Props, never> {
-  private focusTrapWrapper: HTMLElement;
+  private focusTrapWrapper: HTMLElement | null = null;
 
   render() {
-    const {children, trapping} = this.props;
-    const focusTrapMarkup = (
-      <div ref={this.setFocusTrapWrapper}>
-        <EventListener event="focusout" handler={this.handleBlur} />
-        {children}
-      </div>
-    );
-    return trapping ? (
-      <Focus>{focusTrapMarkup}</Focus>
-    ) : (
-      <React.Fragment>{focusTrapMarkup}</React.Fragment>
+    const {children, trapping = true} = this.props;
+
+    return (
+      <Focus disabled={!trapping}>
+        <div ref={this.setFocusTrapWrapper}>
+          <EventListener event="focusout" handler={this.handleBlur} />
+          {children}
+        </div>
+      </Focus>
     );
   }
 
@@ -44,7 +41,7 @@ export default class TrapFocus extends React.PureComponent<Props, never> {
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
 
-    if (relatedTarget == null || !trapping) {
+    if (relatedTarget == null || trapping === false) {
       return;
     }
 
