@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import Link from 'src/components/AppProvider/Link';
+import {Link} from 'src/components/AppProvider';
 import UnstyledLink from '../UnstyledLink';
 
 describe('<UnstyledLink />', () => {

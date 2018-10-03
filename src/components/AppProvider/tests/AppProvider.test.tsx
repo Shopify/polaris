@@ -1,10 +1,10 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
-
-import {createPolarisContext} from '../utils';
-import {polarisAppProviderContextTypes} from '../types';
-import StickyManager from '../StickyManager';
-
+import {
+  createPolarisContext,
+  polarisAppProviderContextTypes,
+  StickyManager,
+} from '../utilities';
 import AppProvider from '../AppProvider';
 
 describe('<AppProvider />', () => {

@@ -11,7 +11,7 @@ export interface WithAppProviderProps {
   polaris: {intl: Intl; link: Link; easdk: EASDK; stickyManager: StickyManager};
 }
 
-export function withAppProvider<OwnProps>() {
+export default function withAppProvider<OwnProps>() {
   return function addProvider<C>(
     WrappedComponent:
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C

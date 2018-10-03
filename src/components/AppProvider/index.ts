@@ -11,5 +11,6 @@ export {
   ComplexReplacementDictionary,
   withAppProvider,
   WithAppProviderProps,
+  Link,
 } from './utilities';
 export {LinkLikeComponent} from 'src/components';
