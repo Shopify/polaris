@@ -1,8 +1,6 @@
 import * as React from 'react';
 import EASDK from './EASDK';
-
 import {LinkLikeComponent} from '../UnstyledLink';
-
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
