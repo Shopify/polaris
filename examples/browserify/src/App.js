@@ -123,6 +123,7 @@ class App extends Component {
   valueUpdater(field) {
     return (value) => this.setState({[field]: value});
   }
+
   toggleConnection() {
     this.setState(({connected}) => ({connected: !connected}));
   }
