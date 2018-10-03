@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {TextContainer, Scrollable} from 'src/components';
 import Pane from '../Pane';
-import Scrollable from '../../../../Scrollable';
-import TextContainer from '../../../../TextContainer';
 
 describe('<Pane />', () => {
   it('renders its children', () => {

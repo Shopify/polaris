@@ -41,11 +41,11 @@ Web pagination should:
 
 - Be placed at the bottom of a long list that has been split up into pages
 - Pagination should navigate to the previous and next set of items in the paged list
-- Hint when the merchants is at the first or the last page by disabling the corresponding button
+- Hint when merchants are at the first or the last page by disabling the corresponding button
 
 iOS and Android pagination should:
 
-- Start loading items when the merchant is close to the bottom, roughly 5 items from the end
+- Start loading items when merchants are close to the bottom, roughly 5 items from the end
 - Show [a spinner](/components/feedback-indicators/spinner) below the list to indicate that items have been requested
 
 ---

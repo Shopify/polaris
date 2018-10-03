@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import Choice from '..';
-import InlineError from '../../InlineError';
+import {mountWithAppProvider} from 'tests/utilities';
+import {InlineError} from 'src/components';
+import Choice from '../Choice';
 
 describe('<Choice />', () => {
   it('uses the id as the for attribute of a label', () => {

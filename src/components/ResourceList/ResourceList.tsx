@@ -15,9 +15,10 @@ import {
   CheckableButton,
   FilterControl,
   Item,
+  Provider,
 } from './components';
 
-import {contextTypes, SelectedItems, SELECT_ALL_ITEMS} from './types';
+import {SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import * as styles from './ResourceList.scss';
 
@@ -66,18 +67,16 @@ export interface Props {
   idForItem?(item: any, index: number): string;
 }
 
-export interface Context {
+export interface ResourceListContext {
   selectMode: boolean;
   selectable?: boolean;
   selectedItems?: SelectedItems;
-  resourceName?: {
+  resourceName: {
     singular: string;
     plural: string;
   };
   loading?: boolean;
   onSelectionChange?(selected: boolean, id: string): void;
-  subscribe(callback: () => void): void;
-  unsubscribe(callback: () => void): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -87,7 +86,6 @@ const getUniqueID = createUniqueIDFactory('Select');
 export class ResourceList extends React.Component<CombinedProps, State> {
   static Item: typeof Item = Item;
   static FilterControl: typeof FilterControl = FilterControl;
-  static childContextTypes = contextTypes;
 
   state: State = {
     selectMode: false,
@@ -95,7 +93,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     listNode: null,
   };
 
-  private subscriptions: {(): void}[] = [];
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
@@ -284,7 +281,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  getChildContext(): Context {
+  get getContext(): ResourceListContext {
     const {
       selectedItems,
       resourceName = this.defaultResourceName,
@@ -298,15 +295,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       resourceName,
       loading,
       onSelectionChange: this.handleSelectionChange,
-      subscribe: this.subscribe,
-      unsubscribe: this.unsubscribe,
     };
   }
 
   componentWillReceiveProps(nextProps: Props) {
     const {selectedItems} = this.props;
 
-    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
     if (
       selectedItems &&
       selectedItems.length > 0 &&
@@ -517,23 +511,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
 
     return (
-      <div className={styles.ResourceListWrapper}>
-        {filterControlMarkup}
-        {headerMarkup}
-        {listMarkup}
-      </div>
-    );
-  }
-
-  @autobind
-  subscribe(callback: () => void) {
-    this.subscriptions.push(callback);
-  }
-
-  @autobind
-  unsubscribe(callback: () => void) {
-    this.subscriptions = this.subscriptions.filter(
-      (subscription) => subscription !== callback,
+      <Provider value={this.getContext}>
+        <div className={styles.ResourceListWrapper}>
+          {filterControlMarkup}
+          {headerMarkup}
+          {listMarkup}
+        </div>
+      </Provider>
     );
   }
 

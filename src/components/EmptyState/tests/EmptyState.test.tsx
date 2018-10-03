@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
+import {Image, DisplayText} from 'src/components';
 import EmptyState from '../EmptyState';
-import Image from '../../Image';
-import DisplayText from '../../DisplayText';
 
 describe('<EmptyState />', () => {
   let imgSrc: string;

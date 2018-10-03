@@ -2,6 +2,8 @@ import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import {unstyled} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import compose from '../../utilities/react-compose';
+import withRef from '../WithRef';
 
 export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   /** A destination to link to */
@@ -35,4 +37,7 @@ export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(UnstyledLink);
+export default compose<Props>(
+  withAppProvider<Props>(),
+  withRef<Props>(),
+)(UnstyledLink);

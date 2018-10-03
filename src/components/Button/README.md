@@ -50,7 +50,7 @@ Buttons should:
 
 ## Content guidelines
 
-Buttons should be clear and predictable—merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+Buttons should be clear and predictable—merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
 Read the [actionable language guidelines](/content/actionable-language) to learn what to label buttons for different states in web, iOS, and Android.
 
@@ -154,7 +154,7 @@ Use for less important or less commonly used actions since they’re less promin
 
 <!-- /content-for -->
 
-### Primary buttons
+### Primary button
 
 Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
 
@@ -174,7 +174,7 @@ Use to highlight the most important actions in any experience. Don’t use more 
 
 <!-- /content-for -->
 
-### Destructive buttons
+### Destructive button
 
 Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
 
@@ -194,7 +194,7 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 
 <!-- /content-for -->
 
-### Slim buttons
+### Slim button
 
 <!-- example-for: web -->
 
@@ -204,7 +204,7 @@ Use when a table or list has a set of actions on each item to avoid making items
 <Button size="slim">Save variant</Button>
 ```
 
-### Large buttons
+### Large button
 
 <!-- example-for: web -->
 
@@ -214,7 +214,7 @@ Use for the main call to action in empty states or for calls to action shown wit
 <Button size="large">Create store</Button>
 ```
 
-### Full-width buttons
+### Full-width button
 
 <!-- example-for: web -->
 

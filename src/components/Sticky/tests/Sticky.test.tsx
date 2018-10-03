@@ -1,6 +1,6 @@
 import * as React from 'react';
+import {mountWithAppProvider} from 'tests/utilities';
 import Sticky from '../Sticky';
-import {mountWithAppProvider} from '../../../../tests/utilities/enzyme';
 
 describe('<Sticky />', () => {
   it('renders children component', () => {

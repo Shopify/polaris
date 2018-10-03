@@ -199,7 +199,7 @@ Use as the default option for a modal.
 ```jsx
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   render() {
@@ -252,7 +252,7 @@ const DISCOUNT_LINK = 'https://polaris.shopify.com/';
 
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   node = null;
@@ -357,7 +357,7 @@ const CSV_PLAIN = 'csv_plain';
 
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
     selectedExport: [],
     selectedExportAs: [],
   };
@@ -458,7 +458,7 @@ Use when you need to increase the width of your modal.
 ```jsx
 class ModalExample extends React.Component {
   state = {
-    active: false,
+    active: true,
     checked: false,
   };
 
@@ -512,6 +512,58 @@ class ModalExample extends React.Component {
 
   handleCheckbox = (value) => {
     this.setState({checked: value});
+  };
+}
+```
+
+### Modal without a title
+
+<!-- example-for: web -->
+
+We recommend you add a title to your modal, but you may leave it blank.
+
+```jsx
+class ModalExample extends React.Component {
+  state = {
+    active: true,
+  };
+
+  render() {
+    const {active} = this.state;
+
+    return (
+      <div style={{height: '500px'}}>
+        <Button onClick={this.handleChange}>Open</Button>
+        <Modal
+          open={active}
+          onClose={this.handleChange}
+          primaryAction={{
+            content: 'Add Instagram',
+            onAction: this.handleChange,
+          }}
+          secondaryActions={[
+            {
+              content: 'Learn more',
+              onAction: this.handleChange,
+            },
+          ]}
+        >
+          <Modal.Section>
+            <TextContainer>
+              <p>
+                Use Instagram posts to share your products with millions of
+                people. Let shoppers buy from your store without leaving
+                Instagram.
+              </p>
+            </TextContainer>
+          </Modal.Section>
+        </Modal>
+      </div>
+    );
+  }
+
+  handleChange = () => {
+    this.setState(({active}) => ({active: !active}));
   };
 }
 ```

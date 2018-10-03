@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import {Keys} from '../../../../../types';
-import PopoverOverlay from '../PopoverOverlay';
+import {mountWithAppProvider} from 'tests/utilities';
+import {Keys} from 'src/types';
+import {TextContainer} from 'src/components';
 import PositionedOverlay from '../../../../PositionedOverlay';
-import TextContainer from '../../../../TextContainer';
+import PopoverOverlay from '../PopoverOverlay';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;

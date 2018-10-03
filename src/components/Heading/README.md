@@ -32,7 +32,7 @@ Headings are used as the titles of each major section of a page in the interface
 Headings should:
 
 - Clearly describe the section of interface they refer to
-- Highlight the most important concept or piece of information a merchant needs to know
+- Highlight the most important concept or piece of information merchants need to know
 - Sit at the top of the section of interface they’re referring to
 
 ---

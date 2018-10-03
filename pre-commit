@@ -23,7 +23,7 @@ module PreCommit
   end
 
   def changed_files
-    @changed_files ||= %x(git diff-index --abbrev --name-only HEAD).lines.map(&:chomp)
+    @changed_files ||= %x(git diff --cached --name-only HEAD).lines.map(&:chomp)
   end
 end
 

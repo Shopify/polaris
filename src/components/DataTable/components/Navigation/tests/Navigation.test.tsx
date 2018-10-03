@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
+import {Button} from 'src/components';
 import Navigation from '../Navigation';
-import Button from '../../../../Button';
 
 describe('<Navigation />', () => {
   it('renders two buttons', () => {

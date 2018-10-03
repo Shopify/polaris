@@ -18,13 +18,13 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-const PROGRESS_LABELS = {
+export const PROGRESS_LABELS: {[key in Progress]: Progress} = {
   incomplete: 'incomplete',
   partiallyComplete: 'partiallyComplete',
   complete: 'complete',
 };
 
-const STATUS_LABELS = {
+export const STATUS_LABELS: {[key in Status]: Status} = {
   info: 'info',
   success: 'success',
   warning: 'warning',
@@ -75,6 +75,9 @@ function Badge({children, status, progress, polaris: {intl}}: CombinedProps) {
       break;
     case STATUS_LABELS.attention:
       statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.attention');
+      break;
+    case STATUS_LABELS.new:
+      statusMarkup = intl.translate('Polaris.Badge.STATUS_LABELS.new');
       break;
   }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import Item from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import Item from '../Item';
 
 describe('<Item />', () => {
   it('renders its children', () => {

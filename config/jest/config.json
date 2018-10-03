@@ -9,10 +9,11 @@
     "\\.svg$": "<rootDir>/config/jest/transformers/svg.js",
     "\\.tsx?$": "<rootDir>/config/jest/transformers/typescript.js"
   },
+  "modulePaths": ["<rootDir>"],
   "moduleNameMapper": {
     "\\.(s?css)$": "identity-obj-proxy"
   },
   "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
   "coverageDirectory": "coverage",
-  "coveragePathIgnorePatterns": ["[\\w+]\\.(svg)$", "index.*", "types.*"]
+  "coveragePathIgnorePatterns": ["[\\w+]\\.(svg, d.ts)$", "index.*", "types.*"]
 }

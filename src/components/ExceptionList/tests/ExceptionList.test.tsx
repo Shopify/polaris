@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
+import {Icon} from 'src/components';
 import ExceptionList from '../ExceptionList';
-import Icon from '../../Icon';
 
 describe('<ExceptionList />', () => {
   it('renders its items', () => {

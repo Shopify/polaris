@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {ResourceList, Select, Spinner} from '../..';
-import EmptySearchResult from '../../EmptySearchResult';
+import {ResourceList, Select, Spinner, EmptySearchResult} from 'src/components';
 import {
   findByTestID,
   shallowWithAppProvider,
   mountWithAppProvider,
   trigger,
-} from '../../../../tests/utilities';
+} from 'tests/utilities';
 import {BulkActions, Item} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];

@@ -1,12 +1,25 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import Scrollable from '../Scrollable';
+import {mountWithAppProvider} from 'tests/utilities';
 import {contextTypes} from '../types';
+import Scrollable from '../Scrollable';
 
 describe('<Scrollable />', () => {
   it('mounts', () => {
-    const mounted = mountWithAppProvider(<Scrollable />);
-    expect(mounted).toBeTruthy();
+    const scrollable = mountWithAppProvider(<Scrollable />);
+    expect(scrollable).toBeTruthy();
+  });
+
+  it('renders its children', () => {
+    const children = (
+      <p>
+        By signing up for the Shopify service (“Service”) or any of the services
+        of Shopify Inc.
+      </p>
+    );
+    const scrollable = mountWithAppProvider(
+      <Scrollable>{children}</Scrollable>,
+    );
+    expect(scrollable.contains(children)).toBe(true);
   });
 
   it('provides scrollToPosition callback to children', () => {

@@ -120,7 +120,7 @@ Use to call out an object or action as having an important attribute. For exampl
 
 ### Success badge
 
-Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to the merchant. For example, when a merchant successfully disputes a chargeback, a success badge shows that says “Funds recovered”.
+Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to merchants. For example, when merchants successfully dispute a chargeback, a success badge shows that says “Funds recovered”.
 
 ```jsx
 <Badge status="success">Funds recovered</Badge>
@@ -140,7 +140,7 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 
 ### Attention badge
 
-Use when something requires a merchant’s attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by the merchant.
+Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
 
 ```jsx
 <Badge status="attention">Unfulfilled</Badge>
@@ -160,7 +160,7 @@ Use when something requires a merchant’s attention but the issue isn’t criti
 
 ### Warning badge
 
-Use for critical and time-sensitive issues that require a merchant’s attention and potential action. Warning events are often reversible.
+Use for critical and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible.
 
 Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
@@ -184,7 +184,7 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 <!-- example-for: android, ios -->
 
-Use for critical and irreversible issues that require a merchant’s attention and potential action.
+Use for critical and irreversible issues that require merchants’ attention and potential action.
 
 Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
@@ -202,7 +202,7 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 ### Incomplete badge
 
-Use to indicate when a given task has not yet been completed. For example, when a merchant hasn’t fulfilled an order.
+Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.
 
 ```jsx
 <Badge progress="incomplete">Unfulfilled</Badge>
@@ -222,7 +222,7 @@ Use to indicate when a given task has not yet been completed. For example, when 
 
 ### Partially complete badge
 
-Use to indicate when a given task has been partially completed. For example, when a merchant has partially fulfilled an order.
+Use to indicate when a given task has been partially completed. For example, when merchants have partially fulfilled an order.
 
 ```jsx
 <Badge progress="partiallyComplete">Partially fulfilled</Badge>
@@ -242,7 +242,7 @@ Use to indicate when a given task has been partially completed. For example, whe
 
 ### Complete badge
 
-Use to indicate when a given task has been completed. For example, when a merchant has fulfilled an order.
+Use to indicate when a given task has been completed. For example, when merchants have fulfilled an order.
 
 ```jsx
 <Badge progress="complete">Fulfilled</Badge>

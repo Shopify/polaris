@@ -22,7 +22,7 @@ The exception list component should:
 - Inform merchants about extra context that will help them make better decisions
 - Only surface noteworthy, actionable content, like a high risk order or out of stock item
 - Used sparingly, so that it has more impact and doesn’t add clutter
-- Only use an icon if it adds clarity to the content or helps the merchant visualize the meaning
+- Only use an icon if it adds clarity to the content or helps merchants visualize the meaning
 
 <!-- improvement -->
 
@@ -38,14 +38,14 @@ Exception lists aren’t clickable. If you’re a partner and have an idea that 
 
 Exception lists should:
 
-- Highlight an exceptional state that helps the merchant make a decision
+- Highlight an exceptional state that helps merchants make a decision
 - Use the appropriate [color](https://polaris.shopify.com/design/colors) to suit the tone of the message
 - Have a description (a title is optional)
 - Be concise
 
 For error states, exception lists should:
 
-- Either tell the merchant how to solve the problem or be attached to an item that lets the merchant fix the problem
+- Either tell merchants how to solve the problem or be attached to an item that lets merchants fix the problem
 
 If placed next to an item in a [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list), exceptions lists should:
 
@@ -69,7 +69,7 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 ### Exception list with icon
 
-Example text
+Use icons to add clarity or assist in visualizing the meaning
 
 ```jsx
 <ExceptionList

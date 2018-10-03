@@ -63,7 +63,7 @@ Upload error messages should:
 
 - Be displayed as a [banner](/components/feedback-indicators/banner) with a critical status
 - Show the name of the file(s) that were not uploaded successfully
-- Describe why the file(s) couldn’t be uploaded and what the merchant should change to upload their file successfully, as seen below
+- Describe why the file(s) couldn’t be uploaded and what merchants should change to upload their file successfully, as seen below
 
 ```
 The following images couldn’t be uploaded:
@@ -412,7 +412,7 @@ Use for cases with limited space. To improve usability, nest medium-sized drop z
 
 ### Small-sized drop zone
 
-Use for cases with tight space constraints, such as variant thumbnails on the Product show page. To improve usability, nest small-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
+Use for cases with tight space constraints, such as variant thumbnails on the Product details page. To improve usability, nest small-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
 
 ```jsx
 <div style={{width: 50, height: 50}}>
