@@ -39,7 +39,7 @@ interface State {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-export enum DateFilterOptions {
+export enum DateFilterOption {
   PastWeek = 'past_week',
   PastMonth = 'past_month',
   PastQuarter = 'past_quarter',
@@ -84,8 +84,8 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     );
 
     const showDatePredicate =
-      dateFilterOption === DateFilterOptions.OnOrBefore ||
-      dateFilterOption === DateFilterOptions.OnOrAfter;
+      dateFilterOption === DateFilterOption.OnOrBefore ||
+      dateFilterOption === DateFilterOption.OnOrAfter;
 
     const datePredicateMarkup = showDatePredicate && (
       <React.Fragment>
@@ -147,13 +147,13 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
 
     return [
       {
-        value: DateFilterOptions.OnOrBefore,
+        value: DateFilterOption.OnOrBefore,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.OnOrBefore',
         ),
       },
       {
-        value: DateFilterOptions.OnOrAfter,
+        value: DateFilterOption.OnOrAfter,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.OnOrAfter',
         ),
@@ -168,25 +168,25 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
 
     return [
       {
-        value: DateFilterOptions.PastWeek,
+        value: DateFilterOption.PastWeek,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.PastWeek',
         ),
       },
       {
-        value: DateFilterOptions.PastMonth,
+        value: DateFilterOption.PastMonth,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.PastMonth',
         ),
       },
       {
-        value: DateFilterOptions.PastQuarter,
+        value: DateFilterOption.PastQuarter,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.PastQuarter',
         ),
       },
       {
-        value: DateFilterOptions.PastYear,
+        value: DateFilterOption.PastYear,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.PastYear',
         ),
@@ -201,25 +201,25 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
 
     return [
       {
-        value: DateFilterOptions.ComingWeek,
+        value: DateFilterOption.ComingWeek,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.ComingWeek',
         ),
       },
       {
-        value: DateFilterOptions.ComingMonth,
+        value: DateFilterOption.ComingMonth,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.ComingMonth',
         ),
       },
       {
-        value: DateFilterOptions.ComingQuarter,
+        value: DateFilterOption.ComingQuarter,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.ComingQuarter',
         ),
       },
       {
-        value: DateFilterOptions.ComingYear,
+        value: DateFilterOption.ComingYear,
         label: intl.translate(
           'Polaris.ResourceList.DateSelector.SelectOptions.ComingYear',
         ),
@@ -273,7 +273,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    if (newOption === DateFilterOptions.OnOrBefore) {
+    if (newOption === DateFilterOption.OnOrBefore) {
       onFilterKeyChange(filterMaxKey);
       onFilterValueChange(
         selectedDate ? formatDateValue(selectedDate) : undefined,
@@ -281,7 +281,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    if (newOption === DateFilterOptions.OnOrAfter) {
+    if (newOption === DateFilterOption.OnOrAfter) {
       onFilterKeyChange(filterMinKey);
       onFilterValueChange(
         selectedDate ? formatDateValue(selectedDate) : undefined,
@@ -401,11 +401,11 @@ function getDateFilterOption(
   filterMaxKey?: string,
 ) {
   if (filterKey === filterMaxKey) {
-    return DateFilterOptions.OnOrBefore;
+    return DateFilterOption.OnOrBefore;
   }
 
   if (filterKey === filterMinKey) {
-    return DateFilterOptions.OnOrAfter;
+    return DateFilterOption.OnOrAfter;
   }
 
   return filterValue;

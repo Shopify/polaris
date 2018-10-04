@@ -9,7 +9,7 @@ const red = {
   brightness: 1,
 };
 
-enum Slidables {
+enum SlidableType {
   BrightnessSaturation,
   Hue,
 }
@@ -21,7 +21,7 @@ describe('<ColorPicker />', () => {
         const spy = jest.fn();
         mountWithAppProvider(<ColorPicker color={red} onChange={spy} />)
           .find(Slidable)
-          .at(Slidables.BrightnessSaturation)
+          .at(SlidableType.BrightnessSaturation)
           .simulate('mousedown');
 
         expect(spy).toHaveBeenCalled();
@@ -45,7 +45,7 @@ describe('<ColorPicker />', () => {
         const spy = jest.fn();
         mountWithAppProvider(<ColorPicker color={red} onChange={spy} />)
           .find(Slidable)
-          .at(Slidables.Hue)
+          .at(SlidableType.Hue)
           .simulate('mousedown');
 
         expect(spy).toHaveBeenCalled();
