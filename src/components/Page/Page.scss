@@ -1,10 +1,8 @@
 $navigation-elements-height: rem(36px);
 $title-height: line-height(display-large, large-screen);
 $action-horizontal-padding: (1.5 * spacing(tight));
-
 $difference-between-touch-area-and-backdrop: control-height() -
   control-slim-height();
-
 $stacking-order: (
   title: 10,
   breadcrumbs: 20,
@@ -44,11 +42,11 @@ body {
 
 .Header-hasPagination,
 .Header-hasBreadcrumbs {
-  padding-top: spacing(loose);
+  @include page-header-has-pagination-and-breadcrumbs;
 }
 
 .Header-hasSecondaryActions {
-  @include page-header-has-secondaryactions;
+  @include page-header-has-secondary-actions;
 }
 
 .Header-hasSeparator {
@@ -84,6 +82,7 @@ body {
 
 .Pagination {
   margin-left: auto;
+  line-height: 1;
 }
 
 .MainContent {
@@ -96,17 +95,7 @@ body {
 }
 
 .Title {
-  @include layout-flex-fix;
-  @include text-breakword;
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  margin-top: -1 * spacing(tight);
-
-  > * {
-    margin-top: spacing(tight);
-    margin-right: spacing(tight);
-  }
+  @include page-title-layout;
 }
 
 .Title-hidden {
