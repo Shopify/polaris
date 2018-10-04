@@ -22,7 +22,6 @@
         "allowBlockStart": false
       }
     ],
-    "react/no-unused-state": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "jsx-a11y/label-has-for": [
