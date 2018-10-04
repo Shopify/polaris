@@ -9,9 +9,10 @@ import OptionList, {OptionDescriptor} from '../../../OptionList';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
-import {ActionListItemDescriptor} from '../../../../types';
+import {ActionListItemDescriptor, Keys} from '../../../../types';
 import {contextTypes} from '../types';
 import {TextField} from './components';
+import KeypressListener from '../../../KeypressListener';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
@@ -231,7 +232,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
     return (
       <div
-        onKeyDown={this.handleKeyDown}
         onClick={this.handleClick}
         role="combobox"
         aria-expanded={this.state.popoverActive}
@@ -242,6 +242,19 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         onBlur={this.handleBlur}
         tabIndex={0}
       >
+        <KeypressListener
+          keyCode={Keys.DOWN_ARROW}
+          handler={this.handleDownArrow}
+        />
+        <KeypressListener
+          keyCode={Keys.UP_ARROW}
+          handler={this.handleUpArrow}
+        />
+        <KeypressListener keyCode={Keys.ENTER} handler={this.handleEnter} />
+        <KeypressListener
+          keyCode={Keys.ESCAPE}
+          handler={this.handlePopoverClose}
+        />
         <Popover
           activator={textField}
           active={this.state.popoverActive}
@@ -280,27 +293,34 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-    const {selectedIndex, selectedOption, navigableOptions} = this.state;
+  private handleDownArrow() {
+    const {selectedIndex, navigableOptions} = this.state;
     const {onEndReached} = this.props;
-    const {key} = event;
 
-    if (key === 'ArrowDown') {
-      if (
-        navigableOptions &&
-        selectedIndex === navigableOptions.length - 1 &&
-        onEndReached
-      ) {
-        onEndReached();
-      }
-      this.selectNextOption();
-      event.preventDefault();
+    if (
+      navigableOptions &&
+      selectedIndex === navigableOptions.length - 1 &&
+      onEndReached
+    ) {
+      onEndReached();
     }
-    if (key === 'ArrowUp') {
-      event.preventDefault();
-      this.selectPreviousOption();
-    }
-    if (key === 'Enter' && this.state.popoverActive && selectedOption) {
+    this.selectNextOption();
+
+    this.handlePopoverOpen;
+  }
+
+  @autobind
+  private handleUpArrow() {
+    this.selectPreviousOption();
+
+    this.handlePopoverOpen;
+  }
+
+  @autobind
+  private handleEnter() {
+    const {selectedOption} = this.state;
+
+    if (this.state.popoverActive && selectedOption) {
       if (isOption(selectedOption)) {
         this.handleSelection(selectedOption.value);
       } else {
@@ -308,7 +328,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       }
     }
 
-    this.openPopoverOnKeyDown(key);
+    this.handlePopoverOpen;
   }
 
   @autobind
@@ -403,11 +423,10 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private openPopoverOnKeyDown(key: string) {
+  private handlePopoverOpen() {
     const {popoverActive, navigableOptions} = this.state;
 
     !popoverActive &&
-      key !== 'Escape' &&
       navigableOptions &&
       navigableOptions.length > 0 &&
       this.setState({popoverActive: true});
