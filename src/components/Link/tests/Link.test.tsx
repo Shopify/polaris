@@ -19,8 +19,8 @@ describe('<Link />', () => {
 
   it('renders an anchor if a url is provided', () => {
     const link = mountWithAppProvider(<Link url="MyThing" />);
-    const a = link.find(UnstyledLink).first();
-    expect(a.exists()).toBe(true);
+    const anchor = link.find(UnstyledLink).first();
+    expect(anchor.exists()).toBe(true);
   });
 
   describe('id', () => {
