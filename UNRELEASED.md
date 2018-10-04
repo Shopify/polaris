@@ -32,6 +32,10 @@ The loading component is used to indicate to merchants that a page is loading or
 
 The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 
+#### [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete)
+
+The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options.
+
 ### Enhancements
 
 - Changed `Form` to default the `method` to `post` in order to prevent accidental leaking of form details ([#2066](https://github.com/Shopify/polaris-react/pull/2066))
