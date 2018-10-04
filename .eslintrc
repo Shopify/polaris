@@ -29,7 +29,6 @@
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "react/no-did-update-set-state": "off",
-    "react/no-access-state-in-setstate": "off",
     "shopify/typescript/prefer-pascal-case-enums": "off",
     "shopify/typescript/prefer-singular-enums": "off",
     "typescript/trailing-comma-interface": "off",

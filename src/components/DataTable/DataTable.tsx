@@ -368,9 +368,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private scrollListener() {
-    this.setState({
-      ...this.calculateColumnVisibilityData(this.state.collapsed),
-    });
+    this.setState((prevState) => ({
+      ...this.calculateColumnVisibilityData(prevState.collapsed),
+    }));
   }
 
   @autobind
@@ -392,9 +392,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             : previousColumn.leftEdge - fixedColumnWidth;
 
         requestAnimationFrame(() => {
-          this.setState({
-            ...this.calculateColumnVisibilityData(this.state.collapsed),
-          });
+          this.setState((prevState) => ({
+            ...this.calculateColumnVisibilityData(prevState.collapsed),
+          }));
         });
       }
     };
