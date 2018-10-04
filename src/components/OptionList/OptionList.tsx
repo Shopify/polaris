@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {Option} from './components';
-import {IconProps, ThumbnailProps, AvatarProps} from '..';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {Props as IconProps} from '../Icon';
+import {Props as AvatarProps} from '../Avatar';
+import {Props as ThumbnailProps} from '../Thumbnail';
 
+import {Option} from './components';
 import * as styles from './OptionList.scss';
 
 export interface OptionDescriptor {

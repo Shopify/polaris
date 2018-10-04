@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {ActionList, ActionListProps, Popover} from '../../..';
+
+import ActionList, {Props as ActionListProps} from '../../../ActionList';
+import Popover from '../../../Popover';
+
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
 
