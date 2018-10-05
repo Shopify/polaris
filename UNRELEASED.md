@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed padding and margins on `SkeletonPage` to match `Page` ([#2167](https://github.com/Shopify/polaris-react/pull/2167))
+- Fixed spacing between `Page` title and metadata ([#2382](https://github.com/Shopify/polaris-react/pull/2382))
 
 ### Development workflow
 
