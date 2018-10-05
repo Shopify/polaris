@@ -1,5 +1,5 @@
 $height: rem(20px);
-$horizontal-padding: ($height / 2);
+$horizontal-padding: spacing(tight);
 
 $pip-size: rem(10px);
 $pip-spacing: ($height - $pip-size) / 2;
@@ -21,6 +21,13 @@ $pip-spacing: ($height - $pip-size) / 2;
   font-size: rem(13px);
   line-height: $height;
   color: color('ink', 'light');
+}
+
+.sizeSmall {
+  font-size: font-size(caption, large-screen);
+  line-height: line-height(caption, large-screen);
+  padding: 0 rem(5px);
+  border: 0;
 }
 
 .statusSuccess {
@@ -50,9 +57,6 @@ $pip-spacing: ($height - $pip-size) / 2;
 .statusNew {
   background-color: color('teal');
   color: color('teal', 'darker');
-  border-radius: rem(10px);
-  border: none;
-  padding: 0 spacing(tight);
   font-weight: 500;
 }
 

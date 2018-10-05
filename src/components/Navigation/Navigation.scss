@@ -41,9 +41,6 @@ $nav-max-width: rem(360px);
 }
 
 // Item styles
-$badge-size: rem(16px);
-$badge-padding: rem(5px);
-$badge-font-size: rem(12px);
 $disabled-fade: 0.6;
 
 .Item {
@@ -73,14 +70,8 @@ $disabled-fade: 0.6;
 }
 
 .Badge {
-  font-size: $badge-font-size;
-  line-height: $badge-size;
   margin-right: spacing(extra-tight);
   margin-left: spacing(tight);
-  padding: 0 $badge-padding;
-  border-radius: $badge-size / 2;
-  background: color('teal');
-  color: color('white');
 }
 
 .Icon {

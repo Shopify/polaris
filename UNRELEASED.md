@@ -42,6 +42,7 @@ The autocomplete component is an input field that provides selectable suggestion
 - Added support for boolean type on Choice error prop ([#2085](https://github.com/shopify/polaris-react/pull/2085))
 - Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#2226](https://github.com/Shopify/polaris-react/pull/2226))
 - Added `onPortalCreated` prop to `Portal` ([#2294](https://github.com/Shopify/polaris-react/pull/2294))
+- Improved consistency of `Badge` styling ([#2376](https://github.com/Shopify/polaris-react/pull/2376))
 
 ## Bug fixes
 
