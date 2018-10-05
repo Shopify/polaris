@@ -11,8 +11,8 @@ import {
   FilterDateSelector,
 } from '../types';
 import FilterControl, {Props} from '../FilterControl';
-import FilterCreator from '../FilterCreator';
-import {DateFilterOption} from '../DateSelector';
+import FilterCreator from '../components/FilterCreator';
+import {DateFilterOption} from '../components/DateSelector';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {
