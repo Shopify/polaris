@@ -94,7 +94,7 @@ describe('build', () => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes(packageJSON.version));
     }, 0);
-    expect(total).toBe(6);
+    expect(total).toBe(5);
   });
 
   it('features the version of Polaris in those specific files', () => {
@@ -111,7 +111,7 @@ describe('build', () => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes(packageJSON.version));
     }, 0);
-    expect(total).toBe(6);
+    expect(total).toBe(5);
   });
 
   describe('esnext', () => {
