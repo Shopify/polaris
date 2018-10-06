@@ -20,6 +20,7 @@ export default class Portal extends React.PureComponent<Props, never> {
       ? `${this.props.idPrefix}-${getUniqueID()}`
       : getUniqueID();
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
     if (isServer) {
       return;

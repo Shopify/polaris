@@ -68,7 +68,7 @@ Headings should be:
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like “you can”.
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
 <!-- usagelist -->
 
@@ -101,7 +101,7 @@ Body content should be:
 
 Buttons should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling a button.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
 <!-- usagelist -->
 
@@ -154,7 +154,7 @@ Section titles should be:
 
 Links should be:
 
-- Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions that a merchant may take at any time (e.g. a persistent Edit link).
+- Used for secondary or persistent actions: links are for lower priority actions than buttons, or persistent actions that merchants may take at any time (e.g. a persistent Edit link).
 - Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
 - Similar to buttons: follow the same content guidelines as when you’re writing buttons.
 
@@ -170,7 +170,7 @@ Annotated content titles should be:
 The descriptions in annotated sections should:
 
 - Be used if the explanation or purpose of the associated cards isn’t clear
-- Provide instructions for any choices the merchant needs to make, or explain the purpose of the section
+- Provide instructions for any choices merchants need to make, or explain the purpose of the section
 - Be short, no more than 1–3 sentences
 - Direct merchants to more content in the Help Center with “Learn more” links
 - Not repeat the section title

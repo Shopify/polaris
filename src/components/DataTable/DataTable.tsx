@@ -90,9 +90,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     isScrolledFarthestRight: false,
   };
 
-  private dataTable: HTMLElement;
-  private scrollContainer: HTMLElement;
-  private table: HTMLElement;
+  private dataTable = React.createRef<HTMLDivElement>();
+  private scrollContainer = React.createRef<HTMLDivElement>();
+  private table = React.createRef<HTMLTableElement>();
   private totalsRowHeading: string;
 
   constructor(props: CombinedProps) {
@@ -211,10 +211,10 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
           navigateTableLeft={this.navigateTable('left')}
           navigateTableRight={this.navigateTable('right')}
         />
-        <div className={className} ref={this.setDataTable}>
+        <div className={className} ref={this.dataTable}>
           <div
             className={styles.ScrollContainer}
-            ref={this.setScrollContainer}
+            ref={this.scrollContainer}
             style={style}
           >
             <EventListener event="resize" handler={this.handleResize} />
@@ -223,7 +223,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
               event="scroll"
               handler={this.scrollListener}
             />
-            <table className={styles.Table} ref={this.setTable}>
+            <table className={styles.Table} ref={this.table}>
               <thead>
                 {headingMarkup}
                 {totalsMarkup}
@@ -238,26 +238,18 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private setDataTable(dataTable: HTMLDivElement) {
-    this.dataTable = dataTable;
-  }
-
-  @autobind
-  private setScrollContainer(scrollContainer: HTMLDivElement) {
-    this.scrollContainer = scrollContainer;
-  }
-
-  @autobind
-  private setTable(table: HTMLTableElement) {
-    this.table = table;
-  }
-
-  @autobind
   @debounce()
   private handleResize() {
     const {footerContent, truncate} = this.props;
-    const collapsed = this.table.scrollWidth > this.scrollContainer.clientWidth;
-    this.scrollContainer.scrollLeft = 0;
+    const {
+      table: {current: table},
+      scrollContainer: {current: scrollContainer},
+    } = this;
+    let collapsed = false;
+    if (table && scrollContainer) {
+      collapsed = table.scrollWidth > scrollContainer.clientWidth;
+      scrollContainer.scrollLeft = 0;
+    }
     this.setState(
       {
         collapsed,
@@ -275,23 +267,27 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   @autobind
   private tallestCellHeights() {
     const {footerContent, truncate} = this.props;
-    const rows = Array.from(this.table.getElementsByTagName('tr') as NodeListOf<
-      HTMLElement
-    >);
+    const {
+      table: {current: table},
+    } = this;
     let {heights} = this.state;
-
-    if (!truncate) {
-      return (heights = rows.map((row) => {
-        const fixedCell = (row.childNodes as NodeListOf<HTMLElement>)[0];
-        return Math.max(row.clientHeight, fixedCell.clientHeight);
-      }));
-    }
-
-    if (footerContent) {
-      const footerCellHeight = (rows[rows.length - 1].childNodes as NodeListOf<
+    if (table) {
+      const rows = Array.from(table.getElementsByTagName('tr') as NodeListOf<
         HTMLElement
-      >)[0].clientHeight;
-      heights = [footerCellHeight];
+      >);
+
+      if (!truncate) {
+        return (heights = rows.map((row) => {
+          const fixedCell = (row.childNodes as NodeListOf<HTMLElement>)[0];
+          return Math.max(row.clientHeight, fixedCell.clientHeight);
+        }));
+      }
+
+      if (footerContent) {
+        const footerCellHeight = (rows[rows.length - 1]
+          .childNodes as NodeListOf<HTMLElement>)[0].clientHeight;
+        heights = [footerCellHeight];
+      }
     }
 
     return heights;
@@ -300,13 +296,18 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   @autobind
   private resetScrollPosition() {
     const {
-      preservedScrollPosition: {left, top},
-    } = this.state;
-    if (left) {
-      this.scrollContainer.scrollLeft = left;
-    }
-    if (top) {
-      window.scrollTo(0, top);
+      scrollContainer: {current: scrollContainer},
+    } = this;
+    if (scrollContainer) {
+      const {
+        preservedScrollPosition: {left, top},
+      } = this.state;
+      if (left) {
+        scrollContainer.scrollLeft = left;
+      }
+      if (top) {
+        window.scrollTo(0, top);
+      }
     }
   }
 
@@ -320,17 +321,22 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private calculateColumnVisibilityData(collapsed: boolean) {
-    if (collapsed) {
-      const headerCells = this.table.querySelectorAll(
+    const {
+      table: {current: table},
+      scrollContainer: {current: scrollContainer},
+      dataTable: {current: dataTable},
+    } = this;
+    if (collapsed && table && scrollContainer && dataTable) {
+      const headerCells = table.querySelectorAll(
         '[class*=header]',
       ) as NodeListOf<HTMLElement>;
       const collapsedHeaderCells = Array.from(headerCells).slice(1);
       const fixedColumnWidth = headerCells[0].offsetWidth;
       const firstVisibleColumnIndex = collapsedHeaderCells.length - 1;
       const tableLeftVisibleEdge =
-        this.scrollContainer.scrollLeft + fixedColumnWidth;
+        scrollContainer.scrollLeft + fixedColumnWidth;
       const tableRightVisibleEdge =
-        this.scrollContainer.scrollLeft + this.dataTable.offsetWidth;
+        scrollContainer.scrollLeft + dataTable.offsetWidth;
       const tableData = {
         fixedColumnWidth,
         firstVisibleColumnIndex,
@@ -370,22 +376,27 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   @autobind
   private navigateTable(direction: string) {
     const {currentColumn, previousColumn, fixedColumnWidth} = this.state;
+    const {
+      scrollContainer: {current: scrollContainer},
+    } = this;
 
     const handleScroll = () => {
       if (!currentColumn || !previousColumn || !fixedColumnWidth) {
         return;
       }
 
-      this.scrollContainer.scrollLeft =
-        direction === 'right'
-          ? currentColumn.rightEdge - fixedColumnWidth
-          : previousColumn.leftEdge - fixedColumnWidth;
+      if (scrollContainer) {
+        scrollContainer.scrollLeft =
+          direction === 'right'
+            ? currentColumn.rightEdge - fixedColumnWidth
+            : previousColumn.leftEdge - fixedColumnWidth;
 
-      requestAnimationFrame(() => {
-        this.setState({
-          ...this.calculateColumnVisibilityData(this.state.collapsed),
+        requestAnimationFrame(() => {
+          this.setState({
+            ...this.calculateColumnVisibilityData(this.state.collapsed),
+          });
         });
-      });
+      }
     };
 
     return handleScroll;
@@ -506,9 +517,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
           if (onSort) {
             onSort(headingIndex, newSortDirection);
 
-            if (!truncate) {
+            if (!truncate && this.scrollContainer.current) {
               const preservedScrollPosition = {
-                left: this.scrollContainer.scrollLeft,
+                left: this.scrollContainer.current.scrollLeft,
                 top: window.scrollY,
               };
 

@@ -59,6 +59,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
     tabToFocus: -1,
   };
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps: Props) {
     const {selected} = this.props;
     const {disclosureWidth, tabWidths, containerWidth, tabToFocus} = this.state;
@@ -132,7 +133,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
           {tabsMarkup}
           <li role="presentation" className={disclosureTabClassName}>
             <Popover
-              preventAutofocus
               preferredPosition="below"
               activator={activator}
               active={disclosureActivatorVisible && showDisclosure}

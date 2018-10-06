@@ -111,7 +111,7 @@ class App extends Component {
             <Layout.Section>
               <FooterHelp>
                 For more details on Polaris, visit our{' '}
-                <Link url="https://polaris.shopify.com">styleguide</Link>.
+                <Link url="https://polaris.shopify.com">style guide</Link>.
               </FooterHelp>
             </Layout.Section>
           </Layout>
@@ -123,6 +123,7 @@ class App extends Component {
   valueUpdater(field) {
     return (value) => this.setState({[field]: value});
   }
+
   toggleConnection() {
     this.setState(({connected}) => ({connected: !connected}));
   }

@@ -1,14 +1,10 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  trigger,
-  shallowWithAppProvider,
-} from '../../../../../../tests/utilities';
-
+import {trigger, shallowWithAppProvider} from 'tests/utilities';
+import {Select, TextField} from 'src/components';
 import FilterValueSelector from '../FilterValueSelector';
 import DateSelector from '../DateSelector';
 import {Filter, FilterType, Operator} from '../types';
-import {Select, TextField} from '../../../..';
 
 describe('<FilterValueSelector />', () => {
   const operators = [

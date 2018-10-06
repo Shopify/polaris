@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
+import {mountWithAppProvider} from 'tests/utilities';
+import {Keys} from 'src/types';
 import KeypressListener from '../KeypressListener';
-import {Keys} from '../../../types';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;

@@ -28,6 +28,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
+    modules: ['node_modules', path.resolve(__dirname, '..')],
     alias: {
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
     },

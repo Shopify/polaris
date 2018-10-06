@@ -1,10 +1,7 @@
 import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../../../tests/utilities';
-import CheckableButton from '..';
-import Checkbox from '../../../../Checkbox';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {Checkbox} from 'src/components';
+import CheckableButton from '../CheckableButton';
 
 const CheckableButtonProps = {
   label: 'Test-Label',

@@ -3,6 +3,8 @@ name: Inline error
 category: Forms
 platforms:
   - web
+  - android
+  - ios
 keywords:
   - InlineError
   - error message
@@ -62,11 +64,23 @@ Inline error messages should:
 
 ### Basic inline error
 
-<!-- example-for: web -->
+Use when the merchant has entered invalid information into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 
 ```jsx
-<InlineError message="Actionable error message" fieldID="myFieldID" />
+<InlineError message="Store name is required" fieldID="myFieldID" />
 ```
+
+<!-- content-for: android -->
+
+![Inline error for Android](components/InlineError/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Inline error for iOS](components/InlineError/ios/default.png)
+
+<!-- /content-for -->
 
 ---
 

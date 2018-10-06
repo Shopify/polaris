@@ -33,7 +33,7 @@ Select lets merchants choose one option from an options menu. Consider select wh
 
 ---
 
-## Best Practices
+## Best practices
 
 The select component should:
 
@@ -96,7 +96,7 @@ Options should:
 
 <!-- content-for: web -->
 
-Presents a classic dropdown menu or equivalent picker as determined by the merchant’s browser.
+Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
 
 ```jsx
 class SelectExample extends React.Component {

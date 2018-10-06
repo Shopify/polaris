@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-
-import {findByTestID} from '../../../../tests/utilities/enzyme';
+import {mountWithAppProvider, findByTestID} from 'tests/utilities';
+import {Cell, Navigation} from '../components';
 import DataTable, {CombinedProps as Props} from '../DataTable';
-import {Cell} from '../components';
 
 interface DataTableTestProps {
   sortable?: Props['sortable'];
@@ -54,9 +52,12 @@ function setup(propOverrides?: DataTableTestProps) {
 }
 
 describe('<DataTable />', () => {
-  it('renders all table body rows', () => {
+  it('renders a table, thead and all table body rows', () => {
     const {dataTable} = setup();
 
+    expect(dataTable.find('table').length).toEqual(1);
+    expect(dataTable.find('thead').length).toEqual(1);
+    expect(dataTable.find('thead th').length).toEqual(5);
     expect(dataTable.find('tbody tr').length).toEqual(3);
   });
 
@@ -87,5 +88,47 @@ describe('<DataTable />', () => {
     const fifthHeadingCell = findByTestID(dataTable, `heading-cell-${4}`);
 
     expect(fifthHeadingCell.props().sorted).toBe(true);
+  });
+
+  describe('<Cell />', () => {
+    const {dataTable} = setup();
+    it('passes all props', () => {
+      expect(
+        dataTable
+          .find(Cell)
+          .first()
+          .prop('header'),
+      ).toBe(true);
+      expect(
+        dataTable
+          .find(Cell)
+          .first()
+          .prop('content'),
+      ).toEqual('Product');
+      expect(
+        dataTable
+          .find(Cell)
+          .first()
+          .prop('contentType'),
+      ).toEqual('text');
+    });
+  });
+
+  describe('<Navigation />', () => {
+    const {dataTable} = setup();
+    it('passes scroll props', () => {
+      expect(
+        dataTable
+          .find(Navigation)
+          .first()
+          .prop('isScrolledFarthestLeft'),
+      ).toBe(true);
+      expect(
+        dataTable
+          .find(Navigation)
+          .first()
+          .prop('isScrolledFarthestRight'),
+      ).toBe(false);
+    });
   });
 });

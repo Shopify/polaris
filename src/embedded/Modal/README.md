@@ -42,8 +42,8 @@ Embedded modals should:
 - Be used for in-context tasks that require an explicit action to be taken
 - Be used for focused, specific tasks that can’t be left half-completed
 - Include no more than a single primary call to action
-- Not be used as a way to present additional sections of content without actions because they can disrupt a merchant’s workflow
-- Not be used for complicated flows that require a merchant to take multiple paths or complete more than one primary task
+- Not be used as a way to present additional sections of content without actions because they can disrupt merchants’ workflows
+- Not be used for complicated flows that require merchants to take multiple paths or complete more than one primary task
 
 ---
 
@@ -77,7 +77,7 @@ Edit the email address for this order
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
 <!-- usagelist -->
 
@@ -110,7 +110,7 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 
 Actions should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling an action.
 
 <!-- usagelist -->
 
@@ -187,4 +187,4 @@ Add a menu item
 
 - To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](/components/behavior/collapsible) to expand content in place within the page
 - To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/feedback-indicators/banner)
+- To communicate a change or condition that needs merchants’ attention within the context of a page, [use the banner component](/components/feedback-indicators/banner)

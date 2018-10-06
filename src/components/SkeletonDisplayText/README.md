@@ -28,7 +28,7 @@ Skeleton display text component should:
 
 ### Skeleton display text
 
-Show static display text that that never changes on a page. For example, keep page titles, such as Products on the product index page, but use skeleton loading for page titles that change on the product show page.
+Show static display text that that never changes on a page. For example, keep page titles, such as Products on the product list page, but use skeleton loading for page titles that change on the product details page.
 
 <!-- usageblock -->
 
@@ -64,7 +64,7 @@ Show skeleton display text for dynamic page titles.
 
 ### Medium and large display text
 
-Use this component to represent medium and large display text such as large metrics on the reports index page, or for page titles.
+Use this component to represent medium and large display text such as large metrics on the reports list page, or for page titles.
 
 ```jsx
 <SkeletonDisplayText size="medium" />

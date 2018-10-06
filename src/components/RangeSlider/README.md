@@ -1,6 +1,10 @@
 ---
 name: Range slider
 category: Forms
+platforms:
+  - android
+  - ios
+  - web
 keywords:
   - RangeSlider
   - input
@@ -13,7 +17,7 @@ keywords:
 
 # Range slider
 
-A range slider is an input field that a merchant can use to select a numeric value within a given range (minimum and maximum values).
+A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
 
 ---
 
@@ -24,7 +28,7 @@ Range sliders should:
 - Always be used with a label, even if that label is `hidden`.
 - When a label is visible, it should clearly communicate the purpose of the range input and its values (min, max, step, value)
 - Be labeled as “Optional” when you need to request input that’s not required
-- Validate input as soon as the merchant has finished interacting with a field (but not before)
+- Validate input as soon as merchants have finished interacting with a field (but not before)
 
 ---
 
@@ -111,7 +115,7 @@ Error messages should:
 
 ### Default range slider
 
-Use range sliders where a merchant may need to select a percentage between `0 — 100`.
+Use range sliders where merchants may need to select a percentage between `0 — 100`.
 
 ```jsx
 class RangeSliderExample extends React.Component {
@@ -137,7 +141,21 @@ class RangeSliderExample extends React.Component {
 }
 ```
 
+<!-- content-for: android -->
+
+![Range slider for Android](components/RangeSlider/android/default.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Range slider for iOS](components/RangeSlider/ios/default.png)
+
+<!-- /content-for -->
+
 ### More precise range control
+
+<!-- example-for: web -->
 
 For a more precise value, you can define a `min` and `max` range, as well as the amount with which the slider will be incremented.
 
@@ -169,6 +187,8 @@ class RangeSliderExample extends React.Component {
 ```
 
 ### Prefix and suffix elements
+
+<!-- example-for: web -->
 
 Because a range slider can also output a `label` and `helpText`, the height of the overall component can vary. `prefix` and `suffix` props allow you to pass in a React element to be placed before or after the rendered `input`, allowing for perfect vertical alignment and easier stylistic control.
 

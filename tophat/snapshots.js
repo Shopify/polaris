@@ -38,11 +38,21 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
   try {
     await percy.startBuild();
     await page.goto('http://localhost:3000');
-    const urls = await page.evaluate(() =>
-      [...document.querySelectorAll('a')].map((element) =>
+
+    const batchComponentExamples = await page.evaluate(() =>
+      [...document.querySelectorAll('.componentLinks a')]
+        .map((element) => element.getAttribute('href'))
+        .filter((link) => link !== '/modal'),
+    );
+
+    // Modals open on load, so we have to test the modal examples individually
+    const individualModalExamples = await page.evaluate(() =>
+      [...document.querySelectorAll('.modalLink a')].map((element) =>
         element.getAttribute('href'),
       ),
     );
+
+    const urls = [...batchComponentExamples, ...individualModalExamples];
 
     urls.map((path) => {
       const currentBrowser = browsers[browserIndex % 2];

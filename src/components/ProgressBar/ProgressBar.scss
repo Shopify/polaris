@@ -20,6 +20,10 @@
   width: 100%;
   background-color: color('sky', 'base');
   border-radius: border-radius();
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
+  }
 }
 
 .sizeSmall {
@@ -41,6 +45,11 @@
   background-color: color('teal');
   animation: fillup duration(slowest) easing();
   transition: width duration(slowest) easing();
+
+  @media screen and (-ms-high-contrast: active) {
+    border: progress-bar-height() solid
+      ms-high-contrast-color('selected-text-background');
+  }
 }
 
 .Progress,

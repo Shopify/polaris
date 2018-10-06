@@ -28,7 +28,7 @@ keywords:
 
 # Collapsible
 
-The collapsible component is used to put long sections of information under a block that can be expanded or collapsed by the merchant.
+The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
 
 ---
 

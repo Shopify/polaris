@@ -32,7 +32,7 @@ Empty states are used when a list, table, or chart has no items or data to show.
 
 ---
 
-## Best Practices
+## Best practices
 
 Empty states should:
 
@@ -44,7 +44,7 @@ Empty states should:
   forward
 - Be encouraging and never make merchants feel unsuccessful or guilty because
   they haven’t used a product or feature
-- Explain the steps a merchant needs to take to activate a product or feature
+- Explain the steps merchants need to take to activate a product or feature
 - Use illustrations thoughtfully as outlined in our [illustration guidelines](/design/illustrations)
 - Use only one primary call-to-action button
 
@@ -61,7 +61,7 @@ Empty states should:
   - Keep titles to single sentence and avoid using punctuation such as periods,
     commas, or semicolons
   - Written in sentence case (the first word capitalized, the rest lowercase)
-  - Action-oriented: encourage the merchant to take the step required to
+  - Action-oriented: encourage merchants to take the step required to
     activate the product or feature
 
 <!-- usagelist -->
@@ -85,11 +85,11 @@ Empty state subtitles act like body content. They should:
 
 ### Primary action
 
-Buttons are used for the most important actions you want a merchant to take.
+Buttons are used for the most important actions you want merchants to take.
 They should be:
 
 - Clear and predictable: merchants should be able to anticipate what will
-  happen when they click a button. Never deceive a merchant by using misleading
+  happen when they click a button. Never deceive merchants by using misleading
   titles.
 
 <!-- usagelist -->
@@ -150,7 +150,7 @@ primary buttons.
 
 ### Default empty state
 
-Use to explain a single feature before a merchant has used it.
+Use to explain a single feature before merchants have used it.
 
 ```jsx
 <EmptyState

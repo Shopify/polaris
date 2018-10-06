@@ -22,6 +22,20 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
+@mixin page-title-layout {
+  @include layout-flex-fix;
+  @include text-breakword;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: -1 * spacing(tight);
+
+  > * {
+    margin-top: spacing(tight);
+    margin-right: spacing(tight);
+  }
+}
+
 @mixin page-header-layout {
   padding: spacing(loose) spacing(loose) 0;
 
@@ -35,7 +49,11 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-@mixin page-header-has-secondaryactions {
+@mixin page-header-has-pagination-and-breadcrumbs {
+  padding-top: rem(32px);
+}
+
+@mixin page-header-has-secondary-actions {
   padding-top: rem(24px);
 }
 

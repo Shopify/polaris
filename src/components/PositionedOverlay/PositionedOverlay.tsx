@@ -93,6 +93,7 @@ export default class PositionedOverlay extends React.PureComponent<
     }
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps() {
     this.handleMeasurement();
   }
@@ -116,9 +117,9 @@ export default class PositionedOverlay extends React.PureComponent<
     const {render, fixed} = this.props;
 
     const style = {
-      top: top || undefined,
-      left: left || undefined,
-      width: width || undefined,
+      top: top == null ? undefined : top,
+      left: left == null ? undefined : left,
+      width: width == null ? undefined : width,
       zIndex: zIndex == null ? undefined : zIndex,
     };
 
