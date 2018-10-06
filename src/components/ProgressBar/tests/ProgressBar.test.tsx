@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import ProgressBar from '..';
+import {mountWithAppProvider} from 'tests/utilities';
+import ProgressBar from '../ProgressBar';
 
 describe('<ProgressBar />', () => {
   it('sets the progress element to 80 when the progress is 80', () => {

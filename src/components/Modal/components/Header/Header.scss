@@ -6,24 +6,6 @@
   border-bottom: border();
 }
 
-.withoutTitle {
-  position: absolute;
-  right: spacing(tight);
-}
-
-.CloseButton {
-  @include unstyled-button;
-  margin-left: spacing(loose);
-  margin-right: -1 * spacing(tight);
-  padding: spacing(tight);
-
-  &:focus,
-  &:active {
-    border-radius: border-radius(large);
-    background: plain-button-background();
-  }
-}
-
 .Title {
   flex: 1;
   margin-top: spacing(extra-tight);

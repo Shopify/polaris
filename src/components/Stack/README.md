@@ -26,7 +26,7 @@ children. Options provide control of the wrapping, spacing, and relative size of
 
 ---
 
-## Best Practices
+## Best practices
 
 Stacks should:
 

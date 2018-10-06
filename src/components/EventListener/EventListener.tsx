@@ -17,6 +17,7 @@ export default class EventListener extends React.PureComponent<Props, never> {
     this.attachListener();
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillUpdate() {
     this.detachListener();
   }

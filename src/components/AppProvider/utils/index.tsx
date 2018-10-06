@@ -94,6 +94,7 @@ export function withAppProvider<OwnProps>() {
       WithProvider,
       WrappedComponent as React.ComponentClass<any>,
     );
+
     return FinalComponent as React.ComponentClass<OwnProps> & C;
   };
 }

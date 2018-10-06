@@ -41,12 +41,7 @@ function ProgressBar({
   return (
     <div className={className}>
       <progress className={styles.Progress} value={parsedProgress} max="100" />
-      <div
-        className={styles.Indicator}
-        role="progressbar"
-        aria-hidden="true"
-        style={{width: `${parsedProgress}%`}}
-      >
+      <div className={styles.Indicator} style={{width: `${parsedProgress}%`}}>
         <span className={styles.Label}>{parsedProgress}%</span>
       </div>
     </div>

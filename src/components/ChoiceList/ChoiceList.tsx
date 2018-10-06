@@ -108,7 +108,7 @@ function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <div className={styles.ChoiceChildren}>
+    <div className={styles.ChoiceError}>
       <InlineError message={error} fieldID={finalName} />
     </div>
   );

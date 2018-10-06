@@ -21,7 +21,7 @@ Tags represent a set of interactive, merchant-supplied keywords that help label,
 
 ---
 
-## Best Practices
+## Best practices
 
 Tags should:
 

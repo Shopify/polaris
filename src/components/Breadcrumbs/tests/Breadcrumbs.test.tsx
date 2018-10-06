@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import {CallbackAction, LinkAction} from '../../../types';
+import {mountWithAppProvider} from 'tests/utilities';
+import {CallbackAction, LinkAction} from 'src/types';
 import Breadcrumbs from '../Breadcrumbs';
 
 describe('<Breadcrumbs />', () => {

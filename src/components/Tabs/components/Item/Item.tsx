@@ -1,27 +1,28 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import * as styles from '../../Tabs.scss';
+import UnstyledLink from '../../../UnstyledLink';
 
 export interface Props {
   id: string;
   focused: boolean;
   panelID?: string;
   children?: React.ReactNode;
+  url?: string;
   accessibilityLabel?: string;
   onClick?(): void;
 }
 
 export default class Item extends React.PureComponent<Props, never> {
-  private focusedNode: HTMLElement | null = null;
+  private focusedNode: HTMLElement | React.ReactElement<any> | null = null;
 
   componentDidMount() {
     const {focusedNode} = this;
     const {focused} = this.props;
 
-    if (focusedNode && focused) {
+    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
       focusedNode.focus();
     }
   }
@@ -30,7 +31,7 @@ export default class Item extends React.PureComponent<Props, never> {
     const {focusedNode} = this;
     const {focused} = this.props;
 
-    if (focusedNode && focused) {
+    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
       focusedNode.focus();
     }
   }
@@ -38,33 +39,36 @@ export default class Item extends React.PureComponent<Props, never> {
   render() {
     const {
       id,
-      children,
       panelID,
-      onClick = noop,
+      children,
+      url,
       accessibilityLabel,
+      onClick = noop,
     } = this.props;
 
-    const className = classNames(styles.Item);
+    const sharedProps = {
+      id,
+      ref: this.setFocusedNode,
+      onClick,
+      className: styles.Item,
+      'aria-controls': panelID,
+      'aria-selected': false,
+      'aria-label': accessibilityLabel,
+    };
 
-    return (
-      <li role="presentation">
-        <button
-          id={id}
-          ref={this.setFocusedNode}
-          onClick={onClick}
-          className={className}
-          aria-controls={panelID}
-          aria-selected={false}
-          aria-label={accessibilityLabel}
-        >
-          {children}
-        </button>
-      </li>
+    const markup = url ? (
+      React.createElement(UnstyledLink, {url, ...sharedProps}, children)
+    ) : (
+      <button {...sharedProps} type="button">
+        {children}
+      </button>
     );
+
+    return <li role="presentation">{markup}</li>;
   }
 
   @autobind
-  private setFocusedNode(node: HTMLElement | null) {
+  private setFocusedNode(node: HTMLElement | React.ReactElement<any> | null) {
     this.focusedNode = node;
   }
 }

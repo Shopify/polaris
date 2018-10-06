@@ -69,7 +69,8 @@ describe('shitlistCheck', () => {
 
     const {remainingIssues} = shitlistCheck(issueList, shitlist);
 
-    expect(Object.keys(remainingIssues).length).toBe(1);
-    expect(Object.values(remainingIssues)[0][0].code).toBe('Pyxis');
+    expect(remainingIssues.length).toBe(1);
+    expect(remainingIssues[0].issues.length).toBe(1);
+    expect(remainingIssues[0].issues[0].code).toBe('Pyxis');
   });
 });

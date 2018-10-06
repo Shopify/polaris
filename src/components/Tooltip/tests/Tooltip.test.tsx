@@ -1,10 +1,7 @@
 import * as React from 'react';
+import {findByTestID, mountWithAppProvider} from 'tests/utilities';
+import {Link} from 'src/components';
 import Tooltip from '../Tooltip';
-import Link from '../../Link';
-import {
-  findByTestID,
-  mountWithAppProvider,
-} from '../../../../tests/utilities/enzyme';
 
 describe('<Tooltip />', () => {
   const tooltip = mountWithAppProvider(

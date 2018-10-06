@@ -24,6 +24,8 @@ export {
   Status as BannerStatus,
 } from './Banner';
 
+export {default as Breadcrumbs, Props as BreadcrumbsProps} from './Breadcrumbs';
+
 export {
   default as Button,
   Props as ButtonProps,
@@ -240,3 +242,7 @@ export {
 } from './SkeletonDisplayText';
 
 export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
+
+export {default as withContext} from './WithContext';
+
+export {default as withRef, WithRef} from './WithRef';

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {shallowWithAppProvider} from '../../../../tests/utilities';
-import {LinkAction} from '../../../types';
-import Page from '../../Page';
+import {shallowWithAppProvider} from 'tests/utilities';
+import {LinkAction} from 'src/types';
 import {Header} from '../components';
+import Page from '../Page';
 
 const breadcrumbs: LinkAction[] = [
   {

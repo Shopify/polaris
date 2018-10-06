@@ -1,7 +1,7 @@
 import * as React from 'react';
+import {mountWithAppProvider} from 'tests/utilities';
 import ActionList from '../ActionList';
 import {Item} from '../components';
-import {mountWithAppProvider} from '../../../../tests/utilities';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;

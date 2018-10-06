@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import capitalize from 'lodash/capitalize';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -17,7 +16,7 @@ import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import {FileUpload} from './components';
+import {FileUpload, Provider} from './components';
 
 import IconDragDrop from './icons/drag-drop.svg';
 import IconAlertCircle from './icons/alert-circle.svg';
@@ -112,10 +111,6 @@ const getUniqueID = createUniqueIDFactory('DropZone');
 
 export class DropZone extends React.Component<CombinedProps, State> {
   public static FileUpload: typeof FileUpload = FileUpload;
-  public static childContextTypes = {
-    size: PropTypes.string,
-    type: PropTypes.string,
-  };
   public static defaultProps: Partial<CombinedProps> = {
     type: 'file',
     outline: true,
@@ -156,8 +151,6 @@ export class DropZone extends React.Component<CombinedProps, State> {
     return Object.keys(newState).length ? newState : null;
   }
 
-  context: Partial<DropZoneContext>;
-
   private node: HTMLElement | null = null;
   private dropNode: HTMLElement | HTMLDocument | null = null;
   private dragTargets: EventTarget[] = [];
@@ -185,7 +178,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
     };
   }
 
-  getChildContext(): DropZoneContext {
+  get getContext(): DropZoneContext {
     return {
       size: this.state.size,
       type: this.state.type || 'file',
@@ -287,7 +280,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       </div>
     );
 
-    return label ? (
+    const labelledDropzoneMarkup = label ? (
       <Labelled
         id={id}
         label={label}
@@ -298,6 +291,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
       </Labelled>
     ) : (
       dropZoneMarkup
+    );
+
+    return (
+      <Provider value={this.getContext}>{labelledDropzoneMarkup}</Provider>
     );
   }
 

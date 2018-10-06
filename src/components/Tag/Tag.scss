@@ -3,7 +3,7 @@ $icon-size: rem(16px);
 
 .Tag {
   display: inline-flex;
-  overflow: hidden;
+  max-width: 100%;
   align-items: center;
   min-height: $height;
   padding-left: spacing(tight);
@@ -20,6 +20,12 @@ $icon-size: rem(16px);
       color('sky', 'light')
     );
     color: color('ink', 'lightest');
+  }
+
+  .TagText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 

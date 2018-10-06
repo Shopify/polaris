@@ -28,7 +28,7 @@ Tabs should:
 
 - Represent the same kind of content, such as a list-view with different filters applied. Don’t use tabs to group content that is dissimilar.
 - Only be active one at a time.
-- Not force merchants to jump back and forth to do a single task. A merchant should be able to complete their work and find what they need under each tab.
+- Not force merchants to jump back and forth to do a single task. Merchants should be able to complete their work and find what they need under each tab.
 - Not be used for primary navigation.
 
 ---

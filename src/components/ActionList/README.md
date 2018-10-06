@@ -23,7 +23,7 @@ Action lists render a list of actions or selectable options. This component is u
 
 Actions lists should:
 
-- Be used for secondary or less important information and actions since they’re hidden until the merchant exposes them by opening a popover
+- Be used for secondary or less important information and actions since they’re hidden until merchants expose them by opening a popover
 - Contain actions that are related to each other
 
 ---
@@ -82,7 +82,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 ### Action list in a popover
 
-Use for the least important actions so the merchant isn’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
+Use for the least important actions so merchants aren't distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
 class ActionListExample extends React.Component {

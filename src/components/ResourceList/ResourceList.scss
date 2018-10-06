@@ -198,8 +198,10 @@
 }
 
 .ItemWrapper {
-  max-width: 100%;
+  position: relative;
+  z-index: resource-list(list-stacking-order);
   overflow: hidden;
+  max-width: 100%;
 
   + .ItemWrapper {
     border-top: border();
@@ -215,7 +217,7 @@
 
 .LoadingOverlay {
   @include resource-list-overlay;
-  z-index: resource-list(list-stacking-order);
+  z-index: resource-list(overlay-stacking-order);
   display: flex;
   justify-content: center;
   background-color: resource-list(overlay-background);

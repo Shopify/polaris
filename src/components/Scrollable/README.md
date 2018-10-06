@@ -65,7 +65,7 @@ Headings should be:
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant
+- Actionable: start sentences with imperative verbs when telling merchants
   what actions are available to them (especially something new). Don’t use
   permissive language like “you can”.
 
@@ -405,4 +405,4 @@ Use when you need to programmatically scroll a child component into view in the 
 
 ## Related components
 
-- To put long sections of information under a block that can be expanded or collapsed by the merchant, [use the collapsible component](/components/collapsible)
+- To put long sections of information under a block that merchants can expand or collapse, [use the collapsible component](/components/collapsible)

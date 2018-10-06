@@ -43,17 +43,9 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
 
   @autobind
   private renderTooltip(overlayDetails: OverlayDetails) {
-    const {
-      left,
-      measuring,
-      desiredHeight,
-      positioning,
-      activatorRect,
-    } = overlayDetails;
+    const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {id, children, light} = this.props;
-
-    const tipStyle = calculateTipPosition(activatorRect.center.x, left);
 
     const containerClassName = classNames(
       styles.Tooltip,
@@ -64,13 +56,8 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
 
     const contentStyles = measuring ? undefined : {maxHeight: desiredHeight};
 
-    const tipMarkup = !measuring ? (
-      <div style={tipStyle} className={styles.Tip} />
-    ) : null;
-
     return (
       <div className={containerClassName} {...layer.props}>
-        {tipMarkup}
         <div className={styles.Wrapper}>
           <div
             id={id}
@@ -84,8 +71,4 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
       </div>
     );
   }
-}
-
-function calculateTipPosition(activatorRectXAxisCenter: number, left: number) {
-  return {left: activatorRectXAxisCenter - left};
 }

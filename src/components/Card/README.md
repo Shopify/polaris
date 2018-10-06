@@ -35,7 +35,7 @@ easier for merchants to scan, read, and get things done.
 Cards should:
 
 - Use headings that set clear expectations about the card’s purpose
-- Prioritize information so the content the merchant most needs to know comes
+- Prioritize information so the content merchants most need to know comes
   first
 - Stick to single user flows or break more complicated flows into multiple
   sections
@@ -80,7 +80,7 @@ This is your online store dashboard
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling a merchant what
+- Actionable: start sentences with imperative verbs when telling merchants what
   actions are available to them (especially something new). Don’t use permissive
   language like “you can”.
 
@@ -120,7 +120,7 @@ including packaging.
 Buttons should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen
-  when they click a button. Never deceive a merchant by mislabeling a button.
+  when they click a button. Never deceive merchants by mislabeling a button.
 
 <!-- usagelist -->
 
@@ -182,7 +182,7 @@ Section titles should be:
 Links should be:
 
 - Used for secondary or persistent actions: links should be used to represent
-  lower priority actions than buttons, or persistent actions that a merchant may
+  lower priority actions than buttons, or persistent actions that merchants may
   take at any time (e.g. a persistent Edit link).
 - Clearly labeled: merchants should not need to guess where they’ll end up if
   they click on an action link. Never use “click here” as a link because it
@@ -220,7 +220,7 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 
 <!-- content-for: web -->
 
-Use for less important card actions, or actions the merchant may do before reviewing the contents of the card. For example, a merchant may want to add items to a card containing a long list, or enter a customer’s new address.
+Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
 
 <!-- /content-for -->
 
@@ -235,7 +235,7 @@ Use for less important card actions, or actions the merchant may do before revie
 
 <!-- content-for: ios, android -->
 
-Use for less important card actions, or actions the merchant may do before reviewing the contents of the card.
+Use for less important card actions, or actions merchants may do before reviewing the contents of the card.
 
 - Use an icon for the action, if possible
 - Include no more than 2 actions
@@ -258,7 +258,7 @@ Use for less important card actions, or actions the merchant may do before revie
 
 <!-- content-for: web -->
 
-Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, a merchant should review the contents of a shipment before important actions like cancelling or adding tracking information.
+Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before important actions like canceling or adding tracking information.
 
 <!-- /content-for -->
 
@@ -399,7 +399,7 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
 </Card>
 ```
 
-### Card with seperate header
+### Card with separate header
 
 <!-- example-for: web -->
 

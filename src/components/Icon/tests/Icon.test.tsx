@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {shallowWithAppProvider} from '../../../../tests/utilities';
-import Icon from '..';
+import {shallowWithAppProvider} from 'tests/utilities';
+import Icon from '../Icon';
 
 describe('<Icon />', () => {
   describe('accessibilityLabel', () => {

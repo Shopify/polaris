@@ -71,6 +71,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
 
   private id = this.props.id || getUniqueId();
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({
     options: nextOptions = [],
     sections: nextSections = [],
@@ -142,10 +143,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
             });
 
           return (
-            <li
-              key={title || `noTitle-${sectionIndex}`}
-              className={styles.Options}
-            >
+            <li key={title || `noTitle-${sectionIndex}`}>
               {titleMarkup}
               <ul
                 className={styles.Options}

@@ -23,7 +23,7 @@ keywords:
   - list of resources
 ---
 
-# Resource List
+# Resource list
 
 A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 
@@ -90,7 +90,7 @@ A resource list with simple items and no bulk actions, sorting, or filtering. Se
 
 ### Resource list with bulk actions
 
-Allows the merchant to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.
+Allows merchants to select items and perform an action on the selection. See [the bulk actions section of the case study](#study-bulk-actions) for implementation details.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -183,7 +183,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with loading state
 
-Notifies the merchant that list items are being processed.
+Notifies merchants that list items are being processed.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -277,7 +277,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with sorting
 
-Allows the merchant to change the way the list is sorted by selecting one of several options from a [Select](/components/forms/select) control. See the [the sorting section of the case study](#study-sorting) for implementation details.
+Allows merchants to change the way the list is sorted by selecting one of several options from a [Select](/components/forms/select) control. See the [the sorting section of the case study](#study-sorting) for implementation details.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -353,7 +353,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with filtering
 
-Allows the merchant to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
+Allows merchants to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
 
 ```jsx
 class ResourceListExample extends React.Component {
@@ -456,7 +456,7 @@ class ResourceListExample extends React.Component {
 
 ### Resource list with item shortcut actions
 
-Shortcut actions are intended to provide quick access to popular actions from the resource’s show page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
+Shortcut actions are intended to provide quick access to popular actions from the resource’s details page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way. See the [Adding shortcut actions to resource list items section of the case study](#study-custom-item-shortcut-actions) for implementation details.
 
 ```jsx
 <Card>
@@ -506,7 +506,7 @@ Shortcut actions are intended to provide quick access to popular actions from th
 
 ### Resource list with persistent item shortcut actions
 
-Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s show page. Persistent shortcut actions roll up into an overflow menu on small screens.
+Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s details page. Persistent shortcut actions roll up into an overflow menu on small screens.
 
 ```jsx
 <Card>
@@ -572,13 +572,13 @@ The resource list component provides the UI elements for list sorting, filtering
 
 <!-- end -->
 
-View the [case study](#study) for a walkthrough of how to use this component to build an index page for customers.
+View the [case study](#study) for a walkthrough of how to use this component to build an list page for customers.
 
 ---
 
 ## Purpose
 
-Shopify is organized around objects that represent a merchant’s business, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _show page_.
+Shopify is organized around objects that represent merchants businesses, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _details page_.
 
 ### Problem
 
@@ -590,13 +590,13 @@ Resource lists function as:
 
 - A content format, presenting a set of individual resources in a compact form
 - A system for taking action on one or more individual resources
-- A way to navigate to an individual resource’s show page
+- A way to navigate to an individual resource’s details page
 
-Because a show page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these show pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
+Because a details page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these details pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Schematic showing content from a show page being surfaced on a resource list](resource-list/list-surfacing-show.png)
+![Schematic showing content from a details page being surfaced on a resource list](resource-list/list-surfacing-show.png)
 
 </div>
 
@@ -618,11 +618,11 @@ If your use case is more about visualizing or analyzing data, use the [data tabl
 
 ## Best practices
 
-Resource lists can live in many places in Shopify. You could include a short resource list in a card summarizing recent marketing activities. You could also dedicate an entire page to a resource list like Shopify’s main products index.
+Resource lists can live in many places in Shopify. You could include a short resource list in a card summarizing recent marketing activities. You could also dedicate an entire page to a resource list like Shopify’s main products list.
 
 Resource lists should:
 
-- Have items that perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
+- Have items that perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
 - [Customize the content and layout](#study-custom-item) of their list items to support merchants’ needs.
 - Support [sorting](#study-sorting) if the list can be long, and especially if different merchant tasks benefit from different sort orders.
 - Support [filtering](#study-filtering) if the list can be long.
@@ -630,7 +630,7 @@ Resource lists should:
 
 Resource lists can optionally:
 
-- Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, a merchant may want to add the same tag to a large number of products.
+- Provide [bulk actions](#study-bulk-actions) for tasks that are often applied to many list items at once. For example, merchants may want to add the same tag to a large number of products.
 
 ---
 
@@ -679,7 +679,7 @@ Resource lists should:
 
 ## Resource list item
 
-The content of a resource list consists of resource list items. Each item summarizes an individual resource and should link to its show page.
+The content of a resource list consists of resource list items. Each item summarizes an individual resource and should link to its details page.
 
 Because the content of items depends on the type of resource and merchant tasks, resource list items are flexible.
 
@@ -782,7 +782,7 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
 
 #### Item with shortcut actions
 
-Shortcut actions present popular actions from the resource’s show page for easy access.
+Shortcut actions present popular actions from the resource’s details page for easy access.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
@@ -836,7 +836,7 @@ Shortcut actions present popular actions from the resource’s show page for eas
 | Prop                 | Type                       | Description                                                                        |
 | -------------------- | -------------------------- | ---------------------------------------------------------------------------------- |
 | id\*                 | string                     | Unique identifier for the item within the list                                     |
-| url                  | string                     | URL for the resource’s show page (required unless \`onClick\` is provided)         |
+| url                  | string                     | URL for the resource’s details page (required unless \`onClick\` is provided)      |
 | accessibilityLabel\* | string                     | Accessibility label for item link                                                  |
 | ariaControls         | string                     | Id of the element the item onClick controls                                        |
 | ariaExpanded         | string                     | Tells screen reader the controlled element is expanded                             |
@@ -852,14 +852,14 @@ Shortcut actions present popular actions from the resource’s show page for eas
 
 Resource list items should:
 
-- Perform an action when clicked. The action should navigate to the resource’s show page or otherwise provide more detail about the item.
+- Perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
 - Be tailored to the specific type of resource being displayed.
 - Lay out the content effectively across all screen sizes.
 
 Resource list items can optionally:
 
 - Use [conditional content](#study-custom-item-conditional-content) to help merchants deal with items in unusual states
-- Provide [shortcut actions](#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s show page
+- Provide [shortcut actions](#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s details page
 
 Read the [case study](#study-custom-item) to see how the best practices are applied.
 
@@ -1015,7 +1015,7 @@ Filter control showing a state with applied filters and an additional action (op
 A Resource list’s filter control should:
 
 - Make filters available that make common merchant tasks easy. For example, provide the option for merchants to filter a customer’s list to email subscribers only. Don’t offer arbitrary filters.
-- Show relevant results for a wide range of search inputs, including partial words. For example, if a merchant types “unful” in the search field for an orders list, it should return all unfulfilled orders as a the result (as well as orders with this string elsewhere in Shopify, such as in an order note).
+- Show relevant results for a wide range of search inputs, including partial words. For example, if merchants type “unful” in the search field for an orders list, it should return all unfulfilled orders as a the result (as well as orders with this string elsewhere in Shopify, such as in an order note).
 
 <a name="subcomponent-filter-control-content-guidelines"></a>
 
@@ -1082,7 +1082,7 @@ The content that represents applied filter tags should use short, clear, non-tec
 
 ## Related components
 
-- To present structured data for comparison and analysis, like when helping a merchant to gain insights or review analytics, use the [data table component](/components/lists-and-tables/data-table)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](/components/lists-and-tables/data-table)
 - To display a simple list of related content, [use the list component](/components/lists-and-tables/list)
 
 ---
@@ -1723,7 +1723,7 @@ Now we can write our styles:
 
 </div>
 
-Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s show page. This is information the merchant took time to write down, and it’s worth surfacing in the list.
+Usually each list item contains the same content elements. When a particular resource is in a noteworthy state, additional content can be shown even though it’s not displayed with other items. For example, merchants can add a customer note on the customer’s details page. This is information merchants took time to write down, so it’s worth surfacing in the list.
 
 Unlike a customer’s name, we want to show this customer note only if it’s present. A good way to display conditional content in a resource list item is to use the exception list component (coming soon).
 
@@ -1869,9 +1869,9 @@ We can finish this off with a couple of simple styles:
 
 Occasionally a resource has an action that merchants use a lot. Fulfilling orders is a good example. This action is not only popular, it’s the most important action for open orders.
 
-It makes sense to surface this key action from the show page on each list item, but adding this action to each item would be visually repetitive.
+It makes sense to surface this key action from the details page on each list item, but adding this action to each item would be visually repetitive.
 
-Shortcut actions resolve this. They provide a way to promote popular actions by showing them when the merchant hovers their mouse over a list item. As long as the shortcut action remains available on the resource’s show page, merchants using devices without a mouse can still access them.
+Shortcut actions resolve this. They provide a way to promote popular actions by showing them when merchants hover their mouse over a list item. As long as the shortcut action remains available on the resource’s details page, merchants using devices without a mouse can still access them.
 
 Our customer list item can benefit from a shortcut action that lets merchants jump to a customer’s most recent order.
 
@@ -1879,7 +1879,7 @@ Our customer list item can benefit from a shortcut action that lets merchants ju
 
 Shortcut actions on resource list items must:
 
-- Be present on the resource’s show page so they’re accessible without a mouse.
+- Be present on the resource’s details page so they’re accessible without a mouse.
 
 Shortcut actions should:
 
@@ -1922,7 +1922,7 @@ Shortcut actions should:
 
 Shortcut actions can be defined as part of our custom list item, or we can leave it up to the developer using our component to define them for each list, just as they would using `ResourceList.Item`.
 
-If we were to build a shortcut action into the custom item, we could offer the merchant a link to the customer’s most recent order instead of conditional actions. We could add a prop to allow this:
+If we were to build a shortcut action into the custom item, we could offer merchants a link to the customer’s most recent order instead of conditional actions. We could add a prop to allow this:
 
 ```jsx
     ...
@@ -2043,7 +2043,7 @@ We’ll start where we left off previously, with our items being rendered.
 Now we’ll add the bulk actions. We’ll need to do several things to get this wired up:
 
 1.  Define our bulk actions and pass them to the resource list
-2.  Add a handler to respond when the merchant begins making a bulk selection
+2.  Add a handler to respond when merchants begin making a bulk selection
 3.  Add a way to keep track of which items have been selected and make sure our component knows, so it can display the change
 
 The way we keep track of the current selection is with state.
@@ -2164,7 +2164,7 @@ If you’re new to React or ES2015 you might be wondering about the lines in our
 
 </div>
 
-When a merchant sorts a list of resources they’re changing the order of the entire set. This is different from filtering, which is when the list of resources is narrowed down to a subset of the original list.
+When merchants sort a list of resources they’re changing the order of the entire set. This is different from filtering, which is when the list of resources is narrowed down to a subset of the original list.
 
 Whether or not you provide sort options, resource lists should have a default sort order that makes sense to merchants and supports their most common tasks.
 
@@ -2316,7 +2316,7 @@ As with bulk actions, there are broadly three parts to the implementation:
 
 1.  Defining the sort options and passing them to our list
 1.  Tracking the currently selected option in state and making sure our list receives the value in `render`
-1.  Setting up a handler to respond to and update the state when the merchant changes the sort option
+1.  Setting up a handler to respond to and update the state when merchants change the sort option
 
 ```jsx
 ...
@@ -2534,7 +2534,7 @@ Resource list doesn’t accept these available filters directly. Instead, it del
   ...
 ```
 
-Next, we need to deal with state. We’ll add 2 new properties to our state object. One will handle the text input in the filter control’s search field. The other property will handle the rest of the filters. As we did in our sorting implementation, we’ll add handler methods that call `setState` to update the UI when the merchant changes the filters.
+Next, we need to deal with state. We’ll add 2 new properties to our state object. One will handle the text input in the filter control’s search field. The other property will handle the rest of the filters. As we did in our sorting implementation, we’ll add handler methods that call `setState` to update the UI when merchants change the filters.
 
 ```jsx
 ...

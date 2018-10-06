@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
+import {UnstyledLink} from 'src/components';
 import Item from '../Item';
-import UnstyledLink from '../../../../UnstyledLink';
 
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {
     const item = mountWithAppProvider(<Item image="some-image.png" />);
     const styledItem = item.find('div').findWhere((node) => node.prop('style'));
-    expect(styledItem.prop('style')).toHaveProperty(
+    expect(styledItem.first().prop('style')).toHaveProperty(
       'backgroundImage',
       'url(some-image.png',
     );

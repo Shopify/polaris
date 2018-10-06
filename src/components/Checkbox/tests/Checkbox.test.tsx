@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
-import Checkbox from '..';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import Checkbox from '../Checkbox';
 
 describe('<Checkbox />', () => {
   it('sets all pass through properties on the input', () => {

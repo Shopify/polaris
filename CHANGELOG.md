@@ -8,6 +8,89 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.11.0 - 2018-10-03
+
+### Enhancements
+
+- `Tab.Item` with a `url` prop now renders an `UnstyledLink` instead of a `Button` when displayed in `Popover` and you can now keyboard navigate the disclosure in `Tabs` ([#2153](https://github.com/Shopify/polaris-react/pull/2153))
+- Refs can be placed on `DropZone.FileUpload` ([#2319](https://github.com/Shopify/polaris-react/pull/2319))
+- Use the new context API in `ResourceList` ([#2216](https://github.com/Shopify/polaris-react/pull/2216))
+- Use the new context API in `DropZone` ([#2211](https://github.com/Shopify/polaris-react/pull/2211))
+- Update example description in `ExceptionList` documentation ([#2277](https://github.com/Shopify/polaris-react/pull/2277))
+- Move Modal CloseButton into its own subcomponent, instead of being part of the Header subcomponent. This is an internal implementation detail if you are using the React component. If you are using (s)css and are defining class names manually you will need to update references to `Polaris-Modal-Header__CloseButton` and `Polaris-Modal-Header--withoutTitle` to `Polaris-Modal-CloseButton` and `Polaris-Modal-CloseButton--withoutTitle` respectively. ([#2289](https://github.com/Shopify/polaris-react/pull/2289))
+
+### Development workflow
+
+- Added `d.ts` files to test coverage ignore ([#2018](https://github.com/Shopify/polaris-react/pull/2018))
+- `Page` is no longer self-closing in the playground ([#2283](https://github.com/Shopify/polaris-react/pull/2283))
+
+### Bug fixes
+
+- Fixed `Button` alignment issue caused by unnecessary icon markup rendering ([#2339](Fixing button alignment #2339)) (thanks to ([@mbaumbach](https://github.com/mbaumbach)) for the ([original issue](https://github.com/Shopify/polaris/issues/429)))
+- Fixed console error and used new ref syntax in `DataTable` ([#2196](https://github.com/Shopify/polaris-react/pull/2196)) (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
+- Fixed margin of `InlineError` text to align with the `ChoiceList` labels ([#2275](https://github.com/Shopify/polaris-react/pull/2275))
+- Replaced hardcoded `rem` values with globally scalable ones on `DataTable`’s collapsed shadow, and `TextStyle` code blocks ([#2293](https://github.com/Shopify/polaris-react/pull/2293))
+- Fixed spacing of numbered `List` for double digits ([#121](https://github.com/Shopify/polaris-ux/issues/121))
+- Fixed `ProgressBar` not showing up in Windows high contrast mode ([#1708](https://github.com/Shopify/polaris-react/issues/1708))
+- Top aligned all cells in `DataTable` ([#2278](https://github.com/Shopify/polaris-react/pull/2278))
+- Fixed stacking order of loading overlay in `ResourceList` ([#2258](https://github.com/Shopify/polaris-react/pull/2258))
+- Fixed form inputs in `Popover` that were disappearing instead of top aligning ([#2326](https://github.com/Shopify/polaris-react/pull/2326)) thanks to [@mbaumbach](https://github.com/mbaumbach) for the [original issue](https://github.com/Shopify/polaris/issues/435)
+- Removed a redundant class on `OptionList` list items ([#2338](https://github.com/Shopify/polaris-react/pull/2338))
+
+### Documentation
+
+- Made `Modal` examples show the modal dialog by default ([#2303](https://github.com/Shopify/polaris-react/pull/2303))
+- Changed fitted `Tabs` to have equal width when enough space is present ([#2314](https://github.com/Shopify/polaris-react/issues/2314))
+
+### New components
+
+#### withContext
+
+Use `withContext` to pass consumer context to a component.
+
+#### withRef
+
+Use `withRef` with `compose` to forwardRefs to a component.
+
+## 2.10.0 - 2018-09-18
+
+### Enhancements
+
+- Updated `Button` to accept a `React.ReactNode` for its `icon` prop ([#2245](https://github.com/Shopify/polaris-react/pull/2245))
+
+### Documentation
+
+- Refined accessibility checklist ([#2235](https://github.com/Shopify/polaris-react/pull/2235))
+
+### Bug Fixes
+
+- Added truncation to `Tag` ([#2230](https://github.com/Shopify/polaris-react/pull/2230))
+
+## 2.9.0 - 2018-09-10
+
+### Enhancements
+
+- Updated date filter labels in resource list ([#2185](https://github.com/Shopify/polaris-react/pull/2185))
+- Changed `placeholder` prop in `Select` to be the default selection ([#2115](https://github.com/Shopify/polaris-react/pull/2115))
+- Added a `loading` prop to `ResourceList` that places a spinner overtop items and disables bulk actions ([#1922](https://github.com/Shopify/polaris-react/pull/1922))
+
+### Documentation
+
+- Clarified when and how to use icons in the banner component ([#2106](https://github.com/Shopify/polaris-react/pull/2106))
+- Updated footer help component guidelines to include content instructions for app developers ([#2023](https://github.com/Shopify/polaris-react/pull/2023#pullrequestreview-150272766))
+
+### Bug fixes
+
+- Fixed resource list component to correctly handle inclusive filter keys ([#2189](https://github.com/Shopify/polaris-react/pull/2189))
+- Fixed date field in DateSelector to not render an error when date is added by the date picker and field is blurred ([#2180](https://github.com/Shopify/polaris-react/pull/2180))
+- Fixed pagination from firing keypress events while focus is inside inputs or contenteditables ([#1900](https://github.com/Shopify/polaris-react/pull/1900))
+- Fixed `EmptyState` horizontally scrolling when fully condensed ([#2062](https://github.com/Shopify/polaris-react/pull/2062))
+- Fixed the bottom margin of elements inside `Page` being ignored in some browsers ([#2142](https://github.com/Shopify/polaris-react/pull/2142))
+- Added required `url` prop to `breadcrumbs` in `Page` component examples ([#2182](https://github.com/Shopify/polaris-react/pull/2182))
+- Fixed `ActionList` wrapping text within a `Popover` ([#2057](https://github.com/Shopify/polaris-react/pull/2057))
+- Fixed `Banner` spacing when inside of a section ([#2188](https://github.com/Shopify/polaris-react/pull/2188))
+- Fixed `Stack` so it doesn't add extra spacing between items in Safari ([#2195](https://github.com/Shopify/polaris-react/pull/2195))
+
 ## 2.8.0 - 2018-08-30
 
 ### Bug fixes
@@ -346,7 +429,7 @@ The resource list component functions as:
 
 - A content format, presenting a set of individual resources in a compact form
 - A system for taking action on one or more individual resources
-- A way to navigate to the show page of an individual resource
+- A way to navigate to the details page of an individual resource
 
 Our current resource list component gave you some nice defaults out of the box, but didn’t take you much further than that. We recognized that each of these lists is unique and contains different information that is important to the merchant.
 
@@ -478,7 +561,7 @@ _This will be the last v1.x release outside of critical security fixes._
 ## 1.12.4 - 2018-03-19
 
 - Enhanced `Avatar` to work better when provided non-square images ([#1124](https://github.com/Shopify/polaris-react/pull/1124))
-- Move documentation file so it’s picked up by the styleguide ([#1162](https://github.com/Shopify/polaris-react/pull/1162))
+- Move documentation file so it’s picked up by the style guide ([#1162](https://github.com/Shopify/polaris-react/pull/1162))
 
 ## 1.12.3 - 2018-03-16
 

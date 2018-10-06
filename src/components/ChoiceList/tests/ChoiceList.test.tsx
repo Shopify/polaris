@@ -1,14 +1,8 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
-
-import ChoiceList from '..';
-import RadioButton from '../../RadioButton';
-import Checkbox from '../../Checkbox';
-import InlineError from '../../InlineError';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {RadioButton, Checkbox, InlineError} from 'src/components';
+import ChoiceList from '../ChoiceList';
 
 describe('<ChoiceList />', () => {
   let choices: ({
