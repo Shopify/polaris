@@ -7,7 +7,7 @@ import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {Transition} from 'react-transition-group';
 
 import {Keys} from '../../../../types';
-import {overlay} from '../../../shared';
+import {overlay, Duration} from '../../../shared';
 import EventListener from '../../../EventListener';
 import KeypressListener from '../../../KeypressListener';
 import PositionedOverlay, {
@@ -62,7 +62,12 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   render() {
     const {active} = this.props;
     return (
-      <Transition in={active} timeout={500} mountOnEnter unmountOnExit>
+      <Transition
+        in={active}
+        timeout={Duration.Fast}
+        mountOnEnter
+        unmountOnExit
+      >
         {this.renderOverlay}
       </Transition>
     );
