@@ -125,9 +125,9 @@ describe('<ResourceList />', () => {
             renderItem={renderItem}
           />,
         );
-        expect(
-          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
-        ).toEqual('Showing 1 item');
+        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+          'Showing 1 item',
+        );
       });
 
       it('renders the given singular resource name when resourceName is provided', () => {
@@ -139,9 +139,9 @@ describe('<ResourceList />', () => {
             showHeader
           />,
         );
-        expect(
-          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
-        ).toEqual('Showing 1 product');
+        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+          'Showing 1 product',
+        );
       });
     });
 
@@ -150,9 +150,9 @@ describe('<ResourceList />', () => {
         const resourceList = mountWithAppProvider(
           <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
-        expect(
-          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
-        ).toEqual('Showing 2 items');
+        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+          'Showing 2 items',
+        );
       });
 
       it('renders the given plural resource name when resourceName is provided', () => {
@@ -164,10 +164,27 @@ describe('<ResourceList />', () => {
             showHeader
           />,
         );
-        expect(
-          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
-        ).toEqual('Showing 2 products');
+        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+          'Showing 2 products',
+        );
       });
+    });
+  });
+
+  describe('headerTitle', () => {
+    it('prints loading text when loading is true', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          loading
+        />,
+      );
+
+      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
+        'Loading items',
+      );
     });
   });
 
@@ -378,18 +395,32 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
     });
+
     it('does not render when filterControl does not exist', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={[]} renderItem={shallowRenderItem} />,
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
+
     it('does not render when items is not empty', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList
           items={itemsNoID}
           renderItem={shallowRenderItem}
           filterControl={<div id="test123">Test</div>}
+        />,
+      );
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+    });
+
+    it('does not render when filterControl exists, items is empty, and loading is true', () => {
+      const resourceList = shallowWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={shallowRenderItem}
+          filterControl={<div>fake filterControl</div>}
+          loading
         />,
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
@@ -479,6 +510,19 @@ describe('<ResourceList />', () => {
       );
 
       expect(resourceList.find(Spinner).exists()).toBe(true);
+    });
+
+    it('does not render an <Item /> if loading is true and there are no items', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          sortOptions={sortOptions}
+          renderItem={renderItem}
+          loading
+        />,
+      );
+
+      expect(resourceList.find(Item)).toHaveLength(0);
     });
   });
 });

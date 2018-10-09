@@ -136,21 +136,28 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   @autobind
-  private get itemCountText() {
+  private get headerTitle() {
     const {
       resourceName = this.defaultResourceName,
       items,
       polaris: {intl},
+      loading,
     } = this.props;
 
     const itemsCount = items.length;
     const resource =
-      itemsCount === 1 ? resourceName.singular : resourceName.plural;
+      itemsCount === 1 && !loading
+        ? resourceName.singular
+        : resourceName.plural;
 
-    return intl.translate('Polaris.ResourceList.showing', {
-      itemsCount,
-      resource,
-    });
+    const headerTitleMarkup = loading
+      ? intl.translate('Polaris.ResourceList.loading', {resource})
+      : intl.translate('Polaris.ResourceList.showing', {
+          itemsCount,
+          resource,
+        });
+
+    return headerTitleMarkup;
   }
 
   @autobind
@@ -393,12 +400,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
-    const itemCountTextMarkup = (
-      <div
-        className={styles.ItemCountTextWrapper}
-        testID="ItemCountTextWrapper"
-      >
-        {this.itemCountText}
+    const headerTitleMarkup = (
+      <div className={styles.HeaderTitleWrapper} testID="headerTitleWrapper">
+        {this.headerTitle}
       </div>
     );
 
@@ -419,7 +423,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles.CheckableButtonWrapper}>
         <CheckableButton
           accessibilityLabel={this.bulkActionsAccessibilityLabel}
-          label={this.itemCountText}
+          label={this.headerTitle}
           onToggleAll={this.handleToggleAll}
           plain
           disabled={loading}
@@ -434,43 +438,41 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const headerMarkup = (showHeader || needsHeader) &&
-      listNode &&
-      itemsExist && (
-        <div className={styles.HeaderOuterWrapper}>
-          <Sticky boundingElement={listNode}>
-            {(isSticky: boolean) => {
-              const headerClassName = classNames(
-                styles.HeaderWrapper,
-                sortOptions &&
-                  sortOptions.length > 0 &&
-                  styles['HeaderWrapper-hasSort'],
-                this.selectable && styles['HeaderWrapper-hasSelect'],
-                loading && styles['HeaderWrapper-disabled'],
-                this.selectable &&
-                  selectMode &&
-                  styles['HeaderWrapper-inSelectMode'],
-                isSticky && styles['HeaderWrapper-isSticky'],
-              );
-              return (
-                <div className={headerClassName} testID="ResourceList-Header">
-                  {headerWrapperOverlay}
-                  <div className={styles.HeaderContentWrapper}>
-                    {itemCountTextMarkup}
-                    {checkableButtonMarkup}
-                    {sortingSelectMarkup}
-                    {selectButtonMarkup}
-                  </div>
-                  {bulkActionsMarkup}
+    const headerMarkup = (showHeader || needsHeader) && (
+      <div className={styles.HeaderOuterWrapper}>
+        <Sticky boundingElement={listNode}>
+          {(isSticky: boolean) => {
+            const headerClassName = classNames(
+              styles.HeaderWrapper,
+              sortOptions &&
+                sortOptions.length > 0 &&
+                styles['HeaderWrapper-hasSort'],
+              this.selectable && styles['HeaderWrapper-hasSelect'],
+              loading && styles['HeaderWrapper-disabled'],
+              this.selectable &&
+                selectMode &&
+                styles['HeaderWrapper-inSelectMode'],
+              isSticky && styles['HeaderWrapper-isSticky'],
+            );
+            return (
+              <div className={headerClassName} testID="ResourceList-Header">
+                {headerWrapperOverlay}
+                <div className={styles.HeaderContentWrapper}>
+                  {headerTitleMarkup}
+                  {checkableButtonMarkup}
+                  {sortingSelectMarkup}
+                  {selectButtonMarkup}
                 </div>
-              );
-            }}
-          </Sticky>
-        </div>
-      );
+                {bulkActionsMarkup}
+              </div>
+            );
+          }}
+        </Sticky>
+      </div>
+    );
 
     const emptyStateMarkup =
-      filterControl && !itemsExist ? (
+      filterControl && !itemsExist && !loading ? (
         <div className={styles.EmptySearchResultWrapper}>
           <EmptySearchResult {...this.emptySearchResultText} withIllustration />
         </div>
@@ -481,7 +483,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       loadingPosition > 0 ? loadingPosition : defaultTopPadding;
     const spinnerStyle = {paddingTop: `${topPadding}px`};
 
-    const spinnerSize = items.length === 1 ? 'small' : 'large';
+    const spinnerSize = items.length < 2 ? 'small' : 'large';
 
     const loadingOverlay = loading ? (
       <React.Fragment>
@@ -491,6 +493,17 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         <div className={styles.LoadingOverlay} />
       </React.Fragment>
     ) : null;
+
+    const className = classNames(
+      styles.ItemWrapper,
+      loading && styles['ItemWrapper-isLoading'],
+    );
+    const loadingWithoutItemsMarkup =
+      loading && !itemsExist ? (
+        <div className={className} tabIndex={-1}>
+          {loadingOverlay}
+        </div>
+      ) : null;
 
     const resourceListClassName = classNames(
       styles.ResourceList,
@@ -517,6 +530,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
           {filterControlMarkup}
           {headerMarkup}
           {listMarkup}
+          {loadingWithoutItemsMarkup}
         </div>
       </Provider>
     );

@@ -56,7 +56,7 @@ describe('<Item />', () => {
   const ariaLabel = 'View Item';
 
   describe('accessibilityLabel', () => {
-    it('is used on the UnstyledLink for the aria-label attribute', () => {
+    it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
       const item = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item
@@ -74,7 +74,7 @@ describe('<Item />', () => {
   });
 
   describe('url', () => {
-    it('does not renders a UnstyledLink by default', () => {
+    it('does not render an <UnstyledLink /> by default', () => {
       const element = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id="itemId" onClick={noop} accessibilityLabel={ariaLabel} />
@@ -84,7 +84,7 @@ describe('<Item />', () => {
       expect(element.find(UnstyledLink).exists()).toBe(false);
     });
 
-    it('renders a UnstyledLink', () => {
+    it('renders an <UnstyledLink />', () => {
       const element = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
@@ -94,7 +94,7 @@ describe('<Item />', () => {
       expect(element.find(UnstyledLink).exists()).toBe(true);
     });
 
-    it('renders a UnstyledLink with url', () => {
+    it('renders an <UnstyledLink /> with url', () => {
       const element = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
@@ -104,7 +104,7 @@ describe('<Item />', () => {
       expect(element.find(UnstyledLink).prop('url')).toBe(url);
     });
 
-    it(`renders a UnstyledLink with an aria-label of ${ariaLabel}`, () => {
+    it('renders an <UnstyledLink /> with an aria-label of ariaLabel', () => {
       const element = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
@@ -133,7 +133,7 @@ describe('<Item />', () => {
   });
 
   describe('onClick()', () => {
-    it('calls onClick when clicking on the item when onClick exist', () => {
+    it('calls onClick when clicking on the item when onClick exists', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
@@ -164,7 +164,7 @@ describe('<Item />', () => {
   });
 
   describe('Selectable', () => {
-    it("it should not call the Item 'onClick' when clicking the 'LargerSelectionArea'", () => {
+    it('does not call the Item onClick when clicking the LargerSelectionArea', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectableContext}>
@@ -176,7 +176,7 @@ describe('<Item />', () => {
       expect(onClick).not.toBeCalled();
     });
 
-    it("it should call 'onSelectionChange' with the id of the item when clicking the 'LargerSelectionArea'", () => {
+    it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectableContext}>
           <Item id={itemId} url={url} />
@@ -192,7 +192,7 @@ describe('<Item />', () => {
   });
 
   describe('SelectMode', () => {
-    it("it should not call 'onClick' when clicking the item", () => {
+    it('calls onClick when item is clicked', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectModeContext}>
@@ -204,7 +204,7 @@ describe('<Item />', () => {
       expect(onClick).not.toBeCalledWith(itemId);
     });
 
-    it("it should call 'onSelectionChange' with the id of the item even if url or onClick is present", () => {
+    it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectableContext}>
@@ -224,7 +224,7 @@ describe('<Item />', () => {
       );
     });
 
-    it("should render a checked Checkbox if the item is in the 'selectedItems' context", () => {
+    it('renders a checked Checkbox if the item is in the selectedItems context', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectableContext}>
           <Item id={selectedItemId} url={url} />
@@ -232,19 +232,10 @@ describe('<Item />', () => {
       );
       expect(wrapper.find(Checkbox).props().checked).toBe(true);
     });
-
-    it("renders a disabled checked Checkbox if 'loading' context is true", () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockLoadingContext}>
-          <Item id={selectedItemId} url={url} />
-        </Provider>,
-      );
-      expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
-    });
   });
 
   describe('media', () => {
-    it('should not include media if not is provided', () => {
+    it('does not include media if not provided', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id={itemId} url={url} />
@@ -253,7 +244,16 @@ describe('<Item />', () => {
       expect(findByTestID(wrapper, 'Media').exists()).toBe(false);
     });
 
-    it("should include and 'Avatar' if one is provided", () => {
+    it('renders a disabled checked Checkbox if loading context is true', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockLoadingContext}>
+          <Item id={selectedItemId} url={url} />
+        </Provider>,
+      );
+      expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
+    });
+
+    it('includes an <Avatar /> if one is provided', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id={itemId} url={url} media={<Avatar customer />} />
@@ -266,7 +266,7 @@ describe('<Item />', () => {
       ).toBe(true);
     });
 
-    it("should include and 'Thumbnail' if one is provided", () => {
+    it('includes a <Thumbnail /> if one is provided', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item
@@ -285,7 +285,7 @@ describe('<Item />', () => {
   });
 
   describe('shortcutActions', () => {
-    it('shouldn’t render shortcut actions if none are provided', () => {
+    it('does not render shortcut actions if none are provided', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id={itemId} url={url} />
@@ -294,7 +294,7 @@ describe('<Item />', () => {
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
     });
 
-    it('should render shortcut actions when some are provided', () => {
+    it('renders shortcut actions when some are provided', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id={itemId} url={url} shortcutActions={[{content: 'action'}]} />
@@ -303,7 +303,7 @@ describe('<Item />', () => {
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(true);
     });
 
-    it("should render persistent shortcut actions if 'persistActions' is true", () => {
+    it('renders persistent shortcut actions if persistActions is true', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item
