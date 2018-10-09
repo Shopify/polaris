@@ -17,3 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Batched Percy snapshots per component ([#2363](https://github.com/Shopify/polaris-react/pull/2363))
+
+### Documentation
+
+- Made clarifications to and added examples to the manual accessibility checklist ([#2391](https://github.com/Shopify/polaris-react/pull/2391))
