@@ -182,7 +182,7 @@ $secondary-item-font-size: rem(15px);
   @include unstyled-list;
   flex: 0 0 auto;
   padding: spacing() 0;
-  @include safe-area-for(padding-left, spacing(), left);
+  @include safe-area-for(padding-left, 0, left);
 
   + .Section {
     padding-top: spacing(extra-tight);
