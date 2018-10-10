@@ -69,7 +69,6 @@ export interface State {
   columnVisibilityData: ColumnVisibilityData[];
   previousColumn?: ColumnVisibilityData;
   currentColumn?: ColumnVisibilityData;
-  sorted?: boolean;
   sortedColumnIndex?: number;
   sortDirection?: SortDirection;
   heights: number[];
@@ -83,7 +82,6 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   state: State = {
     collapsed: false,
     columnVisibilityData: [],
-    sorted: this.props.sortable && this.props.sortable.length > 0,
     heights: [],
     preservedScrollPosition: {},
     isScrolledFarthestLeft: true,
@@ -368,9 +366,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private scrollListener() {
-    this.setState({
-      ...this.calculateColumnVisibilityData(this.state.collapsed),
-    });
+    this.setState((prevState) => ({
+      ...this.calculateColumnVisibilityData(prevState.collapsed),
+    }));
   }
 
   @autobind
@@ -392,9 +390,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             : previousColumn.leftEdge - fixedColumnWidth;
 
         requestAnimationFrame(() => {
-          this.setState({
-            ...this.calculateColumnVisibilityData(this.state.collapsed),
-          });
+          this.setState((prevState) => ({
+            ...this.calculateColumnVisibilityData(prevState.collapsed),
+          }));
         });
       }
     };
@@ -509,7 +507,6 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const handleSort = () => {
       this.setState(
         {
-          sorted: true,
           sortDirection: newSortDirection,
           sortedColumnIndex: headingIndex,
         },
