@@ -17,7 +17,16 @@
     "noUnusedLocals": true,
     "noEmitHelpers": true,
     "importHelpers": true,
-    "lib": ["dom", "es2015", "es2016", "es2017", "dom.iterable", "scripthost"]
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017",
+      "dom.iterable",
+      "scripthost",
+      "esnext.asynciterable"
+    ]
   },
-  "include": ["./config/typescript/**/*", "./src/**/*", "./package.json"]
+  "include": ["./config/typescript/**/*", "./src/**/*", "./package.json"],
+  "exclude": ["./node_modules/@types/graphql/**/*"]
 }

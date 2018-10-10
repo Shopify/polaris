@@ -130,12 +130,16 @@ describe('transformAction', () => {
   });
 
   it('returns an action with a callback message generated from a url', () => {
+    mockHostname();
+
     const urlCallbackAction = transformAction(shopOrigin)({
       content: 'Bulk update orders',
       url: 'https://web-foundation-apps.myshopify.io/',
     });
 
     expect(typeof urlCallbackAction.message).toBe('function');
+
+    resetHostname();
   });
 
   it('returns an action with a callback message when onAction exists', () => {
@@ -149,22 +153,18 @@ describe('transformAction', () => {
   });
 });
 
-const originalHostname = window.location.hostname;
+const originalHref = window.location.href;
 
 function mockHostname() {
   // The window's hostname needs to be mocked because there is no value for window.location.hostname within the jsdom environment. Otherwise, when an action with an external url (explicit or inherent) is passed to transformAction, we get a false positive for the second conditional of the getTargetFromURL function (line 89 of transformers.ts), as url.indexOf(window.location.hostname) returns 0 even though there is no value passed.
 
   // For context on this window.location mock workaround, see this issue => https://github.com/facebook/jest/issues/890#issuecomment-209698782
 
-  Object.defineProperty(window.location, 'hostname', {
-    writable: true,
-    value: 'web-foundation-apps.myshopify.io',
+  jsdom.reconfigure({
+    url: 'https://web-foundation-apps.myshopify.io/',
   });
 }
 
 function resetHostname() {
-  Object.defineProperty(window.location, 'hostname', {
-    writable: true,
-    value: originalHostname,
-  });
+  jsdom.reconfigure({url: originalHref});
 }
