@@ -14,6 +14,10 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed padding and margins on `SkeletonPage` to match `Page` ([#2167](https://github.com/Shopify/polaris-react/pull/2167))
 - Fixed spacing between `Page` title and metadata ([#2382](https://github.com/Shopify/polaris-react/pull/2382))
 
+### Documentation
+
+- Make ActionList, OptionList and Popover examples active by default so you can see previews without interacting ([#2383](https://github.com/Shopify/polaris-react/pull/2383))
+
 ### Development workflow
 
 - Batched Percy snapshots per component ([#2363](https://github.com/Shopify/polaris-react/pull/2363))

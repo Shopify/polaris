@@ -128,7 +128,7 @@ Use when presenting a set of actions in a disclosable menu.
 ```jsx
 class PopoverExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   togglePopover = () => {
@@ -176,7 +176,7 @@ Use to present a combination of content, instructions, and actions in a panel fo
 ```jsx
 class PopoverContentExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   togglePopover = () => {
@@ -239,7 +239,7 @@ Use to present secondary input tasks on demand.
 ```jsx
 class PopoverFormExample extends React.Component {
   state = {
-    active: false,
+    active: true,
     tagValue: '',
   };
 
