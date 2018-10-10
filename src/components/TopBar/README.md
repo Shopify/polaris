@@ -22,7 +22,7 @@ Merchants can use the top bar component to search, access menus, and navigate by
 
 ---
 
-# Component dependencies
+## Component dependencies
 
 The top bar component must be passed to the [frame](/components/structure/frame) component.
 
