@@ -87,7 +87,7 @@ Use for the least important actions so merchants aren't distracted by secondary 
 ```jsx
 class ActionListExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   togglePopover = () => {
@@ -138,7 +138,7 @@ Use when the items benefit from an associated action or image (e.g. a list of pr
 ```jsx
 class ActionListExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   togglePopover = () => {
@@ -179,7 +179,7 @@ Use when the items benefit from sections to help differentiate actions.
 ```jsx
 class ActionListExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   togglePopover = () => {
@@ -225,7 +225,7 @@ Use to visually indicate that an action list item is destructive.
 ```jsx
 class ActionListExample extends React.Component {
   state = {
-    active: false,
+    active: true,
   };
 
   togglePopover = () => {

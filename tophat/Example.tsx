@@ -4,6 +4,7 @@ import * as Polaris from '@shopify/polaris';
 import {parse} from '@babel/parser';
 import generate from '@babel/generator';
 import {transform} from '@babel/standalone';
+import {Heading} from '@shopify/polaris';
 
 export interface ExampleProps {
   name: string;
@@ -24,7 +25,12 @@ export default function Example(props: ExampleProps) {
   // eslint-disable-next-line no-eval
   const Component = eval(compiledCode)(...tempScope);
 
-  return <Component />;
+  return (
+    <React.Fragment>
+      <Heading>{props.name}</Heading>
+      <Component />
+    </React.Fragment>
+  );
 }
 
 function astFromCode(code: string): File {

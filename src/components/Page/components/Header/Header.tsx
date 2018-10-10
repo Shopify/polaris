@@ -88,10 +88,13 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const titleMarkup = (
       <div className={styles.Title}>
-        <DisplayText size="large" element="h1">
-          {title}
-        </DisplayText>
-        {titleMetadata}
+        {/* Anonymous divs are here for layout purposes */}
+        <div>
+          <DisplayText size="large" element="h1">
+            {title}
+          </DisplayText>
+        </div>
+        <div>{titleMetadata}</div>
       </div>
     );
 

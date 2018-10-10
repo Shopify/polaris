@@ -1,4 +1,4 @@
-🆕 🎉 📰 **July 30, 2018 – In the coming weeks, _all_ active development and issue tracking for Polaris React will move to this repository. At that time, we will start accepting pull requests. We look forward to your contributions!**
+🆕 🎉 📰 **All active development and issue tracking for Polaris React will be moving to this repository. At that time, we will start accepting pull requests. We look forward to your contributions!**
 
 # Polaris
 
