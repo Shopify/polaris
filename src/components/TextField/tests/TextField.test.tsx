@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
-import {InlineError, Labelled, Connected, Select} from 'src/components';
+import {InlineError, Labelled, Connected, Select} from 'components';
 import {Resizer} from '../components';
 import TextField from '../TextField';
 

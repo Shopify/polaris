@@ -1,11 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {DatePicker, Select, TextField} from '../../../../..';
-import {
-  trigger,
-  mountWithAppProvider,
-} from '../../../../../../../tests/utilities';
-
+import {DatePicker, Select, TextField} from 'components';
+import {trigger, mountWithAppProvider} from 'tests/utilities';
 import DateSelector, {Props, DateFilterOption} from '../DateSelector';
 
 describe('<DateSelector />', () => {

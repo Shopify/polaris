@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'tests/utilities';
-import {Avatar, buttonFrom} from 'src/components';
+import {Avatar, buttonFrom} from 'components';
 import AccountConnection from '../AccountConnection';
 
 describe('<AccountConnection />', () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities/enzyme';
-import {WithContextTypes} from '../../../types';
+import {mountWithAppProvider} from 'tests/utilities';
+import {WithContextTypes} from 'types';
 import withContext from '../WithContext';
 
 interface ContextTypes {

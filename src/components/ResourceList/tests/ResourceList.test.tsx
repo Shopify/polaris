@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ResourceList, Select, Spinner, EmptySearchResult} from 'src/components';
+import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
 import {
   findByTestID,
   shallowWithAppProvider,

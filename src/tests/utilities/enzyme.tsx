@@ -11,10 +11,11 @@ import * as React from 'react';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {
   createPolarisContext,
   polarisAppProviderContextTypes,
-} from '../../src/components/AppProvider';
+} from 'components/AppProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -64,6 +65,7 @@ export function trigger(wrapper: AnyWrapper, keypath: string, ...args: any[]) {
     );
   }
 
+  // eslint-disable-next-line callback-return
   const returnValue = callback(...args);
   updateRoot(wrapper);
 

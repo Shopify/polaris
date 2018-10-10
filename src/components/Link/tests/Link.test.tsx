@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {UnstyledLink} from 'src/components';
+import {UnstyledLink} from 'components';
 import Link from '../Link';
 
 describe('<Link />', () => {

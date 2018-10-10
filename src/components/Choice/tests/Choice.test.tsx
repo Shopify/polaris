@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {InlineError} from 'src/components';
+import {InlineError} from 'components';
 import Choice from '../Choice';
 
 describe('<Choice />', () => {

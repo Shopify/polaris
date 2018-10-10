@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'tests/utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import SettingAction from 'src/components/SettingAction';
+import SettingAction from 'components/SettingAction';
 import SettingToggle from '../SettingToggle';
 
 describe('<SettingToggle />', () => {

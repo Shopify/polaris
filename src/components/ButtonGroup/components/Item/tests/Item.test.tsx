@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {Button} from 'src/components';
+import {Button} from 'components';
 import Item from '../Item';
 
 describe('<Item />', () => {

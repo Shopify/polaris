@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Label, Labelled} from 'src/components';
+import {Label, Labelled} from 'components';
 import {mountWithAppProvider} from 'tests/utilities';
 import DropZone from '../DropZone';
 
