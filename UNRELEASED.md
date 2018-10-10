@@ -12,6 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed typo in `Collapsible` example ([#2398](https://github.com/Shopify/polaris-react/pull/2398))
 - Fixed padding and margins on `SkeletonPage` to match `Page` ([#2167](https://github.com/Shopify/polaris-react/pull/2167))
 - Fixed spacing between `Page` title and metadata ([#2382](https://github.com/Shopify/polaris-react/pull/2382))
 
