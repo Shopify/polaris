@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {Image, DisplayText} from 'src/components';
+import {Image, DisplayText} from 'components';
 import EmptyState from '../EmptyState';
 
 describe('<EmptyState />', () => {

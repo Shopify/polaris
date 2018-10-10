@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {withAppProvider, WithAppProviderProps} from 'src/components';
+import {withAppProvider, WithAppProviderProps} from 'components';
 import {OpenOptions} from '../easdk/components';
 
 export interface Props extends OpenOptions {

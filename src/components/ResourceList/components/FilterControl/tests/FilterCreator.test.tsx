@@ -6,7 +6,7 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from 'tests/utilities';
-import {Button, Select, Popover} from 'src/components';
+import {Button, Select, Popover} from 'components';
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../FilterValueSelector';
 import {FilterType} from '../types';

@@ -1,6 +1,6 @@
-import packageJSON from 'package.json';
 import {ValidationMap} from 'react';
 import PropTypes from 'prop-types';
+import packageJSON from '../../../../../package.json';
 import Intl from '../Intl';
 import Link from '../Link';
 import {Context, Props as AppProviderProps} from '../../AppProvider';

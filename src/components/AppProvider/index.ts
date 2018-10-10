@@ -13,4 +13,4 @@ export {
   WithAppProviderProps,
   Link,
 } from './utilities';
-export {LinkLikeComponent} from 'src/components';
+export {LinkLikeComponent} from 'components';

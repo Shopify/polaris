@@ -8,14 +8,11 @@
     "plugin:shopify/typescript-prettier"
   ],
   "rules": {
-    "id-length": "off",
     "func-style": "off",
-    "no-undefined": "off",
     "no-process-env": "off",
     "no-warning-comments": "off",
     "no-negated-condition": "off",
     "consistent-return": "off",
-    "prefer-destructuring": "off",
     "match-default-export-name": "off",
     "jsx-use-translation-function": "off",
     "lines-around-comment": [
@@ -25,14 +22,8 @@
         "allowBlockStart": false
       }
     ],
-    "react/no-unused-state": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
-    "react/no-did-update-set-state": "off",
-    "react/no-access-state-in-setstate": "off",
-    "shopify/typescript/prefer-pascal-case-enums": "off",
-    "shopify/typescript/prefer-singular-enums": "off",
-    "typescript/trailing-comma-interface": "off",
     "jsx-a11y/label-has-for": [
       2,
       {

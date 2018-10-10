@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'tests/utilities';
-import {Keys} from 'src/types';
-import {TextContainer} from 'src/components';
+import {Keys} from 'types';
+import {TextContainer} from 'components';
 import PositionedOverlay from '../../../../PositionedOverlay';
 import PopoverOverlay from '../PopoverOverlay';
 

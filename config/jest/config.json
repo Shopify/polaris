@@ -9,7 +9,7 @@
     "\\.svg$": "<rootDir>/config/jest/transformers/svg.js",
     "\\.tsx?$": "<rootDir>/config/jest/transformers/typescript.js"
   },
-  "modulePaths": ["<rootDir>"],
+  "modulePaths": ["<rootDir>/src"],
   "moduleNameMapper": {
     "\\.(s?css)$": "identity-obj-proxy"
   },

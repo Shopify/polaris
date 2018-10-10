@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from 'tests/utilities';
-import {TextField, Tag, Button} from 'src/components';
+import {TextField, Tag, Button} from 'components';
 import {Provider} from '../../Context';
 import {
   Filter,
@@ -12,7 +12,7 @@ import {
 } from '../types';
 import FilterControl, {Props} from '../FilterControl';
 import FilterCreator from '../FilterCreator';
-import {DateFilterOptions} from '../DateSelector';
+import {DateFilterOption} from '../DateSelector';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {
@@ -382,7 +382,7 @@ describe('<FilterControl />', () => {
     });
 
     it.only('renders the correct localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
-      const appliedFilterValue = DateFilterOptions.PastWeek;
+      const appliedFilterValue = DateFilterOption.PastWeek;
 
       const filter: FilterDateSelector = {
         key: 'starts',

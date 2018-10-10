@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {LinkLikeComponent} from 'src/components';
+import {LinkLikeComponent} from 'components';
 import {
   EASDK,
   Intl,

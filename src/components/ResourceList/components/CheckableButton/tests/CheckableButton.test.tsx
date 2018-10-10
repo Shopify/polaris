@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
-import {Checkbox} from 'src/components';
+import {Checkbox} from 'components';
 import CheckableButton from '../CheckableButton';
 
 const CheckableButtonProps = {
