@@ -1,4 +1,5 @@
 $action-text-spacing: rem(24px);
+
 .Page {
   @include page-layout;
 }
@@ -17,26 +18,38 @@ $action-text-spacing: rem(24px);
 
 .Header {
   @include page-header-layout;
+  @include skeleton-page-header-layout;
 }
 
 .Header-hasSecondaryActions {
-  @include page-header-has-secondaryactions;
+  @include skeleton-page-header-has-secondary-actions;
+}
+
+.BreadcrumbAction {
+  padding-top: spacing(base);
+  padding-bottom: spacing(base);
+  margin-top: (-1 * spacing(extra-tight));
+  margin-bottom: (-1 * spacing(extra-tight));
 }
 
 .Actions {
-  @include page-actions-layout;
+  @include skeleton-page-secondary-actions-layout;
 }
 
 .Action {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: control-height();
+  min-height: control-slim-height();
   padding-right: $action-text-spacing;
+  margin-top: (-1 * spacing(extra-tight));
   margin-bottom: (-1 * spacing(extra-tight));
+  padding-top: rem(16px);
+
   &:first-child {
     padding-right: 0;
   }
+
   @include page-content-when-partially-condensed {
     &:not(:last-child) {
       display: none;

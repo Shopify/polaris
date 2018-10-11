@@ -7,7 +7,7 @@ import {
   Thumbnail,
   ButtonGroup,
   Checkbox,
-} from 'src/components';
+} from 'components';
 import {Provider} from '../../Context';
 import Item from '../Item';
 

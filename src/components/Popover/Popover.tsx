@@ -43,7 +43,6 @@ export interface Props {
 }
 
 export interface State {
-  activatorFocused: boolean;
   activatorNode: HTMLElement | null;
 }
 
@@ -54,7 +53,6 @@ export default class Popover extends React.PureComponent<Props, State> {
   static Section = Section;
 
   state: State = {
-    activatorFocused: false,
     activatorNode: null,
   };
 

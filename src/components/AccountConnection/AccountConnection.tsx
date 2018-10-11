@@ -1,13 +1,8 @@
 import * as React from 'react';
-
+import {Avatar, buttonFrom, Card, Stack, TextStyle} from 'components';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import SettingAction from 'components/SettingAction';
 import {Action} from '../../types';
-import Avatar from '../Avatar';
-import {buttonFrom} from '../Button';
-import Card from '../Card';
-import SettingAction from '../SettingAction';
-import Stack from '../Stack';
-import TextStyle from '../TextStyle';
-
 import * as styles from './AccountConnection.scss';
 
 export interface Props {
@@ -35,7 +30,7 @@ export default function AccountConnection({
   title,
   details,
   termsOfService,
-}: Props): React.ReactNode {
+}: Props) {
   const initials = accountName
     ? accountName
         .split(/\s+/)

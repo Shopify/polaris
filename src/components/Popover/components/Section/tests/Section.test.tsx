@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {TextContainer} from 'src/components';
+import {TextContainer} from 'components';
 import Section from '../Section';
 
 // section: ActionListSection;

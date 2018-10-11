@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {Button, Icon, UnstyledLink, Heading} from 'src/components';
+import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
 
 import successIcon from '../icons/circle-check-mark.svg';

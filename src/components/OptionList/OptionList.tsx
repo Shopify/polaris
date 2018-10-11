@@ -71,6 +71,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
 
   private id = this.props.id || getUniqueId();
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({
     options: nextOptions = [],
     sections: nextSections = [],

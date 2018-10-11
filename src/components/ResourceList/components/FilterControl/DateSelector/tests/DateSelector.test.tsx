@@ -1,12 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {DatePicker, Select, TextField} from '../../../../..';
-import {
-  trigger,
-  mountWithAppProvider,
-} from '../../../../../../../tests/utilities';
-
-import DateSelector, {Props, DateFilterOptions} from '../DateSelector';
+import {DatePicker, Select, TextField} from 'components';
+import {trigger, mountWithAppProvider} from 'tests/utilities';
+import DateSelector, {Props, DateFilterOption} from '../DateSelector';
 
 describe('<DateSelector />', () => {
   const mockDefaultProps: Props = {
@@ -19,32 +15,32 @@ describe('<DateSelector />', () => {
 
   const dateOptionType = {
     past: [
-      DateFilterOptions.PastWeek,
-      DateFilterOptions.PastMonth,
-      DateFilterOptions.PastQuarter,
-      DateFilterOptions.PastYear,
-      DateFilterOptions.OnOrBefore,
-      DateFilterOptions.OnOrAfter,
+      DateFilterOption.PastWeek,
+      DateFilterOption.PastMonth,
+      DateFilterOption.PastQuarter,
+      DateFilterOption.PastYear,
+      DateFilterOption.OnOrBefore,
+      DateFilterOption.OnOrAfter,
     ],
     future: [
-      DateFilterOptions.ComingWeek,
-      DateFilterOptions.ComingMonth,
-      DateFilterOptions.ComingQuarter,
-      DateFilterOptions.ComingYear,
-      DateFilterOptions.OnOrBefore,
-      DateFilterOptions.OnOrAfter,
+      DateFilterOption.ComingWeek,
+      DateFilterOption.ComingMonth,
+      DateFilterOption.ComingQuarter,
+      DateFilterOption.ComingYear,
+      DateFilterOption.OnOrBefore,
+      DateFilterOption.OnOrAfter,
     ],
     full: [
-      DateFilterOptions.PastWeek,
-      DateFilterOptions.PastMonth,
-      DateFilterOptions.PastQuarter,
-      DateFilterOptions.PastYear,
-      DateFilterOptions.ComingWeek,
-      DateFilterOptions.ComingMonth,
-      DateFilterOptions.ComingQuarter,
-      DateFilterOptions.ComingYear,
-      DateFilterOptions.OnOrBefore,
-      DateFilterOptions.OnOrAfter,
+      DateFilterOption.PastWeek,
+      DateFilterOption.PastMonth,
+      DateFilterOption.PastQuarter,
+      DateFilterOption.PastYear,
+      DateFilterOption.ComingWeek,
+      DateFilterOption.ComingMonth,
+      DateFilterOption.ComingQuarter,
+      DateFilterOption.ComingYear,
+      DateFilterOption.OnOrBefore,
+      DateFilterOption.OnOrAfter,
     ],
   };
 
@@ -100,7 +96,7 @@ describe('<DateSelector />', () => {
 
   describe('filterValue', () => {
     it('sets option in date filters Select', () => {
-      const dateFilterValue = DateFilterOptions.PastMonth;
+      const dateFilterValue = DateFilterOption.PastMonth;
 
       const wrapper = mountWithAppProvider(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
@@ -110,7 +106,7 @@ describe('<DateSelector />', () => {
     });
 
     it('displays DatePicker when filterValue is filter with minimum date predicate (on or after)', () => {
-      const dateFilterValue = DateFilterOptions.OnOrAfter;
+      const dateFilterValue = DateFilterOption.OnOrAfter;
 
       const wrapper = mountWithAppProvider(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
@@ -120,7 +116,7 @@ describe('<DateSelector />', () => {
     });
 
     it('displays DatePicker when filterValue is filter with maximum date predicate (on or before)', () => {
-      const dateFilterValue = DateFilterOptions.OnOrBefore;
+      const dateFilterValue = DateFilterOption.OnOrBefore;
 
       const wrapper = mountWithAppProvider(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
@@ -130,7 +126,7 @@ describe('<DateSelector />', () => {
     });
 
     it('does not display DatePicker when filterValue is filter without date predicate', () => {
-      const dateFilterValue = DateFilterOptions.PastMonth;
+      const dateFilterValue = DateFilterOption.PastMonth;
 
       const wrapper = mountWithAppProvider(
         <DateSelector {...mockDefaultProps} filterValue={dateFilterValue} />,
@@ -143,7 +139,7 @@ describe('<DateSelector />', () => {
   describe('onFilterValueChange', () => {
     it('gets called with new filter value when date filter is updated to filter without date predicate', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const newDateFilter = DateFilterOptions.PastMonth;
+      const newDateFilter = DateFilterOption.PastMonth;
 
       const wrapper = mountWithAppProvider(
         <DateSelector
@@ -159,7 +155,7 @@ describe('<DateSelector />', () => {
 
     it('gets called with undefined when date filter is updated to filter with minimum date predicate (on or after) and no current date selection', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const newDateFilter = DateFilterOptions.OnOrAfter;
+      const newDateFilter = DateFilterOption.OnOrAfter;
 
       const wrapper = mountWithAppProvider(
         <DateSelector
@@ -175,7 +171,7 @@ describe('<DateSelector />', () => {
 
     it('gets called with undefined when date filter is updated to filter with maximum date predicate (on or before) and no current date selection', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const newDateFilter = DateFilterOptions.OnOrBefore;
+      const newDateFilter = DateFilterOption.OnOrBefore;
 
       const wrapper = mountWithAppProvider(
         <DateSelector
@@ -191,13 +187,13 @@ describe('<DateSelector />', () => {
 
     it('gets called with formatted YYYY-MM-DD date when date filter is updated to filter with minimum date predicate (on or after) and current date selection', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const newDateFilter = DateFilterOptions.OnOrAfter;
+      const newDateFilter = DateFilterOption.OnOrAfter;
       const date = '2019-05-28';
 
       const wrapper = mountWithAppProvider(
         <DateSelector
           {...mockDefaultProps}
-          filterValue={DateFilterOptions.OnOrBefore}
+          filterValue={DateFilterOption.OnOrBefore}
           onFilterValueChange={onFilterValueChangeSpy}
         />,
       );
@@ -210,13 +206,13 @@ describe('<DateSelector />', () => {
 
     it('gets called with formatted YYYY-MM-DD date when date filter is updated to filter with maximum date predicate (on or before) and current date selection', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const newDateFilter = DateFilterOptions.OnOrBefore;
+      const newDateFilter = DateFilterOption.OnOrBefore;
       const date = '2019-05-28';
 
       const wrapper = mountWithAppProvider(
         <DateSelector
           {...mockDefaultProps}
-          filterValue={DateFilterOptions.OnOrAfter}
+          filterValue={DateFilterOption.OnOrAfter}
           onFilterValueChange={onFilterValueChangeSpy}
         />,
       );
@@ -229,7 +225,7 @@ describe('<DateSelector />', () => {
 
     it('gets called with formatted YYYY-MM-DD date when date is updated in DatePicker', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const dateFilter = DateFilterOptions.OnOrBefore;
+      const dateFilter = DateFilterOption.OnOrBefore;
       const date = '2019-05-28';
 
       const wrapper = mountWithAppProvider(
@@ -247,7 +243,7 @@ describe('<DateSelector />', () => {
 
     it('gets called with date when date is updated in TextField with YYYY-MM-DD date and TextField is blurred', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const dateFilter = DateFilterOptions.OnOrBefore;
+      const dateFilter = DateFilterOption.OnOrBefore;
       const date = '2019-08-22';
 
       const wrapper = mountWithAppProvider(
@@ -266,7 +262,7 @@ describe('<DateSelector />', () => {
 
     it('gets called with undefined when date is updated in TextField with invalid date and TextField is blurred', () => {
       const onFilterValueChangeSpy = jest.fn();
-      const dateFilter = DateFilterOptions.OnOrBefore;
+      const dateFilter = DateFilterOption.OnOrBefore;
       const invalidDate = '2019/08/22';
 
       const wrapper = mountWithAppProvider(
@@ -297,7 +293,7 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', DateFilterOptions.PastMonth);
+      trigger(wrapper.find(Select), 'onChange', DateFilterOption.PastMonth);
 
       expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(
         initialConsumerFilterKey,
@@ -316,7 +312,7 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', DateFilterOptions.OnOrBefore);
+      trigger(wrapper.find(Select), 'onChange', DateFilterOption.OnOrBefore);
 
       expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(filterMaxKey);
     });
@@ -333,7 +329,7 @@ describe('<DateSelector />', () => {
         />,
       );
 
-      trigger(wrapper.find(Select), 'onChange', DateFilterOptions.OnOrAfter);
+      trigger(wrapper.find(Select), 'onChange', DateFilterOption.OnOrAfter);
 
       expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(filterMinKey);
     });
@@ -343,7 +339,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
@@ -357,7 +353,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
@@ -372,7 +368,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
@@ -387,7 +383,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
@@ -403,7 +399,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
@@ -420,7 +416,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 
@@ -436,7 +432,7 @@ describe('<DateSelector />', () => {
     const wrapper = mountWithAppProvider(
       <DateSelector
         {...mockDefaultProps}
-        filterValue={DateFilterOptions.OnOrBefore}
+        filterValue={DateFilterOption.OnOrBefore}
       />,
     );
 

@@ -127,6 +127,6 @@ export default class Option extends React.Component<Props, State> {
 
   @autobind
   private toggleFocus() {
-    this.setState({focused: !this.state.focused});
+    this.setState((prevState) => ({focused: !prevState.focused}));
   }
 }

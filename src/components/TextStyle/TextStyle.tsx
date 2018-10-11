@@ -3,7 +3,8 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import * as styles from './TextStyle.scss';
 
 export type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';
-export enum Variations {
+
+enum VariationValue {
   Positive = 'positive',
   Negative = 'negative',
   Strong = 'strong',
@@ -21,7 +22,7 @@ export interface Props {
 export default function TextStyle({variation, children}: Props) {
   const className = classNames(
     variation && styles[variationName('variation', variation)],
-    variation === Variations.Code && styles.code,
+    variation === VariationValue.Code && styles.code,
   );
   const Element = variationElement(variation);
   return <Element className={className}>{children}</Element>;
@@ -29,13 +30,13 @@ export default function TextStyle({variation, children}: Props) {
 
 function variationElement(variation?: Variation) {
   switch (variation) {
-    case Variations.Code:
+    case VariationValue.Code:
       return 'code';
-    case Variations.Strong:
+    case VariationValue.Strong:
       return 'b';
-    case Variations.Positive:
-    case Variations.Negative:
-    case Variations.Subdued:
+    case VariationValue.Positive:
+    case VariationValue.Negative:
+    case VariationValue.Subdued:
     default:
       return 'span';
   }

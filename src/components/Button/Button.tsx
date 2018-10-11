@@ -10,7 +10,7 @@ import Indicator from '../Indicator';
 
 import * as styles from './Button.scss';
 
-export type Size = 'slim' | 'large';
+export type Size = 'slim' | 'medium' | 'large';
 
 export type IconSource = IconProps['source'];
 
@@ -29,7 +29,10 @@ export interface Props {
   disabled?: boolean;
   /** Replaces button text with a spinner while a background action is being performed */
   loading?: boolean;
-  /** Changes the size of the button, giving it more or less padding */
+  /**
+   * Changes the size of the button, giving it more or less padding
+   * @default 'medium'
+   */
   size?: Size;
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
@@ -81,7 +84,7 @@ function Button({
   disclosure,
   plain,
   submit,
-  size,
+  size = 'medium',
   fullWidth,
   polaris: {intl},
 }: CombinedProps) {
@@ -95,7 +98,7 @@ function Button({
     isDisabled && styles.disabled,
     loading && styles.loading,
     plain && styles.plain,
-    size && styles[variationName('size', size)],
+    size && size !== 'medium' && styles[variationName('size', size)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
   );

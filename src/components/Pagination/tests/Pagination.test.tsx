@@ -2,8 +2,8 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'tests/utilities';
-import {Keys} from 'src/types';
-import {Tooltip, TextField} from 'src/components';
+import {Tooltip, TextField} from 'components';
+import {Keys} from '../../../types';
 import Pagination from '../Pagination';
 
 interface HandlerMap {

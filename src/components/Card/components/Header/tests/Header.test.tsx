@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {ButtonGroup, Heading, buttonsFrom} from 'src/components';
+import {ButtonGroup, Heading, buttonsFrom} from 'components';
 import Header from '../Header';
 
 jest.mock('../../../../Button', () => ({
