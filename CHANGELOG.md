@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.12.1 - 2018-10-11
+
+### Bug fixes
+
+- Fixes type imports in the build ([#2411](https://github.com/Shopify/polaris-react/pull/2411))
+
 ## 2.12.0 - 2018-10-11
 
 ### Enhancements
