@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {shallowWithAppProvider} from 'tests/utilities';
-import {LinkAction} from 'types';
+import {LinkAction} from '../../../types';
 import {Header} from '../components';
 import Page from '../Page';
 

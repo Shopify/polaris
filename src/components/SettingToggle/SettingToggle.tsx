@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {buttonFrom, Card} from 'components';
-import {ComplexAction} from 'types';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import SettingAction from 'components/SettingAction';
+import {ComplexAction} from '../../types';
 
 export interface Props {
   /** Inner content of the card */

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
 import {Card, Badge} from 'components';
-import {contentContextTypes} from 'types';
+import {contentContextTypes} from '../../../types';
 
 describe('<Card />', () => {
   it('has a child with contentContext', () => {

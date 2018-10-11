@@ -6,7 +6,7 @@ import {
   mountWithAppProvider,
 } from 'tests/utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
-import {contentContextTypes} from 'types';
+import {contentContextTypes} from '../../../types';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
 
