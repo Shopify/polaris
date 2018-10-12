@@ -4,18 +4,18 @@ import {
   animationFrame,
   mountWithAppProvider,
   documentHasStyle,
-} from '../../../../tests/utilities';
+} from 'tests/utilities';
+import {
+  TrapFocus,
+  ContextualSaveBar as PolarisContextualSavebar,
+  Loading as PolarisLoading,
+} from 'components';
 import Frame from '../Frame';
 import Button from '../../Button';
 import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
 } from '../components';
-import {
-  TrapFocus,
-  ContextualSaveBar as PolarisContextualSavebar,
-  Loading as PolarisLoading,
-} from '../../../components';
 
 window.matchMedia =
   window.matchMedia ||

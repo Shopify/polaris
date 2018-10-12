@@ -1,3 +1,3 @@
 export function compose(...fns: any[]) {
-  return fns.reduce((f, g) => (...args: any[]) => f(g(...args)));
+  return fns.reduce((func, group) => (...args: any[]) => func(group(...args)));
 }

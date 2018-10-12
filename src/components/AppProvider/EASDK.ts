@@ -20,22 +20,22 @@ export interface User {
   accountAccess: 'Account owner' | 'Full access' | 'Limited access';
 }
 
-export enum Messages {
-  INITIALIZE = 'Shopify.API.initialize',
-  LOADING_ON = 'Shopify.API.Bar.loading.on',
-  LOADING_OFF = 'Shopify.API.Bar.loading.off',
-  CLOSE_DROPDOWN = 'Shopify.API.Bar.closeDropdown',
-  FLASH_NOTICE = 'Shopify.API.flash.notice',
-  FLASH_ERROR = 'Shopify.API.flash.error',
-  MODAL_OPEN = 'Shopify.API.Modal.open',
-  MODAL_CONFIRM = 'Shopify.API.Modal.confirm',
-  MODAL_ALERT = 'Shopify.API.Modal.alert',
-  MODAL_CLOSE = 'Shopify.API.Modal.close',
-  MODAL_COLLECTION_PICKER = 'Shopify.API.Modal.collectionPicker',
-  MODAL_PRODUCT_PICKER = 'Shopify.API.Modal.productPicker',
-  PUSH_STATE = 'Shopify.API.pushState',
-  REDIRECT = 'Shopify.API.redirect',
-  SET_WINDOW_LOCATION = 'Shopify.API.setWindowLocation',
+export enum Message {
+  Initialize = 'Shopify.API.initialize',
+  LoadingOn = 'Shopify.API.Bar.loading.on',
+  LoadingOff = 'Shopify.API.Bar.loading.off',
+  CloseDropdown = 'Shopify.API.Bar.closeDropdown',
+  FlashNotice = 'Shopify.API.flash.notice',
+  FlashError = 'Shopify.API.flash.error',
+  ModalOpen = 'Shopify.API.Modal.open',
+  ModalConfirm = 'Shopify.API.Modal.confirm',
+  ModalAlert = 'Shopify.API.Modal.alert',
+  ModalClose = 'Shopify.API.Modal.close',
+  ModalCollectionPicker = 'Shopify.API.Modal.collectionPicker',
+  ModalProductPicker = 'Shopify.API.Modal.productPicker',
+  PushState = 'Shopify.API.pushState',
+  Redirect = 'Shopify.API.redirect',
+  SetWindowLocation = 'Shopify.API.setWindowLocation',
 }
 
 interface InitData {
@@ -86,7 +86,7 @@ export default class EASDK {
     this.Modal = new Modal(this.messenger);
     this.ResourcePicker = new ResourcePicker(this.messenger, this.Modal);
 
-    this.messenger.send(Messages.INITIALIZE, {
+    this.messenger.send(Message.Initialize, {
       apiKey,
       shopOrigin,
       metadata,
@@ -97,29 +97,29 @@ export default class EASDK {
 
   @autobind
   startLoading() {
-    this.messenger.send(Messages.LOADING_ON);
+    this.messenger.send(Message.LoadingOn);
   }
 
   @autobind
   stopLoading() {
-    this.messenger.send(Messages.LOADING_OFF);
+    this.messenger.send(Message.LoadingOff);
   }
 
   @autobind
   showFlashNotice(message: string, options: {error?: boolean} = {}) {
     const {error = false} = options;
-    const type = error ? Messages.FLASH_ERROR : Messages.FLASH_NOTICE;
+    const type = error ? Message.FlashError : Message.FlashNotice;
     this.messenger.send(type, {message});
   }
 
   @autobind
   pushState(location: string) {
-    this.messenger.send(Messages.PUSH_STATE, {location});
+    this.messenger.send(Message.PushState, {location});
   }
 
   @autobind
   redirect(location: string) {
-    this.messenger.send(Messages.REDIRECT, {location});
+    this.messenger.send(Message.Redirect, {location});
   }
 }
 

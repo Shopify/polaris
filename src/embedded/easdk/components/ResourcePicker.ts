@@ -1,7 +1,6 @@
 import Messenger from '../Messenger';
 import Modal from './Modal';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {Messages} from '../../../components/AppProvider';
+import {Message} from '../../../components/AppProvider';
 
 export interface SelectionResult {
   products?: object[];
@@ -63,7 +62,7 @@ export default class ResourcePicker {
     }
 
     if (collections) {
-      this.messenger.send(Messages.MODAL_COLLECTION_PICKER, {
+      this.messenger.send(Message.ModalCollectionPicker, {
         title,
         selectMultiple: allowMultiple,
         // eslint-disable-next-line camelcase
@@ -72,7 +71,7 @@ export default class ResourcePicker {
         selectable_resources: resources,
       });
     } else {
-      this.messenger.send(Messages.MODAL_PRODUCT_PICKER, {
+      this.messenger.send(Message.ModalProductPicker, {
         title,
         selectMultiple: allowMultiple,
         // eslint-disable-next-line camelcase

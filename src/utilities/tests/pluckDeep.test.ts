@@ -9,15 +9,15 @@ describe('pluckDeep', () => {
   it('will return a value from a nested structure', () => {
     const pluckedValue = pluckDeep(
       {
-        a: {
-          b: {
-            c: {
-              d: {},
+        aa: {
+          bb: {
+            cc: {
+              dd: {},
             },
-            e: {f: {}},
+            ee: {ff: {}},
           },
         },
-        g: {
+        gg: {
           hello: 'world',
         },
       },
@@ -29,16 +29,16 @@ describe('pluckDeep', () => {
   it('will return null if the key is not found', () => {
     const pluckedValue = pluckDeep(
       {
-        a: {
-          b: {
-            c: {
-              d: {},
+        aa: {
+          bb: {
+            cc: {
+              dd: {},
             },
-            e: {f: {}},
+            ee: {ff: {}},
           },
         },
-        g: {
-          f: 'world',
+        gg: {
+          ff: 'world',
         },
       },
       'hello',

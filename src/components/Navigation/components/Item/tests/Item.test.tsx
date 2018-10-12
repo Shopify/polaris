@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Icon, UnstyledLink} from '../../../../../components';
+import {Icon, UnstyledLink} from 'components';
+import {trigger, mountWithAppProvider} from 'tests/utilities';
 import {add} from '../../../../../icons';
-
-import {trigger, mountWithAppProvider} from '../../../../../../tests/utilities';
 
 import Item, {Props as ItemProps} from '../Item';
 import {Secondary} from '../components';

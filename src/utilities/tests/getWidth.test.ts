@@ -10,11 +10,11 @@ describe('getWidth', () => {
     it('will return a pixel value from a nested object', () => {
       const width = getWidth(
         {
-          a: {
-            b: {
-              c: {e: null},
+          aa: {
+            bb: {
+              cc: {ee: null},
             },
-            f: {
+            ff: {
               width: 200,
             },
           },

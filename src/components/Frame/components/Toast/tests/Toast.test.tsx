@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
-import {noop} from '../../../../../utilities/other';
+import {mountWithAppProvider} from 'tests/utilities';
+import {noop} from 'utilities/other';
 import Toast, {Props} from '../Toast';
 import {Keys} from '../../../../../types';
 

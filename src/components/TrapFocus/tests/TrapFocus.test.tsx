@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from '../../../../tests/utilities';
-import {Focus} from '../../../components';
+import {mountWithAppProvider} from 'tests/utilities';
+import {Focus} from 'components';
 import TrapFocus from '../TrapFocus';
 
 describe('<TrapFocus />', () => {
