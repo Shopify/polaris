@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import {noop} from '../../../../utilities/other';
 import {Icon} from '../../../../components';
 
 import * as styles from './SearchField.scss';
@@ -122,7 +123,7 @@ export default class SearchField extends React.Component<Props, never> {
 
   @autobind
   private handleClear() {
-    const {onCancel = () => null, onChange} = this.props;
+    const {onCancel = noop, onChange} = this.props;
     const {
       input: {current: input},
     } = this;

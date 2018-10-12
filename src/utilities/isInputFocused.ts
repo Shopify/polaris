@@ -1,4 +1,4 @@
-enum EditableTarget {
+export enum EditableTarget {
   Input = 'INPUT',
   Textarea = 'TEXTAREA',
   Select = 'SELECT',
@@ -6,7 +6,7 @@ enum EditableTarget {
 }
 
 function isInputFocused() {
-  if (document == null) {
+  if (document == null || document.activeElement == null) {
     return false;
   }
 
