@@ -5,7 +5,7 @@ import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import {Secondary} from './components';
-import {Icon, IconProps, UnstyledLink} from '../../../../components';
+import {Icon, IconProps, UnstyledLink, Badge} from '../../../../components';
 import {Context, contextTypes} from '../../types';
 
 import * as styles from '../../Navigation.scss';
@@ -95,7 +95,13 @@ export default class Item extends React.Component<Props, State> {
 
     const tabIndex = disabled ? -1 : 0;
 
-    const badgeMarkup = badge && <span className={styles.Badge}>{badge}</span>;
+    const badgeMarkup = badge && (
+      <div className={styles.Badge}>
+        <Badge status="new" size="small">
+          {badge}
+        </Badge>
+      </div>
+    );
 
     const iconMarkup = iconBody ? (
       <span
