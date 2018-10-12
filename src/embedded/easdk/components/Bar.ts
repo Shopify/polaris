@@ -16,7 +16,6 @@ import {
   LoadableAction,
 } from '../../../types';
 
-// eslint-disable-next-line shopify/strict-component-boundaries
 import {Message} from '../../../components/AppProvider';
 
 export interface UpdateConfig {

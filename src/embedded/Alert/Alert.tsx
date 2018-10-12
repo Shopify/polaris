@@ -1,5 +1,4 @@
 import * as React from 'react';
-// eslint-disable-next-line shopify/strict-component-boundaries
 import {
   withAppProvider,
   WithAppProviderProps,
