@@ -1,6 +1,6 @@
 import {HSLColor, HSBColor} from '../components';
 
-export function lightenColor(color: HSLColor | string, lighten: number = 0) {
+export function lightenColor(color: HSLColor | string, lighten = 0) {
   if (typeof color === 'string') {
     return color;
   }
@@ -11,7 +11,7 @@ export function lightenColor(color: HSLColor | string, lighten: number = 0) {
   return {...color, lightness: nextLightness};
 }
 
-export function darkenColor(color: HSLColor | string, lighten: number = 0) {
+export function darkenColor(color: HSLColor | string, lighten = 0) {
   if (typeof color === 'string') {
     return color;
   }
@@ -24,7 +24,7 @@ export function darkenColor(color: HSLColor | string, lighten: number = 0) {
 
 export function saturateColor(
   color: HSLColor | HSBColor | string,
-  saturate: number = 0,
+  saturate = 0,
 ) {
   if (typeof color === 'string') {
     return color;

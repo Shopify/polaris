@@ -1,5 +1,5 @@
 import * as PropTypes from 'prop-types';
-import {IconProps} from '../../components';
+import {IconProps} from '..';
 
 export interface Context {
   location: string;

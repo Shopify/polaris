@@ -130,13 +130,14 @@ export function hslToRgb(color: HSLAColor): RGBAColor {
 
 // ref https://en.wikipedia.org/wiki/HSL_and_HSV
 function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
-  const {red, green, blue, alpha = 1} = color;
-  const r = red / 255;
-  const g = green / 255;
-  const b = blue / 255;
+  const {red: r, green: g, blue: b, alpha = 1} = color;
 
-  const largestComponent = Math.max(r, g, b);
-  const smallestComponent = Math.min(r, g, b);
+  const red = r / 255;
+  const green = g / 255;
+  const blue = b / 255;
+
+  const largestComponent = Math.max(red, green, blue);
+  const smallestComponent = Math.min(red, green, blue);
 
   const delta = largestComponent - smallestComponent;
   const lightness = (largestComponent + smallestComponent) / 2;
@@ -154,14 +155,14 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
 
   let huePercentage = 0;
   switch (largestComponent) {
-    case r:
-      huePercentage = (g - b) / delta + (g < b ? 6 : 0);
+    case red:
+      huePercentage = (green - blue) / delta + (green < blue ? 6 : 0);
       break;
-    case g:
-      huePercentage = (b - r) / delta + 2;
+    case green:
+      huePercentage = (blue - red) / delta + 2;
       break;
-    case b:
-      huePercentage = (r - g) / delta + 4;
+    case blue:
+      huePercentage = (red - green) / delta + 4;
   }
 
   const hue = Math.round((huePercentage / 6) * 360);
@@ -198,7 +199,8 @@ export function rgbToHsl(color: RGBAColor): HSLAColor {
 
 function hexToRgb(color: string) {
   if (color.length === 4) {
-    const repeatHex = (a: number, b: number) => color.slice(a, b).repeat(2);
+    const repeatHex = (hex1: number, hex2: number) =>
+      color.slice(hex1, hex2).repeat(2);
     const red = parseInt(repeatHex(1, 2), 16);
     const green = parseInt(repeatHex(2, 3), 16);
     const blue = parseInt(repeatHex(3, 4), 16);
@@ -213,33 +215,33 @@ function hexToRgb(color: string) {
   return {red, green, blue};
 }
 
-export enum colorTypes {
-  HEX = 'hex',
-  RGB = 'rgb',
-  RGBA = 'rgba',
-  HSL = 'hsl',
-  HSLA = 'hsla',
-  DEFAULT = 'default',
+export enum ColorType {
+  Hex = 'hex',
+  Rgb = 'rgb',
+  Rgba = 'rgba',
+  Hsl = 'hsl',
+  Hsla = 'hsla',
+  Default = 'default',
 }
 
-function colorType(color: string): colorTypes {
+function getColorType(color: string): ColorType {
   if (color.includes('#')) {
-    return colorTypes.HEX;
+    return ColorType.Hex;
   } else if (color.includes('rgb')) {
-    return colorTypes.RGB;
+    return ColorType.Rgb;
   } else if (color.includes('rgba')) {
-    return colorTypes.RGBA;
+    return ColorType.Rgba;
   } else if (color.includes('hsl')) {
-    return colorTypes.HSL;
+    return ColorType.Hsl;
   } else if (color.includes('hsla')) {
-    return colorTypes.HSLA;
+    return ColorType.Hsla;
   } else {
     /* eslint-disable */
     if (process.env.NODE_ENV === 'development') {
       console.warn('Accepted colors formats are: hex, rgb, rgba, hsl and hsla');
     }
     /* eslint-enable */
-    return colorTypes.DEFAULT;
+    return ColorType.Default;
   }
 }
 
@@ -280,15 +282,15 @@ const rbgStringToHsl: (color: string) => HSLColor | HSLAColor = compose(
 );
 
 export function colorToHsla(color: string) {
-  const type: colorTypes = colorType(color);
+  const type: ColorType = getColorType(color);
   switch (type) {
-    case colorTypes.HEX:
+    case ColorType.Hex:
       return hexToHsl(color);
-    case colorTypes.RGB:
-    case colorTypes.RGBA:
+    case ColorType.Rgb:
+    case ColorType.Rgba:
       return rbgStringToHsl(color);
-    case colorTypes.HSL:
-    case colorTypes.HSLA:
+    case ColorType.Hsl:
+    case ColorType.Hsla:
     default:
       return color;
   }

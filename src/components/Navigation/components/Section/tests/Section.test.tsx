@@ -3,11 +3,7 @@ import * as PropTypes from 'prop-types';
 import {noop} from '@shopify/javascript-utilities/other';
 
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
-import {
-  findByTestID,
-  trigger,
-  mountWithAppProvider,
-} from '../../../../../../tests/utilities';
+import {findByTestID, trigger, mountWithAppProvider} from 'tests/utilities';
 
 import Item from '../../Item';
 import Section from '../Section';

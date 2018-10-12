@@ -4,7 +4,7 @@ import {
   mountWithAppProvider,
   trigger,
 } from 'tests/utilities';
-import {UnstyledLink, Icon, Spinner} from 'src/components';
+import {UnstyledLink, Icon, Spinner} from 'components';
 import Button, {IconWrapper} from '../Button';
 
 describe('<Button />', () => {

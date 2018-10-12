@@ -38,17 +38,10 @@ $content-max-width: rem(400px);
 }
 
 .positionedAbove {
-  margin: spacing() spacing() $visible-portion-of-arrow;
+  margin: spacing() 0 $visible-portion-of-arrow spacing(tight);
 
   &.fullWidth {
     margin: 0 0 $visible-portion-of-arrow;
-  }
-
-  .Tip {
-    top: inherit;
-    bottom: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: border-radius();
   }
 }
 
@@ -74,18 +67,6 @@ $content-max-width: rem(400px);
 
 .Content-fullHeight {
   max-height: none;
-}
-
-.Tip {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  height: $arrow-size;
-  width: $arrow-size;
-  background: color('white');
-  border-top-left-radius: border-radius();
-  box-shadow: shadow(deep);
 }
 
 .Pane {

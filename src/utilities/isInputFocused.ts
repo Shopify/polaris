@@ -1,23 +1,21 @@
-export enum EditableTargets {
-  INPUT = 'INPUT',
-  TEXTAREA = 'TEXTAREA',
-  SELECT = 'SELECT',
-  CONTENT_EDITABLE = 'contenteditable',
+export enum EditableTarget {
+  Input = 'INPUT',
+  Textarea = 'TEXTAREA',
+  Select = 'SELECT',
+  ContentEditable = 'contenteditable',
 }
 
-const {INPUT, TEXTAREA, SELECT, CONTENT_EDITABLE} = EditableTargets;
-
 function isInputFocused() {
-  if (document == null) {
+  if (document == null || document.activeElement == null) {
     return false;
   }
 
   const {tagName} = document.activeElement;
   return (
-    tagName === INPUT ||
-    tagName === TEXTAREA ||
-    tagName === SELECT ||
-    document.activeElement.hasAttribute(CONTENT_EDITABLE)
+    tagName === EditableTarget.Input ||
+    tagName === EditableTarget.Textarea ||
+    tagName === EditableTarget.Select ||
+    document.activeElement.hasAttribute(EditableTarget.ContentEditable)
   );
 }
 

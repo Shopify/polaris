@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import {noop} from '../../../../utilities/other';
 import {Icon} from '../../../../components';
 
 import * as styles from './SearchField.scss';
@@ -25,27 +26,33 @@ export interface Props {
 }
 
 export default class SearchField extends React.Component<Props, never> {
-  private input: HTMLInputElement | null = null;
+  private input: React.RefObject<HTMLInputElement> = React.createRef();
 
   componentDidMount() {
     const {focused} = this.props;
+    const {
+      input: {current: input},
+    } = this;
 
-    if (this.input && focused) {
-      this.input.focus();
+    if (input && focused) {
+      input.focus();
     }
   }
 
   componentDidUpdate({focused: wasFocused}: Props) {
-    if (this.input == null) {
+    const {
+      input: {current: input},
+    } = this;
+    if (input == null) {
       return;
     }
 
     const {focused} = this.props;
 
     if (focused && !wasFocused) {
-      this.input.focus();
+      input.focus();
     } else if (!focused && wasFocused) {
-      this.input.blur();
+      input.blur();
     }
   }
 
@@ -81,7 +88,7 @@ export default class SearchField extends React.Component<Props, never> {
           autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
-          ref={this.setInput}
+          ref={this.input}
           value={value}
           onChange={this.handleChange}
           onKeyDown={preventDefault}
@@ -116,12 +123,17 @@ export default class SearchField extends React.Component<Props, never> {
 
   @autobind
   private handleClear() {
-    const {onCancel} = this.props;
+    const {onCancel = noop, onChange} = this.props;
+    const {
+      input: {current: input},
+    } = this;
 
-    onCancel && onCancel();
+    onCancel();
 
-    if (this.input) {
-      this.input.focus();
+    if (input != null) {
+      input.value = '';
+      onChange('');
+      input.focus();
     }
   }
 
@@ -129,11 +141,6 @@ export default class SearchField extends React.Component<Props, never> {
   private handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
     const {onChange} = this.props;
     onChange(currentTarget.value);
-  }
-
-  @autobind
-  private setInput(node: HTMLInputElement | null) {
-    this.input = node;
   }
 }
 

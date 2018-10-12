@@ -116,10 +116,9 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private toggleDiscardConfirmationModal() {
-    this.setState({
-      discardConfirmationModalVisible: !this.state
-        .discardConfirmationModalVisible,
-    });
+    this.setState((prevState) => ({
+      discardConfirmationModalVisible: !prevState.discardConfirmationModalVisible,
+    }));
   }
 }
 

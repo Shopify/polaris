@@ -40,6 +40,7 @@ export default class ThemeProvider extends React.Component<Props> {
     this.colors = setColors(props.theme);
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({theme}: Props) {
     if (isEqual(theme, this.props.theme)) {
       return;

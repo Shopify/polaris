@@ -8,6 +8,36 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 2.12.1 - 2018-10-11
+
+### Bug fixes
+
+- Fixes type imports in the build ([#2411](https://github.com/Shopify/polaris-react/pull/2411))
+
+## 2.12.0 - 2018-10-11
+
+### Enhancements
+
+- Removed tip from `Popover` ([#1845](https://github.com/Shopify/polaris-react/pull/1845))
+- Increased speed of `Popover` transition from 500ms to 100ms ([#2378](https://github.com/Shopify/polaris-react/pull/2378))
+- Improved text contrast in `Badge` ([#2374](https://github.com/Shopify/polaris-react/pull/2374)).
+- Added named `medium` size to Button that renders the same as omiting the size attribute ([#2392](https://github.com/Shopify/polaris-react/pull/2392))
+
+### Bug fixes
+
+- Fixed typo in `Collapsible` example ([#2398](https://github.com/Shopify/polaris-react/pull/2398))
+- Fixed padding and margins on `SkeletonPage` to match `Page` ([#2167](https://github.com/Shopify/polaris-react/pull/2167))
+- Fixed spacing between `Page` title and metadata ([#2382](https://github.com/Shopify/polaris-react/pull/2382))
+
+### Documentation
+
+- Made ActionList, OptionList and Popover examples active by default so previews are visible without interacting ([#2383](https://github.com/Shopify/polaris-react/pull/2383))
+- Improved the manual accessibility checklist ([#2391](https://github.com/Shopify/polaris-react/pull/2391))
+
+### Development workflow
+
+- Batched Percy snapshots per component ([#2363](https://github.com/Shopify/polaris-react/pull/2363))
+
 ## 2.11.0 - 2018-10-03
 
 ### Enhancements

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  mountWithAppProvider,
-  createPolarisProps,
-} from '../../../../tests/utilities';
+import {mountWithAppProvider, createPolarisProps} from 'tests/utilities';
 
 import {noop} from '../../../utilities/other';
 

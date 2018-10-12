@@ -4,11 +4,11 @@ export const SCROLL_LOCKING_ATTRIBUTE = 'data-lock-scrolling';
 export const SCROLL_LOCKING_WRAPPER_ATTRIBUTE = 'data-lock-scrolling-wrapper';
 export const SCROLL_LOCKING_CUSTOM_PROPERTY = '--scroll-lock-body-padding';
 
-let scrollPosition: number = 0;
+let scrollPosition = 0;
 
 export default class ScrollLockManager {
-  private scrollLocks: number = 0;
-  private locked: boolean = false;
+  private scrollLocks = 0;
+  private locked = false;
 
   registerScrollLock() {
     this.scrollLocks += 1;

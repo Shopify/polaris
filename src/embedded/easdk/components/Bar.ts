@@ -17,7 +17,7 @@ import {
 } from '../../../types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {Messages} from '../../../components/AppProvider';
+import {Message} from '../../../components/AppProvider';
 
 export interface UpdateConfig {
   title: string;
@@ -48,7 +48,7 @@ export default class Bar {
       pagination,
     } = config;
 
-    this.messenger.send(Messages.INITIALIZE, {
+    this.messenger.send(Message.Initialize, {
       buttons: {
         primary: primaryAction
           ? transformAction(this.messenger.targetOrigin)(primaryAction)
@@ -80,7 +80,7 @@ export default class Bar {
 
   @autobind
   private closeDropdown() {
-    this.messenger.send(Messages.CLOSE_DROPDOWN);
+    this.messenger.send(Message.CloseDropdown);
   }
 }
 

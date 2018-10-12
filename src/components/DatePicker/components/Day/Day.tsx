@@ -76,6 +76,7 @@ export class Day extends React.PureComponent<CombinedProps, never> {
         tabIndex={tabIndex}
         className={className}
         onMouseOver={handleHover}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={handleClick}
         aria-label={ariaLabel}
         aria-selected={selected}

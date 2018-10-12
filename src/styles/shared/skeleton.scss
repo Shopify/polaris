@@ -26,3 +26,20 @@ $skeleton-shimmer-duration: duration(slower) * 2;
     border-radius: border-radius();
   }
 }
+
+@mixin skeleton-page-secondary-actions-layout {
+  margin-top: spacing(tight);
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin skeleton-page-header-has-secondary-actions {
+  padding-top: rem(24px);
+  margin-top: 0;
+}
+
+@mixin skeleton-page-header-layout {
+  padding-bottom: spacing(tight);
+}

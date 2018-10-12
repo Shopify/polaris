@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from '../../../../tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
 import Spinner from '../Spinner';
 
 describe('<Spinner />', () => {

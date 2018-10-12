@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'tests/utilities';
-import {LinkAction} from 'src/types';
-import {Breadcrumbs} from 'src/components';
+import {Breadcrumbs} from 'components';
+import {LinkAction} from '../../../../../types';
 import Header from '../Header';
 
 const breadcrumbs: LinkAction[] = [

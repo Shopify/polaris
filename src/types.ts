@@ -126,6 +126,8 @@ export interface ComplexAction
     IconableAction,
     LoadableAction {}
 
+/* eslint-disable shopify/typescript/prefer-pascal-case-enums */
+// eslint-disable-next-line shopify/typescript/prefer-singular-enums
 export enum Keys {
   BACKSPACE = 8,
   TAB = 9,
@@ -227,6 +229,7 @@ export enum Keys {
   CLOSE_BRACKET = 221,
   SINGLE_QUOTE = 222,
 }
+/* eslint-enable shopify/typescript/prefer-pascal-case-enums */
 
 export const contentContextTypes: ValidationMap<any> = {
   withinContentContainer: PropTypes.bool,

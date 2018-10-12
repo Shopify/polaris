@@ -175,6 +175,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       !contentBefore &&
       !contentAfter
     ) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({popoverActive: false});
     }
 

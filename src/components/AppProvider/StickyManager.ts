@@ -33,7 +33,7 @@ export default class StickyManager {
   private stickyItems: StickyItem[] = [];
   private stuckItems: StickyItem[] = [];
   private container: Document | HTMLElement;
-  private topBarOffset: number = 0;
+  private topBarOffset = 0;
 
   constructor(container?: Document | HTMLElement) {
     if (container) {

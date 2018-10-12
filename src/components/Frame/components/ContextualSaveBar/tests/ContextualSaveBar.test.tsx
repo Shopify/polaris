@@ -1,13 +1,10 @@
 import * as React from 'react';
-import {mountWithAppProvider, trigger} from '../../../../../../tests/utilities';
-import {createThemeContext, ThemeContext} from '../../../../ThemeProvider';
-import {
-  createAppProviderContext,
-  Button,
-  Image,
-  Modal,
-} from '../../../../../components';
-import {polarisAppProviderContextTypes} from '../../../../AppProvider';
+import {mountWithAppProvider, trigger} from 'tests/utilities';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {createThemeContext, ThemeContext} from 'components/ThemeProvider';
+import {createAppProviderContext, Button, Image, Modal} from 'components';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {polarisAppProviderContextTypes} from 'components/AppProvider';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {

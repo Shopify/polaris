@@ -144,7 +144,8 @@ describe('createPolarisContext()', () => {
     const scrollLockManager = new ScrollLockManager();
     const mockSubscribe = (fn: () => void) =>
       ([] as Array<() => void>).push(fn);
-    const mockUnsubscribe = (fn: () => void) => [].filter((f: any) => f !== fn);
+    const mockUnsubscribe = (fn: () => void) =>
+      [].filter((curFn: any) => curFn !== fn);
     const contextOne = createPolarisContext(
       {
         i18n,
@@ -231,7 +232,8 @@ describe('createPolarisContext()', () => {
   it('returns the right context with only theme provider context being provided', () => {
     const mockSubscribe = (fn: () => void) =>
       ([] as Array<() => void>).push(fn);
-    const mockUnsubscribe = (fn: () => void) => [].filter((f: any) => f !== fn);
+    const mockUnsubscribe = (fn: () => void) =>
+      [].filter((curFn: any) => curFn !== fn);
     const context = createPolarisContext({
       logo: null,
       subscribe: mockSubscribe,

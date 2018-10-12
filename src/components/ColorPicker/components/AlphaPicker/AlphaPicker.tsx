@@ -8,7 +8,6 @@ import {hsbToRgb} from '../../../../utilities/color-transformers';
 import * as styles from '../../ColorPicker.scss';
 
 export interface State {
-  dragging: boolean;
   sliderHeight: number;
   draggerHeight: number;
 }
@@ -23,7 +22,6 @@ const VERTICAL_PADDING = 13;
 
 export default class AlphaPicker extends React.PureComponent<Props, State> {
   state: State = {
-    dragging: false,
     sliderHeight: 0,
     draggerHeight: 0,
   };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
 import SearchField from '../SearchField';
 
 describe('<TextField />', () => {
@@ -62,7 +62,7 @@ describe('<TextField />', () => {
       expect(
         textField
           .find('Icon')
-          .filterWhere((e) => e.prop('source') === 'circleCancel'),
+          .filterWhere((el) => el.prop('source') === 'circleCancel'),
       ).toHaveLength(1);
     });
 

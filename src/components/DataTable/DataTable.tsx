@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import isEqual from 'lodash/isEqual';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
@@ -69,7 +70,6 @@ export interface State {
   columnVisibilityData: ColumnVisibilityData[];
   previousColumn?: ColumnVisibilityData;
   currentColumn?: ColumnVisibilityData;
-  sorted?: boolean;
   sortedColumnIndex?: number;
   sortDirection?: SortDirection;
   heights: number[];
@@ -83,7 +83,6 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
   state: State = {
     collapsed: false,
     columnVisibilityData: [],
-    sorted: this.props.sortable && this.props.sortable.length > 0,
     heights: [],
     preservedScrollPosition: {},
     isScrolledFarthestLeft: true,
@@ -110,6 +109,13 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } else {
       this.handleResize();
     }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (isEqual(prevProps, this.props)) {
+      return;
+    }
+    this.handleResize();
   }
 
   render() {
@@ -368,9 +374,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private scrollListener() {
-    this.setState({
-      ...this.calculateColumnVisibilityData(this.state.collapsed),
-    });
+    this.setState((prevState) => ({
+      ...this.calculateColumnVisibilityData(prevState.collapsed),
+    }));
   }
 
   @autobind
@@ -392,9 +398,9 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
             : previousColumn.leftEdge - fixedColumnWidth;
 
         requestAnimationFrame(() => {
-          this.setState({
-            ...this.calculateColumnVisibilityData(this.state.collapsed),
-          });
+          this.setState((prevState) => ({
+            ...this.calculateColumnVisibilityData(prevState.collapsed),
+          }));
         });
       }
     };
@@ -509,7 +515,6 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     const handleSort = () => {
       this.setState(
         {
-          sorted: true,
           sortDirection: newSortDirection,
           sortedColumnIndex: headingIndex,
         },

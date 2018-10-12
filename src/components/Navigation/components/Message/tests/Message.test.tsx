@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from '../../../../../../tests/utilities';
+import {mountWithAppProvider} from 'tests/utilities';
 import Message from '../Message';
 import Badge from '../../../../Badge';
 

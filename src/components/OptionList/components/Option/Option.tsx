@@ -2,9 +2,8 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {Props as IconProps} from '../../../Icon';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import {Props as AvatarProps} from '../../../Avatar';
+import {IconProps, ThumbnailProps, AvatarProps} from '../../..';
+
 import {Checkbox} from '..';
 import {Scrollable} from '../../../../components';
 
@@ -127,6 +126,6 @@ export default class Option extends React.Component<Props, State> {
 
   @autobind
   private toggleFocus() {
-    this.setState({focused: !this.state.focused});
+    this.setState((prevState) => ({focused: !prevState.focused}));
   }
 }

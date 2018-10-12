@@ -7,7 +7,7 @@ import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {Transition} from 'react-transition-group';
 
 import {Keys} from '../../../../types';
-import {overlay} from '../../../shared';
+import {overlay, Duration} from '../../../shared';
 import EventListener from '../../../EventListener';
 import KeypressListener from '../../../KeypressListener';
 import PositionedOverlay, {
@@ -62,7 +62,12 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   render() {
     const {active} = this.props;
     return (
-      <Transition in={active} timeout={500} mountOnEnter unmountOnExit>
+      <Transition
+        in={active}
+        timeout={Duration.Fast}
+        mountOnEnter
+        unmountOnExit
+      >
         {this.renderOverlay}
       </Transition>
     );
@@ -117,13 +122,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     transitionStatus: TransitionStatus,
     overlayDetails: OverlayDetails,
   ) {
-    const {
-      measuring,
-      left,
-      desiredHeight,
-      positioning,
-      activatorRect,
-    } = overlayDetails;
+    const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {id, children, sectioned, fullWidth, fullHeight} = this.props;
 
@@ -136,13 +135,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     );
 
     this.transitionStatus = transitionStatus;
-
-    const tipMarkup = !measuring ? (
-      <div
-        style={{left: activatorRect.center.x - left}}
-        className={styles.Tip}
-      />
-    ) : null;
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
 
@@ -168,7 +160,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         <EventListener event="click" handler={this.handleClick} />
         <EventListener event="touchstart" handler={this.handleClick} />
         <KeypressListener keyCode={Keys.ESCAPE} handler={this.handleEscape} />
-        {tipMarkup}
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
