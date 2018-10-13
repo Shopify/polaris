@@ -64,6 +64,8 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
+const DEFAULT_SIZE = 'medium';
+
 function Button({
   id,
   url,
@@ -84,7 +86,7 @@ function Button({
   disclosure,
   plain,
   submit,
-  size = 'medium',
+  size = DEFAULT_SIZE,
   fullWidth,
   polaris: {intl},
 }: CombinedProps) {
@@ -98,7 +100,7 @@ function Button({
     isDisabled && styles.disabled,
     loading && styles.loading,
     plain && styles.plain,
-    size && size !== 'medium' && styles[variationName('size', size)],
+    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
   );
