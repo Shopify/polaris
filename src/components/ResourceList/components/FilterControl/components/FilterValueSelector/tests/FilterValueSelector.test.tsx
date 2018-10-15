@@ -3,8 +3,8 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, shallowWithAppProvider} from 'tests/utilities';
 import {Select, TextField} from 'components';
 import FilterValueSelector from '../FilterValueSelector';
-import DateSelector from '../DateSelector';
-import {Filter, FilterType, Operator} from '../types';
+import DateSelector from '../../DateSelector';
+import {Filter, FilterType, Operator} from '../../../types';
 
 describe('<FilterValueSelector />', () => {
   const operators = [

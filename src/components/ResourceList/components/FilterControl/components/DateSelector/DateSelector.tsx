@@ -8,9 +8,12 @@ import {
   Select,
   TextField,
   Icon,
-} from '../../../..';
+} from '../../../../..';
 
-import {withAppProvider, WithAppProviderProps} from '../../../../AppProvider';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../../AppProvider';
 
 import * as styles from './DateSelector.scss';
 

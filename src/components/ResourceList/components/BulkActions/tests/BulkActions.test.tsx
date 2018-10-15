@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider, findByTestID} from 'tests/utilities';
 import CheckableButton from '../../CheckableButton';
-import BulkActionButton from '../BulkActionButton';
+import BulkActionButton from '../components/BulkActionButton';
 import BulkActions, {BulkAction} from '../BulkActions';
 
 export interface Props {
