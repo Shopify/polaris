@@ -31,7 +31,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Documentation
 
-- Made ActionList, OptionList and Popover examples active by default so previews are visible without interacting ([#2383](https://github.com/Shopify/polaris-react/pull/2383))
+- Made `ActionList`, `OptionList` and `Popover` examples active by default so previews are visible without interacting ([#2383](https://github.com/Shopify/polaris-react/pull/2383))
 - Improved the manual accessibility checklist ([#2391](https://github.com/Shopify/polaris-react/pull/2391))
 
 ### Development workflow
