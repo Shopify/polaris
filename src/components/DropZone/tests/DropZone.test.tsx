@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Label, Labelled} from 'components';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import DropZone from '../DropZone';
 
 describe('<DropZone />', () => {

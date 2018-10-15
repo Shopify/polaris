@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger, shallowWithAppProvider} from 'tests/utilities';
+import {trigger, shallowWithAppProvider} from 'test-utilities';
 import {Select, TextField} from 'components';
 import FilterValueSelector from '../FilterValueSelector';
 import DateSelector from '../../DateSelector';

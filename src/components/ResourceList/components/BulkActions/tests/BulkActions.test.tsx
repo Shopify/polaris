@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider, findByTestID} from 'tests/utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import CheckableButton from '../../CheckableButton';
 import BulkActionButton from '../components/BulkActionButton';
 import BulkActions, {BulkAction} from '../BulkActions';

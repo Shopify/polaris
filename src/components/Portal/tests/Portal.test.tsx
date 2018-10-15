@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createPortal} from 'react-dom';
 import * as targets from '@shopify/react-utilities/target';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import Portal from '../Portal';
 
 jest.mock('react-dom', () => ({

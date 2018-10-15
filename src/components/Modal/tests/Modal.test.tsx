@@ -4,7 +4,7 @@ import {
   findByTestID,
   trigger,
   mountWithAppProvider,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {contentContextTypes} from '../../../types';
 import {Footer, Dialog} from '../components';

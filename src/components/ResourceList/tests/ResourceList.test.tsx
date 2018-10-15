@@ -5,7 +5,7 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
   trigger,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {BulkActions, Item} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
