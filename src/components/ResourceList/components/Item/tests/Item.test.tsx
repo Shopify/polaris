@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {findByTestID, mountWithAppProvider} from 'tests/utilities';
+import {findByTestID, mountWithAppProvider} from 'test-utilities';
 import {
   UnstyledLink,
   Avatar,

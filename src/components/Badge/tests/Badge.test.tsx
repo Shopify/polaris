@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {VisuallyHidden} from 'components';
 import Badge, {Status, Progress, PROGRESS_LABELS, STATUS_LABELS} from '..';
 

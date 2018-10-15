@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
 

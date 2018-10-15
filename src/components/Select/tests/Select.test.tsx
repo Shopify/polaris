@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ShallowWrapper} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
 import {InlineError} from 'components';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Select from '../Select';
 
 describe('<Select />', () => {

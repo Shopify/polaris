@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger, mountWithAppProvider} from 'tests/utilities';
+import {trigger, mountWithAppProvider} from 'test-utilities';
 import {TextField, Tag, Button} from 'components';
 import {Provider} from '../../Context';
 import {
