@@ -27,7 +27,7 @@ describe('<ColorPicker />', () => {
         expect(spy).toHaveBeenCalled();
       });
 
-      it.skip('is called on mousemove when dragging');
+      it.skip('is called on mousemove when dragging', () => {});
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
@@ -51,7 +51,7 @@ describe('<ColorPicker />', () => {
         expect(spy).toHaveBeenCalled();
       });
 
-      it.skip('is called on mousemove when dragging');
+      it.skip('is called on mousemove when dragging', () => {});
 
       it('is not called on mousemove when not dragging', () => {
         const spy = jest.fn();
