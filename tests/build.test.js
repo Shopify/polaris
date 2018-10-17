@@ -11,9 +11,9 @@ describe('build', () => {
   afterAll(() => {
     // Running clean shall remove the entire build directory. Including
     // `build/cache/jest` which is Jest's cache location. Removing Jest's cache
-    // in the middle of a it running understandably has undesirable effects -
+    // in the middle of it running understandably has undesirable effects -
     // it crashes jest.
-    // The clean:build script remove the build directory with the exception of
+    // The clean:build script removes the build directory with the exception of
     // the build/cache folder so that Jest can keep its cache and keep running.
     execSync('yarn run clean:build');
   });
