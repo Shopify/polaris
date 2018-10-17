@@ -4,10 +4,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
-### Enhancements
-
-- Removed tip from `Popover` ([#1845](https://github.com/Shopify/polaris-react/pull/1845))
-
 ### Bug fixes
 
 - Fixed `Datatable` so it resizes with new content ([#2285](https://github.com/Shopify/polaris-react/pull/2285)) (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/387))
@@ -16,3 +12,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Moved sub-sub-components within `ResourceList` into components folders ([#2381](https://github.com/Shopify/polaris-react/pull/2381))
+- Removed empty state from `ResourceList` if there are no items and `loading` is true ([#2393](https://github.com/Shopify/polaris-react/pull/2393))
