@@ -287,20 +287,22 @@ class FrameExample extends React.Component {
     };
 
     return (
-      <AppProvider theme={theme}>
-        <Frame
-          topBar={topBarMarkup}
-          navigation={navigationMarkup}
-          showMobileNavigation={showMobileNavigation}
-          onNavigationDismiss={this.toggleState('showMobileNavigation')}
-        >
-          {contextualSaveBarMarkup}
-          {loadingMarkup}
-          {pageMarkup}
-          {toastMarkup}
-          {modalMarkup}
-        </Frame>
-      </AppProvider>
+      <div style={{height: '500px'}}>
+        <AppProvider theme={theme}>
+          <Frame
+            topBar={topBarMarkup}
+            navigation={navigationMarkup}
+            showMobileNavigation={showMobileNavigation}
+            onNavigationDismiss={this.toggleState('showMobileNavigation')}
+          >
+            {contextualSaveBarMarkup}
+            {loadingMarkup}
+            {pageMarkup}
+            {toastMarkup}
+            {modalMarkup}
+          </Frame>
+        </AppProvider>
+      </div>
     );
   }
 

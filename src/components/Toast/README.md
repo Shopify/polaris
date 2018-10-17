@@ -124,12 +124,14 @@ class ToastExample extends React.Component {
     ) : null;
 
     return (
-      <Frame>
-        <Page title="Toast example">
-          <Button onClick={this.toggleToast}>Show Toast</Button>
-          {toastMarkup}
-        </Page>
-      </Frame>
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <Button onClick={this.toggleToast}>Show Toast</Button>
+            {toastMarkup}
+          </Page>
+        </Frame>
+      </div>
     );
   }
 
@@ -163,16 +165,18 @@ class ToastExample extends React.Component {
     ) : null;
 
     return (
-      <Frame>
-        <Page title="Toast example">
-          <ButtonGroup segmented>
-            <Button onClick={this.toggleToast1}>Show toast 1</Button>
-            <Button onClick={this.toggleToast2}>Show toast 2</Button>
-          </ButtonGroup>
-          {toastMarkup1}
-          {toastMarkup2}
-        </Page>
-      </Frame>
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <ButtonGroup segmented>
+              <Button onClick={this.toggleToast1}>Show toast 1</Button>
+              <Button onClick={this.toggleToast2}>Show toast 2</Button>
+            </ButtonGroup>
+            {toastMarkup1}
+            {toastMarkup2}
+          </Page>
+        </Frame>
+      </div>
     );
   }
 
@@ -209,12 +213,14 @@ class ToastExample extends React.Component {
     ) : null;
 
     return (
-      <Frame>
-        <Page title="Toast example">
-          <Button onClick={this.toggleToast}>Show Toast</Button>
-          {toastMarkup}
-        </Page>
-      </Frame>
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <Button onClick={this.toggleToast}>Show Toast</Button>
+            {toastMarkup}
+          </Page>
+        </Frame>
+      </div>
     );
   }
 
@@ -285,12 +291,14 @@ class ToastExample extends React.Component {
     ) : null;
 
     return (
-      <Frame>
-        <Page title="Toast example">
-          <Button onClick={this.toggleToast}>Show Toast</Button>
-          {toastMarkup}
-        </Page>
-      </Frame>
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <Button onClick={this.toggleToast}>Show Toast</Button>
+            {toastMarkup}
+          </Page>
+        </Frame>
+      </div>
     );
   }
 

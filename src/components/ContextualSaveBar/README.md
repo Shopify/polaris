@@ -76,29 +76,31 @@ Actions in the contextual save bar component should consist of a strong verb tha
 Use the save action to provide an opportunity to save changes. Use the discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
 
 ```jsx
-<AppProvider
-  theme={{
-    logo: {
-      width: 124,
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    },
-  }}
->
-  <Frame>
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: () => console.log('add form submit logic'),
-        loading: false,
-        disabled: false,
-      }}
-      discardAction={{
-        onAction: () => console.log('add clear form logic'),
-      }}
-    />
-  </Frame>
-</AppProvider>
+<div style={{height: '250px'}}>
+  <AppProvider
+    theme={{
+      logo: {
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    }}
+  >
+    <Frame>
+      <ContextualSaveBar
+        message="Unsaved changes"
+        saveAction={{
+          onAction: () => console.log('add form submit logic'),
+          loading: false,
+          disabled: false,
+        }}
+        discardAction={{
+          onAction: () => console.log('add clear form logic'),
+        }}
+      />
+    </Frame>
+  </AppProvider>
+</div>
 ```
 
 ### Contextual save bar during creation
@@ -106,29 +108,32 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 Use the save action to provide an opportunity to save a newly-created resource. Use the discard action to allow merchants the option to discard a new resource. Use the message to provide helpful context on the nature of the new resource.
 
 ```jsx
-<AppProvider
-  theme={{
-    logo: {
-      width: 124,
-      contextualSaveBarSource: 'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    }
-  }}
->
-  <Frame>
-    <ContextualSaveBar
-      message="Unsaved product"
-      saveAction={{
-        onAction: () => console.log('add form submit logic'),
-        loading: false,
-        disabled: false,
-      }}
-      discardAction={{
-        onAction: () => console.log('add clear form logic'),
-      }}
-    />
-  </Frame>
-</AppProvider>
-);
+<div style={{height: '250px'}}>
+  <AppProvider
+    theme={{
+      logo: {
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    }}
+  >
+    <Frame>
+      <ContextualSaveBar
+        message="Unsaved product"
+        saveAction={{
+          onAction: () => console.log('add form submit logic'),
+          loading: false,
+          disabled: false,
+        }}
+        discardAction={{
+          onAction: () => console.log('add clear form logic'),
+        }}
+      />
+    </Frame>
+  </AppProvider>
+  );
+</div>
 ```
 
 ---

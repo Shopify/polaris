@@ -21,9 +21,11 @@ The loading component is used to indicate to merchants that a page is loading or
 Use to indicate that the page is loading.
 
 ```jsx
-<Frame>
-  <Loading />
-</Frame>
+<div style={{height: '100px'}}>
+  <Frame>
+    <Loading />
+  </Frame>
+</div>
 ```
 
 ---
