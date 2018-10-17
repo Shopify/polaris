@@ -2,15 +2,18 @@ import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-
-import {Header} from './components';
-import {PageProps} from './types';
-
+import {withAppProvider, WithAppProviderProps} from 'components';
+import {Header, HeaderProps} from './components';
 import * as styles from './Page.scss';
 
-export interface Props extends PageProps {}
+export interface Props extends HeaderProps {
+  /** The contents of the page */
+  children?: React.ReactNode;
+  /** Remove the normal max-width on the page */
+  fullWidth?: boolean;
+  /** Decreases the maximum layout width. Intended for single-column layouts */
+  singleColumn?: boolean;
+}
 
 export type ComposedProps = Props & WithAppProviderProps;
 

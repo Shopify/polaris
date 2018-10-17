@@ -1,0 +1,104 @@
+$difference-between-touch-area-and-backdrop: control-height() -
+  control-slim-height();
+$action-horizontal-padding: (1.5 * spacing(tight));
+
+.Action {
+  @include unstyled-button;
+  @include text-style-body;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: control-height();
+
+  // Negative margin vertically for the amount that is not covered by
+  // the focus overlay
+  margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
+  margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
+  padding: 0 $action-horizontal-padding;
+  text-decoration: none;
+  color: color('ink', 'light');
+
+  &:hover,
+  &:active {
+    color: color('ink');
+
+    .ActionIcon {
+      @include recolor-icon(color('ink'), color('white'));
+    }
+  }
+
+  &:focus,
+  &:active {
+    &::after {
+      background: plain-button-background();
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0.5 * $difference-between-touch-area-and-backdrop;
+    right: spacing(extra-tight);
+    left: spacing(extra-tight);
+    display: block;
+    height: control-slim-height();
+    border-radius: border-radius();
+    background: transparent;
+    will-change: background;
+    transition-property: background;
+    transition-duration: duration();
+    transition-timing-function: easing();
+  }
+
+  &.disabled {
+    color: color('ink', 'lightest');
+    cursor: default;
+    pointer-events: none;
+
+    .ActionIcon {
+      @include recolor-icon(color('ink', 'lightest'));
+    }
+  }
+}
+
+.ActionContent {
+  display: flex;
+  align-items: center;
+}
+
+.ActionIcon {
+  @include recolor-icon(color('ink', 'lighter'), color('white'));
+  display: inline-block;
+
+  &:first-child {
+    margin-right: spacing(extra-tight);
+  }
+
+  &:last-child {
+    margin-left: spacing(extra-tight);
+
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox (and makes it look like there is too much
+    // spacing on the right of the button)
+    margin-right: -3px;
+  }
+
+  &.disabled {
+    @include recolor-icon(color('ink', 'lightest'));
+  }
+}
+
+.Action-outline {
+  @include button-base;
+  @include button-outline(color('ink', 'lighter'));
+
+  &::after {
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  &.disabled {
+    @include button-outline-disabled(color('ink', 'lighter'));
+  }
+}
