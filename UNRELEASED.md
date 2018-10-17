@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Clarified placement and usage of `Banner` ([#2424](https://github.com/Shopify/polaris-react/pull/2424))
+- Added an explanation to `Modal` about why it can't be closed by clicking outside the modal and should only be closed by clicking `X` or `Cancel` ([#2439](https://github.com/Shopify/polaris-react/pull/2439))
 
 ### Development workflow
 
