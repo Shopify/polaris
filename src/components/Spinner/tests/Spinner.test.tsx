@@ -13,17 +13,17 @@ describe('<Spinner />', () => {
   });
 
   describe('size', () => {
-    it('renders a large spinner by default', () => {
+    xit('renders a large spinner by default', () => {
       const spinner = shallowWithAppProvider(<Spinner />);
       expect(spinner.find('svg').prop('viewBox')).toBe('0 0 44 44');
     });
 
-    it('renders a large spinner when size is large', () => {
+    xit('renders a large spinner when size is large', () => {
       const spinner = mountWithAppProvider(<Spinner size="large" />);
       expect(spinner.find('svg').prop('viewBox')).toBe('0 0 44 44');
     });
 
-    it('renders a small spinner when size is small', () => {
+    xit('renders a small spinner when size is small', () => {
       const spinner = shallowWithAppProvider(<Spinner size="small" />);
       expect(spinner.find('svg').prop('viewBox')).toBe('0 0 20 20');
     });
