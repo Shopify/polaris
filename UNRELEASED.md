@@ -17,3 +17,4 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Moved sub-sub-components within `ResourceList` into components folders ([#2381](https://github.com/Shopify/polaris-react/pull/2381))
 - Removed empty state from `ResourceList` if there are no items and `loading` is true ([#2393](https://github.com/Shopify/polaris-react/pull/2393))
+- Move to use sewing-kit for test running, updating to Jest 23 in the process. This gives us working sourcemaps for code coverage ([#2434](https://github.com/Shopify/polaris-react/pull/2434))
