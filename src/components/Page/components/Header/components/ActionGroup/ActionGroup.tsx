@@ -16,11 +16,22 @@ class ActionGroup extends React.Component<Props, never> {
   render() {
     const {actions, details, title, icon, active} = this.props;
 
-    const detailsMarkup = details ? (
+    const detailsMarkup = details && (
       <div className={styles.Details}>{details}</div>
-    ) : null;
+    );
 
     const showIndicator = hasNewStatus(actions);
+    const activator = (
+      <Action
+        showIndicator={showIndicator}
+        hasIndicator={active}
+        disclosure
+        icon={icon}
+        onAction={this.handleOpen}
+      >
+        {title}
+      </Action>
+    );
 
     return (
       <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
@@ -28,24 +39,9 @@ class ActionGroup extends React.Component<Props, never> {
           key={title}
           active={active}
           onClose={this.handleClose}
-          activator={
-            <Action
-              showIndicator={showIndicator}
-              hasIndicator={active}
-              disclosure
-              icon={icon}
-              // eslint-disable-next-line react/jsx-no-bind
-              onAction={this.handleOpen}
-            >
-              {title}
-            </Action>
-          }
+          activator={activator}
         >
-          <ActionList
-            items={actions}
-            // eslint-disable-next-line react/jsx-no-bind
-            onActionAnyItem={this.handleClose}
-          />
+          <ActionList items={actions} onActionAnyItem={this.handleClose} />
           {detailsMarkup}
         </Popover>
       </div>
