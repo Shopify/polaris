@@ -19,7 +19,7 @@ describe('<Spinner />', () => {
     });
 
     it('renders a large spinner when size is large', () => {
-      const spinner = mountWithAppProvider(<Spinner size="large" />);
+      const spinner = shallowWithAppProvider(<Spinner size="large" />);
       expect(spinner.find('svg').prop('viewBox')).toBe('0 0 44 44');
     });
 
@@ -27,12 +27,19 @@ describe('<Spinner />', () => {
       const spinner = shallowWithAppProvider(<Spinner size="small" />);
       expect(spinner.find('svg').prop('viewBox')).toBe('0 0 20 20');
     });
+
+    it('renders a small spinner when color is white even if size is large', () => {
+      const spinner = shallowWithAppProvider(
+        <Spinner size="large" color="white" />,
+      );
+      expect(spinner.find('svg').prop('viewBox')).toBe('0 0 20 20');
+    });
   });
 
   describe('color', () => {
-    it('renders a white spinner when color is white', () => {
-      const spinner = mountWithAppProvider(<Spinner color="white" />);
-      expect(spinner.prop('color')).toBe('white');
+    it('renders an inkLightest spinner when color is inkLightest', () => {
+      const spinner = mountWithAppProvider(<Spinner color="inkLightest" />);
+      expect(spinner.prop('color')).toBe('inkLightest');
     });
   });
 
