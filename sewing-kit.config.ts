@@ -22,6 +22,14 @@ export default function sewingKitConfig(
 
         config.setupFiles.push(join(tests, 'setup.ts'));
 
+        // svg transform have to go before the existing transforms so that .svg
+        // files match our declaration first, and thus run the svg transform,
+        // instead of matching the file transform
+        config.transform = {
+          '\\.svg$': join(__dirname, 'config/jest/transformers/svg.js'),
+          ...config.transform,
+        };
+
         // Needed because we set js: 'react-native' in our tsconfig to leave the
         // transformation up to consuming projects, but within Jest we want to
         // transform the jsx content
