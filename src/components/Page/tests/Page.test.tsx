@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {TitleBar, Button} from '@shopify/app-bridge/actions';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {Page, DisplayText, Card} from 'components';
 import {noop} from '../../../utilities/other';
 import {LinkAction} from '../../../types';
-import Page from '../../Page';
 import {Header} from '../components';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
