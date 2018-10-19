@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import ContextualSaveBar from '../ContextualSaveBar';
 

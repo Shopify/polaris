@@ -3,7 +3,7 @@ import {
   findByTestID,
   matchByTestID,
   mountWithAppProvider,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {Section} from '../components';
 import Layout from '../Layout';
 

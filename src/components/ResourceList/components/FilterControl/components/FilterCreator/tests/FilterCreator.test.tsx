@@ -5,11 +5,11 @@ import {
   findByTestID,
   shallowWithAppProvider,
   mountWithAppProvider,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {Button, Select, Popover} from 'components';
 import FilterCreator, {Props} from '../FilterCreator';
-import FilterValueSelector from '../FilterValueSelector';
-import {FilterType} from '../types';
+import FilterValueSelector from '../../FilterValueSelector';
+import {FilterType} from '../../../types';
 
 describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {

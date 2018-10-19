@@ -1,6 +1,6 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import ThemeProvider from '../ThemeProvider';
 import {THEME_CONTEXT_TYPES} from '../types';
 

@@ -1,12 +1,15 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {Button, Popover, Select, FormLayout} from '../../..';
-import Form from '../../../Form';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {Button, Popover, Select, FormLayout} from '../../../../..';
+import Form from '../../../../../Form';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+} from '../../../../../AppProvider';
 
-import FilterValueSelector from './FilterValueSelector';
-import {AppliedFilter, Filter, Operator} from './types';
+import FilterValueSelector from '../FilterValueSelector';
+import {AppliedFilter, Filter, Operator} from '../../types';
 
 export interface Props {
   filters: Filter[];

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
-import {mountWithAppProvider, createPolarisProps} from 'tests/utilities';
+import {mountWithAppProvider, createPolarisProps} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import Toast, {DEFAULT_TOAST_DURATION} from '../Toast';
 

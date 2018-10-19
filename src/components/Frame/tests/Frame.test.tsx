@@ -4,7 +4,7 @@ import {
   animationFrame,
   mountWithAppProvider,
   documentHasStyle,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {
   TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,
@@ -174,15 +174,21 @@ describe('<Frame />', () => {
     expect(topBar.find('[data-polaris-top-bar]')).toHaveLength(0);
   });
 
-  it('sets a root property with global ribbon height if passed', () => {
+  // JSDOM 11.12.0 does not support setting/reading custom properties so we are
+  // unable to assert that we set a custom property
+  // See https://github.com/jsdom/jsdom/issues/1895
+  it.skip('sets a root property with global ribbon height if passed', () => {
     mountWithAppProvider(<Frame globalRibbon={<div />} />);
-    expect(documentHasStyle('GlobalRibbonHeight', '0px')).toBe(true);
+    expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
   });
 
-  it('sets a root property with global ribbon height if new props are passed', () => {
+  // JSDOM 11.12.0 does not support setting/reading custom properties so we are
+  // unable to assert that we set a custom property
+  // See https://github.com/jsdom/jsdom/issues/1895
+  it.skip('sets a root property with global ribbon height if new props are passed', () => {
     const frame = mountWithAppProvider(<Frame />);
     frame.setProps({globalRibbon: <div />});
-    expect(documentHasStyle('GlobalRibbonHeight', '0px')).toBe(true);
+    expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
   });
 
   it('should render a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {

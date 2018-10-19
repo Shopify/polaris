@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Checkbox from '../Checkbox';
 
 describe('<Checkbox />', () => {

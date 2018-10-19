@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import * as PropTypes from 'prop-types';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 
 import Loading from '../Loading';
 
