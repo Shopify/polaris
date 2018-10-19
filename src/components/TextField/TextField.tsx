@@ -7,7 +7,7 @@ import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Resizer, Spinner} from './components';
-import {Error, Keys} from '../../types';
+import {Error, Key} from '../../types';
 import * as styles from './TextField.scss';
 
 export type Type =
@@ -353,7 +353,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     const {type} = this.props;
     const numbersSpec = /[\d.eE+-]$/;
 
-    if (type !== 'number' || which === Keys.ENTER || key.match(numbersSpec)) {
+    if (type !== 'number' || which === Key.Enter || key.match(numbersSpec)) {
       return;
     }
 

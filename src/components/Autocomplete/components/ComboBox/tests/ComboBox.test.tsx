@@ -4,7 +4,7 @@ import ComboBox from '..';
 import {OptionList, ActionList, Popover} from 'components';
 import {mountWithAppProvider} from 'tests/utilities';
 import {TextField} from '../components';
-import {Keys} from '../../../../../types';
+import {Key} from '../../../../../types';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -433,7 +433,7 @@ describe('<ComboBox/>', () => {
 
       async () => {
         comboBox.find(TextField).simulate('click');
-        listenerMap.keyup({keyCode: Keys.DOWN_ARROW});
+        listenerMap.keyup({keyCode: Key.DownArrow});
         await expect(comboBox.state('selectedIndex')).toBe(0);
       };
     });
@@ -451,11 +451,11 @@ describe('<ComboBox/>', () => {
 
       async () => {
         comboBox.find(TextField).simulate('click');
-        await listenerMap.keyup({keyCode: Keys.DOWN_ARROW});
+        await listenerMap.keyup({keyCode: Key.DownArrow});
       };
 
       async () => {
-        listenerMap.keyup({keyCode: Keys.ENTER});
+        listenerMap.keyup({keyCode: Key.Enter});
         await expect(spy).toHaveBeenCalledTimes(1);
         expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
       };
@@ -472,7 +472,7 @@ describe('<ComboBox/>', () => {
       );
 
       async () => {
-        listenerMap.keyup({keyCode: Keys.TAB});
+        listenerMap.keyup({keyCode: Key.Tab});
         await expect(comboBox.state('popoverActive')).toBe(true);
       };
     });
@@ -489,12 +489,12 @@ describe('<ComboBox/>', () => {
 
       async () => {
         comboBox.find(TextField).simulate('click');
-        await listenerMap.keyup({keyCode: Keys.DOWN_ARROW});
+        await listenerMap.keyup({keyCode: Key.DownArrow});
         expect(comboBox.state('popoverActive')).toBe(true);
       };
 
       async () => {
-        listenerMap.keyup({keyCode: Keys.ESCAPE});
+        listenerMap.keyup({keyCode: Key.Escape});
         await expect(comboBox.state('popoverActive')).toBe(false);
       };
     });

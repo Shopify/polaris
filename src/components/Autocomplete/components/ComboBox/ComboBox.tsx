@@ -9,7 +9,7 @@ import OptionList, {OptionDescriptor} from '../../../OptionList';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
-import {ActionListItemDescriptor, Keys} from '../../../../types';
+import {ActionListItemDescriptor, Key} from '../../../../types';
 import {contextTypes} from '../types';
 import {TextField} from './components';
 import KeypressListener from '../../../KeypressListener';
@@ -244,16 +244,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         tabIndex={0}
       >
         <KeypressListener
-          keyCode={Keys.DOWN_ARROW}
+          keyCode={Key.DownArrow}
           handler={this.handleDownArrow}
         />
+        <KeypressListener keyCode={Key.UpArrow} handler={this.handleUpArrow} />
+        <KeypressListener keyCode={Key.Enter} handler={this.handleEnter} />
         <KeypressListener
-          keyCode={Keys.UP_ARROW}
-          handler={this.handleUpArrow}
-        />
-        <KeypressListener keyCode={Keys.ENTER} handler={this.handleEnter} />
-        <KeypressListener
-          keyCode={Keys.ESCAPE}
+          keyCode={Key.Escape}
           handler={this.handlePopoverClose}
         />
         <Popover
