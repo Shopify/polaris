@@ -31,17 +31,17 @@ export default function Action({
   showIndicator,
   hasIndicator,
 }: Props) {
-  const iconMarkup = icon ? (
+  const iconMarkup = icon && (
     <span className={styles.ActionIcon}>
       <Icon source={icon} />
     </span>
-  ) : null;
+  );
 
-  const disclosureIconMarkup = disclosure ? (
+  const disclosureIconMarkup = disclosure && (
     <span className={styles.ActionIcon}>
       <Icon source="caretDown" />
     </span>
-  ) : null;
+  );
 
   const contentMarkup =
     iconMarkup || disclosureIconMarkup ? (
