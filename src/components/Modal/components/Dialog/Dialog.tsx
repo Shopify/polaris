@@ -4,7 +4,7 @@ import {Transition, CSSTransition} from 'react-transition-group';
 import {KeypressListener, TrapFocus} from '../../../../components';
 import memoizedBind from '../../../../utilities/memoized-bind';
 import {Duration} from '../../../shared';
-import {AnimationProps, Keys} from '../../../../types';
+import {AnimationProps, Key} from '../../../../types';
 import * as styles from './Dialog.scss';
 
 export interface DialogProps {
@@ -65,7 +65,7 @@ export default function Dialog({
             tabIndex={-1}
           >
             <KeypressListener
-              keyCode={Keys.ESCAPE}
+              keyCode={Key.Escape}
               handler={handleClose}
               testID="CloseKeypressListener"
             />

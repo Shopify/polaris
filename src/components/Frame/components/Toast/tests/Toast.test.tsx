@@ -3,7 +3,7 @@ import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'tests/utilities';
 import {noop} from 'utilities/other';
 import Toast, {Props} from '../Toast';
-import {Keys} from '../../../../../types';
+import {Key} from '../../../../../types';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -56,7 +56,7 @@ describe('<Toast />', () => {
       const spy = jest.fn();
       mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
 
-      listenerMap.keyup({keyCode: Keys.ESCAPE});
+      listenerMap.keyup({keyCode: Key.Escape});
 
       document.removeEventListener = jest.fn((event) => {
         listenerMap[event] = noop;

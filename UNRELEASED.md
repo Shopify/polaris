@@ -54,6 +54,7 @@ The autocomplete component is an input field that provides selectable suggestion
 - Added padding top and bottom on `Card.Section` when set to full width ([#2280](https://github.com/Shopify/polaris-react/pull/2280))
 - Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount` ([#2243](https://github.com/Shopify/polaris-react/pull/2243));
 - Fixed an issue where clicking a `Link` without a `url` in a form would implicitly submit the form. `Link` can no longer submit forms. Use `<Button submit>` instead.
+- Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow` ([#2451](https://github.com/Shopify/polaris-react/pull/2451))
 
 ### Documentation
 
