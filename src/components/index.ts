@@ -209,6 +209,8 @@ export {
 
 export {default as Scrollable, Props as ScrollableProps} from './Scrollable';
 
+export {default as ScrollLock} from './ScrollLock';
+
 export {
   default as Select,
   Props as SelectProps,
