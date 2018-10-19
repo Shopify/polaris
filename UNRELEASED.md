@@ -48,6 +48,9 @@ The autocomplete component is an input field that provides selectable suggestion
 ### Bug fixes
 
 - Fixed console error and used new ref syntax in `DataTable` ([#2196](https://github.com/Shopify/polaris-react/pull/2196)) (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
+- Fixed the ability to upload multiple files even when `allowedMultiple` prop is false ([#2297](https://github.com/Shopify/polaris-react/pull/2297))
+- Fixed `Datatable` so it resizes with new content ([#2285](https://github.com/Shopify/polaris-react/pull/2285)) (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/387))
+- Fixed `RangeSlider` linear-gradient so it doesn't break the css build ([#2418](https://github.com/Shopify/polaris-react/pull/2418)) (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/441))
 
 ### Breaking changes
 
@@ -85,3 +88,10 @@ The autocomplete component is an input field that provides selectable suggestion
 - Added examples for iOS and Android keyboard accessories ([#2033](https://github.com/Shopify/polaris-react/pull/2033))
 - Added examples for iOS and Android collapsible ([#2031](https://github.com/Shopify/polaris-react/pull/2031))
 - Added examples for iOS and Android list ([#2030](https://github.com/Shopify/polaris-react/pull/2030))
+- Clarified placement and usage of `Banner` ([#2424](https://github.com/Shopify/polaris-react/pull/2424))
+
+### Development workflow
+
+- Moved sub-sub-components within `ResourceList` into components folders ([#2381](https://github.com/Shopify/polaris-react/pull/2381))
+- Removed empty state from `ResourceList` if there are no items and `loading` is true ([#2393](https://github.com/Shopify/polaris-react/pull/2393))
+- Move to use sewing-kit for test running, updating to Jest 23 in the process. This gives us working sourcemaps for code coverage ([#2434](https://github.com/Shopify/polaris-react/pull/2434))

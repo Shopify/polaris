@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {TitleBar, Button} from '@shopify/app-bridge/actions';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import {LinkAction} from '../../../types';
+import Page from '../../Page';
 import {Header} from '../components';
-import Page from '../Page';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -20,13 +20,43 @@ const breadcrumbs: LinkAction[] = [
   },
 ];
 
+const mockProps = {
+  title: 'Test',
+  breadcrumbs,
+};
+
 describe('<Page />', () => {
+  it('renders its children', () => {
+    const page = mountWithAppProvider(
+      <Page {...mockProps}>
+        <Card />
+      </Page>,
+    );
+    expect(page.find(Card).exists()).toBe(true);
+  });
+
+  it('renders the title and displays the correct title text', () => {
+    const page = mountWithAppProvider(<Page {...mockProps} />);
+    expect(page.find(DisplayText)).toHaveLength(1);
+    expect(page.find(DisplayText).text()).toBe('Test');
+  });
+
   describe('<Header />', () => {
     it('is passed breadcrumbs', () => {
       const page = shallowWithAppProvider(
         <Page title="Test" breadcrumbs={breadcrumbs} />,
       );
       expect(page.find(Header).prop('breadcrumbs')).toBe(breadcrumbs);
+    });
+
+    it('renders a Header', () => {
+      const page = mountWithAppProvider(<Page {...mockProps} />);
+      expect(page.find(Header)).toHaveLength(1);
+    });
+
+    it('passes breadcrumbs down to Header', () => {
+      const page = mountWithAppProvider(<Page {...mockProps} />);
+      expect(page.find(Header).prop('breadcrumbs')).toEqual(breadcrumbs);
     });
 
     it('is not rendered when there is no header content', () => {

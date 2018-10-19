@@ -3,7 +3,7 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
   trigger,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner} from 'components';
 import Button, {IconWrapper} from '../Button';
 

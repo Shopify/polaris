@@ -1,4 +1,1 @@
-import Header from './Header';
-
-export {Props} from './Header';
-export default Header;
+export {default, Props} from './Header';

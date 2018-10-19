@@ -1,5 +1,7 @@
 @import './variables';
 
+$item-wrapper-loading-height: rem(64px);
+
 @mixin disabled-pointer-events {
   pointer-events: none;
 }
@@ -122,7 +124,7 @@
   }
 }
 
-.ItemCountTextWrapper {
+.HeaderTitleWrapper {
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
@@ -206,6 +208,10 @@
   + .ItemWrapper {
     border-top: border();
   }
+}
+
+.ItemWrapper-isLoading {
+  min-height: $item-wrapper-loading-height;
 }
 
 .SpinnerContainer {
