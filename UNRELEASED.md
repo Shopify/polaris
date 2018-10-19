@@ -45,16 +45,34 @@ The autocomplete component is an input field that provides selectable suggestion
 - Improved consistency of `Badge` styling ([#2376](https://github.com/Shopify/polaris-react/pull/2376))
 - Explicitly specifying `list-style` on `List` ([#2442](https://github.com/Shopify/polaris-react/pull/2442))
 
-## Bug fixes
+### Bug fixes
 
 - Fixed console error and used new ref syntax in `DataTable` ([#2196](https://github.com/Shopify/polaris-react/pull/2196)) (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
 
-## Breaking changes
+### Breaking changes
 
 - Added padding top and bottom on `Card.Section` when set to full width ([#2280](https://github.com/Shopify/polaris-react/pull/2280))
 - Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount` ([#2243](https://github.com/Shopify/polaris-react/pull/2243));
 - Fixed an issue where clicking a `Link` without a `url` in a form would implicitly submit the form. `Link` can no longer submit forms. Use `<Button submit>` instead.
 - Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow` ([#2451](https://github.com/Shopify/polaris-react/pull/2451))
+
+#### Embedded apps
+
+- Upgraded to the Shopify App Bridge and removed the EASDK
+- Removed `easdk` from React context and added `appBridge` which accessible via `this.context.polaris.appBridge`
+- Updated `shopOrigin` prop on `AppProvider` to optional as we provide it by default. Note that if you provide a `shopOrigin` it now needs to be provided without the `'https://'` per the Shopify App Bridge API
+- Removed `debug` prop from `AppProvider` as it no longer supported by the Shopify App Bridge, use Redux DevTools instead
+- Removed the embedded bundle so imports from `'@shopify/polaris/embedded'` will no longer work, use `'@shopify/polaris'` instead
+- Removed the `Alert` component as it no longer supported by the Shopify App Bridge, use `Modal` instead
+- Moved `ResourcePicker` to main bundle, import from `'@shopify/polaris'`
+- Updated `target` prop type related to embedded apps, use `'APP'`, `'ADMIN_PATH'`, or `'REMOTE'`
+- Added `target` prop to all actions which get passed to the Shopify App Bridge
+- Removed `width` and `height` props from `Modal` as they are no longer supported by the Shopify App Bridge
+- Added new `size` and `message` props to `Modal` which aligns with the Shopify App Bridge API
+- Removed `title` prop from `ResourcePicker`
+- Removed `products` and `collections` props from `ResourcePicker`, use new `resourceType` prop instead
+- Added new `resourceType`, `initialQuery`, and `showVariants` props to `ResourcePicker` which aligns with the Shopify App Bridge API
+- Added Shopify App Bridge support to new components `Toast` and `Loading`
 
 ### Documentation
 

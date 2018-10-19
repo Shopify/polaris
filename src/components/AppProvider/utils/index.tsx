@@ -5,6 +5,7 @@ import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import createApp, {getShopOrigin} from '@shopify/app-bridge';
 
 import {
   polarisAppProviderContextTypes,
@@ -19,22 +20,12 @@ import {PolarisContext} from '../../types';
 import Intl from '../Intl';
 import Link from '../Link';
 import {Context} from '../AppProvider';
-import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
 import {
   createThemeContext,
   ThemeContext as CreateThemeContext,
 } from '../../ThemeProvider';
-
-import packageJSON from '../../../../package.json';
-
-const METADATA = {
-  interface: {
-    name: packageJSON.name,
-    version: packageJSON.version,
-  },
-};
 
 const REPLACE_REGEX = /{([^}]*)}/g;
 
@@ -113,8 +104,8 @@ export function withAppProvider<OwnProps>() {
       }
 
       render() {
-        const {polaris, easdk, polarisTheme} = this.context;
-        const polarisContext = {...polaris, easdk, theme: polarisTheme};
+        const {polaris, polarisTheme} = this.context;
+        const polarisContext = {...polaris, theme: polarisTheme};
 
         if (!polaris) {
           throw new Error(
@@ -162,19 +153,16 @@ export function withSticky() {
 
       constructor(props: OwnProps & WithAppProviderProps, context: Context) {
         super(props);
-        const {polaris, easdk} = context;
+        const {polaris} = context;
         this.polarisContext = {
           ...polaris,
           stickyManager: this.stickyManager,
-          easdk,
         };
       }
 
       getChildContext(): Context {
-        const {easdk, ...rest} = this.polarisContext;
         return {
-          polaris: rest,
-          easdk,
+          polaris: this.polarisContext,
         };
       }
 
@@ -199,7 +187,6 @@ export function createAppProviderContext({
   apiKey,
   shopOrigin,
   forceRedirect,
-  debug,
   stickyManager,
   scrollLockManager,
   subscribe = noop,
@@ -207,18 +194,13 @@ export function createAppProviderContext({
 }: CreateAppProviderContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
-  const easdk =
-    apiKey && shopOrigin
-      ? new EASDK(
-          {
-            apiKey,
-            shopOrigin,
-            forceRedirect,
-            debug,
-          },
-          METADATA,
-        )
-      : undefined;
+  const appBridge = apiKey
+    ? createApp({
+        apiKey,
+        shopOrigin: shopOrigin || getShopOrigin(),
+        forceRedirect,
+      })
+    : undefined;
 
   return {
     polaris: {
@@ -228,8 +210,8 @@ export function createAppProviderContext({
       scrollLockManager: scrollLockManager || new ScrollLockManager(),
       subscribe,
       unsubscribe,
+      appBridge,
     },
-    easdk,
   };
 }
 

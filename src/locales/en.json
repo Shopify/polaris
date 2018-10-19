@@ -88,8 +88,7 @@
 
     "Modal": {
       "iFrameTitle": "body markup",
-      "modalWarning": "These required properties are missing from Modal: {missingProps}",
-      "actionWarning": "Modals inside of an embedded app will ignore: {actionWarnings}"
+      "modalWarning": "These required properties are missing from Modal: {missingProps}"
     },
 
     "Pagination": {

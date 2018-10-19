@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import createApp from '@shopify/app-bridge';
 import {
   translate,
   createAppProviderContext,
@@ -15,6 +16,9 @@ import Intl from '../Intl';
 import Link from '../Link';
 import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
+
+jest.mock('@shopify/app-bridge');
+(createApp as jest.Mock<{}>).mockImplementation((args) => args);
 
 describe('translate()', () => {
   it('returns a simple string value in the translation dictionary', () => {
@@ -54,6 +58,10 @@ describe('translate()', () => {
 });
 
 describe('createAppProviderContext()', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('returns the right context without properties', () => {
     const context = createAppProviderContext();
     const mockContext = {
@@ -64,8 +72,8 @@ describe('createAppProviderContext()', () => {
         scrollLockManager: new ScrollLockManager(),
         subscribe: noop,
         unsubscribe: noop,
+        appBridge: undefined,
       },
-      easdk: undefined,
     };
 
     expect(context).toEqual(mockContext);
@@ -84,11 +92,13 @@ describe('createAppProviderContext()', () => {
     };
     const stickyManager = new StickyManager();
     const scrollLockManager = new ScrollLockManager();
+    const apiKey = '4p1k3y';
     const context = createAppProviderContext({
       i18n,
       linkComponent: CustomLinkComponent,
       stickyManager,
       scrollLockManager,
+      apiKey,
     });
     const mockContext = {
       polaris: {
@@ -98,8 +108,12 @@ describe('createAppProviderContext()', () => {
         scrollLockManager,
         subscribe: noop,
         unsubscribe: noop,
+        appBridge: {
+          apiKey,
+          forceRedirect: undefined,
+          shopOrigin: undefined,
+        },
       },
-      easdk: undefined,
     };
 
     expect(context).toEqual(mockContext);
@@ -117,8 +131,8 @@ describe('createPolarisContext()', () => {
         scrollLockManager: new ScrollLockManager(),
         subscribe: noop,
         unsubscribe: noop,
+        appBridge: undefined,
       },
-      easdk: undefined,
       polarisTheme: {
         logo: null,
         subscribe: noop,
@@ -178,8 +192,8 @@ describe('createPolarisContext()', () => {
         scrollLockManager,
         subscribe: noop,
         unsubscribe: noop,
+        appBridge: undefined,
       },
-      easdk: undefined,
       polarisTheme: {
         logo: null,
         subscribe: mockSubscribe,
@@ -217,8 +231,8 @@ describe('createPolarisContext()', () => {
         scrollLockManager,
         subscribe: noop,
         unsubscribe: noop,
+        appBridge: undefined,
       },
-      easdk: undefined,
       polarisTheme: {
         logo: null,
         subscribe: noop,
@@ -248,8 +262,8 @@ describe('createPolarisContext()', () => {
         scrollLockManager: new ScrollLockManager(),
         subscribe: noop,
         unsubscribe: noop,
+        appBridge: undefined,
       },
-      easdk: undefined,
       polarisTheme: {
         logo: null,
         subscribe: mockSubscribe,

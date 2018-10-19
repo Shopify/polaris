@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {FrameContext, frameContextTypes} from '../types';
 import {withAppProvider, WithAppProviderProps} from '..';
 
@@ -8,24 +9,26 @@ export type ComposedProps = Props & WithAppProviderProps;
 export class Loading extends React.PureComponent<ComposedProps, never> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
+  private appBridgeLoading: AppBridgeLoading.Loading | undefined;
 
   componentDidMount() {
-    const {easdk} = this.props.polaris;
+    const {appBridge} = this.props.polaris;
 
-    if (easdk == null) {
+    if (appBridge == null) {
       this.context.frame.startLoading();
     } else {
-      easdk.startLoading();
+      this.appBridgeLoading = AppBridgeLoading.create(appBridge);
+      this.appBridgeLoading.dispatch(AppBridgeLoading.Action.START);
     }
   }
 
   componentWillUnmount() {
-    const {easdk} = this.props.polaris;
+    const {appBridge} = this.props.polaris;
 
-    if (easdk == null) {
+    if (appBridge == null) {
       this.context.frame.stopLoading();
-    } else {
-      easdk.stopLoading();
+    } else if (this.appBridgeLoading != null) {
+      this.appBridgeLoading.dispatch(AppBridgeLoading.Action.STOP);
     }
   }
 

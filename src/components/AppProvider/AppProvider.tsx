@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import EASDK from './EASDK';
+import {ClientApplication} from '@shopify/app-bridge';
 
 import {LinkLikeComponent} from '../UnstyledLink';
 
@@ -19,12 +19,14 @@ export interface Props {
   linkComponent?: LinkLikeComponent;
   /** The API key for your application from the Partner dashboard */
   apiKey?: string;
-  /** The current shop’s origin, provided in the session from the Shopify API */
+  /**
+   * The current shop’s origin, provided in the session from the Shopify API (to be provided without the https://)
+   * @default getShopOrigin()
+   * @see {@link https://github.com/Shopify/app-bridge/blob/master/packages/app-bridge/README.md|Shopify App Bridge docs}
+   **/
   shopOrigin?: string;
   /** Forces a redirect to the relative admin path when not rendered in an iframe */
   forceRedirect?: boolean;
-  /** Prints logs of each message passed through the EASDK */
-  debug?: boolean;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
 }
@@ -37,8 +39,8 @@ export interface Context {
     scrollLockManager: ScrollLockManager;
     subscribe?(callback: () => void): void;
     unsubscribe?(callback: () => void): void;
+    appBridge?: ClientApplication<{}>;
   };
-  easdk?: EASDK;
 }
 
 export default class AppProvider extends React.Component<Props> {
@@ -75,15 +77,13 @@ export default class AppProvider extends React.Component<Props> {
     apiKey,
     shopOrigin,
     forceRedirect,
-    debug,
   }: Props) {
     if (
       i18n !== this.props.i18n ||
       linkComponent !== this.props.linkComponent ||
       apiKey !== this.props.apiKey ||
       shopOrigin !== this.props.shopOrigin ||
-      forceRedirect !== this.props.forceRedirect ||
-      debug !== this.props.debug
+      forceRedirect !== this.props.forceRedirect
     ) {
       const stickyManager = this.stickyManager;
       this.polarisContext = createAppProviderContext({
@@ -92,7 +92,6 @@ export default class AppProvider extends React.Component<Props> {
         apiKey,
         shopOrigin,
         forceRedirect,
-        debug,
         stickyManager,
         subscribe: this.subscribe,
         unsubscribe: this.unsubscribe,

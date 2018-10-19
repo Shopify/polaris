@@ -11,7 +11,6 @@ node_modules
 /styles.css
 /styles.scss
 /styles
-/embedded.*
 /sandbox
 .DS_Store
 *.scss.d.ts

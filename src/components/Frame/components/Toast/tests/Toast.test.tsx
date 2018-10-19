@@ -2,6 +2,7 @@ import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'tests/utilities';
 import {noop} from 'utilities/other';
+import {DEFAULT_TOAST_DURATION} from 'index';
 import Toast, {Props} from '../Toast';
 import {Key} from '../../../../../types';
 
@@ -67,7 +68,7 @@ describe('<Toast />', () => {
 
     it('is called after the duration is reached', () => {
       const spy = jest.fn();
-      const duration = 5000;
+      const duration = DEFAULT_TOAST_DURATION;
 
       mountWithAppProvider(
         <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
@@ -80,7 +81,7 @@ describe('<Toast />', () => {
 
     it('is not called if the component unmounts before the duration is reached', () => {
       const spy = jest.fn();
-      const duration = 5000;
+      const duration = DEFAULT_TOAST_DURATION;
       const toast = mountWithAppProvider(
         <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
       );

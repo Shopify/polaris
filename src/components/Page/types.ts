@@ -5,11 +5,14 @@ import {
   BadgeAction,
   LoadableAction,
   DestructableAction,
+  AppBridgeActionTarget,
 } from '../../types';
 import {PaginationDescriptor} from '../Pagination';
 import {Props as BreadcrumbProps} from '../Breadcrumbs';
 
-export type SecondaryAction = IconableAction & DisableableAction;
+export type SecondaryAction = IconableAction &
+  DisableableAction &
+  AppBridgeActionTarget;
 
 export interface ActionGroup extends BadgeAction {
   /** Action group title */
@@ -40,7 +43,8 @@ export interface ActionProps {
 export interface PrimaryActionProps
   extends DisableableAction,
     LoadableAction,
-    DestructableAction {
+    DestructableAction,
+    AppBridgeActionTarget {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }

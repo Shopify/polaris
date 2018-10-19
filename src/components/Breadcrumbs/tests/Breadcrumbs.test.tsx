@@ -11,7 +11,7 @@ describe('<Breadcrumbs />', () => {
         {
           content: 'Products',
           url: 'https://www.shopify.com',
-          target: 'new',
+          target: 'REMOTE',
         },
       ];
 

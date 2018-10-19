@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {KeypressListener, ToastProps} from '../../../../components';
+import {
+  KeypressListener,
+  ToastProps,
+  DEFAULT_TOAST_DURATION,
+} from '../../../../components';
 import Icon from '../../../Icon';
 import {Key} from '../../../../types';
 
@@ -50,7 +54,7 @@ export default class Toast extends React.Component<Props, never> {
   }
 
   private triggerDismissalTimeout() {
-    const {onDismiss, duration = 5000} = this.props;
+    const {onDismiss, duration = DEFAULT_TOAST_DURATION} = this.props;
 
     this.clearDismissalTimeout();
     if (onDismiss != null && duration != null) {

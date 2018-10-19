@@ -207,6 +207,11 @@ export {
   FilterTextField,
 } from './ResourceList';
 
+export {
+  default as ResourcePicker,
+  Props as ResourcePickerProps,
+} from './ResourcePicker';
+
 export {default as Scrollable, Props as ScrollableProps} from './Scrollable';
 
 export {default as ScrollLock} from './ScrollLock';
@@ -252,7 +257,11 @@ export {
   Context as ThemeProviderContext,
 } from './ThemeProvider';
 
-export {default as Toast, Props as ToastProps} from './Toast';
+export {
+  default as Toast,
+  Props as ToastProps,
+  DEFAULT_TOAST_DURATION,
+} from './Toast';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 

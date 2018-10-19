@@ -80,6 +80,15 @@ function parseCodeExamples(data, file) {
     return null;
   }
 
+  if (matter.data.hidePlayground) {
+    console.log(
+      chalk`   ℹ️  {grey [${
+        matter.data.name
+      }] Component was ignored (hidePlayground: true)}`,
+    );
+    return null;
+  }
+
   const introAndComponentSections = matter.content
     .split(/(\n---\n)/)
     .map((content) => content.replace('---\n', '').trim())

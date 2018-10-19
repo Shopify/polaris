@@ -1,10 +1,10 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
+import {ClientApplication} from '@shopify/app-bridge';
 import {Props as AppProviderProps} from '../AppProvider';
 
 import Intl from './Intl';
 import Link from './Link';
-import EASDK from './EASDK';
 import StickyManager from './StickyManager';
 import ScrollLockManager from './ScrollLockManager';
 import {
@@ -14,7 +14,6 @@ import {
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
-  easdk: PropTypes.any,
   ...polarisTheme,
 };
 
@@ -22,10 +21,10 @@ export interface WithAppProviderProps {
   polaris: {
     intl: Intl;
     link: Link;
-    easdk: EASDK;
     stickyManager: StickyManager;
     scrollLockManager: ScrollLockManager;
     theme: ThemeContext;
+    appBridge: ClientApplication<{}>;
     subscribe(callback: () => void): void;
     unsubscribe(callback: () => void): void;
   };

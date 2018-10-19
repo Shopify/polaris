@@ -1,9 +1,13 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
+import {Redirect} from '@shopify/app-bridge/actions';
 import {IconProps} from './components';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
+export type AppBridgeTarget = Exclude<
+  keyof typeof Redirect.Action,
+  'ADMIN_SECTION'
+>;
 
 export type Error =
   | string
@@ -42,11 +46,16 @@ export interface BaseLinkAction {
   url: string;
 }
 
-export interface EASDKBreadcrumbTarget {
-  target?: EASDKTarget;
+export interface AppBridgeActionTarget {
+  /**
+   * Where to display the target link
+   * @default 'APP'
+   * @embeddedAppOnly
+   */
+  target?: AppBridgeTarget;
 }
 
-export interface LinkAction extends BaseLinkAction, EASDKBreadcrumbTarget {}
+export interface LinkAction extends BaseLinkAction, AppBridgeActionTarget {}
 
 export interface BadgeAction {
   badge?: {
@@ -78,13 +87,11 @@ export interface DestructableAction extends Action {
   destructive?: boolean;
 }
 
-export interface EASDKAction
+export interface AppBridgeAction
   extends Action,
     DisableableAction,
-    DestructableAction {
-  /** Where to display the target link */
-  target?: EASDKTarget;
-}
+    DestructableAction,
+    AppBridgeActionTarget {}
 
 export interface IconableAction extends Action {
   /** Source of the icon */
@@ -100,7 +107,8 @@ export interface ActionListItemDescriptor
   extends IconableAction,
     DisableableAction,
     BadgeAction,
-    DestructableAction {
+    DestructableAction,
+    AppBridgeAction {
   /** Image source */
   image?: string;
   /**  Add an ellipsis suffix to action content */
@@ -122,7 +130,7 @@ export interface ComplexAction
   extends Action,
     DisableableAction,
     DestructableAction,
-    EASDKAction,
+    AppBridgeAction,
     IconableAction,
     LoadableAction {}
 

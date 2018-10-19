@@ -8,7 +8,6 @@ export {
   createPolarisContext,
   withSticky,
 } from './utils';
-export {Options, User, Message} from './EASDK';
 export {default as Intl} from './Intl';
 export {LinkLikeComponent} from '../UnstyledLink';
 export * from './types';

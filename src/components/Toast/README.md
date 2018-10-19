@@ -16,6 +16,7 @@ keywords:
   - overlay
   - popup
   - easdk
+  - shopify app bridge
   - iframe
   - embedded app
   - duration

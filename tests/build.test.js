@@ -19,7 +19,6 @@ describe('build', () => {
 
   it('generates lib files in ./', () => {
     expect(fs.existsSync('./index.js')).toBe(true);
-    expect(fs.existsSync('./embedded.js')).toBe(true);
     expect(fs.existsSync('./index.es.js')).toBe(true);
     expect(fs.existsSync('./styles.css')).toBe(true);
   });
@@ -76,7 +75,6 @@ describe('build', () => {
 
   it('generates the necessary typescript definition files', () => {
     expect(fs.existsSync('./types/index.d.ts')).toBe(true);
-    expect(fs.existsSync('./embedded.d.ts')).toBe(true);
   });
 
   it('replaces all occurrences of POLARIS_VERSION', () => {
@@ -94,12 +92,11 @@ describe('build', () => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes(packageJSON.version));
     }, 0);
-    expect(total).toBe(6);
+    expect(total).toBe(5);
   });
 
   it('features the version of Polaris in those specific files', () => {
     const globFiles = [
-      'embedded.js',
       'polaris.css',
       'polaris.es.js',
       'polaris.js',
@@ -111,7 +108,7 @@ describe('build', () => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes(packageJSON.version));
     }, 0);
-    expect(total).toBe(6);
+    expect(total).toBe(5);
   });
 
   describe('esnext', () => {

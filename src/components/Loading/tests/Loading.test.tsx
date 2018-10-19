@@ -1,10 +1,15 @@
 import * as React from 'react';
+import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import * as PropTypes from 'prop-types';
 import {mountWithAppProvider} from 'tests/utilities';
 
 import Loading from '../Loading';
 
 describe('<Loading />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('starts loading on mount', () => {
     const {frame} = mountWithFrame(<Loading />);
     expect(frame.startLoading).toHaveBeenCalled();
@@ -18,17 +23,25 @@ describe('<Loading />', () => {
     expect(frame.stopLoading).toHaveBeenCalled();
   });
 
-  it('starts easdk loading on mount', () => {
-    const {easdk} = mountWithEasdk(<Loading />);
-    expect(easdk.startLoading).toHaveBeenCalled();
-  });
+  describe('with app bridge', () => {
+    const dispatch = jest.fn();
+    AppBridgeLoading.create = jest.fn().mockReturnValue({dispatch});
 
-  it('stops easdk loading on unmount', () => {
-    const {loading, easdk} = mountWithEasdk(<Loading />);
-    expect(easdk.stopLoading).not.toHaveBeenCalled();
+    it('starts loading on mount', () => {
+      const {polaris} = mountWithAppBridge(<Loading />);
 
-    loading.unmount();
-    expect(easdk.stopLoading).toHaveBeenCalled();
+      expect(AppBridgeLoading.create).toHaveBeenCalledTimes(1);
+      expect(AppBridgeLoading.create).toHaveBeenCalledWith(polaris.appBridge);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(AppBridgeLoading.Action.START);
+    });
+
+    it('stops loading on unmount', () => {
+      const {loading} = mountWithAppBridge(<Loading />);
+
+      loading.unmount();
+      expect(dispatch).toHaveBeenCalledWith(AppBridgeLoading.Action.STOP);
+    });
   });
 });
 
@@ -42,12 +55,13 @@ function mountWithFrame(element: React.ReactElement<any>) {
   return {loading, frame};
 }
 
-function mountWithEasdk(element: React.ReactElement<any>) {
-  const easdk = {startLoading: jest.fn(), stopLoading: jest.fn()};
+function mountWithAppBridge(element: React.ReactElement<any>) {
+  const appBridge = {};
+  const polaris = {appBridge};
   const loading = mountWithAppProvider(element, {
-    context: {frame: {}, easdk},
+    context: {frame: {}, polaris},
     childContextTypes: {frame: PropTypes.any},
   });
 
-  return {loading, easdk};
+  return {loading, polaris};
 }

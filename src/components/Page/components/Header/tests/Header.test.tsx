@@ -8,7 +8,7 @@ const breadcrumbs: LinkAction[] = [
   {
     content: 'Products',
     url: 'https://www.google.com',
-    target: 'new',
+    target: 'REMOTE',
   },
 ];
 

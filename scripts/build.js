@@ -16,7 +16,6 @@ const finalEsnext = resolvePath(root, 'esnext');
 const docs = resolvePath(root, './docs');
 const intermediateBuild = resolvePath(root, './build-intermediate');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
-const embeddedEntry = resolvePath(intermediateBuild, './embedded/index.js');
 
 const scripts = resolvePath(root, 'scripts');
 const types = resolvePath(root, 'types');
@@ -31,15 +30,9 @@ execSync(
     stdio: 'inherit',
   },
 );
-rm(join(intermediateBuild, 'package.json'));
 
 mv(resolvePath(root, 'types/src/*'), types);
 rm('-rf', resolvePath(root, 'types/src'));
-
-writeFileSync(
-  resolvePath(root, 'embedded.d.ts'),
-  "export * from './types/embedded';\n",
-);
 
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 
@@ -125,20 +118,9 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       useExistingClassTokens: true,
     }),
   )
-  // Embedded bundle, supports all our supported browsers, CommonJS, no
-  // styles because no embedded-only components have styles
-  .then(() =>
-    runRollup({
-      entry: embeddedEntry,
-      output: 'embedded.js',
-      format: 'cjs',
-      css: false,
-    }),
-  )
   .then(() =>
     Promise.all([
       cp('build/polaris.js', './index.js'),
-      cp('build/embedded.js', './embedded.js'),
       cp('build/polaris.es.js', './index.es.js'),
       cp('build/polaris.css', './styles.css'),
     ]),
