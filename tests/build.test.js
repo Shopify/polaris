@@ -82,8 +82,9 @@ describe('build', () => {
 
   it('replaces all occurrences of POLARIS_VERSION', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}', {
-      ignore: './build/cache/jest',
+      ignore: './build/cache/**',
     });
+
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes('POLARIS_VERSION'));
