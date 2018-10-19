@@ -4,7 +4,7 @@ import {
   animationFrame,
   mountWithAppProvider,
   documentHasStyle,
-} from 'tests/utilities';
+} from 'test-utilities';
 import {
   TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,

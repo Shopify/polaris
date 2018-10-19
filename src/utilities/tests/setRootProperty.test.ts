@@ -1,4 +1,4 @@
-import {documentHasStyle} from 'tests/utilities';
+import {documentHasStyle} from 'test-utilities';
 import {setRootProperty} from '../setRootProperty';
 
 describe('setRootProperty', () => {

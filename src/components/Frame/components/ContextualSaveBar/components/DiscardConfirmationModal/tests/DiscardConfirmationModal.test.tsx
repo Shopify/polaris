@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {noop} from '@shopify/javascript-utilities/other';
-import {shallowWithAppProvider, trigger} from 'tests/utilities';
+import {shallowWithAppProvider, trigger} from 'test-utilities';
 
 import {Modal} from 'components';
 

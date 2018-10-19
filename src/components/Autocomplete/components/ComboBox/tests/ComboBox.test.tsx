@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import ComboBox from '..';
 import {OptionList, ActionList, Popover} from 'components';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {TextField} from '../components';
 import {Key} from '../../../../../types';
 
