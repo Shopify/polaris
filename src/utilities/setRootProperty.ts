@@ -9,5 +9,5 @@ export function setRootProperty(
 
   const styleNode =
     node && node instanceof HTMLElement ? node : document.documentElement;
-  styleNode.style.setProperty(name, value);
+  styleNode && styleNode.style.setProperty(name, value);
 }
