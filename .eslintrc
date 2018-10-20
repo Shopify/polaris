@@ -4,7 +4,7 @@
     "plugin:shopify/jest",
     "plugin:shopify/node",
     "plugin:shopify/polaris",
-    "plugin:shopify/typescript-prettier"
+    "plugin:shopify/prettier"
   ],
   "settings": {
     "react": {
@@ -26,9 +26,12 @@
         "allowBlockStart": false
       }
     ],
+    "import/no-cycle": "off",
+    "import/no-named-as-default": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "shopify/jest/no-vague-titles": "off",
+    "shopify/jsx-no-complex-expressions": "off",
     "jsx-a11y/label-has-for": [
       2,
       {
