@@ -92,7 +92,9 @@ describe('build', () => {
   });
 
   it('features the version of Polaris in all compiled files', () => {
-    const files = glob.sync('./build/**/*.{js,scss,css}');
+    const files = glob.sync('./build/**/*.{js,scss,css}', {
+      ignore: './build/cache/**',
+    });
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes(packageJSON.version));
