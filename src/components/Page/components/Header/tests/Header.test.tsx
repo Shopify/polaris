@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Breadcrumbs, buttonsFrom, Pagination} from 'components';
-import {LinkAction} from '../../../../../types';
+import {LinkAction, ActionListItemDescriptor} from '../../../../../types';
 import {Action, ActionGroup, ActionGroupDescriptor} from '../components';
 import Header from '../Header';
 
@@ -33,7 +33,7 @@ describe('<Header />', () => {
       {
         content: 'Products',
         url: 'https://www.google.com',
-        target: 'new',
+        target: 'REMOTE',
       },
     ];
 
@@ -51,7 +51,7 @@ describe('<Header />', () => {
         {
           content: 'Products',
           url: 'https://www.google.com',
-          target: 'new',
+          target: 'REMOTE',
         },
       ];
       const header = mountWithAppProvider(
@@ -67,7 +67,7 @@ describe('<Header />', () => {
         {
           content: 'Products',
           url: 'https://www.google.com',
-          target: 'new',
+          target: 'REMOTE',
         },
       ];
 
@@ -122,10 +122,10 @@ describe('<Header />', () => {
   });
 
   describe('<ActionGroup />', () => {
-    const mockAction = {
+    const mockAction: ActionListItemDescriptor = {
       content: 'Products',
       url: 'https://www.google.com',
-      target: 'new',
+      target: 'REMOTE',
     };
 
     function fillActionGroup(

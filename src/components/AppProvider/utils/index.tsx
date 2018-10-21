@@ -1,8 +1,11 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 import replace from 'lodash/replace';
 import hoistStatics from 'hoist-non-react-statics';
+import {autobind} from '@shopify/javascript-utilities/decorators';
+import createApp, {getShopOrigin} from '@shopify/app-bridge';
 
 import {
   polarisAppProviderContextTypes,
@@ -10,23 +13,19 @@ import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
   WithAppProviderProps,
-  CreatePolarisContext,
+  CreateAppProviderContext,
 } from '../types';
+import {PolarisContext} from '../../types';
 
 import Intl from '../Intl';
 import Link from '../Link';
 import {Context} from '../AppProvider';
-import EASDK from '../EASDK';
 import StickyManager from '../StickyManager';
-
-import packageJSON from '../../../../package.json';
-
-const METADATA = {
-  interface: {
-    name: packageJSON.name,
-    version: packageJSON.version,
-  },
-};
+import ScrollLockManager from '../ScrollLockManager';
+import {
+  createThemeContext,
+  ThemeContext as CreateThemeContext,
+} from '../../ThemeProvider';
 
 const REPLACE_REGEX = /{([^}]*)}/g;
 
@@ -74,9 +73,39 @@ export function withAppProvider<OwnProps>() {
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;
 
+      componentDidMount() {
+        const {
+          polaris: {subscribe: subscribeToPolaris},
+          polarisTheme: {subscribe: subscribeToTheme},
+        } = this.context;
+
+        if (subscribeToPolaris) {
+          subscribeToPolaris(this.handleContextUpdate);
+        }
+
+        if (subscribeToTheme) {
+          subscribeToTheme(this.handleContextUpdate);
+        }
+      }
+
+      componentWillUnmount() {
+        const {
+          polaris: {unsubscribe: unsubscribeToPolaris},
+          polarisTheme: {unsubscribe: unsubscribeToTheme},
+        } = this.context;
+
+        if (unsubscribeToPolaris) {
+          unsubscribeToPolaris(this.handleContextUpdate);
+        }
+
+        if (unsubscribeToTheme) {
+          unsubscribeToTheme(this.handleContextUpdate);
+        }
+      }
+
       render() {
-        const {polaris, easdk} = this.context;
-        const polarisContext = {...polaris, easdk};
+        const {polaris, polarisTheme} = this.context;
+        const polarisContext = {...polaris, theme: polarisTheme};
 
         if (!polaris) {
           throw new Error(
@@ -87,6 +116,11 @@ export function withAppProvider<OwnProps>() {
         }
 
         return <WrappedComponent {...this.props} polaris={polarisContext} />;
+      }
+
+      @autobind
+      private handleContextUpdate() {
+        this.forceUpdate();
       }
     }
 
@@ -119,19 +153,16 @@ export function withSticky() {
 
       constructor(props: OwnProps & WithAppProviderProps, context: Context) {
         super(props);
-        const {polaris, easdk} = context;
+        const {polaris} = context;
         this.polarisContext = {
           ...polaris,
           stickyManager: this.stickyManager,
-          easdk,
         };
       }
 
       getChildContext(): Context {
-        const {easdk, ...rest} = this.polarisContext;
         return {
-          polaris: rest,
-          easdk,
+          polaris: this.polarisContext,
         };
       }
 
@@ -150,36 +181,68 @@ export function withSticky() {
   };
 }
 
-export function createPolarisContext({
+export function createAppProviderContext({
   i18n,
   linkComponent,
   apiKey,
   shopOrigin,
   forceRedirect,
-  debug,
   stickyManager,
-}: CreatePolarisContext = {}): Context {
+  scrollLockManager,
+  subscribe = noop,
+  unsubscribe = noop,
+}: CreateAppProviderContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
-  const easdk =
-    apiKey && shopOrigin
-      ? new EASDK(
-          {
-            apiKey,
-            shopOrigin,
-            forceRedirect,
-            debug,
-          },
-          METADATA,
-        )
-      : undefined;
+  const appBridge = apiKey
+    ? createApp({
+        apiKey,
+        shopOrigin: shopOrigin || getShopOrigin(),
+        forceRedirect,
+      })
+    : undefined;
 
   return {
     polaris: {
       intl,
       link,
       stickyManager: stickyManager || new StickyManager(),
+      scrollLockManager: scrollLockManager || new ScrollLockManager(),
+      subscribe,
+      unsubscribe,
+      appBridge,
     },
-    easdk,
   };
+}
+
+export function createPolarisContext(): PolarisContext;
+export function createPolarisContext(
+  contextOne: CreateAppProviderContext | CreateThemeContext,
+): PolarisContext;
+export function createPolarisContext(
+  contextOne: CreateAppProviderContext | CreateThemeContext,
+  contextTwo: CreateAppProviderContext | CreateThemeContext,
+): PolarisContext;
+export function createPolarisContext(
+  contextOne?: CreateAppProviderContext | CreateThemeContext,
+  contextTwo?: CreateAppProviderContext | CreateThemeContext,
+) {
+  let appProviderContext: CreateAppProviderContext | undefined;
+  let themeContext: CreateThemeContext | undefined;
+  if (contextOne && 'logo' in contextOne) {
+    themeContext = contextOne as CreateThemeContext;
+    appProviderContext = contextTwo;
+  } else {
+    appProviderContext = contextOne;
+    themeContext = contextTwo as CreateThemeContext | undefined;
+  }
+
+  const appProvider = appProviderContext
+    ? createAppProviderContext(appProviderContext)
+    : createAppProviderContext();
+  const theme = themeContext
+    ? createThemeContext(themeContext)
+    : createThemeContext();
+
+  return {...appProvider, ...theme};
 }

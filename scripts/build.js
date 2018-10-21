@@ -11,13 +11,11 @@ import packageJSON from '../package.json';
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, 'build');
-const buildEsnext = resolvePath(root, 'build-esnext');
 const finalEsnext = resolvePath(root, 'esnext');
 
 const docs = resolvePath(root, './docs');
 const intermediateBuild = resolvePath(root, './build-intermediate');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
-const embeddedEntry = resolvePath(intermediateBuild, './embedded/index.js');
 
 const scripts = resolvePath(root, 'scripts');
 const types = resolvePath(root, 'types');
@@ -35,11 +33,6 @@ execSync(
 
 mv(resolvePath(root, 'types/src/*'), types);
 rm('-rf', resolvePath(root, 'types/src'));
-
-writeFileSync(
-  resolvePath(root, 'embedded.d.ts'),
-  "export * from './types/embedded';\n",
-);
 
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 
@@ -75,6 +68,18 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
           .replace(/<%= POLARIS_VERSION %>/g, packageJSON.version),
       );
     });
+  })
+  // Custom build consumed by Sewing Kit: it preserves all ESNext features
+  // including imports/ exports for better tree shaking.
+  .then(() => ensureDirSync(finalEsnext))
+  .then(() => cp('-R', `${intermediateBuild}/*`, finalEsnext))
+  .then(() => {
+    const indexPath = join(finalEsnext, 'index.js');
+    const esnextIndex = readFileSync(indexPath, 'utf8');
+    writeFileSync(
+      indexPath,
+      esnextIndex.replace(/import '.\/styles\/global\.scss';/g, ''),
+    );
   })
   .then(() => {
     writeFileSync(
@@ -113,20 +118,9 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       useExistingClassTokens: true,
     }),
   )
-  // Embedded bundle, supports all our supported browsers, CommonJS, no
-  // styles because no embedded-only components have styles
-  .then(() =>
-    runRollup({
-      entry: embeddedEntry,
-      output: 'embedded.js',
-      format: 'cjs',
-      css: false,
-    }),
-  )
   .then(() =>
     Promise.all([
       cp('build/polaris.js', './index.js'),
-      cp('build/embedded.js', './embedded.js'),
       cp('build/polaris.es.js', './index.es.js'),
       cp('build/polaris.css', './styles.css'),
     ]),
@@ -136,76 +130,6 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
   .then(() => {
     cp('-r', resolvePath(build, 'sass', '*'), root);
   })
-  .then(() => {
-    writeFileSync(
-      resolvePath(intermediateBuild, '.babelrc'),
-      `
-      {
-        "presets": [
-          "shopify/react"
-        ],
-        "plugins": [
-          "../config/babel/plugins/sass-namespace-to-default-import.js"
-        ]
-      }
-    `,
-    );
-  })
-  .then(() => ensureDirSync(finalEsnext))
-  // Custom build consumed by Sewing Kit: it preserves all ESNext features
-  // including imports/ exports for better tree shaking, and includes
-  // only the minified CSS class names
-  .then(() =>
-    runRollup({
-      entry: mainEntry,
-      output: 'polaris.js',
-      outputDir: buildEsnext,
-      format: 'es',
-      css: true,
-      minifyClassnames: true,
-    }),
-  )
-  .then(() => {
-    writeFileSync(
-      resolvePath(intermediateBuild, '.babelrc'),
-      `
-      {
-        "presets": [
-          "shopify/react",
-          ["shopify/node", {"version": 6, "modules": false}]
-        ],
-        "plugins": [
-          "../config/babel/plugins/sass-namespace-to-default-import.js"
-        ]
-      }
-    `,
-    );
-  })
-  // Custom build consumed by Sewing Kit for the server: matches ES features
-  // available in Node 6+ but does not preserve imports/ exports since this
-  // package is resolved natively by Node. Uses the same minified class names.
-  .then(() =>
-    runRollup({
-      entry: mainEntry,
-      output: 'polaris-server.js',
-      outputDir: buildEsnext,
-      format: 'cjs',
-      css: false,
-      useExistingClassTokens: true,
-    }),
-  )
-  // Sass build with the minified class names
-  .then(() => generateSassBuild(buildEsnext))
-  .then(() =>
-    Promise.all([
-      cp(join(buildEsnext, 'polaris.js'), join(finalEsnext, 'index.js')),
-      cp(
-        join(buildEsnext, 'polaris-server.js'),
-        join(finalEsnext, 'server.js'),
-      ),
-      cp('-R', join(buildEsnext, 'sass', 'styles'), finalEsnext),
-    ]),
-  )
   .catch((error) => {
     // eslint-disable-next-line no-console
     console.error(error);

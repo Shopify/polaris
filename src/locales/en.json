@@ -5,6 +5,10 @@
       "labelWithInitials": "Avatar with initials {initials}"
     },
 
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Loading"
+    },
+
     "Badge": {
       "PROGRESS_LABELS": {
         "incomplete": "Incomplete",
@@ -29,6 +33,11 @@
       "undo": "Undo"
     },
 
+    "ContextualSaveBar": {
+      "save": "Save",
+      "discard": "Discard"
+    },
+
     "DataTable": {
       "sortAccessibilityLabel": "sort {direction} by",
       "navAccessibilityLabel": "Scroll table {direction} one column",
@@ -39,6 +48,13 @@
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
       "today": "Today "
+    },
+
+    "DiscardConfirmationModal": {
+      "title": "Discard all unsaved changes",
+      "message": "If you discard changes, you'll delete any edits you made since you last saved.",
+      "primaryAction": "Discard changes",
+      "secondaryAction": "Continue editing"
     },
 
     "DropZone": {
@@ -59,14 +75,20 @@
       "altText": "Empty search results"
     },
 
+    "Frame": {
+      "skipToContent": "Skip to content",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Close navigation"
+      }
+    },
+
     "Icon": {
       "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
     },
 
     "Modal": {
       "iFrameTitle": "body markup",
-      "modalWarning": "These required properties are missing from Modal: {missingProps}",
-      "actionWarning": "Modals inside of an embedded app will ignore: {actionWarnings}"
+      "modalWarning": "These required properties are missing from Modal: {missingProps}"
     },
 
     "Pagination": {
