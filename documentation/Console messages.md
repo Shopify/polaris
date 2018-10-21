@@ -31,7 +31,7 @@ console.info('Your project is currently using v1.8.6');
 ```
 console.group('Polaris');
 console.info('Your project is currently using v1.18.0');
-console.warn('Deprecation: The `title` property on Tabs has been deprecated. Use `content` instead. Read more in the v2.0.0 upgrade guide https://github.com/Shopify/polaris/blob/master/CHANGELOG.md#tabs-no-longer-accept-title-prop');
+console.warn('Deprecation: The `title` property on Tabs has been deprecated. Use `content` instead. Read more in the v2.0.0 upgrade guide https://github.com/Shopify/polaris-react/blob/master/CHANGELOG.md#tabs-no-longer-accept-title-prop');
 console.groupEnd();
 ```
 
