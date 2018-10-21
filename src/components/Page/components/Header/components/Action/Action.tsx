@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {handleMouseUpByBlurring} from 'utilities/focus';
+import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
 import Indicator from '../../../../../Indicator';
 import {Icon, UnstyledLink} from '../../../../../../components';
 import {IconableAction, DisableableAction} from '../../../../../../types';
