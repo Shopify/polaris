@@ -78,11 +78,11 @@ We’ll review your pull request and either merge it, request changes to it, or 
 1. Make sure your code lints with `yarn lint`
 1. Run the TypeScript compiler with `yarn ts`
 1. [Tophat 🎩](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md) your changes locally with `yarn dev`
-1. If you haven’t already, complete the CLA
+1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
 ### Contributor License Agreement (CLA)
 
-Each contributor is required to sign a CLA. This process is automated as part of your first pull request and is only required once. If any contributor has not signed or does not have an associated GitHub account, the CLA check will fail and the pull request is unable to be merged. You can sign an individual CLA or sign a corporate CLA on behalf of your GitHub organization. All public members of a GitHub organization with a signed corporate CLA will not have to sign an individual CLA.
+Each contributor is required to [sign a CLA](https://cla.shopify.com/). This process is automated as part of your first pull request and is only required once. If any contributor has not signed or does not have an associated GitHub account, the CLA check will fail and the pull request is unable to be merged. You can sign an individual CLA or sign a corporate CLA on behalf of your organization and provide a list of individuals covered.
 
 ### Contribution prerequisites
 
