@@ -61,9 +61,9 @@ ReactDOM.render(
 );
 ```
 
-### Using the Embedded App SDK
+### Building an embedded app
 
-We provide React wrappers around Shopify’s Embedded App SDK (EASDK). You don’t need to go through the initialization of the EASDK as described in the docs. Instead, [configure the connection to the Admin through the AppProvider component](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md).
+We provide React wrappers around the Shopify App Bridge (formerly known as the EASDK). You don’t need to go through the initialization of the Shopify App Bridge as described in the docs. Instead, [configure the connection to the Shopify admin through the app provider component](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md).
 
 ## Using the CSS components
 
