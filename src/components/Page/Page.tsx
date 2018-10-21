@@ -7,7 +7,7 @@ import {
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
 
-import {withAppProvider, WithAppProviderProps} from 'components';
+import {withAppProvider, WithAppProviderProps} from '../../components';
 import {
   transformActions,
   generateRedirect,
