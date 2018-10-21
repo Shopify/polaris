@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
-import {VisuallyHidden} from 'src/components';
+import {mountWithAppProvider} from 'test-utilities';
+import {VisuallyHidden} from 'components';
 import Badge, {Status, Progress, PROGRESS_LABELS, STATUS_LABELS} from '..';
 
 describe('<Badge />', () => {

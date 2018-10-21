@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
-import {Icon} from 'src/components';
+import {mountWithAppProvider} from 'test-utilities';
+import {Icon} from 'components';
 import ExceptionList from '../ExceptionList';
 
 describe('<ExceptionList />', () => {

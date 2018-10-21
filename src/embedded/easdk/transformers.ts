@@ -1,6 +1,7 @@
+// the type imports below have to come from .ts files which is
+// why ActionGroup can't be imported from Page/index
+import {ActionGroupDescriptor as ActionGroup} from 'components/Page/components/Header/components/ActionGroup/types';
 import {EASDKTarget, ComplexAction} from '../../types';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {ActionGroup} from '../../components/Page/types';
 
 export interface EASDKBreadcrumb {
   label: string;

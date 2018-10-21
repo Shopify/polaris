@@ -5,11 +5,14 @@ const packageJSON = require('../package.json');
 
 describe('build', () => {
   beforeAll(() => {
+    // Running clean shall remove the entire build directory. Including
+    // `build/cache/jest` which is Jest's cache location. Removing Jest's cache
+    // in the middle of it running understandably has undesirable effects -
+    // it crashes jest.
+    // The clean:build script (ran as part of the prebuild step) removes the
+    // build directory with the exception of the build/cache folder so that
+    // Jest can keep its cache and keep running.
     execSync('yarn run build');
-  });
-
-  afterAll(() => {
-    execSync('yarn run clean');
   });
 
   it('generates CDN files in ./build', () => {
@@ -89,7 +92,9 @@ describe('build', () => {
   });
 
   it('features the version of Polaris in all compiled files', () => {
-    const files = glob.sync('./build/**/*.{js,scss,css}');
+    const files = glob.sync('./build/**/*.{js,scss,css}', {
+      ignore: './build/cache/**',
+    });
     const total = files.reduce((acc, file) => {
       const contents = fs.readFileSync(file, 'utf-8');
       return acc + Number(contents.includes(packageJSON.version));

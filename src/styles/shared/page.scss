@@ -29,10 +29,11 @@ $actions-vertical-spacing: spacing(tight);
   align-items: baseline;
   flex-wrap: wrap;
   margin-top: -1 * spacing(tight);
+  margin-left: -1 * spacing(tight);
 
   > * {
     margin-top: spacing(tight);
-    margin-right: spacing(tight);
+    margin-left: spacing(tight);
   }
 }
 

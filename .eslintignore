@@ -13,5 +13,5 @@ src/styles/polaris-tokens/
 /examples/browserify/build
 
 # These files contain weird config that causes our plugins to crash
-/tests/utilities
+/tests-utilities
 /playground/index.tsx

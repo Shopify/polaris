@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from 'tests/utilities';
-import {Keys} from 'src/types';
+import {mountWithAppProvider} from 'test-utilities';
+import {Keys} from '../../../types';
 import KeypressListener from '../KeypressListener';
 
 interface HandlerMap {

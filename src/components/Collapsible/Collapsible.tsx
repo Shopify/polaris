@@ -81,6 +81,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
 
     const {parentCollapsibleExpanding} = this.context;
     if (parentCollapsibleExpanding && animationState !== 'idle') {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         animationState: 'idle',
       });

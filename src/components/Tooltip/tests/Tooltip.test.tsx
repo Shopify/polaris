@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {findByTestID, mountWithAppProvider} from 'tests/utilities';
-import {Link} from 'src/components';
+import {findByTestID, mountWithAppProvider} from 'test-utilities';
+import {Link} from 'components';
 import Tooltip from '../Tooltip';
 
 describe('<Tooltip />', () => {

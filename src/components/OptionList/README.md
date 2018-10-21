@@ -167,7 +167,7 @@ Use when a set of selections won’t fit in the available screen space.
 class OptionListExample extends React.Component {
   state = {
     selected: [],
-    popoverActive: false,
+    popoverActive: true,
   };
 
   togglePopover = () => {
