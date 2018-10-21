@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Label, Labelled} from 'src/components';
-import {mountWithAppProvider} from 'tests/utilities';
+import {Label, Labelled} from 'components';
+import {mountWithAppProvider} from 'test-utilities';
 import DropZone from '../DropZone';
 
 describe('<DropZone />', () => {
@@ -9,6 +9,12 @@ describe('<DropZone />', () => {
   let acceptedFiles: {}[];
   let rejectedFiles: {}[];
   let createEvent: any;
+
+  const fireEvent = (eventType: string, element: any) => {
+    spy.mockReset();
+    const event = createEvent(eventType);
+    element.getDOMNode().dispatchEvent(event);
+  };
 
   beforeEach(() => {
     spy = jest.fn();
@@ -109,7 +115,7 @@ describe('<DropZone />', () => {
   });
 
   it('should not call any callbacks when disabled', () => {
-    mountWithAppProvider(
+    const dropZone = mountWithAppProvider(
       <DropZone
         disabled
         onDrop={spy}
@@ -120,13 +126,40 @@ describe('<DropZone />', () => {
         onDragOver={spy}
       />,
     );
-    createEvent('drop');
+    fireEvent('drop', dropZone);
     expect(spy).not.toBeCalled();
-    createEvent('dragenter');
+    fireEvent('dragenter', dropZone);
     expect(spy).not.toBeCalled();
-    createEvent('dragleave');
+    fireEvent('dragleave', dropZone);
     expect(spy).not.toBeCalled();
-    createEvent('dragover');
+    fireEvent('dragover', dropZone);
+    expect(spy).not.toBeCalled();
+  });
+
+  it('should not call callbacks when not allowed multiple and a file is uploaded', () => {
+    const dropZone = mountWithAppProvider(
+      <DropZone
+        allowMultiple={false}
+        onDrop={spy}
+        onDragEnter={spy}
+        onDragLeave={spy}
+        onDragOver={spy}
+        accept="image/jpeg"
+      />,
+    );
+
+    // Initial event to populate zone with data (should succeed)
+    fireEvent('drop', dropZone);
+    expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
+
+    // All events should now be ignored
+    fireEvent('drop', dropZone);
+    expect(spy).not.toBeCalled();
+    fireEvent('dragenter', dropZone);
+    expect(spy).not.toBeCalled();
+    fireEvent('dragleave', dropZone);
+    expect(spy).not.toBeCalled();
+    fireEvent('dragover', dropZone);
     expect(spy).not.toBeCalled();
   });
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Action} from 'src/types';
-import {Avatar, buttonFrom, Card, Stack, TextStyle} from 'src/components';
+import {Avatar, buttonFrom, Card, Stack, TextStyle} from 'components';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import SettingAction from 'src/components/SettingAction';
+import SettingAction from 'components/SettingAction';
+import {Action} from '../../types';
 import * as styles from './AccountConnection.scss';
 
 export interface Props {

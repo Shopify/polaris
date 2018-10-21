@@ -5,7 +5,7 @@ import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {ComplexAction, WithContextTypes} from '../../../../types';
 import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
 
-import FilterCreator from './FilterCreator';
+import FilterCreator from './components/FilterCreator';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import * as styles from './FilterControl.scss';
 import {ResourceListContext} from '../../ResourceList';

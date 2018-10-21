@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
-import {TextContainer, Scrollable} from 'src/components';
+import {mountWithAppProvider} from 'test-utilities';
+import {TextContainer, Scrollable} from 'components';
 import Pane from '../Pane';
 
 describe('<Pane />', () => {

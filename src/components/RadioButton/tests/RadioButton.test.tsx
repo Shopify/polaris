@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import RadioButton from '../RadioButton';
 
 describe('<RadioButton />', () => {

@@ -94,27 +94,28 @@ export function hsbToRgb(color: HSBAColor): RGBAColor {
 export function rgbToHsb(color: RGBColor): HSBColor;
 export function rgbToHsb(color: RGBAColor): HSBAColor;
 export function rgbToHsb(color: RGBAColor): HSBAColor {
-  const {red, green, blue, alpha = 1} = color;
-  const r = red / 255;
-  const g = green / 255;
-  const b = blue / 255;
+  const {alpha = 1} = color;
 
-  const largestComponent = Math.max(r, g, b);
-  const smallestComponent = Math.min(r, g, b);
+  const red = color.red / 255;
+  const green = color.green / 255;
+  const blue = color.blue / 255;
+
+  const largestComponent = Math.max(red, green, blue);
+  const smallestComponent = Math.min(red, green, blue);
 
   const delta = largestComponent - smallestComponent;
   const saturation = largestComponent === 0 ? 0 : delta / largestComponent;
 
   let huePercentage = 0;
   switch (largestComponent) {
-    case r:
-      huePercentage = (g - b) / delta + (g < b ? 6 : 0);
+    case red:
+      huePercentage = (green - blue) / delta + (green < blue ? 6 : 0);
       break;
-    case g:
-      huePercentage = (b - r) / delta + 2;
+    case green:
+      huePercentage = (blue - red) / delta + 2;
       break;
-    case b:
-      huePercentage = (r - g) / delta + 4;
+    case blue:
+      huePercentage = (red - green) / delta + 4;
   }
 
   const hue = Math.round((huePercentage / 6) * 360);

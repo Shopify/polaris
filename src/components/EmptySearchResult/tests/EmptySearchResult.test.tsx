@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
-import {DisplayText, TextStyle} from 'src/components';
+import {mountWithAppProvider} from 'test-utilities';
+import {DisplayText, TextStyle} from 'components';
 import EmptySearchResult from '../EmptySearchResult';
 import emptySearch from '../illustrations/empty-search.svg';
 

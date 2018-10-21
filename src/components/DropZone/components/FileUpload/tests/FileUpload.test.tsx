@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Link, Icon, Button, Caption, TextStyle} from 'src/components';
-import {mountWithAppProvider} from 'tests/utilities';
+import {Link, Icon, Button, Caption, TextStyle} from 'components';
+import {mountWithAppProvider} from 'test-utilities';
 import {Provider} from '../../Context';
 import FileUpload from '../FileUpload';
 

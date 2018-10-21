@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
-import {RadioButton, Checkbox, InlineError} from 'src/components';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {RadioButton, Checkbox, InlineError} from 'components';
 import ChoiceList from '../ChoiceList';
 
 describe('<ChoiceList />', () => {

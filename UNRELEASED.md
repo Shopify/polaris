@@ -4,14 +4,19 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
-### Enhancements
-
-- Removed tip from `Popover` ([#1845](https://github.com/Shopify/polaris-react/pull/1845))
-
 ### Bug fixes
 
-- Fixed padding and margins on `SkeletonPage` to match `Page` ([#2167](https://github.com/Shopify/polaris-react/pull/2167))
+- Fixed the ability to upload multiple files even when `allowedMultiple` prop is false ([#2297](https://github.com/Shopify/polaris-react/pull/2297))
+- Fixed `Datatable` so it resizes with new content ([#2285](https://github.com/Shopify/polaris-react/pull/2285)) (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/387))
+- Fixed `RangeSlider` linear-gradient so it doesn't break the css build ([#2418](https://github.com/Shopify/polaris-react/pull/2418)) (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/441))
+- Fixed issue in `Page` introduced by [#2399](https://github.com/Shopify/polaris-react/pull/2399) , where styling wasn't being applied correctly to Page Actions ([#2460](https://github.com/Shopify/polaris-react/pull/2460))
+
+### Documentation
+
+- Clarified placement and usage of `Banner` ([#2424](https://github.com/Shopify/polaris-react/pull/2424))
 
 ### Development workflow
 
-- Batched Percy snapshots per component ([#2363](https://github.com/Shopify/polaris-react/pull/2363))
+- Moved sub-sub-components within `ResourceList` into components folders ([#2381](https://github.com/Shopify/polaris-react/pull/2381))
+- Removed empty state from `ResourceList` if there are no items and `loading` is true ([#2393](https://github.com/Shopify/polaris-react/pull/2393))
+- Move to use sewing-kit for test running, updating to Jest 23 in the process. This gives us working sourcemaps for code coverage ([#2434](https://github.com/Shopify/polaris-react/pull/2434))

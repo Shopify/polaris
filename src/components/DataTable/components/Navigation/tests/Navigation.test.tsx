@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
-import {Button} from 'src/components';
+import {mountWithAppProvider} from 'test-utilities';
+import {Button} from 'components';
 import Navigation from '../Navigation';
 
 describe('<Navigation />', () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
-import {Layout, Card, SkeletonBodyText, DisplayText} from 'src/components';
+import {mountWithAppProvider} from 'test-utilities';
+import {Layout, Card, SkeletonBodyText, DisplayText} from 'components';
 import SkeletonPage from '../SkeletonPage';
 
 describe('<SkeletonPage />', () => {

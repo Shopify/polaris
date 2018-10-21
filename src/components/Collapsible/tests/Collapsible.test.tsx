@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallowWithAppProvider} from '../../../../tests/utilities';
+import {shallowWithAppProvider} from 'test-utilities';
 import Collapsible from '../Collapsible';
 
 describe('<Collapsible />', () => {
