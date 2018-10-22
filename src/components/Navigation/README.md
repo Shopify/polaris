@@ -129,7 +129,7 @@ The content of the navigation component consists of navigation items. Each item 
 | disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                             |
 | accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of a navigation item                         |
 | selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item                          |
-| subNavItems        | SubNavItem[]        | A collection of navigation items rendered as nested secondary navigation items                                    |
+| subNavigationItems | SubNavigationItem[] | A collection of navigation items rendered as nested secondary navigation items                                    |
 | secondaryAction    | SecondaryAction     | Renders an icon-only action as a supplementary action next to a navigation item                                   |
 | onClick()          | function            | A callback function to handle clicking on a navigation item                                                       |
 
