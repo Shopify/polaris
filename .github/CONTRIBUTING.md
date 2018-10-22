@@ -100,7 +100,6 @@ After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can 
 - `yarn dev` runs a local development server and mounts `playground/Playground.tsx`
 - `yarn test` runs the complete test suite
 - `yarn test:coverage` runs tests and generates a test coverage report
-- `yarn test:watch` runs an interactive test watcher
 - `yarn test <pattern>` runs tests with matching filenames
 - `yarn tophat` runs a local development server and mounts all of the component examples
 
