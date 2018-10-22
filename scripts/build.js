@@ -33,12 +33,12 @@ execSync(
   },
 );
 
+mv(resolvePath(root, 'types/src/*'), types);
+rm('-rf', resolvePath(root, 'types/src'));
+
 execSync(`babel-node ${resolvePath(scripts, './ts-imports-transform.js')}`, {
   stdio: 'inherit',
 });
-
-mv(resolvePath(root, 'types/src/*'), types);
-rm('-rf', resolvePath(root, 'types/src'));
 
 writeFileSync(
   resolvePath(root, 'embedded.d.ts'),
