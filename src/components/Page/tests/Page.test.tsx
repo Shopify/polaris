@@ -156,11 +156,25 @@ describe('<Page />', () => {
       expect(titleBarMock.set).toHaveBeenCalledTimes(1);
     });
 
+    it('does not call set when there is no app bridge', () => {
+      const page = mountWithAppProvider(<Page title="Title" />);
+
+      page.setProps({title: 'New Title'});
+      expect(titleBarMock.set).toHaveBeenCalledTimes(0);
+    });
+
     it('unsubscribes when unmounted', () => {
       const {page} = mountWithAppBridge(<Page title="" />);
 
       page.unmount();
       expect(titleBarMock.unsubscribe).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not unsubscribe when there is no app bridge', () => {
+      const page = mountWithAppProvider(<Page title="" />);
+
+      page.unmount();
+      expect(titleBarMock.unsubscribe).toHaveBeenCalledTimes(0);
     });
   });
 });
