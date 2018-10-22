@@ -82,7 +82,7 @@ We’ll review your pull request and either merge it, request changes to it, or 
 
 ### Contributor License Agreement (CLA)
 
-Each contributor is required to [sign a CLA](https://cla.shopify.com/). This process is automated as part of your first pull request and is only required once. If any contributor has not signed or does not have an associated GitHub account, the CLA check will fail and the pull request is unable to be merged. You can sign an individual CLA or sign a corporate CLA on behalf of your organization and provide a list of individuals covered.
+Each contributor is required to [sign a CLA](https://cla.shopify.com/). This process is automated as part of your first pull request and is only required once. If any contributor has not signed or does not have an associated GitHub account, the CLA check will fail and the pull request is unable to be merged.
 
 ### Contribution prerequisites
 
