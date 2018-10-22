@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {Option} from '../components';
 import OptionList, {
   Props,

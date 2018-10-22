@@ -627,6 +627,7 @@ Resource lists should:
 - Support [sorting](#study-sorting) if the list can be long, and especially if different merchant tasks benefit from different sort orders.
 - Support [filtering](#study-filtering) if the list can be long.
 - [Paginate](#study-pagination) when the current list contains more than 50 items.
+- Use the [skeleton page](/components/feedback-indicators/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
 
 Resource lists can optionally:
 

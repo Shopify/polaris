@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {noop} from 'utilities/other';
 import {DEFAULT_TOAST_DURATION} from 'index';
 import Toast, {Props} from '../Toast';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider, trigger} from 'tests/utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import {ActionList, Popover} from 'components';
 import Menu from '../Menu';

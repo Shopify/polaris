@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink} from 'components';
-import {trigger, mountWithAppProvider} from 'tests/utilities';
+import {trigger, mountWithAppProvider} from 'test-utilities';
 import {add} from '../../../../../icons';
 
 import Item, {Props as ItemProps} from '../Item';

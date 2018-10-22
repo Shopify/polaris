@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import UserMenu from '../UserMenu';
 import Menu from '../../Menu';
 

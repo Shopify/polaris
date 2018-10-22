@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {Card, Badge} from 'components';
 import {contentContextTypes} from '../../../types';
 

@@ -54,7 +54,7 @@ export default function createRollupConfig({
         jsnext: true,
         main: true,
         customResolveOptions: {
-          moduleDirectory: ['./', 'node_modules'],
+          moduleDirectory: ['../build-intermediate', 'node_modules'],
         },
       }),
       babel({

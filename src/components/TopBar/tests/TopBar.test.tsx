@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider, shallowWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider, shallowWithAppProvider} from 'test-utilities';
 import {createAppProviderContext, Image, UnstyledLink} from 'components';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';

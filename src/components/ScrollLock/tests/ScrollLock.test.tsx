@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {SCROLL_LOCKING_ATTRIBUTE} from '../../AppProvider';
 import ScrollLock from '../ScrollLock';
 

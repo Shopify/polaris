@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import SearchField from '../SearchField';
 
 describe('<TextField />', () => {
