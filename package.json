@@ -132,6 +132,7 @@
     "file-loader": "^1.1.11",
     "fs-extra": "^4.0.2",
     "generic-names": "^1.0.2",
+    "glob": "^7.1.2",
     "gray-matter": "^4.0.1",
     "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^3.3.1",
