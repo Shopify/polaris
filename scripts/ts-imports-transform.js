@@ -10,7 +10,7 @@ const TYPES_PATH = resolve(ROOT_PATH, compilerOptions.declarationDir);
 const typeFiles = globSync(`${TYPES_PATH}/**/*.d.ts`);
 const moduleImportOptionsRegex = getModuleImportOptionsRegex();
 const moduleImportRegex = new RegExp(
-  `import [^f]+ from '(${moduleImportOptionsRegex}(/[^']+)?)';`,
+  `import .+ from '(${moduleImportOptionsRegex}(/[^']+)?)';`,
   'g',
 );
 
