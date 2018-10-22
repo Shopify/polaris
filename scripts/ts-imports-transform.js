@@ -10,7 +10,7 @@ const TYPES_PATH = resolve(ROOT_PATH, compilerOptions.declarationDir);
 const typeFiles = globSync(`${TYPES_PATH}/**/*.d.ts`);
 const moduleImportOptionsRegex = getModuleImportOptionsRegex();
 const moduleImportRegex = new RegExp(
-  `import .+ from '(${moduleImportOptionsRegex}(/[^']+)?)';`,
+  `(import|export) .+ from '(${moduleImportOptionsRegex}(/[^']+)?)';`,
   'g',
 );
 
@@ -21,7 +21,7 @@ for (const typeFile of typeFiles) {
 }
 
 function replaceAbsoluteImports(path, contents) {
-  return contents.replace(moduleImportRegex, (match, importPath) =>
+  return contents.replace(moduleImportRegex, (match, _, importPath) =>
     match.replace(importPath, absoluteToRelativeImportPath(path, importPath)),
   );
 }
