@@ -1,10 +1,16 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import compose from '@shopify/react-compose';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-import {ComplexAction, WithContextTypes} from '../../../../types';
-import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
-
+import {ComplexAction, WithContextTypes} from 'types';
+import {
+  buttonsFrom,
+  TextField,
+  Icon,
+  Tag,
+  FormLayout,
+  withAppProvider,
+  WithAppProviderProps,
+} from 'components';
 import FilterCreator from './components/FilterCreator';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
 import * as styles from './FilterControl.scss';

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import {Error} from '../../types';
+import {Error} from 'types';
 import InlineError from '../InlineError';
-
 import * as styles from './Choice.scss';
 
 export interface Props {

@@ -3,21 +3,24 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
-import {DisableableAction, WithContextTypes} from '../../../../types';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import {Props as AvatarProps} from '../../../Avatar';
-import UnstyledLink from '../../../UnstyledLink';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import ButtonGroup from '../../../ButtonGroup';
-import Checkbox from '../../../Checkbox';
-import Button, {buttonsFrom} from '../../../Button';
+import {DisableableAction, WithContextTypes} from 'types';
+import {
+  ActionList,
+  Popover,
+  AvatarProps,
+  UnstyledLink,
+  ThumbnailProps,
+  ButtonGroup,
+  Checkbox,
+  Button,
+  buttonsFrom,
+  withAppProvider,
+  WithAppProviderProps,
+  withContext,
+} from 'components';
 import {SELECT_ALL_ITEMS} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-
 import * as styles from './Item.scss';
 import {ResourceListContext} from '../../ResourceList';
-import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';

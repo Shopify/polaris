@@ -1,11 +1,6 @@
 import * as React from 'react';
-
-import {DisableableAction} from '../../../../types';
-import {buttonsFrom} from '../../../Button';
-import ButtonGroup from '../../../ButtonGroup';
-import Stack from '../../../Stack';
-import Heading from '../../../Heading';
-
+import {DisableableAction} from 'types';
+import {ButtonGroup, Stack, Heading, buttonsFrom} from 'components';
 import * as styles from '../../Card.scss';
 
 export interface Props {

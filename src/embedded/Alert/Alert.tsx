@@ -1,9 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from 'components';
 
 export interface Props {
   /** Whether the alert is open or not */

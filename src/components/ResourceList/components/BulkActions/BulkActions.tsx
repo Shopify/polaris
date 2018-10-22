@@ -2,10 +2,16 @@ import * as React from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {DisableableAction, Action, ActionListSection} from '../../../../types';
-import {Duration} from '../../../shared';
-import {ActionList, Popover, Button, EventListener} from '../../..';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {DisableableAction, Action, ActionListSection} from 'types';
+import {Duration} from 'components/shared';
+import {
+  ActionList,
+  Popover,
+  Button,
+  EventListener,
+  withAppProvider,
+  WithAppProviderProps,
+} from 'components';
 import CheckableButton from '../CheckableButton';
 import BulkActionButton from './components/BulkActionButton';
 import * as styles from './BulkActions.scss';

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {buttonsFrom, ButtonGroup, Stack} from '../../../../components';
-import {ComplexAction, EASDKAction} from '../../../../types';
+import {buttonsFrom, ButtonGroup, Stack} from 'components';
+import {ComplexAction, EASDKAction} from 'types';
 import * as styles from './Footer.scss';
 
 export interface Props {

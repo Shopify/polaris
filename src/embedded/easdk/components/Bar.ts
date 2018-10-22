@@ -1,5 +1,11 @@
 import {autobind} from '@shopify/javascript-utilities/decorators';
-
+import {
+  CallbackAction,
+  ComplexAction,
+  DisableableAction,
+  LinkAction,
+  LoadableAction,
+} from 'types';
 import Messenger from '../Messenger';
 import {
   transformBreadcrumb,
@@ -8,13 +14,6 @@ import {
   transformActionGroup,
   ActionGroup,
 } from '../transformers';
-import {
-  CallbackAction,
-  ComplexAction,
-  DisableableAction,
-  LinkAction,
-  LoadableAction,
-} from '../../../types';
 
 export interface UpdateConfig {
   title: string;

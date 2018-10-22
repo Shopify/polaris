@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Breadcrumbs, buttonsFrom, Pagination} from 'components';
-import {LinkAction} from '../../../../../types';
+import {LinkAction} from 'types';
 import {Action, ActionGroup, ActionGroupDescriptor} from '../components';
 import Header from '../Header';
 

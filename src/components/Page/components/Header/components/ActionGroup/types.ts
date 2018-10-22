@@ -1,8 +1,4 @@
-import {
-  ActionListItemDescriptor,
-  IconableAction,
-  BadgeAction,
-} from '../../../../../../types';
+import {ActionListItemDescriptor, IconableAction, BadgeAction} from 'types';
 
 export interface ActionGroupDescriptor extends BadgeAction {
   /** Action group title */

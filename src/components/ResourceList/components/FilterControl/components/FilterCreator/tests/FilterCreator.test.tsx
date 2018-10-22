@@ -6,10 +6,9 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
 } from 'test-utilities';
-import {Button, Select, Popover} from 'components';
+import {Button, Select, Popover, FilterType} from 'components';
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../../FilterValueSelector';
-import {FilterType} from '../../../types';
 
 describe('<FilterCreator />', () => {
   const mockDefaultProps: Props = {

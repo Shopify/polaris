@@ -2,10 +2,9 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import {Error} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Labelled, {Action, helpTextID} from '../Labelled';
+import {Error} from 'types';
+import {withAppProvider, WithAppProviderProps} from 'components';
+import Labelled, {Action, helpTextID} from 'components/Labelled';
 
 import * as styles from './RangeSlider.scss';
 

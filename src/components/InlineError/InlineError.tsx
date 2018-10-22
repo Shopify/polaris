@@ -1,8 +1,6 @@
 import * as React from 'react';
-
-import Icon from '../Icon';
-import {Error} from '../../types';
-
+import {Icon} from 'components';
+import {Error} from 'types';
 import * as styles from './InlineError.scss';
 
 export interface Props {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Avatar, buttonFrom, Card, Stack, TextStyle} from 'components';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import SettingAction from 'components/SettingAction';
-import {Action} from '../../types';
+import {Action} from 'types';
 import * as styles from './AccountConnection.scss';
 
 export interface Props {

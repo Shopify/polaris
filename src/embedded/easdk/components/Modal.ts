@@ -1,6 +1,6 @@
+import {EASDKAction} from 'types';
 import Messenger from '../Messenger';
 import {transformAction} from '../transformers';
-import {EASDKAction} from '../../../types';
 
 export interface CloseCallback {
   (result?: boolean, data?: any): void;

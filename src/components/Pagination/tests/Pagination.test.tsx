@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
-import {Keys} from '../../../types';
+import {Keys} from 'types';
 import Pagination from '../Pagination';
 
 interface HandlerMap {

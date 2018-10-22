@@ -1,12 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-
-import {Props as IconProps} from '../../../Icon';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import {Props as AvatarProps} from '../../../Avatar';
-import {Checkbox} from '..';
-import {Scrollable} from '../../../../components';
+import {Scrollable, IconProps, ThumbnailProps, AvatarProps} from 'components';
+import Checkbox from '../Checkbox';
 
 import * as styles from './Option.scss';
 

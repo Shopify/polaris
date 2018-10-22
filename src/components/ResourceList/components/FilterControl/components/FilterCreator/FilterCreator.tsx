@@ -1,13 +1,14 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-
-import {Button, Popover, Select, FormLayout} from '../../../../..';
-import Form from '../../../../../Form';
 import {
+  Button,
+  Popover,
+  Select,
+  FormLayout,
+  Form,
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
-
+} from 'components';
 import FilterValueSelector from '../FilterValueSelector';
 import {AppliedFilter, Filter, Operator} from '../../types';
 

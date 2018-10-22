@@ -1,12 +1,9 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Choice, {helpTextID} from '../Choice';
-import Icon from '../Icon';
-import {Error} from '../../types';
-
+import {withAppProvider, WithAppProviderProps, Icon} from 'components';
+import Choice, {helpTextID} from 'components/Choice';
+import {Error} from 'types';
 import * as styles from './Checkbox.scss';
 
 export interface BaseProps {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {DisplayText} from '../../../../components';
-import memoizedBind from '../../../../utilities/memoized-bind';
+import {DisplayText} from 'components';
+import memoizedBind from 'utilities/memoized-bind';
 import CloseButton from '../CloseButton';
 import * as styles from './Header.scss';
 

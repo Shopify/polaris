@@ -2,12 +2,10 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import Labelled, {Action, helpTextID, labelID} from '../Labelled';
-import Connected from '../Connected';
-
+import {Error, Keys} from 'types';
+import Labelled, {Action, helpTextID, labelID} from 'components/Labelled';
+import Connected from 'components/Connected';
 import {Resizer, Spinner} from './components';
-import {Error, Keys} from '../../types';
 import * as styles from './TextField.scss';
 
 export type Type =

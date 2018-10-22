@@ -1,13 +1,16 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import isInputFocused from '../../utilities/isInputFocused';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Icon from '../Icon';
-import UnstyledLink from '../UnstyledLink';
-import Tooltip from '../Tooltip';
-import KeypressListener from '../KeypressListener';
-import {Keys} from '../../types';
-import {handleMouseUpByBlurring} from '../../utilities/focus';
+import isInputFocused from 'utilities/isInputFocused';
+import {
+  withAppProvider,
+  WithAppProviderProps,
+  Icon,
+  UnstyledLink,
+  Tooltip,
+  KeypressListener,
+} from 'components';
+import {Keys} from 'types';
+import {handleMouseUpByBlurring} from 'utilities/focus';
 
 import * as styles from './Pagination.scss';
 

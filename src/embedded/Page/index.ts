@@ -1,1 +1,1 @@
-export {default, Props} from '../../components/Page';
+export {default, Props} from 'components/Page';

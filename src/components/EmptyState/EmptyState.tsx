@@ -1,13 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import {Action} from '../../types';
-import Image from '../Image';
-import {buttonFrom} from '../Button';
-import Stack from '../Stack';
-import TextContainer from '../TextContainer';
-import DisplayText from '../DisplayText';
-
+import {Action} from 'types';
+import {Image, buttonFrom, Stack, TextContainer, DisplayText} from 'components';
 import * as styles from './EmptyState.scss';
 
 export interface Props {

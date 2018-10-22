@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Card, DisplayText} from 'components';
-import {LinkAction} from '../../../types';
-import Page from '../../Page';
+import {LinkAction} from 'types';
 import {Header} from '../components';
+import Page from '../Page';
 
 const breadcrumbs: LinkAction[] = [
   {

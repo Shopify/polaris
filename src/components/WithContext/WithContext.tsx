@@ -1,6 +1,6 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import {WithContextTypes} from '../../types';
+import {WithContextTypes} from 'types';
 
 export default function withContext<
   OriginalProps,

@@ -1,10 +1,8 @@
 import * as React from 'react';
-
+import {CallbackAction, LinkAction} from 'types';
+import {handleMouseUpByBlurring} from 'utilities/focus';
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
-import {CallbackAction, LinkAction} from '../../types';
-import {handleMouseUpByBlurring} from '../../utilities/focus';
-
 import * as styles from './Breadcrumbs.scss';
 
 export interface Props {

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
-import compose from '../../../../utilities/react-compose';
-import withRef from '../../../WithRef';
-
+import compose from 'utilities/react-compose';
+import withRef from 'components/WithRef';
 import {
   Link,
   Icon,
@@ -11,18 +10,16 @@ import {
   Button,
   Caption,
   TextStyle,
-} from '../../../../components';
-import withContext from '../../../WithContext';
+  withAppProvider,
+  WithAppProviderProps,
+} from 'components';
+import withContext from 'components/WithContext';
+import {WithContextTypes} from 'types';
 import {Consumer} from '../Context';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-
 import IconDragDrop from '../../icons/drag-drop.svg';
 import AssetFileUpload from '../../images/file-upload.svg';
 import AssetImageUpload from '../../images/image-upload.svg';
-
 import {DropZoneContext} from '../../types';
-import {WithContextTypes} from '../../../../types';
-
 import * as styles from './FileUpload.scss';
 
 export interface State {

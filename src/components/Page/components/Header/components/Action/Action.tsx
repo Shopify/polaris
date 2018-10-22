@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities';
 import {Icon, UnstyledLink} from 'components';
 import Indicator from 'components/Indicator';
 import {handleMouseUpByBlurring} from 'utilities/focus';
-import {IconableAction, DisableableAction} from '../../../../../../types';
+import {IconableAction, DisableableAction} from 'types';
 import * as styles from './Action.scss';
 
 export interface Props {

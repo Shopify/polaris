@@ -1,11 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-
-import {ActionListItemDescriptor} from '../../../../types';
-import Icon from '../../../Icon';
-import UnstyledLink from '../../../UnstyledLink';
-import Badge from '../../../Badge';
-
+import {ActionListItemDescriptor} from 'types';
+import {Icon, UnstyledLink, Badge} from 'components';
 import * as styles from '../../ActionList.scss';
 
 export type Props = ActionListItemDescriptor;

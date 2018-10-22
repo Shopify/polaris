@@ -6,10 +6,15 @@ import {wrapWithComponent} from '@shopify/react-utilities';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
-import {ComplexAction, contentContextTypes} from '../../types';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Scrollable, Spinner, Portal} from '../../components';
-import memoizedBind from '../../utilities/memoized-bind';
+import {ComplexAction, contentContextTypes} from 'types';
+import {
+  Scrollable,
+  Spinner,
+  Portal,
+  withAppProvider,
+  WithAppProviderProps,
+} from 'components';
+import memoizedBind from 'utilities/memoized-bind';
 import {
   CloseButton,
   Dialog,

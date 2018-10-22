@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {ActionListItemDescriptor, ActionListSection} from 'types';
 import {Section} from './components';
 
 import * as styles from './ActionList.scss';

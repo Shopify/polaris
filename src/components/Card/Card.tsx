@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import {Action, DisableableAction, contentContextTypes} from '../../types';
-import {buttonFrom} from '../Button';
-import ButtonGroup from '../ButtonGroup';
-
+import {Action, DisableableAction, contentContextTypes} from 'types';
+import {ButtonGroup, buttonFrom} from 'components';
 import {Header, Section} from './components';
 import * as styles from './Card.scss';
 

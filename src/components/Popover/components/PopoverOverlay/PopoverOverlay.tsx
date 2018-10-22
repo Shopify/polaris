@@ -5,17 +5,14 @@ import {write} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {Transition} from 'react-transition-group';
-
-import {Keys} from '../../../../types';
-import {overlay, Duration} from '../../../shared';
-import EventListener from '../../../EventListener';
-import KeypressListener from '../../../KeypressListener';
+import {Keys} from 'types';
+import {overlay, Duration} from 'components/shared';
+import {EventListener, KeypressListener} from 'components';
 import PositionedOverlay, {
   OverlayDetails,
   PreferredPosition,
   PreferredAlignment,
-} from '../../../PositionedOverlay';
-
+} from 'components/PositionedOverlay';
 import Pane, {Props as PaneProps} from '../Pane';
 import * as styles from '../../Popover.scss';
 

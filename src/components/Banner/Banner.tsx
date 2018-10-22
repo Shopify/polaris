@@ -6,7 +6,7 @@ import {
   DisableableAction,
   LoadableAction,
   contentContextTypes,
-} from '../../types';
+} from 'types';
 import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';

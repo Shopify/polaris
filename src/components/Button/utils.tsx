@@ -1,6 +1,6 @@
 import * as React from 'react';
+import {ComplexAction} from 'types';
 import Button, {Props} from './Button';
-import {ComplexAction} from '../../types';
 
 export function buttonsFrom(
   action: ComplexAction,

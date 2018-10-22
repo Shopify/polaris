@@ -1,7 +1,6 @@
 import * as React from 'react';
+import {ActionListItemDescriptor, ActionListSection} from 'types';
 import Item from '../Item';
-import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
-
 import * as styles from '../../ActionList.scss';
 
 export interface Props {

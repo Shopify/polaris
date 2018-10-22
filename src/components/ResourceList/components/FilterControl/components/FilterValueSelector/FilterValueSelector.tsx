@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Select, Stack, TextField} from '../../../../..';
 import {
+  Select,
+  Stack,
+  TextField,
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from 'components';
 import DateSelector from '../DateSelector';
 import {Filter, AppliedFilter, FilterType, Operator} from '../../types';
 

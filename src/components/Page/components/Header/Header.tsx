@@ -17,7 +17,7 @@ import {
   LoadableAction,
   DestructableAction,
   IconableAction,
-} from '../../../../types';
+} from 'types';
 import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
