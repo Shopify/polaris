@@ -5,6 +5,7 @@ import {noop} from 'utilities/other';
 import {DEFAULT_TOAST_DURATION} from 'index';
 import Toast from '../../Toast';
 import Frame from '../../../Frame';
+import ToastManager from '..';
 
 window.matchMedia =
   window.matchMedia ||
@@ -16,8 +17,22 @@ window.matchMedia =
     };
   };
 
+describe('<ToastManager />', () => {
+  it('updates toast safely', () => {
+    const toastManager = mountWithAppProvider(
+      <ToastManager
+        toastMessages={[{id: '1', content: 'Hello', onDismiss: noop}]}
+      />,
+    );
+
+    toastManager.setProps({
+      toastMessages: [{id: '1', content: 'World!', onDismiss: noop}],
+    });
+  });
+});
+
 describe('<Toast />', () => {
-  it('renders multiple toasts', () => {
+  it('renders and updates multiple toasts', () => {
     const multipleMessages = mountWithAppProvider(
       <Frame>
         <Toast content="Image uploaded" onDismiss={noop} />
