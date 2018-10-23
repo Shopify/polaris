@@ -4,6 +4,7 @@ import {
   rgbToHsb,
   rgbString,
   hsbToHex,
+  colorToHsla,
 } from '../color-transformers';
 
 describe('colorUtilities', () => {
@@ -103,6 +104,45 @@ describe('colorUtilities', () => {
       expect(hue).toBe(0);
       expect(saturation).toBe(1);
       expect(brightness).toBe(1);
+    });
+  });
+
+  describe('colorToHsla', () => {
+    it('returns the hsla color for hex', () => {
+      expect(colorToHsla('#dddddd')).toEqual({
+        alpha: 1,
+        hue: 0,
+        lightness: 87,
+        saturation: 0,
+      });
+    });
+
+    it('returns the hsla color for rgb', () => {
+      expect(colorToHsla('rgb(132, 11, 2)')).toEqual({
+        alpha: 1,
+        hue: 4,
+        lightness: 26,
+        saturation: 97,
+      });
+    });
+
+    it('returns the hsla color for rgba', () => {
+      expect(colorToHsla('rgb(132, 11, 2, 0.2)')).toEqual({
+        alpha: 1,
+        hue: 4,
+        lightness: 26,
+        saturation: 97,
+      });
+    });
+
+    it('returns the hsla color for hsl', () => {
+      expect(colorToHsla('hsla(120, 100%, 50%)')).toBe('hsla(120, 100%, 50%)');
+    });
+
+    it('returns the hsla color for hsla', () => {
+      expect(colorToHsla('hsla(120, 100%, 50%, 0.3)')).toBe(
+        'hsla(120, 100%, 50%, 0.3)',
+      );
     });
   });
 });
