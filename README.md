@@ -176,5 +176,5 @@ Percy is a tool that’s supposed to help you and give you more confidence, not 
     ```
     Where `aaaabbbbcccc` is the API key available in the
     [Percy project settings page for polaris-react](https://percy.io/Shopify/polaris-react/settings).
-3.  Check tests results: <https://percy.io/Shopify/polaris-react> (can’t
+3.  Check tests results: <https://percy.io/Shopify/polaris-react> (Can’t
     view the results? [Ask for access on Slack](https://shopify.slack.com/messages/C4Y8N30KD))
