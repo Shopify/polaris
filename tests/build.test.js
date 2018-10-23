@@ -82,6 +82,10 @@ describe('build', () => {
     expect(fs.existsSync('./embedded.d.ts')).toBe(true);
   });
 
+  it('generates valid typescript definition files', () => {
+    execSync('yarn check-types', {stdio: 'inherit'});
+  });
+
   it('replaces all occurrences of POLARIS_VERSION', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}');
     const total = files.reduce((acc, file) => {

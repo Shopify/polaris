@@ -36,7 +36,7 @@ execSync(
 mv(resolvePath(root, 'types/src/*'), types);
 rm('-rf', resolvePath(root, 'types/src'));
 
-execSync(`babel-node ${resolvePath(scripts, './ts-imports-transform.js')}`, {
+execSync(`babel-node ${resolvePath(scripts, './ts-paths-transform.js')}`, {
   stdio: 'inherit',
 });
 
