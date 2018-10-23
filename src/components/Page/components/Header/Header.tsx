@@ -2,6 +2,12 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {
+  DisableableAction,
+  LoadableAction,
+  DestructableAction,
+  IconableAction,
+} from 'types';
+import {
   Button,
   buttonsFrom,
   Breadcrumbs,
@@ -10,14 +16,8 @@ import {
   Popover,
   ActionList,
   BreadcrumbsProps,
-} from '../../../../components';
-import {PaginationDescriptor} from '../../../Pagination';
-import {
-  DisableableAction,
-  LoadableAction,
-  DestructableAction,
-  IconableAction,
-} from 'types';
+} from 'components';
+import {PaginationDescriptor} from 'components/Pagination';
 import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
