@@ -61,6 +61,7 @@ class AutocompleteExample extends React.Component {
           options={this.state.options}
           selected={this.state.selected}
           onSelect={this.updateSelection}
+          onClose={this.clearText}
           textField={
             <Autocomplete.TextField
               onChange={this.updateText}
@@ -78,6 +79,14 @@ class AutocompleteExample extends React.Component {
   updateText = (newValue) => {
     this.setState({inputText: newValue});
     this.filterAndUpdateOptions(newValue);
+  };
+
+  clearText = () => {
+    const {inputText} = this.state;
+    if (inputText == '') {
+      return;
+    }
+    this.setState({inputText: ''});
   };
 
   filterAndUpdateOptions = (inputString) => {
@@ -140,6 +149,7 @@ class MultiAutocompleteExample extends React.Component {
           allowMultiple
           options={this.state.options}
           selected={this.state.selected}
+          onClose={this.clearText}
           textField={
             <Autocomplete.TextField
               onChange={this.updateText}
@@ -149,6 +159,7 @@ class MultiAutocompleteExample extends React.Component {
             />
           }
           onSelect={this.updateSelection}
+          onClose={this.clearText}
           listTitle="Suggested Tags"
         />
       </div>
@@ -158,6 +169,14 @@ class MultiAutocompleteExample extends React.Component {
   updateText = (newValue) => {
     this.setState({inputText: newValue});
     this.filterAndUpdateOptions(newValue);
+  };
+
+  clearText = () => {
+    const {inputText} = this.state;
+    if (inputText == '') {
+      return;
+    }
+    this.setState({inputText: ''});
   };
 
   removeTag = (tag) => {
@@ -262,6 +281,14 @@ class AutocompleteExample extends React.Component {
   updateText = (newValue) => {
     this.setState({inputText: newValue});
     this.filterAndUpdateOptions(newValue);
+  };
+
+  clearText = () => {
+    const {inputText} = this.state;
+    if (inputText == '') {
+      return;
+    }
+    this.setState({inputText: ''});
   };
 
   filterAndUpdateOptions = (inputString) => {

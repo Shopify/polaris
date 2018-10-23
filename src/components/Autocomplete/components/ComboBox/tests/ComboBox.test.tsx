@@ -381,6 +381,60 @@ describe('<ComboBox/>', () => {
     });
   });
 
+  describe('onClose', () => {
+    it('gets called onBlur', () => {
+      const spy = jest.fn();
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          onClose={spy}
+        />,
+      );
+
+      comboBox.simulate('blur');
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('gets called when popover is closed', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          onClose={spy}
+        />,
+      );
+
+      listenerMap.keyup({keyCode: Key.Escape});
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('gets called when option is selected and allowMultiple is false', () => {
+      const spy = jest.fn();
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          onClose={spy}
+        />,
+      );
+      comboBox.simulate('click');
+      comboBox
+        .find('button')
+        .first()
+        .simulate('click');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('onSelect', () => {
     it('gets called when an item is clicked', () => {
       const spy = jest.fn();

@@ -52,6 +52,8 @@ export interface Props {
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
   onEndReached?(): void;
+  /** Callback when popover is closed */
+  onClose?(): void;
 }
 
 export interface Context {
@@ -176,7 +178,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       !contentAfter
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({popoverActive: false});
+      this.setState({popoverActive: false}, this.onPopoverClose);
     }
 
     if (popoverChanged) {
@@ -336,7 +338,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private handleBlur() {
-    this.setState({popoverActive: false});
+    this.setState({popoverActive: false}, this.onPopoverClose);
   }
 
   @autobind
@@ -384,7 +386,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     selected && onSelect(selected);
     if (!allowMultiple) {
       this.resetVisuallySelectedOptions();
-      this.setState({popoverActive: false});
+      this.setState({popoverActive: false}, this.onPopoverClose);
     }
   }
 
@@ -415,9 +417,19 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       });
   }
 
+  private onPopoverClose() {
+    const {onClose} = this.props;
+
+    if (!onClose) {
+      return;
+    }
+
+    onClose();
+  }
+
   @autobind
   private handlePopoverClose() {
-    this.setState({popoverActive: false});
+    this.setState({popoverActive: false}, this.onPopoverClose);
   }
 
   @autobind

@@ -63,6 +63,7 @@ describe('<Autocomplete/>', () => {
             id: 'ComboBox3-0',
           }}
           onSelect={handleOnSelect}
+          onClose={handleOnClose}
         />,
       );
 
@@ -83,6 +84,7 @@ describe('<Autocomplete/>', () => {
         actionBefore,
       );
       expect(autocomplete.find(ComboBox).prop('onSelect')).toBe(handleOnSelect);
+      expect(autocomplete.find(ComboBox).prop('onClose')).toBe(handleOnClose);
     });
   });
 
@@ -118,5 +120,9 @@ describe('<Autocomplete/>', () => {
     } else {
       this.setState({selected: selectedText, inputText: selectedText});
     }
+  }
+
+  function handleOnClose() {
+    return noop;
   }
 });
