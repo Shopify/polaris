@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const {execSync} = require('child_process');
 const {writeFileSync, readFileSync} = require('fs-extra');
 const {resolve} = require('path');
@@ -6,7 +8,6 @@ const {semverRegExp, readmes} = require('./utilities');
 
 const root = resolve(__dirname, '..');
 
-// eslint-disable-next-line no-console
 console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
 readmes.map((readme) => resolve(root, readme)).forEach((file) => {
   writeFileSync(
@@ -15,7 +16,6 @@ readmes.map((readme) => resolve(root, readme)).forEach((file) => {
   );
 });
 
-// eslint-disable-next-line no-console
 console.log(`🏃‍♂️ Running \`git add -A ${readmes.join(' ')}\`...`);
 const execOpts = {stdio: 'inherit'};
 execSync(`git add -A ${readmes.join(' ')}`, execOpts);

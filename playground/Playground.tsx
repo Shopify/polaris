@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import * as React from 'react';
 import {Page, AppProvider} from '@shopify/polaris';
 
@@ -14,5 +12,3 @@ export default class Playground extends React.Component<never, State> {
     );
   }
 }
-
-/* eslint-enable */

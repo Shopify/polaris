@@ -71,11 +71,11 @@ function renderApp() {
             )),
           )}
           {components.map((component) => (
-            <Route path={`/${component.slug}`} exact>
+            <Route key={component.slug} path={`/${component.slug}`} exact>
               <React.Fragment>
                 <Polaris.DisplayText>{component.name}</Polaris.DisplayText>
                 {component.examples.map((example) => (
-                  <React.Fragment>
+                  <React.Fragment key={example.name}>
                     <ExampleContainer>
                       <Example code={example.code} name={example.name} />
                     </ExampleContainer>

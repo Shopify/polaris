@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import {execSync} from 'child_process';
 import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {join, resolve as resolvePath} from 'path';
@@ -40,7 +42,6 @@ const srcReadme = resolvePath(root, './src/components/README.md');
 const destinationReadme = resolvePath(docs, './components/README.md');
 
 copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
-  // eslint-disable-next-line no-console
   console.error(error);
   process.exit(1);
 });
@@ -121,7 +122,6 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
     cp('-r', resolvePath(build, 'sass', '*'), root);
   })
   .catch((error) => {
-    // eslint-disable-next-line no-console
     console.error(error);
     process.exit(1);
   });
