@@ -38,11 +38,6 @@ execSync(`babel-node ${resolvePath(scripts, './ts-paths-transform.js')}`, {
   stdio: 'inherit',
 });
 
-writeFileSync(
-  resolvePath(root, 'embedded.d.ts'),
-  "export * from './types/embedded';\n",
-);
-
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 
 const srcReadme = resolvePath(root, './src/components/README.md');
