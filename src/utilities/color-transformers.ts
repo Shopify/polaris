@@ -236,11 +236,10 @@ function getColorType(color: string): ColorType {
   } else if (color.includes('hsla')) {
     return ColorType.Hsla;
   } else {
-    /* eslint-disable */
     if (process.env.NODE_ENV === 'development') {
+      /* eslint-disable-next-line no-console */
       console.warn('Accepted colors formats are: hex, rgb, rgba, hsl and hsla');
     }
-    /* eslint-enable */
     return ColorType.Default;
   }
 }

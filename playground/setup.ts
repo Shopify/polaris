@@ -29,4 +29,3 @@ console.warn = (...args: any[]) => {
 
   originalConsoleWarn(...args);
 };
-/* eslint-enable no-console */

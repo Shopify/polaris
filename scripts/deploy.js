@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // See https://github.com/Shopify/js-uploader
 
 const {resolve} = require('path');
@@ -37,6 +38,6 @@ const uploader = new Uploader({
 });
 
 uploader.deployStaticFiles().catch((err) => {
-  console.error(err); // eslint-disable-line no-console
+  console.error(err);
   process.exit(1);
 });
