@@ -9,7 +9,6 @@ src/styles/polaris-tokens/
 /tophat
 /types
 /index.*
-/embedded.js
 /examples/browserify/build
 
 # These files contain weird config that causes our plugins to crash

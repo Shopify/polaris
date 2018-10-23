@@ -1,0 +1,16 @@
+$indicator-size: rem(8px);
+
+.MessageIndicatorWrapper {
+  position: relative;
+}
+
+.MessageIndicator {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: $indicator-size;
+  height: $indicator-size;
+  border-radius: 100%;
+  background-color: color('teal');
+}

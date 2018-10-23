@@ -12,7 +12,6 @@ import image from './plugins/image';
 import icon from './plugins/icon';
 
 import getNamespacedClassName from './namespaced-classname';
-import getMinifiedClassName from './minified-classname';
 import createExistingClassnameTokenUser from './use-existing-classname-tokens';
 
 const project = resolve(__dirname, '../..');
@@ -32,19 +31,15 @@ export default function createRollupConfig({
   entry,
   writeCSS,
   cssPath,
-  minifyClassnames = false,
   useExistingClassTokens = false,
 }) {
   let generateScopedName;
-
   if (useExistingClassTokens) {
     generateScopedName = createExistingClassnameTokenUser(
       readJSONSync(`${cssPath.slice(0, -4)}.tokens.json`),
     );
   } else {
-    generateScopedName = minifyClassnames
-      ? getMinifiedClassName
-      : getNamespacedClassName;
+    generateScopedName = getNamespacedClassName;
   }
 
   return {

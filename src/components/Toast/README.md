@@ -4,6 +4,7 @@ category: Feedback indicators
 platforms:
   - android
   - ios
+  - web
 keywords:
   - toast
   - flash message
@@ -11,8 +12,17 @@ keywords:
   - notification bar
   - temporary feedback
   - timed feedback
+  - message
+  - overlay
+  - popup
+  - easdk
+  - shopify app bridge
+  - iframe
+  - embedded app
+  - duration
   - ios
   - android
+  - web
 ---
 
 # Toast
@@ -21,20 +31,31 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ---
 
+## Required components
+
+The toast component must be wrapped in the [frame](/components/structure/frame) component.
+
+---
+
 ## Best practices
 
-- Avoid long texts inside of the toast. Maximum of 2 lines of text.
-- Don’t use Cancel / Dismiss action on the toast. It dismisses itself after 2 seconds.
-- Don't use more than 1 toast at the same time. Instead, queue them.
-- If the toast has an action, keep the action label short. Preferably 1 verb.
+Toast should:
+
+- Be used for short messages to confirm an action. Maximum of 2 lines of text.
+- Not be used for actionable links or messages.
+- Not be used for error messages.
+- Be displayed once at the time. If you need multiple toasts, queue them.
 
 ---
 
 ## Content guidelines
 
-Message should:
+### Message
+
+Messages should be:
 
 - Short and affirmative
+- Written in the pattern of: noun + verb
 
 <!-- usagelist -->
 
@@ -53,6 +74,8 @@ Message should:
 - Discount: Saved successfully
 
 <!-- end -->
+
+### Action
 
 Action should:
 
@@ -83,7 +106,134 @@ Action should:
 
 ## Examples
 
+### Basic toast
+
+<!-- example-for: web -->
+
+Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
+
+```jsx
+class ToastExample extends React.Component {
+  state = {
+    showToast: false,
+  };
+
+  render() {
+    const {showToast} = this.state;
+    const toastMarkup = showToast ? (
+      <Toast content="Message sent" onDismiss={this.toggleToast} />
+    ) : null;
+
+    return (
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <Button onClick={this.toggleToast}>Show Toast</Button>
+            {toastMarkup}
+          </Page>
+        </Frame>
+      </div>
+    );
+  }
+
+  toggleToast = () => {
+    this.setState(({showToast}) => ({showToast: !showToast}));
+  };
+}
+```
+
+### Multiple toast messages
+
+<!-- example-for: web -->
+
+Use multiple toast messages to inform the merchant about distinct actions.
+
+```jsx
+class ToastExample extends React.Component {
+  state = {
+    showToast1: false,
+    showToast2: false,
+  };
+
+  render() {
+    const {showToast1, showToast2} = this.state;
+    const toastMarkup1 = showToast1 ? (
+      <Toast content="Message sent" onDismiss={this.toggleToast1} />
+    ) : null;
+
+    const toastMarkup2 = showToast2 ? (
+      <Toast content="Image uploaded" onDismiss={this.toggleToast2} />
+    ) : null;
+
+    return (
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <ButtonGroup segmented>
+              <Button onClick={this.toggleToast1}>Show toast 1</Button>
+              <Button onClick={this.toggleToast2}>Show toast 2</Button>
+            </ButtonGroup>
+            {toastMarkup1}
+            {toastMarkup2}
+          </Page>
+        </Frame>
+      </div>
+    );
+  }
+
+  toggleToast1 = () => {
+    this.setState(({showToast1}) => ({showToast1: !showToast1}));
+  };
+
+  toggleToast2 = () => {
+    this.setState(({showToast2}) => ({showToast2: !showToast2}));
+  };
+}
+```
+
+### Toast with custom duration
+
+<!-- example-for: web -->
+
+Use to shorten or lengthen the default duration of 5000 miliseconds.
+
+```jsx
+class ToastExample extends React.Component {
+  state = {
+    showToast: false,
+  };
+
+  render() {
+    const {showToast} = this.state;
+    const toastMarkup = showToast ? (
+      <Toast
+        content="Message sent"
+        onDismiss={this.toggleToast}
+        duration={4500}
+      />
+    ) : null;
+
+    return (
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <Button onClick={this.toggleToast}>Show Toast</Button>
+            {toastMarkup}
+          </Page>
+        </Frame>
+      </div>
+    );
+  }
+
+  toggleToast = () => {
+    this.setState(({showToast}) => ({showToast: !showToast}));
+  };
+}
+```
+
 ### Default toast
+
+<!-- example-for: android, ios -->
 
 Use default toast for informative and neutral feedback.
 
@@ -103,6 +253,8 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 ### Success toast
 
+<!-- example-for: android, ios -->
+
 Use success toast to indicate that something was successful. For example, a product was successfully updated.
 
 <!-- content-for: android -->
@@ -119,9 +271,45 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 <!-- /content-for -->
 
-### Error
+### Error toast
 
-Use error toast to indicate that something failed. For example, your phone is offline and need to reconnect to the internet.
+<!-- example-for: android, ios, web -->
+
+Use error toast to indicate that an operation has failed. For example, your phone is offline and need to reconnect to the internet. For all other error message types, follow the [error message guidelines](/patterns/error-messages)
+
+<!-- content-for: web -->
+
+```jsx
+class ToastExample extends React.Component {
+  state = {
+    showToast: false,
+  };
+
+  render() {
+    const {showToast} = this.state;
+    const toastMarkup = showToast ? (
+      <Toast content="Server error" error onDismiss={this.toggleToast} />
+    ) : null;
+
+    return (
+      <div style={{height: '250px'}}>
+        <Frame>
+          <Page title="Toast example">
+            <Button onClick={this.toggleToast}>Show Toast</Button>
+            {toastMarkup}
+          </Page>
+        </Frame>
+      </div>
+    );
+  }
+
+  toggleToast = () => {
+    this.setState(({showToast}) => ({showToast: !showToast}));
+  };
+}
+```
+
+<!-- /content-for -->
 
 <!-- content-for: android -->
 
@@ -139,7 +327,10 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 ### With action
 
+<!-- example-for: android, ios -->
+
 Use action when you have the ability to act on the message. For example, undo changes, or edit message.
+Keep the action label short, preferably 1 verb action.
 
 <!-- content-for: android -->
 
@@ -157,4 +348,5 @@ Use action when you have the ability to act on the message. For example, undo ch
 
 ## Related component
 
-- Complex feedback that requires reading and understanding, instead [use Banner](/components/feedback-indicators/banner)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](/components/popover)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](/components/feedback-indicators/banner)

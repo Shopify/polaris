@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {buttonsFrom, ButtonGroup, Stack} from 'components';
-import {ComplexAction, EASDKAction} from 'types';
+import {ComplexAction, AppBridgeAction} from 'types';
 import * as styles from './Footer.scss';
 
 export interface Props {
   /** Primary action */
-  primaryAction?: EASDKAction | ComplexAction;
+  primaryAction?: AppBridgeAction | ComplexAction;
   /** Collection of secondary actions */
-  secondaryActions?: EASDKAction[] | ComplexAction[];
+  secondaryActions?: AppBridgeAction[] | ComplexAction[];
   /** The content to display inside modal */
   children?: React.ReactNode;
 }

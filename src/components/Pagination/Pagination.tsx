@@ -1,24 +1,23 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import isInputFocused from 'utilities/isInputFocused';
 import {
+  KeypressListener,
+  Tooltip,
+  UnstyledLink,
+  Icon,
   withAppProvider,
   WithAppProviderProps,
-  Icon,
-  UnstyledLink,
-  Tooltip,
-  KeypressListener,
 } from 'components';
-import {Keys} from 'types';
+import {Key} from 'types';
 import {handleMouseUpByBlurring} from 'utilities/focus';
-
+import isInputFocused from 'utilities/isInputFocused';
 import * as styles from './Pagination.scss';
 
 export interface PaginationDescriptor {
   /** Keyboard shortcuts for the next button */
-  nextKeys?: Keys[];
+  nextKeys?: Key[];
   /** Keyboard shortcuts for the previous button */
-  previousKeys?: Keys[];
+  previousKeys?: Key[];
   /** Tooltip for the next button */
   nextTooltip?: string;
   /** Tooltip for the previous button */

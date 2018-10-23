@@ -13,9 +13,11 @@ import merge from 'lodash/merge';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {
-  createPolarisContext,
+  createAppProviderContext,
   polarisAppProviderContextTypes,
 } from 'components/AppProvider';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {createThemeContext} from 'components/ThemeProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -143,7 +145,7 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 function mergeAppProviderOptions(options: any = {}): any {
-  const context = createPolarisContext();
+  const context = {...createAppProviderContext(), ...createThemeContext()};
 
   return merge(
     {},
@@ -167,4 +169,11 @@ export function shallowWithAppProvider<P>(
   options?: ShallowRendererProps,
 ): ShallowWrapper<P, any> {
   return shallow(node, mergeAppProviderOptions(options)).dive(options);
+}
+
+export function createPolarisProps() {
+  const {polaris} = createAppProviderContext();
+  const theme = createThemeContext().polarisTheme;
+  const polarisContext = {...polaris, theme};
+  return {polaris: polarisContext};
 }

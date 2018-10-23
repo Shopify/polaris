@@ -1,0 +1,8 @@
+$section-max-width: rem(325px);
+
+.Section {
+  max-width: $section-max-width;
+  margin-top: spacing(tight);
+  padding-top: spacing(tight);
+  border-top: border();
+}

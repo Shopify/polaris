@@ -2,6 +2,7 @@
   padding-left: spacing(loose);
   margin-top: 0;
   margin-bottom: 0;
+  list-style: disc outside none;
 
   + .List {
     margin-top: spacing();
@@ -10,6 +11,7 @@
 
 .typeNumber {
   padding-left: spacing(extra-loose);
+  list-style: decimal outside none;
 }
 
 .Item {

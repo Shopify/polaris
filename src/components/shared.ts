@@ -18,6 +18,11 @@ export const unstyled = {
   selector: '[data-polaris-unstyled]',
 };
 
+export const dataPolarisTopBar = {
+  props: {'data-polaris-top-bar': true},
+  selector: '[data-polaris-top-bar]',
+};
+
 // these match our values in duration.scss
 export enum Duration {
   Instant = 0,

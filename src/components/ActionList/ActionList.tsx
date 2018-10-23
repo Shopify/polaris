@@ -9,6 +9,8 @@ export interface Props {
   items?: ActionListItemDescriptor[];
   /** Collection of sectioned action items */
   sections?: ActionListSection[];
+  /** Defines a specific role attribute for each action in the list */
+  actionRole?: string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
@@ -16,6 +18,7 @@ export interface Props {
 export default function ActionList({
   items,
   sections = [],
+  actionRole,
   onActionAnyItem,
 }: Props) {
   let finalSections: ActionListSection[] = [];
@@ -35,6 +38,7 @@ export default function ActionList({
         section={section}
         onActionAnyItem={onActionAnyItem}
         hasMultipleSections={hasMultipleSections}
+        actionRole={actionRole}
       />
     );
   });

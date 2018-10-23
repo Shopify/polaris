@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Scrollable, IconProps, ThumbnailProps, AvatarProps} from 'components';
-import Checkbox from '../Checkbox';
-
+import {IconProps, ThumbnailProps, AvatarProps, Scrollable} from 'components';
 import * as styles from './Option.scss';
+import Checkbox from '../Checkbox';
 
 export interface Props {
   id: string;
@@ -23,23 +22,11 @@ export interface Props {
 
 export interface State {
   focused: boolean;
-  active: boolean;
 }
 
 export default class Option extends React.Component<Props, State> {
-  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (
-      nextProps.active !== undefined &&
-      nextProps.active !== prevState.active
-    ) {
-      return nextProps.active ? {active: true} : {active: false};
-    }
-    return null;
-  }
-
   state: State = {
     focused: false,
-    active: false,
   };
 
   render() {
@@ -93,6 +80,7 @@ export default class Option extends React.Component<Props, State> {
       </label>
     ) : (
       <button
+        id={id}
         type="button"
         className={singleSelectClassName}
         onClick={this.handleClick}

@@ -1,18 +1,23 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "2.12.1",
+  "version": "3.0.0-rc.3",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://github.com/Shopify/polaris#readme",
-  "repository": "https://github.com/Shopify/polaris",
+  "homepage": "https://github.com/Shopify/polaris-react#readme",
+  "repository": "https://github.com/Shopify/polaris-react",
   "bugs": {
-    "url": "https://github.com/Shopify/polaris/issues"
+    "url": "https://github.com/Shopify/polaris-react/issues"
   },
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/configure.js"
+  ],
   "keywords": [
     "shopify",
     "polaris",
@@ -39,34 +44,32 @@
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
     "check-types": "yarn run tsc --noEmit ./types/**/*.ts --typeRoots ./config/typescript/*.ts",
-    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
-    "clean:build": "rimraf 'build/!(cache)' build-esnext esnext styles types docs 'build-intermediate' 'index.*' 'embedded.js' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
+    "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
+    "clean:build": "rimraf 'build/!(cache)' build-esnext esnext styles types docs 'build-intermediate' 'index.*' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean:build optimize copy-polaris-tokens",
     "build": "babel-node ./scripts/build.js",
-    "prebuild-consumer": "npm-run-all build hide-private-readme",
+    "prebuild-consumer": "yarn run build",
     "build-consumer": "babel-node ./scripts/build-consumer",
-    "postbuild-consumer": "yarn run show-private-readme",
     "build-shrink-ray": "yarn run copy-polaris-tokens && node ./scripts/build-shrink-ray.js",
+    "secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "precdn": "yarn run build",
-    "cdn:secrets": "ejson decrypt -o secrets.json secrets.ejson",
     "cdn:deploy": "node ./scripts/deploy.js",
-    "cdn": "npm-run-all cdn:secrets cdn:deploy",
-    "public-release:secrets": "ejson decrypt -o secrets.json secrets.ejson",
-    "prepublic-release": "rimraf sandbox && yarn run public-release:secrets",
-    "public-release": "babel-node ./scripts/public-repo-deploy.js",
+    "cdn": "npm-run-all secrets cdn:deploy",
+    "preopen-styleguide-pr": "rimraf sandbox && yarn run secrets",
+    "open-styleguide-pr": "babel-node ./scripts/open-styleguide-pr",
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
-    "hide-private-readme": "shx mv ./README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
-    "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
-    "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
-    "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
+    "prepublish": "in-publish && yarn run build || :",
+    "postpublish": "in-publish && npm-run-all cdn open-styleguide-pr || :",
     "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
     "tophat": "yarn run copy-polaris-tokens && node ./tophat/index.js --watch",
     "test:percy": "node ./tophat/snapshots.js",
     "test:a11y": "node ./scripts/pa11y.js",
     "start": "node ./tophat/index.js",
-    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets"
+    "heroku-postbuild": "yarn run copy-polaris-tokens && webpack --config ./tophat/webpack.config.js --output-path ./tophat/assets",
+    "readme-update-version": "babel-node ./scripts/readme-update-version",
+    "version": "yarn run readme-update-version"
   },
   "stylelint": {
     "extends": [
@@ -89,8 +92,8 @@
     "@babel/parser": "^7.0.0-beta.51",
     "@babel/standalone": "^7.0.0-beta.51",
     "@percy/puppeteer": "^0.3.2",
+    "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/js-uploader": "github:shopify/js-uploader",
-    "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-serialize": "^1.0.6",
     "@shopify/sewing-kit": "^0.60.0",
     "@types/enzyme": "^3.1.14",
@@ -199,17 +202,17 @@
     "index.js",
     "index.es.js",
     "styles.css",
-    "styles.scss",
-    "embedded.js",
-    "embedded.d.ts"
+    "styles.scss"
   ],
   "dependencies": {
+    "@shopify/app-bridge": "^0.7.3",
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.0",
+    "@shopify/polaris-tokens": "^1.2.0",
     "@shopify/react-compose": "^0.1.6",
     "@shopify/react-html": "^3.0.3",
     "@shopify/react-utilities": "^2.0.3",
-    "@types/prop-types": "^15.5.2",
+    "@types/prop-types": "^15.5.5",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
     "@types/react-transition-group": "^2.0.7",
@@ -219,7 +222,7 @@
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
-    "react-transition-group": "^2.3.0",
+    "react-transition-group": "^2.4.0",
     "tslib": "^1.8.0"
   }
 }

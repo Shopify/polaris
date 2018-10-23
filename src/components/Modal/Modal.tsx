@@ -1,20 +1,24 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
+import pick from 'lodash/pick';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {wrapWithComponent} from '@shopify/react-utilities';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
-import {ComplexAction, contentContextTypes} from 'types';
+import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
+import {transformActions} from 'utilities/app-bridge-transformers';
+import {contentContextTypes} from 'types';
 import {
   Scrollable,
   Spinner,
   Portal,
+  Backdrop,
   withAppProvider,
   WithAppProviderProps,
 } from 'components';
-import memoizedBind from 'utilities/memoized-bind';
+import memoizedBind from '../../utilities/memoized-bind';
 import {
   CloseButton,
   Dialog,
@@ -27,8 +31,7 @@ import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
-export type Width = 'large' | 'fullwidth';
-export type Warn = 'easdk' | 'modal';
+export type Size = keyof typeof AppBridgeModal.Size;
 
 export interface Props extends FooterProps {
   /** Whether the modal is open or not */
@@ -37,7 +40,7 @@ export interface Props extends FooterProps {
   src?: string;
   /** The name of the modal content iframe */
   iFrameName?: string;
-  /** The content for the title of the modal (EASDK accepts string) */
+  /** The content for the title of the modal (embedded app use accepts string only) */
   title?: string | React.ReactNode;
   /** The content to display inside modal (Modal use only) */
   children?: React.ReactNode;
@@ -53,10 +56,17 @@ export interface Props extends FooterProps {
   limitHeight?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed (Modal use only) */
   loading?: boolean;
-  /** Controls the width of the modal (EASDK use only) */
-  width?: Width;
-  /** Controls the height of the modal (EASDK use only, in pixels) */
-  height?: number;
+  /**
+   * Controls the size of the modal
+   * @default 'Small'
+   * @embeddedAppOnly
+   */
+  size?: Size;
+  /**
+   * Message to display inside modal
+   * @embeddedAppOnly
+   */
+  message?: string;
   /** Callback when the modal is closed */
   onClose(): void;
   /** Callback when iframe has loaded (Modal use only) */
@@ -72,8 +82,16 @@ export interface State {
 
 const getUniqueID = createUniqueIDFactory('modal-header');
 
+const APP_BRIDGE_PROPS: (keyof Props)[] = [
+  'title',
+  'size',
+  'message',
+  'src',
+  'primaryAction',
+  'secondaryActions',
+];
+
 export class Modal extends React.Component<CombinedProps, State> {
-  static contextTypes = {easdk: PropTypes.object};
   static childContextTypes = contentContextTypes;
 
   static Dialog = Dialog;
@@ -85,6 +103,10 @@ export class Modal extends React.Component<CombinedProps, State> {
   };
 
   private headerId = getUniqueID();
+  private appBridgeModal:
+    | AppBridgeModal.ModalMessage
+    | AppBridgeModal.ModalIframe
+    | undefined;
 
   getChildContext() {
     return {
@@ -93,27 +115,58 @@ export class Modal extends React.Component<CombinedProps, State> {
   }
 
   componentDidMount() {
-    if (this.context.easdk == null) {
+    if (this.props.polaris.appBridge == null) {
       return;
     }
+
+    this.appBridgeModal = AppBridgeModal.create(
+      this.props.polaris.appBridge,
+      this.transformProps(),
+    );
+
+    this.appBridgeModal.subscribe(
+      AppBridgeModal.Action.CLOSE,
+      this.props.onClose,
+    );
 
     const {open} = this.props;
 
     if (open) {
-      this.handleEASDKMessaging();
       this.focusReturnPointNode = document.activeElement as HTMLElement;
+      this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
     }
   }
 
-  componentDidUpdate({open: wasOpen}: Props) {
-    if (this.context.easdk == null) {
+  componentDidUpdate(prevProps: CombinedProps) {
+    if (this.props.polaris.appBridge == null || this.appBridgeModal == null) {
       return;
     }
 
     const {open} = this.props;
+    const wasOpen = prevProps.open;
+    const transformedProps = this.transformProps();
+
+    const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
+    const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
+
+    if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+      if (isIframeModal(transformedProps)) {
+        (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
+          transformedProps,
+        );
+      } else {
+        (this.appBridgeModal as AppBridgeModal.ModalMessage).set(
+          transformedProps,
+        );
+      }
+    }
 
     if (wasOpen !== open) {
-      this.handleEASDKMessaging();
+      if (open) {
+        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
+      } else {
+        this.appBridgeModal.dispatch(AppBridgeModal.Action.CLOSE);
+      }
     }
 
     if (!wasOpen && open) {
@@ -129,8 +182,16 @@ export class Modal extends React.Component<CombinedProps, State> {
     }
   }
 
+  componentWillUnmount() {
+    if (this.props.polaris.appBridge == null || this.appBridgeModal == null) {
+      return;
+    }
+
+    this.appBridgeModal.unsubscribe();
+  }
+
   render() {
-    if (this.context.easdk != null) {
+    if (this.props.polaris.appBridge != null) {
       return null;
     }
 
@@ -226,12 +287,11 @@ export class Modal extends React.Component<CombinedProps, State> {
         </Dialog>
       );
 
-      backdrop = <div className={styles.Backdrop} onClick={handleClose} />;
+      backdrop = <Backdrop />;
     }
 
     const animated = !instant;
 
-    this.handleWarning('modal');
     return (
       <Portal idPrefix="modal">
         <TransitionGroup appear={animated} enter={animated} exit={animated}>
@@ -277,85 +337,54 @@ export class Modal extends React.Component<CombinedProps, State> {
     }
   }
 
-  private handleEASDKMessaging() {
-    const {easdk} = this.context;
-    const {open} = this.props;
-    if (easdk == null) {
-      return;
-    }
-
-    if (open) {
-      this.handleWarning('easdk');
-      easdk.Modal.open(this.props);
-    } else {
-      easdk.Modal.close();
-    }
-  }
-
-  private handleWarning(type: Warn) {
+  private transformProps() {
     const {
-      polaris: {intl},
+      title,
+      size,
+      message,
+      src,
+      primaryAction,
+      secondaryActions,
+      polaris,
     } = this.props;
-    const reqProps = {
-      modal: {
-        open: 'open',
-        onClose: 'onClose',
-      },
-      easdk: {
-        open: 'open',
-        src: 'src',
-        onClose: 'onClose',
+    const {appBridge} = polaris;
+    const safeTitle = typeof title === 'string' ? title : undefined;
+    const safeSize = size != null ? AppBridgeModal.Size[size] : undefined;
+    const srcPayload: {url?: string; path?: string} = {};
+
+    if (src != null) {
+      if (src.match('^https?://')) {
+        srcPayload.url = src;
+      } else {
+        srcPayload.path = src;
+      }
+    }
+
+    return {
+      title: safeTitle,
+      message,
+      size: safeSize,
+      ...srcPayload,
+      footer: {
+        buttons: transformActions(appBridge, {
+          primaryAction,
+          secondaryActions,
+        }),
       },
     };
-
-    const missingProps = Object.keys(reqProps[type]).reduce(
-      (acc: string[], key) => {
-        if (!this.props.hasOwnProperty(key)) {
-          acc.push(key);
-        }
-        return acc;
-      },
-      [],
-    );
-
-    if (missingProps.length > 0) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        intl.translate('Polaris.Modal.modalWarning', {
-          missingProps: missingProps.join(', '),
-        }),
-      );
-    }
-
-    const actionWarnings = handleActionWanrings(
-      this.props.primaryAction,
-      this.props.secondaryActions,
-    );
-
-    if (type === 'easdk' && actionWarnings.length > 0) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        intl.translate('Polaris.Modal.actionWarning', {
-          actionWarnings: actionWarnings.join(', '),
-        }),
-      );
-    }
   }
 }
 
-function handleActionWanrings(
-  primary: ComplexAction = {},
-  secondary: ComplexAction[] = [],
-): string[] {
-  const actions = [primary, ...secondary];
-  const actionKeysToIgnore = ['icon', 'loading'];
-  return actions.reduce((acc: string[], action: ComplexAction | any) => {
-    return acc.concat(
-      ...actionKeysToIgnore.filter(
-        (val: string) => action[val] && acc.indexOf(val) === -1 && val,
-      ),
-    );
-  }, []);
+function isIframeModal(
+  options:
+    | AppBridgeModal.MessagePayload
+    | AppBridgeModal.IframePayload
+    | object,
+): options is AppBridgeModal.IframePayload {
+  return (
+    typeof (options as AppBridgeModal.IframePayload).url === 'string' ||
+    typeof (options as AppBridgeModal.IframePayload).path === 'string'
+  );
 }
 
 export default withAppProvider<Props>()(Modal);

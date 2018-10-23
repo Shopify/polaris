@@ -1,0 +1,145 @@
+@import '../../variables';
+
+$avatar-size: rem(32px);
+$stacking-order: (
+  userlist: 10,
+  userbutton: 20,
+);
+
+.UserMenu {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  box-shadow: shadow();
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
+  }
+}
+
+.Section + .Section {
+  @include usermenu-section-attributes;
+}
+
+.Button {
+  @include unstyled-button;
+  z-index: z-index(userbutton, $stacking-order);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 100%;
+  padding: spacing();
+  background-color: color('white');
+  color: color('ink');
+  text-align: left;
+
+  &:focus {
+    background-color: color('sky');
+    outline: none;
+  }
+}
+
+.Avatar {
+  margin-right: spacing(tight);
+}
+
+.Details {
+  display: block;
+  flex: 1 1 auto;
+  max-width: calc(
+    100% - #{spacing(tight)} - #{$avatar-size} - #{nav(icon-size)}
+  );
+  padding-right: spacing(tight);
+}
+
+.Name {
+  @include truncate;
+  display: block;
+  font-size: font-size(heading);
+}
+
+.Detail {
+  @include truncate;
+  @include text-emphasis-subdued;
+  display: block;
+  font-size: font-size(body);
+}
+
+.List {
+  position: absolute;
+  z-index: z-index(userlist, $stacking-order);
+  top: calc(100% - 1px);
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding-bottom: spacing(tight);
+  transform: translateY(-10%);
+  opacity: 0;
+  pointer-events: none;
+  background-color: color('white');
+  box-shadow: shadow();
+  will-change: transform, opacity;
+  transition: transform duration() easing(), opacity duration() easing();
+  display: none;
+
+  .expanded & {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: initial;
+    display: initial;
+  }
+}
+
+.Icon {
+  @include recolor-icon(color('ink', 'lightest'));
+  margin-right: spacing(tight);
+}
+
+.Item {
+  @include unstyled-button;
+  @include unstyled-link;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: spacing(tight) spacing(loose);
+  font-size: font-size(body);
+  color: color('ink');
+  text-decoration: none;
+  cursor: pointer;
+
+  &:active {
+    @include state(active);
+
+    &:hover {
+      @include state(active, hover);
+
+      // stylelint-disable-next-line selector-max-specificity
+      &:focus {
+        @include state(active, hover, focused);
+      }
+    }
+  }
+
+  &:hover {
+    @include state(hover);
+
+    &:focus {
+      @include state(hover, focused);
+    }
+  }
+
+  &:focus {
+    @include state(focused);
+  }
+}
+
+.DisclosureIcon {
+  align-self: center;
+  height: nav(icon-size);
+  will-change: transform;
+  transition: transform duration() easing();
+
+  .expanded & {
+    transform: rotate(180deg);
+  }
+}

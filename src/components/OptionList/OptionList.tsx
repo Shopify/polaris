@@ -116,7 +116,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
     const optionsMarkup = optionsExist
       ? normalizedOptions.map(({title, options}, sectionIndex) => {
           const titleMarkup = title ? (
-            <p className={styles.Title} role="presentation">
+            <p className={styles.Title} role={role}>
               {title}
             </p>
           ) : null;
@@ -158,7 +158,11 @@ export class OptionList extends React.Component<CombinedProps, State> {
         })
       : null;
 
-    return <ul className={styles.OptionList}>{optionsMarkup}</ul>;
+    return (
+      <ul className={styles.OptionList} role={role}>
+        {optionsMarkup}
+      </ul>
+    );
   }
 
   @autobind

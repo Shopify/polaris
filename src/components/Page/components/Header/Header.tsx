@@ -10,8 +10,8 @@ import {
   Popover,
   ActionList,
   BreadcrumbsProps,
-} from 'components';
-import {PaginationDescriptor} from 'components/Pagination';
+} from '../../../../components';
+import {PaginationDescriptor} from '../../../Pagination';
 import {
   DisableableAction,
   LoadableAction,
