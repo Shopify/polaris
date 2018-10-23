@@ -1,0 +1,10 @@
+[data-lock-scrolling] {
+  overflow-y: scroll;
+  margin: 0;
+
+  // stylelint-disable selector-max-attribute
+  [data-lock-scrolling-wrapper] {
+    overflow: hidden;
+    height: 100%;
+  }
+}

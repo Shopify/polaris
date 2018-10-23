@@ -2,9 +2,8 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {Props as IconProps} from '../../../Icon';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import {Props as AvatarProps} from '../../../Avatar';
+import {IconProps, ThumbnailProps, AvatarProps} from '../../..';
+
 import {Checkbox} from '..';
 import {Scrollable} from '../../../../components';
 
@@ -27,23 +26,11 @@ export interface Props {
 
 export interface State {
   focused: boolean;
-  active: boolean;
 }
 
 export default class Option extends React.Component<Props, State> {
-  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (
-      nextProps.active !== undefined &&
-      nextProps.active !== prevState.active
-    ) {
-      return nextProps.active ? {active: true} : {active: false};
-    }
-    return null;
-  }
-
   state: State = {
     focused: false,
-    active: false,
   };
 
   render() {
@@ -97,6 +84,7 @@ export default class Option extends React.Component<Props, State> {
       </label>
     ) : (
       <button
+        id={id}
         type="button"
         className={singleSelectClassName}
         onClick={this.handleClick}

@@ -9,6 +9,8 @@ export interface Props {
   section: ActionListSection;
   /** Should there be multiple sections */
   hasMultipleSections: boolean;
+  /** Defines a specific role attribute for each action in the list */
+  actionRole?: string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
@@ -16,6 +18,7 @@ export interface Props {
 export default function Section({
   section,
   hasMultipleSections,
+  actionRole,
   onActionAnyItem,
 }: Props) {
   const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
@@ -34,6 +37,7 @@ export default function Section({
         <Item
           key={`${content}-${index}`}
           content={content}
+          role={actionRole}
           onAction={handleAction(onAction)}
           {...item}
         />
@@ -47,10 +51,14 @@ export default function Section({
     <p className={styles.Title}>{section.title}</p>
   ) : null;
 
+  const sectionRole = actionRole === 'option' ? 'presentation' : undefined;
+
   const sectionMarkup = (
     <div className={className}>
       {titleMarkup}
-      <ul className={styles.Actions}>{actionMarkup}</ul>
+      <ul className={styles.Actions} role={sectionRole}>
+        {actionMarkup}
+      </ul>
     </div>
   );
 

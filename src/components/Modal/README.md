@@ -25,6 +25,7 @@ keywords:
   - overlay
   - easdk
   - embedded app
+  - shopify app bridge
   - dialog
   - alert
   - android

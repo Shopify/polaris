@@ -3,6 +3,22 @@ $global-elements: (
   overlay: 400,
 );
 
+// We're matching that here and relatively stacking other fixed components.
+$fixed-element-stacking-order: (
+  global-ribbon: 510,
+  loading-bar: 511,
+  top-bar: 512,
+  context-bar: 513,
+  small-screen-loading-bar: 514,
+  nav-backdrop: 515,
+  nav: 516,
+  skip-to-content: 517,
+  backdrop: 518,
+  modal: 519,
+  toast: 520,
+  dev-ui: 521,
+);
+
 /// Returns the z-index of the specified element.
 /// @param {String} $element - The key for the element.
 /// @param {Map} $context - The map in which to search for the element.
