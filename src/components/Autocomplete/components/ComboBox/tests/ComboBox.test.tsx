@@ -89,7 +89,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(comboBox.find('#CustomNode').exists()).toBe(true);
+      expect(comboBox.find('#CustomNode')).toHaveLength(1);
     });
 
     it('renders content passed into contentAfter', () => {
@@ -103,7 +103,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(comboBox.find('#CustomNode').exists()).toBe(true);
+      expect(comboBox.find('#CustomNode')).toHaveLength(1);
     });
   });
 
@@ -283,7 +283,7 @@ describe('<ComboBox/>', () => {
           onSelect={noop}
         />,
       );
-      expect(comboBox.find(TextField).exists()).toBe(true);
+      expect(comboBox.find(TextField)).toHaveLength(1);
     });
 
     it('renders a custom given input', () => {
@@ -295,8 +295,8 @@ describe('<ComboBox/>', () => {
           onSelect={noop}
         />,
       );
-      expect(comboBox.find('input').exists()).toBe(true);
-      expect(comboBox.find(TextField).exists()).toBe(false);
+      expect(comboBox.find('input')).toHaveLength(1);
+      expect(comboBox.find(TextField)).toHaveLength(0);
     });
 
     it('is passed to Popover as the activator', () => {
@@ -309,12 +309,7 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      expect(
-        comboBox
-          .find(Popover)
-          .find(TextField)
-          .exists(),
-      ).toBe(true);
+      expect(comboBox.find(Popover).find(TextField)).toHaveLength(1);
     });
   });
 
@@ -363,7 +358,7 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(comboBox.find('button').exists()).toBe(true);
+      expect(comboBox.find('button')).toHaveLength(options.length);
     });
 
     it('renders a checkbox if the prop is set to true', () => {
@@ -377,7 +372,9 @@ describe('<ComboBox/>', () => {
         />,
       );
       comboBox.simulate('click');
-      expect(comboBox.find('input[type="checkbox"]').exists()).toBe(true);
+      expect(comboBox.find('input[type="checkbox"]')).toHaveLength(
+        options.length,
+      );
     });
   });
 
@@ -497,6 +494,89 @@ describe('<ComboBox/>', () => {
         listenerMap.keyup({keyCode: Key.Escape});
         await expect(comboBox.state('popoverActive')).toBe(false);
       };
+    });
+  });
+
+  describe('empty state', () => {
+    const EmptyState = () => <div>No results</div>;
+
+    it('renders an empty state when no options are passed in', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={[]}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          emptyState={<EmptyState />}
+        />,
+      );
+
+      comboBox.simulate('click');
+      expect(comboBox.find(EmptyState)).toHaveLength(1);
+    });
+
+    it('does not render empty state if actionsBefore exist', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={[]}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsBefore={[{image: '../image/path', role: 'option'}]}
+          emptyState={<EmptyState />}
+        />,
+      );
+
+      comboBox.simulate('click');
+      expect(comboBox.find(EmptyState)).toHaveLength(0);
+    });
+
+    it('does not render empty state if actionsAfter exist', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={[]}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          actionsAfter={[{image: '../image/path', role: 'option'}]}
+          emptyState={<EmptyState />}
+        />,
+      );
+
+      comboBox.simulate('click');
+      expect(comboBox.find(EmptyState)).toHaveLength(0);
+    });
+
+    it('does not render empty state if contentAfter exist', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={[]}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          contentAfter={<div>Content after</div>}
+          emptyState={<EmptyState />}
+        />,
+      );
+
+      comboBox.simulate('click');
+      expect(comboBox.find(EmptyState)).toHaveLength(0);
+    });
+
+    it('does not render empty state if contentBefore exist', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={[]}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          contentBefore={<div>Content before</div>}
+          emptyState={<EmptyState />}
+        />,
+      );
+
+      comboBox.simulate('click');
+      expect(comboBox.find(EmptyState)).toHaveLength(0);
     });
   });
 });
