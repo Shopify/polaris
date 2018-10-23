@@ -47,13 +47,13 @@ Otherwise, [request a feature](https://github.com/Shopify/polaris-react/issues/n
 
 If you intend to build a new component, change a public API, make design improvements, or any other non-trivial changes, [we recommend filing an issue](https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md). This lets us all discuss and reach an agreement on the proposal before you put in significant time and effort.
 
-Please use [this template for proposing new components or changes to existing components](https://github.com/Shopify/polaris-react/issues/new?template=NEW_COMPONENT.md).
+Please use this [template for proposing new components or changes to existing components](https://github.com/Shopify/polaris-react/issues/new?template=NEW_COMPONENT.md).
 
 If you’re only fixing a bug, it’s okay to submit a pull request right away but we still recommend you file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
 
 ## Your first pull request
 
-Working on your first Pull Request? You can learn how from this free video series:
+Working on your first pull request? You can learn how from this free video series:
 
 [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
@@ -102,7 +102,7 @@ After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can 
 - `yarn test <pattern>` runs tests with matching filenames
 - `yarn tophat` runs a local development server and mounts all of the component examples
 
-We recommend running `yarn test` (or its variations above) to make sure you don’t introduce any regressions as you work on your change. However it can be handy to try your build of Polaris React in a real project.
+We recommend running `yarn test` (or its variations above), as well as trying your build of Polaris React in a real project, to make sure you don’t introduce any regressions as you work on your change.
 
 Run `yarn run build-consumer <project>` where `<project>` is the directory the build will be copied. **The `<project>` directory must be a sibling of the `polaris-react` directory**.
 

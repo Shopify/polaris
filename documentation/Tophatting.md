@@ -1,6 +1,8 @@
 # Tophatting 🎩
 
-TL;DR This is a collection of lessons learned from breaking things. It’s not enough to rely on automated tests.
+## Summary
+
+This is a collection of lessons learned from breaking things. It’s not enough to rely on automated tests.
 
 As you make changes, non-obvious things can break. Manual testing (we call it “tophatting”, or 🎩 for short) adds that extra degree of certainty that what you’re shipping works and behaves as expected. Both you, as the author of a PR, and someone on your team, should 🎩 before merging.
 
@@ -30,7 +32,7 @@ Spending the extra time to provide clear instructions saves everybody time, and 
 - Be explicit about the scope of your changes so that unrelated bugs don’t block the PR
 - Be explicit about your own 🎩, and any areas or interactions you might be unsure about
 - Include a screenshot of the expected result of a successful 🎩
-- Be grateful (e.g. “Thanks for catching that!”) – reviewers are taking time out of their day to help you and that’s a special kind of gift
+- Be grateful (for example, “Thanks for catching that!”) – reviewers are taking time out of their day to help you and that’s a special kind of gift
 
 ## Approach to tophatting someone’s PR
 
@@ -39,7 +41,7 @@ Giving someone a thorough 🎩 builds trust and trains your attention to detail.
 - Make sure you understand the scope and purpose of the author’s PR – if not, don’t hesitate to ask the author to clarify
 - Consider any areas the author’s change may break, and test those
 - Detail what steps you took for 🎩 and your findings
-- Remember that unrelated bugs are better done in a separate PR Don’t block something unless it’s necessary
+- Remember that unrelated bugs are better done in a separate PR. Don’t block something unless it’s necessary
 - Include a screenshot with any issues that arise
 
 ## Cross browser testing
