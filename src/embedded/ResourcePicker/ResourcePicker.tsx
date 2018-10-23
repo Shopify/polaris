@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {withAppProvider, WithAppProviderProps} from 'components';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
 import {OpenOptions} from 'embedded/easdk/components';
 
 export interface Props extends OpenOptions {

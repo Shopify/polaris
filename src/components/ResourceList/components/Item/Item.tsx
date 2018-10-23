@@ -16,11 +16,11 @@ import {
   buttonsFrom,
   withAppProvider,
   WithAppProviderProps,
-  withContext,
 } from 'components';
+import withContext from 'components/WithContext';
+import {ResourceListContext} from '../../ResourceList';
 import {SELECT_ALL_ITEMS} from '../../types';
 import * as styles from './Item.scss';
-import {ResourceListContext} from '../../ResourceList';
 import {Consumer} from '../Context';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
