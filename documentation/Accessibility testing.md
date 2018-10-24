@@ -2,7 +2,7 @@
 
 We want Polaris and Shopify's platform to be accessible for people with disabilities and impairments. A large part of this is making sure that Polaris components meet Level A and Level AA success criteria of the [Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/).
 
-**Looking for more information about accessibility?** See our [accessibility overview](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility.md)\*\*.
+**Looking for more information about accessibility?** See our [accessibility overview](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility.md).
 
 ## Automated testing
 
