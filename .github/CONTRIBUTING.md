@@ -41,7 +41,6 @@ Otherwise, [request a feature](https://github.com/Shopify/polaris-react/issues/n
 ## How to get in touch
 
 - Slack: [#polaris on Shopify Partners Slack](https://shopifypartners.slack.com/messages/C8PTBMWNR/)
-- Discussion: Shopify Polaris Forums (link TBD)
 
 ## Proposing a change
 

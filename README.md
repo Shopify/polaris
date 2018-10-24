@@ -122,6 +122,16 @@ yarn run build:development
 
 Also, when running `yarn install`, copied builds will be overwritten and will require running `yarn run build-consumer PROJECT_DIRECTORY` again.
 
+### Visual regression testing
+
+[Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
+
+Percy is not always 100% accurate. Since it uses screenshot comparison, even browser sub-pixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgement to determine whether you need to address it or not. This is why the choice to approve something or not is always manual. While everyone can view changes, only members of the Shopify team an approve changes.
+
+#### Manual visual regression testing
+
+To start a server for manually viewing the visual regression testing examples, run `yarn run tophat`.
+
 ## Learning resources
 
 If you’re new to React, we recommend you start with the [official React Getting Started documentation](https://facebook.github.io/react/docs/hello-world.html). As you read through the topics we suggest you follow along using their [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).
@@ -148,33 +158,3 @@ Pull requests are welcome. See the [contribution guidelines](https://github.com/
 
 - Source code is licensed under [MIT](https://opensource.org/licenses/MIT)
 - All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
-
----
-
-## For Shopify developers only
-
-### Visual regression testing
-
-[Percy](https://percy.io/) runs for every pull request. Percy is a tool that compares screenshots for every single component we have in the library.
-
-Percy is not always 100% accurate. Since it uses screenshot comparison, even browser subpixel rendering differences can cause Percy to ask for user confirmation of whether a change was intended or not. In cases like that, use your best judgement to determine whether you need to address it or not. This is why the choice to approve something or not is always left to the contributor.
-
-Percy is a tool that’s supposed to help you and give you more confidence, not some checker that you need to appease. The final call lies with you as a contributor.
-
-#### Running visual regression tests locally
-
-1.  Build and start the component examples server:
-    ```
-    yarn run tophat
-    ```
-2.  In a separate terminal session, run:
-    ```
-    PERCY_TOKEN=aaaabbbbcccc \
-    PERCY_PROJECT=Shopify/polaris-react \
-    PERCY_BRANCH=local \
-    yarn run test:percy
-    ```
-    Where `aaaabbbbcccc` is the API key available in the
-    [Percy project settings page for polaris-react](https://percy.io/Shopify/polaris-react/settings).
-3.  Check tests results: <https://percy.io/Shopify/polaris-react> (Can’t
-    view the results? [Ask for access on Slack](https://shopify.slack.com/messages/C4Y8N30KD))
