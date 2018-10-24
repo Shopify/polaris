@@ -178,7 +178,7 @@ export default class Header extends React.PureComponent<Props, State> {
     const actionGroupsMarkup =
       actionGroups.length > 0
         ? actionGroups.map(({title, icon, actions, details}) => (
-            <div className={styles.Action} key={title}>
+            <div className={styles.IndividualAction} key={title}>
               <ActionGroup
                 title={title}
                 icon={icon}
@@ -261,7 +261,7 @@ function secondaryActionsFrom(
   actions: SecondaryAction[],
 ): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
-    <div className={styles.Action} key={`Action-${content || index}`}>
+    <div className={styles.IndividualAction} key={`Action-${content || index}`}>
       <Action {...action}>{content}</Action>
     </div>
   ));

@@ -97,7 +97,7 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   display: flex;
   align-items: center;
 
-  > .Action {
+  > .IndividualAction {
     &:first-child {
       // Compensates for the fact that we push the icon slightly to the left
       margin-left: -1 * $action-horizontal-padding;
