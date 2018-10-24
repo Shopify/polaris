@@ -4,7 +4,6 @@ import * as Polaris from '@shopify/polaris';
 import {parse} from '@babel/parser';
 import generate from '@babel/generator';
 import {transform} from '@babel/standalone';
-import {Heading} from '@shopify/polaris';
 
 export interface ExampleProps {
   name: string;
@@ -27,7 +26,7 @@ export default function Example(props: ExampleProps) {
 
   return (
     <React.Fragment>
-      <Heading>{props.name}</Heading>
+      <Polaris.Heading>{props.name}</Polaris.Heading>
       <Component />
     </React.Fragment>
   );

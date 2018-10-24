@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import fs from 'fs';
 import glob from 'glob';
 import chalk from 'chalk';

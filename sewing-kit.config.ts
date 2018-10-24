@@ -13,7 +13,6 @@ export default function sewingKitConfig(
     plugins: [
       plugins.jest((config) => {
         config.roots = [join(__dirname, 'src'), join(__dirname, 'tests')];
-        config.testEnvironment = 'jest-environment-jsdom-global';
         config.modulePaths = [
           '<rootDir>/node_modules/',
           '<rootDir>/src/',

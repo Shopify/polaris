@@ -38,8 +38,6 @@ Resolves #0000 <!-- link to issue if one exists -->
 <summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
 
 ```jsx
-/* eslint-disable */
-
 import * as React from 'react';
 import {Page, AppProvider} from '@shopify/polaris';
 
