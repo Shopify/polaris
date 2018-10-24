@@ -130,7 +130,7 @@ Percy is not always 100% accurate. Since it uses screenshot comparison, even bro
 
 #### Manual visual regression testing
 
-To start the visual regression testing server locally, run `yarn run tophat`.
+To start a server for manually viewing the visual regression testing examples, run `yarn run tophat`.
 
 ## Learning resources
 
