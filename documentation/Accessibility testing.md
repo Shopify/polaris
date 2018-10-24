@@ -1,10 +1,8 @@
 # Accessibility testing for Polaris
 
-We want Polaris and Shopify's platform to be accessible for people with disabilities. A large part of this is making sure that Polaris components can meet Level A and Level AA success criteria of the [Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/).
+We want Polaris and Shopify's platform to be accessible for people with disabilities and impairments. A large part of this is making sure that Polaris components meet Level A and Level AA success criteria of the [Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/).
 
 **Looking for more information about accessibility?** See our [accessibility overview](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility.md)\*\*.
-
-**Need help?** Visit **#polaris** or **#a11y** in Slack, or ping **@Shopify/a11y** on GitHub.
 
 ## Automated testing
 
@@ -22,11 +20,11 @@ The [Polaris style guide](https://polaris.shopify.com/) also provides guidelines
 
 You don't need to test everything all the time. Use this guide to decide what to test based on the changes or new features you've developed.
 
-- If you've added content, see the **Structure** and **Visuals** sections.
-- If you have new interactive elements, see the **Keyboard actions** section.
-- If you have new dynamic content (animations or videos for example) or controls, see **Dynamic content**.
-- If you are developing for mobile web, see **Touch and motion inputs** and **Mobile layout**.
-- If you have images, video, or audio, see **Media support**.
+- If you've added content, see the [**Structure** section](#structure) and the [**Visuals** section](#visuals).
+- If you have added interactive elements, see the [**Keyboard actions** section](#keyboard-actions).
+- If you have added dynamic content or controls, see the [**Dynamic content** section](#dynamic-content).
+- If you're developing for mobile web, see the [**Touch and motion inputs** section](#touch-and-motion-inputs) and the [**Mobile layout** section](#mobile-layout).
+- If you have added images, video, or audio, see the [**Media support** section](#media-support).
 
 ### Manual testing checklist
 
@@ -78,7 +76,7 @@ You don't need to test everything all the time. Use this guide to decide what to
 - Features that are shown on hover/focus are persistent until hover/focus is removed or otherwise dismissed by the user. ([1.4.13 Content on Hover or Focus](https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus))
 - Features that are shown on hover are not hidden if the mouse pointer is moved to the feature itself. ([1.4.13 Content on Hover or Focus](https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus))
 - Features that automatically update or animate can be paused, stopped, or hidden by users. ([2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG21/#pause-stop-hide))
-  - Looping, autoplaying videos have an accessible button to pause or stop the video.
+  - Looping or autoplaying videos have an accessible button to pause or stop the video.
   - The `prefers-reduced-motion` query is supported for features that use CSS for animations.
 - Activating a control doesn’t cause a [change of context](https://www.w3.org/TR/WCAG21/#dfn-change-of-context) unless users are warned beforehand. ([3.2.2 On Input](https://www.w3.org/TR/WCAG21/#on-input))
   - Links that open new windows are conveyed with an icon that has a text alternative.
@@ -107,8 +105,9 @@ You don't need to test everything all the time. Use this guide to decide what to
 #### Media support
 
 - Image-based content supports text alternatives. ([1.1.1 Non-text Content](https://www.w3.org/TR/WCAG21/#non-text-content))
-  - Decorative images can have `alt=""`.
-  - Informative images can have an `alt` value supplied.
+  - Decorative images have `alt=""`.
+  - Informative images have an `alt` value supplied.
+  - SVGs rely on separate text equivalents, since they aren't consistently conveyed by assistive tech.
   - In cases where an icon is used to convey the purpose of a control, the icon has a text equivalent that describes its purpose.
 - Audio features support a text alternative. ([1.2.1 Audio-only and Video-only (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded))
 - Video features support text alternatives like an audio track or audio description. ([1.2.1 Audio-only and Video-only (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded), [1.2.3 Audio Description or Media Alternative (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-description-or-media-alternative-prerecorded), [1.2.5 Audio Description (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-description-prerecorded))
