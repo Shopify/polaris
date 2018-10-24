@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {
-  animationFrame,
-  mountWithAppProvider,
-  documentHasStyle,
-} from 'test-utilities';
+import {animationFrame} from '@shopify/jest-dom-mocks';
+import {mountWithAppProvider, documentHasStyle} from 'test-utilities';
 import {
   TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,
@@ -31,7 +28,7 @@ const defaultWindowWidth = window.innerWidth;
 
 describe('<Frame />', () => {
   beforeEach(() => {
-    animationFrame.fake();
+    animationFrame.mock();
   });
 
   afterEach(() => {
