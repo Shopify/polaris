@@ -1,6 +1,7 @@
 const execSync = require('child_process').execSync;
 const fs = require('fs-extra');
 const glob = require('glob');
+const {resolve} = require('path');
 const packageJSON = require('../package.json');
 
 describe('build', () => {
@@ -81,7 +82,10 @@ describe('build', () => {
   });
 
   it('generates valid typescript definition files', () => {
-    execSync('yarn check-types', {stdio: 'inherit'});
+    const configPath = resolve(__dirname, 'tsconfig-types.json');
+    execSync(`yarn run tsc --noEmit --project ${configPath}`, {
+      stdio: 'inherit',
+    });
   });
 
   it('replaces all occurrences of POLARIS_VERSION', () => {
