@@ -34,18 +34,13 @@ class ActionGroup extends React.Component<Props, never> {
               hasIndicator={active}
               disclosure
               icon={icon}
-              // eslint-disable-next-line react/jsx-no-bind
               onAction={this.handleOpen}
             >
               {title}
             </Action>
           }
         >
-          <ActionList
-            items={actions}
-            // eslint-disable-next-line react/jsx-no-bind
-            onActionAnyItem={this.handleClose}
-          />
+          <ActionList items={actions} onActionAnyItem={this.handleClose} />
           {detailsMarkup}
         </Popover>
       </div>
