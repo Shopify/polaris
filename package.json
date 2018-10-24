@@ -43,7 +43,7 @@
     "test:ci": "yarn test --coverage",
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
-    "check-types": "tsc --noEmit --project ./scripts/tsconfig-types-check.json",
+    "check-types": "tsc --noEmit ./types/**/*.ts --typeRoots ./config/typescript/*.ts",
     "clean": "rimraf build build-esnext esnext styles types docs 'build-intermediate' 'index.*' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
     "clean:build": "rimraf 'build/!(cache)' build-esnext esnext styles types docs 'build-intermediate' 'index.*' './src/styles/polaris-tokens' './tophat/.cache' './tophat/assets' 'styles.{css,scss}'",
     "optimize": "node ./scripts/optimize.js",

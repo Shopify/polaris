@@ -1,5 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "baseUrl": "../types",
-  "include": ["../config/typescript/**/*", "../types/**/*"]
-}
