@@ -25,10 +25,10 @@ jobs:
       - restore_cache:
           # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
           # When these files are changed, this key will fail and a clean install will happen.
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
       - run: yarn
       - save_cache:
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
           paths:
             - node_modules
       - run: yarn run heroku-postbuild
@@ -41,10 +41,10 @@ jobs:
       - restore_cache:
           # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
           # When these files are changed, this key will fail and a clean install will happen.
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
       - run: yarn
       - save_cache:
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
           paths:
             - node_modules
       - run: yarn run heroku-postbuild
