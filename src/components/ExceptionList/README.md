@@ -28,7 +28,7 @@ The exception list component should:
 
 ### Opportunity for improvement
 
-Exception lists aren’t clickable. If you have an idea that could make this component better, reach out to us on our [public repo](https://github.com/shopify/polaris-react/issues).
+Exception lists aren’t clickable. If you have an idea that could make this component better, please [open an issue](https://github.com/shopify/polaris-react/issues).
 
 <!-- end -->
 
