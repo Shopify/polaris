@@ -38,27 +38,27 @@ The autocomplete component is an input field that provides selectable suggestion
 
 ### Enhancements
 
-- Changed `Form` to default the `method` to `post` in order to prevent accidental leaking of form details ([#2066](https://github.com/Shopify/polaris-react/pull/2066))
-- Added support for boolean type on Choice error prop ([#2085](https://github.com/shopify/polaris-react/pull/2085))
-- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets ([#2226](https://github.com/Shopify/polaris-react/pull/2226))
-- Added `onPortalCreated` prop to `Portal` ([#2294](https://github.com/Shopify/polaris-react/pull/2294))
-- Improved consistency of `Badge` styling ([#2376](https://github.com/Shopify/polaris-react/pull/2376))
-- Explicitly specifying `list-style` on `List` ([#2442](https://github.com/Shopify/polaris-react/pull/2442))
+- Changed `Form` to default the `method` to `post` in order to prevent accidental leaking of form details
+- Added support for boolean type on Choice error prop
+- Changed the esnext folder to contain individual, minimally transpiled JavaScript component files, as well as raw style and image assets
+- Added `onPortalCreated` prop to `Portal`
+- Improved consistency of `Badge` styling
+- Explicitly specifying `list-style` on `List`
 
 ### Bug fixes
 
-- Fixed console error and used new ref syntax in `DataTable` ([#2196](https://github.com/Shopify/polaris-react/pull/2196)) (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
-- Fixed the ability to upload multiple files even when `allowedMultiple` prop is false ([#2297](https://github.com/Shopify/polaris-react/pull/2297))
-- Fixed `Datatable` so it resizes with new content ([#2285](https://github.com/Shopify/polaris-react/pull/2285)) (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/387))
-- Fixed `RangeSlider` linear-gradient so it doesn't break the css build ([#2418](https://github.com/Shopify/polaris-react/pull/2418)) (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/441))
-- Fixed issue in `Page` introduced by [#2399](https://github.com/Shopify/polaris-react/pull/2399) , where styling wasn't being applied correctly to Page Actions ([#2460](https://github.com/Shopify/polaris-react/pull/2460))
+- Fixed console error and used new ref syntax in `DataTable` (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
+- Fixed the ability to upload multiple files even when `allowedMultiple` prop is false
+- Fixed `Datatable` so it resizes with new content (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris/issues/387))
+- Fixed `RangeSlider` linear-gradient so it doesn't break the css build (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris/issues/441))
+- Fixed issue in `Page`, where styling wasn't being applied correctly to Page Actions
 
 ### Breaking changes
 
-- Added padding top and bottom on `Card.Section` when set to full width ([#2280](https://github.com/Shopify/polaris-react/pull/2280))
-- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount` ([#2243](https://github.com/Shopify/polaris-react/pull/2243));
+- Added padding top and bottom on `Card.Section` when set to full width
+- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount`;
 - Fixed an issue where clicking a `Link` without a `url` in a form would implicitly submit the form. `Link` can no longer submit forms. Use `<Button submit>` instead.
-- Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow` ([#2451](https://github.com/Shopify/polaris-react/pull/2451))
+- Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow`
 
 #### Embedded apps
 
@@ -84,24 +84,24 @@ The autocomplete component is an input field that provides selectable suggestion
 
 ### Documentation
 
-- Updated banner guidelines to make it clearer when success banners should be used vs success toasts. ([#2046](https://github.com/Shopify/polaris-react/pull/2046))
-- Added examples for iOS and Android section header ([#1918](https://github.com/Shopify/polaris-react/pull/1918))
-- Added examples for iOS and Android thumbnail ([#1962](https://github.com/Shopify/polaris-react/pull/1962))
-- Added examples for iOS and Android empty state ([#2021](https://github.com/Shopify/polaris-react/pull/2021))
-- Added examples for iOS and Android text field ([#1893](https://github.com/Shopify/polaris-react/pull/1893))
-- Added examples for iOS and Android select ([#2041](https://github.com/Shopify/polaris-react/pull/2041))
-- Added examples for iOS and Android keyboard accessories ([#2033](https://github.com/Shopify/polaris-react/pull/2033))
-- Added examples for iOS and Android collapsible ([#2031](https://github.com/Shopify/polaris-react/pull/2031))
-- Added examples for iOS and Android list ([#2030](https://github.com/Shopify/polaris-react/pull/2030))
-- Clarified placement and usage of `Banner` ([#2424](https://github.com/Shopify/polaris-react/pull/2424))
-- Added an explanation to `Modal` about why it can't be closed by clicking outside the modal and should only be closed by clicking `X` or `Cancel` ([#2439](https://github.com/Shopify/polaris-react/pull/2439))
+- Updated banner guidelines to make it clearer when success banners should be used vs success toasts.
+- Added examples for iOS and Android section header
+- Added examples for iOS and Android thumbnail
+- Added examples for iOS and Android empty state
+- Added examples for iOS and Android text field
+- Added examples for iOS and Android select
+- Added examples for iOS and Android keyboard accessories
+- Added examples for iOS and Android collapsible
+- Added examples for iOS and Android list
+- Clarified placement and usage of `Banner`
+- Added an explanation to `Modal` about why it can't be closed by clicking outside the modal and should only be closed by clicking `X` or `Cancel`
 
 ### Development workflow
 
-- Moved sub-sub-components within `ResourceList` into components folders ([#2381](https://github.com/Shopify/polaris-react/pull/2381))
-- Removed empty state from `ResourceList` if there are no items and `loading` is true ([#2393](https://github.com/Shopify/polaris-react/pull/2393))
-- Move to use sewing-kit for test running, updating to Jest 23 in the process. This gives us working sourcemaps for code coverage ([#2434](https://github.com/Shopify/polaris-react/pull/2434))
-- Improved accessibility testing checklist. ([#469](https://github.com/Shopify/polaris-react/pull/469))
+- Moved sub-sub-components within `ResourceList` into components folders
+- Removed empty state from `ResourceList` if there are no items and `loading` is true
+- Move to use sewing-kit for test running, updating to Jest 23 in the process. This gives us working sourcemaps for code coverage
+- Improved accessibility testing checklist
 
 #### Open development
 
