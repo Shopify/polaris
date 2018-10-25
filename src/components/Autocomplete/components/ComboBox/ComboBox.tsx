@@ -23,6 +23,7 @@ export interface State {
   selectedOptions: string[];
   navigableOptions: (OptionDescriptor | ActionListItemDescriptor)[];
   popoverActive: boolean;
+  popoverWasActive: boolean;
 }
 
 export interface Props {
@@ -116,6 +117,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     selectedOptions: this.props.selected,
     navigableOptions: [],
     popoverActive: false,
+    popoverWasActive: false,
   };
 
   private subscriptions: {(): void}[] = [];
@@ -155,7 +157,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   componentDidUpdate(_: Props, prevState: State) {
     const {contentBefore, contentAfter} = this.props;
-    const {navigableOptions, popoverActive} = this.state;
+    const {navigableOptions, popoverActive, popoverWasActive} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
@@ -177,6 +179,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({popoverActive: false});
+    } else if (
+      popoverWasActive &&
+      navigableOptions &&
+      navigableOptions.length !== 0
+    ) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({popoverActive: true});
     }
 
     if (popoverChanged) {
@@ -331,12 +340,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private handleFocus() {
-    this.setState({popoverActive: true});
+    this.setState({popoverActive: true, popoverWasActive: true});
   }
 
   @autobind
   private handleBlur() {
-    this.setState({popoverActive: false});
+    this.setState({popoverActive: false, popoverWasActive: false});
   }
 
   @autobind
@@ -384,7 +393,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     selected && onSelect(selected);
     if (!allowMultiple) {
       this.resetVisuallySelectedOptions();
-      this.setState({popoverActive: false});
+      this.setState({popoverActive: false, popoverWasActive: false});
     }
   }
 
@@ -417,7 +426,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private handlePopoverClose() {
-    this.setState({popoverActive: false});
+    this.setState({popoverActive: false, popoverWasActive: false});
   }
 
   @autobind
@@ -427,7 +436,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     !popoverActive &&
       navigableOptions &&
       navigableOptions.length > 0 &&
-      this.setState({popoverActive: true});
+      this.setState({popoverActive: true, popoverWasActive: true});
   }
 
   @autobind

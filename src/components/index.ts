@@ -18,7 +18,7 @@ export {
 
 export {
   default as Autocomplete,
-  Props as AutcompleteProps,
+  Props as AutocompleteProps,
 } from './Autocomplete';
 
 export {default as Avatar, Props as AvatarProps} from './Avatar';
