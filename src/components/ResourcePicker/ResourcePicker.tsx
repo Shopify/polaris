@@ -8,7 +8,7 @@ import {
 
 export interface SelectPayload {
   /** The selected resources
-   * @see {@link https://github.com/Shopify/app-bridge/tree/master/packages/app-bridge/src/actions/ResourcePicker|resource picker documentation} for more information
+   * @see {@link https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/resourcepicker|resource picker documentation} for more information
    */
   selection: AppBridgeResourcePicker.ResourceSelection[];
 }

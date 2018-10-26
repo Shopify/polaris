@@ -350,7 +350,7 @@ class ProviderThemeExample extends React.Component {
 
 ## Initializing the Shopify App Bridge
 
-When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described [in the docs](https://github.com/Shopify/app-bridge/blob/master/packages/app-bridge/README.md). Instead, configure the connection to the Shopify admin through the app provider component, which must wrap all components in an embedded app. This component initializes the Shopify App Bridge using the `apiKey` you provide. **The `apiKey` attribute is required** and can be found in the [Shopify Partner Dashboard](https://partners.shopify.com).
+When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described [in the docs](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the app provider component, which must wrap all components in an embedded app. This component initializes the Shopify App Bridge using the `apiKey` you provide. **The `apiKey` attribute is required** and can be found in the [Shopify Partner Dashboard](https://partners.shopify.com).
 
 ```jsx
 ReactDOM.render(
@@ -372,14 +372,14 @@ ReactDOM.render(
 
 ## Access to the Shopify App Bridge instance
 
-To provide access to your initialized Shopify App Bridge instance, we make it available through [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `appBridge` object from React’s `context`, in order to use the [`History` action](https://github.com/Shopify/app-bridge/tree/master/packages/app-bridge/src/actions/Navigation/History) to push history:
+To provide access to your initialized Shopify App Bridge instance, we make it available through [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `appBridge` object from React’s `context`, in order to use the [`Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) to navigate:
 
 ```js
 import React from 'react';
 import {render} from 'react-dom';
 import * as PropTypes from 'prop-types';
 import {AppProvider} from '@shopify/polaris';
-import {History} from '@shopify/app-bridge/actions';
+import {Redirect} from '@shopify/app-bridge/actions';
 
 class MyApp extends React.Component {
   // This line is very important! It tells React to attach the `polaris`
@@ -388,11 +388,11 @@ class MyApp extends React.Component {
     polaris: PropTypes.object,
   };
 
-  pushHistory() {
-    const history = History.create(this.context.polaris.appBridge);
+  redirectToSettings() {
+    const redirect = Redirect.create(this.context.polaris.appBridge);
 
-    // Pushes {appOrigin}/settings to the history
-    history.dispatch(History.Action.PUSH, '/settings');
+    // Go to {appOrigin}/settings
+    redirect.dispatch(Redirect.Action.APP, '/settings');
   }
 }
 
