@@ -19,17 +19,30 @@ export function generateRedirect(
   }
 
   const redirect = Redirect.create(appBridge);
-  const inferredTarget = external === true ? 'REMOTE' : target;
+  const payload =
+    external === true
+      ? {
+          url,
+          newContext: true,
+        }
+      : url;
 
   return () => {
-    redirect.dispatch(redirectAction(inferredTarget), url);
+    redirect.dispatch(redirectAction(target, external), payload);
   };
 }
 
 function redirectAction(target: AppBridgeTarget): Redirect.Action.APP;
 function redirectAction(target: AppBridgeTarget): Redirect.Action.ADMIN_PATH;
-function redirectAction(target: AppBridgeTarget): Redirect.Action.REMOTE;
-function redirectAction(target: AppBridgeTarget) {
+function redirectAction(
+  target: AppBridgeTarget,
+  external?: boolean,
+): Redirect.Action.REMOTE;
+function redirectAction(target: AppBridgeTarget, external?: boolean) {
+  if (external === true) {
+    return Redirect.Action.REMOTE;
+  }
+
   return Redirect.Action[target];
 }
 
