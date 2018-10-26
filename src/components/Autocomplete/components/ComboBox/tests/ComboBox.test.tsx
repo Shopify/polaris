@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {mountWithAppProvider, trigger} from 'test-utilities';
 import ComboBox from '..';
-import {OptionList, ActionList, Popover} from 'components';
-import {mountWithAppProvider} from 'test-utilities';
+import ActionList from '../../../../ActionList';
+import Popover from '../../../../Popover';
+import OptionList, {OptionDescriptor} from '../../../../OptionList';
 import {TextField} from '../components';
 import {Key} from '../../../../../types';
 
@@ -50,16 +52,16 @@ describe('<ComboBox/>', () => {
     },
   ];
 
+  const mockProps = {
+    options,
+    selected: [],
+    textField: renderTextField(),
+    onSelect: noop,
+  };
+
   describe('options', () => {
     it('passes options to OptionList', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
-      );
+      const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
 
       comboBox.simulate('click');
 
@@ -80,13 +82,7 @@ describe('<ComboBox/>', () => {
   describe('contentBefore and contentAfter', () => {
     it('renders content passed into contentBefore', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          contentBefore={renderNodeWithId()}
-        />,
+        <ComboBox {...mockProps} contentBefore={renderNodeWithId()} />,
       );
       comboBox.simulate('click');
       expect(comboBox.find('#CustomNode')).toHaveLength(1);
@@ -94,13 +90,7 @@ describe('<ComboBox/>', () => {
 
     it('renders content passed into contentAfter', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          contentAfter={renderNodeWithId()}
-        />,
+        <ComboBox {...mockProps} contentAfter={renderNodeWithId()} />,
       );
       comboBox.simulate('click');
       expect(comboBox.find('#CustomNode')).toHaveLength(1);
@@ -110,10 +100,7 @@ describe('<ComboBox/>', () => {
   describe('actionsBefore and actionsAfter', () => {
     const comboBox = mountWithAppProvider(
       <ComboBox
-        options={options}
-        selected={[]}
-        textField={renderTextField()}
-        onSelect={noop}
+        {...mockProps}
         actionsBefore={[{image: '../image/path', role: 'option'}]}
         actionsAfter={[{image: '../image/path', role: 'option'}]}
       />,
@@ -157,13 +144,7 @@ describe('<ComboBox/>', () => {
   describe('ids', () => {
     it('passes an id to the options in OptionList', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          id="TestId"
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
+        <ComboBox {...mockProps} id="TestId" />,
       );
       comboBox.simulate('click');
       expect(
@@ -176,14 +157,7 @@ describe('<ComboBox/>', () => {
 
     it('passes an id to the actions in ActionList', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          id="TestId"
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          actionsBefore={action}
-        />,
+        <ComboBox {...mockProps} id="TestId" actionsBefore={action} />,
       );
       comboBox.simulate('click');
       expect(
@@ -198,13 +172,7 @@ describe('<ComboBox/>', () => {
   describe('actions', () => {
     it('renders an action in actionsBefore', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          actionsBefore={action}
-        />,
+        <ComboBox {...mockProps} actionsBefore={action} />,
       );
 
       comboBox.simulate('click');
@@ -219,13 +187,7 @@ describe('<ComboBox/>', () => {
 
     it('renders an action in actionsAfter', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          actionsAfter={action}
-        />,
+        <ComboBox {...mockProps} actionsAfter={action} />,
       );
       comboBox.simulate('click');
       expect(
@@ -240,13 +202,7 @@ describe('<ComboBox/>', () => {
   describe('select', () => {
     it('passes the selected options to OptionList', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={['cheese_pizza']}
-          textField={renderTextField()}
-          onSelect={noop}
-          actionsAfter={action}
-        />,
+        <ComboBox {...mockProps} selected={['cheese_pizza']} />,
       );
 
       comboBox.simulate('click');
@@ -259,13 +215,7 @@ describe('<ComboBox/>', () => {
   describe('listTitle', () => {
     it('passes the listTitle as title to OptionList', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          listTitle="List title"
-        />,
+        <ComboBox {...mockProps} listTitle="List title" />,
       );
 
       comboBox.simulate('click');
@@ -288,26 +238,14 @@ describe('<ComboBox/>', () => {
 
     it('renders a custom given input', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={<input type="text" />}
-          onSelect={noop}
-        />,
+        <ComboBox {...mockProps} textField={<input type="text" />} />,
       );
       expect(comboBox.find('input')).toHaveLength(1);
       expect(comboBox.find(TextField)).toHaveLength(0);
     });
 
     it('is passed to Popover as the activator', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
-      );
+      const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
 
       expect(comboBox.find(Popover).find(TextField)).toHaveLength(1);
     });
@@ -315,13 +253,7 @@ describe('<ComboBox/>', () => {
 
   describe('<Popover />', () => {
     const comboBox = mountWithAppProvider(
-      <ComboBox
-        options={options}
-        selected={[]}
-        textField={renderTextField()}
-        onSelect={noop}
-        preferredPosition="above"
-      />,
+      <ComboBox {...mockProps} preferredPosition="above" />,
     );
 
     it('does not set Popover to active before being clicked', () => {
@@ -331,6 +263,19 @@ describe('<ComboBox/>', () => {
     it('sets Popover to active when clicked', () => {
       comboBox.simulate('click');
       expect(comboBox.find(Popover).prop('active')).toBe(true);
+    });
+
+    it('sets Popover to active on focus', () => {
+      const wrapper = comboBox.find('div').first();
+      trigger(wrapper, 'onFocus');
+      expect(comboBox.find(Popover).prop('active')).toBe(true);
+    });
+
+    it('deactivates Popover on blur', () => {
+      comboBox.simulate('click');
+      const wrapper = comboBox.find('div').first();
+      trigger(wrapper, 'onBlur');
+      expect(comboBox.find(Popover).prop('active')).toBe(false);
     });
 
     it('sets Popover to fullWidth', () => {
@@ -349,13 +294,7 @@ describe('<ComboBox/>', () => {
   describe('allowMultiple', () => {
     it('renders a button if the prop is false', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          allowMultiple={false}
-        />,
+        <ComboBox {...mockProps} allowMultiple={false} />,
       );
       comboBox.simulate('click');
       expect(comboBox.find('button')).toHaveLength(options.length);
@@ -363,13 +302,7 @@ describe('<ComboBox/>', () => {
 
     it('renders a checkbox if the prop is set to true', () => {
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-          allowMultiple
-        />,
+        <ComboBox {...mockProps} allowMultiple />,
       );
       comboBox.simulate('click');
       expect(comboBox.find('input[type="checkbox"]')).toHaveLength(
@@ -382,12 +315,7 @@ describe('<ComboBox/>', () => {
     it('gets called when an item is clicked', () => {
       const spy = jest.fn();
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={spy}
-        />,
+        <ComboBox {...mockProps} onSelect={spy} />,
       );
       comboBox.simulate('click');
       comboBox
@@ -400,13 +328,7 @@ describe('<ComboBox/>', () => {
     it('gets called when a checkbox is changed', () => {
       const spy = jest.fn();
       const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={spy}
-          allowMultiple
-        />,
+        <ComboBox {...mockProps} onSelect={spy} allowMultiple />,
       );
       comboBox.simulate('click');
       comboBox
@@ -418,82 +340,204 @@ describe('<ComboBox/>', () => {
   });
 
   describe('keypress events', () => {
-    it('selects the first option when the down arrow is pressed', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
-      );
+    describe('down arrow', () => {
+      it('selects nothing if there are no options', () => {
+        const options: OptionDescriptor[] = [];
+        const comboBox = mountWithAppProvider(
+          <ComboBox {...mockProps} options={options} />,
+        );
 
-      async () => {
-        comboBox.find(TextField).simulate('click');
-        listenerMap.keyup({keyCode: Key.DownArrow});
-        await expect(comboBox.state('selectedIndex')).toBe(0);
-      };
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          await expect(comboBox.state('selectedIndex')).toBe(-1);
+        };
+      });
+
+      it('selects the first option when the down arrow is pressed', () => {
+        const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          await expect(comboBox.state('selectedIndex')).toBe(0);
+        };
+      });
+
+      it('selects the first option when the down arrow is pressed from the last option', () => {
+        const options = [
+          {value: 'cheese_pizza', label: 'Cheese Pizza'},
+          {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
+        ];
+        const comboBox = mountWithAppProvider(
+          <ComboBox {...mockProps} options={options} />,
+        );
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          await expect(comboBox.state('selectedIndex')).toBe(0);
+        };
+      });
+
+      it('calls onEndReached() when the last option is selected', () => {
+        const spy = jest.fn();
+        const comboBox = mountWithAppProvider(
+          <ComboBox {...mockProps} onEndReached={spy} />,
+        );
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          await expect(spy).toHaveBeenCalledTimes(1);
+        };
+      });
+
+      it('adds to selected options when the down arrow and enter keys are pressed', () => {
+        const spy = jest.fn();
+        const comboBox = mountWithAppProvider(
+          <ComboBox
+            options={options}
+            selected={[]}
+            textField={renderTextField()}
+            onSelect={spy}
+          />,
+        );
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          await listenerMap.keyup({keyCode: Key.DownArrow});
+        };
+
+        async () => {
+          listenerMap.keyup({keyCode: Key.Enter});
+          await expect(spy).toHaveBeenCalledTimes(1);
+          expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
+        };
+      });
     });
 
-    it('adds to selected options when the down arrow and enter keys are pressed', () => {
-      const spy = jest.fn();
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={spy}
-        />,
-      );
+    describe('up arrow', () => {
+      it('selects nothing if there are no options', () => {
+        const options: OptionDescriptor[] = [];
+        const comboBox = mountWithAppProvider(
+          <ComboBox {...mockProps} options={options} />,
+        );
 
-      async () => {
-        comboBox.find(TextField).simulate('click');
-        await listenerMap.keyup({keyCode: Key.DownArrow});
-      };
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.UpArrow});
+          await expect(comboBox.state('selectedIndex')).toBe(-1);
+        };
+      });
 
-      async () => {
-        listenerMap.keyup({keyCode: Key.Enter});
-        await expect(spy).toHaveBeenCalledTimes(1);
-        expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
-      };
+      it('selects the last option when the up arrow is pressed', () => {
+        const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.UpArrow});
+          await expect(comboBox.state('selectedIndex')).toBe(2);
+        };
+      });
+
+      it('selects the first option when the up arrow is pressed from the second option', () => {
+        const options = [
+          {value: 'cheese_pizza', label: 'Cheese Pizza'},
+          {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
+        ];
+        const comboBox = mountWithAppProvider(
+          <ComboBox {...mockProps} options={options} />,
+        );
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.DownArrow});
+          listenerMap.keyup({keyCode: Key.UpArrow});
+          await expect(comboBox.state('selectedIndex')).toBe(0);
+        };
+      });
+
+      it('calls onEndReached() when the last option is selected', () => {
+        const spy = jest.fn();
+        const comboBox = mountWithAppProvider(
+          <ComboBox {...mockProps} onEndReached={spy} />,
+        );
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.UpArrow});
+          await expect(spy).toHaveBeenCalledTimes(1);
+        };
+      });
+
+      it('adds to selected options when the up arrow and enter keys are pressed', () => {
+        const spy = jest.fn();
+        const comboBox = mountWithAppProvider(
+          <ComboBox
+            options={options}
+            selected={[]}
+            textField={renderTextField()}
+            onSelect={spy}
+          />,
+        );
+
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          await listenerMap.keyup({keyCode: Key.UpArrow});
+        };
+
+        async () => {
+          listenerMap.keyup({keyCode: Key.Enter});
+          await expect(spy).toHaveBeenCalledTimes(1);
+          expect(comboBox.prop('selected')[0]).toBe('pepperoni_pizza');
+        };
+      });
     });
 
-    it('activates the popover when the tab key is pressed', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
-      );
+    describe('tab', () => {
+      it('activates the popover when the tab key is pressed', () => {
+        const comboBox = mountWithAppProvider(
+          <ComboBox
+            options={options}
+            selected={[]}
+            textField={renderTextField()}
+            onSelect={noop}
+          />,
+        );
 
-      async () => {
-        listenerMap.keyup({keyCode: Key.Tab});
-        await expect(comboBox.state('popoverActive')).toBe(true);
-      };
+        async () => {
+          listenerMap.keyup({keyCode: Key.Tab});
+          await expect(comboBox.state('popoverActive')).toBe(true);
+        };
+      });
     });
 
-    it('deactivates the popover when the escape key is pressed', () => {
-      const comboBox = mountWithAppProvider(
-        <ComboBox
-          options={options}
-          selected={[]}
-          textField={renderTextField()}
-          onSelect={noop}
-        />,
-      );
+    describe('escape', () => {
+      it('deactivates the popover when the escape key is pressed', () => {
+        const comboBox = mountWithAppProvider(
+          <ComboBox
+            options={options}
+            selected={[]}
+            textField={renderTextField()}
+            onSelect={noop}
+          />,
+        );
 
-      async () => {
-        comboBox.find(TextField).simulate('click');
-        await listenerMap.keyup({keyCode: Key.DownArrow});
-        expect(comboBox.state('popoverActive')).toBe(true);
-      };
+        async () => {
+          comboBox.find(TextField).simulate('click');
+          await listenerMap.keyup({keyCode: Key.DownArrow});
+          expect(comboBox.state('popoverActive')).toBe(true);
+        };
 
-      async () => {
-        listenerMap.keyup({keyCode: Key.Escape});
-        await expect(comboBox.state('popoverActive')).toBe(false);
-      };
+        async () => {
+          listenerMap.keyup({keyCode: Key.Escape});
+          await expect(comboBox.state('popoverActive')).toBe(false);
+        };
+      });
     });
   });
 
