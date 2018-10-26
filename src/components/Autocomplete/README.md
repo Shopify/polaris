@@ -83,10 +83,11 @@ class AutocompleteExample extends React.Component {
 
   clearText = () => {
     const {inputText} = this.state;
-    if (inputText == '') {
+    if (!inputText) {
       return;
     }
     this.setState({inputText: ''});
+    this.filterAndUpdateOptions('');
   };
 
   filterAndUpdateOptions = (inputString) => {
@@ -173,10 +174,11 @@ class MultiAutocompleteExample extends React.Component {
 
   clearText = () => {
     const {inputText} = this.state;
-    if (inputText == '') {
+    if (!inputText) {
       return;
     }
     this.setState({inputText: ''});
+    this.filterAndUpdateOptions('');
   };
 
   removeTag = (tag) => {
@@ -285,10 +287,11 @@ class AutocompleteExample extends React.Component {
 
   clearText = () => {
     const {inputText} = this.state;
-    if (inputText == '') {
+    if (!inputText) {
       return;
     }
     this.setState({inputText: ''});
+    this.filterAndUpdateOptions('');
   };
 
   filterAndUpdateOptions = (inputString) => {
