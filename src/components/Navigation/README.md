@@ -127,6 +127,7 @@ The content of the navigation component consists of navigation items. Each item 
 | badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                         |
 | label              | string              | A string property allowing content to be displayed as link text in the navigation item                            |
 | disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                             |
+| new                | boolean             | A boolean property indicating whether the navigation item is new                                                  |
 | accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of a navigation item                         |
 | selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item                          |
 | subNavigationItems | SubNavigationItem[] | A collection of navigation items rendered as nested secondary navigation items                                    |

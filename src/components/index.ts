@@ -297,6 +297,8 @@ export {
 
 export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
 
+export {default as Indicator, Props as IndicatorProps} from './Indicator';
+
 export {default as withContext} from './WithContext';
 
 export {default as withRef, WithRef} from './WithRef';

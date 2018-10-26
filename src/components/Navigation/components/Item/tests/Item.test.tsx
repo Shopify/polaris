@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Icon, UnstyledLink} from 'components';
+import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {add} from '../../../../../icons';
 
@@ -48,10 +48,12 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item.state('expanded')).toBe(true);
+    expect(item.find(Secondary).prop('expanded')).toBe(true);
+
     matchMedia.setMedia(() => ({matches: false}));
     mediaAddListener();
-    expect(item.state('expanded')).toBe(false);
+
+    expect(item.find(Secondary).prop('expanded')).toBe(false);
   });
 
   it('remains expanded on resize when navigationBarCollapsed and location matches', () => {
@@ -65,9 +67,9 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item.state('expanded')).toBe(true);
+    expect(item.find(Secondary).prop('expanded')).toBe(true);
     matchMedia.setMedia(() => ({matches: false}));
-    expect(item.state('expanded')).toBe(true);
+    expect(item.find(Secondary).prop('expanded')).toBe(false);
   });
 
   describe('renders', () => {
@@ -296,6 +298,65 @@ describe('<Nav.Item />', () => {
         .simulate('click');
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it('renders an indicator if a sub navigation item is marked as new', () => {
+    const spy = jest.fn();
+    matchMedia.setMedia(() => ({addListener: spy}));
+    const item = mountWithAppProvider(
+      <Item
+        label="some label"
+        url="/admin/orders"
+        subNavigationItems={[
+          {
+            url: '/admin/draft_orders',
+            disabled: false,
+            label: 'draft orders',
+            new: true,
+          },
+        ]}
+      />,
+      {
+        context: {location: '/admin/products'},
+      },
+    );
+
+    expect(item.find(Indicator).exists()).toBe(true);
+  });
+
+  it('renders a new badge on sub navigation item if marked as new', () => {
+    const spy = jest.fn();
+    matchMedia.setMedia(() => ({addListener: spy}));
+    const item = mountWithAppProvider(
+      <Item
+        label="some label"
+        url="/admin/orders"
+        subNavigationItems={[
+          {
+            url: '/admin/orders',
+            disabled: false,
+            label: 'orders',
+          },
+          {
+            url: '/admin/draft_orders',
+            disabled: false,
+            label: 'draft orders',
+            new: true,
+          },
+        ]}
+      />,
+      {
+        context: {location: '/admin/orders'},
+      },
+    );
+
+    expect(
+      item
+        .find(Item)
+        .last()
+        .find(Badge)
+        .exists(),
+    ).toBe(true);
   });
 });
 

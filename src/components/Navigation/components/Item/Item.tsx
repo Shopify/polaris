@@ -4,11 +4,18 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {Icon, IconProps, UnstyledLink, Badge} from '../../..';
+import {Secondary} from './components';
+import {
+  Icon,
+  IconProps,
+  UnstyledLink,
+  Badge,
+  Indicator,
+} from '../../../';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {Context, contextTypes} from '../../types';
 
 import * as styles from '../../Navigation.scss';
-import {Secondary} from './components';
 
 interface ItemURLDetails {
   url?: string;
@@ -22,6 +29,7 @@ export interface SubNavigationItem extends ItemURLDetails {
   url: string;
   label: string;
   disabled?: boolean;
+  new?: boolean;
   onClick?(event: React.MouseEvent<HTMLElement>): void;
 }
 
@@ -40,10 +48,13 @@ export interface Props extends ItemURLDetails {
   accessibilityLabel?: string;
   selected?: boolean;
   exactMatch?: boolean;
+  new?: boolean;
   subNavigationItems?: SubNavigationItem[];
   secondaryAction?: SecondaryAction;
   onClick?(): void;
 }
+
+export type CombinedProps = Props & WithAppProviderProps;
 
 interface State {
   expanded: boolean;
@@ -57,7 +68,7 @@ enum MatchState {
   NoMatch,
 }
 
-export default class Item extends React.Component<Props, State> {
+class BaseItem extends React.Component<CombinedProps, State> {
   static contextTypes = contextTypes;
 
   context!: Context;
@@ -88,6 +99,8 @@ export default class Item extends React.Component<Props, State> {
       onClick,
       accessibilityLabel,
       iconBody,
+      new: isNew,
+      polaris: {intl},
       selected: selectedOverride,
     } = this.props;
 
@@ -95,13 +108,25 @@ export default class Item extends React.Component<Props, State> {
 
     const tabIndex = disabled ? -1 : 0;
 
-    const badgeMarkup = badge && (
-      <div className={styles.Badge}>
-        <Badge status="new" size="small">
-          {badge}
-        </Badge>
-      </div>
-    );
+    const hasNewChild =
+      subNavigationItems.filter((subNavigationItem) => subNavigationItem.new)
+        .length > 0;
+
+    const indicatorMarkup = hasNewChild ? (
+      <span className={styles.Indicator}>
+        <Indicator pulse />
+      </span>
+    ) : null;
+
+    const badgeMarkup =
+      badge ||
+      (isNew && (
+        <div className={styles.Badge}>
+          <Badge status="new" size="small">
+            {badge || intl.translate('Polaris.Badge.STATUS_LABELS.new')}
+          </Badge>
+        </div>
+      ));
 
     const iconMarkup = iconBody ? (
       <span
@@ -134,6 +159,7 @@ export default class Item extends React.Component<Props, State> {
           >
             {iconMarkup}
             <span className={styles.Text}>{label}</span>
+            {indicatorMarkup}
             {badgeMarkup}
           </button>
         </li>
@@ -226,7 +252,10 @@ export default class Item extends React.Component<Props, State> {
           onClick={this.getClickHandler(onClick)}
         >
           {iconMarkup}
-          <span className={styles.Text}>{label}</span>
+          <span className={styles.Text}>
+            {label}
+            {indicatorMarkup}
+          </span>
           {badgeMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
@@ -346,3 +375,7 @@ function matchStateForItem(
     : safeStartsWith(location, url);
   return matchesUrl ? MatchState.MatchUrl : MatchState.NoMatch;
 }
+
+const Item = withAppProvider<Props>()(BaseItem);
+
+export default Item;
