@@ -20,7 +20,7 @@ The navigation component is used to display the primary navigation in the sideba
 
 ## Components dependencies
 
-The navigation component must be passed to the [frame](/components/structure/frame) component. The mobile version of the navigation component appears in the [topbar](/components/structure/topbar) component.
+The navigation component must be passed to the [frame](/components/structure/frame) component. The mobile version of the navigation component appears in the [topbar](/components/structure/top-bar) component.
 
 ---
 
@@ -453,7 +453,7 @@ Use to add a horizontal line between sections.
 ## Related components
 
 - To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](/components/structure/frame) component.
-- To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](/components/structure/frame) component to reflect an application’s brand, use the [top bar](/components/structure/topbar) component.
+- To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](/components/structure/frame) component to reflect an application’s brand, use the [top bar](/components/structure/top-bar) component.
 - To tell merchants their options once they have made changes to a form on the page use the {contextual save bar} component.
 - To provide quick, at-a-glance feedback on the outcome of an action, use the {toast} component.
 - To indicate to merchants that a page is loading or an upload is processing use the {loading} component.
