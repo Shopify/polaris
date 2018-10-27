@@ -10,7 +10,7 @@ We've released a suite of new components that, when combined, form the applicati
 
 #### [Frame](https://polaris.shopify.com/components/structure/frame)
 
-The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/topbar), [toast](https://polaris.shopify.com/components/structure/toast), [loading](https://polaris.shopify.com/components/structure/loading), and [contextual save bar](https://polaris.shopify.com/components/structure/contextual-save-bar) components.
+The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/top-bar), [toast](https://polaris.shopify.com/components/structure/toast), [loading](https://polaris.shopify.com/components/structure/loading), and [contextual save bar](https://polaris.shopify.com/components/structure/contextual-save-bar) components.
 
 #### [Navigation](https://polaris.shopify.com/components/navigation/navigation)
 
