@@ -35,7 +35,7 @@ export interface Props {
   /** Callback when the end of the list is reached */
   onLoadMoreResults?(): void;
   /** Callback when popover is closed */
-  onClose?(): void;
+  clearSearch?(): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -62,7 +62,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
       willLoadMoreResults,
       onSelect,
       onLoadMoreResults,
-      onClose,
+      clearSearch,
       polaris: {intl},
     } = this.props;
 
@@ -94,7 +94,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
         actionsBefore={conditionalAction}
         onSelect={onSelect}
         onEndReached={onLoadMoreResults}
-        onClose={onClose}
+        clearSearch={clearSearch}
       />
     );
   }

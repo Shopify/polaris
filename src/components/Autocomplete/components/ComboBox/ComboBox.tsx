@@ -53,7 +53,7 @@ export interface Props {
   /** Callback when the end of the list is reached */
   onEndReached?(): void;
   /** Callback when popover is closed */
-  onClose?(): void;
+  clearSearch?(): void;
 }
 
 export interface Context {
@@ -178,7 +178,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       !contentAfter
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({popoverActive: false}, this.onPopoverClose);
+      this.setState({popoverActive: false});
     }
 
     if (popoverChanged) {
@@ -338,12 +338,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   @autobind
   private handleBlur() {
-    this.setState({popoverActive: false}, this.onPopoverClose);
+    this.setState({popoverActive: false}, this.handleClearSearch);
   }
 
   @autobind
   private handleClick() {
-    !this.state.popoverActive && this.setState({popoverActive: true});
+    this.setState({popoverActive: true});
   }
 
   @autobind
@@ -380,13 +380,34 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     this.selectOptions(newlySelectedOptions);
   }
 
+  private getPopoverState() {
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        const {popoverActive} = this.state;
+        resolve(popoverActive);
+      });
+    });
+  }
+
+  private async handleClearSearch() {
+    const popoverActive = await this.getPopoverState();
+    const {clearSearch} = this.props;
+
+    if (popoverActive || !clearSearch) {
+      return;
+    }
+
+    clearSearch();
+  }
+
   @autobind
   private selectOptions(selected: string[]) {
     const {onSelect, allowMultiple} = this.props;
     selected && onSelect(selected);
     if (!allowMultiple) {
       this.resetVisuallySelectedOptions();
-      this.setState({popoverActive: false}, this.onPopoverClose);
+      console.log('close this shit')
+      this.setState({popoverActive: false}, this.handleClearSearch);
     }
   }
 
@@ -417,19 +438,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       });
   }
 
-  private onPopoverClose() {
-    const {onClose} = this.props;
-
-    if (!onClose) {
-      return;
-    }
-
-    onClose();
-  }
-
   @autobind
   private handlePopoverClose() {
-    this.setState({popoverActive: false}, this.onPopoverClose);
+    this.setState({popoverActive: false}, this.handleClearSearch);
   }
 
   @autobind
