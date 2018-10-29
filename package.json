@@ -192,7 +192,7 @@
     "styles.scss"
   ],
   "dependencies": {
-    "@shopify/app-bridge": "^0.7.3",
+    "@shopify/app-bridge": "^0.8.0",
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.0",
     "@shopify/polaris-tokens": "^1.2.0",

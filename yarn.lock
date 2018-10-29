@@ -225,10 +225,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@shopify/app-bridge@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-0.7.3.tgz#abadfa2ef6293f630764bc5ddca31750caf00f1c"
-  integrity sha512-xDkYvVvN8Gxy3JZduoT4Ohrl6fAuW+wEfhfL+qPzysu0LuJZ7CKgVCdEazPmtcI+V4GQPQLYLzcbCn3mWFU8dg==
+"@shopify/app-bridge@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-0.8.0.tgz#0ea3742c8bf629e471e2005fa2d0f0e7cc33d034"
+  integrity sha512-e2mb++Dl+rv8P3gQ0A8SQUlTIwvoqEBhVnxTbl0jI7F0Aii+Ph05RLK2UZacZOVPopkympI99VCpFqRmFpXUhQ==
 
 "@shopify/images@^1.1.0":
   version "1.1.3"
