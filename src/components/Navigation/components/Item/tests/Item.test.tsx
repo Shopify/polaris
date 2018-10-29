@@ -48,12 +48,10 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item.find(Secondary).prop('expanded')).toBe(true);
-
+    expect(item.state('expanded')).toBe(true);
     matchMedia.setMedia(() => ({matches: false}));
     mediaAddListener();
-
-    expect(item.find(Secondary).prop('expanded')).toBe(false);
+    expect(item.state('expanded')).toBe(false);
   });
 
   it('remains expanded on resize when navigationBarCollapsed and location matches', () => {
@@ -67,9 +65,9 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item.find(Secondary).prop('expanded')).toBe(true);
+    expect(item.state('expanded')).toBe(true);
     matchMedia.setMedia(() => ({matches: false}));
-    expect(item.find(Secondary).prop('expanded')).toBe(false);
+    expect(item.state('expanded')).toBe(true);
   });
 
   describe('renders', () => {
