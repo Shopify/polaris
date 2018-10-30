@@ -24,7 +24,6 @@ describe('<Nav.Item />', () => {
       <Item
         label="some label"
         url="/admin/orders"
-        disabled={false}
         subNavigationItems={[
           {
             url: '/admin/draft_orders',
@@ -48,10 +47,13 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item.state('expanded')).toBe(true);
+    expect(item.find(Secondary).prop('expanded')).toBe(true);
+
     matchMedia.setMedia(() => ({matches: false}));
     mediaAddListener();
-    expect(item.state('expanded')).toBe(false);
+    item.update();
+
+    expect(item.find(Secondary).exists()).toBe(false);
   });
 
   it('remains expanded on resize when navigationBarCollapsed and location matches', () => {
@@ -65,9 +67,9 @@ describe('<Nav.Item />', () => {
       },
     });
 
-    expect(item.state('expanded')).toBe(true);
+    expect(item.find(Secondary).prop('expanded')).toBe(true);
     matchMedia.setMedia(() => ({matches: false}));
-    expect(item.state('expanded')).toBe(true);
+    expect(item.find(Secondary).prop('expanded')).toBe(true);
   });
 
   describe('renders', () => {
@@ -376,5 +378,5 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
     {
       context: {location},
     },
-  );
+  ).find(Item);
 }
