@@ -45,7 +45,12 @@ The autocomplete component is an input field that provides selectable suggestion
 
 ## Bug fixes
 
-- Fixed console error and used new ref syntax in `DataTable` ([#2196](https://github.com/Shopify/polaris-react/pull/2196)) (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris/issues/403)))
+- Fixed console error and used new ref syntax in `DataTable` (thanks to ([@duythien0912](https://github.com/duythien0912)) for the ([original issue](https://github.com/Shopify/polaris-react/issues/403)))
+- Fixed the ability to upload multiple files even when `allowedMultiple` prop is false
+- Fixed `Datatable` so it resizes with new content (thanks [@andrewpye](https://github.com/andrewpye) for the [original issue](https://github.com/Shopify/polaris-react/issues/387))
+- Fixed `RangeSlider` linear-gradient so it doesn't break the css build (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris-react/issues/441))
+- Fixed issue in `Page`, where styling wasn't being applied correctly to Page Actions
+- Removed unnecessary bindings on `Modal`s `onClose` prop. [original issue](https://github.com/Shopify/polaris-react/issues/441))
 
 ## Breaking changes
 
