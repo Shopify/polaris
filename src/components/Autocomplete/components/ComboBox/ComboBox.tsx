@@ -406,7 +406,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     selected && onSelect(selected);
     if (!allowMultiple) {
       this.resetVisuallySelectedOptions();
-      console.log('close this shit')
       this.setState({popoverActive: false}, this.handleClearSearch);
     }
   }
