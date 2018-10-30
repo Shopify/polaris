@@ -119,14 +119,13 @@ class BaseItem extends React.Component<CombinedProps, State> {
     ) : null;
 
     const badgeMarkup =
-      badge ||
-      (isNew && (
+      badge || isNew ? (
         <div className={styles.Badge}>
           <Badge status="new" size="small">
             {badge || intl.translate('Polaris.Badge.STATUS_LABELS.new')}
           </Badge>
         </div>
-      ));
+      ) : null;
 
     const iconMarkup = iconBody ? (
       <span
@@ -139,6 +138,17 @@ class BaseItem extends React.Component<CombinedProps, State> {
           <Icon source={icon} />
         </div>
       )
+    );
+
+    const itemContentMarkup = (
+      <React.Fragment>
+        {iconMarkup}
+        <span className={styles.Text}>
+          {label}
+          {indicatorMarkup}
+        </span>
+        {badgeMarkup}
+      </React.Fragment>
     );
 
     if (url == null) {
@@ -157,10 +167,7 @@ class BaseItem extends React.Component<CombinedProps, State> {
             aria-label={accessibilityLabel}
             onClick={this.getClickHandler(onClick)}
           >
-            {iconMarkup}
-            <span className={styles.Text}>{label}</span>
-            {indicatorMarkup}
-            {badgeMarkup}
+            {itemContentMarkup}
           </button>
         </li>
       );
@@ -251,12 +258,7 @@ class BaseItem extends React.Component<CombinedProps, State> {
           aria-label={accessibilityLabel}
           onClick={this.getClickHandler(onClick)}
         >
-          {iconMarkup}
-          <span className={styles.Text}>
-            {label}
-            {indicatorMarkup}
-          </span>
-          {badgeMarkup}
+          {itemContentMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
         {secondaryNavigationMarkup}
