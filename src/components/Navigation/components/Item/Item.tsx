@@ -68,7 +68,7 @@ enum MatchState {
   NoMatch,
 }
 
-class BaseItem extends React.Component<CombinedProps, State> {
+export class BaseItem extends React.Component<CombinedProps, State> {
   static contextTypes = contextTypes;
 
   context!: Context;
@@ -378,6 +378,6 @@ function matchStateForItem(
   return matchesUrl ? MatchState.MatchUrl : MatchState.NoMatch;
 }
 
-const Item = withAppProvider<Props>()(BaseItem);
+export const Item = withAppProvider<Props>()(BaseItem);
 
 export default Item;
