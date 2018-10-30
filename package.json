@@ -63,7 +63,7 @@
     "hide-private-readme": "shx mv ./README.md ./public/README-private.md && shx mv ./public/README.md ./README.md",
     "show-private-readme": "shx mv ./README.md ./public/README.md && shx mv ./public/README-private.md ./README.md ",
     "prepublish": "in-publish && npm-run-all build hide-private-readme || :",
-    "postpublish": "in-publish && npm-run-all cdn show-private-readme public-release || :",
+    "postpublish": "in-publish && npm-run-all cdn show-private-readme || :",
     "dev": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline",
     "dev:host": "yarn run copy-polaris-tokens && webpack-dev-server --config ./playground/webpack.config.js --content-base ./playground/ --hot --inline --host $(ipconfig getifaddr en0)",
     "tophat": "yarn run copy-polaris-tokens && node ./tophat/index.js --watch",
