@@ -5,6 +5,8 @@ import {Page, DisplayText, Card} from 'components';
 import {noop} from '../../../utilities/other';
 import {LinkAction} from '../../../types';
 import {Header} from '../components';
+import {SecondaryAction, PrimaryActionProps} from '../components/Header/Header';
+import {ActionGroupDescriptor} from '../components/Header/components';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -84,14 +86,18 @@ describe('<Page />', () => {
     });
 
     it('creates a title bar', () => {
-      const primaryAction = {
+      const primaryAction: PrimaryActionProps = {
         content: 'Foo',
+        url: '/foo',
+        target: 'APP',
       };
-      const secondaryActions = [{content: 'Bar'}];
-      const actionGroups = [
+      const secondaryActions: SecondaryAction[] = [
+        {content: 'Bar', url: '/bar', target: 'ADMIN_PATH'},
+      ];
+      const actionGroups: ActionGroupDescriptor[] = [
         {
           title: 'Baz',
-          actions: [{content: 'Qux'}],
+          actions: [{content: 'Qux', url: 'https://qux.com', target: 'REMOTE'}],
         },
       ];
 
