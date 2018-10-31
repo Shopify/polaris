@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
+const {resolve} = require('path');
 const {execSync} = require('child_process');
 const {writeFileSync, readFileSync} = require('fs-extra');
-const {resolve} = require('path');
 const {version: newVersion} = require('../package.json');
 const {semverRegExp, readmes} = require('./utilities');
 

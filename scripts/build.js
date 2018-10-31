@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 
 import {execSync} from 'child_process';
-import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {join, resolve as resolvePath} from 'path';
+import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {rollup} from 'rollup';
 import {cp, mv, rm} from 'shelljs';
 import copyfiles from 'copyfiles';
 
 import createRollupConfig from '../config/rollup';
-import generateSassBuild from './sass-build';
 import packageJSON from '../package.json';
+import generateSassBuild from './sass-build';
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, 'build');

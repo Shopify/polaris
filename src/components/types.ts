@@ -4,7 +4,7 @@ import {
   ToastProps,
   AppProviderContext,
   ThemeProviderContext,
-} from '../components';
+} from '.';
 
 export interface PolarisContext
   extends AppProviderContext,

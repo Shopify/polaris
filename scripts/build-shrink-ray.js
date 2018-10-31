@@ -3,8 +3,8 @@
 require('isomorphic-fetch');
 
 const {resolve} = require('path');
-const {existsSync, readFileSync} = require('fs-extra');
 const {execSync} = require('child_process');
+const {existsSync, readFileSync} = require('fs-extra');
 
 const BASE_BRANCH = 'master';
 const repo = 'polaris-react';

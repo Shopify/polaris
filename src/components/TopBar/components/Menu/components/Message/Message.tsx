@@ -1,13 +1,14 @@
 import * as React from 'react';
 import {
+  Badge,
+  BadgeProps,
   TextContainer,
   Heading,
   Link,
   Stack,
   Popover,
   Button,
-} from '../../../../../../components';
-import {Badge, BadgeProps} from '../../../../..';
+} from '../../../../..';
 import styles from './Message.scss';
 
 export interface Props {

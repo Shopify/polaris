@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IconableAction} from '../../../../types';
 
-import {Avatar, AvatarProps} from '../../../../components';
+import {Avatar, AvatarProps} from '../../..';
 import {MessageProps} from '../Menu';
 import {Menu} from '..';
 import MessageIndicator from '../../../MessageIndicator';

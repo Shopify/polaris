@@ -5,11 +5,11 @@ import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {ComplexAction, WithContextTypes} from '../../../../types';
 import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
 
-import {AppliedFilter, Filter, FilterType, Operator} from './types';
-import * as styles from './FilterControl.scss';
 import {ResourceListContext} from '../../ResourceList';
 import {Consumer} from '../Context';
 import withContext from '../../../WithContext';
+import * as styles from './FilterControl.scss';
+import {AppliedFilter, Filter, FilterType, Operator} from './types';
 
 import {FilterCreator} from './components';
 

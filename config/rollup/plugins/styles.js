@@ -1,6 +1,6 @@
+import {resolve as resolvePath, dirname} from 'path';
 import postcss from 'postcss';
 import {readFileSync, ensureDirSync, writeFile} from 'fs-extra';
-import {resolve as resolvePath, dirname} from 'path';
 import {render} from 'node-sass';
 import {createFilter} from 'rollup-pluginutils';
 import cssnano from 'cssnano';
