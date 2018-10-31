@@ -1,6 +1,7 @@
 {
   "extends": [
-    "plugin:shopify/typescript-react",
+    "plugin:shopify/typescript",
+    "plugin:shopify/react",
     "plugin:shopify/jest",
     "plugin:shopify/node",
     "plugin:shopify/polaris",
@@ -51,15 +52,17 @@
   },
   "overrides": [
     {
-      "files": ["*.js"],
+      "files": ["examples/**/*.js"],
       "rules": {
-        "typescript/no-var-requires": "off"
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off"
       }
     },
     {
       "files": ["playground/Playground.tsx"],
       "rules": {
-        "react/prefer-stateless-function": "off"
+        "react/prefer-stateless-function": "off",
+        "shopify/react-initialize-state": "off"
       }
     }
   ]

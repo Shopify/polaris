@@ -54,7 +54,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
 
     const urls = [...batchComponentExamples, ...individualModalExamples];
 
-    urls.map((path) => {
+    urls.forEach((path) => {
       const currentBrowser = browsers[browserIndex % 2];
       browserIndex++;
       currentBrowser.taken = currentBrowser.taken.then(async () => {

@@ -38,9 +38,6 @@ rm('-rf', resolvePath(root, 'types/src'));
 
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
 
-const srcReadme = resolvePath(root, './src/components/README.md');
-const destinationReadme = resolvePath(docs, './components/README.md');
-
 copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
   console.error(error);
   process.exit(1);

@@ -7,7 +7,7 @@ import {Duration} from '../../../shared';
 import {ActionList, Popover, Button, EventListener} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import CheckableButton from '../CheckableButton';
-import BulkActionButton from './components/BulkActionButton';
+import {BulkActionButton} from './components';
 import * as styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;

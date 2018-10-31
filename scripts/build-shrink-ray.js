@@ -25,10 +25,10 @@ if (sha) {
   console.log(
     'sha is not available, building bundle without pinging shrink-ray',
   );
-  buildPackages(false);
+  buildPackages();
 }
 
-function buildPackages(includeReport) {
+function buildPackages() {
   execSync('yarn run webpack --config shrink-ray-build/webpack.config.js', {
     stdio: 'inherit',
   });
@@ -41,7 +41,7 @@ function setupShrinkRay() {
       console.log(`[shrink-ray] status: ${response.status}`);
       console.log(`[shrink-ray] statusText: ${response.statusText}`);
       console.log('[shrink-ray] shrink-ray prebuild script completed.');
-      buildPackages(true);
+      buildPackages();
       return postReportToShrinkRay();
     })
     .then((response) => {

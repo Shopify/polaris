@@ -139,6 +139,7 @@ export function withSticky() {
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): any & C {
+    // eslint-disable-next-line shopify/react-initialize-state
     class WithStickyManager extends React.Component<
       {},
       OwnProps & WithAppProviderProps

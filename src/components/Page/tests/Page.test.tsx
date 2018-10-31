@@ -5,7 +5,9 @@ import {Page, DisplayText, Card} from 'components';
 import {noop} from '../../../utilities/other';
 import {LinkAction} from '../../../types';
 import {Header} from '../components';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {SecondaryAction, PrimaryActionProps} from '../components/Header/Header';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {ActionGroupDescriptor} from '../components/Header/components';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({

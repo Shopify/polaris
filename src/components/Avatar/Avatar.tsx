@@ -11,6 +11,8 @@ export type Size = 'small' | 'medium' | 'large';
 
 const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
 const AVATAR_IMAGES = Object.keys(avatars).map(
+  // import/namespace does not allow computed values by default
+  // eslint-disable-next-line import/namespace
   (key: keyof typeof avatars) => avatars[key],
 );
 
