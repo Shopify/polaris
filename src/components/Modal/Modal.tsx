@@ -24,7 +24,7 @@ import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
-export type Size = keyof typeof AppBridgeModal.Size;
+export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
 export interface Props extends FooterProps {
   /** Whether the modal is open or not */
