@@ -1,14 +1,12 @@
 import * as React from 'react';
-import {Page, AppProvider} from '@shopify/polaris';
+import {Page} from '@shopify/polaris';
 
 interface State {}
 
 export default class Playground extends React.Component<never, State> {
   render() {
     return (
-      <AppProvider>
-        <Page title="Playground" />
-      </AppProvider>
+      <Page title="Playground">{/* Add the code you want to test here */}</Page>
     );
   }
 }
