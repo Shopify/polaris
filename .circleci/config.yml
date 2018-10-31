@@ -2,7 +2,7 @@ version: 2
 jobs:
   check:
     docker:
-      - image: circleci/node:8.11.2
+      - image: circleci/node:8.12.0
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +19,7 @@ jobs:
       - run: yarn run build-shrink-ray
   percy:
     docker:
-      - image: circleci/node:8.11.2-browsers
+      - image: circleci/node:8.12.0-browsers
     steps:
       - checkout
       - restore_cache:
@@ -35,7 +35,7 @@ jobs:
       - run: yarn start & sleep 20; yarn run test:percy
   a11y:
     docker:
-      - image: circleci/node:8.11.2-browsers
+      - image: circleci/node:8.12.0-browsers
     steps:
       - checkout
       - restore_cache:
