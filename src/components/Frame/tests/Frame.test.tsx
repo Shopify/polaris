@@ -188,6 +188,14 @@ describe('<Frame />', () => {
     expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
   });
 
+  // JSDOM 11.12.0 does not support setting/reading custom properties so we are
+  // unable to assert that we set a custom property
+  // See https://github.com/jsdom/jsdom/issues/1895
+  it.skip('sets a root property with global ribbon height of 0 if there is no globalRibbon prop', () => {
+    mountWithAppProvider(<Frame />);
+    expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
+  });
+
   it('should render a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
     const frame = mountWithAppProvider(
       <Frame>
