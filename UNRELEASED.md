@@ -64,20 +64,27 @@ The autocomplete component is an input field that provides selectable suggestion
 #### Embedded apps
 
 - Upgraded to the Shopify App Bridge and removed the EASDK
-- Removed `easdk` from React context and added `appBridge` which accessible via `this.context.polaris.appBridge`
-- Updated `shopOrigin` prop on `AppProvider` to optional as we provide it by default. Note that if you provide a `shopOrigin` it now needs to be provided without the `'https://'` per the Shopify App Bridge API
-- Removed `debug` prop from `AppProvider` as it no longer supported by the Shopify App Bridge, use Redux DevTools instead
-- Removed the embedded bundle so imports from `'@shopify/polaris/embedded'` will no longer work, use `'@shopify/polaris'` instead
-- Removed the `Alert` component as it no longer supported by the Shopify App Bridge, use `Modal` instead
-- Moved `ResourcePicker` to main bundle, import from `'@shopify/polaris'`
-- Updated `target` prop type related to embedded apps, use `'APP'`, `'ADMIN_PATH'`, or `'REMOTE'`
-- Added `target` prop to all actions which get passed to the Shopify App Bridge
-- Removed `width` and `height` props from `Modal` as they are no longer supported by the Shopify App Bridge
-- Added new `size` and `message` props to `Modal` which aligns with the Shopify App Bridge API
-- Removed `title` prop from `ResourcePicker`
-- Removed `products` and `collections` props from `ResourcePicker`, use new `resourceType` prop instead
-- Added new `resourceType`, `initialQuery`, and `showVariants` props to `ResourcePicker` which aligns with the Shopify App Bridge API
 - Added Shopify App Bridge support to new components `Toast` and `Loading`
+- Added `target` prop to all actions which get passed to the Shopify App Bridge
+- Added new `size` and `message` props to `Modal` which aligns with the Shopify App Bridge API
+- Added new `resourceType`, `initialQuery`, and `showVariants` props to `ResourcePicker` which aligns with the Shopify App Bridge API
+- Moved embedded `ResourcePicker`, `Modal`, and `Page` to the main bundle and removed the embedded bundle. Imports from `'@shopify/polaris/embedded'` will no longer work, use `'@shopify/polaris'` instead
+- Made the `shopOrigin` prop on `AppProvider` optional. It’s now provided by default. If you do provide a `shopOrigin` it now needs to be given without the `'https://'` per the Shopify App Bridge API.
+- Updated `onSelection` prop on `ResourcePicker`. The shape of the `selectPayload` data has changed and the product `id` is now a `gid`. For example, `/9019381572` is now `gid://shopify/Product/9019381572`. We offer [@shopify/admin-graphql-api-utilities](https://www.npmjs.com/package/@shopify/admin-graphql-api-utilities) to help compose and parse `gid` from Shopify admin
+- Updated default values for `ResourcePicker` props to align with the Shopify App Bridge. Set prop `showHidden`, `allowMultiple={false}`, and `showVariants={false}` to get the previous default behavior
+- Updated `target` prop type related to embedded apps, use `'APP'`, `'ADMIN_PATH'`, or `'REMOTE'`
+- Removed `icon` prop from `Page`. Upload your app’s icon in the Shopify Partners dashboard “App setup” section instead
+- Removed `title` prop from `ResourcePicker` as setting a title is no longer supported by the Shopify App Bridge
+- Removed `products` prop from `ResourcePicker`, use `resourceType="Product"` instead
+- Removed `collections` prop from `ResourcePicker`, use `resourceType="Collection"` instead
+- Removed `width` and `height` props from `Modal`, use `size` instead
+- Removed `debug` prop from `AppProvider`, use [Redux DevTools](https://github.com/reduxjs/redux-devtools) instead. Redux DevTools also has [browser extensions](https://github.com/zalmoxisus/redux-devtools-extension).
+- Removed the `Alert` component, use `Modal` with `message` prop instead
+- Replaced `easdk` on React context with `appBridge`. Access it via `this.context.polaris.appBridge`.
+- Removed `this.context.easdk.startLoading()` and `this.context.easdk.stopLoading()`, use the `Loading` component instead
+- Removed `this.context.easdk.showFlashNotice()`, use the `Toast` component instead
+- Removed `this.context.easdk.pushState()`, use the [Shopify App Bridge `History` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/history) instead. The `History` action requires passing the `appBridge` instance which is accessible via `this.context.polaris.appBridge`
+- Removed `this.context.easdk.redirect()`, use the [Shopify App Bridge `Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) instead. The `Redirect` action requires passing the `appBridge` instance which is accessible via `this.context.polaris.appBridge`
 
 #### License
 
