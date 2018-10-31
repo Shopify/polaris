@@ -77,7 +77,7 @@ describe('<Section />', () => {
   });
 
   it('passes the onActionAnyItem callback to Item', () => {
-    const callback = () => {};
+    const mockOnActionAnyItem = jest.fn();
     const section = mountWithAppProvider(
       <Section
         hasMultipleSections
@@ -87,15 +87,15 @@ describe('<Section />', () => {
             {content: 'Export file', onAction: noop},
           ],
         }}
-        onActionAnyItem={callback}
+        onActionAnyItem={mockOnActionAnyItem}
       />,
     );
 
-    expect(
-      section
-        .find(Item)
-        .first()
-        .prop('onAction'),
-    );
+    section
+      .find('Item button')
+      .first()
+      .simulate('click');
+
+    expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
   });
 });

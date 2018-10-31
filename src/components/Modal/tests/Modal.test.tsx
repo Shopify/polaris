@@ -483,15 +483,6 @@ describe('<Modal>', () => {
       modal.unmount();
       expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
     });
-
-    it('unsubscribes on unmount', () => {
-      const {modal} = mountWithAppBridge(
-        <Modal src="/test" open onClose={noop} />,
-      );
-
-      modal.unmount();
-      expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
-    });
   });
 });
 

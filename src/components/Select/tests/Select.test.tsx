@@ -128,6 +128,8 @@ describe('<Select />', () => {
       }
     }
 
+    // Expectations are ran within the call to testOptions()
+    // eslint-disable-next-line jest/expect-expect
     it('translates grouped options into optgroup tags', () => {
       const optionOrOptgroupElements = shallowWithAppProvider(
         <Select label="Select" options={optionsAndGroups} />,
@@ -141,6 +143,8 @@ describe('<Select />', () => {
       });
     });
 
+    // Expectations are ran within the call to testOptions()
+    // eslint-disable-next-line jest/expect-expect
     it('translates legacy groups into optgroup tags', () => {
       const optionOrOptgroupElements = shallowWithAppProvider(
         <Select label="Select" groups={optionsAndGroups} />,

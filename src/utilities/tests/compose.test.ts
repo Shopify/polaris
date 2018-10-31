@@ -20,7 +20,7 @@ const toScreamingCaseSnake = compose(
 
 describe('compose', () => {
   it('will return a function', () => {
-    expect(typeof toScreamingCaseSnake === 'function');
+    expect(typeof toScreamingCaseSnake === 'function').toBe(true);
   });
 
   it('will compose arguments from right to left', () => {

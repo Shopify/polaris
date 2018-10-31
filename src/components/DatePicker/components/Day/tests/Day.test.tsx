@@ -43,7 +43,7 @@ describe('<Day />', () => {
         />,
       );
       day.simulate('click');
-      expect(spy).toHaveBeenCalled;
+      expect(spy).toHaveBeenCalled();
     });
 
     it('does not get called if button is disabled', () => {
@@ -53,7 +53,7 @@ describe('<Day />', () => {
         <Day focused day={currentDay} selected disabled onClick={spy} />,
       );
       day.simulate('click');
-      expect(spy).not.toHaveBeenCalled;
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 
