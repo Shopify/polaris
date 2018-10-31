@@ -24,9 +24,10 @@ import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
-export type SecondaryAction = IconableAction &
-  DisableableAction &
-  AppBridgeActionTarget;
+export interface SecondaryAction
+  extends IconableAction,
+    DisableableAction,
+    AppBridgeActionTarget {}
 
 export interface PrimaryActionProps
   extends DisableableAction,
