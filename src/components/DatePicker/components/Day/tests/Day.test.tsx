@@ -8,7 +8,7 @@ describe('<Day />', () => {
     const day = mountWithAppProvider(
       <Day focused day={currentDay} selected disabled={false} />,
     );
-    expect(day.find('button').length).toBe(1);
+    expect(day.find('button')).toHaveLength(1);
   });
 
   describe('tabIndex', () => {

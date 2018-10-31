@@ -308,7 +308,7 @@ describe('<Select />', () => {
         .find('select')
         .prop<string>('aria-describedby')
         .split(' ');
-      expect(descriptions.length).toBe(2);
+      expect(descriptions).toHaveLength(2);
       expect(select.find(`#${descriptions[0]}`).text()).toBe('Some help');
       expect(select.find(`#${descriptions[1]}`).text()).toBe('Some error');
     });

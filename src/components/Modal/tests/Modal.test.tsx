@@ -91,7 +91,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('instant')).toBe(undefined);
+      expect(modal.find(Dialog).prop('instant')).toBeUndefined();
     });
   });
 
@@ -113,7 +113,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('large')).toBe(undefined);
+      expect(modal.find(Dialog).prop('large')).toBeUndefined();
     });
   });
 
@@ -135,7 +135,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('limitHeight')).toBe(undefined);
+      expect(modal.find(Dialog).prop('limitHeight')).toBeUndefined();
     });
   });
 

@@ -38,7 +38,7 @@ describe('<ResourceList />', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
-      expect(resourceList.find('li').length).toBe(3);
+      expect(resourceList.find('li')).toHaveLength(3);
     });
 
     it('renders custom markup', () => {

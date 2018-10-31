@@ -14,13 +14,13 @@ describe('<TrapFocus />', () => {
     expect(trapFocus.exists()).toBe(true);
 
     // Render children
-    expect(trapFocus.find(TextContainer).length).toBe(1);
+    expect(trapFocus.find(TextContainer)).toHaveLength(1);
 
     // Renders Focus
-    expect(trapFocus.find(Focus).length).toBe(1);
+    expect(trapFocus.find(Focus)).toHaveLength(1);
 
     // Renders an event listener
-    expect(trapFocus.find(EventListener).length).toBe(1);
+    expect(trapFocus.find(EventListener)).toHaveLength(1);
     expect(trapFocus.find(EventListener).prop('event')).toBe('focusout');
   });
 

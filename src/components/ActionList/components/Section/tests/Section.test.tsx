@@ -18,7 +18,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find(Item).length).toBe(2);
+    expect(section.find(Item)).toHaveLength(2);
   });
 
   it('renders items as li when hasMultipleSections is false', () => {
@@ -34,7 +34,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find('li').length).toBe(2);
+    expect(section.find('li')).toHaveLength(2);
   });
 
   it('wraps items in an li when hasMultipleSections is true', () => {
@@ -50,7 +50,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find('li').length).toBe(3);
+    expect(section.find('li')).toHaveLength(3);
   });
 
   it('passes content to Item', () => {
