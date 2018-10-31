@@ -1,13 +1,9 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
-import {Redirect} from '@shopify/app-bridge/actions';
 import {IconProps} from './components';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-export type AppBridgeTarget = Exclude<
-  keyof typeof Redirect.Action,
-  'ADMIN_SECTION'
->;
+export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
 
 export type Error =
   | string
