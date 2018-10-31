@@ -17,16 +17,21 @@ import {
   LoadableAction,
   DestructableAction,
   IconableAction,
+  AppBridgeAction,
+  AppBridgeActionTarget,
 } from '../../../../types';
 import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
-type SecondaryAction = IconableAction & DisableableAction;
+export type SecondaryAction = IconableAction &
+  DisableableAction &
+  AppBridgeActionTarget;
 
-interface PrimaryActionProps
+export interface PrimaryActionProps
   extends DisableableAction,
     LoadableAction,
+    AppBridgeAction,
     DestructableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
