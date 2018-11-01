@@ -171,6 +171,6 @@ $typography-condensed: em(640px);
 
 @mixin print-hidden {
   @media print {
-    display: none;
+    display: none !important;
   }
 }
