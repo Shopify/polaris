@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Popover, ActionList} from '../../../../../../components';
-import {hasNewStatus} from '../../utilities';
 import Action from '../Action';
 import {ActionGroupDescriptor} from './types';
 import * as styles from './ActionGroup.scss';
@@ -20,15 +19,8 @@ class ActionGroup extends React.Component<Props, never> {
       <div className={styles.Details}>{details}</div>
     );
 
-    const showIndicator = hasNewStatus(actions);
     const activator = (
-      <Action
-        showIndicator={showIndicator}
-        hasIndicator={active}
-        disclosure
-        icon={icon}
-        onAction={this.handleOpen}
-      >
+      <Action disclosure icon={icon} onAction={this.handleOpen}>
         {title}
       </Action>
     );

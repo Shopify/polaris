@@ -20,7 +20,6 @@ import {
   AppBridgeAction,
   AppBridgeActionTarget,
 } from '../../../../types';
-import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
@@ -196,10 +195,6 @@ export default class Header extends React.PureComponent<Props, State> {
             />
           ))
         : null;
-
-    const showIndicator =
-      false &&
-      actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
 
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
