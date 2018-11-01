@@ -24,6 +24,7 @@ keywords:
   - page actions
   - page layouts
   - easdk
+  - shopify app bridge
   - embedded app
   - android
   - ios
@@ -350,4 +351,4 @@ Title metadata appears immediately after the page’s title. Use it to communica
 ## Related components
 
 - To lay out the content within a page, [use the layout component](/components/structure/layout)
-- When using `Page` within an [embedded app](https://github.com/Shopify/polaris/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Embedded App SDK
+- When using `Page` within an [embedded app](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Shopify App Bridge

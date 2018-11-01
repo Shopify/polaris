@@ -1,7 +1,8 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
 
-import {createPolarisContext} from '../utils';
+import {createAppProviderContext} from '../utils';
+import {createThemeContext} from '../../ThemeProvider';
 import {polarisAppProviderContextTypes} from '../types';
 import StickyManager from '../StickyManager';
 
@@ -20,11 +21,14 @@ describe('<AppProvider />', () => {
       return <a href="test">Custom Link Component</a>;
     };
     const stickyManager = new StickyManager(document);
-    const context = createPolarisContext({
-      i18n,
-      linkComponent: CustomLinkComponent,
-      stickyManager,
-    });
+    const context = {
+      ...createAppProviderContext({
+        i18n,
+        linkComponent: CustomLinkComponent,
+        stickyManager,
+      }),
+      ...createThemeContext(),
+    };
 
     // eslint-disable-next-line react/prefer-stateless-function
     class Child extends React.Component {

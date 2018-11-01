@@ -136,6 +136,50 @@ describe('<DateSelector />', () => {
     });
   });
 
+  describe('filterValue', () => {
+    it('is used to calculate dateFilterOption and gets passed to Select as value', () => {
+      const filterValue = 'filter value';
+      const wrapper = mountWithAppProvider(
+        <DateSelector {...mockDefaultProps} filterValue={filterValue} />,
+      );
+      expect(wrapper.find(Select).prop('value')).toBe(filterValue);
+    });
+  });
+
+  describe('filterKey and filterMaxKey', () => {
+    it('is used to calculate dateFilterOption and gets passed to Select as value', () => {
+      const filterValue = 'filter value';
+      const filterKey = 'before';
+      const filterMaxKey = 'before';
+      const wrapper = mountWithAppProvider(
+        <DateSelector
+          {...mockDefaultProps}
+          filterValue={filterValue}
+          filterKey={filterKey}
+          filterMaxKey={filterMaxKey}
+        />,
+      );
+      expect(wrapper.find(Select).prop('value')).toBe('on_or_before');
+    });
+  });
+
+  describe('filterKey and filterMinKey', () => {
+    it('is used to calculate dateFilterOption and gets passed to Select as value', () => {
+      const filterValue = 'filter value';
+      const filterKey = 'after';
+      const filterMinKey = 'after';
+      const wrapper = mountWithAppProvider(
+        <DateSelector
+          {...mockDefaultProps}
+          filterValue={filterValue}
+          filterKey={filterKey}
+          filterMinKey={filterMinKey}
+        />,
+      );
+      expect(wrapper.find(Select).prop('value')).toBe('on_or_after');
+    });
+  });
+
   describe('onFilterValueChange', () => {
     it('gets called with new filter value when date filter is updated to filter without date predicate', () => {
       const onFilterValueChangeSpy = jest.fn();

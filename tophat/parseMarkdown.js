@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import fs from 'fs';
 import glob from 'glob';
 import chalk from 'chalk';
@@ -76,6 +78,15 @@ function parseCodeExamples(data, file) {
       }] Component was ignored (platforms: ${matter.data.platforms.join(
         ',',
       )})}`,
+    );
+    return null;
+  }
+
+  if (matter.data.hidePlayground) {
+    console.log(
+      chalk`   ℹ️  {grey [${
+        matter.data.name
+      }] Component was ignored (hidePlayground: true)}`,
     );
     return null;
   }

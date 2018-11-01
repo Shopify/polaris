@@ -1,0 +1,55 @@
+$activator-variables: (
+  min-width: rem(36px),
+  border-left: 1px solid rgba(color('black'), 0.42),
+  transition: background-color 0.1s,
+  focus-background-color: rgba(color('white'), 0.16),
+  hover-background-color: rgba(color('white'), 0.08),
+  active-background-color: rgba(color('black'), 0.28),
+);
+
+@function menu($variable) {
+  @return map-get($activator-variables, $variable);
+}
+
+.Activator {
+  @include unstyled-button;
+  color: var(--top-bar-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: menu(min-width);
+  height: top-bar-height();
+  margin: 0;
+  padding: spacing(tight) spacing();
+  border: 0;
+  border-left: menu(border-left);
+  cursor: pointer;
+  transition: menu(transition);
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    display: none;
+  }
+
+  &:focus {
+    background-color: menu(focus-background-color);
+    outline: none;
+  }
+
+  &:hover {
+    background-color: menu(hover-background-color);
+  }
+
+  &:active,
+  &[aria-expanded='true'] {
+    background-color: menu(active-background-color);
+    outline: none;
+    transition: none;
+  }
+}
+
+.Section {
+  margin-top: spacing(tight);
+  padding-top: spacing(tight);
+  border-top: border();
+}

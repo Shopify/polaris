@@ -29,10 +29,13 @@ const files = [
 
 console.log('Cleaning up old build...');
 rm('-rf', projectPolarisDir);
+
 console.log('Creating new build directory...');
 mkdir(projectPolarisDir);
+
 console.log('Copying build to node_modules...');
 cp('-R', files, projectPolarisDir);
+
 console.log(
   'Build copied to consuming project. You can now run the consuming app and it will include your changes from Polaris.',
 );

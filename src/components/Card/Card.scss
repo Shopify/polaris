@@ -29,7 +29,7 @@
 }
 
 .Section-fullWidth {
-  padding: spacing(none);
+  padding: spacing(loose) spacing(none);
 }
 
 .Section-subdued {
@@ -40,7 +40,8 @@
   padding-bottom: spacing(tight);
 
   .Section-fullWidth & {
-    padding: spacing(loose) spacing(loose) spacing(tight);
+    padding-left: spacing(loose);
+    padding-right: spacing(loose);
   }
 }
 

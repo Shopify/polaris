@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {Slidable} from '../components';
+import {Slidable, AlphaPicker} from '../components';
 import ColorPicker from '../ColorPicker';
 
 const red = {
@@ -71,6 +71,17 @@ describe('<ColorPicker />', () => {
       );
 
       expect(colorPicker.childAt(0).prop('id')).toBe(id);
+    });
+  });
+
+  describe('color', () => {
+    it('is passed down to AlphaPicker if allowAlpha is true', () => {
+      const id = 'MyID';
+      const colorPicker = mountWithAppProvider(
+        <ColorPicker id={id} color={red} onChange={jest.fn()} allowAlpha />,
+      );
+
+      expect(colorPicker.find(AlphaPicker).prop('color')).toEqual(red);
     });
   });
 });

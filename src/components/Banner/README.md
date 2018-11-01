@@ -446,7 +446,7 @@ Use to update merchants about a change or give them advice.
 
 <!-- example-for: web -->
 
-Banners inside of modals render with less spacing and a paired-back design to fit within a content context.
+Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
 class ModalExample extends React.Component {
@@ -504,7 +504,7 @@ class ModalExample extends React.Component {
 
 <!-- example-for: web -->
 
-Banners inside of cards render with less spacing and a paired-back design to fit within a content context.
+Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
 <Card title="Online store dashboard" sectioned>

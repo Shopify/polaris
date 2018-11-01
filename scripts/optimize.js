@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const SVGO = require('svgo');
 const glob = require('glob');
 const {paramCase} = require('change-case');
@@ -10,7 +12,6 @@ const svgo = new SVGO(svgOptions());
 
 glob(resolvePath(__dirname, '../**/*.svg'), (error, files) => {
   if (error) {
-    // eslint-disable-next-line no-console
     console.error(error);
     process.exit(1);
     return;

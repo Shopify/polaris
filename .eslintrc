@@ -7,6 +7,11 @@
     "plugin:shopify/typescript-react",
     "plugin:shopify/typescript-prettier"
   ],
+  "settings": {
+    "react": {
+      "version": "16.3"
+    }
+  },
   "rules": {
     "func-style": "off",
     "no-process-env": "off",
@@ -46,6 +51,12 @@
       "files": ["*.js"],
       "rules": {
         "typescript/no-var-requires": "off"
+      }
+    },
+    {
+      "files": ["playground/Playground.tsx"],
+      "rules": {
+        "react/prefer-stateless-function": "off"
       }
     }
   ]

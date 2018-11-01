@@ -2,7 +2,17 @@ import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import {classNames} from '@shopify/react-utilities/styles';
-import {withAppProvider, WithAppProviderProps} from 'components';
+import {
+  Button as AppBridgeButton,
+  TitleBar as AppBridgeTitleBar,
+} from '@shopify/app-bridge/actions';
+
+import {withAppProvider, WithAppProviderProps} from '../../components';
+import {
+  transformActions,
+  generateRedirect,
+} from '../../utilities/app-bridge-transformers';
+
 import {Header, HeaderProps} from './components';
 import * as styles from './Page.scss';
 
@@ -17,35 +27,48 @@ export interface Props extends HeaderProps {
 
 export type ComposedProps = Props & WithAppProviderProps;
 
-const EASDK_PROPS: (keyof Props)[] = [
+const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'title',
-  'icon',
   'breadcrumbs',
   'secondaryActions',
   'actionGroups',
   'primaryAction',
-  'pagination',
 ];
 
 export class Page extends React.PureComponent<ComposedProps, never> {
+  private titlebar: AppBridgeTitleBar.TitleBar | undefined;
+
   componentDidMount() {
-    if (this.props.polaris.easdk == null) {
+    if (this.props.polaris.appBridge == null) {
       return;
     }
-    this.handleEASDKMessaging();
+
+    this.titlebar = AppBridgeTitleBar.create(
+      this.props.polaris.appBridge,
+      this.transformProps(),
+    );
   }
 
   componentDidUpdate(prevProps: ComposedProps) {
-    if (this.props.polaris.easdk == null) {
+    if (this.props.polaris.appBridge == null || this.titlebar == null) {
       return;
     }
 
-    const prevEASDKProps = pick(prevProps, EASDK_PROPS);
-    const currentEASDKProps = pick(this.props, EASDK_PROPS);
+    const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
+    const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
-    if (!isEqual(prevEASDKProps, currentEASDKProps)) {
-      this.handleEASDKMessaging();
+    if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+      this.titlebar.unsubscribe();
+      this.titlebar.set(this.transformProps());
     }
+  }
+
+  componentWillUnmount() {
+    if (this.props.polaris.appBridge == null || this.titlebar == null) {
+      return;
+    }
+
+    this.titlebar.unsubscribe();
   }
 
   render() {
@@ -58,7 +81,8 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     );
 
     const headerMarkup =
-      this.props.polaris.easdk || !this.hasHeaderContent() ? null : (
+      this.props.polaris.appBridge ||
+      this.hasHeaderContent() === false ? null : (
         <Header {...rest} />
       );
 
@@ -70,22 +94,61 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     );
   }
 
-  private handleEASDKMessaging() {
-    const {easdk} = this.props.polaris;
+  private hasHeaderContent() {
+    const {
+      title,
+      primaryAction,
+      secondaryActions,
+      actionGroups,
+      breadcrumbs,
+    } = this.props;
 
-    if (easdk) {
-      easdk.Bar.update(this.props);
-    }
+    return (
+      (title != null && title !== '') ||
+      primaryAction != null ||
+      (secondaryActions != null && secondaryActions.length > 0) ||
+      (actionGroups != null && actionGroups.length > 0) ||
+      (breadcrumbs != null && breadcrumbs.length > 0)
+    );
   }
 
-  private hasHeaderContent() {
-    const {title, primaryAction, secondaryActions, breadcrumbs} = this.props;
-    return (
-      (title && title !== '') ||
-      primaryAction ||
-      (secondaryActions && secondaryActions.length > 0) ||
-      (breadcrumbs && breadcrumbs.length > 0)
-    );
+  private transformProps(): AppBridgeTitleBar.Options {
+    const {appBridge} = this.props.polaris;
+    const {title, primaryAction, secondaryActions, actionGroups} = this.props;
+
+    return {
+      title,
+      buttons: transformActions(appBridge, {
+        primaryAction,
+        secondaryActions,
+        actionGroups,
+      }),
+      breadcrumbs: this.transformBreadcrumbs(),
+    };
+  }
+
+  private transformBreadcrumbs(): AppBridgeButton.Button | undefined {
+    const {appBridge} = this.props.polaris;
+    const {breadcrumbs} = this.props;
+
+    if (breadcrumbs != null && breadcrumbs.length > 0) {
+      const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
+      const button = AppBridgeButton.create(appBridge, {
+        label: breadcrumb.content || '',
+      });
+
+      const callback = !('url' in breadcrumb)
+        ? breadcrumb.onAction
+        : generateRedirect(appBridge, breadcrumb.url, breadcrumb.target);
+
+      if (callback != null) {
+        button.subscribe(AppBridgeButton.Action.CLICK, callback);
+      }
+
+      return button;
+    } else {
+      return undefined;
+    }
   }
 }
 

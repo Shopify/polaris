@@ -1,6 +1,12 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
+import createApp from '@shopify/app-bridge';
+import {
+  translate,
+  createAppProviderContext,
+  createPolarisContext,
+} from '../utils';
 
-import {translate, createPolarisContext} from '../utils';
 import {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
@@ -9,6 +15,10 @@ import {
 import Intl from '../Intl';
 import Link from '../Link';
 import StickyManager from '../StickyManager';
+import ScrollLockManager from '../ScrollLockManager';
+
+jest.mock('@shopify/app-bridge');
+(createApp as jest.Mock<{}>).mockImplementation((args) => args);
 
 describe('translate()', () => {
   it('returns a simple string value in the translation dictionary', () => {
@@ -47,16 +57,23 @@ describe('translate()', () => {
   });
 });
 
-describe('createPolarisContext()', () => {
+describe('createAppProviderContext()', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('returns the right context without properties', () => {
-    const context = createPolarisContext();
+    const context = createAppProviderContext();
     const mockContext = {
       polaris: {
         intl: new Intl(undefined),
         link: new Link(),
         stickyManager: new StickyManager(),
+        scrollLockManager: new ScrollLockManager(),
+        subscribe: noop,
+        unsubscribe: noop,
+        appBridge: undefined,
       },
-      easdk: undefined,
     };
 
     expect(context).toEqual(mockContext);
@@ -74,6 +91,133 @@ describe('createPolarisContext()', () => {
       return <a href="test">Custom Link Component</a>;
     };
     const stickyManager = new StickyManager();
+    const scrollLockManager = new ScrollLockManager();
+    const apiKey = '4p1k3y';
+    const context = createAppProviderContext({
+      i18n,
+      linkComponent: CustomLinkComponent,
+      stickyManager,
+      scrollLockManager,
+      apiKey,
+    });
+    const mockContext = {
+      polaris: {
+        intl: new Intl(i18n),
+        link: new Link(CustomLinkComponent),
+        stickyManager,
+        scrollLockManager,
+        subscribe: noop,
+        unsubscribe: noop,
+        appBridge: {
+          apiKey,
+          forceRedirect: undefined,
+          shopOrigin: undefined,
+        },
+      },
+    };
+
+    expect(context).toEqual(mockContext);
+  });
+});
+
+describe('createPolarisContext()', () => {
+  it('returns the right context without arguments', () => {
+    const context = createPolarisContext();
+    const mockContext = {
+      polaris: {
+        intl: new Intl(undefined),
+        link: new Link(),
+        stickyManager: new StickyManager(),
+        scrollLockManager: new ScrollLockManager(),
+        subscribe: noop,
+        unsubscribe: noop,
+        appBridge: undefined,
+      },
+      polarisTheme: {
+        logo: null,
+        subscribe: noop,
+        unsubscribe: noop,
+      },
+    };
+
+    expect(context).toEqual(mockContext);
+  });
+
+  it('returns the right context with app provider and theme provider context provided', () => {
+    const i18n = {
+      Polaris: {
+        Common: {
+          undo: 'Custom Undo',
+        },
+      },
+    };
+    const CustomLinkComponent = () => {
+      return <a href="test">Custom Link Component</a>;
+    };
+    const stickyManager = new StickyManager();
+    const scrollLockManager = new ScrollLockManager();
+    const mockSubscribe = (fn: () => void) =>
+      ([] as Array<() => void>).push(fn);
+    const mockUnsubscribe = (fn: () => void) =>
+      [].filter((curFn: any) => curFn !== fn);
+    const contextOne = createPolarisContext(
+      {
+        i18n,
+        linkComponent: CustomLinkComponent,
+        stickyManager,
+      },
+      {
+        logo: null,
+        subscribe: mockSubscribe,
+        unsubscribe: mockUnsubscribe,
+      },
+    );
+    const contextTwo = createPolarisContext(
+      {
+        logo: null,
+        subscribe: mockSubscribe,
+        unsubscribe: mockUnsubscribe,
+      },
+      {
+        i18n,
+        linkComponent: CustomLinkComponent,
+        stickyManager,
+      },
+    );
+    const mockContext = {
+      polaris: {
+        intl: new Intl(i18n),
+        link: new Link(CustomLinkComponent),
+        stickyManager,
+        scrollLockManager,
+        subscribe: noop,
+        unsubscribe: noop,
+        appBridge: undefined,
+      },
+      polarisTheme: {
+        logo: null,
+        subscribe: mockSubscribe,
+        unsubscribe: mockUnsubscribe,
+      },
+    };
+
+    expect(contextOne).toEqual(mockContext);
+    expect(contextTwo).toEqual(mockContext);
+  });
+
+  it('returns the right context with only app provider context being provided', () => {
+    const i18n = {
+      Polaris: {
+        Common: {
+          undo: 'Custom Undo',
+        },
+      },
+    };
+    const CustomLinkComponent = () => {
+      return <a href="test">Custom Link Component</a>;
+    };
+    const stickyManager = new StickyManager();
+    const scrollLockManager = new ScrollLockManager();
     const context = createPolarisContext({
       i18n,
       linkComponent: CustomLinkComponent,
@@ -84,6 +228,46 @@ describe('createPolarisContext()', () => {
         intl: new Intl(i18n),
         link: new Link(CustomLinkComponent),
         stickyManager,
+        scrollLockManager,
+        subscribe: noop,
+        unsubscribe: noop,
+        appBridge: undefined,
+      },
+      polarisTheme: {
+        logo: null,
+        subscribe: noop,
+        unsubscribe: noop,
+      },
+    };
+
+    expect(context).toEqual(mockContext);
+  });
+
+  it('returns the right context with only theme provider context being provided', () => {
+    const mockSubscribe = (fn: () => void) =>
+      ([] as Array<() => void>).push(fn);
+    const mockUnsubscribe = (fn: () => void) =>
+      [].filter((curFn: any) => curFn !== fn);
+    const context = createPolarisContext({
+      logo: null,
+      subscribe: mockSubscribe,
+      unsubscribe: mockUnsubscribe,
+    });
+
+    const mockContext = {
+      polaris: {
+        intl: new Intl(undefined),
+        link: new Link(),
+        stickyManager: new StickyManager(),
+        scrollLockManager: new ScrollLockManager(),
+        subscribe: noop,
+        unsubscribe: noop,
+        appBridge: undefined,
+      },
+      polarisTheme: {
+        logo: null,
+        subscribe: mockSubscribe,
+        unsubscribe: mockUnsubscribe,
       },
     };
 

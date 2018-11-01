@@ -59,7 +59,7 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
       </div>
     ) : null;
 
-    const headerMarkup = !this.props.polaris.easdk ? (
+    const headerMarkup = !this.props.polaris.appBridge ? (
       <div className={headerClassName}>
         {breadcrumbMarkup}
         {titleMarkup}

@@ -29,11 +29,11 @@ Change log entry descriptions should be brief but descriptive and follow this st
 
 ### Breaking changes
 
-- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris/pull/100))
+- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris-react/pull/100))
 
 Contributed from the community:
 
-- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
+- Past tense verb + brief issue/enhancement description in `ComponentName` ([#100](https://github.com/shopify/polaris-react/pull/100)) (thanks [@username](https://github.com/username) for the [original issue](issue link)) and/or (thanks [@username](https://github.com/username) for the [pull request](pull request link))
 ```
 
 The possible groups in which to categorize changes are:
@@ -63,7 +63,7 @@ Unreleased changes must go under in the `UNRELEASED.md` file:
 ```md
 ### Bug fixes
 
-- Fixed something ([#100](https://github.com/shopify/polaris/pull/100))
+- Fixed something ([#100](https://github.com/shopify/polaris-react/pull/100))
 ```
 
 Entries must be moved from `UNRELEASED.md` to `CHANGELOG.md` at each release.
