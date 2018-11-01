@@ -26,7 +26,6 @@
         "allowBlockStart": false
       }
     ],
-    "jest/no-disabled-tests": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "shopify/jest/no-vague-titles": "off",

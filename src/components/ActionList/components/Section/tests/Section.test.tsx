@@ -77,7 +77,7 @@ describe('<Section />', () => {
   });
 
   it('passes the onActionAnyItem callback to Item', () => {
-    const mockOnActionAnyItem = jest.fn();
+    const spy = jest.fn();
     const section = mountWithAppProvider(
       <Section
         hasMultipleSections
@@ -87,7 +87,7 @@ describe('<Section />', () => {
             {content: 'Export file', onAction: noop},
           ],
         }}
-        onActionAnyItem={mockOnActionAnyItem}
+        onActionAnyItem={spy}
       />,
     );
 
@@ -96,6 +96,6 @@ describe('<Section />', () => {
       .first()
       .simulate('click');
 
-    expect(mockOnActionAnyItem).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
