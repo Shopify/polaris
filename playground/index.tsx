@@ -2,13 +2,16 @@ import './setup';
 import * as React from 'react';
 import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
+import {AppProvider} from '@shopify/polaris';
 
 function renderPlayground() {
   // eslint-disable-next-line no-require-imports
   const Playground = require('./Playground').default;
   render(
     <AppContainer>
-      <Playground />
+      <AppProvider>
+        <Playground />
+      </AppProvider>
     </AppContainer>,
     document.getElementById('root'),
   );

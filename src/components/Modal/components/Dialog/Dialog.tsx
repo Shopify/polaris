@@ -2,7 +2,6 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {KeypressListener, TrapFocus} from '../../../../components';
-import memoizedBind from '../../../../utilities/memoized-bind';
 import {Duration} from '../../../shared';
 import {AnimationProps, Key} from '../../../../types';
 import * as styles from './Dialog.scss';
@@ -44,7 +43,6 @@ export default function Dialog({
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
   );
-  const handleClose = memoizedBind(onClose);
   const TransitionChild = instant ? Transition : FadeUp;
 
   return (
@@ -66,7 +64,7 @@ export default function Dialog({
           >
             <KeypressListener
               keyCode={Key.Escape}
-              handler={handleClose}
+              handler={onClose}
               testID="CloseKeypressListener"
             />
             {children}

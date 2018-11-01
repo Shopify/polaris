@@ -47,6 +47,7 @@ export default function sewingKitConfig(
         }
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',
+          '!src/test-utilities/**/*.*',
           '!src/**/index.{ts,tsx}',
           '!src/**/*.d.ts',
           '!src/**/*.test.{ts,tsx}',

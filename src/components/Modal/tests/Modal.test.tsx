@@ -1,12 +1,8 @@
 import * as React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  animationFrame,
-  findByTestID,
-  trigger,
-  mountWithAppProvider,
-} from 'test-utilities';
+import {animationFrame} from '@shopify/jest-dom-mocks';
+import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {contentContextTypes} from '../../../types';
 import {Footer, Dialog} from '../components';
@@ -19,7 +15,7 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
 
 describe('<Modal>', () => {
   beforeEach(() => {
-    animationFrame.fake();
+    animationFrame.mock();
   });
 
   afterEach(() => {

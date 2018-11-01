@@ -50,7 +50,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   // custom properties inside a linear gradient (but one is OK). Define the
   // gradient color scheme here instead of inline in the below linear-gradient
   // so that we only use one custom-property in the linear-gradient.
-  // See https://github.com/Shopify/polaris/issues/441 and
+  // See https://github.com/Shopify/polaris-react/issues/441 and
   // https://github.com/postcss/postcss-custom-properties/issues/150
   --gradient-colors: var(--progress-lower, transparent) 0%,
     var(--progress-lower, transparent) var(--Polaris-RangeSlider-progress, 0%),

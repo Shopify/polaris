@@ -12,7 +12,6 @@ import {transformActions} from '../../utilities/app-bridge-transformers';
 import {contentContextTypes} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Scrollable, Spinner, Portal, Backdrop} from '../../components';
-import memoizedBind from '../../utilities/memoized-bind';
 import {
   CloseButton,
   Dialog,
@@ -25,7 +24,7 @@ import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
-export type Size = keyof typeof AppBridgeModal.Size;
+export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
 export interface Props extends FooterProps {
   /** Whether the modal is open or not */
@@ -191,7 +190,6 @@ export class Modal extends React.Component<CombinedProps, State> {
 
     const {
       children,
-      onClose,
       title,
       src,
       iFrameName,
@@ -201,6 +199,7 @@ export class Modal extends React.Component<CombinedProps, State> {
       loading,
       large,
       limitHeight,
+      onClose,
       footer,
       primaryAction,
       secondaryActions,
@@ -210,8 +209,6 @@ export class Modal extends React.Component<CombinedProps, State> {
     const {iframeHeight} = this.state;
 
     const iframeTitle = intl.translate('Polaris.Modal.iFrameTitle');
-
-    const handleClose = memoizedBind(onClose);
 
     let dialog: React.ReactNode;
     let backdrop: React.ReactNode;
@@ -254,12 +251,12 @@ export class Modal extends React.Component<CombinedProps, State> {
       );
 
       const headerMarkup = title ? (
-        <Header id={this.headerId} onClose={handleClose} testID="ModalHeader">
+        <Header id={this.headerId} onClose={onClose} testID="ModalHeader">
           {title}
         </Header>
       ) : (
         <CloseButton
-          onClick={handleClose}
+          onClick={onClose}
           title={false}
           testID="ModalCloseButton"
         />
@@ -269,7 +266,7 @@ export class Modal extends React.Component<CombinedProps, State> {
         <Dialog
           instant={instant}
           labelledBy={this.headerId}
-          onClose={handleClose}
+          onClose={onClose}
           onEntered={this.handleEntered}
           onExited={this.handleExited}
           large={large}

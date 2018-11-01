@@ -41,7 +41,6 @@ Otherwise, [request a feature](https://github.com/Shopify/polaris-react/issues/n
 ## How to get in touch
 
 - Slack: [#polaris on Shopify Partners Slack](https://shopifypartners.slack.com/messages/C8PTBMWNR/)
-- Discussion: Shopify Polaris Forums (link TBD)
 
 ## Proposing a change
 
@@ -86,7 +85,7 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Contribution prerequisites
 
-- You have Node installed at v8.11.2+ and Yarn at v1.10.1+
+- You have Node installed at v8.12.0+ and Yarn at v1.10.1+
 
 ### Best practices
 
