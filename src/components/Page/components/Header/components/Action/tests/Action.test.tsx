@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Icon, UnstyledLink} from 'components';
-import Indicator from 'components/Indicator';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import Action from '../Action';
 
@@ -62,13 +61,6 @@ describe('<Action />', () => {
     it('gets passed into the button', () => {
       const action = mountWithAppProvider(<Action disabled />);
       expect(action.find('button').prop('disabled')).toBeTruthy();
-    });
-  });
-
-  describe('showIndicator', () => {
-    it('shows an indicator', () => {
-      const action = mountWithAppProvider(<Action showIndicator />);
-      expect(action.find(Indicator).exists()).toBeTruthy();
     });
   });
 
