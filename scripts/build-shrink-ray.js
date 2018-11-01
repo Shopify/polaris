@@ -8,7 +8,7 @@ const {existsSync, readFileSync} = require('fs-extra');
 
 const BASE_BRANCH = 'master';
 const repo = 'polaris-react';
-const sha = process.env.CIRCLE_SHA1; // eslint-disable-line no-process-env
+const sha = process.env.CIRCLE_SHA1;
 
 const postWebpackReportURL = `https://shrink-ray.shopifycloud.com/repos/${repo}/commits/${sha}/reports`;
 

@@ -42,7 +42,6 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
       return;
     }
 
-    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({pickerSize: colorNode.clientWidth});
 
     if (process.env.NODE_ENV === 'development') {

@@ -2,6 +2,7 @@
   "extends": [
     "plugin:shopify/typescript",
     "plugin:shopify/react",
+    "plugin:shopify/eslint-comments",
     "plugin:shopify/jest",
     "plugin:shopify/node",
     "plugin:shopify/polaris",

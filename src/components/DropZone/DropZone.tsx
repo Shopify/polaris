@@ -302,7 +302,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
   componentDidMount() {
     this.dragTargets = [];
-    // eslint-disable-next-line react/no-did-mount-set-state
+
     this.setState({error: this.props.error});
 
     if (!this.dropNode) {

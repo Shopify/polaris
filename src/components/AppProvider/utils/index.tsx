@@ -67,7 +67,6 @@ export function withAppProvider<OwnProps>() {
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): React.ComponentClass<OwnProps> & C {
-    // eslint-disable-next-line react/prefer-stateless-function
     class WithProvider extends React.Component<OwnProps, never> {
       static contextTypes = WrappedComponent.contextTypes
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)

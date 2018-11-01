@@ -147,7 +147,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       : 0;
 
     if (this.containerNode) {
-      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
         containerWidth: this.containerNode.getBoundingClientRect().width,
         measuring: false,
