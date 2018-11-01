@@ -202,11 +202,7 @@ export default class Header extends React.PureComponent<Props, State> {
           active={rollupOpen}
           onClose={this.handleRollupToggle}
           activator={
-            <Button
-              outline={false && showIndicator}
-              disclosure
-              onClick={this.handleRollupToggle}
-            >
+            <Button disclosure onClick={this.handleRollupToggle}>
               Actions
             </Button>
           }

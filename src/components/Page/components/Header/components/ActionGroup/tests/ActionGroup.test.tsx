@@ -4,7 +4,7 @@ import {Popover, ActionList} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {noop} from '@shopify/javascript-utilities/other';
 import Action from '../../Action';
-import ActionGroup, {Props} from '../ActionGroup';
+import ActionGroup from '../ActionGroup';
 
 describe('<ActionGroup />', () => {
   const mockProps = {
@@ -61,21 +61,6 @@ describe('<ActionGroup />', () => {
       const popoverContents = getPopoverContents(actionGroup);
       expect(popoverContents.find(ActionList).prop('items')).toEqual(actions);
     });
-
-    it('are used to determine if an indicator should be shown', () => {
-      const actions: Props['actions'] = [
-        {
-          badge: {
-            status: 'new',
-            content: 'badge',
-          },
-        },
-      ];
-      const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} actions={actions} />,
-      );
-      expect(actionGroup.find(Action).prop('showIndicator')).toBeTruthy();
-    });
   });
 
   describe('active', () => {
@@ -84,13 +69,6 @@ describe('<ActionGroup />', () => {
         <ActionGroup {...mockProps} active />,
       );
       expect(actionGroup.find(Popover).prop('active')).toBeTruthy();
-    });
-
-    it('is used to determine if the action has an indicator', () => {
-      const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} active />,
-      );
-      expect(actionGroup.find(Action).prop('hasIndicator')).toBeTruthy();
     });
   });
 
