@@ -6,7 +6,7 @@ import App from '../App';
 import {mountWithAppProvider} from './utils/enzyme';
 
 // Sample test to demonstrate how you should test with AppProvider context
-it('renders page', () => {
+test('renders page', () => {
   const wrapper = mountWithAppProvider(<App />);
   expect(wrapper.find(Page).exists()).toBe(true);
 });

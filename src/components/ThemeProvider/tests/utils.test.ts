@@ -16,7 +16,7 @@ describe('setTextColor', () => {
 });
 
 describe('setTheme', () => {
-  it.only('returns a base theme', () => {
+  it('returns a base theme', () => {
     const theme = setTheme(
       {hue: 184, saturation: 100, lightness: 28},
       'topBar',

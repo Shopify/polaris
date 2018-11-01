@@ -43,13 +43,13 @@ describe('pluckDeep', () => {
       },
       'hello',
     );
-    expect(pluckedValue).toBe(null);
+    expect(pluckedValue).toBeNull();
   });
 
   describe('obj argument', () => {
     it('will return null if null is supplied', () => {
       const pluckedValue = pluckDeep(null, 'hello');
-      expect(pluckedValue).toBe(null);
+      expect(pluckedValue).toBeNull();
     });
   });
 });

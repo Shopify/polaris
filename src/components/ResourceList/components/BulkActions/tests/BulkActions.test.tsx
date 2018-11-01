@@ -97,7 +97,7 @@ describe('<BulkActions />', () => {
         <BulkActions {...bulkActionProps} />,
       );
       const popover = bulkActionsElement.find(Popover);
-      expect(popover.length).toBe(1);
+      expect(popover).toHaveLength(1);
     });
   });
 
@@ -226,7 +226,7 @@ describe('<BulkActions />', () => {
           <BulkActions {...bulkActionProps} />,
         );
         const bulkActionButtons = bulkActions.find(BulkActionButton);
-        expect(bulkActionButtons.length).toBe(4);
+        expect(bulkActionButtons).toHaveLength(4);
       });
     });
 

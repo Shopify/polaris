@@ -11,6 +11,6 @@ describe('<Caption />', () => {
   it('renders its children', () => {
     const captionMarkup = 'Caption text';
     const caption = mountWithAppProvider(<Caption>{captionMarkup}</Caption>);
-    expect(caption.contains(captionMarkup));
+    expect(caption.contains(captionMarkup)).toBe(true);
   });
 });

@@ -134,9 +134,7 @@ describe('<DateSelector />', () => {
 
       expect(wrapper.find(DatePicker).exists()).toBe(false);
     });
-  });
 
-  describe('filterValue', () => {
     it('is used to calculate dateFilterOption and gets passed to Select as value', () => {
       const filterValue = 'filter value';
       const wrapper = mountWithAppProvider(

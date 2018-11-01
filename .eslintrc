@@ -1,10 +1,9 @@
 {
   "extends": [
-    "plugin:shopify/esnext",
+    "plugin:shopify/typescript-react",
+    "plugin:shopify/jest",
     "plugin:shopify/node",
     "plugin:shopify/polaris",
-    "plugin:shopify/typescript",
-    "plugin:shopify/typescript-react",
     "plugin:shopify/typescript-prettier"
   ],
   "settings": {
@@ -29,6 +28,7 @@
     ],
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
+    "shopify/jest/no-vague-titles": "off",
     "jsx-a11y/label-has-for": [
       2,
       {

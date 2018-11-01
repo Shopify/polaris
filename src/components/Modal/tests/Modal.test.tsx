@@ -91,7 +91,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('instant')).toBe(undefined);
+      expect(modal.find(Dialog).prop('instant')).toBeUndefined();
     });
   });
 
@@ -113,7 +113,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('large')).toBe(undefined);
+      expect(modal.find(Dialog).prop('large')).toBeUndefined();
     });
   });
 
@@ -135,7 +135,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('limitHeight')).toBe(undefined);
+      expect(modal.find(Dialog).prop('limitHeight')).toBeUndefined();
     });
   });
 
@@ -479,15 +479,6 @@ describe('<Modal>', () => {
 
     it('unsubscribes on unmount', () => {
       const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.unmount();
-      expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
-    });
-
-    it('unsubscribes on unmount', () => {
-      const {modal} = mountWithAppBridge(
-        <Modal src="/test" open onClose={noop} />,
-      );
 
       modal.unmount();
       expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);

@@ -25,9 +25,11 @@ describe('<ToastManager />', () => {
       />,
     );
 
-    toastManager.setProps({
-      toastMessages: [{id: '1', content: 'World!', onDismiss: noop}],
-    });
+    expect(() => {
+      toastManager.setProps({
+        toastMessages: [{id: '1', content: 'World!', onDismiss: noop}],
+      });
+    }).not.toThrow();
   });
 });
 
