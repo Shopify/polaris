@@ -1,6 +1,7 @@
 export {
   default as DateSelector,
   Props as DateSelectorProps,
+  DateFilterOption,
 } from './DateSelector';
 
 export {

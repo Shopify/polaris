@@ -28,7 +28,7 @@ describe('<SkeletonPage />', () => {
     const skeletonPage = mountWithAppProvider(
       <SkeletonPage title="Products" />,
     );
-    expect(skeletonPage.find(DisplayText).length).toBe(1);
+    expect(skeletonPage.find(DisplayText)).toHaveLength(1);
     expect(skeletonPage.find(DisplayText).contains('Products')).toBe(true);
   });
 
@@ -36,11 +36,11 @@ describe('<SkeletonPage />', () => {
     const skeletonPage = mountWithAppProvider(
       <SkeletonPage secondaryActions={3} />,
     );
-    expect(skeletonPage.find(SkeletonBodyText).length).toBe(3);
+    expect(skeletonPage.find(SkeletonBodyText)).toHaveLength(3);
   });
 
   it('renders breadcrumbs', () => {
     const skeletonPage = mountWithAppProvider(<SkeletonPage breadcrumbs />);
-    expect(skeletonPage.find(SkeletonBodyText).length).toBe(1);
+    expect(skeletonPage.find(SkeletonBodyText)).toHaveLength(1);
   });
 });

@@ -89,7 +89,7 @@
     "@shopify/jest-dom-mocks": "^2.0.5",
     "@shopify/js-uploader": "github:shopify/js-uploader",
     "@shopify/react-serialize": "^1.0.6",
-    "@shopify/sewing-kit": "^0.61.0",
+    "@shopify/sewing-kit": "0.62.0",
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/lodash": "^4.14.108",
@@ -178,7 +178,6 @@
     "react-dom": "^16.3.1"
   },
   "resolutions": {
-    "ts-jest": "~23.10.4",
     "typescript-eslint-parser": "17.0.1"
   },
   "files": [

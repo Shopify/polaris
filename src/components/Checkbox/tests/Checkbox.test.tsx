@@ -137,7 +137,7 @@ describe('<Checkbox />', () => {
         .find('input')
         .prop<string>('aria-describedby')
         .split(' ');
-      expect(descriptions.length).toBe(2);
+      expect(descriptions).toHaveLength(2);
       expect(checkbox.find(`#${descriptions[0]}`).text()).toBe('Some error');
       expect(checkbox.find(`#${descriptions[1]}`).text()).toBe('Some help');
     });

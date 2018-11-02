@@ -3,7 +3,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 
-import {Avatar, AvatarProps, Icon, UnstyledLink} from '../../../../components';
+import {Avatar, AvatarProps, Icon, UnstyledLink} from '../../..';
 import {IconableAction} from '../../../../types';
 import MessageIndicator from '../../../MessageIndicator';
 import Message, {Props as MessageProps} from '../Message';

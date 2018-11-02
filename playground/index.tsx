@@ -5,7 +5,6 @@ import {AppContainer} from 'react-hot-loader';
 import {AppProvider} from '@shopify/polaris';
 
 function renderPlayground() {
-  // eslint-disable-next-line no-require-imports
   const Playground = require('./Playground').default;
   render(
     <AppContainer>

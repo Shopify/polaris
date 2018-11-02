@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Popover, ActionList} from '../../../../../../components';
+import {Popover, ActionList} from '../../../../..';
 import Action from '../Action';
 import {ActionGroupDescriptor} from './types';
 import * as styles from './ActionGroup.scss';
@@ -19,19 +19,17 @@ class ActionGroup extends React.Component<Props, never> {
       <div className={styles.Details}>{details}</div>
     );
 
-    const activator = (
-      <Action disclosure icon={icon} onAction={this.handleOpen}>
-        {title}
-      </Action>
-    );
-
     return (
       <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
         <Popover
           key={title}
           active={active}
           onClose={this.handleClose}
-          activator={activator}
+          activator={
+            <Action disclosure icon={icon} onAction={this.handleOpen}>
+              {title}
+            </Action>
+          }
         >
           <ActionList items={actions} onActionAnyItem={this.handleClose} />
           {detailsMarkup}

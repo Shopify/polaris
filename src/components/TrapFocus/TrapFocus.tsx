@@ -7,27 +7,60 @@ import {
   focusLastFocusableNode,
 } from '@shopify/javascript-utilities/focus';
 
-import {EventListener, Focus} from '../../components';
+import {EventListener, Focus} from '..';
 
 export interface Props {
   trapping?: boolean;
   children?: React.ReactNode;
 }
 
-export default class TrapFocus extends React.PureComponent<Props, never> {
-  private focusTrapWrapper: HTMLElement | null = null;
+export interface State {
+  shouldFocusSelf: boolean | undefined;
+}
+
+export default class TrapFocus extends React.PureComponent<Props, State> {
+  state = {
+    shouldFocusSelf: undefined,
+  };
+
+  private focusTrapWrapper: HTMLElement;
+
+  componentDidMount() {
+    this.setState(this.handleTrappingChange());
+  }
+
+  handleTrappingChange() {
+    const {trapping = true} = this.props;
+
+    if (this.focusTrapWrapper.contains(document.activeElement)) {
+      return {shouldFocusSelf: false};
+    }
+
+    return {shouldFocusSelf: trapping};
+  }
 
   render() {
-    const {children, trapping = true} = this.props;
+    const {children} = this.props;
 
     return (
-      <Focus disabled={!trapping}>
+      <Focus disabled={this.shouldDisable}>
         <div ref={this.setFocusTrapWrapper}>
           <EventListener event="focusout" handler={this.handleBlur} />
           {children}
         </div>
       </Focus>
     );
+  }
+
+  private get shouldDisable() {
+    const {trapping = true} = this.props;
+    const {shouldFocusSelf} = this.state;
+
+    if (shouldFocusSelf === undefined) {
+      return true;
+    }
+
+    return shouldFocusSelf ? !trapping : !shouldFocusSelf;
   }
 
   @autobind

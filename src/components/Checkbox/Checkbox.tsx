@@ -123,7 +123,7 @@ function Checkbox({
         </span>
       </span>
     </Choice>
-    /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+    /* eslint-enable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
   );
 }
 

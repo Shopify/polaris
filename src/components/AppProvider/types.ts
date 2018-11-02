@@ -1,16 +1,16 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
 import {ClientApplication} from '@shopify/app-bridge';
-import {Props as AppProviderProps} from '../AppProvider';
 
-import Intl from './Intl';
-import Link from './Link';
-import StickyManager from './StickyManager';
-import ScrollLockManager from './ScrollLockManager';
 import {
   THEME_CONTEXT_TYPES as polarisTheme,
   ThemeContext,
 } from '../ThemeProvider';
+import Intl from './Intl';
+import Link from './Link';
+import StickyManager from './StickyManager';
+import ScrollLockManager from './ScrollLockManager';
+import {Props as AppProviderProps} from '.';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,

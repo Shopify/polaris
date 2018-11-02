@@ -133,7 +133,7 @@ function parseCodeExamples(data, file) {
     );
   }
 
-  examples.map((example) => {
+  examples.forEach((example) => {
     if (example.code === '') {
       throw new Error(
         chalk`🚨 {red [${matter.data.name}]} Example “${

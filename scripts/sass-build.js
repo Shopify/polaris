@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import {basename, resolve, join, relative} from 'path';
 import glob from 'glob';
 import {
   writeFileSync,
@@ -10,7 +11,6 @@ import {
   lstatSync,
   existsSync,
 } from 'fs-extra';
-import {basename, resolve, join, relative} from 'path';
 import {cp, mkdir} from 'shelljs';
 import archiver from 'archiver';
 

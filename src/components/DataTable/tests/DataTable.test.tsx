@@ -56,17 +56,17 @@ describe('<DataTable />', () => {
   it('renders a table, thead and all table body rows', () => {
     const {dataTable} = setup();
 
-    expect(dataTable.find('table').length).toEqual(1);
-    expect(dataTable.find('thead').length).toEqual(1);
-    expect(dataTable.find('thead th').length).toEqual(5);
-    expect(dataTable.find('tbody tr').length).toEqual(3);
+    expect(dataTable.find('table')).toHaveLength(1);
+    expect(dataTable.find('thead')).toHaveLength(1);
+    expect(dataTable.find('thead th')).toHaveLength(5);
+    expect(dataTable.find('tbody tr')).toHaveLength(3);
   });
 
   it('defaults to non-sorting column headings', () => {
     const {dataTable} = setup();
     const sortableHeadings = dataTable.find(Cell).filter({sortable: true});
 
-    expect(sortableHeadings.length).toEqual(0);
+    expect(sortableHeadings).toHaveLength(0);
   });
 
   it('initial sort column defaults to first column if not specified', () => {

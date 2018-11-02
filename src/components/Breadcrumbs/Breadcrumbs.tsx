@@ -53,9 +53,6 @@ export default class Breadcrumbs extends React.PureComponent<Props, never> {
         </button>
       );
 
-    return (
-      // eslint-disable-next-line jsx-a11y/no-redundant-roles
-      <nav role="navigation">{breadcrumbMarkup}</nav>
-    );
+    return <nav role="navigation">{breadcrumbMarkup}</nav>;
   }
 }

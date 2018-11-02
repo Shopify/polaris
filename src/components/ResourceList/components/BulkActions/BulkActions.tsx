@@ -7,7 +7,7 @@ import {Duration} from '../../../shared';
 import {ActionList, Popover, Button, EventListener} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import CheckableButton from '../CheckableButton';
-import BulkActionButton from './components/BulkActionButton';
+import {BulkActionButton} from './components';
 import * as styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
@@ -147,7 +147,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       : 0;
 
     if (this.containerNode) {
-      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
         containerWidth: this.containerNode.getBoundingClientRect().width,
         measuring: false,

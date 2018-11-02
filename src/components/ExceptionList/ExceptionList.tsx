@@ -3,7 +3,7 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon from '../Icon';
 import Truncate from '../Truncate';
-import {IconProps} from '../../components';
+import {IconProps} from '..';
 
 import * as styles from './ExceptionList.scss';
 

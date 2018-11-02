@@ -174,6 +174,7 @@ describe('<Frame />', () => {
   // JSDOM 11.12.0 does not support setting/reading custom properties so we are
   // unable to assert that we set a custom property
   // See https://github.com/jsdom/jsdom/issues/1895
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('sets a root property with global ribbon height if passed', () => {
     mountWithAppProvider(<Frame globalRibbon={<div />} />);
     expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
@@ -182,6 +183,7 @@ describe('<Frame />', () => {
   // JSDOM 11.12.0 does not support setting/reading custom properties so we are
   // unable to assert that we set a custom property
   // See https://github.com/jsdom/jsdom/issues/1895
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('sets a root property with global ribbon height if new props are passed', () => {
     const frame = mountWithAppProvider(<Frame />);
     frame.setProps({globalRibbon: <div />});
@@ -191,6 +193,7 @@ describe('<Frame />', () => {
   // JSDOM 11.12.0 does not support setting/reading custom properties so we are
   // unable to assert that we set a custom property
   // See https://github.com/jsdom/jsdom/issues/1895
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('sets a root property with global ribbon height of 0 if there is no globalRibbon prop', () => {
     mountWithAppProvider(<Frame />);
     expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);

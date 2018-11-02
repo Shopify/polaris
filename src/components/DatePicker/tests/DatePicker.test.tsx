@@ -70,14 +70,14 @@ describe('<DatePicker />', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={month} year={year} multiMonth />,
       );
-      expect(datePicker.find(Month).length).toBe(2);
+      expect(datePicker.find(Month)).toHaveLength(2);
     });
 
     it('shows only one month when false', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={month} year={year} />,
       );
-      expect(datePicker.find(Month).length).toBe(1);
+      expect(datePicker.find(Month)).toHaveLength(1);
     });
   });
 

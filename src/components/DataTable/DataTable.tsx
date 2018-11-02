@@ -4,8 +4,8 @@ import {classNames} from '@shopify/react-utilities/styles';
 import isEqual from 'lodash/isEqual';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import EventListener from '../EventListener';
+import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import {Cell, CellProps, Navigation} from './components';
 

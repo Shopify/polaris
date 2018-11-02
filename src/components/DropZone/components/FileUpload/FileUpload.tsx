@@ -4,14 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import compose from '../../../../utilities/react-compose';
 import withRef from '../../../WithRef';
 
-import {
-  Link,
-  Icon,
-  Stack,
-  Button,
-  Caption,
-  TextStyle,
-} from '../../../../components';
+import {Link, Icon, Stack, Button, Caption, TextStyle} from '../../..';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';

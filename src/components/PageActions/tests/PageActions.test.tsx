@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import PageActions from '../../PageActions';
+import PageActions from '..';
 import ButtonGroup from '../../ButtonGroup';
 import Stack from '../../Stack';
 import {buttonsFrom} from '../../Button';

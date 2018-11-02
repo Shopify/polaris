@@ -30,7 +30,7 @@ describe('shitlistCheck', () => {
     expect(results[0].issues.findIndex(({code}) => code === '風の戦士')).toBe(
       0,
     );
-    expect(results[0].issues.length).toBe(1);
+    expect(results[0].issues).toHaveLength(1);
   });
 
   it('leaves errors not on the shitlist', () => {
@@ -43,7 +43,7 @@ describe('shitlistCheck', () => {
 
     const {results} = shitlistCheck(issueList, shitlist);
 
-    expect(results[0].issues.length).toBe(2);
+    expect(results[0].issues).toHaveLength(2);
   });
 
   it('removes entries with no issues from the list', () => {
@@ -56,7 +56,7 @@ describe('shitlistCheck', () => {
 
     const {results} = shitlistCheck(issueList, shitlist);
 
-    expect(results.length).toBe(0);
+    expect(results).toHaveLength(0);
   });
 
   it('returns a list with errors that werent found', () => {
@@ -69,8 +69,8 @@ describe('shitlistCheck', () => {
 
     const {remainingIssues} = shitlistCheck(issueList, shitlist);
 
-    expect(remainingIssues.length).toBe(1);
-    expect(remainingIssues[0].issues.length).toBe(1);
+    expect(remainingIssues).toHaveLength(1);
+    expect(remainingIssues[0].issues).toHaveLength(1);
     expect(remainingIssues[0].issues[0].code).toBe('Pyxis');
   });
 });

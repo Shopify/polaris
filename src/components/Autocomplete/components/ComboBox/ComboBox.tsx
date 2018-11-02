@@ -11,8 +11,8 @@ import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
 import {contextTypes} from '../types';
-import {TextField} from './components';
 import KeypressListener from '../../../KeypressListener';
+import {TextField} from './components';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 

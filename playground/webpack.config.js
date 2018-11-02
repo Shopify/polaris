@@ -12,7 +12,6 @@ module.exports = {
   target: 'web',
   devtool: 'eval',
   devServer: {
-    // eslint-disable-next-line no-process-env
     port: process.env.PORT || 8080,
     disableHostCheck: true,
   },

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
-import * as styles from './Backdrop.scss';
 import ScrollLock from '../ScrollLock';
+import * as styles from './Backdrop.scss';
 
 export interface Props {
   onClick?(): void;
