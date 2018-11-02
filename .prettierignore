@@ -1,6 +1,5 @@
 node_modules
 /build
-/coverage
 /build-intermediate
 /build-esnext
 /docs

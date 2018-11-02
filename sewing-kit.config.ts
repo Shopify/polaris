@@ -35,11 +35,9 @@ export default function sewingKitConfig(
         };
 
         // Code coverage
-        config.coverageDirectory = 'coverage';
-        config.coverageReporters = ['text-summary', 'html'];
-        if (env.isCI) {
-          config.coverageReporters.push('lcov');
-        }
+        config.coverageDirectory = 'build/coverage';
+        config.coverageReporters = ['text-summary', 'html', 'lcovonly'];
+
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',
           '!src/test-utilities/**/*.*',
