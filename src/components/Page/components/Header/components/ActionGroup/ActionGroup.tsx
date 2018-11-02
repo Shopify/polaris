@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Popover, ActionList} from '../../../../../../components';
+import {Popover, ActionList} from '../../../../..';
 import {hasNewStatus} from '../../utilities';
 import Action from '../Action';
 import {ActionGroupDescriptor} from './types';
@@ -34,18 +34,13 @@ class ActionGroup extends React.Component<Props, never> {
               hasIndicator={active}
               disclosure
               icon={icon}
-              // eslint-disable-next-line react/jsx-no-bind
               onAction={this.handleOpen}
             >
               {title}
             </Action>
           }
         >
-          <ActionList
-            items={actions}
-            // eslint-disable-next-line react/jsx-no-bind
-            onActionAnyItem={this.handleClose}
-          />
+          <ActionList items={actions} onActionAnyItem={this.handleClose} />
           {detailsMarkup}
         </Popover>
       </div>

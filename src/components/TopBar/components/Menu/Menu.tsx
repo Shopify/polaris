@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Message, MessageProps} from './components';
 import {ActionList, ActionListProps, Popover} from '../../..';
+import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
 
 export interface Props {

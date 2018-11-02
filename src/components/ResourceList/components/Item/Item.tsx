@@ -15,10 +15,10 @@ import Button, {buttonsFrom} from '../../../Button';
 import {SELECT_ALL_ITEMS} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import * as styles from './Item.scss';
 import {ResourceListContext} from '../../ResourceList';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
+import * as styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import reactCompose from '@shopify/react-compose';
+// eslint-disable-next-line shopify/strict-component-boundaries
 import {Provider as RefProvider} from '../components/WithRef';
 
 export type ComponentClass = React.ComponentClass<any>;

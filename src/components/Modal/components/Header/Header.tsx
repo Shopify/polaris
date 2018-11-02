@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DisplayText} from '../../../../components';
+import {DisplayText} from '../../..';
 import CloseButton from '../CloseButton';
 import * as styles from './Header.scss';
 

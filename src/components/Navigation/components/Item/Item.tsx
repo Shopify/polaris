@@ -4,11 +4,11 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {Secondary} from './components';
-import {Icon, IconProps, UnstyledLink, Badge} from '../../../../components';
+import {Icon, IconProps, UnstyledLink, Badge} from '../../..';
 import {Context, contextTypes} from '../../types';
 
 import * as styles from '../../Navigation.scss';
+import {Secondary} from './components';
 
 interface ItemURLDetails {
   url?: string;

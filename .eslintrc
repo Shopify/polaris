@@ -1,10 +1,12 @@
 {
   "extends": [
-    "plugin:shopify/typescript-react",
+    "plugin:shopify/typescript",
+    "plugin:shopify/react",
+    "plugin:shopify/eslint-comments",
     "plugin:shopify/jest",
     "plugin:shopify/node",
     "plugin:shopify/polaris",
-    "plugin:shopify/typescript-prettier"
+    "plugin:shopify/prettier"
   ],
   "settings": {
     "react": {
@@ -26,9 +28,12 @@
         "allowBlockStart": false
       }
     ],
+    "import/no-cycle": "off",
+    "import/no-named-as-default": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
     "shopify/jest/no-vague-titles": "off",
+    "shopify/jsx-no-complex-expressions": "off",
     "jsx-a11y/label-has-for": [
       2,
       {
@@ -48,15 +53,17 @@
   },
   "overrides": [
     {
-      "files": ["*.js"],
+      "files": ["examples/**/*.js"],
       "rules": {
-        "typescript/no-var-requires": "off"
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off"
       }
     },
     {
       "files": ["playground/Playground.tsx"],
       "rules": {
-        "react/prefer-stateless-function": "off"
+        "react/prefer-stateless-function": "off",
+        "shopify/react-initialize-state": "off"
       }
     }
   ]

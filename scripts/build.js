@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 
 import {execSync} from 'child_process';
-import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {join, resolve as resolvePath} from 'path';
+import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {rollup} from 'rollup';
 import {cp, mv, rm} from 'shelljs';
 import copyfiles from 'copyfiles';
 
 import createRollupConfig from '../config/rollup';
-import generateSassBuild from './sass-build';
 import packageJSON from '../package.json';
+import generateSassBuild from './sass-build';
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, 'build');
@@ -37,9 +37,6 @@ mv(resolvePath(root, 'types/src/*'), types);
 rm('-rf', resolvePath(root, 'types/src'));
 
 mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
-
-const srcReadme = resolvePath(root, './src/components/README.md');
-const destinationReadme = resolvePath(docs, './components/README.md');
 
 copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
   console.error(error);

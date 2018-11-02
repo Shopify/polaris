@@ -9,7 +9,7 @@ import {
   UnstyledLink,
   withAppProvider,
   WithAppProviderProps,
-} from '../../components';
+} from '..';
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 
 import * as styles from './TopBar.scss';

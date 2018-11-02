@@ -2,8 +2,8 @@ import * as React from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {HSBColor, HSBAColor} from './types';
 import {hsbToRgb} from '../../utilities/color-transformers';
+import {HSBColor, HSBAColor} from './types';
 import {AlphaPicker, HuePicker, Slidable, Position} from './components';
 import * as styles from './ColorPicker.scss';
 
@@ -42,7 +42,6 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
       return;
     }
 
-    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({pickerSize: colorNode.clientWidth});
 
     if (process.env.NODE_ENV === 'development') {

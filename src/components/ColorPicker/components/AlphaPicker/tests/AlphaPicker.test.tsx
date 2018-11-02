@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
 import {noop} from '@shopify/javascript-utilities/other';
+import {mountWithAppProvider, trigger} from 'test-utilities';
 import {calculateDraggerY, alphaForDraggerY} from '../utilities';
 import Slidable from '../../Slidable';
 import AlphaPicker from '../AlphaPicker';

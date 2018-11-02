@@ -3,9 +3,9 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
+import {arraysAreEqual} from '../../utilities/arrays';
 import {Option} from './components';
 import {IconProps, ThumbnailProps, AvatarProps} from '..';
-import {arraysAreEqual} from '../../utilities/arrays';
 
 import * as styles from './OptionList.scss';
 

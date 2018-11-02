@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import * as React from 'react';
 import * as Polaris from '@shopify/polaris';
 import {parse} from '@babel/parser';
