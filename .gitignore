@@ -4,7 +4,6 @@ node_modules
 /build-intermediate
 /build-esnext
 /docs
-/coverage
 /esnext
 /types
 /index.*
