@@ -6,11 +6,10 @@ import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import {Icon, IconProps, UnstyledLink, Badge, Indicator} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-
-import {Secondary} from './components';
 import {Context, contextTypes} from '../../types';
 
 import * as styles from '../../Navigation.scss';
+import {Secondary} from './components';
 
 interface ItemURLDetails {
   url?: string;
