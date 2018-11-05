@@ -241,3 +241,10 @@ $secondary-item-font-size: rem(15px);
 .List {
   @include unstyled-list;
 }
+
+.Indicator {
+  position: relative;
+  display: inline-block;
+  height: rem(10px);
+  width: rem(10px);
+}

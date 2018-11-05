@@ -14,6 +14,8 @@ import {contextTypes} from '../types';
 import KeypressListener from '../../../KeypressListener';
 import {TextField} from './components';
 
+import * as styles from './ComboBox.scss';
+
 const getUniqueId = createUniqueIDFactory('ComboBox');
 
 export interface State {
@@ -48,6 +50,8 @@ export interface Props {
   contentBefore?: React.ReactNode;
   /** Content to be displayed after the list of options */
   contentAfter?: React.ReactNode;
+  /** Is rendered when there are no options */
+  emptyState?: React.ReactNode;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
@@ -154,7 +158,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(_: Props, prevState: State) {
-    const {contentBefore, contentAfter} = this.props;
+    const {contentBefore, contentAfter, emptyState} = this.props;
     const {navigableOptions, popoverActive} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
@@ -173,7 +177,8 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       navigableOptions &&
       navigableOptions.length === 0 &&
       !contentBefore &&
-      !contentAfter
+      !contentAfter &&
+      !emptyState
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({popoverActive: false});
@@ -203,6 +208,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       contentBefore,
       contentAfter,
       onEndReached,
+      emptyState,
     } = this.props;
 
     const actionsBeforeMarkup = actionsBefore &&
@@ -230,6 +236,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     const scrollListenerMarkup = onEndReached && (
       <div ref={this.popoverScrollContainer} />
     );
+
+    const emptyStateMarkup = !actionsAfter &&
+      !actionsBefore &&
+      !contentAfter &&
+      !contentBefore &&
+      options.length === 0 &&
+      emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
     return (
       <div
@@ -272,6 +285,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
             {optionsMarkup}
             {actionsAfterMarkup}
             {contentAfter}
+            {emptyStateMarkup}
           </div>
         </Popover>
       </div>
