@@ -60,6 +60,7 @@ The autocomplete component is an input field that provides selectable suggestion
 - Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount`;
 - Fixed an issue where clicking a `Link` without a `url` in a form would implicitly submit the form. `Link` can no longer submit forms. Use `<Button submit>` instead.
 - Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow`
+- Added !important to `display: none` in `@print-hidden` mixin
 
 #### Embedded apps
 
