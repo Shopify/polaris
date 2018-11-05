@@ -381,4 +381,4 @@ class FrameExample extends React.Component {
 - To display the primary navigation within the frame of a non-embedded application, use the [navigation](/components/structure/navigation) component.
 - To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](/components/structure/contextual-save-bar) component.
 - To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/structure/loading) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/feedback-indicators/loading) component.

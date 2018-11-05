@@ -456,8 +456,8 @@ Use to add a horizontal line between sections.
 
 - To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](/components/structure/frame) component.
 - To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](/components/structure/frame) component to reflect an application’s brand, use the [top bar](/components/structure/top-bar) component.
-- To tell merchants their options once they have made changes to a form on the page use the {contextual save bar} component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the {toast} component.
-- To indicate to merchants that a page is loading or an upload is processing use the {loading} component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](/components/structure/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](/components/feedback-indicators/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/feedback-indicators/loading) component.
 - To alternate among related views within the same context, use the [tabs](/components/navigation/tabs) component.
 - To embed a single action or link within a larger span of text, use the [link](/components/navigation/link) component.
