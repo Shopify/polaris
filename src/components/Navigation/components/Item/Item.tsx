@@ -4,15 +4,10 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {Secondary} from './components';
-import {
-  Icon,
-  IconProps,
-  UnstyledLink,
-  Badge,
-  Indicator,
-} from '../../../';
+import {Icon, IconProps, UnstyledLink, Badge, Indicator} from '../../..';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+
+import {Secondary} from './components';
 import {Context, contextTypes} from '../../types';
 
 import * as styles from '../../Navigation.scss';
