@@ -111,7 +111,7 @@ The autocomplete component is an input field that provides selectable suggestion
 - Removed empty state from `ResourceList` if there are no items and `loading` is true
 - Move to use sewing-kit for test running, updating to Jest 23 in the process. This gives us working sourcemaps for code coverage
 - Improved accessibility testing checklist
-- Updated development node environment to 8.12.0
+- Updated development node environment to 10.13.0
 - Added shopify/jest plugin to eslint config
 
 #### Open development
