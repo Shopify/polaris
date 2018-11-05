@@ -1,5 +1,8 @@
 :root {
-  --toast-translate-y-out: rem(150px);
+  // Sass does not allow arbitary Sass function calls in custom properties.
+  // They must be interpolated
+  // See https://github.com/sass/libsass/issues/2585
+  --toast-translate-y-out: #{rem(150px)};
   --toast-translate-y-in: 0;
 }
 
