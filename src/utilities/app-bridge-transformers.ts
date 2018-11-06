@@ -1,7 +1,7 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {Redirect, Button, ButtonGroup} from '@shopify/app-bridge/actions';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {ActionGroupDescriptor} from 'components/Page/components/Header/components/ActionGroup';
+import {ActionGroupDescriptor} from '../components/Page/components/Header/components/ActionGroup';
 import {
   AppBridgeTarget,
   ComplexAction,
