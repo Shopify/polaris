@@ -165,7 +165,7 @@ class TopBarExample extends React.Component {
     const theme = {
       colors: {
         topBar: {
-          background: '#1C3D4C',
+          background: '#357997',
         },
       },
       logo: {
@@ -285,9 +285,9 @@ class TopBarExample extends React.Component {
     const theme = {
       colors: {
         topBar: {
-          background: '#001429',
-          backgroundDarker: '#001429',
-          backgroundLighter: '#084E8A',
+          background: '#357997',
+          backgroundDarker: '#357997',
+          backgroundLighter: '#6192a9',
           color: '#FFFFFF',
         },
       },

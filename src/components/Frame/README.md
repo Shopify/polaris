@@ -272,7 +272,7 @@ class FrameExample extends React.Component {
     const theme = {
       colors: {
         topBar: {
-          background: '#1C3D4C',
+          background: '#357997',
         },
       },
       logo: {
