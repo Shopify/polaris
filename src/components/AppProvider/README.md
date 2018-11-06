@@ -169,7 +169,7 @@ class ProviderLinkExample extends React.Component {
 
 ### With theme
 
-With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](/components/structure/contextual-save-bar) components.
+With a `theme`, the app provider component will set light, dark, and text colors for the [top bar](/components/structure/top-bar) component when given a `background` color, as well as a logo for the top bar and [contextual save bar](/components/forms/contextual-save-bar) components.
 
 ```jsx
 class ProviderThemeExample extends React.Component {

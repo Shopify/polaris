@@ -20,7 +20,7 @@ fullSizeExamples: true
 
 # Frame
 
-The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](/components/navigation/navigation), [top bar](/components/structure/top-bar), [toast](/components/feedback-indicators/toast), and [contextual save bar](/components/structure/contextual-save-bar) components.
+The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](/components/navigation/navigation), [top bar](/components/structure/top-bar), [toast](/components/feedback-indicators/toast), and [contextual save bar](/components/forms/contextual-save-bar) components.
 
 ---
 
@@ -30,9 +30,9 @@ For the best experience when creating an application frame, use the following co
 
 - [Top bar](/components/structure/top-bar)
 - [Navigation](/components/navigation/navigation)
-- [Contextual save bar](/components/structure/contextual-save-bar)
+- [Contextual save bar](/components/forms/contextual-save-bar)
 - [Toast](/components/feedback-indicators/toast)
-- [Loading](/components/structure/loading)
+- [Loading](/components/feedback-indicators/loading)
 
 ---
 
@@ -379,6 +379,6 @@ class FrameExample extends React.Component {
 
 - To display the navigation component on small screens, to provide search and a user menu, or to style the [frame](/components/structure/frame) component to reflect an application’s brand, use the [top bar](/components/structure/top-bar) component.
 - To display the primary navigation within the frame of a non-embedded application, use the [navigation](/components/structure/navigation) component.
-- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](/components/structure/contextual-save-bar) component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](/components/forms/contextual-save-bar) component.
 - To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/structure/loading) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/feedback-indicators/loading) component.

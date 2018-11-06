@@ -10,11 +10,17 @@ We've released a suite of new components that, when combined, form the applicati
 
 #### [Frame](https://polaris.shopify.com/components/structure/frame)
 
-The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/top-bar), [toast](https://polaris.shopify.com/components/structure/toast), [loading](https://polaris.shopify.com/components/structure/loading), and [contextual save bar](https://polaris.shopify.com/components/structure/contextual-save-bar) components.
+The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the following components:
+
+- primary [navigation](https://polaris.shopify.com/components/navigation/navigation)
+- [top bar](https://polaris.shopify.com/components/structure/top-bar)
+- [toast](https://polaris.shopify.com/components/feedback-indicators/toast)
+- [loading](https://polaris.shopify.com/components/feedback-indicators/loading)
+- [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar)
 
 #### [Navigation](https://polaris.shopify.com/components/navigation/navigation)
 
-The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame/components/structure/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
 
 #### [TopBar](https://polaris.shopify.com/components/structure/top-bar)
 
