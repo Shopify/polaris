@@ -61,21 +61,18 @@ describe('<ComboBox/>', () => {
 
   describe('options', () => {
     it('passes options to OptionList', () => {
-      const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
+      const options = [
+        {value: 'cheese_pizza', label: 'Cheese Pizza'},
+        {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
+        {value: 'pepperoni_pizza', label: 'Pepperoni Pizza'},
+      ];
+      const comboBox = mountWithAppProvider(
+        <ComboBox {...mockProps} options={options} />,
+      );
 
       comboBox.simulate('click');
 
-      const optionListOptions = comboBox.find(OptionList).prop('options') || [
-        {
-          value: '',
-          label: '',
-        },
-      ];
-
-      expect(optionListOptions[0].value).toBe('cheese_pizza');
-      expect(optionListOptions[0].label).toBe('Cheese Pizza');
-      expect(optionListOptions[1].value).toBe('macaroni_pizza');
-      expect(optionListOptions[1].label).toBe('Macaroni Pizza');
+      expect(comboBox.find(OptionList).prop('options')).toEqual(options);
     });
   });
 
@@ -237,11 +234,11 @@ describe('<ComboBox/>', () => {
     });
 
     it('renders a custom given input', () => {
+      const input = <input type="text" />;
       const comboBox = mountWithAppProvider(
-        <ComboBox {...mockProps} textField={<input type="text" />} />,
+        <ComboBox {...mockProps} textField={input} />,
       );
-      expect(comboBox.find('input')).toHaveLength(1);
-      expect(comboBox.find(TextField)).toHaveLength(0);
+      expect(comboBox.contains(input)).toBeTruthy;
     });
 
     it('is passed to Popover as the activator', () => {
@@ -348,7 +345,8 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.DownArrow});
           await expect(comboBox.state('selectedIndex')).toBe(-1);
         };
@@ -358,7 +356,8 @@ describe('<ComboBox/>', () => {
         const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.DownArrow});
           await expect(comboBox.state('selectedIndex')).toBe(0);
         };
@@ -374,7 +373,8 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.DownArrow});
           listenerMap.keyup({keyCode: Key.DownArrow});
           listenerMap.keyup({keyCode: Key.DownArrow});
@@ -384,12 +384,10 @@ describe('<ComboBox/>', () => {
 
       it('calls onEndReached() when the last option is selected', () => {
         const spy = jest.fn();
-        const comboBox = mountWithAppProvider(
-          <ComboBox {...mockProps} onEndReached={spy} />,
-        );
+        mountWithAppProvider(<ComboBox {...mockProps} onEndReached={spy} />);
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.DownArrow});
           listenerMap.keyup({keyCode: Key.DownArrow});
           await expect(spy).toHaveBeenCalledTimes(1);
@@ -408,7 +406,7 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           await listenerMap.keyup({keyCode: Key.DownArrow});
         };
 
@@ -428,7 +426,7 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.UpArrow});
           await expect(comboBox.state('selectedIndex')).toBe(-1);
         };
@@ -438,7 +436,7 @@ describe('<ComboBox/>', () => {
         const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.UpArrow});
           await expect(comboBox.state('selectedIndex')).toBe(2);
         };
@@ -454,7 +452,7 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.DownArrow});
           listenerMap.keyup({keyCode: Key.UpArrow});
           await expect(comboBox.state('selectedIndex')).toBe(0);
@@ -463,12 +461,10 @@ describe('<ComboBox/>', () => {
 
       it('calls onEndReached() when the last option is selected', () => {
         const spy = jest.fn();
-        const comboBox = mountWithAppProvider(
-          <ComboBox {...mockProps} onEndReached={spy} />,
-        );
+        mountWithAppProvider(<ComboBox {...mockProps} onEndReached={spy} />);
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           listenerMap.keyup({keyCode: Key.UpArrow});
           await expect(spy).toHaveBeenCalledTimes(1);
         };
@@ -486,7 +482,7 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           await listenerMap.keyup({keyCode: Key.UpArrow});
         };
 
@@ -528,7 +524,7 @@ describe('<ComboBox/>', () => {
         );
 
         async () => {
-          comboBox.find(TextField).simulate('click');
+          listenerMap.keyup({keyCode: Key.Tab});
           await listenerMap.keyup({keyCode: Key.DownArrow});
           expect(comboBox.state('popoverActive')).toBe(true);
         };
