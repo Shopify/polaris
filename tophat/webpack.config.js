@@ -10,16 +10,17 @@ const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = {
   target: 'web',
+  mode: 'development',
+  devtool: 'source-map',
+  stats: {warnings: false},
   entry: [
     '@shopify/polaris/styles/global.scss',
     path.join(__dirname, 'index.tsx'),
   ],
-  devtool: 'source-map',
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'assets'),
     publicPath: '/assets/',
-    libraryTarget: 'var',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -34,7 +35,7 @@ module.exports = {
     }),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test(resource) {
           return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');

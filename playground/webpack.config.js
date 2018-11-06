@@ -10,10 +10,13 @@ const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = {
   target: 'web',
+  mode: 'development',
   devtool: 'eval',
+  stats: {warnings: false},
   devServer: {
     port: process.env.PORT || 8080,
     disableHostCheck: true,
+    stats: {warnings: false},
   },
   entry: [
     'react-hot-loader/patch',
@@ -22,6 +25,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
+    path: path.resolve(__dirname, 'build/assets'),
     publicPath: '/assets/',
   },
   resolve: {
@@ -37,7 +41,7 @@ module.exports = {
     }),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test(resource) {
           return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
