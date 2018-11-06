@@ -24,6 +24,24 @@ const mockProps = {
 };
 
 describe('<Page />', () => {
+  function mockTitleBarCreate() {
+    const titleBarMock = {
+      set: jest.fn(),
+      unsubscribe: jest.fn(),
+    };
+
+    const createSpy = jest.fn().mockReturnValue(titleBarMock);
+    AppBridgeTitleBar.create = createSpy;
+
+    return {
+      createSpy,
+      titleBarMock,
+      restore() {
+        (AppBridgeTitleBar.create as jest.Mock).mockRestore();
+      },
+    };
+  }
+
   describe('children', () => {
     it('renders its children', () => {
       const card = <Card />;
@@ -137,12 +155,14 @@ describe('<Page />', () => {
         subscribe: jest.fn(),
       };
 
+      const {restore: restoreTitleBarCreateMock} = mockTitleBarCreate();
       AppBridgeButton.create = jest.fn().mockReturnValue(buttonMock);
 
       return {
         buttonMock,
         restore() {
           (AppBridgeButton.create as jest.Mock).mockRestore();
+          restoreTitleBarCreateMock();
         },
       };
     }
@@ -226,26 +246,18 @@ describe('<Page />', () => {
     });
   });
 
-  describe('with appBridge', () => {
-    function mockTitleBarCreate() {
-      const titleBarMock = {
-        set: jest.fn(),
-        unsubscribe: jest.fn(),
-      };
+  describe('<TitleBar />', () => {
+    it('creates a title bar on mount', () => {
+      const {
+        createSpy: titleBarCreateSpy,
+        restore: restoreTitleBarCreateMock,
+      } = mockTitleBarCreate();
+      mountWithAppBridge(<Page title="Test" />);
+      expect(titleBarCreateSpy).toHaveBeenCalledTimes(1);
+      restoreTitleBarCreateMock();
+    });
 
-      const createSpy = jest.fn().mockReturnValue(titleBarMock);
-      AppBridgeTitleBar.create = createSpy;
-
-      return {
-        createSpy,
-        titleBarMock,
-        restore() {
-          (AppBridgeTitleBar.create as jest.Mock).mockRestore();
-        },
-      };
-    }
-
-    it('creates a title bar', () => {
+    it('receives all neccesary transformed props', () => {
       const primaryAction: PrimaryActionProps = {
         content: 'Foo',
         url: '/foo',
@@ -268,7 +280,9 @@ describe('<Page />', () => {
         restore: restoreTitleBarCreateMock,
       } = mockTitleBarCreate();
 
-      const {polaris} = mountWithAppBridge(
+      const {
+        polaris: {appBridge},
+      } = mountWithAppBridge(
         <Page
           title="Test"
           primaryAction={primaryAction}
@@ -278,18 +292,33 @@ describe('<Page />', () => {
       );
 
       expect(titleBarCreateSpy).toHaveBeenCalledTimes(1);
-      expect(titleBarCreateSpy).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(titleBarCreateSpy).toHaveBeenCalledWith(appBridge, {
         title: 'Test',
         buttons: [
-          polaris.appBridge,
-          {primaryAction, secondaryActions, actionGroups},
+          appBridge,
+          {
+            primaryAction,
+            secondaryActions,
+            actionGroups,
+          },
         ],
         breadcrumbs: undefined,
       });
+
       restoreTitleBarCreateMock();
     });
 
-    it('updates only when props change', () => {
+    it('does not create a title bar on mount when there is no app bridge', () => {
+      const {
+        createSpy: titleBarCreateSpy,
+        restore: restoreTitleBarCreateMock,
+      } = mockTitleBarCreate();
+      mountWithAppProvider(<Page title="Title" />);
+      expect(titleBarCreateSpy).not.toHaveBeenCalled();
+      restoreTitleBarCreateMock();
+    });
+
+    it('updates when props change', () => {
       const {
         titleBarMock,
         restore: restoreTitleBarCreateMock,

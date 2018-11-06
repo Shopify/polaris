@@ -131,24 +131,24 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     const {appBridge} = this.props.polaris;
     const {breadcrumbs} = this.props;
 
-    if (!Array.isArray(breadcrumbs) || breadcrumbs.length <= 0) {
+    if (breadcrumbs != null && breadcrumbs.length > 0) {
+      const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
+      const button = AppBridgeButton.create(appBridge, {
+        label: breadcrumb.content || '',
+      });
+
+      const callback = !('url' in breadcrumb)
+        ? breadcrumb.onAction
+        : generateRedirect(appBridge, breadcrumb.url, breadcrumb.target);
+
+      if (callback != null) {
+        button.subscribe(AppBridgeButton.Action.CLICK, callback);
+      }
+
+      return button;
+    } else {
       return undefined;
     }
-
-    const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
-    const button = AppBridgeButton.create(appBridge, {
-      label: breadcrumb.content || '',
-    });
-
-    const callback = !('url' in breadcrumb)
-      ? breadcrumb.onAction
-      : generateRedirect(appBridge, breadcrumb.url, breadcrumb.target);
-
-    if (typeof callback === 'function') {
-      button.subscribe(AppBridgeButton.Action.CLICK, callback);
-    }
-
-    return button;
   }
 }
 
