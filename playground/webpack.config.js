@@ -23,7 +23,6 @@ module.exports = {
   output: {
     filename: '[name].js',
     publicPath: '/assets/',
-    libraryTarget: 'var',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -82,7 +81,10 @@ module.exports = {
               useCache: true,
               useTranspileModule: true,
               transpileOnly: true,
-              cacheDirectory: path.resolve(__dirname, '.cache', 'typescript'),
+              cacheDirectory: path.resolve(
+                __dirname,
+                'build/.cache/typescript',
+              ),
               babelOptions: {
                 babelrc: false,
                 presets: [

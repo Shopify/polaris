@@ -91,7 +91,10 @@ module.exports = {
               useCache: true,
               useTranspileModule: true,
               transpileOnly: true,
-              cacheDirectory: path.resolve(__dirname, '.cache', 'typescript'),
+              cacheDirectory: path.resolve(
+                __dirname,
+                'build/.cache/typescript',
+              ),
               babelOptions: {
                 babelrc: false,
                 presets: [
