@@ -160,13 +160,8 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(_: Props, prevState: State) {
-    const {
-      contentBefore,
-      contentAfter,
-      emptyState,
-      popoverWasActive,
-    } = this.props;
-    const {navigableOptions, popoverActive} = this.state;
+    const {contentBefore, contentAfter, emptyState} = this.props;
+    const {navigableOptions, popoverActive, popoverWasActive} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
