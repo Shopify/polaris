@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
+import {noop} from '@shopify/javascript-utilities/other';
 import {Popover, ActionList} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
-import {noop} from '@shopify/javascript-utilities/other';
 import Action from '../../Action';
 import ActionGroup from '../ActionGroup';
 
