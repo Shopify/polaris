@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const {
   svgOptions: svgOptimizationOptions,
 } = require('@shopify/images/optimize');
@@ -32,9 +31,6 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: path.resolve(

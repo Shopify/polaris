@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const {
   svgOptions: svgOptimizationOptions,
 } = require('@shopify/images/optimize');
@@ -35,11 +34,7 @@ module.exports = {
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
     },
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ],
+  plugins: [],
   module: {
     rules: [
       {
