@@ -5,7 +5,9 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background: color('sky', 'light');
+  @include when-not-printing {
+    background-color: color('sky', 'light');
+  }
 }
 
 .Navigation {
@@ -128,7 +130,9 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     .hasNav & {
-      padding-left: layout-width(nav);
+      @include when-not-printing {
+        padding-left: layout-width(nav);
+      }
       @include safe-area-for(padding-left, layout-width(nav), left);
     }
   }
