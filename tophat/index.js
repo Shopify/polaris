@@ -40,7 +40,7 @@ if (argv.watch) {
 
 app.use(
   '/assets/',
-  express.static(`${__dirname}/../tophat/assets/`, {
+  express.static(`${__dirname}/../tophat/build/assets/`, {
     maxAge: '365d',
   }),
 );

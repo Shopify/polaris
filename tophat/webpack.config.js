@@ -18,7 +18,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'assets'),
+    path: path.resolve(__dirname, 'build/assets'),
     publicPath: '/assets/',
   },
   resolve: {
@@ -74,7 +74,10 @@ module.exports = {
               useCache: true,
               useTranspileModule: true,
               transpileOnly: true,
-              cacheDirectory: path.resolve(__dirname, '.cache', 'typescript'),
+              cacheDirectory: path.resolve(
+                __dirname,
+                'build/.cache/typescript',
+              ),
               babelOptions: {
                 babelrc: false,
                 presets: [
