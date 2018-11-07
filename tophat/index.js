@@ -17,7 +17,14 @@ const port = process.env.PORT || 3000;
 const codeExamples = readMarkDownFiles();
 
 function appMiddleware(req, res, next) {
-  const html = render([{path: '/assets/main.js'}], {codeExamples});
+  const html = render(
+    [
+      {path: '/assets/vendors.js'},
+      {path: '/assets/polaris.js'},
+      {path: '/assets/main.js'},
+    ],
+    {codeExamples},
+  );
 
   res.send(html);
   next();
@@ -37,6 +44,10 @@ if (argv.watch) {
 
   app.use((req, res, next) => buildPromise.then(next, next));
 }
+
+app.use('/favicon.ico', (req, res) => {
+  res.status(404).end();
+});
 
 app.use(
   '/assets/',

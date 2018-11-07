@@ -27,6 +27,31 @@ module.exports = {
     path: path.resolve(__dirname, 'build/assets'),
     publicPath: '/assets/',
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          priority: -20,
+        },
+        polaris: {
+          // test accepts a regex. The replace escapes any special characters
+          // in the path so they are treated literally
+          // see https://github.com/benjamingr/RegExp.escape/blob/master/polyfill.js
+          test: new RegExp(
+            path
+              .resolve(__dirname, '..', 'src')
+              .replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'),
+          ),
+          name: 'polaris',
+          priority: -15,
+          chunks: 'all',
+        },
+      },
+    },
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     modules: ['node_modules', path.resolve(__dirname, '..', 'src')],
