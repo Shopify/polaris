@@ -5,8 +5,9 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  @include when-not-printing {
-    background-color: color('sky', 'light');
+  background-color: color('sky', 'light');
+  @include when-printing {
+    background-color: none;
   }
 }
 
@@ -130,16 +131,18 @@ $skip-vertical-offset: rem(10px);
 
   @include frame-when-nav-displayed {
     .hasNav & {
-      @include when-not-printing {
-        padding-left: layout-width(nav);
+      padding-left: layout-width(nav);
+      @include when-printing {
+        padding-left: 0;
       }
       @include safe-area-for(padding-left, layout-width(nav), left);
     }
   }
 
   .hasTopBar & {
-    @include when-not-printing {
-      padding-top: top-bar-height();
+    padding-top: top-bar-height();
+    @include when-printing {
+      padding-top: 0;
     }
   }
 }
