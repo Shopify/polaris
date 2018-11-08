@@ -59,6 +59,7 @@ The autocomplete component is an input field that provides selectable suggestion
 - Fixed `RangeSlider` linear-gradient so it doesn't break the css build (thanks [@Ankitjasoliya](https://github.com/Ankitjasoliya) and [@nerfologist](https://github.com/nerfologist) for the [original issue](https://github.com/Shopify/polaris-react/issues/441))
 - Fixed issue in `Page`, where styling wasn't being applied correctly to Page Actions
 - Removed unnecessary bindings on `Modal`s `onClose` prop. [original issue](https://github.com/Shopify/polaris-react/issues/441))
+- Rearranged `primaryFooterAction` and `secondaryFooterAction` in `Card` (thanks [@sivakumar-kailasam](https://github.com/sivakumar-kailasam) for the [original issue](https://github.com/Shopify/polaris-react/issues/551))
 
 ### Breaking changes
 
