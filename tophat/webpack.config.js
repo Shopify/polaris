@@ -93,7 +93,6 @@ module.exports = {
           {
             loader: 'awesome-typescript-loader',
             options: {
-              sourceMap: true,
               silent: true,
               useBabel: true,
               useCache: true,
