@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const {
   svgOptions: svgOptimizationOptions,
 } = require('@shopify/images/optimize');
@@ -10,10 +9,13 @@ const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = {
   target: 'web',
+  mode: 'development',
   devtool: 'eval',
+  stats: {warnings: false},
   devServer: {
     port: process.env.PORT || 8080,
     disableHostCheck: true,
+    stats: {warnings: false},
   },
   entry: [
     'react-hot-loader/patch',
@@ -22,8 +24,8 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
+    path: path.resolve(__dirname, 'build/assets'),
     publicPath: '/assets/',
-    libraryTarget: 'var',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -32,13 +34,9 @@ module.exports = {
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
     },
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ],
+  plugins: [],
   module: {
-    loaders: [
+    rules: [
       {
         test(resource) {
           return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
@@ -82,7 +80,10 @@ module.exports = {
               useCache: true,
               useTranspileModule: true,
               transpileOnly: true,
-              cacheDirectory: path.resolve(__dirname, '.cache', 'typescript'),
+              cacheDirectory: path.resolve(
+                __dirname,
+                'build/.cache/typescript',
+              ),
               babelOptions: {
                 babelrc: false,
                 presets: [

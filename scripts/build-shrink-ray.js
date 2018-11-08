@@ -12,7 +12,7 @@ const sha = process.env.CIRCLE_SHA1;
 
 const postWebpackReportURL = `https://shrink-ray.shopifycloud.com/repos/${repo}/commits/${sha}/reports`;
 
-const build = resolve(__dirname, '..', 'shrink-ray-build/build');
+const build = resolve(__dirname, '..', 'playground/build');
 const report = resolve(build, 'bundle-analysis', 'report.html');
 
 process.on('unhandledRejection', (reason) => {
@@ -29,9 +29,10 @@ if (sha) {
 }
 
 function buildPackages() {
-  execSync('yarn run webpack --config shrink-ray-build/webpack.config.js', {
-    stdio: 'inherit',
-  });
+  execSync(
+    'yarn run webpack --config playground/webpack.config.shrink-ray.js',
+    {stdio: 'inherit'},
+  );
 }
 
 function setupShrinkRay() {
