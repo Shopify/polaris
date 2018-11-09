@@ -247,13 +247,13 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
   integrity sha512-LAQ1d4OPfSJ/BMbI2DuizmYrrkD9JMaTdi2hQTlI53lQ4kRQPyZQRS4CYQ7O66bnBBnP/oYdRxbk++X0xuFU6A==
 
-"@percy/puppeteer@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-0.3.2.tgz#ef1218689884d0100612b4ab72cd23547156fc5d"
-  integrity sha1-7xIYaJiE0BAGErSrcs0jVHFW/F0=
+"@percy/puppeteer@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@percy/puppeteer/-/puppeteer-0.4.0.tgz#c8e6c802d11767e0d816bc2747af7123674df9dc"
+  integrity sha512-ngEaWYSHDMeCGi43KUnrFjbKKtPQWJRjECJvWCb27ukcCfyW+Wy1OC+6lcmWK8VwvuPyzs9VTlu+rOlNqgChsQ==
   dependencies:
     mime-types "^2.1.17"
-    percy-client "^2.6.0"
+    percy-client "^3.0.0"
     walk "^2.3.9"
 
 "@samverschueren/stream-to-observable@^0.3.0":
@@ -11225,10 +11225,10 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
-percy-client@^2.6.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/percy-client/-/percy-client-2.9.0.tgz#dcf8c972f4b583090fe5388234ab4d33255564c6"
-  integrity sha512-+l19rQp79CSWJwjmht3WFXUAUpFVgtPaNonmIwUJ/QtqVvHBmFmwn0Ottu+zU3wPZLeLFFKwtqnrrKJAxZMYIA==
+percy-client@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/percy-client/-/percy-client-3.0.1.tgz#eaa2e530b5e4e10604c501fc7e472da416f04550"
+  integrity sha512-El0u/lnV2B4uCxcqH0mLkKJMt5QAaLksn5p/xApRup92rMdMZ+QYm/oSUQEpLrWQTIa/XkgTnZlddjZ7v50fgQ==
   dependencies:
     base64-js "^1.2.3"
     bluebird "^3.5.1"
@@ -11238,6 +11238,7 @@ percy-client@^2.6.0:
     regenerator-runtime "^0.11.1"
     request "^2.85.0"
     request-promise "^4.2.2"
+    walk "^2.3.14"
   optionalDependencies:
     lint-staged "^7.0.4"
 
@@ -15281,10 +15282,10 @@ w3c-hr-time@^1.0.1:
   dependencies:
     browser-process-hrtime "^0.1.2"
 
-walk@^2.3.9:
-  version "2.3.13"
-  resolved "https://registry.yarnpkg.com/walk/-/walk-2.3.13.tgz#400852ade80df679f54637e4f08654ed6628f6da"
-  integrity sha512-78SMe7To9U7kqVhSoGho3GfspA089ZDBIj2f8jElg2hi6lUCoagtDJ8sSMFNlpAh5Ib8Jt1gQ6Y7gh9mzHtFng==
+walk@^2.3.14, walk@^2.3.9:
+  version "2.3.14"
+  resolved "https://registry.yarnpkg.com/walk/-/walk-2.3.14.tgz#60ec8631cfd23276ae1e7363ce11d626452e1ef3"
+  integrity sha512-5skcWAUmySj6hkBdH6B6+3ddMjVQYH5Qy9QGbPmN8kVmLteXk+yVXg+yfk1nbX30EYakahLrr8iPcCxJQSCBeg==
   dependencies:
     foreachasync "^3.0.0"
 
