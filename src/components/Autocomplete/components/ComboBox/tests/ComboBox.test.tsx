@@ -238,7 +238,7 @@ describe('<ComboBox/>', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox {...mockProps} textField={input} />,
       );
-      expect(comboBox.contains(input)).toBeTruthy;
+      expect(comboBox.contains(input)).toBeTruthy();
     });
 
     it('is passed to Popover as the activator', () => {
