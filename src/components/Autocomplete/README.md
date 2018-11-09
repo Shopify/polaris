@@ -300,8 +300,6 @@ class AutocompleteExample extends React.Component {
 }
 ```
 
----
-
 ### Autocomplete with empty state
 
 Use to indicate there are no search results.
@@ -393,6 +391,8 @@ class AutocompleteExample extends React.Component {
   };
 }
 ```
+
+---
 
 ## Related components
 
