@@ -288,10 +288,10 @@
     lodash "^4.17.4"
     lodash-decorators "^4.3.5"
 
-"@shopify/javascript-utilities@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.2.0.tgz#948d44d4068d602136b0d72de66eed49820e2374"
-  integrity sha512-TdHeNyAva/GayAF9NzAO+AZiM3d6SDhtK8WqOCbvEz9mwTGAL8FHHHwITvs/HUUuuFPZwAVm+0GZnwMURSxisQ==
+"@shopify/javascript-utilities@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@shopify/javascript-utilities/-/javascript-utilities-2.2.1.tgz#7f699d414d2784d176e5d8d6ba1113e0838086e6"
+  integrity sha512-szqIv9Sg7IJ3M/6uBh+yDvaaQ1wUAoBTx60I+hExnI3WhaRz03FQK+jnR3eNoisRZFmbsglxVVYUHJHlZoSvqQ==
   dependencies:
     "@types/lodash" "^4.14.65"
     "@types/react" "^16.0.2"
