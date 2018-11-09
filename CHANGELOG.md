@@ -13,24 +13,24 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 ### Breaking changes
 
 - Added padding top and bottom on `Card.Section` when set to full width
-- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount`;
+- Fixed `Portal` rendering by using `componentDidMount` lifecycle hook as opposed to `componentWillMount`
 - Fixed an issue where clicking a `Link` without a `url` in a form would implicitly submit the form. `Link` can no longer submit forms. Use `<Button submit>` instead.
-- Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow`
+- Renamed the `Keys` enum to align with Shopify naming standards. It is now singular and the properties are in PascalCase. Replace `import {Keys} from '@shopify/polaris'` with `import {Key} from '@shopify/polaris'` and change the casing of the properties, e.g. replace `Keys.DOWN_ARROW` with `Key.DownArrow`.
 - Added !important to `display: none` in `@print-hidden` mixin
 
 #### Embedded apps
 
-- Upgraded to the Shopify App Bridge and removed the EASDK
+- Use the Shopify App Bridge in favor of the EASDK. The EASDK has been removed.
 - Added Shopify App Bridge support to new components `Toast` and `Loading`
 - Added `target` prop to all actions which get passed to the Shopify App Bridge
 - Added new `size` and `message` props to `Modal` which aligns with the Shopify App Bridge API
 - Added new `resourceType`, `initialQuery`, and `showVariants` props to `ResourcePicker` which aligns with the Shopify App Bridge API
-- Moved embedded `ResourcePicker`, `Modal`, and `Page` to the main bundle and removed the embedded bundle. Imports from `'@shopify/polaris/embedded'` will no longer work, use `'@shopify/polaris'` instead
+- Moved embedded `ResourcePicker`, `Modal`, and `Page` to the main bundle and removed the embedded bundle. Imports from `'@shopify/polaris/embedded'` will no longer work, use `'@shopify/polaris'` instead.
 - Made the `shopOrigin` prop on `AppProvider` optional. It’s now provided by default. If you do provide a `shopOrigin` it now needs to be given without the `'https://'` per the Shopify App Bridge API.
-- Updated `onSelection` prop on `ResourcePicker`. The shape of the `selectPayload` data has changed and the product `id` is now a `gid`. For example, `/9019381572` is now `gid://shopify/Product/9019381572`. We offer [@shopify/admin-graphql-api-utilities](https://www.npmjs.com/package/@shopify/admin-graphql-api-utilities) to help compose and parse `gid` from Shopify admin
-- Updated default values for `ResourcePicker` props to align with the Shopify App Bridge. Set the props `showHidden`, `allowMultiple={false}`, and `showVariants={false}` to get the previous default behavior
+- Updated `onSelection` prop on `ResourcePicker`. The shape of the `selectPayload` data has changed and the product `id` is now a `gid`. For example, `/9019381572` is now `gid://shopify/Product/9019381572`. We offer [@shopify/admin-graphql-api-utilities](https://www.npmjs.com/package/@shopify/admin-graphql-api-utilities) to help compose and parse `gid` from Shopify admin.
+- Updated default values for `ResourcePicker` props to align with the Shopify App Bridge. Set the props `showHidden`, `allowMultiple={false}`, and `showVariants={false}` to get the previous default behavior.
 - Updated `target` prop type related to embedded apps, use `'APP'`, `'ADMIN_PATH'`, or `'REMOTE'`
-- Removed `icon` prop from `Page`. Upload your app’s icon in the Shopify Partners dashboard “App setup” section instead
+- Removed `icon` prop from `Page`. Upload your app’s icon in the Shopify Partners dashboard “App setup” section instead.
 - Removed `title` prop from `ResourcePicker` as setting a title is no longer supported by the Shopify App Bridge
 - Removed `products` prop from `ResourcePicker`, use `resourceType="Product"` instead
 - Removed `collections` prop from `ResourcePicker`, use `resourceType="Collection"` instead
@@ -41,7 +41,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Removed `this.context.easdk.startLoading()` and `this.context.easdk.stopLoading()`, use the `Loading` component instead
 - Removed `this.context.easdk.showFlashNotice()`, use the `Toast` component instead
 - Removed `this.context.easdk.pushState()`, use the [Shopify App Bridge `History` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/history) instead. The `History` action requires passing the `appBridge` instance which is accessible via `this.context.polaris.appBridge`
-- Removed `this.context.easdk.redirect()`, use the [Shopify App Bridge `Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) instead. The `Redirect` action requires passing the `appBridge` instance which is accessible via `this.context.polaris.appBridge`
+- Removed `this.context.easdk.redirect()`, use the [Shopify App Bridge `Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) instead. The `Redirect` action requires passing the `appBridge` instance which is accessible via `this.context.polaris.appBridge`.
 
 #### License
 
