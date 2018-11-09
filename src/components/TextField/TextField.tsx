@@ -120,6 +120,7 @@ export default class TextField extends React.PureComponent<Props, State> {
   }
 
   private input: HTMLElement;
+  private buttonPressTimer: number;
 
   constructor(props: Props) {
     super(props);
@@ -205,7 +206,11 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const spinnerMarkup =
       type === 'number' && !disabled ? (
-        <Spinner onChange={this.handleNumberChange} />
+        <Spinner
+          onChange={this.handleNumberChange}
+          onMouseDown={this.handleButtonPress}
+          onMouseUp={this.handleButtonRelease}
+        />
       ) : null;
 
     const style = multiline && height ? {height} : null;
@@ -379,6 +384,16 @@ export default class TextField extends React.PureComponent<Props, State> {
   @autobind
   private handleClick() {
     this.input.focus();
+  }
+
+  @autobind
+  private handleButtonPress(onChange: Function) {
+    this.buttonPressTimer = setInterval(onChange, 200);
+  }
+
+  @autobind
+  private handleButtonRelease() {
+    clearTimeout(this.buttonPressTimer);
   }
 }
 
