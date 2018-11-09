@@ -195,3 +195,21 @@ Also known as [Segmented controls](https://developer.apple.com/design/human-inte
 ![Fixed tabs on iOS](components/Tabs/ios/fixed.png)
 
 <!-- /content-for -->
+
+<!-- content-for: web -->
+
+## Accessibility
+
+The Tabs component follows recommendations for the [ARIA 1.1 Tabs implementation](https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel).
+
+### Structure
+
+- Tabs are indicated with an ARIA role of `tab`. Elements with a role of `tab` use `aria-selected` to indicate which Tab is selected, and `aria-controls` to indicate which `tabpanel` is related.
+- The set of Tabs are indicated with a role of `tablist`.
+- The content that is associated with a Tab has a role of `tabpanel`.
+
+### Keyboard support
+
+Tabs work much like radio buttons for keyboard users. Users will expect to be able to move focus to the Tab controls as a set with the `tab` key, then move focus through each Tab control with the arrow keys. To activate a tab that has focus, press the `enter`/`return` key.
+
+<!-- /content-for -->

@@ -102,3 +102,11 @@ class DatePickerExample extends React.Component {
 ![Date picker on iOS](components/DatePicker/ios/default.png)
 
 <!-- /content-for -->
+
+<!-- content-for: web -->
+
+#### Accessibility
+
+Date picker interactions can be challenging for some users and very easy for others. To give users a choice, consider allowing users to enter the date using a [Text field](/components/forms/text-field), with the datepicker provided as optional.
+
+<!-- /content-for -->
