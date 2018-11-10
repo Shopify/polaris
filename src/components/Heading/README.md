@@ -103,6 +103,16 @@ Use for the title of each top-level page section.
 
 <!-- /content-for -->
 
+<!-- content-for: web -->
+
+---
+
+## Accessibility
+
+Headings default to an `<h2>` in HTML. Typically, major sections of a page should have a level 2 heading. A clear and consistent heading structure helps people who have difficulty with reading or language, and also helps screen reader users navigate the page using keystrokes custom to their screen reader.
+
+<!-- /content-for -->
+
 ---
 
 ## Related components

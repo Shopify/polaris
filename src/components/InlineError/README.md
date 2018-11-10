@@ -82,6 +82,24 @@ Use when the merchant has entered invalid information into multiple fields insid
 
 <!-- /content-for -->
 
+<!-- content-for: web -->
+
+---
+
+## Accessibility
+
+### Structure
+
+Inline errors require a unique `id`, supplied through the `fieldIDRequired` prop. This allows them to be programmatically associated to a related form field using `aria-describedby` so they are conveyed clearly to screen reader users along with the field label.
+
+Inline errors also require a text description of the error, provided through the `message` prop. Without a text description, many users will have difficulty identifying the error or knowing how to fix it.
+
+### Visual design
+
+The Inline error icon helps visually identify the error message for users who have difficulty seeing color or who use settings that remove color from the page.
+
+<!-- /content-for -->
+
 ---
 
 ## Related components

@@ -256,6 +256,8 @@ Use when a button has been pressed and the associated action is in progress.
 
 <!-- content-for: web -->
 
+---
+
 ### Accessibility
 
 #### Labeling

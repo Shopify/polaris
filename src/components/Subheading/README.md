@@ -88,6 +88,16 @@ Use to structure content in a card.
 
 ---
 
+<!-- content-for: web -->
+
+---
+
+## Accessibility
+
+Subheadings default to an `<h3>` in HTML. Typically, subsections of a page should have a level 3 heading. A clear and consistent heading structure helps people who have difficulty with reading or language, and also helps screen reader users navigate the page using keystrokes custom to their screen reader.
+
+<!-- /content-for -->
+
 ## Related components
 
 - To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card)

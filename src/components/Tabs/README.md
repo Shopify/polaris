@@ -198,6 +198,8 @@ Also known as [Segmented controls](https://developer.apple.com/design/human-inte
 
 <!-- content-for: web -->
 
+---
+
 ## Accessibility
 
 The Tabs component follows recommendations for the [ARIA 1.1 Tabs implementation](https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel).

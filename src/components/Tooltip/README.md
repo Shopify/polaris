@@ -74,6 +74,22 @@ Use only when necessary to provide an explanation for an interface element.
 </div>
 ```
 
+<!-- content-for: web -->
+
+---
+
+## Accessibility
+
+### Structure
+
+Tooltips use a link as the control to display the Tooltip. The tooltip content is connected to the link using an `aria-describedby` attribute. When a user accesses the tooltip with a screen reader, the Tooltip content should be read when the link receives focus, or after a short delay.
+
+### Keyboard support
+
+For keyboard users, the Tooltip is displayed when the Tooltip link receives focus via the <key>tab</key> key.
+
+<!-- /content-for -->
+
 ---
 
 ## Related components
