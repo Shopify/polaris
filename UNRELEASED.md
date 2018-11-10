@@ -4,6 +4,12 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
+### New components
+
+#### [Toggle](http://polaris.shopify.com/components/forms/toggle)
+
+- Use the toggle component to present a single choice to enable or disable a setting. ([#600](https://github.com/Shopify/polaris-react/pull/600))
+
 ### Enhancements
 
 ### Bug fixes

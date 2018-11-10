@@ -1,0 +1,84 @@
+$toggle-track-length: rem(46px);
+$toggle-track-height: rem(24px);
+$toggle-thumb-size: rem(20px);
+
+.Toggle {
+  display: flex;
+  align-items: center;
+
+  &.disabled {
+    opacity: 0.8;
+  }
+}
+
+.ToggleTrack {
+  width: $toggle-track-length;
+  height: $toggle-track-height;
+  border-radius: border-radius(extra-large);
+  border: border-width() solid color('sky', 'dark');
+  background-color: color('sky');
+  transition: background-color duration(slow), border duration(slow);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ToggleThumb {
+  position: absolute;
+  top: rem(2px);
+  left: rem(2px);
+  width: $toggle-thumb-size;
+  height: $toggle-thumb-size;
+  border-radius: 50%;
+  transition: left duration(slow) easing();
+  background-color: color('white');
+}
+
+.ToggleChecked {
+  .ToggleTrack {
+    background-color: color('indigo');
+    border: border-width() solid color('indigo', 'dark');
+    outline: none;
+  }
+
+  .ToggleThumb {
+    left: $toggle-track-height;
+  }
+}
+
+.ToggleDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transition: opacity duration();
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.Input {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  border-radius: border-radius(extra-large);
+  appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    box-shadow: shadow(deep) color('sky');
+  }
+}
+
+.Prefix {
+  flex: 0 0 auto;
+  margin-right: spacing(tight);
+}
+
+.Suffix {
+  flex: 0 0 auto;
+  margin-left: spacing(tight);
+}

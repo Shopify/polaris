@@ -263,6 +263,8 @@ export {
   DEFAULT_TOAST_DURATION,
 } from './Toast';
 
+export {default as Toggle} from './Toggle';
+
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 
 export {default as TopBar, Props as TopBarProps} from './TopBar';
