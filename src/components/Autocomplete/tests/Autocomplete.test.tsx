@@ -66,6 +66,7 @@ describe('<Autocomplete/>', () => {
           }}
           onSelect={handleOnSelect}
           emptyState={<EmptyState />}
+          disabled
         />,
       );
 
@@ -89,6 +90,7 @@ describe('<Autocomplete/>', () => {
       expect(autocomplete.find(ComboBox).prop('emptyState')).toEqual(
         <EmptyState />,
       );
+      expect(autocomplete.find(ComboBox).prop('disabled')).toBe(true);
     });
   });
 

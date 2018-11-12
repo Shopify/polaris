@@ -378,6 +378,23 @@ describe('<ComboBox/>', () => {
     });
   });
 
+  describe('disabled', () => {
+    it('does not set Popover to active if disabled', () => {
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          allowMultiple={false}
+          disabled
+        />,
+      );
+      comboBox.simulate('click');
+      expect(comboBox.find(Popover).prop('active')).toBe(false);
+    });
+  });
+
   describe('onSelect', () => {
     it('gets called when an item is clicked', () => {
       const spy = jest.fn();
