@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added `disabled` prop to `Autocomplete` component.
+
 ### Bug fixes
 
 ### Documentation

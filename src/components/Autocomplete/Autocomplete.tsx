@@ -33,6 +33,8 @@ export interface Props {
   willLoadMoreResults?: boolean;
   /** Is rendered when there are no options */
   emptyState?: React.ReactNode;
+  /** Whether the attached text field should be disabled */
+  disabled?: boolean;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
@@ -62,6 +64,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
       actionBefore,
       willLoadMoreResults,
       emptyState,
+      disabled,
       onSelect,
       onLoadMoreResults,
       polaris: {intl},
@@ -96,6 +99,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
         onSelect={onSelect}
         onEndReached={onLoadMoreResults}
         emptyState={emptyState}
+        disabled={disabled}
       />
     );
   }
