@@ -24,6 +24,19 @@ describe('<Toggle />', () => {
     });
   });
 
+  describe('role', () => {
+    it('gets set to switch', () => {
+      const accessibilityLabel = 'accessibilityLabel';
+      const toggle = mountWithAppProvider(
+        <Toggle {...mockProps} accessibilityLabel={accessibilityLabel} />,
+      );
+
+      const button = toggle.find('button');
+
+      expect(button.prop('role')).toBe('switch');
+    });
+  });
+
   describe('checked', () => {
     it('sets aria-checked if true', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} checked />);
