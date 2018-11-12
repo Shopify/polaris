@@ -8,6 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed `Datepicker` ranges when `start` and `end` dates are similar but have different references ([#601](https://github.com/Shopify/polaris-react/pull/601))
 - Fixed `DataTable` fixed column in production enviroments by using a data-attribute target instead of class based targeting ([#615](https://github.com/Shopify/polaris-react/pull/615))
 - Fixed `Navigation.Item` not calling `onClick` on small screens when `onNavigationDismiss` is undefined ([#603](https://github.com/Shopify/polaris-react/pull/603))
 - Fixed `Autocomplete` empty state example Markdown not parsing correctly ([#592](https://github.com/Shopify/polaris-react/pull/592))
