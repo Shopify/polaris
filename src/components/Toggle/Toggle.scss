@@ -1,33 +1,37 @@
 $toggle-track-length: rem(46px);
 $toggle-track-height: rem(24px);
 $toggle-thumb-size: rem(20px);
+$disabled-opacity: 0.5;
+$toggle-thumb-displacement: rem(2px);
 
 .Toggle {
   display: flex;
   align-items: center;
 
   &.disabled {
-    opacity: 0.8;
+    opacity: $disabled-opacity;
   }
 }
 
 .ToggleTrack {
   width: $toggle-track-length;
   height: $toggle-track-height;
-  border-radius: border-radius(extra-large);
-  border: border-width() solid color('sky', 'dark');
+  border-radius: rem(30px);
+  box-shadow: 1px 1px 1px color('ink', 'lightest') inset;
   background-color: color('sky');
-  transition: background-color duration(slow), border duration(slow);
+  transition: background-color duration(slow), border duration(slow),
+    box-shadow duration(slow);
   -webkit-tap-highlight-color: transparent;
 }
 
 .ToggleThumb {
   position: absolute;
-  top: rem(2px);
-  left: rem(2px);
+  top: $toggle-thumb-displacement;
+  left: $toggle-thumb-displacement;
   width: $toggle-thumb-size;
   height: $toggle-thumb-size;
   border-radius: 50%;
+  box-shadow: 1px 1px 1px color('ink', 'lightest');
   transition: left duration(slow) easing();
   background-color: color('white');
 }
@@ -35,8 +39,7 @@ $toggle-thumb-size: rem(20px);
 .ToggleChecked {
   .ToggleTrack {
     background-color: color('indigo');
-    border: border-width() solid color('indigo', 'dark');
-    outline: none;
+    box-shadow: 1px 1px 1px color('indigo', 'dark') inset;
   }
 
   .ToggleThumb {
@@ -46,7 +49,7 @@ $toggle-thumb-size: rem(20px);
 
 .ToggleDisabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: $disabled-opacity;
   transition: opacity duration();
 
   &:hover {
@@ -63,13 +66,16 @@ $toggle-thumb-size: rem(20px);
   appearance: none;
   cursor: pointer;
   background-color: transparent;
-  user-select: none;
   -webkit-tap-highlight-color: transparent;
 
   &:hover,
   &:focus {
     outline: 0;
     box-shadow: shadow(deep) color('sky');
+  }
+
+  &.ToggleDisabled {
+    cursor: not-allowed;
   }
 }
 

@@ -3,6 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Labelled from '../../Labelled';
 import TextContainer from '../../TextContainer';
+import Icon from '../../Icon';
 import Toggle from '../Toggle';
 
 describe('<Toggle />', () => {
@@ -11,25 +12,9 @@ describe('<Toggle />', () => {
     onChange: noop,
   };
 
-  describe('accessibilityLabel', () => {
-    it('gets passed to aria-label', () => {
-      const accessibilityLabel = 'accessibilityLabel';
-      const toggle = mountWithAppProvider(
-        <Toggle {...mockProps} accessibilityLabel={accessibilityLabel} />,
-      );
-
-      const button = toggle.find('button');
-
-      expect(button.prop('aria-label')).toBe(accessibilityLabel);
-    });
-  });
-
   describe('role', () => {
     it('gets set to switch', () => {
-      const accessibilityLabel = 'accessibilityLabel';
-      const toggle = mountWithAppProvider(
-        <Toggle {...mockProps} accessibilityLabel={accessibilityLabel} />,
-      );
+      const toggle = mountWithAppProvider(<Toggle {...mockProps} />);
 
       const button = toggle.find('button');
 
@@ -104,6 +89,17 @@ describe('<Toggle />', () => {
 
       expect(labelled.prop('label')).toBe(label);
     });
+
+    it('gets passed to aria-label', () => {
+      const label = 'label';
+      const toggle = mountWithAppProvider(
+        <Toggle {...mockProps} label={label} />,
+      );
+
+      const button = toggle.find('button');
+
+      expect(button.prop('aria-label')).toBe(label);
+    });
   });
 
   describe('labelHidden', () => {
@@ -151,6 +147,28 @@ describe('<Toggle />', () => {
       button.simulate('click');
 
       expect(onChangeSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('<Icon />', () => {
+    it('renders an indigo checkmark icon when checked', () => {
+      const toggle = mountWithAppProvider(<Toggle {...mockProps} checked />);
+
+      const button = toggle.find('button');
+
+      expect(button.find(Icon).prop('source')).toBe('checkmark');
+      expect(button.find(Icon).prop('color')).toBe('indigo');
+    });
+
+    it('renders a skyDark cancelSmall icon when not checked', () => {
+      const toggle = mountWithAppProvider(
+        <Toggle {...mockProps} checked={false} />,
+      );
+
+      const button = toggle.find('button');
+
+      expect(button.find(Icon).prop('source')).toBe('cancelSmall');
+      expect(button.find(Icon).prop('color')).toBe('skyDark');
     });
   });
 });

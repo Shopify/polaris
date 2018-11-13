@@ -2,12 +2,11 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Labelled from '../Labelled';
+import Icon from '../Icon';
 
 import * as styles from './Toggle.scss';
 
 export interface Props {
-  /** Visually hidden text for screen readers */
-  accessibilityLabel?: string;
   /** Toggles between enabled and disabled */
   checked?: boolean;
   /** Disables the toggle, disallowing interaction */
@@ -30,12 +29,11 @@ const getUniqueID = createUniqueIDFactory('Toggle');
 
 export default function Toggle({
   id = getUniqueID(),
-  checked = false,
-  disabled = false,
+  checked,
+  disabled,
   onChange,
-  accessibilityLabel,
   label,
-  labelHidden = false,
+  labelHidden,
   prefix,
   suffix,
 }: Props) {
@@ -52,19 +50,28 @@ export default function Toggle({
   );
 
   function handleChange(event: React.MouseEvent<HTMLButtonElement>) {
-    if (disabled || !onChange) {
+    if (disabled) {
       return;
     }
 
-    const isButtonChecked =
+    const buttonNotChecked =
       event.currentTarget.getAttribute('aria-checked') === 'true';
 
-    onChange(!isButtonChecked);
+    onChange(!buttonNotChecked);
   }
 
-  const prefixMarkup = prefix && <div className={styles.Prefix}>{prefix}</div>;
+  const prefixMarkup = prefix ? (
+    <div className={styles.Prefix}>{prefix}</div>
+  ) : null;
+  const suffixMarkup = suffix ? (
+    <div className={styles.Suffix}>{suffix}</div>
+  ) : null;
 
-  const suffixMarkup = suffix && <div className={styles.Suffix}>{suffix}</div>;
+  const iconMarkup = checked ? (
+    <Icon source="checkmark" color="indigo" />
+  ) : (
+    <Icon source="cancelSmall" color="skyDark" />
+  );
 
   return (
     <Labelled id={id} label={label} labelHidden={labelHidden}>
@@ -77,11 +84,11 @@ export default function Toggle({
           onClick={handleChange}
           aria-checked={checked}
           aria-disabled={disabled}
-          aria-label={accessibilityLabel}
+          aria-label={label}
           role="switch"
         >
           <div className={styles.ToggleTrack} />
-          <div className={styles.ToggleThumb} />
+          <div className={styles.ToggleThumb}>{iconMarkup}</div>
         </button>
         {suffixMarkup}
       </div>
