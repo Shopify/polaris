@@ -43,17 +43,17 @@ describe('<TextStyle />', () => {
     expect(textStyle.find('span')).toHaveLength(1);
   });
 
+  it('renders a span tag when the strong variant is provided', () => {
+    const textStyle = mountWithAppProvider(
+      <TextStyle variation="strong">Hello Polaris</TextStyle>,
+    );
+    expect(textStyle.find('span')).toHaveLength(1);
+  });
+
   it('renders a code tag when the code variant is provided', () => {
     const textStyle = mountWithAppProvider(
       <TextStyle variation="code">Hello Polaris</TextStyle>,
     );
     expect(textStyle.find('code')).toHaveLength(1);
-  });
-
-  it('renders a strong tag when the strong variant is provided', () => {
-    const textStyle = mountWithAppProvider(
-      <TextStyle variation="strong">Hello Polaris</TextStyle>,
-    );
-    expect(textStyle.find('b')).toHaveLength(1);
   });
 });
