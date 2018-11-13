@@ -379,15 +379,14 @@ describe('<ComboBox/>', () => {
   });
 
   describe('disabled', () => {
-    it('does not set Popover to active if disabled', () => {
+    it('does not set Popover to active if TextField is disabled', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox
           options={options}
           selected={[]}
-          textField={renderTextField()}
+          textField={<TextField label="" onChange={noop} disabled />}
           onSelect={noop}
           allowMultiple={false}
-          disabled
         />,
       );
       comboBox.simulate('click');

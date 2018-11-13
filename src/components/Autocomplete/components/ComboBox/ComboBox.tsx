@@ -53,8 +53,6 @@ export interface Props {
   contentAfter?: React.ReactNode;
   /** Is rendered when there are no options */
   emptyState?: React.ReactNode;
-  /** Whether the popup should show when activated */
-  disabled?: boolean;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
@@ -220,7 +218,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       contentAfter,
       onEndReached,
       emptyState,
-      disabled,
     } = this.props;
 
     const actionsBeforeMarkup = actionsBefore &&
@@ -256,6 +253,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       options.length === 0 &&
       emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
+    const {disabled} = textField.props;
     const active = !disabled && this.state.popoverActive;
 
     return (
@@ -268,7 +266,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         aria-haspopup
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
       >
         <KeypressListener
           keyCode={Key.DownArrow}
