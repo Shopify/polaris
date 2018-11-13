@@ -328,7 +328,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } = this;
     if (collapsed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(
-        '[class*=header]',
+        '[data-polaris-headercell]',
       ) as NodeListOf<HTMLElement>;
       const collapsedHeaderCells = Array.from(headerCells).slice(1);
       const fixedColumnWidth = headerCells[0].offsetWidth;
