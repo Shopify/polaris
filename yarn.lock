@@ -316,10 +316,10 @@
     mime-types "2.1.12"
     request "2.78.0"
 
-"@shopify/polaris-tokens@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-1.2.0.tgz#dca924fd88438f21c94cccf51fa80bbec0fff277"
-  integrity sha512-9vmOpYUoA2MTf0o1i4PtDGL2BKFZ4X/4S6TOscwNvuqa3RozwxEO9R2K+M6+ENF4+SLgCMBJI2ooUrOjMCsAIw==
+"@shopify/polaris-tokens@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.0.0.tgz#a7f7245d0520b232ef014f73bced89970151b086"
+  integrity sha512-oiFk1uBKPBA1ouhCaYmsu4nrSz75/Xgwjw/ufKVU1WC4oMgl+DEDafefbLnDp1EgXl7uUiKaFnJOsgOz92cCrQ==
 
 "@shopify/react-compose@^0.1.6":
   version "0.1.6"

@@ -70,10 +70,10 @@ export function setTextColor(
   variant: ThemeVariant = 'dark',
 ): string[] {
   if (variant === 'light') {
-    return [name, tokens.colorInkBase];
+    return [name, tokens.colorInk];
   }
 
-  return [name, tokens.colorWhiteBase];
+  return [name, tokens.colorWhite];
 }
 
 export function setTheme(
