@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed erroneous scss file import that rendered Polaris unable to be used in typescript projects without scss support ([#609](https://github.com/Shopify/polaris-react/pull/609))
 - Fixed `Popover` inconsistent `border-radius` values ([#605](https://github.com/Shopify/polaris-react/pull/605))
 - `TextStyle` "strong" variant now uses a `span` tag instead of `b` ([#606](https://github.com/Shopify/polaris-react/pull/606))
+- Fixed non-blocking context errors when using `Toast` or `Loading` in an embedded app ([#613](https://github.com/Shopify/polaris-react/pull/613))
 
 ### Documentation
 
