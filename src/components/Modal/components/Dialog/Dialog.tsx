@@ -1,9 +1,13 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {KeypressListener, TrapFocus} from '../../..';
-import {Duration} from '../../../shared';
+import {classNames} from '@shopify/react-utilities/styles';
+
 import {AnimationProps, Key} from '../../../../types';
+
+import KeypressListener from '../../../KeypressListener';
+import TrapFocus from '../../../TrapFocus';
+import {Duration} from '../../../shared';
+
 import * as styles from './Dialog.scss';
 
 export interface DialogProps {

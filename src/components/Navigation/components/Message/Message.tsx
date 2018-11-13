@@ -1,7 +1,12 @@
 import * as React from 'react';
 
-import {TextContainer, Heading, Link, Stack, Button} from '../../..';
 import Badge, {Props as BadgeProps} from '../../../Badge';
+import Button from '../../../Button';
+import Heading from '../../../Heading';
+import Link from '../../../Link';
+import Stack from '../../../Stack';
+import TextContainer from '../../../TextContainer';
+
 import styles from './Message.scss';
 
 export interface Props {

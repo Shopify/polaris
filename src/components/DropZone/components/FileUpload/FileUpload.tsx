@@ -1,20 +1,26 @@
 import * as React from 'react';
 import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
+
+import {WithContextTypes} from '../../../../types';
 import compose from '../../../../utilities/react-compose';
+
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import Link from '../../../Link';
+import Icon from '../../../Icon';
+import Stack from '../../../Stack';
+import Button from '../../../Button';
+import Caption from '../../../Caption';
+import TextStyle from '../../../TextStyle';
+import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
-import {Link, Icon, Stack, Button, Caption, TextStyle} from '../../..';
-import withContext from '../../../WithContext';
-import {Consumer} from '../Context';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-
+import {DropZoneContext} from '../../types';
 import IconDragDrop from '../../icons/drag-drop.svg';
 import AssetFileUpload from '../../images/file-upload.svg';
 import AssetImageUpload from '../../images/image-upload.svg';
 
-import {DropZoneContext} from '../../types';
-import {WithContextTypes} from '../../../../types';
+import {Consumer} from '../Context';
 
 import * as styles from './FileUpload.scss';
 

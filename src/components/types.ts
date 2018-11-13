@@ -1,10 +1,9 @@
 import * as PropTypes from 'prop-types';
-import {
-  ContextualSaveBarProps,
-  ToastProps,
-  AppProviderContext,
-  ThemeProviderContext,
-} from '.';
+
+import {Context as AppProviderContext} from './AppProvider';
+import {ContextualSaveBarProps} from './ContextualSaveBar';
+import {Props as ToastProps} from './Toast';
+import {Context as ThemeProviderContext} from './ThemeProvider';
 
 export interface PolarisContext
   extends AppProviderContext,
