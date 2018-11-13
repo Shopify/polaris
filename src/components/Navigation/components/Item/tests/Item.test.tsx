@@ -358,6 +358,55 @@ describe('<Nav.Item />', () => {
         .exists(),
     ).toBe(true);
   });
+
+  describe('small screens', () => {
+    let matchMedia: jest.SpyInstance;
+    beforeEach(() => {
+      matchMedia = jest.spyOn(window, 'matchMedia');
+      matchMedia.mockImplementation(() => {
+        return {
+          matches: true,
+          addListener() {},
+          removeListener() {},
+        };
+      });
+    });
+
+    afterEach(() => {
+      matchMedia.mockRestore();
+    });
+
+    describe('onClick', () => {
+      it('will fire once on small screens when onNavigationDismiss is defined', () => {
+        const item = mountWithAppProvider(
+          <Item label="some label" disabled={false} onClick={jest.fn()} />,
+          {
+            context: {
+              location: 'bar',
+              onNavigationDismiss: noop,
+            },
+          },
+        );
+
+        item.find('button').simulate('click');
+        expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+      });
+
+      it('will fire once on small screens when onNavigationDismiss is undefined', () => {
+        const item = mountWithAppProvider(
+          <Item label="some label" disabled={false} onClick={jest.fn()} />,
+          {
+            context: {
+              location: 'bar',
+            },
+          },
+        );
+
+        item.find('button').simulate('click');
+        expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
 });
 
 function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {

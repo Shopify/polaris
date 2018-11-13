@@ -298,7 +298,7 @@ export class BaseItem extends React.Component<CombinedProps, State> {
         return;
       }
 
-      if (onClick && !navigationBarCollapsed().matches) {
+      if (onClick) {
         onClick();
       }
     };
