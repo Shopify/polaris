@@ -23,7 +23,7 @@ export interface FrameContext {
 }
 
 export const frameContextTypes = {
-  frame: PropTypes.object.isRequired,
+  frame: PropTypes.object,
 };
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
