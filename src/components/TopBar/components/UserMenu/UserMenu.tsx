@@ -6,7 +6,7 @@ import MessageIndicator from '../../../MessageIndicator';
 
 import Menu, {MessageProps} from '../Menu';
 
-import styles from './UserMenu.scss';
+import * as styles from './UserMenu.scss';
 
 export interface Props {
   /** An array of action objects that are rendered inside of a popover triggered by this menu */
