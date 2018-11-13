@@ -1,6 +1,5 @@
-import {ConfigurationCallback, Env, Plugins} from '@shopify/sewing-kit';
 import {join} from 'path';
-import {pathsToModuleNameMapper} from 'ts-jest/utils';
+import {ConfigurationCallback, Env, Plugins} from '@shopify/sewing-kit';
 
 const tests = join(__dirname, 'tests');
 
@@ -10,14 +9,10 @@ export default function sewingKitConfig(
 ): ReturnType<ConfigurationCallback> {
   return {
     name: 'polaris',
+    library: true,
     plugins: [
       plugins.jest((config) => {
         config.roots = [join(__dirname, 'src'), join(__dirname, 'tests')];
-        config.modulePaths = [
-          '<rootDir>/node_modules/',
-          '<rootDir>/src/',
-          '<rootDir>/tests/',
-        ];
 
         config.setupFiles.push(join(tests, 'setup.ts'));
 
@@ -40,11 +35,9 @@ export default function sewingKitConfig(
         };
 
         // Code coverage
-        config.coverageDirectory = 'coverage';
-        config.coverageReporters = ['text-summary', 'html'];
-        if (env.isCI) {
-          config.coverageReporters.push('lcov');
-        }
+        config.coverageDirectory = 'build/coverage';
+        config.coverageReporters = ['text-summary', 'html', 'lcovonly'];
+
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',
           '!src/test-utilities/**/*.*',
@@ -52,15 +45,6 @@ export default function sewingKitConfig(
           '!src/**/*.d.ts',
           '!src/**/*.test.{ts,tsx}',
         ];
-
-        // Can be removed once SK is updated to latest ts-jest
-        config.transform = {
-          ...config.transform,
-          '\\.tsx?$': 'ts-jest',
-        };
-
-        // Can be removed once SK is updated to latest ts-jest
-        delete config.globals['ts-jest'].useBabelrc;
 
         return config;
       }),

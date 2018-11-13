@@ -15,9 +15,9 @@ import merge from 'lodash/merge';
 import {
   createAppProviderContext,
   polarisAppProviderContextTypes,
-} from 'components/AppProvider';
+} from '../components/AppProvider';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {createThemeContext} from 'components/ThemeProvider';
+import {createThemeContext} from '../components/ThemeProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 

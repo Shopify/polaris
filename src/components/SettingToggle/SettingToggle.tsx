@@ -1,6 +1,6 @@
 import * as React from 'react';
-import SettingAction from '../../components/SettingAction';
-import {buttonFrom, Card} from '../../components';
+import SettingAction from '../SettingAction';
+import {buttonFrom, Card} from '..';
 import {ComplexAction} from '../../types';
 
 export interface Props {

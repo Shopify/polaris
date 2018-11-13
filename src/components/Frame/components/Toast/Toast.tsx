@@ -1,10 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {
-  KeypressListener,
-  ToastProps,
-  DEFAULT_TOAST_DURATION,
-} from '../../../../components';
+import {KeypressListener, ToastProps, DEFAULT_TOAST_DURATION} from '../../..';
 import Icon from '../../../Icon';
 import {Key} from '../../../../types';
 

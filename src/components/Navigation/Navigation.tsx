@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {Scrollable} from '../../components';
+import {Scrollable} from '..';
 
 import {UserMenu, Section, Item} from './components';
 import {contextTypes, SectionType} from './types';

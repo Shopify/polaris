@@ -4,13 +4,13 @@ import {ClientApplication} from '@shopify/app-bridge';
 
 import {LinkLikeComponent} from '../UnstyledLink';
 
+import ThemeProvider, {Theme} from '../ThemeProvider';
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
 import ScrollLockManager from './ScrollLockManager';
 import {createAppProviderContext} from './utils';
 import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
-import ThemeProvider, {Theme} from '../ThemeProvider';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */

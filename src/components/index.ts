@@ -18,7 +18,7 @@ export {
 
 export {
   default as Autocomplete,
-  Props as AutcompleteProps,
+  Props as AutocompleteProps,
 } from './Autocomplete';
 
 export {default as Avatar, Props as AvatarProps} from './Avatar';
@@ -296,6 +296,8 @@ export {
 } from './SkeletonDisplayText';
 
 export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
+
+export {default as Indicator, Props as IndicatorProps} from './Indicator';
 
 export {default as withContext} from './WithContext';
 

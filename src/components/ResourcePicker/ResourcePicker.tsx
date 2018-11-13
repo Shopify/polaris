@@ -1,10 +1,7 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
-import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../components/AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface SelectPayload {
   /** The selected resources

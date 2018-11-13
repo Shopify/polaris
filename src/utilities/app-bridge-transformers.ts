@@ -1,12 +1,12 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {Redirect, Button, ButtonGroup} from '@shopify/app-bridge/actions';
-import {ActionGroupDescriptor} from 'components/Page/components/Header/components/ActionGroup';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {ActionGroupDescriptor} from '../components/Page/components/Header/components/ActionGroup';
 import {
   AppBridgeTarget,
   ComplexAction,
   ActionListItemDescriptor,
 } from '../types';
-// eslint-disable-next-line shopify/strict-component-boundaries
 
 export function generateRedirect(
   appBridge: ClientApplication<{}>,

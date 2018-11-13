@@ -18,6 +18,6 @@ describe('<Navigation />', () => {
         isScrolledFarthestRight={false}
       />,
     );
-    expect(navigation.find(Button).length).toEqual(2);
+    expect(navigation.find(Button)).toHaveLength(2);
   });
 });

@@ -4,7 +4,6 @@ node_modules
 /build-intermediate
 /build-esnext
 /docs
-/coverage
 /esnext
 /types
 /index.*
@@ -14,10 +13,6 @@ node_modules
 /sandbox
 .DS_Store
 *.scss.d.ts
-/playground/.cache
-/playground/assets/*
+/playground/build
 /src/styles/polaris-tokens
-/shrink-ray-build/.cache
-/shrink-ray-build/build
-/tophat/.cache
-/tophat/assets
+/tophat/build

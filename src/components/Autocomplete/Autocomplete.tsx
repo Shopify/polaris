@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {ComboBox} from './components';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
 import {ActionListItemDescriptor} from '../../types';
-import {TextFieldProps, Spinner} from '../../components';
+import {TextFieldProps, Spinner} from '..';
+import {ComboBox} from './components';
 
 import * as styles from './Autocomplete.scss';
 
@@ -30,6 +30,8 @@ export interface Props {
   loading?: boolean;
   /** Indicates if more results will load dynamically */
   willLoadMoreResults?: boolean;
+  /** Is rendered when there are no options */
+  emptyState?: React.ReactNode;
   /** Callback when the selection of options is changed */
   onSelect(selected: string[]): void;
   /** Callback when the end of the list is reached */
@@ -58,6 +60,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
       loading,
       actionBefore,
       willLoadMoreResults,
+      emptyState,
       onSelect,
       onLoadMoreResults,
       polaris: {intl},
@@ -91,6 +94,7 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
         actionsBefore={conditionalAction}
         onSelect={onSelect}
         onEndReached={onLoadMoreResults}
+        emptyState={emptyState}
       />
     );
   }

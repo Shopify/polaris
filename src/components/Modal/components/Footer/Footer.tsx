@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {buttonsFrom, ButtonGroup, Stack} from '../../../../components';
+import {buttonsFrom, ButtonGroup, Stack} from '../../..';
 import {ComplexAction, AppBridgeAction} from '../../../../types';
 import * as styles from './Footer.scss';
 

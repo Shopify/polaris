@@ -2,7 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {noop} from '../../../../utilities/other';
-import {Icon} from '../../../../components';
+import {Icon} from '../../..';
 
 import * as styles from './SearchField.scss';
 

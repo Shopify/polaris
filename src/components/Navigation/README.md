@@ -115,23 +115,24 @@ The content of the navigation component consists of navigation items. Each item 
 
 #### Item properties
 
-| Prop               | Type                | Description                                                                                                       |
-| ------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| url                | string              | A location for the navigation item to navigate to when clicked                                                    |
-| matches            | boolean             | A boolean property indicating whether the navigation item should respond to a closely matching location property  |
-| exactMatch         | boolean             | A boolean property indicating whether the navigation item should respond to an exactly matching location property |
-| matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                |
-| excludePaths       | string[]            | A string property providing an explicit collection of paths the navigation item should not respond to             |
-| icon               | IconProps['source'] | An icon to be displayed next to the navigation item                                                               |
-| iconBody           | string              | An `SVG` element passed as a string from a server and displayed next to the navigation item                       |
-| badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                         |
-| label              | string              | A string property allowing content to be displayed as link text in the navigation item                            |
-| disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                             |
-| accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of a navigation item                         |
-| selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item                          |
-| subNavigationItems | SubNavigationItem[] | A collection of navigation items rendered as nested secondary navigation items                                    |
-| secondaryAction    | SecondaryAction     | Renders an icon-only action as a supplementary action next to a navigation item                                   |
-| onClick()          | function            | A callback function to handle clicking on a navigation item                                                       |
+| Prop               | Type                | Description                                                                                                                                |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| url                | string              | A location for the navigation item to navigate to when clicked                                                                             |
+| matches            | boolean             | A boolean property indicating whether the navigation item should respond to a closely matching location property                           |
+| exactMatch         | boolean             | A boolean property indicating whether the navigation item should respond to an exactly matching location property                          |
+| matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                                         |
+| excludePaths       | string[]            | A string property providing an explicit collection of paths the navigation item should not respond to                                      |
+| icon               | IconProps['source'] | An icon to be displayed next to the navigation item                                                                                        |
+| iconBody           | string              | An `SVG` element passed as a string from a server and displayed next to the navigation item                                                |
+| badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                                                  |
+| label              | string              | A string property allowing content to be displayed as link text in the navigation item                                                     |
+| disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                                                      |
+| new                | boolean             | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop) |
+| accessibilityLabel | string              | A visually hidden label for screen readers to understand the content of a navigation item                                                  |
+| selected           | boolean             | A boolean property indicating whether the navigation item is the currently-selected item                                                   |
+| subNavigationItems | SubNavigationItem[] | A collection of navigation items rendered as nested secondary navigation items                                                             |
+| secondaryAction    | SecondaryAction     | Renders an icon-only action as a supplementary action next to a navigation item                                                            |
+| onClick()          | function            | A callback function to handle clicking on a navigation item                                                                                |
 
 <a name="type-rollup"></a>
 
@@ -202,6 +203,7 @@ Use to present a navigation menu in the [frame](/components/structure/frame).
         url: '/path/to/place',
         label: 'Orders',
         icon: 'orders',
+        badge: '15',
       },
       {
         url: '/path/to/place',
@@ -454,8 +456,8 @@ Use to add a horizontal line between sections.
 
 - To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](/components/structure/frame) component.
 - To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](/components/structure/frame) component to reflect an application’s brand, use the [top bar](/components/structure/top-bar) component.
-- To tell merchants their options once they have made changes to a form on the page use the {contextual save bar} component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the {toast} component.
-- To indicate to merchants that a page is loading or an upload is processing use the {loading} component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](/components/forms/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](/components/feedback-indicators/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/feedback-indicators/loading) component.
 - To alternate among related views within the same context, use the [tabs](/components/navigation/tabs) component.
 - To embed a single action or link within a larger span of text, use the [link](/components/navigation/link) component.

@@ -13,7 +13,6 @@ export default function withRef<OriginalProps>() {
   return function addForwardRef<C>(
     WrappedComponent: ReactComponent<OriginalProps & Ref> & C,
   ): React.ComponentClass<OriginalProps> {
-    // eslint-disable-next-line react/prefer-stateless-function
     class WithRef extends React.Component<OriginalProps, never> {
       render() {
         return (

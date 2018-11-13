@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {
-  TextField as BaseTextField,
-  TextFieldProps,
-} from '../../../../../../components';
+import {TextField as BaseTextField, TextFieldProps} from '../../../../..';
 import {contextTypes} from '../../../types';
 
 export default class TextField extends React.PureComponent<

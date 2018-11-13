@@ -11,7 +11,7 @@ import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {transformActions} from '../../utilities/app-bridge-transformers';
 import {contentContextTypes} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Scrollable, Spinner, Portal, Backdrop} from '../../components';
+import {Scrollable, Spinner, Portal, Backdrop} from '..';
 import {
   CloseButton,
   Dialog,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Popover, ActionList} from '../../../../../../components';
+import {Popover, ActionList} from '../../../../..';
 import {hasNewStatus} from '../../utilities';
 import Action from '../Action';
 import {ActionGroupDescriptor} from './types';
