@@ -1,7 +1,13 @@
 import * as React from 'react';
-import {Avatar, buttonFrom, Card, Stack, TextStyle} from '..';
-import SettingAction from '../SettingAction';
+
 import {Action} from '../../types';
+import Avatar from '../Avatar';
+import {buttonFrom} from '../Button';
+import Card from '../Card';
+import Stack from '../Stack';
+import TextStyle from '../TextStyle';
+import SettingAction from '../SettingAction';
+
 import * as styles from './AccountConnection.scss';
 
 export interface Props {

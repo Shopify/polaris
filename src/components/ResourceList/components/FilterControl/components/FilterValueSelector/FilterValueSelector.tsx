@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Select, Stack, TextField} from '../../../../..';
+import Select from '../../../../../Select';
+import Stack from '../../../../../Stack';
+import TextField from '../../../../../TextField';
 import {
   withAppProvider,
   WithAppProviderProps,

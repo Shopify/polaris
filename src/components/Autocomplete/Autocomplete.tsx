@@ -1,12 +1,13 @@
 import * as React from 'react';
 
+import {ActionListItemDescriptor} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {PreferredPosition} from '../PositionedOverlay';
 import {OptionDescriptor} from '../OptionList';
-import {ActionListItemDescriptor} from '../../types';
-import {TextFieldProps, Spinner} from '..';
-import {ComboBox} from './components';
+import Spinner from '../Spinner';
+import {Props as TextFieldProps} from '../TextField';
 
+import {ComboBox} from './components';
 import * as styles from './Autocomplete.scss';
 
 export interface Props {

@@ -49,14 +49,14 @@ $content-max-width: rem(400px);
   position: relative;
   overflow: hidden;
   background-color: color('white');
-  border-radius: border-radius(large);
+  border-radius: border-radius();
 }
 
 .Content {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: border-radius(large);
+  border-radius: border-radius();
   max-width: $content-max-width;
   max-height: $content-max-height;
 
