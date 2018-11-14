@@ -183,8 +183,11 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const actionGroupsMarkup =
       actionGroups.length > 0
-        ? actionGroups.map(({title, icon, actions, details}) => (
-            <div className={styles.IndividualAction} key={title}>
+        ? actionGroups.map(({title, icon, actions, details}, index) => (
+            <div
+              className={styles.IndividualAction}
+              key={`ActionGroup-${title}-${index}`}
+            >
               <ActionGroup
                 title={title}
                 icon={icon}
