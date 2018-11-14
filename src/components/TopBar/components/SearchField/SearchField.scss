@@ -11,10 +11,13 @@ $stacking-order: (
 );
 
 .Wrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
   width: 100%;
   max-width: 500px;
-  padding: 0 spacing();
   margin: 0 auto;
+  padding: 0 spacing();
 
   @include page-content-when-not-fully-condensed {
     padding: 0 spacing(loose);

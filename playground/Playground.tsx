@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {TopBar, AppProvider} from '@shopify/polaris';
+import {TopBar, AppProvider, Navigation} from '@shopify/polaris';
 
 interface State {}
 
@@ -33,15 +33,29 @@ export default class Playground extends React.Component<never, State> {
         theme={{
           logo: {
             topBarSource: './shopify-logo.png',
-            width: 30,
+            width: 24,
           },
         }}
       >
-        <TopBar
-          showNavigationToggle
-          searchField={searchField}
-          userMenu={userMenu}
-        />
+        <div>
+          <TopBar
+            showNavigationToggle
+            searchField={searchField}
+            userMenu={userMenu}
+          />
+          <Navigation location="/" userMenu={<div />}>
+            <Navigation.Section
+              items={[
+                {
+                  url: '/',
+                  label: 'Products',
+                  icon: 'view',
+                  disabled: false,
+                },
+              ]}
+            />
+          </Navigation>
+        </div>
       </AppProvider>
     );
   }
