@@ -1,23 +1,25 @@
 $toggle-track-length: rem(46px);
 $toggle-track-height: rem(24px);
 $toggle-thumb-size: rem(20px);
-$disabled-opacity: 0.6;
+$toggle-disabled-opacity: 0.6;
 $toggle-thumb-displacement: rem(2px);
+$toggle-border-size: rem(1px);
+$toggle-border-radius: rem(30px);
 
 .Toggle {
   display: flex;
   align-items: center;
-  border: 1px solid transparent;
+  border: $toggle-border-size solid transparent;
 
   &.disabled {
-    opacity: $disabled-opacity;
+    opacity: $toggle-disabled-opacity;
   }
 }
 
 .ToggleTrack {
   width: $toggle-track-length;
   height: $toggle-track-height;
-  border-radius: rem(30px);
+  border-radius: $toggle-border-radius;
   box-shadow: 1px 1px 1px color('ink', 'lightest') inset;
   background-color: color('sky');
   transition: background-color duration(slow), border duration(slow),
@@ -32,7 +34,7 @@ $toggle-thumb-displacement: rem(2px);
   width: $toggle-thumb-size;
   height: $toggle-thumb-size;
   border-radius: 50%;
-  border: 1px solid transparent;
+  border: $toggle-border-size solid transparent;
   box-shadow: 1px 1px 1px color('ink', 'lightest');
   transition: left duration(slow) easing();
   background-color: color('white');
@@ -52,7 +54,7 @@ $toggle-thumb-displacement: rem(2px);
 
 .ToggleDisabled {
   cursor: not-allowed;
-  opacity: $disabled-opacity;
+  opacity: $toggle-disabled-opacity;
   transition: opacity duration();
 
   &:hover {

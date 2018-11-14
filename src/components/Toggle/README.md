@@ -79,15 +79,15 @@ Use toggle to let merchants enable or disable a setting.
 class ToggleExample extends React.Component {
   state = {
     visaChecked: true,
-    mcChecked: false,
+    masterCardChecked: false,
   };
 
   toggleVisaToggle = (value) => {
     this.setState({visaChecked: value});
   };
 
-  toggleMCToggle = (value) => {
-    this.setState({mcChecked: value});
+  toggleMasterCardToggle = (value) => {
+    this.setState({masterCardChecked: value});
   };
 
   render() {
@@ -116,8 +116,8 @@ class ToggleExample extends React.Component {
               <Toggle
                 label=""
                 labelHidden
-                checked={this.state.mcChecked}
-                onChange={this.toggleMCToggle}
+                checked={this.state.masterCardChecked}
+                onChange={this.toggleMasterCardToggle}
               />
             </Stack>
           </Card.Section>
@@ -138,15 +138,15 @@ Use to provide more clarity to merchants about which setting they are choosing.
 class ToggleExample extends React.Component {
   state = {
     visaChecked: true,
-    mcChecked: false,
+    masterCardChecked: false,
   };
 
   toggleVisaToggle = (value) => {
     this.setState({visaChecked: value});
   };
 
-  toggleMCToggle = (value) => {
-    this.setState({mcChecked: value});
+  toggleMasterCardToggle = (value) => {
+    this.setState({masterCardChecked: value});
   };
 
   render() {
@@ -179,8 +179,8 @@ class ToggleExample extends React.Component {
                 labelHidden
                 prefix="Disable"
                 suffix="Enable"
-                checked={this.state.mcChecked}
-                onChange={this.toggleMCToggle}
+                checked={this.state.masterCardChecked}
+                onChange={this.toggleMasterCardToggle}
               />
             </Stack>
           </Card.Section>
@@ -201,15 +201,15 @@ Use for settings that aren’t currently able to change.
 class ToggleExample extends React.Component {
   state = {
     visaChecked: true,
-    mcChecked: false,
+    masterCardChecked: false,
   };
 
   toggleVisaToggle = (value) => {
     this.setState({visaChecked: value});
   };
 
-  toggleMCToggle = (value) => {
-    this.setState({mcChecked: value});
+  toggleMasterCardToggle = (value) => {
+    this.setState({masterCardChecked: value});
   };
 
   render() {
@@ -239,8 +239,8 @@ class ToggleExample extends React.Component {
                 label=""
                 labelHidden
                 disable
-                checked={this.state.mcChecked}
-                onChange={this.toggleMCToggle}
+                checked={this.state.masterCardChecked}
+                onChange={this.toggleMasterCardToggle}
               />
             </Stack>
           </Card.Section>
