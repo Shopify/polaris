@@ -6,7 +6,7 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
 
 .UserMenu {
   display: flex;
-
+  align-items: center;
   @include safe-area-for(padding-right, spacing(tight), right);
 }
 

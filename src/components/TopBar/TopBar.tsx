@@ -7,6 +7,8 @@ import {menu} from '../../icons';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import Image from '../Image';
+import Stack from '../Stack';
+import TextStyle from '../TextStyle';
 import UnstyledLink from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
@@ -115,10 +117,22 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       </React.Fragment>
     ) : null;
 
+    const shopSwitcher = (
+      <div className={styles.ShopSwitcher}>
+        <Stack spacing="tight">
+          <TextStyle variation="strong">Little Victories CA</TextStyle>
+          <Icon source="chevronDown" color="white" />
+        </Stack>
+      </div>
+    );
+
     return (
       <div className={styles.TopBar}>
         {navigationButtonMarkup}
-        <div className={styles.LogoContainer}>{logoMarkup}</div>
+        <div className={styles.LogoContainer}>
+          {logoMarkup}
+          {shopSwitcher}
+        </div>
         <div className={styles.Contents}>
           {searchMarkup}
           {secondaryMenu}

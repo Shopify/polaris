@@ -33,6 +33,11 @@ $icon-size: rem(20px);
   display: block;
 }
 
+.ShopSwitcher {
+  padding-left: spacing();
+  color: var(--top-bar-color);
+}
+
 .NavigationIcon {
   @include unstyled-button;
   position: relative;

@@ -10,22 +10,28 @@ $stacking-order: (
   action: 3,
 );
 
+.Wrapper {
+  width: 100%;
+  max-width: 600px;
+  padding: 0 spacing();
+  margin: 0 auto;
+
+  @include page-content-when-not-fully-condensed {
+    padding: 0 spacing(loose);
+  }
+
+  @include page-content-when-not-partially-condensed {
+    padding: 0 spacing(extra-loose);
+  }
+}
+
 .SearchField {
   position: relative;
   display: flex;
   flex: 1 1 auto;
   align-items: center;
   border: 1px solid transparent;
-
-  margin: 0 spacing();
-
-  @include page-content-when-not-fully-condensed {
-    margin: 0 spacing(loose);
-  }
-
-  @include page-content-when-not-partially-condensed {
-    margin: 0 spacing(extra-loose);
-  }
+  width: 100%;
 }
 
 // We have both a focused class and a focus pseudo selector here
