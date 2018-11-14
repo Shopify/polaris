@@ -13,12 +13,12 @@ describe('<Toggle />', () => {
   };
 
   describe('role', () => {
-    it('gets set to switch', () => {
+    it('gets set to checkbox', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} />);
 
       const button = toggle.find('button');
 
-      expect(button.prop('role')).toBe('switch');
+      expect(button.prop('role')).toBe('checkbox');
     });
   });
 
@@ -160,7 +160,7 @@ describe('<Toggle />', () => {
       expect(button.find(Icon).prop('color')).toBe('indigo');
     });
 
-    it('renders a skyDark cancelSmall icon when not checked', () => {
+    it('renders an inkLighter cancelSmall icon when not checked', () => {
       const toggle = mountWithAppProvider(
         <Toggle {...mockProps} checked={false} />,
       );
@@ -168,7 +168,7 @@ describe('<Toggle />', () => {
       const button = toggle.find('button');
 
       expect(button.find(Icon).prop('source')).toBe('cancelSmall');
-      expect(button.find(Icon).prop('color')).toBe('skyDark');
+      expect(button.find(Icon).prop('color')).toBe('inkLighter');
     });
   });
 });

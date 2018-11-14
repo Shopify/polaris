@@ -1,12 +1,13 @@
 $toggle-track-length: rem(46px);
 $toggle-track-height: rem(24px);
 $toggle-thumb-size: rem(20px);
-$disabled-opacity: 0.5;
+$disabled-opacity: 0.6;
 $toggle-thumb-displacement: rem(2px);
 
 .Toggle {
   display: flex;
   align-items: center;
+  border: 1px solid transparent;
 
   &.disabled {
     opacity: $disabled-opacity;
@@ -31,6 +32,7 @@ $toggle-thumb-displacement: rem(2px);
   width: $toggle-thumb-size;
   height: $toggle-thumb-size;
   border-radius: 50%;
+  border: 1px solid transparent;
   box-shadow: 1px 1px 1px color('ink', 'lightest');
   transition: left duration(slow) easing();
   background-color: color('white');
@@ -44,6 +46,7 @@ $toggle-thumb-displacement: rem(2px);
 
   .ToggleThumb {
     left: $toggle-track-height;
+    box-shadow: -1px 1px 1px color('indigo', 'dark');
   }
 }
 
@@ -67,12 +70,6 @@ $toggle-thumb-displacement: rem(2px);
   cursor: pointer;
   background-color: transparent;
   -webkit-tap-highlight-color: transparent;
-
-  &:hover,
-  &:focus {
-    outline: 0;
-    box-shadow: shadow(deep) color('sky');
-  }
 
   &.ToggleDisabled {
     cursor: not-allowed;
