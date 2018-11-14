@@ -34,6 +34,7 @@
     "react/no-array-index-key": "off",
     "shopify/jest/no-vague-titles": "off",
     "shopify/jsx-no-complex-expressions": "off",
+    "shopify/no-ancestor-directory-import": "error",
     "jsx-a11y/label-has-for": [
       2,
       {
@@ -52,6 +53,12 @@
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "off"
   },
   "overrides": [
+    {
+      "files": ["**/*.test.{ts,tsx}"],
+      "rules": {
+        "shopify/no-ancestor-directory-import": "off"
+      }
+    },
     {
       "files": ["examples/**/*.js"],
       "rules": {

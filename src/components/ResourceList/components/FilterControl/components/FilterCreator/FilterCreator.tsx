@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-
-import {Button, Popover, Select, FormLayout} from '../../../../..';
+import Button from '../../../../../Button';
+import Popover from '../../../../../Popover';
+import Select from '../../../../../Select';
+import FormLayout from '../../../../../FormLayout';
 import Form from '../../../../../Form';
 import {
   withAppProvider,

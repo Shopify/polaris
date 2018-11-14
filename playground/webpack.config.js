@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const {
   svgOptions: svgOptimizationOptions,
 } = require('@shopify/images/optimize');
@@ -10,10 +9,13 @@ const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = {
   target: 'web',
+  mode: 'development',
   devtool: 'eval',
+  stats: {warnings: false},
   devServer: {
     port: process.env.PORT || 8080,
     disableHostCheck: true,
+    stats: {warnings: false},
   },
   entry: [
     'react-hot-loader/patch',
@@ -22,8 +24,33 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
+    path: path.resolve(__dirname, 'build/assets'),
     publicPath: '/assets/',
-    libraryTarget: 'var',
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          priority: -20,
+        },
+        polaris: {
+          // test accepts a regex. The replace escapes any special characters
+          // in the path so they are treated literally
+          // see https://github.com/benjamingr/RegExp.escape/blob/master/polyfill.js
+          test: new RegExp(
+            path
+              .resolve(__dirname, '..', 'src')
+              .replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'),
+          ),
+          name: 'polaris',
+          priority: -15,
+          chunks: 'all',
+        },
+      },
+    },
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -32,13 +59,9 @@ module.exports = {
       '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
     },
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ],
+  plugins: [],
   module: {
-    loaders: [
+    rules: [
       {
         test(resource) {
           return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
@@ -66,7 +89,6 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              emitFile: true,
             },
           },
         ],
@@ -82,7 +104,10 @@ module.exports = {
               useCache: true,
               useTranspileModule: true,
               transpileOnly: true,
-              cacheDirectory: path.resolve(__dirname, '.cache', 'typescript'),
+              cacheDirectory: path.resolve(
+                __dirname,
+                'build/.cache/typescript',
+              ),
               babelOptions: {
                 babelrc: false,
                 presets: [

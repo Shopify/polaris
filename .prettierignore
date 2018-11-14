@@ -10,7 +10,6 @@ node_modules
 /styles.scss
 /styles
 /src/styles/polaris-tokens
-/shrink-ray-build/
 
 /package.json
 /.github

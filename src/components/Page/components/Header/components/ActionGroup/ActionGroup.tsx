@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Popover, ActionList} from '../../../../..';
+import ActionList from '../../../../../ActionList';
+import Popover from '../../../../../Popover';
 import Action from '../Action';
+
 import {ActionGroupDescriptor} from './types';
 import * as styles from './ActionGroup.scss';
 

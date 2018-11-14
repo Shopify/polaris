@@ -1,17 +1,15 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+
 import {getWidth} from '../../utilities/getWidth';
 import {menu} from '../../icons';
-import {
-  Icon,
-  Image,
-  UnstyledLink,
-  withAppProvider,
-  WithAppProviderProps,
-} from '..';
-import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import Icon from '../Icon';
+import Image from '../Image';
+import UnstyledLink from '../UnstyledLink';
 
+import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
 import * as styles from './TopBar.scss';
 
 export interface Props {

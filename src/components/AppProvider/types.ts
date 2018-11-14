@@ -10,7 +10,7 @@ import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
 import ScrollLockManager from './ScrollLockManager';
-import {Props as AppProviderProps} from '.';
+import {Props as AppProviderProps} from './AppProvider';
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,

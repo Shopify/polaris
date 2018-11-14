@@ -1,17 +1,23 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {write} from '@shopify/javascript-utilities/fastdom';
-import {wrapWithComponent} from '@shopify/react-utilities';
-import {autobind} from '@shopify/javascript-utilities/decorators';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
+import {autobind} from '@shopify/javascript-utilities/decorators';
+import {write} from '@shopify/javascript-utilities/fastdom';
+import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {wrapWithComponent} from '@shopify/react-utilities';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {transformActions} from '../../utilities/app-bridge-transformers';
+
 import {contentContextTypes} from '../../types';
+import {transformActions} from '../../utilities/app-bridge-transformers';
+
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Scrollable, Spinner, Portal, Backdrop} from '..';
+import Backdrop from '../Backdrop';
+import Scrollable from '../Scrollable';
+import Spinner from '../Spinner';
+import Portal from '../Portal';
+
 import {
   CloseButton,
   Dialog,

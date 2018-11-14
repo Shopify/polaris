@@ -1,9 +1,9 @@
 import * as React from 'react';
-
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Collapsible} from '../../../../..';
 
-import styles from '../../../../Navigation.scss';
+import Collapsible from '../../../../../Collapsible';
+
+import * as styles from '../../../../Navigation.scss';
 
 const createSecondaryNavigationId = createUniqueIDFactory(
   'SecondaryNavigation',

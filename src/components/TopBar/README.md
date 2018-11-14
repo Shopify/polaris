@@ -165,7 +165,7 @@ class TopBarExample extends React.Component {
     const theme = {
       colors: {
         topBar: {
-          background: '#1C3D4C',
+          background: '#357997',
         },
       },
       logo: {
@@ -285,9 +285,9 @@ class TopBarExample extends React.Component {
     const theme = {
       colors: {
         topBar: {
-          background: '#001429',
-          backgroundDarker: '#001429',
-          backgroundLighter: '#084E8A',
+          background: '#357997',
+          backgroundDarker: '#357997',
+          backgroundLighter: '#6192a9',
           color: '#FFFFFF',
         },
       },
@@ -390,6 +390,6 @@ class TopBarExample extends React.Component {
 
 - To provide the structure for the top bar component, as well as the primary navigation use the [frame](/components/structure/frame) component.
 - To display the primary navigation within the frame of a non-embedded application, use the [navigation](/components/structure/navigation) component.
-- To tell merchants their options once they have made changes to a form on the page use the {contextual save bar} component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the {toast} component.
-- To indicate to merchants that a page is loading or an upload is processing use the {loading} component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](/components/forms/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](/components/feedback-indicators/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](/components/feedback-indicators/loading) component.

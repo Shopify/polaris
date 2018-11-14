@@ -4,6 +4,7 @@ import fs from 'fs';
 import glob from 'glob';
 import chalk from 'chalk';
 import grayMatter from 'gray-matter';
+import transpileExample from './transpileExample';
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
 
@@ -119,9 +120,12 @@ function parseCodeExamples(data, file) {
     const nameMatches = example.match(/(.)*/);
     const codeBlock = example.match(/```jsx(.|\n)*?```/g);
 
+    const hasName = nameMatches !== null;
+    const hasCodeBlock = codeBlock !== null;
+
     return {
-      name: nameMatches === null ? '' : nameMatches[0].trim(),
-      code: codeBlock === null ? '' : stripCodeBlock(codeBlock[0]),
+      name: hasName ? nameMatches[0].trim() : '',
+      code: hasCodeBlock ? transpileExample(stripCodeBlock(codeBlock[0])) : '',
     };
   });
 
