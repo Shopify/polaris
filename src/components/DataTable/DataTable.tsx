@@ -3,11 +3,10 @@ import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import isEqual from 'lodash/isEqual';
 
+import {Cell, CellProps, Navigation} from './components';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
-
-import {Cell, CellProps, Navigation} from './components';
 
 import * as styles from './DataTable.scss';
 import {headerCell} from 'components/shared';
