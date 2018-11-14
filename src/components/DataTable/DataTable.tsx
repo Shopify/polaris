@@ -3,13 +3,13 @@ import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import isEqual from 'lodash/isEqual';
 
-import {Cell, CellProps, Navigation} from './components';
+import {headerCell} from 'components/shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
+import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import * as styles from './DataTable.scss';
-import {headerCell} from 'components/shared';
 
 export type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
