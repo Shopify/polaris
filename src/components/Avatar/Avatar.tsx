@@ -29,7 +29,7 @@ export interface Props {
   initials?: string;
   /** Whether the avatar is for a customer */
   customer?: boolean;
-  /** URL of the avatar image */
+  /** URL of the avatar image which falls back to initials if the image fails to load */
   source?: string;
   /** Accessible label for the avatar image */
   accessibilityLabel?: string;
