@@ -48,12 +48,13 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
     hasLoaded: false,
   };
 
-  ComponentDidUpdate({source: previousSource}: Props) {
+  componentDidUpdate({source: previousSource}: Props) {
     const {source} = this.props;
     const {hasError, hasLoaded} = this.state;
     if (previousSource === source || (!hasError && !hasLoaded)) {
       return;
     }
+    // eslint-disable-next-line react/no-did-update-set-state
     this.setState({hasError: false, hasLoaded: false});
   }
 
