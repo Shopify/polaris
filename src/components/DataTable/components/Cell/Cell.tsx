@@ -99,7 +99,7 @@ function Cell({
 
   const headingMarkup = header ? (
     <th
-      data-polaris-headercell
+      data-polaris-header-cell
       className={className}
       scope="col"
       aria-sort={sortDirection}

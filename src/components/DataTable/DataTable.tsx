@@ -10,6 +10,7 @@ import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import {Cell, CellProps, Navigation} from './components';
 
 import * as styles from './DataTable.scss';
+import {headerCell} from 'components/shared';
 
 export type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
@@ -328,7 +329,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } = this;
     if (collapsed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(
-        '[data-polaris-headercell]',
+        headerCell.selector,
       ) as NodeListOf<HTMLElement>;
       const collapsedHeaderCells = Array.from(headerCells).slice(1);
       const fixedColumnWidth = headerCells[0].offsetWidth;
