@@ -1,3 +1,7 @@
+.ComboBox > div:focus {
+  outline: none;
+}
+
 .EmptyState {
   padding: spacing(tight) spacing();
 }

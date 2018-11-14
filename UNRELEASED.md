@@ -6,9 +6,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Added `disabled` prop to `Autocomplete` component.
-
 ### Bug fixes
+
+- Added the ability to disable the `Autocomplete` by setting the `Autocomplete.TextField` disabled prop true ([#602](https://github.com/Shopify/polaris-react/pull/602))
 
 ### Documentation
 
