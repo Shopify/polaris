@@ -1,15 +1,9 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {
-  DatePicker,
-  Months,
-  Year,
-  Range,
-  Select,
-  TextField,
-  Icon,
-} from '../../../../..';
-
+import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
+import Select from '../../../../../Select';
+import TextField from '../../../../../TextField';
+import Icon from '../../../../../Icon';
 import {
   withAppProvider,
   WithAppProviderProps,

@@ -1,9 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
-import Indicator from '../../../../../Indicator';
-import {Icon, UnstyledLink} from '../../../../..';
+
 import {IconableAction, DisableableAction} from '../../../../../../types';
+import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
+
+import Icon from '../../../../../Icon';
+import Indicator from '../../../../../Indicator';
+import UnstyledLink from '../../../../../UnstyledLink';
+
 import * as styles from './Action.scss';
 
 export interface Props {

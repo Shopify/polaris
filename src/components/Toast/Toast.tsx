@@ -3,7 +3,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {FrameContext, frameContextTypes} from '../types';
-import {withAppProvider, WithAppProviderProps} from '..';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 const createId = createUniqueIDFactory('Toast');
 
