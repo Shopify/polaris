@@ -18,12 +18,12 @@ $icon-size: rem(20px);
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
-    flex: 0 0 layout-width(nav);
+    flex: 0 0 layout-width(nav) + rem(60px);
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
     background-color: var(--top-bar-background-darker);
-    @include safe-area-for(flex-basis, layout-width(nav), left);
+    @include safe-area-for(flex-basis, layout-width(nav) + rem(60px), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
 }
