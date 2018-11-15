@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
 import {noop} from '@shopify/javascript-utilities/other';
+import {mountWithAppProvider} from 'test-utilities';
 import EventListener from '../EventListener';
 
 describe('<EventListener />', () => {
