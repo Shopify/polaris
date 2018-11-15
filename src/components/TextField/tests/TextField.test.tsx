@@ -124,12 +124,21 @@ describe('<TextField />', () => {
       expect(id).toBeTruthy();
     });
 
-    it('updates with new id from props', () => {
+    it('updates with the new id from props', () => {
       const id = 'input field';
       const textField = mountWithAppProvider(
         <TextField label="TextField" onChange={noop} />,
       );
       textField.setProps({id});
+      expect(textField.find('input').prop('id')).toBe(id);
+    });
+
+    it('updates with the previous id after the id prop has been removed', () => {
+      const id = 'input field';
+      const textField = mountWithAppProvider(
+        <TextField label="TextField" id={id} onChange={noop} />,
+      );
+      textField.setProps({});
       expect(textField.find('input').prop('id')).toBe(id);
     });
   });
