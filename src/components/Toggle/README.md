@@ -79,50 +79,63 @@ Use toggle to let merchants enable or disable a setting.
 class ToggleExample extends React.Component {
   state = {
     visaChecked: true,
-    masterCardChecked: false,
+    americanExpressChecked: false,
   };
 
   toggleVisaToggle = (value) => {
     this.setState({visaChecked: value});
   };
 
-  toggleMasterCardToggle = (value) => {
-    this.setState({masterCardChecked: value});
+  toggleAmericanExpressToggle = (value) => {
+    this.setState({americanExpressChecked: value});
   };
 
   render() {
     const {value} = this.state;
     return (
-      <Stack vertical>
-        <Card title="Payment methods">
-          <Card.Section>
-            <Stack distribution="fillEvenly">
-              <Stack.Item>Visa</Stack.Item>
-              <Stack.Item>Credit card</Stack.Item>
-              <Stack.Item>2.99% + $0.30</Stack.Item>
+      <Card title="Payment methods">
+        <Card.Section>
+          <Stack distribution="fillEvenly">
+            <Stack.Item>
+              <Stack spacing="loose">
+                <Image source="/assets/toggle/visa.svg" alt="Visa" />
+                <Stack.Item>Visa</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>Credit card</Stack.Item>
+            <Stack.Item>2.99% + $0.30</Stack.Item>
+            <Stack.Item>
               <Toggle
                 label=""
                 labelHidden
                 checked={this.state.visaChecked}
                 onChange={this.toggleVisaToggle}
               />
-            </Stack>
-          </Card.Section>
-          <Card.Section>
-            <Stack distribution="fillEvenly">
-              <Stack.Item>MasterCard</Stack.Item>
-              <Stack.Item>Credit card</Stack.Item>
-              <Stack.Item>2.99% + $0.30</Stack.Item>
-              <Toggle
-                label=""
-                labelHidden
-                checked={this.state.masterCardChecked}
-                onChange={this.toggleMasterCardToggle}
-              />
-            </Stack>
-          </Card.Section>
-        </Card>
-      </Stack>
+            </Stack.Item>
+          </Stack>
+        </Card.Section>
+        <Card.Section>
+          <Stack distribution="fillEvenly">
+            <Stack.Item>
+              <Stack spacing="loose">
+                <Image
+                  source="/assets/toggle/amex.svg"
+                  alt="American Express"
+                />
+                <Stack.Item>AMEX</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>Credit card</Stack.Item>
+            <Stack.Item>2.99% + $0.30</Stack.Item>
+            <Toggle
+              label=""
+              labelHidden
+              checked={this.state.americanExpressChecked}
+              onChange={this.toggleAmericanExpressToggle}
+            />
+          </Stack>
+        </Card.Section>
+      </Card>
     );
   }
 }
@@ -138,54 +151,67 @@ Use to provide more clarity to merchants about which setting they are choosing.
 class ToggleExample extends React.Component {
   state = {
     visaChecked: true,
-    masterCardChecked: false,
+    americanExpressChecked: false,
   };
 
   toggleVisaToggle = (value) => {
     this.setState({visaChecked: value});
   };
 
-  toggleMasterCardToggle = (value) => {
-    this.setState({masterCardChecked: value});
+  toggleAmericanExpressToggle = (value) => {
+    this.setState({americanExpressChecked: value});
   };
 
   render() {
     const {value} = this.state;
     return (
-      <Stack vertical>
-        <Card title="Payment methods">
-          <Card.Section>
-            <Stack distribution="fillEvenly">
-              <Stack.Item>Visa</Stack.Item>
-              <Stack.Item>Credit card</Stack.Item>
-              <Stack.Item>2.99% + $0.30</Stack.Item>
+      <Card title="Payment methods">
+        <Card.Section>
+          <Stack distribution="fillEvenly">
+            <Stack.Item>
+              <Stack spacing="loose">
+                <Image source="/assets/toggle/visa.svg" alt="Visa" />
+                <Stack.Item>Visa</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>Credit card</Stack.Item>
+            <Stack.Item>2.99% + $0.30</Stack.Item>
+            <Stack.Item>
               <Toggle
                 label=""
                 labelHidden
-                prefix="Disable"
-                suffix="Enable"
+                prefix="Disabled"
+                suffix="Enabled"
                 checked={this.state.visaChecked}
                 onChange={this.toggleVisaToggle}
               />
-            </Stack>
-          </Card.Section>
-          <Card.Section>
-            <Stack distribution="fillEvenly">
-              <Stack.Item>MasterCard</Stack.Item>
-              <Stack.Item>Credit card</Stack.Item>
-              <Stack.Item>2.99% + $0.30</Stack.Item>
-              <Toggle
-                label=""
-                labelHidden
-                prefix="Disable"
-                suffix="Enable"
-                checked={this.state.masterCardChecked}
-                onChange={this.toggleMasterCardToggle}
-              />
-            </Stack>
-          </Card.Section>
-        </Card>
-      </Stack>
+            </Stack.Item>
+          </Stack>
+        </Card.Section>
+        <Card.Section>
+          <Stack distribution="fillEvenly">
+            <Stack.Item>
+              <Stack spacing="loose">
+                <Image
+                  source="/assets/toggle/amex.svg"
+                  alt="American Express"
+                />
+                <Stack.Item>AMEX</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>Credit card</Stack.Item>
+            <Stack.Item>2.99% + $0.30</Stack.Item>
+            <Toggle
+              label=""
+              labelHidden
+              prefix="Disabled"
+              suffix="Enabled"
+              checked={this.state.americanExpressChecked}
+              onChange={this.toggleAmericanExpressToggle}
+            />
+          </Stack>
+        </Card.Section>
+      </Card>
     );
   }
 }
@@ -201,51 +227,64 @@ Use for settings that aren’t currently able to change.
 class ToggleExample extends React.Component {
   state = {
     visaChecked: true,
-    masterCardChecked: false,
+    americanExpressChecked: false,
   };
 
   toggleVisaToggle = (value) => {
     this.setState({visaChecked: value});
   };
 
-  toggleMasterCardToggle = (value) => {
-    this.setState({masterCardChecked: value});
+  toggleAmericanExpressToggle = (value) => {
+    this.setState({americanExpressChecked: value});
   };
 
   render() {
     const {value} = this.state;
     return (
-      <Stack vertical>
-        <Card title="Payment methods">
-          <Card.Section>
-            <Stack distribution="fillEvenly">
-              <Stack.Item>Visa</Stack.Item>
-              <Stack.Item>Credit card</Stack.Item>
-              <Stack.Item>2.99% + $0.30</Stack.Item>
+      <Card title="Payment methods">
+        <Card.Section>
+          <Stack distribution="fillEvenly">
+            <Stack.Item>
+              <Stack spacing="loose">
+                <Image source="/assets/toggle/visa.svg" alt="Visa" />
+                <Stack.Item>Visa</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>Credit card</Stack.Item>
+            <Stack.Item>2.99% + $0.30</Stack.Item>
+            <Stack.Item>
               <Toggle
                 label=""
                 labelHidden
                 checked={this.state.visaChecked}
                 onChange={this.toggleVisaToggle}
               />
-            </Stack>
-          </Card.Section>
-          <Card.Section>
-            <Stack distribution="fillEvenly">
-              <Stack.Item>MasterCard</Stack.Item>
-              <Stack.Item>Credit card</Stack.Item>
-              <Stack.Item>2.99% + $0.30</Stack.Item>
-              <Toggle
-                label=""
-                labelHidden
-                disable
-                checked={this.state.masterCardChecked}
-                onChange={this.toggleMasterCardToggle}
-              />
-            </Stack>
-          </Card.Section>
-        </Card>
-      </Stack>
+            </Stack.Item>
+          </Stack>
+        </Card.Section>
+        <Card.Section>
+          <Stack distribution="fillEvenly">
+            <Stack.Item>
+              <Stack spacing="loose">
+                <Image
+                  source="/assets/toggle/amex.svg"
+                  alt="American Express"
+                />
+                <Stack.Item>AMEX</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>Credit card</Stack.Item>
+            <Stack.Item>2.99% + $0.30</Stack.Item>
+            <Toggle
+              label=""
+              labelHidden
+              disabled
+              checked={this.state.americanExpressChecked}
+              onChange={this.toggleAmericanExpressToggle}
+            />
+          </Stack>
+        </Card.Section>
+      </Card>
     );
   }
 }
