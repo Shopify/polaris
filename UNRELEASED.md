@@ -6,7 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Fixes `Action`s selector in `Page`'s `Header` component ([#2487](https://github.com/Shopify/polaris-react/pull/2487))
+- Fixed `Action`s selector in `Page`'s `Header` component ([#2487](https://github.com/Shopify/polaris-react/pull/2487))
 
 ### Bug fixes
 
