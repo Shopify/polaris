@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-
 import {
   DisableableAction,
   LoadableAction,
@@ -16,8 +15,6 @@ import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import Popover from '../../../Popover';
-
-import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
@@ -194,21 +191,13 @@ export default class Header extends React.PureComponent<Props, State> {
           ))
         : null;
 
-    const showIndicator =
-      false &&
-      actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
-
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
         <Popover
           active={rollupOpen}
           onClose={this.handleRollupToggle}
           activator={
-            <Button
-              outline={false && showIndicator}
-              disclosure
-              onClick={this.handleRollupToggle}
-            >
+            <Button disclosure onClick={this.handleRollupToggle}>
               Actions
             </Button>
           }
