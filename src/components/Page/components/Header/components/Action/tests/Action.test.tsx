@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Icon, UnstyledLink} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
+import Icon from '../../../../../../Icon';
+import UnstyledLink from '../../../../../../UnstyledLink';
 import Action from '../Action';
 
 describe('<Action />', () => {
@@ -65,7 +66,7 @@ describe('<Action />', () => {
   });
 
   describe('children', () => {
-    it('get rendered when an icon is present', () => {
+    it('gets rendered when an icon is present', () => {
       const children = 'Click me!';
       const action = mountWithAppProvider(
         <Action icon="save">{children}</Action>,
@@ -73,7 +74,7 @@ describe('<Action />', () => {
       expect(action.contains(children)).toBeTruthy();
     });
 
-    it('get rendered when disclosure is truthy', () => {
+    it('gets rendered when disclosure is truthy', () => {
       const children = 'Click me!';
       const action = mountWithAppProvider(
         <Action disclosure>{children}</Action>,
@@ -81,7 +82,7 @@ describe('<Action />', () => {
       expect(action.contains(children)).toBeTruthy();
     });
 
-    it('get rendered when neither one is present', () => {
+    it('gets rendered when neither one is present', () => {
       const children = 'Click me!';
       const action = mountWithAppProvider(<Action>{children}</Action>);
       expect(action.contains(children)).toBeTruthy();
