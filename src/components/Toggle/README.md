@@ -6,6 +6,7 @@ platforms:
 keywords:
   - toggle
   - switch
+  - setting
   - selection
   - choices
   - options
@@ -95,45 +96,105 @@ class ToggleExample extends React.Component {
     return (
       <Card title="Payment methods">
         <Card.Section>
-          <Stack distribution="fillEvenly">
-            <Stack.Item>
-              <Stack spacing="loose">
-                <Image source="/assets/toggle/visa.svg" alt="Visa" />
-                <Stack.Item>Visa</Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>Credit card</Stack.Item>
-            <Stack.Item>2.99% + $0.30</Stack.Item>
-            <Stack.Item>
+          <div
+            style={{
+              display: 'grid',
+              gridColumnGap: '15px',
+            }}
+          >
+            <div
+              style={{
+                gridColumnStart: '1',
+                gridColumnEnd: '2',
+              }}
+            >
+              <Image
+                source="https://cdn.shopify.com/s/files/1/0048/7889/3112/files/visa.png?12829487775437184457"
+                alt="Visa"
+              />
+            </div>
+            <div style={{gridColumnStart: '2', gridColumnEnd: '3'}}>Visa</div>
+            <div
+              style={{
+                gridColumnStart: '3',
+                gridColumnEnd: '5',
+                justifySelf: 'right',
+              }}
+            >
+              Credit card
+            </div>
+            <div
+              style={{
+                gridColumnStart: '5',
+                gridColumnEnd: '7',
+                justifySelf: 'right',
+              }}
+            >
+              2.99% + $0.30
+            </div>
+            <div
+              style={{
+                gridColumnStart: '7',
+                gridColumnEnd: '9',
+                justifySelf: 'right',
+              }}
+            >
               <Toggle
                 label=""
                 labelHidden
                 checked={this.state.visaChecked}
                 onChange={this.toggleVisaToggle}
               />
-            </Stack.Item>
-          </Stack>
+            </div>
+          </div>
         </Card.Section>
         <Card.Section>
-          <Stack distribution="fillEvenly">
-            <Stack.Item>
-              <Stack spacing="loose">
-                <Image
-                  source="/assets/toggle/amex.svg"
-                  alt="American Express"
-                />
-                <Stack.Item>AMEX</Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>Credit card</Stack.Item>
-            <Stack.Item>2.99% + $0.30</Stack.Item>
-            <Toggle
-              label=""
-              labelHidden
-              checked={this.state.americanExpressChecked}
-              onChange={this.toggleAmericanExpressToggle}
-            />
-          </Stack>
+          <div
+            style={{
+              display: 'grid',
+              gridColumnGap: '15px',
+            }}
+          >
+            <div style={{gridColumnStart: '1', gridColumnEnd: '2'}}>
+              <Image
+                source="https://cdn.shopify.com/s/files/1/0048/7889/3112/files/amex.png?12829487775437184457"
+                alt="American Express"
+              />
+            </div>
+            <div style={{gridColumnStart: '2', gridColumnEnd: '3'}}>AMEX</div>
+            <div
+              style={{
+                gridColumnStart: '3',
+                gridColumnEnd: '5',
+                justifySelf: 'right',
+              }}
+            >
+              Credit card
+            </div>
+            <div
+              style={{
+                gridColumnStart: '5',
+                gridColumnEnd: '7',
+                justifySelf: 'right',
+              }}
+            >
+              2.99% + $0.30
+            </div>
+            <div
+              style={{
+                gridColumnStart: '7',
+                gridColumnEnd: '9',
+                justifySelf: 'right',
+              }}
+            >
+              <Toggle
+                label=""
+                labelHidden
+                checked={this.state.americanExpressChecked}
+                onChange={this.toggleAmericanExpressToggle}
+              />
+            </div>
+          </div>
         </Card.Section>
       </Card>
     );
@@ -167,49 +228,109 @@ class ToggleExample extends React.Component {
     return (
       <Card title="Payment methods">
         <Card.Section>
-          <Stack distribution="fillEvenly">
-            <Stack.Item>
-              <Stack spacing="loose">
-                <Image source="/assets/toggle/visa.svg" alt="Visa" />
-                <Stack.Item>Visa</Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>Credit card</Stack.Item>
-            <Stack.Item>2.99% + $0.30</Stack.Item>
-            <Stack.Item>
+          <div
+            style={{
+              display: 'grid',
+              gridColumnGap: '15px',
+            }}
+          >
+            <div
+              style={{
+                gridColumnStart: '1',
+                gridColumnEnd: '2',
+              }}
+            >
+              <Image
+                source="https://cdn.shopify.com/s/files/1/0048/7889/3112/files/visa.png?12829487775437184457"
+                alt="Visa"
+              />
+            </div>
+            <div style={{gridColumnStart: '2', gridColumnEnd: '3'}}>Visa</div>
+            <div
+              style={{
+                gridColumnStart: '3',
+                gridColumnEnd: '5',
+                justifySelf: 'right',
+              }}
+            >
+              Credit card
+            </div>
+            <div
+              style={{
+                gridColumnStart: '5',
+                gridColumnEnd: '7',
+                justifySelf: 'right',
+              }}
+            >
+              2.99% + $0.30
+            </div>
+            <div
+              style={{
+                gridColumnStart: '7',
+                gridColumnEnd: '9',
+                justifySelf: 'right',
+              }}
+            >
               <Toggle
                 label=""
                 labelHidden
-                prefix="Disabled"
-                suffix="Enabled"
                 checked={this.state.visaChecked}
                 onChange={this.toggleVisaToggle}
+                prefix="Disabled"
+                suffix="Enabled"
               />
-            </Stack.Item>
-          </Stack>
+            </div>
+          </div>
         </Card.Section>
         <Card.Section>
-          <Stack distribution="fillEvenly">
-            <Stack.Item>
-              <Stack spacing="loose">
-                <Image
-                  source="/assets/toggle/amex.svg"
-                  alt="American Express"
-                />
-                <Stack.Item>AMEX</Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>Credit card</Stack.Item>
-            <Stack.Item>2.99% + $0.30</Stack.Item>
-            <Toggle
-              label=""
-              labelHidden
-              prefix="Disabled"
-              suffix="Enabled"
-              checked={this.state.americanExpressChecked}
-              onChange={this.toggleAmericanExpressToggle}
-            />
-          </Stack>
+          <div
+            style={{
+              display: 'grid',
+              gridColumnGap: '15px',
+            }}
+          >
+            <div style={{gridColumnStart: '1', gridColumnEnd: '2'}}>
+              <Image
+                source="https://cdn.shopify.com/s/files/1/0048/7889/3112/files/amex.png?12829487775437184457"
+                alt="American Express"
+              />
+            </div>
+            <div style={{gridColumnStart: '2', gridColumnEnd: '3'}}>AMEX</div>
+            <div
+              style={{
+                gridColumnStart: '3',
+                gridColumnEnd: '5',
+                justifySelf: 'right',
+              }}
+            >
+              Credit card
+            </div>
+            <div
+              style={{
+                gridColumnStart: '5',
+                gridColumnEnd: '7',
+                justifySelf: 'right',
+              }}
+            >
+              2.99% + $0.30
+            </div>
+            <div
+              style={{
+                gridColumnStart: '7',
+                gridColumnEnd: '9',
+                justifySelf: 'right',
+              }}
+            >
+              <Toggle
+                label=""
+                labelHidden
+                checked={this.state.americanExpressChecked}
+                onChange={this.toggleAmericanExpressToggle}
+                prefix="Disabled"
+                suffix="Enabled"
+              />
+            </div>
+          </div>
         </Card.Section>
       </Card>
     );
@@ -243,46 +364,106 @@ class ToggleExample extends React.Component {
     return (
       <Card title="Payment methods">
         <Card.Section>
-          <Stack distribution="fillEvenly">
-            <Stack.Item>
-              <Stack spacing="loose">
-                <Image source="/assets/toggle/visa.svg" alt="Visa" />
-                <Stack.Item>Visa</Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>Credit card</Stack.Item>
-            <Stack.Item>2.99% + $0.30</Stack.Item>
-            <Stack.Item>
+          <div
+            style={{
+              display: 'grid',
+              gridColumnGap: '15px',
+            }}
+          >
+            <div
+              style={{
+                gridColumnStart: '1',
+                gridColumnEnd: '2',
+              }}
+            >
+              <Image
+                source="https://cdn.shopify.com/s/files/1/0048/7889/3112/files/visa.png?12829487775437184457"
+                alt="Visa"
+              />
+            </div>
+            <div style={{gridColumnStart: '2', gridColumnEnd: '3'}}>Visa</div>
+            <div
+              style={{
+                gridColumnStart: '3',
+                gridColumnEnd: '5',
+                justifySelf: 'right',
+              }}
+            >
+              Credit card
+            </div>
+            <div
+              style={{
+                gridColumnStart: '5',
+                gridColumnEnd: '7',
+                justifySelf: 'right',
+              }}
+            >
+              2.99% + $0.30
+            </div>
+            <div
+              style={{
+                gridColumnStart: '7',
+                gridColumnEnd: '9',
+                justifySelf: 'right',
+              }}
+            >
               <Toggle
                 label=""
                 labelHidden
                 checked={this.state.visaChecked}
                 onChange={this.toggleVisaToggle}
               />
-            </Stack.Item>
-          </Stack>
+            </div>
+          </div>
         </Card.Section>
         <Card.Section>
-          <Stack distribution="fillEvenly">
-            <Stack.Item>
-              <Stack spacing="loose">
-                <Image
-                  source="/assets/toggle/amex.svg"
-                  alt="American Express"
-                />
-                <Stack.Item>AMEX</Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>Credit card</Stack.Item>
-            <Stack.Item>2.99% + $0.30</Stack.Item>
-            <Toggle
-              label=""
-              labelHidden
-              disabled
-              checked={this.state.americanExpressChecked}
-              onChange={this.toggleAmericanExpressToggle}
-            />
-          </Stack>
+          <div
+            style={{
+              display: 'grid',
+              gridColumnGap: '15px',
+            }}
+          >
+            <div style={{gridColumnStart: '1', gridColumnEnd: '2'}}>
+              <Image
+                source="https://cdn.shopify.com/s/files/1/0048/7889/3112/files/amex.png?12829487775437184457"
+                alt="American Express"
+              />
+            </div>
+            <div style={{gridColumnStart: '2', gridColumnEnd: '3'}}>AMEX</div>
+            <div
+              style={{
+                gridColumnStart: '3',
+                gridColumnEnd: '5',
+                justifySelf: 'right',
+              }}
+            >
+              Credit card
+            </div>
+            <div
+              style={{
+                gridColumnStart: '5',
+                gridColumnEnd: '7',
+                justifySelf: 'right',
+              }}
+            >
+              2.99% + $0.30
+            </div>
+            <div
+              style={{
+                gridColumnStart: '7',
+                gridColumnEnd: '9',
+                justifySelf: 'right',
+              }}
+            >
+              <Toggle
+                label=""
+                labelHidden
+                checked={this.state.americanExpressChecked}
+                onChange={this.toggleAmericanExpressToggle}
+                disabled
+              />
+            </div>
+          </div>
         </Card.Section>
       </Card>
     );

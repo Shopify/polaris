@@ -67,12 +67,20 @@ export default function Toggle({
     <div className={styles.Suffix}>{suffix}</div>
   ) : null;
 
+  const iconClassName = classNames(
+    styles.Icon,
+    checked && styles.IconEnabled,
+    !checked && styles.IconDisabled,
+  );
+
   const iconMarkup = checked ? (
-    <Icon source="checkmark" color="indigo" />
+    <IconWrapper className={iconClassName}>
+      <Icon source="checkmark" color="indigo" />
+    </IconWrapper>
   ) : (
-    // <div className={styles.IconReducedSize}>
-    <Icon source="cancelSmall" color="inkLighter" />
-    // </div>
+    <IconWrapper className={iconClassName}>
+      <Icon source="cancelSmall" color="inkLighter" />
+    </IconWrapper>
   );
 
   return (
@@ -91,10 +99,15 @@ export default function Toggle({
           testID="ToggleInput"
         >
           <div className={styles.ToggleTrack} />
-          <div className={styles.ToggleThumb}>{iconMarkup}</div>
+          <div className={styles.ToggleThumb} />
+          {iconMarkup}
         </div>
         {suffixMarkup}
       </div>
     </Labelled>
   );
+}
+
+export function IconWrapper({children, className}: any) {
+  return <span className={className}>{children}</span>;
 }

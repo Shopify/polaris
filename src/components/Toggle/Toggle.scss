@@ -3,10 +3,10 @@ $toggle-track-height: rem(24px);
 $toggle-thumb-size: rem(20px);
 $toggle-disabled-opacity: 0.6;
 $toggle-thumb-displacement: rem(2px);
+$toggle-icon-top-displacement: rem(-22px);
+$toggle-icon-left-displacement: rem(11px);
 $toggle-border-size: rem(1px);
 $toggle-border-radius: rem(30px);
-$toggle-icon-adjusted-displacement: rem(2px);
-$toggle-icon-adjusted-size: rem(14px);
 
 .Toggle {
   display: flex;
@@ -26,7 +26,6 @@ $toggle-icon-adjusted-size: rem(14px);
   background-color: color('sky');
   transition: background-color duration(slow), border duration(slow),
     box-shadow duration(slow);
-  -webkit-tap-highlight-color: transparent;
 }
 
 .ToggleThumb {
@@ -54,14 +53,6 @@ $toggle-icon-adjusted-size: rem(14px);
   }
 }
 
-.IconReducedSize {
-  top: $toggle-icon-adjusted-displacement;
-  left: $toggle-icon-adjusted-displacement;
-  position: relative;
-  max-width: $toggle-icon-adjusted-size;
-  max-height: $toggle-icon-adjusted-size;
-}
-
 .ToggleDisabled {
   cursor: not-allowed;
   opacity: $toggle-disabled-opacity;
@@ -81,10 +72,23 @@ $toggle-icon-adjusted-size: rem(14px);
   appearance: none;
   cursor: pointer;
   background-color: transparent;
-  -webkit-tap-highlight-color: transparent;
 
   &.ToggleDisabled {
     cursor: not-allowed;
+  }
+}
+
+.Icon {
+  position: relative;
+  top: $toggle-icon-top-displacement;
+  transition: left duration(slow) easing();
+
+  &.IconEnabled {
+    left: $toggle-icon-left-displacement;
+  }
+
+  &.IconDisabled {
+    left: -$toggle-icon-left-displacement;
   }
 }
 
