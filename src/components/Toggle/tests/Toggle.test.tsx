@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import Labelled from '../../Labelled';
 import TextContainer from '../../TextContainer';
 import Icon from '../../Icon';
@@ -15,67 +15,66 @@ describe('<Toggle />', () => {
   describe('role', () => {
     it('gets set to checkbox', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} />);
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      const button = toggle.find('button');
-
-      expect(button.prop('role')).toBe('checkbox');
+      expect(input.prop('role')).toBe('checkbox');
     });
   });
 
   describe('checked', () => {
     it('sets aria-checked if true', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} checked />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('aria-checked')).toBeTruthy();
+      expect(input.prop('aria-checked')).toBeTruthy();
     });
 
     it('does not set aria-checked if false', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('aria-checked')).toBeFalsy();
+      expect(input.prop('aria-checked')).toBeFalsy();
     });
 
     it('is set to false by default', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('checked')).toBeFalsy();
+      expect(input.prop('checked')).toBeFalsy();
     });
   });
 
   describe('disabled', () => {
     it('sets aria-disabled if true', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} disabled />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('aria-disabled')).toBeTruthy();
+      expect(input.prop('aria-disabled')).toBeTruthy();
     });
 
     it('does not set aria-disabled if false', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('aria-disabled')).toBeFalsy();
+      expect(input.prop('aria-disabled')).toBeFalsy();
     });
 
     it('does not allow checked to become true when toggle is clicked', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} disabled />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      button.simulate('click');
-      expect(button.prop('checked')).toBeFalsy();
+      input.simulate('click');
+      expect(input.prop('checked')).toBeFalsy();
     });
   });
 
   describe('id', () => {
-    it('sets the id on the button', () => {
+    it('sets the id on the input', () => {
       const id = 'uniqueID';
       const toggle = mountWithAppProvider(<Toggle {...mockProps} id={id} />);
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('id')).toBe(id);
+      expect(input.prop('id')).toBe(id);
     });
   });
 
@@ -96,9 +95,9 @@ describe('<Toggle />', () => {
         <Toggle {...mockProps} label={label} />,
       );
 
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.prop('aria-label')).toBe(label);
+      expect(input.prop('aria-label')).toBe(label);
     });
   });
 
@@ -143,8 +142,8 @@ describe('<Toggle />', () => {
         <Toggle {...mockProps} onChange={onChangeSpy} />,
       );
 
-      const button = toggle.find('button');
-      button.simulate('click');
+      const input = findByTestID(toggle, 'ToggleInput');
+      input.simulate('click');
 
       expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
@@ -154,10 +153,10 @@ describe('<Toggle />', () => {
     it('renders an indigo checkmark icon when checked', () => {
       const toggle = mountWithAppProvider(<Toggle {...mockProps} checked />);
 
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.find(Icon).prop('source')).toBe('checkmark');
-      expect(button.find(Icon).prop('color')).toBe('indigo');
+      expect(input.find(Icon).prop('source')).toBe('checkmark');
+      expect(input.find(Icon).prop('color')).toBe('indigo');
     });
 
     it('renders an inkLighter cancelSmall icon when not checked', () => {
@@ -165,10 +164,10 @@ describe('<Toggle />', () => {
         <Toggle {...mockProps} checked={false} />,
       );
 
-      const button = toggle.find('button');
+      const input = findByTestID(toggle, 'ToggleInput');
 
-      expect(button.find(Icon).prop('source')).toBe('cancelSmall');
-      expect(button.find(Icon).prop('color')).toBe('inkLighter');
+      expect(input.find(Icon).prop('source')).toBe('cancelSmall');
+      expect(input.find(Icon).prop('color')).toBe('inkLighter');
     });
   });
 });

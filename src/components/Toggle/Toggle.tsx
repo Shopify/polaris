@@ -70,9 +70,9 @@ export default function Toggle({
   const iconMarkup = checked ? (
     <Icon source="checkmark" color="indigo" />
   ) : (
-    <div className={styles.IconReducedSize}>
-      <Icon source="cancelSmall" color="inkLighter" />
-    </div>
+    // <div className={styles.IconReducedSize}>
+    <Icon source="cancelSmall" color="inkLighter" />
+    // </div>
   );
 
   return (
@@ -88,6 +88,7 @@ export default function Toggle({
           aria-disabled={disabled}
           aria-label={label}
           role="checkbox"
+          testID="ToggleInput"
         >
           <div className={styles.ToggleTrack} />
           <div className={styles.ToggleThumb}>{iconMarkup}</div>
