@@ -1,25 +1,22 @@
 import * as React from 'react';
 import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
-import compose from 'utilities/react-compose';
-import withRef from 'components/WithRef';
-import {
-  Link,
-  Icon,
-  Stack,
-  Button,
-  Caption,
-  TextStyle,
-  withAppProvider,
-  WithAppProviderProps,
-} from 'components';
-import withContext from 'components/WithContext';
 import {WithContextTypes} from 'types';
-import {Consumer} from '../Context';
+import compose from 'utilities/react-compose';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
+import Link from 'components/Link';
+import Icon from 'components/Icon';
+import Stack from 'components/Stack';
+import Button from 'components/Button';
+import Caption from 'components/Caption';
+import TextStyle from 'components/TextStyle';
+import withContext from 'components/WithContext';
+import withRef from 'components/WithRef';
+import {DropZoneContext} from '../../types';
 import IconDragDrop from '../../icons/drag-drop.svg';
 import AssetFileUpload from '../../images/file-upload.svg';
 import AssetImageUpload from '../../images/image-upload.svg';
-import {DropZoneContext} from '../../types';
+import {Consumer} from '../Context';
 import * as styles from './FileUpload.scss';
 
 export interface State {

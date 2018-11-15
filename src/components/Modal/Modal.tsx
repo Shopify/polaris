@@ -1,24 +1,20 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
-import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {write} from '@shopify/javascript-utilities/fastdom';
-import {wrapWithComponent} from '@shopify/react-utilities';
-import {autobind} from '@shopify/javascript-utilities/decorators';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {TransitionGroup} from 'react-transition-group';
+import {autobind} from '@shopify/javascript-utilities/decorators';
+import {write} from '@shopify/javascript-utilities/fastdom';
+import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {wrapWithComponent} from '@shopify/react-utilities';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {transformActions} from 'utilities/app-bridge-transformers';
 import {contentContextTypes} from 'types';
-import {
-  Scrollable,
-  Spinner,
-  Portal,
-  Backdrop,
-  withAppProvider,
-  WithAppProviderProps,
-} from 'components';
-import memoizedBind from '../../utilities/memoized-bind';
+import {transformActions} from 'utilities/app-bridge-transformers';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
+import Backdrop from 'components/Backdrop';
+import Scrollable from 'components/Scrollable';
+import Spinner from 'components/Spinner';
+import Portal from 'components/Portal';
 import {
   CloseButton,
   Dialog,
@@ -31,7 +27,7 @@ import * as styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
-export type Size = keyof typeof AppBridgeModal.Size;
+export type Size = 'Small' | 'Medium' | 'Large' | 'Full';
 
 export interface Props extends FooterProps {
   /** Whether the modal is open or not */
@@ -197,7 +193,6 @@ export class Modal extends React.Component<CombinedProps, State> {
 
     const {
       children,
-      onClose,
       title,
       src,
       iFrameName,
@@ -207,6 +202,7 @@ export class Modal extends React.Component<CombinedProps, State> {
       loading,
       large,
       limitHeight,
+      onClose,
       footer,
       primaryAction,
       secondaryActions,
@@ -216,8 +212,6 @@ export class Modal extends React.Component<CombinedProps, State> {
     const {iframeHeight} = this.state;
 
     const iframeTitle = intl.translate('Polaris.Modal.iFrameTitle');
-
-    const handleClose = memoizedBind(onClose);
 
     let dialog: React.ReactNode;
     let backdrop: React.ReactNode;
@@ -260,12 +254,12 @@ export class Modal extends React.Component<CombinedProps, State> {
       );
 
       const headerMarkup = title ? (
-        <Header id={this.headerId} onClose={handleClose} testID="ModalHeader">
+        <Header id={this.headerId} onClose={onClose} testID="ModalHeader">
           {title}
         </Header>
       ) : (
         <CloseButton
-          onClick={handleClose}
+          onClick={onClose}
           title={false}
           testID="ModalCloseButton"
         />
@@ -275,7 +269,7 @@ export class Modal extends React.Component<CombinedProps, State> {
         <Dialog
           instant={instant}
           labelledBy={this.headerId}
-          onClose={handleClose}
+          onClose={onClose}
           onEntered={this.handleEntered}
           onExited={this.handleExited}
           large={large}

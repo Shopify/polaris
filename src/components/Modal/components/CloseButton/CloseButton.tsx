@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {Icon} from 'components';
+import Icon from 'components/Icon';
 import * as styles from './CloseButton.scss';
 
 export interface Props {

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {animationFrame, trigger, mountWithAppProvider} from 'test-utilities';
+import {animationFrame} from '@shopify/jest-dom-mocks';
+import {trigger, mountWithAppProvider} from 'test-utilities';
 import {KeypressListener} from 'components';
 import Dialog from '../Dialog';
 
 describe('<Dialog>', () => {
   beforeEach(() => {
-    animationFrame.fake();
+    animationFrame.mock();
   });
 
   afterEach(() => {

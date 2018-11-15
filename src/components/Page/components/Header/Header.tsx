@@ -6,27 +6,27 @@ import {
   LoadableAction,
   DestructableAction,
   IconableAction,
+  AppBridgeAction,
+  AppBridgeActionTarget,
 } from 'types';
-import {
-  Button,
-  buttonsFrom,
-  Breadcrumbs,
-  Pagination,
-  DisplayText,
-  Popover,
-  ActionList,
-  BreadcrumbsProps,
-} from 'components';
-import {PaginationDescriptor} from 'components/Pagination';
-import {hasNewStatus} from './utilities';
+import ActionList from 'components/ActionList';
+import Button, {buttonsFrom} from 'components/Button';
+import Breadcrumbs, {Props as BreadcrumbsProps} from 'components/Breadcrumbs';
+import DisplayText from 'components/DisplayText';
+import Pagination, {PaginationDescriptor} from 'components/Pagination';
+import Popover from 'components/Popover';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
-type SecondaryAction = IconableAction & DisableableAction;
+export interface SecondaryAction
+  extends IconableAction,
+    DisableableAction,
+    AppBridgeActionTarget {}
 
-interface PrimaryActionProps
+export interface PrimaryActionProps
   extends DisableableAction,
     LoadableAction,
+    AppBridgeAction,
     DestructableAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
@@ -177,23 +177,23 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const actionGroupsMarkup =
       actionGroups.length > 0
-        ? actionGroups.map(({title, icon, actions, details}) => (
-            <ActionGroup
-              key={title}
-              title={title}
-              icon={icon}
-              actions={actions}
-              details={details}
-              onOpen={this.handleActionGroupOpen}
-              onClose={this.handleActionGroupClose}
-              active={title === openActionGroup}
-            />
+        ? actionGroups.map(({title, icon, actions, details}, index) => (
+            <div
+              className={styles.IndividualAction}
+              key={`ActionGroup-${title}-${index}`}
+            >
+              <ActionGroup
+                title={title}
+                icon={icon}
+                actions={actions}
+                details={details}
+                onOpen={this.handleActionGroupOpen}
+                onClose={this.handleActionGroupClose}
+                active={title === openActionGroup}
+              />
+            </div>
           ))
         : null;
-
-    const showIndicator =
-      false &&
-      actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
 
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
@@ -201,11 +201,7 @@ export default class Header extends React.PureComponent<Props, State> {
           active={rollupOpen}
           onClose={this.handleRollupToggle}
           activator={
-            <Button
-              outline={false && showIndicator}
-              disclosure
-              onClick={this.handleRollupToggle}
-            >
+            <Button disclosure onClick={this.handleRollupToggle}>
               Actions
             </Button>
           }
@@ -260,8 +256,8 @@ function secondaryActionsFrom(
   actions: SecondaryAction[],
 ): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
-    <Action {...action} key={`Action-${content || index}`}>
-      {content}
-    </Action>
+    <div className={styles.IndividualAction} key={`Action-${content || index}`}>
+      <Action {...action}>{content}</Action>
+    </div>
   ));
 }

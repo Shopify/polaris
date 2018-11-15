@@ -55,7 +55,7 @@ describe('<TextField />', () => {
       />,
     ).find('input');
 
-    expect(input.prop('prefix')).toBe(undefined);
+    expect(input.prop('prefix')).toBeUndefined();
   });
 
   it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
@@ -221,7 +221,7 @@ describe('<TextField />', () => {
         .find('input')
         .prop<string>('aria-describedby')
         .split(' ');
-      expect(descriptions.length).toBe(2);
+      expect(descriptions).toHaveLength(2);
       expect(textField.find(`#${descriptions[0]}`).text()).toBe('Some error');
       expect(textField.find(`#${descriptions[1]}`).text()).toBe('Some help');
     });
@@ -252,7 +252,7 @@ describe('<TextField />', () => {
         .find('input')
         .prop<string>('aria-labelledby')
         .split(' ');
-      expect(labels.length).toBe(2);
+      expect(labels).toHaveLength(2);
       expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
       expect(textField.find(`#${labels[1]}`).text()).toBe('$');
     });
@@ -265,7 +265,7 @@ describe('<TextField />', () => {
         .find('input')
         .prop<string>('aria-labelledby')
         .split(' ');
-      expect(labels.length).toBe(3);
+      expect(labels).toHaveLength(3);
       expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
       expect(textField.find(`#${labels[1]}`).text()).toBe('$');
       expect(textField.find(`#${labels[2]}`).text()).toBe('.00');
@@ -281,7 +281,7 @@ describe('<TextField />', () => {
         .find('input')
         .prop<string>('aria-labelledby')
         .split(' ');
-      expect(labels.length).toBe(2);
+      expect(labels).toHaveLength(2);
       expect(textField.find(`#${labels[0]}`).text()).toBe('TextField');
       expect(textField.find(`#${labels[1]}`).text()).toBe('kg');
     });
@@ -484,7 +484,7 @@ describe('<TextField />', () => {
           />,
         );
         const buttons = element.find('[role="button"]');
-        expect(buttons.length).toBe(0);
+        expect(buttons).toHaveLength(0);
       });
 
       it('increments correctly when a value step or both are float numbers', () => {
@@ -580,7 +580,7 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find(Labelled).length).toEqual(1);
+      expect(textField.find(Labelled)).toHaveLength(1);
       expect(textField.find(Labelled).prop('label')).toBe('TextField');
       expect(textField.find(Labelled).prop('id')).toBe('MyField');
       expect(textField.find(Labelled).prop('helpText')).toBe('Help text');
@@ -627,7 +627,7 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(textField.find(Connected).length).toEqual(1);
+      expect(textField.find(Connected)).toHaveLength(1);
       expect(textField.find(Connected).prop('left')).toEqual(connectedLeft);
       expect(textField.find(Connected).prop('right')).toEqual(connectedRight);
     });

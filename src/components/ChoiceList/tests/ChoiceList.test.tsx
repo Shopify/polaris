@@ -258,13 +258,13 @@ describe('<ChoiceList />', () => {
       let element = shallowWithAppProvider(
         <ChoiceList selected={[]} choices={choices} />,
       );
-      expect(element.find(RadioButton).length).toBe(choices.length);
+      expect(element.find(RadioButton)).toHaveLength(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
 
       element = shallowWithAppProvider(
         <ChoiceList selected={[]} choices={choices} allowMultiple={false} />,
       );
-      expect(element.find(RadioButton).length).toBe(choices.length);
+      expect(element.find(RadioButton)).toHaveLength(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
     });
 
@@ -273,7 +273,7 @@ describe('<ChoiceList />', () => {
         <ChoiceList allowMultiple selected={[]} choices={choices} />,
       );
       expect(element.find(RadioButton).exists()).toBe(false);
-      expect(element.find(Checkbox).length).toBe(choices.length);
+      expect(element.find(Checkbox)).toHaveLength(choices.length);
     });
   });
 

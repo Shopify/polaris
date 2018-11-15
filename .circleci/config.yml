@@ -2,16 +2,16 @@ version: 2
 jobs:
   check:
     docker:
-      - image: circleci/node:8.11.2
+      - image: circleci/node:10.13.0
     steps:
       - checkout
       - restore_cache:
           # Find a cache corresponding to those specific yarn.lock and .yarnclean checksums
           # when these files are changed, this key will fail
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
       - run: yarn
       - save_cache:
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
           paths:
             - node_modules
       - run: yarn run check:ci
@@ -19,32 +19,32 @@ jobs:
       - run: yarn run build-shrink-ray
   percy:
     docker:
-      - image: circleci/node:8.11.2-browsers
+      - image: circleci/node:10.13.0-browsers
     steps:
       - checkout
       - restore_cache:
           # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
           # When these files are changed, this key will fail and a clean install will happen.
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
       - run: yarn
       - save_cache:
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
           paths:
             - node_modules
       - run: yarn run heroku-postbuild
       - run: yarn start & sleep 20; yarn run test:percy
   a11y:
     docker:
-      - image: circleci/node:8.11.2-browsers
+      - image: circleci/node:10.13.0-browsers
     steps:
       - checkout
       - restore_cache:
           # Find a cache corresponding to these specific yarn.lock and .yarnclean checksums.
           # When these files are changed, this key will fail and a clean install will happen.
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
       - run: yarn
       - save_cache:
-          key: v2-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
+          key: v3-npm-deps-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum ".yarnclean" }}
           paths:
             - node_modules
       - run: yarn run heroku-postbuild

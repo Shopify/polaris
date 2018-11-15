@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
-import {cp, mkdir, rm} from 'shelljs';
 import {resolve} from 'path';
+import {cp, mkdir, rm} from 'shelljs';
 
 import packageJSON from '../package.json';
 

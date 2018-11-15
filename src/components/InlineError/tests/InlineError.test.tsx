@@ -24,7 +24,7 @@ describe('<InlineError />', () => {
       );
 
       error.setProps({message: ''});
-      expect(error.find('#ProductTitleError')).toBeNull;
+      expect(error.find('#ProductTitleError')).toHaveLength(0);
     });
   });
 });

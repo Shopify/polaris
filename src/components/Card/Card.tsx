@@ -64,8 +64,8 @@ export default class Card extends React.PureComponent<Props, never> {
       primaryFooterActionMarkup || secondaryFooterActionMarkup ? (
         <div className={styles.Footer}>
           <ButtonGroup>
-            {primaryFooterActionMarkup}
             {secondaryFooterActionMarkup}
+            {primaryFooterActionMarkup}
           </ButtonGroup>
         </div>
       ) : null;

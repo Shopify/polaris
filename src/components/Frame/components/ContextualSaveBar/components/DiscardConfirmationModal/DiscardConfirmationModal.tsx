@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import {
-  Modal,
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../../components';
+} from '../../../../../AppProvider';
+import Modal from '../../../../../Modal';
 
 export interface Props {
   open: boolean;

@@ -3,10 +3,15 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 
-import {Avatar, AvatarProps, Icon, UnstyledLink} from '../../../../components';
 import {IconableAction} from '../../../../types';
+
+import Avatar, {Props as AvatarProps} from '../../../Avatar';
 import MessageIndicator from '../../../MessageIndicator';
+import Icon from '../../../Icon';
+import UnstyledLink from '../../../UnstyledLink';
+
 import Message, {Props as MessageProps} from '../Message';
+
 import * as styles from './UserMenu.scss';
 
 interface UserActionSection {

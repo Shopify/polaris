@@ -6,11 +6,11 @@ import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
-import {withAppProvider, WithAppProviderProps} from 'components';
 import {
   transformActions,
   generateRedirect,
 } from 'utilities/app-bridge-transformers';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
 import {Header, HeaderProps} from './components';
 import * as styles from './Page.scss';
 

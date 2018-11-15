@@ -4,13 +4,13 @@ import {ClientApplication} from '@shopify/app-bridge';
 
 import {LinkLikeComponent} from '../UnstyledLink';
 
+import ThemeProvider, {Theme} from '../ThemeProvider';
 import Intl from './Intl';
 import Link from './Link';
 import StickyManager from './StickyManager';
 import ScrollLockManager from './ScrollLockManager';
 import {createAppProviderContext} from './utils';
 import {polarisAppProviderContextTypes, TranslationDictionary} from './types';
-import ThemeProvider, {Theme} from '../ThemeProvider';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */
@@ -22,7 +22,7 @@ export interface Props {
   /**
    * The current shop’s origin, provided in the session from the Shopify API (to be provided without the https://)
    * @default getShopOrigin()
-   * @see {@link https://github.com/Shopify/app-bridge/blob/master/packages/app-bridge/README.md|Shopify App Bridge docs}
+   * @see {@link https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app|Shopify App Bridge docs}
    **/
   shopOrigin?: string;
   /** Forces a redirect to the relative admin path when not rendered in an iframe */

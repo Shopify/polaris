@@ -26,12 +26,12 @@ function shitlistCheck(results, immutableShitlist) {
   });
 
   Object.keys(mutableShitlist).forEach((key) => {
-    mutableShitlist[key].length
-      ? remainingIssues.push({
-          pageUrl: key,
-          issues: mutableShitlist[key],
-        })
-      : undefined;
+    if (mutableShitlist[key].length) {
+      remainingIssues.push({
+        pageUrl: key,
+        issues: mutableShitlist[key],
+      });
+    }
   });
 
   return {

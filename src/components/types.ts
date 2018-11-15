@@ -1,10 +1,9 @@
 import * as PropTypes from 'prop-types';
-import {
-  ContextualSaveBarProps,
-  ToastProps,
-  AppProviderContext,
-  ThemeProviderContext,
-} from '../components';
+
+import {Context as AppProviderContext} from './AppProvider';
+import {ContextualSaveBarProps} from './ContextualSaveBar';
+import {Props as ToastProps} from './Toast';
+import {Context as ThemeProviderContext} from './ThemeProvider';
 
 export interface PolarisContext
   extends AppProviderContext,
@@ -24,7 +23,7 @@ export interface FrameContext {
 }
 
 export const frameContextTypes = {
-  frame: PropTypes.object.isRequired,
+  frame: PropTypes.object,
 };
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';

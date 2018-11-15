@@ -1,9 +1,12 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {IconProps, ThumbnailProps, AvatarProps, Scrollable} from 'components';
-import * as styles from './Option.scss';
+import {Props as IconProps} from 'components/Icon';
+import {Props as ThumbnailProps} from 'components/Thumbnail';
+import {Props as AvatarProps} from 'components/Avatar';
+import Scrollable from 'components/Scrollable';
 import Checkbox from '../Checkbox';
+import * as styles from './Option.scss';
 
 export interface Props {
   id: string;

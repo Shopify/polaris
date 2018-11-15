@@ -407,7 +407,7 @@ describe('<FilterValueSelector />', () => {
         expect(operatorsSelect.exists()).toBe(false);
       });
 
-      it('calls onFilterKeyChange when the filter key was changed', () => {
+      it('calls onChange when the filter key was changed', () => {
         const onChange = jest.fn();
         const wrapper = shallowWithAppProvider(
           <FilterValueSelector

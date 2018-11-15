@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {IconableAction} from '../../../../types';
 
-import {Avatar, AvatarProps} from '../../../../components';
-import {MessageProps} from '../Menu';
-import {Menu} from '..';
+import Avatar, {Props as AvatarProps} from '../../../Avatar';
 import MessageIndicator from '../../../MessageIndicator';
 
-import styles from './UserMenu.scss';
+import Menu, {MessageProps} from '../Menu';
+
+import * as styles from './UserMenu.scss';
 
 export interface Props {
   /** An array of action objects that are rendered inside of a popover triggered by this menu */

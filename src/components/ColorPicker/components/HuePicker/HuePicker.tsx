@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {calculateDraggerY, hueForDraggerY} from './utilities';
 import Slidable, {Position} from '../Slidable';
 import * as styles from '../../ColorPicker.scss';
+import {calculateDraggerY, hueForDraggerY} from './utilities';
 
 export interface State {
   sliderHeight: number;

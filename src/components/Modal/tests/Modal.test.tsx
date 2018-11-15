@@ -1,12 +1,8 @@
 import * as React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  animationFrame,
-  findByTestID,
-  trigger,
-  mountWithAppProvider,
-} from 'test-utilities';
+import {animationFrame} from '@shopify/jest-dom-mocks';
+import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {contentContextTypes} from 'types';
 import {Footer, Dialog} from '../components';
@@ -19,7 +15,7 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
 
 describe('<Modal>', () => {
   beforeEach(() => {
-    animationFrame.fake();
+    animationFrame.mock();
   });
 
   afterEach(() => {
@@ -95,7 +91,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('instant')).toBe(undefined);
+      expect(modal.find(Dialog).prop('instant')).toBeUndefined();
     });
   });
 
@@ -117,7 +113,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('large')).toBe(undefined);
+      expect(modal.find(Dialog).prop('large')).toBeUndefined();
     });
   });
 
@@ -139,7 +135,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal.find(Dialog).prop('limitHeight')).toBe(undefined);
+      expect(modal.find(Dialog).prop('limitHeight')).toBeUndefined();
     });
   });
 
@@ -483,15 +479,6 @@ describe('<Modal>', () => {
 
     it('unsubscribes on unmount', () => {
       const {modal} = mountWithAppBridge(<Modal open onClose={noop} />);
-
-      modal.unmount();
-      expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);
-    });
-
-    it('unsubscribes on unmount', () => {
-      const {modal} = mountWithAppBridge(
-        <Modal src="/test" open onClose={noop} />,
-      );
 
       modal.unmount();
       expect(appBridgeModalMock.unsubscribe).toHaveBeenCalledTimes(1);

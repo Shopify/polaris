@@ -4,16 +4,13 @@ import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {DisableableAction, Action, ActionListSection} from 'types';
 import {Duration} from 'components/shared';
-import {
-  ActionList,
-  Popover,
-  Button,
-  EventListener,
-  withAppProvider,
-  WithAppProviderProps,
-} from 'components';
+import ActionList from 'components/ActionList';
+import Popover from 'components/Popover';
+import Button from 'components/Button';
+import EventListener from 'components/EventListener';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
 import CheckableButton from '../CheckableButton';
-import BulkActionButton from './components/BulkActionButton';
+import {BulkActionButton} from './components';
 import * as styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
@@ -153,7 +150,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       : 0;
 
     if (this.containerNode) {
-      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
         containerWidth: this.containerNode.getBoundingClientRect().width,
         measuring: false,

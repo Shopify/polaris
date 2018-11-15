@@ -4,8 +4,8 @@ import DisplayText from '../DisplayText';
 import SkeletonDisplayText from '../SkeletonDisplayText';
 import SkeletonBodyText from '../SkeletonBodyText';
 
-import * as styles from './SkeletonPage.scss';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import * as styles from './SkeletonPage.scss';
 
 export interface Props {
   /** Page title, in large type */

@@ -1,6 +1,6 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {Button, ButtonGroup, Redirect} from '@shopify/app-bridge/actions';
-import {noop} from '../../utilities/other';
+import {noop} from '../other';
 import {generateRedirect, transformActions} from '../app-bridge-transformers';
 
 describe('app bridge transformers', () => {
@@ -35,13 +35,16 @@ describe('app bridge transformers', () => {
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.APP, '/path');
     });
 
-    it('action is REMOTE when external is true', () => {
+    it('action is REMOTE with newContext when external is true', () => {
       const callback = generateRedirect(appBridge, '/path', undefined, true);
       if (callback != null) {
         callback.call(this);
       }
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(Redirect.Action.REMOTE, '/path');
+      expect(dispatch).toHaveBeenCalledWith(Redirect.Action.REMOTE, {
+        url: '/path',
+        newContext: true,
+      });
     });
 
     it('action is REMOTE when target is REMOTE', () => {

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Popover, ActionList} from '../../../../../../components';
-import {hasNewStatus} from '../../utilities';
+import ActionList from '../../../../../ActionList';
+import Popover from '../../../../../Popover';
 import Action from '../Action';
+
 import {ActionGroupDescriptor} from './types';
 import * as styles from './ActionGroup.scss';
 
@@ -16,11 +17,9 @@ class ActionGroup extends React.Component<Props, never> {
   render() {
     const {actions, details, title, icon, active} = this.props;
 
-    const detailsMarkup = details ? (
+    const detailsMarkup = details && (
       <div className={styles.Details}>{details}</div>
-    ) : null;
-
-    const showIndicator = hasNewStatus(actions);
+    );
 
     return (
       <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
@@ -29,23 +28,12 @@ class ActionGroup extends React.Component<Props, never> {
           active={active}
           onClose={this.handleClose}
           activator={
-            <Action
-              showIndicator={showIndicator}
-              hasIndicator={active}
-              disclosure
-              icon={icon}
-              // eslint-disable-next-line react/jsx-no-bind
-              onAction={this.handleOpen}
-            >
+            <Action disclosure icon={icon} onAction={this.handleOpen}>
               {title}
             </Action>
           }
         >
-          <ActionList
-            items={actions}
-            // eslint-disable-next-line react/jsx-no-bind
-            onActionAnyItem={this.handleClose}
-          />
+          <ActionList items={actions} onActionAnyItem={this.handleClose} />
           {detailsMarkup}
         </Popover>
       </div>

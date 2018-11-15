@@ -48,6 +48,8 @@ describe('<Autocomplete/>', () => {
         },
       ];
 
+      const EmptyState = () => <span>No results</span>;
+
       const autocomplete = mountWithAppProvider(
         <Autocomplete
           id="Autocomplete-ID"
@@ -63,6 +65,7 @@ describe('<Autocomplete/>', () => {
             id: 'ComboBox3-0',
           }}
           onSelect={handleOnSelect}
+          emptyState={<EmptyState />}
         />,
       );
 
@@ -83,6 +86,9 @@ describe('<Autocomplete/>', () => {
         actionBefore,
       );
       expect(autocomplete.find(ComboBox).prop('onSelect')).toBe(handleOnSelect);
+      expect(autocomplete.find(ComboBox).prop('emptyState')).toEqual(
+        <EmptyState />,
+      );
     });
   });
 

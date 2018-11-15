@@ -3,11 +3,11 @@ import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import isEqual from 'lodash/isEqual';
 
+import {headerCell} from 'components/shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 import EventListener from '../EventListener';
-
 import {Cell, CellProps, Navigation} from './components';
+import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import * as styles from './DataTable.scss';
 
@@ -328,7 +328,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } = this;
     if (collapsed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(
-        '[class*=header]',
+        headerCell.selector,
       ) as NodeListOf<HTMLElement>;
       const collapsedHeaderCells = Array.from(headerCells).slice(1);
       const fixedColumnWidth = headerCells[0].offsetWidth;

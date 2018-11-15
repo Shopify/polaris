@@ -3,10 +3,20 @@ const puppeteer = require('puppeteer');
 const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
 
 (async () => {
+  // If a build is from a forked repository, CircleCI does not pass environment
+  // environment variables into the build to prevent credential leakage.
+  // In that case, exit cleanly so the build does not fail.
+  // Once we start using @percy/puppeteer v1 this can be removed as it is
+  // checked within Percy. See https://github.com/percy/percy-puppeteer/pull/3
+  if (!process.env.PERCY_TOKEN) {
+    console.log('No PERCY_TOKEN provided. Skipping snapshots.');
+    process.exit();
+  }
+
   const percy = new Percy({
     loaders: [
       new FileSystemAssetLoader({
-        buildDir: './tophat/assets',
+        buildDir: './tophat/build/assets',
         mountPath: '/assets',
       }),
     ],
@@ -54,7 +64,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
 
     const urls = [...batchComponentExamples, ...individualModalExamples];
 
-    urls.map((path) => {
+    urls.forEach((path) => {
       const currentBrowser = browsers[browserIndex % 2];
       browserIndex++;
       currentBrowser.taken = currentBrowser.taken.then(async () => {

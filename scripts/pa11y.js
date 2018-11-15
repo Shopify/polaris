@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
 const pa11y = require('pa11y');
-const fs = require('fs');
 const shitlistCheck = require('./pa11y-utilities.js').shitlistCheck;
 
 const shitlist = require('./../a11y_shitlist.json');
@@ -62,7 +61,7 @@ async function runPa11y() {
     ),
   );
 
-  urls.map((path) => {
+  urls.forEach((path) => {
     const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
     browserIndex++;
     currentBrowser.taken = currentBrowser.taken.then(async () => {

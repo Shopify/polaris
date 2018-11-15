@@ -4,24 +4,21 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
 import {DisableableAction, WithContextTypes} from 'types';
-import {
-  ActionList,
-  Popover,
-  AvatarProps,
-  UnstyledLink,
-  ThumbnailProps,
-  ButtonGroup,
-  Checkbox,
-  Button,
-  buttonsFrom,
-  withAppProvider,
-  WithAppProviderProps,
-} from 'components';
-import withContext from 'components/WithContext';
-import {ResourceListContext} from '../../ResourceList';
+import ActionList from 'components/ActionList';
+import Popover from 'components/Popover';
+import {Props as AvatarProps} from 'components/Avatar';
+import UnstyledLink from 'components/UnstyledLink';
+import {Props as ThumbnailProps} from 'components/Thumbnail';
+import ButtonGroup from 'components/ButtonGroup';
+import Checkbox from 'components/Checkbox';
+import Button, {buttonsFrom} from 'components/Button';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
 import {SELECT_ALL_ITEMS} from '../../types';
-import * as styles from './Item.scss';
+
+import {ResourceListContext} from '../../ResourceList';
+import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
+import * as styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';

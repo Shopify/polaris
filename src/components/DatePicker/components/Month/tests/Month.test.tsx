@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from 'test-utilities';
-import {Weekday} from '../../../components';
+import {Weekday} from '../..';
 import Month from '../Month';
+import Day from '../../Day';
 
 describe('<Month />', () => {
   describe('title', () => {
@@ -64,6 +65,28 @@ describe('<Month />', () => {
           .first()
           .prop('current'),
       ).toBe(false);
+    });
+  });
+
+  describe('with allowRange prop to true', () => {
+    it('range can be created even if start and end have different references', () => {
+      const hoverDate = new Date('05 Jan 2018 00:00:00 GMT');
+      const month = mountWithAppProvider(
+        <Month
+          month={0}
+          year={2018}
+          weekStartsOn={Weekdays.Monday}
+          allowRange
+          hoverDate={hoverDate}
+          selected={{
+            start: new Date('01 Jan 2018 00:00:00 GMT'),
+            end: new Date('01 Jan 2018 00:00:00 GMT'),
+          }}
+        />,
+      );
+
+      expect(month.find(Day).get(2).props.inHoveringRange).toBeTruthy();
+      expect(month.find(Day).get(10).props.inHoveringRange).toBeFalsy();
     });
   });
 });

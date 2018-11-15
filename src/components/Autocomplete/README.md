@@ -300,6 +300,98 @@ class AutocompleteExample extends React.Component {
 }
 ```
 
+### Autocomplete with empty state
+
+Use to indicate there are no search results.
+
+```jsx
+class AutocompleteExample extends React.Component {
+  options = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+
+  state = {
+    selected: [],
+    inputText: '',
+    options: this.options,
+    loading: false,
+  };
+
+  render() {
+    return (
+      <div style={{height: '225px'}}>
+        <Autocomplete
+          options={this.state.options}
+          selected={this.state.selected}
+          onSelect={this.updateSelection}
+          emptyState={
+            <React.Fragment>
+              <Icon source="search" />
+              <div style={{textAlign: 'center'}}>
+                <TextContainer>Could not find any results</TextContainer>
+              </div>
+            </React.Fragment>
+          }
+          loading={this.state.loading}
+          textField={
+            <Autocomplete.TextField
+              onChange={this.updateText}
+              label=""
+              value={this.state.inputText}
+              prefix={<Icon source="search" color="inkLighter" />}
+              placeholder="Search"
+            />
+          }
+        />
+      </div>
+    );
+  }
+
+  updateText = (newValue) => {
+    this.setState({inputText: newValue});
+    this.filterAndUpdateOptions(newValue);
+  };
+
+  filterAndUpdateOptions = (inputString) => {
+    if (!this.state.loading) {
+      this.setState({loading: true});
+    }
+
+    setTimeout(() => {
+      if (inputString === '') {
+        this.setState({
+          options: this.options,
+          loading: false,
+        });
+        return;
+      }
+      const filterRegex = new RegExp(inputString, 'i');
+      const resultOptions = this.options.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      this.setState({
+        options: resultOptions,
+        loading: false,
+      });
+    }, 300);
+  };
+
+  updateSelection = (updatedSelection) => {
+    const selectedText = updatedSelection.map((selectedItem) => {
+      const matchedOption = this.options.filter((option) => {
+        return option.value.match(selectedItem);
+      });
+      return matchedOption[0] && matchedOption[0].label;
+    });
+    this.setState({selected: selectedText, inputText: selectedText});
+  };
+}
+```
+
 ---
 
 ## Related components

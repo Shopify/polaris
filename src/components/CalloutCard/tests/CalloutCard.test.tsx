@@ -19,7 +19,12 @@ describe('<CalloutCard />', () => {
   );
 
   it('renders its children', () => {
-    expect(calloutCard.contains('<p>Content</p>'));
+    expect(
+      calloutCard
+        .find('p')
+        .first()
+        .contains('Content'),
+    ).toBe(true);
   });
 
   it('renders the title as an h2 element', () => {

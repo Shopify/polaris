@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Image from '../Image';
@@ -11,6 +12,8 @@ export type Size = 'small' | 'medium' | 'large';
 
 const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five', 'six'];
 const AVATAR_IMAGES = Object.keys(avatars).map(
+  // import/namespace does not allow computed values by default
+  // eslint-disable-next-line import/namespace
   (key: keyof typeof avatars) => avatars[key],
 );
 
@@ -26,89 +29,131 @@ export interface Props {
   initials?: string;
   /** Whether the avatar is for a customer */
   customer?: boolean;
-  /** URL of the avatar image */
+  /** URL of the avatar image which falls back to initials if the image fails to load */
   source?: string;
   /** Accessible label for the avatar image */
   accessibilityLabel?: string;
 }
 
+export interface State {
+  hasError: boolean;
+  hasLoaded: boolean;
+}
+
 export type CombinedProps = Props & WithAppProviderProps;
 
-function Avatar({
-  name,
-  source,
-  initials,
-  customer,
-  size = 'medium',
-  accessibilityLabel,
-  polaris: {intl},
-}: CombinedProps) {
-  const nameString = name || initials;
+export class Avatar extends React.PureComponent<CombinedProps, State> {
+  state: State = {
+    hasError: false,
+    hasLoaded: false,
+  };
 
-  let finalSource: string | undefined;
-  let label: string | undefined;
-
-  if (accessibilityLabel) {
-    label = accessibilityLabel;
-  } else if (name) {
-    label = name;
-  } else if (initials) {
-    const splitInitials = initials.split('').join(' ');
-    label = intl.translate('Polaris.Avatar.labelWithInitials', {
-      initials: splitInitials,
-    });
-  } else {
-    label = intl.translate('Polaris.Avatar.label');
+  componentDidUpdate({source: previousSource}: Props) {
+    const {source} = this.props;
+    const {hasError, hasLoaded} = this.state;
+    if (previousSource === source || (!hasError && !hasLoaded)) {
+      return;
+    }
+    // eslint-disable-next-line react/no-did-update-set-state
+    this.setState({hasError: false, hasLoaded: false});
   }
 
-  if (source) {
-    finalSource = source;
-  } else if (customer) {
-    finalSource = customerPlaceholder(nameString);
+  render() {
+    const {
+      name,
+      source,
+      initials,
+      customer,
+      size = 'medium',
+      accessibilityLabel,
+      polaris: {intl},
+    } = this.props;
+
+    const {hasError, hasLoaded} = this.state;
+
+    const hasImage = (source || customer) && !hasError;
+
+    const nameString = name || initials;
+
+    let finalSource: string | undefined;
+    let label: string | undefined;
+
+    if (accessibilityLabel) {
+      label = accessibilityLabel;
+    } else if (name) {
+      label = name;
+    } else if (initials) {
+      const splitInitials = initials.split('').join(' ');
+      label = intl.translate('Polaris.Avatar.labelWithInitials', {
+        initials: splitInitials,
+      });
+    } else {
+      label = intl.translate('Polaris.Avatar.label');
+    }
+
+    if (source) {
+      finalSource = source;
+    } else if (customer) {
+      finalSource = customerPlaceholder(nameString);
+    }
+
+    const className = classNames(
+      styles.Avatar,
+      styles[variationName('style', styleClass(nameString))],
+      size && styles[variationName('size', size)],
+      hasImage && !hasLoaded && styles.hidden,
+      hasImage && styles.hasImage,
+    );
+
+    const imageMarkUp = finalSource ? (
+      <Image
+        className={styles.Image}
+        source={finalSource}
+        alt=""
+        role="presentation"
+        onLoad={this.handleLoad}
+        onError={this.handleError}
+      />
+    ) : null;
+
+    // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
+    const verticalOffset = '0.35em';
+
+    const initialsMarkup =
+      initials && !hasImage ? (
+        <span className={styles.Initials}>
+          <svg className={styles.Svg} viewBox="0 0 48 48">
+            <text
+              x="50%"
+              y="50%"
+              dy={verticalOffset}
+              fill="currentColor"
+              fontSize="26"
+              textAnchor="middle"
+            >
+              {initials}
+            </text>
+          </svg>
+        </span>
+      ) : null;
+
+    return (
+      <span aria-label={label} role="img" className={className}>
+        {initialsMarkup}
+        {imageMarkUp}
+      </span>
+    );
   }
 
-  const className = classNames(
-    styles.Avatar,
-    styles[variationName('style', styleClass(nameString))],
-    size && styles[variationName('size', size)],
-    finalSource && styles.hasImage,
-  );
+  @autobind
+  handleError() {
+    this.setState({hasError: true, hasLoaded: false});
+  }
 
-  const imageMarkUp = finalSource ? (
-    <Image
-      className={styles.Image}
-      source={finalSource}
-      alt=""
-      role="presentation"
-    />
-  ) : null;
-
-  // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
-  const verticalOffset = '0.35em';
-
-  const initialsMarkup = initials ? (
-    <span className={styles.Initials}>
-      <svg className={styles.Svg} viewBox="0 0 48 48">
-        <text
-          x="50%"
-          y="50%"
-          dy={verticalOffset}
-          fill="currentColor"
-          fontSize="26"
-          textAnchor="middle"
-        >
-          {initials}
-        </text>
-      </svg>
-    </span>
-  ) : null;
-
-  return (
-    <span aria-label={label} role="img" className={className}>
-      {initialsMarkup}
-      {imageMarkUp}
-    </span>
-  );
+  @autobind
+  handleLoad() {
+    this.setState({hasLoaded: true, hasError: false});
+  }
 }
 
 function styleClass(name?: string) {

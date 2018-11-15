@@ -15,7 +15,7 @@ describe('<UnstyledLink />', () => {
         mockContext,
       ).find(CustomLinkComponent);
 
-      expect(anchorElement.length).toBe(1);
+      expect(anchorElement).toHaveLength(1);
     });
 
     it('doesn’t have polaris prop', () => {
