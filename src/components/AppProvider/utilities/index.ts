@@ -16,5 +16,12 @@ export {
   WithAppProviderProps,
 } from './withAppProvider';
 export {default as Link} from './Link';
-export {default as ScrollLockManager} from './ScrollLockManager';
-export {default as createAppProviderContext} from './createAppProviderContext';
+export {
+  default as ScrollLockManager,
+  SCROLL_LOCKING_ATTRIBUTE,
+  SCROLL_LOCKING_CUSTOM_PROPERTY,
+} from './ScrollLockManager';
+export {
+  default as createAppProviderContext,
+  CreateAppProviderContext,
+} from './createAppProviderContext';
