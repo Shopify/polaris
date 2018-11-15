@@ -5,6 +5,8 @@ $toggle-disabled-opacity: 0.6;
 $toggle-thumb-displacement: rem(2px);
 $toggle-border-size: rem(1px);
 $toggle-border-radius: rem(30px);
+$toggle-icon-adjusted-displacement: rem(2px);
+$toggle-icon-adjusted-size: rem(14px);
 
 .Toggle {
   display: flex;
@@ -50,6 +52,14 @@ $toggle-border-radius: rem(30px);
     left: $toggle-track-height;
     box-shadow: -1px 1px 1px color('indigo', 'dark');
   }
+}
+
+.IconReducedSize {
+  top: $toggle-icon-adjusted-displacement;
+  left: $toggle-icon-adjusted-displacement;
+  position: relative;
+  max-width: $toggle-icon-adjusted-size;
+  max-height: $toggle-icon-adjusted-size;
 }
 
 .ToggleDisabled {

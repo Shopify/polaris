@@ -49,7 +49,7 @@ export default function Toggle({
     disabled && styles.ToggleDisabled,
   );
 
-  function handleChange(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleChange(event: React.MouseEvent<HTMLElement>) {
     if (disabled) {
       return;
     }
@@ -70,16 +70,18 @@ export default function Toggle({
   const iconMarkup = checked ? (
     <Icon source="checkmark" color="indigo" />
   ) : (
-    <Icon source="cancelSmall" color="inkLighter" />
+    <div className={styles.IconReducedSize}>
+      <Icon source="cancelSmall" color="inkLighter" />
+    </div>
   );
 
   return (
     <Labelled id={id} label={label} labelHidden={labelHidden}>
       <div className={className}>
         {prefixMarkup}
-        <button
+        <div
           id={id}
-          type="button"
+          tabIndex={0}
           className={inputClassName}
           onClick={handleChange}
           aria-checked={checked}
@@ -89,7 +91,7 @@ export default function Toggle({
         >
           <div className={styles.ToggleTrack} />
           <div className={styles.ToggleThumb}>{iconMarkup}</div>
-        </button>
+        </div>
         {suffixMarkup}
       </div>
     </Labelled>
