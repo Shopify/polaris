@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {FrameContext, frameContextTypes} from '../types';
-import {withAppProvider, WithAppProviderProps} from '..';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface Props {}
 export type ComposedProps = Props & WithAppProviderProps;

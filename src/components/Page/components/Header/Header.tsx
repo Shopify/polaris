@@ -1,17 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {
-  Button,
-  buttonsFrom,
-  Breadcrumbs,
-  Pagination,
-  DisplayText,
-  Popover,
-  ActionList,
-  BreadcrumbsProps,
-} from '../../..';
-import {PaginationDescriptor} from '../../../Pagination';
+
 import {
   DisableableAction,
   LoadableAction,
@@ -20,6 +10,13 @@ import {
   AppBridgeAction,
   AppBridgeActionTarget,
 } from '../../../../types';
+import ActionList from '../../../ActionList';
+import Button, {buttonsFrom} from '../../../Button';
+import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
+import DisplayText from '../../../DisplayText';
+import Pagination, {PaginationDescriptor} from '../../../Pagination';
+import Popover from '../../../Popover';
+
 import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';

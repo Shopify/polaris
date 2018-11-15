@@ -1,10 +1,13 @@
 import * as React from 'react';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {DisplayText, TextStyle, Image, Stack} from '..';
+import DisplayText from '../DisplayText';
+import TextStyle from '../TextStyle';
+import Image from '../Image';
+import Stack from '../Stack';
 
 import emptySearch from './illustrations/empty-search.svg';
-import styles from './EmptySearchResult.scss';
+import * as styles from './EmptySearchResult.scss';
 
 export interface Props {
   title: string;

@@ -25,19 +25,10 @@ export default function TextStyle({variation, children}: Props) {
     variation === VariationValue.Code && styles.code,
   );
   const Element = variationElement(variation);
+
   return <Element className={className}>{children}</Element>;
 }
 
 function variationElement(variation?: Variation) {
-  switch (variation) {
-    case VariationValue.Code:
-      return 'code';
-    case VariationValue.Strong:
-      return 'b';
-    case VariationValue.Positive:
-    case VariationValue.Negative:
-    case VariationValue.Subdued:
-    default:
-      return 'span';
-  }
+  return variation === VariationValue.Code ? 'code' : 'span';
 }

@@ -142,7 +142,7 @@ function hoveringDateIsInRange(
     return false;
   }
   const {start, end} = range;
-  return Boolean(start === end && day > start && day <= hoverEndDate);
+  return Boolean(isSameDay(start, end) && day > start && day <= hoverEndDate);
 }
 
 function getWeekdaysOrdered(weekStartsOn: Weekdays): Weekdays[] {

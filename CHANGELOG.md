@@ -8,6 +8,20 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.0.1 - 2018-11-14
+
+### Bug fixes
+
+- Fixed `Datepicker` ranges when `start` and `end` dates are similar but have different references ([#601](https://github.com/Shopify/polaris-react/pull/601))
+- Fixed `DataTable` column visibility calculation in production environments by using a `data-polaris-header-cell` attribute instead of class-based targeting ([#615](https://github.com/Shopify/polaris-react/pull/615))
+- Fixed `Navigation.Item` not calling `onClick` on small screens when `onNavigationDismiss` is undefined ([#603](https://github.com/Shopify/polaris-react/pull/603))
+- Fixed `Autocomplete` empty state example Markdown not parsing correctly ([#592](https://github.com/Shopify/polaris-react/pull/592))
+- Fixed `TopBar`’s `UserMenu` alignment to be right-aligned when `TopBar` isn't passed a `searchField` prop ([#597](https://github.com/Shopify/polaris-react/pull/597))
+- Removed erroneous SCSS file import that rendered Polaris unable to be used in typescript projects without scss support ([#609](https://github.com/Shopify/polaris-react/pull/609))
+- Fixed `Popover` inconsistent border-radius values ([#605](https://github.com/Shopify/polaris-react/pull/605))
+- `TextStyle` strong variant now uses a span tag instead of b ([#606](https://github.com/Shopify/polaris-react/pull/606))
+- Fixed non-blocking context errors when using `Toast` or `Loading` in an embedded app ([#613](https://github.com/Shopify/polaris-react/pull/613))
+
 ## 3.0.0 - 2018-11-09
 
 ### Breaking changes

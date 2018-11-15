@@ -2,8 +2,10 @@ import * as React from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import Toast from '../Toast';
-import {Portal, EventListener, ToastProps} from '../../..';
+import EventListener from '../../../EventListener';
+import Portal from '../../../Portal';
+import Toast, {Props as ToastProps} from '../Toast';
+
 import * as styles from './ToastManager.scss';
 
 export interface Props {
