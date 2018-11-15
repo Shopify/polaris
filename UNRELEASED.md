@@ -11,6 +11,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed `Action`s selector in `Page`'s `Header` component ([#2487](https://github.com/Shopify/polaris-react/pull/2487))
+- Fixed `Card` spacing in small devices ([#608](https://github.com/shopify/polaris-react/pull/608))
 
 ### Documentation
 
