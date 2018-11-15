@@ -168,7 +168,7 @@
     "shx": "^0.2.2",
     "style-loader": "^0.23.1",
     "svgo": "^0.7.2",
-    "ts-simple-ast": "^17.1.1",
+    "ts-simple-ast": "^19.0.0",
     "typescript": "^2.9.1",
     "url-loader": "~1.1.2",
     "webpack": "~4.25.1",

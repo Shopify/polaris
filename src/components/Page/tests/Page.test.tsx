@@ -4,22 +4,14 @@ import {
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
-<<<<<<< HEAD
-import {DisplayText, Card} from 'components';
-import {noop} from 'utilities/other';
-import {LinkAction} from 'types';
-import {Header} from '../components';
-import Page from '../Page';
-=======
 import {Page, Card} from 'components';
-import {LinkAction} from '../../../types';
-import {noop} from '../../../utilities/other';
+import {LinkAction} from 'types';
+import {noop} from 'utilities/other';
 import {Header} from '../components';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {SecondaryAction, PrimaryActionProps} from '../components/Header/Header';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {ActionGroupDescriptor} from '../components/Header/components';
->>>>>>> master
 
 jest.mock('utilities/app-bridge-transformers', () => ({
   ...require.requireActual('utilities/app-bridge-transformers'),

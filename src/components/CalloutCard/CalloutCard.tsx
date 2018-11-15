@@ -1,13 +1,11 @@
 import * as React from 'react';
 import {Action} from 'types';
-import {
-  Card,
-  TextContainer,
-  ButtonGroup,
-  buttonFrom,
-  Heading,
-  Image,
-} from 'components';
+import Card from 'components/Card';
+import TextContainer from 'components/TextContainer';
+import ButtonGroup from 'components/ButtonGroup';
+import {buttonFrom} from 'components/Button';
+import Heading from 'components/Heading';
+import Image from 'components/Image';
 import * as styles from './CalloutCard.scss';
 
 export interface Props {

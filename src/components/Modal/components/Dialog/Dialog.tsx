@@ -1,20 +1,10 @@
 import * as React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-<<<<<<< HEAD
-import {KeypressListener, TrapFocus} from 'components';
-import memoizedBind from 'utilities/memoized-bind';
-import {Duration} from 'components/shared';
-import {AnimationProps, Key} from 'types';
-=======
 import {classNames} from '@shopify/react-utilities/styles';
-
-import {AnimationProps, Key} from '../../../../types';
-
-import KeypressListener from '../../../KeypressListener';
-import TrapFocus from '../../../TrapFocus';
-import {Duration} from '../../../shared';
-
->>>>>>> master
+import {AnimationProps, Key} from 'types';
+import KeypressListener from 'components/KeypressListener';
+import TrapFocus from 'components/TrapFocus';
+import {Duration} from 'components/shared';
 import * as styles from './Dialog.scss';
 
 export interface DialogProps {

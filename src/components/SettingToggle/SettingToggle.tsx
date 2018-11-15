@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SettingAction from 'components/SettingAction';
-import {buttonFrom} from 'components';
+import {buttonFrom} from 'components/Button';
 import {ComplexAction} from 'types';
 import Card from '../Card';
 

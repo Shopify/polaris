@@ -1,7 +1,7 @@
-const execSync = require('child_process').execSync;
+const {execSync} = require('child_process');
+const {resolve} = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
-const {resolve} = require('path');
 const packageJSON = require('../package.json');
 
 describe('build', () => {
@@ -81,6 +81,7 @@ describe('build', () => {
     expect(fs.existsSync('./types/index.d.ts')).toBe(true);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('generates valid typescript definition files', () => {
     const configPath = resolve(__dirname, 'tsconfig-types.json');
     execSync(`yarn run tsc --noEmit --project ${configPath}`, {

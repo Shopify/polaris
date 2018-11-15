@@ -7,7 +7,8 @@ import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {Transition} from 'react-transition-group';
 import {Key} from 'types';
 import {overlay, Duration} from 'components/shared';
-import {KeypressListener, EventListener} from 'components';
+import KeypressListener from 'components/KeypressListener';
+import EventListener from 'components/EventListener';
 import PositionedOverlay, {
   OverlayDetails,
   PreferredPosition,

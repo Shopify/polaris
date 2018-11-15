@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Icon} from 'components';
+import Icon from 'components/Icon';
 import {Error} from 'types';
 import * as styles from './InlineError.scss';
 

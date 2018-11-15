@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {withAppProvider, WithAppProviderProps, Icon} from 'components';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
+import Icon from 'components/Icon';
 import Choice, {helpTextID} from 'components/Choice';
 import {Error} from 'types';
 import * as styles from './Checkbox.scss';

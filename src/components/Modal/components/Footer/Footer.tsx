@@ -1,15 +1,8 @@
 import * as React from 'react';
-<<<<<<< HEAD
-import {buttonsFrom, ButtonGroup, Stack} from 'components';
 import {ComplexAction, AppBridgeAction} from 'types';
-=======
-
-import {ComplexAction, AppBridgeAction} from '../../../../types';
-import {buttonsFrom} from '../../../Button';
-import ButtonGroup from '../../../ButtonGroup';
-import Stack from '../../../Stack';
-
->>>>>>> master
+import {buttonsFrom} from 'components/Button';
+import ButtonGroup from 'components/ButtonGroup';
+import Stack from 'components/Stack';
 import * as styles from './Footer.scss';
 
 export interface Props {

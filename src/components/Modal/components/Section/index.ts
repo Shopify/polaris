@@ -1,4 +1,1 @@
-import Section from './Section';
-
-export {Props as SectionProps} from './Section';
-export default Section;
+export {default, Props} from './Section';

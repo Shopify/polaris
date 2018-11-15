@@ -1,16 +1,13 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
-import {
-  KeypressListener,
-  Tooltip,
-  UnstyledLink,
-  Icon,
-  withAppProvider,
-  WithAppProviderProps,
-} from 'components';
+import isInputFocused from 'utilities/isInputFocused';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
+import Icon from 'components/Icon';
+import UnstyledLink from 'components/UnstyledLink';
+import Tooltip from 'components/Tooltip';
+import KeypressListener from 'components/KeypressListener';
 import {Key} from 'types';
 import {handleMouseUpByBlurring} from 'utilities/focus';
-import isInputFocused from 'utilities/isInputFocused';
 import * as styles from './Pagination.scss';
 
 export interface PaginationDescriptor {

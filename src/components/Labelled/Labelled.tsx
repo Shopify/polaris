@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {Action, Error} from 'types';
-import {buttonFrom} from 'components';
+import {buttonFrom} from 'components/Button';
 import Label, {Props as LabelProps, labelID} from 'components/Label';
 import InlineError from '../InlineError';
 import * as styles from './Labelled.scss';

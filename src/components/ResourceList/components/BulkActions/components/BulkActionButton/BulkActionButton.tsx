@@ -2,7 +2,8 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import {classNames} from '@shopify/react-utilities';
 import {DisableableAction} from 'types';
-import {Icon, UnstyledLink} from 'components';
+import Icon from 'components/Icon';
+import UnstyledLink from 'components/UnstyledLink';
 import {handleMouseUpByBlurring} from 'utilities/focus';
 import * as styles from '../../BulkActions.scss';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Icon} from 'components';
+import Icon from 'components/Icon';
 import {Error} from 'types';
 import Labelled, {Action, helpTextID} from 'components/Labelled';
 import * as styles from './Select.scss';
