@@ -1,7 +1,10 @@
+/* eslint-disable no-console */
+
 import fs from 'fs';
 import glob from 'glob';
 import chalk from 'chalk';
 import grayMatter from 'gray-matter';
+import transpileExample from './transpileExample';
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
 
@@ -80,6 +83,15 @@ function parseCodeExamples(data, file) {
     return null;
   }
 
+  if (matter.data.hidePlayground) {
+    console.log(
+      chalk`   ℹ️  {grey [${
+        matter.data.name
+      }] Component was ignored (hidePlayground: true)}`,
+    );
+    return null;
+  }
+
   const introAndComponentSections = matter.content
     .split(/(\n---\n)/)
     .map((content) => content.replace('---\n', '').trim())
@@ -108,9 +120,12 @@ function parseCodeExamples(data, file) {
     const nameMatches = example.match(/(.)*/);
     const codeBlock = example.match(/```jsx(.|\n)*?```/g);
 
+    const hasName = nameMatches !== null;
+    const hasCodeBlock = codeBlock !== null;
+
     return {
-      name: nameMatches === null ? '' : nameMatches[0].trim(),
-      code: codeBlock === null ? '' : stripCodeBlock(codeBlock[0]),
+      name: hasName ? nameMatches[0].trim() : '',
+      code: hasCodeBlock ? transpileExample(stripCodeBlock(codeBlock[0])) : '',
     };
   });
 
@@ -122,7 +137,7 @@ function parseCodeExamples(data, file) {
     );
   }
 
-  examples.map((example) => {
+  examples.forEach((example) => {
     if (example.code === '') {
       throw new Error(
         chalk`🚨 {red [${matter.data.name}]} Example “${

@@ -36,6 +36,7 @@ export interface State {
   dragging: boolean;
   overlayText?: string;
   errorOverlayText?: string;
+  numFiles: number;
 }
 
 export interface Props {
@@ -175,6 +176,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       error: false,
       overlayText: translate(`Polaris.DropZone.overlayText${suffix}`),
       errorOverlayText: translate(`Polaris.DropZone.errorOverlayText${suffix}`),
+      numFiles: 0,
     };
   }
 
@@ -300,7 +302,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
   componentDidMount() {
     this.dragTargets = [];
-    // eslint-disable-next-line react/no-did-mount-set-state
+
     this.setState({error: this.props.error});
 
     if (!this.dropNode) {
@@ -422,9 +424,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
   @autobind
   private handleClick(event: React.MouseEvent<HTMLElement>) {
-    const {onClick, disabled} = this.props;
+    const {numFiles} = this.state;
+    const {onClick, disabled, allowMultiple} = this.props;
 
-    if (disabled) {
+    if (disabled || (!allowMultiple && numFiles > 0)) {
       return;
     }
 
@@ -436,9 +439,16 @@ export class DropZone extends React.Component<CombinedProps, State> {
     event.preventDefault();
     event.stopPropagation();
 
-    const {disabled, onDrop, onDropAccepted, onDropRejected} = this.props;
+    const {
+      disabled,
+      onDrop,
+      onDropAccepted,
+      onDropRejected,
+      allowMultiple,
+    } = this.props;
+    const {numFiles} = this.state;
 
-    if (disabled) {
+    if (disabled || (!allowMultiple && numFiles > 0)) {
       return;
     }
 
@@ -450,7 +460,11 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     this.dragTargets = [];
 
-    this.setState({dragging: false, error: rejectedFiles.length > 0});
+    this.setState((prev) => ({
+      dragging: false,
+      error: rejectedFiles.length > 0,
+      numFiles: prev.numFiles + acceptedFiles.length,
+    }));
 
     if (onDrop) {
       onDrop(files as File[], acceptedFiles, rejectedFiles);
@@ -470,10 +484,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
     event.preventDefault();
     event.stopPropagation();
 
-    const {dragging} = this.state;
-    const {disabled, onDragEnter} = this.props;
+    const {dragging, numFiles} = this.state;
+    const {disabled, onDragEnter, allowMultiple} = this.props;
 
-    if (disabled) {
+    if (disabled || (!allowMultiple && numFiles > 0)) {
       return;
     }
 
@@ -501,9 +515,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
     event.preventDefault();
     event.stopPropagation();
 
-    const {disabled, onDragOver} = this.props;
+    const {numFiles} = this.state;
+    const {disabled, onDragOver, allowMultiple} = this.props;
 
-    if (disabled) {
+    if (disabled || (!allowMultiple && numFiles > 0)) {
       return;
     }
 
@@ -518,9 +533,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
   private handleDragLeave(event: DragEvent) {
     event.preventDefault();
 
-    const {disabled, onDragLeave} = this.props;
+    const {numFiles} = this.state;
+    const {disabled, onDragLeave, allowMultiple} = this.props;
 
-    if (disabled) {
+    if (disabled || (!allowMultiple && numFiles > 0)) {
       return;
     }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {Button} from 'components';
 import Navigation from '../Navigation';
 
@@ -18,6 +18,6 @@ describe('<Navigation />', () => {
         isScrolledFarthestRight={false}
       />,
     );
-    expect(navigation.find(Button).length).toEqual(2);
+    expect(navigation.find(Button)).toHaveLength(2);
   });
 });

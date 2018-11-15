@@ -1,16 +1,21 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import compose from '@shopify/react-compose';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {ComplexAction, WithContextTypes} from '../../../../types';
-import {buttonsFrom, TextField, Icon, Tag, FormLayout} from '../../..';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {buttonsFrom} from '../../../Button';
+import Icon from '../../../Icon';
+import FormLayout from '../../../FormLayout';
+import TextField from '../../../TextField';
+import Tag from '../../../Tag';
+import withContext from '../../../WithContext';
 
-import FilterCreator from './FilterCreator';
-import {AppliedFilter, Filter, FilterType, Operator} from './types';
-import * as styles from './FilterControl.scss';
 import {ResourceListContext} from '../../ResourceList';
 import {Consumer} from '../Context';
-import withContext from '../../../WithContext';
+
+import {FilterCreator} from './components';
+import {AppliedFilter, Filter, FilterType, Operator} from './types';
+import * as styles from './FilterControl.scss';
 
 export interface Props {
   searchValue?: string;

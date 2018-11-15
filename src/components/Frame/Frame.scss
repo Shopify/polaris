@@ -1,0 +1,196 @@
+$button-size: rem(32px);
+$transition-duration: 260ms;
+$skip-vertical-offset: rem(10px);
+.Frame {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-color: color('sky', 'light');
+  @include when-printing {
+    background-color: none;
+  }
+}
+
+.Navigation {
+  @include hidden-when-printing;
+  position: fixed;
+  z-index: z-index(nav, $fixed-element-stacking-order);
+  top: 0;
+  left: 0;
+  display: none;
+  flex: 0 0 auto;
+  align-items: stretch;
+  height: 100%;
+  outline: none;
+  transform: translateX(0%);
+
+  @include frame-when-nav-displayed {
+    z-index: 1;
+    top: top-bar-height();
+    display: flex;
+    height: calc(100% - #{top-bar-height()});
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Navigation-enter,
+.Navigation-enterActive,
+.Navigation-exit,
+.Navigation-exitActive {
+  display: flex;
+}
+
+.Navigation-enter {
+  transform: translateX(-100%);
+}
+.Navigation-enterActive {
+  transform: translateX(0%);
+  transition: transform $transition-duration ease;
+}
+.Navigation-exit {
+  transform: translateX(0%);
+}
+.Navigation-exitActive {
+  transform: translateX(-100%);
+  transition: transform $transition-duration ease;
+}
+
+.NavigationDismiss {
+  @include hidden-when-printing;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: $button-size;
+  height: $button-size;
+  margin: spacing();
+  padding: 0;
+  border: none;
+  background: none;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+  transition: opacity duration(fast) easing();
+  cursor: pointer;
+  .Navigation-visible & {
+    pointer-events: all;
+    opacity: 1;
+  }
+  &:focus {
+    border-radius: border-radius();
+    background-color: rgba(color('white'), 0.16);
+    outline: none;
+  }
+  @include frame-when-nav-displayed {
+    display: none;
+  }
+}
+
+.TopBar {
+  @include hidden-when-printing;
+  position: fixed;
+  z-index: z-index(top-bar, $fixed-element-stacking-order);
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.ContextualSaveBar {
+  position: fixed;
+  z-index: z-index(context-bar, $fixed-element-stacking-order);
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.ContextualSaveBar-enter {
+  opacity: 0;
+}
+.ContextualSaveBar-enterActive {
+  opacity: 1;
+  transition: opacity duration() ease;
+}
+.ContextualSaveBar-exit {
+  opacity: 1;
+}
+.ContextualSaveBar-exitActive {
+  opacity: 0;
+  transition: opacity duration() ease;
+}
+
+.Main {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+
+  @include layout-flex-fix;
+  @include safe-area-for(padding-right, 0, right);
+  @include safe-area-for(padding-left, 0, left);
+  @include safe-area-for(padding-bottom, 0, bottom);
+
+  @include frame-when-nav-displayed {
+    .hasNav & {
+      padding-left: layout-width(nav);
+      @include when-printing {
+        padding-left: 0;
+      }
+      @include safe-area-for(padding-left, layout-width(nav), left);
+    }
+  }
+
+  .hasTopBar & {
+    padding-top: top-bar-height();
+    @include when-printing {
+      padding-top: 0;
+    }
+  }
+}
+
+.Content {
+  padding-bottom: var(--global-ribbon-height, 0);
+  flex: 1;
+  @include layout-flex-fix;
+}
+
+.GlobalRibbonContainer {
+  position: fixed;
+  z-index: z-index(global-ribbon, $fixed-element-stacking-order);
+  bottom: 0;
+  width: 100%;
+  @include frame-when-nav-displayed {
+    .hasNav & {
+      left: layout-width(nav);
+      @include safe-area-for(left, layout-width(nav), left);
+      width: calc(100% - #{layout-width(nav)});
+    }
+  }
+}
+
+.LoadingBar {
+  @include hidden-when-printing;
+  position: fixed;
+  z-index: z-index(small-screen-loading-bar, $fixed-element-stacking-order);
+  top: 0;
+  right: 0;
+  left: 0;
+  @include frame-when-nav-displayed {
+    .hasTopBar & {
+      top: top-bar-height();
+      z-index: z-index(loading-bar, $fixed-element-stacking-order);
+    }
+  }
+}
+
+.Skip {
+  position: fixed;
+  z-index: z-index(skip-to-content, $fixed-element-stacking-order);
+  top: $skip-vertical-offset;
+  left: spacing(tight);
+  opacity: 0;
+  pointer-events: none;
+  &.focused {
+    pointer-events: all;
+    opacity: 1;
+  }
+}

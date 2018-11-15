@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import Item from '../../Item';
 import Section from '../Section';
 
@@ -18,7 +18,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find(Item).length).toBe(2);
+    expect(section.find(Item)).toHaveLength(2);
   });
 
   it('renders items as li when hasMultipleSections is false', () => {
@@ -34,7 +34,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find('li').length).toBe(2);
+    expect(section.find('li')).toHaveLength(2);
   });
 
   it('wraps items in an li when hasMultipleSections is true', () => {
@@ -50,7 +50,7 @@ describe('<Section />', () => {
       />,
     );
 
-    expect(section.find('li').length).toBe(3);
+    expect(section.find('li')).toHaveLength(3);
   });
 
   it('passes content to Item', () => {
@@ -77,7 +77,7 @@ describe('<Section />', () => {
   });
 
   it('passes the onActionAnyItem callback to Item', () => {
-    const callback = () => {};
+    const spy = jest.fn();
     const section = mountWithAppProvider(
       <Section
         hasMultipleSections
@@ -87,15 +87,15 @@ describe('<Section />', () => {
             {content: 'Export file', onAction: noop},
           ],
         }}
-        onActionAnyItem={callback}
+        onActionAnyItem={spy}
       />,
     );
 
-    expect(
-      section
-        .find(Item)
-        .first()
-        .prop('onAction'),
-    );
+    section
+      .find('Item button')
+      .first()
+      .simulate('click');
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

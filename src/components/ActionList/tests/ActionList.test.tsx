@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import ActionList from '../ActionList';
-import {Item} from '../components';
+import {Item, Section} from '../components';
 
 describe('<ActionList />', () => {
   let mockOnActionAnyItem: jest.Mock;
@@ -66,5 +66,16 @@ describe('<ActionList />', () => {
       const expectedKey = `${items[index].content}-${index}`;
       expect(item.key()).toBe(expectedKey);
     });
+  });
+
+  it('it passes actionRole to Section', () => {
+    const actionList = mountWithAppProvider(
+      <ActionList
+        items={[{content: 'Add discount'}]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+    expect(actionList.find(Section).prop('actionRole')).toBe('option');
   });
 });

@@ -15,5 +15,6 @@ export {
   default as withAppProvider,
   WithAppProviderProps,
 } from './withAppProvider';
-export {default as EASDK} from './EASDK';
 export {default as Link} from './Link';
+export {default as ScrollLockManager} from './ScrollLockManager';
+export {default as createAppProviderContext} from './createAppProviderContext';

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {KeypressListener} from '../../../../components';
-import memoizedBind from '../../../../utilities/memoized-bind';
-import {TrapFocus} from '../../../Focus';
+import {classNames} from '@shopify/react-utilities/styles';
+
+import {AnimationProps, Key} from '../../../../types';
+
+import KeypressListener from '../../../KeypressListener';
+import TrapFocus from '../../../TrapFocus';
 import {Duration} from '../../../shared';
-import {AnimationProps, Keys} from '../../../../types';
+
 import * as styles from './Dialog.scss';
 
 export interface DialogProps {
@@ -45,7 +47,6 @@ export default function Dialog({
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
   );
-  const handleClose = memoizedBind(onClose);
   const TransitionChild = instant ? Transition : FadeUp;
 
   return (
@@ -66,8 +67,8 @@ export default function Dialog({
             tabIndex={-1}
           >
             <KeypressListener
-              keyCode={Keys.ESCAPE}
-              handler={handleClose}
+              keyCode={Key.Escape}
+              handler={onClose}
               testID="CloseKeypressListener"
             />
             {children}

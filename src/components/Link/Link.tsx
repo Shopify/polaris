@@ -31,7 +31,7 @@ export default function Link({url, children, onClick, external, id}: Props) {
       {children}
     </UnstyledLink>
   ) : (
-    <button onClick={onClick} className={styles.Link} id={id}>
+    <button type="button" onClick={onClick} className={styles.Link} id={id}>
       {children}
     </button>
   );

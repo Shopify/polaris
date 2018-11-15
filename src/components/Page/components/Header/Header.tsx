@@ -1,20 +1,59 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-
-import Button, {buttonsFrom} from '../../../Button';
-import Breadcrumbs from '../../../Breadcrumbs';
-import Pagination from '../../../Pagination';
-import DisplayText from '../../../DisplayText';
-import Popover from '../../../Popover';
+import {
+  DisableableAction,
+  LoadableAction,
+  DestructableAction,
+  IconableAction,
+  AppBridgeAction,
+  AppBridgeActionTarget,
+} from '../../../../types';
 import ActionList from '../../../ActionList';
+import Button, {buttonsFrom} from '../../../Button';
+import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
+import DisplayText from '../../../DisplayText';
+import Pagination, {PaginationDescriptor} from '../../../Pagination';
+import Popover from '../../../Popover';
+import {Action, ActionGroup, ActionGroupDescriptor} from './components';
+import * as styles from './Header.scss';
 
-import Action from '../Action';
-import {HeaderProps, SecondaryAction, ActionGroup} from '../../types';
+export interface SecondaryAction
+  extends IconableAction,
+    DisableableAction,
+    AppBridgeActionTarget {}
 
-import * as styles from '../../Page.scss';
+export interface PrimaryActionProps
+  extends DisableableAction,
+    LoadableAction,
+    AppBridgeAction,
+    DestructableAction {
+  /** Provides extra visual weight and identifies the primary action in a set of buttons */
+  primary?: boolean;
+}
 
-export interface Props extends HeaderProps {}
+export interface Props {
+  /** Page title, in large type */
+  title: string;
+  /** Important and non-interactive status information shown immediately after the title. */
+  titleMetadata?: React.ReactNode;
+  /** Visually hide the title */
+  titleHidden?: boolean;
+  /** App icon, for pages that are part of Shopify apps */
+  icon?: string;
+  /** Collection of breadcrumbs */
+  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  /** Adds a border to the bottom of the page header */
+  separator?: boolean;
+  /** Collection of secondary page-level actions */
+  secondaryActions?: SecondaryAction[];
+  /** Collection of page-level groups of secondary actions */
+  actionGroups?: ActionGroupDescriptor[];
+  /** Primary page-level action */
+  primaryAction?: PrimaryActionProps;
+  /** Page-level pagination */
+  pagination?: PaginationDescriptor;
+}
 
 export interface State {
   openActionGroup?: string;
@@ -138,60 +177,23 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const actionGroupsMarkup =
       actionGroups.length > 0
-        ? actionGroups.map(({title, icon, actions, details}) => {
-            const detailsClassName = classNames(
-              styles.Details,
-              actions &&
-                Array.isArray(actions) &&
-                actions.length > 0 &&
-                styles.withActions,
-            );
-
-            const detailsMarkup = details ? (
-              <div className={detailsClassName}>{details}</div>
-            ) : null;
-
-            const showIndicator = hasNewStatus(actions);
-            const active = title === openActionGroup;
-
-            return (
-              <div className={styles.ActionGroup} key={`ActionGroup-${title}`}>
-                <Popover
-                  key={title}
-                  active={active}
-                  // eslint-disable-next-line react/jsx-no-bind
-                  onClose={this.handleActionGroupClose.bind(this, title)}
-                  activator={
-                    <Action
-                      showIndicator={showIndicator}
-                      hasIndicator={active}
-                      disclosure
-                      icon={icon}
-                      // eslint-disable-next-line react/jsx-no-bind
-                      onAction={this.handleActionGroupOpen.bind(this, title)}
-                    >
-                      {title}
-                    </Action>
-                  }
-                >
-                  <ActionList
-                    items={actions}
-                    // eslint-disable-next-line react/jsx-no-bind
-                    onActionAnyItem={this.handleActionGroupClose.bind(
-                      this,
-                      title,
-                    )}
-                  />
-                  {detailsMarkup}
-                </Popover>
-              </div>
-            );
-          })
+        ? actionGroups.map(({title, icon, actions, details}, index) => (
+            <div
+              className={styles.IndividualAction}
+              key={`ActionGroup-${title}-${index}`}
+            >
+              <ActionGroup
+                title={title}
+                icon={icon}
+                actions={actions}
+                details={details}
+                onOpen={this.handleActionGroupOpen}
+                onClose={this.handleActionGroupClose}
+                active={title === openActionGroup}
+              />
+            </div>
+          ))
         : null;
-
-    const showIndicator =
-      false &&
-      actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
 
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
@@ -199,11 +201,7 @@ export default class Header extends React.PureComponent<Props, State> {
           active={rollupOpen}
           onClose={this.handleRollupToggle}
           activator={
-            <Button
-              outline={false && showIndicator}
-              disclosure
-              onClick={this.handleRollupToggle}
-            >
+            <Button disclosure onClick={this.handleRollupToggle}>
               Actions
             </Button>
           }
@@ -233,6 +231,7 @@ export default class Header extends React.PureComponent<Props, State> {
     this.setState(({rollupOpen}) => ({rollupOpen: !rollupOpen}));
   }
 
+  @autobind
   private handleActionGroupClose(group: string) {
     this.setState(
       ({openActionGroup}) =>
@@ -240,22 +239,16 @@ export default class Header extends React.PureComponent<Props, State> {
     );
   }
 
+  @autobind
   private handleActionGroupOpen(group: string) {
     this.setState({openActionGroup: group});
   }
 }
 
-function hasNewStatus(actions: ActionGroup['actions']) {
-  for (let i = 0; i < actions.length; i++) {
-    const {badge} = actions[i];
-    if (badge && badge.status === 'new') {
-      return true;
-    }
-  }
-  return false;
-}
-
-function convertActionGroupToActionListSection({title, actions}: ActionGroup) {
+function convertActionGroupToActionListSection({
+  title,
+  actions,
+}: ActionGroupDescriptor) {
   return {title, items: actions};
 }
 
@@ -263,8 +256,8 @@ function secondaryActionsFrom(
   actions: SecondaryAction[],
 ): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
-    <Action {...action} key={`Action-${content || index}`}>
-      {content}
-    </Action>
+    <div className={styles.IndividualAction} key={`Action-${content || index}`}>
+      <Action {...action}>{content}</Action>
+    </div>
   ));
 }

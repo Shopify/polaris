@@ -1,9 +1,10 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
-import {IconProps} from './components';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {Props as IconProps} from './components/Icon';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-export type EASDKTarget = 'app' | 'shopify' | 'new' | 'parent';
+export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
 
 export type Error =
   | string
@@ -42,11 +43,16 @@ export interface BaseLinkAction {
   url: string;
 }
 
-export interface EASDKBreadcrumbTarget {
-  target?: EASDKTarget;
+export interface AppBridgeActionTarget {
+  /**
+   * Where to display the target link
+   * @default 'APP'
+   * @embeddedAppOnly
+   */
+  target?: AppBridgeTarget;
 }
 
-export interface LinkAction extends BaseLinkAction, EASDKBreadcrumbTarget {}
+export interface LinkAction extends BaseLinkAction, AppBridgeActionTarget {}
 
 export interface BadgeAction {
   badge?: {
@@ -78,13 +84,11 @@ export interface DestructableAction extends Action {
   destructive?: boolean;
 }
 
-export interface EASDKAction
+export interface AppBridgeAction
   extends Action,
     DisableableAction,
-    DestructableAction {
-  /** Where to display the target link */
-  target?: EASDKTarget;
-}
+    DestructableAction,
+    AppBridgeActionTarget {}
 
 export interface IconableAction extends Action {
   /** Source of the icon */
@@ -100,11 +104,16 @@ export interface ActionListItemDescriptor
   extends IconableAction,
     DisableableAction,
     BadgeAction,
-    DestructableAction {
+    DestructableAction,
+    AppBridgeAction {
   /** Image source */
   image?: string;
   /**  Add an ellipsis suffix to action content */
   ellipsis?: boolean;
+  /** Whether the action is active or not */
+  active?: boolean;
+  /** Defines a role for the action */
+  role?: string;
 }
 
 export interface ActionListSection {
@@ -118,87 +127,85 @@ export interface ComplexAction
   extends Action,
     DisableableAction,
     DestructableAction,
-    EASDKAction,
+    AppBridgeAction,
     IconableAction,
     LoadableAction {}
 
-/* eslint-disable shopify/typescript/prefer-pascal-case-enums */
-// eslint-disable-next-line shopify/typescript/prefer-singular-enums
-export enum Keys {
-  BACKSPACE = 8,
-  TAB = 9,
-  ENTER = 13,
-  SHIFT = 16,
-  CTRL = 17,
-  ALT = 18,
-  PAUSE = 19,
-  CAPS_LOCK = 20,
-  ESCAPE = 27,
-  SPACE = 32,
-  PAGE_UP = 33,
-  PAGE_DOWN = 34,
-  END = 35,
-  HOME = 36,
-  LEFT_ARROW = 37,
-  UP_ARROW = 38,
-  RIGHT_ARROW = 39,
-  DOWN_ARROW = 40,
-  INSERT = 45,
-  DELETE = 46,
-  KEY_0 = 48,
-  KEY_1 = 49,
-  KEY_2 = 50,
-  KEY_3 = 51,
-  KEY_4 = 52,
-  KEY_5 = 53,
-  KEY_6 = 54,
-  KEY_7 = 55,
-  KEY_8 = 56,
-  KEY_9 = 57,
-  KEY_A = 65,
-  KEY_B = 66,
-  KEY_C = 67,
-  KEY_D = 68,
-  KEY_E = 69,
-  KEY_F = 70,
-  KEY_G = 71,
-  KEY_H = 72,
-  KEY_I = 73,
-  KEY_J = 74,
-  KEY_K = 75,
-  KEY_L = 76,
-  KEY_M = 77,
-  KEY_N = 78,
-  KEY_O = 79,
-  KEY_P = 80,
-  KEY_Q = 81,
-  KEY_R = 82,
-  KEY_S = 83,
-  KEY_T = 84,
-  KEY_U = 85,
-  KEY_V = 86,
-  KEY_W = 87,
-  KEY_X = 88,
-  KEY_Y = 89,
-  KEY_Z = 90,
-  LEFT_META = 91,
-  RIGHT_META = 92,
-  SELECT = 93,
-  NUMPAD_0 = 96,
-  NUMPAD_1 = 97,
-  NUMPAD_2 = 98,
-  NUMPAD_3 = 99,
-  NUMPAD_4 = 100,
-  NUMPAD_5 = 101,
-  NUMPAD_6 = 102,
-  NUMPAD_7 = 103,
-  NUMPAD_8 = 104,
-  NUMPAD_9 = 105,
-  MULTIPLY = 106,
-  ADD = 107,
-  SUBTRACT = 109,
-  DECIMAL = 110,
-  DIVIDE = 111,
+export enum Key {
+  Backspace = 8,
+  Tab = 9,
+  Enter = 13,
+  Shift = 16,
+  Ctrl = 17,
+  Alt = 18,
+  Pause = 19,
+  CapsLock = 20,
+  Escape = 27,
+  Space = 32,
+  PageUp = 33,
+  PageDown = 34,
+  End = 35,
+  Home = 36,
+  LeftArrow = 37,
+  UpArrow = 38,
+  RightArrow = 39,
+  DownArrow = 40,
+  Insert = 45,
+  Delete = 46,
+  Key0 = 48,
+  Key1 = 49,
+  Key2 = 50,
+  Key3 = 51,
+  Key4 = 52,
+  Key5 = 53,
+  Key6 = 54,
+  Key7 = 55,
+  Key8 = 56,
+  Key9 = 57,
+  KeyA = 65,
+  KeyB = 66,
+  KeyC = 67,
+  KeyD = 68,
+  KeyE = 69,
+  KeyF = 70,
+  KeyG = 71,
+  KeyH = 72,
+  KeyI = 73,
+  KeyJ = 74,
+  KeyK = 75,
+  KeyL = 76,
+  KeyM = 77,
+  KeyN = 78,
+  KeyO = 79,
+  KeyP = 80,
+  KeyQ = 81,
+  KeyR = 82,
+  KeyS = 83,
+  KeyT = 84,
+  KeyU = 85,
+  KeyV = 86,
+  KeyW = 87,
+  KeyX = 88,
+  KeyY = 89,
+  KeyZ = 90,
+  LeftMeta = 91,
+  RightMeta = 92,
+  Select = 93,
+  Numpad0 = 96,
+  Numpad1 = 97,
+  Numpad2 = 98,
+  Numpad3 = 99,
+  Numpad4 = 100,
+  Numpad5 = 101,
+  Numpad6 = 102,
+  Numpad7 = 103,
+  Numpad8 = 104,
+  Numpad9 = 105,
+  Multiply = 106,
+  Add = 107,
+  Subtract = 109,
+  Decimal = 110,
+  Divide = 111,
   F1 = 112,
   F2 = 113,
   F3 = 114,
@@ -211,21 +218,20 @@ export enum Keys {
   F10 = 121,
   F11 = 122,
   F12 = 123,
-  NUM_LOCK = 144,
-  SCROLL_LOCK = 145,
-  SEMICOLON = 186,
-  EQUALS = 187,
-  COMMA = 188,
-  DASH = 189,
-  PERIOD = 190,
-  FORWARD_SLASH = 191,
-  GRAVE_ACCENT = 192,
-  OPEN_BRACKET = 219,
-  BACK_SLASH = 220,
-  CLOSE_BRACKET = 221,
-  SINGLE_QUOTE = 222,
+  NumLock = 144,
+  ScrollLock = 145,
+  Semicolon = 186,
+  Equals = 187,
+  Comma = 188,
+  Dash = 189,
+  Period = 190,
+  ForwardSlash = 191,
+  GraveAccent = 192,
+  OpenBracket = 219,
+  BackSlash = 220,
+  CloseBracket = 221,
+  SingleQuote = 222,
 }
-/* eslint-enable shopify/typescript/prefer-pascal-case-enums */
 
 export const contentContextTypes: ValidationMap<any> = {
   withinContentContainer: PropTypes.bool,

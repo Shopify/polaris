@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 // See https://github.com/Shopify/js-uploader
 
 const {resolve} = require('path');
 const Uploader = require('@shopify/js-uploader');
 const {S3} = require('aws-sdk');
 const semver = require('semver');
-const awsConfig = require('../secrets.json').aws; // eslint-disable-line import/no-unresolved
+const awsConfig = require('../secrets.json').aws;
 const currentVersion = require('../package.json').version;
 
 // Check if the current version is stable
@@ -37,6 +38,6 @@ const uploader = new Uploader({
 });
 
 uploader.deployStaticFiles().catch((err) => {
-  console.error(err); // eslint-disable-line no-console
+  console.error(err);
   process.exit(1);
 });

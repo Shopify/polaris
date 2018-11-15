@@ -1,14 +1,26 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import merge from 'lodash/merge';
+import {ClientApplication} from '@shopify/app-bridge';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import Intl from '../Intl';
 import Link from '../Link';
-import EASDK from '../EASDK';
 import {StickyManager} from '../withSticky';
+import ScrollLockManager from '../ScrollLockManager';
+import {ThemeContext} from '../../../ThemeProvider';
 import {polarisAppProviderContextTypes} from '../createPolarisContext';
 
 export interface WithAppProviderProps {
-  polaris: {intl: Intl; link: Link; easdk: EASDK; stickyManager: StickyManager};
+  polaris: {
+    intl: Intl;
+    link: Link;
+    stickyManager: StickyManager;
+    scrollLockManager: ScrollLockManager;
+    theme: ThemeContext;
+    appBridge: ClientApplication<{}>;
+    subscribe(callback: () => void): void;
+    unsubscribe(callback: () => void): void;
+  };
 }
 
 export default function withAppProvider<OwnProps>() {
@@ -17,15 +29,44 @@ export default function withAppProvider<OwnProps>() {
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): React.ComponentClass<OwnProps> & C {
-    // eslint-disable-next-line react/prefer-stateless-function
     class WithProvider extends React.Component<OwnProps, never> {
       static contextTypes = WrappedComponent.contextTypes
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;
 
+      componentDidMount() {
+        const {
+          polaris: {subscribe: subscribeToPolaris},
+          polarisTheme: {subscribe: subscribeToTheme},
+        } = this.context;
+
+        if (subscribeToPolaris) {
+          subscribeToPolaris(this.handleContextUpdate);
+        }
+
+        if (subscribeToTheme) {
+          subscribeToTheme(this.handleContextUpdate);
+        }
+      }
+
+      componentWillUnmount() {
+        const {
+          polaris: {unsubscribe: unsubscribeToPolaris},
+          polarisTheme: {unsubscribe: unsubscribeToTheme},
+        } = this.context;
+
+        if (unsubscribeToPolaris) {
+          unsubscribeToPolaris(this.handleContextUpdate);
+        }
+
+        if (unsubscribeToTheme) {
+          unsubscribeToTheme(this.handleContextUpdate);
+        }
+      }
+
       render() {
-        const {polaris, easdk} = this.context;
-        const polarisContext = {...polaris, easdk};
+        const {polaris, polarisTheme} = this.context;
+        const polarisContext = {...polaris, theme: polarisTheme};
 
         if (!polaris) {
           throw new Error(
@@ -36,6 +77,11 @@ export default function withAppProvider<OwnProps>() {
         }
 
         return <WrappedComponent {...this.props} polaris={polarisContext} />;
+      }
+
+      @autobind
+      private handleContextUpdate() {
+        this.forceUpdate();
       }
     }
 

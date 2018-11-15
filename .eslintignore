@@ -1,17 +1,12 @@
-node_modules/
-src/styles/polaris-tokens/
+node_modules
 /build
 /build-intermediate
 /build-esnext
-/coverage
+/docs
 /esnext
-/shrink-ray-build
-/tophat
 /types
 /index.*
-/embedded.js
-/examples/browserify/build
-
-# These files contain weird config that causes our plugins to crash
-/tests/utilities
-/playground/index.tsx
+/styles.css
+/styles.scss
+/styles
+/src/styles/polaris-tokens

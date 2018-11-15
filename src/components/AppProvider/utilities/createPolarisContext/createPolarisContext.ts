@@ -1,18 +1,15 @@
 import {ValidationMap} from 'react';
 import PropTypes from 'prop-types';
-import packageJSON from '../../../../../package.json';
-import Intl from '../Intl';
-import Link from '../Link';
-import {Context, Props as AppProviderProps} from '../../AppProvider';
-import EASDK from '../EASDK';
+import {PolarisContext} from '../../../types';
+import {
+  createThemeContext,
+  ThemeContext as CreateThemeContext,
+} from '../../../ThemeProvider';
+import {Props as AppProviderProps} from '../../AppProvider';
 import {StickyManager} from '../withSticky';
-
-const METADATA = {
-  interface: {
-    name: packageJSON.name,
-    version: packageJSON.version,
-  },
-};
+import createAppProviderContext, {
+  CreateAppProviderContext,
+} from '../createAppProviderContext';
 
 export interface CreatePolarisContext extends AppProviderProps {
   stickyManager?: StickyManager;
@@ -23,36 +20,34 @@ export const polarisAppProviderContextTypes: ValidationMap<any> = {
   easdk: PropTypes.any,
 };
 
-export default function createPolarisContext({
-  i18n,
-  linkComponent,
-  apiKey,
-  shopOrigin,
-  forceRedirect,
-  debug,
-  stickyManager,
-}: CreatePolarisContext = {}): Context {
-  const intl = new Intl(i18n);
-  const link = new Link(linkComponent);
-  const easdk =
-    apiKey && shopOrigin
-      ? new EASDK(
-          {
-            apiKey,
-            shopOrigin,
-            forceRedirect,
-            debug,
-          },
-          METADATA,
-        )
-      : undefined;
+export function createPolarisContext(): PolarisContext;
+export function createPolarisContext(
+  contextOne: CreateAppProviderContext | CreateThemeContext,
+): PolarisContext;
+export function createPolarisContext(
+  contextOne: CreateAppProviderContext | CreateThemeContext,
+  contextTwo: CreateAppProviderContext | CreateThemeContext,
+): PolarisContext;
+export default function createPolarisContext(
+  contextOne?: CreateAppProviderContext | CreateThemeContext,
+  contextTwo?: CreateAppProviderContext | CreateThemeContext,
+) {
+  let appProviderContext: CreateAppProviderContext | undefined;
+  let themeContext: CreateThemeContext | undefined;
+  if (contextOne && 'logo' in contextOne) {
+    themeContext = contextOne as CreateThemeContext;
+    appProviderContext = contextTwo;
+  } else {
+    appProviderContext = contextOne;
+    themeContext = contextTwo as CreateThemeContext | undefined;
+  }
 
-  return {
-    polaris: {
-      intl,
-      link,
-      stickyManager: stickyManager || new StickyManager(),
-    },
-    easdk,
-  };
+  const appProvider = appProviderContext
+    ? createAppProviderContext(appProviderContext)
+    : createAppProviderContext();
+  const theme = themeContext
+    ? createThemeContext(themeContext)
+    : createThemeContext();
+
+  return {...appProvider, ...theme};
 }

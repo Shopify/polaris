@@ -12,6 +12,7 @@ export default function withSticky() {
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): any & C {
+    // eslint-disable-next-line shopify/react-initialize-state
     class WithStickyManager extends React.Component<
       {},
       OwnProps & WithAppProviderProps
@@ -26,19 +27,16 @@ export default function withSticky() {
 
       constructor(props: OwnProps & WithAppProviderProps, context: Context) {
         super(props);
-        const {polaris, easdk} = context;
+        const {polaris} = context;
         this.polarisContext = {
           ...polaris,
           stickyManager: this.stickyManager,
-          easdk,
         };
       }
 
       getChildContext(): Context {
-        const {easdk, ...rest} = this.polarisContext;
         return {
-          polaris: rest,
-          easdk,
+          polaris: this.polarisContext,
         };
       }
 

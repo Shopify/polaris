@@ -1,0 +1,250 @@
+@import 'variables';
+
+// Base Navigation styles
+$nav-max-width: rem(360px);
+.Navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: mobile-nav-width();
+  min-width: layout-width(nav);
+  max-width: $nav-max-width;
+  height: 100%;
+  min-height: 100%;
+  background: color('sky', 'light');
+  -webkit-overflow-scrolling: touch;
+
+  @include safe-area-for(padding-bottom, 0, bottom);
+
+  &:focus {
+    outline: none;
+  }
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    max-width: layout-width(nav);
+    border-right: border();
+    @include safe-area-for(max-width, layout-width(nav), left);
+  }
+}
+
+.UserMenu {
+  flex: 0 0 auto;
+}
+
+.PrimaryNavigation {
+  display: flex;
+  overflow: auto;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 100%;
+}
+
+// Item styles
+$disabled-fade: 0.6;
+
+.Item {
+  @include nav-item-attributes;
+}
+
+.Item-selected {
+  font-weight: 600;
+  color: color('indigo');
+
+  // stylelint-disable selector-max-specificity
+  .Icon,
+  &:focus .Icon {
+    @include recolor-icon(color('indigo'), color('white'));
+  }
+  // stylelint-enable selector-max-specificity
+
+  &:hover {
+    color: color('indigo');
+  }
+}
+
+.Item-disabled {
+  color: color('ink', 'lightest');
+  pointer-events: none;
+  opacity: $disabled-fade;
+}
+
+.Badge {
+  margin-right: spacing(extra-tight);
+  margin-left: spacing(tight);
+}
+
+.Icon {
+  @include nav-item-icon-attributes;
+}
+
+.ListItem {
+  @include nav-listitem-attributes;
+}
+
+.ListItem-hasAction .Item {
+  max-width: calc(
+    100% - #{nav(icon-size) + spacing() * 2 + spacing(extra-tight)}
+  );
+  padding-right: 0;
+}
+
+.Text {
+  @include nav-item-text-attributes;
+}
+
+.SecondaryAction {
+  @include recolor-icon(color('ink', 'lightest'), color('white'));
+  display: flex;
+  align-items: center;
+  height: nav(mobile-height);
+  margin-right: spacing(extra-tight);
+  padding: spacing(extra-tight) spacing();
+  border-radius: border-radius();
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    height: nav(desktop-height);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include recolor-icon(color('indigo'), color('white'));
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: rgba(color('sky'), 0.5);
+  }
+}
+
+// Secondary styles
+$secondary-item-font-size: rem(15px);
+.SecondaryNavigation {
+  flex-basis: 100%;
+  margin-bottom: spacing(tight);
+  margin-left: nav(icon-size) + spacing(loose);
+  overflow-x: hidden;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    margin-left: nav(icon-size) + spacing();
+  }
+  .List {
+    @include unstyled-list;
+  }
+  .Item {
+    font-size: $secondary-item-font-size;
+    font-weight: 400;
+    line-height: nav(item-line-height);
+    color: color('ink', 'lighter');
+    &:hover,
+    &:focus {
+      color: color('indigo');
+    }
+    @include breakpoint-after(nav-min-window-corrected()) {
+      font-size: rem(14px);
+      line-height: rem(28px);
+    }
+  }
+  .Text {
+    margin-top: nav(mobile-spacing);
+    margin-bottom: nav(mobile-spacing);
+    line-height: rem(20px);
+    @include breakpoint-after(nav-min-window-corrected()) {
+      margin-top: spacing(extra-tight);
+      margin-bottom: spacing(extra-tight);
+    }
+  }
+  .Item-selected {
+    font-weight: 500;
+    color: color('indigo');
+    @include breakpoint-after(nav-min-window-corrected()) {
+      font-weight: 600;
+    }
+  }
+  .Item-disabled {
+    font-weight: 400;
+    color: color('ink', 'lightest');
+  }
+}
+
+// Section styles
+.Section {
+  @include unstyled-list;
+  flex: 0 0 auto;
+  padding: spacing() 0;
+  @include safe-area-for(padding-left, 0, left);
+
+  + .Section {
+    padding-top: spacing(extra-tight);
+  }
+}
+
+.Section-fill {
+  flex: 1 0 auto;
+}
+
+.Section-withSeparator {
+  border-top: border();
+}
+
+.SectionHeading {
+  @include text-style-subheading;
+  display: flex;
+  align-items: center;
+  min-height: nav(desktop-nav-height);
+  padding-left: spacing();
+  color: color('ink', 'lighter');
+
+  .Action {
+    @include unstyled-button;
+    @include recolor-icon(color('ink', 'lightest'), color('white'));
+    display: flex;
+    align-items: center;
+    height: nav(mobile-nav-height);
+    margin-right: spacing(extra-tight);
+    padding: spacing(extra-tight) spacing();
+    border-radius: border-radius();
+    transition: background-color duration() easing();
+
+    @include breakpoint-after(nav-min-window-corrected()) {
+      height: nav(desktop-nav-height);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      @include recolor-icon(color('indigo'));
+    }
+
+    &:focus,
+    &:active {
+      background-color: rgba(color('sky'), 0.5);
+    }
+  }
+}
+
+.RollupToggle {
+  @include text-emphasis-normal;
+  @include text-emphasis-subdued;
+
+  &:hover {
+    @include recolor-icon(color('indigo'));
+    color: color('indigo');
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.List {
+  @include unstyled-list;
+}
+
+.Indicator {
+  position: relative;
+  display: inline-block;
+  height: rem(10px);
+  width: rem(10px);
+}

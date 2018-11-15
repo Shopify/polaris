@@ -1,0 +1,112 @@
+$action-horizontal-padding: (1.5 * spacing(tight));
+
+.Header {
+  @include page-header-layout;
+}
+
+.Header-hasPagination,
+.Header-hasBreadcrumbs {
+  @include page-header-has-pagination-and-breadcrumbs;
+}
+
+.Header-hasSecondaryActions {
+  @include page-header-has-secondary-actions;
+}
+
+.Header-hasSeparator {
+  padding-bottom: spacing();
+  border-bottom: border();
+
+  + .Content {
+    margin-top: spacing(loose);
+  }
+}
+
+.Header-hasRollup {
+  .IndividualActions {
+    display: none;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    .Rollup {
+      display: none;
+    }
+
+    .IndividualActions {
+      display: flex;
+    }
+  }
+}
+
+.Title-hidden {
+  @include visually-hidden;
+}
+
+.PrimaryAction {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+
+  .MainContent > & {
+    display: none;
+    margin-left: spacing(loose);
+  }
+
+  @include page-content-when-not-partially-condensed {
+    display: none;
+
+    .MainContent > & {
+      display: flex;
+    }
+  }
+}
+
+.Pagination {
+  margin-left: auto;
+  line-height: 1;
+}
+
+.Actions {
+  @include page-actions-layout;
+}
+
+.Navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: spacing(extra-tight);
+}
+
+.MainContent {
+  display: flex;
+  align-items: center;
+}
+
+.TitleAndActions {
+  flex: 1 1 0%;
+}
+
+.Title {
+  @include page-title-layout;
+}
+
+.SecondaryActions {
+  flex: 1;
+}
+
+.IndividualActions {
+  display: flex;
+  align-items: center;
+
+  > .IndividualAction {
+    display: inline-flex;
+
+    &:first-child {
+      // Compensates for the fact that we push the icon slightly to the left
+      margin-left: -1 * $action-horizontal-padding;
+    }
+
+    &:last-child {
+      margin-right: -1 * $action-horizontal-padding;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import SkeletonBodyText from '../SkeletonBodyText';
 
 describe('<SkeletonBodyText />', () => {
@@ -11,8 +11,8 @@ describe('<SkeletonBodyText />', () => {
       skeletonBodyText
         .find('div')
         .first()
-        .children().length,
-    ).toBe(2);
+        .children(),
+    ).toHaveLength(2);
   });
 
   it('renders 3 lines if none are provided', () => {
@@ -21,7 +21,7 @@ describe('<SkeletonBodyText />', () => {
       skeletonBodyText
         .find('div')
         .first()
-        .children().length,
-    ).toBe(3);
+        .children(),
+    ).toHaveLength(3);
   });
 });

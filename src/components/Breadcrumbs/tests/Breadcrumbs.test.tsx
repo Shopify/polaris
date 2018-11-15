@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from 'tests/utilities';
-import {CallbackAction, LinkAction} from 'types';
+import {mountWithAppProvider} from 'test-utilities';
+import {CallbackAction, LinkAction} from '../../../types';
 import Breadcrumbs from '../Breadcrumbs';
 
 describe('<Breadcrumbs />', () => {
@@ -11,7 +11,7 @@ describe('<Breadcrumbs />', () => {
         {
           content: 'Products',
           url: 'https://www.shopify.com',
-          target: 'new',
+          target: 'REMOTE',
         },
       ];
 

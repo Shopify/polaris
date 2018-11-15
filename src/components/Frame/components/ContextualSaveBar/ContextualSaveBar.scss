@@ -1,0 +1,63 @@
+$off-white: rgb(250, 251, 252);
+$off-white-border: rgb(235, 238, 240);
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+.ContextualSaveBar {
+  display: flex;
+  height: top-bar-height();
+  background-color: color('white');
+  box-shadow: $shadow;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid transparent;
+  }
+}
+
+.LogoContainer {
+  display: none;
+
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: flex;
+    flex: 0 0 layout-width(nav);
+    align-items: center;
+    height: 100%;
+    padding: 0 spacing();
+    border-right: 1px solid $off-white-border;
+    background-color: $off-white;
+  }
+}
+
+.Contents {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 1px;
+  max-width: layout-width(primary, max) + layout-width(secondary, max) +
+    layout-width(inner-spacing);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 spacing();
+
+  @include page-content-when-not-fully-condensed {
+    padding: 0 spacing(loose);
+  }
+
+  @include page-content-when-not-partially-condensed {
+    padding: 0 spacing(extra-loose);
+  }
+}
+
+.Message {
+  @include truncate;
+  @include text-style-heading;
+  @include text-emphasis-subdued;
+  flex-grow: 1;
+}
+
+.Action {
+  margin-left: spacing(tight);
+}

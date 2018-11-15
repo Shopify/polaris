@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {Day, Month, Weekday} from '../components';
 import DatePicker from '../DatePicker';
 
@@ -70,14 +70,14 @@ describe('<DatePicker />', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={month} year={year} multiMonth />,
       );
-      expect(datePicker.find(Month).length).toBe(2);
+      expect(datePicker.find(Month)).toHaveLength(2);
     });
 
     it('shows only one month when false', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={month} year={year} />,
       );
-      expect(datePicker.find(Month).length).toBe(1);
+      expect(datePicker.find(Month)).toHaveLength(1);
     });
   });
 

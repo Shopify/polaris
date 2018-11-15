@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
+import isEqual from 'lodash/isEqual';
 
+import {headerCell} from 'components/shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
-
 import {Cell, CellProps, Navigation} from './components';
+import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import * as styles from './DataTable.scss';
 
@@ -19,13 +21,6 @@ export interface ColumnVisibilityData {
   leftEdge: number;
   rightEdge: number;
   isVisible?: boolean;
-}
-
-interface TableMeasurements {
-  fixedColumnWidth: number;
-  firstVisibleColumnIndex: number;
-  tableLeftVisibleEdge: number;
-  tableRightVisibleEdge: number;
 }
 
 export interface ScrollPosition {
@@ -108,6 +103,13 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } else {
       this.handleResize();
     }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (isEqual(prevProps, this.props)) {
+      return;
+    }
+    this.handleResize();
   }
 
   render() {
@@ -326,7 +328,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } = this;
     if (collapsed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(
-        '[class*=header]',
+        headerCell.selector,
       ) as NodeListOf<HTMLElement>;
       const collapsedHeaderCells = Array.from(headerCells).slice(1);
       const fixedColumnWidth = headerCells[0].offsetWidth;
@@ -530,52 +532,6 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
 
     return handleSort;
   }
-}
-
-function measureColumn(tableData: TableMeasurements) {
-  return function(column: HTMLElement, index: number) {
-    const {
-      firstVisibleColumnIndex,
-      tableLeftVisibleEdge: tableStart,
-      tableRightVisibleEdge: tableEnd,
-      fixedColumnWidth,
-    } = tableData;
-
-    const leftEdge = column.offsetLeft + fixedColumnWidth;
-    const rightEdge = leftEdge + column.offsetWidth;
-    const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd);
-    const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
-    const isVisible = isVisibleLeft || isVisibleRight;
-
-    if (isVisible) {
-      tableData.firstVisibleColumnIndex = Math.min(
-        firstVisibleColumnIndex,
-        index,
-      );
-    }
-
-    return {leftEdge, rightEdge, isVisible};
-  };
-}
-
-function isEdgeVisible(position: number, start: number, end: number) {
-  const minVisiblePixels = 30;
-
-  return (
-    position >= start + minVisiblePixels && position <= end - minVisiblePixels
-  );
-}
-
-function getPrevAndCurrentColumns(
-  tableData: TableMeasurements,
-  columnData: State['columnVisibilityData'],
-) {
-  const {firstVisibleColumnIndex} = tableData;
-  const previousColumnIndex = Math.max(firstVisibleColumnIndex - 1, 0);
-  const previousColumn = columnData[previousColumnIndex];
-  const currentColumn = columnData[firstVisibleColumnIndex];
-
-  return {previousColumn, currentColumn};
 }
 
 export default withAppProvider<Props>()(DataTable);

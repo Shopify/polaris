@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {Link} from 'components/AppProvider';
 import UnstyledLink from '../UnstyledLink';
@@ -15,7 +15,7 @@ describe('<UnstyledLink />', () => {
         mockContext,
       ).find(CustomLinkComponent);
 
-      expect(anchorElement.length).toBe(1);
+      expect(anchorElement).toHaveLength(1);
     });
 
     it('doesn’t have polaris prop', () => {

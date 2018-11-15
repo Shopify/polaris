@@ -1,3 +1,15 @@
-.github/
-/coverage
+node_modules
+/build
+/build-intermediate
+/build-esnext
+/docs
+/esnext
+/types
+/index.*
+/styles.css
+/styles.scss
+/styles
+/src/styles/polaris-tokens
+
 /package.json
+/.github

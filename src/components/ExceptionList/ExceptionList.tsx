@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
-import Icon from '../Icon';
+import Icon, {Props as IconProps} from '../Icon';
 import Truncate from '../Truncate';
-import {IconProps} from '../../components';
 
 import * as styles from './ExceptionList.scss';
 

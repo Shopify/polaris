@@ -1,5 +1,3 @@
-$has-nav: false !default;
-
 $page-max-width: layout-width(primary, max) + layout-width(secondary, max) +
   layout-width(inner-spacing);
 
@@ -37,50 +35,44 @@ $nav-min-window: em(layout-width(page-with-nav));
   @return em($value) + $adjusted-value;
 }
 
-// These end up being too awkward because they are already multiline.
-// stylelint-disable at-rule-name-space-after
-// stylelint-disable media-query-list-comma-space-after
-// stylelint-disable max-line-length
-
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
 
-  @if $has-nav {
-    @if $size < $partially-condensed-content {
-      // prettier-ignore
-      @media
-        (max-width: #{min($nav-min-window, $size)}),
+  @if $size < $partially-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{min($nav-min-window, $size)}),
         (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
-        @content;
-      }
-    } @else if $size < $not-condensed-content {
-      // prettier-ignore
-      @media
-        (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
-        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-        @content;
-      }
-    } @else {
-      // prettier-ignore
-      @media
-        (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
-        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-        @content;
+          @content;
       }
     }
+
+    @media (max-width: #{$size}) {
+      @content;
+    }
+  } @else if $size < $not-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (max-width: #{$size + $partially-condensed-outer-spacing}) {
+      @content;
+    }
   } @else {
-    @if $size < $partially-condensed-content {
-      @media (max-width: #{$size}) {
-        @content;
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
       }
-    } @else if $size < $not-condensed-content {
-      @media (max-width: #{$size + $partially-condensed-outer-spacing}) {
-        @content;
-      }
-    } @else {
-      @media (max-width: #{$size + $not-condensed-outer-spacing}) {
-        @content;
-      }
+    }
+
+    @media (max-width: #{$size + $not-condensed-outer-spacing}) {
+      @content;
     }
   }
 }
@@ -88,49 +80,44 @@ $nav-min-window: em(layout-width(page-with-nav));
 @mixin page-content-breakpoint-after($size) {
   $size: breakpoint($size);
 
-  @if $has-nav {
-    @if $size < $partially-condensed-content {
-      // prettier-ignore
-      @media
-        (max-width: #{$nav-min-window}) and (min-width: #{$size}),
+  @if $size < $partially-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size}),
         (min-width: #{$nav-size + $size}) {
-        @content;
-      }
-    } @else if $size < $not-condensed-content {
-      // prettier-ignore
-      @media
-        (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
-        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
-        @content;
-      }
-    } @else {
-      // prettier-ignore
-      @media
-        (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
-        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
-        @content;
+          @content;
       }
     }
+
+    @media (min-width: #{$size}) {
+      @content;
+    }
+  } @else if $size < $not-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size + $partially-condensed-outer-spacing}) {
+      @content;
+    }
   } @else {
-    @if $size < $partially-condensed-content {
-      @media (min-width: #{$size}) {
-        @content;
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
       }
-    } @else if $size < $not-condensed-content {
-      @media (min-width: #{$size + $partially-condensed-outer-spacing}) {
-        @content;
-      }
-    } @else {
-      @media (min-width: #{$size + $not-condensed-outer-spacing}) {
-        @content;
-      }
+    }
+
+    @media (min-width: #{$size + $not-condensed-outer-spacing}) {
+      @content;
     }
   }
 }
-
-// stylelint-enable max-line-length
-// stylelint-enable media-query-list-comma-space-after
-// stylelint-enable at-rule-name-space-after
 
 @mixin breakpoint-after($breakpoint, $inclusive: true) {
   @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {

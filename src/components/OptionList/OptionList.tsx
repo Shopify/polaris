@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+
+import {arraysAreEqual} from '../../utilities/arrays';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {Props as IconProps} from '../Icon';
+import {Props as AvatarProps} from '../Avatar';
+import {Props as ThumbnailProps} from '../Thumbnail';
 
 import {Option} from './components';
-import {IconProps, ThumbnailProps, AvatarProps} from '..';
-import {arraysAreEqual} from '../../utilities/arrays';
-
 import * as styles from './OptionList.scss';
 
 export interface OptionDescriptor {
@@ -116,7 +118,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
     const optionsMarkup = optionsExist
       ? normalizedOptions.map(({title, options}, sectionIndex) => {
           const titleMarkup = title ? (
-            <p className={styles.Title} role="presentation">
+            <p className={styles.Title} role={role}>
               {title}
             </p>
           ) : null;
@@ -158,7 +160,11 @@ export class OptionList extends React.Component<CombinedProps, State> {
         })
       : null;
 
-    return <ul className={styles.OptionList}>{optionsMarkup}</ul>;
+    return (
+      <ul className={styles.OptionList} role={role}>
+        {optionsMarkup}
+      </ul>
+    );
   }
 
   @autobind

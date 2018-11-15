@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import InlineError from '../InlineError';
 
 describe('<InlineError />', () => {
@@ -24,7 +24,7 @@ describe('<InlineError />', () => {
       );
 
       error.setProps({message: ''});
-      expect(error.find('#ProductTitleError')).toBeNull;
+      expect(error.find('#ProductTitleError')).toHaveLength(0);
     });
   });
 });

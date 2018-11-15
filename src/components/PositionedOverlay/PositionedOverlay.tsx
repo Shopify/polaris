@@ -179,7 +179,13 @@ export default class PositionedOverlay extends React.PureComponent<
           fixed,
         } = this.props;
 
-        const activatorRect = getRectForNode(activator);
+        const textFieldActivator = activator.querySelector('input');
+
+        const activatorRect =
+          textFieldActivator != null
+            ? getRectForNode(textFieldActivator)
+            : getRectForNode(activator);
+
         const currentOverlayRect = getRectForNode(this.overlay);
         const scrollableElement = isDocument(this.scrollableContainer)
           ? document.body

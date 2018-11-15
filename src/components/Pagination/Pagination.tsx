@@ -6,16 +6,16 @@ import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
 import Tooltip from '../Tooltip';
 import KeypressListener from '../KeypressListener';
-import {Keys} from '../../types';
+import {Key} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
 import * as styles from './Pagination.scss';
 
 export interface PaginationDescriptor {
   /** Keyboard shortcuts for the next button */
-  nextKeys?: Keys[];
+  nextKeys?: Key[];
   /** Keyboard shortcuts for the previous button */
-  previousKeys?: Keys[];
+  previousKeys?: Key[];
   /** Tooltip for the next button */
   nextTooltip?: string;
   /** Tooltip for the previous button */

@@ -46,7 +46,7 @@ export default class Form extends React.PureComponent<Props> {
       children,
       encType,
       implicitSubmit = true,
-      method,
+      method = 'post',
       name,
       noValidate,
       target,

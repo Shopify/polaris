@@ -1,0 +1,18 @@
+[
+  {
+    "label": "Online Store",
+    "url": "https://shop1.myshopify.io/admin/dashboard/online"
+  },
+  {
+    "label": "Buy Button",
+    "url": "https://shop1.myshopify.io/admin/apps/buy_button"
+  },
+  {
+    "label": "Facebook",
+    "url": "https://shop1.myshopify.io/admin/apps/facebook"
+  },
+  {
+    "label": "Houzz",
+    "url": "https://shop1.myshopify.io/admin/apps/houzz"
+  }
+]

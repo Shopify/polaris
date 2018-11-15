@@ -25,6 +25,7 @@ keywords:
   - overlay
   - easdk
   - embedded app
+  - shopify app bridge
   - dialog
   - alert
   - android
@@ -34,6 +35,14 @@ keywords:
 # Modal
 
 Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
+
+---
+
+## Best practices
+
+Modals should:
+
+- Only be closed by clicking the `X` or `Cancel` button and not by clicking the backdrop outside the modal, which is a large touch target that could result in accidental presses. Modals require merchants to take an action and should prevent the merchant from accidentally closing the modal without completing the required task.
 
 ---
 

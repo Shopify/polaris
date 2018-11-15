@@ -1,0 +1,73 @@
+@import './styles/variables';
+$icon-size: rem(20px);
+.TopBar {
+  position: relative;
+  display: flex;
+  height: top-bar-height();
+  background-color: var(--top-bar-background);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid transparent;
+  }
+}
+
+.LogoContainer {
+  display: none;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: flex;
+    flex: 0 0 layout-width(nav);
+    align-items: center;
+    height: 100%;
+    padding: 0 spacing(tight) 0 spacing(base);
+    background-color: var(--top-bar-background-darker);
+    @include safe-area-for(flex-basis, layout-width(nav), left);
+    @include safe-area-for(padding-left, spacing(), left);
+  }
+}
+
+.Logo,
+.LogoLink {
+  display: block;
+}
+
+.NavigationIcon {
+  @include unstyled-button;
+  position: relative;
+  align-self: center;
+  margin-left: spacing(tight) + rem(2px);
+  padding: spacing(tight);
+  border-radius: border-radius();
+  &.focused {
+    background-color: rgba(color('white'), 0.16);
+  }
+  &.focused:active {
+    background-color: rgba(color('black'), 0.28);
+  }
+  &:hover {
+    background-color: rgba(color('white'), 0.08);
+  } // This increases hit point size.
+  &::after {
+    content: '';
+    position: absolute;
+    top: spacing(tight) * -1;
+    left: spacing(tight) * -1;
+    width: calc(100% + #{spacing(loose)});
+    height: calc(100% + #{spacing(loose)});
+  }
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
+  }
+}
+
+.Contents {
+  position: relative;
+  z-index: z-index(content, $stacking-order);
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}

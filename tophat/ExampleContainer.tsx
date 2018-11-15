@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import * as React from 'react';
 
 export interface ExampleProps {

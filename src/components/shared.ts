@@ -18,6 +18,16 @@ export const unstyled = {
   selector: '[data-polaris-unstyled]',
 };
 
+export const dataPolarisTopBar = {
+  props: {'data-polaris-top-bar': true},
+  selector: '[data-polaris-top-bar]',
+};
+
+export const headerCell = {
+  props: {'data-polaris-header-cell': true},
+  selector: '[data-polaris-header-cell]',
+};
+
 // these match our values in duration.scss
 export enum Duration {
   Instant = 0,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {shallowWithAppProvider, mountWithAppProvider} from 'tests/utilities';
+import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import RangeSlider, {invertNumber} from '../RangeSlider';
 
 describe('<RangeSlider />', () => {
@@ -197,7 +197,7 @@ describe('<RangeSlider />', () => {
         .prop<string>('aria-describedby')
         .split(' ');
 
-      expect(descriptions.length).toBe(2);
+      expect(descriptions).toHaveLength(2);
       expect(element.find(`#${descriptions[1]}`).text()).toBe('Some help');
       expect(element.find(`#${descriptions[0]}`).text()).toBe('Some error');
     });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'tests/utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {Icon} from 'components';
 import ExceptionList from '../ExceptionList';
 
@@ -20,7 +20,7 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.find('li').length).toBe(2);
+    expect(exceptionList.find('li')).toHaveLength(2);
   });
 
   it('renders its items icon as an <Icon />', () => {
@@ -35,6 +35,6 @@ describe('<ExceptionList />', () => {
         ]}
       />,
     );
-    expect(exceptionList.find(Icon).length).toBe(1);
+    expect(exceptionList.find(Icon)).toHaveLength(1);
   });
 });

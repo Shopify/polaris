@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
+
+const {resolve: resolvePath, basename, dirname} = require('path');
 const SVGO = require('svgo');
 const glob = require('glob');
 const {paramCase} = require('change-case');
-const {resolve: resolvePath, basename, dirname} = require('path');
 const {readFileSync, writeFileSync, removeSync} = require('fs-extra');
 
 const {svgOptions} = require('@shopify/images/optimize');
@@ -10,7 +12,6 @@ const svgo = new SVGO(svgOptions());
 
 glob(resolvePath(__dirname, '../**/*.svg'), (error, files) => {
   if (error) {
-    // eslint-disable-next-line no-console
     console.error(error);
     process.exit(1);
     return;
