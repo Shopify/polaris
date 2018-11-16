@@ -1,4 +1,4 @@
 import Avatar from './Avatar';
 
-export * from './Avatar';
+export {Props} from './Avatar';
 export default Avatar;
