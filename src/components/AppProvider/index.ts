@@ -1,6 +1,6 @@
 export {default} from './AppProvider';
 export {Props, Context} from './AppProvider';
-export {LinkLikeComponent} from '../UnstyledLink';
+export {LinkLikeComponent} from 'components/UnstyledLink';
 export {
   SCROLL_LOCKING_ATTRIBUTE,
   SCROLL_LOCKING_CUSTOM_PROPERTY,
