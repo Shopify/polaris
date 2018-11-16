@@ -2,6 +2,7 @@ import {ValidationMap} from 'react';
 import PropTypes from 'prop-types';
 import {PolarisContext} from '../../../types';
 import {
+  THEME_CONTEXT_TYPES as polarisTheme,
   createThemeContext,
   ThemeContext as CreateThemeContext,
 } from '../../../ThemeProvider';
@@ -17,7 +18,7 @@ export interface CreatePolarisContext extends AppProviderProps {
 
 export const polarisAppProviderContextTypes: ValidationMap<any> = {
   polaris: PropTypes.any,
-  easdk: PropTypes.any,
+  ...polarisTheme,
 };
 
 export function createPolarisContext(): PolarisContext;

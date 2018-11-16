@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {ClientApplication} from '@shopify/app-bridge';
+
 import {LinkLikeComponent} from '../UnstyledLink';
+
 import ThemeProvider, {Theme} from '../ThemeProvider';
 import {
   Intl,
