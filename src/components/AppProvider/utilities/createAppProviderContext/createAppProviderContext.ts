@@ -1,6 +1,6 @@
 import {noop} from '@shopify/javascript-utilities/other';
 import createApp, {getShopOrigin} from '@shopify/app-bridge';
-import {Props as AppProviderProps, Context} from '../../AppProvider';
+import {AppProviderProps, Context} from '../../types';
 import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';

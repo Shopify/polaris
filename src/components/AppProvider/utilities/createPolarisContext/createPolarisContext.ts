@@ -1,12 +1,9 @@
-import {ValidationMap} from 'react';
-import PropTypes from 'prop-types';
 import {PolarisContext} from '../../../types';
 import {
-  THEME_CONTEXT_TYPES as polarisTheme,
   createThemeContext,
   ThemeContext as CreateThemeContext,
 } from '../../../ThemeProvider';
-import {Props as AppProviderProps} from '../../AppProvider';
+import {AppProviderProps} from '../../types';
 import {StickyManager} from '../withSticky';
 import createAppProviderContext, {
   CreateAppProviderContext,
@@ -15,11 +12,6 @@ import createAppProviderContext, {
 export interface CreatePolarisContext extends AppProviderProps {
   stickyManager?: StickyManager;
 }
-
-export const polarisAppProviderContextTypes: ValidationMap<any> = {
-  polaris: PropTypes.any,
-  ...polarisTheme,
-};
 
 export function createPolarisContext(): PolarisContext;
 export function createPolarisContext(

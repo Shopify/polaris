@@ -1,9 +1,8 @@
 import * as React from 'react';
 import merge from 'lodash/merge';
 import hoistStatics from 'hoist-non-react-statics';
-import {polarisAppProviderContextTypes} from '../createPolarisContext';
 import {WithAppProviderProps} from '../withAppProvider';
-import {Context} from '../../AppProvider';
+import {Context, polarisAppProviderContextTypes} from '../../types';
 import StickyManager from './StickyManager';
 
 export default function withSticky() {

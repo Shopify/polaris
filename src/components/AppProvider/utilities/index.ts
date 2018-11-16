@@ -8,7 +8,6 @@ export {
 export {default as withSticky, StickyManager} from './withSticky';
 export {
   default as createPolarisContext,
-  polarisAppProviderContextTypes,
   CreatePolarisContext,
 } from './createPolarisContext';
 export {

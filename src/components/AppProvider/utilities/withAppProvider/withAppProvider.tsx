@@ -8,7 +8,7 @@ import Link from '../Link';
 import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
 import {ThemeContext} from '../../../ThemeProvider';
-import {polarisAppProviderContextTypes} from '../createPolarisContext';
+import {polarisAppProviderContextTypes} from '../../types';
 
 export interface WithAppProviderProps {
   polaris: {

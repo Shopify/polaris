@@ -1,6 +1,4 @@
-export {default} from './AppProvider';
-export {Props, Context} from './AppProvider';
-export {LinkLikeComponent} from 'components/UnstyledLink';
+export {LinkLikeComponent} from '../UnstyledLink';
 export {
   SCROLL_LOCKING_ATTRIBUTE,
   SCROLL_LOCKING_CUSTOM_PROPERTY,
@@ -10,10 +8,15 @@ export {
   createAppProviderContext,
   createPolarisContext,
   withSticky,
-  polarisAppProviderContextTypes,
   WithAppProviderProps,
   TranslationDictionary,
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
   CreateAppProviderContext,
 } from './utilities';
+export {
+  AppProviderProps as Props,
+  Context,
+  polarisAppProviderContextTypes,
+} from './types';
+export {default} from './AppProvider';

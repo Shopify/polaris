@@ -1,11 +1,8 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import {createThemeContext} from '../../ThemeProvider';
-import {
-  StickyManager,
-  createAppProviderContext,
-  polarisAppProviderContextTypes,
-} from '../utilities';
+import {StickyManager, createAppProviderContext} from '../utilities';
+import {polarisAppProviderContextTypes} from '../types';
 import AppProvider from '../AppProvider';
 
 describe('<AppProvider />', () => {
