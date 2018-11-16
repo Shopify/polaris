@@ -12,7 +12,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Enhancements
 
-- Improved `Avatar` so it falls back to `initials` when the image fails to load ([#557](https://github.com/Shopify/polaris-react/pull/557))
 - Added `onScrolledToBottom` prop to `Scrollable` ([#568](https://github.com/Shopify/polaris-react/pull/568))
 
 ### Bug fixes
