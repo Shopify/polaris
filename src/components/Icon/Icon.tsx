@@ -161,9 +161,15 @@ const COLORS_WITH_BACKDROPS = [
   'inkLighter',
 ];
 
-export type IconSource = SVGSource | 'placeholder' | keyof typeof BUNDLED_ICONS;
+export type BundledIcon = keyof typeof BUNDLED_ICONS;
+
+export type IconSource =
+  | React.ReactNode
+  | SVGSource
+  | 'placeholder'
+  | BundledIcon;
 export interface Props {
-  /** The SVG contents to display in the icon */
+  /** The SVG contents to display in the icon. Icons should be in a 20 X 20 pixel viewbox */
   source: IconSource;
   /** Sets the color for the SVG fill */
   color?: Color;
@@ -200,12 +206,15 @@ function Icon({
   );
 
   let contentMarkup: React.ReactNode;
-
   if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
+  } else if (React.isValidElement(source)) {
+    contentMarkup = source;
   } else {
     const iconSource =
-      typeof source === 'string' ? BUNDLED_ICONS[source] : source;
+      typeof source === 'string' && isBundledIcon(source)
+        ? BUNDLED_ICONS[source]
+        : source;
     contentMarkup = iconSource &&
       iconSource.viewBox &&
       iconSource.body && (
@@ -224,6 +233,10 @@ function Icon({
       {contentMarkup}
     </span>
   );
+}
+
+function isBundledIcon(key: string | BundledIcon): key is BundledIcon {
+  return Object.keys(BUNDLED_ICONS).includes(key);
 }
 
 export default withAppProvider<Props>()(Icon);
