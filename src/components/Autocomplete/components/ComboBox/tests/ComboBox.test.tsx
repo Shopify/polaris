@@ -70,7 +70,7 @@ describe('<ComboBox/>', () => {
         <ComboBox {...mockProps} options={options} />,
       );
 
-      comboBox.simulate('click');
+      trigger(comboBox.find('div').first(), 'onClick');
 
       expect(comboBox.find(OptionList).prop('options')).toEqual(options);
     });
@@ -338,29 +338,14 @@ describe('<ComboBox/>', () => {
 
   describe('keypress events', () => {
     describe('down arrow', () => {
-      it('selects nothing if there are no options', () => {
-        const options: OptionDescriptor[] = [];
-        const comboBox = mountWithAppProvider(
-          <ComboBox {...mockProps} options={options} />,
-        );
-
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          await expect(comboBox.state('selectedIndex')).toBe(-1);
-        };
-      });
-
       it('selects the first option when the down arrow is pressed', () => {
         const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          await expect(comboBox.state('selectedIndex')).toBe(0);
-        };
+        trigger(comboBox.find(TextField), 'onKeyPress', {
+          keyCode: Key.DownArrow,
+        });
+
+        expect(comboBox.state('selectedIndex')).toBe(0);
       });
 
       it('selects the first option when the down arrow is pressed from the last option', () => {
@@ -372,26 +357,20 @@ describe('<ComboBox/>', () => {
           <ComboBox {...mockProps} options={options} />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          await expect(comboBox.state('selectedIndex')).toBe(0);
-        };
+        trigger(comboBox.find(TextField), 'onKeyPress', {
+          keyCode: Key.DownArrow,
+        });
+
+        expect(comboBox.state('selectedIndex')).toBe(0);
       });
 
       it('calls onEndReached() when the last option is selected', () => {
         const spy = jest.fn();
         mountWithAppProvider(<ComboBox {...mockProps} onEndReached={spy} />);
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          await expect(spy).toHaveBeenCalledTimes(1);
-        };
+        listenerMap.keyup({keyCode: Key.DownArrow});
+        listenerMap.keyup({keyCode: Key.DownArrow});
+        expect(spy).toHaveBeenCalledTimes(1);
       });
 
       it('adds to selected options when the down arrow and enter keys are pressed', () => {
@@ -405,16 +384,12 @@ describe('<ComboBox/>', () => {
           />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          await listenerMap.keyup({keyCode: Key.DownArrow});
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        listenerMap.keyup({keyCode: Key.DownArrow});
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Enter});
-          await expect(spy).toHaveBeenCalledTimes(1);
-          expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
-        };
+        listenerMap.keyup({keyCode: Key.Enter});
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
       });
     });
 
@@ -425,21 +400,16 @@ describe('<ComboBox/>', () => {
           <ComboBox {...mockProps} options={options} />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.UpArrow});
-          await expect(comboBox.state('selectedIndex')).toBe(-1);
-        };
+        listenerMap.keyup({keyCode: Key.UpArrow});
+        expect(comboBox.state('selectedIndex')).toBe(-1);
       });
 
       it('selects the last option when the up arrow is pressed', () => {
         const comboBox = mountWithAppProvider(<ComboBox {...mockProps} />);
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.UpArrow});
-          await expect(comboBox.state('selectedIndex')).toBe(2);
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        listenerMap.keyup({keyCode: Key.UpArrow});
+        expect(comboBox.state('selectedIndex')).toBe(2);
       });
 
       it('selects the first option when the up arrow is pressed from the second option', () => {
@@ -451,23 +421,19 @@ describe('<ComboBox/>', () => {
           <ComboBox {...mockProps} options={options} />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.DownArrow});
-          listenerMap.keyup({keyCode: Key.UpArrow});
-          await expect(comboBox.state('selectedIndex')).toBe(0);
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        listenerMap.keyup({keyCode: Key.DownArrow});
+        listenerMap.keyup({keyCode: Key.UpArrow});
+        expect(comboBox.state('selectedIndex')).toBe(0);
       });
 
       it('calls onEndReached() when the last option is selected', () => {
         const spy = jest.fn();
         mountWithAppProvider(<ComboBox {...mockProps} onEndReached={spy} />);
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          listenerMap.keyup({keyCode: Key.UpArrow});
-          await expect(spy).toHaveBeenCalledTimes(1);
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        listenerMap.keyup({keyCode: Key.UpArrow});
+        expect(spy).toHaveBeenCalledTimes(1);
       });
 
       it('adds to selected options when the up arrow and enter keys are pressed', () => {
@@ -481,16 +447,12 @@ describe('<ComboBox/>', () => {
           />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          await listenerMap.keyup({keyCode: Key.UpArrow});
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        listenerMap.keyup({keyCode: Key.UpArrow});
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Enter});
-          await expect(spy).toHaveBeenCalledTimes(1);
-          expect(comboBox.prop('selected')[0]).toBe('pepperoni_pizza');
-        };
+        listenerMap.keyup({keyCode: Key.Enter});
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(comboBox.prop('selected')[0]).toBe('pepperoni_pizza');
       });
     });
 
@@ -505,10 +467,8 @@ describe('<ComboBox/>', () => {
           />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          await expect(comboBox.state('popoverActive')).toBe(true);
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        expect(comboBox.state('popoverActive')).toBe(true);
       });
     });
 
@@ -523,16 +483,12 @@ describe('<ComboBox/>', () => {
           />,
         );
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Tab});
-          await listenerMap.keyup({keyCode: Key.DownArrow});
-          expect(comboBox.state('popoverActive')).toBe(true);
-        };
+        listenerMap.keyup({keyCode: Key.Tab});
+        listenerMap.keyup({keyCode: Key.DownArrow});
+        expect(comboBox.state('popoverActive')).toBe(true);
 
-        async () => {
-          listenerMap.keyup({keyCode: Key.Escape});
-          await expect(comboBox.state('popoverActive')).toBe(false);
-        };
+        listenerMap.keyup({keyCode: Key.Escape});
+        expect(comboBox.state('popoverActive')).toBe(false);
       });
     });
   });
