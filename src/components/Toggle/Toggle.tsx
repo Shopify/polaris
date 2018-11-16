@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Labelled from '../Labelled';
 import Icon from '../Icon';
+import {Key} from '../../types';
 
 import * as styles from './Toggle.scss';
 
@@ -27,87 +29,143 @@ export interface Props {
 
 const getUniqueID = createUniqueIDFactory('Toggle');
 
-export default function Toggle({
-  id = getUniqueID(),
-  checked,
-  disabled,
-  onChange,
-  label,
-  labelHidden,
-  prefix,
-  suffix,
-}: Props) {
-  const className = classNames(
-    styles.Toggle,
-    checked && styles.ToggleChecked,
-    disabled && styles.ToggleDisabled,
-  );
+export default class Toggle extends React.Component<Props, never> {
+  private toggleRef: React.RefObject<HTMLDivElement> = React.createRef();
 
-  const inputClassName = classNames(
-    styles.Input,
-    checked && styles.ToggleChecked,
-    disabled && styles.ToggleDisabled,
-  );
+  render() {
+    const {
+      checked,
+      disabled,
+      id = getUniqueID(),
+      label,
+      labelHidden,
+      prefix,
+      suffix,
+    } = this.props;
 
-  function handleChange(event: React.MouseEvent<HTMLElement>) {
+    const toggleWrapperClassName = classNames(
+      styles.Toggle,
+      checked && styles.ToggleChecked,
+      disabled && styles.ToggleDisabled,
+    );
+
+    const inputClassName = classNames(
+      styles.Input,
+      checked && styles.ToggleChecked,
+      disabled && styles.ToggleDisabled,
+    );
+
+    const prefixMarkup = prefix ? (
+      <Prefix onClickHandler={this.disableToggle}>{prefix}</Prefix>
+    ) : null;
+
+    const suffixMarkup = suffix ? (
+      <Suffix onClickHandler={this.enableToggle}>{suffix}</Suffix>
+    ) : null;
+
+    const iconClassName = classNames(
+      styles.Icon,
+      checked && styles.IconEnabled,
+      !checked && styles.IconDisabled,
+    );
+
+    const iconMarkup = checked ? (
+      <IconWrapper className={iconClassName}>
+        <Icon source="checkmark" color="indigo" />
+      </IconWrapper>
+    ) : (
+      <IconWrapper className={iconClassName}>
+        <Icon source="cancelSmall" color="inkLighter" />
+      </IconWrapper>
+    );
+
+    return (
+      <Labelled id={id} label={label} labelHidden={labelHidden}>
+        <div className={toggleWrapperClassName}>
+          {prefixMarkup}
+          <div
+            ref={this.toggleRef}
+            id={id}
+            testID="ToggleInput"
+            tabIndex={0}
+            className={inputClassName}
+            onClick={this.handleChange}
+            aria-checked={checked}
+            aria-disabled={disabled}
+            aria-label={label}
+            role="checkbox"
+            onKeyDown={this.handleKeyDown}
+          >
+            <div className={styles.ToggleTrack} />
+            <div className={styles.ToggleThumb} />
+            {iconMarkup}
+          </div>
+          {suffixMarkup}
+        </div>
+      </Labelled>
+    );
+  }
+
+  @autobind
+  private handleChange() {
+    const {disabled, checked, onChange} = this.props;
     if (disabled) {
       return;
     }
 
-    const buttonNotChecked =
-      event.currentTarget.getAttribute('aria-checked') === 'true';
-
-    onChange(!buttonNotChecked);
+    const newCheckedValue = !checked;
+    onChange(newCheckedValue);
   }
 
-  const prefixMarkup = prefix ? (
-    <div className={styles.Prefix}>{prefix}</div>
-  ) : null;
-  const suffixMarkup = suffix ? (
-    <div className={styles.Suffix}>{suffix}</div>
-  ) : null;
+  @autobind
+  private handleKeyDown(event: React.KeyboardEvent<Element>) {
+    const {disabled} = this.props;
 
-  const iconClassName = classNames(
-    styles.Icon,
-    checked && styles.IconEnabled,
-    !checked && styles.IconDisabled,
-  );
+    if (disabled) {
+      return;
+    }
 
-  const iconMarkup = checked ? (
-    <IconWrapper className={iconClassName}>
-      <Icon source="checkmark" color="indigo" />
-    </IconWrapper>
-  ) : (
-    <IconWrapper className={iconClassName}>
-      <Icon source="cancelSmall" color="inkLighter" />
-    </IconWrapper>
-  );
+    if (event.target === this.toggleRef.current) {
+      if (event.keyCode === Key.Space) {
+        event.preventDefault();
+        this.handleChange();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        this.enableToggle();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        this.disableToggle();
+      }
+    }
+  }
 
+  @autobind
+  private disableToggle() {
+    this.props.onChange(false);
+  }
+
+  @autobind
+  private enableToggle() {
+    this.props.onChange(true);
+  }
+}
+
+function IconWrapper({children, className}: any) {
+  return <span className={className}>{children}</span>;
+}
+
+export function Prefix({children, onClickHandler}: any) {
   return (
-    <Labelled id={id} label={label} labelHidden={labelHidden}>
-      <div className={className}>
-        {prefixMarkup}
-        <div
-          id={id}
-          tabIndex={0}
-          className={inputClassName}
-          onClick={handleChange}
-          aria-checked={checked}
-          aria-disabled={disabled}
-          aria-label={label}
-          role="checkbox"
-          testID="ToggleInput"
-        >
-          <div className={styles.ToggleTrack} />
-          <div className={styles.ToggleThumb} />
-          {iconMarkup}
-        </div>
-        {suffixMarkup}
-      </div>
-    </Labelled>
+    <div className={styles.Prefix} onClick={onClickHandler}>
+      {children}
+    </div>
   );
 }
 
-export function IconWrapper({children, className}: any) {
-  return <span className={className}>{children}</span>;
+export function Suffix({children, onClickHandler}: any) {
+  return (
+    <div className={styles.Suffix} onClick={onClickHandler}>
+      {children}
+    </div>
+  );
 }

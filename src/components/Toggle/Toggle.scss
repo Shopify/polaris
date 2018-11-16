@@ -10,7 +10,7 @@ $toggle-border-radius: rem(30px);
 
 .Toggle {
   display: flex;
-  align-items: center;
+  height: $toggle-track-height;
   border: $toggle-border-size solid transparent;
 
   &.disabled {
@@ -95,9 +95,11 @@ $toggle-border-radius: rem(30px);
 .Prefix {
   flex: 0 0 auto;
   margin-right: spacing(tight);
+  cursor: pointer;
 }
 
 .Suffix {
   flex: 0 0 auto;
   margin-left: spacing(tight);
+  cursor: pointer;
 }

@@ -4,7 +4,7 @@ import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import Labelled from '../../Labelled';
 import TextContainer from '../../TextContainer';
 import Icon from '../../Icon';
-import Toggle from '../Toggle';
+import Toggle, {Prefix, Suffix} from '../Toggle';
 
 describe('<Toggle />', () => {
   const mockProps = {
@@ -59,12 +59,15 @@ describe('<Toggle />', () => {
       expect(input.prop('aria-disabled')).toBeFalsy();
     });
 
-    it('does not allow checked to become true when toggle is clicked', () => {
-      const toggle = mountWithAppProvider(<Toggle {...mockProps} disabled />);
+    it('does not allow interaction when toggle is clicked', () => {
+      const onChangeSpy = jest.fn();
+      const toggle = mountWithAppProvider(
+        <Toggle {...mockProps} onChange={onChangeSpy} disabled />,
+      );
       const input = findByTestID(toggle, 'ToggleInput');
 
       input.simulate('click');
-      expect(input.prop('checked')).toBeFalsy();
+      expect(onChangeSpy).not.toHaveBeenCalled();
     });
   });
 
@@ -119,18 +122,58 @@ describe('<Toggle />', () => {
         <Toggle {...mockProps} prefix={prefix} />,
       );
 
-      expect(toggle.contains(prefix)).toBeTruthy();
+      expect(toggle.find(Prefix)).toHaveLength(1);
+    });
+
+    it('calls onChange with false when clicked', () => {
+      const onChangeSpy = jest.fn();
+      const prefix = <TextContainer>Off</TextContainer>;
+      const toggle = mountWithAppProvider(
+        <Toggle
+          {...mockProps}
+          prefix={prefix}
+          checked
+          onChange={onChangeSpy}
+        />,
+      );
+
+      const prefixElement = toggle.find(Prefix);
+
+      prefixElement.simulate('click');
+      expect(onChangeSpy).toHaveBeenCalledWith(false);
     });
   });
 
   describe('suffix', () => {
     it('sets the suffix content', () => {
+      const onChangeSpy = jest.fn();
       const suffix = <TextContainer>On</TextContainer>;
       const toggle = mountWithAppProvider(
-        <Toggle {...mockProps} suffix={suffix} />,
+        <Toggle {...mockProps} suffix={suffix} onChange={onChangeSpy} />,
       );
 
-      expect(toggle.contains(suffix)).toBeTruthy();
+      const suffixElement = toggle.find(Suffix);
+
+      suffixElement.simulate('click');
+      expect(onChangeSpy).toHaveBeenCalledWith(true);
+    });
+
+    it('calls onChange with true when clicked', () => {
+      const onChangeSpy = jest.fn();
+      const prefix = <TextContainer>Off</TextContainer>;
+      const toggle = mountWithAppProvider(
+        <Toggle
+          {...mockProps}
+          prefix={prefix}
+          checked
+          onChange={onChangeSpy}
+        />,
+      );
+
+      const prefixElement = toggle.find(Prefix);
+
+      prefixElement.simulate('click');
+      expect(onChangeSpy).toHaveBeenCalledWith(false);
     });
   });
 
