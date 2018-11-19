@@ -258,7 +258,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
     return (
       <div
-        className={styles.ComboBox}
         onClick={this.handleClick}
         role="combobox"
         aria-expanded={active}
