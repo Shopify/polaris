@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {Popover} from 'components';
 import Autocomplete from '..';
 import {mountWithAppProvider} from 'test-utilities';
 import Spinner from '../../Spinner';
@@ -89,6 +90,25 @@ describe('<Autocomplete/>', () => {
       expect(autocomplete.find(ComboBox).prop('emptyState')).toEqual(
         <EmptyState />,
       );
+    });
+  });
+
+  describe('disabled', () => {
+    it('does not set Popover to active if textfield is disabled', () => {
+      const autocomplete = mountWithAppProvider(
+        <Autocomplete
+          options={options}
+          selected={[]}
+          textField={
+            <Autocomplete.TextField label="" onChange={noop} disabled />
+          }
+          onSelect={noop}
+        />,
+      );
+
+      autocomplete.simulate('click');
+      const comboBox = autocomplete.find(ComboBox);
+      expect(comboBox.find(Popover).prop('active')).toBe(false);
     });
   });
 
