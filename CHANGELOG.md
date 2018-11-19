@@ -8,6 +8,12 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.1.1 - 2018-11-19
+
+### Bug fixes
+
+- Fixed selector import in `DataTable` and `Cell` ([#638](https://github.com/Shopify/polaris-react/pull/638))
+
 ## 3.1.0 - 2018-11-16
 
 ### Enhancements
