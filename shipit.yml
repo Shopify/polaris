@@ -16,3 +16,5 @@ merge:
 
 deploy:
   max_commits: false
+  override:
+    - npm publish

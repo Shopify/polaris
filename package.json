@@ -11,7 +11,8 @@
     "url": "https://github.com/Shopify/polaris-react/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "web"
   },
   "sideEffects": [
     "**/*.css",
