@@ -27,8 +27,8 @@ $icon-size: rem(20px);
     @include safe-area-for(padding-left, spacing(), left);
   }
 
-  @media all and (max-width: 1110px) {
-    flex: 0 0 layout-width(nav) - rem(20px);
+  @media all and (max-width: 1200px) {
+    flex: 0 0 layout-width(nav);
   }
 }
 

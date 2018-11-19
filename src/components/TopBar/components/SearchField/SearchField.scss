@@ -13,28 +13,20 @@ $stacking-order: (
 .Wrapper {
   position: absolute;
   right: 0;
-  left: 0;
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 spacing();
+  left: layout-width(nav);
 
-  @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose);
-  }
-
-  @include page-content-when-not-partially-condensed {
-    padding: 0 spacing(extra-loose);
-  }
-
-  @media all and (max-width: 1110px) {
+  @media all and (max-width: 1200px) {
     position: relative;
-    padding: 0 spacing(tight);
+    left: 0;
+    width: 100%;
   }
+}
+
+.InnerWrapper {
+  @include page-layout;
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
-    padding: 0;
-    max-width: 600px;
+    padding: 0 !important;
   }
 }
 
@@ -45,6 +37,7 @@ $stacking-order: (
   align-items: center;
   border: 1px solid transparent;
   width: 100%;
+  max-width: rem(700px);
 }
 
 // We have both a focused class and a focus pseudo selector here
