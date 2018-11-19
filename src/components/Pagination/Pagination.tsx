@@ -24,15 +24,9 @@ export interface PaginationDescriptor {
   nextURL?: string;
   /** The URL of the previous page */
   previousURL?: string;
-  /**
-   * Whether there is a next page to show
-   * @default true
-   */
+  /** Whether there is a next page to show */
   hasNext?: boolean;
-  /**
-   * Whether there is a previous page to show
-   * @default true
-   */
+  /** Whether there is a previous page to show */
   hasPrevious?: boolean;
   /** Accessible label for the pagination */
   accessibilityLabel?: string;
@@ -50,8 +44,8 @@ export interface Props extends PaginationDescriptor {
 export type CombinedProps = Props & WithAppProviderProps;
 
 function Pagination({
-  hasNext = true,
-  hasPrevious = true,
+  hasNext,
+  hasPrevious,
   nextURL,
   previousURL,
   onNext,
