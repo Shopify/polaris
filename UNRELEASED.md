@@ -9,6 +9,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - `TextField` no longer uses `componentWillReceiveProps`([#628](https://github.com/Shopify/polaris-react/pull/628))
 - EventListener`no longer uses`componentWillUpdate` ([#628](https://github.com/Shopify/polaris-react/pull/628))
 - Allowed `Icon` to accept a React Node as a source ([#635](https://github.com/Shopify/polaris-react/pull/635)) (thanks to [@mbriggs](https://github.com/mbriggs) for the [original issue](https://github.com/Shopify/polaris-react/issues/449))
+- Added `alignContentFlush` prop to ContextualSaveBar ([#654](https://github.com/Shopify/polaris-react/pull/654))
 
 ### Bug fixes
 
