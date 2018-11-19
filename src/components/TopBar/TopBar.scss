@@ -16,6 +16,7 @@ $icon-size: rem(20px);
 
 .LogoContainer {
   display: none;
+
   @include breakpoint-after(nav-min-window-corrected()) {
     display: flex;
     flex: 0 0 layout-width(nav) + rem(60px);
@@ -24,6 +25,10 @@ $icon-size: rem(20px);
     padding: 0 spacing(tight) 0 spacing(base);
     @include safe-area-for(flex-basis, layout-width(nav) + rem(60px), left);
     @include safe-area-for(padding-left, spacing(), left);
+  }
+
+  @media all and (max-width: 1110px) {
+    flex: 0 0 layout-width(nav) - rem(20px);
   }
 }
 
@@ -63,6 +68,9 @@ $icon-size: rem(20px);
   }
   @include breakpoint-after(nav-min-window-corrected()) {
     display: none;
+  }
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    margin-right: spacing(tight);
   }
 }
 

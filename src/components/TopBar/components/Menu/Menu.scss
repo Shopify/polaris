@@ -23,13 +23,8 @@ $activator-variables: (
   margin: 0;
   padding: spacing(tight) spacing();
   border: 0;
-  border-left: menu(border-left);
   cursor: pointer;
   transition: menu(transition);
-
-  @include breakpoint-before(layout-width(page-with-nav), false) {
-    display: none;
-  }
 
   &:focus {
     background-color: menu(focus-background-color);
@@ -45,6 +40,13 @@ $activator-variables: (
     background-color: menu(active-background-color);
     outline: none;
     transition: none;
+  }
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    &:focus,
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 

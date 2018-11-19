@@ -15,7 +15,7 @@ $stacking-order: (
   right: 0;
   left: 0;
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 spacing();
 
@@ -25,6 +25,16 @@ $stacking-order: (
 
   @include page-content-when-not-partially-condensed {
     padding: 0 spacing(extra-loose);
+  }
+
+  @media all and (max-width: 1110px) {
+    position: relative;
+    padding: 0 spacing(tight);
+  }
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    padding: 0;
+    max-width: 600px;
   }
 }
 
