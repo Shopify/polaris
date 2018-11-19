@@ -24,9 +24,15 @@ export interface PaginationDescriptor {
   nextURL?: string;
   /** The URL of the previous page */
   previousURL?: string;
-  /** Whether there is a next page to show */
+  /**
+   * Whether there is a next page to show
+   * @default true
+   */
   hasNext?: boolean;
-  /** Whether there is a previous page to show */
+  /**
+   * Whether there is a previous page to show
+   * @default true
+   */
   hasPrevious?: boolean;
   /** Accessible label for the pagination */
   accessibilityLabel?: string;
@@ -44,8 +50,8 @@ export interface Props extends PaginationDescriptor {
 export type CombinedProps = Props & WithAppProviderProps;
 
 function Pagination({
-  hasNext,
-  hasPrevious,
+  hasNext = true,
+  hasPrevious = true,
   nextURL,
   previousURL,
   onNext,
@@ -130,6 +136,7 @@ function Pagination({
   const previousButtonEvents =
     previousKeys &&
     (previousURL || onPrevious) &&
+    hasPrevious &&
     previousKeys.map((key) => (
       <KeypressListener
         key={key}
@@ -145,6 +152,7 @@ function Pagination({
   const nextButtonEvents =
     nextKeys &&
     (nextURL || onNext) &&
+    hasNext &&
     nextKeys.map((key) => (
       <KeypressListener
         key={key}

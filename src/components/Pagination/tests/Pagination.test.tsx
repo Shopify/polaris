@@ -139,6 +139,24 @@ describe('<Pagination />', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    it('does not navigate the browser when hasNext or hasPrevious is false', () => {
+      const spy = jest.fn();
+      pagination = mountWithAppProvider(
+        <Pagination
+          hasPrevious={false}
+          previousKeys={[Key.KeyJ]}
+          previousTooltip="j"
+          previousURL="https://www.google.com"
+        />,
+      );
+
+      const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
+      anchor.click = spy;
+      listenerMap.keyup({keyCode: Key.KeyJ});
+
+      expect(spy).toHaveBeenCalledTimes(0);
+    });
   });
 });
 
