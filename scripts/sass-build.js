@@ -46,7 +46,7 @@ export default function generateSassBuild(destinationDir) {
     const regex = /:global\s*\(([^)]+)\)|:global\s*{\s*([^}]+)\s*}\s*/;
 
     glob.sync(join(srcDir, '/**/*.scss')).forEach((srcFile) => {
-      const sassFile = srcFile.replace(srcDir, '');
+      const sassFile = srcFile.replace(srcDir.replace(/\\/g, '/'), '');
       let file = readFileSync(srcFile, 'utf8');
       file = file.replace(new RegExp(regex, 'g'), '$1$2');
       outputFileSync(join(destDir, sassFile), file);
