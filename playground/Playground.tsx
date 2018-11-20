@@ -12,11 +12,59 @@ import ShopSwitcher from '../src/components/ShopSwitcher';
 
 interface State {}
 
+const shopSwitcherProps = {
+  searchPlaceholder: 'Search stores',
+  activeIndex: 1,
+  shops: [
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+  ],
+};
+
 export default class Playground extends React.Component<never, State> {
   render() {
     const searchField = (
       <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
     );
+
     const userMenu = (
       <TopBar.UserMenu
         actions={[
@@ -36,6 +84,7 @@ export default class Playground extends React.Component<never, State> {
         onToggle={noop}
       />
     );
+
     const supportMenu = (
       <TopBar.Menu
         actions={[
@@ -49,56 +98,11 @@ export default class Playground extends React.Component<never, State> {
         onClose={noop}
       />
     );
-    const shopSwitcherProps = {
-      searchPlaceholder: 'Search stores',
-      shops: [
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-          active: true,
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-          active: true,
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-        {
-          url: 'https://little-victories.myshopify.io',
-          name: 'Little Victories CA',
-        },
-      ],
-    };
+
     const shopSwitcher = shopSwitcherProps.shops.length > 1 && (
       <TopBar.ShopSwitcher {...shopSwitcherProps} />
     );
+
     const topBar = (
       <TopBar
         showNavigationToggle
@@ -108,6 +112,7 @@ export default class Playground extends React.Component<never, State> {
         shopSwitcher={shopSwitcher}
       />
     );
+
     const navigation = (
       <Navigation location="/" userMenu={<div />}>
         <Navigation.Section
@@ -122,12 +127,12 @@ export default class Playground extends React.Component<never, State> {
         />
       </Navigation>
     );
+
     return (
       <AppProvider
         theme={{
           logo: {
             topBarSource: './shopify-logo.png',
-            width: 24,
           },
         }}
       >

@@ -26,17 +26,19 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
     const {
       shops,
       searchPlaceholder,
+      activeIndex,
       polaris: {
         theme: {logo},
       },
     } = this.props;
 
+    const {name} = this.activeShop;
     const logoMarkup = logo && (
       <Image
         source={logo.topBarSource || ''}
         alt={logo.accessibilityLabel || ''}
         className={styles.Logo}
-        style={{width: getWidth(logo, 104)}}
+        style={{width: getWidth(logo, 28)}}
       />
     );
 
@@ -48,15 +50,19 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
       >
         {logoMarkup}
         <div className={styles.ShopName}>
-          <TextStyle variation="strong">Little Victories CA</TextStyle>
+          <TextStyle variation="strong">{name}</TextStyle>
         </div>
-        <Icon source="chevronDown" color="white" />
+        <Icon source={open ? 'chevronUp' : 'chevronDown'} color="white" />
       </button>
     );
 
     return (
       <Popover active={open} activator={activator} onClose={this.togglePopover}>
-        <Switcher shops={shops} searchPlaceholder={searchPlaceholder} />
+        <Switcher
+          shops={shops}
+          searchPlaceholder={searchPlaceholder}
+          activeIndex={activeIndex}
+        />
       </Popover>
     );
   }
@@ -65,6 +71,11 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
   private togglePopover() {
     const {open} = this.state;
     this.setState({open: !open});
+  }
+
+  private get activeShop() {
+    const {shops, activeIndex} = this.props;
+    return shops[activeIndex];
   }
 }
 

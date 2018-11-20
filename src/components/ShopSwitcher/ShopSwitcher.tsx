@@ -8,12 +8,12 @@ import * as styles from './ShopSwitcher.scss';
 interface Shop {
   url: string;
   name: string;
-  active: boolean;
 }
 
 export interface Props {
   shops: Shop[];
   searchPlaceholder: string;
+  activeIndex: number;
 }
 
 interface State {
@@ -26,7 +26,7 @@ const MIN_SHOPS_FOR_SEARCH = 5;
 class ShopSwitcher extends React.Component<Props, State> {
   state = {
     query: '',
-    items: transformShopsToItems(this.props.shops),
+    items: transformShopsToItems(this.props.shops, this.props.activeIndex),
   };
 
   render() {
@@ -56,24 +56,24 @@ class ShopSwitcher extends React.Component<Props, State> {
 
   @autobind
   private handleQueryChange(query: string) {
-    const {shops} = this.props;
-    this.setState({query, items: filterShops(query, shops)});
+    const {shops, activeIndex} = this.props;
+    this.setState({query, items: filterShops(query, shops, activeIndex)});
   }
 }
 
-function filterShops(query: string, shops: Shop[]) {
+function filterShops(query: string, shops: Shop[], activeIndex: number) {
   const lowerQuery = query.toLowerCase();
   const newShops = shops.filter(({name}) =>
     name.toLowerCase().startsWith(lowerQuery),
   );
-  return transformShopsToItems(newShops);
+  return transformShopsToItems(newShops, activeIndex);
 }
 
-function transformShopsToItems(shops: Shop[]) {
-  return shops.map(({name, url, active}) => ({
+function transformShopsToItems(shops: Shop[], activeIndex: number) {
+  return shops.map(({name, url}, index) => ({
     content: name,
     url,
-    active,
+    active: index === activeIndex,
   }));
 }
 
