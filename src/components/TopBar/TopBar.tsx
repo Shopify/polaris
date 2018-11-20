@@ -7,11 +7,16 @@ import {menu} from '../../icons';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import Image from '../Image';
-import Stack from '../Stack';
-import TextStyle from '../TextStyle';
 import UnstyledLink from '../UnstyledLink';
 
-import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
+import {
+  SearchField,
+  UserMenu,
+  Search,
+  SearchProps,
+  Menu,
+  ShopSwitcher,
+} from './components';
 import * as styles from './TopBar.scss';
 
 export interface Props {
@@ -25,6 +30,8 @@ export interface Props {
   searchField?: React.ReactNode;
   /** Accepts a search results component that is ideally composed of a card component containing a list of actionable search results */
   searchResults?: React.ReactNode;
+  /** Accepts a shop switcher component that is ideally composed of an activator and a popover with a list of actionable shop names */
+  shopSwitcher?: React.ReactNode;
   /** A boolean property indicating whether search results are currently visible. */
   searchResultsVisible?: boolean;
   /** A callback function that handles the dismissal of search results */
@@ -43,6 +50,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
   static UserMenu = UserMenu;
   static SearchField = SearchField;
   static Menu = Menu;
+  static ShopSwitcher = ShopSwitcher;
 
   state: State = {
     focused: false,
@@ -55,6 +63,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       searchResults,
       searchField,
       secondaryMenu,
+      shopSwitcher,
       searchResultsVisible,
       onNavigationToggle,
       onSearchResultsDismiss,
@@ -85,20 +94,21 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
     const width = getWidth(logo, 104);
 
-    const logoMarkup = logo ? (
-      <UnstyledLink
-        url={logo.url || ''}
-        className={styles.LogoLink}
-        style={{width}}
-      >
-        <Image
-          source={logo.topBarSource || ''}
-          alt={logo.accessibilityLabel || ''}
-          className={styles.Logo}
+    const logoMarkup =
+      !shopSwitcher && logo ? (
+        <UnstyledLink
+          url={logo.url || ''}
+          className={styles.LogoLink}
           style={{width}}
-        />
-      </UnstyledLink>
-    ) : null;
+        >
+          <Image
+            source={logo.topBarSource || ''}
+            alt={logo.accessibilityLabel || ''}
+            className={styles.Logo}
+            style={{width}}
+          />
+        </UnstyledLink>
+      ) : null;
 
     const searchResultsMarkup =
       searchResults && searchResultsVisible ? (
@@ -117,19 +127,10 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       </React.Fragment>
     ) : null;
 
-    const shopSwitcher = (
-      <div className={styles.ShopSwitcher}>
-        <Stack spacing="tight">
-          <TextStyle variation="strong">Little Victories CA</TextStyle>
-          <Icon source="chevronDown" color="white" />
-        </Stack>
-      </div>
-    );
-
     return (
       <div className={styles.TopBar}>
         {navigationButtonMarkup}
-        <div className={styles.LogoContainer}>
+        <div className={styles.ShopDetailsContainer}>
           {logoMarkup}
           {shopSwitcher}
         </div>

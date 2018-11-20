@@ -14,7 +14,7 @@ $icon-size: rem(20px);
   }
 }
 
-.LogoContainer {
+.ShopDetailsContainer {
   display: none;
 
   @include breakpoint-after(nav-min-window-corrected()) {
@@ -35,11 +35,6 @@ $icon-size: rem(20px);
 .Logo,
 .LogoLink {
   display: block;
-}
-
-.ShopSwitcher {
-  padding-left: 1.3rem;
-  color: var(--top-bar-color);
 }
 
 .NavigationIcon {
