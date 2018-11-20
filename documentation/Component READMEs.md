@@ -132,16 +132,27 @@ Example description.
 
 ## Troubleshooting
 
-When running `yarn tophat` or CI tests, when you see:
+When running `yarn tophat` or CI tests you may run into errors.
+Here are some common fixes.
+
+### No examples found
 
 ```console
 🚨 [Top bar] No examples found in src/components/TopBar/README.md
 ```
 
-A `---` may be missing before the `## Examples` heading:
+A `---` may be missing before the `## Examples` heading. Add it so that our parsers know where the Examples section begins.
 
 ```diff
 + ---
 +
   ## Examples
 ```
+
+### Syntax errors
+
+```console
+🚨 Example "Autocomplete with loading" contains a syntax error in src/components/Autocomplete/README.md: Unexpected token (18:20)
+```
+
+This error is reported when an example does not contain valid JavaScript. The values at the end denote the line and character offset of the error. In this example `18:20` denotes that the error is on line 18, character 20 of the "Autocomplete with loading" example. Look for typos or other invalid syntax in that area.

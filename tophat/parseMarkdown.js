@@ -120,13 +120,24 @@ function parseCodeExamples(data, file) {
     const nameMatches = example.match(/(.)*/);
     const codeBlock = example.match(/```jsx(.|\n)*?```/g);
 
-    const hasName = nameMatches !== null;
-    const hasCodeBlock = codeBlock !== null;
+    const name = nameMatches !== null ? nameMatches[0].trim() : '';
 
-    return {
-      name: hasName ? nameMatches[0].trim() : '',
-      code: hasCodeBlock ? transpileExample(stripCodeBlock(codeBlock[0])) : '',
-    };
+    let code = '';
+    if (codeBlock !== null) {
+      try {
+        code = transpileExample(stripCodeBlock(codeBlock[0]));
+      } catch (err) {
+        throw new Error(
+          chalk`🚨 {red [${
+            matter.data.name
+          }]} Example "${name}" contains a syntax error in ${filePath}: ${
+            err.message
+          }`,
+        );
+      }
+    }
+
+    return {name, code};
   });
 
   if (examples.filter((example) => example.code).length === 0) {
