@@ -6,8 +6,8 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import tokens from '@shopify/polaris-tokens';
-import {stackedContent} from '../../utilities/breakpoints';
-import {dataPolarisTopBar, scrollable} from '../shared';
+import {stackedContent} from '../../../../utilities/breakpoints';
+import {dataPolarisTopBar, scrollable} from '../../../shared';
 
 export interface StickyItem {
   /** Node of the sticky element */
@@ -236,7 +236,8 @@ function isDocument(node: HTMLElement | Document): node is Document {
 
 function scrollTopFor(container: HTMLElement | Document) {
   return isDocument(container)
-    ? document.body.scrollTop || document.documentElement.scrollTop
+    ? document.body.scrollTop ||
+        (document.documentElement as HTMLElement).scrollTop
     : container.scrollTop;
 }
 
