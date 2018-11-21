@@ -23,7 +23,8 @@ const shopSwitcherProps = {
     },
     {
       url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
+      name:
+        'Little Victories CA Little Victories CA Little Victories CA Little Victories CA Little Victories CA Little Victories CA',
     },
     {
       url: 'https://little-victories.myshopify.io',

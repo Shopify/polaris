@@ -72,7 +72,7 @@ function filterShops(query: string, shops: Shop[], activeIndex: number) {
 
 function transformShopsToItems(shops: Shop[], activeIndex: number) {
   return shops.map(({name, url}, index) => ({
-    content: name,
+    content: <span className={styles.ShopName}>{name}</span> as any,
     url,
     active: index === activeIndex,
   }));

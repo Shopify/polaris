@@ -2,3 +2,18 @@
   padding: rem(10px) spacing();
   border-bottom: border();
 }
+
+.ShopName {
+  // stylelint-disable-next-line value-no-vendor-prefix
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @supports not (-webkit-line-clamp: 2) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+  }
+}

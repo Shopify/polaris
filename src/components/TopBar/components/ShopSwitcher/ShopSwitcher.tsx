@@ -18,7 +18,7 @@ interface State {
 
 class ShopSwitcher extends React.Component<ComposedProps, State> {
   state = {
-    open: false,
+    open: true,
   };
 
   render() {
