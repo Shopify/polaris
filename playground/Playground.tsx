@@ -8,13 +8,10 @@ import {
   Frame,
   Icon,
 } from '@shopify/polaris';
-import ShopSwitcher from '../src/components/ShopSwitcher';
-
-interface State {}
 
 const shopSwitcherProps = {
   searchPlaceholder: 'Search stores',
-  activeIndex: 1,
+  activeIndex: 0,
   shops: [
     {
       url: 'https://little-victories.myshopify.io',
@@ -59,7 +56,7 @@ const shopSwitcherProps = {
   ],
 };
 
-export default class Playground extends React.Component<never, State> {
+export default class Playground extends React.Component<never, never> {
   render() {
     const searchField = (
       <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
@@ -108,13 +105,35 @@ export default class Playground extends React.Component<never, State> {
         showNavigationToggle
         searchField={searchField}
         userMenu={userMenu}
-        secondaryMenu={supportMenu}
+        // secondaryMenu={supportMenu}
         shopSwitcher={shopSwitcher}
       />
     );
 
+    const mobileUserMenu = (
+      <Navigation.UserMenu
+        actions={[
+          {
+            id: '0',
+            items: [{content: 'item content'}],
+          },
+        ]}
+        avatarInitials="KV"
+        name="Koen Vendrik"
+        detail="Store name"
+      />
+    );
+
+    const mobileShopSwitcher = (
+      <Navigation.ShopSwitcher {...shopSwitcherProps} />
+    );
+
     const navigation = (
-      <Navigation location="/" userMenu={<div />}>
+      <Navigation
+        location="/"
+        // userMenu={mobileUserMenu}
+        shopSwitcher={mobileShopSwitcher}
+      >
         <Navigation.Section
           items={[
             {
@@ -136,7 +155,7 @@ export default class Playground extends React.Component<never, State> {
           },
         }}
       >
-        <Frame topBar={topBar} navigation={navigation}>
+        <Frame topBar={topBar} navigation={navigation} showMobileNavigation>
           <Page title="Playground" />
         </Frame>
       </AppProvider>
