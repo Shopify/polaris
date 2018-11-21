@@ -16,7 +16,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
   const percy = new Percy({
     loaders: [
       new FileSystemAssetLoader({
-        buildDir: './tophat/build/assets',
+        buildDir: './playground/build/assets',
         mountPath: '/assets',
       }),
     ],
@@ -47,7 +47,7 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
 
   try {
     await percy.startBuild();
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:3000/examples');
 
     const batchComponentExamples = await page.evaluate(() =>
       [...document.querySelectorAll('.componentLinks a')]

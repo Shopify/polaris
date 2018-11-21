@@ -1,15 +1,29 @@
 /* eslint-disable no-console */
 
-import fs from 'fs';
-import glob from 'glob';
-import chalk from 'chalk';
-import grayMatter from 'gray-matter';
-import transpileExample from './transpileExample';
+const fs = require('fs');
+const glob = require('glob');
+const chalk = require('chalk');
+const grayMatter = require('gray-matter');
+const transpileExample = require('./transpileExample');
+
+module.exports = function loader() {
+  const files = glob.sync(`${__dirname}/../../src/components/***/README.md`);
+
+  // Treat all files as depdendencies so that if any of them change then we
+  // reparse all of them
+  files.forEach((file) => {
+    this.addDependency(file);
+  });
+  this.cacheable();
+
+  const stringyData = JSON.stringify(parseMarkdown(files), null, 2);
+
+  return `module.exports = ${stringyData};`;
+};
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
 
-export default function parseMarkdown() {
-  const files = glob.sync(`${__dirname}/../src/components/***/README.md`);
+function parseMarkdown(files) {
   console.log();
   console.log('🔎 Parsing examples in component README.md files:');
   console.log();
@@ -49,10 +63,13 @@ export default function parseMarkdown() {
     );
   }
 
+  console.log();
+  console.log('🔎 Parsing examples in component README.md files complete');
+
   return parsedExamples;
 }
 
-function stripCodeBlock(block: string) {
+function stripCodeBlock(block) {
   return block
     .replace(/```jsx/, '')
     .replace('```', '')
@@ -137,7 +154,7 @@ function parseCodeExamples(data, file) {
       }
     }
 
-    return {name, code};
+    return {name, slug: slugify(name), code};
   });
 
   if (examples.filter((example) => example.code).length === 0) {
@@ -160,10 +177,14 @@ function parseCodeExamples(data, file) {
 
   return {
     name: matter.data.name,
-    slug: matter.data.name
-      .replace(/’/g, '')
-      .replace(/\s+/g, '-')
-      .toLowerCase(),
+    slug: slugify(matter.data.name),
     examples,
   };
+}
+
+function slugify(value) {
+  return value
+    .replace(/’/g, '')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
 }

@@ -1,12 +1,9 @@
 import * as React from 'react';
 import * as Polaris from '@shopify/polaris';
 
-export interface ExampleProps {
-  name: string;
-  code: string;
-}
+import {ExtractedExample} from '../types';
 
-export default function Example(props: ExampleProps) {
+export default function Example(props: ExtractedExample) {
   const scope = {React, ...Polaris};
   const tempScope: Object[] = [];
 

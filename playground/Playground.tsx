@@ -6,7 +6,12 @@ interface State {}
 export default class Playground extends React.Component<never, State> {
   render() {
     return (
-      <Page title="Playground">{/* Add the code you want to test here */}</Page>
+      <Page
+        title="Playground"
+        primaryAction={{content: 'View Examples', url: '/examples'}}
+      >
+        {/* Add the code you want to test here */}
+      </Page>
     );
   }
 }
