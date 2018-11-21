@@ -1,4 +1,4 @@
-import {LinkLikeComponent} from 'components/UnstyledLink';
+import {LinkLikeComponent} from '../../../UnstyledLink';
 
 export default class Link {
   constructor(private linkComponent?: LinkLikeComponent) {}
