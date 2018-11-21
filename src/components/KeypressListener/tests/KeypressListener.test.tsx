@@ -32,11 +32,11 @@ describe('<KeypressListener />', () => {
     const spy = jest.fn();
 
     mountWithAppProvider(
-      <KeypressListener handler={spy} keyCode={Key.Escape} />,
+      <KeypressListener handler={spy} keyValue={Key.Escape} />,
     );
 
-    listenerMap.keyup({keyCode: Key.Escape});
-    listenerMap.keyup({keyCode: Key.Enter});
+    listenerMap.keyup({key: Key.Escape});
+    listenerMap.keyup({key: Key.Enter});
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -44,10 +44,10 @@ describe('<KeypressListener />', () => {
     const spy = jest.fn();
 
     mountWithAppProvider(
-      <KeypressListener handler={spy} keyCode={Key.Escape} />,
+      <KeypressListener handler={spy} keyValue={Key.Escape} />,
     ).unmount();
 
-    listenerMap.keyup({keyCode: Key.Escape});
+    listenerMap.keyup({key: Key.Escape});
     expect(spy).not.toBeCalled();
   });
 });

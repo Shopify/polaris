@@ -152,7 +152,7 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    listenerMap.keyup({keyCode: Key.Escape});
+    listenerMap.keyup({key: Key.Escape});
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });

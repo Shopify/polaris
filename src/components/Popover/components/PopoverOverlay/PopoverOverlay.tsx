@@ -159,7 +159,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       <div className={className} {...overlay.props}>
         <EventListener event="click" handler={this.handleClick} />
         <EventListener event="touchstart" handler={this.handleClick} />
-        <KeypressListener keyCode={Key.Escape} handler={this.handleEscape} />
+        <KeypressListener keyValue={Key.Escape} handler={this.handleEscape} />
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

@@ -266,13 +266,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         tabIndex={0}
       >
         <KeypressListener
-          keyCode={Key.DownArrow}
+          keyValue={Key.ArrowDown}
           handler={this.handleDownArrow}
         />
-        <KeypressListener keyCode={Key.UpArrow} handler={this.handleUpArrow} />
-        <KeypressListener keyCode={Key.Enter} handler={this.handleEnter} />
+        <KeypressListener keyValue={Key.ArrowUp} handler={this.handleUpArrow} />
+        <KeypressListener keyValue={Key.Enter} handler={this.handleEnter} />
         <KeypressListener
-          keyCode={Key.Escape}
+          keyValue={Key.Escape}
           handler={this.handlePopoverClose}
         />
         <Popover

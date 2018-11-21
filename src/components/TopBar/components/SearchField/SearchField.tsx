@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import {Key} from '../../../../types';
 
 import {noop} from '../../../../utilities/other';
 import Icon from '../../../Icon';
@@ -146,7 +147,7 @@ export default class SearchField extends React.Component<Props, never> {
 }
 
 function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
-  if (event.key === 'Enter') {
+  if (event.key === Key.Enter) {
     event.preventDefault();
   }
 }

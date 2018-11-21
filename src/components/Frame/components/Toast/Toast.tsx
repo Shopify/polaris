@@ -39,7 +39,7 @@ export default class Toast extends React.Component<Props, never> {
 
     return (
       <div className={className}>
-        <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
+        <KeypressListener keyValue={Key.Escape} handler={onDismiss} />
         {content}
         {dismissMarkup}
       </div>

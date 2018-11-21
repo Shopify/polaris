@@ -349,11 +349,11 @@ export default class TextField extends React.PureComponent<Props, State> {
 
   @autobind
   private handleKeyPress(event: React.KeyboardEvent) {
-    const {key, which} = event;
+    const {key} = event;
     const {type} = this.props;
     const numbersSpec = /[\d.eE+-]$/;
 
-    if (type !== 'number' || which === Key.Enter || key.match(numbersSpec)) {
+    if (type !== 'number' || key === Key.Enter || key.match(numbersSpec)) {
       return;
     }
 

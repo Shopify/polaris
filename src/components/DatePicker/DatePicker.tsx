@@ -14,6 +14,7 @@ import {
   Weekdays,
   isSameDay,
 } from '@shopify/javascript-utilities/dates';
+import {Key} from '../../types';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Button from '../Button';
@@ -205,7 +206,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    if (key === 'ArrowUp') {
+    if (key === Key.ArrowUp) {
       const previousWeek = new Date(focusedDate);
       previousWeek.setDate(focusedDate.getDate() - 7);
       if (
@@ -215,7 +216,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === 'ArrowDown') {
+    if (key === Key.ArrowDown) {
       const nextWeek = new Date(focusedDate);
       nextWeek.setDate(focusedDate.getDate() + 7);
       if (!(disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter))) {
@@ -223,7 +224,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === 'ArrowRight') {
+    if (key === Key.ArrowRight) {
       const tomorrow = new Date(focusedDate);
       tomorrow.setDate(focusedDate.getDate() + 1);
       if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
@@ -231,7 +232,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === 'ArrowLeft') {
+    if (key === Key.ArrowLeft) {
       const yesterday = new Date(focusedDate);
       yesterday.setDate(focusedDate.getDate() - 1);
       if (
@@ -289,10 +290,10 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
+    key === Key.ArrowUp ||
+    key === Key.ArrowDown ||
+    key === Key.ArrowLeft ||
+    key === Key.ArrowRight
   ) {
     event.preventDefault();
     event.stopPropagation();

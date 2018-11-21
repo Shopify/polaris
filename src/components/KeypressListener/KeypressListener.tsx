@@ -7,7 +7,7 @@ import {
 import {Key} from '../../types';
 
 export interface Props {
-  keyCode: Key;
+  keyValue: Key;
   handler(event: KeyboardEvent): void;
 }
 
@@ -26,9 +26,9 @@ export default class KeypressListener extends React.Component<Props, never> {
 
   @autobind
   private handleKeyEvent(event: KeyboardEvent) {
-    const {keyCode, handler} = this.props;
+    const {keyValue, handler} = this.props;
 
-    if (event.keyCode === keyCode) {
+    if (event.key === keyValue) {
       handler(event);
     }
   }

@@ -133,7 +133,7 @@ function Pagination({
     previousKeys.map((key) => (
       <KeypressListener
         key={key}
-        keyCode={key}
+        keyValue={key}
         handler={
           previousURL
             ? handleCallback(clickPaginationLink('previousURL', node))
@@ -148,7 +148,7 @@ function Pagination({
     nextKeys.map((key) => (
       <KeypressListener
         key={key}
-        keyCode={key}
+        keyValue={key}
         handler={
           nextURL
             ? handleCallback(clickPaginationLink('nextURL', node))

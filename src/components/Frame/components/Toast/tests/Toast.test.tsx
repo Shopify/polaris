@@ -57,7 +57,7 @@ describe('<Toast />', () => {
       const spy = jest.fn();
       mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
 
-      listenerMap.keyup({keyCode: Key.Escape});
+      listenerMap.keyup({key: Key.Escape});
 
       document.removeEventListener = jest.fn((event) => {
         listenerMap[event] = noop;

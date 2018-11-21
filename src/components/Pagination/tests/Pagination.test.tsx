@@ -65,7 +65,7 @@ describe('<Pagination />', () => {
       <Pagination nextKeys={[Key.KeyK]} onNext={spy} nextTooltip="k" />,
     );
 
-    listenerMap.keyup({keyCode: Key.KeyK});
+    listenerMap.keyup({key: Key.KeyK});
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -80,7 +80,7 @@ describe('<Pagination />', () => {
       />,
     );
 
-    listenerMap.keyup({keyCode: Key.KeyJ});
+    listenerMap.keyup({key: Key.KeyJ});
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -100,7 +100,7 @@ describe('<Pagination />', () => {
         </div>,
       );
       focusElement(wrapper, 'input');
-      listenerMap.keyup({keyCode: Key.KeyJ});
+      listenerMap.keyup({key: Key.KeyJ});
       expect(spy).not.toHaveBeenCalled();
     });
   });
@@ -135,7 +135,7 @@ describe('<Pagination />', () => {
 
       const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
       anchor.click = spy;
-      listenerMap.keyup({keyCode: Key.KeyJ});
+      listenerMap.keyup({key: Key.KeyJ});
 
       expect(spy).toHaveBeenCalledTimes(1);
     });

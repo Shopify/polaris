@@ -2,6 +2,7 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
+import {Key} from '../../types';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
@@ -169,14 +170,14 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
 
-    if (key === 'ArrowRight' || key === 'ArrowDown') {
+    if (key === Key.ArrowRight || key === Key.ArrowDown) {
       newFocus += 1;
       if (newFocus === tabsArrayInOrder.length) {
         newFocus = 0;
       }
     }
 
-    if (key === 'ArrowLeft' || key === 'ArrowUp') {
+    if (key === Key.ArrowLeft || key === Key.ArrowUp) {
       if (newFocus === -1 || newFocus === 0) {
         newFocus = tabsArrayInOrder.length - 1;
       } else {
@@ -336,10 +337,10 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
+    key === Key.ArrowUp ||
+    key === Key.ArrowDown ||
+    key === Key.ArrowLeft ||
+    key === Key.ArrowRight
   ) {
     event.preventDefault();
     event.stopPropagation();

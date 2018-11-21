@@ -67,7 +67,7 @@ export default function Dialog({
             tabIndex={-1}
           >
             <KeypressListener
-              keyCode={Key.Escape}
+              keyValue={Key.Escape}
               handler={onClose}
               testID="CloseKeypressListener"
             />
