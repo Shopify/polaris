@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fix Popover not opening in a small Scrollable container [#658](https://github.com/Shopify/polaris-react/pull/658)
+
 ### Documentation
 
 ### Development workflow
