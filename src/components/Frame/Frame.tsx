@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
-import {Key} from '../../types';
+import {KeyValue} from '../../types';
 import Button from '../Button';
 import Icon from '../Icon';
 import EventListener from '../EventListener';
@@ -388,7 +388,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   private handleNavKeydown(event: React.KeyboardEvent<HTMLElement>) {
     const {key} = event;
 
-    if (key === Key.Escape) {
+    if (key === KeyValue.Escape) {
       this.handleNavigationDismiss();
     }
   }

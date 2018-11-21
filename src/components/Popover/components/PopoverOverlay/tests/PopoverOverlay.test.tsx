@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {TextContainer} from 'components';
-import {Key} from '../../../../../types';
+import {KeyValue} from '../../../../../types';
 import PositionedOverlay from '../../../../PositionedOverlay';
 import PopoverOverlay from '../PopoverOverlay';
 
@@ -152,7 +152,7 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    listenerMap.keyup({key: Key.Escape});
+    listenerMap.keyup({key: KeyValue.Escape});
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });

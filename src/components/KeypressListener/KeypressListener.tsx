@@ -4,10 +4,10 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import {Key} from '../../types';
+import {KeyValue} from '../../types';
 
 export interface Props {
-  keyValue: Key;
+  keyValue: KeyValue;
   handler(event: KeyboardEvent): void;
 }
 

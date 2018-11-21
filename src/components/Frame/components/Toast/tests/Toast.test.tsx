@@ -4,7 +4,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import {noop} from 'utilities/other';
 import {DEFAULT_TOAST_DURATION} from 'index';
 import Toast, {Props} from '../Toast';
-import {Key} from '../../../../../types';
+import {KeyValue} from '../../../../../types';
 
 interface HandlerMap {
   [eventName: string]: (event: any) => void;
@@ -57,7 +57,7 @@ describe('<Toast />', () => {
       const spy = jest.fn();
       mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
 
-      listenerMap.keyup({key: Key.Escape});
+      listenerMap.keyup({key: KeyValue.Escape});
 
       document.removeEventListener = jest.fn((event) => {
         listenerMap[event] = noop;

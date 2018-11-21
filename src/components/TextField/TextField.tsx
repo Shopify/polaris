@@ -6,7 +6,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
-import {Error, Key} from '../../types';
+import {Error, KeyValue} from '../../types';
 import {Resizer, Spinner} from './components';
 import * as styles from './TextField.scss';
 
@@ -353,7 +353,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     const {type} = this.props;
     const numbersSpec = /[\d.eE+-]$/;
 
-    if (type !== 'number' || key === Key.Enter || key.match(numbersSpec)) {
+    if (type !== 'number' || key === KeyValue.Enter || key.match(numbersSpec)) {
       return;
     }
 

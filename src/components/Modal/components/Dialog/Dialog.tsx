@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {AnimationProps, Key} from '../../../../types';
+import {AnimationProps, KeyValue} from '../../../../types';
 
 import KeypressListener from '../../../KeypressListener';
 import TrapFocus from '../../../TrapFocus';
@@ -67,7 +67,7 @@ export default function Dialog({
             tabIndex={-1}
           >
             <KeypressListener
-              keyValue={Key.Escape}
+              keyValue={KeyValue.Escape}
               handler={onClose}
               testID="CloseKeypressListener"
             />

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
-import {Key} from '../../../types';
+import {KeyValue} from '../../../types';
 import KeypressListener from '../KeypressListener';
 
 interface HandlerMap {
@@ -32,11 +32,11 @@ describe('<KeypressListener />', () => {
     const spy = jest.fn();
 
     mountWithAppProvider(
-      <KeypressListener handler={spy} keyValue={Key.Escape} />,
+      <KeypressListener handler={spy} keyValue={KeyValue.Escape} />,
     );
 
-    listenerMap.keyup({key: Key.Escape});
-    listenerMap.keyup({key: Key.Enter});
+    listenerMap.keyup({key: KeyValue.Escape});
+    listenerMap.keyup({key: KeyValue.Enter});
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -44,10 +44,10 @@ describe('<KeypressListener />', () => {
     const spy = jest.fn();
 
     mountWithAppProvider(
-      <KeypressListener handler={spy} keyValue={Key.Escape} />,
+      <KeypressListener handler={spy} keyValue={KeyValue.Escape} />,
     ).unmount();
 
-    listenerMap.keyup({key: Key.Escape});
+    listenerMap.keyup({key: KeyValue.Escape});
     expect(spy).not.toBeCalled();
   });
 });

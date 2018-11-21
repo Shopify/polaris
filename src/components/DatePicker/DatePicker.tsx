@@ -14,7 +14,7 @@ import {
   Weekdays,
   isSameDay,
 } from '@shopify/javascript-utilities/dates';
-import {Key} from '../../types';
+import {KeyValue} from '../../types';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Button from '../Button';
@@ -206,7 +206,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    if (key === Key.ArrowUp) {
+    if (key === KeyValue.ArrowUp) {
       const previousWeek = new Date(focusedDate);
       previousWeek.setDate(focusedDate.getDate() - 7);
       if (
@@ -216,7 +216,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === Key.ArrowDown) {
+    if (key === KeyValue.ArrowDown) {
       const nextWeek = new Date(focusedDate);
       nextWeek.setDate(focusedDate.getDate() + 7);
       if (!(disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter))) {
@@ -224,7 +224,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === Key.ArrowRight) {
+    if (key === KeyValue.ArrowRight) {
       const tomorrow = new Date(focusedDate);
       tomorrow.setDate(focusedDate.getDate() + 1);
       if (!(disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter))) {
@@ -232,7 +232,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       }
     }
 
-    if (key === Key.ArrowLeft) {
+    if (key === KeyValue.ArrowLeft) {
       const yesterday = new Date(focusedDate);
       yesterday.setDate(focusedDate.getDate() - 1);
       if (
@@ -290,10 +290,10 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (
-    key === Key.ArrowUp ||
-    key === Key.ArrowDown ||
-    key === Key.ArrowLeft ||
-    key === Key.ArrowRight
+    key === KeyValue.ArrowUp ||
+    key === KeyValue.ArrowDown ||
+    key === KeyValue.ArrowLeft ||
+    key === KeyValue.ArrowRight
   ) {
     event.preventDefault();
     event.stopPropagation();

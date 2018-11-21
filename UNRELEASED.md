@@ -6,7 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Replaced all instances of deprecated `Keyboard.Event.keyCode` with `KeyboardEvent.key` ([#656](https://github.com/Shopify/polaris-react/pull/656))
+- Deprecated `Keyboard.Event.keyCode` and added an enum for `KeyboardEvent.key` ([#656](https://github.com/Shopify/polaris-react/pull/656))
 
 ### Bug fixes
 

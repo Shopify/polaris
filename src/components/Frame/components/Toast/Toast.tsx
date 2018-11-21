@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities';
 
-import {Key} from '../../../../types';
+import {KeyValue} from '../../../../types';
 
 import Icon from '../../../Icon';
 import KeypressListener from '../../../KeypressListener';
@@ -39,7 +39,7 @@ export default class Toast extends React.Component<Props, never> {
 
     return (
       <div className={className}>
-        <KeypressListener keyValue={Key.Escape} handler={onDismiss} />
+        <KeypressListener keyValue={KeyValue.Escape} handler={onDismiss} />
         {content}
         {dismissMarkup}
       </div>

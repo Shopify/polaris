@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
-import {DisableableAction, WithContextTypes, Key} from '../../../../types';
+import {DisableableAction, WithContextTypes, KeyValue} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {Props as AvatarProps} from '../../../Avatar';
@@ -347,7 +347,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     } = this.props;
     const {key} = event;
 
-    if (key === Key.Enter && !selectMode) {
+    if (key === KeyValue.Enter && !selectMode) {
       onClick();
     }
   }

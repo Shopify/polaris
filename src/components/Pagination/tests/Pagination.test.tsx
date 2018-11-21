@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
-import {Key} from '../../../types';
+import {KeyValue} from '../../../types';
 import Pagination from '../Pagination';
 
 interface HandlerMap {
@@ -62,10 +62,10 @@ describe('<Pagination />', () => {
   it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(
-      <Pagination nextKeys={[Key.KeyK]} onNext={spy} nextTooltip="k" />,
+      <Pagination nextKeys={[KeyValue.KeyK]} onNext={spy} nextTooltip="k" />,
     );
 
-    listenerMap.keyup({key: Key.KeyK});
+    listenerMap.keyup({key: KeyValue.KeyK});
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -74,13 +74,13 @@ describe('<Pagination />', () => {
     const spy = jest.fn();
     mountWithAppProvider(
       <Pagination
-        previousKeys={[Key.KeyJ]}
+        previousKeys={[KeyValue.KeyJ]}
         onPrevious={spy}
         previousTooltip="j"
       />,
     );
 
-    listenerMap.keyup({key: Key.KeyJ});
+    listenerMap.keyup({key: KeyValue.KeyJ});
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
@@ -93,14 +93,14 @@ describe('<Pagination />', () => {
           <TextField label="test" value="" onChange={noop} />
           <Pagination
             nextTooltip="j"
-            previousKeys={[Key.KeyJ]}
+            previousKeys={[KeyValue.KeyJ]}
             onPrevious={spy}
             previousTooltip="j"
           />
         </div>,
       );
       focusElement(wrapper, 'input');
-      listenerMap.keyup({key: Key.KeyJ});
+      listenerMap.keyup({key: KeyValue.KeyJ});
       expect(spy).not.toHaveBeenCalled();
     });
   });
@@ -127,7 +127,7 @@ describe('<Pagination />', () => {
       const spy = jest.fn();
       pagination = mountWithAppProvider(
         <Pagination
-          previousKeys={[Key.KeyJ]}
+          previousKeys={[KeyValue.KeyJ]}
           previousTooltip="j"
           previousURL="https://www.google.com"
         />,
@@ -135,7 +135,7 @@ describe('<Pagination />', () => {
 
       const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
       anchor.click = spy;
-      listenerMap.keyup({key: Key.KeyJ});
+      listenerMap.keyup({key: KeyValue.KeyJ});
 
       expect(spy).toHaveBeenCalledTimes(1);
     });

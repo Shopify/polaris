@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Key} from '../../../../types';
+import {KeyValue} from '../../../../types';
 
 import Item from '../Item';
 import {TabDescriptor} from '../../Tabs';
@@ -54,10 +54,10 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
   if (
-    key === Key.ArrowUp ||
-    key === Key.ArrowDown ||
-    key === Key.ArrowLeft ||
-    key === Key.ArrowRight
+    key === KeyValue.ArrowUp ||
+    key === KeyValue.ArrowDown ||
+    key === KeyValue.ArrowLeft ||
+    key === KeyValue.ArrowRight
   ) {
     event.preventDefault();
     event.stopPropagation();

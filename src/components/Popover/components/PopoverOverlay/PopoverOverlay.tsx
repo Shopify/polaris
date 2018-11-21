@@ -6,7 +6,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {Transition} from 'react-transition-group';
 
-import {Key} from '../../../../types';
+import {KeyValue} from '../../../../types';
 import {overlay, Duration} from '../../../shared';
 import EventListener from '../../../EventListener';
 import KeypressListener from '../../../KeypressListener';
@@ -159,7 +159,10 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       <div className={className} {...overlay.props}>
         <EventListener event="click" handler={this.handleClick} />
         <EventListener event="touchstart" handler={this.handleClick} />
-        <KeypressListener keyValue={Key.Escape} handler={this.handleEscape} />
+        <KeypressListener
+          keyValue={KeyValue.Escape}
+          handler={this.handleEscape}
+        />
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
