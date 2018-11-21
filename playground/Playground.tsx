@@ -137,9 +137,7 @@ export default class Playground extends React.Component<never, State> {
         }}
       >
         <Frame topBar={topBar} navigation={navigation}>
-          <Page title="Playground">
-            <ShopSwitcher {...shopSwitcherProps} />
-          </Page>
+          <Page title="Playground" />
         </Frame>
       </AppProvider>
     );

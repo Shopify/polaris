@@ -30,6 +30,7 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 export interface Props {
   children?: React.ReactNode;
+  header?: React.ReactNode;
   fullWidth?: boolean;
   fullHeight?: boolean;
   preferredPosition?: PreferredPosition;
@@ -124,7 +125,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   ) {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
-    const {id, children, sectioned, fullWidth, fullHeight} = this.props;
+    const {id, children, sectioned, fullWidth, fullHeight, header} = this.props;
 
     const className = classNames(
       styles.Popover,
@@ -151,6 +152,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         style={contentStyles}
         ref={this.contentNode}
       >
+        {header}
         {renderPopoverContent(children, {sectioned})}
       </div>
     );

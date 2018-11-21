@@ -14,6 +14,10 @@ export interface Props {
   shops: Shop[];
   searchPlaceholder: string;
   activeIndex: number;
+  children(
+    searchField: React.ReactNode,
+    shopsList: React.ReactNode,
+  ): React.ReactNode;
 }
 
 interface State {
@@ -31,9 +35,9 @@ class ShopSwitcher extends React.Component<Props, State> {
 
   render() {
     const {query, items} = this.state;
-    const {searchPlaceholder} = this.props;
+    const {searchPlaceholder, children, shops} = this.props;
 
-    const searchFieldMarkup = items.length >= MIN_SHOPS_FOR_SEARCH && (
+    const searchField = shops.length >= MIN_SHOPS_FOR_SEARCH && (
       <div className={styles.Section}>
         <TextField
           labelHidden
@@ -46,12 +50,9 @@ class ShopSwitcher extends React.Component<Props, State> {
       </div>
     );
 
-    return (
-      <div>
-        {searchFieldMarkup}
-        <ActionList items={items} />
-      </div>
-    );
+    const shopsList = <ActionList items={items} />;
+
+    return children(searchField, shopsList);
   }
 
   @autobind

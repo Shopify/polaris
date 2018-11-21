@@ -52,18 +52,27 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         <div className={styles.ShopName}>
           <TextStyle variation="strong">{name}</TextStyle>
         </div>
-        <Icon source={open ? 'chevronUp' : 'chevronDown'} color="white" />
+        <Icon source="chevronDown" color="white" />
       </button>
     );
 
     return (
-      <Popover active={open} activator={activator} onClose={this.togglePopover}>
-        <Switcher
-          shops={shops}
-          searchPlaceholder={searchPlaceholder}
-          activeIndex={activeIndex}
-        />
-      </Popover>
+      <Switcher
+        shops={shops}
+        searchPlaceholder={searchPlaceholder}
+        activeIndex={activeIndex}
+      >
+        {(searchField, shopsList) => (
+          <Popover
+            active={open}
+            activator={activator}
+            onClose={this.togglePopover}
+            header={searchField}
+          >
+            {shopsList}
+          </Popover>
+        )}
+      </Switcher>
     );
   }
 
