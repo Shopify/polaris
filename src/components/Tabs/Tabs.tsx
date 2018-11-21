@@ -5,6 +5,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
+import {getVisibleAndHiddenTabIndices} from './utilities';
 
 import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
 
@@ -176,9 +177,10 @@ export default class Tabs extends React.PureComponent<Props, State> {
     }
 
     if (key === 'ArrowLeft' || key === 'ArrowUp') {
-      newFocus -= 1;
-      if (newFocus === -1) {
+      if (newFocus === -1 || newFocus === 0) {
         newFocus = tabsArrayInOrder.length - 1;
+      } else {
+        newFocus -= 1;
       }
     }
 
@@ -342,44 +344,4 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.preventDefault();
     event.stopPropagation();
   }
-}
-
-function getVisibleAndHiddenTabIndices(
-  tabs: TabDescriptor[],
-  selected: number,
-  disclosureWidth: number,
-  tabWidths: number[],
-  containerWidth: number,
-) {
-  const sumTabWidths = tabWidths.reduce((sum, width) => sum + width, 0);
-
-  const arrayOfTabIndices = tabs.map((_, index) => {
-    return index;
-  });
-
-  const visibleTabs: number[] = [];
-  const hiddenTabs: number[] = [];
-
-  if (containerWidth > sumTabWidths) {
-    visibleTabs.push(...arrayOfTabIndices);
-  } else {
-    visibleTabs.push(selected);
-    let newTabWidth: number = tabWidths[selected];
-
-    arrayOfTabIndices.forEach((index) => {
-      if (index !== selected) {
-        if (newTabWidth + tabWidths[index] > containerWidth - disclosureWidth) {
-          hiddenTabs.push(index);
-          return;
-        }
-        visibleTabs.push(index);
-        newTabWidth += tabWidths[index];
-      }
-    });
-  }
-
-  return {
-    visibleTabs,
-    hiddenTabs,
-  };
 }

@@ -31,7 +31,7 @@ yarn add @shopify/polaris
 1.  Include the CSS in your HTML:
 
 ```html
- <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.1/polaris.min.css" />
+ <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.1.1/polaris.min.css" />
 ```
 
 > Note: you can import the CSS directly into your project if your asset packager supports it:
@@ -74,7 +74,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 1.  Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.1/polaris.min.css" />
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.1.1/polaris.min.css" />
 ```
 
 2.  Include the markup and associated classes in your HTML document:

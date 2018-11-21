@@ -4,11 +4,14 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 
-export interface Props {
+export interface BaseEventProps {
   event: string;
   capture?: boolean;
-  passive?: boolean;
   handler(event: Event): void;
+}
+
+export interface Props extends BaseEventProps {
+  passive?: boolean;
 }
 
 // see https://github.com/oliviertassinari/react-event-listener/
@@ -17,12 +20,8 @@ export default class EventListener extends React.PureComponent<Props, never> {
     this.attachListener();
   }
 
-  // eslint-disable-next-line react/no-deprecated
-  componentWillUpdate() {
-    this.detachListener();
-  }
-
-  componentDidUpdate() {
+  componentDidUpdate({passive, ...detachProps}: Props) {
+    this.detachListener(detachProps);
     this.attachListener();
   }
 
@@ -39,8 +38,8 @@ export default class EventListener extends React.PureComponent<Props, never> {
     addEventListener(window, event, handler, {capture, passive});
   }
 
-  private detachListener() {
-    const {event, handler, capture} = this.props;
+  private detachListener(prevProps?: BaseEventProps) {
+    const {event, handler, capture} = prevProps || this.props;
     removeEventListener(window, event, handler, capture);
   }
 }

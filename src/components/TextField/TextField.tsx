@@ -113,6 +113,10 @@ export type Props = NonMutuallyExclusiveProps &
 const getUniqueID = createUniqueIDFactory('TextField');
 
 export default class TextField extends React.PureComponent<Props, State> {
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    return {id: nextProps.id || prevState.id};
+  }
+
   private input: HTMLElement;
 
   constructor(props: Props) {
@@ -133,13 +137,6 @@ export default class TextField extends React.PureComponent<Props, State> {
     ) {
       this.input.focus();
     }
-  }
-
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(newProps: Props) {
-    this.setState((prevState) => ({
-      id: newProps.id || prevState.id,
-    }));
   }
 
   render() {
