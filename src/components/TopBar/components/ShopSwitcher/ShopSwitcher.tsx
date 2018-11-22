@@ -27,6 +27,7 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
       shops,
       searchPlaceholder,
       activeIndex,
+      noResultsLabel,
       polaris: {
         theme: {logo},
       },
@@ -63,6 +64,7 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         shops={shops}
         searchPlaceholder={searchPlaceholder}
         activeIndex={activeIndex}
+        noResultsLabel={noResultsLabel}
       >
         {(searchField, shopsList) => (
           <Popover

@@ -1,5 +1,6 @@
 @import './styles/variables';
 $icon-size: rem(20px);
+$shop-details-width: layout-width(nav) + rem(60px);
 
 .TopBar {
   position: relative;
@@ -16,9 +17,11 @@ $icon-size: rem(20px);
 }
 
 .ShopDetailsWrapper {
+  position: relative;
+  z-index: z-index(shop-details, $stacking-order);
   display: flex;
-  height: 100%;
   align-items: center;
+  height: 100%;
 }
 
 .ShopDetails {

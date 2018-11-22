@@ -12,6 +12,7 @@ function ShopSwitcher({
   shops,
   searchPlaceholder,
   activeIndex,
+  noResultsLabel,
   polaris: {
     theme: {logo},
   },
@@ -36,6 +37,7 @@ function ShopSwitcher({
         shops={shops}
         searchPlaceholder={searchPlaceholder}
         activeIndex={activeIndex}
+        noResultsLabel={noResultsLabel}
       >
         {(searchField, shopsList) => (
           <div>

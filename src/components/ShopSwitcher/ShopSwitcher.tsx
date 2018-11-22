@@ -15,6 +15,7 @@ export interface Props {
   shops: Shop[];
   searchPlaceholder: string;
   activeIndex: number;
+  noResultsLabel: string;
   children(
     searchField: React.ReactNode,
     content: React.ReactNode,
@@ -36,7 +37,7 @@ class ShopSwitcher extends React.Component<Props, State> {
 
   render() {
     const {query, items} = this.state;
-    const {searchPlaceholder, shops, children} = this.props;
+    const {searchPlaceholder, shops, children, noResultsLabel} = this.props;
 
     const searchFieldMarkup = shops.length >= MIN_SHOPS_FOR_SEARCH && (
       <div className={styles.Search}>
@@ -60,7 +61,7 @@ class ShopSwitcher extends React.Component<Props, State> {
     const contentMarkup =
       query && items.length < 1 ? (
         <div className={styles.NoResults}>
-          <TextStyle variation="subdued">No shops found.</TextStyle>
+          <TextStyle variation="subdued">{noResultsLabel}</TextStyle>
         </div>
       ) : (
         shopsListMarkup
