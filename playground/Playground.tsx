@@ -11,7 +11,7 @@ import {
 
 const shopSwitcherProps = {
   searchPlaceholder: 'Search stores',
-  activeIndex: 0,
+  activeIndex: 2,
   shops: [
     {
       url: 'https://little-victories.myshopify.io',
@@ -24,7 +24,7 @@ const shopSwitcherProps = {
     {
       url: 'https://little-victories.myshopify.io',
       name:
-        'Little Victories CA Little Victories CA Little Victories CA Little Victories CA Little Victories CA Little Victories CA',
+        "Little Victories Europe Division over the rainbow where only Tobi can see it and maybe Jakob but that's it okay maybe Anthony.",
     },
     {
       url: 'https://little-victories.myshopify.io',

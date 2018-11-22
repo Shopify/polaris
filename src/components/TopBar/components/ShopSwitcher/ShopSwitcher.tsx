@@ -49,10 +49,12 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         onClick={this.togglePopover}
       >
         {logoMarkup}
-        <div className={styles.ShopName}>
+        <span className={styles.ShopName}>
           <TextStyle variation="strong">{name}</TextStyle>
-        </div>
-        <Icon source="chevronDown" color="white" />
+        </span>
+        <span className={styles.Icon}>
+          <Icon source="chevronDown" color="white" />
+        </span>
       </button>
     );
 
@@ -64,9 +66,12 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
       >
         {(searchField, shopsList) => (
           <Popover
+            fullHeight
+            fullWidth
             active={open}
             activator={activator}
             onClose={this.togglePopover}
+            preferredAlignment="left"
             header={searchField}
           >
             {shopsList}

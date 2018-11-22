@@ -1,6 +1,16 @@
-.Section {
-  padding: rem(10px) spacing();
-  border-bottom: border();
+.Search {
+  padding: rem(12px) spacing();
+  text-align: center;
+}
+
+.NoResults {
+  padding: spacing();
+  padding-top: 0;
+  text-align: center;
+}
+
+.ShopsList {
+  margin-top: -#{spacing(tight)};
 }
 
 .ShopName {

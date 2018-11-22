@@ -13,7 +13,7 @@ $stacking-order: (
 .Wrapper {
   position: absolute;
   right: 0;
-  left: layout-width(nav);
+  left: $shop-details-width;
 
   @media all and (max-width: 1200px) {
     position: relative;

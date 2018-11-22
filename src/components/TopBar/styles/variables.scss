@@ -2,7 +2,7 @@ $stacking-order: (
   content: 10,
   search: 20,
 );
-
+$shop-details-width: #{layout-width(nav) + rem(60px)};
 // TODO: Replace `$large-width` breakpoints with
 // `page-content-when-not-partially-condensed`
 // Once the frame is rendering our React routes

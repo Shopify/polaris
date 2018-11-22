@@ -130,9 +130,11 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     return (
       <div className={styles.TopBar}>
         {navigationButtonMarkup}
-        <div className={styles.ShopDetailsContainer}>
-          {logoMarkup}
-          {shopSwitcher}
+        <div className={styles.ShopDetailsWrapper}>
+          <div className={styles.ShopDetails}>
+            {logoMarkup}
+            {shopSwitcher}
+          </div>
         </div>
         <div className={styles.Contents}>
           {searchMarkup}

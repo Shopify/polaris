@@ -2,6 +2,7 @@ import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import TextField from '../TextField';
 import Icon from '../Icon';
+import TextStyle from '../TextStyle';
 import ActionList, {Props as ActionListProps} from '../ActionList';
 import * as styles from './ShopSwitcher.scss';
 
@@ -16,7 +17,7 @@ export interface Props {
   activeIndex: number;
   children(
     searchField: React.ReactNode,
-    shopsList: React.ReactNode,
+    content: React.ReactNode,
   ): React.ReactNode;
 }
 
@@ -35,10 +36,10 @@ class ShopSwitcher extends React.Component<Props, State> {
 
   render() {
     const {query, items} = this.state;
-    const {searchPlaceholder, children, shops} = this.props;
+    const {searchPlaceholder, shops, children} = this.props;
 
-    const searchField = shops.length >= MIN_SHOPS_FOR_SEARCH && (
-      <div className={styles.Section}>
+    const searchFieldMarkup = shops.length >= MIN_SHOPS_FOR_SEARCH && (
+      <div className={styles.Search}>
         <TextField
           labelHidden
           label=""
@@ -50,9 +51,22 @@ class ShopSwitcher extends React.Component<Props, State> {
       </div>
     );
 
-    const shopsList = <ActionList items={items} />;
+    const shopsListMarkup = (
+      <section className={styles.ShopsList}>
+        <ActionList items={items} />
+      </section>
+    );
 
-    return children(searchField, shopsList);
+    const contentMarkup =
+      query && items.length < 1 ? (
+        <div className={styles.NoResults}>
+          <TextStyle variation="subdued">No shops found.</TextStyle>
+        </div>
+      ) : (
+        shopsListMarkup
+      );
+
+    return children(searchFieldMarkup, contentMarkup);
   }
 
   @autobind

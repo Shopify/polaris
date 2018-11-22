@@ -124,7 +124,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     overlayDetails: OverlayDetails,
   ) {
     const {measuring, desiredHeight, positioning} = overlayDetails;
-
     const {id, children, sectioned, fullWidth, fullHeight, header} = this.props;
 
     const className = classNames(
