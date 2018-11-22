@@ -259,7 +259,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
               </DisplayText>
             )}
             {(size === 'medium' || size === 'large') && (
-              <Caption>{overlayText}</Caption>
+              <Caption>{errorOverlayText}</Caption>
             )}
           </Stack>
         </div>
