@@ -57,9 +57,9 @@ describe('<ChoiceList />', () => {
 
     describe('with valid children property returning node', () => {
       const children = <span>Child</span>;
-      const renderChildrenSpy = jest.fn(() => children);
 
       it('renders a choice with children content', () => {
+        const renderChildrenSpy = jest.fn(() => children);
         choices = [
           choices[0],
           choices[1],
@@ -80,12 +80,13 @@ describe('<ChoiceList />', () => {
 
     describe('with valid children property returning node when current choice is selected', () => {
       const children = <span>Child</span>;
-      const renderChildrenSpy = jest.fn((isSelected) => isSelected && children);
 
       it('renders a choice with children content when choice is selected ', () => {
         const selectedIndexes = [2];
         const selected = selectedIndexes.map((index) => choices[index].value);
-
+        const renderChildrenSpy = jest.fn(
+          (isSelected) => isSelected && children,
+        );
         choices = [
           choices[0],
           choices[1],
@@ -103,7 +104,42 @@ describe('<ChoiceList />', () => {
         expect(choiceElements.contains(children)).toBe(true);
       });
 
+      it('renders a choice with children wrapper div when choice is selected', () => {
+        const selectedIndex = 2;
+        const selectedIndexes = [selectedIndex];
+        const selected = selectedIndexes.map((index) => choices[index].value);
+        const renderChildrenSpy = jest.fn(
+          (isSelected) => isSelected && children,
+        );
+
+        choices = [
+          choices[0],
+          choices[1],
+          {
+            ...choices[2],
+            renderChildren: renderChildrenSpy,
+          },
+        ] as any;
+
+        const choiceElements = shallowWithAppProvider(
+          <ChoiceList selected={selected} choices={choices} />,
+        );
+
+        expect(renderChildrenSpy).toHaveBeenCalled();
+        expect(
+          choiceElements
+            .find('li')
+            .at(selectedIndex)
+            .find('div')
+            .exists(),
+        ).toBeTruthy();
+      });
+
       it('does not render a choice with children content when choice is not selected', () => {
+        const renderChildrenSpy = jest.fn(
+          (isSelected) => isSelected && children,
+        );
+
         choices = [
           choices[0],
           choices[1],
@@ -119,6 +155,38 @@ describe('<ChoiceList />', () => {
 
         expect(renderChildrenSpy).toHaveBeenCalled();
         expect(choiceElements.contains(children)).toBe(false);
+      });
+
+      it('does not render a choice with children wrapper div when choice is not selected', () => {
+        const selectedIndex = 0;
+        const indexWithChildren = 2;
+        const selectedIndexes = [selectedIndex];
+        const selected = selectedIndexes.map((index) => choices[index].value);
+        const renderChildrenSpy = jest.fn(
+          (isSelected) => isSelected && children,
+        );
+
+        choices = [
+          choices[0],
+          choices[1],
+          {
+            ...choices[2],
+            renderChildren: renderChildrenSpy,
+          },
+        ] as any;
+
+        const choiceElements = shallowWithAppProvider(
+          <ChoiceList selected={selected} choices={choices} />,
+        );
+
+        expect(renderChildrenSpy).toHaveBeenCalled();
+        expect(
+          choiceElements
+            .find('li')
+            .at(indexWithChildren)
+            .find('div')
+            .exists(),
+        ).toBeFalsy();
       });
     });
 
