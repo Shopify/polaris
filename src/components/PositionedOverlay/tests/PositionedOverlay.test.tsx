@@ -150,6 +150,27 @@ describe('<PositionedOverlay />', () => {
         }),
       );
     });
+
+    it('returns a 0-size rect when the given rect is completely outside the viewport', () => {
+      const intersection = intersectionWithViewport(
+        new Rect({
+          top: 1000,
+          left: 1000,
+          width: 500,
+          height: 500,
+        }),
+        viewport,
+      );
+
+      expect(intersection).toEqual(
+        new Rect({
+          top: 1000,
+          left: 1000,
+          width: 0,
+          height: 0,
+        }),
+      );
+    });
   });
 
   describe('<EventListener />', () => {
