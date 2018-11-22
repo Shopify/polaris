@@ -123,11 +123,15 @@ export default class Playground extends React.Component<never, never> {
         avatarInitials="KV"
         name="Koen Vendrik"
         detail="Store name"
+        activatorAccessibilityLabel="Show user menu"
       />
     );
 
     const mobileShopSwitcher = (
-      <Navigation.ShopSwitcher {...shopSwitcherProps} />
+      <Navigation.ShopSwitcher
+        {...shopSwitcherProps}
+        activatorAccessibilityLabel="Show shop switcher"
+      />
     );
 
     const navigation = (

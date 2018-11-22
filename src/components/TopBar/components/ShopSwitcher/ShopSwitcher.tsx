@@ -4,7 +4,7 @@ import Icon from '../../../Icon';
 import TextStyle from '../../../TextStyle';
 import Image from '../../../Image';
 import Popover from '../../../Popover';
-import Switcher, {Props as SwitcherProps} from '../../../ShopSwitcher';
+import Switcher, {BaseProps as SwitcherProps} from '../../../ShopSwitcher';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {getWidth} from '../../../../utilities/getWidth';
 import * as styles from './ShopSwitcher.scss';

@@ -20,7 +20,7 @@ export interface Props {
   avatar: React.ReactNode;
   title?: string;
   detail?: string;
-  accessibilityLabel: string;
+  activatorAccessibilityLabel: string;
 }
 
 interface State {
@@ -40,7 +40,7 @@ export default class Menu extends React.PureComponent<Props, State> {
       avatar,
       title,
       detail,
-      accessibilityLabel,
+      activatorAccessibilityLabel,
     } = this.props;
     const {menuExpanded} = this.state;
 
@@ -137,7 +137,7 @@ export default class Menu extends React.PureComponent<Props, State> {
             <Icon
               source="chevronDown"
               color="inkLightest"
-              accessibilityLabel={accessibilityLabel}
+              accessibilityLabel={activatorAccessibilityLabel}
             />
           </span>
         </button>

@@ -11,11 +11,14 @@ interface Shop {
   name: string;
 }
 
-export interface Props {
+export interface BaseProps {
   shops: Shop[];
   searchPlaceholder: string;
   activeIndex: number;
   noResultsLabel: string;
+}
+
+export interface Props extends BaseProps {
   children(
     searchField: React.ReactNode,
     content: React.ReactNode,

@@ -9,6 +9,7 @@ export interface Props {
   message?: MenuProps['message'];
   avatarInitials: AvatarProps['initials'];
   avatarSource?: AvatarProps['source'];
+  activatorAccessibilityLabel?: string;
 }
 
 function UserMenu({
@@ -18,6 +19,7 @@ function UserMenu({
   message,
   avatarInitials,
   avatarSource,
+  activatorAccessibilityLabel,
 }: Props) {
   const avatar = (
     <Avatar
@@ -34,7 +36,9 @@ function UserMenu({
       actions={actions}
       message={message}
       avatar={avatar}
-      accessibilityLabel="Show user menu"
+      activatorAccessibilityLabel={
+        activatorAccessibilityLabel || 'Show user menu'
+      }
     />
   );
 }

@@ -1,11 +1,13 @@
 import * as React from 'react';
 import Image from '../../../Image';
 import Menu from '../Menu';
-import Switcher, {Props as SwitcherProps} from '../../../ShopSwitcher';
+import Switcher, {BaseProps as SwitcherProps} from '../../../ShopSwitcher';
 import {getWidth} from '../../../../utilities/getWidth';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-export type Props = SwitcherProps;
+export type Props = SwitcherProps & {
+  activatorAccessibilityLabel: string;
+};
 type ComposedProps = Props & WithAppProviderProps;
 
 function ShopSwitcher({
@@ -13,6 +15,7 @@ function ShopSwitcher({
   searchPlaceholder,
   activeIndex,
   noResultsLabel,
+  activatorAccessibilityLabel,
   polaris: {
     theme: {logo},
   },
@@ -31,7 +34,7 @@ function ShopSwitcher({
     <Menu
       title={shopName}
       avatar={logoMarkup}
-      accessibilityLabel="Show shop switcher"
+      activatorAccessibilityLabel={activatorAccessibilityLabel}
     >
       <Switcher
         shops={shops}
