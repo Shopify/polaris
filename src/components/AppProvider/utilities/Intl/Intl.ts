@@ -1,16 +1,13 @@
 import merge from 'lodash/merge';
 import get from 'lodash/get';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-
-import defaultTranslation from '../../locales';
-
+import defaultTranslation from 'locales';
 import {
   TranslationDictionary,
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
 } from './types';
-
-import {translate} from './utils';
+import translate from './translate';
 
 export interface ChangeTranslation {
   (translation: TranslationDictionary): void;

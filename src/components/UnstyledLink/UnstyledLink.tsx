@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import {unstyled} from '../shared';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider/utilities';
 import compose from '../../utilities/react-compose';
 import withRef from '../WithRef';
 

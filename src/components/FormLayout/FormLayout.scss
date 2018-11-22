@@ -5,11 +5,6 @@ $item-min-size: rem(220px);
   margin-left: -1 * spacing(loose);
 }
 
-.condensed .Item {
-  flex-basis: (0.5 * $item-min-size);
-  min-width: (0.5 * $item-min-size);
-}
-
 .Title {
   margin-bottom: -1 * spacing(tight);
   padding: spacing() spacing(loose) 0;
@@ -29,6 +24,14 @@ $item-min-size: rem(220px);
   flex: 1 1 $item-min-size;
   margin-top: spacing();
   margin-left: spacing(loose);
-  min-width: $item-min-size;
   max-width: calc(100% - #{spacing(loose)});
+
+  .grouped & {
+    min-width: $item-min-size;
+  }
+
+  .condensed & {
+    flex-basis: (0.5 * $item-min-size);
+    min-width: (0.5 * $item-min-size);
+  }
 }
