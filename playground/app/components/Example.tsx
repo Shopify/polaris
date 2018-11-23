@@ -4,7 +4,7 @@ import * as Polaris from '@shopify/polaris';
 import {ExtractedExample} from '../types';
 
 export default function Example(props: ExtractedExample) {
-  const scope = {React, ...Polaris};
+  const scope = {React, ...Polaris} as {[key: string]: any};
   const tempScope: Object[] = [];
 
   Object.keys(scope).forEach((scopeProp) => {
