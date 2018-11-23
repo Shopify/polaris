@@ -1,10 +1,10 @@
-import {parse} from '@babel/parser';
-import generate from '@babel/generator';
-import {transform} from '@babel/standalone';
+const parse = require('@babel/parser').parse;
+const generate = require('@babel/generator').default;
+const transform = require('@babel/standalone').transform;
 
-export default function transpileExample(string) {
+module.exports = function transpileExample(string) {
   const scope = {SCOPE_VARIABLES_PLACEHOLDER: ''};
-  const tempScope: Object[] = [];
+  const tempScope = [];
 
   Object.keys(scope).forEach((scopeProp) => {
     tempScope.push(scope[scopeProp]);
@@ -12,9 +12,9 @@ export default function transpileExample(string) {
 
   const ast = astFromCode(string);
   return transpiledCodeFromAst(scope, ast);
-}
+};
 
-function astFromCode(code: string): File {
+function astFromCode(code) {
   const ast = parse(code, {
     sourceType: 'module',
     plugins: ['jsx', 'classProperties', 'objectRestSpread'],
@@ -62,7 +62,7 @@ function transpiledCodeFromAst(scope, ast) {
   }
 }
 
-function unicodeToChar(text: string) {
+function unicodeToChar(text) {
   return text.replace(/\\u[\dA-F]{4}/gi, (match) => {
     return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
   });

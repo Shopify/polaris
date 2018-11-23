@@ -7,6 +7,26 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Playground</title>
+
+    <script>
+      // When transpiling TS using isolatedModules, the compiler doesn't strip
+      // out exported types as it doesn't know if an item is a type or not.
+      // Ignore those warnings as we don't care about them
+      const originalConsoleWarn = console.warn.bind(console);
+
+      const isIgnored = function(msg, ignorables) {
+        return (
+          typeof msg === 'string' && ignorables.some((regex) => regex.test(msg))
+        );
+      };
+
+      console.warn = function() {
+        const ignoredWarnings = [/export .* was not found in/];
+        if (!isIgnored(arguments[0], ignoredWarnings)) {
+          originalConsoleWarn.apply(console, arguments);
+        }
+      };
+    </script>
   </head>
 
   <body>
