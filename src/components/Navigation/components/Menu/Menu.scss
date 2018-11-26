@@ -5,6 +5,8 @@ $stacking-order: (
   userlist: 10,
   userbutton: 20,
 );
+$activator-height: rem(66px);
+$max-content-height: calc(100vh - #{$activator-height * 2});
 
 .Menu {
   position: relative;
@@ -28,6 +30,7 @@ $stacking-order: (
   flex-shrink: 0;
   align-items: center;
   width: 100%;
+  height: $activator-height;
   padding: spacing();
   background-color: color('white');
   color: color('ink');
@@ -68,7 +71,7 @@ $stacking-order: (
 .ContentWrapper {
   position: absolute;
   z-index: z-index(userlist, $stacking-order);
-  top: 0;
+  top: calc(100% - 1px);
   right: 0;
   left: 0;
   bottom: 0;
@@ -89,7 +92,7 @@ $stacking-order: (
 }
 
 .Content {
-  max-height: 100%;
+  max-height: $max-content-height;
   overflow: hidden;
   background-color: color('white');
   box-shadow: shadow();
