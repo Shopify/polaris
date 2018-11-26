@@ -1,6 +1,6 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {ValidationMap} from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import {LinkLikeComponent} from '../UnstyledLink';
 import {Theme, THEME_CONTEXT_TYPES as polarisTheme} from '../ThemeProvider';
 import {
