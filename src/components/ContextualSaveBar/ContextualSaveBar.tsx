@@ -23,6 +23,8 @@ interface DiscardActionProps {
 type CombinedActionProps = DiscardActionProps & Action;
 
 export interface Props {
+  /** Extend the contents section to be flush with the left edge  */
+  alignContentFlush?: boolean;
   /** Accepts a string of content that will be rendered to the left of the actions */
   message?: string;
   /** Save or commit contextual save bar action with text defaulting to 'Save' */

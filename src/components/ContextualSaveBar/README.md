@@ -132,7 +132,38 @@ Use the save action to provide an opportunity to save a newly-created resource. 
       />
     </Frame>
   </AppProvider>
-  );
+</div>
+```
+
+### Contextual save bar with flush contents
+
+Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and
+repurpose that space to extend the message contents fully to the left side of the container.
+
+```jsx
+<div style={{height: '250px'}}>
+  <AppProvider
+    theme={{
+      logo: {
+        width: 124,
+        contextualSaveBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    }}
+  >
+    <Frame>
+      <ContextualSaveBar
+        alignContentFlush
+        message="Unsaved changes"
+        saveAction={{
+          onAction: () => console.log('add form submit logic'),
+        }}
+        discardAction={{
+          onAction: () => console.log('add clear form logic'),
+        }}
+      />
+    </Frame>
+  </AppProvider>
 </div>
 ```
 

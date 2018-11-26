@@ -29,6 +29,7 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
     const {discardConfirmationModalVisible} = this.state;
 
     const {
+      alignContentFlush,
       message,
       discardAction,
       saveAction,
@@ -100,12 +101,16 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
       />
     );
 
+    const logoMarkup = alignContentFlush ? null : (
+      <div className={styles.LogoContainer} style={{width}}>
+        {imageMarkup}
+      </div>
+    );
+
     return (
       <React.Fragment>
         <div className={styles.ContextualSaveBar}>
-          <div className={styles.LogoContainer} style={{width}}>
-            {imageMarkup}
-          </div>
+          {logoMarkup}
           <div className={styles.Contents}>
             <h2 className={styles.Message}>{message}</h2>
             <Stack spacing="tight" wrap={false}>
