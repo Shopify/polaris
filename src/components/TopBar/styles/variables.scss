@@ -8,3 +8,31 @@ $stacking-order: (
 // Once the frame is rendering our React routes
 $large-width: layout-width(primary, max) + layout-width(secondary, max) +
   spacing(tight);
+
+$activator-background-colors: (
+  focus: rgba(color('white'), 0.16),
+  hover: rgba(color('white'), 0.08),
+  active: rgba(color('black'), 0.28),
+);
+
+@function activator-background-color($state) {
+  @return map-get($activator-background-colors, $state);
+}
+
+@mixin topbar-activator {
+  &:focus {
+    background-color: activator-background-color(focus);
+    outline: none;
+  }
+
+  &:hover {
+    background-color: activator-background-color(hover);
+  }
+
+  &:active,
+  &[aria-expanded='true'] {
+    background-color: activator-background-color(active);
+    outline: none;
+    transition: none;
+  }
+}

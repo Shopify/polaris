@@ -16,25 +16,18 @@ $shop-details-width: layout-width(nav) + rem(60px);
   }
 }
 
-.ShopDetailsWrapper {
-  position: relative;
-  z-index: z-index(shop-details, $stacking-order);
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
 .ShopDetails {
   display: none;
 
   @include breakpoint-after(nav-min-window-corrected()) {
-    display: block;
+    position: relative;
+    z-index: z-index(shop-details, $stacking-order);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: layout-width(nav);
     max-width: $shop-details-width;
     padding: 0 spacing(tight) 0 spacing(tight);
-  }
-
-  @include page-content-breakpoint-before(1000px) {
-    max-width: layout-width(nav);
   }
 }
 
@@ -76,8 +69,8 @@ $shop-details-width: layout-width(nav) + rem(60px);
 }
 
 .Contents {
-  @include page-layout;
   z-index: z-index(content, $stacking-order);
+  position: relative;
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
@@ -85,6 +78,24 @@ $shop-details-width: layout-width(nav) + rem(60px);
   height: 100%;
 }
 
-.Navigation {
-  display: flex;
+.SearchWrapper {
+  @include page-layout;
+  width: 100%;
+  margin: 0;
+  max-width: none;
+}
+
+.SearchField {
+  width: 100%;
+  padding-left: calc((100vw - #{layout-width(nav)} - #{$page-max-width}) / 2);
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    padding-left: 0;
+  }
+}
+
+.SecondaryMenu {
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    display: none;
+  }
 }

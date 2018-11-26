@@ -18,7 +18,7 @@ interface State {
 
 class ShopSwitcher extends React.Component<ComposedProps, State> {
   state = {
-    open: true,
+    open: false,
   };
 
   render() {
@@ -39,24 +39,26 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         source={logo.topBarSource || ''}
         alt={logo.accessibilityLabel || ''}
         className={styles.Logo}
-        style={{width: getWidth(logo, 28)}}
+        style={{width: getWidth(logo, 25)}}
       />
     );
 
     const activator = (
-      <button
-        type="button"
-        className={styles.Activator}
-        onClick={this.togglePopover}
-      >
-        {logoMarkup}
-        <span className={styles.ShopName}>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </span>
-        <span className={styles.Icon}>
-          <Icon source="chevronDown" color="white" />
-        </span>
-      </button>
+      <div className={styles.ActivatorWrapper}>
+        <button
+          type="button"
+          className={styles.Activator}
+          onClick={this.togglePopover}
+        >
+          {logoMarkup}
+          <span className={styles.ShopName}>
+            <TextStyle variation="strong">{name}</TextStyle>
+          </span>
+          <span className={styles.Icon}>
+            <Icon source="chevronDown" color="white" />
+          </span>
+        </button>
+      </div>
     );
 
     return (

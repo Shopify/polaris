@@ -10,6 +10,7 @@ import {Props as ToastProps} from '../Toast';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
+import {Props as UserMenuProps} from '../TopBar/components/UserMenu';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
 import {FrameContext, frameContextTypes} from '../types';
@@ -39,6 +40,7 @@ export interface Props {
 
 export interface State {
   mobileView?: boolean;
+  mobileUserMenuProps?: UserMenuProps;
   skipFocused?: boolean;
   globalRibbonHeight: number;
   loadingStack: number;
@@ -54,6 +56,15 @@ const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 export type CombinedProps = Props & WithAppProviderProps;
 
+export interface UserMenuContextTypes {
+  mobileView: boolean;
+  mobileUserMenuProps?: UserMenuProps;
+  setMobileUserMenuProps?(props: UserMenuProps): void;
+}
+export const UserMenuContext = React.createContext<UserMenuContextTypes>({
+  mobileView: isMobileView(),
+});
+
 export class Frame extends React.PureComponent<CombinedProps, State> {
   static childContextTypes = frameContextTypes;
 
@@ -64,6 +75,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     toastMessages: [],
     mobileView: isMobileView(),
     showContextualSaveBar: false,
+    mobileUserMenuProps: undefined,
   };
 
   private contextualSaveBar: ContextualSaveBarProps | null;
@@ -104,6 +116,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       toastMessages,
       showContextualSaveBar,
       mobileView,
+      mobileUserMenuProps,
     } = this.state;
     const {
       children,
@@ -247,11 +260,19 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         {...navigationAttributes}
       >
         {skipMarkup}
-        {topBarMarkup}
-        {contextualSaveBarMarkup}
-        {loadingMarkup}
-        {navigationOverlayMarkup}
-        {navigationMarkup}
+        <UserMenuContext.Provider
+          value={{
+            mobileView,
+            mobileUserMenuProps,
+            setMobileUserMenuProps: this.setMobileUserMenuProps,
+          }}
+        >
+          {topBarMarkup}
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {navigationOverlayMarkup}
+          {navigationMarkup}
+        </UserMenuContext.Provider>
         <main
           className={styles.Main}
           id={APP_FRAME_MAIN}
@@ -264,6 +285,11 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
+  }
+
+  @autobind
+  private setMobileUserMenuProps(userMenuProps: UserMenuProps) {
+    this.setState({mobileUserMenuProps: userMenuProps});
   }
 
   @autobind

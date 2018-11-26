@@ -6,7 +6,7 @@ $stacking-order: (
   userbutton: 20,
 );
 $activator-height: rem(66px);
-$max-content-height: calc(100vh - #{$activator-height * 2});
+$max-content-height: calc(100vh - #{$activator-height});
 
 .Menu {
   position: relative;

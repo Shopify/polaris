@@ -1,46 +1,77 @@
 import * as React from 'react';
-import Menu, {Props as MenuProps} from '../Menu';
-import Avatar, {Props as AvatarProps} from '../../../Avatar';
+import {autobind} from '@shopify/javascript-utilities/decorators';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {UserMenuContext, UserMenuContextTypes} from '../../../Frame/Frame';
+import {IconableAction} from '../../../../types';
+import {Props as MessageProps} from '../Message';
+import TopBar from '../../../TopBar';
+import {Props as AvatarProps} from '../../../Avatar';
 
-export interface Props {
-  name?: MenuProps['title'];
-  detail?: MenuProps['detail'];
-  actions?: MenuProps['actions'];
-  message?: MenuProps['message'];
-  avatarInitials: AvatarProps['initials'];
-  avatarSource?: AvatarProps['source'];
-  activatorAccessibilityLabel?: string;
+interface UserActionSection {
+  id: string;
+  items: IconableAction[];
 }
 
-function UserMenu({
-  name,
-  detail,
-  actions,
-  message,
-  avatarInitials,
-  avatarSource,
-  activatorAccessibilityLabel,
-}: Props) {
-  const avatar = (
-    <Avatar
-      size="small"
-      source={avatarSource}
-      initials={avatarInitials && avatarInitials.replace(' ', '')}
-    />
-  );
+export interface Props {
+  name: string;
+  detail?: string;
+  actions: UserActionSection[];
+  message?: MessageProps;
+  avatarInitials: string;
+  avatarSource?: AvatarProps['source'];
+}
 
-  return (
-    <Menu
-      title={name}
-      detail={detail}
-      actions={actions}
-      message={message}
-      avatar={avatar}
-      activatorAccessibilityLabel={
-        activatorAccessibilityLabel || 'Show user menu'
-      }
-    />
-  );
+interface State {
+  open: boolean;
+}
+
+class UserMenu extends React.Component<Props, State> {
+  state = {
+    open: false,
+  };
+
+  render() {
+    const {
+      name,
+      detail,
+      actions,
+      message,
+      avatarInitials,
+      avatarSource,
+    } = this.props;
+    const {open} = this.state;
+
+    const userMenuProps = {
+      actions,
+      message,
+      name,
+      detail,
+      initials: avatarInitials,
+      avatar: avatarSource,
+      onToggle: this.handleToggle,
+      open,
+    };
+
+    return (
+      <UserMenuContext.Consumer>
+        {({
+          mobileUserMenuProps,
+          setMobileUserMenuProps,
+        }: UserMenuContextTypes) => {
+          if (!mobileUserMenuProps && setMobileUserMenuProps) {
+            setMobileUserMenuProps(userMenuProps);
+          }
+          return null;
+        }}
+      </UserMenuContext.Consumer>
+    );
+  }
+
+  @autobind
+  private handleToggle() {
+    const {open} = this.state;
+    this.setState({open: !open});
+  }
 }
 
 export default UserMenu;

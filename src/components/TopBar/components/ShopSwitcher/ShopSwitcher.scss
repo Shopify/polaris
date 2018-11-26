@@ -1,12 +1,4 @@
-$activator-variables: (
-  focus-background-color: rgba(color('white'), 0.16),
-  hover-background-color: rgba(color('white'), 0.08),
-  active-background-color: rgba(color('black'), 0.28),
-);
-
-@function shop-switcher($variable) {
-  @return map-get($activator-variables, $variable);
-}
+@import '../../styles/variables';
 
 .Activator {
   width: 100%;
@@ -17,21 +9,7 @@ $activator-variables: (
   align-items: center;
   padding: spacing(extra-tight) spacing(tight);
   border-radius: border-radius();
-
-  &:focus {
-    background-color: shop-switcher(focus-background-color);
-  }
-
-  &:hover {
-    background-color: shop-switcher(hover-background-color);
-  }
-
-  &:active,
-  &[aria-expanded='true'] {
-    background-color: shop-switcher(active-background-color);
-    outline: none;
-    transition: none;
-  }
+  @include topbar-activator;
 }
 
 .Icon {

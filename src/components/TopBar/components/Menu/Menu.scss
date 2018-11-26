@@ -1,10 +1,10 @@
+@import '../../styles/variables';
+
 $activator-variables: (
   min-width: rem(36px),
   border-left: 1px solid rgba(color('black'), 0.42),
   transition: all 0.1s,
-  focus-background-color: rgba(color('white'), 0.16),
-  hover-background-color: rgba(color('white'), 0.08),
-  active-background-color: rgba(color('black'), 0.28),
+  focus-opacity: 0.85,
 );
 
 @function menu($variable) {
@@ -26,27 +26,13 @@ $activator-variables: (
   cursor: pointer;
   transition: menu(transition);
 
-  &:focus {
-    background-color: menu(focus-background-color);
-    outline: none;
-  }
-
-  &:hover {
-    background-color: menu(hover-background-color);
-  }
-
-  &:active,
-  &[aria-expanded='true'] {
-    background-color: menu(active-background-color);
-    outline: none;
-    transition: none;
-  }
+  @include topbar-activator;
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
     &:focus,
     &:hover {
       background-color: transparent;
-      opacity: 0.85;
+      opacity: menu(focus-opacity);
     }
   }
 }

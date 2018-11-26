@@ -268,7 +268,11 @@ export default class Playground extends React.Component<never, never> {
           },
         }}
       >
-        <Frame topBar={topBar} navigation={navigation} showMobileNavigation>
+        <Frame
+          topBar={topBar}
+          navigation={navigation}
+          showMobileNavigation={false}
+        >
           <Page title="Playground" />
         </Frame>
       </AppProvider>

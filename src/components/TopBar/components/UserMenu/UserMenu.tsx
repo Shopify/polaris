@@ -3,6 +3,8 @@ import {IconableAction} from '../../../../types';
 
 import Avatar, {Props as AvatarProps} from '../../../Avatar';
 import MessageIndicator from '../../../MessageIndicator';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {UserMenuContext, UserMenuContextTypes} from '../../../Frame/Frame';
 
 import Menu, {MessageProps} from '../Menu';
 
@@ -27,7 +29,7 @@ export interface Props {
   onToggle(): void;
 }
 
-export default function UserMenu({
+function UserMenuComponent({
   name,
   detail,
   avatar,
@@ -66,5 +68,18 @@ export default function UserMenu({
       actions={actions}
       message={message}
     />
+  );
+}
+
+export default function UserMenu(props: Props) {
+  return (
+    <UserMenuContext.Consumer>
+      {({mobileUserMenuProps, mobileView}: UserMenuContextTypes) => {
+        if (mobileUserMenuProps && mobileView) {
+          return <UserMenuComponent {...mobileUserMenuProps} />;
+        }
+        return <UserMenuComponent {...props} />;
+      }}
+    </UserMenuContext.Consumer>
   );
 }
