@@ -138,8 +138,10 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         </div>
         <div className={styles.Contents}>
           {searchMarkup}
-          {secondaryMenu}
-          {userMenu}
+          <div className={styles.Navigation}>
+            {secondaryMenu}
+            {userMenu}
+          </div>
         </div>
       </div>
     );

@@ -10,26 +10,6 @@ $stacking-order: (
   action: 3,
 );
 
-.Wrapper {
-  position: absolute;
-  right: 0;
-  left: layout-width(nav);
-
-  @media all and (max-width: 1200px) {
-    position: relative;
-    left: 0;
-    width: 100%;
-  }
-}
-
-.InnerWrapper {
-  @include page-layout;
-
-  @include breakpoint-before(layout-width(page-with-nav), false) {
-    padding: 0 !important;
-  }
-}
-
 .SearchField {
   position: relative;
   display: flex;

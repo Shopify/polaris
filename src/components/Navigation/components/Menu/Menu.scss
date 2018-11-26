@@ -65,19 +65,17 @@ $stacking-order: (
   font-size: font-size(body);
 }
 
-.List {
+.ContentWrapper {
   position: absolute;
   z-index: z-index(userlist, $stacking-order);
-  top: calc(100% - 1px);
+  top: 0;
   right: 0;
   left: 0;
+  bottom: 0;
   margin: 0;
-  padding-bottom: spacing(tight);
   transform: translateY(-10%);
   opacity: 0;
   pointer-events: none;
-  background-color: color('white');
-  box-shadow: shadow();
   will-change: transform, opacity;
   transition: transform duration() easing(), opacity duration() easing();
   display: none;
@@ -86,8 +84,18 @@ $stacking-order: (
     transform: translateY(0);
     opacity: 1;
     pointer-events: initial;
-    display: initial;
+    display: block;
   }
+}
+
+.Content {
+  max-height: 100%;
+  overflow: hidden;
+  background-color: color('white');
+  box-shadow: shadow();
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .Icon {

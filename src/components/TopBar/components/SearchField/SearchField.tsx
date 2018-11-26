@@ -77,33 +77,29 @@ export default class SearchField extends React.Component<Props, never> {
     );
 
     return (
-      <div className={styles.Wrapper}>
-        <div className={styles.InnerWrapper}>
-          <div
-            className={className}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-          >
-            <input
-              className={styles.Input}
-              placeholder={placeholder}
-              type="search"
-              autoCapitalize="off"
-              autoComplete="off"
-              autoCorrect="off"
-              ref={this.input}
-              value={value}
-              onChange={this.handleChange}
-              onKeyDown={preventDefault}
-            />
-            <span className={styles.Icon}>
-              <Icon source="search" />
-            </span>
+      <div
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+      >
+        <input
+          className={styles.Input}
+          placeholder={placeholder}
+          type="search"
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
+          ref={this.input}
+          value={value}
+          onChange={this.handleChange}
+          onKeyDown={preventDefault}
+        />
+        <span className={styles.Icon}>
+          <Icon source="search" />
+        </span>
 
-            {clearMarkup}
-            <div className={styles.Backdrop} />
-          </div>
-        </div>
+        {clearMarkup}
+        <div className={styles.Backdrop} />
       </div>
     );
   }

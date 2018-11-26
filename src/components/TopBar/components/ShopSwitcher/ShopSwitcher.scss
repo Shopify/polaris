@@ -10,6 +10,7 @@ $activator-variables: (
 
 .Activator {
   width: 100%;
+  height: rem(40px);
   @include unstyled-button;
   color: var(--top-bar-color);
   display: flex;
@@ -38,7 +39,7 @@ $activator-variables: (
 }
 
 .ShopName {
-  margin: 0 spacing(extra-tight) 0 spacing(tight);
+  margin: 0 spacing(extra-tight) 0 rem(12px);
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;

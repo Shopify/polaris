@@ -12,8 +12,115 @@ import {
 const shopSwitcherProps = {
   searchPlaceholder: 'Search stores',
   noResultsLabel: 'No shops found.',
-  activeIndex: 2,
+  activeIndex: 1,
   shops: [
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name:
+        "Little Victories Europe Division over the rainbow where only Tobi can see it and maybe Jakob but that's it okay maybe Anthony.",
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name:
+        "Little Victories Europe Division over the rainbow where only Tobi can see it and maybe Jakob but that's it okay maybe Anthony.",
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name:
+        "Little Victories Europe Division over the rainbow where only Tobi can see it and maybe Jakob but that's it okay maybe Anthony.",
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
     {
       url: 'https://little-victories.myshopify.io',
       name: 'Little Victories CA',
@@ -107,7 +214,7 @@ export default class Playground extends React.Component<never, never> {
         showNavigationToggle
         searchField={searchField}
         userMenu={userMenu}
-        // secondaryMenu={supportMenu}
+        secondaryMenu={userMenu}
         shopSwitcher={shopSwitcher}
       />
     );
@@ -137,7 +244,7 @@ export default class Playground extends React.Component<never, never> {
     const navigation = (
       <Navigation
         location="/"
-        // userMenu={mobileUserMenu}
+        userMenu={mobileUserMenu}
         shopSwitcher={mobileShopSwitcher}
       >
         <Navigation.Section

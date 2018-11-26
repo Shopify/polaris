@@ -69,7 +69,6 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         {(searchField, shopsList) => (
           <Popover
             fullHeight
-            fullWidth
             active={open}
             activator={activator}
             onClose={this.togglePopover}

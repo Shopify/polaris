@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Image from '../../../Image';
+import Scrollable from '../../../Scrollable';
 import Menu from '../Menu';
 import Switcher, {BaseProps as SwitcherProps} from '../../../ShopSwitcher';
 import {getWidth} from '../../../../utilities/getWidth';
@@ -26,7 +27,7 @@ function ShopSwitcher({
     <Image
       source={logo.topBarSource || ''}
       alt={logo.accessibilityLabel || ''}
-      style={{width: getWidth(logo, 28)}}
+      style={{width: getWidth(logo, 26)}}
     />
   );
 
@@ -43,10 +44,12 @@ function ShopSwitcher({
         noResultsLabel={noResultsLabel}
       >
         {(searchField, shopsList) => (
-          <div>
+          <React.Fragment>
             {searchField}
-            {shopsList}
-          </div>
+            <Scrollable vertical shadow>
+              {shopsList}
+            </Scrollable>
+          </React.Fragment>
         )}
       </Switcher>
     </Menu>

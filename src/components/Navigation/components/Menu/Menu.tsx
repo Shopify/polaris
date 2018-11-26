@@ -141,10 +141,12 @@ export default class Menu extends React.PureComponent<Props, State> {
             />
           </span>
         </button>
-        <div className={styles.List} aria-hidden={!menuExpanded}>
-          {itemsMarkup}
-          {children}
-          {messageMarkup}
+        <div className={styles.ContentWrapper} aria-hidden={!menuExpanded}>
+          <div className={styles.Content}>
+            {itemsMarkup}
+            {children}
+            {messageMarkup}
+          </div>
         </div>
       </div>
     );
