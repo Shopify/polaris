@@ -6,7 +6,6 @@ import Image from '../../../Image';
 import Popover from '../../../Popover';
 import Switcher, {BaseProps as SwitcherProps} from '../../../ShopSwitcher';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-import {getWidth} from '../../../../utilities/getWidth';
 import * as styles from './ShopSwitcher.scss';
 
 type Props = SwitcherProps;
@@ -39,7 +38,6 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         source={logo.topBarSource || ''}
         alt={logo.accessibilityLabel || ''}
         className={styles.Logo}
-        style={{width: getWidth(logo, 25)}}
       />
     );
 

@@ -127,10 +127,15 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       </React.Fragment>
     ) : null;
 
+    const shopDetailsClassName = classNames(
+      styles.ShopDetails,
+      shopSwitcher && styles['ShopDetails-HasShopSwitcher'],
+    );
+
     return (
       <div className={styles.TopBar}>
         {navigationButtonMarkup}
-        <div className={styles.ShopDetails}>
+        <div className={shopDetailsClassName}>
           {logoMarkup}
           {shopSwitcher}
         </div>

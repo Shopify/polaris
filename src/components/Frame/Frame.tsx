@@ -250,11 +250,11 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         {skipMarkup}
         <UserMenuProvider mobileView={mobileView || false}>
           {topBarMarkup}
-          {contextualSaveBarMarkup}
-          {loadingMarkup}
-          {navigationOverlayMarkup}
           {navigationMarkup}
         </UserMenuProvider>
+        {contextualSaveBarMarkup}
+        {loadingMarkup}
+        {navigationOverlayMarkup}
         <main
           className={styles.Main}
           id={APP_FRAME_MAIN}

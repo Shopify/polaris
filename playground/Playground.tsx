@@ -7,6 +7,7 @@ import {
   Page,
   Frame,
   Icon,
+  ContextualSaveBar,
 } from '@shopify/polaris';
 
 const shopSwitcherProps = {
@@ -166,8 +167,14 @@ const shopSwitcherProps = {
   ],
 };
 
-export default class Playground extends React.Component<never, never> {
+export default class Playground extends React.Component<never, any> {
+  state = {
+    userMenuOpen: true,
+  };
+
   render() {
+    const {userMenuOpen} = this.state;
+
     const searchField = (
       <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
     );
@@ -187,8 +194,8 @@ export default class Playground extends React.Component<never, never> {
         }}
         name="Jakob Stecher"
         initials="DR"
-        open={false}
-        onToggle={noop}
+        open={userMenuOpen}
+        onToggle={() => this.setState({userMenuOpen: !userMenuOpen})}
       />
     );
 
@@ -264,7 +271,11 @@ export default class Playground extends React.Component<never, never> {
       <AppProvider
         theme={{
           logo: {
-            topBarSource: './shopify-logo.png',
+            width: 124,
+            topBarSource:
+              'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+            contextualSaveBarSource:
+              'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
           },
         }}
       >
@@ -273,6 +284,17 @@ export default class Playground extends React.Component<never, never> {
           navigation={navigation}
           showMobileNavigation={false}
         >
+          {/* <ContextualSaveBar
+            message="Unsaved changes"
+            saveAction={{
+              onAction: () => console.log('add form submit logic'),
+              loading: false,
+              disabled: false,
+            }}
+            discardAction={{
+              onAction: () => console.log('add clear form logic'),
+            }}
+          /> */}
           <Page title="Playground" />
         </Frame>
       </AppProvider>

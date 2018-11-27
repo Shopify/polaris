@@ -27,7 +27,13 @@ $shop-details-width: layout-width(nav) + rem(60px);
     height: 100%;
     min-width: layout-width(nav);
     max-width: $shop-details-width;
-    padding: 0 spacing(tight) 0 spacing(tight);
+    padding: 0 spacing(tight) 0 spacing();
+  }
+}
+
+.ShopDetails-HasShopSwitcher {
+  @include breakpoint-after(nav-min-window-corrected()) {
+    padding-left: spacing(tight);
   }
 }
 
