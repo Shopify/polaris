@@ -3,7 +3,7 @@ import {Page} from '@shopify/polaris';
 
 interface State {}
 
-export default class Playground extends React.Component<never, State> {
+export default class Playground extends React.Component<{}, State> {
   render() {
     return (
       <Page

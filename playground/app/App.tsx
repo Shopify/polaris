@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {AppProvider} from '@shopify/polaris';
 
 import {
@@ -14,24 +14,18 @@ import {
 export default function App() {
   return (
     <AppProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Playground} />
-          <Route path="/all-components" exact component={AllComponents} />
-          <Route path="/examples" exact component={ExamplesList} />
-          <Route
-            path="/:componentSlug"
-            exact
-            component={ComponentAllExamples}
-          />
-          <Route
-            path="/:componentSlug/:exampleSlug"
-            exact
-            component={ComponentSingleExample}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Playground} />
+        <Route path="/all-components" exact component={AllComponents} />
+        <Route path="/examples" exact component={ExamplesList} />
+        <Route path="/:componentSlug" exact component={ComponentAllExamples} />
+        <Route
+          path="/:componentSlug/:exampleSlug"
+          exact
+          component={ComponentSingleExample}
+        />
+        <Route component={NotFound} />
+      </Switch>
     </AppProvider>
   );
 }

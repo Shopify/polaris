@@ -37,7 +37,7 @@ module.exports = (env = {production: false}) => ({
   entry: [
     'react-hot-loader/patch',
     '@shopify/polaris/styles/global.scss',
-    path.join(__dirname, 'app/index.tsx'),
+    path.join(__dirname, 'client/index.ts'),
   ],
   output: {
     filename: '[name].js',
@@ -134,25 +134,23 @@ module.exports = (env = {production: false}) => ({
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              minified: Boolean(env.production),
+              presets: [
+                ['shopify/web', {modules: false}],
+                ['shopify/react', {hot: true}],
+              ],
+              cacheDirectory: path.resolve(__dirname, 'build/cache/typescript'),
+            },
+          },
+          {
+            loader: 'ts-loader',
             options: {
               silent: true,
-              useBabel: true,
-              useCache: true,
-              useTranspileModule: true,
               transpileOnly: true,
-              cacheDirectory: path.resolve(
-                __dirname,
-                'build/.cache/typescript',
-              ),
-              babelOptions: {
-                babelrc: false,
-                minified: Boolean(env.production),
-                presets: [
-                  ['shopify/web', {modules: false}],
-                  ['shopify/react', {hot: true}],
-                ],
-              },
+              experimentalFileCaching: true,
             },
           },
         ],
