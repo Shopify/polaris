@@ -214,7 +214,7 @@ export default class Playground extends React.Component<never, never> {
         showNavigationToggle
         searchField={searchField}
         userMenu={userMenu}
-        secondaryMenu={userMenu}
+        secondaryMenu={supportMenu}
         shopSwitcher={shopSwitcher}
       />
     );
@@ -230,7 +230,6 @@ export default class Playground extends React.Component<never, never> {
         avatarInitials="KV"
         name="Koen Vendrik"
         detail="Store name"
-        activatorAccessibilityLabel="Show user menu"
       />
     );
 

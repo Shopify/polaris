@@ -16,7 +16,6 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
 
 .Details {
   max-width: rem(160px);
-  margin-right: spacing(loose);
   margin-left: spacing();
 
   @include breakpoint-before(layout-width(page-with-nav), false) {

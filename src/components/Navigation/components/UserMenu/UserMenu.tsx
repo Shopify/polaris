@@ -1,10 +1,13 @@
 import * as React from 'react';
+import {isEqual} from 'lodash';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {UserMenuContext, UserMenuContextTypes} from '../../../Frame/Frame';
+import {
+  Consumer as UserMenuConsumer,
+  UserMenuContext as UserMenuContextTypes,
+} from '../../../TopBar/components/UserMenu/Context';
 import {IconableAction} from '../../../../types';
 import {Props as MessageProps} from '../Message';
-import TopBar from '../../../TopBar';
 import {Props as AvatarProps} from '../../../Avatar';
 
 interface UserActionSection {
@@ -23,6 +26,41 @@ export interface Props {
 
 interface State {
   open: boolean;
+}
+
+interface TransmitterProps {
+  userMenuProps: UserMenuContextTypes['mobileUserMenuProps'];
+  setMobileUserMenuProps: UserMenuContextTypes['setMobileUserMenuProps'];
+}
+
+interface TransmitterState {
+  userMenuProps: UserMenuContextTypes['mobileUserMenuProps'];
+}
+
+class Transmitter extends React.Component<TransmitterProps, TransmitterState> {
+  static getDerivedStateFromProps(
+    {setMobileUserMenuProps, userMenuProps}: TransmitterProps,
+    {userMenuProps: prevUserMenuProps}: TransmitterState,
+  ) {
+    if (
+      setMobileUserMenuProps &&
+      userMenuProps &&
+      !isEqual(userMenuProps, prevUserMenuProps)
+    ) {
+      setMobileUserMenuProps(userMenuProps);
+      return {userMenuProps};
+    }
+    return null;
+  }
+
+  state = {
+    // eslint-disable-next-line react/no-unused-state
+    userMenuProps: undefined,
+  };
+
+  render() {
+    return null;
+  }
 }
 
 class UserMenu extends React.Component<Props, State> {
@@ -53,17 +91,14 @@ class UserMenu extends React.Component<Props, State> {
     };
 
     return (
-      <UserMenuContext.Consumer>
-        {({
-          mobileUserMenuProps,
-          setMobileUserMenuProps,
-        }: UserMenuContextTypes) => {
-          if (!mobileUserMenuProps && setMobileUserMenuProps) {
-            setMobileUserMenuProps(userMenuProps);
-          }
-          return null;
-        }}
-      </UserMenuContext.Consumer>
+      <UserMenuConsumer>
+        {({setMobileUserMenuProps}) => (
+          <Transmitter
+            setMobileUserMenuProps={setMobileUserMenuProps}
+            userMenuProps={userMenuProps}
+          />
+        )}
+      </UserMenuConsumer>
     );
   }
 
