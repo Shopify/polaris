@@ -7,5 +7,5 @@ export interface ComponentReadme {
 export interface ExtractedExample {
   name: string;
   slug: string;
-  code: string;
+  code: (scope: {[key: string]: any}) => any;
 }

@@ -4,7 +4,7 @@ const fs = require('fs');
 const glob = require('glob');
 const chalk = require('chalk');
 const grayMatter = require('gray-matter');
-const transpileExample = require('./transpileExample');
+const transform = require('@babel/standalone').transform;
 
 module.exports = function loader() {
   const files = glob.sync(`${__dirname}/../../src/components/***/README.md`);
@@ -16,9 +16,37 @@ module.exports = function loader() {
   });
   this.cacheable();
 
-  const stringyData = JSON.stringify(parseMarkdown(files), null, 2);
+  const data = parseMarkdown(files);
 
-  return `module.exports = ${stringyData};`;
+  const placeholderMappings = {};
+
+  data.forEach((readme, readmeIdx) => {
+    readme.examples.forEach((example, exampleIdx) => {
+      const placeholder = `___CODEPLACEHOLDER__${readmeIdx}__${exampleIdx}___`;
+
+      placeholderMappings[`"${placeholder}"`] =
+        data[readmeIdx].examples[exampleIdx].code;
+      data[readmeIdx].examples[exampleIdx].code = placeholder;
+    });
+  });
+
+  const stringyData = JSON.stringify(data, null, 2).replace(
+    /"___CODEPLACEHOLDER__(\d+)__(\d+)___"/g,
+    (match) => {
+      return `function (scope) {
+        const fn = function() { return ${placeholderMappings[match]} };
+        const scopeKeys = Object.keys(scope);
+        const scopeValues = scopeKeys.map((key) => scope[key]);
+
+        const fnString = fn.toString().replace('SCOPE_VARIABLES_PLACEHOLDER', scopeKeys.join(', '));
+        return eval("(" + fnString + ")()")(...scopeValues);
+      }`;
+    },
+  );
+
+  return transform(`module.exports = ${stringyData}`, {
+    presets: ['es2015', 'react', ['stage-1', {decoratorsLegacy: true}]],
+  }).code;
 };
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
@@ -142,7 +170,7 @@ function parseCodeExamples(data, file) {
     let code = '';
     if (codeBlock !== null) {
       try {
-        code = transpileExample(stripCodeBlock(codeBlock[0]));
+        code = wrapExample(stripCodeBlock(codeBlock[0]));
       } catch (err) {
         throw new Error(
           chalk`🚨 {red [${
@@ -180,6 +208,29 @@ function parseCodeExamples(data, file) {
     slug: slugify(matter.data.name),
     examples,
   };
+}
+
+function wrapExample(code) {
+  const classPattern = /class (\w+) extends React.Component/g;
+  const classMatch = classPattern.exec(code);
+
+  if (classMatch) {
+    return `(function(SCOPE_VARIABLES_PLACEHOLDER) {
+      ${code}
+      return ${classMatch[1]};
+    });`;
+  } else {
+    return `(function(SCOPE_VARIABLES_PLACEHOLDER) {
+      class Comp extends React.Component {
+        render() {
+          return (
+            ${code}
+          );
+        }
+      }
+      return Comp;
+    });`;
+  }
 }
 
 function slugify(value) {
