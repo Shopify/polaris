@@ -73,7 +73,7 @@ export default function UserMenu(props: Props) {
     <UserMenuConsumer>
       {({mobileUserMenuProps, mobileView}) => {
         if (mobileUserMenuProps && mobileView) {
-          return <UserMenuComponent {...mobileUserMenuProps} open />;
+          return <UserMenuComponent {...mobileUserMenuProps} />;
         }
         return <UserMenuComponent {...props} />;
       }}

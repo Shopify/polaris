@@ -1,30 +1,22 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Props as UserMenuProps} from './UserMenu';
+import {Props as UserMenuProps} from '../UserMenu';
+import UserMenuContext, {UserMenuContextTypes} from './context';
 
-export interface UserMenuContext {
-  mobileView?: boolean;
-  mobileUserMenuProps?: UserMenuProps;
-  setMobileUserMenuProps?(props: UserMenuProps): void;
-}
-
-interface ProviderProps {
+interface Props {
   mobileView: boolean;
   children: React.ReactNode;
 }
 
-const UserMenuContext = React.createContext<UserMenuContext>({});
-
-export const Consumer = UserMenuContext.Consumer;
-
-export class Provider extends React.Component<ProviderProps, UserMenuContext> {
+class Provider extends React.Component<Props, UserMenuContextTypes> {
   static getDerivedStateFromProps(
-    {mobileView: nextMobileView}: ProviderProps,
-    {mobileView}: UserMenuContext,
+    {mobileView: nextMobileView}: Props,
+    {mobileView}: UserMenuContextTypes,
   ) {
     if (nextMobileView !== mobileView) {
       return {mobileView: nextMobileView};
     }
+    return null;
   }
 
   state = {
@@ -51,3 +43,5 @@ export class Provider extends React.Component<ProviderProps, UserMenuContext> {
     this.setState({mobileUserMenuProps});
   }
 }
+
+export default Provider;
