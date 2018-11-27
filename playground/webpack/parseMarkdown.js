@@ -4,8 +4,19 @@ const fs = require('fs');
 const glob = require('glob');
 const chalk = require('chalk');
 const grayMatter = require('gray-matter');
-const transform = require('@babel/standalone').transform;
 
+/**
+ * A Webpack loader, that reads all README files, and returns an array of
+ * component readmes, and the examples contained within them.
+ *
+ * The `code` property of the examples are functions that will render a JSX
+ * component when called with a scope object that contains React and Polaris's
+ * exports. This allows us to inject all Polaris components into the function's
+ * scope whilemaintaining the current scope that contains the Babel helper
+ * functions. Unfortunatly this is only possible using eval() to
+ * generate a function with the correct local scope by dynamically creating
+ * a parameters list.
+ */
 module.exports = function loader() {
   const files = glob.sync(`${__dirname}/../../src/components/***/README.md`);
 
@@ -18,35 +29,62 @@ module.exports = function loader() {
 
   const data = parseMarkdown(files);
 
-  const placeholderMappings = {};
+  // Work around JSON.stringify() not supporting functions.
+  // First replace all code functions within the data with a placeholder string.
+  // This transforms:
+  // { code: function() {/* blah */ } }
+  // into:
+  // { code: "___CODEPLACEHOLDER__0__0___" }
+  const dataWithPlaceholders = data.map((readme, readmeIdx) => ({
+    ...readme,
+    examples: readme.examples.map((example, exampleIdx) => ({
+      ...example,
+      code: `___CODEPLACEHOLDER__${readmeIdx}__${exampleIdx}___`,
+    })),
+  }));
 
-  data.forEach((readme, readmeIdx) => {
-    readme.examples.forEach((example, exampleIdx) => {
-      const placeholder = `___CODEPLACEHOLDER__${readmeIdx}__${exampleIdx}___`;
-
-      placeholderMappings[`"${placeholder}"`] =
-        data[readmeIdx].examples[exampleIdx].code;
-      data[readmeIdx].examples[exampleIdx].code = placeholder;
-    });
-  });
-
-  const stringyData = JSON.stringify(data, null, 2).replace(
+  // Then stringify the data, and replace all the placeholder strings with the
+  // with the function declaration.
+  // This transforms:
+  // { code: "___CODEPLACEHOLDER__0__0___" }
+  // back into:
+  // { code: function() {/* blah */ } }
+  const stringyData = JSON.stringify(dataWithPlaceholders, null, 2).replace(
     /"___CODEPLACEHOLDER__(\d+)__(\d+)___"/g,
-    (match) => {
-      return `function (scope) {
-        const fn = function() { return ${placeholderMappings[match]} };
-        const scopeKeys = Object.keys(scope);
-        const scopeValues = scopeKeys.map((key) => scope[key]);
-
-        const fnString = fn.toString().replace('SCOPE_VARIABLES_PLACEHOLDER', scopeKeys.join(', '));
-        return eval("(" + fnString + ")()")(...scopeValues);
-      }`;
-    },
+    (_, readmeIdx, exampleIdx) =>
+      data[readmeIdx].examples[exampleIdx].code.toString(),
   );
 
-  return transform(`module.exports = ${stringyData}`, {
-    presets: ['es2015', 'react', ['stage-1', {decoratorsLegacy: true}]],
-  }).code;
+  // Example code does not have any scope attached to it by default. It boldly
+  // states `<Button>An example Button</Button>`, blindly trusting that `Button`
+  // is available in its scope.
+  //
+  // codeInvoker is responsible for providing a scope for an example function
+  // so that it will work. It does this by creating a new fuction with the scope
+  // defined as parameters and then calling that new function.
+  // Assuming it is called with
+  // codeInvoker(function() { return (<Button>Hi</Button>) } {React, Button})
+  // It will transform:
+  // function() { return (<Button>Hi</Button>) }
+  // into:
+  // function(React, Button) { return (<Button>Hi</Button>) }
+  // and then call that function with React and Button as the arguments
+  const codeInvoker = function(fn, scope) {
+    const scopeKeys = Object.keys(scope);
+    const scopeValues = scopeKeys.map((key) => scope[key]);
+
+    // Replace the empty parameter list with a list based upon the scope.
+    // We can't use a placeholder in the parmeter list and search/replace that
+    // because the placeholder's name may be mangled when the code is minified.
+    const fnString = fn
+      .toString()
+      .replace(/^function(\s*)\(\)/, `function$1(${scopeKeys.join(', ')})`);
+
+    // eslint-disable-next-line no-eval
+    return eval(`(${fnString})`)(...scopeValues);
+  };
+
+  return `const codeInvoker = ${codeInvoker};\nexport const components = ${stringyData};`;
 };
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
@@ -92,7 +130,7 @@ function parseMarkdown(files) {
   }
 
   console.log();
-  console.log('🔎 Parsing examples in component README.md files complete');
+  console.log('✅ Parsing examples in component README.md files complete');
 
   return parsedExamples;
 }
@@ -166,21 +204,8 @@ function parseCodeExamples(data, file) {
     const codeBlock = example.match(/```jsx(.|\n)*?```/g);
 
     const name = nameMatches !== null ? nameMatches[0].trim() : '';
-
-    let code = '';
-    if (codeBlock !== null) {
-      try {
-        code = wrapExample(stripCodeBlock(codeBlock[0]));
-      } catch (err) {
-        throw new Error(
-          chalk`🚨 {red [${
-            matter.data.name
-          }]} Example "${name}" contains a syntax error in ${filePath}: ${
-            err.message
-          }`,
-        );
-      }
-    }
+    const code =
+      codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
 
     return {name, slug: slugify(name), code};
   });
@@ -214,23 +239,33 @@ function wrapExample(code) {
   const classPattern = /class (\w+) extends React.Component/g;
   const classMatch = classPattern.exec(code);
 
+  let wrappedCode = '';
+
   if (classMatch) {
-    return `(function(SCOPE_VARIABLES_PLACEHOLDER) {
-      ${code}
-      return ${classMatch[1]};
-    });`;
+    wrappedCode = `${code}
+return ${classMatch[1]};
+`;
   } else {
-    return `(function(SCOPE_VARIABLES_PLACEHOLDER) {
-      class Comp extends React.Component {
-        render() {
-          return (
-            ${code}
-          );
-        }
-      }
-      return Comp;
-    });`;
+    wrappedCode = `return function() {
+      return (
+        ${code}
+      );
+    }`;
   }
+
+  // The eagle-eyed amongst you will spoty that the function passed to
+  // codeInvoker has no arguments. This is because the codeInvoker function
+  // shall dynamically modify the given function, adding items from the current
+  // scope as arguments. We can't do this with some kind of placeholder value
+  // (e.g. codeInvoker(function(PLACEHOLDER) {}, scope) and then replace the
+  // PLACEHOLDER because its name will get mangled as part of minification in
+  // production mode and thus searching for "PLACEHOLDER in the function's
+  // string representation shall fail.
+  return `function (scope) {
+    return codeInvoker(function () {
+      ${wrappedCode}
+    }, scope);
+  }`;
 }
 
 function slugify(value) {
