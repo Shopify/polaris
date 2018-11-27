@@ -458,6 +458,34 @@ describe('<ComboBox/>', () => {
       };
     });
 
+    it("will prevent default and select an item on the 'enter' keyup", () => {
+      const spy = jest.fn();
+      const comboBox = mountWithAppProvider(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={spy}
+        />,
+      );
+
+      const textField = comboBox.find(TextField);
+
+      async () => {
+        textField.simulate('click');
+        await listenerMap.keyup({keyCode: Key.DownArrow});
+      };
+
+      async () => {
+        textField.simulate('keyup', {
+          key: 'Enter',
+          preventDefault: spy,
+        });
+        await expect(spy).toHaveBeenCalledTimes(1);
+        expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
+      };
+    });
+
     it('activates the popover when the tab key is pressed', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox

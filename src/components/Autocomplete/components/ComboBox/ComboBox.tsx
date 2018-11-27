@@ -338,10 +338,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   @autobind
-  private handleEnter() {
+  private handleEnter(event: KeyboardEvent) {
     const {selectedOption} = this.state;
 
     if (this.state.popoverActive && selectedOption) {
+      event.preventDefault();
+
       if (isOption(selectedOption)) {
         this.handleSelection(selectedOption.value);
       } else {
