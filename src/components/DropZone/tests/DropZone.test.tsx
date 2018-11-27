@@ -246,7 +246,7 @@ describe('<DropZone />', () => {
 
   describe('overlayText', () => {
     const overlayText = 'overlay text';
-    it("doesn't renders the overlayText on small screens", () => {
+    it('does not render the overlayText on small screens', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithAppProvider(
         <DropZone overlayText={overlayText} />,
