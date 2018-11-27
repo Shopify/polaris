@@ -12,11 +12,11 @@ interface UserActionSection {
 }
 
 export interface Props {
-  name: string;
+  name?: string;
   detail?: string;
-  actions: UserActionSection[];
+  actions?: UserActionSection[];
   message?: MessageProps;
-  avatarInitials: string;
+  avatarInitials: AvatarProps['initials'];
   avatarSource?: AvatarProps['source'];
 }
 
@@ -41,9 +41,9 @@ class UserMenu extends React.Component<Props, State> {
     const {open} = this.state;
 
     const userMenuProps = {
-      actions,
+      actions: actions || [],
       message,
-      name,
+      name: name || '',
       detail,
       initials: avatarInitials,
       avatar: avatarSource,

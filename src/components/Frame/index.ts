@@ -1,4 +1,4 @@
 import Frame from './Frame';
 
-export {Props, UserMenuContext} from './Frame';
+export {Props} from './Frame';
 export default Frame;
