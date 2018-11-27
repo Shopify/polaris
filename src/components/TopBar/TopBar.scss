@@ -1,6 +1,6 @@
 @import './styles/variables';
 $icon-size: rem(20px);
-$shop-details-width: layout-width(nav) + rem(60px);
+$shop-details-width: layout-width(nav);
 
 .TopBar {
   position: relative;
@@ -25,14 +25,15 @@ $shop-details-width: layout-width(nav) + rem(60px);
     display: flex;
     align-items: center;
     height: 100%;
-    min-width: layout-width(nav);
-    max-width: $shop-details-width;
+    width: $shop-details-width;
     padding: 0 spacing(tight) 0 spacing();
   }
 }
 
 .ShopDetails-HasShopSwitcher {
   @include breakpoint-after(nav-min-window-corrected()) {
+    display: block;
+    padding-top: spacing(tight);
     padding-left: spacing(tight);
   }
 }
@@ -93,7 +94,7 @@ $shop-details-width: layout-width(nav) + rem(60px);
 
 .SearchField {
   width: 100%;
-  padding-left: calc((100vw - #{layout-width(nav)} - #{$page-max-width}) / 2);
+  padding-left: calc((100vw - #{$shop-details-width} - #{$page-max-width}) / 2);
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
     padding-left: 0;
