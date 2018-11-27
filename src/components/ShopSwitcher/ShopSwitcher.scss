@@ -1,3 +1,9 @@
+@mixin single-line-clamp {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .Search {
   padding: rem(12px) spacing();
   text-align: center;
@@ -13,17 +19,25 @@
   margin-top: -#{spacing(tight)};
 }
 
+.ShopItem {
+  width: 100%;
+}
+
 .ShopName {
   // stylelint-disable-next-line value-no-vendor-prefix
   display: -webkit-box;
   -webkit-line-clamp: 2;
   // stylelint-disable-next-line property-no-vendor-prefix
   -webkit-box-orient: vertical;
+  padding-bottom: spacing(extra-tight);
   overflow: hidden;
 
   @supports not (-webkit-line-clamp: 2) {
-    text-overflow: ellipsis;
-    white-space: nowrap;
     display: block;
+    @include single-line-clamp;
   }
+}
+
+.ShopUrl {
+  @include single-line-clamp;
 }

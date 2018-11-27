@@ -32,41 +32,13 @@ const shopSwitcherProps = {
       name: 'Little Victories CA',
     },
     {
-      url: 'https://little-victories.myshopify.io',
+      url:
+        'https://little-victories-little-victories-little-victories-little-victories.myshopify.io',
       name: 'Little Victories CA',
     },
     {
       url: 'https://little-victories.myshopify.io',
       name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name: 'Little Victories CA',
-    },
-    {
-      url: 'https://little-victories.myshopify.io',
-      name:
-        "Little Victories Europe Division over the rainbow where only Tobi can see it and maybe Jakob but that's it okay maybe Anthony.",
     },
     {
       url: 'https://little-victories.myshopify.io',
@@ -137,6 +109,35 @@ const shopSwitcherProps = {
     {
       url: 'https://little-victories.myshopify.io',
       name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name: 'Little Victories CA',
+    },
+    {
+      url: 'https://little-victories.myshopify.io',
+      name:
+        "Little Victories Europe Division over the rainbow where only Tobi can see it and maybe Jakob but that's it okay maybe Anthony.",
     },
     {
       url: 'https://little-victories.myshopify.io',

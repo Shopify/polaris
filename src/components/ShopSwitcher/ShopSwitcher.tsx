@@ -90,10 +90,21 @@ function filterShops(query: string, shops: Shop[], activeIndex: number) {
 
 function transformShopsToItems(shops: Shop[], activeIndex: number) {
   return shops.map(({name, url}, index) => ({
-    content: <span className={styles.ShopName}>{name}</span> as any,
+    content: (
+      <div className={styles.ShopItem}>
+        <div className={styles.ShopName}>{name}</div>
+        <div className={styles.ShopUrl}>
+          <TextStyle variation="subdued">{cleanUrl(url)}</TextStyle>
+        </div>
+      </div>
+    ) as any,
     url,
     active: index === activeIndex,
   }));
+}
+
+function cleanUrl(url: string) {
+  return url.replace(/https?:\/\//, '');
 }
 
 export default ShopSwitcher;
