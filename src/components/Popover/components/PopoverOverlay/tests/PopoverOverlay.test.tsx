@@ -13,6 +13,13 @@ interface HandlerMap {
 const listenerMap: HandlerMap = {};
 
 describe('<PopoverOverlay />', () => {
+  const mockProps = {
+    active: false,
+    id: 'PopoverOverlay-1',
+    activator: document.createElement('button'),
+    onClose: noop,
+  };
+
   let addEventListener: jest.SpyInstance;
   let removeEventListener: jest.SpyInstance;
 
@@ -154,5 +161,13 @@ describe('<PopoverOverlay />', () => {
 
     listenerMap.keyup({keyCode: Key.Escape});
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders the header when active', () => {
+    const header = <div />;
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay {...mockProps} active header={header} />,
+    );
+    expect(popoverOverlay.contains(header)).toBeTruthy();
   });
 });
