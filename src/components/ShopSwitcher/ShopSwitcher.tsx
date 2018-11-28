@@ -4,12 +4,9 @@ import TextField from '../TextField';
 import Icon from '../Icon';
 import TextStyle from '../TextStyle';
 import ActionList, {Props as ActionListProps} from '../ActionList';
+import {Shop} from './types';
+import {transformShopsToItems, filterShops} from './utilities';
 import * as styles from './ShopSwitcher.scss';
-
-interface Shop {
-  url: string;
-  name: string;
-}
 
 export interface BaseProps {
   shops: Shop[];
@@ -76,37 +73,11 @@ class ShopSwitcher extends React.Component<Props, State> {
   @autobind
   private handleQueryChange(query: string) {
     const {shops, activeIndex} = this.props;
-    this.setState({query, items: filterShops(query, shops, activeIndex)});
+    this.setState({
+      query,
+      items: transformShopsToItems(filterShops(query, shops), activeIndex),
+    });
   }
-}
-
-function filterShops(query: string, shops: Shop[], activeIndex: number) {
-  const lowerQuery = query.toLowerCase();
-  const newShops = shops.filter(
-    ({name, url}) =>
-      name.toLowerCase().startsWith(lowerQuery) ||
-      cleanUrl(url).startsWith(lowerQuery),
-  );
-  return transformShopsToItems(newShops, activeIndex);
-}
-
-function transformShopsToItems(shops: Shop[], activeIndex: number) {
-  return shops.map(({name, url}, index) => ({
-    content: (
-      <div className={styles.ShopItem}>
-        <div className={styles.ShopName}>{name}</div>
-        <div className={styles.ShopUrl}>
-          <TextStyle variation="subdued">{cleanUrl(url)}</TextStyle>
-        </div>
-      </div>
-    ) as any,
-    url,
-    active: index === activeIndex,
-  }));
-}
-
-function cleanUrl(url: string) {
-  return url.replace(/https?:\/\//, '');
 }
 
 export default ShopSwitcher;

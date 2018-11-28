@@ -226,6 +226,38 @@ describe('<TopBar />', () => {
       expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
     });
   });
+
+  describe('shopSwitcher', () => {
+    const mockShopSwitcher = (
+      <TopBar.ShopSwitcher
+        shops={[]}
+        activeIndex={0}
+        noResultsMessage=""
+        searchPlaceholder=""
+      />
+    );
+
+    it('renders', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar shopSwitcher={mockShopSwitcher} />,
+      );
+      expect(topBar.contains(mockShopSwitcher)).toBeTruthy();
+    });
+
+    it('doesnt render a logo when defined', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar shopSwitcher={mockShopSwitcher} />,
+        addPolarisContext({
+          logo: {
+            topBarSource: './assets/shopify.svg',
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(Image).exists()).toBeFalsy();
+    });
+  });
 });
 
 function addPolarisContext(logo: ThemeContext) {
