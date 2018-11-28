@@ -230,7 +230,12 @@ describe('<TopBar />', () => {
   describe('shopSwitcher', () => {
     const mockShopSwitcher = (
       <TopBar.ShopSwitcher
-        shops={[]}
+        shops={[
+          {
+            name: '',
+            url: '',
+          },
+        ]}
         activeIndex={0}
         noResultsMessage=""
         searchPlaceholder=""
@@ -245,7 +250,7 @@ describe('<TopBar />', () => {
     });
 
     it('doesnt render a logo when defined', () => {
-      const topBar = mountWithAppProvider(
+      const topBar = shallowWithAppProvider(
         <TopBar shopSwitcher={mockShopSwitcher} />,
         addPolarisContext({
           logo: {
