@@ -3,6 +3,7 @@ import ThemeProvider from './ThemeProvider';
 export {
   Theme,
   ThemeContext,
+  ThemeProviderContext as Context,
   ColorsToParse,
   ThemeVariant,
   ThemeColors,
@@ -15,5 +16,5 @@ export {
   createThemeContext,
   setTheme,
 } from './utils';
-export {Props, Context} from './ThemeProvider';
+export {Props} from './ThemeProvider';
 export default ThemeProvider;

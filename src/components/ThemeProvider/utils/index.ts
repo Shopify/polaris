@@ -15,13 +15,13 @@ import {
 } from '../../../utilities/color-manipulation';
 import {compose} from '../../../utilities/compose';
 
-import {Context as ThemeProviderContext} from '../ThemeProvider';
 import {
   Theme,
   ColorsToParse,
   ThemeVariant,
   ThemeColors,
   ThemeContext,
+  ThemeProviderContext,
 } from '../types';
 
 export function setColors(theme: Theme | undefined): string[][] | undefined {

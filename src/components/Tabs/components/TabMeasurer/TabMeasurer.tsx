@@ -6,7 +6,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import EventListener from '../../../EventListener';
 
-import {TabDescriptor} from '../../Tabs';
+import {TabDescriptor} from '../../types';
 import Tab from '../Tab';
 import * as styles from '../../Tabs.scss';
 
