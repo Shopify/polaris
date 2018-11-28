@@ -82,8 +82,10 @@ class ShopSwitcher extends React.Component<Props, State> {
 
 function filterShops(query: string, shops: Shop[], activeIndex: number) {
   const lowerQuery = query.toLowerCase();
-  const newShops = shops.filter(({name}) =>
-    name.toLowerCase().startsWith(lowerQuery),
+  const newShops = shops.filter(
+    ({name, url}) =>
+      name.toLowerCase().startsWith(lowerQuery) ||
+      cleanUrl(url).startsWith(lowerQuery),
   );
   return transformShopsToItems(newShops, activeIndex);
 }
