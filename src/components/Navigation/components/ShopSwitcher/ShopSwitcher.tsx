@@ -15,7 +15,7 @@ function ShopSwitcher({
   shops,
   searchPlaceholder,
   activeIndex,
-  noResultsLabel,
+  noResultsMessage,
   activatorAccessibilityLabel,
   polaris: {
     theme: {logo},
@@ -41,7 +41,7 @@ function ShopSwitcher({
         shops={shops}
         searchPlaceholder={searchPlaceholder}
         activeIndex={activeIndex}
-        noResultsLabel={noResultsLabel}
+        noResultsMessage={noResultsMessage}
       >
         {(searchField, shopsList) => (
           <React.Fragment>
