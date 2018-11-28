@@ -3,8 +3,8 @@ import Image from '../../../Image';
 import Scrollable from '../../../Scrollable';
 import Menu from '../Menu';
 import Switcher, {BaseProps as SwitcherProps} from '../../../ShopSwitcher';
-import {getWidth} from '../../../../utilities/getWidth';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import * as styles from './ShopSwitcher.scss';
 
 export type Props = SwitcherProps & {
   activatorAccessibilityLabel: string;
@@ -27,7 +27,7 @@ function ShopSwitcher({
     <Image
       source={logo.topBarSource || ''}
       alt={logo.accessibilityLabel || ''}
-      style={{width: getWidth(logo, 26)}}
+      className={styles.Logo}
     />
   );
 

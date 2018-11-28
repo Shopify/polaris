@@ -169,11 +169,12 @@ const shopSwitcherProps = {
 
 export default class Playground extends React.Component<never, any> {
   state = {
-    userMenuOpen: true,
+    userMenuOpen: false,
+    mobileUserMenuOpen: false,
   };
 
   render() {
-    const {userMenuOpen} = this.state;
+    const {userMenuOpen, mobileUserMenuOpen} = this.state;
 
     const searchField = (
       <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
@@ -226,6 +227,9 @@ export default class Playground extends React.Component<never, any> {
         userMenu={userMenu}
         secondaryMenu={supportMenu}
         shopSwitcher={shopSwitcher}
+        onNavigationToggle={() =>
+          this.setState({mobileUserMenuOpen: !mobileUserMenuOpen})
+        }
       />
     );
 
@@ -283,7 +287,8 @@ export default class Playground extends React.Component<never, any> {
         <Frame
           topBar={topBar}
           navigation={navigation}
-          showMobileNavigation={false}
+          showMobileNavigation={mobileUserMenuOpen}
+          onNavigationDismiss={() => this.setState({mobileUserMenuOpen: false})}
         >
           {/* <ContextualSaveBar
             message="Unsaved changes"
