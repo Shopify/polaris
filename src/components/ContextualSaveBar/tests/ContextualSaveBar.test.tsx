@@ -27,7 +27,7 @@ describe('<ContextualSaveBar />', () => {
     expect(frame.removeContextualSaveBar).toHaveBeenCalled();
   });
 
-  it("calls the contextual save bar with correct values if it's props change after it mounted", () => {
+  it('calls the contextual save bar with correct values if its props change after it mounted', () => {
     const {frame, contextualSaveBar} = mountWithContext(
       <ContextualSaveBar {...props} />,
     );
@@ -44,7 +44,7 @@ describe('<ContextualSaveBar />', () => {
     expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(2);
   });
 
-  it("doesnt call the contextual save bar if it's props remain unchanged after it mounted", () => {
+  it('doesnt call the contextual save bar if its props remain unchanged after it mounted', () => {
     const {frame, contextualSaveBar} = mountWithContext(
       <ContextualSaveBar {...props} />,
     );

@@ -18,7 +18,7 @@ keywords:
 
 # Top bar
 
-Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It's always visible at the top of non-embedded interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](/components/structure/app-provider) component and are required to use their own logo.
+Merchants can use the top bar component to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of non-embedded interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](/components/structure/app-provider) component and are required to use their own logo.
 
 ---
 
@@ -96,9 +96,9 @@ A specialized menu component that is activated by a user avatar.
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------------------------------- |
 | actions    | {items: IconableAction[]}[]   | An array of action objects that are rendered inside of a popover triggered by this menu                 |
 | message    | [MessageProps](#type-message) | Accepts a message that facilitates direct, urgent communication with the merchant through the user menu |
-| name       | string                        | A string detailing the merchant's full name to be displayed in the user menu                            |
-| detail     | string                        | A string allowing further details on the merchant's name displayed in the user menu                     |
-| initials   | AvatarProps['initials']       | The merchant's initials, rendered in place of an avatar image when not provided                         |
+| name       | string                        | A string detailing the merchant’s full name to be displayed in the user menu                            |
+| detail     | string                        | A string allowing further details on the merchant’s name displayed in the user menu                     |
+| initials   | AvatarProps['initials']       | The merchant’s initials, rendered in place of an avatar image when not provided                         |
 | avatar     | AvatarProps['source']         | An avatar image representing the merchant                                                               |
 | open       | boolean                       | A boolean property indicating whether the user menu is currently open                                   |
 | onToggle() | function                      | A callback function to handle opening and closing the user menu                                         |

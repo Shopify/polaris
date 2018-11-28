@@ -659,7 +659,7 @@ To render an invalid text field and its validation error separately:
 
 - Set a unique identifier on the text field component `id` prop
 - Set a boolean on the text field component `error` prop
-- Use an [inline error component](/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component's `id`
+- Use an [inline error component](/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
 
 ```jsx
 class SeparateValidationErrorExample extends React.Component {

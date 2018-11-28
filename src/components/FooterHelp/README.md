@@ -49,7 +49,7 @@ By default, footer help should link to information in the Shopify Help Center an
 
 Links should be:
 
-Clearly labeled: Merchants shouldn't need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+Clearly labeled: Merchants shouldn’t need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
 
 For Shopify app developers linking to contact information, footer help should follow this content pattern:
 
