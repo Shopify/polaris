@@ -17,7 +17,7 @@ export default function createAppProviderContext({
   i18n,
   linkComponent,
   apiKey,
-  shopOrigin,
+  shopOrigin = '',
   forceRedirect,
   stickyManager,
   scrollLockManager,
@@ -26,10 +26,16 @@ export default function createAppProviderContext({
 }: CreateAppProviderContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
+  let origin = shopOrigin;
+
+  if (!shopOrigin && typeof window !== undefined) {
+    origin = getShopOrigin();
+  }
+
   const appBridge = apiKey
     ? createApp({
         apiKey,
-        shopOrigin: shopOrigin || getShopOrigin(),
+        shopOrigin: origin,
         forceRedirect,
       })
     : undefined;
