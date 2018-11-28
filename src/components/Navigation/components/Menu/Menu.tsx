@@ -3,9 +3,9 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {IconableAction} from '../../../../types';
 import MessageIndicator from '../../../MessageIndicator';
-import Icon from '../../../Icon';
-import UnstyledLink from '../../../UnstyledLink';
+import Icon, {Props as IconProps} from '../../../Icon';
 import Message, {Props as MessageProps} from '../Message';
+import {ActionItem} from './components';
 import * as styles from './Menu.scss';
 
 interface ActionSection {
@@ -20,7 +20,7 @@ export interface Props {
   avatar: React.ReactNode;
   title?: string;
   detail?: string;
-  activatorAccessibilityLabel: string;
+  activatorAccessibilityLabel?: string;
 }
 
 interface State {
@@ -54,44 +54,22 @@ export default class Menu extends React.PureComponent<Props, State> {
       actions.map((section) => {
         return (
           <div className={styles.Section} key={section.id}>
-            {section.items.map((item) => {
-              const icon = item.icon;
-              return item.url ? (
-                <UnstyledLink
-                  url={item.url}
-                  key={item.content}
-                  className={itemClassName}
-                  tabIndex={tabIndex}
-                  onClick={this.handleClick}
-                >
-                  {icon && (
-                    <span className={styles.Icon}>
-                      <Icon source={icon} />
-                    </span>
-                  )}
-                  {item.content}
-                </UnstyledLink>
-              ) : (
-                <button
-                  type="button"
-                  key={item.content}
-                  onClick={
-                    item.onAction
-                      ? this.createActionHandler(item.onAction)
-                      : this.handleClick
-                  }
-                  className={itemClassName}
-                  tabIndex={tabIndex}
-                >
-                  {item.icon && (
-                    <span className={styles.Icon}>
-                      <Icon source={item.icon} />
-                    </span>
-                  )}
-                  {item.content}
-                </button>
-              );
-            })}
+            {section.items.map((item) => (
+              <ActionItem
+                key={item.content}
+                icon={item.icon as IconProps['source']}
+                tabIndex={tabIndex}
+                url={item.url}
+                className={itemClassName}
+                onClick={
+                  !item.url && item.onAction
+                    ? this.createActionHandler(item.onAction)
+                    : this.handleClick
+                }
+              >
+                {item.content}
+              </ActionItem>
+            ))}
           </div>
         );
       });

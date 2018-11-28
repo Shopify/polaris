@@ -12,7 +12,7 @@ import {
 
 const shopSwitcherProps = {
   searchPlaceholder: 'Search stores',
-  noResultsLabel: 'No shops found.',
+  noResultsMessage: 'No shops found.',
   activeIndex: 2,
   shops: [
     {

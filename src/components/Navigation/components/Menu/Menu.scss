@@ -101,11 +101,6 @@ $max-content-height: calc(100vh - #{$activator-height});
   flex-grow: 1;
 }
 
-.Icon {
-  @include recolor-icon(color('ink', 'lightest'));
-  margin-right: spacing(tight);
-}
-
 .Item {
   @include unstyled-button;
   @include unstyled-link;

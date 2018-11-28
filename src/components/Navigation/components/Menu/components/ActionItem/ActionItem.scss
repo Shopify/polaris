@@ -1,0 +1,4 @@
+.Icon {
+  @include recolor-icon(color('ink', 'lightest'));
+  margin-right: spacing(tight);
+}

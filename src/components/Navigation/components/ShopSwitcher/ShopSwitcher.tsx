@@ -7,7 +7,7 @@ import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import * as styles from './ShopSwitcher.scss';
 
 export type Props = SwitcherProps & {
-  activatorAccessibilityLabel: string;
+  activatorAccessibilityLabel?: string;
 };
 type ComposedProps = Props & WithAppProviderProps;
 
