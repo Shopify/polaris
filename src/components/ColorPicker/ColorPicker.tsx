@@ -3,7 +3,7 @@ import {clamp} from '@shopify/javascript-utilities/math';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {hsbToRgb} from '../../utilities/color-transformers';
-import {HSBColor, HSBAColor} from './types';
+import {HSBColor, HSBAColor} from '../../utilities/color-types';
 import {AlphaPicker, HuePicker, Slidable, Position} from './components';
 import * as styles from './ColorPicker.scss';
 

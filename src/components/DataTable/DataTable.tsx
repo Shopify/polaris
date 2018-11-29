@@ -9,24 +9,14 @@ import EventListener from '../EventListener';
 import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
+import {DataTableState, SortDirection} from './types';
 import * as styles from './DataTable.scss';
 
 export type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
 export type TableData = string | number | React.ReactNode;
-export type SortDirection = 'ascending' | 'descending' | 'none';
+
 export type ColumnContentType = 'text' | 'numeric';
-
-export interface ColumnVisibilityData {
-  leftEdge: number;
-  rightEdge: number;
-  isVisible?: boolean;
-}
-
-export interface ScrollPosition {
-  left?: number;
-  top?: number;
-}
 
 export interface Props {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
@@ -59,22 +49,11 @@ export interface Props {
   onSort?(headingIndex: number, direction: SortDirection): void;
 }
 
-export interface State {
-  collapsed: boolean;
-  columnVisibilityData: ColumnVisibilityData[];
-  previousColumn?: ColumnVisibilityData;
-  currentColumn?: ColumnVisibilityData;
-  sortedColumnIndex?: number;
-  sortDirection?: SortDirection;
-  heights: number[];
-  fixedColumnWidth?: number;
-  preservedScrollPosition: ScrollPosition;
-  isScrolledFarthestLeft?: boolean;
-  isScrolledFarthestRight?: boolean;
-}
-
-export class DataTable extends React.PureComponent<CombinedProps, State> {
-  state: State = {
+export class DataTable extends React.PureComponent<
+  CombinedProps,
+  DataTableState
+> {
+  state: DataTableState = {
     collapsed: false,
     columnVisibilityData: [],
     heights: [],
