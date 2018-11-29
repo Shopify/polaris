@@ -55,21 +55,22 @@ class AutocompleteExample extends React.Component {
   };
 
   render() {
+    const textField = (
+      <Autocomplete.TextField
+        onChange={this.updateText}
+        label=""
+        value={this.state.inputText}
+        prefix={<Icon source="search" color="inkLighter" />}
+        placeholder="Search"
+      />
+    );
     return (
       <div style={{height: '225px'}}>
         <Autocomplete
           options={this.state.options}
           selected={this.state.selected}
           onSelect={this.updateSelection}
-          textField={
-            <Autocomplete.TextField
-              onChange={this.updateText}
-              label=""
-              value={this.state.inputText}
-              prefix={<Icon source="search" color="inkLighter" />}
-              placeholder="Search"
-            />
-          }
+          textField={textField}
         />
       </div>
     );
@@ -130,6 +131,14 @@ class MultiAutocompleteExample extends React.Component {
   };
 
   render() {
+    const textField = (
+      <Autocomplete.TextField
+        onChange={this.updateText}
+        label=""
+        value={this.state.inputText}
+        placeholder="Vintage, cotton, summer"
+      />
+    );
     return (
       <div style={{height: '325px'}}>
         <TextContainer>
@@ -140,14 +149,7 @@ class MultiAutocompleteExample extends React.Component {
           allowMultiple
           options={this.state.options}
           selected={this.state.selected}
-          textField={
-            <Autocomplete.TextField
-              onChange={this.updateText}
-              label=""
-              value={this.state.inputText}
-              placeholder="Vintage, cotton, summer"
-            />
-          }
+          textField={textField}
           onSelect={this.updateSelection}
           listTitle="Suggested Tags"
         />
@@ -238,6 +240,15 @@ class AutocompleteExample extends React.Component {
   };
 
   render() {
+    const textField = (
+      <Autocomplete.TextField
+        onChange={this.updateText}
+        label=""
+        value={this.state.inputText}
+        prefix={<Icon source="search" color="inkLighter" />}
+        placeholder="Search"
+      />
+    );
     return (
       <div style={{height: '225px'}}>
         <Autocomplete
@@ -245,15 +256,7 @@ class AutocompleteExample extends React.Component {
           selected={this.state.selected}
           onSelect={this.updateSelection}
           loading={this.state.loading}
-          textField={
-            <Autocomplete.TextField
-              onChange={this.updateText}
-              label=""
-              value={this.state.inputText}
-              prefix={<Icon source="search" color="inkLighter" />}
-              placeholder="Search"
-            />
-          }
+          textField={textField}
         />
       </div>
     );
@@ -322,30 +325,32 @@ class AutocompleteExample extends React.Component {
   };
 
   render() {
+    const textField = (
+      <Autocomplete.TextField
+        onChange={this.updateText}
+        label=""
+        value={this.state.inputText}
+        prefix={<Icon source="search" color="inkLighter" />}
+        placeholder="Search"
+      />
+    );
+    const emptyState = (
+      <React.Fragment>
+        <Icon source="search" />
+        <div style={{textAlign: 'center'}}>
+          <TextContainer>Could not find any results</TextContainer>
+        </div>
+      </React.Fragment>
+    );
     return (
       <div style={{height: '225px'}}>
         <Autocomplete
           options={this.state.options}
           selected={this.state.selected}
           onSelect={this.updateSelection}
-          emptyState={
-            <React.Fragment>
-              <Icon source="search" />
-              <div style={{textAlign: 'center'}}>
-                <TextContainer>Could not find any results</TextContainer>
-              </div>
-            </React.Fragment>
-          }
+          emptyState={emptyState}
           loading={this.state.loading}
-          textField={
-            <Autocomplete.TextField
-              onChange={this.updateText}
-              label=""
-              value={this.state.inputText}
-              prefix={<Icon source="search" color="inkLighter" />}
-              placeholder="Search"
-            />
-          }
+          textField={textField}
         />
       </div>
     );

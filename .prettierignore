@@ -10,6 +10,7 @@ node_modules
 /styles.scss
 /styles
 /src/styles/polaris-tokens
+/playground/build
 
 /package.json
 /.github

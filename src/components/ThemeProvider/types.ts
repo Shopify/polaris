@@ -40,6 +40,10 @@ export interface ThemeContext {
   unsubscribe: (callback: () => void) => void;
 }
 
+export interface ThemeProviderContext {
+  polarisTheme?: ThemeContext;
+}
+
 export type ThemeVariant = 'light' | 'dark';
 
 export const THEME_CONTEXT_TYPES = {polarisTheme: PropTypes.any};

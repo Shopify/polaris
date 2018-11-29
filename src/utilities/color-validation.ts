@@ -1,4 +1,4 @@
-import {RGBColor, RGBAColor} from '../components';
+import {RGBColor, RGBAColor} from './color-types';
 
 // implements: https://www.w3.org/WAI/ER/WD-AERT/#color-contrast
 export function isLight({red, green, blue}: RGBColor | RGBAColor): boolean {

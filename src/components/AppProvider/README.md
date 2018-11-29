@@ -410,7 +410,7 @@ render(
 
 You must include Polaris context in your tests when you use Polaris components.
 
-To make this easier for you, we've provided:
+To make this easier for you, we’ve provided:
 
 - a `createPolarisContext()` function to create the Polaris context for you
 - a `polarisContextTypes` variable that contains all the necessary context types

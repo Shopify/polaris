@@ -1,4 +1,4 @@
-import {State} from './DataTable';
+import {DataTableState} from './types';
 
 interface TableMeasurements {
   fixedColumnWidth: number;
@@ -43,7 +43,7 @@ export function isEdgeVisible(position: number, start: number, end: number) {
 
 export function getPrevAndCurrentColumns(
   tableData: TableMeasurements,
-  columnData: State['columnVisibilityData'],
+  columnData: DataTableState['columnVisibilityData'],
 ) {
   const {firstVisibleColumnIndex} = tableData;
   const previousColumnIndex = Math.max(firstVisibleColumnIndex - 1, 0);
