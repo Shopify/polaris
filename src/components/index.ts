@@ -60,10 +60,7 @@ export {default as ColorPicker, Props as ColorPickerProps} from './ColorPicker';
 
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
-export {
-  default as ContextualSaveBar,
-  ContextualSaveBarProps,
-} from './ContextualSaveBar';
+export {default as ContextualSaveBar} from './ContextualSaveBar';
 
 export {
   default as DataTable,

@@ -1,7 +1,6 @@
 import * as PropTypes from 'prop-types';
 
 import {Context as AppProviderContext} from './AppProvider';
-import {ContextualSaveBarProps} from './ContextualSaveBar';
 import {Props as ToastProps} from './Toast';
 import {Context as ThemeProviderContext} from './ThemeProvider';
 
@@ -27,3 +26,36 @@ export const frameContextTypes = {
 };
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+
+// FROM ContextualSaveBar
+
+export interface Action {
+  /** A destination to link to */
+  url?: string;
+  /** Content the action displays */
+  content?: string;
+  /** Should a spinner be displayed */
+  loading?: boolean;
+  /** Should the action be disabled */
+  disabled?: boolean;
+  /** Callback when an action takes place */
+  onAction?(): void;
+}
+
+interface DiscardActionProps {
+  /** Whether to show a modal confirming the discard action */
+  discardConfirmationModal?: boolean;
+}
+
+type CombinedActionProps = DiscardActionProps & Action;
+
+export interface ContextualSaveBarProps {
+  /** Extend the contents section to be flush with the left edge  */
+  alignContentFlush?: boolean;
+  /** Accepts a string of content that will be rendered to the left of the actions */
+  message?: string;
+  /** Save or commit contextual save bar action with text defaulting to 'Save' */
+  saveAction?: Action;
+  /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
+  discardAction?: CombinedActionProps;
+}

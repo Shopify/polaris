@@ -3,9 +3,9 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {getWidth} from '../../../../utilities/getWidth';
 
+import {ContextualSaveBarProps} from '../../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
-import {ContextualSaveBarProps} from '../../../ContextualSaveBar';
 import Image from '../../../Image';
 import Stack from '../../../Stack';
 
