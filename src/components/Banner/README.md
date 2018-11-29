@@ -69,7 +69,7 @@ Banner headings should be:
   - Communicate when a situation is serious enough to warrant using a critical or
     warning banner. People who are unable to see the color of the banner need to
     clearly understand the importance of the situation without the benefit of
-    seeing the color of the banner. Learn more about [accessibility](/guides/accessibility).
+    seeing the color of the banner. Learn more about [accessibility](/patterns-and-guides/accessibility).
 
 <!-- usagelist -->
 

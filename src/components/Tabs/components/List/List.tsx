@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from '../Item';
-import {TabDescriptor} from '../../Tabs';
+import {TabDescriptor} from '../../types';
 import * as styles from '../../Tabs.scss';
 
 export interface Props {

@@ -42,7 +42,7 @@ On Android and iOS, thumbnails should:
 
 ## Content guidelines
 
-Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](/content/alternative-text). Doing this is important for [accessibility](/guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
+Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](/content/alternative-text). Doing this is important for [accessibility](/patterns-and-guides/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
 
 For thumbnails, we recommend using a format that describes what will show in the image:
 

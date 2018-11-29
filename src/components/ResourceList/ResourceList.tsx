@@ -21,7 +21,7 @@ import {
   Provider,
 } from './components';
 
-import {SelectedItems, SELECT_ALL_ITEMS} from './types';
+import {ResourceListContext, SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import * as styles from './ResourceList.scss';
 
@@ -68,18 +68,6 @@ export interface Props {
   renderItem(item: any, id: string): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: any, index: number): string;
-}
-
-export interface ResourceListContext {
-  selectMode: boolean;
-  selectable?: boolean;
-  selectedItems?: SelectedItems;
-  resourceName: {
-    singular: string;
-    plural: string;
-  };
-  loading?: boolean;
-  onSelectionChange?(selected: boolean, id: string): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -441,38 +429,39 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const headerMarkup = (showHeader || needsHeader) && (
-      <div className={styles.HeaderOuterWrapper}>
-        <Sticky boundingElement={listNode}>
-          {(isSticky: boolean) => {
-            const headerClassName = classNames(
-              styles.HeaderWrapper,
-              sortOptions &&
-                sortOptions.length > 0 &&
-                styles['HeaderWrapper-hasSort'],
-              this.selectable && styles['HeaderWrapper-hasSelect'],
-              loading && styles['HeaderWrapper-disabled'],
-              this.selectable &&
-                selectMode &&
-                styles['HeaderWrapper-inSelectMode'],
-              isSticky && styles['HeaderWrapper-isSticky'],
-            );
-            return (
-              <div className={headerClassName} testID="ResourceList-Header">
-                {headerWrapperOverlay}
-                <div className={styles.HeaderContentWrapper}>
-                  {headerTitleMarkup}
-                  {checkableButtonMarkup}
-                  {sortingSelectMarkup}
-                  {selectButtonMarkup}
+    const headerMarkup = (showHeader || needsHeader) &&
+      listNode && (
+        <div className={styles.HeaderOuterWrapper}>
+          <Sticky boundingElement={listNode}>
+            {(isSticky: boolean) => {
+              const headerClassName = classNames(
+                styles.HeaderWrapper,
+                sortOptions &&
+                  sortOptions.length > 0 &&
+                  styles['HeaderWrapper-hasSort'],
+                this.selectable && styles['HeaderWrapper-hasSelect'],
+                loading && styles['HeaderWrapper-disabled'],
+                this.selectable &&
+                  selectMode &&
+                  styles['HeaderWrapper-inSelectMode'],
+                isSticky && styles['HeaderWrapper-isSticky'],
+              );
+              return (
+                <div className={headerClassName} testID="ResourceList-Header">
+                  {headerWrapperOverlay}
+                  <div className={styles.HeaderContentWrapper}>
+                    {headerTitleMarkup}
+                    {checkableButtonMarkup}
+                    {sortingSelectMarkup}
+                    {selectButtonMarkup}
+                  </div>
+                  {bulkActionsMarkup}
                 </div>
-                {bulkActionsMarkup}
-              </div>
-            );
-          }}
-        </Sticky>
-      </div>
-    );
+              );
+            }}
+          </Sticky>
+        </div>
+      );
 
     const emptyStateMarkup =
       filterControl && !itemsExist && !loading ? (

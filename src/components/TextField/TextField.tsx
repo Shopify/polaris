@@ -92,7 +92,7 @@ export interface BaseProps {
   ariaOwns?: string;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
-  /** Indicates the id of a related component's visually focused element to the input */
+  /** Indicates the id of a related component’s visually focused element to the input */
   ariaActiveDescendant?: string;
   /** Indicates what kind of user input completion suggestions are provided */
   ariaAutocomplete?: string;
@@ -115,6 +115,10 @@ export type Props = NonMutuallyExclusiveProps &
 const getUniqueID = createUniqueIDFactory('TextField');
 
 export default class TextField extends React.PureComponent<Props, State> {
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    return {id: nextProps.id || prevState.id};
+  }
+
   private input: HTMLElement;
 
   constructor(props: Props) {
@@ -135,13 +139,6 @@ export default class TextField extends React.PureComponent<Props, State> {
     ) {
       this.input.focus();
     }
-  }
-
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(newProps: Props) {
-    this.setState((prevState) => ({
-      id: newProps.id || prevState.id,
-    }));
   }
 
   render() {

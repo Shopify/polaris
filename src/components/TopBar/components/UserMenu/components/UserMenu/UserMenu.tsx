@@ -10,11 +10,11 @@ export interface Props {
   actions: {items: IconableAction[]}[];
   /** Accepts a message that facilitates direct, urgent communication with the merchant through the user menu */
   message?: MessageProps;
-  /** A string detailing the merchant's full name to be displayed in the user menu */
+  /** A string detailing the merchant’s full name to be displayed in the user menu */
   name: string;
-  /** A string allowing further details on the merchant's name displayed in the user menu */
+  /** A string allowing further details on the merchant’s name displayed in the user menu */
   detail?: string;
-  /** The merchant's initials, rendered in place of an avatar image when not provided */
+  /** The merchant’s initials, rendered in place of an avatar image when not provided */
   initials: AvatarProps['initials'];
   /** An avatar image representing the merchant */
   avatar?: AvatarProps['source'];

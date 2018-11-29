@@ -7,7 +7,6 @@ import {
   Page,
   Frame,
   Icon,
-  ContextualSaveBar,
 } from '@shopify/polaris';
 
 const shopSwitcherProps = {

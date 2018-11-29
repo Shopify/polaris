@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {headerCell} from 'components/shared';
+import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Icon, {IconSource} from '../../../Icon';
-import {SortDirection} from '../../DataTable';
+import {SortDirection} from '../../types';
 
 import * as styles from '../../DataTable.scss';
 

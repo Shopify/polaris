@@ -85,10 +85,11 @@ function ChoiceList({
     }
 
     const isSelected = choiceIsSelected(choice, selected);
-    const children = choice.renderChildren ? (
-      <div className={styles.ChoiceChildren}>
-        {choice.renderChildren(isSelected)}
-      </div>
+    const renderedChildren = choice.renderChildren
+      ? choice.renderChildren(isSelected)
+      : null;
+    const children = renderedChildren ? (
+      <div className={styles.ChoiceChildren}>{renderedChildren}</div>
     ) : null;
 
     return (

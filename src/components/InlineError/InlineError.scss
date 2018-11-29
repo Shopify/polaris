@@ -6,7 +6,7 @@ $error-icon-adjustment: rem(2px);
 }
 
 .Icon {
-  @include recolor-icon(color('red'));
+  @include recolor-icon(color('red', 'dark'));
   margin-left: -1 * $error-icon-adjustment;
   margin-right: spacing(extra-tight) + $error-icon-adjustment;
 }

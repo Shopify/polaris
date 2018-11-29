@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-
 import {
   DisableableAction,
   LoadableAction,
@@ -16,8 +15,6 @@ import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import Popover from '../../../Popover';
-
-import {hasNewStatus} from './utilities';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
@@ -180,23 +177,23 @@ export default class Header extends React.PureComponent<Props, State> {
 
     const actionGroupsMarkup =
       actionGroups.length > 0
-        ? actionGroups.map(({title, icon, actions, details}) => (
-            <ActionGroup
-              key={title}
-              title={title}
-              icon={icon}
-              actions={actions}
-              details={details}
-              onOpen={this.handleActionGroupOpen}
-              onClose={this.handleActionGroupClose}
-              active={title === openActionGroup}
-            />
+        ? actionGroups.map(({title, icon, actions, details}, index) => (
+            <div
+              className={styles.IndividualAction}
+              key={`ActionGroup-${title}-${index}`}
+            >
+              <ActionGroup
+                title={title}
+                icon={icon}
+                actions={actions}
+                details={details}
+                onOpen={this.handleActionGroupOpen}
+                onClose={this.handleActionGroupClose}
+                active={title === openActionGroup}
+              />
+            </div>
           ))
         : null;
-
-    const showIndicator =
-      false &&
-      actionGroups.filter((group) => hasNewStatus(group.actions)).length > 0;
 
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
@@ -204,11 +201,7 @@ export default class Header extends React.PureComponent<Props, State> {
           active={rollupOpen}
           onClose={this.handleRollupToggle}
           activator={
-            <Button
-              outline={false && showIndicator}
-              disclosure
-              onClick={this.handleRollupToggle}
-            >
+            <Button disclosure onClick={this.handleRollupToggle}>
               Actions
             </Button>
           }
@@ -263,8 +256,8 @@ function secondaryActionsFrom(
   actions: SecondaryAction[],
 ): ReadonlyArray<JSX.Element> {
   return actions.map(({content, ...action}, index) => (
-    <Action {...action} key={`Action-${content || index}`}>
-      {content}
-    </Action>
+    <div className={styles.IndividualAction} key={`Action-${content || index}`}>
+      <Action {...action}>{content}</Action>
+    </div>
   ));
 }

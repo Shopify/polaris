@@ -17,11 +17,19 @@
 }
 
 .Header {
-  padding: spacing(loose) spacing(loose) 0;
+  padding: spacing() spacing() 0;
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(loose) spacing(loose) 0;
+  }
 }
 
 .Section {
-  padding: spacing(loose);
+  padding: spacing();
+
+  @include page-content-when-not-fully-condensed {
+    padding: spacing(loose);
+  }
 
   + .Section {
     border-top: border-width() solid color('sky');
@@ -40,13 +48,22 @@
   padding-bottom: spacing(tight);
 
   .Section-fullWidth & {
-    padding-left: spacing(loose);
-    padding-right: spacing(loose);
+    padding-left: spacing();
+    padding-right: spacing();
+
+    @include page-content-when-not-fully-condensed {
+      padding-left: spacing(loose);
+      padding-right: spacing(loose);
+    }
   }
 }
 
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: 0 spacing(loose) spacing(loose);
+  padding: 0 spacing() spacing();
+
+  @include page-content-when-not-fully-condensed {
+    padding: 0 spacing(loose) spacing(loose);
+  }
 }
