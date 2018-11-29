@@ -29,5 +29,6 @@ export function filterShops(query: string, shops: Shop[]) {
 }
 
 function cleanUrl(url: string) {
-  return url.replace(/https?:\/\//, '');
+  // eslint-disable-next-line node/no-unsupported-features/node-builtins
+  return new URL(url).hostname;
 }

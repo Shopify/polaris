@@ -6,7 +6,7 @@
 }
 
 .Activator {
-  width: 100%;
+  max-width: 100%;
   height: rem(40px);
   @include unstyled-button;
   color: var(--top-bar-color);

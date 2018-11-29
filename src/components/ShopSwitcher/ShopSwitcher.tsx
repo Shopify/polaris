@@ -38,8 +38,9 @@ class ShopSwitcher extends React.Component<Props, State> {
   render() {
     const {query, items} = this.state;
     const {searchPlaceholder, shops, children, noResultsMessage} = this.props;
+    const hasSearch = shops.length >= MIN_SHOPS_FOR_SEARCH;
 
-    const searchFieldMarkup = shops.length >= MIN_SHOPS_FOR_SEARCH && (
+    const searchFieldMarkup = hasSearch && (
       <div className={styles.Search}>
         <TextField
           labelHidden
@@ -53,7 +54,7 @@ class ShopSwitcher extends React.Component<Props, State> {
     );
 
     const shopsListMarkup = (
-      <section className={styles.ShopsList}>
+      <section className={hasSearch && styles.ShopsList}>
         <ActionList items={items} />
       </section>
     );

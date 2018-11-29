@@ -214,7 +214,21 @@ export default class Playground extends React.Component<never, any> {
     );
 
     const shopSwitcher = shopSwitcherProps.shops.length > 1 && (
-      <TopBar.ShopSwitcher {...shopSwitcherProps} />
+      <TopBar.ShopSwitcher
+        searchPlaceholder="Search for a shop."
+        noResultsMessage="No shops found."
+        activeIndex={0}
+        shops={[
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
+        ]}
+      />
     );
 
     const topBar = (
@@ -246,8 +260,19 @@ export default class Playground extends React.Component<never, any> {
 
     const mobileShopSwitcher = (
       <Navigation.ShopSwitcher
-        {...shopSwitcherProps}
-        activatorAccessibilityLabel="Show shop switcher"
+        searchPlaceholder="Search for a shop."
+        noResultsMessage="No shops found."
+        activeIndex={0}
+        shops={[
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
+        ]}
       />
     );
 

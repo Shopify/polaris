@@ -264,6 +264,53 @@ Use to present a navigation menu and a user menu in the [frame](/components/stru
 </Navigation>
 ```
 
+### Navigation with shop switcher
+
+Use to present a navigation menu and a shop switcher in the [frame](/components/structure/frame).
+
+```jsx
+<Navigation
+  location="/"
+  shopSwitcher={
+    <Navigation.ShopSwitcher
+      searchPlaceholder="Search for a shop."
+      noResultsMessage="No shops found."
+      activeIndex={0}
+      shops={[
+        {
+          url: 'https://jaded-pixel.myshopify.io/admin',
+          name: 'Jaded Pixel',
+        },
+        {
+          url: 'https://stockroom.myshopify.com/admin',
+          name: 'Stockroom',
+        },
+      ]}
+    />
+  }
+>
+  <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: 'home',
+      },
+      {
+        url: '/path/to/place',
+        label: 'Orders',
+        icon: 'orders',
+      },
+      {
+        url: '/path/to/place',
+        label: 'Products',
+        icon: 'products',
+      },
+    ]}
+  />
+</Navigation>
+```
+
 ### Navigation with sections and a separator
 
 Use to divide groups of items with a horizontal divider.
