@@ -53,7 +53,7 @@ $stacking-order: (
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   > .Input ~ .Backdrop {
     background-color: color('red', 'lighter');
-    border-color: color('red');
+    border-color: color('red', 'dark');
     box-shadow: none;
   }
 
