@@ -108,7 +108,7 @@ describe('<ShopSwitcher />', () => {
           context: {
             polarisTheme: {
               logo: {
-                topBarSource: logoSource,
+                shopSwitcherSource: logoSource,
                 accessibilityLabel: logoAccessibilityLabel,
               },
             },

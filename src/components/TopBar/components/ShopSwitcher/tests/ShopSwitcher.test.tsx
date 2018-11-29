@@ -3,7 +3,6 @@ import {
   shallowWithAppProvider,
   mountWithAppProvider,
   trigger,
-  findByTestID,
 } from 'test-utilities';
 import Switcher from '../../../../ShopSwitcher';
 import Image from '../../../../Image';
@@ -96,7 +95,7 @@ describe('<ShopSwitcher />', () => {
           context: {
             polarisTheme: {
               logo: {
-                topBarSource: logoSource,
+                shopSwitcherSource: logoSource,
                 accessibilityLabel: logoAccessibilityLabel,
               },
             },
@@ -117,9 +116,9 @@ describe('<ShopSwitcher />', () => {
       const shopSwitcher = mountWithAppProvider(
         <ShopSwitcher {...mockProps} />,
       );
-      trigger(findByTestID(shopSwitcher, 'Switcher-Activator'), 'onClick');
+      trigger(shopSwitcher.find('button').first(), 'onClick');
       expect(shopSwitcher.find(Popover).prop('active')).toBeTruthy();
-      trigger(findByTestID(shopSwitcher, 'Switcher-Activator'), 'onClick');
+      trigger(shopSwitcher.find('button').first(), 'onClick');
       expect(shopSwitcher.find(Popover).prop('active')).toBeFalsy();
     });
   });
@@ -136,7 +135,7 @@ describe('<ShopSwitcher />', () => {
       const shopSwitcher = mountWithAppProvider(
         <ShopSwitcher {...mockProps} />,
       );
-      trigger(findByTestID(shopSwitcher, 'Switcher-Activator'), 'onClick');
+      trigger(shopSwitcher.find('button').first(), 'onClick');
       trigger(shopSwitcher.find(Popover), 'onClose');
       expect(shopSwitcher.find(Popover).prop('active')).toBeFalsy();
     });

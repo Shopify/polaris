@@ -46,7 +46,6 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
         type="button"
         className={styles.Activator}
         onClick={this.togglePopover}
-        testID="Switcher-Activator"
       >
         {logoMarkup}
         <span className={styles.ShopName}>
