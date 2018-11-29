@@ -6,13 +6,12 @@ import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import Button from '../Button';
 import Icon from '../Icon';
 import EventListener from '../EventListener';
-import {Props as ToastProps} from '../Toast';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
-import {FrameContext, frameContextTypes} from '../types';
+import {FrameContext, frameContextTypes, ToastProps} from '../types';
 import {
   ToastManager,
   Loading,

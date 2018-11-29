@@ -1,7 +1,6 @@
 import * as PropTypes from 'prop-types';
 
 import {Context as AppProviderContext} from './AppProvider';
-import {Props as ToastProps} from './Toast';
 import {Context as ThemeProviderContext} from './ThemeProvider';
 
 export interface PolarisContext
@@ -58,4 +57,20 @@ export interface ContextualSaveBarProps {
   saveAction?: Action;
   /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
   discardAction?: CombinedActionProps;
+}
+
+// Toast
+
+export interface ToastProps {
+  /** The content that should appear in the toast message */
+  content: string;
+  /**
+   * The length of time in milliseconds the toast message should persist
+   * @default 5000
+   */
+  duration?: number;
+  /** Display an error toast. */
+  error?: boolean;
+  /** Callback when the dismiss icon is clicked */
+  onDismiss(): void;
 }

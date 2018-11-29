@@ -5,7 +5,8 @@ import {Key} from '../../../../types';
 
 import Icon from '../../../Icon';
 import KeypressListener from '../../../KeypressListener';
-import {Props as ToastProps, DEFAULT_TOAST_DURATION} from '../../../Toast';
+import {DEFAULT_TOAST_DURATION} from '../../../Toast';
+import {ToastProps} from '../../../types';
 
 import * as styles from './Toast.scss';
 

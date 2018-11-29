@@ -2,28 +2,14 @@ import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
 
-import {FrameContext, frameContextTypes} from '../types';
+import {FrameContext, frameContextTypes, ToastProps} from '../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-
-const createId = createUniqueIDFactory('Toast');
 
 export const DEFAULT_TOAST_DURATION = 5000;
 
-export interface Props {
-  /** The content that should appear in the toast message */
-  content: string;
-  /**
-   * The length of time in milliseconds the toast message should persist
-   * @default 5000
-   */
-  duration?: number;
-  /** Display an error toast. */
-  error?: boolean;
-  /** Callback when the dismiss icon is clicked */
-  onDismiss(): void;
-}
+const createId = createUniqueIDFactory('Toast');
 
-export type ComposedProps = Props & WithAppProviderProps;
+export type ComposedProps = ToastProps & WithAppProviderProps;
 
 export class Toast extends React.PureComponent<ComposedProps, never> {
   static contextTypes = frameContextTypes;
@@ -45,7 +31,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
     if (appBridge == null) {
       context.frame.showToast({
         id,
-        ...(props as Props),
+        ...(props as ToastProps),
       });
     } else {
       this.appBridgeToast = AppBridgeToast.create(appBridge, {
@@ -75,4 +61,4 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Toast);
+export default withAppProvider<ToastProps>()(Toast);
