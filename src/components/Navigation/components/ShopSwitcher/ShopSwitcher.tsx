@@ -25,7 +25,7 @@ function ShopSwitcher({
 
   const logoMarkup = logo && (
     <Image
-      source={logo.topBarSource || ''}
+      source={logo.shopSwitcherSource || ''}
       alt={logo.accessibilityLabel || ''}
       className={styles.Logo}
     />

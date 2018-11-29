@@ -1,4 +1,5 @@
 import * as React from 'react';
+import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {UserMenuProps} from '../components';
 import UserMenuContext, {UserMenuContextTypes} from './context';
@@ -20,11 +21,11 @@ class Provider extends React.Component<Props, UserMenuContextTypes> {
   }
 
   state = {
-    /* eslint-disable react/no-unused-state */
+    // eslint-disable-next-line react/no-unused-state
     mobileView: this.props.mobileView,
     mobileUserMenuProps: undefined,
+    // eslint-disable-next-line react/no-unused-state
     setMobileUserMenuProps: this.setMobileUserMenuProps,
-    /* eslint-enable react/no-unused-state */
   };
 
   render() {
@@ -39,7 +40,10 @@ class Provider extends React.Component<Props, UserMenuContextTypes> {
 
   @autobind
   private setMobileUserMenuProps(mobileUserMenuProps: UserMenuProps) {
-    // eslint-disable-next-line react/no-unused-state
+    const {mobileUserMenuProps: prevMobileUserMenuProps} = this.state;
+    if (isEqual(mobileUserMenuProps, prevMobileUserMenuProps)) {
+      return;
+    }
     this.setState({mobileUserMenuProps});
   }
 }

@@ -1,16 +1,21 @@
 import * as React from 'react';
-import {Consumer as UserMenuConsumer} from './context';
+import withContext from '../../../WithContext';
+import {WithContextTypes} from '../../../../types';
+import {Consumer as UserMenuConsumer, UserMenuContextTypes} from './context';
 import {UserMenu as UserMenuComponent, UserMenuProps} from './components';
 
-export default function UserMenu(props: UserMenuProps) {
-  return (
-    <UserMenuConsumer>
-      {({mobileUserMenuProps, mobileView}) => {
-        if (mobileUserMenuProps && mobileView) {
-          return <UserMenuComponent {...mobileUserMenuProps} />;
-        }
-        return <UserMenuComponent {...props} />;
-      }}
-    </UserMenuConsumer>
-  );
+type ComposedProps = UserMenuProps & WithContextTypes<UserMenuContextTypes>;
+
+function UserMenu({
+  context: {mobileUserMenuProps, mobileView},
+  ...userMenuProps
+}: ComposedProps) {
+  if (mobileUserMenuProps && mobileView) {
+    return <UserMenuComponent {...mobileUserMenuProps} />;
+  }
+  return <UserMenuComponent {...userMenuProps} />;
 }
+
+export default withContext<UserMenuProps, {}, UserMenuContextTypes>(
+  UserMenuConsumer,
+)(UserMenu);

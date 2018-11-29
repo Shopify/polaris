@@ -35,7 +35,7 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
     const {name} = this.activeShop;
     const logoMarkup = logo && (
       <Image
-        source={logo.topBarSource || ''}
+        source={logo.shopSwitcherSource || ''}
         alt={logo.accessibilityLabel || ''}
         className={styles.Logo}
       />

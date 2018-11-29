@@ -7,6 +7,8 @@ export type ThemeLogo = {
   topBarSource?: string;
   /** Provides a path for a logo used on a light background */
   contextualSaveBarSource?: string;
+  /** Provides a path for a logo icon used on a dark background */
+  shopSwitcherSource?: string;
   /** Destination the merchant will navigate to when clicking the logo */
   url?: string;
   /** Accessible label the logo image */
