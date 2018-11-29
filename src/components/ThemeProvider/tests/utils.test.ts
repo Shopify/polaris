@@ -6,12 +6,12 @@ import {needsVariantList} from '../config';
 describe('setTextColor', () => {
   it('sets a css variable to white if the variant is dark', () => {
     const textColor = setTextColor('topBar', 'dark');
-    expect(textColor).toEqual(['topBar', tokens.colorWhiteBase]);
+    expect(textColor).toEqual(['topBar', tokens.colorWhite]);
   });
 
   it('sets a css variable to ink if the variant is light', () => {
     const textColor = setTextColor('topBar', 'light');
-    expect(textColor).toEqual(['topBar', tokens.colorInkBase]);
+    expect(textColor).toEqual(['topBar', tokens.colorInk]);
   });
 });
 
