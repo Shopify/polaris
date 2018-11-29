@@ -97,7 +97,23 @@ module.exports = (env = {production: false}) => ({
     rules: [
       {
         test: /\.md$/,
-        use: [{loader: `${__dirname}/webpack/parseMarkdown.js`}],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              minified: Boolean(env.production),
+              presets: [
+                ['shopify/web', {modules: false}],
+                ['shopify/react', {hot: true}],
+              ],
+              cacheDirectory: path.resolve(__dirname, 'build/cache/markdown'),
+            },
+          },
+          {
+            loader: `${__dirname}/webpack/parseMarkdown.js`,
+          },
+        ],
       },
       {
         test(resource) {

@@ -298,9 +298,7 @@ Use action groups for sets of actions that relate to one another, particularly w
   actionGroups={[
     {
       title: 'Promote',
-      actions: [
-        {content: 'Share on Facebook', onAction: this.performFacebookShare},
-      ],
+      actions: [{content: 'Share on Facebook', onAction: () => {}}],
     },
   ]}
 >

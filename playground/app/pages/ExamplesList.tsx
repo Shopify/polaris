@@ -5,8 +5,8 @@ import {ComponentReadme} from '../types';
 // At the moment the loader pulls in ALL component READMEs based upon a glob
 // The filename here has no effect. we just need something that triggers using
 // the markdown loader
-// eslint-disable-next-line typescript/no-var-requires
-const components: ComponentReadme[] = require('../../../src/components/README.md');
+const components: ComponentReadme[] = require('../../../src/components/README.md')
+  .components;
 
 export default function ExamplesList() {
   return (
