@@ -218,8 +218,6 @@ export default class Playground extends React.Component<never, any> {
       <TopBar.ShopSwitcher {...shopSwitcherProps} />
     );
 
-    console.log(shopSwitcher);
-
     const topBar = (
       <TopBar
         showNavigationToggle

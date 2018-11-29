@@ -8,7 +8,7 @@ import {
   Loading as PolarisLoading,
 } from 'components';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {Provider as UserMenuProvider} from '../../TopBar/components/UserMenu/Context';
+import {Provider as UserMenuProvider} from '../../TopBar/components/UserMenu/context';
 import Frame from '../Frame';
 import Button from '../../Button';
 import TopBar from '../../TopBar';

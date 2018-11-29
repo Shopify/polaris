@@ -11,7 +11,7 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {Provider as UserMenuProvider} from '../TopBar/components/UserMenu/Context';
+import {Provider as UserMenuProvider} from '../TopBar/components/UserMenu/context';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
 import {FrameContext, frameContextTypes} from '../types';

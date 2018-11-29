@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Props as UserMenuProps} from '../UserMenu';
+import {UserMenuProps} from '../components';
 import UserMenuContext, {UserMenuContextTypes} from './context';
 
 interface Props {

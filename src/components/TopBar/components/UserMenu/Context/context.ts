@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Props as UserMenuProps} from '../UserMenu';
+import {UserMenuProps} from '../components';
 
 export interface UserMenuContextTypes {
   mobileView?: boolean;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {Modifier as UserMenuModifier} from '../../../../TopBar/components/UserMenu/Context';
+import {Modifier as UserMenuModifier} from '../../../../TopBar/components/UserMenu/context';
 import UserMenu, {Props as UserMenuProps} from '../UserMenu';
 
 describe('<UserMenu />', () => {
