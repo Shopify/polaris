@@ -5,7 +5,7 @@ import {
   createDarkColor,
   createLightColor,
 } from '../color-manipulation';
-import {HSLColor} from '../../components';
+import {HSLColor} from '../color-types';
 
 describe('lightenColor', () => {
   it("will return the color if it's of type string", () => {
