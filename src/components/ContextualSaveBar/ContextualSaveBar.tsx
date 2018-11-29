@@ -4,7 +4,7 @@ import {
   ContextualSaveBarProps,
   FrameContext,
   frameContextTypes,
-} from '../types';
+} from '../Frame';
 
 class ContextualSaveBar extends React.PureComponent<
   ContextualSaveBarProps,

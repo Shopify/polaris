@@ -2,7 +2,6 @@ import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
 import {noop} from 'utilities/other';
-import {DEFAULT_TOAST_DURATION} from 'index';
 import Toast from '../../Toast';
 import Frame from '../../../Frame';
 import ToastManager from '..';
@@ -58,7 +57,7 @@ describe('onDismiss()', () => {
   it('is called twice with different durations', () => {
     const spy1 = jest.fn();
     const spy2 = jest.fn();
-    const duration1 = DEFAULT_TOAST_DURATION;
+    const duration1 = 3000;
     const duration2 = 10000;
 
     mountWithAppProvider(

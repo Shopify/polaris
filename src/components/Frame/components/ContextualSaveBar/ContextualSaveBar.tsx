@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {getWidth} from '../../../../utilities/getWidth';
 
-import {ContextualSaveBarProps} from '../../../types';
+import {ContextualSaveBarProps} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
 import Image from '../../../Image';
@@ -13,8 +13,7 @@ import {DiscardConfirmationModal} from './components';
 
 import * as styles from './ContextualSaveBar.scss';
 
-export type Props = ContextualSaveBarProps;
-export type CombinedProps = Props & WithAppProviderProps;
+export type CombinedProps = ContextualSaveBarProps & WithAppProviderProps;
 
 export interface State {
   discardConfirmationModalVisible: boolean;
@@ -132,4 +131,4 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-export default withAppProvider<Props>()(ContextualSaveBar);
+export default withAppProvider<ContextualSaveBarProps>()(ContextualSaveBar);
