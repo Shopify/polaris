@@ -1,15 +1,12 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {
-  ContextualSaveBarProps,
+  ContextualSaveBarProps as Props,
   FrameContext,
   frameContextTypes,
 } from '../Frame';
 
-class ContextualSaveBar extends React.PureComponent<
-  ContextualSaveBarProps,
-  never
-> {
+class ContextualSaveBar extends React.PureComponent<Props, never> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
 
@@ -21,7 +18,7 @@ class ContextualSaveBar extends React.PureComponent<
     this.context.frame.removeContextualSaveBar();
   }
 
-  componentDidUpdate(oldProps: ContextualSaveBarProps) {
+  componentDidUpdate(oldProps: Props) {
     if (contextualSaveBarHasChanged(this.props, oldProps)) {
       this.context.frame.setContextualSaveBar(this.props);
     }
@@ -33,12 +30,12 @@ class ContextualSaveBar extends React.PureComponent<
 }
 
 function contextualSaveBarHasChanged(
-  {message, saveAction, discardAction}: ContextualSaveBarProps,
+  {message, saveAction, discardAction}: Props,
   {
     message: oldMessage,
     saveAction: oldsaveAction,
     discardAction: oldDiscardAction,
-  }: ContextualSaveBarProps,
+  }: Props,
 ) {
   return Boolean(
     message !== oldMessage ||

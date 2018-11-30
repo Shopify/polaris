@@ -6,13 +6,13 @@ import {
   DEFAULT_TOAST_DURATION,
   FrameContext,
   frameContextTypes,
-  ToastProps,
+  ToastProps as Props,
 } from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 const createId = createUniqueIDFactory('Toast');
 
-export type ComposedProps = ToastProps & WithAppProviderProps;
+export type ComposedProps = Props & WithAppProviderProps;
 
 export class Toast extends React.PureComponent<ComposedProps, never> {
   static contextTypes = frameContextTypes;
@@ -34,7 +34,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
     if (appBridge == null) {
       context.frame.showToast({
         id,
-        ...(props as ToastProps),
+        ...(props as Props),
       });
     } else {
       this.appBridgeToast = AppBridgeToast.create(appBridge, {
@@ -64,4 +64,4 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<ToastProps>()(Toast);
+export default withAppProvider<Props>()(Toast);
