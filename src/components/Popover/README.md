@@ -326,20 +326,18 @@ class PopoverExample extends React.Component {
             </div>
           }
         >
-          <div style={{marginTop: '-0.8rem'}}>
-            <ActionList
-              items={[
-                {content: 'Store 1', active: true},
-                {content: 'Store 2'},
-                {content: 'Store 3'},
-                {content: 'Store 4'},
-                {content: 'Store 5'},
-                {content: 'Store 6'},
-                {content: 'Store 7'},
-                {content: 'Store 8'},
-              ]}
-            />
-          </div>
+          <ActionList
+            items={[
+              {content: 'Store 1'},
+              {content: 'Store 2'},
+              {content: 'Store 3'},
+              {content: 'Store 4'},
+              {content: 'Store 5'},
+              {content: 'Store 6'},
+              {content: 'Store 7'},
+              {content: 'Store 8'},
+            ]}
+          />
         </Popover>
       </div>
     );
