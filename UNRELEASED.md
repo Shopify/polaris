@@ -15,6 +15,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Removed min-width from `FormLayout` `Items` and applying it only to `Items` used inside a `FormLayout.Group` ([#650](https://github.com/Shopify/polaris-react/pull/650))
 - Removed added space in `ChoiceList` when choice has children on selection but is not selected ([#665](https://github.com/Shopify/polaris-react/issues/665))
+- Fixed `errorOverlayText` on `Dropzone` ([#671](https://github.com/Shopify/polaris-react/pull/671))
 
 - Updated the `InlineError` text color, the error border-color on form fields and the error Icon color to be the same red. ([#676](https://github.com/Shopify/polaris-react/pull/676))
 
