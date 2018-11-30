@@ -2,7 +2,7 @@ import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
 import {noop} from 'utilities/other';
-import {ToastProps} from '../../../types';
+import {ToastProps as Props} from '../../../types';
 import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
@@ -11,7 +11,7 @@ interface HandlerMap {
 }
 
 describe('<Toast />', () => {
-  const mockProps: ToastProps = {
+  const mockProps: Props = {
     content: 'Image uploaded',
     onDismiss: noop,
   };
