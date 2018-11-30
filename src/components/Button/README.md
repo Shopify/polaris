@@ -30,7 +30,7 @@ keywords:
 
 # Button
 
-Buttons are used to make common actions immediately visible and easy to perform with one click or tap. Merchants can use it to navigate, or take action.
+Buttons are used to make common actions immediately visible and easy to perform with one click, tap, or keypress. Merchants can use it to navigate, or take action.
 
 ---
 
@@ -99,6 +99,59 @@ Add menu item
 Add a menu item
 
 <!-- end -->
+
+<!-- content-for: web -->
+
+---
+
+## Accessibility
+
+### Labeling
+
+The `accessibilityLabel` prop adds an `aria-label` attribute to the button, which can be accessed by assistive technologies like screen readers. Typically, this text will replace the visible text on the button for assistive technology users.
+
+For a button, `accessibilityLabel` should be used if:
+
+- The visible text of the button is not enough for non-visual users to understand the purpose of the Button in the context of the page.
+- The button has no text and relies on an icon alone to convey its purpose.
+
+To help support people who use speech activation software and sighted screen reader users, make sure that the `aria-label` text includes any button text that is visible. Mismatches in visible and programmatic labeling can cause confusion, and can cause voice recognition commands to not work.
+
+When possible, give the button visible text that clearly conveys its purpose without the use of `accessibilityLabel`. Duplicating the Button text with `accessibilityLabel` when no additional content is needed is not necessary.
+
+<!-- usagelist -->
+
+#### Do
+
+Do
+
+```
+<button>Edit shipping address</button>
+```
+
+```
+<button aria-label="Edit shipping address">Edit</button>
+```
+
+#### Don’t
+
+Don't
+
+```
+<button aria-label="Change your shipping address">Edit</button>
+```
+
+```
+<button aria-label="Edit">Edit</button>
+```
+
+<!-- end -->
+
+### Keyboard support
+
+Keyboard users will expect to be able to give buttons keyboard focus with the `tab` key, and to activate them with the `enter`/`return` and `space` keys.
+
+<!-- /content-for -->
 
 ---
 
