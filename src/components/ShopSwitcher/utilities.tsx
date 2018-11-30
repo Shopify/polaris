@@ -29,6 +29,10 @@ export function filterShops(query: string, shops: Shop[]) {
 }
 
 function cleanUrl(url: string) {
-  // eslint-disable-next-line node/no-unsupported-features/node-builtins
-  return new URL(url).hostname;
+  try {
+    // eslint-disable-next-line node/no-unsupported-features/node-builtins
+    return new URL(url).hostname;
+  } catch {
+    return url;
+  }
 }
