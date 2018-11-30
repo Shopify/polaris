@@ -95,7 +95,7 @@ Take a look at [our best practices](https://github.com/Shopify/web-foundation/tr
 
 After cloning Polaris React, run `yarn` to fetch its dependencies. Then you can run several commands:
 
-- `yarn dev` runs a local development server and mounts `playground/Playground.tsx`
+- `yarn dev` runs a Storybook server which includes a playground editable at `playground/Playground.tsx`
 - `yarn test` runs the complete test suite
 - `yarn test:coverage` runs tests and generates a test coverage report
 - `yarn test <pattern>` runs tests with matching filenames

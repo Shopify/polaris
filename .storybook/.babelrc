@@ -1,0 +1,6 @@
+{
+  "presets": [
+    ["shopify/web", {"modules": false}],
+    ["shopify/react", {"hot": true}]
+  ]
+}
