@@ -3,9 +3,9 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {getWidth} from '../../../../utilities/getWidth';
 
+import {ContextualSaveBarProps as Props} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
-import {ContextualSaveBarProps} from '../../../ContextualSaveBar';
 import Image from '../../../Image';
 import Stack from '../../../Stack';
 
@@ -13,7 +13,6 @@ import {DiscardConfirmationModal} from './components';
 
 import * as styles from './ContextualSaveBar.scss';
 
-export type Props = ContextualSaveBarProps;
 export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {

@@ -62,7 +62,7 @@ describe('<Pagination />', () => {
   it('adds a keypress event for nextKeys', () => {
     const spy = jest.fn();
     mountWithAppProvider(
-      <Pagination nextKeys={[Key.KeyK]} onNext={spy} nextTooltip="k" />,
+      <Pagination hasNext nextKeys={[Key.KeyK]} onNext={spy} nextTooltip="k" />,
     );
 
     listenerMap.keyup({keyCode: Key.KeyK});
@@ -74,6 +74,7 @@ describe('<Pagination />', () => {
     const spy = jest.fn();
     mountWithAppProvider(
       <Pagination
+        hasPrevious
         previousKeys={[Key.KeyJ]}
         onPrevious={spy}
         previousTooltip="j"
@@ -127,6 +128,7 @@ describe('<Pagination />', () => {
       const spy = jest.fn();
       pagination = mountWithAppProvider(
         <Pagination
+          hasPrevious
           previousKeys={[Key.KeyJ]}
           previousTooltip="j"
           previousURL="https://www.google.com"
@@ -138,6 +140,24 @@ describe('<Pagination />', () => {
       listenerMap.keyup({keyCode: Key.KeyJ});
 
       expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not navigate the browser when hasNext or hasPrevious is false', () => {
+      const anchorClickSpy = jest.fn();
+      pagination = mountWithAppProvider(
+        <Pagination
+          hasPrevious={false}
+          previousKeys={[Key.KeyJ]}
+          previousTooltip="j"
+          previousURL="https://www.google.com"
+        />,
+      );
+
+      const anchor = pagination.find('a').getDOMNode() as HTMLAnchorElement;
+      anchor.click = anchorClickSpy;
+      listenerMap.keyup({keyCode: Key.KeyJ});
+
+      expect(anchorClickSpy).toHaveBeenCalledTimes(0);
     });
   });
 });

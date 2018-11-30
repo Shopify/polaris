@@ -6,7 +6,6 @@ import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import Button from '../Button';
 import Icon from '../Icon';
 import EventListener from '../EventListener';
-import {Props as ToastProps} from '../Toast';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
@@ -14,13 +13,14 @@ import TrapFocus from '../TrapFocus';
 import {Provider as UserMenuProvider} from '../TopBar/components/UserMenu/context';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
-import {FrameContext, frameContextTypes} from '../types';
 import {
-  ToastManager,
-  Loading,
-  ContextualSaveBar,
+  FrameContext,
+  frameContextTypes,
+  ToastProps,
   ContextualSaveBarProps,
-} from './components';
+} from './types';
+import {ToastManager, Loading, ContextualSaveBar} from './components';
+
 import * as styles from './Frame.scss';
 
 export interface Props {

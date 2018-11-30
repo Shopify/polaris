@@ -38,6 +38,45 @@ Modals are overlays that prevent merchants from interacting with the rest of the
 
 ---
 
+## Use in an embedded application
+
+Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the modal component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
+
+Note in the props table that a number of properties are only available in stand-alone applications, and won't work in an embedded context.
+
+```jsx
+class EmbeddedAppModalExample extends React.Component {
+  state = {
+    modalOpen: false,
+  };
+
+  render() {
+    return (
+      <AppProvider apiKey="YOUR_API_KEY">
+        <Modal
+          src="https://my-app.com/upgrade-to-retail-package"
+          open={this.state.modalOpen}
+          title="Upgrade your Shopify POS with the Retail Package"
+          primaryAction={{
+            content: 'Add Retail Package',
+            onAction: () => this.setState({modalOpen: false}),
+          }}
+          secondaryActions={[
+            {
+              content: 'Cancel',
+              onAction: () => this.setState({modalOpen: false}),
+            },
+          ]}
+          onClose={() => this.setState({modalOpen: false})}
+        />
+      </AppProvider>
+    );
+  }
+}
+```
+
+---
+
 ## Best practices
 
 Modals should:
