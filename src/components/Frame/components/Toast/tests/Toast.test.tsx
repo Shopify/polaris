@@ -2,8 +2,8 @@ import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
 import {noop} from 'utilities/other';
-import {DEFAULT_TOAST_DURATION} from 'index';
-import Toast, {Props} from '../Toast';
+import {ToastProps as Props} from '../../../types';
+import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
 interface HandlerMap {
@@ -68,7 +68,7 @@ describe('<Toast />', () => {
 
     it('is called after the duration is reached', () => {
       const spy = jest.fn();
-      const duration = DEFAULT_TOAST_DURATION;
+      const duration = 1000;
 
       mountWithAppProvider(
         <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
@@ -81,7 +81,7 @@ describe('<Toast />', () => {
 
     it('is not called if the component unmounts before the duration is reached', () => {
       const spy = jest.fn();
-      const duration = DEFAULT_TOAST_DURATION;
+      const duration = 1000;
       const toast = mountWithAppProvider(
         <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
       );
