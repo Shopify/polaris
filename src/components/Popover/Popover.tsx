@@ -15,7 +15,7 @@ export {CloseSource};
 export interface Props {
   /** The content to display inside the popover */
   children?: React.ReactNode;
-  /** Content to displayed fixed above the main content */
+  /** Content to be displayed fixed above the main content */
   header?: React.ReactNode;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
