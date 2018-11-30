@@ -5,8 +5,6 @@ $stacking-order: (
   userlist: 10,
   userbutton: 20,
 );
-$activator-height: rem(66px);
-$max-content-height: calc(100vh - #{$activator-height});
 
 .Menu {
   position: relative;
@@ -20,7 +18,7 @@ $max-content-height: calc(100vh - #{$activator-height});
 }
 
 .Section + .Section {
-  @include usermenu-section-attributes;
+  @include menu-section-attributes;
 }
 
 .Button {
@@ -30,7 +28,6 @@ $max-content-height: calc(100vh - #{$activator-height});
   flex-shrink: 0;
   align-items: center;
   width: 100%;
-  height: $activator-height;
   padding: spacing();
   background-color: color('white');
   color: color('ink');
@@ -92,7 +89,7 @@ $max-content-height: calc(100vh - #{$activator-height});
 }
 
 .Content {
-  max-height: $max-content-height;
+  max-height: calc(75vh - 100%);
   overflow: hidden;
   background-color: color('white');
   box-shadow: shadow();

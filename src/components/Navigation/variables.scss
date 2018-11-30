@@ -124,7 +124,7 @@ $nav-animation-variables: (
   }
 }
 
-@mixin usermenu-section-attributes {
+@mixin menu-section-attributes {
   position: relative;
   margin-top: spacing();
   &::before {
