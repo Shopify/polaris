@@ -227,6 +227,30 @@ export default class Playground extends React.Component<never, any> {
             url: 'https://stockroom.myshopify.com/admin',
             name: 'Stockroom',
           },
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
         ]}
       />
     );
@@ -264,6 +288,30 @@ export default class Playground extends React.Component<never, any> {
         noResultsMessage="No shops found."
         activeIndex={0}
         shops={[
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
+          {
+            url: 'https://a-better-looking-shop.myshopify.io/admin',
+            name: 'A Better Looking Shop',
+          },
+          {
+            url: 'https://stockroom.myshopify.com/admin',
+            name: 'Stockroom',
+          },
           {
             url: 'https://a-better-looking-shop.myshopify.io/admin',
             name: 'A Better Looking Shop',
