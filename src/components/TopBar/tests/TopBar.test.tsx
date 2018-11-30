@@ -249,7 +249,7 @@ describe('<TopBar />', () => {
       expect(topBar.contains(mockShopSwitcher)).toBeTruthy();
     });
 
-    it('doesnt render a logo when defined', () => {
+    it('doesn’t render a logo when defined', () => {
       const topBar = shallowWithAppProvider(
         <TopBar shopSwitcher={mockShopSwitcher} />,
         addPolarisContext({
