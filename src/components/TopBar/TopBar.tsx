@@ -16,6 +16,7 @@ import {
   SearchProps,
   Menu,
   ShopSwitcher,
+  ShopSwitcherProps,
 } from './components';
 import * as styles from './TopBar.scss';
 
@@ -50,7 +51,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
   static UserMenu = UserMenu;
   static SearchField = SearchField;
   static Menu = Menu;
-  static ShopSwitcher = ShopSwitcher;
+  static ShopSwitcher: React.ComponentClass<ShopSwitcherProps> = ShopSwitcher;
 
   state: State = {
     focused: false,

@@ -8,7 +8,7 @@ import Switcher, {BaseProps as SwitcherProps} from '../../../ShopSwitcher';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import * as styles from './ShopSwitcher.scss';
 
-type Props = SwitcherProps;
+export type Props = SwitcherProps;
 type ComposedProps = Props & WithAppProviderProps;
 
 interface State {
