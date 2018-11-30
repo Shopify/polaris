@@ -149,7 +149,7 @@ Don't
 
 ### Keyboard support
 
-Keyboard users will expect to be able to give buttons keyboard focus with the `tab` key, and to activate them with the `enter`/`return` and `space` keys.
+Keyboard users will expect to be able to give buttons keyboard focus with the <kbd>tab</kbd> key, and to activate them with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys.
 
 <!-- /content-for -->
 
