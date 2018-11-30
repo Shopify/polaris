@@ -64,12 +64,15 @@ const {Percy, FileSystemAssetLoader} = require('@percy/puppeteer');
 
     const urls = [...batchComponentExamples, ...individualModalExamples];
 
+    const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     urls.forEach((path) => {
       const currentBrowser = browsers[browserIndex % 2];
       browserIndex++;
       currentBrowser.taken = currentBrowser.taken.then(async () => {
         console.log('Snapshotting ', path);
         await currentBrowser.page.goto(`http://localhost:3000${path}`);
+        await timeout(2000);
         return percy.snapshot(`Snapshot of ${path}`, currentBrowser.page);
       });
     });
