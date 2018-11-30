@@ -272,9 +272,7 @@ export class DataTable extends React.PureComponent<CombinedProps, State> {
     } = this;
     let {heights} = this.state;
     if (table) {
-      const rows = Array.from(table.getElementsByTagName('tr') as NodeListOf<
-        HTMLElement
-      >);
+      const rows = Array.from(table.getElementsByTagName('tr'));
 
       if (!truncate) {
         return (heights = rows.map((row) => {
