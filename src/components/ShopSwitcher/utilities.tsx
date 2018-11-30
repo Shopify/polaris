@@ -15,6 +15,7 @@ export function transformShopsToItems(shops: Shop[], activeIndex: number) {
     ) as any,
     url,
     active: index === activeIndex,
+    external: true,
   }));
 }
 
