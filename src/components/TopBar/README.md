@@ -291,7 +291,7 @@ class TopBarExample extends React.Component {
       logo: {
         width: 124,
         shopSwitcherSource:
-          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+          'https://cdn.shopify.com/s/files/1/0048/7889/3112/t/1/assets/jaded-pixel-logo-icon-color.svg?9067931593300480340',
         url: 'http://jadedpixel.com',
         accessibilityLabel: 'Jaded Pixel',
       },
