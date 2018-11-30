@@ -32,7 +32,27 @@ Use to indicate that the page is loading.
 
 ## Required components
 
-The loading component must be wrapped in the [frame](/components/structure/frame) component.
+The loading component must be wrapped in the [frame](/components/structure/frame) component or used in an embedded application.
+
+---
+
+## Use in an embedded application
+
+Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the loading component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
+
+```jsx
+class EmbeddedAppLoadingExample extends React.Component {
+  state = {
+    loading: false,
+  };
+
+  render() {
+    const loadingMarkup = this.state.loading && <Loading />;
+
+    return <AppProvider apiKey="YOUR_API_KEY">{loadingMarkup}</AppProvider>;
+  }
+}
+```
 
 ---
 

@@ -17,6 +17,18 @@ The contextual save bar tells merchants their options once they have made change
 
 ---
 
+## Required components
+
+The contextual save bar component must be wrapped in the [frame](/components/structure/frame) component.
+
+---
+
+## Use in an embedded application
+
+Use of the contextual save bar component in an embedded application is not currently supported. If this is a feature you would like to see supported by Shopify App Bridge, let us know in the [forums](https://ecommerce.shopify.com/c/shopify-apis-and-technology).
+
+---
+
 ## Best practices
 
 The contextual save bar component should:

@@ -41,19 +41,19 @@ export interface Props extends FooterProps {
   iFrameName?: string;
   /** The content for the title of the modal (embedded app use accepts string only) */
   title?: string | React.ReactNode;
-  /** The content to display inside modal (Modal use only) */
+  /** The content to display inside modal (stand-alone app use only) */
   children?: React.ReactNode;
-  /** Inner content of the footer (Modal use only) */
+  /** Inner content of the footer (stand-alone app use only) */
   footer?: React.ReactNode;
-  /** Disable animations and open modal instantly (Modal use only) */
+  /** Disable animations and open modal instantly (stand-alone app use only) */
   instant?: boolean;
-  /** Automatically adds sections to modal (Modal use only) */
+  /** Automatically adds sections to modal (stand-alone app use only) */
   sectioned?: boolean;
-  /** Increases the modal width (Modal use only) */
+  /** Increases the modal width (stand-alone app use only) */
   large?: boolean;
-  /** Limits modal height on large sceens with scrolling (Modal use only) */
+  /** Limits modal height on large sceens with scrolling (stand-alone app use only) */
   limitHeight?: boolean;
-  /** Replaces modal content with a spinner while a background action is being performed (Modal use only) */
+  /** Replaces modal content with a spinner while a background action is being performed (stand-alone app use only) */
   loading?: boolean;
   /**
    * Controls the size of the modal
@@ -68,9 +68,9 @@ export interface Props extends FooterProps {
   message?: string;
   /** Callback when the modal is closed */
   onClose(): void;
-  /** Callback when iframe has loaded (Modal use only) */
+  /** Callback when iframe has loaded (stand-alone app use only) */
   onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void;
-  /** Callback when modal transition animation has ended (Modal use only) */
+  /** Callback when modal transition animation has ended (stand-alone app use only) */
   onTransitionEnd?(): void;
 }
 export type CombinedProps = Props & WithAppProviderProps;
