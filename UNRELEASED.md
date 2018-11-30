@@ -7,7 +7,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - `TextField` no longer uses `componentWillReceiveProps`([#628](https://github.com/Shopify/polaris-react/pull/628))
-- `TextField` users autocomplete="nope" when `autoComplete` prop is `false`
+- `TextField` uses autocomplete="nope" when `autoComplete` prop is `false` ([#708](https://github.com/Shopify/polaris-react/pull/708))
 - Fixed `Pagination` from calling `onNext` and `onPrevious` while `hasNext` and `hasPrevious` are false for key press events ([#643](https://github.com/Shopify/polaris-react/pull/643))
 - `EventListener` no longer uses `componentWillUpdate` ([#628](https://github.com/Shopify/polaris-react/pull/628))
 - Allowed `Icon` to accept a React Node as a source ([#635](https://github.com/Shopify/polaris-react/pull/635)) (thanks to [@mbriggs](https://github.com/mbriggs) for the [original issue](https://github.com/Shopify/polaris-react/issues/449))
