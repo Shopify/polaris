@@ -5,7 +5,7 @@ const Breakpoints = {
   stackedContent: '1043px',
 };
 
-const noWindowMatches = {
+const noWindowMatches: MediaQueryList = {
   media: '',
   addListener: noop,
   removeListener: noop,
@@ -14,7 +14,7 @@ const noWindowMatches = {
   addEventListener: noop,
   removeEventListener: noop,
   dispatchEvent: (_: Event) => true,
-} as MediaQueryList;
+};
 
 export function navigationBarCollapsed() {
   return typeof window === 'undefined'
