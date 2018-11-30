@@ -38,7 +38,7 @@ For the best experience when creating an application frame, use the following co
 
 ## Examples
 
-### Frame
+### Frame in a stand-alone application
 
 Use to present the frame structure and all of its elements.
 
@@ -88,9 +88,6 @@ class FrameExample extends React.Component {
     ) : null;
 
     const userMenuActions = [
-      {
-        items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
-      },
       {
         items: [{content: 'Community forums'}],
       },
@@ -162,30 +159,28 @@ class FrameExample extends React.Component {
     const navigationMarkup = (
       <Navigation location="/" userMenu={navigationUserMenuMarkup}>
         <Navigation.Section
-          title="Settings"
           items={[
             {
-              label: 'Account',
-              icon: 'home',
-              onClick: this.toggleState('isLoading'),
-            },
-            {
-              label: 'Orders',
-              icon: 'orders',
-              onClick: this.toggleState('isLoading'),
+              label: 'Back to Shopify',
+              icon: 'arrowLeft',
             },
           ]}
         />
         <Navigation.Section
-          title="Support"
+          separator
+          title="Jaded Pixel App"
           items={[
             {
-              label: 'Help center',
-              icon: 'help',
+              label: 'Dashboard',
+              icon: 'home',
+              onClick: this.toggleState('isLoading'),
+            },
+            {
+              label: 'Jaded Pixel Orders',
+              icon: 'orders',
               onClick: this.toggleState('isLoading'),
             },
           ]}
-          separator
           action={{
             icon: 'conversation',
             accessibilityLabel: 'Contact support',
@@ -201,8 +196,8 @@ class FrameExample extends React.Component {
       <Page title="Account">
         <Layout>
           <Layout.AnnotatedSection
-            title="Billing details"
-            description="We will use this as your billing information."
+            title="Account details"
+            description="Jaded Pixel will use this as your account information."
           >
             <Card sectioned>
               <FormLayout>

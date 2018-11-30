@@ -36,6 +36,49 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ---
 
+## Use in an embedded application
+
+Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the page component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
+
+Note in the props table that a number of properties are only available in stand-alone applications, and won't work in an embedded context. Configure your application's icon and navigation in the [Shopify Partner Dashboard](https://partners.shopify.com) app setup section. To help visualize the page component in an embedded application, we've provided the following screenshot.
+
+![Screenshot of page component in an embedded application](embedded/page/page.jpg)
+
+```jsx
+ReactDOM.render(
+  <AppProvider apiKey="YOUR_API_KEY">
+    <Page
+      breadcrumbs={[{content: 'Products'}]}
+      title="Product reviews"
+      primaryAction={{
+        content: 'Save',
+        disabled: true,
+      }}
+      secondaryActions={[{content: 'Duplicate'}, {content: 'Upgrade'}]}
+      actionGroups={[
+        {
+          title: 'Promote',
+          actions: [
+            {
+              content: 'Share on Facebook',
+              onAction: this.performFacebookShare,
+            },
+            {
+              content: 'Share on Pinterest',
+              onAction: this.performPinterestShare,
+            },
+          ],
+        },
+      ]}
+    >
+      <p>Page content</p>
+    </Page>
+  </AppProvider>,
+);
+```
+
+---
+
 ## Best practices
 
 The page component should:
