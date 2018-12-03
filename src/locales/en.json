@@ -192,6 +192,11 @@
 
     "Tag": {
       "ariaLabel": "Remove {children}"
+    },
+
+    "TextField": {
+      "characterCount": "{count} characters",
+      "characterCountWithMaxLength": "{count} of {limit} characters used"
     }
   }
 }

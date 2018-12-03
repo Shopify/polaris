@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- `TextField` accepts a `showCharacterCount` prop to enable the display of character count ([#709](https://github.com/Shopify/polaris-react/pull/709))
+
 ### Bug fixes
 
 - Fixed vertical misalignment in `Banner.Header`([#870](https://github.com/Shopify/polaris-react/pull/870))

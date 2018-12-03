@@ -7,6 +7,7 @@ import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Error, Key} from '../../types';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Resizer, Spinner} from './components';
 import * as styles from './TextField.scss';
 
@@ -96,6 +97,8 @@ export interface BaseProps {
   ariaActiveDescendant?: string;
   /** Indicates what kind of user input completion suggestions are provided */
   ariaAutocomplete?: string;
+  /** Indicates whether or not the character count should be displayed */
+  showCharacterCount?: boolean;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -112,17 +115,19 @@ export type Props = NonMutuallyExclusiveProps &
     | {disabled: true}
     | {onChange(value: string, id: string): void});
 
+export type CombinedProps = Props & WithAppProviderProps;
+
 const getUniqueID = createUniqueIDFactory('TextField');
 
-export default class TextField extends React.PureComponent<Props, State> {
-  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+class TextField extends React.PureComponent<CombinedProps, State> {
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     return {id: nextProps.id || prevState.id};
   }
 
   private input: HTMLElement;
   private buttonPressTimer: number;
 
-  constructor(props: Props) {
+  constructor(props: CombinedProps) {
     super(props);
 
     this.state = {
@@ -132,7 +137,7 @@ export default class TextField extends React.PureComponent<Props, State> {
     };
   }
 
-  componentDidUpdate({focused}: Props) {
+  componentDidUpdate({focused}: CombinedProps) {
     if (
       this.input &&
       focused !== this.props.focused &&
@@ -177,6 +182,8 @@ export default class TextField extends React.PureComponent<Props, State> {
       ariaActiveDescendant,
       ariaAutocomplete,
       ariaControls,
+      showCharacterCount,
+      polaris: {intl},
     } = this.props;
 
     const {height} = this.state;
@@ -202,6 +209,35 @@ export default class TextField extends React.PureComponent<Props, State> {
     const suffixMarkup = suffix ? (
       <div className={styles.Suffix} id={`${id}Suffix`}>
         {suffix}
+      </div>
+    ) : null;
+
+    const characterCount = value.length;
+    const characterCountLabel = intl.translate(
+      maxLength
+        ? 'Polaris.TextField.characterCountWithMaxLength'
+        : 'Polaris.TextField.characterCount',
+      {count: characterCount, limit: maxLength},
+    );
+
+    const characterCountClassName = classNames(
+      styles.CharacterCount,
+      multiline && styles.AlignFieldBottom,
+    );
+
+    const characterCountText = !maxLength
+      ? characterCount
+      : `${characterCount}/${maxLength}`;
+
+    const characterCountMarkup = showCharacterCount ? (
+      <div
+        id={`${id}CharacterCounter`}
+        className={characterCountClassName}
+        aria-label={characterCountLabel}
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {characterCountText}
       </div>
     ) : null;
 
@@ -231,6 +267,9 @@ export default class TextField extends React.PureComponent<Props, State> {
     }
     if (helpText) {
       describedBy.push(helpTextID(id));
+    }
+    if (showCharacterCount) {
+      describedBy.push(`${id}CharacterCounter`);
     }
 
     const labelledBy = [labelID(id)];
@@ -303,6 +342,7 @@ export default class TextField extends React.PureComponent<Props, State> {
             {prefixMarkup}
             {input}
             {suffixMarkup}
+            {characterCountMarkup}
             {spinnerMarkup}
             <div className={styles.Backdrop} />
             {resizer}
@@ -414,3 +454,5 @@ function normalizeAutoComplete(autoComplete?: boolean) {
   }
   return autoComplete ? 'on' : 'off';
 }
+
+export default withAppProvider<Props>()(TextField);
