@@ -4,6 +4,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import {TextContainer} from 'components';
 import {Key} from '../../../../../types';
 import PositionedOverlay from '../../../../PositionedOverlay';
+import Pane from '../../Pane';
 import PopoverOverlay from '../PopoverOverlay';
 
 interface HandlerMap {
@@ -163,11 +164,17 @@ describe('<PopoverOverlay />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('renders the header when active', () => {
-    const header = <div />;
+  it('wraps children in a Pane by default', () => {
     const popoverOverlay = mountWithAppProvider(
-      <PopoverOverlay {...mockProps} active header={header} />,
+      <PopoverOverlay {...mockProps} active />,
     );
-    expect(popoverOverlay.contains(header)).toBeTruthy();
+    expect(popoverOverlay.find(Pane).exists()).toBeTruthy();
+  });
+
+  it('doesn’t wrap the children in a Pane when noWrap is truthy', () => {
+    const popoverOverlay = mountWithAppProvider(
+      <PopoverOverlay {...mockProps} active noWrap />,
+    );
+    expect(popoverOverlay.find(Pane).exists()).toBeFalsy();
   });
 });

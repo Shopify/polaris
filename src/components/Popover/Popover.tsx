@@ -15,8 +15,6 @@ export {CloseSource};
 export interface Props {
   /** The content to display inside the popover */
   children?: React.ReactNode;
-  /** Content to be displayed fixed above the main content */
-  header?: React.ReactNode;
   /** The preferred direction to open the popover */
   preferredPosition?: PreferredPosition;
   /** The preferred alignment of the popover relative to its activator */
@@ -40,6 +38,8 @@ export interface Props {
   fullHeight?: boolean;
   /** Remains in a fixed position */
   fixed?: boolean;
+  /** Prevent popover from automatically wrapping contents in a Pane */
+  noWrap?: boolean;
   /** Callback when popover is closed */
   onClose(source: CloseSource): void;
 }
@@ -80,12 +80,12 @@ export default class Popover extends React.PureComponent<Props, State> {
     const {
       activatorWrapper: WrapperComponent = 'div',
       children,
-      header,
       onClose,
       activator,
       activatorWrapper,
       active,
       fixed,
+      noWrap,
       ...rest
     } = this.props;
 
@@ -100,7 +100,7 @@ export default class Popover extends React.PureComponent<Props, State> {
           onClose={this.handleClose}
           active={active}
           fixed={fixed}
-          header={header}
+          noWrap={noWrap}
           {...rest}
         >
           {children}

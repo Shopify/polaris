@@ -156,11 +156,8 @@ describe('<Popover />', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('passes the header into the overlay', () => {
-    const header = <div />;
-    const popover = mountWithAppProvider(
-      <Popover {...mockProps} header={header} />,
-    );
-    expect(popover.find(PopoverOverlay).prop('header')).toBe(header);
+  it('passes noWrap into the overlay', () => {
+    const popover = mountWithAppProvider(<Popover {...mockProps} noWrap />);
+    expect(popover.find(PopoverOverlay).prop('noWrap')).toBeTruthy();
   });
 });

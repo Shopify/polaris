@@ -71,9 +71,10 @@ class ShopSwitcher extends React.Component<ComposedProps, State> {
             activator={activator}
             onClose={this.togglePopover}
             preferredAlignment="left"
-            header={searchField}
+            noWrap
           >
-            {shopsList}
+            {searchField}
+            <Popover.Pane>{shopsList}</Popover.Pane>
           </Popover>
         )}
       </Switcher>
