@@ -289,62 +289,6 @@ class PopoverFormExample extends React.Component {
 }
 ```
 
-### Popover with fixed header
-
-Use when presenting a combination of regular content with a fixed header.
-
-```jsx
-class PopoverExample extends React.Component {
-  state = {
-    active: true,
-  };
-
-  togglePopover = () => {
-    this.setState(({active}) => {
-      return {active: !active};
-    });
-  };
-
-  render() {
-    const activator = (
-      <Button onClick={this.togglePopover}>More actions</Button>
-    );
-
-    return (
-      <div style={{height: '250px'}}>
-        <Popover
-          active={this.state.active}
-          activator={activator}
-          onClose={this.togglePopover}
-          header={
-            <div style={{padding: '1rem 1.5rem'}}>
-              <TextField
-                label=""
-                labelHidden
-                placeholder="Search for a shop."
-              />
-            </div>
-          }
-        >
-          <ActionList
-            items={[
-              {content: 'Store 1'},
-              {content: 'Store 2'},
-              {content: 'Store 3'},
-              {content: 'Store 4'},
-              {content: 'Store 5'},
-              {content: 'Store 6'},
-              {content: 'Store 7'},
-              {content: 'Store 8'},
-            ]}
-          />
-        </Popover>
-      </div>
-    );
-  }
-}
-```
-
 ### Action sheet
 
 <!-- example-for: ios -->
