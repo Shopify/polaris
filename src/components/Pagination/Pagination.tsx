@@ -129,6 +129,7 @@ function Pagination({
   const previousButtonEvents =
     previousKeys &&
     (previousURL || onPrevious) &&
+    hasPrevious &&
     previousKeys.map((key) => (
       <KeypressListener
         key={key}
@@ -144,6 +145,7 @@ function Pagination({
   const nextButtonEvents =
     nextKeys &&
     (nextURL || onNext) &&
+    hasNext &&
     nextKeys.map((key) => (
       <KeypressListener
         key={key}

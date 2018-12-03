@@ -1,7 +1,7 @@
 import tokens from '@shopify/polaris-tokens';
 import {noop} from '@shopify/javascript-utilities/other';
 import {needsVariantList} from '../config';
-import {HSLColor} from '../../ColorPicker';
+import {HSLColor} from '../../../utilities/color-types';
 import {
   colorToHsla,
   hslToString,
@@ -15,13 +15,13 @@ import {
 } from '../../../utilities/color-manipulation';
 import {compose} from '../../../utilities/compose';
 
-import {Context as ThemeProviderContext} from '../ThemeProvider';
 import {
   Theme,
   ColorsToParse,
   ThemeVariant,
   ThemeColors,
   ThemeContext,
+  ThemeProviderContext,
 } from '../types';
 
 export function setColors(theme: Theme | undefined): string[][] | undefined {
@@ -70,10 +70,10 @@ export function setTextColor(
   variant: ThemeVariant = 'dark',
 ): string[] {
   if (variant === 'light') {
-    return [name, tokens.colorInkBase];
+    return [name, tokens.colorInk];
   }
 
-  return [name, tokens.colorWhiteBase];
+  return [name, tokens.colorWhite];
 }
 
 export function setTheme(

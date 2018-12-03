@@ -1,6 +1,6 @@
 # Accessibility testing for Polaris
 
-We want Polaris and Shopify's platform to be accessible for people with disabilities and impairments. A large part of this is making sure that Polaris components meet Level A and Level AA success criteria of the [Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/).
+We want Polaris and Shopify’s platform to be accessible for people with disabilities and impairments. A large part of this is making sure that Polaris components meet Level A and Level AA success criteria of the [Web Content Accessibility Guidelines (WCAG 2.1)](https://www.w3.org/TR/WCAG21/).
 
 **Looking for more information about accessibility?** See our [accessibility overview](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility.md).
 
@@ -18,12 +18,12 @@ The [Polaris style guide](https://polaris.shopify.com/) also provides guidelines
 
 ### When to test
 
-You don't need to test everything all the time. Use this guide to decide what to test based on the changes or new features you've developed.
+You don’t need to test everything all the time. Use this guide to decide what to test based on the changes or new features you’ve developed.
 
-- If you've added content, see the [**Structure** section](#structure) and the [**Visuals** section](#visuals).
+- If you’ve added content, see the [**Structure** section](#structure) and the [**Visuals** section](#visuals).
 - If you have added interactive elements, see the [**Keyboard actions** section](#keyboard-actions).
 - If you have added dynamic content or controls, see the [**Dynamic content** section](#dynamic-content).
-- If you're developing for mobile web, see the [**Touch and motion inputs** section](#touch-and-motion-inputs) and the [**Mobile layout** section](#mobile-layout).
+- If you’re developing for mobile web, see the [**Touch and motion inputs** section](#touch-and-motion-inputs) and the [**Mobile layout** section](#mobile-layout).
 - If you have added images, video, or audio, see the [**Media support** section](#media-support).
 
 ### Manual testing checklist
@@ -58,18 +58,18 @@ You don't need to test everything all the time. Use this guide to decide what to
   - Custom, ARIA-based features can be used with the keystrokes recommended in the [ARIA authoring guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/) or those defined in the [Polaris style guide](https://polaris.shopify.com/), with or without a screen reader running.
 - Keyboard focus does not become trapped with no way to exit or close features, with or without a screen reader running. ([2.1.2 No Keyboard Trap](https://www.w3.org/TR/WCAG21/#no-keyboard-trap))
   - Features like modals that capture focus on purpose can be dismissed with the keyboard (ideally with the <key>Escape</key> key as well as a visible, labeled, keyboard-accessible control) and manage focus to a logical place when they close.
-  - Embedded content like iframes don't trap focus.
+  - Embedded content like iframes don’t trap focus.
 - Custom keyboard shortcuts using single letter keys can be turned off or remapped, and are only active when the relavant feature has focus. ([2.1.4 Character Key Shortcuts](https://www.w3.org/TR/WCAG21/#character-key-shortcuts))
 - Keyboard focus moves in a logical path. ([2.4.3 Focus Order](https://www.w3.org/TR/WCAG21/#focus-order))
   - Focus follows the reading order.
-  - Focus doesn’t go off-screen to content that isn't meant to be accessed.
+  - Focus doesn’t go off-screen to content that isn’t meant to be accessed.
   - Focus isn’t set with positive `tabindex` values.
   - Focus can move forward using <key>Tab</key> and backwards using <key>Shift</key> + <key>Tab</key>.
 - When an element has keyboard focus, the focus indicator is visible ([2.4.7 Focus Visible](https://www.w3.org/TR/WCAG21/#focus-visible))
 - Moving focus to an element does not cause a [change of context](https://www.w3.org/TR/WCAG21/#dfn-change-of-context). ([3.2.1 On Focus](https://www.w3.org/TR/WCAG21/#on-focus))
-  - Inline content doesn't display or hide.
-  - Navigation doesn't happen.
-  - Control settings don't change.
+  - Inline content doesn’t display or hide.
+  - Navigation doesn’t happen.
+  - Control settings don’t change.
 
 #### Dynamic content
 
@@ -100,14 +100,14 @@ You don't need to test everything all the time. Use this guide to decide what to
 
 - Content can be accessed in portrait and landscape, unless the feature isn’t valid in more than one orientation. ([1.3.4 Orientation](https://www.w3.org/TR/WCAG21/#orientation))
 - Content can be resized to smaller breakpoints without triggering horizontal scrolling. ([1.4.10 Reflow](https://www.w3.org/TR/WCAG21/#reflow))
-  - Content that can't be resized without losing context, like tables, large images, or similar features, are exempt.
+  - Content that can’t be resized without losing context, like tables, large images, or similar features, are exempt.
 
 #### Media support
 
 - Image-based content supports text alternatives. ([1.1.1 Non-text Content](https://www.w3.org/TR/WCAG21/#non-text-content))
   - Decorative images have `alt=""`.
   - Informative images have an `alt` value supplied.
-  - SVGs rely on separate text equivalents, since they aren't consistently conveyed by assistive tech.
+  - SVGs rely on separate text equivalents, since they aren’t consistently conveyed by assistive tech.
   - In cases where an icon is used to convey the purpose of a control, the icon has a text equivalent that describes its purpose.
 - Audio features support a text alternative. ([1.2.1 Audio-only and Video-only (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded))
 - Video features support text alternatives like an audio track or audio description. ([1.2.1 Audio-only and Video-only (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded), [1.2.3 Audio Description or Media Alternative (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-description-or-media-alternative-prerecorded), [1.2.5 Audio Description (Prerecorded)](https://www.w3.org/TR/WCAG21/#audio-description-prerecorded))

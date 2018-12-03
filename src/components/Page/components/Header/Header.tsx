@@ -15,6 +15,7 @@ import Breadcrumbs, {Props as BreadcrumbsProps} from 'components/Breadcrumbs';
 import DisplayText from 'components/DisplayText';
 import Pagination, {PaginationDescriptor} from 'components/Pagination';
 import Popover from 'components/Popover';
+import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
 import * as styles from './Header.scss';
 
@@ -35,15 +36,18 @@ export interface PrimaryActionProps
 export interface Props {
   /** Page title, in large type */
   title: string;
-  /** Important and non-interactive status information shown immediately after the title. */
+  /** Important and non-interactive status information shown immediately after the title. (stand-alone app use only) */
   titleMetadata?: React.ReactNode;
-  /** Visually hide the title */
+  /** Visually hide the title (stand-alone app use only) */
   titleHidden?: boolean;
-  /** App icon, for pages that are part of Shopify apps */
+  /**
+   * Application icon for identifying embedded applications
+   * @embeddedAppOnly
+   */
   icon?: string;
   /** Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
-  /** Adds a border to the bottom of the page header */
+  /** Adds a border to the bottom of the page header (stand-alone app use only) */
   separator?: boolean;
   /** Collection of secondary page-level actions */
   secondaryActions?: SecondaryAction[];
@@ -51,7 +55,7 @@ export interface Props {
   actionGroups?: ActionGroupDescriptor[];
   /** Primary page-level action */
   primaryAction?: PrimaryActionProps;
-  /** Page-level pagination */
+  /** Page-level pagination (stand-alone app use only) */
   pagination?: PaginationDescriptor;
 }
 
@@ -60,7 +64,9 @@ export interface State {
   rollupOpen: boolean;
 }
 
-export default class Header extends React.PureComponent<Props, State> {
+export type CombinedProps = Props & WithAppProviderProps;
+
+class Header extends React.PureComponent<CombinedProps, State> {
   state: State = {
     rollupOpen: false,
   };
@@ -75,7 +81,14 @@ export default class Header extends React.PureComponent<Props, State> {
       pagination,
       separator,
       secondaryActions,
+      icon,
+      polaris: {intl},
     } = this.props;
+
+    if (icon) {
+      // eslint-disable-next-line no-console
+      console.warn(intl.translate('Polaris.Page.Header.iconWarningMessage'));
+    }
 
     const className = classNames(
       styles.Header,
@@ -261,3 +274,5 @@ function secondaryActionsFrom(
     </div>
   ));
 }
+
+export default withAppProvider<Props>()(Header);

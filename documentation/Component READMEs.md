@@ -132,7 +132,7 @@ Example description.
 
 ## Troubleshooting
 
-When running `yarn tophat` or CI tests you may run into errors.
+When running `yarn dev` or CI tests you may run into errors.
 Here are some common fixes.
 
 ### No examples found

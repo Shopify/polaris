@@ -52,7 +52,7 @@
 
     "DiscardConfirmationModal": {
       "title": "Discard all unsaved changes",
-      "message": "If you discard changes, you'll delete any edits you made since you last saved.",
+      "message": "If you discard changes, you’ll delete any edits you made since you last saved.",
       "primaryAction": "Discard changes",
       "secondaryAction": "Continue editing"
     },
@@ -89,6 +89,12 @@
     "Modal": {
       "iFrameTitle": "body markup",
       "modalWarning": "These required properties are missing from Modal: {missingProps}"
+    },
+
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead."
+      }
     },
 
     "Pagination": {

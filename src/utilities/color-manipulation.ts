@@ -1,4 +1,4 @@
-import {HSLColor, HSBColor} from '../components';
+import {HSLColor, HSBColor} from './color-types';
 
 export function lightenColor(color: HSLColor | string, lighten = 0) {
   if (typeof color === 'string') {

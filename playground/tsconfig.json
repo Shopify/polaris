@@ -1,24 +1,33 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "target": "es2016",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "resolveJsonModule": true,
-    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "noEmitHelpers": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
     "importHelpers": true,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es2015",
+      "es2016",
+      "es2017",
+      "esnext.asynciterable",
+      "scripthost"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmitHelpers": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "target": "es2016",
+    "resolveJsonModule": true,
     "sourceMap": false,
-    "lib": ["dom", "es2015", "es2016", "es2017", "dom.iterable", "scripthost"],
+    "strictNullChecks": true,
     "paths": {
-      "@shopify/polaris": ["../config/typescript/*", "../src"]
+      "@shopify/polaris": ["../src"]
     }
-  }
+  },
+  "include": [".", "../config/typescript/**/*"]
 }

@@ -13,10 +13,8 @@ import ButtonGroup from 'components/ButtonGroup';
 import Checkbox from 'components/Checkbox';
 import Button, {buttonsFrom} from 'components/Button';
 import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
-import {SELECT_ALL_ITEMS} from '../../types';
-
-import {ResourceListContext} from '../../ResourceList';
-import withContext from '../../../WithContext';
+import withContext from 'components/WithContext';
+import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
 import {Consumer} from '../Context';
 import * as styles from './Item.scss';
 

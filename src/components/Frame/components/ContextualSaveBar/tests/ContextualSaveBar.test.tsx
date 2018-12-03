@@ -167,6 +167,22 @@ describe('<ContextualSaveBar />', () => {
         '104px',
       );
     });
+
+    it('will not render the logo when content is aligned flush left', () => {
+      const contextualSaveBar = mountWithAppProvider(
+        <ContextualSaveBar alignContentFlush />,
+        addPolarisContext({
+          logo: {
+            contextualSaveBarSource: './assets/monochrome_shopify.svg',
+            width: 200,
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+
+      expect(contextualSaveBar.find(Image).exists()).toBeFalsy();
+    });
   });
 });
 

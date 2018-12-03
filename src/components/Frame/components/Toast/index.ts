@@ -1,4 +1,1 @@
-import Toast from './Toast';
-
-export {Props} from './Toast';
-export default Toast;
+export {default, DEFAULT_TOAST_DURATION} from './Toast';

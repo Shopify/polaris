@@ -82,7 +82,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 ### Action list in a popover
 
-Use for the least important actions so merchants aren't distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
+Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
 class ActionListExample extends React.Component {
