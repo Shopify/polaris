@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Intl} from '../../../AppProvider';
-import {ResourceListContext} from '../../types';
+import {ResourceListContext} from '../../ResourceList';
 
 const intl = new Intl(undefined);
 
