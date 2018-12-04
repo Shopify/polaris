@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Checkbox from '../Checkbox';
 
@@ -22,6 +23,18 @@ describe('<Checkbox />', () => {
       (element.find('input') as any).instance().checked = true;
       element.find('input').simulate('change');
       expect(spy).toHaveBeenCalledWith(true, 'MyCheckbox');
+    });
+
+    // JSDOM is overwriting currentTarget
+    // See https://github.com/airbnb/enzyme/issues/218
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('renders when the correct focus when checkbox is toggled off', () => {
+      const input = mountWithAppProvider(
+        <Checkbox checked id="checkboxId" label="Checkbox" onChange={noop} />,
+      ).find('input');
+      input.simulate('change', {currentTarget: {checked: false}});
+
+      expect(input.getDOMNode()).toBe(document.activeElement);
     });
   });
 
