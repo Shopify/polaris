@@ -135,6 +135,7 @@ export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 export {
   default as Frame,
   Props as FrameProps,
+  ToastProps,
   DEFAULT_TOAST_DURATION,
 } from './Frame';
 
