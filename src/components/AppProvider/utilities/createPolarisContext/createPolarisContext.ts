@@ -24,7 +24,7 @@ export function createPolarisContext(
 export default function createPolarisContext(
   contextOne?: CreateAppProviderContext | CreateThemeContext,
   contextTwo?: CreateAppProviderContext | CreateThemeContext,
-) {
+): PolarisContext {
   let appProviderContext: CreateAppProviderContext | undefined;
   let themeContext: CreateThemeContext | undefined;
   if (contextOne && 'logo' in contextOne) {
