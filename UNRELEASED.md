@@ -8,8 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Fixed App Brige import issues in the `enzyme` utility and `AppProvider`.
-- Fixed missing color utility and type exports.
+- Fixed Shopify App Bridge import issues in `AppProvider` and `enzyme` test utilities ([#720](https://github.com/Shopify/polaris-react/pull/720))
 
 ### Documentation
 
