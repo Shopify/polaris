@@ -8,6 +8,13 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.2.1 - 2018-12-04
+
+### Bug fixes
+
+- Fixed `ToastProps` type not being exported ([#722](https://github.com/Shopify/polaris-react/pull/722))
+- Fixed Shopify App Bridge import issues in `AppProvider` and `enzyme` test utilities ([#720](https://github.com/Shopify/polaris-react/pull/720))
+
 ## 3.2.0 - 2018-12-04
 
 ### Enhancements
