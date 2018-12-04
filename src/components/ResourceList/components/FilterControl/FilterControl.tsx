@@ -10,7 +10,7 @@ import TextField from '../../../TextField';
 import Tag from '../../../Tag';
 import withContext from '../../../WithContext';
 
-import {ResourceListContext} from '../../types';
+import {ResourceListContext} from '../../ResourceList';
 import {Consumer} from '../Context';
 
 import {FilterCreator} from './components';
