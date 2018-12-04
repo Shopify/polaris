@@ -1,1 +1,4 @@
-export {default, Props} from './Header';
+import Header from './Header';
+
+export {Props as HeaderProps} from './Header';
+export default Header;
