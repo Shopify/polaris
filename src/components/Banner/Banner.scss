@@ -181,6 +181,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 // stylelint-enable selector-max-specificity
 .Text {
   position: relative;
+  white-space: nowrap;
 
   &::after,
   &::before {
