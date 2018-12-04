@@ -15,7 +15,7 @@ import getNamespacedClassName from './namespaced-classname';
 import createExistingClassnameTokenUser from './use-existing-classname-tokens';
 
 const project = resolve(__dirname, '../..');
-const buildRoot = resolve(project, './build-intermediate/esnext');
+const buildRoot = resolve(project, './build-intermediate');
 const styleRoot = resolve(buildRoot, './styles');
 
 const externalPackages = [
@@ -54,7 +54,7 @@ export default function createRollupConfig({
         jsnext: true,
         main: true,
         customResolveOptions: {
-          moduleDirectory: ['../build-intermediate/esnext', 'node_modules'],
+          moduleDirectory: ['../build-intermediate', 'node_modules'],
         },
       }),
       babel({

@@ -16,7 +16,7 @@ const build = resolvePath(root, 'build');
 const finalEsnext = resolvePath(root, 'esnext');
 
 const docs = resolvePath(root, './docs');
-const intermediateBuild = resolvePath(root, './build-intermediate/esnext');
+const intermediateBuild = resolvePath(root, './build-intermediate');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
 
 const scripts = resolvePath(root, 'scripts');
@@ -28,22 +28,16 @@ execSync(`babel-node ${resolvePath(scripts, './ts-paths-transform.js')}`, {
 });
 
 execSync(
-  `${resolvePath(
-    root,
-    './node_modules/.bin/tsc',
-  )} --outDir ${intermediateBuild} --project ${tsBuild}`,
+  `${resolvePath(root, './node_modules/.bin/tsc')} --project ${tsBuild}`,
   {
     stdio: 'inherit',
   },
 );
 
-mv(resolvePath(root, 'types/build-intermediate/typescript/*'), types);
+mv(resolvePath(root, 'types/build-intermediate/*'), types);
 rm('-rf', resolvePath(root, 'types/build-intermediate'));
 
-mv(
-  resolvePath(intermediateBuild, 'build-intermediate/typescript/*'),
-  intermediateBuild,
-);
+mv(resolvePath(intermediateBuild, 'build-intermediate/*'), intermediateBuild);
 rm('-rf', resolvePath(intermediateBuild, 'build-intermediate'));
 
 copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {

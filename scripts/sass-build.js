@@ -15,7 +15,7 @@ import {cp, mkdir} from 'shelljs';
 import archiver from 'archiver';
 
 const root = resolve(__dirname, '..');
-const intermediateBuild = resolve(root, './build-intermediate/esnext');
+const intermediateBuild = resolve(root, './build-intermediate');
 const srcStyles = resolve(intermediateBuild, './styles');
 const srcComponents = resolve(intermediateBuild, './components');
 
