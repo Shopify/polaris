@@ -16,12 +16,16 @@ const build = resolvePath(root, 'build');
 const finalEsnext = resolvePath(root, 'esnext');
 
 const docs = resolvePath(root, './docs');
-const intermediateBuild = resolvePath(root, './build-intermediate');
+const intermediateBuild = resolvePath(root, './build-intermediate/esnext');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
 
 const scripts = resolvePath(root, 'scripts');
 const types = resolvePath(root, 'types');
 const tsBuild = resolvePath(scripts, 'tsconfig.json');
+
+execSync(`babel-node ${resolvePath(scripts, './ts-paths-transform.js')}`, {
+  stdio: 'inherit',
+});
 
 execSync(
   `${resolvePath(
@@ -33,14 +37,14 @@ execSync(
   },
 );
 
-mv(resolvePath(root, 'types/src/*'), types);
-rm('-rf', resolvePath(root, 'types/src'));
+mv(resolvePath(root, 'types/build-intermediate/typescript/*'), types);
+rm('-rf', resolvePath(root, 'types/build-intermediate'));
 
-execSync(`babel-node ${resolvePath(scripts, './ts-paths-transform.js')}`, {
-  stdio: 'inherit',
-});
-
-mv(resolvePath(intermediateBuild, 'src/*'), intermediateBuild);
+mv(
+  resolvePath(intermediateBuild, 'build-intermediate/typescript/*'),
+  intermediateBuild,
+);
+rm('-rf', resolvePath(intermediateBuild, 'build-intermediate'));
 
 copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
   console.error(error);
@@ -83,7 +87,7 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
           ["shopify/web", {"modules": false}]
         ],
         "plugins": [
-          "../config/babel/plugins/sass-namespace-to-default-import.js"
+          "../../config/babel/plugins/sass-namespace-to-default-import.js"
         ]
       }
     `,

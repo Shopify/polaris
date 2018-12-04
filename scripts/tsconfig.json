@@ -1,4 +1,15 @@
 {
   "extends": "../tsconfig.json",
-  "exclude": ["../src/**/*.test.ts", "../src/**/*.test.tsx"]
+  "compilerOptions": {
+    "baseUrl": "../build-intermediate/typescript"
+  },
+  "include": [
+    "../config/typescript/**/*",
+    "../build-intermediate/typescript/**/*",
+    "../package.json"
+  ],
+  "exclude": [
+    "../build-intermediate/typescript/**/*.test.ts",
+    "../build-intermediate/typescript/**/*.test.tsx"
+  ]
 }

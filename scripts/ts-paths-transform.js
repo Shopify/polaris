@@ -1,15 +1,27 @@
 import {resolve, relative, dirname} from 'path';
 import {readdirSync} from 'fs';
+import {cp, mkdir, mv, rm, test as fileTest} from 'shelljs';
 import Project from 'ts-simple-ast';
 import {compilerOptions} from '../tsconfig.json';
 
 const ROOT_PATH = resolve(__dirname, '..');
-const BASE_PATH = resolve(ROOT_PATH, compilerOptions.baseUrl);
-const TYPES_PATH = resolve(ROOT_PATH, compilerOptions.declarationDir);
-const MODULE_PATH_REGEX = new RegExp(`^${getModulePathsRegex()}(/[^']+)?`);
+const SRC_PATH = resolve(ROOT_PATH, compilerOptions.baseUrl);
+const BUILD_PATH = resolve(ROOT_PATH, 'build-intermediate');
+const TS_BUILD_PATH = resolve(BUILD_PATH, 'typescript');
 
+if (fileTest('-d', TS_BUILD_PATH)) {
+  rm('-rf', TS_BUILD_PATH);
+}
+
+mkdir('-p', BUILD_PATH);
+cp('-R', SRC_PATH, BUILD_PATH);
+mv(resolve(BUILD_PATH, compilerOptions.baseUrl), TS_BUILD_PATH);
+
+const modulePathsRegex = new RegExp(`^${getModulePathsRegex()}(/[^']+)?`);
 const project = new Project();
-project.addExistingSourceFiles(`${TYPES_PATH}/**/*.d.ts`);
+
+project.addExistingSourceFiles(`${TS_BUILD_PATH}/**/*.ts`);
+project.addExistingSourceFiles(`${TS_BUILD_PATH}/**/*.tsx`);
 
 const files = project.getSourceFiles();
 
@@ -39,15 +51,15 @@ function getPathFromModuleDeclaration(moduleDeclaration) {
 }
 
 function isModulePath(path) {
-  return MODULE_PATH_REGEX.test(path);
+  return modulePathsRegex.test(path);
 }
 
 function absoluteToRelativePath(filePath, modulePath) {
-  return relative(dirname(filePath), `${TYPES_PATH}/${modulePath}`);
+  return relative(dirname(filePath), `${TS_BUILD_PATH}/${modulePath}`);
 }
 
 function getModulePathsRegex() {
-  const moduleOptions = readdirSync(BASE_PATH);
+  const moduleOptions = readdirSync(TS_BUILD_PATH);
   const moduleRegexOptions = moduleOptions
     .map((moduleName) =>
       moduleName.replace(/\.tsx?/, '').replace(/([.-])/g, '\\$1'),
