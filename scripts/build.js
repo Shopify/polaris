@@ -4,40 +4,60 @@ import {execSync} from 'child_process';
 import {join, resolve as resolvePath} from 'path';
 import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
 import {rollup} from 'rollup';
-import {cp, mv, rm} from 'shelljs';
+import {cp, mv, rm, mkdir} from 'shelljs';
 import copyfiles from 'copyfiles';
 
 import createRollupConfig from '../config/rollup';
 import packageJSON from '../package.json';
+import {compilerOptions} from '../tsconfig.json';
 import generateSassBuild from './sass-build';
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, 'build');
+const src = resolvePath(root, compilerOptions.baseUrl);
 const finalEsnext = resolvePath(root, 'esnext');
 
 const docs = resolvePath(root, './docs');
-const intermediateBuild = resolvePath(root, './build-intermediate');
+const intermediateBuild = resolvePath(root, 'build-intermediate');
+const intermediateBuildTs = resolvePath(intermediateBuild, 'typescript');
 const mainEntry = resolvePath(intermediateBuild, './index.js');
 
 const scripts = resolvePath(root, 'scripts');
 const types = resolvePath(root, 'types');
 const tsBuild = resolvePath(scripts, 'tsconfig.json');
 
-execSync(`babel-node ${resolvePath(scripts, './ts-paths-transform.js')}`, {
-  stdio: 'inherit',
-});
+mkdir('-p', intermediateBuildTs);
+cp('-R', `${src}/*`, intermediateBuildTs);
 
 execSync(
-  `${resolvePath(root, './node_modules/.bin/tsc')} --project ${tsBuild}`,
+  `babel-node ${resolvePath(
+    scripts,
+    './ts-paths-transform.js',
+  )} ${intermediateBuildTs}`,
   {
     stdio: 'inherit',
   },
 );
 
-mv(resolvePath(root, 'types/build-intermediate/*'), types);
+execSync(
+  `${resolvePath(
+    root,
+    './node_modules/.bin/tsc',
+  )} --outDir ${intermediateBuild} --project ${tsBuild}`,
+  {
+    stdio: 'inherit',
+  },
+);
+
+rm('-rf', intermediateBuildTs);
+
+mv(resolvePath(root, 'types/build-intermediate/typescript/*'), types);
 rm('-rf', resolvePath(root, 'types/build-intermediate'));
 
-mv(resolvePath(intermediateBuild, 'build-intermediate/*'), intermediateBuild);
+mv(
+  resolvePath(intermediateBuild, 'build-intermediate/typescript/*'),
+  intermediateBuild,
+);
 rm('-rf', resolvePath(intermediateBuild, 'build-intermediate'));
 
 copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
@@ -45,7 +65,9 @@ copy(['./src/**/*.md', docs], {up: 1}).catch((error) => {
   process.exit(1);
 });
 
-copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
+copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {
+  up: 1,
+})
   .then(() => {
     [
       resolvePath(intermediateBuild, './styles/global/elements.scss'),
@@ -81,7 +103,7 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
           ["shopify/web", {"modules": false}]
         ],
         "plugins": [
-          "../../config/babel/plugins/sass-namespace-to-default-import.js"
+          "../config/babel/plugins/sass-namespace-to-default-import.js"
         ]
       }
     `,

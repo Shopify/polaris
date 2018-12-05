@@ -1,16 +1,16 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "../build-intermediate"
+    "baseUrl": "../build-intermediate/typescript"
   },
   "include": [
     "../config/typescript/**/*",
-    "../build-intermediate/**/*.tsx",
-    "../build-intermediate/**/*.ts",
+    "../build-intermediate/typescript/**/*.tsx",
+    "../build-intermediate/typescript/**/*.ts",
     "../package.json"
   ],
   "exclude": [
-    "../build-intermediate/**/*.test.ts",
-    "../build-intermediate/**/*.test.tsx"
+    "../build-intermediate/typescript/**/*.test.ts",
+    "../build-intermediate/typescript/**/*.test.tsx"
   ]
 }
