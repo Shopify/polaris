@@ -81,14 +81,6 @@ describe('build', () => {
     expect(fs.existsSync('./types/index.d.ts')).toBe(true);
   });
 
-  // eslint-disable-next-line jest/expect-expect
-  it('generates valid typescript definition files', () => {
-    const configPath = resolve(__dirname, 'tsconfig-types.json');
-    execSync(`yarn run tsc --noEmit --project ${configPath}`, {
-      stdio: 'inherit',
-    });
-  });
-
   it('replaces all occurrences of POLARIS_VERSION', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}', {
       ignore: './build/cache/**',

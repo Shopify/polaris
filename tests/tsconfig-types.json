@@ -1,7 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": "../"
-  },
-  "include": ["../config/typescript/**/*", "../types/**/*", "../package.json"]
-}
