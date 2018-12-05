@@ -1,5 +1,4 @@
 const {execSync} = require('child_process');
-const {resolve} = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const packageJSON = require('../package.json');
