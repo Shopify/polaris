@@ -14,7 +14,8 @@ import Checkbox from 'components/Checkbox';
 import Button, {buttonsFrom} from 'components/Button';
 import {withAppProvider, WithAppProviderProps} from 'components/AppProvider';
 import withContext from 'components/WithContext';
-import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
+import {SELECT_ALL_ITEMS} from '../../types';
+import {ResourceListContext} from '../../ResourceList';
 import {Consumer} from '../Context';
 import * as styles from './Item.scss';
 

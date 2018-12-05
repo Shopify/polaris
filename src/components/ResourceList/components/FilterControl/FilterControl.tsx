@@ -9,7 +9,7 @@ import FormLayout from 'components/FormLayout';
 import TextField from 'components/TextField';
 import Tag from 'components/Tag';
 import withContext from 'components/WithContext';
-import {ResourceListContext} from '../../types';
+import {ResourceListContext} from '../../ResourceList';
 import {Consumer} from '../Context';
 
 import {FilterCreator} from './components';

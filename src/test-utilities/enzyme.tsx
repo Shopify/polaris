@@ -10,6 +10,7 @@ import {
 import * as React from 'react';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
+import {PolarisContext} from '../components/types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {
@@ -171,7 +172,7 @@ export function shallowWithAppProvider<P>(
   return shallow(node, mergeAppProviderOptions(options)).dive(options);
 }
 
-export function createPolarisProps() {
+export function createPolarisProps(): PolarisContext {
   const {polaris} = createAppProviderContext();
   const theme = createThemeContext().polarisTheme;
   const polarisContext = {...polaris, theme};
