@@ -42,6 +42,18 @@ describe('<Layout />', () => {
 
       expect(section.prop('secondary')).toBe(true);
     });
+
+    it('renders a half width section', () => {
+      const section = mountWithAppProvider(<Layout.Section oneHalf />);
+
+      expect(section.prop('oneHalf')).toBe(true);
+    });
+
+    it('renders a third width section', () => {
+      const section = mountWithAppProvider(<Layout.Section oneThird />);
+
+      expect(section.prop('oneThird')).toBe(true);
+    });
   });
 
   describe('<Layout.AnnotatedSection />', () => {
