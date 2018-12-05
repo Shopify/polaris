@@ -100,8 +100,6 @@ Add a menu item
 
 <!-- end -->
 
-<!-- content-for: web -->
-
 ---
 
 ## Accessibility
@@ -119,11 +117,9 @@ To help support people who use speech activation software and sighted screen rea
 
 When possible, give the button visible text that clearly conveys its purpose without the use of `accessibilityLabel`. Duplicating the Button text with `accessibilityLabel` when no additional content is needed is not necessary.
 
-<!-- usagelist -->
+<!-- usageblock -->
 
 #### Do
-
-Do
 
 ```
 <button>Edit shipping address</button>
@@ -134,8 +130,6 @@ Do
 ```
 
 #### Don’t
-
-Don't
 
 ```
 <button aria-label="Change your shipping address">Edit</button>
@@ -150,8 +144,6 @@ Don't
 ### Keyboard support
 
 Keyboard users will expect to be able to give buttons keyboard focus with the <kbd>tab</kbd> key, and to activate them with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys.
-
-<!-- /content-for -->
 
 ---
 
