@@ -92,7 +92,8 @@ $item-wrapper-loading-height: rem(64px);
   }
 }
 
-.SortWrapper {
+.SortWrapper,
+.AlternateToolWrapper {
   position: relative;
   display: flex;
   flex: 1;
@@ -109,6 +110,7 @@ $item-wrapper-loading-height: rem(64px);
     margin-left: spacing();
 
     // stylelint-disable-next-line selector-max-class
+    .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       padding-right: 0;
     }
@@ -131,6 +133,7 @@ $item-wrapper-loading-height: rem(64px);
   padding-left: spacing(extra-tight);
   align-self: center;
 
+  .HeaderWrapper-hasAlternateTool &,
   .HeaderWrapper-hasSort & {
     display: none;
   }
@@ -138,10 +141,11 @@ $item-wrapper-loading-height: rem(64px);
   @include breakpoint-after(resource-list(breakpoint-small)) {
     // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSelect &,
+    .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
       display: none;
     }
-
+    .HeaderWrapper-hasAlternateTool &,
     .HeaderWrapper-hasSort & {
       display: block;
     }

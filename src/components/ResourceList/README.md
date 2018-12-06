@@ -351,6 +351,66 @@ class ResourceListExample extends React.Component {
 }
 ```
 
+### Resource list with alternate tool
+
+Allows merchants to add an alternate tool in the current sort option location when sort may not be the most relevant action for the current list.
+
+```jsx
+class ResourceListExample extends React.Component {
+  renderItem = (item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item
+        id={id}
+        url={url}
+        media={media}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  };
+
+  render() {
+    const resourceName = {
+      singular: 'Customer',
+      plural: 'Customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    return (
+      <Card>
+        <ResourceList
+          items={items}
+          renderItem={this.renderItem}
+          resourceName={resourceName}
+          alternateTool={<Button>Email customers</Button>}
+        />
+      </Card>
+    );
+  }
+}
+```
+
 ### Resource list with filtering
 
 Allows merchants to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
