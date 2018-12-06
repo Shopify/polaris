@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {getWidth} from '../../../../utilities/getWidth';
 
-import {ContextualSaveBarProps as Props} from '../../types';
+import {ContextualSaveBarProps as Props} from '../../../ContextualSaveBar';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
 import Image from '../../../Image';

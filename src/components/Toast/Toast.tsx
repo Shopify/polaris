@@ -6,11 +6,24 @@ import {
   DEFAULT_TOAST_DURATION,
   FrameContext,
   frameContextTypes,
-  ToastProps,
 } from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 const createId = createUniqueIDFactory('Toast');
+
+export interface ToastProps {
+  /** The content that should appear in the toast message */
+  content: string;
+  /**
+   * The length of time in milliseconds the toast message should persist
+   * @default 5000
+   */
+  duration?: number;
+  /** Display an error toast. */
+  error?: boolean;
+  /** Callback when the dismiss icon is clicked */
+  onDismiss(): void;
+}
 
 export type Props = ToastProps & WithAppProviderProps;
 
