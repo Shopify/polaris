@@ -388,7 +388,16 @@ export default class TextField extends React.PureComponent<Props, State> {
 
   @autobind
   private handleButtonPress(onChange: Function) {
-    this.buttonPressTimer = setInterval(onChange, 200);
+    const minInterval = 50;
+    const decrementBy = 10;
+    let interval = 200;
+
+    const onChangeInterval = () => {
+      if (interval > minInterval) interval -= decrementBy;
+      onChange();
+      this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
+    };
+    this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
   }
 
   @autobind
