@@ -24,7 +24,7 @@ interface State {
   open: boolean;
 }
 
-/** @deprecated Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead. */
+/** @deprecated Use <TopBar.UserMenu /> instead. */
 class UserMenu extends React.Component<Props, State> {
   state = {
     open: false,
@@ -33,7 +33,7 @@ class UserMenu extends React.Component<Props, State> {
   componentDidMount() {
     // eslint-disable-next-line no-console
     console.warn(
-      'Deprecation: <Navigation.UserMenu /> is deprecated and will be removed in the next major version. Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead.',
+      'Deprecation: <Navigation.UserMenu /> is deprecated and will be removed in the next major version. Use <TopBar.UserMenu /> instead.',
     );
   }
 
