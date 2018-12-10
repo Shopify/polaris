@@ -56,7 +56,24 @@ export {default as ChoiceList, Props as ChoiceListProps} from './ChoiceList';
 
 export {default as Collapsible, Props as CollapsibleProps} from './Collapsible';
 
-export {default as ColorPicker, Props as ColorPickerProps} from './ColorPicker';
+export {
+  default as ColorPicker,
+  Props as ColorPickerProps,
+  RGBColor,
+  HSBColor,
+  RGBAColor,
+  HSBAColor,
+  HSLColor,
+  HSLAColor,
+  HSBLAColor,
+  rgbToHex,
+  rgbToHsb,
+  rgbToHsl,
+  hsbToRgb,
+  hsbToHex,
+  rgbString,
+  rgbaString,
+} from './ColorPicker';
 
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
@@ -118,6 +135,7 @@ export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 export {
   default as Frame,
   Props as FrameProps,
+  ToastProps,
   DEFAULT_TOAST_DURATION,
 } from './Frame';
 

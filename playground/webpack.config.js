@@ -24,7 +24,6 @@ module.exports = (env = {production: false}) => ({
     warningsFilter: /export .* was not found in/,
   },
   devServer: {
-    host: '0.0.0.0',
     port: process.env.PORT || 8080,
     disableHostCheck: true,
     historyApiFallback: true,

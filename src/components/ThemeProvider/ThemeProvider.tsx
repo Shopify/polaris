@@ -2,13 +2,17 @@ import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {setColors} from './utils';
-import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
+import {Theme, ThemeContext, THEME_CONTEXT_TYPES} from './types';
 
 export interface Props {
   /** Custom logos and colors provided to select components */
   theme: Theme;
   /** The content to display */
   children?: React.ReactNode;
+}
+
+export interface Context {
+  polarisTheme?: ThemeContext;
 }
 
 const defaultTheme = {
@@ -20,7 +24,7 @@ const defaultTheme = {
 
 export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTEXT_TYPES;
-  public themeContext: ThemeProviderContext;
+  public themeContext: Context;
   private subscriptions: {(): void}[] = [];
   private colors: string[][] | undefined;
 
@@ -88,7 +92,7 @@ function setThemeContext(
   ctx: Theme,
   subscribe: (callback: () => void) => void,
   unsubscribe: (callback: () => void) => void,
-): ThemeProviderContext {
+): Context {
   const {colors, logo = null, ...rest} = ctx;
   return {polarisTheme: {logo, subscribe, unsubscribe, ...rest}};
 }

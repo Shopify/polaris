@@ -12,9 +12,10 @@ import {Props as ThumbnailProps} from '../../../Thumbnail';
 import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
+import {SELECT_ALL_ITEMS} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
+import {ResourceListContext} from '../../ResourceList';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
 import * as styles from './Item.scss';
