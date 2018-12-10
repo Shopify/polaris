@@ -5,7 +5,6 @@ import {Modifier as UserMenuModifier} from '../../../TopBar/components/UserMenu/
 import {IconableAction} from '../../../../types';
 import {Props as MessageProps} from '../Message';
 import {Props as AvatarProps} from '../../../Avatar';
-import {showDeprecationWarning} from '../../../../utilities/deprecation-warning';
 
 interface UserActionSection {
   id: string;
@@ -25,18 +24,17 @@ interface State {
   open: boolean;
 }
 
+/** @deprecated Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead. */
 class UserMenu extends React.Component<Props, State> {
   state = {
     open: false,
   };
 
   componentDidMount() {
-    showDeprecationWarning({
-      componentName: '<Navigation.UserMenu />',
-      updateSuggestion:
-        'Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead.',
-      learnMoreUrl: 'https://github.com/Shopify/polaris-react/pull/624',
-    });
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Navigation.UserMenu /> is deprecated and will be removed in the next major version. Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead.',
+    );
   }
 
   render() {
