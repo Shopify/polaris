@@ -2,13 +2,22 @@ import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {Modifier as UserMenuModifier} from '../../../../TopBar/components/UserMenu/context';
+import {showDeprecationWarning} from '../../../../../utilities/deprecation-warning';
 import UserMenu, {Props as UserMenuProps} from '../UserMenu';
+
+jest.mock('../../../../../utilities/deprecation-warning');
+
+const showDeprecationWarningMock = showDeprecationWarning as jest.Mock;
 
 describe('<UserMenu />', () => {
   const mockProps = {
     avatarInitials: '',
     avatarSource: '',
   };
+
+  beforeEach(() => {
+    showDeprecationWarningMock.mockReset();
+  });
 
   describe('avatarInitials', () => {
     it('gets passed into the modifier', () => {
@@ -100,6 +109,13 @@ describe('<UserMenu />', () => {
       expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
         expect.objectContaining({open: false}),
       );
+    });
+  });
+
+  describe('deprecation warning', () => {
+    it('shows a deprecation warning on mount', () => {
+      mountWithAppProvider(<UserMenu {...mockProps} />);
+      expect(showDeprecationWarningMock).toHaveBeenCalledTimes(1);
     });
   });
 });
