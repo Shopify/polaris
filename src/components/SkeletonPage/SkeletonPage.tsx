@@ -14,6 +14,8 @@ export interface Props {
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
   singleColumn?: boolean;
+  /** Shows a skeleton over the primary action */
+  primaryAction?: boolean;
   /** Number of secondary page-level actions to display */
   secondaryActions?: number;
   /** Shows a skeleton over the breadcrumb */
@@ -30,6 +32,7 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
       children,
       fullWidth,
       singleColumn,
+      primaryAction,
       secondaryActions,
       title = '',
       breadcrumbs,
@@ -49,6 +52,12 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
 
     const titleMarkup = title !== null ? renderTitle(title) : null;
 
+    const primaryActionMarkup = primaryAction ? (
+      <div className={styles.PrimaryAction}>
+        <SkeletonDisplayText size="large" />
+      </div>
+    ) : null;
+
     const secondaryActionsMarkup = secondaryActions
       ? renderSecondaryActions(secondaryActions)
       : null;
@@ -62,7 +71,10 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
     const headerMarkup = !this.props.polaris.appBridge ? (
       <div className={headerClassName}>
         {breadcrumbMarkup}
-        {titleMarkup}
+        <div className={styles.TitleAndPrimaryAction}>
+          {titleMarkup}
+          {primaryActionMarkup}
+        </div>
         {secondaryActionsMarkup}
       </div>
     ) : null;
