@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@percy/puppeteer": "^0.4.0",
-    "@shopify/jest-dom-mocks": "^2.0.5",
+    "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/js-uploader": "github:shopify/js-uploader",
     "@shopify/react-serialize": "^1.0.6",
     "@shopify/sewing-kit": "0.64.2",
@@ -187,6 +187,6 @@
     "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.4.0",
-    "tslib": "^1.8.0"
+    "tslib": "^1.9.3"
   }
 }

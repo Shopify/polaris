@@ -268,15 +268,16 @@
     lodash "^4.17.4"
     lodash-decorators "^4.3.5"
 
-"@shopify/jest-dom-mocks@^2.0.5":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.0.9.tgz#1ea592b983a67f0aa7606315d9006f9e45b74400"
-  integrity sha512-UrxbwOwKu0Kx6GXC+QneG2CUA9zI7Ut3BwLtCdJBmF7oFxWyDjrUylmS6M0akC7hcOqXAXZC6areVAg7yQ+q+A==
+"@shopify/jest-dom-mocks@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.1.1.tgz#ee511feaf7a908b8c43fd6281202b1364e48c5e3"
+  integrity sha512-MdFctcsZOMTViUi+SVfIQGPC9gXibySrLvscwInvTg75ko4ybjK6kN7Lvx7Hv15aTBg/IEUEvwYf3cYEwvczeQ==
   dependencies:
     "@shopify/javascript-utilities" "^2.1.0"
     "@types/fetch-mock" "^6.0.1"
+    "@types/lolex" "^2.1.3"
     fetch-mock "^6.3.0"
-    lolex "^2.3.2"
+    lolex "^2.7.5"
 
 "@shopify/js-uploader@github:shopify/js-uploader":
   version "0.1.0"
@@ -526,6 +527,11 @@
   version "4.14.80"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.80.tgz#a6b8b7900e6a7dcbc2e90d9b6dfbe3f6a7f69951"
   integrity sha512-FumgRtCaxilKUcgMnZCzH6K3gntIwLiLLIaR+UBGNZpT/N3ne2dKrDSGoGIxSHYpAjnq6kIVV0r51U+kLXX59A==
+
+"@types/lolex@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@types/lolex/-/lolex-2.1.3.tgz#793557c9b8ad319b4c8e4c6548b90893f4aa5f69"
+  integrity sha512-nEipOLYyZJ4RKHCg7tlR37ewFy91oggmip2MBzPdVQ8QhTFqjcRhE8R0t4tfpDnSlxGWHoEGJl0UCC4kYhqoiw==
 
 "@types/node@*":
   version "8.0.47"
@@ -9492,10 +9498,10 @@ loglevel@^1.4.1:
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.5.1.tgz#189078c94ab9053ee215a0acdbf24244ea0f6502"
   integrity sha1-GJB4yUq5BT7iFaCs2/JCROoPZQI=
 
-lolex@^2.3.2:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/lolex/-/lolex-2.7.0.tgz#9c087a69ec440e39d3f796767cf1b2cdc43d5ea5"
-  integrity sha512-uJkH2e0BVfU5KOJUevbTOtpDduooSarH5PopO+LfM/vZf8Z9sJzODqKev804JYM2i++ktJfUmC1le4LwFQ1VMg==
+lolex@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/lolex/-/lolex-2.7.5.tgz#113001d56bfc7e02d56e36291cc5c413d1aa0733"
+  integrity sha512-l9x0+1offnKKIzYVjyXU2SiwhXDLekRzKyhnbyldPHvC7BvLPVpdNUNR2KeMAiCN2D/kLNttZgQD5WjSxuBx3Q==
 
 longest-streak@^2.0.1:
   version "2.0.2"
@@ -14691,12 +14697,7 @@ tsconfig-paths@^3.6.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.6.1, tslib@^1.7.1, tslib@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.0.tgz#dc604ebad64bcbf696d613da6c954aa0e7ea1eb6"
-  integrity sha512-ymKWWZJST0/CkgduC2qkzjMOWr4bouhuURNXCn/inEX0L57BnRG6FhX76o7FOnsjHazCjfU2LKeSrlS2sIKQJg==
-
-tslib@^1.9.0:
+tslib@^1.6.1, tslib@^1.7.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
