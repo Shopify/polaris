@@ -5,6 +5,7 @@ classification: library
 slack_channels:
   - polaris
   - polaris-react
+oncall_url: https://shopify.pagerduty.com/services/PQNFXB1
 security:
   data_management:
     contains_pii: false
