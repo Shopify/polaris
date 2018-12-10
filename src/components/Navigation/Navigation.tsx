@@ -11,6 +11,7 @@ export interface Props {
   location: string;
   sections?: SectionType[];
   children?: React.ReactNode;
+  /** @deprecated Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead. */
   userMenu?: React.ReactNode;
   shopSwitcher?: React.ReactNode;
   onDismiss?(): void;
