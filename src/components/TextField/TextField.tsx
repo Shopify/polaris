@@ -92,7 +92,7 @@ export interface BaseProps {
   ariaOwns?: string;
   /** Indicates the id of a component controlled by the input */
   ariaControls?: string;
-  /** Indicates the id of a related component's visually focused element to the input */
+  /** Indicates the id of a related component’s visually focused element to the input */
   ariaActiveDescendant?: string;
   /** Indicates what kind of user input completion suggestions are provided */
   ariaAutocomplete?: string;
@@ -386,5 +386,5 @@ function normalizeAutoComplete(autoComplete?: boolean) {
   if (autoComplete == null) {
     return autoComplete;
   }
-  return autoComplete ? 'on' : 'off';
+  return autoComplete ? 'on' : 'nope';
 }

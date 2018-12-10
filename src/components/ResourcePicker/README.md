@@ -22,17 +22,15 @@ keywords:
 
 # Resource picker
 
-**For use with embedded apps only.** Resource pickers are overlays that allow merchants to select one or more products or collections. They provide a very powerful search-based UI to help merchants find the appropriate resources, and then provide that information to you through the callbacks the component accepts.
-
-Read the [initializing the Shopify App Bridge guide](https://polaris.shopify.com/components/structure/app-provider#initializing-the-shopify-app-bridge) for more details on how build embedded apps with Polaris.
+**For use with embedded apps only.** The resource picker component provides a search-based interface to help merchants find and select one or more products or collections, and communicate selected resources through callbacks the component accepts.
 
 ---
 
-## Screenshot examples
+## Use in an embedded application
 
-These static images are provided to help visualize the interface since embedded components can only be rendered inside the Shopify admin.
+Enable the resource picker component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) by passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge).
 
-### Product picker - multiple product selection
+Use of the resource picker component is only supported in an embedded application—it will not render in a stand-alone application. To help visualize the resource picker component in an embedded application, we've provided the following screenshot.
 
 ![Screenshot product picker - multiple product selection component](embedded/resource-picker/product-picker-multiple.jpg)
 
@@ -45,13 +43,25 @@ These static images are provided to help visualize the interface since embedded 
 When you ask for products, the `onSelection` callback is called with an object that has a `selection` key, which will have an array of objects detailing the selected products (even if `allowMultiple` is set to `false`).
 
 ```jsx
-<ResourcePicker
-  resourceType="Product"
-  open={this.state.open}
-  onSelection={({selection}) => {
-    console.log('Selected products: ', selection);
-    this.setState({open: false});
-  }}
-  onCancel={() => this.setState({open: false})}
-/>
+class EmbeddedAppResourcePickerExample extends React.Component {
+  state = {
+    resourcePickerOpen: false,
+  };
+
+  render() {
+    return (
+      <AppProvider apiKey="YOUR_API_KEY">
+        <ResourcePicker
+          resourceType="Product"
+          open={this.state.resourcePickerOpen}
+          onSelection={({selection}) => {
+            console.log('Selected products: ', selection);
+            this.setState({resourcePickerOpen: false});
+          }}
+          onCancel={() => this.setState({resourcePickerOpen: false})}
+        />
+      </AppProvider>
+    );
+  }
+}
 ```

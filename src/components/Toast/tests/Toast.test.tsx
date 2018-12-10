@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider, createPolarisProps} from 'test-utilities';
 import {noop} from '../../../utilities/other';
-import Toast, {DEFAULT_TOAST_DURATION} from '../Toast';
+import Toast from '../Toast';
 
 describe('<Toast />', () => {
   beforeEach(() => {
@@ -45,12 +45,12 @@ describe('<Toast />', () => {
     it('shows app bridge flash notice content on mount and unmounts safely', () => {
       const content = 'Message sent';
       const {toast, polaris} = mountWithAppBridge(
-        <Toast content={content} onDismiss={noop} />,
+        <Toast content={content} duration={1000} onDismiss={noop} />,
       );
       toast.unmount();
 
       expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
-        duration: DEFAULT_TOAST_DURATION,
+        duration: 1000,
         isDismissible: true,
         isError: undefined,
         message: 'Message sent',
@@ -65,11 +65,11 @@ describe('<Toast />', () => {
     it('shows app bridge flash error content on mount', () => {
       const content = 'Message sent';
       const {polaris} = mountWithAppBridge(
-        <Toast content={content} onDismiss={noop} error />,
+        <Toast content={content} duration={1000} onDismiss={noop} error />,
       );
 
       expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
-        duration: DEFAULT_TOAST_DURATION,
+        duration: 1000,
         isDismissible: true,
         isError: true,
         message: 'Message sent',

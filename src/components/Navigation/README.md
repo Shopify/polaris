@@ -175,11 +175,11 @@ The user menu component displays the current user’s avatar and name, and actio
 
 | Prop           | Type                    | Description                                                                                             |
 | -------------- | ----------------------- | ------------------------------------------------------------------------------------------------------- |
-| name           | string                  | A string detailing the merchant's full name to be displayed in the user menu                            |
-| detail         | string                  | A string allowing further details on the merchant's name displayed in the user menu                     |
+| name           | string                  | A string detailing the merchant’s full name to be displayed in the user menu                            |
+| detail         | string                  | A string allowing further details on the merchant’s name displayed in the user menu                     |
 | actions        | UserActionSection[]     | An array of action objects that are rendered inside of a dropdown triggered by this menu                |
 | message        | MessageProps            | Accepts a message that facilitates direct, urgent communication with the merchant through the user menu |
-| avatarInitials | AvatarProps['initials'] | The merchant's initials, rendered in place of an avatar image when not provided                         |
+| avatarInitials | AvatarProps['initials'] | The merchant’s initials, rendered in place of an avatar image when not provided                         |
 | avatarSource   | AvatarProps['source']   | An avatar image representing the merchant                                                               |
 
 ---

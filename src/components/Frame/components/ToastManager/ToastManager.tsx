@@ -4,7 +4,8 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
-import Toast, {Props as ToastProps} from '../Toast';
+import {ToastProps} from '../../types';
+import Toast from '../Toast';
 
 import * as styles from './ToastManager.scss';
 
