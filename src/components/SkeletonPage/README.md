@@ -63,7 +63,7 @@ Use placeholder content that will change when the page fully loads. This will co
 Use this component to compose a loading version of a page where the page title and header content are dynamic, meaning, the content changes.
 
 ```jsx
-<SkeletonPage secondaryActions={2}>
+<SkeletonPage primaryAction secondaryActions={2}>
   <Layout>
     <Layout.Section>
       <Card sectioned>
@@ -115,7 +115,7 @@ Use this component to compose a loading version of a page where the page title a
 Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 
 ```jsx
-<SkeletonPage title="Products" secondaryActions={2}>
+<SkeletonPage title="Products" primaryAction secondaryActions={2}>
   <Layout>
     <Layout.Section>
       <Card sectioned>
