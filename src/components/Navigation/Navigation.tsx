@@ -11,7 +11,7 @@ export interface Props {
   location: string;
   sections?: SectionType[];
   children?: React.ReactNode;
-  /** @deprecated Please avoid passing a user menu into <Navigation /> and only pass one into <TopBar /> instead. */
+  /** @deprecated Please pass a user menu into <TopBar /> instead. */
   userMenu?: React.ReactNode;
   shopSwitcher?: React.ReactNode;
   onDismiss?(): void;
@@ -33,6 +33,13 @@ export default class Navigation extends React.Component<Props, never> {
 
   render() {
     const {children, userMenu, shopSwitcher} = this.props;
+
+    if (userMenu) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: the `userMenu` prop is deprecated and will be removed in the next major version. Pass a user menu into <TopBar /> instead.',
+      );
+    }
 
     const userMenuMarkup = userMenu && (
       <div className={styles.Menu}>{userMenu}</div>
