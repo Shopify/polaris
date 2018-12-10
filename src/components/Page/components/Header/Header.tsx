@@ -82,6 +82,7 @@ class Header extends React.PureComponent<CombinedProps, State> {
       separator,
       secondaryActions,
       icon,
+      actionGroups,
       polaris: {intl},
     } = this.props;
 
@@ -123,12 +124,13 @@ class Header extends React.PureComponent<CombinedProps, State> {
 
     const nonPrimaryActionsMarkup = this.renderSecondaryActions();
 
-    const actionsMarkup = (
-      <div className={styles.Actions}>
-        {primaryActionMarkup}
-        {nonPrimaryActionsMarkup}
-      </div>
-    );
+    const actionsMarkup =
+      primaryAction || secondaryActions || actionGroups ? (
+        <div className={styles.Actions}>
+          {primaryActionMarkup}
+          {nonPrimaryActionsMarkup}
+        </div>
+      ) : null;
 
     const navigationMarkup =
       breadcrumbMarkup || paginationMarkup ? (
