@@ -153,6 +153,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .SecondaryAction {
   @include unstyled-button;
   @include unstyled-link;
+  display: inline-block;
   margin: (-1 * $secondary-action-vertical-padding)
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
@@ -181,7 +182,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 // stylelint-enable selector-max-specificity
 .Text {
   position: relative;
-  white-space: nowrap;
 
   &::after,
   &::before {
