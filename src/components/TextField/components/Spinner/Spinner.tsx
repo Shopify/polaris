@@ -6,11 +6,22 @@ import * as styles from '../../TextField.scss';
 export interface Props {
   onChange(delta: number): void;
   onClick?(): void;
+  onMouseDown(onChange: Function): void;
+  onMouseUp(): void;
 }
 
-export default function Spinner({onChange, onClick}: Props) {
+export default function Spinner({
+  onChange,
+  onClick,
+  onMouseDown,
+  onMouseUp,
+}: Props) {
   function handleStep(step: number) {
     return () => onChange(step);
+  }
+
+  function handleMouseDown(onChange: Function) {
+    return () => onMouseDown(onChange);
   }
 
   return (
@@ -20,6 +31,8 @@ export default function Spinner({onChange, onClick}: Props) {
         className={styles.Segment}
         tabIndex={-1}
         onClick={handleStep(1)}
+        onMouseDown={handleMouseDown(handleStep(1))}
+        onMouseUp={onMouseUp}
       >
         <div className={styles.SpinnerIcon}>
           <Icon source="caretUp" />
@@ -31,6 +44,8 @@ export default function Spinner({onChange, onClick}: Props) {
         className={styles.Segment}
         tabIndex={-1}
         onClick={handleStep(-1)}
+        onMouseDown={handleMouseDown(handleStep(-1))}
+        onMouseUp={onMouseUp}
       >
         <div className={styles.SpinnerIcon}>
           <Icon source="caretDown" />
