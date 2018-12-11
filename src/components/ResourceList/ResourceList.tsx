@@ -78,12 +78,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   static Item: typeof Item = Item;
   static FilterControl: typeof FilterControl = FilterControl;
 
-  state: State = {
-    selectMode: false,
-    loadingPosition: 0,
-    listNode: null,
-  };
-
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
@@ -91,12 +85,19 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     super(props);
 
     const {
+      selectedItems,
       polaris: {intl},
     } = props;
 
     this.defaultResourceName = {
       singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
       plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
+    };
+
+    this.state = {
+      selectMode: Boolean(selectedItems && selectedItems.length > 0),
+      loadingPosition: 0,
+      listNode: null,
     };
   }
 
