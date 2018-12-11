@@ -248,22 +248,20 @@ export default class PositionedOverlay extends React.PureComponent<
   }
 }
 
-function intersectionWithViewport(rect: Rect) {
-  const viewport = windowRect();
+export function intersectionWithViewport(
+  rect: Rect,
+  viewport: Rect = windowRect(),
+) {
+  const top = Math.max(rect.top, 0);
+  const left = Math.max(rect.left, 0);
+  const bottom = Math.min(rect.top + rect.height, viewport.height);
+  const right = Math.min(rect.left + rect.width, viewport.width);
 
   return new Rect({
-    top: Math.max(rect.top, 0),
-    left: Math.max(rect.left, 0),
-    height: Math.min(
-      rect.height - rect.top + viewport.top,
-      viewport.height,
-      viewport.height - rect.top,
-    ),
-    width: Math.min(
-      rect.width - rect.left + viewport.left,
-      viewport.width,
-      viewport.width - rect.left,
-    ),
+    top,
+    left,
+    height: bottom - top,
+    width: right - left,
   });
 }
 
