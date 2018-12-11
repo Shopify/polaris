@@ -319,6 +319,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       url,
       context: {selectMode},
     } = this.props;
+    const {ctrlKey, metaKey} = event.nativeEvent;
     const anchor = this.node && this.node.querySelector('a');
 
     if (selectMode) {
@@ -332,6 +333,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     if (onClick) {
       onClick(id);
+    }
+
+    if (url && (ctrlKey || metaKey)) {
+      window.open(url, '_blank');
+      return;
     }
 
     if (url && anchor) {

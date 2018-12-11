@@ -6,6 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- `ResourceList.Item` opens url in new tab if command or control keys are pressed during click ([#690](https://github.com/Shopify/polaris-react/pull/690))
 - Added `primaryAction` prop to `SkeletonPage` ([#488](https://github.com/Shopify/polaris-react/pull/488))
 
 ### Bug fixes
