@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@percy/puppeteer": "^0.4.0",
-    "@shopify/jest-dom-mocks": "^2.0.5",
+    "@shopify/jest-dom-mocks": "^2.1.1",
     "@shopify/js-uploader": "github:shopify/js-uploader",
     "@shopify/react-serialize": "^1.0.6",
     "@shopify/sewing-kit": "0.64.2",
@@ -146,7 +146,7 @@
     "shelljs": "^0.7.7",
     "shx": "^0.2.2",
     "svgo": "^0.7.2",
-    "typescript": "^2.9.1",
+    "typescript": "~3.1.6",
     "webpack": "~4.25.1",
     "webpack-cli": "3.1.0",
     "yargs": "^12.0.1"
@@ -156,7 +156,7 @@
     "react-dom": "^16.3.1"
   },
   "resolutions": {
-    "typescript-eslint-parser": "17.0.1"
+    "typescript-eslint-parser": "20.0.0"
   },
   "files": [
     "esnext",
@@ -187,6 +187,6 @@
     "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.4.0",
-    "tslib": "^1.8.0"
+    "tslib": "^1.9.3"
   }
 }

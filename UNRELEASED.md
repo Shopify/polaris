@@ -19,4 +19,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Upgrade to TypeScript 3.1.6 ([#700](https://github.com/Shopify/polaris-react/pull/700))
+
 ### Dependency upgrades

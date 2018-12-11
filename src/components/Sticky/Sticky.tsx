@@ -53,8 +53,9 @@ export default class Sticky extends React.Component<Props, State> {
     const {style, isSticky} = this.state;
     const {children} = this.props;
 
-    const childrenContent =
-      typeof children === 'function' ? children(isSticky) : children;
+    const childrenContent = isFunction(children)
+      ? children(isSticky)
+      : children;
 
     return (
       <div>
@@ -105,4 +106,8 @@ export default class Sticky extends React.Component<Props, State> {
         : '0px';
     }
   }
+}
+
+function isFunction(arg: any): arg is Function {
+  return typeof arg === 'function';
 }
