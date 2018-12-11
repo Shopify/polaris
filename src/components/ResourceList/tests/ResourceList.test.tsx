@@ -369,6 +369,20 @@ describe('<ResourceList />', () => {
         false,
       );
     });
+
+    it('renders on noninitial load when items are provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          bulkActions={bulkActions}
+          items={[]}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(0);
+      resourceList.setProps({items: itemsWithID});
+      resourceList.update();
+      expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(1);
+    });
   });
 
   describe('filterControl', () => {
