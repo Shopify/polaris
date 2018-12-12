@@ -14,9 +14,5 @@ export {
   ComplexReplacementDictionary,
   CreateAppProviderContext,
 } from './utilities';
-export {
-  AppProviderProps as Props,
-  Context,
-  polarisAppProviderContextTypes,
-} from './types';
-export {default} from './AppProvider';
+export {Context, polarisAppProviderContextTypes} from './types';
+export {default, Props as AppProviderProps} from './AppProvider';
