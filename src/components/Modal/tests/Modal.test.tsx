@@ -139,6 +139,28 @@ describe('<Modal>', () => {
     });
   });
 
+  describe('fullScreen', () => {
+    it('passes fullScreen to Dialog if true', () => {
+      const modal = mountWithAppProvider(
+        <Modal fullScreen onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('fullScreen')).toBe(true);
+    });
+
+    it('does not pass fullScreen to Dialog by default', () => {
+      const modal = mountWithAppProvider(
+        <Modal onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal.find(Dialog).prop('fullScreen')).toBeUndefined();
+    });
+  });
+
   describe('open', () => {
     it('renders <Portal /> with idPrefix modal', () => {
       const modal = mountWithAppProvider(
