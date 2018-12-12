@@ -55,6 +55,8 @@ export interface Props extends FooterProps {
   limitHeight?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed (stand-alone app use only) */
   loading?: boolean;
+  /** Sets the modal to take up the entire screen */
+  fullScreen?: boolean;
   /**
    * Controls the size of the modal
    * @default 'Small'
@@ -209,6 +211,7 @@ export class Modal extends React.Component<CombinedProps, State> {
       footer,
       primaryAction,
       secondaryActions,
+      fullScreen,
       polaris: {intl},
     } = this.props;
 
@@ -277,6 +280,7 @@ export class Modal extends React.Component<CombinedProps, State> {
           onExited={this.handleExited}
           large={large}
           limitHeight={limitHeight}
+          fullScreen={fullScreen}
         >
           {headerMarkup}
           <div className={styles.BodyWrapper}>{bodyMarkup}</div>

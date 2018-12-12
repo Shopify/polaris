@@ -66,6 +66,13 @@ $large-width: rem(980px);
       max-width: $large-width;
     }
   }
+
+  &.fullScreen {
+    border-radius: 0;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+  }
 }
 
 .animateFadeUp {

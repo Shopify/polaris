@@ -15,6 +15,7 @@ export interface DialogProps {
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
+  fullScreen?: boolean;
   large?: boolean;
   onClose(): void;
   onEntered?(): void;
@@ -40,12 +41,14 @@ export default function Dialog({
   onEntered,
   large,
   limitHeight,
+  fullScreen,
   ...props
 }: Props) {
   const classes = classNames(
     styles.Modal,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
+    fullScreen && styles.fullScreen,
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
