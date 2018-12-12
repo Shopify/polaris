@@ -172,7 +172,7 @@
     "@shopify/app-bridge": "^0.7.3",
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.1",
-    "@shopify/polaris-icons": "^1.0.0-beta.4",
+    "@shopify/polaris-icons": "1.0.0-beta.4",
     "@shopify/polaris-tokens": "^2.0.0",
     "@shopify/react-compose": "^0.1.6",
     "@shopify/react-html": "^3.0.3",
