@@ -616,6 +616,63 @@ class ModalExample extends React.Component {
 }
 ```
 
+### Full screen modal
+
+<!-- example-for: web -->
+
+When you need a modal that will take up the entire screen.
+
+```jsx
+class ModalExample extends React.Component {
+  state = {
+    active: true,
+  };
+
+  render() {
+    const {active} = this.state;
+
+    return (
+      <div style={{height: '500px'}}>
+        <Button onClick={this.handleChange}>Open</Button>
+        <Modal
+          fullScreen
+          open={active}
+          onClose={this.handleChange}
+          title="Build custom apps with App Bridge"
+          primaryAction={{
+            content: 'Done',
+            onAction: this.handleChange,
+          }}
+          secondaryActions={[
+            {
+              content: 'Learn more',
+              onAction: this.handleChange,
+            },
+          ]}
+        >
+          <Modal.Section>
+            <TextContainer>
+              <p>
+                Use Shopify App Bridge to embed apps and channels directly into
+                the Shopify admin, Shopify Mobile, and Shopify POS. Shopify App
+                Bridge helps to reduce your development time by accessing native
+                Shopify features across different platforms, and makes sure that
+                the user experience is consistent wherever merchants are using
+                your app.
+              </p>
+            </TextContainer>
+          </Modal.Section>
+        </Modal>
+      </div>
+    );
+  }
+
+  handleChange = () => {
+    this.setState(({active}) => ({active: !active}));
+  };
+}
+```
+
 ### Warning modal
 
 <!-- example-for: android, ios -->
