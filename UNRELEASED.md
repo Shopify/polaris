@@ -23,5 +23,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Upgrade to TypeScript 3.1.6 ([#700](https://github.com/Shopify/polaris-react/pull/700))
+- Moved some inconsistent prop types around for compatibility with the styleguide's Props Explorer ([#727](https://github.com/Shopify/polaris-react/pull/727))
 
 ### Dependency upgrades
