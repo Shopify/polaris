@@ -1,10 +1,16 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {
-  ContextualSaveBarProps as Props,
+  ContextualSaveBarProps,
   FrameContext,
   frameContextTypes,
 } from '../Frame';
+
+// The script in the styleguide that generates the Props Explorer data expects
+// a component's props to be found in the Props interface. This silly workaround
+// ensures that the Props Explorer table is generated correctly, instead of
+// crashing if we write `ContextualSaveBar extends React.Component<ContextualSaveBarProps>`
+interface Props extends ContextualSaveBarProps {}
 
 class ContextualSaveBar extends React.PureComponent<Props, never> {
   static contextTypes = frameContextTypes;
