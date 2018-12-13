@@ -68,13 +68,13 @@ Use as the default size.
 
 <!-- content-for: android -->
 
-![Default thumbnail](components/Thumbnail/android/default.png)
+![Default thumbnail](/public_images/components/Thumbnail/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default thumbnail](components/Thumbnail/ios/default.png)
+![Default thumbnail](/public_images/components/Thumbnail/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -106,13 +106,13 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 
 <!-- content-for: android -->
 
-![Large thumbnail](components/Thumbnail/android/large.png)
+![Large thumbnail](/public_images/components/Thumbnail/android/large@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Large thumbnail](components/Thumbnail/ios/large.png)
+![Large thumbnail](/public_images/components/Thumbnail/ios/large@2x.png)
 
 <!-- /content-for -->
 

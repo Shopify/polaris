@@ -55,11 +55,11 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 #### Do
 
-- ![Exception list being used inside a resource list item](exception-list/do-exception-list.png)
+- ![Exception list being used inside a resource list item](/public_images/exception-list/do-exception-list@2x.png)
 
 #### Don’t
 
-- ![Exception list being used in place of a banner](exception-list/dont-exception-list.png)
+- ![Exception list being used in place of a banner](/public_images/exception-list/dont-exception-list@2x.png)
 
 <!-- end -->
 

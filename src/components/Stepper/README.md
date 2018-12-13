@@ -69,13 +69,13 @@ The stepper has two buttons, a minus and a plus button. It’s possible to tap i
 
 <!-- content-for: android -->
 
-![Default stepper with enabled decrease and increase button](components/Stepper/android/default.png)
+![Default stepper with enabled decrease and increase button](/public_images/components/Stepper/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default stepper with enabled decrease and increase button](components/Stepper/ios/default.png)
+![Default stepper with enabled decrease and increase button](/public_images/components/Stepper/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -87,13 +87,13 @@ If you reach the bottom or top value, the appropriate button becomes disabled.
 
 <!-- content-for: android -->
 
-![Disabled stepper](components/Stepper/android/disabled.png)
+![Disabled stepper](/public_images/components/Stepper/android/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Disabled stepper](components/Stepper/ios/disabled.png)
+![Disabled stepper](/public_images/components/Stepper/ios/disabled@2x.png)
 
 <!-- /content-for -->
 

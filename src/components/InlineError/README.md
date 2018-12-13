@@ -72,13 +72,13 @@ Use when the merchant has entered invalid information into multiple fields insid
 
 <!-- content-for: android -->
 
-![Inline error for Android](components/InlineError/android/default.png)
+![Inline error for Android](/public_images/components/InlineError/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Inline error for iOS](components/InlineError/ios/default.png)
+![Inline error for iOS](/public_images/components/InlineError/ios/default@2x.png)
 
 <!-- /content-for -->
 

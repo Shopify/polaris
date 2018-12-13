@@ -208,13 +208,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Single choice list for Android](components/ChoiceList/android/single-choice.png)
+![Single choice list for Android](/public_images/components/ChoiceList/android/single-choice@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Single choice list for iOS](components/ChoiceList/ios/single-choice.png)
+![Single choice list for iOS](/public_images/components/ChoiceList/ios/single-choice@2x.png)
 
 <!-- /content-for -->
 
@@ -265,13 +265,13 @@ class ChoiceListExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Multi choice list for Android](components/ChoiceList/android/multi-choice.png)
+![Multi choice list for Android](/public_images/components/ChoiceList/android/multi-choice@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Multi choice list for iOS](components/ChoiceList/ios/multi-choice.png)
+![Multi choice list for iOS](/public_images/components/ChoiceList/ios/multi-choice@2x.png)
 
 <!-- /content-for -->
 

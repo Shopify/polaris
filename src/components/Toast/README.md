@@ -266,7 +266,7 @@ Use default toast for informative and neutral feedback.
 
 <!-- content-for: android -->
 
-![Default toast with neutral color](components/Toast/android/default.png)
+![Default toast with neutral color](/public_images/components/Toast/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -274,7 +274,7 @@ Use default toast for informative and neutral feedback.
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Default toast with neutral color](components/Toast/ios/default.png)
+![Default toast with neutral color](/public_images/components/Toast/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -286,7 +286,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 <!-- content-for: android -->
 
-![Success toast](components/Toast/android/success.png)
+![Success toast](/public_images/components/Toast/android/success@2x.png)
 
 <!-- /content-for -->
 
@@ -294,7 +294,7 @@ Use success toast to indicate that something was successful. For example, a prod
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Success toast](components/Toast/ios/success.png)
+![Success toast](/public_images/components/Toast/ios/success@2x.png)
 
 <!-- /content-for -->
 
@@ -340,7 +340,7 @@ class ToastExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Error toast](components/Toast/android/error.png)
+![Error toast](/public_images/components/Toast/android/error@2x.png)
 
 <!-- /content-for -->
 
@@ -348,7 +348,7 @@ class ToastExample extends React.Component {
 
 On iOS, icons are available for cases where you want to re-inforce the message.
 
-![Error toast](components/Toast/ios/error.png)
+![Error toast](/public_images/components/Toast/ios/error@2x.png)
 
 <!-- /content-for -->
 
@@ -361,13 +361,13 @@ Keep the action label short, preferably 1 verb action.
 
 <!-- content-for: android -->
 
-![Default toast with action to undo](components/Toast/android/default-action.png)
+![Default toast with action to undo](/public_images/components/Toast/android/default-action@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default toast with action to undo](components/Toast/ios/default-action.png)
+![Default toast with action to undo](/public_images/components/Toast/ios/default-action@2x.png)
 
 <!-- /content-for -->
 

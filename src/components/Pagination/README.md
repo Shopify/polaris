@@ -110,13 +110,13 @@ Use for lists longer than 25 items. In mobile apps it’s natural to scroll to t
 
 <!-- content-for: android -->
 
-![Infinite scroll pagination on Android](components/Pagination/android/default.png)
+![Infinite scroll pagination on Android](/public_images/components/Pagination/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Infinite scroll pagination on iOS](components/Pagination/ios/default.png)
+![Infinite scroll pagination on iOS](/public_images/components/Pagination/ios/default@2x.png)
 
 <!-- /content-for -->
 

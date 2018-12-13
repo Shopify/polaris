@@ -42,7 +42,7 @@ Passing an API key to the [app provider component](https://polaris.shopify.com/c
 
 Note in the props table that a number of properties are only available in stand-alone applications, and won't work in an embedded context. Configure your application's icon and navigation in the [Shopify Partner Dashboard](https://partners.shopify.com) app setup section. To help visualize the page component in an embedded application, we've provided the following screenshot.
 
-![Screenshot of page component in an embedded application](embedded/page/page.jpg)
+![Screenshot of page component in an embedded application](/public_images/embedded/page/page@2x.jpg)
 
 ```jsx
 ReactDOM.render(
@@ -201,7 +201,7 @@ Use for detail pages, which should have breadcrumbs, and also often have several
 
 Use for building any page on Android.
 
-![Page on Android](components/Page/android/with-header.png)
+![Page on Android](/public_images/components/Page/android/with-header@2x.png)
 
 <!-- /content-for -->
 
@@ -211,7 +211,7 @@ Use for detail pages, which should have breadcrumbs, and also often have several
 
 Use for building any page on iOS.
 
-![Page on iOS](components/Page/ios/with-header.png)
+![Page on iOS](/public_images/components/Page/ios/with-header@2x.png)
 
 <!-- /content-for -->
 
