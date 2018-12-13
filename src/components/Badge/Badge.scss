@@ -54,9 +54,10 @@ $pip-spacing: ($height - $pip-size) / 2;
 }
 
 .statusNew {
-  background-color: color('sky', 'dark');
+  background-color: color('sky');
   color: color('ink');
   font-weight: 500;
+  border: none;
 }
 
 .progressIncomplete .Pip {
