@@ -10,7 +10,8 @@ const postcssShopify = require('postcss-shopify');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
-const ICON_PATH_REGEX = /icons\//;
+const INTERNAL_ICON_PATH_REGEX = /icons\//;
+const PACKAGE_ICON_PATH_REGEX = /polaris-icons\//;
 const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
 module.exports = (env = {production: false}) => ({
@@ -117,7 +118,11 @@ module.exports = (env = {production: false}) => ({
       },
       {
         test(resource) {
-          return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
+          return (
+            (INTERNAL_ICON_PATH_REGEX.test(resource) ||
+              PACKAGE_ICON_PATH_REGEX.test(resource)) &&
+            resource.endsWith('.svg')
+          );
         },
         use: [
           {
@@ -134,7 +139,11 @@ module.exports = (env = {production: false}) => ({
       {
         test(resource) {
           return (
-            IMAGE_PATH_REGEX.test(resource) && !ICON_PATH_REGEX.test(resource)
+            IMAGE_PATH_REGEX.test(resource) &&
+            !(
+              INTERNAL_ICON_PATH_REGEX.test(resource) ||
+              PACKAGE_ICON_PATH_REGEX.test(resource)
+            )
           );
         },
         use: [
