@@ -98,7 +98,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     this.state = {
       selectMode: Boolean(selectedItems && selectedItems.length > 0),
       loadingPosition: 0,
-      listNode: null,
     };
   }
 
