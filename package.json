@@ -88,8 +88,6 @@
     "@shopify/sewing-kit": "0.64.2",
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
-    "@types/lodash": "^4.14.108",
-    "@types/lodash-decorators": "^4.0.0",
     "@types/node": "^8.10.17",
     "@types/react-helmet": "^5.0.6",
     "@types/react-hot-loader": "^3.0.6",
@@ -183,7 +181,6 @@
     "babel-runtime": "^6.23.0",
     "core-js": "^2.5.1",
     "hoist-non-react-statics": "^2.5.0",
-    "lodash": "^4.17.4",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.4.0",
     "tslib": "^1.9.3"
