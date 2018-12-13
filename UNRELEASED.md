@@ -6,7 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Moved icons to a separate NPM package ([#686](https://github.com/Shopify/polaris-react/pull/686))
+- Moved icons to a separate npm package ([#686](https://github.com/Shopify/polaris-react/pull/686))
 
 ### Bug fixes
 
