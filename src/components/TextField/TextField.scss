@@ -2,6 +2,16 @@ $backdrop-horizontal-spacing: spacing(tight) * 1.5;
 $addon-horizontal-spacing: 0.25em;
 $spinner-icon-size: rem(12px);
 
+/* stylelint-disable */
+:export {
+  color: color('ink', 'lightest');
+  background: color('white');
+  border: border(dark);
+  borderFocus: color('indigo');
+  placeholder: color('ink', 'lightest');
+}
+/* stylelint-enable */
+
 $stacking-order: (
   contents: 20,
   backdrop: 10,
@@ -12,7 +22,7 @@ $stacking-order: (
   position: relative;
   display: flex;
   align-items: center;
-  color: color('ink', 'lightest');
+  color: var(--text-field-color);
   cursor: text;
 }
 
@@ -38,8 +48,9 @@ $stacking-order: (
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   ~ .Backdrop {
-    border-color: color('indigo');
-    box-shadow: inset shadow(transparent), 0 0 0 1px color('indigo');
+    border-color: var(--text-field-border-focus);
+    box-shadow: inset shadow(transparent),
+      0 0 0 1px var(--text-field-border-focus);
   }
 }
 
@@ -115,7 +126,7 @@ $stacking-order: (
   }
 
   &::placeholder {
-    color: color('ink', 'lightest');
+    color: var(--text-field-placeholder);
   }
 
   // These properties are used to remove the default "spinner" controls
@@ -142,9 +153,9 @@ $stacking-order: (
   bottom: 0;
   left: 0;
   right: 0;
-  background: color('white');
-  border: border(dark);
-  box-shadow: inset 0 1px 0 0 rgba(color('ink', 'lighter'), 0.05);
+  background: var(--text-field-background);
+  border: var(--text-field-border);
+  box-shadow: inset 0 1px 0 0 rgba(var(--text-field-border), 0.05);
   border-radius: border-radius();
   will-change: box-shadow, border-color;
   transition-property: box-shadow, border-color;

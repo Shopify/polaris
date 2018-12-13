@@ -1,7 +1,7 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {setColors} from './utils';
+import {createThemeStyles} from './utils';
 import {Theme, ThemeContext, THEME_CONTEXT_TYPES} from './types';
 
 export interface Props {
@@ -15,18 +15,11 @@ export interface Context {
   polarisTheme?: ThemeContext;
 }
 
-const defaultTheme = {
-  '--top-bar-background': '#00848e',
-  '--top-bar-color': '#f9fafb',
-  '--top-bar-background-darker': '#006d74',
-  '--top-bar-background-lighter': '#1d9ba4',
-};
-
 export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTEXT_TYPES;
   public themeContext: Context;
   private subscriptions: {(): void}[] = [];
-  private colors: string[][] | undefined;
+  private themeStyles = createThemeStyles(this.props.theme.styles);
 
   constructor(props: Props) {
     super(props);
@@ -36,8 +29,6 @@ export default class ThemeProvider extends React.Component<Props> {
       this.subscribe,
       this.unsubscribe,
     );
-
-    this.colors = setColors(props.theme);
   }
 
   // eslint-disable-next-line react/no-deprecated
@@ -53,7 +44,7 @@ export default class ThemeProvider extends React.Component<Props> {
     );
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-    this.colors = setColors(theme);
+    this.themeStyles = createThemeStyles(theme.styles);
   }
 
   getChildContext() {
@@ -61,9 +52,11 @@ export default class ThemeProvider extends React.Component<Props> {
   }
 
   render() {
-    const styles = this.createStyles() || defaultTheme;
-
-    return <div style={styles}>{React.Children.only(this.props.children)}</div>;
+    return (
+      <div style={this.themeStyles}>
+        {React.Children.only(this.props.children)}
+      </div>
+    );
   }
 
   @autobind
@@ -77,15 +70,6 @@ export default class ThemeProvider extends React.Component<Props> {
       (subscription) => subscription !== callback,
     );
   }
-
-  createStyles() {
-    return this.colors
-      ? this.colors.reduce(
-          (state, [key, value]) => ({...state, [key]: value}),
-          {},
-        )
-      : null;
-  }
 }
 
 function setThemeContext(
@@ -93,6 +77,6 @@ function setThemeContext(
   subscribe: (callback: () => void) => void,
   unsubscribe: (callback: () => void) => void,
 ): Context {
-  const {colors, logo = null, ...rest} = ctx;
+  const {styles, logo = null, ...rest} = ctx;
   return {polarisTheme: {logo, subscribe, unsubscribe, ...rest}};
 }

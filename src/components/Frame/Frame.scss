@@ -5,7 +5,8 @@ $skip-vertical-offset: rem(10px);
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: color('sky', 'light');
+  background-color: var(--frame-background);
+  color: var(--frame-color);
   @include when-printing {
     background-color: none;
   }

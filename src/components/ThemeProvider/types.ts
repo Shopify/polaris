@@ -1,6 +1,5 @@
 import * as PropTypes from 'prop-types';
-
-export type ColorsToParse = ThemeColor;
+import {ThemeStyles} from './utils/themeStyles';
 
 export type ThemeLogo = {
   /** Provides a path for a logo used on a dark background */
@@ -15,23 +14,11 @@ export type ThemeLogo = {
   width?: number;
 } | null;
 
-export interface ThemeColor {
-  [key: string]: string;
-}
-
-export interface TopBar extends ThemeColor {
-  background: string;
-}
-
-export type ThemeColors = {
-  topBar: TopBar;
-};
-
 export interface Theme {
   /** Sets the logo for the top bar and contextual save bar components*/
   logo?: ThemeLogo;
   /** Sets the background color of the top bar component. Complimentary and typography colors are determined programmatically */
-  colors?: ThemeColors;
+  styles?: ThemeStyles;
 }
 
 export interface ThemeContext {
