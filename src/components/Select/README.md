@@ -133,7 +133,7 @@ class SelectExample extends React.Component {
 
 The iOS picker expands in-line. Merchants scroll to select the item they want.
 
-![iOS select, and select with option menu](components/Select/ios/default.png)
+![iOS select, and select with option menu](/public_images/components/Select/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -141,7 +141,7 @@ The iOS picker expands in-line. Merchants scroll to select the item they want.
 
 The Android menu is similar in behavior to the web dropdown.
 
-![Android select, and select with option menu](components/Select/android/default.png)
+![Android select, and select with option menu](/public_images/components/Select/android/default@2x.png)
 
 <!-- /content-for -->
 
@@ -202,13 +202,13 @@ Use for selections that aren’t currently available. The surrounding interface 
 
 <!-- content-for: ios -->
 
-![Disabled select component on iOS](components/Select/ios/disabled.png)
+![Disabled select component on iOS](/public_images/components/Select/ios/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: android -->
 
-![Disabled select component on Android](components/Select/android/disabled.png)
+![Disabled select component on Android](/public_images/components/Select/android/disabled@2x.png)
 
 <!-- /content-for -->
 

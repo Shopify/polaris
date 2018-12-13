@@ -67,13 +67,13 @@ Use to present an avatar for a merchant, customer, or business.
 
 <!-- content-for: android -->
 
-![Default avatar](components/Avatar/android/default.png)
+![Default avatar](/public_images/components/Avatar/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default avatar](components/Avatar/ios/default.png)
+![Default avatar](/public_images/components/Avatar/ios/default@2x.png)
 
 <!-- /content-for -->
 

@@ -38,7 +38,7 @@ Use skeleton loading for dynamic content, and use actual content for content tha
 
 <div class="TypographyUsageBlockImg">
 
-![Image showing skeleton loading for changing content](skeleton/do-use-skeleton-for-changing-content.png)
+![Image showing skeleton loading for changing content](/public_images/skeleton/do-use-skeleton-for-changing-content@2x.png)
 
 </div>
 
@@ -48,7 +48,7 @@ Use placeholder content that will change when the page fully loads. This will co
 
 <div class="TypographyUsageBlockImg">
 
-![Image showing placeholder content that will change](skeleton/dont-use-placeholder-content-that-will-change.png)
+![Image showing placeholder content that will change](/public_images/skeleton/dont-use-placeholder-content-that-will-change@2x.png)
 
 </div>
 

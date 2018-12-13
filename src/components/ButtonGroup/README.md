@@ -68,13 +68,13 @@ Use when you have multiple buttons to space them out evenly.
 
 <!-- content-for: android -->
 
-![Alt text](components/ButtonGroup/android/default.png)
+![Alt text](/public_images/components/ButtonGroup/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Alt text](components/ButtonGroup/ios/default.png)
+![Alt text](/public_images/components/ButtonGroup/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -92,13 +92,13 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 <!-- content-for: android -->
 
-![Alt text](components/ButtonGroup/android/segmented-button.png)
+![Alt text](/public_images/components/ButtonGroup/android/segmented-button@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Alt text](components/ButtonGroup/ios/segmented-button.png)
+![Alt text](/public_images/components/ButtonGroup/ios/segmented-button@2x.png)
 
 <!-- /content-for -->
 

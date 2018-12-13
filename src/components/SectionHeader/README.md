@@ -78,13 +78,13 @@ Use to group related content together, for example orders received on the same d
 
 <!-- content-for: android -->
 
-![Shipping costs card with multiple sections: domestic, international](components/SectionHeader/android/default.png)
+![Shipping costs card with multiple sections: domestic, international](/public_images/components/SectionHeader/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Shipping costs card with multiple sections: domestic, international](components/SectionHeader/ios/default.png)
+![Shipping costs card with multiple sections: domestic, international](/public_images/components/SectionHeader/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -94,7 +94,7 @@ Use to group related content together, for example orders received on the same d
 
 Use if your list section could be longer than the height of the screen. For example you may need fixed section headers for a list of orders, because merchants may receive many orders in one day.
 
-![Shipping costs card with multiple sections: domestic, international](components/SectionHeader/ios/fixed.png)
+![Shipping costs card with multiple sections: domestic, international](/public_images/components/SectionHeader/ios/fixed@2x.png)
 
 ---
 

@@ -134,13 +134,13 @@ class RadioButtonExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default radio button on Android](components/RadioButton/android/default.png)
+![Default radio button on Android](/public_images/components/RadioButton/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default radio button on iOS](components/RadioButton/ios/default.png)
+![Default radio button on iOS](/public_images/components/RadioButton/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -152,13 +152,13 @@ Use toggles when merchants need to make a binary choice (on or off).
 
 <!-- content-for: android -->
 
-![Android toggle with on or off options](components/RadioButton/android/toggle.png)
+![Android toggle with on or off options](/public_images/components/RadioButton/android/toggle@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![iOS toggle with on or off options](components/RadioButton/ios/toggle.png)
+![iOS toggle with on or off options](/public_images/components/RadioButton/ios/toggle@2x.png)
 
 <!-- /content-for -->
 

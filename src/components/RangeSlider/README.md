@@ -143,13 +143,13 @@ class RangeSliderExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Range slider for Android](components/RangeSlider/android/default.png)
+![Range slider for Android](/public_images/components/RangeSlider/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Range slider for iOS](components/RangeSlider/ios/default.png)
+![Range slider for iOS](/public_images/components/RangeSlider/ios/default@2x.png)
 
 <!-- /content-for -->
 

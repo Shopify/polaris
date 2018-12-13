@@ -196,13 +196,13 @@ class TextFieldExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field](components/TextField/android/default.png)
+![Default text field](/public_images/components/TextField/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field](components/TextField/ios/default.png)
+![Default text field](/public_images/components/TextField/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -237,7 +237,7 @@ class NumberFieldExample extends React.Component {
 
 This will display the right keyboard on mobile devices.
 
-![Number text field with numeric keyboard](components/TextField/android/number.png)
+![Number text field with numeric keyboard](/public_images/components/TextField/android/number@2x.png)
 
 <!-- /content-for -->
 
@@ -245,7 +245,7 @@ This will display the right keyboard on mobile devices.
 
 This will display the right keyboard on mobile devices.
 
-![Number text field with numeric keyboard](components/TextField/ios/number.png)
+![Number text field with numeric keyboard](/public_images/components/TextField/ios/number@2x.png)
 
 <!-- /content-for -->
 
@@ -280,7 +280,7 @@ class EmailFieldExample extends React.Component {
 
 This will display the right keyboard on mobile devices.
 
-![Email field with email keyboard](components/TextField/android/email.png)
+![Email field with email keyboard](/public_images/components/TextField/android/email@2x.png)
 
 <!-- /content-for -->
 
@@ -288,7 +288,7 @@ This will display the right keyboard on mobile devices.
 
 This will display the right keyboard on mobile devices.
 
-![Email field with email keyboard](components/TextField/ios/email.png)
+![Email field with email keyboard](/public_images/components/TextField/ios/email@2x.png)
 
 <!-- /content-for -->
 
@@ -321,13 +321,13 @@ class MultilineFieldExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Multi-line text field](components/TextField/android/multi-line.png)
+![Multi-line text field](/public_images/components/TextField/android/multi-line@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Multi-line text field](components/TextField/ios/multi-line.png)
+![Multi-line text field](/public_images/components/TextField/ios/multi-line@2x.png)
 
 <!-- /content-for -->
 
@@ -443,13 +443,13 @@ class PlaceholderExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field with placeholder text hint](components/TextField/android/placeholder-text.png)
+![Default text field with placeholder text hint](/public_images/components/TextField/android/placeholder-text@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with placeholder text hint](components/TextField/ios/placeholder-text.png)
+![Default text field with placeholder text hint](/public_images/components/TextField/ios/placeholder-text@2x.png)
 
 <!-- /content-for -->
 
@@ -483,13 +483,13 @@ class HelpTextExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field with help text](components/TextField/android/help-text.png)
+![Default text field with help text](/public_images/components/TextField/android/help-text@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with help text](components/TextField/ios/help-text.png)
+![Default text field with help text](/public_images/components/TextField/ios/help-text@2x.png)
 
 <!-- /content-for -->
 
@@ -526,13 +526,13 @@ class PrefixExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default text field with prefix and suffix](components/TextField/android/prefix-suffix.png)
+![Default text field with prefix and suffix](/public_images/components/TextField/android/prefix-suffix@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default text field with prefix and suffix](components/TextField/ios/prefix-suffix.png)
+![Default text field with prefix and suffix](/public_images/components/TextField/ios/prefix-suffix@2x.png)
 
 <!-- /content-for -->
 
@@ -576,7 +576,7 @@ class ConnectedFieldsExample extends React.Component {
 
 If inputting weight as a number and a separate unit of measurement, use a text field with a selector (e.g. “kg”, “lb”) as a connected field.
 
-![Text field with connected selector](components/TextField/android/connected-fields.png)
+![Text field with connected selector](/public_images/components/TextField/android/connected-fields@2x.png)
 
 <!-- /content-for -->
 
@@ -584,7 +584,7 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 
 If inputting weight as a number and a separate unit of measurement, use a text field with a selector (e.g. “kg”, “lb”) as a connected field.
 
-![Text field with connected selector](components/TextField/ios/connected-fields.png)
+![Text field with connected selector](/public_images/components/TextField/ios/connected-fields@2x.png)
 
 <!-- /content-for -->
 
@@ -598,13 +598,13 @@ For example, tap on a barcode icon to launch the camera and scan barcode for the
 
 <!-- content-for: android -->
 
-![Text field with icon action inside the text field](components/TextField/android/accessory.png)
+![Text field with icon action inside the text field](/public_images/components/TextField/android/accessory@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Text field with icon action inside the text field](components/TextField/ios/accessory.png)
+![Text field with icon action inside the text field](/public_images/components/TextField/ios/accessory@2x.png)
 
 <!-- /content-for -->
 
@@ -637,13 +637,13 @@ class ValidationErrorExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Text field with error](components/TextField/android/error.png)
+![Text field with error](/public_images/components/TextField/android/error@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Text field with error](components/TextField/ios/error.png)
+![Text field with error](/public_images/components/TextField/ios/error@2x.png)
 
 <!-- /content-for -->
 

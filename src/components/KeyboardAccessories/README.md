@@ -41,13 +41,13 @@ Use the action accessories to add actions that are relevant to what merchants ar
 
 <!-- content-for: android -->
 
-![Keyboard accessory with actions](components/KeyboardAccessories/android/toolbar.png)
+![Keyboard accessory with actions](/public_images/components/KeyboardAccessories/android/toolbar@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Keyboard accessory with actions](components/KeyboardAccessories/ios/toolbar.png)
+![Keyboard accessory with actions](/public_images/components/KeyboardAccessories/ios/toolbar@2x.png)
 
 <!-- /content-for -->
 
@@ -59,13 +59,13 @@ Use to make message entry easier in messaging and chat-based products.
 
 <!-- content-for: android -->
 
-![Keyboard accessory with text field](components/KeyboardAccessories/android/text-field.png)
+![Keyboard accessory with text field](/public_images/components/KeyboardAccessories/android/text-field@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Keyboard accessory with text field](components/KeyboardAccessories/ios/text-field.png)
+![Keyboard accessory with text field](/public_images/components/KeyboardAccessories/ios/text-field@2x.png)
 
 <!-- /content-for -->
 

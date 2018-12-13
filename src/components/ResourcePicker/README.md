@@ -32,7 +32,7 @@ Enable the resource picker component to delegate to the [Shopify App Bridge](htt
 
 Use of the resource picker component is only supported in an embedded application—it will not render in a stand-alone application. To help visualize the resource picker component in an embedded application, we've provided the following screenshot.
 
-![Screenshot product picker - multiple product selection component](embedded/resource-picker/product-picker-multiple.jpg)
+![Screenshot product picker - multiple product selection component](/public_images/embedded/resource-picker/product-picker-multiple@2x.jpg)
 
 ---
 

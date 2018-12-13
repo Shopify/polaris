@@ -93,13 +93,13 @@ Use for the title of each top-level page section.
 
 <!-- content-for: android -->
 
-![Typographic heading](components/Heading/android/default.png)
+![Typographic heading](/public_images/components/Heading/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Typographic heading](components/Heading/ios/default.png)
+![Typographic heading](/public_images/components/Heading/ios/default@2x.png)
 
 <!-- /content-for -->
 

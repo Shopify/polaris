@@ -382,13 +382,13 @@ class ModalExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Modal with primary action on Android](components/Modal/android/information.png)
+![Modal with primary action on Android](/public_images/components/Modal/android/information@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Modal with primary action on iOS](components/Modal/ios/information.png)
+![Modal with primary action on iOS](/public_images/components/Modal/ios/information@2x.png)
 
 <!-- /content-for -->
 
@@ -487,13 +487,13 @@ class ModalExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Modal with primary and secondary actions on Android](components/Modal/android/basic.png)
+![Modal with primary and secondary actions on Android](/public_images/components/Modal/android/basic@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Modal with primary and secondary actions on iOS](components/Modal/ios/basic.png)
+![Modal with primary and secondary actions on iOS](/public_images/components/Modal/ios/basic@2x.png)
 
 <!-- /content-for -->
 
@@ -624,13 +624,13 @@ Use to make it clear to the merchant that the action is potentially dangerous. O
 
 <!-- content-for: android -->
 
-![Warning modal on Android](components/Modal/android/default.png)
+![Warning modal on Android](/public_images/components/Modal/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Warning modal on iOS](components/Modal/ios/default.png)
+![Warning modal on iOS](/public_images/components/Modal/ios/default@2x.png)
 
 <!-- /content-for -->
 
