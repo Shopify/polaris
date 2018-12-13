@@ -19,7 +19,9 @@ export default class ThemeProvider extends React.Component<Props> {
   static childContextTypes = THEME_CONTEXT_TYPES;
   public themeContext: Context;
   private subscriptions: {(): void}[] = [];
-  private themeStyles = createThemeStyles(this.props.theme.styles);
+  private themeStyles = this.props.theme.styles
+    ? createThemeStyles(this.props.theme.styles)
+    : {};
 
   constructor(props: Props) {
     super(props);
@@ -44,7 +46,7 @@ export default class ThemeProvider extends React.Component<Props> {
     );
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-    this.themeStyles = createThemeStyles(theme.styles);
+    this.themeStyles = theme.styles ? createThemeStyles(theme.styles) : {};
   }
 
   getChildContext() {

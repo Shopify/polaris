@@ -9,6 +9,8 @@ import {
   createAppProviderContext,
 } from './utilities';
 import {Context, polarisAppProviderContextTypes} from './types';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import '../ThemeProvider/DefaultStyles.scss';
 
 export interface Props {
   /** A locale object or array of locale objects that overrides default translations */

@@ -1,0 +1,17 @@
+:root {
+  --polaris-background: #{color('sky', 'light')};
+  --polaris-color: #{color(ink)};
+  --polaris-layered-background: #{color('white')};
+  --polaris-layered-border: #{color('sky', 'dark')};
+  --polaris-layered-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05);
+  --polaris-accent: #{color('teal', 'dark')};
+  --polaris-accent-dark: #{color('teal', 'darker')};
+  --polaris-accent-subdued: #{color('teal', 'lighter')};
+  --polaris-accent-light: #{color('teal')};
+  --polaris-subdued: #{color('ink', 'lighter')};
+  --polaris-form-control: #{linear-gradient(
+      to bottom,
+      color('white'),
+      color('sky', 'lighter')
+    )};
+}

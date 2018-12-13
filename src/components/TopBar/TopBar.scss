@@ -4,7 +4,7 @@ $icon-size: rem(20px);
   position: relative;
   display: flex;
   height: top-bar-height();
-  background-color: var(--top-bar-background);
+  background-color: var(--polaris-accent);
   &::after {
     content: '';
     position: absolute;
@@ -22,7 +22,7 @@ $icon-size: rem(20px);
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
-    background-color: var(--top-bar-background-darker);
+    background-color: var(--polaris-accent-dark);
     @include safe-area-for(flex-basis, layout-width(nav), left);
     @include safe-area-for(padding-left, spacing(), left);
   }

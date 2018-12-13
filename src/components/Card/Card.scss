@@ -1,9 +1,7 @@
 .Card {
   overflow: hidden;
-  background-color: var(--card-background);
-  // @TODO: find a way to use the shadow() helper and pass in a color value
-  // from the CSS variable
-  box-shadow: var(--card-shadow);
+  background-color: var(--polaris-layered-background);
+  box-shadow: var(--polaris-layered-shadow);
 
   + .Card {
     margin-top: spacing(loose);

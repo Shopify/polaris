@@ -72,13 +72,13 @@ $stacking-order: (
   border: none;
   background-color: transparent;
   outline: none;
-  color: var(--top-bar-color);
+  color: var(--polaris-color);
   will-change: fill, color;
   transition: fill duration() easing(), color duration() easing();
   appearance: textfield;
 
   &::placeholder {
-    color: var(--top-bar-color);
+    color: var(--polaris-accent-subdued);
   }
 
   &::-webkit-search-decoration,
@@ -88,7 +88,7 @@ $stacking-order: (
 }
 
 .Icon {
-  @include recolor-icon(var(--top-bar-color));
+  @include recolor-icon(var(--polaris-color));
   position: absolute;
   z-index: z-index(icon, $stacking-order);
   top: 50%;
@@ -122,7 +122,7 @@ $stacking-order: (
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--top-bar-background-lighter);
+  background-color: var(--polaris-accent-light);
   will-change: background-color;
   transition: background-color duration() easing();
   border-radius: border-radius();
@@ -131,6 +131,6 @@ $stacking-order: (
 
 @keyframes toLightBackground {
   to {
-    background-color: var(--top-bar-background-lighter);
+    background-color: var(--polaris-accent-light);
   }
 }

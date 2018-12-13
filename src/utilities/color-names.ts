@@ -5,14 +5,8 @@ export function normalizeName(name: string) {
     .toLowerCase();
 }
 
-export function constructColorName(
-  baseName: string,
-  property: string | null,
-  suffix?: string,
-) {
+export function constructColorName(baseName: string, property: string) {
   const name = normalizeName(baseName);
   const propertyName = property ? `-${normalizeName(property)}` : '';
-  const constructedSuffix = suffix ? `-${suffix}` : '';
-
-  return `--${name}${propertyName}${constructedSuffix}`;
+  return `--${name}${propertyName}`;
 }
