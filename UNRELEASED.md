@@ -14,7 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
-- Modified image paths to fit the [style guide](https://polaris.shopify.com)’s new image parsing rules ([#753](https://github.com/Shopify/polaris-react/pull/753)
+- Modified image paths to fit the [style guide](https://polaris.shopify.com)’s new Markdown parsing rules ([#753](https://github.com/Shopify/polaris-react/pull/753))
 
 ### Development workflow
 
