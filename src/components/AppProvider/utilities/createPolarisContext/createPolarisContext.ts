@@ -3,7 +3,7 @@ import {
   createThemeContext,
   ThemeContext as CreateThemeContext,
 } from '../../../ThemeProvider';
-import {Props as AppProviderProps} from '../../AppProvider';
+import {AppProviderProps} from '../../types';
 import {StickyManager} from '../withSticky';
 import createAppProviderContext, {
   CreateAppProviderContext,

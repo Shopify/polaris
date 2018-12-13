@@ -1,42 +1,25 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import ThemeProvider, {Theme} from '../ThemeProvider';
-import {LinkLikeComponent} from '../UnstyledLink';
+import ThemeProvider from '../ThemeProvider';
 import {
   StickyManager,
   ScrollLockManager,
-  TranslationDictionary,
   createAppProviderContext,
 } from './utilities';
-import {Context, polarisAppProviderContextTypes} from './types';
+import {
+  AppProviderProps,
+  Context,
+  polarisAppProviderContextTypes,
+} from './types';
 
-export interface Props {
-  /** A locale object or array of locale objects that overrides default translations */
-  i18n?: TranslationDictionary | TranslationDictionary[];
-  /** A custom component to use for all links used by Polaris components */
-  linkComponent?: LinkLikeComponent;
-  /** The API key for your application from the Partner dashboard */
-  apiKey?: string;
-  /**
-   * The current shop’s origin, provided in the session from the Shopify API (to be provided without the https://)
-   * @default getShopOrigin()
-   * @see {@link https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app|Shopify App Bridge docs}
-   **/
-  shopOrigin?: string;
-  /** Forces a redirect to the relative admin path when not rendered in an iframe */
-  forceRedirect?: boolean;
-  /** Custom logos and colors provided to select components */
-  theme?: Theme;
-}
-
-export default class AppProvider extends React.Component<Props> {
+export default class AppProvider extends React.Component<AppProviderProps> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
   private subscriptions: {(): void}[] = [];
 
-  constructor(props: Props) {
+  constructor(props: AppProviderProps) {
     super(props);
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
@@ -63,7 +46,7 @@ export default class AppProvider extends React.Component<Props> {
     apiKey,
     shopOrigin,
     forceRedirect,
-  }: Props) {
+  }: AppProviderProps) {
     if (
       i18n !== this.props.i18n ||
       linkComponent !== this.props.linkComponent ||

@@ -5,7 +5,7 @@ import {Key} from '../../../../types';
 
 import Icon from '../../../Icon';
 import KeypressListener from '../../../KeypressListener';
-import {ToastProps as Props} from '../../../Toast';
+import {ToastProps as Props} from '../../types';
 
 import * as styles from './Toast.scss';
 
