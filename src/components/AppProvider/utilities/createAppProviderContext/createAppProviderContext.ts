@@ -1,12 +1,11 @@
 import {noop} from '@shopify/javascript-utilities/other';
 import createApp, {getShopOrigin} from '@shopify/app-bridge';
 import {isServer} from '@shopify/react-utilities/target';
-import {Context} from '../../types';
+import {AppProviderProps, Context} from '../../types';
 import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';
 import Link from '../Link';
-import {Props as AppProviderProps} from '../../AppProvider';
 
 export interface CreateAppProviderContext extends AppProviderProps {
   stickyManager?: StickyManager;

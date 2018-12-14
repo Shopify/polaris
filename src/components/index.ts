@@ -7,7 +7,7 @@ export {default as ActionList, Props as ActionListProps} from './ActionList';
 
 export {
   default as AppProvider,
-  AppProviderProps,
+  Props as AppProviderProps,
   Context as AppProviderContext,
   polarisAppProviderContextTypes as polarisContextTypes,
   createAppProviderContext,
@@ -77,10 +77,7 @@ export {
 
 export {default as Connected, Props as ConnectedProps} from './Connected';
 
-export {
-  default as ContextualSaveBar,
-  ContextualSaveBarProps,
-} from './ContextualSaveBar';
+export {default as ContextualSaveBar} from './ContextualSaveBar';
 
 export {
   default as DataTable,
@@ -138,6 +135,8 @@ export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 export {
   default as Frame,
   Props as FrameProps,
+  ContextualSaveBarProps,
+  ToastProps,
   DEFAULT_TOAST_DURATION,
 } from './Frame';
 
@@ -261,7 +260,7 @@ export {
   Context as ThemeProviderContext,
 } from './ThemeProvider';
 
-export {default as Toast, ToastProps} from './Toast';
+export {default as Toast} from './Toast';
 
 export {default as Tooltip, Props as TooltipProps} from './Tooltip';
 

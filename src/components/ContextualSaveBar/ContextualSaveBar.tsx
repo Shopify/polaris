@@ -1,38 +1,16 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
-import {FrameContext, frameContextTypes} from '../Frame';
+import {
+  ContextualSaveBarProps,
+  FrameContext,
+  frameContextTypes,
+} from '../Frame';
 
-interface ContextualSaveBarAction {
-  /** A destination to link to */
-  url?: string;
-  /** Content the action displays */
-  content?: string;
-  /** Should a spinner be displayed */
-  loading?: boolean;
-  /** Should the action be disabled */
-  disabled?: boolean;
-  /** Callback when an action takes place */
-  onAction?(): void;
-}
-
-interface ContextualSaveBarDiscardActionProps {
-  /** Whether to show a modal confirming the discard action */
-  discardConfirmationModal?: boolean;
-}
-
-type ContextualSaveBarCombinedActionProps = ContextualSaveBarDiscardActionProps &
-  ContextualSaveBarAction;
-
-export interface Props {
-  /** Extend the contents section to be flush with the left edge  */
-  alignContentFlush?: boolean;
-  /** Accepts a string of content that will be rendered to the left of the actions */
-  message?: string;
-  /** Save or commit contextual save bar action with text defaulting to 'Save' */
-  saveAction?: ContextualSaveBarAction;
-  /** Discard or cancel contextual save bar action with text defaulting to 'Discard' */
-  discardAction?: ContextualSaveBarCombinedActionProps;
-}
+// The script in the styleguide that generates the Props Explorer data expects
+// a component's props to be found in the Props interface. This silly workaround
+// ensures that the Props Explorer table is generated correctly, instead of
+// crashing if we write `ContextualSaveBar extends React.Component<ContextualSaveBarProps>`
+interface Props extends ContextualSaveBarProps {}
 
 class ContextualSaveBar extends React.PureComponent<Props, never> {
   static contextTypes = frameContextTypes;

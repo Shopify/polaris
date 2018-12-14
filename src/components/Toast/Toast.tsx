@@ -6,28 +6,21 @@ import {
   DEFAULT_TOAST_DURATION,
   FrameContext,
   frameContextTypes,
+  ToastProps,
 } from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 const createId = createUniqueIDFactory('Toast');
 
-export interface ToastProps {
-  /** The content that should appear in the toast message */
-  content: string;
-  /**
-   * The length of time in milliseconds the toast message should persist
-   * @default 5000
-   */
-  duration?: number;
-  /** Display an error toast. */
-  error?: boolean;
-  /** Callback when the dismiss icon is clicked */
-  onDismiss(): void;
-}
+// The script in the styleguide that generates the Props Explorer data expects
+// a component's props to be found in the Props interface. This silly workaround
+// ensures that the Props Explorer table is generated correctly, instead of
+// crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
+interface Props extends ToastProps {}
 
-export type Props = ToastProps & WithAppProviderProps;
+export type ComposedProps = Props & WithAppProviderProps;
 
-export class Toast extends React.PureComponent<Props, never> {
+export class Toast extends React.PureComponent<ComposedProps, never> {
   static contextTypes = frameContextTypes;
   context: FrameContext;
 
@@ -47,7 +40,7 @@ export class Toast extends React.PureComponent<Props, never> {
     if (appBridge == null) {
       context.frame.showToast({
         id,
-        ...(props as ToastProps),
+        ...(props as Props),
       });
     } else {
       this.appBridgeToast = AppBridgeToast.create(appBridge, {
@@ -77,4 +70,4 @@ export class Toast extends React.PureComponent<Props, never> {
   }
 }
 
-export default withAppProvider<ToastProps>()(Toast);
+export default withAppProvider<Props>()(Toast);
