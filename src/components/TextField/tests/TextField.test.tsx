@@ -151,11 +151,11 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
-    it('sets autoComplete to "nope" when false', () => {
+    it('sets autoComplete to "off" when false', () => {
       const textField = shallowWithAppProvider(
         <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
-      expect(textField.find('input').prop('autoComplete')).toBe('nope');
+      expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
     it('sets autoComplete to "on" when false', () => {
