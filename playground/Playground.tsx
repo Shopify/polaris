@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Page} from '@shopify/polaris';
+import {Page, Button} from '@shopify/polaris';
 
 interface State {}
 
@@ -10,7 +10,7 @@ export default class Playground extends React.Component<{}, State> {
         title="Playground"
         primaryAction={{content: 'View Examples', url: '/examples'}}
       >
-        {/* Add the code you want to test here */}
+        <Button>Click me!</Button>
       </Page>
     );
   }

@@ -95,6 +95,7 @@
     "@types/react-hot-loader": "^3.0.6",
     "@types/react-router-dom": "^4.2.7",
     "@types/rollup": "0.51.4",
+    "@types/styled-components": "^4.1.4",
     "archiver": "^2.1.0",
     "aws-sdk": "^2.58.0",
     "babel-cli": "^6.26.0",
@@ -188,6 +189,7 @@
     "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.4.0",
+    "styled-components": "^4.1.2",
     "tslib": "^1.9.3"
   }
 }

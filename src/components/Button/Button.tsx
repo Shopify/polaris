@@ -9,6 +9,7 @@ import Spinner from '../Spinner';
 import Indicator from '../Indicator';
 
 import * as styles from './Button.scss';
+import {Button as StyledButton} from './ButtonStyles';
 
 export type Size = 'slim' | 'medium' | 'large';
 
@@ -174,14 +175,13 @@ function Button({
       {content}
     </UnstyledLink>
   ) : (
-    <button
+    <StyledButton
       id={id}
       type={type}
       onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
       onMouseUp={handleMouseUpByBlurring}
-      className={className}
       disabled={isDisabled}
       aria-label={accessibilityLabel}
       aria-controls={ariaControls}
@@ -191,7 +191,7 @@ function Button({
     >
       {indicatorMarkup}
       {content}
-    </button>
+    </StyledButton>
   );
 }
 
