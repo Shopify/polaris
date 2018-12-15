@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
 
-import {ColumnVisibilityData} from '../../DataTable';
+import {ColumnVisibilityData} from '../../types';
 
 import * as styles from '../../DataTable.scss';
 

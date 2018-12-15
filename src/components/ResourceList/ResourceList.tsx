@@ -21,7 +21,7 @@ import {
   Provider,
 } from './components';
 
-import {SelectedItems, SELECT_ALL_ITEMS} from './types';
+import {ResourceListContext, SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import * as styles from './ResourceList.scss';
 
@@ -68,18 +68,6 @@ export interface Props {
   renderItem(item: any, id: string): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: any, index: number): string;
-}
-
-export interface ResourceListContext {
-  selectMode: boolean;
-  selectable?: boolean;
-  selectedItems?: SelectedItems;
-  resourceName: {
-    singular: string;
-    plural: string;
-  };
-  loading?: boolean;
-  onSelectionChange?(selected: boolean, id: string): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
