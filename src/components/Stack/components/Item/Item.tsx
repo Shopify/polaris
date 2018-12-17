@@ -3,8 +3,13 @@ import {classNames} from '@shopify/react-utilities/styles';
 import * as styles from '../../Stack.scss';
 
 export interface Props {
+  /** Elements to display inside item */
   children?: React.ReactNode;
+  /** Fill the remaining horizontal space in the stack with the item  */
   fill?: boolean;
+  /**
+   * @default false
+   */
 }
 
 export default function Item({children, fill}: Props) {
