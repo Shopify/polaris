@@ -116,7 +116,9 @@ export default class Banner extends React.PureComponent<Props, never> {
     const actionMarkup = action ? (
       <div className={styles.Actions}>
         <ButtonGroup>
-          {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+          <div className={styles.PrimaryAction}>
+            {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+          </div>
           {secondaryActionMarkup}
         </ButtonGroup>
       </div>
