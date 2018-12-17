@@ -22,3 +22,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Refactors to remove cyclical type imports ([#759](https://github.com/Shopify/polaris-react/pull/759) and [#754](https://github.com/Shopify/polaris-react/pull/754))
 
 ### Dependency upgrades
+
+### Code quality
