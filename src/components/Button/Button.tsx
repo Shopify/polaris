@@ -152,22 +152,32 @@ function Button({
 
   const type = submit ? 'submit' : 'button';
 
-  return url ? (
-    <UnstyledLink
-      id={id}
-      url={url}
-      external={external}
-      onClick={onClick}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onMouseUp={handleMouseUpByBlurring}
-      className={className}
-      disabled={isDisabled}
-      aria-label={accessibilityLabel}
-    >
-      {content}
-    </UnstyledLink>
-  ) : (
+  if (url) {
+    return isDisabled ? (
+      // Render an `<a>` so toggling disabled/enabled state changes only the
+      // `href` attribute instead of replacing the whole element.
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a id={id} className={className} aria-label={accessibilityLabel}>
+        {content}
+      </a>
+    ) : (
+      <UnstyledLink
+        id={id}
+        url={url}
+        external={external}
+        onClick={onClick}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onMouseUp={handleMouseUpByBlurring}
+        className={className}
+        aria-label={accessibilityLabel}
+      >
+        {content}
+      </UnstyledLink>
+    );
+  }
+
+  return (
     <button
       id={id}
       type={type}
