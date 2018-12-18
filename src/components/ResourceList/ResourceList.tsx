@@ -597,12 +597,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private renderItem(item: any, index: number) {
-    const {renderItem, idForItem = defaultIdForItem, loading} = this.props;
+    const {renderItem, idForItem = defaultIdForItem} = this.props;
     const id = idForItem(item, index);
-    const tabIndex = loading ? -1 : 0;
 
     return (
-      <li key={id} className={styles.ItemWrapper} tabIndex={tabIndex}>
+      <li key={id} className={styles.ItemWrapper}>
         {renderItem(item, id)}
       </li>
     );
