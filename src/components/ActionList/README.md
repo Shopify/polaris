@@ -269,6 +269,57 @@ class ActionListExample extends React.Component {
 }
 ```
 
+### Action list with help text
+
+Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
+
+```jsx
+class ActionListExample extends React.Component {
+  state = {
+    active: true,
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  };
+
+  render() {
+    const activator = (
+      <Button onClick={this.togglePopover}>More actions</Button>
+    );
+
+    return (
+      <div style={{height: '250px'}}>
+        <Popover
+          active={this.state.active}
+          activator={activator}
+          onClose={this.togglePopover}
+        >
+          <ActionList
+            sections={[
+              {
+                items: [
+                  {
+                    content: 'Blog posts',
+                    helpText: 'Manage your blog articles',
+                  },
+                  {
+                    content: 'Blogs',
+                    helpText: 'Manage blogs published to your Online Store',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Popover>
+      </div>
+    );
+  }
+}
+```
+
 ---
 
 ## Related components
