@@ -5,6 +5,10 @@ $height: rem(3px);
   height: rem($height);
   background-color: color('sky');
   opacity: 1;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
+  }
 }
 
 .Level {
@@ -13,4 +17,9 @@ $height: rem(3px);
   transform-origin: 0;
   background-color: color('teal');
   transition: transform duration(slowest) easing(out);
+
+  @media screen and (-ms-high-contrast: active) {
+    border: progress-bar-height() solid
+      ms-high-contrast-color('selected-text-background');
+  }
 }
