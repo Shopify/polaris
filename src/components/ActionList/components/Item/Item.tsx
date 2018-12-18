@@ -6,6 +6,7 @@ import Scrollable from '../../../Scrollable';
 import Icon from '../../../Icon';
 import UnstyledLink from '../../../UnstyledLink';
 import Badge from '../../../Badge';
+import TextStyle from '../../../TextStyle';
 
 import * as styles from '../../ActionList.scss';
 
@@ -15,6 +16,7 @@ export default function Item({
   id,
   badge,
   content,
+  helpText,
   url,
   onAction,
   icon,
@@ -51,7 +53,16 @@ export default function Item({
     );
   }
 
-  const contentMarkup = ellipsis && content ? `${content}…` : content;
+  const contentText = ellipsis && content ? `${content}…` : content;
+
+  const contentMarkup = helpText ? (
+    <div>
+      <div>{contentText}</div>
+      <TextStyle variation="subdued">{helpText}</TextStyle>
+    </div>
+  ) : (
+    contentText
+  );
 
   const badgeMarkup = badge && (
     <span className={styles.BadgeWrapper}>

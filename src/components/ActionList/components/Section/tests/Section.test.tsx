@@ -76,6 +76,27 @@ describe('<Section />', () => {
     ).toBe('Import file');
   });
 
+  it('passes helpText to Item', () => {
+    const section = mountWithAppProvider(
+      <Section
+        hasMultipleSections
+        section={{
+          items: [
+            {content: 'Import file', helpText: 'Foo', onAction: noop},
+            {content: 'Export file', helpText: 'Bar', onAction: noop},
+          ],
+        }}
+      />,
+    );
+
+    expect(
+      section
+        .find(Item)
+        .first()
+        .prop('helpText'),
+    ).toBe('Foo');
+  });
+
   it('passes the onActionAnyItem callback to Item', () => {
     const spy = jest.fn();
     const section = mountWithAppProvider(
