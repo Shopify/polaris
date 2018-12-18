@@ -371,5 +371,49 @@ describe('<Item />', () => {
       );
       expect(wrapper.find(ButtonGroup).exists()).toBe(true);
     });
+
+    it('does not render while loading', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={{...mockLoadingContext}}>
+          <Item
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </Provider>,
+      );
+      expect(wrapper.find(ButtonGroup)).toHaveLength(0);
+    });
+  });
+
+  describe('accessibleMarkup', () => {
+    it('renders with a tab index of -1 when loading is true', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockLoadingContext}>
+          <Item
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </Provider>,
+      );
+      expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(-1);
+    });
+
+    it('renders with a tab index of 0 when loading is false', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </Provider>,
+      );
+      expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(0);
+    });
   });
 });

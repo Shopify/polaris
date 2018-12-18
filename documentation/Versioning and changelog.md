@@ -46,6 +46,7 @@ The possible groups in which to categorize changes are:
 - Documentation
 - Dependency upgrades
 - Development workflow (new yarn commands or changes to existing commands)
+- Code quality (non-trivial changes to code which effect the private API)
 
 ## Out of scope for `CHANGELOG.md`
 

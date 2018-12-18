@@ -92,7 +92,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const selected = this.isSelected();
 
-    // let mediaMarkup: React.ReactNode = null;
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
@@ -157,12 +156,15 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     let actionsMarkup: React.ReactNode | null = null;
     let disclosureMarkup: React.ReactNode | null = null;
 
-    if (shortcutActions) {
+    if (shortcutActions && !loading) {
       if (persistActions) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {buttonsFrom(shortcutActions, {size: 'slim', plain: true})}
+              {buttonsFrom(shortcutActions, {
+                size: 'slim',
+                plain: true,
+              })}
             </ButtonGroup>
           </div>
         );
@@ -191,7 +193,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup segmented testID="ShortcutActions">
-              {buttonsFrom(shortcutActions, {size: 'slim'})}
+              {buttonsFrom(shortcutActions, {
+                size: 'slim',
+              })}
             </ButtonGroup>
           </div>
         );
@@ -215,6 +219,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       </div>
     );
 
+    const tabIndex = loading ? -1 : 0;
+
     const accessibleMarkup = url ? (
       <UnstyledLink
         aria-describedby={this.props.id}
@@ -223,6 +229,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         url={url}
         onFocus={this.handleAnchorFocus}
         onBlur={this.handleFocusedBlur}
+        tabIndex={tabIndex}
       />
     ) : (
       <button
@@ -233,6 +240,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onClick={this.handleClick}
         onFocus={this.handleAnchorFocus}
         onBlur={this.handleFocusedBlur}
+        tabIndex={tabIndex}
       />
     );
 

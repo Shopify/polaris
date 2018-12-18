@@ -525,6 +525,20 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(Item)).toHaveLength(0);
     });
   });
+
+  describe('BulkActions', () => {
+    it('renders on initial load when items are selected', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={['1']}
+        />,
+      );
+      expect(resourceList.find(BulkActions)).toHaveLength(1);
+    });
+  });
 });
 
 function idForItem(item: any) {

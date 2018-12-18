@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
+import {Button} from 'components';
 import CalloutCard from '../CalloutCard';
 
 describe('<CalloutCard />', () => {
   const illustration =
     'https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg';
+  const spy = jest.fn();
   const calloutCard = mountWithAppProvider(
     <CalloutCard
       title="Title"
@@ -13,6 +15,7 @@ describe('<CalloutCard />', () => {
         content: 'Customize checkout',
         url: 'https://www.shopify.com',
       }}
+      onDismiss={spy}
     >
       <p>Content</p>
     </CalloutCard>,
@@ -46,5 +49,16 @@ describe('<CalloutCard />', () => {
 
   it('renders the primaryAction as an a tag with the given content', () => {
     expect(calloutCard.find('a').contains('Customize checkout')).toBe(true);
+  });
+
+  it('is dismissed', () => {
+    expect(calloutCard.find(Button)).toHaveLength(2);
+
+    calloutCard
+      .find(Button)
+      .first()
+      .simulate('click');
+
+    expect(spy).toBeCalled();
   });
 });
