@@ -92,7 +92,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const selected = this.isSelected();
 
-    // let mediaMarkup: React.ReactNode = null;
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
