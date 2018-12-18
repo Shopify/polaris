@@ -17,6 +17,7 @@ keywords:
   - callout card button
   - callout card with secondary cta
   - callout card with secondary button
+  - dismissible callout card
   - card with illustration
   - card with image
   - illustration card
@@ -198,6 +199,21 @@ Use to let merchants know about a feature or opportunity where there are two dis
   illustration="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
   primaryAction={{content: 'Customize checkout'}}
   secondaryAction={{content: 'Learn more about customizing checkout'}}
+>
+  <p>Upload your store’s logo, change colors and fonts, and more.</p>
+</CalloutCard>
+```
+
+### Dismissable callout card
+
+Make all callout cards dismissible so merchants can get rid of cards about features they’re not interested in.
+
+```jsx
+<CalloutCard
+  title="Customize the style of your checkout"
+  illustration="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
+  primaryAction={{content: 'Customize checkout'}}
+  onDismiss={() => {}}
 >
   <p>Upload your store’s logo, change colors and fonts, and more.</p>
 </CalloutCard>
