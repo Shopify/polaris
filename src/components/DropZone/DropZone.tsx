@@ -477,6 +477,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
     if (onDropRejected && rejectedFiles.length) {
       onDropRejected(rejectedFiles);
     }
+    (event.target as HTMLInputElement).value = '';
   }
 
   @autobind
