@@ -106,6 +106,8 @@ export interface ActionListItemDescriptor
     BadgeAction,
     DestructableAction,
     AppBridgeAction {
+  /** Help text */
+  helpText?: string;
   /** Image source */
   image?: string;
   /**  Add an ellipsis suffix to action content */

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {UnstyledLink} from 'components';
 import Item from '../Item';
+import TextStyle from '../../../../TextStyle';
 
 describe('<Item />', () => {
   it('adds a style property when the image prop is present', () => {
@@ -35,5 +36,10 @@ describe('<Item />', () => {
   it('does not render a label when content is undefined and ellipsis is true', () => {
     const item = mountWithAppProvider(<Item ellipsis />);
     expect(item.text()).toBe('');
+  });
+
+  it('renders helpText when the helpText prop is defined', () => {
+    const item = mountWithAppProvider(<Item helpText="Foo" />);
+    expect(item.find(TextStyle).text()).toBe('Foo');
   });
 });
