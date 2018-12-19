@@ -10,7 +10,7 @@ $range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
 $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
 $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 
-.RangeSlider {
+.SingleThumb {
   display: flex;
   align-items: center;
 
