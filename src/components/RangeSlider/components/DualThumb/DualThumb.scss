@@ -1,0 +1,217 @@
+$stacking-order: (
+  output: 10,
+  input: 20,
+);
+
+$range-track-height: rem(4px);
+$range-thumb-size: rem(24px);
+$range-thumb-border-size: rem(2px);
+$range-thumbs-border: rem(1px) solid color('sky', 'dark');
+$range-thumbs-border-error: rem(2px) solid color('red');
+$range-thumbs-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
+$range-thumbs-border-active: rem(2px) solid color('indigo');
+$range-accessibility-input-margin: rem(8px);
+
+.Wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.TrackWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: $range-thumb-size;
+
+  &.disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
+  &.error {
+    &:active,
+    &:focus {
+      // stylelint-disable selector-max-specificity
+      // stylelint-disable selector-max-class
+      .Track {
+        --unselected-range: #{color('sky', 'dark')};
+        --selected-range: #{color('indigo')};
+        --gradient-colors: var(--unselected-range, transparent) 0%,
+          var(--unselected-range, transparent)
+            var(--Polaris-RangeSlider-progress-lower),
+          var(--selected-range, transparent)
+            var(--Polaris-RangeSlider-progress-lower),
+          var(--selected-range, transparent)
+            var(--Polaris-RangeSlider-progress-upper),
+          var(--unselected-range, transparent)
+            var(--Polaris-RangeSlider-progress-upper),
+          var(--unselected-range, transparent) 100%;
+        background-image: linear-gradient(to right, var(--gradient-colors));
+      }
+
+      .Thumbs {
+        border: $range-thumbs-border-active;
+      }
+      // stylelint-enable selector-max-specificity
+      // stylelint-enable selector-max-class
+    }
+  }
+}
+
+.AccessibilityInputsWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: $range-accessibility-input-margin;
+}
+
+.AccessibilityInputLower {
+  min-width: rem(80px);
+}
+
+.Track {
+  position: absolute;
+  width: 100%;
+  height: $range-track-height;
+  border-radius: $range-thumb-size;
+  cursor: pointer;
+
+  .disabled & {
+    cursor: default;
+  }
+
+  --unselected-range: #{color('sky', 'dark')};
+  --selected-range: #{color('indigo')};
+
+  .error & {
+    --selected-range: #{color('red')};
+    --gradient-colors: var(--unselected-range, transparent) 0%,
+      var(--unselected-range, transparent)
+        var(--Polaris-RangeSlider-progress-lower),
+      var(--selected-range, transparent)
+        var(--Polaris-RangeSlider-progress-lower),
+      var(--selected-range, transparent)
+        var(--Polaris-RangeSlider-progress-upper),
+      var(--unselected-range, transparent)
+        var(--Polaris-RangeSlider-progress-upper),
+      var(--unselected-range, transparent) 100%;
+    background-image: linear-gradient(to right, var(--gradient-colors));
+  }
+
+  --gradient-colors: var(--unselected-range, transparent) 0%,
+    var(--unselected-range, transparent)
+      var(--Polaris-RangeSlider-progress-lower),
+    var(--selected-range, transparent) var(--Polaris-RangeSlider-progress-lower),
+    var(--selected-range, transparent) var(--Polaris-RangeSlider-progress-upper),
+    var(--unselected-range, transparent)
+      var(--Polaris-RangeSlider-progress-upper),
+    var(--unselected-range, transparent) 100%;
+  background-image: linear-gradient(to right, var(--gradient-colors));
+}
+
+.Thumbs {
+  position: absolute;
+  z-index: z-index('input', $stacking-order);
+  width: $range-thumb-size;
+  height: $range-thumb-size;
+  border: $range-thumbs-border;
+  border-radius: 50%;
+  background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
+
+  // stylelint-disable-next-line value-no-vendor-prefix
+  cursor: -webkit-grab;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: $range-thumbs-border-active;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    border: $range-thumbs-border;
+  }
+
+  .error & {
+    border: $range-thumbs-border-error;
+  }
+
+  // stylelint-disable selector-max-specificity
+  &:hover + .Output &,
+  &:active + .Output &,
+  &:focus + .Output & {
+    transform: translateY(-$range-thumb-size);
+
+    @include page-content-when-not-partially-condensed {
+      transform: translateY(-($range-thumb-size / 2));
+    }
+  }
+  // stylelint-enable selector-max-specificity
+}
+
+$range-output-size: rem(32px);
+$range-output-tip-size: rem(8px);
+
+.Output {
+  position: absolute;
+  z-index: z-index('output', $stacking-order);
+  bottom: $range-output-size - $range-output-tip-size + $range-thumb-size;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition-property: opacity, visibility;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  .ThumbLower:hover + &,
+  .ThumbLower:active + &,
+  .ThumbLower:focus + & {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .ThumbUpper:hover + &,
+  .ThumbUpper:active + &,
+  .ThumbUpper:focus + & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.OutputBubble {
+  position: relative;
+  display: flex;
+  padding: 0 spacing(tight);
+  min-width: $range-output-size;
+  height: $range-output-size;
+  background-color: color('ink');
+  border-radius: border-radius();
+  transition-property: transform;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -($range-output-tip-size - rem(1px));
+    left: 50%;
+    margin-left: -$range-output-tip-size;
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: $range-output-tip-size solid transparent;
+    border-right: $range-output-tip-size solid transparent;
+    border-top: $range-output-tip-size solid color('ink');
+  }
+}
+
+.OutputText {
+  @include text-style-subheading;
+  display: block;
+  flex: 1 1 auto;
+  margin: auto;
+  text-align: center;
+  color: color('white');
+}
