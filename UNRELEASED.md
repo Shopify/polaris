@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added second thumb to `RangeSlider` ([#784](https://github.com/Shopify/polaris-react/pull/784))
+
 ### Bug fixes
 
 ### Documentation
