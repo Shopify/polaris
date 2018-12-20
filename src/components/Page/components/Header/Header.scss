@@ -5,8 +5,9 @@ $action-horizontal-padding: (1.5 * spacing(tight));
 }
 
 .Header-hasPagination,
-.Header-hasBreadcrumbs {
-  @include page-header-has-pagination-and-breadcrumbs;
+.Header-hasBreadcrumbs,
+.Header-hasRollup {
+  @include page-header-has-navigation;
 }
 
 .Header-hasSecondaryActions {
@@ -23,7 +24,15 @@ $action-horizontal-padding: (1.5 * spacing(tight));
 }
 
 .Header-hasRollup {
+  .SecondaryActions {
+    display: none;
+  }
+
   .IndividualActions {
+    display: none;
+  }
+
+  .Pagination {
     display: none;
   }
 
@@ -32,7 +41,15 @@ $action-horizontal-padding: (1.5 * spacing(tight));
       display: none;
     }
 
+    .SecondaryActions {
+      display: flex;
+    }
+
     .IndividualActions {
+      display: flex;
+    }
+
+    .Pagination {
       display: flex;
     }
   }
@@ -44,7 +61,6 @@ $action-horizontal-padding: (1.5 * spacing(tight));
 
 .PrimaryAction {
   display: flex;
-  align-self: stretch;
   align-items: center;
 
   .MainContent > & {
@@ -61,6 +77,10 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   }
 }
 
+.Rollup {
+  margin-top: spacing(extra-tight);
+}
+
 .Pagination {
   margin-left: auto;
   line-height: 1;
@@ -73,12 +93,23 @@ $action-horizontal-padding: (1.5 * spacing(tight));
 .Navigation {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: spacing(extra-tight);
 }
 
 .MainContent {
   display: flex;
   align-items: center;
+}
+
+.TitleAndRollup {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  .Rollup {
+    @include page-header-without-navigation;
+  }
 }
 
 .TitleAndActions {

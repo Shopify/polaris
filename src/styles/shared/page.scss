@@ -50,8 +50,12 @@ $actions-vertical-spacing: spacing(tight);
   }
 }
 
-@mixin page-header-has-pagination-and-breadcrumbs {
+@mixin page-header-has-navigation {
   padding-top: rem(32px);
+}
+
+@mixin page-header-without-navigation {
+  margin-top: unset;
 }
 
 @mixin page-header-has-secondary-actions {
@@ -60,8 +64,7 @@ $actions-vertical-spacing: spacing(tight);
 
 @mixin page-actions-layout {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 2 * $actions-vertical-spacing;
 

@@ -122,13 +122,14 @@ class Header extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const rollupMarkup = this.renderRollupAction();
     const nonPrimaryActionsMarkup = this.renderSecondaryActions();
 
     const actionsMarkup =
       primaryAction || secondaryActions || actionGroups ? (
         <div className={styles.Actions}>
-          {primaryActionMarkup}
           {nonPrimaryActionsMarkup}
+          {primaryActionMarkup}
         </div>
       ) : null;
 
@@ -137,18 +138,22 @@ class Header extends React.PureComponent<CombinedProps, State> {
         <div className={styles.Navigation}>
           {breadcrumbMarkup}
           {paginationMarkup}
+          {breadcrumbMarkup && rollupMarkup}
         </div>
       ) : null;
 
     const titleMarkup = (
-      <div className={styles.Title}>
-        {/* Anonymous divs are here for layout purposes */}
-        <div>
-          <DisplayText size="large" element="h1">
-            {title}
-          </DisplayText>
+      <div className={styles.TitleAndRollup}>
+        <div className={styles.Title}>
+          {/* Anonymous divs are here for layout purposes */}
+          <div>
+            <DisplayText size="large" element="h1">
+              {title}
+            </DisplayText>
+          </div>
+          <div>{titleMetadata}</div>
         </div>
-        <div>{titleMetadata}</div>
+        {!breadcrumbMarkup && rollupMarkup}
       </div>
     );
 
@@ -174,11 +179,41 @@ class Header extends React.PureComponent<CombinedProps, State> {
 
   private get hasRollup() {
     const {secondaryActions = [], actionGroups = []} = this.props;
-    return secondaryActions.length + actionGroups.length > 1;
+    return secondaryActions.length + actionGroups.length >= 1;
   }
 
+  @autobind
+  private renderRollupAction() {
+    const {rollupOpen} = this.state;
+    const {secondaryActions = [], actionGroups = []} = this.props;
+    const rollupMarkup = this.hasRollup ? (
+      <div className={styles.Rollup}>
+        <Popover
+          active={rollupOpen}
+          onClose={this.handleRollupToggle}
+          activator={
+            <Button
+              plain
+              icon="horizontalDots"
+              onClick={this.handleRollupToggle}
+            />
+          }
+        >
+          <ActionList
+            items={secondaryActions}
+            sections={actionGroups.map(convertActionGroupToActionListSection)}
+            onActionAnyItem={this.handleRollupToggle}
+          />
+        </Popover>
+      </div>
+    ) : null;
+
+    return rollupMarkup;
+  }
+
+  @autobind
   private renderSecondaryActions() {
-    const {openActionGroup, rollupOpen} = this.state;
+    const {openActionGroup} = this.state;
     const {secondaryActions = [], actionGroups = []} = this.props;
 
     if (secondaryActions.length === 0 && actionGroups.length === 0) {
@@ -210,29 +245,8 @@ class Header extends React.PureComponent<CombinedProps, State> {
           ))
         : null;
 
-    const rollupMarkup = this.hasRollup ? (
-      <div className={styles.Rollup}>
-        <Popover
-          active={rollupOpen}
-          onClose={this.handleRollupToggle}
-          activator={
-            <Button disclosure onClick={this.handleRollupToggle}>
-              Actions
-            </Button>
-          }
-        >
-          <ActionList
-            items={secondaryActions}
-            sections={actionGroups.map(convertActionGroupToActionListSection)}
-            onActionAnyItem={this.handleRollupToggle}
-          />
-        </Popover>
-      </div>
-    ) : null;
-
     return (
       <div className={styles.SecondaryActions}>
-        {rollupMarkup}
         <div className={styles.IndividualActions}>
           {secondaryActionMarkup}
           {actionGroupsMarkup}
