@@ -25,14 +25,12 @@ describe('<Checkbox />', () => {
       expect(spy).toHaveBeenCalledWith(true, 'MyCheckbox');
     });
 
-    // JSDOM is overwriting currentTarget
-    // See https://github.com/airbnb/enzyme/issues/218
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('renders when the correct focus when checkbox is toggled off', () => {
+    it('renders with the correct focus when checkbox is toggled off', () => {
       const input = mountWithAppProvider(
         <Checkbox checked id="checkboxId" label="Checkbox" onChange={noop} />,
       ).find('input');
-      input.simulate('change', {currentTarget: {checked: false}});
+      (input.getDOMNode() as HTMLInputElement).checked = false;
+      input.simulate('change');
 
       expect(input.getDOMNode()).toBe(document.activeElement);
     });
