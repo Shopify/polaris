@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
-import {mountWithAppProvider, createPolarisProps} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import Toast from '../Toast';
+import {Provider, createFrameContext} from '../../Frame';
 
 describe('<Toast />', () => {
   beforeEach(() => {
@@ -11,27 +12,40 @@ describe('<Toast />', () => {
   });
 
   it('shows the toast with a unique ID on mount', () => {
+    const mockFrameContext = createFrameContext({
+      showToast: jest.fn(),
+    });
+
     const props = {content: 'Image uploaded', onDismiss: noop};
-    const composedProps = {
-      ...props,
-      ...createPolarisProps(),
-    };
-    const {frame} = mountWithContext(<Toast {...props} />);
-    expect(frame.showToast).toHaveBeenCalledWith({
+    mountWithAppProvider(
+      <Provider value={mockFrameContext}>
+        <Toast {...props} />
+      </Provider>,
+    );
+
+    expect(mockFrameContext.frame.showToast).toHaveBeenCalledWith({
       id: expect.any(String),
-      ...composedProps,
+      ...props,
     });
   });
 
   it('hides the toast based on ID on unmount', () => {
-    const {toast, frame} = mountWithContext(
-      <Toast content="Message sent" onDismiss={noop} />,
-    );
-    expect(frame.hideToast).not.toHaveBeenCalled();
-    toast.unmount();
+    const mockFrameContext = createFrameContext({
+      hideToast: jest.fn(),
+    });
 
-    const {id} = frame.showToast.mock.calls[0][0];
-    expect(frame.hideToast).toHaveBeenCalledWith({id});
+    const frame = mountWithAppProvider(
+      <Provider value={mockFrameContext}>
+        <Toast content="Message sent" onDismiss={noop} />
+      </Provider>,
+    );
+
+    expect(mockFrameContext.frame.hideToast).not.toHaveBeenCalled();
+    frame.unmount();
+
+    const mockHideToast = mockFrameContext.frame.hideToast as jest.Mock;
+    const {id} = mockHideToast.mock.calls[0][0];
+    expect(mockFrameContext.frame.hideToast).toHaveBeenCalledWith({id});
   });
 
   describe('with app bridge', () => {
@@ -101,16 +115,6 @@ describe('<Toast />', () => {
     });
   });
 });
-
-function mountWithContext(element: React.ReactElement<any>) {
-  const frame = {showToast: jest.fn(), hideToast: jest.fn()};
-  const toast = mountWithAppProvider(element, {
-    context: {frame},
-    childContextTypes: {frame: PropTypes.any},
-  });
-
-  return {toast, frame};
-}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
