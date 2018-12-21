@@ -376,6 +376,6 @@ function matchStateForItem(
   return matchesUrl ? MatchState.MatchUrl : MatchState.NoMatch;
 }
 
-export const Item = withAppProvider<Props>()(BaseItem);
+export const Item = withAppProvider()(BaseItem);
 
 export default Item;

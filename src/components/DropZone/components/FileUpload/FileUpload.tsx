@@ -149,7 +149,7 @@ export class FileUpload extends React.Component<CombinedProps, State> {
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, DropZoneContext>(Consumer),
-  withAppProvider<Props>(),
-  withRef<Props>(),
+  withContext<DropZoneContext>(Consumer),
+  withAppProvider(),
+  withRef(),
 )(FileUpload);

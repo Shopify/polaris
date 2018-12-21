@@ -173,4 +173,4 @@ function customerPlaceholder(name?: string) {
     : AVATAR_IMAGES[0];
 }
 
-export default withAppProvider<Props>()(Avatar);
+export default withAppProvider()(Avatar);

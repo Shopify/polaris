@@ -203,4 +203,4 @@ function isIconSource(x: any): x is IconSource {
   return typeof x === 'string' || (typeof x === 'object' && x.body);
 }
 
-export default withAppProvider<Props>()(Button);
+export default withAppProvider()(Button);

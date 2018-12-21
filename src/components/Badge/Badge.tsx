@@ -109,4 +109,4 @@ function Badge({
   );
 }
 
-export default withAppProvider<Props>()(Badge);
+export default withAppProvider()(Badge);

@@ -152,4 +152,4 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Page);
+export default withAppProvider()(Page);

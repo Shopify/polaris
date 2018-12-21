@@ -94,4 +94,4 @@ export class Day extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Day);
+export default withAppProvider()(Day);

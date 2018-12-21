@@ -69,4 +69,4 @@ function Spinner({
   );
 }
 
-export default withAppProvider<Props>()(Spinner);
+export default withAppProvider()(Spinner);

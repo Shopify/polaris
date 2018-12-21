@@ -202,4 +202,4 @@ export function invertNumber(number: number) {
   }
 }
 
-export default withAppProvider<Props>()(RangeSlider);
+export default withAppProvider()(RangeSlider);

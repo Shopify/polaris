@@ -52,4 +52,4 @@ export class EmptySearchResult extends React.PureComponent<
   }
 }
 
-export default withAppProvider<Props>()(EmptySearchResult);
+export default withAppProvider()(EmptySearchResult);
