@@ -56,10 +56,9 @@ I’ve tophatted these changes in the following browsers:
 - [ ] Safari latest
 - [ ] Edge
 - [ ] In at least one of the above browsers, test both retina and non-retina displays
-- [ ] iPhone (4/5/SE) (+9) Safari Mobile
-- [ ] iPad (+9) Safari Mobile
+- [ ] iPhone (5/SE/X) (10+) Safari Mobile
+- [ ] iPad (10+) Safari Mobile
 - [ ] Android device (5.x) Chrome
-- [ ] Android device (4.4.x) Chrome
 ```
 
 **🔥 Tips**
