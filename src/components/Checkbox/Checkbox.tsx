@@ -61,6 +61,10 @@ function Checkbox({
     }
     const {currentTarget} = event;
     onChange(currentTarget.checked, id);
+
+    if (checked && !currentTarget.checked) {
+      currentTarget.focus();
+    }
   }
 
   const describedBy: string[] = [];
