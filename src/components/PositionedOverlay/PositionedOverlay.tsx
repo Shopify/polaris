@@ -117,10 +117,10 @@ export default class PositionedOverlay extends React.PureComponent<
     const {render, fixed} = this.props;
 
     const style = {
-      top: top == null ? undefined : top,
-      left: left == null ? undefined : left,
-      width: width == null ? undefined : width,
-      zIndex: zIndex == null ? undefined : zIndex,
+      top: top == null || isNaN(top) ? undefined : top,
+      left: left == null || isNaN(left) ? undefined : left,
+      width: width == null || isNaN(width) ? undefined : width,
+      zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
     };
 
     const className = classNames(
@@ -196,8 +196,7 @@ export default class PositionedOverlay extends React.PureComponent<
           ? {...currentOverlayRect, width: activatorRect.width}
           : currentOverlayRect;
 
-        // If `body` is 100% height, it still acts as though it were not constrained
-        // to that size. This adjusts for that.
+        // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
         if (scrollableElement === document.body) {
           scrollableContainerRect.height = document.body.scrollHeight;
         }
