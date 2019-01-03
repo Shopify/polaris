@@ -18,4 +18,5 @@ commands:
   build: yarn run build
   server: yarn run dev
   style: yarn run lint
+  test: yarn run test
   type-check: yarn run ts
