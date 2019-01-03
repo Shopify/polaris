@@ -29,15 +29,16 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
+export type Items = any[];
+
 export interface State {
   selectMode: boolean;
   loadingPosition: number;
-  listNode: HTMLUListElement | null;
 }
 
 export interface Props {
   /** Item data; each item is passed to renderItem */
-  items: any[];
+  items: Items;
   filterControl?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
@@ -97,7 +98,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     this.state = {
       selectMode: Boolean(selectedItems && selectedItems.length > 0),
       loadingPosition: 0,
-      listNode: null,
     };
   }
 
@@ -312,20 +312,22 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        listNode: this.listRef.current,
-      },
-      () => {
-        if (this.props.loading) {
-          this.setLoadingPosition();
-        }
-      },
-    );
+    this.forceUpdate();
+    if (this.props.loading) {
+      this.setLoadingPosition();
+    }
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.props.loading && !prevProps.loading) {
+  componentDidUpdate({loading: prevLoading, items: prevItems}: Props) {
+    if (
+      this.listRef.current &&
+      this.itemsExist() &&
+      !this.itemsExist(prevItems)
+    ) {
+      this.forceUpdate();
+    }
+
+    if (this.props.loading && !prevLoading) {
       this.setLoadingPosition();
     }
   }
@@ -343,8 +345,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       onSortChange,
       polaris: {intl},
     } = this.props;
-    const {selectMode, loadingPosition, listNode} = this.state;
-    const itemsExist = items.length > 0;
+    const {selectMode, loadingPosition} = this.state;
 
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
@@ -431,9 +432,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     ) : null;
 
     const headerMarkup = (showHeader || needsHeader) &&
-      listNode && (
+      this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
-          <Sticky boundingElement={listNode}>
+          <Sticky boundingElement={this.listRef.current}>
             {(isSticky: boolean) => {
               const headerClassName = classNames(
                 styles.HeaderWrapper,
@@ -465,7 +466,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       );
 
     const emptyStateMarkup =
-      filterControl && !itemsExist && !loading ? (
+      filterControl && !this.itemsExist() && !loading ? (
         <div className={styles.EmptySearchResultWrapper}>
           <EmptySearchResult {...this.emptySearchResultText} withIllustration />
         </div>
@@ -492,7 +493,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       loading && styles['ItemWrapper-isLoading'],
     );
     const loadingWithoutItemsMarkup =
-      loading && !itemsExist ? (
+      loading && !this.itemsExist() ? (
         <div className={className} tabIndex={-1}>
           {loadingOverlay}
         </div>
@@ -503,7 +504,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       loading && styles.disabledPointerEvents,
     );
 
-    const listMarkup = itemsExist ? (
+    const listMarkup = this.itemsExist() ? (
       <ul
         className={resourceListClassName}
         ref={this.listRef}
@@ -529,6 +530,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
   }
 
+  private itemsExist(items?: Items) {
+    return (items || this.props.items).length > 0;
+  }
+
   @debounce(50)
   @autobind
   private handleResize() {
@@ -547,14 +552,12 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private setLoadingPosition() {
-    const {listNode} = this.state;
-
-    if (listNode != null) {
+    if (this.listRef.current != null) {
       if (typeof window === 'undefined') {
         return;
       }
 
-      const overlay = listNode.getBoundingClientRect();
+      const overlay = this.listRef.current.getBoundingClientRect();
       const viewportHeight = Math.max(
         document.documentElement ? document.documentElement.clientHeight : 0,
         window.innerHeight || 0,
