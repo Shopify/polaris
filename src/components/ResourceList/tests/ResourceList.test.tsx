@@ -32,6 +32,8 @@ const sortOptions = [
   },
 ];
 
+const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
+
 describe('<ResourceList />', () => {
   describe('renderItem', () => {
     it('renders list items', () => {
@@ -335,6 +337,19 @@ describe('<ResourceList />', () => {
       );
     });
 
+    it('renders when an alternateTool is provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          alternateTool={alternateTool}
+          items={itemsWithID}
+          renderItem={renderItem}
+        />,
+      );
+      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
+        true,
+      );
+    });
+
     it('renders when bulkActions are given', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -459,6 +474,101 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(resourceList.find(Select).exists()).toBe(true);
+    });
+
+    it('does not render a sort select if an alternateTool is provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          renderItem={renderItem}
+          sortOptions={sortOptions}
+          alternateTool={alternateTool}
+        />,
+      );
+      expect(resourceList.find(Select).exists()).toBe(false);
+    });
+
+    describe('sortOptions', () => {
+      it('passes a sortOptions to the Select options', () => {
+        const resourceList = mountWithAppProvider(
+          <ResourceList
+            items={itemsWithID}
+            sortOptions={sortOptions}
+            renderItem={renderItem}
+          />,
+        );
+        expect(resourceList.find(Select).props()).toHaveProperty(
+          'options',
+          sortOptions,
+        );
+      });
+    });
+
+    describe('sortValue', () => {
+      it('passes a sortValue to the Select value', () => {
+        const onSortChange = jest.fn();
+        const resourceList = mountWithAppProvider(
+          <ResourceList
+            items={itemsWithID}
+            sortOptions={sortOptions}
+            sortValue="sortValue"
+            onSortChange={onSortChange}
+            renderItem={renderItem}
+          />,
+        );
+        expect(resourceList.find(Select).props()).toHaveProperty(
+          'value',
+          'sortValue',
+        );
+      });
+    });
+
+    describe('onSortChange', () => {
+      it('calls onSortChange when the Sort Select changes', () => {
+        const onSortChange = jest.fn();
+        const resourceList = mountWithAppProvider(
+          <ResourceList
+            items={itemsWithID}
+            onSortChange={onSortChange}
+            sortOptions={sortOptions}
+            renderItem={renderItem}
+          />,
+        );
+        trigger(resourceList.find(Select), 'onChange', 'PRODUCT_TITLE_DESC');
+        expect(onSortChange).toHaveBeenCalledWith('PRODUCT_TITLE_DESC');
+      });
+    });
+  });
+
+  describe('Alternate Tool', () => {
+    it('does not render if an alternateTool is not provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList items={itemsWithID} renderItem={renderItem} />,
+      );
+      expect(resourceList.find('#AlternateTool').exists()).toBe(false);
+    });
+
+    it('renders if an alternateTool is provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          renderItem={renderItem}
+          alternateTool={alternateTool}
+        />,
+      );
+      expect(resourceList.find('#AlternateTool').exists()).toBe(true);
+    });
+
+    it('renders even if sortOptions are provided', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          renderItem={renderItem}
+          sortOptions={sortOptions}
+          alternateTool={alternateTool}
+        />,
+      );
+      expect(resourceList.find('#AlternateTool').exists()).toBe(true);
     });
 
     describe('sortOptions', () => {

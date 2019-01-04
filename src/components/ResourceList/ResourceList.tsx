@@ -61,6 +61,8 @@ export interface Props {
   sortValue?: string;
   /** Collection of sort options to choose from */
   sortOptions?: Option[];
+  /** ReactNode to display instead of the sort control */
+  alternateTool?: React.ReactNode;
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
@@ -342,6 +344,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       showHeader = false,
       sortOptions,
       sortValue,
+      alternateTool,
       onSortChange,
       polaris: {intl},
     } = this.props;
@@ -379,7 +382,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
 
     const sortingSelectMarkup =
-      sortOptions && sortOptions.length > 0 ? (
+      sortOptions && sortOptions.length > 0 && !alternateTool ? (
         <div className={styles.SortWrapper}>
           {sortingLabelMarkup}
           <Select
@@ -391,6 +394,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
             disabled={selectMode}
           />
         </div>
+      ) : null;
+
+    const alternateToolMarkup =
+      alternateTool && !sortingSelectMarkup ? (
+        <div className={styles.AlternateToolWrapper}>{alternateTool}</div>
       ) : null;
 
     const headerTitleMarkup = (
@@ -425,7 +433,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     ) : null;
 
     const needsHeader =
-      this.selectable || (sortOptions && sortOptions.length > 0);
+      this.selectable ||
+      (sortOptions && sortOptions.length > 0) ||
+      alternateTool;
 
     const headerWrapperOverlay = loading ? (
       <div className={styles['HeaderWrapper-overlay']} />
@@ -440,7 +450,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
                 styles.HeaderWrapper,
                 sortOptions &&
                   sortOptions.length > 0 &&
+                  !alternateTool &&
                   styles['HeaderWrapper-hasSort'],
+                alternateTool && styles['HeaderWrapper-hasAlternateTool'],
                 this.selectable && styles['HeaderWrapper-hasSelect'],
                 loading && styles['HeaderWrapper-disabled'],
                 this.selectable &&
@@ -454,6 +466,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
                   <div className={styles.HeaderContentWrapper}>
                     {headerTitleMarkup}
                     {checkableButtonMarkup}
+                    {alternateToolMarkup}
                     {sortingSelectMarkup}
                     {selectButtonMarkup}
                   </div>
