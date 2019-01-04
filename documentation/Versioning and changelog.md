@@ -11,7 +11,7 @@ The changelog is prepared manually immediately before a release, by moving chang
 
 ### Component name formats:
 
-When referring to the concept of a component: use sentence case and include a space. For example, write “text field” instead of “TextField”. This format is helps non-developers with documentation comprehension.
+When referring to the concept of a component: use sentence case and include a space. For example, write “text field” instead of “TextField”. This format helps non-developers with documentation comprehension.
 
 When referring to an actual React component:
 
