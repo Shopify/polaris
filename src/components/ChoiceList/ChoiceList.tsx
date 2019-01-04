@@ -145,4 +145,4 @@ function updateSelectedChoices(
   return selected.filter((selectedChoice) => selectedChoice !== value);
 }
 
-export default withAppProvider<Props>()(ChoiceList);
+export default withAppProvider()(ChoiceList);

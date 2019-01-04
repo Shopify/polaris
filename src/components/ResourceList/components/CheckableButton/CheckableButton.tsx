@@ -51,4 +51,4 @@ function CheckableButton({
   );
 }
 
-export default withAppProvider<Props>()(CheckableButton);
+export default withAppProvider()(CheckableButton);

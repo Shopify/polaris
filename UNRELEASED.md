@@ -35,3 +35,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Dependency upgrades
 
 ### Code quality
+
+- Improve `withAppProvider`, `withSticky`, `withRef`, and `withContext` types to allow them to infer a components props ([#805](https://github.com/Shopify/polaris-react/pull/805))

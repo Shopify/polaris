@@ -44,4 +44,4 @@ function Tag({
   );
 }
 
-export default withAppProvider<Props>()(Tag);
+export default withAppProvider()(Tag);

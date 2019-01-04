@@ -70,4 +70,4 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Toast);
+export default withAppProvider()(Toast);

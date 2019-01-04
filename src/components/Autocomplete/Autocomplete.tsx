@@ -101,4 +101,4 @@ export class Autocomplete extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Autocomplete);
+export default withAppProvider()(Autocomplete);

@@ -9,8 +9,8 @@ export interface Ref<T = any> {
   ref: React.RefObject<T> | null;
 }
 
-export default function withRef<OriginalProps>() {
-  return function addForwardRef<C>(
+export default function withRef() {
+  return function addForwardRef<OriginalProps, C>(
     WrappedComponent: ReactComponent<OriginalProps & Ref> & C,
   ): React.ComponentClass<OriginalProps> {
     class WithRef extends React.Component<OriginalProps, never> {

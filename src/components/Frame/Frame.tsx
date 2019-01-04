@@ -416,4 +416,4 @@ function isMobileView() {
   return navigationBarCollapsed().matches;
 }
 
-export default withAppProvider<Props>()(Frame);
+export default withAppProvider()(Frame);

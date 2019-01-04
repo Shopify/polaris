@@ -139,4 +139,4 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
   }
 }
 
-export default withAppProvider<Props>()(TopBar);
+export default withAppProvider()(TopBar);

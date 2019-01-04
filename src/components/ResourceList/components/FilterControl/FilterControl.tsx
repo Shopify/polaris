@@ -297,6 +297,6 @@ function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
 }
 
 export default compose<Props>(
-  withAppProvider<Props>(),
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
+  withAppProvider(),
+  withContext<ResourceListContext>(Consumer),
 )(FilterControl);

@@ -708,4 +708,4 @@ function isSmallScreen() {
     : window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
-export default withAppProvider<Props>()(ResourceList);
+export default withAppProvider()(ResourceList);

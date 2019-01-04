@@ -152,4 +152,4 @@ function focusPanelID(panelID: string) {
   }
 }
 
-export default withAppProvider<Props>()(Tab);
+export default withAppProvider()(Tab);

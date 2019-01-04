@@ -384,4 +384,4 @@ function isIframeModal(
   );
 }
 
-export default withAppProvider<Props>()(Modal);
+export default withAppProvider()(Modal);
