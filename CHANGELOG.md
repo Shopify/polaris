@@ -46,10 +46,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 - Upgraded `@shopify/polaris-tokens` to v2.1.1 ([#813](https://github.com/Shopify/polaris-react/pull/813))
 
-### Code quality
-
-- Improve `withAppProvider`, `withSticky`, `withRef`, and `withContext` types to allow them to infer a component’s props ([#805](https://github.com/Shopify/polaris-react/pull/805))
-
 ## 3.3.0 - 2018-12-12
 
 ### Enhancements
