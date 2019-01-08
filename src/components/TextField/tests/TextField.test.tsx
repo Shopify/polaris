@@ -369,6 +369,20 @@ describe('<TextField />', () => {
         expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
       });
 
+      it('passes the step prop to the input', () => {
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            step={6}
+            value="4"
+            onChange={noop}
+          />,
+        );
+        expect(element.find('input').prop('step')).toBe(6);
+      });
+
       it('uses the step prop when incrementing', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
