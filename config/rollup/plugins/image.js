@@ -1,6 +1,6 @@
-import {readFileSync} from 'fs';
-import {extname} from 'path';
-import {createFilter} from 'rollup-pluginutils';
+const {readFileSync} = require('fs');
+const {extname} = require('path');
+const {createFilter} = require('rollup-pluginutils');
 
 const MIME_TYPES = {
   '.jpg': 'image/jpeg',
@@ -10,7 +10,7 @@ const MIME_TYPES = {
   '.svg': 'image/svg+xml',
 };
 
-export default function image(options = {}) {
+module.exports = function image(options = {}) {
   const filter = createFilter(options.include, options.exclude);
 
   return {
@@ -30,4 +30,4 @@ export default function image(options = {}) {
       return `export default 'data:${mime};base64,${data}';`;
     },
   };
-}
+};

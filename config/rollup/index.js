@@ -1,18 +1,18 @@
-import {resolve} from 'path';
-import {readJSONSync} from 'fs-extra';
-import nodeResolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import json from 'rollup-plugin-json';
-import commonjs from 'rollup-plugin-commonjs';
+const {resolve} = require('path');
+const {readJSONSync} = require('fs-extra');
+const nodeResolve = require('rollup-plugin-node-resolve');
+const babel = require('rollup-plugin-babel');
+const json = require('rollup-plugin-json');
+const commonjs = require('rollup-plugin-commonjs');
 
-import {dependencies, peerDependencies} from '../../package.json';
+const {dependencies, peerDependencies} = require('../../package.json');
 
-import styles from './plugins/styles';
-import image from './plugins/image';
-import icon from './plugins/icon';
+const styles = require('./plugins/styles');
+const image = require('./plugins/image');
+const icon = require('./plugins/icon');
 
-import getNamespacedClassName from './namespaced-classname';
-import createExistingClassnameTokenUser from './use-existing-classname-tokens';
+const getNamespacedClassName = require('./namespaced-classname');
+const createExistingClassnameTokenUser = require('./use-existing-classname-tokens');
 
 const project = resolve(__dirname, '../..');
 const buildRoot = resolve(project, './build-intermediate');
@@ -27,7 +27,7 @@ const sassResources = [
   resolve(styleRoot, './shared.scss'),
 ];
 
-export default function createRollupConfig({
+module.exports = function createRollupConfig({
   entry,
   writeCSS,
   cssPath,
@@ -78,4 +78,4 @@ export default function createRollupConfig({
       }),
     ],
   };
-}
+};
