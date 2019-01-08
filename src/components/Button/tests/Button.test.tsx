@@ -195,6 +195,13 @@ describe('<Button />', () => {
     });
   });
 
+  describe('ariaPressed', () => {
+    it('sets an aria-pressed on the button', () => {
+      const button = shallowWithAppProvider(<Button ariaPressed />);
+      expect(button.find('button').prop('aria-pressed')).toBeTruthy();
+    });
+  });
+
   describe('onClick()', () => {
     it('is called when the button is clicked', () => {
       const onClickSpy = jest.fn();
