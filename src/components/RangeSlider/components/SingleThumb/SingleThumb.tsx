@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import clamp from '../../../../utilities/clamp';
 import Labelled, {helpTextID} from '../../../Labelled';
 
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
@@ -34,6 +35,7 @@ export default function SingleThumb(props: Props) {
     onBlur,
     onFocus,
   } = props;
+  const clampedValue = clamp(value, min, max);
   const describedBy: string[] = [];
 
   if (error) {
@@ -48,13 +50,13 @@ export default function SingleThumb(props: Props) {
     ? describedBy.join(' ')
     : undefined;
 
-  const sliderProgress = ((value - min) * 100) / (max - min);
+  const sliderProgress = ((clampedValue - min) * 100) / (max - min);
   const outputFactor = invertNumber((sliderProgress - 50) / 100);
 
   const cssVars = {
     [`${CSS_VAR_PREFIX}min`]: min,
     [`${CSS_VAR_PREFIX}max`]: max,
-    [`${CSS_VAR_PREFIX}current`]: value,
+    [`${CSS_VAR_PREFIX}current`]: clampedValue,
     [`${CSS_VAR_PREFIX}progress`]: `${sliderProgress}%`,
     [`${CSS_VAR_PREFIX}output-factor`]: `${outputFactor}`,
   };
@@ -63,7 +65,7 @@ export default function SingleThumb(props: Props) {
     output && (
       <output htmlFor={id} className={styles.Output}>
         <div className={styles.OutputBubble}>
-          <span className={styles.OutputText}>{value}</span>
+          <span className={styles.OutputText}>{clampedValue}</span>
         </div>
       </output>
     );
@@ -98,14 +100,14 @@ export default function SingleThumb(props: Props) {
             min={min}
             max={max}
             step={step}
-            value={value}
+            value={clampedValue}
             disabled={disabled}
             onChange={handleChange}
             onFocus={onFocus}
             onBlur={onBlur}
             aria-valuemin={min}
             aria-valuemax={max}
-            aria-valuenow={value}
+            aria-valuenow={clampedValue}
             aria-invalid={Boolean(error)}
             aria-describedby={ariaDescribedBy}
           />

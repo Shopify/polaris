@@ -173,7 +173,6 @@ describe('<SingleThumb />', () => {
 
   describe('suffix', () => {
     const text = 'suffix text';
-
     it('outputs the provided suffix element', () => {
       const element = mountWithAppProvider(
         <SingleThumb {...mockProps} suffix={<p>{text}</p>} />,
@@ -197,6 +196,59 @@ describe('<SingleThumb />', () => {
       const actual = element.find('[style]').prop('style');
 
       expect(expected).toEqual(actual);
+    });
+  });
+
+  describe('value', () => {
+    it('gets adjusted to be at least the min', () => {
+      const value = 9;
+      const min = 10;
+      const singleThumb = mountWithAppProvider(
+        <SingleThumb {...mockProps} value={value} min={min} />,
+      );
+
+      expect(singleThumb.find('input').prop('value')).toBe(min);
+    });
+
+    it('gets adjusted to be no more than the max', () => {
+      const value = 101;
+      const max = 100;
+      const singleThumb = mountWithAppProvider(
+        <SingleThumb {...mockProps} value={value} max={max} />,
+      );
+
+      expect(singleThumb.find('input').prop('value')).toBe(max);
+    });
+  });
+
+  describe('aria-valuenow', () => {
+    it('gets passed the value', () => {
+      const value = 15;
+      const singleThumb = mountWithAppProvider(
+        <SingleThumb {...mockProps} value={value} />,
+      );
+
+      expect(singleThumb.find('input').prop('aria-valuenow')).toBe(value);
+    });
+
+    it('gets adjusted to be at least the min', () => {
+      const value = 9;
+      const min = 10;
+      const singleThumb = mountWithAppProvider(
+        <SingleThumb {...mockProps} value={value} min={min} />,
+      );
+
+      expect(singleThumb.find('input').prop('aria-valuenow')).toBe(min);
+    });
+
+    it('gets adjusted to be no more than the max', () => {
+      const value = 101;
+      const max = 100;
+      const singleThumb = mountWithAppProvider(
+        <SingleThumb {...mockProps} value={value} max={max} />,
+      );
+
+      expect(singleThumb.find('input').prop('aria-valuenow')).toBe(max);
     });
   });
 });
