@@ -7,7 +7,7 @@ up:
       pre-commit: pre-commit
 
 open:
-  app: http://localhost:8080/
+  app: http://localhost:6006/
   shipit: https://shipit.shopify.io/shopify/polaris-react/production
 
 commands:

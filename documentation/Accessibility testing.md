@@ -10,7 +10,7 @@ Pull requests to Polaris are reviewed using [Pa11y CI](https://github.com/pa11y/
 
 ## Manual testing
 
-Many accessibility tests can’t be automated, so you’ll want to do some manual testing on Playground content as well. This checklist includes items that will likely not be caught by Pa11y, but doesn’t include items reliant on specific content or language.
+Many accessibility tests can’t be automated, so you’ll want to do some manual testing on Playground and Storybook content as well. This checklist includes items that will likely not be caught by Pa11y, but doesn’t include items reliant on specific content or language.
 
 Refer to the full [WCAG 2.1](https://www.w3.org/TR/WCAG21/) recommendation (and any other guidelines required) for all considerations that may impact your project.
 
