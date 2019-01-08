@@ -131,4 +131,4 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-export default withAppProvider()(ContextualSaveBar);
+export default withAppProvider<Props>()(ContextualSaveBar);

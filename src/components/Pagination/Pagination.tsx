@@ -192,4 +192,4 @@ function handleCallback(fn: () => void) {
   };
 }
 
-export default withAppProvider()(Pagination);
+export default withAppProvider<Props>()(Pagination);

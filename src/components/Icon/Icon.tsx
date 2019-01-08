@@ -239,4 +239,4 @@ function isBundledIcon(key: string | BundledIcon): key is BundledIcon {
   return Object.keys(BUNDLED_ICONS).includes(key);
 }
 
-export default withAppProvider()(Icon);
+export default withAppProvider<Props>()(Icon);

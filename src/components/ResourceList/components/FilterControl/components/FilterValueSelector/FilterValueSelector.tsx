@@ -135,4 +135,4 @@ function buildOperatorOptions(operatorText?: string | Operator[]) {
   });
 }
 
-export default withAppProvider()(FilterValueSelector);
+export default withAppProvider<Props>()(FilterValueSelector);

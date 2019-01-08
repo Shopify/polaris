@@ -291,4 +291,4 @@ function secondaryActionsFrom(
   ));
 }
 
-export default withAppProvider()(Header);
+export default withAppProvider<Props>()(Header);

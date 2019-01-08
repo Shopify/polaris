@@ -2,13 +2,19 @@ import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {WithContextTypes} from '../../types';
 
-export default function withContext<InjectedProps>(
-  Consumer: React.ComponentType,
-) {
-  return function addContext<OriginalProps>(
+export default function withContext<
+  OriginalProps,
+  ExternalProps,
+  InjectedProps
+>(Consumer: React.ComponentType) {
+  return function addContext(
     WrappedComponent:
-      | React.ComponentClass<OriginalProps & WithContextTypes<InjectedProps>>
-      | React.SFC<OriginalProps & WithContextTypes<InjectedProps>>,
+      | React.ComponentClass<
+          OriginalProps & ExternalProps & WithContextTypes<InjectedProps>
+        >
+      | React.SFC<
+          OriginalProps & ExternalProps & WithContextTypes<InjectedProps>
+        >,
   ): React.ComponentClass<OriginalProps> {
     // eslint-disable-next-line react/prefer-stateless-function
     class WithContext extends React.Component<

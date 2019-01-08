@@ -10,7 +10,7 @@ export default function withSticky() {
     WrappedComponent:
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
-  ): React.ComponentClass<OwnProps> & C {
+  ): any & C {
     // eslint-disable-next-line shopify/react-initialize-state
     class WithStickyManager extends React.Component<
       {},
@@ -50,6 +50,6 @@ export default function withSticky() {
       WithStickyManager,
       WrappedComponent as React.ComponentClass<any>,
     );
-    return FinalComponent as React.ComponentClass<OwnProps> & C;
+    return FinalComponent as React.ComponentClass<any> & C;
   };
 }

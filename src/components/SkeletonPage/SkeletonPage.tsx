@@ -113,4 +113,4 @@ function renderTitle(title: string) {
   return <div className={styles.Title}>{titleContent}</div>;
 }
 
-export default withAppProvider()(SkeletonPage);
+export default withAppProvider<Props>()(SkeletonPage);

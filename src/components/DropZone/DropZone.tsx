@@ -561,4 +561,4 @@ function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default withAppProvider()(DropZone);
+export default withAppProvider<Props>()(DropZone);

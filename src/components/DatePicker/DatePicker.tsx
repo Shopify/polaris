@@ -325,4 +325,4 @@ function deriveRange(selected?: Date | Range) {
   return selected instanceof Date ? {start: selected, end: selected} : selected;
 }
 
-export default withAppProvider()(DatePicker);
+export default withAppProvider<Props>()(DatePicker);

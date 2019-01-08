@@ -61,7 +61,7 @@ describe('<OptionList />', () => {
 
   it('renders options and sections', () => {
     const {options, sections} = defaultProps;
-    const optionWrappers = shallowWithAppProvider(
+    const optionWrappers = shallowWithAppProvider<Props>(
       <OptionList {...defaultProps} />,
     ).find(Option);
 
@@ -71,7 +71,7 @@ describe('<OptionList />', () => {
   it('renders sections', () => {
     const {sections} = defaultProps;
     const options: OptionDescriptor[] = [];
-    const optionWrappers = shallowWithAppProvider(
+    const optionWrappers = shallowWithAppProvider<Props>(
       <OptionList {...defaultProps} options={options} />,
     ).find(Option);
 
@@ -81,7 +81,7 @@ describe('<OptionList />', () => {
   it('renders options', () => {
     const {options} = defaultProps;
     const sections: SectionDescriptor[] = [];
-    const optionWrappers = shallowWithAppProvider(
+    const optionWrappers = shallowWithAppProvider<Props>(
       <OptionList {...defaultProps} sections={sections} />,
     ).find(Option);
 
@@ -90,7 +90,9 @@ describe('<OptionList />', () => {
 
   it('re-renders with new options passed in', () => {
     const {sections} = defaultProps;
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     const newOptions: OptionDescriptor[] = [
       {
@@ -112,7 +114,9 @@ describe('<OptionList />', () => {
 
   it('re-renders with new sections passed in', () => {
     const {options} = defaultProps;
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     const newSections: SectionDescriptor[] = [
       {
@@ -137,7 +141,9 @@ describe('<OptionList />', () => {
   });
 
   it('re-renders with new options and new sections passed in', () => {
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     const newOptions: OptionDescriptor[] = [
       {
@@ -175,7 +181,9 @@ describe('<OptionList />', () => {
 
   it('re-renders with undefined options', () => {
     const {sections} = defaultProps;
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     optionList.setProps({options: undefined});
 
@@ -185,7 +193,9 @@ describe('<OptionList />', () => {
 
   it('re-renders with undefined sections', () => {
     const {options} = defaultProps;
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     optionList.setProps({sections: undefined});
 
@@ -194,7 +204,9 @@ describe('<OptionList />', () => {
   });
 
   it('re-renders with undefined options and new sections', () => {
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     const newSections: SectionDescriptor[] = [
       {
@@ -219,7 +231,9 @@ describe('<OptionList />', () => {
   });
 
   it('re-renders with new options and undefined sections', () => {
-    const optionList = shallowWithAppProvider(<OptionList {...defaultProps} />);
+    const optionList = shallowWithAppProvider<Props>(
+      <OptionList {...defaultProps} />,
+    );
 
     const newOptions: OptionDescriptor[] = [
       {
@@ -243,7 +257,7 @@ describe('<OptionList />', () => {
     const spy = jest.fn();
     const {options, sections} = defaultProps;
 
-    const buttonWrappers = mountWithAppProvider(
+    const buttonWrappers = mountWithAppProvider<Props>(
       <OptionList {...defaultProps} onChange={spy} />,
     ).find('button');
 
@@ -256,7 +270,7 @@ describe('<OptionList />', () => {
   describe('allowMultiple', () => {
     it('renders options and sections', () => {
       const {options, sections} = defaultProps;
-      const optionWrappers = shallowWithAppProvider(
+      const optionWrappers = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       ).find(Option);
 
@@ -266,7 +280,7 @@ describe('<OptionList />', () => {
     it('renders sections', () => {
       const {sections} = defaultProps;
       const options: OptionDescriptor[] = [];
-      const optionWrappers = shallowWithAppProvider(
+      const optionWrappers = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} options={options} allowMultiple />,
       ).find(Option);
 
@@ -276,7 +290,7 @@ describe('<OptionList />', () => {
     it('renders options', () => {
       const {options} = defaultProps;
       const sections: SectionDescriptor[] = [];
-      const optionWrappers = shallowWithAppProvider(
+      const optionWrappers = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} sections={sections} allowMultiple />,
       ).find(Option);
 
@@ -285,7 +299,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with new options passed in', () => {
       const {sections} = defaultProps;
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -309,7 +323,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with new sections passed in', () => {
       const {options} = defaultProps;
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -336,7 +350,7 @@ describe('<OptionList />', () => {
     });
 
     it('re-renders with new options and new sections passed in', () => {
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -378,7 +392,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with undefined options', () => {
       const {sections} = defaultProps;
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -390,7 +404,7 @@ describe('<OptionList />', () => {
 
     it('re-renders with undefined sections', () => {
       const {options} = defaultProps;
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -401,7 +415,7 @@ describe('<OptionList />', () => {
     });
 
     it('re-renders with undefined options and new sections', () => {
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -428,7 +442,7 @@ describe('<OptionList />', () => {
     });
 
     it('re-renders with new options and undefined sections', () => {
-      const optionList = shallowWithAppProvider(
+      const optionList = shallowWithAppProvider<Props>(
         <OptionList {...defaultProps} allowMultiple />,
       );
 
@@ -455,7 +469,7 @@ describe('<OptionList />', () => {
         const spy = jest.fn();
         const {options, sections} = defaultProps;
 
-        const inputWrappers = mountWithAppProvider(
+        const inputWrappers = mountWithAppProvider<Props>(
           <OptionList {...defaultProps} onChange={spy} allowMultiple />,
         ).find('input');
 
@@ -470,7 +484,7 @@ describe('<OptionList />', () => {
         const {options, sections} = defaultProps;
         const selected = ['11', '8'];
 
-        const inputWrappers = mountWithAppProvider(
+        const inputWrappers = mountWithAppProvider<Props>(
           <OptionList
             {...defaultProps}
             onChange={spy}
@@ -493,7 +507,7 @@ describe('<OptionList />', () => {
         const {options, sections} = defaultProps;
         const selected = ['10', '8', '5'];
 
-        const inputWrappers = mountWithAppProvider(
+        const inputWrappers = mountWithAppProvider<Props>(
           <OptionList
             {...defaultProps}
             onChange={spy}

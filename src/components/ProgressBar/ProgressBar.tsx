@@ -68,4 +68,4 @@ function parseProgress(progress: number, warningMessage: string) {
   return progressWidth;
 }
 
-export default withAppProvider()(ProgressBar);
+export default withAppProvider<Props>()(ProgressBar);

@@ -226,4 +226,4 @@ function testSectionsPropEquality(
   return optionsAreEqual && titlesAreEqual;
 }
 
-export default withAppProvider()(OptionList);
+export default withAppProvider<Props>()(OptionList);

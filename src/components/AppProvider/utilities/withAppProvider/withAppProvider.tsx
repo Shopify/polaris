@@ -23,13 +23,13 @@ export interface WithAppProviderProps {
   };
 }
 
-export default function withAppProvider() {
-  return function addProvider<OriginalProps, C>(
+export default function withAppProvider<OwnProps>() {
+  return function addProvider<C>(
     WrappedComponent:
-      | React.ComponentClass<OriginalProps & WithAppProviderProps> & C
-      | React.SFC<OriginalProps & WithAppProviderProps> & C,
-  ): React.ComponentClass<OriginalProps> & C {
-    class WithProvider extends React.Component<OriginalProps, never> {
+      | React.ComponentClass<OwnProps & WithAppProviderProps> & C
+      | React.SFC<OwnProps & WithAppProviderProps> & C,
+  ): React.ComponentClass<OwnProps> & C {
+    class WithProvider extends React.Component<OwnProps, never> {
       static contextTypes = WrappedComponent.contextTypes
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;
@@ -90,6 +90,6 @@ export default function withAppProvider() {
       WrappedComponent as React.ComponentClass<any>,
     );
 
-    return FinalComponent as React.ComponentClass<OriginalProps> & C;
+    return FinalComponent as React.ComponentClass<OwnProps> & C;
   };
 }

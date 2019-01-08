@@ -192,4 +192,4 @@ function collapsibleHeight(
   return `${height || 0}px`;
 }
 
-export default withAppProvider()(Collapsible);
+export default withAppProvider<Props>()(Collapsible);

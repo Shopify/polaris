@@ -211,4 +211,4 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-export default withAppProvider()(FilterCreator);
+export default withAppProvider<Props>()(FilterCreator);
