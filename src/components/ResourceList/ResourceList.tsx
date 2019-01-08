@@ -8,7 +8,7 @@ import EventListener from '../EventListener';
 import Sticky from '../Sticky';
 import Spinner from '../Spinner';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Select, {Option} from '../Select';
+import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
 import selectIcon from './icons/enable-selection.svg';
 
@@ -60,7 +60,7 @@ export interface Props {
   /** Current value of the sort control */
   sortValue?: string;
   /** Collection of sort options to choose from */
-  sortOptions?: Option[];
+  sortOptions?: SelectOption[];
   /** ReactNode to display instead of the sort control */
   alternateTool?: React.ReactNode;
   /** Callback when sort option is changed */

@@ -222,8 +222,8 @@ export {default as ScrollLock} from './ScrollLock';
 export {
   default as Select,
   Props as SelectProps,
-  Option as SelectOption,
-  Group as SelectGroup,
+  SelectOption,
+  SelectGroup,
 } from './Select';
 
 export {
