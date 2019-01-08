@@ -38,6 +38,6 @@ export class UnstyledLink extends React.PureComponent<CombinedProps, never> {
 }
 
 export default compose<Props>(
-  withAppProvider(),
-  withRef(),
+  withAppProvider<Props>(),
+  withRef<Props>(),
 )(UnstyledLink);

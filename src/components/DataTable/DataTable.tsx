@@ -511,4 +511,4 @@ export class DataTable extends React.PureComponent<
   }
 }
 
-export default withAppProvider()(DataTable);
+export default withAppProvider<Props>()(DataTable);

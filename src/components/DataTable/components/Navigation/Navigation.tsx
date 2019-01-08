@@ -66,4 +66,4 @@ function Navigation({
   );
 }
 
-export default withAppProvider()(Navigation);
+export default withAppProvider<Props>()(Navigation);

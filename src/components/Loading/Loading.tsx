@@ -37,4 +37,4 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider()(Loading);
+export default withAppProvider<Props>()(Loading);

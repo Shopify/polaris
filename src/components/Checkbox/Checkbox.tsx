@@ -131,4 +131,4 @@ function Checkbox({
   );
 }
 
-export default withAppProvider()(Checkbox);
+export default withAppProvider<Props>()(Checkbox);

@@ -126,4 +126,4 @@ function Cell({
   return cellMarkup;
 }
 
-export default withAppProvider()(Cell);
+export default withAppProvider<Props>()(Cell);

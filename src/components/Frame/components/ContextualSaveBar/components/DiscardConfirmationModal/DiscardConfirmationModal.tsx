@@ -47,4 +47,4 @@ function DiscardConfirmationModal({
   );
 }
 
-export default withAppProvider()(DiscardConfirmationModal);
+export default withAppProvider<Props>()(DiscardConfirmationModal);

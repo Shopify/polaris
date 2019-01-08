@@ -157,4 +157,4 @@ export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   }
 }
 
-export default withAppProvider()(ResourcePicker);
+export default withAppProvider<Props>()(ResourcePicker);

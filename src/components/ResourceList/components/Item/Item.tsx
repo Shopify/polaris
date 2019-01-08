@@ -401,6 +401,6 @@ function stopPropagation(event: React.MouseEvent<any>) {
 }
 
 export default compose<Props>(
-  withContext<ResourceListContext>(Consumer),
-  withAppProvider(),
+  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
+  withAppProvider<Props>(),
 )(Item);

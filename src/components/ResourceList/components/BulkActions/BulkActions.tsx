@@ -481,4 +481,4 @@ function instanceOfBulkActionArray(
   return actions.length === validList.length;
 }
 
-export default withAppProvider()(BulkActions);
+export default withAppProvider<Props>()(BulkActions);
