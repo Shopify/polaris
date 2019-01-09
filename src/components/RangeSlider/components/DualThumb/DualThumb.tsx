@@ -5,7 +5,6 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {classNames} from '@shopify/react-utilities/styles';
-import TextField from '../../../TextField';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {Props as RangeSliderProps} from '../../types';
 import Labelled from '../../../Labelled';
@@ -102,13 +101,11 @@ export default class DualThumb extends React.Component<Props, State> {
       id,
       min,
       max,
-      step,
       prefix,
       suffix,
       disabled,
       output,
       error,
-      accessibilityInputs,
       onFocus,
       onBlur,
       label,
@@ -147,61 +144,6 @@ export default class DualThumb extends React.Component<Props, State> {
       styles.ThumbUpper,
       disabled && styles.disabled,
     );
-
-    const classNameAccessibilityInputLower = classNames(
-      styles.AccessibilityInputs,
-      styles.AccessibilityInputLower,
-    );
-    const classNameAccessibilityInputUpper = classNames(
-      styles.AccessibilityInputs,
-      styles.AccessibilityInputUpper,
-    );
-
-    const lowerMaxValue = isNaN(valueUpper - step)
-      ? undefined
-      : valueUpper - step;
-
-    const accessibilityPrefixMarkup = accessibilityInputs ? (
-      <div className={classNameAccessibilityInputLower}>
-        <TextField
-          label="Lower value"
-          labelHidden
-          type="number"
-          step={step}
-          prefix={prefix}
-          suffix={suffix}
-          disabled={disabled}
-          value={String(valueLower)}
-          onChange={this.handleTextFieldChangeLower}
-          onBlur={this.handleTextFieldBlurLower}
-          max={lowerMaxValue}
-          min={min}
-        />
-      </div>
-    ) : null;
-
-    const upperMinValue = isNaN(valueLower + step)
-      ? undefined
-      : valueLower + step;
-
-    const accessibilitySuffixMarkup = accessibilityInputs ? (
-      <div className={classNameAccessibilityInputUpper}>
-        <TextField
-          label="Upper value"
-          labelHidden
-          type="number"
-          step={step}
-          prefix={prefix}
-          suffix={suffix}
-          disabled={disabled}
-          value={String(valueUpper)}
-          onChange={this.handleTextFieldChangeUpper}
-          onBlur={this.handleTextFieldBlurUpper}
-          max={max}
-          min={upperMinValue}
-        />
-      </div>
-    ) : null;
 
     const trackWidth = this.state.trackWidth;
     const adjustedTrackWidth = trackWidth - THUMB_SIZE;
@@ -250,6 +192,14 @@ export default class DualThumb extends React.Component<Props, State> {
       [`${CSS_VAR_PREFIX}progress-upper`]: `${progressUpper}px`,
     };
 
+    const prefixMarkup = prefix && (
+      <div className={styles.Prefix}>{prefix}</div>
+    );
+
+    const suffixMarkup = suffix && (
+      <div className={styles.Suffix}>{suffix}</div>
+    );
+
     return (
       <Labelled
         id={id}
@@ -260,6 +210,7 @@ export default class DualThumb extends React.Component<Props, State> {
         helpText={helpText}
       >
         <div className={styles.Wrapper} id={id}>
+          {prefixMarkup}
           <div className={classNameTrackWrapper}>
             <div
               className={styles.Track}
@@ -306,10 +257,7 @@ export default class DualThumb extends React.Component<Props, State> {
             />
             {outputMarkupUpper}
           </div>
-          <div className={styles.AccessibilityInputsWrapper}>
-            {accessibilityPrefixMarkup}
-            {accessibilitySuffixMarkup}
-          </div>
+          {suffixMarkup}
         </div>
       </Labelled>
     );
@@ -427,60 +375,6 @@ export default class DualThumb extends React.Component<Props, State> {
     const {valueLower, valueUpper} = this.state;
 
     return onChange([valueLower, valueUpper], id);
-  }
-
-  @autobind
-  private handleTextFieldChangeLower(value: string) {
-    this.setState({valueLower: Number(value)});
-  }
-
-  @autobind
-  private handleTextFieldChangeUpper(value: string) {
-    this.setState({valueUpper: Number(value)});
-  }
-
-  @autobind
-  private handleTextFieldBlurLower() {
-    const {valueLower, valueUpper} = this.state;
-    const {step, min} = this.props;
-    const steppedValue = roundToNearestStepValue(valueLower, step);
-
-    const valueWithinBoundsLower = keepValueWithinBoundsLower(
-      steppedValue,
-      valueUpper,
-      min,
-      step,
-    );
-    this.setState(
-      {
-        valueLower: valueWithinBoundsLower,
-      },
-      () => {
-        this.handleChange();
-      },
-    );
-  }
-
-  @autobind
-  private handleTextFieldBlurUpper() {
-    const {step, max} = this.props;
-    const {valueUpper, valueLower} = this.state;
-    const steppedValue = roundToNearestStepValue(valueUpper, step);
-
-    const valueWithinBoundsUpper = keepValueWithinBoundsUpper(
-      steppedValue,
-      valueLower,
-      max,
-      step,
-    );
-    this.setState(
-      {
-        valueUpper: valueWithinBoundsUpper,
-      },
-      () => {
-        this.handleChange();
-      },
-    );
   }
 
   @autobind
