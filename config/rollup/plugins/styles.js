@@ -122,7 +122,7 @@ module.exports = function styles(options = {}) {
         write(cssDestination, css),
         write(tokensDestination, JSON.stringify(tokensByFile, null, 2)),
         cssnano
-          .process(css)
+          .process(css, {from: generateOptions.file})
           .then((result) => write(minifiedCSSDestination, result.css)),
       ]);
     },
