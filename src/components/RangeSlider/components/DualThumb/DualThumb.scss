@@ -10,11 +10,11 @@ $range-thumbs-border: rem(1px) solid color('sky', 'dark');
 $range-thumbs-border-error: rem(2px) solid color('red');
 $range-thumbs-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
 $range-thumbs-border-active: rem(2px) solid color('indigo');
-$range-accessibility-input-margin: rem(8px);
 
 .Wrapper {
   position: relative;
   width: 100%;
+  display: flex;
 }
 
 .TrackWrapper {
@@ -57,18 +57,6 @@ $range-accessibility-input-margin: rem(8px);
       // stylelint-enable selector-max-class
     }
   }
-}
-
-.AccessibilityInputsWrapper {
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  margin-top: $range-accessibility-input-margin;
-}
-
-.AccessibilityInputLower {
-  min-width: rem(80px);
 }
 
 .Track {
@@ -153,6 +141,16 @@ $range-accessibility-input-margin: rem(8px);
 
 $range-output-size: rem(32px);
 $range-output-tip-size: rem(8px);
+
+.Prefix {
+  flex: 0 0 auto;
+  margin-right: spacing(tight);
+}
+
+.Suffix {
+  flex: 0 0 auto;
+  margin-left: spacing(tight);
+}
 
 .Output {
   position: absolute;
