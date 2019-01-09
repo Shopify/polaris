@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 
-import {resolve} from 'path';
-import {cp, mkdir, rm} from 'shelljs';
+const {resolve} = require('path');
+const {cp, mkdir, rm} = require('shelljs');
 
-import packageJSON from '../package.json';
+const packageJSON = require('../package.json');
 
 const root = resolve(__dirname, '..');
 const projectDir = process.argv[2];

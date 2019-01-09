@@ -1,19 +1,19 @@
-import {resolve as resolvePath, dirname} from 'path';
-import postcss from 'postcss';
-import {readFileSync, ensureDirSync, writeFile} from 'fs-extra';
-import {render} from 'node-sass';
-import {createFilter} from 'rollup-pluginutils';
-import cssnano from 'cssnano';
+const {resolve: resolvePath, dirname} = require('path');
+const postcss = require('postcss');
+const {readFileSync, ensureDirSync, writeFile} = require('fs-extra');
+const {render} = require('node-sass');
+const {createFilter} = require('rollup-pluginutils');
+const cssnano = require('cssnano');
 
-import cssModulesExtractImports from 'postcss-modules-extract-imports';
-import cssModulesLocalByDefault from 'postcss-modules-local-by-default';
-import cssModulesScope from 'postcss-modules-scope';
-import cssModulesValues from 'postcss-modules-values';
-import Parser from 'postcss-modules-parser';
-import postcssShopify from 'postcss-shopify';
-import genericNames from 'generic-names';
+const cssModulesExtractImports = require('postcss-modules-extract-imports');
+const cssModulesLocalByDefault = require('postcss-modules-local-by-default');
+const cssModulesScope = require('postcss-modules-scope');
+const cssModulesValues = require('postcss-modules-values');
+const Parser = require('postcss-modules-parser');
+const postcssShopify = require('postcss-shopify');
+const genericNames = require('generic-names');
 
-export default function styles(options = {}) {
+module.exports = function styles(options = {}) {
   const filter = createFilter(
     options.include || ['**/*.css', '**/*.scss'],
     options.exclude,
@@ -127,7 +127,7 @@ export default function styles(options = {}) {
       ]);
     },
   };
-}
+};
 
 function write(file, content) {
   return new Promise((resolve, reject) => {
