@@ -33,8 +33,6 @@ export interface Props {
   prefix?: React.ReactNode;
   /** Element to display after the input */
   suffix?: React.ReactNode;
-  /** Displays text fields as the prefix and suffix for the dual thumb slider only */
-  accessibilityInputs?: boolean;
   /** Callback when the range input is changed */
   onChange(value: RangeSliderValue, id: string): void;
   /** Callback when range input is focused */
