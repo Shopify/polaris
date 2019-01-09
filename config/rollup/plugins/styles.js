@@ -98,7 +98,7 @@ module.exports = function styles(options = {}) {
         return `export default {\n${properties}\n};`;
       });
     },
-    ongenerate(generateOptions) {
+    generateBundle(generateOptions) {
       if (output === false) {
         return null;
       }
