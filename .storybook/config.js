@@ -45,7 +45,7 @@ addDecorator(
 addDecorator(withNotes);
 
 // addon-console
-setConsoleOptions((opts: any) => {
+setConsoleOptions((opts) => {
   // When transpiling TS using isolatedModules, the compiler doesn't strip
   // out exported types as it doesn't know if an item is a type or not.
   // Ignore those warnings as we don't care about them.
