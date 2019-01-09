@@ -25,12 +25,12 @@ describe('<RangeSlider />', () => {
         <RangeSlider value={[0, 25]} {...mockRangeSliderProps} />,
       );
 
-      const elementProps = element.find(DualThumb).props();
+      const {min, max, step} = element.find(DualThumb).props();
 
       expect({
-        min: elementProps.min,
-        max: elementProps.max,
-        step: elementProps.step,
+        min,
+        max,
+        step,
       }).toEqual({
         min: DEFAULT_RANGE_SLIDER_PROPS.min,
         max: DEFAULT_RANGE_SLIDER_PROPS.max,
@@ -54,13 +54,13 @@ describe('<RangeSlider />', () => {
         />,
       );
 
-      const elementProps = element.find(DualThumb).props();
+      const {min, max, id, step} = element.find(DualThumb).props();
 
       expect({
-        min: elementProps.min,
-        max: elementProps.max,
-        step: elementProps.step,
-        id: elementProps.id,
+        min,
+        max,
+        step,
+        id,
       }).toEqual(overrideProps);
     });
 
@@ -86,12 +86,12 @@ describe('<RangeSlider />', () => {
         <RangeSlider value={25} {...mockRangeSliderProps} />,
       );
 
-      const elementProps = element.find(SingleThumb).props();
+      const {min, max, step} = element.find(SingleThumb).props();
 
       expect({
-        min: elementProps.min,
-        max: elementProps.max,
-        step: elementProps.step,
+        min,
+        max,
+        step,
       }).toEqual({
         min: DEFAULT_RANGE_SLIDER_PROPS.min,
         max: DEFAULT_RANGE_SLIDER_PROPS.max,
@@ -119,13 +119,13 @@ describe('<RangeSlider />', () => {
         <RangeSlider value={25} {...mockRangeSliderProps} {...overrideProps} />,
       );
 
-      const elementProps = element.find(SingleThumb).props();
+      const {min, max, id, step} = element.find(SingleThumb).props();
 
       expect({
-        min: elementProps.min,
-        max: elementProps.max,
-        step: elementProps.step,
-        id: elementProps.id,
+        min,
+        max,
+        step,
+        id,
       }).toEqual(overrideProps);
     });
   });
