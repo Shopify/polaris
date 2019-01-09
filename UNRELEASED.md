@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Use Babel 7 for compilation ([#837](https://github.com/Shopify/polaris-react/pull/837))
+
 ### Bug fixes
 
 ### Documentation

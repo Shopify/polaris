@@ -46,11 +46,11 @@ module.exports = (baseConfig, env, config) => {
             // that break compilation. The shopify/react preset enables the
             // babel-plugin-transform-react-constant-elements plugin which
             // somehow hoists things up into an undesirable location.
-            forceEnv: isProduction ? 'not-production' : undefined,
+            envName: isProduction ? 'not-production' : undefined,
             minified: isProduction,
             presets: [
-              ['shopify/web', {modules: false}],
-              ['shopify/react', {hot: true}],
+              ['babel-preset-shopify/web', {modules: false}],
+              ['babel-preset-shopify/react', {hot: true}],
             ],
             cacheDirectory: `${cacheDir}/markdown`,
           },
@@ -69,8 +69,8 @@ module.exports = (baseConfig, env, config) => {
             babelrc: false,
             minified: isProduction,
             presets: [
-              ['shopify/web', {modules: false}],
-              ['shopify/react', {hot: true}],
+              ['babel-preset-shopify/web', {modules: false}],
+              ['babel-preset-shopify/react', {hot: true}],
             ],
             cacheDirectory: `${cacheDir}/typescript`,
           },

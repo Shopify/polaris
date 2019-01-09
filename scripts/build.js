@@ -75,8 +75,8 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       `
       {
         "presets": [
-          "shopify/react",
-          ["shopify/web", {"modules": false}]
+          ["babel-preset-shopify/web", {"modules": false}],
+          ["babel-preset-shopify/react"]
         ],
         "plugins": [
           "../config/babel/plugins/sass-namespace-to-default-import.js"
