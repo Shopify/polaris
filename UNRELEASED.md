@@ -6,7 +6,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-- Deprecated `Navigation.UserMenu` in favour of `TopBar.UserMenu` ([#849](https://github.com/Shopify/polaris-react/pull/849))
+- Deprecated `Navigation.UserMenu` in favor of `TopBar.UserMenu` ([#849](https://github.com/Shopify/polaris-react/pull/849))
 
 ### Bug fixes
 
