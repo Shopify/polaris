@@ -30,40 +30,40 @@ $stacking-order: (
   }
 }
 
-.isColored {
+.isColored * {
   color: color('white');
 }
 
-.colorWhite {
+.colorWhite * {
   fill: color('white');
   color: transparent;
 }
 
-.colorBlack {
+.colorBlack * {
   fill: color('black');
 }
 
-.colorSkyLighter {
+.colorSkyLighter * {
   fill: color('sky', 'lighter');
 }
 
-.colorSkyLight {
+.colorSkyLight * {
   fill: color('sky', 'light');
 }
 
-.colorSky {
+.colorSky * {
   fill: color('sky');
 }
 
-.colorSkyDark {
+.colorSkyDark * {
   fill: color('sky', 'dark');
 }
 
-.colorInkLightest {
+.colorInkLightest * {
   fill: color('ink', 'lightest');
 }
 
-.colorInkLighter {
+.colorInkLighter * {
   fill: color('ink', 'lighter');
 
   &::after {
@@ -71,11 +71,11 @@ $stacking-order: (
   }
 }
 
-.colorInkLight {
+.colorInkLight * {
   fill: color('ink', 'light');
 }
 
-.colorInk {
+.colorInk * {
   fill: color('ink');
 
   &::after {
@@ -83,19 +83,19 @@ $stacking-order: (
   }
 }
 
-.colorBlueLighter {
+.colorBlueLighter * {
   fill: color('blue', 'lighter');
 }
 
-.colorBlueLight {
+.colorBlueLight * {
   fill: color('blue', 'light');
 }
 
-.colorBlue {
+.colorBlue * {
   fill: color('blue');
 }
 
-.colorBlueDark {
+.colorBlueDark * {
   fill: color('blue', 'dark');
 
   &::after {
@@ -103,39 +103,39 @@ $stacking-order: (
   }
 }
 
-.colorBlueDarker {
+.colorBlueDarker * {
   fill: color('blue', 'darker');
 }
 
-.colorIndigoLighter {
+.colorIndigoLighter * {
   fill: color('indigo', 'lighter');
 }
 
-.colorIndigoLight {
+.colorIndigoLight * {
   fill: color('indigo', 'light');
 }
 
-.colorIndigo {
+.colorIndigo * {
   fill: color('indigo');
 }
 
-.colorIndigoDark {
+.colorIndigoDark * {
   fill: color('indigo', 'dark');
 }
 
-.colorIndigoDarker {
+.colorIndigoDarker * {
   fill: color('indigo', 'darker');
 }
 
-.colorTealLighter {
+.colorTealLighter * {
   fill: color('teal', 'lighter');
 }
 
-.colorTealLight {
+.colorTealLight * {
   fill: color('teal', 'light');
 }
 
-.colorTeal {
+.colorTeal * {
   fill: color('teal');
 
   &::after {
@@ -143,7 +143,7 @@ $stacking-order: (
   }
 }
 
-.colorTealDark {
+.colorTealDark * {
   fill: color('teal', 'dark');
 
   &::after {
@@ -151,15 +151,15 @@ $stacking-order: (
   }
 }
 
-.colorTealDarker {
+.colorTealDarker * {
   fill: color('teal', 'darker');
 }
 
-.colorGreenLighter {
+.colorGreenLighter * {
   fill: color('green', 'lighter');
 }
 
-.colorGreen {
+.colorGreen * {
   fill: color('green');
 
   &::after {
@@ -167,7 +167,7 @@ $stacking-order: (
   }
 }
 
-.colorGreenDark {
+.colorGreenDark * {
   fill: color('green', 'dark');
 
   &::after {
@@ -175,15 +175,15 @@ $stacking-order: (
   }
 }
 
-.colorYellowLighter {
+.colorYellowLighter * {
   fill: color('yellow', 'lighter');
 }
 
-.colorYellow {
+.colorYellow * {
   fill: color('yellow');
 }
 
-.colorYellowDark {
+.colorYellowDark * {
   fill: color('yellow', 'dark');
 
   &::after {
@@ -191,23 +191,23 @@ $stacking-order: (
   }
 }
 
-.colorOrange {
+.colorOrange * {
   fill: color('orange');
 }
 
-.colorOrangeDark {
+.colorOrangeDark * {
   fill: color('orange', 'dark');
 }
 
-.colorRedLighter {
+.colorRedLighter * {
   fill: color('red', 'lighter');
 }
 
-.colorRed {
+.colorRed * {
   fill: color('red');
 }
 
-.colorRedDark {
+.colorRedDark * {
   fill: color('red', 'dark');
 
   &::after {
@@ -215,7 +215,7 @@ $stacking-order: (
   }
 }
 
-.colorPurple {
+.colorPurple * {
   fill: color('purple');
 }
 
