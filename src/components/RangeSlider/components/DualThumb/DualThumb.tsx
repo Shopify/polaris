@@ -27,13 +27,35 @@ export interface Props extends RangeSliderProps {
   step: number;
 }
 
+interface KeyHandlers {
+  [key: string]: () => void;
+}
+
 const THUMB_SIZE = 24;
 const OUTPUT_TIP_SIZE = 8;
 
 export default class DualThumb extends React.Component<Props, State> {
+  static getDerivedStateFromProps(props: Props) {
+    const {min, step, max, value} = props;
+    return {
+      valueLower: sanitizeValueLower(value[0], min, step, value[1]),
+      valueUpper: sanitizeValueUpper(value[1], max, step, value[0]),
+    };
+  }
+
   state: State = {
-    valueLower: this.sanitizeValueLower(this.props.value[0]),
-    valueUpper: this.sanitizeValueUpper(this.props.value[1]),
+    valueLower: sanitizeValueLower(
+      this.props.value[0],
+      this.props.min,
+      this.props.step,
+      this.props.value[1],
+    ),
+    valueUpper: sanitizeValueUpper(
+      this.props.value[1],
+      this.props.max,
+      this.props.step,
+      this.props.value[0],
+    ),
     trackWidth: 0,
     trackLeft: 0,
   };
@@ -303,25 +325,41 @@ export default class DualThumb extends React.Component<Props, State> {
 
   @autobind
   private handleKeypressLower(event: KeyboardEvent) {
+    const {incrementValueLower, decrementValueLower} = this;
     event.preventDefault();
     event.stopPropagation();
 
-    if (shouldDecrement(event)) {
-      this.decrementValueLower();
-    } else if (shouldIncrement(event)) {
-      this.incrementValueLower();
+    const handlerMap: KeyHandlers = {
+      [Key.UpArrow]: incrementValueLower,
+      [Key.RightArrow]: incrementValueLower,
+      [Key.DownArrow]: decrementValueLower,
+      [Key.LeftArrow]: decrementValueLower,
+    };
+
+    const handler = handlerMap[event.keyCode];
+
+    if (handler != null) {
+      handler();
     }
   }
 
   @autobind
   private handleKeypressUpper(event: KeyboardEvent) {
+    const {incrementValueUpper, decrementValueUpper} = this;
     event.preventDefault();
     event.stopPropagation();
 
-    if (shouldDecrement(event)) {
-      this.decrementValueUpper();
-    } else if (shouldIncrement(event)) {
-      this.incrementValueUpper();
+    const handlerMap: KeyHandlers = {
+      [Key.UpArrow]: incrementValueUpper,
+      [Key.RightArrow]: incrementValueUpper,
+      [Key.DownArrow]: decrementValueUpper,
+      [Key.LeftArrow]: decrementValueUpper,
+    };
+
+    const handler = handlerMap[event.keyCode];
+
+    if (handler != null) {
+      handler();
     }
   }
 
@@ -355,9 +393,14 @@ export default class DualThumb extends React.Component<Props, State> {
 
   @autobind
   private setValueLower(value: number) {
+    const {
+      props: {min, step},
+      state: {valueUpper},
+    } = this;
+
     this.setState(
       {
-        valueLower: this.sanitizeValueLower(value),
+        valueLower: sanitizeValueLower(value, min, step, valueUpper),
       },
       this.dispatchValue,
     );
@@ -365,48 +408,17 @@ export default class DualThumb extends React.Component<Props, State> {
 
   @autobind
   private setValueUpper(value: number) {
+    const {
+      props: {max, step},
+      state: {valueLower},
+    } = this;
+
     this.setState(
       {
-        valueUpper: this.sanitizeValueUpper(value),
+        valueUpper: sanitizeValueUpper(value, max, step, valueLower),
       },
       this.dispatchValue,
     );
-  }
-
-  @autobind
-  private sanitizeValueLower(dirtyValue: number): number {
-    const {min, step, value} = this.props;
-
-    const guardedValueUpper =
-      this.state && this.state.valueUpper ? this.state.valueUpper : value[1];
-
-    const roundedValue = roundToNearestStepValue(dirtyValue, step);
-
-    if (roundedValue <= min) {
-      return min;
-    } else if (roundedValue >= guardedValueUpper) {
-      return guardedValueUpper - step;
-    } else {
-      return roundedValue;
-    }
-  }
-
-  @autobind
-  private sanitizeValueUpper(dirtyValue: number): number {
-    const {max, step, value} = this.props;
-
-    const guardedValueLower =
-      this.state && this.state.valueLower ? this.state.valueLower : value[0];
-
-    const roundedValue = roundToNearestStepValue(dirtyValue, step);
-
-    if (roundedValue >= max) {
-      return max;
-    } else if (roundedValue <= guardedValueLower) {
-      return guardedValueLower + step;
-    } else {
-      return roundedValue;
-    }
   }
 
   @autobind
@@ -442,10 +454,36 @@ function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
   );
 }
 
-function shouldIncrement(event: KeyboardEvent) {
-  return event.keyCode === Key.UpArrow || event.keyCode === Key.RightArrow;
+function sanitizeValueLower(
+  dirtyValue: number,
+  min: number,
+  step: number,
+  upperValue: number,
+): number {
+  const roundedValue = roundToNearestStepValue(dirtyValue, step);
+
+  if (roundedValue <= min) {
+    return min;
+  } else if (roundedValue >= upperValue) {
+    return upperValue - step;
+  } else {
+    return roundedValue;
+  }
 }
 
-function shouldDecrement(event: KeyboardEvent) {
-  return event.keyCode === Key.DownArrow || event.keyCode === Key.LeftArrow;
+function sanitizeValueUpper(
+  dirtyValue: number,
+  max: number,
+  step: number,
+  lowerValue: number,
+): number {
+  const roundedValue = roundToNearestStepValue(dirtyValue, step);
+
+  if (roundedValue >= max) {
+    return max;
+  } else if (roundedValue <= lowerValue) {
+    return lowerValue + step;
+  } else {
+    return roundedValue;
+  }
 }
