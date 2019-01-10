@@ -6,6 +6,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Icon component color prop now cascades to child SVGs when using `SVGSource` as **source** prop.
+
 ### Bug fixes
 
 ### Documentation
