@@ -32,10 +32,18 @@ interface State {
   userMenuExpanded?: boolean;
 }
 
+/** @deprecated Use <TopBar.UserMenu /> instead. */
 export default class UserMenu extends React.PureComponent<Props, State> {
   state: State = {
     userMenuExpanded: false,
   };
+
+  componentDidMount() {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Navigation.UserMenu /> is deprecated and will be removed in the next major version. Use <TopBar.UserMenu /> instead.',
+    );
+  }
 
   render() {
     const {
