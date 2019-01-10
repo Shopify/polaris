@@ -42,16 +42,13 @@ module.exports = (baseConfig, env, config) => {
           loader: 'babel-loader',
           options: {
             babelrc: false,
+            configFile: `${__dirname}/.babelrc`,
             // Don't use the production environment as it contains optimisations
             // that break compilation. The shopify/react preset enables the
             // babel-plugin-transform-react-constant-elements plugin which
             // somehow hoists things up into an undesirable location.
             envName: isProduction ? 'not-production' : undefined,
             minified: isProduction,
-            presets: [
-              ['babel-preset-shopify/web', {modules: false}],
-              ['babel-preset-shopify/react', {hot: true}],
-            ],
             cacheDirectory: `${cacheDir}/markdown`,
           },
         },
@@ -67,11 +64,8 @@ module.exports = (baseConfig, env, config) => {
           loader: 'babel-loader',
           options: {
             babelrc: false,
+            configFile: `${__dirname}/.babelrc`,
             minified: isProduction,
-            presets: [
-              ['babel-preset-shopify/web', {modules: false}],
-              ['babel-preset-shopify/react', {hot: true}],
-            ],
             cacheDirectory: `${cacheDir}/typescript`,
           },
         },
