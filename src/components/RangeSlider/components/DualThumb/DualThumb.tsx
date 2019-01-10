@@ -32,8 +32,8 @@ const OUTPUT_TIP_SIZE = 8;
 
 export default class DualThumb extends React.Component<Props, State> {
   state: State = {
-    valueLower: this.props.value[0],
-    valueUpper: this.props.value[1],
+    valueLower: this.sanitizeValueLower(this.props.value[0]),
+    valueUpper: this.sanitizeValueUpper(this.props.value[1]),
     trackWidth: 0,
   };
 
@@ -42,27 +42,6 @@ export default class DualThumb extends React.Component<Props, State> {
   private thumbUpper = React.createRef<HTMLButtonElement>();
 
   componentDidMount() {
-    const {valueLower, valueUpper} = this.state;
-    const {step, min, max} = this.props;
-    const valueWithinBoundsLower = keepValueWithinBoundsLower(
-      roundToNearestStepValue(valueLower, step),
-      valueUpper,
-      min,
-      step,
-    );
-
-    const valueWithinBoundsUpper = keepValueWithinBoundsUpper(
-      roundToNearestStepValue(valueUpper, step),
-      valueLower,
-      max,
-      step,
-    );
-
-    this.setState({
-      valueLower: valueWithinBoundsLower,
-      valueUpper: valueWithinBoundsUpper,
-    });
-
     if (this.track.current) {
       this.setState({
         trackWidth: this.track.current.getBoundingClientRect().width,
@@ -265,219 +244,145 @@ export default class DualThumb extends React.Component<Props, State> {
 
   @autobind
   private handleMouseDownThumbLower() {
-    if (this.thumbLower.current) {
-      addEventListener(document, 'mousemove', this.handleMouseMoveThumbLower);
-      addEventListener(
-        document,
-        'mouseup',
-        () => {
-          removeEventListener(
-            document,
-            'mousemove',
-            this.handleMouseMoveThumbLower,
-          );
-        },
-        {once: true},
-      );
-    }
+    registerMouseMoveHandler(this.handleMouseMoveThumbLower);
   }
 
   @autobind
   private handleMouseMoveThumbLower(event: MouseEvent) {
-    if (this.track.current) {
-      const {valueUpper} = this.state;
-      const {min, max, step} = this.props;
-      const clientRect = this.track.current.getBoundingClientRect();
-
-      const relativeX = event.clientX - clientRect.left;
-
-      const percentageOfTrack = relativeX / (clientRect.width - THUMB_SIZE);
-      const percentageOfRange = percentageOfTrack * (max - min);
-
-      const steppedPercentageOfRange = roundToNearestStepValue(
-        percentageOfRange,
-        step,
-      );
-
-      const valueWithinBoundsLower = keepValueWithinBoundsLower(
-        steppedPercentageOfRange,
-        valueUpper,
-        min,
-        step,
-      );
-      this.setState(
-        {
-          valueLower: valueWithinBoundsLower,
-        },
-        () => {
-          this.handleChange();
-        },
-      );
-    }
+    this.setValueLower(this.actualXPosition(event.clientX));
   }
 
   @autobind
   private handleMouseDownThumbUpper() {
-    if (this.thumbUpper.current) {
-      addEventListener(document, 'mousemove', this.handleMouseMoveThumbUpper);
-      addEventListener(
-        document,
-        'mouseup',
-        () => {
-          removeEventListener(
-            document,
-            'mousemove',
-            this.handleMouseMoveThumbUpper,
-          );
-        },
-        {once: true},
-      );
-    }
+    registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
   }
 
   @autobind
   private handleMouseMoveThumbUpper(event: MouseEvent) {
-    if (this.track.current) {
-      const {valueLower} = this.state;
-      const {min, max, step} = this.props;
-      const clientRect = this.track.current.getBoundingClientRect();
-
-      const relativeX = event.clientX - clientRect.left;
-
-      const percentageOfTrack = relativeX / (clientRect.width - THUMB_SIZE);
-      const percentageOfRange = percentageOfTrack * (max - min);
-
-      const steppedPercentageOfRange = roundToNearestStepValue(
-        percentageOfRange,
-        step,
-      );
-
-      const valueWithinBoundsUpper = keepValueWithinBoundsUpper(
-        steppedPercentageOfRange,
-        valueLower,
-        max,
-        step,
-      );
-      this.setState(
-        {
-          valueUpper: valueWithinBoundsUpper,
-        },
-        () => {
-          this.handleChange();
-        },
-      );
-    }
-  }
-
-  @autobind
-  private handleChange() {
-    const {onChange, id} = this.props;
-    const {valueLower, valueUpper} = this.state;
-
-    return onChange([valueLower, valueUpper], id);
+    this.setValueUpper(this.actualXPosition(event.clientX));
   }
 
   @autobind
   private handleKeypressLower(event: KeyboardEvent) {
-    const {valueLower, valueUpper} = this.state;
-    const {step, min} = this.props;
     event.preventDefault();
     event.stopPropagation();
 
-    let newValue = valueLower;
-
-    if (event.keyCode === Key.DownArrow || event.keyCode === Key.LeftArrow) {
-      newValue = valueLower - step;
-    } else if (
-      event.keyCode === Key.UpArrow ||
-      event.keyCode === Key.RightArrow
-    ) {
-      newValue = valueLower + step;
+    if (shouldDecrement(event)) {
+      this.decrementValueLower();
+    } else if (shouldIncrement(event)) {
+      this.incrementValueLower();
     }
-
-    const valueWithinBoundsLower = keepValueWithinBoundsLower(
-      newValue,
-      valueUpper,
-      min,
-      step,
-    );
-
-    this.setState(
-      {
-        valueLower: valueWithinBoundsLower,
-      },
-      () => {
-        this.handleChange();
-      },
-    );
   }
 
   @autobind
   private handleKeypressUpper(event: KeyboardEvent) {
-    const {valueLower, valueUpper} = this.state;
-    const {max, step} = this.props;
     event.preventDefault();
     event.stopPropagation();
 
-    let newValue = valueUpper;
-
-    if (event.keyCode === Key.DownArrow || event.keyCode === Key.LeftArrow) {
-      newValue = valueUpper - step;
-    } else if (
-      event.keyCode === Key.UpArrow ||
-      event.keyCode === Key.RightArrow
-    ) {
-      newValue = valueUpper + step;
+    if (shouldDecrement(event)) {
+      this.decrementValueUpper();
+    } else if (shouldIncrement(event)) {
+      this.incrementValueUpper();
     }
+  }
 
-    const valueWithinBoundsUpper = keepValueWithinBoundsUpper(
-      newValue,
-      valueLower,
-      max,
-      step,
-    );
+  @autobind
+  private incrementValueLower() {
+    this.setValueLower(this.state.valueLower + this.props.step);
+  }
 
+  @autobind
+  private decrementValueLower() {
+    this.setValueLower(this.state.valueLower - this.props.step);
+  }
+
+  @autobind
+  private incrementValueUpper() {
+    this.setValueUpper(this.state.valueUpper + this.props.step);
+  }
+
+  @autobind
+  private decrementValueUpper() {
+    this.setValueUpper(this.state.valueUpper - this.props.step);
+  }
+
+  @autobind
+  private dispatchValue() {
+    const {onChange, id} = this.props;
+    const {valueLower, valueUpper} = this.state;
+
+    onChange([valueLower, valueUpper], id);
+  }
+
+  @autobind
+  private setValueLower(value: number) {
     this.setState(
       {
-        valueUpper: valueWithinBoundsUpper,
+        valueLower: this.sanitizeValueLower(value),
       },
-      () => {
-        this.handleChange();
-      },
+      this.dispatchValue,
     );
-
-    event.preventDefault();
-    event.stopPropagation();
   }
-}
 
-function keepValueWithinBoundsLower(
-  steppedValue: number,
-  valueUpper: number,
-  min: number,
-  step: number,
-) {
-  if (steppedValue <= min) {
-    return min;
-  } else if (steppedValue >= valueUpper) {
-    return valueUpper - step;
-  } else {
-    return steppedValue;
+  @autobind
+  private setValueUpper(value: number) {
+    this.setState(
+      {
+        valueUpper: this.sanitizeValueUpper(value),
+      },
+      this.dispatchValue,
+    );
   }
-}
 
-function keepValueWithinBoundsUpper(
-  steppedValue: number,
-  valueLower: number,
-  max: number,
-  step: number,
-) {
-  if (steppedValue >= max) {
-    return max;
-  } else if (steppedValue <= valueLower) {
-    return valueLower + step;
-  } else {
-    return steppedValue;
+  @autobind
+  private sanitizeValueLower(dirtyValue: number): number {
+    const {min, step, value} = this.props;
+
+    const guardedValueUpper =
+      this.state && this.state.valueUpper ? this.state.valueUpper : value[1];
+
+    const roundedValue = roundToNearestStepValue(dirtyValue, step);
+
+    if (roundedValue <= min) {
+      return min;
+    } else if (roundedValue >= guardedValueUpper) {
+      return guardedValueUpper - step;
+    } else {
+      return roundedValue;
+    }
+  }
+
+  @autobind
+  private sanitizeValueUpper(dirtyValue: number): number {
+    const {max, step, value} = this.props;
+
+    const guardedValueLower =
+      this.state && this.state.valueLower ? this.state.valueLower : value[0];
+
+    const roundedValue = roundToNearestStepValue(dirtyValue, step);
+
+    if (roundedValue >= max) {
+      return max;
+    } else if (roundedValue <= guardedValueLower) {
+      return guardedValueLower + step;
+    } else {
+      return roundedValue;
+    }
+  }
+
+  @autobind
+  private actualXPosition(dirtyXPosition: number): number {
+    if (this.track.current) {
+      const {min, max} = this.props;
+      const clientRect = this.track.current.getBoundingClientRect();
+
+      const relativeX = dirtyXPosition - clientRect.left;
+
+      const percentageOfTrack = relativeX / (clientRect.width - THUMB_SIZE);
+      return percentageOfTrack * (max - min);
+    } else {
+      return 0;
+    }
   }
 }
 
@@ -485,4 +390,24 @@ function roundToNearestStepValue(value: number, step: number) {
   const intermediateValue = value / step;
   const roundedValue = Math.round(intermediateValue);
   return roundedValue * step;
+}
+
+function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
+  addEventListener(document, 'mousemove', handler);
+  addEventListener(
+    document,
+    'mouseup',
+    () => {
+      removeEventListener(document, 'mousemove', handler);
+    },
+    {once: true},
+  );
+}
+
+function shouldIncrement(event: KeyboardEvent) {
+  return event.keyCode === Key.UpArrow || event.keyCode === Key.RightArrow;
+}
+
+function shouldDecrement(event: KeyboardEvent) {
+  return event.keyCode === Key.DownArrow || event.keyCode === Key.LeftArrow;
 }
