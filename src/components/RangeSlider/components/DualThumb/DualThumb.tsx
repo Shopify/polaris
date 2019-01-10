@@ -8,7 +8,6 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {Props as RangeSliderProps} from '../../types';
 import Labelled from '../../../Labelled';
-
 import {Key} from '../../../../types';
 
 import * as styles from './DualThumb.scss';
@@ -17,6 +16,7 @@ export interface State {
   valueLower: number;
   valueUpper: number;
   trackWidth: number;
+  trackLeft: number;
 }
 
 export interface Props extends RangeSliderProps {
@@ -35,6 +35,7 @@ export default class DualThumb extends React.Component<Props, State> {
     valueLower: this.sanitizeValueLower(this.props.value[0]),
     valueUpper: this.sanitizeValueUpper(this.props.value[1]),
     trackWidth: 0,
+    trackLeft: 0,
   };
 
   private track = React.createRef<HTMLDivElement>();
@@ -42,11 +43,8 @@ export default class DualThumb extends React.Component<Props, State> {
   private thumbUpper = React.createRef<HTMLButtonElement>();
 
   componentDidMount() {
-    if (this.track.current) {
-      this.setState({
-        trackWidth: this.track.current.getBoundingClientRect().width,
-      });
-    }
+    this.setTrackPosition();
+    addEventListener(window, 'resize', this.setTrackPosition);
 
     if (this.thumbLower.current && !this.props.disabled) {
       addEventListener(
@@ -68,6 +66,36 @@ export default class DualThumb extends React.Component<Props, State> {
         this.handleMouseDownThumbUpper,
       );
       addEventListener(
+        this.thumbUpper.current,
+        'keyup',
+        this.handleKeypressUpper,
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    removeEventListener(window, 'resize', this.setTrackPosition);
+
+    if (this.thumbLower.current) {
+      removeEventListener(
+        this.thumbLower.current,
+        'mousedown',
+        this.handleMouseDownThumbLower,
+      );
+      removeEventListener(
+        this.thumbLower.current,
+        'keyup',
+        this.handleKeypressLower,
+      );
+    }
+
+    if (this.thumbUpper.current) {
+      removeEventListener(
+        this.thumbUpper.current,
+        'mousedown',
+        this.handleMouseDownThumbUpper,
+      );
+      removeEventListener(
         this.thumbUpper.current,
         'keyup',
         this.handleKeypressUpper,
@@ -125,11 +153,10 @@ export default class DualThumb extends React.Component<Props, State> {
     );
 
     const trackWidth = this.state.trackWidth;
-    const adjustedTrackWidth = trackWidth - THUMB_SIZE;
     const range = max - min;
 
-    const leftPositionThumbLower = (valueLower / range) * adjustedTrackWidth;
-    const leftPositionThumbUpper = (valueUpper / range) * adjustedTrackWidth;
+    const leftPositionThumbLower = (valueLower / range) * trackWidth;
+    const leftPositionThumbUpper = (valueUpper / range) * trackWidth;
 
     const classNameOutputLower = classNames(styles.Output, styles.OutputLower);
     const outputMarkupLower =
@@ -240,6 +267,18 @@ export default class DualThumb extends React.Component<Props, State> {
         </div>
       </Labelled>
     );
+  }
+
+  @autobind
+  private setTrackPosition() {
+    if (this.track.current) {
+      const {width, left} = this.track.current.getBoundingClientRect();
+      const adjustedTrackWidth = width - THUMB_SIZE;
+      this.setState({
+        trackWidth: adjustedTrackWidth,
+        trackLeft: left,
+      });
+    }
   }
 
   @autobind
@@ -374,11 +413,10 @@ export default class DualThumb extends React.Component<Props, State> {
   private actualXPosition(dirtyXPosition: number): number {
     if (this.track.current) {
       const {min, max} = this.props;
-      const clientRect = this.track.current.getBoundingClientRect();
+      const {trackLeft, trackWidth} = this.state;
 
-      const relativeX = dirtyXPosition - clientRect.left;
-
-      const percentageOfTrack = relativeX / (clientRect.width - THUMB_SIZE);
+      const relativeX = dirtyXPosition - trackLeft;
+      const percentageOfTrack = relativeX / trackWidth;
       return percentageOfTrack * (max - min);
     } else {
       return 0;
