@@ -18,7 +18,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Updated `Page` header layout so actions take up less room on small screens ([#707](https://github.com/Shopify/polaris-react/pull/707))
 - Added `alternateTool` prop to `ResourceList` component ([#812](https://github.com/Shopify/polaris-react/pull/812))
 - Updated color of warning status `ExceptionList` items from dark orange to dark yellow for better differentiation from critical status items ([#813](https://github.com/Shopify/polaris-react/pull/813))
-- Deprecated `Navigation.UserMenu` in favour of `TopBar.UserMenu` ([]())
+- Deprecated `Navigation.UserMenu` in favour of `TopBar.UserMenu` ([#849](https://github.com/Shopify/polaris-react/pull/849))
 
 ### Bug fixes
 
