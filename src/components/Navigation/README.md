@@ -184,7 +184,7 @@ The user menu component displays the current user’s avatar and name, and actio
 
 ### Deprecation rationale
 
-As of release x.x.x `Navigation.UserMenu` will be deprecated in favour of `TopBar.UserMenu`. We're making this change to make room for a soon-to-be-shipped change to the topbar layout in which the `TopBar.UserMenu` will stay visible on mobile.
+As of release 3.4.1 `Navigation.UserMenu` will be deprecated in favour of `TopBar.UserMenu`. We're making this change to make room for a soon-to-be-shipped change to the topbar layout in which the `TopBar.UserMenu` will stay visible on mobile.
 
 ---
 
