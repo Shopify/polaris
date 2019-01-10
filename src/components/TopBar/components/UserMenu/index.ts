@@ -1,4 +1,4 @@
 import UserMenu from './UserMenu';
 
-export {Props} from './UserMenu';
+export {UserMenuProps as Props} from './components';
 export default UserMenu;

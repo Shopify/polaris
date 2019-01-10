@@ -1,59 +1,105 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider} from 'test-utilities';
-import UserMenu from '../UserMenu';
-
-const actions = [
-  {
-    id: '123',
-    items: [
-      {
-        content: 'notification',
-        icon: 'notification' as 'notification',
-        onAction: noop,
-      },
-    ],
-  },
-];
-
-const message = {
-  title: 'test message',
-  description: 'test description',
-  link: {to: '/', content: 'Home'},
-  action: {
-    onClick: noop,
-    content: 'New',
-  },
-  badge: {
-    content: 'flashy new home card',
-    status: 'new' as 'new',
-  },
-};
-
-const userProps = {
-  name: 'Andrew Musgrave',
-  detail: 'FED',
-  actions,
-  message,
-  avatarInitials: 'am',
-};
+import {mountWithAppProvider, trigger} from 'test-utilities';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {Modifier as UserMenuModifier} from '../../../../TopBar/components/UserMenu/context';
+import UserMenu, {Props as UserMenuProps} from '../UserMenu';
 
 describe('<UserMenu />', () => {
-  it('mounts', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
+  const mockProps = {
+    avatarInitials: '',
+    avatarSource: '',
+  };
 
-    expect(user.exists()).toBe(true);
+  describe('avatarInitials', () => {
+    it('gets passed into the modifier', () => {
+      const avatarInitials = 'JD';
+      const userMenu = mountWithAppProvider(
+        <UserMenu {...mockProps} avatarInitials={avatarInitials} />,
+      );
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({initials: avatarInitials}),
+      );
+    });
   });
 
-  it('passes the actions prop', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
-
-    expect(user.prop('actions')).toBe(actions);
+  describe('avatarSource', () => {
+    it('gets passed into the modifier', () => {
+      const avatarSource = '';
+      const userMenu = mountWithAppProvider(
+        <UserMenu {...mockProps} avatarSource={avatarSource} />,
+      );
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({avatar: avatarSource}),
+      );
+    });
   });
 
-  it('passes the message prop', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
+  describe('message', () => {
+    it('gets passed into the modifier', () => {
+      const message = {} as UserMenuProps['message'];
+      const userMenu = mountWithAppProvider(
+        <UserMenu {...mockProps} message={message} />,
+      );
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({message}),
+      );
+    });
+  });
 
-    expect(user.prop('message')).toBe(message);
+  describe('actions', () => {
+    it('gets passed into the modifier', () => {
+      const actions = [] as UserMenuProps['actions'];
+      const userMenu = mountWithAppProvider(
+        <UserMenu {...mockProps} actions={actions} />,
+      );
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({actions}),
+      );
+    });
+  });
+
+  describe('detail', () => {
+    it('gets passed into the modifier', () => {
+      const detail = 'Little Victories CA';
+      const userMenu = mountWithAppProvider(
+        <UserMenu {...mockProps} detail={detail} />,
+      );
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({detail}),
+      );
+    });
+  });
+
+  describe('name', () => {
+    it('gets passed into the modifier', () => {
+      const name = 'John Doe';
+      const userMenu = mountWithAppProvider(
+        <UserMenu {...mockProps} name={name} />,
+      );
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({name}),
+      );
+    });
+  });
+
+  describe('<UserMenuModifier />', () => {
+    it('passes in an open prop which is false by default', () => {
+      const userMenu = mountWithAppProvider(<UserMenu {...mockProps} />);
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({open: false}),
+      );
+    });
+
+    it('toggles the open prop when the user menu is toggled', () => {
+      const userMenu = mountWithAppProvider(<UserMenu {...mockProps} />);
+      trigger(userMenu.find(UserMenuModifier), 'userMenuProps.onToggle');
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({open: true}),
+      );
+      trigger(userMenu.find(UserMenuModifier), 'userMenuProps.onToggle');
+      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
+        expect.objectContaining({open: false}),
+      );
+    });
   });
 });

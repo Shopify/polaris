@@ -7,12 +7,16 @@ import {
   ContextualSaveBar as PolarisContextualSavebar,
   Loading as PolarisLoading,
 } from 'components';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {Provider as UserMenuProvider} from '../../TopBar/components/UserMenu/context';
 import Frame from '../Frame';
 import Button from '../../Button';
 import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
 } from '../components';
+import TopBar from '../../TopBar';
+import Navigation from '../../Navigation';
 
 window.matchMedia =
   window.matchMedia ||
@@ -215,5 +219,27 @@ describe('<Frame />', () => {
       </Frame>,
     );
     expect(frame.find(FrameLoading).exists()).toBe(true);
+  });
+
+  describe('<UserMenuProvider />', () => {
+    it('renders', () => {
+      const frame = mountWithAppProvider(<Frame />);
+      expect(frame.find(UserMenuProvider).exists()).toBeTruthy();
+    });
+
+    it('receives a mobileView boolean', () => {
+      const frame = mountWithAppProvider(<Frame />);
+      expect(frame.find(UserMenuProvider).prop('mobileView')).toBe(false);
+    });
+
+    it('receives the given top bar and navigation as its children', () => {
+      const topBar = <TopBar />;
+      const navigation = <Navigation location="" />;
+      const frame = mountWithAppProvider(
+        <Frame topBar={topBar} navigation={navigation} />,
+      );
+      expect(frame.find(UserMenuProvider).contains(topBar)).toBeTruthy();
+      expect(frame.find(UserMenuProvider).contains(navigation)).toBeTruthy();
+    });
   });
 });
