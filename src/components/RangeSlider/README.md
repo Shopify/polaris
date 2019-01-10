@@ -29,7 +29,7 @@ Range sliders should:
 - When a label is visible, it should clearly communicate the purpose of the range input and its values (min, max, step, value)
 - Be labeled as “Optional” when you need to request input that’s not required
 - Validate input as soon as merchants have finished interacting with a field (but not before)
-- Always be used with `accessibilityInputs` when range slider has dual thumbs, to provide accessible alternatives to sliding the thumbs
+- Always be used with two text field components when range slider has dual thumbs, to provide accessible alternatives to both the lower and upper thumbs
 
 ---
 
@@ -231,21 +231,109 @@ class RangeSliderExample extends React.Component {
 Use a dual thumb range slider when merchants need to select a range of values.
 
 ```jsx
+const initialValue = [900, 1000];
+
 class RangeSliderExample extends React.Component {
-  handleChange = (value) => {
-    console.log({value});
+  state = {
+    intermediateTextFieldValue: initialValue,
+    value: initialValue,
+  };
+
+  handleRangeSliderChange = (value) => {
+    this.setState({value, intermediateTextFieldValue: value});
+  };
+
+  handleLowerTextFieldChange = (value) => {
+    const upperValue = this.state.value[1];
+    this.setState({intermediateTextFieldValue: [parseInt(value), upperValue]});
+  };
+
+  handleUpperTextFieldChange = (value) => {
+    const lowerValue = this.state.value[0];
+    this.setState({intermediateTextFieldValue: [lowerValue, parseInt(value)]});
+  };
+
+  handleLowerTextFieldBlur = () => {
+    const upperValue = this.state.value[1];
+    const value = this.state.intermediateTextFieldValue[0];
+
+    this.setState({value: [parseInt(value), upperValue]});
+  };
+
+  handleUpperTextFieldBlur = () => {
+    const lowerValue = this.state.value[0];
+    const value = this.state.intermediateTextFieldValue[1];
+
+    this.setState({value: [lowerValue, parseInt(value)]});
+  };
+
+  handleEnterKeyPress = (event) => {
+    const newValue = this.state.intermediateTextFieldValue;
+    const oldValue = this.state.value;
+
+    if (event.keyCode === Key.Enter && newValue !== oldValue) {
+      this.setState({value: newValue});
+    }
   };
 
   render() {
+    const {value, intermediateTextFieldValue} = this.state;
+    const prefix = '$';
+    const min = 0;
+    const max = 2000;
+    const step = 10;
+    const disabled = false;
+
+    const lowerTextFieldValue =
+      intermediateTextFieldValue[0] === value[0]
+        ? value[0]
+        : intermediateTextFieldValue[0];
+    const upperTextFieldValue =
+      intermediateTextFieldValue[1] === value[1]
+        ? value[1]
+        : intermediateTextFieldValue[1];
+
     return (
       <Card sectioned>
-        <RangeSlider
-          label=""
-          value={[35, 60]}
-          onChange={this.handleChange}
-          accessibilityInputs
-          step={5}
-        />
+        <div style={{marginTop: '20px'}} onKeyDown={this.handleEnterKeyPress}>
+          <RangeSlider
+            label="Money spent is between"
+            value={value}
+            prefix={prefix}
+            output
+            min={min}
+            max={max}
+            step={step}
+            disabled={disabled}
+            onChange={this.handleRangeSliderChange}
+          />
+          <Stack distribution="equalSpacing" spacing="extraLoose">
+            <TextField
+              label="Min money spent"
+              type="number"
+              value={`${lowerTextFieldValue}`}
+              prefix={prefix}
+              min={min}
+              max={max}
+              step={step}
+              disabled={disabled}
+              onChange={this.handleLowerTextFieldChange}
+              onBlur={this.handleLowerTextFieldBlur}
+            />
+            <TextField
+              label="Max money spent"
+              type="number"
+              value={`${upperTextFieldValue}`}
+              prefix={prefix}
+              min={min}
+              max={max}
+              step={step}
+              disabled={disabled}
+              onChange={this.handleUpperTextFieldChange}
+              onBlur={this.handleUpperTextFieldBlur}
+            />
+          </Stack>
+        </div>
       </Card>
     );
   }
