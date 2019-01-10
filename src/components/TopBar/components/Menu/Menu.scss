@@ -5,6 +5,7 @@ $activator-variables: (
   focus-background-color: rgba(color('white'), 0.16),
   hover-background-color: rgba(color('white'), 0.08),
   active-background-color: rgba(color('black'), 0.28),
+  focus-opacity: 0.85,
 );
 
 @function menu($variable) {
@@ -23,12 +24,15 @@ $activator-variables: (
   margin: 0;
   padding: spacing(tight) spacing();
   border: 0;
-  border-left: menu(border-left);
   cursor: pointer;
   transition: menu(transition);
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
-    display: none;
+    &:focus,
+    &:hover {
+      background-color: transparent;
+      opacity: menu(focus-opacity);
+    }
   }
 
   &:focus {

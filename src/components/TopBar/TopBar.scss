@@ -71,3 +71,25 @@ $icon-size: rem(20px);
   justify-content: flex-end;
   height: 100%;
 }
+
+.SearchWrapper {
+  @include page-layout;
+  width: 100%;
+  margin: 0;
+  max-width: none;
+}
+
+.SearchField {
+  width: 100%;
+  padding-left: calc((100vw - #{layout-width(nav)} - #{$page-max-width}) / 2);
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    padding-left: 0;
+  }
+}
+
+.SecondaryMenu {
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    display: none;
+  }
+}
