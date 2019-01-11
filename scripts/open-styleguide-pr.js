@@ -65,7 +65,7 @@ execSync(
 );
 
 execSync(
-  `yarn upgrade @shopify/polaris@${releaseVersion.replace(
+  `npx yarn@latest upgrade @shopify/polaris@${releaseVersion.replace(
     'v',
     '',
   )} --no-progress --ignore-engines`,
