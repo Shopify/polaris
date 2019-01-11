@@ -2,7 +2,7 @@ import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Props, RangeSliderValue} from './types';
-import {DEFAULT_RANGE_SLIDER_PROPS} from './utilities';
+import {RangeSliderDefault} from './utilities';
 
 import {SingleThumb, DualThumb} from './components';
 
@@ -13,9 +13,9 @@ const getUniqueID = createUniqueIDFactory('RangeSlider');
 export function RangeSlider(props: CombinedProps) {
   const {
     id = getUniqueID(),
-    min = DEFAULT_RANGE_SLIDER_PROPS.min,
-    max = DEFAULT_RANGE_SLIDER_PROPS.max,
-    step = DEFAULT_RANGE_SLIDER_PROPS.step,
+    min = RangeSliderDefault.Min,
+    max = RangeSliderDefault.Max,
+    step = RangeSliderDefault.Step,
     value,
     ...rest
   } = props;
