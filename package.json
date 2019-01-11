@@ -173,6 +173,7 @@
     "styles.scss"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.1.6",
     "@shopify/app-bridge": "^0.7.3",
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.1",
@@ -185,7 +186,6 @@
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
     "@types/react-transition-group": "^2.0.7",
-    "babel-runtime": "^6.23.0",
     "core-js": "^2.5.1",
     "hoist-non-react-statics": "^2.5.0",
     "lodash": "^4.17.4",
