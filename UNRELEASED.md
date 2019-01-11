@@ -28,6 +28,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Improved build speed by adjusting our rollup workflow ([#912](https://github.com/Shopify/polaris-react/pull/912)) and not optimizing svgs in the node_modules folder ([#920](https://github.com/Shopify/polaris-react/pull/920))
+- Fixed an issue where deployments would use an old version of Yarn, and open a pull request to polaris-styleguide with thousands of deleted integrity hashes in `yarn.lock` ([#856](https://github.com/Shopify/polaris-react/pull/856))
 
 ### Dependency upgrades
 
