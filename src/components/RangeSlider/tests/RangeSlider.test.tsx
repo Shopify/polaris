@@ -3,7 +3,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import RangeSlider from '../RangeSlider';
 import {DualThumb, SingleThumb} from '../components';
-import {DEFAULT_RANGE_SLIDER_PROPS} from '../utilities';
+import {RangeSliderDefault} from '../utilities';
 
 const mockRangeSliderProps = {
   label: 'RangeSlider',
@@ -32,9 +32,9 @@ describe('<RangeSlider />', () => {
         max,
         step,
       }).toEqual({
-        min: DEFAULT_RANGE_SLIDER_PROPS.min,
-        max: DEFAULT_RANGE_SLIDER_PROPS.max,
-        step: DEFAULT_RANGE_SLIDER_PROPS.step,
+        min: RangeSliderDefault.Min,
+        max: RangeSliderDefault.Max,
+        step: RangeSliderDefault.Step,
       });
     });
 
@@ -93,9 +93,9 @@ describe('<RangeSlider />', () => {
         max,
         step,
       }).toEqual({
-        min: DEFAULT_RANGE_SLIDER_PROPS.min,
-        max: DEFAULT_RANGE_SLIDER_PROPS.max,
-        step: DEFAULT_RANGE_SLIDER_PROPS.step,
+        min: RangeSliderDefault.Min,
+        max: RangeSliderDefault.Max,
+        step: RangeSliderDefault.Step,
       });
     });
 
