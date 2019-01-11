@@ -2,7 +2,7 @@ name: polaris-react
 up:
   - node:
       yarn: true
-      version: v10.13.0 # to be kept in sync with .nvmrc and .circleci/config.yml
+      version: v10.13.0 # to be kept in sync with .nvmrc, scripts/open-styleguide-pr.js, and .circleci/config.yml
   - git_hooks:
       pre-commit: pre-commit
 

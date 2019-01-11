@@ -11,6 +11,7 @@ const polarisBotName = 'Shopify Polaris Bot';
 const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
 const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
 
+const YARN_VERSION = '10.13.0';
 const STYLEGUIDE = 'polaris-styleguide';
 const root = resolve(__dirname, '../');
 const sandbox = resolve(root, 'sandbox');
@@ -65,7 +66,7 @@ execSync(
 );
 
 execSync(
-  `npx yarn@latest upgrade @shopify/polaris@${releaseVersion.replace(
+  `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
     'v',
     '',
   )} --no-progress --ignore-engines`,
