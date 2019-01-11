@@ -38,7 +38,8 @@ export default class UserMenu extends React.PureComponent<Props, State> {
     userMenuExpanded: false,
   };
 
-  componentDidMount() {
+  constructor(props: Props) {
+    super(props);
     // eslint-disable-next-line no-console
     console.warn(
       'Deprecation: <Navigation.UserMenu /> is deprecated and will be removed in the next major version. Use <TopBar.UserMenu /> instead.',
