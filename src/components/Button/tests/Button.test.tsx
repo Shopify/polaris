@@ -251,31 +251,40 @@ describe('<Button />', () => {
 
   describe('onKeyPress()', () => {
     it('is called when a keypress event is registered on the button', () => {
+      const fakeEventData = {key: 'foo'};
       const spy = jest.fn();
       shallowWithAppProvider(<Button onKeyPress={spy}>Test</Button>).simulate(
         'keypress',
+        fakeEventData,
       );
       expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith(fakeEventData);
     });
   });
 
   describe('onKeyUp()', () => {
     it('is called when a keyup event is registered on the button', () => {
+      const fakeEventData = {key: 'foo'};
       const spy = jest.fn();
       shallowWithAppProvider(<Button onKeyUp={spy}>Test</Button>).simulate(
         'keyup',
+        fakeEventData,
       );
       expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith(fakeEventData);
     });
   });
 
   describe('onKeyDown()', () => {
     it('is called when a keydown event is registered on the button', () => {
+      const fakeEventData = {key: 'foo'};
       const spy = jest.fn();
       shallowWithAppProvider(<Button onKeyDown={spy}>Test</Button>).simulate(
         'keydown',
+        fakeEventData,
       );
       expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith(fakeEventData);
     });
   });
 });

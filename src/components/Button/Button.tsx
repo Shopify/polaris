@@ -59,11 +59,11 @@ export interface Props {
   /** Callback when focus leaves button */
   onBlur?(): void;
   /** Callback when a keypress event is registered on the button */
-  onKeyPress?(): void;
+  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keyup event is registered on the button */
-  onKeyUp?(): void;
+  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keydown event is registered on the button */
-  onKeyDown?(): void;
+  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
