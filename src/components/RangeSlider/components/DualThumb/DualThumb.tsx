@@ -1,4 +1,6 @@
 import * as React from 'react';
+import throttle from 'lodash-decorators/throttle';
+import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {
   addEventListener,
@@ -17,6 +19,7 @@ export interface State {
   valueUpper: number;
   trackWidth: number;
   trackLeft: number;
+  prevValue?: [number, number];
 }
 
 export interface Props extends RangeSliderProps {
@@ -35,9 +38,16 @@ const THUMB_SIZE = 24;
 const OUTPUT_TIP_SIZE = 8;
 
 export default class DualThumb extends React.Component<Props, State> {
-  static getDerivedStateFromProps(props: Props) {
+  static getDerivedStateFromProps(props: Props, state: State) {
     const {min, step, max, value} = props;
+    const {prevValue} = state;
+
+    if (isEqual(prevValue, value)) {
+      return null;
+    }
+
     return {
+      prevValue: value,
       valueLower: sanitizeValueLower(value[0], min, step, value[1]),
       valueUpper: sanitizeValueUpper(value[1], max, step, value[0]),
     };
@@ -291,6 +301,7 @@ export default class DualThumb extends React.Component<Props, State> {
     );
   }
 
+  @throttle(40)
   @autobind
   private setTrackPosition() {
     if (this.track.current) {
@@ -304,7 +315,8 @@ export default class DualThumb extends React.Component<Props, State> {
   }
 
   @autobind
-  private handleMouseDownThumbLower() {
+  private handleMouseDownThumbLower(event: MouseEvent) {
+    if (event.button !== 0) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbLower);
   }
 
@@ -314,7 +326,8 @@ export default class DualThumb extends React.Component<Props, State> {
   }
 
   @autobind
-  private handleMouseDownThumbUpper() {
+  private handleMouseDownThumbUpper(event: MouseEvent) {
+    if (event.button !== 0) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
   }
 
@@ -395,30 +408,38 @@ export default class DualThumb extends React.Component<Props, State> {
   private setValueLower(value: number) {
     const {
       props: {min, step},
-      state: {valueUpper},
+      state: {valueUpper, valueLower},
     } = this;
 
-    this.setState(
-      {
-        valueLower: sanitizeValueLower(value, min, step, valueUpper),
-      },
-      this.dispatchValue,
-    );
+    const sanitizedValue = sanitizeValueLower(value, min, step, valueUpper);
+
+    if (sanitizedValue !== valueLower) {
+      this.setState(
+        {
+          valueLower: sanitizedValue,
+        },
+        this.dispatchValue,
+      );
+    }
   }
 
   @autobind
   private setValueUpper(value: number) {
     const {
       props: {max, step},
-      state: {valueLower},
+      state: {valueLower, valueUpper},
     } = this;
 
-    this.setState(
-      {
-        valueUpper: sanitizeValueUpper(value, max, step, valueLower),
-      },
-      this.dispatchValue,
-    );
+    const sanitizedValue = sanitizeValueUpper(value, max, step, valueLower);
+
+    if (sanitizedValue !== valueUpper) {
+      this.setState(
+        {
+          valueUpper: sanitizedValue,
+        },
+        this.dispatchValue,
+      );
+    }
   }
 
   @autobind
