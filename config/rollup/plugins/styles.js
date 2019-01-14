@@ -24,8 +24,7 @@ module.exports = function styles(options = {}) {
     includeAlways = [],
     generateScopedName: userGenerateScopedName,
   } = options;
-  const compiledStyles = [];
-  const tokensByFile = {};
+  const cssAndTokens = [];
 
   const generateScopedName =
     typeof userGenerateScopedName === 'function'
@@ -82,19 +81,18 @@ module.exports = function styles(options = {}) {
             resolve(getPostCSSOutput(processor, sassOutput, id));
           },
         );
-      }).then(({css, tokens}) => {
-        tokensByFile[id] = tokens;
+      }).then((postCssOutput) => {
+        cssAndTokens.push({...postCssOutput, id});
 
-        const properties = Object.keys(tokens)
+        const properties = Object.keys(postCssOutput.tokens)
           .map(
             (className) =>
               `  ${JSON.stringify(className)}: ${JSON.stringify(
-                tokens[className],
+                postCssOutput.tokens[className],
               )},`,
           )
           .join('\n');
 
-        compiledStyles.push(css);
         return `export default {\n${properties}\n};`;
       });
     },
@@ -114,13 +112,25 @@ module.exports = function styles(options = {}) {
 
       const minifiedCSSDestination = `${cssDestination.slice(0, -4)}.min.css`;
       const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
-      const css = compiledStyles.join('\n\n');
+
+      // Items can be added to cssAndTokens in an unspecified order as
+      // whatever transform gets resolved first appears first. Sort the list
+      // so we get consistant output in the concatenated files
+      const sortedCssAndTokens = cssAndTokens.sort((item1, item2) =>
+        item1.id.localeCompare(item2.id),
+      );
+
+      const css = sortedCssAndTokens.map((item) => item.css).join('\n\n');
+      const tokensByFile = sortedCssAndTokens.reduce((memo, item) => {
+        memo[item.id] = item.tokens;
+        return memo;
+      }, {});
 
       ensureDirSync(dirname(cssDestination));
 
       return Promise.all([
         write(cssDestination, css),
-        write(tokensDestination, JSON.stringify(tokensByFile, null, 2)),
+        write(tokensDestination, `${JSON.stringify(tokensByFile, null, 2)}\n`),
         cssnano
           .process(css, {from: generateOptions.file})
           .then((result) => write(minifiedCSSDestination, result.css)),
