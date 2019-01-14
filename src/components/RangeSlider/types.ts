@@ -2,7 +2,8 @@ import {Action} from '../Labelled';
 
 import {Error} from '../../types';
 
-export type RangeSliderValue = number | [number, number];
+export type DualValue = [number, number];
+export type RangeSliderValue = number | DualValue;
 
 export interface Props {
   /** Label for the range input */
