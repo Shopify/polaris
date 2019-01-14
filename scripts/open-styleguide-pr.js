@@ -1,22 +1,27 @@
 /* eslint-disable no-console */
 
 const {execSync} = require('child_process');
+const {readFileSync} = require('fs');
 const {resolve} = require('path');
 const {mkdir} = require('shelljs');
+const yaml = require('js-yaml');
 const semver = require('semver');
 
-const {version: packageVersion} = require('../package.json');
+const {version: PACKAGE_VERSION} = require('../package.json');
+
+const YARN_VERSION = yaml
+  .safeLoad(readFileSync(resolve(__dirname, '..', 'dev.yml'), 'utf8'))
+  .up.find((obj) => Object.keys(obj).includes('node')).node.yarn;
 
 const polarisBotName = 'Shopify Polaris Bot';
 const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
 const polarisBotToken = require('../secrets.json').github['shopify-polaris'];
 
-const YARN_VERSION = '10.13.0';
 const STYLEGUIDE = 'polaris-styleguide';
 const root = resolve(__dirname, '../');
 const sandbox = resolve(root, 'sandbox');
 const polarisStyleguide = resolve(sandbox, STYLEGUIDE);
-const releaseVersion = `v${packageVersion}`;
+const releaseVersion = `v${PACKAGE_VERSION}`;
 
 // Compute the base branch on polaris-styleguide (default: master)
 // Example: will open a PR against the v4 branch if the
@@ -36,8 +41,8 @@ function isMajorPrerelease(version) {
   );
 }
 
-const baseBranch = isMajorPrerelease(packageVersion)
-  ? `v${semver.major(packageVersion)}`
+const baseBranch = isMajorPrerelease(PACKAGE_VERSION)
+  ? `v${semver.major(PACKAGE_VERSION)}`
   : 'master';
 
 mkdir(sandbox);
