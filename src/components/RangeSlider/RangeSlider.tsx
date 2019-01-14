@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {Props, RangeSliderValue} from './types';
+import {Props, RangeSliderValue, DualValue} from './types';
 import {RangeSliderDefault} from './utilities';
 
 import {SingleThumb, DualThumb} from './components';
@@ -35,7 +35,7 @@ export function RangeSlider(props: CombinedProps) {
   );
 }
 
-function isDualThumb(value: RangeSliderValue): value is [number, number] {
+function isDualThumb(value: RangeSliderValue): value is DualValue {
   return Array.isArray(value);
 }
 

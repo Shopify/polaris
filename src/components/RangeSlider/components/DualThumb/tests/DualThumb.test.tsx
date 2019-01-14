@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
-import DualThumb from '../DualThumb';
+import DualThumb, {Props as DualThumbProps} from '../DualThumb';
 
 describe('<DualThumb />', () => {
-  const mockProps = {
+  const mockProps: DualThumbProps = {
     id: 'RangeSlider',
-    cssVarPrefix: '--Polaris-RangeSlider-',
-    value: [5, 20] as [number, number],
+    value: [0, 1],
     min: 0,
     max: 50,
     step: 1,
@@ -19,29 +18,29 @@ describe('<DualThumb />', () => {
 
   describe('id', () => {
     it('is used to set the id on the wrapper div', () => {
+      const id = 'MytestID';
       const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} id="RangeSlider" />,
+        <DualThumb {...mockProps} id={id} />,
       );
-
-      expect(dualThumb.find('div#RangeSlider')).toHaveLength(1);
+      expect(dualThumb.find(`div#${id}`)).toHaveLength(1);
     });
 
     it('is used to set idLower on the lower thumb', () => {
+      const id = 'MyNewID';
       const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} id="RangeSlider" />,
+        <DualThumb {...mockProps} id={id} />,
       );
-
       const thumbLower = findByTestID(dualThumb, 'thumbLower');
-      expect(thumbLower.prop('id')).toBe('RangeSliderLower');
+      expect(thumbLower.prop('id')).toBe(`${id}Lower`);
     });
 
     it('is used to set idUpper on the upper thumb', () => {
+      const id = 'MyNewID';
       const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} id="RangeSlider" />,
+        <DualThumb {...mockProps} id={id} />,
       );
-
       const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
-      expect(thumbUpper.prop('id')).toBe('RangeSliderUpper');
+      expect(thumbUpper.prop('id')).toBe(`${id}Upper`);
     });
   });
 
@@ -51,7 +50,6 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} min={min} />,
       );
-
       const thumbLower = findByTestID(dualThumb, 'thumbLower');
       expect(thumbLower.prop('aria-valuemin')).toBe(min);
     });
@@ -61,77 +59,28 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} min={min} />,
       );
-
       const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
       expect(thumbUpper.prop('aria-valuemin')).toBe(min);
-    });
-
-    it('sets a lower boundary for aria-valuenow on the lower thumb', () => {
-      const min = 5;
-      const value = [0, 20] as [number, number];
-      const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} min={min} value={value} />,
-      );
-
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
-      expect(thumbLower.prop('aria-valuenow')).toBe(min);
     });
   });
 
   describe('max', () => {
     it('is used to set the aria-valuemax on the lower thumb', () => {
-      const max = 0;
+      const max = 100;
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} max={max} />,
       );
-
       const thumbLower = findByTestID(dualThumb, 'thumbLower');
-      expect(thumbLower.prop('aria-valuemin')).toBe(max);
+      expect(thumbLower.prop('aria-valuemax')).toBe(max);
     });
 
     it('is used to set the aria-valuemax on the upper thumb', () => {
-      const max = 0;
+      const max = 100;
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} max={max} />,
       );
-
       const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
       expect(thumbUpper.prop('aria-valuemax')).toBe(max);
-    });
-
-    it('sets an upper boundary for aria-valuenow on the upper thumb', () => {
-      const max = 5;
-      const value = [0, 6] as [number, number];
-      const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} max={max} value={value} />,
-      );
-
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
-      expect(thumbUpper.prop('aria-valuenow')).toBe(max);
-    });
-  });
-
-  describe('step', () => {
-    it('adjusts the lower value', () => {
-      const step = 5;
-      const value = [3, 10] as [number, number];
-      const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} step={step} value={value} />,
-      );
-
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
-      expect(thumbLower.prop('aria-valuenow')).toBe(step);
-    });
-
-    it('adjusts the upper value', () => {
-      const step = 5;
-      const value = [0, 9] as [number, number];
-      const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} step={step} value={value} />,
-      );
-
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
-      expect(thumbUpper.prop('aria-valuenow')).toBe(10);
     });
   });
 
@@ -248,7 +197,7 @@ describe('<DualThumb />', () => {
       );
 
       const outputLower = dualThumb.find('output').first();
-      expect(outputLower.find('span').text()).toContain('5');
+      expect(outputLower.find('span').text()).toContain('0');
     });
 
     it('renders the correct value for the upper output', () => {
@@ -257,7 +206,7 @@ describe('<DualThumb />', () => {
       );
 
       const outputUpper = dualThumb.find('output').last();
-      expect(outputUpper.find('span').text()).toContain('20');
+      expect(outputUpper.find('span').text()).toContain('1');
     });
   });
 
@@ -309,23 +258,141 @@ describe('<DualThumb />', () => {
     });
   });
 
-  describe('CSS custom properties', () => {
-    it('sets the correct css custom properties on the track', () => {
-      const min = 10;
-      const max = 50;
-      const value = [20, 50] as [number, number];
-      const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} value={value} min={min} max={max} />,
+  describe('onChange()', () => {
+    it('is called when the value prop needs sanitization', () => {
+      const onChangeSpy = jest.fn();
+      const id = 'onChangeID';
+
+      mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[15, 10]}
+          onChange={onChangeSpy}
+          id={id}
+        />,
       );
 
+      expect(onChangeSpy).toHaveBeenCalledWith([9, 10], id);
+    });
+
+    it('is not called when the value prop needs no sanitization', () => {
+      const onChangeSpy = jest.fn();
+
+      mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 15]} onChange={onChangeSpy} />,
+      );
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('CSS custom properties', () => {
+    it('sets the correct css custom properties on the track', () => {
+      const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
+
       const expected = {
-        '--Polaris-RangeSlider-progress-lower': '0px',
-        '--Polaris-RangeSlider-progress-upper': '-18px',
+        '--Polaris-RangeSlider-progress-lower': '12px',
+        '--Polaris-RangeSlider-progress-upper': '11.52px',
       };
       const track = findByTestID(dualThumb, 'track');
       const actual = track.find('[style]').prop('style');
 
       expect(expected).toEqual(actual);
+    });
+  });
+
+  describe('value prop sanitization', () => {
+    it('sanitizes the lower value with respect to the step prop', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[4, 40]} step={5} />,
+      );
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([5, 40]);
+    });
+
+    it('sanitizes the upper value with respect to the step prop', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 41]} step={5} />,
+      );
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([5, 40]);
+    });
+
+    it('sanitizes the lower value with respect to the max prop', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[110, 150]} max={100} />,
+      );
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([99, 100]);
+    });
+
+    it('sanitizes the upper value with respect to the max prop', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[110, 150]} max={100} />,
+      );
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([99, 100]);
+    });
+
+    it('sanitizes the lower value with respect to the min prop', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} min={20} />,
+      );
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([20, 40]);
+    });
+
+    it('sanitizes the upper value with respect to the min prop', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 15]} min={20} />,
+      );
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([20, 21]);
+    });
+
+    it('sets the lower value to a step below the upper value if the lower value equals the upper value', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 10]} />,
+      );
+
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([9, 10]);
+    });
+
+    it('sets the lower value to a step below the upper value if the lower value is higher than the upper value', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[15, 10]} />,
+      );
+
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([9, 10]);
+    });
+
+    it('sets the upper value to one step above the min and the lower value to the min when they are out of bounds and inversed', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[1500, -10]} />,
+      );
+
+      expect([
+        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
+        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+      ]).toEqual([0, 1]);
     });
   });
 });
