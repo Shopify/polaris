@@ -64,11 +64,6 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   width: 100%;
   height: $range-track-height;
   border-radius: $range-thumb-size;
-  cursor: pointer;
-
-  .disabled & {
-    cursor: default;
-  }
 
   --unselected-range: #{color('sky', 'dark')};
   --selected-range: #{color('indigo')};
