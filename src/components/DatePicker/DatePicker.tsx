@@ -7,10 +7,6 @@ import {
   Year,
   isDateAfter,
   isDateBefore,
-  getNextDisplayYear,
-  getNextDisplayMonth,
-  getPreviousDisplayYear,
-  getPreviousDisplayMonth,
   Weekdays,
   isSameDay,
 } from '@shopify/javascript-utilities/dates';
@@ -42,6 +38,8 @@ export interface BaseProps {
   multiMonth?: boolean;
   /** First day of week. Sunday by default */
   weekStartsOn?: Weekdays;
+  /** Locale for date formatting. 'en' by default */
+  locale?: string;
   /** Callback when date is selected. */
   onChange?(date: Range): void;
   /** Callback when month is changed. */
@@ -84,32 +82,21 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       disableDatesBefore,
       disableDatesAfter,
       weekStartsOn = Weekdays.Sunday,
-      polaris: {intl},
+      locale = 'en',
     } = this.props;
 
     const {hoverDate, focusDate} = this.state;
 
-    const showNextYear = getNextDisplayYear(month, year);
-    const showNextMonth = getNextDisplayMonth(month);
-
-    const showNextToNextYear = getNextDisplayYear(showNextMonth, showNextYear);
-    const showNextToNextMonth = getNextDisplayMonth(showNextMonth);
-
-    const showPreviousYear = getPreviousDisplayYear(month, year);
-    const showPreviousMonth = getPreviousDisplayMonth(month);
-
-    const previousMonthName = Months[showPreviousMonth];
-    const nextMonth = multiMonth
-      ? Months[showNextToNextMonth]
-      : Months[showNextMonth];
-    const nextYear = multiMonth ? showNextToNextYear : showNextYear;
+    const visibleMonth = new Date(year, month);
+    const previousVisibleMonth = new Date(year, month - 1);
+    const nextVisibleMonth = new Date(year, month + 1);
+    const nextToNextVisibleMonth = new Date(year, month + 2);
 
     const secondDatePicker = multiMonth ? (
       <Month
         onFocus={this.handleFocus}
         focusedDate={focusDate}
-        month={showNextMonth}
-        year={showNextYear}
+        visibleMonth={nextVisibleMonth}
         selected={deriveRange(selected)}
         hoverDate={hoverDate}
         onChange={this.handleDateSelection}
@@ -118,6 +105,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
         disableDatesAfter={disableDatesAfter}
         allowRange={allowRange}
         weekStartsOn={weekStartsOn}
+        locale={locale}
       />
     ) : null;
 
@@ -132,41 +120,38 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
           <Button
             plain
             icon="arrowLeft"
-            accessibilityLabel={intl.translate(
-              'Polaris.DatePicker.previousMonth',
-              {
-                previousMonthName,
-                showPreviousYear,
-              },
-            )}
+            accessibilityLabel={Intl.DateTimeFormat(locale, {
+              month: 'long',
+              year: 'numeric',
+            }).format(previousVisibleMonth)}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
-              showPreviousMonth,
-              showPreviousYear,
+              previousVisibleMonth.getMonth(),
+              previousVisibleMonth.getFullYear(),
             )}
           />
           <Button
             plain
             icon="arrowRight"
-            accessibilityLabel={intl.translate('Polaris.DatePicker.nextMonth', {
-              nextMonth,
-              nextYear,
-            })}
+            accessibilityLabel={Intl.DateTimeFormat(locale, {
+              month: 'long',
+              year: 'numeric',
+            }).format(multiMonth ? nextToNextVisibleMonth : nextVisibleMonth)}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
-              showNextMonth,
-              showNextYear,
+              nextVisibleMonth.getMonth(),
+              nextVisibleMonth.getFullYear(),
             )}
           />
         </div>
         <div className={styles.MonthContainer}>
           <Month
+            locale={locale}
             onFocus={this.handleFocus}
             focusedDate={focusDate}
-            month={month}
-            year={year}
+            visibleMonth={visibleMonth}
             selected={deriveRange(selected)}
             hoverDate={hoverDate}
             onChange={this.handleDateSelection}

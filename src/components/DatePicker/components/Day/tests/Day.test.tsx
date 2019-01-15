@@ -68,4 +68,20 @@ describe('<Day />', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('locale', () => {
+    it('defaults to en locale if no locale is set', () => {
+      const day = mountWithAppProvider(<Day day={new Date(2019, 0, 14)} />);
+
+      expect(day.text()).toEqual('14');
+    });
+
+    it('day is formatted to specified locale', () => {
+      const day = mountWithAppProvider(
+        <Day locale="ja" day={new Date(2019, 0, 14)} />,
+      );
+
+      expect(day.text()).toEqual('14日');
+    });
+  });
 });

@@ -2,12 +2,13 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
+import {isSameDay} from '@shopify/javascript-utilities/dates';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import * as styles from '../../DatePicker.scss';
 
 export interface Props {
+  locale?: string;
   focused?: boolean;
   day?: Date;
   selected?: boolean;
@@ -42,6 +43,7 @@ export class Day extends React.PureComponent<CombinedProps, never> {
       inHoveringRange,
       disabled,
       polaris: {intl},
+      locale = 'en',
     } = this.props;
 
     const handleHover = onHover.bind(null, day);
@@ -57,14 +59,16 @@ export class Day extends React.PureComponent<CombinedProps, never> {
       today && styles['Day-today'],
       (inRange || inHoveringRange) && !disabled && styles['Day-inRange'],
     );
-    const date = day.getDate();
+    const firstDay = day.getDate() === 1;
     const tabIndex =
-      (focused || selected || today || date === 1) && !disabled ? 0 : -1;
+      (focused || selected || today || firstDay) && !disabled ? 0 : -1;
     const ariaLabel = [
-      `${today ? intl.translate('Polaris.DatePicker.today') : ''}`,
-      `${Months[day.getMonth()]} `,
-      `${date} `,
-      `${day.getFullYear()}`,
+      today ? intl.translate('Polaris.DatePicker.today') : '',
+      Intl.DateTimeFormat(locale, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }).format(day),
     ].join('');
 
     return (
@@ -83,7 +87,7 @@ export class Day extends React.PureComponent<CombinedProps, never> {
         aria-disabled={disabled}
         role="gridcell"
       >
-        {date}
+        {Intl.DateTimeFormat(locale, {day: 'numeric'}).format(day)}
       </button>
     );
   }

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities';
+import Button from '../../Button';
 import {Day, Month, Weekday} from '../components';
 import DatePicker from '../DatePicker';
 
@@ -20,7 +21,7 @@ describe('<DatePicker />', () => {
     );
 
     const weekday = datePicker.find(Weekday);
-    expect(weekday.first().text()).toEqual('Su');
+    expect(weekday.first().text()).toEqual('Sun');
   });
 
   describe('when weekStartsOn is passed', () => {
@@ -30,7 +31,7 @@ describe('<DatePicker />', () => {
       );
 
       const weekday = datePicker.find(Weekday);
-      expect(weekday.first().text()).toEqual('Mo');
+      expect(weekday.first().text()).toEqual('Mon');
     });
 
     it('renders Saturday as first day of the week', () => {
@@ -39,7 +40,7 @@ describe('<DatePicker />', () => {
       );
 
       const weekday = datePicker.find(Weekday);
-      expect(weekday.first().text()).toEqual('Sa');
+      expect(weekday.first().text()).toEqual('Sat');
     });
   });
 
@@ -50,18 +51,9 @@ describe('<DatePicker />', () => {
       );
 
       const month = datePicker.find(Month);
-      expect(month.prop('month')).toEqual(1);
-    });
-  });
-
-  describe('year', () => {
-    it('passes the correct year to Month', () => {
-      const datePicker = mountWithAppProvider(
-        <DatePicker month={1} year={2016} />,
+      expect(month.prop('visibleMonth').valueOf()).toEqual(
+        new Date(2018, 1).valueOf(),
       );
-
-      const year = datePicker.find(Month);
-      expect(year.prop('year')).toEqual(2016);
     });
   });
 
@@ -89,8 +81,7 @@ describe('<DatePicker />', () => {
           focusedDate={new Date()}
           selected={selected}
           hoverDate={hoverDate}
-          month={month}
-          year={year}
+          visibleMonth={new Date(year, month)}
           onChange={spy}
           weekStartsOn={Weekdays.Sunday}
         />,
@@ -136,6 +127,103 @@ describe('<DatePicker />', () => {
       );
 
       expect(datePicker.childAt(0).prop('id')).toBe(id);
+    });
+  });
+
+  describe('onMonthChange', () => {
+    it('calls onMonthChange with next month arguments when next month button is clicked', () => {
+      const spy = jest.fn();
+      const datePicker = mountWithAppProvider(
+        <DatePicker month={11} year={2018} onMonthChange={spy} />,
+      );
+
+      const nextMonthButton = datePicker
+        .find(Button)
+        .filter({icon: 'arrowRight'});
+
+      trigger(nextMonthButton, 'onClick');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(0, 2019);
+    });
+
+    it('calls onMonthChange with previous month arguments when previous month button is clicked', () => {
+      const spy = jest.fn();
+      const datePicker = mountWithAppProvider(
+        <DatePicker month={0} year={2018} onMonthChange={spy} />,
+      );
+
+      const previousMonthButton = datePicker
+        .find(Button)
+        .filter({icon: 'arrowLeft'});
+
+      trigger(previousMonthButton, 'onClick');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(11, 2017);
+    });
+  });
+
+  describe('locale', () => {
+    it('passes locale to Month component', () => {
+      const datePicker = mountWithAppProvider(
+        <DatePicker locale="ja" month={0} year={2018} />,
+      );
+
+      expect(datePicker.find(Month).prop('locale')).toEqual('ja');
+    });
+
+    it('passes locale to both Month components if multiMonth is true', () => {
+      const datePicker = mountWithAppProvider(
+        <DatePicker locale="ja" month={0} year={2018} multiMonth />,
+      );
+
+      const monthsWithExpectedLocale = datePicker
+        .find(Month)
+        .filter({locale: 'ja'});
+
+      expect(monthsWithExpectedLocale).toHaveLength(2);
+    });
+
+    it('button accessibility labels default to en locale if no locale is set', () => {
+      const datePicker = mountWithAppProvider(
+        <DatePicker month={10} year={2018} />,
+      );
+
+      const nextMonthButton = datePicker
+        .find(Button)
+        .filter({icon: 'arrowRight'});
+
+      const previousMonthButton = datePicker
+        .find(Button)
+        .filter({icon: 'arrowLeft'});
+
+      expect(nextMonthButton.prop('accessibilityLabel')).toEqual(
+        'December 2018',
+      );
+      expect(previousMonthButton.prop('accessibilityLabel')).toEqual(
+        'October 2018',
+      );
+    });
+
+    it('button accessibility labels are formatted to specified locale', () => {
+      const datePicker = mountWithAppProvider(
+        <DatePicker locale="ja" month={10} year={2018} />,
+      );
+
+      const nextMonthButton = datePicker
+        .find(Button)
+        .filter({icon: 'arrowRight'});
+
+      const previousMonthButton = datePicker
+        .find(Button)
+        .filter({icon: 'arrowLeft'});
+
+      expect(nextMonthButton.prop('accessibilityLabel')).toEqual('2018年12月');
+
+      expect(previousMonthButton.prop('accessibilityLabel')).toEqual(
+        '2018年10月',
+      );
     });
   });
 

@@ -2,8 +2,6 @@ import * as React from 'react';
 import {
   Range,
   Weekdays,
-  Months,
-  Year,
   isDateBefore,
   isDateAfter,
   isSameDay,
@@ -11,7 +9,6 @@ import {
   dateIsInRange,
   dateIsSelected,
   getNewRange,
-  abbreviationForWeekday,
 } from '@shopify/javascript-utilities/dates';
 import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -20,11 +17,11 @@ import Day from '../Day';
 import Weekday from '../Weekday';
 
 export interface Props {
+  locale?: string;
   focusedDate?: Date;
   selected?: Range;
   hoverDate?: Date;
-  month: Months;
-  year: Year;
+  visibleMonth: Date;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
   allowRange?: Boolean;
@@ -32,8 +29,6 @@ export interface Props {
   onChange?(date: Range): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
-  monthName?(month: Months): string;
-  weekdayName?(weekday: Weekdays): string;
 }
 
 const WEEKDAYS = [
@@ -47,6 +42,7 @@ const WEEKDAYS = [
 ];
 
 export default function Month({
+  locale = 'en',
   focusedDate,
   selected,
   hoverDate,
@@ -56,26 +52,40 @@ export default function Month({
   onChange = noop,
   onHover = noop,
   onFocus = noop,
-  month,
-  year,
+  visibleMonth,
   weekStartsOn,
 }: Props) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
-  const current = now.getMonth() === month && now.getFullYear() === year;
+  const current =
+    now.getMonth() === visibleMonth.getMonth() &&
+    now.getFullYear() === visibleMonth.getFullYear();
   const className = classNames(
     styles.Title,
     current && styles['Month-current'],
   );
-  const weeks = getWeeksForMonth(month, year, weekStartsOn);
-  const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => (
-    <Weekday
-      key={weekday}
-      title={abbreviationForWeekday(weekday)}
-      current={current && new Date().getDay() === weekday}
-      label={weekday}
-    />
-  ));
+
+  const weeks = getWeeksForMonth(
+    visibleMonth.getMonth(),
+    visibleMonth.getFullYear(),
+    weekStartsOn,
+  );
+
+  const weekdayFormat = Intl.DateTimeFormat(locale, {weekday: 'short'});
+
+  const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => {
+    // October 1, 2017 is a Sunday
+    const arbitraryWeekdayDate = new Date(2017, 9, weekday + 1);
+
+    return (
+      <Weekday
+        key={weekday}
+        title={weekdayFormat.format(arbitraryWeekdayDate)}
+        current={current && new Date().getDay() === weekday}
+        label={weekday}
+      />
+    );
+  });
 
   function handleDateClick(selectedDate: Date) {
     onChange(getNewRange(allowRange && selected, selectedDate));
@@ -83,10 +93,18 @@ export default function Month({
 
   function renderWeek(day: Date, dayIndex: number) {
     if (day == null) {
-      const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
+      const lastDayOfMonth = new Date(
+        visibleMonth.getFullYear(),
+        visibleMonth.getMonth() + 1,
+        0,
+      );
       return (
-        // eslint-disable-next-line react/jsx-no-bind
-        <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />
+        <Day
+          key={dayIndex}
+          // eslint-disable-next-line react/jsx-no-bind
+          onHover={onHover.bind(null, lastDayOfMonth)}
+          locale={locale}
+        />
       );
     }
 
@@ -96,6 +114,7 @@ export default function Month({
 
     return (
       <Day
+        locale={locale}
         focused={focusedDate != null && isSameDay(day, focusedDate)}
         day={day}
         key={dayIndex}
@@ -123,7 +142,9 @@ export default function Month({
   return (
     <div role="grid" className={styles.Month}>
       <div className={className}>
-        {Months[month]} {year}
+        {Intl.DateTimeFormat(locale, {month: 'long', year: 'numeric'}).format(
+          visibleMonth,
+        )}
       </div>
       <div role="rowheader" className={styles.WeekHeadings}>
         {weekdays}
