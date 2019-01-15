@@ -24,7 +24,7 @@ module.exports = function styles(options = {}) {
     includeAlways = [],
     generateScopedName: userGenerateScopedName,
   } = options;
-  const cssAndTokens = [];
+  const cssAndTokensByFile = {};
 
   const generateScopedName =
     typeof userGenerateScopedName === 'function'
@@ -82,7 +82,7 @@ module.exports = function styles(options = {}) {
           },
         );
       }).then((postCssOutput) => {
-        cssAndTokens.push({...postCssOutput, id});
+        cssAndTokensByFile[id] = postCssOutput;
 
         const properties = Object.keys(postCssOutput.tokens)
           .map(
@@ -96,7 +96,7 @@ module.exports = function styles(options = {}) {
         return `export default {\n${properties}\n};`;
       });
     },
-    generateBundle(generateOptions) {
+    generateBundle(generateOptions, bundles) {
       if (output === false) {
         return null;
       }
@@ -113,18 +113,31 @@ module.exports = function styles(options = {}) {
       const minifiedCSSDestination = `${cssDestination.slice(0, -4)}.min.css`;
       const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
 
-      // Items can be added to cssAndTokens in an unspecified order as
-      // whatever transform gets resolved first appears first. Sort the list
-      // so we get consistant output in the concatenated files
-      const sortedCssAndTokens = cssAndTokens.sort((item1, item2) =>
-        item1.id.localeCompare(item2.id),
+      // Items are added to cssAndTokensByFile in an unspecified order as
+      // whatever transform gets resolved first appears first. The contents of
+      // the css file should use the order in which scss files were referenced
+      // in the compiled javascript file.
+      const styleIds = Object.keys(cssAndTokensByFile);
+      const includedStyleIds = Array.from(
+        Object.values(bundles).reduce((memo, bundle) => {
+          Object.keys(bundle.modules).forEach((moduleName) => {
+            if (styleIds.includes(moduleName)) {
+              memo.add(moduleName);
+            }
+          });
+          return memo;
+        }, new Set()),
       );
 
-      const css = sortedCssAndTokens.map((item) => item.css).join('\n\n');
-      const tokensByFile = sortedCssAndTokens.reduce((memo, item) => {
-        memo[item.id] = item.tokens;
-        return memo;
-      }, {});
+      const {cssArray, tokensByFile} = includedStyleIds.reduce(
+        (memo, id) => {
+          memo.cssArray.push(cssAndTokensByFile[id].css);
+          memo.tokensByFile[id] = cssAndTokensByFile[id].tokens;
+          return memo;
+        },
+        {cssArray: [], tokensByFile: {}},
+      );
+      const css = cssArray.join('\n\n');
 
       ensureDirSync(dirname(cssDestination));
 
