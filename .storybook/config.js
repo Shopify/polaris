@@ -30,7 +30,6 @@ addDecorator(
       mainBorderRadius: 0,
       mainBackground: tokens.colorSkyLight,
       mainTextColor: tokens.colorInk,
-      highlightColor: tokens.colorIndigoDark,
       dimmedTextColor: tokens.colorInkLighter,
       successColor: tokens.colorGreenDark,
       failColor: tokens.colorRedDark,
