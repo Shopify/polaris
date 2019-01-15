@@ -68,11 +68,11 @@ const readmeReq = require.context(
   /\/.+\/README.md$/,
 );
 function loadStories() {
-  addPlaygroundStory();
+  addPlaygroundStory(module);
 
   readmeReq.keys().forEach((filename) => {
     const readme = readmeReq(filename).component;
-    generateStories(hydrateExecutableExamples(readme));
+    generateStories(hydrateExecutableExamples(readme), module);
   });
 }
 
