@@ -26,6 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Replaced our home-grown playground with Storybook (still accessed through `yarn dev`) ([#768](https://github.com/Shopify/polaris-react/pull/768))
 - Removed our usage of babel-node for build scripts - use plain node instead ([#836](https://github.com/Shopify/polaris-react/pull/836))
+- Ensure CSS builds are reproducible ([#869](https://github.com/Shopify/polaris-react/pull/869))
 
 ### Dependency upgrades
 
