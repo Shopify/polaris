@@ -59,8 +59,7 @@ export default class DualThumb extends React.Component<Props, State> {
 
     return {
       prevValue: value,
-      valueLower: sanitizedValue[0],
-      valueUpper: sanitizedValue[1],
+      value: sanitizedValue,
     };
   }
 
