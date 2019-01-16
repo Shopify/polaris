@@ -58,6 +58,12 @@ export interface Props {
   onFocus?(): void;
   /** Callback when focus leaves button */
   onBlur?(): void;
+  /** Callback when a keypress event is registered on the button */
+  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keyup event is registered on the button */
+  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keydown event is registered on the button */
+  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -76,6 +82,9 @@ function Button({
   onClick,
   onFocus,
   onBlur,
+  onKeyDown,
+  onKeyPress,
+  onKeyUp,
   external,
   icon,
   primary,
@@ -184,6 +193,9 @@ function Button({
       onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      onKeyPress={onKeyPress}
       onMouseUp={handleMouseUpByBlurring}
       className={className}
       disabled={isDisabled}
