@@ -1,3 +1,5 @@
+import * as PropTypes from 'prop-types';
+import {ValidationMap} from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {Props as IconProps} from './components/Icon';
 
@@ -232,6 +234,10 @@ export enum Key {
   CloseBracket = 221,
   SingleQuote = 222,
 }
+
+export const contentContextTypes: ValidationMap<any> = {
+  withinContentContainer: PropTypes.bool,
+};
 
 export interface WithContextTypes<IJ> {
   context: IJ;

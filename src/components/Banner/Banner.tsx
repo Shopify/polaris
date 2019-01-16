@@ -1,21 +1,17 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
-import compose from '@shopify/react-compose';
 import {
   Action,
   DisableableAction,
   LoadableAction,
-  WithContextTypes,
+  contentContextTypes,
 } from '../../types';
 import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
-import {Consumer, WithinContentContext} from '../WithinContentContext';
-import withContext from '../WithContext';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import * as styles from './Banner.scss';
 
@@ -44,9 +40,9 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export type CombinedProps = Props & WithContextTypes<WithinContentContext>;
+export default class Banner extends React.PureComponent<Props, never> {
+  static contextTypes = contentContextTypes;
 
-export class Banner extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       icon,
@@ -56,8 +52,8 @@ export class Banner extends React.PureComponent<CombinedProps, never> {
       children,
       status,
       onDismiss,
-      context: {withinContentContainer},
     } = this.props;
+    const {withinContentContainer} = this.context;
 
     let color: IconProps['color'];
     let defaultIcon: IconProps['source'];
@@ -86,6 +82,7 @@ export class Banner extends React.PureComponent<CombinedProps, never> {
         color = 'inkLighter';
         defaultIcon = fallbackIcon;
     }
+
     const className = classNames(
       styles.Banner,
       status && styles[variationName('status', status)],
@@ -201,8 +198,3 @@ function secondaryActionFrom(action: Action) {
     </button>
   );
 }
-
-export default compose<Props>(
-  withContext<Props, WithAppProviderProps, WithinContentContext>(Consumer),
-  withAppProvider(),
-)(Banner);
