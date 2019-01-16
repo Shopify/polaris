@@ -27,14 +27,6 @@ $activator-variables: (
   cursor: pointer;
   transition: menu(transition);
 
-  @include breakpoint-before(layout-width(page-with-nav), false) {
-    &:focus,
-    &:hover {
-      background-color: transparent;
-      opacity: menu(focus-opacity);
-    }
-  }
-
   &:focus {
     background-color: menu(focus-background-color);
     outline: none;
@@ -49,6 +41,16 @@ $activator-variables: (
     background-color: menu(active-background-color);
     outline: none;
     transition: none;
+  }
+
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    &:focus,
+    &:hover,
+    &:active,
+    &[aria-expanded='true'] {
+      background-color: transparent;
+      opacity: menu(focus-opacity);
+    }
   }
 }
 

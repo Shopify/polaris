@@ -38,6 +38,7 @@ $icon-size: rem(20px);
   position: relative;
   align-self: center;
   margin-left: spacing(tight) + rem(2px);
+  margin-right: spacing(tight);
   padding: spacing(tight);
   border-radius: border-radius();
   &.focused {
@@ -72,20 +73,13 @@ $icon-size: rem(20px);
   height: 100%;
 }
 
-.SearchWrapper {
+.SearchField {
   @include page-layout;
   width: 100%;
   margin: 0;
   max-width: none;
-}
-
-.SearchField {
-  width: 100%;
-  padding-left: calc((100vw - #{layout-width(nav)} - #{$page-max-width}) / 2);
-
-  @include breakpoint-before(layout-width(page-with-nav), false) {
-    padding-left: 0;
-  }
+  display: flex;
+  justify-content: center;
 }
 
 .SecondaryMenu {

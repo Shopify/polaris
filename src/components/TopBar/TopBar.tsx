@@ -120,9 +120,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         {navigationButtonMarkup}
         <div className={styles.LogoContainer}>{logoMarkup}</div>
         <div className={styles.Contents}>
-          <div className={styles.SearchWrapper}>
-            <div className={styles.SearchField}>{searchMarkup}</div>
-          </div>
+          <div className={styles.SearchField}>{searchMarkup}</div>
           <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
           {userMenu}
         </div>
