@@ -60,30 +60,30 @@ describe('<Button />', () => {
   });
 
   describe('disabled', () => {
-    it('sets the disabled attribute on the button', () => {
+    it('disable without a url renders <button disabled>', () => {
       const button = shallowWithAppProvider(<Button disabled />);
       expect(button.find('button').prop('disabled')).toBeTruthy();
     });
 
-    it('sets the disabled attribute on the link', () => {
+    it('disable with a url renders <a> without an href (as <a disabled> is invalid HTML)>', () => {
       const button = shallowWithAppProvider(
         <Button disabled url="http://google.com" />,
       );
-      expect(button.find(UnstyledLink).prop('disabled')).toBeTruthy();
+      expect(button.find('a').prop('href')).toBeFalsy();
     });
   });
 
   describe('loading', () => {
-    it('sets the disabled attribute on the button', () => {
+    it('loading without a url renders <button disabled>', () => {
       const button = shallowWithAppProvider(<Button loading />);
       expect(button.find('button').prop('disabled')).toBe(true);
     });
 
-    it('sets the disabled attribute on the link', () => {
+    it('loading with a url renders <a> without an href (as <a disabled> is invalid HTML)', () => {
       const button = shallowWithAppProvider(
         <Button loading url="http://google.com" />,
       );
-      expect(button.find(UnstyledLink).prop('disabled')).toBeTruthy();
+      expect(button.find('a').prop('href')).toBeFalsy();
     });
 
     it('renders a spinner into the button', () => {

@@ -6,8 +6,6 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 import Spinner from '../Spinner';
-import Indicator from '../Indicator';
-
 import * as styles from './Button.scss';
 
 export type Size = 'slim' | 'medium' | 'large';
@@ -90,7 +88,6 @@ function Button({
   fullWidth,
   polaris: {intl},
 }: CombinedProps) {
-  const indicator = false;
   const isDisabled = disabled || loading;
   const className = classNames(
     styles.Button,
@@ -138,8 +135,6 @@ function Button({
     </span>
   ) : null;
 
-  const indicatorMarkup = indicator && <Indicator />;
-
   const content =
     iconMarkup || disclosureIconMarkup ? (
       <span className={styles.Content}>
@@ -157,23 +152,32 @@ function Button({
 
   const type = submit ? 'submit' : 'button';
 
-  return url ? (
-    <UnstyledLink
-      id={id}
-      url={url}
-      external={external}
-      onClick={onClick}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onMouseUp={handleMouseUpByBlurring}
-      className={className}
-      disabled={isDisabled}
-      aria-label={accessibilityLabel}
-    >
-      {indicatorMarkup}
-      {content}
-    </UnstyledLink>
-  ) : (
+  if (url) {
+    return isDisabled ? (
+      // Render an `<a>` so toggling disabled/enabled state changes only the
+      // `href` attribute instead of replacing the whole element.
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a id={id} className={className} aria-label={accessibilityLabel}>
+        {content}
+      </a>
+    ) : (
+      <UnstyledLink
+        id={id}
+        url={url}
+        external={external}
+        onClick={onClick}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onMouseUp={handleMouseUpByBlurring}
+        className={className}
+        aria-label={accessibilityLabel}
+      >
+        {content}
+      </UnstyledLink>
+    );
+  }
+
+  return (
     <button
       id={id}
       type={type}
@@ -189,7 +193,6 @@ function Button({
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >
-      {indicatorMarkup}
       {content}
     </button>
   );

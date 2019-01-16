@@ -30,7 +30,6 @@ addDecorator(
       mainBorderRadius: 0,
       mainBackground: tokens.colorSkyLight,
       mainTextColor: tokens.colorInk,
-      highlightColor: tokens.colorIndigoDark,
       dimmedTextColor: tokens.colorInkLighter,
       successColor: tokens.colorGreenDark,
       failColor: tokens.colorRedDark,
@@ -69,11 +68,11 @@ const readmeReq = require.context(
   /\/.+\/README.md$/,
 );
 function loadStories() {
-  addPlaygroundStory();
+  addPlaygroundStory(module);
 
   readmeReq.keys().forEach((filename) => {
     const readme = readmeReq(filename).component;
-    generateStories(hydrateExecutableExamples(readme));
+    generateStories(hydrateExecutableExamples(readme), module);
   });
 }
 

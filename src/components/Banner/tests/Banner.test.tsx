@@ -8,6 +8,7 @@ import fallbackIcon from '../icons/flag.svg';
 import warningIcon from '../icons/circle-alert.svg';
 import criticalIcon from '../icons/circle-barred.svg';
 import infoIcon from '../icons/circle-information.svg';
+import {Provider} from '../../WithinContentContext';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -95,14 +96,15 @@ describe('<Banner />', () => {
   };
 
   const bannerWithContentContext = mountWithAppProvider(
-    <Banner
-      action={{
-        content: 'Primary action',
-      }}
-    >
-      Some content
-    </Banner>,
-    {context: mockContext},
+    <Provider value={mockContext}>
+      <Banner
+        action={{
+          content: 'Primary action',
+        }}
+      >
+        Some content
+      </Banner>
+    </Provider>,
   );
 
   it('renders a slim button with contentContext', () => {

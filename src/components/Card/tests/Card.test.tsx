@@ -1,25 +1,28 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Card, Badge} from 'components';
-import {contentContextTypes} from '../../../types';
+
+import {Consumer, WithinContentContext} from '../../WithinContentContext';
 
 describe('<Card />', () => {
-  it('has a child with contentContext', () => {
-    const Child: React.SFC<{}> = (_props, context) =>
-      context.withinContentContainer ? <div /> : null;
-    Child.contextTypes = contentContextTypes;
+  it('has a child with prop withinContentContainer set to true', () => {
+    function TestComponent(_: WithinContentContext) {
+      return null;
+    }
 
-    const containedChild = mountWithAppProvider(
+    const component = mountWithAppProvider(
       <Card>
-        <Child />
+        <Consumer>
+          {(props) => {
+            return <TestComponent {...props} />;
+          }}
+        </Consumer>
       </Card>,
     );
 
-    const div = containedChild
-      .find(Child)
-      .find('div')
-      .first();
-    expect(div.exists()).toBe(true);
+    expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
+      true,
+    );
   });
 
   it('has a header tag when the title is a string', () => {
