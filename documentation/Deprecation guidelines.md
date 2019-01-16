@@ -9,3 +9,6 @@
   - Add the console warning in the constructor for classes and in the render method for functional components
 - For significant deprecations, add a section to the component documentation with rationale. State the upgrade path and include a link to a new component if applicable
 - Call out deprecations in our changelog
+
+## Examples
+- [Deprecation of `Navigation.UserMenu`](https://github.com/Shopify/polaris-react/pull/849).
