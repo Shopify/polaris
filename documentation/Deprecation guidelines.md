@@ -11,4 +11,5 @@
 - Call out deprecations in our changelog
 
 ## Examples
+
 - [Deprecation of `Navigation.UserMenu`](https://github.com/Shopify/polaris-react/pull/849).
