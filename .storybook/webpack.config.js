@@ -41,8 +41,6 @@ module.exports = (baseConfig, env, config) => {
         {
           loader: 'babel-loader',
           options: {
-            babelrc: false,
-            configFile: `${__dirname}/.babelrc`,
             // Don't use the production environment as it contains optimisations
             // that break compilation. The shopify/react preset enables the
             // babel-plugin-transform-react-constant-elements plugin which
@@ -63,8 +61,6 @@ module.exports = (baseConfig, env, config) => {
         {
           loader: 'babel-loader',
           options: {
-            babelrc: false,
-            configFile: `${__dirname}/.babelrc`,
             minified: isProduction,
             cacheDirectory: `${cacheDir}/typescript`,
           },
