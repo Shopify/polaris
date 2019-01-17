@@ -4,7 +4,15 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
+### Breaking changes
+
+### New components
+
 ### Enhancements
+
+- Added `onKeyPress`, `onKeyDown`, and `onKeyUp` to `Button` ([#860](https://github.com/Shopify/polaris-react/pull/860))
+
+### Design updates
 
 ### Bug fixes
 
@@ -12,9 +20,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
-- Replaced our home-grown playground with Storybook (still acccessed through `yarn dev`) ([#768](https://github.com/Shopify/polaris-react/pull/768))
-- Removed our usage of babel-node for build scripts - use plain node instead ([#836](https://github.com/Shopify/polaris-react/pull/836))
-
 ### Dependency upgrades
 
 ### Code quality
+
+### Deprecations

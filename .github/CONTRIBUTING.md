@@ -12,7 +12,7 @@ All work on Polaris React happens directly on GitHub. Both team members and exte
 
 ## Semantic versioning
 
-Polaris React follows semantic versioning. We release [patch versions for bug fixes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#patch), [minor versions for new features](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#minor), and [major versions for breaking changes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#major). When we make breaking changes, we introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance.
+Polaris React follows semantic versioning. We release [patch versions for bug fixes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#patch), [minor versions for new features](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#minor), and [major versions for breaking changes](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md#major). When we make breaking changes, we introduce deprecation warnings in a minor version along with the upgrade path so that our users learn about the upcoming changes and migrate their code in advance.
 
 We tag every pull request with a label marking whether the change should go in the next patch, minor, or a major version. We release new patch versions most weeks, minor versions every couple weeks, and major versions one or two times a year.
 
@@ -124,4 +124,4 @@ However, there are still some styles that the linter cannot pick up. If you are 
 
 ## Breaking changes
 
-If your pull request contains breaking changes, please target the branch for the next major release and open a second pull request against `master` that introduces the deprecation warnings. If you are unsure if the changes are considered breaking or not, open your pull request against the `master` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris-react/blob/master/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.
+If your pull request contains breaking changes, please target the branch for the next major release and open a pull request against `master` that introduces the deprecation warnings and upgrade path. If you are unsure if the changes are considered breaking or not, open your pull request against the `master` branch and let us know. We understand it can be uncomfortable asking for help and this is why we have a [code of conduct](https://github.com/Shopify/polaris-react/blob/master/.github/CODE_OF_CONDUCT.md) to ensure the community is positive, encouraging, and helpful.
