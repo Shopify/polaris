@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
+import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {Key} from 'types';
 import DualThumb, {Props as DualThumbProps} from '../DualThumb';
 
 describe('<DualThumb />', () => {
@@ -30,7 +32,7 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} id={id} />,
       );
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
+      const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('id')).toBe(`${id}Lower`);
     });
 
@@ -39,7 +41,7 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} id={id} />,
       );
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+      const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('id')).toBe(`${id}Upper`);
     });
   });
@@ -50,7 +52,7 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} min={min} />,
       );
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
+      const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-valuemin')).toBe(min);
     });
 
@@ -59,7 +61,7 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} min={min} />,
       );
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+      const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-valuemin')).toBe(min);
     });
   });
@@ -70,7 +72,7 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} max={max} />,
       );
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
+      const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-valuemax')).toBe(max);
     });
 
@@ -79,7 +81,7 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} max={max} />,
       );
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+      const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-valuemax')).toBe(max);
     });
   });
@@ -88,14 +90,14 @@ describe('<DualThumb />', () => {
     it('sets aria-disabled to false by default on the lower thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
+      const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(false);
     });
 
     it('sets aria-disabled to false by default on the upper thumb', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+      const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(false);
     });
 
@@ -104,7 +106,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} disabled />,
       );
 
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
+      const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-disabled')).toBe(true);
     });
 
@@ -113,7 +115,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} disabled />,
       );
 
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+      const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-disabled')).toBe(true);
     });
   });
@@ -124,7 +126,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} error="Error" />,
       );
 
-      const thumbLower = findByTestID(dualThumb, 'thumbLower');
+      const thumbLower = findThumbLower(dualThumb);
       expect(thumbLower.prop('aria-invalid')).toBe(true);
     });
 
@@ -133,7 +135,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} error="Error" />,
       );
 
-      const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+      const thumbUpper = findThumbUpper(dualThumb);
       expect(thumbUpper.prop('aria-invalid')).toBe(true);
     });
 
@@ -143,7 +145,7 @@ describe('<DualThumb />', () => {
           <DualThumb {...mockProps} error="Error" />,
         );
 
-        const thumbLower = findByTestID(dualThumb, 'thumbLower');
+        const thumbLower = findThumbLower(dualThumb);
         expect(thumbLower.prop('aria-describedby')).toBe('RangeSliderError');
       });
 
@@ -152,7 +154,7 @@ describe('<DualThumb />', () => {
           <DualThumb {...mockProps} error="Error" />,
         );
 
-        const thumbUpper = findByTestID(dualThumb, 'thumbUpper');
+        const thumbUpper = findThumbUpper(dualThumb);
         expect(thumbUpper.prop('aria-describedby')).toBe('RangeSliderError');
       });
     });
@@ -217,7 +219,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} onFocus={onFocusSpy} />,
       );
 
-      const lowerThumb = findByTestID(dualThumb, 'thumbLower');
+      const lowerThumb = findThumbLower(dualThumb);
       lowerThumb.simulate('focus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
     });
@@ -228,7 +230,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} onFocus={onFocusSpy} />,
       );
 
-      const upperThumb = findByTestID(dualThumb, 'thumbUpper');
+      const upperThumb = findThumbUpper(dualThumb);
       upperThumb.simulate('focus');
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
     });
@@ -241,7 +243,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} onBlur={onBlurSpy} />,
       );
 
-      const lowerThumb = findByTestID(dualThumb, 'thumbLower');
+      const lowerThumb = findThumbLower(dualThumb);
       lowerThumb.simulate('blur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
@@ -252,7 +254,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} onBlur={onBlurSpy} />,
       );
 
-      const upperThumb = findByTestID(dualThumb, 'thumbUpper');
+      const upperThumb = findThumbUpper(dualThumb);
       upperThumb.simulate('blur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
@@ -301,14 +303,164 @@ describe('<DualThumb />', () => {
     });
   });
 
+  describe('keyboard control', () => {
+    it('increments the lower value on right arrow press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.RightArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([11, 40], mockProps.id);
+    });
+
+    it('does not increment the lower value on upper value key press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbUpper(dualThumb), Key.RightArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 41], mockProps.id);
+    });
+
+    it('does not decrement the lower value on upper value key press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbUpper(dualThumb), Key.LeftArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 39], mockProps.id);
+    });
+
+    it('increments the lower value on up arrow press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.UpArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([11, 40], mockProps.id);
+    });
+
+    it('does not increment the lower value when it is a step below the upper value', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[39, 40]} onChange={onChangeSpy} />,
+      );
+      const lowerThumb = findThumbLower(dualThumb);
+      simulateKeyDown(lowerThumb, Key.RightArrow);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+      expect([
+        lowerThumb.prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
+      ]).toEqual([39, 40]);
+    });
+
+    it('does not decrement the lower value when it is equal to the min', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[0, 40]} onChange={onChangeSpy} />,
+      );
+      const lowerThumb = findThumbLower(dualThumb);
+      simulateKeyDown(lowerThumb, Key.LeftArrow);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+      expect([
+        lowerThumb.prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
+      ]).toEqual([0, 40]);
+    });
+
+    it('does not increment the upper value when it is equal to the max', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[0, 50]} onChange={onChangeSpy} />,
+      );
+      const upperThumb = findThumbUpper(dualThumb);
+      simulateKeyDown(upperThumb, Key.RightArrow);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+      expect([
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        upperThumb.prop('aria-valuenow'),
+      ]).toEqual([0, 50]);
+    });
+
+    it('does not decrement the upper value when it is a step above the lower value', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[49, 50]} onChange={onChangeSpy} />,
+      );
+      const upperThumb = findThumbUpper(dualThumb);
+      simulateKeyDown(upperThumb, Key.LeftArrow);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+      expect([
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        upperThumb.prop('aria-valuenow'),
+      ]).toEqual([49, 50]);
+    });
+
+    it('decrements the lower value on left arrow press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.LeftArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([9, 40], mockProps.id);
+    });
+
+    it('decrements the lower value on down arrow press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.DownArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([9, 40], mockProps.id);
+    });
+
+    it('does not increment the upper value on lower value key press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.UpArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([11, 40], mockProps.id);
+    });
+
+    it('does not decrement the upper value on lower value key press', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.DownArrow);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([9, 40], mockProps.id);
+    });
+
+    function simulateKeyDown(component: ReactWrapper, keyCode: Key) {
+      component.simulate('keyDown', {
+        keyCode,
+        preventDefault: noop,
+        stopPropagation: noop,
+      });
+    }
+  });
+
   describe('value prop sanitization', () => {
     it('sanitizes the lower value with respect to the step prop', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} value={[4, 40]} step={5} />,
       );
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([5, 40]);
     });
 
@@ -317,8 +469,8 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} value={[5, 41]} step={5} />,
       );
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([5, 40]);
     });
 
@@ -327,8 +479,8 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} value={[110, 150]} max={100} />,
       );
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([99, 100]);
     });
 
@@ -337,8 +489,8 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} value={[110, 150]} max={100} />,
       );
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([99, 100]);
     });
 
@@ -347,8 +499,8 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} value={[10, 40]} min={20} />,
       );
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([20, 40]);
     });
 
@@ -357,8 +509,8 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} value={[10, 15]} min={20} />,
       );
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([20, 21]);
     });
 
@@ -368,8 +520,8 @@ describe('<DualThumb />', () => {
       );
 
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([9, 10]);
     });
 
@@ -379,8 +531,8 @@ describe('<DualThumb />', () => {
       );
 
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([9, 10]);
     });
 
@@ -390,9 +542,17 @@ describe('<DualThumb />', () => {
       );
 
       expect([
-        findByTestID(dualThumb, 'thumbLower').prop('aria-valuenow'),
-        findByTestID(dualThumb, 'thumbUpper').prop('aria-valuenow'),
+        findThumbLower(dualThumb).prop('aria-valuenow'),
+        findThumbUpper(dualThumb).prop('aria-valuenow'),
       ]).toEqual([0, 1]);
     });
   });
 });
+
+function findThumbLower(containerComponent: ReactWrapper): ReactWrapper {
+  return containerComponent.find('button').first();
+}
+
+function findThumbUpper(containerComponent: ReactWrapper): ReactWrapper {
+  return containerComponent.find('button').last();
+}
