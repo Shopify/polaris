@@ -1,5 +1,8 @@
 @import './styles/variables';
+
 $icon-size: rem(20px);
+$page-left-alignment-breakpoint-max: 1268px;
+
 .TopBar {
   position: relative;
   display: flex;
@@ -78,8 +81,11 @@ $icon-size: rem(20px);
   width: 100%;
   margin: 0;
   max-width: none;
-  display: flex;
-  justify-content: center;
+  margin-left: calc((100% - #{$page-max-width}) / 2);
+
+  @media (max-width: $page-left-alignment-breakpoint-max) {
+    margin-left: 0;
+  }
 }
 
 .SecondaryMenu {
