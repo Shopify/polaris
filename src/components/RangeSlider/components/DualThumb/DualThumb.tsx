@@ -206,7 +206,6 @@ export default class DualThumb extends React.Component<Props, State> {
               />
               <button
                 id={idLower}
-                testID="thumbLower"
                 className={classNameThumbLower}
                 ref={this.thumbLower}
                 style={{
@@ -227,7 +226,6 @@ export default class DualThumb extends React.Component<Props, State> {
               {outputMarkupLower}
               <button
                 id={idUpper}
-                testID="thumbUpper"
                 className={classNameThumbUpper}
                 ref={this.thumbUpper}
                 style={{
@@ -361,7 +359,7 @@ export default class DualThumb extends React.Component<Props, State> {
   @autobind
   private incrementValueUpper() {
     this.setValue(
-      [this.state.value[1] + this.props.step, this.state.value[0]],
+      [this.state.value[0], this.state.value[1] + this.props.step],
       Control.Lower,
     );
   }
