@@ -112,10 +112,11 @@ class TabsExample extends React.Component {
 
     return (
       <Card>
-        <Tabs tabs={tabs} selected={selected} onSelect={this.handleTabChange} />
-        <Card.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </Card.Section>
+        <Tabs tabs={tabs} selected={selected} onSelect={this.handleTabChange}>
+          <Card.Section title={tabs[selected].content}>
+            <p>Tab {selected} selected</p>
+          </Card.Section>
+        </Tabs>
       </Card>
     );
   }
@@ -172,10 +173,11 @@ class FittedTabsExample extends React.Component {
           selected={selected}
           onSelect={this.handleTabChange}
           fitted
-        />
-        <Card.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
-        </Card.Section>
+        >
+          <Card.Section title={tabs[selected].content}>
+            <p>Tab {selected} selected</p>
+          </Card.Section>
+        </Tabs>
       </Card>
     );
   }
