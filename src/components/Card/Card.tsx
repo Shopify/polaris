@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
-import {Action, DisableableAction, contentContextTypes} from '../../types';
+import {Action, DisableableAction} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
+import {Provider, WithinContentContext} from '../WithinContentContext';
 
 import {Header, Section} from './components';
 import * as styles from './Card.scss';
@@ -28,13 +30,6 @@ export interface Props {
 export default class Card extends React.PureComponent<Props, never> {
   static Section = Section;
   static Header = Header;
-  static childContextTypes = contentContextTypes;
-
-  getChildContext() {
-    return {
-      withinContentContainer: true,
-    };
-  }
 
   render() {
     const {
@@ -74,11 +69,20 @@ export default class Card extends React.PureComponent<Props, never> {
       ) : null;
 
     return (
-      <div className={className}>
-        {headerMarkup}
-        {content}
-        {footerMarkup}
-      </div>
+      <Provider value={this.getContext}>
+        <div className={className}>
+          {headerMarkup}
+          {content}
+          {footerMarkup}
+        </div>
+      </Provider>
     );
+  }
+
+  @autobind
+  get getContext(): WithinContentContext {
+    return {
+      withinContentContainer: true,
+    };
   }
 }
