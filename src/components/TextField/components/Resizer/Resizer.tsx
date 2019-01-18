@@ -90,10 +90,9 @@ const ENTITIES_TO_REPLACE = {
   '&': '&amp;',
   '<': '&lt;',
   '>': '&gt;',
-  '\n': '<br>',
 };
 
-const REPLACE_REGEX = /[\n&<>]/g;
+const REPLACE_REGEX = /[&<>]/g;
 
 function replaceEntity(entity: keyof typeof ENTITIES_TO_REPLACE) {
   return ENTITIES_TO_REPLACE[entity] || entity;
