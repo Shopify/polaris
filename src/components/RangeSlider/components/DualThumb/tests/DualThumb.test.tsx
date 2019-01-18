@@ -453,6 +453,100 @@ describe('<DualThumb />', () => {
     }
   });
 
+  describe('mouse interface', () => {
+    type EventCallback = (mockEventData?: {[key: string]: any}) => void;
+
+    const eventMap: {[eventType: string]: EventCallback} = {};
+    const origialAddEventListener = document.addEventListener;
+
+    beforeAll(() => {
+      document.addEventListener = jest.fn(
+        (eventType: string, callback: EventCallback) => {
+          eventMap[eventType] = callback;
+        },
+      );
+    });
+
+    afterAll(() => {
+      document.addEventListener = origialAddEventListener;
+    });
+
+    it('moving the lower thumb sets the lower value', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+
+      moveLowerThumb(dualThumb, 0.5);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([25, 40], mockProps.id);
+    });
+
+    it('moving the upper thumb sets the upper value', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+
+      moveUpperThumb(dualThumb, 0.5);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 25], mockProps.id);
+    });
+
+    it('mouseup removes the mousemove event listener', () => {
+      const removeEventListenerSpy = jest.spyOn(
+        document,
+        'removeEventListener',
+      );
+      const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
+
+      moveUpperThumb(dualThumb, 0.5);
+      removeEventListenerSpy.mockClear();
+      eventMap.mouseup();
+
+      expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
+      expect(removeEventListenerSpy.mock.calls[0][0]).toBe('mousemove');
+    });
+
+    it('the lower and upper thumbs do not move when using a non-primary mouse button', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+
+      moveUpperThumb(dualThumb, 0.5, 1);
+      moveLowerThumb(dualThumb, 0.5, 1);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    function moveLowerThumb(
+      component: ReactWrapper,
+      percentageOfTrackX: number,
+      button = 0,
+    ) {
+      const trackWidth = 100;
+
+      component.setState({trackLeft: 0, trackWidth}, () => {
+        findThumbLower(component).simulate('mouseDown', {button});
+        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      });
+    }
+
+    function moveUpperThumb(
+      component: ReactWrapper,
+      percentageOfTrackX: number,
+      button = 0,
+    ) {
+      const trackWidth = 100;
+
+      component.setState({trackLeft: 0, trackWidth}, () => {
+        findThumbUpper(component).simulate('mouseDown', {button});
+        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      });
+    }
+  });
+
   describe('value prop sanitization', () => {
     it('sanitizes the lower value with respect to the step prop', () => {
       const dualThumb = mountWithAppProvider(
