@@ -314,7 +314,7 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith([11, 40], mockProps.id);
     });
 
-    it('does not increment the lower value on upper value key press', () => {
+    it('increments the upper value on right arrow press', () => {
       const onChangeSpy = jest.fn();
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
@@ -324,7 +324,7 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith([10, 41], mockProps.id);
     });
 
-    it('does not decrement the lower value on upper value key press', () => {
+    it('decrement the upper value on left arrow press', () => {
       const onChangeSpy = jest.fn();
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
@@ -424,7 +424,7 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith([9, 40], mockProps.id);
     });
 
-    it('does not increment the upper value on lower value key press', () => {
+    it('increment the lower value on up arrow press', () => {
       const onChangeSpy = jest.fn();
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
@@ -434,7 +434,7 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith([11, 40], mockProps.id);
     });
 
-    it('does not decrement the upper value on lower value key press', () => {
+    it('decrement the lower value on down arrow press', () => {
       const onChangeSpy = jest.fn();
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
