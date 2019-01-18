@@ -1,11 +1,14 @@
 import * as React from 'react';
+import compose from '@shopify/react-compose';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
+import withContext from '../WithContext';
+import {WithContextTypes} from '../../types';
 
 import {
   DEFAULT_TOAST_DURATION,
   FrameContext,
-  frameContextTypes,
+  Consumer,
   ToastProps,
 } from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -18,17 +21,18 @@ const createId = createUniqueIDFactory('Toast');
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
 interface Props extends ToastProps {}
 
-export type ComposedProps = Props & WithAppProviderProps;
+export type ComposedProps = Props &
+  WithAppProviderProps &
+  WithContextTypes<FrameContext>;
 
 export class Toast extends React.PureComponent<ComposedProps, never> {
-  static contextTypes = frameContextTypes;
   context: FrameContext;
 
   private id = createId();
   private appBridgeToast: AppBridgeToast.Flash | undefined;
 
   componentDidMount() {
-    const {context, id, props} = this;
+    const {id, props} = this;
     const {
       error,
       content,
@@ -38,9 +42,10 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
     const {appBridge} = props.polaris;
 
     if (appBridge == null) {
+      const {polaris, context, ...rest} = props;
       context.frame.showToast({
         id,
-        ...(props as Props),
+        ...(rest as Props),
       });
     } else {
       this.appBridgeToast = AppBridgeToast.create(appBridge, {
@@ -56,10 +61,11 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   }
 
   componentWillUnmount() {
-    const {appBridge} = this.props.polaris;
+    const {polaris, context} = this.props;
+    const {appBridge} = polaris;
 
     if (appBridge == null) {
-      this.context.frame.hideToast({id: this.id});
+      context.frame.hideToast({id: this.id});
     } else if (this.appBridgeToast != null) {
       this.appBridgeToast.unsubscribe();
     }
@@ -70,4 +76,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Toast);
+export default compose<Props>(
+  withContext<Props, WithAppProviderProps, FrameContext>(Consumer),
+  withAppProvider(),
+)(Toast);

@@ -14,10 +14,10 @@ import {setRootProperty} from '../../utilities/setRootProperty';
 import {
   ContextualSaveBarProps,
   FrameContext,
-  frameContextTypes,
-  ToastProps,
+  ToastID,
+  ToastPropsWithID,
 } from './types';
-import {ToastManager, Loading, ContextualSaveBar} from './components';
+import {Provider, ToastManager, Loading, ContextualSaveBar} from './components';
 
 import * as styles from './Frame.scss';
 
@@ -41,7 +41,7 @@ export interface State {
   skipFocused?: boolean;
   globalRibbonHeight: number;
   loadingStack: number;
-  toastMessages: (ToastProps & {id: string})[];
+  toastMessages: (ToastPropsWithID)[];
   showContextualSaveBar: boolean;
 }
 
@@ -54,8 +54,6 @@ const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 export type CombinedProps = Props & WithAppProviderProps;
 
 export class Frame extends React.PureComponent<CombinedProps, State> {
-  static childContextTypes = frameContextTypes;
-
   state: State = {
     skipFocused: false,
     globalRibbonHeight: 0,
@@ -68,19 +66,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   private contextualSaveBar: ContextualSaveBarProps | null;
 
   private globalRibbonContainer: HTMLDivElement | null = null;
-
-  getChildContext(): FrameContext {
-    return {
-      frame: {
-        showToast: this.showToast,
-        hideToast: this.hideToast,
-        startLoading: this.startLoading,
-        stopLoading: this.stopLoading,
-        setContextualSaveBar: this.setContextualSaveBar,
-        removeContextualSaveBar: this.removeContextualSaveBar,
-      },
-    };
-  }
 
   componentDidMount() {
     this.handleResize();
@@ -240,28 +225,30 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       ) : null;
 
     return (
-      <div
-        className={frameClassName}
-        {...layer.props}
-        {...navigationAttributes}
-      >
-        {skipMarkup}
-        {topBarMarkup}
-        {contextualSaveBarMarkup}
-        {loadingMarkup}
-        {navigationOverlayMarkup}
-        {navigationMarkup}
-        <main
-          className={styles.Main}
-          id={APP_FRAME_MAIN}
-          data-has-global-ribbon={Boolean(globalRibbon)}
+      <Provider value={this.getContext}>
+        <div
+          className={frameClassName}
+          {...layer.props}
+          {...navigationAttributes}
         >
-          <div className={styles.Content}>{children}</div>
-        </main>
-        <ToastManager toastMessages={toastMessages} />
-        {globalRibbonMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
-      </div>
+          {skipMarkup}
+          {topBarMarkup}
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {navigationOverlayMarkup}
+          {navigationMarkup}
+          <main
+            className={styles.Main}
+            id={APP_FRAME_MAIN}
+            data-has-global-ribbon={Boolean(globalRibbon)}
+          >
+            <div className={styles.Content}>{children}</div>
+          </main>
+          <ToastManager toastMessages={toastMessages} />
+          {globalRibbonMarkup}
+          <EventListener event="resize" handler={this.handleResize} />
+        </div>
+      </Provider>
     );
   }
 
@@ -289,7 +276,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private showToast(toast: {id: string} & ToastProps) {
+  private showToast(toast: ToastPropsWithID) {
     this.setState(({toastMessages}: State) => {
       const hasToastById =
         toastMessages.find(({id}) => id === toast.id) != null;
@@ -300,7 +287,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private hideToast({id}: {id: string}) {
+  private hideToast({id}: ToastID) {
     this.setState(({toastMessages}: State) => {
       return {
         toastMessages: toastMessages.filter(({id: toastId}) => id !== toastId),
@@ -389,6 +376,20 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     if (key === 'Escape') {
       this.handleNavigationDismiss();
     }
+  }
+
+  @autobind
+  get getContext(): FrameContext {
+    return {
+      frame: {
+        showToast: this.showToast,
+        hideToast: this.hideToast,
+        startLoading: this.startLoading,
+        stopLoading: this.stopLoading,
+        setContextualSaveBar: this.setContextualSaveBar,
+        removeContextualSaveBar: this.removeContextualSaveBar,
+      },
+    };
   }
 }
 
