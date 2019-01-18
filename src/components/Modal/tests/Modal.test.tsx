@@ -4,9 +4,10 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
-import {contentContextTypes} from '../../../types';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
+
+import {Consumer, WithinContentContext} from '../../WithinContentContext';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -23,21 +24,23 @@ describe('<Modal>', () => {
   });
 
   it('has a child with contentContext', () => {
-    const Child: React.SFC<{}> = (_props, context) =>
-      context.withinContentContainer ? <div /> : null;
-    Child.contextTypes = contentContextTypes;
+    function TestComponent(_: WithinContentContext) {
+      return null;
+    }
 
-    const containedChild = mountWithAppProvider(
-      <Modal open onClose={jest.fn()}>
-        <Child />
+    const component = mountWithAppProvider(
+      <Modal onClose={jest.fn()} open>
+        <Consumer>
+          {(props) => {
+            return <TestComponent {...props} />;
+          }}
+        </Consumer>
       </Modal>,
     );
 
-    const div = containedChild
-      .find(Child)
-      .find('div')
-      .first();
-    expect(div.exists()).toBe(true);
+    expect(component.find(TestComponent).prop('withinContentContainer')).toBe(
+      true,
+    );
   });
 
   describe('src', () => {

@@ -8,8 +8,8 @@ import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {wrapWithComponent} from '@shopify/react-utilities';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
+import {Provider, WithinContentContext} from '../WithinContentContext';
 
-import {contentContextTypes} from '../../types';
 import {transformActions} from '../../utilities/app-bridge-transformers';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -91,8 +91,6 @@ const APP_BRIDGE_PROPS: (keyof Props)[] = [
 ];
 
 export class Modal extends React.Component<CombinedProps, State> {
-  static childContextTypes = contentContextTypes;
-
   static Dialog = Dialog;
   static Section = Section;
   focusReturnPointNode: HTMLElement;
@@ -106,12 +104,6 @@ export class Modal extends React.Component<CombinedProps, State> {
     | AppBridgeModal.ModalMessage
     | AppBridgeModal.ModalIframe
     | undefined;
-
-  getChildContext() {
-    return {
-      withinContentContainer: true,
-    };
-  }
 
   componentDidMount() {
     if (this.props.polaris.appBridge == null) {
@@ -290,12 +282,14 @@ export class Modal extends React.Component<CombinedProps, State> {
     const animated = !instant;
 
     return (
-      <Portal idPrefix="modal">
-        <TransitionGroup appear={animated} enter={animated} exit={animated}>
-          {dialog}
-        </TransitionGroup>
-        {backdrop}
-      </Portal>
+      <Provider value={this.getContext}>
+        <Portal idPrefix="modal">
+          <TransitionGroup appear={animated} enter={animated} exit={animated}>
+            {dialog}
+          </TransitionGroup>
+          {backdrop}
+        </Portal>
+      </Provider>
     );
   }
 
@@ -368,6 +362,13 @@ export class Modal extends React.Component<CombinedProps, State> {
           secondaryActions,
         }),
       },
+    };
+  }
+
+  @autobind
+  get getContext(): WithinContentContext {
+    return {
+      withinContentContainer: true,
     };
   }
 }
