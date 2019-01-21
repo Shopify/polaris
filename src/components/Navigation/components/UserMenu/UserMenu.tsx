@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-// eslint-disable-next-line shopify/strict-component-boundaries
-import {Modifier as UserMenuModifier} from '../../../TopBar/components/UserMenu/context';
+import {UserMenuModifier} from '../../../TopBar';
 import {IconableAction} from '../../../../types';
 import {Props as MessageProps} from '../Message';
 import {Props as AvatarProps} from '../../../Avatar';
