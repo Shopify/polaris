@@ -86,6 +86,8 @@ export interface BaseProps {
   minLength?: number;
   /** A regular expression to check the value against */
   pattern?: string;
+  /** Title text for the input */
+  title?: string;
   /** Indicate whether value should have spelling checked */
   spellCheck?: boolean;
   /** Indicates the id of a component owned by the input */
@@ -173,6 +175,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       maxLength,
       spellCheck,
       pattern,
+      title,
       ariaOwns,
       ariaActiveDescendant,
       ariaAutocomplete,
@@ -270,6 +273,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       maxLength,
       spellCheck,
       pattern,
+      title,
       type: inputType,
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')

@@ -24,6 +24,7 @@ describe('<TextField />', () => {
         maxLength={2}
         spellCheck={false}
         pattern={pattern}
+        title="Title text"
       />,
     ).find('input');
 
@@ -39,6 +40,7 @@ describe('<TextField />', () => {
     expect(input.prop('maxLength')).toBe(2);
     expect(input.prop('spellCheck')).toBe(false);
     expect(input.prop('pattern')).toBe(pattern);
+    expect(input.prop('title')).toBe('Title text');
   });
 
   it('blocks props not listed as component props to pass on the input', () => {
