@@ -23,10 +23,19 @@ interface State {
   open: boolean;
 }
 
+/** @deprecated Use <TopBar.UserMenu /> instead. */
 class UserMenu extends React.Component<Props, State> {
   state = {
     open: false,
   };
+
+  constructor(props: Props) {
+    super(props);
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: <Navigation.UserMenu /> is deprecated and will be removed in the next major version. Use <TopBar.UserMenu /> instead.',
+    );
+  }
 
   render() {
     const {
