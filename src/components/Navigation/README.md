@@ -184,7 +184,7 @@ The user menu component displays the current user’s avatar and name, and actio
 
 ### Deprecation rationale
 
-As of release 3.5.1 `Navigation.UserMenu` will be deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu). `TopBar.UserMenu` will stay visible on mobile with the updated `TopBar` layout.
+As of release 3.6.0 `Navigation.UserMenu` is deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu) which will stay visible on mobile.
 
 ---
 
