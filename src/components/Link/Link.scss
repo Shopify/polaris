@@ -17,3 +17,14 @@
     color: color('blue', 'dark');
   }
 }
+
+.monochrome {
+  color: inherit;
+  @include underlined-link;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
+  }
+}

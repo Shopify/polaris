@@ -82,6 +82,16 @@ Use for text links in larger spans of text.
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
+### Monochrome link
+
+Use for text links that are the same color as the surrounding text.
+
+```jsx
+<Link monochrome url="https://help.shopify.com/manual">
+  fulfilling orders
+</Link>
+```
+
 ---
 
 ## Related components

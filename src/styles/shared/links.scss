@@ -6,3 +6,28 @@
     color: inherit;
   }
 }
+
+@mixin underlined-link() {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    border-top: border-width() solid currentColor;
+    opacity: 1;
+    will-change: opacity;
+    transition: opacity duration() easing();
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &::after {
+      opacity: 0.4;
+    }
+  }
+}
