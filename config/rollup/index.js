@@ -1,5 +1,4 @@
 const {resolve} = require('path');
-const {readJSONSync} = require('fs-extra');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const json = require('rollup-plugin-json');
@@ -12,7 +11,6 @@ const image = require('./plugins/image');
 const icon = require('./plugins/icon');
 
 const getNamespacedClassName = require('./namespaced-classname');
-const createExistingClassnameTokenUser = require('./use-existing-classname-tokens');
 
 const project = resolve(__dirname, '../..');
 const buildRoot = resolve(project, './build-intermediate');
@@ -27,21 +25,7 @@ const sassResources = [
   resolve(styleRoot, './shared.scss'),
 ];
 
-module.exports = function createRollupConfig({
-  entry,
-  writeCSS,
-  cssPath,
-  useExistingClassTokens = false,
-}) {
-  let generateScopedName;
-  if (useExistingClassTokens) {
-    generateScopedName = createExistingClassnameTokenUser(
-      readJSONSync(`${cssPath.slice(0, -4)}.tokens.json`),
-    );
-  } else {
-    generateScopedName = getNamespacedClassName;
-  }
-
+module.exports = function createRollupConfig({entry, cssPath}) {
   return {
     input: entry,
     external(id) {
@@ -69,10 +53,10 @@ module.exports = function createRollupConfig({
       }),
       commonjs(),
       styles({
-        output: writeCSS && cssPath,
+        output: cssPath,
         includePaths: [styleRoot],
         includeAlways: sassResources,
-        generateScopedName,
+        generateScopedName: getNamespacedClassName,
       }),
       icon({
         include: '**/icons/*.svg',
