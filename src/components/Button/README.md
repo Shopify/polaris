@@ -134,12 +134,41 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 <Button outline>Add product</Button>
 ```
 
+### Outline monochrome button
+
+Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
+
+```jsx
+<div style={{color: '#bf0711'}}>
+  <Button monochrome outline>
+    Retry
+  </Button>
+</div>
+```
+
 ### Plain button
 
 Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
 
 ```jsx
 <Button plain>View shipping settings</Button>
+```
+
+### Plain monochrome button
+
+Use to render a buttons that look like links where matching the surrounding text color is visually more appropriate. For example in the InlineError component.
+
+```jsx
+<InlineError
+  message={
+    <React.Fragment>
+      An error occurred. &nbsp;
+      <Button plain monochrome>
+        Try again
+      </Button>
+    </React.Fragment>
+  }
+/>
 ```
 
 <!-- content-for: android -->

@@ -1,82 +1,78 @@
 import * as React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
+import {UserMenuContext} from '../context';
+import {UserMenu as UserMenuComponent, UserMenuProps} from '../components';
 import UserMenu from '../UserMenu';
-import Menu from '../../Menu';
-
-const actions = [
-  {items: [{icon: 'notification' as 'notification', onAction: noop}]},
-];
-const message = {
-  title: 'test message',
-  description: 'test description',
-  link: {to: '/', content: 'Home'},
-  action: {
-    onClick: noop,
-    content: 'New',
-  },
-  badge: {
-    content: 'flashy new home card',
-    status: 'new' as 'new',
-  },
-};
-const userProps = {
-  actions,
-  name: 'Andrew Musgrave',
-  detail: 'FED',
-  initials: 'am',
-  open: true,
-  onToggle: noop,
-  message,
-};
 
 describe('<UserMenu />', () => {
-  it('mounts', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
+  describe('<UserMenuConsumer />', () => {
+    const userMenuProps: UserMenuProps = {
+      actions: [{items: [{icon: 'view'}]}],
+      name: '',
+      initials: '',
+      open: false,
+      onToggle: noop,
+    };
 
-    expect(user).toBeTruthy();
-  });
-
-  it('constructs activatorContent and passes it down to menu', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
-
-    expect(returnMenuProp(user, 'activatorContent')).toBeTruthy();
-  });
-
-  it('passes the open prop down to menu', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
-
-    expect(returnMenuProp(user, 'open')).toBe(true);
-  });
-
-  it('passes the actions prop down to menu', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
-
-    expect(returnMenuProp(user, 'actions')).toBe(actions);
-  });
-
-  it('passes the message prop down to menu', () => {
-    const user = mountWithAppProvider(<UserMenu {...userProps} />);
-
-    expect(returnMenuProp(user, 'message')).toBe(message);
-  });
-
-  describe('onToggle', () => {
-    it('passes the onToggle prop down to menu as onOpen', () => {
-      const user = mountWithAppProvider(<UserMenu {...userProps} />);
-
-      expect(returnMenuProp(user, 'onOpen')).toBe(noop);
+    it('renders with the given props', () => {
+      const userMenu = mountWithAppProvider(
+        <UserMenuContext.Provider
+          value={{
+            mobileView: false,
+            mobileUserMenuProps: undefined,
+          }}
+        >
+          <UserMenu {...userMenuProps} />
+        </UserMenuContext.Provider>,
+      );
+      expect(userMenu.find(UserMenuComponent).props()).toEqual(userMenuProps);
     });
 
-    it('passes the onToggle prop down to menu as onClose', () => {
-      const user = mountWithAppProvider(<UserMenu {...userProps} />);
+    it('renders with the given props when in mobile view but no mobile props are available', () => {
+      const userMenu = mountWithAppProvider(
+        <UserMenuContext.Provider
+          value={{
+            mobileView: true,
+            mobileUserMenuProps: undefined,
+          }}
+        >
+          <UserMenu {...userMenuProps} />
+        </UserMenuContext.Provider>,
+      );
+      expect(userMenu.find(UserMenuComponent).props()).toEqual(userMenuProps);
+    });
 
-      expect(returnMenuProp(user, 'onClose')).toBe(noop);
+    it('renders with the given props when mobile props are available but not in mobile view', () => {
+      const mobileUserMenuProps = {...userMenuProps, initials: 'JD'};
+      const userMenu = mountWithAppProvider(
+        <UserMenuContext.Provider
+          value={{
+            mobileView: false,
+            mobileUserMenuProps,
+          }}
+        >
+          <UserMenu {...userMenuProps} />
+        </UserMenuContext.Provider>,
+      );
+      expect(userMenu.find(UserMenuComponent).props()).toEqual(userMenuProps);
+    });
+
+    it('renders with the mobile props when available and in mobile view', () => {
+      const mobileUserMenuProps = {...userMenuProps, initials: 'JD'};
+      const userMenu = mountWithAppProvider(
+        <UserMenuContext.Provider
+          value={{
+            mobileView: true,
+            mobileUserMenuProps,
+          }}
+        >
+          <UserMenu {...userMenuProps} />
+        </UserMenuContext.Provider>,
+      );
+      expect(userMenu.find(UserMenuComponent).props()).toEqual(
+        mobileUserMenuProps,
+      );
     });
   });
 });
-
-function returnMenuProp(wrapper: ReactWrapper, prop: string) {
-  return wrapper.find(Menu).prop(prop);
-}

@@ -252,7 +252,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     }
 
     if (selectedDate) {
-      return formatDateValue(selectedDate);
+      return stripTimeFromISOString(formatDateForLocalTimezone(selectedDate));
     }
   }
 
@@ -273,7 +273,9 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     if (newOption === DateFilterOption.OnOrBefore) {
       onFilterKeyChange(filterMaxKey);
       onFilterValueChange(
-        selectedDate ? formatDateValue(selectedDate) : undefined,
+        selectedDate
+          ? stripTimeFromISOString(formatDateForLocalTimezone(selectedDate))
+          : undefined,
       );
       return;
     }
@@ -281,7 +283,9 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     if (newOption === DateFilterOption.OnOrAfter) {
       onFilterKeyChange(filterMinKey);
       onFilterValueChange(
-        selectedDate ? formatDateValue(selectedDate) : undefined,
+        selectedDate
+          ? stripTimeFromISOString(formatDateForLocalTimezone(selectedDate))
+          : undefined,
       );
       return;
     }
@@ -341,13 +345,15 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       return;
     }
 
-    const nextDate = new Date(userInputDate.replace(/-/g, '/'));
+    const formattedDateForTimezone = new Date(
+      formatDateForLocalTimezone(new Date(userInputDate)),
+    );
 
     this.setState(
       {
-        selectedDate: nextDate,
-        datePickerMonth: nextDate.getMonth(),
-        datePickerYear: nextDate.getFullYear(),
+        selectedDate: formattedDateForTimezone,
+        datePickerMonth: formattedDateForTimezone.getMonth(),
+        datePickerYear: formattedDateForTimezone.getFullYear(),
         userInputDate: undefined,
         userInputDateError: undefined,
       },
@@ -362,8 +368,9 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     if (!selectedDate) {
       return;
     }
-
-    onFilterValueChange(formatDateValue(selectedDate));
+    onFilterValueChange(
+      stripTimeFromISOString(formatDateForLocalTimezone(selectedDate)),
+    );
   }
 
   @autobind
@@ -408,8 +415,27 @@ function getDateFilterOption(
   return filterValue;
 }
 
-function formatDateValue(date: Date) {
-  return date.toISOString().slice(0, 10);
+function stripTimeFromISOString(ISOString: string) {
+  return ISOString.slice(0, 10);
+}
+
+function formatDateForLocalTimezone(date: Date) {
+  const timezoneOffset = date.getTimezoneOffset();
+  const timezoneOffsetMs = timezoneOffset * 60 * 1000;
+  const isFringeTimezone = timezoneOffset === -720 || timezoneOffset === 720;
+  const formattedDate = new Date();
+
+  if (isFringeTimezone && date.getHours() !== 0) {
+    return date.toISOString();
+  }
+
+  const newTime =
+    timezoneOffset > -1
+      ? date.getTime() + timezoneOffsetMs
+      : date.getTime() - timezoneOffsetMs;
+
+  formattedDate.setTime(newTime);
+  return formattedDate.toISOString();
 }
 
 export default withAppProvider<Props>()(DateSelector);

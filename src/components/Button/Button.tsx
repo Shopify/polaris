@@ -42,6 +42,8 @@ export interface Props {
   submit?: boolean;
   /** Renders a button that looks like a link */
   plain?: boolean;
+  /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
+  monochrome?: boolean;
   /** Forces url to open in a new tab */
   external?: boolean;
   /** Icon to display to the left of the button content */
@@ -52,12 +54,20 @@ export interface Props {
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;
+  /** Tells screen reader the element is pressed */
+  ariaPressed?: boolean;
   /** Callback when clicked */
   onClick?(): void;
   /** Callback when button becomes focussed */
   onFocus?(): void;
   /** Callback when focus leaves button */
   onBlur?(): void;
+  /** Callback when a keypress event is registered on the button */
+  onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keyup event is registered on the button */
+  onKeyUp?(event: React.KeyboardEvent<HTMLButtonElement>): void;
+  /** Callback when a keydown event is registered on the button */
+  onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -73,9 +83,13 @@ function Button({
   accessibilityLabel,
   ariaControls,
   ariaExpanded,
+  ariaPressed,
   onClick,
   onFocus,
   onBlur,
+  onKeyDown,
+  onKeyPress,
+  onKeyUp,
   external,
   icon,
   primary,
@@ -83,6 +97,7 @@ function Button({
   destructive,
   disclosure,
   plain,
+  monochrome,
   submit,
   size = DEFAULT_SIZE,
   fullWidth,
@@ -97,6 +112,7 @@ function Button({
     isDisabled && styles.disabled,
     loading && styles.loading,
     plain && styles.plain,
+    monochrome && styles.monochrome,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
@@ -119,7 +135,9 @@ function Button({
     iconMarkup = <IconWrapper>{iconInner}</IconWrapper>;
   }
 
-  const childMarkup = children ? <span>{children}</span> : null;
+  const childMarkup = children ? (
+    <span className={styles.Text}>{children}</span>
+  ) : null;
 
   const spinnerColor = primary || destructive ? 'white' : 'inkLightest';
 
@@ -184,12 +202,16 @@ function Button({
       onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      onKeyPress={onKeyPress}
       onMouseUp={handleMouseUpByBlurring}
       className={className}
       disabled={isDisabled}
       aria-label={accessibilityLabel}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
+      aria-pressed={ariaPressed}
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >
