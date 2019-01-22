@@ -4,17 +4,22 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Icon, {IconSource} from '../../../Icon';
+import UnstyledLink from '../../../UnstyledLink';
 import {SortDirection} from '../../types';
 
 import * as styles from '../../DataTable.scss';
 
-export interface Props {
-  testID?: string;
+export interface InjectableProps {
   height?: number;
   content?: React.ReactNode;
   contentType?: string;
   fixed?: boolean;
   truncate?: boolean;
+  url?: string;
+}
+
+export interface Props extends InjectableProps {
+  testID?: string;
   header?: boolean;
   total?: boolean;
   footer?: boolean;
@@ -44,11 +49,13 @@ function Cell({
     intl: {translate},
   },
   onSort,
+  url,
 }: CombinedProps) {
   const numeric = contentType === 'numeric';
 
   const className = classNames(
     styles.Cell,
+    url && styles['Cell-link'],
     fixed && styles['Cell-fixed'],
     fixed && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
@@ -97,6 +104,13 @@ function Cell({
   );
 
   const columnHeadingContent = sortable ? sortableHeadingContent : content;
+  const cellContent = url ? (
+    <UnstyledLink url={url} style={style}>
+      {content}
+    </UnstyledLink>
+  ) : (
+    content
+  );
 
   const headingMarkup = header ? (
     <th
@@ -109,8 +123,8 @@ function Cell({
       {columnHeadingContent}
     </th>
   ) : (
-    <th className={className} scope="row" style={style}>
-      {content}
+    <th className={className} scope="row" style={url ? undefined : style}>
+      {cellContent}
     </th>
   );
 
@@ -118,8 +132,8 @@ function Cell({
     header || fixed ? (
       headingMarkup
     ) : (
-      <td className={className} style={style}>
-        {content}
+      <td className={className} style={url ? undefined : style}>
+        {cellContent}
       </td>
     );
 

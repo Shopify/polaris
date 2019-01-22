@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Updated `DataTable` to support _injectable_ `Cell` props ([#915](https://github.com/Shopify/polaris-react/pull/915))
+
 ### Bug fixes
 
 - Removed a duplicate `activatorWrapper` in `Popover` when destructuring props ([#916](https://github.com/Shopify/polaris-react/pull/916))

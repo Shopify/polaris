@@ -243,6 +243,124 @@ class DataTableLinkExample extends React.Component {
 }
 ```
 
+### Data table with row links
+
+Use to link individual rows
+
+```jsx
+class DataTableRowLinkExample extends React.Component {
+  render() {
+    const rows = [
+      {
+        cells: ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
+        url: '/product/124689',
+      },
+      {
+        cells: ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+        url: '/product/124533',
+      },
+      {
+        cells: [
+          'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+          '$445.00',
+          124518,
+          32,
+          '$14,240.00',
+        ],
+        url: '/product/124518',
+      },
+    ];
+
+    return (
+      <Page title="Sales by product">
+        <Card>
+          <DataTable
+            columnContentTypes={[
+              'text',
+              'numeric',
+              'numeric',
+              'numeric',
+              'numeric',
+            ]}
+            headings={[
+              'Product',
+              'Price',
+              'SKU Number',
+              'Quantity',
+              'Net sales',
+            ]}
+            rows={rows}
+            totals={['', '', '', 255, '$155,830.00']}
+          />
+        </Card>
+      </Page>
+    );
+  }
+}
+```
+
+### Data table with cell links
+
+Use to link individual cells
+
+```jsx
+class DataTableCellLinkExample extends React.Component {
+  render() {
+    const rows = [
+      [
+        {content: 'Emerald Silk Gown', url: '/product/124689'},
+        '$875.00',
+        124689,
+        140,
+        '$122,500.00',
+      ],
+      [
+        {content: 'Mauve Cashmere Scarf', url: '/product/124533'},
+        '$230.00',
+        124533,
+        83,
+        '$19,090.00',
+      ],
+      [
+        {
+          content: 'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+          url: '/product/124518',
+        },
+        '$445.00',
+        124518,
+        32,
+        '$14,240.00',
+      ],
+    ];
+
+    return (
+      <Page title="Sales by product">
+        <Card>
+          <DataTable
+            columnContentTypes={[
+              'text',
+              'numeric',
+              'numeric',
+              'numeric',
+              'numeric',
+            ]}
+            headings={[
+              'Product',
+              'Price',
+              'SKU Number',
+              'Quantity',
+              'Net sales',
+            ]}
+            rows={rows}
+            totals={['', '', '', 255, '$155,830.00']}
+          />
+        </Card>
+      </Page>
+    );
+  }
+}
+```
+
 ---
 
 ## Best practices

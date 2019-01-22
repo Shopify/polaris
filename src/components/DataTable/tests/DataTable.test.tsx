@@ -62,6 +62,98 @@ describe('<DataTable />', () => {
     expect(dataTable.find('tbody tr')).toHaveLength(3);
   });
 
+  it('passes injectable row props to cells', () => {
+    const url = '#test';
+    const content = 'Cell1';
+    const props = {
+      columnContentTypes: ['text'] as Props['columnContentTypes'],
+      headings: ['Col1'],
+      rows: [{cells: [content], url}],
+    };
+
+    const dataTable = mountWithAppProvider(<DataTable {...props} />);
+
+    expect(
+      dataTable
+        .find(Cell)
+        .last()
+        .props(),
+    ).toMatchObject({
+      content,
+      url,
+    });
+  });
+
+  it('passes injectable cell props to cells', () => {
+    const url = '#test';
+    const content = 'Cell1';
+    const props = {
+      columnContentTypes: ['text'] as Props['columnContentTypes'],
+      headings: ['Col1'],
+      rows: [[{content, url}]],
+    };
+
+    const dataTable = mountWithAppProvider(<DataTable {...props} />);
+
+    expect(
+      dataTable
+        .find(Cell)
+        .last()
+        .props(),
+    ).toMatchObject({
+      content,
+      url,
+    });
+  });
+
+  it('overrides injectable row props with injectable cell props', () => {
+    const url = '#cell';
+    const content = 'Cell1';
+    const props = {
+      columnContentTypes: ['text'] as Props['columnContentTypes'],
+      headings: ['Col1'],
+      rows: [{cells: [{content, url}], url: '#row'}],
+    };
+
+    const dataTable = mountWithAppProvider(<DataTable {...props} />);
+
+    expect(
+      dataTable
+        .find(Cell)
+        .last()
+        .props(),
+    ).toMatchObject({
+      content,
+      url,
+    });
+  });
+
+  it('overrides DataTable props with injectable props', () => {
+    const content = 'Cell1';
+    const truncate = false;
+    const props = {
+      columnContentTypes: ['text'] as Props['columnContentTypes'],
+      headings: ['Col1'],
+      rows: [[{content, truncate}]],
+      truncate: true,
+    };
+
+    const dataTable = mountWithAppProvider(<DataTable {...props} />);
+
+    expect(dataTable.find(DataTable).props()).toMatchObject({
+      truncate: true,
+    });
+    expect(
+      dataTable
+        .find(Cell)
+        .last()
+        .props(),
+    ).toMatchObject({
+      content,
+      truncate,
+    });
+  });
+
   it('defaults to non-sorting column headings', () => {
     const {dataTable} = setup();
     const sortableHeadings = dataTable.find(Cell).filter({sortable: true});
@@ -112,6 +204,22 @@ describe('<DataTable />', () => {
           .first()
           .prop('contentType'),
       ).toEqual('text');
+    });
+
+    it('renders a link cell when a url prop is provided', () => {
+      const url = '#test';
+      const content = 'Cell1';
+      const props = {
+        columnContentTypes: ['text'] as Props['columnContentTypes'],
+        headings: ['Col1'],
+        rows: [[{content, url}]],
+      };
+
+      const dataTable = mountWithAppProvider(<DataTable {...props} />);
+
+      expect(dataTable.find('a').props()).toMatchObject({
+        href: url,
+      });
     });
   });
 

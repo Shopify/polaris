@@ -6,7 +6,7 @@ import isEqual from 'lodash/isEqual';
 import {headerCell} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
-import {Cell, CellProps, Navigation} from './components';
+import {Cell, InjectableCellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import {DataTableState, SortDirection} from './types';
@@ -18,6 +18,26 @@ export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
 
+export interface CellDataDescriptor extends Partial<InjectableCellProps> {
+  content: React.ReactNode;
+}
+
+export type TableCellData = CellDataDescriptor | TableData;
+
+export interface RowDataDescriptor extends Partial<InjectableCellProps> {
+  cells: TableCellData[];
+}
+
+export type TableRowData = RowDataDescriptor | TableCellData[];
+
+export function isCellDescriptor(value: any): value is CellDataDescriptor {
+  return typeof value === 'object' && 'content' in value;
+}
+
+export function isRowDescriptor(value: any): value is RowDataDescriptor {
+  return typeof value === 'object' && Array.isArray(value.cells);
+}
+
 export interface Props {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
@@ -26,7 +46,7 @@ export interface Props {
   /** List of numeric column totals, highlighted in the table’s header below column headings. Use empty strings as placeholders for columns with no total. */
   totals?: TableData[];
   /** Lists of data points which map to table body rows. */
-  rows: TableData[][];
+  rows: TableRowData[];
   /** Truncate content in first column instead of wrapping.
    * @default false
    */
@@ -412,7 +432,10 @@ export class DataTable extends React.PureComponent<
   }
 
   @autobind
-  private defaultRenderRow(row: TableData[], index: number) {
+  private defaultRenderRow(
+    row: RowDataDescriptor | TableData[],
+    index: number,
+  ) {
     const className = classNames(styles.TableRow);
     const {
       columnContentTypes,
@@ -427,10 +450,16 @@ export class DataTable extends React.PureComponent<
       bodyCellHeights.pop();
     }
 
+    const {cells, ...rowCellProps} = isRowDescriptor(row) ? row : {cells: row};
+
     return (
       <tr key={`row-${index}`} className={className}>
-        {row.map((content: CellProps['content'], cellIndex: number) => {
+        {cells.map((cell, cellIndex) => {
           const id = `cell-${cellIndex}-row-${index}`;
+
+          const {content, ...cellProps} = isCellDescriptor(cell)
+            ? cell
+            : {content: cell};
 
           return (
             <Cell
@@ -441,6 +470,8 @@ export class DataTable extends React.PureComponent<
               contentType={columnContentTypes[cellIndex]}
               fixed={cellIndex === 0}
               truncate={truncate}
+              {...rowCellProps}
+              {...cellProps}
             />
           );
         })}
