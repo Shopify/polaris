@@ -1,1 +1,5 @@
-export {default, DEFAULT_TOAST_DURATION} from './Toast';
+export {
+  default,
+  DEFAULT_TOAST_DURATION,
+  DEFAULT_TOAST_DURATION_WITH_ACTION,
+} from './Toast';
