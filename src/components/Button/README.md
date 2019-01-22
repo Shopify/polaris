@@ -399,4 +399,10 @@ Buttons use browser defaults for keyboard interactions.
 Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key.
 
+#### Custom key events
+
+The `onKeyDown`, `onKeyPress`, and `onKeyUp` props can be used to create custom events for buttons. This allows buttons to be used for complex, custom interactions like drag-and-drop interfaces.
+
+Since these props introduce non-standard features to buttons, make sure to include accessible instructions so that merchants can understand how to use these features.
+
 <!-- /content-for -->
