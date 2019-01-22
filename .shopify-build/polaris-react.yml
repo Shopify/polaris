@@ -1,0 +1,45 @@
+containers:
+  default:
+    docker: gcr.io/shopify-docker-images/apps/production/web-platform-ci-node:10.11.0-yarn-1.12.3
+  styleguide:
+    docker: circleci/node:10.13.0
+
+shared:
+  build-web: &build-web
+    label: 'Build web'
+    container: default
+    timeout: 35m
+    dependencies:
+      - yarn
+    run:
+      - yarn run build
+      - ./.shopify-build/setup-consumer-test.sh web
+      - yarn --cwd ./web run build
+  build-styleguide: &build-styleguide
+    label: 'Build styleguide'
+    container: styleguide
+    timeout: 20m
+    dependencies:
+      - yarn
+    run:
+      - yarn run build
+      - ./.shopify-build/setup-consumer-test.sh polaris-styleguide
+      - yarn --cwd ./polaris-styleguide run build
+  unit-tests: &unit-tests
+    label: '🤓 Web unit tests'
+    container: default
+    timeout: 15m
+    dependencies:
+      - yarn
+    run:
+      - yarn run build
+      - ./.shopify-build/setup-consumer-test.sh web
+      - cd ./web
+      - node ./.shopify-build/balancer.js
+      - CI=true yarn run sewing-kit test --maxWorkers 2 --coverage $(./.shopify-build/balancer.js)
+    parallelism: 8
+
+steps:
+  - <<: *build-styleguide
+  - <<: *build-web
+  - <<: *unit-tests
