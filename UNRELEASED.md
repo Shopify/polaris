@@ -26,6 +26,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Improve Build speed ([#912](https://github.com/Shopify/polaris-react/pull/912) and [#920](https://github.com/Shopify/polaris-react/pull/920))
+
 ### Dependency upgrades
 
 - Updated App Bridge to version 1.0.3 ([#844](https://github.com/Shopify/polaris-react/pull/844))
