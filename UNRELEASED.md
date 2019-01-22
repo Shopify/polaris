@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added `action` prop to `Toast` ([#919](https://github.com/Shopify/polaris-react/pull/919))
+
 ### Bug fixes
 
 ### Documentation

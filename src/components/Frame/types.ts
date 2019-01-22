@@ -1,4 +1,5 @@
 import * as PropTypes from 'prop-types';
+import {Action} from '../../types';
 
 export interface FrameManager {
   showToast(toast: {id: string} & ToastProps): void;
@@ -63,4 +64,6 @@ export interface ToastProps {
   error?: boolean;
   /** Callback when the dismiss icon is clicked */
   onDismiss(): void;
+  /** Adds an action next to the message (stand-alone app use only) */
+  action?: Action;
 }
