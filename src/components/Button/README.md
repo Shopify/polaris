@@ -30,7 +30,7 @@ keywords:
 
 # Button
 
-Buttons are used to make common actions immediately visible and easy to perform with one click or tap. Merchants can use it to navigate, or take action.
+Buttons are used to make common actions immediately visible and easy to perform with one click, tap, or keypress. Merchants can use them to navigate or to take action.
 
 ---
 
@@ -289,3 +289,113 @@ Use when a button has been pressed and the associated action is in progress.
 
 - To learn how to combine or lay out multiple buttons, [use the button group component](/components/actions/button-group)
 - To embed an action into a line of text, [use the link component](/components/navigation/link)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+<!-- /content-for -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+### Structure
+
+Buttons can have different states that are visually and programmatically conveyed to merchants.
+
+- Use the `ariaControls` prop to add an `aria-controls` attribute to the button. Use it to point to the unique `id` of the content that the button manages.
+- If a button expands or collapses adjacent content, then use the `ariaExpanded` prop to add the `aria-expanded` attribute to the button. Set the value to convey the current expanded (`true`) or collapsed (`false`) state of the content.
+- Use the `disabled` prop to set the `disabled` state of the button. This prevents merchants from being able to interact with the button, and conveys its inactive state to assistive technologies.
+
+#### Navigation
+
+Merchants generally expect buttons to submit data or take action, and links to navigate. If navigation is required and the button component is passed a value in the `url` prop, the control will be outputted with an anchor styled as a button instead of a button in HTML to help convey this difference.
+
+For more information on making accessible links, see the [link component](/components/navigation/link).
+
+### Labeling
+
+The `accessibilityLabel` prop adds an `aria-label` attribute to the button, which can be accessed by assistive technologies like screen readers. Typically, this label text replaces the visible text on the button for merchants who use assistive technology.
+
+Use `accessibilityLabel` for a button if:
+
+- The button’s visible text doesn’t adequately convey the purpose of the button to non-visual merchants
+- The button has no text and relies on an icon alone to convey its purpose
+
+To help support merchants who use speech activation software as well as sighted screen reader users, make sure that the `aria-label` text includes any button text that’s visible. Mismatches between visible and programmatic labeling can cause confusion, and might prevent voice recognition commands from working.
+
+When possible, give the button visible text that clearly conveys its purpose without the use of `accessibilityLabel`. When no additional content is needed, duplicating the button text with `accessibilityLabel` isn’t necessary.
+
+<!-- usageblock -->
+
+#### Do
+
+```JSX
+<Button>Edit shipping address</Button>
+```
+
+```JSX
+<Heading>Shipping address</Heading>
+<Button accessibilityLabel="Edit shipping address">Edit</Button>
+```
+
+#### Don’t
+
+```JSX
+<Button accessibilityLabel="Change your shipping address">Edit</Button>
+```
+
+```JSX
+<Button accessibilityLabel="Edit">Edit</Button>
+```
+
+<!-- end -->
+
+#### External links
+
+If the button component is used to create a link to an external resource:
+
+- Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings).
+- Use the `icon` prop to add the `external` icon to the button.
+- Use the `accessibilityLabel` prop to include the warning about opening a new tab in the button text for non-visual screen reader users.
+
+For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/navigation/link).
+
+<!-- usageblock -->
+
+#### Do
+
+```JSX
+<Button accessibilityLabel="Terms and conditions (opens a new window)" icon="external" url="http://example.com" external>Terms and conditions</Button>
+```
+
+#### Don’t
+
+```JSX
+<Button url="http://example.com" external>Terms and conditions</Button>
+```
+
+<!-- end -->
+
+### Keyboard support
+
+Buttons use browser defaults for keyboard interactions.
+
+Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key.
+
+<!-- /content-for -->
