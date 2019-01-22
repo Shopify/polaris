@@ -145,6 +145,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   flex: 0 0 $ribbon-flex-basis;
 }
 
+.PrimaryAction {
+  margin-right: rem(6px);
+}
+
 // We need pretty high specificity to do the descendant selectors
 // onto the text, which needs to be the relative positioned wrapper
 // so that the borders/ backgrounds do not extend outside of it.
@@ -153,11 +157,13 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 .SecondaryAction {
   @include unstyled-button;
   @include unstyled-link;
+  display: inline-block;
   margin: (-1 * $secondary-action-vertical-padding)
     (-0.5 * $secondary-action-horizontal-padding);
   padding: $secondary-action-vertical-padding
     $secondary-action-horizontal-padding;
   color: color('ink');
+  padding-left: rem(6px);
 
   &:hover > .Text::after {
     opacity: 0.75;
