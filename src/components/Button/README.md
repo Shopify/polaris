@@ -295,12 +295,13 @@ Use when a button has been pressed and the associated action is in progress.
 ## Accessibility
 
 <!-- content-for: android -->
-<!-- /content-for -->
 
 See Material Design and development documentation about accessibility for Android:
 
 - [Accessible design on Android](https://material.io/design/usability/accessibility.html)
 - [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
 
 <!-- content-for: ios -->
 
