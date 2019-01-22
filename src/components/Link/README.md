@@ -149,18 +149,18 @@ To provide consistency and clarity:
 
 #### Don’t
 
+```JSK
+<Link>fulfilling orders</Link>
+```
+
+#### Don’t
+
 ```JSX
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
 ```JSX
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
-```
-
-#### Don’t
-
-```JSK
-<Link>fulfilling orders</Link>
 ```
 
 <!-- end -->
