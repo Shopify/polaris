@@ -173,7 +173,7 @@ describe('<DateSelector />', () => {
   });
 
   describe('timezones adjustments', () => {
-    it('sets the correct selected date with negative timezone offset on DatePicker and TextField', () => {
+    it('sets the selected date with negative timezone offset on DatePicker and TextField', () => {
       const nextUserInputDate = '2019-01-01';
       const timezoneOffset = -540;
       const timezoneOffsetInHours = Math.abs(timezoneOffset / 60);
@@ -198,7 +198,7 @@ describe('<DateSelector />', () => {
       expect(selectedInputDate).toBe(nextUserInputDate);
     });
 
-    it('sets the correct selected date with fringe timezone offset on DatePicker and TextField', () => {
+    it('sets the selected date with fringe timezone offset on DatePicker and TextField', () => {
       const nextUserInputDate = '2019-01-01';
       getTimezoneOffset.mockImplementation(() => -720);
 
@@ -219,7 +219,7 @@ describe('<DateSelector />', () => {
       expect(selectedInputDate).toBe(nextUserInputDate);
     });
 
-    it('sets the correct selected date with positive timezone offset on DatePicker and TextField', () => {
+    it('sets the selected date with positive timezone offset on DatePicker and TextField', () => {
       const nextUserInputDate = '2019-01-01';
       const timezoneOffset = 300;
       const timezoneOffsetInHours = Math.abs(timezoneOffset / 60);

@@ -264,7 +264,7 @@ describe('<Item />', () => {
       expect(wrapper.find(Checkbox).props().checked).toBe(true);
     });
 
-    it('should not call window.open when clicking the item with metaKey', () => {
+    it('does not call window.open when clicking the item with metaKey', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectModeContext}>
           <Item id={selectedItemId} url={url} />
@@ -276,7 +276,7 @@ describe('<Item />', () => {
       expect(spy).not.toBeCalled();
     });
 
-    it('should not call window.open when clicking the item with ctrlKey', () => {
+    it('does not call window.open when clicking the item with ctrlKey', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectModeContext}>
           <Item id={selectedItemId} url={url} />

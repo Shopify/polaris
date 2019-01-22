@@ -20,7 +20,7 @@ describe('<Banner />', () => {
     expect(banner.find(Heading).prop('element')).toBe('p');
   });
 
-  it('passes the correct icon source to Icon', () => {
+  it('passes the provided icon source to Icon', () => {
     const banner = mountWithAppProvider(<Banner icon="circlePlus" />);
     expect(banner.find(Icon).prop('source')).toBe('circlePlus');
   });
@@ -86,7 +86,7 @@ describe('<Banner />', () => {
     expect(unstyledLink.prop('target')).toBe('_blank');
   });
 
-  it('adds the correct accessibility attributes to external link in secondaryAction', () => {
+  it('adds the noopener and noreferrer accessibility attributes to external link in secondaryAction', () => {
     expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
   });
 

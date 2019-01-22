@@ -7,7 +7,7 @@ import Day from '../../Day';
 
 describe('<Month />', () => {
   describe('title', () => {
-    it('passes the correct value to Weekday', () => {
+    it('passes the abbreviated value to the title prop of Weekday', () => {
       const month = mountWithAppProvider(
         <Month month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );
@@ -21,7 +21,7 @@ describe('<Month />', () => {
   });
 
   describe('label', () => {
-    it('passes the correct value to Weekday', () => {
+    it('passes the numeric value to the label prop of Weekday', () => {
       const month = mountWithAppProvider(
         <Month month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );

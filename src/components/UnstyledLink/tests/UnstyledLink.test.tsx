@@ -31,7 +31,7 @@ describe('<UnstyledLink />', () => {
   });
 
   describe('external', () => {
-    it('adds the correct attributes', () => {
+    it('adds rel and target attributes', () => {
       const anchorElement = mountWithAppProvider(
         <UnstyledLink external url="https://shopify.com" />,
       ).find('a');
@@ -41,14 +41,14 @@ describe('<UnstyledLink />', () => {
   });
 
   describe('download', () => {
-    it('adds the correct boolean attributes', () => {
+    it('adds true as a boolean attribute', () => {
       const anchorElement = mountWithAppProvider(
         <UnstyledLink download url="https://shopify.com" />,
       ).find('a');
       expect(anchorElement.prop('download')).toBe(true);
     });
 
-    it('adds the correct string attributes', () => {
+    it('adds the provided string', () => {
       const anchorElement = mountWithAppProvider(
         <UnstyledLink download="file.txt" url="https://shopify.com" />,
       ).find('a');

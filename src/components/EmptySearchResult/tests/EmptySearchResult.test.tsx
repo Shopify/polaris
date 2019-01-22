@@ -31,7 +31,7 @@ describe('<EmptySearchResult />', () => {
     expect(images).toHaveLength(0);
   });
 
-  it('displays the correct illustration when `withIllustration` is true', () => {
+  it('displays the illustration when `withIllustration` is true', () => {
     const wrapper = mountWithAppProvider(
       <EmptySearchResult title="Foo" description="Bar" withIllustration />,
     );

@@ -3,7 +3,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import Tab from '../Tab';
 
 describe('<Tab />', () => {
-  it('has the correct role', () => {
+  it('has the tab role', () => {
     const tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
     expect(tab.find('button').prop('role')).toBe('tab');
   });
