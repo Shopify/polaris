@@ -374,7 +374,7 @@ If the button component is used to create a link to an external resource:
 - Use the `icon` prop to add the `external` icon to the button.
 - Use the `accessibilityLabel` prop to include the warning about opening a new tab in the button text for non-visual screen reader users.
 
-For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/navigation/link).
+For more information on making accessible links, see the [link component](/components/navigation/link).
 
 <!-- usageblock -->
 
