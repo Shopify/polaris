@@ -39,7 +39,7 @@
     "check": "npm-run-all lint ts test",
     "check:ci": "npm-run-all lint ts test:ci",
     "clean": "rimraf build esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,scss}\"",
-    "clean:build": "rimraf \"build/!(cache|coverage)\" esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,scss}\"",
+    "clean:build": "rimraf \"build/!(cache|coverage|storybook)\" esnext styles types docs \"build-intermediate\" \"index.*\" \"./src/styles/polaris-tokens\" \"styles.{css,scss}\"",
     "optimize": "node ./scripts/optimize.js",
     "prebuild": "npm-run-all clean:build optimize copy-polaris-tokens",
     "build": "node ./scripts/build.js",

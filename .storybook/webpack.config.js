@@ -32,7 +32,7 @@ module.exports = (baseConfig, env, config) => {
   // Without this there will be lots of "add 1 file and removed 1 file" notices.
   baseConfig.output.filename = '[name]-[hash].js';
 
-  const cacheDir = path.resolve(__dirname, '../build/storybook/cache');
+  const cacheDir = path.resolve(__dirname, '../build/cache/storybook');
 
   const extraRules = [
     {
