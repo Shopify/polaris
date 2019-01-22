@@ -97,3 +97,88 @@ Use for text links that are the same color as the surrounding text.
 ## Related components
 
 - To create navigational actions that aren’t part of a line of text, [use the button component](/components/actions/button)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+### Structure
+
+Use the `url` prop to give the link component a valid `href` value. This allows the element to be identified as a link to assistive technologies and gives it default keyboard support.
+
+#### Submitting data
+
+Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use a button component instead.
+
+### Labeling
+
+Give links text that clearly describes their purpose.
+
+To provide consistency and clarity:
+
+- Use the same text for links that navigate to the same content.
+- Use different text for links that navigate to different content.
+
+<!-- usageblock -->
+
+#### Do
+
+```JSX
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+```
+
+#### Don’t
+
+```JSX
+<Link url="https://help.shopify.com/manual">fulfilling orders</Link>
+```
+
+```JSX
+<Link url="https://help.shopify.com/manual">order fulfillment section</Link>
+```
+
+#### Don’t
+
+```JSK
+<Link>fulfilling orders</Link>
+```
+
+<!-- end -->
+
+#### External links
+
+Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Opening new tabs is only recommended if opening the page in the same tab would disrupt what the merchant is currently doing.
+
+To make the external link functionality clear to all merchants:
+
+- Use the [icon component](/components/images-and-icons/icon) to add the `external` icon to the link.
+- Use the `accessibilityLabel` on the icon prop to include the warning about opening a new tab in the button text for non-visual screen reader users.
+
+### Keyboard support
+
+Links use browser defaults for keyboard interaction.
+
+- Give links keyboard focus with the `tab` key (or `shift` + `tab` when tabbing backwards).
+- Activate links with the `enter`/`return` key.
+
+<!-- /content-for -->
