@@ -52,24 +52,49 @@ async function runPa11y() {
   const setupBrowser = browsers[0].browser;
   const page = await setupBrowser.newPage();
 
-  await page.goto('http://localhost:3000');
-  const urls = Array.from(
-    await page.evaluate(() =>
-      [...document.querySelectorAll('a')].map((element) =>
-        element.getAttribute('href'),
-      ),
-    ),
-  );
+  const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
 
-  urls.forEach((path) => {
+  // window.__storybook_stories__ is injected into the iframe by the percy addon
+  // so that Percy's script knows what stories exist. Piggybacking off that is
+  // kinda fragile as they may change that output but it gives us what we need
+  // for now
+  const stories = await page
+    .goto(iframePath)
+    .then(() => page.evaluate(() => window.__storybook_stories__));
+
+  const queryStrings = stories.reduce((memo, book) => {
+    // There is no need to test the Playground, or the "All Examples" stories
+    const isSkippedStory = (story) => {
+      return book.kind === 'Playground' || story.name === 'All Examples';
+    };
+
+    const bookToQueryString = (story) =>
+      `selectedKind=${encodeURIComponent(
+        book.kind,
+      )}&selectedStory=${encodeURIComponent(story.name)}`;
+
+    return memo.concat(
+      book.stories
+        .filter((story) => !isSkippedStory(story))
+        .map(bookToQueryString),
+    );
+  }, []);
+
+  queryStrings.forEach((queryString) => {
     const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
     browserIndex++;
     currentBrowser.taken = currentBrowser.taken.then(async () => {
-      console.log('Testing ', path);
+      console.log('Testing ', queryString);
       results.push(
-        await pa11y(`http://localhost:3000${path}`, {
+        await pa11y(`${iframePath}?${queryString}`, {
           browser: currentBrowser.browser,
-          ignore: ['WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail'],
+          ignore: [
+            // Missing lang attribute on <html> tag
+            // Storybook does not include this property so ignore it
+            'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
+            // Color contrast failures
+            'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail',
+          ],
         }),
       );
     });

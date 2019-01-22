@@ -28,7 +28,7 @@
   @include recolor-icon(color('ink', 'lightest'));
 
   .statusWarning & {
-    @include recolor-icon(color('orange', 'dark'));
+    @include recolor-icon(color('yellow', 'dark'));
   }
 
   .statusCritical & {
@@ -43,7 +43,7 @@
   background-color: color('ink', 'lightest');
 
   .statusWarning & {
-    background-color: color('orange', 'dark');
+    background-color: color('yellow', 'dark');
   }
 
   .statusCritical & {
@@ -63,7 +63,7 @@
   }
 
   .statusWarning & {
-    color: color('orange', 'dark');
+    color: color('yellow', 'dark');
   }
 
   .statusCritical & {

@@ -2,7 +2,6 @@
 node_modules
 /build
 /build-intermediate
-/build-esnext
 /docs
 /esnext
 /types
@@ -13,5 +12,4 @@ node_modules
 /sandbox
 .DS_Store
 *.scss.d.ts
-/playground/build
 /src/styles/polaris-tokens

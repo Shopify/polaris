@@ -114,13 +114,13 @@ Used most in the interface. Only use another style if a button requires more or 
 
 <!-- content-for: android -->
 
-![Basic button for Android](components/Button/android/basic.png)
+![Basic button for Android](/public_images/components/Button/android/basic@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Basic button for iOS](components/Button/ios/basic.png)
+![Basic button for iOS](/public_images/components/Button/ios/basic@2x.png)
 
 <!-- /content-for -->
 
@@ -134,6 +134,18 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 <Button outline>Add product</Button>
 ```
 
+### Outline monochrome button
+
+Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
+
+```jsx
+<div style={{color: '#bf0711'}}>
+  <Button monochrome outline>
+    Retry
+  </Button>
+</div>
+```
+
 ### Plain button
 
 Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
@@ -142,15 +154,32 @@ Use for less important or less commonly used actions since they’re less promin
 <Button plain>View shipping settings</Button>
 ```
 
+### Plain monochrome button
+
+Use to render a buttons that look like links where matching the surrounding text color is visually more appropriate. For example in the InlineError component.
+
+```jsx
+<InlineError
+  message={
+    <React.Fragment>
+      An error occurred. &nbsp;
+      <Button plain monochrome>
+        Try again
+      </Button>
+    </React.Fragment>
+  }
+/>
+```
+
 <!-- content-for: android -->
 
-![Plain button for Android](components/Button/android/plain.png)
+![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Plain button for iOS](components/Button/ios/plain.png)
+![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
 
 <!-- /content-for -->
 
@@ -164,13 +193,13 @@ Use to highlight the most important actions in any experience. Don’t use more 
 
 <!-- content-for: android -->
 
-![Primary button for Android](components/Button/android/primary.png)
+![Primary button for Android](/public_images/components/Button/android/primary@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Primary button for iOS](components/Button/ios/primary.png)
+![Primary button for iOS](/public_images/components/Button/ios/primary@2x.png)
 
 <!-- /content-for -->
 
@@ -184,13 +213,13 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 
 <!-- content-for: android -->
 
-![Destrutive plain and destructive basic button for Android](components/Button/android/destructive.png)
+![Destrutive plain and destructive basic button for Android](/public_images/components/Button/android/destructive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Destrutive plain and destructive basic button for iOS](components/Button/ios/destructive.png)
+![Destrutive plain and destructive basic button for iOS](/public_images/components/Button/ios/destructive@2x.png)
 
 <!-- /content-for -->
 
@@ -234,13 +263,13 @@ Use for actions that aren’t currently available. The surrounding interface sho
 
 <!-- content-for: android -->
 
-![Disabled primary button for Android](components/Button/android/disabled.png)
+![Disabled primary button for Android](/public_images/components/Button/android/disabled@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Disabled primary button for iOS](components/Button/ios/disabled.png)
+![Disabled primary button for iOS](/public_images/components/Button/ios/disabled@2x.png)
 
 <!-- /content-for -->
 

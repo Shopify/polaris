@@ -33,13 +33,13 @@ Use to notify merchants that their requested action is being processed.
 
 <!-- content-for: android -->
 
-![Material design spinner for Android](components/Spinner/android/default.gif)
+![Material design spinner for Android](/public_images/components/Spinner/android/default@2x.gif)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Apple’s spinner for iOS](components/Spinner/ios/default.gif)
+![Apple’s spinner for iOS](/public_images/components/Spinner/ios/default@2x.gif)
 
 <!-- /content-for -->
 

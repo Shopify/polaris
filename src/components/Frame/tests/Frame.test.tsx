@@ -13,6 +13,8 @@ import {
   ContextualSaveBar as FrameContextualSavebar,
   Loading as FrameLoading,
 } from '../components';
+import TopBar, {UserMenuProvider} from '../../TopBar';
+import Navigation from '../../Navigation';
 
 window.matchMedia =
   window.matchMedia ||
@@ -215,5 +217,27 @@ describe('<Frame />', () => {
       </Frame>,
     );
     expect(frame.find(FrameLoading).exists()).toBe(true);
+  });
+
+  describe('<UserMenuProvider />', () => {
+    it('renders', () => {
+      const frame = mountWithAppProvider(<Frame />);
+      expect(frame.find(UserMenuProvider).exists()).toBe(true);
+    });
+
+    it('receives a mobileView boolean', () => {
+      const frame = mountWithAppProvider(<Frame />);
+      expect(frame.find(UserMenuProvider).prop('mobileView')).toBe(false);
+    });
+
+    it('receives the given top bar and navigation as its children', () => {
+      const topBar = <TopBar />;
+      const navigation = <Navigation location="" />;
+      const frame = mountWithAppProvider(
+        <Frame topBar={topBar} navigation={navigation} />,
+      );
+      expect(frame.find(UserMenuProvider).contains(topBar)).toBe(true);
+      expect(frame.find(UserMenuProvider).contains(navigation)).toBe(true);
+    });
   });
 });

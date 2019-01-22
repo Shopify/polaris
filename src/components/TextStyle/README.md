@@ -54,13 +54,13 @@ Use to de-emphasize a piece of text that is less important to merchants than oth
 
 <!-- content-for: android -->
 
-![Subdued textstyle](components/TextStyle/android/subdued.png)
+![Subdued textstyle](/public_images/components/TextStyle/android/subdued@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Subdued text style](components/TextStyle/ios/subdued.png)
+![Subdued text style](/public_images/components/TextStyle/ios/subdued@2x.png)
 
 <!-- /content-for -->
 
@@ -74,13 +74,13 @@ Use to mark text representing user input, or to emphasize the totals row in a pr
 
 <!-- content-for: android -->
 
-![Strong text style](components/TextStyle/android/strong.png)
+![Strong text style](/public_images/components/TextStyle/android/strong@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Strong text style](components/TextStyle/ios/strong.png)
+![Strong text style](/public_images/components/TextStyle/ios/strong@2x.png)
 
 <!-- /content-for -->
 
@@ -94,13 +94,13 @@ Use in combination with a symbol showing an increasing value to indicate an upwa
 
 <!-- content-for: android -->
 
-![Positive text style](components/TextStyle/android/positive.png)
+![Positive text style](/public_images/components/TextStyle/android/positive@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Positive text style](components/TextStyle/ios/positive.png)
+![Positive text style](/public_images/components/TextStyle/ios/positive@2x.png)
 
 <!-- /content-for -->
 
@@ -114,13 +114,13 @@ Use in combination with a symbol showing a decreasing value to indicate a downwa
 
 <!-- content-for: android -->
 
-![Negative text style](components/TextStyle/android/negative.png)
+![Negative text style](/public_images/components/TextStyle/android/negative@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Negative text style](components/TextStyle/ios/negative.png)
+![Negative text style](/public_images/components/TextStyle/ios/negative@2x.png)
 
 <!-- /content-for -->
 
@@ -137,12 +137,12 @@ Use to display inline snippets of code or code-like text.
 
 <!-- content-for: android -->
 
-![Code text style](components/TextStyle/android/code.png)
+![Code text style](/public_images/components/TextStyle/android/code@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Code text style](components/TextStyle/ios/code.png)
+![Code text style](/public_images/components/TextStyle/ios/code@2x.png)
 
 <!-- /content-for -->

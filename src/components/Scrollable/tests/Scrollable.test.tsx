@@ -9,6 +9,13 @@ describe('<Scrollable />', () => {
     expect(scrollable).toBeTruthy();
   });
 
+  it('unmounts', () => {
+    const scrollable = mountWithAppProvider(<Scrollable />);
+    expect(() => {
+      scrollable.unmount();
+    }).not.toThrow();
+  });
+
   it('renders its children', () => {
     const children = (
       <p>

@@ -1,4 +1,4 @@
-import {Option} from '../../../Select';
+import {SelectOption} from '../../../Select';
 import {Type} from '../../../TextField';
 
 export interface Operator {
@@ -28,7 +28,7 @@ export interface FilterBase<FilterKeys = {}> {
 
 export interface FilterSelect<FilterKeys = {}> extends FilterBase<FilterKeys> {
   type: FilterType.Select;
-  options: Option[];
+  options: SelectOption[];
 }
 
 export interface FilterTextField<FilterKeys = {}>

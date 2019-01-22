@@ -1,8 +1,8 @@
-import {extname} from 'path';
-import {createFilter} from 'rollup-pluginutils';
-import SVGO from 'svgo';
+const {extname} = require('path');
+const {createFilter} = require('rollup-pluginutils');
+const SVGO = require('svgo');
 
-import {svgOptions} from '@shopify/images/optimize';
+const {svgOptions} = require('@shopify/images/optimize');
 
 const VIEWBOX_REGEX = /viewBox="([^"]*)"/;
 const SVG_REGEX = /(<svg[^>]*>|<\/svg>)/g;
@@ -10,7 +10,7 @@ const FILL_REGEX = /fill="[^"]*"/g;
 
 const svgo = new SVGO(svgOptions());
 
-export default function icon(options = {}) {
+module.exports = function icon(options = {}) {
   const filter = createFilter(options.include, options.exclude);
 
   return {
@@ -41,4 +41,4 @@ export default function icon(options = {}) {
       });
     },
   };
-}
+};

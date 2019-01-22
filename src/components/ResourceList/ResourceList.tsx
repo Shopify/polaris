@@ -8,7 +8,7 @@ import EventListener from '../EventListener';
 import Sticky from '../Sticky';
 import Spinner from '../Spinner';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import Select, {Option} from '../Select';
+import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
 import selectIcon from './icons/enable-selection.svg';
 
@@ -21,7 +21,7 @@ import {
   Provider,
 } from './components';
 
-import {SelectedItems, SELECT_ALL_ITEMS} from './types';
+import {ResourceListContext, SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import * as styles from './ResourceList.scss';
 
@@ -29,15 +29,16 @@ const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
+export type Items = any[];
+
 export interface State {
   selectMode: boolean;
   loadingPosition: number;
-  listNode: HTMLUListElement | null;
 }
 
 export interface Props {
   /** Item data; each item is passed to renderItem */
-  items: any[];
+  items: Items;
   filterControl?: React.ReactNode;
   /** Name of the resource, such as customers or products */
   resourceName?: {
@@ -59,7 +60,9 @@ export interface Props {
   /** Current value of the sort control */
   sortValue?: string;
   /** Collection of sort options to choose from */
-  sortOptions?: Option[];
+  sortOptions?: SelectOption[];
+  /** ReactNode to display instead of the sort control */
+  alternateTool?: React.ReactNode;
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
@@ -70,18 +73,6 @@ export interface Props {
   idForItem?(item: any, index: number): string;
 }
 
-export interface ResourceListContext {
-  selectMode: boolean;
-  selectable?: boolean;
-  selectedItems?: SelectedItems;
-  resourceName: {
-    singular: string;
-    plural: string;
-  };
-  loading?: boolean;
-  onSelectionChange?(selected: boolean, id: string): void;
-}
-
 export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Select');
@@ -90,12 +81,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   static Item: typeof Item = Item;
   static FilterControl: typeof FilterControl = FilterControl;
 
-  state: State = {
-    selectMode: false,
-    loadingPosition: 0,
-    listNode: null,
-  };
-
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
@@ -103,12 +88,18 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     super(props);
 
     const {
+      selectedItems,
       polaris: {intl},
     } = props;
 
     this.defaultResourceName = {
       singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
       plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
+    };
+
+    this.state = {
+      selectMode: Boolean(selectedItems && selectedItems.length > 0),
+      loadingPosition: 0,
     };
   }
 
@@ -323,20 +314,22 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        listNode: this.listRef.current,
-      },
-      () => {
-        if (this.props.loading) {
-          this.setLoadingPosition();
-        }
-      },
-    );
+    this.forceUpdate();
+    if (this.props.loading) {
+      this.setLoadingPosition();
+    }
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.props.loading && !prevProps.loading) {
+  componentDidUpdate({loading: prevLoading, items: prevItems}: Props) {
+    if (
+      this.listRef.current &&
+      this.itemsExist() &&
+      !this.itemsExist(prevItems)
+    ) {
+      this.forceUpdate();
+    }
+
+    if (this.props.loading && !prevLoading) {
       this.setLoadingPosition();
     }
   }
@@ -351,11 +344,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       showHeader = false,
       sortOptions,
       sortValue,
+      alternateTool,
       onSortChange,
       polaris: {intl},
     } = this.props;
-    const {selectMode, loadingPosition, listNode} = this.state;
-    const itemsExist = items.length > 0;
+    const {selectMode, loadingPosition} = this.state;
 
     const filterControlMarkup = filterControl ? (
       <div className={styles.FiltersWrapper}>{filterControl}</div>
@@ -389,7 +382,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
 
     const sortingSelectMarkup =
-      sortOptions && sortOptions.length > 0 ? (
+      sortOptions && sortOptions.length > 0 && !alternateTool ? (
         <div className={styles.SortWrapper}>
           {sortingLabelMarkup}
           <Select
@@ -401,6 +394,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
             disabled={selectMode}
           />
         </div>
+      ) : null;
+
+    const alternateToolMarkup =
+      alternateTool && !sortingSelectMarkup ? (
+        <div className={styles.AlternateToolWrapper}>{alternateTool}</div>
       ) : null;
 
     const headerTitleMarkup = (
@@ -435,22 +433,26 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     ) : null;
 
     const needsHeader =
-      this.selectable || (sortOptions && sortOptions.length > 0);
+      this.selectable ||
+      (sortOptions && sortOptions.length > 0) ||
+      alternateTool;
 
     const headerWrapperOverlay = loading ? (
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
     const headerMarkup = (showHeader || needsHeader) &&
-      listNode && (
+      this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
-          <Sticky boundingElement={listNode}>
+          <Sticky boundingElement={this.listRef.current}>
             {(isSticky: boolean) => {
               const headerClassName = classNames(
                 styles.HeaderWrapper,
                 sortOptions &&
                   sortOptions.length > 0 &&
+                  !alternateTool &&
                   styles['HeaderWrapper-hasSort'],
+                alternateTool && styles['HeaderWrapper-hasAlternateTool'],
                 this.selectable && styles['HeaderWrapper-hasSelect'],
                 loading && styles['HeaderWrapper-disabled'],
                 this.selectable &&
@@ -464,6 +466,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
                   <div className={styles.HeaderContentWrapper}>
                     {headerTitleMarkup}
                     {checkableButtonMarkup}
+                    {alternateToolMarkup}
                     {sortingSelectMarkup}
                     {selectButtonMarkup}
                   </div>
@@ -476,7 +479,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       );
 
     const emptyStateMarkup =
-      filterControl && !itemsExist && !loading ? (
+      filterControl && !this.itemsExist() && !loading ? (
         <div className={styles.EmptySearchResultWrapper}>
           <EmptySearchResult {...this.emptySearchResultText} withIllustration />
         </div>
@@ -503,7 +506,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       loading && styles['ItemWrapper-isLoading'],
     );
     const loadingWithoutItemsMarkup =
-      loading && !itemsExist ? (
+      loading && !this.itemsExist() ? (
         <div className={className} tabIndex={-1}>
           {loadingOverlay}
         </div>
@@ -514,7 +517,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       loading && styles.disabledPointerEvents,
     );
 
-    const listMarkup = itemsExist ? (
+    const listMarkup = this.itemsExist() ? (
       <ul
         className={resourceListClassName}
         ref={this.listRef}
@@ -540,6 +543,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
   }
 
+  private itemsExist(items?: Items) {
+    return (items || this.props.items).length > 0;
+  }
+
   @debounce(50)
   @autobind
   private handleResize() {
@@ -558,16 +565,14 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private setLoadingPosition() {
-    const {listNode} = this.state;
-
-    if (listNode != null) {
+    if (this.listRef.current != null) {
       if (typeof window === 'undefined') {
         return;
       }
 
-      const overlay = listNode.getBoundingClientRect();
+      const overlay = this.listRef.current.getBoundingClientRect();
       const viewportHeight = Math.max(
-        document.documentElement.clientHeight,
+        document.documentElement ? document.documentElement.clientHeight : 0,
         window.innerHeight || 0,
       );
 
@@ -608,12 +613,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
   @autobind
   private renderItem(item: any, index: number) {
-    const {renderItem, idForItem = defaultIdForItem, loading} = this.props;
+    const {renderItem, idForItem = defaultIdForItem} = this.props;
     const id = idForItem(item, index);
-    const tabIndex = loading ? -1 : 0;
 
     return (
-      <li key={id} className={styles.ItemWrapper} tabIndex={tabIndex}>
+      <li key={id} className={styles.ItemWrapper}>
         {renderItem(item, id)}
       </li>
     );

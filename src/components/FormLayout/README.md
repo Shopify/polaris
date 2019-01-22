@@ -128,13 +128,13 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 
 <!-- content-for: android -->
 
-![Default form layout for Android](components/FormLayout/android/default.png)
+![Default form layout for Android](/public_images/components/FormLayout/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default form layout for iOS](components/FormLayout/ios/default.png)
+![Default form layout for iOS](/public_images/components/FormLayout/ios/default@2x.png)
 
 <!-- /content-for -->
 
@@ -157,13 +157,13 @@ Field groups will wrap automatically on smaller screens.
 
 <!-- content-for: android -->
 
-![Form layout with field group for Android](components/FormLayout/android/field-group.png)
+![Form layout with field group for Android](/public_images/components/FormLayout/android/field-group@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Form layout with field group for iOS](components/FormLayout/ios/field-group.png)
+![Form layout with field group for iOS](/public_images/components/FormLayout/ios/field-group@2x.png)
 
 <!-- /content-for -->
 

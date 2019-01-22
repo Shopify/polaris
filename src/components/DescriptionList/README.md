@@ -131,13 +131,13 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 <!-- content-for: android -->
 
-![Description list for Android](components/DescriptionList/android/default.png)
+![Description list for Android](/public_images/components/DescriptionList/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Description list for iOS](components/DescriptionList/ios/default.png)
+![Description list for iOS](/public_images/components/DescriptionList/ios/default@2x.png)
 
 <!-- /content-for -->
 

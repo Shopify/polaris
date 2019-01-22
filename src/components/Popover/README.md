@@ -159,13 +159,13 @@ class PopoverExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Popover with action list for Android](components/Popover/android/action-list.png)
+![Popover with action list for Android](/public_images/components/Popover/android/action-list@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with action list for iOS](components/Popover/ios/action-list.png)
+![Popover with action list for iOS](/public_images/components/Popover/ios/action-list@2x.png)
 
 <!-- /content-for -->
 
@@ -220,13 +220,13 @@ class PopoverContentExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Popover with content and actions for Android](components/Popover/android/action-content.png)
+![Popover with content and actions for Android](/public_images/components/Popover/android/action-content@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Popover with content and actions for iOS](components/Popover/ios/action-content.png)
+![Popover with content and actions for iOS](/public_images/components/Popover/ios/action-content@2x.png)
 
 <!-- /content-for -->
 
@@ -297,7 +297,7 @@ Use when you have few actions that affects the whole page. Action sheets doesnâ€
 
 <!-- content-for: ios -->
 
-![iOS action sheet](components/Popover/ios/action-sheet.png)
+![iOS action sheet](/public_images/components/Popover/ios/action-sheet@2x.png)
 
 <!-- /content-for -->
 

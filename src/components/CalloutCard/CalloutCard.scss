@@ -14,6 +14,10 @@
   }
 }
 
+.DismissImage {
+  margin-right: spacing(loose);
+}
+
 .Content {
   flex: 1 1 auto;
 }
@@ -24,4 +28,14 @@
 
 .Buttons {
   margin-top: spacing(loose);
+}
+
+.Container {
+  position: relative;
+}
+
+.Dismiss {
+  right: spacing();
+  top: spacing();
+  position: absolute;
 }

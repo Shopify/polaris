@@ -151,11 +151,11 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('autoComplete')).toBeUndefined();
     });
 
-    it('sets autoComplete to "nope" when false', () => {
+    it('sets autoComplete to "off" when false', () => {
       const textField = shallowWithAppProvider(
         <TextField label="TextField" autoComplete={false} onChange={noop} />,
       );
-      expect(textField.find('input').prop('autoComplete')).toBe('nope');
+      expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
     it('sets autoComplete to "on" when false', () => {
@@ -369,6 +369,20 @@ describe('<TextField />', () => {
         expect(spy).toHaveBeenCalledWith('1', 'MyTextField');
       });
 
+      it('passes the step prop to the input', () => {
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            step={6}
+            value="4"
+            onChange={noop}
+          />,
+        );
+        expect(element.find('input').prop('step')).toBe(6);
+      });
+
       it('uses the step prop when incrementing', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
@@ -541,6 +555,52 @@ describe('<TextField />', () => {
           .last()
           .simulate('click');
         expect(spy).toHaveBeenCalledWith('1.976', 'MyTextField');
+      });
+
+      it('decrements on mouse down', () => {
+        jest.useFakeTimers();
+        const spy = jest.fn();
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            value="3"
+            onChange={spy}
+          />,
+        );
+        element
+          .find('[role="button"]')
+          .last()
+          .simulate('mousedown');
+
+        jest.runOnlyPendingTimers();
+        expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
+      });
+
+      it('stops decrementing on mouse up', () => {
+        jest.useFakeTimers();
+        const spy = jest.fn();
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            value="3"
+            onChange={spy}
+          />,
+        );
+        element
+          .find('[role="button"]')
+          .last()
+          .simulate('mousedown');
+        element
+          .find('[role="button"]')
+          .last()
+          .simulate('mouseup');
+
+        jest.runOnlyPendingTimers();
+        expect(element.prop('value')).toBe('3');
       });
     });
   });

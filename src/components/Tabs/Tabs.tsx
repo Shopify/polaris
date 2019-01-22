@@ -5,24 +5,13 @@ import {noop} from '@shopify/javascript-utilities/other';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
+
+import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
 import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
 
 import * as styles from './Tabs.scss';
-
-export interface TabDescriptor {
-  /** A unique identifier for the tab */
-  id: string;
-  /** A destination to link to */
-  url?: string;
-  /** Content for the tab */
-  content: string;
-  /** A unique identifier for the panel */
-  panelID?: string;
-  /** Visually hidden text for screen readers */
-  accessibilityLabel?: string;
-}
 
 export interface Props {
   /** Content to display in tabs */

@@ -29,7 +29,7 @@ A resource list displays a collection of objects of the same type, like products
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Resource list anatomy, showing filters, header, and items](resource-list/anatomy-wide.png)
+![Resource list anatomy, showing filters, header, and items](/public_images/resource-list/anatomy-wide@2x.png)
 
 </div>
 
@@ -351,6 +351,66 @@ class ResourceListExample extends React.Component {
 }
 ```
 
+### Resource list with alternate tool
+
+Allows merchants to add an alternate tool in the current sort option location when sort may not be the most relevant action for the current list.
+
+```jsx
+class ResourceListExample extends React.Component {
+  renderItem = (item) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item
+        id={id}
+        url={url}
+        media={media}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  };
+
+  render() {
+    const resourceName = {
+      singular: 'Customer',
+      plural: 'Customers',
+    };
+
+    const items = [
+      {
+        id: 341,
+        url: 'customers/341',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 256,
+        url: 'customers/256',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+    ];
+
+    return (
+      <Card>
+        <ResourceList
+          items={items}
+          renderItem={this.renderItem}
+          resourceName={resourceName}
+          alternateTool={<Button>Email customers</Button>}
+        />
+      </Card>
+    );
+  }
+}
+```
+
 ### Resource list with filtering
 
 Allows merchants to narrow the resource list to a subset of the original items. See the [filter control subcomponent](#subcomponent-filter-control) and the [filtering section of the case study](#study-filtering) for implementation details.
@@ -596,7 +656,7 @@ Because a details page displays all the content and actions for an individual re
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Schematic showing content from a details page being surfaced on a resource list](resource-list/list-surfacing-show.png)
+![Schematic showing content from a details page being surfaced on a resource list](/public_images/resource-list/list-surfacing-show@2x.png)
 
 </div>
 
@@ -688,7 +748,7 @@ See the case study section for [more about customizing and using resource list i
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Resource list item anatomy, showing handle, media and details](resource-list/item-anatomy-wide.png)
+![Resource list item anatomy, showing handle, media and details](/public_images/resource-list/item-anatomy-wide@2x.png)
 
 </div>
 
@@ -702,7 +762,7 @@ A basic resource list item with its details filled in at the point of use.
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Blog post list item](resource-list/item-example-simple.png)
+![Blog post list item](/public_images/resource-list/item-example-simple@2x.png)
 
 </div>
 
@@ -743,7 +803,7 @@ The media element can hold an [avatar](/components/images-and-icons/avatar), [th
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example customer list item](resource-list/item-example-media.png)
+![Example customer list item](/public_images/resource-list/item-example-media@2x.png)
 
 </div>
 
@@ -787,7 +847,7 @@ Shortcut actions present popular actions from the resource’s details page for 
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Shortcut actions are shown on hover](resource-list/item-example-shortcuts.png)
+![Shortcut actions are shown on hover](/public_images/resource-list/item-example-shortcuts@2x.png)
 
 </div>
 
@@ -891,7 +951,7 @@ Provides a default interface for adding and removing filters. Supports quick fil
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Resource list with filter control](resource-list/filter-control-anatomy.png)
+![Resource list with filter control](/public_images/resource-list/filter-control-anatomy@2x.png)
 
 </div>
 
@@ -905,7 +965,7 @@ Filter control showing a state with applied filters and an additional action (op
 
 <div class="TypeContainerImage">
 
-![Example filter control](resource-list/filter-control-example.png)
+![Example filter control](/public_images/resource-list/filter-control-example@2x.png)
 
 </div>
 
@@ -1030,7 +1090,7 @@ The filter builder itself has three parts: the **label**, the **operator text**,
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example filter builder in a popover](resource-list/filter-control-filter-builder.png)
+![Example filter builder in a popover](/public_images/resource-list/filter-control-filter-builder@2x.png)
 
 </div>
 
@@ -1044,7 +1104,7 @@ Here’s another example:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Second filter builder example](resource-list/filter-control-filter-builder-2.png)
+![Second filter builder example](/public_images/resource-list/filter-control-filter-builder-2@2x.png)
 
 </div>
 
@@ -1059,7 +1119,7 @@ In this case, a the **filter input** is a text field, so you only need to consid
 
 <div class="TypeContainerImage">
 
-![Example of applied filter tags](resource-list/filter-control-filter-tags.png)
+![Example of applied filter tags](/public_images/resource-list/filter-control-filter-tags@2x.png)
 
 </div>
 
@@ -1254,7 +1314,7 @@ In this section, we’ll build a custom resource list item for customers:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Preview of customer list item](resource-list/study-list-item-preview.png)
+![Preview of customer list item](/public_images/resource-list/study-list-item-preview@2x.png)
 
 </div>
 
@@ -1350,7 +1410,7 @@ Whenever possible, use badges conditionally, showing them only when there is an 
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example of a badge highlighting open orders on an item](resource-list/study-list-item-badges.png)
+![Example of a badge highlighting open orders on an item](/public_images/resource-list/study-list-item-badges@2x.png)
 
 </div>
 
@@ -1548,7 +1608,7 @@ Use the following guidelines:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example of column-aligned content](resource-list/study-list-item-column-alignment.png)
+![Example of column-aligned content](/public_images/resource-list/study-list-item-column-alignment@2x.png)
 
 </div>
 
@@ -1560,7 +1620,7 @@ To accommodate smaller screen sizes, follow these guidelines:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Preview of customer list item](resource-list/study-list-item-content-stacking.png)
+![Preview of customer list item](/public_images/resource-list/study-list-item-content-stacking@2x.png)
 
 </div>
 
@@ -1571,7 +1631,7 @@ When laying out media content:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example of resizing media based on screen size](resource-list/study-list-item-media-sizing.png)
+![Example of resizing media based on screen size](/public_images/resource-list/study-list-item-media-sizing@2x.png)
 
 </div>
 
@@ -1720,7 +1780,7 @@ Now we can write our styles:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example of conditionally showing customer notes](resource-list/study-list-item-conditional-content.png)
+![Example of conditionally showing customer notes](/public_images/resource-list/study-list-item-conditional-content@2x.png)
 
 </div>
 
@@ -1732,7 +1792,7 @@ Actions can also be presented conditionally, based on the state of the item. For
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example of conditionally showing a link to open orders](resource-list/study-list-item-conditional-actions.png)
+![Example of conditionally showing a link to open orders](/public_images/resource-list/study-list-item-conditional-actions@2x.png)
 
 </div>
 
@@ -1864,7 +1924,7 @@ We can finish this off with a couple of simple styles:
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Example of a shortcut to a customer’s latest order](resource-list/study-list-item-shortcut-actions.png)
+![Example of a shortcut to a customer’s latest order](/public_images/resource-list/study-list-item-shortcut-actions@2x.png)
 
 </div>
 
@@ -1972,7 +2032,7 @@ Now let’s save our merchants some time by using more features of the resource 
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Image showing bulk selection and actions](resource-list/study-bulk-lead.png)
+![Image showing bulk selection and actions](/public_images/resource-list/study-bulk-lead@2x.png)
 
 </div>
 
@@ -1987,7 +2047,7 @@ Because resource lists prioritize acting on individual items, selection checkbox
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Sequence showing bulk actions on a small device](resource-list/study-bulk-narrow.png)
+![Sequence showing bulk actions on a small device](/public_images/resource-list/study-bulk-narrow@2x.png)
 
 </div>
 
@@ -1995,7 +2055,7 @@ Up to two frequently-used bulk actions may be visually promoted outside of the a
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Promoted actions on wide and narrow screens](resource-list/study-bulk-promoted.png)
+![Promoted actions on wide and narrow screens](/public_images/resource-list/study-bulk-promoted@2x.png)
 
 </div>
 
@@ -2161,7 +2221,7 @@ If you’re new to React or ES2015 you might be wondering about the lines in our
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Detail of the resource list header showing the sort control](resource-list/study-sort-control.png)
+![Detail of the resource list header showing the sort control](/public_images/resource-list/study-sort-control@2x.png)
 
 </div>
 
@@ -2426,7 +2486,7 @@ class App extends Component {
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Filter control example](resource-list/filter-control-example.png)
+![Filter control example](/public_images/resource-list/filter-control-example@2x.png)
 
 </div>
 
@@ -2604,7 +2664,7 @@ As with sorting, exactly how the new items array is generated depends on your ap
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![A resource list with pagination](resource-list/study-pagination.png)
+![A resource list with pagination](/public_images/resource-list/study-pagination@2x.png)
 
 </div>
 
@@ -2616,7 +2676,7 @@ Pagination interacts with bulk actions. When a resource list is paginated, the S
 
 <div class="TypeContainerImage TypeContainerImage--PageBackground">
 
-![Selecting across pages in a paginated list](resource-list/study-pagination-bulk.png)
+![Selecting across pages in a paginated list](/public_images/resource-list/study-pagination-bulk@2x.png)
 
 </div>
 

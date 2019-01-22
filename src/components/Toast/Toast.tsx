@@ -1,16 +1,22 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
+import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
 import {
   DEFAULT_TOAST_DURATION,
   FrameContext,
   frameContextTypes,
-  ToastProps as Props,
+  ToastProps,
 } from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 const createId = createUniqueIDFactory('Toast');
+
+// The script in the styleguide that generates the Props Explorer data expects
+// a component's props to be found in the Props interface. This silly workaround
+// ensures that the Props Explorer table is generated correctly, instead of
+// crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
+interface Props extends ToastProps {}
 
 export type ComposedProps = Props & WithAppProviderProps;
 
@@ -19,7 +25,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   context: FrameContext;
 
   private id = createId();
-  private appBridgeToast: AppBridgeToast.Flash | undefined;
+  private appBridgeToast: AppBridgeToast.Toast | undefined;
 
   componentDidMount() {
     const {context, id, props} = this;
@@ -41,7 +47,6 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
         message: content,
         duration,
         isError: error,
-        isDismissible: true,
       });
 
       this.appBridgeToast.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);

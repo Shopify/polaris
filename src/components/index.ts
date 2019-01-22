@@ -135,6 +135,7 @@ export {default as FormLayout, Props as FormLayoutProps} from './FormLayout';
 export {
   default as Frame,
   Props as FrameProps,
+  ContextualSaveBarProps,
   ToastProps,
   DEFAULT_TOAST_DURATION,
 } from './Frame';
@@ -221,8 +222,8 @@ export {default as ScrollLock} from './ScrollLock';
 export {
   default as Select,
   Props as SelectProps,
-  Option as SelectOption,
-  Group as SelectGroup,
+  SelectOption,
+  SelectGroup,
 } from './Select';
 
 export {

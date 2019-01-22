@@ -1,17 +1,26 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {findByTestID, mountWithAppProvider} from 'test-utilities';
+import {findByTestID, mountWithAppProvider, trigger} from 'test-utilities';
 import {
-  UnstyledLink,
   Avatar,
-  Thumbnail,
   ButtonGroup,
   Checkbox,
+  Thumbnail,
+  UnstyledLink,
 } from 'components';
 import {Provider} from '../../Context';
 import Item from '../Item';
 
 describe('<Item />', () => {
+  let spy: jest.SpyInstance;
+  beforeEach(() => {
+    spy = jest.spyOn(window, 'open');
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
   const mockDefaultContext = {
     selectMode: false,
     selectable: false,
@@ -161,6 +170,28 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
       expect(onClick).toBeCalledWith(itemId);
     });
+
+    it('calls window.open on metaKey + click', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
+        </Provider>,
+      );
+      const item = findByTestID(wrapper, 'Item-Wrapper');
+      trigger(item, 'onClick', {nativeEvent: {metaKey: true}});
+      expect(spy).toBeCalledWith(url, '_blank');
+    });
+
+    it('calls window.open on ctrlKey + click', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
+        </Provider>,
+      );
+      const item = findByTestID(wrapper, 'Item-Wrapper');
+      trigger(item, 'onClick', {nativeEvent: {ctrlKey: true}});
+      expect(spy).toBeCalledWith(url, '_blank');
+    });
   });
 
   describe('Selectable', () => {
@@ -231,6 +262,30 @@ describe('<Item />', () => {
         </Provider>,
       );
       expect(wrapper.find(Checkbox).props().checked).toBe(true);
+    });
+
+    it('should not call window.open when clicking the item with metaKey', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockSelectModeContext}>
+          <Item id={selectedItemId} url={url} />
+        </Provider>,
+      );
+      findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
+        nativeEvent: {metaKey: true},
+      });
+      expect(spy).not.toBeCalled();
+    });
+
+    it('should not call window.open when clicking the item with ctrlKey', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockSelectModeContext}>
+          <Item id={selectedItemId} url={url} />
+        </Provider>,
+      );
+      findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
+        nativeEvent: {ctrlKey: true},
+      });
+      expect(spy).not.toBeCalled();
     });
   });
 
@@ -315,6 +370,50 @@ describe('<Item />', () => {
         </Provider>,
       );
       expect(wrapper.find(ButtonGroup).exists()).toBe(true);
+    });
+
+    it('does not render while loading', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={{...mockLoadingContext}}>
+          <Item
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </Provider>,
+      );
+      expect(wrapper.find(ButtonGroup)).toHaveLength(0);
+    });
+  });
+
+  describe('accessibleMarkup', () => {
+    it('renders with a tab index of -1 when loading is true', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockLoadingContext}>
+          <Item
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </Provider>,
+      );
+      expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(-1);
+    });
+
+    it('renders with a tab index of 0 when loading is false', () => {
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item
+            id={itemId}
+            url={url}
+            shortcutActions={[{content: 'action'}]}
+            persistActions
+          />
+        </Provider>,
+      );
+      expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(0);
     });
   });
 });

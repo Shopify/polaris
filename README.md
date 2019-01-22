@@ -33,7 +33,7 @@ yarn add @shopify/polaris
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.2.1/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.5.0/polaris.min.css"
 />
 ```
 
@@ -79,7 +79,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.2.1/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.5.0/polaris.min.css"
 />
 ```
 
@@ -100,11 +100,11 @@ We have created example applications to document some of the ways you could incl
 
 ## Development
 
-We’ve created a simple, hot-reloading playground for development on these components. You can edit the `playground/Playground.tsx` file to import the components you are working on, and run `yarn dev` in order to start the development server. Please do not commit your work on the playground so that it is pristine for other developers to work on.
+We use Storybook to create a simple, hot-reloading playground for development on these components. You can edit the `playground/Playground.tsx` file to import the components you are working on, and run `yarn dev` in order to start the development server. Please do not commit your work on the playground so that it remains pristine for other developers to work on.
 
 ### Testing on mobile or a virtual machine
 
-1.  Run `yarn dev:host`
+1.  Run `yarn dev`
 1.  Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT in a browser window from within your virtual machine or mobile device on the same network
 
 ### Testing in a consuming project

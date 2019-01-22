@@ -11,6 +11,8 @@ export interface Props extends React.HTMLProps<HTMLImageElement> {
   alt: string;
   source: string;
   sourceSet?: SourceSet[];
+  onLoad?(): void;
+  onError?(): void;
 }
 
 export default function Image({

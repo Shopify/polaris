@@ -28,18 +28,18 @@ interface StrictGroup {
   options: StrictOption[];
 }
 
-export type Option = string | StrictOption;
+export type SelectOption = string | StrictOption;
 
-export interface Group {
+export interface SelectGroup {
   title: string;
-  options: Option[];
+  options: SelectOption[];
 }
 
 export interface BaseProps {
   /** List of options or option groups to choose from */
-  options?: (Option | Group)[];
+  options?: (SelectOption | SelectGroup)[];
   /** @deprecated List of grouped options to choose from */
-  groups?: (Option | Group)[];
+  groups?: (SelectOption | SelectGroup)[];
   /** Label for the select */
   label: string;
   /** Adds an action to the label */
@@ -186,12 +186,12 @@ export default function Select({
   );
 }
 
-function isString(option: Option | Group): option is string {
+function isString(option: SelectOption | SelectGroup): option is string {
   return typeof option === 'string';
 }
 
-function isGroup(option: Option | Group): option is Group {
-  return (option as Group).options != null;
+function isGroup(option: SelectOption | SelectGroup): option is SelectGroup {
+  return (option as SelectGroup).options != null;
 }
 
 function normalizeStringOption(option: string): StrictOption {
@@ -206,7 +206,7 @@ function normalizeStringOption(option: string): StrictOption {
  * an Option object.
  */
 function normalizeOption(
-  option: Option | Group,
+  option: SelectOption | SelectGroup,
 ): HideableStrictOption | StrictGroup {
   if (isString(option)) {
     return normalizeStringOption(option);

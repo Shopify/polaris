@@ -219,7 +219,7 @@ Use to create a ½ + ½ layout. Can be used to display content of equal importan
 
 ```jsx
 <Layout>
-  <Layout.Section secondary>
+  <Layout.Section oneHalf>
     <Card title="Florida" actions={[{content: 'Manage'}]}>
       <Card.Section>
         <TextStyle variation="subdued">455 units available</TextStyle>
@@ -277,7 +277,7 @@ Use to create a ½ + ½ layout. Can be used to display content of equal importan
       </Card.Section>
     </Card>
   </Layout.Section>
-  <Layout.Section secondary>
+  <Layout.Section oneHalf>
     <Card title="Nevada" actions={[{content: 'Manage'}]}>
       <Card.Section>
         <TextStyle variation="subdued">301 units available</TextStyle>
@@ -344,7 +344,7 @@ Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal 
 
 ```jsx
 <Layout>
-  <Layout.Section secondary>
+  <Layout.Section oneThird>
     <Card title="Florida" actions={[{content: 'Manage'}]}>
       <Card.Section>
         <TextStyle variation="subdued">455 units available</TextStyle>
@@ -402,7 +402,7 @@ Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal 
       </Card.Section>
     </Card>
   </Layout.Section>
-  <Layout.Section secondary>
+  <Layout.Section oneThird>
     <Card title="Nevada" actions={[{content: 'Manage'}]}>
       <Card.Section>
         <TextStyle variation="subdued">301 units available</TextStyle>
@@ -460,7 +460,7 @@ Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal 
       </Card.Section>
     </Card>
   </Layout.Section>
-  <Layout.Section secondary>
+  <Layout.Section oneThird>
     <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
       <Card.Section>
         <TextStyle variation="subdued">1931 units available</TextStyle>

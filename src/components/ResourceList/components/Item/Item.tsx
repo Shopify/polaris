@@ -12,10 +12,9 @@ import {Props as ThumbnailProps} from '../../../Thumbnail';
 import ButtonGroup from '../../../ButtonGroup';
 import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
-import {SELECT_ALL_ITEMS} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import {ResourceListContext} from '../../ResourceList';
+import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
 import * as styles from './Item.scss';
@@ -93,7 +92,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const selected = this.isSelected();
 
-    // let mediaMarkup: React.ReactNode = null;
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
@@ -158,12 +156,15 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     let actionsMarkup: React.ReactNode | null = null;
     let disclosureMarkup: React.ReactNode | null = null;
 
-    if (shortcutActions) {
+    if (shortcutActions && !loading) {
       if (persistActions) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {buttonsFrom(shortcutActions, {size: 'slim', plain: true})}
+              {buttonsFrom(shortcutActions, {
+                size: 'slim',
+                plain: true,
+              })}
             </ButtonGroup>
           </div>
         );
@@ -192,7 +193,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup segmented testID="ShortcutActions">
-              {buttonsFrom(shortcutActions, {size: 'slim'})}
+              {buttonsFrom(shortcutActions, {
+                size: 'slim',
+              })}
             </ButtonGroup>
           </div>
         );
@@ -216,6 +219,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       </div>
     );
 
+    const tabIndex = loading ? -1 : 0;
+
     const accessibleMarkup = url ? (
       <UnstyledLink
         aria-describedby={this.props.id}
@@ -224,6 +229,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         url={url}
         onFocus={this.handleAnchorFocus}
         onBlur={this.handleFocusedBlur}
+        tabIndex={tabIndex}
       />
     ) : (
       <button
@@ -234,6 +240,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onClick={this.handleClick}
         onFocus={this.handleAnchorFocus}
         onBlur={this.handleFocusedBlur}
+        tabIndex={tabIndex}
       />
     );
 
@@ -319,6 +326,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       url,
       context: {selectMode},
     } = this.props;
+    const {ctrlKey, metaKey} = event.nativeEvent;
     const anchor = this.node && this.node.querySelector('a');
 
     if (selectMode) {
@@ -332,6 +340,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     if (onClick) {
       onClick(id);
+    }
+
+    if (url && (ctrlKey || metaKey)) {
+      window.open(url, '_blank');
+      return;
     }
 
     if (url && anchor) {

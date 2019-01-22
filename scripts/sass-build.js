@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
-import {basename, resolve, join, relative} from 'path';
-import glob from 'glob';
-import {
+const {basename, resolve, join, relative} = require('path');
+const glob = require('glob');
+const {
   writeFileSync,
   readFileSync,
   outputFileSync,
@@ -10,16 +10,16 @@ import {
   createWriteStream,
   lstatSync,
   existsSync,
-} from 'fs-extra';
-import {cp, mkdir} from 'shelljs';
-import archiver from 'archiver';
+} = require('fs-extra');
+const {cp, mkdir} = require('shelljs');
+const archiver = require('archiver');
 
 const root = resolve(__dirname, '..');
 const intermediateBuild = resolve(root, './build-intermediate');
 const srcStyles = resolve(intermediateBuild, './styles');
 const srcComponents = resolve(intermediateBuild, './components');
 
-export default function generateSassBuild(destinationDir) {
+module.exports = function generateSassBuild(destinationDir) {
   const classnameTokens = readJSONSync(`${destinationDir}/polaris.tokens.json`);
 
   const buildSass = resolve(destinationDir, 'sass');
@@ -97,7 +97,7 @@ export default function generateSassBuild(destinationDir) {
   createSassIndex(components);
 
   return generateSassZip(buildSass, destinationDir);
-}
+};
 
 // see https://archiverjs.com/docs/
 function generateSassZip(sourceDir, destinationDir) {

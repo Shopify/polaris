@@ -1,19 +1,19 @@
-import {resolve as resolvePath, dirname} from 'path';
-import postcss from 'postcss';
-import {readFileSync, ensureDirSync, writeFile} from 'fs-extra';
-import {render} from 'node-sass';
-import {createFilter} from 'rollup-pluginutils';
-import cssnano from 'cssnano';
+const {resolve: resolvePath, dirname} = require('path');
+const postcss = require('postcss');
+const {readFileSync, ensureDirSync, writeFile} = require('fs-extra');
+const {render} = require('node-sass');
+const {createFilter} = require('rollup-pluginutils');
+const cssnano = require('cssnano');
 
-import cssModulesExtractImports from 'postcss-modules-extract-imports';
-import cssModulesLocalByDefault from 'postcss-modules-local-by-default';
-import cssModulesScope from 'postcss-modules-scope';
-import cssModulesValues from 'postcss-modules-values';
-import Parser from 'postcss-modules-parser';
-import postcssShopify from 'postcss-shopify';
-import genericNames from 'generic-names';
+const cssModulesExtractImports = require('postcss-modules-extract-imports');
+const cssModulesLocalByDefault = require('postcss-modules-local-by-default');
+const cssModulesScope = require('postcss-modules-scope');
+const cssModulesValues = require('postcss-modules-values');
+const Parser = require('postcss-modules-parser');
+const postcssShopify = require('postcss-shopify');
+const genericNames = require('generic-names');
 
-export default function styles(options = {}) {
+module.exports = function styles(options = {}) {
   const filter = createFilter(
     options.include || ['**/*.css', '**/*.scss'],
     options.exclude,
@@ -24,8 +24,7 @@ export default function styles(options = {}) {
     includeAlways = [],
     generateScopedName: userGenerateScopedName,
   } = options;
-  const compiledStyles = [];
-  const tokensByFile = {};
+  const cssAndTokensByFile = {};
 
   const generateScopedName =
     typeof userGenerateScopedName === 'function'
@@ -82,23 +81,22 @@ export default function styles(options = {}) {
             resolve(getPostCSSOutput(processor, sassOutput, id));
           },
         );
-      }).then(({css, tokens}) => {
-        tokensByFile[id] = tokens;
+      }).then((postCssOutput) => {
+        cssAndTokensByFile[id] = postCssOutput;
 
-        const properties = Object.keys(tokens)
+        const properties = Object.keys(postCssOutput.tokens)
           .map(
             (className) =>
               `  ${JSON.stringify(className)}: ${JSON.stringify(
-                tokens[className],
+                postCssOutput.tokens[className],
               )},`,
           )
           .join('\n');
 
-        compiledStyles.push(css);
         return `export default {\n${properties}\n};`;
       });
     },
-    ongenerate(generateOptions) {
+    generateBundle(generateOptions, bundles) {
       if (output === false) {
         return null;
       }
@@ -114,20 +112,45 @@ export default function styles(options = {}) {
 
       const minifiedCSSDestination = `${cssDestination.slice(0, -4)}.min.css`;
       const tokensDestination = `${cssDestination.slice(0, -4)}.tokens.json`;
-      const css = compiledStyles.join('\n\n');
+
+      // Items are added to cssAndTokensByFile in an unspecified order as
+      // whatever transform gets resolved first appears first. The contents of
+      // the css file should use the order in which scss files were referenced
+      // in the compiled javascript file.
+      const styleIds = Object.keys(cssAndTokensByFile);
+      const includedStyleIds = Array.from(
+        Object.values(bundles).reduce((memo, bundle) => {
+          Object.keys(bundle.modules).forEach((moduleName) => {
+            if (styleIds.includes(moduleName)) {
+              memo.add(moduleName);
+            }
+          });
+          return memo;
+        }, new Set()),
+      );
+
+      const {cssArray, tokensByFile} = includedStyleIds.reduce(
+        (memo, id) => {
+          memo.cssArray.push(cssAndTokensByFile[id].css);
+          memo.tokensByFile[id] = cssAndTokensByFile[id].tokens;
+          return memo;
+        },
+        {cssArray: [], tokensByFile: {}},
+      );
+      const css = cssArray.join('\n\n');
 
       ensureDirSync(dirname(cssDestination));
 
       return Promise.all([
         write(cssDestination, css),
-        write(tokensDestination, JSON.stringify(tokensByFile, null, 2)),
+        write(tokensDestination, `${JSON.stringify(tokensByFile, null, 2)}\n`),
         cssnano
-          .process(css)
+          .process(css, {from: generateOptions.file})
           .then((result) => write(minifiedCSSDestination, result.css)),
       ]);
     },
   };
-}
+};
 
 function write(file, content) {
   return new Promise((resolve, reject) => {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Checkbox from '../Checkbox';
 
@@ -22,6 +23,16 @@ describe('<Checkbox />', () => {
       (element.find('input') as any).instance().checked = true;
       element.find('input').simulate('change');
       expect(spy).toHaveBeenCalledWith(true, 'MyCheckbox');
+    });
+
+    it('renders with the correct focus when checkbox is toggled off', () => {
+      const input = mountWithAppProvider(
+        <Checkbox checked id="checkboxId" label="Checkbox" onChange={noop} />,
+      ).find('input');
+      (input.getDOMNode() as HTMLInputElement).checked = false;
+      input.simulate('change');
+
+      expect(input.getDOMNode()).toBe(document.activeElement);
     });
   });
 

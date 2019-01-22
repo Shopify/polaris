@@ -133,13 +133,13 @@ class CheckboxExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Default checkbox on Android](components/Checkbox/android/default.png)
+![Default checkbox on Android](/public_images/components/Checkbox/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default checkbox on iOS](components/Checkbox/ios/default.png)
+![Default checkbox on iOS](/public_images/components/Checkbox/ios/default@2x.png)
 
 <!-- /content-for -->
 

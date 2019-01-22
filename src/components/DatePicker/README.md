@@ -93,12 +93,12 @@ class DatePickerExample extends React.Component {
 
 <!-- content-for: android -->
 
-![Date picker on Android](components/DatePicker/android/default.png)
+![Date picker on Android](/public_images/components/DatePicker/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Date picker on iOS](components/DatePicker/ios/default.png)
+![Date picker on iOS](/public_images/components/DatePicker/ios/default@2x.png)
 
 <!-- /content-for -->

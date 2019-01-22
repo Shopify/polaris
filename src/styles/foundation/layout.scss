@@ -14,6 +14,12 @@ $layout-width-data: (
     min: rem(240px),
     max: rem(320px),
   ),
+  one-half-width: (
+    base: rem(450px),
+  ),
+  one-third-width: (
+    base: rem(240px),
+  ),
   nav: (
     base: rem($navigation-width),
   ),

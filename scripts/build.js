@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 
-import {execSync} from 'child_process';
-import {join, resolve as resolvePath} from 'path';
-import {ensureDirSync, writeFileSync, readFileSync} from 'fs-extra';
-import {rollup} from 'rollup';
-import {cp, mv, rm} from 'shelljs';
-import copyfiles from 'copyfiles';
+const {execSync} = require('child_process');
+const {join, resolve: resolvePath} = require('path');
+const {ensureDirSync, writeFileSync, readFileSync} = require('fs-extra');
+const {rollup} = require('rollup');
+const {cp, mv, rm} = require('shelljs');
+const copyfiles = require('copyfiles');
 
-import createRollupConfig from '../config/rollup';
-import packageJSON from '../package.json';
-import generateSassBuild from './sass-build';
+const createRollupConfig = require('../config/rollup');
+const packageJSON = require('../package.json');
+const generateSassBuild = require('./sass-build');
 
 const root = resolvePath(__dirname, '..');
 const build = resolvePath(root, 'build');
@@ -75,8 +75,8 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       `
       {
         "presets": [
-          "shopify/react",
-          ["shopify/web", {"modules": false}]
+          ["babel-preset-shopify/web", {"modules": false}],
+          ["babel-preset-shopify/react"]
         ],
         "plugins": [
           "../config/babel/plugins/sass-namespace-to-default-import.js"

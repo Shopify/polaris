@@ -76,13 +76,13 @@ Use to structure content in a card.
 
 <!-- content-for: android -->
 
-![Subheading in a card](components/Subheading/android/default.png)
+![Subheading in a card](/public_images/components/Subheading/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Subheading in a card](components/Subheading/ios/default.png)
+![Subheading in a card](/public_images/components/Subheading/ios/default@2x.png)
 
 <!-- /content-for -->
 

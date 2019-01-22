@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 
-import {execSync} from 'child_process';
-import {resolve} from 'path';
-import {mkdir} from 'shelljs';
-import semver from 'semver';
+const {execSync} = require('child_process');
+const {resolve} = require('path');
+const {mkdir} = require('shelljs');
+const semver = require('semver');
 
 const {version: packageVersion} = require('../package.json');
 

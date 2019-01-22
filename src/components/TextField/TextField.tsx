@@ -120,6 +120,7 @@ export default class TextField extends React.PureComponent<Props, State> {
   }
 
   private input: HTMLElement;
+  private buttonPressTimer: number;
 
   constructor(props: Props) {
     super(props);
@@ -167,6 +168,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       autoComplete,
       min,
       max,
+      step,
       minLength,
       maxLength,
       spellCheck,
@@ -205,7 +207,11 @@ export default class TextField extends React.PureComponent<Props, State> {
 
     const spinnerMarkup =
       type === 'number' && !disabled ? (
-        <Spinner onChange={this.handleNumberChange} />
+        <Spinner
+          onChange={this.handleNumberChange}
+          onMouseDown={this.handleButtonPress}
+          onMouseUp={this.handleButtonRelease}
+        />
       ) : null;
 
     const style = multiline && height ? {height} : null;
@@ -259,6 +265,7 @@ export default class TextField extends React.PureComponent<Props, State> {
       ref: this.setInput,
       min,
       max,
+      step,
       minLength,
       maxLength,
       spellCheck,
@@ -380,11 +387,30 @@ export default class TextField extends React.PureComponent<Props, State> {
   private handleClick() {
     this.input.focus();
   }
+
+  @autobind
+  private handleButtonPress(onChange: Function) {
+    const minInterval = 50;
+    const decrementBy = 10;
+    let interval = 200;
+
+    const onChangeInterval = () => {
+      if (interval > minInterval) interval -= decrementBy;
+      onChange();
+      this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
+    };
+    this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
+  }
+
+  @autobind
+  private handleButtonRelease() {
+    clearTimeout(this.buttonPressTimer);
+  }
 }
 
 function normalizeAutoComplete(autoComplete?: boolean) {
   if (autoComplete == null) {
     return autoComplete;
   }
-  return autoComplete ? 'on' : 'nope';
+  return autoComplete ? 'on' : 'off';
 }

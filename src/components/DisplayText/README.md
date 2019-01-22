@@ -80,13 +80,13 @@ Use this size sparingly and never multiple times on the same page.
 
 <!-- content-for: android -->
 
-![Extra large display text](components/DisplayText/android/extra-large.png)
+![Extra large display text](/public_images/components/DisplayText/android/extra-large@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Extra large display text](components/DisplayText/ios/extra-large.png)
+![Extra large display text](/public_images/components/DisplayText/ios/extra-large@2x.png)
 
 <!-- /content-for -->
 
@@ -108,13 +108,13 @@ Use for display text that’s more important than the small size, but less impor
 
 <!-- content-for: android -->
 
-![Medium and large display text](components/DisplayText/android/medium-large.png)
+![Medium and large display text](/public_images/components/DisplayText/android/medium-large@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Medium and large display text](components/DisplayText/ios/medium-large.png)
+![Medium and large display text](/public_images/components/DisplayText/ios/medium-large@2x.png)
 
 <!-- /content-for -->
 

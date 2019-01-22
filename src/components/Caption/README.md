@@ -49,7 +49,7 @@ Captions are primarily used in [data visualizations](/design/data-visualizations
 #### Do
 
 - Use caption for labelling data visualizations
-  ![Diagram of using captions to label graphs and other data content](typography/display-styles/do-use-caption-for-labeling-data-visualizations.png)
+  ![Diagram of using captions to label graphs and other data content](/public_images/typography/display-styles/do-use-caption-for-labeling-data-visualizations@2x.png)
 - Received April 21, 2017
 
 #### Don’t
@@ -80,12 +80,12 @@ Use to provide details in situations where content is compact and space is tight
 
 <!-- content-for: android -->
 
-![Default caption](components/Caption/android/default.png)
+![Default caption](/public_images/components/Caption/android/default@2x.png)
 
 <!-- /content-for -->
 
 <!-- content-for: ios -->
 
-![Default caption](components/Caption/ios/default.png)
+![Default caption](/public_images/components/Caption/ios/default@2x.png)
 
 <!-- /content-for -->

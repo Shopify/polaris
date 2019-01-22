@@ -117,10 +117,10 @@ export default class PositionedOverlay extends React.PureComponent<
     const {render, fixed} = this.props;
 
     const style = {
-      top: top == null ? undefined : top,
-      left: left == null ? undefined : left,
-      width: width == null ? undefined : width,
-      zIndex: zIndex == null ? undefined : zIndex,
+      top: top == null || isNaN(top) ? undefined : top,
+      left: left == null || isNaN(left) ? undefined : left,
+      width: width == null || isNaN(width) ? undefined : width,
+      zIndex: zIndex == null || isNaN(zIndex) ? undefined : zIndex,
     };
 
     const className = classNames(
@@ -196,8 +196,7 @@ export default class PositionedOverlay extends React.PureComponent<
           ? {...currentOverlayRect, width: activatorRect.width}
           : currentOverlayRect;
 
-        // If `body` is 100% height, it still acts as though it were not constrained
-        // to that size. This adjusts for that.
+        // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
         if (scrollableElement === document.body) {
           scrollableContainerRect.height = document.body.scrollHeight;
         }
@@ -248,22 +247,20 @@ export default class PositionedOverlay extends React.PureComponent<
   }
 }
 
-function intersectionWithViewport(rect: Rect) {
-  const viewport = windowRect();
+export function intersectionWithViewport(
+  rect: Rect,
+  viewport: Rect = windowRect(),
+) {
+  const top = Math.max(rect.top, 0);
+  const left = Math.max(rect.left, 0);
+  const bottom = Math.min(rect.top + rect.height, viewport.height);
+  const right = Math.min(rect.left + rect.width, viewport.width);
 
   return new Rect({
-    top: Math.max(rect.top, 0),
-    left: Math.max(rect.left, 0),
-    height: Math.min(
-      rect.height - rect.top + viewport.top,
-      viewport.height,
-      viewport.height - rect.top,
-    ),
-    width: Math.min(
-      rect.width - rect.left + viewport.left,
-      viewport.width,
-      viewport.width - rect.left,
-    ),
+    top,
+    left,
+    height: bottom - top,
+    width: right - left,
   });
 }
 

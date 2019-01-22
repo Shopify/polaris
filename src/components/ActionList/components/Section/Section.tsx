@@ -32,11 +32,12 @@ export default function Section({
     };
   };
   const actionMarkup = section.items.map(
-    ({content, onAction, ...item}, index) => {
+    ({content, helpText, onAction, ...item}, index) => {
       return (
         <Item
           key={`${content}-${index}`}
           content={content}
+          helpText={helpText}
           role={actionRole}
           onAction={handleAction(onAction)}
           {...item}
