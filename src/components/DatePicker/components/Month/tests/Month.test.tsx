@@ -9,10 +9,7 @@ describe('<Month />', () => {
   describe('title', () => {
     it('passes the correct value to Weekday', () => {
       const month = mountWithAppProvider(
-        <Month
-          visibleMonth={new Date(2018, 0)}
-          weekStartsOn={Weekdays.Monday}
-        />,
+        <Month month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );
       expect(
         month
@@ -26,10 +23,7 @@ describe('<Month />', () => {
   describe('label', () => {
     it('passes the correct value to Weekday', () => {
       const month = mountWithAppProvider(
-        <Month
-          visibleMonth={new Date(2018, 0)}
-          weekStartsOn={Weekdays.Monday}
-        />,
+        <Month month={0} year={2018} weekStartsOn={Weekdays.Monday} />,
       );
       expect(
         month
@@ -43,7 +37,11 @@ describe('<Month />', () => {
   describe('current', () => {
     const today = new Date();
     const month = mountWithAppProvider(
-      <Month visibleMonth={today} weekStartsOn={today.getDay()} />,
+      <Month
+        month={today.getMonth()}
+        year={today.getFullYear()}
+        weekStartsOn={today.getDay()}
+      />,
     );
 
     it('passes true to Weekday if month year and weekStartsOn are today', () => {
@@ -57,10 +55,7 @@ describe('<Month />', () => {
 
     it('passes false to Weekday if month year and weekStartsOn are not today', () => {
       const month = mountWithAppProvider(
-        <Month
-          visibleMonth={new Date(2016, 1)}
-          weekStartsOn={Weekdays.Monday}
-        />,
+        <Month month={0} year={2016} weekStartsOn={Weekdays.Monday} />,
       );
       expect(
         month
@@ -76,7 +71,8 @@ describe('<Month />', () => {
       const hoverDate = new Date('05 Jan 2018 00:00:00 GMT');
       const month = mountWithAppProvider(
         <Month
-          visibleMonth={new Date(2018, 0)}
+          month={0}
+          year={2018}
           weekStartsOn={Weekdays.Monday}
           allowRange
           hoverDate={hoverDate}
@@ -97,7 +93,8 @@ describe('<Month />', () => {
       const month = mountWithAppProvider(
         <Month
           locale="ja"
-          visibleMonth={new Date(2018, 0)}
+          month={0}
+          year={2018}
           weekStartsOn={Weekdays.Monday}
           allowRange
           selected={{
@@ -115,7 +112,8 @@ describe('<Month />', () => {
     it('weekday labels default to en locale if no locale is set', () => {
       const month = mountWithAppProvider(
         <Month
-          visibleMonth={new Date(2018, 0)}
+          month={0}
+          year={2018}
           weekStartsOn={Weekdays.Monday}
           allowRange
           selected={{
@@ -137,7 +135,8 @@ describe('<Month />', () => {
       const month = mountWithAppProvider(
         <Month
           locale="ja"
-          visibleMonth={new Date(2018, 0)}
+          month={0}
+          year={2018}
           weekStartsOn={Weekdays.Monday}
           allowRange
           selected={{
@@ -158,7 +157,8 @@ describe('<Month />', () => {
     it('contains visible month / year label formatted to en locale if no locale is set', () => {
       const month = mountWithAppProvider(
         <Month
-          visibleMonth={new Date(2018, 0)}
+          month={0}
+          year={2018}
           weekStartsOn={Weekdays.Monday}
           allowRange
           selected={{
@@ -175,7 +175,8 @@ describe('<Month />', () => {
       const month = mountWithAppProvider(
         <Month
           locale="ja"
-          visibleMonth={new Date(2018, 0)}
+          month={0}
+          year={2018}
           weekStartsOn={Weekdays.Monday}
           allowRange
           selected={{
