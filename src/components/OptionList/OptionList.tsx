@@ -9,7 +9,7 @@ import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
 
 import {Option} from './components';
-import * as styles from './OptionList.scss';
+import styles from './OptionList.scss';
 
 export interface OptionDescriptor {
   /** Value of the option */

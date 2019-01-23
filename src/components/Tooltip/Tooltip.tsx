@@ -6,7 +6,7 @@ import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {PreferredPosition} from '../PositionedOverlay';
 import Portal from '../Portal';
 import {TooltipOverlay} from './components';
-import * as styles from './Tooltip.scss';
+import styles from './Tooltip.scss';
 
 export interface Props {
   /** The element that will activate to tooltip */

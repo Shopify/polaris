@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from '../../DatePicker.scss';
+import styles from '../../DatePicker.scss';
 
 export interface Props {
   label: Weekdays;

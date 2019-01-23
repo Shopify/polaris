@@ -57,7 +57,7 @@ import {
   view,
 } from '../../icons';
 
-import * as styles from './Icon.scss';
+import styles from './Icon.scss';
 
 export type Color =
   | 'white'

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Icon from '../Icon';
 import {Error} from '../../types';
 
-import * as styles from './InlineError.scss';
+import styles from './InlineError.scss';
 
 export interface Props {
   /** Content briefly explaining how to resolve the invalid form field input. */

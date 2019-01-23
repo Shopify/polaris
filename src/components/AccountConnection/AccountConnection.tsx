@@ -8,7 +8,7 @@ import Stack from '../Stack';
 import TextStyle from '../TextStyle';
 import SettingAction from '../SettingAction';
 
-import * as styles from './AccountConnection.scss';
+import styles from './AccountConnection.scss';
 
 export interface Props {
   /** Content to display as title */

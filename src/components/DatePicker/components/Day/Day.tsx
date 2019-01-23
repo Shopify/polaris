@@ -5,7 +5,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import * as styles from '../../DatePicker.scss';
+import styles from '../../DatePicker.scss';
 
 export interface Props {
   focused?: boolean;

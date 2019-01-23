@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {Error} from '../../types';
 import InlineError from '../InlineError';
 
-import * as styles from './Choice.scss';
+import styles from './Choice.scss';
 
 export interface Props {
   /** A unique identifier for the choice */

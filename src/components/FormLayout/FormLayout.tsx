@@ -2,7 +2,7 @@ import * as React from 'react';
 import {wrapWithComponent, isElementOfType} from '@shopify/react-utilities';
 
 import {Group, Item, ItemProps} from './components';
-import * as styles from './FormLayout.scss';
+import styles from './FormLayout.scss';
 
 export interface Props {
   /** The content to display inside the layout. */

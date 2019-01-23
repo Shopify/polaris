@@ -20,7 +20,7 @@ import {
 } from './types';
 import {ToastManager, Loading, ContextualSaveBar} from './components';
 
-import * as styles from './Frame.scss';
+import styles from './Frame.scss';
 
 export interface Props {
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */

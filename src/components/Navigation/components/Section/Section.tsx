@@ -11,7 +11,7 @@ import {contextTypes} from '../../types';
 
 import Item, {Props as ItemProps} from '../Item';
 
-import * as styles from '../../Navigation.scss';
+import styles from '../../Navigation.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
