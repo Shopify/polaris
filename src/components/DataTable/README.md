@@ -311,7 +311,7 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Accessibility
 
-<!-- content-for: Android -->
+<!-- content-for: android -->
 
 See Material Design and development documentation about accessibility for Android:
 
