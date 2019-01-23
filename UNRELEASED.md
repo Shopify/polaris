@@ -26,7 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
-- Improve Build speed ([#912](https://github.com/Shopify/polaris-react/pull/912) and [#920](https://github.com/Shopify/polaris-react/pull/920))
+- Improved build speed by adjusting our rollup workflow ([#912](https://github.com/Shopify/polaris-react/pull/912)) and not optimizing svgs in the node_modules folder ([#920](https://github.com/Shopify/polaris-react/pull/920))
 
 ### Dependency upgrades
 
