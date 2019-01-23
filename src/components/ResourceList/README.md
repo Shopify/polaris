@@ -3147,7 +3147,7 @@ When merchants use sorting and filtering controls to update items in the list, t
 
 ### Navigation
 
-Primarily, items in a resource list function as links to the full-page representations of the items. Each item should have a unique `name` prop. For each `ResourceList.Item`, the `accessibilityLabel` prop should be used to give the link a unique `aria-label`. The `aria-label` should convey the link’s purpose, using the `name` value. Merchants who use screen readers should be able to easily distinguish each link from the others. Using a unique `name` for each item is recommended.
+Primarily, items in a resource list function as links to the full-page representations of the items. Each item should have a unique `name` prop. For each `ResourceList.Item`, the `accessibilityLabel` prop should be used to give the link a unique `aria-label`. The `aria-label` should convey the link’s purpose, using the `name` value. Merchants who use screen readers should be able to easily distinguish each link from the others.
 
 ### Keyboard
 
