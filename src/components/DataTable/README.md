@@ -347,6 +347,8 @@ Use tables for tabular data.
 
 Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](/components/lists-and-tables/resource-list).
 
+<!-- end -->
+
 ### Keyboard support
 
 Sorting controls for the data table component are implemented with native HTML buttons.
