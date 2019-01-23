@@ -24,16 +24,6 @@ export default function sewingKitConfig(
           ...config.transform,
         };
 
-        // Needed because we set js: 'react-native' in our tsconfig to leave the
-        // transformation up to consuming projects, but within Jest we want to
-        // transform the jsx content
-        // eslint-disable-next-line typescript/no-var-requires
-        const {compilerOptions} = require('./tsconfig.json');
-        config.globals['ts-jest'].tsConfig = {
-          ...compilerOptions,
-          jsx: 'react',
-        };
-
         // Code coverage
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',
