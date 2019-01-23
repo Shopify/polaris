@@ -129,15 +129,11 @@ $in-range-border-color: #9ca6de;
 .Weekday {
   display: block;
   flex: 1 0 0%;
-  padding: spacing(tight);
+  margin: spacing(tight) auto;
   background: transparent;
   font-size: $font-size;
   color: color('ink', 'lighter');
   text-align: center;
-
-  + .Weekday {
-    margin-left: -1px;
-  }
 }
 
 .Weekday-current {
