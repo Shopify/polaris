@@ -96,7 +96,8 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       <Month
         onFocus={this.handleFocus}
         focusedDate={focusDate}
-        visibleMonth={nextVisibleMonth}
+        month={nextVisibleMonth.getMonth()}
+        year={nextVisibleMonth.getFullYear()}
         selected={deriveRange(selected)}
         hoverDate={hoverDate}
         onChange={this.handleDateSelection}
@@ -151,7 +152,8 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
             locale={locale}
             onFocus={this.handleFocus}
             focusedDate={focusDate}
-            visibleMonth={visibleMonth}
+            month={visibleMonth.getMonth()}
+            year={visibleMonth.getFullYear()}
             selected={deriveRange(selected)}
             hoverDate={hoverDate}
             onChange={this.handleDateSelection}

@@ -2,6 +2,8 @@ import * as React from 'react';
 import {
   Range,
   Weekdays,
+  Months,
+  Year,
   isDateBefore,
   isDateAfter,
   isSameDay,
@@ -21,7 +23,8 @@ export interface Props {
   focusedDate?: Date;
   selected?: Range;
   hoverDate?: Date;
-  visibleMonth: Date;
+  month: Months;
+  year: Year;
   disableDatesBefore?: Date;
   disableDatesAfter?: Date;
   allowRange?: Boolean;
@@ -52,24 +55,19 @@ export default function Month({
   onChange = noop,
   onHover = noop,
   onFocus = noop,
-  visibleMonth,
+  month,
+  year,
   weekStartsOn,
 }: Props) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
-  const current =
-    now.getMonth() === visibleMonth.getMonth() &&
-    now.getFullYear() === visibleMonth.getFullYear();
+  const current = now.getMonth() === month && now.getFullYear() === year;
   const className = classNames(
     styles.Title,
     current && styles['Month-current'],
   );
 
-  const weeks = getWeeksForMonth(
-    visibleMonth.getMonth(),
-    visibleMonth.getFullYear(),
-    weekStartsOn,
-  );
+  const weeks = getWeeksForMonth(month, year, weekStartsOn);
 
   const weekdayFormat = Intl.DateTimeFormat(locale, {weekday: 'short'});
 
@@ -93,11 +91,7 @@ export default function Month({
 
   function renderWeek(day: Date, dayIndex: number) {
     if (day == null) {
-      const lastDayOfMonth = new Date(
-        visibleMonth.getFullYear(),
-        visibleMonth.getMonth() + 1,
-        0,
-      );
+      const lastDayOfMonth = new Date(year, month + 1, 0);
       return (
         <Day
           key={dayIndex}
@@ -143,7 +137,7 @@ export default function Month({
     <div role="grid" className={styles.Month}>
       <div className={className}>
         {Intl.DateTimeFormat(locale, {month: 'long', year: 'numeric'}).format(
-          visibleMonth,
+          new Date(year, month),
         )}
       </div>
       <div role="rowheader" className={styles.WeekHeadings}>
