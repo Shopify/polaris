@@ -335,7 +335,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Native HTML tables provide a large amount of structural information to screen reader users. Merchants who rely on screen readers can navigate tables and identify relationships between data cells (`<td>`) and headers (`<th>`) using keys specific to their screen reader.
 
-Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use use `aria-label` on sorting buttons to convey what activating the button will do.
+Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
 <!-- usageblock -->
 
