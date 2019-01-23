@@ -3126,7 +3126,7 @@ export default App;
 
 <!-- content-for: web -->
 
-Use the resource list component to let merchants access and manage a list of items. To present content that’s primarily a table of data, use the [data table component](https://polaris.shopify.com/components/lists-and-tables/data-table) instead.
+Use the resource list component to let merchants access and manage a list of items. To present a list of items in a tabular format for merchants to analyze, use the [data table component](https://polaris.shopify.com/components/lists-and-tables/data-table) instead.
 
 ### Structure
 
