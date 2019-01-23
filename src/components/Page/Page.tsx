@@ -23,6 +23,13 @@ export interface Props extends HeaderProps {
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
   singleColumn?: boolean;
+  /**
+   * Force render in page and do not delegate to the app bridge TitleBar action
+   * @default false
+   * @embeddedAppOnly
+   * @see {@link https://polaris.shopify.com/components/structure/page#section-use-in-an-embedded-application|Shopify Page Component docs}
+   * */
+  forceRender?: boolean;
 }
 
 export type ComposedProps = Props & WithAppProviderProps;
@@ -39,7 +46,7 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   private titlebar: AppBridgeTitleBar.TitleBar | undefined;
 
   componentDidMount() {
-    if (this.props.polaris.appBridge == null) {
+    if (this.delegateToAppbridge === false) {
       return;
     }
 
@@ -50,7 +57,7 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   }
 
   componentDidUpdate(prevProps: ComposedProps) {
-    if (this.props.polaris.appBridge == null || this.titlebar == null) {
+    if (this.titlebar == null || this.delegateToAppbridge === false) {
       return;
     }
 
@@ -64,7 +71,7 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   }
 
   componentWillUnmount() {
-    if (this.props.polaris.appBridge == null || this.titlebar == null) {
+    if (this.titlebar == null || this.delegateToAppbridge === false) {
       return;
     }
 
@@ -81,8 +88,7 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     );
 
     const headerMarkup =
-      this.props.polaris.appBridge ||
-      this.hasHeaderContent() === false ? null : (
+      this.delegateToAppbridge || this.hasHeaderContent() === false ? null : (
         <Header {...rest} />
       );
 
@@ -94,7 +100,16 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     );
   }
 
-  private hasHeaderContent() {
+  private get delegateToAppbridge(): boolean {
+    const {
+      polaris: {appBridge},
+      forceRender = false,
+    } = this.props;
+
+    return appBridge != null && forceRender === false;
+  }
+
+  private hasHeaderContent(): boolean {
     const {
       title,
       primaryAction,
