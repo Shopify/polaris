@@ -23,7 +23,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Added `Stack.Item` properties and description to [style guide](https://polaris.shopify.com)’s ([#772](https://github.com/Shopify/polaris-react/pull/772))
-- Added accessibility documentation to the `Resource list` and `Data table` components ([#...]())
+- Added accessibility documentation to the `Resource list` and `Data table` components ([#927](https://github.com/Shopify/polaris-react/pull/927))
 
 ### Development workflow
 
