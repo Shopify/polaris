@@ -3,6 +3,16 @@ $stacking-order: (
   icon: 2,
 );
 
+@mixin color-icon($value, $hue: base) {
+  svg {
+    fill: color($value, $hue);
+  }
+
+  img {
+    filter: filter($value, $hue);
+  }
+}
+
 .Icon {
   display: block;
   height: rem(20px);
@@ -35,36 +45,36 @@ $stacking-order: (
 }
 
 .colorWhite {
-  fill: color('white');
+  @include color-icon('white');
   color: transparent;
 }
 
 .colorBlack {
-  fill: color('black');
+  @include color-icon('black');
 }
 
 .colorSkyLighter {
-  fill: color('sky', 'lighter');
+  @include color-icon('sky', 'lighter');
 }
 
 .colorSkyLight {
-  fill: color('sky', 'light');
+  @include color-icon('sky', 'light');
 }
 
 .colorSky {
-  fill: color('sky');
+  @include color-icon('sky');
 }
 
 .colorSkyDark {
-  fill: color('sky', 'dark');
+  @include color-icon('sky', 'dark');
 }
 
 .colorInkLightest {
-  fill: color('ink', 'lightest');
+  @include color-icon('ink', 'lightest');
 }
 
 .colorInkLighter {
-  fill: color('ink', 'lighter');
+  @include color-icon('ink', 'lighter');
 
   &::after {
     background-color: color('sky');
@@ -72,11 +82,11 @@ $stacking-order: (
 }
 
 .colorInkLight {
-  fill: color('ink', 'light');
+  @include color-icon('ink', 'light');
 }
 
 .colorInk {
-  fill: color('ink');
+  @include color-icon('ink');
 
   &::after {
     background-color: color('sky');
@@ -84,19 +94,19 @@ $stacking-order: (
 }
 
 .colorBlueLighter {
-  fill: color('blue', 'lighter');
+  @include color-icon('blue', 'lighter');
 }
 
 .colorBlueLight {
-  fill: color('blue', 'light');
+  @include color-icon('blue', 'light');
 }
 
 .colorBlue {
-  fill: color('blue');
+  @include color-icon('blue');
 }
 
 .colorBlueDark {
-  fill: color('blue', 'dark');
+  @include color-icon('blue', 'dark');
 
   &::after {
     background-color: color('blue', 'light');
@@ -104,39 +114,39 @@ $stacking-order: (
 }
 
 .colorBlueDarker {
-  fill: color('blue', 'darker');
+  @include color-icon('blue', 'darker');
 }
 
 .colorIndigoLighter {
-  fill: color('indigo', 'lighter');
+  @include color-icon('indigo', 'lighter');
 }
 
 .colorIndigoLight {
-  fill: color('indigo', 'light');
+  @include color-icon('indigo', 'light');
 }
 
 .colorIndigo {
-  fill: color('indigo');
+  @include color-icon('indigo');
 }
 
 .colorIndigoDark {
-  fill: color('indigo', 'dark');
+  @include color-icon('indigo', 'dark');
 }
 
 .colorIndigoDarker {
-  fill: color('indigo', 'darker');
+  @include color-icon('indigo', 'darker');
 }
 
 .colorTealLighter {
-  fill: color('teal', 'lighter');
+  @include color-icon('teal', 'lighter');
 }
 
 .colorTealLight {
-  fill: color('teal', 'light');
+  @include color-icon('teal', 'light');
 }
 
 .colorTeal {
-  fill: color('teal');
+  @include color-icon('teal');
 
   &::after {
     background-color: color('white');
@@ -144,7 +154,7 @@ $stacking-order: (
 }
 
 .colorTealDark {
-  fill: color('teal', 'dark');
+  @include color-icon('teal', 'dark');
 
   &::after {
     background-color: color('teal', 'light');
@@ -152,15 +162,15 @@ $stacking-order: (
 }
 
 .colorTealDarker {
-  fill: color('teal', 'darker');
+  @include color-icon('teal', 'darker');
 }
 
 .colorGreenLighter {
-  fill: color('green', 'lighter');
+  @include color-icon('green', 'lighter');
 }
 
 .colorGreen {
-  fill: color('green');
+  @include color-icon('green');
 
   &::after {
     background-color: color('green', 'lighter');
@@ -168,7 +178,7 @@ $stacking-order: (
 }
 
 .colorGreenDark {
-  fill: color('green', 'dark');
+  @include color-icon('green', 'dark');
 
   &::after {
     background-color: color('green', 'light');
@@ -176,15 +186,15 @@ $stacking-order: (
 }
 
 .colorYellowLighter {
-  fill: color('yellow', 'lighter');
+  @include color-icon('yellow', 'lighter');
 }
 
 .colorYellow {
-  fill: color('yellow');
+  @include color-icon('yellow');
 }
 
 .colorYellowDark {
-  fill: color('yellow', 'dark');
+  @include color-icon('yellow', 'dark');
 
   &::after {
     background-color: color('yellow', 'light');
@@ -192,23 +202,23 @@ $stacking-order: (
 }
 
 .colorOrange {
-  fill: color('orange');
+  @include color-icon('orange');
 }
 
 .colorOrangeDark {
-  fill: color('orange', 'dark');
+  @include color-icon('orange', 'dark');
 }
 
 .colorRedLighter {
-  fill: color('red', 'lighter');
+  @include color-icon('red', 'lighter');
 }
 
 .colorRed {
-  fill: color('red');
+  @include color-icon('red');
 }
 
 .colorRedDark {
-  fill: color('red', 'dark');
+  @include color-icon('red', 'dark');
 
   &::after {
     background-color: color('red', 'light');
@@ -216,10 +226,11 @@ $stacking-order: (
 }
 
 .colorPurple {
-  fill: color('purple');
+  @include color-icon('purple');
 }
 
-.Svg {
+.Svg,
+.Img {
   position: relative;
   z-index: z-index(icon, $stacking-order);
   display: block;
