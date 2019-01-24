@@ -51,9 +51,9 @@ describe('<DatePicker />', () => {
       );
 
       const month = datePicker.find(Month);
-      expect(month.prop('visibleMonth').valueOf()).toEqual(
-        new Date(2018, 1).valueOf(),
-      );
+
+      expect(month.prop('month')).toEqual(1);
+      expect(month.prop('year')).toEqual(2018);
     });
   });
 
@@ -81,7 +81,8 @@ describe('<DatePicker />', () => {
           focusedDate={new Date()}
           selected={selected}
           hoverDate={hoverDate}
-          visibleMonth={new Date(year, month)}
+          month={month}
+          year={year}
           onChange={spy}
           weekStartsOn={Weekdays.Sunday}
         />,
