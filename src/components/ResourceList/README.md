@@ -3154,7 +3154,7 @@ Primarily, items in a resource list function as links to the full-page represent
 Keyboard users expect to give controls in the resource list keyboard focus with the `tab` key (or `shift` + `tab` when tabbing backwards).
 
 - Links can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key by default
-- Checkboxes can be checked and unchecked with the `space` key by default
+- Checkboxes can be checked and unchecked with the <kbd>space</kbd> key by default
 - Buttons added with other configurations can be activated with the `enter`/`return` key or the `space` by default
 
 If you add custom list items with additional controls or an alternate tool, then ensure that the controls:
