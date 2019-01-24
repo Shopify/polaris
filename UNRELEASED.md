@@ -24,7 +24,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Added `Stack.Item` properties and description to [style guide](https://polaris.shopify.com)’s ([#772](https://github.com/Shopify/polaris-react/pull/772))
-- Added accessibility recommendations for `Caption` ([#928](https://github.com/Shopify/polaris-react/pull/928/))
+- Added accessibility recommendations for the caption component ([#928](https://github.com/Shopify/polaris-react/pull/928/))
 
 ### Development workflow
 
