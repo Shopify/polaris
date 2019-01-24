@@ -161,6 +161,6 @@ To make the external link functionality clear to all merchants:
 Links use browser defaults for keyboard interaction.
 
 - Give links keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards).
-- Activate links with the `enter`/`return` key.
+- Activate links with the <kbd>enter</kbd>/<kbd>return</kbd> key.
 
 <!-- /content-for -->
