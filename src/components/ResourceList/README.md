@@ -3137,7 +3137,7 @@ To show the relationships between items in the list, the resource list component
 
 ### Bulk actions
 
-A resource list with bulk actions includes checkboxes that merchants can use to select all items or individual items. The component generates a unique `id` is for each checkbox `<input>`, and each `<input>` is given a visually hidden label that leverages the `accessibilityLabel` for the item.
+A resource list with bulk actions includes checkboxes that merchants can use to select all items or individual items. The component generates a unique `id` for each checkbox `<input>`, and each `<input>` is given a visually hidden label that leverages the `accessibilityLabel` for the item.
 
 If some but not all items are checked, then the bulk checkbox uses `aria-checked=”mixed”` to convey the partially selected state.
 
