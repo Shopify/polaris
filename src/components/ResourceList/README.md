@@ -3155,7 +3155,7 @@ Keyboard users expect to give controls in the resource list keyboard focus with 
 
 - Links can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key by default
 - Checkboxes can be checked and unchecked with the <kbd>space</kbd> key by default
-- Buttons added with other configurations can be activated with the `enter`/`return` key or the `space` by default
+- Buttons added with other configurations can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> by default
 
 If you add custom list items with additional controls or an alternate tool, then ensure that the controls:
 
