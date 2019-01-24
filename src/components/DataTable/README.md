@@ -354,6 +354,6 @@ Use tables for layout. For a table-like layout that doesn’t use table HTML ele
 Sorting controls for the data table component are implemented with native HTML buttons.
 
 - Give buttons keyboard focus with the `tab` key (or `shift` + `tab` when tabbing backwards).
-- Activate buttons with the `enter`/`return` and `space` keys.
+- Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys.
 
 <!-- /content-for -->
