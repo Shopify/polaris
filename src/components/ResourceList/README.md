@@ -3151,7 +3151,7 @@ Primarily, items in a resource list function as links to the full-page represent
 
 ### Keyboard
 
-Keyboard users expect to give controls in the resource list keyboard focus with the `tab` key (or `shift` + `tab` when tabbing backwards).
+Keyboard users expect to give controls in the resource list keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards).
 
 - Links can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key by default
 - Checkboxes can be checked and unchecked with the <kbd>space</kbd> key by default
