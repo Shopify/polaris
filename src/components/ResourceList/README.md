@@ -1366,7 +1366,7 @@ Resource lists don’t have column headings, so care must be taken to avoid ambi
     #### Don’t
 
     - 3
-    - $492.76
+    - \$492.76
 
     <!-- end -->
 
@@ -3119,3 +3119,48 @@ class App extends Component {
 
 export default App;
 ```
+
+---
+
+## Accessibility
+
+<!-- content-for: web -->
+
+Use the resource list component to let merchants access and manage a list of items. To present a list of items in a tabular format for merchants to analyze, use the [data table component](https://polaris.shopify.com/components/lists-and-tables/data-table) instead.
+
+### Structure
+
+To show the relationships between items in the list, the resource list component produces a list wrapper (`<ul>`) and list items (`<li>`). This structure allows merchants who use screen readers to:
+
+- Identify how many items are in the current resource list view
+- Know that all of the list items go together
+
+### Bulk actions
+
+A resource list with bulk actions includes checkboxes that merchants can use to select all items or individual items. The component generates a unique `id` for each checkbox `<input>`, and each `<input>` is given a visually hidden label that leverages the `accessibilityLabel` for the item.
+
+If some but not all items are checked, then the bulk checkbox uses `aria-checked="mixed"` to convey the partially selected state.
+
+### Sorting and filtering
+
+When merchants use sorting and filtering controls to update items in the list, the update is conveyed to screen readers with an `aria-live="polite"` attribute on the list.
+
+### Navigation
+
+Primarily, items in a resource list function as links to the full-page representations of the items. Each item should have a unique `name` prop. For each `ResourceList.Item`, the `accessibilityLabel` prop should be used to give the link a unique `aria-label`. The `aria-label` should convey the link’s purpose, using the `name` value. Merchants who use screen readers should be able to easily distinguish each link from the others.
+
+### Keyboard
+
+Keyboard users expect to give controls in the resource list keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards).
+
+- Links can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key by default
+- Checkboxes can be checked and unchecked with the <kbd>space</kbd> key by default
+- Buttons added with other configurations can be activated with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key by default
+
+If you add custom list items with additional controls or an alternate tool, then ensure that the controls:
+
+- Can be used with the keyboard
+- Receive keyboard focus in a logical order
+- Display a visible focus indicator
+
+<!-- /content-for -->
