@@ -26,7 +26,7 @@ export interface Props {
   onCancel?(): void;
 }
 
-export default class SearchField extends React.Component<Props, never> {
+export default class SearchField extends React.PureComponent<Props, never> {
   private input: React.RefObject<HTMLInputElement> = React.createRef();
 
   componentDidMount() {

@@ -66,7 +66,7 @@ enum MatchState {
   NoMatch,
 }
 
-export class BaseItem extends React.Component<CombinedProps, State> {
+export class BaseItem extends React.PureComponent<CombinedProps, State> {
   static contextTypes = contextTypes;
 
   context!: Context;

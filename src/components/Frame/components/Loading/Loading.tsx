@@ -13,7 +13,7 @@ export interface State {
 const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
-export default class Loading extends React.Component<Props, State> {
+export default class Loading extends React.PureComponent<Props, State> {
   state = {
     progress: 0,
     step: INITIAL_STEP,

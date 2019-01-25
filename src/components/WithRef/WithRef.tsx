@@ -13,7 +13,7 @@ export default function withRef<OriginalProps>() {
   return function addForwardRef<C>(
     WrappedComponent: ReactComponent<OriginalProps & Ref> & C,
   ): React.ComponentClass<OriginalProps> {
-    class WithRef extends React.Component<OriginalProps, never> {
+    class WithRef extends React.PureComponent<OriginalProps, never> {
       render() {
         return (
           <Consumer>

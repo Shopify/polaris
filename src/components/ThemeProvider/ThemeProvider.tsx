@@ -18,7 +18,7 @@ const defaultTheme = {
   '--top-bar-background-lighter': '#1d9ba4',
 };
 
-export default class ThemeProvider extends React.Component<Props> {
+export default class ThemeProvider extends React.PureComponent<Props> {
   static childContextTypes = THEME_CONTEXT_TYPES;
   public themeContext: ThemeProviderContext;
   private subscriptions: {(): void}[] = [];

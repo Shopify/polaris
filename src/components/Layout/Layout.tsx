@@ -9,7 +9,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export default class Layout extends React.Component<Props, never> {
+export default class Layout extends React.PureComponent<Props, never> {
   static AnnotatedSection = AnnotatedSection;
   static Section = Section;
 

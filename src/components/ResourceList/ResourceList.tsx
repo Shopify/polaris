@@ -77,7 +77,7 @@ export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Select');
 
-export class ResourceList extends React.Component<CombinedProps, State> {
+export class ResourceList extends React.PureComponent<CombinedProps, State> {
   static Item: typeof Item = Item;
   static FilterControl: typeof FilterControl = FilterControl;
 

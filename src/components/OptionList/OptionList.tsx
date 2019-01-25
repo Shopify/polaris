@@ -62,7 +62,7 @@ export interface State {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-export class OptionList extends React.Component<CombinedProps, State> {
+export class OptionList extends React.PureComponent<CombinedProps, State> {
   state: State = {
     normalizedOptions: createNormalizedOptions(
       this.props.options,

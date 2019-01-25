@@ -30,7 +30,7 @@ describe('<ThemeProvider />', () => {
     };
 
     // eslint-disable-next-line react/prefer-stateless-function
-    class Child extends React.Component {
+    class Child extends React.PureComponent {
       static contextTypes = THEME_CONTEXT_TYPES;
 
       render() {

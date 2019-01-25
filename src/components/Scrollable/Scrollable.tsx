@@ -46,7 +46,7 @@ export interface Context {
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
-class Scrollable extends React.Component<CombinedProps, State> {
+class Scrollable extends React.PureComponent<CombinedProps, State> {
   static childContextTypes = contextTypes;
   static ScrollTo = ScrollTo;
 

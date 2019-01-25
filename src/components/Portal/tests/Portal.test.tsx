@@ -95,7 +95,7 @@ describe('<Portal />', () => {
       expect(ref.current).not.toBeNull(),
     );
 
-    class PortalParent extends React.Component {
+    class PortalParent extends React.PureComponent {
       render() {
         return (
           <Portal onPortalCreated={handlePortalCreated}>

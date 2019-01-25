@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-class Provider extends React.Component<Props, UserMenuContextTypes> {
+class Provider extends React.PureComponent<Props, UserMenuContextTypes> {
   static getDerivedStateFromProps(
     {mobileView: nextMobileView}: Props,
     {mobileView}: UserMenuContextTypes,

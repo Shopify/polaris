@@ -11,7 +11,7 @@ import * as styles from './Toast.scss';
 
 export const DEFAULT_TOAST_DURATION = 5000;
 
-export default class Toast extends React.Component<Props, never> {
+export default class Toast extends React.PureComponent<Props, never> {
   private timer?: number;
 
   componentDidUpdate() {

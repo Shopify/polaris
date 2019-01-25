@@ -9,7 +9,7 @@ import {
 // The script in the styleguide that generates the Props Explorer data expects
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
-// crashing if we write `ContextualSaveBar extends React.Component<ContextualSaveBarProps>`
+// crashing if we write `ContextualSaveBar extends React.PureComponent<ContextualSaveBarProps>`
 interface Props extends ContextualSaveBarProps {}
 
 class ContextualSaveBar extends React.PureComponent<Props, never> {

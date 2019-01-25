@@ -17,7 +17,7 @@ export default function withContext<
         >,
   ): React.ComponentClass<OriginalProps> {
     // eslint-disable-next-line react/prefer-stateless-function
-    class WithContext extends React.Component<
+    class WithContext extends React.PureComponent<
       OriginalProps & WithContextTypes<InjectedProps>,
       never
     > {

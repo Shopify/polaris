@@ -29,7 +29,7 @@ export default function withAppProvider<OwnProps>() {
       | React.ComponentClass<OwnProps & WithAppProviderProps> & C
       | React.SFC<OwnProps & WithAppProviderProps> & C,
   ): React.ComponentClass<OwnProps> & C {
-    class WithProvider extends React.Component<OwnProps, never> {
+    class WithProvider extends React.PureComponent<OwnProps, never> {
       static contextTypes = WrappedComponent.contextTypes
         ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
         : polarisAppProviderContextTypes;

@@ -15,10 +15,10 @@ import {
 // The script in the styleguide that generates the Props Explorer data expects
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
-// crashing if we write `AppProvider extends React.Component<AppProviderProps>`
+// crashing if we write `AppProvider extends React.PureComponent<AppProviderProps>`
 interface Props extends AppProviderProps {}
 
-export default class AppProvider extends React.Component<Props> {
+export default class AppProvider extends React.PureComponent<Props> {
   static childContextTypes = polarisAppProviderContextTypes;
   public polarisContext: Context;
   private stickyManager: StickyManager;

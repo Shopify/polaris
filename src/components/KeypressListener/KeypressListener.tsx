@@ -11,7 +11,7 @@ export interface Props {
   handler(event: KeyboardEvent): void;
 }
 
-export default class KeypressListener extends React.Component<Props, never> {
+export default class KeypressListener extends React.PureComponent<Props, never> {
   componentDidMount() {
     addEventListener(document, 'keyup', this.handleKeyEvent);
   }

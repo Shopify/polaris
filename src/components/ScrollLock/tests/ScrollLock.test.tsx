@@ -5,7 +5,7 @@ import ScrollLock from '../ScrollLock';
 
 describe('ScrollLock', () => {
   it('does not remove the data attribute from the body when two scrolllocks are mounted and one unmounts', () => {
-    class DummyFrame extends React.Component {
+    class DummyFrame extends React.PureComponent {
       state = {
         showScrollLock: true,
       };

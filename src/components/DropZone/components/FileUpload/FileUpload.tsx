@@ -37,7 +37,7 @@ export interface Props {
 export type CombinedProps = Props &
   WithAppProviderProps &
   WithContextTypes<DropZoneContext>;
-export class FileUpload extends React.Component<CombinedProps, State> {
+export class FileUpload extends React.PureComponent<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
 

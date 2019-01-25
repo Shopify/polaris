@@ -11,7 +11,7 @@ interface Props {
 
 type ComposedProps = Props & WithContextTypes<UserMenuContextTypes>;
 
-class Modifier extends React.Component<ComposedProps, {}> {
+class Modifier extends React.PureComponent<ComposedProps, {}> {
   static getDerivedStateFromProps({
     context: {setMobileUserMenuProps},
     userMenuProps,

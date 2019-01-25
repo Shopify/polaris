@@ -13,7 +13,7 @@ export interface Props extends ActionGroupDescriptor {
   onClose(title: string): void;
 }
 
-class ActionGroup extends React.Component<Props, never> {
+class ActionGroup extends React.PureComponent<Props, never> {
   render() {
     const {actions, details, title, icon, active} = this.props;
 

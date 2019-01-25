@@ -15,7 +15,7 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export default class Navigation extends React.Component<Props, never> {
+export default class Navigation extends React.PureComponent<Props, never> {
   static Item = Item;
   static UserMenu = UserMenu;
   static Section = Section;

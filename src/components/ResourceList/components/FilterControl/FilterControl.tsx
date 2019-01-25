@@ -32,7 +32,7 @@ export type CombinedProps = Props &
   WithAppProviderProps &
   WithContextTypes<ResourceListContext>;
 
-export class FilterControl extends React.Component<CombinedProps> {
+export class FilterControl extends React.PureComponent<CombinedProps> {
   render() {
     const {
       searchValue,

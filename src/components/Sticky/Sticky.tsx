@@ -19,7 +19,7 @@ export type Props = {
   | {children: React.ReactNode}
   | {children(isSticky: boolean): React.ReactNode});
 
-export default class Sticky extends React.Component<Props, State> {
+export default class Sticky extends React.PureComponent<Props, State> {
   static contextTypes = polarisAppProviderContextTypes;
 
   state: State = {

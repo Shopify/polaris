@@ -2,7 +2,7 @@ import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {contextTypes} from '../../types';
 
-export default class ScrollTo extends React.Component<{}, never> {
+export default class ScrollTo extends React.PureComponent<{}, never> {
   static contextTypes = contextTypes;
   private ref: React.RefObject<HTMLAnchorElement> = React.createRef();
 

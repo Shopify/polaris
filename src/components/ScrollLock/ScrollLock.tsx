@@ -2,7 +2,7 @@ import * as React from 'react';
 import './ScrollLock.scss';
 import {polarisAppProviderContextTypes} from '../AppProvider';
 
-export default class ScrollLock extends React.Component<{}, never> {
+export default class ScrollLock extends React.PureComponent<{}, never> {
   static contextTypes = polarisAppProviderContextTypes;
 
   componentDidMount() {

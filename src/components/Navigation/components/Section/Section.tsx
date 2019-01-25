@@ -38,7 +38,7 @@ interface State {
   expanded: boolean;
 }
 
-export default class Section extends React.Component<Props, State> {
+export default class Section extends React.PureComponent<Props, State> {
   static contextTypes = contextTypes;
 
   state: State = {

@@ -29,7 +29,7 @@ export interface State {
   focused: boolean;
 }
 
-export default class Option extends React.Component<Props, State> {
+export default class Option extends React.PureComponent<Props, State> {
   state: State = {
     focused: false,
   };
