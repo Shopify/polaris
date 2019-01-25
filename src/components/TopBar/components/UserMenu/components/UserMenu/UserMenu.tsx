@@ -46,9 +46,7 @@ function UserMenu({
         />
       </MessageIndicator>
       <span className={styles.Details}>
-        <p className={styles.Name} title="altText">
-          {name}
-        </p>
+        <p className={styles.Name}>{name}</p>
         <p className={styles.Detail}>{detail}</p>
       </span>
     </div>

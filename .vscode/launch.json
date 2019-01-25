@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // this configuration relates to the orta.vscode-jest extension and allows
+      // vscode to launch jest through sewing-kit. A requirement of the
+      // extension is that the name of the launcher must be "vscode-jest-tests"
+      "type": "node",
+      "name": "vscode-jest-tests",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/sewing-kit",
+      "args": ["test", "--no-watch", "--debug"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
