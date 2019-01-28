@@ -125,7 +125,7 @@ To provide consistency and clarity:
 
 #### Do
 
-```JSX
+```jsx
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
