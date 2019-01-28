@@ -51,7 +51,7 @@ export default class DualThumb extends React.Component<Props, State> {
       return null;
     }
 
-    const sanitizedValue: DualValue = sanitizeValue(value, min, max, step);
+    const sanitizedValue = sanitizeValue(value, min, max, step);
 
     if (!isEqual(value, sanitizedValue)) {
       onChange(sanitizedValue, id);
