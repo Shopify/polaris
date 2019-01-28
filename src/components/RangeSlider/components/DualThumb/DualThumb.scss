@@ -68,6 +68,16 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   --unselected-range: #{color('sky', 'dark')};
   --selected-range: #{color('indigo')};
 
+  --gradient-colors: var(--unselected-range, transparent) 0%,
+    var(--unselected-range, transparent)
+      var(--Polaris-RangeSlider-progress-lower),
+    var(--selected-range, transparent) var(--Polaris-RangeSlider-progress-lower),
+    var(--selected-range, transparent) var(--Polaris-RangeSlider-progress-upper),
+    var(--unselected-range, transparent)
+      var(--Polaris-RangeSlider-progress-upper),
+    var(--unselected-range, transparent) 100%;
+  background-image: linear-gradient(to right, var(--gradient-colors));
+
   .error & {
     --selected-range: #{color('red')};
     --gradient-colors: var(--unselected-range, transparent) 0%,
@@ -82,16 +92,6 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
       var(--unselected-range, transparent) 100%;
     background-image: linear-gradient(to right, var(--gradient-colors));
   }
-
-  --gradient-colors: var(--unselected-range, transparent) 0%,
-    var(--unselected-range, transparent)
-      var(--Polaris-RangeSlider-progress-lower),
-    var(--selected-range, transparent) var(--Polaris-RangeSlider-progress-lower),
-    var(--selected-range, transparent) var(--Polaris-RangeSlider-progress-upper),
-    var(--unselected-range, transparent)
-      var(--Polaris-RangeSlider-progress-upper),
-    var(--unselected-range, transparent) 100%;
-  background-image: linear-gradient(to right, var(--gradient-colors));
 }
 
 .Thumbs {
