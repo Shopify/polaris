@@ -349,7 +349,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 <Button>Edit shipping address</Button>
 ```
 
-```JSX
+```jsx
 <Heading>Shipping address</Heading>
 <Button accessibilityLabel="Edit shipping address">Edit</Button>
 ```
