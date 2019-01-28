@@ -149,7 +149,7 @@ To provide consistency and clarity:
 
 #### External links
 
-Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Opening new tabs is only recommended if opening the page in the same tab would disrupt what the merchant is currently doing.
+Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Open a page in a new tab only when opening a page in the same tab might disrupt the merchant’s workflow.
 
 To make the external link functionality clear to all merchants:
 
