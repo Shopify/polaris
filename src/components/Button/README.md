@@ -324,7 +324,7 @@ Buttons can have different states that are visually and programmatically conveye
 
 #### Navigation
 
-Merchants generally expect buttons to submit data or take action, and expect links to navigate. If you use the “url” prop to pass a value to the button, then the control outputs with an anchor styled as a button instead of an HTML button.
+Merchants generally expect buttons to submit data or take action, and expect links to navigate. If you use the `url` prop to pass a value to the button, then the control outputs with an anchor styled as a button instead of an HTML button.
 
 For more information on making accessible links, see the [link component](/components/navigation/link).
 
