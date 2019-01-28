@@ -401,7 +401,7 @@ Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>spa
 
 #### Custom key events
 
-The `onKeyDown`, `onKeyPress`, and `onKeyUp` props can be used to create custom events for buttons. This allows buttons to be used for complex, custom interactions like drag-and-drop interfaces.
+Use the `onKeyDown`, `onKeyPress`, and `onKeyUp` props to create custom events for buttons. With these props, you can use buttons to create complex, custom interactions like drag-and-drop interfaces. 
 
 Since these props introduce non-standard features to buttons, make sure to include accessible instructions so that merchants can understand how to use these features.
 
