@@ -131,7 +131,7 @@ To provide consistency and clarity:
 
 #### Don’t
 
-```JSK
+```jsx
 <Link>fulfilling orders</Link>
 ```
 
