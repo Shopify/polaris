@@ -114,18 +114,18 @@ export default class DualThumb extends React.Component<Props, State> {
       ? describedBy.join(' ')
       : undefined;
 
-    const classNameTrackWrapper = classNames(
+    const trackWrapperClassName = classNames(
       styles.TrackWrapper,
       error && styles.error,
       disabled && styles.disabled,
     );
 
-    const classNameThumbLower = classNames(
+    const thumbLowerClassName = classNames(
       styles.Thumbs,
       styles.ThumbLower,
       disabled && styles.disabled,
     );
-    const classNameThumbUpper = classNames(
+    const thumbUpperClassName = classNames(
       styles.Thumbs,
       styles.ThumbUpper,
       disabled && styles.disabled,
@@ -137,12 +137,12 @@ export default class DualThumb extends React.Component<Props, State> {
     const leftPositionThumbLower = (value[0] / range) * trackWidth;
     const leftPositionThumbUpper = (value[1] / range) * trackWidth;
 
-    const classNameOutputLower = classNames(styles.Output, styles.OutputLower);
+    const outputLowerClassName = classNames(styles.Output, styles.OutputLower);
     const outputMarkupLower =
       !disabled && output ? (
         <output
           htmlFor={idLower}
-          className={classNameOutputLower}
+          className={outputLowerClassName}
           style={{
             left: `calc(${leftPositionThumbLower}px - ${OUTPUT_TIP_SIZE}px)`,
           }}
@@ -153,12 +153,12 @@ export default class DualThumb extends React.Component<Props, State> {
         </output>
       ) : null;
 
-    const classNameOutputUpper = classNames(styles.Output, styles.OutputUpper);
+    const outputUpperClassName = classNames(styles.Output, styles.OutputUpper);
     const outputMarkupUpper =
       !disabled && output ? (
         <output
           htmlFor={idUpper}
-          className={classNameOutputUpper}
+          className={outputUpperClassName}
           style={{
             left: `calc(${leftPositionThumbUpper}px - ${OUTPUT_TIP_SIZE}px)`,
           }}
@@ -197,7 +197,7 @@ export default class DualThumb extends React.Component<Props, State> {
         >
           <div className={styles.Wrapper} id={id}>
             {prefixMarkup}
-            <div className={classNameTrackWrapper}>
+            <div className={trackWrapperClassName}>
               <div
                 className={styles.Track}
                 style={cssVars}
@@ -206,7 +206,7 @@ export default class DualThumb extends React.Component<Props, State> {
               />
               <button
                 id={idLower}
-                className={classNameThumbLower}
+                className={thumbLowerClassName}
                 ref={this.thumbLower}
                 style={{
                   left: `${leftPositionThumbLower}px`,
@@ -226,7 +226,7 @@ export default class DualThumb extends React.Component<Props, State> {
               {outputMarkupLower}
               <button
                 id={idUpper}
-                className={classNameThumbUpper}
+                className={thumbUpperClassName}
                 ref={this.thumbUpper}
                 style={{
                   left: `${leftPositionThumbUpper}px`,
