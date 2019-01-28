@@ -386,7 +386,7 @@ For more information on making accessible links, see the [link component](/compo
 
 #### Don’t
 
-```JSX
+```jsx
 <Button url="http://example.com" external>Terms and conditions</Button>
 ```
 
