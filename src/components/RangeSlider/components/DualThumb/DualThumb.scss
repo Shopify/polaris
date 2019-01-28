@@ -67,7 +67,6 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
 
   --unselected-range: #{color('sky', 'dark')};
   --selected-range: #{color('indigo')};
-
   --gradient-colors: var(--unselected-range, transparent) 0%,
     var(--unselected-range, transparent)
       var(--Polaris-RangeSlider-progress-lower),
