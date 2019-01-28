@@ -153,7 +153,7 @@ Use the `external` prop to make the link open in a new tab (or window, depending
 
 To make the external link functionality clear to all merchants:
 
-- Use the [icon component](/components/images-and-icons/icon) to add the `external` icon to the link.
+- Use the [icon component](/components/images-and-icons/icon) to add the `external` icon to the link
 - Use the `accessibilityLabel` on the icon prop to include the warning about opening a new tab in the button text for non-visual screen reader users.
 
 ### Keyboard support
