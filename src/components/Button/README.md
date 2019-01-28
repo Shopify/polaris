@@ -360,7 +360,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 <Button accessibilityLabel="Change your shipping address">Edit</Button>
 ```
 
-```JSX
+```jsx
 <Button accessibilityLabel="Edit">Edit</Button>
 ```
 
