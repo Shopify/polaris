@@ -345,7 +345,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 
 #### Do
 
-```JSX
+```jsx
 <Button>Edit shipping address</Button>
 ```
 
