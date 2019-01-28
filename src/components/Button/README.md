@@ -380,7 +380,7 @@ For more information on making accessible links, see the [link component](/compo
 
 #### Do
 
-```JSX
+```jsx
 <Button accessibilityLabel="Terms and conditions (opens a new window)" icon="external" url="http://example.com" external>Terms and conditions</Button>
 ```
 
