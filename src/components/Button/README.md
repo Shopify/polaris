@@ -356,7 +356,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 
 #### Don’t
 
-```JSX
+```jsx
 <Button accessibilityLabel="Change your shipping address">Edit</Button>
 ```
 
