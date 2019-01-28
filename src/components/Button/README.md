@@ -396,7 +396,7 @@ For more information on making accessible links, see the [link component](/compo
 
 Buttons use browser defaults for keyboard interactions.
 
-Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key.
 
 #### Custom key events
