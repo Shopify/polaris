@@ -110,7 +110,7 @@ Use the `url` prop to give the link component a valid `href` value. This allows 
 
 #### Submitting data
 
-Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use a button component instead.
+Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](/components/actions/button) instead.
 
 ### Labeling
 
