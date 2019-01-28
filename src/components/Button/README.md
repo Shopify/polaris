@@ -370,7 +370,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 
 When you use the button component to create a link to an external resource:
 
-- Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings).
+- Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings)
 - Use the `icon` prop to add the `external` icon to the button
 - Use the `accessibilityLabel` prop to include the warning about opening a new tab in the button text for non-visual screen reader users.
 
