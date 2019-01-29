@@ -84,11 +84,17 @@ Use to control spacing of items in a stack in standard increments. Use tight for
 
 ### Vertical centering with a stack
 
-Use to vertically center a set of items.
+Use to vertically center a set of items that have different heights.
 
 ```jsx
 <Stack alignment="center">
-  <Heading>Order #1136</Heading>
+  <Heading>
+    Order
+    <br />
+    #1136
+    <br />
+    was paid
+  </Heading>
   <Badge>Paid</Badge>
   <Badge>Fulfilled</Badge>
 </Stack>
