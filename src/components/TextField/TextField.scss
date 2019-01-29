@@ -170,6 +170,18 @@ $stacking-order: (
   pointer-events: none;
 }
 
+.CharacterCount {
+  @include text-emphasis-subdued;
+  z-index: z-index(contents, $stacking-order);
+  margin-right: $backdrop-horizontal-spacing;
+  line-height: control-height();
+  pointer-events: none;
+}
+
+.AlignFieldBottom {
+  align-self: flex-end;
+}
+
 .Spinner {
   z-index: z-index(contents, $stacking-order);
   display: flex;
