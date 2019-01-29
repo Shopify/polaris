@@ -79,17 +79,7 @@ module.exports = (baseConfig, env, config) => {
       test(resource) {
         return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
       },
-      use: [
-        {
-          loader: '@shopify/images/icon-loader',
-        },
-        {
-          loader: 'image-webpack-loader',
-          options: {
-            svgo: svgOptimizationOptions(),
-          },
-        },
-      ],
+      use: ['@svgr/webpack'],
     },
     {
       test(resource) {

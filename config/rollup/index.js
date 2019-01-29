@@ -3,12 +3,13 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const json = require('rollup-plugin-json');
 const commonjs = require('rollup-plugin-commonjs');
+const svgr = require('@svgr/rollup').default;
+const {svgOptions} = require('@shopify/images/optimize');
 
 const {dependencies, peerDependencies} = require('../../package.json');
 
 const styles = require('./plugins/styles');
 const image = require('./plugins/image');
-const icon = require('./plugins/icon');
 
 const getNamespacedClassName = require('./namespaced-classname');
 
@@ -58,9 +59,13 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         includeAlways: sassResources,
         generateScopedName: getNamespacedClassName,
       }),
-      icon({
+      svgr({
         include: '**/icons/*.svg',
         exclude: 'node_modules/**',
+        svgoConfig: svgOptions(),
+        replaceAttrValues: {
+          '#FFF': 'currentColor',
+        },
       }),
       image({
         exclude: ['node_modules/**', '**/icons/*.svg'],

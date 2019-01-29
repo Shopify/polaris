@@ -214,9 +214,10 @@ function Icon({
   );
 
   let contentMarkup: React.ReactNode;
+  const SourceComponent = source;
   if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
-  } else if (React.isValidElement(source)) {
+  } else if (React.isValidElement(SourceComponent)) {
     contentMarkup = source;
   } else if (isBundledIcon(source)) {
     const iconSource = BUNDLED_ICONS[source] as SVGSource;
