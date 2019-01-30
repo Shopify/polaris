@@ -433,7 +433,7 @@ Require that merchants make a selection from the autocomplete to complete a task
 ### Keyboard support
 
 - Give the autocomplete text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
-- Access the list of options with the up and down arrow keys.
-- Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key.
+- Access the list of options with the up and down arrow keys
+- Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key
 
 <!-- /content-for -->
