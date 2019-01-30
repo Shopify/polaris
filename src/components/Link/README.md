@@ -118,7 +118,7 @@ Give links text that clearly describes their purpose.
 
 To provide consistency and clarity:
 
-- Use the same text for links that navigate to the same content.
+- Use the same text for links that navigate to the same content
 - Use different text for links that navigate to different content.
 
 <!-- usageblock -->
