@@ -841,9 +841,9 @@ Text fields have standard keyboard support.
 - Using the `disabled` prop will prevent the text field from receive keyboard focus or inputs
 - Using the `readOnly` prop will allow focus on the text field but prevent input or editing
 
-### Automatically focusing
+#### Automatically focusing
 
-Use the `autoFocus` prop to automatically move focus to the text field. This prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or great importance importance. In general, avoid focusing on fields automatically.
+In general, avoid focusing on fields automatically. However, you can use the `autoFocus` prop to automatically move focus to the text field. This prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or great importance importance.
 
 ### Autocomplete
 
