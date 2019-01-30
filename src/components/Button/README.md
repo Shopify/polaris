@@ -324,7 +324,7 @@ Buttons can have different states that are visually and programmatically conveye
 
 #### Navigation
 
-Merchants generally expect buttons to submit data or take action, and expect links to navigate. If you use the `url` prop to pass a value to the button, then the control outputs with an anchor styled as a button instead of an HTML button.
+Merchants generally expect buttons to submit data or take action, and for links to navigate. If navigation is required for the button component, use the `url` prop. The control will output an anchor styled as a button, instead of a button in HTML, to help convey this difference.
 
 For more information on making accessible links, see the [link component](/components/navigation/link).
 
@@ -381,13 +381,23 @@ For more information on making accessible links, see the [link component](/compo
 #### Do
 
 ```jsx
-<Button accessibilityLabel="Terms and conditions (opens a new window)" icon="external" url="http://example.com" external>Terms and conditions</Button>
+<Button
+  accessibilityLabel="Terms and conditions (opens a new window)"
+  icon="external"
+  url="http://example.com"
+  external
+>
+  Terms and conditions
+</Button>
 ```
 
 #### Don’t
 
 ```jsx
 <Button url="http://example.com" external>Terms and conditions</Button>
+<Button url="http://example.com" external>
+  Terms and conditions
+</Button>
 ```
 
 <!-- end -->
@@ -401,7 +411,7 @@ Buttons use browser defaults for keyboard interactions.
 
 #### Custom key events
 
-Use the `onKeyDown`, `onKeyPress`, and `onKeyUp` props to create custom events for buttons. With these props, you can use buttons to create complex, custom interactions like drag-and-drop interfaces. 
+Use the `onKeyDown`, `onKeyPress`, and `onKeyUp` props to create custom events for buttons. With these props, you can use buttons to create complex, custom interactions like drag-and-drop interfaces.
 
 Since these props introduce non-standard features to buttons, make sure to include accessible instructions so that merchants can understand how to use these features.
 
