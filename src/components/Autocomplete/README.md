@@ -403,3 +403,37 @@ class AutocompleteExample extends React.Component {
 
 - For an input field without suggested options, [use the text field component](/components/forms/text-field)
 - For a list of selectable options not linked to an input field, [use the option list component](/components/lists-and-tables/option-list)
+
+---
+
+## Accessibility
+
+<!-- content-for: web -->
+
+### Structure
+
+The autocomplete component is based on the [ARIA 1.1 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). See the [text field component](https://polaris.shopify.com/components/forms/text-field) for information on implementing the autocomplete component with a text field.
+
+We recommend implementing the autocomplete list below the text input so that it’s easy to discover and use. However, you can change the position with the `preferredPosition` prop.
+
+Autocomplete features can be difficult for people with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be hard to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
+
+<!-- usageblock -->
+
+#### Do
+
+Use autocomplete as progressive enhancement to make the interface easier for most merchants.
+
+#### Don’t
+
+Require that merchants make a selection from the autocomplete to complete a task.
+
+<!-- end -->
+
+### Keyboard support
+
+- Give the autocomplete text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- Access the list of options with the up and down arrow keys.
+- Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key.
+
+<!-- /content-for -->
