@@ -13,6 +13,7 @@ export interface Props {
   children?: React.ReactNode;
   /** @deprecated Pass a user menu into <TopBar /> instead. */
   userMenu?: React.ReactNode;
+  contextControl?: React.ReactNode;
   onDismiss?(): void;
 }
 
@@ -41,10 +42,11 @@ export default class Navigation extends React.Component<Props, never> {
   }
 
   render() {
-    const {children, userMenu} = this.props;
+    const {children, userMenu, contextControl} = this.props;
 
     return (
       <nav className={styles.Navigation}>
+        {contextControl}
         <div className={styles.UserMenu}>{userMenu}</div>
         <Scrollable className={styles.PrimaryNavigation}>{children}</Scrollable>
       </nav>

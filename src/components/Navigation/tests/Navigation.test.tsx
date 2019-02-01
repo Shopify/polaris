@@ -43,4 +43,14 @@ describe('<Navigation />', () => {
       expect(navigation.contains(userMenu)).toBeTruthy();
     });
   });
+
+  describe('contextControl', () => {
+    it('renders the given store switcher', () => {
+      const contextControl = <div />;
+      const navigation = mountWithAppProvider(
+        <Navigation location="/" contextControl={contextControl} />,
+      );
+      expect(navigation.contains(contextControl)).toBeTruthy();
+    });
+  });
 });
