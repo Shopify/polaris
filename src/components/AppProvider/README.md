@@ -272,7 +272,6 @@ class ProviderThemeExample extends React.Component {
       colors: {
         topBar: {
           background: '#357997',
-          backgroundDarker: '#357997',
           backgroundLighter: '#6192a9',
           color: '#FFFFFF',
         },
