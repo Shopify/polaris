@@ -61,6 +61,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
     const {open} = this.props;
     const {animationState} = this.state;
     const {parentCollapsibleExpanding} = this.context;
+
     return {
       parentCollapsibleExpanding:
         parentCollapsibleExpanding || (open && animationState !== 'idle'),
@@ -78,13 +79,14 @@ export class Collapsible extends React.Component<CombinedProps, State> {
 
   componentDidUpdate({open: wasOpen}: Props) {
     const {animationState} = this.state;
-
     const {parentCollapsibleExpanding} = this.context;
+
     if (parentCollapsibleExpanding && animationState !== 'idle') {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         animationState: 'idle',
       });
+
       return;
     }
 
@@ -118,6 +120,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
     if (this.node == null) {
       return;
     }
+
     addEventListener(this.node, 'transitionend', this.handleTransitionEnd);
   }
 
@@ -125,6 +128,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
     if (this.node == null) {
       return;
     }
+
     removeEventListener(this.node, 'transitionend', this.handleTransitionEnd);
   }
 
@@ -138,6 +142,7 @@ export class Collapsible extends React.Component<CombinedProps, State> {
       styles.Collapsible,
       open && styles.open,
       animating && styles.animating,
+      !animating && open && styles.fullyOpen,
     );
 
     const displayHeight = collapsibleHeight(open, animationState, height);
