@@ -451,7 +451,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 function normalizeAutoComplete(autoComplete?: string | boolean) {
   if (autoComplete == null) {
     return autoComplete;
-  } else if (typeof variable === "boolean"){
+} else if (typeof autoComplete === "boolean"){
     return autoComplete ? 'on' : 'off';
   }
   return autoComplete;
