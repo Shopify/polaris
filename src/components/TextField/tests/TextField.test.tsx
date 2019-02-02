@@ -158,11 +158,18 @@ describe('<TextField />', () => {
       expect(textField.find('input').prop('autoComplete')).toBe('off');
     });
 
-    it('sets autoComplete to "on" when false', () => {
+    it('sets autoComplete to "on" when empty', () => {
       const textField = shallowWithAppProvider(
         <TextField label="TextField" autoComplete onChange={noop} />,
       );
       expect(textField.find('input').prop('autoComplete')).toBe('on');
+    });
+
+    it('sets autoComplete to "new-password" when new-password', () => {
+      const textField = shallowWithAppProvider(
+        <TextField label="TextField" autoComplete="new-password" onChange={noop} />,
+      );
+      expect(textField.find('input').prop('autoComplete')).toBe('new-password');
     });
   });
 
