@@ -76,7 +76,7 @@ export interface BaseProps {
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
   /** Enable automatic completion by the browser */
-  autoComplete?: boolean;
+  autoComplete?: string | boolean;
   /** Mimics the behavior of the native HTML attribute, limiting how high the spinner can increment the value */
   max?: number;
   /** Maximum character length for an input */
@@ -448,9 +448,11 @@ class TextField extends React.PureComponent<CombinedProps, State> {
   }
 }
 
-function normalizeAutoComplete(autoComplete?: boolean) {
+function normalizeAutoComplete(autoComplete?: string | boolean) {
   if (autoComplete == null) {
     return autoComplete;
+  } else if (typeof variable === "boolean"){
+    return autoComplete ? 'on' : 'off';
   }
   return autoComplete;
 }
