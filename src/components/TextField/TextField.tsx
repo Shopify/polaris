@@ -452,7 +452,7 @@ function normalizeAutoComplete(autoComplete?: boolean) {
   if (autoComplete == null) {
     return autoComplete;
   }
-  return autoComplete ? 'on' : 'off';
+  return autoComplete;
 }
 
 export default withAppProvider<Props>()(TextField);
