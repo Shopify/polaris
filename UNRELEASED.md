@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Adds accessibility documentation for the avatar component ([#973](https://github.com/Shopify/polaris-react/pull/973))
+
 ### Development workflow
 
 ### Dependency upgrades
