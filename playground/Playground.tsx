@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {TopBar} from '../src';
+import {Page} from '../src';
 
 interface State {}
 
 export default class Playground extends React.Component<{}, State> {
   render() {
     return (
-      <TopBar
-        contextControl={<TopBar.Menu action={[]} activatorContent="User" />}
-      />
+      <Page title="Playground">
+        {/* Add the code you want to test in here */}
+      </Page>
     );
   }
 }
