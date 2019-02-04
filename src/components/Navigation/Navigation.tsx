@@ -44,9 +44,13 @@ export default class Navigation extends React.Component<Props, never> {
   render() {
     const {children, userMenu, contextControl} = this.props;
 
+    const contextControlMarkup = contextControl && (
+      <div className={styles.ContextControl}>{contextControl}</div>
+    );
+
     return (
       <nav className={styles.Navigation}>
-        {contextControl}
+        {contextControlMarkup}
         <div className={styles.UserMenu}>{userMenu}</div>
         <Scrollable className={styles.PrimaryNavigation}>{children}</Scrollable>
       </nav>

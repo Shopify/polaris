@@ -30,6 +30,12 @@ $nav-max-width: rem(360px);
   flex: 0 0 auto;
 }
 
+.ContextControl {
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
+  }
+}
+
 .PrimaryNavigation {
   display: flex;
   overflow: auto;

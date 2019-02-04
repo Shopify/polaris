@@ -45,12 +45,18 @@ describe('<Navigation />', () => {
   });
 
   describe('contextControl', () => {
-    it('renders the given store switcher', () => {
+    it('doesn’t render by default', () => {
+      const contextControl = <div />;
+      const navigation = mountWithAppProvider(<Navigation location="/" />);
+      expect(navigation.contains(contextControl)).toBe(false);
+    });
+
+    it('renders the given context control', () => {
       const contextControl = <div />;
       const navigation = mountWithAppProvider(
         <Navigation location="/" contextControl={contextControl} />,
       );
-      expect(navigation.contains(contextControl)).toBeTruthy();
+      expect(navigation.contains(contextControl)).toBe(true);
     });
   });
 });
