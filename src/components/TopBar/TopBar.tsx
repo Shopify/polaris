@@ -86,7 +86,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
     const width = getWidth(logo, 104);
 
-    const logoMarkup =
+    const contextMarkup =
       !contextControl && logo ? (
         <div className={styles.LogoContainer}>
           <UnstyledLink
@@ -126,7 +126,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     return (
       <div className={styles.TopBar}>
         {navigationButtonMarkup}
-        {logoMarkup}
+        {contextMarkup}
         <div className={styles.Contents}>
           <div className={styles.SearchField}>{searchMarkup}</div>
           <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
