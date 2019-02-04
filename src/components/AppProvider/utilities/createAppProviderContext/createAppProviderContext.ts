@@ -19,6 +19,25 @@ export interface CreateAppProviderContext extends AppProviderProps {
   unsubscribe?(callback: () => void): void;
 }
 
+const serverAppBridge = {
+  dispatch<A>() {
+    return {} as A;
+  },
+  error() {
+    return noop;
+  },
+  featuresAvailable() {
+    return new Promise(noop);
+  },
+  getState() {
+    return new Promise(noop);
+  },
+  localOrigin: '',
+  subscribe() {
+    return noop;
+  },
+};
+
 export default function createAppProviderContext({
   i18n,
   linkComponent,
@@ -32,14 +51,18 @@ export default function createAppProviderContext({
 }: CreateAppProviderContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
-  const appBridge =
-    apiKey && !isServer
-      ? createApp({
+
+  let appBridge;
+
+  if (apiKey) {
+    appBridge = isServer
+      ? serverAppBridge
+      : createApp({
           apiKey,
           shopOrigin: shopOrigin || getShopOrigin(),
           forceRedirect,
-        })
-      : undefined;
+        });
+  }
 
   if (appBridge && appBridge.hooks) {
     appBridge.hooks.set(LifecycleHook.DispatchAction, setClientInterfaceHook);

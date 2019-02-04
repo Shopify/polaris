@@ -85,7 +85,7 @@ describe('createAppProviderContext()', () => {
     expect(context).toEqual(mockContext);
   });
 
-  it('does not instantiate app bridge if server side rendering', () => {
+  it('initializes a noop app bridge if server side rendering', () => {
     mockIsServer(true);
     const apiKey = '4p1k3y';
     const context = createAppProviderContext({apiKey});
@@ -97,7 +97,14 @@ describe('createAppProviderContext()', () => {
         scrollLockManager: new ScrollLockManager(),
         subscribe: noop,
         unsubscribe: noop,
-        appBridge: undefined,
+        appBridge: {
+          dispatch: expect.any(Function),
+          error: expect.any(Function),
+          featuresAvailable: expect.any(Function),
+          getState: expect.any(Function),
+          localOrigin: '',
+          subscribe: expect.any(Function),
+        },
       },
     };
 
