@@ -803,9 +803,9 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Screen readers convey information about text fields automatically through native HTML.
 
-- Use the `disabled` prop to add the HTML `disabled` attribute to the text field.
-- Use the `readOnly` prop to add the HTML `readonly` attribute to the text field.
-- If you use the `type` prop, then some technologies update the software keyboard provided to the user to be more specific to the task at hand. This helps merchants with mobility, vision, and cognitive issues to enter information more easily.
+- Use the `disabled` prop to add the HTML `disabled` attribute to the text field
+- Use the `readOnly` prop to add the HTML `readonly` attribute to the text field
+- If you use the `type` prop, then some technologies update the software keyboard provided to the user to be more specific to the task at hand. This helps merchants with mobility, vision, and cognitive issues to enter information more easily
 
 You can use the `id` prop to provide a unique `id` attribute value for the text field. The component will generate one automatically if you don’t provide one. All text fields must have unique `id` values.
 
@@ -823,8 +823,8 @@ Use the `placeholder` prop to provide additional instructions. However, don’t 
 
 #### Do
 
-- Use the label to provide instructions critical to using the text field.
-- Use help text and placeholder text to provide additional, non-critical instructions.
+- Use the label to provide instructions critical to using the text field
+- Use help text and placeholder text to provide additional, non-critical instructions
 
 #### Don’t
 
