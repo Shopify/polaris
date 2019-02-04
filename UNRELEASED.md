@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Ensured server side rendering matches client side rendering for embedded app components (ex. `<Page>`)
+
 ### Documentation
 
 ### Development workflow
