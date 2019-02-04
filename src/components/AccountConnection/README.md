@@ -173,6 +173,6 @@ class AccountConnectionExample extends React.Component {
 
 <!-- content-for: web -->
 
-The account connection component relies on the [setting toggle component](/components/actions/setting-toggle) to turn connections on and off.
+See accessibility guidance for the [setting toggle component](/components/actions/setting-toggle) to turn connections on and off.
 
 <!-- /content-for-->
