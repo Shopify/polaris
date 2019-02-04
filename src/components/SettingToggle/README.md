@@ -115,3 +115,15 @@ class SettingToggleExample extends React.Component {
 ## Related components
 
 - To let merchants to connect or disconnect their store to third-party services and apps, [use the account connection component](/components/actions/account-connection)
+
+---
+
+## Accessibility
+
+<!-- content-for: web -->
+
+The setting toggle component is implemented as an HTML `<button>`. The current label should convey what will happen when the button is pressed.
+
+To learn more about button accessibility, see the [button component](/components/actions/button).
+
+<!-- /content-for-->
