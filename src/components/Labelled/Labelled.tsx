@@ -7,7 +7,7 @@ import {buttonFrom} from '../Button';
 import Label, {Props as LabelProps, labelID} from '../Label';
 import InlineError from '../InlineError';
 
-import * as styles from './Labelled.scss';
+import styles from './Labelled.scss';
 
 export {Action, labelID};
 

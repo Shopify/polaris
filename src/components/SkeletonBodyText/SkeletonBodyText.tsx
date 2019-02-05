@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './SkeletonBodyText.scss';
+import styles from './SkeletonBodyText.scss';
 
 export interface Props {
   /**

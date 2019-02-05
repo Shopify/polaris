@@ -10,7 +10,7 @@ import Image from '../Image';
 import UnstyledLink from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
-import * as styles from './TopBar.scss';
+import styles from './TopBar.scss';
 
 export interface Props {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */

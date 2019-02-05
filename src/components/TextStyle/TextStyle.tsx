@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-import * as styles from './TextStyle.scss';
+import styles from './TextStyle.scss';
 
 export type Variation = 'positive' | 'negative' | 'strong' | 'subdued' | 'code';
 

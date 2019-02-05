@@ -26,7 +26,7 @@ import {
   Header,
   Section,
 } from './components';
-import * as styles from './Modal.scss';
+import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 

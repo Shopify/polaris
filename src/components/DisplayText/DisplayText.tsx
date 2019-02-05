@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {HeadingTagName} from '../../types';
-import * as styles from './DisplayText.scss';
+import styles from './DisplayText.scss';
 
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 

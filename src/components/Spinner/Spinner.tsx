@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import * as styles from './Spinner.scss';
+import styles from './Spinner.scss';
 import spinnerSVGLarge from './icons/spinner-large.svg';
 import spinnerSVGSmall from './icons/spinner-small.svg';
 
