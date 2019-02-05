@@ -1,5 +1,6 @@
 import * as React from 'react';
-import createApp, {LifecycleHook} from '@shopify/app-bridge';
+import {serverAppBridge, LifecycleHook} from '@shopify/app-bridge';
+import * as redirect from '@shopify/app-bridge/client/redirect';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
@@ -9,9 +10,7 @@ import Intl from '../../Intl';
 import Link from '../../Link';
 import {StickyManager} from '../../withSticky';
 import ScrollLockManager from '../../ScrollLockManager';
-
-jest.mock('@shopify/app-bridge');
-(createApp as jest.Mock<{}>).mockImplementation((args) => args);
+import * as appBridge from '@shopify/app-bridge';
 
 const actualIsServer = targets.isServer;
 
@@ -19,9 +18,14 @@ function mockIsServer(value: boolean) {
   (targets as any).isServer = value;
 }
 
+let createAppSpy = jest.spyOn(appBridge, 'default');
+
 describe('createAppProviderContext()', () => {
+
   beforeEach(() => {
     jest.clearAllMocks();
+    createAppSpy = jest.spyOn(appBridge, 'default');
+    createAppSpy.mockImplementation((args) => args);
   });
 
   afterEach(() => {
@@ -86,34 +90,18 @@ describe('createAppProviderContext()', () => {
   });
 
   it('initializes a noop app bridge if server side rendering', () => {
-    mockIsServer(true);
+    createAppSpy.mockRestore();
+    jest.spyOn(redirect, 'getWindow').mockReturnValueOnce(undefined);
+
     const apiKey = '4p1k3y';
     const context = createAppProviderContext({apiKey});
-    const mockContext = {
-      polaris: {
-        intl: new Intl(undefined),
-        link: new Link(),
-        stickyManager: new StickyManager(),
-        scrollLockManager: new ScrollLockManager(),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: {
-          dispatch: expect.any(Function),
-          error: expect.any(Function),
-          featuresAvailable: expect.any(Function),
-          getState: expect.any(Function),
-          localOrigin: '',
-          subscribe: expect.any(Function),
-        },
-      },
-    };
 
-    expect(context).toEqual(mockContext);
+    expect(context.polaris.appBridge).toEqual(serverAppBridge);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
     const set = jest.fn();
-    (createApp as jest.Mock<{}>).mockImplementation((args) => {
+    createAppSpy.mockImplementation((args) => {
       return {...args, hooks: {set}};
     });
 
