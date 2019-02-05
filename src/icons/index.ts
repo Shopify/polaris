@@ -30,7 +30,6 @@ export const deleteIcon = POLARIS_ICONS.deleteIcon;
 export const disable = POLARIS_ICONS.disable;
 export const dispute = POLARIS_ICONS.dispute;
 export const duplicate = POLARIS_ICONS.duplicate;
-export const ellipsis = POLARIS_ICONS.ellipsis;
 export const embed = POLARIS_ICONS.embed;
 export const exportIcon = POLARIS_ICONS.exportIcon;
 export const external = POLARIS_ICONS.external;
