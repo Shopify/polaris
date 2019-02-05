@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Remove datatable top border so it does not overlaps with its container borders. ([#975](https://github.com/Shopify/polaris-react/pull/975))
+
 ### Documentation
 
 - Updated docs about App Bridge usage in AppProvider ([#945](https://github.com/Shopify/polaris-react/pull/945))
