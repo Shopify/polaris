@@ -3,7 +3,6 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {getWidth} from '../../utilities/getWidth';
-import {menu} from '../../icons';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import Image from '../Image';
@@ -77,7 +76,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
       >
-        <Icon source={menu} color="white" />
+        <Icon source="menu" color="white" />
       </button>
     ) : null;
 
