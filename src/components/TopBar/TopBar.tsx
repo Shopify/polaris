@@ -85,7 +85,6 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     ) : null;
 
     const width = getWidth(logo, 104);
-
     let contextMarkup;
 
     if (contextControl) {
