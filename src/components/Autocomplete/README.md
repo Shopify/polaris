@@ -432,7 +432,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 The autocomplete component is based on the [ARIA 1.1 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). See the [text field component](https://polaris.shopify.com/components/forms/text-field) for information on implementing the autocomplete component with a text field.
 
-We recommend implementing the autocomplete list below the text input so that it’s easy to discover and use. However, you can change the position with the `preferredPosition` prop.
+The autocomplete list displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 
 Autocomplete features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
 
