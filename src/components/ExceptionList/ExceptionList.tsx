@@ -4,7 +4,7 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import Icon, {Props as IconProps} from '../Icon';
 import Truncate from '../Truncate';
 
-import * as styles from './ExceptionList.scss';
+import styles from './ExceptionList.scss';
 
 export type Description =
   | string

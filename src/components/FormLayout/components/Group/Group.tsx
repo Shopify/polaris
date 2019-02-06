@@ -3,7 +3,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 import {wrapWithComponent} from '@shopify/react-utilities';
 
-import * as styles from '../../FormLayout.scss';
+import styles from '../../FormLayout.scss';
 import Item from '../Item';
 
 export interface Props {

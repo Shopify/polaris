@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import Image from '../Image';
-import * as styles from './Thumbnail.scss';
+import styles from './Thumbnail.scss';
 
 export type Size = 'small' | 'medium' | 'large';
 

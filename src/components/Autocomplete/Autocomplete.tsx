@@ -8,7 +8,7 @@ import Spinner from '../Spinner';
 import {Props as TextFieldProps} from '../TextField';
 
 import {ComboBox} from './components';
-import * as styles from './Autocomplete.scss';
+import styles from './Autocomplete.scss';
 
 export interface Props {
   /** A unique identifier for the Autocomplete */

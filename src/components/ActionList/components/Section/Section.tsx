@@ -2,7 +2,7 @@ import * as React from 'react';
 import Item from '../Item';
 import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
 
-import * as styles from '../../ActionList.scss';
+import styles from '../../ActionList.scss';
 
 export interface Props {
   /** Section of action items */

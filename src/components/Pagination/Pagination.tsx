@@ -9,7 +9,7 @@ import KeypressListener from '../KeypressListener';
 import {Key} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
-import * as styles from './Pagination.scss';
+import styles from './Pagination.scss';
 
 export interface PaginationDescriptor {
   /** Keyboard shortcuts for the next button */

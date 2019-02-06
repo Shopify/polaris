@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Icon from '../../../Icon';
 
-import * as styles from '../../TextField.scss';
+import styles from '../../TextField.scss';
 
 export interface Props {
   onChange(delta: number): void;
