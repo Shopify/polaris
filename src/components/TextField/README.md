@@ -803,9 +803,9 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Screen readers convey information about text fields automatically through native HTML.
 
-- Use the `disabled` prop to add the HTML `disabled` attribute to the text field
-- Use the `readOnly` prop to add the HTML `readonly` attribute to the text field
-- If you use the `type` prop, then some technologies update the software keyboard provided to the user to be more specific to the task at hand. This helps merchants with mobility, vision, and cognitive issues to enter information more easily
+- Use the `disabled` prop to add the HTML `disabled` attribute to the text field.
+- Use the `readOnly` prop to add the HTML `readonly` attribute to the text field.
+- If you use the `type` prop, then some assistive technologies adapt the software keyboard to the current task. This helps merchants with mobility, vision, and cognitive issues to enter information more easily.
 
 Use the `id` prop to provide a unique `id` attribute value for the text field. If you don't provide an `id`, then the component generates one automatically. All text fields need to have unique `id` values.
 
@@ -843,7 +843,7 @@ Text fields have standard keyboard support.
 
 #### Automatically focusing
 
-In general, avoid focusing on fields automatically. However, you can use the `autoFocus` prop to automatically move focus to the text field. This prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or great importance importance.
+Although you can use the `autoFocus` prop to automatically move focus to the text field, it’s generally best to avoid focusing on fields automatically. The `autoFocus` prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or greater importance.
 
 ### Autocomplete
 
