@@ -849,7 +849,7 @@ In general, avoid focusing on fields automatically. However, you can use the `au
 
 - Use the `ariaControls` and `ariaOwns` props (which implement the `aria-controls` and `aria-owns` attributes) to point to the `id` of the autocomplete list
 - Use the `ariaAutocomplete` prop to indicate what kind of `aria-autocomplete` input is provided, either `list` or `inline`. Typically, `list` is used.
-- When a merchant is navigating through the list, the `ariaActiveDescendant` prop indicates which option is has programmatic focus so it can be conveyed to screen reader users
+- When merchants navigate through the list, the `ariaActiveDescendant` prop indicates which option has programmatic focus so that it can be conveyed to screen reader users.
 
 To learn more about implementing a text field with autocomplete, see the [autocomplete component](https://polaris.shopify.com/components/forms/autocomplete).
 
