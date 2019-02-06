@@ -847,7 +847,7 @@ In general, avoid focusing on fields automatically. However, you can use the `au
 
 ### Autocomplete
 
-- Use the `ariaControls` and `ariaOwns` props (which implement the `aria-controls` and `aria-owns` attributes) to point to the `id` of the autocomplete list
+- Use the `ariaControls` and `ariaOwns` props (which implement the `aria-controls` and `aria-owns` attributes) to point to the `id` of the autocomplete list.
 - Use the `ariaAutocomplete` prop to indicate what kind of `aria-autocomplete` input is provided, either `list` or `inline`. Typically, `list` is used.
 - When merchants navigate through the list, the `ariaActiveDescendant` prop indicates which option has programmatic focus so that it can be conveyed to screen reader users.
 
