@@ -434,7 +434,7 @@ The autocomplete component is based on the [ARIA 1.1 combobox pattern](https://w
 
 We recommend implementing the autocomplete list below the text input so that it’s easy to discover and use. However, you can change the position with the `preferredPosition` prop.
 
-Autocomplete features can be difficult for people with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be hard to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
+Autocomplete features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
 
 <!-- usageblock -->
 
