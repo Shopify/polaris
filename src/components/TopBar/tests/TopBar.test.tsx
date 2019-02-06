@@ -246,6 +246,7 @@ describe('<TopBar />', () => {
       const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
       );
+      expect(findByTestID(topBar, 'ContextControl').exists()).toBe(true);
       expect(topBar.contains(mockContextControl)).toBe(true);
     });
 
