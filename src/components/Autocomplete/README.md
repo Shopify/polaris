@@ -440,7 +440,7 @@ Autocomplete features can be challenging for merchants with visual, motor, and c
 
 #### Do
 
-Use autocomplete as progressive enhancement to make the interface easier for most merchants.
+Use autocomplete as progressive enhancement to make the interface easier to use for most merchants.
 
 #### Don’t
 
