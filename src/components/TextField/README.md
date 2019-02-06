@@ -807,7 +807,7 @@ Screen readers convey information about text fields automatically through native
 - Use the `readOnly` prop to add the HTML `readonly` attribute to the text field
 - If you use the `type` prop, then some technologies update the software keyboard provided to the user to be more specific to the task at hand. This helps merchants with mobility, vision, and cognitive issues to enter information more easily
 
-You can use the `id` prop to provide a unique `id` attribute value for the text field. The component will generate one automatically if you don’t provide one. All text fields must have unique `id` values.
+Use the `id` prop to provide a unique `id` attribute value for the text field. If you don't provide an `id`, then the component generates one automatically. All text fields need to have unique `id` values.
 
 ### Labeling
 
