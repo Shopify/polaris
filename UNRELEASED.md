@@ -14,7 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Remove datatable top border so it does not overlaps with its container borders. ([#975](https://github.com/Shopify/polaris-react/pull/975))
+- Fixed the top border of `DataTable` overlapping its container's border ([#975](https://github.com/Shopify/polaris-react/pull/975))
 
 ### Documentation
 
