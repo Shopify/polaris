@@ -212,7 +212,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
-    const characterCount = value ? value.length : 0;
+    const characterCount = typeof value === 'string' ? value.length : 0;
     const characterCountLabel = intl.translate(
       maxLength
         ? 'Polaris.TextField.characterCountWithMaxLength'

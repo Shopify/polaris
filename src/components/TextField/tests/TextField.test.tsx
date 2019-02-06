@@ -338,6 +338,22 @@ describe('<TextField />', () => {
 
       expect(characterCount.text()).toBe('4/10');
     });
+
+    it('displays 0 in input field with null value', () => {
+      const textField = mountWithAppProvider(
+        <TextField
+          value={null}
+          showCharacterCount
+          label="TextField"
+          id="MyField"
+          onChange={noop}
+        />,
+      );
+
+      const characterCount = textField.find('#MyFieldCharacterCounter');
+
+      expect(characterCount.text()).toBe('0');
+    });
   });
 
   describe('type', () => {
