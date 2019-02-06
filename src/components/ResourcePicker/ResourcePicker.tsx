@@ -20,7 +20,7 @@ export interface Props {
    */
   initialQuery?: string;
   /** Whether to show hidden products or not
-   * @default false
+   * @default true
    */
   showHidden?: boolean;
   /** Whether to allow selection of multiple items
@@ -54,7 +54,7 @@ export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
       open,
       resourceType,
       initialQuery,
-      showHidden = false,
+      showHidden = true,
       allowMultiple = true,
       showVariants = true,
       onSelection,
