@@ -86,8 +86,16 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
 
     const width = getWidth(logo, 104);
 
-    const contextMarkup =
-      !contextControl && logo ? (
+    let contextMarkup;
+
+    if (contextControl) {
+      contextMarkup = (
+        <div testID="ContextControl" className={styles.ContextControl}>
+          {contextControl}
+        </div>
+      );
+    } else if (logo) {
+      contextMarkup = (
         <div className={styles.LogoContainer}>
           <UnstyledLink
             url={logo.url || ''}
@@ -102,9 +110,8 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
             />
           </UnstyledLink>
         </div>
-      ) : (
-        <div className={styles.ContextControl}>{contextControl}</div>
       );
+    }
 
     const searchResultsMarkup =
       searchResults && searchResultsVisible ? (

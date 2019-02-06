@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider, shallowWithAppProvider} from 'test-utilities';
+import {
+  mountWithAppProvider,
+  shallowWithAppProvider,
+  findByTestID,
+} from 'test-utilities';
 import {createAppProviderContext, Image, UnstyledLink} from 'components';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
@@ -231,7 +235,7 @@ describe('<TopBar />', () => {
     const mockContextControl = (
       <TopBar.Menu
         actions={[]}
-        activatorContent="Switch stores"
+        activatorContent="Switch contexts"
         open
         onOpen={noop}
         onClose={noop}
@@ -242,7 +246,7 @@ describe('<TopBar />', () => {
       const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
       );
-      expect(topBar.contains(mockContextControl)).toBeTruthy();
+      expect(topBar.contains(mockContextControl)).toBe(true);
     });
 
     it('doesn’t render a logo when defined', () => {
@@ -256,7 +260,12 @@ describe('<TopBar />', () => {
           unsubscribe: () => {},
         }),
       );
-      expect(topBar.find(Image).exists()).toBeFalsy();
+      expect(topBar.find(Image).exists()).toBe(false);
+    });
+
+    it('doesn’t render the wrapper when not defined and no logo is available', () => {
+      const topBar = mountWithAppProvider(<TopBar />);
+      expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
     });
   });
 });
