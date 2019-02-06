@@ -340,9 +340,10 @@ describe('<TextField />', () => {
     });
 
     it('displays 0 in input field with null value', () => {
+      const value = null;
       const textField = mountWithAppProvider(
         <TextField
-          value={null}
+          value={(value as unknown) as string}
           showCharacterCount
           label="TextField"
           id="MyField"
