@@ -839,7 +839,7 @@ Text fields have standard keyboard support.
 - Merchants who rely on the keyboard expect to move focus to each text field using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - If the `type` is set to `number`, then merchants can use the up and down arrow keys to adjust the value typed into the field
 - Using the `disabled` prop will prevent the text field from receive keyboard focus or inputs
-- Using the `readOnly` prop will allow focus on the text field but prevent input or editing
+- The `readOnly` prop allows focus on the text field but prevents input or editing
 
 #### Automatically focusing
 
