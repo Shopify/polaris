@@ -5,7 +5,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {hsbToRgb} from '../../utilities/color-transformers';
 import {HSBColor, HSBAColor} from '../../utilities/color-types';
 import {AlphaPicker, HuePicker, Slidable, Position} from './components';
-import * as styles from './ColorPicker.scss';
+import styles from './ColorPicker.scss';
 
 export interface State {
   pickerSize: number;

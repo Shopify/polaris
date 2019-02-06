@@ -3,7 +3,7 @@ import * as React from 'react';
 import DisplayText from '../../../DisplayText';
 import CloseButton from '../CloseButton';
 
-import * as styles from './Header.scss';
+import styles from './Header.scss';
 
 export interface Props {
   id: string;

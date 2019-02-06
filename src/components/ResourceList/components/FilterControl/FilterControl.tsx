@@ -15,7 +15,7 @@ import {Consumer} from '../Context';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
-import * as styles from './FilterControl.scss';
+import styles from './FilterControl.scss';
 
 export interface Props {
   searchValue?: string;

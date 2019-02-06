@@ -5,7 +5,7 @@ import UnstyledLink from '../UnstyledLink';
 import {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
-import * as styles from './Breadcrumbs.scss';
+import styles from './Breadcrumbs.scss';
 
 export interface Props {
   /** Collection of breadcrumbs */

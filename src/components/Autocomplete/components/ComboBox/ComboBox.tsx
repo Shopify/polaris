@@ -14,7 +14,7 @@ import {contextTypes} from '../types';
 import KeypressListener from '../../../KeypressListener';
 import {TextField} from './components';
 
-import * as styles from './ComboBox.scss';
+import styles from './ComboBox.scss';
 
 const getUniqueId = createUniqueIDFactory('ComboBox');
 

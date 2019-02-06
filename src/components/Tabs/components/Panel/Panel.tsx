@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from '../../Tabs.scss';
+import styles from '../../Tabs.scss';
 
 export interface Props {
   id: string;

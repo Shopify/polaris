@@ -13,6 +13,5 @@ module.exports = function(api) {
   // development or test
   return {
     presets: [runtimePreset, ['babel-preset-shopify/react', {hot: isWeb}]],
-    plugins: ['./config/babel/plugins/sass-namespace-to-default-import.js'],
   };
 };

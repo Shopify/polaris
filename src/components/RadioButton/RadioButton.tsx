@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Choice, {helpTextID} from '../Choice';
-import * as styles from './RadioButton.scss';
+import styles from './RadioButton.scss';
 
 export interface BaseProps {
   /** Label for the radio button */

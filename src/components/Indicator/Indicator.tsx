@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from './Indicator.scss';
+import styles from './Indicator.scss';
 
 export interface Props {
   pulse?: boolean;

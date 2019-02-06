@@ -160,7 +160,7 @@ describe('build', () => {
         'esnext/components/Avatar/Avatar.js',
         'utf8',
       );
-      expect(indexContents).toMatch("import * as styles from './Avatar.scss';");
+      expect(indexContents).toMatch("import styles from './Avatar.scss';");
     });
 
     it('gives consumers control over global.scss', () => {

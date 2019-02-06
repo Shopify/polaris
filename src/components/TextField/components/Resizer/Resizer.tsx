@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import EventListener from '../../../EventListener';
-import * as styles from '../../TextField.scss';
+import styles from '../../TextField.scss';
 
 export interface Props {
   contents?: string;

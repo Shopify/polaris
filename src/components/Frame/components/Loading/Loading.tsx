@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {debounce} from '@shopify/javascript-utilities/decorators';
-import * as styles from './Loading.scss';
+import styles from './Loading.scss';
 
 export interface Props {}
 

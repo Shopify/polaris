@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import Slidable, {Position} from '../Slidable';
-import * as styles from '../../ColorPicker.scss';
+import styles from '../../ColorPicker.scss';
 import {calculateDraggerY, hueForDraggerY} from './utilities';
 
 export interface State {

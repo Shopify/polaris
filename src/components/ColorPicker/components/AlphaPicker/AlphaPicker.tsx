@@ -3,7 +3,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import Slidable, {Position} from '../Slidable';
 import {HSBColor} from '../../../../utilities/color-types';
 import {hsbToRgb} from '../../../../utilities/color-transformers';
-import * as styles from '../../ColorPicker.scss';
+import styles from '../../ColorPicker.scss';
 import {calculateDraggerY, alphaForDraggerY} from './utilities';
 
 export interface State {
