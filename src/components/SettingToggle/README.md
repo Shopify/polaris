@@ -122,7 +122,7 @@ class SettingToggleExample extends React.Component {
 
 <!-- content-for: web -->
 
-The setting toggle component is implemented as an HTML `<button>`. The current label should convey what will happen when the button is pressed.
+The setting toggle component is implemented as an HTML `<button>`. The current label should convey what happens when the button is pressed.
 
 To learn more about button accessibility, see the [button component](/components/actions/button).
 
