@@ -42,6 +42,7 @@ import {
   horizontalDots,
   importIcon,
   logOut,
+  menu,
   notes,
   notification,
   onlineStore,
@@ -57,7 +58,7 @@ import {
   view,
 } from '../../icons';
 
-import * as styles from './Icon.scss';
+import styles from './Icon.scss';
 
 export type Color =
   | 'white'
@@ -136,6 +137,7 @@ export const BUNDLED_ICONS = {
   horizontalDots,
   import: importIcon,
   logOut,
+  menu,
   notes,
   notification,
   onlineStore,

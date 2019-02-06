@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {Item, ItemPosition} from './components';
-import * as styles from './Connected.scss';
+import styles from './Connected.scss';
 
 export interface Props {
   /** Content to display on the left */

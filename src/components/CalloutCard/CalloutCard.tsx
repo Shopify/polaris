@@ -10,7 +10,7 @@ import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';
 import Image from '../Image';
 
-import * as styles from './CalloutCard.scss';
+import styles from './CalloutCard.scss';
 
 export interface Props {
   /** The content to display inside the callout card. */

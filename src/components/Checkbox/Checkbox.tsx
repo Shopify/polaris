@@ -7,7 +7,7 @@ import Choice, {helpTextID} from '../Choice';
 import Icon from '../Icon';
 import {Error} from '../../types';
 
-import * as styles from './Checkbox.scss';
+import styles from './Checkbox.scss';
 
 export interface BaseProps {
   /** Label for the checkbox */

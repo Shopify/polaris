@@ -9,7 +9,7 @@ import {
   WithAppProviderProps,
 } from '../../../../../AppProvider';
 
-import * as styles from './DateSelector.scss';
+import styles from './DateSelector.scss';
 
 const VALID_DATE_REGEX = /^\d{4}-\d{1,2}-\d{1,2}$/;
 

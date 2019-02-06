@@ -7,7 +7,7 @@ import Image from '../Image';
 import Stack from '../Stack';
 
 import emptySearch from './illustrations/empty-search.svg';
-import * as styles from './EmptySearchResult.scss';
+import styles from './EmptySearchResult.scss';
 
 export interface Props {
   title: string;

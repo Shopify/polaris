@@ -8,7 +8,7 @@ import RadioButton from '../RadioButton';
 import InlineError from '../InlineError';
 import {Error} from '../../types';
 
-import * as styles from './ChoiceList.scss';
+import styles from './ChoiceList.scss';
 
 export interface ChoiceDescriptor {
   /** Value of the choice */

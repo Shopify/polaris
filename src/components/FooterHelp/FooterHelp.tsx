@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Icon from '../Icon';
-import * as styles from './FooterHelp.scss';
+import styles from './FooterHelp.scss';
 
 export interface Props {
   /** The content to display inside the layout. */

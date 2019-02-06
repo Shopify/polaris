@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {AnnotatedSection, Section} from './components';
-import * as styles from './Layout.scss';
+import styles from './Layout.scss';
 
 export interface Props {
   /** Automatically adds sections to layout. */

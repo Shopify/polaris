@@ -17,7 +17,7 @@ import PositionedOverlay, {
 } from '../../../PositionedOverlay';
 
 import Pane, {Props as PaneProps} from '../Pane';
-import * as styles from '../../Popover.scss';
+import styles from '../../Popover.scss';
 
 export enum CloseSource {
   Click,
