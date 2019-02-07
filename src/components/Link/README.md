@@ -104,11 +104,9 @@ Use for text links that are the same color as the surrounding text.
 
 <!-- content-for: web -->
 
-### Structure
-
 Use the `url` prop to give the link component a valid `href` value. This allows the element to be identified as a link to assistive technologies and gives it default keyboard support.
 
-#### Submitting data
+### Submitting data
 
 Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](/components/actions/button) instead.
 
