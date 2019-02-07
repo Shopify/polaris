@@ -141,7 +141,7 @@ To provide consistency and clarity:
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
-```JSX
+```jsx
 <Link url="https://help.shopify.com/manual">order fulfillment section</Link>
 ```
 
