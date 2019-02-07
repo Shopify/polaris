@@ -21,3 +21,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 ### Deprecations
+
+- Deprecated `ariaPressed` in favour of `pressed` prop in `Button` ([#984](https://github.com/Shopify/polaris-react/pull/984))
