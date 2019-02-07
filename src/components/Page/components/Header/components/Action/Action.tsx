@@ -4,7 +4,7 @@ import {IconableAction, DisableableAction} from '../../../../../../types';
 import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
 import Icon from '../../../../../Icon';
 import UnstyledLink from '../../../../../UnstyledLink';
-import * as styles from './Action.scss';
+import styles from './Action.scss';
 
 export interface Props {
   children?: string;

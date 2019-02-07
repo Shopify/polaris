@@ -497,7 +497,7 @@ class HelpTextExample extends React.Component {
 
 Use as a special form of help text that works best inline.
 
-- Use a prefix for things like currency symbols (e.g. “$”, “¥”, “£”).
+- Use a prefix for things like currency symbols (e.g. “\$”, “¥”, “£”).
 - Use suffix for things like units of measure (e.g. “in”, “cm”).
 
 ```jsx
@@ -735,6 +735,36 @@ Use to show that a textfield is not available for interaction. Most often used i
 
 ```jsx
 <TextField label="Store name" disabled />
+```
+
+### Text field with character count
+
+<!-- example-for: web -->
+
+Use to display the current number of characters in a text field. Use in conjunction with max length to display the current remaining number of characters in the text field.
+
+```jsx
+class TextFieldExample extends React.Component {
+  state = {
+    value: 'Jaded Pixel',
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  render() {
+    return (
+      <TextField
+        label="Store name"
+        value={this.state.value}
+        onChange={this.handleChange}
+        maxLength={20}
+        showCharacterCount
+      />
+    );
+  }
+}
 ```
 
 ---

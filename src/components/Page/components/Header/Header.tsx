@@ -17,7 +17,7 @@ import Pagination, {PaginationDescriptor} from '../../../Pagination';
 import Popover from '../../../Popover';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {Action, ActionGroup, ActionGroupDescriptor} from './components';
-import * as styles from './Header.scss';
+import styles from './Header.scss';
 
 export interface SecondaryAction
   extends IconableAction,

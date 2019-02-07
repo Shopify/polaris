@@ -15,7 +15,7 @@ import {
 } from '@shopify/javascript-utilities/dates';
 import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from '../../DatePicker.scss';
+import styles from '../../DatePicker.scss';
 import Day from '../Day';
 import Weekday from '../Weekday';
 

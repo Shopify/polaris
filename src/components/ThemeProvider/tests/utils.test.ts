@@ -26,7 +26,6 @@ describe('setTheme', () => {
 
     expect(theme).toEqual([
       ['--top-bar-color', 'rgb(255, 255, 255)'],
-      ['--top-bar-background-darker', 'hsl(184, 105%, 23%, 1)'],
       ['--top-bar-background-lighter', 'hsl(184, 85%, 43%, 1)'],
     ]);
   });

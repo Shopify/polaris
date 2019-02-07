@@ -8,7 +8,7 @@ import Popover from '../../../../../Popover';
 import Stack from '../../../../../Stack';
 import TextContainer from '../../../../../TextContainer';
 
-import * as styles from './Message.scss';
+import styles from './Message.scss';
 
 export interface Props {
   title: string;

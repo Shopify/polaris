@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from '../../Stack.scss';
+import styles from '../../Stack.scss';
 
 export interface Props {
   /** Elements to display inside item */

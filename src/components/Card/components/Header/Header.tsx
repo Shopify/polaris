@@ -6,7 +6,7 @@ import ButtonGroup from '../../../ButtonGroup';
 import Stack from '../../../Stack';
 import Heading from '../../../Heading';
 
-import * as styles from '../../Card.scss';
+import styles from '../../Card.scss';
 
 export interface Props {
   title?: React.ReactNode;

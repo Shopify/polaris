@@ -3,7 +3,7 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {elementChildren, wrapWithComponent} from '@shopify/react-utilities';
 
 import {Item, ItemProps} from './components';
-import * as styles from './Stack.scss';
+import styles from './Stack.scss';
 
 export type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
 export type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';

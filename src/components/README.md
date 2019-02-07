@@ -50,7 +50,10 @@ Use React components in most cases, especially if you’re building a highly int
 - Include the CSS in your HTML to implement:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.6.0-rc.1/polaris.min.css" />
+<link
+  rel="stylesheet"
+  href="https://sdks.shopifycdn.com/polaris/3.6.0/polaris.min.css"
+/>
 ```
 
 - Have a look at the [CSS examples](https://github.com/Shopify/polaris-react/tree/master/examples/cdn-styles) to see how it’s done
@@ -68,7 +71,10 @@ Here are some basic instructions to help you get started for both React and CSS-
 Include the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.6.0-rc.1/polaris.min.css" />
+<link
+  rel="stylesheet"
+  href="https://sdks.shopifycdn.com/polaris/3.6.0/polaris.min.css"
+/>
 ```
 
 First, import the component into your project:
@@ -98,7 +104,10 @@ ReactDOM.render(app, domContainerNode);
 Include the CSS stylesheet in your HTML:
 
 ```html
-<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.6.0-rc.1/polaris.min.css" />
+<link
+  rel="stylesheet"
+  href="https://sdks.shopifycdn.com/polaris/3.6.0/polaris.min.css"
+/>
 ```
 
 Add the appropriate classes to your HTML elements:
@@ -143,4 +152,4 @@ We ensure that our components are made for everyone. They meet accessibility sta
 
 ## Feedback
 
-Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris-react/issues). At this time we’re not accepting pull requests. This is something we’ll support in the future.
+Issues or feature requests can be created on the [Polaris GitHub page](https://github.com/Shopify/polaris-react/issues).

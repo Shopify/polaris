@@ -8,7 +8,7 @@ import EventListener from '../../../EventListener';
 
 import {TabDescriptor} from '../../types';
 import Tab from '../Tab';
-import * as styles from '../../Tabs.scss';
+import styles from '../../Tabs.scss';
 
 export interface TabMeasurements {
   containerWidth: number;
