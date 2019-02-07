@@ -50,13 +50,15 @@ export interface Props {
   download?: string | boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactNode | IconSource;
+  /** Displays the button in a pressed state */
+  pressed?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the button controls */
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;
-  /** Tells screen reader the element is pressed */
+  /** @deprecated Use pressed instead. */
   ariaPressed?: boolean;
   /** Callback when clicked */
   onClick?(): void;
@@ -104,6 +106,7 @@ function Button({
   submit,
   size = DEFAULT_SIZE,
   fullWidth,
+  pressed,
   polaris: {intl},
 }: CombinedProps) {
   const isDisabled = disabled || loading;
@@ -119,6 +122,7 @@ function Button({
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
+    pressed && styles.pressed,
   );
 
   const disclosureIconMarkup = disclosure ? (
@@ -173,6 +177,12 @@ function Button({
 
   const type = submit ? 'submit' : 'button';
 
+  const isAriaPressed = ariaPressed || pressed;
+  if (ariaPressed) {
+    // eslint-disable-next-line no-console
+    console.log('`ariaPressed` is deprecated. Use `pressed` instead.');
+  }
+
   if (url) {
     return isDisabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
@@ -215,7 +225,7 @@ function Button({
       aria-label={accessibilityLabel}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
-      aria-pressed={ariaPressed}
+      aria-pressed={isAriaPressed}
       role={loading ? 'alert' : undefined}
       aria-busy={loading ? true : undefined}
     >

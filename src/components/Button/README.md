@@ -253,6 +253,16 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 <Button fullWidth>Add customer</Button>
 ```
 
+### Pressed button
+
+<!-- example-for: web -->
+
+Use to display the button in a pressed state.
+
+```jsx
+<Button pressed>Toggle me</Button>
+```
+
 ### Disabled state
 
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
