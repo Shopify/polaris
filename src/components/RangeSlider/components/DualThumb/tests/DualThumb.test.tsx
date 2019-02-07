@@ -520,6 +520,65 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
 
+    it('moves the lower thumb when the track is clicked closer to it than the upper thumb', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      clickTrack(dualThumb, 0.2);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 40], mockProps.id);
+    });
+
+    it('moves the upper thumb when the track is clicked closer to it than the lower thumb', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      clickTrack(dualThumb, 0.6);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([5, 30], mockProps.id);
+    });
+
+    it('moves the lower thumb when the track is clicked closer to it than the upper thumb and the mouse moves', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      clickTrack(dualThumb, 0.2);
+      moveLowerThumb(dualThumb, 0.3);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([15, 40], mockProps.id);
+    });
+
+    it('moves the upper thumb when the track is clicked closer to it than the lower thumb and the mouse moves', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      clickTrack(dualThumb, 0.6);
+      moveUpperThumb(dualThumb, 0.9);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([5, 45], mockProps.id);
+    });
+
+    function clickTrack(
+      component: ReactWrapper,
+      percentageOfTrackX: number,
+      button = 0,
+    ) {
+      const trackWidth = 100;
+      const clientX = trackWidth * percentageOfTrackX;
+
+      component.setState({trackLeft: 0, trackWidth}, () => {
+        findTrack(component).simulate('mouseDown', {button, clientX});
+      });
+    }
+
     function moveLowerThumb(
       component: ReactWrapper,
       percentageOfTrackX: number,
@@ -649,4 +708,8 @@ function findThumbLower(containerComponent: ReactWrapper): ReactWrapper {
 
 function findThumbUpper(containerComponent: ReactWrapper): ReactWrapper {
   return containerComponent.find('button').last();
+}
+
+function findTrack(containerComponent: ReactWrapper): ReactWrapper {
+  return findByTestID(containerComponent, 'trackWrapper');
 }
