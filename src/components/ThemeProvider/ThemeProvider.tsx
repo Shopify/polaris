@@ -14,7 +14,6 @@ export interface Props {
 const defaultTheme = {
   '--top-bar-background': '#00848e',
   '--top-bar-color': '#f9fafb',
-  '--top-bar-background-darker': '#006d74',
   '--top-bar-background-lighter': '#1d9ba4',
 };
 

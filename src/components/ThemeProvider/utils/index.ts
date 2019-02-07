@@ -9,10 +9,7 @@ import {
 } from '../../../utilities/color-transformers';
 import {isLight} from '../../../utilities/color-validation';
 import {constructColorName} from '../../../utilities/color-names';
-import {
-  createDarkColor,
-  createLightColor,
-} from '../../../utilities/color-manipulation';
+import {createLightColor} from '../../../utilities/color-manipulation';
 import {compose} from '../../../utilities/compose';
 
 import {
@@ -46,15 +43,6 @@ export function setColors(theme: Theme | undefined): string[][] | undefined {
 export function needsVariant(name: string) {
   return needsVariantList.indexOf(name) !== -1;
 }
-
-const darkenToString: (
-  color: HSLColor | string,
-  lightness: number,
-  saturation: number,
-) => string = compose(
-  hslToString,
-  createDarkColor,
-);
 
 const lightenToString: (
   color: HSLColor | string,
@@ -90,11 +78,6 @@ export function setTheme(
       );
 
       colorPairs.push([
-        constructColorName(baseName, key, 'darker'),
-        darkenToString(color, 0, 0),
-      ]);
-
-      colorPairs.push([
         constructColorName(baseName, key, 'lighter'),
         lightenToString(color, 7, -10),
       ]);
@@ -104,11 +87,6 @@ export function setTheme(
       colorPairs.push(
         setTextColor(constructColorName(baseName, null, 'color'), 'dark'),
       );
-
-      colorPairs.push([
-        constructColorName(baseName, key, 'darker'),
-        darkenToString(color, 5, 5),
-      ]);
 
       colorPairs.push([
         constructColorName(baseName, key, 'lighter'),
