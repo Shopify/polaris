@@ -319,7 +319,7 @@ Buttons can have different states that are visually and programmatically conveye
 - Use the `ariaControls` prop to add an `aria-controls` attribute to the button. Use the attribute to point to the unique `id` of the content that the button manages.
 - If a button expands or collapses adjacent content, then use the `ariaExpanded` prop to add the `aria-expanded` attribute to the button. Set the value to convey the current expanded (`true`) or collapsed (`false`) state of the content.
 - Use the `disabled` prop to set the `disabled` state of the button. This prevents merchants from being able to interact with the button, and conveys its inactive state to assistive technologies.
-- Use the `ariaPressed` prop to add an `aria-pressed` attribute to the button. Use the `pressed` prop to add a pressed-style to the button as well.
+- Use the `pressed` prop to add an `aria-pressed` attribute and enable a pressed style to the button.
 
 #### Navigation
 
