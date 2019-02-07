@@ -8,7 +8,7 @@ import Stack from '../Stack';
 import TextContainer from '../TextContainer';
 import DisplayText from '../DisplayText';
 
-import * as styles from './EmptyState.scss';
+import styles from './EmptyState.scss';
 
 export interface Props {
   /** The empty state heading */

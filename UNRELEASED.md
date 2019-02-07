@@ -4,19 +4,35 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ---
 
+### Breaking changes
+
+### New components
+
 ### Enhancements
 
 - Icon component color prop now cascades to child SVGs when using `SVGSource` as **source** prop.
+- Set `Collapsible` to use `overflow: visible;` once fully open ([#951](https://github.com/Shopify/polaris-react/pull/951))
+- Removes `TopBar` logo background ([#957](https://github.com/Shopify/polaris-react/pull/957))
 
 ### Bug fixes
 
 ### Documentation
 
+- Added accessibility documentation for the account connection and setting toggle components ([#970](https://github.com/Shopify/polaris-react/pull/970))
+- Added accessibility documentation for the avatar component ([#973](https://github.com/Shopify/polaris-react/pull/973))
+- Updated docs about App Bridge usage in AppProvider ([#945](https://github.com/Shopify/polaris-react/pull/945))
+
 ### Development workflow
 
-- Replaced our home-grown playground with Storybook (still acccessed through `yarn dev`) ([#768](https://github.com/Shopify/polaris-react/pull/768))
-- Removed our usage of babel-node for build scripts - use plain node instead ([#836](https://github.com/Shopify/polaris-react/pull/836))
+- Fixed links to Polaris component pages in story descriptions ([#933](https://github.com/Shopify/polaris-react/pull/933))
 
 ### Dependency upgrades
 
+- Upgrade to `@shopify/polaris-icons` v2.0.0 ([#982](https://github.com/Shopify/polaris-react/pull/982))
+
 ### Code quality
+
+- Now using `import styles from './foo.scss';` instead of non-standard `import * as styles from './foo.scss';` when importing scss files ([#929](https://github.com/Shopify/polaris-react/pull/929))
+- Removed internal ellipsis icon as it is deprecated, and horizontalDots should be used instead ([#974](https://github.com/Shopify/polaris-react/pull/974))
+
+### Deprecations

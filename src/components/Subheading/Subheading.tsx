@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {HeadingTagName} from '../../types';
-import * as styles from './Subheading.scss';
+import styles from './Subheading.scss';
 
 export interface Props {
   /**

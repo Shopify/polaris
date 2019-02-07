@@ -2,7 +2,7 @@ import * as React from 'react';
 import Item from '../Item';
 import {ActionListItemDescriptor, ActionListSection} from '../../../../types';
 
-import * as styles from '../../ActionList.scss';
+import styles from '../../ActionList.scss';
 
 export interface Props {
   /** Section of action items */
@@ -46,7 +46,7 @@ export default function Section({
     },
   );
 
-  const className = section.title ? null : styles['Section-withoutTitle'];
+  const className = section.title ? undefined : styles['Section-withoutTitle'];
 
   const titleMarkup = section.title ? (
     <p className={styles.Title}>{section.title}</p>

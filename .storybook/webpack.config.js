@@ -32,7 +32,7 @@ module.exports = (baseConfig, env, config) => {
   // Without this there will be lots of "add 1 file and removed 1 file" notices.
   baseConfig.output.filename = '[name]-[hash].js';
 
-  const cacheDir = path.resolve(__dirname, '../build/storybook/cache');
+  const cacheDir = path.resolve(__dirname, '../build/cache/storybook');
 
   const extraRules = [
     {
@@ -41,17 +41,12 @@ module.exports = (baseConfig, env, config) => {
         {
           loader: 'babel-loader',
           options: {
-            babelrc: false,
             // Don't use the production environment as it contains optimisations
             // that break compilation. The shopify/react preset enables the
             // babel-plugin-transform-react-constant-elements plugin which
             // somehow hoists things up into an undesirable location.
-            forceEnv: isProduction ? 'not-production' : undefined,
+            envName: isProduction ? 'not-production' : undefined,
             minified: isProduction,
-            presets: [
-              ['shopify/web', {modules: false}],
-              ['shopify/react', {hot: true}],
-            ],
             cacheDirectory: `${cacheDir}/markdown`,
           },
         },
@@ -66,12 +61,7 @@ module.exports = (baseConfig, env, config) => {
         {
           loader: 'babel-loader',
           options: {
-            babelrc: false,
             minified: isProduction,
-            presets: [
-              ['shopify/web', {modules: false}],
-              ['shopify/react', {hot: true}],
-            ],
             cacheDirectory: `${cacheDir}/typescript`,
           },
         },

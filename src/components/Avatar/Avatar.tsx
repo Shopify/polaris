@@ -6,7 +6,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Image from '../Image';
 
-import * as styles from './Avatar.scss';
+import styles from './Avatar.scss';
 import * as avatars from './images';
 
 export type Size = 'small' | 'medium' | 'large';

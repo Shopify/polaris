@@ -182,6 +182,10 @@ The user menu component displays the current user’s avatar and name, and actio
 | avatarInitials | AvatarProps['initials'] | The merchant’s initials, rendered in place of an avatar image when not provided                         |
 | avatarSource   | AvatarProps['source']   | An avatar image representing the merchant                                                               |
 
+### Deprecation rationale
+
+As of release 3.6.0 `Navigation.UserMenu` is deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu) which will stay visible on mobile.
+
 ---
 
 ## Examples

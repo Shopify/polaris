@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
-import * as styles from './Tag.scss';
+import styles from './Tag.scss';
 
 export interface Props {
   /** Content to display in the tag */

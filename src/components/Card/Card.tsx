@@ -6,7 +6,7 @@ import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
 import {Header, Section} from './components';
-import * as styles from './Card.scss';
+import styles from './Card.scss';
 
 export interface Props {
   /** Title content for the card */

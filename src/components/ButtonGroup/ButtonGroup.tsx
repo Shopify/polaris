@@ -2,7 +2,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {elementChildren} from '@shopify/react-utilities';
 import {Item} from './components';
-import * as styles from './ButtonGroup.scss';
+import styles from './ButtonGroup.scss';
 
 export interface Props {
   /** Join buttons as segmented group */

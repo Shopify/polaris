@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
+import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider, createPolarisProps} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import Toast from '../Toast';
@@ -42,7 +42,7 @@ describe('<Toast />', () => {
     };
     AppBridgeToast.create = jest.fn().mockReturnValue(appBridgeToastMock);
 
-    it('shows app bridge flash notice content on mount and unmounts safely', () => {
+    it('shows app bridge toast notice content on mount and unmounts safely', () => {
       const content = 'Message sent';
       const {toast, polaris} = mountWithAppBridge(
         <Toast content={content} duration={1000} onDismiss={noop} />,
@@ -51,7 +51,6 @@ describe('<Toast />', () => {
 
       expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
         duration: 1000,
-        isDismissible: true,
         isError: undefined,
         message: 'Message sent',
       });
@@ -62,7 +61,7 @@ describe('<Toast />', () => {
       expect(appBridgeToastMock.dispatch).toHaveBeenCalledTimes(1);
     });
 
-    it('shows app bridge flash error content on mount', () => {
+    it('shows app bridge toast error content on mount', () => {
       const content = 'Message sent';
       const {polaris} = mountWithAppBridge(
         <Toast content={content} duration={1000} onDismiss={noop} error />,
@@ -70,7 +69,6 @@ describe('<Toast />', () => {
 
       expect(AppBridgeToast.create).toHaveBeenCalledWith(polaris.appBridge, {
         duration: 1000,
-        isDismissible: true,
         isError: true,
         message: 'Message sent',
       });

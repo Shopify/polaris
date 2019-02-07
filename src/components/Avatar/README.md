@@ -82,3 +82,37 @@ Use to present an avatar for a merchant, customer, or business.
 ## Related components
 
 - To show a thumbnail for an object rather than a person or business, [use the thumbnail component](/components/images-and-icons/thumbnail)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+### Structure
+
+The avatar component uses a generated scalable vector graphics (SVG) file, which can cause challenges for merchants that use assistive technologies. To create a standard experience, the `<img>` is hidden from assistive technologies by using an empty `alt` attribute, and replaced with a `<span>` that has `role=”img”`.
+
+### Labeling
+
+The avatar component represents content, and should have a text equivalent for merchants using assistive technologies. By default, the value of the `name` prop is used for the alternative text. If different text would be more accurate, use the `accessibilityLabel` prop to replace the value provided by `name`.
+
+<!-- /content-for -->

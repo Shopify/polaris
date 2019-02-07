@@ -12,6 +12,6 @@
   word-break: break-word;
 
   @include breakpoint-after($typography-condensed) {
-    margin-top: rem(2px);
+    margin-top: rem(4px);
   }
 }

@@ -18,6 +18,7 @@
 /// $spacing.
 @mixin safe-area-for($property, $spacing, $area) {
   $spacing: if($spacing == 0, #{$spacing}px, $spacing);
+  #{$property}: #{$spacing};
   #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));
   #{$property}: calc(#{$spacing} + env(safe-area-inset-#{$area}));
 }

@@ -19,7 +19,7 @@ function percyShouldTestIndividualExamples(readmeName) {
   return ['Modal'].includes(readmeName);
 }
 
-export function generateStories(readme) {
+export function generateStories(readme, readmeModule) {
   // Only generate stories if there are examples
   if (readme.examples.length === 0) {
     return;
@@ -27,7 +27,7 @@ export function generateStories(readme) {
 
   const testIndividualExamples = percyShouldTestIndividualExamples(readme.name);
 
-  storiesOf(`All Components|${readme.name}`, module)
+  storiesOf(`All Components|${readme.name}`, readmeModule)
     .addDecorator(AppProviderDecorator)
     .addDecorator(checkA11y)
     .addWithPercyOptions(
@@ -37,13 +37,13 @@ export function generateStories(readme) {
     );
 
   readme.examples.forEach((example) => {
-    storiesOf(`All Components|${readme.name}`, module)
+    storiesOf(`All Components|${readme.name}`, readmeModule)
       .addDecorator(AppProviderDecorator)
       .addDecorator(checkA11y)
       .addParameters({
         // TODO links use styleguide-style URLs. It'd be neat to mutate them
         // to deeplink to examples in storybook.
-        notes: {markdown: example.description},
+        notes: example.description,
       })
       .addWithPercyOptions(
         example.name,
@@ -62,8 +62,8 @@ export function hydrateExecutableExamples(readme) {
   return readme;
 }
 
-export function addPlaygroundStory() {
-  storiesOf('Playground', module)
+export function addPlaygroundStory(playgroundModule) {
+  storiesOf('Playground', playgroundModule)
     .addDecorator(AppProviderDecorator)
     .addWithPercyOptions('Playground', percyOptions(), () => <Playground />);
 }

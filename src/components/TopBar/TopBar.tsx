@@ -3,14 +3,13 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {getWidth} from '../../utilities/getWidth';
-import {menu} from '../../icons';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import Image from '../Image';
 import UnstyledLink from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
-import * as styles from './TopBar.scss';
+import styles from './TopBar.scss';
 
 export interface Props {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */
@@ -77,7 +76,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
       >
-        <Icon source={menu} color="white" />
+        <Icon source="menu" color="white" />
       </button>
     ) : null;
 
@@ -120,8 +119,8 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         {navigationButtonMarkup}
         <div className={styles.LogoContainer}>{logoMarkup}</div>
         <div className={styles.Contents}>
-          {searchMarkup}
-          {secondaryMenu}
+          <div className={styles.SearchField}>{searchMarkup}</div>
+          <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
           {userMenu}
         </div>
       </div>

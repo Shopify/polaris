@@ -60,30 +60,30 @@ describe('<Button />', () => {
   });
 
   describe('disabled', () => {
-    it('sets the disabled attribute on the button', () => {
+    it('disable without a url renders <button disabled>', () => {
       const button = shallowWithAppProvider(<Button disabled />);
       expect(button.find('button').prop('disabled')).toBeTruthy();
     });
 
-    it('sets the disabled attribute on the link', () => {
+    it('disable with a url renders <a> without an href (as <a disabled> is invalid HTML)>', () => {
       const button = shallowWithAppProvider(
         <Button disabled url="http://google.com" />,
       );
-      expect(button.find(UnstyledLink).prop('disabled')).toBeTruthy();
+      expect(button.find('a').prop('href')).toBeFalsy();
     });
   });
 
   describe('loading', () => {
-    it('sets the disabled attribute on the button', () => {
+    it('loading without a url renders <button disabled>', () => {
       const button = shallowWithAppProvider(<Button loading />);
       expect(button.find('button').prop('disabled')).toBe(true);
     });
 
-    it('sets the disabled attribute on the link', () => {
+    it('loading with a url renders <a> without an href (as <a disabled> is invalid HTML)', () => {
       const button = shallowWithAppProvider(
         <Button loading url="http://google.com" />,
       );
-      expect(button.find(UnstyledLink).prop('disabled')).toBeTruthy();
+      expect(button.find('a').prop('href')).toBeFalsy();
     });
 
     it('renders a spinner into the button', () => {
@@ -195,6 +195,13 @@ describe('<Button />', () => {
     });
   });
 
+  describe('ariaPressed', () => {
+    it('sets an aria-pressed on the button', () => {
+      const button = shallowWithAppProvider(<Button ariaPressed />);
+      expect(button.find('button').prop('aria-pressed')).toBeTruthy();
+    });
+  });
+
   describe('onClick()', () => {
     it('is called when the button is clicked', () => {
       const onClickSpy = jest.fn();
@@ -246,6 +253,45 @@ describe('<Button />', () => {
       );
       trigger(button.find(UnstyledLink), 'onBlur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onKeyPress()', () => {
+    it('is called when a keypress event is registered on the button', () => {
+      const fakeEventData = {key: 'foo'};
+      const spy = jest.fn();
+      shallowWithAppProvider(<Button onKeyPress={spy}>Test</Button>).simulate(
+        'keypress',
+        fakeEventData,
+      );
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith(fakeEventData);
+    });
+  });
+
+  describe('onKeyUp()', () => {
+    it('is called when a keyup event is registered on the button', () => {
+      const fakeEventData = {key: 'foo'};
+      const spy = jest.fn();
+      shallowWithAppProvider(<Button onKeyUp={spy}>Test</Button>).simulate(
+        'keyup',
+        fakeEventData,
+      );
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith(fakeEventData);
+    });
+  });
+
+  describe('onKeyDown()', () => {
+    it('is called when a keydown event is registered on the button', () => {
+      const fakeEventData = {key: 'foo'};
+      const spy = jest.fn();
+      shallowWithAppProvider(<Button onKeyDown={spy}>Test</Button>).simulate(
+        'keydown',
+        fakeEventData,
+      );
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith(fakeEventData);
     });
   });
 });

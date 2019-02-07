@@ -76,11 +76,25 @@ Available options: #{available-names($color-palette-data)}
 
 @function color-multiply($foreground, $background: null) {
   @if $background == null {
-    // stylelint-disable-next-line color-no-hex
-    $background: #ffffff;
+    $background: rgb(255, 255, 255);
   }
 
-  @return $foreground * $background / 255;
+  $red: red($background) * red($foreground) / 255;
+  $green: green($background) * green($foreground) / 255;
+  $blue: blue($background) * blue($foreground) / 255;
+
+  $opacity: opacity($foreground);
+  $background-opacity: opacity($background);
+
+  // calculate opacity
+  $bm-red: $red * $opacity + red($background) * $background-opacity *
+    (1 - $opacity);
+  $bm-green: $green * $opacity + green($background) * $background-opacity *
+    (1 - $opacity);
+  $bm-blue: $blue * $opacity + blue($background) * $background-opacity *
+    (1 - $opacity);
+
+  @return rgb($bm-red, $bm-green, $bm-blue);
 }
 
 ///

@@ -10,7 +10,7 @@ const {svgOptions} = require('@shopify/images/optimize');
 
 const svgo = new SVGO(svgOptions());
 
-glob(resolvePath(__dirname, '../**/*.svg'), (error, files) => {
+glob(resolvePath(__dirname, '../src/**/*.svg'), (error, files) => {
   if (error) {
     console.error(error);
     process.exit(1);

@@ -12,7 +12,7 @@ import {contextTypes} from './types';
 
 import {ScrollTo} from './components';
 
-import * as styles from './Scrollable.scss';
+import styles from './Scrollable.scss';
 
 const MAX_SCROLL_DISTANCE = 100;
 const DELTA_THRESHOLD = 0.2;
