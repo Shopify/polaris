@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
-import * as styles from './TextContainer.scss';
+import styles from './TextContainer.scss';
 
 export type Spacing = 'tight' | 'loose';
 export interface Props {

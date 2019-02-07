@@ -13,7 +13,7 @@ import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
-import * as styles from './Banner.scss';
+import styles from './Banner.scss';
 
 import successIcon from './icons/circle-check-mark.svg';
 import fallbackIcon from './icons/flag.svg';

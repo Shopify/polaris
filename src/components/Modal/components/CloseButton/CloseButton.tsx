@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities';
 
 import Icon from '../../../Icon';
 
-import * as styles from './CloseButton.scss';
+import styles from './CloseButton.scss';
 
 export interface Props {
   title?: boolean;

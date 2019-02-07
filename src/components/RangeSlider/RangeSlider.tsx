@@ -7,7 +7,7 @@ import {Error} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Labelled, {Action, helpTextID} from '../Labelled';
 
-import * as styles from './RangeSlider.scss';
+import styles from './RangeSlider.scss';
 
 export interface State {
   id: string;

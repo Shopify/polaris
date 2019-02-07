@@ -11,7 +11,7 @@ import Stack from '../../../Stack';
 
 import {DiscardConfirmationModal} from './components';
 
-import * as styles from './ContextualSaveBar.scss';
+import styles from './ContextualSaveBar.scss';
 
 export type CombinedProps = Props & WithAppProviderProps;
 

@@ -5,7 +5,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {noop} from '../../../../utilities/other';
 import Icon from '../../../Icon';
 
-import * as styles from './SearchField.scss';
+import styles from './SearchField.scss';
 
 export interface Props {
   /** Initial value for the input */

@@ -4,14 +4,13 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
-import {ellipsis} from '../../../../icons';
 import Collapsible from '../../../Collapsible';
 import Icon, {Props as IconProps} from '../../../Icon';
 import {contextTypes} from '../../types';
 
 import Item, {Props as ItemProps} from '../Item';
 
-import * as styles from '../../Navigation.scss';
+import styles from '../../Navigation.scss';
 
 const createAdditionalItemsId = createUniqueIDFactory('AdditionalItems');
 
@@ -108,7 +107,7 @@ export default class Section extends React.Component<Props, State> {
             testID="ToggleViewAll"
           >
             <span className={styles.Icon}>
-              <Icon source={ellipsis} />
+              <Icon source="horizontalDots" />
             </span>
             {ariaLabel}
           </button>

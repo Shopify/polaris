@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import Subheading from '../../../Subheading';
 
-import * as styles from '../../Card.scss';
+import styles from '../../Card.scss';
 
 export interface Props {
   title?: React.ReactNode;

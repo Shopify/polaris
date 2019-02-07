@@ -17,7 +17,7 @@ import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
-import * as styles from './Item.scss';
+import styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';

@@ -25,7 +25,6 @@ $page-left-alignment-breakpoint-max: 1268px;
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
-    background-color: var(--top-bar-background-darker);
     @include safe-area-for(flex-basis, layout-width(nav), left);
     @include safe-area-for(padding-left, spacing(), left);
   }
