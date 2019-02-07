@@ -137,7 +137,7 @@ To provide consistency and clarity:
 
 #### Don’t
 
-```JSX
+```jsx
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
