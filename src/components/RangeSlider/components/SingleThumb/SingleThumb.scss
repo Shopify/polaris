@@ -14,10 +14,6 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   display: flex;
   align-items: center;
 
-  &:not(:first-child) {
-    margin-top: spacing(tight);
-  }
-
   &.disabled {
     opacity: 0.8;
   }
@@ -29,6 +25,12 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   align-items: center;
   flex: 1 1 auto;
   height: $range-thumb-size;
+
+  input {
+    padding: rem(12px) 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
 }
 
 .Prefix {
