@@ -4,7 +4,7 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from '../Item';
 import {TabDescriptor} from '../../types';
-import * as styles from '../../Tabs.scss';
+import styles from '../../Tabs.scss';
 
 export interface Props {
   focusIndex: number;

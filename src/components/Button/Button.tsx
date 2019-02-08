@@ -6,7 +6,7 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 import Spinner from '../Spinner';
-import * as styles from './Button.scss';
+import styles from './Button.scss';
 
 export type Size = 'slim' | 'medium' | 'large';
 

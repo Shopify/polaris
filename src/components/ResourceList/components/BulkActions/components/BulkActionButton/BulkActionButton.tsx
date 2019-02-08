@@ -8,7 +8,7 @@ import {DisableableAction} from '../../../../../../types';
 
 import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
 
-import * as styles from '../../BulkActions.scss';
+import styles from '../../BulkActions.scss';
 
 export type Props = {
   disclosure?: boolean;

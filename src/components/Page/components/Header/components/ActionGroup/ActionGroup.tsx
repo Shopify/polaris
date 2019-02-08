@@ -5,7 +5,7 @@ import Popover from '../../../../../Popover';
 import Action from '../Action';
 
 import {ActionGroupDescriptor} from './types';
-import * as styles from './ActionGroup.scss';
+import styles from './ActionGroup.scss';
 
 export interface Props extends ActionGroupDescriptor {
   active: boolean;

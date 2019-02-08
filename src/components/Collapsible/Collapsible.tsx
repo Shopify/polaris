@@ -9,7 +9,7 @@ import {
 import {read} from '@shopify/javascript-utilities/fastdom';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import * as styles from './Collapsible.scss';
+import styles from './Collapsible.scss';
 
 export interface Props {
   /** Assign a unique ID to the collapsible. For accessibility, pass this ID as the value of the triggering component’s aria-controls prop. */

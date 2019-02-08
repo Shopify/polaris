@@ -5,7 +5,7 @@ import Scrollable from '../Scrollable';
 import {UserMenu, Section, Item} from './components';
 import {contextTypes, SectionType} from './types';
 
-import * as styles from './Navigation.scss';
+import styles from './Navigation.scss';
 
 export interface Props {
   location: string;

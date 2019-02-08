@@ -302,7 +302,7 @@ On iOS, icons are available for cases where you want to re-inforce the message.
 
 <!-- example-for: android, ios, web -->
 
-Use error toast to indicate that an operation has failed. For example, your phone is offline and need to reconnect to the internet. For all other error message types, follow the [error message guidelines](/patterns/error-messages)
+Use error toast to indicate that an operation has failed. For example, your phone is offline and need to reconnect to the internet. For all other error message types, follow the [error message guidelines](/patterns/error-messages).
 
 <!-- content-for: web -->
 

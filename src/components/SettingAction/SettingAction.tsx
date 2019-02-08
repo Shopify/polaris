@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './SettingAction.scss';
+import styles from './SettingAction.scss';
 
 export interface Props {
   action?: React.ReactNode;

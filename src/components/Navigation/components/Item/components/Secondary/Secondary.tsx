@@ -3,7 +3,7 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import Collapsible from '../../../../../Collapsible';
 
-import * as styles from '../../../../Navigation.scss';
+import styles from '../../../../Navigation.scss';
 
 const createSecondaryNavigationId = createUniqueIDFactory(
   'SecondaryNavigation',

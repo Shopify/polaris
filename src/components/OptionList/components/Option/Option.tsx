@@ -8,7 +8,7 @@ import {Props as AvatarProps} from '../../../Avatar';
 import Scrollable from '../../../Scrollable';
 import Checkbox from '../Checkbox';
 
-import * as styles from './Option.scss';
+import styles from './Option.scss';
 
 export interface Props {
   id: string;

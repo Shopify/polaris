@@ -7,7 +7,7 @@ import Portal from '../../../Portal';
 import {ToastProps} from '../../types';
 import Toast from '../Toast';
 
-import * as styles from './ToastManager.scss';
+import styles from './ToastManager.scss';
 
 export interface Props {
   toastMessages: (ToastProps & {id: string})[];

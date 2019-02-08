@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from '../../Connected.scss';
+import styles from '../../Connected.scss';
 
 export enum ItemPosition {
   Left,
