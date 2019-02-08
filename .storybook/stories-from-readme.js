@@ -43,7 +43,7 @@ export function generateStories(readme, readmeModule) {
       .addParameters({
         // TODO links use styleguide-style URLs. It'd be neat to mutate them
         // to deeplink to examples in storybook.
-        notes: {markdown: example.description},
+        notes: example.description,
       })
       .addWithPercyOptions(
         example.name,
