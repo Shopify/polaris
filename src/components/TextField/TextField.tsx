@@ -9,7 +9,7 @@ import Connected from '../Connected';
 import {Error, Key} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {Resizer, Spinner} from './components';
-import * as styles from './TextField.scss';
+import styles from './TextField.scss';
 
 export type Type =
   | 'text'

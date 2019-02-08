@@ -22,7 +22,7 @@ import AssetImageUpload from '../../images/image-upload.svg';
 
 import {Consumer} from '../Context';
 
-import * as styles from './FileUpload.scss';
+import styles from './FileUpload.scss';
 
 export interface State {
   actionTitle?: string;

@@ -8,7 +8,7 @@ import UnstyledLink from '../../../UnstyledLink';
 import Badge from '../../../Badge';
 import TextStyle from '../../../TextStyle';
 
-import * as styles from '../../ActionList.scss';
+import styles from '../../ActionList.scss';
 
 export type Props = ActionListItemDescriptor;
 

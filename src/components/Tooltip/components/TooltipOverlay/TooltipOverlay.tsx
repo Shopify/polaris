@@ -8,7 +8,7 @@ import PositionedOverlay, {
   PreferredPosition,
 } from '../../../PositionedOverlay';
 
-import * as styles from '../../Tooltip.scss';
+import styles from '../../Tooltip.scss';
 
 export interface Props {
   id: string;

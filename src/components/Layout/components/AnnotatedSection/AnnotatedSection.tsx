@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Heading from '../../../Heading';
 import TextContainer from '../../../TextContainer';
-import * as styles from '../../Layout.scss';
+import styles from '../../Layout.scss';
 
 export interface Props {
   children?: React.ReactNode;

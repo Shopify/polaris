@@ -5,7 +5,7 @@ import {wrapWithComponent} from '@shopify/react-utilities';
 import Scrollable from '../../../Scrollable';
 
 import Section from '../Section';
-import * as styles from '../../Popover.scss';
+import styles from '../../Popover.scss';
 
 export interface Props {
   fixed?: boolean;

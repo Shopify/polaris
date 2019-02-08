@@ -3,7 +3,6 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
-import {add} from '../../../../../icons';
 
 import Item, {Props as ItemProps} from '../Item';
 import {Secondary} from '../components';
@@ -166,12 +165,12 @@ describe('<Nav.Item />', () => {
   describe('delegated props', () => {
     it('delegates icon to <Icon />', () => {
       const item = mountWithAppProvider(
-        <Item label="some label" url="foo" disabled={false} icon={add} />,
+        <Item label="some label" url="foo" disabled={false} icon="add" />,
         {
           context: {location: 'bar'},
         },
       );
-      expect(item.find(Icon).prop('source')).toBe(add);
+      expect(item.find(Icon).prop('source')).toBe('add');
     });
 
     it('delegates label to <UnstyledLink />', () => {

@@ -11,7 +11,7 @@ import EventListener from '../../../EventListener';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import CheckableButton from '../CheckableButton';
 import {BulkActionButton} from './components';
-import * as styles from './BulkActions.scss';
+import styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
 export type BulkActionListSection = ActionListSection;

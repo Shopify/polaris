@@ -6,7 +6,7 @@ import Labelled, {Action, helpTextID} from '../Labelled';
 import Icon from '../Icon';
 import {Error} from '../../types';
 
-import * as styles from './Select.scss';
+import styles from './Select.scss';
 
 interface StrictOption {
   /** Machine value of the option; this is the value passed to `onChange` */
