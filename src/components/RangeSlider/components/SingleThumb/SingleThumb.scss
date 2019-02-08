@@ -158,7 +158,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
 ///
 /// Output value indicator
 $range-output-size: rem(32px);
-$range-output-tip-size: rem(8px);
+$range-output-offset: rem(4px);
 $range-output-translate-x: calc(
   -50% + var(--Polaris-RangeSlider-output-factor, 0) * #{$range-thumb-size}
 );
@@ -166,7 +166,7 @@ $range-output-translate-x: calc(
 .Output {
   position: absolute;
   z-index: z-index('output', $stacking-order);
-  bottom: $range-output-size - $range-output-tip-size;
+  bottom: $range-thumb-size;
   left: var(--Polaris-RangeSlider-progress, 50%);
   transform: translateX($range-output-translate-x);
   opacity: 0;
@@ -196,30 +196,16 @@ $range-output-translate-x: calc(
   transition-duration: duration();
   transition-timing-function: easing();
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -($range-output-tip-size - rem(1px));
-    left: 50%;
-    margin-left: -$range-output-tip-size;
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: $range-output-tip-size solid transparent;
-    border-right: $range-output-tip-size solid transparent;
-    border-top: $range-output-tip-size solid color('ink');
-  }
-
+  // stylelint-disable selector-max-class
+  // stylelint-disable selector-max-combinators
   // stylelint-disable selector-max-specificity
   .Input:hover + .Output &,
   .Input:active + .Output &,
   .Input:focus + .Output & {
-    transform: translateY(-$range-thumb-size);
-
-    @include page-content-when-not-partially-condensed {
-      transform: translateY(-($range-thumb-size / 2));
-    }
+    transform: translateY(-$range-output-offset);
   }
+  // stylelint-enable selector-max-class
+  // stylelint-enable selector-max-combinators
   // stylelint-enable selector-max-specificity
 }
 

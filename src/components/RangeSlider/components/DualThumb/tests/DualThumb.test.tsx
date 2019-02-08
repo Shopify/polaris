@@ -293,6 +293,8 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const expected = {
+        '--Polaris-RangeSlider-output-factor-lower': '0.5',
+        '--Polaris-RangeSlider-output-factor-upper': '0.48',
         '--Polaris-RangeSlider-progress-lower': '12px',
         '--Polaris-RangeSlider-progress-upper': '11.52px',
       };

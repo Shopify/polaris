@@ -7,7 +7,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {classNames} from '@shopify/react-utilities/styles';
-import {CSS_VAR_PREFIX} from '../../utilities';
+import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
 import {Props as RangeSliderProps, DualValue} from '../../types';
 import Labelled from '../../../Labelled';
 import EventListener from '../../../EventListener';
@@ -40,7 +40,6 @@ enum Control {
 }
 
 const THUMB_SIZE = 24;
-const OUTPUT_TIP_SIZE = 8;
 
 export default class DualThumb extends React.Component<Props, State> {
   static getDerivedStateFromProps(props: Props, state: State) {
@@ -136,6 +135,8 @@ export default class DualThumb extends React.Component<Props, State> {
 
     const leftPositionThumbLower = (value[0] / range) * trackWidth;
     const leftPositionThumbUpper = (value[1] / range) * trackWidth;
+    const leftPositionOutputLower = leftPositionThumbLower + THUMB_SIZE / 2;
+    const leftPositionOutputUpper = leftPositionThumbUpper + THUMB_SIZE / 2;
 
     const outputLowerClassName = classNames(styles.Output, styles.OutputLower);
     const outputMarkupLower =
@@ -144,7 +145,7 @@ export default class DualThumb extends React.Component<Props, State> {
           htmlFor={idLower}
           className={outputLowerClassName}
           style={{
-            left: `calc(${leftPositionThumbLower}px - ${OUTPUT_TIP_SIZE}px)`,
+            left: `calc(${leftPositionOutputLower}px)`,
           }}
         >
           <div className={styles.OutputBubble}>
@@ -160,7 +161,7 @@ export default class DualThumb extends React.Component<Props, State> {
           htmlFor={idUpper}
           className={outputUpperClassName}
           style={{
-            left: `calc(${leftPositionThumbUpper}px - ${OUTPUT_TIP_SIZE}px)`,
+            left: `calc(${leftPositionOutputUpper}px)`,
           }}
         >
           <div className={styles.OutputBubble}>
@@ -172,9 +173,16 @@ export default class DualThumb extends React.Component<Props, State> {
     const progressLower = leftPositionThumbLower + THUMB_SIZE / 2;
     const progressUpper = leftPositionThumbUpper + THUMB_SIZE / 2;
 
+    const sliderProgressLower = ((value[0] - min) * 100) / (max - min);
+    const sliderProgressUpper = ((value[1] - min) * 100) / (max - min);
+    const outputFactorLower = invertNumber((sliderProgressLower - 50) / 100);
+    const outputFactorUpper = invertNumber((sliderProgressUpper - 50) / 100);
+
     const cssVars = {
       [`${CSS_VAR_PREFIX}progress-lower`]: `${progressLower}px`,
       [`${CSS_VAR_PREFIX}progress-upper`]: `${progressUpper}px`,
+      [`${CSS_VAR_PREFIX}output-factor-lower`]: `${outputFactorLower}`,
+      [`${CSS_VAR_PREFIX}output-factor-upper`]: `${outputFactorUpper}`,
     };
 
     const prefixMarkup = prefix && (

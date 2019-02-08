@@ -96,6 +96,9 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   }
 }
 
+$range-output-size: rem(32px);
+$range-output-offset: rem(4px);
+
 .Thumbs {
   position: absolute;
   z-index: z-index('input', $stacking-order);
@@ -122,22 +125,7 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   .error & {
     border: $range-thumbs-border-error;
   }
-
-  // stylelint-disable selector-max-specificity
-  &:hover + .Output &,
-  &:active + .Output &,
-  &:focus + .Output & {
-    transform: translateY(-$range-thumb-size);
-
-    @include page-content-when-not-partially-condensed {
-      transform: translateY(-($range-thumb-size / 2));
-    }
-  }
-  // stylelint-enable selector-max-specificity
 }
-
-$range-output-size: rem(32px);
-$range-output-tip-size: rem(8px);
 
 .Prefix {
   flex: 0 0 auto;
@@ -152,7 +140,7 @@ $range-output-tip-size: rem(8px);
 .Output {
   position: absolute;
   z-index: z-index('output', $stacking-order);
-  bottom: $range-output-size - $range-output-tip-size + $range-thumb-size;
+  bottom: $range-thumb-size;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -187,19 +175,37 @@ $range-output-tip-size: rem(8px);
   transition-duration: duration();
   transition-timing-function: easing();
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -($range-output-tip-size - rem(1px));
-    left: 50%;
-    margin-left: -$range-output-tip-size;
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: $range-output-tip-size solid transparent;
-    border-right: $range-output-tip-size solid transparent;
-    border-top: $range-output-tip-size solid color('ink');
+  // stylelint-disable selector-max-class
+  // stylelint-disable selector-max-combinators
+  // stylelint-disable selector-max-specificity
+  .ThumbLower:hover + .Output &,
+  .ThumbLower:active + .Output &,
+  .ThumbLower:focus + .Output & {
+    transform: translateY(-$range-output-offset);
   }
+
+  .ThumbUpper:hover + .Output &,
+  .ThumbUpper:active + .Output &,
+  .ThumbUpper:focus + .Output & {
+    transform: translateY(-$range-output-offset);
+  }
+  // stylelint-enable selector-max-class
+  // stylelint-enable selector-max-combinators
+  // stylelint-enable selector-max-specificity
+}
+
+$range-output-translate-x-lower: calc(
+  -50% + var(--Polaris-RangeSlider-output-factor-lower, 0) * #{$range-thumb-size}
+);
+$range-output-translate-x-upper: calc(
+  -50% + var(--Polaris-RangeSlider-output-factor-upper, 0) * #{$range-thumb-size}
+);
+
+.OutputLower {
+  transform: translateX($range-output-translate-x-lower);
+}
+.OutputUpper {
+  transform: translateX($range-output-translate-x-upper);
 }
 
 .OutputText {
