@@ -186,7 +186,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       polaris: {intl},
     } = this.props;
 
-    const normalizedValue = value ? value : '';
+    const normalizedValue = value != null ? value : '';
 
     const {height} = this.state;
 
