@@ -132,18 +132,26 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
     this.state = {
       height: null,
-      focus: false,
+      focus: props.focused || false,
       id: props.id || getUniqueID(),
     };
   }
 
-  componentDidUpdate({focused}: CombinedProps) {
-    if (
-      this.input &&
-      focused !== this.props.focused &&
-      this.props.focused === true
-    ) {
+  componentDidMount() {
+    if (!this.props.focused) {
+      return;
+    }
+
+    this.input.focus();
+  }
+
+  componentDidUpdate({focused: wasFocused}: CombinedProps) {
+    const {focused} = this.props;
+
+    if (!wasFocused && focused) {
       this.input.focus();
+    } else if (wasFocused && !focused) {
+      this.input.blur();
     }
   }
 
