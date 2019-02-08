@@ -436,30 +436,6 @@ Use to be able to use custom React elements as header content.
 </Card>
 ```
 
-### Card section with custom React Node title
-
-<!-- example-for: web -->
-
-Use to render custom content such as icons, links, or buttons in a card section's header.
-
-```jsx
-<Card title="Products">
-  <Card.Section
-    title={
-      <Stack>
-        <Icon source="products" />
-        <Subheading>New Products</Subheading>
-      </Stack>
-    }
-  >
-    <List>
-      <List.Item>Socks</List.Item>
-      <List.Item>Super Shoes</List.Item>
-    </List>
-  </Card.Section>
-</Card>
-```
-
 ---
 
 ## Related components
