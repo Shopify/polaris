@@ -6,7 +6,7 @@ import Labelled, {helpTextID} from '../../../Labelled';
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
 import {Props as RangeSliderProps} from '../../types';
 
-import * as styles from './SingleThumb.scss';
+import styles from './SingleThumb.scss';
 
 export interface Props extends RangeSliderProps {
   value: number;
