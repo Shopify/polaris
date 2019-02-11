@@ -47,9 +47,11 @@ export default function Menu(props: Props) {
   return (
     <Popover
       activator={
-        <button type="button" className={styles.Activator} onClick={onOpen}>
-          {activatorContent}
-        </button>
+        <div className={styles.ActivatorWrapper}>
+          <button type="button" className={styles.Activator} onClick={onOpen}>
+            {activatorContent}
+          </button>
+        </div>
       }
       active={open}
       onClose={onClose}

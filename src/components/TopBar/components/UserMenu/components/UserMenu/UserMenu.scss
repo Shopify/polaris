@@ -7,7 +7,6 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
 .UserMenu {
   display: flex;
   align-items: center;
-  @include safe-area-for(padding-right, spacing(tight), right);
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
     padding-right: 0;
@@ -16,7 +15,7 @@ $large-width: layout-width(primary, max) + layout-width(secondary, max) +
 
 .Details {
   max-width: rem(160px);
-  margin-left: spacing();
+  margin-left: spacing(tight);
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
     display: none;
