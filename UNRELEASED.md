@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removes `TopBar` logo background ([#957](https://github.com/Shopify/polaris-react/pull/957))
 - Adopt width of `TopBar` search results to search input and add a minimum width ([#969](https://github.com/Shopify/polaris-react/pull/969))
 - Update `Card.Section` to accept `React.ReactNode` as `title` ([#781](https://github.com/Shopify/polaris-react/pull/781))
+- Adds `contextControl` prop to `TopBar` and `Navigation` ([#966](https://github.com/Shopify/polaris-react/pull/966))
 
 ### Bug fixes
 
