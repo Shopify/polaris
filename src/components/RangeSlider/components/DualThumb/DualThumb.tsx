@@ -13,7 +13,7 @@ import Labelled from '../../../Labelled';
 import EventListener from '../../../EventListener';
 import {Key} from '../../../../types';
 
-import * as styles from './DualThumb.scss';
+import styles from './DualThumb.scss';
 
 export interface State {
   value: DualValue;
