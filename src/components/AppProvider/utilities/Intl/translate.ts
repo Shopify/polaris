@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import {get} from '../../../../utilities/get';
 import {
   TranslationDictionary,
   PrimitiveReplacementDictionary,
