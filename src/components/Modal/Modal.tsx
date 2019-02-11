@@ -1,6 +1,5 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
-import pick from 'lodash/pick';
 import {TransitionGroup} from 'react-transition-group';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {write} from '@shopify/javascript-utilities/fastdom';
@@ -11,6 +10,7 @@ import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 
 import {contentContextTypes} from '../../types';
 import {transformActions} from '../../utilities/app-bridge-transformers';
+import pick from '../../utilities/pick';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
