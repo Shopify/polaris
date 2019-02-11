@@ -1,5 +1,4 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import {TransitionGroup} from 'react-transition-group';
 import {autobind} from '@shopify/javascript-utilities/decorators';
@@ -11,6 +10,7 @@ import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 
 import {contentContextTypes} from '../../types';
 import {transformActions} from '../../utilities/app-bridge-transformers';
+import isObjectsEqual from '../../utilities/isObjectsEqual';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
@@ -148,7 +148,7 @@ export class Modal extends React.Component<CombinedProps, State> {
     const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
-    if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+    if (!isObjectsEqual(prevAppBridgeProps, currentAppBridgeProps)) {
       if (isIframeModal(transformedProps)) {
         (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
           transformedProps,

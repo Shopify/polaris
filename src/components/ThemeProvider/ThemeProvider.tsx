@@ -1,6 +1,6 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import isObjectsEqual from '../../utilities/isObjectsEqual';
 import {setColors} from './utils';
 import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
 
@@ -37,7 +37,7 @@ export default class ThemeProvider extends React.Component<Props> {
 
   // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({theme}: Props) {
-    if (isEqual(theme, this.props.theme)) {
+    if (isObjectsEqual(theme, this.props.theme)) {
       return;
     }
 

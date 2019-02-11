@@ -1,6 +1,6 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
+import isObjectsEqual from '../../utilities/isObjectsEqual';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export interface SelectPayload {
@@ -110,7 +110,7 @@ export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
     } = this.props;
     const wasOpen = prevProps.open;
 
-    if (!isEqual(prevProps, this.props)) {
+    if (!isObjectsEqual(prevProps, this.props)) {
       this.appBridgeResourcePicker.set({
         initialQuery,
         showHidden,

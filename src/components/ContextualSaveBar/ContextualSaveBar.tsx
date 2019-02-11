@@ -1,5 +1,5 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
+import isObjectsEqual from '../../utilities/isObjectsEqual';
 import {
   ContextualSaveBarProps,
   FrameContext,
@@ -45,8 +45,8 @@ function contextualSaveBarHasChanged(
 ) {
   return Boolean(
     message !== oldMessage ||
-      !isEqual(saveAction, oldsaveAction) ||
-      !isEqual(discardAction, oldDiscardAction),
+      !isObjectsEqual(saveAction, oldsaveAction) ||
+      !isObjectsEqual(discardAction, oldDiscardAction),
   );
 }
 

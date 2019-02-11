@@ -1,6 +1,6 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import isObjectsEqual from '../../../../../utilities/isObjectsEqual';
 import {UserMenuProps} from '../components';
 import UserMenuContext, {UserMenuContextTypes} from './context';
 
@@ -41,7 +41,7 @@ class Provider extends React.Component<Props, UserMenuContextTypes> {
   @autobind
   private setMobileUserMenuProps(mobileUserMenuProps: UserMenuProps) {
     const {mobileUserMenuProps: prevMobileUserMenuProps} = this.state;
-    if (isEqual(mobileUserMenuProps, prevMobileUserMenuProps)) {
+    if (isObjectsEqual(mobileUserMenuProps, prevMobileUserMenuProps)) {
       return;
     }
     this.setState({mobileUserMenuProps});

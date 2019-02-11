@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import isEqual from 'lodash/isEqual';
+import isObjectsEqual from '../../utilities/isObjectsEqual';
 
 import {headerCell} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -85,7 +85,7 @@ export class DataTable extends React.PureComponent<
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (isEqual(prevProps, this.props)) {
+    if (isObjectsEqual(prevProps, this.props)) {
       return;
     }
     this.handleResize();

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import isEqual from 'lodash/isEqual';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
+import isObjectsEqual from '../../utilities/isObjectsEqual';
 
 export interface Props {
   children?: React.ReactNode;
@@ -16,7 +16,7 @@ export default class Focus extends React.PureComponent<Props, never> {
   componentDidUpdate({children: prevChildren, ...restPrevProps}: Props) {
     const {children, ...restProps} = this.props;
 
-    if (isEqual(restProps, restPrevProps)) {
+    if (isObjectsEqual(restProps, restPrevProps)) {
       return;
     }
 
