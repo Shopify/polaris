@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {Props as IconProps} from './components/Icon';
+import {IconSource} from './components/Icon/types';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 export type AppBridgeTarget = 'ADMIN_PATH' | 'REMOTE' | 'APP';
@@ -92,7 +92,7 @@ export interface AppBridgeAction
 
 export interface IconableAction extends Action {
   /** Source of the icon */
-  icon?: IconProps['source'];
+  icon?: IconSource;
 }
 
 export interface LoadableAction extends Action {
