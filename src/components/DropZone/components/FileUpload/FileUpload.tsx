@@ -1,9 +1,9 @@
 import * as React from 'react';
-import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {WithContextTypes} from '../../../../types';
 import compose from '../../../../utilities/react-compose';
+import capitalize from '../../../../utilities/capitalize';
 
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Link from '../../../Link';
