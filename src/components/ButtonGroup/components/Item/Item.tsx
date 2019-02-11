@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import {Props as ButtonProps} from '../../../Button';
 
-import * as styles from '../../ButtonGroup.scss';
+import styles from '../../ButtonGroup.scss';
 
 export interface Props {
   button: React.ReactElement<ButtonProps>;

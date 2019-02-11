@@ -8,7 +8,7 @@ import KeypressListener from '../../../KeypressListener';
 import TrapFocus from '../../../TrapFocus';
 import {Duration} from '../../../shared';
 
-import * as styles from './Dialog.scss';
+import styles from './Dialog.scss';
 
 export interface DialogProps {
   labelledBy: string;

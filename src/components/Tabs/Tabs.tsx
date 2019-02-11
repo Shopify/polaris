@@ -11,7 +11,7 @@ import {getVisibleAndHiddenTabIndices} from './utilities';
 
 import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
 
-import * as styles from './Tabs.scss';
+import styles from './Tabs.scss';
 
 export interface Props {
   /** Content to display in tabs */

@@ -14,7 +14,7 @@ import {
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {Header, HeaderProps} from './components';
-import * as styles from './Page.scss';
+import styles from './Page.scss';
 
 export interface Props extends HeaderProps {
   /** The contents of the page */

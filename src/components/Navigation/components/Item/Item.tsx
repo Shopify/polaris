@@ -11,7 +11,7 @@ import Icon, {Props as IconProps} from '../../../Icon';
 import Indicator from '../../../Indicator';
 import UnstyledLink from '../../../UnstyledLink';
 
-import * as styles from '../../Navigation.scss';
+import styles from '../../Navigation.scss';
 
 import {Secondary} from './components';
 

@@ -3,7 +3,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Icon from '../../../Icon';
 
-import * as styles from './Checkbox.scss';
+import styles from './Checkbox.scss';
 
 export interface Props {
   checked?: boolean;

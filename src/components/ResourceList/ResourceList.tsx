@@ -23,7 +23,7 @@ import {
 
 import {ResourceListContext, SelectedItems, SELECT_ALL_ITEMS} from './types';
 
-import * as styles from './ResourceList.scss';
+import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;

@@ -24,7 +24,7 @@ import IconAlertCircle from './icons/alert-circle.svg';
 import {fileAccepted, getDataTransferFiles} from './utils';
 import {DropZoneContext} from './types';
 
-import * as styles from './DropZone.scss';
+import styles from './DropZone.scss';
 
 export type Type = 'file' | 'image';
 
