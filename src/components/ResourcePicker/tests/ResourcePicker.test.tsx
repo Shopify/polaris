@@ -39,7 +39,7 @@ describe('<ResourcePicker />', () => {
           resourceType: AppBridgeResourcePicker.ResourceType.Product,
           options: {
             initialQuery: undefined,
-            showHidden: false,
+            showHidden: true,
             selectMultiple: true,
             showVariants: true,
           },
