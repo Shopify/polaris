@@ -243,6 +243,93 @@ class DataTableLinkExample extends React.Component {
 }
 ```
 
+### Data table with all of its elements
+
+Use as a broad example that includes most props available to data table.
+
+```jsx
+class FullDataTableExample extends React.Component {
+  state = {
+    sortedRows: null,
+  };
+
+  sortCurrency = (rows, index, direction) => {
+    return [...rows].sort((rowA, rowB) => {
+      const amountA = parseFloat(rowA[index].substring(1));
+      const amountB = parseFloat(rowB[index].substring(1));
+
+      return direction === 'descending' ? amountB - amountA : amountA - amountB;
+    });
+  };
+
+  handleSort = (rows) => (index, direction) => {
+    this.setState({sortedRows: this.sortCurrency(rows, index, direction)});
+  };
+
+  render() {
+    const {sortedRows} = this.state;
+
+    const initiallySortedRows = [
+      [
+        <Link url="https://www.example.com">Emerald Silk Gown</Link>,
+        '$875.00',
+        124689,
+        140,
+        '$121,500.00',
+      ],
+      [
+        <Link url="https://www.example.com">Mauve Cashmere Scarf</Link>,
+        '$230.00',
+        124533,
+        83,
+        '$19,090.00',
+      ],
+      [
+        <Link url="https://www.example.com">
+          Navy Merino Wool Blazer with khaki chinos and yellow belt
+        </Link>,
+        '$445.00',
+        124518,
+        32,
+        '$14,240.00',
+      ],
+    ];
+
+    const rows = sortedRows ? sortedRows : initiallySortedRows;
+
+    return (
+      <Page title="Sales by product">
+        <Card>
+          <DataTable
+            columnContentTypes={[
+              'text',
+              'numeric',
+              'numeric',
+              'numeric',
+              'numeric',
+            ]}
+            headings={[
+              'Product',
+              'Price',
+              'SKU Number',
+              'Net quantity',
+              'Net sales',
+            ]}
+            rows={rows}
+            totals={['', '', '', 255, '$155,830.00']}
+            sortable={[false, true, false, false, true]}
+            defaultSortDirection="descending"
+            initialSortColumnIndex={4}
+            onSort={this.handleSort(rows)}
+            footerContent={`Showing ${rows.length} of ${rows.length} results`}
+          />
+        </Card>
+      </Page>
+    );
+  }
+}
+```
+
 ---
 
 ## Best practices
