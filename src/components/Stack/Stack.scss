@@ -23,10 +23,6 @@
   flex-wrap: nowrap;
 }
 
-.vertical {
-  flex-direction: column;
-}
-
 .spacingNone {
   @include stack-spacing(none);
 }
@@ -94,6 +90,15 @@
 
 .alignmentBaseline {
   align-items: baseline;
+}
+
+.vertical {
+  flex-direction: column;
+  margin-left: spacing(none);
+
+  > .Item {
+    margin-left: spacing(none);
+  }
 }
 
 .Item {
