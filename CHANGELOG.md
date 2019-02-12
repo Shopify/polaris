@@ -8,6 +8,17 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.7.1 - 2019-02-12
+
+### Bug fixes
+
+- Moved character counter to bottom of multiline text input ([#992](https://github.com/Shopify/polaris-react/pull/992))
+- Aligned `TopBar` search input and results with page content ([#1008](https://github.com/Shopify/polaris-react/issues/1008))
+
+### Documentation
+
+- Added all props example of `ResourceList` in the [style guide](https://polaris.shopify.com) ([#978](https://github.com/Shopify/polaris-react/pull/978))
+
 ## 3.7.0 - 2019-02-11
 
 ### Enhancements
