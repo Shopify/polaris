@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {Card, Badge} from 'components';
+import {Card, Badge, Button} from 'components';
 import {contentContextTypes} from '../../../types';
 
 describe('<Card />', () => {
@@ -52,5 +52,16 @@ describe('<Card />', () => {
       </Card>,
     );
     expect(card.find(Card.Header).exists()).toBeTruthy();
+  });
+
+  it('renders a <Header /> component with actions and no title', () => {
+    const card = mountWithAppProvider(
+      <Card actions={[{content: 'test action'}]}>
+        <p>Some card content.</p>
+      </Card>,
+    );
+
+    expect(card.find(Button)).toHaveLength(1);
+    expect(card.find(Card.Header)).toHaveLength(1);
   });
 });
