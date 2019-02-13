@@ -1,10 +1,9 @@
-$arrow-size: rem(14px);
-$visible-portion-of-arrow: rem(5px);
+$offset-from-activator: rem(4px);
 $content-max-height: rem(100px);
 $content-max-width: rem(200px);
 
 .Tooltip {
-  margin: $visible-portion-of-arrow spacing() spacing();
+  margin: $offset-from-activator spacing() spacing();
   opacity: 1;
   box-shadow: shadow(deep);
   border-radius: border-radius();
@@ -18,22 +17,13 @@ $content-max-width: rem(200px);
 }
 
 .positionedAbove {
-  margin: spacing() spacing() $visible-portion-of-arrow;
-
-  .Tip {
-    top: inherit;
-    bottom: 0;
-  }
+  margin: spacing() spacing() $offset-from-activator;
 }
 
 .light {
   .Wrapper {
     background: color('white');
     color: color('ink');
-  }
-
-  .Tip {
-    background: color('white');
   }
 }
 
@@ -52,17 +42,6 @@ $content-max-width: rem(200px);
   border-radius: border-radius();
   max-width: $content-max-width;
   max-height: $content-max-height;
-}
-
-.Tip {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  height: $arrow-size;
-  width: $arrow-size;
-  background: color('ink');
-  box-shadow: shadow(deep);
 }
 
 .Label {
