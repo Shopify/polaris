@@ -37,7 +37,7 @@ function UserMenu({
   const showIndicator = Boolean(message);
 
   const activatorContentMarkup = (
-    <div className={styles.UserMenu}>
+    <>
       <MessageIndicator active={showIndicator}>
         <Avatar
           size="small"
@@ -49,7 +49,7 @@ function UserMenu({
         <p className={styles.Name}>{name}</p>
         <p className={styles.Detail}>{detail}</p>
       </span>
-    </div>
+    </>
   );
 
   return (

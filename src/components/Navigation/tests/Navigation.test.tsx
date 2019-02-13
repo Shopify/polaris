@@ -43,4 +43,20 @@ describe('<Navigation />', () => {
       expect(navigation.contains(userMenu)).toBeTruthy();
     });
   });
+
+  describe('contextControl', () => {
+    it('doesn’t render by default', () => {
+      const contextControl = <div />;
+      const navigation = mountWithAppProvider(<Navigation location="/" />);
+      expect(navigation.contains(contextControl)).toBe(false);
+    });
+
+    it('renders the given context control', () => {
+      const contextControl = <div />;
+      const navigation = mountWithAppProvider(
+        <Navigation location="/" contextControl={contextControl} />,
+      );
+      expect(navigation.contains(contextControl)).toBe(true);
+    });
+  });
 });

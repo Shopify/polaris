@@ -30,6 +30,14 @@ $page-left-alignment-breakpoint-max: 1268px;
   }
 }
 
+.ContextControl {
+  display: none;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    max-width: layout-width(nav);
+    display: block;
+  }
+}
+
 .Logo,
 .LogoLink {
   display: block;
@@ -83,8 +91,7 @@ $page-left-alignment-breakpoint-max: 1268px;
   width: 100%;
   margin: 0;
   max-width: none;
-  display: flex;
-  justify-content: center;
+  margin-left: calc((100% - #{$page-max-width}) / 2);
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
     margin-left: 0;
