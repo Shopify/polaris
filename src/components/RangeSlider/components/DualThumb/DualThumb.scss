@@ -6,11 +6,12 @@ $stacking-order: (
 $range-wrapper: rem(28px);
 $range-track-height: rem(4px);
 $range-thumb-size: rem(24px);
-$range-thumb-border-size: rem(2px);
-$range-thumbs-border: rem(1px) solid color('sky', 'dark');
-$range-thumbs-border-error: rem(2px) solid color('red');
-$range-thumbs-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
-$range-thumbs-border-active: rem(2px) solid color('indigo');
+
+$range-thumb-border-error: rem(2px) solid color('red');
+
+$range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
+$range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
+$range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
 
 .Wrapper {
   position: relative;
@@ -30,35 +31,6 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   &.disabled {
     opacity: 0.8;
     cursor: not-allowed;
-  }
-
-  &.error {
-    &:active,
-    &:focus {
-      // stylelint-disable selector-max-specificity
-      // stylelint-disable selector-max-class
-      .Track {
-        --unselected-range: #{color('sky', 'dark')};
-        --selected-range: #{color('indigo')};
-        --gradient-colors: var(--unselected-range, transparent) 0%,
-          var(--unselected-range, transparent)
-            var(--Polaris-RangeSlider-progress-lower),
-          var(--selected-range, transparent)
-            var(--Polaris-RangeSlider-progress-lower),
-          var(--selected-range, transparent)
-            var(--Polaris-RangeSlider-progress-upper),
-          var(--unselected-range, transparent)
-            var(--Polaris-RangeSlider-progress-upper),
-          var(--unselected-range, transparent) 100%;
-        background-image: linear-gradient(to right, var(--gradient-colors));
-      }
-
-      .Thumbs {
-        border: $range-thumbs-border-active;
-      }
-      // stylelint-enable selector-max-specificity
-      // stylelint-enable selector-max-class
-    }
   }
 }
 
@@ -94,6 +66,11 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
       var(--unselected-range, transparent) 100%;
     background-image: linear-gradient(to right, var(--gradient-colors));
   }
+
+  .disabled & {
+    background-image: none;
+    background: color('sky', 'dark');
+  }
 }
 
 .Thumbs {
@@ -101,26 +78,33 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   z-index: z-index('input', $stacking-order);
   width: $range-thumb-size;
   height: $range-thumb-size;
-  border: $range-thumbs-border;
   border-radius: 50%;
+  border: border-width() solid color('sky', 'lighter');
+  box-shadow: $range-thumb-shadow;
   background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
 
   // stylelint-disable-next-line value-no-vendor-prefix
   cursor: -webkit-grab;
 
-  &:hover,
-  &:active,
-  &:focus {
-    border: $range-thumbs-border-active;
-  }
-
   &.disabled {
     cursor: not-allowed;
-    border: $range-thumbs-border;
+    border-color: color('sky', 'dark');
   }
 
   .error & {
-    border: $range-thumbs-border-error;
+    border-color: color('red');
+    box-shadow: $range-thumb-shadow-error;
+
+    &:hover,
+    &:focus {
+      border-color: color('red');
+      box-shadow: $range-thumb-shadow-error;
+    }
+  }
+
+  &:hover {
+    background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
+    box-shadow: $range-thumb-shadow-hover;
   }
 
   // stylelint-disable selector-max-specificity
