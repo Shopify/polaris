@@ -520,6 +520,23 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
 
+    it('the lower and upper thumbs do not move when disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[10, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+
+      moveUpperThumb(dualThumb, 0.5);
+      moveLowerThumb(dualThumb, 0.5);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
     it('moves the lower thumb when the track is clicked closer to it than the upper thumb', () => {
       const onChangeSpy = jest.fn();
       const dualThumb = mountWithAppProvider(
@@ -564,6 +581,38 @@ describe('<DualThumb />', () => {
       moveUpperThumb(dualThumb, 0.9);
 
       expect(onChangeSpy).toHaveBeenCalledWith([5, 45], mockProps.id);
+    });
+
+    it('does not move the lower thumb when the track is clicked and is disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[5, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+
+      clickTrack(dualThumb, 0.2);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('does not move the upper thumb when the track is clicked and is disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[5, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+
+      clickTrack(dualThumb, 0.6);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
     });
 
     function clickTrack(
