@@ -428,7 +428,7 @@ export default class DualThumb extends React.Component<Props, State> {
       const {min, max} = this.props;
       const {trackLeft, trackWidth} = this.state;
 
-      const relativeX = dirtyXPosition - trackLeft;
+      const relativeX = dirtyXPosition - trackLeft - THUMB_SIZE / 2;
       const percentageOfTrack = relativeX / trackWidth;
       return percentageOfTrack * (max - min);
     } else {

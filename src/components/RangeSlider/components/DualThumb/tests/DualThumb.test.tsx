@@ -479,7 +479,7 @@ describe('<DualThumb />', () => {
 
       moveLowerThumb(dualThumb, 0.5);
 
-      expect(onChangeSpy).toHaveBeenCalledWith([25, 40], mockProps.id);
+      expect(onChangeSpy).toHaveBeenCalledWith([19, 40], mockProps.id);
     });
 
     it('moving the upper thumb sets the upper value', () => {
@@ -490,7 +490,7 @@ describe('<DualThumb />', () => {
 
       moveUpperThumb(dualThumb, 0.5);
 
-      expect(onChangeSpy).toHaveBeenCalledWith([10, 25], mockProps.id);
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 19], mockProps.id);
     });
 
     it('mouseup removes the mousemove event listener', () => {
@@ -528,7 +528,7 @@ describe('<DualThumb />', () => {
 
       clickTrack(dualThumb, 0.2);
 
-      expect(onChangeSpy).toHaveBeenCalledWith([10, 40], mockProps.id);
+      expect(onChangeSpy).toHaveBeenCalledWith([4, 40], mockProps.id);
     });
 
     it('moves the upper thumb when the track is clicked closer to it than the lower thumb', () => {
@@ -539,7 +539,7 @@ describe('<DualThumb />', () => {
 
       clickTrack(dualThumb, 0.6);
 
-      expect(onChangeSpy).toHaveBeenCalledWith([5, 30], mockProps.id);
+      expect(onChangeSpy).toHaveBeenCalledWith([5, 24], mockProps.id);
     });
 
     it('moves the lower thumb when the track is clicked closer to it than the upper thumb and the mouse moves', () => {
@@ -551,7 +551,7 @@ describe('<DualThumb />', () => {
       clickTrack(dualThumb, 0.2);
       moveLowerThumb(dualThumb, 0.3);
 
-      expect(onChangeSpy).toHaveBeenCalledWith([15, 40], mockProps.id);
+      expect(onChangeSpy).toHaveBeenCalledWith([9, 40], mockProps.id);
     });
 
     it('moves the upper thumb when the track is clicked closer to it than the lower thumb and the mouse moves', () => {
@@ -563,7 +563,7 @@ describe('<DualThumb />', () => {
       clickTrack(dualThumb, 0.6);
       moveUpperThumb(dualThumb, 0.9);
 
-      expect(onChangeSpy).toHaveBeenCalledWith([5, 45], mockProps.id);
+      expect(onChangeSpy).toHaveBeenCalledWith([5, 24], mockProps.id);
     });
 
     function clickTrack(
