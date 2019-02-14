@@ -95,7 +95,7 @@ const updateBody = `
 
 See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${releaseVersion}
 
-cc @kaelig @dfmcphee @amrocha
+cc @kaelig @dfmcphee @amrocha @bpscott
 
 ---
 
