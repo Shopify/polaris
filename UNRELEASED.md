@@ -20,7 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Changed the offset from 5px to 4px in `Tooltip` between activator and message to be consistent with `Popover` ([#1019](https://github.com/Shopify/polaris-react/pull/1019))
 - Fixed `Card` header not showing when `title` empty or not set ([#1031](https://github.com/Shopify/polaris-react/pull/1032))
-- Added clamp to `RangeSlider` so its initial value doesn't fall outside of min or max bounds ([#784](https://github.com/Shopify/polaris-react/pull/784))
+- Added clamp to `RangeSlider` so its initial value doesn't fall outside of min or max bounds ([#834](https://github.com/Shopify/polaris-react/pull/834))
 
 ### Documentation
 
