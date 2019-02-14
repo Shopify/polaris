@@ -60,7 +60,6 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         generateScopedName: getNamespacedClassName,
       }),
       svgr({
-        include: '**/icons/*.svg',
         exclude: 'node_modules/**',
         svgoConfig: svgOptions(),
         replaceAttrValues: {

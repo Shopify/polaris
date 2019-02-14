@@ -213,13 +213,24 @@ function Icon({
     backdrop && styles.hasBackdrop,
   );
 
+  const defaultIconProps = {
+    className: styles.Svg,
+    viewBox: '0 0 20 20',
+    focusable: 'false',
+    'aria-hidden': 'true',
+  };
+
   let contentMarkup: React.ReactNode;
-  const SourceComponent = source;
   if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
+  } else if (typeof source === 'function') {
+    const SourceComponent = source;
+    contentMarkup = <SourceComponent {...defaultIconProps} />;
   } else if (React.isValidElement(SourceComponent)) {
     contentMarkup = source;
   } else if (isBundledIcon(source)) {
+    // const SourceComponent = BUNDLED_ICONS[source];
+    // contentMarkup = <SourceComponent {...defaultIconProps} />;
     const iconSource = BUNDLED_ICONS[source] as SVGSource;
     contentMarkup = renderSVG(iconSource);
   } else if (untrusted && isUntrustedSVG(source)) {

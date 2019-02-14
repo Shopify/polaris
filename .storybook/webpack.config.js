@@ -79,7 +79,17 @@ module.exports = (baseConfig, env, config) => {
       test(resource) {
         return ICON_PATH_REGEX.test(resource) && resource.endsWith('.svg');
       },
-      use: ['@svgr/webpack'],
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            exclude: 'node_modules/**',
+            replaceAttrValues: {
+              '#FFF': 'currentColor',
+            },
+          },
+        },
+      ],
     },
     {
       test(resource) {
