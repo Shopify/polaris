@@ -267,7 +267,7 @@ export default class DualThumb extends React.Component<Props, State> {
   private handleMouseDownThumbLower(
     event: React.MouseEvent<HTMLButtonElement>,
   ) {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbLower);
     event.stopPropagation();
   }
@@ -285,7 +285,7 @@ export default class DualThumb extends React.Component<Props, State> {
   private handleMouseDownThumbUpper(
     event: React.MouseEvent<HTMLButtonElement>,
   ) {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
     event.stopPropagation();
   }
@@ -400,7 +400,7 @@ export default class DualThumb extends React.Component<Props, State> {
 
   @autobind
   private handleMouseDownTrack(event: React.MouseEvent) {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || this.props.disabled) return;
     const clickXPosition = this.actualXPosition(event.clientX);
     const {value} = this.state;
     const distanceFromLowerThumb = Math.abs(value[0] - clickXPosition);
