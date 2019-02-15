@@ -2,7 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {DisplayText, TextStyle} from 'components';
 import EmptySearchResult from '../EmptySearchResult';
-import emptySearch from '../illustrations/empty-search.svg';
+import {emptySearch} from '../illustrations';
 
 describe('<EmptySearchResult />', () => {
   it("displays the title with style 'Display Small'", () => {

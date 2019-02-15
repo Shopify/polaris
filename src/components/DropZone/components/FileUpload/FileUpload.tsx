@@ -16,9 +16,8 @@ import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
 import {DropZoneContext} from '../../types';
-import IconDragDrop from '../../icons/drag-drop.svg';
-import AssetFileUpload from '../../images/file-upload.svg';
-import AssetImageUpload from '../../images/image-upload.svg';
+import {dragDrop} from '../../icons';
+import {fileUpload, imageUpload} from '../../images';
 
 import {Consumer} from '../Context';
 
@@ -94,10 +93,10 @@ export class FileUpload extends React.Component<CombinedProps, State> {
       size === 'extraLarge' ? (
         <Stack vertical>
           {type === 'file' && (
-            <img className={imageClasses} src={AssetFileUpload} alt="" />
+            <img className={imageClasses} src={fileUpload} alt="" />
           )}
           {type === 'image' && (
-            <img className={imageClasses} src={AssetImageUpload} alt="" />
+            <img className={imageClasses} src={imageUpload} alt="" />
           )}
           <Button>{actionTitle}</Button>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
@@ -108,10 +107,10 @@ export class FileUpload extends React.Component<CombinedProps, State> {
       size === 'large' ? (
         <Stack vertical spacing="tight">
           {type === 'file' && (
-            <img className={imageClasses} src={AssetFileUpload} alt="" />
+            <img className={imageClasses} src={fileUpload} alt="" />
           )}
           {type === 'image' && (
-            <img className={imageClasses} src={AssetImageUpload} alt="" />
+            <img className={imageClasses} src={imageUpload} alt="" />
           )}
           <Button size="slim">{actionTitle}</Button>
           <Caption>
@@ -133,7 +132,7 @@ export class FileUpload extends React.Component<CombinedProps, State> {
     const smallView =
       size === 'small' ? (
         <Stack vertical spacing="tight">
-          <Icon source={IconDragDrop} color="inkLightest" />
+          <Icon source={dragDrop} color="inkLightest" />
         </Stack>
       ) : null;
 
