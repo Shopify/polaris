@@ -98,14 +98,14 @@ class AutocompleteExample extends React.Component {
     });
   };
 
-  updateSelection = (updatedSelection) => {
-    const selectedText = updatedSelection.map((selectedItem) => {
-      const matchedOption = this.options.filter((option) => {
+  updateSelection = (selected) => {
+    const selectedText = selected.map((selectedItem) => {
+      const matchedOption = this.options.find((option) => {
         return option.value.match(selectedItem);
       });
-      return matchedOption[0] && matchedOption[0].label;
+      return matchedOption && matchedOption.label;
     });
-    this.setState({selected: selectedText, inputText: selectedText});
+    this.setState({selected, inputText: selectedText});
   };
 }
 ```
@@ -202,9 +202,7 @@ class MultiAutocompleteExample extends React.Component {
     });
   };
 
-  updateSelection = (updatedSelection) => {
-    this.setState({selected: updatedSelection});
-  };
+  updateSelection = (selected) => this.setState({selected});
 }
 
 function titleCase(string) {
@@ -291,14 +289,14 @@ class AutocompleteExample extends React.Component {
     }, 300);
   };
 
-  updateSelection = (updatedSelection) => {
-    const selectedText = updatedSelection.map((selectedItem) => {
-      const matchedOption = this.options.filter((option) => {
+  updateSelection = (selected) => {
+    const selectedText = selected.map((selectedItem) => {
+      const matchedOption = this.options.find((option) => {
         return option.value.match(selectedItem);
       });
-      return matchedOption[0] && matchedOption[0].label;
+      return matchedOption && matchedOption.label;
     });
-    this.setState({selected: selectedText, inputText: selectedText});
+    this.setState({selected, inputText: selectedText});
   };
 }
 ```
@@ -385,14 +383,14 @@ class AutocompleteExample extends React.Component {
     }, 300);
   };
 
-  updateSelection = (updatedSelection) => {
-    const selectedText = updatedSelection.map((selectedItem) => {
-      const matchedOption = this.options.filter((option) => {
+  updateSelection = (selected) => {
+    const selectedText = selected.map((selectedItem) => {
+      const matchedOption = this.options.find((option) => {
         return option.value.match(selectedItem);
       });
-      return matchedOption[0] && matchedOption[0].label;
+      return matchedOption && matchedOption.label;
     });
-    this.setState({selected: selectedText, inputText: selectedText});
+    this.setState({selected, inputText: selectedText});
   };
 }
 ```
