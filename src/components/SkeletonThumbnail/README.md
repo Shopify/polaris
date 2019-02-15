@@ -11,7 +11,7 @@ keywords:
 
 # Skeleton image
 
-Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Can be used for thumbnails in or outside of a card.
+Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
 
 ---
 
