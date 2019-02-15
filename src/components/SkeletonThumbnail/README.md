@@ -1,7 +1,7 @@
 ---
 name: Skeleton thumbnail
 category: Feedback indicators
-? releasedIn
+releasedIn: 3.7.2
 keywords:
   - SkeletonThumbnail
   - skeleton
