@@ -53,7 +53,7 @@ function setup(propOverrides?: DataTableTestProps) {
 }
 
 describe('<DataTable />', () => {
-  it('renders a table, thead and all table body rows', () => {
+  it('renders a table, thead and table body rows', () => {
     const {dataTable} = setup();
 
     expect(dataTable.find('table')).toHaveLength(1);
@@ -93,7 +93,7 @@ describe('<DataTable />', () => {
 
   describe('<Cell />', () => {
     const {dataTable} = setup();
-    it('passes all props', () => {
+    it('passes props', () => {
       expect(
         dataTable
           .find(Cell)
@@ -156,7 +156,7 @@ describe('<DataTable />', () => {
   });
 
   describe('getPrevAndCurrentColumns()', () => {
-    it('returns the correct measurements', () => {
+    it('returns the calculated measurements', () => {
       const columnVisibilityData = [
         {leftEdge: 145, rightEdge: 236, isVisible: true},
         {leftEdge: 236, rightEdge: 357, isVisible: true},

@@ -3,7 +3,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import Panel from '../Panel';
 
 describe('<Panel />', () => {
-  it('adds the correct role', () => {
+  it('adds the tabpanel role', () => {
     const panel = mountWithAppProvider(<Panel id="panel" tabID="tab" />);
     expect(panel.find('div').prop('role')).toBe('tabpanel');
   });

@@ -11,7 +11,7 @@ describe('<ContextualSaveBar />', () => {
     message: 'Unsaved changes',
   };
 
-  it('calls the contextual save bar on mount with correct values', () => {
+  it('calls the contextual save bar on mount with provided values', () => {
     const {frame} = mountWithContext(<ContextualSaveBar {...props} />);
     expect(frame.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
@@ -27,7 +27,7 @@ describe('<ContextualSaveBar />', () => {
     expect(frame.removeContextualSaveBar).toHaveBeenCalled();
   });
 
-  it('calls the contextual save bar with correct values if its props change after it mounted', () => {
+  it('calls the contextual save bar with new values if its props change after it mounted', () => {
     const {frame, contextualSaveBar} = mountWithContext(
       <ContextualSaveBar {...props} />,
     );

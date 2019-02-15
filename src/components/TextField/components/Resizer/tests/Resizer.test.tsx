@@ -20,7 +20,7 @@ describe('<Resizer />', () => {
       expect(contentsNode.text()).toBe(contents);
     });
 
-    it('properly encodes HTML entities', () => {
+    it('encodes HTML entities', () => {
       const contents = `<div>&\nContents</div>`;
       const resizer = mountWithAppProvider(
         <Resizer {...mockProps} contents={contents} />,

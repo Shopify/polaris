@@ -201,7 +201,7 @@ describe('<Frame />', () => {
     expect(documentHasStyle('--global-ribbon-height', '0px')).toBe(true);
   });
 
-  it('should render a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
+  it('renders a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
     const frame = mountWithAppProvider(
       <Frame>
         <PolarisContextualSavebar />
@@ -210,7 +210,7 @@ describe('<Frame />', () => {
     expect(frame.find(FrameContextualSavebar).exists()).toBe(true);
   });
 
-  it('should render a Frame Loading if Polaris Loading is rendered', () => {
+  it('renders a Frame Loading if Polaris Loading is rendered', () => {
     const frame = mountWithAppProvider(
       <Frame>
         <PolarisLoading />
