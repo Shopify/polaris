@@ -13,6 +13,7 @@ import Item from '../Item';
 
 describe('<Item />', () => {
   let spy: jest.SpyInstance;
+
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
   });
@@ -121,6 +122,16 @@ describe('<Item />', () => {
       );
 
       expect(element.find(UnstyledLink).prop('aria-label')).toBe(ariaLabel);
+    });
+
+    it('adds a data-href to the wrapper element', () => {
+      const element = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id="itemId" url={url} />
+        </Provider>,
+      );
+
+      expect(element.prop('data-href')).toBe(url);
     });
   });
 
