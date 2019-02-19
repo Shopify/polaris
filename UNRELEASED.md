@@ -8,6 +8,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### New components
 
+- `SkeletonThumbnail` for representing thumbnails in loading state
+
 ### Enhancements
 
 - Updates `TopBar.UserMenu` interaction states styling ([#1006](https://github.com/Shopify/polaris-react/pull/1006))
@@ -25,6 +27,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Added accessibility documentation for the button and link components ([#924](https://github.com/Shopify/polaris-react/pull/924))
+- Added accessibility recommendations for the text field and autocomplete components ([#968](https://github.com/Shopify/polaris-react/pull/968))
 
 ### Development workflow
 
