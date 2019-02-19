@@ -131,7 +131,7 @@ describe('<Item />', () => {
         </Provider>,
       );
 
-      expect(element.prop('data-href')).toBe(url);
+      expect(findByTestID(element, 'Item-Wrapper').prop('data-href')).toBe(url);
     });
   });
 
