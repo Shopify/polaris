@@ -28,7 +28,7 @@ describe('compose', () => {
     expect(name).toBe('WE_ARE_POLARIS');
   });
 
-  it('will invoke all composed functions when returned function is called', () => {
+  it('will invoke composed functions when returned function is called', () => {
     const sanitizeSpy = jest.fn();
     const toSnakeCaseFromUpperSpy = jest.fn();
     const toUpperCaseSpy = jest.fn();

@@ -271,7 +271,7 @@ describe('<Page />', () => {
       restoreTitleBarCreateMock();
     });
 
-    it('receives all neccesary transformed props', () => {
+    it('receives neccesary transformed props', () => {
       const primaryAction: PrimaryActionProps = {
         content: 'Foo',
         url: '/foo',

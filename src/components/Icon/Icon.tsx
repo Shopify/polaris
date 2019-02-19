@@ -165,11 +165,14 @@ const COLORS_WITH_BACKDROPS = [
 
 export type BundledIcon = keyof typeof BUNDLED_ICONS;
 
+export type UntrustedSVG = string;
+
 export type IconSource =
   | React.ReactNode
   | SVGSource
   | 'placeholder'
-  | BundledIcon;
+  | BundledIcon
+  | UntrustedSVG;
 export interface Props {
   /** The SVG contents to display in the icon. Icons should be in a 20 X 20 pixel viewbox */
   source: IconSource;
@@ -179,6 +182,8 @@ export interface Props {
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
+  /** Render the icon in an img tag instead of an svg. Prevents XSS */
+  untrusted?: boolean;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -188,6 +193,7 @@ function Icon({
   color,
   backdrop,
   accessibilityLabel,
+  untrusted = false,
   polaris: {intl},
 }: CombinedProps) {
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
@@ -212,22 +218,20 @@ function Icon({
     contentMarkup = <div className={styles.Placeholder} />;
   } else if (React.isValidElement(source)) {
     contentMarkup = source;
-  } else {
-    const iconSource =
-      typeof source === 'string' && isBundledIcon(source)
-        ? BUNDLED_ICONS[source]
-        : source;
-    contentMarkup = iconSource &&
-      iconSource.viewBox &&
-      iconSource.body && (
-        <svg
-          className={styles.Svg}
-          viewBox={iconSource.viewBox}
-          dangerouslySetInnerHTML={{__html: iconSource.body}}
-          focusable="false"
-          aria-hidden="true"
-        />
-      );
+  } else if (isBundledIcon(source)) {
+    const iconSource = BUNDLED_ICONS[source] as SVGSource;
+    contentMarkup = renderSVG(iconSource);
+  } else if (untrusted && isUntrustedSVG(source)) {
+    contentMarkup = (
+      <img
+        className={styles.Img}
+        src={`data:image/svg+xml;base64,${btoa(source)}`}
+        alt=""
+        aria-hidden="true"
+      />
+    );
+  } else if (isSVGSource(source)) {
+    contentMarkup = renderSVG(source);
   }
 
   return (
@@ -237,8 +241,32 @@ function Icon({
   );
 }
 
-function isBundledIcon(key: string | BundledIcon): key is BundledIcon {
-  return Object.keys(BUNDLED_ICONS).includes(key);
+function renderSVG(iconSource: SVGSource) {
+  return (
+    <svg
+      className={styles.Svg}
+      viewBox={iconSource.viewBox}
+      dangerouslySetInnerHTML={{__html: iconSource.body}}
+      focusable="false"
+      aria-hidden="true"
+    />
+  );
+}
+
+function isBundledIcon(key: IconSource): key is BundledIcon {
+  return typeof key === 'string' && Object.keys(BUNDLED_ICONS).includes(key);
+}
+
+function isSVGSource(source: IconSource): source is SVGSource {
+  return (
+    source != null &&
+    source.hasOwnProperty('viewBox') &&
+    source.hasOwnProperty('body')
+  );
+}
+
+function isUntrustedSVG(source: IconSource): source is UntrustedSVG {
+  return typeof source === 'string';
 }
 
 export default withAppProvider<Props>()(Icon);

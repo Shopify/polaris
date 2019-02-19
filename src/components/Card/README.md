@@ -436,6 +436,113 @@ Use to be able to use custom React elements as header content.
 </Card>
 ```
 
+### Card section with custom React Node title
+
+<!-- example-for: web -->
+
+Use to render custom content such as icons, links, or buttons in a card section's header.
+
+```jsx
+<Card title="Products">
+  <Card.Section
+    title={
+      <Stack>
+        <Icon source="products" />
+        <Subheading>New Products</Subheading>
+      </Stack>
+    }
+  >
+    <List>
+      <List.Item>Socks</List.Item>
+      <List.Item>Super Shoes</List.Item>
+    </List>
+  </Card.Section>
+</Card>
+```
+
+### Card with all of its elements
+
+<!-- example-for: web -->
+
+Use as a broad example that includes most props available to card.
+
+```jsx
+<Card
+  secondaryFooterAction={{content: 'Dismiss'}}
+  primaryFooterAction={{content: 'Export Report'}}
+>
+  <Card.Header
+    actions={[
+      {
+        content: 'Total Sales',
+      },
+    ]}
+    title="Sales"
+  >
+    <Popover
+      active={false}
+      activator={
+        <Button disclosure plain>
+          View Sales
+        </Button>
+      }
+      onClose={() => {}}
+    >
+      <ActionList items={[{content: 'Gross Sales'}, {content: 'Net Sales'}]} />
+    </Popover>
+  </Card.Header>
+  <Card.Section>
+    <TextContainer>
+      You can use sales reports to see information about your customers' orders
+      based on criteria such as sales over time, by channel, or by staff.
+    </TextContainer>
+  </Card.Section>
+  <Card.Section title="Total Sales Breakdown">
+    <ResourceList
+      resourceName={{singular: 'sale', plural: 'sales'}}
+      items={[
+        {
+          sales: 'Orders',
+          amount: 'USD$0.00',
+          url: 'reports/orders',
+        },
+        {
+          sales: 'Returns',
+          amount: '-USD$250.00',
+          url: 'reports/returns',
+        },
+      ]}
+      renderItem={(item) => {
+        const {sales, amount, url} = item;
+        return (
+          <ResourceList.Item
+            url={url}
+            accessibilityLabel={`View Sales for ${sales}`}
+          >
+            <Stack>
+              <Stack.Item fill>{sales}</Stack.Item>
+              <Stack.Item>{amount}</Stack.Item>
+            </Stack>
+          </ResourceList.Item>
+        );
+      }}
+    />
+  </Card.Section>
+  <Card.Section title="Deactivated reports" subdued>
+    <List>
+      <List.Item>Payouts</List.Item>
+      <List.Item>Total Sales By Channel</List.Item>
+    </List>
+  </Card.Section>
+  <Card.Section title="Note">
+    <TextContainer>
+      The sales reports are available only if your store is on the Shopify plan
+      or higher.
+    </TextContainer>
+  </Card.Section>
+</Card>
+```
+
 ---
 
 ## Related components
