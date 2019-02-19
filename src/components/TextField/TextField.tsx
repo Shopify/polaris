@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
+import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
@@ -442,6 +443,10 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
     };
     this.buttonPressTimer = window.setTimeout(onChangeInterval, interval);
+
+    addEventListener(document, 'mouseup', this.handleButtonRelease, {
+      once: true,
+    });
   }
 
   @autobind
