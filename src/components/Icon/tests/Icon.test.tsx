@@ -38,5 +38,20 @@ describe('<Icon />', () => {
       const element = shallowWithAppProvider(<Icon source={component} />);
       expect(element.find(Button)).toHaveLength(1);
     });
+
+    it('renders an img when source is given an untrusted SVG', () => {
+      const svg =
+        "<svg><path d='M17 9h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2'  fill-rule='evenodd'/></svg>";
+      const element = shallowWithAppProvider(<Icon source={svg} untrusted />);
+      expect(element.find('img')).toHaveLength(1);
+    });
+
+    it('renders nothing when source is given an svg string but untrusted is not true', () => {
+      const svg =
+        "<svg><path d='M17 9h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2'  fill-rule='evenodd'/></svg>";
+      const element = shallowWithAppProvider(<Icon source={svg} />);
+      expect(element.find('img')).toHaveLength(0);
+      expect(element.find('svg')).toHaveLength(0);
+    });
   });
 });

@@ -218,7 +218,7 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it('provides the BulkActions with the right accessibilityLabel if there’s multiple items and they are all selected', () => {
+    it('provides the BulkActions with the right accessibilityLabel if there are multiple items and they are selected', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
           items={itemsWithID}

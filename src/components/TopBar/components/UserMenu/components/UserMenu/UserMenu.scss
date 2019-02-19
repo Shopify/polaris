@@ -1,22 +1,6 @@
-// TODO: Replace `$large-width` breakpoints with
-// `page-content-when-not-partially-condensed`
-// Once the frame is rendering our React routes
-$large-width: layout-width(primary, max) + layout-width(secondary, max) +
-  spacing(tight);
-
-.UserMenu {
-  display: flex;
-  align-items: center;
-  @include safe-area-for(padding-right, spacing(tight), right);
-
-  @include breakpoint-before(layout-width(page-with-nav), false) {
-    padding-right: 0;
-  }
-}
-
 .Details {
   max-width: rem(160px);
-  margin-left: spacing();
+  margin-left: spacing(tight);
 
   @include breakpoint-before(layout-width(page-with-nav), false) {
     display: none;

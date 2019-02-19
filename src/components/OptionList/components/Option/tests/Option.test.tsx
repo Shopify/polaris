@@ -28,7 +28,7 @@ describe('<Option />', () => {
     expect(button.exists()).toBe(true);
   });
 
-  it('calls onClick with correct section and index if option is not disabled', () => {
+  it('calls onClick with section and index if option is not disabled', () => {
     const spy = jest.fn();
     const {section, index} = defaultProps;
 
@@ -52,7 +52,7 @@ describe('<Option />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('calls onClick with correct section and index if option is not disabled and multiple options are allowed', () => {
+  it('calls onClick with section and index if option is not disabled and multiple options are allowed', () => {
     const spy = jest.fn();
     const {section, index} = defaultProps;
 
@@ -76,7 +76,7 @@ describe('<Option />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('correctly sets the pass through props for Checkbox if multiple items are allowed', () => {
+  it('sets the pass through props for Checkbox if multiple items are allowed', () => {
     const {id, value, select, disabled} = defaultProps;
     const checkbox = mountWithAppProvider(
       <Option {...defaultProps} allowMultiple />,

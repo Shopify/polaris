@@ -213,7 +213,7 @@ describe('<ChoiceList />', () => {
   });
 
   describe('selected', () => {
-    it('sets the appropriate choices to be selected', () => {
+    it('sets the provided choices to be selected', () => {
       const selectedIndexes = [0, 2];
       const selected = selectedIndexes.map((index) => choices[index].value);
       const choiceElements = shallowWithAppProvider(

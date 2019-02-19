@@ -13,7 +13,7 @@ describe('<Checkbox />', () => {
     onChange: noop,
   };
 
-  it('sets all pass through props for input', () => {
+  it('sets pass through props for input', () => {
     const input = mountWithAppProvider(<Checkbox {...defaultProps} />).find(
       'input',
     );

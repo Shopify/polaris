@@ -39,7 +39,7 @@ describe('<Breadcrumbs />', () => {
       expect(breadcrumbs.find('button')).toHaveLength(1);
     });
 
-    it('calls the correct function when clicked', () => {
+    it('triggers the callback function when clicked', () => {
       const spy = jest.fn();
       const callbackBreadcrumbs: CallbackAction[] = [
         {

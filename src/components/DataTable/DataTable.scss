@@ -128,7 +128,7 @@ $breakpoint: 768px;
 .Cell-header {
   @include text-emphasis-normal;
   border-bottom: border(dark);
-  border-top: border();
+  border-top: 0;
 }
 
 .Cell-sortable {
