@@ -26,6 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Added accessibility recommendations for the text field and autocomplete components ([#968](https://github.com/Shopify/polaris-react/pull/968))
 - Added all props example to `Card` in the [style guide](https://polaris.shopify.com) ([#939](https://github.com/Shopify/polaris-react/pull/939))
 
 ### Development workflow
