@@ -554,7 +554,7 @@ describe('<TextField />', () => {
         expect(buttons).toHaveLength(0);
       });
 
-      it('increments correctly when a value step or both are float numbers', () => {
+      it('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
           <TextField
@@ -573,7 +573,7 @@ describe('<TextField />', () => {
         expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
       });
 
-      it('decrements correctly when a value step or both are float numbers', () => {
+      it('decrements by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
           <TextField

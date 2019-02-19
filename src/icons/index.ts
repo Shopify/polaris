@@ -1,54 +1,54 @@
-import POLARIS_ICONS from '@shopify/polaris-icons';
-
-export const add = POLARIS_ICONS.add;
-export const alert = POLARIS_ICONS.alert;
-export const arrowDown = POLARIS_ICONS.arrowDown;
-export const arrowLeft = POLARIS_ICONS.arrowLeft;
-export const arrowRight = POLARIS_ICONS.arrowRight;
-export const arrowUp = POLARIS_ICONS.arrowUp;
-export const arrowUpDown = POLARIS_ICONS.arrowUpDown;
-export const calendar = POLARIS_ICONS.calendar;
-export const cancel = POLARIS_ICONS.cancel;
-export const cancelSmall = POLARIS_ICONS.cancelSmall;
-export const caretDown = POLARIS_ICONS.caretDown;
-export const caretUp = POLARIS_ICONS.caretUp;
-export const checkmark = POLARIS_ICONS.checkmark;
-export const chevronDown = POLARIS_ICONS.chevronDown;
-export const chevronLeft = POLARIS_ICONS.chevronLeft;
-export const chevronRight = POLARIS_ICONS.chevronRight;
-export const chevronUp = POLARIS_ICONS.chevronUp;
-export const circleCancel = POLARIS_ICONS.circleCancel;
-export const circleChevronDown = POLARIS_ICONS.circleChevronDown;
-export const circleChevronLeft = POLARIS_ICONS.circleChevronLeft;
-export const circleChevronRight = POLARIS_ICONS.circleChevronRight;
-export const circleChevronUp = POLARIS_ICONS.circleChevronUp;
-export const circleInformation = POLARIS_ICONS.circleInformation;
-export const circlePlus = POLARIS_ICONS.circlePlus;
-export const circlePlusOutline = POLARIS_ICONS.circlePlusOutline;
-export const conversation = POLARIS_ICONS.conversation;
-export const deleteIcon = POLARIS_ICONS.deleteIcon;
-export const disable = POLARIS_ICONS.disable;
-export const dispute = POLARIS_ICONS.dispute;
-export const duplicate = POLARIS_ICONS.duplicate;
-export const embed = POLARIS_ICONS.embed;
-export const exportIcon = POLARIS_ICONS.exportIcon;
-export const external = POLARIS_ICONS.external;
-export const help = POLARIS_ICONS.help;
-export const home = POLARIS_ICONS.home;
-export const horizontalDots = POLARIS_ICONS.horizontalDots;
-export const importIcon = POLARIS_ICONS.importIcon;
-export const logOut = POLARIS_ICONS.logOut;
-export const menu = POLARIS_ICONS.menu;
-export const notes = POLARIS_ICONS.notes;
-export const notification = POLARIS_ICONS.notification;
-export const onlineStore = POLARIS_ICONS.onlineStore;
-export const orders = POLARIS_ICONS.orders;
-export const print = POLARIS_ICONS.print;
-export const products = POLARIS_ICONS.products;
-export const profile = POLARIS_ICONS.profile;
-export const subtract = POLARIS_ICONS.subtract;
-export const refresh = POLARIS_ICONS.refresh;
-export const risk = POLARIS_ICONS.risk;
-export const save = POLARIS_ICONS.save;
-export const search = POLARIS_ICONS.search;
-export const view = POLARIS_ICONS.view;
+export {
+  addMinor,
+  alertMinor,
+  arrowDownMinor,
+  arrowLeftMinor,
+  arrowRightMinor,
+  arrowUpMinor,
+  arrowUpDownMinor,
+  calendarMinor,
+  cancelMajor,
+  cancelSmallMinor,
+  caretDownMinor,
+  caretUpMinor,
+  checkmarkMinor,
+  chevronDownMinor,
+  chevronLeftMinor,
+  chevronRightMinor,
+  chevronUpMinor,
+  circleCancelMinor,
+  circleChevronDownMinor,
+  circleChevronLeftMinor,
+  circleChevronRightMinor,
+  circleChevronUpMinor,
+  circleInformationMajor,
+  circlePlusMinor,
+  circlePlusOutlineMinor,
+  conversationMinor,
+  deleteMinor,
+  disableMinor,
+  disputeMinor,
+  duplicateMinor,
+  embedMinor,
+  exportMinor,
+  externalMinor,
+  helpMajor,
+  homeMajor,
+  horizontalDotsMinor,
+  importMinor,
+  logOutMinor,
+  menuMajor,
+  notesMinor,
+  notificationMajor,
+  onlineStoreMajor,
+  ordersMajor,
+  printMinor,
+  productsMajor,
+  profileMinor,
+  subtractMinor,
+  refreshMinor,
+  riskMinor,
+  saveMinor,
+  searchMinor,
+  viewMinor,
+} from '@shopify/polaris-icons';

@@ -1,16 +1,24 @@
 $actions-vertical-spacing: spacing(tight);
 
+@mixin page-padding-not-fully-condensed {
+  padding: 0 spacing(loose);
+}
+
+@mixin page-padding-not-partially-condensed {
+  padding: 0 spacing(extra-loose);
+}
+
 @mixin page-layout {
   margin: 0 auto;
   padding: 0;
   max-width: $page-max-width;
 
   @include page-content-when-not-fully-condensed {
-    padding: 0 spacing(loose);
+    @include page-padding-not-fully-condensed;
   }
 
   @include page-content-when-not-partially-condensed {
-    padding: 0 spacing(extra-loose);
+    @include page-padding-not-partially-condensed;
   }
 }
 

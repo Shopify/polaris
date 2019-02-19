@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const chalk = require('chalk');
 const grayMatter = require('gray-matter');
+const MdParser = require('./md-parser');
 
 /**
  * A Webpack loader, that expects a Polaris README file, and returns metadata,
@@ -161,13 +162,15 @@ function generateExamples(matter) {
       const code =
         codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
 
-      const description = filterMarkdownForPlatform(
-        example
-          .replace(nameRegex, '')
-          .replace(codeRegex, '')
-          .replace(exampleForRegExp, ''),
-        'web',
-      ).trim();
+      const description = new MdParser().parse(
+        filterMarkdownForPlatform(
+          example
+            .replace(nameRegex, '')
+            .replace(codeRegex, '')
+            .replace(exampleForRegExp, ''),
+          'web',
+        ).trim(),
+      );
 
       return {name, code, description};
     });

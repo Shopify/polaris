@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {mountWithAppProvider, shallowWithAppProvider} from 'test-utilities';
+import {
+  mountWithAppProvider,
+  shallowWithAppProvider,
+  findByTestID,
+} from 'test-utilities';
 import {createAppProviderContext, Image, UnstyledLink} from 'components';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
@@ -224,6 +228,45 @@ describe('<TopBar />', () => {
         }),
       );
       expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
+    });
+  });
+
+  describe('contextControl', () => {
+    const mockContextControl = (
+      <TopBar.Menu
+        actions={[]}
+        activatorContent="Switch contexts"
+        open
+        onOpen={noop}
+        onClose={noop}
+      />
+    );
+
+    it('renders', () => {
+      const topBar = mountWithAppProvider(
+        <TopBar contextControl={mockContextControl} />,
+      );
+      expect(findByTestID(topBar, 'ContextControl').exists()).toBe(true);
+      expect(topBar.contains(mockContextControl)).toBe(true);
+    });
+
+    it('doesn’t render a logo when defined', () => {
+      const topBar = shallowWithAppProvider(
+        <TopBar contextControl={mockContextControl} />,
+        addPolarisContext({
+          logo: {
+            topBarSource: './assets/shopify.svg',
+          },
+          subscribe: () => {},
+          unsubscribe: () => {},
+        }),
+      );
+      expect(topBar.find(Image).exists()).toBe(false);
+    });
+
+    it('doesn’t render the wrapper when not defined and no logo is available', () => {
+      const topBar = mountWithAppProvider(<TopBar />);
+      expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
     });
   });
 });
