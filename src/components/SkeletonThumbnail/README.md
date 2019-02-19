@@ -23,20 +23,6 @@ Skeleton thumbnail component should:
 
 ---
 
-## Content guidelines
-
-### Skeleton body text
-
-<!-- usageblock -->
-
-#### Do
-
-#### Don’t
-
-<!-- end -->
-
----
-
 ## Examples
 
 ### Medium thumbnail
