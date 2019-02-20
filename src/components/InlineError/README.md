@@ -87,3 +87,33 @@ Use when the merchant has entered invalid information into multiple fields insid
 ## Related components
 
 - To create a list of exceptions that describe a resource, [use the exception list component](/components/lists-and-tables/exception-list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+- Use the required`fieldID` prop to give the inline error a unique `id`. This ties the error to a form field using `aria-describedby` so it is conveyed to screen reader users.
+- Use the required `message` prop to provide the text of the error.
+- The inline error [icon](/design/icons) helps visually identify the error message for merchants who have difficulty seeing [colors](/design/colors) or who use settings that remove color from the page.
+
+<!-- /content-for -->
