@@ -68,7 +68,7 @@ describe('<SkeletonPage />', () => {
     });
   });
 
-  it('renders the correct number of secondary actions as SkeletonBodyText', () => {
+  it('renders the provided number of secondary actions as SkeletonBodyText', () => {
     const skeletonPage = mountWithAppProvider(
       <SkeletonPage secondaryActions={3} />,
     );

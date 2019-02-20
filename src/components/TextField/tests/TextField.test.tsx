@@ -580,7 +580,7 @@ describe('<TextField />', () => {
         expect(buttons).toHaveLength(0);
       });
 
-      it('increments correctly when a value step or both are float numbers', () => {
+      it('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
           <TextField
@@ -599,7 +599,7 @@ describe('<TextField />', () => {
         expect(spy).toHaveBeenCalledWith('4.064', 'MyTextField');
       });
 
-      it('decrements correctly when a value step or both are float numbers', () => {
+      it('decrements by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
           <TextField
@@ -633,7 +633,7 @@ describe('<TextField />', () => {
         element
           .find('[role="button"]')
           .last()
-          .simulate('mousedown');
+          .simulate('mousedown', {button: 0});
 
         jest.runOnlyPendingTimers();
         expect(spy).toHaveBeenCalledWith('2', 'MyTextField');
@@ -654,14 +654,55 @@ describe('<TextField />', () => {
         element
           .find('[role="button"]')
           .last()
-          .simulate('mousedown');
+          .simulate('mousedown', {button: 0});
         element
           .find('[role="button"]')
           .last()
           .simulate('mouseup');
 
         jest.runOnlyPendingTimers();
-        expect(element.prop('value')).toBe('3');
+        expect(spy).not.toHaveBeenCalled();
+      });
+
+      describe('document events', () => {
+        type EventCallback = (mockEventData?: {[key: string]: any}) => void;
+
+        const documentEvent: {[eventType: string]: EventCallback} = {};
+        const origialAddEventListener = document.addEventListener;
+
+        beforeAll(() => {
+          document.addEventListener = jest.fn(
+            (eventType: string, callback: EventCallback) => {
+              documentEvent[eventType] = callback;
+            },
+          );
+        });
+
+        afterAll(() => {
+          document.addEventListener = origialAddEventListener;
+        });
+
+        it('stops decrementing on mouse up anywhere in document', () => {
+          jest.useFakeTimers();
+          const spy = jest.fn();
+          const element = mountWithAppProvider(
+            <TextField
+              id="MyTextField"
+              label="TextField"
+              type="number"
+              value="3"
+              onChange={spy}
+            />,
+          );
+          element
+            .find('[role="button"]')
+            .last()
+            .simulate('mousedown', {button: 0});
+          documentEvent.mouseup();
+
+          jest.runOnlyPendingTimers();
+          expect(spy).not.toHaveBeenCalled();
+        });
       });
     });
   });

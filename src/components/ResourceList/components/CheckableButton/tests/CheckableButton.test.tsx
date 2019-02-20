@@ -13,7 +13,7 @@ const CheckableButtonProps = {
 
 describe('<CheckableButton />', () => {
   describe('select', () => {
-    it('correctly passes down to Checkbox', () => {
+    it('is passed down to Checkbox', () => {
       const {selected} = CheckableButtonProps;
       const element = shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
@@ -23,7 +23,7 @@ describe('<CheckableButton />', () => {
   });
 
   describe('label', () => {
-    it('is correctly passed down to span', () => {
+    it('is passed down to span', () => {
       const {label} = CheckableButtonProps;
       const element = shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
@@ -47,7 +47,7 @@ describe('<CheckableButton />', () => {
     });
 
     describe('disabled', () => {
-      it('is correctly passed down to checkbox', () => {
+      it('is passed down to checkbox', () => {
         const {disabled} = CheckableButtonProps;
         const element = shallowWithAppProvider(
           <CheckableButton {...CheckableButtonProps} />,

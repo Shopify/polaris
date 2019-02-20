@@ -6288,9 +6288,9 @@ eslint-plugin-react@7.11.1:
     prop-types "^15.6.2"
 
 eslint-plugin-shopify@^26.1.2:
-  version "26.1.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-shopify/-/eslint-plugin-shopify-26.1.2.tgz#8bad611ea3331cdb179af4312c192d06c0890611"
-  integrity sha512-/09asmD7toCeALjJhpX9+mV0d+vc58DmB1DbaZdjqughQtH1AxtbGamI5uhIkMhwjVL+T5kdeLXU5Kanxm2DTA==
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-shopify/-/eslint-plugin-shopify-26.2.0.tgz#95bf0ae39f1e0d77a900ca072a46fe1970ce214b"
+  integrity sha512-OVnsGaa85B/kB2enZoqnXZG5QqSN+a4L99TPVgXSpBn2Y+iQaP40969MqJP9Mg6S5EqUXAmeS/4KMAknL0r4zQ==
   dependencies:
     babel-eslint "9.0.0"
     common-tags "^1.8.0"

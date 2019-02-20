@@ -57,7 +57,7 @@ function searchCheckableButton(
 
 describe('<BulkActions />', () => {
   describe('actions', () => {
-    it('promotedActions render in the correct position on intial load', () => {
+    it('promotedActions render in the last position on intial load', () => {
       const {promotedActions} = bulkActionProps;
       const bulkActions = mountWithAppProvider(
         <BulkActions {...bulkActionProps} promotedActions={promotedActions} />,
@@ -74,7 +74,7 @@ describe('<BulkActions />', () => {
       expect(count).toBe(promotedActions.length);
     });
 
-    it('bulkActions render in the correct position on initial load', () => {
+    it('bulkActions render in the first position on initial load', () => {
       const {bulkActions} = bulkActionProps;
       const bulkActionsElement = mountWithAppProvider(
         <BulkActions {...bulkActionProps} />,
@@ -103,7 +103,7 @@ describe('<BulkActions />', () => {
 
   describe('props', () => {
     describe('accessibilityLabel', () => {
-      it('correctly passes down to CheckableButton', () => {
+      it('is passed down to CheckableButton', () => {
         const {accessibilityLabel} = bulkActionProps;
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} />,
@@ -132,7 +132,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('label', () => {
-      it('correctly passes down to CheckableButton', () => {
+      it('is passed down to CheckableButton', () => {
         const {label} = bulkActionProps;
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} />,
@@ -151,7 +151,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('selected', () => {
-      it('correctly passes down to CheckableButton', () => {
+      it('is passed down to CheckableButton', () => {
         const {selected} = bulkActionProps;
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} />,
@@ -172,7 +172,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('selectMode', () => {
-      it('correctly passes down to Transition', () => {
+      it('is passed down to Transition', () => {
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} selectMode />,
         );
@@ -180,7 +180,7 @@ describe('<BulkActions />', () => {
         expect(transition.first().prop('in')).toBe(true);
       });
 
-      it('correctly passes down to CSSTransition', () => {
+      it('is passed down to CSSTransition', () => {
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} selectMode />,
         );
@@ -190,7 +190,7 @@ describe('<BulkActions />', () => {
         });
       });
 
-      it('correctly passes down to CheckableButton', () => {
+      it('is passed down to CheckableButton', () => {
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} selectMode />,
         );
@@ -258,7 +258,7 @@ describe('<BulkActions />', () => {
         disabled: true,
       };
 
-      it('correctly passes down to CheckableButton', () => {
+      it('is passed down to CheckableButton', () => {
         const {disabled} = bulkActionProps;
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} />,
@@ -271,7 +271,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('paginatedSelectAllText', () => {
-      it('correctly renders when provided', () => {
+      it('renders when provided', () => {
         const {paginatedSelectAllText} = bulkActionProps;
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} />,
@@ -292,7 +292,7 @@ describe('<BulkActions />', () => {
     });
 
     describe('paginatedSelectAllAction', () => {
-      it('onAction is correctly called when CheckableButton is clicked', () => {
+      it('onAction is called when CheckableButton is clicked', () => {
         const spy = jest.fn();
         const bulkActions = mountWithAppProvider(
           <BulkActions

@@ -124,7 +124,7 @@ describe('<RangeSlider />', () => {
       expect(element.find('output').prop<string>('htmlFor')).toBe(inputId);
     });
 
-    it('contains the correct value text', () => {
+    it('contains the provided value text', () => {
       const element = mountWithAppProvider(
         <RangeSlider label="RangeSlider" value={50} output onChange={noop} />,
       );
@@ -257,7 +257,7 @@ describe('<RangeSlider />', () => {
   });
 
   describe('CSS custom properties', () => {
-    it('sets the correct css custom properties', () => {
+    it('sets the css custom properties', () => {
       const element = mountWithAppProvider(
         <RangeSlider
           label="RangeSlider"

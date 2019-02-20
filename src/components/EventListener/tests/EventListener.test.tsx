@@ -4,7 +4,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import EventListener from '../EventListener';
 
 describe('<EventListener />', () => {
-  it('calls handler when the appropriate event is fired', () => {
+  it('calls handler when the resize event is fired', () => {
     const spy = jest.fn();
     mountWithAppProvider(<EventListener event="resize" handler={spy} />);
     window.dispatchEvent(new Event('resize'));
