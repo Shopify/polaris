@@ -6,12 +6,12 @@ import Button from '../../../Button';
 
 import Icon from '../../../Icon';
 import KeypressListener from '../../../KeypressListener';
-import {ToastProps as Props} from '../../types';
+import {ToastProps as Props, ToastDuration} from '../../types';
 
 import styles from './Toast.scss';
 
-export const DEFAULT_TOAST_DURATION = 5000;
-export const DEFAULT_TOAST_DURATION_WITH_ACTION = 10000;
+export const DEFAULT_TOAST_DURATION = ToastDuration.Base;
+export const DEFAULT_TOAST_DURATION_WITH_ACTION = ToastDuration.Slow;
 
 export default class Toast extends React.Component<Props, never> {
   private timer?: number;

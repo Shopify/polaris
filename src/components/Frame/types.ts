@@ -52,6 +52,13 @@ export interface ContextualSaveBarProps {
 
 // Toast
 
+export enum ToastDuration {
+  Fast = 3000,
+  Base = 5000,
+  Slow = 10000,
+  Slower = 15000,
+}
+
 export interface ToastProps {
   /** The content that should appear in the toast message */
   content: string;
