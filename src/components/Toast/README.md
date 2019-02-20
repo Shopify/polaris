@@ -254,7 +254,7 @@ class ToastExample extends React.Component {
       <Toast
         content="Message sent"
         onDismiss={this.toggleToast}
-        duration={ToastDuration.Fast}
+        duration={4500}
       />
     ) : null;
 
