@@ -108,37 +108,37 @@ execSync(
 );
 
 const updateBody = `
-    ## Version ${releaseVersion} of @shopify/polaris just got published!
+## Version ${releaseVersion} of @shopify/polaris just got published!
 
-  See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${releaseVersion}
+See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${releaseVersion}
 
-  cc @kaelig @dfmcphee @amrocha @BPScott
+cc @kaelig @dfmcphee @amrocha @BPScott
 
-  ---
+---
 
-    <details>
-      <summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
+<details>
+<summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
 
-      If tests fail, you may have to troubleshoot the problem locally.
-      
+If tests fail, you may have to troubleshoot the problem locally.
+
 1. Checkout the \`update-polaris-${releaseVersion}\` branch:
-          \`\`\`bash
-          dev cd polaris-styleguide
-          git fetch
+    \`\`\`bash
+    dev cd polaris-styleguide
+    git fetch
     git checkout update-polaris-${releaseVersion}
-      dev up
-      \`\`\`
-  1. Apply changes/fixes
-  1. Commit
+    dev up
+    \`\`\`
+1. Apply changes/fixes
+1. Commit
 1. Push your work to the \`update-polaris-${releaseVersion}\` branch:
-          \`\`\`bash
+    \`\`\`bash
     git push origin update-polaris-${releaseVersion}
-      \`\`\`
-  1. Repeat until the build & tests go ✅
-  1. 🎩
-  1. :shipit:
+    \`\`\`
+1. Repeat until the build & tests go ✅
+1. 🎩
+1. :shipit:
 </details>
-  `.trim();
+`.trim();
 
 const updatePostObject = {
   title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
