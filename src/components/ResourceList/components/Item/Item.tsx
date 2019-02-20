@@ -254,6 +254,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onMouseDown={this.handleMouseDown}
         onKeyUp={this.handleKeypress}
         testID="Item-Wrapper"
+        data-href={url}
       >
         {accessibleMarkup}
         {containerMarkup}
