@@ -42,7 +42,7 @@ Modals are overlays that prevent merchants from interacting with the rest of the
 
 Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the modal component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
 
-Note in in an embedded application context all documented properties are not be available. Some properties are only available in stand-alone applications.
+In an embedded application context, not all documented properties are available. Some properties are only available in stand-alone applications.
 
 Properties which are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
 
