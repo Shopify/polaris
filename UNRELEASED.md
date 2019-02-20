@@ -12,7 +12,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Fixed the `focused` prop on `TextField` so it sets the focus state ([#985](https://github.com/Shopify/polaris-react/pull/985))
+- Fixed the `focused` prop on `TextField` so it sets the focus state ([#990](https://github.com/Shopify/polaris-react/pull/990))
 
 ### Documentation
 
