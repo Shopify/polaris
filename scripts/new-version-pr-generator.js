@@ -22,13 +22,10 @@ const sandbox = pathResolve(root, 'sandbox');
 // Create the sandbox directory
 mkdir(sandbox);
 
-// Execute sync default options
-const execOpts = {stdio: 'inherit'};
-
 // Current release version
 const releaseVersion = `v${PACKAGE_VERSION}`;
 
-// Compute the base branch on polaris-styleguide (default: master)
+// Compute the base branch on the repository (default: master)
 // Example: will open a PR against the v4 branch if the
 // version found in package.json is `4.0.0-beta.x`
 
@@ -56,59 +53,6 @@ const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
 const polarisBotToken = secrets.github['shopify-polaris'];
 const shopifyPolarisBotGitOverride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
 
-// Pull request template
-const updateBody = `
-## Version ${releaseVersion} of @shopify/polaris just got published!
-
-See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${releaseVersion}
-
-cc @kaelig @dfmcphee @amrocha @BPScott
-
----
-
-<details>
-<summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
-
-If tests fail, you may have to troubleshoot the problem locally.
-
-1. Checkout the \`update-polaris-${releaseVersion}\` branch:
-    \`\`\`bash
-    dev cd polaris-styleguide
-    git fetch
-    git checkout update-polaris-${releaseVersion}
-    dev up
-    \`\`\`
-1. Apply changes/fixes
-1. Commit
-1. Push your work to the \`update-polaris-${releaseVersion}\` branch:
-    \`\`\`bash
-    git push origin update-polaris-${releaseVersion}
-    \`\`\`
-1. Repeat until the build & tests go ✅
-1. 🎩
-1. :shipit:
-</details>
-`.trim();
-
-// Message that is logged on a failed update
-const failedUpdateMessage = `It seems your automatic branch creation for polaris-styleguide failed. This can be due to many reasons. To resolve this follow these steps and replace [release-version] with the version you are publishing:
-
-1. Checkout "polaris-styleguide"
-2. Get the latest version of master "git checkout master && git pull"
-3. Create a new branch based on the version that failed "git checkout -b update-polaris-v[release-version]"
-4. Update "shopify/polaris" by running "npx yarn upgrade @shopify/polaris@[release-version]"
-5. Add the changed files to git by running "git add package.json yarn.lock"
-6. Commit the changes with "git commit -m 'Update @shopify/polaris to [release-version]'
-7. Push the changes with "git push origin update-polaris-v[release-version]"
-8. Create a new pull request for the branch in "polaris-styleguide"`;
-
-const updatePostObject = {
-  title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
-  body: updateBody,
-  head: `update-polaris-${releaseVersion}`,
-  base: baseBranch,
-};
-
 /**
  * BulkExecute - Run a bunch of execSync
  *
@@ -122,7 +66,7 @@ function BulkExecute(tasks, options) {
 }
 
 // Each of the repositories to create pull requests updating polaris
-const repositories = ['polaris-styleguide', 'polaris-web'];
+const repositories = ['polaris-styleguide', 'web'];
 
 // Iterate through the repositories
 const tasks = repositories.map((repository) => {
@@ -130,17 +74,70 @@ const tasks = repositories.map((repository) => {
   return new Promise((resolve, reject) => {
     try {
       const repositoryDirectory = resolve(sandbox, repository);
-      const gitPolarisRepositoryOverride = `--git-dir ${repository}/.git --work-tree=${repository}`;
 
-      // Check out the project and apply npm config
+      // Pull request template
+      const updateBody = `
+      ## Version ${releaseVersion} of @shopify/polaris just got published!
+
+      See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${releaseVersion}
+
+      cc @kaelig @dfmcphee @amrocha @BPScott
+
+      ---
+
+      <details>
+      <summary>🚨 What to do if you see “Your tests failed on CircleCI”?</summary>
+
+      If tests fail, you may have to troubleshoot the problem locally.
+
+      1. Checkout the \`update-polaris-${releaseVersion}\` branch:
+          \`\`\`bash
+          dev cd ${repository}
+          git fetch
+          git checkout update-polaris-${releaseVersion}
+          dev up
+          \`\`\`
+      1. Apply changes/fixes
+      1. Commit
+      1. Push your work to the \`update-polaris-${releaseVersion}\` branch:
+          \`\`\`bash
+          git push origin update-polaris-${releaseVersion}
+          \`\`\`
+      1. Repeat until the build & tests go ✅
+      1. 🎩
+      1. :shipit:
+      </details>
+      `.trim();
+
+      // Message that is logged on a failed update
+      const failedUpdateMessage = `It seems your automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps and replace [release-version] with the version you are publishing:
+
+      1. Checkout "${repository}"
+      2. Get the latest version of master "git checkout master && git pull"
+      3. Create a new branch based on the version that failed "git checkout -b update-polaris-v[release-version]"
+      4. Update "shopify/polaris" by running "npx yarn upgrade @shopify/polaris@[release-version]"
+      5. Add the changed files to git by running "git add package.json yarn.lock"
+      6. Commit the changes with "git commit -m 'Update @shopify/polaris to [release-version]'
+      7. Push the changes with "git push origin update-polaris-v[release-version]"
+      8. Create a new pull request for the branch in "${repository}"`;
+
+      const updatePostObject = {
+        title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
+        body: updateBody,
+        head: `update-polaris-${releaseVersion}`,
+        base: baseBranch,
+      };
+
+      // Clone the repository to the repository directory
       execSync(
-        `git ${gitPolarisRepositoryOverride} checkout -b update-polaris-${releaseVersion}`,
-        execOpts,
+        `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git ${repositoryDirectory}`,
+        {stdio: 'inherit'},
       );
 
       // Create a bunch of tasks
-      const createPullRequestTasks = BulkExecute(
+      const commands = BulkExecute(
         [
+          `git checkout -b update-polaris-${releaseVersion}`,
           'npm config set @shopify:registry https://registry.npmjs.org',
           `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
             'v',
@@ -152,11 +149,14 @@ const tasks = repositories.map((repository) => {
             updatePostObject,
           )}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
         ],
-        {cwd: repositoryDirectory},
+        {
+          cwd: repositoryDirectory,
+          stdio: 'inherit',
+        },
       );
 
       // Try and run update polaris using retry default settings, 3 attempts, 10second delay
-      retry(createPullRequestTasks, failedUpdateMessage);
+      retry(commands, failedUpdateMessage);
 
       resolve(repository);
     } catch (error) {
