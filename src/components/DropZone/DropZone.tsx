@@ -18,8 +18,7 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {FileUpload, Provider} from './components';
 
-import IconDragDrop from './icons/drag-drop.svg';
-import IconAlertCircle from './icons/alert-circle.svg';
+import {dragDrop, alertCircle} from './icons';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 import {DropZoneContext} from './types';
@@ -235,7 +234,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       (active || dragging) && !error && overlay ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
-            <Icon source={IconDragDrop} color="indigo" />
+            <Icon source={dragDrop} color="indigo" />
             {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {overlayText}
@@ -252,7 +251,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       dragging && error ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
-            <Icon source={IconAlertCircle} color="red" />
+            <Icon source={alertCircle} color="red" />
             {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}

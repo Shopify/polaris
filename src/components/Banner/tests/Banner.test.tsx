@@ -3,11 +3,13 @@ import {mountWithAppProvider} from 'test-utilities';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
 
-import successIcon from '../icons/circle-check-mark.svg';
-import fallbackIcon from '../icons/flag.svg';
-import warningIcon from '../icons/circle-alert.svg';
-import criticalIcon from '../icons/circle-barred.svg';
-import infoIcon from '../icons/circle-information.svg';
+import {
+  circleCheckMark,
+  flag,
+  circleAlert,
+  circleBarred,
+  circleInformation,
+} from '../icons';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -25,33 +27,33 @@ describe('<Banner />', () => {
     expect(banner.find(Icon).prop('source')).toBe('circlePlus');
   });
 
-  it('uses a greenDark successIcon if status is success', () => {
+  it('uses a greenDark circleCheckMark if status is success', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(successIcon);
+    expect(banner.find(Icon).prop('source')).toBe(circleCheckMark);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
   });
 
-  it('uses a tealDark infoIcon if status is info', () => {
+  it('uses a tealDark circleInformation if status is info', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(infoIcon);
+    expect(banner.find(Icon).prop('source')).toBe(circleInformation);
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
   });
 
-  it('uses a yellowDark warningIcon if status is warning', () => {
+  it('uses a yellowDark circleAlert if status is warning', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(warningIcon);
+    expect(banner.find(Icon).prop('source')).toBe(circleAlert);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
   });
 
-  it('uses a redDark criticalIcon if status is critical', () => {
+  it('uses a redDark circleBarred if status is critical', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(criticalIcon);
+    expect(banner.find(Icon).prop('source')).toBe(circleBarred);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
   });
 
   it('uses a default icon', () => {
     const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(fallbackIcon);
+    expect(banner.find(Icon).prop('source')).toBe(flag);
     expect(banner.find(Icon).prop('color')).toBe('inkLighter');
   });
 
