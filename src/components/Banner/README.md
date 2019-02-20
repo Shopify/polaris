@@ -527,3 +527,64 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
 
 - To inform merchants about a new feature or opportunity, [use callout cards](/components/structure/callout-card)
 - To group similar concepts together in the interface, [use a card](/components/structure/card)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Banners provide context and assist workflows for merchants with disabilities.
+
+- Critical and warning banners have a `role=”alert”`, which is announced by assistive technologies when the banner appears.
+- All other banners have a `role=”status”`, so they are read after any critical announcements.
+- Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
+- Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
+- Banners use a combination of icons and colors to show their meaning and level of importance to merchants.
+
+### Error notifications in forms
+
+#### Critical banners
+
+When merchants submit long or complex forms with errors, use a critical banner to summarize what went wrong. Place the banner at the top of the form and move focus to the banner when the form is submitted. This allows all merchants to move through the form in a logical order to correct the issues.
+
+#### Inline errors
+
+Always include inline error messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+
+To learn about creating helpful and accessible error message text, see the guidelines for error messages.
+
+<!-- usageblock -->
+
+#### Do
+
+- Put banners close in context to the problem they’re referring to
+- Give banners with a lot of information a clear title that summarizes their content
+- Move focus to banners if they’re relevant to the merchant’s current workflow and need to be addressed immediately
+
+#### Don’t
+
+- Move focus to banners if they appear on page load, or outside the merchant’s current workflow
+- Use warning or critical (`role=”alert”`) banners to convey information that the merchant doesn’t need to address immediately
+
+<!-- end -->
+
+<!-- /content-for -->
