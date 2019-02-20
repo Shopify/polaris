@@ -9,7 +9,7 @@
  * @param {number}   limit        - The maximum number of attempts
  * @param {number}   delay        - The seconds to wait between attempts
  */
-const retry = function(Run, errorMessage, attempts = 0, limit = 3, delay = 10) {
+const Retry = function(Run, errorMessage, attempts = 0, limit = 3, delay = 10) {
   // Check that there is a function to try
   if (typeof Run !== 'function') {
     console.error('Retry must have a function to run and retry on failure');
@@ -36,10 +36,10 @@ const retry = function(Run, errorMessage, attempts = 0, limit = 3, delay = 10) {
     } else {
       // Otherwise try again after a delay
       setTimeout(() => {
-        retry(Run, errorMessage, currentAttempts, limit, delay);
+        Retry(Run, errorMessage, currentAttempts, limit, delay);
       }, delay * 1000);
     }
   }
 };
 
-module.exports.default = retry;
+module.exports.default = Retry;

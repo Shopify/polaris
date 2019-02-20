@@ -9,7 +9,7 @@ const semver = require('semver');
 
 const {version: PACKAGE_VERSION} = require('../package.json');
 const secrets = require('../secrets.json');
-const retry = require('./utilities/retry');
+const Retry = require('./utilities/retry');
 
 const YARN_VERSION = yaml
   .safeLoad(readFileSync(pathResolve(__dirname, '..', 'dev.yml'), 'utf8'))
@@ -54,7 +54,7 @@ const polarisBotToken = secrets.github['shopify-polaris'];
 const shopifyPolarisBotGitOverride = `GIT_COMMITTER_NAME='${polarisBotName}' GIT_COMMITTER_EMAIL='${polarisBotEmail}'`;
 
 /**
- * BulkExecute - Run a bunch of execSync
+ * BulkExecute - Run a bunch of execSync one at a time
  *
  * @param {array}  tasks   - List of tasks to run
  * @param {object} options - Specific options for execSync
@@ -155,8 +155,9 @@ const tasks = repositories.map((repository) => {
         },
       );
 
-      // Try and run update polaris using retry default settings, 3 attempts, 10second delay
-      retry(commands, failedUpdateMessage);
+      // Try and run update polaris using retry default settings
+      // 3 attempts maximum with a 10 second delay between each attempt
+      Retry(commands, failedUpdateMessage);
 
       resolve(repository);
     } catch (error) {
