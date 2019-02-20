@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {DropZoneContext} from '../../types';
+import {DropZoneContext, Size} from '../../types';
 
 const {Provider, Consumer} = React.createContext<DropZoneContext>({
-  size: 'extraLarge',
+  width: Size.ExtraLarge,
+  height: Size.ExtraLarge,
   type: 'file',
 });
 
