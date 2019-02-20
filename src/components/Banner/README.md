@@ -558,7 +558,7 @@ Banners provide context and assist workflows for merchants with disabilities.
 - All other banners have a `role=”status”`, so they are read after any critical announcements.
 - Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
 - Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
-- Banners use a combination of icons and colors to show their meaning and level of importance to merchants.
+- Banners use a combination of [icons](/design/icons) and [colors](/design/colors) to show their meaning and level of importance to merchants.
 
 ### Error notifications in forms
 
@@ -568,9 +568,9 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include inline error messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for error messages.
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](/patterns-and-guides/error-messages).
 
 <!-- usageblock -->
 
