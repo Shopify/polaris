@@ -44,7 +44,7 @@ Passing an API key to the [app provider component](https://polaris.shopify.com/c
 
 In an embedded application context, not all documented properties are available. Some properties are only available in stand-alone applications.
 
-Properties which are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
+Properties that are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
 
 Example usage in an embedded application context:
 
