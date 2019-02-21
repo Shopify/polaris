@@ -27,7 +27,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   height: $range-thumb-size;
 
   input {
-    padding: rem(12px) 0;
+    padding: spacing(base-tight) 0;
     background-color: transparent;
     cursor: pointer;
   }
