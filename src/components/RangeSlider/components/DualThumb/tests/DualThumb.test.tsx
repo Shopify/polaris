@@ -140,7 +140,7 @@ describe('<DualThumb />', () => {
     });
 
     describe('aria-describedby', () => {
-      it('gets set correctly on the lower thumb', () => {
+      it('gets set as RangeSliderError on the lower thumb', () => {
         const dualThumb = mountWithAppProvider(
           <DualThumb {...mockProps} error="Error" />,
         );
@@ -149,7 +149,7 @@ describe('<DualThumb />', () => {
         expect(thumbLower.prop('aria-describedby')).toBe('RangeSliderError');
       });
 
-      it('gets set correctly on the upper thumb', () => {
+      it('gets set as RangeSliderError on the upper thumb', () => {
         const dualThumb = mountWithAppProvider(
           <DualThumb {...mockProps} error="Error" />,
         );
@@ -193,7 +193,7 @@ describe('<DualThumb />', () => {
       expect(outputUpper).toHaveLength(1);
     });
 
-    it('renders the correct value for the lower output', () => {
+    it('renders the lower output value as text', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} output />,
       );
@@ -202,7 +202,7 @@ describe('<DualThumb />', () => {
       expect(outputLower.find('span').text()).toContain('0');
     });
 
-    it('renders the correct value for the upper output', () => {
+    it('renders the upper output value as text', () => {
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} output />,
       );
@@ -289,7 +289,7 @@ describe('<DualThumb />', () => {
   });
 
   describe('CSS custom properties', () => {
-    it('sets the correct css custom properties on the track', () => {
+    it('gets set on the track', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const expected = {

@@ -100,7 +100,7 @@ describe('<SingleThumb />', () => {
       expect(element.find('output').prop('htmlFor')).toBe(inputId);
     });
 
-    it('contains the correct value text', () => {
+    it('contains the value as text', () => {
       const element = mountWithAppProvider(
         <SingleThumb {...mockProps} output />,
       );
@@ -184,7 +184,7 @@ describe('<SingleThumb />', () => {
   });
 
   describe('CSS custom properties', () => {
-    it('sets the correct css custom properties', () => {
+    it('gets set on the parent element', () => {
       const element = mountWithAppProvider(<SingleThumb {...mockProps} />);
       const expected = {
         '--Polaris-RangeSlider-min': 10,
