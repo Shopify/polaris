@@ -73,7 +73,19 @@ const tasks = repositories.map((repository) => {
   // Create a new promise for each repository
   return new Promise((resolve, reject) => {
     try {
-      const repositoryDirectory = resolve(sandbox, repository);
+      const repositoryDirectory = pathResolve(sandbox, repository);
+
+      // Message that is logged on a failed update
+      const failedUpdateMessage = `It seems your automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps and replace [release-version] with the version you are publishing:
+
+      1. Checkout "${repository}"
+      2. Get the latest version of master "git checkout master && git pull"
+      3. Create a new branch based on the version that failed "git checkout -b update-polaris-v[release-version]"
+      4. Update "shopify/polaris" by running "npx yarn upgrade @shopify/polaris@[release-version]"
+      5. Add the changed files to git by running "git add package.json yarn.lock"
+      6. Commit the changes with "git commit -m 'Update @shopify/polaris to [release-version]'
+      7. Push the changes with "git push origin update-polaris-v[release-version]"
+      8. Create a new pull request for the branch in "${repository}"`;
 
       // Pull request template
       const updateBody = `
@@ -108,18 +120,6 @@ If tests fail, you may have to troubleshoot the problem locally.
 1. :shipit:
 </details>
 `.trim();
-
-      // Message that is logged on a failed update
-      const failedUpdateMessage = `It seems your automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps and replace [release-version] with the version you are publishing:
-
-      1. Checkout "${repository}"
-      2. Get the latest version of master "git checkout master && git pull"
-      3. Create a new branch based on the version that failed "git checkout -b update-polaris-v[release-version]"
-      4. Update "shopify/polaris" by running "npx yarn upgrade @shopify/polaris@[release-version]"
-      5. Add the changed files to git by running "git add package.json yarn.lock"
-      6. Commit the changes with "git commit -m 'Update @shopify/polaris to [release-version]'
-      7. Push the changes with "git push origin update-polaris-v[release-version]"
-      8. Create a new pull request for the branch in "${repository}"`;
 
       const updatePostObject = {
         title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
