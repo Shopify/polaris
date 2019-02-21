@@ -180,7 +180,7 @@
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.1",
     "@shopify/polaris-icons": "^2.0.0",
-    "@shopify/polaris-tokens": "^2.1.1",
+    "@shopify/polaris-tokens": "^2.3.0",
     "@shopify/react-compose": "^0.1.6",
     "@shopify/react-utilities": "^2.0.3",
     "@types/prop-types": "^15.5.5",

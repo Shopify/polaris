@@ -1,15 +1,19 @@
 import * as React from 'react';
-import createApp from '@shopify/app-bridge';
+import {createAppWrapper, AppConfig} from '@shopify/app-bridge';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
-import createAppProviderContext from '../createAppProviderContext';
+import createAppProviderContext, {
+  hookMiddleware,
+} from '../createAppProviderContext';
 import Intl from '../../Intl';
 import Link from '../../Link';
 import {StickyManager} from '../../withSticky';
 import ScrollLockManager from '../../ScrollLockManager';
 
 jest.mock('@shopify/app-bridge');
-(createApp as jest.Mock<{}>).mockImplementation((args) => args);
+(createAppWrapper as jest.Mock<{}>).mockImplementation(
+  () => (args: AppConfig) => args,
+);
 
 const actualIsServer = targets.isServer;
 
@@ -100,5 +104,14 @@ describe('createAppProviderContext()', () => {
     };
 
     expect(context).toEqual(mockContext);
+  });
+
+  it('adds an app bridge hook to set clientInterface data', () => {
+    const apiKey = '4p1k3y';
+    createAppProviderContext({apiKey});
+
+    expect((createAppWrapper as jest.Mock<{}>).mock.calls[0][2]).toEqual([
+      hookMiddleware,
+    ]);
   });
 });
