@@ -3,7 +3,7 @@
 const {execSync} = require('child_process');
 const {readFileSync} = require('fs');
 const pathResolve = require('path').resolve;
-const {mkdir} = require('shelljs');
+const {mkdir, rm} = require('shelljs');
 const yaml = require('js-yaml');
 const semver = require('semver');
 
@@ -20,6 +20,7 @@ const root = pathResolve(__dirname, '../');
 const sandbox = pathResolve(root, 'sandbox');
 
 // Create the sandbox directory
+rm('-rf', sandbox);
 mkdir(sandbox);
 
 // Current release version
@@ -130,8 +131,11 @@ If tests fail, you may have to troubleshoot the problem locally.
 
       // Clone the repository to the repository directory
       execSync(
-        `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git ${repositoryDirectory}`,
-        {stdio: 'inherit'},
+        `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
+        {
+          cwd: sandbox,
+          stdio: 'inherit',
+        },
       );
 
       // Create a bunch of tasks
