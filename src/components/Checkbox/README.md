@@ -150,3 +150,50 @@ class CheckboxExample extends React.Component {
 - To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button)
 - To display a list of related content, [use the choice list component](/components/forms/choice-list)
 - To create an ungrouped list, [use the content list component](/components/lists-and-tables/list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Screen readers convey the checked, unchecked, indeterminate, or disabled state of the checkbox automatically.
+
+If the `disabled` prop is used, the HTML `disabled` attribute is added to the checkbox `<input>`. The checkbox will not receive keyboard focus and will be conveyed as unavailable to screen reader users.
+
+If the `checked` prop is set to `indeterminate`, the state is conveyed using `aria-checked=”mixed”`.
+
+The `id` prop can be used to provide a unique `id` attribute value for the checkbox. If none is provided, the component with generate one automatically. All checkboxes must have unique `id` values.
+
+### Labeling
+
+The `label` prop is required to convey the purpose of the checkbox to all users.
+
+If there are separate visual cues that convey the purpose of the checkbox label to sighted users, it can be visually hidden using the `labelHidden` prop. Unless a visual label is provided, refrain from using `labelHidden`.
+
+If help text or an inline error message is provided via the `helpText` or `error` prop, it is conveyed to screen reader users with the `aria-describedby` attribute. This causes it to be read along with the label and state, either immediately or after a short delay.
+
+### Keyboard support
+
+- Move focus to each checkbox using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- To interact with the checkbox when it has keyboard focus, press the <kbd>space</kbd> key
+
+<!-- /content-for -->
