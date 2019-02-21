@@ -299,7 +299,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps: Props) {
     const {selectedItems} = this.props;
 
