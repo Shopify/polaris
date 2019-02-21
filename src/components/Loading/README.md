@@ -67,17 +67,6 @@ The loading component should:
 
 ---
 
-## Content guidelines
-
-### Accessibility label
-
-The loading accessibility label should:
-
-- Accurately explain the state of the requested action. For example, “Loading your search results”.
-- Use as few words as possible to describe the state.
-
----
-
 ## Related components
 
 - To indicate that an action has been received, use the [Spinner](/components/feedback-indicators/spinner)
