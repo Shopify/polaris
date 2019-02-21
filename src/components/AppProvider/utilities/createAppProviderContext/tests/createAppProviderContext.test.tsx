@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {createAppWrapper, AppConfig} from '@shopify/app-bridge';
+import createApp, {LifecycleHook} from '@shopify/app-bridge';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
-  hookMiddleware,
+  setClientInterfaceHook,
 } from '../createAppProviderContext';
 import Intl from '../../Intl';
 import Link from '../../Link';
@@ -11,9 +11,7 @@ import {StickyManager} from '../../withSticky';
 import ScrollLockManager from '../../ScrollLockManager';
 
 jest.mock('@shopify/app-bridge');
-(createAppWrapper as jest.Mock<{}>).mockImplementation(
-  () => (args: AppConfig) => args,
-);
+(createApp as jest.Mock<{}>).mockImplementation((args) => args);
 
 const actualIsServer = targets.isServer;
 
@@ -107,11 +105,32 @@ describe('createAppProviderContext()', () => {
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
+    const set = jest.fn();
+    (createApp as jest.Mock<{}>).mockImplementation((args) => {
+      return {...args, hooks: {set}};
+    });
+
     const apiKey = '4p1k3y';
     createAppProviderContext({apiKey});
 
-    expect((createAppWrapper as jest.Mock<{}>).mock.calls[0][2]).toEqual([
-      hookMiddleware,
-    ]);
+    expect(set).toHaveBeenCalledWith(
+      LifecycleHook.DispatchAction,
+      setClientInterfaceHook,
+    );
+  });
+
+  it('setClientInterfaceHook augments app bridge actions with clientInterface property', () => {
+    window.Polaris = {VERSION: '9000'};
+
+    const next = jest.fn((args) => args);
+    const baseAction = {type: 'actionType'};
+
+    expect(setClientInterfaceHook.call({}, next)(baseAction)).toEqual({
+      type: 'actionType',
+      clientInterface: {
+        name: '@shopify/polaris',
+        version: '9000',
+      },
+    });
   });
 });

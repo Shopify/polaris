@@ -1,10 +1,7 @@
 import {noop} from '@shopify/javascript-utilities/other';
-import {
+import createApp, {
   getShopOrigin,
-  createAppWrapper,
   LifecycleHook,
-  HooksInterface,
-  AppConfig,
   DispatchActionHook,
 } from '@shopify/app-bridge';
 import {isServer} from '@shopify/react-utilities/target';
@@ -43,6 +40,10 @@ export default function createAppProviderContext({
         })
       : undefined;
 
+  if (appBridge && appBridge.hooks) {
+    appBridge.hooks.set(LifecycleHook.DispatchAction, setClientInterfaceHook);
+  }
+
   return {
     polaris: {
       intl,
@@ -56,7 +57,7 @@ export default function createAppProviderContext({
   };
 }
 
-export const setClientInterface: DispatchActionHook = function(next) {
+export const setClientInterfaceHook: DispatchActionHook = function(next) {
   return function(action) {
     action.clientInterface = {
       name: '@shopify/polaris',
@@ -65,13 +66,3 @@ export const setClientInterface: DispatchActionHook = function(next) {
     return next(action);
   };
 };
-
-export function hookMiddleware(hooks: HooksInterface) {
-  hooks.set(LifecycleHook.DispatchAction, setClientInterface);
-}
-
-function createApp(appBridgeConfig: AppConfig) {
-  return createAppWrapper(window.top, window.location.origin, [hookMiddleware])(
-    appBridgeConfig,
-  );
-}
