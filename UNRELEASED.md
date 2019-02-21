@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed missing rounded corners on `Tag` button states ([#1078](https://github.com/Shopify/polaris-react/pull/1078))
+
 ### Documentation
 
 - Made documentation for properties only available in a stand-alone context more explicit for `Modal` ([#1065](https://github.com/Shopify/polaris-react/pull/1065)
