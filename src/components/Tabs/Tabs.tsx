@@ -49,7 +49,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
     tabToFocus: -1,
   };
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps: Props) {
     const {selected} = this.props;
     const {disclosureWidth, tabWidths, containerWidth, tabToFocus} = this.state;
