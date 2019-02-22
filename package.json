@@ -62,7 +62,7 @@
     "heroku-postbuild": "yarn run copy-polaris-tokens",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
-    "storybook": "start-storybook -p 6006 --quiet",
+    "storybook": "start-storybook -p 6006 -c .storybook --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static"
   },
   "stylelint": {
