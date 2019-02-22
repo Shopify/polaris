@@ -10,7 +10,7 @@ import Spinner from '../Spinner';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import selectIcon from './icons/enable-selection.svg';
+import {enableSelection} from './icons';
 
 import {
   BulkActions,
@@ -299,7 +299,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps: Props) {
     const {selectedItems} = this.props;
 
@@ -411,7 +410,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles.SelectButtonWrapper}>
         <Button
           disabled={selectMode}
-          icon={selectIcon}
+          icon={enableSelection}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >

@@ -15,11 +15,13 @@ import Icon, {Props as IconProps} from '../Icon';
 
 import styles from './Banner.scss';
 
-import successIcon from './icons/circle-check-mark.svg';
-import fallbackIcon from './icons/flag.svg';
-import warningIcon from './icons/circle-alert.svg';
-import criticalIcon from './icons/circle-barred.svg';
-import infoIcon from './icons/circle-information.svg';
+import {
+  circleCheckMark,
+  flag,
+  circleAlert,
+  circleBarred,
+  circleInformation,
+} from './icons';
 
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
@@ -62,25 +64,25 @@ export default class Banner extends React.PureComponent<Props, never> {
     switch (status) {
       case 'success':
         color = 'greenDark';
-        defaultIcon = successIcon;
+        defaultIcon = circleCheckMark;
         break;
       case 'info':
         color = 'tealDark';
-        defaultIcon = infoIcon;
+        defaultIcon = circleInformation;
         break;
       case 'warning':
         color = 'yellowDark';
-        defaultIcon = warningIcon;
+        defaultIcon = circleAlert;
         ariaRoleType = 'alert';
         break;
       case 'critical':
         color = 'redDark';
-        defaultIcon = criticalIcon;
+        defaultIcon = circleBarred;
         ariaRoleType = 'alert';
         break;
       default:
         color = 'inkLighter';
-        defaultIcon = fallbackIcon;
+        defaultIcon = flag;
     }
 
     const className = classNames(

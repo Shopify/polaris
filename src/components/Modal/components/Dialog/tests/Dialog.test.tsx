@@ -13,7 +13,7 @@ describe('<Dialog>', () => {
     animationFrame.restore();
   });
 
-  it('renders CloseKeypressListener with correct props when `in` is true', () => {
+  it('sets CloseKeypressListener when `in` is true', () => {
     const listener = mountWithAppProvider(
       <Dialog labelledBy="test" onClose={jest.fn()} in>
         something

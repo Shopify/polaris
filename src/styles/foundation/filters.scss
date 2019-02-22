@@ -1,0 +1,44 @@
+@import '../polaris-tokens/color-filters.color-map';
+
+///
+/// Color filter data
+///
+/// Shopify color filter palette, extended specifically for polaris-react.
+///
+/// @type map
+$color-filter-palette-data: $polaris-color-filters;
+
+/// Returns the filter list for a given color name and group.
+///
+/// @param {String} $hue - The color’s hue.
+/// @param {String} $value - The darkness/lightness of the color. Defaults to
+/// base.
+/// @return {List} The filter list.
+
+@function filter($hue, $value: base) {
+  $fetched-color: map-get(map-get($color-filter-palette-data, $hue), $value);
+
+  @if map-has-key($color-filter-palette-data, $fetched-color) {
+    $fetched-color: map-get(
+      map-get($color-filter-palette-data, $fetched-color),
+      $value
+    );
+  }
+
+  @if type-of($fetched-color) == list {
+    @return $fetched-color;
+  } @else {
+    // stylelint-disable string-no-newline
+    // prettier-ignore
+    $error: "
+Filter `#{$hue}, #{$value}` not found. Make sure arguments are strings.
+GOOD: filter('yellow')
+BAD: filter(yellow)
+
+Available options: #{available-names($color-filter-palette-data)}
+";
+    // stylelint-enable
+
+    @error $error;
+  }
+}

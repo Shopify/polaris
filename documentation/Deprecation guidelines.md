@@ -7,6 +7,7 @@
 - Use the `@deprecated` doc tag for props and components ([for example, add above where the component is defined](https://github.com/Shopify/polaris-react/blob/8e49e4c65fbbf25d40617ba2d0ff0b3747320f17/src/components/Navigation/components/UserMenu/UserMenu.tsx#L27)), state the reason, and upgrade path
 - Add a console warning for any respective `@deprecated` doc tag, state the reason, and state the upgrade path
   - Add the console warning in the constructor for classes and in the render method for functional components
+  - [Guidelines for writing good console messages](https://github.com/Shopify/polaris-react/blob/master/documentation/Console%20messages.md)
 - For significant deprecations, add a section to the component documentation with rationale. State the upgrade path and include a link to a new component if applicable
 - Call out deprecations in our changelog
 

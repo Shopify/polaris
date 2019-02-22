@@ -13,6 +13,7 @@ import Item from '../Item';
 
 describe('<Item />', () => {
   let spy: jest.SpyInstance;
+
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
   });
@@ -121,6 +122,16 @@ describe('<Item />', () => {
       );
 
       expect(element.find(UnstyledLink).prop('aria-label')).toBe(ariaLabel);
+    });
+
+    it('adds a data-href to the wrapper element', () => {
+      const element = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id="itemId" url={url} />
+        </Provider>,
+      );
+
+      expect(findByTestID(element, 'Item-Wrapper').prop('data-href')).toBe(url);
     });
   });
 
@@ -264,7 +275,7 @@ describe('<Item />', () => {
       expect(wrapper.find(Checkbox).props().checked).toBe(true);
     });
 
-    it('should not call window.open when clicking the item with metaKey', () => {
+    it('does not call window.open when clicking the item with metaKey', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectModeContext}>
           <Item id={selectedItemId} url={url} />
@@ -276,7 +287,7 @@ describe('<Item />', () => {
       expect(spy).not.toBeCalled();
     });
 
-    it('should not call window.open when clicking the item with ctrlKey', () => {
+    it('does not call window.open when clicking the item with ctrlKey', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockSelectModeContext}>
           <Item id={selectedItemId} url={url} />

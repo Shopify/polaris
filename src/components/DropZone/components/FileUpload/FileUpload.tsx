@@ -15,10 +15,9 @@ import TextStyle from '../../../TextStyle';
 import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
-import {DropZoneContext} from '../../types';
-import IconDragDrop from '../../icons/drag-drop.svg';
-import AssetFileUpload from '../../images/file-upload.svg';
-import AssetImageUpload from '../../images/image-upload.svg';
+import {DropZoneContext, Size} from '../../types';
+import {dragDrop} from '../../icons';
+import {fileUpload, imageUpload} from '../../images';
 
 import {Consumer} from '../Context';
 
@@ -69,82 +68,81 @@ export class FileUpload extends React.Component<CombinedProps, State> {
     }
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(props: Props) {
     this.updateStateFromProps(props);
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
     this.updateStateFromProps(this.props);
   }
 
   render() {
+    const fileUploadMarkup = this.renderFileUploadMarkup();
+
+    return <div className={styles.FileUpload}>{fileUploadMarkup}</div>;
+  }
+
+  private renderFileUploadMarkup() {
     const {
-      context: {size, type},
+      context: {width, height, type},
     } = this.props;
+
     const {actionTitle, actionHint} = this.state;
     const imageClasses = classNames(
       styles.Image,
-      size && size === 'extraLarge' && styles.sizeExtraLarge,
-      size && size === 'large' && styles.sizeLarge,
+      width === Size.ExtraLarge && styles.sizeExtraLarge,
+      width === Size.Large && styles.sizeLarge,
     );
 
-    const extraLargeView =
-      size === 'extraLarge' ? (
-        <Stack vertical>
-          {type === 'file' && (
-            <img className={imageClasses} src={AssetFileUpload} alt="" />
-          )}
-          {type === 'image' && (
-            <img className={imageClasses} src={AssetImageUpload} alt="" />
-          )}
-          <Button>{actionTitle}</Button>
-          <TextStyle variation="subdued">{actionHint}</TextStyle>
-        </Stack>
-      ) : null;
+    const fileType = type === 'file';
+    const imageType = type === 'image';
 
-    const largeView =
-      size === 'large' ? (
-        <Stack vertical spacing="tight">
-          {type === 'file' && (
-            <img className={imageClasses} src={AssetFileUpload} alt="" />
-          )}
-          {type === 'image' && (
-            <img className={imageClasses} src={AssetImageUpload} alt="" />
-          )}
-          <Button size="slim">{actionTitle}</Button>
-          <Caption>
+    const size = Math.min(width, height);
+    switch (size) {
+      case Size.ExtraLarge:
+        return (
+          <Stack vertical>
+            {fileType && (
+              <img className={imageClasses} src={fileUpload} alt="" />
+            )}
+            {imageType && (
+              <img className={imageClasses} src={imageUpload} alt="" />
+            )}
+            <Button>{actionTitle}</Button>
             <TextStyle variation="subdued">{actionHint}</TextStyle>
-          </Caption>
-        </Stack>
-      ) : null;
-
-    const mediumView =
-      size === 'medium' ? (
-        <Stack vertical spacing="tight">
-          <Link>{actionTitle}</Link>
-          <Caption>
-            <TextStyle variation="subdued">{actionHint}</TextStyle>
-          </Caption>
-        </Stack>
-      ) : null;
-
-    const smallView =
-      size === 'small' ? (
-        <Stack vertical spacing="tight">
-          <Icon source={IconDragDrop} color="inkLightest" />
-        </Stack>
-      ) : null;
-
-    return (
-      <div className={styles.FileUpload}>
-        {smallView}
-        {mediumView}
-        {largeView}
-        {extraLargeView}
-      </div>
-    );
+          </Stack>
+        );
+      case Size.Large:
+        return (
+          <Stack vertical spacing="tight">
+            {fileType && (
+              <img className={imageClasses} src={fileUpload} alt="" />
+            )}
+            {imageType && (
+              <img className={imageClasses} src={imageUpload} alt="" />
+            )}
+            <Button size="slim">{actionTitle}</Button>
+            <Caption>
+              <TextStyle variation="subdued">{actionHint}</TextStyle>
+            </Caption>
+          </Stack>
+        );
+      case Size.Medium:
+        return (
+          <Stack vertical spacing="tight">
+            <Link>{actionTitle}</Link>
+            <Caption>
+              <TextStyle variation="subdued">{actionHint}</TextStyle>
+            </Caption>
+          </Stack>
+        );
+      case Size.Small:
+        return (
+          <Stack vertical spacing="tight">
+            <Icon source={dragDrop} color="inkLightest" />
+          </Stack>
+        );
+    }
   }
 }
 

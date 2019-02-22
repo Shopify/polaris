@@ -13,24 +13,13 @@ $search-results-min-width: 45rem;
   height: calc(100vh - #{top-bar-height() + spacing(loose)});
   visibility: hidden;
   pointer-events: none;
-  display: flex;
   padding: 0;
   width: 100%;
 
   @include breakpoint-after($not-condensed-content) {
     top: top-bar-height() - spacing();
-    justify-content: left;
-    @include page-padding-not-fully-condensed;
-  }
-
-  @include breakpoint-after(
-    $page-layout-when-not-partially-condensed-absolute
-  ) {
-    @include page-padding-not-partially-condensed;
-  }
-
-  @include breakpoint-after($page-max-width) {
-    justify-content: center;
+    left: auto;
+    right: auto;
   }
 }
 

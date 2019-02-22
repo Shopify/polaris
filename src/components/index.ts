@@ -294,6 +294,11 @@ export {
   Props as SkeletonDisplayTextProps,
 } from './SkeletonDisplayText';
 
+export {
+  default as SkeletonThumbnail,
+  Props as SkeletonThumbnailProps,
+} from './SkeletonThumbnail';
+
 export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
 
 export {default as Indicator, Props as IndicatorProps} from './Indicator';

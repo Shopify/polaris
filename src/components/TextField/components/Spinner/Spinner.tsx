@@ -21,7 +21,10 @@ export default function Spinner({
   }
 
   function handleMouseDown(onChange: Function) {
-    return () => onMouseDown(onChange);
+    return (event: React.MouseEvent) => {
+      if (event.button !== 0) return;
+      onMouseDown(onChange);
+    };
   }
 
   return (
