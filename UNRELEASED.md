@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Made documentation for properties only available in a stand-alone context more explicit for `Modal` ([#1065] https://github.com/Shopify/polaris-react/pull/1065)
+
 ### Development workflow
 
 - Added viewport meta tag to Storybook frame ([#1026](https://github.com/Shopify/polaris-react/pull/1026))
