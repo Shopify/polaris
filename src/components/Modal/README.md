@@ -46,7 +46,7 @@ In an embedded application context, not all documented properties are available.
 
 Properties that are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
 
-The following example shows the modal component in an embedded application context: 
+The following example shows the modal component in an embedded application context:
 
 ```jsx
 class EmbeddedAppModalExample extends React.Component {
