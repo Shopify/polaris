@@ -16,14 +16,6 @@ export default function sewingKitConfig(
 
         config.setupFiles.push(join(tests, 'setup.ts'));
 
-        // svg transform have to go before the existing transforms so that .svg
-        // files match our declaration first, and thus run the svg transform,
-        // instead of matching the file transform
-        config.transform = {
-          '\\.svg$': join(__dirname, 'config/jest/transformers/svg.js'),
-          ...config.transform,
-        };
-
         // Code coverage
         config.collectCoverageFrom = [
           'src/**/*.{ts,tsx}',

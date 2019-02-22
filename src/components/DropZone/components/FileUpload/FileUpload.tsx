@@ -68,12 +68,10 @@ export class FileUpload extends React.Component<CombinedProps, State> {
     }
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(props: Props) {
     this.updateStateFromProps(props);
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
     this.updateStateFromProps(this.props);
   }
