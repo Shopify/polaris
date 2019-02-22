@@ -54,7 +54,7 @@
     "new-version-pr-generator": "node ./scripts/new-version-pr-generator",
     "copy-polaris-tokens": "rimraf ./src/styles/polaris-tokens && shx cp -r ./node_modules/@shopify/polaris-tokens/dist ./src/styles/polaris-tokens",
     "prepublish": "in-publish && yarn run build || :",
-    "postpublish": "in-publish && npm-run-all cdn new-version-pr-generator || :",
+    "postpublish": "in-publish && npm-run-all cdn new-version-pr-generator",
     "dev": "npm-run-all copy-polaris-tokens storybook",
     "test:percy": "yarn run storybook:build && percy-storybook --build_dir build/storybook/static",
     "test:a11y": "yarn run storybook:build && node ./scripts/pa11y.js",

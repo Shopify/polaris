@@ -133,8 +133,11 @@ const tasks = repositories.map((repository) => {
 
       resolve(repository);
     } catch (error) {
-      console.error(failedUpdateMessage(repository, releaseVersion));
-      reject(error);
+      const errorMessage = `${error}\n\n${failedUpdateMessage(
+        repository,
+        releaseVersion,
+      )}`;
+      reject(errorMessage);
     }
   });
 });
@@ -145,4 +148,7 @@ Promise.all(tasks)
       `Done: Pull request made for ${releaseVersion} in ${repository}`,
     ),
   )
-  .catch((error) => console.error(error));
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
