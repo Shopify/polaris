@@ -80,7 +80,7 @@ export default class Toast extends React.Component<Props, never> {
       duration &&
       duration < DEFAULT_TOAST_DURATION_WITH_ACTION
     ) {
-      // eslint-disable-next-line-no-console
+      // eslint-disable-next-line no-console
       console.log(
         'Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.',
       );
