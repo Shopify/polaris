@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Track Polaris version information in App Bridge actions
+
 ### Bug fixes
 
 ### Documentation
