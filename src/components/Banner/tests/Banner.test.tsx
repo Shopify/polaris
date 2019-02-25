@@ -4,11 +4,11 @@ import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
 
 import {
-  circleCheckMark,
-  flag,
-  circleAlert,
-  circleBarred,
-  circleInformation,
+  CircleAlertMajor,
+  CircleBarredMajor,
+  CircleCheckMarkMajor,
+  CircleInformationMajor,
+  FlagMajor,
 } from '../icons';
 
 describe('<Banner />', () => {
@@ -29,31 +29,31 @@ describe('<Banner />', () => {
 
   it('uses a greenDark circleCheckMark if status is success', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleCheckMark);
+    expect(banner.find(Icon).prop('source')).toBe(CircleCheckMarkMajor);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
   });
 
   it('uses a tealDark circleInformation if status is info', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleInformation);
+    expect(banner.find(Icon).prop('source')).toBe(CircleInformationMajor);
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
   });
 
   it('uses a yellowDark circleAlert if status is warning', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleAlert);
+    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajor);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
   });
 
   it('uses a redDark circleBarred if status is critical', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleBarred);
+    expect(banner.find(Icon).prop('source')).toBe(CircleBarredMajor);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
   });
 
   it('uses a default icon', () => {
     const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(flag);
+    expect(banner.find(Icon).prop('source')).toBe(FlagMajor);
     expect(banner.find(Icon).prop('color')).toBe('inkLighter');
   });
 

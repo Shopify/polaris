@@ -42,23 +42,6 @@ module.exports = function createRollupConfig({entry, cssPath}) {
           moduleDirectory: ['../build-intermediate', 'node_modules'],
         },
       }),
-      babel({
-        // We need to specify an environment name as leaving it blank defaults
-        // to "development", which ends up including a bunch of debug helpers.
-        // We don't want to use "production" as that enables the
-        // babel-plugin-transform-react-constant-elements plugin which we don't want
-        envName: 'not-production',
-        include: '**/*.js',
-        exclude: 'node_modules/**',
-        runtimeHelpers: true,
-      }),
-      commonjs(),
-      styles({
-        output: cssPath,
-        includePaths: [styleRoot],
-        includeAlways: sassResources,
-        generateScopedName: getNamespacedClassName,
-      }),
       svgr({
         exclude: 'node_modules/**',
         svgoConfig: svgOptions(),
@@ -69,6 +52,24 @@ module.exports = function createRollupConfig({entry, cssPath}) {
           '#212b36': '{undefined}',
         },
         babel: false,
+      }),
+      babel({
+        // We need to specify an environment name as leaving it blank defaults
+        // to "development", which ends up including a bunch of debug helpers.
+        // We don't want to use "production" as that enables the
+        // babel-plugin-transform-react-constant-elements plugin which we don't want
+        envName: 'not-production',
+        include: ['**/*.js', '**/*.svg'],
+        extensions: ['.js', '.svg'],
+        exclude: 'node_modules/**',
+        runtimeHelpers: true,
+      }),
+      commonjs(),
+      styles({
+        output: cssPath,
+        includePaths: [styleRoot],
+        includeAlways: sassResources,
+        generateScopedName: getNamespacedClassName,
       }),
       image({
         exclude: ['node_modules/**', '**/icons/*.svg'],

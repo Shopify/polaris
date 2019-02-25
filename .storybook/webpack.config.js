@@ -86,6 +86,9 @@ module.exports = (baseConfig, env, config) => {
             exclude: 'node_modules/**',
             replaceAttrValues: {
               '#FFF': 'currentColor',
+              '#fff': 'currentColor',
+              '#212B36': '{undefined}',
+              '#212b36': '{undefined}',
             },
           },
         },
