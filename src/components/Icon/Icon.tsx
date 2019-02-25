@@ -226,6 +226,9 @@ function Icon({
   let contentMarkup: React.ReactNode;
   if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
+  } else if (isBundledIcon(source)) {
+    SourceComponent = BUNDLED_ICONS[source];
+    contentMarkup = <SourceComponent {...defaultIconProps} />;
   } else if (
     typeof source === 'function' &&
     React.isValidElement(<SourceComponent />)
@@ -237,9 +240,6 @@ function Icon({
       'Deprecation: passing a React Element to the Icon component is deprecated and will be removed in the next major version. Pass a React Component instead.',
     );
     contentMarkup = source;
-  } else if (isBundledIcon(source)) {
-    SourceComponent = BUNDLED_ICONS[source];
-    contentMarkup = <SourceComponent {...defaultIconProps} />;
   } else if (untrusted && isUntrustedSVG(source)) {
     contentMarkup = (
       <img

@@ -1,1 +1,1 @@
-export {default as enableSelection} from './enable-selection.svg';
+export {EnableSelectionMinor} from '@shopify/polaris-icons';
