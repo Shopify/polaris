@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {AddMinor} from '@shopify/polaris-icons';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Icon from '../Icon';
 import Button from '../../Button';
@@ -20,7 +21,7 @@ describe('<Icon />', () => {
 
     it('renders an SVG when source is given a BundledIcon', () => {
       const element = shallowWithAppProvider(<Icon source="add" />);
-      expect(element.find('svg')).toHaveLength(1);
+      expect(element.find(AddMinor)).toHaveLength(1);
     });
 
     it('renders an SVG when source is given an SVG', () => {
