@@ -185,6 +185,7 @@ export interface Props {
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
   /** Render the icon in an img tag instead of an svg. Prevents XSS */
+  /** @deprecated the untrusted prop is deprecated and will be removed. All raw strings passed into the Icon component will be assumed to be untrusted */
   untrusted?: boolean;
 }
 
@@ -241,6 +242,10 @@ function Icon({
     );
     contentMarkup = source;
   } else if (untrusted && isUntrustedSVG(source)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: the untrusted prop is deprecated and will be removed. All raw strings passed into the Icon component will be assumed to be untrusted.',
+    );
     contentMarkup = (
       <img
         className={styles.Img}
