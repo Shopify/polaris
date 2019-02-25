@@ -64,7 +64,11 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         svgoConfig: svgOptions(),
         replaceAttrValues: {
           '#FFF': 'currentColor',
+          '#fff': 'currentColor',
+          '#212B36': '{undefined}',
+          '#212b36': '{undefined}',
         },
+        babel: false,
       }),
       image({
         exclude: ['node_modules/**', '**/icons/*.svg'],

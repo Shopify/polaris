@@ -16,7 +16,7 @@ import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
 import {DropZoneContext, Size} from '../../types';
-import {dragDrop} from '../../icons';
+import {DragDropMajor} from '../../icons';
 import {fileUpload, imageUpload} from '../../images';
 
 import {Consumer} from '../Context';
@@ -139,7 +139,7 @@ export class FileUpload extends React.Component<CombinedProps, State> {
       case Size.Small:
         return (
           <Stack vertical spacing="tight">
-            <Icon source={dragDrop} color="inkLightest" />
+            <Icon source={DragDropMajor} color="inkLightest" />
           </Stack>
         );
     }

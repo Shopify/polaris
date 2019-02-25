@@ -10,7 +10,7 @@ import Spinner from '../Spinner';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import {enableSelection} from './icons';
+import {EnableSelectionMinor} from './icons';
 
 import {
   BulkActions,
@@ -410,7 +410,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles.SelectButtonWrapper}>
         <Button
           disabled={selectMode}
-          icon={enableSelection}
+          icon={EnableSelectionMinor}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >
