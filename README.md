@@ -105,7 +105,7 @@ We use Storybook to create a simple, hot-reloading playground for development on
 ### Testing on mobile or a virtual machine
 
 1.  Run `yarn dev`
-1.  Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT in a browser window from within your virtual machine or mobile device on the same network
+1.  Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?selectedKind=Playground&selectedStory=Playground in a browser window from within your virtual machine or mobile device on the same network
 
 ### Testing in a consuming project
 
