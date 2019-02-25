@@ -218,7 +218,6 @@ function Icon({
 
   const defaultIconProps = {
     className: styles.Svg,
-    viewBox: '0 0 20 20',
     focusable: 'false',
     'aria-hidden': 'true',
   };
