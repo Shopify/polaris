@@ -1,3 +1,4 @@
+import {debug} from 'util';
 import * as React from 'react';
 import {AddMinor} from '@shopify/polaris-icons';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
@@ -34,7 +35,24 @@ describe('<Icon />', () => {
       expect(element.find('svg')).toHaveLength(1);
     });
 
-    it('renders a React Component when source is given a React Component', () => {
+    it('renders a React Element when source is given a React Element', () => {
+      const element = <AddMinor />;
+      const iconElement = shallowWithAppProvider(<Icon source={element} />);
+      expect(iconElement.find(AddMinor)).toHaveLength(1);
+    });
+
+    it('spits out a console warning when rendering a React Element', () => {
+      const spy = jest.spyOn(global.console, 'warn');
+      shallowWithAppProvider(<Icon source={<AddMinor />} />);
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('renders a React Element when source is given a React Component', () => {
+      const element = shallowWithAppProvider(<Icon source={AddMinor} />);
+      expect(element.find(AddMinor)).toHaveLength(1);
+    });
+
+    it('renders a React E when source is given a React Component', () => {
       const component = <Button>Icon</Button>;
       const element = shallowWithAppProvider(<Icon source={component} />);
       expect(element.find(Button)).toHaveLength(1);
@@ -45,6 +63,14 @@ describe('<Icon />', () => {
         "<svg><path d='M17 9h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2'  fill-rule='evenodd'/></svg>";
       const element = shallowWithAppProvider(<Icon source={svg} untrusted />);
       expect(element.find('img')).toHaveLength(1);
+    });
+
+    it('spits out a console warning when rendering an untrusted SVG', () => {
+      const spy = jest.spyOn(global.console, 'warn');
+      const svg =
+        "<svg><path d='M17 9h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2'  fill-rule='evenodd'/></svg>";
+      shallowWithAppProvider(<Icon source={svg} untrusted />);
+      expect(spy).toHaveBeenCalled();
     });
 
     it('renders nothing when source is given an svg string but untrusted is not true', () => {
