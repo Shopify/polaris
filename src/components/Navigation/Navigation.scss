@@ -22,6 +22,7 @@ $nav-max-width: rem(360px);
 
   @include breakpoint-after(nav-min-window-corrected()) {
     max-width: layout-width(nav);
+    border-right: border();
     @include safe-area-for(max-width, layout-width(nav), left);
   }
 }
