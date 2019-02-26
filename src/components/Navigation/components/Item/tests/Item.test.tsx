@@ -173,6 +173,22 @@ describe('<Nav.Item />', () => {
       expect(item.find(Icon).prop('source')).toBe('add');
     });
 
+    it('delegates iconBody to <Icon />', () => {
+      const iconBody = `<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0' /></svg>`;
+      const item = mountWithAppProvider(
+        <Item
+          label="some label"
+          url="foo"
+          disabled={false}
+          iconBody={iconBody}
+        />,
+        {
+          context: {location: 'bar'},
+        },
+      );
+      expect(item.find(Icon).prop('source')).toBe(iconBody);
+    });
+
     it('delegates label to <UnstyledLink />', () => {
       const item = mountWithAppProvider(
         <Item url="foo" disabled={false} label="baz" />,
