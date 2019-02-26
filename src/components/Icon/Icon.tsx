@@ -176,7 +176,6 @@ export type IconSource =
   | React.SFC<React.SVGProps<SVGSVGElement>>;
 export interface Props {
   /** The SVG contents to display in the icon. Icons should be in a 20 X 20 pixel viewbox */
-  /** @deprecated Passing a React Element as source is deprecated. Pass a React Component instead */
   source: IconSource;
   /** Sets the color for the SVG fill */
   color?: Color;
