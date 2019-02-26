@@ -1,5 +1,4 @@
 import * as React from 'react';
-import capitalize from 'lodash/capitalize';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
@@ -7,6 +6,7 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
+import capitalize from '../../utilities/capitalize';
 
 import Icon from '../Icon';
 import Stack from '../Stack';
