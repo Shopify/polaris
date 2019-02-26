@@ -51,9 +51,29 @@ describe('<Spinner />', () => {
       spinner
         .find('[role="button"]')
         .first()
-        .simulate('mousedown');
+        .simulate('mousedown', {button: 0});
       expect(mouseDownSpy).toHaveBeenCalledTimes(1);
       expect(changeSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not call the change callback if a non-primary button', () => {
+      const mouseDownSpy = jest.fn((callback) => {
+        callback();
+      });
+      const changeSpy = jest.fn();
+      const spinner = shallow(
+        <Spinner
+          onChange={changeSpy}
+          onMouseDown={mouseDownSpy}
+          onMouseUp={noop}
+        />,
+      );
+      spinner
+        .find('[role="button"]')
+        .first()
+        .simulate('mousedown', {button: 1});
+      expect(mouseDownSpy).not.toHaveBeenCalled();
+      expect(changeSpy).not.toHaveBeenCalled();
     });
   });
 

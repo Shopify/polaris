@@ -37,7 +37,7 @@ describe('colorUtilities', () => {
   });
 
   describe('hsbToRgb()', () => {
-    it('returns the correct rgb value for an hsb color', () => {
+    it('returns 128/64/128 rgb value for an hsb color', () => {
       const {red, green, blue} = hsbToRgb({
         hue: 300,
         saturation: 0.5,
@@ -48,7 +48,7 @@ describe('colorUtilities', () => {
       expect(blue).toBe(128);
     });
 
-    it('returns the correct rgb value for black', () => {
+    it('returns 0/0/0 rgb value for black', () => {
       const {red, green, blue} = hsbToRgb({
         hue: 23,
         saturation: 0,
@@ -59,7 +59,7 @@ describe('colorUtilities', () => {
       expect(blue).toBe(0);
     });
 
-    it('returns the correct rgb value for white', () => {
+    it('returns 255/255/255 rgb value for white', () => {
       const {red, green, blue} = hsbToRgb({
         hue: 23,
         saturation: 0,
@@ -72,7 +72,7 @@ describe('colorUtilities', () => {
   });
 
   describe('rgbToHsb', () => {
-    it('returns the correct hsb value for white', () => {
+    it('returns 0/0/1 hsb value for white', () => {
       const {hue, saturation, brightness} = rgbToHsb({
         red: 255,
         green: 255,
@@ -83,7 +83,7 @@ describe('colorUtilities', () => {
       expect(brightness).toBe(1);
     });
 
-    it('returns the correct hsb value for black', () => {
+    it('returns 0/0/0 hsb value for black', () => {
       const {hue, saturation, brightness} = rgbToHsb({
         red: 0,
         green: 0,
@@ -95,7 +95,7 @@ describe('colorUtilities', () => {
     });
 
     // Corner case that was misscalculating hue
-    it('returns the correct hsb value when red is the largest number', () => {
+    it('returns 0/1/1 hsb value when red is the largest number', () => {
       const {hue, saturation, brightness} = rgbToHsb({
         red: 255,
         green: 0,

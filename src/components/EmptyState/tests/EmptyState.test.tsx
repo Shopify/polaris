@@ -31,7 +31,7 @@ describe('<EmptyState />', () => {
   });
 
   describe('img', () => {
-    it('passes the correct source to Image', () => {
+    it('passes the provided source to Image', () => {
       expect(emptyState.find(Image).prop('source')).toBe(imgSrc);
     });
   });
@@ -49,7 +49,7 @@ describe('<EmptyState />', () => {
   });
 
   describe('heading', () => {
-    it('passes the correct heading to DisplayText', () => {
+    it('passes the provided heading to DisplayText', () => {
       expect(emptyState.find(DisplayText).prop('size')).toBe('medium');
       expect(
         emptyState

@@ -1,13 +1,6 @@
-$unit: 4px;
+@import '../polaris-tokens/spacing.spacing-map';
 
-$spacing-data: (
-  none: 0,
-  extra-tight: rem($unit),
-  tight: rem($unit * 2),
-  base: rem($unit * 4),
-  loose: rem($unit * 5),
-  extra-loose: rem($unit * 8),
-);
+$spacing-data: $polaris-spacing;
 
 /// Returns the spacing value for a given variant.
 ///
@@ -18,7 +11,7 @@ $spacing-data: (
   $fetched-value: map-get($spacing-data, $variant);
 
   @if type-of($fetched-value) == number {
-    @return $fetched-value;
+    @return rem($fetched-value);
   } @else {
     @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}';
   }

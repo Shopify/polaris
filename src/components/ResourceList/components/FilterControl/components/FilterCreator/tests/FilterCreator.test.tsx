@@ -147,7 +147,7 @@ describe('<FilterCreator />', () => {
   });
 
   describe('filters', () => {
-    it('has the correct options prop when popover is active', () => {
+    it('sets the options when popover is active', () => {
       const wrapper = mountWithAppProvider(
         <FilterCreator {...mockDefaultProps} />,
       );
@@ -196,7 +196,7 @@ describe('<FilterCreator />', () => {
       expect(wrapper.find(FilterValueSelector).prop('value')).toBeUndefined();
     });
 
-    it('updates value correctly when user selects a filter value', () => {
+    it('updates value with provided string when user selects a filter value', () => {
       const wrapper = mountWithAppProvider(
         <FilterCreator {...mockDefaultProps} />,
       );

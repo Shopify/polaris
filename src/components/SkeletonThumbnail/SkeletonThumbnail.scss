@@ -1,0 +1,21 @@
+@mixin skeleton-thumbnail-size($size) {
+  height: $size;
+  width: $size;
+}
+
+.SkeletonThumbnail {
+  @include skeleton-shimmer;
+  @include skeleton-content;
+}
+
+.sizeSmall {
+  @include skeleton-thumbnail-size(rem(30px));
+}
+
+.sizeMedium {
+  @include skeleton-thumbnail-size(rem(40px));
+}
+
+.sizeLarge {
+  @include skeleton-thumbnail-size(rem(50px));
+}

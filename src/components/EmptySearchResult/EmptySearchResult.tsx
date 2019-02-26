@@ -6,7 +6,7 @@ import TextStyle from '../TextStyle';
 import Image from '../Image';
 import Stack from '../Stack';
 
-import emptySearch from './illustrations/empty-search.svg';
+import {emptySearch} from './illustrations';
 import styles from './EmptySearchResult.scss';
 
 export interface Props {

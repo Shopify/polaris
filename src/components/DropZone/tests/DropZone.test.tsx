@@ -28,12 +28,13 @@ const duplicateFiles = [
 const acceptedFiles = [files[0]];
 const rejectedFiles = [files[1]];
 const origGetBoundingClientRect = Element.prototype.getBoundingClientRect;
-const widths = {
-  small: 99,
-  medium: 159,
-  large: 299,
-  extraLarge: 1024,
-};
+
+enum TestSize {
+  ExtraLarge = 1024,
+  Large = 299,
+  Medium = 159,
+  Small = 99,
+}
 
 describe('<DropZone />', () => {
   let spy: jest.Mock;
@@ -69,14 +70,14 @@ describe('<DropZone />', () => {
     expect(spy).toBeCalledWith(duplicateFiles, duplicateFiles, []);
   });
 
-  it('calls the onDrop callback when a drop event is fired on document', () => {
+  it('calls the onDrop callback with files when a drop event is fired on document', () => {
     mountWithAppProvider(<DropZone dropOnPage onDrop={spy} />);
     const event = createEvent('drop', files);
     document.dispatchEvent(event);
     expect(spy).toBeCalledWith(files, files, []);
   });
 
-  it('calls the onDrop callback correctly when it accepts only jpeg', () => {
+  it('calls the onDrop callback with files, acceptedFiles, and rejectedFiles when it accepts only jpeg', () => {
     const dropZone = mountWithAppProvider(
       <DropZone onDrop={spy} accept="image/jpeg" />,
     );
@@ -85,7 +86,7 @@ describe('<DropZone />', () => {
     expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
-  it('calls the onDropAccepted callback correctly when it accepts only jpeg', () => {
+  it('calls the onDropAccepted callback with acceptedFiles when it accepts only jpeg', () => {
     const dropZone = mountWithAppProvider(
       <DropZone onDropAccepted={spy} accept="image/jpeg" />,
     );
@@ -94,7 +95,7 @@ describe('<DropZone />', () => {
     expect(spy).toBeCalledWith(acceptedFiles);
   });
 
-  it('calls the onDropRejected callback correctly when it accepts only jpeg', () => {
+  it('calls the onDropRejected callback with rejectedFiles when it accepts only jpeg', () => {
     const dropZone = mountWithAppProvider(
       <DropZone onDropRejected={spy} accept="image/jpeg" />,
     );
@@ -124,7 +125,7 @@ describe('<DropZone />', () => {
     expect(spy).toBeCalled();
   });
 
-  it('validates correctly when customValidator propertly added', () => {
+  it('validates files, acceptedFiles, and rejectedFiles when customValidator property is added', () => {
     const customValidator = (file: File) => {
       return file.type === 'image/jpeg';
     };
@@ -136,7 +137,7 @@ describe('<DropZone />', () => {
     expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
-  it('should not call any callbacks when disabled', () => {
+  it('does not call any callbacks when disabled', () => {
     const dropZone = mountWithAppProvider(
       <DropZone
         disabled
@@ -158,7 +159,7 @@ describe('<DropZone />', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should not call callbacks when not allowed multiple and a file is uploaded', () => {
+  it('does not call callbacks when not allowed multiple and a file is uploaded', () => {
     const dropZone = mountWithAppProvider(
       <DropZone
         allowMultiple={false}
@@ -233,7 +234,7 @@ describe('<DropZone />', () => {
   describe('overlayText', () => {
     const overlayText = 'overlay text';
     it('does not render the overlayText on small screens', () => {
-      setBoundingClientRect('small');
+      setBoundingClientRect(TestSize.Small);
       const dropZone = mountWithAppProvider(
         <DropZone overlayText={overlayText} />,
       );
@@ -244,8 +245,8 @@ describe('<DropZone />', () => {
       expect(caption).toHaveLength(0);
     });
 
-    it('renders a Caption containing the overlayText on medium screens', () => {
-      setBoundingClientRect('medium');
+    it('renders a Caption containing the overlayText when the bounding container is a medium size', () => {
+      setBoundingClientRect(TestSize.Medium);
       const dropZone = mountWithAppProvider(
         <DropZone overlayText={overlayText} />,
       );
@@ -254,8 +255,8 @@ describe('<DropZone />', () => {
       expect(captionText.contains(overlayText)).toBe(true);
     });
 
-    it('renders a Caption containing the overlayText on large screens', () => {
-      setBoundingClientRect('large');
+    it('renders a Caption containing the overlayText when the bounding container is a large size', () => {
+      setBoundingClientRect(TestSize.Large);
       const dropZone = mountWithAppProvider(
         <DropZone overlayText={overlayText} />,
       );
@@ -264,8 +265,8 @@ describe('<DropZone />', () => {
       expect(captionText.contains(overlayText)).toBe(true);
     });
 
-    it('renders a DisplayText containing the overlayText on extra-large screens', () => {
-      setBoundingClientRect('extraLarge');
+    it('renders a DisplayText containing the overlayText when the bounding container is an extra large size', () => {
+      setBoundingClientRect(TestSize.ExtraLarge);
       const dropZone = mountWithAppProvider(
         <DropZone overlayText={overlayText} />,
       );
@@ -278,7 +279,7 @@ describe('<DropZone />', () => {
   describe('errorOverlayText ', () => {
     const errorOverlayText = "can't drop this";
     it("doesn't render the overlayText on small screens", () => {
-      setBoundingClientRect('small');
+      setBoundingClientRect(TestSize.Small);
       const dropZone = mountWithAppProvider(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
@@ -289,8 +290,8 @@ describe('<DropZone />', () => {
       expect(caption).toHaveLength(0);
     });
 
-    it('renders a Caption containing the overlayText on medium screens', () => {
-      setBoundingClientRect('medium');
+    it('renders a Caption containing the overlayText when the bounding container is a medium size', () => {
+      setBoundingClientRect(TestSize.Medium);
       const dropZone = mountWithAppProvider(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
@@ -299,8 +300,8 @@ describe('<DropZone />', () => {
       expect(captionText.contains(errorOverlayText)).toBe(true);
     });
 
-    it('renders a Caption containing the overlayText on large screens', () => {
-      setBoundingClientRect('large');
+    it('renders a Caption containing the overlayText when the bounding container is a large size', () => {
+      setBoundingClientRect(TestSize.Large);
       const dropZone = mountWithAppProvider(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
@@ -309,8 +310,8 @@ describe('<DropZone />', () => {
       expect(captionText.contains(errorOverlayText)).toBe(true);
     });
 
-    it('renders a DisplayText containing the overlayText on extra-large screens', () => {
-      setBoundingClientRect('extraLarge');
+    it('renders a DisplayText containing the overlayText when the bounding container is an extra large size', () => {
+      setBoundingClientRect(TestSize.ExtraLarge);
       const dropZone = mountWithAppProvider(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
@@ -330,11 +331,11 @@ function createEvent(name: string, files: any) {
   return evt;
 }
 
-function setBoundingClientRect(size: keyof typeof widths) {
+function setBoundingClientRect(size: TestSize) {
   Element.prototype.getBoundingClientRect = jest.fn(() => {
     return {
-      width: widths[size],
-      height: 100,
+      width: size,
+      height: size,
       top: 0,
       left: 0,
       bottom: 0,
