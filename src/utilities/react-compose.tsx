@@ -19,6 +19,7 @@ export default function compose<Props>(
     const Result = reactCompose(...wrappingFunctions)(
       OriginalComponent,
     ) as ReactComponent<ComposedProps>;
+    // eslint-disable-next-line react/display-name
     return React.forwardRef<Props>(
       (props: Props, ref: React.RefObject<any>) => {
         return (

@@ -1,6 +1,6 @@
 $accent-height: 3px;
 $heading-offset: rem(2px);
-$intermediate-spacing: rem(12px);
+$intermediate-spacing: spacing(base-tight);
 $ribbon-flex-basis: rem(32px);
 $secondary-action-vertical-padding: 0.5 * (control-height() - line-height(body));
 $secondary-action-horizontal-padding: 1.5 * spacing(tight);

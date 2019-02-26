@@ -17,11 +17,10 @@
 }
 
 .Header {
-  padding: spacing() spacing() rem(12px) spacing();
+  padding: spacing() spacing() 0;
 
   @include page-content-when-not-fully-condensed {
-    padding-right: spacing(loose);
-    padding-left: spacing(loose);
+    padding: spacing(loose) spacing(loose) 0;
   }
 }
 
@@ -29,7 +28,7 @@
   padding: spacing();
 
   @include page-content-when-not-fully-condensed {
-    padding: spacing() spacing(loose);
+    padding: spacing(loose);
   }
 
   + .Section {
@@ -43,7 +42,6 @@
 
 .Section-subdued {
   background-color: color('sky', 'lighter');
-  border-top: border-width() solid color('sky');
 }
 
 .SectionHeader {
@@ -63,14 +61,9 @@
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: rem(12px) spacing() spacing() spacing();
+  padding: 0 spacing() spacing();
 
   @include page-content-when-not-fully-condensed {
-    padding-right: spacing(loose);
-    padding-left: spacing(loose);
-  }
-
-  .Section-subdued + & {
-    border-top: border-width() solid color('sky');
+    padding: 0 spacing(loose) spacing(loose);
   }
 }

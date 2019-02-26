@@ -58,16 +58,6 @@ describe('<TextField />', () => {
     expect(input.prop('prefix')).toBeUndefined();
   });
 
-  it('focuses input and calls onFocus() when focused prop has been updated to true', () => {
-    const element = mountWithAppProvider(
-      <TextField label="TextField" onChange={noop} />,
-    );
-    element.setProps({focused: true});
-    expect(element.getDOMNode().querySelector('input')).toBe(
-      document.activeElement,
-    );
-  });
-
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
@@ -140,6 +130,42 @@ describe('<TextField />', () => {
       );
       textField.setProps({});
       expect(textField.find('input').prop('id')).toBe(id);
+    });
+  });
+
+  describe('focused', () => {
+    it('input is in focus state if focused is true', () => {
+      const element = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} focused />,
+      );
+
+      expect(element.getDOMNode().querySelector('input')).toBe(
+        document.activeElement,
+      );
+    });
+
+    it('focuses input if focused is toggled', () => {
+      const element = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} />,
+      );
+
+      element.setProps({focused: true});
+
+      expect(element.getDOMNode().querySelector('input')).toBe(
+        document.activeElement,
+      );
+    });
+
+    it('blurs input if focused is toggled', () => {
+      const element = mountWithAppProvider(
+        <TextField label="TextField" onChange={noop} focused />,
+      );
+
+      element.setProps({focused: false});
+
+      expect(element.getDOMNode().querySelector('input')).not.toBe(
+        document.activeElement,
+      );
     });
   });
 
