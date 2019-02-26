@@ -1,5 +1,4 @@
 import get from 'lodash/get';
-import replace from 'lodash/replace';
 import {
   TranslationDictionary,
   PrimitiveReplacementDictionary,
@@ -20,7 +19,7 @@ export default function translate(
   }
 
   if (replacements) {
-    return replace(text, REPLACE_REGEX, (match: string) => {
+    return text.replace(REPLACE_REGEX, (match: string) => {
       const replacement: string = match.substring(1, match.length - 1);
 
       if (!replacements.hasOwnProperty(replacement)) {
