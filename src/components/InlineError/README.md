@@ -112,7 +112,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-- Use the required `fieldID` prop to give the inline error a unique `id`. This ties the error to a form field using `aria-describedby` so it is conveyed to screen reader users.
+- Use the required `fieldID` prop to give the inline error a unique `id`. This ties the error to a form field using `aria-describedby` so that it's conveyed to screen reader users.
 - Use the required `message` prop to provide the text of the error.
 - The inline error [icon](/design/icons) helps visually identify the error message for merchants who have difficulty seeing [colors](/design/colors) or who use settings that remove color from the page.
 
