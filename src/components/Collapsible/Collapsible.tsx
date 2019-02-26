@@ -68,7 +68,6 @@ export class Collapsible extends React.Component<CombinedProps, State> {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({open: willOpen}: Props) {
     const {open} = this.props;
 
