@@ -5,7 +5,7 @@ describe('capitalize', () => {
     expect(capitalize('hello')).toBe('Hello');
   });
 
-  it('corrects the casing on a word', () => {
+  it('gives a word proper casing', () => {
     expect(capitalize('HELLO')).toBe('Hello');
   });
 
