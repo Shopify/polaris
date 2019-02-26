@@ -30,4 +30,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Removed all occurrences of `_.replace` ([#1012](https://github.com/Shopify/polaris-react/pull/1012))
+
 ### Deprecations
