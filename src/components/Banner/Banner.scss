@@ -174,12 +174,14 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   &:focus > .Text {
-    &::before {
-      opacity: 1;
-    }
+    @include plain-button-backdrop;
 
     &::after {
       opacity: 0;
+    }
+
+    @media (-ms-high-contrast: active) {
+      outline: 2px dotted invert;
     }
   }
 }
@@ -194,10 +196,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     position: absolute;
   }
 
-  &::before {
-    @include plain-button-backdrop;
-    opacity: 0;
-  }
+  // &::before {
+  //   @include plain-button-backdrop;
+  //   opacity: 0;
+  // }
 
   &::after {
     bottom: 0;

@@ -42,6 +42,10 @@
     border-color: color('indigo');
     outline: 0;
     box-shadow: 0 0 0 1px color('indigo');
+
+    @media (-ms-high-contrast: active) {
+      outline: 2px dotted invert;
+    }
   }
 
   &:active {
@@ -161,12 +165,14 @@
 }
 
 @mixin plain-button-backdrop() {
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  left: -5px;
-  right: -5px;
-  display: block;
+  // position: absolute;
+  // top: -2px;
+  // bottom: -2px;
+  // left: -5px;
+  // right: -5px;
+  // display: block;
+  padding: 2px 5px;
+  margin: -2px -5px;
   background: plain-button-background();
   border-radius: border-radius();
   transition: opacity duration() easing();

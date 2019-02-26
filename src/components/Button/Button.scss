@@ -132,8 +132,18 @@ $spinner-size: rem(20px);
     color: color('blue', 'dark');
   }
 
-  &:focus > .Content::after {
-    opacity: 1;
+  &:focus {
+    @media (-ms-high-contrast: active) {
+      outline: none;
+    }
+  }
+
+  &:focus > .Content {
+    @include plain-button-backdrop;
+
+    @media (-ms-high-contrast: active) {
+      outline: 2px dotted invert;
+    }
   }
 
   &.fullWidth {
@@ -179,11 +189,11 @@ $spinner-size: rem(20px);
     }
   }
 
-  > .Content::after {
-    @include plain-button-backdrop;
-    content: '';
-    opacity: 0;
-  }
+  // > .Content {
+  //   @include plain-button-backdrop;
+  //   content: '';
+  //   opacity: 0;
+  // }
 
   .Icon {
     margin-left: 0;
