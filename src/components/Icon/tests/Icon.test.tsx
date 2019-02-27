@@ -1,4 +1,3 @@
-import {debug} from 'util';
 import * as React from 'react';
 import {AddMinor} from '@shopify/polaris-icons';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
