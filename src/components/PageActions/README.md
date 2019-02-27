@@ -118,5 +118,5 @@ Not all page actions require a secondary action.
 ## Related components
 
 - To see how page actions are used on a page, see the [page component](/components/structure/page)
-- To create a regular call to action, use the [button component](/components/actions/button) to expand content in place on the page
+- To create a call to action within the context of other page content, use the [button component](/components/actions/button)
 - To let merchants move through a collection of items that spans multiple pages, see the [pagination component](/components/navigation/pagination)
