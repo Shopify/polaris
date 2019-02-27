@@ -129,7 +129,7 @@ describe('createAppProviderContext()', () => {
       type: 'actionType',
       clientInterface: {
         name: '@shopify/polaris',
-        version: '9000',
+        version: '{{POLARIS_VERSION}}',
       },
     });
   });
