@@ -81,7 +81,7 @@ function failedUpdateMessage(repository, version) {
   3. Create a new branch based on the version that failed "git checkout -b update-polaris-v${version}"
   4. Update "@shopify/polaris" by running "npx yarn upgrade @shopify/polaris@${version}"
   5. Add the changed files to git by running "git add package.json yarn.lock"
-  6. Commit the changes with "git commit -m 'Update @shopify/polaris to ${version}'
+  6. Commit the changes with "git commit -m 'Update @shopify/polaris to ${version}'"
   7. Push the changes with "git push origin update-polaris-v${version}"
   8. Create a new pull request for the branch in "${repository}"`;
 }
