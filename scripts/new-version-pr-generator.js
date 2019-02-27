@@ -10,7 +10,7 @@ const {version: PACKAGE_VERSION} = require('../package.json');
 const secrets = require('../secrets.json');
 const Retry = require('./utilities/retry');
 
-const repositories = ['polaris-styleguide'];
+const repositories = ['polaris-styleguide', 'web'];
 
 const YARN_VERSION = yaml
   .safeLoad(readFileSync(pathResolve(__dirname, '..', 'dev.yml'), 'utf8'))
