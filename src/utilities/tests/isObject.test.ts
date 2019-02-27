@@ -1,4 +1,4 @@
-import isObject from '../isObject';
+import {isObject} from '../isObject';
 
 describe('isObject', () => {
   it('returns false for null', () => {
