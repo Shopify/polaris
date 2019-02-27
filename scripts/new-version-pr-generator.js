@@ -10,7 +10,7 @@ const {version: PACKAGE_VERSION} = require('../package.json');
 const secrets = require('../secrets.json');
 const Retry = require('./utilities/retry');
 
-const repositories = ['polaris-styleguide', 'web'];
+const repositories = ['polaris-styleguide'];
 
 const YARN_VERSION = yaml
   .safeLoad(readFileSync(pathResolve(__dirname, '..', 'dev.yml'), 'utf8'))
@@ -74,7 +74,7 @@ If tests fail, you may have to troubleshoot the problem locally.
 }
 
 function failedUpdateMessage(repository, version) {
-  return `It seems your automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps:
+  return `The automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps:
 
   1. Checkout "${repository}"
   2. Get the latest version of master "git checkout master && git pull"
