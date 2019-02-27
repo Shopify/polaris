@@ -391,5 +391,7 @@ Title metadata appears immediately after the page’s title. Use it to communica
 
 ## Related components
 
-- To lay out the content within a page, [use the layout component](/components/structure/layout)
-- When using `Page` within an [embedded app](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Shopify App Bridge
+- To lay out the content within a page, use the [layout component](/components/structure/layout)
+- To add pagination to a page, see the [pagination component](/components/navigation/pagination)
+- To add primary and secondary calls to action to the bottom of a page, see the [page actions component](/components/structure/page-actions)
+- When you use the page component within an [embedded app](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md), rendering is delegated to the Shopify App Bridge
