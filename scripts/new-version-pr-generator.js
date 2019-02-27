@@ -44,7 +44,7 @@ function pullRequestTemplate(repository, version) {
 
 See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${version}
 
-cc @kaelig @dfmcphee @amrocha @BPScott
+cc @Shopify/polaris-reviewers
 
 ---
 
@@ -106,7 +106,6 @@ const tasks = repositories.map((repository) => {
 
       const commands = [
         `git checkout -b update-polaris-${releaseVersion}`,
-        'npm config set @shopify:registry https://registry.npmjs.org',
         `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
           'v',
           '',
