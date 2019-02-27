@@ -20,7 +20,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
-- Made documentation for properties only available in a stand-alone context more explicit for `Modal` ([#1065](https://github.com/Shopify/polaris-react/pull/1065)
+- Updated related component documentation for `Page`, `Page actions`, and `Pagination` ([#1103](https://github.com/Shopify/polaris-react/pull/1103))
+- Made documentation for properties only available in a stand-alone context more explicit for `Modal` ([#1065](https://github.com/Shopify/polaris-react/pull/1065))
 - Added accessibility documentation about `Banner` ([#1071](https://github.com/Shopify/polaris-react/pull/1071))
 - Added accessibility documentation for `InlineError` ([#1073](https://github.com/Shopify/polaris-react/pull/1073))
 - Added accessibility documentation for `Loading`([#1075](https://github.com/Shopify/polaris-react/pull/1075))
