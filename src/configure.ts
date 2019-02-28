@@ -13,4 +13,4 @@ if (typeof window !== 'undefined') {
   window.Polaris.VERSION = '{{POLARIS_VERSION}}';
 }
 
-export const POLARIS_VERSION = '{{POLARIS_VERSION}}';
+export const polarisVersion = '{{POLARIS_VERSION}}';
