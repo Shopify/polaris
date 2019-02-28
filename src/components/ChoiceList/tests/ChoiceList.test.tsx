@@ -245,33 +245,24 @@ describe('<ChoiceList />', () => {
       );
       const choiceElements = choiceList.find(Checkbox);
 
-      changeCheckedForChoice(choiceElements.at(1), true);
+      changeCheckedForChoice(choiceElements.at(1));
       expect(spy).toHaveBeenLastCalledWith(['one', 'two'], 'MyChoiceList');
       choiceList.setProps({selected});
 
-      changeCheckedForChoice(choiceElements.at(2), true);
+      changeCheckedForChoice(choiceElements.at(2));
       expect(spy).toHaveBeenLastCalledWith(
         ['one', 'two', 'three'],
         'MyChoiceList',
       );
       choiceList.setProps({selected});
 
-      changeCheckedForChoice(choiceElements.at(0), false);
+      changeCheckedForChoice(choiceElements.at(0));
       expect(spy).toHaveBeenLastCalledWith(['two', 'three'], 'MyChoiceList');
       choiceList.setProps({selected});
     });
 
-    function changeCheckedForChoice(
-      choice: ReactWrapper<any, any>,
-      checked: boolean,
-      triggerChange = true,
-    ) {
-      const input = choice.find('input');
-      (input as any).instance().checked = checked;
-
-      if (triggerChange) {
-        input.simulate('change');
-      }
+    function changeCheckedForChoice(choice: ReactWrapper<any, any>) {
+      choice.simulate('click');
     }
   });
 

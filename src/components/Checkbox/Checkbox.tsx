@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
-import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
+import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {helpTextID} from '../Choice';
 import Icon from '../Icon';
-import {Error} from '../../types';
+import {Error, Key} from '../../types';
 
 import styles from './Checkbox.scss';
 
@@ -42,94 +43,114 @@ export type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
 
-function Checkbox({
-  id = getUniqueID(),
-  label,
-  labelHidden,
-  helpText,
-  checked = false,
-  error,
-  disabled,
-  onChange,
-  onFocus,
-  onBlur,
-  name,
-  value,
-}: CombinedProps) {
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if (onChange == null) {
+class Checkbox extends React.PureComponent<CombinedProps, never> {
+  private inputNode = React.createRef<HTMLInputElement>();
+
+  @autobind
+  handleInput() {
+    const {onChange, id} = this.props;
+
+    if (onChange == null || this.inputNode.current == null) {
       return;
     }
-    const {currentTarget} = event;
-    onChange(currentTarget.checked, id);
 
-    if (checked && !currentTarget.checked) {
-      currentTarget.focus();
+    onChange(!this.inputNode.current.checked, id as any);
+    this.inputNode.current.focus();
+  }
+
+  @autobind
+  handleKeyUp(event: React.KeyboardEvent) {
+    const {keyCode} = event;
+
+    if (keyCode !== Key.Space) return;
+    this.handleInput();
+  }
+
+  render() {
+    const {
+      id = getUniqueID(),
+      label,
+      labelHidden,
+      helpText,
+      checked = false,
+      error,
+      disabled,
+      onFocus,
+      onBlur,
+      name,
+      value,
+    } = this.props;
+    const describedBy: string[] = [];
+    if (error) {
+      describedBy.push(`${id}Error`);
     }
-  }
+    if (helpText) {
+      describedBy.push(helpTextID(id));
+    }
+    const ariaDescribedBy = describedBy.length
+      ? describedBy.join(' ')
+      : undefined;
 
-  const describedBy: string[] = [];
-  if (error) {
-    describedBy.push(`${id}Error`);
-  }
-  if (helpText) {
-    describedBy.push(helpTextID(id));
-  }
-  const ariaDescribedBy = describedBy.length
-    ? describedBy.join(' ')
-    : undefined;
+    const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
 
-  const wrapperClassName = classNames(styles.Checkbox, error && styles.error);
+    const isIndeterminate = checked === 'indeterminate';
+    const isChecked = !isIndeterminate && Boolean(checked);
 
-  const isIndeterminate = checked === 'indeterminate';
-  const isChecked = !isIndeterminate && Boolean(checked);
+    const indeterminateAttributes = isIndeterminate
+      ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
+      : {'aria-checked': isChecked};
 
-  const indeterminateAttributes = isIndeterminate
-    ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
-    : {'aria-checked': isChecked};
+    const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
 
-  const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
+    const inputClassName = classNames(
+      styles.Input,
+      isIndeterminate && styles['Input-indeterminate'],
+    );
 
-  const inputClassName = classNames(
-    styles.Input,
-    isIndeterminate && styles['Input-indeterminate'],
-  );
-
-  return (
-    /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
-    <Choice
-      id={id}
-      label={label}
-      labelHidden={labelHidden}
-      helpText={helpText}
-      error={error}
-      disabled={disabled}
-    >
-      <span className={wrapperClassName}>
-        <input
-          id={id}
-          name={name}
-          value={value}
-          type="checkbox"
-          checked={isChecked}
-          disabled={disabled}
-          className={inputClassName}
-          onChange={handleChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          aria-invalid={error != null}
-          aria-describedby={ariaDescribedBy}
-          role="checkbox"
-          {...indeterminateAttributes}
-        />
-        <span className={styles.Backdrop} />
-        <span className={styles.Icon}>
-          <Icon source={iconSource} />
+    return (
+      /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      <Choice
+        id={id}
+        label={label}
+        labelHidden={labelHidden}
+        helpText={helpText}
+        error={error}
+        disabled={disabled}
+        onClick={this.handleInput}
+      >
+        <span className={wrapperClassName}>
+          <input
+            onKeyUp={this.handleKeyUp}
+            ref={this.inputNode}
+            id={id}
+            name={name}
+            value={value}
+            type="checkbox"
+            checked={isChecked}
+            disabled={disabled}
+            className={inputClassName}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onClick={stopPropagation}
+            onChange={noop}
+            aria-invalid={error != null}
+            aria-describedby={ariaDescribedBy}
+            role="checkbox"
+            {...indeterminateAttributes}
+          />
+          <span className={styles.Backdrop} />
+          <span className={styles.Icon}>
+            <Icon source={iconSource} />
+          </span>
         </span>
-      </span>
-    </Choice>
-    /* eslint-enable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
-  );
+      </Choice>
+      /* eslint-enable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+    );
+  }
+}
+
+function stopPropagation<E>(event: React.MouseEvent<E>) {
+  event.stopPropagation();
 }
 
 export default withAppProvider<Props>()(Checkbox);
