@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import get from '../../../../utilities/get';
+import {get} from '../../../../utilities/get';
 import defaultTranslation from '../../../../locales';
 import {
   TranslationDictionary,
