@@ -23,7 +23,7 @@ describe('<Checkbox />', () => {
     expect(element.find('input').prop('checked')).toBe(true);
   });
 
-  it('does not propagation click events from input element', () => {
+  it('does not propagate click events from input element', () => {
     const spy = jest.fn();
     const element = mountWithAppProvider(
       <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
