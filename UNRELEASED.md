@@ -18,6 +18,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed missing rounded corners on `Tag` button states ([#1078](https://github.com/Shopify/polaris-react/pull/1078))
+- Removed reference to `window.Polaris`, which in some cases could be undefined ([#1104](https://github.com/Shopify/polaris-react/issues/1104))
 
 ### Documentation
 

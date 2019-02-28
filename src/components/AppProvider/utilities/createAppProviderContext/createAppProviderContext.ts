@@ -10,6 +10,7 @@ import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';
 import Link from '../Link';
+import {polarisVersion} from '../../../../configure';
 
 export interface CreateAppProviderContext extends AppProviderProps {
   stickyManager?: StickyManager;
@@ -61,7 +62,7 @@ export const setClientInterfaceHook: DispatchActionHook = function(next) {
   return function(action) {
     action.clientInterface = {
       name: '@shopify/polaris',
-      version: window.Polaris.VERSION,
+      version: polarisVersion,
     };
     return next(action);
   };
