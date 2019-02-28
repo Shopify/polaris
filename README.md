@@ -104,7 +104,7 @@ We use Storybook to create a simple, hot-reloading playground for development on
 
 ### Testing on mobile or a virtual machine
 
-To test the changes on a mobile or virtual machine, you will need to open the source of the iFrame into your mobile device. To do this you should:
+To test the changes on a mobile or virtual machine, you will need to open the source of the iFrame, to do this:
 
 1.  Run `yarn dev`
 1.  Make sure you virtual machine and mobile device are on the same network
