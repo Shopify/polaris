@@ -242,3 +242,13 @@ export const contentContextTypes: ValidationMap<any> = {
 export interface WithContextTypes<IJ> {
   context: IJ;
 }
+
+export enum TypeOf {
+  Undefined = 'undefined',
+  Object = 'object',
+  Boolean = 'boolean',
+  Number = 'number',
+  String = 'string',
+  Symbol = 'symbol',
+  Function = 'function',
+}
