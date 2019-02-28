@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Track Polaris version information in App Bridge actions
 - Re-added the navigation's border-right ([#1096](https://github.com/Shopify/polaris-react/pull/1096))
+- Changed max width on search to 694px ([#1107](https://github.com/Shopify/polaris-react/issues/1107))
 
 ### Bug fixes
 
