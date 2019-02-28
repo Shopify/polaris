@@ -13,6 +13,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Track Polaris version information in App Bridge actions
+- Re-added the navigation's border-right ([#1096](https://github.com/Shopify/polaris-react/pull/1096))
 
 ### Bug fixes
 
