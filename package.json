@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -62,7 +62,7 @@
     "heroku-postbuild": "yarn run copy-polaris-tokens",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
-    "storybook": "start-storybook -p 6006 --quiet",
+    "storybook": "start-storybook -p 6006 -c .storybook --quiet",
     "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static"
   },
   "stylelint": {
@@ -180,7 +180,7 @@
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.1",
     "@shopify/polaris-icons": "^2.0.0",
-    "@shopify/polaris-tokens": "^2.1.1",
+    "@shopify/polaris-tokens": "^2.3.0",
     "@shopify/react-compose": "^0.1.6",
     "@shopify/react-utilities": "^2.0.3",
     "@types/prop-types": "^15.5.5",

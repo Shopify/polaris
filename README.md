@@ -33,7 +33,7 @@ yarn add @shopify/polaris
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.8.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.9.0/polaris.min.css"
 />
 ```
 
@@ -79,7 +79,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.8.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.9.0/polaris.min.css"
 />
 ```
 
@@ -104,8 +104,11 @@ We use Storybook to create a simple, hot-reloading playground for development on
 
 ### Testing on mobile or a virtual machine
 
+To test the changes on a mobile or virtual machine, you will need to open the source of the iFrame, to do this:
+
 1.  Run `yarn dev`
-1.  Visit http://YOUR_IP_ADDRESS:ASSIGNED_PORT in a browser window from within your virtual machine or mobile device on the same network
+1.  Make sure you virtual machine and mobile device are on the same network
+1.  Open http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?selectedKind=Playground&selectedStory=Playground in your mobile device or virtual machine
 
 ### Testing in a consuming project
 

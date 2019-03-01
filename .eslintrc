@@ -31,6 +31,7 @@
     "import/no-named-as-default": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
+    "react/jsx-fragments": ["error", "element"],
     "shopify/jsx-no-complex-expressions": "off",
     "shopify/no-ancestor-directory-import": "error",
     "jsx-a11y/label-has-for": [
