@@ -196,11 +196,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     position: absolute;
   }
 
-  // &::before {
-  //   @include plain-button-backdrop;
-  //   opacity: 0;
-  // }
-
   &::after {
     bottom: 0;
     left: 0;

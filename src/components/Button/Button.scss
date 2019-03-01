@@ -139,11 +139,13 @@ $spinner-size: rem(20px);
   }
 
   &:focus > .Content {
-    @include plain-button-backdrop;
-
     @media (-ms-high-contrast: active) {
       outline: 2px dotted invert;
     }
+  }
+
+  &:focus:not(.iconOnly) > .Content {
+    @include plain-button-backdrop;
   }
 
   &.fullWidth {
@@ -188,12 +190,6 @@ $spinner-size: rem(20px);
       @include recolor-icon(color('sky', 'dark'));
     }
   }
-
-  // > .Content {
-  //   @include plain-button-backdrop;
-  //   content: '';
-  //   opacity: 0;
-  // }
 
   .Icon {
     margin-left: 0;
