@@ -620,6 +620,48 @@ class ModalExample extends React.Component {
 }
 ```
 
+### Modal with scroll listener
+
+<!-- example-for: web -->
+
+Use to implement infinite scroll of modal content.
+
+```jsx
+class ModalExample extends React.Component {
+  state = {
+    active: true,
+  };
+
+  render() {
+    const {active} = this.state;
+
+    return (
+      <div style={{height: '500px'}}>
+        <Button onClick={this.handleChange}>Open</Button>
+        <Modal
+          open
+          title="Scrollable content"
+          onClose={this.toggleModalVisibility}
+          onScrolledToBottom={() => alert('Scrolled to bottom')}
+        >
+          {Array.from({length: 50}, (_, index) => (
+            <Modal.Section>
+              <TextContainer>
+                <p>Item #{index}</p>
+              </TextContainer>
+            </Modal.Section>
+          ))}
+        </Modal>
+      </div>
+    );
+  }
+
+  toggleModalVisibility = () => {
+    this.setState(({active}) => ({active: !active}));
+  };
+}
+```
+
 ### Warning modal
 
 <!-- example-for: android, ios -->
