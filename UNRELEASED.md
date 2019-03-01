@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Track Polaris version information in App Bridge actions
 - Re-added the navigation’s border-right ([#1096](https://github.com/Shopify/polaris-react/pull/1096))
+- Added `onScrolledToBottom` prop to `Modal` ([#1117](https://github.com/Shopify/polaris-react/pull/1117))
 
 ### Bug fixes
 
