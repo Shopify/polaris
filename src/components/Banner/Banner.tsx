@@ -13,15 +13,15 @@ import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
-import styles from './Banner.scss';
-
 import {
   CircleCheckMarkMajorTwotone,
   FlagMajorTwotone,
   CircleAlertMajorTwotone,
   CircleBarredMajorTwotone,
   CircleInformationMajorTwotone,
-} from './icons';
+} from '../../icons';
+
+import styles from './Banner.scss';
 
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
