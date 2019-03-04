@@ -52,5 +52,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Deprecations
 
-- Passing a React Element into the Icon component is now deprecated ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
+- Passing a React Element into the Icon component is now deprecated in favor of passing a React Component ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
 - The untrusted prop in the Icon component is now deprecated ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
