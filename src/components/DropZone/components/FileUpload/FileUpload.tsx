@@ -16,7 +16,7 @@ import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
 import {DropZoneContext} from '../../types';
-import {DragDropMajorMonotone} from '../../icons';
+import {DragDropMajorMonotone} from '../../../../icons';
 import {fileUpload, imageUpload} from '../../images';
 
 import {Consumer} from '../Context';

@@ -9,7 +9,7 @@ import {
   CircleCheckMarkMajorTwotone,
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
-} from '../icons';
+} from '../../../icons';
 
 describe('<Banner />', () => {
   it('renders a title', () => {

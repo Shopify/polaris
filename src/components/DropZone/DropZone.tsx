@@ -16,9 +16,9 @@ import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import {FileUpload, Provider} from './components';
+import {DragDropMajorMonotone, CircleAlertMajorMonotone} from '../../icons';
 
-import {DragDropMajorMonotone, CircleAlertMajorMonotone} from './icons';
+import {FileUpload, Provider} from './components';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 import {DropZoneContext} from './types';
