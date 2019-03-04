@@ -1,7 +1,7 @@
 export {
-  CircleCheckMarkMajor,
-  FlagMajor,
-  CircleAlertMajor,
-  CircleBarredMajor,
-  CircleInformationMajor,
+  CircleCheckMarkMajorTwotone,
+  FlagMajorTwotone,
+  CircleAlertMajorTwotone,
+  CircleBarredMajorTwotone,
+  CircleInformationMajorTwotone,
 } from '@shopify/polaris-icons';

@@ -1,1 +1,4 @@
-export {DragDropMajor, AlertCircleMajor} from '@shopify/polaris-icons';
+export {
+  DragDropMajorMonotone,
+  CircleAlertMajorMonotone,
+} from '@shopify/polaris-icons';
