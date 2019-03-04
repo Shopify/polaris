@@ -46,7 +46,7 @@ describe('<Icon />', () => {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('renders a React Element when source is given a React Component', () => {
+    it('renders a React Element when source is given a React Stateless Functional Component', () => {
       const element = shallowWithAppProvider(<Icon source={AddMinor} />);
       expect(element.find(AddMinor)).toHaveLength(1);
     });
