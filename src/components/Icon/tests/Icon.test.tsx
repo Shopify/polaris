@@ -67,7 +67,7 @@ describe('<Icon />', () => {
     it('spits out a console warning when rendering an untrusted SVG', () => {
       const spy = jest.spyOn(global.console, 'warn');
       const svg =
-        "<svg><path d="M10 10"/></svg>";
+        "<svg><path d='M10 10'/></svg>";
       shallowWithAppProvider(<Icon source={svg} untrusted />);
       expect(spy).toHaveBeenCalled();
     });
