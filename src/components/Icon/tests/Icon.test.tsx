@@ -51,7 +51,7 @@ describe('<Icon />', () => {
       expect(element.find(AddMinor)).toHaveLength(1);
     });
 
-    it('renders a React E when source is given a React Component', () => {
+    it('renders a React Element when source is given a React Component', () => {
       const component = <Button>Icon</Button>;
       const element = shallowWithAppProvider(<Icon source={component} />);
       expect(element.find(Button)).toHaveLength(1);
