@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {serverAppBridge, LifecycleHook} from '@shopify/app-bridge';
+import * as appBridge from '@shopify/app-bridge';
 import * as redirect from '@shopify/app-bridge/client/redirect';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
@@ -10,7 +10,6 @@ import Intl from '../../Intl';
 import Link from '../../Link';
 import {StickyManager} from '../../withSticky';
 import ScrollLockManager from '../../ScrollLockManager';
-import * as appBridge from '@shopify/app-bridge';
 
 const actualIsServer = targets.isServer;
 
@@ -21,7 +20,6 @@ function mockIsServer(value: boolean) {
 let createAppSpy = jest.spyOn(appBridge, 'default');
 
 describe('createAppProviderContext()', () => {
-
   beforeEach(() => {
     jest.clearAllMocks();
     createAppSpy = jest.spyOn(appBridge, 'default');
@@ -96,7 +94,7 @@ describe('createAppProviderContext()', () => {
     const apiKey = '4p1k3y';
     const context = createAppProviderContext({apiKey});
 
-    expect(context.polaris.appBridge).toEqual(serverAppBridge);
+    expect(context.polaris.appBridge).toEqual(appBridge.serverAppBridge);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
@@ -109,7 +107,7 @@ describe('createAppProviderContext()', () => {
     createAppProviderContext({apiKey});
 
     expect(set).toHaveBeenCalledWith(
-      LifecycleHook.DispatchAction,
+      appBridge.LifecycleHook.DispatchAction,
       setClientInterfaceHook,
     );
   });
