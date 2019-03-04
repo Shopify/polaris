@@ -228,11 +228,11 @@ function Icon({
   } else if (isBundledIcon(source)) {
     SourceComponent = BUNDLED_ICONS[source];
     contentMarkup = <SourceComponent {...defaultIconProps} />;
-  } else if (
-    typeof source === 'function' &&
-    React.isValidElement(<SourceComponent />)
-  ) {
-    contentMarkup = <SourceComponent {...defaultIconProps} />;
+  } else if (typeof source === 'function') {
+    const sourceElement = <SourceComponent {...defaultIconProps} />;
+    if (React.isValidElement(sourceElement)) {
+      contentMarkup = sourceElement;
+    }
   } else if (React.isValidElement(source)) {
     // eslint-disable-next-line no-console
     console.warn(
