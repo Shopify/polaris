@@ -56,16 +56,30 @@ function Spinner({
   );
 
   const spinnerSVG = size === 'large' ? spinnerLarge : spinnerSmall;
+  let spinnerElement;
 
-  return (
-    <svg
-      viewBox={spinnerSVG.viewBox}
-      dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
-      className={className}
-      aria-label={accessibilityLabel}
-      role="status"
-    />
-  );
+  if (typeof spinnerSVG === 'function') {
+    const SpinnerComponent = spinnerSVG;
+    spinnerElement = (
+      <SpinnerComponent
+        className={className}
+        aria-label={accessibilityLabel}
+        role="status"
+      />
+    );
+  } else {
+    spinnerElement = (
+      <svg
+        viewBox={spinnerSVG.viewBox}
+        dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
+        className={className}
+        aria-label={accessibilityLabel}
+        role="status"
+      />
+    );
+  }
+
+  return spinnerElement;
 }
 
 export default withAppProvider<Props>()(Spinner);
