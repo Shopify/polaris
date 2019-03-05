@@ -17,20 +17,21 @@ function mockIsServer(value: boolean) {
   (targets as any).isServer = value;
 }
 
-let createAppSpy = jest.spyOn(appBridge, 'default');
-
 describe('createAppProviderContext()', () => {
+  let createAppSpy: jest.SpyInstance<any>;
+
   beforeEach(() => {
-    jest.clearAllMocks();
-    createAppSpy = jest.spyOn(appBridge, 'default');
-    createAppSpy.mockImplementation((args) => args);
+    createAppSpy = jest
+      .spyOn(appBridge, 'default');
   });
 
   afterEach(() => {
     mockIsServer(actualIsServer);
+    createAppSpy.mockRestore();
   });
 
   it('returns the right context without properties', () => {
+    createAppSpy.mockImplementation((args) => args);
     const context = createAppProviderContext();
     const mockContext = {
       polaris: {
@@ -48,6 +49,16 @@ describe('createAppProviderContext()', () => {
   });
 
   it('returns the right context with properties', () => {
+    createAppSpy.mockImplementation((args) => ({
+      ...args,
+      dispatch: () => {},
+      localOrigin: '',
+      featuresAvailable: () => {},
+      getState: () => {},
+      subscribe: () => {},
+      error: () => {},
+    }));
+
     const i18n = {
       Polaris: {
         Common: {
@@ -80,28 +91,17 @@ describe('createAppProviderContext()', () => {
           apiKey,
           forceRedirect: undefined,
           shopOrigin: undefined,
+          dispatch: expect.any(Function),
+          localOrigin: '',
+          featuresAvailable: expect.any(Function),
+          getState: expect.any(Function),
+          subscribe: expect.any(Function),
+          error: expect.any(Function),
         },
       },
     };
 
     expect(context).toEqual(mockContext);
-  });
-
-  it('initializes a noop app bridge if server side rendering', () => {
-    createAppSpy.mockRestore();
-    jest.spyOn(redirect, 'getWindow').mockReturnValueOnce(undefined);
-
-    const apiKey = '4p1k3y';
-    const context = createAppProviderContext({apiKey});
-    const serverAppBridge = {
-      dispatch: expect.any(Function),
-      localOrigin: '',
-      featuresAvailable: expect.any(Function),
-      getState: expect.any(Function),
-      subscribe: expect.any(Function),
-      error: expect.any(Function),
-    };
-    expect(context.polaris.appBridge).toEqual(serverAppBridge);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
