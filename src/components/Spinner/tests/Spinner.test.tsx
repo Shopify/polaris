@@ -64,21 +64,19 @@ describe('<Spinner />', () => {
       setIconDataObject();
       const spinner = shallowWithAppProvider(<Spinner />);
       const svgHtml = spinner.find('svg').prop('dangerouslySetInnerHTML');
-      expect(svgHtml && svgHtml.__html).toBe("Dance The Night Away");
+      expect(svgHtml && svgHtml.__html).toBe('Dance The Night Away');
     });
-
-
-
+  });
 });
 
 function MockReactSpinner() {
-  return (<div>DALLA DALLA</div>);
+  return <div>DALLA DALLA</div>;
 }
 
 const mockObjectSpinner = {
-  body: "Dance The Night Away",
-  viewBox: "0 0 20 20",
-}
+  body: 'Dance The Night Away',
+  viewBox: '0 0 20 20',
+};
 
 function setIconDataReact() {
   Object.keys(icons).forEach((key) => {
