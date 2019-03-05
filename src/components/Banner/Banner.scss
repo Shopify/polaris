@@ -175,13 +175,10 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
   &:focus > .Text {
     @include plain-button-backdrop;
+    @include high-contrast-button-outline;
 
     &::after {
       opacity: 0;
-    }
-
-    @media (-ms-high-contrast: active) {
-      outline: 2px dotted invert;
     }
   }
 }

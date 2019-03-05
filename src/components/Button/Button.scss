@@ -133,15 +133,11 @@ $spinner-size: rem(20px);
   }
 
   &:focus {
-    @media (-ms-high-contrast: active) {
-      outline: none;
-    }
+    @include high-contrast-button-outline(none);
   }
 
   &:focus > .Content {
-    @media (-ms-high-contrast: active) {
-      outline: 2px dotted invert;
-    }
+    @include high-contrast-button-outline;
   }
 
   &:focus:not(.iconOnly) > .Content {

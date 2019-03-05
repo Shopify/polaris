@@ -1,3 +1,9 @@
+@mixin high-contrast-button-outline($outline: 2px dotted) {
+  @media (-ms-high-contrast: active) {
+    outline: $outline;
+  }
+}
+
 @mixin button-base {
   $min-height: control-height();
   $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
@@ -43,9 +49,7 @@
     outline: 0;
     box-shadow: 0 0 0 1px color('indigo');
 
-    @media (-ms-high-contrast: active) {
-      outline: 2px dotted invert;
-    }
+    @include high-contrast-button-outline;
   }
 
   &:active {
