@@ -250,7 +250,7 @@ function Icon({
     contentMarkup = (
       <img
         className={styles.Img}
-        src={`data:image/svg+xml;${source}`}
+        src={`data:image/svg+xml;utf8,${source}`}
         alt=""
         aria-hidden="true"
       />
