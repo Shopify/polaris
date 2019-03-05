@@ -126,10 +126,9 @@ export class BaseItem extends React.Component<CombinedProps, State> {
       ) : null;
 
     const iconMarkup = iconBody ? (
-      <span
-        className={styles.Icon}
-        dangerouslySetInnerHTML={{__html: iconBody}}
-      />
+      <div className={styles.Icon}>
+        <Icon source={iconBody} untrusted />
+      </div>
     ) : (
       icon && (
         <div className={styles.Icon}>

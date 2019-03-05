@@ -17,12 +17,14 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Track Polaris version information in App Bridge actions
 - Re-added the navigation’s border-right ([#1096](https://github.com/Shopify/polaris-react/pull/1096))
 - Added `onScrolledToBottom` prop to `Modal` ([#1117](https://github.com/Shopify/polaris-react/pull/1117))
+- Updated `Navigation.Item` to use `Icon` when `iconBody` prop is passed in. Renders these icons in an `img` tag now. ([#1094](https://github.com/Shopify/polaris-react/pull/1094))
 
 ### Bug fixes
 
 - Fixed missing rounded corners on `Tag` button states ([#1078](https://github.com/Shopify/polaris-react/pull/1078))
 - Removed reference to `window.Polaris`, which in some cases could be undefined ([#1104](https://github.com/Shopify/polaris-react/issues/1104))
 - Added padding and margin to `subdued` sections for proper spacing between the header and footer ([#1082](https://github.com/Shopify/polaris-react/pull/1082))
+- Removed left margin from vertical `Stack` to prevent overflow ([#1024](https://github.com/Shopify/polaris-react/pull/1024))
 
 ### Documentation
 
