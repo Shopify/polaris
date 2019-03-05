@@ -31,7 +31,7 @@ function isMajorPrerelease(version) {
 
 const baseBranch = isMajorPrerelease(PACKAGE_VERSION)
   ? `v${semver.major(PACKAGE_VERSION)}`
-  : 'pr-retry-and-multiple-repos';
+  : 'master';
 
 const polarisBotName = 'Shopify Polaris Bot';
 const polarisBotEmail = 'shopify-polaris-bot@users.noreply.github.com';
