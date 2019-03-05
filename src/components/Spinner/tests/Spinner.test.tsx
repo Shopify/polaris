@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Spinner from '../Spinner';
+import * as icons from '../icons';
+
+jest.mock('../icons');
 
 describe('<Spinner />', () => {
   describe('accessibilityLabel', () => {
@@ -49,4 +52,42 @@ describe('<Spinner />', () => {
       expect(spinner.find('svg').prop('role')).toBe('status');
     });
   });
+
+  describe('input', () => {
+    it('renders an SVG when given a React Component as input', () => {
+      setIconDataReact();
+      const spinner = shallowWithAppProvider(<Spinner />);
+      expect(spinner.find(MockReactSpinner)).toHaveLength(1);
+    });
+
+    it('renders an SVG when given an object as input', () => {
+      setIconDataObject();
+      const spinner = shallowWithAppProvider(<Spinner />);
+      const svgHtml = spinner.find('svg').prop('dangerouslySetInnerHTML');
+      expect(svgHtml && svgHtml.__html).toBe("Dance The Night Away");
+    });
+
+
+
 });
+
+function MockReactSpinner() {
+  return (<div>DALLA DALLA</div>);
+}
+
+const mockObjectSpinner = {
+  body: "Dance The Night Away",
+  viewBox: "0 0 20 20",
+}
+
+function setIconDataReact() {
+  Object.keys(icons).forEach((key) => {
+    (icons as any)[key] = MockReactSpinner;
+  });
+}
+
+function setIconDataObject() {
+  Object.keys(icons).forEach((key) => {
+    (icons as any)[key] = mockObjectSpinner;
+  });
+}

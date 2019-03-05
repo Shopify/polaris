@@ -56,6 +56,15 @@ function Spinner({
   );
 
   const spinnerSVG = size === 'large' ? spinnerLarge : spinnerSmall;
+
+  /*  FIXME
+      The following is a weird hack to deal with the way we compile polaris.
+      The polaris library compiles itself into a single bundle, "index.js", and uploads it to npm.
+      sewing-kit ignores that bundle and recompiles polaris to get a few performance benefits.
+      The problem here is that the library uses one SVG loader, SVGR, and  sewing-kit uses a custom loader.
+      These loaders output diferent formats: SVGR outputs React Components, and the other loader outputs a custom object.
+      The way we deal with it is by checking what kind of object we're dealing with, and rendering it differently.
+      This is hacky, we should remove it and unify the builds */
   let spinnerElement;
 
   if (typeof spinnerSVG === 'function') {
