@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {SVGSource} from '@shopify/images';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {isClient} from '@shopify/react-utilities/target';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {
@@ -250,7 +251,7 @@ function Icon({
     contentMarkup = (
       <img
         className={styles.Img}
-        src={`data:image/svg+xml;base64,${btoa(source)}`}
+        src={`data:image/svg+xml;base64,${isClient ? btoa(source) : undefined}`}
         alt=""
         aria-hidden="true"
       />
