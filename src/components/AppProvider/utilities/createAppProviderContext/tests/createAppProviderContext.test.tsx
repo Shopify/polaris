@@ -93,8 +93,15 @@ describe('createAppProviderContext()', () => {
 
     const apiKey = '4p1k3y';
     const context = createAppProviderContext({apiKey});
-
-    expect(context.polaris.appBridge).toEqual(appBridge.serverAppBridge);
+    const serverAppBridge = {
+      dispatch: expect.any(Function),
+      localOrigin: '',
+      featuresAvailable: expect.any(Function),
+      getState: expect.any(Function),
+      subscribe: expect.any(Function),
+      error: expect.any(Function),
+    };
+    expect(context.polaris.appBridge).toEqual(serverAppBridge);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
