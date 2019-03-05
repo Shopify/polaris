@@ -33,7 +33,7 @@ yarn add @shopify/polaris
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.9.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.10.0-beta.1/polaris.min.css"
 />
 ```
 
@@ -79,7 +79,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.9.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.10.0-beta.1/polaris.min.css"
 />
 ```
 
