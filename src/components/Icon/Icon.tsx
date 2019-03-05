@@ -169,11 +169,11 @@ export type UntrustedSVG = string;
 
 export type IconSource =
   | React.ReactNode
+  | React.SFC<React.SVGProps<SVGSVGElement>>
   | SVGSource
   | 'placeholder'
   | BundledIcon
-  | UntrustedSVG
-  | React.SFC<React.SVGProps<SVGSVGElement>>;
+  | UntrustedSVG;
 export interface Props {
   /** The SVG contents to display in the icon. Icons should be in a 20 X 20 pixel viewbox */
   source: IconSource;
@@ -221,6 +221,13 @@ function Icon({
     'aria-hidden': 'true',
   };
 
+  if (untrusted) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The untrusted prop is no longer needed, all strings passed into the Icon component are rendered as unsafe',
+    );
+  }
+
   let SourceComponent = source as React.SFC<React.SVGProps<SVGSVGElement>>;
   let contentMarkup: React.ReactNode;
   if (source === 'placeholder') {
@@ -239,11 +246,7 @@ function Icon({
       'Deprecation: passing a React Element to the Icon component is deprecated and will be removed in the next major version. Pass a React Component instead.',
     );
     contentMarkup = source;
-  } else if (untrusted && isUntrustedSVG(source)) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: the untrusted prop is deprecated and will be removed. All raw strings passed into the Icon component will be assumed to be untrusted.',
-    );
+  } else if (isUntrustedSVG(source)) {
     contentMarkup = (
       <img
         className={styles.Img}
