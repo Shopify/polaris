@@ -48,5 +48,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Update `create-react-app` example dependencies ([#1010](https://github.com/Shopify/polaris-react/pull/1010))
 - Replace all occurrences of `_.capitalize` with a custom `capitalize` function ([#1015](https://github.com/Shopify/polaris-react/pull/1015))
 - Replace all occurrences of `_.isObject` with a custom `isObject` function ([#1011](https://github.com/Shopify/polaris-react/pull/1011))
+- Replace all occurrences of `_.get` with a custom `get` function ([#1013](https://github.com/Shopify/polaris-react/pull/1013))
 
 ### Deprecations
