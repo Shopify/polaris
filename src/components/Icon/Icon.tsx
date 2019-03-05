@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {SVGSource} from '@shopify/images';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-import {isClient} from '@shopify/react-utilities/target';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {
