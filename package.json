@@ -105,7 +105,6 @@
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/lodash": "^4.14.108",
-    "@types/lodash-decorators": "^4.0.0",
     "@types/node": "^8.10.17",
     "archiver": "^2.1.0",
     "aws-sdk": "^2.58.0",
@@ -190,7 +189,6 @@
     "core-js": "^2.5.1",
     "hoist-non-react-statics": "^2.5.0",
     "lodash": "^4.17.4",
-    "lodash-decorators": "^4.3.5",
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.4.0",
     "tslib": "^1.9.3"

@@ -42,6 +42,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Removed lodash decorators and replace all occurrences of `_.throttle` with `debounce` ([#1009](https://github.com/Shopify/polaris-react/pull/1009))
 - Removed all occurrences of `_.replace` ([#1012](https://github.com/Shopify/polaris-react/pull/1012))
 - Add lodash to `create-react-app` example ([#1010](https://github.com/Shopify/polaris-react/pull/1010))
 - Update `create-react-app` example dependencies ([#1010](https://github.com/Shopify/polaris-react/pull/1010))
