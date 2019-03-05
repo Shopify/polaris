@@ -43,6 +43,7 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         },
       }),
       svgr({
+        include: '**/icons/*.svg',
         exclude: 'node_modules/**',
         svgoConfig: svgOptions(),
         replaceAttrValues: {
