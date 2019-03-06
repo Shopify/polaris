@@ -60,7 +60,7 @@ function Spinner({
 
   return (
     <Image
-      alt="Spinner"
+      alt=""
       source={spinnerSVG}
       className={className}
       draggable={false}
