@@ -20,6 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Revert a change that constrained `DropZone` height based on inherited wrapper height [#1129](https://github.com/Shopify/polaris-react/pull/1129)
 - Fixed missing rounded corners on `Tag` button states ([#1078](https://github.com/Shopify/polaris-react/pull/1078))
 - Removed reference to `window.Polaris`, which in some cases could be undefined ([#1104](https://github.com/Shopify/polaris-react/issues/1104))
 - Added padding and margin to `subdued` sections for proper spacing between the header and footer ([#1082](https://github.com/Shopify/polaris-react/pull/1082))
