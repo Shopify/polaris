@@ -66,9 +66,12 @@ $dropzone-overlay-background-error: color('red', 'lighter');
 
 .Container {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  &.centerAlignChildren {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .Overlay {

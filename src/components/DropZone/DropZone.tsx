@@ -83,6 +83,11 @@ export interface Props {
   disabled?: boolean;
   /** The child elements to render in the dropzone. */
   children?: string | React.ReactNode;
+  /**
+   * Align child elements to the center of the dropzone.
+   * @default true
+   */
+  centerAlignChildren?: boolean;
   /** Allows a file to be dropped anywhere on the page */
   dropOnPage?: boolean;
   /** Sets the default file dialog state */
@@ -213,6 +218,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       active,
       overlay,
       allowMultiple,
+      centerAlignChildren = true,
     } = this.props;
 
     const inputAttributes: object = {
@@ -286,6 +292,11 @@ export class DropZone extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
+    const containerClassnames = classNames(
+      styles.Container,
+      centerAlignChildren && styles.centerAlignChildren,
+    );
+
     const dropZoneMarkup = (
       <div ref={this.setNode} className={styles.DropZoneWrapper}>
         <div
@@ -296,7 +307,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <div className={styles.Container}>{children}</div>
+          <div className={containerClassnames}>{children}</div>
           <VisuallyHidden>
             <input {...inputAttributes} />
           </VisuallyHidden>
