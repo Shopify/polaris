@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Re-added the navigation’s border-right ([#1096](https://github.com/Shopify/polaris-react/pull/1096))
 - Added `onScrolledToBottom` prop to `Modal` ([#1117](https://github.com/Shopify/polaris-react/pull/1117))
 - Updated `Navigation.Item` to use `Icon` when `iconBody` prop is passed in. Renders these icons in an `img` tag now. ([#1094](https://github.com/Shopify/polaris-react/pull/1094))
+- Added focus state outlines to be visible when using Windows High Contrast Mode for `Button` ([#1101] https://github.com/Shopify/polaris-react/pull/1101)
 
 ### Bug fixes
 
