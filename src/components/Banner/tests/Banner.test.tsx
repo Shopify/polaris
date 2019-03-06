@@ -5,8 +5,8 @@ import Banner from '..';
 
 import {
   CircleAlertMajorTwotone,
-  CircleBarredMajorTwotone,
-  CircleCheckMarkMajorTwotone,
+  CircleDisabledMajorTwotone,
+  CircleTickMajorTwotone,
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
 } from '../../../icons';
@@ -29,7 +29,7 @@ describe('<Banner />', () => {
 
   it('uses a greenDark circleCheckMark if status is success', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleCheckMarkMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
   });
 
@@ -49,7 +49,7 @@ describe('<Banner />', () => {
 
   it('uses a redDark circleBarred if status is critical', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(CircleBarredMajorTwotone);
+    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
   });
 
