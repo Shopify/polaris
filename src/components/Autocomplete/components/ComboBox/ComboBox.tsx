@@ -236,6 +236,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
     return (
+      /*  eslint-disable-next-line jsx-a11y/interactive-supports-focus */
       <div
         onClick={this.handleClick}
         role="combobox"
@@ -245,7 +246,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         aria-haspopup
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        tabIndex={0}
       >
         <KeypressListener
           keyCode={Key.DownArrow}
