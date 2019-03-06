@@ -14,10 +14,10 @@ import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
 import {
-  CircleCheckMarkMajorTwotone,
+  CircleTickMajorTwotone,
   FlagMajorTwotone,
   CircleAlertMajorTwotone,
-  CircleBarredMajorTwotone,
+  CircleDisabledMajorTwotone,
   CircleInformationMajorTwotone,
 } from '../../icons';
 
@@ -64,7 +64,7 @@ export default class Banner extends React.PureComponent<Props, never> {
     switch (status) {
       case 'success':
         color = 'greenDark';
-        defaultIcon = CircleCheckMarkMajorTwotone;
+        defaultIcon = CircleTickMajorTwotone;
         break;
       case 'info':
         color = 'tealDark';
@@ -77,7 +77,7 @@ export default class Banner extends React.PureComponent<Props, never> {
         break;
       case 'critical':
         color = 'redDark';
-        defaultIcon = CircleBarredMajorTwotone;
+        defaultIcon = CircleDisabledMajorTwotone;
         ariaRoleType = 'alert';
         break;
       default:
