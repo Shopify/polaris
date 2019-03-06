@@ -17,7 +17,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added `onScrolledToBottom` prop to `Modal` ([#1117](https://github.com/Shopify/polaris-react/pull/1117))
 - Updated `Navigation.Item` to use `Icon` when `iconBody` prop is passed in. Renders these icons in an `img` tag now. ([#1094](https://github.com/Shopify/polaris-react/pull/1094))
 - Added focus state outlines to be visible when using Windows High Contrast Mode for `Button` ([#1101] https://github.com/Shopify/polaris-react/pull/1101)
-- Polaris now uses SVGR to import SVGs ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
 
 ### Bug fixes
 
@@ -53,6 +52,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Replace all occurrences of `_.isObject` with a custom `isObject` function ([#1011](https://github.com/Shopify/polaris-react/pull/1011))
 - Replace all occurrences of `_.get` with a custom `get` function ([#1013](https://github.com/Shopify/polaris-react/pull/1013))
 - Banner, DropZone, and ResourceList’s icons were moved to polaris-icons ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
+- Spinner now uses the Image component instead of an SVG tag to render ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
 
 ### Deprecations
 

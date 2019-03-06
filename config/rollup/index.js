@@ -46,7 +46,7 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         // We don't want to use "production" as that enables the
         // babel-plugin-transform-react-constant-elements plugin which we don't want
         envName: 'not-production',
-        include: ['**/*.js'],
+        include: '**/*.js',
         exclude: 'node_modules/**',
         runtimeHelpers: true,
       }),
