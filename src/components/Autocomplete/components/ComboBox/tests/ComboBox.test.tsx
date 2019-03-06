@@ -419,7 +419,7 @@ describe('<ComboBox/>', () => {
       expect(spy).toHaveBeenCalledWith(['cheese_pizza']);
     });
 
-    it('activates the popover when the combobx is focused', () => {
+    it('activates the popover when the combobox is focused', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox
           options={options}
