@@ -6,37 +6,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import {TextField} from '../components';
 import {Key} from '../../../../../types';
 
-interface HandlerMap {
-  [eventName: string]: (event: any) => void;
-}
-
-const listenerMap: HandlerMap = {};
-
 describe('<ComboBox/>', () => {
-  let addEventListener: jest.SpyInstance;
-  let removeEventListener: jest.SpyInstance;
-
-  beforeEach(() => {
-    addEventListener = jest.spyOn(document, 'addEventListener');
-    addEventListener.mockImplementation((event, callback) => {
-      listenerMap[event] = callback;
-    });
-
-    removeEventListener = jest.spyOn(document, 'removeEventListener');
-    removeEventListener.mockImplementation((event) => {
-      listenerMap[event] = noop;
-    });
-  });
-
-  afterEach(() => {
-    if (document.activeElement) {
-      (document.activeElement as HTMLElement).blur();
-    }
-
-    addEventListener.mockRestore();
-    removeEventListener.mockRestore();
-  });
-
   const options = [
     {value: 'cheese_pizza', label: 'Cheese Pizza'},
     {value: 'macaroni_pizza', label: 'Macaroni Pizza'},
@@ -428,11 +398,9 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      async () => {
-        comboBox.find(TextField).simulate('click');
-        listenerMap.keyup({keyCode: Key.DownArrow});
-        await expect(comboBox.state('selectedIndex')).toBe(0);
-      };
+      comboBox.find(TextField).simulate('click');
+      dispatchKeyup(Key.DownArrow);
+      expect(comboBox.state('selectedIndex')).toBe(0);
     });
 
     it('adds to selected options when the down arrow and enter keys are pressed', () => {
@@ -445,20 +413,13 @@ describe('<ComboBox/>', () => {
           onSelect={spy}
         />,
       );
-
-      async () => {
-        comboBox.find(TextField).simulate('click');
-        await listenerMap.keyup({keyCode: Key.DownArrow});
-      };
-
-      async () => {
-        listenerMap.keyup({keyCode: Key.Enter});
-        await expect(spy).toHaveBeenCalledTimes(1);
-        expect(comboBox.prop('selected')[0]).toBe('cheese_pizza');
-      };
+      comboBox.find(TextField).simulate('click');
+      dispatchKeyup(Key.DownArrow);
+      dispatchKeyup(Key.Enter);
+      expect(spy).toHaveBeenCalledWith(['cheese_pizza']);
     });
 
-    it('activates the popover when the tab key is pressed', () => {
+    it('activates the popover when the combobx is focused', () => {
       const comboBox = mountWithAppProvider(
         <ComboBox
           options={options}
@@ -468,10 +429,8 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      async () => {
-        listenerMap.keyup({keyCode: Key.Tab});
-        await expect(comboBox.state('popoverActive')).toBe(true);
-      };
+      comboBox.simulate('focus');
+      expect(comboBox.state('popoverActive')).toBe(true);
     });
 
     it('deactivates the popover when the escape key is pressed', () => {
@@ -484,16 +443,11 @@ describe('<ComboBox/>', () => {
         />,
       );
 
-      async () => {
-        comboBox.find(TextField).simulate('click');
-        await listenerMap.keyup({keyCode: Key.DownArrow});
-        expect(comboBox.state('popoverActive')).toBe(true);
-      };
+      comboBox.find(TextField).simulate('click');
+      expect(comboBox.state('popoverActive')).toBe(true);
 
-      async () => {
-        listenerMap.keyup({keyCode: Key.Escape});
-        await expect(comboBox.state('popoverActive')).toBe(false);
-      };
+      dispatchKeyup(Key.Escape);
+      expect(comboBox.state('popoverActive')).toBe(false);
     });
   });
 
@@ -587,4 +541,9 @@ function renderTextField() {
 
 function renderNodeWithId() {
   return <div id="CustomNode" />;
+}
+
+function dispatchKeyup(key: Key) {
+  const event: KeyboardEventInit & {keyCode: Key} = {keyCode: key};
+  document.dispatchEvent(new KeyboardEvent('keyup', event));
 }
