@@ -102,8 +102,6 @@
     "@storybook/addon-notes": "^4.1.6",
     "@storybook/addon-options": "^4.1.6",
     "@storybook/react": "^4.1.6",
-    "@svgr/rollup": "^4.1.0",
-    "@svgr/webpack": "^4.1.0",
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/lodash": "^4.14.108",

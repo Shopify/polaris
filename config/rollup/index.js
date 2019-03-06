@@ -3,8 +3,6 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const json = require('rollup-plugin-json');
 const commonjs = require('rollup-plugin-commonjs');
-const svgr = require('@svgr/rollup').default;
-const {svgOptions} = require('@shopify/images/optimize');
 
 const {dependencies, peerDependencies} = require('../../package.json');
 
@@ -42,26 +40,13 @@ module.exports = function createRollupConfig({entry, cssPath}) {
           moduleDirectory: ['../build-intermediate', 'node_modules'],
         },
       }),
-      svgr({
-        include: '**/icons/*.svg',
-        exclude: 'node_modules/**',
-        svgoConfig: svgOptions(),
-        replaceAttrValues: {
-          '#FFF': 'currentColor',
-          '#fff': 'currentColor',
-          '#212B36': '{undefined}',
-          '#212b36': '{undefined}',
-        },
-        babel: false,
-      }),
       babel({
         // We need to specify an environment name as leaving it blank defaults
         // to "development", which ends up including a bunch of debug helpers.
         // We don't want to use "production" as that enables the
         // babel-plugin-transform-react-constant-elements plugin which we don't want
         envName: 'not-production',
-        include: ['**/*.js', '**/*.svg'],
-        extensions: ['.js', '.svg'],
+        include: ['**/*.js'],
         exclude: 'node_modules/**',
         runtimeHelpers: true,
       }),
@@ -73,7 +58,7 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         generateScopedName: getNamespacedClassName,
       }),
       image({
-        exclude: ['node_modules/**', '**/icons/*.svg'],
+        exclude: ['node_modules/**'],
       }),
     ],
   };
