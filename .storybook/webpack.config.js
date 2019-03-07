@@ -69,7 +69,7 @@ module.exports = ({config, mode}) => {
           loader: 'ts-loader',
           options: {
             silent: true,
-            transpileOnly: !isProduction,
+            transpileOnly: true,
             experimentalFileCaching: true,
           },
         },
