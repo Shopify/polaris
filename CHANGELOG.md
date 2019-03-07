@@ -12,7 +12,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Enhancements
 
-- Track Polaris version information in App Bridge actions ([#1087](https://github.com/Shopify/polaris-react/pull/1087))
+- Added Polaris version information tracking in App Bridge actions ([#1087](https://github.com/Shopify/polaris-react/pull/1087))
 - Re-added the navigation’s border-right ([#1096](https://github.com/Shopify/polaris-react/pull/1096))
 - Added `onScrolledToBottom` prop to `Modal` ([#1117](https://github.com/Shopify/polaris-react/pull/1117))
 - Updated `Navigation.Item` to use `Icon` when `iconBody` prop is passed in. Renders these icons in an `img` tag now. ([#1094](https://github.com/Shopify/polaris-react/pull/1094))
