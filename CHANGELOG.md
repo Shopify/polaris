@@ -42,8 +42,6 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 - Added viewport meta tag to Storybook frame ([#1026](https://github.com/Shopify/polaris-react/pull/1026))
 
-### Dependency upgrades
-
 ### Code quality
 
 - Removed lodash decorators and replace all occurrences of `_.throttle` with `debounce` ([#1009](https://github.com/Shopify/polaris-react/pull/1009))
