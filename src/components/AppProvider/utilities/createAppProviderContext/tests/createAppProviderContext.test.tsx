@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as appBridge from '@shopify/app-bridge';
-import * as redirect from '@shopify/app-bridge/client/redirect';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
@@ -18,20 +17,15 @@ function mockIsServer(value: boolean) {
 }
 
 describe('createAppProviderContext()', () => {
-  let createAppSpy: jest.SpyInstance<any>;
-
-  beforeEach(() => {
-    createAppSpy = jest
-      .spyOn(appBridge, 'default');
-  });
+  const createAppSpy: jest.SpyInstance<any> = jest.spyOn(appBridge, 'default');
 
   afterEach(() => {
     mockIsServer(actualIsServer);
-    createAppSpy.mockRestore();
+    createAppSpy.mockReset();
   });
 
   it('returns the right context without properties', () => {
-    createAppSpy.mockImplementation((args) => args);
+    createAppSpy.mockImplementationOnce((args) => args);
     const context = createAppProviderContext();
     const mockContext = {
       polaris: {
@@ -49,7 +43,7 @@ describe('createAppProviderContext()', () => {
   });
 
   it('returns the right context with properties', () => {
-    createAppSpy.mockImplementation((args) => ({
+    createAppSpy.mockImplementationOnce((args) => ({
       ...args,
       dispatch: () => {},
       localOrigin: '',
@@ -106,7 +100,7 @@ describe('createAppProviderContext()', () => {
 
   it('adds an app bridge hook to set clientInterface data', () => {
     const set = jest.fn();
-    createAppSpy.mockImplementation((args) => {
+    createAppSpy.mockImplementationOnce((args) => {
       return {...args, hooks: {set}};
     });
 
