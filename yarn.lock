@@ -1087,6 +1087,11 @@
   resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-0.0.2-beta.2.tgz#2641978157193134be9e1d58fb735c48e4861454"
   integrity sha512-/HzE3Dp9NkviXf0Nb1colouVS3kA5sAewlaC1m7kbtVdEN32lkAEIs5PciJpMyWy30u13DOlx5rFoVSCw63d0g==
 
+"@shopify/decorators@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/decorators/-/decorators-1.0.0.tgz#152c17fe66640c4221fb3039df2bd3810cf59901"
+  integrity sha512-aJs/zVGHFEn8w+S0+z97dCltxmGApN2ixBzAg02PcbZbZGy5Dn+xloRMt5WoPI6Gwm94UU8GxmQ7II8nkrkLtg==
+
 "@shopify/images@^1.1.0":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.3.tgz#b1aece3174beb101375ace13c6651b7049648b79"
