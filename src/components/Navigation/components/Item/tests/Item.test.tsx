@@ -100,6 +100,34 @@ describe('<Nav.Item />', () => {
       const link = item.find(UnstyledLink);
       expect(link.exists()).toBe(true);
     });
+
+    it('renders a small badge with new status if the prop is provided with a string', () => {
+      const item = mountWithAppProvider(<Item label="some label" badge="1" />);
+
+      expect(item.find(Badge).props()).toMatchObject({
+        status: 'new',
+        size: 'small',
+        children: '1',
+      });
+    });
+
+    it('renders a badge if the prop is provided with an element', () => {
+      const item = mountWithAppProvider(
+        <Item label="some label" badge={<Badge>Custom badge</Badge>} />,
+      );
+
+      expect(item.find(Badge).text()).toContain('Custom badge');
+    });
+
+    it('renders a single new badge even if a badge prop is also provided', () => {
+      const item = mountWithAppProvider(
+        <Item label="some label" badge={<Badge>Custom badge</Badge>} new />,
+      );
+      const badge = item.find(Badge);
+
+      expect(badge).toHaveLength(1);
+      expect(badge.text()).toContain('New');
+    });
   });
 
   describe('with SubNavigationItems', () => {
