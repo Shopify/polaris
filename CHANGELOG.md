@@ -34,7 +34,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 - Improved `Modal` documentation for properties only available in a stand-alone app context ([#1065](https://github.com/Shopify/polaris-react/pull/1065))
 - Added accessibility documentation about `Banner` ([#1071](https://github.com/Shopify/polaris-react/pull/1071))
 - Added accessibility documentation for `InlineError` ([#1073](https://github.com/Shopify/polaris-react/pull/1073))
-- Added accessibility documentation for `Loading`([#1075](https://github.com/Shopify/polaris-react/pull/1075))
+- Added accessibility documentation for `Loading` ([#1075](https://github.com/Shopify/polaris-react/pull/1075))
 - Fixed documentation about the `ariaPressed` prop for `Button` ([#1097](https://github.com/Shopify/polaris-react/pull/1097))
 - Fixed examples using the `selected` prop for `Autocomplete` ([#1053](https://github.com/Shopify/polaris-react/pull/1053))
 
