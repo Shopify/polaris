@@ -1,6 +1,7 @@
 ---
 name: New component proposal
 about: For proposing new components or changes to existing components
+label: New component
 ---
 
 # Component name
