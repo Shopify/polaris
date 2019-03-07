@@ -1,6 +1,6 @@
 @mixin skeleton-thumbnail-size($size) {
-  height: $size;
-  width: $size;
+  height: thumbnail-size($size);
+  width: thumbnail-size($size);
 }
 
 .SkeletonThumbnail {
@@ -9,13 +9,13 @@
 }
 
 .sizeSmall {
-  @include skeleton-thumbnail-size(rem(30px));
+  @include skeleton-thumbnail-size(small);
 }
 
 .sizeMedium {
-  @include skeleton-thumbnail-size(rem(40px));
+  @include skeleton-thumbnail-size(medium);
 }
 
 .sizeLarge {
-  @include skeleton-thumbnail-size(rem(50px));
+  @include skeleton-thumbnail-size(large);
 }
