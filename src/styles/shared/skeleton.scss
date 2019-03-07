@@ -1,6 +1,21 @@
 /// Used to create the shimmer effect of skeleton components
 $skeleton-shimmer-duration: duration(slower) * 2;
 
+// Used by both Thumbnail and SkeletonThumbnail
+$small-thumbnail-size: rem(40px);
+$medium-thumbnail-size: rem(60px);
+$large-thumbnail-size: rem(80px);
+
+$thumbnail-sizes: (
+  small: $small-thumbnail-size,
+  medium: $medium-thumbnail-size,
+  large: $large-thumbnail-size,
+);
+
+@function thumbnail-size($size) {
+  @return map-get($thumbnail-sizes, $size);
+}
+
 @mixin skeleton-shimmer {
   :global {
     // This is a global animation, defined in /src/styles/global/animations.scss
