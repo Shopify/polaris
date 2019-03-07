@@ -1,13 +1,12 @@
 import {
   configure,
   addDecorator,
+  addParameters,
   getStorybook,
   setAddon,
 } from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
-import {withNotes} from '@storybook/addon-notes';
-import {withOptions} from '@storybook/addon-options';
-import {themes} from '@storybook/components';
+import {create} from '@storybook/theming';
 import createPercyAddon from '@percy-io/percy-storybook';
 import tokens from '@shopify/polaris-tokens';
 
@@ -17,31 +16,22 @@ import {
   hydrateExecutableExamples,
 } from './stories-from-readme';
 
-// addon-options
-addDecorator(
-  withOptions({
-    name: 'Shopify Polaris Storybook',
-    url: '/',
-    hierarchySeparator: /\//,
-    hierarchyRootSeparator: /\|/,
-    theme: {
-      ...themes.normal,
-      mainTextSize: '16',
-      mainBorderRadius: 0,
-      mainBackground: tokens.colorSkyLight,
-      mainTextColor: tokens.colorInk,
-      dimmedTextColor: tokens.colorInkLighter,
-      successColor: tokens.colorGreenDark,
-      failColor: tokens.colorRedDark,
-      warnColor: tokens.colorOrange,
-      // TODO more pretty brand colors?
-      // SEE https://github.com/storybooks/storybook/blob/next/lib/components/src/theme.js
-    },
-  }),
-);
-
-// addon-notes
-addDecorator(withNotes);
+addParameters({
+  options: {
+    theme: create({
+      base: 'light',
+      brandTitle: 'Shopify Polaris Storybook',
+      brandUrl: '/',
+      brandImage: undefined,
+      appBorderRadius: 0,
+      appBg: tokens.colorSkyLight,
+      contentBg: tokens.colorSkyLight,
+      textColor: tokens.colorInk,
+      //   // TODO more pretty brand colors?
+      //   // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
+    }),
+  },
+});
 
 // addon-console
 setConsoleOptions((opts) => {

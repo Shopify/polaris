@@ -18,19 +18,19 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const ICON_PATH_REGEX = /icons\//;
 const IMAGE_PATH_REGEX = /\.(jpe?g|png|gif|svg)$/;
 
-module.exports = (baseConfig, env, config) => {
-  const isProduction = env === 'PRODUCTION';
+module.exports = ({config, mode}) => {
+  const isProduction = mode === 'PRODUCTION';
 
   // When transpiling TS using isolatedModules, the compiler doesn't strip
   // out exported types as it doesn't know if an item is a type or not.
   // Ignore those warnings as we don't care about them.
   const stats = {warningsFilter: /export .* was not found in/};
-  baseConfig.stats = stats;
-  baseConfig.devServer = {stats};
+  config.stats = stats;
+  config.devServer = {stats};
 
   // Shrink ray only strips hashes when comparing filenames with this format.
   // Without this there will be lots of "add 1 file and removed 1 file" notices.
-  baseConfig.output.filename = '[name]-[hash].js';
+  config.output.filename = '[name]-[hash].js';
 
   const cacheDir = path.resolve(__dirname, '../build/cache/storybook');
 
@@ -69,7 +69,7 @@ module.exports = (baseConfig, env, config) => {
           loader: 'ts-loader',
           options: {
             silent: true,
-            transpileOnly: env !== 'PRODUCTION',
+            transpileOnly: !isProduction,
             experimentalFileCaching: true,
           },
         },
@@ -132,10 +132,10 @@ module.exports = (baseConfig, env, config) => {
     },
   ];
 
-  baseConfig.module.rules = [baseConfig.module.rules[0], ...extraRules];
+  config.module.rules = [config.module.rules[0], ...extraRules];
 
   if (isProduction) {
-    baseConfig.plugins.push(
+    config.plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: path.resolve(
@@ -152,10 +152,10 @@ module.exports = (baseConfig, env, config) => {
     );
   }
 
-  baseConfig.resolve.extensions.push('.ts', '.tsx');
-  baseConfig.resolve.alias = {
-    ...baseConfig.resolve.alias,
+  config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.alias = {
+    ...config.resolve.alias,
     '@shopify/polaris': path.resolve(__dirname, '..', 'src'),
   };
-  return baseConfig;
+  return config;
 };
