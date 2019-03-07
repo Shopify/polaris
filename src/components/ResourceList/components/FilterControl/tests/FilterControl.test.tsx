@@ -117,8 +117,11 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const tags = filterControl.find(Tag);
-      trigger(tags.at(0), 'onRemove', mockAppliedFilters[0].key);
+      const tag = filterControl.find(Tag).at(0);
+      const filterId = `${mockAppliedFilters[0].key}-${
+        mockAppliedFilters[0].value
+      }`;
+      trigger(tag, 'onRemove', filterId);
 
       expect(onFiltersChange).toBeCalledWith([
         ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
