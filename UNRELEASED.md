@@ -51,5 +51,10 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Replace all occurrences of `_.capitalize` with a custom `capitalize` function ([#1015](https://github.com/Shopify/polaris-react/pull/1015))
 - Replace all occurrences of `_.isObject` with a custom `isObject` function ([#1011](https://github.com/Shopify/polaris-react/pull/1011))
 - Replace all occurrences of `_.get` with a custom `get` function ([#1013](https://github.com/Shopify/polaris-react/pull/1013))
+- Banner, DropZone, and ResourceList’s icons were moved to polaris-icons ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
+- Spinner now uses the Image component instead of an SVG tag to render ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
 
 ### Deprecations
+
+- Passing a React Element into the Icon component is now deprecated in favor of passing a React Component ([#1042](https://github.com/Shopify/polaris-react/pull/1042))
+- The untrusted prop in the Icon component is now deprecated ([#1042](https://github.com/Shopify/polaris-react/pull/1042))

@@ -8,7 +8,6 @@ const {dependencies, peerDependencies} = require('../../package.json');
 
 const styles = require('./plugins/styles');
 const image = require('./plugins/image');
-const icon = require('./plugins/icon');
 
 const getNamespacedClassName = require('./namespaced-classname');
 
@@ -58,12 +57,8 @@ module.exports = function createRollupConfig({entry, cssPath}) {
         includeAlways: sassResources,
         generateScopedName: getNamespacedClassName,
       }),
-      icon({
-        include: '**/icons/*.svg',
-        exclude: 'node_modules/**',
-      }),
       image({
-        exclude: ['node_modules/**', '**/icons/*.svg'],
+        exclude: ['node_modules/**'],
       }),
     ],
   };

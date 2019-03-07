@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s product component library",
-  "version": "3.9.0",
+  "version": "3.10.0-beta.5",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -178,7 +178,7 @@
     "@shopify/app-bridge": "^1.0.3",
     "@shopify/images": "^1.1.0",
     "@shopify/javascript-utilities": "^2.2.1",
-    "@shopify/polaris-icons": "^2.0.0",
+    "@shopify/polaris-icons": "^3.0.0",
     "@shopify/polaris-tokens": "^2.3.0",
     "@shopify/react-compose": "^0.1.6",
     "@shopify/react-utilities": "^2.0.3",

@@ -16,9 +16,9 @@ import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import {FileUpload, Provider} from './components';
+import {DragDropMajorMonotone, CircleAlertMajorMonotone} from '../../icons';
 
-import {dragDrop, alertCircle} from './icons';
+import {FileUpload, Provider} from './components';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 import {DropZoneContext} from './types';
@@ -234,7 +234,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       (active || dragging) && !error && overlay ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
-            <Icon source={dragDrop} color="indigo" />
+            <Icon source={DragDropMajorMonotone} color="indigo" />
             {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {overlayText}
@@ -251,7 +251,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       dragging && error ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
-            <Icon source={alertCircle} color="red" />
+            <Icon source={CircleAlertMajorMonotone} color="red" />
             {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}
