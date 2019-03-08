@@ -175,21 +175,17 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Screen readers convey the checked, unchecked, indeterminate, or disabled state of the checkbox automatically.
+Screen readers convey the state of the checkbox automatically.
 
-If the `disabled` prop is used, the HTML `disabled` attribute is added to the checkbox `<input>`. The checkbox will not receive keyboard focus and will be conveyed as unavailable to screen reader users.
-
-If the `checked` prop is set to `indeterminate`, the state is conveyed using `aria-checked=”mixed”`.
-
-The `id` prop can be used to provide a unique `id` attribute value for the checkbox. If none is provided, the component with generate one automatically. All checkboxes must have unique `id` values.
+- Use the `disabled` prop to apply the HTML `disabled` attribute to the checkbox `<input>`. This prevents merchants from being able to interact with the checkbox, and conveys its inactive state to assistive technologies.
+- Use the `id` prop to provide a unique `id` attribute value for the checkbox. If an `id` isn’t provided, then the component generates one. All checkboxes must have unique `id` values to work correctly with assistive technologies.
+- If you set the `checked` prop to `indeterminate`, then the state of the checkbox is conveyed using `aria-checked=”mixed”`.
 
 ### Labeling
 
-The `label` prop is required to convey the purpose of the checkbox to all users.
-
-If there are separate visual cues that convey the purpose of the checkbox label to sighted users, it can be visually hidden using the `labelHidden` prop. Unless a visual label is provided, refrain from using `labelHidden`.
-
-If help text or an inline error message is provided via the `helpText` or `error` prop, it is conveyed to screen reader users with the `aria-describedby` attribute. This causes it to be read along with the label and state, either immediately or after a short delay.
+- The required `label` prop conveys the purpose of the checkbox to all merchants
+- Use the `labelHidden` prop to visually hide the label but make it available to assistive technologies
+- When you provide help text via the `helpText` prop or an inline error message via the `error` prop, the help or error content is conveyed to screen reader users with the `aria-describedby` attribute
 
 ### Keyboard support
 
