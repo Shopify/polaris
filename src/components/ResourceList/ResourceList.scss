@@ -1,7 +1,5 @@
 @import './variables';
 
-$item-wrapper-loading-height: rem(64px);
-
 @mixin disabled-pointer-events {
   pointer-events: none;
 }
@@ -64,9 +62,34 @@ $item-wrapper-loading-height: rem(64px);
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-direction: row;
     padding: resource-list(header-vertical-padding) spacing();
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
+    &:not(.HeaderWrapper-hasFilters).HeaderWrapper-hasHeadings.HeaderWrapper-hasSort {
+      min-height: resource-list(header-min-height) * 2;
+    }
   }
 }
 
+.HeaderWrapper-inSelectMode {
+  &.HeaderWrapper-hasHeadings {
+    // stylelint-disable-next-line selector-max-class
+    .Sorter {
+      opacity: 0;
+      pointer-events: none;
+    }
+    // stylelint-disable-next-line selector-max-class
+    .CheckableButtonWrapper {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &.HeaderWrapper-hasHeadings.HeaderWrapper-hasFilters {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
+    .ColumnHeaders {
+      display: none;
+    }
+  }
+}
 .HeaderWrapper-isSticky {
   box-shadow: shadow();
 }
@@ -81,7 +104,7 @@ $item-wrapper-loading-height: rem(64px);
   opacity: 1;
   transition: opacity easing() duration();
 
-  .HeaderWrapper-inSelectMode & {
+  .HeaderWrapper-inSelectMode:not(.HeaderWrapper-hasHeadings) & {
     opacity: 0;
   }
 
@@ -92,62 +115,34 @@ $item-wrapper-loading-height: rem(64px);
   }
 }
 
-.SortWrapper,
-.AlternateToolWrapper {
-  position: relative;
-  display: flex;
-  flex: 1;
-  align-items: center;
-
-  .HeaderWrapper-hasSelect & {
-    padding-right: spacing(tight);
-  }
-
-  @include breakpoint-after(resource-list(breakpoint-small)) {
-    position: relative;
-    left: auto;
-    flex: 0 1 auto;
-    margin-left: spacing();
-
-    // stylelint-disable-next-line selector-max-class
-    .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
-    .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
-      padding-right: 0;
-    }
-  }
-}
-
-.SortLabel {
-  margin-right: spacing(tight);
-  display: none;
-
-  @include breakpoint-after(resource-list(breakpoint-small)) {
-    display: block;
-  }
-}
-
-.HeaderTitleWrapper {
+.ItemCountTextWrapper {
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
   padding-left: spacing(extra-tight);
   align-self: center;
 
-  .HeaderWrapper-hasAlternateTool &,
   .HeaderWrapper-hasSort & {
     display: none;
   }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    // stylelint-disable-next-line selector-max-class
-    .HeaderWrapper-hasSelect &,
-    .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
-    .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
+    // stylelint-disable-next-line selector-max-specificity
+    .HeaderWrapper-hasSort &,
+    .HeaderWrapper-hasFilters:not(.HeaderWrapper-hasSelect):not(.HeaderWrapper-hasHeadings)
+      & {
+      display: block;
+    }
+
+    .HeaderWrapper-hasSelect & {
       display: none;
     }
-    .HeaderWrapper-hasAlternateTool &,
-    .HeaderWrapper-hasSort & {
+
+    :not(.HeaderWrapper-hasFilters).HeaderWrapper-hasHeadings & {
       display: block;
+      order: -1;
+      flex: 0 1 40%;
+      margin-bottom: spacing();
     }
   }
 }
@@ -167,17 +162,54 @@ $item-wrapper-loading-height: rem(64px);
   display: none;
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
-    flex: 1;
+    flex: 1 1 auto;
     display: block;
+
+    .HeaderWrapper-hasHeadings & {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+.ColumnHeaders {
+  display: none;
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
   }
 }
 
 .SelectButtonWrapper {
-  position: relative;
-  flex: none;
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    display: none;
+  }
+}
+
+.Sorter {
+  flex: 0 1 auto;
+
+  .HeaderWrapper-hasSelect & {
+    flex: 1 1 auto;
+    margin-right: spacing();
+  }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     display: none;
+    margin-right: 0;
+
+    &.Sorter-alwaysVisible {
+      flex: 0 0 auto;
+      margin-right: 0;
+      display: block;
+    }
+
+    .HeaderWrapper-hasHeadings & {
+      order: -1;
+      flex: 0 1 60%;
+      margin-bottom: spacing();
+    }
   }
 }
 
@@ -203,19 +235,32 @@ $item-wrapper-loading-height: rem(64px);
   list-style: none;
 }
 
+.selectable {
+  width: calc(100% + #{resource-list-item(translate-offset)});
+  transform: translateX(-1 * resource-list-item(translate-offset));
+  transition: transform easing() duration();
+  margin-right: -1 * resource-list-item(translate-offset);
+
+  &.selectMode {
+    transform: translateX(0);
+  }
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    width: 100%;
+    transform: translateX(0);
+    margin-right: 0;
+  }
+}
+
 .ItemWrapper {
   position: relative;
   z-index: resource-list(list-stacking-order);
-  overflow: hidden;
   max-width: 100%;
+  overflow: hidden;
 
   + .ItemWrapper {
     border-top: border();
   }
-}
-
-.ItemWrapper-isLoading {
-  min-height: $item-wrapper-loading-height;
 }
 
 .SpinnerContainer {
@@ -235,4 +280,8 @@ $item-wrapper-loading-height: rem(64px);
 
 .DisabledPointerEvents {
   @include disabled-pointer-events;
+}
+
+.disableTextSelection {
+  user-select: none;
 }

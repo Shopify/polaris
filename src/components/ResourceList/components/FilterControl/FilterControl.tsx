@@ -1,21 +1,21 @@
 import * as React from 'react';
 import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
-import compose from '@shopify/react-compose';
-import {ComplexAction, WithContextTypes} from '../../../../types';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-import {buttonsFrom} from '../../../Button';
-import Icon from '../../../Icon';
-import FormLayout from '../../../FormLayout';
-import TextField from '../../../TextField';
-import Tag from '../../../Tag';
-import withContext from '../../../WithContext';
 
-import {ResourceListContext} from '../../types';
-import {Consumer} from '../Context';
+import {
+  ComplexAction,
+  withAppProvider,
+  WithAppProviderProps,
+  buttonsFrom,
+  TextField,
+  Icon,
+  Tag,
+} from '@shopify/polaris';
 
-import {FilterCreator} from './components';
+import Sorter from '../Sorter';
+import {contextTypes} from '../../types';
+import FilterCreator from './FilterCreator';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
-import styles from './FilterControl.scss';
+import * as styles from './FilterControl.scss';
 
 export interface Props {
   searchValue?: string;
@@ -28,12 +28,14 @@ export interface Props {
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
 }
 
-export type CombinedProps = Props &
-  WithAppProviderProps &
-  WithContextTypes<ResourceListContext>;
+export type CombinedProps = Props & WithAppProviderProps;
 
 export class FilterControl extends React.Component<CombinedProps> {
+  static contextTypes = contextTypes;
+
   render() {
+    const {selectMode, resourceName, sortOptions} = this.context;
+
     const {
       searchValue,
       appliedFilters = [],
@@ -43,7 +45,6 @@ export class FilterControl extends React.Component<CombinedProps> {
       onSearchBlur,
       onSearchChange,
       polaris: {intl},
-      context: {selectMode, resourceName},
     } = this.props;
 
     const textFieldLabel = intl.translate(
@@ -90,23 +91,34 @@ export class FilterControl extends React.Component<CombinedProps> {
         <ul className={styles.AppliedFilters}>{appliedFiltersMarkup}</ul>
       ) : null;
 
+    const sorterMarkup = sortOptions ? (
+      <div className={styles.Sorter}>
+        <Sorter />
+      </div>
+    ) : null;
+
     return (
-      <FormLayout>
-        <TextField
-          connectedLeft={filterCreatorMarkup}
-          connectedRight={additionalActionButton}
-          label={textFieldLabel}
-          labelHidden
-          placeholder={textFieldLabel}
-          prefix={<Icon source="search" color="skyDark" />}
-          value={searchValue}
-          onChange={onSearchChange}
-          onBlur={onSearchBlur}
-          focused={focused}
-          disabled={selectMode}
-        />
+      <>
+        <div className={styles.FilterControl}>
+          <div className={styles.TextField}>
+            <TextField
+              connectedLeft={filterCreatorMarkup}
+              connectedRight={additionalActionButton}
+              label={textFieldLabel}
+              labelHidden
+              placeholder={textFieldLabel}
+              prefix={<Icon source="search" color="skyDark" />}
+              value={searchValue}
+              onChange={onSearchChange}
+              onBlur={onSearchBlur}
+              focused={focused}
+              disabled={selectMode}
+            />
+          </div>
+          {sorterMarkup}
+        </div>
         {appliedFiltersWrapper}
-      </FormLayout>
+      </>
     );
   }
 
@@ -213,11 +225,10 @@ export class FilterControl extends React.Component<CombinedProps> {
     const {value: appliedFilterValue} = appliedFilter;
 
     if (filter.type === FilterType.Select) {
-      const foundFilterOption = filter.options.find(
-        (option) =>
-          typeof option === 'string'
-            ? option === appliedFilterValue
-            : option.value === appliedFilterValue,
+      const foundFilterOption = filter.options.find((option) =>
+        typeof option === 'string'
+          ? option === appliedFilterValue
+          : option.value === appliedFilterValue,
       );
 
       if (foundFilterOption) {
@@ -296,7 +307,4 @@ function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
   }
 }
 
-export default compose<Props>(
-  withAppProvider<Props>(),
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
-)(FilterControl);
+export default withAppProvider<Props>()(FilterControl);

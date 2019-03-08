@@ -1,0 +1,82 @@
+$three-column: 568px;
+$four-column: 860px;
+$six-column: 1125px;
+
+@mixin print-and-breakpoint-after($size) {
+  @include breakpoint-after($size) {
+    @content;
+  }
+
+  @media print {
+    @content;
+  }
+}
+
+@mixin order-index-grid {
+  width: 100%;
+  display: grid;
+  grid-gap: 0 spacing(tight);
+  grid-template-columns: repeat(2, minmax(25%, 75%));
+  grid-template-areas:
+    'order date'
+    'customer total'
+    'payment payment'
+    'fulfillment fulfillment';
+
+  @include print-and-breakpoint-after($three-column) {
+    grid-template-columns: minmax(20%, 1fr) 25% 20%;
+    grid-template-areas:
+      'order fulfillment total'
+      'date fulfillment total'
+      'customer fulfillment total'
+      'payment fulfillment total';
+  }
+
+  @include print-and-breakpoint-after($four-column) {
+    grid-template-columns: minmax(15%, 1fr) 25% 25% 15%;
+    grid-template-areas:
+      'order payment fulfillment total'
+      'date payment fulfillment total'
+      'customer payment fulfillment total';
+  }
+
+  @include print-and-breakpoint-after($six-column) {
+    grid-template-columns: 16% repeat(4, minmax(10%, 1fr)) 12%;
+    grid-template-areas: 'order date customer payment fulfillment total';
+  }
+}
+
+.Order,
+.Date,
+.Customer,
+.PaymentStatus,
+.FulfillmentStatus,
+.Total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.Order {
+  grid-area: order;
+}
+
+.Date {
+  grid-area: date;
+}
+
+.Customer {
+  grid-area: customer;
+}
+
+.PaymentStatus {
+  grid-area: payment;
+}
+
+.FulfillmentStatus {
+  grid-area: fulfillment;
+}
+
+.Total {
+  grid-area: total;
+}

@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "Select a filter\u2026",
+  "dateValueLabel": "Date",
+  "dateValueError": "Match YYYY-MM-DD format",
+  "dateValuePlaceholder": "YYYY-MM-DD",
+  "selectOptions": {
+    "dateFilterLabel": "Select a value",
+    "pastWeek": "in the last week",
+    "pastMonth": "in the last month",
+    "pastQuarter": "in the last 3 months",
+    "pastYear": "in the last year",
+    "comingWeek": "next week",
+    "comingMonth": "next month",
+    "comingQuarter": "in the next 3 months",
+    "comingYear": "in the next year",
+    "onOrBefore": "on or before",
+    "onOrAfter": "on or after"
+  }
+}

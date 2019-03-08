@@ -1,8 +1,10 @@
 import * as React from 'react';
+import {TextField, Tag, Button} from '@shopify/polaris';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger, mountWithAppProvider} from 'test-utilities';
-import {TextField, Tag, Button} from 'components';
-import {Provider} from '../../Context';
+import {mountWithPolarisContext, trigger} from 'tests/utilities';
+import FilterControl, {Props} from '..';
+import FilterCreator from '../FilterCreator';
+import {DateFilterOption} from '../DateSelector';
 import {
   Filter,
   FilterType,
@@ -10,8 +12,6 @@ import {
   FilterTextField,
   FilterDateSelector,
 } from '../types';
-import FilterControl, {Props} from '../FilterControl';
-import {FilterCreator, DateFilterOption} from '../components';
 
 describe('<FilterControl />', () => {
   const mockDefaultProps: Props = {
@@ -19,9 +19,8 @@ describe('<FilterControl />', () => {
   };
 
   const mockDefaultContext = {
-    selectMode: false,
     resourceName: {
-      singular: 'item',
+      singlar: 'item',
       plural: 'items,',
     },
     selectable: false,
@@ -67,57 +66,165 @@ describe('<FilterControl />', () => {
 
   describe('searchValue', () => {
     it('renders with TextField by default', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const searchField = filterControl.find(TextField);
+      const searchField = wrapper.find(TextField);
       expect(searchField.exists()).toBe(true);
     });
 
     it('renders with searchValue as its value', () => {
       const searchValue = 'search value';
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} searchValue={searchValue} />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} searchValue={searchValue} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const searchField = filterControl.find(TextField);
+      const searchField = wrapper.find(TextField);
       expect(searchField.prop('value')).toBe(searchValue);
+    });
+  });
+
+  describe('onSearchChange()', () => {
+    it('calls onSearchChange with the new searchValue when onChange is triggered', () => {
+      const newSearchValue = 'new search value';
+      const onSearchChange = jest.fn();
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} onSearchChange={onSearchChange} />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      trigger(wrapper.find(TextField), 'onChange', newSearchValue);
+
+      expect(onSearchChange).toBeCalledWith(newSearchValue);
+    });
+  });
+
+  describe('filters', () => {
+    it('renders no <FilterCreator /> if there are no filters', () => {
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      const searchField = wrapper.find(TextField);
+      expect(searchField.prop('connectedLeft')).toBeNull();
+    });
+
+    it('renders <FilterCreator /> if there is filters', () => {
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} filters={mockFilters} />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      expect(wrapper.find(FilterCreator).exists()).toBe(true);
+    });
+
+    it('renders <FilterCreator /> with filters', () => {
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} filters={mockFilters} />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      expect(wrapper.find(FilterCreator).prop('filters')).toMatchObject(
+        mockFilters,
+      );
+    });
+  });
+
+  describe('onFiltersChange()', () => {
+    it('gets call with the new filter when FilterCreator.onAddFilter is triggered', () => {
+      const newFilter = {
+        key: 'new key',
+        value: 'new value',
+      };
+
+      const onFiltersChange = jest.fn();
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={mockFilters}
+          appliedFilters={mockAppliedFilters}
+          onFiltersChange={onFiltersChange}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
+
+      expect(onFiltersChange).toBeCalledWith([
+        ...mockAppliedFilters,
+        newFilter,
+      ]);
+    });
+
+    it('does not get call if the new filter already exist when FilterCreator.onAddFilter is triggered', () => {
+      const newFilter = mockAppliedFilters[0];
+      const onFiltersChange = jest.fn();
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={mockFilters}
+          appliedFilters={mockAppliedFilters}
+          onFiltersChange={onFiltersChange}
+        />,
+        {
+          context: mockDefaultContext,
+        },
+      );
+
+      trigger(wrapper.find(FilterCreator), 'onAddFilter', newFilter);
+
+      expect(onFiltersChange).not.toBeCalled();
     });
   });
 
   describe('appliedFilters', () => {
     it('renders the same number of Tag as appliedFilters', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            appliedFilters={mockAppliedFilters}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          appliedFilters={mockAppliedFilters}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const tags = filterControl.find(Tag);
+      const tags = wrapper.find(Tag);
       expect(tags).toHaveLength(mockAppliedFilters.length);
     });
 
-    it('calls onFiltersChange without the applied filter when user clicks remove on the appliedFilter', () => {
+    it('calls onFiltersChange without the applied filter when user click remove on the appliedFilter', () => {
       const onFiltersChange = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            appliedFilters={mockAppliedFilters}
-            onFiltersChange={onFiltersChange}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          appliedFilters={mockAppliedFilters}
+          onFiltersChange={onFiltersChange}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const tags = filterControl.find(Tag);
+      const tags = wrapper.find(Tag);
       trigger(tags.at(0), 'onRemove', mockAppliedFilters[0].key);
 
       expect(onFiltersChange).toBeCalledWith([
@@ -125,7 +232,7 @@ describe('<FilterControl />', () => {
       ]);
     });
 
-    it('renders the provided applied filter string when applied filter label exist', () => {
+    it('renders the applied filter string when applied filter label exists', () => {
       const appliedFilterLabel = 'shorten electronic';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -143,23 +250,24 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterLabel,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).first();
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${appliedFilterLabel}`,
       );
     });
 
-    it('renders the provided applied filter string when filter value exist in FilterSelect as an option string', () => {
+    it('renders the applied filter string when filter value exist in FilterSelect as an option string', () => {
       const filterValue = 'Bundle';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -172,23 +280,24 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: filterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${filterValue}`,
       );
     });
 
-    it('renders the provided applied filter string when filter value exist in FilterSelect as an option object', () => {
+    it('renders the applied filter string when filter value exist in FilterSelect as an option object', () => {
       const filterValue = 'Electronic';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -206,23 +315,24 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: filterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${filterValue}`,
       );
     });
 
-    it('renders the provided applied filter string when filter value cannot be found in FilterSelect options', () => {
+    it('renders the applied filter string when filter value cannot be found in FilterSelect options', () => {
       const appliedFilterValue = 'new Bundle';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -235,23 +345,24 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
       );
     });
 
-    it('renders the provided applied filter string when filter is a FilterTextField', () => {
+    it('renders the applied filter string when filter is a FilterTextField', () => {
       const appliedFilterValue = 'new Bundle';
       const filter: FilterTextField = {
         key: 'filterKey2',
@@ -263,23 +374,24 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${appliedFilterValue}`,
       );
     });
 
-    it('renders the provided localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
+    it('renders the localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
       const appliedFilterValue = DateFilterOption.PastWeek;
 
       const filter: FilterDateSelector = {
@@ -294,30 +406,30 @@ describe('<FilterControl />', () => {
         key: filter.key,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
+      const expectedLocalizedLabel = wrapper
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
         );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(
         `${filter.label} ${filter.operatorText} ${expectedLocalizedLabel}`,
       );
     });
 
-    it('renders the provided localized applied filter string when filter is a FilterDateSelector with minimum date predicate (on or after)', () => {
+    it('renders the localized applied filter string when filter is a FilterDateSelector with minimum date predicate (on or after)', () => {
       const selectedDate = '2018-09-16';
       const filter: FilterDateSelector = {
         key: 'starts',
@@ -332,18 +444,18 @@ describe('<FilterControl />', () => {
         value: selectedDate,
       };
 
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
+      const expectedLocalizedLabel = wrapper
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
@@ -354,11 +466,11 @@ describe('<FilterControl />', () => {
           },
         );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
-    it('renders the provided localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
+    it('renders the localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
       const selectedDate = '2018-09-16';
       const filter: FilterDateSelector = {
         key: 'starts',
@@ -372,18 +484,18 @@ describe('<FilterControl />', () => {
         key: filter.maxKey,
         value: selectedDate,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
+      const expectedLocalizedLabel = wrapper
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
@@ -394,7 +506,7 @@ describe('<FilterControl />', () => {
           },
         );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
@@ -412,18 +524,18 @@ describe('<FilterControl />', () => {
         key: filter.maxKey,
         value: selectedDate,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
+      const expectedLocalizedLabel = wrapper
         .instance()
         .context.polaris.intl.translate(
           'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
@@ -432,11 +544,11 @@ describe('<FilterControl />', () => {
           },
         );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
-    it('renders the provided applied filter string when filter uses operators with filter label', () => {
+    it('renders the applied filter string when filter uses operators with filter label', () => {
       const appliedFilterValue = '20';
       const appliedFilterKey = 'times_used';
       const appliedFilterLabel = 'is';
@@ -462,24 +574,25 @@ describe('<FilterControl />', () => {
         key: appliedFilterKey,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
 
       expect(firstTag.text()).toBe(
         `${filter.label} ${appliedFilterLabel} ${appliedFilterValue}`,
       );
     });
 
-    it('renders the provided applied filter string when filter uses operators without filter label', () => {
+    it('renders the applied filter string when filter uses operators without filter label', () => {
       const appliedFilterValue = '20';
       const appliedFilterKey = 'times_used';
       const appliedOperatorOptionLabel = 'equal to';
@@ -503,72 +616,56 @@ describe('<FilterControl />', () => {
         key: appliedFilterKey,
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[filter]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[filter]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
 
       expect(firstTag.text()).toBe(
         `${filter.label} ${appliedOperatorOptionLabel} ${appliedFilterValue}`,
       );
     });
 
-    it('renders the provided applied filter string when filter key cannot be found', () => {
+    it('renders the applied filter string when filter key cannot be found', () => {
       const appliedFilterValue = 'new Bundle';
       const appliedFilters = {
         key: 'filter key',
         value: appliedFilterValue,
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl
+          {...mockDefaultProps}
+          filters={[]}
+          appliedFilters={[appliedFilters]}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const firstTag = filterControl.find(Tag).at(0);
+      const firstTag = wrapper.find(Tag).at(0);
       expect(firstTag.text()).toBe(appliedFilterValue);
-    });
-
-    it('renders a ul element containing an li element', () => {
-      const appliedFilterValue = 'new Bundle';
-      const appliedFilters = {
-        key: 'filter key',
-        value: appliedFilterValue,
-      };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={[]}
-            appliedFilters={[appliedFilters]}
-          />
-        </Provider>,
-      );
-      expect(filterControl.find('ul')).toHaveLength(1);
-      expect(filterControl.find('li')).toHaveLength(1);
     });
   });
 
   describe('additionalAction', () => {
     it('renders no connectedRight prop on TextField if there is no additionalAction', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      const searchField = filterControl.find(TextField);
+      const searchField = wrapper.find(TextField);
       expect(searchField.prop('connectedRight')).toBeNull();
     });
 
@@ -577,171 +674,17 @@ describe('<FilterControl />', () => {
         content: 'button label',
         onAction: jest.fn(),
       };
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} additionalAction={action} />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <FilterControl {...mockDefaultProps} additionalAction={action} />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
-      expect(filterControl.find(Button).exists()).toBe(true);
+      expect(wrapper.find(Button).exists()).toBe(true);
 
-      trigger(filterControl.find(Button), 'onClick');
+      trigger(wrapper.find(Button), 'onClick');
       expect(action.onAction).toBeCalled();
-    });
-  });
-
-  describe('focused', () => {
-    it('passes its value to focus of TextField', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} focused />
-        </Provider>,
-      );
-
-      expect(filterControl.find(TextField).prop('focused')).toBe(true);
-    });
-  });
-
-  describe('filters', () => {
-    it('renders no <FilterCreator /> if there are no filters', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} />
-        </Provider>,
-      );
-
-      const searchField = filterControl.find(TextField);
-      expect(searchField.prop('connectedLeft')).toBeNull();
-    });
-
-    it('renders <FilterCreator /> if there is filters', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} filters={mockFilters} />
-        </Provider>,
-      );
-
-      expect(filterControl.find(FilterCreator).exists()).toBe(true);
-    });
-
-    it('renders <FilterCreator /> with filters', () => {
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} filters={mockFilters} />
-        </Provider>,
-      );
-
-      expect(filterControl.find(FilterCreator).prop('filters')).toMatchObject(
-        mockFilters,
-      );
-    });
-  });
-
-  describe('onSearchBlur()', () => {
-    it('gets passed to onBlur of TextField', () => {
-      const onSearchBlur = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} onSearchBlur={onSearchBlur} />
-        </Provider>,
-      );
-
-      expect(filterControl.find(TextField).prop('onBlur')).toBe(onSearchBlur);
-    });
-
-    it('calls onSearchBlur when onBlur is triggered', () => {
-      const onSearchBlur = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl {...mockDefaultProps} onSearchBlur={onSearchBlur} />
-        </Provider>,
-      );
-
-      trigger(filterControl.find(TextField), 'onBlur');
-
-      expect(onSearchBlur).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('onSearchChange()', () => {
-    it('gets passed to onChange of TextField', () => {
-      const onSearchChange = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            onSearchChange={onSearchChange}
-          />
-        </Provider>,
-      );
-
-      expect(filterControl.find(TextField).prop('onChange')).toBe(
-        onSearchChange,
-      );
-    });
-
-    it('calls onSearchChange with the new searchValue when onChange is triggered', () => {
-      const newSearchValue = 'new search value';
-      const onSearchChange = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            onSearchChange={onSearchChange}
-          />
-        </Provider>,
-      );
-
-      trigger(filterControl.find(TextField), 'onChange', newSearchValue);
-
-      expect(onSearchChange).toBeCalledWith(newSearchValue);
-    });
-  });
-
-  describe('onFiltersChange()', () => {
-    it('gets call with the new filter when FilterCreator.onAddFilter is triggered', () => {
-      const newFilter = {
-        key: 'new key',
-        value: 'new value',
-      };
-
-      const onFiltersChange = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={mockFilters}
-            appliedFilters={mockAppliedFilters}
-            onFiltersChange={onFiltersChange}
-          />
-        </Provider>,
-      );
-
-      trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
-
-      expect(onFiltersChange).toBeCalledWith([
-        ...mockAppliedFilters,
-        newFilter,
-      ]);
-    });
-
-    it('does not get called if the new filter already exists when FilterCreator.onAddFilter is triggered', () => {
-      const newFilter = mockAppliedFilters[0];
-      const onFiltersChange = jest.fn();
-      const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <FilterControl
-            {...mockDefaultProps}
-            filters={mockFilters}
-            appliedFilters={mockAppliedFilters}
-            onFiltersChange={onFiltersChange}
-          />
-        </Provider>,
-      );
-
-      trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
-
-      expect(onFiltersChange).not.toBeCalled();
     });
   });
 });

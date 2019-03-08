@@ -1,0 +1,21 @@
+@import '../../variables';
+
+.Sorter {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.Label {
+  display: none;
+
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    margin-right: spacing(tight);
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+.Select {
+  flex: 1 1 auto;
+}

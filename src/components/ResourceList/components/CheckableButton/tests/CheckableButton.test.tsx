@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
-import {Checkbox} from 'components';
+import {Checkbox} from '@shopify/polaris';
+import {mountWithPolarisContext} from 'tests/utilities';
+import {shallowWithAppProvider} from '../../../tests/utilities';
 import CheckableButton from '../CheckableButton';
 
 const CheckableButtonProps = {
@@ -12,10 +13,10 @@ const CheckableButtonProps = {
 };
 
 describe('<CheckableButton />', () => {
-  describe('select', () => {
-    it('is passed down to Checkbox', () => {
+  describe('selected prop', () => {
+    it('is passed down to Checkbox', async () => {
       const {selected} = CheckableButtonProps;
-      const element = shallowWithAppProvider(
+      const element = await shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
       expect(element.find(Checkbox).prop('checked')).toEqual(selected);
@@ -23,9 +24,9 @@ describe('<CheckableButton />', () => {
   });
 
   describe('label', () => {
-    it('is passed down to span', () => {
+    it('is passed down to span', async () => {
       const {label} = CheckableButtonProps;
-      const element = shallowWithAppProvider(
+      const element = await shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
       expect(element.find('span').text()).toEqual(label);
@@ -33,9 +34,9 @@ describe('<CheckableButton />', () => {
   });
 
   describe('accessibilityLabel', () => {
-    it('sets the label on the Checkbox', () => {
+    it('sets the label on the Checkbox', async () => {
       const {accessibilityLabel} = CheckableButtonProps;
-      const element = shallowWithAppProvider(
+      const element = await shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
       expect(
@@ -45,27 +46,27 @@ describe('<CheckableButton />', () => {
           .prop('label'),
       ).toEqual(accessibilityLabel);
     });
+  });
 
-    describe('disabled', () => {
-      it('is passed down to checkbox', () => {
-        const {disabled} = CheckableButtonProps;
-        const element = shallowWithAppProvider(
-          <CheckableButton {...CheckableButtonProps} />,
-        );
-        expect(
-          element
-            .find(Checkbox)
-            .first()
-            .prop('disabled'),
-        ).toEqual(disabled);
-      });
+  describe('disabled prop', () => {
+    it('is passed down to checkbox', async () => {
+      const {disabled} = CheckableButtonProps;
+      const element = await shallowWithAppProvider(
+        <CheckableButton {...CheckableButtonProps} />,
+      );
+      expect(
+        element
+          .find(Checkbox)
+          .first()
+          .prop('disabled'),
+      ).toEqual(disabled);
     });
   });
 
   describe('onToggleAll', () => {
-    it('is called when the CheckableButton is clicked', () => {
+    it('is called when the CheckableButton is clicked', async () => {
       const spy = jest.fn();
-      const element = mountWithAppProvider(
+      const element = await mountWithPolarisContext(
         <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
       );
       element

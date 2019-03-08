@@ -1,21 +1,31 @@
 import * as React from 'react';
-import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
 import {
-  findByTestID,
-  shallowWithAppProvider,
-  mountWithAppProvider,
-  trigger,
-} from 'test-utilities';
+  createAppProviderContext,
+  EmptySearchResult,
+  Select,
+  Spinner,
+} from '@shopify/polaris';
+import {findByTestID, mountWithPolarisContext, trigger} from 'tests/utilities';
+import en from 'foundation/components/App/translations/en.json';
 import {BulkActions, Item} from '../components';
+import ResourceList from '../ResourceList';
+import {shallowWithAppProvider} from './utilities';
+
+jest.mock('react', () => ({
+  ...require.requireActual('react'),
+  memo: function memo<P>(x: React.StatelessComponent<P>) {
+    return x;
+  },
+}));
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
 const singleItemWithID = [{id: '1', url: 'item 1'}];
 
 const itemsWithID = [
-  {id: '5', name: 'item 1', url: 'www.test.com', title: 'title 1'},
-  {id: '6', name: 'item 2', url: 'www.test.com', title: 'title 2'},
-  {id: '7', name: 'item 3', url: 'www.test.com', title: 'title 3'},
+  {id: '5', index: 0, name: 'item 1', url: 'www.test.com', title: 'title 1'},
+  {id: '6', index: 1, name: 'item 2', url: 'www.test.com', title: 'title 2'},
+  {id: '7', index: 2, name: 'item 3', url: 'www.test.com', title: 'title 3'},
 ];
 const promotedBulkActions = [{content: 'action'}, {content: 'action 2'}];
 const bulkActions = [{content: 'action 3'}, {content: 'action 4'}];
@@ -32,18 +42,23 @@ const sortOptions = [
   },
 ];
 
-const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
-
 describe('<ResourceList />', () => {
+  const width = window.innerWidth;
+
+  afterEach(() => {
+    Object.defineProperty(window, 'innerWidth', {
+      value: width,
+    });
+  });
+
   describe('renderItem', () => {
-    it('renders list items', () => {
+    it('should render list items', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
       expect(resourceList.find('li')).toHaveLength(3);
     });
-
-    it('renders custom markup', () => {
+    it('should render custom markup', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={renderCustomMarkup} />,
       );
@@ -58,15 +73,15 @@ describe('<ResourceList />', () => {
   });
 
   describe('Selectable', () => {
-    it('does not render bulk actions if the promotedBulkActions and the bulkActions props are not provided', () => {
-      const resourceList = mountWithAppProvider(
+    it("should not render bulk actions if the 'promotedBulkActions' and the 'bulkActions' props are not provided", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find(BulkActions).exists()).toBe(false);
     });
 
-    it('does render bulk actions if the promotedBulkActions prop is provided', () => {
-      const resourceList = mountWithAppProvider(
+    it("should render bulk actions if the 'promotedBulkActions' prop is provided", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -76,8 +91,8 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).exists()).toBe(true);
     });
 
-    it('renders bulk actions if the bulkActions prop is provided', () => {
-      const resourceList = mountWithAppProvider(
+    it("should render bulk actions if the 'bulkActions' prop is provided", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -89,8 +104,8 @@ describe('<ResourceList />', () => {
   });
 
   describe('hasMoreItems', () => {
-    it('does not add a prop of paginatedSelectAllAction to BulkActions if omitted', () => {
-      const resourceList = mountWithAppProvider(
+    it("should not add a prop of 'paginatedSelectAllAction' to BulkActions if omitted", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsNoID}
           renderItem={renderItem}
@@ -102,8 +117,8 @@ describe('<ResourceList />', () => {
       ).toBeUndefined();
     });
 
-    it('adds a prop of paginatedSelectAllAction to BulkActions if included', () => {
-      const resourceList = mountWithAppProvider(
+    it("should add a prop of 'paginatedSelectAllAction' to BulkActions if included", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsNoID}
           hasMoreItems
@@ -119,21 +134,21 @@ describe('<ResourceList />', () => {
 
   describe('resourceName', () => {
     describe('resoureName.singular', () => {
-      it('renders default singular resource name when resourceName isn’t provided', () => {
-        const resourceList = mountWithAppProvider(
+      it("should render default singular resource name when 'resourceName' isn’t provided", () => {
+        const resourceList = mountWithPolarisContext(
           <ResourceList
             showHeader
             items={singleItemNoID}
             renderItem={renderItem}
           />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 1 item',
-        );
+        expect(
+          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
+        ).toEqual('Showing 1 item');
       });
 
-      it('renders the given singular resource name when resourceName is provided', () => {
-        const resourceList = mountWithAppProvider(
+      it("should render the given singular resource name when 'resourceName' is provided", () => {
+        const resourceList = mountWithPolarisContext(
           <ResourceList
             items={singleItemNoID}
             renderItem={renderItem}
@@ -141,24 +156,24 @@ describe('<ResourceList />', () => {
             showHeader
           />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 1 product',
-        );
+        expect(
+          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
+        ).toEqual('Showing 1 product');
       });
     });
 
     describe('resoureName.plural', () => {
-      it('renders default plural resource name when resourceName isn’t provided', () => {
-        const resourceList = mountWithAppProvider(
+      it("should render default plural resource name when 'resourceName' isn’t provided", () => {
+        const resourceList = mountWithPolarisContext(
           <ResourceList items={itemsNoID} renderItem={renderItem} showHeader />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 2 items',
-        );
+        expect(
+          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
+        ).toEqual('Showing 2 items');
       });
 
-      it('renders the given plural resource name when resourceName is provided', () => {
-        const resourceList = mountWithAppProvider(
+      it("should render the given plural resource name when 'resourceName' is provided", () => {
+        const resourceList = mountWithPolarisContext(
           <ResourceList
             items={itemsNoID}
             renderItem={renderItem}
@@ -166,33 +181,16 @@ describe('<ResourceList />', () => {
             showHeader
           />,
         );
-        expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-          'Showing 2 products',
-        );
+        expect(
+          findByTestID(resourceList, 'ItemCountTextWrapper').text(),
+        ).toEqual('Showing 2 products');
       });
     });
   });
 
-  describe('headerTitle', () => {
-    it('prints loading text when loading is true', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          items={singleItemWithID}
-          renderItem={renderItem}
-          bulkActions={bulkActions}
-          loading
-        />,
-      );
-
-      expect(findByTestID(resourceList, 'headerTitleWrapper').text()).toBe(
-        'Loading items',
-      );
-    });
-  });
-
   describe('bulkActionsAccessibilityLabel', () => {
-    it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
-      const resourceList = mountWithAppProvider(
+    it('should provide the BulkActions with the right accessibilityLabel if there’s 1 item and it isn’t selected', () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -204,8 +202,8 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it('provides the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected ', () => {
-      const resourceList = mountWithAppProvider(
+    it('should provide the BulkActions with the right accessibilityLabel if there’s 1 item and it is selected ', () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -218,8 +216,8 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it('provides the BulkActions with the right accessibilityLabel if there are multiple items and they are selected', () => {
-      const resourceList = mountWithAppProvider(
+    it('should provide the BulkActions with the right accessibilityLabel if there’s multiple items and they are all selected', () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -231,8 +229,8 @@ describe('<ResourceList />', () => {
         'Deselect all 3 items',
       );
     });
-    it('provides the BulkActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
-      const resourceList = mountWithAppProvider(
+    it('should provide the BulkActions with the right accessibilityLabel if there’s multiple items and some or none are selected', () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
           renderItem={renderItem}
@@ -246,7 +244,7 @@ describe('<ResourceList />', () => {
   });
 
   describe('idForItem()', () => {
-    it('generates a key using the index if there’s no idForItem prop and no ID in data', () => {
+    it('should generate a key using the index if there’s no idForItem prop and no ID in data', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsNoID} renderItem={shallowRenderItem} />,
       );
@@ -257,8 +255,7 @@ describe('<ResourceList />', () => {
           .key(),
       ).toBe('0');
     });
-
-    it('generates a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
+    it('should generate a key using the ID if there’s no idForItem prop but there and ID key in the data', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={itemsWithID} renderItem={shallowRenderItem} />,
       );
@@ -269,8 +266,7 @@ describe('<ResourceList />', () => {
           .key(),
       ).toBe('5');
     });
-
-    it('generates a key using the idForItem prop callback when one is provided', () => {
+    it('should generate a key using the idForItem prop callback when one is provided', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList
           idForItem={idForItem}
@@ -288,12 +284,12 @@ describe('<ResourceList />', () => {
   });
 
   describe('onSelectionChange()', () => {
-    it('calls onSelectionChange() when an item is clicked', () => {
+    it('should call onSelectionChange() when an item is clicked', () => {
       const onSelectionChange = jest.fn();
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
-          selectedItems={[]}
+          selectedItems={['1']}
           promotedBulkActions={promotedBulkActions}
           renderItem={renderItem}
           onSelectionChange={onSelectionChange}
@@ -305,9 +301,40 @@ describe('<ResourceList />', () => {
     });
   });
 
+  describe('handleMultiSelectionChange', () => {
+    it('selects all shift selected items returned from handleMultiSelectionChange', () => {
+      const preselected = ['1'];
+      const newlySelected = ['5', '6', '7'];
+      const handleMultiSelectionChange = () => newlySelected;
+      const onSelectionChange = jest.fn();
+      const resourceList = mountWithPolarisContext(
+        <ResourceList
+          items={itemsWithID}
+          selectedItems={preselected}
+          promotedBulkActions={promotedBulkActions}
+          renderItem={renderItem}
+          onSelectionChange={onSelectionChange}
+          handleMultiSelectionChange={handleMultiSelectionChange}
+        />,
+      );
+      const firstItem = resourceList.find(Item).first();
+      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
+
+      const lastItem = resourceList.find(Item).last();
+      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+        nativeEvent: {shiftKey: true},
+      });
+
+      expect(onSelectionChange).toBeCalledWith([
+        ...preselected,
+        ...newlySelected,
+      ]);
+    });
+  });
+
   describe('header markup', () => {
     it('renders header markup if the list isn’t selectable but the showHeader prop is true', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList showHeader items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
@@ -316,7 +343,7 @@ describe('<ResourceList />', () => {
     });
 
     it('does not render when items is empty', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList items={[]} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
@@ -325,7 +352,7 @@ describe('<ResourceList />', () => {
     });
 
     it('renders when sort options are given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           sortOptions={sortOptions}
           items={itemsWithID}
@@ -337,21 +364,8 @@ describe('<ResourceList />', () => {
       );
     });
 
-    it('renders when an alternateTool is provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          alternateTool={alternateTool}
-          items={itemsWithID}
-          renderItem={renderItem}
-        />,
-      );
-      expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
-        true,
-      );
-    });
-
     it('renders when bulkActions are given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           bulkActions={bulkActions}
           items={itemsWithID}
@@ -364,7 +378,7 @@ describe('<ResourceList />', () => {
     });
 
     it('renders when promotedBulkActions are given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           promotedBulkActions={promotedBulkActions}
           items={itemsWithID}
@@ -377,7 +391,7 @@ describe('<ResourceList />', () => {
     });
 
     it('does not render when sort options, bulkActions and promotedBulkActions are not given', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(findByTestID(resourceList, 'ResourceList-Header').exists()).toBe(
@@ -386,7 +400,7 @@ describe('<ResourceList />', () => {
     });
 
     it('renders on non-initial load when items are provided', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           bulkActions={bulkActions}
           items={[]}
@@ -425,14 +439,12 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
     });
-
     it('does not render when filterControl does not exist', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList items={[]} renderItem={shallowRenderItem} />,
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
-
     it('does not render when items is not empty', () => {
       const resourceList = shallowWithAppProvider(
         <ResourceList
@@ -443,30 +455,36 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
     });
-
-    it('does not render when filterControl exists, items is empty, and loading is true', () => {
-      const resourceList = shallowWithAppProvider(
+    it('renders a location name', () => {
+      const selectedLocation = 'Home';
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={[]}
-          renderItem={shallowRenderItem}
+          renderItem={renderItem}
           filterControl={<div>fake filterControl</div>}
-          loading
+          selectedLocation={selectedLocation}
         />,
+        {
+          context: createAppProviderContext({i18n: en}),
+        },
       );
-      expect(resourceList.find(EmptySearchResult).exists()).toBe(false);
+
+      expect(resourceList.find(EmptySearchResult)).toContainText(
+        selectedLocation,
+      );
     });
   });
 
   describe('Sorting', () => {
-    it('does not render a sort select if sortOptions aren’t provided', () => {
-      const resourceList = mountWithAppProvider(
+    it("it should not render a sort select if 'sortOptions' aren’t provided", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
       expect(resourceList.find(Select).exists()).toBe(false);
     });
 
-    it('renders a sort select if sortOptions are provided', () => {
-      const resourceList = mountWithAppProvider(
+    it("it should render a sort select if 'sortOptions' are provided", () => {
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -476,21 +494,9 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(Select).exists()).toBe(true);
     });
 
-    it('does not render a sort select if an alternateTool is provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          items={itemsWithID}
-          renderItem={renderItem}
-          sortOptions={sortOptions}
-          alternateTool={alternateTool}
-        />,
-      );
-      expect(resourceList.find(Select).exists()).toBe(false);
-    });
-
     describe('sortOptions', () => {
-      it('passes a sortOptions to the Select options', () => {
-        const resourceList = mountWithAppProvider(
+      it("should pass a 'sortOptions' to the Select options", () => {
+        const resourceList = mountWithPolarisContext(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
@@ -505,14 +511,12 @@ describe('<ResourceList />', () => {
     });
 
     describe('sortValue', () => {
-      it('passes a sortValue to the Select value', () => {
-        const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
+      it("should pass a 'sortValue' to the Select value", () => {
+        const resourceList = mountWithPolarisContext(
           <ResourceList
             items={itemsWithID}
             sortOptions={sortOptions}
             sortValue="sortValue"
-            onSortChange={onSortChange}
             renderItem={renderItem}
           />,
         );
@@ -524,92 +528,9 @@ describe('<ResourceList />', () => {
     });
 
     describe('onSortChange', () => {
-      it('calls onSortChange when the Sort Select changes', () => {
+      it('should call onSortChange when the Sort Select changes', () => {
         const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
-          <ResourceList
-            items={itemsWithID}
-            onSortChange={onSortChange}
-            sortOptions={sortOptions}
-            renderItem={renderItem}
-          />,
-        );
-        trigger(resourceList.find(Select), 'onChange', 'PRODUCT_TITLE_DESC');
-        expect(onSortChange).toHaveBeenCalledWith('PRODUCT_TITLE_DESC');
-      });
-    });
-  });
-
-  describe('Alternate Tool', () => {
-    it('does not render if an alternateTool is not provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
-      );
-      expect(resourceList.find('#AlternateTool').exists()).toBe(false);
-    });
-
-    it('renders if an alternateTool is provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          items={itemsWithID}
-          renderItem={renderItem}
-          alternateTool={alternateTool}
-        />,
-      );
-      expect(resourceList.find('#AlternateTool').exists()).toBe(true);
-    });
-
-    it('renders even if sortOptions are provided', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          items={itemsWithID}
-          renderItem={renderItem}
-          sortOptions={sortOptions}
-          alternateTool={alternateTool}
-        />,
-      );
-      expect(resourceList.find('#AlternateTool').exists()).toBe(true);
-    });
-
-    describe('sortOptions', () => {
-      it('passes a sortOptions to the Select options', () => {
-        const resourceList = mountWithAppProvider(
-          <ResourceList
-            items={itemsWithID}
-            sortOptions={sortOptions}
-            renderItem={renderItem}
-          />,
-        );
-        expect(resourceList.find(Select).props()).toHaveProperty(
-          'options',
-          sortOptions,
-        );
-      });
-    });
-
-    describe('sortValue', () => {
-      it('passes a sortValue to the Select value', () => {
-        const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
-          <ResourceList
-            items={itemsWithID}
-            sortOptions={sortOptions}
-            sortValue="sortValue"
-            onSortChange={onSortChange}
-            renderItem={renderItem}
-          />,
-        );
-        expect(resourceList.find(Select).props()).toHaveProperty(
-          'value',
-          'sortValue',
-        );
-      });
-    });
-
-    describe('onSortChange', () => {
-      it('calls onSortChange when the Sort Select changes', () => {
-        const onSortChange = jest.fn();
-        const resourceList = mountWithAppProvider(
+        const resourceList = mountWithPolarisContext(
           <ResourceList
             items={itemsWithID}
             onSortChange={onSortChange}
@@ -625,7 +546,7 @@ describe('<ResourceList />', () => {
 
   describe('loading', () => {
     it('renders a spinner', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={itemsWithID}
           sortOptions={sortOptions}
@@ -633,27 +554,30 @@ describe('<ResourceList />', () => {
           loading
         />,
       );
-
       expect(resourceList.find(Spinner).exists()).toBe(true);
-    });
-
-    it('does not render an <Item /> if loading is true and there are no items', () => {
-      const resourceList = mountWithAppProvider(
-        <ResourceList
-          items={[]}
-          sortOptions={sortOptions}
-          renderItem={renderItem}
-          loading
-        />,
-      );
-
-      expect(resourceList.find(Item)).toHaveLength(0);
     });
   });
 
   describe('BulkActions', () => {
+    it('render disabled when on there are no selected items and on a small screen', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        value: 240,
+      });
+
+      const resourceList = mountWithPolarisContext(
+        <ResourceList
+          items={itemsWithID}
+          sortOptions={sortOptions}
+          renderItem={renderItem}
+          promotedBulkActions={promotedBulkActions}
+          selectedItems={[]}
+        />,
+      );
+      expect(resourceList.find(BulkActions)).toHaveProp('disabled', true);
+    });
+
     it('renders on initial load when items are selected', () => {
-      const resourceList = mountWithAppProvider(
+      const resourceList = mountWithPolarisContext(
         <ResourceList
           items={singleItemWithID}
           renderItem={renderItem}
@@ -681,6 +605,7 @@ function renderCustomMarkup(item: any) {
 function renderItem(item: any, id: any) {
   return (
     <ResourceList.Item
+      index={0}
       id={id}
       url={item.url}
       accessibilityLabel={`View details for ${item.title}`}

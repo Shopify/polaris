@@ -10,6 +10,6 @@ export {
   Props as FilterControlProps,
 } from './FilterControl';
 
-export {default as Item, Props as ItemProps} from './Item';
+export {default as Item} from './Item';
 
-export {Provider, Consumer} from './Context';
+export {default as Sorter} from './Sorter';

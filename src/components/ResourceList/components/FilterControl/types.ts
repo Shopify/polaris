@@ -1,5 +1,5 @@
-import {SelectOption} from '../../../Select';
-import {Type} from '../../../TextField';
+import {SelectOption} from '@shopify/polaris';
+import {Type} from '@shopify/polaris/types/components/TextField';
 
 export interface Operator {
   key: string;
@@ -35,6 +35,7 @@ export interface FilterTextField<FilterKeys = {}>
   extends FilterBase<FilterKeys> {
   type: FilterType.TextField;
   textFieldType?: Type;
+  placeholder?: string;
 }
 
 export interface FilterDateSelector<FilterKeys = {}>

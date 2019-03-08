@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "选择筛选条件...",
+  "dateValueLabel": "日期",
+  "dateValueError": "匹配 YYYY-MM-DD 格式",
+  "dateValuePlaceholder": "YYYY-MM-DD",
+  "selectOptions": {
+    "dateFilterLabel": "选择一个值",
+    "pastWeek": "过去的一周内",
+    "pastMonth": "过去的 1 个月里",
+    "pastQuarter": "过去的 3 个月里",
+    "pastYear": "在过去的一年中",
+    "comingWeek": "下周",
+    "comingMonth": "下个月",
+    "comingQuarter": "接下来的 3 个月",
+    "comingYear": "在接下来的一年",
+    "onOrBefore": "截至",
+    "onOrAfter": "期间或之后"
+  }
+}

@@ -1,6 +1,33 @@
 @import '../../variables';
+@import '../../shared';
 
-$spacing: tight;
+$three-column-breakpoint: $three-column - 1;
+
+.FilterControl {
+  display: flex;
+
+  @include breakpoint-before($three-column-breakpoint) {
+    flex-wrap: wrap;
+  }
+}
+
+.TextField {
+  flex: 1 1 auto;
+}
+
+.Sorter {
+  flex: 0 0 auto;
+  margin-left: spacing();
+
+  @include breakpoint-before($three-column-breakpoint) {
+    width: 100%;
+    margin: resource-list(header-padding-small) 0 0;
+  }
+
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    display: none;
+  }
+}
 
 .AppliedFilters {
   list-style-type: none;
@@ -8,7 +35,6 @@ $spacing: tight;
   margin: 0;
   display: flex;
   flex-wrap: nowrap;
-  margin-top: -1 * resource-list(header-padding-small);
   margin-left: -1 * resource-list(header-padding-small);
   margin-right: -1 * resource-list(header-padding-small);
   overflow-x: auto;
@@ -23,8 +49,7 @@ $spacing: tight;
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex-wrap: wrap;
     margin-right: 0;
-    margin-left: -1 * spacing($spacing);
-    margin-top: -1 * spacing(base);
+    margin-left: -1 * spacing(tight);
 
     &::after {
       content: none;
@@ -34,18 +59,18 @@ $spacing: tight;
 
   @include breakpoint-before(resource-list(breakpoint-small)) {
     // account for scrollbar
-    padding-bottom: spacing($spacing);
+    padding-bottom: spacing(tight);
   }
 }
 
 .AppliedFilter {
   flex: 1 0 auto;
-  margin-top: spacing($spacing);
+  margin-top: spacing(tight);
   margin-left: resource-list(header-padding-small);
-  max-width: calc(100% - #{spacing($spacing)});
+  max-width: calc(100% - #{spacing(tight)});
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     flex: 0 1 auto;
-    margin-left: spacing($spacing);
+    margin-left: spacing(tight);
   }
 }

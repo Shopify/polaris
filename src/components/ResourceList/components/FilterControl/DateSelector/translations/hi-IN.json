@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "फ़िल्टर चुनें...",
+  "dateValueLabel": "दिनांक",
+  "dateValueError": "DD-MM-YYYY फ़ॉर्मेट से मिलान",
+  "dateValuePlaceholder": "YYYY-MM-DD",
+  "selectOptions": {
+    "dateFilterLabel": "मू्ल्य चुनें",
+    "pastWeek": "पिछले सप्ताह में",
+    "pastMonth": "पिछले महीने में",
+    "pastQuarter": "पिछले 3 महीनों में",
+    "pastYear": "पिछले वर्ष में",
+    "comingWeek": "अगले सप्ताह",
+    "comingMonth": "अगले महीने",
+    "comingQuarter": "अगले 3 महीनों में",
+    "comingYear": "अगले वर्ष में",
+    "onOrBefore": "इस पर या इसके पहले",
+    "onOrAfter": "इस पर या इसके बाद"
+  }
+}

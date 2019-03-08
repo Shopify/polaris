@@ -2,16 +2,22 @@ import * as React from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
-import {DisableableAction, Action, ActionListSection} from '../../../../types';
-import {Duration} from '../../../shared';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import Button from '../../../Button';
-import EventListener from '../../../EventListener';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {Duration} from '@shopify/polaris-next/components/animation';
+import {
+  Action,
+  ActionListSection,
+  ActionList,
+  DisableableAction,
+  Popover,
+  Button,
+  EventListener,
+  withAppProvider,
+  WithAppProviderProps,
+} from '@shopify/polaris';
+
 import CheckableButton from '../CheckableButton';
-import {BulkActionButton} from './components';
-import styles from './BulkActions.scss';
+import BulkActionButton from './BulkActionButton';
+import * as styles from './BulkActions.scss';
 
 export type BulkAction = DisableableAction;
 export type BulkActionListSection = ActionListSection;
@@ -21,27 +27,37 @@ export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 const MAX_PROMOTED_ACTIONS = 2;
 
 export interface Props {
-  /** Visually hidden text for screen readers */
+  // Visually hidden text for screen readers
   accessibilityLabel?: string;
-  /** Label for the bulk actions */
+
+  // Label for the bulk actions
   label?: string;
-  /** State of the bulk actions checkbox */
+
+  // State of the bulk actions checkbox
   selected?: boolean | 'indeterminate';
-  /** List is in a selectable state */
+
+  // List is in a selectable state
   selectMode?: boolean;
-  /** Actions that will be given more prominence */
+
+  // Actions that will be given more prominence
   promotedActions?: BulkAction[];
-  /** List of actions */
+
+  // List of actions
   actions?: (BulkAction | BulkActionListSection)[];
-  /** Text to select all across pages */
+
+  // Text to select all across pages
   paginatedSelectAllText?: string;
-  /** Action for selecting all across pages */
+
+  // Action for selecting all across pages
   paginatedSelectAllAction?: Action;
-  /** Disables bulk actions */
+
+  // Disables bulk actions
   disabled?: boolean;
-  /** Callback when the select all checkbox is clicked */
+
+  // Callback when the select all checkbox is clicked
   onToggleAll?(): void;
-  /** Callback when selectable state of list is changed */
+
+  // Callback when selectable state of list is changed
   onSelectModeToggle?(selectMode: boolean): void;
 }
 
@@ -70,9 +86,9 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
     measuring: true,
   };
 
-  private containerNode: HTMLElement | null;
-  private largeScreenButtonsNode: HTMLElement | null;
-  private moreActionsNode: HTMLElement | null;
+  private containerNode: HTMLElement | null = null;
+  private largeScreenButtonsNode: HTMLElement | null = null;
+  private moreActionsNode: HTMLElement | null = null;
   private promotedActionsWidths: number[] = [];
   private bulkActionsWidth = 0;
   private addedMoreActionsWidthForMeasuring = 0;
@@ -150,6 +166,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       : 0;
 
     if (this.containerNode) {
+      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
         containerWidth: this.containerNode.getBoundingClientRect().width,
         measuring: false,
@@ -164,11 +181,11 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       label = '',
       onToggleAll,
       selected,
-      disabled,
       promotedActions,
       paginatedSelectAllText = null,
       paginatedSelectAllAction,
       polaris: {intl},
+      disabled,
     } = this.props;
 
     if (promotedActions && promotedActions.length > MAX_PROMOTED_ACTIONS) {
@@ -220,6 +237,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
     );
     const cancelButton = (
       <button
+        type="button"
         className={cancelButtonClassName}
         // eslint-disable-next-line react/jsx-no-bind
         onClick={this.setSelectMode.bind(this, false)}
@@ -243,6 +261,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
               content={intl.translate(
                 'Polaris.ResourceList.BulkActions.actionsActivatorLabel',
               )}
+              disabled={disabled}
             />
           }
           onClose={this.toggleSmallScreenPopover}
@@ -260,10 +279,10 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
       promotedActions && numberOfPromotedActionsToRender > 0
         ? [...promotedActions]
             .slice(0, numberOfPromotedActionsToRender)
-            .map((action, index) => (
+            .map((action) => (
               <BulkActionButton
                 {...action}
-                key={index}
+                key={action.content}
                 handleMeasurement={this.handleMeasurement}
               />
             ))
@@ -308,7 +327,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
                 disclosure
                 onAction={this.toggleLargeScreenPopover}
                 content={activatorLabel}
-                disabled={disabled}
               />
             }
             onClose={this.toggleLargeScreenPopover}

@@ -1,19 +1,25 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {findByTestID, mountWithAppProvider, trigger} from 'test-utilities';
 import {
+  UnstyledLink,
   Avatar,
+  Thumbnail,
   ButtonGroup,
   Checkbox,
-  Thumbnail,
-  UnstyledLink,
-} from 'components';
-import {Provider} from '../../Context';
+} from '@shopify/polaris';
+import {findByTestID, mountWithPolarisContext, trigger} from 'tests/utilities';
 import Item from '../Item';
+import {MouseButton} from '../../../types';
+
+jest.mock('react', () => ({
+  ...require.requireActual('react'),
+  memo: function memo<P>(x: React.StatelessComponent<P>) {
+    return x;
+  },
+}));
 
 describe('<Item />', () => {
   let spy: jest.SpyInstance;
-
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
   });
@@ -27,13 +33,12 @@ describe('<Item />', () => {
     selectable: false,
     selectedItems: [],
     onSelectionChange: noop,
-    resourceName: {
-      singular: 'item',
-      plural: 'items,',
-    },
+    subscribe: noop,
+    unsubscribe: noop,
   };
 
   const itemId = 'itemId';
+  const itemIndex = 1;
   const selectedItemId = 'selectedId';
   const accessibilityLabel = 'link anchor aria-label';
 
@@ -66,15 +71,17 @@ describe('<Item />', () => {
   const ariaLabel = 'View Item';
 
   describe('accessibilityLabel', () => {
-    it('is used on the <UnstyledLink /> for the aria-label attribute', () => {
-      const item = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item
-            accessibilityLabel={accessibilityLabel}
-            id={itemId}
-            url="https://shopify.com"
-          />
-        </Provider>,
+    it('is used on the UnstyledLink for the aria-label attribute', () => {
+      const item = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          accessibilityLabel={accessibilityLabel}
+          id={itemId}
+          url="https://shopify.com"
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
 
       expect(item.find(UnstyledLink).prop('aria-label')).toBe(
@@ -84,67 +91,73 @@ describe('<Item />', () => {
   });
 
   describe('url', () => {
-    it('does not render an <UnstyledLink /> by default', () => {
-      const element = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id="itemId" onClick={noop} accessibilityLabel={ariaLabel} />
-        </Provider>,
+    it('does not renders a UnstyledLink by default', () => {
+      const element = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id="itemId"
+          onClick={noop}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       expect(element.find(UnstyledLink).exists()).toBe(false);
     });
 
-    it('renders an <UnstyledLink />', () => {
-      const element = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
-        </Provider>,
+    it('renders a UnstyledLink', () => {
+      const element = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id="itemId"
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       expect(element.find(UnstyledLink).exists()).toBe(true);
     });
 
-    it('renders an <UnstyledLink /> with url', () => {
-      const element = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
-        </Provider>,
+    it('renders a UnstyledLink with url', () => {
+      const element = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id="itemId"
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       expect(element.find(UnstyledLink).prop('url')).toBe(url);
     });
 
-    it('renders an <UnstyledLink /> with an aria-label of ariaLabel', () => {
-      const element = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} accessibilityLabel={ariaLabel} />
-        </Provider>,
+    it(`renders a UnstyledLink with an aria-label of ${ariaLabel}`, () => {
+      const element = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id="itemId"
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       expect(element.find(UnstyledLink).prop('aria-label')).toBe(ariaLabel);
-    });
-
-    it('adds a data-href to the wrapper element', () => {
-      const element = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id="itemId" url={url} />
-        </Provider>,
-      );
-
-      expect(findByTestID(element, 'Item-Wrapper').prop('data-href')).toBe(url);
     });
   });
 
   describe('id', () => {
     it('is used on the content node and for the description of a link', () => {
-      const item = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item
-            id={itemId}
-            url="https://shopify.com"
-            accessibilityLabel={ariaLabel}
-          />
-        </Provider>,
+      const item = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url="https://shopify.com"
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       expect(findByTestID(item, 'Item-Content').prop('id')).toBe(itemId);
@@ -153,12 +166,16 @@ describe('<Item />', () => {
   });
 
   describe('onClick()', () => {
-    it('calls onClick when clicking on the item when onClick exists', () => {
+    it('calls onClick when clicking on the item when onClick exist', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={onClick}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
@@ -167,15 +184,15 @@ describe('<Item />', () => {
 
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item
-            id={itemId}
-            onClick={onClick}
-            url={url}
-            accessibilityLabel={ariaLabel}
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={onClick}
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
@@ -183,10 +200,15 @@ describe('<Item />', () => {
     });
 
     it('calls window.open on metaKey + click', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
-        </Provider>,
+      const spy = jest.spyOn(window, 'open');
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
       trigger(item, 'onClick', {nativeEvent: {metaKey: true}});
@@ -194,10 +216,15 @@ describe('<Item />', () => {
     });
 
     it('calls window.open on ctrlKey + click', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
-        </Provider>,
+      const spy = jest.spyOn(window, 'open');
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
       trigger(item, 'onClick', {nativeEvent: {ctrlKey: true}});
@@ -205,81 +232,125 @@ describe('<Item />', () => {
     });
   });
 
+  describe('onFocus()', () => {
+    it('is triggered when Item is focused', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={noop}
+          onFocus={spy}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('focus');
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onMouseUp', () => {
+    it('opens a new window when clicked with the auxiliary button', () => {
+      const url = '/admin/order/60';
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id="itemId"
+          onClick={noop}
+          url={url}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('mouseup', {
+        button: MouseButton.Auxiliary,
+      });
+      expect(spy).toBeCalledWith(url, '_blank');
+    });
+  });
+
+  describe('onBlur()', () => {
+    it('is triggered when focus leaves the Item', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={noop}
+          onBlur={spy}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockDefaultContext},
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('focus');
+      findByTestID(wrapper, 'Item-Wrapper').simulate('blur');
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('Selectable', () => {
-    it('does not call the Item onClick when clicking the LargerSelectionArea', () => {
-      const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectableContext}>
-          <Item id={itemId} onClick={onClick} />
-        </Provider>,
+    it("it should not call onSelectionChange when clicking the 'LargerSelectionArea'", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item index={itemIndex} id={itemId} onClick={() => {}} />,
+        {
+          context: mockSelectableContext,
+        },
       );
 
       findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
-      expect(onClick).not.toBeCalled();
+      expect(mockSelectableContext.onSelectionChange).not.toBeCalled();
     });
 
-    it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectableContext}>
-          <Item id={itemId} url={url} />
-        </Provider>,
+    it("it should call 'onSelectionChange' with the id of the item when clicking the 'LargerSelectionArea'", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item index={itemIndex} id={itemId} url={url} />,
+        {
+          context: mockSelectModeContext,
+        },
       );
 
       findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
-      expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(
+
+      expect(mockSelectModeContext.onSelectionChange).toHaveBeenCalledWith(
         true,
         itemId,
+        itemIndex,
+        undefined,
       );
     });
   });
 
   describe('SelectMode', () => {
-    it('calls onClick when item is clicked', () => {
+    it("it should not call 'onClick' when clicking the item", () => {
       const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectModeContext}>
-          <Item id={itemId} onClick={onClick} accessibilityLabel={ariaLabel} />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={onClick}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockSelectModeContext},
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
       expect(onClick).not.toBeCalledWith(itemId);
     });
 
-    it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
-      const onClick = jest.fn();
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectableContext}>
-          <Item
-            id={itemId}
-            url={url}
-            onClick={onClick}
-            accessibilityLabel={ariaLabel}
-          />
-        </Provider>,
-      );
-
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(mockSelectModeContext.onSelectionChange).toHaveBeenCalledWith(
-        true,
-        itemId,
-      );
-    });
-
-    it('renders a checked Checkbox if the item is in the selectedItems context', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectableContext}>
-          <Item id={selectedItemId} url={url} />
-        </Provider>,
-      );
-      expect(wrapper.find(Checkbox).props().checked).toBe(true);
-    });
-
-    it('does not call window.open when clicking the item with metaKey', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectModeContext}>
-          <Item id={selectedItemId} url={url} />
-        </Provider>,
+    it('it should not call window.open when clicking the item with metaKey', () => {
+      const spy = jest.spyOn(window, 'open');
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={jest.fn()}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockSelectModeContext},
       );
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {metaKey: true},
@@ -287,43 +358,86 @@ describe('<Item />', () => {
       expect(spy).not.toBeCalled();
     });
 
-    it('does not call window.open when clicking the item with ctrlKey', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectModeContext}>
-          <Item id={selectedItemId} url={url} />
-        </Provider>,
+    it('it should not call window.open when clicking the item with ctrlKey', () => {
+      const spy = jest.spyOn(window, 'open');
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          onClick={jest.fn()}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context: mockSelectModeContext},
       );
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {ctrlKey: true},
       });
       expect(spy).not.toBeCalled();
     });
+
+    it("it should call 'onSelectionChange' with the id of the item even if url or onClick is present", () => {
+      const onClick = jest.fn();
+      const onSelectionChange = jest.fn();
+      const context = {...mockSelectModeContext, onSelectionChange};
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          onClick={onClick}
+          accessibilityLabel={ariaLabel}
+        />,
+        {context},
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      expect(onSelectionChange).toHaveBeenCalledWith(
+        true,
+        itemId,
+        itemIndex,
+        undefined,
+      );
+    });
+
+    it("should render a checked Checkbox if the item is in the 'selectedItems' context", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item index={itemIndex} id={selectedItemId} url={url} />,
+        {context: mockSelectModeContext},
+      );
+      expect(wrapper.find(Checkbox).props().checked).toBe(true);
+    });
+
+    it("renders a disabled checked Checkbox if 'loading' context is true", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item index={itemIndex} id={selectedItemId} url={url} />,
+        {context: mockLoadingContext},
+      );
+      expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
+    });
   });
 
   describe('media', () => {
-    it('does not include media if not provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} />
-        </Provider>,
+    it('should not include media if not is provided', () => {
+      const wrapper = mountWithPolarisContext(
+        <Item index={itemIndex} id={itemId} url={url} />,
+        {
+          context: mockDefaultContext,
+        },
       );
       expect(findByTestID(wrapper, 'Media').exists()).toBe(false);
     });
 
-    it('renders a disabled checked Checkbox if loading context is true', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockLoadingContext}>
-          <Item id={selectedItemId} url={url} />
-        </Provider>,
-      );
-      expect(wrapper.find(Checkbox).prop('disabled')).toBe(true);
-    });
-
-    it('includes an <Avatar /> if one is provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} media={<Avatar customer />} />
-        </Provider>,
+    it("should include and 'Avatar' if one is provided", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          media={<Avatar customer />}
+        />,
+        {
+          context: mockDefaultContext,
+        },
       );
       expect(
         findByTestID(wrapper, 'Media')
@@ -332,15 +446,15 @@ describe('<Item />', () => {
       ).toBe(true);
     });
 
-    it('includes a <Thumbnail /> if one is provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item
-            id={itemId}
-            url={url}
-            media={<Thumbnail source="source" alt="alt" />}
-          />
-        </Provider>,
+    it("should include and 'Thumbnail' if one is provided", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          media={<Thumbnail source="source" alt="alt" />}
+        />,
+        {context: mockDefaultContext},
       );
       expect(
         findByTestID(wrapper, 'Media')
@@ -351,48 +465,53 @@ describe('<Item />', () => {
   });
 
   describe('shortcutActions', () => {
-    it('does not render shortcut actions if none are provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} />
-        </Provider>,
+    it('shouldn’t render shortcut actions if none are provided', () => {
+      const wrapper = mountWithPolarisContext(
+        <Item index={itemIndex} id={itemId} url={url} />,
+        {
+          context: mockDefaultContext,
+        },
       );
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(false);
     });
 
-    it('renders shortcut actions when some are provided', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item id={itemId} url={url} shortcutActions={[{content: 'action'}]} />
-        </Provider>,
+    it('should render shortcut actions when some are provided', () => {
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          shortcutActions={[{content: 'action'}]}
+        />,
+        {context: mockDefaultContext},
       );
       expect(findByTestID(wrapper, 'ShortcutActions').exists()).toBe(true);
     });
 
-    it('renders persistent shortcut actions if persistActions is true', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item
-            id={itemId}
-            url={url}
-            shortcutActions={[{content: 'action'}]}
-            persistActions
-          />
-        </Provider>,
+    it("should render persistent shortcut actions if 'persistActions' is true", () => {
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          shortcutActions={[{content: 'action'}]}
+          persistActions
+        />,
+        {context: mockDefaultContext},
       );
       expect(wrapper.find(ButtonGroup).exists()).toBe(true);
     });
 
     it('does not render while loading', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={{...mockLoadingContext}}>
-          <Item
-            id={itemId}
-            url={url}
-            shortcutActions={[{content: 'action'}]}
-            persistActions
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          shortcutActions={[{content: 'action'}]}
+          persistActions
+        />,
+        {context: mockLoadingContext},
       );
       expect(wrapper.find(ButtonGroup)).toHaveLength(0);
     });
@@ -400,29 +519,29 @@ describe('<Item />', () => {
 
   describe('accessibleMarkup', () => {
     it('renders with a tab index of -1 when loading is true', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockLoadingContext}>
-          <Item
-            id={itemId}
-            url={url}
-            shortcutActions={[{content: 'action'}]}
-            persistActions
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          shortcutActions={[{content: 'action'}]}
+          persistActions
+        />,
+        {context: mockLoadingContext},
       );
       expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(-1);
     });
 
     it('renders with a tab index of 0 when loading is false', () => {
-      const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
-          <Item
-            id={itemId}
-            url={url}
-            shortcutActions={[{content: 'action'}]}
-            persistActions
-          />
-        </Provider>,
+      const wrapper = mountWithPolarisContext(
+        <Item
+          index={itemIndex}
+          id={itemId}
+          url={url}
+          shortcutActions={[{content: 'action'}]}
+          persistActions
+        />,
+        {context: mockDefaultContext},
       );
       expect(wrapper.find(UnstyledLink).prop('tabIndex')).toBe(0);
     });

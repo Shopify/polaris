@@ -113,7 +113,8 @@
 
 .Owned {
   display: flex;
-  align-self: flex-start;
+  align-self: center;
+  padding-top: spacing(extra-tight);
 }
 
 // Item handle
@@ -125,23 +126,6 @@
   margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
-}
-
-.selectable {
-  width: calc(100% + #{resource-list-item(translate-offset)});
-  transform: translateX(-1 * resource-list-item(translate-offset));
-  transition: transform easing() duration();
-  margin-right: -1 * resource-list-item(translate-offset);
-
-  &.selectMode {
-    transform: translateX(0);
-  }
-
-  @include breakpoint-after(resource-list(breakpoint-small)) {
-    width: 100%;
-    transform: translateX(0);
-    margin-right: 0;
-  }
 }
 
 .Media {

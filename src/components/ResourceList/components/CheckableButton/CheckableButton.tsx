@@ -1,18 +1,22 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import Checkbox from '../../../Checkbox';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {
+  Checkbox,
+  withAppProvider,
+  WithAppProviderProps,
+} from '@shopify/polaris';
 
-import styles from './CheckableButton.scss';
+import * as styles from './CheckableButton.scss';
 
 export interface Props {
   accessibilityLabel?: string;
   label?: string;
   selected?: boolean | 'indeterminate';
   selectMode?: boolean;
+  disabled?: boolean;
   plain?: boolean;
   measuring?: boolean;
-  disabled?: boolean;
+  hasHeadings?: boolean;
   onToggleAll?(): void;
 }
 export type CombinedProps = Props & WithAppProviderProps;
@@ -25,6 +29,7 @@ function CheckableButton({
   selectMode,
   plain,
   measuring,
+  hasHeadings,
   disabled,
 }: CombinedProps) {
   const className = plain
@@ -36,6 +41,15 @@ function CheckableButton({
         measuring && styles['CheckableButton-measuring'],
       );
 
+  const labelClassName = classNames(
+    styles.Label,
+    hasHeadings && styles['Label-hasHeadings'],
+  );
+
+  const labelMarkup = label ? (
+    <span className={labelClassName}>{label}</span>
+  ) : null;
+
   return (
     <div className={className} onClick={onToggleAll}>
       <div className={styles.Checkbox}>
@@ -46,7 +60,7 @@ function CheckableButton({
           disabled={disabled}
         />
       </div>
-      <span className={styles.Label}>{label}</span>
+      {labelMarkup}
     </div>
   );
 }

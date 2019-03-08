@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "Pilih penapis...",
+  "dateValueLabel": "Tarikh",
+  "dateValueError": "Padankan format YYYY-MM-DD",
+  "dateValuePlaceholder": "YYYY-MM-DD",
+  "selectOptions": {
+    "dateFilterLabel": "Pilih nilai",
+    "pastWeek": "pada minggu lepas",
+    "pastMonth": "pada bulan lepas",
+    "pastQuarter": "dalam 3 bulan terakhir",
+    "pastYear": "pada tahun lepas",
+    "comingWeek": "minggu depan",
+    "comingMonth": "bulan depan",
+    "comingQuarter": "dalam 3 bulan akan datang",
+    "comingYear": "pada tahun hadapan",
+    "onOrBefore": "pada atau sebelum",
+    "onOrAfter": "pada atau selepas"
+  }
+}

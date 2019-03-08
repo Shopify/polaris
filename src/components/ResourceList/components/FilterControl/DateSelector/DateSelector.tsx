@@ -1,15 +1,18 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
-import Select from '../../../../../Select';
-import TextField from '../../../../../TextField';
-import Icon from '../../../../../Icon';
 import {
-  withAppProvider,
-  WithAppProviderProps,
-} from '../../../../../AppProvider';
+  DatePicker,
+  Months,
+  Year,
+  Range,
+  Select,
+  TextField,
+  Icon,
+} from '@shopify/polaris';
+import compose from '@shopify/react-compose';
+import {withI18n, WithI18nProps} from '@shopify/react-i18n';
 
-import styles from './DateSelector.scss';
+import * as styles from './DateSelector.scss';
 
 const VALID_DATE_REGEX = /^\d{4}-\d{1,2}-\d{1,2}$/;
 
@@ -34,7 +37,7 @@ interface State {
   initialConsumerFilterKey?: string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+export type CombinedProps = Props & WithI18nProps;
 
 export enum DateFilterOption {
   PastWeek = 'past_week',
@@ -63,7 +66,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       filterMinKey,
       filterMaxKey,
       dateOptionType,
-      polaris: {intl},
+      i18n,
     } = this.props;
 
     const {
@@ -88,12 +91,8 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       <React.Fragment>
         <div className={styles.DateTextField}>
           <TextField
-            label={intl.translate(
-              'Polaris.ResourceList.DateSelector.dateValueLabel',
-            )}
-            placeholder={intl.translate(
-              'Polaris.ResourceList.DateSelector.dateValuePlaceholder',
-            )}
+            label={i18n.translate('dateValueLabel')}
+            placeholder={i18n.translate('dateValuePlaceholder')}
             value={this.dateTextFieldValue}
             error={userInputDateError}
             prefix={<Icon source="calendar" color="skyDark" />}
@@ -117,18 +116,14 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     return (
       <React.Fragment>
         <Select
-          label={intl.translate(
-            'Polaris.ResourceList.DateSelector.SelectOptions.dateFilterLabel',
-          )}
+          label={i18n.translate('selectOptions.dateFilterLabel')}
           labelHidden
           options={
             dateOptionType
               ? this.dateOptionTypes[dateOptionType]
               : this.dateOptionTypes.full
           }
-          placeholder={intl.translate(
-            'Polaris.ResourceList.FilterValueSelector.selectFilterValuePlaceholder',
-          )}
+          placeholder={i18n.translate('selectFilterValuePlaceholder')}
           value={dateFilterOption}
           onChange={this.handleDateFilterOptionsChange}
         />
@@ -138,88 +133,62 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
   }
 
   private get dateComparatorOptions() {
-    const {
-      polaris: {intl},
-    } = this.props;
+    const {i18n} = this.props;
 
     return [
       {
         value: DateFilterOption.OnOrBefore,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.OnOrBefore',
-        ),
+        label: i18n.translate('selectOptions.onOrBefore'),
       },
       {
         value: DateFilterOption.OnOrAfter,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.OnOrAfter',
-        ),
+        label: i18n.translate('selectOptions.onOrAfter'),
       },
     ];
   }
 
   private get datePastOptions() {
-    const {
-      polaris: {intl},
-    } = this.props;
+    const {i18n} = this.props;
 
     return [
       {
         value: DateFilterOption.PastWeek,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.PastWeek',
-        ),
+        label: i18n.translate('selectOptions.pastWeek'),
       },
       {
         value: DateFilterOption.PastMonth,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.PastMonth',
-        ),
+        label: i18n.translate('selectOptions.pastMonth'),
       },
       {
         value: DateFilterOption.PastQuarter,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.PastQuarter',
-        ),
+        label: i18n.translate('selectOptions.pastQuarter'),
       },
       {
         value: DateFilterOption.PastYear,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.PastYear',
-        ),
+        label: i18n.translate('selectOptions.pastYear'),
       },
     ];
   }
 
   private get dateFutureOptions() {
-    const {
-      polaris: {intl},
-    } = this.props;
+    const {i18n} = this.props;
 
     return [
       {
         value: DateFilterOption.ComingWeek,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.ComingWeek',
-        ),
+        label: i18n.translate('selectOptions.comingWeek'),
       },
       {
         value: DateFilterOption.ComingMonth,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.ComingMonth',
-        ),
+        label: i18n.translate('selectOptions.comingMonth'),
       },
       {
         value: DateFilterOption.ComingQuarter,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.ComingQuarter',
-        ),
+        label: i18n.translate('selectOptions.comingQuarter'),
       },
       {
         value: DateFilterOption.ComingYear,
-        label: intl.translate(
-          'Polaris.ResourceList.DateSelector.SelectOptions.ComingYear',
-        ),
+        label: i18n.translate('selectOptions.comingYear'),
       },
     ];
   }
@@ -323,17 +292,12 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleDateBlur() {
-    const {
-      polaris: {intl},
-      onFilterValueChange,
-    } = this.props;
+    const {onFilterValueChange, i18n} = this.props;
 
     if (!this.dateTextFieldValue || !isValidDate(this.dateTextFieldValue)) {
       this.setState({
         selectedDate: undefined,
-        userInputDateError: intl.translate(
-          'Polaris.ResourceList.DateSelector.dateValueError',
-        ),
+        userInputDateError: i18n.translate('dateValueError'),
       });
       onFilterValueChange(undefined);
 
@@ -438,4 +402,4 @@ function formatDateForLocalTimezone(date: Date) {
   return formattedDate.toISOString();
 }
 
-export default withAppProvider<Props>()(DateSelector);
+export default compose<Props>(withI18n())(DateSelector);

@@ -1,41 +1,47 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
-import compose from '@shopify/react-compose';
-import {DisableableAction, WithContextTypes} from '../../../../types';
-import ActionList from '../../../ActionList';
-import Popover from '../../../Popover';
-import {Props as AvatarProps} from '../../../Avatar';
-import UnstyledLink from '../../../UnstyledLink';
-import {Props as ThumbnailProps} from '../../../Thumbnail';
-import ButtonGroup from '../../../ButtonGroup';
-import Checkbox from '../../../Checkbox';
-import Button, {buttonsFrom} from '../../../Button';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {noop} from '@shopify/javascript-utilities/other';
+import {
+  ActionList,
+  withAppProvider,
+  WithAppProviderProps,
+  Popover,
+  ButtonGroup,
+  Button,
+  buttonsFrom,
+  DisableableAction,
+  AvatarProps,
+  ThumbnailProps,
+} from '@shopify/polaris';
+import {contextTypes, MouseButton, SELECT_ALL_ITEMS} from '../../types';
+import Handle from './Handle';
+import Accessible from './Accessible';
 
-import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
-import withContext from '../../../WithContext';
-import {Consumer} from '../Context';
-import styles from './Item.scss';
+import * as styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
 export type MediaSize = 'small' | 'medium' | 'large';
 export type MediaType = 'avatar' | 'thumbnail';
 
 export interface BaseProps {
-  /** Visually hidden text for screen readers */
+  // Visually hidden text for screen readers
   accessibilityLabel?: string;
-  /** Id of the element the item onClick controls */
+  // Id of the element the item onClick controls
   ariaControls?: string;
-  /** Tells screen reader the controlled element is expanded */
+  // Tells screen reader the controlled element is expanded
   ariaExpanded?: boolean;
-  /** Unique identifier for the item */
+  // Unique identifier for the item
   id: string;
+  index: number;
   media?: React.ReactElement<AvatarProps | ThumbnailProps>;
   persistActions?: boolean;
   shortcutActions?: DisableableAction[];
   children?: React.ReactNode;
+  onMouseEnter?(): void;
+  onMouseLeave?(): void;
+  onBlur?(): void;
+  onFocus?(): void;
 }
 
 export interface PropsWithUrl extends BaseProps {
@@ -57,14 +63,13 @@ export interface State {
 }
 
 export type CombinedProps =
-  | PropsWithUrl & WithAppProviderProps & WithContextTypes<ResourceListContext>
-  | PropsWithClick &
-      WithAppProviderProps &
-      WithContextTypes<ResourceListContext>;
-
-const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
+  | PropsWithUrl & WithAppProviderProps
+  | PropsWithClick & WithAppProviderProps;
 
 export class Item extends React.PureComponent<CombinedProps, State> {
+  static contextTypes = contextTypes;
+  static Handle = Handle;
+
   state: State = {
     actionsMenuVisible: false,
     focused: false,
@@ -72,7 +77,16 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   };
 
   private node: HTMLElement | null = null;
-  private checkboxId = getUniqueCheckboxID();
+
+  componentDidMount() {
+    const {subscribe} = this.context;
+    subscribe(this.handleContextUpdate);
+  }
+
+  componentWillUnmount() {
+    const {unsubscribe} = this.context;
+    unsubscribe(this.handleContextUpdate);
+  }
 
   render() {
     const {
@@ -85,8 +99,12 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       persistActions = false,
       polaris: {intl},
       accessibilityLabel,
-      context: {selectable, selectMode, loading},
-    } = this.props;
+      onMouseEnter,
+      onMouseLeave,
+      id,
+    } = this.props as CombinedProps;
+
+    const {selectable, loading} = this.context;
 
     const {actionsMenuVisible, focused, focusedInner} = this.state;
 
@@ -114,29 +132,19 @@ export class Item extends React.PureComponent<CombinedProps, State> {
           });
 
       handleMarkup = (
-        <div
-          className={styles.Handle}
+        <Handle
+          label={label}
+          checked={selected}
+          disabled={loading}
           onClick={this.handleLargerSelectionArea}
-          testID="LargerSelectionArea"
-        >
-          <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
-            <Checkbox
-              testID="Checkbox"
-              id={this.checkboxId}
-              label={label}
-              labelHidden
-              onChange={this.handleSelection}
-              checked={selected}
-              disabled={loading}
-            />
-          </div>
-        </div>
+          onChange={this.handleLargerSelectionArea}
+        />
       );
     }
 
     if (media || selectable) {
       ownedMarkup = (
-        <div className={styles.Owned}>
+        <div className={styles.Owned} testID="LargerSelectionArea">
           {handleMarkup}
           {mediaMarkup}
         </div>
@@ -148,7 +156,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       focused && styles.focused,
       selectable && styles.selectable,
       selected && styles.selected,
-      selectMode && styles.selectMode,
       persistActions && styles.persistActions,
       focusedInner && styles.focusedInner,
     );
@@ -221,29 +228,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
     const tabIndex = loading ? -1 : 0;
 
-    const accessibleMarkup = url ? (
-      <UnstyledLink
-        aria-describedby={this.props.id}
-        aria-label={accessibilityLabel}
-        className={styles.Link}
-        url={url}
-        onFocus={this.handleAnchorFocus}
-        onBlur={this.handleFocusedBlur}
-        tabIndex={tabIndex}
-      />
-    ) : (
-      <button
-        className={styles.Button}
-        aria-label={accessibilityLabel}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        onClick={this.handleClick}
-        onFocus={this.handleAnchorFocus}
-        onBlur={this.handleFocusedBlur}
-        tabIndex={tabIndex}
-      />
-    );
-
     return (
       <div
         ref={this.setNode}
@@ -251,12 +235,24 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onClick={this.handleClick}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
+        onMouseUp={this.handleMouseUp}
         onMouseDown={this.handleMouseDown}
         onKeyUp={this.handleKeypress}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         testID="Item-Wrapper"
-        data-href={url}
       >
-        {accessibleMarkup}
+        <Accessible
+          url={url}
+          id={id}
+          accessibilityLabel={accessibilityLabel}
+          tabIndex={tabIndex}
+          ariaControls={ariaControls}
+          ariaExpanded={ariaExpanded}
+          onClick={this.handleClick}
+          onFocus={this.handleAnchorFocus}
+          onBlur={this.handleFocusedBlur}
+        />
         {containerMarkup}
       </div>
     );
@@ -279,6 +275,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleFocus() {
+    const {onFocus} = this.props;
+
+    if (onFocus) {
+      onFocus();
+    }
     this.setState({focused: true});
   }
 
@@ -289,6 +290,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       this.node == null ||
       !this.node.contains(event.relatedTarget as HTMLElement)
     ) {
+      const {onBlur} = this.props;
+
+      if (onBlur) {
+        onBlur();
+      }
       this.setState({focused: false});
     } else if (isInside) {
       this.setState({focusedInner: true});
@@ -301,34 +307,41 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   @autobind
-  private handleLargerSelectionArea(event: React.MouseEvent<any>) {
-    stopPropagation(event);
-    this.handleSelection(!this.isSelected());
+  private handleMouseUp(event: React.MouseEvent) {
+    const {button} = event;
+
+    if (button !== MouseButton.Auxiliary) {
+      return;
+    }
+
+    window.open(this.props.url, '_blank');
   }
 
   @autobind
-  private handleSelection(value: boolean) {
-    const {
-      id,
-      context: {onSelectionChange},
-    } = this.props;
-    if (id == null || onSelectionChange == null) {
+  private handleLargerSelectionArea(event: React.MouseEvent<any>) {
+    stopPropagation(event);
+    this.handleSelection(!this.isSelected(), event.nativeEvent.shiftKey);
+  }
+
+  @autobind
+  private handleSelection(value: boolean, shiftKey?: boolean) {
+    const {id, index} = this.props;
+    const {onSelectionChange} = this.context;
+    if (id == null || index == null || onSelectionChange == null) {
       return;
     }
+
     this.setState({focused: true, focusedInner: true});
-    onSelectionChange(value, id);
+    onSelectionChange(value, id, index, shiftKey);
   }
 
   @autobind
   private handleClick(event: React.MouseEvent<any>) {
-    const {
-      id,
-      onClick,
-      url,
-      context: {selectMode},
-    } = this.props;
+    const {id, onClick, url} = this.props;
     const {ctrlKey, metaKey} = event.nativeEvent;
     const anchor = this.node && this.node.querySelector('a');
+
+    const {selectMode} = this.context;
 
     if (selectMode) {
       this.handleLargerSelectionArea(event);
@@ -343,7 +356,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       onClick(id);
     }
 
-    if (url && (ctrlKey || metaKey)) {
+    if (ctrlKey || metaKey) {
       window.open(url, '_blank');
       return;
     }
@@ -355,15 +368,18 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
-    const {
-      onClick = noop,
-      context: {selectMode},
-    } = this.props;
+    const {onClick = noop} = this.props;
+    const {selectMode} = this.context;
     const {key} = event;
 
     if (key === 'Enter' && !selectMode) {
       onClick();
     }
+  }
+
+  @autobind
+  private handleContextUpdate() {
+    this.forceUpdate();
   }
 
   @autobind
@@ -379,10 +395,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   }
 
   private isSelected() {
-    const {
-      id,
-      context: {selectedItems},
-    } = this.props;
+    const {id} = this.props;
+    const {selectedItems} = this.context;
     return (
       selectedItems &&
       ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
@@ -401,7 +415,4 @@ function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
 }
 
-export default compose<Props>(
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
-  withAppProvider<Props>(),
-)(Item);
+export default withAppProvider<PropsWithUrl | PropsWithClick>()(Item);

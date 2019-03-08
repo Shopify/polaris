@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "Sélectionner un filtre...",
+  "dateValueLabel": "Date",
+  "dateValueError": "Correspondre au format JJ-MM-AAAA",
+  "dateValuePlaceholder": "JJ-MM-AAAA",
+  "selectOptions": {
+    "dateFilterLabel": "Sélectionner une valeur",
+    "pastWeek": "au cours de la dernière semaine",
+    "pastMonth": "au cours du dernier mois",
+    "pastQuarter": "au cours des 3 derniers mois",
+    "pastYear": "au cours de la dernière année",
+    "comingWeek": "la semaine prochaine",
+    "comingMonth": "le mois prochain",
+    "comingQuarter": "au cours des 3 prochains mois",
+    "comingYear": "l'année prochaine",
+    "onOrBefore": "le ou avant le",
+    "onOrAfter": "le ou après le"
+  }
+}

@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import Button from '../../../../../Button';
-import Popover from '../../../../../Popover';
-import Select from '../../../../../Select';
-import FormLayout from '../../../../../FormLayout';
-import Form from '../../../../../Form';
+
 import {
+  Button,
+  Popover,
+  Select,
+  Form,
+  FormLayout,
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
+} from '@shopify/polaris';
 
-import FilterValueSelector from '../FilterValueSelector';
-import {AppliedFilter, Filter, Operator} from '../../types';
+import FilterValueSelector from './FilterValueSelector';
+import {AppliedFilter, Filter} from './types';
 
 export interface Props {
   filters: Filter[];
@@ -149,21 +150,13 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
     const {filters} = this.props;
 
     const foundFilter = filters.find((filter: any) => {
-      const {minKey, maxKey, operatorText} = filter;
+      const {minKey, maxKey} = filter;
 
       if (minKey || maxKey) {
         return (
           filter.key === filterKey ||
           minKey === filterKey ||
           maxKey === filterKey
-        );
-      }
-
-      if (operatorText && typeof operatorText !== 'string') {
-        return (
-          filter.key === filterKey ||
-          operatorText.filter(({key}: Operator) => key === filterKey).length ===
-            1
         );
       }
 

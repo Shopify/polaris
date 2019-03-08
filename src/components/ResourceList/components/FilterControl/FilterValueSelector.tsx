@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import Select from '../../../../../Select';
-import Stack from '../../../../../Stack';
-import TextField from '../../../../../TextField';
 import {
   withAppProvider,
   WithAppProviderProps,
-} from '../../../../../AppProvider';
-import DateSelector from '../DateSelector';
-import {Filter, AppliedFilter, FilterType, Operator} from '../../types';
+  Select,
+  Stack,
+  TextField,
+} from '@shopify/polaris';
+import DateSelector from './DateSelector';
+import {Filter, AppliedFilter, FilterType, Operator} from './types';
 
 export interface Props {
   filter: Filter;
@@ -92,6 +92,7 @@ export class FilterValueSelector extends React.PureComponent<CombinedProps> {
               value={value}
               type={filter.textFieldType}
               onChange={onChange}
+              placeholder={filter.placeholder}
             />
           </Stack>
         );

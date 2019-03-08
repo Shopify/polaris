@@ -89,4 +89,10 @@ $chekbox-label-margin: rem(20px);
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: rem(1px) 0;
+
+  &.Label-hasHeadings {
+    @include breakpoint-after(resource-list(breakpoint-small)) {
+      display: none;
+    }
+  }
 }

@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "Seleccionar un filtro...",
+  "dateValueLabel": "Fecha",
+  "dateValueError": "Coincidir con formato AAAA-MM-DD",
+  "dateValuePlaceholder": "AAAA-MM-DD",
+  "selectOptions": {
+    "dateFilterLabel": "Seleccionar un valor",
+    "pastWeek": "en la ultima semana",
+    "pastMonth": "en el último mes",
+    "pastQuarter": "en los últimos 3 meses",
+    "pastYear": "en el último año",
+    "comingWeek": "la próxima semana",
+    "comingMonth": "el próximo mes",
+    "comingQuarter": "en los próximos 3 meses",
+    "comingYear": "en el próximo año",
+    "onOrBefore": "en o antes de",
+    "onOrAfter": "en o después de"
+  }
+}

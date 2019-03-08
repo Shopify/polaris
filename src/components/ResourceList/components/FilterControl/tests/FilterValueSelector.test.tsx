@@ -1,35 +1,13 @@
 import * as React from 'react';
+import {Select, TextField} from '@shopify/polaris';
 import {noop} from '@shopify/javascript-utilities/other';
-import {trigger, shallowWithAppProvider} from 'test-utilities';
-import {Select, TextField} from 'components';
+import {trigger} from 'tests/utilities';
+import {shallowWithAppProvider} from '../../../tests/utilities';
 import FilterValueSelector from '../FilterValueSelector';
-import DateSelector from '../../DateSelector';
-import {Filter, FilterType, Operator} from '../../../types';
+import DateSelector from '../DateSelector';
+import {Filter, FilterType} from '../types';
 
 describe('<FilterValueSelector />', () => {
-  const operators = [
-    {
-      optionLabel: 'equal to',
-      filterLabel: 'is',
-      key: 'times_used',
-    },
-    {
-      optionLabel: 'not equal to',
-      filterLabel: 'is not',
-      key: 'times_used_not',
-    },
-    {
-      optionLabel: 'less than',
-      filterLabel: 'is less than',
-      key: 'times_used_max',
-    },
-    {
-      optionLabel: 'greater than',
-      filterLabel: 'is greater than',
-      key: 'times_used_min',
-    },
-  ];
-
   describe('filter.type', () => {
     describe('FilterType.Select', () => {
       const filter: Filter = {
@@ -61,10 +39,10 @@ describe('<FilterValueSelector />', () => {
         );
 
         const select = wrapper.find(Select);
-        expect(select.exists()).toBe(true);
+        expect(select.exists()).toEqual(true);
       });
 
-      it('renders label using operatorText when it is a string', () => {
+      it('renders label using the operatorText', () => {
         const wrapper = shallowWithAppProvider(
           <FilterValueSelector
             filter={filter}
@@ -75,21 +53,6 @@ describe('<FilterValueSelector />', () => {
 
         const select = wrapper.find(Select);
         expect(select.prop('label')).toBe(filter.operatorText);
-      });
-
-      it('renders a Select with options using operatorText when it is a list of operators', () => {
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={noop}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const expectedOptions = getOptionsListForOperators(operators);
-
-        const operatorsSelect = wrapper.find(Select).first();
-        expect(operatorsSelect.prop('options')).toEqual(expectedOptions);
       });
 
       it('renders value using the value prop', () => {
@@ -120,45 +83,6 @@ describe('<FilterValueSelector />', () => {
         trigger(wrapper.find(Select), 'onChange');
         expect(onChange).toHaveBeenCalled();
       });
-
-      it('calls onFilterKeyChange when operator is changed', () => {
-        const onFilterKeyChangeSpy = jest.fn();
-        const newOperator = operators[1].key;
-
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={noop}
-            onFilterKeyChange={onFilterKeyChangeSpy}
-          />,
-        );
-
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', newOperator);
-
-        expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(newOperator);
-      });
-
-      it('calls onChange with filter value when operator is changed and filter value is set', () => {
-        const onChangeSpy = jest.fn();
-        const newFilterValue = 'foo';
-
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={onChangeSpy}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const filterValueSelect = wrapper.find(Select).at(1);
-        trigger(filterValueSelect, 'onChange', newFilterValue);
-
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', operators[1].key);
-
-        expect(onChangeSpy).toHaveBeenCalledWith(newFilterValue);
-      });
     });
 
     describe('FilterType.TextField', () => {
@@ -178,7 +102,7 @@ describe('<FilterValueSelector />', () => {
         );
 
         const textField = wrapper.find(TextField);
-        expect(textField.exists()).toBe(true);
+        expect(textField.exists()).toEqual(true);
       });
 
       it('renders label as empty string if operatorText does not exist', () => {
@@ -192,21 +116,6 @@ describe('<FilterValueSelector />', () => {
 
         const textField = wrapper.find(TextField);
         expect(textField.prop('label')).toBe('');
-      });
-
-      it('renders a Select with options using operatorText when it is a list of operators', () => {
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={noop}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const expectedOptions = getOptionsListForOperators(operators);
-
-        const operatorsSelect = wrapper.find(Select).first();
-        expect(operatorsSelect.prop('options')).toEqual(expectedOptions);
       });
 
       it('renders value using the value prop', () => {
@@ -224,37 +133,6 @@ describe('<FilterValueSelector />', () => {
         expect(textField.prop('value')).toBe(value);
       });
 
-      it('renders type using the textFieldType prop', () => {
-        const textFieldType = 'number';
-
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{
-              ...filter,
-              textFieldType,
-            }}
-            onChange={noop}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const textField = wrapper.find(TextField);
-        expect(textField.prop('type')).toBe(textFieldType);
-      });
-
-      it('renders undefined type when the textFieldType prop is not passed', () => {
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={filter}
-            onChange={noop}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const textField = wrapper.find(TextField);
-        expect(textField.prop('type')).toBeUndefined();
-      });
-
       it('calls onChange when the text field was changed', () => {
         const onChange = jest.fn();
         const wrapper = shallowWithAppProvider(
@@ -267,45 +145,6 @@ describe('<FilterValueSelector />', () => {
 
         trigger(wrapper.find(TextField), 'onChange');
         expect(onChange).toHaveBeenCalled();
-      });
-
-      it('calls onFilterKeyChange when operator is changed', () => {
-        const onFilterKeyChangeSpy = jest.fn();
-        const newOperator = operators[1].key;
-
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={noop}
-            onFilterKeyChange={onFilterKeyChangeSpy}
-          />,
-        );
-
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', newOperator);
-
-        expect(onFilterKeyChangeSpy).toHaveBeenCalledWith(newOperator);
-      });
-
-      it('calls onChange with filter value when operator is changed and filter value is set', () => {
-        const onChangeSpy = jest.fn();
-        const newFilterValue = 'foo';
-
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={onChangeSpy}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const filterValueTextField = wrapper.find(TextField);
-        trigger(filterValueTextField, 'onChange', newFilterValue);
-
-        const operatorsSelect = wrapper.find(Select).first();
-        trigger(operatorsSelect, 'onChange', operators[1].key);
-
-        expect(onChangeSpy).toHaveBeenCalledWith(newFilterValue);
       });
     });
 
@@ -329,7 +168,7 @@ describe('<FilterValueSelector />', () => {
         );
 
         const dateSelector = wrapper.find(DateSelector);
-        expect(dateSelector.exists()).toBe(true);
+        expect(dateSelector.exists()).toEqual(true);
       });
 
       it('renders filterValue using the value prop', () => {
@@ -394,33 +233,6 @@ describe('<FilterValueSelector />', () => {
         expect(dateSelector.prop('filterMaxKey')).toBe(filterMaxKey);
       });
 
-      it('does not render Select with operator options', () => {
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={{...filter, operatorText: operators}}
-            onChange={noop}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        const operatorsSelect = wrapper.find(Select);
-        expect(operatorsSelect.exists()).toBe(false);
-      });
-
-      it('calls onChange when the filter key was changed', () => {
-        const onChange = jest.fn();
-        const wrapper = shallowWithAppProvider(
-          <FilterValueSelector
-            filter={filter}
-            onChange={onChange}
-            onFilterKeyChange={noop}
-          />,
-        );
-
-        trigger(wrapper.find(DateSelector), 'onFilterValueChange');
-        expect(onChange).toHaveBeenCalled();
-      });
-
       it('calls onFilterKeyChange when the filter key was changed', () => {
         const onFilterKeyChange = jest.fn();
         const wrapper = shallowWithAppProvider(
@@ -436,10 +248,4 @@ describe('<FilterValueSelector />', () => {
       });
     });
   });
-
-  function getOptionsListForOperators(operators: Operator[]) {
-    return operators.map(({key, optionLabel}) => {
-      return {value: key, label: optionLabel};
-    });
-  }
 });

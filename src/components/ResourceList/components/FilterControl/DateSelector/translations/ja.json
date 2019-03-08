@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "絞り込みを選択...",
+  "dateValueLabel": "日付",
+  "dateValueError": "YYYY年MM月DD日フォーマットと一致する",
+  "dateValuePlaceholder": "年月日",
+  "selectOptions": {
+    "dateFilterLabel": "値を選択する",
+    "pastWeek": "先週",
+    "pastMonth": "先月",
+    "pastQuarter": "過去3ヶ月",
+    "pastYear": "昨年",
+    "comingWeek": "来週",
+    "comingMonth": "来月",
+    "comingQuarter": "今後3ヶ月で",
+    "comingYear": "次の年に",
+    "onOrBefore": "以前",
+    "onOrAfter": "以後"
+  }
+}

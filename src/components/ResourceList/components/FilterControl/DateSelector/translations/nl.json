@@ -1,0 +1,19 @@
+{
+  "selectFilterValuePlaceholder": "Selecteer een filter...",
+  "dateValueLabel": "Datum",
+  "dateValueError": "Overeenkomen met indeling YYYY-MM-DD",
+  "dateValuePlaceholder": "JJJJ-MM-DD",
+  "selectOptions": {
+    "dateFilterLabel": "Selecteer een waarde",
+    "pastWeek": "in de afgelopen week",
+    "pastMonth": "in de afgelopen maand",
+    "pastQuarter": "in de afgelopen 3 maanden",
+    "pastYear": "in het afgelopen jaar",
+    "comingWeek": "volgende week",
+    "comingMonth": "volgende maand",
+    "comingQuarter": "in de komende 3 maanden",
+    "comingYear": "in het komend jaar",
+    "onOrBefore": "op of voor",
+    "onOrAfter": "op of na"
+  }
+}

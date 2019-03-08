@@ -1,14 +1,9 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import {classNames} from '@shopify/react-utilities';
+import {DisableableAction, Icon, UnstyledLink} from '@shopify/polaris';
 
-import Icon from '../../../../../Icon';
-import UnstyledLink from '../../../../../UnstyledLink';
-import {DisableableAction} from '../../../../../../types';
-
-import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
-
-import styles from '../../BulkActions.scss';
+import * as styles from './BulkActions.scss';
 
 export type Props = {
   disclosure?: boolean;
@@ -62,7 +57,6 @@ export default class BulkActionButton extends React.PureComponent<
         <UnstyledLink
           external={external}
           url={url}
-          onMouseUp={handleMouseUpByBlurring}
           className={styles.Button}
           aria-label={accessibilityLabel}
         >
@@ -75,11 +69,10 @@ export default class BulkActionButton extends React.PureComponent<
 
     return (
       <button
+        type="button"
         className={className}
         onClick={onAction}
-        onMouseUp={handleMouseUpByBlurring}
         aria-label={accessibilityLabel}
-        type="button"
         disabled={disabled}
       >
         {contentMarkup}
