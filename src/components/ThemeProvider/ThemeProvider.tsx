@@ -3,6 +3,11 @@ import isEqual from 'lodash/isEqual';
 import {setColors} from './utils';
 import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
 
+export interface State {
+  theme: Theme;
+  colors: string[][] | undefined;
+}
+
 export interface Props {
   /** Custom logos and colors provided to select components */
   theme: Theme;
@@ -16,41 +21,48 @@ const defaultTheme = {
   '--top-bar-background-lighter': '#1d9ba4',
 };
 
-export default class ThemeProvider extends React.Component<Props> {
+export default class ThemeProvider extends React.Component<Props, State> {
   static childContextTypes = THEME_CONTEXT_TYPES;
-  public themeContext: ThemeProviderContext;
   private subscriptions: {(): void}[] = [];
-  private colors: string[][] | undefined;
 
   constructor(props: Props) {
     super(props);
 
-    this.themeContext = setThemeContext(
-      this.props.theme,
-      this.subscribe,
-      this.unsubscribe,
-    );
-
-    this.colors = setColors(props.theme);
+    const {theme} = this.props;
+    this.state = {
+      theme: setThemeContext(theme),
+      colors: setColors(theme),
+    };
   }
 
-  componentWillReceiveProps({theme}: Props) {
-    if (isEqual(theme, this.props.theme)) {
+  componentDidUpdate({theme: prevTheme}: Props) {
+    const {theme} = this.props;
+    if (isEqual(prevTheme, theme)) {
       return;
     }
 
-    this.themeContext = setThemeContext(
-      theme,
-      this.subscribe,
-      this.unsubscribe,
-    );
+    // eslint-disable-next-line react/no-did-update-set-state
+    this.setState({
+      theme: setThemeContext(theme),
+      colors: setColors(theme),
+    });
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-    this.colors = setColors(theme);
   }
 
-  getChildContext() {
-    return this.themeContext;
+  getChildContext(): ThemeProviderContext {
+    const {
+      theme: {logo = null, ...rest},
+    } = this.state;
+
+    return {
+      polarisTheme: {
+        ...rest,
+        logo,
+        subscribe: this.subscribe,
+        unsubscribe: this.unsubscribe,
+      },
+    };
   }
 
   render() {
@@ -70,20 +82,14 @@ export default class ThemeProvider extends React.Component<Props> {
   };
 
   createStyles() {
-    return this.colors
-      ? this.colors.reduce(
-          (state, [key, value]) => ({...state, [key]: value}),
-          {},
-        )
+    const {colors} = this.state;
+    return colors
+      ? colors.reduce((state, [key, value]) => ({...state, [key]: value}), {})
       : null;
   }
 }
 
-function setThemeContext(
-  ctx: Theme,
-  subscribe: (callback: () => void) => void,
-  unsubscribe: (callback: () => void) => void,
-): ThemeProviderContext {
-  const {colors, logo = null, ...rest} = ctx;
-  return {polarisTheme: {logo, subscribe, unsubscribe, ...rest}};
+function setThemeContext(ctx: Theme): Theme {
+  const {colors, ...theme} = ctx;
+  return {...theme};
 }
