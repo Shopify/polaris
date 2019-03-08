@@ -417,6 +417,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The choice list component uses the accessibility features of the [checkbox](/components/forms/checkbox) and [radio button](/forms/radio-button) components.
+The choice list component uses the accessibility features of the [checkbox](/components/forms/checkbox) and [radio button](/components/forms/radio-button) components.
 
 <!-- /content-for -->
