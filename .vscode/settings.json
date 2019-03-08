@@ -14,6 +14,7 @@
     "**/.hg": true,
     "**/.svn": true,
     "**/node_modules": true,
+    ".{dev,shadowenv.d}": true,
     "build-intermediate/": true,
     "build/": true,
     "docs/": true,
@@ -32,6 +33,7 @@
   "search.exclude": {
     "**/bower_components": true,
     "**/node_modules": true,
+    ".{dev,shadowenv.d}": true,
     "build-intermediate/": true,
     "build/": true,
     "docs/": true,
