@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {contextTypes} from '../../../types';
 import BaseTextField, {Props as TextFieldProps} from '../../../../../TextField';
@@ -29,8 +28,7 @@ export default class TextField extends React.PureComponent<
     );
   }
 
-  @autobind
-  private handleContextUpdate() {
+  private handleContextUpdate = () => {
     this.forceUpdate();
-  }
+  };
 }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
 
@@ -149,8 +148,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
     );
   }
 
-  @autobind
-  private handleKeyPress(event: React.KeyboardEvent<HTMLElement>) {
+  private handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
     const {tabToFocus, visibleTabs, hiddenTabs} = this.state;
     const tabsArrayInOrder = visibleTabs.concat(hiddenTabs);
     const key = event.key;
@@ -176,10 +174,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
       showDisclosure: hiddenTabs.indexOf(tabsArrayInOrder[newFocus]) > -1,
       tabToFocus: tabsArrayInOrder[newFocus],
     });
-  }
+  };
 
-  @autobind
-  private renderTabMarkup(tab: TabDescriptor, index: number) {
+  private renderTabMarkup = (tab: TabDescriptor, index: number) => {
     const {selected} = this.props;
     const {tabToFocus} = this.state;
 
@@ -198,10 +195,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
         {tab.content}
       </Tab>
     );
-  }
+  };
 
-  @autobind
-  private handleFocus(event: React.FocusEvent<HTMLUListElement>) {
+  private handleFocus = (event: React.FocusEvent<HTMLUListElement>) => {
     const {selected, tabs} = this.props;
 
     // If we are explicitly focusing one of the non-selected tabs, use it
@@ -246,10 +242,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
     ) {
       this.setState({tabToFocus: selected});
     }
-  }
+  };
 
-  @autobind
-  private handleBlur(event: React.FocusEvent<HTMLUListElement>) {
+  private handleBlur = (event: React.FocusEvent<HTMLUListElement>) => {
     // If we blur and the target is not another tab, forget the focus position
     if (event.relatedTarget == null) {
       this.setState({tabToFocus: -1});
@@ -265,22 +260,19 @@ export default class Tabs extends React.PureComponent<Props, State> {
     ) {
       this.setState({tabToFocus: -1});
     }
-  }
+  };
 
-  @autobind
-  private handleDisclosureActivatorClick() {
+  private handleDisclosureActivatorClick = () => {
     this.setState(({showDisclosure}) => ({showDisclosure: !showDisclosure}));
-  }
+  };
 
-  @autobind
-  private handleClose() {
+  private handleClose = () => {
     this.setState({
       showDisclosure: false,
     });
-  }
+  };
 
-  @autobind
-  private handleMeasurement(measurements: TabMeasurements) {
+  private handleMeasurement = (measurements: TabMeasurements) => {
     const {tabs, selected} = this.props;
     const {tabToFocus} = this.state;
     const {
@@ -304,10 +296,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
       containerWidth,
       tabWidths,
     });
-  }
+  };
 
-  @autobind
-  private handleTabClick(id: string) {
+  private handleTabClick = (id: string) => {
     const {tabs, onSelect = noop} = this.props;
 
     const tab = tabs.find((aTab) => aTab.id === id);
@@ -317,7 +308,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     const selectedIndex = tabs.indexOf(tab);
     onSelect(selectedIndex);
-  }
+  };
 }
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {

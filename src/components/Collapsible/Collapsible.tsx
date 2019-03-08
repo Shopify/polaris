@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {
   addEventListener,
@@ -161,23 +160,20 @@ export class Collapsible extends React.Component<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private bindNode(node: HTMLElement | null) {
+  private bindNode = (node: HTMLElement | null) => {
     this.node = node;
-  }
+  };
 
-  @autobind
-  private bindHeightNode(node: HTMLElement | null) {
+  private bindHeightNode = (node: HTMLElement | null) => {
     this.heightNode = node;
-  }
+  };
 
-  @autobind
-  private handleTransitionEnd(event: TransitionEvent) {
+  private handleTransitionEnd = (event: TransitionEvent) => {
     const {target} = event;
     if (target === this.node) {
       this.setState({animationState: 'idle', height: null});
     }
-  }
+  };
 }
 
 function collapsibleHeight(

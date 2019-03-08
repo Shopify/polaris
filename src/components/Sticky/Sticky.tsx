@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {getRectForNode} from '@shopify/javascript-utilities/geometry';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {polarisAppProviderContextTypes} from '../AppProvider';
 
 export interface State {
@@ -67,18 +66,20 @@ export default class Sticky extends React.Component<Props, State> {
     );
   }
 
-  @autobind
-  private setPlaceHolderNode(node: HTMLElement | null) {
+  private setPlaceHolderNode = (node: HTMLElement | null) => {
     this.placeHolderNode = node;
-  }
+  };
 
-  @autobind
-  private setStickyNode(node: HTMLElement | null) {
+  private setStickyNode = (node: HTMLElement | null) => {
     this.stickyNode = node;
-  }
+  };
 
-  @autobind
-  private handlePositioning(stick: boolean, top = 0, left = 0, width = 0) {
+  private handlePositioning = (
+    stick: boolean,
+    top = 0,
+    left = 0,
+    width = 0,
+  ) => {
     const {isSticky} = this.state;
 
     if ((stick && !isSticky) || (!stick && isSticky)) {
@@ -96,16 +97,15 @@ export default class Sticky extends React.Component<Props, State> {
       : {};
 
     this.setState({style});
-  }
+  };
 
-  @autobind
-  private adjustPlaceHolderNode(add: boolean) {
+  private adjustPlaceHolderNode = (add: boolean) => {
     if (this.placeHolderNode && this.stickyNode) {
       this.placeHolderNode.style.paddingBottom = add
         ? `${getRectForNode(this.stickyNode).height}px`
         : '0px';
     }
-  }
+  };
 }
 
 function isFunction(arg: any): arg is Function {
