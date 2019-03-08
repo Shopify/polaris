@@ -392,3 +392,31 @@ class ChoiceListExample extends React.Component {
 - To present a long list of radio buttons or when space is constrained, [use the select component](/components/forms/select)
 - To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](/components/forms/radio-button) or [checkbox component](/components/forms/checkbox)
 - To display a simple, non-interactive list of related content, [use the list component](/components/lists-and-tables/list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The choice list component uses the accessibility features of the [checkbox](/components/forms/checkbox) and [radio button](/components/forms/radio-button) components.
+
+<!-- /content-for -->
