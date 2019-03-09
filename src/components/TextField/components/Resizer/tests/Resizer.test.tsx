@@ -30,6 +30,17 @@ describe('<Resizer />', () => {
         '&lt;div&gt;&amp;<br>Contents&lt;/div&gt;<br></div>';
       expect(contentsNode.html()).toContain(expectedEncodedContents);
     });
+
+    it('ignores carriage returns when rendering content', () => {
+      const contents = `<div>&\n\r\r\rContents</div>`;
+      const resizer = mountWithAppProvider(
+        <Resizer {...mockProps} contents={contents} />,
+      );
+      const contentsNode = findByTestID(resizer, 'ContentsNode');
+      const expectedEncodedContents =
+        '&lt;div&gt;&amp;<br>Contents&lt;/div&gt;<br></div>';
+      expect(contentsNode.html()).toContain(expectedEncodedContents);
+    });
   });
 
   describe('minimumLines', () => {
