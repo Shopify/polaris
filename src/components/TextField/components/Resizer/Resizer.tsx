@@ -94,12 +94,13 @@ const ENTITIES_TO_REPLACE = {
   '\r': '',
 };
 
-const REPLACE_REGEX = /[\n\r&<>]/g;
+const REPLACE_REGEX = new RegExp(
+  `[${Object.keys(ENTITIES_TO_REPLACE).join()}]`,
+  'g',
+);
 
 function replaceEntity(entity: keyof typeof ENTITIES_TO_REPLACE) {
-  return ENTITIES_TO_REPLACE[entity] === undefined
-    ? entity
-    : ENTITIES_TO_REPLACE[entity];
+  return ENTITIES_TO_REPLACE[entity];
 }
 
 function getContentsForMinimumLines(minimumLines: number) {
