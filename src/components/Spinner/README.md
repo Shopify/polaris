@@ -31,6 +31,14 @@ Use to notify merchants that their requested action is being processed.
 <Spinner size="large" color="teal" />
 ```
 
+### Small spinner
+
+Smaller than the default spinner.
+
+```jsx
+<Spinner size="small" color="teal" />
+```
+
 <!-- content-for: android -->
 
 ![Material design spinner for Android](/public_images/components/Spinner/android/default@2x.gif)

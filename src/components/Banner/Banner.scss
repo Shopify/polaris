@@ -174,9 +174,8 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   }
 
   &:focus > .Text {
-    &::before {
-      opacity: 1;
-    }
+    @include plain-button-backdrop;
+    @include high-contrast-button-outline;
 
     &::after {
       opacity: 0;
@@ -192,11 +191,6 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
   &::before {
     content: '';
     position: absolute;
-  }
-
-  &::before {
-    @include plain-button-backdrop;
-    opacity: 0;
   }
 
   &::after {

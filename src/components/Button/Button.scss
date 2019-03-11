@@ -132,8 +132,16 @@ $spinner-size: rem(20px);
     color: color('blue', 'dark');
   }
 
-  &:focus > .Content::after {
-    opacity: 1;
+  &:focus {
+    @include high-contrast-button-outline(none);
+  }
+
+  &:focus > .Content {
+    @include high-contrast-button-outline;
+  }
+
+  &:focus:not(.iconOnly) > .Content {
+    @include plain-button-backdrop;
   }
 
   &.fullWidth {
@@ -177,12 +185,6 @@ $spinner-size: rem(20px);
     &.disabled {
       @include recolor-icon(color('sky', 'dark'));
     }
-  }
-
-  > .Content::after {
-    @include plain-button-backdrop;
-    content: '';
-    opacity: 0;
   }
 
   .Icon {

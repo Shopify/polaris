@@ -229,7 +229,11 @@ export function IconWrapper({children}: any) {
 }
 
 function isIconSource(x: any): x is IconSource {
-  return typeof x === 'string' || (typeof x === 'object' && x.body);
+  return (
+    typeof x === 'string' ||
+    (typeof x === 'object' && x.body) ||
+    typeof x === 'function'
+  );
 }
 
 export default withAppProvider<Props>()(Button);

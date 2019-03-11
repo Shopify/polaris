@@ -1,6 +1,3 @@
-$small-size: rem(40px);
-$medium-size: rem(60px);
-$large-size: rem(80px);
 $stacking-order: (
   image: 10,
   shadow: 20,
@@ -11,7 +8,7 @@ $stacking-order: (
   display: block;
   overflow: hidden;
   background: color('white');
-  min-width: $small-size;
+  min-width: thumbnail-size(small);
   max-width: 100%;
   border-radius: border-radius();
 
@@ -27,15 +24,15 @@ $stacking-order: (
 }
 
 .sizeSmall {
-  width: $small-size;
+  width: thumbnail-size(small);
 }
 
 .sizeMedium {
-  width: $medium-size;
+  width: thumbnail-size(medium);
 }
 
 .sizeLarge {
-  width: $large-size;
+  width: thumbnail-size(large);
 }
 
 .Image {

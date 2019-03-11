@@ -252,3 +252,7 @@ export enum TypeOf {
   Symbol = 'symbol',
   Function = 'function',
 }
+
+export interface GeneralObject {
+  [key: string]: any;
+}
