@@ -11,7 +11,7 @@ function Retry(
     functionToTry();
   } catch (error) {
     setTimeout(() => {
-      Retry(functionToTry, currentAttempt + 1, maxAttempts, delay);
+      Retry(functionToTry, maxAttempts, delay, currentAttempt + 1);
     }, delay);
   }
 }
