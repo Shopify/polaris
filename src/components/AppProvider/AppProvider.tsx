@@ -11,15 +11,18 @@ import {
   polarisAppProviderContextTypes,
 } from './types';
 
+interface State {
+  polaris: Context;
+}
+
 // The script in the styleguide that generates the Props Explorer data expects
 // a component's props to be found in the Props interface. This silly workaround
 // ensures that the Props Explorer table is generated correctly, instead of
 // crashing if we write `AppProvider extends React.Component<AppProviderProps>`
 interface Props extends AppProviderProps {}
 
-export default class AppProvider extends React.Component<Props> {
+export default class AppProvider extends React.Component<Props, State> {
   static childContextTypes = polarisAppProviderContextTypes;
-  public polarisContext: Context;
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
   private subscriptions: {(): void}[] = [];
@@ -29,13 +32,16 @@ export default class AppProvider extends React.Component<Props> {
     this.stickyManager = new StickyManager();
     this.scrollLockManager = new ScrollLockManager();
     const {theme, children, ...rest} = this.props;
-    this.polarisContext = createAppProviderContext({
-      ...rest,
-      stickyManager: this.stickyManager,
-      scrollLockManager: this.scrollLockManager,
-      subscribe: this.subscribe,
-      unsubscribe: this.unsubscribe,
-    });
+
+    this.state = {
+      polaris: createAppProviderContext({
+        ...rest,
+        stickyManager: this.stickyManager,
+        scrollLockManager: this.scrollLockManager,
+        subscribe: this.subscribe,
+        unsubscribe: this.unsubscribe,
+      }),
+    };
   }
 
   componentDidMount() {
@@ -44,38 +50,44 @@ export default class AppProvider extends React.Component<Props> {
     }
   }
 
-  componentWillReceiveProps({
-    i18n,
-    linkComponent,
-    apiKey,
-    shopOrigin,
-    forceRedirect,
+  componentDidUpdate({
+    i18n: prevI18n,
+    linkComponent: prevLinkComponent,
+    apiKey: prevApiKey,
+    shopOrigin: prevShopOrigin,
+    forceRedirect: prevForceRedirect,
   }: Props) {
+    const {i18n, linkComponent, apiKey, shopOrigin, forceRedirect} = this.props;
+
     if (
-      i18n !== this.props.i18n ||
-      linkComponent !== this.props.linkComponent ||
-      apiKey !== this.props.apiKey ||
-      shopOrigin !== this.props.shopOrigin ||
-      forceRedirect !== this.props.forceRedirect
+      i18n === prevI18n &&
+      linkComponent === prevLinkComponent &&
+      apiKey === prevApiKey &&
+      shopOrigin === prevShopOrigin &&
+      forceRedirect === prevForceRedirect
     ) {
-      const stickyManager = this.stickyManager;
-      this.polarisContext = createAppProviderContext({
+      return;
+    }
+
+    // eslint-disable-next-line react/no-did-update-set-state
+    this.setState({
+      polaris: createAppProviderContext({
         i18n,
         linkComponent,
         apiKey,
         shopOrigin,
         forceRedirect,
-        stickyManager,
+        stickyManager: this.stickyManager,
         subscribe: this.subscribe,
         unsubscribe: this.unsubscribe,
-      });
-    }
+      }),
+    });
 
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
   }
 
   getChildContext(): Context {
-    return this.polarisContext;
+    return this.state.polaris;
   }
 
   render() {
