@@ -94,6 +94,7 @@ const tasks = repositories.map((repository) => {
       const repositoryDirectory = pathResolve(sandbox, repository);
 
       // Clone the repositories to the sandbox directory
+      console.log(`Cloning: ${repository}`);
       Retry(
         execSync(
           `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
