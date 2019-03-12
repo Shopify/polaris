@@ -94,15 +94,16 @@ const tasks = repositories.map((repository) => {
       const repositoryDirectory = pathResolve(sandbox, repository);
 
       // Clone the repositories to the sandbox directory
-      Retry(
+      Retry(() => {
+        console.log(`CLONING: ${repository}`);
         execSync(
           `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
           {
             cwd: sandbox,
             stdio: 'inherit',
           },
-        ),
-      );
+        );
+      });
 
       const commands = [
         `git checkout -b update-polaris-${releaseVersion}`,
@@ -122,6 +123,7 @@ const tasks = repositories.map((repository) => {
 
       // Run the commands in the cloned repository directories
       commands.forEach((command) => {
+        console.log(`RUNNING: ${command}`);
         Retry(() => {
           execSync(command, {
             cwd: repositoryDirectory,
