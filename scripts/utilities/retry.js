@@ -16,4 +16,4 @@ function Retry(
   }
 }
 
-module.exports.default = Retry;
+module.exports = Retry;
