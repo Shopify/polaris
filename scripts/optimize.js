@@ -21,17 +21,14 @@ glob(resolvePath(__dirname, '../src/**/*.svg'), (error, files) => {
 });
 
 function optimizeFile(file) {
-  return new Promise((resolve) => {
-    const data = readFileSync(file, 'utf8');
-    svgo.optimize(data, (result) => {
-      removeSync(file);
+  const data = readFileSync(file, 'utf8');
+  return svgo.optimize(data).then((result) => {
+    removeSync(file);
 
-      const newFile = resolvePath(
-        dirname(file),
-        `${paramCase(basename(file, '.svg'))}.svg`,
-      );
-      writeFileSync(newFile, `${result.data}\n`);
-      resolve();
-    });
+    const newFile = resolvePath(
+      dirname(file),
+      `${paramCase(basename(file, '.svg'))}.svg`,
+    );
+    writeFileSync(newFile, `${result.data}\n`);
   });
 }
