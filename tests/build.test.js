@@ -80,7 +80,7 @@ describe('build', () => {
     expect(fs.existsSync('./types/index.d.ts')).toBe(true);
   });
 
-  it('replaces all occurrences of POLARIS_VERSION', () => {
+  it('replaces every occurrence of POLARIS_VERSION', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}', {
       ignore: './build/cache/**',
     });
@@ -92,7 +92,7 @@ describe('build', () => {
     expect(total).toBe(0);
   });
 
-  it('features the version of Polaris in all compiled files', () => {
+  it('features the version of Polaris in every compiled file', () => {
     const files = glob.sync('./build/**/*.{js,scss,css}', {
       ignore: './build/cache/**',
     });
@@ -160,7 +160,7 @@ describe('build', () => {
         'esnext/components/Avatar/Avatar.js',
         'utf8',
       );
-      expect(indexContents).toMatch("import * as styles from './Avatar.scss';");
+      expect(indexContents).toMatch("import styles from './Avatar.scss';");
     });
 
     it('gives consumers control over global.scss', () => {

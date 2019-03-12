@@ -26,7 +26,7 @@ import {
   Header,
   Section,
 } from './components';
-import * as styles from './Modal.scss';
+import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 
@@ -72,6 +72,8 @@ export interface Props extends FooterProps {
   onIFrameLoad?(evt: React.SyntheticEvent<HTMLIFrameElement>): void;
   /** Callback when modal transition animation has ended (stand-alone app use only) */
   onTransitionEnd?(): void;
+  /** Callback when the bottom of the modal content is reached */
+  onScrolledToBottom?(): void;
 }
 export type CombinedProps = Props & WithAppProviderProps;
 
@@ -202,6 +204,7 @@ export class Modal extends React.Component<CombinedProps, State> {
       primaryAction,
       secondaryActions,
       polaris: {intl},
+      onScrolledToBottom,
     } = this.props;
 
     const {iframeHeight} = this.state;
@@ -243,7 +246,11 @@ export class Modal extends React.Component<CombinedProps, State> {
           style={{height: `${iframeHeight}px`}}
         />
       ) : (
-        <Scrollable shadow className={styles.Body}>
+        <Scrollable
+          shadow
+          className={styles.Body}
+          onScrolledToBottom={onScrolledToBottom}
+        >
           {body}
         </Scrollable>
       );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import * as styles from './DescriptionList.scss';
+import styles from './DescriptionList.scss';
 
 export interface Item {
   /** Title of the item */

@@ -31,6 +31,12 @@ $nav-max-width: rem(360px);
   flex: 0 0 auto;
 }
 
+.ContextControl {
+  @include breakpoint-after(nav-min-window-corrected()) {
+    display: none;
+  }
+}
+
 .PrimaryNavigation {
   display: flex;
   overflow: auto;
@@ -94,7 +100,11 @@ $disabled-fade: 0.6;
 }
 
 .SecondaryAction {
-  @include recolor-icon(color('ink', 'lightest'), color('white'));
+  @include recolor-icon(
+    color('ink', 'lightest'),
+    color('white'),
+    filter('ink', 'lightest')
+  );
   display: flex;
   align-items: center;
   height: nav(mobile-height);
@@ -109,7 +119,7 @@ $disabled-fade: 0.6;
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color('indigo'), color('white'));
+    @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
   }
 
   &:focus,
@@ -198,7 +208,11 @@ $secondary-item-font-size: rem(15px);
 
   .Action {
     @include unstyled-button;
-    @include recolor-icon(color('ink', 'lightest'), color('white'));
+    @include recolor-icon(
+      color('ink', 'lightest'),
+      color('white'),
+      filter('ink', 'lightest')
+    );
     display: flex;
     align-items: center;
     height: nav(mobile-nav-height);
@@ -214,7 +228,7 @@ $secondary-item-font-size: rem(15px);
     &:hover,
     &:active,
     &:focus {
-      @include recolor-icon(color('indigo'));
+      @include recolor-icon(color('indigo'), null, filter('indigo'));
     }
 
     &:focus,
@@ -229,7 +243,7 @@ $secondary-item-font-size: rem(15px);
   @include text-emphasis-subdued;
 
   &:hover {
-    @include recolor-icon(color('indigo'));
+    @include recolor-icon(color('indigo'), null, filter('indigo'));
     color: color('indigo');
   }
 

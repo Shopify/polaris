@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-import * as styles from './SkeletonDisplayText.scss';
+import styles from './SkeletonDisplayText.scss';
 
 export type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 

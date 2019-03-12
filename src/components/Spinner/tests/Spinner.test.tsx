@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Spinner from '../Spinner';
+import Image from '../../Image';
 
 describe('<Spinner />', () => {
   describe('accessibilityLabel', () => {
@@ -15,24 +16,24 @@ describe('<Spinner />', () => {
   describe('size', () => {
     it('renders a large spinner by default', () => {
       const spinner = shallowWithAppProvider(<Spinner />);
-      expect(spinner.find('svg').prop('viewBox')).toBe('0 0 44 44');
+      expect(spinner.find(Image).hasClass('sizeLarge')).toBeTruthy();
     });
 
     it('renders a large spinner when size is large', () => {
       const spinner = shallowWithAppProvider(<Spinner size="large" />);
-      expect(spinner.find('svg').prop('viewBox')).toBe('0 0 44 44');
+      expect(spinner.find(Image).hasClass('sizeLarge')).toBeTruthy();
     });
 
     it('renders a small spinner when size is small', () => {
       const spinner = shallowWithAppProvider(<Spinner size="small" />);
-      expect(spinner.find('svg').prop('viewBox')).toBe('0 0 20 20');
+      expect(spinner.find(Image).hasClass('sizeSmall')).toBeTruthy();
     });
 
     it('renders a small spinner when color is white even if size is large', () => {
       const spinner = shallowWithAppProvider(
         <Spinner size="large" color="white" />,
       );
-      expect(spinner.find('svg').prop('viewBox')).toBe('0 0 20 20');
+      expect(spinner.find(Image).hasClass('sizeSmall')).toBeTruthy();
     });
   });
 
@@ -46,7 +47,7 @@ describe('<Spinner />', () => {
   describe('role', () => {
     it('sets the role to status to denote advisory information to screen readers', () => {
       const spinner = shallowWithAppProvider(<Spinner />);
-      expect(spinner.find('svg').prop('role')).toBe('status');
+      expect(spinner.find(Image).prop('role')).toBe('status');
     });
   });
 });

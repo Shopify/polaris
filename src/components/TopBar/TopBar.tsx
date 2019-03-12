@@ -3,14 +3,13 @@ import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {getWidth} from '../../utilities/getWidth';
-import {menu} from '../../icons';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
 import Image from '../Image';
 import UnstyledLink from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, SearchProps, Menu} from './components';
-import * as styles from './TopBar.scss';
+import styles from './TopBar.scss';
 
 export interface Props {
   /** Toggles whether or not a navigation component has been provided. Controls the presence of the mobile nav toggle button */
@@ -19,6 +18,8 @@ export interface Props {
   userMenu?: React.ReactNode;
   /** Accepts a menu component that is made available as a static member of the top bar component */
   secondaryMenu?: React.ReactNode;
+  /** Accepts a component that is ideally used to help users switch between different contexts */
+  contextControl?: React.ReactNode;
   /** Accepts a search field component that is made available as a `TextField` static member of the top bar component */
   searchField?: React.ReactNode;
   /** Accepts a search results component that is ideally composed of a card component containing a list of actionable search results */
@@ -56,6 +57,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       searchResultsVisible,
       onNavigationToggle,
       onSearchResultsDismiss,
+      contextControl,
       polaris: {
         theme: {logo},
       },
@@ -77,26 +79,37 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
       >
-        <Icon source={menu} color="white" />
+        <Icon source="menu" color="white" />
       </button>
     ) : null;
 
     const width = getWidth(logo, 104);
+    let contextMarkup;
 
-    const logoMarkup = logo ? (
-      <UnstyledLink
-        url={logo.url || ''}
-        className={styles.LogoLink}
-        style={{width}}
-      >
-        <Image
-          source={logo.topBarSource || ''}
-          alt={logo.accessibilityLabel || ''}
-          className={styles.Logo}
-          style={{width}}
-        />
-      </UnstyledLink>
-    ) : null;
+    if (contextControl) {
+      contextMarkup = (
+        <div testID="ContextControl" className={styles.ContextControl}>
+          {contextControl}
+        </div>
+      );
+    } else if (logo) {
+      contextMarkup = (
+        <div className={styles.LogoContainer}>
+          <UnstyledLink
+            url={logo.url || ''}
+            className={styles.LogoLink}
+            style={{width}}
+          >
+            <Image
+              source={logo.topBarSource || ''}
+              alt={logo.accessibilityLabel || ''}
+              className={styles.Logo}
+              style={{width}}
+            />
+          </UnstyledLink>
+        </div>
+      );
+    }
 
     const searchResultsMarkup =
       searchResults && searchResultsVisible ? (
@@ -118,10 +131,10 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     return (
       <div className={styles.TopBar}>
         {navigationButtonMarkup}
-        <div className={styles.LogoContainer}>{logoMarkup}</div>
+        {contextMarkup}
         <div className={styles.Contents}>
-          {searchMarkup}
-          {secondaryMenu}
+          <div className={styles.SearchField}>{searchMarkup}</div>
+          <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
           {userMenu}
         </div>
       </div>

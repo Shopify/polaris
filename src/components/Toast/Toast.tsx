@@ -29,7 +29,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
   context: FrameContext;
 
   private id = createId();
-  private appBridgeToast: AppBridgeToast.Flash | undefined;
+  private appBridgeToast: AppBridgeToast.Toast | undefined;
 
   componentDidMount() {
     const {id, props} = this;
@@ -52,7 +52,6 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
         message: content,
         duration,
         isError: error,
-        isDismissible: true,
       });
 
       this.appBridgeToast.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);

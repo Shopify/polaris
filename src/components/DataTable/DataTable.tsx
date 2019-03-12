@@ -10,7 +10,7 @@ import {Cell, CellProps, Navigation} from './components';
 import {measureColumn, getPrevAndCurrentColumns} from './utilities';
 
 import {DataTableState, SortDirection} from './types';
-import * as styles from './DataTable.scss';
+import styles from './DataTable.scss';
 
 export type CombinedProps = Props & WithAppProviderProps;
 export type TableRow = Props['headings'] | Props['rows'] | Props['totals'];
@@ -472,10 +472,12 @@ export class DataTable extends React.PureComponent<
       defaultSortDirection = 'ascending',
       initialSortColumnIndex,
     } = this.props;
+
     const {
-      sortDirection,
+      sortDirection = defaultSortDirection,
       sortedColumnIndex = initialSortColumnIndex,
     } = this.state;
+
     let newSortDirection = defaultSortDirection;
 
     if (sortedColumnIndex === headingIndex) {

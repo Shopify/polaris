@@ -243,6 +243,93 @@ class DataTableLinkExample extends React.Component {
 }
 ```
 
+### Data table with all of its elements
+
+Use as a broad example that includes most props available to data table.
+
+```jsx
+class FullDataTableExample extends React.Component {
+  state = {
+    sortedRows: null,
+  };
+
+  sortCurrency = (rows, index, direction) => {
+    return [...rows].sort((rowA, rowB) => {
+      const amountA = parseFloat(rowA[index].substring(1));
+      const amountB = parseFloat(rowB[index].substring(1));
+
+      return direction === 'descending' ? amountB - amountA : amountA - amountB;
+    });
+  };
+
+  handleSort = (rows) => (index, direction) => {
+    this.setState({sortedRows: this.sortCurrency(rows, index, direction)});
+  };
+
+  render() {
+    const {sortedRows} = this.state;
+
+    const initiallySortedRows = [
+      [
+        <Link url="https://www.example.com">Emerald Silk Gown</Link>,
+        '$875.00',
+        124689,
+        140,
+        '$121,500.00',
+      ],
+      [
+        <Link url="https://www.example.com">Mauve Cashmere Scarf</Link>,
+        '$230.00',
+        124533,
+        83,
+        '$19,090.00',
+      ],
+      [
+        <Link url="https://www.example.com">
+          Navy Merino Wool Blazer with khaki chinos and yellow belt
+        </Link>,
+        '$445.00',
+        124518,
+        32,
+        '$14,240.00',
+      ],
+    ];
+
+    const rows = sortedRows ? sortedRows : initiallySortedRows;
+
+    return (
+      <Page title="Sales by product">
+        <Card>
+          <DataTable
+            columnContentTypes={[
+              'text',
+              'numeric',
+              'numeric',
+              'numeric',
+              'numeric',
+            ]}
+            headings={[
+              'Product',
+              'Price',
+              'SKU Number',
+              'Net quantity',
+              'Net sales',
+            ]}
+            rows={rows}
+            totals={['', '', '', 255, '$155,830.00']}
+            sortable={[false, true, false, false, true]}
+            defaultSortDirection="descending"
+            initialSortColumnIndex={4}
+            onSort={this.handleSort(rows)}
+            footerContent={`Showing ${rows.length} of ${rows.length} results`}
+          />
+        </Card>
+      </Page>
+    );
+  }
+}
+```
+
 ---
 
 ## Best practices
@@ -306,3 +393,54 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 ## Related components
 
 - To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](/components/lists-and-tables/resource-list).
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+### Structure
+
+Native HTML tables provide a large amount of structural information to screen reader users. Merchants who rely on screen readers can navigate tables and identify relationships between data cells (`<td>`) and headers (`<th>`) using keys specific to their screen reader.
+
+Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
+
+<!-- usageblock -->
+
+#### Do
+
+Use tables for tabular data.
+
+#### Don’t
+
+Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](/components/lists-and-tables/resource-list).
+
+<!-- end -->
+
+### Keyboard support
+
+Sorting controls for the data table component are implemented with native HTML buttons.
+
+- Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys
+
+<!-- /content-for -->

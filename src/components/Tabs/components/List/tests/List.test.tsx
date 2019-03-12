@@ -94,7 +94,7 @@ describe('<List />', () => {
       expect(list.find(Item)).toHaveLength(2);
     });
 
-    it('renders the correct content', () => {
+    it('renders the provided content', () => {
       const list = mountWithAppProvider(
         <List {...mockProps} disclosureTabs={disclosureTabs} />,
       );

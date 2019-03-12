@@ -80,7 +80,6 @@ export default class Popover extends React.PureComponent<Props, State> {
       children,
       onClose,
       activator,
-      activatorWrapper,
       active,
       fixed,
       ...rest

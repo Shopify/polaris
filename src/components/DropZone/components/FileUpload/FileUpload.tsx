@@ -1,9 +1,9 @@
 import * as React from 'react';
-import capitalize from 'lodash/capitalize';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {WithContextTypes} from '../../../../types';
 import compose from '../../../../utilities/react-compose';
+import capitalize from '../../../../utilities/capitalize';
 
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Link from '../../../Link';
@@ -16,13 +16,12 @@ import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
 import {DropZoneContext} from '../../types';
-import IconDragDrop from '../../icons/drag-drop.svg';
-import AssetFileUpload from '../../images/file-upload.svg';
-import AssetImageUpload from '../../images/image-upload.svg';
+import {DragDropMajorMonotone} from '../../../../icons';
+import {fileUpload, imageUpload} from '../../images';
 
 import {Consumer} from '../Context';
 
-import * as styles from './FileUpload.scss';
+import styles from './FileUpload.scss';
 
 export interface State {
   actionTitle?: string;
@@ -69,12 +68,10 @@ export class FileUpload extends React.Component<CombinedProps, State> {
     }
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(props: Props) {
     this.updateStateFromProps(props);
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillMount() {
     this.updateStateFromProps(this.props);
   }
@@ -94,10 +91,10 @@ export class FileUpload extends React.Component<CombinedProps, State> {
       size === 'extraLarge' ? (
         <Stack vertical>
           {type === 'file' && (
-            <img className={imageClasses} src={AssetFileUpload} alt="" />
+            <img className={imageClasses} src={fileUpload} alt="" />
           )}
           {type === 'image' && (
-            <img className={imageClasses} src={AssetImageUpload} alt="" />
+            <img className={imageClasses} src={imageUpload} alt="" />
           )}
           <Button>{actionTitle}</Button>
           <TextStyle variation="subdued">{actionHint}</TextStyle>
@@ -108,10 +105,10 @@ export class FileUpload extends React.Component<CombinedProps, State> {
       size === 'large' ? (
         <Stack vertical spacing="tight">
           {type === 'file' && (
-            <img className={imageClasses} src={AssetFileUpload} alt="" />
+            <img className={imageClasses} src={fileUpload} alt="" />
           )}
           {type === 'image' && (
-            <img className={imageClasses} src={AssetImageUpload} alt="" />
+            <img className={imageClasses} src={imageUpload} alt="" />
           )}
           <Button size="slim">{actionTitle}</Button>
           <Caption>
@@ -133,7 +130,7 @@ export class FileUpload extends React.Component<CombinedProps, State> {
     const smallView =
       size === 'small' ? (
         <Stack vertical spacing="tight">
-          <Icon source={IconDragDrop} color="inkLightest" />
+          <Icon source={DragDropMajorMonotone} color="inkLightest" />
         </Stack>
       ) : null;
 

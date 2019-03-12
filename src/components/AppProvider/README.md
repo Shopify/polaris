@@ -272,7 +272,6 @@ class ProviderThemeExample extends React.Component {
       colors: {
         topBar: {
           background: '#357997',
-          backgroundDarker: '#357997',
           backgroundLighter: '#6192a9',
           color: '#FFFFFF',
         },
@@ -350,11 +349,11 @@ class ProviderThemeExample extends React.Component {
 
 ## Initializing the Shopify App Bridge
 
-When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described [in the docs](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the app provider component, which must wrap all components in an embedded app. This component initializes the Shopify App Bridge using the `apiKey` you provide. **The `apiKey` attribute is required** and can be found in the [Shopify Partner Dashboard](https://partners.shopify.com).
+When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the [app provider component](https://polaris.shopify.com/components/structure/app-provider), which wraps all components in an embedded app. The app provider component initializes the Shopify App Bridge using the `apiKey` and `shopOrigin` that you provide. **The `apiKey` and the `shopOrigin` attributes are required.** Find the API key for your app in the Apps section of your [Shopify Partner Dashboard](https://partners.shopify.com). Learn how to get and store the shop origin in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/shop-origin).
 
 ```jsx
 ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY">
+  <AppProvider apiKey="YOUR_API_KEY" shopOrigin="SHOP_ORIGIN">
     <ResourcePicker
       resourceType="Product"
       open={this.state.open}

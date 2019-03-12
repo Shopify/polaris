@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from '../../FormLayout.scss';
+import styles from '../../FormLayout.scss';
 
 export interface Props {
   children?: React.ReactNode;

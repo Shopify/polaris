@@ -1,8 +1,10 @@
 import * as React from 'react';
-import createApp from '@shopify/app-bridge';
+import createApp, {LifecycleHook} from '@shopify/app-bridge';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
-import createAppProviderContext from '../createAppProviderContext';
+import createAppProviderContext, {
+  setClientInterfaceHook,
+} from '../createAppProviderContext';
 import Intl from '../../Intl';
 import Link from '../../Link';
 import {StickyManager} from '../../withSticky';
@@ -100,5 +102,33 @@ describe('createAppProviderContext()', () => {
     };
 
     expect(context).toEqual(mockContext);
+  });
+
+  it('adds an app bridge hook to set clientInterface data', () => {
+    const set = jest.fn();
+    (createApp as jest.Mock<{}>).mockImplementation((args) => {
+      return {...args, hooks: {set}};
+    });
+
+    const apiKey = '4p1k3y';
+    createAppProviderContext({apiKey});
+
+    expect(set).toHaveBeenCalledWith(
+      LifecycleHook.DispatchAction,
+      setClientInterfaceHook,
+    );
+  });
+
+  it('setClientInterfaceHook augments app bridge actions with clientInterface property', () => {
+    const next = jest.fn((args) => args);
+    const baseAction = {type: 'actionType'};
+
+    expect(setClientInterfaceHook.call({}, next)(baseAction)).toEqual({
+      type: 'actionType',
+      clientInterface: {
+        name: '@shopify/polaris',
+        version: '{{POLARIS_VERSION}}',
+      },
+    });
   });
 });

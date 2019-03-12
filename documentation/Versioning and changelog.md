@@ -2,6 +2,8 @@
 
 The changelog is prepared manually immediately before a release, by moving changelog entries from `UNRELEASED.md` to `CHANGELOG.md`, under a new heading for the version number.
 
+**Use the `Skip Changelog` label to ignore a failing changelog check** in your pull request if you feel the code changes do not warrant a changelog entry.
+
 ### How to write a changelog entry:
 
 - Use a positive, conversational tone (for example, use “support” over “allow” and other authoritative verbs)

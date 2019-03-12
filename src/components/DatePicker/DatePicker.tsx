@@ -17,9 +17,10 @@ import {
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Button from '../Button';
+import {monthName} from './utilities';
 
 import {Month} from './components';
-import * as styles from './DatePicker.scss';
+import styles from './DatePicker.scss';
 
 export {Range, Months, Year};
 
@@ -98,10 +99,14 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     const showPreviousYear = getPreviousDisplayYear(month, year);
     const showPreviousMonth = getPreviousDisplayMonth(month);
 
-    const previousMonthName = Months[showPreviousMonth];
+    const previousMonthName = intl.translate(
+      `Polaris.DatePicker.months.${monthName(showPreviousMonth)}`,
+    );
     const nextMonth = multiMonth
-      ? Months[showNextToNextMonth]
-      : Months[showNextMonth];
+      ? intl.translate(
+          `Polaris.DatePicker.months.${monthName(showNextToNextMonth)}`,
+        )
+      : intl.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
     const nextYear = multiMonth ? showNextToNextYear : showNextYear;
 
     const secondDatePicker = multiMonth ? (

@@ -5,7 +5,7 @@ import {buttonsFrom} from '../../../Button';
 import ButtonGroup from '../../../ButtonGroup';
 import Stack from '../../../Stack';
 
-import * as styles from './Footer.scss';
+import styles from './Footer.scss';
 
 export interface Props {
   /** Primary action */

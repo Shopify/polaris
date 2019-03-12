@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import * as styles from './Spinner.scss';
-import spinnerSVGLarge from './icons/spinner-large.svg';
-import spinnerSVGSmall from './icons/spinner-small.svg';
+import Image from '../Image';
+import styles from './Spinner.scss';
+import {spinnerLarge, spinnerSmall} from './images';
 
 export type Color = 'white' | 'teal' | 'inkLightest';
 
@@ -56,15 +56,16 @@ function Spinner({
     size && styles[variationName('size', size)],
   );
 
-  const spinnerSVG = size === 'large' ? spinnerSVGLarge : spinnerSVGSmall;
+  const spinnerSVG = size === 'large' ? spinnerLarge : spinnerSmall;
 
   return (
-    <svg
-      viewBox={spinnerSVG.viewBox}
-      dangerouslySetInnerHTML={{__html: spinnerSVG.body}}
+    <Image
+      alt=""
+      source={spinnerSVG}
       className={className}
-      aria-label={accessibilityLabel}
+      draggable={false}
       role="status"
+      aria-label={accessibilityLabel}
     />
   );
 }

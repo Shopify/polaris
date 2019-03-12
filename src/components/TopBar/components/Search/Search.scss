@@ -1,29 +1,25 @@
 @import '../../styles/variables';
 
-$search-results-mobile-nav-toggle-offset: rem(-46px);
-$search-results-desktop-width-offset: layout-width(secondary, min) + spacing() +
-  spacing(tight);
-$search-results-desktop-large-width-offset: layout-width(secondary, min) +
-  spacing(extra-loose) + spacing(tight);
+$page-layout-when-not-partially-condensed-absolute: rem(743px);
+$search-results-max-width: 70rem;
+$search-results-min-width: 45rem;
 
 .Search {
   position: absolute;
   z-index: z-index(search, $stacking-order);
+  left: 0;
+  right: 0;
   top: top-bar-height();
-  left: $search-results-mobile-nav-toggle-offset;
-  display: flex;
-  align-items: stretch;
-  width: 100vw;
-  height: calc(100vh - #{top-bar-height() + spacing(tight)});
+  height: calc(100vh - #{top-bar-height() + spacing(loose)});
   visibility: hidden;
   pointer-events: none;
+  padding: 0;
+  width: 100%;
 
-  @include frame-when-nav-displayed {
-    left: 0;
-  }
-
-  @include page-content-when-not-fully-condensed {
-    align-items: flex-start;
+  @include breakpoint-after($not-condensed-content) {
+    top: top-bar-height() - spacing();
+    left: auto;
+    right: auto;
   }
 }
 
@@ -33,37 +29,30 @@ $search-results-desktop-large-width-offset: layout-width(secondary, min) +
 }
 
 .Overlay {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-
-  @include frame-when-nav-displayed {
-    width: calc(100% - #{$search-results-desktop-width-offset};);
-  }
-
-  @include breakpoint-after($large-width) {
-    width: calc(100% - #{$search-results-desktop-large-width-offset});
-  }
+  max-width: $search-results-max-width;
+  min-width: $search-results-min-width;
 
   > * {
     flex: 1 1 auto;
     width: 100%;
   }
 
+  @include breakpoint-after($not-condensed-content) {
+    position: relative;
+  }
+
   @include page-content-when-not-fully-condensed {
     max-height: 60vh;
   }
 
-  @include frame-when-nav-displayed {
-    margin-top: -1 * spacing(extra-tight);
-    margin-right: spacing(loose);
-    margin-left: spacing(loose);
-  }
-
-  // Only after the nav is open and the page has reached non-condensed state
-  @include breakpoint-after($large-width) {
-    margin-left: spacing(extra-loose);
+  @include page-content-when-fully-condensed {
+    min-width: 100%;
   }
 }

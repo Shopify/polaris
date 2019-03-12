@@ -137,6 +137,25 @@ describe('<Button />', () => {
     });
   });
 
+  describe('download', () => {
+    it('gets passed into the link as a boolean', () => {
+      const button = shallowWithAppProvider(<Button url="/foo" download />);
+      expect(button.find(UnstyledLink).prop('download')).toBe(true);
+    });
+
+    it('gets passed into the link as a string', () => {
+      const button = shallowWithAppProvider(
+        <Button url="/foo" download="file.txt" />,
+      );
+      expect(button.find(UnstyledLink).prop('download')).toBe('file.txt');
+    });
+
+    it('is false when not set', () => {
+      const button = shallowWithAppProvider(<Button url="http://google.com" />);
+      expect(button.find(UnstyledLink).prop('download')).toBeFalsy();
+    });
+  });
+
   describe('icon', () => {
     it('renders an icon if it’s a string', () => {
       const source = 'delete';

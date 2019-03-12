@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind} from '@shopify/javascript-utilities/decorators';
-import * as styles from './Search.scss';
+import styles from './Search.scss';
 
 export interface Props {
   /** Toggles whether or not the search is visible */

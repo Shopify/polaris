@@ -2,13 +2,15 @@ import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
-
-import successIcon from '../icons/circle-check-mark.svg';
-import fallbackIcon from '../icons/flag.svg';
-import warningIcon from '../icons/circle-alert.svg';
-import criticalIcon from '../icons/circle-barred.svg';
-import infoIcon from '../icons/circle-information.svg';
 import {Provider} from '../../WithinContentContext';
+
+import {
+  CircleAlertMajorTwotone,
+  CircleDisabledMajorTwotone,
+  CircleTickMajorTwotone,
+  CircleInformationMajorTwotone,
+  FlagMajorTwotone,
+} from '../../../icons';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -21,38 +23,40 @@ describe('<Banner />', () => {
     expect(banner.find(Heading).prop('element')).toBe('p');
   });
 
-  it('passes the correct icon source to Icon', () => {
+  it('passes the provided icon source to Icon', () => {
     const banner = mountWithAppProvider(<Banner icon="circlePlus" />);
     expect(banner.find(Icon).prop('source')).toBe('circlePlus');
   });
 
-  it('uses a greenDark successIcon if status is success', () => {
+  it('uses a greenDark circleCheckMark if status is success', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(successIcon);
+    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
   });
 
-  it('uses a tealDark infoIcon if status is info', () => {
+  it('uses a tealDark circleInformation if status is info', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(infoIcon);
+    expect(banner.find(Icon).prop('source')).toBe(
+      CircleInformationMajorTwotone,
+    );
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
   });
 
-  it('uses a yellowDark warningIcon if status is warning', () => {
+  it('uses a yellowDark circleAlert if status is warning', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(warningIcon);
+    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
   });
 
-  it('uses a redDark criticalIcon if status is critical', () => {
+  it('uses a redDark circleBarred if status is critical', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(criticalIcon);
+    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
   });
 
   it('uses a default icon', () => {
     const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(fallbackIcon);
+    expect(banner.find(Icon).prop('source')).toBe(FlagMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('inkLighter');
   });
 
@@ -87,7 +91,7 @@ describe('<Banner />', () => {
     expect(unstyledLink.prop('target')).toBe('_blank');
   });
 
-  it('adds the correct accessibility attributes to external link in secondaryAction', () => {
+  it('adds the noopener and noreferrer accessibility attributes to external link in secondaryAction', () => {
     expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
   });
 

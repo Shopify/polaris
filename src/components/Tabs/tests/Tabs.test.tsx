@@ -240,7 +240,7 @@ describe('<Tabs />', () => {
       expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
     });
 
-    it('passes the correct selected value if given', () => {
+    it('passes the provided selected value if given', () => {
       const tabs = mountWithAppProvider(
         <Tabs {...mockProps} selected={1} tabs={mockTabs} />,
       );
@@ -351,7 +351,7 @@ describe('<Tabs />', () => {
   });
 
   describe('getVisibleAndHiddenTabIndices()', () => {
-    it('properly sets getVisibleAndHiddenTabIndices', () => {
+    it('sets getVisibleAndHiddenTabIndices with visibleTabs and hiddenTabs', () => {
       const mockTabs = [
         {content: 'Tab 1', id: 'tab-1'},
         {content: 'Tab 2', id: 'tab-2'},

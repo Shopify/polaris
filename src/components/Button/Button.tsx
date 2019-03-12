@@ -6,7 +6,7 @@ import {handleMouseUpByBlurring} from '../../utilities/focus';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 import Spinner from '../Spinner';
-import * as styles from './Button.scss';
+import styles from './Button.scss';
 
 export type Size = 'slim' | 'medium' | 'large';
 
@@ -46,6 +46,8 @@ export interface Props {
   monochrome?: boolean;
   /** Forces url to open in a new tab */
   external?: boolean;
+  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
+  download?: string | boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactNode | IconSource;
   /** Visually hidden text for screen readers */
@@ -91,6 +93,7 @@ function Button({
   onKeyPress,
   onKeyUp,
   external,
+  download,
   icon,
   primary,
   outline,
@@ -183,6 +186,7 @@ function Button({
         id={id}
         url={url}
         external={external}
+        download={download}
         onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -225,7 +229,11 @@ export function IconWrapper({children}: any) {
 }
 
 function isIconSource(x: any): x is IconSource {
-  return typeof x === 'string' || (typeof x === 'object' && x.body);
+  return (
+    typeof x === 'string' ||
+    (typeof x === 'object' && x.body) ||
+    typeof x === 'function'
+  );
 }
 
 export default withAppProvider<Props>()(Button);

@@ -40,6 +40,7 @@ $icon-size: rem(16px);
   transition-property: background, fill;
   transition-duration: duration();
   transition-timing-function: easing();
+  border-radius: 0 border-radius() border-radius() 0;
 
   &:hover,
   &:focus,

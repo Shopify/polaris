@@ -4,7 +4,7 @@ import {classNames} from '@shopify/react-utilities';
 
 import UnstyledLink from '../UnstyledLink';
 
-import * as styles from './Link.scss';
+import styles from './Link.scss';
 
 export interface BaseProps {
   /** ID for the link */
