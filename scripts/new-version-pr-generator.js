@@ -122,12 +122,12 @@ const tasks = repositories.map((repository) => {
 
       // Run the commands in the cloned repository directories
       commands.forEach((command) => {
-        Retry(
+        Retry(() => {
           execSync(command, {
             cwd: repositoryDirectory,
             stdio: 'inherit',
-          }),
-        );
+          });
+        });
       });
 
       resolve(repository);
