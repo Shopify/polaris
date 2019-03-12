@@ -121,6 +121,8 @@ const tasks = repositories.map((repository) => {
         })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
       ];
 
+      console.log(commands);
+
       // Run the commands in the cloned repository directories
       commands.forEach((command) => {
         console.log(`Running: ${command}`);
