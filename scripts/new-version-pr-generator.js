@@ -122,6 +122,7 @@ const tasks = repositories.map((repository) => {
 
       // Run the commands in the cloned repository directories
       commands.forEach((command) => {
+        console.log(`Running: ${command}`);
         Retry(
           execSync(command, {
             cwd: repositoryDirectory,
