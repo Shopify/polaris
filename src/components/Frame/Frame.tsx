@@ -9,6 +9,7 @@ import EventListener from '../EventListener';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
+import {UserMenuProvider} from '../TopBar';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
 import {
@@ -232,11 +233,13 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           {...navigationAttributes}
         >
           {skipMarkup}
-          {topBarMarkup}
+          <UserMenuProvider mobileView={mobileView || false}>
+            {topBarMarkup}
+            {navigationMarkup}
+          </UserMenuProvider>
           {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
-          {navigationMarkup}
           <main
             className={styles.Main}
             id={APP_FRAME_MAIN}

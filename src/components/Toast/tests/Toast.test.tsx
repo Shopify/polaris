@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
+import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import Toast from '../Toast';

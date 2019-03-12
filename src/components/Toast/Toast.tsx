@@ -1,7 +1,7 @@
 import * as React from 'react';
 import compose from '@shopify/react-compose';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {Flash as AppBridgeToast} from '@shopify/app-bridge/actions';
+import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import withContext from '../WithContext';
 import {WithContextTypes} from '../../types';
 
