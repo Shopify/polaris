@@ -92,7 +92,7 @@ repositories.forEach((repository) => {
   try {
     const repositoryDirectory = pathResolve(sandbox, repository);
 
-    console.log(`Clone shopify/${repository} to the sandbox directory`);
+    // Clone into the sandbox directory
     Retry(() => {
       execSync(
         `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
@@ -108,7 +108,8 @@ repositories.forEach((repository) => {
       `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
         'v',
         '',
-      )} --no-progress --ignore-engines``git add package.json yarn.lock`,
+      )} --no-progress --ignore-engines`,
+      `git add package.json yarn.lock`,
       `${shopifyPolarisBotGitOverride} git commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
       `git push origin update-polaris-${releaseVersion}`,
       `curl -d '${JSON.stringify({
