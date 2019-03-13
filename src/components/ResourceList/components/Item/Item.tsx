@@ -252,7 +252,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onMouseDown={this.handleMouseDown}
-        onKeyUp={this.handleKeypress}
+        onKeyUp={this.handleKeyUp}
         testID="Item-Wrapper"
         data-href={url}
       >
@@ -321,6 +321,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   @autobind
   private handleClick(event: React.MouseEvent<any>) {
+    stopPropagation(event);
     const {
       id,
       onClick,
@@ -353,15 +354,16 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     }
   }
 
+  // This fires onClick when there is a URL on the item
   @autobind
-  private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
+  private handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
     const {
       onClick = noop,
       context: {selectMode},
     } = this.props;
     const {key} = event;
 
-    if (key === 'Enter' && !selectMode) {
+    if (key === 'Enter' && this.props.url && !selectMode) {
       onClick();
     }
   }
