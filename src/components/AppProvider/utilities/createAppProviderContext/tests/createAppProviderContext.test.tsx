@@ -120,8 +120,6 @@ describe('createAppProviderContext()', () => {
   });
 
   it('setClientInterfaceHook augments app bridge actions with clientInterface property', () => {
-    window.Polaris = {VERSION: '9000'};
-
     const next = jest.fn((args) => args);
     const baseAction = {type: 'actionType'};
 
@@ -129,7 +127,7 @@ describe('createAppProviderContext()', () => {
       type: 'actionType',
       clientInterface: {
         name: '@shopify/polaris',
-        version: '9000',
+        version: '{{POLARIS_VERSION}}',
       },
     });
   });

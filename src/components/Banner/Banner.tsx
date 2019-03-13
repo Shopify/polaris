@@ -13,15 +13,15 @@ import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
 
-import styles from './Banner.scss';
-
 import {
-  circleCheckMark,
-  flag,
-  circleAlert,
-  circleBarred,
-  circleInformation,
-} from './icons';
+  CircleTickMajorTwotone,
+  FlagMajorTwotone,
+  CircleAlertMajorTwotone,
+  CircleDisabledMajorTwotone,
+  CircleInformationMajorTwotone,
+} from '../../icons';
+
+import styles from './Banner.scss';
 
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
@@ -64,25 +64,25 @@ export default class Banner extends React.PureComponent<Props, never> {
     switch (status) {
       case 'success':
         color = 'greenDark';
-        defaultIcon = circleCheckMark;
+        defaultIcon = CircleTickMajorTwotone;
         break;
       case 'info':
         color = 'tealDark';
-        defaultIcon = circleInformation;
+        defaultIcon = CircleInformationMajorTwotone;
         break;
       case 'warning':
         color = 'yellowDark';
-        defaultIcon = circleAlert;
+        defaultIcon = CircleAlertMajorTwotone;
         ariaRoleType = 'alert';
         break;
       case 'critical':
         color = 'redDark';
-        defaultIcon = circleBarred;
+        defaultIcon = CircleDisabledMajorTwotone;
         ariaRoleType = 'alert';
         break;
       default:
         color = 'inkLighter';
-        defaultIcon = flag;
+        defaultIcon = FlagMajorTwotone;
     }
 
     const className = classNames(

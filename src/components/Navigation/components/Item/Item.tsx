@@ -40,7 +40,7 @@ interface SecondaryAction {
 export interface Props extends ItemURLDetails {
   icon?: IconProps['source'];
   iconBody?: string;
-  badge?: string | null;
+  badge?: React.ReactNode;
   label: string;
   disabled?: boolean;
   accessibilityLabel?: string;
@@ -90,16 +90,16 @@ export class BaseItem extends React.Component<CombinedProps, State> {
       url,
       icon,
       label,
-      badge,
       subNavigationItems = [],
       secondaryAction,
       disabled,
       onClick,
       accessibilityLabel,
       iconBody,
+      selected: selectedOverride,
+      badge,
       new: isNew,
       polaris: {intl},
-      selected: selectedOverride,
     } = this.props;
 
     const {location, onNavigationDismiss} = this.context;
@@ -116,20 +116,10 @@ export class BaseItem extends React.Component<CombinedProps, State> {
       </span>
     ) : null;
 
-    const badgeMarkup =
-      badge || isNew ? (
-        <div className={styles.Badge}>
-          <Badge status="new" size="small">
-            {badge || intl.translate('Polaris.Badge.STATUS_LABELS.new')}
-          </Badge>
-        </div>
-      ) : null;
-
     const iconMarkup = iconBody ? (
-      <span
-        className={styles.Icon}
-        dangerouslySetInnerHTML={{__html: iconBody}}
-      />
+      <div className={styles.Icon}>
+        <Icon source={iconBody} />
+      </div>
     ) : (
       icon && (
         <div className={styles.Icon}>
@@ -138,6 +128,28 @@ export class BaseItem extends React.Component<CombinedProps, State> {
       )
     );
 
+    let badgeMarkup: React.ReactNode = null;
+    if (isNew) {
+      badgeMarkup = (
+        <Badge status="new" size="small">
+          {intl.translate('Polaris.Badge.STATUS_LABELS.new')}
+        </Badge>
+      );
+    } else if (typeof badge === 'string') {
+      badgeMarkup = (
+        <Badge status="new" size="small">
+          {badge}
+        </Badge>
+      );
+    } else {
+      badgeMarkup = badge;
+    }
+
+    const wrappedBadgeMarkup =
+      badgeMarkup == null ? null : (
+        <div className={styles.Badge}>{badgeMarkup}</div>
+      );
+
     const itemContentMarkup = (
       <React.Fragment>
         {iconMarkup}
@@ -145,7 +157,7 @@ export class BaseItem extends React.Component<CombinedProps, State> {
           {label}
           {indicatorMarkup}
         </span>
-        {badgeMarkup}
+        {wrappedBadgeMarkup}
       </React.Fragment>
     );
 

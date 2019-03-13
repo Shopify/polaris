@@ -8,8 +8,8 @@ import {
   ShallowRendererProps,
 } from 'enzyme';
 import * as React from 'react';
-import get from 'lodash/get';
 import merge from 'lodash/merge';
+import {get} from '../utilities/get';
 import {PolarisContext} from '../components/types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries

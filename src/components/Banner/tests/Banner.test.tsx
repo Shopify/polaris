@@ -4,12 +4,12 @@ import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
 
 import {
-  circleCheckMark,
-  flag,
-  circleAlert,
-  circleBarred,
-  circleInformation,
-} from '../icons';
+  CircleAlertMajorTwotone,
+  CircleDisabledMajorTwotone,
+  CircleTickMajorTwotone,
+  CircleInformationMajorTwotone,
+  FlagMajorTwotone,
+} from '../../../icons';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -29,31 +29,33 @@ describe('<Banner />', () => {
 
   it('uses a greenDark circleCheckMark if status is success', () => {
     const banner = mountWithAppProvider(<Banner status="success" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleCheckMark);
+    expect(banner.find(Icon).prop('source')).toBe(CircleTickMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('greenDark');
   });
 
   it('uses a tealDark circleInformation if status is info', () => {
     const banner = mountWithAppProvider(<Banner status="info" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleInformation);
+    expect(banner.find(Icon).prop('source')).toBe(
+      CircleInformationMajorTwotone,
+    );
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
   });
 
   it('uses a yellowDark circleAlert if status is warning', () => {
     const banner = mountWithAppProvider(<Banner status="warning" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleAlert);
+    expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
   });
 
   it('uses a redDark circleBarred if status is critical', () => {
     const banner = mountWithAppProvider(<Banner status="critical" />);
-    expect(banner.find(Icon).prop('source')).toBe(circleBarred);
+    expect(banner.find(Icon).prop('source')).toBe(CircleDisabledMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('redDark');
   });
 
   it('uses a default icon', () => {
     const banner = mountWithAppProvider(<Banner />);
-    expect(banner.find(Icon).prop('source')).toBe(flag);
+    expect(banner.find(Icon).prop('source')).toBe(FlagMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('inkLighter');
   });
 

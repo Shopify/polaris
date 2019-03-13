@@ -12,3 +12,5 @@ if (typeof window !== 'undefined') {
   window.Polaris = window.Polaris || {};
   window.Polaris.VERSION = '{{POLARIS_VERSION}}';
 }
+
+export const polarisVersion = '{{POLARIS_VERSION}}';

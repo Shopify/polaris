@@ -4,58 +4,58 @@ import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import {
-  addMinor,
-  alertMinor,
-  arrowDownMinor,
-  arrowLeftMinor,
-  arrowRightMinor,
-  arrowUpMinor,
-  arrowUpDownMinor,
-  calendarMinor,
-  cancelMajor,
-  cancelSmallMinor,
-  caretDownMinor,
-  caretUpMinor,
-  checkmarkMinor,
-  chevronDownMinor,
-  chevronLeftMinor,
-  chevronRightMinor,
-  chevronUpMinor,
-  circleCancelMinor,
-  circleChevronDownMinor,
-  circleChevronLeftMinor,
-  circleChevronRightMinor,
-  circleChevronUpMinor,
-  circleInformationMajor,
-  circlePlusMinor,
-  circlePlusOutlineMinor,
-  conversationMinor,
-  deleteMinor,
-  disableMinor,
-  disputeMinor,
-  duplicateMinor,
-  embedMinor,
-  exportMinor,
-  externalMinor,
-  helpMajor,
-  homeMajor,
-  horizontalDotsMinor,
-  importMinor,
-  logOutMinor,
-  menuMajor,
-  notesMinor,
-  notificationMajor,
-  onlineStoreMajor,
-  ordersMajor,
-  printMinor,
-  productsMajor,
-  profileMinor,
-  subtractMinor,
-  refreshMinor,
-  riskMinor,
-  saveMinor,
-  searchMinor,
-  viewMinor,
+  PlusMinor,
+  AlertMinor,
+  ArrowDownMinor,
+  ArrowLeftMinor,
+  ArrowRightMinor,
+  ArrowUpMinor,
+  ArrowUpDownMinor,
+  CalendarMinor,
+  MobileCancelMajorMonotone,
+  CancelSmallMinor,
+  CaretDownMinor,
+  CaretUpMinor,
+  TickSmallMinor,
+  ChevronDownMinor,
+  ChevronLeftMinor,
+  ChevronRightMinor,
+  ChevronUpMinor,
+  CircleCancelMinor,
+  CircleChevronDownMinor,
+  CircleChevronLeftMinor,
+  CircleChevronRightMinor,
+  CircleChevronUpMinor,
+  CircleInformationMajorTwotone,
+  CirclePlusMinor,
+  CirclePlusOutlineMinor,
+  ConversationMinor,
+  DeleteMinor,
+  CircleDisableMinor,
+  DisputeMinor,
+  DuplicateMinor,
+  EmbedMinor,
+  ExportMinor,
+  ExternalMinor,
+  QuestionMarkMajorTwotone,
+  HomeMajorMonotone,
+  HorizontalDotsMinor,
+  ImportMinor,
+  LogOutMinor,
+  MobileHamburgerMajorMonotone,
+  NoteMinor,
+  NotificationMajorMonotone,
+  OnlineStoreMajorTwotone,
+  OrdersMajorTwotone,
+  PrintMinor,
+  ProductsMajorTwotone,
+  ProfileMinor,
+  MinusMinor,
+  RefreshMinor,
+  RiskMinor,
+  SaveMinor,
+  SearchMinor,
+  ViewMinor,
 } from '../../icons';
 
 import styles from './Icon.scss';
@@ -99,58 +99,58 @@ export type Color =
   | 'purple';
 
 export const BUNDLED_ICONS = {
-  add: addMinor,
-  alert: alertMinor,
-  arrowDown: arrowDownMinor,
-  arrowLeft: arrowLeftMinor,
-  arrowRight: arrowRightMinor,
-  arrowUp: arrowUpMinor,
-  arrowUpDown: arrowUpDownMinor,
-  calendar: calendarMinor,
-  cancel: cancelMajor,
-  cancelSmall: cancelSmallMinor,
-  caretDown: caretDownMinor,
-  caretUp: caretUpMinor,
-  checkmark: checkmarkMinor,
-  chevronDown: chevronDownMinor,
-  chevronLeft: chevronLeftMinor,
-  chevronRight: chevronRightMinor,
-  chevronUp: chevronUpMinor,
-  circleCancel: circleCancelMinor,
-  circleChevronDown: circleChevronDownMinor,
-  circleChevronLeft: circleChevronLeftMinor,
-  circleChevronRight: circleChevronRightMinor,
-  circleChevronUp: circleChevronUpMinor,
-  circleInformation: circleInformationMajor,
-  circlePlus: circlePlusMinor,
-  circlePlusOutline: circlePlusOutlineMinor,
-  conversation: conversationMinor,
-  delete: deleteMinor,
-  disable: disableMinor,
-  dispute: disputeMinor,
-  duplicate: duplicateMinor,
-  embed: embedMinor,
-  export: exportMinor,
-  external: externalMinor,
-  help: helpMajor,
-  home: homeMajor,
-  horizontalDots: horizontalDotsMinor,
-  import: importMinor,
-  logOut: logOutMinor,
-  menu: menuMajor,
-  notes: notesMinor,
-  notification: notificationMajor,
-  onlineStore: onlineStoreMajor,
-  orders: ordersMajor,
-  print: printMinor,
-  products: productsMajor,
-  profile: profileMinor,
-  refresh: refreshMinor,
-  risk: riskMinor,
-  save: saveMinor,
-  search: searchMinor,
-  subtract: subtractMinor,
-  view: viewMinor,
+  add: PlusMinor,
+  alert: AlertMinor,
+  arrowDown: ArrowDownMinor,
+  arrowLeft: ArrowLeftMinor,
+  arrowRight: ArrowRightMinor,
+  arrowUp: ArrowUpMinor,
+  arrowUpDown: ArrowUpDownMinor,
+  calendar: CalendarMinor,
+  cancel: MobileCancelMajorMonotone,
+  cancelSmall: CancelSmallMinor,
+  caretDown: CaretDownMinor,
+  caretUp: CaretUpMinor,
+  checkmark: TickSmallMinor,
+  chevronDown: ChevronDownMinor,
+  chevronLeft: ChevronLeftMinor,
+  chevronRight: ChevronRightMinor,
+  chevronUp: ChevronUpMinor,
+  circleCancel: CircleCancelMinor,
+  circleChevronDown: CircleChevronDownMinor,
+  circleChevronLeft: CircleChevronLeftMinor,
+  circleChevronRight: CircleChevronRightMinor,
+  circleChevronUp: CircleChevronUpMinor,
+  circleInformation: CircleInformationMajorTwotone,
+  circlePlus: CirclePlusMinor,
+  circlePlusOutline: CirclePlusOutlineMinor,
+  conversation: ConversationMinor,
+  delete: DeleteMinor,
+  disable: CircleDisableMinor,
+  dispute: DisputeMinor,
+  duplicate: DuplicateMinor,
+  embed: EmbedMinor,
+  export: ExportMinor,
+  external: ExternalMinor,
+  help: QuestionMarkMajorTwotone,
+  home: HomeMajorMonotone,
+  horizontalDots: HorizontalDotsMinor,
+  import: ImportMinor,
+  logOut: LogOutMinor,
+  menu: MobileHamburgerMajorMonotone,
+  notes: NoteMinor,
+  notification: NotificationMajorMonotone,
+  onlineStore: OnlineStoreMajorTwotone,
+  orders: OrdersMajorTwotone,
+  print: PrintMinor,
+  products: ProductsMajorTwotone,
+  profile: ProfileMinor,
+  refresh: RefreshMinor,
+  risk: RiskMinor,
+  save: SaveMinor,
+  search: SearchMinor,
+  subtract: MinusMinor,
+  view: ViewMinor,
 };
 
 const COLORS_WITH_BACKDROPS = [
@@ -169,6 +169,7 @@ export type UntrustedSVG = string;
 
 export type IconSource =
   | React.ReactNode
+  | React.SFC<React.SVGProps<SVGSVGElement>>
   | SVGSource
   | 'placeholder'
   | BundledIcon
@@ -183,6 +184,7 @@ export interface Props {
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
   /** Render the icon in an img tag instead of an svg. Prevents XSS */
+  /** @deprecated the untrusted prop is deprecated and will be removed. All raw strings passed into the Icon component will be assumed to be untrusted */
   untrusted?: boolean;
 }
 
@@ -213,19 +215,42 @@ function Icon({
     backdrop && styles.hasBackdrop,
   );
 
+  const defaultIconProps = {
+    className: styles.Svg,
+    focusable: 'false',
+    'aria-hidden': 'true',
+  };
+
+  if (untrusted) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The untrusted prop is no longer needed, all strings passed into the Icon component are rendered as unsafe',
+    );
+  }
+
+  let SourceComponent = source as React.SFC<React.SVGProps<SVGSVGElement>>;
   let contentMarkup: React.ReactNode;
   if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
-  } else if (React.isValidElement(source)) {
-    contentMarkup = source;
   } else if (isBundledIcon(source)) {
-    const iconSource = BUNDLED_ICONS[source] as SVGSource;
-    contentMarkup = renderSVG(iconSource);
-  } else if (untrusted && isUntrustedSVG(source)) {
+    SourceComponent = BUNDLED_ICONS[source];
+    contentMarkup = <SourceComponent {...defaultIconProps} />;
+  } else if (typeof source === 'function') {
+    const sourceElement = <SourceComponent {...defaultIconProps} />;
+    if (React.isValidElement(sourceElement)) {
+      contentMarkup = sourceElement;
+    }
+  } else if (React.isValidElement(source)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: passing a React Element to the Icon component is deprecated and will be removed in the next major version. Pass a React Component instead.',
+    );
+    contentMarkup = source;
+  } else if (isUntrustedSVG(source)) {
     contentMarkup = (
       <img
         className={styles.Img}
-        src={`data:image/svg+xml;base64,${btoa(source)}`}
+        src={`data:image/svg+xml;utf8,${source}`}
         alt=""
         aria-hidden="true"
       />
