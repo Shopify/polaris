@@ -18,6 +18,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed unnecessary height on `TextField` due to unhandled carriage returns ([#901](https://github.com/Shopify/polaris-react/pull/901))
+- Fixed onClick from firing three times when using the enter key on a `ResourceList` item ([#1179](https://github.com/Shopify/polaris-react/pull/1179))
 
 ### Documentation
 
