@@ -13,7 +13,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Updated `Navigation` badge prop to accept a react node ([#1142](https://github.com/Shopify/polaris-react/pull/1142))
-- When automating pull requests on publish we allow the update of polaris to fail and we now retry.
+- We now can create pull requests to update `polaris-react` across multiple repos
+- When pull request creation fails, it tries again up to a limit
 
 ### Bug fixes
 

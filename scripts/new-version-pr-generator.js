@@ -93,15 +93,15 @@ repositories.forEach((repository) => {
     const repositoryDirectory = pathResolve(sandbox, repository);
 
     // Clone into the sandbox directory
-    Retry(() => {
+    Retry(
       execSync(
         `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
         {
           cwd: sandbox,
           stdio: 'inherit',
         },
-      );
-    });
+      ),
+    );
 
     const commands = [
       `git checkout -b update-polaris-${releaseVersion}`,
@@ -122,16 +122,17 @@ repositories.forEach((repository) => {
 
     // Run the commands in the cloned repository directories
     commands.forEach((command) => {
-      console.log(`Running: ${command}`);
-      Retry(() => {
+      Retry(
         execSync(command, {
           cwd: repositoryDirectory,
           stdio: 'inherit',
-        });
-      });
+        }),
+      );
     });
 
-    console.log(`Pull request made for ${releaseVersion} in ${repository}`);
+    console.log(
+      `Pull request made in shopify/${repository} for version ${releaseVersion}`,
+    );
   } catch (error) {
     const errorMessage = `${error}\n\n${failedUpdateMessage(
       repository,
