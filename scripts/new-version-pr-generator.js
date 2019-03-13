@@ -88,70 +88,55 @@ function failedUpdateMessage(repository, version) {
 
 mkdir(sandbox);
 
-const tasks = repositories.map((repository) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const repositoryDirectory = pathResolve(sandbox, repository);
+repositories.forEach((repository) => {
+  try {
+    const repositoryDirectory = pathResolve(sandbox, repository);
 
-      // Clone the repositories to the sandbox directory
-      console.log(`Cloning: ${repository}`);
-      Retry(
-        execSync(
-          `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
-          {
-            cwd: sandbox,
-            stdio: 'inherit',
-          },
-        ),
+    console.log(`Clone shopify/${repository} to the sandbox directory`);
+    Retry(() => {
+      execSync(
+        `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
+        {
+          cwd: sandbox,
+          stdio: 'inherit',
+        },
       );
+    });
 
-      const commands = [
-        `git checkout -b update-polaris-${releaseVersion}`,
-        `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
-          'v',
-          '',
-        )} --no-progress --ignore-engines``git add package.json yarn.lock`,
-        `${shopifyPolarisBotGitOverride} git commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
-        `git push origin update-polaris-${releaseVersion}`,
-        `curl -d '${JSON.stringify({
-          title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
-          body: pullRequestTemplate(repository, releaseVersion),
-          head: `update-polaris-${releaseVersion}`,
-          base: baseBranch,
-        })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
-      ];
+    const commands = [
+      `git checkout -b update-polaris-${releaseVersion}`,
+      `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
+        'v',
+        '',
+      )} --no-progress --ignore-engines``git add package.json yarn.lock`,
+      `${shopifyPolarisBotGitOverride} git commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
+      `git push origin update-polaris-${releaseVersion}`,
+      `curl -d '${JSON.stringify({
+        title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
+        body: pullRequestTemplate(repository, releaseVersion),
+        head: `update-polaris-${releaseVersion}`,
+        base: baseBranch,
+      })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
+    ];
 
-      console.log(commands);
-
-      // Run the commands in the cloned repository directories
-      commands.forEach((command) => {
-        console.log(`Running: ${command}`);
-        Retry(
-          execSync(command, {
-            cwd: repositoryDirectory,
-            stdio: 'inherit',
-          }),
-        );
+    // Run the commands in the cloned repository directories
+    commands.forEach((command) => {
+      console.log(`Running: ${command}`);
+      Retry(() => {
+        execSync(command, {
+          cwd: repositoryDirectory,
+          stdio: 'inherit',
+        });
       });
+    });
 
-      resolve(repository);
-    } catch (error) {
-      const errorMessage = `${error}\n\n${failedUpdateMessage(
-        repository,
-        releaseVersion,
-      )}`;
-      reject(errorMessage);
-    }
-  });
-});
-
-Promise.all(tasks)
-  .then((repository) =>
-    console.log(
-      `Done: Pull request made for ${releaseVersion} in ${repository}`,
-    ),
-  )
-  .catch((error) => {
-    console.error(error);
+    console.log(`Pull request made for ${releaseVersion} in ${repository}`);
+  } catch (error) {
+    const errorMessage = `${error}\n\n${failedUpdateMessage(
+      repository,
+      releaseVersion,
+    )}`;
+    console.error(errorMessage);
     process.exit(0);
-  });
+  }
+});
