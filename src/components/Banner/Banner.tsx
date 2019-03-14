@@ -17,13 +17,15 @@ import {Consumer, WithinContentContext} from '../WithinContentContext';
 import withContext from '../WithContext';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import * as styles from './Banner.scss';
+import {
+  CircleTickMajorTwotone,
+  FlagMajorTwotone,
+  CircleAlertMajorTwotone,
+  CircleDisabledMajorTwotone,
+  CircleInformationMajorTwotone,
+} from '../../icons';
 
-import successIcon from './icons/circle-check-mark.svg';
-import fallbackIcon from './icons/flag.svg';
-import warningIcon from './icons/circle-alert.svg';
-import criticalIcon from './icons/circle-barred.svg';
-import infoIcon from './icons/circle-information.svg';
+import styles from './Banner.scss';
 
 export type Status = 'success' | 'info' | 'warning' | 'critical';
 
@@ -66,25 +68,25 @@ export class Banner extends React.PureComponent<CombinedProps, never> {
     switch (status) {
       case 'success':
         color = 'greenDark';
-        defaultIcon = successIcon;
+        defaultIcon = CircleTickMajorTwotone;
         break;
       case 'info':
         color = 'tealDark';
-        defaultIcon = infoIcon;
+        defaultIcon = CircleInformationMajorTwotone;
         break;
       case 'warning':
         color = 'yellowDark';
-        defaultIcon = warningIcon;
+        defaultIcon = CircleAlertMajorTwotone;
         ariaRoleType = 'alert';
         break;
       case 'critical':
         color = 'redDark';
-        defaultIcon = criticalIcon;
+        defaultIcon = CircleDisabledMajorTwotone;
         ariaRoleType = 'alert';
         break;
       default:
         color = 'inkLighter';
-        defaultIcon = fallbackIcon;
+        defaultIcon = FlagMajorTwotone;
     }
     const className = classNames(
       styles.Banner,
@@ -119,7 +121,9 @@ export class Banner extends React.PureComponent<CombinedProps, never> {
     const actionMarkup = action ? (
       <div className={styles.Actions}>
         <ButtonGroup>
-          {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+          <div className={styles.PrimaryAction}>
+            {buttonFrom(action, {outline: true, size: buttonSizeValue})}
+          </div>
           {secondaryActionMarkup}
         </ButtonGroup>
       </div>

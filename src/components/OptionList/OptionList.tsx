@@ -9,7 +9,7 @@ import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
 
 import {Option} from './components';
-import * as styles from './OptionList.scss';
+import styles from './OptionList.scss';
 
 export interface OptionDescriptor {
   /** Value of the option */
@@ -73,7 +73,6 @@ export class OptionList extends React.Component<CombinedProps, State> {
 
   private id = this.props.id || getUniqueId();
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({
     options: nextOptions = [],
     sections: nextSections = [],

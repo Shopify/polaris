@@ -92,7 +92,6 @@ describe('<ThemeProvider />', () => {
 
     expect(wrapper.find('div').props().style).toEqual({
       '--top-bar-background': '#108043',
-      '--top-bar-background-darker': 'hsl(147, 83%, 23.000000000000004%, 1)',
       '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
       '--top-bar-color': 'rgb(255, 255, 255)',
     });

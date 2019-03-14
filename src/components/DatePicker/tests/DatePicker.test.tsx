@@ -44,7 +44,7 @@ describe('<DatePicker />', () => {
   });
 
   describe('month', () => {
-    it('passes the correct value to Month', () => {
+    it('passes the month value to Month', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={1} year={2018} />,
       );
@@ -55,7 +55,7 @@ describe('<DatePicker />', () => {
   });
 
   describe('year', () => {
-    it('passes the correct year to Month', () => {
+    it('passes the year value to Month', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={1} year={2016} />,
       );
@@ -115,7 +115,7 @@ describe('<DatePicker />', () => {
   });
 
   describe('focusDate', () => {
-    it('passes the correct value to Month if day has focus', () => {
+    it('passes the focused month value to Month if day has focus', () => {
       const datePicker = mountWithAppProvider(
         <DatePicker month={3} year={2018} />,
       );

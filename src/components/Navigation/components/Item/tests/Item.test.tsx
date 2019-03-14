@@ -3,7 +3,6 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
-import {add} from '../../../../../icons';
 
 import Item, {Props as ItemProps} from '../Item';
 import {Secondary} from '../components';
@@ -101,6 +100,34 @@ describe('<Nav.Item />', () => {
       const link = item.find(UnstyledLink);
       expect(link.exists()).toBe(true);
     });
+
+    it('renders a small badge with new status if the prop is provided with a string', () => {
+      const item = mountWithAppProvider(<Item label="some label" badge="1" />);
+
+      expect(item.find(Badge).props()).toMatchObject({
+        status: 'new',
+        size: 'small',
+        children: '1',
+      });
+    });
+
+    it('renders a badge if the prop is provided with an element', () => {
+      const item = mountWithAppProvider(
+        <Item label="some label" badge={<Badge>Custom badge</Badge>} />,
+      );
+
+      expect(item.find(Badge).text()).toContain('Custom badge');
+    });
+
+    it('renders a single new badge even if a badge prop is also provided', () => {
+      const item = mountWithAppProvider(
+        <Item label="some label" badge={<Badge>Custom badge</Badge>} new />,
+      );
+      const badge = item.find(Badge);
+
+      expect(badge).toHaveLength(1);
+      expect(badge.text()).toContain('New');
+    });
   });
 
   describe('with SubNavigationItems', () => {
@@ -166,12 +193,28 @@ describe('<Nav.Item />', () => {
   describe('delegated props', () => {
     it('delegates icon to <Icon />', () => {
       const item = mountWithAppProvider(
-        <Item label="some label" url="foo" disabled={false} icon={add} />,
+        <Item label="some label" url="foo" disabled={false} icon="add" />,
         {
           context: {location: 'bar'},
         },
       );
-      expect(item.find(Icon).prop('source')).toBe(add);
+      expect(item.find(Icon).prop('source')).toBe('add');
+    });
+
+    it('delegates iconBody to <Icon />', () => {
+      const iconBody = `<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0' /></svg>`;
+      const item = mountWithAppProvider(
+        <Item
+          label="some label"
+          url="foo"
+          disabled={false}
+          iconBody={iconBody}
+        />,
+        {
+          context: {location: 'bar'},
+        },
+      );
+      expect(item.find(Icon).prop('source')).toBe(iconBody);
     });
 
     it('delegates label to <UnstyledLink />', () => {

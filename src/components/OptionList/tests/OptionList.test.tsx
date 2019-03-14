@@ -253,7 +253,7 @@ describe('<OptionList />', () => {
     expect(optionWrappers).toHaveLength(totalOptions(newOptions, undefined));
   });
 
-  it('calls onChange with the correct value', () => {
+  it('calls onChange with options and sections', () => {
     const spy = jest.fn();
     const {options, sections} = defaultProps;
 

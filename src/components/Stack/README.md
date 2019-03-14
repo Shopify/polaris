@@ -84,11 +84,17 @@ Use to control spacing of items in a stack in standard increments. Use tight for
 
 ### Vertical centering with a stack
 
-Use to vertically center a set of items.
+Use to vertically center a set of items that have different heights.
 
 ```jsx
 <Stack alignment="center">
-  <Heading>Order #1136</Heading>
+  <Heading>
+    Order
+    <br />
+    #1136
+    <br />
+    was paid
+  </Heading>
   <Badge>Paid</Badge>
   <Badge>Fulfilled</Badge>
 </Stack>
@@ -135,6 +141,19 @@ Use for aligning buttons or secondary content to the right edge of another eleme
   </Stack.Item>
 </Stack>
 ```
+
+---
+
+## Stack item
+
+The stack component will treat multiple elements wrapped in a stack item component as one item. By default, each individual element is treated as one stack item. Use the fill prop on a single stack item component to make it fill the rest of the available horizontal space. See the “Stack where a single item fills the remaining space” example.
+
+### Stack item properties
+
+| Prop     | Type    | Description                                                    | Default |
+| -------- | ------- | -------------------------------------------------------------- | ------- |
+| fill     | boolean | Fill the available horizontal space in the stack with the item | false   |
+| children | any     | Elements to display inside stack item                          |         |
 
 ---
 

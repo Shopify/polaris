@@ -16,7 +16,7 @@ import {
   rectIsOutsideOfRect,
 } from './utilities/math';
 
-import * as styles from './PositionedOverlay.scss';
+import styles from './PositionedOverlay.scss';
 
 export {PreferredPosition, PreferredAlignment};
 export type Positioning = 'above' | 'below';
@@ -93,7 +93,6 @@ export default class PositionedOverlay extends React.PureComponent<
     }
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps() {
     this.handleMeasurement();
   }

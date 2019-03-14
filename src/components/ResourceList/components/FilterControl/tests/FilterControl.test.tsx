@@ -125,7 +125,7 @@ describe('<FilterControl />', () => {
       ]);
     });
 
-    it('renders the correct applied filter string when applied filter label exist', () => {
+    it('renders the provided applied filter string when applied filter label exist', () => {
       const appliedFilterLabel = 'shorten electronic';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -159,7 +159,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter value exist in FilterSelect as an option string', () => {
+    it('renders the provided applied filter string when filter value exist in FilterSelect as an option string', () => {
       const filterValue = 'Bundle';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -188,7 +188,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter value exist in FilterSelect as an option object', () => {
+    it('renders the provided applied filter string when filter value exist in FilterSelect as an option object', () => {
       const filterValue = 'Electronic';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -222,7 +222,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter value cannot be found in FilterSelect options', () => {
+    it('renders the provided applied filter string when filter value cannot be found in FilterSelect options', () => {
       const appliedFilterValue = 'new Bundle';
       const filter: FilterSelect = {
         key: 'filterKey1',
@@ -251,7 +251,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter is a FilterTextField', () => {
+    it('renders the provided applied filter string when filter is a FilterTextField', () => {
       const appliedFilterValue = 'new Bundle';
       const filter: FilterTextField = {
         key: 'filterKey2',
@@ -279,7 +279,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
+    it('renders the provided localized applied filter string when filter is a FilterDateSelector without date predicate', () => {
       const appliedFilterValue = DateFilterOption.PastWeek;
 
       const filter: FilterDateSelector = {
@@ -317,7 +317,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct localized applied filter string when filter is a FilterDateSelector with minimum date predicate (on or after)', () => {
+    it('renders the provided localized applied filter string when filter is a FilterDateSelector with minimum date predicate (on or after)', () => {
       const selectedDate = '2018-09-16';
       const filter: FilterDateSelector = {
         key: 'starts',
@@ -358,7 +358,7 @@ describe('<FilterControl />', () => {
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
-    it('renders the correct localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
+    it('renders the provided localized applied filter string when filter is a FilterDateSelector with maximum date predicate (on or before)', () => {
       const selectedDate = '2018-09-16';
       const filter: FilterDateSelector = {
         key: 'starts',
@@ -436,7 +436,7 @@ describe('<FilterControl />', () => {
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
     });
 
-    it('renders the correct applied filter string when filter uses operators with filter label', () => {
+    it('renders the provided applied filter string when filter uses operators with filter label', () => {
       const appliedFilterValue = '20';
       const appliedFilterKey = 'times_used';
       const appliedFilterLabel = 'is';
@@ -479,7 +479,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter uses operators without filter label', () => {
+    it('renders the provided applied filter string when filter uses operators without filter label', () => {
       const appliedFilterValue = '20';
       const appliedFilterKey = 'times_used';
       const appliedOperatorOptionLabel = 'equal to';
@@ -520,7 +520,7 @@ describe('<FilterControl />', () => {
       );
     });
 
-    it('renders the correct applied filter string when filter key cannot be found', () => {
+    it('renders the provided applied filter string when filter key cannot be found', () => {
       const appliedFilterValue = 'new Bundle';
       const appliedFilters = {
         key: 'filter key',

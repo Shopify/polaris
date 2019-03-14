@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Icon from '../../../Icon';
 
-import * as styles from '../../TextField.scss';
+import styles from '../../TextField.scss';
 
 export interface Props {
   onChange(delta: number): void;
@@ -21,7 +21,10 @@ export default function Spinner({
   }
 
   function handleMouseDown(onChange: Function) {
-    return () => onMouseDown(onChange);
+    return (event: React.MouseEvent) => {
+      if (event.button !== 0) return;
+      onMouseDown(onChange);
+    };
   }
 
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import * as styles from './Label.scss';
+import styles from './Label.scss';
 
 export interface Props {
   /** Label content */

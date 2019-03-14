@@ -124,6 +124,8 @@ Use for lists longer than 25 items. In mobile apps it’s natural to scroll to t
 
 ## Related components
 
+- To see how pagination is used on a page, see the [page component](/components/structure/page)
+- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](/components/structure/page-actions)
 - The [resource list component](/components/lists-and-tables/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
-- To create stand-alone navigational links or calls to action, [use the button component](/components/actions/button)
-- To embed actions or pathways to more information within a sentence, [use the link component](/components/navigation/link)
+- To create stand-alone navigational links or calls to action, use the [button component](/components/actions/button)
+- To embed actions or pathways to more information within a sentence, use the [link component](/components/navigation/link)

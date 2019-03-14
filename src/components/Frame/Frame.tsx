@@ -9,6 +9,7 @@ import EventListener from '../EventListener';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
+import {UserMenuProvider} from '../TopBar';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
 import {
@@ -19,7 +20,7 @@ import {
 } from './types';
 import {Provider, ToastManager, Loading, ContextualSaveBar} from './components';
 
-import * as styles from './Frame.scss';
+import styles from './Frame.scss';
 
 export interface Props {
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -232,11 +233,13 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           {...navigationAttributes}
         >
           {skipMarkup}
-          {topBarMarkup}
+          <UserMenuProvider mobileView={mobileView || false}>
+            {topBarMarkup}
+            {navigationMarkup}
+          </UserMenuProvider>
           {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
-          {navigationMarkup}
           <main
             className={styles.Main}
             id={APP_FRAME_MAIN}

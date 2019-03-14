@@ -11,13 +11,14 @@ import {
   dateIsInRange,
   dateIsSelected,
   getNewRange,
-  abbreviationForWeekday,
 } from '@shopify/javascript-utilities/dates';
 import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-import * as styles from '../../DatePicker.scss';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import styles from '../../DatePicker.scss';
 import Day from '../Day';
 import Weekday from '../Weekday';
+import {monthName, weekdayName} from '../../utilities';
 
 export interface Props {
   focusedDate?: Date;
@@ -36,6 +37,8 @@ export interface Props {
   weekdayName?(weekday: Weekdays): string;
 }
 
+export type CombinedProps = Props & WithAppProviderProps;
+
 const WEEKDAYS = [
   Weekdays.Sunday,
   Weekdays.Monday,
@@ -46,7 +49,7 @@ const WEEKDAYS = [
   Weekdays.Saturday,
 ];
 
-export default function Month({
+function Month({
   focusedDate,
   selected,
   hoverDate,
@@ -59,7 +62,8 @@ export default function Month({
   month,
   year,
   weekStartsOn,
-}: Props) {
+  polaris: {intl},
+}: CombinedProps) {
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
   const current = now.getMonth() === month && now.getFullYear() === year;
@@ -71,7 +75,9 @@ export default function Month({
   const weekdays = getWeekdaysOrdered(weekStartsOn).map((weekday) => (
     <Weekday
       key={weekday}
-      title={abbreviationForWeekday(weekday)}
+      title={intl.translate(
+        `Polaris.DatePicker.daysAbbreviated.${weekdayName(weekday)}`,
+      )}
       current={current && new Date().getDay() === weekday}
       label={weekday}
     />
@@ -123,7 +129,7 @@ export default function Month({
   return (
     <div role="grid" className={styles.Month}>
       <div className={className}>
-        {Months[month]} {year}
+        {intl.translate(`Polaris.DatePicker.months.${monthName(month)}`)} {year}
       </div>
       <div role="rowheader" className={styles.WeekHeadings}>
         {weekdays}
@@ -132,6 +138,8 @@ export default function Month({
     </div>
   );
 }
+
+export default withAppProvider<Props>()(Month);
 
 function hoveringDateIsInRange(
   day: Date | null,

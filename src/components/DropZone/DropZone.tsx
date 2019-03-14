@@ -1,5 +1,4 @@
 import * as React from 'react';
-import capitalize from 'lodash/capitalize';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
@@ -7,6 +6,7 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
+import capitalize from '../../utilities/capitalize';
 
 import Icon from '../Icon';
 import Stack from '../Stack';
@@ -16,15 +16,14 @@ import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import {FileUpload, Provider} from './components';
+import {DragDropMajorMonotone, CircleAlertMajorMonotone} from '../../icons';
 
-import IconDragDrop from './icons/drag-drop.svg';
-import IconAlertCircle from './icons/alert-circle.svg';
+import {FileUpload, Provider} from './components';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
 import {DropZoneContext} from './types';
 
-import * as styles from './DropZone.scss';
+import styles from './DropZone.scss';
 
 export type Type = 'file' | 'image';
 
@@ -235,7 +234,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       (active || dragging) && !error && overlay ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
-            <Icon source={IconDragDrop} color="indigo" />
+            <Icon source={DragDropMajorMonotone} color="indigo" />
             {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {overlayText}
@@ -252,7 +251,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       dragging && error ? (
         <div className={styles.Overlay}>
           <Stack vertical spacing="tight">
-            <Icon source={IconAlertCircle} color="red" />
+            <Icon source={CircleAlertMajorMonotone} color="red" />
             {size === 'extraLarge' && (
               <DisplayText size="small" element="p">
                 {errorOverlayText}

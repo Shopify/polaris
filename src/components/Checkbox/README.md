@@ -150,3 +150,46 @@ class CheckboxExample extends React.Component {
 - To present a list of options where merchants can only make a single choice, [use the radio button component](/components/forms/radio-button)
 - To display a list of related content, [use the choice list component](/components/forms/choice-list)
 - To create an ungrouped list, [use the content list component](/components/lists-and-tables/list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Screen readers convey the state of the checkbox automatically.
+
+- Use the `disabled` prop to apply the HTML `disabled` attribute to the checkbox `<input>`. This prevents merchants from being able to interact with the checkbox, and conveys its inactive state to assistive technologies.
+- Use the `id` prop to provide a unique `id` attribute value for the checkbox. If an `id` isn’t provided, then the component generates one. All checkboxes must have unique `id` values to work correctly with assistive technologies.
+- Setting `checked="indeterminate"` conveys the state of the checkbox using `aria-checked="mixed"`.
+
+### Labeling
+
+- The required `label` prop conveys the purpose of the checkbox to all merchants
+- Use the `labelHidden` prop to visually hide the label but make it available to assistive technologies
+- When you provide help text via the `helpText` prop or an inline error message via the `error` prop, the help or error content is conveyed to screen reader users with the `aria-describedby` attribute
+
+### Keyboard support
+
+- Move focus to each checkbox using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- To interact with the checkbox when it has keyboard focus, press the <kbd>space</kbd> key
+
+<!-- /content-for -->

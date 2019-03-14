@@ -10,7 +10,7 @@ import Spinner from '../Spinner';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import selectIcon from './icons/enable-selection.svg';
+import {EnableSelectionMinor} from '../../icons';
 
 import {
   BulkActions,
@@ -23,7 +23,7 @@ import {
 
 import {ResourceListContext, SelectedItems, SELECT_ALL_ITEMS} from './types';
 
-import * as styles from './ResourceList.scss';
+import styles from './ResourceList.scss';
 
 const SMALL_SCREEN_WIDTH = 458;
 const SMALL_SPINNER_HEIGHT = 28;
@@ -299,7 +299,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps: Props) {
     const {selectedItems} = this.props;
 
@@ -411,7 +410,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles.SelectButtonWrapper}>
         <Button
           disabled={selectMode}
-          icon={selectIcon}
+          icon={EnableSelectionMinor}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >

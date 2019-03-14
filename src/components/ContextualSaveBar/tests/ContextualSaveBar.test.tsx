@@ -11,7 +11,7 @@ describe('<ContextualSaveBar />', () => {
     message: 'Unsaved changes',
   };
 
-  it('calls the contextual save bar on mount with correct values', () => {
+  it('calls the contextual save bar on mount with values', () => {
     const mockFrameContext = createFrameContext({
       setContextualSaveBar: jest.fn(),
       removeContextualSaveBar: jest.fn(),
@@ -45,7 +45,7 @@ describe('<ContextualSaveBar />', () => {
     expect(mockFrameContext.frame.removeContextualSaveBar).toHaveBeenCalled();
   });
 
-  it('calls the contextual save bar with correct values if its props change after it mounted', () => {
+  it('calls the contextual save bar with values if its props change after it mounted', () => {
     const mockFrameContext = createFrameContext({
       setContextualSaveBar: jest.fn(),
       removeContextualSaveBar: jest.fn(),

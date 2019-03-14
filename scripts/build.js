@@ -69,43 +69,9 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       esnextIndex.replace(/import '.\/styles\/global\.scss';/g, ''),
     );
   })
-  .then(() => {
-    writeFileSync(
-      resolvePath(intermediateBuild, '.babelrc'),
-      `
-      {
-        "presets": [
-          ["babel-preset-shopify/web", {"modules": false}],
-          ["babel-preset-shopify/react"]
-        ],
-        "plugins": [
-          "../config/babel/plugins/sass-namespace-to-default-import.js"
-        ]
-      }
-    `,
-    );
-  })
-  // Main bundle: supports all our supported browsers, CommonJS, and
+  // Main CJS and ES modules bundles: supports all our supported browsers and
   // uses the full class names for any Sass imports
-  .then(() =>
-    runRollup({
-      entry: mainEntry,
-      output: 'polaris.js',
-      format: 'cjs',
-      css: true,
-    }),
-  )
-  // ES bundle: supports all our supported browsers, but uses ES imports
-  // (for tree shaking), uses the full class names for any Sass imports
-  .then(() =>
-    runRollup({
-      entry: mainEntry,
-      output: 'polaris.es.js',
-      format: 'es',
-      css: false,
-      useExistingClassTokens: true,
-    }),
-  )
+  .then(() => runRollup())
   .then(() =>
     Promise.all([
       cp('build/polaris.js', './index.js'),
@@ -123,28 +89,23 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
     process.exit(1);
   });
 
-function runRollup({
-  entry,
-  output,
-  format,
-  css,
-  outputDir = build,
-  minifyClassnames = false,
-  useExistingClassTokens = false,
-}) {
+function runRollup() {
   const config = createRollupConfig({
-    entry,
-    minifyClassnames,
-    useExistingClassTokens,
-    writeCSS: css,
-    cssPath: resolvePath(outputDir, 'polaris.css'),
+    entry: mainEntry,
+    cssPath: resolvePath(build, 'polaris.css'),
   });
 
   return rollup(config).then((bundle) =>
-    bundle.write({
-      format,
-      file: resolvePath(outputDir, output),
-    }),
+    Promise.all([
+      bundle.write({
+        format: 'cjs',
+        file: resolvePath(build, 'polaris.js'),
+      }),
+      bundle.write({
+        format: 'esm',
+        file: resolvePath(build, 'polaris.es.js'),
+      }),
+    ]),
   );
 }
 

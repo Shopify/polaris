@@ -47,7 +47,30 @@
     "DatePicker": {
       "previousMonth": "Show previous month, {previousMonthName} {showPreviousYear}",
       "nextMonth": "Show next month, {nextMonth} {nextYear}",
-      "today": "Today "
+      "today": "Today ",
+      "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+      },
+      "daysAbbreviated": {
+        "monday": "Mo",
+        "tuesday": "Tu",
+        "wednesday": "We",
+        "thursday": "Th",
+        "friday": "Fr",
+        "saturday": "Sa",
+        "sunday": "Su"
+      }
     },
 
     "DiscardConfirmationModal": {
@@ -192,6 +215,11 @@
 
     "Tag": {
       "ariaLabel": "Remove {children}"
+    },
+
+    "TextField": {
+      "characterCount": "{count} characters",
+      "characterCountWithMaxLength": "{count} of {limit} characters used"
     }
   }
 }

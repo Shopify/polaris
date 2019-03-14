@@ -3,19 +3,49 @@ import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import RadioButton from '../RadioButton';
 
 describe('<RadioButton />', () => {
-  it('sets all pass through properties on the input', () => {
-    const input = shallowWithAppProvider(
-      <RadioButton
-        label="RadioButton"
-        checked
-        name="RadioButton"
-        value="Some value"
-      />,
-    ).find('input');
+  describe('checked', () => {
+    it('gets passed to the input', () => {
+      const input = shallowWithAppProvider(
+        <RadioButton
+          label="RadioButton"
+          checked
+          name="RadioButton"
+          value="Some value"
+        />,
+      ).find('input');
 
-    expect(input.prop('checked')).toBe(true);
-    expect(input.prop('name')).toBe('RadioButton');
-    expect(input.prop('value')).toBe('Some value');
+      expect(input.prop('checked')).toBe(true);
+    });
+  });
+
+  describe('name', () => {
+    it('gets passed to the input', () => {
+      const input = shallowWithAppProvider(
+        <RadioButton
+          label="RadioButton"
+          checked
+          name="RadioButton"
+          value="Some value"
+        />,
+      ).find('input');
+
+      expect(input.prop('name')).toBe('RadioButton');
+    });
+  });
+
+  describe('value', () => {
+    it('gets passed to the input', () => {
+      const input = shallowWithAppProvider(
+        <RadioButton
+          label="RadioButton"
+          checked
+          name="RadioButton"
+          value="Some value"
+        />,
+      ).find('input');
+
+      expect(input.prop('value')).toBe('Some value');
+    });
   });
 
   describe('onChange()', () => {

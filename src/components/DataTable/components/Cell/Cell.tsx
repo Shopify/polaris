@@ -6,7 +6,7 @@ import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Icon, {IconSource} from '../../../Icon';
 import {SortDirection} from '../../types';
 
-import * as styles from '../../DataTable.scss';
+import styles from '../../DataTable.scss';
 
 export interface Props {
   testID?: string;

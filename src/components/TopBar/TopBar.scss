@@ -1,5 +1,8 @@
 @import './styles/variables';
+
 $icon-size: rem(20px);
+$page-left-alignment-breakpoint-max: 1268px;
+
 .TopBar {
   position: relative;
   display: flex;
@@ -22,9 +25,16 @@ $icon-size: rem(20px);
     align-items: center;
     height: 100%;
     padding: 0 spacing(tight) 0 spacing(base);
-    background-color: var(--top-bar-background-darker);
     @include safe-area-for(flex-basis, layout-width(nav), left);
     @include safe-area-for(padding-left, spacing(), left);
+  }
+}
+
+.ContextControl {
+  display: none;
+  @include breakpoint-after(nav-min-window-corrected()) {
+    max-width: layout-width(nav);
+    display: block;
   }
 }
 
@@ -38,6 +48,7 @@ $icon-size: rem(20px);
   position: relative;
   align-self: center;
   margin-left: spacing(tight) + rem(2px);
+  margin-right: spacing(tight);
   padding: spacing(tight);
   border-radius: border-radius();
   &.focused {
@@ -63,11 +74,36 @@ $icon-size: rem(20px);
 }
 
 .Contents {
-  position: relative;
   z-index: z-index(content, $stacking-order);
   display: flex;
   flex: 1 1 auto;
   align-items: center;
   justify-content: flex-end;
   height: 100%;
+
+  @include breakpoint-after($not-condensed-content) {
+    position: relative;
+  }
+}
+
+.SearchField {
+  @include page-layout;
+  width: 100%;
+  margin: 0;
+  max-width: none;
+  margin-left: calc((100% - #{$page-max-width}) / 2);
+
+  @media (max-width: $page-left-alignment-breakpoint-max) {
+    margin-left: 0;
+  }
+
+  @include breakpoint-after($not-condensed-content) {
+    position: relative;
+  }
+}
+
+.SecondaryMenu {
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    display: none;
+  }
 }

@@ -8,7 +8,7 @@ import ButtonGroup from '../ButtonGroup';
 import {Provider, WithinContentContext} from '../WithinContentContext';
 
 import {Header, Section} from './components';
-import * as styles from './Card.scss';
+import styles from './Card.scss';
 
 export interface Props {
   /** Title content for the card */
@@ -44,9 +44,8 @@ export default class Card extends React.PureComponent<Props, never> {
 
     const className = classNames(styles.Card, subdued && styles.subdued);
 
-    const headerMarkup = title ? (
-      <Header actions={actions} title={title} />
-    ) : null;
+    const headerMarkup =
+      title || actions ? <Header actions={actions} title={title} /> : null;
 
     const content = sectioned ? <Section>{children}</Section> : children;
 

@@ -132,8 +132,16 @@ $spinner-size: rem(20px);
     color: color('blue', 'dark');
   }
 
-  &:focus > .Content::after {
-    opacity: 1;
+  &:focus {
+    @include high-contrast-button-outline(none);
+  }
+
+  &:focus > .Content {
+    @include high-contrast-button-outline;
+  }
+
+  &:focus:not(.iconOnly) > .Content {
+    @include plain-button-backdrop;
   }
 
   &.fullWidth {
@@ -179,12 +187,6 @@ $spinner-size: rem(20px);
     }
   }
 
-  > .Content::after {
-    @include plain-button-backdrop;
-    content: '';
-    opacity: 0;
-  }
-
   .Icon {
     margin-left: 0;
     margin-right: 0;
@@ -194,7 +196,7 @@ $spinner-size: rem(20px);
 
 .sizeSlim {
   min-height: $slim-min-height;
-  padding: $slim-vertical-padding rem(12px);
+  padding: $slim-vertical-padding spacing(base-tight);
 }
 
 .sizeLarge {
@@ -216,8 +218,8 @@ $spinner-size: rem(20px);
   padding-right: rem(8px);
 
   &.sizeLarge {
-    padding-left: rem(12px);
-    padding-right: rem(12px);
+    padding-left: spacing(base-tight);
+    padding-right: spacing(base-tight);
   }
 
   .Icon:first-child {

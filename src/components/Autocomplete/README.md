@@ -98,14 +98,14 @@ class AutocompleteExample extends React.Component {
     });
   };
 
-  updateSelection = (updatedSelection) => {
-    const selectedText = updatedSelection.map((selectedItem) => {
-      const matchedOption = this.options.filter((option) => {
+  updateSelection = (selected) => {
+    const selectedText = selected.map((selectedItem) => {
+      const matchedOption = this.options.find((option) => {
         return option.value.match(selectedItem);
       });
-      return matchedOption[0] && matchedOption[0].label;
+      return matchedOption && matchedOption.label;
     });
-    this.setState({selected: selectedText, inputText: selectedText});
+    this.setState({selected, inputText: selectedText});
   };
 }
 ```
@@ -202,9 +202,7 @@ class MultiAutocompleteExample extends React.Component {
     });
   };
 
-  updateSelection = (updatedSelection) => {
-    this.setState({selected: updatedSelection});
-  };
+  updateSelection = (selected) => this.setState({selected});
 }
 
 function titleCase(string) {
@@ -291,14 +289,14 @@ class AutocompleteExample extends React.Component {
     }, 300);
   };
 
-  updateSelection = (updatedSelection) => {
-    const selectedText = updatedSelection.map((selectedItem) => {
-      const matchedOption = this.options.filter((option) => {
+  updateSelection = (selected) => {
+    const selectedText = selected.map((selectedItem) => {
+      const matchedOption = this.options.find((option) => {
         return option.value.match(selectedItem);
       });
-      return matchedOption[0] && matchedOption[0].label;
+      return matchedOption && matchedOption.label;
     });
-    this.setState({selected: selectedText, inputText: selectedText});
+    this.setState({selected, inputText: selectedText});
   };
 }
 ```
@@ -385,14 +383,14 @@ class AutocompleteExample extends React.Component {
     }, 300);
   };
 
-  updateSelection = (updatedSelection) => {
-    const selectedText = updatedSelection.map((selectedItem) => {
-      const matchedOption = this.options.filter((option) => {
+  updateSelection = (selected) => {
+    const selectedText = selected.map((selectedItem) => {
+      const matchedOption = this.options.find((option) => {
         return option.value.match(selectedItem);
       });
-      return matchedOption[0] && matchedOption[0].label;
+      return matchedOption && matchedOption.label;
     });
-    this.setState({selected: selectedText, inputText: selectedText});
+    this.setState({selected, inputText: selectedText});
   };
 }
 ```
@@ -403,3 +401,55 @@ class AutocompleteExample extends React.Component {
 
 - For an input field without suggested options, [use the text field component](/components/forms/text-field)
 - For a list of selectable options not linked to an input field, [use the option list component](/components/lists-and-tables/option-list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+### Structure
+
+The autocomplete component is based on the [ARIA 1.1 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). See the [text field component](https://polaris.shopify.com/components/forms/text-field) for information on implementing the autocomplete component with a text field.
+
+The autocomplete list displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
+
+Autocomplete features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
+
+<!-- usageblock -->
+
+#### Do
+
+Use autocomplete as progressive enhancement to make the interface easier to use for most merchants.
+
+#### Don’t
+
+Require that merchants make a selection from the autocomplete to complete a task.
+
+<!-- end -->
+
+### Keyboard support
+
+- Give the autocomplete text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- Access the list of options with the up and down arrow keys
+- Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key
+
+<!-- /content-for -->

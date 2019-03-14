@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from '../../Popover.scss';
+import styles from '../../Popover.scss';
 
 export interface Props {
   children?: React.ReactNode;

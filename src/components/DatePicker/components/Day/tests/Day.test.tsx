@@ -12,7 +12,7 @@ describe('<Day />', () => {
   });
 
   describe('tabIndex', () => {
-    it('sets the correct tabIndex value if day is today', () => {
+    it('sets the tabIndex to 0 if day is today', () => {
       const currentDay = new Date();
       const day = mountWithAppProvider(
         <Day focused day={currentDay} selected disabled={false} />,
@@ -20,7 +20,7 @@ describe('<Day />', () => {
       expect(day.find('button').prop('tabIndex')).toBe(0);
     });
 
-    it('sets the correct tabIndex value if day is disabled', () => {
+    it('sets the tabIndex to -1 if day is disabled', () => {
       const currentDay = new Date();
       const day = mountWithAppProvider(
         <Day focused day={currentDay} selected disabled />,

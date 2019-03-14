@@ -44,6 +44,17 @@ describe('<DateSelector />', () => {
     ],
   };
 
+  let getTimezoneOffset: jest.SpyInstance;
+
+  beforeEach(() => {
+    getTimezoneOffset = jest.spyOn(Date.prototype, 'getTimezoneOffset');
+    getTimezoneOffset.mockImplementation(() => -540);
+  });
+
+  afterEach(() => {
+    getTimezoneOffset.mockRestore();
+  });
+
   describe('dateOptionType', () => {
     it('builds date filters Select options for past option type', () => {
       const wrapper = mountWithAppProvider(
@@ -158,6 +169,79 @@ describe('<DateSelector />', () => {
         />,
       );
       expect(wrapper.find(Select).prop('value')).toBe('on_or_before');
+    });
+  });
+
+  describe('timezones adjustments', () => {
+    it('sets the selected date with negative timezone offset on DatePicker and TextField', () => {
+      const nextUserInputDate = '2019-01-01';
+      const timezoneOffset = -540;
+      const timezoneOffsetInHours = Math.abs(timezoneOffset / 60);
+      getTimezoneOffset.mockImplementation(() => timezoneOffset);
+
+      const wrapper = mountWithAppProvider(
+        <DateSelector
+          {...mockDefaultProps}
+          filterValue={DateFilterOption.OnOrBefore}
+        />,
+      );
+
+      trigger(wrapper.find(TextField), 'onChange', nextUserInputDate);
+      trigger(wrapper.find(TextField), 'onBlur');
+
+      const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
+      const selectedInputDate = wrapper.find(TextField).prop('value');
+
+      expect(selectedDate.toISOString()).toBe(
+        `2019-01-01T0${timezoneOffsetInHours}:00:00.000Z`,
+      );
+      expect(selectedInputDate).toBe(nextUserInputDate);
+    });
+
+    it('sets the selected date with fringe timezone offset on DatePicker and TextField', () => {
+      const nextUserInputDate = '2019-01-01';
+      getTimezoneOffset.mockImplementation(() => -720);
+
+      const wrapper = mountWithAppProvider(
+        <DateSelector
+          {...mockDefaultProps}
+          filterValue={DateFilterOption.OnOrBefore}
+        />,
+      );
+
+      trigger(wrapper.find(TextField), 'onChange', nextUserInputDate);
+      trigger(wrapper.find(TextField), 'onBlur');
+
+      const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
+      const selectedInputDate = wrapper.find(TextField).prop('value');
+
+      expect(selectedDate.toISOString()).toContain(nextUserInputDate);
+      expect(selectedInputDate).toBe(nextUserInputDate);
+    });
+
+    it('sets the selected date with positive timezone offset on DatePicker and TextField', () => {
+      const nextUserInputDate = '2019-01-01';
+      const timezoneOffset = 300;
+      const timezoneOffsetInHours = Math.abs(timezoneOffset / 60);
+      getTimezoneOffset.mockImplementation(() => timezoneOffset);
+
+      const wrapper = mountWithAppProvider(
+        <DateSelector
+          {...mockDefaultProps}
+          filterValue={DateFilterOption.OnOrBefore}
+        />,
+      );
+
+      trigger(wrapper.find(TextField), 'onChange', nextUserInputDate);
+      trigger(wrapper.find(TextField), 'onBlur');
+
+      const selectedDate = wrapper.find(DatePicker).prop('selected') as Date;
+      const selectedInputDate = wrapper.find(TextField).prop('value');
+
+      expect(selectedDate.toISOString()).toBe(
+        `2019-01-01T0${timezoneOffsetInHours}:00:00.000Z`,
+      );
+      expect(selectedInputDate).toBe(nextUserInputDate);
     });
   });
 

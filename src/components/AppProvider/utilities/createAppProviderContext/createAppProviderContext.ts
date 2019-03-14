@@ -1,11 +1,16 @@
 import {noop} from '@shopify/javascript-utilities/other';
-import createApp, {getShopOrigin} from '@shopify/app-bridge';
+import createApp, {
+  getShopOrigin,
+  LifecycleHook,
+  DispatchActionHook,
+} from '@shopify/app-bridge';
 import {isServer} from '@shopify/react-utilities/target';
 import {AppProviderProps, Context} from '../../types';
 import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';
 import Link from '../Link';
+import {polarisVersion} from '../../../../configure';
 
 export interface CreateAppProviderContext extends AppProviderProps {
   stickyManager?: StickyManager;
@@ -36,6 +41,10 @@ export default function createAppProviderContext({
         })
       : undefined;
 
+  if (appBridge && appBridge.hooks) {
+    appBridge.hooks.set(LifecycleHook.DispatchAction, setClientInterfaceHook);
+  }
+
   return {
     polaris: {
       intl,
@@ -48,3 +57,13 @@ export default function createAppProviderContext({
     },
   };
 }
+
+export const setClientInterfaceHook: DispatchActionHook = function(next) {
+  return function(action) {
+    action.clientInterface = {
+      name: '@shopify/polaris',
+      version: polarisVersion,
+    };
+    return next(action);
+  };
+};

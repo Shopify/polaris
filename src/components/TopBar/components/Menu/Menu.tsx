@@ -4,7 +4,7 @@ import ActionList, {Props as ActionListProps} from '../../../ActionList';
 import Popover from '../../../Popover';
 
 import {Message, MessageProps} from './components';
-import * as styles from './Menu.scss';
+import styles from './Menu.scss';
 
 export interface Props {
   /** Accepts an activator component that renders inside of a button that opens the menu */
@@ -47,9 +47,11 @@ export default function Menu(props: Props) {
   return (
     <Popover
       activator={
-        <button type="button" className={styles.Activator} onClick={onOpen}>
-          {activatorContent}
-        </button>
+        <div className={styles.ActivatorWrapper}>
+          <button type="button" className={styles.Activator} onClick={onOpen}>
+            {activatorContent}
+          </button>
+        </div>
       }
       active={open}
       onClose={onClose}
