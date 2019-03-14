@@ -3,6 +3,8 @@ import * as React from 'react';
 import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {EnableSelectionMinor} from '@shopify/polaris-icons';
+
 import Button from '../Button';
 import EventListener from '../EventListener';
 import Sticky from '../Sticky';
@@ -10,7 +12,6 @@ import Spinner from '../Spinner';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Select, {SelectOption} from '../Select';
 import EmptySearchResult from '../EmptySearchResult';
-import {EnableSelectionMinor} from '../../icons';
 
 import {
   BulkActions,
