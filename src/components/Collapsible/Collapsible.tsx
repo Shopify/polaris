@@ -43,7 +43,6 @@ export class Collapsible extends React.Component<CombinedProps, State> {
   private node: HTMLElement | null = null;
   private heightNode: HTMLElement | null = null;
 
-  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps({open: willOpen}: Props) {
     const {open} = this.props;
 
