@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {
@@ -35,20 +34,7 @@ export interface State {
   animationState: AnimationState;
 }
 
-export interface Context {
-  parentCollapsibleExpanding: boolean;
-}
-
-const CONTEXT_TYPES = {
-  parentCollapsibleExpanding: PropTypes.bool,
-};
-
 export class Collapsible extends React.Component<CombinedProps, State> {
-  static contextTypes = CONTEXT_TYPES;
-  static childContextTypes = CONTEXT_TYPES;
-
-  context: Partial<Context>;
-
   state: State = {
     height: null,
     animationState: 'idle',
@@ -56,17 +42,6 @@ export class Collapsible extends React.Component<CombinedProps, State> {
 
   private node: HTMLElement | null = null;
   private heightNode: HTMLElement | null = null;
-
-  getChildContext(): Context {
-    const {open} = this.props;
-    const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
-
-    return {
-      parentCollapsibleExpanding:
-        parentCollapsibleExpanding || (open && animationState !== 'idle'),
-    };
-  }
 
   componentWillReceiveProps({open: willOpen}: Props) {
     const {open} = this.props;
@@ -78,16 +53,6 @@ export class Collapsible extends React.Component<CombinedProps, State> {
 
   componentDidUpdate({open: wasOpen}: Props) {
     const {animationState} = this.state;
-    const {parentCollapsibleExpanding} = this.context;
-
-    if (parentCollapsibleExpanding && animationState !== 'idle') {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        animationState: 'idle',
-      });
-
-      return;
-    }
 
     read(() => {
       switch (animationState) {
