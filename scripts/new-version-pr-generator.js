@@ -1,23 +1,23 @@
 /* eslint-disable no-console */
 const {execSync} = require('child_process');
 const {readFileSync} = require('fs');
-const pathResolve = require('path').resolve;
+const {resolve} = require('path');
 const {mkdir} = require('shelljs');
 const yaml = require('js-yaml');
 const semver = require('semver');
 
 const {version: PACKAGE_VERSION} = require('../package.json');
 const secrets = require('../secrets.json');
-const Retry = require('./utilities/retry');
+const retry = require('./utilities/retry');
 
 const repositories = ['polaris-styleguide', 'web'];
 
 const YARN_VERSION = yaml
-  .safeLoad(readFileSync(pathResolve(__dirname, '..', 'dev.yml'), 'utf8'))
+  .safeLoad(readFileSync(resolve(__dirname, '..', 'dev.yml'), 'utf8'))
   .up.find((obj) => Object.keys(obj).includes('node')).node.yarn;
 
-const root = pathResolve(__dirname, '../');
-const sandbox = pathResolve(root, 'sandbox');
+const root = resolve(__dirname, '../');
+const sandbox = resolve(root, 'sandbox');
 
 const releaseVersion = `v${PACKAGE_VERSION}`;
 
@@ -74,7 +74,8 @@ If tests fail, you may have to troubleshoot the problem locally.
 }
 
 function failedUpdateMessage(repository, version) {
-  return `The automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps:
+  return `
+The automatic branch creation for ${repository} failed. This can be due to many reasons. To resolve this follow these steps:
 
   1. Checkout "${repository}"
   2. Get the latest version of master "git checkout master && git pull"
@@ -83,17 +84,18 @@ function failedUpdateMessage(repository, version) {
   5. Add the changed files to git by running "git add package.json yarn.lock"
   6. Commit the changes with "git commit -m 'Update @shopify/polaris to ${version}'"
   7. Push the changes with "git push origin update-polaris-v${version}"
-  8. Create a new pull request for the branch in "${repository}"`;
+  8. Create a new pull request for the branch in "${repository}"
+`;
 }
 
 mkdir(sandbox);
 
 repositories.forEach((repository) => {
   try {
-    const repositoryDirectory = pathResolve(sandbox, repository);
+    const repositoryDirectory = resolve(sandbox, repository);
 
     // Clone into the sandbox directory
-    Retry(
+    retry(
       execSync(
         `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
         {
@@ -122,7 +124,7 @@ repositories.forEach((repository) => {
 
     // Run the commands in the cloned repository directories
     commands.forEach((command) => {
-      Retry(
+      retry(
         execSync(command, {
           cwd: repositoryDirectory,
           stdio: 'inherit',
