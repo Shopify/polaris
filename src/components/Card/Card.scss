@@ -42,11 +42,6 @@
 
 .Section-subdued {
   background-color: color('sky', 'lighter');
-
-  .Header + & {
-    border-top: border-width() solid color('sky');
-    margin-top: spacing(loose);
-  }
 }
 
 .SectionHeader {
@@ -70,10 +65,5 @@
 
   @include page-content-when-not-fully-condensed {
     padding: 0 spacing(loose) spacing(loose);
-  }
-
-  .Section-subdued + & {
-    border-top: border-width() solid color('sky');
-    padding: spacing(loose);
   }
 }
