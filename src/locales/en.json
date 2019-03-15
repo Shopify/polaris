@@ -220,10 +220,6 @@
     "TextField": {
       "characterCount": "{count} characters",
       "characterCountWithMaxLength": "{count} of {limit} characters used"
-    },
-
-    "Toast": {
-      "durationWarning": "Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it."
     }
   }
 }
