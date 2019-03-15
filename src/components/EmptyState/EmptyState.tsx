@@ -25,6 +25,8 @@ export interface Props {
   action: Action;
   /** Secondary action for empty state */
   secondaryAction?: Action;
+  /** Secondary elements to display inside empty state */
+  footer?: React.ReactNode;
 }
 
 export default class EmptyState extends React.PureComponent<Props, never> {
@@ -37,6 +39,7 @@ export default class EmptyState extends React.PureComponent<Props, never> {
       imageContained,
       action,
       secondaryAction,
+      footer,
     } = this.props;
 
     const className = classNames(
@@ -69,6 +72,14 @@ export default class EmptyState extends React.PureComponent<Props, never> {
       ? buttonFrom(secondaryAction, {plain: true})
       : null;
 
+    const footerMarkup = footer ? (
+      <div className={styles.Footer}>
+        <TextContainer>
+          <div className={styles.FooterContent}>{footer}</div>
+        </TextContainer>
+      </div>
+    ) : null;
+
     return (
       <div className={className}>
         <div className={styles.Section}>
@@ -85,6 +96,7 @@ export default class EmptyState extends React.PureComponent<Props, never> {
                   {secondaryActionMarkup}
                 </Stack>
               </div>
+              {footerMarkup}
             </div>
           </div>
 
