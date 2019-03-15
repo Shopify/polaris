@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities';
 
 import {Key} from '../../../../types';
@@ -38,7 +39,7 @@ export default class Toast extends React.Component<Props, never> {
         onClick={onDismiss}
         testID="closeButton"
       >
-        <Icon source="cancel" />
+        <Icon source={MobileCancelMajorMonotone} />
       </button>
     );
 

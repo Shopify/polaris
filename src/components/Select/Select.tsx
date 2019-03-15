@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ArrowUpDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
@@ -146,7 +147,7 @@ export default function Select({
       {inlineLabelMarkup}
       <span className={styles.SelectedOption}>{selectedOption}</span>
       <span className={styles.Icon}>
-        <Icon source="arrowUpDown" />
+        <Icon source={ArrowUpDownMinor} />
       </span>
     </div>
   );

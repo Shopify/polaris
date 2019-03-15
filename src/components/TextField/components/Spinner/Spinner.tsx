@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 import Icon from '../../../Icon';
 
 import styles from '../../TextField.scss';
@@ -38,7 +39,7 @@ export default function Spinner({
         onMouseUp={onMouseUp}
       >
         <div className={styles.SpinnerIcon}>
-          <Icon source="caretUp" />
+          <Icon source={CaretUpMinor} />
         </div>
       </div>
 
@@ -51,7 +52,7 @@ export default function Spinner({
         onMouseUp={onMouseUp}
       >
         <div className={styles.SpinnerIcon}>
-          <Icon source="caretDown" />
+          <Icon source={CaretDownMinor} />
         </div>
       </div>
     </div>
