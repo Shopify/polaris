@@ -6,8 +6,12 @@ import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
-import capitalize from '../../utilities/capitalize';
+import {
+  DragDropMajorMonotone,
+  CircleAlertMajorMonotone,
+} from '@shopify/polaris-icons';
 
+import capitalize from '../../utilities/capitalize';
 import Icon from '../Icon';
 import Stack from '../Stack';
 import Caption from '../Caption';
@@ -15,8 +19,6 @@ import DisplayText from '../DisplayText';
 import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-
-import {DragDropMajorMonotone, CircleAlertMajorMonotone} from '../../icons';
 
 import {FileUpload, Provider} from './components';
 

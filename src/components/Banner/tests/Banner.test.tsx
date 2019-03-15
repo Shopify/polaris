@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {Button, Icon, UnstyledLink, Heading} from 'components';
-import Banner from '..';
-
 import {
   CircleAlertMajorTwotone,
   CircleDisabledMajorTwotone,
   CircleTickMajorTwotone,
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
-} from '../../../icons';
+} from '@shopify/polaris-icons';
+
+import {Button, Icon, UnstyledLink, Heading} from 'components';
+import Banner from '..';
 
 describe('<Banner />', () => {
   it('renders a title', () => {

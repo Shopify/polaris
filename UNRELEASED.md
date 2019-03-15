@@ -32,5 +32,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Code quality
 
 - Replaced all occurrences of `_.pick` with a custom pick function ([#1020](https://github.com/Shopify/polaris-react/pull/1020))
+- Deleted the icons index file that would re-export icons, and replaced it with direct imports ([#1195](https://github.com/Shopify/polaris-react/pull/1195))
 
 ### Deprecations
