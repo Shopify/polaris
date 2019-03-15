@@ -19,6 +19,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Bug fixes
 
 - Fixed unnecessary height on `TextField` due to unhandled carriage returns ([#901](https://github.com/Shopify/polaris-react/pull/901))
+- Reverted a change that adjusted padding in the `Card` component introduced in ([#1205](https://github.com/Shopify/polaris-react/pull/1205))
 
 ### Documentation
 
