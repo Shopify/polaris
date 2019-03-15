@@ -4,7 +4,6 @@ import createApp, {
   LifecycleHook,
   DispatchActionHook,
 } from '@shopify/app-bridge';
-import {isServer} from '@shopify/react-utilities/target';
 import {AppProviderProps, Context} from '../../types';
 import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
@@ -32,14 +31,13 @@ export default function createAppProviderContext({
 }: CreateAppProviderContext = {}): Context {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
-  const appBridge =
-    apiKey && !isServer
-      ? createApp({
-          apiKey,
-          shopOrigin: shopOrigin || getShopOrigin(),
-          forceRedirect,
-        })
-      : undefined;
+  const appBridge = apiKey
+    ? createApp({
+        apiKey,
+        shopOrigin: shopOrigin || getShopOrigin(),
+        forceRedirect,
+      })
+    : undefined;
 
   if (appBridge && appBridge.hooks) {
     appBridge.hooks.set(LifecycleHook.DispatchAction, setClientInterfaceHook);
