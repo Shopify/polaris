@@ -253,7 +253,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     ) : null;
 
     const spinnerMarkup =
-      type === 'number' && !disabled ? (
+      type === 'number' && !disabled && !readOnly ? (
         <Spinner
           onChange={this.handleNumberChange}
           onMouseDown={this.handleButtonPress}

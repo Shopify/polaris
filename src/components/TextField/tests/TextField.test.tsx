@@ -580,6 +580,19 @@ describe('<TextField />', () => {
         expect(buttons).toHaveLength(0);
       });
 
+      it('removes increment and decrement buttons when readOnly', () => {
+        const element = mountWithAppProvider(
+          <TextField
+            id="MyNumberField"
+            label="NumberField"
+            type="number"
+            readOnly
+          />,
+        );
+        const buttons = element.find('[role="button"]');
+        expect(buttons).toHaveLength(0);
+      });
+
       it('increments by step when value, step, or both are float numbers', () => {
         const spy = jest.fn();
         const element = mountWithAppProvider(
