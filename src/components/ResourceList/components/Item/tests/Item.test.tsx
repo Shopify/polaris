@@ -182,7 +182,7 @@ describe('<Item />', () => {
       expect(onClick).toBeCalledWith(itemId);
     });
 
-    it.only('calls window.open on metaKey + click', () => {
+    it('calls window.open on metaKey + click', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
