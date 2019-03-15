@@ -157,9 +157,27 @@ Use to explain a single feature before merchants have used it.
   heading="Manage your inventory transfers"
   action={{content: 'Add transfer'}}
   secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+  image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
+>
+  <p>Track and receive your incoming inventory from suppliers.</p>
+</EmptyState>
+```
+
+### Empty state with footer
+
+Use to explain a single feature with additional context before merchants have used it.
+
+```jsx
+<EmptyState
+  heading="Manage your inventory transfers"
+  action={{content: 'Add transfer'}}
+  secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
   footer={
     <p>
-      Import inventory from <a href="/settings">settings</a>
+      Import inventory from
+      <Link monochrome url="/settings">
+        settings
+      </Link>
     </p>
   }
   image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"

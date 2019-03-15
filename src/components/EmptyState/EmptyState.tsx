@@ -74,9 +74,7 @@ export default class EmptyState extends React.PureComponent<Props, never> {
 
     const footerMarkup = footer ? (
       <div className={styles.Footer}>
-        <TextContainer>
-          <div className={styles.FooterContent}>{footer}</div>
-        </TextContainer>
+        <TextContainer>{footer}</TextContainer>
       </div>
     ) : null;
 

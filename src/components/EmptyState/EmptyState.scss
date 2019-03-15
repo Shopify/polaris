@@ -84,8 +84,7 @@ $illustration-width-cropped: calc(
   @include text-emphasis-subdued;
 }
 
-.Actions,
-.Footer {
+.Actions {
   margin-top: spacing();
 }
 
@@ -109,6 +108,7 @@ $illustration-width-cropped: calc(
   }
 }
 
-.FooterContent {
+.Footer {
   @include text-emphasis-subdued;
+  margin-top: spacing();
 }
