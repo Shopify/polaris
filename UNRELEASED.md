@@ -15,6 +15,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated `Navigation` badge prop to accept a react node ([#1142](https://github.com/Shopify/polaris-react/pull/1142))
 - Changed max width on `Search` to 694px so that it is perfectly centered in the top bar ([#1107](https://github.com/Shopify/polaris-react/issues/1107))
 - Added `action` prop to `Toast` ([#919](https://github.com/Shopify/polaris-react/pull/919))
+- Changed `TopBar`'s `contextControl`'s `max-width` to `width` ([#1206](https://github.com/Shopify/polaris-react/pull/1206))
 
 ### Bug fixes
 
