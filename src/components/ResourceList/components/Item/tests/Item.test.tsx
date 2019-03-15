@@ -182,14 +182,17 @@ describe('<Item />', () => {
       expect(onClick).toBeCalledWith(itemId);
     });
 
-    it('calls window.open on metaKey + click', () => {
+    it.only('calls window.open on metaKey + click', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
           <Item id={itemId} url={url} accessibilityLabel={ariaLabel} />
         </Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {nativeEvent: {metaKey: true}});
+      trigger(item, 'onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {metaKey: true},
+      });
       expect(spy).toBeCalledWith(url, '_blank');
     });
 
@@ -200,7 +203,10 @@ describe('<Item />', () => {
         </Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {nativeEvent: {ctrlKey: true}});
+      trigger(item, 'onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {ctrlKey: true},
+      });
       expect(spy).toBeCalledWith(url, '_blank');
     });
   });
