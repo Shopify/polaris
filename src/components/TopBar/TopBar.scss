@@ -33,7 +33,7 @@ $page-left-alignment-breakpoint-max: 1268px;
 .ContextControl {
   display: none;
   @include breakpoint-after(nav-min-window-corrected()) {
-    max-width: layout-width(nav);
+    width: layout-width(nav);
     display: block;
   }
 }
