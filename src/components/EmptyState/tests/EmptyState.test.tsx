@@ -5,13 +5,13 @@ import EmptyState from '../EmptyState';
 
 describe('<EmptyState />', () => {
   let imgSrc: string;
-  let footerMarkup: React.ReactNode;
+  let footerContentMarkup: React.ReactNode;
   let emptyState: any;
 
   beforeAll(() => {
     imgSrc =
       'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
-    footerMarkup = (
+    footerContentMarkup = (
       <p>
         Import inventory from <a href="/settings">settings</a>
       </p>
@@ -26,7 +26,7 @@ describe('<EmptyState />', () => {
           content: 'Learn more',
           url: 'https://help.shopify.com',
         }}
-        footer={footerMarkup}
+        footerContent={footerContentMarkup}
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>,
@@ -72,9 +72,9 @@ describe('<EmptyState />', () => {
 
   describe('footer', () => {
     it('passes the provided content to TextContainer', () => {
-      const footerTextField = emptyState.find(TextContainer).last();
+      const footerContentTextField = emptyState.find(TextContainer).last();
 
-      expect(footerTextField.text()).toContain(
+      expect(footerContentTextField.text()).toContain(
         'Import inventory from settings',
       );
     });

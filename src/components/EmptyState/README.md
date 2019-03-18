@@ -163,18 +163,18 @@ Use to explain a single feature before merchants have used it.
 </EmptyState>
 ```
 
-### Empty state with footer
+### Empty state with subdued footer
 
-Use to explain a single feature with additional context before merchants have used it.
+Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued CTA for secondary or tertiary actions.
 
 ```jsx
 <EmptyState
   heading="Manage your inventory transfers"
   action={{content: 'Add transfer'}}
   secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
-  footer={
+  footerContent={
     <p>
-      Import inventory from
+      Import inventory from{' '}
       <Link monochrome url="/settings">
         settings
       </Link>
