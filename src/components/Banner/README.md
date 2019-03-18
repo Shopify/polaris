@@ -500,6 +500,38 @@ class ModalExample extends React.Component {
 }
 ```
 
+### Banner with focus
+
+<!-- example-for: web -->
+
+Banner with focus receives focus programmatically when it appears. Use this component to communicate problems that merchants need to resolve before they can complete a task.
+
+```jsx
+class ModalExample extends React.Component {
+  banner = React.createRef();
+
+  componentDidMount() {
+    this.banner.current.focus();
+  }
+
+  render() {
+    return (
+      <Banner
+        title="High risk of fraud detected"
+        onDismiss={() => {}}
+        status="critical"
+        ref={this.banner}
+      >
+        <p>
+          Before fulfilling this order or capturing payment, please review the
+          fraud analysis and determine if this order is fraudulent
+        </p>
+      </Banner>
+    );
+  }
+}
+```
+
 ### Banner in a card
 
 <!-- example-for: web -->
