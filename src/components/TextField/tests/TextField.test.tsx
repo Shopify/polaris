@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {InlineError, Labelled, Connected, Select} from 'components';
-import {Resizer} from '../components';
+import {Resizer, Spinner} from '../components';
 import TextField from '../TextField';
 
 describe('<TextField />', () => {
@@ -589,8 +589,7 @@ describe('<TextField />', () => {
             readOnly
           />,
         );
-        const buttons = element.find('[role="button"]');
-        expect(buttons).toHaveLength(0);
+        expect(element.find(Spinner)).toHaveLength(0);
       });
 
       it('increments by step when value, step, or both are float numbers', () => {
