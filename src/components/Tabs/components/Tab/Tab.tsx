@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import UnstyledLink from '../../../UnstyledLink';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
@@ -139,10 +138,9 @@ export class Tab extends React.PureComponent<CombinedProps, never> {
     );
   }
 
-  @autobind
-  private setNode(node: HTMLElement | null) {
+  private setNode = (node: HTMLElement | null) => {
     this.node = node;
-  }
+  };
 }
 
 function focusPanelID(panelID: string) {

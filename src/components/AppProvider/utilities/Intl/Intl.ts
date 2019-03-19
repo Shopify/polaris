@@ -1,5 +1,4 @@
 import merge from 'lodash/merge';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {get} from '../../../../utilities/get';
 import defaultTranslation from '../../../../locales';
 import {
@@ -35,15 +34,14 @@ export default class Intl {
       : defaultTranslation;
   }
 
-  @autobind
-  translate(
+  translate = (
     id: string,
     replacements?:
       | PrimitiveReplacementDictionary
       | ComplexReplacementDictionary,
-  ): string {
+  ): string => {
     return translate(id, this.translation, replacements);
-  }
+  };
 
   translationKeyExists(path: string): boolean {
     return Boolean(get(this.translation, path));

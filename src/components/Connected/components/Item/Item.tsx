@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import styles from '../../Connected.scss';
 
@@ -45,13 +44,11 @@ export default class Item extends React.PureComponent<Props, State> {
     );
   }
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({focused: false});
-  }
+  };
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({focused: true});
-  }
+  };
 }

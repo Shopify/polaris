@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import ActionList from '../../../../../ActionList';
 import Popover from '../../../../../Popover';
 import Action from '../Action';
@@ -40,17 +39,15 @@ class ActionGroup extends React.Component<Props, never> {
     );
   }
 
-  @autobind
-  private handleClose() {
+  private handleClose = () => {
     const {title, onClose} = this.props;
     onClose(title);
-  }
+  };
 
-  @autobind
-  private handleOpen() {
+  private handleOpen = () => {
     const {title, onOpen} = this.props;
     onOpen(title);
-  }
+  };
 }
 
 export default ActionGroup;
