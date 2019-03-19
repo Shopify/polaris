@@ -165,7 +165,7 @@ Use to explain a single feature before merchants have used it.
 
 ### Empty state with subdued footer
 
-Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued CTA for secondary or tertiary actions.
+Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
 
 ```jsx
 <EmptyState
