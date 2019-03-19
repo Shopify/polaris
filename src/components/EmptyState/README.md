@@ -178,6 +178,7 @@ Use to provide additional but non-critical context for a new product or feature.
       <Link monochrome url="/settings">
         settings
       </Link>
+      .
     </p>
   }
   image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
