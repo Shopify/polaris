@@ -174,7 +174,7 @@ Use to provide additional but non-critical context for a new product or feature.
   secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
   footerContent={
     <p>
-      Import inventory from{' '}
+      If you don’t want to add a transfer, you can import your inventory from{' '}
       <Link monochrome url="/settings">
         settings
       </Link>
