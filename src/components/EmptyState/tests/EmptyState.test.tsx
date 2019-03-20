@@ -79,11 +79,5 @@ describe('<EmptyState />', () => {
         'If you don’t want to add a transfer, you can import your inventory from settings.',
       );
     });
-
-    it('renders a link', () => {
-      const footerContentTextField = emptyState.find(TextContainer).last();
-
-      expect(footerContentTextField.find(Link).contains('settings')).toBe(true);
-    });
   });
 });
