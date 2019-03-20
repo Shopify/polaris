@@ -31,7 +31,7 @@ $stacking-order: (
 }
 
 .hasValue {
-  color: color('ink', 'lightest');
+  color: color('ink');
 }
 
 .focus > .Input,
@@ -167,8 +167,12 @@ $stacking-order: (
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
   margin: 0 $prefix-horizontal-spacing 0 $backdrop-horizontal-spacing;
-  color: currentColor;
+  color: color('ink', 'lighter');
   pointer-events: none;
+
+  svg {
+    fill: color('ink', 'lighter');
+  }
 }
 
 .Suffix {
