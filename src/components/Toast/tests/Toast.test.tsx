@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
-import {mountWithAppProvider, createPolarisProps} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import Toast from '../Toast';
 
@@ -12,15 +12,10 @@ describe('<Toast />', () => {
 
   it('shows the toast with a unique ID on mount', () => {
     const props = {content: 'Image uploaded', onDismiss: noop};
-    const composedProps = {
-      ...props,
-      ...createPolarisProps(),
-    };
     const {frame} = mountWithContext(<Toast {...props} />);
-    expect(frame.showToast).toHaveBeenCalledWith({
-      id: expect.any(String),
-      ...composedProps,
-    });
+    expect(frame.showToast).toHaveBeenCalledWith(
+      expect.objectContaining({id: expect.any(String), ...props}),
+    );
   });
 
   it('hides the toast based on ID on unmount', () => {

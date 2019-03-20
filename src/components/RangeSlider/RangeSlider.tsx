@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
@@ -180,8 +179,7 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
 
     if (onChange == null) {
@@ -189,7 +187,7 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
     }
 
     onChange(parseFloat(event.currentTarget.value), this.state.id);
-  }
+  };
 }
 
 export function invertNumber(number: number) {

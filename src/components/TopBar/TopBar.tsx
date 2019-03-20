@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {getWidth} from '../../utilities/getWidth';
@@ -141,15 +140,13 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     );
   }
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({focused: true});
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({focused: false});
-  }
+  };
 }
 
 export default withAppProvider<Props>()(TopBar);

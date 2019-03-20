@@ -1,20 +1,36 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import Intl from '../../Intl';
 import {StickyManager} from '../../withSticky';
-import Link from '../../Link';
 import ScrollLockManager from '../../ScrollLockManager';
 import createPolarisContext from '../createPolarisContext';
 
+jest.mock('../../Intl', () => ({
+  default: jest.fn(),
+  __esModule: true,
+}));
+
+jest.mock('../../Link', () => ({
+  default: jest.fn(),
+  __esModule: true,
+}));
+
 describe('createPolarisContext()', () => {
+  const Intl: jest.Mock<{}> = require.requireMock('../../Intl').default;
+  const Link: jest.Mock<{}> = require.requireMock('../../Link').default;
+
+  afterEach(() => {
+    Intl.mockReset();
+    Link.mockReset();
+  });
   it('returns the right context without arguments', () => {
     const context = createPolarisContext();
-    const mockContext = {
+
+    expect(context).toMatchObject({
       polaris: {
-        intl: new Intl(undefined),
-        link: new Link(),
-        stickyManager: new StickyManager(),
-        scrollLockManager: new ScrollLockManager(),
+        intl: expect.any(Intl),
+        link: expect.any(Link),
+        stickyManager: expect.any(StickyManager),
+        scrollLockManager: expect.any(ScrollLockManager),
         subscribe: noop,
         unsubscribe: noop,
         appBridge: undefined,
@@ -24,9 +40,7 @@ describe('createPolarisContext()', () => {
         subscribe: noop,
         unsubscribe: noop,
       },
-    };
-
-    expect(context).toEqual(mockContext);
+    });
   });
 
   it('returns the right context with app provider and theme provider context provided', () => {
@@ -140,12 +154,12 @@ describe('createPolarisContext()', () => {
       unsubscribe: mockUnsubscribe,
     });
 
-    const mockContext = {
+    expect(context).toMatchObject({
       polaris: {
-        intl: new Intl(undefined),
-        link: new Link(),
-        stickyManager: new StickyManager(),
-        scrollLockManager: new ScrollLockManager(),
+        intl: expect.any(Intl),
+        link: expect.any(Link),
+        stickyManager: expect.any(StickyManager),
+        scrollLockManager: expect.any(ScrollLockManager),
         subscribe: noop,
         unsubscribe: noop,
         appBridge: undefined,
@@ -155,8 +169,6 @@ describe('createPolarisContext()', () => {
         subscribe: mockSubscribe,
         unsubscribe: mockUnsubscribe,
       },
-    };
-
-    expect(context).toEqual(mockContext);
+    });
   });
 });

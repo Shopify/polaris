@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import Item from '../Item';
 import {TabDescriptor} from '../../types';
@@ -42,11 +41,10 @@ export default class List extends React.PureComponent<Props, never> {
     );
   }
 
-  @autobind
-  private handleKeypress(event: React.KeyboardEvent<HTMLElement>) {
+  private handleKeypress = (event: React.KeyboardEvent<HTMLElement>) => {
     const {onKeyPress = noop} = this.props;
     onKeyPress(event);
-  }
+  };
 }
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
