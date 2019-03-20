@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const {execSync} = require('child_process');
 const {readFileSync} = require('fs');
-const {resolve} = require('path');
+const path = require('path');
 const {mkdir} = require('shelljs');
 const yaml = require('js-yaml');
 const semver = require('semver');
@@ -13,11 +13,11 @@ const retry = require('./utilities/retry');
 const repositories = ['polaris-styleguide', 'web'];
 
 const YARN_VERSION = yaml
-  .safeLoad(readFileSync(resolve(__dirname, '..', 'dev.yml'), 'utf8'))
+  .safeLoad(readFileSync(path.resolve(__dirname, '..', 'dev.yml'), 'utf8'))
   .up.find((obj) => Object.keys(obj).includes('node')).node.yarn;
 
-const root = resolve(__dirname, '../');
-const sandbox = resolve(root, 'sandbox');
+const root = path.resolve(__dirname, '../');
+const sandbox = path.resolve(root, 'sandbox');
 
 const releaseVersion = `v${PACKAGE_VERSION}`;
 
@@ -90,57 +90,65 @@ The automatic branch creation for ${repository} failed. This can be due to many 
 
 mkdir(sandbox);
 
-repositories.forEach((repository) => {
-  try {
-    const repositoryDirectory = resolve(sandbox, repository);
+const jobs = repositories.map((repository) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const repositoryDirectory = path.resolve(sandbox, repository);
 
-    // Clone into the sandbox directory
-    retry(
-      execSync(
-        `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
-        {
-          cwd: sandbox,
-          stdio: 'inherit',
-        },
-      ),
-    );
-
-    const commands = [
-      `git checkout -b update-polaris-${releaseVersion}`,
-      `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
-        'v',
-        '',
-      )} --no-progress --ignore-engines`,
-      `git add package.json yarn.lock`,
-      `${shopifyPolarisBotGitOverride} git commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
-      `git push origin update-polaris-${releaseVersion}`,
-      `curl -d '${JSON.stringify({
-        title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
-        body: pullRequestTemplate(repository, releaseVersion),
-        head: `update-polaris-${releaseVersion}`,
-        base: baseBranch,
-      })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
-    ];
-
-    // Run the commands in the cloned repository directories
-    commands.forEach((command) => {
-      retry(
-        execSync(command, {
-          cwd: repositoryDirectory,
-          stdio: 'inherit',
-        }),
+      // Clone into the sandbox directory
+      await retry(
+        execSync(
+          `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
+          {
+            cwd: sandbox,
+            stdio: 'inherit',
+          },
+        ),
       );
-    });
 
-    console.log(
-      `Pull request made in shopify/${repository} for version ${releaseVersion}`,
-    );
-  } catch (error) {
-    const errorMessage = `${error}\n\n${failedUpdateMessage(
-      repository,
-      releaseVersion,
-    )}`;
-    console.error(errorMessage);
-    process.exit(0);
-  }
+      const commands = [
+        `git checkout -b update-polaris-${releaseVersion}`,
+        `npx yarn@${YARN_VERSION} upgrade @shopify/polaris@${releaseVersion.replace(
+          'v',
+          '',
+        )} --no-progress --ignore-engines`,
+        `git add package.json yarn.lock`,
+        `${shopifyPolarisBotGitOverride} git commit -m "Update @shopify/polaris to ${releaseVersion}" --author "${polarisBotName} <${polarisBotEmail}>" -m "${releaseVersion}" --allow-empty`,
+        `git push origin update-polaris-${releaseVersion}`,
+        `curl -d '${JSON.stringify({
+          title: `Update @shopify/polaris to ${releaseVersion} 🚀`,
+          body: pullRequestTemplate(repository, releaseVersion),
+          head: `update-polaris-${releaseVersion}`,
+          base: baseBranch,
+        })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
+      ];
+
+      // Run the commands in the cloned repository directories
+      commands.forEach(async (command) => {
+        await retry(
+          execSync(command, {
+            cwd: repositoryDirectory,
+            stdio: 'inherit',
+          }),
+        );
+      });
+
+      resolve(
+        `Pull request made in shopify/${repository} for version ${releaseVersion}`,
+      );
+    } catch (error) {
+      const errorMessage = `${error}\n\n${failedUpdateMessage(
+        repository,
+        releaseVersion,
+      )}`;
+      reject(errorMessage);
+    }
+  });
 });
+
+Promise.all(jobs)
+  .then((result) => console.log(result))
+  .catch((error) => {
+    console.error(error);
+    process.exit(0);
+  });
