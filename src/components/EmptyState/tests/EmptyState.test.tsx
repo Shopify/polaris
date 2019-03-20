@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {Image, DisplayText, TextContainer} from 'components';
+import {Image, DisplayText, TextContainer, Link} from 'components';
 import EmptyState from '../EmptyState';
 
 describe('<EmptyState />', () => {
@@ -13,7 +13,8 @@ describe('<EmptyState />', () => {
       'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
     footerContentMarkup = (
       <p>
-        Import inventory from <a href="/settings">settings</a>
+        If you don’t want to add a transfer, you can import your inventory from{' '}
+        <Link url="/settings">settings</Link>.
       </p>
     );
 
@@ -37,7 +38,7 @@ describe('<EmptyState />', () => {
     expect(emptyState.find('button').contains('Add transfer')).toBe(true);
   });
 
-  it('renders children and footer', () => {
+  it('renders children and footer context', () => {
     expect(emptyState.find(TextContainer)).toHaveLength(2);
   });
 
@@ -70,13 +71,19 @@ describe('<EmptyState />', () => {
     });
   });
 
-  describe('footer', () => {
+  describe('footer context', () => {
     it('passes the provided content to TextContainer', () => {
       const footerContentTextField = emptyState.find(TextContainer).last();
 
       expect(footerContentTextField.text()).toContain(
-        'Import inventory from settings',
+        'If you don’t want to add a transfer, you can import your inventory from settings.',
       );
+    });
+
+    it('renders a link', () => {
+      const footerContentTextField = emptyState.find(TextContainer).last();
+
+      expect(footerContentTextField.find(Link).contains('settings')).toBe(true);
     });
   });
 });

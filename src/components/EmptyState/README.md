@@ -163,7 +163,7 @@ Use to explain a single feature before merchants have used it.
 </EmptyState>
 ```
 
-### Empty state with subdued footer
+### Empty state with subdued footer context
 
 Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
 
