@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import Icon from '../../../../../../Icon';
 import UnstyledLink from '../../../../../../UnstyledLink';
@@ -7,7 +8,7 @@ import Action from '../Action';
 describe('<Action />', () => {
   describe('icon', () => {
     it('renders the given icon', () => {
-      const icon = 'save';
+      const icon = SaveMinor;
       const action = mountWithAppProvider(<Action icon={icon} />);
       expect(action.find(Icon).prop('source')).toBe(icon);
     });
@@ -69,7 +70,7 @@ describe('<Action />', () => {
     it('gets rendered when an icon is present', () => {
       const children = 'Click me!';
       const action = mountWithAppProvider(
-        <Action icon="save">{children}</Action>,
+        <Action icon={SaveMinor}>{children}</Action>,
       );
       expect(action.contains(children)).toBeTruthy();
     });

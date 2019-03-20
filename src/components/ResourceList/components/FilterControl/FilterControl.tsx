@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {SearchMinor} from '@shopify/polaris-icons';
 import compose from '@shopify/react-compose';
 import {ComplexAction, WithContextTypes} from '../../../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
@@ -97,7 +98,7 @@ export class FilterControl extends React.Component<CombinedProps> {
           label={textFieldLabel}
           labelHidden
           placeholder={textFieldLabel}
-          prefix={<Icon source="search" color="skyDark" />}
+          prefix={<Icon source={SearchMinor} color="skyDark" />}
           value={searchValue}
           onChange={onSearchChange}
           onBlur={onSearchBlur}
