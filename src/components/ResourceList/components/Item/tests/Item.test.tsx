@@ -196,6 +196,21 @@ describe('<Item />', () => {
       expect(spy).toBeCalledWith(url, '_blank');
     });
 
+    it('calls onClick when hitting keyUp on the item when onClick and URL exists', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url="#" onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Enter',
+      });
+
+      expect(onClick).toHaveBeenCalled();
+    });
+
     it('calls window.open on ctrlKey + click', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
