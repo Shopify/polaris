@@ -16,6 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Changed max width on `Search` to 694px so that it is perfectly centered in the top bar ([#1107](https://github.com/Shopify/polaris-react/issues/1107))
 - Added `action` prop to `Toast` ([#919](https://github.com/Shopify/polaris-react/pull/919))
 - Remove all usage of `@shopify/javascript-utilities/decorators`, namely `autobind`, `debounce`, and `memoize` ([#1148](https://github.com/Shopify/polaris-react/issues/1148))
+- Added `Empty State` footerContent prop ([#1200](https://github.com/Shopify/polaris-react/pull/1200))
 
 ### Bug fixes
 
