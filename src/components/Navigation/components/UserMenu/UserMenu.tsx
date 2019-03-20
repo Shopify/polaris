@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {UserMenuModifier} from '../../../TopBar';
 import {IconableAction} from '../../../../types';
 import {Props as MessageProps} from '../Message';
@@ -62,11 +61,10 @@ class UserMenu extends React.Component<Props, State> {
     return <UserMenuModifier userMenuProps={userMenuProps} />;
   }
 
-  @autobind
-  private handleToggle() {
+  private handleToggle = () => {
     const {open} = this.state;
     this.setState({open: !open});
-  }
+  };
 }
 
 export default UserMenu;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {
   DisableableAction,
@@ -182,8 +181,7 @@ class Header extends React.PureComponent<CombinedProps, State> {
     return secondaryActions.length + actionGroups.length >= 1;
   }
 
-  @autobind
-  private renderRollupAction() {
+  private renderRollupAction = () => {
     const {rollupOpen} = this.state;
     const {secondaryActions = [], actionGroups = []} = this.props;
     const rollupMarkup = this.hasRollup ? (
@@ -209,10 +207,9 @@ class Header extends React.PureComponent<CombinedProps, State> {
     ) : null;
 
     return rollupMarkup;
-  }
+  };
 
-  @autobind
-  private renderSecondaryActions() {
+  private renderSecondaryActions = () => {
     const {openActionGroup} = this.state;
     const {secondaryActions = [], actionGroups = []} = this.props;
 
@@ -253,25 +250,22 @@ class Header extends React.PureComponent<CombinedProps, State> {
         </div>
       </div>
     );
-  }
+  };
 
-  @autobind
-  private handleRollupToggle() {
+  private handleRollupToggle = () => {
     this.setState(({rollupOpen}) => ({rollupOpen: !rollupOpen}));
-  }
+  };
 
-  @autobind
-  private handleActionGroupClose(group: string) {
+  private handleActionGroupClose = (group: string) => {
     this.setState(
       ({openActionGroup}) =>
         openActionGroup === group ? {openActionGroup: undefined} : {},
     );
-  }
+  };
 
-  @autobind
-  private handleActionGroupOpen(group: string) {
+  private handleActionGroupOpen = (group: string) => {
     this.setState({openActionGroup: group});
-  }
+  };
 }
 
 function convertActionGroupToActionListSection({

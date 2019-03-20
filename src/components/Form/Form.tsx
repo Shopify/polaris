@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import VisuallyHidden from '../VisuallyHidden';
 
@@ -77,8 +76,7 @@ export default class Form extends React.PureComponent<Props> {
     );
   }
 
-  @autobind
-  private handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const {preventDefault = true, onSubmit} = this.props;
 
     if (!preventDefault) {
@@ -87,7 +85,7 @@ export default class Form extends React.PureComponent<Props> {
 
     event.preventDefault();
     onSubmit(event);
-  }
+  };
 }
 
 function normalizeAutoComplete(autoComplete?: boolean) {

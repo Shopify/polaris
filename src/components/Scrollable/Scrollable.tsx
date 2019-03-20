@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
+import debounce from 'lodash/debounce';
 import {
   addEventListener,
   removeEventListener,
@@ -63,6 +63,14 @@ class Scrollable extends React.Component<CombinedProps, State> {
   };
 
   private scrollArea: HTMLElement | null;
+
+  private handleResize = debounce(
+    () => {
+      this.handleScroll();
+    },
+    50,
+    {trailing: true},
+  );
 
   getChildContext(): Context {
     return {
@@ -139,13 +147,11 @@ class Scrollable extends React.Component<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private setScrollArea(scrollArea: HTMLElement | null) {
+  private setScrollArea = (scrollArea: HTMLElement | null) => {
     this.scrollArea = scrollArea;
-  }
+  };
 
-  @autobind
-  private handleScroll() {
+  private handleScroll = () => {
     const {scrollArea} = this;
     const {shadow, onScrolledToBottom} = this.props;
     if (scrollArea == null) {
@@ -169,16 +175,9 @@ class Scrollable extends React.Component<CombinedProps, State> {
       bottomShadow: shouldBottomShadow,
       scrollPosition: scrollTop,
     });
-  }
+  };
 
-  @autobind
-  @debounce(50, {trailing: true})
-  private handleResize() {
-    this.handleScroll();
-  }
-
-  @autobind
-  private scrollHint() {
+  private scrollHint = () => {
     const {scrollArea} = this;
     if (scrollArea == null) {
       return;
@@ -205,10 +204,9 @@ class Scrollable extends React.Component<CombinedProps, State> {
         window.requestAnimationFrame(this.scrollStep);
       },
     );
-  }
+  };
 
-  @autobind
-  private scrollStep() {
+  private scrollStep = () => {
     this.setState(
       ({scrollPosition}) => {
         const delta = scrollPosition * DELTA_PERCENTAGE;
@@ -224,7 +222,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
         }
       },
     );
-  }
+  };
 
   private toggleLock(shouldLock = true) {
     const {scrollArea} = this;
@@ -241,10 +239,9 @@ class Scrollable extends React.Component<CombinedProps, State> {
     });
   }
 
-  @autobind
-  private scrollToPosition(scrollY: number) {
+  private scrollToPosition = (scrollY: number) => {
     this.setState({scrollPosition: scrollY});
-  }
+  };
 }
 
 function prevent(evt: Event) {

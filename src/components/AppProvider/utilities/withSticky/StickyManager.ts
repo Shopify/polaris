@@ -1,4 +1,4 @@
-import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
+import debounce from 'lodash/debounce';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {
   addEventListener,
@@ -34,6 +34,22 @@ export default class StickyManager {
   private container: Document | HTMLElement;
   private topBarOffset = 0;
 
+  private handleResize = debounce(
+    () => {
+      this.manageStickyItems();
+    },
+    40,
+    {leading: true, trailing: true, maxWait: 40},
+  );
+
+  private handleScroll = debounce(
+    () => {
+      this.manageStickyItems();
+    },
+    40,
+    {leading: true, trailing: true, maxWait: 40},
+  );
+
   constructor(container?: Document | HTMLElement) {
     if (container) {
       this.setContainer(container);
@@ -66,18 +82,6 @@ export default class StickyManager {
       removeEventListener(this.container, 'scroll', this.handleScroll);
       removeEventListener(window, 'resize', this.handleResize);
     }
-  }
-
-  @debounce(40, {leading: true, trailing: true, maxWait: 40})
-  @autobind
-  private handleResize() {
-    this.manageStickyItems();
-  }
-
-  @debounce(40, {leading: true, trailing: true, maxWait: 40})
-  @autobind
-  private handleScroll() {
-    this.manageStickyItems();
   }
 
   private manageStickyItems() {

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {hsbToRgb} from '../../utilities/color-transformers';
 import {HSBColor, HSBAColor} from '../../utilities/color-types';
@@ -89,31 +88,27 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     );
   }
 
-  @autobind
-  private setColorNode(node: HTMLElement | null) {
+  private setColorNode = (node: HTMLElement | null) => {
     this.colorNode = node;
-  }
+  };
 
-  @autobind
-  private handleHueChange(hue: number) {
+  private handleHueChange = (hue: number) => {
     const {
       color: {brightness, saturation, alpha = 1},
       onChange,
     } = this.props;
     onChange({hue, brightness, saturation, alpha});
-  }
+  };
 
-  @autobind
-  private handleAlphaChange(alpha: number) {
+  private handleAlphaChange = (alpha: number) => {
     const {
       color: {hue, brightness, saturation},
       onChange,
     } = this.props;
     onChange({hue, brightness, saturation, alpha});
-  }
+  };
 
-  @autobind
-  private handleDraggerMove({x, y}: Position) {
+  private handleDraggerMove = ({x, y}: Position) => {
     const {pickerSize} = this.state;
     const {
       color: {hue, alpha = 1},
@@ -124,5 +119,5 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     const brightness = clamp(1 - y / pickerSize, 0, 1);
 
     onChange({hue, saturation, brightness, alpha});
-  }
+  };
 }
