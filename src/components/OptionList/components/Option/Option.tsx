@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {Props as IconProps} from '../../../Icon';
 import {Props as ThumbnailProps} from '../../../Thumbnail';
@@ -114,8 +113,7 @@ export default class Option extends React.Component<Props, State> {
     );
   }
 
-  @autobind
-  private handleClick() {
+  private handleClick = () => {
     const {onClick, section, index, disabled} = this.props;
 
     if (disabled) {
@@ -123,10 +121,9 @@ export default class Option extends React.Component<Props, State> {
     }
 
     onClick(section, index);
-  }
+  };
 
-  @autobind
-  private toggleFocus() {
+  private toggleFocus = () => {
     this.setState((prevState) => ({focused: !prevState.focused}));
-  }
+  };
 }

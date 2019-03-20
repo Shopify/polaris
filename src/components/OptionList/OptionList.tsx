@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {arraysAreEqual} from '../../utilities/arrays';
@@ -166,8 +165,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private handleClick(sectionIndex: number, optionIndex: number) {
+  private handleClick = (sectionIndex: number, optionIndex: number) => {
     const {selected, onChange, allowMultiple} = this.props;
     const selectedValue = this.state.normalizedOptions[sectionIndex].options[
       optionIndex
@@ -185,7 +183,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
       return;
     }
     onChange([selectedValue]);
-  }
+  };
 }
 
 function createNormalizedOptions(

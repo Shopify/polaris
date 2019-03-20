@@ -1,4 +1,8 @@
-export {default as Toast, DEFAULT_TOAST_DURATION} from './Toast';
+export {
+  default as Toast,
+  DEFAULT_TOAST_DURATION,
+  DEFAULT_TOAST_DURATION_WITH_ACTION,
+} from './Toast';
 export {
   default as ToastManager,
   Props as ToastManagerProps,

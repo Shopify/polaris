@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
 import {DisableableAction, WithContextTypes} from '../../../../types';
@@ -262,28 +261,23 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private setNode(node: HTMLElement | null) {
+  private setNode = (node: HTMLElement | null) => {
     this.node = node;
-  }
+  };
 
-  @autobind
-  private handleAnchorFocus() {
+  private handleAnchorFocus = () => {
     this.setState({focused: true, focusedInner: false});
-  }
+  };
 
-  @autobind
-  private handleFocusedBlur() {
+  private handleFocusedBlur = () => {
     this.setState({focused: true, focusedInner: true});
-  }
+  };
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({focused: true});
-  }
+  };
 
-  @autobind
-  private handleBlur(event: React.FocusEvent<HTMLElement>) {
+  private handleBlur = (event: React.FocusEvent<HTMLElement>) => {
     const isInside = this.compareEventNode(event);
     if (
       this.node == null ||
@@ -293,21 +287,18 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     } else if (isInside) {
       this.setState({focusedInner: true});
     }
-  }
+  };
 
-  @autobind
-  private handleMouseDown() {
+  private handleMouseDown = () => {
     this.setState({focusedInner: true});
-  }
+  };
 
-  @autobind
-  private handleLargerSelectionArea(event: React.MouseEvent<any>) {
+  private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
     stopPropagation(event);
     this.handleSelection(!this.isSelected());
-  }
+  };
 
-  @autobind
-  private handleSelection(value: boolean) {
+  private handleSelection = (value: boolean) => {
     const {
       id,
       context: {onSelectionChange},
@@ -317,10 +308,9 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     }
     this.setState({focused: true, focusedInner: true});
     onSelectionChange(value, id);
-  }
+  };
 
-  @autobind
-  private handleClick(event: React.MouseEvent<any>) {
+  private handleClick = (event: React.MouseEvent<any>) => {
     stopPropagation(event);
     const {
       id,
@@ -352,11 +342,10 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     if (url && anchor) {
       anchor.click();
     }
-  }
+  };
 
   // This fires onClick when there is a URL on the item
-  @autobind
-  private handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
+  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     const {
       onClick = noop,
       context: {selectMode},
@@ -366,19 +355,17 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     if (key === 'Enter' && this.props.url && !selectMode) {
       onClick();
     }
-  }
+  };
 
-  @autobind
-  private handleActionsClick() {
+  private handleActionsClick = () => {
     this.setState(({actionsMenuVisible}) => ({
       actionsMenuVisible: !actionsMenuVisible,
     }));
-  }
+  };
 
-  @autobind
-  private handleCloseRequest() {
+  private handleCloseRequest = () => {
     this.setState({actionsMenuVisible: false});
-  }
+  };
 
   private isSelected() {
     const {

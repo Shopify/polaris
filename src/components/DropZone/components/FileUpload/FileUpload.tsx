@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
+import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
 import {WithContextTypes} from '../../../../types';
 import compose from '../../../../utilities/react-compose';
@@ -16,7 +17,6 @@ import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
 
 import {DropZoneContext} from '../../types';
-import {DragDropMajorMonotone} from '../../../../icons';
 import {fileUpload, imageUpload} from '../../images';
 
 import {Consumer} from '../Context';

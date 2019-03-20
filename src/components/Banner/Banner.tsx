@@ -1,5 +1,12 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {
+  CircleTickMajorTwotone,
+  FlagMajorTwotone,
+  CircleAlertMajorTwotone,
+  CircleDisabledMajorTwotone,
+  CircleInformationMajorTwotone,
+} from '@shopify/polaris-icons';
 
 import {
   Action,
@@ -12,14 +19,6 @@ import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
-
-import {
-  CircleTickMajorTwotone,
-  FlagMajorTwotone,
-  CircleAlertMajorTwotone,
-  CircleDisabledMajorTwotone,
-  CircleInformationMajorTwotone,
-} from '../../icons';
 
 import styles from './Banner.scss';
 
