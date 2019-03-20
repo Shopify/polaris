@@ -211,6 +211,36 @@ describe('<Item />', () => {
       expect(onClick).toHaveBeenCalled();
     });
 
+    it('does not call onClick when hitting keyUp on non Enter key', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url="#" onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Tab',
+      });
+
+      expect(onClick).not.toBeCalled();
+    });
+
+    it('does not call onClick when hitting keyUp on the item when no URL or onClick exists', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Enter',
+      });
+
+      expect(onClick).not.toBeCalled();
+    });
+
     it('calls window.open on ctrlKey + click', () => {
       const wrapper = mountWithAppProvider(
         <Provider value={mockDefaultContext}>
