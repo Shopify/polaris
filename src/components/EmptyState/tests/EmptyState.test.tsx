@@ -73,7 +73,7 @@ describe('<EmptyState />', () => {
 
   describe('footer context', () => {
     it('passes the provided content to TextContainer', () => {
-      const footerContentTextField = emptyState.find(TextContainer).last();
+      const footerContentTextContainer = emptyState.find(TextContainer).last();
 
       expect(footerContentTextContainer.text()).toContain(
         'If you don’t want to add a transfer, you can import your inventory from settings.',
