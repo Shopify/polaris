@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {layer} from '../../../shared';
@@ -27,8 +26,7 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
     return markup;
   }
 
-  @autobind
-  private renderOverlay() {
+  private renderOverlay = () => {
     const {active, activator, preferredPosition = 'below'} = this.props;
 
     return (
@@ -39,10 +37,9 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
         render={this.renderTooltip}
       />
     );
-  }
+  };
 
-  @autobind
-  private renderTooltip(overlayDetails: OverlayDetails) {
+  private renderTooltip = (overlayDetails: OverlayDetails) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {id, children, light} = this.props;
@@ -70,5 +67,5 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
         </div>
       </div>
     );
-  }
+  };
 }

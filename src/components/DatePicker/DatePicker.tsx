@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {
   Range,
   Months,
@@ -187,18 +186,15 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private handleFocus(date: Date) {
+  private handleFocus = (date: Date) => {
     this.setState({focusDate: date});
-  }
+  };
 
-  @autobind
-  private resetFocus() {
+  private resetFocus = () => {
     this.setState({focusDate: undefined});
-  }
+  };
 
-  @autobind
-  private handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
+  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     const {key} = event;
     const {selected, disableDatesBefore, disableDatesAfter} = this.props;
 
@@ -245,10 +241,9 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
         this.setFocusDateAndHandleMonthChange(yesterday);
       }
     }
-  }
+  };
 
-  @autobind
-  private setFocusDateAndHandleMonthChange(date: Date) {
+  private setFocusDateAndHandleMonthChange = (date: Date) => {
     const {onMonthChange} = this.props;
     if (onMonthChange) {
       onMonthChange(date.getMonth(), date.getFullYear());
@@ -257,20 +252,18 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
       hoverDate: date,
       focusDate: date,
     });
-  }
+  };
 
-  @autobind
-  private handleDateSelection(range: Range) {
+  private handleDateSelection = (range: Range) => {
     const {end} = range;
     const {onChange = noop} = this.props;
 
     this.setState({hoverDate: end, focusDate: new Date(end)}, () =>
       onChange(range),
     );
-  }
+  };
 
-  @autobind
-  private handleMonthChangeClick(month: Months, year: Year) {
+  private handleMonthChangeClick = (month: Months, year: Year) => {
     const {onMonthChange} = this.props;
     if (!onMonthChange) {
       return;
@@ -280,14 +273,13 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     });
 
     onMonthChange(month, year);
-  }
+  };
 
-  @autobind
-  private handleHover(date: Date) {
+  private handleHover = (date: Date) => {
     this.setState({
       hoverDate: date,
     });
-  }
+  };
 }
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {

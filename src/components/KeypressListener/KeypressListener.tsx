@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {
   addEventListener,
   removeEventListener,
@@ -24,12 +23,11 @@ export default class KeypressListener extends React.Component<Props, never> {
     return null;
   }
 
-  @autobind
-  private handleKeyEvent(event: KeyboardEvent) {
+  private handleKeyEvent = (event: KeyboardEvent) => {
     const {keyCode, handler} = this.props;
 
     if (event.keyCode === keyCode) {
       handler(event);
     }
-  }
+  };
 }
