@@ -71,7 +71,7 @@ describe('<EmptyState />', () => {
     });
   });
 
-  describe('footer context', () => {
+  describe('footerContent', () => {
     it('passes the provided content to TextContainer', () => {
       const footerContentTextContainer = emptyState.find(TextContainer).last();
 
