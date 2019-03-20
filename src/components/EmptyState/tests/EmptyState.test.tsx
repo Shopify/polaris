@@ -38,7 +38,7 @@ describe('<EmptyState />', () => {
     expect(emptyState.find('button').contains('Add transfer')).toBe(true);
   });
 
-  it('renders children and footer context', () => {
+  it('renders children and footer content', () => {
     expect(emptyState.find(TextContainer)).toHaveLength(2);
   });
 
