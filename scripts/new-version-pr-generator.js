@@ -96,15 +96,15 @@ const jobs = repositories.map((repository) => {
       const repositoryDirectory = path.resolve(sandbox, repository);
 
       // Clone into the sandbox directory
-      await retry(
+      await retry(() => {
         execSync(
           `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
           {
             cwd: sandbox,
             stdio: 'inherit',
           },
-        ),
-      );
+        );
+      });
 
       const commands = [
         `git checkout -b update-polaris-${releaseVersion}`,
@@ -125,12 +125,12 @@ const jobs = repositories.map((repository) => {
 
       // Run the commands in the cloned repository directories
       commands.forEach(async (command) => {
-        await retry(
+        await retry(() => {
           execSync(command, {
             cwd: repositoryDirectory,
             stdio: 'inherit',
-          }),
-        );
+          });
+        });
       });
 
       resolve(
