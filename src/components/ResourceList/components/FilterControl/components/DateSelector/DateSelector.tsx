@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {CalendarMinor} from '@shopify/polaris-icons';
 import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
 import Select from '../../../../../Select';
 import TextField from '../../../../../TextField';
@@ -96,7 +96,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
             )}
             value={this.dateTextFieldValue}
             error={userInputDateError}
-            prefix={<Icon source="calendar" color="skyDark" />}
+            prefix={<Icon source={CalendarMinor} color="skyDark" />}
             autoComplete={false}
             onChange={this.handleDateFieldChange}
             onBlur={this.handleDateBlur}
@@ -256,8 +256,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     }
   }
 
-  @autobind
-  private handleDateFilterOptionsChange(newOption: string) {
+  private handleDateFilterOptionsChange = (newOption: string) => {
     const {
       onFilterValueChange,
       onFilterKeyChange,
@@ -292,10 +291,9 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
 
     onFilterKeyChange(initialConsumerFilterKey);
     onFilterValueChange(newOption);
-  }
+  };
 
-  @autobind
-  private handleDateFieldChange(value: string) {
+  private handleDateFieldChange = (value: string) => {
     const {onFilterValueChange} = this.props;
     const {userInputDateError} = this.state;
 
@@ -319,10 +317,9 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     this.setState({
       userInputDate: value,
     });
-  }
+  };
 
-  @autobind
-  private handleDateBlur() {
+  private handleDateBlur = () => {
     const {
       polaris: {intl},
       onFilterValueChange,
@@ -359,7 +356,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       },
       this.handleDateChanged,
     );
-  }
+  };
 
   private handleDateChanged() {
     const {onFilterValueChange} = this.props;
@@ -373,8 +370,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private handleDatePickerChange({end: nextDate}: Range) {
+  private handleDatePickerChange = ({end: nextDate}: Range) => {
     this.setState(
       {
         selectedDate: new Date(nextDate),
@@ -383,12 +379,11 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
       },
       this.handleDateChanged,
     );
-  }
+  };
 
-  @autobind
-  private handleDatePickerMonthChange(month: Months, year: Year) {
+  private handleDatePickerMonthChange = (month: Months, year: Year) => {
     this.setState({datePickerMonth: month, datePickerYear: year});
-  }
+  };
 }
 
 function isValidDate(date?: string) {

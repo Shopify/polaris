@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import Slidable, {Position} from '../Slidable';
 import styles from '../../ColorPicker.scss';
 import {calculateDraggerY, hueForDraggerY} from './utilities';
@@ -37,8 +36,7 @@ export default class HuePicker extends React.PureComponent<Props, State> {
     );
   }
 
-  @autobind
-  private setSliderHeight(node: HTMLElement | null) {
+  private setSliderHeight = (node: HTMLElement | null) => {
     if (node == null) {
       return;
     }
@@ -50,20 +48,18 @@ export default class HuePicker extends React.PureComponent<Props, State> {
         this.setState({sliderHeight: node.clientHeight});
       }, 0);
     }
-  }
+  };
 
-  @autobind
-  private setDraggerHeight(height: number) {
+  private setDraggerHeight = (height: number) => {
     this.setState({
       draggerHeight: height,
     });
-  }
+  };
 
-  @autobind
-  private handleChange({y}: Position) {
+  private handleChange = ({y}: Position) => {
     const {onChange} = this.props;
     const {sliderHeight} = this.state;
     const hue = hueForDraggerY(y, sliderHeight);
     onChange(hue);
-  }
+  };
 }

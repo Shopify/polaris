@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {
   focusFirstFocusableNode,
@@ -64,13 +63,11 @@ export default class TrapFocus extends React.PureComponent<Props, State> {
     return shouldFocusSelf ? !trapping : !shouldFocusSelf;
   }
 
-  @autobind
-  private setFocusTrapWrapper(node: HTMLDivElement) {
+  private setFocusTrapWrapper = (node: HTMLDivElement) => {
     this.focusTrapWrapper = node;
-  }
+  };
 
-  @autobind
-  private handleBlur(event: FocusEvent) {
+  private handleBlur = (event: FocusEvent) => {
     const {relatedTarget} = event;
     const {focusTrapWrapper} = this;
     const {trapping = true} = this.props;
@@ -91,5 +88,5 @@ export default class TrapFocus extends React.PureComponent<Props, State> {
       }
       focusFirstFocusableNode(focusTrapWrapper);
     }
-  }
+  };
 }
