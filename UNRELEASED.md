@@ -17,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added `action` prop to `Toast` ([#919](https://github.com/Shopify/polaris-react/pull/919))
 - Remove all usage of `@shopify/javascript-utilities/decorators`, namely `autobind`, `debounce`, and `memoize` ([#1148](https://github.com/Shopify/polaris-react/issues/1148))
 - Added `Empty State` footerContent prop ([#1200](https://github.com/Shopify/polaris-react/pull/1200))
+- Added viewport condition to `TopBar` to enlarge the `contextControl` wrapper on wider screens ([#1231](https://github.com/Shopify/polaris-react/pull/1231))
 
 ### Bug fixes
 
