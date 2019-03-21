@@ -7,7 +7,6 @@ import {
 } from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {create} from '@storybook/theming';
-import createPercyAddon from '@percy-io/percy-storybook';
 import tokens from '@shopify/polaris-tokens';
 
 import {
@@ -47,10 +46,6 @@ setConsoleOptions((opts) => {
   return opts;
 });
 
-// percy-storybook
-const {percyAddon, serializeStories} = createPercyAddon();
-setAddon(percyAddon);
-
 // import all README.md files within component folders
 const readmeReq = require.context(
   '../src/components',
@@ -67,5 +62,3 @@ function loadStories() {
 }
 
 configure(loadStories, module);
-
-serializeStories(getStorybook);

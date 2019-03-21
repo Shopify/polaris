@@ -58,6 +58,10 @@ async function runPa11y() {
   // so that Percy's script knows what stories exist. Piggybacking off that is
   // kinda fragile as they may change that output but it gives us what we need
   // for now
+  //
+  // TODO for Shopify: Percy doesn't inject window.__storybook_stories__ as of 3.0.0-beta.0.
+  // Instead look at window[__STORYBOOK_CLIENT_API__].raw() for a flat list of stories
+  //
   const stories = await page
     .goto(iframePath)
     .then(() => page.evaluate(() => window.__storybook_stories__));

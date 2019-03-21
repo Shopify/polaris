@@ -1162,10 +1162,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
   integrity sha512-LAQ1d4OPfSJ/BMbI2DuizmYrrkD9JMaTdi2hQTlI53lQ4kRQPyZQRS4CYQ7O66bnBBnP/oYdRxbk++X0xuFU6A==
 
-"@percy-io/percy-storybook@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@percy-io/percy-storybook/-/percy-storybook-2.1.0.tgz#d0ddd081e0b2851e1e47c2b5a7b8aefd9ee5afdc"
-  integrity sha512-UozRqneH919N4VdAGhFlMppFwj1cR3mNlCtIMCfpd3bMdxLDLyYcrtsHlb3Xjv3icVJupZ23JS+uvoLGPOi3YQ==
+"@percy-io/percy-storybook@3.0.0-beta.0":
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@percy-io/percy-storybook/-/percy-storybook-3.0.0-beta.0.tgz#2a6b154cf0c28c51a2fe02fac58b51537430dbb1"
+  integrity sha512-aGwbQnG6F9WoyGfYa+cU+bIFIqxUqqNFS4jI7eAkJpD2PR9wTQZNyGb/3AsK4H/2qZsOUVkyBvx4UVL50A8imQ==
   dependencies:
     "@percy/react-percy-api-client" "^0.4.6"
     babel-runtime "^6.26.0"

@@ -30,10 +30,10 @@ export function generateStories(readme, readmeModule) {
   storiesOf(`All Components|${readme.name}`, readmeModule)
     .addDecorator(AppProviderDecorator)
     .addDecorator(withA11y)
-    .addWithPercyOptions(
+    .add(
       'All Examples',
-      percyOptions({skip: testIndividualExamples}),
       () => AllExamplesStoryForReadme(readme),
+      {percy: {skip: testIndividualExamples}},
     );
 
   readme.examples.forEach((example) => {
@@ -47,8 +47,8 @@ export function generateStories(readme, readmeModule) {
       })
       .addWithPercyOptions(
         example.name,
-        percyOptions({skip: !testIndividualExamples}),
         () => <example.Component />,
+        {percy: {skip: !testIndividualExamples}},
       );
   });
 }
