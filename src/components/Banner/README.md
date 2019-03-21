@@ -504,7 +504,7 @@ class ModalExample extends React.Component {
 
 <!-- example-for: web -->
 
-Banner with focus receives focus programmatically when it appears. Use this component to communicate problems that merchants need to resolve before they can complete a task.
+Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
 
 ```jsx
 class ModalExample extends React.Component {
