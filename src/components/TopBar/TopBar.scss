@@ -39,7 +39,7 @@ $context-control-expand-after: 1400px;
     display: block;
   }
 
-  @include breakpoint-after($context-control-expend-after) {
+  @include breakpoint-after($context-control-expand-after) {
     width: layout-width(nav) + $context-control-extra-spacing;
   }
 }
