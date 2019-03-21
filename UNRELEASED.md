@@ -40,6 +40,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Replaced all occurrences of `_.merge` with a custom `merge` function ([#1018](https://github.com/Shopify/polaris-react/pull/1018))
 - Replaced all occurrences of `_.pick` with a custom pick function ([#1020](https://github.com/Shopify/polaris-react/pull/1020))
 - Deleted the icons index file that would re-export icons, and replaced it with direct imports ([#1195](https://github.com/Shopify/polaris-react/pull/1195))
 - Replaces all instances where we pass a string representing a bundled icon into `Icon`. Prefer passing in the React Component from `@shopify/polaris-icons` ([#1196](https://github.com/Shopify/polaris-react/pull/1196))
