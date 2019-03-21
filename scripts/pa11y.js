@@ -61,6 +61,8 @@ async function runPa11y() {
   //
   // TODO for Shopify: Percy doesn't inject window.__storybook_stories__ as of 3.0.0-beta.0.
   // Instead look at window[__STORYBOOK_CLIENT_API__].raw() for a flat list of stories
+  // This is provided by Storybook's own client API here:
+  // https://github.com/storybooks/storybook/blob/next/lib/client-api/src/client_api.js#L251
   //
   const stories = await page
     .goto(iframePath)
