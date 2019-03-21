@@ -101,6 +101,29 @@ describe('<BulkActions />', () => {
     });
   });
 
+  describe('loading', () => {
+    it('disables buttons', () => {
+      const bulkActionsElement = mountWithAppProvider(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[
+            {
+              content: 'button 1',
+            },
+          ]}
+          paginatedSelectAllAction={{content: 'content', onAction: () => {}}}
+          disabled
+        />,
+      );
+
+      expect(
+        bulkActionsElement
+          .find('button')
+          .filterWhere((element) => Boolean(element.prop('disabled'))),
+      ).toHaveLength(5);
+    });
+  });
+
   describe('props', () => {
     describe('accessibilityLabel', () => {
       it('is passed down to CheckableButton', () => {
