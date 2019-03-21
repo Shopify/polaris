@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {getWidth} from '../../utilities/getWidth';
@@ -79,7 +79,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
       >
-        <Icon source="menu" color="white" />
+        <Icon source={MobileHamburgerMajorMonotone} color="white" />
       </button>
     ) : null;
 
@@ -141,15 +141,13 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
     );
   }
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({focused: true});
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({focused: false});
-  }
+  };
 }
 
 export default withAppProvider<Props>()(TopBar);

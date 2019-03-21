@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
@@ -253,7 +252,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     ) : null;
 
     const spinnerMarkup =
-      type === 'number' && !disabled ? (
+      type === 'number' && !disabled && !readOnly ? (
         <Spinner
           onChange={this.handleNumberChange}
           onMouseDown={this.handleButtonPress}
@@ -363,13 +362,11 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private setInput(input: HTMLElement) {
+  private setInput = (input: HTMLElement) => {
     this.input = input;
-  }
+  };
 
-  @autobind
-  private handleNumberChange(steps: number) {
+  private handleNumberChange = (steps: number) => {
     const {
       onChange,
       value,
@@ -395,15 +392,13 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
     const newValue = Math.min(max, Math.max(numericValue + steps * step, min));
     onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
-  }
+  };
 
-  @autobind
-  private handleExpandingResize(height: number) {
+  private handleExpandingResize = (height: number) => {
     this.setState({height});
-  }
+  };
 
-  @autobind
-  private handleKeyPress(event: React.KeyboardEvent) {
+  private handleKeyPress = (event: React.KeyboardEvent) => {
     const {key, which} = event;
     const {type} = this.props;
     const numbersSpec = /[\d.eE+-]$/;
@@ -413,34 +408,29 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     }
 
     event.preventDefault();
-  }
+  };
 
-  @autobind
-  private handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
     if (onChange == null) {
       return;
     }
     onChange(event.currentTarget.value, this.state.id);
-  }
+  };
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({focus: true});
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({focus: false});
-  }
+  };
 
-  @autobind
-  private handleClick() {
+  private handleClick = () => {
     this.input.focus();
-  }
+  };
 
-  @autobind
-  private handleButtonPress(onChange: Function) {
+  private handleButtonPress = (onChange: Function) => {
     const minInterval = 50;
     const decrementBy = 10;
     let interval = 200;
@@ -455,12 +445,11 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     addEventListener(document, 'mouseup', this.handleButtonRelease, {
       once: true,
     });
-  }
+  };
 
-  @autobind
-  private handleButtonRelease() {
+  private handleButtonRelease = () => {
     clearTimeout(this.buttonPressTimer);
-  }
+  };
 }
 
 function normalizeAutoComplete(autoComplete?: boolean) {

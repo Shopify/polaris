@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import isEqual from 'lodash/isEqual';
+import debounce from 'lodash/debounce';
 
 import {headerCell} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -66,6 +66,31 @@ export class DataTable extends React.PureComponent<
   private scrollContainer = React.createRef<HTMLDivElement>();
   private table = React.createRef<HTMLTableElement>();
   private totalsRowHeading: string;
+
+  private handleResize = debounce(() => {
+    const {footerContent, truncate} = this.props;
+    const {
+      table: {current: table},
+      scrollContainer: {current: scrollContainer},
+    } = this;
+    let collapsed = false;
+    if (table && scrollContainer) {
+      collapsed = table.scrollWidth > scrollContainer.clientWidth;
+      scrollContainer.scrollLeft = 0;
+    }
+    this.setState(
+      {
+        collapsed,
+        heights: [],
+        ...this.calculateColumnVisibilityData(collapsed),
+      },
+      () => {
+        if (footerContent || !truncate) {
+          this.setHeightsAndScrollPosition();
+        }
+      },
+    );
+  });
 
   constructor(props: CombinedProps) {
     super(props);
@@ -216,35 +241,7 @@ export class DataTable extends React.PureComponent<
     );
   }
 
-  @autobind
-  @debounce()
-  private handleResize() {
-    const {footerContent, truncate} = this.props;
-    const {
-      table: {current: table},
-      scrollContainer: {current: scrollContainer},
-    } = this;
-    let collapsed = false;
-    if (table && scrollContainer) {
-      collapsed = table.scrollWidth > scrollContainer.clientWidth;
-      scrollContainer.scrollLeft = 0;
-    }
-    this.setState(
-      {
-        collapsed,
-        heights: [],
-        ...this.calculateColumnVisibilityData(collapsed),
-      },
-      () => {
-        if (footerContent || !truncate) {
-          this.setHeightsAndScrollPosition();
-        }
-      },
-    );
-  }
-
-  @autobind
-  private tallestCellHeights() {
+  private tallestCellHeights = () => {
     const {footerContent, truncate} = this.props;
     const {
       table: {current: table},
@@ -268,10 +265,9 @@ export class DataTable extends React.PureComponent<
     }
 
     return heights;
-  }
+  };
 
-  @autobind
-  private resetScrollPosition() {
+  private resetScrollPosition = () => {
     const {
       scrollContainer: {current: scrollContainer},
     } = this;
@@ -286,18 +282,16 @@ export class DataTable extends React.PureComponent<
         window.scrollTo(0, top);
       }
     }
-  }
+  };
 
-  @autobind
-  private setHeightsAndScrollPosition() {
+  private setHeightsAndScrollPosition = () => {
     this.setState(
       {heights: this.tallestCellHeights()},
       this.resetScrollPosition,
     );
-  }
+  };
 
-  @autobind
-  private calculateColumnVisibilityData(collapsed: boolean) {
+  private calculateColumnVisibilityData = (collapsed: boolean) => {
     const {
       table: {current: table},
       scrollContainer: {current: scrollContainer},
@@ -341,17 +335,15 @@ export class DataTable extends React.PureComponent<
       previousColumn: undefined,
       currentColumn: undefined,
     };
-  }
+  };
 
-  @autobind
-  private scrollListener() {
+  private scrollListener = () => {
     this.setState((prevState) => ({
       ...this.calculateColumnVisibilityData(prevState.collapsed),
     }));
-  }
+  };
 
-  @autobind
-  private navigateTable(direction: string) {
+  private navigateTable = (direction: string) => {
     const {currentColumn, previousColumn, fixedColumnWidth} = this.state;
     const {
       scrollContainer: {current: scrollContainer},
@@ -377,10 +369,9 @@ export class DataTable extends React.PureComponent<
     };
 
     return handleScroll;
-  }
+  };
 
-  @autobind
-  private renderTotals(total: TableData, index: number) {
+  private renderTotals = (total: TableData, index: number) => {
     const id = `totals-cell-${index}`;
     const {heights} = this.state;
     const {truncate = false} = this.props;
@@ -409,10 +400,9 @@ export class DataTable extends React.PureComponent<
         truncate={truncate}
       />
     );
-  }
+  };
 
-  @autobind
-  private defaultRenderRow(row: TableData[], index: number) {
+  private defaultRenderRow = (row: TableData[], index: number) => {
     const className = classNames(styles.TableRow);
     const {
       columnContentTypes,
@@ -446,10 +436,9 @@ export class DataTable extends React.PureComponent<
         })}
       </tr>
     );
-  }
+  };
 
-  @autobind
-  private renderFooter() {
+  private renderFooter = () => {
     const {heights} = this.state;
     const footerCellHeight = heights[heights.length - 1];
 
@@ -462,10 +451,9 @@ export class DataTable extends React.PureComponent<
         truncate={this.props.truncate}
       />
     );
-  }
+  };
 
-  @autobind
-  private defaultOnSort(headingIndex: number) {
+  private defaultOnSort = (headingIndex: number) => {
     const {
       onSort,
       truncate,
@@ -510,7 +498,7 @@ export class DataTable extends React.PureComponent<
     };
 
     return handleSort;
-  }
+  };
 }
 
 export default withAppProvider<Props>()(DataTable);

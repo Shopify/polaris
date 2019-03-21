@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
@@ -88,10 +87,9 @@ export class Day extends React.PureComponent<CombinedProps, never> {
     );
   }
 
-  @autobind
-  private setNode(node: HTMLElement | null) {
+  private setNode = (node: HTMLElement | null) => {
     this.dayNode = node;
-  }
+  };
 }
 
 export default withAppProvider<Props>()(Day);

@@ -23,10 +23,9 @@ describe('<Toast />', () => {
       </Provider>,
     );
 
-    expect(mockFrameContext.frame.showToast).toHaveBeenCalledWith({
-      id: expect.any(String),
-      ...props,
-    });
+    expect(mockFrameContext.frame.showToast).toHaveBeenCalledWith(
+      expect.objectContaining({id: expect.any(String), ...props}),
+    );
   });
 
   it('hides the toast based on ID on unmount', () => {

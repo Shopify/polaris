@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
+import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
@@ -137,7 +137,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source="cancel" color="white" />
+              <Icon source={MobileCancelMajorMonotone} color="white" />
             </button>
           </div>
         </CSSTransition>
@@ -255,8 +255,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private setGlobalRibbonHeight() {
+  private setGlobalRibbonHeight = () => {
     const {globalRibbonContainer} = this;
     if (globalRibbonContainer) {
       this.setState(
@@ -266,20 +265,18 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         this.setGlobalRibbonRootProperty,
       );
     }
-  }
+  };
 
-  @autobind
-  private setGlobalRibbonRootProperty() {
+  private setGlobalRibbonRootProperty = () => {
     const {globalRibbonHeight} = this.state;
     setRootProperty(
       GLOBAL_RIBBON_CUSTOM_PROPERTY,
       `${globalRibbonHeight}px`,
       null,
     );
-  }
+  };
 
-  @autobind
-  private showToast(toast: ToastPropsWithID) {
+  private showToast = (toast: ToastPropsWithID) => {
     this.setState(({toastMessages}: State) => {
       const hasToastById =
         toastMessages.find(({id}) => id === toast.id) != null;
@@ -287,19 +284,17 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         toastMessages: hasToastById ? toastMessages : [...toastMessages, toast],
       };
     });
-  }
+  };
 
-  @autobind
-  private hideToast({id}: ToastID) {
+  private hideToast = ({id}: ToastID) => {
     this.setState(({toastMessages}: State) => {
       return {
         toastMessages: toastMessages.filter(({id: toastId}) => id !== toastId),
       };
     });
-  }
+  };
 
-  @autobind
-  private setContextualSaveBar(props: ContextualSaveBarProps) {
+  private setContextualSaveBar = (props: ContextualSaveBarProps) => {
     const {showContextualSaveBar} = this.state;
     this.contextualSaveBar = {...props};
     if (showContextualSaveBar === true) {
@@ -307,30 +302,26 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     } else {
       this.setState({showContextualSaveBar: true});
     }
-  }
+  };
 
-  @autobind
-  private removeContextualSaveBar() {
+  private removeContextualSaveBar = () => {
     this.contextualSaveBar = null;
     this.setState({showContextualSaveBar: false});
-  }
+  };
 
-  @autobind
-  private startLoading() {
+  private startLoading = () => {
     this.setState(({loadingStack}: State) => ({
       loadingStack: loadingStack + 1,
     }));
-  }
+  };
 
-  @autobind
-  private stopLoading() {
+  private stopLoading = () => {
     this.setState(({loadingStack}: State) => ({
       loadingStack: Math.max(0, loadingStack - 1),
     }));
-  }
+  };
 
-  @autobind
-  private handleResize() {
+  private handleResize = () => {
     const {mobileView} = this.state;
 
     if (isMobileView() && !mobileView) {
@@ -342,38 +333,32 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     if (this.props.globalRibbon) {
       this.setGlobalRibbonHeight();
     }
-  }
+  };
 
-  @autobind
-  private handleClick() {
+  private handleClick = () => {
     focusAppFrameMain();
-  }
+  };
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({skipFocused: true});
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({skipFocused: false});
-  }
+  };
 
-  @autobind
-  private handleNavigationDismiss() {
+  private handleNavigationDismiss = () => {
     const {onNavigationDismiss} = this.props;
     if (onNavigationDismiss != null) {
       onNavigationDismiss();
     }
-  }
+  };
 
-  @autobind
-  private setGlobalRibbonContainer(node: HTMLDivElement) {
+  private setGlobalRibbonContainer = (node: HTMLDivElement) => {
     this.globalRibbonContainer = node;
-  }
+  };
 
-  @autobind
-  private handleNavKeydown(event: React.KeyboardEvent<HTMLElement>) {
+  private handleNavKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
     const {key} = event;
 
     if (key === 'Escape') {
@@ -381,7 +366,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     }
   }
 
-  @autobind
   get getContext(): FrameContext {
     return {
       frame: {

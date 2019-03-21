@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import Select from '../../../../../Select';
 import Stack from '../../../../../Stack';
 import TextField from '../../../../../TextField';
@@ -112,8 +111,7 @@ export class FilterValueSelector extends React.PureComponent<CombinedProps> {
     }
   }
 
-  @autobind
-  private handleOperatorOptionChange(operatorKey: string) {
+  private handleOperatorOptionChange = (operatorKey: string) => {
     const {value, onChange, onFilterKeyChange} = this.props;
     onFilterKeyChange(operatorKey);
 
@@ -122,7 +120,7 @@ export class FilterValueSelector extends React.PureComponent<CombinedProps> {
     }
 
     onChange(value);
-  }
+  };
 }
 
 function buildOperatorOptions(operatorText?: string | Operator[]) {

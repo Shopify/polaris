@@ -138,6 +138,7 @@ export {
   ContextualSaveBarProps,
   ToastProps,
   DEFAULT_TOAST_DURATION,
+  DEFAULT_TOAST_DURATION_WITH_ACTION,
 } from './Frame';
 
 export {default as Heading, Props as HeadingProps} from './Heading';

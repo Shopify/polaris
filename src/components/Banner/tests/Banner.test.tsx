@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
-import {Button, Icon, UnstyledLink, Heading} from 'components';
-import Banner from '..';
-import {Provider} from '../../WithinContentContext';
-
 import {
+  CirclePlusMinor,
   CircleAlertMajorTwotone,
   CircleDisabledMajorTwotone,
   CircleTickMajorTwotone,
   CircleInformationMajorTwotone,
   FlagMajorTwotone,
-} from '../../../icons';
+} from '@shopify/polaris-icons';
+import {mountWithAppProvider} from 'test-utilities';
+import {Button, Icon, UnstyledLink, Heading} from 'components';
+import Banner from '..';
+import {Provider} from '../../WithinContentContext';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -24,8 +24,8 @@ describe('<Banner />', () => {
   });
 
   it('passes the provided icon source to Icon', () => {
-    const banner = mountWithAppProvider(<Banner icon="circlePlus" />);
-    expect(banner.find(Icon).prop('source')).toBe('circlePlus');
+    const banner = mountWithAppProvider(<Banner icon={CirclePlusMinor} />);
+    expect(banner.find(Icon).prop('source')).toBe(CirclePlusMinor);
   });
 
   it('uses a greenDark circleCheckMark if status is success', () => {
