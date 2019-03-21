@@ -100,7 +100,9 @@ $context-control-expend-after: 1400px;
   margin-left: calc((100% - #{$page-max-width}) / 2);
 
   @include breakpoint-after($context-control-expend-after) {
-    margin-left: calc((100% - #{$page-max-width + $context-control-extra-spacing}) / 2);
+    margin-left: calc(
+      (100% - #{$page-max-width + $context-control-extra-spacing}) / 2
+    );
   }
 
   @media (max-width: $page-left-alignment-breakpoint-max) {
