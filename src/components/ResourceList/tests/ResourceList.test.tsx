@@ -637,6 +637,19 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(Spinner).exists()).toBe(true);
     });
 
+    it('renders a spinner after initial load when loading is true', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          sortOptions={sortOptions}
+          renderItem={renderItem}
+        />,
+      );
+
+      resourceList.setProps({loading: true});
+      expect(resourceList.find(Spinner).exists()).toBe(true);
+    });
+
     it('does not render an <Item /> if loading is true and there are no items', () => {
       const resourceList = mountWithAppProvider(
         <ResourceList
@@ -676,7 +689,24 @@ describe('<ResourceList />', () => {
 
       expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
       resourceList.setProps({selectedItems: ['1']});
+      resourceList.update();
       expect(resourceList.find(BulkActions).prop('selectMode')).toBe(true);
+    });
+
+    it('disables select mode when items are deselected programmatically selected', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={['1']}
+        />,
+      );
+
+      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(true);
+      resourceList.setProps({selectedItems: []});
+      resourceList.update();
+      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
     });
   });
 });
