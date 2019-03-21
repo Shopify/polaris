@@ -368,7 +368,6 @@ export class Modal extends React.Component<CombinedProps, State> {
     };
   }
 
-  @autobind
   get getContext(): WithinContentContext {
     return {
       withinContentContainer: true,

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {Action, DisableableAction} from '../../types';
 import {buttonFrom} from '../Button';
@@ -78,7 +77,6 @@ export default class Card extends React.PureComponent<Props, never> {
     );
   }
 
-  @autobind
   get getContext(): WithinContentContext {
     return {
       withinContentContainer: true,

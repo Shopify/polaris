@@ -364,7 +364,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
     if (key === 'Escape') {
       this.handleNavigationDismiss();
     }
-  }
+  };
 
   get getContext(): FrameContext {
     return {
