@@ -2,7 +2,6 @@ import * as React from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {helpTextID} from '../Choice';
@@ -46,8 +45,7 @@ const getUniqueID = createUniqueIDFactory('Checkbox');
 class Checkbox extends React.PureComponent<CombinedProps, never> {
   private inputNode = React.createRef<HTMLInputElement>();
 
-  @autobind
-  handleInput() {
+  handleInput = () => {
     const {onChange, id} = this.props;
 
     if (onChange == null || this.inputNode.current == null) {
@@ -56,15 +54,14 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
 
     onChange(!this.inputNode.current.checked, id as any);
     this.inputNode.current.focus();
-  }
+  };
 
-  @autobind
-  handleKeyUp(event: React.KeyboardEvent) {
+  handleKeyUp = (event: React.KeyboardEvent) => {
     const {keyCode} = event;
 
     if (keyCode !== Key.Space) return;
     this.handleInput();
-  }
+  };
 
   render() {
     const {
@@ -100,7 +97,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
       ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
       : {'aria-checked': isChecked};
 
-    const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
+    const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
 
     const inputClassName = classNames(
       styles.Input,
