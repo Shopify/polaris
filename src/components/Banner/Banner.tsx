@@ -43,6 +43,11 @@ export interface Props {
 
 export default class Banner extends React.PureComponent<Props, never> {
   static contextTypes = contentContextTypes;
+  private wrapper = React.createRef<HTMLDivElement>();
+
+  public focus() {
+    this.wrapper.current && this.wrapper.current.focus();
+  }
 
   render() {
     const {
@@ -154,6 +159,7 @@ export default class Banner extends React.PureComponent<Props, never> {
         className={className}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
+        ref={this.wrapper}
         role={ariaRoleType}
         aria-live="polite"
         onMouseUp={handleMouseUp}
