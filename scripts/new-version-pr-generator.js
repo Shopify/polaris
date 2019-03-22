@@ -95,11 +95,11 @@ const jobs = repositories.map((repository) => {
     try {
       const repositoryDirectory = path.resolve(sandbox, repository);
 
-      // Clone into the sandbox directory
       await retry(() => {
         execSync(
           `git clone --branch ${baseBranch} --single-branch https://${polarisBotToken}@github.com/Shopify/${repository}.git`,
           {
+            // Clone into the sandbox directory
             cwd: sandbox,
             stdio: 'inherit',
           },
@@ -123,15 +123,15 @@ const jobs = repositories.map((repository) => {
         })}' -X POST https://api.github.com/repos/shopify/${repository}/pulls?access_token=${polarisBotToken}`,
       ];
 
-      // Run the commands in the cloned repository directories
-      commands.forEach(async (command) => {
+      for (const command of commands) {
         await retry(() => {
           execSync(command, {
+            // Run the commands in the cloned repository directories
             cwd: repositoryDirectory,
             stdio: 'inherit',
           });
         });
-      });
+      }
 
       resolve(
         `Pull request made in shopify/${repository} for version ${releaseVersion}`,
