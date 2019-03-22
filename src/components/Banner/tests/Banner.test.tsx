@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {
+  CirclePlusMinor,
   CircleAlertMajorTwotone,
   CircleDisabledMajorTwotone,
   CircleTickMajorTwotone,
@@ -23,8 +24,8 @@ describe('<Banner />', () => {
   });
 
   it('passes the provided icon source to Icon', () => {
-    const banner = mountWithAppProvider(<Banner icon="circlePlus" />);
-    expect(banner.find(Icon).prop('source')).toBe('circlePlus');
+    const banner = mountWithAppProvider(<Banner icon={CirclePlusMinor} />);
+    expect(banner.find(Icon).prop('source')).toBe(CirclePlusMinor);
   });
 
   it('uses a greenDark circleCheckMark if status is success', () => {

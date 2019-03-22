@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {noop} from '../../../../utilities/other';
@@ -66,7 +67,7 @@ export default class SearchField extends React.Component<Props, never> {
         className={styles.Clear}
         onClick={this.handleClear}
       >
-        <Icon source="circleCancel" />
+        <Icon source={CircleCancelMinor} />
       </button>
     );
 
@@ -94,7 +95,7 @@ export default class SearchField extends React.Component<Props, never> {
           onKeyDown={preventDefault}
         />
         <span className={styles.Icon}>
-          <Icon source="search" />
+          <Icon source={SearchMinor} />
         </span>
 
         {clearMarkup}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import merge from 'lodash/merge';
 import hoistStatics from 'hoist-non-react-statics';
+import merge from '../../../../utilities/merge';
 import {WithAppProviderProps} from '../withAppProvider';
 import {Context, polarisAppProviderContextTypes} from '../../types';
 import StickyManager from './StickyManager';

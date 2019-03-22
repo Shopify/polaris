@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
@@ -151,7 +152,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
               )}
               tabIndex={tabIndex}
             >
-              <Icon source="cancel" color="white" />
+              <Icon source={MobileCancelMajorMonotone} color="white" />
             </button>
           </div>
         </CSSTransition>

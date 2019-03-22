@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities';
 import isInputFocused from '../../utilities/isInputFocused';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -77,7 +78,7 @@ function Pagination({
       aria-label={intl.translate('Polaris.Pagination.previous')}
       id="previousURL"
     >
-      <Icon source="arrowLeft" />
+      <Icon source={ArrowLeftMinor} />
     </UnstyledLink>
   ) : (
     <button
@@ -88,7 +89,7 @@ function Pagination({
       aria-label={intl.translate('Polaris.Pagination.previous')}
       disabled={!hasPrevious}
     >
-      <Icon source="arrowLeft" />
+      <Icon source={ArrowLeftMinor} />
     </button>
   );
 
@@ -100,7 +101,7 @@ function Pagination({
       aria-label={intl.translate('Polaris.Pagination.next')}
       id="nextURL"
     >
-      <Icon source="arrowRight" />
+      <Icon source={ArrowRightMinor} />
     </UnstyledLink>
   ) : (
     <button
@@ -111,7 +112,7 @@ function Pagination({
       aria-label={intl.translate('Polaris.Pagination.next')}
       disabled={!hasNext}
     >
-      <Icon source="arrowRight" />
+      <Icon source={ArrowRightMinor} />
     </button>
   );
 

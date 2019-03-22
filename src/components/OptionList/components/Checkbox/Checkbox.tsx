@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Icon from '../../../Icon';
@@ -45,7 +46,7 @@ export default function Checkbox({
       />
       <div className={styles.Backdrop} />
       <div className={styles.Icon}>
-        <Icon source="checkmark" />
+        <Icon source={TickSmallMinor} />
       </div>
     </div>
   );

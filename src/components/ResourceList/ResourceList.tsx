@@ -312,6 +312,15 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const {selectedItems} = this.props;
 
     if (
+      nextProps.selectedItems &&
+      nextProps.selectedItems.length > 0 &&
+      !this.state.selectMode
+    ) {
+      this.setState({selectMode: true});
+      return;
+    }
+
+    if (
       selectedItems &&
       selectedItems.length > 0 &&
       (!nextProps.selectedItems || nextProps.selectedItems.length === 0) &&
