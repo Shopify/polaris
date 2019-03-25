@@ -21,6 +21,8 @@ export interface Props {
   children?: React.ReactNode;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
+  /** Callback when clicked */
+  onClick?(): void;
 }
 
 export default function Choice({
@@ -31,6 +33,7 @@ export default function Choice({
   children,
   labelHidden,
   helpText,
+  onClick,
 }: Props) {
   const className = classNames(
     styles.Choice,
@@ -39,7 +42,7 @@ export default function Choice({
   );
 
   const labelMarkup = (
-    <label className={className} htmlFor={id}>
+    <label className={className} htmlFor={id} onClick={onClick}>
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>{label}</span>
     </label>
