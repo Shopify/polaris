@@ -16,6 +16,10 @@ $bulk-actions-offset-slide-in-start: rem(-40px);
   .Group-measuring & {
     font-size: font-size(button);
   }
+
+  .disabled & {
+    @include base-button-disabled;
+  }
 }
 
 .Group {
