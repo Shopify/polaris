@@ -13,6 +13,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added a public `focus` method on `Banner` ([#1219](https://github.com/Shopify/polaris-react/pull/1219))
+- Added an `onScrollToBottom` prop to `Popover.Pane` ([#1248](https://github.com/Shopify/polaris-react/pull/1248))
 
 ### Bug fixes
 
