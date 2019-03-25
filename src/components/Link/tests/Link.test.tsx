@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {UnstyledLink} from 'components';
+import {UnstyledLink, Icon} from 'components';
+import en from '../../../locales/en.json';
 import Link from '../Link';
 
 describe('<Link />', () => {
@@ -36,6 +37,48 @@ describe('<Link />', () => {
         <Link url="https://shopify.com" id={id} />,
       );
       expect(link.find(UnstyledLink).prop('id')).toBe(id);
+    });
+  });
+
+  describe('external link', () => {
+    it('has a trailing icon', () => {
+      const link = mountWithAppProvider(
+        <Link url="https://help.shopify.com/" external>
+          Shopify Help Center
+        </Link>,
+      );
+      expect(
+        link
+          .children()
+          .last()
+          .find(Icon)
+          .exists(),
+      ).toBe(true);
+    });
+
+    it('informs screen readers that it opens in a new window', () => {
+      const link = mountWithAppProvider(
+        <Link url="https://help.shopify.com/" external>
+          Shopify Help Center
+        </Link>,
+      );
+      const hintText = en.Polaris.Common.newWindowAccessibilityHint;
+      expect(
+        link
+          .children()
+          .last()
+          .find(Icon)
+          .prop('accessibilityLabel'),
+      ).toBe(hintText);
+    });
+
+    it('doesn’t have a trailing icon for non-string children', () => {
+      const link = mountWithAppProvider(
+        <Link url="https://help.shopify.com/" external>
+          <span>Shopify Help Center</span>
+        </Link>,
+      );
+      expect(link.find(Icon).exists()).toBe(false);
     });
   });
 });

@@ -92,6 +92,16 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
+### External link
+
+Use for text links that point to a different website. They will open in a new browser tab or window.
+
+```jsx
+<Link url="https://help.shopify.com/manual" external>
+  Shopify Help Center
+</Link>
+```
+
 ---
 
 ## Related components
