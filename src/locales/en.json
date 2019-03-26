@@ -30,7 +30,8 @@
 
     "Common": {
       "checkbox": "checkbox",
-      "undo": "Undo"
+      "undo": "Undo",
+      "cancel": "Cancel"
     },
 
     "ContextualSaveBar": {

@@ -249,7 +249,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
         testID="btn-cancel"
         disabled={disabled}
       >
-        Cancel
+        {intl.translate('Polaris.Common.cancel')}
       </button>
     );
 
