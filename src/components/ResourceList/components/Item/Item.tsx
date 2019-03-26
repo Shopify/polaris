@@ -40,6 +40,7 @@ export interface BaseProps {
   media?: React.ReactElement<AvatarProps | ThumbnailProps>;
   persistActions?: boolean;
   shortcutActions?: DisableableAction[];
+  sortOrder?: number;
   children?: React.ReactNode;
 }
 
@@ -158,15 +159,16 @@ export class Item extends React.Component<CombinedProps, State> {
           testID="LargerSelectionArea"
         >
           <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
-            <Checkbox
-              testID="Checkbox"
-              id={this.checkboxId}
-              label={label}
-              labelHidden
-              onChange={this.handleSelection}
-              checked={selected}
-              disabled={loading}
-            />
+            <div onChange={this.handleLargerSelectionArea}>
+              <Checkbox
+                testID="Checkbox"
+                id={this.checkboxId}
+                label={label}
+                labelHidden
+                checked={selected}
+                disabled={loading}
+              />
+            </div>
           </div>
         </div>
       );
@@ -327,18 +329,22 @@ export class Item extends React.Component<CombinedProps, State> {
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
     stopPropagation(event);
-    this.handleSelection(!this.state.selected);
+    this.handleSelection(!this.state.selected, event.nativeEvent.shiftKey);
   };
 
-  private handleSelection = (value: boolean) => {
+  private handleSelection = (value: boolean, shiftKey: boolean) => {
     const {
       id,
+      sortOrder,
       context: {onSelectionChange},
     } = this.props;
+
     if (id == null || onSelectionChange == null) {
       return;
     }
-    onSelectionChange(value, id);
+
+    this.setState({focused: true, focusedInner: true});
+    onSelectionChange(value, id, sortOrder, shiftKey);
   };
 
   private handleClick = (event: React.MouseEvent<any>) => {

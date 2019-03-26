@@ -35,6 +35,7 @@ export type Items = any[];
 export interface State {
   selectMode: boolean;
   loadingPosition: number;
+  lastSelected: number | null;
 }
 
 export interface Props {
@@ -69,9 +70,11 @@ export interface Props {
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: SelectedItems): void;
   /** Function to render each list item	 */
-  renderItem(item: any, id: string): React.ReactNode;
+  renderItem(item: any, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
   idForItem?(item: any, index: number): string;
+  /** Function to resolve an id from a item */
+  resolveItemId?(item: any): string;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -115,6 +118,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     this.state = {
       selectMode: Boolean(selectedItems && selectedItems.length > 0),
       loadingPosition: 0,
+      lastSelected: null,
     };
   }
 
@@ -533,6 +537,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     const resourceListClassName = classNames(
       styles.ResourceList,
       loading && styles.disabledPointerEvents,
+      selectMode && styles.disableTextSelection,
     );
 
     const listMarkup = this.itemsExist() ? (
@@ -617,32 +622,72 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
     return (
       <li key={id} className={styles.ItemWrapper}>
-        {renderItem(item, id)}
+        {renderItem(item, id, index)}
       </li>
     );
   };
 
-  private handleSelectionChange = (selected: boolean, id: string) => {
+  private handleMultiSelectionChange = (
+    lastSelected: number,
+    currentSelected: number,
+    resolveItemId: (item: any) => string,
+  ) => {
+    const min = Math.min(lastSelected, currentSelected);
+    const max = Math.max(lastSelected, currentSelected);
+    return this.props.items.slice(min, max + 1).map(resolveItemId);
+  };
+
+  private handleSelectionChange = (
+    selected: boolean,
+    id: string,
+    sortOrder: number | undefined,
+    shiftKey: boolean,
+  ) => {
     const {
       onSelectionChange,
       selectedItems,
       items,
       idForItem = defaultIdForItem,
+      resolveItemId,
     } = this.props;
+    const {lastSelected} = this.state;
 
     if (selectedItems == null || onSelectionChange == null) {
       return;
     }
 
-    const newlySelectedItems =
+    let newlySelectedItems =
       selectedItems === SELECT_ALL_ITEMS
         ? getAllItemsOnPage(items, idForItem)
         : [...selectedItems];
 
-    if (selected) {
-      newlySelectedItems.push(id);
-    } else {
-      newlySelectedItems.splice(newlySelectedItems.indexOf(id), 1);
+    if (sortOrder !== undefined) {
+      this.setState({lastSelected: sortOrder});
+    }
+
+    let selectedIds: string[] = [id];
+
+    if (
+      shiftKey &&
+      lastSelected != null &&
+      sortOrder !== undefined &&
+      resolveItemId
+    ) {
+      selectedIds = this.handleMultiSelectionChange(
+        lastSelected,
+        sortOrder,
+        resolveItemId,
+      );
+    }
+    newlySelectedItems = [...new Set([...newlySelectedItems, ...selectedIds])];
+
+    if (!selected) {
+      for (let i = 0; i < selectedIds.length; i++) {
+        newlySelectedItems.splice(
+          newlySelectedItems.indexOf(selectedIds[i]),
+          1,
+        );
+      }
     }
 
     if (newlySelectedItems.length === 0 && !isSmallScreen()) {
