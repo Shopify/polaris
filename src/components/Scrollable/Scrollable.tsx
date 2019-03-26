@@ -8,9 +8,8 @@ import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
 import {withSticky, WithAppProviderProps} from '../AppProvider';
 import {scrollable} from '../shared';
-import {contextTypes} from './types';
 
-import {ScrollTo} from './components';
+import {ScrollTo, Provider} from './components';
 
 import styles from './Scrollable.scss';
 
@@ -47,9 +46,7 @@ export interface Context {
 
 export type CombinedProps = Props & WithAppProviderProps;
 class Scrollable extends React.Component<CombinedProps, State> {
-  static childContextTypes = contextTypes;
   static ScrollTo = ScrollTo;
-
   static forNode(node: HTMLElement): HTMLElement | Document {
     return (
       (closest(node, scrollable.selector) as HTMLElement | null) || document
@@ -72,7 +69,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
     {trailing: true},
   );
 
-  getChildContext(): Context {
+  get getContext(): Context {
     return {
       scrollToPosition: this.scrollToPosition,
     };
@@ -136,14 +133,16 @@ class Scrollable extends React.Component<CombinedProps, State> {
     );
 
     return (
-      <div
-        className={finalClassName}
-        {...scrollable.props}
-        {...rest}
-        ref={this.setScrollArea}
-      >
-        {children}
-      </div>
+      <Provider value={this.getContext}>
+        <div
+          className={finalClassName}
+          {...scrollable.props}
+          {...rest}
+          ref={this.setScrollArea}
+        >
+          {children}
+        </div>
+      </Provider>
     );
   }
 
