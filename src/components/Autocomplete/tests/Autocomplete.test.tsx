@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CirclePlusMinor} from '@shopify/polaris-icons';
 import {noop} from '@shopify/javascript-utilities/other';
 import Autocomplete from '..';
 import {mountWithAppProvider} from 'test-utilities';
@@ -43,7 +44,7 @@ describe('<Autocomplete/>', () => {
       const actionBefore = [
         {
           content: "Add 'f'",
-          icon: 'circlePlus',
+          icon: CirclePlusMinor,
           id: 'Autocomplete-ID-0',
         },
       ];
@@ -61,7 +62,7 @@ describe('<Autocomplete/>', () => {
           allowMultiple
           actionBefore={{
             content: "Add 'f'",
-            icon: 'circlePlus',
+            icon: CirclePlusMinor,
             id: 'ComboBox3-0',
           }}
           onSelect={handleOnSelect}

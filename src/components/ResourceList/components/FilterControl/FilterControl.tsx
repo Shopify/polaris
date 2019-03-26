@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
+import {SearchMinor} from '@shopify/polaris-icons';
 import compose from '@shopify/react-compose';
 import {ComplexAction, WithContextTypes} from '../../../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
@@ -98,7 +98,7 @@ export class FilterControl extends React.Component<CombinedProps> {
           label={textFieldLabel}
           labelHidden
           placeholder={textFieldLabel}
-          prefix={<Icon source="search" color="skyDark" />}
+          prefix={<Icon source={SearchMinor} color="skyDark" />}
           value={searchValue}
           onChange={onSearchChange}
           onBlur={onSearchBlur}
@@ -110,8 +110,7 @@ export class FilterControl extends React.Component<CombinedProps> {
     );
   }
 
-  @autobind
-  private handleAddFilter(newFilter: AppliedFilter) {
+  private handleAddFilter = (newFilter: AppliedFilter) => {
     const {onFiltersChange, appliedFilters = []} = this.props;
 
     if (!onFiltersChange) {
@@ -130,9 +129,8 @@ export class FilterControl extends React.Component<CombinedProps> {
     const newAppliedFilters = [...appliedFilters, newFilter];
 
     onFiltersChange(newAppliedFilters);
-  }
+  };
 
-  @memoize()
   private getRemoveFilterCallback(filterId: string) {
     return () => {
       this.handleRemoveFilter(filterId);

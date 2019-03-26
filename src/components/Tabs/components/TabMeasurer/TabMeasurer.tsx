@@ -2,7 +2,6 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import EventListener from '../../../EventListener';
 
@@ -81,13 +80,11 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
     );
   }
 
-  @autobind
-  private setContainerNode(node: HTMLElement | null) {
+  private setContainerNode = (node: HTMLElement | null) => {
     this.containerNode = node;
-  }
+  };
 
-  @autobind
-  private handleMeasurement() {
+  private handleMeasurement = () => {
     if (this.containerNode == null) {
       return;
     }
@@ -108,5 +105,5 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       disclosureWidth,
       hiddenTabWidths,
     });
-  }
+  };
 }

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {SVGSource} from '@shopify/images';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-
 import {
   PlusMinor,
   AlertMinor,
@@ -56,7 +54,9 @@ import {
   SaveMinor,
   SearchMinor,
   ViewMinor,
-} from '../../icons';
+} from '@shopify/polaris-icons';
+
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import styles from './Icon.scss';
 

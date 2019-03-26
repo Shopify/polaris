@@ -1,8 +1,6 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
-import pick from 'lodash/pick';
 import {TransitionGroup} from 'react-transition-group';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
@@ -11,6 +9,7 @@ import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {Provider, WithinContentContext} from '../WithinContentContext';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';
+import pick from '../../utilities/pick';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
@@ -300,16 +299,14 @@ export class Modal extends React.Component<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private handleEntered() {
+  private handleEntered = () => {
     const {onTransitionEnd} = this.props;
     if (onTransitionEnd) {
       onTransitionEnd();
     }
-  }
+  };
 
-  @autobind
-  private handleExited() {
+  private handleExited = () => {
     this.setState({
       iframeHeight: IFRAME_LOADING_HEIGHT,
     });
@@ -317,10 +314,9 @@ export class Modal extends React.Component<CombinedProps, State> {
     if (this.focusReturnPointNode) {
       write(() => focusFirstFocusableNode(this.focusReturnPointNode, false));
     }
-  }
+  };
 
-  @autobind
-  private handleIFrameLoad(evt: React.SyntheticEvent<HTMLIFrameElement>) {
+  private handleIFrameLoad = (evt: React.SyntheticEvent<HTMLIFrameElement>) => {
     const iframe = evt.target as HTMLIFrameElement;
     if (iframe && iframe.contentWindow) {
       this.setState({
@@ -333,7 +329,7 @@ export class Modal extends React.Component<CombinedProps, State> {
     if (onIFrameLoad != null) {
       onIFrameLoad(evt);
     }
-  }
+  };
 
   private transformProps() {
     const {
@@ -372,7 +368,6 @@ export class Modal extends React.Component<CombinedProps, State> {
     };
   }
 
-  @autobind
   get getContext(): WithinContentContext {
     return {
       withinContentContainer: true,

@@ -663,6 +663,21 @@ describe('<ResourceList />', () => {
       );
       expect(resourceList.find(BulkActions)).toHaveLength(1);
     });
+
+    it('enables select mode when items are programmatically selected', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={singleItemWithID}
+          renderItem={renderItem}
+          bulkActions={bulkActions}
+          selectedItems={[]}
+        />,
+      );
+
+      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
+      resourceList.setProps({selectedItems: ['1']});
+      expect(resourceList.find(BulkActions).prop('selectMode')).toBe(true);
+    });
   });
 });
 

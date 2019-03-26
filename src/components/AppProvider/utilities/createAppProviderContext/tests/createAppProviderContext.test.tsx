@@ -1,17 +1,22 @@
 import * as React from 'react';
-import createApp, {LifecycleHook} from '@shopify/app-bridge';
+import * as appBridge from '@shopify/app-bridge';
 import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
   setClientInterfaceHook,
 } from '../createAppProviderContext';
-import Intl from '../../Intl';
-import Link from '../../Link';
 import {StickyManager} from '../../withSticky';
 import ScrollLockManager from '../../ScrollLockManager';
 
-jest.mock('@shopify/app-bridge');
-(createApp as jest.Mock<{}>).mockImplementation((args) => args);
+jest.mock('../../Intl', () => ({
+  default: jest.fn(),
+  __esModule: true,
+}));
+
+jest.mock('../../Link', () => ({
+  default: jest.fn(),
+  __esModule: true,
+}));
 
 const actualIsServer = targets.isServer;
 
@@ -20,32 +25,45 @@ function mockIsServer(value: boolean) {
 }
 
 describe('createAppProviderContext()', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  const createAppSpy: jest.SpyInstance<any> = jest.spyOn(appBridge, 'default');
+  const Intl: jest.Mock<{}> = require.requireMock('../../Intl').default;
+  const Link: jest.Mock<{}> = require.requireMock('../../Link').default;
 
   afterEach(() => {
     mockIsServer(actualIsServer);
+    createAppSpy.mockReset();
+    Intl.mockReset();
+    Link.mockReset();
   });
 
   it('returns the right context without properties', () => {
+    createAppSpy.mockImplementationOnce((args) => args);
     const context = createAppProviderContext();
-    const mockContext = {
+
+    expect(context).toMatchObject({
       polaris: {
-        intl: new Intl(undefined),
-        link: new Link(),
-        stickyManager: new StickyManager(),
-        scrollLockManager: new ScrollLockManager(),
+        intl: expect.any(Intl),
+        link: expect.any(Link),
+        stickyManager: expect.any(StickyManager),
+        scrollLockManager: expect.any(ScrollLockManager),
         subscribe: noop,
         unsubscribe: noop,
         appBridge: undefined,
       },
-    };
-
-    expect(context).toEqual(mockContext);
+    });
   });
 
   it('returns the right context with properties', () => {
+    createAppSpy.mockImplementationOnce((args) => ({
+      ...args,
+      dispatch: () => {},
+      localOrigin: '',
+      featuresAvailable: () => {},
+      getState: () => {},
+      subscribe: () => {},
+      error: () => {},
+    }));
+
     const i18n = {
       Polaris: {
         Common: {
@@ -66,47 +84,36 @@ describe('createAppProviderContext()', () => {
       scrollLockManager,
       apiKey,
     });
-    const mockContext = {
+
+    expect(context).toMatchObject({
       polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
+        intl: expect.any(Intl),
+        link: expect.any(Link),
+        stickyManager: expect.any(StickyManager),
+        scrollLockManager: expect.any(ScrollLockManager),
         subscribe: noop,
         unsubscribe: noop,
         appBridge: {
           apiKey,
           forceRedirect: undefined,
           shopOrigin: undefined,
+          dispatch: expect.any(Function),
+          localOrigin: '',
+          featuresAvailable: expect.any(Function),
+          getState: expect.any(Function),
+          subscribe: expect.any(Function),
+          error: expect.any(Function),
         },
       },
-    };
+    });
 
-    expect(context).toEqual(mockContext);
-  });
-
-  it('does not instantiate app bridge if server side rendering', () => {
-    mockIsServer(true);
-    const apiKey = '4p1k3y';
-    const context = createAppProviderContext({apiKey});
-    const mockContext = {
-      polaris: {
-        intl: new Intl(undefined),
-        link: new Link(),
-        stickyManager: new StickyManager(),
-        scrollLockManager: new ScrollLockManager(),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-    };
-
-    expect(context).toEqual(mockContext);
+    expect(Intl).toBeCalledWith(i18n);
+    expect(Link).toBeCalledWith(CustomLinkComponent);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
     const set = jest.fn();
-    (createApp as jest.Mock<{}>).mockImplementation((args) => {
+    createAppSpy.mockImplementationOnce((args) => {
       return {...args, hooks: {set}};
     });
 
@@ -114,7 +121,7 @@ describe('createAppProviderContext()', () => {
     createAppProviderContext({apiKey});
 
     expect(set).toHaveBeenCalledWith(
-      LifecycleHook.DispatchAction,
+      appBridge.LifecycleHook.DispatchAction,
       setClientInterfaceHook,
     );
   });

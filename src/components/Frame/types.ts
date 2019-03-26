@@ -1,3 +1,5 @@
+import {Action} from '../../types';
+
 export interface FrameManager {
   showToast(toast: ToastPropsWithID): void;
   hideToast(toast: ToastID): void;
@@ -57,6 +59,8 @@ export interface ToastProps {
   error?: boolean;
   /** Callback when the dismiss icon is clicked */
   onDismiss(): void;
+  /** Adds an action next to the message (stand-alone app use only) */
+  action?: Action;
 }
 
 export interface ToastID {

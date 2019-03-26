@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
@@ -38,7 +39,7 @@ function Tag({
         onMouseUp={handleMouseUpByBlurring}
         disabled={disabled}
       >
-        <Icon source="cancelSmall" />
+        <Icon source={CancelSmallMinor} />
       </button>
     </span>
   );

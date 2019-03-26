@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
@@ -87,7 +88,7 @@ function Checkbox({
     ? {indeterminate: 'true', 'aria-checked': 'mixed' as 'mixed'}
     : {'aria-checked': isChecked};
 
-  const iconSource = isIndeterminate ? 'subtract' : 'checkmark';
+  const iconSource = isIndeterminate ? MinusMinor : TickSmallMinor;
 
   const inputClassName = classNames(
     styles.Input,
