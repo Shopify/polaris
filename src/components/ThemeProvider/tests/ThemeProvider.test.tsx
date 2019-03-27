@@ -96,4 +96,37 @@ describe('<ThemeProvider />', () => {
       '--top-bar-color': 'rgb(255, 255, 255)',
     });
   });
+
+  it('updates themes', () => {
+    const wrapper = mountWithAppProvider(
+      <ThemeProvider
+        theme={{
+          colors: {
+            topBar: {
+              background: '#108043',
+            },
+          },
+        }}
+      >
+        <p />
+      </ThemeProvider>,
+    );
+
+    wrapper.setProps({
+      theme: {
+        colors: {
+          topBar: {
+            background: '#021123',
+          },
+        },
+      },
+    });
+    wrapper.update();
+
+    expect(wrapper.find('div').props().style).toEqual({
+      '--top-bar-background': '#021123',
+      '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
+      '--top-bar-color': 'rgb(255, 255, 255)',
+    });
+  });
 });
