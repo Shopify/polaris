@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames, variationName} from '@shopify/react-utilities';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -123,7 +124,7 @@ function Button({
 
   const disclosureIconMarkup = disclosure ? (
     <IconWrapper>
-      <Icon source={loading ? 'placeholder' : 'caretDown'} />
+      <Icon source={loading ? 'placeholder' : CaretDownMinor} />
     </IconWrapper>
   ) : null;
 

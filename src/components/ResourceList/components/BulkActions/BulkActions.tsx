@@ -239,6 +239,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
     const cancelButtonClassName = classNames(
       styles.Button,
       styles['Button-cancel'],
+      disabled && styles.disabled,
     );
     const cancelButton = (
       <button
@@ -246,8 +247,9 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
         // eslint-disable-next-line react/jsx-no-bind
         onClick={this.setSelectMode.bind(this, false)}
         testID="btn-cancel"
+        disabled={disabled}
       >
-        Cancel
+        {intl.translate('Polaris.Common.cancel')}
       </button>
     );
 
@@ -265,6 +267,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
               content={intl.translate(
                 'Polaris.ResourceList.BulkActions.actionsActivatorLabel',
               )}
+              disabled={disabled}
             />
           }
           onClose={this.toggleSmallScreenPopover}
@@ -287,6 +290,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
                 {...action}
                 key={index}
                 handleMeasurement={this.handleMeasurement}
+                disabled={disabled}
               />
             ))
         : null;

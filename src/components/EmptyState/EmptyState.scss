@@ -107,3 +107,8 @@ $illustration-width-cropped: calc(
     width: $illustration-width;
   }
 }
+
+.FooterContent {
+  @include text-emphasis-subdued;
+  margin-top: spacing();
+}

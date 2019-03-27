@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CalendarMinor} from '@shopify/polaris-icons';
 import DatePicker, {Months, Year, Range} from '../../../../../DatePicker';
 import Select from '../../../../../Select';
 import TextField from '../../../../../TextField';
@@ -95,7 +96,7 @@ class DateSelector extends React.PureComponent<CombinedProps, State> {
             )}
             value={this.dateTextFieldValue}
             error={userInputDateError}
-            prefix={<Icon source="calendar" color="skyDark" />}
+            prefix={<Icon source={CalendarMinor} color="skyDark" />}
             autoComplete={false}
             onChange={this.handleDateFieldChange}
             onBlur={this.handleDateBlur}

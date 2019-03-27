@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
+import {SaveMinor} from '@shopify/polaris-icons';
 import {noop} from '@shopify/javascript-utilities/other';
 import {Popover, ActionList} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
@@ -33,7 +34,7 @@ describe('<ActionGroup />', () => {
 
   describe('icon', () => {
     it('gets passed into the action', () => {
-      const icon = 'save';
+      const icon = SaveMinor;
       const actionGroup = mountWithAppProvider(
         <ActionGroup {...mockProps} icon={icon} />,
       );

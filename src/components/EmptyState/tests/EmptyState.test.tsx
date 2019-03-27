@@ -1,15 +1,22 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {Image, DisplayText} from 'components';
+import {Image, DisplayText, TextContainer, Link} from 'components';
 import EmptyState from '../EmptyState';
 
 describe('<EmptyState />', () => {
   let imgSrc: string;
+  let footerContentMarkup: React.ReactNode;
   let emptyState: any;
 
   beforeAll(() => {
     imgSrc =
       'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
+    footerContentMarkup = (
+      <p>
+        If you don’t want to add a transfer, you can import your inventory from{' '}
+        <Link url="/settings">settings</Link>.
+      </p>
+    );
 
     emptyState = mountWithAppProvider(
       <EmptyState
@@ -20,6 +27,7 @@ describe('<EmptyState />', () => {
           content: 'Learn more',
           url: 'https://help.shopify.com',
         }}
+        footerContent={footerContentMarkup}
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>,
@@ -28,6 +36,10 @@ describe('<EmptyState />', () => {
 
   it('renders a button with the action content', () => {
     expect(emptyState.find('button').contains('Add transfer')).toBe(true);
+  });
+
+  it('renders children and footer content', () => {
+    expect(emptyState.find(TextContainer)).toHaveLength(2);
   });
 
   describe('img', () => {
@@ -56,6 +68,16 @@ describe('<EmptyState />', () => {
           .find(DisplayText)
           .contains('Manage your inventory transfers'),
       ).toBe(true);
+    });
+  });
+
+  describe('footerContent', () => {
+    it('passes the provided content to TextContainer', () => {
+      const footerContentTextContainer = emptyState.find(TextContainer).last();
+
+      expect(footerContentTextContainer.text()).toContain(
+        'If you don’t want to add a transfer, you can import your inventory from settings.',
+      );
     });
   });
 });

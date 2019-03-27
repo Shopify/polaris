@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {getWidth} from '../../utilities/getWidth';
@@ -78,7 +79,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onBlur={this.handleBlur}
         aria-label="Toggle menu"
       >
-        <Icon source="menu" color="white" />
+        <Icon source={MobileHamburgerMajorMonotone} color="white" />
       </button>
     ) : null;
 
