@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed Search overlay stretching below the viewport
+
 ### Documentation
 
 ### Development workflow
