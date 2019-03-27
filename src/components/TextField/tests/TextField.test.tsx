@@ -190,6 +190,17 @@ describe('<TextField />', () => {
       );
       expect(textField.find('input').prop('autoComplete')).toBe('on');
     });
+
+    it('sets autoComplete to string value when string is given', () => {
+      const textField = shallowWithAppProvider(
+        <TextField
+          label="TextField"
+          autoComplete="happyString"
+          onChange={noop}
+        />,
+      );
+      expect(textField.find('input').prop('autoComplete')).toBe('happyString');
+    });
   });
 
   describe('helpText', () => {
