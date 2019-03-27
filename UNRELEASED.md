@@ -15,6 +15,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added a public `focus` method on `Banner` ([#1219](https://github.com/Shopify/polaris-react/pull/1219))
 - Added an `onScrollToBottom` prop to `Popover.Pane` ([#1248](https://github.com/Shopify/polaris-react/pull/1248))
 
+- Added a `placeholder` prop to `FilterControl` ([#1257](https://github.com/Shopify/polaris-react/pull/1257))
+
 ### Bug fixes
 
 - Fixed disabled states while loading for `ResourceList` ([#1237](https://github.com/Shopify/polaris-react/pull/1237))
