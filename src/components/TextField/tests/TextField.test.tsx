@@ -195,11 +195,11 @@ describe('<TextField />', () => {
       const textField = shallowWithAppProvider(
         <TextField
           label="TextField"
-          autoComplete="happyString"
+          autoComplete="firstName"
           onChange={noop}
         />,
       );
-      expect(textField.find('input').prop('autoComplete')).toBe('happyString');
+      expect(textField.find('input').prop('autoComplete')).toBe('firstName');
     });
   });
 
