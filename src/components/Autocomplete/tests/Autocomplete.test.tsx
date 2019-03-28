@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 import {noop} from '@shopify/javascript-utilities/other';
+import {mountWithAppProvider, trigger} from 'test-utilities';
+import {Spinner} from 'components';
 import Autocomplete from '..';
-import {mountWithAppProvider} from 'test-utilities';
-import Spinner from '../../Spinner';
 import {ComboBox} from '../components';
 
 describe('<Autocomplete/>', () => {
@@ -106,6 +106,26 @@ describe('<Autocomplete/>', () => {
       );
       expect(autocomplete.find(ComboBox).prop('options')).toEqual([]);
       expect(autocomplete.find(ComboBox).prop('contentAfter')).not.toBeNull();
+    });
+  });
+
+  describe('onLoadMoreResults', () => {
+    it('gets called when then end of the option list is reached', () => {
+      const spy = jest.fn();
+      const autocomplete = mountWithAppProvider(
+        <Autocomplete
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          onLoadMoreResults={spy}
+        />,
+      );
+
+      const comboBox = autocomplete.find(ComboBox);
+      trigger(comboBox, 'onEndReached');
+
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 
