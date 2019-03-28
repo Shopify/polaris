@@ -1,40 +1,110 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
 import {TextContainer, Scrollable} from 'components';
+import {mountWithAppProvider, trigger} from 'test-utilities';
 import Pane from '../Pane';
+import Section from '../../Section';
 
 describe('<Pane />', () => {
-  it('renders its children', () => {
-    const children = (
-      <TextContainer>
-        <p>Content</p>
-      </TextContainer>
-    );
-    const pane = mountWithAppProvider(<Pane>{children}</Pane>);
+  describe('fixed', () => {
+    it('does not render content in a Scrollable when set to true', async () => {
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
 
-    expect(pane.contains(children)).toBe(true);
+      const popoverPane = await mountWithAppProvider(
+        <Pane fixed>{children}</Pane>,
+      );
+
+      expect(popoverPane.find(Scrollable)).toHaveLength(0);
+    });
+
+    it('renders content in a Scrollable when set to false', async () => {
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = await mountWithAppProvider(
+        <Pane fixed={false}>{children}</Pane>,
+      );
+
+      expect(popoverPane.find(Scrollable)).toHaveLength(1);
+    });
+
+    it('renders content in a Scrollable when unset', async () => {
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = await mountWithAppProvider(<Pane>{children}</Pane>);
+
+      expect(popoverPane.find(Scrollable)).toHaveLength(1);
+    });
   });
 
-  it('renders a div if fixed', () => {
-    const children = (
-      <TextContainer>
-        <p>Content</p>
-      </TextContainer>
-    );
-    const pane = mountWithAppProvider(<Pane fixed>{children}</Pane>);
+  describe('sectioned', () => {
+    it('renders children in a Section when set to true', async () => {
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
 
-    expect(pane.find('div').exists()).toBe(true);
-    expect(pane.find(Scrollable).exists()).toBe(false);
+      const popoverPane = await mountWithAppProvider(
+        <Pane sectioned>{children}</Pane>,
+      );
+
+      expect(popoverPane.find(Section)).toHaveLength(1);
+    });
+
+    it('does not render content in a Section when set to false', async () => {
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = await mountWithAppProvider(
+        <Pane sectioned={false}>{children}</Pane>,
+      );
+
+      expect(popoverPane.find(Section)).toHaveLength(0);
+    });
+
+    it('does not render content in a Section when unset', async () => {
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = await mountWithAppProvider(<Pane>{children}</Pane>);
+
+      expect(popoverPane.find(Section)).toHaveLength(0);
+    });
   });
 
-  it('renders Scrollable if not fixed', () => {
-    const children = (
-      <TextContainer>
-        <p>Content</p>
-      </TextContainer>
-    );
-    const pane = mountWithAppProvider(<Pane>{children}</Pane>);
+  describe('onScrolledToBottom', () => {
+    it('is set on the Scrollable when provided', async () => {
+      const onScrolledToBottom = jest.fn();
+      const children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
 
-    expect(pane.find(Scrollable).exists()).toBe(true);
+      const popoverPane = await mountWithAppProvider(
+        <Pane onScrolledToBottom={onScrolledToBottom}>{children}</Pane>,
+      );
+
+      trigger(popoverPane.find(Scrollable).first(), 'onScrolledToBottom');
+
+      expect(onScrolledToBottom).toHaveBeenCalled();
+    });
   });
 });
