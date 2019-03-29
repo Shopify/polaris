@@ -27,6 +27,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Removed `button group joined to the bottom of a component` example ([#38](https://github.com/Shopify/polaris-react/pull/1267))
+
 ### Development workflow
 
 ### Dependency upgrades
