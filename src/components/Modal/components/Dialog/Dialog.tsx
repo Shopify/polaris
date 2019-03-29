@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {classNames} from '@shopify/react-utilities/styles';
+import {durationBase} from '@shopify/polaris-tokens';
 
 import {AnimationProps, Key} from '../../../../types';
 
 import KeypressListener from '../../../KeypressListener';
 import TrapFocus from '../../../TrapFocus';
-import {Duration} from '../../../shared';
 
 import styles from './Dialog.scss';
 
@@ -54,7 +54,7 @@ export default function Dialog({
       {...props}
       mountOnEnter
       unmountOnExit
-      timeout={Duration.Base}
+      timeout={durationBase}
       onEntered={onEntered}
       onExited={onExited}
     >
