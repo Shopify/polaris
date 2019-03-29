@@ -8,6 +8,26 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.12.0 - 2019-03-29
+
+### Enhancements
+
+- Added a public `focus` method on `Banner` ([#1219](https://github.com/Shopify/polaris-react/pull/1219))
+- Added an `onScrollToBottom` prop to `Popover.Pane` ([#1248](https://github.com/Shopify/polaris-react/pull/1248))
+- Added a `placeholder` prop to `FilterControl` ([#1257](https://github.com/Shopify/polaris-react/pull/1257))
+- Added support for setting string values on the `TextField` `autoComplete` prop ([#1259](https://github.com/Shopify/polaris-react/pull/1259))
+
+### Bug fixes
+
+- Fixed disabled states while loading for `ResourceList` ([#1237](https://github.com/Shopify/polaris-react/pull/1237))
+- Fixed `Checkbox` from losing focus and not receiving some modified events([#1112](https://github.com/Shopify/polaris-react/pull/1112))
+- Added translation for the cancel button on the `ResourceList` `BulkActions` ([#1243](https://github.com/Shopify/polaris-react/pull/1243))
+- Fixed the `Autocomplete` `onLoadMoreResults` prop not being called on scrolling to the end of the option list ([#1249](https://github.com/Shopify/polaris-react/pull/1249))
+
+### Documentation
+
+- Removed `button group joined to the bottom of a component` example ([#38](https://github.com/Shopify/polaris-react/pull/1267))
+
 ## 3.11.0 - 2019-03-21
 
 ### Enhancements
