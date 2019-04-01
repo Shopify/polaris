@@ -26,7 +26,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Documentation
 
-- Removed `button group joined to the bottom of a component` example ([#38](https://github.com/Shopify/polaris-react/pull/1267))
+- Removed `button group joined to the bottom of a component` example ([#1267](https://github.com/Shopify/polaris-react/pull/1267))
 
 ## 3.11.0 - 2019-03-21
 
