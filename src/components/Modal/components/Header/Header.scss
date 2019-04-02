@@ -10,8 +10,4 @@
   flex: 1;
   margin-top: spacing(extra-tight);
   word-break: break-word;
-
-  @include breakpoint-after($typography-condensed) {
-    margin-top: rem(4px);
-  }
 }
