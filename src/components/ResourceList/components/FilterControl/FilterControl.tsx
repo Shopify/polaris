@@ -212,11 +212,10 @@ export class FilterControl extends React.Component<CombinedProps> {
     const {value: appliedFilterValue} = appliedFilter;
 
     if (filter.type === FilterType.Select) {
-      const foundFilterOption = filter.options.find(
-        (option) =>
-          typeof option === 'string'
-            ? option === appliedFilterValue
-            : option.value === appliedFilterValue,
+      const foundFilterOption = filter.options.find((option) =>
+        typeof option === 'string'
+          ? option === appliedFilterValue
+          : option.value === appliedFilterValue,
       );
 
       if (foundFilterOption) {

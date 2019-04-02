@@ -206,15 +206,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       emptyState,
     } = this.props;
 
-    const actionsBeforeMarkup = actionsBefore &&
-      actionsBefore.length > 0 && (
-        <ActionList actionRole="option" items={actionsBefore} />
-      );
+    const actionsBeforeMarkup = actionsBefore && actionsBefore.length > 0 && (
+      <ActionList actionRole="option" items={actionsBefore} />
+    );
 
-    const actionsAfterMarkup = actionsAfter &&
-      actionsAfter.length > 0 && (
-        <ActionList actionRole="option" items={actionsAfter} />
-      );
+    const actionsAfterMarkup = actionsAfter && actionsAfter.length > 0 && (
+      <ActionList actionRole="option" items={actionsAfter} />
+    );
 
     const optionsMarkup = options.length > 0 && (
       <OptionList

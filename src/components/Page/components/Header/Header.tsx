@@ -257,9 +257,8 @@ class Header extends React.PureComponent<CombinedProps, State> {
   };
 
   private handleActionGroupClose = (group: string) => {
-    this.setState(
-      ({openActionGroup}) =>
-        openActionGroup === group ? {openActionGroup: undefined} : {},
+    this.setState(({openActionGroup}) =>
+      openActionGroup === group ? {openActionGroup: undefined} : {},
     );
   };
 

@@ -117,14 +117,13 @@ export class RangeSlider extends React.PureComponent<CombinedProps, State> {
       ),
     };
 
-    const outputMarkup = !disabled &&
-      output && (
-        <output htmlFor={id} className={styles.Output}>
-          <div className={styles.OutputBubble}>
-            <span className={styles.OutputText}>{value}</span>
-          </div>
-        </output>
-      );
+    const outputMarkup = !disabled && output && (
+      <output htmlFor={id} className={styles.Output}>
+        <div className={styles.OutputBubble}>
+          <span className={styles.OutputText}>{value}</span>
+        </div>
+      </output>
+    );
 
     const prefixMarkup = prefix && (
       <div className={styles.Prefix}>{prefix}</div>

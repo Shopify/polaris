@@ -779,6 +779,14 @@
     "@babel/helper-regex" "^7.4.3"
     regexpu-core "^4.5.4"
 
+"@babel/polyfill@^7.0.0":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.4.3.tgz#332dc6f57b718017c3a8b37b4eea8aa6eeac1187"
+  integrity sha512-rkv8WIvJshA5Ev8iNMGgz5WZkRtgtiPexiT7w5qevGTuT7ZBfM3de9ox1y9JR5/OXb/sWGBbWlHNa7vQKqku3Q==
+  dependencies:
+    core-js "^2.6.5"
+    regenerator-runtime "^0.13.2"
+
 "@babel/preset-env@7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.1.0.tgz#e67ea5b0441cfeab1d6f41e9b5c79798800e8d11"
@@ -1111,7 +1119,7 @@
   resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-1.2.0.tgz#65281775f00663d9a535ea39cff34ebc04e5fa9a"
   integrity sha512-+cyqv/gxGh4llbc84bBb2048Sg7g8ZQeJRNJvk7X3YDGgNyqLXV4MCVJYVeQr0OVGJbyoaPztK+ElnbbioemJA==
 
-"@shopify/async@^1.1.0":
+"@shopify/async@^1.2.1":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@shopify/async/-/async-1.3.0.tgz#febb048e40419dc8d01d1a5e15986247c2f0d8e0"
   integrity sha512-WF+BAwxeC37YAWoVolgGJ0ohD8kSunTZ3n/pw+96JcfT0trelrT6aNwnZ/EjTSbtiUa89HFOqBjTBadMBdglGg==
@@ -1121,10 +1129,20 @@
   resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-1.0.3.tgz#c7172d9c5673f6beaf51ad1a51fefa82b0f06392"
   integrity sha512-PkoBUAy/NKFbngX3ehw9FYUdraU+++IZceAnU0G+g7ukuVfT1I6+aOVRXZQzhasdTV9i71j9ocI8VMQxh1itaA==
 
+"@shopify/fail-on-unexpected-module-shaking-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/fail-on-unexpected-module-shaking-plugin/-/fail-on-unexpected-module-shaking-plugin-1.0.0.tgz#cb4f69e4564081c7255c8333c28d80b267868f8b"
+  integrity sha512-hqxYCLAUb+EddlAF5alKIVpAjuUxvWplLyA4XhK31EkXBZSLUtBC9wetyCQSNIED7QFQpxgaKefkHSvWG6p1Ug==
+
 "@shopify/images@^1.1.4", "@shopify/images@^1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.5.tgz#f7ae5d5801b4550085480825ceda66420d9ff700"
   integrity sha512-DIPOT6ACpmsqYwvh0TQ48PgmZFceuoV8imrxfmCK6HD+zWcE6TWfunKaGEo0DkkdsS+6guGd/aJXe9m+dyBvdQ==
+
+"@shopify/integrity-sha-utils@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/integrity-sha-utils/-/integrity-sha-utils-1.0.0.tgz#a498ffb993888f634c69d850f8ad8c5412e7634e"
+  integrity sha512-aodPuwWufPJBb3BoKvxH3iGqjGVDVDKinS4WHN44swzvwmKzXmgA6JRX5nbsB8QKq8+vR+bX44bfFqCJpXnP5Q==
 
 "@shopify/javascript-utilities@^2.1.0", "@shopify/javascript-utilities@^2.4.0":
   version "2.4.0"
@@ -1167,6 +1185,21 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.3.0.tgz#d4e6c12dd83d6f8b1501fbf415268d60151770f2"
   integrity sha512-/jroX2KTRYrQ9Ht7xbJrU+6pEZR2Iq38mXKT6G+9VB13jOv2Yih27MmitEV71E7g03KTIntKCDOWgR/3ECTb1A==
 
+"@shopify/polyfills@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@shopify/polyfills/-/polyfills-0.0.10.tgz#2f409fc62baf68ab8f0099b624856b904f559d7b"
+  integrity sha512-bMBPVff6pT0AVBPHC0Gdbd8f0UUJ5UM9gIVqBbvwwyzcaIZVO72bXk+erP1Hd1MS2Eqyf37RNQ5i07/NBfIiZA==
+  dependencies:
+    "@babel/polyfill" "^7.0.0"
+    browser-unhandled-rejection "^1.0.2"
+    caniuse-api "^3.0.0"
+    intersection-observer "^0.5.1"
+    intl-pluralrules "^0.2.1"
+    node-fetch "^2.3.0"
+    tslib "^1.9.3"
+    url-search-params-polyfill "^5.0.0"
+    whatwg-fetch "^3.0.0"
+
 "@shopify/react-compose@^0.1.10":
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@shopify/react-compose/-/react-compose-0.1.10.tgz#7121229c82ecb699ffd165b98a17be6126e1d58e"
@@ -1188,15 +1221,23 @@
     classnames "^2.2.5"
     core-js "^2.5.6"
 
-"@shopify/sewing-kit@0.76.1":
-  version "0.76.1"
-  resolved "https://registry.yarnpkg.com/@shopify/sewing-kit/-/sewing-kit-0.76.1.tgz#796244485054d6f8aa3984076fc257b271ab3150"
-  integrity sha512-D7ZaQ1+KixQbbQxDqGKrsFJsyNis++DHpSe8QwHqUQ2T5zmryIkS2MCw0tpj0xUhZiqYYDwHrxAVxkfJVFvX5A==
+"@shopify/sewing-kit@^0.79.2":
+  version "0.79.2"
+  resolved "https://registry.yarnpkg.com/@shopify/sewing-kit/-/sewing-kit-0.79.2.tgz#a2517f6c9f26f01531d488d49466610a922c906e"
+  integrity sha512-L+7qnKythM59ra+G7Wcry76javD6na8+CcKDRdveOg9iWUKLA6mJuwZDsAbcBhwFg32uxQfQwZpW4JaFtn0hPg==
   dependencies:
     "@babel/core" "^7.1.6"
-    "@shopify/async" "^1.1.0"
+    "@shopify/async" "^1.2.1"
     "@shopify/browserslist-config" "^1.0.0"
+    "@shopify/fail-on-unexpected-module-shaking-plugin" "^1.0.0"
     "@shopify/images" "^1.1.4"
+    "@shopify/polyfills" "^0.0.10"
+    "@shopify/webpack-asset-metadata-plugin" "^1.0.0"
+    "@shopify/webpack-ignore-typescript-export-warnings-plugin" "^1.0.0"
+    "@shopify/webpack-no-react-jsx-loader" "^1.0.0"
+    "@shopify/webpack-no-typescript-ts-loader" "^1.0.0"
+    "@shopify/webpack-react-loadable-plugin" "^1.0.0"
+    "@shopify/webpack-section-focus-loader" "^1.0.0"
     "@types/graphql" "^14.0.0"
     "@types/jest" "^23.3.1"
     app-root-dir "^1.0.2"
@@ -1206,7 +1247,7 @@
     babel-loader "^8.0.4"
     babel-plugin-dynamic-import-node "^2.2.0"
     babel-plugin-lodash "^3.3.4"
-    babel-preset-shopify "^17.0.1"
+    babel-preset-shopify "^18.0.0"
     cache-loader "^1.2.5"
     case-sensitive-paths-webpack-plugin "^2.1.2"
     chalk "^2.3.2"
@@ -1283,6 +1324,40 @@
     webpack-plugin-hash-output "npm:webpack-plugin-hash-output-mini-css@3.1.0-beta.4"
     whatwg-url "^6.1.0"
     yargs "^12.0.2"
+
+"@shopify/webpack-asset-metadata-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-asset-metadata-plugin/-/webpack-asset-metadata-plugin-1.0.0.tgz#3ad2e4370fd87a79ca6f94394ca8a16a05c36cf9"
+  integrity sha512-9LIb3HcbXjgA0+WGbDLAsMQBGUAadg1AIc3SoAMBszcjpWafWxrIvW1VyPVEkYz2XnlMnUT5xJXOPGjnWFQSDw==
+  dependencies:
+    "@shopify/integrity-sha-utils" "^1.0.0"
+
+"@shopify/webpack-ignore-typescript-export-warnings-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-ignore-typescript-export-warnings-plugin/-/webpack-ignore-typescript-export-warnings-plugin-1.0.0.tgz#f3e2ab85cf0b28db57be3eb76794fbc55558f31b"
+  integrity sha512-bc5+/0nC9K8y4T1EfZIlKj7F0NZ5Dh8TMVNnbEfPtZx+gpbmDjiAXdhnziUF1eV9tZ767PIQqAUURFJByiFNTg==
+
+"@shopify/webpack-no-react-jsx-loader@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-no-react-jsx-loader/-/webpack-no-react-jsx-loader-1.0.0.tgz#df9eb9bfa0f932e8416434731ebe9200517c34ae"
+  integrity sha512-sOkaErRZDe5X6mJbKSvVcO3dm2SdGeB9Cus79al6QQwBhfUttiMgWB54uIquc/X5wLS9C0Sw9Nv+9CDTEuUTUQ==
+
+"@shopify/webpack-no-typescript-ts-loader@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-no-typescript-ts-loader/-/webpack-no-typescript-ts-loader-1.0.0.tgz#3aee02df41261934935c3b1ff70fcebe8589737b"
+  integrity sha512-0vTd5bky408Vy926QvmEgJw9T3+lZ+V1861q+HHrKOkKqvJQu1AMme+fv4WW+P9LcahfP4X1HSq7dzwJ+68XhA==
+
+"@shopify/webpack-react-loadable-plugin@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-react-loadable-plugin/-/webpack-react-loadable-plugin-1.0.0.tgz#d84f00c7badea6c5b2f01aa9037a7f0025c86be4"
+  integrity sha512-AoM/FouLy5bBQYNEnpQhDvNHekioIXb6YZVIceyFcW8ghvArOgETbmRXrNZ0j/TXyNUrFAuCzgbSCtdoqOXipw==
+  dependencies:
+    "@shopify/integrity-sha-utils" "^1.0.0"
+
+"@shopify/webpack-section-focus-loader@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/webpack-section-focus-loader/-/webpack-section-focus-loader-1.0.0.tgz#64b68540181d0acc1aa6615bb24f4edadabd68e6"
+  integrity sha512-l/c55cUimtu5xAopT337uYLtwCgeYp8JcDNIs9q10mrPlOy/xJeamM+jpraJ3/7hsfEXnmSdrx2PSuJwylZXNg==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
@@ -3268,6 +3343,22 @@ babel-preset-shopify@^17.0.1:
   optionalDependencies:
     react-hot-loader "^4.6.0"
 
+babel-preset-shopify@^18.0.0:
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-shopify/-/babel-preset-shopify-18.0.0.tgz#d470146543b13e8f7292f3012bcaa1fe3e88c248"
+  integrity sha512-SPHGUh9mDZKSL6dN4Kxd6aDaVPmMzHbP0OrkOgMDVrmPumeBp491BMEpNGu3XAaqVZnG48SfFiAkQJ6Hw+qoJQ==
+  dependencies:
+    "@babel/core" "^7.1.6"
+    "@babel/plugin-proposal-class-properties" "^7.1.0"
+    "@babel/plugin-syntax-dynamic-import" "^7.0.0"
+    "@babel/plugin-transform-react-constant-elements" "^7.0.0"
+    "@babel/preset-env" "^7.1.6"
+    "@babel/preset-react" "^7.0.0"
+    babel-plugin-react-test-id "^1.0.2"
+    babel-plugin-transform-inline-environment-variables "^0.4.3"
+  optionalDependencies:
+    react-hot-loader "^4.6.0"
+
 babel-register@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-register/-/babel-register-6.26.0.tgz#6ed021173e2fcb486d7acb45c6009a856f647071"
@@ -3638,6 +3729,11 @@ browser-resolve@^1.11.3:
   integrity sha512-exDi1BYWB/6raKHmDTCicQfTkqwN5fioMFV4j8BsfMU4R2DK/QfZfK7kOVkmWCNANf0snkBzqGqAJBao9gZMdQ==
   dependencies:
     resolve "1.1.7"
+
+browser-unhandled-rejection@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/browser-unhandled-rejection/-/browser-unhandled-rejection-1.0.2.tgz#b0091911a2fd12afa852cc80e2ab0abbae5a92c5"
+  integrity sha512-WKtQ9zDqXEffcNbvcfhrL/g5N8EVcvUWNskhXAlpx6mBD/kxYFKSY6wVAw59gXIrgxYCLk571hhXyWltaNEZ0A==
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
@@ -8617,6 +8713,18 @@ interpret@^1.0.0, interpret@^1.1.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
 
+intersection-observer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.1.tgz#e340fc56ce74290fe2b2394d1ce88c4353ac6dfa"
+  integrity sha512-Zd7Plneq82kiXFixs7bX62YnuZ0BMRci9br7io88LwDyF3V43cQMI+G5IiTlTNTt+LsDUppl19J/M2Fp9UkH6g==
+
+intl-pluralrules@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/intl-pluralrules/-/intl-pluralrules-0.2.1.tgz#ebb5395ae18e4e60912ece3e04b692ac1ea85708"
+  integrity sha512-sBJhZSblYSrzdhdmij0QHp6zyZWpAGbY9qIdytYeLjrhPluWdu7bDD68qXH2Agj0ZGytuCv4LuD1pPW4jlQQGQ==
+  dependencies:
+    make-plural "^4.1.1"
+
 into-stream@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/into-stream/-/into-stream-3.1.0.tgz#96fb0a936c12babd6ff1752a17d05616abd094c6"
@@ -10438,6 +10546,13 @@ make-error@1.x, make-error@^1.3.5:
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.5.tgz#efe4e81f6db28cadd605c70f29c831b58ef776c8"
   integrity sha512-c3sIjNUow0+8swNwVpqoH4YCShKNFkMaw6oH1mNS2haDZQqkeZFlHS3dhoeEbKKmJB4vXpJucU6oH75aDYeE9g==
 
+make-plural@^4.1.1:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/make-plural/-/make-plural-4.3.0.tgz#f23de08efdb0cac2e0c9ba9f315b0dff6b4c2735"
+  integrity sha512-xTYd4JVHpSCW+aqDof6w/MebaMVNTVYBZhbB/vi513xXdiPT92JMVCo0Jq8W2UZnzYRFeVbQiQ+I25l13JuKvA==
+  optionalDependencies:
+    minimist "^1.2.0"
+
 makeerror@1.0.x:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/makeerror/-/makeerror-1.0.11.tgz#e01a5c9109f2af79660e4e8b9587790184f5a96c"
@@ -11022,7 +11137,7 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
-node-fetch@^2.2.0:
+node-fetch@^2.2.0, node-fetch@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
   integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
@@ -15932,6 +16047,11 @@ url-regex@^3.0.0:
   dependencies:
     ip-regex "^1.0.1"
 
+url-search-params-polyfill@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/url-search-params-polyfill/-/url-search-params-polyfill-5.1.0.tgz#f0405dcc2e921bf7f5fdf8c4e616f1e8088ef31b"
+  integrity sha512-yjFY7uw2xRf9e8Mg4ZVkZwtp8dMCC4cbBkEIZiTDpuSY2WJ9+Quw0wRhxncv32qaMQwmBQT+P847rO8PrFhhDA==
+
 url-to-options@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/url-to-options/-/url-to-options-1.0.1.tgz#1505a03a289a48cbd7a434efbaeec5055f5633a9"
@@ -16403,7 +16523,7 @@ whatwg-fetch@2.0.4:
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
   integrity sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==
 
-whatwg-fetch@>=0.10.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
   integrity sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==

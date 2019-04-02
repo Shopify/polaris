@@ -9,12 +9,14 @@ const {semverRegExp, readmes} = require('./utilities');
 const root = resolve(__dirname, '..');
 
 console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
-readmes.map((readme) => resolve(root, readme)).forEach((file) => {
-  writeFileSync(
-    file,
-    readFileSync(file, 'utf8').replace(semverRegExp, newVersion),
-  );
-});
+readmes
+  .map((readme) => resolve(root, readme))
+  .forEach((file) => {
+    writeFileSync(
+      file,
+      readFileSync(file, 'utf8').replace(semverRegExp, newVersion),
+    );
+  });
 
 console.log(`🏃‍♂️ Running \`git add -A ${readmes.join(' ')}\`...`);
 const execOpts = {stdio: 'inherit'};

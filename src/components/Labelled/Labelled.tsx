@@ -48,12 +48,11 @@ export default function Labelled({
     </div>
   ) : null;
 
-  const errorMarkup = error &&
-    typeof error !== 'boolean' && (
-      <div className={styles.Error}>
-        <InlineError message={error} fieldID={id} />
-      </div>
-    );
+  const errorMarkup = error && typeof error !== 'boolean' && (
+    <div className={styles.Error}>
+      <InlineError message={error} fieldID={id} />
+    </div>
+  );
 
   const labelMarkup = label ? (
     <div className={styles.LabelWrapper}>
