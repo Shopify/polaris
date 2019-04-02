@@ -132,18 +132,7 @@ $breakpoint: 768px;
 }
 
 .Cell-sortable {
-  cursor: pointer;
-
-  &:hover {
-    .Heading {
-      @include recolor-icon(color('indigo'));
-      color: color('indigo');
-    }
-
-    .Icon {
-      opacity: 1;
-    }
-  }
+  padding: 0;
 }
 
 .Icon {
@@ -160,6 +149,8 @@ $breakpoint: 768px;
   justify-content: flex-end;
   align-items: baseline;
   transition: color duration() easing();
+  padding: spacing();
+  cursor: pointer;
 
   &:hover,
   &:focus {
