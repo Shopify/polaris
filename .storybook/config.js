@@ -1,10 +1,4 @@
-import {
-  configure,
-  addDecorator,
-  addParameters,
-  getStorybook,
-  setAddon,
-} from '@storybook/react';
+import {configure, addParameters} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
 import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
@@ -17,17 +11,18 @@ import {
 
 addParameters({
   options: {
+    panelPosition: 'bottom',
     theme: create({
       base: 'light',
       brandTitle: 'Shopify Polaris Storybook',
       brandUrl: '/',
-      brandImage: undefined,
+      brandImage: null,
       appBorderRadius: 0,
       appBg: tokens.colorSkyLight,
       contentBg: tokens.colorSkyLight,
       textColor: tokens.colorInk,
-      //   // TODO more pretty brand colors?
-      //   // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
+      // TODO more pretty brand colors?
+      // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
     }),
   },
   percy: {
