@@ -58,7 +58,7 @@
     "dev": "npm-run-all copy-polaris-tokens storybook",
     "test:percy": "yarn run storybook:build && percy-storybook --build_dir build/storybook/static",
     "test:a11y": "yarn run storybook:build && node ./scripts/pa11y.js",
-    "start": "serve -l ${PORT} build/storybook/static ",
+    "start": "serve -l ${PORT} -c .storybook/serve.json",
     "heroku-postbuild": "yarn run storybook:build",
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
