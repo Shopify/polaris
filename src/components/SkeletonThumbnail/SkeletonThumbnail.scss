@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 @mixin skeleton-thumbnail-size($size) {
   height: thumbnail-size($size);
   width: thumbnail-size($size);

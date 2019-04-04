@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $vertical-padding: (control-height() - line-height(body)) / 2;
 $horizontal-padding: spacing(tight);
 $icon-size: rem(20px);

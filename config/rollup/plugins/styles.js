@@ -31,14 +31,10 @@ module.exports = function styles(options = {}) {
     options.exclude,
   );
 
-  const {output, includePaths = [], includeAlways = []} = options;
+  const {output} = options;
   const cssByFile = {};
 
   let inputRoot;
-
-  const includeAlwaysSource = includeAlways
-    .map((resource) => readFileSync(resource, 'utf8'))
-    .join('\n');
 
   const processor = postcss([
     cssModulesValues,
@@ -69,8 +65,8 @@ module.exports = function styles(options = {}) {
       }
 
       const sassOutput = await renderSass({
-        data: `${includeAlwaysSource}\n${source}`,
-        includePaths: includePaths.concat(path.dirname(id)),
+        data: source,
+        includePaths: [path.dirname(id)],
       }).then((result) => result.css.toString());
 
       const postCssOutput = await getPostCSSOutput(processor, sassOutput, id);
