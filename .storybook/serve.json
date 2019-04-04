@@ -1,0 +1,4 @@
+{
+  "public": "./build/storybook/static",
+  "cleanUrls": ["/"]
+}
