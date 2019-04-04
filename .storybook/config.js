@@ -25,6 +25,10 @@ addParameters({
       // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
     }),
   },
+  backgrounds: [
+    {name: 'Sky Light', value: tokens.colorSkyLight, default: true},
+    {name: 'White', value: '#fff'},
+  ],
   percy: {
     skip: true,
     widths: [375, 1280],
