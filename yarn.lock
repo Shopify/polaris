@@ -1378,20 +1378,6 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
   integrity sha512-LAQ1d4OPfSJ/BMbI2DuizmYrrkD9JMaTdi2hQTlI53lQ4kRQPyZQRS4CYQ7O66bnBBnP/oYdRxbk++X0xuFU6A==
 
-"@percy-io/percy-storybook@3.0.0-beta.0":
-  version "3.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@percy-io/percy-storybook/-/percy-storybook-3.0.0-beta.0.tgz#2a6b154cf0c28c51a2fe02fac58b51537430dbb1"
-  integrity sha512-aGwbQnG6F9WoyGfYa+cU+bIFIqxUqqNFS4jI7eAkJpD2PR9wTQZNyGb/3AsK4H/2qZsOUVkyBvx4UVL50A8imQ==
-  dependencies:
-    "@percy/react-percy-api-client" "^0.4.6"
-    babel-runtime "^6.26.0"
-    debug "^3.1.0"
-    es6-error "^4.0.2"
-    es6-promise-pool "^2.4.4"
-    puppeteer "^1.4.0"
-    walk "^2.3.9"
-    yargs "^7.0.2"
-
 "@percy/react-percy-api-client@^0.4.6":
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/@percy/react-percy-api-client/-/react-percy-api-client-0.4.6.tgz#e2b907c39bc0b53ce2da856aad8cec7ab03dac46"
@@ -1403,6 +1389,20 @@
     mime-types "^2.1.14"
     percy-client "^3.0.0"
     slugify "^1.1.0"
+
+"@percy/storybook@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@percy/storybook/-/storybook-3.0.1.tgz#9d08281c7b38477eefaa17119e643f08c890c7a2"
+  integrity sha512-o35H5uEcOUx0tm5CqclUklN+FVL9b98217yB3hIU8lHIL1VlLJ3Je3tO7Ct/x2X7u9rPqK7oIV+BhQPkOGjAlA==
+  dependencies:
+    "@percy/react-percy-api-client" "^0.4.6"
+    babel-runtime "^6.26.0"
+    debug "^3.1.0"
+    es6-error "^4.0.2"
+    es6-promise-pool "^2.4.4"
+    puppeteer "^1.4.0"
+    walk "^2.3.9"
+    yargs "^7.0.2"
 
 "@reach/router@^1.2.1":
   version "1.2.1"
