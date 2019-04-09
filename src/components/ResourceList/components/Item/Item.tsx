@@ -3,6 +3,7 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
+import isEqual from 'lodash/isEqual';
 import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -14,7 +15,11 @@ import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
+import {
+  ResourceListContext,
+  SELECT_ALL_ITEMS,
+  SelectedItems,
+} from '../../types';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
 import styles from './Item.scss';
@@ -54,6 +59,7 @@ export interface State {
   actionsMenuVisible: boolean;
   focused: boolean;
   focusedInner: boolean;
+  selected: boolean;
 }
 
 export type CombinedProps =
@@ -64,15 +70,46 @@ export type CombinedProps =
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
-export class Item extends React.PureComponent<CombinedProps, State> {
+export class Item extends React.Component<CombinedProps, State> {
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
+    const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
+
+    if (prevState.selected === selected) {
+      return null;
+    }
+
+    return {selected};
+  }
+
   state: State = {
     actionsMenuVisible: false,
     focused: false,
     focusedInner: false,
+    selected: isSelected(this.props.id, this.props.context.selectedItems),
   };
 
   private node: HTMLElement | null = null;
   private checkboxId = getUniqueCheckboxID();
+
+  shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
+    const {
+      context: {selectedItems: nextSelectedItems, ...restNextContext},
+      ...restNextProps
+    } = nextProps;
+    const {
+      context: {selectedItems, ...restContext},
+      ...restProps
+    } = this.props;
+
+    const nextSelectMode = nextProps.context.selectMode;
+    return (
+      !isEqual(this.state, nextState) ||
+      this.props.context.selectMode !== nextSelectMode ||
+      (!nextProps.context.selectMode &&
+        (!isEqual(restProps, restNextProps) ||
+          !isEqual(restContext, restNextContext)))
+    );
+  }
 
   render() {
     const {
@@ -88,9 +125,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       context: {selectable, selectMode, loading},
     } = this.props;
 
-    const {actionsMenuVisible, focused, focusedInner} = this.state;
-
-    const selected = this.isSelected();
+    const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
 
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
@@ -296,7 +331,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
     stopPropagation(event);
-    this.handleSelection(!this.isSelected());
+    this.handleSelection(!this.state.selected);
   };
 
   private handleSelection = (value: boolean) => {
@@ -366,18 +401,6 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     this.setState({actionsMenuVisible: false});
   };
 
-  private isSelected() {
-    const {
-      id,
-      context: {selectedItems},
-    } = this.props;
-    return (
-      selectedItems &&
-      ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
-        selectedItems === SELECT_ALL_ITEMS)
-    );
-  }
-
   private compareEventNode(event: React.FocusEvent<HTMLElement>) {
     return this.props.onClick
       ? event.target === this.node
@@ -387,6 +410,14 @@ export class Item extends React.PureComponent<CombinedProps, State> {
 
 function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
+}
+
+function isSelected(id: string, selectedItems?: SelectedItems) {
+  return Boolean(
+    selectedItems &&
+      ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
+        selectedItems === SELECT_ALL_ITEMS),
+  );
 }
 
 export default compose<Props>(
