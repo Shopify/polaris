@@ -12,6 +12,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added an icon and screen reader hint when `Link` opens a new tab ([#1142](https://github.com/Shopify/polaris-react/pull/1247))
+
 ### Bug fixes
 
 - Fixed Search overlay stretching below the viewport
