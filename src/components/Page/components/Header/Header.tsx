@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {
   DisableableAction,
@@ -192,7 +193,7 @@ class Header extends React.PureComponent<CombinedProps, State> {
           activator={
             <Button
               plain
-              icon="horizontalDots"
+              icon={HorizontalDotsMinor}
               onClick={this.handleRollupToggle}
             />
           }
