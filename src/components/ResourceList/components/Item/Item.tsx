@@ -69,6 +69,7 @@ export type CombinedProps =
       WithContextTypes<ResourceListContext>;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
+const ITEM_ID = 'ResourceList-Item-Overlay';
 
 export class Item extends React.Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
@@ -88,8 +89,9 @@ export class Item extends React.Component<CombinedProps, State> {
     selected: isSelected(this.props.id, this.props.context.selectedItems),
   };
 
-  private node: HTMLElement | null = null;
+  private node: HTMLDivElement | null = null;
   private checkboxId = getUniqueCheckboxID();
+  private buttonOverlay = React.createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
     const {
@@ -262,9 +264,8 @@ export class Item extends React.Component<CombinedProps, State> {
         aria-label={accessibilityLabel}
         className={styles.Link}
         url={url}
-        onFocus={this.handleAnchorFocus}
-        onBlur={this.handleFocusedBlur}
         tabIndex={tabIndex}
+        id={ITEM_ID}
       />
     ) : (
       <button
@@ -273,9 +274,8 @@ export class Item extends React.Component<CombinedProps, State> {
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         onClick={this.handleClick}
-        onFocus={this.handleAnchorFocus}
-        onBlur={this.handleFocusedBlur}
         tabIndex={tabIndex}
+        ref={this.buttonOverlay}
       />
     );
 
@@ -286,7 +286,6 @@ export class Item extends React.Component<CombinedProps, State> {
         onClick={this.handleClick}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onMouseDown={this.handleMouseDown}
         onKeyUp={this.handleKeypress}
         testID="Item-Wrapper"
         data-href={url}
@@ -297,36 +296,31 @@ export class Item extends React.Component<CombinedProps, State> {
     );
   }
 
-  private setNode = (node: HTMLElement | null) => {
+  private setNode = (node: HTMLDivElement | null) => {
     this.node = node;
   };
 
-  private handleAnchorFocus = () => {
-    this.setState({focused: true, focusedInner: false});
-  };
-
-  private handleFocusedBlur = () => {
-    this.setState({focused: true, focusedInner: true});
-  };
-
-  private handleFocus = () => {
-    this.setState({focused: true});
-  };
-
-  private handleBlur = (event: React.FocusEvent<HTMLElement>) => {
-    const isInside = this.compareEventNode(event);
+  private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
     if (
-      this.node == null ||
-      !this.node.contains(event.relatedTarget as HTMLElement)
+      event.target === this.buttonOverlay.current ||
+      (this.node && event.target === this.node.querySelector(`#${ITEM_ID}`))
     ) {
-      this.setState({focused: false});
-    } else if (isInside) {
-      this.setState({focusedInner: true});
+      this.setState({focused: true, focusedInner: false});
+    } else if (this.node && this.node.contains(event.target)) {
+      this.setState({focused: true, focusedInner: true});
     }
   };
 
-  private handleMouseDown = () => {
-    this.setState({focusedInner: true});
+  private handleBlur = ({relatedTarget}: React.FocusEvent) => {
+    if (
+      this.node &&
+      relatedTarget instanceof Element &&
+      this.node.contains(relatedTarget)
+    ) {
+      return;
+    }
+
+    this.setState({focused: false, focusedInner: false});
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
@@ -342,7 +336,6 @@ export class Item extends React.Component<CombinedProps, State> {
     if (id == null || onSelectionChange == null) {
       return;
     }
-    this.setState({focused: true, focusedInner: true});
     onSelectionChange(value, id);
   };
 
@@ -400,12 +393,6 @@ export class Item extends React.Component<CombinedProps, State> {
   private handleCloseRequest = () => {
     this.setState({actionsMenuVisible: false});
   };
-
-  private compareEventNode(event: React.FocusEvent<HTMLElement>) {
-    return this.props.onClick
-      ? event.target === this.node
-      : (event.target as HTMLElement).tagName.toLowerCase() === 'a';
-  }
 }
 
 function stopPropagation(event: React.MouseEvent<any>) {
