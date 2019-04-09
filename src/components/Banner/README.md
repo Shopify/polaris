@@ -42,7 +42,7 @@ Banners should:
 - Be placed in the appropriate context:
   - Banners relevant to an entire page should be placed at the top of that page, below the page header. They should occupy the full width of the content area.
   - Banners related to a section of a page (like a card,
-    popover, or modal) should be placed inside that section, below any section heading.
+    popover, or modal) should be placed inside that section, below any section heading. These banners have less spacing and a pared-back design to fit within a content context.
   - Banners related to an element more specific that a section should be placed immediately above or below that element.
 - Focus on a single theme, piece of information, or required action to avoid
   overwhelming merchants.
