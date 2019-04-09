@@ -7,4 +7,22 @@
   body {
     background-color: initial !important;
   }
+
+  /**
+   * Override dynamically generated values to be fixed values instead,
+   * to eliminate false positives due to ever-changing values between Percy
+   * snapshots. See https://docs.percy.io/docs/percy-specific-css.
+   *
+   * Selectors need to be in the format `[class^='Thing']` because compiled
+   * class names have unique suffixes attached to them (for example: `Thing_20YWn`).
+   */
+  @media only percy {
+    [class^='Loading-Level'] {
+      transform: scaleX(0.1) !important;
+    }
+
+    [class^='SkeletonPage-Action'] {
+      width: 80px !important;
+    }
+  }
 </style>
