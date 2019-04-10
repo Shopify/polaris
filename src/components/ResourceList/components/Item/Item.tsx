@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
@@ -178,7 +179,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
                   )}
                   onClick={this.handleActionsClick}
                   plain
-                  icon="horizontalDots"
+                  icon={HorizontalDotsMinor}
                 />
               }
               onClose={this.handleCloseRequest}
