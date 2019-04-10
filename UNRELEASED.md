@@ -8,6 +8,10 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Breaking changes
 
+### Deprecations
+
+- Deprecated Navigation `Item`'s `iconBody` prop. Pass a string into the `icon` prop instead. ([#1299](https://github.com/Shopify/polaris-react/pull/1299))
+
 ### New components
 
 ### Enhancements
