@@ -14,6 +14,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Added an icon and screen reader hint when `Link` opens a new tab ([#1142](https://github.com/Shopify/polaris-react/pull/1247))
 
+– Enhanced `NavigationItem`s colour accessibility for `active`, `focus`, `hover` and `Selected` states([1304](https://github.com/Shopify/polaris-react/pull/1304))
+
 ### Bug fixes
 
 - Fixed Search overlay stretching below the viewport
