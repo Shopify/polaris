@@ -2,8 +2,8 @@ import * as React from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
 import debounce from 'lodash/debounce';
 import {classNames} from '@shopify/react-utilities/styles';
+import {durationBase} from '@shopify/polaris-tokens';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
-import {Duration} from '../../../shared';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import Button from '../../../Button';
@@ -370,7 +370,7 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
               <div className={styles.ButtonGroup}>
                 <CSSTransition
                   in={selectMode}
-                  timeout={Duration.Base}
+                  timeout={durationBase}
                   classNames={slideClasses}
                   appear
                 >

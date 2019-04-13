@@ -7,7 +7,7 @@
 }
 
 .Title {
+  @include text-breakword;
   flex: 1;
   margin-top: spacing(extra-tight);
-  word-break: break-word;
 }

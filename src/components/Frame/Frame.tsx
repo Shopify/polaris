@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
+import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import Button from '../Button';
@@ -10,7 +11,7 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
 import {UserMenuProvider} from '../TopBar';
-import {dataPolarisTopBar, layer, Duration} from '../shared';
+import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
 import {
   ContextualSaveBarProps,
@@ -129,7 +130,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           appear={mobileView}
           exit={mobileView}
           in={showMobileNavigation}
-          timeout={Duration.Base}
+          timeout={durationSlow}
           classNames={navTransitionClasses}
         >
           <div
