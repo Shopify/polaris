@@ -3,7 +3,7 @@ $item-font-size-small: rem(14px);
 $item-line-height-small: rem(32px);
 // This is the only place this color is used.
 // stylelint-disable-next-line color-no-hex
-$item-selected-background: #e2e3f4;
+$item-selected-background: rgba(color(indigo), 0.12);
 $text-line-height: rem(20px);
 $nav-variables: (
   mobile-spacing: rem(10px),
@@ -34,16 +34,16 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: center;
   max-width: 100%;
-  padding: 0 spacing();
+  padding: 0 spacing(tight);
+  margin: 0 spacing(tight);
+  border-radius: border-radius();
   color: color('ink');
   text-decoration: none;
   text-align: left;
+
   &:hover {
-    color: color('black');
-  }
-  &:hover,
-  &:focus {
-    text-decoration: none;
+    @include state(hover);
+
     .Icon {
       @include recolor-icon(
         color('ink', 'lighter'),
@@ -52,12 +52,19 @@ $nav-animation-variables: (
       );
     }
   }
+
   &:focus {
-    color: color('indigo');
+    color: color('indigo', 'dark');
+
+    @include state(focused);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
     .Icon {
       @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
     }
   }
+
   @include breakpoint-after(nav-min-window-corrected()) {
     font-size: $item-font-size-small;
     font-weight: 500;

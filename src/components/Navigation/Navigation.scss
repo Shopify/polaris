@@ -57,9 +57,11 @@ $disabled-fade: 0.6;
   font-weight: 700;
   color: color('indigo', 'dark');
   background-color: $item-selected-background;
-  padding: 0 spacing(tight);
-  margin: 0 spacing(tight);
-  border-radius: border-radius();
+
+  &:focus:active {
+    box-shadow: none;
+    border-radius: border-radius();
+  }
 
   // stylelint-disable selector-max-specificity
   .Icon,
@@ -67,10 +69,6 @@ $disabled-fade: 0.6;
     @include recolor-icon(color('indigo'), color('white'));
   }
   // stylelint-enable selector-max-specificity
-
-  &:hover {
-    color: color('indigo');
-  }
 }
 
 .Item-disabled {
@@ -151,9 +149,11 @@ $secondary-item-font-size: rem(15px);
     font-weight: 400;
     line-height: nav(item-line-height);
     color: color('ink', 'lighter');
-    &:hover,
+    &:hover {
+      color: color('ink');
+    }
     &:focus {
-      color: color('indigo');
+      color: color('indigo', 'dark');
     }
     @include breakpoint-after(nav-min-window-corrected()) {
       font-size: rem(14px);
