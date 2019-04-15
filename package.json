@@ -63,7 +63,9 @@
     "readme-update-version": "node ./scripts/readme-update-version",
     "version": "yarn run readme-update-version",
     "storybook": "start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static"
+    "storybook:build": "yarn run copy-polaris-tokens && build-storybook -o build/storybook/static",
+    "playroom:start": "playroom start",
+    "playroom:build": "playroom build"
   },
   "stylelint": {
     "extends": [
@@ -132,6 +134,7 @@
     "npm-run-all": "^4.0.2",
     "object-hash": "^1.3.0",
     "pa11y": "^5.0.4",
+    "playroom": "^0.9.0",
     "postcss": "^7.0.8",
     "postcss-modules-extract-imports": "^2.0.0",
     "postcss-modules-local-by-default": "^2.0.4",
