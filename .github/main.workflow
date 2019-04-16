@@ -4,7 +4,7 @@ workflow "✨Add new issues to project" {
 }
 
 action "Add new issues to project" {
-  uses = "alex-page/add-new-issue-project@master"
+  uses = "./.github/actions/add-new-issue-project/"
   args = ["🌌 Polaris backlog", "👀 Triage"]
   secrets = ["GITHUB_TOKEN"]
 }
@@ -15,7 +15,7 @@ workflow "✨Add new pulls to projects" {
 }
 
 action "Add new pull requests to project" {
-  uses = "alex-page/add-new-pulls-project@master"
+  uses = "./.github/actions/add-new-pulls-project/"
   args = ["🌌 Polaris backlog", "👀 Triage"]
   secrets = ["GITHUB_TOKEN"]
 }
@@ -26,7 +26,7 @@ workflow "✨Move assigned issues to column" {
 }
 
 action "Move assigned issue to column" {
-  uses = "alex-page/move-assigned-issue-column@master"
+  uses = "./.github/actions/move-assigned-issue-column/"
   args = ["🌌 Polaris backlog", "🚀 In progress"]
   secrets = ["GITHUB_TOKEN"]
 }
@@ -37,7 +37,7 @@ workflow "✨Move assigned pull requests to column" {
 }
 
 action "Move assigned pull requests to column" {
-  uses = "alex-page/move-assigned-pulls-column@master"
+  uses = "./.github/actions/move-assigned-pulls-column/"
   args = ["🌌 Polaris backlog", "🚀 In progress"]
   secrets = ["GITHUB_TOKEN"]
 }
