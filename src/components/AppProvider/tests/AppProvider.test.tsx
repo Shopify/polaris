@@ -1,5 +1,6 @@
 import * as React from 'react';
 import TestUtils from 'react-dom/test-utils';
+import {mount} from 'enzyme';
 import {createThemeContext} from '../../ThemeProvider';
 import {StickyManager, createAppProviderContext} from '../utilities';
 import {polarisAppProviderContextTypes} from '../types';
@@ -49,5 +50,32 @@ describe('<AppProvider />', () => {
 
     // https://github.com/facebook/jest/issues/1772
     expect(JSON.stringify(child.context)).toBe(JSON.stringify(context));
+  });
+
+  it('updates polaris context when props change', () => {
+    const CustomLinkComponent = () => {
+      return <a href="test">Custom Link Component</a>;
+    };
+
+    // eslint-disable-next-line react/prefer-stateless-function
+    class Child extends React.Component {
+      static contextTypes = polarisAppProviderContextTypes;
+
+      render() {
+        return <div />;
+      }
+    }
+
+    const wrapper = mount(
+      <AppProvider>
+        <Child />
+      </AppProvider>,
+    );
+
+    wrapper.setProps({linkComponent: CustomLinkComponent});
+
+    expect(
+      wrapper.find(Child).instance().context.polaris.link.linkComponent,
+    ).toBe(CustomLinkComponent);
   });
 });
