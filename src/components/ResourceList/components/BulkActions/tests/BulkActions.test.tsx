@@ -292,7 +292,7 @@ describe('<BulkActions />', () => {
         );
       });
 
-      it('will not overwrite the disabled comming from a promotedAction', () => {
+      it('will not overwrite the disabled value coming from a promotedAction', () => {
         const bulkActionProps: Props = {
           bulkActions: [],
           promotedActions: [
