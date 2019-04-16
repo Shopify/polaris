@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
-import Checkbox from '../../../../Checkbox';
+import {Checkbox} from 'components';
 import CheckableButton from '../CheckableButton';
 import {Key} from '../../../../../types';
 
