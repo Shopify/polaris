@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex-page/add-new-pulls-project.git"
+    "url": "git+https://github.com/Shopify/polaris-react.git"
   },
   "keywords": [
     "github-actions",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alex-page/add-new-pulls-project/issues"
+    "url": "https://github.com/Shopify/polaris-react/issues"
   },
-  "homepage": "https://github.com/alex-page/add-new-pulls-project#readme",
+  "homepage": "https://github.com/Shopify/polaris-react#readme",
   "dependencies": {
     "actions-toolkit": "^2.0.0"
   }
