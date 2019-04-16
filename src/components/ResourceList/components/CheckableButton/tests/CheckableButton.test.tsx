@@ -2,6 +2,7 @@ import * as React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {Checkbox} from 'components';
 import CheckableButton from '../CheckableButton';
+import {Key} from '../../../../../types';
 
 const CheckableButtonProps = {
   label: 'Test-Label',
@@ -72,6 +73,20 @@ describe('<CheckableButton />', () => {
         .find('div')
         .first()
         .simulate('click');
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('is called when the CheckableButton pressed with spacebar', () => {
+      const spy = jest.fn();
+      const element = mountWithAppProvider(
+        <CheckableButton {...CheckableButtonProps} onToggleAll={spy} />,
+      );
+      element
+        .find(Checkbox)
+        .first()
+        .simulate('click', {
+          keyCode: Key.Space,
+        });
       expect(spy).toHaveBeenCalled();
     });
   });
