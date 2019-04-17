@@ -287,10 +287,10 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
             .slice(0, numberOfPromotedActionsToRender)
             .map((action, index) => (
               <BulkActionButton
+                disabled={disabled}
                 {...action}
                 key={index}
                 handleMeasurement={this.handleMeasurement}
-                disabled={disabled}
               />
             ))
         : null;
