@@ -12,6 +12,6 @@ include:
   - /^LICENSE.md$/
   - /^package.json$/
   - /^tsconfig.json$/
-inProgressMessage: missing an entry in UNRELEASED.md
+inProgressMessage: missing an entry in UNRELEASED.md test
 skipLabel: 🤖 Skip Changelog
 detailsUrl: https://github.com/Shopify/polaris-react/blob/master/UNRELEASED.md
