@@ -34,14 +34,16 @@ export default function Section({
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
       return (
-        <Item
-          key={`${content}-${index}`}
-          content={content}
-          helpText={helpText}
-          role={actionRole}
-          onAction={handleAction(onAction)}
-          {...item}
-        />
+        <p>
+          <Item
+            key={`${content}-${index}`}
+            content={content}
+            helpText={helpText}
+            role={actionRole}
+            onAction={handleAction(onAction)}
+            {...item}
+          />
+        </p>
       );
     },
   );
