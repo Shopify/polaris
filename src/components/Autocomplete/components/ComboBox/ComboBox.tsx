@@ -162,6 +162,8 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       !optionsAreEqual(navigableOptions, prevState.navigableOptions);
 
     if (optionsChanged) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({popoverActive: true, popoverWasActive: true});
       this.updateIndexOfSelectedOption(navigableOptions);
     }
 
