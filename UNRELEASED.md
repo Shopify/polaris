@@ -26,6 +26,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Documentation
 
 - Updated accessibility testing documentation ([#1449](https://github.com/Shopify/polaris-react/pull/1449))
+- Added guidelines for tertiary actions in modals to `Modal` component documentation ([#1336](https://github.com/Shopify/polaris-react/pull/1336))
 
 ### Development workflow
 
