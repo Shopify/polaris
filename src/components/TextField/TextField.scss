@@ -2,7 +2,7 @@ $textfield-backdrop-offset: -(border-width(thick));
 $backdrop-horizontal-spacing: spacing(tight) * 1.5;
 $addon-horizontal-spacing: 0.25em;
 $spinner-icon-size: rem(12px);
-$prefix-horizontal-spacing: rem(8px);
+$prefix-horizontal-spacing: spacing(tight);
 
 $stacking-order: (
   contents: 20,
@@ -14,7 +14,7 @@ $stacking-order: (
   position: relative;
   display: flex;
   align-items: center;
-  color: color('ink', 'lightest');
+  color: color('ink', 'lighter');
   cursor: text;
 }
 
@@ -31,7 +31,7 @@ $stacking-order: (
 }
 
 .hasValue {
-  color: color('ink');
+  color: color('ink', 'lighter');
 }
 
 .focus > .Input,
@@ -167,11 +167,11 @@ $stacking-order: (
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
   margin: 0 $prefix-horizontal-spacing 0 $backdrop-horizontal-spacing;
-  color: color('ink', 'lighter');
+  color: currentColor;
   pointer-events: none;
 
   svg {
-    fill: color('ink', 'lighter');
+    fill: currentColor;
   }
 }
 
