@@ -16,6 +16,10 @@ $stacking-order: (
   align-items: center;
   color: color('ink', 'lighter');
   cursor: text;
+
+  svg {
+    fill: color('ink', 'lighter');
+  }
 }
 
 .multiline {
@@ -75,6 +79,10 @@ $stacking-order: (
   > .Backdrop {
     background-color: color('sky', 'lighter');
     box-shadow: none;
+  }
+
+  svg {
+    fill: color('ink', 'lightest');
   }
 }
 
@@ -169,10 +177,6 @@ $stacking-order: (
   margin: 0 $prefix-horizontal-spacing 0 $backdrop-horizontal-spacing;
   color: currentColor;
   pointer-events: none;
-
-  svg {
-    fill: currentColor;
-  }
 }
 
 .Suffix {
