@@ -1,6 +1,6 @@
 import * as React from 'react';
+import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {noop} from '../../../../utilities/other';
 import Icon from '../../../Icon';
@@ -67,7 +67,7 @@ export default class SearchField extends React.Component<Props, never> {
         className={styles.Clear}
         onClick={this.handleClear}
       >
-        <Icon source="circleCancel" />
+        <Icon source={CircleCancelMinor} />
       </button>
     );
 
@@ -95,7 +95,7 @@ export default class SearchField extends React.Component<Props, never> {
           onKeyDown={preventDefault}
         />
         <span className={styles.Icon}>
-          <Icon source="search" />
+          <Icon source={SearchMinor} />
         </span>
 
         {clearMarkup}
@@ -104,26 +104,23 @@ export default class SearchField extends React.Component<Props, never> {
     );
   }
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     const {onFocus} = this.props;
 
     if (onFocus) {
       onFocus();
     }
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     const {onBlur} = this.props;
 
     if (onBlur) {
       onBlur();
     }
-  }
+  };
 
-  @autobind
-  private handleClear() {
+  private handleClear = () => {
     const {onCancel = noop, onChange} = this.props;
     const {
       input: {current: input},
@@ -136,13 +133,14 @@ export default class SearchField extends React.Component<Props, never> {
       onChange('');
       input.focus();
     }
-  }
+  };
 
-  @autobind
-  private handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
+  private handleChange = ({
+    currentTarget,
+  }: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
     onChange(currentTarget.value);
-  }
+  };
 }
 
 function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {

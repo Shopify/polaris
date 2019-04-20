@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CirclePlusMinor, NoteMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities';
 import {Icon} from 'components';
 import ExceptionList from '../ExceptionList';
@@ -9,12 +10,12 @@ describe('<ExceptionList />', () => {
       <ExceptionList
         items={[
           {
-            icon: 'notes',
+            icon: NoteMinor,
             description:
               'This customer is awesome. Make sure to treat them right!',
           },
           {
-            icon: 'circlePlus',
+            icon: CirclePlusMinor,
             description: 'Add a gift to this order',
           },
         ]}
@@ -28,7 +29,7 @@ describe('<ExceptionList />', () => {
       <ExceptionList
         items={[
           {
-            icon: 'notes',
+            icon: NoteMinor,
             description:
               'This customer is awesome. Make sure to treat them right!',
           },

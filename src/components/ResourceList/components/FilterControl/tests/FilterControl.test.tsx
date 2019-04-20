@@ -22,7 +22,7 @@ describe('<FilterControl />', () => {
     selectMode: false,
     resourceName: {
       singular: 'item',
-      plural: 'items,',
+      plural: 'items',
     },
     selectable: false,
   };
@@ -633,6 +633,37 @@ describe('<FilterControl />', () => {
 
       expect(filterControl.find(FilterCreator).prop('filters')).toMatchObject(
         mockFilters,
+      );
+    });
+  });
+
+  describe('placeholder', () => {
+    it('renders default text if no placeholder passed.', () => {
+      const filterControl = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} filters={mockFilters} />
+        </Provider>,
+      );
+
+      expect(filterControl.find(TextField).prop('placeholder')).toBe(
+        'Search items',
+      );
+    });
+
+    it('renders the placeholder prop value if provided', () => {
+      const placeholder = 'Search by name, email or phone';
+      const filterControl = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={mockFilters}
+            placeholder={placeholder}
+          />
+        </Provider>,
+      );
+
+      expect(filterControl.find(TextField).prop('placeholder')).toBe(
+        'Search by name, email or phone',
       );
     });
   });

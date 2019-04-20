@@ -1,6 +1,5 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {setColors} from './utils';
 import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
 
@@ -60,17 +59,15 @@ export default class ThemeProvider extends React.Component<Props> {
     return <div style={styles}>{React.Children.only(this.props.children)}</div>;
   }
 
-  @autobind
-  subscribe(callback: () => void) {
+  subscribe = (callback: () => void) => {
     this.subscriptions.push(callback);
-  }
+  };
 
-  @autobind
-  unsubscribe(callback: () => void) {
+  unsubscribe = (callback: () => void) => {
     this.subscriptions = this.subscriptions.filter(
       (subscription) => subscription !== callback,
     );
-  }
+  };
 
   createStyles() {
     return this.colors

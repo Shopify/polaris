@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import Button from '../../../../../Button';
 import Popover from '../../../../../Popover';
 import Select from '../../../../../Select';
@@ -131,21 +130,20 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private handleButtonFocus(...args: React.FocusEvent<HTMLButtonElement>[]) {
+  private handleButtonFocus = (
+    ...args: React.FocusEvent<HTMLButtonElement>[]
+  ) => {
     const event = args[0];
     if (!this.node && event) {
       this.node = event.target as HTMLButtonElement;
     }
-  }
+  };
 
-  @autobind
-  private togglePopover(): void {
+  private togglePopover = (): void => {
     this.setState(({popoverActive}) => ({popoverActive: !popoverActive}));
-  }
+  };
 
-  @autobind
-  private handleFilterKeyChange(filterKey: string) {
+  private handleFilterKeyChange = (filterKey: string) => {
     const {filters} = this.props;
 
     const foundFilter = filters.find((filter: any) => {
@@ -179,15 +177,13 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
       selectedFilterKey: filterKey,
       selectedFilterValue: undefined,
     });
-  }
+  };
 
-  @autobind
-  private handleFilterValueChange(filterValue: string) {
+  private handleFilterValueChange = (filterValue: string) => {
     this.setState({selectedFilterValue: filterValue});
-  }
+  };
 
-  @autobind
-  private handleAddFilter() {
+  private handleAddFilter = () => {
     const {onAddFilter} = this.props;
     const {selectedFilterKey} = this.state;
 
@@ -208,7 +204,7 @@ export class FilterCreator extends React.PureComponent<CombinedProps, State> {
     if (this.node != null) {
       this.node.focus();
     }
-  }
+  };
 }
 
 export default withAppProvider<Props>()(FilterCreator);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Breadcrumbs, buttonsFrom, Pagination} from 'components';
 import {LinkAction, ActionListItemDescriptor} from '../../../../../types';
@@ -160,7 +161,7 @@ describe('<Header />', () => {
     });
 
     it('receives the group’s icon', () => {
-      const icon = 'save';
+      const icon = SaveMinor;
       const actionGroups = [fillActionGroup({icon})];
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,

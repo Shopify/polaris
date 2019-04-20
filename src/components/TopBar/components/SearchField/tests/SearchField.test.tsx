@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities';
@@ -62,7 +63,7 @@ describe('<TextField />', () => {
       expect(
         textField
           .find('Icon')
-          .filterWhere((el) => el.prop('source') === 'circleCancel'),
+          .filterWhere((el) => el.prop('source') === CircleCancelMinor),
       ).toHaveLength(1);
     });
 

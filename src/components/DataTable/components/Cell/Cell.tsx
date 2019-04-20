@@ -1,9 +1,10 @@
 import * as React from 'react';
+import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-import Icon, {IconSource} from '../../../Icon';
+import Icon from '../../../Icon';
 import {SortDirection} from '../../types';
 
 import styles from '../../DataTable.scss';
@@ -71,7 +72,7 @@ function Cell({
   };
 
   const direction = sorted ? sortDirection : defaultSortDirection;
-  const source = `caret${direction === 'ascending' ? 'Up' : 'Down'}`;
+  const source = direction === 'ascending' ? CaretUpMinor : CaretDownMinor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 
@@ -82,10 +83,7 @@ function Cell({
 
   const iconMarkup = (
     <span className={iconClassName}>
-      <Icon
-        source={source as IconSource}
-        accessibilityLabel={sortAccessibilityLabel}
-      />
+      <Icon source={source} accessibilityLabel={sortAccessibilityLabel} />
     </span>
   );
 

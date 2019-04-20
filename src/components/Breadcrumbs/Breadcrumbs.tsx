@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ChevronLeftMinor} from '@shopify/polaris-icons';
 
 import Icon from '../Icon';
 import UnstyledLink from '../UnstyledLink';
@@ -25,7 +26,7 @@ export default class Breadcrumbs extends React.PureComponent<Props, never> {
     const contentMarkup = (
       <React.Fragment>
         <span className={styles.Icon}>
-          <Icon source="chevronLeft" />
+          <Icon source={ChevronLeftMinor} />
         </span>
         <span className={styles.Content}>{content}</span>
       </React.Fragment>

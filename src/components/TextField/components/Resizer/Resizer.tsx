@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import EventListener from '../../../EventListener';
 import styles from '../../TextField.scss';
 
@@ -56,8 +55,7 @@ export default class Resizer extends React.PureComponent<Props, never> {
     );
   }
 
-  @autobind
-  private handleHeightCheck() {
+  private handleHeightCheck = () => {
     if (this.contentNode == null || this.minimumLinesNode == null) {
       return;
     }
@@ -73,17 +71,15 @@ export default class Resizer extends React.PureComponent<Props, never> {
     if (newHeight !== currentHeight) {
       onHeightChange(newHeight);
     }
-  }
+  };
 
-  @autobind
-  private setContentNode(node: HTMLElement | null) {
+  private setContentNode = (node: HTMLElement | null) => {
     this.contentNode = node;
-  }
+  };
 
-  @autobind
-  private setMinimumLinesNode(node: HTMLElement | null) {
+  private setMinimumLinesNode = (node: HTMLElement | null) => {
     this.minimumLinesNode = node;
-  }
+  };
 }
 
 const ENTITIES_TO_REPLACE = {

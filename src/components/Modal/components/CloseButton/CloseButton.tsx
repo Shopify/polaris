@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities';
 
 import Icon from '../../../Icon';
@@ -18,7 +19,7 @@ export default function CloseButton({title = true, onClick}: Props) {
 
   return (
     <button onClick={onClick} className={className}>
-      <Icon source="cancel" color="inkLighter" />
+      <Icon source={MobileCancelMajorMonotone} color="inkLighter" />
     </button>
   );
 }

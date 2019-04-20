@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import ThemeProvider from '../ThemeProvider';
 import {
   StickyManager,
@@ -88,15 +87,13 @@ export default class AppProvider extends React.Component<Props> {
     );
   }
 
-  @autobind
-  subscribe(callback: () => void) {
+  subscribe = (callback: () => void) => {
     this.subscriptions.push(callback);
-  }
+  };
 
-  @autobind
-  unsubscribe(callback: () => void) {
+  unsubscribe = (callback: () => void) => {
     this.subscriptions = this.subscriptions.filter(
       (subscription) => subscription !== callback,
     );
-  }
+  };
 }

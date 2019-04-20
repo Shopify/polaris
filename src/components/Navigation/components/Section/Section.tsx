@@ -1,7 +1,6 @@
 import * as React from 'react';
-
+import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind, memoize} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import Collapsible from '../../../Collapsible';
@@ -107,7 +106,7 @@ export default class Section extends React.Component<Props, State> {
             testID="ToggleViewAll"
           >
             <span className={styles.Icon}>
-              <Icon source="horizontalDots" />
+              <Icon source={HorizontalDotsMinor} />
             </span>
             {ariaLabel}
           </button>
@@ -167,7 +166,6 @@ export default class Section extends React.Component<Props, State> {
     );
   }
 
-  @memoize()
   private handleClick(onClick: ItemProps['onClick']) {
     return () => {
       if (onClick) {
@@ -184,8 +182,7 @@ export default class Section extends React.Component<Props, State> {
     };
   }
 
-  @autobind
-  private toggleViewAll() {
+  private toggleViewAll = () => {
     this.setState(({expanded}) => ({expanded: !expanded}));
-  }
+  };
 }

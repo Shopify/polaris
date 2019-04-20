@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
@@ -135,8 +134,7 @@ export default class PositionedOverlay extends React.PureComponent<
     );
   }
 
-  @autobind
-  private overlayDetails(): OverlayDetails {
+  private overlayDetails = (): OverlayDetails => {
     const {measuring, left, positioning, height, activatorRect} = this.state;
 
     return {
@@ -146,15 +144,13 @@ export default class PositionedOverlay extends React.PureComponent<
       positioning,
       activatorRect,
     };
-  }
+  };
 
-  @autobind
-  private setOverlay(node: HTMLElement | null) {
+  private setOverlay = (node: HTMLElement | null) => {
     this.overlay = node;
-  }
+  };
 
-  @autobind
-  private handleMeasurement() {
+  private handleMeasurement = () => {
     const {lockPosition, top} = this.state;
 
     this.setState(
@@ -243,7 +239,7 @@ export default class PositionedOverlay extends React.PureComponent<
         });
       },
     );
-  }
+  };
 }
 
 export function intersectionWithViewport(

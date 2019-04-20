@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {isServer} from '@shopify/react-utilities/target';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Image from '../Image';
@@ -150,15 +149,13 @@ export class Avatar extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  handleError() {
+  handleError = () => {
     this.setState({hasError: true, hasLoaded: false});
-  }
+  };
 
-  @autobind
-  handleLoad() {
+  handleLoad = () => {
     this.setState({hasLoaded: true, hasError: false});
-  }
+  };
 }
 
 function styleClass(name?: string) {

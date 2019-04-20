@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
+import {CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities';
 
 import Icon from '../../../../../Icon';
@@ -44,7 +45,7 @@ export default class BulkActionButton extends React.PureComponent<
 
     const disclosureIconMarkup = disclosure ? (
       <span className={styles.ActionIcon}>
-        <Icon source="caretDown" />
+        <Icon source={CaretDownMinor} />
       </span>
     ) : null;
 

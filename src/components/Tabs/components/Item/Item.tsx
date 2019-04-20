@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import styles from '../../Tabs.scss';
 import UnstyledLink from '../../../UnstyledLink';
@@ -67,8 +66,9 @@ export default class Item extends React.PureComponent<Props, never> {
     return <li role="presentation">{markup}</li>;
   }
 
-  @autobind
-  private setFocusedNode(node: HTMLElement | React.ReactElement<any> | null) {
+  private setFocusedNode = (
+    node: HTMLElement | React.ReactElement<any> | null,
+  ) => {
     this.focusedNode = node;
-  }
+  };
 }

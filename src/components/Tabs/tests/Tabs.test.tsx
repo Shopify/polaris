@@ -229,17 +229,6 @@ describe('<Tabs />', () => {
       expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
     });
 
-    it('resets focus when selected gets updated to the previously selected value', () => {
-      const tabs = mountWithAppProvider(
-        <Tabs {...mockProps} selected={0} tabs={mockTabs} />,
-      );
-      trigger(tabs.find('ul'), 'onKeyUp', {
-        key: 'ArrowRight',
-      });
-      tabs.setProps({selected: 0});
-      expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
-    });
-
     it('passes the provided selected value if given', () => {
       const tabs = mountWithAppProvider(
         <Tabs {...mockProps} selected={1} tabs={mockTabs} />,

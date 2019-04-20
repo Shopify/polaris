@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {classNames} from '@shopify/react-utilities/styles';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
@@ -49,8 +48,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
     );
   }
 
-  @autobind
-  updateToasts() {
+  updateToasts = () => {
     const {toastMessages} = this.props;
 
     let targetInPos = 0;
@@ -69,7 +67,7 @@ export default class ToastManager extends React.PureComponent<Props, never> {
         );
       }
     });
-  }
+  };
 }
 
 const toastClasses = {

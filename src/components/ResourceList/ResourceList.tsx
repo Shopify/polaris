@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
+import debounce from 'lodash/debounce';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
@@ -85,6 +85,20 @@ export class ResourceList extends React.Component<CombinedProps, State> {
   private defaultResourceName: {singular: string; plural: string};
   private listRef: React.RefObject<HTMLUListElement> = React.createRef();
 
+  private handleResize = debounce(() => {
+    const {selectedItems} = this.props;
+    const {selectMode} = this.state;
+
+    if (
+      selectedItems &&
+      selectedItems.length === 0 &&
+      selectMode &&
+      !isSmallScreen()
+    ) {
+      this.handleSelectMode(false);
+    }
+  }, 50);
+
   constructor(props: CombinedProps) {
     super(props);
 
@@ -112,7 +126,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     );
   }
 
-  @autobind
   private get bulkSelectState(): boolean | 'indeterminate' {
     const {selectedItems, items} = this.props;
     let selectState: boolean | 'indeterminate' = 'indeterminate';
@@ -130,7 +143,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     return selectState;
   }
 
-  @autobind
   private get headerTitle() {
     const {
       resourceName = this.defaultResourceName,
@@ -155,7 +167,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     return headerTitleMarkup;
   }
 
-  @autobind
   private get bulkActionsLabel() {
     const {
       selectedItems = [],
@@ -173,7 +184,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     });
   }
 
-  @autobind
   private get bulkActionsAccessibilityLabel() {
     const {
       resourceName = this.defaultResourceName,
@@ -217,7 +227,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  @autobind
   private get paginatedSelectAllText() {
     const {
       hasMoreItems,
@@ -239,7 +248,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  @autobind
   private get paginatedSelectAllAction() {
     const {
       hasMoreItems,
@@ -300,19 +308,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    const {selectedItems} = this.props;
-
-    if (
-      selectedItems &&
-      selectedItems.length > 0 &&
-      (!nextProps.selectedItems || nextProps.selectedItems.length === 0) &&
-      !isSmallScreen()
-    ) {
-      this.setState({selectMode: false});
-    }
-  }
-
   componentDidMount() {
     this.forceUpdate();
     if (this.props.loading) {
@@ -320,7 +315,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  componentDidUpdate({loading: prevLoading, items: prevItems}: Props) {
+  componentDidUpdate({
+    loading: prevLoading,
+    items: prevItems,
+    selectedItems: prevSelectedItems,
+  }: Props) {
+    const {selectedItems, loading} = this.props;
+
     if (
       this.listRef.current &&
       this.itemsExist() &&
@@ -329,8 +330,24 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       this.forceUpdate();
     }
 
-    if (this.props.loading && !prevLoading) {
+    if (loading && !prevLoading) {
       this.setLoadingPosition();
+    }
+
+    if (selectedItems && selectedItems.length > 0 && !this.state.selectMode) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({selectMode: true});
+      return;
+    }
+
+    if (
+      prevSelectedItems &&
+      prevSelectedItems.length > 0 &&
+      (!selectedItems || selectedItems.length === 0) &&
+      !isSmallScreen()
+    ) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({selectMode: false});
     }
   }
 
@@ -441,7 +458,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const headerMarkup = (showHeader || needsHeader) &&
+    const showEmptyState = filterControl && !this.itemsExist() && !loading;
+
+    const headerMarkup = !showEmptyState &&
+      (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
           <Sticky boundingElement={this.listRef.current}>
@@ -478,12 +498,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       );
 
-    const emptyStateMarkup =
-      filterControl && !this.itemsExist() && !loading ? (
-        <div className={styles.EmptySearchResultWrapper}>
-          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
-        </div>
-      ) : null;
+    const emptyStateMarkup = showEmptyState ? (
+      <div className={styles.EmptySearchResultWrapper}>
+        <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+      </div>
+    ) : null;
 
     const defaultTopPadding = 8;
     const topPadding =
@@ -547,24 +566,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     return (items || this.props.items).length > 0;
   }
 
-  @debounce(50)
-  @autobind
-  private handleResize() {
-    const {selectedItems} = this.props;
-    const {selectMode} = this.state;
-
-    if (
-      selectedItems &&
-      selectedItems.length === 0 &&
-      selectMode &&
-      !isSmallScreen()
-    ) {
-      this.handleSelectMode(false);
-    }
-  }
-
-  @autobind
-  private setLoadingPosition() {
+  private setLoadingPosition = () => {
     if (this.listRef.current != null) {
       if (typeof window === 'undefined') {
         return;
@@ -590,10 +592,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
 
       this.setState({loadingPosition: spinnerPosition});
     }
-  }
+  };
 
-  @autobind
-  private handleSelectAllItemsInStore() {
+  private handleSelectAllItemsInStore = () => {
     const {
       onSelectionChange,
       selectedItems,
@@ -609,10 +610,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
-  }
+  };
 
-  @autobind
-  private renderItem(item: any, index: number) {
+  private renderItem = (item: any, index: number) => {
     const {renderItem, idForItem = defaultIdForItem} = this.props;
     const id = idForItem(item, index);
 
@@ -621,10 +621,9 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         {renderItem(item, id)}
       </li>
     );
-  }
+  };
 
-  @autobind
-  private handleSelectionChange(selected: boolean, id: string) {
+  private handleSelectionChange = (selected: boolean, id: string) => {
     const {
       onSelectionChange,
       selectedItems,
@@ -656,19 +655,17 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
-  }
+  };
 
-  @autobind
-  private handleSelectMode(selectMode: boolean) {
+  private handleSelectMode = (selectMode: boolean) => {
     const {onSelectionChange} = this.props;
     this.setState({selectMode});
     if (!selectMode && onSelectionChange) {
       onSelectionChange([]);
     }
-  }
+  };
 
-  @autobind
-  private handleToggleAll() {
+  private handleToggleAll = () => {
     const {
       onSelectionChange,
       selectedItems,
@@ -699,7 +696,7 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
-  }
+  };
 }
 
 function getAllItemsOnPage(

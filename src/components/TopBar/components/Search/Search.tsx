@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import styles from './Search.scss';
 
 export interface Props {
@@ -34,12 +33,11 @@ export default class Search extends React.PureComponent<Props, never> {
     );
   }
 
-  @autobind
-  private handleDismiss({target}: React.MouseEvent<HTMLElement>) {
+  private handleDismiss = ({target}: React.MouseEvent<HTMLElement>) => {
     const {onDismiss} = this.props;
 
     if (onDismiss != null && target === this.node.current) {
       onDismiss();
     }
-  }
+  };
 }

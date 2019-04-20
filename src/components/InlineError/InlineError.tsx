@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {AlertMinor} from '@shopify/polaris-icons';
 
 import Icon from '../Icon';
 import {Error} from '../../types';
@@ -20,7 +21,7 @@ function InlineError({message, fieldID}: Props) {
   return (
     <div id={`${fieldID}Error`} className={styles.InlineError}>
       <div className={styles.Icon}>
-        <Icon source="alert" />
+        <Icon source={AlertMinor} />
       </div>
       {message}
     </div>

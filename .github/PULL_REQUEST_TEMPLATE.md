@@ -8,7 +8,7 @@
 
 ### WHY are these changes introduced?
 
-Resolves #0000 <!-- link to issue if one exists -->
+Fixes #0000 <!-- link to issue if one exists -->
 
 <!--
   Context about the problem that’s being addressed.

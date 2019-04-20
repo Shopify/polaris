@@ -1,10 +1,5 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import OptionList, {OptionDescriptor} from '../../../OptionList';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -125,14 +120,11 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   };
 
   private subscriptions: {(): void}[] = [];
-  private popoverScrollContainer: React.RefObject<
-    HTMLDivElement
-  > = React.createRef();
 
   getChildContext(): Context {
     return {
       comboBoxId: this.state.comboBoxId,
-      selectedOptionId: this.getSelectedOptionId(),
+      selectedOptionId: this.selectedOptionId,
       subscribe: this.subscribe,
       unsubscribe: this.unsubscribe,
     };
@@ -161,15 +153,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   componentDidUpdate(_: Props, prevState: State) {
     const {contentBefore, contentAfter, emptyState} = this.props;
-    const {navigableOptions, popoverActive, popoverWasActive} = this.state;
+    const {navigableOptions, popoverWasActive} = this.state;
     this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
       navigableOptions &&
       prevState.navigableOptions &&
       !optionsAreEqual(navigableOptions, prevState.navigableOptions);
-
-    const popoverChanged = popoverActive === prevState.popoverActive;
 
     if (optionsChanged) {
       this.updateIndexOfSelectedOption(navigableOptions);
@@ -191,10 +181,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({popoverActive: true});
-    }
-
-    if (popoverChanged) {
-      popoverActive ? this.addScrollListener() : this.removeScrollListener();
     }
   }
 
@@ -242,10 +228,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       />
     );
 
-    const scrollListenerMarkup = onEndReached && (
-      <div ref={this.popoverScrollContainer} />
-    );
-
     const emptyStateMarkup = !actionsAfter &&
       !actionsBefore &&
       !contentAfter &&
@@ -283,62 +265,46 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           fullWidth
           preventAutofocus
         >
-          <div
-            id={this.state.comboBoxId}
-            role="listbox"
-            aria-multiselectable={allowMultiple}
-          >
-            {scrollListenerMarkup}
-            {contentBefore}
-            {actionsBeforeMarkup}
-            {optionsMarkup}
-            {actionsAfterMarkup}
-            {contentAfter}
-            {emptyStateMarkup}
-          </div>
+          <Popover.Pane onScrolledToBottom={onEndReached}>
+            <div
+              id={this.state.comboBoxId}
+              role="listbox"
+              aria-multiselectable={allowMultiple}
+            >
+              {contentBefore}
+              {actionsBeforeMarkup}
+              {optionsMarkup}
+              {actionsAfterMarkup}
+              {contentAfter}
+              {emptyStateMarkup}
+            </div>
+          </Popover.Pane>
         </Popover>
       </div>
     );
   }
 
-  @autobind
-  subscribe(callback: () => void) {
+  subscribe = (callback: () => void) => {
     this.subscriptions.push(callback);
-  }
+  };
 
-  @autobind
-  unsubscribe(callback: () => void) {
+  unsubscribe = (callback: () => void) => {
     this.subscriptions = this.subscriptions.filter(
       (subscription) => subscription !== callback,
     );
-  }
+  };
 
-  @autobind
-  private handleDownArrow() {
-    const {selectedIndex, navigableOptions} = this.state;
-    const {onEndReached} = this.props;
-
-    if (
-      navigableOptions &&
-      selectedIndex === navigableOptions.length - 1 &&
-      onEndReached
-    ) {
-      onEndReached();
-    }
+  private handleDownArrow = () => {
     this.selectNextOption();
-
     this.handlePopoverOpen;
-  }
+  };
 
-  @autobind
-  private handleUpArrow() {
+  private handleUpArrow = () => {
     this.selectPreviousOption();
-
     this.handlePopoverOpen;
-  }
+  };
 
-  @autobind
-  private handleEnter() {
+  private handleEnter = () => {
     const {selectedOption} = this.state;
 
     if (this.state.popoverActive && selectedOption) {
@@ -350,46 +316,23 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     }
 
     this.handlePopoverOpen;
-  }
+  };
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({popoverActive: true, popoverWasActive: true});
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({popoverActive: false, popoverWasActive: false}, () => {
       this.resetVisuallySelectedOptions();
     });
-  }
+  };
 
-  @autobind
-  private handleClick() {
+  private handleClick = () => {
     !this.state.popoverActive && this.setState({popoverActive: true});
-  }
+  };
 
-  @autobind
-  private handleScroll() {
-    const {onEndReached} = this.props;
-    if (!onEndReached) {
-      return;
-    }
-
-    if (this.popoverScrollContainer.current) {
-      const scrollContainer = this.popoverScrollContainer.current.parentElement;
-      if (
-        scrollContainer &&
-        scrollContainer.scrollTop >
-          scrollContainer.scrollHeight - scrollContainer.offsetHeight - 1
-      ) {
-        onEndReached();
-      }
-    }
-  }
-
-  @autobind
-  private handleSelection(newSelected: string) {
+  private handleSelection = (newSelected: string) => {
     const {selected, allowMultiple} = this.props;
     let newlySelectedOptions = selected;
     if (selected.includes(newSelected)) {
@@ -401,22 +344,20 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     }
 
     this.selectOptions(newlySelectedOptions);
-  }
+  };
 
-  @autobind
-  private selectOptions(selected: string[]) {
+  private selectOptions = (selected: string[]) => {
     const {onSelect, allowMultiple} = this.props;
     selected && onSelect(selected);
     if (!allowMultiple) {
       this.resetVisuallySelectedOptions();
       this.setState({popoverActive: false, popoverWasActive: false});
     }
-  }
+  };
 
-  @autobind
-  private updateIndexOfSelectedOption(
+  private updateIndexOfSelectedOption = (
     newOptions: (OptionDescriptor | ActionListItemDescriptor)[],
-  ) {
+  ) => {
     const {selectedIndex, selectedOption} = this.state;
     if (selectedOption && newOptions.includes(selectedOption)) {
       this.selectOptionAtIndex(newOptions.indexOf(selectedOption));
@@ -425,10 +366,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     } else {
       this.selectOptionAtIndex(selectedIndex);
     }
-  }
+  };
 
-  @autobind
-  private resetVisuallySelectedOptions() {
+  private resetVisuallySelectedOptions = () => {
     const {navigableOptions} = this.state;
     this.setState({
       selectedOption: undefined,
@@ -438,25 +378,22 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       navigableOptions.forEach((option) => {
         option.active = false;
       });
-  }
+  };
 
-  @autobind
-  private handlePopoverClose() {
+  private handlePopoverClose = () => {
     this.setState({popoverActive: false, popoverWasActive: false});
-  }
+  };
 
-  @autobind
-  private handlePopoverOpen() {
+  private handlePopoverOpen = () => {
     const {popoverActive, navigableOptions} = this.state;
 
     !popoverActive &&
       navigableOptions &&
       navigableOptions.length > 0 &&
       this.setState({popoverActive: true, popoverWasActive: true});
-  }
+  };
 
-  @autobind
-  private selectNextOption() {
+  private selectNextOption = () => {
     const {selectedIndex, navigableOptions} = this.state;
 
     if (!navigableOptions || navigableOptions.length === 0) {
@@ -472,10 +409,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     }
 
     this.selectOptionAtIndex(newIndex);
-  }
+  };
 
-  @autobind
-  private selectPreviousOption() {
+  private selectPreviousOption = () => {
     const {selectedIndex, navigableOptions} = this.state;
 
     if (!navigableOptions || navigableOptions.length === 0) {
@@ -491,10 +427,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     }
 
     this.selectOptionAtIndex(newIndex);
-  }
+  };
 
-  @autobind
-  private selectOptionAtIndex(newOptionIndex: number) {
+  private selectOptionAtIndex = (newOptionIndex: number) => {
     const {navigableOptions, selectedOption: oldSelectedOption} = this.state;
     if (!navigableOptions || navigableOptions.length === 0) {
       return;
@@ -510,48 +445,23 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         this.visuallyUpdateSelectedOption(newSelectedOption, oldSelectedOption);
       },
     );
-  }
+  };
 
-  @autobind
-  private visuallyUpdateSelectedOption(
+  private visuallyUpdateSelectedOption = (
     newOption: OptionDescriptor | ActionListItemDescriptor,
     oldOption: OptionDescriptor | ActionListItemDescriptor | undefined,
-  ) {
+  ) => {
     if (oldOption) {
       oldOption.active = false;
     }
     if (newOption) {
       newOption.active = true;
     }
-  }
+  };
 
-  @autobind
-  private getSelectedOptionId(): string | undefined {
+  private get selectedOptionId(): string | undefined {
     const {selectedOption, selectedIndex, comboBoxId} = this.state;
     return selectedOption ? `${comboBoxId}-${selectedIndex}` : undefined;
-  }
-
-  @autobind
-  private addScrollListener() {
-    this.popoverScrollContainer.current &&
-      this.popoverScrollContainer.current.parentElement &&
-      addEventListener(
-        this.popoverScrollContainer.current.parentElement,
-        'scroll',
-        this.handleScroll,
-        {passive: true},
-      );
-  }
-
-  @autobind
-  private removeScrollListener() {
-    this.popoverScrollContainer.current &&
-      this.popoverScrollContainer.current.parentElement &&
-      removeEventListener(
-        this.popoverScrollContainer.current.parentElement,
-        'scroll',
-        this.handleScroll,
-      );
   }
 }
 

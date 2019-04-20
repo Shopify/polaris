@@ -8,8 +8,8 @@ import {
   ShallowRendererProps,
 } from 'enzyme';
 import * as React from 'react';
-import merge from 'lodash/merge';
 import {get} from '../utilities/get';
+import merge from '../utilities/merge';
 import {PolarisContext} from '../components/types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
@@ -149,7 +149,6 @@ function mergeAppProviderOptions(options: any = {}): any {
   const context = {...createAppProviderContext(), ...createThemeContext()};
 
   return merge(
-    {},
     {
       context,
       childContextTypes: polarisAppProviderContextTypes,

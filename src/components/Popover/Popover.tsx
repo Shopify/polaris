@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {
   focusFirstFocusableNode,
@@ -126,8 +125,7 @@ export default class Popover extends React.PureComponent<Props, State> {
     focusableActivator.setAttribute('aria-expanded', String(this.props.active));
   }
 
-  @autobind
-  private handleClose(source: CloseSource) {
+  private handleClose = (source: CloseSource) => {
     this.props.onClose(source);
 
     if (this.activatorContainer == null) {
@@ -139,10 +137,9 @@ export default class Popover extends React.PureComponent<Props, State> {
     ) {
       focusFirstFocusableNode(this.activatorContainer, false);
     }
-  }
+  };
 
-  @autobind
-  private setActivator(node: HTMLElement | null) {
+  private setActivator = (node: HTMLElement | null) => {
     if (node == null) {
       this.activatorContainer = null;
       this.setState({activatorNode: null});
@@ -151,5 +148,5 @@ export default class Popover extends React.PureComponent<Props, State> {
 
     this.setState({activatorNode: node.firstElementChild as HTMLElement});
     this.activatorContainer = node;
-  }
+  };
 }

@@ -289,6 +289,111 @@ class PopoverFormExample extends React.Component {
 }
 ```
 
+### Popover with lazy loaded list
+
+<!-- example-for: web -->
+
+Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
+
+```jsx
+class PopoverLazyLoadExample extends React.Component {
+  state = {
+    visibleStaffIndex: 5,
+    active: true,
+  };
+
+  staff = [
+    'Abbey Mayert',
+    'Abbi Senger',
+    'Abdul Goodwin',
+    'Abdullah Borer',
+    'Abe Nader',
+    'Abigayle Smith',
+    'Abner Torphy',
+    'Abraham Towne',
+    'Abraham Vik',
+    'Ada Fisher',
+    'Adah Pouros',
+    'Adam Waelchi',
+    'Adan Zemlak',
+    'Addie Wehner',
+    'Addison Wexler',
+    'Alex Hernandez',
+  ];
+
+  render() {
+    const {active, visibleStaffIndex} = this.state;
+
+    const activator = (
+      <Button onClick={this.togglePopover} disclosure>
+        View staff
+      </Button>
+    );
+
+    const staffList = this.staff.slice(0, visibleStaffIndex).map((name) => ({
+      name,
+      initials: this.getInitials(name),
+    }));
+
+    return (
+      <Card sectioned>
+        <div style={{height: '280px'}}>
+          <Popover
+            sectioned
+            active={active}
+            activator={activator}
+            onClose={this.togglePopover}
+          >
+            <Popover.Pane onScrolledToBottom={this.handleScrolledToBottom}>
+              <ResourceList items={staffList} renderItem={this.renderItem} />
+            </Popover.Pane>
+          </Popover>
+        </div>
+      </Card>
+    );
+  }
+
+  handleScrolledToBottom = () => {
+    const {visibleStaffIndex} = this.state;
+    const totalIndexes = this.staff.length;
+    const interval =
+      visibleStaffIndex + 3 < totalIndexes
+        ? 3
+        : totalIndexes - visibleStaffIndex;
+
+    if (interval > 0) {
+      this.setState({visibleStaffIndex: visibleStaffIndex + interval});
+    }
+  };
+
+  togglePopover = () => {
+    this.setState(({active}) => {
+      return {active: !active};
+    });
+  };
+
+  renderItem = ({name, initials}) => {
+    return (
+      <ResourceList.Item
+        id={name}
+        media={<Avatar size="medium" name={name} initials={initials} />}
+      >
+        {name}
+      </ResourceList.Item>
+    );
+  };
+
+  getInitials = (name) => {
+    return name
+      .split(' ')
+      .map((surnameOrFamilyName) => {
+        return surnameOrFamilyName.slice(0, 1);
+      })
+      .join('');
+  };
+}
+```
+
 ### Action sheet
 
 <!-- example-for: ios -->

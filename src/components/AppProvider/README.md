@@ -175,10 +175,11 @@ With a `theme`, the app provider component will set light, dark, and text colors
 class ProviderThemeExample extends React.Component {
   state = {
     isDirty: false,
+    searchFieldValue: '',
   };
 
   render() {
-    const {isDirty} = this.state;
+    const {isDirty, searchFieldValue} = this.state;
 
     const theme = {
       colors: {
@@ -197,7 +198,13 @@ class ProviderThemeExample extends React.Component {
       },
     };
 
-    const searchFieldMarkup = <TopBar.SearchField placeholder="Search" />;
+    const searchFieldMarkup = (
+      <TopBar.SearchField
+        placeholder="Search"
+        value={searchFieldValue}
+        onChange={this.handleSearchChange}
+      />
+    );
 
     const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
 
@@ -247,6 +254,10 @@ class ProviderThemeExample extends React.Component {
     );
   }
 
+  handleSearchChange = (searchFieldValue) => {
+    this.setState({searchFieldValue});
+  };
+
   toggleState = (key) => {
     return () => {
       this.setState((prevState) => ({[key]: !prevState[key]}));
@@ -263,10 +274,11 @@ Provide specific keys and corresponding colors to the [top bar](/components/stru
 class ProviderThemeExample extends React.Component {
   state = {
     isDirty: false,
+    searchFieldValue: '',
   };
 
   render() {
-    const {isDirty} = this.state;
+    const {isDirty, searchFieldValue} = this.state;
 
     const theme = {
       colors: {
@@ -287,7 +299,13 @@ class ProviderThemeExample extends React.Component {
       },
     };
 
-    const searchFieldMarkup = <TopBar.SearchField placeholder="Search" />;
+    const searchFieldMarkup = (
+      <TopBar.SearchField
+        placeholder="Search"
+        value={searchFieldValue}
+        onChange={this.handleSearchChange}
+      />
+    );
 
     const topBarMarkup = <TopBar searchField={searchFieldMarkup} />;
 
@@ -336,6 +354,10 @@ class ProviderThemeExample extends React.Component {
       </div>
     );
   }
+
+  handleSearchChange = (searchFieldValue) => {
+    this.setState({searchFieldValue});
+  };
 
   toggleState = (key) => {
     return () => {

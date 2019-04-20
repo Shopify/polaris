@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
+import {durationBase} from '@shopify/polaris-tokens';
 import {Transition} from 'react-transition-group';
 
 import {Key} from '../../../../types';
-import {overlay, Duration} from '../../../shared';
+import {overlay} from '../../../shared';
 import EventListener from '../../../EventListener';
 import KeypressListener from '../../../KeypressListener';
 import PositionedOverlay, {
@@ -62,12 +62,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   render() {
     const {active} = this.props;
     return (
-      <Transition
-        in={active}
-        timeout={Duration.Fast}
-        mountOnEnter
-        unmountOnExit
-      >
+      <Transition in={active} timeout={durationBase} mountOnEnter unmountOnExit>
         {this.renderOverlay}
       </Transition>
     );
@@ -90,8 +85,7 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
     });
   }
 
-  @autobind
-  private renderOverlay(transitionStatus: TransitionStatus) {
+  private renderOverlay = (transitionStatus: TransitionStatus) => {
     const {
       active,
       activator,
@@ -115,13 +109,12 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         onScrollOut={this.handleScrollOut}
       />
     );
-  }
+  };
 
-  @autobind
-  private renderPopover(
+  private renderPopover = (
     transitionStatus: TransitionStatus,
     overlayDetails: OverlayDetails,
-  ) {
+  ) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
     const {id, children, sectioned, fullWidth, fullHeight} = this.props;
@@ -175,10 +168,9 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         />
       </div>
     );
-  }
+  };
 
-  @autobind
-  private handleClick(event: Event) {
+  private handleClick = (event: Event) => {
     const target = event.target as HTMLElement;
     const {
       contentNode,
@@ -196,27 +188,23 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
       return;
     }
     onClose(CloseSource.Click);
-  }
+  };
 
-  @autobind
-  private handleScrollOut() {
+  private handleScrollOut = () => {
     this.props.onClose(CloseSource.ScrollOut);
-  }
+  };
 
-  @autobind
-  private handleEscape() {
+  private handleEscape = () => {
     this.props.onClose(CloseSource.EscapeKeypress);
-  }
+  };
 
-  @autobind
-  private handleFocusFirstItem() {
+  private handleFocusFirstItem = () => {
     this.props.onClose(CloseSource.FocusOut);
-  }
+  };
 
-  @autobind
-  private handleFocusLastItem() {
+  private handleFocusLastItem = () => {
     this.props.onClose(CloseSource.FocusOut);
-  }
+  };
 }
 
 function renderPopoverContent(

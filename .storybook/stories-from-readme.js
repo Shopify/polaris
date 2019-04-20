@@ -1,13 +1,8 @@
 import * as React from 'react';
 import * as Polaris from '../src';
-import {checkA11y} from '@storybook/addon-a11y';
+import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf} from '@storybook/react';
 import Playground from '../playground/Playground';
-
-function percyOptions(custom = {}) {
-  const defaults = {skip: true, widths: [375, 1280]};
-  return {...defaults, ...custom};
-}
 
 /**
  * In most cases we want to test the "All Examples" page as fewer snapshots
@@ -29,27 +24,23 @@ export function generateStories(readme, readmeModule) {
 
   storiesOf(`All Components|${readme.name}`, readmeModule)
     .addDecorator(AppProviderDecorator)
-    .addDecorator(checkA11y)
-    .addWithPercyOptions(
-      'All Examples',
-      percyOptions({skip: testIndividualExamples}),
-      () => AllExamplesStoryForReadme(readme),
-    );
+    .addDecorator(withA11y)
+    .addParameters({
+      percy: {skip: testIndividualExamples},
+    })
+    .add('All Examples', () => AllExamplesStoryForReadme(readme));
 
   readme.examples.forEach((example) => {
     storiesOf(`All Components|${readme.name}`, readmeModule)
       .addDecorator(AppProviderDecorator)
-      .addDecorator(checkA11y)
+      .addDecorator(withA11y)
       .addParameters({
         // TODO links use styleguide-style URLs. It'd be neat to mutate them
         // to deeplink to examples in storybook.
         notes: example.description,
+        percy: {skip: !testIndividualExamples},
       })
-      .addWithPercyOptions(
-        example.name,
-        percyOptions({skip: !testIndividualExamples}),
-        () => <example.Component />,
-      );
+      .add(example.name, () => <example.Component />);
   });
 }
 
@@ -63,9 +54,9 @@ export function hydrateExecutableExamples(readme) {
 }
 
 export function addPlaygroundStory(playgroundModule) {
-  storiesOf('Playground', playgroundModule)
+  storiesOf('Playground|Playground', playgroundModule)
     .addDecorator(AppProviderDecorator)
-    .addWithPercyOptions('Playground', percyOptions(), () => <Playground />);
+    .add('Playground', () => <Playground />);
 }
 
 function AppProviderDecorator(story) {

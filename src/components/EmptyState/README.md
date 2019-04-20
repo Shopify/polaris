@@ -163,6 +163,30 @@ Use to explain a single feature before merchants have used it.
 </EmptyState>
 ```
 
+### Empty state with subdued footer context
+
+Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
+
+```jsx
+<EmptyState
+  heading="Manage your inventory transfers"
+  action={{content: 'Add transfer'}}
+  secondaryAction={{content: 'Learn more', url: 'https://help.shopify.com'}}
+  footerContent={
+    <p>
+      If you don’t want to add a transfer, you can import your inventory from{' '}
+      <Link monochrome url="/settings">
+        settings
+      </Link>
+      .
+    </p>
+  }
+  image="https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg"
+>
+  <p>Track and receive your incoming inventory from suppliers.</p>
+</EmptyState>
+```
+
 <!-- content-for: android -->
 
 ![Default empty state](/public_images/components/EmptyState/android/default@2x.png)

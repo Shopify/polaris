@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
-import {autobind, debounce} from '@shopify/javascript-utilities/decorators';
+import debounce from 'lodash/debounce';
 import {
   addEventListener,
   removeEventListener,
@@ -157,6 +157,29 @@ export class DropZone extends React.Component<CombinedProps, State> {
   private dropNode: HTMLElement | HTMLDocument | null = null;
   private dragTargets: EventTarget[] = [];
   private fileInputNode: HTMLInputElement;
+
+  private adjustSize = debounce(
+    () => {
+      if (!this.node) {
+        return;
+      }
+
+      let size = 'extraLarge';
+      const width = this.node.getBoundingClientRect().width;
+
+      if (width < 100) {
+        size = 'small';
+      } else if (width < 160) {
+        size = 'medium';
+      } else if (width < 300) {
+        size = 'large';
+      }
+
+      this.setState({size});
+    },
+    50,
+    {trailing: true},
+  );
 
   constructor(props: CombinedProps) {
     super(props);
@@ -339,47 +362,23 @@ export class DropZone extends React.Component<CombinedProps, State> {
     }
   }
 
-  @autobind
-  private triggerFileDialog() {
+  private triggerFileDialog = () => {
     this.open();
 
     if (this.props.onFileDialogClose) {
       this.props.onFileDialogClose();
     }
-  }
+  };
 
-  @autobind
-  private open() {
+  private open = () => {
     if (!this.fileInputNode) {
       return;
     }
 
     this.fileInputNode.click();
-  }
+  };
 
-  @autobind
-  @debounce(50, {trailing: true})
-  private adjustSize() {
-    if (!this.node) {
-      return;
-    }
-
-    let size = 'extraLarge';
-    const width = this.node.getBoundingClientRect().width;
-
-    if (width < 100) {
-      size = 'small';
-    } else if (width < 160) {
-      size = 'medium';
-    } else if (width < 300) {
-      size = 'large';
-    }
-
-    this.setState({size});
-  }
-
-  @autobind
-  private getValidatedFiles(files: File[] | DataTransferItem[]) {
+  private getValidatedFiles = (files: File[] | DataTransferItem[]) => {
     const {accept, allowMultiple, customValidator} = this.props;
 
     const acceptedFiles: File[] = [];
@@ -406,25 +405,22 @@ export class DropZone extends React.Component<CombinedProps, State> {
       acceptedFiles,
       rejectedFiles,
     };
-  }
+  };
 
-  @autobind
-  private setNode(node: HTMLElement | null) {
+  private setNode = (node: HTMLElement | null) => {
     const {dropOnPage} = this.props;
 
     this.node = node;
     this.dropNode = dropOnPage ? document : node;
 
     this.adjustSize();
-  }
+  };
 
-  @autobind
-  private setInputNode(node: HTMLInputElement) {
+  private setInputNode = (node: HTMLInputElement) => {
     this.fileInputNode = node;
-  }
+  };
 
-  @autobind
-  private handleClick(event: React.MouseEvent<HTMLElement>) {
+  private handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const {numFiles} = this.state;
     const {onClick, disabled, allowMultiple} = this.props;
 
@@ -433,10 +429,9 @@ export class DropZone extends React.Component<CombinedProps, State> {
     }
 
     return onClick ? onClick(event) : this.open();
-  }
+  };
 
-  @autobind
-  private handleDrop(event: DragEvent) {
+  private handleDrop = (event: DragEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -479,10 +474,9 @@ export class DropZone extends React.Component<CombinedProps, State> {
       onDropRejected(rejectedFiles);
     }
     (event.target as HTMLInputElement).value = '';
-  }
+  };
 
-  @autobind
-  private handleDragEnter(event: DragEvent) {
+  private handleDragEnter = (event: DragEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -510,10 +504,9 @@ export class DropZone extends React.Component<CombinedProps, State> {
     if (onDragEnter) {
       onDragEnter();
     }
-  }
+  };
 
-  @autobind
-  private handleDragOver(event: DragEvent) {
+  private handleDragOver = (event: DragEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -529,10 +522,9 @@ export class DropZone extends React.Component<CombinedProps, State> {
     }
 
     return false;
-  }
+  };
 
-  @autobind
-  private handleDragLeave(event: DragEvent) {
+  private handleDragLeave = (event: DragEvent) => {
     event.preventDefault();
 
     const {numFiles} = this.state;
@@ -555,7 +547,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
     if (onDragLeave) {
       onDragLeave();
     }
-  }
+  };
 }
 
 function handleDragStart(event: React.DragEvent<HTMLDivElement>) {

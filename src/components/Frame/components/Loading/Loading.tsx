@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {debounce} from '@shopify/javascript-utilities/decorators';
+import debounce from 'lodash/debounce';
 import styles from './Loading.scss';
 
 export interface Props {}
@@ -19,6 +19,11 @@ export default class Loading extends React.Component<Props, State> {
     step: INITIAL_STEP,
     animation: null,
   };
+
+  private ariaValuenow = debounce(() => {
+    const {progress} = this.state;
+    return Math.floor(progress / 10) * 10;
+  }, 15);
 
   componentDidMount() {
     this.increment();
@@ -69,11 +74,5 @@ export default class Loading extends React.Component<Props, State> {
       step: INITIAL_STEP ** -(progress / 25),
       animation,
     });
-  }
-
-  @debounce(15)
-  private ariaValuenow() {
-    const {progress} = this.state;
-    return Math.floor(progress / 10) * 10;
   }
 }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 
 import {getWidth} from '../../../../utilities/getWidth';
 
@@ -123,12 +122,11 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  @autobind
-  private toggleDiscardConfirmationModal() {
+  private toggleDiscardConfirmationModal = () => {
     this.setState((prevState) => ({
       discardConfirmationModalVisible: !prevState.discardConfirmationModalVisible,
     }));
-  }
+  };
 }
 
 export default withAppProvider<Props>()(ContextualSaveBar);

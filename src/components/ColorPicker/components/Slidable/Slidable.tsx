@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import EventListener from '../../../EventListener';
 import styles from '../../ColorPicker.scss';
 
@@ -96,35 +95,30 @@ export default class Slidable extends React.PureComponent<Props, State> {
     );
   }
 
-  @autobind
-  private setDraggerNode(node: HTMLElement | null) {
+  private setDraggerNode = (node: HTMLElement | null) => {
     this.draggerNode = node;
-  }
+  };
 
-  @autobind
-  private setNode(node: HTMLElement | null) {
+  private setNode = (node: HTMLElement | null) => {
     this.node = node;
-  }
+  };
 
-  @autobind
-  private startDrag(
+  private startDrag = (
     event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
-  ) {
+  ) => {
     if (event.type === 'mousedown') {
       const mouseEvent = event as React.MouseEvent<HTMLDivElement>;
       this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
     }
 
     this.setState({dragging: true});
-  }
+  };
 
-  @autobind
-  private handleDragEnd() {
+  private handleDragEnd = () => {
     this.setState({dragging: false});
-  }
+  };
 
-  @autobind
-  private handleMove(event: MouseEvent | TouchEvent) {
+  private handleMove = (event: MouseEvent | TouchEvent) => {
     event.stopImmediatePropagation();
     event.stopPropagation();
     event.preventDefault();
@@ -140,10 +134,9 @@ export default class Slidable extends React.PureComponent<Props, State> {
       touchEvent.touches[0].clientX,
       touchEvent.touches[0].clientY,
     );
-  }
+  };
 
-  @autobind
-  private handleDraggerMove(x: number, y: number) {
+  private handleDraggerMove = (x: number, y: number) => {
     if (this.node == null) {
       return;
     }
@@ -154,5 +147,5 @@ export default class Slidable extends React.PureComponent<Props, State> {
     const offsetX = x - rect.left;
     const offsetY = y - rect.top;
     onChange({x: offsetX, y: offsetY});
-  }
+  };
 }

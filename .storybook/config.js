@@ -1,14 +1,6 @@
-import {
-  configure,
-  addDecorator,
-  getStorybook,
-  setAddon,
-} from '@storybook/react';
+import {configure, addParameters} from '@storybook/react';
 import {setConsoleOptions} from '@storybook/addon-console';
-import {withNotes} from '@storybook/addon-notes';
-import {withOptions} from '@storybook/addon-options';
-import {themes} from '@storybook/components';
-import createPercyAddon from '@percy-io/percy-storybook';
+import {create} from '@storybook/theming';
 import tokens from '@shopify/polaris-tokens';
 
 import {
@@ -17,31 +9,31 @@ import {
   hydrateExecutableExamples,
 } from './stories-from-readme';
 
-// addon-options
-addDecorator(
-  withOptions({
-    name: 'Shopify Polaris Storybook',
-    url: '/',
-    hierarchySeparator: /\//,
-    hierarchyRootSeparator: /\|/,
-    theme: {
-      ...themes.normal,
-      mainTextSize: '16',
-      mainBorderRadius: 0,
-      mainBackground: tokens.colorSkyLight,
-      mainTextColor: tokens.colorInk,
-      dimmedTextColor: tokens.colorInkLighter,
-      successColor: tokens.colorGreenDark,
-      failColor: tokens.colorRedDark,
-      warnColor: tokens.colorOrange,
+addParameters({
+  options: {
+    panelPosition: 'bottom',
+    theme: create({
+      base: 'light',
+      brandTitle: 'Shopify Polaris Storybook',
+      brandUrl: '/',
+      brandImage: null,
+      appBorderRadius: 0,
+      appBg: tokens.colorSkyLight,
+      contentBg: tokens.colorSkyLight,
+      textColor: tokens.colorInk,
       // TODO more pretty brand colors?
-      // SEE https://github.com/storybooks/storybook/blob/next/lib/components/src/theme.js
-    },
-  }),
-);
-
-// addon-notes
-addDecorator(withNotes);
+      // SEE https://github.com/storybooks/storybook/blob/next/docs/src/pages/configurations/theming/index.md
+    }),
+  },
+  backgrounds: [
+    {name: 'Sky Light', value: tokens.colorSkyLight, default: true},
+    {name: 'White', value: '#fff'},
+  ],
+  percy: {
+    skip: true,
+    widths: [375, 1280],
+  },
+});
 
 // addon-console
 setConsoleOptions((opts) => {
@@ -56,10 +48,6 @@ setConsoleOptions((opts) => {
   ];
   return opts;
 });
-
-// percy-storybook
-const {percyAddon, serializeStories} = createPercyAddon();
-setAddon(percyAddon);
 
 // import all README.md files within component folders
 const readmeReq = require.context(
@@ -77,5 +65,3 @@ function loadStories() {
 }
 
 configure(loadStories, module);
-
-serializeStories(getStorybook);

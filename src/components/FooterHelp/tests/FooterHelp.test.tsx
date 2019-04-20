@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {QuestionMarkMajorTwotone} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities';
 import {Icon} from 'components';
 import FooterHelp from '../FooterHelp';
@@ -17,6 +18,6 @@ describe('<FooterHelp />', () => {
   });
 
   it('renders the help icon', () => {
-    expect(footerHelp.find(Icon).prop('source')).toBe('help');
+    expect(footerHelp.find(Icon).prop('source')).toBe(QuestionMarkMajorTwotone);
   });
 });

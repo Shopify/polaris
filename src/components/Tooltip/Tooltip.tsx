@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
@@ -98,8 +97,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     );
   }
 
-  @autobind
-  private setActivator(node: HTMLElement | null) {
+  private setActivator = (node: HTMLElement | null) => {
     if (node == null) {
       this.activatorContainer = null;
       this.setState({activatorNode: null});
@@ -108,27 +106,23 @@ export default class Tooltip extends React.PureComponent<Props, State> {
 
     this.setState({activatorNode: node.firstElementChild as HTMLElement});
     this.activatorContainer = node;
-  }
+  };
 
-  @autobind
-  private handleFocus() {
+  private handleFocus = () => {
     this.setState({active: true});
-  }
+  };
 
-  @autobind
-  private handleBlur() {
+  private handleBlur = () => {
     this.setState({active: false});
-  }
+  };
 
-  @autobind
-  private handleMouseEnter() {
+  private handleMouseEnter = () => {
     this.setState({active: true});
-  }
+  };
 
-  @autobind
-  private handleMouseLeave() {
+  private handleMouseLeave = () => {
     this.setState({active: false});
-  }
+  };
 
   private setAccessibilityAttributes() {
     const {activatorContainer, id} = this;

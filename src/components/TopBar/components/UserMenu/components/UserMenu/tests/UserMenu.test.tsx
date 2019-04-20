@@ -1,13 +1,13 @@
 import * as React from 'react';
+import {NotificationMajorMonotone} from '@shopify/polaris-icons';
+
 import {ReactWrapper} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Menu from '../../../../Menu';
 import UserMenu from '../UserMenu';
 
-const actions = [
-  {items: [{icon: 'notification' as 'notification', onAction: noop}]},
-];
+const actions = [{items: [{icon: NotificationMajorMonotone, onAction: noop}]}];
 const message = {
   title: 'test message',
   description: 'test description',

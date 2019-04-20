@@ -70,6 +70,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  pointer-events: none;
 }
 
 .Icon {
@@ -80,6 +81,7 @@
   transform: translate(-50%, -50%) scale(0);
   transform-origin: 50% 50%;
   transition: control-icon-transition();
+  pointer-events: none;
 
   @media (-ms-high-contrast: active) {
     fill: ms-high-contrast-color('text');

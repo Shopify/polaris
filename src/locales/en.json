@@ -30,7 +30,9 @@
 
     "Common": {
       "checkbox": "checkbox",
-      "undo": "Undo"
+      "undo": "Undo",
+      "cancel": "Cancel",
+      "newWindowAccessibilityHint": "(opens a new window)"
     },
 
     "ContextualSaveBar": {
