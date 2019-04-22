@@ -12,11 +12,11 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Deprecations
 
-- Deprecated Navigation `Item`'s `iconBody` prop. Pass a string into the `icon` prop instead. ([#1299](https://github.com/Shopify/polaris-react/pull/1299))
+- Deprecated Navigation `Item`’s `iconBody` prop. Pass a string into the `icon` prop instead. ([#1299](https://github.com/Shopify/polaris-react/pull/1299))
 
 ### Enhancements
 
-- Added an onChange handler to `CheckableButton` ([#1326](https://github.com/Shopify/polaris-react/pull/1326))
+- Added an `onChange` handler to `CheckableButton` ([#1326](https://github.com/Shopify/polaris-react/pull/1326))
 - `Labelled` now wraps its content, no longer causing a `label + action` to get unreasonably squished ([#1309](https://github.com/Shopify/polaris-react/pull/1309))
 - Updated `polaris-tokens` from `2.3.0` to `2.5.0` and converted all use of `duration` values ([#1268](https://github.com/Shopify/polaris-react/pull/1268))
 - More consistent use of `text-breakword` mixin ([#1306](https://github.com/Shopify/polaris-react/pull/1306))
@@ -52,7 +52,7 @@ Upgraded Storybook to v5 ([#1140](https://github.com/Shopify/polaris-react/pull/
 - Updated `ResourceList` to no longer use `componentWillReceiveProps`([#1235](https://github.com/Shopify/polaris-react/pull/1235))
 - Updated `Tabs` to no longer use `componentWillReceiveProps`([#1221](https://github.com/Shopify/polaris-react/pull/1221))
 - Removed an unneeded media query from Modal's `Header` component ([#1272](https://github.com/Shopify/polaris-react/pull/1272))
-- Replaces all instances where we pass a string representing a bundled icon into `Button`. Prefer passing in the React Component from `@shopify/polaris-icons` ([#1297](https://github.com/Shopify/polaris-react/pull/1297))
+- Replaced all instances where we pass a string representing a bundled icon into `Button`. Prefer passing in the React Component from `@shopify/polaris-icons` ([#1297](https://github.com/Shopify/polaris-react/pull/1297))
 
 ## 3.12.0 - 2019-03-29
 
