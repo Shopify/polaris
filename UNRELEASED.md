@@ -16,7 +16,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Added background into media query for Microsoft high contrast to fix accessibility for low vision friendly skeleton. ([#1341](https://github.com/Shopify/polaris-react/pull/1341))
+- Added background into media query for Microsoft high contrast to fix skeleton accessibility. ([#1341](https://github.com/Shopify/polaris-react/pull/1341))
 
 ### Documentation
 
