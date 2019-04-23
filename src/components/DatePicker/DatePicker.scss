@@ -81,6 +81,10 @@ $in-range-border-color: #9ca6de;
   &:hover {
     background: darken(color('indigo', 'light'), 5%);
   }
+
+  @media screen and (-ms-high-contrast: active) {
+    background: ms-high-contrast-color('selected-text-background');
+  }
 }
 
 .Day-selected {
