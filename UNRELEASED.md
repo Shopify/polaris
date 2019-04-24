@@ -25,6 +25,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
+- Bump react-utilites to remove a transitive dependency on core-js. ([#1343](https://github.com/Shopify/polaris-react/pull/1343))
+
 ### Code quality
 
 ### Deprecations
