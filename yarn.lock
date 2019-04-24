@@ -1415,10 +1415,10 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@shopify/app-bridge@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-1.1.2.tgz#d5d614d799e527f956b962ea8082a4f1cbd39597"
-  integrity sha512-DzjQV52DS8i0VZB0b2Mcf+btBV/lC+47TZbtg6tcTXcgn+TXWh5ynm8niahAwMpMZR8/HlFQdZ1utxbN6kZQzA==
+"@shopify/app-bridge@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-1.3.0.tgz#1c3dfb1b3e10041a3d639a219bc7010051f5fa97"
+  integrity sha512-h4/RGKsLUej4gE6/XVXoOa3lG7xRUfwYvV+xfFkyoI7xZWNa8RmfKtgnzPBIxRBIWkeQBoms7hWuYuqO9RENLw==
 
 "@shopify/browserslist-config@^0.0.2-beta.2":
   version "0.0.2-beta.2"
