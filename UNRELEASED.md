@@ -21,6 +21,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Added accessibility documentation for `VisuallyHidden`. ([#1348](https://github.com/Shopify/polaris-react/pull/1348))
+
 ### Development workflow
 
 ### Dependency upgrades
