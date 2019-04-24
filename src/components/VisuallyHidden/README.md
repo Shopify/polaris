@@ -95,3 +95,33 @@ Whenever one or more table columns has no need for a visible header, hide the he
   </tbody>
 </table>
 ```
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The visually hidden component styles text so that it is not visible, but it is available to assistive technologies like screen readers and other text to speech programs.
+
+The component should not be used to hide content that is interactive.
+
+<!-- /content-for -->
