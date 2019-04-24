@@ -122,6 +122,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 The visually hidden component styles text so that it is not visible, but it is available to assistive technologies like screen readers and other text to speech programs.
 
-The component should not be used to hide content that is interactive.
+The component shouldn’t be used to hide interactive content.
 
 <!-- /content-for -->
