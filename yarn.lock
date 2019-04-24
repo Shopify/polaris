@@ -1491,10 +1491,10 @@
   dependencies:
     hoist-non-react-statics "^3.0.1"
 
-"@shopify/react-utilities@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-2.0.3.tgz#424421e7202b402ec7934c137b5b7e035fbeb33c"
-  integrity sha512-Mq0xbWPlufbx7ABH7cup2SQYVmhBFO6bAdAWUEkh8mWY56l2Bpb+VUffmwYmxxcBvtej/lgCCBvG60Vrxcb66g==
+"@shopify/react-utilities@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-2.0.4.tgz#0cf22e9a1c926dd3ff25e6fde7a161f06f4212e4"
+  integrity sha512-F6kFjKZNKU2svbWWctJ71e2Zk48Jb1CR95hj5XxG2MD529akESbI06y16ngtpiuYZlKLvE+CTiVUZqBZ/9uLKQ==
   dependencies:
     "@shopify/javascript-utilities" "^2.1.0"
     "@types/classnames" "^2.2.3"
@@ -1502,7 +1502,6 @@
     "@types/react" "^16.3.14"
     "@types/react-dom" "^16.0.5"
     classnames "^2.2.5"
-    core-js "^2.5.6"
 
 "@shopify/sewing-kit@0.69.0":
   version "0.69.0"
@@ -5411,7 +5410,7 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^2.0.0, core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.3, core-js@^2.5.6, core-js@^2.5.7, core-js@^2.6.5:
+core-js@^2.0.0, core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.3, core-js@^2.5.7, core-js@^2.6.5:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha512-klh/kDpwX8hryYL14M9w/xei6vrv6sE8gTHDG7/T/+SEovB/G4ejwcfE/CBzO6Edsu+OETZMZ3wcX/EjUkrl5A==
