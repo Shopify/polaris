@@ -20,8 +20,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
-- Updated accessibilty documentation for `Link` to reflect new behavior of the `external` prop. ([#1347](https://github.com/Shopify/polaris-react/pull/1347))
-
 ### Development workflow
 
 ### Dependency upgrades
