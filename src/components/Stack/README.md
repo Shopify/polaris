@@ -185,6 +185,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The stack component is for alignment only. It does not provide any structural information for assistive technologies. To convey relationships between specific items, consider using the [list component](https://polaris.shopify.com/components/lists-and-tables/list).
+The stack component is for alignment only. It does not provide any structural information for assistive technologies. To convey relationships between specific items, consider using the [list component](/components/lists-and-tables/list).
 
 <!-- /content-for -->
