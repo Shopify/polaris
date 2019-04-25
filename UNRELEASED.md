@@ -31,6 +31,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added high contrast colour to `Loading` to make it visible in the high contrast mode in Windows ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 - Fixed the position calculation of the `PositionedOverlay` component after scroll ([#1382](https://github.com/Shopify/polaris-react/pull/1382))
 - Fixed styling issue for Pagination component previous/next buttons when tooltips present ([#1277](https://github.com/Shopify/polaris-react/pull/1277))
+- Fixed a regression introduced in Polaris v3 where certain children of a `TextContainer` would have no top margin ([#1357](https://github.com/Shopify/polaris-react/pull/1357))
 
 ### Documentation
 
