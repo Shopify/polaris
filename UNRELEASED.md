@@ -15,6 +15,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Improved the performance of `ResourceList` ([#1313](https://github.com/Shopify/polaris-react/pull/1313))
+- Added an action prop to `Tabs` ([#1373](https://github.com/Shopify/polaris-react/pull/1373))
 
 ### Bug fixes
 

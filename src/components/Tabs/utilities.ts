@@ -4,10 +4,14 @@ export function getVisibleAndHiddenTabIndices(
   tabs: TabDescriptor[],
   selected: number,
   disclosureWidth: number,
+  actionWidth: number,
   tabWidths: number[],
   containerWidth: number,
 ) {
-  const sumTabWidths = tabWidths.reduce((sum, width) => sum + width, 0);
+  const sumTabWidths = tabWidths.reduce(
+    (sum, width) => sum + width + actionWidth,
+    0,
+  );
 
   const arrayOfTabIndices = tabs.map((_, index) => {
     return index;
@@ -24,7 +28,10 @@ export function getVisibleAndHiddenTabIndices(
 
     arrayOfTabIndices.forEach((index) => {
       if (index !== selected) {
-        if (newTabWidth + tabWidths[index] > containerWidth - disclosureWidth) {
+        if (
+          newTabWidth + tabWidths[index] >
+          containerWidth - (disclosureWidth + actionWidth)
+        ) {
           hiddenTabs.push(index);
           return;
         }

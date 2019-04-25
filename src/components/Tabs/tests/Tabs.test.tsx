@@ -139,6 +139,18 @@ describe('<Tabs />', () => {
     });
   });
 
+  describe('action', () => {
+    it('sets an action tab when given the action prop', () => {
+      const actions = {content: 'title'};
+
+      const wrapper = mountWithAppProvider(
+        <Tabs {...mockProps} action={actions} />,
+      );
+
+      expect(wrapper.prop('action')).toEqual(actions);
+    });
+  });
+
   describe('selected', () => {
     let panelStub: {focus: jest.Mock<any>};
     let originalGetElementByID: (typeof document)['getElementById'];
@@ -353,10 +365,12 @@ describe('<Tabs />', () => {
       const disclosureWidth = 50;
       const tabWidths = [82, 160, 150, 100, 80, 120];
       const containerWidth = 300;
+      const actionWidth = 0;
       const actualIndices = getVisibleAndHiddenTabIndices(
         mockTabs,
         selected,
         disclosureWidth,
+        actionWidth,
         tabWidths,
         containerWidth,
       );

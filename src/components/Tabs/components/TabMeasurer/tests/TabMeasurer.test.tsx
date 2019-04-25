@@ -4,11 +4,18 @@ import {mountWithAppProvider} from 'test-utilities';
 import TabMeasurer from '../TabMeasurer';
 import Tab from '../../Tab';
 import Item from '../../Item';
+import Action from '../../Action';
 
 describe('<TabMeasurer />', () => {
   const mockProps = {
     tabToFocus: 0,
     activator: <Item id="id" focused />,
+    action: (
+      <div>
+        {' '}
+        <Action />{' '}
+      </div>
+    ),
     selected: 1,
     tabs: [
       {

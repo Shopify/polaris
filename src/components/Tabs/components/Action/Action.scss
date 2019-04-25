@@ -1,0 +1,64 @@
+$difference-between-touch-area-and-backdrop: control-height() -
+  control-slim-height();
+
+.Action {
+  @include unstyled-button;
+  @include text-style-body;
+  position: relative;
+  display: inline-flex;
+  height: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: color('blue');
+
+  &:hover,
+  &:active {
+    outline: none;
+    color: color('blue', 'dark');
+
+    .ActionIcon {
+      @include recolor-icon(color('ink'), color('white'));
+    }
+  }
+
+  &:focus,
+  &:active {
+    &::after {
+      background: plain-button-background();
+    }
+  }
+
+  &.disabled {
+    color: color('ink', 'lightest');
+    cursor: default;
+    pointer-events: none;
+
+    .ActionIcon {
+      @include recolor-icon(color('ink', 'lightest'));
+      padding: 0 spacing();
+    }
+  }
+}
+
+.ActionContent {
+  height: 100%;
+  padding: 0 spacing();
+}
+
+.ActionIcon {
+  @include recolor-icon(color('ink', 'lighter'), color('white'));
+  padding: 0 spacing();
+}
+
+.Action-outline {
+  @include button-base;
+  @include button-outline(color('ink', 'lighter'));
+
+  &.disabled {
+    @include button-outline-disabled(color('ink', 'lighter'));
+  }
+}

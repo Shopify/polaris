@@ -197,3 +197,66 @@ Also known as [Segmented controls](https://developer.apple.com/design/human-inte
 ![Fixed tabs on iOS](/public_images/components/Tabs/ios/fixed@2x.png)
 
 <!-- /content-for -->
+
+### Tab with Action
+
+Use when tabs contain a few (2 or 3) items within a narrow column.
+
+```jsx
+class FittedTabsExample extends React.Component {
+  state = {
+    selected: 0,
+  };
+
+  handleTabChange = (selectedTabIndex) => {
+    this.setState({selected: selectedTabIndex});
+  };
+
+  render() {
+    const {selected} = this.state;
+
+    const tabs = [
+      {
+        id: 'all-customers',
+        content: 'All',
+        accessibilityLabel: 'All customers',
+        panelID: 'all-customers-content',
+      },
+      {
+        id: 'accepts-marketing',
+        content: 'Accepts marketing',
+        panelID: 'accepts-marketing-content',
+      },
+    ];
+
+    return (
+      <Card>
+        <Tabs
+          tabs={tabs}
+          selected={selected}
+          onSelect={this.handleTabChange}
+          action={{content: 'More Info'}}
+        >
+          <Card.Section title={tabs[selected].content}>
+            <p>Tab {selected} selected</p>
+          </Card.Section>
+        </Tabs>
+      </Card>
+    );
+  }
+}
+```
+
+<!-- content-for: android -->
+
+![Fixed tabs on Android](/public_images/components/Tabs/android/fixed@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+Also known as [Segmented controls](https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/) on iOS.
+
+![Fixed tabs on iOS](/public_images/components/Tabs/ios/fixed@2x.png)
+
+<!-- /content-for -->

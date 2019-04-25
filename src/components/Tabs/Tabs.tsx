@@ -2,16 +2,25 @@ import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-
+import {IconableAction, DisableableAction} from '../../types';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
-import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
+import {
+  List,
+  Panel,
+  Tab,
+  TabMeasurer,
+  TabMeasurements,
+  Action,
+} from './components';
 
 import styles from './Tabs.scss';
+
+export interface Action extends IconableAction, DisableableAction {}
 
 export interface Props {
   /** Content to display in tabs */
@@ -22,12 +31,15 @@ export interface Props {
   tabs: TabDescriptor[];
   /** Fit tabs to container */
   fitted?: boolean;
+  /** Collection of secondary actions */
+  action?: Action;
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
 
 export interface State {
   disclosureWidth: number;
+  actionWidth: number;
   tabWidths: number[];
   visibleTabs: number[];
   hiddenTabs: number[];
@@ -40,11 +52,12 @@ export default class Tabs extends React.PureComponent<Props, State> {
   static Panel = Panel;
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const {disclosureWidth, tabWidths, containerWidth} = prevState;
+    const {disclosureWidth, actionWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       nextProps.tabs,
       nextProps.selected,
       disclosureWidth,
+      actionWidth,
       tabWidths,
       containerWidth,
     );
@@ -58,6 +71,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
   state: State = {
     disclosureWidth: 0,
+    actionWidth: 0,
     containerWidth: Infinity,
     tabWidths: [],
     visibleTabs: [],
@@ -107,6 +121,8 @@ export default class Tabs extends React.PureComponent<Props, State> {
       </button>
     );
 
+    const actionMarkup = this.renderAction();
+
     return (
       <div>
         <ul
@@ -133,10 +149,13 @@ export default class Tabs extends React.PureComponent<Props, State> {
               />
             </Popover>
           </li>
+          <li className={styles.ActionTab}>{actionMarkup}</li>
         </ul>
+
         <TabMeasurer
           tabToFocus={tabToFocus}
           activator={activator}
+          action={actionMarkup}
           selected={selected}
           tabs={tabs}
           siblingTabHasFocus={tabToFocus > -1}
@@ -278,11 +297,13 @@ export default class Tabs extends React.PureComponent<Props, State> {
       hiddenTabWidths: tabWidths,
       containerWidth,
       disclosureWidth,
+      actionWidth,
     } = measurements;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       tabs,
       selected,
       disclosureWidth,
+      actionWidth,
       tabWidths,
       containerWidth,
     );
@@ -292,6 +313,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
       visibleTabs,
       hiddenTabs,
       disclosureWidth,
+      actionWidth,
       containerWidth,
       tabWidths,
     });
@@ -308,8 +330,17 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const selectedIndex = tabs.indexOf(tab);
     onSelect(selectedIndex);
   };
-}
 
+  private renderAction = () => {
+    const {action = {}} = this.props;
+
+    const renderActionMarkup = action ? (
+      <Action {...action}>{action.content}</Action>
+    ) : null;
+
+    return <span>{renderActionMarkup}</span>;
+  };
+}
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 

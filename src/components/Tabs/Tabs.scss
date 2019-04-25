@@ -2,6 +2,7 @@ $item-min-height: rem(16px);
 $item-min-width: rem(50px);
 $item-vertical-padding: $item-min-height / 2;
 $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
+$action-horizontal-padding: (1.5 * spacing(tight));
 
 .Tabs {
   display: flex;
@@ -157,6 +158,13 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .DisclosureTab-visible {
   display: flex;
+}
+
+.ActionTab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
 }
 
 .DisclosureActivator {

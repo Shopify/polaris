@@ -12,6 +12,7 @@ import styles from '../../Tabs.scss';
 export interface TabMeasurements {
   containerWidth: number;
   disclosureWidth: number;
+  actionWidth: number;
   hiddenTabWidths: number[];
 }
 
@@ -19,6 +20,7 @@ export interface Props {
   tabToFocus: number;
   siblingTabHasFocus: boolean;
   activator: React.ReactElement<{}>;
+  action: JSX.Element | null;
   selected: number;
   tabs: TabDescriptor[];
   handleMeasurement(measurements: TabMeasurements): void;
@@ -48,6 +50,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       selected,
       tabs,
       activator,
+      action,
       tabToFocus,
       siblingTabHasFocus,
     } = this.props;
@@ -76,6 +79,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
         <EventListener event="resize" handler={this.handleMeasurement} />
         {tabsMarkup}
         {activator}
+        {action}
       </div>
     );
   }
@@ -89,7 +93,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       return;
     }
 
-    const {handleMeasurement} = this.props;
+    const {handleMeasurement, action} = this.props;
     const containerWidth = this.containerNode.offsetWidth;
     const tabMeasurerNode = findDOMNode(this);
     const hiddenTabNodes =
@@ -98,11 +102,15 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
     const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
       return node.getBoundingClientRect().width;
     });
+
+    const actionWidth = action ? (hiddenTabWidths.pop() as number) : 0;
+
     const disclosureWidth = hiddenTabWidths.pop() as number;
 
     handleMeasurement({
       containerWidth,
       disclosureWidth,
+      actionWidth,
       hiddenTabWidths,
     });
   };

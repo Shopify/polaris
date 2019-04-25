@@ -6,6 +6,8 @@ export {default as Panel, Props as PanelProps} from './Panel';
 
 export {default as Tab, Props as TabProps} from './Tab';
 
+export {default as Action, Props as ActionProps} from './Action';
+
 export {
   default as TabMeasurer,
   Props as TabMeasurerProps,
