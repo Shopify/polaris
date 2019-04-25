@@ -1,6 +1,5 @@
 @mixin text-container-spacing($spacing: base) {
-  // stylelint-disable-next-line selector-max-combinators
-  > * + * {
+  > *:not(:first-child) {
     margin-top: (spacing($spacing));
   }
 }
