@@ -21,6 +21,13 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Updated `Link` accessibility documentation for the `external` prop to reflect new behavior. ([#1347](https://github.com/Shopify/polaris-react/pull/1347))
+- Added accessibility documentation for `VisuallyHidden`. ([#1348](https://github.com/Shopify/polaris-react/pull/1348))
+- Added accessibility documentation for `TextStyle`. ([#1350](https://github.com/Shopify/polaris-react/pull/1350))
+- Added accessibility guidance for `Heading` and `Subheading`. ([#1351](https://github.com/Shopify/polaris-react/pull/1351))
+- Added accessibility documentation for `List` and `Stack`. ([#1353](https://github.com/Shopify/polaris-react/pull/1353))
+- Added accessibility guidance for `DisplayText`. ([#1354](https://github.com/Shopify/polaris-react/pull/1354))
+
 ### Development workflow
 
 ### Dependency upgrades
