@@ -25,6 +25,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added accessibility documentation for `TextStyle`. ([#1350](https://github.com/Shopify/polaris-react/pull/1350))
 - Added accessibility guidance for `Heading` and `Subheading`. ([#1351](https://github.com/Shopify/polaris-react/pull/1351))
 - Added accessibility documentation for `List` and `Stack`. ([#1353](https://github.com/Shopify/polaris-react/pull/1353))
+- Added accessibility guidance for `DisplayText`. ([#1354](https://github.com/Shopify/polaris-react/pull/1354))
 
 ### Development workflow
 
