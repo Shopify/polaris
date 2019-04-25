@@ -574,7 +574,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The required `title` prop gives the callout card a level 2 heading (`<h2>`) . This helps with readability and provides structure to screen reader users.
+The required `title` prop gives the card a level 2 heading (`<h2>`) . This helps with readability and provides structure to screen reader users.
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
 
