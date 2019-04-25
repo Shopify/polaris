@@ -242,13 +242,13 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Items in an option list are implemented in an unordered list (`<ul>`) with list items (`<li>`) so they are conveyed as a related group to screen reader users.
+Items in an option list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users.
+
+Controls in simple options lists are [buttons](/components/actions/button), and controls in multiple option lists are [checkboxes](/components/forms/checkbox).
 
 If you wish to customize the option list, you can provide ARIA roles that fit your purpose. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
 
 - The `role` prop adds an ARIA role to the option list wrapper
 - The `optionRole` prop adds an ARIA role to the option list items
-
-Controls in simple options lists are [buttons](/components/actions/button), and controls in multiple option lists are [checkboxes](/components/forms/checkbox).
 
 <!-- /content-for -->
