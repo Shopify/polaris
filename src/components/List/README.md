@@ -136,3 +136,33 @@ Use for a text-only list of related items when an inherent order, priority, or s
 - To create a list of checkboxes or radio buttons, [use the choice list component](/components/forms/choice-list)
 - To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](/components/lists-and-tables/resource-list)
 - When text labels for each item are useful for describing the content, [use the Description List component](/components/lists-and-tables/description-list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The list component outputs list items (`<li>`) inside a list wrapper (`<ul>` for bullet lists or `<ol>` for numbered lists). By default, list items are conveyed as a group of related elements to assistive technology users.
+
+To group items for layout only, consider using the [stack component](/components/structure/stack).
+
+<!-- /content-for -->

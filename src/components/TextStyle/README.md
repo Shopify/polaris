@@ -146,3 +146,47 @@ Use to display inline snippets of code or code-like text.
 ![Code text style](/public_images/components/TextStyle/ios/code@2x.png)
 
 <!-- /content-for -->
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Don’t rely on text style alone to convey information to merchants. Ensure that text styles are used to enhance the information provided in text.
+
+<!-- usageblock -->
+
+#### Do
+
+```
+<TextStyle variation="positive">Orders increased</TextStyle>
+```
+
+#### Don’t
+
+```
+<TextStyle variation="positive">Orders</TextStyle>
+```
+
+<!-- end -->
+
+<!-- /content-for -->
