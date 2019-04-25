@@ -578,7 +578,7 @@ The required `title` prop gives the callout card a level 2 heading (`<h2>`) . Th
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
 
-<!-- usage block -->
+<!-- usageblock -->
 
 #### Do
 
