@@ -226,3 +226,35 @@ Make all callout cards dismissible so merchants can get rid of cards about featu
 - To group similar concepts and tasks together, [use the card component](/components/structure/card)
 - To create page-level layout, [use the layout component](/components/structure/layout)
 - To explain a feature that merchants haven’t tried yet, [use the empty state component](/components/structure/empty-state)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The required `title` prop gives the callout card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
+
+Illustrations included in callout cards are implemented as decorative images with empty `alt` attributes (`alt=""` ), so that they’re skipped by screen readers.
+
+Use [actionable language](/content/actionable-language#navigation) to ensure that the purpose of the callout card is clear to all merchants, including those with issues related to reading and language.
+
+<!-- /content-for -->
