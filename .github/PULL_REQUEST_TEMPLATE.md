@@ -62,7 +62,7 @@ export default class Playground extends React.Component<never, State> {
 * [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/intro-to-shopify/shopify-admin/supported-browsers)
 * [ ] Tested for [accessibility](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility%20testing.md)
 * [ ] Updated the component's `README.md` with documentation changes
-* [ ] Tophatted documentation changes in the style guide
+* [ ] [Tophatted documentation](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting%20documentation.md) changes in the style guide
 
 <!--
   When tophatting, please check the UNRELEASED entry for consistency, as per the [guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md).
