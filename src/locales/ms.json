@@ -1,0 +1,200 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar dengan singkatan {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Memuatkan"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Tidak lengkap",
+        "partiallyComplete": "Sebahagiannya lengkap",
+        "complete": "Lengkap"
+      },
+      "STATUS_LABELS": {
+        "info": "Maklumat",
+        "success": "Berjaya",
+        "warning": "Amaran",
+        "attention": "Perhatian",
+        "new": "Baharu"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Memuatkan"
+    },
+    "Common": {
+      "checkbox": "kotak semak",
+      "undo": "Buat asal",
+      "cancel": "Batalkan",
+      "newWindowAccessibilityHint": "(membuka tetingkap baharu)"
+    },
+    "ContextualSaveBar": {
+      "save": "Simpan",
+      "discard": "Buang"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "isih {direction} mengikut",
+      "navAccessibilityLabel": "Tatal jadual {direction} satu lajur",
+      "totalsRowHeading": "Jumlah"
+    },
+    "DatePicker": {
+      "previousMonth": "Tunjuk bulan sebelumnya, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Tunjukkan bulan depan, {nextMonth} {nextYear}",
+      "today": "Hari ini ",
+      "months": {
+        "january": "Januari",
+        "february": "Februari",
+        "march": "Mac",
+        "april": "April",
+        "may": "Mei",
+        "june": "Jun",
+        "july": "Julai",
+        "august": "Ogos",
+        "september": "September",
+        "october": "Oktober",
+        "november": "November",
+        "december": "Disember"
+      },
+      "daysAbbreviated": {
+        "monday": "Isn",
+        "tuesday": "Sel",
+        "wednesday": "Rab",
+        "thursday": "Kha",
+        "friday": "Jum",
+        "saturday": "Sab",
+        "sunday": "Ahd"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Buang semua perubahan yang tidak disimpan",
+      "message": "Jika anda membuang perubahan, anda akan memadamkan apa-apa pengeditan yang anda buat sejak kali terakhir disimpan anda.",
+      "primaryAction": "Membuang perubahan",
+      "secondaryAction": "Teruskan mengedit"
+    },
+    "DropZone": {
+      "overlayTextFile": "Lepaskan fail untuk dimuat naik",
+      "overlayTextImage": "Lepaskan imej untuk dimuat naik",
+      "errorOverlayTextFile": "Jenis fail tidak sah",
+      "errorOverlayTextImage": "Jenis imej tidak sah",
+      "FileUpload": {
+        "actionTitleFile": "Tambah fail",
+        "actionTitleImage": "Tambah imej",
+        "actionHintFile": "atau lepaskan fail untuk dimuat naik",
+        "actionHintImage": "atau lepaskan imej untuk dimuat naik"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Hasil carian kosong"
+    },
+    "Frame": {
+      "skipToContent": "Langkau ke kandungan",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Tutup navigasi"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "Ikon {color} tidak menerima latar belakang. Warna ikon yang mempunyai latar belakang adalah: {colorsWithBackDrops}"
+    },
+    "Modal": {
+      "iFrameTitle": "penanda badan",
+      "modalWarning": "Ciri-ciri yang diperlukan ini hilang daripada Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "Alatan ikon telah dialih keluar dari Halaman. Sebaliknya, muat naik ikon app di bahagian 'Persediaan app' Papan pemuka Shopify Partners."
+      }
+    },
+    "Pagination": {
+      "previous": "Sebelumnya",
+      "next": "Seterusnya",
+      "pagination": "Penomboran"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Nilai diluluskan kepada prop kemajuan tidak boleh menjadi negatif. Menetapkan semula {progress} kepada 0.",
+      "exceedWarningMessage": "Nilai diluluskan kepada prop kemajuan tidak boleh melebihi 100. Menetapkan {progress} kepada 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Isih mengikut",
+      "defaultItemSingular": "item",
+      "defaultItemPlural": "item",
+      "showing": "Menunjukkan {itemsCount} {resource}",
+      "loading": "Memuatkan {resource}",
+      "selected": "{selectedItemsCount} dipilih",
+      "allItemsSelected": "Semua {itemsLength}+ {resourceNamePlural} di kedai anda dipilih.",
+      "selectAllItems": "Pilih semua {itemsLength}+ {resourceNamePlural} di kedai anda",
+      "emptySearchResultTitle": "Tiada {resourceNamePlural} dijumpai",
+      "emptySearchResultDescription": "Cuba ubah penapis atau istilah carian",
+      "selectButtonText": "Pilih",
+      "a11yCheckboxDeselectAllSingle": "Nyahpilih {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Pilih {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Nyahpilih semua {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Pilih semua {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} item",
+      "ariaLivePlural": "{itemsLength} item",
+      "Item": {
+        "selectItem": "Pilih: {accessibilityLabel}",
+        "deselectItem": "Nyahpilih: {accessibilityLabel}",
+        "actionsDropdown": "Juntai bawah tindakan"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Tindakan",
+        "moreActionsActivatorLabel": "Lebih tindakan",
+        "warningMessage": "Untuk memberikan pengalaman pengguna yang lebih baik. Hanya perlu ada maksimum sebanyak {maxPromotedActions} tindakan yang digalakkan."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Penapis",
+        "selectFilterKeyPlaceholder": "Pilih penapis...",
+        "addFilterButtonLabel": "Tambah penapis",
+        "showAllWhere": "Tunjukkan semua {resourceNamePlural} di mana:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "Cari {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Pilih penapis..."
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Pilih nilai",
+        "dateValueLabel": "Tarikh",
+        "dateValueError": "Padankan format YYYY-MM-DD",
+        "dateValuePlaceholder": "YYYY-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "pada minggu lepas",
+          "PastMonth": "pada bulan lepas",
+          "PastQuarter": "dalam 3 bulan terakhir",
+          "PastYear": "pada tahun lepas",
+          "ComingWeek": "minggu depan",
+          "ComingMonth": "bulan depan",
+          "ComingQuarter": "dalam 3 bulan akan datang",
+          "ComingYear": "pada tahun hadapan",
+          "OnOrBefore": "pada atau sebelum",
+          "OnOrAfter": "pada atau selepas"
+        },
+        "FilterLabelForValue": {
+          "past_week": "pada minggu lepas",
+          "past_month": "pada bulan lepas",
+          "past_quarter": "dalam 3 bulan terakhir",
+          "past_year": "pada tahun lepas",
+          "coming_week": "minggu depan",
+          "coming_month": "bulan depan",
+          "coming_quarter": "dalam 3 bulan akan datang",
+          "coming_year": "pada tahun hadapan",
+          "on_or_before": "sebelum {date}",
+          "on_or_after": "selepas {date}"
+        }
+      }
+    },
+    "Spinner": {
+      "warningMessage": "Warna {color} tidak dimaksudkan untuk digunakan pada pemintal {size}. Warna-warna yang tersedia pada pemintal besar adalah: {colors}"
+    },
+    "Tag": {
+      "ariaLabel": "Alih keluar {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} aksara",
+      "characterCountWithMaxLength": "{count} daripada {limit} aksara telah digunakan"
+    }
+  }
+}
