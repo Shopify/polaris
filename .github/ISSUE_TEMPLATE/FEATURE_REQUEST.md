@@ -4,7 +4,7 @@ about: Suggest an addition or improvement to Polaris or the documentation
 labels: Feature request
 ---
 
-# Feature request summary
+## Feature request summary
 
 <!--
 Write a short description of the feature here ↓
