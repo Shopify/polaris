@@ -20,9 +20,7 @@ interface ToggleStateContext extends ToggleStateState {
   toggleState(): void;
 }
 
-interface PlayPopoverProps extends Omit<PopoverProps, 'active' | 'onClose'> {
-  initialActive?: boolean;
-}
+interface PlayPopoverProps extends Omit<PopoverProps, 'active' | 'onClose'> {}
 type ComposedPlayPopoverProps = WithContextTypes<ToggleStateContext> &
   PlayPopoverProps;
 
