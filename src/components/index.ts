@@ -309,3 +309,5 @@ export {default as withContext} from './WithContext';
 export {default as withRef, WithRef} from './WithRef';
 
 export {DATA_ATTRIBUTE} from './shared';
+
+export {default as Play} from './Play';
