@@ -86,3 +86,5 @@ export {
   ProgressBar,
   Indicator,
 } from './src';
+
+export * from './playroom';

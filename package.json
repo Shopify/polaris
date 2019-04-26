@@ -186,6 +186,7 @@
     "@shopify/polaris-icons": "^3.3.0",
     "@shopify/polaris-tokens": "^2.5.0",
     "@shopify/react-compose": "^0.1.6",
+    "@shopify/react-form-state": "^0.10.3",
     "@shopify/react-utilities": "^2.0.3",
     "@types/prop-types": "^15.5.5",
     "@types/react": "^16.4.7",

@@ -1534,6 +1534,14 @@
   dependencies:
     hoist-non-react-statics "^3.0.1"
 
+"@shopify/react-form-state@^0.10.3":
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@shopify/react-form-state/-/react-form-state-0.10.3.tgz#2fa6629d0aa4d6ae9060cc84f4d590e39d91a20d"
+  integrity sha512-CuWe/A+1DcJGYep/hzB/YRW0jWeff4ewA/71j1tGjmMtBa7S4VNwe9rXyBFmS0eoqbUXhP3m4+vtcrtpsdk5Tg==
+  dependencies:
+    fast-deep-equal "^2.0.1"
+    tslib "^1.9.3"
+
 "@shopify/react-utilities@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-2.0.3.tgz#424421e7202b402ec7934c137b5b7e035fbeb33c"
