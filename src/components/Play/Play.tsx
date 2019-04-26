@@ -12,6 +12,24 @@ import Button, {Props as ButtonProps} from '../Button';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
+interface ToggleStateState {
+  active: boolean;
+}
+
+interface ToggleStateContext extends ToggleStateState {
+  toggleState(): void;
+}
+
+interface PlayPopoverProps extends Omit<PopoverProps, 'active' | 'onClose'> {
+  initialActive?: boolean;
+}
+type ComposedPlayPopoverProps = WithContextTypes<ToggleStateContext> &
+  PlayPopoverProps;
+
+interface PlayToggleButtonProps extends Omit<ButtonProps, 'onClick'> {}
+type ComposedPlayToggleButtonProps = WithContextTypes<ToggleStateContext> &
+  PlayToggleButtonProps;
+
 class ToggleState extends React.PureComponent<
   {children: React.ReactNode},
   ToggleStateState
@@ -49,21 +67,6 @@ const {
   toggleState: noop,
 });
 
-interface ToggleStateState {
-  active: boolean;
-}
-
-interface ToggleStateContext extends ToggleStateState {
-  toggleState(): void;
-}
-
-interface PlayPopoverProps extends Omit<PopoverProps, 'active' | 'onClose'> {
-  initialActive?: boolean;
-}
-
-type ComposedPlayPopoverProps = WithContextTypes<ToggleStateContext> &
-  PlayPopoverProps;
-
 function PlayPopover(props: ComposedPlayPopoverProps) {
   const {
     context: {active, toggleState},
@@ -72,11 +75,6 @@ function PlayPopover(props: ComposedPlayPopoverProps) {
 
   return <Popover active={active} onClose={toggleState} {...rest} />;
 }
-
-interface PlayToggleButtonProps extends Omit<ButtonProps, 'onClick'> {}
-
-type ComposedPlayToggleButtonProps = WithContextTypes<ToggleStateContext> &
-  PlayToggleButtonProps;
 
 function PlayToggleButton(props: ComposedPlayToggleButtonProps) {
   const {
