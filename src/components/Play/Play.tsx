@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {noop} from '@shopify/javascript-utilities/other';
+import {ReactComponent} from '@shopify/react-utilities/types';
 import compose from '@shopify/react-compose';
 
 import {WithContextTypes} from '../../types';
@@ -56,7 +57,7 @@ interface ToggleStateContext extends ToggleStateState {
   toggleState(): void;
 }
 
-interface PlayPopoverProps extends Omit<PopoverProps, 'active'> {
+interface PlayPopoverProps extends Omit<PopoverProps, 'active' | 'onClose'> {
   initialActive?: boolean;
 }
 
@@ -65,15 +66,17 @@ type ComposedPlayPopoverProps = WithContextTypes<ToggleStateContext> &
 
 function PlayPopover(props: ComposedPlayPopoverProps) {
   const {
-    context: {active},
+    context: {active, toggleState},
     ...rest
   } = props;
 
-  return <Popover active={active} {...rest} />;
+  return <Popover active={active} onClose={toggleState} {...rest} />;
 }
 
+interface PlayToggleButtonProps extends Omit<ButtonProps, 'onClick'> {}
+
 type ComposedPlayToggleButtonProps = WithContextTypes<ToggleStateContext> &
-  ButtonProps;
+  PlayToggleButtonProps;
 
 function PlayToggleButton(props: ComposedPlayToggleButtonProps) {
   const {
@@ -88,11 +91,13 @@ export default class Play extends React.PureComponent<{}, never> {
   static ToggleState = ToggleState;
   static Popover = compose<PlayPopoverProps>(
     withContext<PlayPopoverProps, {}, ToggleStateContext>(ToggleStateConsumer),
-  )(PlayPopover);
+  )(PlayPopover) as ReactComponent<PlayPopoverProps>;
 
-  static ToggleButton = compose<ButtonProps>(
-    withContext<ButtonProps, {}, ToggleStateContext>(ToggleStateConsumer),
-  )(PlayToggleButton);
+  static ToggleButton = compose<PlayToggleButtonProps>(
+    withContext<PlayToggleButtonProps, {}, ToggleStateContext>(
+      ToggleStateConsumer,
+    ),
+  )(PlayToggleButton) as ReactComponent<PlayToggleButtonProps>;
 
   render() {
     return null;
