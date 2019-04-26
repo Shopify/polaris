@@ -246,7 +246,7 @@ Items in an option list are organized as list items (`<li>`) in an unordered lis
 
 Controls in simple option lists are [buttons](/components/actions/button), and controls in multiple option lists are [checkboxes](/components/forms/checkbox).
 
-If you wish to customize the option list, you can provide ARIA roles that fit your purpose. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
+If you customize the option list, you can provide ARIA roles that fit the context. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
 
 - The `role` prop adds an ARIA role to the option list wrapper
 - The `optionRole` prop adds an ARIA role to the option list items
