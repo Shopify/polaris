@@ -74,6 +74,10 @@ function PlayPopover(props: ComposedPlayPopoverProps) {
   return <Popover active={active} onClose={toggleState} {...rest} />;
 }
 
+const decoratedPlayPopover = compose<PlayPopoverProps>(
+  withContext<PlayPopoverProps, {}, ToggleStateContext>(ToggleStateConsumer),
+)(PlayPopover) as ReactComponent<PlayPopoverProps>;
+
 function PlayToggleButton(props: ComposedPlayToggleButtonProps) {
   const {
     context: {toggleState},
@@ -83,17 +87,16 @@ function PlayToggleButton(props: ComposedPlayToggleButtonProps) {
   return <Button onClick={toggleState} {...rest} />;
 }
 
+const decoratedPlayToggleButton = compose<PlayToggleButtonProps>(
+  withContext<PlayToggleButtonProps, {}, ToggleStateContext>(
+    ToggleStateConsumer,
+  ),
+)(PlayToggleButton) as ReactComponent<PlayToggleButtonProps>;
+
 export default class Play extends React.PureComponent<{}, never> {
   static ToggleState = ToggleState;
-  static Popover = compose<PlayPopoverProps>(
-    withContext<PlayPopoverProps, {}, ToggleStateContext>(ToggleStateConsumer),
-  )(PlayPopover) as ReactComponent<PlayPopoverProps>;
-
-  static ToggleButton = compose<PlayToggleButtonProps>(
-    withContext<PlayToggleButtonProps, {}, ToggleStateContext>(
-      ToggleStateConsumer,
-    ),
-  )(PlayToggleButton) as ReactComponent<PlayToggleButtonProps>;
+  static Popover = decoratedPlayPopover;
+  static ToggleButton = decoratedPlayToggleButton;
 
   render() {
     return null;
