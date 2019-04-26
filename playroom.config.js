@@ -1,11 +1,11 @@
 const sbWebpackConfig = require('./.storybook/webpack.config');
 
 module.exports = {
-  components: './playroom.components.ts',
-  frameComponent: './playroom.wrapper.tsx',
+  components: './playroom/index.ts',
+  frameComponent: './playroom/Wrapper.tsx',
   outputPath: './build/playroom',
   title: 'Polaris',
-  widths: [320, 375, 768, 1024],
+  widths: [400, 768, 1024],
   port: 9000,
   openBrowser: true,
   exampleCode:
