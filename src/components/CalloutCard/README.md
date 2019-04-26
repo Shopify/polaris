@@ -253,7 +253,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 The required `title` prop gives the callout card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
 
-Illustrations included in callout cards are implemented as decorative images with empty `alt` attributes (`alt=""` ), so that they’re skipped by screen readers.
+Illustrations included in callout cards are implemented as decorative images with empty `alt` attributes (`alt=""` ) so that they’re skipped by screen readers.
 
 Use [actionable language](/content/actionable-language#navigation) to ensure that the purpose of the callout card is clear to all merchants, including those with issues related to reading and language.
 
