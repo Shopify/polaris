@@ -86,4 +86,13 @@ describe('<Choice />', () => {
       expect(label.find(blockLevelElements[i])).toHaveLength(0);
     }
   });
+
+  it('does not fire an onClick event when disabled is true', () => {
+    const spy = jest.fn();
+    const choice = mountWithAppProvider(
+      <Choice id="id" label="Label" onClick={spy} disabled />,
+    );
+    choice.find('label').simulate('click');
+    expect(spy).not.toHaveBeenCalled();
+  });
 });
