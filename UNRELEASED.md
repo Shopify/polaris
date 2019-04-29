@@ -18,6 +18,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed `DropZone.FileUpload` from incorrectly displaying action hint and title when the default is used and removed ([#1233](https://github.com/Shopify/polaris-react/pull/1233))
 - Fixed `ResourceList.Item` interaction states from being incorrectly applied ([#1312](https://github.com/Shopify/polaris-react/pull/1312)
 - Fixed selected state for date picker in windows high contrast mode ([#1342](https://github.com/Shopify/polaris-react/pull/1342))
 - Added background into media query for Microsoft high contrast to fix skeleton accessibility. ([#1341](https://github.com/Shopify/polaris-react/pull/1341))
@@ -40,11 +41,11 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Dependency upgrades
 
 - Bump react-utilites to remove a transitive dependency on core-js. ([#1343](https://github.com/Shopify/polaris-react/pull/1343))
-
 - Updated App Bridge to version 1.3.0 ([#1349](https://github.com/Shopify/polaris-react/pull/1349))
 
 ### Code quality
 
+- Updated `Dropzone.FileUpload` to no longer use `componentWillReceiveProps` and `componentWillMount` ([#1233](https://github.com/Shopify/polaris-react/pull/1233))
 - Removed a `window.open` implementation error in `ResourceList.Item` ([#1294](<(https://github.com/Shopify/polaris-react/pull/1294)>))
 
 ### Deprecations
