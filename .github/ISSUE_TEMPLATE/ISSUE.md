@@ -6,7 +6,7 @@ labels: Bug
 
 <!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md -->
 
-# Issue summary
+## Issue summary
 
 <!--
 Write a short description of the issue here ↓

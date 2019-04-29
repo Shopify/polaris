@@ -4,7 +4,7 @@ about: For proposing new components or changes to existing components
 label: New component
 ---
 
-# Component name
+## Component name
 
 Short intro description (try and keep to two sentences):
 > {Component name} are used to {x}. Merchants can use it to {x}.
