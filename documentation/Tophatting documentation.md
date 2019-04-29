@@ -10,16 +10,16 @@ Manually testing documentation (we call it “[tophatting](https://github.com/Sh
 
 ## When should you 🎩 documentation?
 
-- When you're adding content to a component's `README.md` (such as `/src/components/Button/README.md`) to change or add best practices, accessibility documentation, or other information.
+When you’re adding content to a component’s `README.md` (such as `/src/components/Button/README.md`) to change or add best practices, accessibility documentation, or other information.
 
 ## What should you 🎩?
 
 Check the location, appearance, and readability of the content you add to the style guide.
 
-## How to 🎩documentation
+## How to 🎩 documentation
 
-1. Check out the `master` branch from `[polaris-styleguide](https://github.com/Shopify/polaris-styleguide)`
+1. Check out the `master` branch from [`polaris-styleguide`](https://github.com/Shopify/polaris-styleguide)
 1. In a separate tab if preferred, check out the updated `polaris-react` branch
 1. In the `polaris-react` directory, run `yarn run build-consumer polaris-styleguide`
 1. In the `polaris-styleguide` directory, run `dev up && dev server`
-1. View your documentation changes in the browser
+1. View documentation changes in the browser
