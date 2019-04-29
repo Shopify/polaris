@@ -10,7 +10,7 @@ Manually testing documentation (we call it “[tophatting](https://github.com/Sh
 
 ## When should you 🎩 documentation?
 
-- When you're adding content to a component's `README.md` (such as `/src/components/Button/README.md`) to change or add best practices,accessibility documentation, or other information.
+- When you're adding content to a component's `README.md` (such as `/src/components/Button/README.md`) to change or add best practices, accessibility documentation, or other information.
 
 ## What should you 🎩?
 
