@@ -16,6 +16,7 @@ describe('<Item />', () => {
 
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
+    spy.mockImplementation(() => {});
   });
 
   afterEach(() => {
