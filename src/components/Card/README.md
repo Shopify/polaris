@@ -549,3 +549,59 @@ Use as a broad example that includes most props available to card.
 
 - To create page-level layout, [use the layout component](/components/structure/layout)
 - To highlight a Shopify feature, [use the callout card component](/components/structure/callout-card)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The required `title` prop gives the card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
+
+If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
+
+<!-- usageblock -->
+
+#### Do
+
+```
+<Card title="Deactivated staff accounts" sectioned subdued>
+  <List>
+    <List.Item>Felix Crafford</List.Item>
+    <List.Item>Ezequiel Manno</List.Item>
+  </List>
+</Card>
+```
+
+#### Don’t
+
+```
+<Card title="Staff accounts" sectioned subdued>
+  <List>
+    <List.Item>Felix Crafford</List.Item>
+    <List.Item>Ezequiel Manno</List.Item>
+  </List>
+</Card>
+```
+
+<!-- end -->
+
+<!-- /content-for -->
