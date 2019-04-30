@@ -140,17 +140,17 @@ describe('<Tabs />', () => {
   });
 
   describe('selected', () => {
+    let getElementById: jest.SpyInstance;
     let panelStub: {focus: jest.Mock<any>};
-    let originalGetElementByID: (typeof document)['getElementById'];
 
     beforeEach(() => {
-      originalGetElementByID = document.getElementById;
       panelStub = {focus: jest.fn()};
-      document.getElementById = jest.fn(() => panelStub);
+      getElementById = jest.spyOn(document, 'getElementById');
+      getElementById.mockReturnValue(panelStub);
     });
 
     afterEach(() => {
-      document.getElementById = originalGetElementByID;
+      jest.clearAllMocks();
     });
 
     it('focuses the panel when a tab becomes selected', () => {

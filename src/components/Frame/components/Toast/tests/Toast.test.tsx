@@ -7,8 +7,10 @@ import {ToastProps as Props} from '../../../types';
 import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
+type EventCb = (event: any) => void;
+
 interface HandlerMap {
-  [eventName: string]: (event: any) => void;
+  [eventName: string]: EventCb;
 }
 
 describe('<Toast />', () => {
@@ -113,7 +115,7 @@ describe('<Toast />', () => {
 
     it('is called when the escape key is pressed', () => {
       const listenerMap: HandlerMap = {};
-      document.addEventListener = jest.fn((event, cb) => {
+      document.addEventListener = jest.fn((event, cb: EventCb) => {
         listenerMap[event] = cb;
       });
 

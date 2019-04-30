@@ -18,7 +18,7 @@ export interface State {
 
 export default function Connected({children, left, right}: Props) {
   if (left == null && right == null) {
-    return React.Children.only(children);
+    return <React.Fragment>{children}</React.Fragment>;
   }
 
   const leftConnectionMarkup = left ? (
