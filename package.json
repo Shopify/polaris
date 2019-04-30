@@ -155,7 +155,7 @@
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "svgo": "^1.2.2",
-    "typescript": "~3.1.6",
+    "typescript": "~3.2.4",
     "yargs": "^13.2.2"
   },
   "peerDependencies": {
@@ -163,7 +163,7 @@
     "react-dom": "^16.3.1"
   },
   "resolutions": {
-    "typescript-eslint-parser": "20.0.0"
+    "typescript-eslint-parser": "22.0.0"
   },
   "files": [
     "esnext",
@@ -182,9 +182,9 @@
     "@shopify/javascript-utilities": "^2.2.1",
     "@shopify/polaris-icons": "^3.3.0",
     "@shopify/polaris-tokens": "^2.5.0",
-    "@shopify/react-compose": "^0.1.6",
+    "@shopify/react-compose": "^1.0.0",
     "@shopify/react-utilities": "^2.0.4",
-    "@types/prop-types": "^15.5.5",
+    "@shopify/useful-types": "^1.2.4",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
     "@types/react-transition-group": "^2.0.7",

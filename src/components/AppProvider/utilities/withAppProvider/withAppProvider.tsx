@@ -75,7 +75,9 @@ export default function withAppProvider<OwnProps>() {
           );
         }
 
-        return <WrappedComponent {...this.props} polaris={polarisContext} />;
+        return (
+          <WrappedComponent {...this.props as any} polaris={polarisContext} />
+        );
       }
 
       private handleContextUpdate = () => {
