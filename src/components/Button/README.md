@@ -136,6 +136,8 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 
 ### Outline monochrome button
 
+<!-- example-for: web -->
+
 Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
 
 ```jsx
@@ -147,6 +149,8 @@ Use against shaded or colorful backgrounds where matching the current text color
 ```
 
 ### Plain button
+
+<!-- example-for: web -->
 
 Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
 
