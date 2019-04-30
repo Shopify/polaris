@@ -9,9 +9,9 @@ import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
-import {contextTypes} from '../types';
+import {ComboBoxContext} from '../types';
 import KeypressListener from '../../../KeypressListener';
-import {TextField} from './components';
+import {TextField, Provider} from './components';
 
 import styles from './ComboBox.scss';
 
@@ -58,17 +58,9 @@ export interface Props {
   onEndReached?(): void;
 }
 
-export interface Context {
-  comboBoxId: string;
-  selectedOptionId?: string;
-  subscribe(callback: () => void): void;
-  unsubscribe(callback: () => void): void;
-}
-
 export default class ComboBox extends React.PureComponent<Props, State> {
   static TextField = TextField;
   static OptionList = OptionList;
-  static childContextTypes = contextTypes;
 
   static getDerivedStateFromProps(
     {
@@ -123,17 +115,14 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     popoverWasActive: false,
   };
 
-  private subscriptions: {(): void}[] = [];
   private popoverScrollContainer: React.RefObject<
     HTMLDivElement
   > = React.createRef();
 
-  getChildContext(): Context {
+  get getContext(): ComboBoxContext {
     return {
       comboBoxId: this.state.comboBoxId,
       selectedOptionId: this.selectedOptionId,
-      subscribe: this.subscribe,
-      unsubscribe: this.unsubscribe,
     };
   }
 
@@ -161,7 +150,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   componentDidUpdate(_: Props, prevState: State) {
     const {contentBefore, contentAfter, emptyState} = this.props;
     const {navigableOptions, popoverActive, popoverWasActive} = this.state;
-    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
 
     const optionsChanged =
       navigableOptions &&
@@ -253,62 +241,57 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
     return (
-      <div
-        onClick={this.handleClick}
-        role="combobox"
-        aria-expanded={this.state.popoverActive}
-        aria-owns={this.state.comboBoxId}
-        aria-controls={this.state.comboBoxId}
-        aria-haspopup
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
-        tabIndex={0}
-      >
-        <KeypressListener
-          keyCode={Key.DownArrow}
-          handler={this.handleDownArrow}
-        />
-        <KeypressListener keyCode={Key.UpArrow} handler={this.handleUpArrow} />
-        <KeypressListener keyCode={Key.Enter} handler={this.handleEnter} />
-        <KeypressListener
-          keyCode={Key.Escape}
-          handler={this.handlePopoverClose}
-        />
-        <Popover
-          activator={textField}
-          active={this.state.popoverActive}
-          onClose={this.handlePopoverClose}
-          preferredPosition={preferredPosition}
-          fullWidth
-          preventAutofocus
+      <Provider value={this.getContext}>
+        <div
+          onClick={this.handleClick}
+          role="combobox"
+          aria-expanded={this.state.popoverActive}
+          aria-owns={this.state.comboBoxId}
+          aria-controls={this.state.comboBoxId}
+          aria-haspopup
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          tabIndex={0}
         >
-          <div
-            id={this.state.comboBoxId}
-            role="listbox"
-            aria-multiselectable={allowMultiple}
+          <KeypressListener
+            keyCode={Key.DownArrow}
+            handler={this.handleDownArrow}
+          />
+          <KeypressListener
+            keyCode={Key.UpArrow}
+            handler={this.handleUpArrow}
+          />
+          <KeypressListener keyCode={Key.Enter} handler={this.handleEnter} />
+          <KeypressListener
+            keyCode={Key.Escape}
+            handler={this.handlePopoverClose}
+          />
+          <Popover
+            activator={textField}
+            active={this.state.popoverActive}
+            onClose={this.handlePopoverClose}
+            preferredPosition={preferredPosition}
+            fullWidth
+            preventAutofocus
           >
-            {scrollListenerMarkup}
-            {contentBefore}
-            {actionsBeforeMarkup}
-            {optionsMarkup}
-            {actionsAfterMarkup}
-            {contentAfter}
-            {emptyStateMarkup}
-          </div>
-        </Popover>
-      </div>
+            <div
+              id={this.state.comboBoxId}
+              role="listbox"
+              aria-multiselectable={allowMultiple}
+            >
+              {scrollListenerMarkup}
+              {contentBefore}
+              {actionsBeforeMarkup}
+              {optionsMarkup}
+              {actionsAfterMarkup}
+              {contentAfter}
+              {emptyStateMarkup}
+            </div>
+          </Popover>
+        </div>
+      </Provider>
     );
   }
-
-  subscribe = (callback: () => void) => {
-    this.subscriptions.push(callback);
-  };
-
-  unsubscribe = (callback: () => void) => {
-    this.subscriptions = this.subscriptions.filter(
-      (subscription) => subscription !== callback,
-    );
-  };
 
   private handleDownArrow = () => {
     const {selectedIndex, navigableOptions} = this.state;
