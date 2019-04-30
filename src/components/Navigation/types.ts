@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import {Props as IconProps} from '../Icon';
 
-export interface Context {
+export interface NavigationContext {
   location: string;
   onNavigationDismiss?(): void;
 }
