@@ -136,6 +136,8 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 
 ### Outline monochrome button
 
+<!-- example-for: web -->
+
 Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
 
 ```jsx
@@ -154,7 +156,21 @@ Use for less important or less commonly used actions since they’re less promin
 <Button plain>View shipping settings</Button>
 ```
 
+<!-- content-for: android -->
+
+![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
+
+<!-- /content-for -->
+
 ### Plain monochrome button
+
+<!-- example-for: web -->
 
 Use to render a buttons that look like links where matching the surrounding text color is visually more appropriate. For example in the InlineError component.
 
@@ -170,18 +186,6 @@ Use to render a buttons that look like links where matching the surrounding text
   }
 />
 ```
-
-<!-- content-for: android -->
-
-![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
-
-<!-- /content-for -->
 
 ### Primary button
 
