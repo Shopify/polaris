@@ -92,6 +92,8 @@ Use this size sparingly and never multiple times on the same page.
 
 ### Large
 
+<!-- example-for: web -->
+
 Use for display text that’s more important than the medium size, but less important than extra large.
 
 ```jsx
