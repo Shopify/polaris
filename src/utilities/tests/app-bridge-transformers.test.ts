@@ -70,6 +70,8 @@ describe('app bridge transformers', () => {
   });
 
   describe('transformActions', () => {
+    let ButtonCreate: jest.SpyInstance;
+    let ButtonGroupCreate: jest.SpyInstance;
     const action = {
       content: 'Foo',
       url: '/foo',
@@ -81,8 +83,17 @@ describe('app bridge transformers', () => {
       subscribe: jest.fn(),
     };
 
-    Button.create = jest.fn().mockReturnValue(buttonMock);
-    ButtonGroup.create = jest.fn((...args) => args);
+    beforeEach(() => {
+      ButtonCreate = jest.spyOn(Button, 'create');
+      ButtonCreate.mockReturnValue(buttonMock);
+
+      ButtonGroupCreate = jest.spyOn(ButtonGroup, 'create');
+      ButtonGroupCreate.mockImplementation((...args) => args);
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
 
     it('accepts undefined actions', () => {
       const buttons = transformActions(appBridge, {});

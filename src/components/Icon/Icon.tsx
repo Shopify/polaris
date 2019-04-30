@@ -218,7 +218,7 @@ function Icon({
   const defaultIconProps = {
     className: styles.Svg,
     focusable: 'false',
-    'aria-hidden': 'true',
+    'aria-hidden': true,
   };
 
   if (untrusted) {

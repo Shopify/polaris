@@ -20,7 +20,7 @@ export default function compose<Props>(
       OriginalComponent,
     ) as ReactComponent<ComposedProps>;
     // eslint-disable-next-line react/display-name
-    return React.forwardRef<Props>(
+    return (React.forwardRef<Props>(
       (props: Props, ref: React.RefObject<any>) => {
         return (
           <RefProvider value={{forwardedRef: ref}}>
@@ -28,6 +28,6 @@ export default function compose<Props>(
           </RefProvider>
         );
       },
-    ) as ReactComponent<Props> & C;
+    ) as unknown) as ReactComponent<Props> & C;
   };
 }

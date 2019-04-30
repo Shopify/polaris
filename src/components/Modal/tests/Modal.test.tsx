@@ -312,6 +312,7 @@ describe('<Modal>', () => {
   });
 
   describe('with app bridge', () => {
+    let AppBridgeModalCreate: jest.SpyInstance;
     const appBridgeModalMock = {
       set: jest.fn(),
       subscribe: jest.fn(),
@@ -319,11 +320,12 @@ describe('<Modal>', () => {
       dispatch: jest.fn(),
     };
 
-    (AppBridgeModal.create as jest.Mock<{}>) = jest
-      .fn()
-      .mockReturnValue(appBridgeModalMock);
-
     beforeEach(() => {
+      AppBridgeModalCreate = jest.spyOn(AppBridgeModal, 'create');
+      AppBridgeModalCreate.mockReturnValue(appBridgeModalMock);
+    });
+
+    afterEach(() => {
       jest.clearAllMocks();
     });
 
@@ -351,8 +353,8 @@ describe('<Modal>', () => {
         />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledTimes(1);
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModalCreate).toHaveBeenCalledTimes(1);
+      expect(AppBridgeModalCreate).toHaveBeenCalledWith(polaris.appBridge, {
         title: 'Hello world!',
         message: 'Body content',
         size: undefined,
