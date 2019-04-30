@@ -154,13 +154,13 @@ export default class PositionedOverlay extends React.PureComponent<
     const {lockPosition, top} = this.state;
 
     this.setState(
-      {
-        left: 0,
-        top: lockPosition ? top : 0,
+      ({left, top}) => ({
+        left,
+        top,
         height: 0,
         positioning: 'below',
         measuring: true,
-      },
+      }),
       () => {
         if (this.overlay == null || this.scrollableContainer == null) {
           return;
