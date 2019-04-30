@@ -6,7 +6,7 @@ import {generateRedirect, transformActions} from '../app-bridge-transformers';
 describe('app bridge transformers', () => {
   const appBridge = {} as ClientApplication<{}>;
   const dispatch = jest.fn();
-  Redirect.create = jest.fn().mockReturnValue({dispatch});
+  jest.spyOn(Redirect, 'create').mockReturnValue({dispatch});
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -81,13 +81,13 @@ describe('app bridge transformers', () => {
       subscribe: jest.fn(),
     };
 
-    Button.create = jest.fn().mockReturnValue(buttonMock);
-    ButtonGroup.create = jest.fn((...args) => args);
+    jest.spyOn(Button, 'create').mockReturnValue(buttonMock);
+    jest.spyOn(ButtonGroup, 'create').mockImplementation((...args) => args);
 
     it('accepts undefined actions', () => {
       const buttons = transformActions(appBridge, {});
 
-      expect(buttons).toEqual({
+      expect(buttons).toStrictEqual({
         primary: undefined,
         secondary: [],
       });
@@ -99,7 +99,10 @@ describe('app bridge transformers', () => {
         secondaryActions: [action],
       });
 
-      expect(buttons).toEqual({primary: buttonMock, secondary: [buttonMock]});
+      expect(buttons).toStrictEqual({
+        primary: buttonMock,
+        secondary: [buttonMock],
+      });
     });
 
     it('transforms action groups', () => {
@@ -108,7 +111,7 @@ describe('app bridge transformers', () => {
         actionGroups: [{title: 'Bar', actions: [action]}],
       });
 
-      expect(buttons).toEqual({
+      expect(buttons).toStrictEqual({
         primary: undefined,
         secondary: [
           buttonMock,

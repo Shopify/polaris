@@ -96,7 +96,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('url'),
-        ).toEqual(tab.url);
+        ).toStrictEqual(tab.url);
       });
     });
 
@@ -115,7 +115,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('accessibilityLabel'),
-        ).toEqual(tab.accessibilityLabel);
+        ).toStrictEqual(tab.accessibilityLabel);
       });
     });
 
@@ -134,7 +134,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('children'),
-        ).toEqual(tab.content);
+        ).toStrictEqual(tab.content);
       });
     });
   });
@@ -146,7 +146,9 @@ describe('<Tabs />', () => {
     beforeEach(() => {
       originalGetElementByID = document.getElementById;
       panelStub = {focus: jest.fn()};
-      document.getElementById = jest.fn(() => panelStub);
+      jest
+        .spyOn(document, 'getElementById')
+        .mockImplementation(() => panelStub);
     });
 
     afterEach(() => {
@@ -361,7 +363,7 @@ describe('<Tabs />', () => {
         containerWidth,
       );
       const expectedIndices = {visibleTabs: [0, 1], hiddenTabs: [2, 3, 4, 5]};
-      expect(actualIndices).toEqual(expectedIndices);
+      expect(actualIndices).toStrictEqual(expectedIndices);
     });
   });
 

@@ -19,7 +19,7 @@ describe('<CheckableButton />', () => {
       const element = shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element.find(Checkbox).prop('checked')).toEqual(selected);
+      expect(element.find(Checkbox).prop('checked')).toStrictEqual(selected);
     });
   });
 
@@ -29,7 +29,7 @@ describe('<CheckableButton />', () => {
       const element = shallowWithAppProvider(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element.find('span').text()).toEqual(label);
+      expect(element.find('span').text()).toStrictEqual(label);
     });
   });
 
@@ -44,7 +44,7 @@ describe('<CheckableButton />', () => {
           .find(Checkbox)
           .first()
           .prop('label'),
-      ).toEqual(accessibilityLabel);
+      ).toStrictEqual(accessibilityLabel);
     });
 
     describe('disabled', () => {
@@ -58,7 +58,7 @@ describe('<CheckableButton />', () => {
             .find(Checkbox)
             .first()
             .prop('disabled'),
-        ).toEqual(disabled);
+        ).toStrictEqual(disabled);
       });
     });
   });

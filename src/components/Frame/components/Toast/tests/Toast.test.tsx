@@ -29,7 +29,7 @@ describe('<Toast />', () => {
 
   it('renders its content', () => {
     const message = mountWithAppProvider(<Toast {...mockProps} />);
-    expect(message.prop('content')).toEqual('Image uploaded');
+    expect(message.prop('content')).toStrictEqual('Image uploaded');
   });
 
   describe('dismiss button', () => {
@@ -113,18 +113,22 @@ describe('<Toast />', () => {
 
     it('is called when the escape key is pressed', () => {
       const listenerMap: HandlerMap = {};
-      document.addEventListener = jest.fn((event, cb) => {
-        listenerMap[event] = cb;
-      });
+      jest
+        .spyOn(document, 'addEventListener')
+        .mockImplementation((event, cb) => {
+          listenerMap[event] = cb;
+        });
 
       const spy = jest.fn();
       mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
 
       listenerMap.keyup({keyCode: Key.Escape});
 
-      document.removeEventListener = jest.fn((event) => {
-        listenerMap[event] = noop;
-      });
+      jest
+        .spyOn(document, 'removeEventListener')
+        .mockImplementation((event) => {
+          listenerMap[event] = noop;
+        });
 
       expect(spy).toHaveBeenCalled();
     });

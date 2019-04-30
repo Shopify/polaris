@@ -275,7 +275,7 @@ describe('<RangeSlider />', () => {
       };
       const actual = element.find('[style]').prop('style');
 
-      expect(expected).toEqual(actual);
+      expect(expected).toStrictEqual(actual);
     });
   });
 });

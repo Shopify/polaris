@@ -14,11 +14,11 @@ const listenerMap: HandlerMap = {};
 
 describe('<KeypressListener />', () => {
   beforeEach(() => {
-    document.addEventListener = jest.fn((event, cb) => {
+    jest.spyOn(document, 'addEventListener').mockImplementation((event, cb) => {
       listenerMap[event] = cb;
     });
 
-    document.removeEventListener = jest.fn((event) => {
+    jest.spyOn(document, 'removeEventListener').mockImplementation((event) => {
       listenerMap[event] = noop;
     });
   });
@@ -48,6 +48,6 @@ describe('<KeypressListener />', () => {
     ).unmount();
 
     listenerMap.keyup({keyCode: Key.Escape});
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

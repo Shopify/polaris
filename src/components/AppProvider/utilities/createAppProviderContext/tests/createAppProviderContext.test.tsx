@@ -107,8 +107,8 @@ describe('createAppProviderContext()', () => {
       },
     });
 
-    expect(Intl).toBeCalledWith(i18n);
-    expect(Link).toBeCalledWith(CustomLinkComponent);
+    expect(Intl).toHaveBeenCalledWith(i18n);
+    expect(Link).toHaveBeenCalledWith(CustomLinkComponent);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
@@ -130,7 +130,7 @@ describe('createAppProviderContext()', () => {
     const next = jest.fn((args) => args);
     const baseAction = {type: 'actionType'};
 
-    expect(setClientInterfaceHook.call({}, next)(baseAction)).toEqual({
+    expect(setClientInterfaceHook.call({}, next)(baseAction)).toStrictEqual({
       type: 'actionType',
       clientInterface: {
         name: '@shopify/polaris',

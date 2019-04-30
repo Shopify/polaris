@@ -55,25 +55,25 @@ describe('<DropZone />', () => {
     const dropZone = mountWithAppProvider(<DropZone onDrop={spy} />);
     const event = createEvent('drop', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalledWith(files, files, []);
+    expect(spy).toHaveBeenCalledWith(files, files, []);
   });
 
   it('calls the onDrop callback when a drop event is fired on document twice when a duplicate file is added consecutively', () => {
     const dropZone = mountWithAppProvider(<DropZone onDrop={spy} />);
     const event1 = createEvent('drop', files);
     dropZone.getDOMNode().dispatchEvent(event1);
-    expect(spy).toBeCalledWith(files, files, []);
+    expect(spy).toHaveBeenCalledWith(files, files, []);
 
     const event2 = createEvent('drop', duplicateFiles);
     dropZone.getDOMNode().dispatchEvent(event2);
-    expect(spy).toBeCalledWith(duplicateFiles, duplicateFiles, []);
+    expect(spy).toHaveBeenCalledWith(duplicateFiles, duplicateFiles, []);
   });
 
   it('calls the onDrop callback with files when a drop event is fired on document', () => {
     mountWithAppProvider(<DropZone dropOnPage onDrop={spy} />);
     const event = createEvent('drop', files);
     document.dispatchEvent(event);
-    expect(spy).toBeCalledWith(files, files, []);
+    expect(spy).toHaveBeenCalledWith(files, files, []);
   });
 
   it('calls the onDrop callback with files, acceptedFiles, and rejectedFiles when it accepts only jpeg', () => {
@@ -82,7 +82,7 @@ describe('<DropZone />', () => {
     );
     const event = createEvent('drop', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
+    expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
   it('calls the onDropAccepted callback with acceptedFiles when it accepts only jpeg', () => {
@@ -91,7 +91,7 @@ describe('<DropZone />', () => {
     );
     const event = createEvent('drop', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalledWith(acceptedFiles);
+    expect(spy).toHaveBeenCalledWith(acceptedFiles);
   });
 
   it('calls the onDropRejected callback with rejectedFiles when it accepts only jpeg', () => {
@@ -100,28 +100,28 @@ describe('<DropZone />', () => {
     );
     const event = createEvent('drop', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalledWith(rejectedFiles);
+    expect(spy).toHaveBeenCalledWith(rejectedFiles);
   });
 
   it('calls the onDragEnter callback when a dragEnter event is fired', () => {
     const dropZone = mountWithAppProvider(<DropZone onDragEnter={spy} />);
     const event = createEvent('dragenter', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   it('calls the onDragOver callback when a dragOver event is fired', () => {
     const dropZone = mountWithAppProvider(<DropZone onDragOver={spy} />);
     const event = createEvent('dragover', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   it('calls the onDragLeave callback when a dragLeave event is fired', () => {
     const dropZone = mountWithAppProvider(<DropZone onDragLeave={spy} />);
     const event = createEvent('dragleave', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   it('validates files, acceptedFiles, and rejectedFiles when customValidator property is added', () => {
@@ -133,7 +133,7 @@ describe('<DropZone />', () => {
     );
     const event = createEvent('drop', files);
     dropZone.getDOMNode().dispatchEvent(event);
-    expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
+    expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
   it('does not call any callbacks when disabled', () => {
@@ -149,13 +149,13 @@ describe('<DropZone />', () => {
       />,
     );
     fireEvent('drop', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     fireEvent('dragenter', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     fireEvent('dragleave', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     fireEvent('dragover', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('does not call callbacks when not allowed multiple and a file is uploaded', () => {
@@ -172,24 +172,24 @@ describe('<DropZone />', () => {
 
     // Initial event to populate zone with data (should succeed)
     fireEvent('drop', dropZone, spy);
-    expect(spy).toBeCalledWith(files, acceptedFiles, rejectedFiles);
+    expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
 
     // All events should now be ignored
     fireEvent('drop', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     fireEvent('dragenter', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     fireEvent('dragleave', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     fireEvent('dragover', dropZone, spy);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('renders <Labelled /> when `label` is provided', () => {
     const labelText = 'My DropZone label';
     const dropZone = mountWithAppProvider(<DropZone label={labelText} />);
     const labelled = dropZone.find(Labelled);
-    expect(labelled.prop('label')).toEqual(labelText);
+    expect(labelled.prop('label')).toStrictEqual(labelText);
   });
 
   it('renders a <Label /> with matching id for the file input', () => {
@@ -198,9 +198,9 @@ describe('<DropZone />', () => {
       <DropZone id={id} label="My DropZone label" />,
     );
     const label = dropZone.find(Label);
-    expect(label.prop('id')).toEqual(id);
+    expect(label.prop('id')).toStrictEqual(id);
     const input = dropZone.find('input[type="file"]');
-    expect(input.prop('id')).toEqual(id);
+    expect(input.prop('id')).toStrictEqual(id);
   });
 
   describe('labelAction', () => {
@@ -331,16 +331,18 @@ function createEvent(name: string, files: any) {
 }
 
 function setBoundingClientRect(size: keyof typeof widths) {
-  Element.prototype.getBoundingClientRect = jest.fn(() => {
-    return {
-      width: widths[size],
-      height: 100,
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-    };
-  });
+  jest
+    .spyOn(Element.prototype, 'getBoundingClientRect')
+    .mockImplementation(() => {
+      return {
+        width: widths[size],
+        height: 100,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+      };
+    });
 }
 
 function triggerDragEnter(element: ReactWrapper<any, any>) {

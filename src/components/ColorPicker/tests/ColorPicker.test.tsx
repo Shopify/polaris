@@ -79,7 +79,7 @@ describe('<ColorPicker />', () => {
         <ColorPicker id={id} color={red} onChange={jest.fn()} allowAlpha />,
       );
 
-      expect(colorPicker.find(AlphaPicker).prop('color')).toEqual(red);
+      expect(colorPicker.find(AlphaPicker).prop('color')).toStrictEqual(red);
     });
   });
 
