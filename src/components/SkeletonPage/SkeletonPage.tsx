@@ -36,6 +36,7 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
       secondaryActions,
       title = '',
       breadcrumbs,
+      polaris: {intl},
     } = this.props;
 
     const className = classNames(
@@ -80,7 +81,11 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
     ) : null;
 
     return (
-      <div className={className} role="status" aria-label="Page loading">
+      <div
+        className={className}
+        role="status"
+        aria-label={intl.translate('Polaris.SkeletonPage.loadingLabel')}
+      >
         {headerMarkup}
         <div className={styles.Content}>{children}</div>
       </div>

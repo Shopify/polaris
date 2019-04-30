@@ -19,27 +19,24 @@ describe('app bridge transformers', () => {
 
     it('action is APP by default', () => {
       const callback = generateRedirect(appBridge, '/path');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.APP, '/path');
     });
 
     it('action is APP when target is APP', () => {
       const callback = generateRedirect(appBridge, '/path', 'APP');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.APP, '/path');
     });
 
     it('action is REMOTE with newContext when external is true', () => {
       const callback = generateRedirect(appBridge, '/path', undefined, true);
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.REMOTE, {
         url: '/path',
@@ -49,18 +46,16 @@ describe('app bridge transformers', () => {
 
     it('action is REMOTE when target is REMOTE', () => {
       const callback = generateRedirect(appBridge, '/path', 'REMOTE');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.REMOTE, '/path');
     });
 
     it('action is ADMIN_PATH when target is ADMIN_PATH', () => {
       const callback = generateRedirect(appBridge, '/path', 'ADMIN_PATH');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(
         Redirect.Action.ADMIN_PATH,

@@ -14,7 +14,7 @@ const INITIAL_STEP = 10;
 const STUCK_THRESHOLD = 99;
 
 export default class Loading extends React.Component<Props, State> {
-  state = {
+  state: State = {
     progress: 0,
     step: INITIAL_STEP,
     animation: null,

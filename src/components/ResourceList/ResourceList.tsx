@@ -429,7 +429,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         <Button
           disabled={selectMode}
           icon={EnableSelectionMinor}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >
           {intl.translate('Polaris.ResourceList.selectButtonText')}

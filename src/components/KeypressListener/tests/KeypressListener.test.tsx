@@ -8,8 +8,6 @@ interface HandlerMap {
   [eventName: string]: (event: any) => void;
 }
 
-const originalAddEventListener = document.addEventListener;
-const originalRemoveEventListener = document.removeEventListener;
 const listenerMap: HandlerMap = {};
 
 describe('<KeypressListener />', () => {
@@ -24,8 +22,8 @@ describe('<KeypressListener />', () => {
   });
 
   afterEach(() => {
-    document.addEventListener = originalAddEventListener;
-    document.removeEventListener = originalRemoveEventListener;
+    (document.addEventListener as jest.Mock).mockRestore();
+    (document.removeEventListener as jest.Mock).mockRestore();
   });
 
   it('attaches a listener for the given key on mount', () => {

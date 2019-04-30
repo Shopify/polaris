@@ -691,7 +691,6 @@ describe('<TextField />', () => {
         type EventCallback = (mockEventData?: {[key: string]: any}) => void;
 
         const documentEvent: {[eventType: string]: EventCallback} = {};
-        const origialAddEventListener = document.addEventListener;
 
         beforeAll(() => {
           jest
@@ -704,7 +703,7 @@ describe('<TextField />', () => {
         });
 
         afterAll(() => {
-          document.addEventListener = origialAddEventListener;
+          (document.addEventListener as jest.Mock).mockRestore();
         });
 
         it('stops decrementing on mouse up anywhere in document', () => {

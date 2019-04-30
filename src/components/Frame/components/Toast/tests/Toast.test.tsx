@@ -111,26 +111,40 @@ describe('<Toast />', () => {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('is called when the escape key is pressed', () => {
+    describe('events', () => {
       const listenerMap: HandlerMap = {};
-      jest
-        .spyOn(document, 'addEventListener')
-        .mockImplementation((event, cb) => {
-          listenerMap[event] = cb;
-        });
 
-      const spy = jest.fn();
-      mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
+      beforeEach(() => {
+        jest
+          .spyOn(document, 'addEventListener')
+          .mockImplementation((evt, cb) => {
+            listenerMap[evt] = cb;
+          });
 
-      listenerMap.keyup({keyCode: Key.Escape});
+        jest
+          .spyOn(document, 'removeEventListener')
+          .mockImplementation((event) => {
+            listenerMap[event] = noop;
+          });
+      });
 
-      jest
-        .spyOn(document, 'removeEventListener')
-        .mockImplementation((event) => {
-          listenerMap[event] = noop;
-        });
+      afterEach(() => {
+        (document.addEventListener as jest.Mock).mockRestore();
+        (document.removeEventListener as jest.Mock).mockRestore();
 
-      expect(spy).toHaveBeenCalled();
+        Object.keys(listenerMap).forEach((key) => delete listenerMap[key]);
+      });
+
+      it('is called when the escape key is pressed', () => {
+        const spy = jest.fn();
+        mountWithAppProvider(
+          <Toast content="Image uploaded" onDismiss={spy} />,
+        );
+
+        listenerMap.keyup({keyCode: Key.Escape});
+
+        expect(spy).toHaveBeenCalled();
+      });
     });
 
     it('is called after the duration is reached', () => {

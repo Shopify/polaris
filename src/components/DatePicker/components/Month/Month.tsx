@@ -91,7 +91,6 @@ function Month({
     if (day == null) {
       const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
       return (
-        // eslint-disable-next-line react/jsx-no-bind
         <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />
       );
     }

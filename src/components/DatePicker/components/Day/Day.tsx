@@ -68,14 +68,12 @@ export class Day extends React.PureComponent<CombinedProps, never> {
 
     return (
       <button
-        // eslint-disable-next-line react/jsx-no-bind
         onFocus={onFocus.bind(null, day)}
         type="button"
         ref={this.setNode}
         tabIndex={tabIndex}
         className={className}
         onMouseOver={handleHover}
-        // eslint-disable-next-line react/jsx-no-bind
         onClick={handleClick}
         aria-label={ariaLabel}
         aria-selected={selected}
