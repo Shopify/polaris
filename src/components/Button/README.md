@@ -150,15 +150,27 @@ Use against shaded or colorful backgrounds where matching the current text color
 
 ### Plain button
 
-<!-- example-for: web -->
-
 Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
 
 ```jsx
 <Button plain>View shipping settings</Button>
 ```
 
+<!-- content-for: android -->
+
+![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
+
+<!-- /content-for -->
+
 ### Plain monochrome button
+
+<!-- example-for: web -->
 
 Use to render a buttons that look like links where matching the surrounding text color is visually more appropriate. For example in the InlineError component.
 
@@ -174,18 +186,6 @@ Use to render a buttons that look like links where matching the surrounding text
   }
 />
 ```
-
-<!-- content-for: android -->
-
-![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
-
-<!-- /content-for -->
 
 ### Primary button
 
