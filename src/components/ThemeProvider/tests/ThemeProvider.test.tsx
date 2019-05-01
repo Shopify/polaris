@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import ThemeProvider from '../ThemeProvider';
+import {Consumer} from '../components';
+import {ThemeProviderContext} from '../types';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -10,6 +12,41 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
     expect(themeProvider.exists()).toBe(true);
+  });
+
+  it('passes context', () => {
+    const Child: React.SFC<{}> = (_props) => {
+      return (
+        <Consumer>
+          {({polarisTheme}: ThemeProviderContext) =>
+            polarisTheme && polarisTheme.logo ? <div /> : null
+          }
+        </Consumer>
+      );
+    };
+
+    const wrapper = mountWithAppProvider(
+      <ThemeProvider
+        theme={{
+          logo: {
+            width: 104,
+            topBarSource:
+              'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-white.svg',
+            contextualSaveBarSource:
+              'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-full-color-black.svg',
+          },
+        }}
+      >
+        <Child />
+      </ThemeProvider>,
+    );
+
+    const div = wrapper
+      .find(Child)
+      .find('div')
+      .first();
+
+    expect(div.exists()).toBe(true);
   });
 
   it('has a default theme', () => {

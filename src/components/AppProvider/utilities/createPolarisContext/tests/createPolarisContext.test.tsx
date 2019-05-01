@@ -37,8 +37,6 @@ describe('createPolarisContext()', () => {
       },
       polarisTheme: {
         logo: null,
-        subscribe: noop,
-        unsubscribe: noop,
       },
     });
   });
@@ -56,10 +54,6 @@ describe('createPolarisContext()', () => {
     };
     const stickyManager = new StickyManager();
     const scrollLockManager = new ScrollLockManager();
-    const mockSubscribe = (fn: () => void) =>
-      ([] as Array<() => void>).push(fn);
-    const mockUnsubscribe = (fn: () => void) =>
-      [].filter((curFn: any) => curFn !== fn);
     const contextOne = createPolarisContext(
       {
         i18n,
@@ -68,15 +62,11 @@ describe('createPolarisContext()', () => {
       },
       {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
     );
     const contextTwo = createPolarisContext(
       {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
       {
         i18n,
@@ -96,8 +86,6 @@ describe('createPolarisContext()', () => {
       },
       polarisTheme: {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
     };
 
@@ -135,8 +123,6 @@ describe('createPolarisContext()', () => {
       },
       polarisTheme: {
         logo: null,
-        subscribe: noop,
-        unsubscribe: noop,
       },
     };
 
@@ -144,14 +130,8 @@ describe('createPolarisContext()', () => {
   });
 
   it('returns the right context with only theme provider context being provided', () => {
-    const mockSubscribe = (fn: () => void) =>
-      ([] as Array<() => void>).push(fn);
-    const mockUnsubscribe = (fn: () => void) =>
-      [].filter((curFn: any) => curFn !== fn);
     const context = createPolarisContext({
       logo: null,
-      subscribe: mockSubscribe,
-      unsubscribe: mockUnsubscribe,
     });
 
     expect(context).toMatchObject({
@@ -166,8 +146,6 @@ describe('createPolarisContext()', () => {
       },
       polarisTheme: {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
     });
   });

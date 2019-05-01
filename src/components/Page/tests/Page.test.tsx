@@ -3,7 +3,7 @@ import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import {Page, Card} from 'components';
 import {LinkAction} from '../../../types';
 import {noop} from '../../../utilities/other';
@@ -255,7 +255,7 @@ describe('<Page />', () => {
 
   describe('<Header />', () => {
     it('is not rendered when there is no header content', () => {
-      const page = shallowWithAppProvider(<Page title="" />);
+      const page = mountWithAppProvider(<Page title="" />);
       expect(page.find(Header).exists()).toBeFalsy();
     });
   });

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  mountWithAppProvider,
-  shallowWithAppProvider,
-  findByTestID,
-} from 'test-utilities';
-import {createAppProviderContext, Image, UnstyledLink} from 'components';
+import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {Image, UnstyledLink} from 'components';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-import {createThemeContext, ThemeContext} from '../../ThemeProvider';
-import {polarisAppProviderContextTypes} from '../../AppProvider';
+import {
+  createThemeContext,
+  ThemeContext,
+  Provider as ThemeProvider,
+} from '../../ThemeProvider';
 
 const actions = [
   {
@@ -19,7 +18,7 @@ const actions = [
 
 describe('<TopBar />', () => {
   it('mounts', () => {
-    const topBar = mountWithAppProvider(<TopBar />);
+    const topBar = mountWithContext(<TopBar />);
 
     expect(topBar.exists()).toBe(true);
   });
@@ -42,7 +41,7 @@ describe('<TopBar />', () => {
           onToggle={noop}
         />
       );
-      const topBar = mountWithAppProvider(<TopBar userMenu={user} />);
+      const topBar = mountWithContext(<TopBar userMenu={user} />);
       expect(topBar.find(UserMenu)).toHaveLength(1);
     });
 
@@ -50,7 +49,7 @@ describe('<TopBar />', () => {
       const searchField = (
         <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
       );
-      const topBar = mountWithAppProvider(<TopBar searchField={searchField} />);
+      const topBar = mountWithContext(<TopBar searchField={searchField} />);
       expect(topBar.find(SearchField)).toHaveLength(1);
     });
 
@@ -64,43 +63,26 @@ describe('<TopBar />', () => {
           onOpen={noop}
         />
       );
-      const topBar = mountWithAppProvider(
-        <TopBar secondaryMenu={secondaryMenu} />,
-      );
+      const topBar = mountWithContext(<TopBar secondaryMenu={secondaryMenu} />);
       expect(topBar.find(Menu)).toHaveLength(1);
     });
   });
 
   describe('navigation content', () => {
     it('renders a navigation button when hasNavigation is true', () => {
-      const topBar = mountWithAppProvider(<TopBar showNavigationToggle />);
+      const topBar = mountWithContext(<TopBar showNavigationToggle />);
 
       expect(topBar.find('[aria-label="Toggle menu"]')).toHaveLength(1);
     });
 
     it('sets onToggleNavigation on the navigation button', () => {
       const spy = jest.fn();
-      const topBar = mountWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar showNavigationToggle onNavigationToggle={spy} />,
       );
 
       topBar.find('[aria-label="Toggle menu"]').simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
-    });
-
-    it('sets focused state to true when the navigation button is focused', () => {
-      const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
-
-      topBar.find('[aria-label="Toggle menu"]').simulate('focus');
-      expect(topBar.state('focused')).toBe(true);
-    });
-
-    it('sets focused state to false when the navigation button is blurred', () => {
-      const topBar = shallowWithAppProvider(<TopBar showNavigationToggle />);
-
-      topBar.find('[aria-label="Toggle menu"]').simulate('focus');
-      topBar.find('[aria-label="Toggle menu"]').simulate('blur');
-      expect(topBar.state('focused')).toBe(false);
     });
   });
 
@@ -112,7 +94,7 @@ describe('<TopBar />', () => {
     const searchResults = <div id="search-content">Hello</div>;
 
     it('renders the search results', () => {
-      const topBar = mountWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar
           searchResults={searchResults}
           searchResultsVisible
@@ -124,7 +106,7 @@ describe('<TopBar />', () => {
     });
 
     it('renders the search prop', () => {
-      const topBar = mountWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar
           searchResults={searchResults}
           searchResultsVisible
@@ -136,7 +118,7 @@ describe('<TopBar />', () => {
     });
 
     it('passes the visible prop to search', () => {
-      const topBar = mountWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar
           searchResults={searchResults}
           searchField={searchField}
@@ -148,7 +130,7 @@ describe('<TopBar />', () => {
     });
 
     it('passes the onSearchDismiss prop to search', () => {
-      const topBar = mountWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar
           searchResults={searchResults}
           onSearchResultsDismiss={noop}
@@ -163,70 +145,45 @@ describe('<TopBar />', () => {
 
   describe('logo', () => {
     it('will render an image with the logo top bar source', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {
-            topBarSource: './assets/shopify.svg',
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithContext(<TopBar />, {
+        logo: {
+          topBarSource: './assets/shopify.svg',
+        },
+      });
       expect(topBar.find(Image).prop('source')).toBe('./assets/shopify.svg');
     });
 
     it('will render an image with the logo accessibility label', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {
-            accessibilityLabel: 'Shopify',
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithContext(<TopBar />, {
+        logo: {
+          accessibilityLabel: 'Shopify',
+        },
+      });
       expect(topBar.find(Image).prop('alt')).toBe('Shopify');
     });
 
     it('will render an unstyled link with the logo URL', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {
-            url: 'https://shopify.com',
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithContext(<TopBar />, {
+        logo: {
+          url: 'https://shopify.com',
+        },
+      });
       expect(topBar.find(UnstyledLink).prop('url')).toBe('https://shopify.com');
     });
 
     it('will render an unstyled link with the logo width', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {
-            width: 124,
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithContext(<TopBar />, {
+        logo: {
+          width: 124,
+        },
+      });
       expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '124px'});
     });
 
     it('will render an unstyled link with a default width', () => {
-      const topBar = mountWithAppProvider(
-        <TopBar />,
-        addPolarisContext({
-          logo: {},
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const topBar = mountWithContext(<TopBar />, {
+        logo: {},
+      });
       expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
     });
   });
@@ -243,7 +200,7 @@ describe('<TopBar />', () => {
     );
 
     it('renders', () => {
-      const topBar = mountWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar contextControl={mockContextControl} />,
       );
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(true);
@@ -251,34 +208,30 @@ describe('<TopBar />', () => {
     });
 
     it('doesn’t render a logo when defined', () => {
-      const topBar = shallowWithAppProvider(
+      const topBar = mountWithContext(
         <TopBar contextControl={mockContextControl} />,
-        addPolarisContext({
+        {
           logo: {
             topBarSource: './assets/shopify.svg',
           },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
+        },
       );
       expect(topBar.find(Image).exists()).toBe(false);
     });
 
     it('doesn’t render the wrapper when not defined and no logo is available', () => {
-      const topBar = mountWithAppProvider(<TopBar />);
+      const topBar = mountWithContext(<TopBar />);
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
     });
   });
 });
 
-function addPolarisContext(logo: ThemeContext) {
-  const context = {
-    ...createAppProviderContext(),
-    ...createThemeContext(logo),
-  };
-
-  return {
-    context,
-    childContextTypes: polarisAppProviderContextTypes,
-  };
+function mountWithContext(
+  node: React.ReactElement<any>,
+  polarisTheme?: ThemeContext,
+) {
+  const context = polarisTheme ? {polarisTheme} : createThemeContext();
+  return mountWithAppProvider(
+    <ThemeProvider value={context}>{node}</ThemeProvider>,
+  );
 }
