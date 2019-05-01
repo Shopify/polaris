@@ -7,6 +7,7 @@ import {UserMenu} from '../components';
 const childContextTypes = {
   location: PropTypes.string,
   onNavigationDismiss: PropTypes.func,
+  withinContentContainer: PropTypes.boolean,
 };
 
 describe('<Navigation />', () => {
