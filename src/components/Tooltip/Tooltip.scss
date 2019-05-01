@@ -38,12 +38,12 @@ $content-max-width: rem(200px);
 
 .Content {
   position: relative;
-  margin-top: spacing(extra-tight);
   border-radius: border-radius();
   max-width: $content-max-width;
   max-height: $content-max-height;
 }
 
 .Label {
-  padding: 0 spacing(tight) spacing(extra-tight);
+  padding: spacing(extra-tight) spacing(tight);
+  word-break: break-word;
 }
