@@ -1,14 +1,10 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {mountWithAppProvider} from 'test-utilities';
 import Navigation from '../Navigation';
 import {UserMenu} from '../components';
+import {contextTypes} from '../types';
 
-const childContextTypes = {
-  location: PropTypes.string,
-  onNavigationDismiss: PropTypes.func,
-  withinContentContainer: PropTypes.boolean,
-};
+const childContextTypes = contextTypes;
 
 describe('<Navigation />', () => {
   it('mounts', () => {
@@ -16,23 +12,44 @@ describe('<Navigation />', () => {
     expect(navigation.exists()).toBe(true);
   });
 
-  it('passes context', () => {
-    const Child: React.SFC<{}> = (_props, context) =>
-      context.location ? <div /> : null;
-    Child.contextTypes = childContextTypes;
+  describe('context', () => {
+    it('passes location context', () => {
+      const Child: React.SFC<{}> = (_props, context) =>
+        context.location ? <div /> : null;
+      Child.contextTypes = childContextTypes;
 
-    const navigation = mountWithAppProvider(
-      <Navigation location="/">
-        <Child />
-      </Navigation>,
-    );
+      const navigation = mountWithAppProvider(
+        <Navigation location="/">
+          <Child />
+        </Navigation>,
+      );
 
-    const div = navigation
-      .find(Child)
-      .find('div')
-      .first();
+      const div = navigation
+        .find(Child)
+        .find('div')
+        .first();
 
-    expect(div.exists()).toBe(true);
+      expect(div.exists()).toBe(true);
+    });
+
+    it('has a child with contentContext', () => {
+      const Child: React.SFC<{}> = (_props, context) =>
+        context.withinContentContainer ? <div /> : null;
+      Child.contextTypes = childContextTypes;
+
+      const navigation = mountWithAppProvider(
+        <Navigation location="/">
+          <Child />
+        </Navigation>,
+      );
+
+      const div = navigation
+        .find(Child)
+        .find('div')
+        .first();
+
+      expect(div.exists()).toBe(true);
+    });
   });
 
   describe('userMenu', () => {
