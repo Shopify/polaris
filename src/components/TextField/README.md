@@ -342,10 +342,15 @@ class HiddenLabelExample extends React.Component {
   state = {
     value: '12',
     selected: 'yes',
+    selectValue: 'months after purchase',
   };
 
   handleValueChange = (value) => {
     this.setState({value});
+  };
+
+  handleSelectChange = (selectValue) => {
+    this.setState({selectValue});
   };
 
   handleSelectionChange = (selected) => {
@@ -373,6 +378,8 @@ class HiddenLabelExample extends React.Component {
           onChange={this.handleValueChange}
           connectedRight={
             <Select
+              value={this.state.selectValue}
+              onChange={this.handleSelectChange}
               label="Unit of time"
               labelHidden
               options={['months after purchase']}
@@ -676,6 +683,16 @@ To render an invalid text field and its validation error separately:
 class SeparateValidationErrorExample extends React.Component {
   state = {
     content: '',
+    selectTypeValue: 'Product type',
+    selectConditionValue: 'is equal to',
+  };
+
+  handleSelectCollectionTypeChange = (selectTypeValue) => {
+    this.setState({selectTypeValue});
+  };
+
+  handleSelectCollectionConditionChange = (selectConditionValue) => {
+    this.setState({selectConditionValue});
   };
 
   render() {
@@ -694,11 +711,15 @@ class SeparateValidationErrorExample extends React.Component {
               labelHidden
               label="Collection rule type"
               options={['Product type']}
+              value={this.state.selectTypeValue}
+              onChange={this.handleSelectCollectionTypeChange}
             />
             <Select
               labelHidden
               label="Collection rule condition"
               options={['is equal to']}
+              value={this.state.selectConditionValue}
+              onChange={this.handleSelectCollectionConditionChange}
             />
             <TextField
               labelHidden
