@@ -550,10 +550,15 @@ If inputting weight as a number and a separate unit of measurement, use a text f
 class ConnectedFieldsExample extends React.Component {
   state = {
     value: '10.6',
+    selectValue: 'kg',
   };
 
   handleChange = (value) => {
     this.setState({value});
+  };
+
+  handleSelectChange = (selectValue) => {
+    this.setState({selectValue});
   };
 
   render() {
@@ -564,7 +569,13 @@ class ConnectedFieldsExample extends React.Component {
         value={this.state.value}
         onChange={this.handleChange}
         connectedRight={
-          <Select label="Weight unit" labelHidden options={['kg', 'lb']} />
+          <Select
+            value={this.state.selectValue}
+            label="Weight unit"
+            onChange={this.handleSelectChange}
+            labelHidden
+            options={['kg', 'lb']}
+          />
         }
       />
     );
