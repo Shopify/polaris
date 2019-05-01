@@ -1,7 +1,8 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {setColors} from './utils';
-import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
+import {Theme, ThemeProviderContext} from './types';
+import {Provider} from './components';
 
 export interface State {
   theme: Theme;
@@ -22,9 +23,6 @@ const defaultTheme = {
 };
 
 export default class ThemeProvider extends React.Component<Props, State> {
-  static childContextTypes = THEME_CONTEXT_TYPES;
-  private subscriptions: {(): void}[] = [];
-
   constructor(props: Props) {
     super(props);
 
@@ -46,11 +44,9 @@ export default class ThemeProvider extends React.Component<Props, State> {
       theme: setThemeContext(theme),
       colors: setColors(theme),
     });
-
-    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
   }
 
-  getChildContext(): ThemeProviderContext {
+  get getContext(): ThemeProviderContext {
     const {
       theme: {logo = null, ...rest},
     } = this.state;
@@ -59,8 +55,6 @@ export default class ThemeProvider extends React.Component<Props, State> {
       polarisTheme: {
         ...rest,
         logo,
-        subscribe: this.subscribe,
-        unsubscribe: this.unsubscribe,
       },
     };
   }
@@ -68,18 +62,12 @@ export default class ThemeProvider extends React.Component<Props, State> {
   render() {
     const styles = this.createStyles() || defaultTheme;
 
-    return <div style={styles}>{React.Children.only(this.props.children)}</div>;
-  }
-
-  subscribe = (callback: () => void) => {
-    this.subscriptions.push(callback);
-  };
-
-  unsubscribe = (callback: () => void) => {
-    this.subscriptions = this.subscriptions.filter(
-      (subscription) => subscription !== callback,
+    return (
+      <Provider value={this.getContext}>
+        <div style={styles}>{React.Children.only(this.props.children)}</div>
+      </Provider>
     );
-  };
+  }
 
   createStyles() {
     const {colors} = this.state;

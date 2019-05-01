@@ -29,7 +29,7 @@ export default function createPolarisContext(
   let themeContext: CreateThemeContext | undefined;
   if (contextOne && 'logo' in contextOne) {
     themeContext = contextOne as CreateThemeContext;
-    appProviderContext = contextTwo;
+    appProviderContext = contextTwo as CreateAppProviderContext;
   } else {
     appProviderContext = contextOne;
     themeContext = contextTwo as CreateThemeContext | undefined;

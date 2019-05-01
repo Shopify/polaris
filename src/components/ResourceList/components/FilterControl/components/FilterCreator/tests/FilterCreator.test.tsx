@@ -1,11 +1,6 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {
-  trigger,
-  findByTestID,
-  shallowWithAppProvider,
-  mountWithAppProvider,
-} from 'test-utilities';
+import {trigger, findByTestID, mountWithAppProvider} from 'test-utilities';
 import {Button, Select, Popover} from 'components';
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../../FilterValueSelector';
@@ -73,7 +68,7 @@ describe('<FilterCreator />', () => {
   });
 
   it('renders a non-active popover on default', () => {
-    const wrapper = shallowWithAppProvider(
+    const wrapper = mountWithAppProvider(
       <FilterCreator {...mockDefaultProps} />,
     );
 

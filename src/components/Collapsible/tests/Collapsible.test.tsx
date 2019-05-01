@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {shallowWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import Collapsible from '../Collapsible';
 
 describe('<Collapsible />', () => {
   const ariaHiddenSelector = '[aria-hidden=true]';
 
   it('does not render its children and indicates hidden with aria-hidden', () => {
-    const collapsible = shallowWithAppProvider(
+    const collapsible = mountWithAppProvider(
       <Collapsible id="test-collapsible" open={false}>
         content
       </Collapsible>,
@@ -18,7 +18,7 @@ describe('<Collapsible />', () => {
   });
 
   it('renders its children and does not render aria-hidden when open', () => {
-    const collapsible = shallowWithAppProvider(
+    const collapsible = mountWithAppProvider(
       <Collapsible id="test-collapsible" open>
         content
       </Collapsible>,

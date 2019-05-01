@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import RadioButton from '../RadioButton';
 
 describe('<RadioButton />', () => {
   describe('checked', () => {
     it('gets passed to the input', () => {
-      const input = shallowWithAppProvider(
+      const input = mountWithAppProvider(
         <RadioButton
           label="RadioButton"
           checked
@@ -20,7 +20,7 @@ describe('<RadioButton />', () => {
 
   describe('name', () => {
     it('gets passed to the input', () => {
-      const input = shallowWithAppProvider(
+      const input = mountWithAppProvider(
         <RadioButton
           label="RadioButton"
           checked
@@ -35,7 +35,7 @@ describe('<RadioButton />', () => {
 
   describe('value', () => {
     it('gets passed to the input', () => {
-      const input = shallowWithAppProvider(
+      const input = mountWithAppProvider(
         <RadioButton
           label="RadioButton"
           checked
@@ -84,7 +84,7 @@ describe('<RadioButton />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <RadioButton id="MyRadioButton" label="RadioButton" />,
       )
         .find('input')
@@ -93,7 +93,7 @@ describe('<RadioButton />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallowWithAppProvider(<RadioButton label="RadioButton" />)
+      const id = mountWithAppProvider(<RadioButton label="RadioButton" />)
         .find('input')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -103,17 +103,17 @@ describe('<RadioButton />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the input', () => {
-      const button = shallowWithAppProvider(
+      const button = mountWithAppProvider(
         <RadioButton label="RadioButton" disabled />,
       );
       expect(button.find('input').prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let element = shallowWithAppProvider(<RadioButton label="RadioButton" />);
+      let element = mountWithAppProvider(<RadioButton label="RadioButton" />);
       expect(element.find('input').prop('disabled')).toBeFalsy();
 
-      element = shallowWithAppProvider(
+      element = mountWithAppProvider(
         <RadioButton label="RadioButton" disabled={false} />,
       );
       expect(element.find('input').prop('disabled')).toBeFalsy();

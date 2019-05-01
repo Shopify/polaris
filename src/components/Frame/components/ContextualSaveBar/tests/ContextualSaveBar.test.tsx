@@ -1,8 +1,11 @@
 import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
-import {polarisAppProviderContextTypes} from 'components/AppProvider';
-import {createThemeContext, ThemeContext} from 'components/ThemeProvider';
-import {createAppProviderContext, Button, Image, Modal} from 'components';
+import {
+  createThemeContext,
+  ThemeContext,
+  Provider as ThemeProvider,
+} from 'components/ThemeProvider';
+import {Button, Image, Modal} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
@@ -13,7 +16,7 @@ describe('<ContextualSaveBar />', () => {
         onAction: jest.fn(),
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar discardAction={discardAction} />,
       );
 
@@ -29,7 +32,7 @@ describe('<ContextualSaveBar />', () => {
         discardConfirmationModal: false,
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar discardAction={discardAction} />,
       );
 
@@ -44,7 +47,7 @@ describe('<ContextualSaveBar />', () => {
         discardConfirmationModal: true,
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar discardAction={discardAction} />,
       );
 
@@ -59,7 +62,7 @@ describe('<ContextualSaveBar />', () => {
         discardConfirmationModal: true,
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar discardAction={discardAction} />,
       );
 
@@ -76,7 +79,7 @@ describe('<ContextualSaveBar />', () => {
         onAction: jest.fn(),
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar saveAction={saveAction} />,
       );
 
@@ -92,7 +95,7 @@ describe('<ContextualSaveBar />', () => {
         onAction: jest.fn(),
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar discardAction={discardAction} />,
       );
 
@@ -105,7 +108,7 @@ describe('<ContextualSaveBar />', () => {
         onAction: jest.fn(),
       };
 
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar saveAction={saveAction} />,
       );
 
@@ -116,34 +119,24 @@ describe('<ContextualSaveBar />', () => {
 
   describe('logo', () => {
     it('will render an image with the contextual save bar source', () => {
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar />,
-        addPolarisContext({
-          logo: {
-            width: 200,
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const contextualSaveBar = mountWithContext(<ContextualSaveBar />, {
+        logo: {
+          width: 200,
+          contextualSaveBarSource: './assets/monochrome_shopify.svg',
+        },
+      });
       expect(contextualSaveBar.find(Image).prop('source')).toBe(
         './assets/monochrome_shopify.svg',
       );
     });
 
     it('will render an image with the width provided', () => {
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar />,
-        addPolarisContext({
-          logo: {
-            width: 200,
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const contextualSaveBar = mountWithContext(<ContextualSaveBar />, {
+        logo: {
+          width: 200,
+          contextualSaveBarSource: './assets/monochrome_shopify.svg',
+        },
+      });
       expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
         'width',
         '200px',
@@ -151,17 +144,12 @@ describe('<ContextualSaveBar />', () => {
     });
 
     it('will render the image with a default width if 0 is provided', () => {
-      const contextualSaveBar = mountWithAppProvider(
-        <ContextualSaveBar />,
-        addPolarisContext({
-          logo: {
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-            width: 0,
-          },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
-      );
+      const contextualSaveBar = mountWithContext(<ContextualSaveBar />, {
+        logo: {
+          contextualSaveBarSource: './assets/monochrome_shopify.svg',
+          width: 0,
+        },
+      });
       expect(contextualSaveBar.find(Image).get(0).props.style).toHaveProperty(
         'width',
         '104px',
@@ -169,16 +157,14 @@ describe('<ContextualSaveBar />', () => {
     });
 
     it('will not render the logo when content is aligned flush left', () => {
-      const contextualSaveBar = mountWithAppProvider(
+      const contextualSaveBar = mountWithContext(
         <ContextualSaveBar alignContentFlush />,
-        addPolarisContext({
+        {
           logo: {
             contextualSaveBarSource: './assets/monochrome_shopify.svg',
             width: 200,
           },
-          subscribe: () => {},
-          unsubscribe: () => {},
-        }),
+        },
       );
 
       expect(contextualSaveBar.find(Image).exists()).toBeFalsy();
@@ -186,14 +172,12 @@ describe('<ContextualSaveBar />', () => {
   });
 });
 
-function addPolarisContext(logo: ThemeContext) {
-  const context = {
-    ...createAppProviderContext(),
-    ...createThemeContext(logo),
-  };
-
-  return {
-    context,
-    childContextTypes: polarisAppProviderContextTypes,
-  };
+function mountWithContext(
+  node: React.ReactElement<any>,
+  polarisTheme?: ThemeContext,
+) {
+  const context = polarisTheme ? {polarisTheme} : createThemeContext();
+  return mountWithAppProvider(
+    <ThemeProvider value={context}>{node}</ThemeProvider>,
+  );
 }

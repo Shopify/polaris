@@ -1,5 +1,4 @@
 import tokens from '@shopify/polaris-tokens';
-import {noop} from '@shopify/javascript-utilities/other';
 import {needsVariantList} from '../config';
 import {HSLColor} from '../../../utilities/color-types';
 import {
@@ -128,9 +127,9 @@ function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
 
 export function createThemeContext(theme?: ThemeContext): ThemeProviderContext {
   if (!theme) {
-    return {polarisTheme: {logo: null, subscribe: noop, unsubscribe: noop}};
+    return {polarisTheme: {logo: null}};
   }
 
-  const {logo = null, subscribe = noop, unsubscribe = noop} = theme;
-  return {polarisTheme: {logo, subscribe, unsubscribe}};
+  const {logo = null} = theme;
+  return {polarisTheme: {logo}};
 }

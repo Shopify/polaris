@@ -9,6 +9,7 @@ export {
   ThemeColors,
   THEME_CONTEXT_TYPES,
 } from './types';
+export {Provider, Consumer} from './components';
 export {
   setColors,
   needsVariant,

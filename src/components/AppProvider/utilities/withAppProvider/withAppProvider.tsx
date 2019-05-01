@@ -6,7 +6,10 @@ import Intl from '../Intl';
 import Link from '../Link';
 import {StickyManager} from '../withSticky';
 import ScrollLockManager from '../ScrollLockManager';
-import {ThemeContext} from '../../../ThemeProvider';
+import {
+  ThemeContext,
+  Consumer as ThemeProviderConsumer,
+} from '../../../ThemeProvider';
 import {polarisAppProviderContextTypes} from '../../types';
 
 export interface WithAppProviderProps {
@@ -36,46 +39,47 @@ export default function withAppProvider<OwnProps>() {
       componentDidMount() {
         const {
           polaris: {subscribe: subscribeToPolaris},
-          polarisTheme: {subscribe: subscribeToTheme},
         } = this.context;
 
         if (subscribeToPolaris) {
           subscribeToPolaris(this.handleContextUpdate);
-        }
-
-        if (subscribeToTheme) {
-          subscribeToTheme(this.handleContextUpdate);
         }
       }
 
       componentWillUnmount() {
         const {
           polaris: {unsubscribe: unsubscribeToPolaris},
-          polarisTheme: {unsubscribe: unsubscribeToTheme},
         } = this.context;
 
         if (unsubscribeToPolaris) {
           unsubscribeToPolaris(this.handleContextUpdate);
         }
-
-        if (unsubscribeToTheme) {
-          unsubscribeToTheme(this.handleContextUpdate);
-        }
       }
 
       render() {
-        const {polaris, polarisTheme} = this.context;
-        const polarisContext = {...polaris, theme: polarisTheme};
+        return (
+          <ThemeProviderConsumer>
+            {({polarisTheme}) => {
+              const {polaris} = this.context;
+              const polarisContext = {
+                ...polaris,
+                theme: polarisTheme,
+              };
 
-        if (!polaris) {
-          throw new Error(
-            `The <AppProvider> component is required as of v2.0 of Polaris React. See
-            https://polaris.shopify.com/components/structure/app-provider for implementation
-            instructions.`,
-          );
-        }
+              if (!polaris) {
+                throw new Error(
+                  `The <AppProvider> component is required as of v2.0 of Polaris React. See
+                        https://polaris.shopify.com/components/structure/app-provider for implementation
+                        instructions.`,
+                );
+              }
 
-        return <WrappedComponent {...this.props} polaris={polarisContext} />;
+              return (
+                <WrappedComponent {...this.props} polaris={polarisContext} />
+              );
+            }}
+          </ThemeProviderConsumer>
+        );
       }
 
       private handleContextUpdate = () => {

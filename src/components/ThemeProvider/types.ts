@@ -36,8 +36,6 @@ export interface Theme {
 
 export interface ThemeContext {
   logo: Theme['logo'] | null;
-  subscribe: (callback: () => void) => void;
-  unsubscribe: (callback: () => void) => void;
 }
 
 export interface ThemeProviderContext {
