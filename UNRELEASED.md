@@ -10,8 +10,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - `Page > Header` now must pass `content` to the `actions` within `secondaryActions` and `actionGroups` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
 
-### Deprecations
-
 ### New components
 
 - `ActionMenu`: Use for display of actions and action groups within the context of a header ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
@@ -19,6 +17,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Add `selectable` prop to `ResourceList` component ([#1614](https://github.com/Shopify/polaris-react/pull/1614))
+- Allow `Link` and `Button` interactions when rendered as `prefix/suffix` within `<TextField />` ([#1394](https://github.com/Shopify/polaris-react/pull/1394))
 - `ActionList` can now pass a unique `accessibilityLabel` to each `Item` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
 - Greatly reduced complexity of `Page > Header` ([#1653](https://github.com/Shopify/polaris-react/pull/1653))
 - Long `Page > Header` breadcrumb labels will now truncate instead of breaking layout ([#1653](https://github.com/Shopify/polaris-react/pull/1653))

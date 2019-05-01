@@ -191,22 +191,23 @@ $stacking-order: (
   }
 }
 
-.Prefix {
-  position: relative;
-  z-index: z-index(contents, $stacking-order);
-  flex: 0 0 auto;
-  margin: 0 $prefix-horizontal-spacing 0 $backdrop-horizontal-spacing;
-  color: currentColor;
-  pointer-events: none;
-}
-
+.Prefix,
 .Suffix {
   position: relative;
   z-index: z-index(contents, $stacking-order);
   flex: 0 0 auto;
-  margin: 0 $backdrop-horizontal-spacing 0 $addon-horizontal-spacing;
   color: currentColor;
-  pointer-events: none;
+  user-select: none;
+}
+
+.Prefix {
+  margin-left: $backdrop-horizontal-spacing;
+  margin-right: $prefix-horizontal-spacing;
+}
+
+.Suffix {
+  margin-left: $addon-horizontal-spacing;
+  margin-right: $backdrop-horizontal-spacing;
 }
 
 .CharacterCount {
