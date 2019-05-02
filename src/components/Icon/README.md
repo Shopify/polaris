@@ -65,9 +65,9 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Using icons can be a great help to merchants who have difficulties with reading, language, attention, and low vision.
 
-If the icon appears without adjacent text, then use the `accessibilityLabel` prop to give the icon a text alternative. This adds an `aria-label` that’s conveyed to screen reader users.
+If the icon appears without text, then use the `accessibilityLabel` prop to give the icon a text alternative. This adds an `aria-label` that’s conveyed to screen reader users.
 
-<!-- usage block -->
+<!-- usageblock -->
 
 #### Do
 
