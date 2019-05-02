@@ -31,6 +31,8 @@ export interface Props extends React.HTMLProps<HTMLDivElement> {
   shadow?: boolean;
   /** Slightly hints content upon mounting when scrollable */
   hint?: boolean;
+  /** Prevent the ability to scroll the scroll area */
+  lock?: boolean;
   /** Called when scrolled to the bottom of the scroll area */
   onScrolledToBottom?(): void;
 }
@@ -80,16 +82,21 @@ class Scrollable extends React.Component<CombinedProps, State> {
 
   componentDidMount() {
     const {polaris} = this.props;
+
     if (this.scrollArea == null) {
       return;
     }
+
     polaris.stickyManager.setContainer(this.scrollArea);
+
     addEventListener(this.scrollArea, 'scroll', () => {
       window.requestAnimationFrame(this.handleScroll);
     });
     addEventListener(window, 'resize', this.handleResize);
+
     window.requestAnimationFrame(() => {
       this.handleScroll();
+
       if (this.props.hint) {
         this.scrollHint();
       }
@@ -98,16 +105,20 @@ class Scrollable extends React.Component<CombinedProps, State> {
 
   componentWillUnmount() {
     const {polaris} = this.props;
+
     if (this.scrollArea == null) {
       return;
     }
+
     removeEventListener(this.scrollArea, 'scroll', this.handleScroll);
     removeEventListener(window, 'resize', this.handleResize);
+
     polaris.stickyManager.removeScrollListener();
   }
 
   componentDidUpdate() {
     const {scrollPosition} = this.state;
+
     if (scrollPosition && this.scrollArea && scrollPosition > 0) {
       this.scrollArea.scrollTop = scrollPosition;
     }
@@ -122,6 +133,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
       vertical = true,
       shadow,
       hint,
+      lock,
       onScrolledToBottom,
       polaris,
       ...rest
@@ -135,6 +147,12 @@ class Scrollable extends React.Component<CombinedProps, State> {
       topShadow && styles.hasTopShadow,
       bottomShadow && styles.hasBottomShadow,
     );
+
+    if (lock) {
+      this.toggleLock();
+    } else if (lock === false) {
+      this.toggleLock(false);
+    }
 
     return (
       <div
@@ -155,15 +173,17 @@ class Scrollable extends React.Component<CombinedProps, State> {
   private handleScroll = () => {
     const {scrollArea} = this;
     const {shadow, onScrolledToBottom} = this.props;
+
     if (scrollArea == null) {
       return;
     }
+
     const {scrollTop, clientHeight, scrollHeight} = scrollArea;
+
     const shouldBottomShadow = Boolean(
       shadow && !(scrollTop + clientHeight >= scrollHeight),
     );
     const shouldTopShadow = Boolean(shadow && scrollTop > 0);
-
     const canScroll = scrollHeight > clientHeight;
     const hasScrolledToBottom = scrollHeight - scrollTop === clientHeight;
 
@@ -180,10 +200,13 @@ class Scrollable extends React.Component<CombinedProps, State> {
 
   private scrollHint = () => {
     const {scrollArea} = this;
+
     if (scrollArea == null) {
       return;
     }
+
     const {clientHeight, scrollHeight} = scrollArea;
+
     if (
       PREFERS_REDUCED_MOTION ||
       this.state.scrollPosition > 0 ||
@@ -193,6 +216,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
     }
 
     const scrollDistance = scrollHeight - clientHeight;
+
     this.toggleLock();
     this.setState(
       {
@@ -227,6 +251,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
 
   private toggleLock(shouldLock = true) {
     const {scrollArea} = this;
+
     if (scrollArea == null) {
       return;
     }

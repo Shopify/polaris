@@ -14,6 +14,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
+- Added `lock` prop to `Scrollable`, allowing the user to now toggle scroll locking on that container ([#1398](https://github.com/Shopify/polaris-react/pull/1398))
 - Improved the performance of `ResourceList` ([#1313](https://github.com/Shopify/polaris-react/pull/1313))
 
 ### Bug fixes
