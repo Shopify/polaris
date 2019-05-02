@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ComboBoxContext} from 'components/Autocomplete/components/types';
+import {ComboBoxContext} from '../../../types';
 import BaseTextField, {Props as TextFieldProps} from '../../../../../TextField';
 import {Consumer} from '../Context';
 
