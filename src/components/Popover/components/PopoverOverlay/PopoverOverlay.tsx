@@ -4,7 +4,7 @@ import {write} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '@shopify/react-utilities/styles';
 import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
 import {durationBase} from '@shopify/polaris-tokens';
-import {Transition} from 'react-transition-group';
+import {CSSTransition} from 'react-transition-group';
 
 import {Key} from '../../../../types';
 import {overlay} from '../../../shared';
@@ -62,9 +62,20 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   render() {
     const {active} = this.props;
     return (
-      <Transition in={active} timeout={durationBase} mountOnEnter unmountOnExit>
+      <CSSTransition
+        in={active}
+        timeout={durationBase}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enter: styles.entering,
+          enterActive: styles.entered,
+          exit: styles.exiting,
+          exitActive: styles.exited,
+        }}
+      >
         {this.renderOverlay}
-      </Transition>
+      </CSSTransition>
     );
   }
 
@@ -120,7 +131,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     const className = classNames(
       styles.Popover,
-      transitionStatus && animationVariations(transitionStatus),
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
@@ -215,13 +225,4 @@ function renderPopoverContent(
     return childrenArray;
   }
   return wrapWithComponent(childrenArray, Pane, props);
-}
-
-function animationVariations(status: TransitionStatus) {
-  switch (status) {
-    case 'exiting':
-      return styles.exiting;
-    default:
-      return null;
-  }
 }

@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed `Popover` fade-in flutter on iOS by switching Transition component for CSSTransition [#1400](https://github.com/Shopify/polaris-react/pull/1400)
+
 ### Documentation
 
 ### Development workflow
