@@ -35,6 +35,12 @@ export default function Choice({
   helpText,
   onClick,
 }: Props) {
+  function handleClick() {
+    if (disabled || !onClick) return;
+
+    onClick();
+  }
+
   const className = classNames(
     styles.Choice,
     labelHidden && styles.labelHidden,
@@ -42,7 +48,7 @@ export default function Choice({
   );
 
   const labelMarkup = (
-    <label className={className} htmlFor={id} onClick={onClick}>
+    <label className={className} htmlFor={id} onClick={handleClick}>
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>{label}</span>
     </label>

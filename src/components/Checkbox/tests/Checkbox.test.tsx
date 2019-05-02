@@ -78,6 +78,33 @@ describe('<Checkbox />', () => {
       checkbox.simulate('click');
       expect(checkbox.find('input').instance()).toBe(document.activeElement);
     });
+
+    it('is not called when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('click');
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('is called when disabled and checked are both true on load', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(
+        <Checkbox label="label" id="id" disabled onChange={spy} checked />,
+      );
+      expect(spy).toHaveBeenCalledWith(false, 'id');
+    });
+
+    it('it is called when disabled and checked are both true after initial load', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} id="id" />,
+      );
+
+      checkbox.setProps({checked: true});
+      expect(spy).toHaveBeenCalledWith(false, 'id');
+    });
   });
 
   describe('onFocus()', () => {
