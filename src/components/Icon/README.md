@@ -76,7 +76,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 - Review our [alternative text](/content/alternative-text) guidelines to make sure your use of icon works for all merchants
 
 ```
-<Icon source={OrdersMajorMonotone} />
+<Icon source="orders" />
 <p>No orders yet</p>
 ```
 
