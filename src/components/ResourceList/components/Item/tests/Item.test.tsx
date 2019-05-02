@@ -229,7 +229,7 @@ describe('<Item />', () => {
     it('does not call onClick when hitting keyUp on the item when no URL exists', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <Provider value={mockSelectModeContext}>
           <Item id={itemId} onClick={onClick} />
         </Provider>,
       );
