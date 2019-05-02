@@ -39,6 +39,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added accessibility documentation and guidance for `ActionList` and `OptionList`. ([#1365](https://github.com/Shopify/polaris-react/pull/1365))
 - Added accessibility documentation for `Card` and `CalloutCard`. ([#1366](https://github.com/Shopify/polaris-react/pull/1366))
 - Added accessibility documentation for `Badge`. ([#1364](https://github.com/Shopify/polaris-react/pull/1364))
+- Added accessibility documentation for `Icon`. ([#1404](https://github.com/Shopify/polaris-react/pull/1404))
 
 ### Development workflow
 
