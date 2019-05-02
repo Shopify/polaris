@@ -399,6 +399,19 @@ describe('<ResourceList />', () => {
       resourceList.update();
       expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(1);
     });
+
+    it('does not render when EmptySearchResult exists', () => {
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={[]}
+          renderItem={renderItem}
+          filterControl={<div>fake filterControl</div>}
+        />,
+      );
+
+      expect(resourceList.find(EmptySearchResult).exists()).toBe(true);
+      expect(findByTestID(resourceList, 'ResourceList-Header')).toHaveLength(0);
+    });
   });
 
   describe('filterControl', () => {

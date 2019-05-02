@@ -44,6 +44,7 @@ function CheckableButton({
           labelHidden
           checked={selected}
           disabled={disabled}
+          onChange={onToggleAll}
         />
       </div>
       <span className={styles.Label}>{label}</span>

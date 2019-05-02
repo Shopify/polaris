@@ -4,10 +4,11 @@
 
 .LabelWrapper {
   @include text-breakword;
-  margin-bottom: spacing(extra-tight);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: spacing(extra-tight);
 }
 
 .HelpText {
@@ -19,4 +20,8 @@
 .Error {
   @include text-breakword;
   margin-top: spacing(extra-tight);
+}
+
+.Action {
+  flex: 0 0 auto;
 }

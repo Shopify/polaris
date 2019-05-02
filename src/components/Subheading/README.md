@@ -92,3 +92,48 @@ Use to structure content in a card.
 
 - To learn how a card is structured to group similar concepts and tasks together, [use the card component](/components/structure/card)
 - To create a title for a card or top-level page section, [use the heading component](/components/titles-and-text/heading)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+A clear and consistent heading structure helps merchants who have difficulty with reading or language. It also helps screen reader users to navigate the page using keystrokes that are custom to their screen reader.
+
+Use the `element` prop to determine the specific HTML element that’s output for the subheading. The component defaults to a level 3 heading (`<h3>`). Use a different value for the `element` prop if a different subheading fits the context better.
+
+Learn more about writing helpful [headings and subheadings](/content/grammar-and-mechanics#section-headings-and-subheadings).
+
+<!-- usageblock -->
+
+#### Do
+
+Use subheadings to support the hierarchy and structure of the page.
+
+#### Don’t
+
+- Use subheadings for style alone.
+- Use subheadings for major sections of the page.
+
+<!-- end -->
+
+<!-- /content-for -->

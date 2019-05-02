@@ -458,7 +458,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const headerMarkup = (showHeader || needsHeader) &&
+    const showEmptyState = filterControl && !this.itemsExist() && !loading;
+
+    const headerMarkup = !showEmptyState &&
+      (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
           <Sticky boundingElement={this.listRef.current}>
@@ -495,12 +498,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       );
 
-    const emptyStateMarkup =
-      filterControl && !this.itemsExist() && !loading ? (
-        <div className={styles.EmptySearchResultWrapper}>
-          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
-        </div>
-      ) : null;
+    const emptyStateMarkup = showEmptyState ? (
+      <div className={styles.EmptySearchResultWrapper}>
+        <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+      </div>
+    ) : null;
 
     const defaultTopPadding = 8;
     const topPadding =

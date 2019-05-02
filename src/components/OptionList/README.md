@@ -217,3 +217,38 @@ class OptionListExample extends React.Component {
   [use the choice list component](/components/forms/choice-list)
 - For a basic version of option list as a single choice menu,
   [use the select component](/components/forms/select)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Items in an option list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users.
+
+Controls in simple option lists are [buttons](/components/actions/button), and controls in multiple option lists are [checkboxes](/components/forms/checkbox).
+
+If you customize the option list, you can provide ARIA roles that fit the context. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
+
+- The `role` prop adds an ARIA role to the option list wrapper
+- The `optionRole` prop adds an ARIA role to the option list items
+
+<!-- /content-for -->

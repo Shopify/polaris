@@ -13,4 +13,8 @@ $height: rem(3px);
   transform-origin: 0;
   background-color: color('teal');
   transition: transform duration(slowest) easing(out);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: ms-high-contrast-color('selected-text-background');
+  }
 }
