@@ -59,9 +59,9 @@ function ChoiceList({
   error,
   name = getUniqueID(),
 }: CombinedProps) {
-  const ControlComponent: typeof Checkbox | typeof RadioButton = allowMultiple
-    ? Checkbox
-    : RadioButton;
+  // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
+  // see https://github.com/Microsoft/TypeScript/issues/28768
+  const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
 
   const finalName = allowMultiple ? `${name}[]` : name;
 

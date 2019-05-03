@@ -47,6 +47,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Update most devDependencies ([#1327](https://github.com/Shopify/polaris-react/pull/1327))
 - Bump react-utilites to remove a transitive dependency on core-js. ([#1343](https://github.com/Shopify/polaris-react/pull/1343))
 - Updated App Bridge to version 1.3.0 ([#1349](https://github.com/Shopify/polaris-react/pull/1349))
+- Updated typescript to 3.2.4 ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
 
 ### Code quality
 

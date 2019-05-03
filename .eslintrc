@@ -28,6 +28,7 @@
         "allowBlockStart": false
       }
     ],
+    "import/named": "off",
     "import/no-named-as-default": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
