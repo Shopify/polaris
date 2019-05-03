@@ -18,14 +18,14 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Allow `Tooltip` content to wrap no nonbreaking strings [#1395](https://github.com/Shopify/polaris-react/pull/1395)
+- Allowed `Tooltip` content to wrap no nonbreaking strings [#1395](https://github.com/Shopify/polaris-react/pull/1395)
 - Fixed `Checkbox` being toggled when disabled ([#1369](https://github.com/Shopify/polaris-react/pull/1369))
 - Fixed `DropZone.FileUpload` from incorrectly displaying action hint and title when the default is used and removed ([#1233](https://github.com/Shopify/polaris-react/pull/1233))
 - Fixed `ResourceList.Item` interaction states from being incorrectly applied ([#1312](https://github.com/Shopify/polaris-react/pull/1312)
 - Fixed selected state for date picker in windows high contrast mode ([#1342](https://github.com/Shopify/polaris-react/pull/1342))
-- Added background into media query for Microsoft high contrast to fix skeleton accessibility. ([#1341](https://github.com/Shopify/polaris-react/pull/1341))
+- Added background into media query for Microsoft high contrast to fix skeleton accessibility ([#1341](https://github.com/Shopify/polaris-react/pull/1341))
 - Added high contrast colour to `Loading` to make it visible in the high contrast mode in Windows ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
-- Fixed the position calculation of the `PositionedOverlay` component after scroll. ([#1382](https://github.com/Shopify/polaris-react/pull/1382))
+- Fixed the position calculation of the `PositionedOverlay` component after scroll ([#1382](https://github.com/Shopify/polaris-react/pull/1382))
 
 ### Documentation
 
@@ -41,14 +41,15 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added accessibility documentation for `Badge`. ([#1364](https://github.com/Shopify/polaris-react/pull/1364))
 - Added accessibility documentation for `Icon`. ([#1404](https://github.com/Shopify/polaris-react/pull/1404))
 
+
 ### Development workflow
 
 ### Dependency upgrades
 
-- Update most devDependencies ([#1327](https://github.com/Shopify/polaris-react/pull/1327))
-- Bump react-utilites to remove a transitive dependency on core-js. ([#1343](https://github.com/Shopify/polaris-react/pull/1343))
+- Update most `devDependencies` ([#1327](https://github.com/Shopify/polaris-react/pull/1327))
+- Bump `@shopify/react-utilites` to remove a transitive dependency on `core-js` ([#1343](https://github.com/Shopify/polaris-react/pull/1343))
 - Updated App Bridge to version 1.3.0 ([#1349](https://github.com/Shopify/polaris-react/pull/1349))
-- Updated typescript to 3.2.4 ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
+- Updated TypeScript to 3.2.4 ([#1388](https://github.com/Shopify/polaris-react/pull/1388))
 
 ### Code quality
 
