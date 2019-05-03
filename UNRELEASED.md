@@ -41,7 +41,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added accessibility documentation for `Badge`. ([#1364](https://github.com/Shopify/polaris-react/pull/1364))
 - Added accessibility documentation for `Icon`. ([#1404](https://github.com/Shopify/polaris-react/pull/1404))
 
-
 ### Development workflow
 
 ### Dependency upgrades
