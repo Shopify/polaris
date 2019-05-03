@@ -38,7 +38,7 @@ describe('<ThemeProvider />', () => {
       }
     }
 
-    const wrapper = TestUtils.renderIntoDocument(
+    const wrapper: unknown = TestUtils.renderIntoDocument(
       <ThemeProvider
         theme={{
           logo: {
