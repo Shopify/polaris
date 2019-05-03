@@ -75,7 +75,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 - Give the icon a text equivalent if its purpose isn’t conveyed in another way
 - Review our [alternative text](/content/alternative-text) guidelines to make sure your use of icon works for all merchants
 
-```
+```jsx
 <Icon source="orders" />
 <p>No orders yet</p>
 ```
