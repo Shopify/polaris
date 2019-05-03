@@ -80,7 +80,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 <p>No orders yet</p>
 ```
 
-```
+```jsx
 <Button icon="circlePlus">Add a product</Button>
 ```
 
@@ -91,7 +91,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 - Duplicate adjacent text in the alternative text
 - Duplicate information provided programmatically
 
-```
+```jsx
 <Icon source="circlePlus" accessibilityLabel="Circle plus icon" />
 ```
 
