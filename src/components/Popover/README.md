@@ -437,7 +437,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Popovers usually contain an[option list](/components/lists-and-tables/option-list) or an [action list](/components/actions/action-list), but can also contain other controls or content.
+Popovers usually contain an [option list](/components/lists-and-tables/option-list) or an [action list](/components/actions/action-list), but can also contain other controls or content.
 
 ### Keyboard support
 
