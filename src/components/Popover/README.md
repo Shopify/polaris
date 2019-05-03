@@ -412,3 +412,38 @@ Use when you have few actions that affects the whole page. Action sheets doesnâ€
 
 - To put a list of actions in a popover, [use the action list component](/components/actions/action-list)
 - To let merchants select simple options from a list, [use the select component](/components/forms/select)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Appleâ€™s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Popovers usually contain an[option list](/components/lists-and-tables/option-list) or an [action list](/components/actions/action-list), but can also contain other controls or content.
+
+### Keyboard support
+
+- When a popover opens, focus moves to the popover container
+- Once focus is in the popover, merchants can access controls in the popover using the <kbd>tab</kbd> key (and <kbd>shift</kbd> + <kbd>tab</kbd> backwards) and standard keystrokes for interacting
+- Merchants can dismiss the popover by tabbing out of it, pressing the <kbd>esc</kbd> key, or clicking outside of it
+- When the popover is closed, focus returns to the button that launched it
+
+<!-- /content-for -->
