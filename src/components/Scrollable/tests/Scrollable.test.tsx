@@ -57,4 +57,40 @@ describe('<Scrollable />', () => {
     scrollArea.find('#scrollContents').simulate('scroll');
     expect(spy).toHaveBeenCalledTimes(1);
   });
+
+  describe('lock prop', () => {
+    it('passes undefined by default', () => {
+      const scrollArea = mountWithAppProvider(
+        <Scrollable>
+          <p>content</p>
+        </Scrollable>,
+      );
+
+      expect(scrollArea.prop('lock')).toBeUndefined();
+    });
+
+    it('allows children to receive scroll events when `false`', () => {
+      const spy = jest.fn();
+      const scrollArea = mountWithAppProvider(
+        <Scrollable lock={false}>
+          <div id="scrollContents" onScroll={spy} />
+        </Scrollable>,
+      );
+      scrollArea.find('#scrollContents').simulate('scroll');
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    // TODO: Unable to solve this test
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('prevents children from receiving scroll events when `true`', () => {
+      const spy = jest.fn();
+      const scrollArea = mountWithAppProvider(
+        <Scrollable lock>
+          <div id="scrollContents" onScroll={spy} />
+        </Scrollable>,
+      );
+      scrollArea.find('#scrollContents').simulate('scroll');
+      expect(spy).toHaveBeenCalledTimes(0);
+    });
+  });
 });
