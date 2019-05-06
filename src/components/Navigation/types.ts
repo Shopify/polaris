@@ -1,5 +1,6 @@
 import * as PropTypes from 'prop-types';
 import {Props as IconProps} from '../Icon';
+import {contentContextTypes} from '../../types';
 
 export interface Context {
   location: string;
@@ -21,4 +22,5 @@ export interface SectionType {
 export const contextTypes = {
   location: PropTypes.string,
   onNavigationDismiss: PropTypes.func,
+  ...contentContextTypes,
 };
