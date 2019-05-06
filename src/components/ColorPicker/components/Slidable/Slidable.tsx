@@ -55,11 +55,19 @@ export default class Slidable extends React.PureComponent<Props, State> {
     };
 
     const moveListener = dragging ? (
-      <EventListener event="mousemove" handler={this.handleMove} />
+      <EventListener
+        event="mousemove"
+        handler={this.handleMove}
+        passive={false}
+      />
     ) : null;
 
     const touchMoveListener = dragging ? (
-      <EventListener event="touchmove" handler={this.handleMove} />
+      <EventListener
+        event="touchmove"
+        handler={this.handleMove}
+        passive={false}
+      />
     ) : null;
 
     const endDragListener = dragging ? (
@@ -121,7 +129,10 @@ export default class Slidable extends React.PureComponent<Props, State> {
   private handleMove = (event: MouseEvent | TouchEvent) => {
     event.stopImmediatePropagation();
     event.stopPropagation();
-    event.preventDefault();
+
+    if (event.cancelable) {
+      event.preventDefault();
+    }
 
     if (event.type === 'mousemove') {
       const mouseEvent = event as MouseEvent;
