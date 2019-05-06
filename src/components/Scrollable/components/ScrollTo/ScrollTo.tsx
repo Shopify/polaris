@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {contextTypes} from '../../types';
+import withContext from '../../../WithContext';
+import {Consumer} from '../Context';
+import {ScrollableContext} from '../../types';
+import {WithContextTypes} from '../../../../types';
 
-export default class ScrollTo extends React.Component<{}, never> {
-  static contextTypes = contextTypes;
+type ComposedProps = WithContextTypes<ScrollableContext>;
+
+class ScrollTo extends React.Component<ComposedProps, never> {
   private ref: React.RefObject<HTMLAnchorElement> = React.createRef();
 
   componentDidMount() {
-    const {scrollToPosition} = this.context;
+    const {scrollToPosition} = this.props.context;
 
     if (!scrollToPosition || !this.ref.current) {
       return;
@@ -22,3 +26,5 @@ export default class ScrollTo extends React.Component<{}, never> {
     return <a id={getUniqueId()} ref={this.ref} />;
   }
 }
+
+export default withContext<{}, {}, ScrollableContext>(Consumer)(ScrollTo);
