@@ -3,12 +3,16 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {Context, contextTypes} from '../../types';
+import {Consumer} from '../Context';
+import {NavigationContext} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Badge from '../../../Badge';
 import Icon, {Props as IconProps} from '../../../Icon';
 import Indicator from '../../../Indicator';
 import UnstyledLink from '../../../UnstyledLink';
+import withContext from '../../../WithContext';
+import compose from '../../../../utilities/react-compose';
+import {WithContextTypes} from '../../../../types';
 
 import styles from '../../Navigation.scss';
 
@@ -51,7 +55,9 @@ export interface Props extends ItemURLDetails {
   onClick?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+export type CombinedProps = Props &
+  WithAppProviderProps &
+  WithContextTypes<NavigationContext>;
 
 interface State {
   expanded: boolean;
@@ -66,10 +72,6 @@ enum MatchState {
 }
 
 export class BaseItem extends React.Component<CombinedProps, State> {
-  static contextTypes = contextTypes;
-
-  context!: Context;
-
   state: State = {
     expanded: false,
   };
@@ -99,9 +101,8 @@ export class BaseItem extends React.Component<CombinedProps, State> {
       badge,
       new: isNew,
       polaris: {intl},
+      context: {location, onNavigationDismiss},
     } = this.props;
-
-    const {location, onNavigationDismiss} = this.context;
 
     const tabIndex = disabled ? -1 : 0;
 
@@ -284,8 +285,10 @@ export class BaseItem extends React.Component<CombinedProps, State> {
   private getClickHandler = (onClick: Props['onClick']) => {
     return (event: React.MouseEvent<HTMLElement>) => {
       const {currentTarget} = event;
-      const {subNavigationItems} = this.props;
-      const {location, onNavigationDismiss} = this.context;
+      const {
+        subNavigationItems,
+        context: {location, onNavigationDismiss},
+      } = this.props;
 
       if (currentTarget.getAttribute('href') === location) {
         event.preventDefault();
@@ -384,6 +387,9 @@ function matchStateForItem(
   return matchesUrl ? MatchState.MatchUrl : MatchState.NoMatch;
 }
 
-export const Item = withAppProvider<Props>()(BaseItem);
+export const Item = compose<Props>(
+  withAppProvider<Props>(),
+  withContext<Props, WithAppProviderProps, NavigationContext>(Consumer),
+)(BaseItem);
 
 export default Item;

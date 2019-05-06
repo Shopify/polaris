@@ -5,7 +5,6 @@ import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import Collapsible from '../../../Collapsible';
 import Icon, {Props as IconProps} from '../../../Icon';
-import {contextTypes} from '../../types';
 
 import Item, {Props as ItemProps} from '../Item';
 
@@ -37,8 +36,6 @@ interface State {
 }
 
 export default class Section extends React.Component<Props, State> {
-  static contextTypes = contextTypes;
-
   state: State = {
     expanded: false,
   };

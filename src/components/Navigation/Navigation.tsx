@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import Scrollable from '../Scrollable';
 
-import {UserMenu, Section, Item} from './components';
-import {contextTypes, SectionType} from './types';
+import {UserMenu, Section, Item, Provider} from './components';
+import {SectionType} from './types';
 
 import styles from './Navigation.scss';
 
@@ -21,7 +21,6 @@ export default class Navigation extends React.Component<Props, never> {
   static Item = Item;
   static UserMenu = UserMenu;
   static Section = Section;
-  static childContextTypes = contextTypes;
 
   constructor(props: Props) {
     super(props);
@@ -34,7 +33,7 @@ export default class Navigation extends React.Component<Props, never> {
     }
   }
 
-  getChildContext() {
+  get getContext() {
     return {
       location: this.props.location,
       onNavigationDismiss: this.props.onDismiss,
@@ -49,11 +48,15 @@ export default class Navigation extends React.Component<Props, never> {
     );
 
     return (
-      <nav className={styles.Navigation}>
-        {contextControlMarkup}
-        <div className={styles.UserMenu}>{userMenu}</div>
-        <Scrollable className={styles.PrimaryNavigation}>{children}</Scrollable>
-      </nav>
+      <Provider value={this.getContext}>
+        <nav className={styles.Navigation}>
+          {contextControlMarkup}
+          <div className={styles.UserMenu}>{userMenu}</div>
+          <Scrollable className={styles.PrimaryNavigation}>
+            {children}
+          </Scrollable>
+        </nav>
+      </Provider>
     );
   }
 }

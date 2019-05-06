@@ -1,13 +1,7 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import {mountWithAppProvider} from 'test-utilities';
 import Navigation from '../Navigation';
-import {UserMenu} from '../components';
-
-const childContextTypes = {
-  location: PropTypes.string,
-  onNavigationDismiss: PropTypes.func,
-};
+import {UserMenu, Provider, Consumer} from '../components';
 
 describe('<Navigation />', () => {
   it('mounts', () => {
@@ -16,14 +10,16 @@ describe('<Navigation />', () => {
   });
 
   it('passes context', () => {
-    const Child: React.SFC<{}> = (_props, context) =>
-      context.location ? <div /> : null;
-    Child.contextTypes = childContextTypes;
+    const Child: React.SFC<{}> = (_props) => {
+      return <Consumer>{({location}) => (location ? <div /> : null)}</Consumer>;
+    };
 
     const navigation = mountWithAppProvider(
-      <Navigation location="/">
-        <Child />
-      </Navigation>,
+      <Provider value={{location: '/'}}>
+        <Navigation location="/">
+          <Child />
+        </Navigation>
+      </Provider>,
     );
 
     const div = navigation
