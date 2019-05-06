@@ -21,6 +21,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Resolve console `[Intervention]` errors for touch interactions on `ColorPicker`, along with preventing page scrolling while interacting with the color slider ([#1414](https://github.com/Shopify/polaris-react/pull/1414))
 - Applied `font-family` to `button` elements which were being overridden by User Agent Stylesheet ([#1397](https://github.com/Shopify/polaris-react/pull/1397))
 - Allowed `Tooltip` content to wrap no nonbreaking strings [#1395](https://github.com/Shopify/polaris-react/pull/1395)
 - Fixed `Checkbox` being toggled when disabled ([#1369](https://github.com/Shopify/polaris-react/pull/1369))
