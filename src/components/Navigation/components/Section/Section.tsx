@@ -3,6 +3,7 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 import Collapsible from '../../../Collapsible';
 import Icon, {Props as IconProps} from '../../../Icon';
 import {contextTypes} from '../../types';
@@ -80,14 +81,17 @@ export default class Section extends React.Component<Props, State> {
     );
 
     const itemsMarkup = items.map((item) => {
-      const {onClick, label, ...rest} = item;
+      const {onClick, label, subNavigationItems, ...rest} = item;
+      const hasSubNavItems =
+        subNavigationItems != null && subNavigationItems.length > 0;
 
       return (
         <Item
           {...rest}
           key={label}
           label={label}
-          onClick={this.handleClick(onClick)}
+          subNavigationItems={subNavigationItems}
+          onClick={this.handleClick(onClick, hasSubNavItems)}
         />
       );
     });
@@ -166,7 +170,7 @@ export default class Section extends React.Component<Props, State> {
     );
   }
 
-  private handleClick(onClick: ItemProps['onClick']) {
+  private handleClick(onClick: ItemProps['onClick'], hasSubNavItems: boolean) {
     return () => {
       if (onClick) {
         onClick();
@@ -176,9 +180,11 @@ export default class Section extends React.Component<Props, State> {
         cancelAnimationFrame(this.animationFrame);
       }
 
-      this.animationFrame = requestAnimationFrame(() =>
-        this.setState({expanded: false}),
-      );
+      if (!hasSubNavItems || !navigationBarCollapsed().matches) {
+        this.animationFrame = requestAnimationFrame(() =>
+          this.setState({expanded: false}),
+        );
+      }
     };
   }
 
