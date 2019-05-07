@@ -41,7 +41,14 @@ The best way to get your bug fixed is to provide a reduced test case. This [Code
 
 ## Specifications
 
-Run `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris` to provide specifications on your environment including version numbers, browser, device, and operating system.
+- Are you using the React components? (Y/N):
+- Polaris version number:
+- Browser:
+- Device:
+- Operating System:
+
+
+Or run `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris` to provide specifications on your environment including version numbers, browser, device, and operating system.
 
 Paste the results here:
 
