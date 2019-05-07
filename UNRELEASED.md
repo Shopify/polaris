@@ -30,6 +30,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added background into media query for Microsoft high contrast to fix skeleton accessibility ([#1341](https://github.com/Shopify/polaris-react/pull/1341))
 - Added high contrast colour to `Loading` to make it visible in the high contrast mode in Windows ([#1389](https://github.com/Shopify/polaris-react/pull/1389))
 - Fixed the position calculation of the `PositionedOverlay` component after scroll ([#1382](https://github.com/Shopify/polaris-react/pull/1382))
+- Fixed styling issue for Pagination component previous/next buttons when tooltips present ([#1277](https://github.com/Shopify/polaris-react/pull/1277))
 
 ### Documentation
 
