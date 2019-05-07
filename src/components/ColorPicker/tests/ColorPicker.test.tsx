@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import EventListener from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
@@ -83,6 +84,10 @@ describe('<ColorPicker />', () => {
   });
 
   describe('EventListener', () => {
+    afterEach(() => {
+      window.dispatchEvent(new Event('mouseup'));
+    });
+
     it('passes false to passive prop for "mousemove" EventListener when dragging', () => {
       const onChangeSpy = jest.fn();
       const colorPicker = mountWithAppProvider(
@@ -117,6 +122,40 @@ describe('<ColorPicker />', () => {
         .filterWhere((listener) => listener.prop('event') === 'touchmove');
 
       expect(touchMoveListener.prop('passive')).toBe(false);
+    });
+
+    it('prevents default for touchmove events if dragging the slider', () => {
+      const colorPicker = mountWithAppProvider(
+        <ColorPicker color={red} onChange={noop} />,
+      );
+
+      colorPicker
+        .find(Slidable)
+        .first()
+        .simulate('mousedown');
+
+      const touch = {clientX: 0, clientY: 0};
+      const event = new TouchEvent('touchmove', {
+        touches: [touch],
+        cancelable: true,
+      } as TouchEventInit);
+      Object.assign(event, {preventDefault: jest.fn()});
+
+      window.dispatchEvent(event);
+
+      expect(event.preventDefault).toHaveBeenCalledTimes(2);
+    });
+
+    it('allows default for touchmove events if not dragging the slider', () => {
+      const touch = {clientX: 0, clientY: 0};
+      const event = new TouchEvent('touchmove', {
+        touches: [touch],
+      } as TouchEventInit);
+      Object.assign(event, {preventDefault: jest.fn()});
+
+      window.dispatchEvent(event);
+
+      expect(event.preventDefault).not.toHaveBeenCalled();
     });
   });
 });
