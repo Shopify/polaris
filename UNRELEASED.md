@@ -33,6 +33,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed the position calculation of the `PositionedOverlay` component after scroll ([#1382](https://github.com/Shopify/polaris-react/pull/1382))
 - Fixed styling issue for Pagination component previous/next buttons when tooltips present ([#1277](https://github.com/Shopify/polaris-react/pull/1277))
 - Fixed a regression introduced in Polaris v3 where certain children of a `TextContainer` would have no top margin ([#1357](https://github.com/Shopify/polaris-react/pull/1357))
+- Added border to `Tooltip` in Windows high contrast mode ([#1405](https://github.com/Shopify/polaris-react/pull/1405))
 
 ### Documentation
 
