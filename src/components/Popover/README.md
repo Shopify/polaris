@@ -444,6 +444,6 @@ Popovers usually contain an [option list](/components/lists-and-tables/option-li
 - When a popover opens, focus moves to the popover container
 - Once focus is in the popover, merchants can access controls in the popover using the <kbd>tab</kbd> key (and <kbd>shift</kbd> + <kbd>tab</kbd> backwards) and standard keystrokes for interacting
 - Merchants can dismiss the popover by tabbing out of it, pressing the <kbd>esc</kbd> key, or clicking outside of it
-- When the popover is closed, focus returns to the button that launched it
+- When the popover is closed, focus returns to the element that launched it
 
 <!-- /content-for -->
