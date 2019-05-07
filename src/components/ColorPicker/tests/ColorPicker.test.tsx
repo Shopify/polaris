@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
+import EventListener from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
 import ColorPicker from '../ColorPicker';
 
@@ -78,6 +79,44 @@ describe('<ColorPicker />', () => {
       );
 
       expect(colorPicker.find(AlphaPicker).prop('color')).toEqual(red);
+    });
+  });
+
+  describe('EventListener', () => {
+    it('passes false to passive prop for "mousemove" EventListener when dragging', () => {
+      const onChangeSpy = jest.fn();
+      const colorPicker = mountWithAppProvider(
+        <ColorPicker color={red} onChange={onChangeSpy} />,
+      );
+
+      colorPicker
+        .find(Slidable)
+        .at(SlidableType.BrightnessSaturation)
+        .simulate('mousedown');
+
+      const mouseMoveListener = colorPicker
+        .find(EventListener)
+        .filterWhere((listener) => listener.prop('event') === 'mousemove');
+
+      expect(mouseMoveListener.prop('passive')).toBe(false);
+    });
+
+    it('passes false to passive prop for "touchmove" EventListener when dragging', () => {
+      const onChangeSpy = jest.fn();
+      const colorPicker = mountWithAppProvider(
+        <ColorPicker color={red} onChange={onChangeSpy} />,
+      );
+
+      colorPicker
+        .find(Slidable)
+        .at(SlidableType.BrightnessSaturation)
+        .simulate('mousedown');
+
+      const touchMoveListener = colorPicker
+        .find(EventListener)
+        .filterWhere((listener) => listener.prop('event') === 'touchmove');
+
+      expect(touchMoveListener.prop('passive')).toBe(false);
     });
   });
 });
