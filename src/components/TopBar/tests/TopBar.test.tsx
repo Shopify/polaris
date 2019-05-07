@@ -2,13 +2,10 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Image, UnstyledLink} from 'components';
+import {ThemeProviderContext} from '../../ThemeProvider';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
-import {
-  createThemeContext,
-  ThemeContext,
-  Provider as ThemeProvider,
-} from '../../ThemeProvider';
+import merge from '../../../utilities/merge';
 
 const actions = [
   {
@@ -18,7 +15,7 @@ const actions = [
 
 describe('<TopBar />', () => {
   it('mounts', () => {
-    const topBar = mountWithContext(<TopBar />);
+    const topBar = mountWithAppProvider(<TopBar />);
 
     expect(topBar.exists()).toBe(true);
   });
@@ -41,7 +38,7 @@ describe('<TopBar />', () => {
           onToggle={noop}
         />
       );
-      const topBar = mountWithContext(<TopBar userMenu={user} />);
+      const topBar = mountWithAppProvider(<TopBar userMenu={user} />);
       expect(topBar.find(UserMenu)).toHaveLength(1);
     });
 
@@ -49,7 +46,7 @@ describe('<TopBar />', () => {
       const searchField = (
         <TopBar.SearchField onChange={noop} value="" placeholder="Search" />
       );
-      const topBar = mountWithContext(<TopBar searchField={searchField} />);
+      const topBar = mountWithAppProvider(<TopBar searchField={searchField} />);
       expect(topBar.find(SearchField)).toHaveLength(1);
     });
 
@@ -63,21 +60,23 @@ describe('<TopBar />', () => {
           onOpen={noop}
         />
       );
-      const topBar = mountWithContext(<TopBar secondaryMenu={secondaryMenu} />);
+      const topBar = mountWithAppProvider(
+        <TopBar secondaryMenu={secondaryMenu} />,
+      );
       expect(topBar.find(Menu)).toHaveLength(1);
     });
   });
 
   describe('navigation content', () => {
     it('renders a navigation button when hasNavigation is true', () => {
-      const topBar = mountWithContext(<TopBar showNavigationToggle />);
+      const topBar = mountWithAppProvider(<TopBar showNavigationToggle />);
 
       expect(topBar.find('[aria-label="Toggle menu"]')).toHaveLength(1);
     });
 
     it('sets onToggleNavigation on the navigation button', () => {
       const spy = jest.fn();
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar showNavigationToggle onNavigationToggle={spy} />,
       );
 
@@ -94,7 +93,7 @@ describe('<TopBar />', () => {
     const searchResults = <div id="search-content">Hello</div>;
 
     it('renders the search results', () => {
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar
           searchResults={searchResults}
           searchResultsVisible
@@ -106,7 +105,7 @@ describe('<TopBar />', () => {
     });
 
     it('renders the search prop', () => {
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar
           searchResults={searchResults}
           searchResultsVisible
@@ -118,7 +117,7 @@ describe('<TopBar />', () => {
     });
 
     it('passes the visible prop to search', () => {
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar
           searchResults={searchResults}
           searchField={searchField}
@@ -130,7 +129,7 @@ describe('<TopBar />', () => {
     });
 
     it('passes the onSearchDismiss prop to search', () => {
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar
           searchResults={searchResults}
           onSearchResultsDismiss={noop}
@@ -145,45 +144,50 @@ describe('<TopBar />', () => {
 
   describe('logo', () => {
     it('will render an image with the logo top bar source', () => {
-      const topBar = mountWithContext(<TopBar />, {
-        logo: {
-          topBarSource: './assets/shopify.svg',
-        },
-      });
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        mergeThemeProviderContext({
+          logo: {
+            topBarSource: './assets/shopify.svg',
+          },
+        }),
+      );
       expect(topBar.find(Image).prop('source')).toBe('./assets/shopify.svg');
     });
 
     it('will render an image with the logo accessibility label', () => {
-      const topBar = mountWithContext(<TopBar />, {
-        logo: {
-          accessibilityLabel: 'Shopify',
-        },
-      });
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        mergeThemeProviderContext({
+          logo: {
+            accessibilityLabel: 'Shopify',
+          },
+        }),
+      );
       expect(topBar.find(Image).prop('alt')).toBe('Shopify');
     });
 
     it('will render an unstyled link with the logo URL', () => {
-      const topBar = mountWithContext(<TopBar />, {
-        logo: {
-          url: 'https://shopify.com',
-        },
-      });
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        mergeThemeProviderContext({logo: {url: 'https://shopify.com'}}),
+      );
       expect(topBar.find(UnstyledLink).prop('url')).toBe('https://shopify.com');
     });
 
     it('will render an unstyled link with the logo width', () => {
-      const topBar = mountWithContext(<TopBar />, {
-        logo: {
-          width: 124,
-        },
-      });
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        mergeThemeProviderContext({logo: {width: 124}}),
+      );
       expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '124px'});
     });
 
     it('will render an unstyled link with a default width', () => {
-      const topBar = mountWithContext(<TopBar />, {
-        logo: {},
-      });
+      const topBar = mountWithAppProvider(
+        <TopBar />,
+        mergeThemeProviderContext({logo: {}}),
+      );
       expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
     });
   });
@@ -200,7 +204,7 @@ describe('<TopBar />', () => {
     );
 
     it('renders', () => {
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
       );
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(true);
@@ -208,30 +212,28 @@ describe('<TopBar />', () => {
     });
 
     it('doesn’t render a logo when defined', () => {
-      const topBar = mountWithContext(
+      const topBar = mountWithAppProvider(
         <TopBar contextControl={mockContextControl} />,
-        {
+        mergeThemeProviderContext({
           logo: {
             topBarSource: './assets/shopify.svg',
           },
-        },
+        }),
       );
       expect(topBar.find(Image).exists()).toBe(false);
     });
 
     it('doesn’t render the wrapper when not defined and no logo is available', () => {
-      const topBar = mountWithContext(<TopBar />);
+      const topBar = mountWithAppProvider(<TopBar />);
       expect(findByTestID(topBar, 'ContextControl').exists()).toBe(false);
     });
   });
 });
 
-function mountWithContext(
-  node: React.ReactElement<any>,
-  polarisTheme?: ThemeContext,
-) {
-  const context = polarisTheme ? {polarisTheme} : createThemeContext();
-  return mountWithAppProvider(
-    <ThemeProvider value={context}>{node}</ThemeProvider>,
-  );
+function mergeThemeProviderContext(providedThemeContext: ThemeProviderContext) {
+  return {
+    context: {
+      themeProvider: merge({logo: null}, providedThemeContext),
+    },
+  };
 }

@@ -34,12 +34,8 @@ export interface Theme {
   colors?: ThemeColors;
 }
 
-export interface ThemeContext {
-  logo: Theme['logo'] | null;
-}
-
 export interface ThemeProviderContext {
-  polarisTheme?: ThemeContext;
+  logo: Theme['logo'] | null;
 }
 
 export type ThemeVariant = 'light' | 'dark';

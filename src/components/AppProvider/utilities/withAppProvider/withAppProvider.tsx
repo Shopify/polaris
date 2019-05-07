@@ -1,16 +1,20 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {ClientApplication} from '@shopify/app-bridge';
-import merge from '../../../../utilities/merge';
 import Intl from '../Intl';
 import Link from '../Link';
-import {StickyManager} from '../withSticky';
+import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
 import {
-  ThemeContext,
+  ThemeProviderContext,
   Consumer as ThemeProviderConsumer,
 } from '../../../ThemeProvider';
-import {polarisAppProviderContextTypes} from '../../types';
+import {PolarisContext} from '../../../types';
+import AppProviderContext from '../../Context';
+
+export type ReactComponent<P, C> =
+  | React.ComponentClass<P> & C
+  | React.SFC<P> & C;
 
 export interface WithAppProviderProps {
   polaris: {
@@ -18,77 +22,93 @@ export interface WithAppProviderProps {
     link: Link;
     stickyManager: StickyManager;
     scrollLockManager: ScrollLockManager;
-    theme: ThemeContext;
-    appBridge: ClientApplication<{}>;
-    subscribe(callback: () => void): void;
-    unsubscribe(callback: () => void): void;
+    theme?: ThemeProviderContext;
+    appBridge?: ClientApplication<{}>;
   };
 }
 
-export default function withAppProvider<OwnProps>() {
+export interface Options {
+  withinScrollable?: boolean;
+}
+
+function withScrollable<P, T>(WrappedComponent: ReactComponent<P, T>) {
+  class WithScrollable extends React.Component {
+    static contextTypes = WrappedComponent.contextTypes;
+    private stickyManager: StickyManager = new StickyManager();
+
+    render() {
+      return (
+        <AppProviderContext.Consumer>
+          {(polaris) => (
+            <AppProviderContext.Provider
+              value={{
+                ...polaris,
+                stickyManager: this.stickyManager,
+              }}
+            >
+              <WrappedComponent {...this.props} />
+            </AppProviderContext.Provider>
+          )}
+        </AppProviderContext.Consumer>
+      );
+    }
+  }
+
+  return WithScrollable;
+}
+
+export default function withAppProvider<OwnProps>({
+  withinScrollable,
+}: Options = {}) {
   return function addProvider<C>(
-    WrappedComponent:
-      | React.ComponentClass<OwnProps & WithAppProviderProps> & C
-      | React.SFC<OwnProps & WithAppProviderProps> & C,
+    WrappedComponent: ReactComponent<OwnProps & WithAppProviderProps, C>,
   ): React.ComponentClass<OwnProps> & C {
+    // eslint-disable-next-line react/prefer-stateless-function
     class WithProvider extends React.Component<OwnProps, never> {
-      static contextTypes = WrappedComponent.contextTypes
-        ? merge(WrappedComponent.contextTypes, polarisAppProviderContextTypes)
-        : polarisAppProviderContextTypes;
-
-      componentDidMount() {
-        const {
-          polaris: {subscribe: subscribeToPolaris},
-        } = this.context;
-
-        if (subscribeToPolaris) {
-          subscribeToPolaris(this.handleContextUpdate);
-        }
-      }
-
-      componentWillUnmount() {
-        const {
-          polaris: {unsubscribe: unsubscribeToPolaris},
-        } = this.context;
-
-        if (unsubscribeToPolaris) {
-          unsubscribeToPolaris(this.handleContextUpdate);
-        }
-      }
+      static contextTypes = WrappedComponent.contextTypes;
 
       render() {
         return (
-          <ThemeProviderConsumer>
-            {({polarisTheme}) => {
-              const {polaris} = this.context;
-              const polarisContext = {
-                ...polaris,
-                theme: polarisTheme,
-              };
-
-              if (!polaris) {
-                throw new Error(
-                  `The <AppProvider> component is required as of v2.0 of Polaris React. See
-                        https://polaris.shopify.com/components/structure/app-provider for implementation
-                        instructions.`,
-                );
-              }
-
+          <AppProviderContext.Consumer>
+            {(polaris) => {
               return (
-                <WrappedComponent {...this.props} polaris={polarisContext} />
+                <ThemeProviderConsumer>
+                  {(polarisTheme) => {
+                    const polarisContext: PolarisContext = {
+                      ...polaris,
+                      theme: polarisTheme,
+                    };
+
+                    if (Object.keys(polaris).length < 1) {
+                      throw new Error(
+                        `The <AppProvider> component is required as of v2.0 of Polaris React. See
+                                    https://polaris.shopify.com/components/structure/app-provider for implementation
+                                    instructions.`,
+                      );
+                    }
+
+                    return (
+                      <WrappedComponent
+                        {...this.props}
+                        polaris={polarisContext}
+                      />
+                    );
+                  }}
+                </ThemeProviderConsumer>
               );
             }}
-          </ThemeProviderConsumer>
+          </AppProviderContext.Consumer>
         );
       }
+    }
 
-      private handleContextUpdate = () => {
-        this.forceUpdate();
-      };
+    let WithScrollable;
+    if (withinScrollable) {
+      WithScrollable = withScrollable(WithProvider);
     }
 
     const FinalComponent = hoistStatics(
-      WithProvider,
+      WithScrollable || WithProvider,
       WrappedComponent as React.ComponentClass<any>,
     );
 

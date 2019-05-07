@@ -37,13 +37,6 @@ describe('<Spinner />', () => {
     });
   });
 
-  describe('color', () => {
-    it('renders an inkLightest spinner when color is inkLightest', () => {
-      const spinner = mountWithAppProvider(<Spinner color="inkLightest" />);
-      expect(spinner.prop('color')).toBe('inkLightest');
-    });
-  });
-
   describe('role', () => {
     it('sets the role to status to denote advisory information to screen readers', () => {
       const spinner = mountWithAppProvider(<Spinner />);

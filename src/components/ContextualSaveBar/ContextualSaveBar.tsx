@@ -20,11 +20,11 @@ class ContextualSaveBar extends React.PureComponent<ComposedProps, never> {
     const {
       props: {polaris, context, ...rest},
     } = this;
-    context.frame.setContextualSaveBar(rest);
+    context.setContextualSaveBar(rest);
   }
 
   componentWillUnmount() {
-    this.props.context.frame.removeContextualSaveBar();
+    this.props.context.removeContextualSaveBar();
   }
 
   componentDidUpdate(oldProps: ComposedProps) {
@@ -32,7 +32,7 @@ class ContextualSaveBar extends React.PureComponent<ComposedProps, never> {
       props: {polaris, context, ...rest},
     } = this;
     if (contextualSaveBarHasChanged(rest, oldProps)) {
-      context.frame.setContextualSaveBar(rest);
+      context.setContextualSaveBar(rest);
     }
   }
 

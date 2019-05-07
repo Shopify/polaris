@@ -52,10 +52,8 @@ export default class ThemeProvider extends React.Component<Props, State> {
     } = this.state;
 
     return {
-      polarisTheme: {
-        ...rest,
-        logo,
-      },
+      ...rest,
+      logo,
     };
   }
 

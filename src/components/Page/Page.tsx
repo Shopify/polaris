@@ -46,13 +46,16 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   private titlebar: AppBridgeTitleBar.TitleBar | undefined;
 
   componentDidMount() {
-    if (this.delegateToAppbridge === false) {
+    if (this.delegateToAppbridge === false || !this.props.polaris.appBridge) {
       return;
     }
 
+    const transformedProps = this.transformProps();
+    if (!transformedProps) return;
+
     this.titlebar = AppBridgeTitleBar.create(
       this.props.polaris.appBridge,
-      this.transformProps(),
+      transformedProps,
     );
   }
 
@@ -65,8 +68,11 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
     if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+      const transformedProps = this.transformProps();
+      if (!transformedProps) return;
+
       this.titlebar.unsubscribe();
-      this.titlebar.set(this.transformProps());
+      this.titlebar.set(transformedProps);
     }
   }
 
@@ -127,8 +133,9 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     );
   }
 
-  private transformProps(): AppBridgeTitleBar.Options {
+  private transformProps(): AppBridgeTitleBar.Options | void {
     const {appBridge} = this.props.polaris;
+    if (!appBridge) return;
     const {title, primaryAction, secondaryActions, actionGroups} = this.props;
 
     return {
@@ -144,6 +151,7 @@ export class Page extends React.PureComponent<ComposedProps, never> {
 
   private transformBreadcrumbs(): AppBridgeButton.Button | undefined {
     const {appBridge} = this.props.polaris;
+    if (!appBridge) return;
     const {breadcrumbs} = this.props;
 
     if (breadcrumbs != null && breadcrumbs.length > 0) {

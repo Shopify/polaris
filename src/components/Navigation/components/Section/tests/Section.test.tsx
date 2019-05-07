@@ -4,6 +4,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 
+import Collapsible from '../../../../Collapsible';
 import {NavigationContext} from '../../../types';
 import {Provider} from '../../Context';
 import Item from '../../Item';
@@ -109,13 +110,15 @@ describe('<Navigation.Section />', () => {
 
   it('sets expanded to false on item click', () => {
     const channels = mountWithNavigationProvider(
-      <Section items={channelResults} />,
+      <Section
+        items={channelResults}
+        rollup={{after: 0, view: 'test', hide: 'test', activePath: '/'}}
+      />,
       {
         ...context,
       },
     );
-
-    channels.setState({expanded: true});
+    findByTestID(channels, 'ToggleViewAll').simulate('click');
 
     channels
       .find('a')
@@ -123,8 +126,8 @@ describe('<Navigation.Section />', () => {
       .simulate('click');
 
     animationFrame.runFrame();
-
-    expect(channels.state('expanded')).toBe(false);
+    channels.update();
+    expect(channels.find(Collapsible).prop('open')).toBe(false);
   });
 
   it('adds a toggle button if rollupAfter has a value', () => {

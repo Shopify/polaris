@@ -1,24 +1,24 @@
-import {
-  ReactWrapper,
-  CommonWrapper,
-  shallow,
-  mount,
-  ShallowWrapper,
-  MountRendererProps,
-  ShallowRendererProps,
-} from 'enzyme';
+import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
 import * as React from 'react';
+import {noop} from '@shopify/javascript-utilities/other';
 import {get} from '../utilities/get';
 import merge from '../utilities/merge';
 import {PolarisContext} from '../components/types';
+import {DeepPartial} from '../types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {
-  createAppProviderContext,
-  polarisAppProviderContextTypes,
+  createPolarisContext,
+  AppProviderContext,
 } from '../components/AppProvider';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {createThemeContext} from '../components/ThemeProvider';
+import {Provider as FrameProvider, FrameContext} from '../components/Frame';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {
+  createThemeContext,
+  ThemeProviderContext,
+  Provider as ThemeProviderProvider,
+} from '../components/ThemeProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -27,13 +27,7 @@ export function findByTestID(root: ReactWrapper<any, any>, id: string) {
     return wrapper.length > 0 && wrapper.prop('testID') === id;
   }
 
-  const rootResult = root.findWhere(hasTestID).first();
-
-  return rootResult.length > 0
-    ? rootResult
-    : layeredContent(root)
-        .findWhere(hasTestID)
-        .first();
+  return root.findWhere(hasTestID).first();
 }
 
 export function matchByTestID(root: ReactWrapper<any, any>, regexp: RegExp) {
@@ -82,98 +76,96 @@ export function trigger(wrapper: AnyWrapper, keypath: string, ...args: any[]) {
   return returnValue;
 }
 
-/**
- * This is needed for updating the enzyme wrapper and react instance when we deeply change the context.
- * root.update() should work, but it doesn’t currently (see https://github.com/airbnb/enzyme/issues/1329).
- */
-export function forceUpdate(root: AnyWrapper) {
-  getInstance(root).forceUpdate();
-  root.update();
-}
-
-export function layeredContent(root: ReactWrapper<any, any>) {
-  const node = getInstance(root);
-  if (!node) {
-    return new ReactWrapper<any, any>([]);
-  }
-
-  const environment = {
-    childContextTypes: node.constructor.childContextTypes,
-    context: root.prop('context'),
-  };
-
-  const layeredChildren = root.findWhere((wrapper: ReactWrapper<any, any>) => {
-    if (wrapper.length === 0) {
-      return false;
-    }
-    const wrapperNode = getInstance(wrapper);
-    return Boolean(wrapperNode && wrapperNode.renderLayer != null);
-  }) as any;
-
-  return layeredChildren.flatMap((wrapper: ReactWrapper<any, any>) => {
-    let nodeJSX = getInstance(wrapper).renderLayer();
-
-    if (Array.isArray(nodeJSX)) {
-      // We need this wrapping div because Enzyme expects a single node, not an array.
-      nodeJSX = <div>{nodeJSX}</div>;
-    }
-
-    return nodeJSX
-      ? new ReactWrapper<any, any>(nodeJSX, undefined, environment)
-      : wrapper;
-  });
-}
-
-export interface ReactWrapperPredicate {
-  (wrapper: ReactWrapper<any, any>): boolean;
-}
-
-export function findWhereInLayeredContent(
-  root: ReactWrapper<any, any>,
-  predicate: ReactWrapperPredicate,
-) {
-  return layeredContent(root).findWhere(predicate);
-}
-
-function getInstance(wrapper: AnyWrapper) {
-  const enzymeInstance = wrapper.instance() as any;
-  const adaptorInstance = enzymeInstance && enzymeInstance._reactInternalFiber;
-  return adaptorInstance && adaptorInstance.stateNode;
-}
-
 function updateRoot(wrapper: AnyWrapper) {
   (wrapper as any).root().update();
 }
 
-function mergeAppProviderOptions(options: any = {}): any {
-  const context = {...createAppProviderContext(), ...createThemeContext()};
+type AppContext = {
+  polaris: PolarisContext;
+  themeProvider: ThemeProviderContext;
+  frame: FrameContext;
+};
 
-  return merge(
-    {
-      context,
-      childContextTypes: polarisAppProviderContextTypes,
-    },
-    options,
-  );
+interface AppContextOptions {
+  app: AppContext;
+}
+
+interface MountWithAppProviderOptions {
+  context?: {
+    polaris?: DeepPartial<PolarisContext>;
+    themeProvider?: DeepPartial<ThemeProviderContext>;
+    frame?: DeepPartial<FrameContext>;
+  };
 }
 
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
-  options?: MountRendererProps,
-): ReactWrapper<P, any> {
-  return mount(node, mergeAppProviderOptions(options));
+  options: MountWithAppProviderOptions = {},
+): PolarisContextReactWrapper<P, any> {
+  const {context: ctx = {}} = options;
+
+  const polarisDefault = createPolarisContext();
+  const polaris =
+    (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
+
+  const themeproviderDefault = createThemeContext();
+  const themeProvider =
+    (ctx.themeProvider && merge(themeproviderDefault, ctx.themeProvider)) ||
+    themeproviderDefault;
+
+  const frameDefault = {
+    showToast: noop,
+    hideToast: noop,
+    setContextualSaveBar: noop,
+    removeContextualSaveBar: noop,
+    startLoading: noop,
+    stopLoading: noop,
+  };
+  const frame = (ctx.frame && merge(frameDefault, ctx.frame)) || frameDefault;
+
+  const context: AppContext = {
+    polaris,
+    themeProvider,
+    frame,
+  };
+
+  const wrapper = polarisContextReactWrapper(node, {
+    app: context,
+  });
+
+  return wrapper;
 }
 
-export function shallowWithAppProvider<P>(
-  node: React.ReactElement<P>,
-  options?: ShallowRendererProps,
-): ShallowWrapper<P, any> {
-  return shallow(node, mergeAppProviderOptions(options)).dive(options);
-}
+type PolarisContextReactWrapper<P, S> = ReactWrapper<P, S> & AppContextOptions;
 
-export function createPolarisProps(): PolarisContext {
-  const {polaris} = createAppProviderContext();
-  const theme = createThemeContext().polarisTheme;
-  const polarisContext = {...polaris, theme};
-  return {polaris: polarisContext};
+export function polarisContextReactWrapper<P, S>(
+  element: React.ReactElement<P>,
+  {app}: AppContextOptions,
+): PolarisContextReactWrapper<P, S> {
+  function TestProvider<P>(props: P) {
+    let content: React.ReactNode = element;
+
+    if (Object.keys(props).length > 0) {
+      content = React.cloneElement(React.Children.only(element), props);
+    }
+
+    return (
+      <AppProviderContext.Provider value={app.polaris}>
+        <ThemeProviderProvider value={app.themeProvider}>
+          <FrameProvider value={app.frame}>{content}</FrameProvider>
+        </ThemeProviderProvider>
+      </AppProviderContext.Provider>
+    );
+  }
+
+  const wrapper = mount<P, S>(<TestProvider />);
+
+  Object.defineProperty(wrapper, 'app', {
+    enumerable: true,
+    writable: false,
+    configurable: false,
+    value: app,
+  });
+
+  return wrapper as PolarisContextReactWrapper<P, S>;
 }

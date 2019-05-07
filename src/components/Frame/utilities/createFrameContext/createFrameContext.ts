@@ -24,13 +24,11 @@ export default function createFrameContext({
   stopLoading = noop,
 }: CreateFrameContext = {}): FrameContext {
   return {
-    frame: {
-      showToast,
-      hideToast,
-      setContextualSaveBar,
-      removeContextualSaveBar,
-      startLoading,
-      stopLoading,
-    },
+    showToast,
+    hideToast,
+    setContextualSaveBar,
+    removeContextualSaveBar,
+    startLoading,
+    stopLoading,
   };
 }

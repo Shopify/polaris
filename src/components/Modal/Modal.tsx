@@ -111,21 +111,27 @@ export class Modal extends React.Component<CombinedProps, State> {
       return;
     }
 
-    this.appBridgeModal = AppBridgeModal.create(
-      this.props.polaris.appBridge,
-      this.transformProps(),
-    );
+    const transformProps = this.transformProps();
+    if (transformProps) {
+      this.appBridgeModal = AppBridgeModal.create(
+        this.props.polaris.appBridge,
+        transformProps,
+      );
+    }
 
-    this.appBridgeModal.subscribe(
-      AppBridgeModal.Action.CLOSE,
-      this.props.onClose,
-    );
+    if (this.appBridgeModal) {
+      this.appBridgeModal.subscribe(
+        AppBridgeModal.Action.CLOSE,
+        this.props.onClose,
+      );
+    }
 
     const {open} = this.props;
 
     if (open) {
       this.focusReturnPointNode = document.activeElement as HTMLElement;
-      this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
+      this.appBridgeModal &&
+        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
     }
   }
 
@@ -141,7 +147,10 @@ export class Modal extends React.Component<CombinedProps, State> {
     const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
-    if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+    if (
+      !isEqual(prevAppBridgeProps, currentAppBridgeProps) &&
+      transformedProps
+    ) {
       if (isIframeModal(transformedProps)) {
         (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
           transformedProps,
@@ -342,6 +351,9 @@ export class Modal extends React.Component<CombinedProps, State> {
       polaris,
     } = this.props;
     const {appBridge} = polaris;
+
+    if (!appBridge) return;
+
     const safeTitle = typeof title === 'string' ? title : undefined;
     const safeSize = size != null ? AppBridgeModal.Size[size] : undefined;
     const srcPayload: {url?: string; path?: string} = {};

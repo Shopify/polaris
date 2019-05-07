@@ -22,7 +22,7 @@ describe('<ContextualSaveBar />', () => {
         <ContextualSaveBar {...props} />
       </Provider>,
     );
-    expect(mockFrameContext.frame.setContextualSaveBar).toHaveBeenCalledWith({
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
     });
   });
@@ -38,11 +38,9 @@ describe('<ContextualSaveBar />', () => {
         <ContextualSaveBar {...props} />
       </Provider>,
     );
-    expect(
-      mockFrameContext.frame.removeContextualSaveBar,
-    ).not.toHaveBeenCalled();
+    expect(mockFrameContext.removeContextualSaveBar).not.toHaveBeenCalled();
     frame.unmount();
-    expect(mockFrameContext.frame.removeContextualSaveBar).toHaveBeenCalled();
+    expect(mockFrameContext.removeContextualSaveBar).toHaveBeenCalled();
   });
 
   it('calls the contextual save bar with values if its props change after it mounted', () => {
@@ -64,12 +62,10 @@ describe('<ContextualSaveBar />', () => {
     frame.setProps({
       children: <ContextualSaveBar {...newProps} />,
     });
-    expect(mockFrameContext.frame.setContextualSaveBar).toHaveBeenCalledWith({
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
       ...newProps,
     });
-    expect(mockFrameContext.frame.setContextualSaveBar).toHaveBeenCalledTimes(
-      2,
-    );
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(2);
   });
 
   it('doesnt call the contextual save bar if its props remain unchanged after it mounted', () => {
@@ -84,15 +80,11 @@ describe('<ContextualSaveBar />', () => {
       </Provider>,
     );
 
-    expect(mockFrameContext.frame.setContextualSaveBar).toHaveBeenCalledTimes(
-      1,
-    );
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
     const newProps = {...props};
     frame.setProps({
       children: <ContextualSaveBar {...newProps} />,
     });
-    expect(mockFrameContext.frame.setContextualSaveBar).toHaveBeenCalledTimes(
-      1,
-    );
+    expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
   });
 });

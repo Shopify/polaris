@@ -5,6 +5,7 @@ import EventListener from '../../EventListener';
 import PositionedOverlay, {
   intersectionWithViewport,
 } from '../PositionedOverlay';
+import * as mathModule from '../utilities/math';
 
 describe('<PositionedOverlay />', () => {
   const mockProps = {
@@ -23,11 +24,41 @@ describe('<PositionedOverlay />', () => {
   });
 
   describe('preferredPosition', () => {
-    it('positions above if preferredPosition is given', () => {
-      const positionedOverlay = mountWithAppProvider(
-        <PositionedOverlay {...mockProps} preferredPosition="above" />,
+    let calculateVerticalPositionMock: jest.SpyInstance;
+
+    beforeEach(() => {
+      calculateVerticalPositionMock = jest.spyOn(
+        mathModule,
+        'calculateVerticalPosition',
       );
-      expect(positionedOverlay.prop('preferredPosition')).toBe('above');
+      calculateVerticalPositionMock.mockReturnValue({
+        height: 0,
+        top: 0,
+        positioning: 'above',
+      });
+    });
+
+    afterEach(() => {
+      calculateVerticalPositionMock.mockRestore();
+    });
+
+    it('positions above if preferredPosition is given', () => {
+      const spy = jest.fn();
+      mountWithAppProvider(
+        <PositionedOverlay
+          {...mockProps}
+          preferredPosition="above"
+          render={spy}
+        />,
+      );
+
+      expect(spy).toBeCalledWith({
+        activatorRect: {height: 0, left: 0, top: 0, width: 0},
+        desiredHeight: 0,
+        left: 0,
+        measuring: false,
+        positioning: 'above',
+      });
     });
   });
 
@@ -36,7 +67,10 @@ describe('<PositionedOverlay />', () => {
       const positionedOverlay = mountWithAppProvider(
         <PositionedOverlay {...mockProps} preferredAlignment="left" />,
       );
-      expect(positionedOverlay.prop('preferredAlignment')).toBe('left');
+
+      expect(
+        (positionedOverlay.find('div').prop('style') as any).left,
+      ).toBeUndefined();
     });
   });
 
@@ -45,16 +79,10 @@ describe('<PositionedOverlay />', () => {
       const positionedOverlay = mountWithAppProvider(
         <PositionedOverlay {...mockProps} fullWidth />,
       );
-      expect(positionedOverlay.prop('fullWidth')).toBe(true);
-    });
-  });
 
-  describe('fixed', () => {
-    it('is set to fixed if fixed is true', () => {
-      const positionedOverlay = mountWithAppProvider(
-        <PositionedOverlay {...mockProps} fixed />,
+      expect((positionedOverlay.find('div').prop('style') as any).width).toBe(
+        0,
       );
-      expect(positionedOverlay.prop('fixed')).toBe(true);
     });
   });
 

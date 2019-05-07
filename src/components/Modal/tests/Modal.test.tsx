@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {noop} from '@shopify/javascript-utilities/other';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
+import {findByTestID, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
@@ -185,33 +185,6 @@ describe('<Modal>', () => {
       );
 
       expect(modal.find(Badge).exists()).toBe(false);
-    });
-
-    it('triggers an onTransitionEnd prop', () => {
-      const modal = mountWithAppProvider(
-        <Modal
-          onClose={jest.fn()}
-          open
-          secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
-          onTransitionEnd={jest.fn()}
-        />,
-      );
-
-      trigger(modal, 'onTransitionEnd');
-      expect(modal.prop('onTransitionEnd')).toHaveBeenCalledTimes(1);
-    });
-
-    it('triggers onTransitionEnd from Dialog', () => {
-      const modal = mountWithAppProvider(
-        <Modal
-          open
-          onClose={jest.fn()}
-          secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
-          onTransitionEnd={jest.fn()}
-        />,
-      );
-      trigger(modal.find(Modal.Dialog), 'onEntered');
-      expect(modal.prop('onTransitionEnd')).toHaveBeenCalledTimes(1);
     });
   });
 

@@ -2,8 +2,7 @@ import ThemeProvider from './ThemeProvider';
 
 export {
   Theme,
-  ThemeContext,
-  ThemeProviderContext as Context,
+  ThemeProviderContext,
   ColorsToParse,
   ThemeVariant,
   ThemeColors,

@@ -1,11 +1,10 @@
-import {noop} from '@shopify/javascript-utilities/other';
 import createApp, {
   getShopOrigin,
   LifecycleHook,
   DispatchActionHook,
 } from '@shopify/app-bridge';
-import {AppProviderProps, Context} from '../../types';
-import {StickyManager} from '../withSticky';
+import {AppProviderProps, AppProviderContextType} from '../../types';
+import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';
 import Link from '../Link';
@@ -14,8 +13,6 @@ import {polarisVersion} from '../../../../configure';
 export interface CreateAppProviderContext extends AppProviderProps {
   stickyManager?: StickyManager;
   scrollLockManager?: ScrollLockManager;
-  subscribe?(callback: () => void): void;
-  unsubscribe?(callback: () => void): void;
 }
 
 export default function createAppProviderContext({
@@ -26,9 +23,7 @@ export default function createAppProviderContext({
   forceRedirect,
   stickyManager,
   scrollLockManager,
-  subscribe = noop,
-  unsubscribe = noop,
-}: CreateAppProviderContext = {}): Context {
+}: CreateAppProviderContext = {}): AppProviderContextType {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const appBridge = apiKey
@@ -44,15 +39,11 @@ export default function createAppProviderContext({
   }
 
   return {
-    polaris: {
-      intl,
-      link,
-      stickyManager: stickyManager || new StickyManager(),
-      scrollLockManager: scrollLockManager || new ScrollLockManager(),
-      subscribe,
-      unsubscribe,
-      appBridge,
-    },
+    intl,
+    link,
+    stickyManager: stickyManager || new StickyManager(),
+    scrollLockManager: scrollLockManager || new ScrollLockManager(),
+    appBridge,
   };
 }
 

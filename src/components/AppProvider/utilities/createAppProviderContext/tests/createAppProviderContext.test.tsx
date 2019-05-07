@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as appBridge from '@shopify/app-bridge';
-import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
   setClientInterfaceHook,
 } from '../createAppProviderContext';
-import {StickyManager} from '../../withSticky';
+import StickyManager from '../../StickyManager';
 import ScrollLockManager from '../../ScrollLockManager';
 
 jest.mock('../../Intl', () => ({
@@ -41,15 +40,11 @@ describe('createAppProviderContext()', () => {
     const context = createAppProviderContext();
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
     });
   });
 
@@ -86,24 +81,20 @@ describe('createAppProviderContext()', () => {
     });
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: {
-          apiKey,
-          forceRedirect: undefined,
-          shopOrigin: undefined,
-          dispatch: expect.any(Function),
-          localOrigin: '',
-          featuresAvailable: expect.any(Function),
-          getState: expect.any(Function),
-          subscribe: expect.any(Function),
-          error: expect.any(Function),
-        },
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: {
+        apiKey,
+        forceRedirect: undefined,
+        shopOrigin: undefined,
+        dispatch: expect.any(Function),
+        localOrigin: '',
+        featuresAvailable: expect.any(Function),
+        getState: expect.any(Function),
+        subscribe: expect.any(Function),
+        error: expect.any(Function),
       },
     });
 

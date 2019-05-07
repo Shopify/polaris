@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
-import {StickyManager} from '../../withSticky';
+import StickyManager from '../../StickyManager';
 import ScrollLockManager from '../../ScrollLockManager';
 import createPolarisContext from '../createPolarisContext';
 
@@ -26,16 +25,12 @@ describe('createPolarisContext()', () => {
     const context = createPolarisContext();
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
+      theme: {
         logo: null,
       },
     });
@@ -75,16 +70,12 @@ describe('createPolarisContext()', () => {
       },
     );
     const mockContext = {
-      polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: new Intl(i18n),
+      link: new Link(CustomLinkComponent),
+      stickyManager,
+      scrollLockManager,
+      appBridge: undefined,
+      theme: {
         logo: null,
       },
     };
@@ -112,16 +103,12 @@ describe('createPolarisContext()', () => {
       stickyManager,
     });
     const mockContext = {
-      polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: new Intl(i18n),
+      link: new Link(CustomLinkComponent),
+      stickyManager,
+      scrollLockManager,
+      appBridge: undefined,
+      theme: {
         logo: null,
       },
     };
@@ -135,16 +122,12 @@ describe('createPolarisContext()', () => {
     });
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
+      theme: {
         logo: null,
       },
     });

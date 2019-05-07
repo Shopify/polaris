@@ -16,7 +16,6 @@ import {
   ColorsToParse,
   ThemeVariant,
   ThemeColors,
-  ThemeContext,
   ThemeProviderContext,
 } from '../types';
 
@@ -125,11 +124,13 @@ function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
   return colorPairs;
 }
 
-export function createThemeContext(theme?: ThemeContext): ThemeProviderContext {
+export function createThemeContext(
+  theme?: ThemeProviderContext,
+): ThemeProviderContext {
   if (!theme) {
-    return {polarisTheme: {logo: null}};
+    return {logo: null};
   }
 
   const {logo = null} = theme;
-  return {polarisTheme: {logo}};
+  return {logo};
 }

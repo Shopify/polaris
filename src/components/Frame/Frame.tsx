@@ -368,14 +368,12 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
 
   get getContext(): FrameContext {
     return {
-      frame: {
-        showToast: this.showToast,
-        hideToast: this.hideToast,
-        startLoading: this.startLoading,
-        stopLoading: this.stopLoading,
-        setContextualSaveBar: this.setContextualSaveBar,
-        removeContextualSaveBar: this.removeContextualSaveBar,
-      },
+      showToast: this.showToast,
+      hideToast: this.hideToast,
+      startLoading: this.startLoading,
+      stopLoading: this.stopLoading,
+      setContextualSaveBar: this.setContextualSaveBar,
+      removeContextualSaveBar: this.removeContextualSaveBar,
     };
   }
 }

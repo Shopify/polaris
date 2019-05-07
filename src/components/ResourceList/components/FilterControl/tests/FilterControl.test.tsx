@@ -304,12 +304,9 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
-        .instance()
-        .context.polaris.intl.translate(
-          'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
-        );
+      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
+        'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
+      );
 
       const firstTag = filterControl.find(Tag).at(0);
       expect(firstTag.text()).toBe(
@@ -342,17 +339,12 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
-        .instance()
-        .context.polaris.intl.translate(
-          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
-          {
-            date: new Date(
-              selectedDate.replace(/-/g, '/'),
-            ).toLocaleDateString(),
-          },
-        );
+      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
+        'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
+        {
+          date: new Date(selectedDate.replace(/-/g, '/')).toLocaleDateString(),
+        },
+      );
 
       const firstTag = filterControl.find(Tag).at(0);
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
@@ -382,17 +374,12 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
-        .instance()
-        .context.polaris.intl.translate(
-          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
-          {
-            date: new Date(
-              selectedDate.replace(/-/g, '/'),
-            ).toLocaleDateString(),
-          },
-        );
+      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
+        'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
+        {
+          date: new Date(selectedDate.replace(/-/g, '/')).toLocaleDateString(),
+        },
+      );
 
       const firstTag = filterControl.find(Tag).at(0);
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);
@@ -422,15 +409,12 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl
-        .find(FilterControl)
-        .instance()
-        .context.polaris.intl.translate(
-          'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
-          {
-            date: selectedDate,
-          },
-        );
+      const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
+        'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
+        {
+          date: selectedDate,
+        },
+      );
 
       const firstTag = filterControl.find(Tag).at(0);
       expect(firstTag.text()).toBe(`${filter.label} ${expectedLocalizedLabel}`);

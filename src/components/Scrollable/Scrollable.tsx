@@ -6,7 +6,7 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
-import {withSticky, WithAppProviderProps} from '../AppProvider';
+import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 import {scrollable} from '../shared';
 
 import {ScrollTo, Provider} from './components';
@@ -255,4 +255,4 @@ function prefersReducedMotion() {
   }
 }
 
-export default withSticky()(Scrollable);
+export default withAppProvider({withinScrollable: true})(Scrollable);

@@ -43,7 +43,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
 
     if (appBridge == null) {
       const {polaris, context, ...rest} = props;
-      context.frame.showToast({
+      context.showToast({
         id,
         ...(rest as Props),
       });
@@ -64,7 +64,7 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
     const {appBridge} = polaris;
 
     if (appBridge == null) {
-      context.frame.hideToast({id: this.id});
+      context.hideToast({id: this.id});
     } else if (this.appBridgeToast != null) {
       this.appBridgeToast.unsubscribe();
     }

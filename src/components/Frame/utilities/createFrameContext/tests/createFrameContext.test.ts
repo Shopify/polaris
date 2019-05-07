@@ -13,23 +13,16 @@ describe('createFrameContext()', () => {
 
   it('returns the right context without arguments', () => {
     const context = createFrameContext();
-    const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-      },
-    };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toEqual(defaultFrameContext);
   });
 
   it('returns the right context with showToast', () => {
     const mockShowToast = () => {};
     const context = createFrameContext({showToast: mockShowToast});
     const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-        showToast: mockShowToast,
-      },
+      ...defaultFrameContext,
+      showToast: mockShowToast,
     };
 
     expect(context).toEqual(mockContext);
@@ -39,10 +32,8 @@ describe('createFrameContext()', () => {
     const mockHideToast = () => {};
     const context = createFrameContext({hideToast: mockHideToast});
     const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-        hideToast: mockHideToast,
-      },
+      ...defaultFrameContext,
+      hideToast: mockHideToast,
     };
 
     expect(context).toEqual(mockContext);
@@ -54,10 +45,8 @@ describe('createFrameContext()', () => {
       setContextualSaveBar: mockSetContextualSaveBar,
     });
     const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-        setContextualSaveBar: mockSetContextualSaveBar,
-      },
+      ...defaultFrameContext,
+      setContextualSaveBar: mockSetContextualSaveBar,
     };
 
     expect(context).toEqual(mockContext);
@@ -69,10 +58,8 @@ describe('createFrameContext()', () => {
       removeContextualSaveBar: mockRemoveContextualSaveBar,
     });
     const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-        removeContextualSaveBar: mockRemoveContextualSaveBar,
-      },
+      ...defaultFrameContext,
+      removeContextualSaveBar: mockRemoveContextualSaveBar,
     };
 
     expect(context).toEqual(mockContext);
@@ -84,10 +71,8 @@ describe('createFrameContext()', () => {
       startLoading: mockStartLoading,
     });
     const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-        startLoading: mockStartLoading,
-      },
+      ...defaultFrameContext,
+      startLoading: mockStartLoading,
     };
 
     expect(context).toEqual(mockContext);
@@ -99,10 +84,8 @@ describe('createFrameContext()', () => {
       stopLoading: mockStopLoading,
     });
     const mockContext = {
-      frame: {
-        ...defaultFrameContext,
-        stopLoading: mockStopLoading,
-      },
+      ...defaultFrameContext,
+      stopLoading: mockStopLoading,
     };
 
     expect(context).toEqual(mockContext);

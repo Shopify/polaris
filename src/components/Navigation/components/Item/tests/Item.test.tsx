@@ -241,7 +241,7 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      expect(item.prop('url')).toBe('foo');
+      expect(item.find(UnstyledLink).prop('url')).toBe('foo');
     });
 
     it('delegates disabled to <UnstyledLink />', () => {
@@ -274,18 +274,14 @@ describe('<Nav.Item />', () => {
     });
 
     it('delegates onClick to <UnstyledLink />', () => {
+      const spy = jest.fn();
       const item = mountWithNavigationProvider(
-        <Item
-          label="some label"
-          url="foo"
-          disabled={false}
-          onClick={jest.fn()}
-        />,
+        <Item label="some label" url="foo" disabled={false} onClick={spy} />,
         {location: 'bar'},
       );
 
       item.find(UnstyledLink).simulate('click');
-      expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('sets aria labels on <button />', () => {
@@ -426,8 +422,9 @@ describe('<Nav.Item />', () => {
 
     describe('onClick', () => {
       it('will fire once on small screens when onNavigationDismiss is defined', () => {
+        const spy = jest.fn();
         const item = mountWithNavigationProvider(
-          <Item label="some label" disabled={false} onClick={jest.fn()} />,
+          <Item label="some label" disabled={false} onClick={spy} />,
           {
             location: 'bar',
             onNavigationDismiss: noop,
@@ -435,19 +432,20 @@ describe('<Nav.Item />', () => {
         );
 
         item.find('button').simulate('click');
-        expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(1);
       });
 
       it('will fire once on small screens when onNavigationDismiss is undefined', () => {
+        const spy = jest.fn();
         const item = mountWithNavigationProvider(
-          <Item label="some label" disabled={false} onClick={jest.fn()} />,
+          <Item label="some label" disabled={false} onClick={spy} />,
           {
             location: 'bar',
           },
         );
 
         item.find('button').simulate('click');
-        expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(1);
       });
     });
   });

@@ -21,7 +21,7 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
     } = this.props;
 
     if (appBridge == null) {
-      context.frame.startLoading();
+      context.startLoading();
     } else {
       this.appBridgeLoading = AppBridgeLoading.create(appBridge);
       this.appBridgeLoading.dispatch(AppBridgeLoading.Action.START);
@@ -35,7 +35,7 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
     } = this.props;
 
     if (appBridge == null) {
-      context.frame.stopLoading();
+      context.stopLoading();
     } else if (this.appBridgeLoading != null) {
       this.appBridgeLoading.dispatch(AppBridgeLoading.Action.STOP);
     }
