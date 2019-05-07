@@ -1,0 +1,200 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar com as iniciais {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Carregando"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Incompleto",
+        "partiallyComplete": "Parcialmente completo",
+        "complete": "Concluído"
+      },
+      "STATUS_LABELS": {
+        "info": "Informações",
+        "success": "Sucesso",
+        "warning": "Aviso",
+        "attention": "Atenção",
+        "new": "Novo"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Carregando"
+    },
+    "Common": {
+      "checkbox": "caixa de seleção",
+      "undo": "Desfazer",
+      "cancel": "Cancelar",
+      "newWindowAccessibilityHint": "(abre uma nova janela)"
+    },
+    "ContextualSaveBar": {
+      "save": "Salvar",
+      "discard": "Descartar"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "ordenar {direction} por",
+      "navAccessibilityLabel": "Rolar tabela uma coluna para {direction}",
+      "totalsRowHeading": "Totais"
+    },
+    "DatePicker": {
+      "previousMonth": "Mostrar mês anterior, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Mostrar o próximo mês, {nextMonth} {nextYear}",
+      "today": "Hoje ",
+      "months": {
+        "january": "Janeiro",
+        "february": "Fevereiro",
+        "march": "Março",
+        "april": "Abril",
+        "may": "Maio",
+        "june": "Junho",
+        "july": "Julho",
+        "august": "Agosto",
+        "september": "Setembro",
+        "october": "Outubro",
+        "november": "Novembro",
+        "december": "Dezembro"
+      },
+      "daysAbbreviated": {
+        "monday": "Seg",
+        "tuesday": "Ter",
+        "wednesday": "Qua",
+        "thursday": "Qui",
+        "friday": "Sex",
+        "saturday": "Sáb",
+        "sunday": "Dom"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Descartar todas as alterações não salvas",
+      "message": "Se você descartar as alterações, excluirá todas as edições feitas desde o último salvamento.",
+      "primaryAction": "Descartar alterações",
+      "secondaryAction": "Continuar editando"
+    },
+    "DropZone": {
+      "overlayTextFile": "Solte o arquivo para carregar",
+      "overlayTextImage": "Solte a imagem para carregar",
+      "errorOverlayTextFile": "O tipo de arquivo não é válido",
+      "errorOverlayTextImage": "O tipo de imagem não é válido",
+      "FileUpload": {
+        "actionTitleFile": "Adicionar arquivo",
+        "actionTitleImage": "Adicionar imagem",
+        "actionHintFile": "ou solte os arquivos para carregar",
+        "actionHintImage": "ou solte a imagem para carregar"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Resultados de pesquisa vazios"
+    },
+    "Frame": {
+      "skipToContent": "Pular para o conteúdo",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Fechar a navegação"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "O ícone {color} não aceita fundo. As cores dos ícones que têm fundos são: {colorsWithBackDrops}"
+    },
+    "Modal": {
+      "iFrameTitle": "marcação de corpo",
+      "modalWarning": "Essas propriedades obrigatórias estão faltando no Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "O prop do ícone foi removido da página. Como alternativa, carregue um ícone de aplicativo na seção \"Configuração do aplicativo\" do painel do Programa de Parcerias da Shopify."
+      }
+    },
+    "Pagination": {
+      "previous": "Anterior",
+      "next": "Próximo",
+      "pagination": "Paginação"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Os valores passados para o prop de progresso não devem ser negativos. Redefinindo {progress} como 0.",
+      "exceedWarningMessage": "Os valores passados para o prop de progresso não devem exceder 100. Configurando {progress} como 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Ordenar por",
+      "defaultItemSingular": "item",
+      "defaultItemPlural": "itens",
+      "showing": "Exibindo {itemsCount} {resource}",
+      "loading": "Carregando {resource}",
+      "selected": "{selectedItemsCount} selecionado(s)",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
+      "selectAllItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural} da sua loja",
+      "emptySearchResultTitle": "Nenhum {resourceNamePlural} encontrado",
+      "emptySearchResultDescription": "Tente alterar os filtros ou o termo de pesquisa",
+      "selectButtonText": "Selecionar",
+      "a11yCheckboxDeselectAllSingle": "Desmarcar {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Desmarcar todos os {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selecionar todos os {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} item",
+      "ariaLivePlural": "{itemsLength} itens",
+      "Item": {
+        "selectItem": "Selecionar: {accessibilityLabel}",
+        "deselectItem": "Desmarcar: {accessibilityLabel}",
+        "actionsDropdown": "Menu suspenso Ações"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Ações",
+        "moreActionsActivatorLabel": "Mais ações",
+        "warningMessage": "Para oferecer uma melhor experiência ao usuário, deve haver apenas {maxPromotedActions} ações promovidas, no máximo."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Filtrar",
+        "selectFilterKeyPlaceholder": "Selecione um filtro...",
+        "addFilterButtonLabel": "Adicionar filtro",
+        "showAllWhere": "Exibir todos os {resourceNamePlural} nos quais:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "Pesquisar {resourceNamePlural}"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Selecione um filtro..."
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Selecione um valor",
+        "dateValueLabel": "Data",
+        "dateValueError": "Compatível com o formato AAAA-MM-DD",
+        "dateValuePlaceholder": "AAAA-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "na última semana",
+          "PastMonth": "no último mês",
+          "PastQuarter": "nos últimos 3 meses",
+          "PastYear": "no último ano",
+          "ComingWeek": "na próxima semana",
+          "ComingMonth": "no próximo mês",
+          "ComingQuarter": "nos próximos 3 meses",
+          "ComingYear": "no próximo ano",
+          "OnOrBefore": "em ou antes de",
+          "OnOrAfter": "em ou depois de"
+        },
+        "FilterLabelForValue": {
+          "past_week": "na última semana",
+          "past_month": "no último mês",
+          "past_quarter": "nos últimos 3 meses",
+          "past_year": "no último ano",
+          "coming_week": "na próxima semana",
+          "coming_month": "no próximo mês",
+          "coming_quarter": "nos próximos 3 meses",
+          "coming_year": "no próximo ano",
+          "on_or_before": "antes de {date}",
+          "on_or_after": "depois de {date}"
+        }
+      }
+    },
+    "Spinner": {
+      "warningMessage": "A cor {color} não é para ser usada spinners de {size}. As cores disponíveis em grandes spinners são: {colors}"
+    },
+    "Tag": {
+      "ariaLabel": "Remover {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} caracteres",
+      "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
+    }
+  }
+}
