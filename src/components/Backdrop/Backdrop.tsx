@@ -5,17 +5,19 @@ import ScrollLock from '../ScrollLock';
 import styles from './Backdrop.scss';
 
 export interface Props {
+  belowNavigation?: boolean;
+  transparent?: boolean;
   onClick?(): void;
   onTouchStart?(): void;
-  belowNavigation?: boolean;
 }
 
 export default function Backdrop(props: Props) {
-  const {onClick, onTouchStart, belowNavigation} = props;
+  const {onClick, onTouchStart, belowNavigation, transparent} = props;
 
   const className = classNames(
     styles.Backdrop,
     belowNavigation && styles.belowNavigation,
+    transparent && styles.transparent,
   );
 
   return (

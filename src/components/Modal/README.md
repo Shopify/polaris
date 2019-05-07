@@ -645,7 +645,7 @@ class ModalExample extends React.Component {
           onScrolledToBottom={() => alert('Scrolled to bottom')}
         >
           {Array.from({length: 50}, (_, index) => (
-            <Modal.Section>
+            <Modal.Section key={index}>
               <TextContainer>
                 <p>Item #{index}</p>
               </TextContainer>

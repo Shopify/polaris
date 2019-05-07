@@ -211,6 +211,10 @@
       }
     },
 
+    "Sheet": {
+      "warningMessage": "The Sheet component must be used within the Frame component."
+    },
+
     "Spinner": {
       "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
     },

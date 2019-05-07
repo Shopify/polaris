@@ -6,6 +6,11 @@ html,
 body {
   @include text-style-body;
   @include text-emphasis-normal;
+}
+
+html,
+body,
+button {
   font-family: font-family();
 }
 
