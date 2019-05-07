@@ -49,6 +49,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Added accessibility documentation for `Card` and `CalloutCard` ([#1366](https://github.com/Shopify/polaris-react/pull/1366))
 - Added accessibility documentation for `Badge` ([#1364](https://github.com/Shopify/polaris-react/pull/1364))
 - Added accessibility documentation for `Icon` ([#1404](https://github.com/Shopify/polaris-react/pull/1404))
+- Fixed content example for `ContextualSaveBar` guidelines ([#1423](https://github.com/Shopify/polaris-react/pull/1423))
 
 ### Development workflow
 
