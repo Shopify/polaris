@@ -74,7 +74,7 @@ Actions in the contextual save bar component should consist of a strong verb tha
 
 #### Don’t
 
-- Don’t example
+- Save changes
 - Discard changes
 
 <!-- end -->
