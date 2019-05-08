@@ -190,8 +190,56 @@ describe('<Item />', () => {
         </Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {nativeEvent: {metaKey: true}});
+      trigger(item, 'onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {metaKey: true},
+      });
       expect(spy).toHaveBeenCalledWith(url, '_blank');
+    });
+
+    it('calls onClick when hitting keyUp on the item when onClick and URL exists', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url="#" onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Enter',
+      });
+
+      expect(onClick).toHaveBeenCalled();
+    });
+
+    it('does not call onClick when hitting keyUp on non Enter key', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url="#" onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Tab',
+      });
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not call onClick when hitting keyUp on the item when no URL exists', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockSelectModeContext}>
+          <Item id={itemId} onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Enter',
+      });
+
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls window.open on ctrlKey + click', () => {
@@ -201,7 +249,10 @@ describe('<Item />', () => {
         </Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {nativeEvent: {ctrlKey: true}});
+      trigger(item, 'onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {ctrlKey: true},
+      });
       expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
   });

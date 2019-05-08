@@ -287,7 +287,7 @@ export class Item extends React.Component<CombinedProps, State> {
         onClick={this.handleClick}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onKeyUp={this.handleKeypress}
+        onKeyUp={this.handleKeyUp}
         testID="Item-Wrapper"
         data-href={url}
       >
@@ -342,6 +342,7 @@ export class Item extends React.Component<CombinedProps, State> {
   };
 
   private handleClick = (event: React.MouseEvent<any>) => {
+    stopPropagation(event);
     const {
       id,
       onClick,
@@ -374,14 +375,15 @@ export class Item extends React.Component<CombinedProps, State> {
     }
   };
 
-  private handleKeypress = (event: React.KeyboardEvent<HTMLElement>) => {
+  // This fires onClick when there is a URL on the item
+  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     const {
       onClick = noop,
       context: {selectMode},
     } = this.props;
     const {key} = event;
 
-    if (key === 'Enter' && !selectMode) {
+    if (key === 'Enter' && this.props.url && !selectMode) {
       onClick();
     }
   };
