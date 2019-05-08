@@ -194,7 +194,7 @@ describe('<Item />', () => {
         stopPropagation: () => {},
         nativeEvent: {metaKey: true},
       });
-      expect(spy).toBeCalledWith(url, '_blank');
+      expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
 
     it('calls onClick when hitting keyUp on the item when onClick and URL exists', () => {
@@ -253,7 +253,7 @@ describe('<Item />', () => {
         stopPropagation: () => {},
         nativeEvent: {ctrlKey: true},
       });
-      expect(spy).toBeCalledWith(url, '_blank');
+      expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
   });
 
