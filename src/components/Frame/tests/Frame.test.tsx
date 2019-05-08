@@ -146,7 +146,7 @@ describe('<Frame />', () => {
       .find(Button)
       .text();
 
-    expect(skipToContentButtonText).toEqual('Skip to content');
+    expect(skipToContentButtonText).toStrictEqual('Skip to content');
   });
 
   it('renders with a has nav data attribute when nav is passed', () => {

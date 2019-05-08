@@ -4,6 +4,7 @@ import {classNames} from '@shopify/react-utilities/styles';
 
 import {noop} from '../../../../utilities/other';
 import Icon from '../../../Icon';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import styles from './SearchField.scss';
 
@@ -26,7 +27,9 @@ export interface Props {
   onCancel?(): void;
 }
 
-export default class SearchField extends React.Component<Props, never> {
+export type ComposedProps = Props & WithAppProviderProps;
+
+export class SearchField extends React.Component<ComposedProps, never> {
   private input: React.RefObject<HTMLInputElement> = React.createRef();
 
   componentDidMount() {
@@ -58,12 +61,20 @@ export default class SearchField extends React.Component<Props, never> {
   }
 
   render() {
-    const {value, focused, active, placeholder} = this.props;
+    const {
+      value,
+      focused,
+      active,
+      placeholder,
+      polaris: {intl},
+    } = this.props;
 
     const clearMarkup = value !== '' && (
       <button
         type="button"
-        aria-label="Clear"
+        aria-label={intl.translate(
+          'Polaris.TopBar.SearchField.clearButtonLabel',
+        )}
         className={styles.Clear}
         onClick={this.handleClear}
       >
@@ -148,3 +159,4 @@ function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
     event.preventDefault();
   }
 }
+export default withAppProvider<Props>()(SearchField);

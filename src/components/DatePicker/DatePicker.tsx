@@ -144,7 +144,6 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
                 showPreviousYear,
               },
             )}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
               showPreviousMonth,
@@ -158,7 +157,6 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
               nextMonth,
               nextYear,
             })}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
               showNextMonth,

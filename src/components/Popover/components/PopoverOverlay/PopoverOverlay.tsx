@@ -103,7 +103,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         activator={activator}
         preferredPosition={preferredPosition}
         preferredAlignment={preferredAlignment}
-        // eslint-disable-next-line react/jsx-no-bind
         render={this.renderPopover.bind(this, transitionStatus)}
         fixed={fixed}
         onScrollOut={this.handleScrollOut}

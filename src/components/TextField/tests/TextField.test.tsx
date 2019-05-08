@@ -691,18 +691,19 @@ describe('<TextField />', () => {
         type EventCallback = (mockEventData?: {[key: string]: any}) => void;
 
         const documentEvent: {[eventType: string]: EventCallback} = {};
-        const origialAddEventListener = document.addEventListener;
 
         beforeAll(() => {
-          document.addEventListener = jest.fn(
-            (eventType: string, callback: EventCallback) => {
-              documentEvent[eventType] = callback;
-            },
-          );
+          jest
+            .spyOn(document, 'addEventListener')
+            .mockImplementation(
+              (eventType: string, callback: EventCallback) => {
+                documentEvent[eventType] = callback;
+              },
+            );
         });
 
         afterAll(() => {
-          document.addEventListener = origialAddEventListener;
+          (document.addEventListener as jest.Mock).mockRestore();
         });
 
         it('stops decrementing on mouse up anywhere in document', () => {
@@ -831,8 +832,12 @@ describe('<TextField />', () => {
       );
 
       expect(textField.find(Connected)).toHaveLength(1);
-      expect(textField.find(Connected).prop('left')).toEqual(connectedLeft);
-      expect(textField.find(Connected).prop('right')).toEqual(connectedRight);
+      expect(textField.find(Connected).prop('left')).toStrictEqual(
+        connectedLeft,
+      );
+      expect(textField.find(Connected).prop('right')).toStrictEqual(
+        connectedRight,
+      );
     });
   });
 });

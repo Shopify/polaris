@@ -54,7 +54,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} breadcrumbs={breadcrumbs} />,
       );
-      expect(header.find(Breadcrumbs).prop('breadcrumbs')).toEqual(breadcrumbs);
+      expect(header.find(Breadcrumbs).prop('breadcrumbs')).toStrictEqual(
+        breadcrumbs,
+      );
     });
   });
 
@@ -175,7 +177,7 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('actions')).toEqual(actions);
+      expect(header.find(ActionGroup).prop('actions')).toStrictEqual(actions);
     });
 
     it('receives the group’s details', () => {
@@ -184,7 +186,7 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('details')).toEqual(details);
+      expect(header.find(ActionGroup).prop('details')).toStrictEqual(details);
     });
 
     it('is inactive by default', () => {

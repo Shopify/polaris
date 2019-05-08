@@ -41,7 +41,7 @@ describe('<Card />', () => {
     const card = mountWithAppProvider(<Card title={titleMarkup} />);
     const headerMarkup = card.find('h2');
 
-    expect(headerMarkup.text().includes(titleString)).toBe(true);
+    expect(headerMarkup.text()).toContain(titleString);
     expect(headerMarkup.find('Badge').text()).toBe(badgeString);
   });
 

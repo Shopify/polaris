@@ -59,6 +59,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       onSearchResultsDismiss,
       contextControl,
       polaris: {
+        intl,
         theme: {logo},
       },
     } = this.props;
@@ -77,7 +78,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onClick={onNavigationToggle}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        aria-label="Toggle menu"
+        aria-label={intl.translate('Polaris.TopBar.toggleMenuLabel')}
       >
         <Icon source={MobileHamburgerMajorMonotone} color="white" />
       </button>

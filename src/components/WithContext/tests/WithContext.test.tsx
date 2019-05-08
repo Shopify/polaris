@@ -24,7 +24,7 @@ describe('withContext', () => {
         <WrappedHeader />
       </Provider>,
     );
-    expect(element.find(Header).prop('context')).toEqual(defaultContext);
+    expect(element.find(Header).prop('context')).toStrictEqual(defaultContext);
   });
 
   it('passes the the original props to the wrapped component', () => {
@@ -43,6 +43,6 @@ describe('withContext', () => {
     );
     const {context, ...rest} = element.find(Header).props() as HeaderProps &
       WithContextTypes<ContextTypes>;
-    expect(rest).toEqual({title});
+    expect(rest).toStrictEqual({title});
   });
 });

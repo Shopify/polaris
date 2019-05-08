@@ -122,7 +122,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
     );
 
     return (
-      /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      /* eslint-disable jsx-a11y/no-redundant-roles */
       <Choice
         id={id}
         label={label}
@@ -158,7 +158,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
           </span>
         </span>
       </Choice>
-      /* eslint-enable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      /* eslint-enable jsx-a11y/no-redundant-roles */
     );
   }
 }

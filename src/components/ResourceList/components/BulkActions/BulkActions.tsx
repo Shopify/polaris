@@ -63,7 +63,7 @@ const slideClasses = {
 export type CombinedProps = Props & WithAppProviderProps;
 
 export class BulkActions extends React.PureComponent<CombinedProps, State> {
-  state = {
+  state: State = {
     smallScreenPopoverVisible: false,
     largeScreenPopoverVisible: false,
     containerWidth: 0,
@@ -244,7 +244,6 @@ export class BulkActions extends React.PureComponent<CombinedProps, State> {
     const cancelButton = (
       <button
         className={cancelButtonClassName}
-        // eslint-disable-next-line react/jsx-no-bind
         onClick={this.setSelectMode.bind(this, false)}
         testID="btn-cancel"
         disabled={disabled}

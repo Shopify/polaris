@@ -117,6 +117,6 @@ describe('<FileUpload />', () => {
         <FileUpload actionTitle={actionTitle} actionHint={actionHint} />
       ),
     });
-    expect(fileUpload.props()).toEqual({actionTitle, actionHint});
+    expect(fileUpload.props()).toStrictEqual({actionTitle, actionHint});
   });
 });

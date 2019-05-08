@@ -221,7 +221,7 @@ describe('<ComboBox/>', () => {
       );
 
       comboBox.simulate('click');
-      expect(comboBox.find(OptionList).prop('selected')).toEqual([
+      expect(comboBox.find(OptionList).prop('selected')).toStrictEqual([
         'cheese_pizza',
       ]);
     });

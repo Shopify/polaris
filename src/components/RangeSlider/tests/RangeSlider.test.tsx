@@ -273,9 +273,9 @@ describe('<RangeSlider />', () => {
         '--Polaris-RangeSlider-progress': '25%',
         '--Polaris-RangeSlider-output-factor': 0.25,
       };
-      const actual = element.find('[style]').prop('style');
+      const actual = element.find('[style]').prop('style') as {};
 
-      expect(expected).toEqual(actual);
+      expect(expected).toStrictEqual(actual);
     });
   });
 });

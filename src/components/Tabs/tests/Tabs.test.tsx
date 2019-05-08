@@ -96,7 +96,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('url'),
-        ).toEqual(tab.url);
+        ).toStrictEqual(tab.url);
       });
     });
 
@@ -115,7 +115,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('accessibilityLabel'),
-        ).toEqual(tab.accessibilityLabel);
+        ).toStrictEqual(tab.accessibilityLabel);
       });
     });
 
@@ -134,23 +134,23 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('children'),
-        ).toEqual(tab.content);
+        ).toStrictEqual(tab.content);
       });
     });
   });
 
   describe('selected', () => {
     let panelStub: {focus: jest.Mock<any>};
-    let originalGetElementByID: (typeof document)['getElementById'];
 
     beforeEach(() => {
-      originalGetElementByID = document.getElementById;
       panelStub = {focus: jest.fn()};
-      document.getElementById = jest.fn(() => panelStub);
+      jest
+        .spyOn(document, 'getElementById')
+        .mockImplementation(() => panelStub);
     });
 
     afterEach(() => {
-      document.getElementById = originalGetElementByID;
+      (document.getElementById as jest.Mock).mockRestore();
     });
 
     it('focuses the panel when a tab becomes selected', () => {
@@ -361,7 +361,7 @@ describe('<Tabs />', () => {
         containerWidth,
       );
       const expectedIndices = {visibleTabs: [0, 1], hiddenTabs: [2, 3, 4, 5]};
-      expect(actualIndices).toEqual(expectedIndices);
+      expect(actualIndices).toStrictEqual(expectedIndices);
     });
   });
 

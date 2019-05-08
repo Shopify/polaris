@@ -49,7 +49,7 @@ describe('<Sheet />', () => {
       </Sheet>,
     );
 
-    expect(sheet.find(CSSTransition).props().classNames).toEqual(
+    expect(sheet.find(CSSTransition).props().classNames).toStrictEqual(
       BOTTOM_CLASS_NAMES,
     );
   });
@@ -61,7 +61,7 @@ describe('<Sheet />', () => {
       </Sheet>,
     );
 
-    expect(sheet.find(CSSTransition).props().classNames).toEqual(
+    expect(sheet.find(CSSTransition).props().classNames).toStrictEqual(
       RIGHT_CLASS_NAMES,
     );
   });

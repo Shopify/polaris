@@ -163,7 +163,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).toBeCalledWith(itemId);
+      expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
@@ -180,7 +180,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).toBeCalledWith(itemId);
+      expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls window.open on metaKey + click', () => {
@@ -191,7 +191,7 @@ describe('<Item />', () => {
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
       trigger(item, 'onClick', {nativeEvent: {metaKey: true}});
-      expect(spy).toBeCalledWith(url, '_blank');
+      expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
 
     it('calls window.open on ctrlKey + click', () => {
@@ -202,7 +202,7 @@ describe('<Item />', () => {
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
       trigger(item, 'onClick', {nativeEvent: {ctrlKey: true}});
-      expect(spy).toBeCalledWith(url, '_blank');
+      expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
   });
 
@@ -216,7 +216,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
-      expect(onClick).not.toBeCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
@@ -244,7 +244,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).not.toBeCalledWith(itemId);
+      expect(onClick).not.toHaveBeenCalledWith(itemId);
     });
 
     it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
@@ -285,7 +285,7 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {metaKey: true},
       });
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('does not call window.open when clicking the item with ctrlKey', () => {
@@ -297,7 +297,7 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {ctrlKey: true},
       });
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 
