@@ -19,7 +19,9 @@ describe('<Provider />', () => {
       const provider = mountWithAppProvider(
         <Provider {...mockProps} mobileView={mobileView} />,
       );
-      expect(provider.find(UserMenuContext.Provider).prop('value')).toEqual(
+      expect(
+        provider.find(UserMenuContext.Provider).prop('value'),
+      ).toStrictEqual(
         expect.objectContaining({
           mobileView,
         }),
@@ -33,7 +35,9 @@ describe('<Provider />', () => {
         <Provider {...mockProps} mobileView={mobileView} />,
       );
       provider.setProps({mobileView: newMobileView});
-      expect(provider.find(UserMenuContext.Provider).prop('value')).toEqual(
+      expect(
+        provider.find(UserMenuContext.Provider).prop('value'),
+      ).toStrictEqual(
         expect.objectContaining({
           mobileView: newMobileView,
         }),
@@ -62,7 +66,9 @@ describe('<Provider />', () => {
         'value.setMobileUserMenuProps',
         newUserMenuProps,
       );
-      expect(provider.find(UserMenuContext.Provider).prop('value')).toEqual(
+      expect(
+        provider.find(UserMenuContext.Provider).prop('value'),
+      ).toStrictEqual(
         expect.objectContaining({
           mobileUserMenuProps: newUserMenuProps,
         }),

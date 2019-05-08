@@ -50,8 +50,8 @@ describe('<Modal>', () => {
 
       const iframe = modal.find('iframe').first();
       expect(iframe.exists()).toBe(true);
-      expect(iframe.prop('name')).toEqual('Name');
-      expect(iframe.prop('src')).toEqual('Source');
+      expect(iframe.prop('name')).toStrictEqual('Name');
+      expect(iframe.prop('src')).toStrictEqual('Source');
 
       const scrollable = modal.find(Scrollable).first();
       expect(scrollable.exists()).toBe(false);

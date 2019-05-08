@@ -125,6 +125,14 @@
   margin: (-1 * resource-list-item(padding)) spacing(extra-tight)
     (-1 * resource-list-item(padding)) resource-list-item(control-indent);
   display: flex;
+
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    visibility: hidden;
+
+    .selectMode & {
+      visibility: visible;
+    }
+  }
 }
 
 .selectable {
@@ -173,6 +181,10 @@
   .focused & {
     @include action-unhide;
   }
+
+  @include page-content-when-partially-condensed {
+    display: none;
+  }
 }
 
 .persistActions {
@@ -201,6 +213,10 @@
   width: resource-list-item(disclosure-width);
   min-height: resource-list-item(min-height);
   pointer-events: initial;
+
+  .selectMode & {
+    display: none;
+  }
 
   @include breakpoint-after(resource-list(breakpoint-small)) {
     right: -1 * spacing(loose);

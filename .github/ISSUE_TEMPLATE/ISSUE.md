@@ -6,7 +6,7 @@ labels: Bug
 
 <!-- For feature requests, please use the following template: https://github.com/Shopify/polaris-react/issues/new?template=FEATURE_REQUEST.md -->
 
-# Issue summary
+## Issue summary
 
 <!--
 Write a short description of the issue here ↓
@@ -46,3 +46,12 @@ The best way to get your bug fixed is to provide a reduced test case. This [Code
 - Browser:
 - Device:
 - Operating System:
+
+
+Or run `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris` to provide specifications on your environment including version numbers, browser, device, and operating system.
+
+Paste the results here:
+
+```bash
+
+```

@@ -59,6 +59,6 @@ describe('<CalloutCard />', () => {
       .first()
       .simulate('click');
 
-    expect(spy).toBeCalled();
+    expect(spy).toHaveBeenCalled();
   });
 });

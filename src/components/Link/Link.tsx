@@ -1,8 +1,11 @@
 import * as React from 'react';
 
 import {classNames} from '@shopify/react-utilities';
+import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import UnstyledLink from '../UnstyledLink';
+import Icon from '../Icon';
 
 import styles from './Link.scss';
 
@@ -22,16 +25,37 @@ export interface BaseProps {
 }
 
 export interface Props extends BaseProps {}
+export type CombinedProps = Props & WithAppProviderProps;
 
-export default function Link({
+function Link({
   url,
   children,
   onClick,
   external,
   id,
   monochrome,
-}: Props) {
+  polaris,
+}: CombinedProps) {
   const className = classNames(styles.Link, monochrome && styles.monochrome);
+  let childrenMarkup = children;
+
+  if (external && typeof children === 'string') {
+    const iconLabel = polaris.intl.translate(
+      'Polaris.Common.newWindowAccessibilityHint',
+    );
+
+    childrenMarkup = (
+      <React.Fragment>
+        {children}
+        <span className={styles.IconLockup}>
+          <span className={styles.IconLayout}>
+            <Icon accessibilityLabel={iconLabel} source={ExternalSmallMinor} />
+          </span>
+        </span>
+      </React.Fragment>
+    );
+  }
+
   return url ? (
     <UnstyledLink
       onClick={onClick}
@@ -39,12 +63,15 @@ export default function Link({
       url={url}
       external={external}
       id={id}
+      polaris={polaris}
     >
-      {children}
+      {childrenMarkup}
     </UnstyledLink>
   ) : (
     <button type="button" onClick={onClick} className={className} id={id}>
-      {children}
+      {childrenMarkup}
     </button>
   );
 }
+
+export default withAppProvider<Props>()(Link);

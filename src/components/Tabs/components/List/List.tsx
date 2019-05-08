@@ -22,7 +22,6 @@ export default class List extends React.PureComponent<Props, never> {
           key={id}
           id={id}
           focused={index === focusIndex}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={onClick.bind(null, id)}
         >
           {content}

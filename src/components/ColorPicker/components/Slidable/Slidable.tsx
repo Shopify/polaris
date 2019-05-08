@@ -18,6 +18,25 @@ export interface Props {
   onDraggerHeight?(height: number): void;
 }
 
+let isDragging = false;
+
+// Required to solve a bug causing the underlying page/container to scroll
+// while trying to drag the ColorPicker controls.
+// This must be called as soon as possible to properly prevent the event.
+// `passive: false` must also be set, as it seems webkit has changed the "default" behaviour
+// https://bugs.webkit.org/show_bug.cgi?id=182521
+window.addEventListener(
+  'touchmove',
+  (event) => {
+    if (!isDragging) {
+      return;
+    }
+
+    event.preventDefault();
+  },
+  {passive: false},
+);
+
 export default class Slidable extends React.PureComponent<Props, State> {
   state: State = {
     dragging: false,
@@ -55,11 +74,19 @@ export default class Slidable extends React.PureComponent<Props, State> {
     };
 
     const moveListener = dragging ? (
-      <EventListener event="mousemove" handler={this.handleMove} />
+      <EventListener
+        event="mousemove"
+        handler={this.handleMove}
+        passive={false}
+      />
     ) : null;
 
     const touchMoveListener = dragging ? (
-      <EventListener event="touchmove" handler={this.handleMove} />
+      <EventListener
+        event="touchmove"
+        handler={this.handleMove}
+        passive={false}
+      />
     ) : null;
 
     const endDragListener = dragging ? (
@@ -111,17 +138,22 @@ export default class Slidable extends React.PureComponent<Props, State> {
       this.handleDraggerMove(mouseEvent.clientX, mouseEvent.clientY);
     }
 
+    isDragging = true;
     this.setState({dragging: true});
   };
 
   private handleDragEnd = () => {
+    isDragging = false;
     this.setState({dragging: false});
   };
 
   private handleMove = (event: MouseEvent | TouchEvent) => {
     event.stopImmediatePropagation();
     event.stopPropagation();
-    event.preventDefault();
+
+    if (event.cancelable) {
+      event.preventDefault();
+    }
 
     if (event.type === 'mousemove') {
       const mouseEvent = event as MouseEvent;

@@ -58,7 +58,7 @@ describe('<Tab />', () => {
       );
       const anchor = tab.find('a');
       expect(anchor.exists()).toBe(true);
-      expect(anchor.prop('href')).toEqual('https://shopify.com');
+      expect(anchor.prop('href')).toStrictEqual('https://shopify.com');
     });
   });
 

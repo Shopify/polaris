@@ -123,7 +123,7 @@ The content of the navigation component consists of navigation items. Each item 
 | matchPaths         | string[]            | A string property providing a collection of additional paths for the navigation item to respond to                                         |
 | excludePaths       | string[]            | A string property providing an explicit collection of paths the navigation item should not respond to                                      |
 | icon               | IconProps['source'] | An icon to be displayed next to the navigation item                                                                                        |
-| iconBody           | string              | An `SVG` element passed as a string from a server and displayed next to the navigation item                                                |
+| iconBody           | string              | (deprecated) Pass a string representing an `SVG` element into the `icon` prop instead                                                      |
 | badge              | string \| null      | A string property allowing content to be displayed in a badge next to the navigation item                                                  |
 | label              | string              | A string property allowing content to be displayed as link text in the navigation item                                                     |
 | disabled           | boolean             | A boolean property indicating whether the navigation item is disabled                                                                      |

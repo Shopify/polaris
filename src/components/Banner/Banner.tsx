@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {
+  CancelSmallMinor,
   CircleTickMajorTwotone,
   FlagMajorTwotone,
   CircleAlertMajorTwotone,
@@ -147,7 +148,7 @@ export default class Banner extends React.PureComponent<Props, never> {
       <div className={styles.Dismiss}>
         <Button
           plain
-          icon="cancelSmall"
+          icon={CancelSmallMinor}
           onClick={onDismiss}
           accessibilityLabel="Dismiss notification"
         />

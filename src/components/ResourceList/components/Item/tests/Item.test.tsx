@@ -16,6 +16,7 @@ describe('<Item />', () => {
 
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
+    spy.mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -162,7 +163,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).toBeCalledWith(itemId);
+      expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
@@ -179,7 +180,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).toBeCalledWith(itemId);
+      expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls window.open on metaKey + click', () => {
@@ -266,7 +267,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
-      expect(onClick).not.toBeCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
@@ -294,7 +295,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).not.toBeCalledWith(itemId);
+      expect(onClick).not.toHaveBeenCalledWith(itemId);
     });
 
     it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
@@ -335,7 +336,7 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {metaKey: true},
       });
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('does not call window.open when clicking the item with ctrlKey', () => {
@@ -347,7 +348,7 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {ctrlKey: true},
       });
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 

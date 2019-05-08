@@ -35,7 +35,7 @@ describe('<Portal />', () => {
     it('get passed into the portal creation method', () => {
       const children = <div />;
       mountWithAppProvider(<Portal>{children}</Portal>);
-      expect(createPortalSpy).toBeCalledWith(children, expect.anything());
+      expect(createPortalSpy).toHaveBeenCalledWith(children, expect.anything());
     });
 
     it('dont get rendered when the env is the server', () => {

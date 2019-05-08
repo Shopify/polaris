@@ -40,7 +40,9 @@ export default function Labelled({
 }: Props) {
   const className = classNames(labelHidden && styles.hidden);
 
-  const actionMarkup = action ? buttonFrom(action, {plain: true}) : null;
+  const actionMarkup = action ? (
+    <div className={styles.Action}>{buttonFrom(action, {plain: true})}</div>
+  ) : null;
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
@@ -60,6 +62,7 @@ export default function Labelled({
       <Label id={id} {...rest} hidden={false}>
         {label}
       </Label>
+
       {actionMarkup}
     </div>
   ) : null;

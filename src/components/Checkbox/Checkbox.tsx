@@ -45,6 +45,23 @@ const getUniqueID = createUniqueIDFactory('Checkbox');
 class Checkbox extends React.PureComponent<CombinedProps, never> {
   private inputNode = React.createRef<HTMLInputElement>();
 
+  componentDidMount() {
+    const {checked, disabled} = this.props;
+
+    if (checked && disabled) this.handleInput();
+  }
+
+  componentDidUpdate({disabled: prevDisabled}: Props) {
+    if (
+      this.props.disabled &&
+      !prevDisabled !== true &&
+      this.inputNode.current &&
+      this.inputNode.current.checked
+    ) {
+      this.handleInput();
+    }
+  }
+
   handleInput = () => {
     const {onChange, id} = this.props;
 
@@ -105,7 +122,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
     );
 
     return (
-      /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      /* eslint-disable jsx-a11y/no-redundant-roles */
       <Choice
         id={id}
         label={label}
@@ -141,7 +158,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
           </span>
         </span>
       </Choice>
-      /* eslint-enable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      /* eslint-enable jsx-a11y/no-redundant-roles */
     );
   }
 }

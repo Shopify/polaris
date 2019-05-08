@@ -23,6 +23,7 @@ export interface Props {
   additionalAction?: ComplexAction;
   focused?: boolean;
   filters?: Filter[];
+  placeholder?: string;
   onSearchBlur?(): void;
   onSearchChange(searchValue: string, id: string): void;
   onFiltersChange?(appliedFilters: AppliedFilter[]): void;
@@ -40,18 +41,18 @@ export class FilterControl extends React.Component<CombinedProps> {
       additionalAction,
       focused = false,
       filters = [],
+      placeholder,
       onSearchBlur,
       onSearchChange,
       polaris: {intl},
       context: {selectMode, resourceName},
     } = this.props;
 
-    const textFieldLabel = intl.translate(
-      'Polaris.ResourceList.FilterControl.textFieldLabel',
-      {
-        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-      },
-    );
+    const textFieldLabel = placeholder
+      ? placeholder
+      : intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
+          resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+        });
 
     if (additionalAction) {
       additionalAction.disabled = selectMode;

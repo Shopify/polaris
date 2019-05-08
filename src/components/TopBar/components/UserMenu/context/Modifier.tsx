@@ -22,7 +22,7 @@ class Modifier extends React.Component<ComposedProps, {}> {
     return null;
   }
 
-  state = {};
+  state: {} = {};
 
   render() {
     return null;

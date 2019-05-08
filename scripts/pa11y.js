@@ -54,30 +54,19 @@ async function runPa11y() {
 
   const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
 
-  // window.__storybook_stories__ is injected into the iframe by the percy addon
-  // so that Percy's script knows what stories exist. Piggybacking off that is
-  // kinda fragile as they may change that output but it gives us what we need
-  // for now
   const stories = await page
     .goto(iframePath)
-    .then(() => page.evaluate(() => window.__storybook_stories__));
+    .then(() => page.evaluate(() => window.__STORYBOOK_CLIENT_API__.raw()));
 
-  const queryStrings = stories.reduce((memo, book) => {
+  const queryStrings = stories.reduce((memo, story) => {
     // There is no need to test the Playground, or the "All Examples" stories
-    const isSkippedStory = (story) => {
-      return book.kind === 'Playground' || story.name === 'All Examples';
-    };
+    const isSkippedStory =
+      story.kind === 'Playground|Playground' || story.name === 'All Examples';
 
-    const bookToQueryString = (story) =>
-      `selectedKind=${encodeURIComponent(
-        book.kind,
-      )}&selectedStory=${encodeURIComponent(story.name)}`;
-
-    return memo.concat(
-      book.stories
-        .filter((story) => !isSkippedStory(story))
-        .map(bookToQueryString),
-    );
+    if (!isSkippedStory) {
+      memo.push(`id=${encodeURIComponent(story.id)}`);
+    }
+    return memo;
   }, []);
 
   queryStrings.forEach((queryString) => {

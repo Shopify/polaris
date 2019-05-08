@@ -33,7 +33,7 @@ yarn add @shopify/polaris
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.11.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.13.0/polaris.min.css"
 />
 ```
 
@@ -68,6 +68,8 @@ ReactDOM.render(
 
 We provide React wrappers around the Shopify App Bridge (formerly known as the EASDK). You don’t need to go through the initialization of the Shopify App Bridge as described in the docs. Instead, [configure the connection to the Shopify admin through the app provider component](https://github.com/Shopify/polaris-react/blob/master/documentation/Embedded%20apps.md).
 
+If you need help using Shopify App Bridge, the Embedded App SDK, or the POS App SDK, please visit our [API & SDK forum](https://community.shopify.com/c/Shopify-APIs-SDKs/bd-p/shopify-apis-and-technology). It is the best place to discuss the libraries, get support, notify us about bugs, or request features.
+
 ## Using the CSS components
 
 If React doesn’t make sense for your application, you can use a CSS-only version of our components. This includes all the styles you need for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
@@ -79,7 +81,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.11.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.13.0/polaris.min.css"
 />
 ```
 
@@ -107,7 +109,7 @@ We use Storybook to create a simple, hot-reloading playground for development on
 To test the changes on a mobile or virtual machine, you will need to open the source of the iFrame, to do this:
 
 1.  Run `yarn dev`
-1.  Make sure you virtual machine and mobile device are on the same network
+1.  Make sure your virtual machine and mobile device are on the same network
 1.  Open http://YOUR_IP_ADDRESS:ASSIGNED_PORT/iframe.html?selectedKind=Playground&selectedStory=Playground in your mobile device or virtual machine
 
 ### Testing in a consuming project
