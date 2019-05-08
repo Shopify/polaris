@@ -105,13 +105,13 @@ describe('<DataTable />', () => {
           .find(Cell)
           .first()
           .prop('content'),
-      ).toEqual('Product');
+      ).toStrictEqual('Product');
       expect(
         dataTable
           .find(Cell)
           .first()
           .prop('contentType'),
-      ).toEqual('text');
+      ).toStrictEqual('text');
     });
   });
 
@@ -179,7 +179,7 @@ describe('<DataTable />', () => {
         previousColumn: {leftEdge: 357, rightEdge: 474, isVisible: true},
         currentColumn: {leftEdge: 474, rightEdge: 601, isVisible: true},
       };
-      expect(actualMeasurement).toEqual(expectedMeasurement);
+      expect(actualMeasurement).toStrictEqual(expectedMeasurement);
     });
   });
 });

@@ -60,7 +60,9 @@ describe('<ActionGroup />', () => {
         <ActionGroup {...mockProps} actions={actions} />,
       );
       const popoverContents = getPopoverContents(actionGroup);
-      expect(popoverContents.find(ActionList).prop('items')).toEqual(actions);
+      expect(popoverContents.find(ActionList).prop('items')).toStrictEqual(
+        actions,
+      );
     });
   });
 

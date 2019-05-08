@@ -3,6 +3,7 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
+import isEqual from 'lodash/isEqual';
 import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -14,7 +15,11 @@ import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
+import {
+  ResourceListContext,
+  SELECT_ALL_ITEMS,
+  SelectedItems,
+} from '../../types';
 import withContext from '../../../WithContext';
 import {Consumer} from '../Context';
 import styles from './Item.scss';
@@ -54,6 +59,7 @@ export interface State {
   actionsMenuVisible: boolean;
   focused: boolean;
   focusedInner: boolean;
+  selected: boolean;
 }
 
 export type CombinedProps =
@@ -63,16 +69,50 @@ export type CombinedProps =
       WithContextTypes<ResourceListContext>;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
+const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
 
-export class Item extends React.PureComponent<CombinedProps, State> {
+export class Item extends React.Component<CombinedProps, State> {
+  static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
+    const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
+
+    if (prevState.selected === selected) {
+      return null;
+    }
+
+    return {selected};
+  }
+
   state: State = {
     actionsMenuVisible: false,
     focused: false,
     focusedInner: false,
+    selected: isSelected(this.props.id, this.props.context.selectedItems),
   };
 
-  private node: HTMLElement | null = null;
+  private node: HTMLDivElement | null = null;
   private checkboxId = getUniqueCheckboxID();
+  private overlayId = getUniqueOverlayID();
+  private buttonOverlay = React.createRef<HTMLButtonElement>();
+
+  shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
+    const {
+      context: {selectedItems: nextSelectedItems, ...restNextContext},
+      ...restNextProps
+    } = nextProps;
+    const {
+      context: {selectedItems, ...restContext},
+      ...restProps
+    } = this.props;
+
+    const nextSelectMode = nextProps.context.selectMode;
+    return (
+      !isEqual(this.state, nextState) ||
+      this.props.context.selectMode !== nextSelectMode ||
+      (!nextProps.context.selectMode &&
+        (!isEqual(restProps, restNextProps) ||
+          !isEqual(restContext, restNextContext)))
+    );
+  }
 
   render() {
     const {
@@ -88,9 +128,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
       context: {selectable, selectMode, loading},
     } = this.props;
 
-    const {actionsMenuVisible, focused, focusedInner} = this.state;
-
-    const selected = this.isSelected();
+    const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
 
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
@@ -227,9 +265,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         aria-label={accessibilityLabel}
         className={styles.Link}
         url={url}
-        onFocus={this.handleAnchorFocus}
-        onBlur={this.handleFocusedBlur}
         tabIndex={tabIndex}
+        id={this.overlayId}
       />
     ) : (
       <button
@@ -238,9 +275,8 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         onClick={this.handleClick}
-        onFocus={this.handleAnchorFocus}
-        onBlur={this.handleFocusedBlur}
         tabIndex={tabIndex}
+        ref={this.buttonOverlay}
       />
     );
 
@@ -251,8 +287,7 @@ export class Item extends React.PureComponent<CombinedProps, State> {
         onClick={this.handleClick}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        onMouseDown={this.handleMouseDown}
-        onKeyUp={this.handleKeypress}
+        onKeyUp={this.handleKeyUp}
         testID="Item-Wrapper"
         data-href={url}
       >
@@ -262,41 +297,37 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  private setNode = (node: HTMLElement | null) => {
+  private setNode = (node: HTMLDivElement | null) => {
     this.node = node;
   };
 
-  private handleAnchorFocus = () => {
-    this.setState({focused: true, focusedInner: false});
-  };
-
-  private handleFocusedBlur = () => {
-    this.setState({focused: true, focusedInner: true});
-  };
-
-  private handleFocus = () => {
-    this.setState({focused: true});
-  };
-
-  private handleBlur = (event: React.FocusEvent<HTMLElement>) => {
-    const isInside = this.compareEventNode(event);
+  private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
     if (
-      this.node == null ||
-      !this.node.contains(event.relatedTarget as HTMLElement)
+      event.target === this.buttonOverlay.current ||
+      (this.node &&
+        event.target === this.node.querySelector(`#${this.overlayId}`))
     ) {
-      this.setState({focused: false});
-    } else if (isInside) {
-      this.setState({focusedInner: true});
+      this.setState({focused: true, focusedInner: false});
+    } else if (this.node && this.node.contains(event.target)) {
+      this.setState({focused: true, focusedInner: true});
     }
   };
 
-  private handleMouseDown = () => {
-    this.setState({focusedInner: true});
+  private handleBlur = ({relatedTarget}: React.FocusEvent) => {
+    if (
+      this.node &&
+      relatedTarget instanceof Element &&
+      this.node.contains(relatedTarget)
+    ) {
+      return;
+    }
+
+    this.setState({focused: false, focusedInner: false});
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
     stopPropagation(event);
-    this.handleSelection(!this.isSelected());
+    this.handleSelection(!this.state.selected);
   };
 
   private handleSelection = (value: boolean) => {
@@ -307,11 +338,11 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     if (id == null || onSelectionChange == null) {
       return;
     }
-    this.setState({focused: true, focusedInner: true});
     onSelectionChange(value, id);
   };
 
   private handleClick = (event: React.MouseEvent<any>) => {
+    stopPropagation(event);
     const {
       id,
       onClick,
@@ -344,14 +375,15 @@ export class Item extends React.PureComponent<CombinedProps, State> {
     }
   };
 
-  private handleKeypress = (event: React.KeyboardEvent<HTMLElement>) => {
+  // This fires onClick when there is a URL on the item
+  private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     const {
       onClick = noop,
       context: {selectMode},
     } = this.props;
     const {key} = event;
 
-    if (key === 'Enter' && !selectMode) {
+    if (key === 'Enter' && this.props.url && !selectMode) {
       onClick();
     }
   };
@@ -365,28 +397,18 @@ export class Item extends React.PureComponent<CombinedProps, State> {
   private handleCloseRequest = () => {
     this.setState({actionsMenuVisible: false});
   };
-
-  private isSelected() {
-    const {
-      id,
-      context: {selectedItems},
-    } = this.props;
-    return (
-      selectedItems &&
-      ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
-        selectedItems === SELECT_ALL_ITEMS)
-    );
-  }
-
-  private compareEventNode(event: React.FocusEvent<HTMLElement>) {
-    return this.props.onClick
-      ? event.target === this.node
-      : (event.target as HTMLElement).tagName.toLowerCase() === 'a';
-  }
 }
 
 function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();
+}
+
+function isSelected(id: string, selectedItems?: SelectedItems) {
+  return Boolean(
+    selectedItems &&
+      ((Array.isArray(selectedItems) && selectedItems.includes(id)) ||
+        selectedItems === SELECT_ALL_ITEMS),
+  );
 }
 
 export default compose<Props>(

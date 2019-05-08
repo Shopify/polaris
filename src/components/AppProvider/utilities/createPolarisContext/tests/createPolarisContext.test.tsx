@@ -101,8 +101,8 @@ describe('createPolarisContext()', () => {
       },
     };
 
-    expect(contextOne).toEqual(mockContext);
-    expect(contextTwo).toEqual(mockContext);
+    expect(contextOne).toStrictEqual(mockContext);
+    expect(contextTwo).toStrictEqual(mockContext);
   });
 
   it('returns the right context with only app provider context being provided', () => {
@@ -140,7 +140,7 @@ describe('createPolarisContext()', () => {
       },
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with only theme provider context being provided', () => {

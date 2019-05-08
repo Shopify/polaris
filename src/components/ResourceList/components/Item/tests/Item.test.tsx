@@ -16,6 +16,7 @@ describe('<Item />', () => {
 
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
+    spy.mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -162,7 +163,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).toBeCalledWith(itemId);
+      expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls onClick when clicking on the item when both onClick and url exist', () => {
@@ -179,7 +180,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).toBeCalledWith(itemId);
+      expect(onClick).toHaveBeenCalledWith(itemId);
     });
 
     it('calls window.open on metaKey + click', () => {
@@ -189,8 +190,56 @@ describe('<Item />', () => {
         </Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {nativeEvent: {metaKey: true}});
-      expect(spy).toBeCalledWith(url, '_blank');
+      trigger(item, 'onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {metaKey: true},
+      });
+      expect(spy).toHaveBeenCalledWith(url, '_blank');
+    });
+
+    it('calls onClick when hitting keyUp on the item when onClick and URL exists', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url="#" onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Enter',
+      });
+
+      expect(onClick).toHaveBeenCalled();
+    });
+
+    it('does not call onClick when hitting keyUp on non Enter key', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <Item id={itemId} url="#" onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Tab',
+      });
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not call onClick when hitting keyUp on the item when no URL exists', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithAppProvider(
+        <Provider value={mockSelectModeContext}>
+          <Item id={itemId} onClick={onClick} />
+        </Provider>,
+      );
+
+      findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
+        key: 'Enter',
+      });
+
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls window.open on ctrlKey + click', () => {
@@ -200,8 +249,11 @@ describe('<Item />', () => {
         </Provider>,
       );
       const item = findByTestID(wrapper, 'Item-Wrapper');
-      trigger(item, 'onClick', {nativeEvent: {ctrlKey: true}});
-      expect(spy).toBeCalledWith(url, '_blank');
+      trigger(item, 'onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {ctrlKey: true},
+      });
+      expect(spy).toHaveBeenCalledWith(url, '_blank');
     });
   });
 
@@ -215,7 +267,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
-      expect(onClick).not.toBeCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
@@ -243,7 +295,7 @@ describe('<Item />', () => {
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('click');
-      expect(onClick).not.toBeCalledWith(itemId);
+      expect(onClick).not.toHaveBeenCalledWith(itemId);
     });
 
     it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
@@ -284,7 +336,7 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {metaKey: true},
       });
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('does not call window.open when clicking the item with ctrlKey', () => {
@@ -296,7 +348,7 @@ describe('<Item />', () => {
       findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
         nativeEvent: {ctrlKey: true},
       });
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 

@@ -291,6 +291,28 @@ describe('<BulkActions />', () => {
           length,
         );
       });
+
+      it('will not overwrite the disabled value coming from a promotedAction', () => {
+        const bulkActionProps: Props = {
+          bulkActions: [],
+          promotedActions: [
+            {
+              disabled: true,
+              content: 'button 1',
+            },
+          ],
+          paginatedSelectAllText: 'paginated select all text string',
+          selected: false,
+          accessibilityLabel: 'test-aria-label',
+          label: 'Test-Label',
+          disabled: false,
+        };
+        const bulkActions = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
+        const bulkActionButton = bulkActions.find(BulkActionButton).last();
+        expect(bulkActionButton.prop('disabled')).toBe(true);
+      });
     });
 
     describe('paginatedSelectAllText', () => {

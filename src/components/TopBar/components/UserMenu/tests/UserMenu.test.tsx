@@ -27,7 +27,9 @@ describe('<UserMenu />', () => {
           <UserMenu {...userMenuProps} />
         </UserMenuContext.Provider>,
       );
-      expect(userMenu.find(UserMenuComponent).props()).toEqual(userMenuProps);
+      expect(userMenu.find(UserMenuComponent).props()).toStrictEqual(
+        userMenuProps,
+      );
     });
 
     it('renders with the given props when in mobile view but no mobile props are available', () => {
@@ -41,7 +43,9 @@ describe('<UserMenu />', () => {
           <UserMenu {...userMenuProps} />
         </UserMenuContext.Provider>,
       );
-      expect(userMenu.find(UserMenuComponent).props()).toEqual(userMenuProps);
+      expect(userMenu.find(UserMenuComponent).props()).toStrictEqual(
+        userMenuProps,
+      );
     });
 
     it('renders with the given props when mobile props are available but not in mobile view', () => {
@@ -56,7 +60,9 @@ describe('<UserMenu />', () => {
           <UserMenu {...userMenuProps} />
         </UserMenuContext.Provider>,
       );
-      expect(userMenu.find(UserMenuComponent).props()).toEqual(userMenuProps);
+      expect(userMenu.find(UserMenuComponent).props()).toStrictEqual(
+        userMenuProps,
+      );
     });
 
     it('renders with the mobile props when available and in mobile view', () => {
@@ -71,7 +77,7 @@ describe('<UserMenu />', () => {
           <UserMenu {...userMenuProps} />
         </UserMenuContext.Provider>,
       );
-      expect(userMenu.find(UserMenuComponent).props()).toEqual(
+      expect(userMenu.find(UserMenuComponent).props()).toStrictEqual(
         mobileUserMenuProps,
       );
     });

@@ -36,7 +36,7 @@ describe('<AppProvider />', () => {
       }
     }
 
-    const wrapper = TestUtils.renderIntoDocument(
+    const wrapper: unknown = TestUtils.renderIntoDocument(
       <AppProvider i18n={i18n} linkComponent={CustomLinkComponent}>
         <Child />
       </AppProvider>,

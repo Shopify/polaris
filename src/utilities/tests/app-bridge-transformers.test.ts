@@ -6,7 +6,7 @@ import {generateRedirect, transformActions} from '../app-bridge-transformers';
 describe('app bridge transformers', () => {
   const appBridge = {} as ClientApplication<{}>;
   const dispatch = jest.fn();
-  Redirect.create = jest.fn().mockReturnValue({dispatch});
+  jest.spyOn(Redirect, 'create').mockReturnValue({dispatch});
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -19,27 +19,24 @@ describe('app bridge transformers', () => {
 
     it('action is APP by default', () => {
       const callback = generateRedirect(appBridge, '/path');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.APP, '/path');
     });
 
     it('action is APP when target is APP', () => {
       const callback = generateRedirect(appBridge, '/path', 'APP');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.APP, '/path');
     });
 
     it('action is REMOTE with newContext when external is true', () => {
       const callback = generateRedirect(appBridge, '/path', undefined, true);
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.REMOTE, {
         url: '/path',
@@ -49,18 +46,16 @@ describe('app bridge transformers', () => {
 
     it('action is REMOTE when target is REMOTE', () => {
       const callback = generateRedirect(appBridge, '/path', 'REMOTE');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(Redirect.Action.REMOTE, '/path');
     });
 
     it('action is ADMIN_PATH when target is ADMIN_PATH', () => {
       const callback = generateRedirect(appBridge, '/path', 'ADMIN_PATH');
-      if (callback != null) {
-        callback.call(this);
-      }
+      callback!.call(this);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(
         Redirect.Action.ADMIN_PATH,
@@ -81,13 +76,13 @@ describe('app bridge transformers', () => {
       subscribe: jest.fn(),
     };
 
-    Button.create = jest.fn().mockReturnValue(buttonMock);
-    ButtonGroup.create = jest.fn((...args) => args);
+    jest.spyOn(Button, 'create').mockReturnValue(buttonMock);
+    jest.spyOn(ButtonGroup, 'create').mockImplementation((...args) => args);
 
     it('accepts undefined actions', () => {
       const buttons = transformActions(appBridge, {});
 
-      expect(buttons).toEqual({
+      expect(buttons).toStrictEqual({
         primary: undefined,
         secondary: [],
       });
@@ -99,7 +94,10 @@ describe('app bridge transformers', () => {
         secondaryActions: [action],
       });
 
-      expect(buttons).toEqual({primary: buttonMock, secondary: [buttonMock]});
+      expect(buttons).toStrictEqual({
+        primary: buttonMock,
+        secondary: [buttonMock],
+      });
     });
 
     it('transforms action groups', () => {
@@ -108,7 +106,7 @@ describe('app bridge transformers', () => {
         actionGroups: [{title: 'Bar', actions: [action]}],
       });
 
-      expect(buttons).toEqual({
+      expect(buttons).toStrictEqual({
         primary: undefined,
         secondary: [
           buttonMock,

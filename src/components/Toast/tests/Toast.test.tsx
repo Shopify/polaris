@@ -35,7 +35,7 @@ describe('<Toast />', () => {
       subscribe: jest.fn(),
       unsubscribe: jest.fn(),
     };
-    AppBridgeToast.create = jest.fn().mockReturnValue(appBridgeToastMock);
+    jest.spyOn(AppBridgeToast, 'create').mockReturnValue(appBridgeToastMock);
 
     it('shows app bridge toast notice content on mount and unmounts safely', () => {
       const content = 'Message sent';
