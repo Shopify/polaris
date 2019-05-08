@@ -44,8 +44,6 @@ function pullRequestTemplate(repository, version) {
 
 See what’s new: https://github.com/Shopify/polaris-react/releases/tag/${version}
 
-cc @Shopify/polaris-reviewers
-
 ---
 
 <details>
