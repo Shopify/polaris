@@ -133,6 +133,18 @@ $stacking-order: (
   padding-right: 0;
 }
 
+.Input-alignRight {
+  text-align: right;
+}
+
+.Input-alignLeft {
+  text-align: left;
+}
+
+.Input-alignCenter {
+  text-align: center;
+}
+
 .Backdrop {
   position: absolute;
   z-index: z-index(backdrop, $stacking-order);

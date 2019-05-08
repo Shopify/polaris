@@ -24,6 +24,7 @@ describe('<TextField />', () => {
         maxLength={2}
         spellCheck={false}
         pattern={pattern}
+        align="left"
       />,
     ).find('input');
 

@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 – Enhanced `NavigationItem`s colour accessibility for `active`, `focus`, `hover` and `Selected` states([1304](https://github.com/Shopify/polaris-react/pull/1304))
 
+- Added `align` prop to `TextField` ([#1428](https://github.com/Shopify/polaris-react/pull/1428))
+
 ### Bug fixes
 
 - Fixed `Popover` fade-in flutter on iOS by switching Transition component for CSSTransition [#1400](https://github.com/Shopify/polaris-react/pull/1400)
