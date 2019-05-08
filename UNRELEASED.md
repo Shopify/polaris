@@ -22,6 +22,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fix `window` call on `server` executed code [#1427](https://github.com/Shopify/polaris-react/pull/1427)
 - Fixed onClick from firing three times when using the enter key on a `ResourceList` item ([#1188](https://github.com/Shopify/polaris-react/pull/1188))
 - Resolve console `[Intervention]` errors for touch interactions on `ColorPicker`, along with preventing page scrolling while interacting with the color slider ([#1414](https://github.com/Shopify/polaris-react/pull/1414))
 - Applied `font-family` to `button` elements which were being overridden by User Agent Stylesheet ([#1397](https://github.com/Shopify/polaris-react/pull/1397))
