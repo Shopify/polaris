@@ -1,5 +1,7 @@
 import * as React from 'react';
+import {isServer} from '@shopify/react-utilities/target';
 import EventListener from '../../../EventListener';
+
 import styles from '../../ColorPicker.scss';
 
 export interface Position {
@@ -25,17 +27,19 @@ let isDragging = false;
 // This must be called as soon as possible to properly prevent the event.
 // `passive: false` must also be set, as it seems webkit has changed the "default" behaviour
 // https://bugs.webkit.org/show_bug.cgi?id=182521
-window.addEventListener(
-  'touchmove',
-  (event) => {
-    if (!isDragging) {
-      return;
-    }
+if (!isServer) {
+  window.addEventListener(
+    'touchmove',
+    (event) => {
+      if (!isDragging) {
+        return;
+      }
 
-    event.preventDefault();
-  },
-  {passive: false},
-);
+      event.preventDefault();
+    },
+    {passive: false},
+  );
+}
 
 export default class Slidable extends React.PureComponent<Props, State> {
   state: State = {
