@@ -56,10 +56,6 @@ $nav-animation-variables: (
   &:focus {
     color: color('indigo', 'dark');
 
-    @include state(focused);
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-
     .Icon {
       @include recolor-icon(color('indigo'), color('white'), filter('indigo'));
     }
