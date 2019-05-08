@@ -1479,10 +1479,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-3.3.0.tgz#7031791d44bfe60e2f999c8fbf0ea67ab7a047c8"
   integrity sha512-+nB2rthx6vS8vlJms5unGbThwrdGXAPMCD2PoQG/Eq5uQU1EmhkVOIFaEK7AS62J2m+HaqbLw/zrlbBkZHZUrQ==
 
-"@shopify/polaris-tokens@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.3.0.tgz#d4e6c12dd83d6f8b1501fbf415268d60151770f2"
-  integrity sha512-/jroX2KTRYrQ9Ht7xbJrU+6pEZR2Iq38mXKT6G+9VB13jOv2Yih27MmitEV71E7g03KTIntKCDOWgR/3ECTb1A==
+"@shopify/polaris-tokens@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.5.0.tgz#3efe1f9be456565bbb26f6f555c78be8060bcea7"
+  integrity sha512-AzIXOBAdUnOIO91vhCPdtQH+W6pKi4rCrXsT6Fe/BN+KUoeMAsfOyBXRbA5lSQ1pb+gA2e9N4PGpOzFs6fI4hQ==
 
 "@shopify/react-compose@^0.1.6":
   version "0.1.6"

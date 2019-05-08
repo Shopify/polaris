@@ -41,5 +41,4 @@ shared:
 
 steps:
   - <<: *build-styleguide
-  - <<: *build-web
   - <<: *unit-tests
