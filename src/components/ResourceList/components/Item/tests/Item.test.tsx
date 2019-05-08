@@ -224,7 +224,7 @@ describe('<Item />', () => {
         key: 'Tab',
       });
 
-      expect(onClick).not.toBeCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('does not call onClick when hitting keyUp on the item when no URL exists', () => {
@@ -239,7 +239,7 @@ describe('<Item />', () => {
         key: 'Enter',
       });
 
-      expect(onClick).not.toBeCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
 
     it('calls window.open on ctrlKey + click', () => {
