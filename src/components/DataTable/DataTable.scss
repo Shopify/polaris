@@ -1,5 +1,9 @@
 $fixed-column-width: rem(145px);
 $breakpoint: 768px;
+$stacking-order: (
+  fixed-cell: 2,
+  icon: 1,
+);
 
 .DataTable {
   position: relative;
@@ -26,7 +30,7 @@ $breakpoint: 768px;
   }
 
   .ScrollContainer {
-    margin-left: rem($fixed-column-width);
+    padding-left: rem($fixed-column-width);
   }
 }
 
@@ -58,7 +62,7 @@ $breakpoint: 768px;
 .ScrollContainer {
   overflow-x: auto;
   // account for a mysterious gap in Safari when not collapsed
-  margin-left: rem(140px);
+  padding-left: rem($fixed-column-width);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -95,12 +99,14 @@ $breakpoint: 768px;
 }
 
 .Cell {
+  position: relative;
+  vertical-align: top;
   padding: spacing();
   border-bottom: border-width() solid color('sky', 'light');
+  background-color: color('white');
   white-space: nowrap;
   text-align: left;
   transition: background-color 0.2s ease-in-out;
-  vertical-align: top;
 }
 
 .Cell-numeric {
@@ -111,6 +117,7 @@ $breakpoint: 768px;
   @include text-emphasis-normal;
   @include text-breakword;
   position: absolute;
+  z-index: z-index(fixed-cell, $stacking-order);
   top: auto;
   left: 0;
   width: $fixed-column-width;
@@ -136,6 +143,7 @@ $breakpoint: 768px;
 }
 
 .Icon {
+  z-index: z-index(icon, $stacking-order);
   display: flex;
   align-self: flex-end;
   opacity: 0;

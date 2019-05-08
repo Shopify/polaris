@@ -75,7 +75,12 @@ export class DataTable extends React.PureComponent<
     } = this;
     let collapsed = false;
     if (table && scrollContainer) {
-      collapsed = table.scrollWidth > scrollContainer.clientWidth;
+      const headerCells = table.querySelectorAll(
+        headerCell.selector,
+      ) as NodeListOf<HTMLElement>;
+      const fixedColumnWidth = headerCells[0].offsetWidth;
+      collapsed =
+        table.scrollWidth + fixedColumnWidth > scrollContainer.clientWidth;
       scrollContainer.scrollLeft = 0;
     }
     this.setState(

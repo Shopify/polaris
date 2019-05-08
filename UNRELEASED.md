@@ -22,6 +22,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Fixed an issue where the JavaScript breakpoints incorrectly set the navigation bar collapsed breakpoint ([#1475](https://github.com/Shopify/polaris-react/pull/1475))
 - Added a border to `Toast` messages to make them more visible in Windows high contrast mode ([#1469](https://github.com/Shopify/polaris-react/pull/1469))
+- Fixed iOS bug on `DataTable` where fixed column was not visible [#1426](https://github.com/Shopify/polaris-react/pull/1426)
 
 ### Documentation
 
