@@ -143,6 +143,7 @@ $range-output-tip-size: rem(8px);
   transition-property: opacity, visibility;
   transition-duration: duration();
   transition-timing-function: easing();
+  transform: translateX(calc(-50% + #{$range-thumb-size / 2}));
 
   .ThumbLower:hover + &,
   .ThumbLower:active + &,
