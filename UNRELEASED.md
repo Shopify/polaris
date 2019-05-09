@@ -20,6 +20,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Updated accessibility testing documentation ([#1449](https://github.com/Shopify/polaris-react/pull/1449))
+
 ### Development workflow
 
 ### Dependency upgrades
