@@ -73,6 +73,7 @@ export default class DualThumb extends React.Component<Props, State> {
   };
 
   private track = React.createRef<HTMLDivElement>();
+  private trackWrapper = React.createRef<HTMLDivElement>();
   private thumbLower = React.createRef<HTMLButtonElement>();
   private thumbUpper = React.createRef<HTMLButtonElement>();
 
@@ -94,6 +95,25 @@ export default class DualThumb extends React.Component<Props, State> {
 
   componentDidMount() {
     this.setTrackPosition();
+
+    if (this.trackWrapper.current != null) {
+      addEventListener(
+        this.trackWrapper.current,
+        'touchstart',
+        this.handleTouchStartTrack,
+        {passive: false},
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.trackWrapper.current != null) {
+      removeEventListener(
+        this.trackWrapper.current,
+        'touchstart',
+        this.handleTouchStartTrack,
+      );
+    }
   }
 
   render() {
@@ -211,8 +231,8 @@ export default class DualThumb extends React.Component<Props, State> {
             <div
               className={trackWrapperClassName}
               onMouseDown={this.handleMouseDownTrack}
-              onTouchStartCapture={this.handleTouchStartTrack}
               testID="trackWrapper"
+              ref={this.trackWrapper}
             >
               <div
                 className={styles.Track}
@@ -459,9 +479,9 @@ export default class DualThumb extends React.Component<Props, State> {
     }
   };
 
-  private handleTouchStartTrack = (event: React.TouchEvent) => {
+  private handleTouchStartTrack = (event: TouchEvent) => {
     if (this.props.disabled) return;
-    event.stopPropagation();
+    event.preventDefault();
     const clickXPosition = this.actualXPosition(event.touches[0].clientX);
     const {value} = this.state;
     const distanceFromLowerThumb = Math.abs(value[0] - clickXPosition);
