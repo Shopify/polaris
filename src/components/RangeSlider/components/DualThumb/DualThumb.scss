@@ -82,6 +82,7 @@ $range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
   border: border-width() solid color('sky', 'lighter');
   box-shadow: $range-thumb-shadow;
   background: linear-gradient(color('sky', 'lighter'), color('sky', 'light'));
+  -webkit-tap-highlight-color: transparent;
 
   // stylelint-disable-next-line value-no-vendor-prefix
   cursor: -webkit-grab;
