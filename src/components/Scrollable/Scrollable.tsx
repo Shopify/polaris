@@ -9,7 +9,8 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 import {scrollable} from '../shared';
 
-import {ScrollTo, Provider} from './components';
+import {ScrollTo} from './components';
+import ScrollableContext from './context';
 
 import styles from './Scrollable.scss';
 
@@ -69,12 +70,6 @@ class Scrollable extends React.Component<CombinedProps, State> {
     {trailing: true},
   );
 
-  get getContext(): Context {
-    return {
-      scrollToPosition: this.scrollToPosition,
-    };
-  }
-
   componentDidMount() {
     const {polaris} = this.props;
     if (this.scrollArea == null) {
@@ -132,8 +127,12 @@ class Scrollable extends React.Component<CombinedProps, State> {
       bottomShadow && styles.hasBottomShadow,
     );
 
+    const context: Context = {
+      scrollToPosition: this.scrollToPosition,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <ScrollableContext.Provider value={context}>
         <div
           className={finalClassName}
           {...scrollable.props}
@@ -142,7 +141,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
         >
           {children}
         </div>
-      </Provider>
+      </ScrollableContext.Provider>
     );
   }
 
