@@ -58,11 +58,6 @@ $disabled-fade: 0.6;
   color: color('indigo', 'dark');
   background-color: $item-selected-background;
 
-  &:focus:active {
-    box-shadow: none;
-    border-radius: border-radius();
-  }
-
   // stylelint-disable selector-max-specificity
   .Icon,
   &:focus .Icon {
