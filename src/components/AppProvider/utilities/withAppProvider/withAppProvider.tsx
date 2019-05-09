@@ -6,11 +6,11 @@ import Link from '../Link';
 import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
 import {
+  ThemeProviderContextType,
   ThemeProviderContext,
-  Consumer as ThemeProviderConsumer,
 } from '../../../ThemeProvider';
 import {PolarisContext} from '../../../types';
-import AppProviderContext from '../../Context';
+import AppProviderContext from '../../context';
 
 export type ReactComponent<P, C> =
   | React.ComponentClass<P> & C
@@ -22,7 +22,7 @@ export interface WithAppProviderProps {
     link: Link;
     stickyManager: StickyManager;
     scrollLockManager: ScrollLockManager;
-    theme?: ThemeProviderContext;
+    theme?: ThemeProviderContextType;
     appBridge?: ClientApplication<{}>;
   };
 }
@@ -72,7 +72,7 @@ export default function withAppProvider<OwnProps>({
           <AppProviderContext.Consumer>
             {(polaris) => {
               return (
-                <ThemeProviderConsumer>
+                <ThemeProviderContext.Consumer>
                   {(polarisTheme) => {
                     const polarisContext: PolarisContext = {
                       ...polaris,
@@ -94,7 +94,7 @@ export default function withAppProvider<OwnProps>({
                       />
                     );
                   }}
-                </ThemeProviderConsumer>
+                </ThemeProviderContext.Consumer>
               );
             }}
           </AppProviderContext.Consumer>

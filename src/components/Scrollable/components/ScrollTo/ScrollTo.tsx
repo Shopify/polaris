@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import withContext from '../../../WithContext';
-import {Consumer} from '../Context';
-import {ScrollableContext} from '../../types';
+import ScrollableContext, {ScrollableContextType} from '../../context';
 import {WithContextTypes} from '../../../../types';
 
-type ComposedProps = WithContextTypes<ScrollableContext>;
+type ComposedProps = WithContextTypes<ScrollableContextType>;
 
 class ScrollTo extends React.Component<ComposedProps, never> {
   private ref: React.RefObject<HTMLAnchorElement> = React.createRef();
@@ -27,4 +26,6 @@ class ScrollTo extends React.Component<ComposedProps, never> {
   }
 }
 
-export default withContext<{}, {}, ScrollableContext>(Consumer)(ScrollTo);
+export default withContext<{}, {}, ScrollableContextType>(
+  ScrollableContext.Consumer,
+)(ScrollTo);

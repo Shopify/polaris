@@ -2,21 +2,23 @@ import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Card, Badge, Button} from 'components';
 
-import {Consumer, WithinContentContext} from '../../WithinContentContext';
+import WithinContentContext, {
+  WithinContentContextType,
+} from '../../WithinContentContext';
 
 describe('<Card />', () => {
   it('has a child with prop withinContentContainer set to true', () => {
-    function TestComponent(_: WithinContentContext) {
+    function TestComponent(_: WithinContentContextType) {
       return null;
     }
 
     const component = mountWithAppProvider(
       <Card>
-        <Consumer>
+        <WithinContentContext.Consumer>
           {(props) => {
             return <TestComponent {...props} />;
           }}
-        </Consumer>
+        </WithinContentContext.Consumer>
       </Card>,
     );
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AppProviderContext from '../Context';
+import AppProviderContext from '../context';
 import AppProvider from '../AppProvider';
 import {mountWithAppProvider} from '../../../test-utilities';
 

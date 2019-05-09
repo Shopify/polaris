@@ -1,7 +1,7 @@
 import * as React from 'react';
 import compose from '@shopify/react-compose';
 import isEqual from 'lodash/isEqual';
-import {ContextualSaveBarProps, FrameContext, Consumer} from '../Frame';
+import {ContextualSaveBarProps, FrameContextType, FrameContext} from '../Frame';
 import withContext from '../WithContext';
 import {WithContextTypes} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -13,7 +13,7 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 interface Props extends ContextualSaveBarProps {}
 export type ComposedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<FrameContext>;
+  WithContextTypes<FrameContextType>;
 
 class ContextualSaveBar extends React.PureComponent<ComposedProps, never> {
   componentDidMount() {
@@ -57,6 +57,8 @@ function contextualSaveBarHasChanged(
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, FrameContext>(Consumer),
+  withContext<Props, WithAppProviderProps, FrameContextType>(
+    FrameContext.Consumer,
+  ),
   withAppProvider(),
 )(ContextualSaveBar);

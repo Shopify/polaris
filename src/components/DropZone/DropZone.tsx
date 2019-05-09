@@ -20,10 +20,10 @@ import VisuallyHidden from '../VisuallyHidden';
 import Labelled, {Action} from '../Labelled';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
-import {FileUpload, Provider} from './components';
+import {FileUpload} from './components';
+import DropZoneContext from './context';
 
 import {fileAccepted, getDataTransferFiles} from './utils';
-import {DropZoneContext} from './types';
 
 import styles from './DropZone.scss';
 
@@ -204,19 +204,13 @@ export class DropZone extends React.Component<CombinedProps, State> {
     };
   }
 
-  get getContext(): DropZoneContext {
-    return {
-      size: this.state.size,
-      type: this.state.type || 'file',
-    };
-  }
-
   render() {
     const {
       id,
       dragging,
       error,
       size,
+      type,
       overlayText,
       errorOverlayText,
     } = this.state;
@@ -319,8 +313,15 @@ export class DropZone extends React.Component<CombinedProps, State> {
       dropZoneMarkup
     );
 
+    const context = {
+      size,
+      type: type || 'file',
+    };
+
     return (
-      <Provider value={this.getContext}>{labelledDropzoneMarkup}</Provider>
+      <DropZoneContext.Provider value={context}>
+        {labelledDropzoneMarkup}
+      </DropZoneContext.Provider>
     );
   }
 

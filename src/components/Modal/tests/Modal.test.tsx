@@ -7,7 +7,9 @@ import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
 
-import {Consumer, WithinContentContext} from '../../WithinContentContext';
+import WithinContentContext, {
+  WithinContentContextType,
+} from '../../WithinContentContext';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -24,17 +26,17 @@ describe('<Modal>', () => {
   });
 
   it('has a child with contentContext', () => {
-    function TestComponent(_: WithinContentContext) {
+    function TestComponent(_: WithinContentContextType) {
       return null;
     }
 
     const component = mountWithAppProvider(
       <Modal onClose={jest.fn()} open>
-        <Consumer>
+        <WithinContentContext.Consumer>
           {(props) => {
             return <TestComponent {...props} />;
           }}
-        </Consumer>
+        </WithinContentContext.Consumer>
       </Modal>,
     );
 

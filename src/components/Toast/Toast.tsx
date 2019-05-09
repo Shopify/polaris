@@ -7,8 +7,8 @@ import {WithContextTypes} from '../../types';
 
 import {
   DEFAULT_TOAST_DURATION,
+  FrameContextType,
   FrameContext,
-  Consumer,
   ToastProps,
 } from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -23,10 +23,10 @@ interface Props extends ToastProps {}
 
 export type ComposedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<FrameContext>;
+  WithContextTypes<FrameContextType>;
 
 export class Toast extends React.PureComponent<ComposedProps, never> {
-  context: FrameContext;
+  context: FrameContextType;
 
   private id = createId();
   private appBridgeToast: AppBridgeToast.Toast | undefined;
@@ -76,6 +76,8 @@ export class Toast extends React.PureComponent<ComposedProps, never> {
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, FrameContext>(Consumer),
+  withContext<Props, WithAppProviderProps, FrameContextType>(
+    FrameContext.Consumer,
+  ),
   withAppProvider(),
 )(Toast);

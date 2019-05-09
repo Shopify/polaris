@@ -1,13 +1,6 @@
-import {ClientApplication} from '@shopify/app-bridge';
 import {LinkLikeComponent} from '../UnstyledLink';
 import {Theme} from '../ThemeProvider';
-import {
-  Intl,
-  Link,
-  StickyManager,
-  ScrollLockManager,
-  TranslationDictionary,
-} from './utilities';
+import {TranslationDictionary} from './utilities';
 
 export interface AppProviderProps {
   /** A locale object or array of locale objects that overrides default translations */
@@ -26,12 +19,4 @@ export interface AppProviderProps {
   forceRedirect?: boolean;
   /** Custom logos and colors provided to select components */
   theme?: Theme;
-}
-
-export interface AppProviderContextType {
-  intl: Intl;
-  link: Link;
-  stickyManager: StickyManager;
-  scrollLockManager: ScrollLockManager;
-  appBridge?: ClientApplication<{}>;
 }

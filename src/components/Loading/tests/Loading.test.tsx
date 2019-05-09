@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities';
-import {Provider, createFrameContext} from '../../Frame';
+import {FrameContext, createFrameContext} from '../../Frame';
 
 import Loading from '../Loading';
 
@@ -16,9 +16,9 @@ describe('<Loading />', () => {
     });
 
     mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <Loading />
-      </Provider>,
+      </FrameContext.Provider>,
     );
     expect(mockFrameContext.startLoading).toHaveBeenCalled();
   });
@@ -28,9 +28,9 @@ describe('<Loading />', () => {
       stopLoading: jest.fn(),
     });
     const frame = mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <Loading />
-      </Provider>,
+      </FrameContext.Provider>,
     );
     expect(mockFrameContext.stopLoading).not.toHaveBeenCalled();
 
