@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import Navigation from '../Navigation';
-import {UserMenu, Provider, Consumer} from '../components';
+import NavigationContext from '../context';
+import {UserMenu} from '../components';
 
 describe('<Navigation />', () => {
   it('mounts', () => {
@@ -11,15 +12,19 @@ describe('<Navigation />', () => {
 
   it('passes context', () => {
     const Child: React.SFC<{}> = (_props) => {
-      return <Consumer>{({location}) => (location ? <div /> : null)}</Consumer>;
+      return (
+        <NavigationContext.Consumer>
+          {({location}) => (location ? <div /> : null)}
+        </NavigationContext.Consumer>
+      );
     };
 
     const navigation = mountWithAppProvider(
-      <Provider value={{location: '/'}}>
+      <NavigationContext.Provider value={{location: '/'}}>
         <Navigation location="/">
           <Child />
         </Navigation>
-      </Provider>,
+      </NavigationContext.Provider>,
     );
 
     const div = navigation

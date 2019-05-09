@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import Scrollable from '../Scrollable';
 
-import {UserMenu, Section, Item, Provider} from './components';
+import NavigationContext, {NavigationContextType} from './context';
+import {UserMenu, Section, Item} from './components';
 import {SectionType} from './types';
 
 import styles from './Navigation.scss';
@@ -33,13 +34,6 @@ export default class Navigation extends React.Component<Props, never> {
     }
   }
 
-  get getContext() {
-    return {
-      location: this.props.location,
-      onNavigationDismiss: this.props.onDismiss,
-    };
-  }
-
   render() {
     const {children, userMenu, contextControl} = this.props;
 
@@ -47,8 +41,13 @@ export default class Navigation extends React.Component<Props, never> {
       <div className={styles.ContextControl}>{contextControl}</div>
     );
 
+    const context: NavigationContextType = {
+      location: this.props.location,
+      onNavigationDismiss: this.props.onDismiss,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <NavigationContext.Provider value={context}>
         <nav className={styles.Navigation}>
           {contextControlMarkup}
           <div className={styles.UserMenu}>{userMenu}</div>
@@ -56,7 +55,7 @@ export default class Navigation extends React.Component<Props, never> {
             {children}
           </Scrollable>
         </nav>
-      </Provider>
+      </NavigationContext.Provider>
     );
   }
 }
