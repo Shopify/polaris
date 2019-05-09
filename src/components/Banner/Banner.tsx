@@ -20,7 +20,9 @@ import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
-import {Consumer, WithinContentContext} from '../WithinContentContext';
+import WithinContentContext, {
+  WithinContentContextType,
+} from '../WithinContentContext';
 import withContext from '../WithContext';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
@@ -45,7 +47,7 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export type CombinedProps = Props & WithContextTypes<WithinContentContext>;
+export type CombinedProps = Props & WithContextTypes<WithinContentContextType>;
 
 export class Banner extends React.PureComponent<CombinedProps, never> {
   render() {
@@ -206,6 +208,8 @@ function secondaryActionFrom(action: Action) {
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, WithinContentContext>(Consumer),
+  withContext<Props, WithAppProviderProps, WithinContentContextType>(
+    WithinContentContext.Consumer,
+  ),
   withAppProvider(),
 )(Banner);

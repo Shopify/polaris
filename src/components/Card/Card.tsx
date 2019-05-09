@@ -4,7 +4,9 @@ import {classNames} from '@shopify/react-utilities/styles';
 import {Action, DisableableAction} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
-import {Provider, WithinContentContext} from '../WithinContentContext';
+import WithinContentContext, {
+  WithinContentContextType,
+} from '../WithinContentContext';
 
 import {Header, Section} from './components';
 import styles from './Card.scss';
@@ -66,20 +68,18 @@ export default class Card extends React.PureComponent<Props, never> {
         </div>
       ) : null;
 
+    const context: WithinContentContextType = {
+      withinContentContainer: true,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <WithinContentContext.Provider value={context}>
         <div className={className}>
           {headerMarkup}
           {content}
           {footerMarkup}
         </div>
-      </Provider>
+      </WithinContentContext.Provider>
     );
-  }
-
-  get getContext(): WithinContentContext {
-    return {
-      withinContentContainer: true,
-    };
   }
 }

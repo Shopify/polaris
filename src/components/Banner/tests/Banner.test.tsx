@@ -10,7 +10,7 @@ import {
 import {mountWithAppProvider} from 'test-utilities';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
-import {Provider} from '../../WithinContentContext';
+import WithinContentContext from '../../WithinContentContext';
 
 describe('<Banner />', () => {
   it('renders a title', () => {
@@ -100,7 +100,7 @@ describe('<Banner />', () => {
   };
 
   const bannerWithContentContext = mountWithAppProvider(
-    <Provider value={mockContext}>
+    <WithinContentContext.Provider value={mockContext}>
       <Banner
         action={{
           content: 'Primary action',
@@ -108,7 +108,7 @@ describe('<Banner />', () => {
       >
         Some content
       </Banner>
-    </Provider>,
+    </WithinContentContext.Provider>,
   );
 
   it('renders a slim button with contentContext', () => {
