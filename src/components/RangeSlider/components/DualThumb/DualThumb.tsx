@@ -73,6 +73,8 @@ export default class DualThumb extends React.Component<Props, State> {
   };
 
   private track = React.createRef<HTMLDivElement>();
+  private thumbLower = React.createRef<HTMLButtonElement>();
+  private thumbUpper = React.createRef<HTMLButtonElement>();
 
   private setTrackPosition = debounce(
     () => {
@@ -209,6 +211,7 @@ export default class DualThumb extends React.Component<Props, State> {
             <div
               className={trackWrapperClassName}
               onMouseDown={this.handleMouseDownTrack}
+              onTouchStartCapture={this.handleTouchStartTrack}
               testID="trackWrapper"
             >
               <div
@@ -234,6 +237,8 @@ export default class DualThumb extends React.Component<Props, State> {
                 onBlur={onBlur}
                 onKeyDown={this.handleKeypressLower}
                 onMouseDown={this.handleMouseDownThumbLower}
+                onTouchStart={this.handleTouchStartThumbLower}
+                ref={this.thumbLower}
               />
               {outputMarkupLower}
               <button
@@ -253,6 +258,8 @@ export default class DualThumb extends React.Component<Props, State> {
                 onBlur={onBlur}
                 onKeyDown={this.handleKeypressUpper}
                 onMouseDown={this.handleMouseDownThumbUpper}
+                onTouchStart={this.handleTouchStartThumbUpper}
+                ref={this.thumbUpper}
               />
               {outputMarkupUpper}
             </div>
@@ -280,6 +287,23 @@ export default class DualThumb extends React.Component<Props, State> {
     );
   };
 
+  private handleTouchStartThumbLower = (
+    event: React.TouchEvent<HTMLButtonElement>,
+  ) => {
+    if (this.props.disabled) return;
+    registerTouchMoveHandler(this.handleTouchMoveThumbLower);
+    event.stopPropagation();
+  };
+
+  private handleTouchMoveThumbLower = (event: TouchEvent) => {
+    event.preventDefault();
+    const valueUpper = this.state.value[1];
+    this.setValue(
+      [this.actualXPosition(event.touches[0].clientX), valueUpper],
+      Control.Upper,
+    );
+  };
+
   private handleMouseDownThumbUpper = (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
@@ -292,6 +316,23 @@ export default class DualThumb extends React.Component<Props, State> {
     const valueLower = this.state.value[0];
     this.setValue(
       [valueLower, this.actualXPosition(event.clientX)],
+      Control.Lower,
+    );
+  };
+
+  private handleTouchStartThumbUpper = (
+    event: React.TouchEvent<HTMLButtonElement>,
+  ) => {
+    if (this.props.disabled) return;
+    registerTouchMoveHandler(this.handleTouchMoveThumbUpper);
+    event.stopPropagation();
+  };
+
+  private handleTouchMoveThumbUpper = (event: TouchEvent) => {
+    event.preventDefault();
+    const valueLower = this.state.value[0];
+    this.setValue(
+      [valueLower, this.actualXPosition(event.touches[0].clientX)],
       Control.Lower,
     );
   };
@@ -395,6 +436,7 @@ export default class DualThumb extends React.Component<Props, State> {
 
   private handleMouseDownTrack = (event: React.MouseEvent) => {
     if (event.button !== 0 || this.props.disabled) return;
+    event.preventDefault();
     const clickXPosition = this.actualXPosition(event.clientX);
     const {value} = this.state;
     const distanceFromLowerThumb = Math.abs(value[0] - clickXPosition);
@@ -403,9 +445,42 @@ export default class DualThumb extends React.Component<Props, State> {
     if (distanceFromLowerThumb <= distanceFromUpperThumb) {
       this.setValue([clickXPosition, value[1]], Control.Upper);
       registerMouseMoveHandler(this.handleMouseMoveThumbLower);
+
+      if (this.thumbLower.current != null) {
+        this.thumbLower.current.focus();
+      }
     } else {
       this.setValue([value[0], clickXPosition], Control.Lower);
       registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
+
+      if (this.thumbUpper.current != null) {
+        this.thumbUpper.current.focus();
+      }
+    }
+  };
+
+  private handleTouchStartTrack = (event: React.TouchEvent) => {
+    if (this.props.disabled) return;
+    event.stopPropagation();
+    const clickXPosition = this.actualXPosition(event.touches[0].clientX);
+    const {value} = this.state;
+    const distanceFromLowerThumb = Math.abs(value[0] - clickXPosition);
+    const distanceFromUpperThumb = Math.abs(value[1] - clickXPosition);
+
+    if (distanceFromLowerThumb <= distanceFromUpperThumb) {
+      this.setValue([clickXPosition, value[1]], Control.Upper);
+      registerTouchMoveHandler(this.handleTouchMoveThumbLower);
+
+      if (this.thumbLower.current != null) {
+        this.thumbLower.current.focus();
+      }
+    } else {
+      this.setValue([value[0], clickXPosition], Control.Lower);
+      registerTouchMoveHandler(this.handleTouchMoveThumbUpper);
+
+      if (this.thumbUpper.current != null) {
+        this.thumbUpper.current.focus();
+      }
     }
   };
 
@@ -433,6 +508,18 @@ function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
     },
     {once: true},
   );
+}
+
+function registerTouchMoveHandler(handler: (event: TouchEvent) => void) {
+  const removeHandler = () => {
+    removeEventListener(document, 'touchmove', handler);
+    removeEventListener(document, 'touchend', removeHandler);
+    removeEventListener(document, 'touchcancel', removeHandler);
+  };
+
+  addEventListener(document, 'touchmove', handler, {passive: false});
+  addEventListener(document, 'touchend', removeHandler, {once: true});
+  addEventListener(document, 'touchcancel', removeHandler, {once: true});
 }
 
 function sanitizeValue(
