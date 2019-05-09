@@ -135,6 +135,7 @@ class RangeSliderExample extends React.Component {
           label="Opacity percentage"
           value={this.state.value}
           onChange={this.handleChange}
+          output
         />
       </Card>
     );
