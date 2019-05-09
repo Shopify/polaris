@@ -1,7 +1,6 @@
 import * as React from 'react';
-import throttle from 'lodash-decorators/throttle';
+import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
-import {autobind} from '@shopify/javascript-utilities/decorators';
 import {
   addEventListener,
   removeEventListener,
@@ -74,6 +73,22 @@ export default class DualThumb extends React.Component<Props, State> {
   };
 
   private track = React.createRef<HTMLDivElement>();
+
+  private setTrackPosition = debounce(
+    () => {
+      if (this.track.current) {
+        const {width, left} = this.track.current.getBoundingClientRect();
+        const adjustedTrackWidth = width - THUMB_SIZE;
+        const adjustedTrackLeft = left + THUMB_SIZE / 2;
+        this.setState({
+          trackWidth: adjustedTrackWidth,
+          trackLeft: adjustedTrackLeft,
+        });
+      }
+    },
+    40,
+    {leading: true, trailing: true, maxWait: 40},
+  );
 
   componentDidMount() {
     this.setTrackPosition();
@@ -249,58 +264,42 @@ export default class DualThumb extends React.Component<Props, State> {
     );
   }
 
-  @throttle(40)
-  @autobind
-  private setTrackPosition() {
-    if (this.track.current) {
-      const {width, left} = this.track.current.getBoundingClientRect();
-      const adjustedTrackWidth = width - THUMB_SIZE;
-      const adjustedTrackLeft = left + THUMB_SIZE / 2;
-      this.setState({
-        trackWidth: adjustedTrackWidth,
-        trackLeft: adjustedTrackLeft,
-      });
-    }
-  }
-
-  @autobind
-  private handleMouseDownThumbLower(
+  private handleMouseDownThumbLower = (
     event: React.MouseEvent<HTMLButtonElement>,
-  ) {
+  ) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbLower);
     event.stopPropagation();
-  }
+  };
 
-  @autobind
-  private handleMouseMoveThumbLower(event: MouseEvent) {
+  private handleMouseMoveThumbLower = (event: MouseEvent) => {
     const valueUpper = this.state.value[1];
     this.setValue(
       [this.actualXPosition(event.clientX), valueUpper],
       Control.Upper,
     );
-  }
+  };
 
-  @autobind
-  private handleMouseDownThumbUpper(
+  private handleMouseDownThumbUpper = (
     event: React.MouseEvent<HTMLButtonElement>,
-  ) {
+  ) => {
     if (event.button !== 0 || this.props.disabled) return;
     registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
     event.stopPropagation();
-  }
+  };
 
-  @autobind
-  private handleMouseMoveThumbUpper(event: MouseEvent) {
+  private handleMouseMoveThumbUpper = (event: MouseEvent) => {
     const valueLower = this.state.value[0];
     this.setValue(
       [valueLower, this.actualXPosition(event.clientX)],
       Control.Lower,
     );
-  }
+  };
 
-  @autobind
-  private handleKeypressLower(event: React.KeyboardEvent<HTMLButtonElement>) {
+  private handleKeypressLower = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => {
+    if (this.props.disabled) return;
     const {incrementValueLower, decrementValueLower} = this;
 
     const handlerMap: KeyHandlers = {
@@ -317,10 +316,12 @@ export default class DualThumb extends React.Component<Props, State> {
       event.stopPropagation();
       handler();
     }
-  }
+  };
 
-  @autobind
-  private handleKeypressUpper(event: React.KeyboardEvent<HTMLButtonElement>) {
+  private handleKeypressUpper = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => {
+    if (this.props.disabled) return;
     const {incrementValueUpper, decrementValueUpper} = this;
 
     const handlerMap: KeyHandlers = {
@@ -337,50 +338,44 @@ export default class DualThumb extends React.Component<Props, State> {
       event.stopPropagation();
       handler();
     }
-  }
+  };
 
-  @autobind
-  private incrementValueLower() {
+  private incrementValueLower = () => {
     this.setValue(
       [this.state.value[0] + this.props.step, this.state.value[1]],
       Control.Upper,
     );
-  }
+  };
 
-  @autobind
-  private decrementValueLower() {
+  private decrementValueLower = () => {
     this.setValue(
       [this.state.value[0] - this.props.step, this.state.value[1]],
       Control.Upper,
     );
-  }
+  };
 
-  @autobind
-  private incrementValueUpper() {
+  private incrementValueUpper = () => {
     this.setValue(
       [this.state.value[0], this.state.value[1] + this.props.step],
       Control.Lower,
     );
-  }
+  };
 
-  @autobind
-  private decrementValueUpper() {
+  private decrementValueUpper = () => {
     this.setValue(
       [this.state.value[0], this.state.value[1] - this.props.step],
       Control.Lower,
     );
-  }
+  };
 
-  @autobind
-  private dispatchValue() {
+  private dispatchValue = () => {
     const {onChange, id} = this.props;
     const {value} = this.state;
 
     onChange(value, id);
-  }
+  };
 
-  @autobind
-  private setValue(dirtyValue: DualValue, control: Control) {
+  private setValue = (dirtyValue: DualValue, control: Control) => {
     const {
       props: {min, max, step},
       state: {value},
@@ -396,10 +391,9 @@ export default class DualThumb extends React.Component<Props, State> {
         this.dispatchValue,
       );
     }
-  }
+  };
 
-  @autobind
-  private handleMouseDownTrack(event: React.MouseEvent) {
+  private handleMouseDownTrack = (event: React.MouseEvent) => {
     if (event.button !== 0 || this.props.disabled) return;
     const clickXPosition = this.actualXPosition(event.clientX);
     const {value} = this.state;
@@ -413,10 +407,9 @@ export default class DualThumb extends React.Component<Props, State> {
       this.setValue([value[0], clickXPosition], Control.Lower);
       registerMouseMoveHandler(this.handleMouseMoveThumbUpper);
     }
-  }
+  };
 
-  @autobind
-  private actualXPosition(dirtyXPosition: number): number {
+  private actualXPosition = (dirtyXPosition: number): number => {
     if (this.track.current) {
       const {min, max} = this.props;
       const {trackLeft, trackWidth} = this.state;
@@ -427,7 +420,7 @@ export default class DualThumb extends React.Component<Props, State> {
     } else {
       return 0;
     }
-  }
+  };
 }
 
 function registerMouseMoveHandler(handler: (event: MouseEvent) => void) {
