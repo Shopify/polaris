@@ -40,7 +40,6 @@ enum Control {
 }
 
 const THUMB_SIZE = 24;
-const OUTPUT_TIP_SIZE = 8;
 
 export default class DualThumb extends React.Component<Props, State> {
   static getDerivedStateFromProps(props: Props, state: State) {
@@ -75,8 +74,6 @@ export default class DualThumb extends React.Component<Props, State> {
   };
 
   private track = React.createRef<HTMLDivElement>();
-  private thumbLower = React.createRef<HTMLButtonElement>();
-  private thumbUpper = React.createRef<HTMLButtonElement>();
 
   componentDidMount() {
     this.setTrackPosition();
@@ -144,7 +141,7 @@ export default class DualThumb extends React.Component<Props, State> {
           htmlFor={idLower}
           className={outputLowerClassName}
           style={{
-            left: `calc(${leftPositionThumbLower}px - ${OUTPUT_TIP_SIZE}px)`,
+            left: `${leftPositionThumbLower}px`,
           }}
         >
           <div className={styles.OutputBubble}>
@@ -160,7 +157,7 @@ export default class DualThumb extends React.Component<Props, State> {
           htmlFor={idUpper}
           className={outputUpperClassName}
           style={{
-            left: `calc(${leftPositionThumbUpper}px - ${OUTPUT_TIP_SIZE}px)`,
+            left: `${leftPositionThumbUpper}px`,
           }}
         >
           <div className={styles.OutputBubble}>
@@ -169,12 +166,9 @@ export default class DualThumb extends React.Component<Props, State> {
         </output>
       ) : null;
 
-    const progressLower = leftPositionThumbLower + THUMB_SIZE / 2;
-    const progressUpper = leftPositionThumbUpper + THUMB_SIZE / 2;
-
     const cssVars = {
-      [`${CSS_VAR_PREFIX}progress-lower`]: `${progressLower}px`,
-      [`${CSS_VAR_PREFIX}progress-upper`]: `${progressUpper}px`,
+      [`${CSS_VAR_PREFIX}progress-lower`]: `${leftPositionThumbLower}px`,
+      [`${CSS_VAR_PREFIX}progress-upper`]: `${leftPositionThumbUpper}px`,
     };
 
     const prefixMarkup = prefix && (
@@ -211,7 +205,6 @@ export default class DualThumb extends React.Component<Props, State> {
               <button
                 id={idLower}
                 className={thumbLowerClassName}
-                ref={this.thumbLower}
                 style={{
                   left: `${leftPositionThumbLower}px`,
                 }}
@@ -231,7 +224,6 @@ export default class DualThumb extends React.Component<Props, State> {
               <button
                 id={idUpper}
                 className={thumbUpperClassName}
-                ref={this.thumbUpper}
                 style={{
                   left: `${leftPositionThumbUpper}px`,
                 }}
@@ -263,9 +255,10 @@ export default class DualThumb extends React.Component<Props, State> {
     if (this.track.current) {
       const {width, left} = this.track.current.getBoundingClientRect();
       const adjustedTrackWidth = width - THUMB_SIZE;
+      const adjustedTrackLeft = left + THUMB_SIZE / 2;
       this.setState({
         trackWidth: adjustedTrackWidth,
-        trackLeft: left,
+        trackLeft: adjustedTrackLeft,
       });
     }
   }

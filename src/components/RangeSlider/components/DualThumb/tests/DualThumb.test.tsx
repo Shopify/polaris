@@ -293,13 +293,13 @@ describe('<DualThumb />', () => {
       const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
 
       const expected = {
-        '--Polaris-RangeSlider-progress-lower': '12px',
-        '--Polaris-RangeSlider-progress-upper': '11.52px',
+        '--Polaris-RangeSlider-progress-lower': '0px',
+        '--Polaris-RangeSlider-progress-upper': '-0.48px',
       };
       const track = findByTestID(dualThumb, 'track');
       const actual = track.find('[style]').prop('style');
 
-      expect(expected).toStrictEqual(actual);
+      expect(actual).toStrictEqual(expected);
     });
   });
 
