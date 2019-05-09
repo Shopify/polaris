@@ -1,13 +1,12 @@
 import * as React from 'react';
 
-import {ComboBoxContext} from '../../../types';
+import ComboBoxContext, {ComboBoxContextType} from '../../context';
 import BaseTextField, {Props as TextFieldProps} from '../../../../../TextField';
-import {Consumer} from '../Context';
 
 export default function TextField(props: TextFieldProps) {
   return (
-    <Consumer>
-      {({selectedOptionId, comboBoxId}: ComboBoxContext) => (
+    <ComboBoxContext.Consumer>
+      {({selectedOptionId, comboBoxId}: ComboBoxContextType) => (
         <BaseTextField
           {...props}
           autoComplete={false}
@@ -16,6 +15,6 @@ export default function TextField(props: TextFieldProps) {
           ariaControls={comboBoxId}
         />
       )}
-    </Consumer>
+    </ComboBoxContext.Consumer>
   );
 }

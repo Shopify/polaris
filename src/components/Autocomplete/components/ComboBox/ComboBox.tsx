@@ -9,9 +9,9 @@ import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
-import {ComboBoxContext} from '../types';
 import KeypressListener from '../../../KeypressListener';
-import {TextField, Provider} from './components';
+import ComboBoxContext, {ComboBoxContextType} from './context';
+import {TextField} from './components';
 
 import styles from './ComboBox.scss';
 
@@ -118,13 +118,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   private popoverScrollContainer: React.RefObject<
     HTMLDivElement
   > = React.createRef();
-
-  get getContext(): ComboBoxContext {
-    return {
-      comboBoxId: this.state.comboBoxId,
-      selectedOptionId: this.selectedOptionId,
-    };
-  }
 
   componentDidMount() {
     const {options, actionsBefore, actionsAfter} = this.props;
@@ -240,8 +233,13 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       options.length === 0 &&
       emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
+    const context: ComboBoxContextType = {
+      comboBoxId: this.state.comboBoxId,
+      selectedOptionId: this.selectedOptionId,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <ComboBoxContext.Provider value={context}>
         <div
           onClick={this.handleClick}
           role="combobox"
@@ -289,7 +287,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
             </div>
           </Popover>
         </div>
-      </Provider>
+      </ComboBoxContext.Provider>
     );
   }
 
