@@ -40,7 +40,6 @@ enum Control {
 }
 
 const THUMB_SIZE = 24;
-const OUTPUT_TIP_SIZE = 8;
 
 export default class DualThumb extends React.Component<Props, State> {
   static getDerivedStateFromProps(props: Props, state: State) {
@@ -144,7 +143,7 @@ export default class DualThumb extends React.Component<Props, State> {
           htmlFor={idLower}
           className={outputLowerClassName}
           style={{
-            left: `calc(${leftPositionThumbLower}px - ${OUTPUT_TIP_SIZE}px)`,
+            left: `${leftPositionThumbLower}px`,
           }}
         >
           <div className={styles.OutputBubble}>
@@ -160,7 +159,7 @@ export default class DualThumb extends React.Component<Props, State> {
           htmlFor={idUpper}
           className={outputUpperClassName}
           style={{
-            left: `calc(${leftPositionThumbUpper}px - ${OUTPUT_TIP_SIZE}px)`,
+            left: `${leftPositionThumbUpper}px`,
           }}
         >
           <div className={styles.OutputBubble}>

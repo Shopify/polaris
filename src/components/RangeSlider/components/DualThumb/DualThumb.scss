@@ -122,22 +122,10 @@ $range-thumbs-border-active: rem(2px) solid color('indigo');
   .error & {
     border: $range-thumbs-border-error;
   }
-
-  // stylelint-disable selector-max-specificity
-  &:hover + .Output &,
-  &:active + .Output &,
-  &:focus + .Output & {
-    transform: translateY(-$range-thumb-size);
-
-    @include page-content-when-not-partially-condensed {
-      transform: translateY(-($range-thumb-size / 2));
-    }
-  }
-  // stylelint-enable selector-max-specificity
 }
 
 $range-output-size: rem(32px);
-$range-output-tip-size: rem(8px);
+$range-output-spacing: rem(16px);
 
 .Prefix {
   flex: 0 0 auto;
@@ -152,24 +140,18 @@ $range-output-tip-size: rem(8px);
 .Output {
   position: absolute;
   z-index: z-index('output', $stacking-order);
-  bottom: $range-output-size - $range-output-tip-size + $range-thumb-size;
+  bottom: $range-thumb-size;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition-property: opacity, visibility;
   transition-duration: duration();
   transition-timing-function: easing();
+  transform: translateX(calc(-50% + #{$range-thumb-size / 2}));
 
-  .ThumbLower:hover + &,
-  .ThumbLower:active + &,
-  .ThumbLower:focus + & {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .ThumbUpper:hover + &,
-  .ThumbUpper:active + &,
-  .ThumbUpper:focus + & {
+  .Thumbs:hover + &,
+  .Thumbs:active + &,
+  .Thumbs:focus + & {
     opacity: 1;
     visibility: visible;
   }
@@ -187,19 +169,17 @@ $range-output-tip-size: rem(8px);
   transition-duration: duration();
   transition-timing-function: easing();
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -($range-output-tip-size - rem(1px));
-    left: 50%;
-    margin-left: -$range-output-tip-size;
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: $range-output-tip-size solid transparent;
-    border-right: $range-output-tip-size solid transparent;
-    border-top: $range-output-tip-size solid color('ink');
+  // stylelint-disable selector-max-specificity
+  .Thumbs:hover + .Output &,
+  .Thumbs:active + .Output &,
+  .Thumbs:focus + .Output & {
+    transform: translateY(-$range-output-spacing);
+
+    @include page-content-when-not-partially-condensed {
+      transform: translateY(-($range-output-spacing / 2));
+    }
   }
+  // stylelint-enable selector-max-specificity
 }
 
 .OutputText {
