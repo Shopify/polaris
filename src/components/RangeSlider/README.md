@@ -282,7 +282,6 @@ class RangeSliderExample extends React.Component {
     const min = 0;
     const max = 2000;
     const step = 10;
-    const disabled = false;
 
     const lowerTextFieldValue =
       intermediateTextFieldValue[0] === value[0]
@@ -304,7 +303,6 @@ class RangeSliderExample extends React.Component {
             min={min}
             max={max}
             step={step}
-            disabled={disabled}
             onChange={this.handleRangeSliderChange}
           />
           <Stack distribution="equalSpacing" spacing="extraLoose">
@@ -316,7 +314,6 @@ class RangeSliderExample extends React.Component {
               min={min}
               max={max}
               step={step}
-              disabled={disabled}
               onChange={this.handleLowerTextFieldChange}
               onBlur={this.handleLowerTextFieldBlur}
             />
@@ -328,7 +325,6 @@ class RangeSliderExample extends React.Component {
               min={min}
               max={max}
               step={step}
-              disabled={disabled}
               onChange={this.handleUpperTextFieldChange}
               onBlur={this.handleUpperTextFieldBlur}
             />
