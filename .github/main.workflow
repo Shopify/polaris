@@ -6,9 +6,7 @@ workflow "✨Add new issues to project" {
 action "Add new issues to project" {
   uses = "alex-page/add-new-issue-project@master"
   args = ["🌌 Polaris backlog", "👀 Triage"]
-  secrets = [
-    "GH_PAT",
-  ]
+  secrets = ["GH_PAT"]
 }
 
 workflow "✨Move assigned issues to column" {
