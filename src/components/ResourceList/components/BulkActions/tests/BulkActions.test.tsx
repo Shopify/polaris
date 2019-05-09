@@ -207,7 +207,9 @@ describe('<BulkActions />', () => {
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} selectMode />,
         );
-        const cssTransition = bulkActions.find(CSSTransition);
+        const cssTransition = bulkActions
+          .find(CSSTransition)
+          .filterWhere((component) => component.prop('appear') === true);
         cssTransition.forEach((cssTransitionComponent) => {
           expect(cssTransitionComponent.prop('in')).toBe(true);
         });
