@@ -655,6 +655,227 @@ describe('<DualThumb />', () => {
     }
   });
 
+  describe('touch interface', () => {
+    type EventCallback = (mockEventData?: {[key: string]: any}) => void;
+
+    const eventMap: {[eventType: string]: EventCallback} = {};
+    const origialAddEventListener = document.addEventListener;
+
+    beforeAll(() => {
+      jest
+        .spyOn(document, 'addEventListener')
+        .mockImplementation((eventType: string, callback: EventCallback) => {
+          eventMap[eventType] = callback;
+        });
+    });
+
+    afterAll(() => {
+      document.addEventListener = origialAddEventListener;
+    });
+
+    it('touchmove the lower thumb sets the lower value', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+
+      moveLowerThumb(dualThumb, 0.5);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([25, 40], mockProps.id);
+    });
+
+    it('touchmove the upper thumb sets the upper value', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[10, 40]} onChange={onChangeSpy} />,
+      );
+
+      moveUpperThumb(dualThumb, 0.5);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 25], mockProps.id);
+    });
+
+    it('touchend removes the touchmove event listener, itself, and the touchcancel listener', () => {
+      const removeEventListenerSpy = jest.spyOn(
+        document,
+        'removeEventListener',
+      );
+      const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
+
+      moveUpperThumb(dualThumb, 0.5);
+      removeEventListenerSpy.mockClear();
+      eventMap.touchend();
+
+      expect(removeEventListenerSpy).toHaveBeenCalledTimes(3);
+      expect(removeEventListenerSpy.mock.calls[0][0]).toBe('touchmove');
+      expect(removeEventListenerSpy.mock.calls[1][0]).toBe('touchend');
+      expect(removeEventListenerSpy.mock.calls[2][0]).toBe('touchcancel');
+    });
+
+    it('touchcancel removes the touchmove event listener, itself, and the touchend listener', () => {
+      const removeEventListenerSpy = jest.spyOn(
+        document,
+        'removeEventListener',
+      );
+      const dualThumb = mountWithAppProvider(<DualThumb {...mockProps} />);
+
+      moveUpperThumb(dualThumb, 0.5);
+      removeEventListenerSpy.mockClear();
+      eventMap.touchcancel();
+
+      expect(removeEventListenerSpy).toHaveBeenCalledTimes(3);
+      expect(removeEventListenerSpy.mock.calls[0][0]).toBe('touchmove');
+      expect(removeEventListenerSpy.mock.calls[1][0]).toBe('touchend');
+      expect(removeEventListenerSpy.mock.calls[2][0]).toBe('touchcancel');
+    });
+
+    it('the lower and upper thumbs do not move when disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[10, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+
+      moveUpperThumb(dualThumb, 0.5);
+      moveLowerThumb(dualThumb, 0.5);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('moves the lower thumb when the track is touched closer to it than the upper thumb', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      touchTrack(dualThumb, 0.2);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([10, 40], mockProps.id);
+    });
+
+    it('moves the upper thumb when the track is touched closer to it than the lower thumb', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      touchTrack(dualThumb, 0.6);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([5, 30], mockProps.id);
+    });
+
+    it('moves the lower thumb when the track is touched closer to it than the upper thumb and then touchmove', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      touchTrack(dualThumb, 0.2);
+      moveLowerThumb(dualThumb, 0.3, false);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([15, 40], mockProps.id);
+    });
+
+    it('moves the upper thumb when the track is touched closer to it than the lower thumb and then touchmove', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={onChangeSpy} />,
+      );
+
+      touchTrack(dualThumb, 0.6);
+      moveUpperThumb(dualThumb, 0.9, false);
+
+      expect(onChangeSpy).toHaveBeenCalledWith([5, 45], mockProps.id);
+    });
+
+    it('does not move the lower thumb when the track is touched and is disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[5, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+
+      touchTrack(dualThumb, 0.2);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('does not move the upper thumb when the track is touched and is disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[5, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+
+      touchTrack(dualThumb, 0.6);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    function touchTrack(component: ReactWrapper, percentageOfTrackX: number) {
+      const trackWidth = 100;
+      const clientX = trackWidth * percentageOfTrackX;
+
+      component.setState({trackLeft: 0, trackWidth}, () => {
+        const touch = {clientX};
+        const event = new TouchEvent('touchstart', {
+          touches: [touch],
+        } as TouchEventInit);
+        Object.assign(event, {preventDefault: noop});
+
+        findTrack(component)
+          .getDOMNode()
+          .dispatchEvent(event);
+      });
+    }
+
+    function moveLowerThumb(
+      component: ReactWrapper,
+      percentageOfTrackX: number,
+      simulateTouchStart = true,
+    ) {
+      const trackWidth = 100;
+
+      component.setState({trackLeft: 0, trackWidth}, () => {
+        if (simulateTouchStart)
+          findThumbLower(component).simulate('touchStart');
+        eventMap.touchmove({
+          touches: [{clientX: trackWidth * percentageOfTrackX}],
+          preventDefault: noop,
+        });
+      });
+    }
+
+    function moveUpperThumb(
+      component: ReactWrapper,
+      percentageOfTrackX: number,
+      simulateTouchStart = true,
+    ) {
+      const trackWidth = 100;
+
+      component.setState({trackLeft: 0, trackWidth}, () => {
+        if (simulateTouchStart)
+          findThumbUpper(component).simulate('touchStart');
+        eventMap.touchmove({
+          touches: [{clientX: trackWidth * percentageOfTrackX}],
+          preventDefault: noop,
+        });
+      });
+    }
+  });
+
   describe('value prop sanitization', () => {
     it('sanitizes the lower value with respect to the step prop', () => {
       const dualThumb = mountWithAppProvider(
