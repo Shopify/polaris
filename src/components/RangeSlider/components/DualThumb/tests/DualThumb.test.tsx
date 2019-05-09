@@ -444,6 +444,36 @@ describe('<DualThumb />', () => {
       expect(onChangeSpy).toHaveBeenCalledWith([9, 40], mockProps.id);
     });
 
+    it('does not change the lower value if disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[10, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+      simulateKeyDown(findThumbLower(dualThumb), Key.RightArrow);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('does not change the upper value if disabled', () => {
+      const onChangeSpy = jest.fn();
+      const dualThumb = mountWithAppProvider(
+        <DualThumb
+          {...mockProps}
+          value={[10, 40]}
+          onChange={onChangeSpy}
+          disabled
+        />,
+      );
+      simulateKeyDown(findThumbUpper(dualThumb), Key.RightArrow);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
     function simulateKeyDown(component: ReactWrapper, keyCode: Key) {
       component.simulate('keyDown', {
         keyCode,
@@ -822,6 +852,21 @@ describe('<DualThumb />', () => {
       touchTrack(dualThumb, 0.6);
 
       expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('removes touchstart listener on track', () => {
+      const dualThumb = mountWithAppProvider(
+        <DualThumb {...mockProps} value={[5, 40]} onChange={noop} />,
+      );
+
+      const track = findTrack(dualThumb).getDOMNode();
+
+      const removeEventListenerSpy = jest.spyOn(track, 'removeEventListener');
+      removeEventListenerSpy.mockClear();
+
+      dualThumb.unmount();
+
+      expect(removeEventListenerSpy).toHaveBeenCalled();
     });
 
     function touchTrack(component: ReactWrapper, percentageOfTrackX: number) {
