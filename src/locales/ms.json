@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "Komponen Helaian mesti digunakan dalam komponen Rangka."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Memuatkan halaman"
+    },
     "Spinner": {
       "warningMessage": "Warna {color} tidak dimaksudkan untuk digunakan pada pemintal {size}. Warna-warna yang tersedia pada pemintal besar adalah: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} aksara",
       "characterCountWithMaxLength": "{count} daripada {limit} aksara telah digunakan"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Togol menu",
+      "SearchField": {
+        "clearButtonLabel": "Kosongkan"
+      }
     }
   }
 }
