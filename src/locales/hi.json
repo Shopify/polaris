@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "शीट कंपोंनेंट का उपयोग फ़्रेम कंपोंनेंट के भीतर किया जाना चाहिए."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "पेज लोड हो रहा है"
+    },
     "Spinner": {
       "warningMessage": "{color} रंग का उपयोग {size} स्पिनर पर करने के लिए नहीं है. बड़े स्पिनर पर उपलब्ध रंग हैं: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} वर्ण",
       "characterCountWithMaxLength": "{limit} वर्णों में से {count} का उपयोग किया गया"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "मेन्यू टॉगल करें",
+      "SearchField": {
+        "clearButtonLabel": "मिटाएं"
+      }
     }
   }
 }
