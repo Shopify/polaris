@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "必须在 Frame 内使用 Sheet 组件。"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "页面加载"
+    },
     "Spinner": {
       "warningMessage": "{size} 加载微调器不支持颜色 {color}。大型加载微调器的可用颜色：{colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} 个字符",
       "characterCountWithMaxLength": "已使用的字符数未 {count}，限制为 {limit}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "切换菜单",
+      "SearchField": {
+        "clearButtonLabel": "清除"
+      }
     }
   }
 }
