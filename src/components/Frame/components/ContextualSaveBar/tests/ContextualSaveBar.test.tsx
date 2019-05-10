@@ -2,7 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Button, Image, Modal} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
-import {ThemeProviderContext} from '../../../../ThemeProvider';
+import {ThemeProviderContextType} from '../../../../ThemeProvider';
 import merge from '../../../../../utilities/merge';
 
 describe('<ContextualSaveBar />', () => {
@@ -178,7 +178,9 @@ describe('<ContextualSaveBar />', () => {
   });
 });
 
-function mergeThemeProviderContext(providedThemeContext: ThemeProviderContext) {
+function mergeThemeProviderContext(
+  providedThemeContext: ThemeProviderContextType,
+) {
   return {
     context: {
       themeProvider: merge({logo: null}, providedThemeContext),

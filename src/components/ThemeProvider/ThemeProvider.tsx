@@ -1,8 +1,8 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import {setColors} from './utils';
-import {Theme, ThemeProviderContext} from './types';
-import {Provider} from './components';
+import {Theme} from './types';
+import ThemeProviderContext, {ThemeProviderContextType} from './context';
 
 export interface State {
   theme: Theme;
@@ -46,24 +46,21 @@ export default class ThemeProvider extends React.Component<Props, State> {
     });
   }
 
-  get getContext(): ThemeProviderContext {
+  render() {
     const {
       theme: {logo = null, ...rest},
     } = this.state;
+    const styles = this.createStyles() || defaultTheme;
 
-    return {
+    const context: ThemeProviderContextType = {
       ...rest,
       logo,
     };
-  }
-
-  render() {
-    const styles = this.createStyles() || defaultTheme;
 
     return (
-      <Provider value={this.getContext}>
+      <ThemeProviderContext.Provider value={context}>
         <div style={styles}>{React.Children.only(this.props.children)}</div>
-      </Provider>
+      </ThemeProviderContext.Provider>
     );
   }
 

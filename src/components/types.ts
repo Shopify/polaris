@@ -1,8 +1,8 @@
 import {AppProviderContextType} from './AppProvider';
-import {ThemeProviderContext} from './ThemeProvider';
+import {ThemeProviderContextType} from './ThemeProvider';
 
 export interface PolarisContext extends AppProviderContextType {
-  theme: ThemeProviderContext;
+  theme: ThemeProviderContextType;
 }
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';

@@ -11,13 +11,8 @@ import {constructColorName} from '../../../utilities/color-names';
 import {createLightColor} from '../../../utilities/color-manipulation';
 import {compose} from '../../../utilities/compose';
 
-import {
-  Theme,
-  ColorsToParse,
-  ThemeVariant,
-  ThemeColors,
-  ThemeProviderContext,
-} from '../types';
+import {Theme, ColorsToParse, ThemeVariant, ThemeColors} from '../types';
+import {ThemeProviderContextType} from '../context';
 
 export function setColors(theme: Theme | undefined): string[][] | undefined {
   let colorPairs;
@@ -125,8 +120,8 @@ function parseColors([baseName, colors]: [string, ColorsToParse]): string[][] {
 }
 
 export function createThemeContext(
-  theme?: ThemeProviderContext,
-): ThemeProviderContext {
+  theme?: ThemeProviderContextType,
+): ThemeProviderContextType {
   if (!theme) {
     return {logo: null};
   }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Image, UnstyledLink} from 'components';
-import {ThemeProviderContext} from '../../ThemeProvider';
+import {ThemeProviderContextType} from '../../ThemeProvider';
 import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 import merge from '../../../utilities/merge';
@@ -230,7 +230,9 @@ describe('<TopBar />', () => {
   });
 });
 
-function mergeThemeProviderContext(providedThemeContext: ThemeProviderContext) {
+function mergeThemeProviderContext(
+  providedThemeContext: ThemeProviderContextType,
+) {
   return {
     context: {
       themeProvider: merge({logo: null}, providedThemeContext),
