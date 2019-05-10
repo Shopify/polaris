@@ -53,8 +53,8 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
 
   componentDidUpdate({disabled: prevDisabled}: Props) {
     if (
+      prevDisabled === true &&
       this.props.disabled &&
-      !prevDisabled !== true &&
       this.inputNode.current &&
       this.inputNode.current.checked
     ) {
