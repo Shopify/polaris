@@ -10,8 +10,7 @@ import TextField from '../../../TextField';
 import Tag from '../../../Tag';
 import withContext from '../../../WithContext';
 
-import {ResourceListContext} from '../../types';
-import {Consumer} from '../Context';
+import ResourceListContext, {ResourceListContextType} from '../../context';
 
 import {FilterCreator} from './components';
 import {AppliedFilter, Filter, FilterType, Operator} from './types';
@@ -30,7 +29,7 @@ export interface Props {
 
 export type CombinedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<ResourceListContext>;
+  WithContextTypes<ResourceListContextType>;
 
 export class FilterControl extends React.Component<CombinedProps> {
   render() {
@@ -296,5 +295,7 @@ function findOperatorLabel(filter: Filter, appliedFilter: AppliedFilter) {
 
 export default compose<Props>(
   withAppProvider<Props>(),
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
+  withContext<Props, WithAppProviderProps, ResourceListContextType>(
+    ResourceListContext.Consumer,
+  ),
 )(FilterControl);

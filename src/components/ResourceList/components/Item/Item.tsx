@@ -13,9 +13,9 @@ import Checkbox from '../../../Checkbox';
 import Button, {buttonsFrom} from '../../../Button';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
-import {ResourceListContext, SELECT_ALL_ITEMS} from '../../types';
+import {SELECT_ALL_ITEMS} from '../../types';
 import withContext from '../../../WithContext';
-import {Consumer} from '../Context';
+import ResourceListContext, {ResourceListContextType} from '../../context';
 import styles from './Item.scss';
 
 export type ExceptionStatus = 'neutral' | 'warning' | 'critical';
@@ -56,10 +56,12 @@ export interface State {
 }
 
 export type CombinedProps =
-  | PropsWithUrl & WithAppProviderProps & WithContextTypes<ResourceListContext>
+  | PropsWithUrl &
+      WithAppProviderProps &
+      WithContextTypes<ResourceListContextType>
   | PropsWithClick &
       WithAppProviderProps &
-      WithContextTypes<ResourceListContext>;
+      WithContextTypes<ResourceListContextType>;
 
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 
@@ -389,6 +391,8 @@ function stopPropagation(event: React.MouseEvent<any>) {
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, ResourceListContext>(Consumer),
+  withContext<Props, WithAppProviderProps, ResourceListContextType>(
+    ResourceListContext.Consumer,
+  ),
   withAppProvider<Props>(),
 )(Item);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {TextField, Tag, Button} from 'components';
-import {Provider} from '../../Context';
+import ResourceListContext from '../../../context';
 import {
   Filter,
   FilterType,
@@ -68,9 +68,9 @@ describe('<FilterControl />', () => {
   describe('searchValue', () => {
     it('renders with TextField by default', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const searchField = filterControl.find(TextField);
@@ -80,9 +80,9 @@ describe('<FilterControl />', () => {
     it('renders with searchValue as its value', () => {
       const searchValue = 'search value';
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} searchValue={searchValue} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const searchField = filterControl.find(TextField);
@@ -93,12 +93,12 @@ describe('<FilterControl />', () => {
   describe('appliedFilters', () => {
     it('renders the same number of Tag as appliedFilters', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             appliedFilters={mockAppliedFilters}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const tags = filterControl.find(Tag);
@@ -108,13 +108,13 @@ describe('<FilterControl />', () => {
     it('calls onFiltersChange without the applied filter when user clicks remove on the appliedFilter', () => {
       const onFiltersChange = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             appliedFilters={mockAppliedFilters}
             onFiltersChange={onFiltersChange}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const tags = filterControl.find(Tag);
@@ -144,13 +144,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterLabel,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).first();
@@ -173,13 +173,13 @@ describe('<FilterControl />', () => {
         value: filterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -207,13 +207,13 @@ describe('<FilterControl />', () => {
         value: filterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -236,13 +236,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -264,13 +264,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -295,13 +295,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
@@ -330,13 +330,13 @@ describe('<FilterControl />', () => {
       };
 
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
@@ -365,13 +365,13 @@ describe('<FilterControl />', () => {
         value: selectedDate,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
@@ -400,13 +400,13 @@ describe('<FilterControl />', () => {
         value: selectedDate,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const expectedLocalizedLabel = filterControl.app.polaris.intl.translate(
@@ -447,13 +447,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -488,13 +488,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[filter]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -511,13 +511,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const firstTag = filterControl.find(Tag).at(0);
@@ -531,13 +531,13 @@ describe('<FilterControl />', () => {
         value: appliedFilterValue,
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={[]}
             appliedFilters={[appliedFilters]}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
       expect(filterControl.find('ul')).toHaveLength(1);
       expect(filterControl.find('li')).toHaveLength(1);
@@ -547,9 +547,9 @@ describe('<FilterControl />', () => {
   describe('additionalAction', () => {
     it('renders no connectedRight prop on TextField if there is no additionalAction', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const searchField = filterControl.find(TextField);
@@ -562,9 +562,9 @@ describe('<FilterControl />', () => {
         onAction: jest.fn(),
       };
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} additionalAction={action} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(Button).exists()).toBe(true);
@@ -577,9 +577,9 @@ describe('<FilterControl />', () => {
   describe('focused', () => {
     it('passes its value to focus of TextField', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} focused />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(TextField).prop('focused')).toBe(true);
@@ -589,9 +589,9 @@ describe('<FilterControl />', () => {
   describe('filters', () => {
     it('renders no <FilterCreator /> if there are no filters', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       const searchField = filterControl.find(TextField);
@@ -600,9 +600,9 @@ describe('<FilterControl />', () => {
 
     it('renders <FilterCreator /> if there is filters', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} filters={mockFilters} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(FilterCreator).exists()).toBe(true);
@@ -610,9 +610,9 @@ describe('<FilterControl />', () => {
 
     it('renders <FilterCreator /> with filters', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} filters={mockFilters} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(FilterCreator).prop('filters')).toMatchObject(
@@ -625,9 +625,9 @@ describe('<FilterControl />', () => {
     it('gets passed to onBlur of TextField', () => {
       const onSearchBlur = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} onSearchBlur={onSearchBlur} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(TextField).prop('onBlur')).toBe(onSearchBlur);
@@ -636,9 +636,9 @@ describe('<FilterControl />', () => {
     it('calls onSearchBlur when onBlur is triggered', () => {
       const onSearchBlur = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} onSearchBlur={onSearchBlur} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       trigger(filterControl.find(TextField), 'onBlur');
@@ -651,12 +651,12 @@ describe('<FilterControl />', () => {
     it('gets passed to onChange of TextField', () => {
       const onSearchChange = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             onSearchChange={onSearchChange}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(TextField).prop('onChange')).toBe(
@@ -668,12 +668,12 @@ describe('<FilterControl />', () => {
       const newSearchValue = 'new search value';
       const onSearchChange = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             onSearchChange={onSearchChange}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       trigger(filterControl.find(TextField), 'onChange', newSearchValue);
@@ -691,14 +691,14 @@ describe('<FilterControl />', () => {
 
       const onFiltersChange = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={mockFilters}
             appliedFilters={mockAppliedFilters}
             onFiltersChange={onFiltersChange}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
@@ -713,14 +713,14 @@ describe('<FilterControl />', () => {
       const newFilter = mockAppliedFilters[0];
       const onFiltersChange = jest.fn();
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={mockFilters}
             appliedFilters={mockAppliedFilters}
             onFiltersChange={onFiltersChange}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
