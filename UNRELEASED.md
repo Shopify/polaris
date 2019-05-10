@@ -30,6 +30,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Updated the a11y shitlist and re-enabled the pa11y job in CI. The job always passes for now, as a way for us to judge whether it is stable and can be made a required check. ([#1456](https://github.com/Shopify/polaris-react/pull/1456))
+
 ### Dependency upgrades
 
 ### Code quality
