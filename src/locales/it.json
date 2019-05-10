@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "Il componente Scheda deve essere utilizzato all'interno del componente Cornice."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Caricamento della pagina"
+    },
     "Spinner": {
       "warningMessage": "Il colore {color} non è pensato per essere usato su spinner {size}. Colori disponibili per grandi spinner: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} caratteri",
       "characterCountWithMaxLength": "Usati {count} caratteri di {limit}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Menu di attivazione/disattivazione",
+      "SearchField": {
+        "clearButtonLabel": "Cancella"
+      }
     }
   }
 }
