@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "Le composant Feuille doit être utilisé dans le composant Cadre."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Chargement de page"
+    },
     "Spinner": {
       "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} personnages",
       "characterCountWithMaxLength": "{count} caractère(s) sur {limit} utilisé(s)"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Menu toggle",
+      "SearchField": {
+        "clearButtonLabel": "Effacer"
+      }
     }
   }
 }
