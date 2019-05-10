@@ -28,4 +28,6 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Simplified logic in Checkbox component ([#1453](https://github.com/Shopify/polaris-react/pull/1453))
+
 ### Deprecations
