@@ -12,13 +12,9 @@ import TrapFocus from '../TrapFocus';
 import {UserMenuProvider} from '../TopBar';
 import {dataPolarisTopBar, layer, Duration} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
-import {
-  ContextualSaveBarProps,
-  FrameContext,
-  ToastID,
-  ToastPropsWithID,
-} from './types';
-import {Provider, ToastManager, Loading, ContextualSaveBar} from './components';
+import {ContextualSaveBarProps, ToastID, ToastPropsWithID} from './types';
+import FrameContext, {FrameContextType} from './context';
+import {ToastManager, Loading, ContextualSaveBar} from './components';
 
 import styles from './Frame.scss';
 
@@ -225,8 +221,17 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
         />
       ) : null;
 
+    const context: FrameContextType = {
+      showToast: this.showToast,
+      hideToast: this.hideToast,
+      startLoading: this.startLoading,
+      stopLoading: this.stopLoading,
+      setContextualSaveBar: this.setContextualSaveBar,
+      removeContextualSaveBar: this.removeContextualSaveBar,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <FrameContext.Provider value={context}>
         <div
           className={frameClassName}
           {...layer.props}
@@ -251,7 +256,7 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />
         </div>
-      </Provider>
+      </FrameContext.Provider>
     );
   }
 
@@ -365,17 +370,6 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
       this.handleNavigationDismiss();
     }
   };
-
-  get getContext(): FrameContext {
-    return {
-      showToast: this.showToast,
-      hideToast: this.hideToast,
-      startLoading: this.startLoading,
-      stopLoading: this.stopLoading,
-      setContextualSaveBar: this.setContextualSaveBar,
-      removeContextualSaveBar: this.removeContextualSaveBar,
-    };
-  }
 }
 
 const navTransitionClasses = {

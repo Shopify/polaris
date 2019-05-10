@@ -2,7 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {noop} from '../../../utilities/other';
 import ContextualSaveBar from '../ContextualSaveBar';
-import {Provider, createFrameContext} from '../../Frame';
+import {FrameContext, createFrameContext} from '../../Frame';
 
 describe('<ContextualSaveBar />', () => {
   const props = {
@@ -18,9 +18,9 @@ describe('<ContextualSaveBar />', () => {
     });
 
     mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <ContextualSaveBar {...props} />
-      </Provider>,
+      </FrameContext.Provider>,
     );
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledWith({
       ...props,
@@ -34,9 +34,9 @@ describe('<ContextualSaveBar />', () => {
     });
 
     const frame = mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <ContextualSaveBar {...props} />
-      </Provider>,
+      </FrameContext.Provider>,
     );
     expect(mockFrameContext.removeContextualSaveBar).not.toHaveBeenCalled();
     frame.unmount();
@@ -50,9 +50,9 @@ describe('<ContextualSaveBar />', () => {
     });
 
     const frame = mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <ContextualSaveBar {...props} />
-      </Provider>,
+      </FrameContext.Provider>,
     );
     const newProps = {
       saveAction: {content: 'Save', onAction: noop, loading: true},
@@ -75,9 +75,9 @@ describe('<ContextualSaveBar />', () => {
     });
 
     const frame = mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <ContextualSaveBar {...props} />
-      </Provider>,
+      </FrameContext.Provider>,
     );
 
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
