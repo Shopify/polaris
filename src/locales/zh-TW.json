@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "Sheet組件必須在Frame組件中使用。"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "頁面載入中"
+    },
     "Spinner": {
       "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} 人物",
       "characterCountWithMaxLength": "已使用 {count} 個字元，上限為 {limit} 個字元"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "切換選單",
+      "SearchField": {
+        "clearButtonLabel": "清除"
+      }
     }
   }
 }
