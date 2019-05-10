@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
-import AppProviderContext from '../../../Context';
+import AppProviderContext from '../../../context';
 import withAppProvider from '../withAppProvider';
 
 describe('withAppProvider', () => {

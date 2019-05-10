@@ -10,7 +10,7 @@ import {
   ThemeProviderContext,
 } from '../../../ThemeProvider';
 import {PolarisContext} from '../../../types';
-import AppProviderContext from '../../Context';
+import AppProviderContext from '../../context';
 
 export type ReactComponent<P, C> =
   | React.ComponentClass<P> & C
