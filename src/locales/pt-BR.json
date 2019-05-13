@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "O componente Planilha deve ser usado dentro do componente Quadro."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Página carregando"
+    },
     "Spinner": {
       "warningMessage": "A cor {color} não é para ser usada spinners de {size}. As cores disponíveis em grandes spinners são: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} caracteres",
       "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Alternar menu",
+      "SearchField": {
+        "clearButtonLabel": "Limpar"
+      }
     }
   }
 }

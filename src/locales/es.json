@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "El componente Hoja de cálculo debe usarse dentro del componente Frame."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Cargando página"
+    },
     "Spinner": {
       "warningMessage": "El color {color} no está concebido para ser utilizado en spinners {size} Los colores disponibles en los spinners grandes son: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} caracteres",
       "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Activar menú",
+      "SearchField": {
+        "clearButtonLabel": "Borrar"
+      }
     }
   }
 }

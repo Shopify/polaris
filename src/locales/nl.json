@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "De Blad-component moet binnen de Frame-component worden gebruikt."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Pagina is aan het laden"
+    },
     "Spinner": {
       "warningMessage": "De kleur {color} is niet bedoeld voor gebruik op {size} spinners. De beschikbare kleuren op grote spinner zijn: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} tekens",
       "characterCountWithMaxLength": "{count} van {limit} tekens gebruikt"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Schakelen tussen menu's",
+      "SearchField": {
+        "clearButtonLabel": "Wissen"
+      }
     }
   }
 }

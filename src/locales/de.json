@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "Die Sheet-Komponente muss innerhalb der Frame-Komponente verwendet werden."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Seite wird geladen"
+    },
     "Spinner": {
       "warningMessage": "Die Farbe {color} sollte nicht für {size} Spinner verwendet werden. Die für große Spinner verfügbaren Farben sind: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count} Zeichen",
       "characterCountWithMaxLength": "{count} von {limit} verwendete Zeichen"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Menü wechseln",
+      "SearchField": {
+        "clearButtonLabel": "Löschen"
+      }
     }
   }
 }

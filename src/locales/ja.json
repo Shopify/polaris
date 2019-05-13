@@ -186,6 +186,12 @@
         }
       }
     },
+    "Sheet": {
+      "warningMessage": "シートコンポーネントはフレームコンポーネント内で使用する必要があります。"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "ページの読み込み中"
+    },
     "Spinner": {
       "warningMessage": "{color}色は{size}のスピナーでは使用されていません。大きなスピナーで利用可能な色は次のとおりです: {colors}"
     },
@@ -195,6 +201,12 @@
     "TextField": {
       "characterCount": "{count}文字",
       "characterCountWithMaxLength": "{count}/{limit}文字使用"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "メニューを切り替える",
+      "SearchField": {
+        "clearButtonLabel": "クリア"
+      }
     }
   }
 }
