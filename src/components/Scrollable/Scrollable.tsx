@@ -10,7 +10,7 @@ import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 import {scrollable} from '../shared';
 
 import {ScrollTo} from './components';
-import ScrollableContext from './context';
+import ScrollableContext, {ScrollableContextType} from './context';
 
 import styles from './Scrollable.scss';
 
@@ -39,10 +39,6 @@ export interface State {
   topShadow: boolean;
   bottomShadow: boolean;
   scrollPosition: number;
-}
-
-export interface Context {
-  scrollToPosition(scrollY: number): void;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -127,7 +123,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
       bottomShadow && styles.hasBottomShadow,
     );
 
-    const context: Context = {
+    const context: ScrollableContextType = {
       scrollToPosition: this.scrollToPosition,
     };
 

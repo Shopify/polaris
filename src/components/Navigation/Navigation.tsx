@@ -35,15 +35,21 @@ export default class Navigation extends React.Component<Props, never> {
   }
 
   render() {
-    const {children, userMenu, contextControl} = this.props;
+    const {
+      children,
+      userMenu,
+      contextControl,
+      location,
+      onDismiss,
+    } = this.props;
 
     const contextControlMarkup = contextControl && (
       <div className={styles.ContextControl}>{contextControl}</div>
     );
 
     const context: NavigationContextType = {
-      location: this.props.location,
-      onNavigationDismiss: this.props.onDismiss,
+      location,
+      onNavigationDismiss: onDismiss,
     };
 
     return (

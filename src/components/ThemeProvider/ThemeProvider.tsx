@@ -50,6 +50,7 @@ export default class ThemeProvider extends React.Component<Props, State> {
     const {
       theme: {logo = null, ...rest},
     } = this.state;
+    const {children} = this.props;
     const styles = this.createStyles() || defaultTheme;
 
     const context: ThemeProviderContextType = {
@@ -59,7 +60,7 @@ export default class ThemeProvider extends React.Component<Props, State> {
 
     return (
       <ThemeProviderContext.Provider value={context}>
-        <div style={styles}>{React.Children.only(this.props.children)}</div>
+        <div style={styles}>{React.Children.only(children)}</div>
       </ThemeProviderContext.Provider>
     );
   }

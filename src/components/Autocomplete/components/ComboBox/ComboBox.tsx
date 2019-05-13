@@ -199,6 +199,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       onEndReached,
       emptyState,
     } = this.props;
+    const {
+      comboBoxId,
+      navigableOptions,
+      selectedOptions,
+      popoverActive,
+    } = this.state;
 
     const actionsBeforeMarkup = actionsBefore &&
       actionsBefore.length > 0 && (
@@ -214,9 +220,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       <OptionList
         role="presentation"
         optionRole="option"
-        options={filterForOptions(this.state.navigableOptions)}
+        options={filterForOptions(navigableOptions)}
         onChange={this.selectOptions}
-        selected={this.state.selectedOptions}
+        selected={selectedOptions}
         title={listTitle}
         allowMultiple={allowMultiple}
       />
@@ -234,7 +240,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
     const context: ComboBoxContextType = {
-      comboBoxId: this.state.comboBoxId,
+      comboBoxId,
       selectedOptionId: this.selectedOptionId,
     };
 
@@ -243,9 +249,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         <div
           onClick={this.handleClick}
           role="combobox"
-          aria-expanded={this.state.popoverActive}
-          aria-owns={this.state.comboBoxId}
-          aria-controls={this.state.comboBoxId}
+          aria-expanded={popoverActive}
+          aria-owns={comboBoxId}
+          aria-controls={comboBoxId}
           aria-haspopup
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
@@ -266,14 +272,14 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           />
           <Popover
             activator={textField}
-            active={this.state.popoverActive}
+            active={popoverActive}
             onClose={this.handlePopoverClose}
             preferredPosition={preferredPosition}
             fullWidth
             preventAutofocus
           >
             <div
-              id={this.state.comboBoxId}
+              id={comboBoxId}
               role="listbox"
               aria-multiselectable={allowMultiple}
             >

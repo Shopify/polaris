@@ -210,6 +210,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       dragging,
       error,
       size,
+      type,
       overlayText,
       errorOverlayText,
     } = this.state;
@@ -313,8 +314,8 @@ export class DropZone extends React.Component<CombinedProps, State> {
     );
 
     const context: DropZoneContextType = {
-      size: this.state.size,
-      type: this.state.type || 'file',
+      size,
+      type: type || 'file',
     };
 
     return (
