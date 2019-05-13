@@ -17,7 +17,7 @@ describe('shitlistCheck', () => {
   it('filters errors on the shitlist', () => {
     const issueList = [
       {
-        pageUrl: '伊藤美来',
+        exampleID: '伊藤美来',
         issues: [{code: 'ショッキングブルー'}, {code: '風の戦士'}],
       },
     ];
@@ -36,7 +36,7 @@ describe('shitlistCheck', () => {
   it('leaves errors not on the shitlist', () => {
     const issueList = [
       {
-        pageUrl: '伊藤美来',
+        exampleID: '伊藤美来',
         issues: [{code: '美来の色探し'}, {code: '風の戦士'}],
       },
     ];
@@ -49,7 +49,7 @@ describe('shitlistCheck', () => {
   it('removes entries with no issues from the list', () => {
     const issueList = [
       {
-        pageUrl: '虹香',
+        exampleID: '虹香',
         issues: [],
       },
     ];
@@ -62,7 +62,7 @@ describe('shitlistCheck', () => {
   it('returns a list with errors that werent found', () => {
     const issueList = [
       {
-        pageUrl: '伊藤美来',
+        exampleID: '伊藤美来',
         issues: [{code: 'ショッキングブルー'}],
       },
     ];
