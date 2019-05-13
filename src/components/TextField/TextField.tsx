@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
@@ -25,6 +25,8 @@ export type Type =
   | 'time'
   | 'week'
   | 'currency';
+
+export type Alignment = 'left' | 'right' | 'center';
 
 export interface State {
   height?: number | null;
@@ -99,6 +101,8 @@ export interface BaseProps {
   ariaAutocomplete?: string;
   /** Indicates whether or not the character count should be displayed */
   showCharacterCount?: boolean;
+  /** Determines the alignment of the text in the input */
+  align?: Alignment;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -157,41 +161,42 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
   render() {
     const {
-      id = this.state.id,
-      value,
-      placeholder,
-      disabled,
-      readOnly,
-      role,
-      autoFocus,
-      type,
-      name,
-      error,
-      multiline,
-      connectedRight,
-      connectedLeft,
-      label,
-      labelAction,
-      labelHidden,
-      helpText,
-      prefix,
-      suffix,
-      onFocus,
-      onBlur,
-      autoComplete,
-      min,
-      max,
-      step,
-      minLength,
-      maxLength,
-      spellCheck,
-      pattern,
-      ariaOwns,
+      align,
       ariaActiveDescendant,
       ariaAutocomplete,
       ariaControls,
-      showCharacterCount,
+      ariaOwns,
+      autoComplete,
+      autoFocus,
+      connectedLeft,
+      connectedRight,
+      disabled,
+      error,
+      helpText,
+      id = this.state.id,
+      label,
+      labelAction,
+      labelHidden,
+      max,
+      maxLength,
+      min,
+      minLength,
+      multiline,
+      name,
+      onBlur,
+      onFocus,
+      pattern,
+      placeholder,
       polaris: {intl},
+      prefix,
+      readOnly,
+      role,
+      showCharacterCount,
+      spellCheck,
+      step,
+      suffix,
+      type,
+      value,
     } = this.props;
 
     const normalizedValue = value != null ? value : '';
@@ -292,6 +297,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
     const inputClassName = classNames(
       styles.Input,
+      align && styles[variationName('Input-align', align)],
       suffix && styles['Input-suffixed'],
     );
 

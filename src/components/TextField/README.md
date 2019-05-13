@@ -414,6 +414,37 @@ class LabelActionExample extends React.Component {
 }
 ```
 
+### TextField with right aligned text
+
+Use when input text should be aligned right.
+
+```jsx
+class RightAlignExample extends React.Component {
+  state = {
+    value: '1',
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  render() {
+    return (
+      <Stack>
+        <Stack.Item fill>Price</Stack.Item>
+        <TextField
+          label="Price"
+          labelHidden
+          value={this.state.value}
+          onChange={this.handleChange}
+          align="right"
+        />
+      </Stack>
+    );
+  }
+}
+```
+
 ### Text field with placeholder text
 
 Use to provide a short, non-essential hint about the expected input. Placeholder text is low-contrast, so don’t rely on it for important information.
