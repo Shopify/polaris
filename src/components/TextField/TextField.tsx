@@ -26,7 +26,7 @@ export type Type =
   | 'week'
   | 'currency';
 
-export type Alignment = 'left' | 'right' | 'center';
+export type Alignment = 'left' | 'center' | 'right';
 
 export interface State {
   height?: number | null;
