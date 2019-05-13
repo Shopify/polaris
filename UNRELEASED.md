@@ -14,9 +14,9 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Enhancements
 
-– Enhanced `NavigationItem`s colour accessibility for `active`, `focus`, `hover` and `Selected` states([1304](https://github.com/Shopify/polaris-react/pull/1304))
-
+- Enhanced `NavigationItem`'s color accessibility for `active`, `focus`, `hover` and `Selected` states ([1304](https://github.com/Shopify/polaris-react/pull/1304))
 - Added `align` prop to `TextField` ([#1428](https://github.com/Shopify/polaris-react/pull/1428))
+- Added `clearButton` prop to `TextField` ([#1226](https://github.com/Shopify/polaris-react/pull/1226))
 
 ### Bug fixes
 

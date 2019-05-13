@@ -8,6 +8,7 @@ import Connected from '../Connected';
 
 import {Error, Key} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import Icon from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
 
@@ -53,6 +54,8 @@ export interface BaseProps {
   labelHidden?: boolean;
   /** Disable the input */
   disabled?: boolean;
+  /** Show a clear text button in the input */
+  clearButton?: boolean;
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -103,6 +106,8 @@ export interface BaseProps {
   showCharacterCount?: boolean;
   /** Determines the alignment of the text in the input */
   align?: Alignment;
+  /** Callback when clear button is clicked */
+  onClearButtonClick?(id: string): void;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -169,6 +174,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       autoComplete,
       autoFocus,
       connectedLeft,
+      clearButton,
       connectedRight,
       disabled,
       error,
@@ -256,6 +262,18 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const clearButtonMarkup =
+      clearButton && normalizedValue !== '' ? (
+        <button
+          testID="clearButton"
+          className={styles.ClearButton}
+          onClick={this.handleClearButtonPress}
+          disabled={disabled}
+        >
+          <Icon source="circleCancel" color="inkLightest" />
+        </button>
+      ) : null;
+
     const spinnerMarkup =
       type === 'number' && !disabled && !readOnly ? (
         <Spinner
@@ -299,6 +317,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       styles.Input,
       align && styles[variationName('Input-align', align)],
       suffix && styles['Input-suffixed'],
+      clearButton && styles['Input-hasClearButton'],
     );
 
     const input = React.createElement(multiline ? 'textarea' : 'input', {
@@ -359,6 +378,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
             {input}
             {suffixMarkup}
             {characterCountMarkup}
+            {clearButtonMarkup}
             {spinnerMarkup}
             <div className={styles.Backdrop} />
             {resizer}
@@ -398,6 +418,15 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
     const newValue = Math.min(max, Math.max(numericValue + steps * step, min));
     onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
+  };
+
+  private handleClearButtonPress = () => {
+    const {
+      state: {id},
+      props: {onClearButtonClick},
+    } = this;
+
+    onClearButtonClick && onClearButtonClick(id);
   };
 
   private handleExpandingResize = (height: number) => {
