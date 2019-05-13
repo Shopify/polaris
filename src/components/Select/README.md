@@ -83,7 +83,7 @@ Labels should:
 
 Options should:
 
-- Use “Select” as the text for a placeholder option, if present
+- Start with "Select" as a placeholder if there isn't a default option
 - Be listed alphabetically or in another logical order so merchants can easily find the option they need
 - Be written in sentence case (the first word capitalized, the rest lowercase) and avoid using commas or semicolons at the end of each option
 - Be clearly labelled based on what the option will do
