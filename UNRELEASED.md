@@ -20,6 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed `Checkbox` from improperly toggling when disabled ([#1467](https://github.com/Shopify/polaris-react/pull/1467))
 - Fixed `Popover` fade-in flutter on iOS by switching Transition component for CSSTransition [#1400](https://github.com/Shopify/polaris-react/pull/1400)
 - Improved the visibility of focus styles for the `Link` component. [#1425](https://github.com/Shopify/polaris-react/pull/1425)
 

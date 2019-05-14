@@ -79,31 +79,24 @@ describe('<Checkbox />', () => {
       expect(checkbox.find('input').instance()).toBe(document.activeElement);
     });
 
-    it('is not called when disabled', () => {
+    it('is not called from keyboard events when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('is not called from click events when disabled', () => {
       const spy = jest.fn();
       const checkbox = mountWithAppProvider(
         <Checkbox label="label" disabled onChange={spy} />,
       );
       checkbox.find('input').simulate('click');
       expect(spy).not.toHaveBeenCalled();
-    });
-
-    it('is called when disabled and checked are both true on load', () => {
-      const spy = jest.fn();
-      mountWithAppProvider(
-        <Checkbox label="label" id="id" disabled onChange={spy} checked />,
-      );
-      expect(spy).toHaveBeenCalledWith(false, 'id');
-    });
-
-    it('it is called when disabled and checked are both true after initial load', () => {
-      const spy = jest.fn();
-      const checkbox = mountWithAppProvider(
-        <Checkbox label="label" disabled onChange={spy} id="id" />,
-      );
-
-      checkbox.setProps({checked: true});
-      expect(spy).toHaveBeenCalledWith(false, 'id');
     });
   });
 
@@ -164,6 +157,18 @@ describe('<Checkbox />', () => {
         <Checkbox label="Checkbox" disabled={false} />,
       );
       expect(element.find('input').prop('disabled')).toBeFalsy();
+    });
+
+    it('can change values when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+      checkbox.setProps({checked: true});
+      expect(checkbox.find('input').prop('checked')).toBe(true);
     });
   });
 
