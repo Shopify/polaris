@@ -2,12 +2,7 @@
 
 const {execSync} = require('child_process');
 const {join, resolve: resolvePath} = require('path');
-const {
-  ensureDirSync,
-  writeFileSync,
-  readFileSync,
-  removeSync,
-} = require('fs-extra');
+const {ensureDirSync, writeFileSync, readFileSync} = require('fs-extra');
 const {rollup} = require('rollup');
 const {cp, mv, rm} = require('shelljs');
 const copyfiles = require('copyfiles');
@@ -62,11 +57,6 @@ copy(['./src/**/*.{scss,svg,png,jpg,jpeg,json}', intermediateBuild], {up: 1})
       );
     });
   })
-  // tsc includes the root directory's package.json file in the output by default
-  // and the "files" key ends up filtering which files get included in the
-  // build output. Ideally the package.json file wouldn't be copied,
-  // but deleting it is a good workaround.
-  .then(() => removeSync(resolvePath(intermediateBuild, 'package.json')))
   // Custom build consumed by Sewing Kit: it preserves all ESNext features
   // including imports/ exports for better tree shaking.
   .then(() => ensureDirSync(finalEsnext))
