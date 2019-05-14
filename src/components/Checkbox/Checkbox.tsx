@@ -45,27 +45,10 @@ const getUniqueID = createUniqueIDFactory('Checkbox');
 class Checkbox extends React.PureComponent<CombinedProps, never> {
   private inputNode = React.createRef<HTMLInputElement>();
 
-  componentDidMount() {
-    const {checked, disabled} = this.props;
-
-    if (checked && disabled) this.handleInput();
-  }
-
-  componentDidUpdate({disabled: prevDisabled}: Props) {
-    if (
-      prevDisabled === true &&
-      this.props.disabled &&
-      this.inputNode.current &&
-      this.inputNode.current.checked
-    ) {
-      this.handleInput();
-    }
-  }
-
   handleInput = () => {
-    const {onChange, id} = this.props;
+    const {onChange, id, disabled} = this.props;
 
-    if (onChange == null || this.inputNode.current == null) {
+    if (onChange == null || this.inputNode.current == null || disabled) {
       return;
     }
 
