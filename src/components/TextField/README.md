@@ -798,6 +798,40 @@ class TextFieldExample extends React.Component {
 }
 ```
 
+### Text field with clear button
+
+<!-- example-for: web -->
+
+Use to allow merchants to clear the content from a text field.
+
+```jsx
+class TextFieldExample extends React.Component {
+  state = {
+    value: 'Jaded Pixel',
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  handleClearButtonClick = () => {
+    this.setState({value: ''});
+  };
+
+  render() {
+    return (
+      <TextField
+        label="Store name"
+        value={this.state.value}
+        onChange={this.handleChange}
+        clearButton
+        onClearButtonClick={this.handleClearButtonClick}
+      />
+    );
+  }
+}
+```
+
 ---
 
 ## Related components
