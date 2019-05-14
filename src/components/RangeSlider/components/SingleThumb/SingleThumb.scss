@@ -75,7 +75,7 @@ $range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
   flex: 1 1 auto;
 
   @media (-ms-high-contrast: active) {
-    border: 1px solid ms-high-contrast-color('text');
+    border: border-width(base) solid ms-high-contrast-color('text');
   }
 
   @include range-track-selectors {
