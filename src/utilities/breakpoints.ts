@@ -1,7 +1,7 @@
 import {noop} from '@shopify/javascript-utilities/other';
 
 const Breakpoints = {
-  navigationBarCollapsed: '769px',
+  navigationBarCollapsed: '768px',
   stackedContent: '1043px',
 };
 
