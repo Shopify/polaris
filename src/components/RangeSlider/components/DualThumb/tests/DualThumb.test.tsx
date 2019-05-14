@@ -19,21 +19,13 @@ describe('<DualThumb />', () => {
   };
 
   describe('id', () => {
-    it('is used to set the id on the wrapper div', () => {
-      const id = 'MytestID';
-      const dualThumb = mountWithAppProvider(
-        <DualThumb {...mockProps} id={id} />,
-      );
-      expect(dualThumb.find(`div#${id}`)).toHaveLength(1);
-    });
-
-    it('is used to set idLower on the lower thumb', () => {
+    it('is used on the lower thumb', () => {
       const id = 'MyNewID';
       const dualThumb = mountWithAppProvider(
         <DualThumb {...mockProps} id={id} />,
       );
       const thumbLower = findThumbLower(dualThumb);
-      expect(thumbLower.prop('id')).toBe(`${id}Lower`);
+      expect(thumbLower.prop('id')).toBe(id);
     });
 
     it('is used to set idUpper on the upper thumb', () => {

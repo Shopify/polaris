@@ -8,7 +8,7 @@ import {
 import {classNames} from '@shopify/react-utilities/styles';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {Props as RangeSliderProps, DualValue} from '../../types';
-import Labelled from '../../../Labelled';
+import Labelled, {labelID} from '../../../Labelled';
 import EventListener from '../../../EventListener';
 import {Key} from '../../../../types';
 
@@ -135,7 +135,7 @@ export default class DualThumb extends React.Component<Props, State> {
     } = this.props;
     const {value} = this.state;
 
-    const idLower = `${id}Lower`;
+    const idLower = id;
     const idUpper = `${id}Upper`;
 
     const describedBy: string[] = [];
@@ -226,7 +226,7 @@ export default class DualThumb extends React.Component<Props, State> {
           labelHidden={labelHidden}
           helpText={helpText}
         >
-          <div className={styles.Wrapper} id={id}>
+          <div className={styles.Wrapper}>
             {prefixMarkup}
             <div
               className={trackWrapperClassName}
@@ -253,6 +253,7 @@ export default class DualThumb extends React.Component<Props, State> {
                 aria-valuenow={value[0]}
                 aria-invalid={Boolean(error)}
                 aria-describedby={ariaDescribedBy}
+                aria-labelledby={labelID(id)}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onKeyDown={this.handleKeypressLower}
@@ -274,6 +275,7 @@ export default class DualThumb extends React.Component<Props, State> {
                 aria-valuenow={value[1]}
                 aria-invalid={Boolean(error)}
                 aria-describedby={ariaDescribedBy}
+                aria-labelledby={labelID(id)}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onKeyDown={this.handleKeypressUpper}
