@@ -11,5 +11,3 @@ export {
 } from './FilterControl';
 
 export {default as Item, Props as ItemProps} from './Item';
-
-export {Provider, Consumer} from './Context';

@@ -5,15 +5,14 @@ import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 
 import Collapsible from '../../../../Collapsible';
-import {NavigationContext} from '../../../types';
-import {Provider} from '../../Context';
+import NavigationContext, {NavigationContextType} from '../../../context';
 import Item from '../../Item';
 import Section from '../Section';
 
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
 describe('<Navigation.Section />', () => {
-  let context: NavigationContext;
+  let context: NavigationContextType;
 
   beforeEach(() => {
     matchMedia.mock();
@@ -207,7 +206,11 @@ describe('<Navigation.Section />', () => {
 
 function mountWithNavigationProvider(
   node: React.ReactElement<any>,
-  context: NavigationContext = {location: ''},
+  context: NavigationContextType = {location: ''},
 ) {
-  return mountWithAppProvider(<Provider value={context}>{node}</Provider>);
+  return mountWithAppProvider(
+    <NavigationContext.Provider value={context}>
+      {node}
+    </NavigationContext.Provider>,
+  );
 }

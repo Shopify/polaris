@@ -9,9 +9,9 @@ import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
 import {PreferredPosition} from '../../../PositionedOverlay';
 import {ActionListItemDescriptor, Key} from '../../../../types';
-import {ComboBoxContext} from '../types';
 import KeypressListener from '../../../KeypressListener';
-import {TextField, Provider} from './components';
+import ComboBoxContext from './context';
+import {TextField} from './components';
 
 import styles from './ComboBox.scss';
 
@@ -119,13 +119,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     HTMLDivElement
   > = React.createRef();
 
-  get getContext(): ComboBoxContext {
-    return {
-      comboBoxId: this.state.comboBoxId,
-      selectedOptionId: this.selectedOptionId,
-    };
-  }
-
   componentDidMount() {
     const {options, actionsBefore, actionsAfter} = this.props;
     const comboBoxId = this.getComboBoxId();
@@ -206,6 +199,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       onEndReached,
       emptyState,
     } = this.props;
+    const {
+      comboBoxId,
+      navigableOptions,
+      selectedOptions,
+      popoverActive,
+    } = this.state;
 
     const actionsBeforeMarkup = actionsBefore &&
       actionsBefore.length > 0 && (
@@ -221,9 +220,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       <OptionList
         role="presentation"
         optionRole="option"
-        options={filterForOptions(this.state.navigableOptions)}
+        options={filterForOptions(navigableOptions)}
         onChange={this.selectOptions}
-        selected={this.state.selectedOptions}
+        selected={selectedOptions}
         title={listTitle}
         allowMultiple={allowMultiple}
       />
@@ -240,14 +239,19 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       options.length === 0 &&
       emptyState && <div className={styles.EmptyState}>{emptyState}</div>;
 
+    const context = {
+      comboBoxId,
+      selectedOptionId: this.selectedOptionId,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <ComboBoxContext.Provider value={context}>
         <div
           onClick={this.handleClick}
           role="combobox"
-          aria-expanded={this.state.popoverActive}
-          aria-owns={this.state.comboBoxId}
-          aria-controls={this.state.comboBoxId}
+          aria-expanded={popoverActive}
+          aria-owns={comboBoxId}
+          aria-controls={comboBoxId}
           aria-haspopup
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
@@ -268,14 +272,14 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           />
           <Popover
             activator={textField}
-            active={this.state.popoverActive}
+            active={popoverActive}
             onClose={this.handlePopoverClose}
             preferredPosition={preferredPosition}
             fullWidth
             preventAutofocus
           >
             <div
-              id={this.state.comboBoxId}
+              id={comboBoxId}
               role="listbox"
               aria-multiselectable={allowMultiple}
             >
@@ -289,7 +293,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
             </div>
           </Popover>
         </div>
-      </Provider>
+      </ComboBoxContext.Provider>
     );
   }
 

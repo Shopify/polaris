@@ -5,8 +5,8 @@ import {
   ScrollLockManager,
   createAppProviderContext,
 } from './utilities';
-import AppProviderContext from './Context';
-import {AppProviderProps, AppProviderContextType} from './types';
+import AppProviderContext, {AppProviderContextType} from './context';
+import {AppProviderProps} from './types';
 
 interface State {
   context: AppProviderContextType;
@@ -75,16 +75,14 @@ export default class AppProvider extends React.Component<Props, State> {
     });
   }
 
-  get getContext(): AppProviderContextType {
-    return this.state.context;
-  }
-
   render() {
-    const {theme = {logo: null}} = this.props;
+    const {theme = {logo: null}, children} = this.props;
+    const {context} = this.state;
+
     return (
-      <AppProviderContext.Provider value={this.getContext}>
+      <AppProviderContext.Provider value={context}>
         <ThemeProvider theme={theme}>
-          {React.Children.only(this.props.children)}
+          {React.Children.only(children)}
         </ThemeProvider>
       </AppProviderContext.Provider>
     );

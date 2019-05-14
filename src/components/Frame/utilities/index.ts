@@ -1,4 +1,1 @@
-export {
-  default as createFrameContext,
-  CreateFrameContext,
-} from './createFrameContext';
+export {default as createFrameContext} from './createFrameContext';

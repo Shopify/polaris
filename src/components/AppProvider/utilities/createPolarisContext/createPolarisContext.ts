@@ -1,7 +1,7 @@
 import {PolarisContext} from '../../../types';
 import {
   createThemeContext,
-  ThemeProviderContext as CreateThemeContext,
+  ThemeProviderContextType as CreateThemeContext,
 } from '../../../ThemeProvider';
 import {AppProviderProps} from '../../types';
 import StickyManager from '../StickyManager';

@@ -2,13 +2,15 @@ import ThemeProvider from './ThemeProvider';
 
 export {
   Theme,
-  ThemeProviderContext,
   ColorsToParse,
   ThemeVariant,
   ThemeColors,
   THEME_CONTEXT_TYPES,
 } from './types';
-export {Provider, Consumer} from './components';
+export {
+  default as ThemeProviderContext,
+  ThemeProviderContextType,
+} from './context';
 export {
   setColors,
   needsVariant,

@@ -3,7 +3,8 @@ import createApp, {
   LifecycleHook,
   DispatchActionHook,
 } from '@shopify/app-bridge';
-import {AppProviderProps, AppProviderContextType} from '../../types';
+import {AppProviderContextType} from '../../context';
+import {AppProviderProps} from '../../types';
 import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';

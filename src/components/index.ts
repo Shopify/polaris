@@ -8,7 +8,6 @@ export {default as ActionList, Props as ActionListProps} from './ActionList';
 export {
   default as AppProvider,
   Props as AppProviderProps,
-  AppProviderContextType,
   createAppProviderContext,
   createPolarisContext,
   withAppProvider,
@@ -257,7 +256,7 @@ export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 export {
   default as ThemeProvider,
   Props as ThemeProviderProps,
-  ThemeProviderContext,
+  ThemeProviderContextType,
   createThemeContext,
 } from './ThemeProvider';
 

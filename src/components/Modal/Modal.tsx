@@ -6,7 +6,7 @@ import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {wrapWithComponent} from '@shopify/react-utilities';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {Provider, WithinContentContext} from '../WithinContentContext';
+import WithinContentContext from '../WithinContentContext';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';
 import pick from '../../utilities/pick';
@@ -296,15 +296,19 @@ export class Modal extends React.Component<CombinedProps, State> {
 
     const animated = !instant;
 
+    const context = {
+      withinContentContainer: true,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <WithinContentContext.Provider value={context}>
         <Portal idPrefix="modal">
           <TransitionGroup appear={animated} enter={animated} exit={animated}>
             {dialog}
           </TransitionGroup>
           {backdrop}
         </Portal>
-      </Provider>
+      </WithinContentContext.Provider>
     );
   }
 
@@ -377,12 +381,6 @@ export class Modal extends React.Component<CombinedProps, State> {
           secondaryActions,
         }),
       },
-    };
-  }
-
-  get getContext(): WithinContentContext {
-    return {
-      withinContentContainer: true,
     };
   }
 }

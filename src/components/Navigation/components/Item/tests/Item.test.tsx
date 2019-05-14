@@ -4,8 +4,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
-import {NavigationContext} from '../../../types';
-import {Provider} from '../../Context';
+import NavigationContext, {NavigationContextType} from '../../../context';
 
 import Item, {Props as ItemProps} from '../Item';
 import {Secondary} from '../components';
@@ -472,7 +471,11 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 
 function mountWithNavigationProvider(
   node: React.ReactElement<any>,
-  context: NavigationContext = {location: ''},
+  context: NavigationContextType = {location: ''},
 ) {
-  return mountWithAppProvider(<Provider value={context}>{node}</Provider>);
+  return mountWithAppProvider(
+    <NavigationContext.Provider value={context}>
+      {node}
+    </NavigationContext.Provider>,
+  );
 }

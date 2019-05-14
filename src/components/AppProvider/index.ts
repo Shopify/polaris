@@ -13,6 +13,6 @@ export {
   ComplexReplacementDictionary,
   CreateAppProviderContext,
 } from './utilities';
-export {AppProviderProps as Props, AppProviderContextType} from './types';
-export {default as AppProviderContext} from './Context';
+export {AppProviderProps as Props} from './types';
+export {default as AppProviderContext, AppProviderContextType} from './context';
 export {default} from './AppProvider';
