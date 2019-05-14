@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 

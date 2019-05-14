@@ -1,11 +1,14 @@
 import * as React from 'react';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
-import {classNames} from '@shopify/react-utilities/styles';
-import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
+import {
+  isElementOfType,
+  wrapWithComponent,
+} from '../../../../utilities/components';
 import {Key} from '../../../../types';
 import {overlay} from '../../../shared';
 import EventListener from '../../../EventListener';

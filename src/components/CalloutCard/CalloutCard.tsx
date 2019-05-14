@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 
 import {Action} from '../../types';
 import Card from '../Card';

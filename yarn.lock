@@ -1239,6 +1239,14 @@
   resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-1.0.3.tgz#c7172d9c5673f6beaf51ad1a51fefa82b0f06392"
   integrity sha512-PkoBUAy/NKFbngX3ehw9FYUdraU+++IZceAnU0G+g7ukuVfT1I6+aOVRXZQzhasdTV9i71j9ocI8VMQxh1itaA==
 
+"@shopify/css-utilities@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/css-utilities/-/css-utilities-1.0.0.tgz#adbdf551673942c19e165ee4bc5c6d7ec7625f79"
+  integrity sha512-ZdJ65xcen1OUXcYwvYn5IW9wX8LAm5/cafbeu+BujXY4m5hMA9LiXz+T8LznkdRei0u0YxaAXT+Nwp+Ls5QB0Q==
+  dependencies:
+    "@types/classnames" "^2.2.7"
+    classnames "^2.2.6"
+
 "@shopify/fail-on-unexpected-module-shaking-plugin@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@shopify/fail-on-unexpected-module-shaking-plugin/-/fail-on-unexpected-module-shaking-plugin-1.0.4.tgz#56cf7e7724d1347d2c66a2c4c0ac51ce8b974136"
@@ -1326,18 +1334,6 @@
     "@shopify/useful-types" "^1.2.4"
     hoist-non-react-statics "^3.0.1"
     tslib "^1.9.3"
-
-"@shopify/react-utilities@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@shopify/react-utilities/-/react-utilities-2.0.4.tgz#0cf22e9a1c926dd3ff25e6fde7a161f06f4212e4"
-  integrity sha512-F6kFjKZNKU2svbWWctJ71e2Zk48Jb1CR95hj5XxG2MD529akESbI06y16ngtpiuYZlKLvE+CTiVUZqBZ/9uLKQ==
-  dependencies:
-    "@shopify/javascript-utilities" "^2.1.0"
-    "@types/classnames" "^2.2.3"
-    "@types/node" "^10.0.8"
-    "@types/react" "^16.3.14"
-    "@types/react-dom" "^16.0.5"
-    classnames "^2.2.5"
 
 "@shopify/sewing-kit@0.83.1":
   version "0.83.1"
@@ -2103,10 +2099,10 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/classnames@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.3.tgz#3f0ff6873da793870e20a260cada55982f38a9e5"
-  integrity sha512-x15/Io+JdzrkM9gnX6SWUs/EmqQzd65TD9tcZIAQ1VIdb93XErNuYmB7Yho8JUCE189ipUSESsWvGvYXRRIvYA==
+"@types/classnames@^2.2.7":
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.7.tgz#fb68cc9be8487e6ea5b13700e759bfbab7e0fefd"
+  integrity sha512-rzOhiQ55WzAiFgXRtitP/ZUT8iVNyllEpylJ5zHzR4vArUvMB39GTk+Zon/uAM0JxEFAWnwsxC2gH8s+tZ3Myg==
 
 "@types/enzyme-adapter-react-16@^1.0.3":
   version "1.0.3"
@@ -2199,11 +2195,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
   integrity sha512-szA3x/3miL90ZJxUCzx9haNbK5/zmPieGraZEe4WI+3srN0eGLiT22NXeMHmyhNEopn+IrxqMc7wdVwvPl8meg==
 
-"@types/node@^10.0.8":
-  version "10.5.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.8.tgz#6f14ccecad1d19332f063a6a764f8907801fece0"
-  integrity sha512-sWSjw+bYW/2W+1V3m8tVsm9PKJcxk3NHN7oRqNUfEdofKg0Imbdu1dQbFvLKjZQXEDXRN6IfSMACjJ7Wv4NGCQ==
-
 "@types/node@^6.0.46":
   version "6.0.90"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.90.tgz#0ed74833fa1b73dcdb9409dcb1c97ec0a8b13b02"
@@ -2218,14 +2209,6 @@
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
-
-"@types/react-dom@^16.0.5":
-  version "16.0.7"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.7.tgz#54d0f867a76b90597e8432030d297982f25c20ba"
-  integrity sha512-vaq4vMaJOaNgFff1t3LnHYr6vRa09vRspMkmLdXtFZmO1fwDI2snP+dpOkwrtlU8UC8qsqemCu4RmVM2OLq/fA==
-  dependencies:
-    "@types/node" "*"
-    "@types/react" "*"
 
 "@types/react-dom@^16.0.6":
   version "16.0.6"
@@ -2242,7 +2225,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16.4.0", "@types/react@^16.0.2", "@types/react@^16.3.14", "@types/react@^16.4.7":
+"@types/react@*", "@types/react@>=16.4.0", "@types/react@^16.0.2", "@types/react@^16.4.7":
   version "16.8.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.15.tgz#a76515fed5aa3e996603056f54427fec5f2a5122"
   integrity sha512-dMhzw1rWK+wwJWvPp5Pk12ksSrm/z/C/+lOQbMZ7YfDQYnJ02bc0wtg4EJD9qrFhuxFrf/ywNgwTboucobJqQg==
@@ -4913,10 +4896,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
-  integrity sha1-+zgB1FNGdknvNgPH1hoCvRKb3m0=
+classnames@^2.2.5, classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
 clean-css@4.2.x:
   version "4.2.1"

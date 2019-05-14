@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 import isInputFocused from '../../utilities/isInputFocused';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 
 import {ActionListItemDescriptor} from '../../../../types';
 import Scrollable from '../../../Scrollable';
