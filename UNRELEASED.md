@@ -22,6 +22,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
+- Removed runtime dependency on `@shopify/images` as we never needed it at runtime ([#1474](https://github.com/Shopify/polaris-react/pull/1474))
+
 ### Code quality
 
 ### Deprecations
