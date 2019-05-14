@@ -43,6 +43,7 @@ $nav-animation-variables: (
 
   &:hover {
     @include state(hover);
+    text-decoration: none;
 
     .Icon {
       @include recolor-icon(
