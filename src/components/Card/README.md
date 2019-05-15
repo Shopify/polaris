@@ -43,7 +43,7 @@ Cards should:
   action per card
 - Use calls to action on the bottom of the card for next steps and use the
   space in the upper right corner of the card for persistent, optional actions
-  (e.g. an Edit link)
+  (such as an Edit link)
 
 ---
 
@@ -183,7 +183,7 @@ Links should be:
 
 - Used for secondary or persistent actions: links should be used to represent
   lower priority actions than buttons, or persistent actions that merchants may
-  take at any time (e.g. a persistent Edit link).
+  take at any time (such as a persistent Edit link).
 - Clearly labeled: merchants should not need to guess where they’ll end up if
   they click on an action link. Never use “click here” as a link because it
   doesn’t set expectations about what’s next.
@@ -440,7 +440,7 @@ Use to be able to use custom React elements as header content.
 
 <!-- example-for: web -->
 
-Use to render custom content such as icons, links, or buttons in a card section's header.
+Use to render custom content such as icons, links, or buttons in a card section’s header.
 
 ```jsx
 <Card title="Products">
@@ -493,7 +493,7 @@ Use as a broad example that includes most props available to card.
   </Card.Header>
   <Card.Section>
     <TextContainer>
-      You can use sales reports to see information about your customers' orders
+      You can use sales reports to see information about your customers’ orders
       based on criteria such as sales over time, by channel, or by staff.
     </TextContainer>
   </Card.Section>
