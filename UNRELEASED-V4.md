@@ -29,6 +29,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed testID warning in tests ([#1447](https://github.com/Shopify/polaris-react/pull/1447))
 - Updated `ThemeProvider` to use the new context api ([#1396](https://github.com/Shopify/polaris-react/pull/1396))
 - Updated `AppProvider` to no longer use `componentWillReceiveProps`([#1255](https://github.com/Shopify/polaris-react/pull/1255))
+- Removed `withContext` from `Scrollable.ScrollTo` and added a test to boost coverage ([#1499](https://github.com/Shopify/polaris-react/pull/1499))
 - Upgraded the `Navigation` component from legacy context API to use createContext ([#1402](https://github.com/Shopify/polaris-react/pull/1402))
 - Updated `ThemeProvider` to no longer use `componentWillReceiveProps`([#1254](https://github.com/Shopify/polaris-react/pull/1254))
 - Removed unused context from `Scrollable` ([#1253](https://github.com/Shopify/polaris-react/pull/1253))
