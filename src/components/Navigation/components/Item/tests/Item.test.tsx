@@ -279,7 +279,10 @@ describe('<Nav.Item />', () => {
         {location: 'bar'},
       );
 
-      item.find(UnstyledLink).simulate('click');
+      item
+        .find(UnstyledLink)
+        .find('a')
+        .simulate('click');
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
@@ -310,7 +313,10 @@ describe('<Nav.Item />', () => {
         <Item label="some label" url="foo" disabled={false} />,
         {...context},
       );
-      item.find(UnstyledLink).simulate('click');
+      item
+        .find(UnstyledLink)
+        .find('a')
+        .simulate('click');
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });
 
@@ -338,6 +344,7 @@ describe('<Nav.Item />', () => {
       item
         .find(UnstyledLink)
         .last()
+        .find('a')
         .simulate('click');
       expect(context.onNavigationDismiss).toHaveBeenCalledTimes(1);
     });

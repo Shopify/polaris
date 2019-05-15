@@ -7,7 +7,7 @@ describe('<Link />', () => {
   it('calls onClick when clicking', () => {
     const spy = jest.fn();
     const link = mountWithAppProvider(<Link url="MyThing" onClick={spy} />);
-    link.simulate('click');
+    link.find('a').simulate('click');
     expect(spy).toHaveBeenCalled();
   });
 
