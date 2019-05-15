@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {SVGSource} from '@shopify/images';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {
   PlusMinor,
@@ -162,6 +161,11 @@ const COLORS_WITH_BACKDROPS = [
   'ink',
   'inkLighter',
 ];
+
+interface SVGSource {
+  body: string;
+  viewBox: string;
+}
 
 export type BundledIcon = keyof typeof BUNDLED_ICONS;
 

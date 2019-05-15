@@ -4,9 +4,6 @@
 
 const path = require('path');
 
-const {
-  svgOptions: svgOptimizationOptions,
-} = require('@shopify/images/optimize');
 const postcssShopify = require('postcss-shopify');
 
 // Use the version of webpack-bundle-analyzer (and other plugins/loaders) from

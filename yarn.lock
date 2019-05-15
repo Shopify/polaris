@@ -1244,7 +1244,7 @@
   resolved "https://registry.yarnpkg.com/@shopify/fail-on-unexpected-module-shaking-plugin/-/fail-on-unexpected-module-shaking-plugin-1.0.4.tgz#56cf7e7724d1347d2c66a2c4c0ac51ce8b974136"
   integrity sha512-NmP0/ag0xj+K3K6XGHnwfondzqLPxs4ASDXHBVmfnf9svsYUOuPm4smJ7n7tkZq+/9RaC4dsFI40AAR7Khp6XA==
 
-"@shopify/images@^1.1.0", "@shopify/images@^1.1.4":
+"@shopify/images@^1.1.4":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@shopify/images/-/images-1.1.5.tgz#f7ae5d5801b4550085480825ceda66420d9ff700"
   integrity sha512-DIPOT6ACpmsqYwvh0TQ48PgmZFceuoV8imrxfmCK6HD+zWcE6TWfunKaGEo0DkkdsS+6guGd/aJXe9m+dyBvdQ==
