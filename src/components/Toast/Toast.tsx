@@ -1,17 +1,9 @@
 import * as React from 'react';
-import compose from '@shopify/react-compose';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
-import withContext from '../WithContext';
-import {WithContextTypes} from '../../types';
 
-import {
-  DEFAULT_TOAST_DURATION,
-  FrameContextType,
-  FrameContext,
-  ToastProps,
-} from '../Frame';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {DEFAULT_TOAST_DURATION, FrameContext, ToastProps} from '../Frame';
+import {usePolaris} from '../../hooks';
 
 const createId = createUniqueIDFactory('Toast');
 
@@ -21,63 +13,44 @@ const createId = createUniqueIDFactory('Toast');
 // crashing if we write `ComposedProps = ToastProps & WithAppProviderProps`
 interface Props extends ToastProps {}
 
-export type ComposedProps = Props &
-  WithAppProviderProps &
-  WithContextTypes<FrameContextType>;
+export default function Toast(props: Props) {
+  const id = React.useRef(createId());
+  const appBridgeToast = React.useRef<AppBridgeToast.Toast>();
+  const frame = React.useContext(FrameContext);
+  const {appBridge} = usePolaris();
 
-export class Toast extends React.PureComponent<ComposedProps, never> {
-  context: FrameContextType;
-
-  private id = createId();
-  private appBridgeToast: AppBridgeToast.Toast | undefined;
-
-  componentDidMount() {
-    const {id, props} = this;
+  React.useEffect(() => {
     const {
       error,
       content,
       duration = DEFAULT_TOAST_DURATION,
       onDismiss,
     } = props;
-    const {appBridge} = props.polaris;
 
     if (appBridge == null) {
-      const {polaris, context, ...rest} = props;
-      context.showToast({
-        id,
-        ...(rest as Props),
+      frame.showToast({
+        id: id.current,
+        ...props,
       });
     } else {
-      this.appBridgeToast = AppBridgeToast.create(appBridge, {
+      appBridgeToast.current = AppBridgeToast.create(appBridge, {
         message: content,
         duration,
         isError: error,
       });
 
-      this.appBridgeToast.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);
-      this.appBridgeToast.dispatch(AppBridgeToast.Action.SHOW);
+      appBridgeToast.current.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);
+      appBridgeToast.current.dispatch(AppBridgeToast.Action.SHOW);
     }
-  }
 
-  componentWillUnmount() {
-    const {polaris, context} = this.props;
-    const {appBridge} = polaris;
+    return () => {
+      if (appBridge == null) {
+        frame.hideToast({id: id.current});
+      } else if (appBridgeToast.current != null) {
+        appBridgeToast.current.unsubscribe();
+      }
+    };
+  }, []);
 
-    if (appBridge == null) {
-      context.hideToast({id: this.id});
-    } else if (this.appBridgeToast != null) {
-      this.appBridgeToast.unsubscribe();
-    }
-  }
-
-  render() {
-    return null;
-  }
+  return null;
 }
-
-export default compose<Props>(
-  withContext<Props, WithAppProviderProps, FrameContextType>(
-    FrameContext.Consumer,
-  ),
-  withAppProvider(),
-)(Toast);
