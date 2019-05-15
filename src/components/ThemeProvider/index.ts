@@ -1,12 +1,6 @@
 import ThemeProvider from './ThemeProvider';
 
-export {
-  Theme,
-  ColorsToParse,
-  ThemeVariant,
-  ThemeColors,
-  THEME_CONTEXT_TYPES,
-} from './types';
+export {Theme, ColorsToParse, ThemeVariant, ThemeColors} from './types';
 export {
   default as ThemeProviderContext,
   ThemeProviderContextType,

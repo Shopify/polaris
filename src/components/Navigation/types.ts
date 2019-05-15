@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types';
 import {Props as IconProps} from '../Icon';
 
 export interface ItemType {
@@ -12,8 +11,3 @@ export interface SectionType {
   fill?: boolean;
   items?: ItemType[];
 }
-
-export const contextTypes = {
-  location: PropTypes.string,
-  onNavigationDismiss: PropTypes.func,
-};

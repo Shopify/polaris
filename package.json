@@ -182,14 +182,12 @@
     "@shopify/polaris-tokens": "^2.3.0",
     "@shopify/react-compose": "^0.1.6",
     "@shopify/react-utilities": "^2.0.3",
-    "@types/prop-types": "^15.5.5",
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
     "@types/react-transition-group": "^2.0.7",
     "core-js": "^2.5.1",
     "hoist-non-react-statics": "^2.5.0",
     "lodash": "^4.17.4",
-    "prop-types": "^15.6.1",
     "react-transition-group": "^2.4.0",
     "tslib": "^1.9.3"
   }
