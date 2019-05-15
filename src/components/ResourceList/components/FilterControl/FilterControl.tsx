@@ -39,6 +39,60 @@ export default function FilterControl({
   const {intl} = usePolaris();
   const {selectMode, resourceName} = React.useContext(ResourceListContext);
 
+  const handleAddFilter = React.useCallback(
+    (newFilter: AppliedFilter) => {
+      if (!onFiltersChange) {
+        return;
+      }
+
+      const foundFilter = appliedFilters.find(
+        (appliedFilter) =>
+          idFromFilter(appliedFilter) === idFromFilter(newFilter),
+      );
+
+      if (foundFilter) {
+        return;
+      }
+
+      const newAppliedFilters = [...appliedFilters, newFilter];
+
+      onFiltersChange(newAppliedFilters);
+    },
+    [onFiltersChange, appliedFilters],
+  );
+
+  const handleRemoveFilter = React.useCallback(
+    (filterId: string) => {
+      if (!onFiltersChange) {
+        return;
+      }
+
+      const foundIndex = appliedFilters.findIndex(
+        (appliedFilter) => idFromFilter(appliedFilter) === filterId,
+      );
+
+      const newAppliedFilters =
+        foundIndex >= 0
+          ? [
+              ...appliedFilters.slice(0, foundIndex),
+              ...appliedFilters.slice(foundIndex + 1, appliedFilters.length),
+            ]
+          : [...appliedFilters];
+
+      onFiltersChange(newAppliedFilters);
+    },
+    [appliedFilters, onFiltersChange],
+  );
+
+  const getRemoveFilterCallback = React.useCallback(
+    (filterId: string) => {
+      return () => {
+        handleRemoveFilter(filterId);
+      };
+    },
+    [handleRemoveFilter],
+  );
+
   const textFieldLabel = placeholder
     ? placeholder
     : intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
@@ -98,52 +152,7 @@ export default function FilterControl({
     </FormLayout>
   );
 
-  function handleAddFilter(newFilter: AppliedFilter) {
-    if (!onFiltersChange) {
-      return;
-    }
-
-    const foundFilter = appliedFilters.find(
-      (appliedFilter) =>
-        idFromFilter(appliedFilter) === idFromFilter(newFilter),
-    );
-
-    if (foundFilter) {
-      return;
-    }
-
-    const newAppliedFilters = [...appliedFilters, newFilter];
-
-    onFiltersChange(newAppliedFilters);
-  }
-
-  function getRemoveFilterCallback(filterId: string) {
-    return () => {
-      handleRemoveFilter(filterId);
-    };
-  }
-
-  function handleRemoveFilter(filterId: string) {
-    if (!onFiltersChange) {
-      return;
-    }
-
-    const foundIndex = appliedFilters.findIndex(
-      (appliedFilter) => idFromFilter(appliedFilter) === filterId,
-    );
-
-    const newAppliedFilters =
-      foundIndex >= 0
-        ? [
-            ...appliedFilters.slice(0, foundIndex),
-            ...appliedFilters.slice(foundIndex + 1, appliedFilters.length),
-          ]
-        : [...appliedFilters];
-
-    onFiltersChange(newAppliedFilters);
-  }
-
-  function getFilterLabel(appliedFilter: AppliedFilter): string {
+  function getFilterLabel(appliedFilter: AppliedFilter) {
     const {key, value, label} = appliedFilter;
     if (label) {
       return label;
@@ -182,10 +191,7 @@ export default function FilterControl({
     return `${filter.label} ${filterOperatorLabel} ${filterLabelByType}`;
   }
 
-  function findFilterLabelByType(
-    filter: Filter,
-    appliedFilter: AppliedFilter,
-  ): string {
+  function findFilterLabelByType(filter: Filter, appliedFilter: AppliedFilter) {
     const {value: appliedFilterValue} = appliedFilter;
 
     if (filter.type === FilterType.Select) {
