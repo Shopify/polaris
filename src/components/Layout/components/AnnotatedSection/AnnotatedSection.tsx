@@ -5,7 +5,7 @@ import styles from '../../Layout.scss';
 
 export interface Props {
   children?: React.ReactNode;
-  title?: string;
+  title?: React.ReactNode;
   description?: React.ReactNode;
 }
 
