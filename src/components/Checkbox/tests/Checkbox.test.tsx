@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {Key} from '../../../types';
 import Checkbox from '../Checkbox';
@@ -253,3 +252,5 @@ describe('<Checkbox />', () => {
     });
   });
 });
+
+function noop() {}

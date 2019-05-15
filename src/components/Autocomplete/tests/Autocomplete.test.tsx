@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Spinner} from 'components';
 import Autocomplete from '..';
@@ -128,6 +127,8 @@ describe('<Autocomplete/>', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
+
+  function noop() {}
 
   function renderTextField() {
     return <Autocomplete.TextField label="" onChange={noop} />;

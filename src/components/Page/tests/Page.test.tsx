@@ -6,7 +6,6 @@ import {
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {Page, Card} from 'components';
 import {LinkAction} from '../../../types';
-import {noop} from '../../../utilities/other';
 import {Header} from '../components';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {SecondaryAction, PrimaryActionProps} from '../components/Header/Header';
@@ -385,6 +384,8 @@ describe('<Page />', () => {
     });
   });
 });
+
+function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};

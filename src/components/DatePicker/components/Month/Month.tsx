@@ -12,7 +12,6 @@ import {
   dateIsSelected,
   getNewRange,
 } from '@shopify/javascript-utilities/dates';
-import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import styles from '../../DatePicker.scss';
@@ -139,6 +138,8 @@ function Month({
 }
 
 export default withAppProvider<Props>()(Month);
+
+function noop() {}
 
 function hoveringDateIsInRange(
   day: Date | null,

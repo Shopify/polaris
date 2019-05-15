@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {UserMenuProps} from '../../components';
 import UserMenuContext from '../context';
@@ -31,3 +30,5 @@ describe('<Modifier />', () => {
     });
   });
 });
+
+function noop() {}

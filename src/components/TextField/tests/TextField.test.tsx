@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {
   shallowWithAppProvider,
   mountWithAppProvider,
@@ -905,3 +904,5 @@ describe('<TextField />', () => {
     });
   });
 });
+
+function noop() {}

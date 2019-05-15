@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
-import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Checkbox from '../Checkbox';
@@ -127,6 +127,8 @@ function ChoiceList({
     </fieldset>
   );
 }
+
+function noop() {}
 
 function choiceIsSelected({value}: Choice, selected: string[]) {
   return selected.indexOf(value) >= 0;

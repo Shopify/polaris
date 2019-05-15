@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import SettingAction from 'components/SettingAction';
 import SettingToggle from '../SettingToggle';
@@ -61,3 +60,5 @@ describe('<SettingToggle />', () => {
     });
   });
 });
+
+function noop() {}

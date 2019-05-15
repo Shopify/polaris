@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {findFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import {PreferredPosition} from '../PositionedOverlay';
@@ -137,3 +137,5 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     accessibilityNode.setAttribute('aria-describedby', id);
   }
 }
+
+function noop() {}

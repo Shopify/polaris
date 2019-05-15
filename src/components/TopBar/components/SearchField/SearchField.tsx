@@ -2,7 +2,6 @@ import * as React from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 
-import {noop} from '../../../../utilities/other';
 import Icon from '../../../Icon';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
@@ -153,6 +152,8 @@ export class SearchField extends React.Component<ComposedProps, never> {
     onChange(currentTarget.value);
   };
 }
+
+function noop() {}
 
 function preventDefault(event: React.KeyboardEvent<HTMLInputElement>) {
   if (event.key === 'Enter') {

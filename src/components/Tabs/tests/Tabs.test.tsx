@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Tab, Panel, TabMeasurer, List} from '../components';
@@ -424,3 +423,5 @@ describe('<Tabs />', () => {
     });
   });
 });
+
+function noop() {}

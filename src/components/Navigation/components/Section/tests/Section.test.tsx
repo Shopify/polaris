@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {noop} from '@shopify/javascript-utilities/other';
 
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
@@ -248,3 +247,5 @@ describe('<Navigation.Section />', () => {
     expect(onClickSpy).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

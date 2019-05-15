@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {noop} from '@shopify/javascript-utilities/other';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
@@ -495,3 +494,5 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
 
   return {modal, polaris};
 }
+
+function noop() {}

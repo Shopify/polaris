@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {UserMenuContext} from '../context';
 import {UserMenu as UserMenuComponent, UserMenuProps} from '../components';
@@ -83,3 +82,5 @@ describe('<UserMenu />', () => {
     });
   });
 });
+
+function noop() {}

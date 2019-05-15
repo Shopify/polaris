@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
-import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {helpTextID} from '../Choice';
@@ -145,6 +145,8 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
     );
   }
 }
+
+function noop() {}
 
 function stopPropagation<E>(event: React.MouseEvent<E>) {
   event.stopPropagation();

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {Option} from '../components';
 import OptionList, {
@@ -527,6 +526,8 @@ describe('<OptionList />', () => {
     });
   });
 });
+
+function noop() {}
 
 function firstOption(
   options?: OptionDescriptor[],

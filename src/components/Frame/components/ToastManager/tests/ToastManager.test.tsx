@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
-import {noop} from 'utilities/other';
 import Toast from '../../Toast';
 import Frame from '../../../Frame';
 import ToastManager from '..';
@@ -78,3 +77,5 @@ describe('onDismiss()', () => {
     expect(spy2).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

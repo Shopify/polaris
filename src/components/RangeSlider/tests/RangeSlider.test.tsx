@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import RangeSlider from '../RangeSlider';
 import {DualThumb, SingleThumb} from '../components';
@@ -130,3 +129,5 @@ describe('<RangeSlider />', () => {
     });
   });
 });
+
+function noop() {}
