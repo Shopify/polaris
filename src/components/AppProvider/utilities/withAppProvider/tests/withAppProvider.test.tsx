@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
+import AppProviderContext from '../../../context';
 import withAppProvider from '../withAppProvider';
 
 describe('withAppProvider', () => {
@@ -13,7 +14,11 @@ describe('withAppProvider', () => {
     const WrappedComponent = withAppProvider<any>()(Child);
 
     const fn = () => {
-      mount(<WrappedComponent />);
+      mount(
+        <AppProviderContext.Provider value={{} as any}>
+          <WrappedComponent />
+        </AppProviderContext.Provider>,
+      );
       consoleSpy.mockRestore();
     };
     expect(fn).toThrowError();

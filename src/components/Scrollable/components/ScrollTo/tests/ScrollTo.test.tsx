@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import ScrollTo from '../ScrollTo';
-import {Provider} from '../../Context';
+import ScrollableContext from '../../../context';
 
 describe('<Scrollable.ScrollTo />', () => {
   it('calls scrollToPosition on mount', () => {
@@ -11,9 +11,9 @@ describe('<Scrollable.ScrollTo />', () => {
     };
 
     mountWithAppProvider(
-      <Provider value={mockContext}>
+      <ScrollableContext.Provider value={mockContext}>
         <ScrollTo />
-      </Provider>,
+      </ScrollableContext.Provider>,
     );
 
     expect(spy).toHaveBeenCalled();

@@ -14,11 +14,6 @@ import {
   Loading as FrameLoading,
 } from '../components';
 import TopBar, {UserMenuProvider} from '../../TopBar';
-import {
-  createThemeContext,
-  Provider as ThemeProvider,
-  ThemeContext,
-} from '../../ThemeProvider';
 import Navigation from '../../Navigation';
 
 window.matchMedia =
@@ -207,7 +202,7 @@ describe('<Frame />', () => {
   });
 
   it('renders a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
-    const frame = mountWithContext(
+    const frame = mountWithAppProvider(
       <Frame>
         <PolarisContextualSavebar />
       </Frame>,
@@ -238,7 +233,7 @@ describe('<Frame />', () => {
     it('receives the given top bar and navigation as its children', () => {
       const topBar = <TopBar />;
       const navigation = <Navigation location="" />;
-      const frame = mountWithContext(
+      const frame = mountWithAppProvider(
         <Frame topBar={topBar} navigation={navigation} />,
       );
       expect(frame.find(UserMenuProvider).contains(topBar)).toBe(true);
@@ -246,13 +241,3 @@ describe('<Frame />', () => {
     });
   });
 });
-
-function mountWithContext(
-  node: React.ReactElement<any>,
-  polarisTheme?: ThemeContext,
-) {
-  const context = polarisTheme ? {polarisTheme} : createThemeContext();
-  return mountWithAppProvider(
-    <ThemeProvider value={context}>{node}</ThemeProvider>,
-  );
-}

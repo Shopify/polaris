@@ -31,7 +31,7 @@ describe('<Toast />', () => {
 
   it('renders its content', () => {
     const message = mountWithAppProvider(<Toast {...mockProps} />);
-    expect(message.prop('content')).toEqual('Image uploaded');
+    expect(message.text()).toBe('Image uploaded');
   });
 
   describe('dismiss button', () => {

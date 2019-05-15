@@ -13,7 +13,7 @@ describe('<Panel />', () => {
       const panel = mountWithAppProvider(
         <Panel id="my-panel" tabID="my-tab" />,
       );
-      expect(panel.prop('id')).toBe('my-panel');
+      expect(panel.find('div').prop('id')).toBe('my-panel');
     });
   });
 

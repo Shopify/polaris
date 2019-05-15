@@ -5,14 +5,11 @@ import {
   ScrollLockManager,
   createAppProviderContext,
 } from './utilities';
-import {
-  AppProviderProps,
-  Context,
-  polarisAppProviderContextTypes,
-} from './types';
+import AppProviderContext, {AppProviderContextType} from './context';
+import {AppProviderProps} from './types';
 
 interface State {
-  polaris: Context;
+  context: AppProviderContextType;
 }
 
 // The script in the styleguide that generates the Props Explorer data expects
@@ -22,10 +19,8 @@ interface State {
 interface Props extends AppProviderProps {}
 
 export default class AppProvider extends React.Component<Props, State> {
-  static childContextTypes = polarisAppProviderContextTypes;
   private stickyManager: StickyManager;
   private scrollLockManager: ScrollLockManager;
-  private subscriptions: {(): void}[] = [];
 
   constructor(props: Props) {
     super(props);
@@ -34,12 +29,10 @@ export default class AppProvider extends React.Component<Props, State> {
     const {theme, children, ...rest} = this.props;
 
     this.state = {
-      polaris: createAppProviderContext({
+      context: createAppProviderContext({
         ...rest,
         stickyManager: this.stickyManager,
         scrollLockManager: this.scrollLockManager,
-        subscribe: this.subscribe,
-        unsubscribe: this.unsubscribe,
       }),
     };
   }
@@ -71,41 +64,27 @@ export default class AppProvider extends React.Component<Props, State> {
 
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
-      polaris: createAppProviderContext({
+      context: createAppProviderContext({
         i18n,
         linkComponent,
         apiKey,
         shopOrigin,
         forceRedirect,
         stickyManager: this.stickyManager,
-        subscribe: this.subscribe,
-        unsubscribe: this.unsubscribe,
       }),
     });
-
-    this.subscriptions.forEach((subscriberCallback) => subscriberCallback());
-  }
-
-  getChildContext(): Context {
-    return this.state.polaris;
   }
 
   render() {
-    const {theme = {logo: null}} = this.props;
+    const {theme = {logo: null}, children} = this.props;
+    const {context} = this.state;
+
     return (
-      <ThemeProvider theme={theme}>
-        {React.Children.only(this.props.children)}
-      </ThemeProvider>
+      <AppProviderContext.Provider value={context}>
+        <ThemeProvider theme={theme}>
+          {React.Children.only(children)}
+        </ThemeProvider>
+      </AppProviderContext.Provider>
     );
   }
-
-  subscribe = (callback: () => void) => {
-    this.subscriptions.push(callback);
-  };
-
-  unsubscribe = (callback: () => void) => {
-    this.subscriptions = this.subscriptions.filter(
-      (subscription) => subscription !== callback,
-    );
-  };
 }

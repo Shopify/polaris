@@ -3,8 +3,7 @@ import * as React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
-import {Consumer} from '../Context';
-import {NavigationContext} from '../../types';
+import NavigationContext, {NavigationContextType} from '../../context';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Badge from '../../../Badge';
 import Icon, {Props as IconProps} from '../../../Icon';
@@ -57,7 +56,7 @@ export interface Props extends ItemURLDetails {
 
 export type CombinedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<NavigationContext>;
+  WithContextTypes<NavigationContextType>;
 
 interface State {
   expanded: boolean;
@@ -389,7 +388,9 @@ function matchStateForItem(
 
 export const Item = compose<Props>(
   withAppProvider<Props>(),
-  withContext<Props, WithAppProviderProps, NavigationContext>(Consumer),
+  withContext<Props, WithAppProviderProps, NavigationContextType>(
+    NavigationContext.Consumer,
+  ),
 )(BaseItem);
 
 export default Item;

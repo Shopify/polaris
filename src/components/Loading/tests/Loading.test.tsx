@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
-import * as PropTypes from 'prop-types';
 import {mountWithAppProvider} from 'test-utilities';
-import {Provider, createFrameContext} from '../../Frame';
+import {FrameContext, createFrameContext} from '../../Frame';
 
 import Loading from '../Loading';
 
@@ -17,11 +16,11 @@ describe('<Loading />', () => {
     });
 
     mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <Loading />
-      </Provider>,
+      </FrameContext.Provider>,
     );
-    expect(mockFrameContext.frame.startLoading).toHaveBeenCalled();
+    expect(mockFrameContext.startLoading).toHaveBeenCalled();
   });
 
   it('stops loading on unmount', () => {
@@ -29,19 +28,23 @@ describe('<Loading />', () => {
       stopLoading: jest.fn(),
     });
     const frame = mountWithAppProvider(
-      <Provider value={mockFrameContext}>
+      <FrameContext.Provider value={mockFrameContext}>
         <Loading />
-      </Provider>,
+      </FrameContext.Provider>,
     );
-    expect(mockFrameContext.frame.stopLoading).not.toHaveBeenCalled();
+    expect(mockFrameContext.stopLoading).not.toHaveBeenCalled();
 
     frame.unmount();
-    expect(mockFrameContext.frame.stopLoading).toHaveBeenCalled();
+    expect(mockFrameContext.stopLoading).toHaveBeenCalled();
   });
 
   describe('with app bridge', () => {
     const dispatch = jest.fn();
     AppBridgeLoading.create = jest.fn().mockReturnValue({dispatch});
+
+    afterEach(() => {
+      dispatch.mockReset();
+    });
 
     it('starts loading on mount', () => {
       const {polaris} = mountWithAppBridge(<Loading />);
@@ -66,7 +69,6 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
   const polaris = {appBridge};
   const loading = mountWithAppProvider(element, {
     context: {frame: {}, polaris},
-    childContextTypes: {frame: PropTypes.any},
   });
 
   return {loading, polaris};

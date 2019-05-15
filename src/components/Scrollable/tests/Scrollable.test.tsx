@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import Scrollable from '../Scrollable';
-import {Provider, Consumer} from '../components';
+import ScrollableContext from '../context';
 
 describe('<Scrollable />', () => {
   it('mounts', () => {
@@ -31,17 +31,17 @@ describe('<Scrollable />', () => {
 
   it('provides scrollToPosition callback to children', () => {
     const Child: React.SFC<{}> = (_) => (
-      <Consumer>
+      <ScrollableContext.Consumer>
         {({scrollToPosition}) => (scrollToPosition ? <div /> : null)}
-      </Consumer>
+      </ScrollableContext.Consumer>
     );
 
     const scrollableContainer = mountWithAppProvider(
-      <Provider value={{scrollToPosition: () => {}}}>
+      <ScrollableContext.Provider value={{scrollToPosition: () => {}}}>
         <Scrollable>
           <Child />
         </Scrollable>
-      </Provider>,
+      </ScrollableContext.Provider>,
     );
 
     const div = scrollableContainer

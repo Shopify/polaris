@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import ThemeProvider from '../ThemeProvider';
-import {Consumer} from '../components';
-import {ThemeProviderContext} from '../types';
+import ThemeProviderContext from '../context';
 
 describe('<ThemeProvider />', () => {
   it('mounts', () => {
@@ -17,11 +16,11 @@ describe('<ThemeProvider />', () => {
   it('passes context', () => {
     const Child: React.SFC<{}> = (_props) => {
       return (
-        <Consumer>
-          {({polarisTheme}: ThemeProviderContext) =>
+        <ThemeProviderContext.Consumer>
+          {(polarisTheme) =>
             polarisTheme && polarisTheme.logo ? <div /> : null
           }
-        </Consumer>
+        </ThemeProviderContext.Consumer>
       );
     };
 

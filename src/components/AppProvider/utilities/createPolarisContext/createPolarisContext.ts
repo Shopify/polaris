@@ -1,10 +1,10 @@
 import {PolarisContext} from '../../../types';
 import {
   createThemeContext,
-  ThemeContext as CreateThemeContext,
+  ThemeProviderContextType as CreateThemeContext,
 } from '../../../ThemeProvider';
 import {AppProviderProps} from '../../types';
-import {StickyManager} from '../withSticky';
+import StickyManager from '../StickyManager';
 import createAppProviderContext, {
   CreateAppProviderContext,
 } from '../createAppProviderContext';
@@ -42,5 +42,5 @@ export default function createPolarisContext(
     ? createThemeContext(themeContext)
     : createThemeContext();
 
-  return {...appProvider, ...theme};
+  return {...appProvider, theme};
 }

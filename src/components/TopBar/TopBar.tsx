@@ -58,11 +58,9 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       onNavigationToggle,
       onSearchResultsDismiss,
       contextControl,
-      polaris: {
-        theme: {logo},
-      },
+      polaris: {theme},
     } = this.props;
-
+    const logo = theme && theme.logo;
     const {focused} = this.state;
 
     const className = classNames(

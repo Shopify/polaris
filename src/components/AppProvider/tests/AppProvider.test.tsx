@@ -1,33 +1,28 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
-import {polarisAppProviderContextTypes} from '../types';
+import AppProviderContext from '../context';
 import AppProvider from '../AppProvider';
+import {mountWithAppProvider} from '../../../test-utilities';
 
 describe('<AppProvider />', () => {
   it('updates polaris context when props change', () => {
-    const CustomLinkComponent = () => {
-      return <a href="test">Custom Link Component</a>;
-    };
+    const Child: React.SFC<{}> = (_props) => (
+      <AppProviderContext.Consumer>
+        {({link: {linkComponent}}) =>
+          linkComponent ? <div id="child" /> : null
+        }
+      </AppProviderContext.Consumer>
+    );
+    const LinkComponent = () => <div />;
 
-    // eslint-disable-next-line react/prefer-stateless-function
-    class Child extends React.Component {
-      static contextTypes = polarisAppProviderContextTypes;
-
-      render() {
-        return <div />;
-      }
-    }
-
-    const wrapper = mount(
+    const wrapper = mountWithAppProvider(
       <AppProvider>
         <Child />
       </AppProvider>,
     );
 
-    wrapper.setProps({linkComponent: CustomLinkComponent});
-
-    expect(
-      wrapper.find(Child).instance().context.polaris.link.linkComponent,
-    ).toBe(CustomLinkComponent);
+    expect(wrapper.find('#child')).toHaveLength(0);
+    wrapper.setProps({linkComponent: LinkComponent});
+    wrapper.update();
+    expect(wrapper.find('#child')).toHaveLength(1);
   });
 });

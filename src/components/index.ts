@@ -8,9 +8,8 @@ export {default as ActionList, Props as ActionListProps} from './ActionList';
 export {
   default as AppProvider,
   Props as AppProviderProps,
-  Context as AppProviderContext,
-  polarisAppProviderContextTypes as polarisContextTypes,
   createAppProviderContext,
+  AppProviderContext,
   createPolarisContext,
   withAppProvider,
   WithAppProviderProps,
@@ -258,7 +257,9 @@ export {default as Thumbnail, Props as ThumbnailProps} from './Thumbnail';
 export {
   default as ThemeProvider,
   Props as ThemeProviderProps,
-  Context as ThemeProviderContext,
+  ThemeProviderContextType,
+  ThemeProviderContext,
+  createThemeContext,
 } from './ThemeProvider';
 
 export {default as Toast} from './Toast';
@@ -307,3 +308,5 @@ export {default as Indicator, Props as IndicatorProps} from './Indicator';
 export {default as withContext} from './WithContext';
 
 export {default as withRef, WithRef} from './WithRef';
+
+export {PolarisContext} from './types';

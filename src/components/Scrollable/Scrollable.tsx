@@ -6,10 +6,11 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '@shopify/react-utilities/styles';
-import {withSticky, WithAppProviderProps} from '../AppProvider';
+import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 import {scrollable} from '../shared';
 
-import {ScrollTo, Provider} from './components';
+import {ScrollTo} from './components';
+import ScrollableContext from './context';
 
 import styles from './Scrollable.scss';
 
@@ -40,10 +41,6 @@ export interface State {
   scrollPosition: number;
 }
 
-export interface Context {
-  scrollToPosition(scrollY: number): void;
-}
-
 export type CombinedProps = Props & WithAppProviderProps;
 class Scrollable extends React.Component<CombinedProps, State> {
   static ScrollTo = ScrollTo;
@@ -68,12 +65,6 @@ class Scrollable extends React.Component<CombinedProps, State> {
     50,
     {trailing: true},
   );
-
-  get getContext(): Context {
-    return {
-      scrollToPosition: this.scrollToPosition,
-    };
-  }
 
   componentDidMount() {
     const {polaris} = this.props;
@@ -132,8 +123,12 @@ class Scrollable extends React.Component<CombinedProps, State> {
       bottomShadow && styles.hasBottomShadow,
     );
 
+    const context = {
+      scrollToPosition: this.scrollToPosition,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <ScrollableContext.Provider value={context}>
         <div
           className={finalClassName}
           {...scrollable.props}
@@ -142,7 +137,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
         >
           {children}
         </div>
-      </Provider>
+      </ScrollableContext.Provider>
     );
   }
 
@@ -255,4 +250,4 @@ function prefersReducedMotion() {
   }
 }
 
-export default withSticky()(Scrollable);
+export default withAppProvider({withinScrollable: true})(Scrollable);

@@ -1,18 +1,5 @@
 import {Action} from '../../types';
 
-export interface FrameManager {
-  showToast(toast: ToastPropsWithID): void;
-  hideToast(toast: ToastID): void;
-  setContextualSaveBar(props: ContextualSaveBarProps): void;
-  removeContextualSaveBar(): void;
-  startLoading(): void;
-  stopLoading(): void;
-}
-
-export interface FrameContext {
-  frame: FrameManager;
-}
-
 interface ContextualSaveBarAction {
   /** A destination to link to */
   url?: string;

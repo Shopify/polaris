@@ -4,15 +4,15 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
 
-import {NavigationContext} from '../../../types';
-import {Provider} from '../../Context';
+import Collapsible from '../../../../Collapsible';
+import NavigationContext, {NavigationContextType} from '../../../context';
 import Item from '../../Item';
 import Section from '../Section';
 
 import channelResults from './fixtures/AdminNavQuery/multiple-channels.json';
 
 describe('<Navigation.Section />', () => {
-  let context: NavigationContext;
+  let context: NavigationContextType;
 
   beforeEach(() => {
     matchMedia.mock();
@@ -109,13 +109,15 @@ describe('<Navigation.Section />', () => {
 
   it('sets expanded to false on item click', () => {
     const channels = mountWithNavigationProvider(
-      <Section items={channelResults} />,
+      <Section
+        items={channelResults}
+        rollup={{after: 0, view: 'test', hide: 'test', activePath: '/'}}
+      />,
       {
         ...context,
       },
     );
-
-    channels.setState({expanded: true});
+    findByTestID(channels, 'ToggleViewAll').simulate('click');
 
     channels
       .find('a')
@@ -123,8 +125,8 @@ describe('<Navigation.Section />', () => {
       .simulate('click');
 
     animationFrame.runFrame();
-
-    expect(channels.state('expanded')).toBe(false);
+    channels.update();
+    expect(channels.find(Collapsible).prop('open')).toBe(false);
   });
 
   it('adds a toggle button if rollupAfter has a value', () => {
@@ -204,7 +206,11 @@ describe('<Navigation.Section />', () => {
 
 function mountWithNavigationProvider(
   node: React.ReactElement<any>,
-  context: NavigationContext = {location: ''},
+  context: NavigationContextType = {location: ''},
 ) {
-  return mountWithAppProvider(<Provider value={context}>{node}</Provider>);
+  return mountWithAppProvider(
+    <NavigationContext.Provider value={context}>
+      {node}
+    </NavigationContext.Provider>,
+  );
 }

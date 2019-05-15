@@ -30,7 +30,7 @@ describe('<Dialog>', () => {
       </Dialog>,
     );
 
-    trigger(dialog, 'onEntered');
-    expect(dialog.prop('onEntered')).toHaveBeenCalledTimes(1);
+    trigger(dialog.find('FadeUp'), 'onEntered');
+    expect(dialog.find('FadeUp').prop('onEntered')).toHaveBeenCalledTimes(1);
   });
 });
