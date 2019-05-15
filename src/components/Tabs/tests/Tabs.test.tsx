@@ -140,17 +140,17 @@ describe('<Tabs />', () => {
   });
 
   describe('selected', () => {
+    let getElementById: jest.SpyInstance;
     let panelStub: {focus: jest.Mock<any>};
-    let originalGetElementByID: (typeof document)['getElementById'];
 
     beforeEach(() => {
-      originalGetElementByID = document.getElementById;
       panelStub = {focus: jest.fn()};
-      document.getElementById = jest.fn(() => panelStub);
+      getElementById = jest.spyOn(document, 'getElementById');
+      getElementById.mockReturnValue(panelStub);
     });
 
     afterEach(() => {
-      document.getElementById = originalGetElementByID;
+      jest.clearAllMocks();
     });
 
     it('focuses the panel when a tab becomes selected', () => {
@@ -377,17 +377,6 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
-    it('renders a Popover when there are hiddenTabs', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      tabs.setState({
-        tabWidths: [82, 160, 150, 100, 80, 120],
-        containerWidth: 300,
-      });
-
-      const popover = tabs.find(Popover);
-      expect(popover).toHaveLength(1);
-    });
-
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);

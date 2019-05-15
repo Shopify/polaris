@@ -19,10 +19,10 @@ import {
   CheckableButton,
   FilterControl,
   Item,
-  Provider,
 } from './components';
+import ResourceListContext from './context';
 
-import {ResourceListContext, SelectedItems, SELECT_ALL_ITEMS} from './types';
+import {SelectedItems, SELECT_ALL_ITEMS} from './types';
 
 import styles from './ResourceList.scss';
 
@@ -291,23 +291,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  get getContext(): ResourceListContext {
-    const {
-      selectedItems,
-      resourceName = this.defaultResourceName,
-      loading,
-    } = this.props;
-    const {selectMode} = this.state;
-    return {
-      selectable: this.selectable,
-      selectedItems,
-      selectMode,
-      resourceName,
-      loading,
-      onSelectionChange: this.handleSelectionChange,
-    };
-  }
-
   componentWillReceiveProps(nextProps: Props) {
     const {selectedItems} = this.props;
 
@@ -362,6 +345,8 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       sortOptions,
       sortValue,
       alternateTool,
+      selectedItems,
+      resourceName = this.defaultResourceName,
       onSortChange,
       polaris: {intl},
     } = this.props;
@@ -548,15 +533,24 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       emptyStateMarkup
     );
 
+    const context = {
+      selectable: this.selectable,
+      selectedItems,
+      selectMode,
+      resourceName,
+      loading,
+      onSelectionChange: this.handleSelectionChange,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <ResourceListContext.Provider value={context}>
         <div className={styles.ResourceListWrapper}>
           {filterControlMarkup}
           {headerMarkup}
           {listMarkup}
           {loadingWithoutItemsMarkup}
         </div>
-      </Provider>
+      </ResourceListContext.Provider>
     );
   }
 

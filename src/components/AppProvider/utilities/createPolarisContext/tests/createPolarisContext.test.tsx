@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
-import {StickyManager} from '../../withSticky';
+import StickyManager from '../../StickyManager';
 import ScrollLockManager from '../../ScrollLockManager';
 import createPolarisContext from '../createPolarisContext';
 
@@ -26,19 +25,13 @@ describe('createPolarisContext()', () => {
     const context = createPolarisContext();
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
+      theme: {
         logo: null,
-        subscribe: noop,
-        unsubscribe: noop,
       },
     });
   });
@@ -56,10 +49,6 @@ describe('createPolarisContext()', () => {
     };
     const stickyManager = new StickyManager();
     const scrollLockManager = new ScrollLockManager();
-    const mockSubscribe = (fn: () => void) =>
-      ([] as Array<() => void>).push(fn);
-    const mockUnsubscribe = (fn: () => void) =>
-      [].filter((curFn: any) => curFn !== fn);
     const contextOne = createPolarisContext(
       {
         i18n,
@@ -68,15 +57,11 @@ describe('createPolarisContext()', () => {
       },
       {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
     );
     const contextTwo = createPolarisContext(
       {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
       {
         i18n,
@@ -85,19 +70,13 @@ describe('createPolarisContext()', () => {
       },
     );
     const mockContext = {
-      polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: new Intl(i18n),
+      link: new Link(CustomLinkComponent),
+      stickyManager,
+      scrollLockManager,
+      appBridge: undefined,
+      theme: {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
     };
 
@@ -124,19 +103,13 @@ describe('createPolarisContext()', () => {
       stickyManager,
     });
     const mockContext = {
-      polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: new Intl(i18n),
+      link: new Link(CustomLinkComponent),
+      stickyManager,
+      scrollLockManager,
+      appBridge: undefined,
+      theme: {
         logo: null,
-        subscribe: noop,
-        unsubscribe: noop,
       },
     };
 
@@ -144,30 +117,18 @@ describe('createPolarisContext()', () => {
   });
 
   it('returns the right context with only theme provider context being provided', () => {
-    const mockSubscribe = (fn: () => void) =>
-      ([] as Array<() => void>).push(fn);
-    const mockUnsubscribe = (fn: () => void) =>
-      [].filter((curFn: any) => curFn !== fn);
     const context = createPolarisContext({
       logo: null,
-      subscribe: mockSubscribe,
-      unsubscribe: mockUnsubscribe,
     });
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
-        appBridge: undefined,
-      },
-      polarisTheme: {
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
+      theme: {
         logo: null,
-        subscribe: mockSubscribe,
-        unsubscribe: mockUnsubscribe,
       },
     });
   });

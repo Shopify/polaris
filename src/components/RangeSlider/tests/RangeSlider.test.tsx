@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import RangeSlider, {invertNumber} from '../RangeSlider';
 
 describe('<RangeSlider />', () => {
   it('allows specific props to pass through properties on the input', () => {
-    const input = shallowWithAppProvider(
+    const input = mountWithAppProvider(
       <RangeSlider
         label="RangeSlider"
         value={15}
@@ -46,7 +46,7 @@ describe('<RangeSlider />', () => {
   describe('onFocus()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
-      shallowWithAppProvider(
+      mountWithAppProvider(
         <RangeSlider
           label="RangeSlider"
           value={50}
@@ -63,7 +63,7 @@ describe('<RangeSlider />', () => {
   describe('onBlur()', () => {
     it('is called when the input is blurred', () => {
       const spy = jest.fn();
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <RangeSlider
           label="RangeSlider"
           value={50}
@@ -81,7 +81,7 @@ describe('<RangeSlider />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <RangeSlider
           label="RangeSlider"
           id="MyRangeSlider"
@@ -96,7 +96,7 @@ describe('<RangeSlider />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <RangeSlider label="RangeSlider" value={50} onChange={noop} />,
       )
         .find('input')
@@ -153,7 +153,7 @@ describe('<RangeSlider />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <RangeSlider
           label="RangeSlider"
           value={50}

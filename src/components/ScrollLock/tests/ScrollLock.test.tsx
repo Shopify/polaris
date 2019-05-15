@@ -10,6 +10,10 @@ describe('ScrollLock', () => {
         showScrollLock: true,
       };
 
+      setScollLockFalse = () => {
+        this.setState({showScrollLock: false});
+      };
+
       render() {
         const {showScrollLock} = this.state;
 
@@ -17,6 +21,7 @@ describe('ScrollLock', () => {
 
         return (
           <React.Fragment>
+            <button onClick={this.setScollLockFalse} />
             {scrollLockMarkup}
             <ScrollLock />
           </React.Fragment>
@@ -26,7 +31,7 @@ describe('ScrollLock', () => {
 
     const scrollLockContainer = mountWithAppProvider(<DummyFrame />);
 
-    scrollLockContainer.instance().setState({showScrollLock: false});
+    scrollLockContainer.find('button').simulate('click');
 
     expect(document.body.hasAttribute(`${SCROLL_LOCKING_ATTRIBUTE}`)).toBe(
       true,

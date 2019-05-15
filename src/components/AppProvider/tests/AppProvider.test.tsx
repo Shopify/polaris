@@ -1,81 +1,28 @@
 import * as React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import {mount} from 'enzyme';
-import {createThemeContext} from '../../ThemeProvider';
-import {StickyManager, createAppProviderContext} from '../utilities';
-import {polarisAppProviderContextTypes} from '../types';
+import AppProviderContext from '../context';
 import AppProvider from '../AppProvider';
+import {mountWithAppProvider} from '../../../test-utilities';
 
 describe('<AppProvider />', () => {
-  it('passes i18n and withComponent properties to context', () => {
-    const i18n = {
-      Polaris: {
-        Common: {
-          undo: 'Custom Undo',
-        },
-      },
-    };
-    const CustomLinkComponent = () => {
-      return <a href="test">Custom Link Component</a>;
-    };
-    const stickyManager = new StickyManager(document);
-    const context = {
-      ...createAppProviderContext({
-        i18n,
-        linkComponent: CustomLinkComponent,
-        stickyManager,
-      }),
-      ...createThemeContext(),
-    };
-
-    // eslint-disable-next-line react/prefer-stateless-function
-    class Child extends React.Component {
-      static contextTypes = polarisAppProviderContextTypes;
-
-      render() {
-        return <div />;
-      }
-    }
-
-    const wrapper = TestUtils.renderIntoDocument(
-      <AppProvider i18n={i18n} linkComponent={CustomLinkComponent}>
-        <Child />
-      </AppProvider>,
-    );
-
-    const child = TestUtils.findRenderedComponentWithType(
-      wrapper as React.Component,
-      Child,
-    );
-
-    // https://github.com/facebook/jest/issues/1772
-    expect(JSON.stringify(child.context)).toBe(JSON.stringify(context));
-  });
-
   it('updates polaris context when props change', () => {
-    const CustomLinkComponent = () => {
-      return <a href="test">Custom Link Component</a>;
-    };
+    const Child: React.SFC<{}> = (_props) => (
+      <AppProviderContext.Consumer>
+        {({link: {linkComponent}}) =>
+          linkComponent ? <div id="child" /> : null
+        }
+      </AppProviderContext.Consumer>
+    );
+    const LinkComponent = () => <div />;
 
-    // eslint-disable-next-line react/prefer-stateless-function
-    class Child extends React.Component {
-      static contextTypes = polarisAppProviderContextTypes;
-
-      render() {
-        return <div />;
-      }
-    }
-
-    const wrapper = mount(
+    const wrapper = mountWithAppProvider(
       <AppProvider>
         <Child />
       </AppProvider>,
     );
 
-    wrapper.setProps({linkComponent: CustomLinkComponent});
-
-    expect(
-      wrapper.find(Child).instance().context.polaris.link.linkComponent,
-    ).toBe(CustomLinkComponent);
+    expect(wrapper.find('#child')).toHaveLength(0);
+    wrapper.setProps({linkComponent: LinkComponent});
+    wrapper.update();
+    expect(wrapper.find('#child')).toHaveLength(1);
   });
 });

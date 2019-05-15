@@ -1,6 +1,34 @@
 import {GeneralObject} from '../types';
 
-export default function merge(...objs: GeneralObject[]) {
+// Unfortunately, this is how we have to type this at the moment.
+// There is currently a proposal to support variadic kinds.
+// https://github.com/Microsoft/TypeScript/issues/5453
+function merge<TSource1, TSource2>(
+  source1: TSource1,
+  source2: TSource2,
+): TSource1 & TSource2;
+function merge<TSource1, TSource2, TSource3>(
+  source1: TSource1,
+  source2: TSource2,
+  source3: TSource3,
+): TSource1 & TSource2 & TSource3;
+function merge<TSource1, TSource2, TSource3, TSource4>(
+  source1: TSource1,
+  source2: TSource2,
+  source3: TSource3,
+  source4: TSource4,
+): TSource1 & TSource2 & TSource3 & TSource4;
+function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
+  source1: TSource1,
+  source2: TSource2,
+  source3: TSource3,
+  source4: TSource4,
+  source5: TSource5,
+): TSource1 & TSource2 & TSource3 & TSource4 & TSource5;
+function merge<TResult>(...objs: any[]): TResult;
+function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
+  ...objs: (TSource1 | TSource2 | TSource3 | TSource4 | TSource5)[]
+) {
   const final = {};
 
   for (const obj of objs) {
@@ -27,3 +55,5 @@ function mergeRecursively(objA: GeneralObject, objB: GeneralObject) {
 function isMergeableValue(value: any) {
   return value !== null && typeof value === 'object';
 }
+
+export default merge;

@@ -1,17 +1,18 @@
 import * as React from 'react';
 import './ScrollLock.scss';
-import {polarisAppProviderContextTypes} from '../AppProvider';
+import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 
-export default class ScrollLock extends React.Component<{}, never> {
-  static contextTypes = polarisAppProviderContextTypes;
+export interface Props {}
 
+type CombinedProps = Props & WithAppProviderProps;
+class ScrollLock extends React.Component<CombinedProps, never> {
   componentDidMount() {
-    const {scrollLockManager} = this.context.polaris;
+    const {scrollLockManager} = this.props.polaris;
     scrollLockManager.registerScrollLock();
   }
 
   componentWillUnmount() {
-    const {scrollLockManager} = this.context.polaris;
+    const {scrollLockManager} = this.props.polaris;
     scrollLockManager.unregisterScrollLock();
   }
 
@@ -19,3 +20,5 @@ export default class ScrollLock extends React.Component<{}, never> {
     return null;
   }
 }
+
+export default withAppProvider<Props>()(ScrollLock);

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {ShallowWrapper} from 'enzyme';
+import {ReactWrapper} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
 import {InlineError} from 'components';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import Select from '../Select';
 
 describe('<Select />', () => {
@@ -26,9 +26,7 @@ describe('<Select />', () => {
   describe('onFocus()', () => {
     it('is called when the select is focused', () => {
       const spy = jest.fn();
-      shallowWithAppProvider(
-        <Select label="Select" options={[]} onFocus={spy} />,
-      )
+      mountWithAppProvider(<Select label="Select" options={[]} onFocus={spy} />)
         .find('select')
         .simulate('focus');
       expect(spy).toHaveBeenCalled();
@@ -38,7 +36,7 @@ describe('<Select />', () => {
   describe('onBlur()', () => {
     it('is called when the select is blurred', () => {
       const spy = jest.fn();
-      const element = shallowWithAppProvider(
+      const element = mountWithAppProvider(
         <Select label="Select" options={[]} onBlur={spy} />,
       );
       element.find('select').simulate('focus');
@@ -50,7 +48,7 @@ describe('<Select />', () => {
   describe('options', () => {
     it('translates an array of strings into options', () => {
       const options = ['one', 'two'];
-      const optionElements = shallowWithAppProvider(
+      const optionElements = mountWithAppProvider(
         <Select label="Select" options={options} />,
       ).find('option');
 
@@ -67,7 +65,7 @@ describe('<Select />', () => {
         {value: 'one', label: 'One'},
         {value: 'two', label: 'Two'},
       ];
-      const optionElements = shallowWithAppProvider(
+      const optionElements = mountWithAppProvider(
         <Select label="Select" options={options} />,
       ).find('option');
 
@@ -85,7 +83,7 @@ describe('<Select />', () => {
         {value: 'two', label: 'Two', disabled: true},
         {value: 'three', label: 'Three', disabled: false},
       ];
-      const optionElements = shallowWithAppProvider(
+      const optionElements = mountWithAppProvider(
         <Select label="Select" options={options} />,
       ).find('option');
 
@@ -106,7 +104,7 @@ describe('<Select />', () => {
 
     function testOptions(
       optionOrGroup: string | {title: string; options: string[]},
-      optionOrOptgroupElement: ShallowWrapper,
+      optionOrOptgroupElement: ReactWrapper,
     ) {
       if (typeof optionOrGroup === 'string') {
         expect(optionOrOptgroupElement.type()).toBe('option');
@@ -131,7 +129,7 @@ describe('<Select />', () => {
     // Expectations are ran within the call to testOptions()
     // eslint-disable-next-line jest/expect-expect
     it('translates grouped options into optgroup tags', () => {
-      const optionOrOptgroupElements = shallowWithAppProvider(
+      const optionOrOptgroupElements = mountWithAppProvider(
         <Select label="Select" options={optionsAndGroups} />,
       )
         .find('select')
@@ -146,7 +144,7 @@ describe('<Select />', () => {
     // Expectations are ran within the call to testOptions()
     // eslint-disable-next-line jest/expect-expect
     it('translates legacy groups into optgroup tags', () => {
-      const optionOrOptgroupElements = shallowWithAppProvider(
+      const optionOrOptgroupElements = mountWithAppProvider(
         <Select label="Select" groups={optionsAndGroups} />,
       )
         .find('select')
@@ -161,7 +159,7 @@ describe('<Select />', () => {
 
   describe('value', () => {
     it('uses the passed value for the select', () => {
-      const value = shallowWithAppProvider(
+      const value = mountWithAppProvider(
         <Select
           label="Select"
           value="Some value"
@@ -177,7 +175,7 @@ describe('<Select />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <Select label="Select" id="MySelect" options={[]} />,
       )
         .find('select')
@@ -186,7 +184,7 @@ describe('<Select />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallowWithAppProvider(<Select label="Select" options={[]} />)
+      const id = mountWithAppProvider(<Select label="Select" options={[]} />)
         .find('select')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -196,19 +194,17 @@ describe('<Select />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the select', () => {
-      const select = shallowWithAppProvider(
+      const select = mountWithAppProvider(
         <Select label="Select" disabled options={[]} />,
       );
       expect(select.find('select').prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let select = shallowWithAppProvider(
-        <Select label="Select" options={[]} />,
-      );
+      let select = mountWithAppProvider(<Select label="Select" options={[]} />);
       expect(select.find('select').prop('disabled')).toBeFalsy();
 
-      select = shallowWithAppProvider(
+      select = mountWithAppProvider(
         <Select label="Select" disabled={false} options={[]} />,
       );
       expect(select.find('select').prop('disabled')).toBeFalsy();
@@ -229,7 +225,7 @@ describe('<Select />', () => {
   describe('placeholder', () => {
     it('renders the placeholder as the initially selected option', () => {
       const placeholderValue = '';
-      const select = shallowWithAppProvider(
+      const select = mountWithAppProvider(
         <Select label="Select" placeholder="Choose something" options={[]} />,
       ).find('select');
       const placeholderOption = select.find('option').first();
@@ -239,7 +235,7 @@ describe('<Select />', () => {
     });
 
     it('sets the placeholder value as the select value when there is an onChange handler', () => {
-      const select = shallowWithAppProvider(
+      const select = mountWithAppProvider(
         <Select
           label="Select"
           placeholder="Choose something"
@@ -254,7 +250,7 @@ describe('<Select />', () => {
 
   describe('error', () => {
     it('marks the select as invalid', () => {
-      const select = shallowWithAppProvider(
+      const select = mountWithAppProvider(
         <Select error={<span>Invalid</span>} label="Select" onChange={noop} />,
       );
 

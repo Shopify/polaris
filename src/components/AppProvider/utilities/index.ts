@@ -5,7 +5,7 @@ export {
   PrimitiveReplacementDictionary,
   ComplexReplacementDictionary,
 } from './Intl';
-export {default as withSticky, StickyManager} from './withSticky';
+export {default as StickyManager} from './StickyManager';
 export {
   default as createPolarisContext,
   CreatePolarisContext,

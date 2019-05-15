@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
-import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities';
 import Checkbox from '../Checkbox';
 
 describe('<Checkbox />', () => {
   it('sets pass through properties on the input', () => {
-    const input = shallowWithAppProvider(
+    const input = mountWithAppProvider(
       <Checkbox label="Checkbox" checked name="Checkbox" value="Some value" />,
     ).find('input');
 
@@ -60,7 +60,7 @@ describe('<Checkbox />', () => {
 
   describe('id', () => {
     it('sets the id on the input', () => {
-      const id = shallowWithAppProvider(
+      const id = mountWithAppProvider(
         <Checkbox id="MyCheckbox" label="Checkbox" />,
       )
         .find('input')
@@ -69,7 +69,7 @@ describe('<Checkbox />', () => {
     });
 
     it('sets a random id on the input when none is passed', () => {
-      const id = shallowWithAppProvider(<Checkbox label="Checkbox" />)
+      const id = mountWithAppProvider(<Checkbox label="Checkbox" />)
         .find('input')
         .prop('id');
       expect(typeof id).toBe('string');
@@ -79,17 +79,18 @@ describe('<Checkbox />', () => {
 
   describe('disabled', () => {
     it('sets the disabled attribute on the input', () => {
-      const button = shallowWithAppProvider(
+      const button = mountWithAppProvider(
         <Checkbox label="Checkbox" disabled />,
       );
+
       expect(button.find('input').prop('disabled')).toBe(true);
     });
 
     it('is only disabled when disabled is explicitly set to true', () => {
-      let element = shallowWithAppProvider(<Checkbox label="Checkbox" />);
+      let element = mountWithAppProvider(<Checkbox label="Checkbox" />);
       expect(element.find('input').prop('disabled')).toBeFalsy();
 
-      element = shallowWithAppProvider(
+      element = mountWithAppProvider(
         <Checkbox label="Checkbox" disabled={false} />,
       );
       expect(element.find('input').prop('disabled')).toBeFalsy();
@@ -111,7 +112,7 @@ describe('<Checkbox />', () => {
 
   describe('error', () => {
     it('marks the input as invalid', () => {
-      const checkbox = shallowWithAppProvider(
+      const checkbox = mountWithAppProvider(
         <Checkbox error={<span>Error</span>} label="Checkbox" />,
       );
       expect(checkbox.find('input').prop<string>('aria-invalid')).toBe(true);
@@ -156,21 +157,21 @@ describe('<Checkbox />', () => {
 
   describe('indeterminate', () => {
     it('sets the indeterminate attribute to be true on the input when checked is "indeterminate"', () => {
-      const checkbox = shallowWithAppProvider(
+      const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('indeterminate')).toBe('true');
     });
 
     it('sets the aria-checked attribute on the input as mixed when checked is "indeterminate"', () => {
-      const checkbox = shallowWithAppProvider(
+      const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('aria-checked')).toBe('mixed');
     });
 
     it('sets the checked attribute on the input to false when checked is "indeterminate"', () => {
-      const checkbox = shallowWithAppProvider(
+      const checkbox = mountWithAppProvider(
         <Checkbox label="Checkbox" checked="indeterminate" />,
       );
       expect(checkbox.find('input').prop<string>('checked')).toBe(false);

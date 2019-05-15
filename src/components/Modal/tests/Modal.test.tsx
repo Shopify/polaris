@@ -2,12 +2,14 @@ import * as React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {noop} from '@shopify/javascript-utilities/other';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
+import {findByTestID, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
 
-import {Consumer, WithinContentContext} from '../../WithinContentContext';
+import WithinContentContext, {
+  WithinContentContextType,
+} from '../../WithinContentContext';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -24,17 +26,17 @@ describe('<Modal>', () => {
   });
 
   it('has a child with contentContext', () => {
-    function TestComponent(_: WithinContentContext) {
+    function TestComponent(_: WithinContentContextType) {
       return null;
     }
 
     const component = mountWithAppProvider(
       <Modal onClose={jest.fn()} open>
-        <Consumer>
+        <WithinContentContext.Consumer>
           {(props) => {
             return <TestComponent {...props} />;
           }}
-        </Consumer>
+        </WithinContentContext.Consumer>
       </Modal>,
     );
 
@@ -186,33 +188,6 @@ describe('<Modal>', () => {
 
       expect(modal.find(Badge).exists()).toBe(false);
     });
-
-    it('triggers an onTransitionEnd prop', () => {
-      const modal = mountWithAppProvider(
-        <Modal
-          onClose={jest.fn()}
-          open
-          secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
-          onTransitionEnd={jest.fn()}
-        />,
-      );
-
-      trigger(modal, 'onTransitionEnd');
-      expect(modal.prop('onTransitionEnd')).toHaveBeenCalledTimes(1);
-    });
-
-    it('triggers onTransitionEnd from Dialog', () => {
-      const modal = mountWithAppProvider(
-        <Modal
-          open
-          onClose={jest.fn()}
-          secondaryActions={[{content: 'Discard', onAction: jest.fn()}]}
-          onTransitionEnd={jest.fn()}
-        />,
-      );
-      trigger(modal.find(Modal.Dialog), 'onEntered');
-      expect(modal.prop('onTransitionEnd')).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('header', () => {
@@ -312,6 +287,7 @@ describe('<Modal>', () => {
   });
 
   describe('with app bridge', () => {
+    let AppBridgeModalCreate: jest.SpyInstance;
     const appBridgeModalMock = {
       set: jest.fn(),
       subscribe: jest.fn(),
@@ -319,11 +295,12 @@ describe('<Modal>', () => {
       dispatch: jest.fn(),
     };
 
-    (AppBridgeModal.create as jest.Mock<{}>) = jest
-      .fn()
-      .mockReturnValue(appBridgeModalMock);
-
     beforeEach(() => {
+      AppBridgeModalCreate = jest.spyOn(AppBridgeModal, 'create');
+      AppBridgeModalCreate.mockReturnValue(appBridgeModalMock);
+    });
+
+    afterEach(() => {
       jest.clearAllMocks();
     });
 
@@ -351,8 +328,8 @@ describe('<Modal>', () => {
         />,
       );
 
-      expect(AppBridgeModal.create).toHaveBeenCalledTimes(1);
-      expect(AppBridgeModal.create).toHaveBeenCalledWith(polaris.appBridge, {
+      expect(AppBridgeModalCreate).toHaveBeenCalledTimes(1);
+      expect(AppBridgeModalCreate).toHaveBeenCalledWith(polaris.appBridge, {
         title: 'Hello world!',
         message: 'Body content',
         size: undefined,

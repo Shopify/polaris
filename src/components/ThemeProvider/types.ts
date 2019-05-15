@@ -34,16 +34,6 @@ export interface Theme {
   colors?: ThemeColors;
 }
 
-export interface ThemeContext {
-  logo: Theme['logo'] | null;
-  subscribe: (callback: () => void) => void;
-  unsubscribe: (callback: () => void) => void;
-}
-
-export interface ThemeProviderContext {
-  polarisTheme?: ThemeContext;
-}
-
 export type ThemeVariant = 'light' | 'dark';
 
 export const THEME_CONTEXT_TYPES = {polarisTheme: PropTypes.any};

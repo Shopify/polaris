@@ -4,8 +4,7 @@ import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
-import {NavigationContext} from '../../../types';
-import {Provider} from '../../Context';
+import NavigationContext, {NavigationContextType} from '../../../context';
 
 import Item, {Props as ItemProps} from '../Item';
 import {Secondary} from '../components';
@@ -241,7 +240,7 @@ describe('<Nav.Item />', () => {
         },
       );
 
-      expect(item.prop('url')).toBe('foo');
+      expect(item.find(UnstyledLink).prop('url')).toBe('foo');
     });
 
     it('delegates disabled to <UnstyledLink />', () => {
@@ -274,18 +273,14 @@ describe('<Nav.Item />', () => {
     });
 
     it('delegates onClick to <UnstyledLink />', () => {
+      const spy = jest.fn();
       const item = mountWithNavigationProvider(
-        <Item
-          label="some label"
-          url="foo"
-          disabled={false}
-          onClick={jest.fn()}
-        />,
+        <Item label="some label" url="foo" disabled={false} onClick={spy} />,
         {location: 'bar'},
       );
 
       item.find(UnstyledLink).simulate('click');
-      expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('sets aria labels on <button />', () => {
@@ -426,8 +421,9 @@ describe('<Nav.Item />', () => {
 
     describe('onClick', () => {
       it('will fire once on small screens when onNavigationDismiss is defined', () => {
+        const spy = jest.fn();
         const item = mountWithNavigationProvider(
-          <Item label="some label" disabled={false} onClick={jest.fn()} />,
+          <Item label="some label" disabled={false} onClick={spy} />,
           {
             location: 'bar',
             onNavigationDismiss: noop,
@@ -435,19 +431,20 @@ describe('<Nav.Item />', () => {
         );
 
         item.find('button').simulate('click');
-        expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(1);
       });
 
       it('will fire once on small screens when onNavigationDismiss is undefined', () => {
+        const spy = jest.fn();
         const item = mountWithNavigationProvider(
-          <Item label="some label" disabled={false} onClick={jest.fn()} />,
+          <Item label="some label" disabled={false} onClick={spy} />,
           {
             location: 'bar',
           },
         );
 
         item.find('button').simulate('click');
-        expect(item.prop('onClick')).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(1);
       });
     });
   });
@@ -474,7 +471,11 @@ function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
 
 function mountWithNavigationProvider(
   node: React.ReactElement<any>,
-  context: NavigationContext = {location: ''},
+  context: NavigationContextType = {location: ''},
 ) {
-  return mountWithAppProvider(<Provider value={context}>{node}</Provider>);
+  return mountWithAppProvider(
+    <NavigationContext.Provider value={context}>
+      {node}
+    </NavigationContext.Provider>,
+  );
 }

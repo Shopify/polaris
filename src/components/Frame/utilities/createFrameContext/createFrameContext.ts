@@ -1,19 +1,5 @@
 import {noop} from '@shopify/javascript-utilities/other';
-import {
-  FrameContext,
-  ContextualSaveBarProps,
-  ToastID,
-  ToastPropsWithID,
-} from '../../types';
-
-export interface CreateFrameContext {
-  showToast?(toast: ToastPropsWithID): void;
-  hideToast?(toast: ToastID): void;
-  setContextualSaveBar?(props: ContextualSaveBarProps): void;
-  removeContextualSaveBar?(): void;
-  startLoading?(): void;
-  stopLoading?(): void;
-}
+import {FrameContextType} from '../../context';
 
 export default function createFrameContext({
   showToast = noop,
@@ -22,15 +8,13 @@ export default function createFrameContext({
   removeContextualSaveBar = noop,
   startLoading = noop,
   stopLoading = noop,
-}: CreateFrameContext = {}): FrameContext {
+}: Partial<FrameContextType> = {}): FrameContextType {
   return {
-    frame: {
-      showToast,
-      hideToast,
-      setContextualSaveBar,
-      removeContextualSaveBar,
-      startLoading,
-      stopLoading,
-    },
+    showToast,
+    hideToast,
+    setContextualSaveBar,
+    removeContextualSaveBar,
+    startLoading,
+    stopLoading,
   };
 }

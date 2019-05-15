@@ -6,6 +6,7 @@ import ResourcePicker from '../ResourcePicker';
 
 describe('<ResourcePicker />', () => {
   describe('with app bridge', () => {
+    let appBridgeResourcePickerCreate: jest.SpyInstance;
     const appBridgeResourcePickerMock = {
       subscribe: jest.fn(),
       dispatch: jest.fn(),
@@ -13,11 +14,17 @@ describe('<ResourcePicker />', () => {
       unsubscribe: jest.fn(),
     };
 
-    (AppBridgeResourcePicker.create as jest.Mock<{}>) = jest
-      .fn()
-      .mockReturnValue(appBridgeResourcePickerMock);
-
     beforeEach(() => {
+      appBridgeResourcePickerCreate = jest.spyOn(
+        AppBridgeResourcePicker,
+        'create',
+      );
+      appBridgeResourcePickerCreate.mockReturnValue(
+        appBridgeResourcePickerMock,
+      );
+    });
+
+    afterEach(() => {
       jest.clearAllMocks();
     });
 

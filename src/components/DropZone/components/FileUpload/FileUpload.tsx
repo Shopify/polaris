@@ -15,11 +15,8 @@ import Caption from '../../../Caption';
 import TextStyle from '../../../TextStyle';
 import withContext from '../../../WithContext';
 import withRef from '../../../WithRef';
-
-import {DropZoneContext} from '../../types';
 import {fileUpload, imageUpload} from '../../images';
-
-import {Consumer} from '../Context';
+import DropZoneContext, {DropZoneContextType} from '../../context';
 
 import styles from './FileUpload.scss';
 
@@ -35,7 +32,7 @@ export interface Props {
 
 export type CombinedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<DropZoneContext>;
+  WithContextTypes<DropZoneContextType>;
 export class FileUpload extends React.Component<CombinedProps, State> {
   constructor(props: CombinedProps) {
     super(props);
@@ -146,7 +143,9 @@ export class FileUpload extends React.Component<CombinedProps, State> {
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, DropZoneContext>(Consumer),
+  withContext<Props, WithAppProviderProps, DropZoneContextType>(
+    DropZoneContext.Consumer,
+  ),
   withAppProvider<Props>(),
   withRef<Props>(),
 )(FileUpload);

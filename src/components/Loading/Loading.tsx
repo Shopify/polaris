@@ -1,7 +1,7 @@
 import * as React from 'react';
 import compose from '@shopify/react-compose';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
-import {FrameContext, Consumer} from '../Frame';
+import {FrameContextType, FrameContext} from '../Frame';
 import withContext from '../WithContext';
 import {WithContextTypes} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -9,7 +9,7 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 export interface Props {}
 export type ComposedProps = Props &
   WithAppProviderProps &
-  WithContextTypes<FrameContext>;
+  WithContextTypes<FrameContextType>;
 
 export class Loading extends React.PureComponent<ComposedProps, never> {
   private appBridgeLoading: AppBridgeLoading.Loading | undefined;
@@ -21,7 +21,7 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
     } = this.props;
 
     if (appBridge == null) {
-      context.frame.startLoading();
+      context.startLoading();
     } else {
       this.appBridgeLoading = AppBridgeLoading.create(appBridge);
       this.appBridgeLoading.dispatch(AppBridgeLoading.Action.START);
@@ -35,7 +35,7 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
     } = this.props;
 
     if (appBridge == null) {
-      context.frame.stopLoading();
+      context.stopLoading();
     } else if (this.appBridgeLoading != null) {
       this.appBridgeLoading.dispatch(AppBridgeLoading.Action.STOP);
     }
@@ -47,6 +47,8 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
 }
 
 export default compose<Props>(
-  withContext<Props, WithAppProviderProps, FrameContext>(Consumer),
+  withContext<Props, WithAppProviderProps, FrameContextType>(
+    FrameContext.Consumer,
+  ),
   withAppProvider(),
 )(Loading);

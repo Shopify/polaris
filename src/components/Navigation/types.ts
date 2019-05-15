@@ -1,11 +1,6 @@
 import * as PropTypes from 'prop-types';
 import {Props as IconProps} from '../Icon';
 
-export interface NavigationContext {
-  location: string;
-  onNavigationDismiss?(): void;
-}
-
 export interface ItemType {
   label: string;
   url: string;

@@ -1,15 +1,6 @@
-import {ClientApplication} from '@shopify/app-bridge';
-import {ValidationMap} from 'react';
-import * as PropTypes from 'prop-types';
 import {LinkLikeComponent} from '../UnstyledLink';
-import {Theme, THEME_CONTEXT_TYPES as polarisTheme} from '../ThemeProvider';
-import {
-  Intl,
-  Link,
-  StickyManager,
-  ScrollLockManager,
-  TranslationDictionary,
-} from './utilities';
+import {Theme} from '../ThemeProvider';
+import {TranslationDictionary} from './utilities';
 
 export interface AppProviderProps {
   /** A locale object or array of locale objects that overrides default translations */
@@ -29,20 +20,3 @@ export interface AppProviderProps {
   /** Custom logos and colors provided to select components */
   theme?: Theme;
 }
-
-export interface Context {
-  polaris: {
-    intl: Intl;
-    link: Link;
-    stickyManager: StickyManager;
-    scrollLockManager: ScrollLockManager;
-    subscribe?(callback: () => void): void;
-    unsubscribe?(callback: () => void): void;
-    appBridge?: ClientApplication<{}>;
-  };
-}
-
-export const polarisAppProviderContextTypes: ValidationMap<any> = {
-  polaris: PropTypes.any,
-  ...polarisTheme,
-};

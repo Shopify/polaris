@@ -31,11 +31,9 @@ class ContextualSaveBar extends React.PureComponent<CombinedProps, State> {
       message,
       discardAction,
       saveAction,
-      polaris: {
-        theme: {logo},
-        intl,
-      },
+      polaris: {theme, intl},
     } = this.props;
+    const logo = theme && theme.logo;
 
     const discardActionContent =
       discardAction && discardAction.content

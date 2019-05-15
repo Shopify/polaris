@@ -6,7 +6,7 @@ import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {wrapWithComponent} from '@shopify/react-utilities';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {Provider, WithinContentContext} from '../WithinContentContext';
+import WithinContentContext from '../WithinContentContext';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';
 import pick from '../../utilities/pick';
@@ -111,21 +111,27 @@ export class Modal extends React.Component<CombinedProps, State> {
       return;
     }
 
-    this.appBridgeModal = AppBridgeModal.create(
-      this.props.polaris.appBridge,
-      this.transformProps(),
-    );
+    const transformProps = this.transformProps();
+    if (transformProps) {
+      this.appBridgeModal = AppBridgeModal.create(
+        this.props.polaris.appBridge,
+        transformProps,
+      );
+    }
 
-    this.appBridgeModal.subscribe(
-      AppBridgeModal.Action.CLOSE,
-      this.props.onClose,
-    );
+    if (this.appBridgeModal) {
+      this.appBridgeModal.subscribe(
+        AppBridgeModal.Action.CLOSE,
+        this.props.onClose,
+      );
+    }
 
     const {open} = this.props;
 
     if (open) {
       this.focusReturnPointNode = document.activeElement as HTMLElement;
-      this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
+      this.appBridgeModal &&
+        this.appBridgeModal.dispatch(AppBridgeModal.Action.OPEN);
     }
   }
 
@@ -141,7 +147,10 @@ export class Modal extends React.Component<CombinedProps, State> {
     const prevAppBridgeProps = pick(prevProps, APP_BRIDGE_PROPS);
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
-    if (!isEqual(prevAppBridgeProps, currentAppBridgeProps)) {
+    if (
+      !isEqual(prevAppBridgeProps, currentAppBridgeProps) &&
+      transformedProps
+    ) {
       if (isIframeModal(transformedProps)) {
         (this.appBridgeModal as AppBridgeModal.ModalIframe).set(
           transformedProps,
@@ -287,15 +296,19 @@ export class Modal extends React.Component<CombinedProps, State> {
 
     const animated = !instant;
 
+    const context = {
+      withinContentContainer: true,
+    };
+
     return (
-      <Provider value={this.getContext}>
+      <WithinContentContext.Provider value={context}>
         <Portal idPrefix="modal">
           <TransitionGroup appear={animated} enter={animated} exit={animated}>
             {dialog}
           </TransitionGroup>
           {backdrop}
         </Portal>
-      </Provider>
+      </WithinContentContext.Provider>
     );
   }
 
@@ -342,6 +355,9 @@ export class Modal extends React.Component<CombinedProps, State> {
       polaris,
     } = this.props;
     const {appBridge} = polaris;
+
+    if (!appBridge) return;
+
     const safeTitle = typeof title === 'string' ? title : undefined;
     const safeSize = size != null ? AppBridgeModal.Size[size] : undefined;
     const srcPayload: {url?: string; path?: string} = {};
@@ -365,12 +381,6 @@ export class Modal extends React.Component<CombinedProps, State> {
           secondaryActions,
         }),
       },
-    };
-  }
-
-  get getContext(): WithinContentContext {
-    return {
-      withinContentContainer: true,
     };
   }
 }

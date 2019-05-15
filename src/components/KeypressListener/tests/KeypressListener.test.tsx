@@ -4,8 +4,10 @@ import {mountWithAppProvider} from 'test-utilities';
 import {Key} from '../../../types';
 import KeypressListener from '../KeypressListener';
 
+type EventCb = (event: any) => void;
+
 interface HandlerMap {
-  [eventName: string]: (event: any) => void;
+  [eventName: string]: EventCb;
 }
 
 const originalAddEventListener = document.addEventListener;
@@ -14,7 +16,7 @@ const listenerMap: HandlerMap = {};
 
 describe('<KeypressListener />', () => {
   beforeEach(() => {
-    document.addEventListener = jest.fn((event, cb) => {
+    document.addEventListener = jest.fn((event, cb: EventCb) => {
       listenerMap[event] = cb;
     });
 
