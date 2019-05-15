@@ -41,6 +41,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Removed `withContext` from `ResourceList.FilterControl` ([#1500](https://github.com/Shopify/polaris-react/pull/1500))
 - Upgraded the `Navigation` component from legacy context API to use createContext ([#1402](https://github.com/Shopify/polaris-react/pull/1402))
 - Updated `ThemeProvider` to no longer use `componentWillReceiveProps`([#1254](https://github.com/Shopify/polaris-react/pull/1254))
+- Removed `withContext` and `withAppProvider` from `ContextualSaveBar` ([#1498](https://github.com/Shopify/polaris-react/pull/1498))
 - Removed unused context from `Scrollable` ([#1253](https://github.com/Shopify/polaris-react/pull/1253))
 - Removed `withContext` from `Loading` ([#1497](https://github.com/Shopify/polaris-react/pull/1497))
 - Removed `withRef` from `UnstyledLink` ([#1501](https://github.com/Shopify/polaris-react/pull/1501))

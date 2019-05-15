@@ -7,7 +7,7 @@ import {ContextualSaveBarProps, FrameContext} from '../Frame';
 // crashing if we write `ContextualSaveBar extends React.Component<ContextualSaveBarProps>`
 interface Props extends ContextualSaveBarProps {}
 
-export default function ContextualSaveBar({
+export default React.memo(function ContextualSaveBar({
   message,
   saveAction,
   discardAction,
@@ -26,7 +26,8 @@ export default function ContextualSaveBar({
         alignContentFlush,
       });
     },
-    [message, saveAction, discardAction, alignContentFlush, frame],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [message, saveAction, discardAction, alignContentFlush],
   );
 
   React.useEffect(
@@ -36,8 +37,9 @@ export default function ContextualSaveBar({
         frame.removeContextualSaveBar();
       };
     },
-    [frame],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   return null;
-}
+});
