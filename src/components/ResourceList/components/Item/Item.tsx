@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
-import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import compose from '@shopify/react-compose';
 import isEqual from 'lodash/isEqual';
 import {DisableableAction, WithContextTypes} from '../../../../types';
@@ -398,6 +398,8 @@ export class Item extends React.Component<CombinedProps, State> {
     this.setState({actionsMenuVisible: false});
   };
 }
+
+function noop() {}
 
 function stopPropagation(event: React.MouseEvent<any>) {
   event.stopPropagation();

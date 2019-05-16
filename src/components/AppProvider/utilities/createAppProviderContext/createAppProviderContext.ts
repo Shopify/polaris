@@ -1,4 +1,3 @@
-import {noop} from '@shopify/javascript-utilities/other';
 import createApp, {
   getShopOrigin,
   LifecycleHook,
@@ -65,3 +64,5 @@ export const setClientInterfaceHook: DispatchActionHook = function(next) {
     return next(action);
   };
 };
+
+function noop() {}

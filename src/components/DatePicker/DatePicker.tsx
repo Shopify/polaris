@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {
   Range,
   Months,
@@ -280,6 +279,8 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     });
   };
 }
+
+function noop() {}
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;

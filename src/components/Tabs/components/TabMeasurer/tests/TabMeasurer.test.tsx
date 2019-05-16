@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import TabMeasurer from '../TabMeasurer';
 import Tab from '../../Tab';
@@ -104,3 +103,5 @@ describe('<TabMeasurer />', () => {
     });
   });
 });
+
+function noop() {}

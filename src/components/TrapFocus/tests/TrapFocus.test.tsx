@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {EventListener, Focus, TextContainer, TextField} from 'components';
 import TrapFocus from '../TrapFocus';
@@ -89,3 +88,5 @@ describe('<TrapFocus />', () => {
     expect(document.activeElement).toBe(focusedElement);
   });
 });
+
+function noop() {}

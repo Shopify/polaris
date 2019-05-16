@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 import {CSSTransition} from 'react-transition-group';
-import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
 
@@ -79,6 +78,8 @@ describe('<Sheet />', () => {
     );
   });
 });
+
+function noop() {}
 
 function mountWithContext(element: React.ReactElement<any>) {
   const frame = {};

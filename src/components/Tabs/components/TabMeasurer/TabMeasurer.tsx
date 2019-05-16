@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
-import {noop} from '@shopify/javascript-utilities/other';
 import {classNames} from '@shopify/react-utilities/styles';
 
 import EventListener from '../../../EventListener';
@@ -107,3 +106,5 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
     });
   };
 }
+
+function noop() {}

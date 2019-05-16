@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {mountWithAppProvider} from 'test-utilities';
-import {noop} from '../../../utilities/other';
 import ContextualSaveBar from '../ContextualSaveBar';
 
 describe('<ContextualSaveBar />', () => {
@@ -54,6 +53,8 @@ describe('<ContextualSaveBar />', () => {
     expect(frame.setContextualSaveBar).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}
 
 function mountWithContext(element: React.ReactElement<any>) {
   const frame = {

@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities';
-import {noop} from '../../../utilities/other';
 import Toast from '../Toast';
 
 describe('<Toast />', () => {
@@ -94,6 +93,8 @@ describe('<Toast />', () => {
     });
   });
 });
+
+function noop() {}
 
 function mountWithContext(element: React.ReactElement<any>) {
   const frame = {showToast: jest.fn(), hideToast: jest.fn()};

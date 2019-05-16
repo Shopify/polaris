@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities';
 import SearchField from '../SearchField';
@@ -130,6 +129,8 @@ describe('<TextField />', () => {
     });
   });
 });
+
+function noop() {}
 
 function findInput(wrapper: ReactWrapper) {
   return wrapper.find('input');

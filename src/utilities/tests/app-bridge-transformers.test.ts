@@ -1,7 +1,8 @@
 import {ClientApplication} from '@shopify/app-bridge';
 import {Button, ButtonGroup, Redirect} from '@shopify/app-bridge/actions';
-import {noop} from '../other';
 import {generateRedirect, transformActions} from '../app-bridge-transformers';
+
+function noop() {}
 
 describe('app bridge transformers', () => {
   const appBridge = {} as ClientApplication<{}>;

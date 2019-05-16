@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createPortal} from 'react-dom';
-import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 export interface Props {
   children?: React.ReactNode;
@@ -50,3 +50,5 @@ export default class Portal extends React.PureComponent<Props, State> {
       : null;
   }
 }
+
+function noop() {}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {Key} from '../../../types';
 import KeypressListener from '../KeypressListener';
@@ -49,3 +48,5 @@ describe('<KeypressListener />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 });
+
+function noop() {}

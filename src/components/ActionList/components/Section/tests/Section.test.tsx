@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Item from '../../Item';
 import Section from '../Section';
@@ -120,3 +119,5 @@ describe('<Section />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

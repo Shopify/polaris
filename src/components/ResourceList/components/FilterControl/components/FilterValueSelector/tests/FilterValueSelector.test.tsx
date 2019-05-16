@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, shallowWithAppProvider} from 'test-utilities';
 import {Select, TextField} from 'components';
 import FilterValueSelector from '../FilterValueSelector';
@@ -443,3 +442,5 @@ describe('<FilterValueSelector />', () => {
     });
   }
 });
+
+function noop() {}

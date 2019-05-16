@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {findByTestID, mountWithAppProvider, trigger} from 'test-utilities';
 import {
   Avatar,
@@ -480,3 +479,5 @@ describe('<Item />', () => {
     });
   });
 });
+
+function noop() {}

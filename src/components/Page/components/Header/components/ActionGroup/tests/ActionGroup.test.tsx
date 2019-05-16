@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {SaveMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {Popover, ActionList} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import Action from '../../Action';
@@ -114,3 +113,5 @@ describe('<ActionGroup />', () => {
     });
   });
 });
+
+function noop() {}

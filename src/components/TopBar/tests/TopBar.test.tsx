@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {
   mountWithAppProvider,
   shallowWithAppProvider,
@@ -274,6 +273,8 @@ describe('<TopBar />', () => {
     });
   });
 });
+
+function noop() {}
 
 function addPolarisContext(logo: ThemeContext) {
   const context = {

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as appBridge from '@shopify/app-bridge';
-import {noop} from '@shopify/javascript-utilities/other';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
   setClientInterfaceHook,
@@ -46,8 +45,8 @@ describe('createAppProviderContext()', () => {
         link: expect.any(Link),
         stickyManager: expect.any(StickyManager),
         scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
         appBridge: undefined,
       },
     });
@@ -91,8 +90,8 @@ describe('createAppProviderContext()', () => {
         link: expect.any(Link),
         stickyManager: expect.any(StickyManager),
         scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
         appBridge: {
           apiKey,
           forceRedirect: undefined,

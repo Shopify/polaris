@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Key} from 'types';
@@ -1008,6 +1007,8 @@ describe('<DualThumb />', () => {
     });
   });
 });
+
+function noop() {}
 
 function findThumbLower(containerComponent: ReactWrapper): ReactWrapper {
   return containerComponent.find('button').first();

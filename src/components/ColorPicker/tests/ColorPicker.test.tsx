@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import EventListener from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
@@ -193,3 +192,5 @@ describe('<ColorPicker />', () => {
     });
   });
 });
+
+function noop() {}
