@@ -1768,7 +1768,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.17.tgz#d48cf10f0dc6dcf59f827f5a3fc7a4a6004318d3"
   integrity sha512-3N3FRd/rA1v5glXjb90YdYUa+sOB7WrkU2rAhKZnF4TKD86Cym9swtulGuH0p9nxo7fP5woRNa8b0oFTpCO1bg==
 
-"@types/prop-types@*", "@types/prop-types@^15.5.5":
+"@types/prop-types@*":
   version "15.5.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.5.tgz#17038dd322c2325f5da650a94d5f9974943625e3"
   integrity sha512-mOrlCEdwX3seT3n0AXNt4KNPAZZxcsABUHwBgFXOt+nvFUXkxCAO6UBJHPrDxWEa2KDMil86355fjo8jbZ+K0Q==

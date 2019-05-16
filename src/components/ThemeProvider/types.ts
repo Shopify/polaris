@@ -1,5 +1,3 @@
-import * as PropTypes from 'prop-types';
-
 export type ColorsToParse = ThemeColor;
 
 export type ThemeLogo = {
@@ -35,5 +33,3 @@ export interface Theme {
 }
 
 export type ThemeVariant = 'light' | 'dark';
-
-export const THEME_CONTEXT_TYPES = {polarisTheme: PropTypes.any};
