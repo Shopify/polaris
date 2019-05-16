@@ -40,6 +40,12 @@ describe('<SkeletonPage />', () => {
       expect(displayText.text()).toBe('Products');
     });
 
+    it('does not render a title when a title is not provided', () => {
+      const skeletonPage = mountWithAppProvider(<SkeletonPage />);
+      const displayText = skeletonPage.find(DisplayText);
+      expect(displayText).toHaveLength(0);
+    });
+
     it('passes large to the size prop of DisplayText', () => {
       const skeletonPage = mountWithAppProvider(
         <SkeletonPage title="Products" />,
