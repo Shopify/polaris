@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {AppProviderContext} from '../../components';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {AppProviderContext} from '../../components/AppProvider';
 
 function useAppBridge() {
   const {appBridge} = React.useContext(AppProviderContext);

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {
-  AppProviderContext,
-  ThemeProviderContext,
-  PolarisContext,
-} from '../../components';
+/* eslint-disable shopify/strict-component-boundaries */
+import {AppProviderContext} from '../../components/AppProvider';
+import {ThemeProviderContext} from '../../components/ThemeProvider';
+import {PolarisContext} from '../../components/types';
+/* eslint-enable shopify/strict-component-boundaries */
 
 function usePolaris() {
   const polaris = React.useContext(AppProviderContext);
