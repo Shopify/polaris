@@ -307,6 +307,20 @@ describe('<Modal>', () => {
     });
   });
 
+  describe('lifecycle', () => {
+    it('unmounts safely', () => {
+      const modal = mountWithAppProvider(
+        <Modal open onClose={jest.fn()}>
+          <p>Child</p>
+        </Modal>,
+      );
+
+      expect(() => {
+        modal.unmount();
+      }).not.toThrow();
+    });
+  });
+
   describe('with app bridge', () => {
     const appBridgeModalMock = {
       set: jest.fn(),
