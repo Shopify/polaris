@@ -140,7 +140,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "アクション",
-        "moreActionsActivatorLabel": "その他のアクション",
+        "moreActionsActivatorLabel": "その他の操作",
         "warningMessage": "さらによいユーザーエクスペリエンスのために。宣伝のアクションは最大で{maxPromotedActions}回までです。"
       },
       "FilterCreator": {
