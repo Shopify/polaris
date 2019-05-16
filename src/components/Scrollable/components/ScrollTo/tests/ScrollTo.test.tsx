@@ -18,4 +18,20 @@ describe('<Scrollable.ScrollTo />', () => {
 
     expect(spy).toHaveBeenCalled();
   });
+
+  it("does not call scrollToPosition when it's undefined", () => {
+    const mockContext = {
+      scrollToPosition: undefined,
+    };
+
+    function fn() {
+      mountWithAppProvider(
+        <ScrollableContext.Provider value={mockContext}>
+          <ScrollTo />
+        </ScrollableContext.Provider>,
+      );
+    }
+
+    expect(fn).not.toThrowError();
+  });
 });
