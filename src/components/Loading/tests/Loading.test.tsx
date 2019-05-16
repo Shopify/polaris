@@ -43,6 +43,16 @@ describe('<Loading />', () => {
       expect(dispatch).toHaveBeenCalledWith(AppBridgeLoading.Action.STOP);
     });
   });
+
+  describe('lifecycle', () => {
+    it('unmounts safely', () => {
+      const {loading} = mountWithFrame(<Loading />);
+
+      expect(() => {
+        loading.unmount();
+      }).not.toThrow();
+    });
+  });
 });
 
 function mountWithFrame(element: React.ReactElement<any>) {
