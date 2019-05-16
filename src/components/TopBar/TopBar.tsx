@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 
 import {getWidth} from '../../utilities/getWidth';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';

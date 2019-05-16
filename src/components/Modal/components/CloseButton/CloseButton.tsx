@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 
 import Icon from '../../../Icon';
 

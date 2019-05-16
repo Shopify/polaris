@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as appBridge from '@shopify/app-bridge';
-import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
   setClientInterfaceHook,
 } from '../createAppProviderContext';
@@ -17,19 +16,12 @@ jest.mock('../../Link', () => ({
   __esModule: true,
 }));
 
-const actualIsServer = targets.isServer;
-
-function mockIsServer(value: boolean) {
-  (targets as any).isServer = value;
-}
-
 describe('createAppProviderContext()', () => {
   const createAppSpy: jest.SpyInstance<any> = jest.spyOn(appBridge, 'default');
   const Intl: jest.Mock<{}> = require.requireMock('../../Intl').default;
   const Link: jest.Mock<{}> = require.requireMock('../../Link').default;
 
   afterEach(() => {
-    mockIsServer(actualIsServer);
     createAppSpy.mockReset();
     Intl.mockReset();
     Link.mockReset();

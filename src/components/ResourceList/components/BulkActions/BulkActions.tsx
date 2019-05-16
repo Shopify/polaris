@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {durationBase} from '@shopify/polaris-tokens';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import ActionList from '../../../ActionList';

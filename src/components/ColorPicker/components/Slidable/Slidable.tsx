@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {isServer} from '@shopify/react-utilities/target';
-import EventListener from '../../../EventListener';
 
+import {isServer} from '../../../../utilities/target';
+import EventListener from '../../../EventListener';
 import styles from '../../ColorPicker.scss';
 
 export interface Position {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {classNames, variationName} from '@shopify/css-utilities';
 
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';

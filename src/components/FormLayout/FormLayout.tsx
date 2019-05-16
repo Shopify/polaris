@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {wrapWithComponent, isElementOfType} from '@shopify/react-utilities';
+import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 
-import {Group, Item, ItemProps} from './components';
+import {Group, Item} from './components';
 import styles from './FormLayout.scss';
 
 export interface Props {
@@ -28,5 +28,5 @@ function wrapChildren(child: React.ReactElement<{}>, index: number) {
     return child;
   }
   const props = {key: index};
-  return wrapWithComponent(child, Item, props as ItemProps);
+  return wrapWithComponent(child, Item, props);
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 

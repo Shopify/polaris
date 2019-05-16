@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
-import {elementChildren, wrapWithComponent} from '@shopify/react-utilities';
+import {classNames, variationName} from '@shopify/css-utilities';
+import {elementChildren, wrapWithComponent} from '../../utilities/components';
 
-import {Item, ItemProps} from './components';
+import {Item} from './components';
 import styles from './Stack.scss';
 
 export type Spacing = 'extraTight' | 'tight' | 'loose' | 'extraLoose' | 'none';
@@ -54,7 +54,7 @@ export default class Stack extends React.PureComponent<Props, never> {
 
     const itemMarkup = elementChildren(children).map((child, index) => {
       const props = {key: index};
-      return wrapWithComponent(child, Item, props as ItemProps);
+      return wrapWithComponent(child, Item, props);
     });
 
     return <div className={className}>{itemMarkup}</div>;

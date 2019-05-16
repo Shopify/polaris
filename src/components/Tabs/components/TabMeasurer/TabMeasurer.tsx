@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
-import {classNames} from '@shopify/react-utilities/styles';
-
+import {classNames} from '@shopify/css-utilities';
 import EventListener from '../../../EventListener';
 
 import {TabDescriptor} from '../../types';

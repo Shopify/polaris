@@ -12,7 +12,7 @@ import {
   dateIsSelected,
   getNewRange,
 } from '@shopify/javascript-utilities/dates';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import styles from '../../DatePicker.scss';
 import Day from '../Day';

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import {ReactComponent} from '@shopify/react-utilities/types';
 import {NonReactStatics} from '@shopify/useful-types';
 import {Consumer} from './components';
 
@@ -12,7 +11,7 @@ export interface Ref<T = any> {
 
 export default function withRef<OriginalProps>() {
   return function addForwardRef<C>(
-    WrappedComponent: ReactComponent<OriginalProps & Ref> & C,
+    WrappedComponent: React.ComponentType<OriginalProps & Ref> & C,
   ): React.ComponentType<OriginalProps> &
     NonReactStatics<typeof WrappedComponent> {
     class WithRef extends React.Component<OriginalProps, never> {

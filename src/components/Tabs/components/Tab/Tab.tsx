@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
 import UnstyledLink from '../../../UnstyledLink';

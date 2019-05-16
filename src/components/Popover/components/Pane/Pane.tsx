@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
-import {wrapWithComponent} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 
+import {wrapWithComponent} from '../../../../utilities/components';
 import Scrollable from '../../../Scrollable';
-
 import Section from '../Section';
 import styles from '../../Popover.scss';
 
@@ -25,7 +24,9 @@ export default function Pane({
   onScrolledToBottom,
 }: Props) {
   const className = classNames(styles.Pane, fixed && styles['Pane-fixed']);
-  const content = sectioned ? wrapWithComponent(children, Section) : children;
+  const content = sectioned
+    ? wrapWithComponent(children, Section, {})
+    : children;
 
   return fixed ? (
     <div className={className}>{content}</div>
