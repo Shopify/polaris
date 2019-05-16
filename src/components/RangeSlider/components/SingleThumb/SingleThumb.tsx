@@ -121,10 +121,6 @@ export default function SingleThumb(props: Props) {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const {onChange} = props;
 
-    if (onChange == null) {
-      return;
-    }
-
-    onChange(parseFloat(event.currentTarget.value), id);
+    onChange && onChange(parseFloat(event.currentTarget.value), id);
   }
 }
