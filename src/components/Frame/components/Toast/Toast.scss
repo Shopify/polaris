@@ -15,6 +15,10 @@ $Backdrop-opacity: 0.88;
   @include breakpoint-after($breakpoint) {
     padding: spacing();
   }
+
+  @media (-ms-high-contrast: active) {
+    border: border-width(thick) solid ms-high-contrast-color('text');
+  }
 }
 
 .Action {
