@@ -398,7 +398,7 @@ To provide access to your initialized Shopify App Bridge instance, we make it av
 ```js
 import React from 'react';
 import {render} from 'react-dom';
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {AppProvider} from '@shopify/polaris';
 import {Redirect} from '@shopify/app-bridge/actions';
 

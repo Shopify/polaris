@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import debounce from 'lodash/debounce';
 import {classNames} from '@shopify/react-utilities/styles';

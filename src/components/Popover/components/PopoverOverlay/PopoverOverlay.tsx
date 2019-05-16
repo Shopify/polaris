@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {classNames} from '@shopify/react-utilities/styles';

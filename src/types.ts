@@ -1,4 +1,4 @@
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {ValidationMap} from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {Props as IconProps} from './components/Icon';

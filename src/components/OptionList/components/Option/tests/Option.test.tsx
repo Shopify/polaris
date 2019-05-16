@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import Checkbox from '../../Checkbox';
 import Option, {Props} from '../Option';

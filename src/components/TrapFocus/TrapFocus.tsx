@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {
   focusFirstFocusableNode,

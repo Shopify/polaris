@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {DatePicker, Select, TextField} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import DateSelector, {Props, DateFilterOption} from '../DateSelector';

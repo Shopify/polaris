@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Image, DisplayText, TextContainer, Link} from 'components';
 import EmptyState from '../EmptyState';

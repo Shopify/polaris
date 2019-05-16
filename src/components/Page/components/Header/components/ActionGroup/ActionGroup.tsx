@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ActionList from '../../../../../ActionList';
 import Popover from '../../../../../Popover';
 import Action from '../Action';

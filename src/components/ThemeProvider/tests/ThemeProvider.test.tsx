@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import {mountWithAppProvider} from 'test-utilities';
 import ThemeProvider from '../ThemeProvider';

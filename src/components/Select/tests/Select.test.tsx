@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ShallowWrapper} from 'enzyme';
 import {InlineError} from 'components';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 

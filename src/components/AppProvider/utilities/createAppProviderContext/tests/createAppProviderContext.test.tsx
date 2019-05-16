@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as appBridge from '@shopify/app-bridge';
 import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {

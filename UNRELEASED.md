@@ -24,6 +24,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Import react using the default import `import React` instead of namespace imports `import * as React` ([#1515](https://github.com/Shopify/polaris-react/pull/1515))
+
 ### Dependency upgrades
 
 - Removed runtime dependency on `@shopify/images` as we never needed it at runtime ([#1474](https://github.com/Shopify/polaris-react/pull/1474))

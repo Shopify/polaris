@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {UserMenuModifier} from '../../../TopBar';
 import {IconableAction} from '../../../../types';
 import {Props as MessageProps} from '../Message';

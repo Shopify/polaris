@@ -1,4 +1,4 @@
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {Props as IconProps} from '../Icon';
 import {contentContextTypes} from '../../types';
 

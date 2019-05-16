@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {KeypressListener} from 'components';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {contextTypes} from '../../../types';
 import BaseTextField, {Props as TextFieldProps} from '../../../../../TextField';

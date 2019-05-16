@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as targets from '@shopify/react-utilities/target';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Image} from 'components';

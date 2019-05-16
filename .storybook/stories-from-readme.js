@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as Polaris from '../src';
 import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf} from '@storybook/react';

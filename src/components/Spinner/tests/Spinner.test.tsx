@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import Spinner from '../Spinner';
 import Image from '../../Image';

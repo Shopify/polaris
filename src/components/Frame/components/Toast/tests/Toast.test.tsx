@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities';
 import Button from '../../../../Button';

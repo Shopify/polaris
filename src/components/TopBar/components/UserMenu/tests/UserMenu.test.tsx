@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities';
 import {UserMenuContext} from '../context';

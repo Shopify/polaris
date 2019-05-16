@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {isServer} from '@shopify/react-utilities/target';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 

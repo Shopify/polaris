@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import reactCompose from '@shopify/react-compose';
 import {NonReactStatics} from '@shopify/useful-types';

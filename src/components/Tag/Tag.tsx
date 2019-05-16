@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';

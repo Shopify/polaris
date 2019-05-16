@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {classNames} from '@shopify/react-utilities/styles';
 import {elementChildren} from '@shopify/react-utilities';
 import {Item} from './components';

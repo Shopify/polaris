@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {TransitionGroup} from 'react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';

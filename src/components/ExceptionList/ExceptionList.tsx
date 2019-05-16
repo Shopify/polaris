@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 
 import Icon, {Props as IconProps} from '../Icon';

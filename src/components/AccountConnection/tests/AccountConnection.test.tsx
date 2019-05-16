@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Avatar, buttonFrom} from 'components';
 import AccountConnection from '../AccountConnection';

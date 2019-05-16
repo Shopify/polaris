@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {classNames} from '@shopify/react-utilities/styles';
 import styles from '../../DatePicker.scss';

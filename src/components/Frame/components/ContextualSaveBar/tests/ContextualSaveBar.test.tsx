@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {polarisAppProviderContextTypes} from 'components/AppProvider';
 import {createThemeContext, ThemeContext} from 'components/ThemeProvider';

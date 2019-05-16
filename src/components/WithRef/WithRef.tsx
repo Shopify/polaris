@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {ReactComponent} from '@shopify/react-utilities/types';
 import {NonReactStatics} from '@shopify/useful-types';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {wrapWithComponent, isElementOfType} from '@shopify/react-utilities';
 
 import {Group, Item, ItemProps} from './components';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {InlineError, Label, buttonFrom, Labelled} from 'components';
 import {mountWithAppProvider} from 'test-utilities';
 

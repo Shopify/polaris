@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Key} from 'types';

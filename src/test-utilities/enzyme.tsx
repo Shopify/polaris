@@ -7,7 +7,7 @@ import {
   MountRendererProps,
   ShallowRendererProps,
 } from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import {get} from '../utilities/get';
 import merge from '../utilities/merge';
 import {PolarisContext} from '../components/types';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {classNames, variationName} from '@shopify/react-utilities/styles';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import VisuallyHidden from '../VisuallyHidden';

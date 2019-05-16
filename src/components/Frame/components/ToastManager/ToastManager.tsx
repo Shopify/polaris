@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import {classNames} from '@shopify/react-utilities/styles';
 import EventListener from '../../../EventListener';

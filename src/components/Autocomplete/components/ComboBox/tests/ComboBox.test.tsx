@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';

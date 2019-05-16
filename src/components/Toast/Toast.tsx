@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 

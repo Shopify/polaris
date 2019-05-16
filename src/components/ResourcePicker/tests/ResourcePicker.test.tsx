@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities';
 import ResourcePicker from '../ResourcePicker';

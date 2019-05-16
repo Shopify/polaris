@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Key} from '../../../types';
 import KeypressListener from '../KeypressListener';

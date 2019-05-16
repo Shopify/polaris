@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {setColors} from './utils';
 import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
