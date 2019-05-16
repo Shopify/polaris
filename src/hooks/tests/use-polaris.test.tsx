@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {AppProviderContext, createPolarisContext} from '../../../components';
-import {mountWithAppProvider} from '../../../test-utilities/enzyme';
+import {AppProviderContext, createPolarisContext} from '../../components';
+import {mountWithAppProvider} from '../../test-utilities/enzyme';
 import usePolaris from '../use-polaris';
 
 describe('usePolaris', () => {

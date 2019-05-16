@@ -3,7 +3,7 @@ import {
   AppProviderContext,
   ThemeProviderContext,
   PolarisContext,
-} from '../../components';
+} from '../components';
 
 function usePolaris() {
   const polaris = React.useContext(AppProviderContext);

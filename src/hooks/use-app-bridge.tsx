@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {AppProviderContext} from '../../components';
+import {AppProviderContext} from '../components';
 
 function useAppBridge() {
   const {appBridge} = React.useContext(AppProviderContext);
