@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Card, Badge, Button} from 'components';
+import {Section} from '../components';
 import {contentContextTypes} from '../../../types';
 
 describe('<Card />', () => {
@@ -63,5 +64,44 @@ describe('<Card />', () => {
 
     expect(card.find(Button)).toHaveLength(1);
     expect(card.find(Card.Header)).toHaveLength(1);
+  });
+
+  it('renders a primary footer action', () => {
+    const card = mountWithAppProvider(
+      <Card primaryFooterAction={{content: 'test action'}}>
+        <p>Some card content.</p>
+      </Card>,
+    );
+
+    const primaryAction = card.find(Button).first();
+
+    expect(primaryAction).toHaveLength(1);
+    expect(primaryAction.text()).toBe('test action');
+  });
+
+  it('renders a secondary footer action', () => {
+    const card = mountWithAppProvider(
+      <Card secondaryFooterAction={{content: 'test action'}}>
+        <p>Some card content.</p>
+      </Card>,
+    );
+
+    const secondaryAction = card.find(Button).first();
+
+    expect(secondaryAction).toHaveLength(1);
+    expect(secondaryAction.text()).toBe('test action');
+  });
+
+  it('renders a section when sectioned', () => {
+    const card = mountWithAppProvider(
+      <Card sectioned>
+        <p>Some card content.</p>
+      </Card>,
+    );
+
+    const section = card.find(Section).first();
+
+    expect(section).toHaveLength(1);
+    expect(section.text()).toBe('Some card content.');
   });
 });
