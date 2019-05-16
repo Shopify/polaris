@@ -319,6 +319,24 @@ describe('<DropZone />', () => {
       expect(displayText.contains(errorOverlayText)).toBe(true);
     });
   });
+
+  describe('lifecycle', () => {
+    it('updates safely', () => {
+      const dropZone = mountWithAppProvider(<DropZone />);
+
+      expect(() => {
+        dropZone.setProps({openFileDialog: true});
+      }).not.toThrow();
+    });
+
+    it('unmounts safely', () => {
+      const dropZone = mountWithAppProvider(<DropZone />);
+
+      expect(() => {
+        dropZone.unmount();
+      }).not.toThrow();
+    });
+  });
 });
 
 function createEvent(name: string, files: any) {

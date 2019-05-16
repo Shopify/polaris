@@ -447,10 +447,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
   private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
-    if (onChange == null) {
-      return;
-    }
-    onChange(event.currentTarget.value, this.state.id);
+    onChange && onChange(event.currentTarget.value, this.state.id);
   };
 
   private handleFocus = () => {

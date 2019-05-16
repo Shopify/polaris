@@ -201,6 +201,30 @@ describe('<Resizer />', () => {
       expect(wrapperDiv.prop('aria-hidden')).toBe(true);
     });
   });
+
+  describe('lifecycle', () => {
+    it('mounts safely', () => {
+      expect(() => {
+        mountWithAppProvider(<Resizer {...mockProps} />);
+      }).not.toThrow();
+    });
+
+    it('updates safely', () => {
+      const resizer = mountWithAppProvider(<Resizer {...mockProps} />);
+
+      expect(() => {
+        resizer.setProps({contents: 'new content'});
+      }).not.toThrow();
+    });
+
+    it('unmounts safely', () => {
+      const resizer = mountWithAppProvider(<Resizer {...mockProps} />);
+
+      expect(() => {
+        resizer.unmount();
+      }).not.toThrow();
+    });
+  });
 });
 
 function noop() {}

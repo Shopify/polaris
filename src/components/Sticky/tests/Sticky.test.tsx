@@ -11,10 +11,25 @@ describe('<Sticky />', () => {
     );
     expect(element.find('h1').exists()).toBe(true);
   });
+
   it('renders a function as child component with a boolean argument set to false by default', () => {
     const element = mountWithAppProvider(<Sticky>{functionItem}</Sticky>);
     expect(element.find('h1').exists()).toBe(true);
     expect(element.find('h2').exists()).toBe(false);
+  });
+
+  describe('lifecycle', () => {
+    it('unmounts safely', () => {
+      const sticky = mountWithAppProvider(
+        <Sticky>
+          <p>Child content</p>
+        </Sticky>,
+      );
+
+      expect(() => {
+        sticky.unmount();
+      }).not.toThrow();
+    });
   });
 });
 
