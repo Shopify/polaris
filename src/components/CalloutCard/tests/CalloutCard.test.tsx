@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {Button} from 'components';
+import {Button, ButtonGroup} from 'components';
 import CalloutCard from '../CalloutCard';
 
 describe('<CalloutCard />', () => {
@@ -15,6 +15,7 @@ describe('<CalloutCard />', () => {
         content: 'Customize checkout',
         url: 'https://www.shopify.com',
       }}
+      secondaryAction={{content: 'Secondary action'}}
       onDismiss={spy}
     >
       <p>Content</p>
@@ -51,8 +52,18 @@ describe('<CalloutCard />', () => {
     expect(calloutCard.find('a').contains('Customize checkout')).toBe(true);
   });
 
+  it('renders a secondary action with the given content in a button group', () => {
+    expect(
+      calloutCard
+        .find(Button)
+        .last()
+        .text(),
+    ).toBe('Secondary action');
+    expect(calloutCard.find(ButtonGroup)).toHaveLength(1);
+  });
+
   it('is dismissed', () => {
-    expect(calloutCard.find(Button)).toHaveLength(2);
+    expect(calloutCard.find(Button)).toHaveLength(3);
 
     calloutCard
       .find(Button)
@@ -60,5 +71,22 @@ describe('<CalloutCard />', () => {
       .simulate('click');
 
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('it only renders one button when only a primary action is given', () => {
+    const oneActionCalloutCard = mountWithAppProvider(
+      <CalloutCard
+        title="Title"
+        illustration={illustration}
+        primaryAction={{
+          content: 'Customize checkout',
+          url: 'https://www.shopify.com',
+        }}
+      >
+        <p>Content</p>
+      </CalloutCard>,
+    );
+
+    expect(oneActionCalloutCard.find(Button)).toHaveLength(1);
   });
 });
