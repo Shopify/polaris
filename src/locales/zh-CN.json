@@ -103,7 +103,7 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴仪表板“应用设置”部分上传应用程序图标。"
+        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。"
       }
     },
     "Pagination": {
