@@ -1,6 +1,12 @@
 import * as React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
-import {EventListener, Focus, TextContainer, TextField} from 'components';
+import {mountWithAppProvider, trigger} from 'test-utilities';
+import {
+  EventListener,
+  Focus,
+  TextContainer,
+  TextField,
+  Button,
+} from 'components';
 import TrapFocus from '../TrapFocus';
 
 describe('<TrapFocus />', () => {
@@ -86,6 +92,46 @@ describe('<TrapFocus />', () => {
     const focusedElement = trapFocus.find('a').getDOMNode();
 
     expect(document.activeElement).toBe(focusedElement);
+  });
+
+  describe('handleBlur', () => {
+    const externalDomNode = mountWithAppProvider(<Button />)
+      .find('button')
+      .getDOMNode();
+
+    it('prevents default when focus moves to an external node', () => {
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus>
+          <TextField label="" value="" onChange={noop} autoFocus />
+        </TrapFocus>,
+      );
+
+      const event: FocusEvent = new FocusEvent('focusout', {
+        relatedTarget: externalDomNode,
+      });
+      Object.assign(event, {preventDefault: jest.fn()});
+
+      trigger(trapFocus.find(EventListener), 'handler', event);
+
+      expect(event.preventDefault).toHaveBeenCalled();
+    });
+
+    it('allows default when trapping is false', () => {
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus trapping={false}>
+          <TextField label="" value="" onChange={noop} autoFocus />
+        </TrapFocus>,
+      );
+
+      const event: FocusEvent = new FocusEvent('focusout', {
+        relatedTarget: externalDomNode,
+      });
+      Object.assign(event, {preventDefault: jest.fn()});
+
+      trigger(trapFocus.find(EventListener), 'handler', event);
+
+      expect(event.preventDefault).not.toHaveBeenCalled();
+    });
   });
 });
 
