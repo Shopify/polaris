@@ -28,6 +28,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Updated Storybook to `v5.1.0-alpha.39`, improving component searchability in the sidebar [[#1488](https://github.com/Shopify/polaris-react/pull/1488)]
+
 ### Dependency upgrades
 
 - Removed runtime dependency on `@shopify/images` as we never needed it at runtime ([#1474](https://github.com/Shopify/polaris-react/pull/1474))
