@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import withContext from '../../../../WithContext';
 import {WithContextTypes} from '../../../../../types';
 import {UserMenuProps} from '../components';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {AppProviderContext} from '../../components/AppProvider';
 

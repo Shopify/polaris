@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {clamp} from '@shopify/javascript-utilities/math';
 
 import {hsbToRgb} from '../../utilities/color-transformers';

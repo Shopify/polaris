@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {classNames} from '@shopify/css-utilities';
 import {durationBase} from '@shopify/polaris-tokens';

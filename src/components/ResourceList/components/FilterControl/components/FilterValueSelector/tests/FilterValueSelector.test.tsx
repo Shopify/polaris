@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {Select, TextField} from 'components';
 import FilterValueSelector from '../FilterValueSelector';

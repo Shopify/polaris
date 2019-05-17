@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 /* eslint-disable shopify/strict-component-boundaries */
 import {AppProviderContext} from '../../components/AppProvider';
 import {ThemeProviderContext} from '../../components/ThemeProvider';

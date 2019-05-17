@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import StickyManager from '../../StickyManager';
 import ScrollLockManager from '../../ScrollLockManager';
 import createPolarisContext from '../createPolarisContext';

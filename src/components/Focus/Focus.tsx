@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';

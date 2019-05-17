@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import reactCompose from '@shopify/react-compose';
 import {NonReactStatics} from '@shopify/useful-types';
 // eslint-disable-next-line shopify/strict-component-boundaries

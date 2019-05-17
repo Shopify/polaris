@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ToastPropsWithID, ToastID, ContextualSaveBarProps} from './types';
 
 export interface FrameContextType {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Spinner} from 'components';

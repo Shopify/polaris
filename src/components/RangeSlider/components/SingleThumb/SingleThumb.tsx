@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {classNames} from '@shopify/css-utilities';
 import clamp from '../../../../utilities/clamp';
 import Labelled, {helpTextID} from '../../../Labelled';

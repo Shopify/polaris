@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 import compose from '@shopify/react-compose';
 import {ComplexAction, WithContextTypes} from '../../../../types';

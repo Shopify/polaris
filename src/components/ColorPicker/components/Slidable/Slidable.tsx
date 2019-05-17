@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {isServer} from '../../../../utilities/target';
 import EventListener from '../../../EventListener';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {createPolarisContext} from '../../../components';
 import {mountWithAppProvider} from '../../../test-utilities/enzyme';

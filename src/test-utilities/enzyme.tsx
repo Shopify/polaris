@@ -1,5 +1,5 @@
 import {ReactWrapper, CommonWrapper, mount} from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {get} from '../utilities/get';
 import merge from '../utilities/merge';

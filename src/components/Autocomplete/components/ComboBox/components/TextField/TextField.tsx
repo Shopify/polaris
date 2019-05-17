@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import ComboBoxContext from '../../context';
 import BaseTextField, {Props as TextFieldProps} from '../../../../../TextField';

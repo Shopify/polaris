@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {Resizer, Spinner} from '../components';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import './ScrollLock.scss';
 import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 

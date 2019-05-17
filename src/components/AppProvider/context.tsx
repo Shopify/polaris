@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ClientApplication} from '@shopify/app-bridge';
 import createPolarisContext from './utilities/createPolarisContext';
 import {Intl, Link, StickyManager, ScrollLockManager} from './utilities';

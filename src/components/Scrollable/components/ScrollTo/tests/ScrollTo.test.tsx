@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import ScrollTo from '../ScrollTo';
 import ScrollableContext from '../../../context';

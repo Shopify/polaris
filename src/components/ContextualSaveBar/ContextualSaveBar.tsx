@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import compose from '@shopify/react-compose';
 import isEqual from 'lodash/isEqual';
 import {ContextualSaveBarProps, FrameContextType, FrameContext} from '../Frame';

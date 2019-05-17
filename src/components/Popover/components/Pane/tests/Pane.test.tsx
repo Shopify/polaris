@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {TextContainer, Scrollable} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import Pane from '../Pane';

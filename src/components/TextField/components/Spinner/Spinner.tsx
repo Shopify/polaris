@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 import Icon from '../../../Icon';
 

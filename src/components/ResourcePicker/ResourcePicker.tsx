@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {ResourcePicker as AppBridgeResourcePicker} from '@shopify/app-bridge/actions';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';

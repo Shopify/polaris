@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {InlineError} from 'components';
 import {mountWithAppProvider} from 'test-utilities';

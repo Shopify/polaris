@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {IconableAction} from '../../../../../../types';
 import Avatar, {Props as AvatarProps} from '../../../../../Avatar';
 import MessageIndicator from '../../../../../MessageIndicator';

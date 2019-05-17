@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {FrameContext} from '../Frame';
 import {usePolaris} from '../../hooks';
