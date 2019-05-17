@@ -179,16 +179,16 @@ export type IconSource =
   | BundledIcon
   | UntrustedSVG;
 export interface Props {
-  /** The SVG contents to display in the icon. Icons should be in a 20 X 20 pixel viewbox */
+  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixels viewBox) */
   source: IconSource;
-  /** Sets the color for the SVG fill */
+  /** Set the color for the SVG fill */
   color?: Color;
   /** Show a backdrop behind the icon */
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
-  /** Render the icon in an img tag instead of an svg. Prevents XSS */
-  /** @deprecated the untrusted prop is deprecated and will be removed. All raw strings passed into the Icon component will be assumed to be untrusted */
+  /** Render the icon in an img element instead of an svg to prevent XSS */
+  /** @deprecated the untrusted prop is deprecated and will be removed (all raw strings passed into the Icon component will be assumed to be untrusted) */
   untrusted?: boolean;
 }
 
