@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect, useRef} from 'react';
 import isEqual from 'lodash/isEqual';
 
 type EffectCallback = () => void | (() => void | undefined);
@@ -9,7 +9,7 @@ function useDeepCompareRef(
   dependencies: DependencyList,
   comparator: Comparator = isEqual,
 ) {
-  const dependencyList = React.useRef<DependencyList>(dependencies);
+  const dependencyList = useRef<DependencyList>(dependencies);
 
   if (!comparator(dependencyList.current, dependencies)) {
     dependencyList.current = dependencies;
@@ -23,7 +23,7 @@ function useDeepCompare(
   dependencies: DependencyList,
   customCompare?: Comparator,
 ) {
-  React.useEffect(callback, useDeepCompareRef(dependencies, customCompare));
+  useEffect(callback, useDeepCompareRef(dependencies, customCompare));
 }
 
 export default useDeepCompare;

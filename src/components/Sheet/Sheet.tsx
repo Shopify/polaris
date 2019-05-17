@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 
 import {CSSTransition} from 'react-transition-group';
 import debounce from 'lodash/debounce';
@@ -47,11 +47,11 @@ export interface State {
 }
 
 export function Sheet({children, open, onClose}: Props) {
-  const [mobile, setMobile] = React.useState(false);
-  const frame = React.useContext(FrameContext);
+  const [mobile, setMobile] = useState(false);
+  const frame = useContext(FrameContext);
   const {intl} = usePolaris();
 
-  const handleResize = React.useCallback(
+  const handleResize = useCallback(
     debounce(
       () => {
         if (mobile !== isMobile()) {
@@ -64,7 +64,7 @@ export function Sheet({children, open, onClose}: Props) {
     [mobile],
   );
 
-  React.useEffect(
+  useEffect(
     () => {
       if (frame == null) {
         // eslint-disable-next-line no-console

@@ -1,4 +1,4 @@
-import React from 'react';
+import {useContext} from 'react';
 /* eslint-disable shopify/strict-component-boundaries */
 import {AppProviderContext} from '../../components/AppProvider';
 import {ThemeProviderContext} from '../../components/ThemeProvider';
@@ -6,7 +6,7 @@ import {PolarisContext} from '../../components/types';
 /* eslint-enable shopify/strict-component-boundaries */
 
 function usePolaris() {
-  const polaris = React.useContext(AppProviderContext);
+  const polaris = useContext(AppProviderContext);
 
   if (Object.keys(polaris).length < 1) {
     throw new Error(
@@ -16,7 +16,7 @@ function usePolaris() {
     );
   }
 
-  const polarisTheme = React.useContext(ThemeProviderContext);
+  const polarisTheme = useContext(ThemeProviderContext);
 
   const polarisContext: PolarisContext = {
     ...polaris,
