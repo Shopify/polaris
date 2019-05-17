@@ -18,7 +18,7 @@ export interface Props {
     singular: string;
     plural: string;
   };
-  disabled: boolean;
+  disabled?: boolean;
   onAddFilter?(newFilter: AppliedFilter): void;
 }
 

@@ -46,7 +46,7 @@ Note in the props table that a number of properties are only available in stand-
 
 ```jsx
 ReactDOM.render(
-  <AppProvider apiKey="YOUR_API_KEY">
+  <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
     <Page
       breadcrumbs={[{content: 'Products'}]}
       title="Product reviews"

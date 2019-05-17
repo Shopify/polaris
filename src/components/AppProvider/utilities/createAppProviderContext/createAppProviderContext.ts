@@ -16,15 +16,17 @@ export interface CreateAppProviderContext extends AppProviderProps {
   scrollLockManager?: ScrollLockManager;
 }
 
-export default function createAppProviderContext({
-  i18n,
-  linkComponent,
-  apiKey,
-  shopOrigin,
-  forceRedirect,
-  stickyManager,
-  scrollLockManager,
-}: CreateAppProviderContext = {}): AppProviderContextType {
+export default function createAppProviderContext(
+  {
+    i18n,
+    linkComponent,
+    apiKey,
+    shopOrigin,
+    forceRedirect,
+    stickyManager,
+    scrollLockManager,
+  }: CreateAppProviderContext = {i18n: {}},
+): AppProviderContextType {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const appBridge = apiKey

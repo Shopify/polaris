@@ -101,7 +101,7 @@ describe('createAppProviderContext()', () => {
     });
 
     const apiKey = '4p1k3y';
-    createAppProviderContext({apiKey});
+    createAppProviderContext({apiKey, i18n: {}});
 
     expect(set).toHaveBeenCalledWith(
       appBridge.LifecycleHook.DispatchAction,

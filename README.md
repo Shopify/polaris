@@ -53,7 +53,7 @@ import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 
 ```javascript
 ReactDOM.render(
-  <AppProvider>
+  <AppProvider i18n={{}}>
     <Page title="Example app">
       <Card sectioned>
         <Button onClick={() => alert('Button clicked!')}>Example button</Button>

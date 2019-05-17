@@ -1,5 +1,4 @@
 import {get} from '../../../../utilities/get';
-import defaultTranslation from '../../../../locales';
 import merge from '../../../../utilities/merge';
 import {
   TranslationDictionary,
@@ -25,13 +24,9 @@ export default class Intl {
   setTranslation(
     translation: TranslationDictionary | TranslationDictionary[] | undefined,
   ) {
-    const i18n = Array.isArray(translation)
+    this.translation = Array.isArray(translation)
       ? merge(...translation)
       : translation;
-
-    this.translation = i18n
-      ? merge(defaultTranslation, i18n)
-      : defaultTranslation;
   }
 
   translate = (

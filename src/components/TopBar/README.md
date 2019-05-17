@@ -230,7 +230,25 @@ class TopBarExample extends React.Component {
 
     return (
       <div style={{height: '250px'}}>
-        <AppProvider theme={theme}>
+        <AppProvider
+          theme={theme}
+          i18n={{
+            Polaris: {
+              Avatar: {
+                label: 'Avatar',
+                labelWithInitials: 'Avatar with initials {initials}',
+              },
+              Frame: {skipToContent: 'Skip to content'},
+              TopBar: {
+                toggleMenuLabel: 'Toggle menu',
+                SearchField: {
+                  clearButtonLabel: 'Clear',
+                  search: 'Search',
+                },
+              },
+            },
+          }}
+        >
           <Frame topBar={topBarMarkup} />
         </AppProvider>
       </div>
@@ -352,7 +370,25 @@ class TopBarExample extends React.Component {
 
     return (
       <div style={{height: '250px'}}>
-        <AppProvider theme={theme}>
+        <AppProvider
+          theme={theme}
+          i18n={{
+            Polaris: {
+              Frame: {skipToContent: 'Skip to content'},
+              Avatar: {
+                label: 'Avatar',
+                labelWithInitials: 'Avatar with initials {initials}',
+              },
+              TopBar: {
+                toggleMenuLabel: 'Toggle menu',
+                SearchField: {
+                  clearButtonLabel: 'Clear',
+                  search: 'Search',
+                },
+              },
+            },
+          }}
+        >
           <Frame topBar={topBarMarkup} />
         </AppProvider>
       </div>

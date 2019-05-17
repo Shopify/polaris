@@ -4,7 +4,7 @@ import {TranslationDictionary} from './utilities';
 
 export interface AppProviderProps {
   /** A locale object or array of locale objects that overrides default translations */
-  i18n?: TranslationDictionary | TranslationDictionary[];
+  i18n: TranslationDictionary | TranslationDictionary[];
   /** A custom component to use for all links used by Polaris components */
   linkComponent?: LinkLikeComponent;
   /** The API key for your application from the Partner dashboard */

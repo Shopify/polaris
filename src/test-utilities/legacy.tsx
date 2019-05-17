@@ -5,6 +5,7 @@ import {get} from '../utilities/get';
 import merge from '../utilities/merge';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
+import translations from '../../locales/en.json';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {
@@ -104,7 +105,7 @@ export function mountWithAppProvider<P>(
 ): PolarisContextReactWrapper<P, any> {
   const {context: ctx = {}} = options;
 
-  const polarisDefault = createPolarisContext();
+  const polarisDefault = createPolarisContext({i18n: translations});
   const polaris =
     (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
 

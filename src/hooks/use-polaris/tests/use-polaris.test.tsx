@@ -3,6 +3,7 @@ import {mount} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import {AppProviderContext, createPolarisContext} from '../../../components';
 import usePolaris from '../use-polaris';
+import translations from '../../../../locales/en.json';
 
 describe('usePolaris', () => {
   it('throws when polaris is not defined', () => {
@@ -39,7 +40,7 @@ describe('usePolaris', () => {
 
     mountWithAppProvider(<Component />);
     expect(JSON.stringify(context)).toStrictEqual(
-      JSON.stringify(createPolarisContext()),
+      JSON.stringify(createPolarisContext({i18n: translations})),
     );
   });
 });

@@ -171,6 +171,7 @@
     "esnext",
     "styles",
     "types",
+    "locales",
     "docs",
     "index.js",
     "index.es.js",

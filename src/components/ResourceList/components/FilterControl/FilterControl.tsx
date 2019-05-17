@@ -39,6 +39,11 @@ export default function FilterControl({
   const {intl} = usePolaris();
   const {selectMode, resourceName} = React.useContext(ResourceListContext);
 
+  const filterResourceName = resourceName || {
+    singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
+    plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
+  };
+
   const handleAddFilter = React.useCallback(
     (newFilter: AppliedFilter) => {
       if (!onFiltersChange) {
@@ -96,7 +101,7 @@ export default function FilterControl({
   const textFieldLabel = placeholder
     ? placeholder
     : intl.translate('Polaris.ResourceList.FilterControl.textFieldLabel', {
-        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+        resourceNamePlural: filterResourceName.plural.toLocaleLowerCase(),
       });
 
   if (additionalAction) {
@@ -109,7 +114,7 @@ export default function FilterControl({
   const filterCreatorMarkup =
     filters.length > 0 ? (
       <FilterCreator
-        resourceName={resourceName}
+        resourceName={filterResourceName}
         filters={filters}
         onAddFilter={handleAddFilter}
         disabled={selectMode}
