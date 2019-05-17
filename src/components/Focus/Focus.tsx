@@ -1,5 +1,5 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom';
+import {findDOMNode} from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
@@ -28,7 +28,7 @@ export default class Focus extends React.PureComponent<Props, never> {
       return;
     }
 
-    const root = ReactDOM.findDOMNode(this) as HTMLElement | null;
+    const root = findDOMNode(this) as HTMLElement | null;
     if (root) {
       if (!root.querySelector('[autofocus]')) {
         focusFirstFocusableNode(root, false);
