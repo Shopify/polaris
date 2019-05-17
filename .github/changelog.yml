@@ -1,4 +1,4 @@
-filename: UNRELEASED.md
+filename: UNRELEASED-V4.md
 include:
   - /^config\//
   - /^documentation\//
@@ -12,6 +12,6 @@ include:
   - /^LICENSE.md$/
   - /^package.json$/
   - /^tsconfig.json$/
-inProgressMessage: missing an entry in UNRELEASED.md
+inProgressMessage: missing an entry in UNRELEASED-V4.md
 skipLabel: skip changelog
-detailsUrl: https://github.com/Shopify/polaris-react/blob/master/UNRELEASED.md
+detailsUrl: https://github.com/Shopify/polaris-react/blob/version-4.0.0/UNRELEASED-V4.md
