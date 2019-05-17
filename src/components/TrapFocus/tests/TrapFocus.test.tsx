@@ -132,6 +132,25 @@ describe('<TrapFocus />', () => {
 
       expect(event.preventDefault).not.toHaveBeenCalled();
     });
+
+    it('allows default when the related target is a child', () => {
+      const trapFocus = mountWithAppProvider(
+        <TrapFocus>
+          <TextField label="" value="" onChange={noop} autoFocus />
+        </TrapFocus>,
+      );
+
+      const internalDomNode = trapFocus.find('input').getDOMNode();
+
+      const event: FocusEvent = new FocusEvent('focusout', {
+        relatedTarget: internalDomNode,
+      });
+      Object.assign(event, {preventDefault: jest.fn()});
+
+      trigger(trapFocus.find(EventListener), 'handler', event);
+
+      expect(event.preventDefault).not.toHaveBeenCalled();
+    });
   });
 });
 
