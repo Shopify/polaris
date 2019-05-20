@@ -23,6 +23,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed an issue where the JavaScript breakpoints incorrectly set the navigation bar collapsed breakpoint ([#1475](https://github.com/Shopify/polaris-react/pull/1475))
 - Added a border to `Toast` messages to make them more visible in Windows high contrast mode ([#1469](https://github.com/Shopify/polaris-react/pull/1469))
 - Add `box-shadow` to the `Banner` to make it more visible in Windows high contrast mode ([#1481](https://github.com/Shopify/polaris-react/pull/1481))
+- Add `box-shadow` to the `Card` to make it more visible in Windows high contrast mode ([#1524](https://github.com/Shopify/polaris-react/pull/1524))
 
 ### Documentation
 
