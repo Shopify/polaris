@@ -7,13 +7,13 @@
   background: none;
   border: 0;
   font-size: inherit;
-  color: color('blue');
+  color: color('indigo');
   text-decoration: none;
   cursor: pointer;
 
   &:hover,
   &:active {
-    color: color('blue', 'dark');
+    color: color('indigo', 'dark');
   }
 }
 

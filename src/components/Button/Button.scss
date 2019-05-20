@@ -113,23 +113,23 @@ $spinner-size: rem(20px);
 // stylelint-disable selector-max-specificity
 
 .plain {
-  @include recolor-icon(color('blue'));
+  @include recolor-icon(color('indigo'));
   margin: (-1 * $vertical-padding) rem(-8px);
   padding-left: rem(8px);
   padding-right: rem(8px);
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: color('blue');
+  color: color('indigo');
 
   &:hover,
   &:focus,
   &:active {
-    @include recolor-icon(color('blue', 'dark'));
+    @include recolor-icon(color('indigo', 'dark'));
     background: transparent;
     border: 0;
     box-shadow: none;
-    color: color('blue', 'dark');
+    color: color('indigo', 'dark');
   }
 
   &:focus {

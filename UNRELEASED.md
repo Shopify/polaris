@@ -15,8 +15,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Enhancements
 
 - Added support for dual values to `RangeSlider` component ([#784](https://github.com/Shopify/polaris-react/pull/784))
-
 - Updated type restrictions for `AnnotatedSection` to allow its `title` prop to accept `React.ReactNode` instead of `string` ([#1431](https://github.com/Shopify/polaris-react/pull/1431))
+- Updated the `Link` component and `plain` variant of the `Button` component to use indigo as a base color instead of blue ([]())
 
 ### Bug fixes
 
