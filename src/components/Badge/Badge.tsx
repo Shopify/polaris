@@ -4,7 +4,13 @@ import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import VisuallyHidden from '../VisuallyHidden';
 import styles from './Badge.scss';
 
-export type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
+export type Status =
+  | 'success'
+  | 'info'
+  | 'attention'
+  | 'warning'
+  | 'critical'
+  | 'new';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 export type Size = 'small' | 'medium';
 
@@ -34,6 +40,7 @@ export const STATUS_LABELS: {[key in Status]: Status} = {
   info: 'info',
   success: 'success',
   warning: 'warning',
+  critical: 'critical',
   attention: 'attention',
   new: 'new',
 };
@@ -47,6 +54,11 @@ function Badge({
   size = DEFAULT_SIZE,
   polaris: {intl},
 }: CombinedProps) {
+  if (status === 'warning') {
+    // eslint-disable-next-line no-console
+    console.warn(intl.translate('Polaris.Badge.warningMessage'));
+  }
+
   const className = classNames(
     styles.Badge,
     status && styles[variationName('status', status)],

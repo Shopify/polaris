@@ -18,10 +18,12 @@
       "STATUS_LABELS": {
         "info": "Info",
         "success": "Success",
+        "critical": "Critical",
         "warning": "Warning",
         "attention": "Attention",
         "new": "New"
-      }
+      },
+      "warningMessage": "Deprecation: The `warning` option for the `status` property on Badge has been deprecated. Use another `status` instead."
     },
 
     "Button": {

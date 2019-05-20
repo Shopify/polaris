@@ -12,7 +12,7 @@ keywords:
   - informational badge
   - success badge
   - attention badge
-  - warning badge
+  - critical badge
   - object status
   - status
   - alert
@@ -158,14 +158,14 @@ Use when something requires merchants’ attention but the issue isn’t critica
 
 <!-- /content-for -->
 
-### Warning badge
+### Critical badge
 
-Use for critical and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible.
+Use for critical and irreversible issues that require merchants’ attention and potential action.
 
 Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
-<Badge status="warning">SSL unavailable</Badge>
+<Badge status="critical">SSL unavailable</Badge>
 ```
 
 <!-- content-for: android -->

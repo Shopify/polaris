@@ -10,13 +10,15 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Deprecations
 
+- Deprecated passing `warning` to the `Badge` component's `status` property in favor of alternative `Badge` `status` options ([#1533](https://github.com/Shopify/polaris-react/pull/1533))
+
 ### New components
 
 ### Enhancements
 
 - Added support for dual values to `RangeSlider` component ([#784](https://github.com/Shopify/polaris-react/pull/784))
-
 - Updated type restrictions for `AnnotatedSection` to allow its `title` prop to accept `React.ReactNode` instead of `string` ([#1431](https://github.com/Shopify/polaris-react/pull/1431))
+- Added a `crtical` option for the `Badge` component's `status` property ([#1533](https://github.com/Shopify/polaris-react/pull/1533))
 
 ### Bug fixes
 

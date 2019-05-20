@@ -29,4 +29,16 @@ describe('<Badge />', () => {
       badge.unmount();
     });
   });
+
+  describe('console.warn', () => {
+    it('warns when a warning status is passed to badge', () => {
+      const warnSpy = jest.spyOn(console, 'warn');
+
+      mountWithAppProvider(<Badge status="warning">test</Badge>);
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Deprecation: The `warning` option for the `status` property on Badge has been deprecated. Use another `status` instead.',
+      );
+    });
+  });
 });

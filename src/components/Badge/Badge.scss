@@ -53,6 +53,12 @@ $pip-spacing: ($height - $pip-size) / 2;
   color: color('orange', 'text');
 }
 
+.statusCritical {
+  @include pip-color(color('red', 'dark'));
+  background-color: color('red', 'light');
+  color: color('red', 'text');
+}
+
 .statusNew {
   background-color: color('sky');
   color: color('ink');
