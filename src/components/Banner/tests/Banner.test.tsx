@@ -43,8 +43,8 @@ describe('<Banner />', () => {
     expect(banner.find(Icon).prop('color')).toBe('tealDark');
   });
 
-  it('uses a yellowDark circleAlert if status is warning', () => {
-    const banner = mountWithAppProvider(<Banner status="warning" />);
+  it('uses a yellowDark circleAlert if status is attention', () => {
+    const banner = mountWithAppProvider(<Banner status="attention" />);
     expect(banner.find(Icon).prop('source')).toBe(CircleAlertMajorTwotone);
     expect(banner.find(Icon).prop('color')).toBe('yellowDark');
   });
@@ -135,6 +135,18 @@ describe('<Banner />', () => {
         .filterWhere((element: ReactWrapper) => element.prop('tabIndex') === 0);
 
       expect(div.getDOMNode()).toBe(document.activeElement);
+    });
+  });
+
+  describe('console.warn', () => {
+    it('warns when a warning status is passed to badge', () => {
+      const warnSpy = jest.spyOn(console, 'warn');
+
+      mountWithAppProvider(<Banner status="warning">test</Banner>);
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Deprecation: The `warning` option for the `status` property on Banner has been deprecated. Use the `attention` `status` instead.',
+      );
     });
   });
 });

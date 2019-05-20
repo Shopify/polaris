@@ -20,10 +20,11 @@ import Heading from '../Heading';
 import ButtonGroup from '../ButtonGroup';
 import UnstyledLink from '../UnstyledLink';
 import Icon, {Props as IconProps} from '../Icon';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import styles from './Banner.scss';
 
-export type Status = 'success' | 'info' | 'warning' | 'critical';
+export type Status = 'success' | 'info' | 'attention' | 'warning' | 'critical';
 
 export interface Props {
   /** Title content for the banner. */
@@ -42,7 +43,9 @@ export interface Props {
   onDismiss?(): void;
 }
 
-export default class Banner extends React.PureComponent<Props, never> {
+export type CombinedProps = Props & WithAppProviderProps;
+
+export class Banner extends React.PureComponent<CombinedProps, never> {
   static contextTypes = contentContextTypes;
   private wrapper = React.createRef<HTMLDivElement>();
 
@@ -59,6 +62,7 @@ export default class Banner extends React.PureComponent<Props, never> {
       children,
       status,
       onDismiss,
+      polaris: {intl},
     } = this.props;
     const {withinContentContainer} = this.context;
 
@@ -75,10 +79,17 @@ export default class Banner extends React.PureComponent<Props, never> {
         color = 'tealDark';
         defaultIcon = CircleInformationMajorTwotone;
         break;
+      case 'attention':
+        color = 'yellowDark';
+        defaultIcon = CircleAlertMajorTwotone;
+        ariaRoleType = 'alert';
+        break;
       case 'warning':
         color = 'yellowDark';
         defaultIcon = CircleAlertMajorTwotone;
         ariaRoleType = 'alert';
+        // eslint-disable-next-line no-console
+        console.warn(intl.translate('Polaris.Banner.warningMessage'));
         break;
       case 'critical':
         color = 'redDark';
@@ -208,3 +219,5 @@ function secondaryActionFrom(action: Action) {
     </button>
   );
 }
+
+export default withAppProvider<Props>()(Banner);

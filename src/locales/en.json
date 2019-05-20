@@ -24,6 +24,10 @@
       }
     },
 
+    "Banner": {
+      "warningMessage": "Deprecation: The `warning` option for the `status` property on Banner has been deprecated. Use the `attention` `status` instead."
+    },
+
     "Button": {
       "spinnerAccessibilityLabel": "Loading"
     },

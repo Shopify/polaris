@@ -62,6 +62,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
     );
   }
 
+  &.statusAttention,
   &.statusWarning {
     @include banner-attributes(
       color('yellow'),

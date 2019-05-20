@@ -10,13 +10,15 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Deprecations
 
+- Deprecated passing `warning` to the `Banner` component's `status` prop in favor of `attention` ([#1535](https://github.com/Shopify/polaris-react/pull/1535))
+
 ### New components
 
 ### Enhancements
 
 - Added support for dual values to `RangeSlider` component ([#784](https://github.com/Shopify/polaris-react/pull/784))
-
 - Updated type restrictions for `AnnotatedSection` to allow its `title` prop to accept `React.ReactNode` instead of `string` ([#1431](https://github.com/Shopify/polaris-react/pull/1431))
+- Added an `attention` option for the `Banner` component's `status` property ([#1535](https://github.com/Shopify/polaris-react/pull/1535))
 
 ### Bug fixes
 

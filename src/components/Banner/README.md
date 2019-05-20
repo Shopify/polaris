@@ -16,7 +16,7 @@ keywords:
   - banner with button
   - informational banners
   - success banners
-  - warning banners
+  - attention banners
   - critical banners
   - banner width
   - banner headings
@@ -55,7 +55,7 @@ Banners should:
 - Not be used as the primary entry point to information or
   actions merchants need on a regular basis.
 - Not be used for marketing information or upsell—[use callout cards](/components/structure/callout-card) instead.
-- Use the default icon for `success`, `info`, `warning` and `critical` statuses. If the icon is changed, use only [major, duotone icons](/design/icons#using-icons-in-your-designs).
+- Use the default icon for `success`, `info`, `attention` and `critical` statuses. If the icon is changed, use only [major, duotone icons](/design/icons#using-icons-in-your-designs).
 
 ---
 
@@ -67,7 +67,7 @@ Banner headings should be:
 
 - Descriptive: help merchants understand what they’ll find in the card.
   - Communicate when a situation is serious enough to warrant using a critical or
-    warning banner. People who are unable to see the color of the banner need to
+    attention banner. People who are unable to see the color of the banner need to
     clearly understand the importance of the situation without the benefit of
     seeing the color of the banner. Learn more about [accessibility](/patterns-and-guides/accessibility).
 
@@ -94,8 +94,7 @@ Have a look at this
 
 - Informative:
   - Label the type of information in the body content
-  - Sentence case: capitalize only the first word in the heading and proper
-    nouns
+  - Sentence case: capitalize only the first word in the heading and proper nouns
 
 <!-- usagelist -->
 
@@ -117,7 +116,7 @@ Body content should:
 - Clarify the benefit of the main task
 - Be written in sentence case and use appropriate punctuation
 - Avoid repeating the heading
-- Explain how to resolve the issue, particularly for warning and critical
+- Explain how to resolve the issue, particularly for attention and critical
   banners
 
 <!-- usagelist -->
@@ -302,7 +301,7 @@ Use when you want merchants to take an action after reading the banner.
 ```jsx
 <Banner
   title="Some of your product variants are missing weights"
-  status="warning"
+  status="attention"
   action={{content: 'Edit variant weights'}}
   onDismiss={() => {}}
 >
@@ -378,7 +377,7 @@ Use to update merchants about a change or give them advice.
 
 <!-- /content-for -->
 
-### Warning banners
+### Attention banners
 
 - Use to display information that needs attention or that merchants need to take action on
 - Seeing these banners can be stressful for merchants so be cautious about using them
@@ -387,7 +386,7 @@ Use to update merchants about a change or give them advice.
 <Banner
   title="Before you can purchase a shipping label, this change needs to be made:"
   action={{content: 'Edit address'}}
-  status="warning"
+  status="attention"
 >
   <List>
     <List.Item>
@@ -477,7 +476,7 @@ class ModalExample extends React.Component {
         >
           <Modal.Section>
             <TextContainer>
-              <Banner action={{content: 'Connect account'}} status="warning">
+              <Banner action={{content: 'Connect account'}} status="attention">
                 <p>
                   Connect your instagram account to your shop before proceeding.
                 </p>
@@ -609,7 +608,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Banners provide context and assist workflows for merchants with disabilities.
 
-- Critical and warning banners have a `role=”alert”` and are announced by assistive technologies when they appear.
+- Critical and attention banners have a `role=”alert”` and are announced by assistive technologies when they appear.
 - All other banners have a `role=”status”` and are read after any critical announcements.
 - Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
 - Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
@@ -638,7 +637,7 @@ To learn about creating helpful and accessible error message text, see the guide
 #### Don’t
 
 - Move focus to banners if they appear on page load, or outside the merchant’s current workflow
-- Use warning or critical (`role=”alert”`) banners to convey information that the merchant doesn’t need to address immediately
+- Use attention or critical (`role=”alert”`) banners to convey information that the merchant doesn’t need to address immediately
 
 <!-- end -->
 
