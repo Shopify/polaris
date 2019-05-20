@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
-import Icon from '../Icon';
+import Icon, {DEPRECATED_COLORS} from '../Icon';
 import Button from '../../Button';
 
 describe('<Icon />', () => {
@@ -69,6 +69,21 @@ describe('<Icon />', () => {
       const svg = "<svg><path d='M10 10'/></svg>";
       shallowWithAppProvider(<Icon source={svg} untrusted />);
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('console.warn', () => {
+    it('warns when a warning status is passed to badge', () => {
+      const warnSpy = jest.spyOn(console, 'warn');
+      const svg = "<svg><path d='M10 10'/></svg>";
+
+      DEPRECATED_COLORS.forEach((color) => {
+        mountWithAppProvider(<Icon source={svg} color={color} />);
+
+        expect(warnSpy).toHaveBeenCalledWith(
+          `Deprecation: The ${color} option for the \`color\` property on Icon has been deprecated. Use another \`color\` instead.`,
+        );
+      });
     });
   });
 });

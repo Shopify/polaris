@@ -10,6 +10,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Deprecations
 
+- Deprecated passing `purple`, `orange`, `blueLighter`, `blueLight`, `blue`, `blueDark`, and `blueDarker` to the `color` property of the `Icon` component ([#1537](https://github.com/Shopify/polaris-react/pull/1537))
+
 ### New components
 
 ### Enhancements

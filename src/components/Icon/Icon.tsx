@@ -194,6 +194,16 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
+export const DEPRECATED_COLORS: Color[] = [
+  'purple',
+  'orange',
+  'blueLighter',
+  'blueLight',
+  'blue',
+  'blueDark',
+  'blueDarker',
+];
+
 function Icon({
   source,
   color,
@@ -208,6 +218,15 @@ function Icon({
       intl.translate('Polaris.Icon.backdropWarning', {
         color,
         colorsWithBackDrops: COLORS_WITH_BACKDROPS.join(', '),
+      }),
+    );
+  }
+
+  if (color && DEPRECATED_COLORS.includes(color)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      intl.translate('Polaris.Icon.deprecatedColorWarning', {
+        color,
       }),
     );
   }

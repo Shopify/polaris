@@ -108,7 +108,8 @@
     },
 
     "Icon": {
-      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}"
+      "backdropWarning": "The {color} icon doesn’t accept backdrops. The icon colors that have backdrops are: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "Deprecation: The {color} option for the `color` property on Icon has been deprecated. Use another `color` instead."
     },
 
     "Modal": {
