@@ -2,6 +2,7 @@ import * as React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames, variationName} from '@shopify/css-utilities';
+import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
@@ -270,7 +271,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleClearButtonPress}
           disabled={disabled}
         >
-          <Icon source="circleCancel" color="inkLightest" />
+          <Icon source={CircleCancelMinor} color="inkLightest" />
         </button>
       ) : null;
 
