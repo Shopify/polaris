@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-
+import {mount} from 'enzyme';
 import {CSSTransition} from 'react-transition-group';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities';
@@ -67,11 +66,12 @@ describe('<Sheet />', () => {
 
   it('warns when not mounted inside of the Frame component', () => {
     const warnSpy = jest.spyOn(console, 'warn');
-    mountWithAppProvider(
+    mount(
       <Sheet {...mockProps}>
         <div>Content</div>
       </Sheet>,
     );
+
     expect(warnSpy).toHaveBeenCalledTimes(1);
     expect(warnSpy).toHaveBeenCalledWith(
       'The Sheet component must be used within the Frame component.',
@@ -85,7 +85,6 @@ function mountWithContext(element: React.ReactElement<any>) {
   const frame = {};
   const sheet = mountWithAppProvider(element, {
     context: {frame},
-    childContextTypes: {frame: PropTypes.any},
   });
 
   return {sheet, frame};

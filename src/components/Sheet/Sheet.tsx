@@ -7,8 +7,9 @@ import {classNames} from '@shopify/css-utilities';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
-import {frameContextTypes, FrameContext} from '../Frame';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {FrameContext} from '../Frame';
+import {withAppProvider} from '../AppProvider';
+import {usePolaris} from '../../hooks';
 
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
@@ -41,89 +42,66 @@ export interface Props {
   onClose(): void;
 }
 
-export type ComposedProps = Props & WithAppProviderProps;
-
 export interface State {
   mobile: boolean;
 }
 
-export class Sheet extends React.Component<ComposedProps, State> {
-  static contextTypes = frameContextTypes;
-  context: FrameContext;
+export function Sheet({children, open, onClose}: Props) {
+  const [mobile, setMobile] = React.useState(false);
+  const frame = React.useContext(FrameContext);
+  const {intl} = usePolaris();
 
-  state: State = {
-    mobile: false,
-  };
+  const handleResize = React.useCallback(
+    debounce(
+      () => {
+        if (mobile !== isMobile()) {
+          handleToggleMobile();
+        }
+      },
+      40,
+      {leading: true, trailing: true, maxWait: 40},
+    ),
+    [mobile],
+  );
 
-  private handleResize = debounce(
+  React.useEffect(
     () => {
-      const {
-        state: {mobile},
-        handleToggleMobile,
-      } = this;
+      if (frame == null) {
+        // eslint-disable-next-line no-console
+        console.warn(intl.translate('Polaris.Sheet.warningMessage'));
+      }
 
       if (mobile !== isMobile()) {
         handleToggleMobile();
       }
     },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
+    [frame, intl, mobile],
   );
 
-  componentDidMount() {
-    const {
-      state: {mobile},
-      context: {frame},
-      props: {
-        polaris: {intl},
-      },
-      handleToggleMobile,
-    } = this;
-
-    if (frame == null) {
-      // eslint-disable-next-line no-console
-      console.warn(intl.translate('Polaris.Sheet.warningMessage'));
-    }
-
-    if (mobile !== isMobile()) {
-      handleToggleMobile();
-    }
+  if (frame == null) {
+    return null;
   }
 
-  render() {
-    const {
-      props: {children, open, onClose},
-      state: {mobile},
-      context: {frame},
-      handleResize,
-    } = this;
+  return (
+    <Portal idPrefix="sheet">
+      <CSSTransition
+        classNames={mobile ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES}
+        timeout={Duration.Slow}
+        in={open}
+        mountOnEnter
+        unmountOnExit
+      >
+        <Container open={open}>{children}</Container>
+      </CSSTransition>
+      <KeypressListener keyCode={Key.Escape} handler={onClose} />
+      <EventListener event="resize" handler={handleResize} />
+      {open && <Backdrop transparent onClick={onClose} />}
+    </Portal>
+  );
 
-    if (frame == null) {
-      return null;
-    }
-
-    return (
-      <Portal idPrefix="sheet">
-        <CSSTransition
-          classNames={mobile ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES}
-          timeout={Duration.Slow}
-          in={open}
-          mountOnEnter
-          unmountOnExit
-        >
-          <Container open={open}>{children}</Container>
-        </CSSTransition>
-        <KeypressListener keyCode={Key.Escape} handler={onClose} />
-        <EventListener event="resize" handler={handleResize} />
-        {open && <Backdrop transparent onClick={onClose} />}
-      </Portal>
-    );
+  function handleToggleMobile() {
+    setMobile((mobile) => !mobile);
   }
-
-  private handleToggleMobile = () => {
-    const {mobile} = this.state;
-    this.setState({mobile: !mobile});
-  };
 }
 
 function isMobile(): boolean {
