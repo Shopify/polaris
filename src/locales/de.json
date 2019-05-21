@@ -18,8 +18,10 @@
         "success": "Erfolg",
         "warning": "Achtung",
         "attention": "Prüfung erforderlich",
-        "new": "Neu"
-      }
+        "new": "Neu",
+        "critical": "Kritisch"
+      },
+      "warningMessage": "Eingestellt: Die Warnoption für die Statuseigenschaft des Badge wurde eingestellt. Verwenden Sie stattdessen einen anderen Status."
     },
     "Button": {
       "spinnerAccessibilityLabel": "Wird geladen"
