@@ -52,7 +52,7 @@ describe('<PositionedOverlay />', () => {
         />,
       );
 
-      expect(spy).toBeCalledWith({
+      expect(spy).toHaveBeenCalledWith({
         activatorRect: {height: 0, left: 0, top: 0, width: 0},
         desiredHeight: 0,
         left: 0,

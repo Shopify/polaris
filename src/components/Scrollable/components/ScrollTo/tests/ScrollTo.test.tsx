@@ -32,6 +32,6 @@ describe('<Scrollable.ScrollTo />', () => {
       );
     }
 
-    expect(fn).not.toThrowError();
+    expect(fn).not.toThrow();
   });
 });

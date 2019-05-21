@@ -106,7 +106,7 @@ describe('<ThemeProvider />', () => {
     });
     wrapper.update();
 
-    expect(wrapper.find('div').props().style).toEqual({
+    expect(wrapper.find('div').props().style).toStrictEqual({
       '--top-bar-background': '#021123',
       '--top-bar-background-lighter': 'hsl(213, 74%, 22%, 1)',
       '--top-bar-color': 'rgb(255, 255, 255)',

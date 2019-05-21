@@ -14,7 +14,7 @@ describe('createFrameContext()', () => {
   it('returns the right context without arguments', () => {
     const context = createFrameContext();
 
-    expect(context).toEqual(defaultFrameContext);
+    expect(context).toStrictEqual(defaultFrameContext);
   });
 
   it('returns the right context with showToast', () => {
@@ -25,7 +25,7 @@ describe('createFrameContext()', () => {
       showToast: mockShowToast,
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with hideToast', () => {
@@ -36,7 +36,7 @@ describe('createFrameContext()', () => {
       hideToast: mockHideToast,
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with setContextualSaveBar', () => {
@@ -49,7 +49,7 @@ describe('createFrameContext()', () => {
       setContextualSaveBar: mockSetContextualSaveBar,
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with removeContextualSaveBar', () => {
@@ -62,7 +62,7 @@ describe('createFrameContext()', () => {
       removeContextualSaveBar: mockRemoveContextualSaveBar,
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with startLoading', () => {
@@ -75,7 +75,7 @@ describe('createFrameContext()', () => {
       startLoading: mockStartLoading,
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with stopLoading', () => {
@@ -88,6 +88,6 @@ describe('createFrameContext()', () => {
       stopLoading: mockStopLoading,
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 });
