@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Löschen"
       }
+    },
+    "Banner": {
+      "warningMessage": "Eingestellt: Die Warnoption für die Statuseigenschaft des Banners wurde eingestellt. Verwenden Sie stattdessen den Aufmerksamkeitsstatus."
     }
   }
 }
