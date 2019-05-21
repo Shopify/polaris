@@ -4,35 +4,58 @@ import Navigation from '../Navigation';
 import NavigationContext from '../context';
 import {UserMenu} from '../components';
 
+const childContextTypes = contextTypes;
+
 describe('<Navigation />', () => {
   it('mounts', () => {
     const navigation = mountWithAppProvider(<Navigation location="/" />);
     expect(navigation.exists()).toBe(true);
   });
 
-  it('passes context', () => {
-    const Child: React.SFC<{}> = (_props) => {
-      return (
-        <NavigationContext.Consumer>
-          {({location}) => (location ? <div /> : null)}
-        </NavigationContext.Consumer>
-      );
-    };
+  describe('context', () => {
+    it('passes location context', () => {
+      const Child: React.SFC<{}> = (_props) => {
+        return (
+          <NavigationContext.Consumer>
+            {({location}) => (location ? <div /> : null)}
+          </NavigationContext.Consumer>
+        );
+      };
 
-    const navigation = mountWithAppProvider(
-      <NavigationContext.Provider value={{location: '/'}}>
+      const navigation = mountWithAppProvider(
+        <NavigationContext.Provider value={{location: '/'}}>
+          <Navigation location="/">
+            <Child />
+          </Navigation>
+        </NavigationContext.Provider>,
+      );
+
+      const div = navigation
+        .find(Child)
+        .find('div')
+        .first();
+
+      expect(div.exists()).toBe(true);
+    });
+
+    it('has a child with contentContext', () => {
+      const Child: React.SFC<{}> = (_props, context) =>
+        context.withinContentContainer ? <div /> : null;
+      Child.contextTypes = childContextTypes;
+
+      const navigation = mountWithAppProvider(
         <Navigation location="/">
           <Child />
-        </Navigation>
-      </NavigationContext.Provider>,
-    );
+        </Navigation>,
+      );
 
-    const div = navigation
-      .find(Child)
-      .find('div')
-      .first();
+      const div = navigation
+        .find(Child)
+        .find('div')
+        .first();
 
-    expect(div.exists()).toBe(true);
+      expect(div.exists()).toBe(true);
+    });
   });
 
   describe('userMenu', () => {

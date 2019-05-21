@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {noop} from '../../../utilities/other';
 import ContextualSaveBar from '../ContextualSaveBar';
 import {FrameContext, createFrameContext} from '../../Frame';
 
@@ -88,3 +87,5 @@ describe('<ContextualSaveBar />', () => {
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

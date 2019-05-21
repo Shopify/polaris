@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {MobileHamburgerMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 
 import {getWidth} from '../../utilities/getWidth';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
@@ -58,7 +58,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
       onNavigationToggle,
       onSearchResultsDismiss,
       contextControl,
-      polaris: {theme},
+      polaris: {intl, theme},
     } = this.props;
     const logo = theme && theme.logo;
     const {focused} = this.state;
@@ -75,7 +75,7 @@ export class TopBar extends React.PureComponent<ComposedProps, State> {
         onClick={onNavigationToggle}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        aria-label="Toggle menu"
+        aria-label={intl.translate('Polaris.TopBar.toggleMenuLabel')}
       >
         <Icon source={MobileHamburgerMajorMonotone} color="white" />
       </button>

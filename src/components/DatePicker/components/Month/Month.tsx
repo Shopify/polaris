@@ -12,8 +12,7 @@ import {
   dateIsSelected,
   getNewRange,
 } from '@shopify/javascript-utilities/dates';
-import {noop} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import styles from '../../DatePicker.scss';
 import Day from '../Day';
@@ -91,7 +90,6 @@ function Month({
     if (day == null) {
       const lastDayOfMonth = new Date(year, (month as number) + 1, 0);
       return (
-        // eslint-disable-next-line react/jsx-no-bind
         <Day key={dayIndex} onHover={onHover.bind(null, lastDayOfMonth)} />
       );
     }
@@ -140,6 +138,8 @@ function Month({
 }
 
 export default withAppProvider<Props>()(Month);
+
+function noop() {}
 
 function hoveringDateIsInRange(
   day: Date | null,

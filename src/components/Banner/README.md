@@ -42,7 +42,7 @@ Banners should:
 - Be placed in the appropriate context:
   - Banners relevant to an entire page should be placed at the top of that page, below the page header. They should occupy the full width of the content area.
   - Banners related to a section of a page (like a card,
-    popover, or modal) should be placed inside that section, below any section heading.
+    popover, or modal) should be placed inside that section, below any section heading. These banners have less spacing and a pared-back design to fit within a content context.
   - Banners related to an element more specific that a section should be placed immediately above or below that element.
 - Focus on a single theme, piece of information, or required action to avoid
   overwhelming merchants.
@@ -500,6 +500,38 @@ class ModalExample extends React.Component {
 }
 ```
 
+### Banner with focus
+
+<!-- example-for: web -->
+
+Banner can programmatically receive focus. Use this functionality to draw the merchant's attention to the banner.
+
+```jsx
+class ModalExample extends React.Component {
+  banner = React.createRef();
+
+  componentDidMount() {
+    this.banner.current.focus();
+  }
+
+  render() {
+    return (
+      <Banner
+        title="High risk of fraud detected"
+        onDismiss={() => {}}
+        status="critical"
+        ref={this.banner}
+      >
+        <p>
+          Before fulfilling this order or capturing payment, please review the
+          fraud analysis and determine if this order is fraudulent
+        </p>
+      </Banner>
+    );
+  }
+}
+```
+
 ### Banner in a card
 
 <!-- example-for: web -->
@@ -519,6 +551,29 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
     <p>View a summary of your online store’s performance.</p>
   </TextContainer>
 </Card>
+```
+
+### Banner in navigation
+
+<!-- example-for: web -->
+
+Banners inside of the navigation render with less spacing and a pared-back design to fit within a content context.
+
+```jsx
+<Navigation location="/">
+  <Navigation.Section
+    items={[
+      {
+        url: '/path/to/place',
+        label: 'Home',
+        icon: 'home',
+      },
+    ]}
+  />
+  <Banner status="info">
+    <p>Preview version: 2019-07</p>
+  </Banner>
+</Navigation>
 ```
 
 ---

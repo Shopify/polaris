@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
@@ -291,26 +291,21 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    const {selectedItems} = this.props;
-
-    if (
-      nextProps.selectedItems &&
-      nextProps.selectedItems.length > 0 &&
-      !this.state.selectMode
-    ) {
-      this.setState({selectMode: true});
-      return;
-    }
-
-    if (
-      selectedItems &&
-      selectedItems.length > 0 &&
-      (!nextProps.selectedItems || nextProps.selectedItems.length === 0) &&
-      !isSmallScreen()
-    ) {
-      this.setState({selectMode: false});
-    }
+  get getContext(): ResourceListContext {
+    const {
+      selectedItems,
+      resourceName = this.defaultResourceName,
+      loading,
+    } = this.props;
+    const {selectMode} = this.state;
+    return {
+      selectable: this.selectable,
+      selectedItems,
+      selectMode,
+      resourceName,
+      loading,
+      onSelectionChange: this.handleSelectionChange,
+    };
   }
 
   componentDidMount() {
@@ -320,7 +315,13 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     }
   }
 
-  componentDidUpdate({loading: prevLoading, items: prevItems}: Props) {
+  componentDidUpdate({
+    loading: prevLoading,
+    items: prevItems,
+    selectedItems: prevSelectedItems,
+  }: Props) {
+    const {selectedItems, loading} = this.props;
+
     if (
       this.listRef.current &&
       this.itemsExist() &&
@@ -329,8 +330,24 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       this.forceUpdate();
     }
 
-    if (this.props.loading && !prevLoading) {
+    if (loading && !prevLoading) {
       this.setLoadingPosition();
+    }
+
+    if (selectedItems && selectedItems.length > 0 && !this.state.selectMode) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({selectMode: true});
+      return;
+    }
+
+    if (
+      prevSelectedItems &&
+      prevSelectedItems.length > 0 &&
+      (!selectedItems || selectedItems.length === 0) &&
+      !isSmallScreen()
+    ) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({selectMode: false});
     }
   }
 
@@ -414,7 +431,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         <Button
           disabled={selectMode}
           icon={EnableSelectionMinor}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >
           {intl.translate('Polaris.ResourceList.selectButtonText')}
@@ -443,7 +459,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const headerMarkup = (showHeader || needsHeader) &&
+    const showEmptyState = filterControl && !this.itemsExist() && !loading;
+
+    const headerMarkup = !showEmptyState &&
+      (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
           <Sticky boundingElement={this.listRef.current}>
@@ -480,12 +499,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       );
 
-    const emptyStateMarkup =
-      filterControl && !this.itemsExist() && !loading ? (
-        <div className={styles.EmptySearchResultWrapper}>
-          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
-        </div>
-      ) : null;
+    const emptyStateMarkup = showEmptyState ? (
+      <div className={styles.EmptySearchResultWrapper}>
+        <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+      </div>
+    ) : null;
 
     const defaultTopPadding = 8;
     const topPadding =

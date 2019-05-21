@@ -17,7 +17,7 @@ describe('<Card.Section />', () => {
     const card = mountWithAppProvider(<Section title={titleMarkup} />);
     const headerMarkup = card.find('h2');
 
-    expect(headerMarkup.text().includes(titleString)).toBe(true);
+    expect(headerMarkup.text()).toContain(titleString);
     expect(headerMarkup.find('Badge').text()).toBe(badgeString);
   });
 
@@ -28,6 +28,6 @@ describe('<Card.Section />', () => {
     const headerMarkup = card.find(Subheading);
 
     expect(headerMarkup.exists()).toBeTruthy();
-    expect(headerMarkup.text()).toEqual(titleString);
+    expect(headerMarkup.text()).toStrictEqual(titleString);
   });
 });

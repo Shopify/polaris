@@ -8,4 +8,10 @@ describe('<Loading />', () => {
   it('mounts', () => {
     expect(loading.exists()).toBe(true);
   });
+
+  it('unmounts safely', () => {
+    expect(() => {
+      loading.unmount();
+    }).not.toThrow();
+  });
 });

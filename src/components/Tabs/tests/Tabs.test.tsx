@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Tab, Panel, TabMeasurer, List} from '../components';
@@ -96,7 +95,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('url'),
-        ).toEqual(tab.url);
+        ).toStrictEqual(tab.url);
       });
     });
 
@@ -115,7 +114,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('accessibilityLabel'),
-        ).toEqual(tab.accessibilityLabel);
+        ).toStrictEqual(tab.accessibilityLabel);
       });
     });
 
@@ -134,7 +133,7 @@ describe('<Tabs />', () => {
             .find(Tab)
             .at(index)
             .prop('children'),
-        ).toEqual(tab.content);
+        ).toStrictEqual(tab.content);
       });
     });
   });
@@ -226,17 +225,6 @@ describe('<Tabs />', () => {
 
     it('is not set to anything by default', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
-    });
-
-    it('resets focus when selected gets updated to the previously selected value', () => {
-      const tabs = mountWithAppProvider(
-        <Tabs {...mockProps} selected={0} tabs={mockTabs} />,
-      );
-      trigger(tabs.find('ul'), 'onKeyUp', {
-        key: 'ArrowRight',
-      });
-      tabs.setProps({selected: 0});
       expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
     });
 
@@ -372,7 +360,7 @@ describe('<Tabs />', () => {
         containerWidth,
       );
       const expectedIndices = {visibleTabs: [0, 1], hiddenTabs: [2, 3, 4, 5]};
-      expect(actualIndices).toEqual(expectedIndices);
+      expect(actualIndices).toStrictEqual(expectedIndices);
     });
   });
 
@@ -424,3 +412,5 @@ describe('<Tabs />', () => {
     });
   });
 });
+
+function noop() {}

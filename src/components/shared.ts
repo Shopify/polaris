@@ -28,6 +28,11 @@ export const headerCell = {
   selector: '[data-polaris-header-cell]',
 };
 
+export const DATA_ATTRIBUTE = {
+  overlay,
+  layer,
+};
+
 // these match our values in duration.scss
 export enum Duration {
   Instant = 0,

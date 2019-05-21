@@ -24,7 +24,7 @@ interface State {
 
 /** @deprecated Use <TopBar.UserMenu /> instead. */
 class UserMenu extends React.Component<Props, State> {
-  state = {
+  state: State = {
     open: false,
   };
 

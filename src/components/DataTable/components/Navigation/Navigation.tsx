@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
+import {classNames} from '@shopify/css-utilities';
 
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
@@ -49,7 +50,7 @@ function Navigation({
     <div className={styles.Navigation}>
       <Button
         plain
-        icon="chevronLeft"
+        icon={ChevronLeftMinor}
         disabled={isScrolledFarthestLeft}
         accessibilityLabel={leftA11yLabel}
         onClick={navigateTableLeft}
@@ -57,7 +58,7 @@ function Navigation({
       {pipMarkup}
       <Button
         plain
-        icon="chevronRight"
+        icon={ChevronRightMinor}
         disabled={isScrolledFarthestRight}
         accessibilityLabel={rightA11yLabel}
         onClick={navigateTableRight}

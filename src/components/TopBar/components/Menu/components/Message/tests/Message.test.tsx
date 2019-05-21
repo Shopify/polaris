@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Message from '../Message';
 import Badge from '../../../../../../Badge';
@@ -38,3 +37,5 @@ describe('<Message />', () => {
     expect(message.find(Badge)).toHaveLength(1);
   });
 });
+
+function noop() {}

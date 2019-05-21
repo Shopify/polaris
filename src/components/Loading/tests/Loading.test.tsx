@@ -40,7 +40,7 @@ describe('<Loading />', () => {
 
   describe('with app bridge', () => {
     const dispatch = jest.fn();
-    AppBridgeLoading.create = jest.fn().mockReturnValue({dispatch});
+    jest.spyOn(AppBridgeLoading, 'create').mockReturnValue({dispatch});
 
     afterEach(() => {
       dispatch.mockReset();
@@ -60,6 +60,16 @@ describe('<Loading />', () => {
 
       loading.unmount();
       expect(dispatch).toHaveBeenCalledWith(AppBridgeLoading.Action.STOP);
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('unmounts safely', () => {
+      const {loading} = mountWithFrame(<Loading />);
+
+      expect(() => {
+        loading.unmount();
+      }).not.toThrow();
     });
   });
 });

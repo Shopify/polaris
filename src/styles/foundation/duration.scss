@@ -1,24 +1,19 @@
-$unit: 100ms;
+@import '../polaris-tokens/duration.map';
 
-$duration-data: (
-  fast: $unit,
-  base: $unit * 2,
-  slow: $unit * 3,
-  slower: $unit * 4,
-  slowest: $unit * 5,
-);
+$duration-data: $polaris-duration-map;
 
 /// Returns the duration value for a given variant.
 ///
 /// @param {String} $variant - The key for the given variant.
-/// @return {Number} The spacing for the variant (in miliseconds).
+/// @return {Number} The duration for the variant (in miliseconds).
 
 @function duration($variant: base) {
-  $fetched-value: map-get($duration-data, $variant);
+  $interpolated-value: 'duration-' + $variant;
+  $fetched-value: nth(map-get($duration-data, $interpolated-value), 1);
 
   @if type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
-    @error 'Duration variant `#{$variant}` not found. Available variants: #{available-names($duration-data)}';
+    @error 'Duration variant `#{$interpolated-value}` not found. Available variants: #{available-names($duration-data)}';
   }
 }

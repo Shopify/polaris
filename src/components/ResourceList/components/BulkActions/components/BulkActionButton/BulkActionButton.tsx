@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import {CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 
 import Icon from '../../../../../Icon';
 import UnstyledLink from '../../../../../UnstyledLink';

@@ -2,13 +2,13 @@ import merge from '../merge';
 
 describe('merge', () => {
   it('returns an object', () => {
-    expect(merge()).toEqual({});
+    expect(merge()).toStrictEqual({});
   });
 
   it('does not merge prototypes', () => {
     class Obj {}
     (Obj.prototype as any).prototypeVal = 'val';
-    expect(merge(new Obj(), {})).toEqual({});
+    expect(merge(new Obj(), {})).toStrictEqual({});
   });
 
   it('merges X number of objects', () => {
@@ -16,7 +16,7 @@ describe('merge', () => {
     const objB = {keyB: 2};
     const objC = {keyC: 3};
     const expectedObject = {keyA: 1, keyB: 2, keyC: 3};
-    expect(merge(objA, objB, objC)).toEqual(expectedObject);
+    expect(merge(objA, objB, objC)).toStrictEqual(expectedObject);
   });
 
   it('does not mutate the provided arguments', () => {
@@ -31,7 +31,7 @@ describe('merge', () => {
     const objA = {propA: {propB: {propC: 4, propD: {propF: null}}}};
     const objB = {propA: {propB: {propC: 4, propD: {propF: {propG: 7}}}}};
     const objC = {propA: {propB: {propC: 4, propD: {propF: {propH: 7}}}}};
-    expect(merge(objA, objB, objC)).toEqual({
+    expect(merge(objA, objB, objC)).toStrictEqual({
       propA: {propB: {propC: 4, propD: {propF: {propG: 7, propH: 7}}}},
     });
   });
@@ -46,7 +46,7 @@ describe('merge', () => {
       const objA = {propA: {propB: funcA}};
       const objB = {propA: {propB: funcB}};
       const objC = {propA: {propB: {propC: 4, propD: {propF: {propH: 7}}}}};
-      expect(merge(objA, objB, objC)).toEqual({
+      expect(merge(objA, objB, objC)).toStrictEqual({
         propA: {propB: {propC: 4, propD: {propF: {propH: 7}}}},
       });
     });
@@ -59,7 +59,7 @@ describe('merge', () => {
       const objA = {propA: {propB: test}};
       const objB = {propA: {propB: {propC: 4, propD: {propF: {propH: 7}}}}};
       const objC = {propA: {propB: oo}};
-      expect(merge(objA, objB, objC)).toEqual({
+      expect(merge(objA, objB, objC)).toStrictEqual({
         propA: {propB: oo},
       });
     });
@@ -70,7 +70,7 @@ describe('merge', () => {
     it('does not merge arrays', () => {
       const objA = {propA: {propB: [1, 2, 3, 4]}};
       const objB = {propA: {propB: [2, 3, 4, 5]}};
-      expect(merge(objA, objB)).toEqual({
+      expect(merge(objA, objB)).toStrictEqual({
         propA: {propB: [2, 3, 4, 5]},
       });
     });

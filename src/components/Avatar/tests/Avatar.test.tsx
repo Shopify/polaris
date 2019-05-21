@@ -1,14 +1,8 @@
 import * as React from 'react';
-import * as targets from '@shopify/react-utilities/target';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Image} from 'components';
+
 import Avatar from '../Avatar';
-
-const actualIsServer = targets.isServer;
-
-function mockIsServer(value: boolean) {
-  (targets as any).isServer = value;
-}
 
 describe('<Avatar />', () => {
   describe('intials', () => {
@@ -19,9 +13,6 @@ describe('<Avatar />', () => {
   });
 
   describe('source', () => {
-    afterEach(() => {
-      mockIsServer(actualIsServer);
-    });
     it('renders an Image component with the Avatar source if one is provided', () => {
       const src = 'image/path/';
       const avatar = mountWithAppProvider(<Avatar source={src} />);
@@ -38,7 +29,17 @@ describe('<Avatar />', () => {
     });
 
     it('does not render an Image on the server', () => {
-      mockIsServer(true);
+      jest.resetModules();
+      jest.mock('../../../utilities/target', () => ({
+        ...require.requireActual('../../../utilities/target'),
+        isServer: () => {
+          return true;
+        },
+      }));
+
+      const Avatar = require('../Avatar').default;
+      const Image = require('components').Image;
+
       const src = 'image/path/';
       const avatar = mountWithAppProvider(<Avatar source={src} />);
       expect(avatar.find(Image)).toHaveLength(0);

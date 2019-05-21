@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 import {IconableAction, DisableableAction} from '../../../../../../types';
 import {handleMouseUpByBlurring} from '../../../../../../utilities/focus';
 import Icon from '../../../../../Icon';

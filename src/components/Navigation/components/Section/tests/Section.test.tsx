@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
@@ -129,6 +128,51 @@ describe('<Navigation.Section />', () => {
     expect(channels.find(Collapsible).prop('open')).toBe(false);
   });
 
+  it('does not set expanded to false on item click when it has a sub nav and on the mobile breakpoint', () => {
+    matchMedia.setMedia(() => ({matches: true}));
+    const withSubNav = mountWithAppProvider(
+      <Section
+        rollup={{
+          after: 1,
+          view: 'view',
+          hide: 'hide',
+          activePath: '/',
+        }}
+        items={[
+          {
+            label: 'some label',
+            url: '/admin',
+          },
+          {
+            label: 'other label',
+            url: '/other',
+            subNavigationItems: [
+              {
+                label: 'sub label',
+                url: '/other',
+              },
+            ],
+          },
+        ]}
+      />,
+      {
+        context,
+        childContextTypes,
+      },
+    );
+
+    withSubNav.setState({expanded: true});
+
+    withSubNav
+      .find('a[href="/other"]')
+      .first()
+      .simulate('click');
+
+    animationFrame.runFrame();
+
+    expect(withSubNav.state('expanded')).toBe(true);
+  });
+
   it('adds a toggle button if rollupAfter has a value', () => {
     const channels = mountWithNavigationProvider(
       <Section
@@ -214,3 +258,5 @@ function mountWithNavigationProvider(
     </NavigationContext.Provider>,
   );
 }
+
+function noop() {}

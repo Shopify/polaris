@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Tooltip, TextField} from 'components';
@@ -161,6 +160,8 @@ describe('<Pagination />', () => {
     });
   });
 });
+
+function noop() {}
 
 function focusElement(
   wrapper: ReactWrapper<any, any>,

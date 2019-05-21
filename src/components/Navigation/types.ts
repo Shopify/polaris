@@ -1,4 +1,5 @@
 import {Props as IconProps} from '../Icon';
+import {contentContextTypes} from '../../types';
 
 export interface ItemType {
   label: string;

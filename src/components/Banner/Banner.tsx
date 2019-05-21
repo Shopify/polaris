@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {classNames, variationName} from '@shopify/css-utilities';
 import {
+  CancelSmallMinor,
   CircleTickMajorTwotone,
   FlagMajorTwotone,
   CircleAlertMajorTwotone,
@@ -50,6 +51,12 @@ export interface Props {
 export type CombinedProps = Props & WithContextTypes<WithinContentContextType>;
 
 export class Banner extends React.PureComponent<CombinedProps, never> {
+  private wrapper = React.createRef<HTMLDivElement>();
+
+  public focus() {
+    this.wrapper.current && this.wrapper.current.focus();
+  }
+
   render() {
     const {
       icon,
@@ -147,7 +154,7 @@ export class Banner extends React.PureComponent<CombinedProps, never> {
       <div className={styles.Dismiss}>
         <Button
           plain
-          icon="cancelSmall"
+          icon={CancelSmallMinor}
           onClick={onDismiss}
           accessibilityLabel="Dismiss notification"
         />
@@ -159,6 +166,7 @@ export class Banner extends React.PureComponent<CombinedProps, never> {
         className={className}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
+        ref={this.wrapper}
         role={ariaRoleType}
         aria-live="polite"
         onMouseUp={handleMouseUp}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import Icon from '../../../Icon';
 

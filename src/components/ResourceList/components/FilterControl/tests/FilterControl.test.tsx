@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {TextField, Tag, Button} from 'components';
 import ResourceListContext from '../../../context';
@@ -22,7 +21,7 @@ describe('<FilterControl />', () => {
     selectMode: false,
     resourceName: {
       singular: 'item',
-      plural: 'items,',
+      plural: 'items',
     },
     selectable: false,
   };
@@ -120,7 +119,7 @@ describe('<FilterControl />', () => {
       const tags = filterControl.find(Tag);
       trigger(tags.at(0), 'onRemove', mockAppliedFilters[0].key);
 
-      expect(onFiltersChange).toBeCalledWith([
+      expect(onFiltersChange).toHaveBeenCalledWith([
         ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
       ]);
     });
@@ -570,7 +569,7 @@ describe('<FilterControl />', () => {
       expect(filterControl.find(Button).exists()).toBe(true);
 
       trigger(filterControl.find(Button), 'onClick');
-      expect(action.onAction).toBeCalled();
+      expect(action.onAction).toHaveBeenCalled();
     });
   });
 
@@ -617,6 +616,37 @@ describe('<FilterControl />', () => {
 
       expect(filterControl.find(FilterCreator).prop('filters')).toMatchObject(
         mockFilters,
+      );
+    });
+  });
+
+  describe('placeholder', () => {
+    it('renders default text if no placeholder passed.', () => {
+      const filterControl = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <FilterControl {...mockDefaultProps} filters={mockFilters} />
+        </Provider>,
+      );
+
+      expect(filterControl.find(TextField).prop('placeholder')).toBe(
+        'Search items',
+      );
+    });
+
+    it('renders the placeholder prop value if provided', () => {
+      const placeholder = 'Search by name, email or phone';
+      const filterControl = mountWithAppProvider(
+        <Provider value={mockDefaultContext}>
+          <FilterControl
+            {...mockDefaultProps}
+            filters={mockFilters}
+            placeholder={placeholder}
+          />
+        </Provider>,
+      );
+
+      expect(filterControl.find(TextField).prop('placeholder')).toBe(
+        'Search by name, email or phone',
       );
     });
   });
@@ -678,7 +708,7 @@ describe('<FilterControl />', () => {
 
       trigger(filterControl.find(TextField), 'onChange', newSearchValue);
 
-      expect(onSearchChange).toBeCalledWith(newSearchValue);
+      expect(onSearchChange).toHaveBeenCalledWith(newSearchValue);
     });
   });
 
@@ -703,7 +733,7 @@ describe('<FilterControl />', () => {
 
       trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
 
-      expect(onFiltersChange).toBeCalledWith([
+      expect(onFiltersChange).toHaveBeenCalledWith([
         ...mockAppliedFilters,
         newFilter,
       ]);
@@ -725,7 +755,9 @@ describe('<FilterControl />', () => {
 
       trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
 
-      expect(onFiltersChange).not.toBeCalled();
+      expect(onFiltersChange).not.toHaveBeenCalled();
     });
   });
 });
+
+function noop() {}

@@ -1,20 +1,36 @@
 .Link {
+  @include recolor-icon(currentColor);
   appearance: none;
   display: inline;
   text-align: inherit;
   padding: 0;
   background: none;
-  border: none;
+  border: 0;
   font-size: inherit;
   color: color('blue');
   text-decoration: none;
   cursor: pointer;
 
   &:hover,
-  &:focus,
   &:active {
-    outline: none;
     color: color('blue', 'dark');
+  }
+}
+
+.IconLockup {
+  display: inline;
+  white-space: nowrap;
+
+  &::before {
+    content: '\2060';
+  }
+}
+
+.IconLayout {
+  display: inline-flex;
+
+  &::before {
+    content: '\2060';
   }
 }
 

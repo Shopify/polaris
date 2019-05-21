@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {isServer} from '@shopify/react-utilities/target';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {classNames, variationName} from '@shopify/css-utilities';
 
+import {isServer} from '../../utilities/target';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Image from '../Image';
 

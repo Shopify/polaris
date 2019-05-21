@@ -15,9 +15,9 @@ describe('<UserMenu />', () => {
       const userMenu = mountWithAppProvider(
         <UserMenu {...mockProps} avatarInitials={avatarInitials} />,
       );
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({initials: avatarInitials}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({initials: avatarInitials}));
     });
   });
 
@@ -27,9 +27,9 @@ describe('<UserMenu />', () => {
       const userMenu = mountWithAppProvider(
         <UserMenu {...mockProps} avatarSource={avatarSource} />,
       );
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({avatar: avatarSource}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({avatar: avatarSource}));
     });
   });
 
@@ -39,9 +39,9 @@ describe('<UserMenu />', () => {
       const userMenu = mountWithAppProvider(
         <UserMenu {...mockProps} message={message} />,
       );
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({message}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({message}));
     });
   });
 
@@ -51,9 +51,9 @@ describe('<UserMenu />', () => {
       const userMenu = mountWithAppProvider(
         <UserMenu {...mockProps} actions={actions} />,
       );
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({actions}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({actions}));
     });
   });
 
@@ -63,9 +63,9 @@ describe('<UserMenu />', () => {
       const userMenu = mountWithAppProvider(
         <UserMenu {...mockProps} detail={detail} />,
       );
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({detail}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({detail}));
     });
   });
 
@@ -75,30 +75,30 @@ describe('<UserMenu />', () => {
       const userMenu = mountWithAppProvider(
         <UserMenu {...mockProps} name={name} />,
       );
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({name}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({name}));
     });
   });
 
   describe('<UserMenuModifier />', () => {
     it('passes in an open prop which is false by default', () => {
       const userMenu = mountWithAppProvider(<UserMenu {...mockProps} />);
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({open: false}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({open: false}));
     });
 
     it('toggles the open prop when the user menu is toggled', () => {
       const userMenu = mountWithAppProvider(<UserMenu {...mockProps} />);
       trigger(userMenu.find(UserMenuModifier), 'userMenuProps.onToggle');
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({open: true}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({open: true}));
       trigger(userMenu.find(UserMenuModifier), 'userMenuProps.onToggle');
-      expect(userMenu.find(UserMenuModifier).prop('userMenuProps')).toEqual(
-        expect.objectContaining({open: false}),
-      );
+      expect(
+        userMenu.find(UserMenuModifier).prop('userMenuProps'),
+      ).toStrictEqual(expect.objectContaining({open: false}));
     });
   });
 });

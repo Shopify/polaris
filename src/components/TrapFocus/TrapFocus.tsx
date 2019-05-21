@@ -19,7 +19,7 @@ export interface State {
 }
 
 export default class TrapFocus extends React.PureComponent<Props, State> {
-  state = {
+  state: State = {
     shouldFocusSelf: undefined,
   };
 

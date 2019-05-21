@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Checkbox from '../../Checkbox';
 import Option, {Props} from '../Option';
@@ -88,3 +87,5 @@ describe('<Option />', () => {
     expect(checkbox.prop('disabled')).toBe(disabled);
   });
 });
+
+function noop() {}

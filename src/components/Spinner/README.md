@@ -31,14 +31,6 @@ Use to notify merchants that their requested action is being processed.
 <Spinner size="large" color="teal" />
 ```
 
-### Small spinner
-
-Smaller than the default spinner.
-
-```jsx
-<Spinner size="small" color="teal" />
-```
-
 <!-- content-for: android -->
 
 ![Material design spinner for Android](/public_images/components/Spinner/android/default@2x.gif)
@@ -50,6 +42,16 @@ Smaller than the default spinner.
 ![Apple’s spinner for iOS](/public_images/components/Spinner/ios/default@2x.gif)
 
 <!-- /content-for -->
+
+### Small spinner
+
+<!-- example-for: web -->
+
+Smaller than the default spinner.
+
+```jsx
+<Spinner size="small" color="teal" />
+```
 
 ---
 

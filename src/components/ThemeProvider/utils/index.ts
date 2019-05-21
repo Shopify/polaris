@@ -129,3 +129,5 @@ export function createThemeContext(
   const {logo = null} = theme;
   return {logo};
 }
+
+function noop() {}

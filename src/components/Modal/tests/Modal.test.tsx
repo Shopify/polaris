@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
-import {noop} from '@shopify/javascript-utilities/other';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, mountWithAppProvider} from 'test-utilities';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
@@ -55,8 +54,8 @@ describe('<Modal>', () => {
 
       const iframe = modal.find('iframe').first();
       expect(iframe.exists()).toBe(true);
-      expect(iframe.prop('name')).toEqual('Name');
-      expect(iframe.prop('src')).toEqual('Source');
+      expect(iframe.prop('name')).toStrictEqual('Name');
+      expect(iframe.prop('src')).toStrictEqual('Source');
 
       const scrollable = modal.find(Scrollable).first();
       expect(scrollable.exists()).toBe(false);
@@ -286,6 +285,20 @@ describe('<Modal>', () => {
     });
   });
 
+  describe('lifecycle', () => {
+    it('unmounts safely', () => {
+      const modal = mountWithAppProvider(
+        <Modal open onClose={jest.fn()}>
+          <p>Child</p>
+        </Modal>,
+      );
+
+      expect(() => {
+        modal.unmount();
+      }).not.toThrow();
+    });
+  });
+
   describe('with app bridge', () => {
     let AppBridgeModalCreate: jest.SpyInstance;
     const appBridgeModalMock = {
@@ -475,3 +488,5 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
 
   return {modal, polaris};
 }
+
+function noop() {}

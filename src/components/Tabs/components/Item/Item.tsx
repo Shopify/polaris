@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 
 import styles from '../../Tabs.scss';
 import UnstyledLink from '../../../UnstyledLink';
@@ -72,3 +71,5 @@ export default class Item extends React.PureComponent<Props, never> {
     this.focusedNode = node;
   };
 }
+
+function noop() {}

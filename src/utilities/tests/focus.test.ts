@@ -5,7 +5,7 @@ describe('focus', () => {
   describe('handleMouseUpByBlurring()', () => {
     it('calls blur on the currentTarget', () => {
       const currentTarget = document.createElement('button');
-      currentTarget.blur = jest.fn();
+      jest.spyOn(currentTarget, 'blur');
       const mouseEvent = {currentTarget};
       handleMouseUpByBlurring(mouseEvent as MouseEvent<HTMLButtonElement>);
       expect(currentTarget.blur).toHaveBeenCalled();

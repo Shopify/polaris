@@ -3,12 +3,12 @@
 }
 
 .LabelWrapper {
-  margin-bottom: spacing(extra-tight);
+  @include text-breakword;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  margin-bottom: spacing(extra-tight);
 }
 
 .HelpText {
@@ -18,7 +18,10 @@
 }
 
 .Error {
+  @include text-breakword;
   margin-top: spacing(extra-tight);
-  word-break: break-word;
-  overflow-wrap: break-word;
+}
+
+.Action {
+  flex: 0 0 auto;
 }

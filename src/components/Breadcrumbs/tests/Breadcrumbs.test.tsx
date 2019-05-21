@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {CallbackAction, LinkAction} from '../../../types';
 import Breadcrumbs from '../Breadcrumbs';
@@ -57,3 +56,5 @@ describe('<Breadcrumbs />', () => {
     });
   });
 });
+
+function noop() {}

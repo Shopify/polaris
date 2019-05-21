@@ -1,12 +1,16 @@
 import * as React from 'react';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
-import {classNames} from '@shopify/react-utilities/styles';
-import {isElementOfType, wrapWithComponent} from '@shopify/react-utilities';
-import {Transition} from 'react-transition-group';
+import {classNames} from '@shopify/css-utilities';
+import {durationBase} from '@shopify/polaris-tokens';
+import {CSSTransition} from 'react-transition-group';
 
+import {
+  isElementOfType,
+  wrapWithComponent,
+} from '../../../../utilities/components';
 import {Key} from '../../../../types';
-import {overlay, Duration} from '../../../shared';
+import {overlay} from '../../../shared';
 import EventListener from '../../../EventListener';
 import KeypressListener from '../../../KeypressListener';
 import PositionedOverlay, {
@@ -61,14 +65,20 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
   render() {
     const {active} = this.props;
     return (
-      <Transition
+      <CSSTransition
         in={active}
-        timeout={Duration.Fast}
+        timeout={durationBase}
         mountOnEnter
         unmountOnExit
+        classNames={{
+          enter: styles.entering,
+          enterActive: styles.entered,
+          exit: styles.exiting,
+          exitActive: styles.exited,
+        }}
       >
         {this.renderOverlay}
-      </Transition>
+      </CSSTransition>
     );
   }
 
@@ -107,7 +117,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
         activator={activator}
         preferredPosition={preferredPosition}
         preferredAlignment={preferredAlignment}
-        // eslint-disable-next-line react/jsx-no-bind
         render={this.renderPopover.bind(this, transitionStatus)}
         fixed={fixed}
         onScrollOut={this.handleScrollOut}
@@ -125,7 +134,6 @@ export default class PopoverOverlay extends React.PureComponent<Props, never> {
 
     const className = classNames(
       styles.Popover,
-      transitionStatus && animationVariations(transitionStatus),
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
@@ -220,13 +228,4 @@ function renderPopoverContent(
     return childrenArray;
   }
   return wrapWithComponent(childrenArray, Pane, props);
-}
-
-function animationVariations(status: TransitionStatus) {
-  switch (status) {
-    case 'exiting':
-      return styles.exiting;
-    default:
-      return null;
-  }
 }

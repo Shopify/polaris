@@ -45,7 +45,7 @@ describe('<PageActions />', () => {
 
     it('renders a button', () => {
       mountWithAppProvider(<PageActions primaryAction={mockAction} />);
-      expect(buttonsFrom).toBeCalledWith(mockAction, {primary: true});
+      expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {primary: true});
     });
   });
 
@@ -53,7 +53,7 @@ describe('<PageActions />', () => {
     const mockActions = [{content: 'Delete'}];
     it('renders buttons for each secondaryAction', () => {
       mountWithAppProvider(<PageActions secondaryActions={mockActions} />);
-      expect(buttonsFrom).toBeCalledWith(mockActions);
+      expect(buttonsFrom).toHaveBeenCalledWith(mockActions);
     });
 
     it('renders a button group when defined', () => {

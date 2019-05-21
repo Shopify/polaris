@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {Icon, UnstyledLink, Indicator, Badge} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
@@ -456,6 +455,8 @@ describe('<Nav.Item />', () => {
     });
   });
 });
+
+function noop() {}
 
 function itemForLocation(location: string, overrides: Partial<ItemProps> = {}) {
   return mountWithNavigationProvider(

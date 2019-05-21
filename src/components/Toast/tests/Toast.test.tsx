@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities';
-import {noop} from '../../../utilities/other';
 import Toast from '../Toast';
 import {FrameContext, createFrameContext} from '../../Frame';
 
@@ -52,7 +51,7 @@ describe('<Toast />', () => {
       subscribe: jest.fn(),
       unsubscribe: jest.fn(),
     };
-    AppBridgeToast.create = jest.fn().mockReturnValue(appBridgeToastMock);
+    jest.spyOn(AppBridgeToast, 'create').mockReturnValue(appBridgeToastMock);
 
     it('shows app bridge toast notice content on mount and unmounts safely', () => {
       const content = 'Message sent';
@@ -111,6 +110,8 @@ describe('<Toast />', () => {
     });
   });
 });
+
+function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};

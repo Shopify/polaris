@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 
@@ -154,13 +154,13 @@ export default class PositionedOverlay extends React.PureComponent<
     const {lockPosition, top} = this.state;
 
     this.setState(
-      {
-        left: 0,
-        top: lockPosition ? top : 0,
+      ({left, top}) => ({
+        left,
+        top,
         height: 0,
         positioning: 'below',
         measuring: true,
-      },
+      }),
       () => {
         if (this.overlay == null || this.scrollableContainer == null) {
           return;

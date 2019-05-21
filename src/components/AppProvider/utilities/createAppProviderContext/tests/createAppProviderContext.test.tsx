@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as appBridge from '@shopify/app-bridge';
-import * as targets from '@shopify/react-utilities/target';
 import createAppProviderContext, {
   setClientInterfaceHook,
 } from '../createAppProviderContext';
@@ -17,19 +16,12 @@ jest.mock('../../Link', () => ({
   __esModule: true,
 }));
 
-const actualIsServer = targets.isServer;
-
-function mockIsServer(value: boolean) {
-  (targets as any).isServer = value;
-}
-
 describe('createAppProviderContext()', () => {
   const createAppSpy: jest.SpyInstance<any> = jest.spyOn(appBridge, 'default');
   const Intl: jest.Mock<{}> = require.requireMock('../../Intl').default;
   const Link: jest.Mock<{}> = require.requireMock('../../Link').default;
 
   afterEach(() => {
-    mockIsServer(actualIsServer);
     createAppSpy.mockReset();
     Intl.mockReset();
     Link.mockReset();
@@ -98,8 +90,8 @@ describe('createAppProviderContext()', () => {
       },
     });
 
-    expect(Intl).toBeCalledWith(i18n);
-    expect(Link).toBeCalledWith(CustomLinkComponent);
+    expect(Intl).toHaveBeenCalledWith(i18n);
+    expect(Link).toHaveBeenCalledWith(CustomLinkComponent);
   });
 
   it('adds an app bridge hook to set clientInterface data', () => {
@@ -121,7 +113,7 @@ describe('createAppProviderContext()', () => {
     const next = jest.fn((args) => args);
     const baseAction = {type: 'actionType'};
 
-    expect(setClientInterfaceHook.call({}, next)(baseAction)).toEqual({
+    expect(setClientInterfaceHook.call({}, next)(baseAction)).toStrictEqual({
       type: 'actionType',
       clientInterface: {
         name: '@shopify/polaris',

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/react-utilities/styles';
-import {wrapWithComponent} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 
+import {wrapWithComponent} from '../../../../utilities/components';
 import styles from '../../FormLayout.scss';
 import Item from '../Item';
 
@@ -44,7 +44,7 @@ export default function Group({children, condensed, title, helpText}: Props) {
   }
 
   const itemsMarkup = React.Children.map(children, (child) =>
-    wrapWithComponent(child, Item),
+    wrapWithComponent(child, Item, {}),
   );
 
   return (

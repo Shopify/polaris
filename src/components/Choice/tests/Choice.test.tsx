@@ -4,6 +4,16 @@ import {InlineError} from 'components';
 import Choice from '../Choice';
 
 describe('<Choice />', () => {
+  it('calls the provided onClick when clicked', () => {
+    const spy = jest.fn();
+    const element = mountWithAppProvider(
+      <Choice id="MyChoice" label="Label" onClick={spy} />,
+    );
+    element.find('label').simulate('click');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
   it('uses the id as the for attribute of a label', () => {
     const element = mountWithAppProvider(
       <Choice id="MyChoice" label="Label" />,

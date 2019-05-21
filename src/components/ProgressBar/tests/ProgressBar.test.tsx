@@ -23,4 +23,45 @@ describe('<ProgressBar />', () => {
     );
     expect(progress.find('progress').prop('value')).toBe(100);
   });
+
+  it('sets the progress element to 0 when progress is not provided', () => {
+    const progress = mountWithAppProvider(<ProgressBar>test</ProgressBar>);
+    expect(progress.find('progress').prop('value')).toBe(0);
+  });
+
+  describe('console.warn', () => {
+    const oldEnv = process.env;
+
+    beforeEach(() => {
+      jest.resetModules();
+      process.env = {...oldEnv};
+      delete process.env.NODE_ENV;
+    });
+
+    afterEach(() => {
+      process.env = oldEnv;
+    });
+
+    it('warns when a negative number is passed to progress in development', () => {
+      const warnSpy = jest.spyOn(console, 'warn');
+      process.env.NODE_ENV = 'development';
+
+      mountWithAppProvider(<ProgressBar progress={-1}>test</ProgressBar>);
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Values passed to the progress prop shouldn’t be negative. Resetting -1 to 0.',
+      );
+    });
+
+    it('warns when a number larger than 100 is passed to progress in development', () => {
+      const warnSpy = jest.spyOn(console, 'warn');
+      process.env.NODE_ENV = 'development';
+
+      mountWithAppProvider(<ProgressBar progress={101}>test</ProgressBar>);
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'Values passed to the progress prop shouldn’t exceed 100. Setting 101 to 100.',
+      );
+    });
+  });
 });

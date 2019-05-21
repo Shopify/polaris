@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {TextField} from 'components';
 import Item from '../Item';
@@ -11,3 +10,5 @@ describe('<Item />', () => {
     expect(item.contains(children)).toBe(true);
   });
 });
+
+function noop() {}

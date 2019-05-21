@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
-import {noop, createUniqueIDFactory} from '@shopify/javascript-utilities/other';
+import {classNames} from '@shopify/css-utilities';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Checkbox from '../Checkbox';
@@ -59,9 +59,9 @@ function ChoiceList({
   error,
   name = getUniqueID(),
 }: CombinedProps) {
-  const ControlComponent: typeof Checkbox | typeof RadioButton = allowMultiple
-    ? Checkbox
-    : RadioButton;
+  // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
+  // see https://github.com/Microsoft/TypeScript/issues/28768
+  const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
 
   const finalName = allowMultiple ? `${name}[]` : name;
 
@@ -127,6 +127,8 @@ function ChoiceList({
     </fieldset>
   );
 }
+
+function noop() {}
 
 function choiceIsSelected({value}: Choice, selected: string[]) {
   return selected.indexOf(value) >= 0;

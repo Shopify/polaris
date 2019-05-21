@@ -1,6 +1,6 @@
 import * as React from 'react';
-
-import {classNames} from '@shopify/react-utilities';
+import {CancelSmallMinor} from '@shopify/polaris-icons';
+import {classNames} from '@shopify/css-utilities';
 
 import {Action} from '../../types';
 import Card from '../Card';
@@ -53,7 +53,7 @@ export default function CalloutCard({
     <div className={styles.Dismiss}>
       <Button
         plain
-        icon="cancelSmall"
+        icon={CancelSmallMinor}
         onClick={onDismiss}
         accessibilityLabel="Dismiss card"
       />

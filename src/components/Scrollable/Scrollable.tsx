@@ -111,6 +111,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
       shadow,
       hint,
       onScrolledToBottom,
+      polaris,
       ...rest
     } = this.props;
 
