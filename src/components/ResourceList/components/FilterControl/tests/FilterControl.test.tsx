@@ -623,9 +623,9 @@ describe('<FilterControl />', () => {
   describe('placeholder', () => {
     it('renders default text if no placeholder passed.', () => {
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl {...mockDefaultProps} filters={mockFilters} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(TextField).prop('placeholder')).toBe(
@@ -636,13 +636,13 @@ describe('<FilterControl />', () => {
     it('renders the placeholder prop value if provided', () => {
       const placeholder = 'Search by name, email or phone';
       const filterControl = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <FilterControl
             {...mockDefaultProps}
             filters={mockFilters}
             placeholder={placeholder}
           />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       expect(filterControl.find(TextField).prop('placeholder')).toBe(

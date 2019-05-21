@@ -65,7 +65,7 @@ describe('<Loading />', () => {
 
   describe('lifecycle', () => {
     it('unmounts safely', () => {
-      const {loading} = mountWithFrame(<Loading />);
+      const {loading} = mountWithAppBridge(<Loading />);
 
       expect(() => {
         loading.unmount();

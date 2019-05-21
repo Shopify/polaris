@@ -83,9 +83,9 @@ describe('<FileUpload />', () => {
 
   it('sets a default actionTitle if the prop is provided then removed', () => {
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'large', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
         <FileUpload actionTitle="Title" />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
     fileUpload.setProps({children: <FileUpload />});
@@ -94,9 +94,9 @@ describe('<FileUpload />', () => {
 
   it('sets a default actionHint if the prop is provided then removed', () => {
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'large', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
         <FileUpload actionHint="Hint" />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
     fileUpload.setProps({children: <FileUpload />});
@@ -107,16 +107,13 @@ describe('<FileUpload />', () => {
     const actionTitle = 'Add file title';
     const actionHint = 'or drop files to upload hint';
     const fileUpload = mountWithAppProvider(
-      <Provider value={{size: 'large', type: 'file'}}>
+      <DropZoneContext.Provider value={{size: 'large', type: 'file'}}>
         <FileUpload actionTitle={actionTitle} actionHint={actionHint} />
-      </Provider>,
+      </DropZoneContext.Provider>,
     );
 
-    fileUpload.setProps({
-      children: (
-        <FileUpload actionTitle={actionTitle} actionHint={actionHint} />
-      ),
-    });
+    fileUpload.setProps({actionTitle, actionHint});
+
     expect(fileUpload.props()).toStrictEqual({actionTitle, actionHint});
   });
 });

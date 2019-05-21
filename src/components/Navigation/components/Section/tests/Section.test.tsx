@@ -130,7 +130,7 @@ describe('<Navigation.Section />', () => {
 
   it('does not set expanded to false on item click when it has a sub nav and on the mobile breakpoint', () => {
     matchMedia.setMedia(() => ({matches: true}));
-    const withSubNav = mountWithAppProvider(
+    const withSubNav = mountWithNavigationProvider(
       <Section
         rollup={{
           after: 1,
@@ -156,12 +156,11 @@ describe('<Navigation.Section />', () => {
         ]}
       />,
       {
-        context,
-        childContextTypes,
+        ...context,
       },
     );
 
-    withSubNav.setState({expanded: true});
+    findByTestID(withSubNav, 'ToggleViewAll').simulate('click');
 
     withSubNav
       .find('a[href="/other"]')
@@ -170,7 +169,12 @@ describe('<Navigation.Section />', () => {
 
     animationFrame.runFrame();
 
-    expect(withSubNav.state('expanded')).toBe(true);
+    expect(
+      withSubNav
+        .find(Collapsible)
+        .first()
+        .prop('open'),
+    ).toBe(true);
   });
 
   it('adds a toggle button if rollupAfter has a value', () => {

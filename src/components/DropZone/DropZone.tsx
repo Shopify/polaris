@@ -203,13 +203,6 @@ export class DropZone extends React.Component<CombinedProps, State> {
     };
   }
 
-  get getContext(): DropZoneContext {
-    return {
-      size: this.state.size,
-      type: this.state.type || 'file',
-    };
-  }
-
   get dropNode() {
     return this.props.dropOnPage ? document : this.node.current;
   }

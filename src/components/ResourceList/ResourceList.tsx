@@ -291,23 +291,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
     };
   }
 
-  get getContext(): ResourceListContext {
-    const {
-      selectedItems,
-      resourceName = this.defaultResourceName,
-      loading,
-    } = this.props;
-    const {selectMode} = this.state;
-    return {
-      selectable: this.selectable,
-      selectedItems,
-      selectMode,
-      resourceName,
-      loading,
-      onSelectionChange: this.handleSelectionChange,
-    };
-  }
-
   componentDidMount() {
     this.forceUpdate();
     if (this.props.loading) {

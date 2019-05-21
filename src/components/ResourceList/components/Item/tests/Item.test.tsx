@@ -199,9 +199,9 @@ describe('<Item />', () => {
     it('calls onClick when hitting keyUp on the item when onClick and URL exists', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <Item id={itemId} url="#" onClick={onClick} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
@@ -214,9 +214,9 @@ describe('<Item />', () => {
     it('does not call onClick when hitting keyUp on non Enter key', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
-        <Provider value={mockDefaultContext}>
+        <ResourceListContext.Provider value={mockDefaultContext}>
           <Item id={itemId} url="#" onClick={onClick} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {
@@ -229,9 +229,9 @@ describe('<Item />', () => {
     it('does not call onClick when hitting keyUp on the item when no URL exists', () => {
       const onClick = jest.fn();
       const wrapper = mountWithAppProvider(
-        <Provider value={mockSelectModeContext}>
+        <ResourceListContext.Provider value={mockSelectModeContext}>
           <Item id={itemId} onClick={onClick} />
-        </Provider>,
+        </ResourceListContext.Provider>,
       );
 
       findByTestID(wrapper, 'Item-Wrapper').simulate('keyup', {

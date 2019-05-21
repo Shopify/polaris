@@ -192,7 +192,7 @@ describe('<TextField />', () => {
     });
 
     it('sets autoComplete to string value when string is given', () => {
-      const textField = shallowWithAppProvider(
+      const textField = mountWithAppProvider(
         <TextField
           label="TextField"
           autoComplete="firstName"

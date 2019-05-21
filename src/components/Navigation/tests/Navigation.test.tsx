@@ -4,8 +4,6 @@ import Navigation from '../Navigation';
 import NavigationContext from '../context';
 import {UserMenu} from '../components';
 
-const childContextTypes = contextTypes;
-
 describe('<Navigation />', () => {
   it('mounts', () => {
     const navigation = mountWithAppProvider(<Navigation location="/" />);
@@ -39,9 +37,15 @@ describe('<Navigation />', () => {
     });
 
     it('has a child with contentContext', () => {
-      const Child: React.SFC<{}> = (_props, context) =>
-        context.withinContentContainer ? <div /> : null;
-      Child.contextTypes = childContextTypes;
+      const Child: React.SFC<{}> = (_props) => {
+        return (
+          <NavigationContext.Consumer>
+            {({withinContentContainer}) =>
+              withinContentContainer ? <div /> : null
+            }
+          </NavigationContext.Consumer>
+        );
+      };
 
       const navigation = mountWithAppProvider(
         <Navigation location="/">

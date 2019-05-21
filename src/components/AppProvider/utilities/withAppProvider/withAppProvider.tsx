@@ -46,7 +46,7 @@ function withScrollable<P, T>(WrappedComponent: ReactComponent<P, T>) {
                 stickyManager: this.stickyManager,
               }}
             >
-              <WrappedComponent {...this.props} />
+              <WrappedComponent {...this.props as any} />
             </AppProviderContext.Provider>
           )}
         </AppProviderContext.Consumer>
@@ -89,7 +89,7 @@ export default function withAppProvider<OwnProps>({
 
                     return (
                       <WrappedComponent
-                        {...this.props}
+                        {...this.props as any}
                         polaris={polarisContext}
                       />
                     );
@@ -102,7 +102,7 @@ export default function withAppProvider<OwnProps>({
       }
     }
 
-    let WithScrollable;
+    let WithScrollable: React.ComponentClass<any> | undefined;
     if (withinScrollable) {
       WithScrollable = withScrollable(WithProvider);
     }
