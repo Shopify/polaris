@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "Das {color}-Symbol akzeptiert keine Hintergründe. Die Symbolfarben, die Hintergründe haben, sind: {colorsWithBackDrops}"
+      "backdropWarning": "Das {color}-Symbol akzeptiert keine Hintergründe. Die Symbolfarben, die Hintergründe haben, sind: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "Eingestellt: Die {color}-Option für die Farbeigenschaft des Symbols wurde eingestellt Verwenden Sie stattdessen eine andere Farbe."
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",
