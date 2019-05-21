@@ -200,7 +200,7 @@
     },
     "TextField": {
       "characterCount": "{count} 个字符",
-      "characterCountWithMaxLength": "已使用的字符数未 {count}，限制为 {limit}"
+      "characterCountWithMaxLength": "使用的字符长度为 {count}，限制为 {limit}"
     },
     "TopBar": {
       "toggleMenuLabel": "切换菜单",
