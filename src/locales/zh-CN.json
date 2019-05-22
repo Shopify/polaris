@@ -91,7 +91,7 @@
     "Frame": {
       "skipToContent": "跳到内容",
       "Navigation": {
-        "closeMobileNavigationLabel": "关闭导航"
+        "closeMobileNavigationLabel": "关闭网站地图"
       }
     },
     "Icon": {
@@ -139,7 +139,7 @@
         "actionsDropdown": "操作下拉菜单"
       },
       "BulkActions": {
-        "actionsActivatorLabel": "操作",
+        "actionsActivatorLabel": "编辑",
         "moreActionsActivatorLabel": "其他操作",
         "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
       },
