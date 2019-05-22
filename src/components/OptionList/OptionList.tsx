@@ -2,10 +2,11 @@ import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {arraysAreEqual} from '../../utilities/arrays';
-import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import {WithAppProviderProps} from '../AppProvider';
 import {Props as IconProps} from '../Icon';
 import {Props as AvatarProps} from '../Avatar';
 import {Props as ThumbnailProps} from '../Thumbnail';
+import {useDeepCompare} from '../../hooks';
 
 import {Option} from './components';
 import styles from './OptionList.scss';
@@ -31,6 +32,8 @@ export interface SectionDescriptor {
   /** Section title */
   title?: string;
 }
+
+type Descriptor = OptionDescriptor | SectionDescriptor;
 
 const getUniqueId = createUniqueIDFactory('OptionList');
 
@@ -61,129 +64,112 @@ export interface State {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
-export class OptionList extends React.Component<CombinedProps, State> {
-  state: State = {
-    normalizedOptions: createNormalizedOptions(
-      this.props.options,
-      this.props.sections,
-      this.props.title,
-    ),
-  };
+export default function OptionList({
+  options,
+  sections,
+  title,
+  selected,
+  allowMultiple,
+  role,
+  optionRole,
+  onChange,
+  id: propId,
+}: Props) {
+  const [normalizedOptions, setNormalizedOptions] = React.useState(
+    createNormalizedOptions(options, sections, title),
+  );
+  const id = React.useRef(propId || getUniqueId());
 
-  private id = this.props.id || getUniqueId();
+  React.useEffect(
+    () => {
+      id.current = propId || id.current;
+    },
+    [propId],
+  );
 
-  componentWillReceiveProps({
-    options: nextOptions = [],
-    sections: nextSections = [],
-    id: nextID,
-    title: nextTitle,
-  }: Props) {
-    const {options = [], sections = [], id, title} = this.props;
+  useDeepCompare(
+    () => {
+      setNormalizedOptions(
+        createNormalizedOptions(options || [], sections || [], title),
+      );
+    },
+    [options, sections, title],
+    optionArraysAreEqual,
+  );
 
-    if (id !== nextID) {
-      this.id = nextID || this.id;
-    }
+  const handleClick = React.useCallback(
+    (sectionIndex: number, optionIndex: number) => {
+      const selectedValue =
+        normalizedOptions[sectionIndex].options[optionIndex].value;
+      const foundIndex = selected.indexOf(selectedValue);
+      if (allowMultiple) {
+        const newSelection =
+          foundIndex === -1
+            ? [selectedValue, ...selected]
+            : [
+                ...selected.slice(0, foundIndex),
+                ...selected.slice(foundIndex + 1, selected.length),
+              ];
+        onChange(newSelection);
+        return;
+      }
+      onChange([selectedValue]);
+    },
+    [normalizedOptions, selected, allowMultiple, onChange],
+  );
 
-    const optionsChanged = !arraysAreEqual<OptionDescriptor>(
-      nextOptions,
-      options,
-    );
+  const optionsExist = normalizedOptions.length > 0;
 
-    const sectionsChanged = !arraysAreEqual<SectionDescriptor>(
-      nextSections,
-      sections,
-      testSectionsPropEquality,
-    );
+  const optionsMarkup = optionsExist
+    ? normalizedOptions.map(({title, options}, sectionIndex) => {
+        const titleMarkup = title ? (
+          <p className={styles.Title} role={role}>
+            {title}
+          </p>
+        ) : null;
+        const optionsMarkup =
+          options &&
+          options.map((option, optionIndex) => {
+            const isSelected = selected.includes(option.value);
+            const optionId =
+              option.id || `${id.current}-${sectionIndex}-${optionIndex}`;
 
-    const titleChanged = title !== nextTitle;
+            return (
+              <Option
+                {...option}
+                key={optionId}
+                id={optionId}
+                section={sectionIndex}
+                index={optionIndex}
+                onClick={handleClick}
+                select={isSelected}
+                allowMultiple={allowMultiple}
+                role={optionRole}
+              />
+            );
+          });
 
-    if (optionsChanged || sectionsChanged || titleChanged) {
-      this.setState({
-        normalizedOptions: createNormalizedOptions(
-          nextOptions,
-          nextSections,
-          nextTitle,
-        ),
-      });
-    }
-  }
+        return (
+          <li key={title || `noTitle-${sectionIndex}`}>
+            {titleMarkup}
+            <ul
+              className={styles.Options}
+              id={id.current}
+              role={role}
+              aria-multiselectable={allowMultiple}
+            >
+              {optionsMarkup}
+            </ul>
+          </li>
+        );
+      })
+    : null;
 
-  render() {
-    const {normalizedOptions} = this.state;
-    const {selected, allowMultiple, role, optionRole} = this.props;
-    const optionsExist = normalizedOptions.length > 0;
-
-    const optionsMarkup = optionsExist
-      ? normalizedOptions.map(({title, options}, sectionIndex) => {
-          const titleMarkup = title ? (
-            <p className={styles.Title} role={role}>
-              {title}
-            </p>
-          ) : null;
-          const optionsMarkup =
-            options &&
-            options.map((option, optionIndex) => {
-              const isSelected = selected.includes(option.value);
-              const id =
-                option.id || `${this.id}-${sectionIndex}-${optionIndex}`;
-
-              return (
-                <Option
-                  {...option}
-                  key={id}
-                  id={id}
-                  section={sectionIndex}
-                  index={optionIndex}
-                  onClick={this.handleClick}
-                  select={isSelected}
-                  allowMultiple={allowMultiple}
-                  role={optionRole}
-                />
-              );
-            });
-
-          return (
-            <li key={title || `noTitle-${sectionIndex}`}>
-              {titleMarkup}
-              <ul
-                className={styles.Options}
-                id={this.id}
-                role={role}
-                aria-multiselectable={allowMultiple}
-              >
-                {optionsMarkup}
-              </ul>
-            </li>
-          );
-        })
-      : null;
-
-    return (
-      <ul className={styles.OptionList} role={role}>
-        {optionsMarkup}
-      </ul>
-    );
-  }
-
-  private handleClick = (sectionIndex: number, optionIndex: number) => {
-    const {selected, onChange, allowMultiple} = this.props;
-    const selectedValue = this.state.normalizedOptions[sectionIndex].options[
-      optionIndex
-    ].value;
-    const foundIndex = selected.indexOf(selectedValue);
-    if (allowMultiple) {
-      const newSelection =
-        foundIndex === -1
-          ? [selectedValue, ...selected]
-          : [
-              ...selected.slice(0, foundIndex),
-              ...selected.slice(foundIndex + 1, selected.length),
-            ];
-      onChange(newSelection);
-      return;
-    }
-    onChange([selectedValue]);
-  };
+  return (
+    <ul className={styles.OptionList} role={role}>
+      {optionsMarkup}
+    </ul>
+  );
 }
 
 function createNormalizedOptions(
@@ -212,6 +198,25 @@ function createNormalizedOptions(
   ];
 }
 
+function isSection(arr: Descriptor[]): arr is SectionDescriptor[] {
+  return typeof arr[0] === 'object' && arr[0].hasOwnProperty('options');
+}
+
+function optionArraysAreEqual(
+  firstArray: Descriptor[],
+  secondArray: Descriptor[],
+) {
+  if (isSection(firstArray) && isSection(secondArray)) {
+    return arraysAreEqual<SectionDescriptor>(
+      firstArray,
+      secondArray,
+      testSectionsPropEquality,
+    );
+  }
+
+  return arraysAreEqual(firstArray, secondArray);
+}
+
 function testSectionsPropEquality(
   previousSection: SectionDescriptor,
   currentSection: SectionDescriptor,
@@ -222,5 +227,3 @@ function testSectionsPropEquality(
   const titlesAreEqual = previousSection.title === currentSection.title;
   return optionsAreEqual && titlesAreEqual;
 }
-
-export default withAppProvider<Props>()(OptionList);
