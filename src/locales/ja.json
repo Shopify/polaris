@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "{color}のアイコンは、背景を受け付けません。背景を持つアイコンの色は次のとおりです: {colorsWithBackDrops}"
+      "backdropWarning": "{color}のアイコンは、背景を受け付けません。背景を持つアイコンの色は次のとおりです: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "廃止: アイコンの色プロパティに関する{color}オプションは、廃止されました。代わりに別の色を使用してください。"
     },
     "Modal": {
       "iFrameTitle": "ボディのマークアップ",
