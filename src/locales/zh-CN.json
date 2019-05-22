@@ -139,7 +139,7 @@
         "actionsDropdown": "操作下拉菜单"
       },
       "BulkActions": {
-        "actionsActivatorLabel": "操作",
+        "actionsActivatorLabel": "编辑",
         "moreActionsActivatorLabel": "其他操作",
         "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
       },
