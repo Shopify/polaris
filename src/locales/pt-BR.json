@@ -18,8 +18,10 @@
         "success": "Sucesso",
         "warning": "Aviso",
         "attention": "Atenção",
-        "new": "Novo"
-      }
+        "new": "Novo",
+        "critical": "Crítico"
+      },
+      "warningMessage": "Elemento em desuso: a opção \"aviso\" da propriedade \"status\" no selo se tornou obsoleta. Use outro \"status\"."
     },
     "Button": {
       "spinnerAccessibilityLabel": "Carregando"
