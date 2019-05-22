@@ -18,8 +18,10 @@
         "success": "Berjaya",
         "warning": "Amaran",
         "attention": "Perhatian",
-        "new": "Baharu"
-      }
+        "new": "Baharu",
+        "critical": "Kritikal"
+      },
+      "warningMessage": "Penamatan: Opsyen `amaran 'untuk status sifat` di Lencana telah ditamatkan. Sebaliknya, gunakan `status` yang lain."
     },
     "Button": {
       "spinnerAccessibilityLabel": "Memuatkan"
