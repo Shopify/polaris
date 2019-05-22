@@ -18,8 +18,10 @@
         "success": "Réussite",
         "warning": "Avertissement",
         "attention": "Attention",
-        "new": "Nouveau"
-      }
+        "new": "Nouveau",
+        "critical": "Critique"
+      },
+      "warningMessage": "Obsolète : l'option `d'avertissement` de la propriété` de statut` sur Badge est obsolète. Utilisez un autre `statut` à la place."
     },
     "Button": {
       "spinnerAccessibilityLabel": "Chargement"
