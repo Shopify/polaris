@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Borrar"
       }
+    },
+    "Banner": {
+      "warningMessage": "Obsoleto: la opción \"advertencia\" para la propiedad del estado en el Banner ha quedado en desuso. Usa el estado \"atención\" en su lugar."
     }
   }
 }
