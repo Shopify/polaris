@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useRef, useCallback} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {arraysAreEqual} from '../../utilities/arrays';
@@ -75,17 +75,14 @@ export default function OptionList({
   onChange,
   id: propId,
 }: Props) {
-  const [normalizedOptions, setNormalizedOptions] = React.useState(
+  const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
-  const id = React.useRef(propId || getUniqueId());
+  const id = useRef(propId || getUniqueId());
 
-  React.useEffect(
-    () => {
-      id.current = propId || id.current;
-    },
-    [propId],
-  );
+  if (id.current !== propId) {
+    id.current = propId || id.current;
+  }
 
   useDeepCompare(
     () => {
@@ -97,7 +94,7 @@ export default function OptionList({
     optionArraysAreEqual,
   );
 
-  const handleClick = React.useCallback(
+  const handleClick = useCallback(
     (sectionIndex: number, optionIndex: number) => {
       const selectedValue =
         normalizedOptions[sectionIndex].options[optionIndex].value;
