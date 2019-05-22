@@ -18,8 +18,10 @@
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "新建"
-      }
+        "new": "新建",
+        "critical": "重要信息"
+      },
+      "warningMessage": "弃用通知：徽章上状态属性的“警告”选项已被弃用。请改用另一种状态。"
     },
     "Button": {
       "spinnerAccessibilityLabel": "正在加载"
