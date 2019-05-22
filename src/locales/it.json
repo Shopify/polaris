@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Cancella"
       }
+    },
+    "Banner": {
+      "warningMessage": "Elemento deprecato: l'opzione di avviso per la proprietà stato su Banner è stata deprecata. Usa lo stato di attenzione."
     }
   }
 }
