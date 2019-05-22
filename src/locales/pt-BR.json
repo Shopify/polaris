@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Limpar"
       }
+    },
+    "Banner": {
+      "warningMessage": "Elemento em desuso: a opção \"aviso\" da propriedade \"status\" no banner se tornou obsoleta. Use o \"status\" \"atenção\"."
     }
   }
 }
