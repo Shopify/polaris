@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "清除"
       }
+    },
+    "Banner": {
+      "warningMessage": "停用：橫幅的「狀態」屬性之「警告」選項已停用。請改用「注意」狀態。"
     }
   }
 }
