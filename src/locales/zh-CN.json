@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "清除"
       }
+    },
+    "Banner": {
+      "warningMessage": "弃用通知：横幅上状态属性的“警告”选项已被弃用。请改用“注意”状态。"
     }
   }
 }
