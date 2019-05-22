@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Kosongkan"
       }
+    },
+    "Banner": {
+      "warningMessage": "Penamatan: Opsyen `amaran 'untuk status` sifat pada Banner telah ditamatkan. Sebaliknya, gunakan` `status perhatian."
     }
   }
 }
