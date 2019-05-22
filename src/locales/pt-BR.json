@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "O ícone {color} não aceita fundo. As cores dos ícones que têm fundos são: {colorsWithBackDrops}"
+      "backdropWarning": "O ícone {color} não aceita fundo. As cores dos ícones que têm fundos são: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "Elemento em desuso: a opção {color} da propriedade \"cor\" no ícone se tornou obsoleta. Use outra \"cor\"."
     },
     "Modal": {
       "iFrameTitle": "marcação de corpo",
