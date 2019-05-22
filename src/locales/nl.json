@@ -18,8 +18,10 @@
         "success": "Geslaagd",
         "warning": "Waarschuwing",
         "attention": "Attentie",
-        "new": "Nieuw"
-      }
+        "new": "Nieuw",
+        "critical": "Kritiek"
+      },
+      "warningMessage": "Veroudering: De optie `waarschuwing` voor de eigenschap `status` op Badge is verouderd. Gebruik een andere `status`."
     },
     "Button": {
       "spinnerAccessibilityLabel": "Laden"
