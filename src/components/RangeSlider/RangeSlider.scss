@@ -1,2 +1,6 @@
+// Having no SCSS at the root of a component will prevent
+// sub component SCSS from being built
+
+// stylelint-disable-next-line block-no-empty
 .RangeSliderContainer {
 }
