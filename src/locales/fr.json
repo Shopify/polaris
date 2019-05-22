@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}"
+      "backdropWarning": "L'icône {color} n'accepte pas les fonds. Les couleurs des icônes qui possèdent un fond sont : {colorsWithBackDrops}",
+      "deprecatedColorWarning": "Obsolète : l'option {color} pour la propriété `de couleur` sur Icône est obsolète. Utilisez une autre `couleur` à la place."
     },
     "Modal": {
       "iFrameTitle": "balisage du corps",
