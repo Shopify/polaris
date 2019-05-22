@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "Ikon {color} tidak menerima latar belakang. Warna ikon yang mempunyai latar belakang adalah: {colorsWithBackDrops}"
+      "backdropWarning": "Ikon {color} tidak menerima latar belakang. Warna ikon yang mempunyai latar belakang adalah: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "Penamatan: Opsyen {color} untuk sifat `warna` di Ikon telah ditamatkan. Sebaliknya, gunakan `warna` yang lain"
     },
     "Modal": {
       "iFrameTitle": "penanda badan",
