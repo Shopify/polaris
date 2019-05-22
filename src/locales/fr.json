@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Effacer"
       }
+    },
+    "Banner": {
+      "warningMessage": "Obsolète : l'option `d'avertissement` de la propriété` de statut` sur Bannière est obsolète. Utilisez plutôt le statut `attention`."
     }
   }
 }
