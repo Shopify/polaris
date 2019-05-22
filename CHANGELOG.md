@@ -8,6 +8,30 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ---
 
+## 3.16.0 - 2019-05-22
+
+### Enhancements
+
+- Added support for dual values to `RangeSlider` component ([#1436](https://github.com/Shopify/polaris-react/pull/1436))
+- Updated type restrictions for `AnnotatedSection` to allow its `title` prop to accept `React.ReactNode` instead of `string` ([#1431](https://github.com/Shopify/polaris-react/pull/1431))
+
+### Bug fixes
+
+- Fixed an issue where the JavaScript breakpoints incorrectly set the navigation bar collapsed breakpoint ([#1475](https://github.com/Shopify/polaris-react/pull/1475))
+- Added a border to `Toast` messages to make them more visible in Windows high contrast mode ([#1469](https://github.com/Shopify/polaris-react/pull/1469))
+- Added `box-shadow` to the `Banner` to make it more visible in Windows high contrast mode ([#1481](https://github.com/Shopify/polaris-react/pull/1481))
+- Added `box-shadow` to the `Card` to make it more visible in Windows high contrast mode ([#1524](https://github.com/Shopify/polaris-react/pull/1524))
+- Fixed UI regressions in `Navigation` component hover and active states ([#1551](https://github.com/Shopify/polaris-react/pull/1551))
+
+### Development workflow
+
+- Updated Storybook to `v5.1.0-alpha.39`, improving component searchability in the sidebar [[#1488](https://github.com/Shopify/polaris-react/pull/1488)]
+
+### Dependency upgrades
+
+- Removed runtime dependency on `@shopify/images` as we never needed it at runtime ([#1474](https://github.com/Shopify/polaris-react/pull/1474))
+- Removed `@shopify/react-utilities` and replaced some of the functionality with `@shopify/css-utilities` or by moving the utilities into Polaris itself ([#1473](https://github.com/Shopify/polaris-react/pull/1473))
+
 ## 3.15.0 - 2019-05-14
 
 This release fixes an issue introduced in `v3.14.0` that caused the `esnext` build not to succeed resulting in build errors for consumers ([#1466](https://github.com/Shopify/polaris-react/pull/1466))
