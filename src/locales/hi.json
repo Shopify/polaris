@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "{color} आइकन बैकड्रॉप स्वीकार नहीं करता है. आइकन के वे रंग जिनमें बैकड्रॉप होते हैं: {colorsWithBackDrops}"
+      "backdropWarning": "{color} आइकन बैकड्रॉप स्वीकार नहीं करता है. आइकन के वे रंग जिनमें बैकड्रॉप होते हैं: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "पदावनति: आइकन पर रंग गुण के लिए {color} विकल्प को हटा दिया गया है. इसके बजाय किसी दूसरे रंग का उपयोग करें."
     },
     "Modal": {
       "iFrameTitle": "बॉडी मार्कअप",
