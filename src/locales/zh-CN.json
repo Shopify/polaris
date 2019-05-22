@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "{color} 图标不能用于背景。可用于背景的图标颜色：{colorsWithBackDrops}"
+      "backdropWarning": "{color} 图标不能用于背景。可用于背景的图标颜色：{colorsWithBackDrops}",
+      "deprecatedColorWarning": "弃用通知：图标上颜色属性的{color}选项已被弃用。请改用另一种颜色。"
     },
     "Modal": {
       "iFrameTitle": "正文标记",
