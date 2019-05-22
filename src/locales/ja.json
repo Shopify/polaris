@@ -18,8 +18,10 @@
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "新規"
-      }
+        "new": "新規",
+        "critical": "クリティカル"
+      },
+      "warningMessage": "廃止: バッジのステータスプロパティに関する警告オプションは、廃止されました。代わりに別のステータスを使用してください。"
     },
     "Button": {
       "spinnerAccessibilityLabel": "読み込んでいます"
