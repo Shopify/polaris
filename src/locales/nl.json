@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "Het pictogram {color} accepteert geen achtergronden. De pictogramkleuren met achtergronden zijn: {colorsWithBackDrops}"
+      "backdropWarning": "Het pictogram {color} accepteert geen achtergronden. De pictogramkleuren met achtergronden zijn: {colorsWithBackDrops}",
+      "deprecatedColorWarning": "Veroudering: De optie {color} voor de eigenschap `kleur` op Pictogram is verouderd. Gebruik een andere `kleur`."
     },
     "Modal": {
       "iFrameTitle": "opmaak platte tekst",
