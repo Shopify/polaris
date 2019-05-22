@@ -7,7 +7,7 @@ import {
 } from '@shopify/javascript-utilities/events';
 import {classNames} from '@shopify/css-utilities';
 import {CSS_VAR_PREFIX} from '../../utilities';
-import {Props as RangeSliderProps, DualValue} from '../../types';
+import {RangeSliderProps, DualValue} from '../../types';
 import Labelled, {labelID} from '../../../Labelled';
 import EventListener from '../../../EventListener';
 import {Key} from '../../../../types';
