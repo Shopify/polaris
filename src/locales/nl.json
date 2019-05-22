@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "Wissen"
       }
+    },
+    "Banner": {
+      "warningMessage": "Veroudering: De optie `waarschuwing` voor de eigenschap `status` op Banner is verouderd. Gebruik `attentie` als `status`."
     }
   }
 }
