@@ -18,8 +18,10 @@
         "success": "Éxito",
         "warning": "Advertencia",
         "attention": "Atención",
-        "new": "Nuevo"
-      }
+        "new": "Nuevo",
+        "critical": "Crítico"
+      },
+      "warningMessage": "Obsoleto: la opción \"advertencia\" para la propiedad del estado en la Insignia ha quedado en desuso. Usa otro estado en su lugar."
     },
     "Button": {
       "spinnerAccessibilityLabel": "Cargando"
