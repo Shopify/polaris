@@ -95,7 +95,8 @@
       }
     },
     "Icon": {
-      "backdropWarning": "{color} 圖示不適用背景。有背景的圖示顏色為：{colorsWithBackDrops}"
+      "backdropWarning": "{color} 圖示不適用背景。有背景的圖示顏色為：{colorsWithBackDrops}",
+      "deprecatedColorWarning": "停用：圖示的「顏色」屬性之「{color}」選項已停用。請改用其他顏色。"
     },
     "Modal": {
       "iFrameTitle": "本文標記",
