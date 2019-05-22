@@ -207,6 +207,9 @@
       "SearchField": {
         "clearButtonLabel": "クリア"
       }
+    },
+    "Banner": {
+      "warningMessage": "廃止: バナーのステータスプロパティに関する警告オプションは、廃止されました。代わりに別の注意ステータスを使用してください。"
     }
   }
 }
