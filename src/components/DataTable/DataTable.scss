@@ -1,4 +1,4 @@
-$fixed-column-width: rem(145px);
+$first-column-width: rem(145px);
 $breakpoint: 768px;
 
 .DataTable {
@@ -26,7 +26,7 @@ $breakpoint: 768px;
   }
 
   .ScrollContainer {
-    margin-left: rem($fixed-column-width);
+    margin-left: rem($first-column-width);
   }
 }
 
@@ -71,7 +71,7 @@ $breakpoint: 768px;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: $fixed-column-width;
+    left: $first-column-width;
     display: none;
     width: rem(6px);
     background: linear-gradient(
@@ -111,9 +111,10 @@ $breakpoint: 768px;
   @include text-emphasis-normal;
   @include text-breakword;
   position: absolute;
+  z-index: 5;
   top: auto;
   left: 0;
-  width: $fixed-column-width;
+  width: $first-column-width;
   white-space: unset;
   text-align: left;
   backface-visibility: hidden; // stops painting on scroll (due to positioning)
