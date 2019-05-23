@@ -147,10 +147,11 @@ function rgbToHsbl(color: RGBAColor, type: 'b' | 'l' = 'b'): HSBLAColor {
   } else if (type === 'b') {
     saturation = delta / largestComponent;
   } else if (type === 'l') {
-    saturation =
+    const baseSaturation =
       lightness > 0.5
         ? delta / (2 - largestComponent - smallestComponent)
         : delta / (largestComponent + smallestComponent);
+    saturation = isNaN(baseSaturation) ? 0 : baseSaturation;
   }
 
   let huePercentage = 0;
@@ -197,7 +198,7 @@ export function rgbToHsl(color: RGBAColor): HSLAColor {
   return {hue, saturation, lightness, alpha};
 }
 
-function hexToRgb(color: string) {
+export function hexToRgb(color: string) {
   if (color.length === 4) {
     const repeatHex = (hex1: number, hex2: number) =>
       color.slice(hex1, hex2).repeat(2);

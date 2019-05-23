@@ -4,8 +4,9 @@ import {
   saturateColor,
   createDarkColor,
   createLightColor,
+  opacifyColor,
 } from '../color-manipulation';
-import {HSLColor} from '../color-types';
+import {HSLColor, HSLAColor} from '../color-types';
 
 describe('lightenColor', () => {
   it("will return the color if it's of type string", () => {
@@ -48,6 +49,29 @@ describe('saturateColor', () => {
   it('will return a color with a decreased saturation', () => {
     const color = saturateColor({hue: 50, saturation: 50, lightness: 50}, -5);
     expect((color as HSLColor).saturation).toBeLessThan(50);
+  });
+});
+
+describe('opacifyColor', () => {
+  it("will return the color if it's of type string", () => {
+    const color = opacifyColor('papayawhip', 5);
+    expect(color).toBe('papayawhip');
+  });
+
+  it('will return a color with a new alpha when given a decimal', () => {
+    const color = opacifyColor(
+      {hue: 50, saturation: 50, lightness: 50, alpha: 1.0},
+      0.5,
+    );
+    expect((color as HSLAColor).alpha).toBe(0.5);
+  });
+
+  it('will return a color with a new alpha when given a number', () => {
+    const color = opacifyColor(
+      {hue: 50, saturation: 50, lightness: 50, alpha: 1.0},
+      50,
+    );
+    expect((color as HSLAColor).alpha).toBe(0.5);
   });
 });
 

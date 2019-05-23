@@ -1,4 +1,4 @@
-import {HSLColor, HSBColor} from './color-types';
+import {HSLColor, HSBColor, HSLAColor, RGBColor} from './color-types';
 
 export function lightenColor(color: HSLColor | string, lighten = 0) {
   if (typeof color === 'string') {
@@ -20,6 +20,19 @@ export function darkenColor(color: HSLColor | string, lighten = 0) {
   const nextLightness = lightness - lighten;
 
   return {...color, lightness: nextLightness};
+}
+
+export function opacifyColor(
+  color: HSLAColor | string,
+  alpha: number,
+): HSLAColor | string {
+  if (typeof color === 'string') {
+    return color;
+  }
+
+  const {alpha: prevAlpha, ...rest} = color;
+
+  return {...rest, alpha: alpha > 1 ? Math.floor(alpha) / 100 : alpha};
 }
 
 export function saturateColor(
@@ -56,4 +69,22 @@ export function createLightColor(
   const saturatedColor = saturateColor(lightenedColor, -saturation);
 
   return saturatedColor;
+}
+
+export function mixColors(
+  primaryColor: RGBColor,
+  mixColor: RGBColor,
+  weight: number,
+): RGBColor {
+  return {
+    red: Math.round(
+      mixColor.red + (primaryColor.red - mixColor.red) * (weight / 100.0),
+    ),
+    green: Math.round(
+      mixColor.green + (primaryColor.green - mixColor.green) * (weight / 100.0),
+    ),
+    blue: Math.round(
+      mixColor.blue + (primaryColor.blue - mixColor.blue) * (weight / 100.0),
+    ),
+  };
 }

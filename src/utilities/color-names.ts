@@ -9,7 +9,7 @@ export function constructColorName(
   baseName: string,
   property: string | null,
   suffix?: string,
-) {
+): string {
   const name = normalizeName(baseName);
   const propertyName = property ? `-${normalizeName(property)}` : '';
   const constructedSuffix = suffix ? `-${suffix}` : '';

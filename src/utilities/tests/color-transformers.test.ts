@@ -144,5 +144,23 @@ describe('colorUtilities', () => {
         'hsla(120, 100%, 50%, 0.3)',
       );
     });
+
+    it('returns valid hsla color for white hex', () => {
+      expect(colorToHsla('#ffffff')).toStrictEqual({
+        alpha: 1,
+        hue: 0,
+        lightness: 100,
+        saturation: 0,
+      });
+    });
+
+    it('returns valid hsla color for white rgb', () => {
+      expect(colorToHsla('rgb(255, 255, 255)')).toStrictEqual({
+        alpha: 1,
+        hue: 0,
+        lightness: 100,
+        saturation: 0,
+      });
+    });
   });
 });

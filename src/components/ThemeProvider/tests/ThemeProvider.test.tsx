@@ -72,7 +72,12 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toBeDefined();
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .props().style,
+    ).toBeDefined();
   });
 
   it('sets a provided theme', () => {
@@ -90,7 +95,12 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toStrictEqual({
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .props().style,
+    ).toStrictEqual({
       '--top-bar-background': '#108043',
       '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
       '--top-bar-color': 'rgb(255, 255, 255)',
