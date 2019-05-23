@@ -52,6 +52,7 @@ export interface State {
   lockPosition: boolean;
 }
 
+// eslint-disable-next-line react/no-unsafe
 export default class PositionedOverlay extends React.PureComponent<
   Props,
   State
@@ -92,7 +93,8 @@ export default class PositionedOverlay extends React.PureComponent<
     }
   }
 
-  componentWillReceiveProps() {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillReceiveProps() {
     this.handleMeasurement();
   }
 
