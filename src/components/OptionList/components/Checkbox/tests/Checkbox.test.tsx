@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Checkbox, {Props} from '../Checkbox';
 
@@ -36,3 +35,5 @@ describe('<Checkbox />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

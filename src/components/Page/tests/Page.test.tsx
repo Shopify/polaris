@@ -6,7 +6,6 @@ import {
 import {mountWithAppProvider} from 'test-utilities';
 import {Page, Card} from 'components';
 import {LinkAction} from '../../../types';
-import {noop} from '../../../utilities/other';
 import {Header} from '../components';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {SecondaryAction, PrimaryActionProps} from '../components/Header/Header';
@@ -170,7 +169,7 @@ describe('<Page />', () => {
       };
 
       const {restore: restoreTitleBarCreateMock} = mockTitleBarCreate();
-      AppBridgeButton.create = jest.fn().mockReturnValue(buttonMock);
+      jest.spyOn(AppBridgeButton, 'create').mockReturnValue(buttonMock);
 
       return {
         buttonMock,
@@ -204,7 +203,7 @@ describe('<Page />', () => {
       const page = mountWithAppProvider(
         <Page {...mockProps} breadcrumbs={breadcrumbs} />,
       );
-      expect(page.find(Header).prop('breadcrumbs')).toEqual(breadcrumbs);
+      expect(page.find(Header).prop('breadcrumbs')).toStrictEqual(breadcrumbs);
     });
 
     it('subscribes a redirect callback for breadcrumbs', () => {
@@ -385,6 +384,8 @@ describe('<Page />', () => {
     });
   });
 });
+
+function noop() {}
 
 function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};

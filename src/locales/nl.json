@@ -1,0 +1,212 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar met initialen {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Laden"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Onvolledig",
+        "partiallyComplete": "Gedeeltelijk voltooid",
+        "complete": "Compleet"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Geslaagd",
+        "warning": "Waarschuwing",
+        "attention": "Attentie",
+        "new": "Nieuw"
+      }
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Laden"
+    },
+    "Common": {
+      "checkbox": "selectievakje",
+      "undo": "Ongedaan maken",
+      "cancel": "Annuleren",
+      "newWindowAccessibilityHint": "(opent een nieuw venster)"
+    },
+    "ContextualSaveBar": {
+      "save": "Opslaan",
+      "discard": "Verwerpen"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "sorteer {direction} op",
+      "navAccessibilityLabel": "Scroll tabel {direction} één kolom",
+      "totalsRowHeading": "Totalen"
+    },
+    "DatePicker": {
+      "previousMonth": "Vorige maand weergeven, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Volgende maand weergeven, {nextMonth} {nextYear}",
+      "today": "Vandaag ",
+      "months": {
+        "january": "januari",
+        "february": "februari",
+        "march": "maart",
+        "april": "april",
+        "may": "mei",
+        "june": "juni",
+        "july": "juli",
+        "august": "augustus",
+        "september": "september",
+        "october": "oktober",
+        "november": "november",
+        "december": "december"
+      },
+      "daysAbbreviated": {
+        "monday": "Ma.",
+        "tuesday": "Di.",
+        "wednesday": "Wo.",
+        "thursday": "Do.",
+        "friday": "Vr.",
+        "saturday": "Za.",
+        "sunday": "Zo."
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Verwijder alle niet-opgeslagen wijzigingen",
+      "message": "Als u alle niet-opgeslagen wijzigingen verwijdert, wist u alle bewerkingen die u aangebracht sinds u voor het laatst hebt opgeslagen.",
+      "primaryAction": "Wijzigingen verwijderen",
+      "secondaryAction": "Doorgaan met bewerken"
+    },
+    "DropZone": {
+      "overlayTextFile": "Sleep bestand om te uploaden",
+      "overlayTextImage": "Sleep afbeelding om te uploaden",
+      "errorOverlayTextFile": "Ongeldig bestandstype",
+      "errorOverlayTextImage": "Ongeldig afbeeldingsbestand",
+      "FileUpload": {
+        "actionTitleFile": "Bestand toevoegen",
+        "actionTitleImage": "Afbeelding toevoegen",
+        "actionHintFile": "of sleep bestanden om te uploaden",
+        "actionHintImage": "of sleep afbeeldingen om te uploaden"
+      }
+    },
+    "EmptySearchResult": {
+      "altText": "Geen zoekresultaten"
+    },
+    "Frame": {
+      "skipToContent": "Meteen naar de inhoud",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Navigatie sluiten"
+      }
+    },
+    "Icon": {
+      "backdropWarning": "Het pictogram {color} accepteert geen achtergronden. De pictogramkleuren met achtergronden zijn: {colorsWithBackDrops}"
+    },
+    "Modal": {
+      "iFrameTitle": "opmaak platte tekst",
+      "modalWarning": "Deze verplichte onderdelen ontbreken op Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "De pictograminstelling is van de Pagina verwijderd. Upload in plaats daarvan een toepassingspictogram in het gedeelte 'App-instellingen' van Shopify Partners Dashboard."
+      }
+    },
+    "Pagination": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "pagination": "Paginering"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet negatief zijn {progress} opnieuw instellen op 0.",
+      "exceedWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet de 100 overschrijden. {progress} instellen op 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sorteer op",
+      "defaultItemSingular": "item",
+      "defaultItemPlural": "items",
+      "showing": "Weergave {itemsCount} {resource}",
+      "loading": "{resource} aan het laden",
+      "selected": "{selectedItemsCount} geselecteerd",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in uw winkel zijn geselecteerd.",
+      "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in uw winkel",
+      "emptySearchResultTitle": "Geen {resourceNamePlural} gevonden",
+      "emptySearchResultDescription": "Probeer de filters of zoekterm te wijzigen",
+      "selectButtonText": "Selecteren",
+      "a11yCheckboxDeselectAllSingle": "Selectie {resourceNameSingular} opheffen",
+      "a11yCheckboxSelectAllSingle": "Selecteer {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Alle selecties {itemsLength} {resourceNamePlural} opheffen",
+      "a11yCheckboxSelectAllMultiple": "Selecteer alle {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} artikel",
+      "ariaLivePlural": "{itemsLength} artikelen",
+      "Item": {
+        "selectItem": "Selecteer: {accessibilityLabel}",
+        "deselectItem": "Selectie opheffen: {accessibilityLabel}",
+        "actionsDropdown": "Vervolgkeuze acties"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Acties",
+        "moreActionsActivatorLabel": "Meer acties",
+        "warningMessage": "Voor een betere gebruikerservaring. Er een maximum van {maxPromotedActions} gepromote acties."
+      },
+      "FilterCreator": {
+        "filterButtonLabel": "Filter",
+        "selectFilterKeyPlaceholder": "Selecteer een filter...",
+        "addFilterButtonLabel": "Filter toevoegen",
+        "showAllWhere": "Toon alle {resourceNamePlural} waar:"
+      },
+      "FilterControl": {
+        "textFieldLabel": "{resourceNamePlural} zoeken"
+      },
+      "FilterValueSelector": {
+        "selectFilterValuePlaceholder": "Selecteer een filter..."
+      },
+      "DateSelector": {
+        "dateFilterLabel": "Selecteer een waarde",
+        "dateValueLabel": "Datum",
+        "dateValueError": "Overeenkomen met indelen YYYY-MM-DD",
+        "dateValuePlaceholder": "JJJJ-MM-DD",
+        "SelectOptions": {
+          "PastWeek": "in de afgelopen week",
+          "PastMonth": "in de afgelopen maand",
+          "PastQuarter": "in de afgelopen 3 maanden",
+          "PastYear": "in het afgelopen jaar",
+          "ComingWeek": "volgende week",
+          "ComingMonth": "volgende maand",
+          "ComingQuarter": "in de komende 3 maanden",
+          "ComingYear": "in het komend jaar",
+          "OnOrBefore": "op of voor",
+          "OnOrAfter": "op of na"
+        },
+        "FilterLabelForValue": {
+          "past_week": "in de afgelopen week",
+          "past_month": "in de afgelopen maand",
+          "past_quarter": "in de afgelopen 3 maanden",
+          "past_year": "in het afgelopen jaar",
+          "coming_week": "volgende week",
+          "coming_month": "volgende maand",
+          "coming_quarter": "in de komende 3 maanden",
+          "coming_year": "in het komend jaar",
+          "on_or_before": "vóór {date}",
+          "on_or_after": "na {date}"
+        }
+      }
+    },
+    "Sheet": {
+      "warningMessage": "De Blad-component moet binnen de Frame-component worden gebruikt."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Pagina is aan het laden"
+    },
+    "Spinner": {
+      "warningMessage": "De kleur {color} is niet bedoeld voor gebruik op {size} spinners. De beschikbare kleuren op grote spinner zijn: {colors}"
+    },
+    "Tag": {
+      "ariaLabel": "{children} verwijderen"
+    },
+    "TextField": {
+      "characterCount": "{count} tekens",
+      "characterCountWithMaxLength": "{count} van {limit} tekens gebruikt"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Schakelen tussen menu's",
+      "SearchField": {
+        "clearButtonLabel": "Wissen"
+      }
+    }
+  }
+}

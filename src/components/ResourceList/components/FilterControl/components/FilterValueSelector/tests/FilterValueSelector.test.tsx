@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {Select, TextField} from 'components';
 import FilterValueSelector from '../FilterValueSelector';
@@ -89,7 +88,7 @@ describe('<FilterValueSelector />', () => {
         const expectedOptions = getOptionsListForOperators(operators);
 
         const operatorsSelect = wrapper.find(Select).first();
-        expect(operatorsSelect.prop('options')).toEqual(expectedOptions);
+        expect(operatorsSelect.prop('options')).toStrictEqual(expectedOptions);
       });
 
       it('renders value using the value prop', () => {
@@ -206,7 +205,7 @@ describe('<FilterValueSelector />', () => {
         const expectedOptions = getOptionsListForOperators(operators);
 
         const operatorsSelect = wrapper.find(Select).first();
-        expect(operatorsSelect.prop('options')).toEqual(expectedOptions);
+        expect(operatorsSelect.prop('options')).toStrictEqual(expectedOptions);
       });
 
       it('renders value using the value prop', () => {
@@ -430,3 +429,5 @@ describe('<FilterValueSelector />', () => {
     });
   }
 });
+
+function noop() {}

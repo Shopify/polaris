@@ -52,7 +52,7 @@ describe('<PositionedOverlay />', () => {
         />,
       );
 
-      expect(spy).toBeCalledWith({
+      expect(spy).toHaveBeenCalledWith({
         activatorRect: {height: 0, left: 0, top: 0, width: 0},
         desiredHeight: 0,
         left: 0,
@@ -127,7 +127,7 @@ describe('<PositionedOverlay />', () => {
         viewport,
       );
 
-      expect(intersection).toEqual(
+      expect(intersection).toStrictEqual(
         new Rect({
           top: 0,
           left: 0,
@@ -148,7 +148,7 @@ describe('<PositionedOverlay />', () => {
         viewport,
       );
 
-      expect(intersection).toEqual(
+      expect(intersection).toStrictEqual(
         new Rect({
           top: 500,
           left: 500,
@@ -169,7 +169,7 @@ describe('<PositionedOverlay />', () => {
         viewport,
       );
 
-      expect(intersection).toEqual(
+      expect(intersection).toStrictEqual(
         new Rect({
           top: 250,
           left: 250,
@@ -190,7 +190,7 @@ describe('<PositionedOverlay />', () => {
         viewport,
       );
 
-      expect(intersection).toEqual(
+      expect(intersection).toStrictEqual(
         new Rect({
           top: 1000,
           left: 1000,

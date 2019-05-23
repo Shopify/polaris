@@ -6,13 +6,16 @@ export default function ScrollTo() {
   const anchorNode = React.useRef<HTMLAnchorElement>(null);
   const {scrollToPosition} = React.useContext(ScrollableContext);
 
-  React.useEffect(() => {
-    if (!scrollToPosition || !anchorNode.current) {
-      return;
-    }
+  React.useEffect(
+    () => {
+      if (!scrollToPosition || !anchorNode.current) {
+        return;
+      }
 
-    scrollToPosition(anchorNode.current.offsetTop);
-  }, []);
+      scrollToPosition(anchorNode.current.offsetTop);
+    },
+    [scrollToPosition],
+  );
 
   const getUniqueId = createUniqueIDFactory(`ScrollTo`);
   // eslint-disable-next-line jsx-a11y/anchor-is-valid

@@ -36,7 +36,9 @@ describe('translate()', () => {
     it('throws an error for a missing replacement', () => {
       expect(() =>
         translateWithReplacements('foo {next}', {notNext: 'bar'}),
-      ).toThrow();
+      ).toThrow(
+        `No replacement found for key 'next'. The following replacements were passed: 'notNext'`,
+      );
     });
   });
 });

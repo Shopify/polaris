@@ -10,21 +10,22 @@ export interface Props {
 }
 
 export default class Resizer extends React.PureComponent<Props, never> {
-  private contentNode: HTMLElement | null = null;
-  private minimumLinesNode: HTMLElement | null = null;
+  private contentNode = React.createRef<HTMLDivElement>();
+  private minimumLinesNode = React.createRef<HTMLDivElement>();
+  private animationFrame: number | null = null;
 
   componentDidMount() {
     this.handleHeightCheck();
-
-    if (process.env.NODE_ENV === 'development') {
-      // We need to defer the calculation in development so the
-      // styles have time to be injected.
-      setTimeout(this.handleHeightCheck, 0);
-    }
   }
 
   componentDidUpdate() {
     this.handleHeightCheck();
+  }
+
+  componentWillUnmount() {
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+    }
   }
 
   render() {
@@ -33,7 +34,7 @@ export default class Resizer extends React.PureComponent<Props, never> {
     const minimumLinesMarkup = minimumLines ? (
       <div
         testID="MinimumLines"
-        ref={this.setMinimumLinesNode}
+        ref={this.minimumLinesNode}
         className={styles.DummyInput}
         dangerouslySetInnerHTML={{
           __html: getContentsForMinimumLines(minimumLines),
@@ -46,7 +47,7 @@ export default class Resizer extends React.PureComponent<Props, never> {
         <EventListener event="resize" handler={this.handleHeightCheck} />
         <div
           testID="ContentsNode"
-          ref={this.setContentNode}
+          ref={this.contentNode}
           className={styles.DummyInput}
           dangerouslySetInnerHTML={{__html: getFinalContents(contents)}}
         />
@@ -56,29 +57,28 @@ export default class Resizer extends React.PureComponent<Props, never> {
   }
 
   private handleHeightCheck = () => {
-    if (this.contentNode == null || this.minimumLinesNode == null) {
-      return;
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
     }
 
-    const contentHeight = this.contentNode.offsetHeight;
-    const minimumHeight = this.setMinimumLinesNode
-      ? this.minimumLinesNode.offsetHeight
-      : 0;
-    const newHeight = Math.max(contentHeight, minimumHeight);
+    this.animationFrame = requestAnimationFrame(() => {
+      const contentNode = this.contentNode.current;
+      const minimumLinesNode = this.minimumLinesNode.current;
 
-    const {currentHeight, onHeightChange} = this.props;
+      if (!contentNode || !minimumLinesNode) {
+        return;
+      }
 
-    if (newHeight !== currentHeight) {
-      onHeightChange(newHeight);
-    }
-  };
+      const newHeight = Math.max(
+        contentNode.offsetHeight,
+        minimumLinesNode.offsetHeight,
+      );
+      const {currentHeight, onHeightChange} = this.props;
 
-  private setContentNode = (node: HTMLElement | null) => {
-    this.contentNode = node;
-  };
-
-  private setMinimumLinesNode = (node: HTMLElement | null) => {
-    this.minimumLinesNode = node;
+      if (newHeight !== currentHeight) {
+        onHeightChange(newHeight);
+      }
+    });
   };
 }
 

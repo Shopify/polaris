@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {DatePicker, Select, TextField} from 'components';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import DateSelector, {Props, DateFilterOption} from '../DateSelector';
@@ -65,7 +64,7 @@ describe('<DateSelector />', () => {
 
       expect(
         getOptionsValuesList(wrapper.find(Select).prop('options')),
-      ).toEqual(expectOptionValues);
+      ).toStrictEqual(expectOptionValues);
     });
 
     it('builds date filters Select options for future option type', () => {
@@ -77,7 +76,7 @@ describe('<DateSelector />', () => {
 
       expect(
         getOptionsValuesList(wrapper.find(Select).prop('options')),
-      ).toEqual(expectOptionValues);
+      ).toStrictEqual(expectOptionValues);
     });
 
     it('builds date filters Select options for full option type', () => {
@@ -89,7 +88,7 @@ describe('<DateSelector />', () => {
 
       expect(
         getOptionsValuesList(wrapper.find(Select).prop('options')),
-      ).toEqual(expectOptionValues);
+      ).toStrictEqual(expectOptionValues);
     });
 
     it('defaults to full date filters Select options when option type is missing', () => {
@@ -101,7 +100,7 @@ describe('<DateSelector />', () => {
 
       expect(
         getOptionsValuesList(wrapper.find(Select).prop('options')),
-      ).toEqual(expectOptionValues);
+      ).toStrictEqual(expectOptionValues);
     });
   });
 
@@ -578,3 +577,5 @@ describe('<DateSelector />', () => {
     });
   }
 });
+
+function noop() {}

@@ -1,0 +1,8 @@
+source_language: en
+target_languages: [de, es, fr, hi, it, ja, ms, nl, pt-BR, zh-CN, zh-TW]
+components:
+  - name: 'default'
+    scheme: react
+    audience: merchant
+    paths:
+      - src/locales/{{language}}.json

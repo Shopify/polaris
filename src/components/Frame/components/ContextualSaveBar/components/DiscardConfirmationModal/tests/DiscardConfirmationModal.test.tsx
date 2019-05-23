@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import {Modal} from 'components';
@@ -31,3 +30,5 @@ describe('<DiscardConfirmationModal />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });
+
+function noop() {}

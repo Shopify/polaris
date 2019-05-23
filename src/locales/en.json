@@ -30,7 +30,9 @@
 
     "Common": {
       "checkbox": "checkbox",
-      "undo": "Undo"
+      "undo": "Undo",
+      "cancel": "Cancel",
+      "newWindowAccessibilityHint": "(opens a new window)"
     },
 
     "ContextualSaveBar": {
@@ -209,6 +211,14 @@
       }
     },
 
+    "Sheet": {
+      "warningMessage": "The Sheet component must be used within the Frame component."
+    },
+
+    "SkeletonPage": {
+      "loadingLabel": "Page loading"
+    },
+
     "Spinner": {
       "warningMessage": "The color {color} is not meant to be used on {size} spinners. The colors available on large spinners are: {colors}"
     },
@@ -220,6 +230,14 @@
     "TextField": {
       "characterCount": "{count} characters",
       "characterCountWithMaxLength": "{count} of {limit} characters used"
+    },
+
+    "TopBar": {
+      "toggleMenuLabel": "Toggle menu",
+
+      "SearchField": {
+        "clearButtonLabel": "Clear"
+      }
     }
   }
 }

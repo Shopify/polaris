@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {SaveMinor} from '@shopify/polaris-icons';
-import {noop} from '@shopify/javascript-utilities/other';
 import {Popover, ActionList} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import Action from '../../Action';
@@ -60,7 +59,9 @@ describe('<ActionGroup />', () => {
         <ActionGroup {...mockProps} actions={actions} />,
       );
       const popoverContents = getPopoverContents(actionGroup);
-      expect(popoverContents.find(ActionList).prop('items')).toEqual(actions);
+      expect(popoverContents.find(ActionList).prop('items')).toStrictEqual(
+        actions,
+      );
     });
   });
 
@@ -112,3 +113,5 @@ describe('<ActionGroup />', () => {
     });
   });
 });
+
+function noop() {}

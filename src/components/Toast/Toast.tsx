@@ -19,38 +19,45 @@ export default React.memo(function Toast(props: Props) {
   const frame = React.useContext(FrameContext);
   const {appBridge} = usePolaris();
 
-  React.useEffect(() => {
-    const {
-      error,
-      content,
-      duration = DEFAULT_TOAST_DURATION,
-      onDismiss,
-    } = props;
+  React.useEffect(
+    () => {
+      const {
+        error,
+        content,
+        duration = DEFAULT_TOAST_DURATION,
+        onDismiss,
+      } = props;
+      const toastId = id.current;
 
-    if (appBridge == null) {
-      frame.showToast({
-        id: id.current,
-        ...props,
-      });
-    } else {
-      appBridgeToast.current = AppBridgeToast.create(appBridge, {
-        message: content,
-        duration,
-        isError: error,
-      });
+      if (appBridge == null && frame) {
+        frame.showToast({
+          id: id.current,
+          ...props,
+        });
+      } else if (appBridge != null) {
+        appBridgeToast.current = AppBridgeToast.create(appBridge, {
+          message: content,
+          duration,
+          isError: error,
+        });
 
-      appBridgeToast.current.subscribe(AppBridgeToast.Action.CLEAR, onDismiss);
-      appBridgeToast.current.dispatch(AppBridgeToast.Action.SHOW);
-    }
-
-    return () => {
-      if (appBridge == null) {
-        frame.hideToast({id: id.current});
-      } else if (appBridgeToast.current != null) {
-        appBridgeToast.current.unsubscribe();
+        appBridgeToast.current.subscribe(
+          AppBridgeToast.Action.CLEAR,
+          onDismiss,
+        );
+        appBridgeToast.current.dispatch(AppBridgeToast.Action.SHOW);
       }
-    };
-  }, []);
+
+      return () => {
+        if (appBridge == null && frame) {
+          frame.hideToast({id: toastId});
+        } else if (appBridgeToast.current != null) {
+          appBridgeToast.current.unsubscribe();
+        }
+      };
+    },
+    [appBridge, frame, props],
+  );
 
   return null;
 });

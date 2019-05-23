@@ -7,9 +7,7 @@ describe('<AppProvider />', () => {
   it('updates polaris context when props change', () => {
     const Child: React.SFC<{}> = (_props) => (
       <AppProviderContext.Consumer>
-        {({link: {linkComponent}}) =>
-          linkComponent ? <div id="child" /> : null
-        }
+        {({link}) => (link.getLinkComponent() ? <div id="child" /> : null)}
       </AppProviderContext.Consumer>
     );
     const LinkComponent = () => <div />;

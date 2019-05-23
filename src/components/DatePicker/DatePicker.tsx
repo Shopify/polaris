@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
+import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {
   Range,
   Months,
@@ -135,7 +135,7 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
         <div className={styles.Header}>
           <Button
             plain
-            icon="arrowLeft"
+            icon={ArrowLeftMinor}
             accessibilityLabel={intl.translate(
               'Polaris.DatePicker.previousMonth',
               {
@@ -143,7 +143,6 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
                 showPreviousYear,
               },
             )}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
               showPreviousMonth,
@@ -152,12 +151,11 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
           />
           <Button
             plain
-            icon="arrowRight"
+            icon={ArrowRightMinor}
             accessibilityLabel={intl.translate('Polaris.DatePicker.nextMonth', {
               nextMonth,
               nextYear,
             })}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={this.handleMonthChangeClick.bind(
               null,
               showNextMonth,
@@ -281,6 +279,8 @@ export class DatePicker extends React.PureComponent<CombinedProps, State> {
     });
   };
 }
+
+function noop() {}
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;

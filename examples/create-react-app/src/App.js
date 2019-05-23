@@ -38,6 +38,10 @@ class App extends Component {
       {label: 'I consent to receiving emails', value: 'false2'},
     ];
 
+    const accountMarkup = this.state.connected
+      ? this.disconnectAccountMarkup()
+      : this.connectAccountMarkup();
+
     return (
       <Page
         title="Polaris"
@@ -59,7 +63,7 @@ class App extends Component {
             </SettingToggle>
           </Layout.AnnotatedSection>
 
-          {this.renderAccount()}
+          {accountMarkup}
 
           <Layout.AnnotatedSection
             title="Form"
@@ -172,12 +176,6 @@ class App extends Component {
         />
       </Layout.AnnotatedSection>
     );
-  }
-
-  renderAccount() {
-    return this.state.connected
-      ? this.disconnectAccountMarkup()
-      : this.connectAccountMarkup();
   }
 }
 

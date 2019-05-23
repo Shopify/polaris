@@ -54,49 +54,39 @@ async function runPa11y() {
 
   const iframePath = `file://${__dirname}/../build/storybook/static/iframe.html`;
 
-  // window.__storybook_stories__ is injected into the iframe by the percy addon
-  // so that Percy's script knows what stories exist. Piggybacking off that is
-  // kinda fragile as they may change that output but it gives us what we need
-  // for now
   const stories = await page
     .goto(iframePath)
-    .then(() => page.evaluate(() => window.__storybook_stories__));
+    .then(() => page.evaluate(() => window.__STORYBOOK_CLIENT_API__.raw()));
 
-  const queryStrings = stories.reduce((memo, book) => {
+  const storyIDs = stories.reduce((memo, story) => {
     // There is no need to test the Playground, or the "All Examples" stories
-    const isSkippedStory = (story) => {
-      return book.kind === 'Playground' || story.name === 'All Examples';
-    };
+    const isSkippedStory =
+      story.kind === 'Playground|Playground' || story.name === 'All Examples';
 
-    const bookToQueryString = (story) =>
-      `selectedKind=${encodeURIComponent(
-        book.kind,
-      )}&selectedStory=${encodeURIComponent(story.name)}`;
-
-    return memo.concat(
-      book.stories
-        .filter((story) => !isSkippedStory(story))
-        .map(bookToQueryString),
-    );
+    if (!isSkippedStory) {
+      memo.push(`${encodeURIComponent(story.id)}`);
+    }
+    return memo;
   }, []);
 
-  queryStrings.forEach((queryString) => {
+  storyIDs.forEach((queryString) => {
     const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
     browserIndex++;
     currentBrowser.taken = currentBrowser.taken.then(async () => {
       console.log('Testing ', queryString);
-      results.push(
-        await pa11y(`${iframePath}?${queryString}`, {
-          browser: currentBrowser.browser,
-          ignore: [
-            // Missing lang attribute on <html> tag
-            // Storybook does not include this property so ignore it
-            'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
-            // Color contrast failures
-            'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail',
-          ],
-        }),
-      );
+      const result = await pa11y(`${iframePath}?id=${queryString}`, {
+        browser: currentBrowser.browser,
+        ignore: [
+          // Missing lang attribute on <html> tag
+          // Storybook does not include this property so ignore it
+          'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
+          // Color contrast failures
+          'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail',
+        ],
+      });
+      result.exampleID = queryString;
+      delete result.pageUrl;
+      results.push(result);
     });
   });
 
@@ -133,7 +123,7 @@ Please edit the file a11y_shitlist.json to remove them and run these tests again
       console.log(
         '------------------------------------------------------------------------',
       );
-      console.log(issue.pageUrl);
+      console.log(issue.exampleID);
       console.log(
         '------------------------------------------------------------------------',
       );
@@ -155,7 +145,7 @@ The following issues were discovered and need to be fixed before this code can b
       console.log(
         '------------------------------------------------------------------------',
       );
-      console.log(result.pageUrl);
+      console.log(result.exampleID);
       console.log(
         '------------------------------------------------------------------------',
       );

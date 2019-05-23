@@ -109,7 +109,7 @@ describe('colorUtilities', () => {
 
   describe('colorToHsla', () => {
     it('returns the hsla color for hex', () => {
-      expect(colorToHsla('#dddddd')).toEqual({
+      expect(colorToHsla('#dddddd')).toStrictEqual({
         alpha: 1,
         hue: 0,
         lightness: 87,
@@ -118,7 +118,7 @@ describe('colorUtilities', () => {
     });
 
     it('returns the hsla color for rgb', () => {
-      expect(colorToHsla('rgb(132, 11, 2)')).toEqual({
+      expect(colorToHsla('rgb(132, 11, 2)')).toStrictEqual({
         alpha: 1,
         hue: 4,
         lightness: 26,
@@ -127,7 +127,7 @@ describe('colorUtilities', () => {
     });
 
     it('returns the hsla color for rgba', () => {
-      expect(colorToHsla('rgb(132, 11, 2, 0.2)')).toEqual({
+      expect(colorToHsla('rgb(132, 11, 2, 0.2)')).toStrictEqual({
         alpha: 1,
         hue: 4,
         lightness: 26,

@@ -1,7 +1,5 @@
-import {noop} from '@shopify/javascript-utilities/other';
-
 const Breakpoints = {
-  navigationBarCollapsed: '769px',
+  navigationBarCollapsed: '768px',
   stackedContent: '1043px',
 };
 
@@ -15,6 +13,8 @@ const noWindowMatches: MediaQueryList = {
   removeEventListener: noop,
   dispatchEvent: (_: Event) => true,
 };
+
+function noop() {}
 
 export function navigationBarCollapsed() {
   return typeof window === 'undefined'

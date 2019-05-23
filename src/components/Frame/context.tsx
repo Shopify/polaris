@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {ToastPropsWithID, ToastID, ContextualSaveBarProps} from './types';
 
 export interface FrameContextType {
@@ -11,15 +10,6 @@ export interface FrameContextType {
   stopLoading(): void;
 }
 
-const defaultContext: FrameContextType = {
-  showToast: noop,
-  hideToast: noop,
-  setContextualSaveBar: noop,
-  removeContextualSaveBar: noop,
-  startLoading: noop,
-  stopLoading: noop,
-};
-
-const FrameContext = React.createContext<FrameContextType>(defaultContext);
+const FrameContext = React.createContext<FrameContextType | null>(null);
 
 export default FrameContext;

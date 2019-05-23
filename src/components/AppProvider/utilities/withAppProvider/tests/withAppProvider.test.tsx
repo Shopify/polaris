@@ -21,6 +21,10 @@ describe('withAppProvider', () => {
       );
       consoleSpy.mockRestore();
     };
-    expect(fn).toThrowError();
+    expect(fn).toThrow(
+      `The <AppProvider> component is required as of v2.0 of Polaris React. See
+                                    https://polaris.shopify.com/components/structure/app-provider for implementation
+                                    instructions.`,
+    );
   });
 });

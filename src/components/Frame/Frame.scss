@@ -1,11 +1,12 @@
 $button-size: rem(32px);
-$transition-duration: 260ms;
 $skip-vertical-offset: rem(10px);
+
 .Frame {
   width: 100%;
   min-height: 100vh;
   display: flex;
   background-color: color('sky', 'light');
+
   @include when-printing {
     background-color: none;
   }
@@ -46,16 +47,19 @@ $skip-vertical-offset: rem(10px);
 .Navigation-enter {
   transform: translateX(-100%);
 }
+
 .Navigation-enterActive {
   transform: translateX(0%);
-  transition: transform $transition-duration ease;
+  transition: transform duration(slow) easing(out);
 }
+
 .Navigation-exit {
   transform: translateX(0%);
 }
+
 .Navigation-exitActive {
   transform: translateX(-100%);
-  transition: transform $transition-duration ease;
+  transition: transform duration(slow) easing(out);
 }
 
 .NavigationDismiss {
@@ -72,17 +76,20 @@ $skip-vertical-offset: rem(10px);
   opacity: 0;
   pointer-events: none;
   will-change: opacity;
-  transition: opacity duration(fast) easing();
   cursor: pointer;
+  transition: opacity duration(fast) easing();
+
   .Navigation-visible & {
     pointer-events: all;
     opacity: 1;
   }
+
   &:focus {
     border-radius: border-radius();
     background-color: rgba(color('white'), 0.16);
     outline: none;
   }
+
   @include frame-when-nav-displayed {
     display: none;
   }
@@ -104,19 +111,23 @@ $skip-vertical-offset: rem(10px);
   left: 0;
   width: 100%;
 }
+
 .ContextualSaveBar-enter {
   opacity: 0;
 }
+
 .ContextualSaveBar-enterActive {
   opacity: 1;
-  transition: opacity duration() ease;
+  transition: opacity duration() easing(out);
 }
+
 .ContextualSaveBar-exit {
   opacity: 1;
 }
+
 .ContextualSaveBar-exitActive {
   opacity: 0;
-  transition: opacity duration() ease;
+  transition: opacity duration() easing(out);
 }
 
 .Main {
@@ -158,6 +169,7 @@ $skip-vertical-offset: rem(10px);
   z-index: z-index(global-ribbon, $fixed-element-stacking-order);
   bottom: 0;
   width: 100%;
+
   @include frame-when-nav-displayed {
     .hasNav & {
       left: layout-width(nav);
@@ -174,6 +186,7 @@ $skip-vertical-offset: rem(10px);
   top: 0;
   right: 0;
   left: 0;
+
   @include frame-when-nav-displayed {
     .hasTopBar & {
       top: top-bar-height();
@@ -189,6 +202,7 @@ $skip-vertical-offset: rem(10px);
   left: spacing(tight);
   opacity: 0;
   pointer-events: none;
+
   &.focused {
     pointer-events: all;
     opacity: 1;

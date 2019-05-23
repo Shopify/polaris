@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
-import {noop} from '@shopify/javascript-utilities/other';
+import {classNames} from '@shopify/css-utilities';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
@@ -39,6 +38,23 @@ export interface State {
 export default class Tabs extends React.PureComponent<Props, State> {
   static Panel = Panel;
 
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    const {disclosureWidth, tabWidths, containerWidth} = prevState;
+    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
+      nextProps.tabs,
+      nextProps.selected,
+      disclosureWidth,
+      tabWidths,
+      containerWidth,
+    );
+
+    return {
+      visibleTabs,
+      hiddenTabs,
+      selected: nextProps.selected,
+    };
+  }
+
   state: State = {
     disclosureWidth: 0,
     containerWidth: Infinity,
@@ -48,25 +64,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
     showDisclosure: false,
     tabToFocus: -1,
   };
-
-  componentWillReceiveProps(nextProps: Props) {
-    const {selected} = this.props;
-    const {disclosureWidth, tabWidths, containerWidth, tabToFocus} = this.state;
-    const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
-      nextProps.tabs,
-      nextProps.selected,
-      disclosureWidth,
-      tabWidths,
-      containerWidth,
-    );
-
-    this.setState({
-      visibleTabs,
-      hiddenTabs,
-      tabToFocus: selected === nextProps.selected ? -1 : tabToFocus,
-      showDisclosure: false,
-    });
-  }
 
   render() {
     const {tabs, selected, fitted, children} = this.props;
@@ -311,6 +308,8 @@ export default class Tabs extends React.PureComponent<Props, State> {
     onSelect(selectedIndex);
   };
 }
+
+function noop() {}
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;

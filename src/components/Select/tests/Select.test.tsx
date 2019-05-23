@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {noop} from '@shopify/javascript-utilities/other';
 import {InlineError} from 'components';
 import {mountWithAppProvider} from 'test-utilities';
 import Select from '../Select';
@@ -335,3 +334,5 @@ describe('<Select />', () => {
     });
   });
 });
+
+function noop() {}

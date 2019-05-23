@@ -4,9 +4,9 @@ import {TransitionGroup} from 'react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {wrapWithComponent} from '@shopify/react-utilities';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import WithinContentContext from '../WithinContentContext';
+import {wrapWithComponent} from '../../utilities/components';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';
 import pick from '../../utilities/pick';
@@ -233,7 +233,7 @@ export class Modal extends React.Component<CombinedProps, State> {
         );
 
       const content = sectioned
-        ? wrapWithComponent(children, Section)
+        ? wrapWithComponent(children, Section, {})
         : children;
 
       const body = loading ? (

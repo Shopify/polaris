@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import {noop} from '@shopify/javascript-utilities/other';
 import Spinner from '../Spinner';
 
 describe('<Spinner />', () => {
@@ -91,3 +90,5 @@ describe('<Spinner />', () => {
     });
   });
 });
+
+function noop() {}

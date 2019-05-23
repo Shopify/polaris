@@ -231,6 +231,8 @@ export {
   Props as SettingToggleProps,
 } from './SettingToggle';
 
+export {default as Sheet} from './Sheet';
+
 export {default as Spinner, Props as SpinnerProps} from './Spinner';
 
 export {default as Stack, Props as StackProps} from './Stack';
@@ -310,3 +312,5 @@ export {default as withContext} from './WithContext';
 export {default as withRef, WithRef} from './WithRef';
 
 export {PolarisContext} from './types';
+
+export {DATA_ATTRIBUTE} from './shared';

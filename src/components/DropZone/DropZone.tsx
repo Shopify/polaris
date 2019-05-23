@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import debounce from 'lodash/debounce';
 import {
   addEventListener,
@@ -153,19 +153,18 @@ export class DropZone extends React.Component<CombinedProps, State> {
     return Object.keys(newState).length ? newState : null;
   }
 
-  private node: HTMLElement | null = null;
-  private dropNode: HTMLElement | HTMLDocument | null = null;
+  private node = React.createRef<HTMLDivElement>();
   private dragTargets: EventTarget[] = [];
-  private fileInputNode: HTMLInputElement;
+  private fileInputNode = React.createRef<HTMLInputElement>();
 
   private adjustSize = debounce(
     () => {
-      if (!this.node) {
+      if (!this.node.current) {
         return;
       }
 
       let size = 'extraLarge';
-      const width = this.node.getBoundingClientRect().width;
+      const width = this.node.current.getBoundingClientRect().width;
 
       if (width < 100) {
         size = 'small';
@@ -204,6 +203,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
     };
   }
 
+  get dropNode() {
+    return this.props.dropOnPage ? document : this.node.current;
+  }
+
   render() {
     const {
       id,
@@ -233,7 +236,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       disabled,
       type: 'file',
       multiple: allowMultiple,
-      ref: this.setInputNode,
+      ref: this.fileInputNode,
       onChange: this.handleDrop,
       autoComplete: 'off',
     };
@@ -285,7 +288,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     const dropZoneMarkup = (
       <div
-        ref={this.setNode}
+        ref={this.node}
         className={classes}
         aria-disabled={disabled}
         onClick={this.handleClick}
@@ -340,6 +343,8 @@ export class DropZone extends React.Component<CombinedProps, State> {
     addEventListener(this.dropNode, 'dragleave', this.handleDragLeave);
     addEventListener(window, 'resize', this.adjustSize);
 
+    this.adjustSize();
+
     if (this.props.openFileDialog) {
       this.triggerFileDialog();
     }
@@ -372,11 +377,11 @@ export class DropZone extends React.Component<CombinedProps, State> {
   };
 
   private open = () => {
-    if (!this.fileInputNode) {
+    if (!this.fileInputNode.current) {
       return;
     }
 
-    this.fileInputNode.click();
+    this.fileInputNode.current.click();
   };
 
   private getValidatedFiles = (files: File[] | DataTransferItem[]) => {
@@ -406,19 +411,6 @@ export class DropZone extends React.Component<CombinedProps, State> {
       acceptedFiles,
       rejectedFiles,
     };
-  };
-
-  private setNode = (node: HTMLElement | null) => {
-    const {dropOnPage} = this.props;
-
-    this.node = node;
-    this.dropNode = dropOnPage ? document : node;
-
-    this.adjustSize();
-  };
-
-  private setInputNode = (node: HTMLInputElement) => {
-    this.fileInputNode = node;
   };
 
   private handleClick = (event: React.MouseEvent<HTMLElement>) => {

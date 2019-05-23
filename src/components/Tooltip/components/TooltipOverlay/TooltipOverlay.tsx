@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 
 import {layer} from '../../../shared';
 import PositionedOverlay, {
@@ -51,7 +51,7 @@ export default class TooltipOverlay extends React.PureComponent<Props, never> {
       positioning === 'above' && styles.positionedAbove,
     );
 
-    const contentStyles = measuring ? undefined : {maxHeight: desiredHeight};
+    const contentStyles = measuring ? undefined : {minHeight: desiredHeight};
 
     return (
       <div className={containerClassName} {...layer.props}>

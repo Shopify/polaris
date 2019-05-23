@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Image, UnstyledLink} from 'components';
 import {ThemeProviderContextType} from '../../ThemeProvider';
@@ -180,7 +179,9 @@ describe('<TopBar />', () => {
         <TopBar />,
         mergeThemeProviderContext({logo: {width: 124}}),
       );
-      expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '124px'});
+      expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
+        width: '124px',
+      });
     });
 
     it('will render an unstyled link with a default width', () => {
@@ -188,7 +189,9 @@ describe('<TopBar />', () => {
         <TopBar />,
         mergeThemeProviderContext({logo: {}}),
       );
-      expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
+      expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
+        width: '104px',
+      });
     });
   });
 
@@ -229,6 +232,8 @@ describe('<TopBar />', () => {
     });
   });
 });
+
+function noop() {}
 
 function mergeThemeProviderContext(
   providedThemeContext: ThemeProviderContextType,

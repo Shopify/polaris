@@ -1,9 +1,5 @@
 import * as React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {
-  addEventListener,
-  removeEventListener,
-} from '@shopify/javascript-utilities/events';
 import OptionList, {OptionDescriptor} from '../../../OptionList';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';
@@ -115,10 +111,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     popoverWasActive: false,
   };
 
-  private popoverScrollContainer: React.RefObject<
-    HTMLDivElement
-  > = React.createRef();
-
   componentDidMount() {
     const {options, actionsBefore, actionsAfter} = this.props;
     const comboBoxId = this.getComboBoxId();
@@ -142,14 +134,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   componentDidUpdate(_: Props, prevState: State) {
     const {contentBefore, contentAfter, emptyState} = this.props;
-    const {navigableOptions, popoverActive, popoverWasActive} = this.state;
+    const {navigableOptions, popoverWasActive} = this.state;
 
     const optionsChanged =
       navigableOptions &&
       prevState.navigableOptions &&
       !optionsAreEqual(navigableOptions, prevState.navigableOptions);
-
-    const popoverChanged = popoverActive === prevState.popoverActive;
 
     if (optionsChanged) {
       this.updateIndexOfSelectedOption(navigableOptions);
@@ -171,10 +161,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({popoverActive: true});
-    }
-
-    if (popoverChanged) {
-      popoverActive ? this.addScrollListener() : this.removeScrollListener();
     }
   }
 
@@ -199,12 +185,7 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       onEndReached,
       emptyState,
     } = this.props;
-    const {
-      comboBoxId,
-      navigableOptions,
-      selectedOptions,
-      popoverActive,
-    } = this.state;
+    const {comboBoxId, navigableOptions, selectedOptions} = this.state;
 
     const actionsBeforeMarkup = actionsBefore &&
       actionsBefore.length > 0 && (
@@ -228,10 +209,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
       />
     );
 
-    const scrollListenerMarkup = onEndReached && (
-      <div ref={this.popoverScrollContainer} />
-    );
-
     const emptyStateMarkup = !actionsAfter &&
       !actionsBefore &&
       !contentAfter &&
@@ -249,9 +226,9 @@ export default class ComboBox extends React.PureComponent<Props, State> {
         <div
           onClick={this.handleClick}
           role="combobox"
-          aria-expanded={popoverActive}
-          aria-owns={comboBoxId}
-          aria-controls={comboBoxId}
+          aria-expanded={this.state.popoverActive}
+          aria-owns={this.state.comboBoxId}
+          aria-controls={this.state.comboBoxId}
           aria-haspopup
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
@@ -272,25 +249,26 @@ export default class ComboBox extends React.PureComponent<Props, State> {
           />
           <Popover
             activator={textField}
-            active={popoverActive}
+            active={this.state.popoverActive}
             onClose={this.handlePopoverClose}
             preferredPosition={preferredPosition}
             fullWidth
             preventAutofocus
           >
-            <div
-              id={comboBoxId}
-              role="listbox"
-              aria-multiselectable={allowMultiple}
-            >
-              {scrollListenerMarkup}
-              {contentBefore}
-              {actionsBeforeMarkup}
-              {optionsMarkup}
-              {actionsAfterMarkup}
-              {contentAfter}
-              {emptyStateMarkup}
-            </div>
+            <Popover.Pane onScrolledToBottom={onEndReached}>
+              <div
+                id={this.state.comboBoxId}
+                role="listbox"
+                aria-multiselectable={allowMultiple}
+              >
+                {contentBefore}
+                {actionsBeforeMarkup}
+                {optionsMarkup}
+                {actionsAfterMarkup}
+                {contentAfter}
+                {emptyStateMarkup}
+              </div>
+            </Popover.Pane>
           </Popover>
         </div>
       </ComboBoxContext.Provider>
@@ -298,24 +276,12 @@ export default class ComboBox extends React.PureComponent<Props, State> {
   }
 
   private handleDownArrow = () => {
-    const {selectedIndex, navigableOptions} = this.state;
-    const {onEndReached} = this.props;
-
-    if (
-      navigableOptions &&
-      selectedIndex === navigableOptions.length - 1 &&
-      onEndReached
-    ) {
-      onEndReached();
-    }
     this.selectNextOption();
-
     this.handlePopoverOpen;
   };
 
   private handleUpArrow = () => {
     this.selectPreviousOption();
-
     this.handlePopoverOpen;
   };
 
@@ -345,24 +311,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
 
   private handleClick = () => {
     !this.state.popoverActive && this.setState({popoverActive: true});
-  };
-
-  private handleScroll = () => {
-    const {onEndReached} = this.props;
-    if (!onEndReached) {
-      return;
-    }
-
-    if (this.popoverScrollContainer.current) {
-      const scrollContainer = this.popoverScrollContainer.current.parentElement;
-      if (
-        scrollContainer &&
-        scrollContainer.scrollTop >
-          scrollContainer.scrollHeight - scrollContainer.offsetHeight - 1
-      ) {
-        onEndReached();
-      }
-    }
   };
 
   private handleSelection = (newSelected: string) => {
@@ -496,27 +444,6 @@ export default class ComboBox extends React.PureComponent<Props, State> {
     const {selectedOption, selectedIndex, comboBoxId} = this.state;
     return selectedOption ? `${comboBoxId}-${selectedIndex}` : undefined;
   }
-
-  private addScrollListener = () => {
-    this.popoverScrollContainer.current &&
-      this.popoverScrollContainer.current.parentElement &&
-      addEventListener(
-        this.popoverScrollContainer.current.parentElement,
-        'scroll',
-        this.handleScroll,
-        {passive: true},
-      );
-  };
-
-  private removeScrollListener = () => {
-    this.popoverScrollContainer.current &&
-      this.popoverScrollContainer.current.parentElement &&
-      removeEventListener(
-        this.popoverScrollContainer.current.parentElement,
-        'scroll',
-        this.handleScroll,
-      );
-  };
 }
 
 function assignOptionIds(

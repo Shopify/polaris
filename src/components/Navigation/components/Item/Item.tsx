@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import NavigationContext, {NavigationContextType} from '../../context';
@@ -41,6 +41,7 @@ interface SecondaryAction {
 
 export interface Props extends ItemURLDetails {
   icon?: IconProps['source'];
+  /** @deprecated The iconBody prop is deprecated and will be removed. Pass a string into the icon prop instead */
   iconBody?: string;
   badge?: React.ReactNode;
   label: string;
@@ -115,17 +116,19 @@ export class BaseItem extends React.Component<CombinedProps, State> {
       </span>
     ) : null;
 
-    const iconMarkup = iconBody ? (
+    if (iconBody) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The iconBody prop is deprecated. Pass a string into the icon prop instead',
+      );
+    }
+
+    const iconBodyOrIcon = iconBody || icon;
+    const iconMarkup = iconBodyOrIcon ? (
       <div className={styles.Icon}>
-        <Icon source={iconBody} />
+        <Icon source={iconBodyOrIcon} />
       </div>
-    ) : (
-      icon && (
-        <div className={styles.Icon}>
-          <Icon source={icon} />
-        </div>
-      )
-    );
+    ) : null;
 
     let badgeMarkup: React.ReactNode = null;
     if (isNew) {

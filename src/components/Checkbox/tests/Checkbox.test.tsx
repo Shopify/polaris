@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
+import {Key} from '../../../types';
 import Checkbox from '../Checkbox';
 
 describe('<Checkbox />', () => {
@@ -14,25 +14,88 @@ describe('<Checkbox />', () => {
     expect(input.prop('value')).toBe('Some value');
   });
 
+  it('does not change checked states when onChange is not provided', () => {
+    const element = mountWithAppProvider(
+      <Checkbox id="MyCheckbox" label="Checkbox" checked />,
+    );
+    element.simulate('click');
+    expect(element.find('input').prop('checked')).toBe(true);
+  });
+
+  it('does not propagate click events from input element', () => {
+    const spy = jest.fn();
+    const element = mountWithAppProvider(
+      <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
+    );
+
+    element.find('input').simulate('click');
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   describe('onChange()', () => {
-    it('is called with the new checked value of the input on change', () => {
+    it('is called with the updated checked value of the input on click', () => {
       const spy = jest.fn();
       const element = mountWithAppProvider(
         <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
       );
       (element.find('input') as any).instance().checked = true;
-      element.find('input').simulate('change');
-      expect(spy).toHaveBeenCalledWith(true, 'MyCheckbox');
+      element.simulate('click');
+      expect(spy).toHaveBeenCalledWith(false, 'MyCheckbox');
+    });
+
+    it('is called when space is pressed', () => {
+      const spy = jest.fn();
+      const element = mountWithAppProvider(
+        <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
+      );
+
+      element.find('input').simulate('keyup', {
+        keyCode: Key.Space,
+      });
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('is not from keys other than space', () => {
+      const spy = jest.fn();
+      const element = mountWithAppProvider(
+        <Checkbox id="MyCheckbox" label="Checkbox" onChange={spy} />,
+      );
+
+      element.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('sets focus on the input when checkbox is toggled off', () => {
-      const input = mountWithAppProvider(
+      const checkbox = mountWithAppProvider(
         <Checkbox checked id="checkboxId" label="Checkbox" onChange={noop} />,
-      ).find('input');
-      (input.getDOMNode() as HTMLInputElement).checked = false;
-      input.simulate('change');
+      );
+      (checkbox.find('input') as any).instance().checked = false;
+      checkbox.simulate('click');
+      expect(checkbox.find('input').instance()).toBe(document.activeElement);
+    });
 
-      expect(input.getDOMNode()).toBe(document.activeElement);
+    it('is not called from keyboard events when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('is not called from click events when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('click');
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 
@@ -94,6 +157,18 @@ describe('<Checkbox />', () => {
         <Checkbox label="Checkbox" disabled={false} />,
       );
       expect(element.find('input').prop('disabled')).toBeFalsy();
+    });
+
+    it('can change values when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+      checkbox.setProps({checked: true});
+      expect(checkbox.find('input').prop('checked')).toBe(true);
     });
   });
 
@@ -178,3 +253,5 @@ describe('<Checkbox />', () => {
     });
   });
 });
+
+function noop() {}

@@ -38,6 +38,7 @@ $search-results-min-width: 45rem;
   width: 100%;
   max-width: $search-results-max-width;
   min-width: $search-results-min-width;
+  max-height: 100%;
 
   > * {
     flex: 1 1 auto;

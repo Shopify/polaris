@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames, variationName} from '@shopify/react-utilities/styles';
+import {classNames, variationName} from '@shopify/css-utilities';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import styles from './ProgressBar.scss';
 

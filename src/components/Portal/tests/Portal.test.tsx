@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as targets from '@shopify/react-utilities/target';
 import {mountWithAppProvider} from 'test-utilities';
 import Portal from '../Portal';
 
@@ -12,14 +11,8 @@ const {
   createPortal: createPortalSpy,
 }: {[key: string]: jest.Mock} = require.requireMock('react-dom');
 
-const actualIsServer = targets.isServer;
-
 function lastSpyCall(spy: jest.Mock) {
   return spy.mock.calls.pop() as any[];
-}
-
-function mockIsServer(value: boolean) {
-  (targets as any).isServer = value;
 }
 
 describe('<Portal />', () => {
@@ -27,22 +20,11 @@ describe('<Portal />', () => {
     createPortalSpy.mockImplementation(() => null);
   });
 
-  afterEach(() => {
-    mockIsServer(actualIsServer);
-  });
-
   describe('children', () => {
     it('get passed into the portal creation method', () => {
       const children = <div />;
       mountWithAppProvider(<Portal>{children}</Portal>);
-      expect(createPortalSpy).toBeCalledWith(children, expect.anything());
-    });
-
-    it('dont get rendered when the env is the server', () => {
-      mockIsServer(true);
-      const children = <div />;
-      const portal = mountWithAppProvider(<Portal>{children}</Portal>);
-      expect(portal.find(children).exists()).toBeFalsy();
+      expect(createPortalSpy).toHaveBeenCalledWith(children, expect.anything());
     });
   });
 

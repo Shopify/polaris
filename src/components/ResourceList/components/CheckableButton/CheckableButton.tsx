@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import Checkbox from '../../../Checkbox';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
@@ -44,6 +44,7 @@ function CheckableButton({
           labelHidden
           checked={selected}
           disabled={disabled}
+          onChange={onToggleAll}
         />
       </div>
       <span className={styles.Label}>{label}</span>

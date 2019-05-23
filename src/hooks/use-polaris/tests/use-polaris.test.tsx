@@ -23,7 +23,11 @@ describe('usePolaris', () => {
       );
       consoleSpy.mockRestore();
     };
-    expect(fn).toThrowError();
+    expect(fn).toThrow(
+      `The <AppProvider> component is required as of v2.0 of Polaris React. See
+                  https://polaris.shopify.com/components/structure/app-provider for implementation
+                  instructions.`,
+    );
   });
 
   it('returns context', () => {
@@ -34,7 +38,7 @@ describe('usePolaris', () => {
     }
 
     mountWithAppProvider(<Component />);
-    expect(JSON.stringify(context)).toEqual(
+    expect(JSON.stringify(context)).toStrictEqual(
       JSON.stringify(createPolarisContext()),
     );
   });

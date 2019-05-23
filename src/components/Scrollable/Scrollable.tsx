@@ -111,6 +111,7 @@ class Scrollable extends React.Component<CombinedProps, State> {
       shadow,
       hint,
       onScrolledToBottom,
+      polaris,
       ...rest
     } = this.props;
 
@@ -250,4 +251,4 @@ function prefersReducedMotion() {
   }
 }
 
-export default withAppProvider({withinScrollable: true})(Scrollable);
+export default withAppProvider<Props>({withinScrollable: true})(Scrollable);

@@ -46,10 +46,7 @@ export default function RadioButton({
   value,
 }: Props) {
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
-    if (onChange == null) {
-      return;
-    }
-    onChange(currentTarget.checked, id);
+    onChange && onChange(currentTarget.checked, id);
   }
 
   const describedBy = helpText ? helpTextID(id) : undefined;

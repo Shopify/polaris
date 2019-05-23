@@ -92,6 +92,8 @@ Use this size sparingly and never multiple times on the same page.
 
 ### Large
 
+<!-- example-for: web -->
+
 Use for display text that’s more important than the medium size, but less important than extra large.
 
 ```jsx
@@ -127,3 +129,45 @@ Use for text that would otherwise use body text, but that needs to scale with ot
 ```jsx
 <DisplayText size="small">Good evening, Dominic.</DisplayText>
 ```
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Although display text creates an interesting visual experience, it doesn’t replace the semantic structure provided by HTML headings.
+
+By default, the display text component outputs text in an HTML paragraph (`<p>`). If a heading tag is needed for display text, use the `element` prop to set the heading level.
+
+<!-- usageblock -->
+
+#### Do
+
+Use display text to create visual interest along with a meaningful heading structure.
+
+#### Don’t
+
+Use display text in place of standard headings. Use the [heading component](/components/titles-and-text/heading) and [subheading component](/components/titles-and-text/subheading) to provide structure.
+
+<!-- end -->
+
+<!-- /content-for -->

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 
 import {ActionList, Popover} from 'components';
@@ -77,7 +76,7 @@ describe('<Menu />', () => {
       <Menu {...defaultProps} message={message} open />,
     );
 
-    expect(menu.find(Message).prop('badge')).toEqual(message.badge);
+    expect(menu.find(Message).prop('badge')).toStrictEqual(message.badge);
   });
 
   it('calls the onClose prop in the Popover onClose', () => {
@@ -131,3 +130,5 @@ describe('<Menu />', () => {
     });
   });
 });
+
+function noop() {}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {ReactComponent} from '@shopify/react-utilities/types';
 import {unstyled} from '../shared';
 import {usePolaris} from '../../hooks';
 
@@ -15,7 +14,7 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   [key: string]: any;
 }
 
-export type LinkLikeComponent = ReactComponent<Props> | undefined;
+export type LinkLikeComponent = React.ComponentType<Props> | undefined;
 
 export default React.memo(function UnstyledLink(props: Props) {
   const polaris = usePolaris();

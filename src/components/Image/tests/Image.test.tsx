@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
-import Image from '../Image';
+import Image, {SourceSet} from '../Image';
 
 describe('<Image />', () => {
   describe('img attributes', () => {
@@ -25,6 +25,32 @@ describe('<Image />', () => {
 
     it('renders the crossOrigin', () => {
       expect(image.find('img').prop('crossOrigin')).toBe('Anonymous');
+    });
+  });
+
+  describe('sourceSet', () => {
+    it('renders an img with a srcSet', () => {
+      const src =
+        'https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg';
+      const srcSet: SourceSet[] = [
+        {
+          source:
+            'https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg',
+          descriptor: '1x',
+        },
+      ];
+      const image = mountWithAppProvider(
+        <Image
+          alt="alt text"
+          source={src}
+          sourceSet={srcSet}
+          crossOrigin="Anonymous"
+        />,
+      );
+
+      expect(image.find('img').prop('srcSet')).toBe(
+        `${srcSet[0].source} ${srcSet[0].descriptor}`,
+      );
     });
   });
 

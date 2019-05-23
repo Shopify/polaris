@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
-import ComboBox from '..';
+import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities';
 import {TextField} from '../components';
 import {Key} from '../../../../../types';
+import ComboBox from '..';
 
 describe('<ComboBox/>', () => {
   const options = [
@@ -220,7 +220,7 @@ describe('<ComboBox/>', () => {
       );
 
       comboBox.simulate('click');
-      expect(comboBox.find(OptionList).prop('selected')).toEqual([
+      expect(comboBox.find(OptionList).prop('selected')).toStrictEqual([
         'cheese_pizza',
       ]);
     });
@@ -387,6 +387,26 @@ describe('<ComboBox/>', () => {
     });
   });
 
+  describe('onEndReached', () => {
+    it('gets called when the end of the option list is reached', () => {
+      const spy = jest.fn();
+      const comboBox = shallow(
+        <ComboBox
+          options={options}
+          selected={[]}
+          textField={renderTextField()}
+          onSelect={noop}
+          onEndReached={spy}
+        />,
+      );
+
+      const pane = comboBox.find(Popover.Pane);
+      trigger(pane, 'onScrolledToBottom');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('keypress events', () => {
     it('adds to selected options when the down arrow and enter keys are pressed', () => {
       const spy = jest.fn();
@@ -520,6 +540,8 @@ describe('<ComboBox/>', () => {
     });
   });
 });
+
+function noop() {}
 
 function renderTextField() {
   return <TextField label="" onChange={noop} />;

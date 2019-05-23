@@ -41,7 +41,10 @@ describe('<Header />', () => {
 
     it('renders buttons for each action', () => {
       mountWithAppProvider(<Header actions={mockActions} />);
-      expect(buttonsFromMock).toBeCalledWith(mockActions, expect.anything());
+      expect(buttonsFromMock).toHaveBeenCalledWith(
+        mockActions,
+        expect.anything(),
+      );
     });
 
     it('does not render a button group when not defined', () => {

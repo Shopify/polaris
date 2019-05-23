@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {calculateDraggerY, hueForDraggerY} from '../utilities';
 import Slidable from '../../Slidable';
@@ -66,3 +65,5 @@ describe('<HuePicker />', () => {
     });
   });
 });
+
+function noop() {}

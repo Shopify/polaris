@@ -1,6 +1,6 @@
 import * as React from 'react';
 import isEqual from 'lodash/isEqual';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
