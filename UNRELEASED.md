@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+- Fixed text and other elements from being selected in Safari when dragging the color picker. ([#1562](https://github.com/Shopify/polaris-react/pull/1562))
+
 ### Documentation
 
 ### Development workflow

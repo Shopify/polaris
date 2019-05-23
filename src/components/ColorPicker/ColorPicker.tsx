@@ -127,8 +127,9 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
   };
 
   private handlePickerDrag = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    evnt: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
-    e.preventDefault();
+    // prevents external elements from being selected
+    evnt.preventDefault();
   };
 }
