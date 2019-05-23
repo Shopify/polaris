@@ -3,6 +3,8 @@ import isEqual from 'lodash/isEqual';
 import {setColors} from './utils';
 import {Theme, ThemeProviderContext, THEME_CONTEXT_TYPES} from './types';
 
+import InterimTheme from './InterimTheme';
+
 export interface Props {
   /** Custom logos and colors provided to select components */
   theme: Theme;
@@ -57,7 +59,11 @@ export default class ThemeProvider extends React.Component<Props> {
   render() {
     const styles = this.createStyles() || defaultTheme;
 
-    return <div style={styles}>{React.Children.only(this.props.children)}</div>;
+    return (
+      <div style={styles}>
+        <InterimTheme>{React.Children.only(this.props.children)}</InterimTheme>
+      </div>
+    );
   }
 
   subscribe = (callback: () => void) => {
