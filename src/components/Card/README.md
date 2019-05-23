@@ -447,7 +447,7 @@ Use to render custom content such as icons, links, or buttons in a card section'
   <Card.Section
     title={
       <Stack>
-        <Icon source="products" />
+        <Icon source={ProductsMajorTwotone} />
         <Subheading>New Products</Subheading>
       </Stack>
     }
