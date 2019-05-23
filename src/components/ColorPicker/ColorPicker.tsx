@@ -70,7 +70,12 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     ) : null;
 
     return (
-      <div className={styles.ColorPicker} id={id}>
+      <div
+        className={styles.ColorPicker}
+        id={id}
+        onMouseDown={this.handlePickerDrag}
+        onMouseMove={this.handlePickerDrag}
+      >
         <div ref={this.setColorNode} className={styles.MainColor}>
           <div
             className={styles.ColorLayer}
@@ -119,5 +124,11 @@ export default class ColorPicker extends React.PureComponent<Props, State> {
     const brightness = clamp(1 - y / pickerSize, 0, 1);
 
     onChange({hue, saturation, brightness, alpha});
+  };
+
+  private handlePickerDrag = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    e.preventDefault();
   };
 }
