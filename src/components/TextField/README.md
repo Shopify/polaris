@@ -736,7 +736,6 @@ class SeparateValidationErrorExample extends React.Component {
         <Button
           icon={DeleteMinor}
           accessibilityLabel="Remove item"
-          labelHidden
         />
       </Stack>
     );
