@@ -86,3 +86,4 @@ export {
   ProgressBar,
   Indicator,
 } from '../src';
+export {default as PlayState} from './PlayState';
