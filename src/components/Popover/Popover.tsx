@@ -75,7 +75,7 @@ export default class Popover extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      activatorWrapper: WrapperComponent = 'div',
+      activatorWrapper: WrapperComponent = 'div' as any,
       children,
       onClose,
       activator,

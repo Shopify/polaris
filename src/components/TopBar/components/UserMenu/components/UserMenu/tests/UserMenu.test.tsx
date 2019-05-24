@@ -2,7 +2,6 @@ import * as React from 'react';
 import {NotificationMajorMonotone} from '@shopify/polaris-icons';
 
 import {ReactWrapper} from 'enzyme';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import Menu from '../../../../Menu';
 import UserMenu from '../UserMenu';
@@ -69,6 +68,8 @@ describe('<UserMenu />', () => {
     });
   });
 });
+
+function noop() {}
 
 function returnMenuProp(wrapper: ReactWrapper, prop: string) {
   return wrapper.find(Menu).prop(prop);

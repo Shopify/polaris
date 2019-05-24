@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
-import {createUniqueIDFactory, noop} from '@shopify/javascript-utilities/other';
+import {classNames} from '@shopify/css-utilities';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {helpTextID} from '../Choice';
@@ -46,9 +46,9 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
   private inputNode = React.createRef<HTMLInputElement>();
 
   handleInput = () => {
-    const {onChange, id} = this.props;
+    const {onChange, id, disabled} = this.props;
 
-    if (onChange == null || this.inputNode.current == null) {
+    if (onChange == null || this.inputNode.current == null || disabled) {
       return;
     }
 
@@ -105,7 +105,7 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
     );
 
     return (
-      /* eslint-disable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      /* eslint-disable jsx-a11y/no-redundant-roles */
       <Choice
         id={id}
         label={label}
@@ -141,10 +141,12 @@ class Checkbox extends React.PureComponent<CombinedProps, never> {
           </span>
         </span>
       </Choice>
-      /* eslint-enable jsx-a11y/no-redundant-roles, jsx-a11y/role-has-required-aria-props */
+      /* eslint-enable jsx-a11y/no-redundant-roles */
     );
   }
 }
+
+function noop() {}
 
 function stopPropagation<E>(event: React.MouseEvent<E>) {
   event.stopPropagation();

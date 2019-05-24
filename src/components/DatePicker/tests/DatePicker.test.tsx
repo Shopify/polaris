@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from 'test-utilities';
 import {Day, Month, Weekday} from '../components';
@@ -20,7 +19,7 @@ describe('<DatePicker />', () => {
     );
 
     const weekday = datePicker.find(Weekday);
-    expect(weekday.first().text()).toEqual('Su');
+    expect(weekday.first().text()).toStrictEqual('Su');
   });
 
   describe('when weekStartsOn is passed', () => {
@@ -30,7 +29,7 @@ describe('<DatePicker />', () => {
       );
 
       const weekday = datePicker.find(Weekday);
-      expect(weekday.first().text()).toEqual('Mo');
+      expect(weekday.first().text()).toStrictEqual('Mo');
     });
 
     it('renders Saturday as first day of the week', () => {
@@ -39,7 +38,7 @@ describe('<DatePicker />', () => {
       );
 
       const weekday = datePicker.find(Weekday);
-      expect(weekday.first().text()).toEqual('Sa');
+      expect(weekday.first().text()).toStrictEqual('Sa');
     });
   });
 
@@ -50,7 +49,7 @@ describe('<DatePicker />', () => {
       );
 
       const month = datePicker.find(Month);
-      expect(month.prop('month')).toEqual(1);
+      expect(month.prop('month')).toStrictEqual(1);
     });
   });
 
@@ -61,7 +60,7 @@ describe('<DatePicker />', () => {
       );
 
       const year = datePicker.find(Month);
-      expect(year.prop('year')).toEqual(2016);
+      expect(year.prop('year')).toStrictEqual(2016);
     });
   });
 
@@ -124,7 +123,9 @@ describe('<DatePicker />', () => {
         .find(Day)
         .first()
         .simulate('focus');
-      expect(datePicker.find(Month).prop('focusedDate')).toEqual(dateObject);
+      expect(datePicker.find(Month).prop('focusedDate')).toStrictEqual(
+        dateObject,
+      );
     });
   });
 
@@ -178,3 +179,5 @@ describe('<DatePicker />', () => {
     ).toBe(false);
   });
 });
+
+function noop() {}

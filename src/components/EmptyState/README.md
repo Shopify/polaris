@@ -163,7 +163,21 @@ Use to explain a single feature before merchants have used it.
 </EmptyState>
 ```
 
+<!-- content-for: android -->
+
+![Default empty state](/public_images/components/EmptyState/android/default@2x.png)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+![Default empty state](/public_images/components/EmptyState/ios/default@2x.png)
+
+<!-- /content-for -->
+
 ### Empty state with subdued footer context
+
+<!-- example-for: web -->
 
 Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
 
@@ -186,18 +200,6 @@ Use to provide additional but non-critical context for a new product or feature.
   <p>Track and receive your incoming inventory from suppliers.</p>
 </EmptyState>
 ```
-
-<!-- content-for: android -->
-
-![Default empty state](/public_images/components/EmptyState/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default empty state](/public_images/components/EmptyState/ios/default@2x.png)
-
-<!-- /content-for -->
 
 ---
 

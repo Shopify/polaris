@@ -1,0 +1,225 @@
+$stacking-order: (
+  output: 10,
+  input: 20,
+);
+
+$range-track-height: rem(4px);
+$range-thumb-size: rem(24px);
+$range-thumb-shadow: (0 0 0 rem(1px) rgba(black, 0.2), shadow(faint));
+$range-thumb-shadow-hover: (0 0 0 rem(1px) rgba(black, 0.4), shadow(faint));
+$range-thumb-shadow-error: 0 0 0 rem(1px) color('red');
+$range-thumb-shadow-focus: 0 0 0 rem(1px) color('indigo');
+
+.SingleThumb {
+  display: flex;
+  align-items: center;
+
+  &.disabled {
+    opacity: 0.8;
+  }
+}
+
+.InputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  height: $range-thumb-size;
+
+  input {
+    padding: spacing(base-tight) 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.disabled {
+  input {
+    cursor: not-allowed;
+  }
+}
+
+.Prefix {
+  flex: 0 0 auto;
+  margin-right: spacing(tight);
+}
+
+.Suffix {
+  flex: 0 0 auto;
+  margin-left: spacing(tight);
+}
+
+.Input {
+  --progress-lower: #{color('indigo')};
+  --progress-upper: #{color('sky', 'dark')};
+  // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
+  // into something kinda supported by older browsers. Unfortunatly its
+  // custom properties transpiler has a bug that means it doesn't like multiple
+  // custom properties inside a linear gradient (but one is OK). Define the
+  // gradient color scheme here instead of inline in the below linear-gradient
+  // so that we only use one custom-property in the linear-gradient.
+  // See https://github.com/Shopify/polaris-react/issues/441 and
+  // https://github.com/postcss/postcss-custom-properties/issues/150
+  --gradient-colors: var(--progress-lower, transparent) 0%,
+    var(--progress-lower, transparent) var(--Polaris-RangeSlider-progress, 0%),
+    var(--progress-upper, transparent) var(--Polaris-RangeSlider-progress, 100%),
+    var(--progress-upper, transparent) 100%;
+
+  &::-ms-tooltip {
+    display: none;
+  }
+
+  @include unstyled-input;
+  position: relative;
+  z-index: z-index('input', $stacking-order);
+  flex: 1 1 auto;
+
+  @include range-track-selectors {
+    cursor: pointer;
+    width: 100%;
+    height: $range-track-height;
+    background-color: var(--progress-upper, color('sky', 'dark'));
+    background-image: linear-gradient(to right, var(--gradient-colors));
+    border: none;
+    border-radius: $range-track-height;
+  }
+
+  @include range-thumb-selectors {
+    // stylelint-disable-next-line value-no-vendor-prefix
+    cursor: -webkit-grab;
+    width: $range-thumb-size;
+    height: $range-thumb-size;
+    border: border-width() solid color('sky', 'lighter');
+    border-radius: 50%;
+    background: linear-gradient(color('white'), color('sky', 'lighter'));
+    box-shadow: $range-thumb-shadow;
+    appearance: none;
+    transition-property: border-color, box-shadow;
+    transition-duration: duration();
+    transition-timing-function: easing();
+
+    &:hover {
+      background: linear-gradient(
+        color('sky', 'lighter'),
+        color('sky', 'light')
+      );
+      box-shadow: $range-thumb-shadow-hover;
+    }
+  }
+
+  &::-ms-thumb {
+    margin-top: 0;
+    transform: translateY($range-thumb-size / 5) scale(0.4);
+  }
+
+  &::-webkit-slider-thumb {
+    margin-top: -($range-thumb-size - $range-track-height) / 2;
+  }
+
+  .error & {
+    --progress-lower: #{color('red')};
+
+    @include range-track-selectors {
+      background-color: color('red', 'light');
+    }
+
+    @include range-thumb-selectors {
+      border-color: color('red');
+      box-shadow: $range-thumb-shadow-error;
+    }
+  }
+
+  .disabled & {
+    @include range-track-selectors {
+      cursor: auto;
+      background-image: none;
+    }
+
+    @include range-thumb-selectors {
+      cursor: not-allowed;
+      border-color: color('sky', 'dark');
+    }
+  }
+
+  // match `error` specificity for interaction styles
+  .RangeSlider &:focus {
+    // repeated so that `focus` can override `error`
+    --progress-lower: #{color('indigo')};
+
+    @include range-track-selectors {
+      background-color: color('sky', 'dark');
+    }
+
+    @include range-thumb-selectors {
+      background: linear-gradient(
+        color('sky', 'lighter'),
+        color('sky', 'light')
+      );
+      border-color: color('indigo');
+      box-shadow: $range-thumb-shadow-focus;
+    }
+  }
+}
+
+///
+/// Output value indicator
+$range-output-size: rem(32px);
+$range-output-translate-x: calc(
+  -50% + var(--Polaris-RangeSlider-output-factor, 0) * #{$range-thumb-size}
+);
+$range-output-spacing: rem(16px);
+
+.Output {
+  position: absolute;
+  z-index: z-index('output', $stacking-order);
+  bottom: $range-thumb-size;
+  left: var(--Polaris-RangeSlider-progress, 50%);
+  transform: translateX($range-output-translate-x);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition-property: opacity, visibility;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  .Input:hover + &,
+  .Input:active + &,
+  .Input:focus + & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.OutputBubble {
+  position: relative;
+  display: flex;
+  padding: 0 spacing(tight);
+  min-width: $range-output-size;
+  height: $range-output-size;
+  background-color: color('ink');
+  border-radius: border-radius();
+  transition-property: transform;
+  transition-duration: duration();
+  transition-timing-function: easing();
+
+  // stylelint-disable selector-max-specificity
+  .Input:hover + .Output &,
+  .Input:active + .Output &,
+  .Input:focus + .Output & {
+    transform: translateY(-$range-output-spacing);
+
+    @include page-content-when-not-partially-condensed {
+      transform: translateY(-($range-output-spacing / 2));
+    }
+  }
+  // stylelint-enable selector-max-specificity
+}
+
+.OutputText {
+  @include text-style-subheading;
+  display: block;
+  flex: 1 1 auto;
+  margin: auto;
+  text-align: center;
+  color: color('white');
+}

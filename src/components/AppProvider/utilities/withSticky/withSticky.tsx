@@ -41,7 +41,10 @@ export default function withSticky() {
 
       render() {
         return (
-          <WrappedComponent {...this.props} polaris={this.polarisContext} />
+          <WrappedComponent
+            {...this.props as any}
+            polaris={this.polarisContext}
+          />
         );
       }
     }

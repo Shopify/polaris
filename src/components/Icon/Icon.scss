@@ -3,16 +3,6 @@ $stacking-order: (
   icon: 2,
 );
 
-@mixin color-icon($value, $hue: base) {
-  svg {
-    fill: color($value, $hue);
-  }
-
-  img {
-    filter: filter($value, $hue);
-  }
-}
-
 .Icon {
   display: block;
   height: rem(20px);

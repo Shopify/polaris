@@ -58,34 +58,35 @@ async function runPa11y() {
     .goto(iframePath)
     .then(() => page.evaluate(() => window.__STORYBOOK_CLIENT_API__.raw()));
 
-  const queryStrings = stories.reduce((memo, story) => {
+  const storyIDs = stories.reduce((memo, story) => {
     // There is no need to test the Playground, or the "All Examples" stories
     const isSkippedStory =
       story.kind === 'Playground|Playground' || story.name === 'All Examples';
 
     if (!isSkippedStory) {
-      memo.push(`id=${encodeURIComponent(story.id)}`);
+      memo.push(`${encodeURIComponent(story.id)}`);
     }
     return memo;
   }, []);
 
-  queryStrings.forEach((queryString) => {
+  storyIDs.forEach((queryString) => {
     const currentBrowser = browsers[browserIndex % NUMBER_OF_BROWSERS];
     browserIndex++;
     currentBrowser.taken = currentBrowser.taken.then(async () => {
       console.log('Testing ', queryString);
-      results.push(
-        await pa11y(`${iframePath}?${queryString}`, {
-          browser: currentBrowser.browser,
-          ignore: [
-            // Missing lang attribute on <html> tag
-            // Storybook does not include this property so ignore it
-            'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
-            // Color contrast failures
-            'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail',
-          ],
-        }),
-      );
+      const result = await pa11y(`${iframePath}?id=${queryString}`, {
+        browser: currentBrowser.browser,
+        ignore: [
+          // Missing lang attribute on <html> tag
+          // Storybook does not include this property so ignore it
+          'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
+          // Color contrast failures
+          'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail',
+        ],
+      });
+      result.exampleID = queryString;
+      delete result.pageUrl;
+      results.push(result);
     });
   });
 
@@ -122,7 +123,7 @@ Please edit the file a11y_shitlist.json to remove them and run these tests again
       console.log(
         '------------------------------------------------------------------------',
       );
-      console.log(issue.pageUrl);
+      console.log(issue.exampleID);
       console.log(
         '------------------------------------------------------------------------',
       );
@@ -144,7 +145,7 @@ The following issues were discovered and need to be fixed before this code can b
       console.log(
         '------------------------------------------------------------------------',
       );
-      console.log(result.pageUrl);
+      console.log(result.exampleID);
       console.log(
         '------------------------------------------------------------------------',
       );
@@ -155,8 +156,7 @@ The following issues were discovered and need to be fixed before this code can b
   }
 
   if (results.length || remainingIssues) {
-    // This is temporarily returning 0 while we ensure pa11y doesn't throw any false positives
-    process.exit(0);
+    process.exit(1);
   }
   process.exit(0);
 })();

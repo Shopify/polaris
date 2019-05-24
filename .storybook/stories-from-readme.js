@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as Polaris from '../src';
+import {AppProvider, Heading} from '../src';
 import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf} from '@storybook/react';
 import Playground from '../playground/Playground';
 
 /**
- * In most cases we want to test the "All Examples" page as fewer snapshots
+ * In most cases we want to test an "All Examples" page as fewer snapshots
  * means cheaper pricing. However some examples we need to test individually,
  * usually because they use position:fixed and we don't want examples to
  * overlay each other as it stops the test being useful.
@@ -22,13 +22,16 @@ export function generateStories(readme, readmeModule) {
 
   const testIndividualExamples = percyShouldTestIndividualExamples(readme.name);
 
-  storiesOf(`All Components|${readme.name}`, readmeModule)
-    .addDecorator(AppProviderDecorator)
-    .addDecorator(withA11y)
-    .addParameters({
-      percy: {skip: testIndividualExamples},
-    })
-    .add('All Examples', () => AllExamplesStoryForReadme(readme));
+  // Only add "All Examples" pages for components that use them for percy testing
+  if (!testIndividualExamples) {
+    storiesOf(`All Components|${readme.name}`, readmeModule)
+      .addDecorator(AppProviderDecorator)
+      .addDecorator(withA11y)
+      .addParameters({
+        percy: {skip: false},
+      })
+      .add('All Examples', () => AllExamplesStoryForReadme(readme));
+  }
 
   readme.examples.forEach((example) => {
     storiesOf(`All Components|${readme.name}`, readmeModule)
@@ -46,7 +49,7 @@ export function generateStories(readme, readmeModule) {
 
 export function hydrateExecutableExamples(readme) {
   readme.examples = readme.examples.map((example) => {
-    example.Component = example.code({React, ...Polaris});
+    example.Component = example.code();
     return example;
   });
 
@@ -62,7 +65,7 @@ export function addPlaygroundStory(playgroundModule) {
 function AppProviderDecorator(story) {
   return (
     <div style={{padding: '8px'}}>
-      <Polaris.AppProvider>{story()}</Polaris.AppProvider>
+      <AppProvider>{story()}</AppProvider>
     </div>
   );
 }
@@ -86,7 +89,7 @@ function AllExamplesStoryForReadme(readme) {
     <React.Fragment>
       {readme.examples.map((example) => (
         <div key={example.name} style={containerStyle}>
-          <Polaris.Heading>{example.name}</Polaris.Heading>
+          <Heading>{example.name}</Heading>
           <example.Component />
         </div>
       ))}

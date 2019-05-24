@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 
 import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';

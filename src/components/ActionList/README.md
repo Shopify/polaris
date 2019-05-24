@@ -161,8 +161,8 @@ class ActionListExample extends React.Component {
         >
           <ActionList
             items={[
-              {content: 'Import file', icon: 'import'},
-              {content: 'Export file', icon: 'export'},
+              {content: 'Import file', icon: ImportMinor},
+              {content: 'Export file', icon: ExportMinor},
             ]}
           />
         </Popover>
@@ -205,8 +205,8 @@ class ActionListExample extends React.Component {
               {
                 title: 'File options',
                 items: [
-                  {content: 'Import file', icon: 'import'},
-                  {content: 'Export file', icon: 'export'},
+                  {content: 'Import file', icon: ImportMinor},
+                  {content: 'Export file', icon: ExportMinor},
                 ],
               },
             ]}
@@ -251,12 +251,12 @@ class ActionListExample extends React.Component {
               {
                 title: 'File options',
                 items: [
-                  {content: 'Import file', icon: 'import'},
-                  {content: 'Export file', icon: 'export'},
+                  {content: 'Import file', icon: ImportMinor},
+                  {content: 'Export file', icon: ExportMinor},
                   {
                     destructive: true,
                     content: 'Delete file',
-                    icon: 'delete',
+                    icon: DeleteMinor,
                   },
                 ],
               },
@@ -326,3 +326,36 @@ class ActionListExample extends React.Component {
 
 - To combine more than one button in a single layout, [use the button group component](/components/actions/button-group)
 - To display a list of related content, [use the list component](/components/lists-and-tables/list)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](/components/actions/button).
+
+### Keyboard support
+
+- Give the action list items keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
+- Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> key or the <kbd>space</kbd> key
+
+<!-- /content-for -->

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {durationBase} from '@shopify/polaris-tokens';
 
 import {AnimationProps, Key} from '../../../../types';

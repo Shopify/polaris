@@ -1,6 +1,3 @@
-import 'core-js/fn/array/some';
-import 'core-js/fn/string/ends-with';
-
 import {DropZoneEvent} from '../types';
 
 const dragEvents = ['dragover', 'dragenter', 'drop'];

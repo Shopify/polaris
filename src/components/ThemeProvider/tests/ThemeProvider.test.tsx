@@ -38,7 +38,7 @@ describe('<ThemeProvider />', () => {
       }
     }
 
-    const wrapper = TestUtils.renderIntoDocument(
+    const wrapper: unknown = TestUtils.renderIntoDocument(
       <ThemeProvider
         theme={{
           logo: {
@@ -60,7 +60,7 @@ describe('<ThemeProvider />', () => {
     );
 
     const {logo, subscribe, unsubscribe} = child.context.polarisTheme;
-    expect(logo).toEqual(context.polarisTheme.logo);
+    expect(logo).toStrictEqual(context.polarisTheme.logo);
     expect(typeof subscribe === 'function').toBe(true);
     expect(typeof unsubscribe === 'function').toBe(true);
   });
@@ -90,7 +90,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(wrapper.find('div').props().style).toEqual({
+    expect(wrapper.find('div').props().style).toStrictEqual({
       '--top-bar-background': '#108043',
       '--top-bar-background-lighter': 'hsl(147, 63%, 43%, 1)',
       '--top-bar-color': 'rgb(255, 255, 255)',

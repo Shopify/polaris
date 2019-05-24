@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities';
+import {classNames} from '@shopify/css-utilities';
 import isInputFocused from '../../utilities/isInputFocused';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Icon from '../Icon';
@@ -69,10 +69,12 @@ function Pagination({
   }
 
   const className = classNames(styles.Pagination, plain && styles.plain);
+  const previousClassName = classNames(styles.Button, styles.PreviousButton);
+  const nextClassName = classNames(styles.Button, styles.NextButton);
 
   const previousButton = previousURL ? (
     <UnstyledLink
-      className={styles.Button}
+      className={previousClassName}
       url={previousURL}
       onMouseUp={handleMouseUpByBlurring}
       aria-label={intl.translate('Polaris.Pagination.previous')}
@@ -85,7 +87,7 @@ function Pagination({
       onClick={onPrevious}
       type="button"
       onMouseUp={handleMouseUpByBlurring}
-      className={styles.Button}
+      className={previousClassName}
       aria-label={intl.translate('Polaris.Pagination.previous')}
       disabled={!hasPrevious}
     >
@@ -95,7 +97,7 @@ function Pagination({
 
   const nextButton = nextURL ? (
     <UnstyledLink
-      className={styles.Button}
+      className={nextClassName}
       url={nextURL}
       onMouseUp={handleMouseUpByBlurring}
       aria-label={intl.translate('Polaris.Pagination.next')}
@@ -108,7 +110,7 @@ function Pagination({
       onClick={onNext}
       type="button"
       onMouseUp={handleMouseUpByBlurring}
-      className={styles.Button}
+      className={nextClassName}
       aria-label={intl.translate('Polaris.Pagination.next')}
       disabled={!hasNext}
     >

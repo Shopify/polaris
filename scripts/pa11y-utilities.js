@@ -8,16 +8,16 @@ function shitlistCheck(results, immutableShitlist) {
   });
 
   const filteredResults = results.map((result) => {
-    if (mutableShitlist[result.pageUrl]) {
+    if (mutableShitlist[result.exampleID]) {
       result.issues = result.issues.filter((issue) => {
         const issueHash = hash(issue);
-        const matchIndex = mutableShitlist[result.pageUrl].findIndex(
+        const matchIndex = mutableShitlist[result.exampleID].findIndex(
           (shitlistedResult) => {
             return hash(shitlistedResult) === issueHash;
           },
         );
         if (matchIndex >= 0) {
-          mutableShitlist[result.pageUrl].splice(matchIndex, 1);
+          mutableShitlist[result.exampleID].splice(matchIndex, 1);
         }
         return matchIndex === -1;
       });
@@ -28,7 +28,7 @@ function shitlistCheck(results, immutableShitlist) {
   Object.keys(mutableShitlist).forEach((key) => {
     if (mutableShitlist[key].length) {
       remainingIssues.push({
-        pageUrl: key,
+        exampleID: key,
         issues: mutableShitlist[key],
       });
     }

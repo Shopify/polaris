@@ -171,17 +171,6 @@ Action allows a complementary icon-only action to render next to the section tit
 
 The user menu component displays the current user’s avatar and name, and actions that are related to the current logged in user. The menu is displayed at the top of the navigation sidebar at small screen sizes. The user menu can display any messages that the current user has available to read.
 
-### User menu properties
-
-| Prop           | Type                    | Description                                                                                             |
-| -------------- | ----------------------- | ------------------------------------------------------------------------------------------------------- |
-| name           | string                  | A string detailing the merchant’s full name to be displayed in the user menu                            |
-| detail         | string                  | A string allowing further details on the merchant’s name displayed in the user menu                     |
-| actions        | UserActionSection[]     | An array of action objects that are rendered inside of a dropdown triggered by this menu                |
-| message        | MessageProps            | Accepts a message that facilitates direct, urgent communication with the merchant through the user menu |
-| avatarInitials | AvatarProps['initials'] | The merchant’s initials, rendered in place of an avatar image when not provided                         |
-| avatarSource   | AvatarProps['source']   | An avatar image representing the merchant                                                               |
-
 ### Deprecation rationale
 
 As of release 3.6.0 `Navigation.UserMenu` is deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu) which will stay visible on mobile.
@@ -201,67 +190,18 @@ Use to present a navigation menu in the [frame](/components/structure/frame).
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
         badge: '15',
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
-      },
-    ]}
-  />
-</Navigation>
-```
-
-### Navigation with user menu
-
-Use to present a navigation menu and a user menu in the [frame](/components/structure/frame).
-
-```jsx
-<Navigation
-  location="/"
-  userMenu={
-    <Navigation.UserMenu
-      name="Ellen Ochoa"
-      detail="Ochoa Crafts"
-      actions={[
-        {
-          id: '123',
-          items: [{content: 'Perform action'}],
-        },
-      ]}
-      message={{
-        title: 'Message title',
-        description: 'Message description',
-        action: {content: 'Perform action'},
-        link: {to: 'path/to/place', content: 'Link content'},
-      }}
-      avatarInitials="EO"
-    />
-  }
->
-  <Navigation.Section
-    items={[
-      {
-        url: '/path/to/place',
-        label: 'Home',
-        icon: 'home',
-      },
-      {
-        url: '/path/to/place',
-        label: 'Orders',
-        icon: 'orders',
-      },
-      {
-        url: '/path/to/place',
-        label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -279,17 +219,17 @@ Use to divide groups of items with a horizontal divider.
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -298,7 +238,7 @@ Use to divide groups of items with a horizontal divider.
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: 'onlineStore',
+        icon: OnlineStoreMajorTwotone,
       },
     ]}
     separator
@@ -317,17 +257,17 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -337,12 +277,12 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: 'onlineStore',
+        icon: OnlineStoreMajorTwotone,
       },
     ]}
     action={{
       accessibilityLabel: 'Add sales channel',
-      icon: 'circlePlusOutline',
+      icon: CirclePlusOutlineMinor,
       onClick: () => {},
     }}
   />
@@ -360,22 +300,22 @@ Use to add a different action for an item than the main action, like to view or 
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
         secondaryAction: {
           url: '/admin/orders/add',
           accessibilityLabel: 'Add an order',
-          icon: 'circlePlusOutline',
+          icon: CirclePlusOutlineMinor,
         },
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -393,17 +333,17 @@ Use to show a limited number of items in a section with an option to expand the 
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
     rollup={{
@@ -427,17 +367,17 @@ Use to add a horizontal line between sections.
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -446,7 +386,7 @@ Use to add a horizontal line between sections.
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: 'onlineStore',
+        icon: OnlineStoreMajorTwotone,
       },
     ]}
     separator

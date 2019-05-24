@@ -1,6 +1,8 @@
 import * as React from 'react';
+import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities';
 import ActionList from '../ActionList';
+import Badge from '../../Badge';
 import {Item, Section} from '../components';
 
 describe('<ActionList />', () => {
@@ -77,5 +79,63 @@ describe('<ActionList />', () => {
       />,
     );
     expect(actionList.find(Section).prop('actionRole')).toBe('option');
+  });
+
+  it('renders a ul with sections', () => {
+    const actionList = mountWithAppProvider(
+      <ActionList
+        sections={[
+          {
+            title: 'File options',
+            items: [
+              {content: 'Import file', icon: ImportMinor},
+              {content: 'Export file', icon: ExportMinor},
+            ],
+          },
+        ]}
+      />,
+    );
+
+    expect(actionList.find('ul')).toHaveLength(1);
+  });
+
+  it('renders a div without sections', () => {
+    const actionList = mountWithAppProvider(<ActionList />);
+
+    expect(actionList.find('div')).toHaveLength(1);
+  });
+
+  it('renders a section with a title', () => {
+    const actionList = mountWithAppProvider(
+      <ActionList
+        sections={[
+          {
+            title: 'File options',
+            items: [
+              {content: 'Import file', icon: ImportMinor},
+              {content: 'Export file', icon: ExportMinor},
+            ],
+          },
+        ]}
+      />,
+    );
+
+    expect(actionList.find(Section).text()).toContain('File option');
+  });
+
+  it('it renders an item with a badge', () => {
+    const actionList = mountWithAppProvider(
+      <ActionList
+        items={[
+          {content: 'Add discount', badge: {status: 'new', content: 'badge'}},
+        ]}
+        onActionAnyItem={mockOnActionAnyItem}
+        actionRole="option"
+      />,
+    );
+    expect(actionList.find(Badge).props()).toStrictEqual({
+      children: 'badge',
+      status: 'new',
+    });
   });
 });

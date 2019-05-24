@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
@@ -429,7 +429,6 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         <Button
           disabled={selectMode}
           icon={EnableSelectionMinor}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this.handleSelectMode.bind(this, true)}
         >
           {intl.translate('Polaris.ResourceList.selectButtonText')}
@@ -458,7 +457,10 @@ export class ResourceList extends React.Component<CombinedProps, State> {
       <div className={styles['HeaderWrapper-overlay']} />
     ) : null;
 
-    const headerMarkup = (showHeader || needsHeader) &&
+    const showEmptyState = filterControl && !this.itemsExist() && !loading;
+
+    const headerMarkup = !showEmptyState &&
+      (showHeader || needsHeader) &&
       this.listRef.current && (
         <div className={styles.HeaderOuterWrapper}>
           <Sticky boundingElement={this.listRef.current}>
@@ -495,12 +497,11 @@ export class ResourceList extends React.Component<CombinedProps, State> {
         </div>
       );
 
-    const emptyStateMarkup =
-      filterControl && !this.itemsExist() && !loading ? (
-        <div className={styles.EmptySearchResultWrapper}>
-          <EmptySearchResult {...this.emptySearchResultText} withIllustration />
-        </div>
-      ) : null;
+    const emptyStateMarkup = showEmptyState ? (
+      <div className={styles.EmptySearchResultWrapper}>
+        <EmptySearchResult {...this.emptySearchResultText} withIllustration />
+      </div>
+    ) : null;
 
     const defaultTopPadding = 8;
     const topPadding =

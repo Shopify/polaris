@@ -33,7 +33,7 @@ yarn add @shopify/polaris
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.12.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.16.0/polaris.min.css"
 />
 ```
 
@@ -81,7 +81,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://sdks.shopifycdn.com/polaris/3.12.0/polaris.min.css"
+  href="https://sdks.shopifycdn.com/polaris/3.16.0/polaris.min.css"
 />
 ```
 
@@ -114,7 +114,7 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 
 ### Testing in a consuming project
 
-- Run `yarn run build-consumer PROJECT_DIRECTORY`
+1. In your terminal, run `yarn run build-consumer PROJECT_DIRECTORY` from the polaris-react repo
 
 `PROJECT_DIRECTORY` is where the build will be copied, which must be a sibling of the `polaris-react` directory.
 
@@ -122,6 +122,8 @@ To test the changes on a mobile or virtual machine, you will need to open the so
 # Example
 yarn run build-consumer polaris-styleguide
 ```
+
+2. In your terminal, open a second tab and run `yarn run dev` from the `polaris-styleguide` repository
 
 In the example above, the build is copied to `polaris-styleguide/node_modules/@shopify/polaris`. And in this case, a rebuild of `polaris-styleguide` is required after copying the `polaris-react` build, but may not be the case for all consuming projects.
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities';
-import {noop} from 'utilities/other';
 import Button from '../../../../Button';
 import {ToastProps as Props} from '../../../types';
 import Toast from '../Toast';
@@ -29,7 +28,7 @@ describe('<Toast />', () => {
 
   it('renders its content', () => {
     const message = mountWithAppProvider(<Toast {...mockProps} />);
-    expect(message.prop('content')).toEqual('Image uploaded');
+    expect(message.prop('content')).toStrictEqual('Image uploaded');
   });
 
   describe('dismiss button', () => {
@@ -111,22 +110,40 @@ describe('<Toast />', () => {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('is called when the escape key is pressed', () => {
+    describe('events', () => {
       const listenerMap: HandlerMap = {};
-      document.addEventListener = jest.fn((event, cb) => {
-        listenerMap[event] = cb;
+
+      beforeEach(() => {
+        jest
+          .spyOn(document, 'addEventListener')
+          .mockImplementation((evt, cb) => {
+            listenerMap[evt] = cb;
+          });
+
+        jest
+          .spyOn(document, 'removeEventListener')
+          .mockImplementation((event) => {
+            listenerMap[event] = noop;
+          });
       });
 
-      const spy = jest.fn();
-      mountWithAppProvider(<Toast content="Image uploaded" onDismiss={spy} />);
+      afterEach(() => {
+        (document.addEventListener as jest.Mock).mockRestore();
+        (document.removeEventListener as jest.Mock).mockRestore();
 
-      listenerMap.keyup({keyCode: Key.Escape});
-
-      document.removeEventListener = jest.fn((event) => {
-        listenerMap[event] = noop;
+        Object.keys(listenerMap).forEach((key) => delete listenerMap[key]);
       });
 
-      expect(spy).toHaveBeenCalled();
+      it('is called when the escape key is pressed', () => {
+        const spy = jest.fn();
+        mountWithAppProvider(
+          <Toast content="Image uploaded" onDismiss={spy} />,
+        );
+
+        listenerMap.keyup({keyCode: Key.Escape});
+
+        expect(spy).toHaveBeenCalled();
+      });
     });
 
     it('is called after the duration is reached', () => {
@@ -167,3 +184,5 @@ describe('<Toast />', () => {
     });
   });
 });
+
+function noop() {}

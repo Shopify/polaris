@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
-import Spinner from '../Spinner';
+import Spinner, {Color} from '../Spinner';
 import Image from '../../Image';
 
 describe('<Spinner />', () => {
@@ -48,6 +48,33 @@ describe('<Spinner />', () => {
     it('sets the role to status to denote advisory information to screen readers', () => {
       const spinner = shallowWithAppProvider(<Spinner />);
       expect(spinner.find(Image).prop('role')).toBe('status');
+    });
+  });
+
+  describe('console.warn', () => {
+    const oldEnv = process.env;
+
+    beforeEach(() => {
+      jest.resetModules();
+      process.env = {...oldEnv};
+      delete process.env.NODE_ENV;
+    });
+
+    afterEach(() => {
+      process.env = oldEnv;
+    });
+
+    it('a large spinner with an unavailable color warns in development', () => {
+      const warnSpy = jest.spyOn(console, 'warn');
+      process.env.NODE_ENV = 'development';
+
+      const color = 'black' as Color;
+
+      shallowWithAppProvider(<Spinner size="large" color={color} />);
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'The color black is not meant to be used on large spinners. The colors available on large spinners are: teal, inkLightest',
+      );
     });
   });
 });

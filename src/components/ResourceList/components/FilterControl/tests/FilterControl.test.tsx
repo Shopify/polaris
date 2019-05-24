@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {trigger, mountWithAppProvider} from 'test-utilities';
 import {TextField, Tag, Button} from 'components';
 import {Provider} from '../../Context';
@@ -120,7 +119,7 @@ describe('<FilterControl />', () => {
       const tags = filterControl.find(Tag);
       trigger(tags.at(0), 'onRemove', mockAppliedFilters[0].key);
 
-      expect(onFiltersChange).toBeCalledWith([
+      expect(onFiltersChange).toHaveBeenCalledWith([
         ...mockAppliedFilters.slice(1, mockAppliedFilters.length),
       ]);
     });
@@ -586,7 +585,7 @@ describe('<FilterControl />', () => {
       expect(filterControl.find(Button).exists()).toBe(true);
 
       trigger(filterControl.find(Button), 'onClick');
-      expect(action.onAction).toBeCalled();
+      expect(action.onAction).toHaveBeenCalled();
     });
   });
 
@@ -725,7 +724,7 @@ describe('<FilterControl />', () => {
 
       trigger(filterControl.find(TextField), 'onChange', newSearchValue);
 
-      expect(onSearchChange).toBeCalledWith(newSearchValue);
+      expect(onSearchChange).toHaveBeenCalledWith(newSearchValue);
     });
   });
 
@@ -750,7 +749,7 @@ describe('<FilterControl />', () => {
 
       trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
 
-      expect(onFiltersChange).toBeCalledWith([
+      expect(onFiltersChange).toHaveBeenCalledWith([
         ...mockAppliedFilters,
         newFilter,
       ]);
@@ -772,7 +771,9 @@ describe('<FilterControl />', () => {
 
       trigger(filterControl.find(FilterCreator), 'onAddFilter', newFilter);
 
-      expect(onFiltersChange).not.toBeCalled();
+      expect(onFiltersChange).not.toHaveBeenCalled();
     });
   });
 });
+
+function noop() {}

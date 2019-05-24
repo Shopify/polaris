@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {Key} from '../../../types';
 import KeypressListener from '../KeypressListener';
@@ -8,24 +7,22 @@ interface HandlerMap {
   [eventName: string]: (event: any) => void;
 }
 
-const originalAddEventListener = document.addEventListener;
-const originalRemoveEventListener = document.removeEventListener;
 const listenerMap: HandlerMap = {};
 
 describe('<KeypressListener />', () => {
   beforeEach(() => {
-    document.addEventListener = jest.fn((event, cb) => {
+    jest.spyOn(document, 'addEventListener').mockImplementation((event, cb) => {
       listenerMap[event] = cb;
     });
 
-    document.removeEventListener = jest.fn((event) => {
+    jest.spyOn(document, 'removeEventListener').mockImplementation((event) => {
       listenerMap[event] = noop;
     });
   });
 
   afterEach(() => {
-    document.addEventListener = originalAddEventListener;
-    document.removeEventListener = originalRemoveEventListener;
+    (document.addEventListener as jest.Mock).mockRestore();
+    (document.removeEventListener as jest.Mock).mockRestore();
   });
 
   it('attaches a listener for the given key on mount', () => {
@@ -48,6 +45,8 @@ describe('<KeypressListener />', () => {
     ).unmount();
 
     listenerMap.keyup({keyCode: Key.Escape});
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
+
+function noop() {}

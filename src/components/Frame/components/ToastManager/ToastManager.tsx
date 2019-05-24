@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import EventListener from '../../../EventListener';
 import Portal from '../../../Portal';
 import {ToastProps} from '../../types';

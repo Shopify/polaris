@@ -197,7 +197,7 @@ export {default as Portal, Props as PortalProps} from './Portal';
 
 export {default as RadioButton, Props as RadioButtonProps} from './RadioButton';
 
-export {default as RangeSlider, Props as RangeSliderProps} from './RangeSlider';
+export {default as RangeSlider, RangeSliderProps} from './RangeSlider';
 
 export {
   default as ResourceList,
@@ -231,6 +231,8 @@ export {
   default as SettingToggle,
   Props as SettingToggleProps,
 } from './SettingToggle';
+
+export {default as Sheet} from './Sheet';
 
 export {default as Spinner, Props as SpinnerProps} from './Spinner';
 
@@ -307,3 +309,5 @@ export {default as Indicator, Props as IndicatorProps} from './Indicator';
 export {default as withContext} from './WithContext';
 
 export {default as withRef, WithRef} from './WithRef';
+
+export {DATA_ATTRIBUTE} from './shared';

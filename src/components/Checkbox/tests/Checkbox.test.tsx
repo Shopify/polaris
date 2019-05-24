@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 import {Key} from '../../../types';
 import Checkbox from '../Checkbox';
@@ -78,6 +77,26 @@ describe('<Checkbox />', () => {
       checkbox.simulate('click');
       expect(checkbox.find('input').instance()).toBe(document.activeElement);
     });
+
+    it('is not called from keyboard events when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('is not called from click events when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('click');
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   describe('onFocus()', () => {
@@ -137,6 +156,18 @@ describe('<Checkbox />', () => {
         <Checkbox label="Checkbox" disabled={false} />,
       );
       expect(element.find('input').prop('disabled')).toBeFalsy();
+    });
+
+    it('can change values when disabled', () => {
+      const spy = jest.fn();
+      const checkbox = mountWithAppProvider(
+        <Checkbox label="label" disabled onChange={spy} />,
+      );
+      checkbox.find('input').simulate('keyup', {
+        keyCode: Key.Enter,
+      });
+      checkbox.setProps({checked: true});
+      expect(checkbox.find('input').prop('checked')).toBe(true);
     });
   });
 
@@ -221,3 +252,5 @@ describe('<Checkbox />', () => {
     });
   });
 });
+
+function noop() {}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {durationSlow} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';

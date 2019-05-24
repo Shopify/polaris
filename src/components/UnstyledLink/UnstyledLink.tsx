@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {ReactComponent} from '@shopify/react-utilities/types';
 import {unstyled} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider/utilities';
 import compose from '../../utilities/react-compose';
@@ -17,7 +16,7 @@ export interface Props extends React.HTMLProps<HTMLAnchorElement> {
   [key: string]: any;
 }
 
-export type LinkLikeComponent = ReactComponent<Props> | undefined;
+export type LinkLikeComponent = React.ComponentType<Props> | undefined;
 export type CombinedProps = Props & WithAppProviderProps;
 
 export class UnstyledLink extends React.PureComponent<CombinedProps, never> {

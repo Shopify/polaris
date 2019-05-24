@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/react-utilities/styles';
-import {noop} from '@shopify/javascript-utilities/other';
+import {classNames} from '@shopify/css-utilities';
 
 import Icon from '../Icon';
 import Popover from '../Popover';
@@ -309,6 +308,8 @@ export default class Tabs extends React.PureComponent<Props, State> {
     onSelect(selectedIndex);
   };
 }
+
+function noop() {}
 
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;

@@ -414,6 +414,37 @@ class LabelActionExample extends React.Component {
 }
 ```
 
+### TextField with right aligned text
+
+Use when input text should be aligned right.
+
+```jsx
+class RightAlignExample extends React.Component {
+  state = {
+    value: '1',
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  render() {
+    return (
+      <Stack>
+        <Stack.Item fill>Price</Stack.Item>
+        <TextField
+          label="Price"
+          labelHidden
+          value={this.state.value}
+          onChange={this.handleChange}
+          align="right"
+        />
+      </Stack>
+    );
+  }
+}
+```
+
 ### Text field with placeholder text
 
 Use to provide a short, non-essential hint about the expected input. Placeholder text is low-contrast, so don’t rely on it for important information.
@@ -702,7 +733,7 @@ class SeparateValidationErrorExample extends React.Component {
             <InlineError message={errorMessage} fieldID={textFieldID} />
           </div>
         </Stack.Item>
-        <Button icon="delete" />
+        <Button icon={DeleteMinor} />
       </Stack>
     );
 
@@ -761,6 +792,40 @@ class TextFieldExample extends React.Component {
         onChange={this.handleChange}
         maxLength={20}
         showCharacterCount
+      />
+    );
+  }
+}
+```
+
+### Text field with clear button
+
+<!-- example-for: web -->
+
+Use to allow merchants to clear the content from a text field.
+
+```jsx
+class TextFieldExample extends React.Component {
+  state = {
+    value: 'Jaded Pixel',
+  };
+
+  handleChange = (value) => {
+    this.setState({value});
+  };
+
+  handleClearButtonClick = () => {
+    this.setState({value: ''});
+  };
+
+  render() {
+    return (
+      <TextField
+        label="Store name"
+        value={this.state.value}
+        onChange={this.handleChange}
+        clearButton
+        onClearButtonClick={this.handleClearButtonClick}
       />
     );
   }

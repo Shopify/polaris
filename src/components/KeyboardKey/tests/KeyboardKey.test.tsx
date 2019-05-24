@@ -17,4 +17,9 @@ describe('<KeyboardKey />', () => {
     const keyboardKey = mountWithAppProvider(<KeyboardKey>tab</KeyboardKey>);
     expect(keyboardKey.find('kbd').contains('tab')).toBe(true);
   });
+
+  it('renders an empty string as children when none are provided', () => {
+    const keyboardKey = mountWithAppProvider(<KeyboardKey />);
+    expect(keyboardKey.text()).toBe('');
+  });
 });

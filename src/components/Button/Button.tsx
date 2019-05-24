@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames, variationName} from '@shopify/react-utilities';
+import {classNames, variationName} from '@shopify/css-utilities';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -50,7 +50,7 @@ export interface Props {
   /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
   download?: string | boolean;
   /** Icon to display to the left of the button content */
-  icon?: React.ReactNode | IconSource;
+  icon?: React.ReactElement | IconSource;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** Id of the element the button controls */

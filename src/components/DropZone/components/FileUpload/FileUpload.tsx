@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames} from '@shopify/css-utilities';
 import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
 import {WithContextTypes} from '../../../../types';
@@ -36,7 +36,40 @@ export interface Props {
 export type CombinedProps = Props &
   WithAppProviderProps &
   WithContextTypes<DropZoneContext>;
+
 export class FileUpload extends React.Component<CombinedProps, State> {
+  static getDerivedStateFromProps(
+    {
+      actionTitle: nextActionTitle,
+      actionHint: nextActionHint,
+      polaris: {
+        intl: {translate},
+      },
+      context: {type},
+    }: CombinedProps,
+    {actionTitle, actionHint}: State,
+  ) {
+    const hasActionTitleChanged = nextActionTitle !== actionTitle;
+    const hasActionHintChanged = nextActionHint !== actionHint;
+
+    if (!hasActionTitleChanged && !hasActionHintChanged) {
+      return null;
+    }
+
+    const suffix = capitalize(type);
+
+    return {
+      actionTitle:
+        nextActionTitle && hasActionTitleChanged
+          ? nextActionTitle
+          : translate(`Polaris.DropZone.FileUpload.actionTitle${suffix}`),
+      actionHint:
+        nextActionHint && hasActionHintChanged
+          ? nextActionHint
+          : translate(`Polaris.DropZone.FileUpload.actionHint${suffix}`),
+    };
+  }
+
   constructor(props: CombinedProps) {
     super(props);
 
@@ -54,26 +87,6 @@ export class FileUpload extends React.Component<CombinedProps, State> {
       ),
       actionHint: translate(`Polaris.DropZone.FileUpload.actionHint${suffix}`),
     };
-  }
-
-  updateStateFromProps(props: Props) {
-    const {actionTitle, actionHint} = this.state;
-
-    if (props.actionTitle && props.actionTitle !== actionTitle) {
-      this.setState({actionTitle: props.actionTitle});
-    }
-
-    if (props.actionHint && props.actionHint !== actionHint) {
-      this.setState({actionHint: props.actionHint});
-    }
-  }
-
-  componentWillReceiveProps(props: Props) {
-    this.updateStateFromProps(props);
-  }
-
-  componentWillMount() {
-    this.updateStateFromProps(this.props);
   }
 
   render() {

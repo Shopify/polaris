@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {TextField} from 'components';
 import Group from '../Group';
@@ -33,3 +32,5 @@ describe('<Group />', () => {
     expect(item.contains(helpText)).toBe(true);
   });
 });
+
+function noop() {}

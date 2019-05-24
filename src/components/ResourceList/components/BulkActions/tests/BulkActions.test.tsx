@@ -207,7 +207,9 @@ describe('<BulkActions />', () => {
         const bulkActions = mountWithAppProvider(
           <BulkActions {...bulkActionProps} selectMode />,
         );
-        const cssTransition = bulkActions.find(CSSTransition);
+        const cssTransition = bulkActions
+          .find(CSSTransition)
+          .filterWhere((component) => component.prop('appear') === true);
         cssTransition.forEach((cssTransitionComponent) => {
           expect(cssTransitionComponent.prop('in')).toBe(true);
         });
@@ -290,6 +292,28 @@ describe('<BulkActions />', () => {
         expect(searchCheckableButton(bulkActions, 'disabled', disabled)).toBe(
           length,
         );
+      });
+
+      it('will not overwrite the disabled value coming from a promotedAction', () => {
+        const bulkActionProps: Props = {
+          bulkActions: [],
+          promotedActions: [
+            {
+              disabled: true,
+              content: 'button 1',
+            },
+          ],
+          paginatedSelectAllText: 'paginated select all text string',
+          selected: false,
+          accessibilityLabel: 'test-aria-label',
+          label: 'Test-Label',
+          disabled: false,
+        };
+        const bulkActions = mountWithAppProvider(
+          <BulkActions {...bulkActionProps} />,
+        );
+        const bulkActionButton = bulkActions.find(BulkActionButton).last();
+        expect(bulkActionButton.prop('disabled')).toBe(true);
       });
     });
 

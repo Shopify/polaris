@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider, findByTestID, trigger} from 'test-utilities';
 import Resizer from '../Resizer';
 import EventListener from '../../../../EventListener';
@@ -9,6 +8,50 @@ describe('<Resizer />', () => {
     onHeightChange: noop,
     contents: 'Contents',
   };
+  let requestAnimationFrameSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
+    requestAnimationFrameSpy.mockImplementation((cb) => {
+      cb();
+      return 1;
+    });
+  });
+
+  afterEach(() => {
+    requestAnimationFrameSpy.mockRestore();
+  });
+
+  it('cancels existing animationFrame on update', () => {
+    const cancelAnimationFrameSpy = jest.spyOn(window, 'cancelAnimationFrame');
+    const contents = 'Contents';
+    const resizer = mountWithAppProvider(
+      <Resizer
+        {...mockProps}
+        currentHeight={1}
+        contents={contents}
+        onHeightChange={jest.fn()}
+        minimumLines={3}
+      />,
+    );
+
+    resizer.setProps({currentHeight: 2});
+    trigger(resizer.find(EventListener), 'handler');
+
+    expect(cancelAnimationFrameSpy).toHaveBeenCalled();
+  });
+
+  it('cancels the animationFrame unmount', () => {
+    const cancelAnimationFrameSpy = jest.spyOn(window, 'cancelAnimationFrame');
+    const contents = 'Contents';
+    const resizer = mountWithAppProvider(
+      <Resizer {...mockProps} contents={contents} />,
+    );
+
+    resizer.unmount();
+
+    expect(cancelAnimationFrameSpy).toHaveBeenCalled();
+  });
 
   describe('contents', () => {
     it('renders contents', () => {
@@ -51,6 +94,14 @@ describe('<Resizer />', () => {
       );
       const breakingSpaces = findByTestID(resizer, 'MinimumLines');
       expect(breakingSpaces.html()).toContain('<br><br><br>');
+    });
+
+    it('renders nothing when minimumLines is undefined', () => {
+      const resizer = mountWithAppProvider(
+        <Resizer {...mockProps} minimumLines={undefined} />,
+      );
+      const breakingSpaces = findByTestID(resizer, 'MinimumLines');
+      expect(breakingSpaces).toHaveLength(0);
     });
   });
 
@@ -150,4 +201,30 @@ describe('<Resizer />', () => {
       expect(wrapperDiv.prop('aria-hidden')).toBe(true);
     });
   });
+
+  describe('lifecycle', () => {
+    it('mounts safely', () => {
+      expect(() => {
+        mountWithAppProvider(<Resizer {...mockProps} />);
+      }).not.toThrow();
+    });
+
+    it('updates safely', () => {
+      const resizer = mountWithAppProvider(<Resizer {...mockProps} />);
+
+      expect(() => {
+        resizer.setProps({contents: 'new content'});
+      }).not.toThrow();
+    });
+
+    it('unmounts safely', () => {
+      const resizer = mountWithAppProvider(<Resizer {...mockProps} />);
+
+      expect(() => {
+        resizer.unmount();
+      }).not.toThrow();
+    });
+  });
 });
+
+function noop() {}

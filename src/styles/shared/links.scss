@@ -23,11 +23,12 @@
     transition: opacity duration() easing();
   }
 
-  &:hover,
-  &:focus,
-  &:active {
-    &::after {
-      opacity: 0.4;
-    }
+  &:hover::after,
+  &:active::after {
+    opacity: 0.4;
+  }
+
+  &:focus::after {
+    display: none;
   }
 }

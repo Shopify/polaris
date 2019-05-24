@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {
   mountWithAppProvider,
   shallowWithAppProvider,
@@ -215,7 +214,9 @@ describe('<TopBar />', () => {
           unsubscribe: () => {},
         }),
       );
-      expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '124px'});
+      expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
+        width: '124px',
+      });
     });
 
     it('will render an unstyled link with a default width', () => {
@@ -227,7 +228,9 @@ describe('<TopBar />', () => {
           unsubscribe: () => {},
         }),
       );
-      expect(topBar.find(UnstyledLink).prop('style')).toEqual({width: '104px'});
+      expect(topBar.find(UnstyledLink).prop('style')).toStrictEqual({
+        width: '104px',
+      });
     });
   });
 
@@ -270,6 +273,8 @@ describe('<TopBar />', () => {
     });
   });
 });
+
+function noop() {}
 
 function addPolarisContext(logo: ThemeContext) {
   const context = {

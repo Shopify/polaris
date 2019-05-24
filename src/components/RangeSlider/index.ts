@@ -1,4 +1,4 @@
 import RangeSlider from './RangeSlider';
 
-export {Props, invertNumber} from './RangeSlider';
+export {RangeSliderProps, RangeSliderValue, DualValue} from './types';
 export default RangeSlider;

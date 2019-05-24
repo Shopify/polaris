@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {StickyManager} from '../../withSticky';
 import ScrollLockManager from '../../ScrollLockManager';
 import createPolarisContext from '../createPolarisContext';
@@ -31,14 +30,14 @@ describe('createPolarisContext()', () => {
         link: expect.any(Link),
         stickyManager: expect.any(StickyManager),
         scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
         appBridge: undefined,
       },
       polarisTheme: {
         logo: null,
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
       },
     });
   });
@@ -90,8 +89,8 @@ describe('createPolarisContext()', () => {
         link: new Link(CustomLinkComponent),
         stickyManager,
         scrollLockManager,
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
         appBridge: undefined,
       },
       polarisTheme: {
@@ -101,8 +100,8 @@ describe('createPolarisContext()', () => {
       },
     };
 
-    expect(contextOne).toEqual(mockContext);
-    expect(contextTwo).toEqual(mockContext);
+    expect(contextOne).toStrictEqual(mockContext);
+    expect(contextTwo).toStrictEqual(mockContext);
   });
 
   it('returns the right context with only app provider context being provided', () => {
@@ -129,18 +128,18 @@ describe('createPolarisContext()', () => {
         link: new Link(CustomLinkComponent),
         stickyManager,
         scrollLockManager,
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
         appBridge: undefined,
       },
       polarisTheme: {
         logo: null,
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
       },
     };
 
-    expect(context).toEqual(mockContext);
+    expect(context).toStrictEqual(mockContext);
   });
 
   it('returns the right context with only theme provider context being provided', () => {
@@ -160,8 +159,8 @@ describe('createPolarisContext()', () => {
         link: expect.any(Link),
         stickyManager: expect.any(StickyManager),
         scrollLockManager: expect.any(ScrollLockManager),
-        subscribe: noop,
-        unsubscribe: noop,
+        subscribe: expect.any(Function),
+        unsubscribe: expect.any(Function),
         appBridge: undefined,
       },
       polarisTheme: {

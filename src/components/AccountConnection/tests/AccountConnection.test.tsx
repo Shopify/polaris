@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {mountWithAppProvider} from 'test-utilities';
 import {Avatar, buttonFrom} from 'components';
 import AccountConnection from '../AccountConnection';
@@ -120,3 +119,5 @@ describe('<AccountConnection />', () => {
     });
   });
 });
+
+function noop() {}

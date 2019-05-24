@@ -1,5 +1,4 @@
 import tokens from '@shopify/polaris-tokens';
-import {noop} from '@shopify/javascript-utilities/other';
 import {needsVariantList} from '../config';
 import {HSLColor} from '../../../utilities/color-types';
 import {
@@ -134,3 +133,5 @@ export function createThemeContext(theme?: ThemeContext): ThemeProviderContext {
   const {logo = null, subscribe = noop, unsubscribe = noop} = theme;
   return {polarisTheme: {logo, subscribe, unsubscribe}};
 }
+
+function noop() {}

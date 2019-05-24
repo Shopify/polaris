@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {noop} from '@shopify/javascript-utilities/other';
 import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
@@ -221,7 +220,7 @@ describe('<ComboBox/>', () => {
       );
 
       comboBox.simulate('click');
-      expect(comboBox.find(OptionList).prop('selected')).toEqual([
+      expect(comboBox.find(OptionList).prop('selected')).toStrictEqual([
         'cheese_pizza',
       ]);
     });
@@ -555,6 +554,8 @@ describe('<ComboBox/>', () => {
     });
   });
 });
+
+function noop() {}
 
 function renderTextField() {
   return <TextField label="" onChange={noop} />;

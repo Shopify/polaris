@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/react-utilities/styles';
+import {classNames, variationName} from '@shopify/css-utilities';
+import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
 
 import {Error, Key} from '../../types';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
+import Icon from '../Icon';
 import {Resizer, Spinner} from './components';
 import styles from './TextField.scss';
 
@@ -25,6 +27,8 @@ export type Type =
   | 'time'
   | 'week'
   | 'currency';
+
+export type Alignment = 'left' | 'center' | 'right';
 
 export interface State {
   height?: number | null;
@@ -51,6 +55,8 @@ export interface BaseProps {
   labelHidden?: boolean;
   /** Disable the input */
   disabled?: boolean;
+  /** Show a clear text button in the input */
+  clearButton?: boolean;
   /** Disable editing of the input */
   readOnly?: boolean;
   /** Automatically focus the input */
@@ -99,6 +105,10 @@ export interface BaseProps {
   ariaAutocomplete?: string;
   /** Indicates whether or not the character count should be displayed */
   showCharacterCount?: boolean;
+  /** Determines the alignment of the text in the input */
+  align?: Alignment;
+  /** Callback when clear button is clicked */
+  onClearButtonClick?(id: string): void;
   /** Callback when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback when input is focused */
@@ -157,41 +167,43 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
   render() {
     const {
-      id = this.state.id,
-      value,
-      placeholder,
-      disabled,
-      readOnly,
-      role,
-      autoFocus,
-      type,
-      name,
-      error,
-      multiline,
-      connectedRight,
-      connectedLeft,
-      label,
-      labelAction,
-      labelHidden,
-      helpText,
-      prefix,
-      suffix,
-      onFocus,
-      onBlur,
-      autoComplete,
-      min,
-      max,
-      step,
-      minLength,
-      maxLength,
-      spellCheck,
-      pattern,
-      ariaOwns,
+      align,
       ariaActiveDescendant,
       ariaAutocomplete,
       ariaControls,
-      showCharacterCount,
+      ariaOwns,
+      autoComplete,
+      autoFocus,
+      connectedLeft,
+      clearButton,
+      connectedRight,
+      disabled,
+      error,
+      helpText,
+      id = this.state.id,
+      label,
+      labelAction,
+      labelHidden,
+      max,
+      maxLength,
+      min,
+      minLength,
+      multiline,
+      name,
+      onBlur,
+      onFocus,
+      pattern,
+      placeholder,
       polaris: {intl},
+      prefix,
+      readOnly,
+      role,
+      showCharacterCount,
+      spellCheck,
+      step,
+      suffix,
+      type,
+      value,
     } = this.props;
 
     const normalizedValue = value != null ? value : '';
@@ -251,6 +263,18 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       </div>
     ) : null;
 
+    const clearButtonMarkup =
+      clearButton && normalizedValue !== '' ? (
+        <button
+          testID="clearButton"
+          className={styles.ClearButton}
+          onClick={this.handleClearButtonPress}
+          disabled={disabled}
+        >
+          <Icon source={CircleCancelMinor} color="inkLightest" />
+        </button>
+      ) : null;
+
     const spinnerMarkup =
       type === 'number' && !disabled && !readOnly ? (
         <Spinner
@@ -292,7 +316,9 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
     const inputClassName = classNames(
       styles.Input,
+      align && styles[variationName('Input-align', align)],
       suffix && styles['Input-suffixed'],
+      clearButton && styles['Input-hasClearButton'],
     );
 
     const input = React.createElement(multiline ? 'textarea' : 'input', {
@@ -353,6 +379,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
             {input}
             {suffixMarkup}
             {characterCountMarkup}
+            {clearButtonMarkup}
             {spinnerMarkup}
             <div className={styles.Backdrop} />
             {resizer}
@@ -394,6 +421,15 @@ class TextField extends React.PureComponent<CombinedProps, State> {
     onChange(String(newValue.toFixed(decimalPlaces)), this.state.id);
   };
 
+  private handleClearButtonPress = () => {
+    const {
+      state: {id},
+      props: {onClearButtonClick},
+    } = this;
+
+    onClearButtonClick && onClearButtonClick(id);
+  };
+
   private handleExpandingResize = (height: number) => {
     this.setState({height});
   };
@@ -412,10 +448,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
 
   private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
-    if (onChange == null) {
-      return;
-    }
-    onChange(event.currentTarget.value, this.state.id);
+    onChange && onChange(event.currentTarget.value, this.state.id);
   };
 
   private handleFocus = () => {

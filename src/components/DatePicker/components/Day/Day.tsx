@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {classNames} from '@shopify/react-utilities/styles';
-import {noop} from '@shopify/javascript-utilities/other';
+import {classNames} from '@shopify/css-utilities';
 import {Months, isSameDay} from '@shopify/javascript-utilities/dates';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
@@ -68,14 +67,12 @@ export class Day extends React.PureComponent<CombinedProps, never> {
 
     return (
       <button
-        // eslint-disable-next-line react/jsx-no-bind
         onFocus={onFocus.bind(null, day)}
         type="button"
         ref={this.setNode}
         tabIndex={tabIndex}
         className={className}
         onMouseOver={handleHover}
-        // eslint-disable-next-line react/jsx-no-bind
         onClick={handleClick}
         aria-label={ariaLabel}
         aria-selected={selected}
@@ -93,3 +90,5 @@ export class Day extends React.PureComponent<CombinedProps, never> {
 }
 
 export default withAppProvider<Props>()(Day);
+
+function noop() {}

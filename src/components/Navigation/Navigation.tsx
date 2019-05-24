@@ -38,6 +38,7 @@ export default class Navigation extends React.Component<Props, never> {
     return {
       location: this.props.location,
       onNavigationDismiss: this.props.onDismiss,
+      withinContentContainer: true,
     };
   }
 
