@@ -20,6 +20,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Development workflow
 
+- Made the a11y test that runs in CI fail if it finds any issues ([#1564](https://github.com/Shopify/polaris-react/pull/1564))
+
 ### Dependency upgrades
 
 ### Code quality
