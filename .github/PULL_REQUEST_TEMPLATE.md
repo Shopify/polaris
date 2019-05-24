@@ -29,31 +29,17 @@ Fixes #0000 <!-- link to issue if one exists -->
 🗒 [General tophatting guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md)
 📄 [Changelog guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md)
 
-<!--
-  Give as much information as needed to experiment with the component
-  in the playground.
--->
-
 <details>
-<summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
-
-```jsx
-import * as React from 'react';
-import {Page} from '@shopify/polaris';
-
-interface State {}
-
-export default class Playground extends React.Component<never, State> {
-  render() {
-    return (
-      <Page title="Playground">
-        {/* Add the code you want to test here */}
-      </Page>
-    );
-  }
-}
-```
-
+<summary>Playroom link:</summary>
+<!--
+  Creating your Playroom link:
+  1. Locally spin up Playroom using `yarn playroom:start`.
+  2. Create your demo.
+  3. In the link below:
+    - Replace `?code=x` with the code query parameter you see in your URL bar locally.
+    - Replace `[PR_ID]` with your PR ID.
+-->
+https://deploy-preview-[PR_ID]--polaris-playroom.netlify.com/#?code=x
 </details>
 
 ### 🎩 checklist
