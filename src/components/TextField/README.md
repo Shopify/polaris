@@ -733,10 +733,7 @@ class SeparateValidationErrorExample extends React.Component {
             <InlineError message={errorMessage} fieldID={textFieldID} />
           </div>
         </Stack.Item>
-        <Button
-          icon={DeleteMinor}
-          accessibilityLabel="Remove item"
-        />
+        <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
       </Stack>
     );
 
