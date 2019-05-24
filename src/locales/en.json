@@ -123,7 +123,7 @@
     "Page": {
       "Header": {
         "iconWarningMessage": "The icon prop has been removed from Page. Upload an application icon in the Shopify Partners Dashboard 'App setup' section instead.",
-        "rollupButton": "Toggle roll up"
+        "rollupButton": "Actions"
       }
     },
 
