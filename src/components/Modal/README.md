@@ -346,8 +346,8 @@ class ModalExample extends React.Component {
           onClose={this.toggleModal}
           title="Get a shareable link"
           primaryAction={{
-            content: 'Copy link',
-            onAction: this.handleClick,
+            content: 'Close',
+            onAction: this.toggleModal,
           }}
         >
           <Modal.Section>
@@ -368,6 +368,11 @@ class ModalExample extends React.Component {
                   onFocus={this.handleFocus}
                   value={DISCOUNT_LINK}
                   onChange={() => {}}
+                  connectedRight={
+                    <Button primary onClick={this.handleClick}>
+                      Copy link
+                    </Button>
+                  }
                 />
               </Stack.Item>
             </Stack>
