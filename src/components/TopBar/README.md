@@ -181,7 +181,7 @@ class TopBarExample extends React.Component {
       <TopBar.UserMenu
         actions={[
           {
-            items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
+            items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
           },
           {
             items: [{content: 'Community forums'}],
@@ -303,7 +303,7 @@ class TopBarExample extends React.Component {
       <TopBar.UserMenu
         actions={[
           {
-            items: [{content: 'Back to Shopify', icon: 'arrowLeft'}],
+            items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
           },
           {
             items: [{content: 'Community forums'}],
