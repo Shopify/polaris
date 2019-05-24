@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 $detail-width: rem(336px);
-
 $stacking-order: (
   illustration: 0,
   details: 10,
@@ -70,14 +69,70 @@ $illustration-width-cropped: calc(
   }
 }
 
-.Details {
-  position: relative;
-  z-index: z-index(details, $stacking-order);
-  padding: 0 spacing();
-  width: $detail-width;
+.withinContentContainer {
+  .Section {
+    position: unset;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
 
-  @include page-content-when-not-fully-condensed {
-    padding: 0;
+  .DetailsContainer {
+    padding-top: spacing();
+  }
+
+  .Details {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+
+    @include page-content-when-not-fully-condensed {
+      max-width: $detail-width;
+    }
+  }
+
+  .Image {
+    margin: 0;
+    width: initial;
+  }
+
+  .Content {
+    @include text-style-body;
+    padding-bottom: spacing(tight);
+  }
+}
+
+.withinPage {
+  .Details {
+    position: relative;
+    z-index: z-index(details, $stacking-order);
+    padding: 0 spacing();
+    width: $detail-width;
+
+    @include page-content-when-not-fully-condensed {
+      padding: 0;
+    }
+  }
+
+  .Image {
+    position: relative;
+    z-index: z-index(illustration, $stacking-order);
+    margin-top: spacing(loose) * -1;
+    margin-left: $illustration-left-margin;
+    width: $illustration-width-cropped;
+    max-width: none;
+
+    @include page-content-when-not-fully-condensed {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    @include page-content-when-not-partially-condensed {
+      margin-top: 0;
+      margin-left: $illustration-left-margin;
+      width: $illustration-width;
+    }
   }
 }
 
@@ -88,26 +143,6 @@ $illustration-width-cropped: calc(
 
 .Actions {
   margin-top: spacing();
-}
-
-.Image {
-  position: relative;
-  z-index: z-index(illustration, $stacking-order);
-  margin-top: spacing(loose) * -1;
-  margin-left: $illustration-left-margin;
-  width: $illustration-width-cropped;
-  max-width: none;
-
-  @include page-content-when-not-fully-condensed {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  @include page-content-when-not-partially-condensed {
-    margin-top: 0;
-    margin-left: $illustration-left-margin;
-    width: $illustration-width;
-  }
 }
 
 .FooterContent {
