@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 
@@ -14,12 +14,12 @@ const createId = createUniqueIDFactory('Toast');
 interface Props extends ToastProps {}
 
 export default React.memo(function Toast(props: Props) {
-  const id = React.useRef(createId());
-  const appBridgeToast = React.useRef<AppBridgeToast.Toast>();
-  const frame = React.useContext(FrameContext);
+  const id = useRef(createId());
+  const appBridgeToast = useRef<AppBridgeToast.Toast>();
+  const frame = useContext(FrameContext);
   const {appBridge} = usePolaris();
 
-  React.useEffect(
+  useEffect(
     () => {
       const {
         error,

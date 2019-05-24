@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {HeadingTagName} from '../../types';
 import styles from './Subheading.scss';
 

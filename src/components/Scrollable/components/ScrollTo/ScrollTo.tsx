@@ -1,12 +1,12 @@
-import * as React from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import ScrollableContext from '../../context';
 
 export default function ScrollTo() {
-  const anchorNode = React.useRef<HTMLAnchorElement>(null);
-  const {scrollToPosition} = React.useContext(ScrollableContext);
+  const anchorNode = useRef<HTMLAnchorElement>(null);
+  const {scrollToPosition} = useContext(ScrollableContext);
 
-  React.useEffect(
+  useEffect(
     () => {
       if (!scrollToPosition || !anchorNode.current) {
         return;

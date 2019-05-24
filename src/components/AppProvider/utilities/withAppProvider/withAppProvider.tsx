@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import {ClientApplication} from '@shopify/app-bridge';
 import Intl from '../Intl';

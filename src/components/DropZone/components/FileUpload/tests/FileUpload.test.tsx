@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Link, Icon, Button, Caption, TextStyle} from 'components';
 import {mountWithAppProvider} from 'test-utilities';
 import DropZoneContext from '../../../context';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Toast as AppBridgeToast} from '@shopify/app-bridge/actions';
 import {mountWithAppProvider} from 'test-utilities';
 import Toast from '../Toast';

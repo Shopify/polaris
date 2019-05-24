@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames, variationName} from '@shopify/css-utilities';

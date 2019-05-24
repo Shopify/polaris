@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
 import {FrameContext} from '../Frame';
 import {usePolaris} from '../../hooks';
@@ -6,11 +6,11 @@ import {usePolaris} from '../../hooks';
 export interface Props {}
 
 export default React.memo(function Loading() {
-  const appBridgeLoading = React.useRef<AppBridgeLoading.Loading>();
+  const appBridgeLoading = useRef<AppBridgeLoading.Loading>();
   const {appBridge} = usePolaris();
-  const frame = React.useContext(FrameContext);
+  const frame = useContext(FrameContext);
 
-  React.useEffect(
+  useEffect(
     () => {
       if (appBridge == null && frame) {
         frame.startLoading();

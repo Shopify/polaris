@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Link from 'components/AppProvider/utilities/Link';
 import {mountWithAppProvider} from 'test-utilities';
 import UnstyledLink from '../UnstyledLink';

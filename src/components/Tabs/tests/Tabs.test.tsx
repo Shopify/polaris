@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {Tab, Panel, TabMeasurer, List} from '../components';

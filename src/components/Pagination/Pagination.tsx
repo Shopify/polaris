@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/css-utilities';
 import isInputFocused from '../../utilities/isInputFocused';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import DisplayText from '../DisplayText';

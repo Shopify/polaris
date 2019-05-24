@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
 import {mountWithAppProvider} from 'test-utilities';
 import {Weekday} from '../..';

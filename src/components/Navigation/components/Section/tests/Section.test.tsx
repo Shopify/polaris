@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';

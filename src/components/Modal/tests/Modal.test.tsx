@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {findByTestID, mountWithAppProvider} from 'test-utilities';

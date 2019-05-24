@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
 import {findByTestID, mountWithAppProvider, trigger} from 'test-utilities';
 import {BulkActions, Item} from '../components';

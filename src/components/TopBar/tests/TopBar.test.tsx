@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider, findByTestID} from 'test-utilities';
 import {Image, UnstyledLink} from 'components';
 import {ThemeProviderContextType} from '../../ThemeProvider';

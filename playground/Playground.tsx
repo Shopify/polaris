@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Page} from '../src';
 
 interface State {}

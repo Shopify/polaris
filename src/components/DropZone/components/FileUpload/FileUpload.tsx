@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import {classNames} from '@shopify/css-utilities';
 import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
@@ -27,7 +27,7 @@ function FileUpload(props: Props) {
   const {
     intl: {translate},
   } = usePolaris();
-  const {size, type} = React.useContext(DropZoneContext);
+  const {size, type} = useContext(DropZoneContext);
   const suffix = capitalize(type);
   const {
     actionTitle = translate(`Polaris.DropZone.FileUpload.actionTitle${suffix}`),

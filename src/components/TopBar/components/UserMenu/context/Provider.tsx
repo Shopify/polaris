@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {UserMenuProps} from '../components';
 import UserMenuContext, {UserMenuContextTypes} from './context';

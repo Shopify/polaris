@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider} from 'test-utilities';
 import Icon from '../Icon';

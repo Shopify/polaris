@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner} from 'components';
 import Button, {IconWrapper} from '../Button';
