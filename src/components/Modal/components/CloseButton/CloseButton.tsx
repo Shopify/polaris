@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/css-utilities';
-import VisuallyHidden from '../../../VisuallyHidden';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import Icon from '../../../Icon';
@@ -22,8 +21,7 @@ function CloseButton({title = true, onClick, polaris: {intl}}: CombinedProps) {
   );
 
   return (
-    <button onClick={onClick} className={className}>
-      <VisuallyHidden>{intl.translate('Polaris.Common.close')}</VisuallyHidden>
+    <button onClick={onClick} className={className} aria-label={intl.translate('Polaris.Common.close')}>
       <Icon source={MobileCancelMajorMonotone} color="inkLighter" />
     </button>
   );
