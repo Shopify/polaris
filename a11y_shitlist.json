@@ -607,6 +607,16 @@
       "selector": "#root > div > div > div > div > ul > li:nth-child(5)"
     }
   ],
+  "all-components-text-field--text-field-with-clear-button": [
+    {
+      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
+      "context": "<button class=\"TextField-ClearButton_3EN0r\"><span class=\"Icon-Icon_mXAal Ic...</button>",
+      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
+      "type": "error",
+      "typeCode": 1,
+      "selector": "#root > div > div > div > div:nth-child(2) > button"
+    }
+  ],
   "all-components-text-field--text-field-with-separate-validation-error": [
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
