@@ -142,6 +142,7 @@ $secondary-action-horizontal-padding: 1.5 * spacing(tight);
 
 .Heading {
   padding-top: $heading-offset;
+  word-break: break-word;
 }
 
 .Content {
