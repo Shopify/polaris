@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {MobileCancelMajorMonotone} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/css-utilities';
+import VisuallyHidden from '../../../VisuallyHidden';
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import Icon from '../../../Icon';
 
@@ -11,7 +13,9 @@ export interface Props {
   onClick(): void;
 }
 
-export default function CloseButton({title = true, onClick}: Props) {
+type CombinedProps = Props & WithAppProviderProps;
+
+function CloseButton({title = true, onClick, polaris: {intl}}: CombinedProps) {
   const className = classNames(
     styles.CloseButton,
     !title && styles.withoutTitle,
@@ -19,7 +23,10 @@ export default function CloseButton({title = true, onClick}: Props) {
 
   return (
     <button onClick={onClick} className={className}>
+      <VisuallyHidden>{intl.translate('Polaris.Common.close')}</VisuallyHidden>
       <Icon source={MobileCancelMajorMonotone} color="inkLighter" />
     </button>
   );
 }
+
+export default withAppProvider<Props>()(CloseButton);

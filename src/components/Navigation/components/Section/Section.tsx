@@ -112,7 +112,6 @@ export default class Section extends React.Component<Props, State> {
             <span className={styles.Icon}>
               <Icon source={HorizontalDotsMinor} />
             </span>
-            {ariaLabel}
           </button>
         </div>
       );

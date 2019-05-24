@@ -346,8 +346,8 @@ class ModalExample extends React.Component {
           onClose={this.toggleModal}
           title="Get a shareable link"
           primaryAction={{
-            content: 'Close',
-            onAction: this.toggleModal,
+            content: 'Copy link',
+            onAction: this.handleClick,
           }}
         >
           <Modal.Section>
@@ -364,16 +364,11 @@ class ModalExample extends React.Component {
               <Stack.Item fill>
                 <TextField
                   ref={this.bindNode}
-                  label=""
+                  label="Discount link"
                   onFocus={this.handleFocus}
                   value={DISCOUNT_LINK}
                   onChange={() => {}}
                 />
-              </Stack.Item>
-              <Stack.Item>
-                <Button primary onClick={this.handleClick}>
-                  Copy link
-                </Button>
               </Stack.Item>
             </Stack>
           </Modal.Section>
