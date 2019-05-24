@@ -3,6 +3,7 @@ import {mountWithAppProvider} from 'test-utilities';
 import Navigation from '../Navigation';
 import NavigationContext from '../context';
 import {UserMenu} from '../components';
+import WithinContentContext from '../../WithinContentContext';
 
 describe('<Navigation />', () => {
   it('mounts', () => {
@@ -39,11 +40,11 @@ describe('<Navigation />', () => {
     it('has a child with contentContext', () => {
       const Child: React.SFC<{}> = (_props) => {
         return (
-          <NavigationContext.Consumer>
+          <WithinContentContext.Consumer>
             {({withinContentContainer}) =>
               withinContentContainer ? <div /> : null
             }
-          </NavigationContext.Consumer>
+          </WithinContentContext.Consumer>
         );
       };
 
@@ -53,12 +54,7 @@ describe('<Navigation />', () => {
         </Navigation>,
       );
 
-      const div = navigation
-        .find(Child)
-        .find('div')
-        .first();
-
-      expect(div.exists()).toBe(true);
+      expect(navigation.find(Child).find('div')).toHaveLength(1);
     });
   });
 

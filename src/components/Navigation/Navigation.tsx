@@ -2,6 +2,7 @@ import React from 'react';
 
 import Scrollable from '../Scrollable';
 
+import WithinContentContext from '../WithinContentContext';
 import NavigationContext from './context';
 import {UserMenu, Section, Item} from './components';
 import {SectionType} from './types';
@@ -50,18 +51,19 @@ export default class Navigation extends React.Component<Props, never> {
     const context = {
       location,
       onNavigationDismiss: onDismiss,
-      withinContentContainer: true,
     };
 
     return (
       <NavigationContext.Provider value={context}>
-        <nav className={styles.Navigation}>
-          {contextControlMarkup}
-          <div className={styles.UserMenu}>{userMenu}</div>
-          <Scrollable className={styles.PrimaryNavigation}>
-            {children}
-          </Scrollable>
-        </nav>
+        <WithinContentContext.Provider value={{withinContentContainer: true}}>
+          <nav className={styles.Navigation}>
+            {contextControlMarkup}
+            <div className={styles.UserMenu}>{userMenu}</div>
+            <Scrollable className={styles.PrimaryNavigation}>
+              {children}
+            </Scrollable>
+          </nav>
+        </WithinContentContext.Provider>
       </NavigationContext.Provider>
     );
   }
