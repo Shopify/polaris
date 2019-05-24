@@ -49,32 +49,87 @@ module.exports = function loader(source) {
   // states `<Button>An example Button</Button>`, blindly trusting that `Button`
   // is available in its scope.
   //
-  // codeInvoker is responsible for providing a scope for an example function
-  // so that it will work. It does this by creating a new fuction with the scope
-  // defined as parameters and then calling that new function.
-  // Assuming it is called with
-  // codeInvoker(function() { return (<Button>Hi</Button>) } {React, Button})
-  // It will transform:
-  // function() { return (<Button>Hi</Button>) }
-  // into:
-  // function(React, Button) { return (<Button>Hi</Button>) }
-  // and then call that function with React and Button as the arguments
-  const codeInvoker = function(fn, scope) {
-    const scopeKeys = Object.keys(scope);
-    const scopeValues = scopeKeys.map((key) => scope[key]);
+  // codeInvoker is responsible for injecting Polaris into the scope for a
+  // function so that it will work. It does this by creating a new function with
+  // all the Polaris exports defined as parameters and then calling that new
+  // function.
+  const codeInvoker = function(fn) {
+    const scope = Object.assign({}, Polaris);
 
     // Replace the empty parameter list with a list based upon the scope.
     // We can't use a placeholder in the parmeter list and search/replace that
     // because the placeholder's name may be mangled when the code is minified.
+    const args = Object.keys(scope).join(', ');
     const fnString = fn
       .toString()
-      .replace(/^function(\s*)\(\)/, `function$1(${scopeKeys.join(', ')})`);
+      .replace(/^function(\s*)\(\)/, `function$1(${args})`);
 
     // eslint-disable-next-line no-eval
-    return eval(`(${fnString})`)(...scopeValues);
+    return eval(`(${fnString})`).apply(null, Object.values(scope));
   };
 
-  return `const codeInvoker = ${codeInvoker};\nexport const component = ${stringyReadme};`;
+  return `
+import React from 'react';
+import * as Polaris from '@shopify/polaris';
+import {
+  PlusMinor,
+  AlertMinor,
+  ArrowDownMinor,
+  ArrowLeftMinor,
+  ArrowRightMinor,
+  ArrowUpMinor,
+  ArrowUpDownMinor,
+  CalendarMinor,
+  MobileCancelMajorMonotone,
+  CancelSmallMinor,
+  CaretDownMinor,
+  CaretUpMinor,
+  TickSmallMinor,
+  ChevronDownMinor,
+  ChevronLeftMinor,
+  ChevronRightMinor,
+  ChevronUpMinor,
+  CircleCancelMinor,
+  CircleChevronDownMinor,
+  CircleChevronLeftMinor,
+  CircleChevronRightMinor,
+  CircleChevronUpMinor,
+  CircleInformationMajorTwotone,
+  CirclePlusMinor,
+  CirclePlusOutlineMinor,
+  ConversationMinor,
+  DeleteMinor,
+  CircleDisableMinor,
+  DisputeMinor,
+  DuplicateMinor,
+  EmbedMinor,
+  ExportMinor,
+  ExternalMinor,
+  QuestionMarkMajorTwotone,
+  HomeMajorMonotone,
+  HorizontalDotsMinor,
+  ImportMinor,
+  LogOutMinor,
+  MobileHamburgerMajorMonotone,
+  NoteMinor,
+  NotificationMajorMonotone,
+  OnlineStoreMajorTwotone,
+  OrdersMajorTwotone,
+  PrintMinor,
+  ProductsMajorTwotone,
+  ProfileMinor,
+  RefreshMinor,
+  RiskMinor,
+  SaveMinor,
+  SearchMinor,
+  MinusMinor,
+  ViewMinor,
+} from '@shopify/polaris-icons';
+
+const codeInvoker = ${codeInvoker};
+
+export const component = ${stringyReadme};
+`;
 };
 
 const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
@@ -247,9 +302,9 @@ return ${classMatch[1]};
   // PLACEHOLDER because its name will get mangled as part of minification in
   // production mode and thus searching for "PLACEHOLDER in the function's
   // string representation shall fail.
-  return `function (scope) {
+  return `function () {
     return codeInvoker(function () {
       ${wrappedCode}
-    }, scope);
+    });
   }`;
 }

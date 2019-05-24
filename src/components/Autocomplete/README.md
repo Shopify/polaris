@@ -60,7 +60,7 @@ class AutocompleteExample extends React.Component {
         onChange={this.updateText}
         label="Tags"
         value={this.state.inputText}
-        prefix={<Icon source="search" color="inkLighter" />}
+        prefix={<Icon source={SearchMinor} color="inkLighter" />}
         placeholder="Search"
       />
     );
@@ -243,7 +243,7 @@ class AutocompleteExample extends React.Component {
         onChange={this.updateText}
         label="Tags"
         value={this.state.inputText}
-        prefix={<Icon source="search" color="inkLighter" />}
+        prefix={<Icon source={SearchMinor} color="inkLighter" />}
         placeholder="Search"
       />
     );
@@ -451,13 +451,13 @@ class AutocompleteExample extends React.Component {
         onChange={this.updateText}
         label="Tags"
         value={this.state.inputText}
-        prefix={<Icon source="search" color="inkLighter" />}
+        prefix={<Icon source={SearchMinor} color="inkLighter" />}
         placeholder="Search"
       />
     );
     const emptyState = (
       <React.Fragment>
-        <Icon source="search" />
+        <Icon source={SearchMinor} />
         <div style={{textAlign: 'center'}}>
           <TextContainer>Could not find any results</TextContainer>
         </div>

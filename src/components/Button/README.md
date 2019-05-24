@@ -386,7 +386,7 @@ For more information on making accessible links, see the [link component](/compo
 ```jsx
 <Button
   accessibilityLabel="Terms and conditions (opens a new window)"
-  icon="external"
+  icon={ExternalMinor}
   url="http://example.com"
   external
 >

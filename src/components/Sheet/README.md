@@ -200,7 +200,7 @@ class SheetExample extends React.Component {
                     <Heading>Manage sales channels</Heading>
                     <Button
                       accessibilityLabel="Cancel"
-                      icon="cancel"
+                      icon={MobileCancelMajorMonotone}
                       onClick={handleCloseSheet}
                       plain
                     />

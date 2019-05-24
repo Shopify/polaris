@@ -161,8 +161,8 @@ class ActionListExample extends React.Component {
         >
           <ActionList
             items={[
-              {content: 'Import file', icon: 'import'},
-              {content: 'Export file', icon: 'export'},
+              {content: 'Import file', icon: ImportMinor},
+              {content: 'Export file', icon: ExportMinor},
             ]}
           />
         </Popover>
@@ -205,8 +205,8 @@ class ActionListExample extends React.Component {
               {
                 title: 'File options',
                 items: [
-                  {content: 'Import file', icon: 'import'},
-                  {content: 'Export file', icon: 'export'},
+                  {content: 'Import file', icon: ImportMinor},
+                  {content: 'Export file', icon: ExportMinor},
                 ],
               },
             ]}
@@ -251,12 +251,12 @@ class ActionListExample extends React.Component {
               {
                 title: 'File options',
                 items: [
-                  {content: 'Import file', icon: 'import'},
-                  {content: 'Export file', icon: 'export'},
+                  {content: 'Import file', icon: ImportMinor},
+                  {content: 'Export file', icon: ExportMinor},
                   {
                     destructive: true,
                     content: 'Delete file',
-                    icon: 'delete',
+                    icon: DeleteMinor,
                   },
                 ],
               },

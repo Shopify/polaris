@@ -238,6 +238,11 @@ function Icon({
     contentMarkup = <div className={styles.Placeholder} />;
   } else if (isBundledIcon(source)) {
     SourceComponent = BUNDLED_ICONS[source];
+    const componentImportName = importForStringIcon(source);
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Deprecation: passing the string "${source}" into <Icon source> is deprecated and will be removed in the next major version. Pass in the "${componentImportName}" React Component from the @shopify/polaris-icons package instead.`,
+    );
     contentMarkup = <SourceComponent {...defaultIconProps} />;
   } else if (typeof source === 'function') {
     const sourceElement = <SourceComponent {...defaultIconProps} />;
@@ -296,6 +301,63 @@ function isSVGSource(source: IconSource): source is SVGSource {
 
 function isUntrustedSVG(source: IconSource): source is UntrustedSVG {
   return typeof source === 'string';
+}
+
+function importForStringIcon(string: BundledIcon) {
+  return {
+    add: 'PlusMinor',
+    alert: 'AlertMinor',
+    arrowDown: 'ArrowDownMinor',
+    arrowLeft: 'ArrowLeftMinor',
+    arrowRight: 'ArrowRightMinor',
+    arrowUp: 'ArrowUpMinor',
+    arrowUpDown: 'ArrowUpDownMinor',
+    calendar: 'CalendarMinor',
+    cancel: 'MobileCancelMajorMonotone',
+    cancelSmall: 'CancelSmallMinor',
+    caretDown: 'CaretDownMinor',
+    caretUp: 'CaretUpMinor',
+    checkmark: 'TickSmallMinor',
+    chevronDown: 'ChevronDownMinor',
+    chevronLeft: 'ChevronLeftMinor',
+    chevronRight: 'ChevronRightMinor',
+    chevronUp: 'ChevronUpMinor',
+    circleCancel: 'CircleCancelMinor',
+    circleChevronDown: 'CircleChevronDownMinor',
+    circleChevronLeft: 'CircleChevronLeftMinor',
+    circleChevronRight: 'CircleChevronRightMinor',
+    circleChevronUp: 'CircleChevronUpMinor',
+    circleInformation: 'CircleInformationMajorTwotone',
+    circlePlus: 'CirclePlusMinor',
+    circlePlusOutline: 'CirclePlusOutlineMinor',
+    conversation: 'ConversationMinor',
+    delete: 'DeleteMinor',
+    disable: 'CircleDisableMinor',
+    dispute: 'DisputeMinor',
+    duplicate: 'DuplicateMinor',
+    embed: 'EmbedMinor',
+    export: 'ExportMinor',
+    external: 'ExternalMinor',
+    help: 'QuestionMarkMajorTwotone',
+    home: 'HomeMajorMonotone',
+    horizontalDots: 'HorizontalDotsMinor',
+    import: 'ImportMinor',
+    logOut: 'LogOutMinor',
+    menu: 'MobileHamburgerMajorMonotone',
+    notes: 'NoteMinor',
+    notification: 'NotificationMajorMonotone',
+    onlineStore: 'OnlineStoreMajorTwotone',
+    orders: 'OrdersMajorTwotone',
+    print: 'PrintMinor',
+    products: 'ProductsMajorTwotone',
+    profile: 'ProfileMinor',
+    refresh: 'RefreshMinor',
+    risk: 'RiskMinor',
+    save: 'SaveMinor',
+    search: 'SearchMinor',
+    subtract: 'MinusMinor',
+    view: 'ViewMinor',
+  }[string];
 }
 
 export default withAppProvider<Props>()(Icon);

@@ -1999,13 +1999,13 @@ export default function CustomerListItem(props) {
   let conditionalAction = null;
 
   if (note) {
-    exceptions.push({ icon: 'notes', summary: note });
+    exceptions.push({ icon: NoteMinor, summary: note });
   }
 
   if (openOrderCount !== undefined) {
     const label = openOrderCount === 1 ? 'order' : 'orders';
     const summary = `${openOrderCount} open ${label}`;
-    exceptions.push({ status: 'warning', icon: 'alert', summary });
+    exceptions.push({ status: 'warning', icon: AlertMinor, summary });
     conditionalAction = (
       <Button plain url={openOrdersUrl} external>
         View open orders

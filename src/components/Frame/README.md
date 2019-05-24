@@ -162,7 +162,7 @@ class FrameExample extends React.Component {
           items={[
             {
               label: 'Back to Shopify',
-              icon: 'arrowLeft',
+              icon: ArrowLeftMinor,
             },
           ]}
         />
@@ -172,17 +172,17 @@ class FrameExample extends React.Component {
           items={[
             {
               label: 'Dashboard',
-              icon: 'home',
+              icon: HomeMajorMonotone,
               onClick: this.toggleState('isLoading'),
             },
             {
               label: 'Jaded Pixel Orders',
-              icon: 'orders',
+              icon: OrdersMajorTwotone,
               onClick: this.toggleState('isLoading'),
             },
           ]}
           action={{
-            icon: 'conversation',
+            icon: ConversationMinor,
             accessibilityLabel: 'Contact support',
             onClick: this.toggleState('modalActive'),
           }}
