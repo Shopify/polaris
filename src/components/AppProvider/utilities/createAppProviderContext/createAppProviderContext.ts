@@ -38,6 +38,13 @@ export default function createAppProviderContext({
       })
     : undefined;
 
+  if (appBridge != null) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Deprecation: Using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0. Use `Provider` from `@shopify/app-bridge-react` instead. For example, `import {Provider} from '@shopify/app-bridge-react';`",
+    );
+  }
+
   if (appBridge && appBridge.hooks) {
     appBridge.hooks.set(LifecycleHook.DispatchAction, setClientInterfaceHook);
   }

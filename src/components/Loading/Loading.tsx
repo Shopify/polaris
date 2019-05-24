@@ -17,6 +17,10 @@ export class Loading extends React.PureComponent<ComposedProps, never> {
     if (appBridge == null) {
       this.context.frame.startLoading();
     } else {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead. For example, `import {Loading} from '@shopify/app-bridge-react';`",
+      );
       this.appBridgeLoading = AppBridgeLoading.create(appBridge);
       this.appBridgeLoading.dispatch(AppBridgeLoading.Action.START);
     }

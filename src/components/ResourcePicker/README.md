@@ -18,6 +18,7 @@ keywords:
   - search
   - embedded app
   - app bridge
+  - deprecated
 ---
 
 # Resource picker
@@ -26,13 +27,17 @@ keywords:
 
 ---
 
-## Use in an embedded application
+## Use in an embedded application (deprecated)
 
 Enable the resource picker component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) by passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge).
 
 Use of the resource picker component is only supported in an embedded application—it will not render in a stand-alone application. To help visualize the resource picker component in an embedded application, we've provided the following screenshot.
 
 ![Screenshot product picker - multiple product selection component](/public_images/embedded/resource-picker/product-picker-multiple@2x.jpg)
+
+### Deprecation rationale
+
+As of v3.17.0, `ResourcePicker` is deprecated. It will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use `ResourcePicker` from `@shopify/app-bridge-react` instead. For example, `import {ResourcePicker} from '@shopify/app-bridge-react';`.
 
 ---
 

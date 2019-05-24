@@ -39,6 +39,7 @@ export interface Props {
 
 export type CombinedProps = Props & WithAppProviderProps;
 
+/** @deprecated Use `ResourcePicker` from `@shopify/app-bridge-react` instead. */
 export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   private focusReturnPoint: HTMLElement | null = null;
   private appBridgeResourcePicker:
@@ -46,6 +47,11 @@ export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
     | undefined;
 
   componentDidMount() {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Deprecation: `ResourcePicker` is deprecated and will be removed in v5.0. Use `ResourcePicker` from `@shopify/app-bridge-react` instead. For example, `import {ResourcePicker} from '@shopify/app-bridge-react';`",
+    );
+
     if (this.props.polaris.appBridge == null) {
       return;
     }
