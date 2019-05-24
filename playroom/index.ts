@@ -1,17 +1,3 @@
-import PlayPage from './Page';
-import PlayCardForm from './CardForm';
-import PlayCustomerList from './CustomerList';
-import PlayPopover from './Popover';
-import {UIState as PlayUIState} from './UIState';
-
-export {
-  PlayPage,
-  PlayCardForm,
-  PlayCustomerList,
-  PlayUIState as PlayState,
-  PlayPopover,
-};
-
 export {
   AccountConnection,
   ActionList,
