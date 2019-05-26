@@ -196,9 +196,6 @@
         }
       }
     },
-    "Sheet": {
-      "warningMessage": "Komponen Helaian mesti digunakan dalam komponen Rangka."
-    },
     "SkeletonPage": {
       "loadingLabel": "Memuatkan halaman"
     },
@@ -221,6 +218,16 @@
         "clearButtonLabel": "Kosongkan",
         "search": "Carian"
       }
+    },
+    "Filters": {
+      "moreFilters": "Lebih banyak penapis",
+      "filter": "Penapis {resourceName}",
+      "noFiltersApplied": "Tiada penapis yang digunakan",
+      "cancel": "Batalkan",
+      "done": "Selesai",
+      "clearAllFilters": "Kosongkan semua penapis",
+      "clear": "Kosongkan",
+      "clearLabel": "Kosongkan {filterName}"
     }
   }
 }

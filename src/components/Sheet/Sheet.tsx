@@ -7,7 +7,6 @@ import {classNames} from '@shopify/css-utilities';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
-import {frameContextTypes, FrameContext} from '../Frame';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import Backdrop from '../Backdrop';
@@ -39,6 +38,10 @@ export interface Props {
   children: React.ReactNode;
   /** Callback when the backdrop is clicked or `ESC` is pressed */
   onClose(): void;
+  /** Callback when the sheet has completed entering */
+  onEntered?(): void;
+  /** Callback when the sheet has started to exit */
+  onExit?(): void;
 }
 
 type ComposedProps = Props & WithAppProviderProps;
@@ -48,9 +51,6 @@ export interface State {
 }
 
 class Sheet extends React.Component<ComposedProps, State> {
-  static contextTypes = frameContextTypes;
-  context: FrameContext;
-
   state: State = {
     mobile: false,
   };
@@ -71,36 +71,15 @@ class Sheet extends React.Component<ComposedProps, State> {
   );
 
   componentDidMount() {
-    const {
-      state: {mobile},
-      context: {frame},
-      props: {
-        polaris: {intl},
-      },
-      handleToggleMobile,
-    } = this;
-
-    if (frame == null) {
-      // eslint-disable-next-line no-console
-      console.warn(intl.translate('Polaris.Sheet.warningMessage'));
-    }
-
-    if (mobile !== isMobile()) {
-      handleToggleMobile();
-    }
+    this.handleResize();
   }
 
   render() {
     const {
-      props: {children, open, onClose},
+      props: {children, open, onClose, onEntered, onExit},
       state: {mobile},
-      context: {frame},
       handleResize,
     } = this;
-
-    if (frame == null) {
-      return null;
-    }
 
     return (
       <Portal idPrefix="sheet">
@@ -110,6 +89,8 @@ class Sheet extends React.Component<ComposedProps, State> {
           in={open}
           mountOnEnter
           unmountOnExit
+          onEntered={onEntered}
+          onExit={onExit}
         >
           <Container open={open}>{children}</Container>
         </CSSTransition>

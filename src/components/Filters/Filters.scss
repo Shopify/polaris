@@ -1,0 +1,204 @@
+$list-filters-header-height: rem(56px);
+$list-filters-footer-height: rem(70px);
+
+.Filters {
+  position: relative;
+}
+
+.FiltersContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.FiltersContainerHeader {
+  top: 0;
+  width: 100%;
+  padding: rem(16px) rem(20px);
+  border-bottom: rem(1px) solid color('sky');
+  height: rem($list-filters-header-height);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FiltersDesktopContainerContent {
+  width: 100%;
+  height: calc(
+    100% - #{rem($list-filters-footer-height)} - #{rem(
+        $list-filters-header-height
+      )}
+  );
+}
+
+.FiltersMobileContainerContent {
+  width: 100%;
+  height: calc(100% - #{rem($list-filters-header-height)});
+}
+
+.FiltersContainerFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: rem(14px) rem(16px);
+  border-top: rem(1px) solid color('sky');
+  height: rem($list-filters-footer-height);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FiltersMobileContainerFooter {
+  width: 100%;
+  padding: rem(14px) rem(16px);
+  height: rem($list-filters-footer-height);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.EmptyFooterState {
+  border-top: border();
+  padding-top: rem(14px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.FilterTriggerContainer {
+  position: relative;
+}
+
+.FilterTrigger {
+  width: 100%;
+  padding: rem(14px) spacing(loose);
+  border: none;
+  background: none;
+  color: color(ink);
+
+  &:hover {
+    cursor: pointer;
+    @include state(hover);
+  }
+
+  &:focus {
+    outline: none;
+    @include state(focused);
+  }
+}
+
+.FilterTriggerTitle {
+  font-size: font-size(body);
+  @include text-emphasis-strong;
+}
+
+.AppliedFilterBadgeContainer {
+  padding-top: spacing(extra-tight);
+  display: flex;
+
+  .open & {
+    display: none;
+  }
+}
+
+.FilterTriggerLabelContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.open {
+  &::before,
+  &::after {
+    content: '';
+    position: relative;
+    left: rem(16px);
+    width: calc(100% - #{rem(32px)});
+    height: rem(1px);
+    background-color: color('sky');
+    display: block;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+
+.open.first {
+  &::after {
+    content: '';
+    bottom: 0;
+    position: relative;
+    left: rem(16px);
+    width: calc(100% - #{rem(32px)});
+    height: rem(1px);
+    background-color: color('sky');
+    display: block;
+  }
+
+  &::before {
+    display: none;
+  }
+}
+
+.open + .open {
+  &::before {
+    display: none;
+  }
+}
+
+.open.last {
+  &::before {
+    content: '';
+    top: 0;
+    position: relative;
+    left: rem(16px);
+    width: calc(100% - #{rem(32px)});
+    height: rem(1px);
+    background-color: color('sky');
+    display: block;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.FilterNodeContainer {
+  padding: rem(8px) rem(20px) rem(20px) rem(20px);
+}
+
+.SearchIcon {
+  fill: currentColor;
+}
+
+.Backdrop {
+  position: fixed;
+  z-index: z-index(backdrop, $fixed-element-stacking-order);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  opacity: 0;
+}
+
+.TagsContainer {
+  display: flex;
+  padding-top: spacing(tight);
+  flex-wrap: wrap;
+
+  > * {
+    margin-right: spacing(tight);
+    margin-bottom: spacing(tight);
+  }
+}
