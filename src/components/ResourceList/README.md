@@ -663,8 +663,8 @@ class ResourceListExample extends React.Component {
         location: 'Decatur, USA',
       },
       {
-        id: 256,
-        url: 'customers/256',
+        id: 246,
+        url: 'customers/246',
         name: 'Ellen Ochoa',
         location: 'Los Angeles, USA',
       },
@@ -675,8 +675,8 @@ class ResourceListExample extends React.Component {
         location: 'Arizona, USA',
       },
       {
-        id: 341,
-        url: 'customers/341',
+        id: 349,
+        url: 'customers/349',
         name: 'Haden Jerado',
         location: 'Decatur, USA',
       },
