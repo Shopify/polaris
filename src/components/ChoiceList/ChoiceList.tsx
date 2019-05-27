@@ -27,7 +27,7 @@ export type Choice = ChoiceDescriptor;
 
 export interface BaseProps {
   /** Label for list of choices */
-  title?: string;
+  title: string;
   /** Collection of choices */
   choices: Choice[];
   /** Collection of selected choices */

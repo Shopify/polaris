@@ -8,6 +8,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Increased peer-dependencies on `react` and `react-dom` to 16.8.6 to enable the use of hooks ([#1525](https://github.com/Shopify/polaris-react/pull/1525))
 - We now use default imports for React. Applications that consume polaris using sewing-kit shall need to enable [`esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) in their `tsconfig.json` files. ([#1523](https://github.com/Shopify/polaris-react/pull/1523))
+- `ChoiceList` `title` is required for accessibility. It can be hidden with `titleHidden`.
 
 ### New components
 
