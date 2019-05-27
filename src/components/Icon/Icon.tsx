@@ -179,7 +179,7 @@ export type IconSource =
   | BundledIcon
   | UntrustedSVG;
 export interface Props {
-  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixels viewBox) */
+  /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
   /** Set the color for the SVG fill */
   color?: Color;
