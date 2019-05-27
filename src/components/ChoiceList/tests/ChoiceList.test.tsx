@@ -22,7 +22,7 @@ describe('<ChoiceList />', () => {
 
   it('renders a fieldset', () => {
     const element = mountWithAppProvider(
-      <ChoiceList selected={[]} choices={choices} />,
+      <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
     );
     expect(element.find('fieldset').exists()).toBe(true);
   });
@@ -45,7 +45,7 @@ describe('<ChoiceList />', () => {
       ];
 
       const choiceElements = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement, index) => {
@@ -70,7 +70,11 @@ describe('<ChoiceList />', () => {
         ] as any;
 
         const choiceElements = mountWithAppProvider(
-          <ChoiceList selected={[]} choices={choices} />,
+          <ChoiceList
+            title="Choose a number"
+            selected={[]}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -97,7 +101,11 @@ describe('<ChoiceList />', () => {
         ] as any;
 
         const choiceElements = mountWithAppProvider(
-          <ChoiceList selected={selected} choices={choices} />,
+          <ChoiceList
+            title="Choose a number"
+            selected={selected}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -122,7 +130,11 @@ describe('<ChoiceList />', () => {
         ] as any;
 
         const choiceElements = mountWithAppProvider(
-          <ChoiceList selected={selected} choices={choices} />,
+          <ChoiceList
+            title="Choose a number"
+            selected={selected}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -150,7 +162,11 @@ describe('<ChoiceList />', () => {
         ] as any;
 
         const choiceElements = mountWithAppProvider(
-          <ChoiceList selected={[]} choices={choices} />,
+          <ChoiceList
+            title="Choose a number"
+            selected={[]}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -176,7 +192,11 @@ describe('<ChoiceList />', () => {
         ] as any;
 
         const choiceElements = mountWithAppProvider(
-          <ChoiceList selected={selected} choices={choices} />,
+          <ChoiceList
+            title="Choose a number"
+            selected={selected}
+            choices={choices}
+          />,
         );
 
         expect(renderChildrenSpy).toHaveBeenCalled();
@@ -204,7 +224,11 @@ describe('<ChoiceList />', () => {
         ] as any;
 
         const choiceElements = mountWithAppProvider(
-          <ChoiceList selected={[]} choices={choices} />,
+          <ChoiceList
+            title="Choose a number"
+            selected={[]}
+            choices={choices}
+          />,
         );
 
         expect(choiceElements.contains(children)).toBe(false);
@@ -217,7 +241,11 @@ describe('<ChoiceList />', () => {
       const selectedIndexes = [0, 2];
       const selected = selectedIndexes.map((index) => choices[index].value);
       const choiceElements = mountWithAppProvider(
-        <ChoiceList selected={selected} choices={choices} />,
+        <ChoiceList
+          title="Choose a number"
+          selected={selected}
+          choices={choices}
+        />,
       ).find(RadioButton);
 
       choiceElements.forEach((choiceElement, index) => {
@@ -236,6 +264,7 @@ describe('<ChoiceList />', () => {
       });
       const choiceList = mountWithAppProvider(
         <ChoiceList
+          title="Choose a number"
           name="MyChoiceList"
           allowMultiple
           onChange={spy}
@@ -269,7 +298,7 @@ describe('<ChoiceList />', () => {
   describe('name', () => {
     it('provides a unique name when none is provided', () => {
       const choiceElements = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       ).find(RadioButton);
       const name = choiceElements.at(0).prop('name');
       expect(typeof name).toBe('string');
@@ -282,7 +311,12 @@ describe('<ChoiceList />', () => {
     it('uses the same name for choices', () => {
       const name = 'MyChoiceList';
       const choiceElements = mountWithAppProvider(
-        <ChoiceList name={name} selected={[]} choices={choices} />,
+        <ChoiceList
+          title="Choose a number"
+          name={name}
+          selected={[]}
+          choices={choices}
+        />,
       ).find(RadioButton);
       choiceElements.forEach((choiceElement) => {
         expect(choiceElement.prop('name')).toBe(name);
@@ -293,6 +327,7 @@ describe('<ChoiceList />', () => {
       const name = 'MyChoiceList';
       const choiceElements = mountWithAppProvider(
         <ChoiceList
+          title="Choose a number"
           allowMultiple
           name={name}
           selected={[]}
@@ -309,13 +344,18 @@ describe('<ChoiceList />', () => {
   describe('allowMultiple', () => {
     it('renders a radio button for each option when allowMultiple is not true', () => {
       let element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} />,
+        <ChoiceList title="Choose a number" selected={[]} choices={choices} />,
       );
       expect(element.find(RadioButton)).toHaveLength(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
 
       element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} allowMultiple={false} />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          allowMultiple={false}
+        />,
       );
       expect(element.find(RadioButton)).toHaveLength(choices.length);
       expect(element.find(Checkbox).exists()).toBe(false);
@@ -323,7 +363,12 @@ describe('<ChoiceList />', () => {
 
     it('renders a checkbox each option when allowMultiple is true', () => {
       const element = mountWithAppProvider(
-        <ChoiceList allowMultiple selected={[]} choices={choices} />,
+        <ChoiceList
+          title="Choose a number"
+          allowMultiple
+          selected={[]}
+          choices={choices}
+        />,
       );
       expect(element.find(RadioButton).exists()).toBe(false);
       expect(element.find(Checkbox)).toHaveLength(choices.length);
@@ -333,7 +378,12 @@ describe('<ChoiceList />', () => {
   describe('error', () => {
     it('marks the fieldset as invalid', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
       );
 
       expect(element.find('fieldset').prop<string>('aria-invalid')).toBe(true);
@@ -341,7 +391,12 @@ describe('<ChoiceList />', () => {
 
     it('connects the fieldset to the error', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
       );
 
       const errorID = element.find('fieldset').prop<string>('aria-describedby');
@@ -351,7 +406,12 @@ describe('<ChoiceList />', () => {
 
     it('renders error markup when truthy', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="Error message" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error="Error message"
+        />,
       );
 
       const error = element.find(InlineError);
@@ -360,7 +420,12 @@ describe('<ChoiceList />', () => {
 
     it('renders no error markup when falsy', () => {
       const element = mountWithAppProvider(
-        <ChoiceList selected={[]} choices={choices} error="" />,
+        <ChoiceList
+          title="Choose a number"
+          selected={[]}
+          choices={choices}
+          error=""
+        />,
       );
 
       expect(element.find(InlineError)).toHaveLength(0);
