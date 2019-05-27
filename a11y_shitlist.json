@@ -579,14 +579,6 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#root > div > div > div > div > div:nth-child(2) > button"
-    },
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F92,ARIA4",
-      "context": "<li role=\"presentation\" class=\"Tabs-DisclosureTab_1_TJd\"><div><button tabindex=\"-1\" clas...</li>",
-      "message": "This element's role is \"presentation\" but contains child elements with semantic meaning.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#root > div > div > div > div > ul > li:nth-child(3)"
     }
   ],
   "all-components-tabs--default-tabs": [
@@ -597,14 +589,6 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#root > div > div > div > div > div:nth-child(2) > button"
-    },
-    {
-      "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F92,ARIA4",
-      "context": "<li role=\"presentation\" class=\"Tabs-DisclosureTab_1_TJd\"><div><button tabindex=\"-1\" clas...</li>",
-      "message": "This element's role is \"presentation\" but contains child elements with semantic meaning.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "#root > div > div > div > div > ul > li:nth-child(5)"
     }
   ],
   "all-components-text-field--text-field-with-separate-validation-error": [
