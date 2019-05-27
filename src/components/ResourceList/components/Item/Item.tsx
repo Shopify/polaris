@@ -2,7 +2,7 @@ import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames} from '../../../../utilities/css';
-import isObjectsEqual from '../../../../utilities/isObjectsEqual';
+import {isObjectsEqual} from '../../../../utilities/is-objects-equal';
 import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';

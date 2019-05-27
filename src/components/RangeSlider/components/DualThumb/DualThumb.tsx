@@ -5,7 +5,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {classNames} from '../../../../utilities/css';
-import isObjectsEqual from '../../../../utilities/isObjectsEqual';
+import {isObjectsEqual} from '../../../../utilities/is-objects-equal';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps, DualValue} from '../../types';
 import Labelled, {labelID} from '../../../Labelled';

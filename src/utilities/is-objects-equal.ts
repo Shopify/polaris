@@ -1,15 +1,15 @@
 type Obj = {[key: string]: any} | undefined;
 
 export function isObjectsEqual(objA: Obj, objB: Obj, map = new WeakMap()) {
-  if (objA === undefined || objB === undefined) {
-    return objA === undefined && objB === undefined;
+  if (objA == null || objB == null) {
+    return objA == null && objB == null;
   }
   let result = true;
 
   for (const prop in objA) {
     if (!objA.hasOwnProperty(prop)) continue;
-    const propA = objA[prop];
     const propB = objB[prop];
+    const propA = objA[prop];
     const type = typeof propA;
 
     if (type === 'object') {

@@ -3,7 +3,7 @@ import debounce from 'lodash/debounce';
 
 import {classNames} from '../../utilities/css';
 
-import isObjectsEqual from '../../utilities/isObjectsEqual';
+import {isObjectsEqual} from '../../utilities/is-objects-equal';
 import {headerCell} from '../shared';
 import {
   withAppProvider,

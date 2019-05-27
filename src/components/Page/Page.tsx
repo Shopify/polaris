@@ -5,7 +5,7 @@ import {
 } from '@shopify/app-bridge/actions';
 
 import {classNames} from '../../utilities/css';
-import isObjectsEqual from '../../utilities/isObjectsEqual';
+import {isObjectsEqual} from '../../utilities/is-objects-equal';
 import {
   transformActions,
   generateRedirect,
