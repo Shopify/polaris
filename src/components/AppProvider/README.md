@@ -399,26 +399,21 @@ To provide access to your initialized Shopify App Bridge instance, we make it av
 import React from 'react';
 import {render} from 'react-dom';
 import * as PropTypes from 'prop-types';
-import {AppProvider} from '@shopify/polaris';
+import {AppProvider, useAppBridge} from '@shopify/polaris';
 import {Redirect} from '@shopify/app-bridge/actions';
 
-class MyApp extends React.Component {
-  // This line is very important! It tells React to attach the `polaris`
-  // object to `this.context` within your component.
-  static contextTypes = {
-    polaris: PropTypes.object,
-  };
+function MyApp() {
+  const appBridge = useAppBridge();
+  const redirect = Redirect.create(appBridge);
 
-  redirectToSettings() {
-    const redirect = Redirect.create(this.context.polaris.appBridge);
+  // Go to {appOrigin}/settings
+  redirect.dispatch(Redirect.Action.APP, '/settings');
 
-    // Go to {appOrigin}/settings
-    redirect.dispatch(Redirect.Action.APP, '/settings');
-  }
+  return null;
 }
 
 render(
-  <AppProvider apiKey="YOUR_APP_API_KEY">
+  <AppProvider apiKey="YOUR_APP_API_KEY" shopOrigin="SHOP_ORIGIN">
     <MyApp />
   </AppProvider>,
   document.querySelector('#app'),
