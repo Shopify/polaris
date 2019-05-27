@@ -19,6 +19,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Documentation
 
+- Updated `AppProvider` app bridge example to use `useAppBridge`([#1581](https://github.com/Shopify/polaris-react/pull/1581))
+
 ### Development workflow
 
 ### Dependency upgrades
