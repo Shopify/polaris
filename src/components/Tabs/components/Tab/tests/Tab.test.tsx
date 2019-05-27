@@ -3,49 +3,10 @@ import {mountWithAppProvider} from 'test-utilities';
 import Tab from '../Tab';
 
 describe('<Tab />', () => {
-  it('has the tab role', () => {
-    const tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
-    expect(tab.find('button').prop('role')).toBe('tab');
-  });
-
   describe('id', () => {
     it('uses the ID for the underlying actionable item', () => {
       const tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
       expect(tab.find('button').prop('id')).toBe('my-tab');
-    });
-  });
-
-  describe('selected', () => {
-    it('is aria-selected when the tab is selected', () => {
-      const tab = mountWithAppProvider(
-        <Tab id="my-tab" selected>
-          Tab
-        </Tab>,
-      );
-      expect(tab.find('button').prop('aria-selected')).toBe(true);
-    });
-
-    it('is not aria-selected when the tab is not selected', () => {
-      let tab = mountWithAppProvider(<Tab id="my-tab">Tab</Tab>);
-      expect(tab.find('button').prop('aria-selected')).toBeFalsy();
-
-      tab = mountWithAppProvider(
-        <Tab id="my-tab" selected={false}>
-          Tab
-        </Tab>,
-      );
-      expect(tab.find('button').prop('aria-selected')).toBeFalsy();
-    });
-  });
-
-  describe('panelID', () => {
-    it('uses the panelID as the controlled element’s ID', () => {
-      const tab = mountWithAppProvider(
-        <Tab id="my-tab" panelID="my-panel">
-          Tab
-        </Tab>,
-      );
-      expect(tab.find('button').prop('aria-controls')).toBe('my-panel');
     });
   });
 

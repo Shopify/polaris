@@ -5,7 +5,6 @@ import UnstyledLink from '../../../UnstyledLink';
 
 export interface Props {
   id: string;
-  focused: boolean;
   panelID?: string;
   children?: React.ReactNode;
   url?: string;
@@ -14,26 +13,6 @@ export interface Props {
 }
 
 export default class Item extends React.PureComponent<Props, never> {
-  private focusedNode: HTMLElement | React.ReactElement<any> | null = null;
-
-  componentDidMount() {
-    const {focusedNode} = this;
-    const {focused} = this.props;
-
-    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
-      focusedNode.focus();
-    }
-  }
-
-  componentDidUpdate() {
-    const {focusedNode} = this;
-    const {focused} = this.props;
-
-    if (focusedNode && focusedNode instanceof HTMLElement && focused) {
-      focusedNode.focus();
-    }
-  }
-
   render() {
     const {
       id,
@@ -46,7 +25,6 @@ export default class Item extends React.PureComponent<Props, never> {
 
     const sharedProps = {
       id,
-      ref: this.setFocusedNode,
       onClick,
       className: styles.Item,
       'aria-controls': panelID,
@@ -62,14 +40,8 @@ export default class Item extends React.PureComponent<Props, never> {
       </button>
     );
 
-    return <li role="presentation">{markup}</li>;
+    return <li>{markup}</li>;
   }
-
-  private setFocusedNode = (
-    node: HTMLElement | React.ReactElement<any> | null,
-  ) => {
-    this.focusedNode = node;
-  };
 }
 
 function noop() {}

@@ -14,8 +14,6 @@ export interface TabMeasurements {
 }
 
 export interface Props {
-  tabToFocus: number;
-  siblingTabHasFocus: boolean;
   activator: React.ReactElement<{}>;
   selected: number;
   tabs: TabDescriptor[];
@@ -42,22 +40,13 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
   }
 
   render() {
-    const {
-      selected,
-      tabs,
-      activator,
-      tabToFocus,
-      siblingTabHasFocus,
-    } = this.props;
+    const {selected, tabs, activator} = this.props;
 
     const tabsMarkup = tabs.map((tab, index) => {
       return (
         <Tab
-          measuring
           key={`${index}${tab.id}Hidden`}
           id={`${tab.id}Measurer`}
-          siblingTabHasFocus={siblingTabHasFocus}
-          focused={index === tabToFocus}
           selected={index === selected}
           onClick={noop}
           url={tab.url}

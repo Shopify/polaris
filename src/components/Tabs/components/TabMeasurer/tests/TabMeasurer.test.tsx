@@ -6,8 +6,7 @@ import Item from '../../Item';
 
 describe('<TabMeasurer />', () => {
   const mockProps = {
-    tabToFocus: 0,
-    activator: <Item id="id" focused />,
+    activator: <Item id="id" />,
     selected: 1,
     tabs: [
       {
@@ -23,40 +22,9 @@ describe('<TabMeasurer />', () => {
     handleMeasurement: noop,
   };
 
-  describe('tabToFocus', () => {
-    const tabToFocus = 0;
-
-    it('passes focused value of 0 to Tab', () => {
-      const tabMeasurer = mountWithAppProvider(
-        <TabMeasurer {...mockProps} tabToFocus={tabToFocus} />,
-      );
-      const tabs = tabMeasurer.find(Tab);
-      expect(tabs.first().prop('focused')).toBe(true);
-    });
-
-    it('does not pass wrong focused value to Tab', () => {
-      const tabMeasurer = mountWithAppProvider(
-        <TabMeasurer {...mockProps} tabToFocus={tabToFocus} />,
-      );
-      const tabs = tabMeasurer.find(Tab);
-      expect(tabs.last().prop('focused')).toBe(false);
-    });
-  });
-
-  describe('siblingTabHasFocus', () => {
-    it('gets passed to Tab', () => {
-      const siblingTabHasFocus = true;
-      const tabMeasurer = mountWithAppProvider(
-        <TabMeasurer {...mockProps} siblingTabHasFocus={siblingTabHasFocus} />,
-      );
-      const tabs = tabMeasurer.find(Tab);
-      expect(tabs.first().prop('siblingTabHasFocus')).toBe(true);
-    });
-  });
-
   describe('activator', () => {
     it('renders activator', () => {
-      const activator = <Item id="id" focused />;
+      const activator = <Item id="id" />;
       const tabMeasurer = mountWithAppProvider(
         <TabMeasurer {...mockProps} activator={activator} />,
       );

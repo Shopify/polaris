@@ -32,7 +32,6 @@ export interface State {
   hiddenTabs: number[];
   containerWidth: number;
   showDisclosure: boolean;
-  tabToFocus: number;
 }
 
 export default class Tabs extends React.PureComponent<Props, State> {
@@ -62,19 +61,15 @@ export default class Tabs extends React.PureComponent<Props, State> {
     visibleTabs: [],
     hiddenTabs: [],
     showDisclosure: false,
-    tabToFocus: -1,
   };
 
   render() {
     const {tabs, selected, fitted, children} = this.props;
-    const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
+    const {visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
 
     const panelMarkup = children ? (
-      <Panel
-        id={tabs[selected].panelID || `${tabs[selected].id}-panel`}
-        tabID={tabs[selected].id}
-      >
+      <Panel id={tabs[selected].panelID || `${tabs[selected].id}-panel`}>
         {children}
       </Panel>
     ) : null;
@@ -98,7 +93,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     const activator = (
       <button
-        tabIndex={-1}
         className={styles.DisclosureActivator}
         onClick={this.handleDisclosureActivatorClick}
       >
@@ -108,16 +102,9 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
     return (
       <div>
-        <ul
-          role="tablist"
-          className={classname}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onKeyDown={handleKeyDown}
-          onKeyUp={this.handleKeyPress}
-        >
+        <ul className={classname}>
           {tabsMarkup}
-          <li role="presentation" className={disclosureTabClassName}>
+          <li className={disclosureTabClassName}>
             <Popover
               preferredPosition="below"
               activator={activator}
@@ -125,20 +112,16 @@ export default class Tabs extends React.PureComponent<Props, State> {
               onClose={this.handleClose}
             >
               <List
-                focusIndex={hiddenTabs.indexOf(tabToFocus)}
                 disclosureTabs={disclosureTabs}
                 onClick={this.handleTabClick}
-                onKeyPress={this.handleKeyPress}
               />
             </Popover>
           </li>
         </ul>
         <TabMeasurer
-          tabToFocus={tabToFocus}
           activator={activator}
           selected={selected}
           tabs={tabs}
-          siblingTabHasFocus={tabToFocus > -1}
           handleMeasurement={this.handleMeasurement}
         />
         {panelMarkup}
@@ -146,44 +129,13 @@ export default class Tabs extends React.PureComponent<Props, State> {
     );
   }
 
-  private handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
-    const {tabToFocus, visibleTabs, hiddenTabs} = this.state;
-    const tabsArrayInOrder = visibleTabs.concat(hiddenTabs);
-    const key = event.key;
-
-    let newFocus = tabsArrayInOrder.indexOf(tabToFocus);
-
-    if (key === 'ArrowRight' || key === 'ArrowDown') {
-      newFocus += 1;
-      if (newFocus === tabsArrayInOrder.length) {
-        newFocus = 0;
-      }
-    }
-
-    if (key === 'ArrowLeft' || key === 'ArrowUp') {
-      if (newFocus === -1 || newFocus === 0) {
-        newFocus = tabsArrayInOrder.length - 1;
-      } else {
-        newFocus -= 1;
-      }
-    }
-
-    this.setState({
-      showDisclosure: hiddenTabs.indexOf(tabsArrayInOrder[newFocus]) > -1,
-      tabToFocus: tabsArrayInOrder[newFocus],
-    });
-  };
-
   private renderTabMarkup = (tab: TabDescriptor, index: number) => {
     const {selected} = this.props;
-    const {tabToFocus} = this.state;
 
     return (
       <Tab
         key={`${index}-${tab.id}`}
         id={tab.id}
-        siblingTabHasFocus={tabToFocus > -1}
-        focused={index === tabToFocus}
         selected={index === selected}
         onClick={this.handleTabClick}
         panelID={tab.panelID || `${tab.id}-panel`}
@@ -193,71 +145,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
         {tab.content}
       </Tab>
     );
-  };
-
-  private handleFocus = (event: React.FocusEvent<HTMLUListElement>) => {
-    const {selected, tabs} = this.props;
-
-    // If we are explicitly focusing one of the non-selected tabs, use it
-    // move the focus to it
-    const target = event.target as HTMLElement;
-    if (
-      target.classList.contains(styles.Tab) ||
-      target.classList.contains(styles.Item)
-    ) {
-      let tabToFocus = -1;
-
-      tabs.every((tab, index) => {
-        if (tab.id === target.id) {
-          tabToFocus = index;
-          return false;
-        }
-
-        return true;
-      });
-
-      this.setState({tabToFocus});
-      return;
-    }
-
-    if (target.classList.contains(styles.DisclosureActivator)) {
-      return;
-    }
-
-    // If we are coming in from somewhere other than another tab, focus the
-    // selected tab, and the focus (click) is not on the disclosure activator,
-    // focus the selected tab
-    if (!event.relatedTarget) {
-      this.setState({tabToFocus: selected});
-      return;
-    }
-
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    if (
-      !relatedTarget.classList.contains(styles.Tab) &&
-      !relatedTarget.classList.contains(styles.Item) &&
-      !relatedTarget.classList.contains(styles.DisclosureActivator)
-    ) {
-      this.setState({tabToFocus: selected});
-    }
-  };
-
-  private handleBlur = (event: React.FocusEvent<HTMLUListElement>) => {
-    // If we blur and the target is not another tab, forget the focus position
-    if (event.relatedTarget == null) {
-      this.setState({tabToFocus: -1});
-      return;
-    }
-
-    const target = event.relatedTarget as HTMLElement;
-
-    // If we are going to anywhere other than another tab, lose the last focused tab
-    if (
-      !target.classList.contains(styles.Tab) &&
-      !target.classList.contains(styles.Item)
-    ) {
-      this.setState({tabToFocus: -1});
-    }
   };
 
   private handleDisclosureActivatorClick = () => {
@@ -272,7 +159,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
   private handleMeasurement = (measurements: TabMeasurements) => {
     const {tabs, selected} = this.props;
-    const {tabToFocus} = this.state;
     const {
       hiddenTabWidths: tabWidths,
       containerWidth,
@@ -287,7 +173,6 @@ export default class Tabs extends React.PureComponent<Props, State> {
     );
 
     this.setState({
-      tabToFocus: tabToFocus === -1 ? -1 : selected,
       visibleTabs,
       hiddenTabs,
       disclosureWidth,
@@ -310,17 +195,3 @@ export default class Tabs extends React.PureComponent<Props, State> {
 }
 
 function noop() {}
-
-function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-  const {key} = event;
-
-  if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
-  ) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-}

@@ -5,7 +5,6 @@ import Item from '../../Item';
 
 describe('<List />', () => {
   const mockProps = {
-    focusIndex: -1,
     disclosureTabs: [
       {
         id: 'repeat-customers',
@@ -21,26 +20,6 @@ describe('<List />', () => {
   it('renders an unordered list', () => {
     const list = mountWithAppProvider(<List {...mockProps} />);
     expect(list.find('ul')).toHaveLength(1);
-  });
-
-  describe('focusIndex', () => {
-    it('does not pass focusIndex to last Item', () => {
-      const focusIndex = 1;
-      const list = mountWithAppProvider(
-        <List {...mockProps} focusIndex={focusIndex} />,
-      );
-      const items = list.find(Item);
-      expect(items.first().prop('focused')).toBe(false);
-    });
-
-    it('passes focusIndex to first Item', () => {
-      const focusIndex = 1;
-      const list = mountWithAppProvider(
-        <List {...mockProps} focusIndex={focusIndex} />,
-      );
-      const items = list.find(Item);
-      expect(items.last().prop('focused')).toBe(true);
-    });
   });
 
   describe('disclosureTabs', () => {

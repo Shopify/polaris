@@ -138,36 +138,6 @@ describe('<Tabs />', () => {
     });
   });
 
-  describe('selected', () => {
-    let getElementById: jest.SpyInstance;
-    let panelStub: {focus: jest.Mock<any>};
-
-    beforeEach(() => {
-      panelStub = {focus: jest.fn()};
-      getElementById = jest.spyOn(document, 'getElementById');
-      getElementById.mockReturnValue(panelStub);
-    });
-
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
-
-    it('focuses the panel when a tab becomes selected', () => {
-      const panelIDedTabs = [
-        {...tabs[0], panelID: 'panel-1'},
-        {...tabs[1], panelID: 'panel-2'},
-      ];
-
-      const wrapper = mountWithAppProvider(
-        <Tabs {...mockProps} tabs={panelIDedTabs}>
-          Panel contents
-        </Tabs>,
-      );
-      wrapper.setProps({selected: 1});
-      expect(panelStub.focus).toHaveBeenCalled();
-    });
-  });
-
   describe('children', () => {
     it('wraps the children in a Panel with matching aria attributes to the tab', () => {
       const content = <p>Tab content</p>;
@@ -223,118 +193,11 @@ describe('<Tabs />', () => {
       {content: 'Tab 3', id: 'tab-3'},
     ];
 
-    it('is not set to anything by default', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(-1);
-    });
-
     it('passes the provided selected value if given', () => {
       const tabs = mountWithAppProvider(
         <Tabs {...mockProps} selected={1} tabs={mockTabs} />,
       );
       expect(tabs.find(TabMeasurer).prop('selected')).toBe(1);
-    });
-
-    describe('ArrowRight', () => {
-      it('shifts focus to the next tab when pressing ArrowRight', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowRight on the last tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-    });
-
-    describe('ArrowDown', () => {
-      it('shifts focus to the next tab when pressing ArrowDown', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowDown on the last tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowDown',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
-    });
-
-    describe('ArrowLeft', () => {
-      it('shifts focus to the last tab when pressing ArrowLeft', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowLeft',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-    });
-
-    describe('ArrowUp', () => {
-      it('shifts focus to the last tab when pressing ArrowUp', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} selected={0} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowUp',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(2);
-      });
-
-      it('shifts focus to the first tab when pressing ArrowUp on the second tab', () => {
-        const tabs = mountWithAppProvider(
-          <Tabs {...mockProps} tabs={mockTabs} />,
-        );
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowRight',
-        });
-        trigger(tabs.find('ul'), 'onKeyUp', {
-          key: 'ArrowLeft',
-        });
-        expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-      });
     });
   });
 
@@ -389,26 +252,6 @@ describe('<Tabs />', () => {
 
       const popover = tabs.find(Popover);
       expect(popover.prop('activator').type).toBe('button');
-    });
-
-    describe('ArrowRight', () => {
-      it('shifts focus to the first tab when pressing ArrowRight', () => {
-        const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-        const tabMeasurer = tabs.find(TabMeasurer);
-        trigger(tabMeasurer, 'handleMeasurement', {
-          hiddenTabWidths: [82, 160, 150, 100, 80, 120],
-          containerWidth: 300,
-          disclosureWidth: 0,
-        });
-
-        const popoverContents = getPopoverContents(tabs);
-        async () => {
-          trigger(popoverContents.find(List), 'onKeyPress', {
-            key: 'ArrowRight',
-          });
-          await expect(tabs.find(TabMeasurer).prop('tabToFocus')).toBe(0);
-        };
-      });
     });
   });
 });
