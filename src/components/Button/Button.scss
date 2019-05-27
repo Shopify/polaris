@@ -24,6 +24,21 @@ $spinner-size: rem(20px);
   min-height: 1px;
 }
 
+.textAlignLeft {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.textAlignCenter {
+  justify-content: center;
+  text-align: center;
+}
+
+.textAlignRight {
+  justify-content: flex-end;
+  text-align: right;
+}
+
 .Icon {
   transition: color duration() easing();
 

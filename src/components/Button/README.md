@@ -257,6 +257,20 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 <Button fullWidth>Add customer</Button>
 ```
 
+### Text-aligned button
+
+<!-- example-for: web -->
+
+Use for plain or monochrome buttons that could have a long length and should be aligned when they potentially overflow onto the next line.
+
+```jsx
+<Button plain textAlign="left">
+  This is a really long string of text that overflows onto the next line we need
+  to put in a lot of words now you can see the alignment. It is very long but a
+  customer could potentially name something this long.
+</Button>
+```
+
 ### Disabled state
 
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.

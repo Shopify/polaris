@@ -20,6 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Prevented Firefox from showing an extra dotted border on focused buttons ([#1409](https://github.com/Shopify/polaris-react/pull/1409))
 - Added `resolveItemId` prop to `ResourceList` which is used in the new multiselect feature ([#1261](https://github.com/Shopify/polaris-react/pull/1261))
 - Removed transition on tag button hover state [#1337](https://github.com/Shopify/polaris-react/pull/1337)
+- Added `textAlign` prop to Button ([#1576](https://github.com/Shopify/polaris-react/pull/1576))
 
 ### Bug fixes
 
