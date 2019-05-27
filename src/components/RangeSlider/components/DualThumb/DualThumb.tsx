@@ -1,11 +1,11 @@
 import React from 'react';
 import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {classNames} from '../../../../utilities/css';
+import isObjectsEqual from '../../../../utilities/isObjectsEqual';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps, DualValue} from '../../types';
 import Labelled, {labelID} from '../../../Labelled';
@@ -45,13 +45,13 @@ export default class DualThumb extends React.Component<Props, State> {
     const {min, step, max, value, onChange, id} = props;
     const {prevValue} = state;
 
-    if (isEqual(prevValue, value)) {
+    if (isObjectsEqual(prevValue, value)) {
       return null;
     }
 
     const sanitizedValue = sanitizeValue(value, min, max, step);
 
-    if (!isEqual(value, sanitizedValue)) {
+    if (!isObjectsEqual(value, sanitizedValue)) {
       onChange(sanitizedValue, id);
     }
 
@@ -446,7 +446,7 @@ export default class DualThumb extends React.Component<Props, State> {
 
     const sanitizedValue = sanitizeValue(dirtyValue, min, max, step, control);
 
-    if (isEqual(sanitizedValue, value) === false) {
+    if (isObjectsEqual(sanitizedValue, value) === false) {
       this.setState(
         {
           value: sanitizedValue,

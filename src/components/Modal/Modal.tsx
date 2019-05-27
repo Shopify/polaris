@@ -1,11 +1,11 @@
 import React from 'react';
-import isEqual from 'lodash/isEqual';
 import {TransitionGroup} from '@material-ui/react-transition-group';
 import {write} from '@shopify/javascript-utilities/fastdom';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {isObjectsEqual} from '../../utilities/is-objects-equal';
 import {wrapWithComponent} from '../../utilities/components';
 
 import {transformActions} from '../../utilities/app-bridge-transformers';
@@ -156,7 +156,7 @@ class Modal extends React.Component<CombinedProps, State> {
     const currentAppBridgeProps = pick(this.props, APP_BRIDGE_PROPS);
 
     if (
-      !isEqual(prevAppBridgeProps, currentAppBridgeProps) &&
+      !isObjectsEqual(prevAppBridgeProps, currentAppBridgeProps) &&
       transformedProps
     ) {
       if (isIframeModal(transformedProps)) {

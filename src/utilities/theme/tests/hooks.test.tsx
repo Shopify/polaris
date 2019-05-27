@@ -1,6 +1,6 @@
 import React from 'react';
-import isEqual from 'lodash/isEqual';
 import {mountWithContext} from 'test-utilities';
+import {isObjectsEqual} from '../../is-objects-equal';
 
 import {useTheme} from '../hooks';
 
@@ -14,7 +14,7 @@ describe('useTheme', () => {
 
     function Component() {
       // eslint-disable-next-line shopify/jest/no-if
-      return isEqual(useTheme(), {
+      return isObjectsEqual(useTheme(), {
         logo: {
           topBarSource: 'source',
         },
