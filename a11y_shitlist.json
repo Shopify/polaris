@@ -295,35 +295,7 @@
       "selector": "#256"
     }
   ],
-  "all-components-modal--modal-without-a-title": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
-      "context": "<button class=\"CloseButton-CloseButton_1J5w0 CloseButton-withoutTitle_3D5Ov\"><span class=\"Icon-Icon_mXAal Ic...</button>",
-      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "html > body > div:nth-child(7) > div:nth-child(1) > div > div > div > button"
-    }
-  ],
-  "all-components-modal--basic-modal": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
-      "context": "<button class=\"CloseButton-CloseButton_1J5w0\"><span class=\"Icon-Icon_mXAal Ic...</button>",
-      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "html > body > div:nth-child(7) > div:nth-child(1) > div > div > div > div:nth-child(1) > button"
-    }
-  ],
   "all-components-modal--modal-with-primary-action": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
-      "context": "<button class=\"CloseButton-CloseButton_1J5w0\"><span class=\"Icon-Icon_mXAal Ic...</button>",
-      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "html > body > div:nth-child(7) > div:nth-child(1) > div > div > div > div:nth-child(1) > button"
-    },
     {
       "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
       "context": "<input id=\"TextField1\" class=\"TextField-Input_2qkA6\" aria-label=\"\" aria-labelledby=\"TextField1Label\" aria-invalid=\"false\" value=\"https://polaris.shopify.com/\">",
@@ -333,25 +305,7 @@
       "selector": "#TextField1"
     }
   ],
-  "all-components-modal--modal-with-primary-and-secondary-actions": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
-      "context": "<button class=\"CloseButton-CloseButton_1J5w0\"><span class=\"Icon-Icon_mXAal Ic...</button>",
-      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "html > body > div:nth-child(7) > div:nth-child(1) > div > div > div > div:nth-child(1) > button"
-    }
-  ],
   "all-components-modal--large-modal": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
-      "context": "<button class=\"CloseButton-CloseButton_1J5w0\"><span class=\"Icon-Icon_mXAal Ic...</button>",
-      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "html > body > div:nth-child(7) > div:nth-child(1) > div > div > div > div:nth-child(1) > button"
-    },
     {
       "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputFile.Name",
       "context": "<input id=\"DropZone1\" accept=\".csv\" type=\"file\" multiple=\"\" autocomplete=\"off\">",
@@ -367,16 +321,6 @@
       "type": "error",
       "typeCode": 1,
       "selector": "#DropZone1"
-    }
-  ],
-  "all-components-modal--modal-with-scroll-listener": [
-    {
-      "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Button.Name",
-      "context": "<button class=\"CloseButton-CloseButton_1J5w0\"><span class=\"Icon-Icon_mXAal Ic...</button>",
-      "message": "This button element does not have a name available to an accessibility API. Valid names are: title undefined, element content, aria-label undefined, aria-labelledby undefined.",
-      "type": "error",
-      "typeCode": 1,
-      "selector": "html > body > div:nth-child(7) > div:nth-child(1) > div > div > div > div:nth-child(1) > button"
     }
   ],
   "all-components-page--page-with-external-link": [
