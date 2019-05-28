@@ -2,7 +2,6 @@ import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import compose from '@shopify/react-compose';
 import isEqual from 'lodash/isEqual';
 import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
@@ -16,7 +15,6 @@ import Button, {buttonsFrom} from '../../../Button';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import {SELECT_ALL_ITEMS, SelectedItems} from '../../types';
-import withContext from '../../../WithContext';
 import ResourceListContext, {ResourceListContextType} from '../../context';
 import styles from './Item.scss';
 
@@ -69,7 +67,7 @@ export type CombinedProps =
 const getUniqueCheckboxID = createUniqueIDFactory('ResourceListItemCheckbox');
 const getUniqueOverlayID = createUniqueIDFactory('ResourceListItemOverlay');
 
-export class Item extends React.Component<CombinedProps, State> {
+export class BaseItem extends React.Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
     const selected = isSelected(nextProps.id, nextProps.context.selectedItems);
 
@@ -411,9 +409,12 @@ function isSelected(id: string, selectedItems?: SelectedItems) {
   );
 }
 
-export default compose<Props>(
-  withContext<Props, WithAppProviderProps, ResourceListContextType>(
-    ResourceListContext.Consumer,
-  ),
-  withAppProvider<Props>(),
-)(Item);
+function Item(props: CombinedProps) {
+  return (
+    <ResourceListContext.Consumer>
+      {(context) => <BaseItem {...props} context={context} />}
+    </ResourceListContext.Consumer>
+  );
+}
+
+export default withAppProvider<Props>()(Item);
