@@ -17,7 +17,8 @@ describe('<Nav.Item />', () => {
     matchMedia.restore();
   });
 
-  it('sets expanded to false on resize when !navigationBarCollapsed and location does not match', () => {
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('sets expanded to false on resize when !navigationBarCollapsed and location does not match', () => {
     const spy = jest.fn();
     matchMedia.setMedia(() => ({addListener: spy}));
     const item = mountWithNavigationProvider(
