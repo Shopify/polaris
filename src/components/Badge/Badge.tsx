@@ -1,5 +1,5 @@
 import React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
+import {classNames, variationName} from '../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import VisuallyHidden from '../VisuallyHidden';
 import styles from './Badge.scss';

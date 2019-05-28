@@ -1,6 +1,6 @@
 import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../../../utilities/css';
 import styles from '../../DatePicker.scss';
 
 export interface Props {

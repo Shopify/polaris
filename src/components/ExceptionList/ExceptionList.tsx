@@ -1,5 +1,5 @@
 import React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
+import {classNames, variationName} from '../../utilities/css';
 
 import Icon, {Props as IconProps} from '../Icon';
 import Truncate from '../Truncate';

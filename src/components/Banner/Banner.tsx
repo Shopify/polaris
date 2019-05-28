@@ -1,5 +1,4 @@
 import React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
 import {
   CancelSmallMinor,
   CircleTickMajorTwotone,
@@ -9,6 +8,7 @@ import {
   CircleInformationMajorTwotone,
 } from '@shopify/polaris-icons';
 
+import {classNames, variationName} from '../../utilities/css';
 import {Action, DisableableAction, LoadableAction} from '../../types';
 import Button, {buttonFrom} from '../Button';
 import Heading from '../Heading';

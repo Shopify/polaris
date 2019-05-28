@@ -1,8 +1,8 @@
 import React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import isEqual from 'lodash/isEqual';
+import {classNames} from '../../../../utilities/css';
 import {DisableableAction, WithContextTypes} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import styles from '../../FormLayout.scss';
 import Item from '../Item';

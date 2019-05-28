@@ -1,6 +1,6 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {Props as IconProps} from '../../../Icon';
 import {Props as ThumbnailProps} from '../../../Thumbnail';
 import {Props as AvatarProps} from '../../../Avatar';

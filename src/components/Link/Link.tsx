@@ -1,8 +1,7 @@
 import React from 'react';
-
-import {classNames} from '@shopify/css-utilities';
 import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
+import {classNames} from '../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import UnstyledLink from '../UnstyledLink';
 import Icon from '../Icon';

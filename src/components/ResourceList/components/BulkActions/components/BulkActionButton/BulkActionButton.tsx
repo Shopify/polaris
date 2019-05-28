@@ -1,8 +1,8 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import {CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../../../utilities/css';
 import Icon from '../../../../../Icon';
 import UnstyledLink from '../../../../../UnstyledLink';
 import {DisableableAction} from '../../../../../../types';

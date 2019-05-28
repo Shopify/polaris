@@ -1,7 +1,7 @@
 import React from 'react';
 import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {headerCell} from '../../../shared';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Icon from '../../../Icon';

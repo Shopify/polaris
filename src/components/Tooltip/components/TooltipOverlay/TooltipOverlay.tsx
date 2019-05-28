@@ -1,6 +1,6 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {layer} from '../../../shared';
 import PositionedOverlay, {
   OverlayDetails,

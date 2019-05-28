@@ -1,7 +1,7 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 import {focusFirstFocusableNode} from '@shopify/javascript-utilities/focus';
 
+import {classNames} from '../../../../utilities/css';
 import UnstyledLink from '../../../UnstyledLink';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';

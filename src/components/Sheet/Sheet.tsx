@@ -2,7 +2,7 @@ import React, {useCallback, useContext, useEffect, useState} from 'react';
 
 import {CSSTransition} from 'react-transition-group';
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';

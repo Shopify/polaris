@@ -1,8 +1,8 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {closest} from '@shopify/javascript-utilities/dom';
 
+import {classNames} from '../../utilities/css';
 import EventListener from '../EventListener';
 import Scrollable from '../Scrollable';
 import {layer} from '../shared';

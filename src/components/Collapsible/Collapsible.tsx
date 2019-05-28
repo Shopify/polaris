@@ -1,10 +1,10 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {read} from '@shopify/javascript-utilities/fastdom';
+import {classNames} from '../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 import styles from './Collapsible.scss';

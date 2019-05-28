@@ -1,7 +1,7 @@
 import React from 'react';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 import Button from '../../../Button';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {classNames} from '../../utilities/css';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Choice, {helpTextID} from '../Choice';
 import Icon from '../Icon';
