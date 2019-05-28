@@ -113,7 +113,10 @@
 
     "Modal": {
       "iFrameTitle": "body markup",
-      "modalWarning": "These required properties are missing from Modal: {missingProps}"
+      "modalWarning": "These required properties are missing from Modal: {missingProps}",
+      "CloseButton": {
+        "close": "Close"
+      }
     },
 
     "Page": {
