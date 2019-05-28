@@ -1,7 +1,6 @@
 import React from 'react';
-import {ReactWrapper} from 'enzyme';
 import {mountWithAppProvider, trigger} from 'test-utilities';
-import {Tab, Panel, TabMeasurer, List} from '../components';
+import {Tab, Panel, TabMeasurer} from '../components';
 import Tabs, {Props} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
 import Popover from '../../Popover';
@@ -17,12 +16,6 @@ describe('<Tabs />', () => {
     tabs,
     onSelect: noop,
   };
-
-  function getPopoverContents(tabs: ReactWrapper) {
-    return mountWithAppProvider(
-      <div>{tabs.find(Popover).prop('children')}</div>,
-    );
-  }
 
   afterEach(() => {
     if (document.activeElement) {
