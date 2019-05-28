@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Button, Image, Modal} from 'components';
 import ContextualSaveBar from '../ContextualSaveBar';
 import {ThemeProviderContextType} from '../../../../ThemeProvider';

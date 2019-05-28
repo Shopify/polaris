@@ -1,6 +1,10 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {trigger, findByTestID, mountWithAppProvider} from 'test-utilities';
+import {
+  trigger,
+  findByTestID,
+  mountWithAppProvider,
+} from 'test-utilities/legacy';
 import {Button, Select, Popover} from 'components';
 import FilterCreator, {Props} from '../FilterCreator';
 import FilterValueSelector from '../../FilterValueSelector';

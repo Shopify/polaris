@@ -1,6 +1,6 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import Toast from '../../Toast';
 import Frame from '../../../Frame';
 import ToastManager from '..';

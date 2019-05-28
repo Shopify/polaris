@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Checkbox} from 'components';
 import CheckableButton from '../CheckableButton';
 import {Key} from '../../../../../types';

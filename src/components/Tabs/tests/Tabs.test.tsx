@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Tab, Panel, TabMeasurer, List} from '../components';
 import Tabs, {Props} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';

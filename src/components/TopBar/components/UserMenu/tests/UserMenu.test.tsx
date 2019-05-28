@@ -1,6 +1,6 @@
 import React from 'react';
 import {ViewMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {UserMenuContext} from '../context';
 import {UserMenu as UserMenuComponent, UserMenuProps} from '../components';
 import UserMenu from '../UserMenu';

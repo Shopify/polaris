@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {OptionList, ActionList, Popover} from 'components';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {TextField} from '../components';
 import {Key} from '../../../../../types';
 import ComboBox from '..';

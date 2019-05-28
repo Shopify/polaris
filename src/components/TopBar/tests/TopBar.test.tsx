@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Image, UnstyledLink} from 'components';
 import {ThemeProviderContextType} from '../../ThemeProvider';
 import TopBar from '../TopBar';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button, ButtonGroup} from 'components';
 import CalloutCard from '../CalloutCard';
 

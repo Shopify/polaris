@@ -1,6 +1,6 @@
 import React from 'react';
 import {CirclePlusMinor, NoteMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Icon} from 'components';
 import ExceptionList from '../ExceptionList';
 import Truncate from '../../Truncate';

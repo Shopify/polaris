@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal as AppBridgeModal} from '@shopify/app-bridge/actions';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, mountWithAppProvider} from 'test-utilities';
+import {findByTestID, mountWithAppProvider} from 'test-utilities/legacy';
 import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';

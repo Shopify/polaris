@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {UnstyledLink, Icon} from 'components';
 import en from '../../../locales/en.json';
 import Link from '../Link';

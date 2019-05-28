@@ -2,7 +2,7 @@ import React from 'react';
 import {NotificationMajorMonotone} from '@shopify/polaris-icons';
 
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import Menu from '../../../../Menu';
 import UserMenu from '../UserMenu';
 

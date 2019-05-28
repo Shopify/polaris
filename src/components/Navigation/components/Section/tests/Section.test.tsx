@@ -1,7 +1,11 @@
 import React from 'react';
 
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
-import {findByTestID, trigger, mountWithAppProvider} from 'test-utilities';
+import {
+  findByTestID,
+  trigger,
+  mountWithAppProvider,
+} from 'test-utilities/legacy';
 
 import Collapsible from '../../../../Collapsible';
 import NavigationContext, {NavigationContextType} from '../../../context';

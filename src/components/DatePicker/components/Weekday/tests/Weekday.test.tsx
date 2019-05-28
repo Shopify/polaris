@@ -1,6 +1,6 @@
 import React from 'react';
 import {Weekdays} from '@shopify/javascript-utilities/dates';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import Weekday from '../Weekday';
 
 describe('<Weekday />', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Spinner} from 'components';
 import Autocomplete from '..';
 import {ComboBox} from '../components';

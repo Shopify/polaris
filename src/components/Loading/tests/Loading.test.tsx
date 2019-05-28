@@ -1,6 +1,6 @@
 import React from 'react';
 import {Loading as AppBridgeLoading} from '@shopify/app-bridge/actions';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {FrameContext, createFrameContext} from '../../Frame';
 
 import Loading from '../Loading';

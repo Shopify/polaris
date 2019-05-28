@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {InlineError, Labelled, Connected, Select} from 'components';
 import {Resizer, Spinner} from '../components';
 import TextField from '../TextField';

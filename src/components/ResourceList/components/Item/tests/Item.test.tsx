@@ -1,5 +1,9 @@
 import React from 'react';
-import {findByTestID, mountWithAppProvider, trigger} from 'test-utilities';
+import {
+  findByTestID,
+  mountWithAppProvider,
+  trigger,
+} from 'test-utilities/legacy';
 import {
   Avatar,
   ButtonGroup,

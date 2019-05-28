@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import EventListener from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
 import ColorPicker from '../ColorPicker';

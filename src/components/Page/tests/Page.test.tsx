@@ -3,7 +3,7 @@ import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Page, Card} from 'components';
 import {LinkAction} from '../../../types';
 import {Header} from '../components';
