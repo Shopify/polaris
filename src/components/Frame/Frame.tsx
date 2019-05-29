@@ -10,7 +10,6 @@ import EventListener from '../EventListener';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Backdrop from '../Backdrop';
 import TrapFocus from '../TrapFocus';
-import {UserMenuProvider} from '../TopBar';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/setRootProperty';
 import {ContextualSaveBarProps, ToastID, ToastPropsWithID} from './types';
@@ -239,10 +238,8 @@ export class Frame extends React.PureComponent<CombinedProps, State> {
           {...navigationAttributes}
         >
           {skipMarkup}
-          <UserMenuProvider mobileView={mobileView || false}>
-            {topBarMarkup}
-            {navigationMarkup}
-          </UserMenuProvider>
+          {topBarMarkup}
+          {navigationMarkup}
           {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}

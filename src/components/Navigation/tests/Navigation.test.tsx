@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 import Navigation from '../Navigation';
 import NavigationContext from '../context';
-import {UserMenu} from '../components';
 import WithinContentContext from '../../WithinContentContext';
 
 describe('<Navigation />', () => {
@@ -55,16 +54,6 @@ describe('<Navigation />', () => {
       );
 
       expect(navigation.find(Child).find('div')).toHaveLength(1);
-    });
-  });
-
-  describe('userMenu', () => {
-    it('renders the given user menu', () => {
-      const userMenu = <UserMenu avatarInitials="" />;
-      const navigation = mountWithAppProvider(
-        <Navigation location="/" userMenu={userMenu} />,
-      );
-      expect(navigation.contains(userMenu)).toBeTruthy();
     });
   });
 
