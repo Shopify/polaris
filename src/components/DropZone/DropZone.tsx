@@ -293,15 +293,18 @@ export class DropZone extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
+    const labelValue = label
+      ? label
+      : intl.translate('Polaris.DropZone.FileUpload.label');
+    const labelHiddenValue = label ? labelHidden : true;
+
     return (
       <Provider value={this.getContext}>
         <Labelled
           id={id}
-          label={
-            label ? label : intl.translate('Polaris.DropZone.FileUpload.label')
-          }
+          label={labelValue}
           action={labelAction}
-          labelHidden={label ? labelHidden : true}
+          labelHidden={labelHiddenValue}
         >
           <div
             ref={this.node}
