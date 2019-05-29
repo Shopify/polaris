@@ -722,6 +722,124 @@ describe('<ResourceList />', () => {
       expect(resourceList.find(BulkActions).prop('selectMode')).toBe(false);
     });
   });
+
+  describe('multiselect', () => {
+    it('selects shift selected items if resolveItemId was provided', () => {
+      function resolveItemId(item: any) {
+        return item.id;
+      }
+      const onSelectionChange = jest.fn();
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          selectedItems={[]}
+          promotedBulkActions={promotedBulkActions}
+          renderItem={renderItem}
+          onSelectionChange={onSelectionChange}
+          resolveItemId={resolveItemId}
+        />,
+      );
+      const firstItem = resourceList.find(Item).first();
+      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
+
+      const lastItem = resourceList.find(Item).last();
+      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+        nativeEvent: {shiftKey: true},
+      });
+
+      expect(onSelectionChange).toHaveBeenCalledWith(['5', '6', '7']);
+    });
+
+    it('does not select shift selected items if resolveItemId was not provided', () => {
+      const onSelectionChange = jest.fn();
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          selectedItems={[]}
+          promotedBulkActions={promotedBulkActions}
+          renderItem={renderItem}
+          onSelectionChange={onSelectionChange}
+        />,
+      );
+      const firstItem = resourceList.find(Item).first();
+      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
+
+      const lastItem = resourceList.find(Item).last();
+      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+        nativeEvent: {shiftKey: true},
+      });
+
+      expect(onSelectionChange).toHaveBeenCalledWith(['7']);
+    });
+
+    it('does not select shift selected items if sortOrder is not provided', () => {
+      function resolveItemId(item: any) {
+        return item.id;
+      }
+
+      function renderItem(item: any, id: any) {
+        return (
+          <ResourceList.Item
+            id={id}
+            url={item.url}
+            accessibilityLabel={`View details for ${item.title}`}
+          >
+            <div>Item {id}</div>
+            <div>{item.title}</div>
+          </ResourceList.Item>
+        );
+      }
+
+      const onSelectionChange = jest.fn();
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          selectedItems={[]}
+          promotedBulkActions={promotedBulkActions}
+          renderItem={renderItem}
+          onSelectionChange={onSelectionChange}
+          resolveItemId={resolveItemId}
+        />,
+      );
+      const firstItem = resourceList.find(Item).first();
+      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
+
+      const lastItem = resourceList.find(Item).last();
+      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+        nativeEvent: {shiftKey: true},
+      });
+
+      expect(onSelectionChange).toHaveBeenCalledWith(['7']);
+    });
+
+    it('deselects shift selected items if resolveItemId was provided', () => {
+      const selectedItems = ['6', '7'];
+      function resolveItemId(item: any) {
+        return item.id;
+      }
+      const onSelectionChange = jest.fn();
+      const resourceList = mountWithAppProvider(
+        <ResourceList
+          items={itemsWithID}
+          selectedItems={selectedItems}
+          promotedBulkActions={promotedBulkActions}
+          renderItem={renderItem}
+          onSelectionChange={onSelectionChange}
+          resolveItemId={resolveItemId}
+        />,
+      );
+      // Sets {lastSeleced: 0}
+      const firstItem = resourceList.find(Item).first();
+      findByTestID(firstItem, 'LargerSelectionArea').simulate('click');
+
+      const lastItem = resourceList.find(Item).last();
+      findByTestID(lastItem, 'LargerSelectionArea').simulate('click', {
+        nativeEvent: {shiftKey: true},
+      });
+
+      expect(onSelectionChange).toHaveBeenCalledWith([]);
+    });
+  });
 });
 
 function idForItem(item: any) {
@@ -736,11 +854,12 @@ function renderCustomMarkup(item: any) {
   return <p>{item.title}</p>;
 }
 
-function renderItem(item: any, id: any) {
+function renderItem(item: any, id: any, index: number) {
   return (
     <ResourceList.Item
       id={id}
       url={item.url}
+      sortOrder={index}
       accessibilityLabel={`View details for ${item.title}`}
     >
       <div>Item {id}</div>

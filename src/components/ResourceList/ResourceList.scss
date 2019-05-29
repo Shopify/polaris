@@ -236,3 +236,7 @@ $item-wrapper-loading-height: rem(64px);
 .DisabledPointerEvents {
   @include disabled-pointer-events;
 }
+
+.disableTextSelection {
+  user-select: none;
+}
