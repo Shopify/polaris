@@ -369,7 +369,7 @@ class ProviderThemeExample extends React.Component {
 
 ---
 
-## Initializing the Shopify App Bridge
+## Initializing the Shopify App Bridge (deprecated)
 
 When using Polaris, you don’t need to go through the initialization of the Shopify App Bridge as described in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/app-bridge#set-up-your-app). Instead, configure the connection to the Shopify admin through the [app provider component](https://polaris.shopify.com/components/structure/app-provider), which wraps all components in an embedded app. The app provider component initializes the Shopify App Bridge using the `apiKey` and `shopOrigin` that you provide. **The `apiKey` and the `shopOrigin` attributes are required.** Find the API key for your app in the Apps section of your [Shopify Partner Dashboard](https://partners.shopify.com). Learn how to get and store the shop origin in the [Shopify Help Center](https://help.shopify.com/en/api/embedded-apps/shop-origin).
 
@@ -389,9 +389,45 @@ ReactDOM.render(
 );
 ```
 
+#### Deprecation rationale
+
+As of v3.17.0, using `apiKey` and `shopOrigin` on `AppProvider` to initialize the Shopify App Bridge is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use `Provider` from `@shopify/app-bridge-react` instead. For example:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider, TitleBar} from '@shopify/app-bridge-react';
+
+function MyApp() {
+  const config = {apiKey: 'YOUR_API_KEY', shopOrigin: 'SHOP_ORIGIN'};
+  return (
+    <Provider config={config}>
+      <TitleBar
+        title="Hello world!"
+        primaryAction={{
+          content: 'Foo',
+          url: '/foo',
+        }}
+        secondaryActions={[{content: 'Bar', url: '/bar'}]}
+        actionGroups={[
+          {
+            title: 'Baz',
+            actions: [{content: 'Baz', url: '/baz'}],
+          },
+        ]}
+      />
+    </Provider>
+  );
+}
+
+const root = document.createElement('div');
+document.body.appendChild(root);
+ReactDOM.render(<MyApp />, root);
+```
+
 ---
 
-## Access to the Shopify App Bridge instance
+## Access to the Shopify App Bridge instance (deprecated)
 
 To provide access to your initialized Shopify App Bridge instance, we make it available through [React’s `context`](https://facebook.github.io/react/docs/context.html). The example below demonstrates how to access the `appBridge` object from React’s `context`, in order to use the [`Redirect` action](https://help.shopify.com/en/api/embedded-apps/app-bridge/actions/navigation/redirect) to navigate:
 
@@ -424,6 +460,10 @@ render(
   document.querySelector('#app'),
 );
 ```
+
+#### Deprecation rationale
+
+As of v3.17.0, using the Shopify App Bridge instance in context is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) directly instead.
 
 ---
 
