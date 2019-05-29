@@ -12,7 +12,7 @@ export interface Props {
   onClick(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function CloseButton({title = true, onClick, polaris: {intl}}: CombinedProps) {
   const className = classNames(
