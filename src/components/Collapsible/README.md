@@ -68,7 +68,11 @@ class CollapsibleExample extends React.Component {
       <div style={{height: '200px'}}>
         <Card sectioned>
           <Stack vertical>
-            <Button onClick={this.handleToggleClick} ariaExpanded={open} ariaControls="basic-collapsible">
+            <Button
+              onClick={this.handleToggleClick}
+              ariaExpanded={open}
+              ariaControls="basic-collapsible"
+            >
               Toggle
             </Button>
             <Collapsible open={open} id="basic-collapsible">
