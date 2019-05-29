@@ -64,7 +64,7 @@ export interface State {
   rollupOpen: boolean;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 class Header extends React.PureComponent<CombinedProps, State> {
   state: State = {

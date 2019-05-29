@@ -33,7 +33,7 @@ export interface Props {
   actionHint?: string;
 }
 
-export type CombinedProps = Props &
+type CombinedProps = Props &
   WithAppProviderProps &
   WithContextTypes<DropZoneContext>;
 

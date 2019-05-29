@@ -107,7 +107,7 @@ export interface Props {
   onFileDialogClose?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('DropZone');
 

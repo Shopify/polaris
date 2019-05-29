@@ -74,7 +74,7 @@ export interface Props extends FooterProps {
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
 }
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   iframeHeight: number;

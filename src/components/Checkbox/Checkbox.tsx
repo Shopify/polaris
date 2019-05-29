@@ -38,7 +38,7 @@ export interface BaseProps {
 }
 
 export interface Props extends BaseProps {}
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('Checkbox');
 

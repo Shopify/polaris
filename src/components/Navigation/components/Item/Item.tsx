@@ -52,7 +52,7 @@ export interface Props extends ItemURLDetails {
   onClick?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 interface State {
   expanded: boolean;

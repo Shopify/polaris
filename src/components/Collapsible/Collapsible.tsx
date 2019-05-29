@@ -19,7 +19,7 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export type AnimationState =
   | 'idle'

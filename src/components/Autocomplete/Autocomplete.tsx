@@ -39,7 +39,7 @@ export interface Props {
   onLoadMoreResults?(): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 function TextField(props: TextFieldProps) {
   return <ComboBox.TextField {...props} />;

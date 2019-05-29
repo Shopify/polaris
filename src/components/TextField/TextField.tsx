@@ -125,7 +125,7 @@ export type Props = NonMutuallyExclusiveProps &
     | {disabled: true}
     | {onChange(value: string, id: string): void});
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const getUniqueID = createUniqueIDFactory('TextField');
 

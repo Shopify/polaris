@@ -45,7 +45,7 @@ export interface Context {
   scrollToPosition(scrollY: number): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 class Scrollable extends React.Component<CombinedProps, State> {
   static childContextTypes = contextTypes;
   static ScrollTo = ScrollTo;

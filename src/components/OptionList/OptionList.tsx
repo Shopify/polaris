@@ -59,7 +59,7 @@ export interface State {
   normalizedOptions: SectionDescriptor[];
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export class OptionList extends React.Component<CombinedProps, State> {
   state: State = {

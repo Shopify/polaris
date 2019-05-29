@@ -36,7 +36,7 @@ export interface Props {
   weekdayName?(weekday: Weekdays): string;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const WEEKDAYS = [
   Weekdays.Sunday,

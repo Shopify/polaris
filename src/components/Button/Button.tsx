@@ -73,7 +73,7 @@ export interface Props {
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 const DEFAULT_SIZE = 'medium';
 

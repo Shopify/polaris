@@ -12,7 +12,7 @@ import {DiscardConfirmationModal} from './components';
 
 import styles from './ContextualSaveBar.scss';
 
-export type CombinedProps = Props & WithAppProviderProps;
+type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
   discardConfirmationModalVisible: boolean;
