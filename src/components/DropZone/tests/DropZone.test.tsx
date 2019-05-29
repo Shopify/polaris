@@ -109,7 +109,7 @@ describe('<DropZone />', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('calls the onDragLeave callback when a dragLeave event is fired', () => {
+  it('calls the onDragLeave callback when a dragleave event is fired', () => {
     const dropZone = mountWithAppProvider(<DropZone onDragLeave={spy} />);
     fireEvent({element: dropZone, eventType: 'dragleave'});
     expect(spy).toHaveBeenCalled();
