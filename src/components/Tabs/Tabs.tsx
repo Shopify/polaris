@@ -38,7 +38,7 @@ export interface State {
   tabToFocus: number;
 }
 
-export class Tabs extends React.PureComponent<CombinedProps, State> {
+class Tabs extends React.PureComponent<CombinedProps, State> {
   static Panel = Panel;
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
