@@ -20,7 +20,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
-- Added missing accessibility label to `Modal` close button ([1582](https://github.com/Shopify/polaris-react/pull/1582))
+- Added missing accessibility label to `Modal` close button ([#1582](https://github.com/Shopify/polaris-react/pull/1582))
 - Removed unnecessary border-radius from `Modal` body ([#1584](https://github.com/Shopify/polaris-react/pull/1584))
 - Fixed inconsistent width depending on your browser/version in `Sheet` ([#1569](https://github.com/Shopify/polaris-react/pull/1569))
 - Fixed text and other elements from being selected in Safari when dragging the color picker ([#1562](https://github.com/Shopify/polaris-react/pull/1562))
