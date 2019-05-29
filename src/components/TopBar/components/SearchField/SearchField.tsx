@@ -1,11 +1,15 @@
 import * as React from 'react';
+import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/css-utilities';
 
 import Icon from '../../../Icon';
+import VisuallyHidden from '../../../VisuallyHidden';
 import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
 
 import styles from './SearchField.scss';
+
+const getUniqueId = createUniqueIDFactory('SearchField');
 
 export interface Props {
   /** Initial value for the input */
@@ -30,6 +34,7 @@ export type ComposedProps = Props & WithAppProviderProps;
 
 export class SearchField extends React.Component<ComposedProps, never> {
   private input: React.RefObject<HTMLInputElement> = React.createRef();
+  private searchId = getUniqueId();
 
   componentDidMount() {
     const {focused} = this.props;
@@ -92,7 +97,13 @@ export class SearchField extends React.Component<ComposedProps, never> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
       >
+        <VisuallyHidden>
+          <label htmlFor={this.searchId}>
+            {intl.translate('Polaris.TopBar.SearchField.search')}
+          </label>
+        </VisuallyHidden>
         <input
+          id={this.searchId}
           className={styles.Input}
           placeholder={placeholder}
           type="search"

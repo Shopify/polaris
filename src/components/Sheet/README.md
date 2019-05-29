@@ -207,9 +207,11 @@ class SheetExample extends React.Component {
                   </div>
                   <Scrollable style={{padding: '1.6rem', height: '100%'}}>
                     <ChoiceList
+                      title="Select a sales channel"
                       name="salesChannelsList"
                       choices={salesChannels}
                       selected={selected}
+                      titleHidden
                       allowMultiple
                       onChange={handleChange('selected')}
                     />

@@ -368,16 +368,16 @@ class ModalExample extends React.Component {
               <Stack.Item fill>
                 <TextField
                   ref={this.bindNode}
-                  label=""
+                  label="Discount link"
                   onFocus={this.handleFocus}
                   value={DISCOUNT_LINK}
                   onChange={() => {}}
+                  connectedRight={
+                    <Button primary onClick={this.handleClick}>
+                      Copy link
+                    </Button>
+                  }
                 />
-              </Stack.Item>
-              <Stack.Item>
-                <Button primary onClick={this.handleClick}>
-                  Copy link
-                </Button>
               </Stack.Item>
             </Stack>
           </Modal.Section>

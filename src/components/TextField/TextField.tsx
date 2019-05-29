@@ -3,6 +3,7 @@ import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames, variationName} from '@shopify/css-utilities';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
+import VisuallyHidden from '../VisuallyHidden';
 
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
@@ -271,6 +272,9 @@ class TextField extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleClearButtonPress}
           disabled={disabled}
         >
+          <VisuallyHidden>
+            {intl.translate('Polaris.Common.clear')}
+          </VisuallyHidden>
           <Icon source={CircleCancelMinor} color="inkLightest" />
         </button>
       ) : null;
