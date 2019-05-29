@@ -305,9 +305,6 @@ export class DropZone extends React.Component<CombinedProps, State> {
         {dragErrorOverlay}
         <div className={styles.Container}>{children}</div>
         <VisuallyHidden>
-          <label htmlFor={id}>
-            {intl.translate('Polaris.DropZone.FileUpload.label')}
-          </label>
           <input {...inputAttributes} />
         </VisuallyHidden>
       </div>
@@ -323,7 +320,14 @@ export class DropZone extends React.Component<CombinedProps, State> {
         {dropZoneMarkup}
       </Labelled>
     ) : (
-      dropZoneMarkup
+      <React.Fragment>
+        <VisuallyHidden>
+          <label htmlFor={id}>
+            {intl.translate('Polaris.DropZone.FileUpload.label')}
+          </label>
+        </VisuallyHidden>
+        {dropZoneMarkup}
+      </React.Fragment>
     );
 
     return (
