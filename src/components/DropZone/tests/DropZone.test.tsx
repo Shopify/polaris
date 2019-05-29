@@ -362,7 +362,6 @@ function fireEvent({
   element: ReactWrapper<any, any>;
   eventType?: string;
   spy?: jest.Mock;
-  delay?: number;
   testFiles?: Array<Object>;
 }) {
   if (spy) {
