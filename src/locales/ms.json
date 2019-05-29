@@ -200,6 +200,9 @@
     "Spinner": {
       "warningMessage": "Warna {color} tidak dimaksudkan untuk digunakan pada pemintal {size}. Warna-warna yang tersedia pada pemintal besar adalah: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Togol menu"
+    },
     "Tag": {
       "ariaLabel": "Alih keluar {children}"
     },
@@ -213,9 +216,6 @@
         "clearButtonLabel": "Kosongkan",
         "search": "Carian"
       }
-    },
-    "Tabs": {
-      "toggleTabsLabel": "Togol menu"
     }
   }
 }

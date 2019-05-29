@@ -200,6 +200,9 @@
     "Spinner": {
       "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "切換選單"
+    },
     "Tag": {
       "ariaLabel": "移除 {children}"
     },
@@ -213,9 +216,6 @@
         "clearButtonLabel": "清除",
         "search": "搜尋"
       }
-    },
-    "Tabs": {
-      "toggleTabsLabel": "切換選單"
     }
   }
 }

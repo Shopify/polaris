@@ -200,6 +200,9 @@
     "Spinner": {
       "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Menu toggle"
+    },
     "Tag": {
       "ariaLabel": "Retirer {children}"
     },
@@ -213,9 +216,6 @@
         "clearButtonLabel": "Effacer",
         "search": "Recherche"
       }
-    },
-    "Tabs": {
-      "toggleTabsLabel": "Menu toggle"
     }
   }
 }

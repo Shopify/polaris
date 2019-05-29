@@ -200,6 +200,9 @@
     "Spinner": {
       "warningMessage": "Die Farbe {color} sollte nicht für {size} Spinner verwendet werden. Die für große Spinner verfügbaren Farben sind: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Menü wechseln"
+    },
     "Tag": {
       "ariaLabel": "{children} entfernen"
     },
@@ -213,9 +216,6 @@
         "clearButtonLabel": "Löschen",
         "search": "Suchen"
       }
-    },
-    "Tabs": {
-      "toggleTabsLabel": "Menü wechseln"
     }
   }
 }
