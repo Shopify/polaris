@@ -103,7 +103,7 @@ describe('<DropZone />', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('calls the onDragOver callback when a dragOver event is fired', () => {
+  it('calls the onDragOver callback when a dragover event is fired', () => {
     const dropZone = mountWithAppProvider(<DropZone onDragOver={spy} />);
     fireEvent({element: dropZone, eventType: 'dragover'});
     expect(spy).toHaveBeenCalled();
