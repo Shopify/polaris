@@ -200,6 +200,9 @@
     "Spinner": {
       "warningMessage": "El color {color} no está concebido para ser utilizado en spinners {size} Los colores disponibles en los spinners grandes son: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Activar menú"
+    },
     "Tag": {
       "ariaLabel": "Eliminar {children}"
     },
@@ -213,9 +216,6 @@
         "clearButtonLabel": "Borrar",
         "search": "Búsqueda"
       }
-    },
-    "Tabs": {
-      "toggleTabsLabel": "Activar menú"
     }
   }
 }
