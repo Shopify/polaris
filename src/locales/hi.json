@@ -28,7 +28,10 @@
       "checkbox": "चेकबॉक्स",
       "undo": "पूर्ववत करें",
       "cancel": "रद्द करें",
-      "newWindowAccessibilityHint": "(नई विंडो खोलता है)"
+      "newWindowAccessibilityHint": "(नई विंडो खोलता है)",
+      "clear": "मिटाएं",
+      "close": "बंद करे",
+      "submit": "सबमिट करें"
     },
     "ContextualSaveBar": {
       "save": "सहेजें",
@@ -82,7 +85,8 @@
         "actionTitleFile": "फाइल जोड़ें",
         "actionTitleImage": "इमेज जोड़ें",
         "actionHintFile": "या अपलोड करने के लिए फ़ाइलें ड्रॉप करें",
-        "actionHintImage": "या अपलोड करने के लिए इमेज ड्रॉप करें"
+        "actionHintImage": "या अपलोड करने के लिए इमेज ड्रॉप करें",
+        "label": "फ़ाइल अपलोड करें"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "आइकन प्रोप पेज से हटा दिया गया है. इसके बजाय Shopify Partners के डैशबोर्ड 'ऐप सेटअप करें' सेक्शन में ऐप्लिकेशन आइकन अपलोड करें."
+        "iconWarningMessage": "आइकन प्रोप पेज से हटा दिया गया है. इसके बजाय Shopify Partners के डैशबोर्ड 'ऐप सेटअप करें' सेक्शन में ऐप्लिकेशन आइकन अपलोड करें.",
+        "rollupButton": "कार्रवाई"
       }
     },
     "Pagination": {
@@ -205,8 +210,12 @@
     "TopBar": {
       "toggleMenuLabel": "मेन्यू टॉगल करें",
       "SearchField": {
-        "clearButtonLabel": "मिटाएं"
+        "clearButtonLabel": "मिटाएं",
+        "search": "खोजें"
       }
+    },
+    "Tabs": {
+      "toggleTabsLabel": "मेन्यू टॉगल करें"
     }
   }
 }
