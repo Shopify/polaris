@@ -1,4 +1,5 @@
 import React from 'react';
+import {mount} from 'enzyme';
 import {mountWithAppProvider} from 'test-utilities';
 import ContextualSaveBar from '../ContextualSaveBar';
 import {FrameContext, createFrameContext} from '../../Frame';
@@ -85,6 +86,23 @@ describe('<ContextualSaveBar />', () => {
       children: <ContextualSaveBar {...newProps} />,
     });
     expect(mockFrameContext.setContextualSaveBar).toHaveBeenCalledTimes(1);
+  });
+
+  it("doesn't call setContextualSave when frame is not defined", () => {
+    function fn() {
+      mount(<ContextualSaveBar {...props} />);
+    }
+
+    expect(fn).not.toThrow();
+  });
+
+  it("doesn't call removeContextualSave when frame is not defined", () => {
+    function fn() {
+      const contextualSavebar = mount(<ContextualSaveBar {...props} />);
+      contextualSavebar.unmount();
+    }
+
+    expect(fn).not.toThrow();
   });
 });
 
