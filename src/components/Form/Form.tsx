@@ -39,7 +39,7 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
-export class Form extends React.PureComponent<CombinedProps, never> {
+class Form extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       acceptCharset,
