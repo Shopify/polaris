@@ -293,45 +293,32 @@ export class DropZone extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
-    const dropZoneMarkup = (
-      <div
-        ref={this.node}
-        className={classes}
-        aria-disabled={disabled}
-        onClick={this.handleClick}
-        onDragStart={handleDragStart}
-      >
-        {dragOverlay}
-        {dragErrorOverlay}
-        <div className={styles.Container}>{children}</div>
-        <VisuallyHidden>
-          <input {...inputAttributes} />
-        </VisuallyHidden>
-      </div>
-    );
-
-    const labelledDropzoneMarkup = label ? (
-      <Labelled
-        id={id}
-        label={label}
-        action={labelAction}
-        labelHidden={labelHidden}
-      >
-        {dropZoneMarkup}
-      </Labelled>
-    ) : (
-      <React.Fragment>
-        <VisuallyHidden>
-          <label htmlFor={id}>
-            {intl.translate('Polaris.DropZone.FileUpload.label')}
-          </label>
-        </VisuallyHidden>
-        {dropZoneMarkup}
-      </React.Fragment>
-    );
-
     return (
-      <Provider value={this.getContext}>{labelledDropzoneMarkup}</Provider>
+      <Provider value={this.getContext}>
+        <Labelled
+          id={id}
+          label={
+            label ? label : intl.translate('Polaris.DropZone.FileUpload.label')
+          }
+          action={labelAction}
+          labelHidden={label ? labelHidden : true}
+        >
+          <div
+            ref={this.node}
+            className={classes}
+            aria-disabled={disabled}
+            onClick={this.handleClick}
+            onDragStart={handleDragStart}
+          >
+            {dragOverlay}
+            {dragErrorOverlay}
+            <div className={styles.Container}>{children}</div>
+            <VisuallyHidden>
+              <input {...inputAttributes} />
+            </VisuallyHidden>
+          </div>
+        </Labelled>
+      </Provider>
     );
   }
 
