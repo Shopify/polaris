@@ -147,7 +147,7 @@ export class OptionList extends React.Component<CombinedProps, State> {
               {titleMarkup}
               <ul
                 className={styles.Options}
-                id={this.id}
+                id={`${this.id}-${sectionIndex}`}
                 role={role}
                 aria-multiselectable={allowMultiple}
               >

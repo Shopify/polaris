@@ -28,7 +28,10 @@
       "checkbox": "kotak semak",
       "undo": "Buat asal",
       "cancel": "Batalkan",
-      "newWindowAccessibilityHint": "(membuka tetingkap baharu)"
+      "newWindowAccessibilityHint": "(membuka tetingkap baharu)",
+      "clear": "Kosongkan",
+      "close": "Tutup",
+      "submit": "Kemukakan"
     },
     "ContextualSaveBar": {
       "save": "Simpan",
@@ -82,7 +85,8 @@
         "actionTitleFile": "Tambah fail",
         "actionTitleImage": "Tambah imej",
         "actionHintFile": "atau lepaskan fail untuk dimuat naik",
-        "actionHintImage": "atau lepaskan imej untuk dimuat naik"
+        "actionHintImage": "atau lepaskan imej untuk dimuat naik",
+        "label": "Muat naik fail"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "Alatan ikon telah dialih keluar dari Halaman. Sebaliknya, muat naik ikon app di bahagian 'Persediaan app' Papan pemuka Shopify Partners."
+        "iconWarningMessage": "Alatan ikon telah dialih keluar dari Halaman. Sebaliknya, muat naik ikon app di bahagian 'Persediaan app' Papan pemuka Shopify Partners.",
+        "rollupButton": "Tindakan"
       }
     },
     "Pagination": {
@@ -205,8 +210,12 @@
     "TopBar": {
       "toggleMenuLabel": "Togol menu",
       "SearchField": {
-        "clearButtonLabel": "Kosongkan"
+        "clearButtonLabel": "Kosongkan",
+        "search": "Carian"
       }
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Togol menu"
     }
   }
 }

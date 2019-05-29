@@ -24,7 +24,7 @@ function CloseButton({title = true, onClick, polaris: {intl}}: CombinedProps) {
     <button
       onClick={onClick}
       className={className}
-      aria-label={intl.translate('Polaris.Modal.CloseButton.close')}
+      aria-label={intl.translate('Polaris.Common.close')}
     >
       <Icon source={MobileCancelMajorMonotone} color="inkLighter" />
     </button>

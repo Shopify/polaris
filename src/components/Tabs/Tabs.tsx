@@ -5,6 +5,7 @@ import {classNames} from '@shopify/css-utilities';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
@@ -25,6 +26,8 @@ export interface Props {
   onSelect?(selectedTabIndex: number): void;
 }
 
+type CombinedProps = Props & WithAppProviderProps;
+
 export interface State {
   disclosureWidth: number;
   tabWidths: number[];
@@ -35,7 +38,7 @@ export interface State {
   tabToFocus: number;
 }
 
-export default class Tabs extends React.PureComponent<Props, State> {
+export class Tabs extends React.PureComponent<CombinedProps, State> {
   static Panel = Panel;
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -66,7 +69,13 @@ export default class Tabs extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const {tabs, selected, fitted, children} = this.props;
+    const {
+      tabs,
+      selected,
+      fitted,
+      children,
+      polaris: {intl},
+    } = this.props;
     const {tabToFocus, visibleTabs, hiddenTabs, showDisclosure} = this.state;
     const disclosureTabs = hiddenTabs.map((tabIndex) => tabs[tabIndex]);
 
@@ -101,6 +110,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
         tabIndex={-1}
         className={styles.DisclosureActivator}
         onClick={this.handleDisclosureActivatorClick}
+        aria-label={intl.translate('Polaris.Tabs.toggleTabsLabel')}
       >
         <Icon source={HorizontalDotsMinor} />
       </button>
@@ -324,3 +334,5 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.stopPropagation();
   }
 }
+
+export default withAppProvider<Props>()(Tabs);

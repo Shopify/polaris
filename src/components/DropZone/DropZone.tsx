@@ -234,6 +234,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       active,
       overlay,
       allowMultiple,
+      polaris: {intl},
     } = this.props;
 
     const inputAttributes: object = {
@@ -319,7 +320,14 @@ export class DropZone extends React.Component<CombinedProps, State> {
         {dropZoneMarkup}
       </Labelled>
     ) : (
-      dropZoneMarkup
+      <React.Fragment>
+        <VisuallyHidden>
+          <label htmlFor={id}>
+            {intl.translate('Polaris.DropZone.FileUpload.label')}
+          </label>
+        </VisuallyHidden>
+        {dropZoneMarkup}
+      </React.Fragment>
     );
 
     return (
