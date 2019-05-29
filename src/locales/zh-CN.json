@@ -200,6 +200,9 @@
     "Spinner": {
       "warningMessage": "{size} 加载微调器不支持颜色 {color}。大型加载微调器的可用颜色：{colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "切换菜单"
+    },
     "Tag": {
       "ariaLabel": "删除 {children}"
     },
@@ -213,9 +216,6 @@
         "clearButtonLabel": "清除",
         "search": "搜索"
       }
-    },
-    "Tabs": {
-      "toggleTabsLabel": "切换菜单"
     }
   }
 }
