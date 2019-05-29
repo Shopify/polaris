@@ -13,6 +13,7 @@ keywords:
   - panel
   - card with call to action in the footer
   - card with call to action in the heading
+  - card with call to action in a section
   - card with button in the footer
   - card with button in the heading
   - card with multiple sections
@@ -344,6 +345,21 @@ Use when you have two related but distinct pieces of information to communicate 
       View a summary of your online store’s performance, including sales,
       visitors, top products, and referrals.
     </p>
+  </Card.Section>
+</Card>
+```
+
+### Card with sections that have title actions
+
+Use when your card section has actions that apply only to that section.
+
+```jsx
+<Card title="Customer">
+  <Card.Section>
+    <p>John Smith</p>
+  </Card.Section>
+  <Card.Section title="Contact Information" actions={[{content: 'Edit'}]}>
+    <p>john.smith@example.com</p>
   </Card.Section>
 </Card>
 ```
