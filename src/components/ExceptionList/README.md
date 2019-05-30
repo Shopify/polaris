@@ -75,7 +75,7 @@ Use icons to add clarity or assist in visualizing the meaning
 <ExceptionList
   items={[
     {
-      icon: 'notes',
+      icon: NoteMinor,
       description: 'This customer is awesome. Make sure to treat them right!',
     },
   ]}

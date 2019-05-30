@@ -200,16 +200,18 @@ class SheetExample extends React.Component {
                     <Heading>Manage sales channels</Heading>
                     <Button
                       accessibilityLabel="Cancel"
-                      icon="cancel"
+                      icon={MobileCancelMajorMonotone}
                       onClick={handleCloseSheet}
                       plain
                     />
                   </div>
                   <Scrollable style={{padding: '1.6rem', height: '100%'}}>
                     <ChoiceList
+                      title="Select a sales channel"
                       name="salesChannelsList"
                       choices={salesChannels}
                       selected={selected}
+                      titleHidden
                       allowMultiple
                       onChange={handleChange('selected')}
                     />

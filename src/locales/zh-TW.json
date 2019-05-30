@@ -28,7 +28,10 @@
       "checkbox": "核取方塊",
       "undo": "復原",
       "cancel": "取消",
-      "newWindowAccessibilityHint": "(開啟新視窗)"
+      "newWindowAccessibilityHint": "(開啟新視窗)",
+      "clear": "清除",
+      "close": "關閉",
+      "submit": "提交"
     },
     "ContextualSaveBar": {
       "save": "儲存",
@@ -82,7 +85,8 @@
         "actionTitleFile": "新增檔案",
         "actionTitleImage": "新增圖片",
         "actionHintFile": "或將檔案拖入即可上傳",
-        "actionHintImage": "或將圖片拖入即可上傳"
+        "actionHintImage": "或將圖片拖入即可上傳",
+        "label": "上傳檔案"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "圖示工具已從頁面移除。請改在 Shopify 合作夥伴控制面板的「應用程式設定」區段中上傳應用程式圖示。"
+        "iconWarningMessage": "圖示工具已從頁面移除。請改在 Shopify 合作夥伴控制面板的「應用程式設定」區段中上傳應用程式圖示。",
+        "rollupButton": "動作"
       }
     },
     "Pagination": {
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "{color} 這個顏色不能搭配{size}的轉盤。大型轉盤可以使用的顏色為：{colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "切換選單"
+    },
     "Tag": {
       "ariaLabel": "移除 {children}"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "切換選單",
       "SearchField": {
-        "clearButtonLabel": "清除"
+        "clearButtonLabel": "清除",
+        "search": "搜尋"
       }
     }
   }

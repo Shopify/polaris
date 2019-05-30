@@ -28,7 +28,10 @@
       "checkbox": "Kontrollkästchen",
       "undo": "Rückgängig machen",
       "cancel": "Stornieren",
-      "newWindowAccessibilityHint": "(öffnet ein neues Fenster)"
+      "newWindowAccessibilityHint": "(öffnet ein neues Fenster)",
+      "clear": "Löschen",
+      "close": "Schließen",
+      "submit": "Eingabe"
     },
     "ContextualSaveBar": {
       "save": "Speichern",
@@ -82,7 +85,8 @@
         "actionTitleFile": "Datei hinzufügen",
         "actionTitleImage": "Bild hinzufügen",
         "actionHintFile": "oder Dateien zum Hochladen ablegen",
-        "actionHintImage": "oder Bilder zum Hochladen ablegen"
+        "actionHintImage": "oder Bilder zum Hochladen ablegen",
+        "label": "Datei hochladen"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "Das Symbol-Prop wurde von der Seite entfernt. Laden Sie stattdessen ein Anwendungssymbol im Abschnitt \"App-Setup\" Partners Dashboard von Shopify hoch."
+        "iconWarningMessage": "Das Symbol-Prop wurde von der Seite entfernt. Laden Sie stattdessen ein Anwendungssymbol im Abschnitt \"App-Setup\" Partners Dashboard von Shopify hoch.",
+        "rollupButton": "Aktionen"
       }
     },
     "Pagination": {
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "Die Farbe {color} sollte nicht für {size} Spinner verwendet werden. Die für große Spinner verfügbaren Farben sind: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Menü wechseln"
+    },
     "Tag": {
       "ariaLabel": "{children} entfernen"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "Menü wechseln",
       "SearchField": {
-        "clearButtonLabel": "Löschen"
+        "clearButtonLabel": "Löschen",
+        "search": "Suchen"
       }
     }
   }

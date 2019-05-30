@@ -28,7 +28,7 @@ Icons are used to visually communicate core parts of the product and available a
 Use to visually communicate core parts of the product and available actions.
 
 ```jsx
-<Icon source="circlePlus" />
+<Icon source={CirclePlusMinor} />
 ```
 
 ### User provided icon
@@ -76,12 +76,12 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 - Review our [alternative text](/content/alternative-text) guidelines to make sure your use of icon works for all merchants
 
 ```jsx
-<Icon source="orders" />
+<Icon source={OrdersMajorTwotone} />
 <p>No orders yet</p>
 ```
 
 ```jsx
-<Button icon="circlePlus">Add a product</Button>
+<Button icon={CirclePlusMinor}>Add a product</Button>
 ```
 
 #### Don’t
@@ -92,7 +92,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 - Duplicate information provided programmatically
 
 ```jsx
-<Icon source="circlePlus" accessibilityLabel="Circle plus icon" />
+<Icon source={CirclePlusMinor} accessibilityLabel="Circle plus icon" />
 ```
 
 <!-- end -->

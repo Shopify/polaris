@@ -37,7 +37,7 @@ The toast component must be wrapped in the [frame](/components/structure/frame) 
 
 ---
 
-## Use in an embedded application
+## Use in an embedded application (deprecated)
 
 Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the toast component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
 
@@ -61,6 +61,10 @@ class EmbeddedAppToastExample extends React.Component {
   }
 }
 ```
+
+#### Deprecation rationale
+
+As of v3.17.0, using `Toast` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use `Toast` from `@shopify/app-bridge-react` instead. For example, `import {Toast} from '@shopify/app-bridge-react';`.
 
 ---
 

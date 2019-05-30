@@ -156,8 +156,7 @@ The following issues were discovered and need to be fixed before this code can b
   }
 
   if (results.length || remainingIssues) {
-    // This is temporarily returning 0 while we ensure pa11y doesn't throw any false positives
-    process.exit(0);
+    process.exit(1);
   }
   process.exit(0);
 })();

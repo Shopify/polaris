@@ -151,7 +151,7 @@ export default function OptionList({
             {titleMarkup}
             <ul
               className={styles.Options}
-              id={id.current}
+              id={`${id.current}-${sectionIndex}`}
               role={role}
               aria-multiselectable={allowMultiple}
             >

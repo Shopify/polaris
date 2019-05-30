@@ -53,6 +53,11 @@ export class Page extends React.PureComponent<ComposedProps, never> {
     const transformedProps = this.transformProps();
     if (!transformedProps) return;
 
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Deprecation: Using `Page` to render an embedded app title bar is deprecated and will be removed in v5.0. Use `TitleBar` from `@shopify/app-bridge-react` instead. For example, `import {TitleBar} from '@shopify/app-bridge-react';`",
+    );
+
     this.titlebar = AppBridgeTitleBar.create(
       this.props.polaris.appBridge,
       transformedProps,

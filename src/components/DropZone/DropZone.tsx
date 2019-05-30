@@ -228,6 +228,7 @@ export class DropZone extends React.Component<CombinedProps, State> {
       active,
       overlay,
       allowMultiple,
+      polaris: {intl},
     } = this.props;
 
     const inputAttributes: object = {
@@ -286,35 +287,10 @@ export class DropZone extends React.Component<CombinedProps, State> {
         </div>
       ) : null;
 
-    const dropZoneMarkup = (
-      <div
-        ref={this.node}
-        className={classes}
-        aria-disabled={disabled}
-        onClick={this.handleClick}
-        onDragStart={handleDragStart}
-      >
-        {dragOverlay}
-        {dragErrorOverlay}
-        <div className={styles.Container}>{children}</div>
-        <VisuallyHidden>
-          <input {...inputAttributes} />
-        </VisuallyHidden>
-      </div>
-    );
-
-    const labelledDropzoneMarkup = label ? (
-      <Labelled
-        id={id}
-        label={label}
-        action={labelAction}
-        labelHidden={labelHidden}
-      >
-        {dropZoneMarkup}
-      </Labelled>
-    ) : (
-      dropZoneMarkup
-    );
+    const labelValue = label
+      ? label
+      : intl.translate('Polaris.DropZone.FileUpload.label');
+    const labelHiddenValue = label ? labelHidden : true;
 
     const context = {
       size,
@@ -323,7 +299,27 @@ export class DropZone extends React.Component<CombinedProps, State> {
 
     return (
       <DropZoneContext.Provider value={context}>
-        {labelledDropzoneMarkup}
+        <Labelled
+          id={id}
+          label={labelValue}
+          action={labelAction}
+          labelHidden={labelHiddenValue}
+        >
+          <div
+            ref={this.node}
+            className={classes}
+            aria-disabled={disabled}
+            onClick={this.handleClick}
+            onDragStart={handleDragStart}
+          >
+            {dragOverlay}
+            {dragErrorOverlay}
+            <div className={styles.Container}>{children}</div>
+            <VisuallyHidden>
+              <input {...inputAttributes} />
+            </VisuallyHidden>
+          </div>
+        </Labelled>
       </DropZoneContext.Provider>
     );
   }
