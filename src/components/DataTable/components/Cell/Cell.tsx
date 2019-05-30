@@ -14,7 +14,7 @@ export interface Props {
   height?: number;
   content?: React.ReactNode;
   contentType?: string;
-  fixed?: boolean;
+  firstColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
   total?: boolean;
@@ -32,7 +32,7 @@ function Cell({
   height,
   content,
   contentType,
-  fixed,
+  firstColumn,
   truncate,
   header,
   total,
@@ -50,8 +50,8 @@ function Cell({
 
   const className = classNames(
     styles.Cell,
-    fixed && styles['Cell-fixed'],
-    fixed && truncate && styles['Cell-truncated'],
+    firstColumn && styles['Cell-firstColumn'],
+    firstColumn && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     footer && styles['Cell-footer'],
@@ -113,7 +113,7 @@ function Cell({
   );
 
   const cellMarkup =
-    header || fixed ? (
+    header || firstColumn ? (
       headingMarkup
     ) : (
       <td className={className} style={style}>

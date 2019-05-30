@@ -7,12 +7,6 @@ $breakpoint: 768px;
 }
 
 .collapsed {
-  .Table {
-    &::after {
-      display: block;
-    }
-  }
-
   .Navigation {
     display: flex;
     align-items: center;
@@ -23,10 +17,6 @@ $breakpoint: 768px;
     @include breakpoint-after($breakpoint, inclusive) {
       justify-content: flex-end;
     }
-  }
-
-  .ScrollContainer {
-    margin-left: rem($first-column-width);
   }
 }
 
@@ -57,29 +47,12 @@ $breakpoint: 768px;
 
 .ScrollContainer {
   overflow-x: auto;
-  // account for a mysterious gap in Safari when not collapsed
-  margin-left: rem(140px);
   -webkit-overflow-scrolling: touch;
 }
 
 .Table {
   width: 100%;
   border-spacing: 0;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: $first-column-width;
-    display: none;
-    width: rem(6px);
-    background: linear-gradient(
-      to right,
-      rgba(color('black'), 0.12),
-      rgba(color('black'), 0)
-    );
-  }
 }
 
 .TableRow {
@@ -103,21 +76,17 @@ $breakpoint: 768px;
   vertical-align: top;
 }
 
-.Cell-numeric {
-  text-align: right;
-}
-
-.Cell-fixed {
+.Cell-firstColumn {
   @include text-emphasis-normal;
   @include text-breakword;
-  position: absolute;
-  z-index: 5;
-  top: auto;
-  left: 0;
-  width: $first-column-width;
-  white-space: unset;
+  min-width: $first-column-width;
+  max-width: $first-column-width;
   text-align: left;
-  backface-visibility: hidden; // stops painting on scroll (due to positioning)
+  white-space: normal;
+}
+
+.Cell-numeric {
+  text-align: right;
 }
 
 .Cell-truncated {

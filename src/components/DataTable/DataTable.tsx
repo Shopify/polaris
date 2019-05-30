@@ -189,7 +189,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
               height={height}
               content={heading}
               contentType={columnContentTypes[headingIndex]}
-              fixed={headingIndex === 0}
+              firstColumn={headingIndex === 0}
               truncate={truncate}
               {...sortableHeadingProps}
             />
@@ -388,7 +388,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
     return (
       <Cell
         total
-        fixed={index === 0}
+        firstColumn={index === 0}
         testID={id}
         key={id}
         height={heights[1]}
@@ -426,7 +426,7 @@ class DataTable extends React.PureComponent<CombinedProps, DataTableState> {
               height={bodyCellHeights[index]}
               content={content}
               contentType={columnContentTypes[cellIndex]}
-              fixed={cellIndex === 0}
+              firstColumn={cellIndex === 0}
               truncate={truncate}
             />
           );
