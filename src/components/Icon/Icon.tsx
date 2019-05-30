@@ -1,59 +1,5 @@
 import React from 'react';
 import {classNames, variationName} from '@shopify/css-utilities';
-import {
-  PlusMinor,
-  AlertMinor,
-  ArrowDownMinor,
-  ArrowLeftMinor,
-  ArrowRightMinor,
-  ArrowUpMinor,
-  ArrowUpDownMinor,
-  CalendarMinor,
-  MobileCancelMajorMonotone,
-  CancelSmallMinor,
-  CaretDownMinor,
-  CaretUpMinor,
-  TickSmallMinor,
-  ChevronDownMinor,
-  ChevronLeftMinor,
-  ChevronRightMinor,
-  ChevronUpMinor,
-  CircleCancelMinor,
-  CircleChevronDownMinor,
-  CircleChevronLeftMinor,
-  CircleChevronRightMinor,
-  CircleChevronUpMinor,
-  CircleInformationMajorTwotone,
-  CirclePlusMinor,
-  CirclePlusOutlineMinor,
-  ConversationMinor,
-  DeleteMinor,
-  CircleDisableMinor,
-  DisputeMinor,
-  DuplicateMinor,
-  EmbedMinor,
-  ExportMinor,
-  ExternalMinor,
-  QuestionMarkMajorTwotone,
-  HomeMajorMonotone,
-  HorizontalDotsMinor,
-  ImportMinor,
-  LogOutMinor,
-  MobileHamburgerMajorMonotone,
-  NoteMinor,
-  NotificationMajorMonotone,
-  OnlineStoreMajorTwotone,
-  OrdersMajorTwotone,
-  PrintMinor,
-  ProductsMajorTwotone,
-  ProfileMinor,
-  MinusMinor,
-  RefreshMinor,
-  RiskMinor,
-  SaveMinor,
-  SearchMinor,
-  ViewMinor,
-} from '@shopify/polaris-icons';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
@@ -97,61 +43,6 @@ export type Color =
   | 'redDark'
   | 'purple';
 
-export const BUNDLED_ICONS = {
-  add: PlusMinor,
-  alert: AlertMinor,
-  arrowDown: ArrowDownMinor,
-  arrowLeft: ArrowLeftMinor,
-  arrowRight: ArrowRightMinor,
-  arrowUp: ArrowUpMinor,
-  arrowUpDown: ArrowUpDownMinor,
-  calendar: CalendarMinor,
-  cancel: MobileCancelMajorMonotone,
-  cancelSmall: CancelSmallMinor,
-  caretDown: CaretDownMinor,
-  caretUp: CaretUpMinor,
-  checkmark: TickSmallMinor,
-  chevronDown: ChevronDownMinor,
-  chevronLeft: ChevronLeftMinor,
-  chevronRight: ChevronRightMinor,
-  chevronUp: ChevronUpMinor,
-  circleCancel: CircleCancelMinor,
-  circleChevronDown: CircleChevronDownMinor,
-  circleChevronLeft: CircleChevronLeftMinor,
-  circleChevronRight: CircleChevronRightMinor,
-  circleChevronUp: CircleChevronUpMinor,
-  circleInformation: CircleInformationMajorTwotone,
-  circlePlus: CirclePlusMinor,
-  circlePlusOutline: CirclePlusOutlineMinor,
-  conversation: ConversationMinor,
-  delete: DeleteMinor,
-  disable: CircleDisableMinor,
-  dispute: DisputeMinor,
-  duplicate: DuplicateMinor,
-  embed: EmbedMinor,
-  export: ExportMinor,
-  external: ExternalMinor,
-  help: QuestionMarkMajorTwotone,
-  home: HomeMajorMonotone,
-  horizontalDots: HorizontalDotsMinor,
-  import: ImportMinor,
-  logOut: LogOutMinor,
-  menu: MobileHamburgerMajorMonotone,
-  notes: NoteMinor,
-  notification: NotificationMajorMonotone,
-  onlineStore: OnlineStoreMajorTwotone,
-  orders: OrdersMajorTwotone,
-  print: PrintMinor,
-  products: ProductsMajorTwotone,
-  profile: ProfileMinor,
-  refresh: RefreshMinor,
-  risk: RiskMinor,
-  save: SaveMinor,
-  search: SearchMinor,
-  subtract: MinusMinor,
-  view: ViewMinor,
-};
-
 const COLORS_WITH_BACKDROPS = [
   'teal',
   'tealDark',
@@ -162,22 +53,11 @@ const COLORS_WITH_BACKDROPS = [
   'inkLighter',
 ];
 
-interface SVGSource {
-  body: string;
-  viewBox: string;
-}
-
-export type BundledIcon = keyof typeof BUNDLED_ICONS;
-
-export type UntrustedSVG = string;
-
 export type IconSource =
-  | React.ReactNode
   | React.SFC<React.SVGProps<SVGSVGElement>>
-  | SVGSource
   | 'placeholder'
-  | BundledIcon
-  | UntrustedSVG;
+  | string;
+
 export interface Props {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
@@ -187,9 +67,6 @@ export interface Props {
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
-  /** Render the icon in an img element instead of an svg to prevent cross-site scripting */
-  /** @deprecated the untrusted prop is deprecated and will be removed (all raw strings passed into the Icon component will be assumed to be untrusted) */
-  untrusted?: boolean;
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
@@ -199,7 +76,6 @@ function Icon({
   color,
   backdrop,
   accessibilityLabel,
-  untrusted = false,
   polaris: {intl},
 }: CombinedProps) {
   if (color && backdrop && COLORS_WITH_BACKDROPS.indexOf(color) < 0) {
@@ -219,43 +95,19 @@ function Icon({
     backdrop && styles.hasBackdrop,
   );
 
-  const defaultIconProps = {
-    className: styles.Svg,
-    focusable: 'false',
-    'aria-hidden': true,
-  };
-
-  if (untrusted) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The untrusted prop is no longer needed, all strings passed into the Icon component are rendered as unsafe',
-    );
-  }
-
-  let SourceComponent = source as React.SFC<React.SVGProps<SVGSVGElement>>;
   let contentMarkup: React.ReactNode;
-  if (source === 'placeholder') {
+  if (typeof source === 'function') {
+    const SourceComponent = source;
+    contentMarkup = (
+      <SourceComponent
+        className={styles.Svg}
+        focusable="false"
+        aria-hidden="true"
+      />
+    );
+  } else if (source === 'placeholder') {
     contentMarkup = <div className={styles.Placeholder} />;
-  } else if (isBundledIcon(source)) {
-    SourceComponent = BUNDLED_ICONS[source];
-    const componentImportName = importForStringIcon(source);
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Deprecation: passing the string "${source}" into <Icon source> is deprecated and will be removed in the next major version. Pass in the "${componentImportName}" React Component from the @shopify/polaris-icons package instead.`,
-    );
-    contentMarkup = <SourceComponent {...defaultIconProps} />;
-  } else if (typeof source === 'function') {
-    const sourceElement = <SourceComponent {...defaultIconProps} />;
-    if (React.isValidElement(sourceElement)) {
-      contentMarkup = sourceElement;
-    }
-  } else if (React.isValidElement(source)) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: passing a React Element to the Icon component is deprecated and will be removed in the next major version. Pass a React Component instead.',
-    );
-    contentMarkup = source;
-  } else if (isUntrustedSVG(source)) {
+  } else if (typeof source === 'string') {
     contentMarkup = (
       <img
         className={styles.Img}
@@ -264,8 +116,6 @@ function Icon({
         aria-hidden="true"
       />
     );
-  } else if (isSVGSource(source)) {
-    contentMarkup = renderSVG(source);
   }
 
   return (
@@ -273,91 +123,6 @@ function Icon({
       {contentMarkup}
     </span>
   );
-}
-
-function renderSVG(iconSource: SVGSource) {
-  return (
-    <svg
-      className={styles.Svg}
-      viewBox={iconSource.viewBox}
-      dangerouslySetInnerHTML={{__html: iconSource.body}}
-      focusable="false"
-      aria-hidden="true"
-    />
-  );
-}
-
-function isBundledIcon(key: IconSource): key is BundledIcon {
-  return typeof key === 'string' && Object.keys(BUNDLED_ICONS).includes(key);
-}
-
-function isSVGSource(source: IconSource): source is SVGSource {
-  return (
-    source != null &&
-    source.hasOwnProperty('viewBox') &&
-    source.hasOwnProperty('body')
-  );
-}
-
-function isUntrustedSVG(source: IconSource): source is UntrustedSVG {
-  return typeof source === 'string';
-}
-
-function importForStringIcon(string: BundledIcon) {
-  return {
-    add: 'PlusMinor',
-    alert: 'AlertMinor',
-    arrowDown: 'ArrowDownMinor',
-    arrowLeft: 'ArrowLeftMinor',
-    arrowRight: 'ArrowRightMinor',
-    arrowUp: 'ArrowUpMinor',
-    arrowUpDown: 'ArrowUpDownMinor',
-    calendar: 'CalendarMinor',
-    cancel: 'MobileCancelMajorMonotone',
-    cancelSmall: 'CancelSmallMinor',
-    caretDown: 'CaretDownMinor',
-    caretUp: 'CaretUpMinor',
-    checkmark: 'TickSmallMinor',
-    chevronDown: 'ChevronDownMinor',
-    chevronLeft: 'ChevronLeftMinor',
-    chevronRight: 'ChevronRightMinor',
-    chevronUp: 'ChevronUpMinor',
-    circleCancel: 'CircleCancelMinor',
-    circleChevronDown: 'CircleChevronDownMinor',
-    circleChevronLeft: 'CircleChevronLeftMinor',
-    circleChevronRight: 'CircleChevronRightMinor',
-    circleChevronUp: 'CircleChevronUpMinor',
-    circleInformation: 'CircleInformationMajorTwotone',
-    circlePlus: 'CirclePlusMinor',
-    circlePlusOutline: 'CirclePlusOutlineMinor',
-    conversation: 'ConversationMinor',
-    delete: 'DeleteMinor',
-    disable: 'CircleDisableMinor',
-    dispute: 'DisputeMinor',
-    duplicate: 'DuplicateMinor',
-    embed: 'EmbedMinor',
-    export: 'ExportMinor',
-    external: 'ExternalMinor',
-    help: 'QuestionMarkMajorTwotone',
-    home: 'HomeMajorMonotone',
-    horizontalDots: 'HorizontalDotsMinor',
-    import: 'ImportMinor',
-    logOut: 'LogOutMinor',
-    menu: 'MobileHamburgerMajorMonotone',
-    notes: 'NoteMinor',
-    notification: 'NotificationMajorMonotone',
-    onlineStore: 'OnlineStoreMajorTwotone',
-    orders: 'OrdersMajorTwotone',
-    print: 'PrintMinor',
-    products: 'ProductsMajorTwotone',
-    profile: 'ProfileMinor',
-    refresh: 'RefreshMinor',
-    risk: 'RiskMinor',
-    save: 'SaveMinor',
-    search: 'SearchMinor',
-    subtract: 'MinusMinor',
-    view: 'ViewMinor',
-  }[string];
 }
 
 export default withAppProvider<Props>()(Icon);

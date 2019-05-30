@@ -10,6 +10,10 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - We now use default imports for React. Applications that consume polaris using sewing-kit shall need to enable [`esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) in their `tsconfig.json` files. ([#1523](https://github.com/Shopify/polaris-react/pull/1523))
 - `ChoiceList` `title` is required for accessibility. It can be hidden with `titleHidden`. ([#1575](https://github.com/Shopify/polaris-react/pull/1575))
 - Remove the WithRef component. This was never documented and was intended for internal use only but was part of our public API ([#1610](https://github.com/Shopify/polaris-react/pull/1610)).
+- Removed support for passing a string into `<Icon source>` to load a bundled icon. You must load the required icon directly from `@shopify/polaris-icons` instead ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
+- Removed support for passing a "SvgSource" shaped object into `<Icon source>` to load an icon imported using Shopify's legacy icon loader. You must update sewing-kit to at least v0.82.0 which replaced the legacy loader with using SVGR ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
+- Removed support for passing a React Element into `<Icon source>`. You must pass in a React Component that returns an SVG element instead. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
+- Removed support for `<Icon untrusted>`. Passing a string into `source` will now always load an untrusted icon, you don't need that additional property. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 
 ### New components
 
