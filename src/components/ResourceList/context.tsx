@@ -11,7 +11,12 @@ export interface ResourceListContextType {
     plural: string;
   };
   loading?: boolean;
-  onSelectionChange?(selected: boolean, id: string): void;
+  onSelectionChange?(
+    selected: boolean,
+    id: string,
+    sortNumber: number | undefined,
+    shiftKey: boolean,
+  ): void;
 }
 
 const intl = new Intl(undefined);

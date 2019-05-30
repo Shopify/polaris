@@ -615,6 +615,129 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
 </Card>
 ```
 
+### Resource list with multiselect
+
+Allows merchants to select or deselect multiple items at once.
+
+```jsx
+class ResourceListExample extends React.Component {
+  state = {
+    selectedItems: [],
+  };
+
+  handleSelectionChange = (selectedItems) => {
+    this.setState({selectedItems});
+  };
+
+  renderItem = (item, _, index) => {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceList.Item
+        id={id}
+        url={url}
+        media={media}
+        sortOrder={index}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </h3>
+        <div>{location}</div>
+      </ResourceList.Item>
+    );
+  };
+
+  render() {
+    const resourceName = {
+      singular: 'customer',
+      plural: 'customers',
+    };
+
+    const items = [
+      {
+        id: 231,
+        url: 'customers/231',
+        name: 'Mae Jemison',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 246,
+        url: 'customers/246',
+        name: 'Ellen Ochoa',
+        location: 'Los Angeles, USA',
+      },
+      {
+        id: 276,
+        url: 'customers/276',
+        name: 'Joe Smith',
+        location: 'Arizona, USA',
+      },
+      {
+        id: 349,
+        url: 'customers/349',
+        name: 'Haden Jerado',
+        location: 'Decatur, USA',
+      },
+      {
+        id: 419,
+        url: 'customers/419',
+        name: 'Tom Thommas',
+        location: 'Florida, USA',
+      },
+      {
+        id: 516,
+        url: 'customers/516',
+        name: 'Emily Amrak',
+        location: 'Texas, USA',
+      },
+    ];
+
+    const promotedBulkActions = [
+      {
+        content: 'Edit customers',
+        onAction: () => console.log('Todo: implement bulk edit'),
+      },
+    ];
+
+    const bulkActions = [
+      {
+        content: 'Add tags',
+        onAction: () => console.log('Todo: implement bulk add tags'),
+      },
+      {
+        content: 'Remove tags',
+        onAction: () => console.log('Todo: implement bulk remove tags'),
+      },
+      {
+        content: 'Delete customers',
+        onAction: () => console.log('Todo: implement bulk delete'),
+      },
+    ];
+
+    return (
+      <Card>
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={this.renderItem}
+          selectedItems={this.state.selectedItems}
+          onSelectionChange={this.handleSelectionChange}
+          promotedBulkActions={promotedBulkActions}
+          bulkActions={bulkActions}
+          resolveItemId={resolveItemIds}
+        />
+      </Card>
+    );
+  }
+}
+
+function resolveItemIds({id}) {
+  return id;
+}
+```
+
 ### Resource list with all of its elements
 
 Use as a broad example that includes most props available to resource list.
@@ -1999,13 +2122,13 @@ export default function CustomerListItem(props) {
   let conditionalAction = null;
 
   if (note) {
-    exceptions.push({ icon: 'notes', summary: note });
+    exceptions.push({ icon: NoteMinor, summary: note });
   }
 
   if (openOrderCount !== undefined) {
     const label = openOrderCount === 1 ? 'order' : 'orders';
     const summary = `${openOrderCount} open ${label}`;
-    exceptions.push({ status: 'warning', icon: 'alert', summary });
+    exceptions.push({ status: 'warning', icon: AlertMinor, summary });
     conditionalAction = (
       <Button plain url={openOrdersUrl} external>
         View open orders

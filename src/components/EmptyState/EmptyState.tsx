@@ -22,7 +22,7 @@ export interface Props {
   /** Elements to display inside empty state */
   children?: React.ReactNode;
   /** Primary action for empty state */
-  action: Action;
+  action?: Action;
   /** Secondary action for empty state */
   secondaryAction?: Action;
   /** Secondary elements to display below empty state actions */
@@ -78,26 +78,53 @@ export default class EmptyState extends React.PureComponent<Props, never> {
       </div>
     ) : null;
 
+    const primaryActionMarkup = action
+      ? buttonFrom(action, {primary: true, size: 'large'})
+      : null;
+
+    const headingMarkup = heading ? (
+      <DisplayText size="medium">{heading}</DisplayText>
+    ) : null;
+
+    const childrenMarkup = children ? (
+      <div className={styles.Content}>{children}</div>
+    ) : null;
+
+    const textContentMarkup =
+      headingMarkup || children ? (
+        <TextContainer>
+          {headingMarkup}
+          {childrenMarkup}
+        </TextContainer>
+      ) : null;
+
+    const actionsMarkup =
+      primaryActionMarkup || secondaryActionMarkup ? (
+        <div className={styles.Actions}>
+          <Stack alignment="center">
+            {primaryActionMarkup}
+            {secondaryActionMarkup}
+          </Stack>
+        </div>
+      ) : null;
+
+    const detailsMarkup =
+      textContentMarkup || actionsMarkup || footerContentMarkup ? (
+        <div className={styles.DetailsContainer}>
+          <div className={styles.Details}>
+            {textContentMarkup}
+            {actionsMarkup}
+            {footerContentMarkup}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.DetailsContainer} />
+      );
+
     return (
       <div className={className}>
         <div className={styles.Section}>
-          <div className={styles.DetailsContainer}>
-            <div className={styles.Details}>
-              <TextContainer>
-                <DisplayText size="medium">{heading}</DisplayText>
-                <div className={styles.Content}>{children}</div>
-              </TextContainer>
-
-              <div className={styles.Actions}>
-                <Stack alignment="center">
-                  {buttonFrom(action, {primary: true, size: 'large'})}
-                  {secondaryActionMarkup}
-                </Stack>
-              </div>
-              {footerContentMarkup}
-            </div>
-          </div>
-
+          {detailsMarkup}
           <div className={styles.ImageContainer}>{imageMarkup}</div>
         </div>
       </div>

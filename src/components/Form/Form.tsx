@@ -1,6 +1,7 @@
 import React from 'react';
 
 import VisuallyHidden from '../VisuallyHidden';
+import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 
 export type Enctype =
   | 'application/x-www-form-urlencoded'
@@ -36,7 +37,9 @@ export interface Props {
   onSubmit(event: React.FormEvent<HTMLFormElement>): void;
 }
 
-export default class Form extends React.PureComponent<Props> {
+type CombinedProps = Props & WithAppProviderProps;
+
+class Form extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       acceptCharset,
@@ -49,12 +52,15 @@ export default class Form extends React.PureComponent<Props> {
       name,
       noValidate,
       target,
+      polaris: {intl},
     } = this.props;
     const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
     const submitMarkup = implicitSubmit ? (
       <VisuallyHidden>
-        <button type="submit" aria-hidden="true" />
+        <button type="submit" aria-hidden="true">
+          {intl.translate('Polaris.Common.submit')}
+        </button>
       </VisuallyHidden>
     ) : null;
 
@@ -95,3 +101,5 @@ function normalizeAutoComplete(autoComplete?: boolean) {
 
   return autoComplete ? 'on' : 'off';
 }
+
+export default withAppProvider<Props>()(Form);

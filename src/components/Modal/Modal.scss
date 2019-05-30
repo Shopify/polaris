@@ -3,7 +3,6 @@ $small-width: rem(620px);
 .BodyWrapper {
   display: flex;
   flex-grow: 1;
-  border-radius: border-radius(large);
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }

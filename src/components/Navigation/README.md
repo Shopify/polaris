@@ -190,18 +190,18 @@ Use to present a navigation menu in the [frame](/components/structure/frame).
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
         badge: '15',
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -219,17 +219,17 @@ Use to divide groups of items with a horizontal divider.
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -238,7 +238,7 @@ Use to divide groups of items with a horizontal divider.
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: 'onlineStore',
+        icon: OnlineStoreMajorTwotone,
       },
     ]}
     separator
@@ -257,17 +257,17 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -277,12 +277,12 @@ Use to present a secondary action, related to a section and to title the section
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: 'onlineStore',
+        icon: OnlineStoreMajorTwotone,
       },
     ]}
     action={{
       accessibilityLabel: 'Add sales channel',
-      icon: 'circlePlusOutline',
+      icon: CirclePlusOutlineMinor,
       onClick: () => {},
     }}
   />
@@ -300,22 +300,22 @@ Use to add a different action for an item than the main action, like to view or 
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
         secondaryAction: {
           url: '/admin/orders/add',
           accessibilityLabel: 'Add an order',
-          icon: 'circlePlusOutline',
+          icon: CirclePlusOutlineMinor,
         },
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -333,17 +333,17 @@ Use to show a limited number of items in a section with an option to expand the 
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
     rollup={{
@@ -367,17 +367,17 @@ Use to add a horizontal line between sections.
       {
         url: '/path/to/place',
         label: 'Home',
-        icon: 'home',
+        icon: HomeMajorMonotone,
       },
       {
         url: '/path/to/place',
         label: 'Orders',
-        icon: 'orders',
+        icon: OrdersMajorTwotone,
       },
       {
         url: '/path/to/place',
         label: 'Products',
-        icon: 'products',
+        icon: ProductsMajorTwotone,
       },
     ]}
   />
@@ -386,7 +386,7 @@ Use to add a horizontal line between sections.
       {
         url: '/path/to/place',
         label: 'Online Store',
-        icon: 'onlineStore',
+        icon: OnlineStoreMajorTwotone,
       },
     ]}
     separator

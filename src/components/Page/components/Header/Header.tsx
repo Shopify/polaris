@@ -184,7 +184,11 @@ class Header extends React.PureComponent<CombinedProps, State> {
 
   private renderRollupAction = () => {
     const {rollupOpen} = this.state;
-    const {secondaryActions = [], actionGroups = []} = this.props;
+    const {
+      secondaryActions = [],
+      actionGroups = [],
+      polaris: {intl},
+    } = this.props;
     const rollupMarkup = this.hasRollup ? (
       <div className={styles.Rollup}>
         <Popover
@@ -195,6 +199,9 @@ class Header extends React.PureComponent<CombinedProps, State> {
               plain
               icon={HorizontalDotsMinor}
               onClick={this.handleRollupToggle}
+              accessibilityLabel={intl.translate(
+                'Polaris.Page.Header.rollupButton',
+              )}
             />
           }
         >

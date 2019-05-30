@@ -36,7 +36,7 @@ Use to build the outer wrapper of a page, including the page title and associate
 
 ---
 
-## Use in an embedded application
+## Use in an embedded application (deprecated)
 
 Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the page component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
 
@@ -76,6 +76,10 @@ ReactDOM.render(
   </AppProvider>,
 );
 ```
+
+#### Deprecation rationale
+
+As of v3.17.0, using `Page` to render an embedded app title bar is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. More information can be found [here](https://github.com/Shopify/polaris-react/issues/814). Use `TitleBar` from `@shopify/app-bridge-react` instead. For example, `import {TitleBar} from '@shopify/app-bridge-react';`.
 
 ---
 
@@ -260,7 +264,7 @@ Use when a secondary action links to another website. Actions marked external op
     {
       content: 'Promote',
       external: true,
-      icon: 'external',
+      icon: ExternalMinor,
       url:
         'https://www.facebook.com/business/learn/facebook-page-build-audience',
     },

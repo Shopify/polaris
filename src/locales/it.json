@@ -28,7 +28,10 @@
       "checkbox": "casella di spunta",
       "undo": "Annulla",
       "cancel": "Annulla",
-      "newWindowAccessibilityHint": "(apre una nuova finestra)"
+      "newWindowAccessibilityHint": "(apre una nuova finestra)",
+      "clear": "Cancella",
+      "close": "Chiudi",
+      "submit": "Invia"
     },
     "ContextualSaveBar": {
       "save": "Salva",
@@ -82,7 +85,8 @@
         "actionTitleFile": "Aggiungi file",
         "actionTitleImage": "Aggiungi immagine",
         "actionHintFile": "o rilascia i file per caricarli",
-        "actionHintImage": "o rilascia le immagini per caricarle"
+        "actionHintImage": "o rilascia le immagini per caricarle",
+        "label": "Carica file"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "Le proprietà dell'icona sono state rimosse dalla Pagina. Carica un'icona dell'applicazione nella sezione 'Configurazione app' della dashboard Shopify Partners."
+        "iconWarningMessage": "Le proprietà dell'icona sono state rimosse dalla Pagina. Carica un'icona dell'applicazione nella sezione 'Configurazione app' della dashboard Shopify Partners.",
+        "rollupButton": "Azioni"
       }
     },
     "Pagination": {
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "Il colore {color} non è pensato per essere usato su spinner {size}. Colori disponibili per grandi spinner: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Menu di attivazione/disattivazione"
+    },
     "Tag": {
       "ariaLabel": "Rimuovi {children}"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "Menu di attivazione/disattivazione",
       "SearchField": {
-        "clearButtonLabel": "Cancella"
+        "clearButtonLabel": "Cancella",
+        "search": "Cerca"
       }
     }
   }

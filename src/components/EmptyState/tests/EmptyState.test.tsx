@@ -1,55 +1,48 @@
 import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
-import {
-  Image,
-  DisplayText,
-  TextContainer,
-  Link,
-  Button,
-  ButtonGroup,
-} from 'components';
+import {Image, DisplayText, TextContainer, UnstyledLink} from 'components';
 import EmptyState from '../EmptyState';
 
 describe('<EmptyState />', () => {
-  let imgSrc: string;
-  let footerContentMarkup: React.ReactNode;
-  let emptyState: any;
+  let imgSrc =
+    'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 
-  beforeAll(() => {
-    imgSrc =
-      'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
-    footerContentMarkup = (
-      <p>
-        If you don’t want to add a transfer, you can import your inventory from{' '}
-        <Link url="/settings">settings</Link>.
-      </p>
-    );
+  describe('primaryAction', () => {
+    it('renders a button with the action content if a primaryAction is provided', () => {
+      const emptyState = mountWithAppProvider(
+        <EmptyState action={{content: 'Add transfer'}} image={imgSrc} />,
+      );
+      expect(emptyState.find('button').contains('Add transfer')).toBe(true);
+    });
 
-    emptyState = mountWithAppProvider(
-      <EmptyState
-        heading="Manage your inventory transfers"
-        action={{content: 'Add transfer'}}
-        image={imgSrc}
-        secondaryAction={{
-          content: 'Learn more',
-          url: 'https://help.shopify.com',
-        }}
-        footerContent={footerContentMarkup}
-      >
-        <p>Track and receive your incoming inventory from suppliers.</p>
-      </EmptyState>,
-    );
+    it('renders does not render button with the action content if no primaryAction is provided', () => {
+      const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
+      expect(emptyState.find('button').contains('Add transfer')).toBe(false);
+    });
   });
 
-  it('renders a button with the action content', () => {
-    expect(emptyState.find('button').contains('Add transfer')).toBe(true);
-  });
+  describe('children', () => {
+    it('renders children', () => {
+      const expectedContent =
+        'If you don’t want to add a transfer, you can import your inventory from settings.';
+      const children = (
+        <p>
+          If you don’t want to add a transfer, you can import your inventory
+          from settings.
+        </p>
+      );
 
-  it('renders children and footer content', () => {
-    expect(emptyState.find(TextContainer)).toHaveLength(2);
+      const emptyState = mountWithAppProvider(
+        <EmptyState image={imgSrc}>{children}</EmptyState>,
+      );
+
+      expect(emptyState.find(TextContainer).text()).toContain(expectedContent);
+    });
   });
 
   describe('img', () => {
+    const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
+
     it('passes the provided source to Image', () => {
       expect(emptyState.find(Image).prop('source')).toBe(imgSrc);
     });
@@ -57,27 +50,9 @@ describe('<EmptyState />', () => {
     it('renders an Image with a sourceSet when largeImage is passed', () => {
       imgSrc =
         'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
-      footerContentMarkup = (
-        <p>
-          If you don’t want to add a transfer, you can import your inventory
-          from <Link url="/settings">settings</Link>.
-        </p>
-      );
 
-      emptyState = mountWithAppProvider(
-        <EmptyState
-          heading="Manage your inventory transfers"
-          action={{content: 'Add transfer'}}
-          image={imgSrc}
-          secondaryAction={{
-            content: 'Learn more',
-            url: 'https://help.shopify.com',
-          }}
-          largeImage={imgSrc}
-          footerContent={footerContentMarkup}
-        >
-          <p>Track and receive your incoming inventory from suppliers.</p>
-        </EmptyState>,
+      const emptyState = mountWithAppProvider(
+        <EmptyState image={imgSrc} largeImage={imgSrc} />,
       );
 
       expect(emptyState.find(Image).props().sourceSet).toStrictEqual([
@@ -96,12 +71,14 @@ describe('<EmptyState />', () => {
   });
 
   describe('role', () => {
+    const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
     it('passes the presentation role to Image', () => {
       expect(emptyState.find(Image).prop('role')).toBe('presentation');
     });
   });
 
   describe('alt', () => {
+    const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
     it('passes an empty alt to Image', () => {
       expect(emptyState.find(Image).prop('alt')).toBe('');
     });
@@ -109,59 +86,49 @@ describe('<EmptyState />', () => {
 
   describe('heading', () => {
     it('passes the provided heading to DisplayText', () => {
+      const expectedHeading = 'Manage your inventory transfers';
+      const emptyState = mountWithAppProvider(
+        <EmptyState heading={expectedHeading} image={imgSrc} />,
+      );
       expect(emptyState.find(DisplayText).prop('size')).toBe('medium');
-      expect(
-        emptyState
-          .find(DisplayText)
-          .contains('Manage your inventory transfers'),
-      ).toBe(true);
+      expect(emptyState.find(DisplayText).contains(expectedHeading)).toBe(true);
     });
   });
 
   describe('secondaryAction', () => {
-    it('only renders one button if secondaryAction is not provided', () => {
-      const emptyStateWithoutSecondaryAction = mountWithAppProvider(
+    it('renders secondaryAction if provided', () => {
+      const emptyState = mountWithAppProvider(
         <EmptyState
-          heading="Manage your inventory transfers"
-          action={{content: 'Add transfer'}}
-          image={imgSrc}
-        >
-          <p>Track and receive your incoming inventory from suppliers.</p>
-        </EmptyState>,
-      );
-
-      expect(emptyStateWithoutSecondaryAction.find(Button)).toHaveLength(1);
-      expect(emptyStateWithoutSecondaryAction.find(ButtonGroup)).toHaveLength(
-        0,
-      );
-    });
-  });
-
-  describe('footerContent', () => {
-    it('passes the provided content to TextContainer', () => {
-      const footerContentTextContainer = emptyState.find(TextContainer).last();
-
-      expect(footerContentTextContainer.text()).toContain(
-        'If you don’t want to add a transfer, you can import your inventory from settings.',
-      );
-    });
-
-    it('does not create a footer when footerContent is not provided', () => {
-      const footerlessEmptyState = mountWithAppProvider(
-        <EmptyState
-          heading="Manage your inventory transfers"
-          action={{content: 'Add transfer'}}
-          image={imgSrc}
           secondaryAction={{
             content: 'Learn more',
             url: 'https://help.shopify.com',
           }}
-        >
-          <p>Track and receive your incoming inventory from suppliers.</p>
-        </EmptyState>,
+          image={imgSrc}
+        />,
       );
 
-      expect(footerlessEmptyState.find(TextContainer)).toHaveLength(1);
+      expect(emptyState.find(UnstyledLink).text()).toContain('Learn more');
+    });
+  });
+
+  describe('footerContent', () => {
+    const expectedContent =
+      'If you don’t want to add a transfer, you can import your inventory from settings';
+    const footerContentMarkup = <p>{expectedContent}</p>;
+
+    it('renders footer content', () => {
+      const emptyState = mountWithAppProvider(
+        <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
+      );
+      const footerContentTextContainer = emptyState.find(TextContainer).last();
+
+      expect(footerContentTextContainer.text()).toContain(expectedContent);
+    });
+
+    it('does not create a footer when footerContent is not provided', () => {
+      const emptyState = mountWithAppProvider(<EmptyState image={imgSrc} />);
+
+      expect(emptyState.find(TextContainer)).toHaveLength(0);
     });
   });
 });

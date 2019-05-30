@@ -5,7 +5,7 @@ import {Error} from '../../types';
 export type DualValue = [number, number];
 export type RangeSliderValue = number | DualValue;
 
-export interface Props {
+export interface RangeSliderProps {
   /** Label for the range input */
   label: string;
   /** Adds an action to the label */

@@ -15,6 +15,11 @@ export default React.memo(function Loading() {
       if (appBridge == null && frame) {
         frame.startLoading();
       } else if (appBridge != null) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          "Deprecation: Using `Loading` in an embedded app is deprecated and will be removed in v5.0. Use `Loading` from `@shopify/app-bridge-react` instead. For example, `import {Loading} from '@shopify/app-bridge-react';`",
+        );
+
         appBridgeLoading.current = AppBridgeLoading.create(appBridge);
         appBridgeLoading.current.dispatch(AppBridgeLoading.Action.START);
       }

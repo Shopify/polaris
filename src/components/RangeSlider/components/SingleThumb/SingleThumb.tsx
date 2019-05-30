@@ -4,7 +4,7 @@ import clamp from '../../../../utilities/clamp';
 import Labelled, {helpTextID} from '../../../Labelled';
 
 import {invertNumber, CSS_VAR_PREFIX} from '../../utilities';
-import {Props as RangeSliderProps} from '../../types';
+import {RangeSliderProps} from '../../types';
 
 import styles from './SingleThumb.scss';
 

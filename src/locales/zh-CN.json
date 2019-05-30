@@ -28,7 +28,10 @@
       "checkbox": "复选框",
       "undo": "撤销",
       "cancel": "取消",
-      "newWindowAccessibilityHint": "（打开新窗口）"
+      "newWindowAccessibilityHint": "（打开新窗口）",
+      "clear": "清除",
+      "close": "关闭",
+      "submit": "提交"
     },
     "ContextualSaveBar": {
       "save": "保存",
@@ -81,8 +84,9 @@
       "FileUpload": {
         "actionTitleFile": "添加文件",
         "actionTitleImage": "添加图片",
-        "actionHintFile": "或拖放文件以上传",
-        "actionHintImage": "或拖放图片以上传"
+        "actionHintFile": "或拖放上传",
+        "actionHintImage": "或拖放图片以上传",
+        "label": "上传文件"
       }
     },
     "EmptySearchResult": {
@@ -91,7 +95,7 @@
     "Frame": {
       "skipToContent": "跳到内容",
       "Navigation": {
-        "closeMobileNavigationLabel": "关闭导航"
+        "closeMobileNavigationLabel": "关闭网站地图"
       }
     },
     "Icon": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。"
+        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴控制面板“应用设置”部分上传应用程序图标。",
+        "rollupButton": "编辑"
       }
     },
     "Pagination": {
@@ -139,7 +144,7 @@
         "actionsDropdown": "操作下拉菜单"
       },
       "BulkActions": {
-        "actionsActivatorLabel": "操作",
+        "actionsActivatorLabel": "编辑",
         "moreActionsActivatorLabel": "其他操作",
         "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
       },
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "{size} 加载微调器不支持颜色 {color}。大型加载微调器的可用颜色：{colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "切换菜单"
+    },
     "Tag": {
       "ariaLabel": "删除 {children}"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "切换菜单",
       "SearchField": {
-        "clearButtonLabel": "清除"
+        "clearButtonLabel": "清除",
+        "search": "搜索"
       }
     }
   }

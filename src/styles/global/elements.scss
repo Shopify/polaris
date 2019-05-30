@@ -50,3 +50,10 @@ p {
   font-size: 1em;
   font-weight: 400;
 }
+
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  border-style: none;
+}

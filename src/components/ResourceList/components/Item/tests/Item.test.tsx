@@ -270,16 +270,21 @@ describe('<Item />', () => {
     });
 
     it('calls onSelectionChange with the id of the item when clicking the LargerSelectionArea', () => {
+      const sortOrder = 0;
       const wrapper = mountWithAppProvider(
         <ResourceListContext.Provider value={mockSelectableContext}>
-          <Item id={itemId} url={url} />
+          <Item id={itemId} url={url} sortOrder={sortOrder} />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'LargerSelectionArea').simulate('click');
+      findByTestID(wrapper, 'LargerSelectionArea').simulate('click', {
+        nativeEvent: {shiftKey: false},
+      });
       expect(mockSelectableContext.onSelectionChange).toHaveBeenCalledWith(
         true,
         itemId,
+        sortOrder,
+        false,
       );
     });
   });
@@ -299,21 +304,27 @@ describe('<Item />', () => {
 
     it('calls onSelectionChange with the id of the item even if url or onClick is present', () => {
       const onClick = jest.fn();
+      const sortOrder = 0;
       const wrapper = mountWithAppProvider(
-        <ResourceListContext.Provider value={mockSelectableContext}>
+        <ResourceListContext.Provider value={mockSelectModeContext}>
           <Item
             id={itemId}
             url={url}
             onClick={onClick}
+            sortOrder={sortOrder}
             accessibilityLabel={ariaLabel}
           />
         </ResourceListContext.Provider>,
       );
 
-      findByTestID(wrapper, 'Item-Wrapper').simulate('click');
+      findByTestID(wrapper, 'Item-Wrapper').simulate('click', {
+        nativeEvent: {shiftKey: false},
+      });
       expect(mockSelectModeContext.onSelectionChange).toHaveBeenCalledWith(
         true,
         itemId,
+        sortOrder,
+        false,
       );
     });
 

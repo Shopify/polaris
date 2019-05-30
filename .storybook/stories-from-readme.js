@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Polaris from '../src';
+import {AppProvider, Heading} from '../src';
 import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf} from '@storybook/react';
 import Playground from '../playground/Playground';
@@ -49,7 +49,7 @@ export function generateStories(readme, readmeModule) {
 
 export function hydrateExecutableExamples(readme) {
   readme.examples = readme.examples.map((example) => {
-    example.Component = example.code({React, ...Polaris});
+    example.Component = example.code();
     return example;
   });
 
@@ -65,7 +65,7 @@ export function addPlaygroundStory(playgroundModule) {
 function AppProviderDecorator(story) {
   return (
     <div style={{padding: '8px'}}>
-      <Polaris.AppProvider>{story()}</Polaris.AppProvider>
+      <AppProvider>{story()}</AppProvider>
     </div>
   );
 }
@@ -89,7 +89,7 @@ function AllExamplesStoryForReadme(readme) {
     <React.Fragment>
       {readme.examples.map((example) => (
         <div key={example.name} style={containerStyle}>
-          <Polaris.Heading>{example.name}</Polaris.Heading>
+          <Heading>{example.name}</Heading>
           <example.Component />
         </div>
       ))}
