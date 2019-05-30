@@ -6,9 +6,7 @@ import {Badge, Spinner, Portal, Scrollable} from 'components';
 import {Footer, Dialog} from '../components';
 import Modal from '../Modal';
 
-import WithinContentContext, {
-  WithinContentContextType,
-} from '../../WithinContentContext';
+import WithinContentContext from '../../WithinContentContext';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -25,9 +23,7 @@ describe('<Modal>', () => {
   });
 
   it('has a child with contentContext', () => {
-    function TestComponent(_: {
-      withinContentContainer: WithinContentContextType;
-    }) {
+    function TestComponent(_: {withinContentContainer: any}) {
       return null;
     }
 

@@ -2,16 +2,12 @@ import React from 'react';
 import {mountWithAppProvider} from 'test-utilities';
 import {Card, Badge, Button} from 'components';
 
-import WithinContentContext, {
-  WithinContentContextType,
-} from '../../WithinContentContext';
+import WithinContentContext from '../../WithinContentContext';
 import {Section} from '../components';
 
 describe('<Card />', () => {
   it('has a child with prop withinContentContainer set to true', () => {
-    function TestComponent(_: {
-      withinContentContainer: WithinContentContextType;
-    }) {
+    function TestComponent(_: {withinContentContainer: any}) {
       return null;
     }
 

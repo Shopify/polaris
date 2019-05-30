@@ -1,9 +1,5 @@
 import React from 'react';
 
-export type WithinContentContextType = boolean;
-
-const WithinContentContext = React.createContext<WithinContentContextType>(
-  false,
-);
+const WithinContentContext = React.createContext<boolean>(false);
 
 export default WithinContentContext;
