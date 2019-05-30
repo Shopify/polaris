@@ -113,6 +113,8 @@ export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
       showHidden = false,
       allowMultiple = true,
       showVariants = true,
+      onSelection,
+      onCancel,
     } = this.props;
     const wasOpen = prevProps.open;
 
@@ -123,6 +125,24 @@ export class ResourcePicker extends React.PureComponent<CombinedProps, never> {
         selectMultiple: allowMultiple,
         showVariants,
       });
+    }
+
+    this.appBridgeResourcePicker.unsubscribe();
+
+    if (onSelection != null) {
+      this.appBridgeResourcePicker.subscribe(
+        AppBridgeResourcePicker.Action.SELECT,
+        ({selection}) => {
+          onSelection({selection});
+        },
+      );
+    }
+
+    if (onCancel != null) {
+      this.appBridgeResourcePicker.subscribe(
+        AppBridgeResourcePicker.Action.CANCEL,
+        onCancel,
+      );
     }
 
     if (wasOpen !== open) {
