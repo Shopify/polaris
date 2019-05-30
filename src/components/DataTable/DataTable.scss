@@ -79,8 +79,6 @@ $breakpoint: 768px;
 .Cell-firstColumn {
   @include text-emphasis-normal;
   @include text-breakword;
-  min-width: $first-column-width;
-  max-width: $first-column-width;
   text-align: left;
   white-space: normal;
 }
