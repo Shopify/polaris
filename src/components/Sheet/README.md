@@ -154,7 +154,7 @@ class SheetExample extends React.Component {
       <div style={{maxHeight: '640px', overflow: 'visible'}}>
         <AppProvider theme={theme}>
           <Frame topBar={<TopBar />}>
-            <Page singleColumn title="Big yellow socks">
+            <Page narrowWidth title="Big yellow socks">
               <Card sectioned>
                 <FormLayout>
                   <TextField

@@ -22,7 +22,7 @@ export interface Props extends HeaderProps {
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
-  singleColumn?: boolean;
+  narrowWidth?: boolean;
   /**
    * Force render in page and do not delegate to the app bridge TitleBar action
    * @default false
@@ -32,7 +32,14 @@ export interface Props extends HeaderProps {
   forceRender?: boolean;
 }
 
-export type ComposedProps = Props & WithAppProviderProps;
+export interface DeprecatedProps {
+  /** Decreases the maximum layout width. Intended for single-column layouts
+   * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/structure/page#props-narrow-width}
+   */
+  singleColumn?: boolean;
+}
+
+export type ComposedProps = Props & DeprecatedProps & WithAppProviderProps;
 
 const APP_BRIDGE_PROPS: (keyof Props)[] = [
   'title',
@@ -90,12 +97,25 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   }
 
   render() {
-    const {children, fullWidth, singleColumn, ...rest} = this.props;
+    const {
+      children,
+      fullWidth,
+      narrowWidth,
+      singleColumn,
+      ...rest
+    } = this.props;
+
+    if (singleColumn) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
+      );
+    }
 
     const className = classNames(
       styles.Page,
       fullWidth && styles.fullWidth,
-      singleColumn && styles.singleColumn,
+      (narrowWidth || singleColumn) && styles.narrowWidth,
     );
 
     const headerMarkup =
@@ -180,4 +200,4 @@ export class Page extends React.PureComponent<ComposedProps, never> {
   }
 }
 
-export default withAppProvider<Props>()(Page);
+export default withAppProvider<Props & DeprecatedProps>()(Page);

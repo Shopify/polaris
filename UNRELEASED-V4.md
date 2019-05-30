@@ -52,3 +52,5 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Update React imports to use the default imports intead of `import * as` ([1523](https://github.com/Shopify/polaris-react/pull/1523))
 
 ### Deprecations
+
+- Renamed `singleColumn`on`Page`to`narrowWidth` ([#1606](https://github.com/Shopify/polaris-react/pull/1606)).
