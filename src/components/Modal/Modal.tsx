@@ -301,12 +301,8 @@ export class Modal extends React.Component<CombinedProps, State> {
 
     const animated = !instant;
 
-    const context = {
-      withinContentContainer: true,
-    };
-
     return (
-      <WithinContentContext.Provider value={context}>
+      <WithinContentContext.Provider value>
         <Portal idPrefix="modal">
           <TransitionGroup appear={animated} enter={animated} exit={animated}>
             {dialog}

@@ -9,15 +9,19 @@ import {Section} from '../components';
 
 describe('<Card />', () => {
   it('has a child with prop withinContentContainer set to true', () => {
-    function TestComponent(_: WithinContentContextType) {
+    function TestComponent(_: {
+      withinContentContainer: WithinContentContextType;
+    }) {
       return null;
     }
 
     const component = mountWithAppProvider(
       <Card>
         <WithinContentContext.Consumer>
-          {(props) => {
-            return <TestComponent {...props} />;
+          {(withinContentContext) => {
+            return (
+              <TestComponent withinContentContainer={withinContentContext} />
+            );
           }}
         </WithinContentContext.Consumer>
       </Card>,

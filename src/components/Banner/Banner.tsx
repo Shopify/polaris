@@ -48,7 +48,7 @@ export default class Banner extends React.PureComponent<Props, never> {
   render() {
     return (
       <WithinContentContext.Consumer>
-        {({withinContentContainer}) => {
+        {(withinContentContainer) => {
           const {
             icon,
             action,

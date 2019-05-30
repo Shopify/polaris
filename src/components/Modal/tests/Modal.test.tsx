@@ -25,15 +25,19 @@ describe('<Modal>', () => {
   });
 
   it('has a child with contentContext', () => {
-    function TestComponent(_: WithinContentContextType) {
+    function TestComponent(_: {
+      withinContentContainer: WithinContentContextType;
+    }) {
       return null;
     }
 
     const component = mountWithAppProvider(
       <Modal onClose={jest.fn()} open>
         <WithinContentContext.Consumer>
-          {(props) => {
-            return <TestComponent {...props} />;
+          {(withinContentContext) => {
+            return (
+              <TestComponent withinContentContainer={withinContentContext} />
+            );
           }}
         </WithinContentContext.Consumer>
       </Modal>,

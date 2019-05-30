@@ -41,7 +41,7 @@ describe('<Navigation />', () => {
       const Child: React.SFC<{}> = (_props) => {
         return (
           <WithinContentContext.Consumer>
-            {({withinContentContainer}) =>
+            {(withinContentContainer) =>
               withinContentContainer ? <div /> : null
             }
           </WithinContentContext.Consumer>
