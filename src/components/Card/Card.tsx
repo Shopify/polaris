@@ -5,7 +5,7 @@ import {Action, DisableableAction, contentContextTypes} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
-import {Header, Section} from './components';
+import {Header, Section, Subsection} from './components';
 import styles from './Card.scss';
 
 export interface Props {
@@ -28,6 +28,7 @@ export interface Props {
 export default class Card extends React.PureComponent<Props, never> {
   static Section = Section;
   static Header = Header;
+  static Subsection = Subsection;
   static childContextTypes = contentContextTypes;
 
   getChildContext() {

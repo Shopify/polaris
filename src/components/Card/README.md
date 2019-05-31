@@ -17,6 +17,8 @@ keywords:
   - card with button in the footer
   - card with button in the heading
   - card with multiple sections
+  - card with multiple sections and subsections
+  - card with subsections
   - sectioned card
   - card with a subdued section
   - subdued card for secondary content
@@ -360,6 +362,39 @@ Use when your card section has actions that apply only to that section.
   </Card.Section>
   <Card.Section title="Contact Information" actions={[{content: 'Edit'}]}>
     <p>john.smith@example.com</p>
+  </Card.Section>
+</Card>
+```
+
+### Card with sections that have sub-sections
+
+Use when your card sections need further categorization.
+
+```jsx
+<Card title="Customer">
+  <Card.Section>
+    <p>John Smith</p>
+  </Card.Section>
+  <Card.Section title="Addresses">
+    <Card.Subsection>
+      123 First St
+      <br />
+      Somewhere
+      <br />
+      The Universe
+    </Card.Subsection>
+    <Card.Subsection>
+      123 Second St
+      <br />
+      Somewhere
+      <br />
+      The Universe
+    </Card.Subsection>
+  </Card.Section>
+  <Card.Section>
+    <Card.Subsection>
+      A single subsection without a sibling has no visual appearance
+    </Card.Subsection>
   </Card.Section>
 </Card>
 ```

@@ -71,6 +71,14 @@
   }
 }
 
+.Subsection {
+  + .Subsection {
+    margin-top: spacing();
+    padding-top: spacing();
+    border-top: border-width() solid color('sky');
+  }
+}
+
 .Footer {
   display: flex;
   justify-content: flex-end;
