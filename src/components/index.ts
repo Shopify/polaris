@@ -309,8 +309,6 @@ export {default as Indicator, Props as IndicatorProps} from './Indicator';
 
 export {default as withContext} from './WithContext';
 
-export {default as withRef, WithRef} from './WithRef';
-
 export {PolarisContext} from './types';
 
 export {DATA_ATTRIBUTE} from './shared';

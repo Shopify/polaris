@@ -1342,15 +1342,6 @@
     url-search-params-polyfill "^5.0.0"
     whatwg-fetch "^3.0.0"
 
-"@shopify/react-compose@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/react-compose/-/react-compose-1.0.0.tgz#72273a135986390b94894519a5960d1d161cd322"
-  integrity sha512-q4HVwupc0D1Jdum/aQpOtHSO+I0QwyAVHOieEXtTGAfjkdPRrVzaIhmUfWfxY1yguz/SqWSjVbKFeczei+qutA==
-  dependencies:
-    "@shopify/useful-types" "^1.2.4"
-    hoist-non-react-statics "^3.0.1"
-    tslib "^1.9.3"
-
 "@shopify/sewing-kit@0.83.1":
   version "0.83.1"
   resolved "https://registry.yarnpkg.com/@shopify/sewing-kit/-/sewing-kit-0.83.1.tgz#d6357bdb55326301c4d4020b8bce1b1c4ea1feda"
@@ -1455,14 +1446,6 @@
     webpack-plugin-hash-output "npm:webpack-plugin-hash-output-mini-css@3.1.0-beta.4"
     whatwg-url "^6.1.0"
     yargs "^12.0.2"
-
-"@shopify/useful-types@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-1.2.4.tgz#4fdbdb74f75d8cfbcc0aa80120be687bf4fed87e"
-  integrity sha512-olOlCrmhHeSuEpXz+umujx8blGHrA6YKjx60R0SjU0dgtbKHv3MjJAM73AsHoN8dLzpfgvcbDgZQlNL7CM7N0w==
-  dependencies:
-    "@types/react" ">=16.4.0"
-    tslib "^1.9.3"
 
 "@shopify/webpack-asset-metadata-plugin@^1.0.3":
   version "1.0.3"
@@ -2245,7 +2228,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16.4.0", "@types/react@^16.0.2", "@types/react@^16.8.15":
+"@types/react@*", "@types/react@^16.0.2", "@types/react@^16.8.15":
   version "16.8.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.15.tgz#a76515fed5aa3e996603056f54427fec5f2a5122"
   integrity sha512-dMhzw1rWK+wwJWvPp5Pk12ksSrm/z/C/+lOQbMZ7YfDQYnJ02bc0wtg4EJD9qrFhuxFrf/ywNgwTboucobJqQg==
@@ -9206,13 +9189,6 @@ hoist-non-react-statics@^2.5.0:
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
   integrity sha512-6Bl6XsDT1ntE0lHbIhr4Kp2PGcleGZ66qu5Jqk8lc0Xc/IeG6gVLmwUGs/K0Us+L8VWoKgj0uWdPMataOsm31w==
 
-hoist-non-react-statics@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.0.1.tgz#fba3e7df0210eb9447757ca1a7cb607162f0a364"
-  integrity sha512-1kXwPsOi0OGQIZNVMPvgWJ9tSnGMiMfJdihqEzrPEXlHOBh9AAHXX/QYmAJTXztnz/K+PQ8ryCb4eGaN6HlGbQ==
-  dependencies:
-    react-is "^16.3.2"
-
 hoist-non-react-statics@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
@@ -14418,23 +14394,6 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.0, prop-types@^15.6.2:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
-  integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
-  dependencies:
-    loose-envify "^1.3.1"
-    object-assign "^4.1.1"
-
-prop-types@^15.6.0:
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
-  integrity sha1-zq8IMCL8RrSjX2nhPvda7Q1jmFY=
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.3.1"
-    object-assign "^4.1.1"
-
 prop-types@15.7.2, prop-types@^15.5.0, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
@@ -14901,11 +14860,6 @@ react-is@^16.3.1:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
   integrity sha512-3XpazGqS5DEOLiuR6JQ2Sg6URq/33d1BHJVaUvtMz579KRhd2D0pqabNEe5czv785yzKBPZimOf0UNIXa3jw1A==
-
-react-is@^16.3.2:
-  version "16.5.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.0.tgz#2ec7c192709698591efe13722fab3ef56144ba55"
-  integrity sha512-kpkCGLsChXTEQJVmowQqHpCjHKJFwB4SIChYaaaiAkq8OtE2aBg5pQe8/xnFlGmz9KmMx1H4oQRUyxP7qC9v5A==
 
 react-is@^16.7.0, react-is@^16.8.6:
   version "16.8.6"

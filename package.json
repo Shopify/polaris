@@ -183,7 +183,6 @@
     "@shopify/javascript-utilities": "^2.2.1",
     "@shopify/polaris-icons": "^3.3.0",
     "@shopify/polaris-tokens": "^2.5.0",
-    "@shopify/react-compose": "^1.0.0",
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
     "@types/react-transition-group": "^2.0.7",
