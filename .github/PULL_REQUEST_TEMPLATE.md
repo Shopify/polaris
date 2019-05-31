@@ -39,19 +39,16 @@ Fixes #0000 <!-- link to issue if one exists -->
 
 ```jsx
 import React from 'react';
-import {Page} from '@shopify/polaris';
+import {Page} from '../src';
 
-interface State {}
-
-export default class Playground extends React.Component<never, State> {
-  render() {
-    return (
-      <Page title="Playground">
-        {/* Add the code you want to test here */}
-      </Page>
-    );
-  }
+export default function Playground() {
+  return (
+    <Page title="Playground">
+      {/* Add the code you want to test in here */}
+    </Page>
+  );
 }
+
 ```
 
 </details>
