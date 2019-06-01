@@ -161,7 +161,7 @@
         "selectFilterValuePlaceholder": "फ़िल्टर चुनें..."
       },
       "DateSelector": {
-        "dateFilterLabel": "मू्ल्य चुनें",
+        "dateFilterLabel": "मूल्य चुनें",
         "dateValueLabel": "दिनांक",
         "dateValueError": "DD-MM-YYYY फ़ॉर्मेट से मिलान",
         "dateValuePlaceholder": "YYYY-MM-DD",
