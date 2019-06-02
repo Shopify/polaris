@@ -67,7 +67,7 @@ $stacking-order: (
   align-items: center;
   width: 100%;
   min-height: control-height();
-  padding: control-vertical-padding() rem(8px) control-vertical-padding()
+  padding: control-vertical-padding() spacing(tight) control-vertical-padding()
     spacing(base-tight);
 }
 
