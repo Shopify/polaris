@@ -52,6 +52,8 @@ export interface State {
   lockPosition: boolean;
 }
 
+const OBSERVER_CONFIG = {childList: true, subtree: true};
+
 export default class PositionedOverlay extends React.PureComponent<
   Props,
   State
@@ -71,6 +73,13 @@ export default class PositionedOverlay extends React.PureComponent<
 
   private overlay: HTMLElement | null = null;
   private scrollableContainer: HTMLElement | Document | null = null;
+  private observer: MutationObserver;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.observer = new MutationObserver(this.handleMeasurement);
+  }
 
   componentDidMount() {
     this.scrollableContainer = Scrollable.forNode(this.props.activator);
@@ -90,10 +99,6 @@ export default class PositionedOverlay extends React.PureComponent<
         this.handleMeasurement,
       );
     }
-  }
-
-  componentWillReceiveProps() {
-    this.handleMeasurement();
   }
 
   componentDidUpdate() {
@@ -152,6 +157,8 @@ export default class PositionedOverlay extends React.PureComponent<
 
   private handleMeasurement = () => {
     const {lockPosition, top} = this.state;
+
+    this.observer.disconnect();
 
     this.setState(
       ({left, top}) => ({
@@ -220,23 +227,29 @@ export default class PositionedOverlay extends React.PureComponent<
           preferredAlignment,
         );
 
-        this.setState({
-          measuring: false,
-          activatorRect: getRectForNode(activator),
-          left: horizontalPosition,
-          top: lockPosition ? top : verticalPosition.top,
-          lockPosition: Boolean(fixed),
-          height: verticalPosition.height || 0,
-          width: fullWidth ? overlayRect.width : null,
-          positioning: verticalPosition.positioning as Positioning,
-          outsideScrollableContainer:
-            onScrollOut != null &&
-            rectIsOutsideOfRect(
-              activatorRect,
-              intersectionWithViewport(scrollableContainerRect),
-            ),
-          zIndex,
-        });
+        this.setState(
+          {
+            measuring: false,
+            activatorRect: getRectForNode(activator),
+            left: horizontalPosition,
+            top: lockPosition ? top : verticalPosition.top,
+            lockPosition: Boolean(fixed),
+            height: verticalPosition.height || 0,
+            width: fullWidth ? overlayRect.width : null,
+            positioning: verticalPosition.positioning as Positioning,
+            outsideScrollableContainer:
+              onScrollOut != null &&
+              rectIsOutsideOfRect(
+                activatorRect,
+                intersectionWithViewport(scrollableContainerRect),
+              ),
+            zIndex,
+          },
+          () => {
+            if (!this.overlay) return;
+            this.observer.observe(this.overlay, OBSERVER_CONFIG);
+          },
+        );
       },
     );
   };
