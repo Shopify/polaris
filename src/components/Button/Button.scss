@@ -130,8 +130,8 @@ $spinner-size: rem(20px);
 .plain {
   @include recolor-icon(color('blue'));
   margin: (-1 * $vertical-padding) rem(-8px);
-  padding-left: rem(8px);
-  padding-right: rem(8px);
+  padding-left: spacing(tight);
+  padding-right: spacing(tight);
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -237,8 +237,8 @@ $spinner-size: rem(20px);
 }
 
 .iconOnly {
-  padding-left: rem(8px);
-  padding-right: rem(8px);
+  padding-left: spacing(tight);
+  padding-right: spacing(tight);
 
   &.sizeLarge {
     padding-left: spacing(base-tight);
