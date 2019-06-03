@@ -310,12 +310,16 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       describedBy.push(`${id}CharacterCounter`);
     }
 
-    const labelledBy = [labelID(id)];
+    const labelledBy: string[] = [];
     if (prefix) {
       labelledBy.push(`${id}Prefix`);
     }
     if (suffix) {
       labelledBy.push(`${id}Suffix`);
+    }
+
+    if (labelledBy.length) {
+      labelledBy.unshift(labelID(id));
     }
 
     const inputClassName = classNames(
@@ -353,7 +357,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')
         : undefined,
-      'aria-labelledby': labelledBy.join(' '),
+      'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
       'aria-invalid': Boolean(error),
       'aria-owns': ariaOwns,
       'aria-activedescendant': ariaActiveDescendant,
