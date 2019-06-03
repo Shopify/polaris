@@ -353,7 +353,6 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')
         : undefined,
-      'aria-label': label,
       'aria-labelledby': labelledBy.join(' '),
       'aria-invalid': Boolean(error),
       'aria-owns': ariaOwns,
