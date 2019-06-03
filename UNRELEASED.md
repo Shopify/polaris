@@ -42,6 +42,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 ### Development workflow
 
 - Made the a11y test that runs in CI fail if it finds any issues ([#1564](https://github.com/Shopify/polaris-react/pull/1564))
+- Updated Storybook to `v5.1.0-rc.4` ([#1616](https://github.com/Shopify/polaris-react/pull/1616))
 
 ### Dependency upgrades
 
