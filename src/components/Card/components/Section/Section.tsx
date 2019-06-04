@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classNames} from '@shopify/css-utilities';
-import {DisableableAction} from '../../../../types';
+import {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import Stack from '../../../Stack';
 import ButtonGroup from '../../../ButtonGroup';
@@ -14,7 +14,7 @@ export interface Props {
   children?: React.ReactNode;
   subdued?: boolean;
   fullWidth?: boolean;
-  actions?: DisableableAction[];
+  actions?: ComplexAction[];
 }
 
 export default function Section({

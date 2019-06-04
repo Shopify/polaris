@@ -1,7 +1,11 @@
 import * as React from 'react';
 import {classNames} from '@shopify/css-utilities';
 
-import {Action, DisableableAction, contentContextTypes} from '../../types';
+import {
+  DisableableAction,
+  ComplexAction,
+  contentContextTypes,
+} from '../../types';
 import {buttonFrom} from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
@@ -20,9 +24,9 @@ export interface Props {
   /** Card header actions */
   actions?: DisableableAction[];
   /** Primary action in the card footer */
-  primaryFooterAction?: Action;
+  primaryFooterAction?: ComplexAction;
   /** Secondary action in the card footer */
-  secondaryFooterAction?: Action;
+  secondaryFooterAction?: ComplexAction;
 }
 
 export default class Card extends React.PureComponent<Props, never> {
