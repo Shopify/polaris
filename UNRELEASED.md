@@ -43,6 +43,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 - Made the a11y test that runs in CI fail if it finds any issues ([#1564](https://github.com/Shopify/polaris-react/pull/1564))
 - Updated Storybook to `v5.1.0-rc.4` ([#1616](https://github.com/Shopify/polaris-react/pull/1616))
+- Fixed a visual regression testing issue with the Card component ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
 
 ### Dependency upgrades
 
