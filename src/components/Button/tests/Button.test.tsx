@@ -1,4 +1,5 @@
 import React from 'react';
+import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {UnstyledLink, Icon, Spinner} from 'components';
 import Button, {IconWrapper} from '../Button';
@@ -141,15 +142,9 @@ describe('<Button />', () => {
   });
 
   describe('icon', () => {
-    it('renders an icon if it’s a string', () => {
-      const source = 'delete';
-      const button = mountWithAppProvider(<Button icon={source} />);
-      expect(button.find(Icon).prop('source')).toBe(source);
-    });
-    it('renders an icon if it’s an SVGSource object', () => {
-      const source = {body: '<SVG />', viewBox: ''};
-      const button = mountWithAppProvider(<Button icon={source} />);
-      expect(button.find(Icon).prop('source')).toBe(source);
+    it('renders an icon if it’s a component', () => {
+      const button = mountWithAppProvider(<Button icon={PlusMinor} />);
+      expect(button.find(Icon).prop('source')).toBe(PlusMinor);
     });
     it('renders a react node if it is one', () => {
       const Icon = () => <div>Hi there!</div>;
