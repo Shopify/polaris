@@ -161,7 +161,7 @@
         "selectFilterValuePlaceholder": "फ़िल्टर चुनें..."
       },
       "DateSelector": {
-        "dateFilterLabel": "मू्ल्य चुनें",
+        "dateFilterLabel": "मूल्य चुनें",
         "dateValueLabel": "दिनांक",
         "dateValueError": "DD-MM-YYYY फ़ॉर्मेट से मिलान",
         "dateValuePlaceholder": "YYYY-MM-DD",
@@ -201,7 +201,7 @@
       "warningMessage": "{color} रंग का उपयोग {size} स्पिनर पर करने के लिए नहीं है. बड़े स्पिनर पर उपलब्ध रंग हैं: {colors}"
     },
     "Tabs": {
-      "toggleTabsLabel": "मेन्यू टॉगल करें"
+      "toggleTabsLabel": "मेनू टॉगल करें"
     },
     "Tag": {
       "ariaLabel": "{children} को निकालें"
@@ -211,7 +211,7 @@
       "characterCountWithMaxLength": "{limit} वर्णों में से {count} का उपयोग किया गया"
     },
     "TopBar": {
-      "toggleMenuLabel": "मेन्यू टॉगल करें",
+      "toggleMenuLabel": "मेनू टॉगल करें",
       "SearchField": {
         "clearButtonLabel": "मिटाएं",
         "search": "खोजें"
