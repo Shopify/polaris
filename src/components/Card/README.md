@@ -17,7 +17,6 @@ keywords:
   - card with button in the footer
   - card with button in the heading
   - card with multiple sections
-  - card with multiple sections and subsections
   - card with subsections
   - sectioned card
   - card with a subdued section
@@ -366,7 +365,7 @@ Use when your card section has actions that apply only to that section.
 </Card>
 ```
 
-### Card with sections that have sub-sections
+### Card with subsection
 
 Use when your card sections need further categorization.
 
