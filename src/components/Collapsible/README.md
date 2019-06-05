@@ -142,12 +142,10 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-Use the collapsible component in conjunction with a [button](/components/actions/button).
+Use the collapsible component in conjunction with a [button](/components/actions/button). Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
 
 - Use the required `id` prop of the collapsible component to give the content a unique `id` value
 - Use the `ariaExpanded` prop on the button component to add an `aria-expanded` attribute, which conveys the expanded or collapsed state to screen reader users
 - Use the `ariaControls` prop on the button component, and set its value to the `id` value of the collapsible component
-
-Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
 
 <!-- /content-for -->
