@@ -1,6 +1,6 @@
 import React from 'react';
 import {SaveMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import Icon from '../../../../../../Icon';
 import UnstyledLink from '../../../../../../UnstyledLink';
 import Action from '../Action';

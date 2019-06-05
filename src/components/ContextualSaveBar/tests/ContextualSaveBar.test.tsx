@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import ContextualSaveBar from '../ContextualSaveBar';
 import {FrameContext, createFrameContext} from '../../Frame';
 

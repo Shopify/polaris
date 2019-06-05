@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {calculateDraggerY, alphaForDraggerY} from '../utilities';
 import Slidable from '../../Slidable';
 import AlphaPicker from '../AlphaPicker';

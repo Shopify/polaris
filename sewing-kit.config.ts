@@ -15,6 +15,7 @@ export default function sewingKitConfig(
         config.roots = [join(__dirname, 'src'), join(__dirname, 'tests')];
 
         config.setupFiles.push(join(tests, 'setup.ts'));
+        config.setupTestFrameworkScriptFile = join(tests, 'each-test.ts');
 
         // Code coverage
         config.collectCoverageFrom = [

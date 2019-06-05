@@ -1,6 +1,6 @@
 import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {Popover} from 'components';
 import CheckableButton from '../../CheckableButton';
 import {BulkActionButton} from '../components';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {RadioButton, Checkbox, InlineError} from 'components';
 import ChoiceList from '../ChoiceList';
 

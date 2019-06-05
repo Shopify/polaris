@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {calculateDraggerY, hueForDraggerY} from '../utilities';
 import Slidable from '../../Slidable';
 import HuePicker from '../HuePicker';

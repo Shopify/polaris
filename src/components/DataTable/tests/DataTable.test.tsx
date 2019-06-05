@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import {isEdgeVisible, getPrevAndCurrentColumns} from '../utilities';
 import {Cell, Navigation} from '../components';
 import DataTable, {CombinedProps as Props} from '../DataTable';

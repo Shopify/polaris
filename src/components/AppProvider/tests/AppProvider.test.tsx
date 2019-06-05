@@ -1,7 +1,7 @@
 import React from 'react';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import AppProviderContext from '../context';
 import AppProvider from '../AppProvider';
-import {mountWithAppProvider} from '../../../test-utilities';
 
 describe('<AppProvider />', () => {
   it('updates polaris context when props change', () => {

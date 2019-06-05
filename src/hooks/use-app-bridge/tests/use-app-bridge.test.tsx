@@ -1,7 +1,7 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {createPolarisContext} from '../../../components';
-import {mountWithAppProvider} from '../../../test-utilities/enzyme';
 
 import useAppBridge from '../use-app-bridge';
 

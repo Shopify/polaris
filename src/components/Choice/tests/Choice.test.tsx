@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {InlineError} from 'components';
 import Choice from '../Choice';
 

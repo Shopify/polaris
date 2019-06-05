@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, findByTestID} from 'test-utilities';
+import {mountWithAppProvider, findByTestID} from 'test-utilities/legacy';
 import MessageIndicator from '../MessageIndicator';
 
 describe('<Indicator />', () => {

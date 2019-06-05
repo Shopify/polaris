@@ -1,6 +1,10 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider, trigger, findByTestID} from 'test-utilities';
+import {
+  mountWithAppProvider,
+  trigger,
+  findByTestID,
+} from 'test-utilities/legacy';
 import Button from '../../../../Button';
 import {ToastProps as Props} from '../../../types';
 import Toast from '../Toast';

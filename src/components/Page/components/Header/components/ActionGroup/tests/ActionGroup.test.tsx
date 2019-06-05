@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {SaveMinor} from '@shopify/polaris-icons';
 import {Popover, ActionList} from 'components';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import Action from '../../Action';
 import ActionGroup from '../ActionGroup';
 

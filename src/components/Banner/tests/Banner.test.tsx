@@ -8,7 +8,7 @@ import {
   FlagMajorTwotone,
 } from '@shopify/polaris-icons';
 import {ReactWrapper} from 'enzyme';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button, Icon, UnstyledLink, Heading} from 'components';
 import Banner from '..';
 import WithinContentContext from '../../WithinContentContext';

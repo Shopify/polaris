@@ -1,6 +1,10 @@
 import React from 'react';
 import {ResourceList, Select, Spinner, EmptySearchResult} from 'components';
-import {findByTestID, mountWithAppProvider, trigger} from 'test-utilities';
+import {
+  findByTestID,
+  mountWithAppProvider,
+  trigger,
+} from 'test-utilities/legacy';
 import {BulkActions, Item} from '../components';
 
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];

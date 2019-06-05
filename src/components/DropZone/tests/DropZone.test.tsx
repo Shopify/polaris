@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {clock} from '@shopify/jest-dom-mocks';
 import {Label, Labelled, DisplayText, Caption} from 'components';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import DropZone from '../DropZone';
 
 const files = [

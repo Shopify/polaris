@@ -1,7 +1,8 @@
 import React from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame} from '@shopify/jest-dom-mocks';
-import {mountWithAppProvider, documentHasStyle} from 'test-utilities';
+import {documentHasStyle} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {
   TrapFocus,
   ContextualSaveBar as PolarisContextualSavebar,

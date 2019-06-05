@@ -1,6 +1,6 @@
 import React from 'react';
 import {SaveMinor} from '@shopify/polaris-icons';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Breadcrumbs, buttonsFrom, Pagination} from 'components';
 import {LinkAction, ActionListItemDescriptor} from '../../../../../types';
 import {Action, ActionGroup, ActionGroupDescriptor} from '../components';

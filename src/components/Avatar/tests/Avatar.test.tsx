@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider, trigger} from 'test-utilities';
+import {mountWithAppProvider, trigger} from 'test-utilities/legacy';
 import {Image} from 'components';
 
 import Avatar from '../Avatar';

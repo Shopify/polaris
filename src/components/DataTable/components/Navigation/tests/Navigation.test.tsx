@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithAppProvider} from 'test-utilities';
+import {mountWithAppProvider} from 'test-utilities/legacy';
 import {Button} from 'components';
 import Navigation from '../Navigation';
 
