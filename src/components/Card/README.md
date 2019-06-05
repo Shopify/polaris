@@ -267,7 +267,29 @@ Use footer actions for a card’s most important actions, or actions merchants s
 ```jsx
 <Card
   title="Shipment 1234"
-  secondaryFooterAction={{content: 'Edit shipment'}}
+  secondaryFooterActions={[{content: 'Edit shipment'}]}
+  primaryFooterAction={{content: 'Add tracking number'}}
+>
+  <Card.Section title="Items">
+    <List>
+      <List.Item>1 × Isis Glass, 4-Pack</List.Item>
+      <List.Item>1 × Anubis Cup, 2-Pack</List.Item>
+    </List>
+  </Card.Section>
+</Card>
+```
+
+### Card with multiple footer actions
+
+When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
+
+```jsx
+<Card
+  title="Shipment 1234"
+  secondaryFooterActions={[
+    {content: 'Cancel shipment', destructive: true},
+    {content: 'Add another shipment', disabled: true},
+  ]}
   primaryFooterAction={{content: 'Add tracking number'}}
 >
   <Card.Section title="Items">
@@ -559,7 +581,7 @@ Use as a broad example that includes most props available to card.
 
 ```jsx
 <Card
-  secondaryFooterAction={{content: 'Dismiss'}}
+  secondaryFooterActions={[{content: 'Dismiss'}]}
   primaryFooterAction={{content: 'Export Report'}}
 >
   <Card.Header

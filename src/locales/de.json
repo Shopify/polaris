@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(öffnet ein neues Fenster)",
       "clear": "Löschen",
       "close": "Schließen",
-      "submit": "Eingabe"
+      "submit": "Eingabe",
+      "more": "Mehr"
     },
     "ContextualSaveBar": {
       "save": "Speichern",

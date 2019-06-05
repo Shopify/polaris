@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(新しいウィンドウを開く)",
       "clear": "クリア",
       "close": "閉じる",
-      "submit": "送信する"
+      "submit": "送信する",
+      "more": "さらに"
     },
     "ContextualSaveBar": {
       "save": "保存する",

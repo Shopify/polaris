@@ -31,7 +31,8 @@
       "newWindowAccessibilityHint": "(नई विंडो खोलता है)",
       "clear": "मिटाएं",
       "close": "बंद करे",
-      "submit": "सबमिट करें"
+      "submit": "सबमिट करें",
+      "more": "अधिक"
     },
     "ContextualSaveBar": {
       "save": "सहेजें",

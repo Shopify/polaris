@@ -35,7 +35,8 @@
       "newWindowAccessibilityHint": "(opens a new window)",
       "clear": "Clear",
       "close": "Close",
-      "submit": "Submit"
+      "submit": "Submit",
+      "more": "More"
     },
 
     "ContextualSaveBar": {
