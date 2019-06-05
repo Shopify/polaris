@@ -119,6 +119,6 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 Items in an exception list are organized as list items (`<li>`) in an unordered list wrapper (`<ul>`), so they are conveyed as a group of related elements to assistive technology users.
 
-Icons displayed with exception list items are meant to reinforce the tone of the adjacent text visually, not to convey information on their own. They are skipped by screen readers using `aria-hidden="true"`.
+Icons displayed with exception list items are meant to visually reinforce the adjacent information, not to convey information on their own. They are skipped by screen readers using `aria-hidden="true"`.
 
 <!-- /content-for -->
