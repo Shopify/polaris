@@ -382,6 +382,6 @@ The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pa
 ### Keyboard
 
 - To move focus to a slider thumb, press the <kbd>tab</kbd> key to move forward and or <kbd>shift</kbd> + <kbd>tab</kbd> to move backward
-- When a thumb has focus, use the up and down or left and right arrow keys to move the thumb and update the associated value value
+- When a thumb has focus, use the up and down or left and right arrow keys to move the thumb and update the associated value.
 
 <!-- /content-for -->
