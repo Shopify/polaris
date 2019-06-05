@@ -127,3 +127,37 @@ class FormExample extends React.Component {
 
 - To arrange fields within a form using standard spacing, [use the form layout component](/components/forms/form-layout)
 - To see all of the components that make up a form, [visit the form section](/components/forms/checkbox#navigation) of the component library
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The form component wraps content in an HTML `<form>` element. This helps to support assistive technologies that use different interaction and browse modes.
+
+By default, any buttons that you add to the form are given a `type` attribute set to `button`. Use the `submit` prop to set the `type` attribute to `submit` instead. The form can have only one submit button, and it must be at the end of the form.
+
+### Keyboard support
+
+By default, the `implicitSubmit` prop is set to `true`. This allows merchants to submit the form with the <kbd>enter</kbd>/<kbd>return</kbd> key when focus is in any text field inside the form. This provides a shortcut for keyboard users. If this behavior doesn’t fit the form, then set the prop to `false`.
+
+<!-- /content-for -->
