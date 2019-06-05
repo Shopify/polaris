@@ -1,8 +1,8 @@
 import React from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
-import debounce from 'lodash/debounce';
 import {durationBase} from '@shopify/polaris-tokens';
 import {classNames} from '../../../../utilities/css';
+import debounce from '../../../../utilities/debounce';
 import {DisableableAction, Action, ActionListSection} from '../../../../types';
 import ActionList from '../../../ActionList';
 import Popover from '../../../Popover';

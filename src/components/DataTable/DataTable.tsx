@@ -1,8 +1,8 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
-import debounce from 'lodash/debounce';
 
 import {classNames} from '../../utilities/css';
+import debounce from '../../utilities/debounce';
 import {headerCell} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';
@@ -90,7 +90,7 @@ export class DataTable extends React.PureComponent<
         }
       },
     );
-  });
+  }, 50);
 
   constructor(props: CombinedProps) {
     super(props);

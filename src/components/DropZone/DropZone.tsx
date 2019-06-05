@@ -1,6 +1,5 @@
 import React from 'react';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
-import debounce from 'lodash/debounce';
 import {
   addEventListener,
   removeEventListener,
@@ -11,6 +10,7 @@ import {
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
+import debounce from '../../utilities/debounce';
 import capitalize from '../../utilities/capitalize';
 import Icon from '../Icon';
 import Stack from '../Stack';

@@ -1,5 +1,4 @@
 import React from 'react';
-import debounce from 'lodash/debounce';
 import styles from './Loading.scss';
 
 export interface Props {}
@@ -20,11 +19,6 @@ export default class Loading extends React.Component<Props, State> {
     animation: null,
   };
 
-  private ariaValuenow = debounce(() => {
-    const {progress} = this.state;
-    return Math.floor(progress / 10) * 10;
-  }, 15);
-
   componentDidMount() {
     this.increment();
   }
@@ -44,7 +38,7 @@ export default class Loading extends React.Component<Props, State> {
       transform: `scaleX(${Math.floor(progress) / 100})`,
     };
 
-    const ariaValuenow = this.ariaValuenow();
+    const ariaValuenow = Math.floor(progress / 10) * 10;
 
     return (
       <div className={styles.Loading}>

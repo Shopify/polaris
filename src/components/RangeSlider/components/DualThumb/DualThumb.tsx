@@ -1,11 +1,11 @@
 import React from 'react';
-import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {classNames} from '../../../../utilities/css';
+import throttle from '../../../../utilities/throttle';
 import {CSS_VAR_PREFIX} from '../../utilities';
 import {RangeSliderProps, DualValue} from '../../types';
 import Labelled, {labelID} from '../../../Labelled';
@@ -77,21 +77,17 @@ export default class DualThumb extends React.Component<Props, State> {
   private thumbLower = React.createRef<HTMLButtonElement>();
   private thumbUpper = React.createRef<HTMLButtonElement>();
 
-  private setTrackPosition = debounce(
-    () => {
-      if (this.track.current) {
-        const {width, left} = this.track.current.getBoundingClientRect();
-        const adjustedTrackWidth = width - THUMB_SIZE;
-        const adjustedTrackLeft = left + THUMB_SIZE / 2;
-        this.setState({
-          trackWidth: adjustedTrackWidth,
-          trackLeft: adjustedTrackLeft,
-        });
-      }
-    },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
-  );
+  private setTrackPosition = throttle(() => {
+    if (this.track.current) {
+      const {width, left} = this.track.current.getBoundingClientRect();
+      const adjustedTrackWidth = width - THUMB_SIZE;
+      const adjustedTrackLeft = left + THUMB_SIZE / 2;
+      this.setState({
+        trackWidth: adjustedTrackWidth,
+        trackLeft: adjustedTrackLeft,
+      });
+    }
+  }, 40);
 
   componentDidMount() {
     this.setTrackPosition();

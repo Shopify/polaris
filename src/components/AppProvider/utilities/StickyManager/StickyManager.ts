@@ -1,10 +1,10 @@
-import debounce from 'lodash/debounce';
 import {getRectForNode, Rect} from '@shopify/javascript-utilities/geometry';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import tokens from '@shopify/polaris-tokens';
+import throttle from '../../../../utilities/throttle';
 import {stackedContent} from '../../../../utilities/breakpoints';
 import {dataPolarisTopBar, scrollable} from '../../../shared';
 
@@ -34,21 +34,13 @@ export default class StickyManager {
   private container: Document | HTMLElement;
   private topBarOffset = 0;
 
-  private handleResize = debounce(
-    () => {
-      this.manageStickyItems();
-    },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
-  );
+  private handleResize = throttle(() => {
+    this.manageStickyItems();
+  }, 40);
 
-  private handleScroll = debounce(
-    () => {
-      this.manageStickyItems();
-    },
-    40,
-    {leading: true, trailing: true, maxWait: 40},
-  );
+  private handleScroll = throttle(() => {
+    this.manageStickyItems();
+  }, 40);
 
   constructor(container?: Document | HTMLElement) {
     if (container) {

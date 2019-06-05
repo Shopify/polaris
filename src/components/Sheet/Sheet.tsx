@@ -1,9 +1,8 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
 
 import {CSSTransition} from 'react-transition-group';
-import debounce from 'lodash/debounce';
 import {classNames} from '../../utilities/css';
-
+import throttle from '../../utilities/throttle';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
 import {Key} from '../../types';
 import {layer, overlay, Duration} from '../shared';
@@ -52,15 +51,11 @@ export function Sheet({children, open, onClose}: Props) {
   const {intl} = usePolaris();
 
   const handleResize = useCallback(
-    debounce(
-      () => {
-        if (mobile !== isMobile()) {
-          handleToggleMobile();
-        }
-      },
-      40,
-      {leading: true, trailing: true, maxWait: 40},
-    ),
+    throttle(() => {
+      if (mobile !== isMobile()) {
+        handleToggleMobile();
+      }
+    }, 40),
     [mobile],
   );
 

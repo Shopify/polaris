@@ -1,11 +1,11 @@
 import React from 'react';
-import debounce from 'lodash/debounce';
 import {
   addEventListener,
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
 import {classNames} from '../../utilities/css';
+import debounce from '../../utilities/debounce';
 import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 import {scrollable} from '../shared';
 
