@@ -55,7 +55,7 @@ export default class Navigation extends React.Component<Props, never> {
 
     return (
       <NavigationContext.Provider value={context}>
-        <WithinContentContext.Provider value={{withinContentContainer: true}}>
+        <WithinContentContext.Provider value>
           <nav className={styles.Navigation}>
             {contextControlMarkup}
             <div className={styles.UserMenu}>{userMenu}</div>

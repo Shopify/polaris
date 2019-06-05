@@ -66,12 +66,8 @@ export default class Card extends React.PureComponent<Props, never> {
         </div>
       ) : null;
 
-    const context = {
-      withinContentContainer: true,
-    };
-
     return (
-      <WithinContentContext.Provider value={context}>
+      <WithinContentContext.Provider value>
         <div className={className}>
           {headerMarkup}
           {content}

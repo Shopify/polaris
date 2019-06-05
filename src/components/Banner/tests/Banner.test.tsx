@@ -96,12 +96,8 @@ describe('<Banner />', () => {
     expect(unstyledLink.prop('rel')).toBe('noopener noreferrer');
   });
 
-  const mockContext = {
-    withinContentContainer: true,
-  };
-
   const bannerWithContentContext = mountWithAppProvider(
-    <WithinContentContext.Provider value={mockContext}>
+    <WithinContentContext.Provider value>
       <Banner
         action={{
           content: 'Primary action',
