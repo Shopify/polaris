@@ -25,7 +25,7 @@ describe('<Loading />', () => {
 
   describe('with app bridge', () => {
     const dispatch = jest.fn();
-    jest.spyOn(AppBridgeLoading, 'create').mockReturnValue({dispatch});
+    jest.spyOn(AppBridgeLoading, 'create').mockReturnValue({dispatch} as any);
 
     it('starts loading on mount', () => {
       const {polaris} = mountWithAppBridge(<Loading />);

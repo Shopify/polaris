@@ -41,12 +41,14 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated icon documentation to use imports from polaris-icons ([#1561](https://github.com/Shopify/polaris-react/pull/1561))
 - Fixed an accessibility issue in the `Collapsible` component example ([#1591](https://github.com/Shopify/polaris-react/pull/1591))
 - Added accessibility documentation for the `RangeSlider` component ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
+- Added accessibility documentation for the `Collapsible` component ([#1631](https://github.com/Shopify/polaris-react/pull/1631))
 
 ### Development workflow
 
 - Made the a11y test that runs in CI fail if it finds any issues ([#1564](https://github.com/Shopify/polaris-react/pull/1564))
 - Updated Storybook to `v5.1.0-rc.4` ([#1616](https://github.com/Shopify/polaris-react/pull/1616))
 - Fixed a visual regression testing issue with the Card component ([#1618](https://github.com/Shopify/polaris-react/pull/1618))
+- Updated to sewing-kit v0.85.5 ([#1633](https://github.com/Shopify/polaris-react/pull/1633))
 
 ### Dependency upgrades
 

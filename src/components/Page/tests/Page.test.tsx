@@ -163,7 +163,7 @@ describe('<Page />', () => {
 
   describe('breadcrumbs', () => {
     function mockButtonCreate() {
-      const buttonMock = {
+      const buttonMock: any = {
         set: jest.fn(),
         subscribe: jest.fn(),
       };
