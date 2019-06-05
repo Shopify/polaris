@@ -41,6 +41,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Updated icon documentation to use imports from polaris-icons ([#1561](https://github.com/Shopify/polaris-react/pull/1561))
 - Fixed an accessibility issue in the `Collapsible` component example ([#1591](https://github.com/Shopify/polaris-react/pull/1591))
 - Added accessibility documentation for the `Collapsible` component ([#1631](https://github.com/Shopify/polaris-react/pull/1631))
+- Added accessibility documentation for the `DescriptionList` component ([#1634](https://github.com/Shopify/polaris-react/pull/1634))
 
 ### Development workflow
 
