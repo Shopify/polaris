@@ -18,9 +18,9 @@ The navigation component is used to display the primary navigation in the sideba
 
 ---
 
-## Components dependencies
+## Required components
 
-The navigation component must be passed to the [frame](/components/structure/frame) component. The mobile version of the navigation component appears in the [topbar](/components/structure/top-bar) component.
+The navigation component must be passed to the [frame](/components/structure/frame) component. The mobile version of the navigation component appears in the [top bar](/components/structure/top-bar) component.
 
 ---
 
