@@ -367,7 +367,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 <!-- content-for: web -->
 
-The range slider provides a large click and tap target size for the slider thumbs. Merchants can also tap or click on the slider track to move the closest slider thumb.
+The range slider provides a large click and tap target for the slider thumbs. Merchants can also tap or click on the slider track to move the closest slider thumb.
 
 ### Single-thumb slider
 
