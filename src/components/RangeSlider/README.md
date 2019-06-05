@@ -377,7 +377,7 @@ To consistently provide the current value to assistive technologies, use the `mi
 
 ### Dual-thumb slider
 
-The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pattern.](https://www.w3.org/TR/wai-aria-practices-1.1/#slidertwothumb) However, the pattern isn’t well supported by screen readers, especially on mobile devices. Because of this, it’s best to pair the dual-thumb slider with a set of text fields for each value, or to provide another accessible method for entering information.
+The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pattern.](https://www.w3.org/TR/wai-aria-practices-1.1/#slidertwothumb) However, the pattern isn’t consistently supported by screen readers, especially on mobile devices. Because of this, it’s best to pair the dual-thumb slider with a set of text fields for each value, or to provide another accessible method for entering information.
 
 ### Keyboard
 
