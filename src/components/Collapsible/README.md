@@ -117,3 +117,37 @@ class CollapsibleExample extends React.Component {
 
 - To control a collapsible component, use the [button](/components/actions/button) component
 - To put long sections of information in a container that allows for scrolling, [use the scrollable component](/components/behavior/scrollable)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+Use the collapsible component in conjunction with a [button](/components/actions/button).
+
+- Use the required `id` prop of the collapsible component to give the content a unique `id` value
+- Use the `ariaExpanded` prop on the button component to add an `aria-expanded` attribute, which conveys the expanded or collapsed state to screen reader users
+- Use the `ariaControls` prop on the button component, and set its value to the `id` value of the collapsible component
+
+Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
+
+<!-- /content-for -->
