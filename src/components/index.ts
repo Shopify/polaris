@@ -312,3 +312,5 @@ export {default as withContext} from './WithContext';
 export {PolarisContext} from './types';
 
 export {DATA_ATTRIBUTE} from './shared';
+
+export {default as WithinContentContext} from './WithinContentContext';
