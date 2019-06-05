@@ -12,7 +12,7 @@ describe('<ResourcePicker />', () => {
       unsubscribe: jest.fn(),
     };
 
-    (AppBridgeResourcePicker.create as jest.Mock<{}>) = jest
+    (AppBridgeResourcePicker.create as jest.Mock) = jest
       .fn()
       .mockReturnValue(appBridgeResourcePickerMock);
 
