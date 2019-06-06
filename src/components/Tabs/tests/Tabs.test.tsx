@@ -145,7 +145,7 @@ describe('<Tabs />', () => {
       panelStub = {focus: jest.fn()};
       jest
         .spyOn(document, 'getElementById')
-        .mockImplementation(() => panelStub);
+        .mockImplementation(() => panelStub as any);
     });
 
     afterEach(() => {

@@ -7,7 +7,7 @@ import Toast from '../Toast';
 import {Key} from '../../../../../types';
 
 interface HandlerMap {
-  [eventName: string]: (event: any) => void;
+  [eventName: string]: any;
 }
 
 describe('<Toast />', () => {

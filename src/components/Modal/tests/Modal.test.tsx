@@ -329,7 +329,7 @@ describe('<Modal>', () => {
       dispatch: jest.fn(),
     };
 
-    (AppBridgeModal.create as jest.Mock<{}>) = jest
+    (AppBridgeModal.create as jest.Mock) = jest
       .fn()
       .mockReturnValue(appBridgeModalMock);
 

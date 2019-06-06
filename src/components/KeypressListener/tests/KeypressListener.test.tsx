@@ -4,7 +4,7 @@ import {Key} from '../../../types';
 import KeypressListener from '../KeypressListener';
 
 interface HandlerMap {
-  [eventName: string]: (event: any) => void;
+  [eventName: string]: any;
 }
 
 const listenerMap: HandlerMap = {};
