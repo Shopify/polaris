@@ -80,8 +80,6 @@ async function runPa11y() {
           // Missing lang attribute on <html> tag
           // Storybook does not include this property so ignore it
           'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2',
-          // Color contrast failures
-          'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail',
         ],
       });
       result.exampleID = queryString;
