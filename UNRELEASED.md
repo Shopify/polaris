@@ -49,6 +49,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Enabled the color contrast test in pa11y ([#1645](https://github.com/Shopify/polaris-react/pull/1645))
+
 ### Deprecations
 
 - Deprecated all usage of the Shopify App Bridge in Polaris React ([#1573](https://github.com/Shopify/polaris-react/pull/1573))
