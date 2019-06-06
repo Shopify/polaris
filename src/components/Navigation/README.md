@@ -165,18 +165,6 @@ Action allows a complementary icon-only action to render next to the section tit
 
 ---
 
-<a name="subcomponent-usermenu"></a>
-
-## Navigation user menu
-
-The user menu component displays the current user’s avatar and name, and actions that are related to the current logged in user. The menu is displayed at the top of the navigation sidebar at small screen sizes. The user menu can display any messages that the current user has available to read.
-
-### Deprecation rationale
-
-As of release 3.6.0 `Navigation.UserMenu` is deprecated in favor of [`TopBar.UserMenu`](https://polaris.shopify.com/components/structure/top-bar#top-bar-menu) which will stay visible on mobile.
-
----
-
 ## Examples
 
 ### Basic navigation
