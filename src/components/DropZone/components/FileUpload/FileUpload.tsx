@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import {classNames} from '@shopify/css-utilities';
 import {DragDropMajorMonotone} from '@shopify/polaris-icons';
 
+import {classNames} from '../../../../utilities/css';
 import capitalize from '../../../../utilities/capitalize';
 
 import Link from '../../../Link';

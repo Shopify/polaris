@@ -1,8 +1,8 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 import isEqual from 'lodash/isEqual';
 import debounce from 'lodash/debounce';
 
+import {classNames} from '../../utilities/css';
 import {headerCell} from '../shared';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import EventListener from '../EventListener';

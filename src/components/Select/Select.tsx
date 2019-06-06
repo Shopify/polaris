@@ -1,8 +1,8 @@
 import React from 'react';
 import {ArrowUpDownMinor} from '@shopify/polaris-icons';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 
+import {classNames} from '../../utilities/css';
 import Labelled, {Action, helpTextID} from '../Labelled';
 import Icon from '../Icon';
 import {Error} from '../../types';

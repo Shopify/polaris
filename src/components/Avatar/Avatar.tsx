@@ -1,6 +1,6 @@
 import React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
 
+import {classNames, variationName} from '../../utilities/css';
 import {isServer} from '../../utilities/target';
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
 import Image from '../Image';

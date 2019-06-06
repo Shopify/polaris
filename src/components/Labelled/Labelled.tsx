@@ -1,5 +1,5 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 
 import {Action, Error} from '../../types';
 

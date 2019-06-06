@@ -1,5 +1,5 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 import DisplayText from '../DisplayText';
 import SkeletonDisplayText from '../SkeletonDisplayText';
 import SkeletonBodyText from '../SkeletonBodyText';

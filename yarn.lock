@@ -1264,14 +1264,6 @@
   resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-1.0.3.tgz#c7172d9c5673f6beaf51ad1a51fefa82b0f06392"
   integrity sha512-PkoBUAy/NKFbngX3ehw9FYUdraU+++IZceAnU0G+g7ukuVfT1I6+aOVRXZQzhasdTV9i71j9ocI8VMQxh1itaA==
 
-"@shopify/css-utilities@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/css-utilities/-/css-utilities-1.0.0.tgz#adbdf551673942c19e165ee4bc5c6d7ec7625f79"
-  integrity sha512-ZdJ65xcen1OUXcYwvYn5IW9wX8LAm5/cafbeu+BujXY4m5hMA9LiXz+T8LznkdRei0u0YxaAXT+Nwp+Ls5QB0Q==
-  dependencies:
-    "@types/classnames" "^2.2.7"
-    classnames "^2.2.6"
-
 "@shopify/fail-on-unexpected-module-shaking-plugin@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@shopify/fail-on-unexpected-module-shaking-plugin/-/fail-on-unexpected-module-shaking-plugin-1.0.4.tgz#56cf7e7724d1347d2c66a2c4c0ac51ce8b974136"
@@ -2131,11 +2123,6 @@
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
-
-"@types/classnames@^2.2.7":
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.7.tgz#fb68cc9be8487e6ea5b13700e759bfbab7e0fefd"
-  integrity sha512-rzOhiQ55WzAiFgXRtitP/ZUT8iVNyllEpylJ5zHzR4vArUvMB39GTk+Zon/uAM0JxEFAWnwsxC2gH8s+tZ3Myg==
 
 "@types/enzyme-adapter-react-16@^1.0.5":
   version "1.0.5"
@@ -5077,7 +5064,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5, classnames@^2.2.6:
+classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==

@@ -1,5 +1,5 @@
 import React from 'react';
-import {classNames, variationName} from '@shopify/css-utilities';
+import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
 
 import {Item} from './components';

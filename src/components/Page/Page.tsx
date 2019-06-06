@@ -1,11 +1,11 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
-import {classNames} from '@shopify/css-utilities';
 import {
   Button as AppBridgeButton,
   TitleBar as AppBridgeTitleBar,
 } from '@shopify/app-bridge/actions';
 
+import {classNames} from '../../utilities/css';
 import {
   transformActions,
   generateRedirect,

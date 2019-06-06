@@ -180,7 +180,6 @@
   "dependencies": {
     "@babel/runtime": "^7.1.6",
     "@shopify/app-bridge": "^1.3.0",
-    "@shopify/css-utilities": "^1.0.0",
     "@shopify/javascript-utilities": "^2.2.1",
     "@shopify/polaris-icons": "^3.3.0",
     "@shopify/polaris-tokens": "^2.5.0",

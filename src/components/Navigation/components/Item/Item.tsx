@@ -8,7 +8,7 @@ import React, {
   Fragment,
 } from 'react';
 
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../../../utilities/css';
 import {navigationBarCollapsed} from '../../../../utilities/breakpoints';
 
 import NavigationContext from '../../context';

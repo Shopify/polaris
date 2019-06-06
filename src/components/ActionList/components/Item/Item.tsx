@@ -1,6 +1,6 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
 
+import {classNames} from '../../../../utilities/css';
 import {ActionListItemDescriptor} from '../../../../types';
 import Scrollable from '../../../Scrollable';
 import Icon from '../../../Icon';

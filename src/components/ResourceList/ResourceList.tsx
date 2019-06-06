@@ -1,10 +1,10 @@
 import React from 'react';
 
 import debounce from 'lodash/debounce';
-import {classNames} from '@shopify/css-utilities';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 
+import {classNames} from '../../utilities/css';
 import Button from '../Button';
 import EventListener from '../EventListener';
 import Sticky from '../Sticky';

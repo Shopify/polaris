@@ -5,7 +5,7 @@ import {
   removeEventListener,
 } from '@shopify/javascript-utilities/events';
 import {closest} from '@shopify/javascript-utilities/dom';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../utilities/css';
 import {WithAppProviderProps, withAppProvider} from '../AppProvider';
 import {scrollable} from '../shared';
 

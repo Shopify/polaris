@@ -1,5 +1,5 @@
 import React from 'react';
-import {classNames} from '@shopify/css-utilities';
+import {classNames} from '../../../../utilities/css';
 import styles from '../../Connected.scss';
 
 export enum ItemPosition {

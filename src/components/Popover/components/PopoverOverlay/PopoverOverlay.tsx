@@ -1,10 +1,10 @@
 import React from 'react';
 import {nodeContainsDescendant} from '@shopify/javascript-utilities/dom';
 import {write} from '@shopify/javascript-utilities/fastdom';
-import {classNames} from '@shopify/css-utilities';
 import {durationBase} from '@shopify/polaris-tokens';
 import {CSSTransition} from 'react-transition-group';
 
+import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
   wrapWithComponent,
