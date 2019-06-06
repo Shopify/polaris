@@ -55,7 +55,7 @@ class EmbeddedAppResourcePickerExample extends React.Component {
 
   render() {
     return (
-      <AppProvider apiKey="YOUR_API_KEY">
+      <AppProvider apiKey="YOUR_API_KEY" i18n={{}}>
         <ResourcePicker
           resourceType="Product"
           open={this.state.resourcePickerOpen}

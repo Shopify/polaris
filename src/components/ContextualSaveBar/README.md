@@ -97,6 +97,17 @@ Use the save action to provide an opportunity to save changes. Use the discard a
           'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
       },
     }}
+    i18n={{
+      Polaris: {
+        Frame: {
+          skipToContent: 'Skip to content',
+        },
+        ContextualSaveBar: {
+          save: 'Save',
+          discard: 'Discard',
+        },
+      },
+    }}
   >
     <Frame>
       <ContextualSaveBar
@@ -127,6 +138,17 @@ Use the save action to provide an opportunity to save a newly-created resource. 
         width: 124,
         contextualSaveBarSource:
           'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    }}
+    i18n={{
+      Polaris: {
+        Frame: {
+          skipToContent: 'Skip to content',
+        },
+        ContextualSaveBar: {
+          save: 'Save',
+          discard: 'Discard',
+        },
       },
     }}
   >
@@ -160,6 +182,17 @@ repurpose that space to extend the message contents fully to the left side of th
         width: 124,
         contextualSaveBarSource:
           'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+      },
+    }}
+    i18n={{
+      Polaris: {
+        Frame: {
+          skipToContent: 'Skip to content',
+        },
+        ContextualSaveBar: {
+          save: 'Save',
+          discard: 'Discard',
+        },
       },
     }}
   >

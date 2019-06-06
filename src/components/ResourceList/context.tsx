@@ -1,12 +1,11 @@
 import React from 'react';
-import {Intl} from '../AppProvider';
 import {SelectedItems} from './types';
 
 export interface ResourceListContextType {
-  selectMode: boolean;
+  selectMode?: boolean;
   selectable?: boolean;
   selectedItems?: SelectedItems;
-  resourceName: {
+  resourceName?: {
     singular: string;
     plural: string;
   };
@@ -19,14 +18,6 @@ export interface ResourceListContextType {
   ): void;
 }
 
-const intl = new Intl(undefined);
-
-const ResourceListContext = React.createContext<ResourceListContextType>({
-  selectMode: false,
-  resourceName: {
-    singular: intl.translate('Polaris.ResourceList.defaultItemSingular'),
-    plural: intl.translate('Polaris.ResourceList.defaultItemPlural'),
-  },
-});
+const ResourceListContext = React.createContext<ResourceListContextType>({});
 
 export default ResourceListContext;

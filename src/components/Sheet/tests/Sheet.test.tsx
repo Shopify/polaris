@@ -5,7 +5,9 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithAppProvider} from 'test-utilities/legacy';
 
 import Backdrop from 'components/Backdrop';
+import AppProvider from '../../AppProvider';
 import Sheet, {BOTTOM_CLASS_NAMES, RIGHT_CLASS_NAMES} from '../Sheet';
+import en from '../../../../locales/en.json';
 
 describe('<Sheet />', () => {
   beforeEach(() => {
@@ -67,9 +69,11 @@ describe('<Sheet />', () => {
   it('warns when not mounted inside of the Frame component', () => {
     const warnSpy = jest.spyOn(console, 'warn');
     mount(
-      <Sheet {...mockProps}>
-        <div>Content</div>
-      </Sheet>,
+      <AppProvider i18n={en}>
+        <Sheet {...mockProps}>
+          <div>Content</div>
+        </Sheet>
+      </AppProvider>,
     );
 
     expect(warnSpy).toHaveBeenCalledTimes(1);

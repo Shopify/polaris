@@ -152,7 +152,19 @@ class SheetExample extends React.Component {
 
     return (
       <div style={{maxHeight: '640px', overflow: 'visible'}}>
-        <AppProvider theme={theme}>
+        <AppProvider
+          theme={theme}
+          i18n={{
+            Polaris: {
+              Frame: {
+                skipToContent: 'Skip to content',
+              },
+              TextField: {
+                characterCount: '{count} characters',
+              },
+            },
+          }}
+        >
           <Frame topBar={<TopBar />}>
             <Page singleColumn title="Big yellow socks">
               <Card sectioned>

@@ -758,6 +758,17 @@ describe('<FilterControl />', () => {
       expect(onFiltersChange).not.toHaveBeenCalled();
     });
   });
+
+  describe('resource name', () => {
+    it('will default to the provided translation', () => {
+      const filterControl = mountWithAppProvider(
+        <FilterControl {...mockDefaultProps} />,
+      );
+      expect(filterControl.find('TextField').prop('label')).toBe(
+        'Search items',
+      );
+    });
+  });
 });
 
 function noop() {}
