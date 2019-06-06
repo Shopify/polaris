@@ -101,7 +101,7 @@ Press the <KeyboardKey>Ctrl</KeyboardKey> key.
 
 #### Don't
 
-Don't use the keyboard key component alone to convey keyboard instructions.
+- Use the keyboard key component alone to convey keyboard instructions.
 
 ```JSX
 Use <KeyboardKey>Ctrl</KeyboardKey>
