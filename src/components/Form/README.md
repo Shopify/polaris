@@ -154,7 +154,7 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 
 The form component wraps content in an HTML `<form>` element. This helps to support assistive technologies that use different interaction and browse modes.
 
-By default, any buttons that you add to the form are given a `type` attribute set to `button`. Use the `submit` prop to set the `type` attribute to `submit` instead. The form can have only one submit button, and it must be at the end of the form.
+Forms can have only one submit button and it must be at the end of the form. By default, buttons added to the form are given a `type` attribute set to `button` to avoid conflicts. To make a button the submit button instead (`type="submit"`), set the `submit` prop on the button.
 
 ### Keyboard support
 
