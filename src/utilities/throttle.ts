@@ -7,10 +7,6 @@ export default function throttle<F extends Function>(
 ) {
   const {leading = true, trailing = true} = options;
 
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function');
-  }
-
   return debounce(func, delay, {
     leading,
     trailing,

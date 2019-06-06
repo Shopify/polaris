@@ -16,10 +16,6 @@ export default function debounce<F extends Function>(
   let throttleTimeout: NodeJS.Timeout | null = null;
   let debounceTimeout: NodeJS.Timeout | null = null;
 
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function');
-  }
-
   return function(...args: any[]) {
     if (throttleEnabled) {
       setThrottleTimeout();
