@@ -43,6 +43,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed an accessibility issue in the `Collapsible` component example ([#1591](https://github.com/Shopify/polaris-react/pull/1591))
 - Added accessibility documentation for the `RangeSlider` component ([#1630](https://github.com/Shopify/polaris-react/pull/1630))
 - Added accessibility documentation for the `Collapsible` component ([#1631](https://github.com/Shopify/polaris-react/pull/1631))
+- Added accessibility documentation for the `Form` component ([#1636](https://github.com/Shopify/polaris-react/pull/1636))
+- Added accessibility documentation for the `ExceptionList` component ([#1635](https://github.com/Shopify/polaris-react/pull/1635))
 - Added accessibility documentation for the `KeyboardKey` component ([#1640](https://github.com/Shopify/polaris-react/pull/1640))
 
 ### Development workflow
