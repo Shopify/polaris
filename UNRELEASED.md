@@ -57,6 +57,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Code quality
 
+- Enabled the color contrast test in pa11y ([#1645](https://github.com/Shopify/polaris-react/pull/1645))
 - Combined jsdocs in `Icon` for the `untrusted` prop ([#1607](https://github.com/Shopify/polaris-react/pull/1607))
 
 ### Deprecations

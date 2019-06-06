@@ -1405,9 +1405,9 @@
   integrity sha512-+nB2rthx6vS8vlJms5unGbThwrdGXAPMCD2PoQG/Eq5uQU1EmhkVOIFaEK7AS62J2m+HaqbLw/zrlbBkZHZUrQ==
 
 "@shopify/polaris-tokens@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.5.0.tgz#3efe1f9be456565bbb26f6f555c78be8060bcea7"
-  integrity sha512-AzIXOBAdUnOIO91vhCPdtQH+W6pKi4rCrXsT6Fe/BN+KUoeMAsfOyBXRbA5lSQ1pb+gA2e9N4PGpOzFs6fI4hQ==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.6.0.tgz#1654c83025d80ce803f06329aceaabfb96b5e684"
+  integrity sha512-l2AwgZhujgu/C1cchJginWODXWcjhrpqrh+lcI+SM3MSSca6l2zSXa3B5OqCcspk6DIQDeJEn5BvXJgT7AJNPQ==
 
 "@shopify/polyfills@^0.0.10":
   version "0.0.10"
