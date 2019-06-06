@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {ReactWrapper} from 'enzyme';
 import {SaveMinor} from '@shopify/polaris-icons';
-import {Popover, ActionList} from 'components';
 import {mountWithAppProvider, trigger} from 'test-utilities';
-import Action from '../../Action';
-import ActionGroup from '../ActionGroup';
 
-describe('<ActionGroup />', () => {
+import {Popover, ActionList, PlainAction} from 'components';
+import PlainActionGroup from '../PlainActionGroup';
+
+describe('<PlainActionGroup />', () => {
   const mockProps = {
     title: '',
     actions: [{}],
@@ -25,9 +25,9 @@ describe('<ActionGroup />', () => {
     it('is used as the label for the popover activator', () => {
       const title = 'Actions';
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} title={title} />,
+        <PlainActionGroup {...mockProps} title={title} />,
       );
-      expect(actionGroup.find(Action).prop('children')).toBe(title);
+      expect(actionGroup.find(PlainAction).prop('content')).toBe(title);
     });
   });
 
@@ -35,9 +35,9 @@ describe('<ActionGroup />', () => {
     it('gets passed into the action', () => {
       const icon = SaveMinor;
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} icon={icon} />,
+        <PlainActionGroup {...mockProps} icon={icon} />,
       );
-      expect(actionGroup.find(Action).prop('icon')).toBe(icon);
+      expect(actionGroup.find(PlainAction).prop('icon')).toBe(icon);
     });
   });
 
@@ -45,7 +45,7 @@ describe('<ActionGroup />', () => {
     it('get shown in the popover', () => {
       const details = 'amazing details';
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} details={details} />,
+        <PlainActionGroup {...mockProps} details={details} />,
       );
       const popoverContents = getPopoverContents(actionGroup);
       expect(popoverContents.text()).toContain(details);
@@ -56,7 +56,7 @@ describe('<ActionGroup />', () => {
     it('get passed into the actions list', () => {
       const actions = [{}];
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} actions={actions} />,
+        <PlainActionGroup {...mockProps} actions={actions} />,
       );
       const popoverContents = getPopoverContents(actionGroup);
       expect(popoverContents.find(ActionList).prop('items')).toStrictEqual(
@@ -68,7 +68,7 @@ describe('<ActionGroup />', () => {
   describe('active', () => {
     it('gets passed into the popover', () => {
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} active />,
+        <PlainActionGroup {...mockProps} active />,
       );
       expect(actionGroup.find(Popover).prop('active')).toBeTruthy();
     });
@@ -79,9 +79,9 @@ describe('<ActionGroup />', () => {
       const title = 'Actions';
       const onOpenSpy = jest.fn();
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} title={title} onOpen={onOpenSpy} />,
+        <PlainActionGroup {...mockProps} title={title} onOpen={onOpenSpy} />,
       );
-      trigger(actionGroup.find(Action), 'onAction');
+      trigger(actionGroup.find(PlainAction), 'onAction');
       expect(onOpenSpy).toHaveBeenCalledWith(title);
     });
   });
@@ -91,7 +91,7 @@ describe('<ActionGroup />', () => {
       const title = 'Actions';
       const onCloseSpy = jest.fn();
       const actionGroup = mountWithAppProvider(
-        <ActionGroup {...mockProps} title={title} onClose={onCloseSpy} />,
+        <PlainActionGroup {...mockProps} title={title} onClose={onCloseSpy} />,
       );
       trigger(actionGroup.find(Popover), 'onClose');
       expect(onCloseSpy).toHaveBeenCalledWith(title);
@@ -101,7 +101,7 @@ describe('<ActionGroup />', () => {
       const title = 'Actions';
       const onCloseSpy = jest.fn();
       const actionGroup = mountWithAppProvider(
-        <ActionGroup
+        <PlainActionGroup
           {...mockProps}
           title={title}
           onClose={onCloseSpy}

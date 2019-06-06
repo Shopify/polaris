@@ -1,37 +1,20 @@
 import * as React from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/css-utilities';
-import {
-  DisableableAction,
-  LoadableAction,
-  DestructableAction,
-  IconableAction,
-  AppBridgeAction,
-  AppBridgeActionTarget,
-} from '../../../../types';
-import ActionList from '../../../ActionList';
-import Button, {buttonsFrom} from '../../../Button';
+
+import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
+import {buttonsFrom} from '../../../Button';
 import Breadcrumbs, {Props as BreadcrumbsProps} from '../../../Breadcrumbs';
 import DisplayText from '../../../DisplayText';
 import Pagination, {PaginationDescriptor} from '../../../Pagination';
-import Popover from '../../../Popover';
-import {withAppProvider, WithAppProviderProps} from '../../../AppProvider';
-import {Action, ActionGroup, ActionGroupDescriptor} from './components';
+import PlainActionGroup from '../../../PlainActionGroup';
+import PlainAction from '../../../PlainAction';
+import RollupActions, {
+  hasRollupActions,
+  Props as RollupActionsProps,
+} from '../../../RollupActions';
+
+import {HeaderPrimaryAction} from './types';
 import styles from './Header.scss';
-
-export interface SecondaryAction
-  extends IconableAction,
-    DisableableAction,
-    AppBridgeActionTarget {}
-
-export interface PrimaryActionProps
-  extends DisableableAction,
-    LoadableAction,
-    AppBridgeAction,
-    DestructableAction {
-  /** Provides extra visual weight and identifies the primary action in a set of buttons */
-  primary?: boolean;
-}
 
 export interface Props {
   /** Page title, in large type */
@@ -50,39 +33,38 @@ export interface Props {
   /** Adds a border to the bottom of the page header (stand-alone app use only) */
   separator?: boolean;
   /** Collection of secondary page-level actions */
-  secondaryActions?: SecondaryAction[];
+  secondaryActions?: RollupActionsProps['secondaryActions'];
   /** Collection of page-level groups of secondary actions */
-  actionGroups?: ActionGroupDescriptor[];
+  actionGroups?: RollupActionsProps['actionGroups'];
   /** Primary page-level action */
-  primaryAction?: PrimaryActionProps;
+  primaryAction?: HeaderPrimaryAction;
   /** Page-level pagination (stand-alone app use only) */
   pagination?: PaginationDescriptor;
 }
 
 export interface State {
   openActionGroup?: string;
-  rollupOpen: boolean;
 }
 
 type CombinedProps = Props & WithAppProviderProps;
 
 class Header extends React.PureComponent<CombinedProps, State> {
   state: State = {
-    rollupOpen: false,
+    openActionGroup: undefined,
   };
 
   render() {
     const {
       title,
       titleMetadata,
-      breadcrumbs = [],
       titleHidden = false,
-      primaryAction,
-      pagination,
+      icon,
+      breadcrumbs = [],
       separator,
       secondaryActions,
-      icon,
       actionGroups,
+      primaryAction,
+      pagination,
       polaris: {intl},
     } = this.props;
 
@@ -91,13 +73,15 @@ class Header extends React.PureComponent<CombinedProps, State> {
       console.warn(intl.translate('Polaris.Page.Header.iconWarningMessage'));
     }
 
+    const hasRollup = hasRollupActions(secondaryActions, actionGroups);
+
     const className = classNames(
       styles.Header,
       titleHidden && styles['Title-hidden'],
-      pagination && styles['Header-hasPagination'],
-      separator && styles['Header-hasSeparator'],
       breadcrumbs && breadcrumbs.length && styles['Header-hasBreadcrumbs'],
-      this.hasRollup && styles['Header-hasRollup'],
+      separator && styles['Header-hasSeparator'],
+      pagination && styles['Header-hasPagination'],
+      hasRollup && styles['Header-hasRollup'],
       secondaryActions &&
         secondaryActions.length &&
         styles['Header-hasSecondaryActions'],
@@ -117,18 +101,24 @@ class Header extends React.PureComponent<CombinedProps, State> {
     ) : null;
 
     const paginationMarkup = pagination ? (
-      <div className={styles.Pagination}>
+      <div className={styles.PaginationWrapper}>
         <Pagination {...pagination} plain />
       </div>
     ) : null;
 
-    const rollupMarkup = this.renderRollupAction();
-    const nonPrimaryActionsMarkup = this.renderSecondaryActions();
+    const rollupMarkup = hasRollup ? (
+      <div className={styles.RollupActionsWrapper}>
+        <RollupActions
+          secondaryActions={secondaryActions}
+          actionGroups={actionGroups}
+        />
+      </div>
+    ) : null;
 
     const actionsMarkup =
       primaryAction || secondaryActions || actionGroups ? (
         <div className={styles.Actions}>
-          {nonPrimaryActionsMarkup}
+          {this.renderSecondaryActions()}
           {primaryActionMarkup}
         </div>
       ) : null;
@@ -151,8 +141,10 @@ class Header extends React.PureComponent<CombinedProps, State> {
               {title}
             </DisplayText>
           </div>
+
           <div>{titleMetadata}</div>
         </div>
+
         {!breadcrumbMarkup && rollupMarkup}
       </div>
     );
@@ -160,11 +152,13 @@ class Header extends React.PureComponent<CombinedProps, State> {
     return primaryActionMarkup ? (
       <div className={className}>
         {navigationMarkup}
+
         <div className={styles.MainContent}>
           <div className={styles.TitleAndActions}>
             {titleMarkup}
             {actionsMarkup}
           </div>
+
           {primaryActionMarkup}
         </div>
       </div>
@@ -177,53 +171,9 @@ class Header extends React.PureComponent<CombinedProps, State> {
     );
   }
 
-  private get hasRollup() {
-    const {secondaryActions = [], actionGroups = []} = this.props;
-    return secondaryActions.length + actionGroups.length >= 1;
-  }
-
-  private renderRollupAction = () => {
-    const {rollupOpen} = this.state;
-    const {
-      secondaryActions = [],
-      actionGroups = [],
-      polaris: {intl},
-    } = this.props;
-    const rollupMarkup = this.hasRollup ? (
-      <div className={styles.Rollup}>
-        <Popover
-          active={rollupOpen}
-          onClose={this.handleRollupToggle}
-          activator={
-            <Button
-              plain
-              icon={HorizontalDotsMinor}
-              onClick={this.handleRollupToggle}
-              accessibilityLabel={intl.translate(
-                'Polaris.Page.Header.rollupButton',
-              )}
-            />
-          }
-        >
-          <ActionList
-            items={secondaryActions}
-            sections={actionGroups.map(convertActionGroupToActionListSection)}
-            onActionAnyItem={this.handleRollupToggle}
-          />
-        </Popover>
-      </div>
-    ) : null;
-
-    return rollupMarkup;
-  };
-
   private renderSecondaryActions = () => {
     const {openActionGroup} = this.state;
     const {secondaryActions = [], actionGroups = []} = this.props;
-
-    if (secondaryActions.length === 0 && actionGroups.length === 0) {
-      return null;
-    }
 
     const secondaryActionMarkup =
       secondaryActions.length > 0
@@ -234,34 +184,30 @@ class Header extends React.PureComponent<CombinedProps, State> {
       actionGroups.length > 0
         ? actionGroups.map(({title, icon, actions, details}, index) => (
             <div
+              key={`PlainActionGroup-${title}-${index}`}
               className={styles.IndividualAction}
-              key={`ActionGroup-${title}-${index}`}
             >
-              <ActionGroup
+              <PlainActionGroup
                 title={title}
                 icon={icon}
                 actions={actions}
                 details={details}
+                active={title === openActionGroup}
                 onOpen={this.handleActionGroupOpen}
                 onClose={this.handleActionGroupClose}
-                active={title === openActionGroup}
               />
             </div>
           ))
         : null;
 
-    return (
+    return secondaryActionMarkup || actionGroupsMarkup ? (
       <div className={styles.SecondaryActions}>
         <div className={styles.IndividualActions}>
           {secondaryActionMarkup}
           {actionGroupsMarkup}
         </div>
       </div>
-    );
-  };
-
-  private handleRollupToggle = () => {
-    this.setState(({rollupOpen}) => ({rollupOpen: !rollupOpen}));
+    ) : null;
   };
 
   private handleActionGroupClose = (group: string) => {
@@ -276,19 +222,19 @@ class Header extends React.PureComponent<CombinedProps, State> {
   };
 }
 
-function convertActionGroupToActionListSection({
-  title,
-  actions,
-}: ActionGroupDescriptor) {
-  return {title, items: actions};
-}
-
 function secondaryActionsFrom(
-  actions: SecondaryAction[],
+  actions: RollupActionsProps['secondaryActions'],
 ): ReadonlyArray<JSX.Element> {
+  if (actions == null || actions.length === 0) {
+    return [];
+  }
+
   return actions.map(({content, ...action}, index) => (
-    <div className={styles.IndividualAction} key={`Action-${content || index}`}>
-      <Action {...action}>{content}</Action>
+    <div
+      key={`IndividualAction-${content || index}`}
+      className={styles.IndividualAction}
+    >
+      <PlainAction {...action} content={content} />
     </div>
   ));
 }

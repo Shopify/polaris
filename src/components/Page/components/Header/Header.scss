@@ -1,4 +1,4 @@
-$action-horizontal-padding: (1.5 * spacing(tight));
+$individual-action-padding-x: (1.5 * spacing(tight));
 
 .Header {
   @include page-header-layout;
@@ -32,12 +32,14 @@ $action-horizontal-padding: (1.5 * spacing(tight));
     display: none;
   }
 
-  .Pagination {
+  .PaginationWrapper {
     display: none;
   }
 
   @include page-content-when-not-partially-condensed {
-    .Rollup {
+    // TODO: We really should probably not render the component at this width...
+    // is there a matchMedia I can utilize for this?
+    .RollupActionsWrapper {
       display: none;
     }
 
@@ -49,7 +51,7 @@ $action-horizontal-padding: (1.5 * spacing(tight));
       display: flex;
     }
 
-    .Pagination {
+    .PaginationWrapper {
       display: flex;
     }
   }
@@ -77,11 +79,11 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   }
 }
 
-.Rollup {
+.RollupActionsWrapper {
   margin-top: spacing(extra-tight);
 }
 
-.Pagination {
+.PaginationWrapper {
   margin-left: auto;
   line-height: 1;
 }
@@ -107,7 +109,7 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   justify-content: space-between;
   align-items: baseline;
 
-  .Rollup {
+  .RollupActionsWrapper {
     @include page-header-without-navigation;
   }
 }
@@ -133,11 +135,11 @@ $action-horizontal-padding: (1.5 * spacing(tight));
 
     &:first-child {
       // Compensates for the fact that we push the icon slightly to the left
-      margin-left: -1 * $action-horizontal-padding;
+      margin-left: -1 * $individual-action-padding-x;
     }
 
     &:last-child {
-      margin-right: -1 * $action-horizontal-padding;
+      margin-right: -1 * $individual-action-padding-x;
     }
   }
 }

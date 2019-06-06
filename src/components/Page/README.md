@@ -186,12 +186,20 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 <Page
   breadcrumbs={[{content: 'Products', url: '/products'}]}
   title="Jar With Lock-Lid"
+  titleMetadata={<Badge>Draft</Badge>}
   primaryAction={{content: 'Save', disabled: true}}
   secondaryActions={[{content: 'Duplicate'}, {content: 'View on your store'}]}
+  actionGroups={[
+    {
+      title: 'Promote',
+      actions: [{content: 'Share on Facebook', onAction: () => {}}],
+    },
+  ]}
   pagination={{
     hasPrevious: true,
     hasNext: true,
   }}
+  separator
 >
   <p>Page content</p>
 </Page>

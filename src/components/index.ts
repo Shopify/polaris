@@ -187,6 +187,14 @@ export {default as PageActions, Props as PageActionsProps} from './PageActions';
 
 export {default as Pagination, Props as PaginationProps} from './Pagination';
 
+export {default as PlainAction, Props as PlainActionProps} from './PlainAction';
+
+export {
+  default as PlainActionGroup,
+  Props as PlainActionGroupProps,
+  PlainActionGroupDescriptor,
+} from './PlainActionGroup';
+
 export {
   default as Popover,
   Props as PopoverProps,
@@ -215,6 +223,11 @@ export {
   default as ResourcePicker,
   Props as ResourcePickerProps,
 } from './ResourcePicker';
+
+export {
+  default as RollupActions,
+  Props as RollupActionsProps,
+} from './RollupActions';
 
 export {default as Scrollable, Props as ScrollableProps} from './Scrollable';
 

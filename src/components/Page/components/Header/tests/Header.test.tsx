@@ -1,10 +1,23 @@
 import * as React from 'react';
 import {SaveMinor} from '@shopify/polaris-icons';
 import {mountWithAppProvider, trigger} from 'test-utilities';
-import {Breadcrumbs, buttonsFrom, Pagination} from 'components';
+
+import {
+  Breadcrumbs,
+  buttonsFrom,
+  Pagination,
+  PlainAction,
+  PlainActionGroup,
+  PlainActionGroupDescriptor,
+  RollupActions,
+  RollupActionsProps,
+} from 'components';
+
+import {RollupSecondaryAction} from '../../../../RollupActions';
 import {LinkAction, ActionListItemDescriptor} from '../../../../../types';
-import {Action, ActionGroup, ActionGroupDescriptor} from '../components';
+
 import Header from '../Header';
+import {HeaderPrimaryAction} from '../types';
 
 describe('<Header />', () => {
   const mockProps = {
@@ -62,7 +75,7 @@ describe('<Header />', () => {
 
   describe('secondaryActions', () => {
     it('get rendered as actions', () => {
-      const secondaryActions: LinkAction[] = [
+      const secondaryActions: RollupSecondaryAction[] = [
         {
           content: 'Products',
           url: 'https://www.google.com',
@@ -72,13 +85,13 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} secondaryActions={secondaryActions} />,
       );
-      expect(header.find(Action)).toHaveLength(1);
+      expect(header.find(PlainAction)).toHaveLength(1);
     });
   });
 
   describe('actionGroups', () => {
     it('get rendered as action groups', () => {
-      const secondaryActions: LinkAction[] = [
+      const secondaryActions: RollupSecondaryAction[] = [
         {
           content: 'Products',
           url: 'https://www.google.com',
@@ -86,7 +99,7 @@ describe('<Header />', () => {
         },
       ];
 
-      const actionGroups = [
+      const actionGroups: RollupActionsProps['actionGroups'] = [
         {
           title: 'First group',
           actions: secondaryActions,
@@ -101,13 +114,13 @@ describe('<Header />', () => {
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
 
-      expect(header.find(ActionGroup)).toHaveLength(2);
+      expect(header.find(PlainActionGroup)).toHaveLength(2);
     });
   });
 
   describe('primaryAction', () => {
     it('renders a button based on the given action', () => {
-      const primaryAction = {
+      const primaryAction: HeaderPrimaryAction = {
         content: 'Click me!',
       };
 
@@ -136,7 +149,46 @@ describe('<Header />', () => {
     });
   });
 
-  describe('<ActionGroup />', () => {
+  describe('<RollupActions />', () => {
+    it('passes `secondaryActions`', () => {
+      const secondaryActions: RollupSecondaryAction[] = [
+        {
+          content: 'Products',
+          url: 'https://www.google.com',
+          target: 'REMOTE',
+        },
+      ];
+      const header = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={secondaryActions} />,
+      );
+      expect(header.find(RollupActions).prop('secondaryActions')).toBe(
+        secondaryActions,
+      );
+    });
+
+    it('passes `actionGroups`', () => {
+      const actionGroups: RollupActionsProps['actionGroups'] = [
+        {
+          title: 'mock title',
+          actions: [
+            {
+              content: 'mock content',
+              helpText: 'mock help text',
+            },
+          ],
+          details: 'mock details',
+        },
+      ];
+      const header = mountWithAppProvider(
+        <Header {...mockProps} actionGroups={actionGroups} />,
+      );
+      expect(header.find(RollupActions).prop('actionGroups')).toBe(
+        actionGroups,
+      );
+    });
+  });
+
+  describe('<PlainActionGroup />', () => {
     const mockAction: ActionListItemDescriptor = {
       content: 'Products',
       url: 'https://www.google.com',
@@ -144,12 +196,12 @@ describe('<Header />', () => {
     };
 
     function fillActionGroup(
-      partialActionGroup?: Partial<ActionGroupDescriptor>,
+      partialPlainActionGroup?: Partial<PlainActionGroupDescriptor>,
     ) {
       return {
         title: 'Group',
         actions: [mockAction],
-        ...partialActionGroup,
+        ...partialPlainActionGroup,
       };
     }
 
@@ -159,7 +211,7 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('title')).toBe(title);
+      expect(header.find(PlainActionGroup).prop('title')).toBe(title);
     });
 
     it('receives the group’s icon', () => {
@@ -168,7 +220,7 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('icon')).toBe(icon);
+      expect(header.find(PlainActionGroup).prop('icon')).toBe(icon);
     });
 
     it('receives the group’s actions', () => {
@@ -177,7 +229,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('actions')).toStrictEqual(actions);
+      expect(header.find(PlainActionGroup).prop('actions')).toStrictEqual(
+        actions,
+      );
     });
 
     it('receives the group’s details', () => {
@@ -186,7 +240,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('details')).toStrictEqual(details);
+      expect(header.find(PlainActionGroup).prop('details')).toStrictEqual(
+        details,
+      );
     });
 
     it('is inactive by default', () => {
@@ -194,7 +250,7 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      expect(header.find(ActionGroup).prop('active')).toBeFalsy();
+      expect(header.find(PlainActionGroup).prop('active')).toBeFalsy();
     });
 
     it('becomes active when opened', () => {
@@ -203,8 +259,8 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      trigger(header.find(ActionGroup), 'onOpen', title);
-      expect(header.find(ActionGroup).prop('active')).toBeTruthy();
+      trigger(header.find(PlainActionGroup), 'onOpen', title);
+      expect(header.find(PlainActionGroup).prop('active')).toBeTruthy();
     });
 
     it('becomes inactive when closed', () => {
@@ -213,9 +269,9 @@ describe('<Header />', () => {
       const header = mountWithAppProvider(
         <Header {...mockProps} actionGroups={actionGroups} />,
       );
-      trigger(header.find(ActionGroup), 'onOpen', title);
-      trigger(header.find(ActionGroup), 'onClose', title);
-      expect(header.find(ActionGroup).prop('active')).toBeFalsy();
+      trigger(header.find(PlainActionGroup), 'onOpen', title);
+      trigger(header.find(PlainActionGroup), 'onClose', title);
+      expect(header.find(PlainActionGroup).prop('active')).toBeFalsy();
     });
   });
 });

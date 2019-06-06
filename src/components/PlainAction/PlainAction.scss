@@ -2,19 +2,18 @@ $difference-between-touch-area-and-backdrop: control-height() -
   control-slim-height();
 $action-horizontal-padding: (1.5 * spacing(tight));
 
-.Action {
+.PlainAction {
   @include unstyled-button;
   @include text-style-body;
   position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: control-height();
-
   // Negative margin vertically for the amount that is not covered by
   // the focus overlay
   margin-top: -0.5 * $difference-between-touch-area-and-backdrop;
   margin-bottom: -0.5 * $difference-between-touch-area-and-backdrop;
   padding: 0 $action-horizontal-padding;
+  min-height: control-height();
   text-decoration: none;
   color: color('ink', 'light');
 
@@ -22,7 +21,7 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   &:active {
     color: color('ink');
 
-    .ActionIcon {
+    .IconWrapper {
       @include recolor-icon(color('ink'), color('white'));
     }
   }
@@ -55,18 +54,18 @@ $action-horizontal-padding: (1.5 * spacing(tight));
     cursor: default;
     pointer-events: none;
 
-    .ActionIcon {
+    .IconWrapper {
       @include recolor-icon(color('ink', 'lightest'));
     }
   }
 }
 
-.ActionContent {
+.ContentWrapper {
   display: flex;
   align-items: center;
 }
 
-.ActionIcon {
+.IconWrapper {
   @include recolor-icon(color('ink', 'lighter'), color('white'));
   display: inline-block;
 
@@ -85,20 +84,5 @@ $action-horizontal-padding: (1.5 * spacing(tight));
 
   &.disabled {
     @include recolor-icon(color('ink', 'lightest'));
-  }
-}
-
-.Action-outline {
-  @include button-base;
-  @include button-outline(color('ink', 'lighter'));
-
-  &::after {
-    top: auto;
-    left: auto;
-    right: auto;
-  }
-
-  &.disabled {
-    @include button-outline-disabled(color('ink', 'lighter'));
   }
 }

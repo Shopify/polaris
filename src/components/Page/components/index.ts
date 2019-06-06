@@ -1,1 +1,5 @@
-export {default as Header, Props as HeaderProps} from './Header';
+export {
+  default as Header,
+  Props as HeaderProps,
+  HeaderPrimaryAction,
+} from './Header';

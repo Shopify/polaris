@@ -217,6 +217,10 @@
       }
     },
 
+    "RollupActions": {
+      "rollupButton": "Actions"
+    },
+
     "Sheet": {
       "warningMessage": "The Sheet component must be used within the Frame component."
     },
