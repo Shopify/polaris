@@ -307,8 +307,6 @@ export {default as ProgressBar, Props as ProgressBarProps} from './ProgressBar';
 
 export {default as Indicator, Props as IndicatorProps} from './Indicator';
 
-export {default as withContext} from './WithContext';
-
 export {PolarisContext} from './types';
 
 export {DATA_ATTRIBUTE} from './shared';
