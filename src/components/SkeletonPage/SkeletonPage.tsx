@@ -13,7 +13,7 @@ export interface Props {
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
-  singleColumn?: boolean;
+  narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
   /** Number of secondary page-level actions to display */
@@ -24,13 +24,21 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export type CombinedProps = Props & WithAppProviderProps;
+interface DeprecatedProps {
+  /** Decreases the maximum layout width. Intended for single-column layouts
+   * @deprecated As of release 4.0, replaced by {@link https://polaris.shopify.com/components/feedback-indicators/skeleton-page#props-narrow-width}
+   */
+  singleColumn?: boolean;
+}
+
+export type CombinedProps = Props & DeprecatedProps & WithAppProviderProps;
 
 export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
   render() {
     const {
       children,
       fullWidth,
+      narrowWidth,
       singleColumn,
       primaryAction,
       secondaryActions,
@@ -39,10 +47,17 @@ export class SkeletonPage extends React.PureComponent<CombinedProps, never> {
       polaris: {intl},
     } = this.props;
 
+    if (singleColumn) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The singleColumn prop has been renamed to narrowWidth to better represents its use and will be removed in v5.0.',
+      );
+    }
+
     const className = classNames(
       styles.Page,
       fullWidth && styles.fullWidth,
-      singleColumn && styles.singleColumn,
+      (narrowWidth || singleColumn) && styles.narrowWidth,
     );
 
     const headerClassName = classNames(
@@ -118,4 +133,4 @@ function renderTitle(title: string) {
   return <div className={styles.Title}>{titleContent}</div>;
 }
 
-export default withAppProvider<Props>()(SkeletonPage);
+export default withAppProvider<Props & DeprecatedProps>()(SkeletonPage);

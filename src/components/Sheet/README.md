@@ -166,7 +166,7 @@ class SheetExample extends React.Component {
           }}
         >
           <Frame topBar={<TopBar />}>
-            <Page singleColumn title="Big yellow socks">
+            <Page narrowWidth title="Big yellow socks">
               <Card sectioned>
                 <FormLayout>
                   <TextField
