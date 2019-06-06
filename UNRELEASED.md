@@ -35,6 +35,7 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 - Fixed improper spacing and coloring on a `TextField` prefix ([#1132](https://github.com/Shopify/polaris-react/issues/1132))
 - Fixed `ResourcePicker` not updating function references for `onSelection` and `onCancel` callbacks [#1451](https://github.com/Shopify/polaris-react/pull/1451)
 - Fixed `TextField` `label` being set as the value of the `label` node, as well as the `aria-label` `aria-labelledby` attributes, when only one method will suffice ([#1615](https://github.com/Shopify/polaris-react/pull/1615))
+- Fixed accessibility issues for Windows High Contrast mode on `Tabs` and `Popover` ([#1629](https://github.com/Shopify/polaris-react/pull/1629))
 
 ### Documentation
 
