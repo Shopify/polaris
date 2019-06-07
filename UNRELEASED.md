@@ -57,6 +57,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Dependency upgrades
 
+- Upgraded TypeScript dependency to `3.5.1` ([#1650](https://github.com/Shopify/polaris-react/pull/1650))
+
 ### Code quality
 
 - Enabled the color contrast test in pa11y ([#1645](https://github.com/Shopify/polaris-react/pull/1645))
