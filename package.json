@@ -156,7 +156,7 @@
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "svgo": "^1.2.2",
-    "typescript": "~3.2.4",
+    "typescript": "~3.5.1",
     "yargs": "^13.2.2"
   },
   "peerDependencies": {
