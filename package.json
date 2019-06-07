@@ -164,7 +164,7 @@
     "react-dom": "^16.3.1"
   },
   "resolutions": {
-    "typescript-eslint-parser": "22.0.0"
+    "typescript-eslint-parser": "npm:@typescript-eslint/parser@1.9.0"
   },
   "files": [
     "esnext",
