@@ -17,68 +17,84 @@ type Wrapper = ReactWrapper<Props, any>;
 
 describe('<RollupActions />', () => {
   const mockProps: Props = {
-    secondaryActions: undefined,
-    actionGroups: undefined,
+    items: undefined,
+    sections: undefined,
   };
 
-  it('does not render without either `secondaryActions` or `actionGroups`', () => {
+  it('does not render without either `items` or `sections`', () => {
     const wrapper = mountWithAppProvider(<RollupActions {...mockProps} />);
 
     expect(wrapper.find(Popover).exists()).toBe(false);
   });
 
-  describe('secondaryActions', () => {
-    it('get rendered as ActionList > Item', () => {
-      const secondaryActions: Props['secondaryActions'] = [
-        {
-          content: 'mock content 1',
-          url: 'https://www.google.com',
-        },
-        {
-          content: 'mock content 2',
-          url: 'https://www.shopify.ca',
-        },
-      ];
+  describe('items', () => {
+    const mockItems: Props['items'] = [
+      {
+        content: 'mock content 1',
+        url: 'https://www.google.com',
+      },
+      {
+        content: 'mock content 2',
+        url: 'https://www.shopify.ca',
+      },
+    ];
+
+    it('gets rendered as ActionList > Item', () => {
       const wrapper = mountWithAppProvider(
-        <RollupActions {...mockProps} secondaryActions={secondaryActions} />,
+        <RollupActions {...mockProps} items={mockItems} />,
       );
 
       activatePopover(wrapper);
 
-      expect(wrapper.find(ActionListItem)).toHaveLength(
-        secondaryActions.length,
+      expect(wrapper.find(ActionListItem)).toHaveLength(mockItems.length);
+    });
+
+    it('closes the <Popover /> on click of any item', () => {
+      const wrapper = mountWithAppProvider(
+        <RollupActions {...mockProps} items={mockItems} />,
       );
+
+      activatePopover(wrapper);
+
+      let popoverComponent = wrapper.find(Popover);
+      expect(popoverComponent.prop('active')).toBe(true);
+
+      const firstActionListItem = wrapper.find(ActionListItem).first();
+      trigger(firstActionListItem, 'onAction');
+
+      popoverComponent = wrapper.find(Popover);
+      expect(popoverComponent.prop('active')).toBe(false);
     });
   });
 
-  describe('actionGroups', () => {
-    it('get rendered as ActionList > Section', () => {
-      const actionGroups: Props['actionGroups'] = [
-        {
-          title: 'mock title 1',
-          actions: [
-            {
-              content: 'mock content 1',
-            },
-          ],
-        },
-        {
-          title: 'mock title 2',
-          actions: [
-            {
-              content: 'mock content 2',
-            },
-          ],
-        },
-      ];
+  describe('sections', () => {
+    const mockSections: Props['sections'] = [
+      {
+        title: 'mock title 1',
+        items: [
+          {
+            content: 'mock content 1',
+          },
+        ],
+      },
+      {
+        title: 'mock title 2',
+        items: [
+          {
+            content: 'mock content 2',
+          },
+        ],
+      },
+    ];
 
+    it('gets rendered as ActionList > Section', () => {
       const wrapper = mountWithAppProvider(
-        <RollupActions {...mockProps} actionGroups={actionGroups} />,
+        <RollupActions {...mockProps} sections={mockSections} />,
       );
 
       activatePopover(wrapper);
 
-      expect(wrapper.find(ActionListSection)).toHaveLength(actionGroups.length);
+      expect(wrapper.find(ActionListSection)).toHaveLength(mockSections.length);
     });
   });
 });

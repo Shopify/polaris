@@ -46,22 +46,20 @@ TODO: Write "Guidelines"
 TODO: Write "Example"
 
 ```jsx
-<RollupActions
-  secondaryActions={[{content: 'Duplicate'}, {content: 'Another one'}]}
-/>
+<RollupActions items={[{content: 'Duplicate'}, {content: 'Another one'}]} />
 ```
 
-### With both secondaryActions and actionGroups
+### With both items and sections
 
 TODO: Write "Example"
 
 ```jsx
 <RollupActions
-  secondaryActions={[{content: 'Duplicate'}, {content: 'Another one'}]}
-  actionGroups={[
+  items={[{content: 'Duplicate'}, {content: 'Another one'}]}
+  sections={[
     {
       title: 'First action group',
-      actions: [
+      items: [
         {content: 'Share on Facebook'},
         {
           content: 'Share on Twitter',
@@ -73,7 +71,7 @@ TODO: Write "Example"
     },
     {
       title: 'Promote',
-      actions: [
+      items: [
         {content: 'Content one'},
         {content: 'Content two'},
         {

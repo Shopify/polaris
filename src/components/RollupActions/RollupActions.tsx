@@ -2,26 +2,20 @@ import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {withAppProvider, WithAppProviderProps} from '../AppProvider';
-import {PlainActionGroupDescriptor} from '../PlainActionGroup';
-
-import ActionList from '../ActionList';
+import ActionList, {Props as ActionListProps} from '../ActionList';
 import Button from '../Button';
 import Popover from '../Popover';
 
-import {RollupSecondaryAction} from './types';
-import {hasRollupActions, convertActionGroupToActionListSection} from './utils';
-
 export interface Props {
-  /** Collection of secondary page-level actions */
-  secondaryActions?: RollupSecondaryAction[];
-  /** Collection of page-level groups of secondary actions */
-  actionGroups?: PlainActionGroupDescriptor[];
+  /** Collection of actions for the list */
+  items?: ActionListProps['items'];
+  /** Collection of sectioned action items */
+  sections?: ActionListProps['sections'];
 }
 
 export type CombinedProps = Props & WithAppProviderProps;
 
 export interface State {
-  openActionGroup?: string;
   rollupOpen: boolean;
 }
 
@@ -33,12 +27,12 @@ class RollupActions extends React.PureComponent<CombinedProps, State> {
   render() {
     const {rollupOpen} = this.state;
     const {
-      secondaryActions = [],
-      actionGroups = [],
+      items = [],
+      sections = [],
       polaris: {intl},
     } = this.props;
 
-    return hasRollupActions(secondaryActions, actionGroups) ? (
+    return items.length >= 1 || sections.length >= 1 ? (
       <Popover
         active={rollupOpen}
         activator={
@@ -54,8 +48,8 @@ class RollupActions extends React.PureComponent<CombinedProps, State> {
         onClose={this.handleRollupToggle}
       >
         <ActionList
-          items={secondaryActions}
-          sections={actionGroups.map(convertActionGroupToActionListSection)}
+          items={items}
+          sections={sections}
           onActionAnyItem={this.handleRollupToggle}
         />
       </Popover>

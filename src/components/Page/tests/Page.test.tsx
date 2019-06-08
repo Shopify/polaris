@@ -5,9 +5,11 @@ import {
 } from '@shopify/app-bridge/actions';
 import {shallowWithAppProvider, mountWithAppProvider} from 'test-utilities';
 
-import {Page, Card, RollupActionsProps} from 'components';
+import {Card} from 'components';
 import {Header, HeaderPrimaryAction} from '../components';
 import {LinkAction} from '../../../types';
+
+import Page, {Props} from '../Page';
 
 jest.mock('../../../utilities/app-bridge-transformers', () => ({
   ...require.requireActual('../../../utilities/app-bridge-transformers'),
@@ -15,7 +17,7 @@ jest.mock('../../../utilities/app-bridge-transformers', () => ({
   transformActions: jest.fn((...args) => args),
 }));
 
-const mockProps = {
+const mockProps: Props = {
   title: 'Test',
 };
 
@@ -274,11 +276,11 @@ describe('<Page />', () => {
         target: 'APP',
       };
 
-      const secondaryActions: RollupActionsProps['secondaryActions'] = [
+      const secondaryActions: Props['secondaryActions'] = [
         {content: 'Bar', url: '/bar', target: 'ADMIN_PATH'},
       ];
 
-      const actionGroups: RollupActionsProps['actionGroups'] = [
+      const actionGroups: Props['actionGroups'] = [
         {
           title: 'Baz',
           actions: [{content: 'Qux', url: 'https://qux.com', target: 'REMOTE'}],

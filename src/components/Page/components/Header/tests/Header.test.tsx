@@ -13,22 +13,21 @@ import {
   RollupActionsProps,
 } from 'components';
 
-import {RollupSecondaryAction} from '../../../../RollupActions';
 import {LinkAction, ActionListItemDescriptor} from '../../../../../types';
 
-import Header from '../Header';
+import Header, {Props} from '../Header';
 import {HeaderPrimaryAction} from '../types';
 
 describe('<Header />', () => {
-  const mockProps = {
-    title: 'test',
+  const mockProps: Props = {
+    title: 'mock title',
   };
 
   describe('title', () => {
     it('is displayed in the header', () => {
-      const title = 'test';
-      const header = mountWithAppProvider(<Header title={title} />);
-      expect(header.text()).toContain(title);
+      const mockTitle = 'mock title';
+      const header = mountWithAppProvider(<Header title={mockTitle} />);
+      expect(header.text()).toContain(mockTitle);
     });
   });
 
@@ -74,47 +73,79 @@ describe('<Header />', () => {
   });
 
   describe('secondaryActions', () => {
-    it('get rendered as actions', () => {
-      const secondaryActions: RollupSecondaryAction[] = [
-        {
-          content: 'Products',
-          url: 'https://www.google.com',
-          target: 'REMOTE',
-        },
-      ];
+    const mockSecondaryActions: RollupActionsProps['items'] = [
+      {
+        content: 'content 1',
+        url: 'https://www.google.com',
+        target: 'REMOTE',
+      },
+      {
+        content: 'content 2',
+        url: 'https://shopify.ca',
+      },
+    ];
+
+    it('get rendered as <PlainAction /> on desktop', () => {
       const header = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={secondaryActions} />,
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
       );
-      expect(header.find(PlainAction)).toHaveLength(1);
+      expect(header.find(PlainAction)).toHaveLength(
+        mockSecondaryActions.length,
+      );
+    });
+
+    // TODO: This should be using `matchMedia` to put the test env in a mobile width
+    it('get rendered as <RollupActions /> `items` on mobile', () => {
+      const header = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+      );
+      expect(header.find(RollupActions).prop('items')).toBe(
+        mockSecondaryActions,
+      );
     });
   });
 
   describe('actionGroups', () => {
-    it('get rendered as action groups', () => {
-      const secondaryActions: RollupSecondaryAction[] = [
-        {
-          content: 'Products',
-          url: 'https://www.google.com',
-          target: 'REMOTE',
-        },
-      ];
+    const mockSecondaryActions: RollupActionsProps['items'] = [
+      {
+        content: 'content 1',
+        url: 'https://www.google.com',
+        target: 'REMOTE',
+      },
+      {
+        content: 'content 2',
+        url: 'https://shopify.ca',
+      },
+    ];
+    const mockActionGroups: Props['actionGroups'] = [
+      {
+        title: 'First group',
+        actions: [...mockSecondaryActions],
+      },
+      {
+        title: 'Second group',
+        actions: [...mockSecondaryActions],
+      },
+    ];
 
-      const actionGroups: RollupActionsProps['actionGroups'] = [
-        {
-          title: 'First group',
-          actions: secondaryActions,
-        },
-        {
-          title: 'Second group',
-          actions: secondaryActions,
-        },
-      ];
-
+    it('get rendered as <PlainActionGroup /> on desktop', () => {
       const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
+        <Header {...mockProps} actionGroups={mockActionGroups} />,
       );
 
-      expect(header.find(PlainActionGroup)).toHaveLength(2);
+      expect(header.find(PlainActionGroup)).toHaveLength(
+        mockActionGroups.length,
+      );
+    });
+
+    // TODO: This should be using `matchMedia` to put the test env in a mobile width
+    it('get rendered as <RollupActions /> `sections` on mobile', () => {
+      const header = mountWithAppProvider(
+        <Header {...mockProps} secondaryActions={mockSecondaryActions} />,
+      );
+      expect(header.find(RollupActions).prop('items')).toBe(
+        mockSecondaryActions,
+      );
     });
   });
 
@@ -146,45 +177,6 @@ describe('<Header />', () => {
       expect(
         header.contains(<Pagination {...pagination} plain />),
       ).toBeTruthy();
-    });
-  });
-
-  describe('<RollupActions />', () => {
-    it('passes `secondaryActions`', () => {
-      const secondaryActions: RollupSecondaryAction[] = [
-        {
-          content: 'Products',
-          url: 'https://www.google.com',
-          target: 'REMOTE',
-        },
-      ];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} secondaryActions={secondaryActions} />,
-      );
-      expect(header.find(RollupActions).prop('secondaryActions')).toBe(
-        secondaryActions,
-      );
-    });
-
-    it('passes `actionGroups`', () => {
-      const actionGroups: RollupActionsProps['actionGroups'] = [
-        {
-          title: 'mock title',
-          actions: [
-            {
-              content: 'mock content',
-              helpText: 'mock help text',
-            },
-          ],
-          details: 'mock details',
-        },
-      ];
-      const header = mountWithAppProvider(
-        <Header {...mockProps} actionGroups={actionGroups} />,
-      );
-      expect(header.find(RollupActions).prop('actionGroups')).toBe(
-        actionGroups,
-      );
     });
   });
 
