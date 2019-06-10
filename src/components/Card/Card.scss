@@ -36,7 +36,7 @@
   }
 
   + .Section {
-    border-top: border-width() solid color('sky');
+    border-top: border();
   }
 }
 
@@ -52,7 +52,7 @@
   }
 
   .Header + & {
-    border-top: border-width() solid color('sky');
+    border-top: border();
     margin-top: spacing(loose);
   }
 }
@@ -71,6 +71,14 @@
   }
 }
 
+.Subsection {
+  + .Subsection {
+    margin-top: spacing();
+    padding-top: spacing();
+    border-top: border();
+  }
+}
+
 .Footer {
   display: flex;
   justify-content: flex-end;
@@ -81,7 +89,7 @@
   }
 
   .Section-subdued + & {
-    border-top: border-width() solid color('sky');
+    border-top: border();
     padding: spacing(loose);
   }
 }

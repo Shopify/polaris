@@ -39,6 +39,7 @@ export interface Props {
 
 type CombinedProps = Props & WithAppProviderProps;
 
+/** @deprecated Use `ResourcePicker` from `@shopify/app-bridge-react` instead. */
 class ResourcePicker extends React.PureComponent<CombinedProps, never> {
   private focusReturnPoint: HTMLElement | null = null;
   private appBridgeResourcePicker:
@@ -46,6 +47,11 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
     | undefined;
 
   componentDidMount() {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Deprecation: `ResourcePicker` is deprecated and will be removed in v5.0. Use `ResourcePicker` from `@shopify/app-bridge-react` instead. For example, `import {ResourcePicker} from '@shopify/app-bridge-react';`",
+    );
+
     if (this.props.polaris.appBridge == null) {
       return;
     }
@@ -107,6 +113,8 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
       showHidden = false,
       allowMultiple = true,
       showVariants = true,
+      onSelection,
+      onCancel,
     } = this.props;
     const wasOpen = prevProps.open;
 
@@ -117,6 +125,24 @@ class ResourcePicker extends React.PureComponent<CombinedProps, never> {
         selectMultiple: allowMultiple,
         showVariants,
       });
+    }
+
+    this.appBridgeResourcePicker.unsubscribe();
+
+    if (onSelection != null) {
+      this.appBridgeResourcePicker.subscribe(
+        AppBridgeResourcePicker.Action.SELECT,
+        ({selection}) => {
+          onSelection({selection});
+        },
+      );
+    }
+
+    if (onCancel != null) {
+      this.appBridgeResourcePicker.subscribe(
+        AppBridgeResourcePicker.Action.CANCEL,
+        onCancel,
+      );
     }
 
     if (wasOpen !== open) {

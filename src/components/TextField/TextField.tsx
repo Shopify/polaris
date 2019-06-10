@@ -3,6 +3,7 @@ import {addEventListener} from '@shopify/javascript-utilities/events';
 import {createUniqueIDFactory} from '@shopify/javascript-utilities/other';
 import {classNames, variationName} from '@shopify/css-utilities';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
+import VisuallyHidden from '../VisuallyHidden';
 
 import Labelled, {Action, helpTextID, labelID} from '../Labelled';
 import Connected from '../Connected';
@@ -271,6 +272,9 @@ class TextField extends React.PureComponent<CombinedProps, State> {
           onClick={this.handleClearButtonPress}
           disabled={disabled}
         >
+          <VisuallyHidden>
+            {intl.translate('Polaris.Common.clear')}
+          </VisuallyHidden>
           <Icon source={CircleCancelMinor} color="inkLightest" />
         </button>
       ) : null;
@@ -306,12 +310,16 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       describedBy.push(`${id}CharacterCounter`);
     }
 
-    const labelledBy = [labelID(id)];
+    const labelledBy: string[] = [];
     if (prefix) {
       labelledBy.push(`${id}Prefix`);
     }
     if (suffix) {
       labelledBy.push(`${id}Suffix`);
+    }
+
+    if (labelledBy.length) {
+      labelledBy.unshift(labelID(id));
     }
 
     const inputClassName = classNames(
@@ -349,8 +357,7 @@ class TextField extends React.PureComponent<CombinedProps, State> {
       'aria-describedby': describedBy.length
         ? describedBy.join(' ')
         : undefined,
-      'aria-label': label,
-      'aria-labelledby': labelledBy.join(' '),
+      'aria-labelledby': labelledBy.length ? labelledBy.join(' ') : undefined,
       'aria-invalid': Boolean(error),
       'aria-owns': ariaOwns,
       'aria-activedescendant': ariaActiveDescendant,

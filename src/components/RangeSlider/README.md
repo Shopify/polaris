@@ -342,3 +342,46 @@ class RangeSliderExample extends React.Component {
 ## Related components
 
 - To collect a number value as a text input, [use the text field component](/components/forms/text-field)
+
+---
+
+## Accessibility
+
+<!-- content-for: android -->
+
+See Material Design and development documentation about accessibility for Android:
+
+- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
+- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
+
+<!-- /content-for -->
+
+<!-- content-for: ios -->
+
+See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
+
+- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
+- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
+
+<!-- /content-for -->
+
+<!-- content-for: web -->
+
+The range slider provides a large click and tap target for the slider thumbs. Merchants can also tap or click on the slider track to move the closest slider thumb.
+
+### Single-thumb slider
+
+The default range slider component uses the [ARIA 1.1 slider pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#slider) to build upon the default HTML `<input type="range">`. The required `label` prop provides a label for the field that’s conveyed to assistive technologies when it receives focus. When the slider is used, the `value` prop should update visually and programmatically to reflect the current value.
+
+To consistently provide the current value to assistive technologies, use the `min` and `max` props to provide the minimum and maximum values for the slider.
+
+### Dual-thumb slider
+
+The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#slidertwothumb). However, the pattern isn’t consistently supported by screen readers, especially on mobile devices. Because of this, it’s best to pair the dual-thumb slider with a set of text fields for each value, or to provide another accessible method for entering information.
+
+### Keyboard
+
+- To move focus to a slider thumb, press the <kbd>tab</kbd> key to move forward and or <kbd>shift</kbd> + <kbd>tab</kbd> to move backward
+- When a thumb has focus, use the up and down or left and right arrow keys to move the thumb and update the associated value.
+
+<!-- /content-for -->

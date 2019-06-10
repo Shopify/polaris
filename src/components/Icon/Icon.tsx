@@ -187,8 +187,10 @@ export interface Props {
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
-  /** Render the icon in an img element instead of an svg to prevent cross-site scripting */
-  /** @deprecated the untrusted prop is deprecated and will be removed (all raw strings passed into the Icon component will be assumed to be untrusted) */
+  /**
+   * Render the icon in an img element instead of an svg to prevent cross-site scripting
+   * @deprecated the untrusted prop is deprecated and will be removed (all raw strings passed into the Icon component will be assumed to be untrusted)
+   */
   untrusted?: boolean;
 }
 

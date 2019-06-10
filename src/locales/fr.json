@@ -28,7 +28,10 @@
       "checkbox": "case à cocher",
       "undo": "Annuler",
       "cancel": "Annuler",
-      "newWindowAccessibilityHint": "(ouvre une nouvelle fenêtre)"
+      "newWindowAccessibilityHint": "(ouvre une nouvelle fenêtre)",
+      "clear": "Effacer",
+      "close": "Fermer",
+      "submit": "Envoyer"
     },
     "ContextualSaveBar": {
       "save": "Enregistrer",
@@ -82,7 +85,8 @@
         "actionTitleFile": "Ajouter un fichier",
         "actionTitleImage": "Ajouter une image",
         "actionHintFile": "ou déposer les fichiers à mettre en ligne",
-        "actionHintImage": "ou déposer les images à mettre en ligne"
+        "actionHintImage": "ou déposer les images à mettre en ligne",
+        "label": "Télécharger un fichier"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "L'icône propriétaire a été retirée de la page. Mettez en ligne une icône d'application dans la section « Configuration de l'application » du tableau de bord des partenaires Shopify."
+        "iconWarningMessage": "L'icône propriétaire a été retirée de la page. Mettez en ligne une icône d'application dans la section « Configuration de l'application » du tableau de bord des partenaires Shopify.",
+        "rollupButton": "Actions"
       }
     },
     "Pagination": {
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "La couleur {color} n'est pas destinée à être utilisée sur les boutons fléchés de {size}. Les couleurs disponibles sur les grands boutons fléchés sont : {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Menu toggle"
+    },
     "Tag": {
       "ariaLabel": "Retirer {children}"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "Menu toggle",
       "SearchField": {
-        "clearButtonLabel": "Effacer"
+        "clearButtonLabel": "Effacer",
+        "search": "Recherche"
       }
     }
   }

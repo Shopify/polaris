@@ -11,6 +11,8 @@ import styles from './Button.scss';
 
 export type Size = 'slim' | 'medium' | 'large';
 
+export type TextAlign = 'left' | 'right' | 'center';
+
 export type IconSource = IconProps['source'];
 
 export interface Props {
@@ -33,6 +35,8 @@ export interface Props {
    * @default 'medium'
    */
   size?: Size;
+  /** Changes the inner text alignment of the button */
+  textAlign?: TextAlign;
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
   /** Allows the button to grow to the width of its container */
@@ -47,7 +51,7 @@ export interface Props {
   monochrome?: boolean;
   /** Forces url to open in a new tab */
   external?: boolean;
-  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
+  /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
   download?: string | boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
@@ -104,10 +108,12 @@ function Button({
   monochrome,
   submit,
   size = DEFAULT_SIZE,
+  textAlign,
   fullWidth,
   polaris: {intl},
 }: CombinedProps) {
   const isDisabled = disabled || loading;
+
   const className = classNames(
     styles.Button,
     primary && styles.primary,
@@ -118,6 +124,7 @@ function Button({
     plain && styles.plain,
     monochrome && styles.monochrome,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
+    textAlign && styles[variationName('textAlign', textAlign)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
   );

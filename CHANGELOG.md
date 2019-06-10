@@ -25,7 +25,7 @@ The format is based on [these versioning and changelog guidelines](https://git.i
 
 ### Development workflow
 
-- Updated Storybook to `v5.1.0-alpha.39`, improving component searchability in the sidebar [[#1488](https://github.com/Shopify/polaris-react/pull/1488)]
+- Updated Storybook to `v5.1.0-alpha.39`, improving component searchability in the sidebar ([#1488](https://github.com/Shopify/polaris-react/pull/1488))
 
 ### Dependency upgrades
 

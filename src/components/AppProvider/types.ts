@@ -38,7 +38,7 @@ export interface Context {
     scrollLockManager: ScrollLockManager;
     subscribe?(callback: () => void): void;
     unsubscribe?(callback: () => void): void;
-    appBridge?: ClientApplication<{}>;
+    appBridge?: ClientApplication<unknown>;
   };
 }
 

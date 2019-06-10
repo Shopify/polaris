@@ -28,7 +28,10 @@
       "checkbox": "casilla de verificación",
       "undo": "Deshacer",
       "cancel": "Cancelar",
-      "newWindowAccessibilityHint": "(abre una nueva ventana)"
+      "newWindowAccessibilityHint": "(abre una nueva ventana)",
+      "clear": "Borrar",
+      "close": "Cerrar",
+      "submit": "Enviar"
     },
     "ContextualSaveBar": {
       "save": "Guardar",
@@ -82,7 +85,8 @@
         "actionTitleFile": "Agregar archivo",
         "actionTitleImage": "Agregar imagen",
         "actionHintFile": "o arrastra y suelta los archivos que deseas subir",
-        "actionHintImage": "o arrastra y suelta las imágenes que deseas subir"
+        "actionHintImage": "o arrastra y suelta las imágenes que deseas subir",
+        "label": "Subir archivo"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "El ícono de apoyo se ha eliminado de la página. Sube el ícono de una aplicación en la sección 'Configuración de la aplicación' del Tablero de Shopify Partners."
+        "iconWarningMessage": "El ícono de apoyo se ha eliminado de la página. Sube el ícono de una aplicación en la sección 'Configuración de la aplicación' del Tablero de Shopify Partners.",
+        "rollupButton": "Acciones"
       }
     },
     "Pagination": {
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "El color {color} no está concebido para ser utilizado en spinners {size} Los colores disponibles en los spinners grandes son: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Activar menú"
+    },
     "Tag": {
       "ariaLabel": "Eliminar {children}"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "Activar menú",
       "SearchField": {
-        "clearButtonLabel": "Borrar"
+        "clearButtonLabel": "Borrar",
+        "search": "Búsqueda"
       }
     }
   }

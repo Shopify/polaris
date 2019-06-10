@@ -28,7 +28,10 @@
       "checkbox": "selectievakje",
       "undo": "Ongedaan maken",
       "cancel": "Annuleren",
-      "newWindowAccessibilityHint": "(opent een nieuw venster)"
+      "newWindowAccessibilityHint": "(opent een nieuw venster)",
+      "clear": "Wissen",
+      "close": "Sluiten",
+      "submit": "Indienen"
     },
     "ContextualSaveBar": {
       "save": "Opslaan",
@@ -82,7 +85,8 @@
         "actionTitleFile": "Bestand toevoegen",
         "actionTitleImage": "Afbeelding toevoegen",
         "actionHintFile": "of sleep bestanden om te uploaden",
-        "actionHintImage": "of sleep afbeeldingen om te uploaden"
+        "actionHintImage": "of sleep afbeeldingen om te uploaden",
+        "label": "Bestand uploaden"
       }
     },
     "EmptySearchResult": {
@@ -103,7 +107,8 @@
     },
     "Page": {
       "Header": {
-        "iconWarningMessage": "De pictograminstelling is van de Pagina verwijderd. Upload in plaats daarvan een toepassingspictogram in het gedeelte 'App-instellingen' van Shopify Partners Dashboard."
+        "iconWarningMessage": "De pictograminstelling is van de Pagina verwijderd. Upload in plaats daarvan een toepassingspictogram in het gedeelte 'App-instellingen' van Shopify Partners Dashboard.",
+        "rollupButton": "Acties"
       }
     },
     "Pagination": {
@@ -195,6 +200,9 @@
     "Spinner": {
       "warningMessage": "De kleur {color} is niet bedoeld voor gebruik op {size} spinners. De beschikbare kleuren op grote spinner zijn: {colors}"
     },
+    "Tabs": {
+      "toggleTabsLabel": "Schakelen tussen menu's"
+    },
     "Tag": {
       "ariaLabel": "{children} verwijderen"
     },
@@ -205,7 +213,8 @@
     "TopBar": {
       "toggleMenuLabel": "Schakelen tussen menu's",
       "SearchField": {
-        "clearButtonLabel": "Wissen"
+        "clearButtonLabel": "Wissen",
+        "search": "Zoeken"
       }
     }
   }
